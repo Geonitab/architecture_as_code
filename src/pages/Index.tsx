@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Code, Layers, GitBranch } from "lucide-react";
+import { BookOpen, Code, Layers, GitBranch, CheckCircle, Clock, Download } from "lucide-react";
 
 const Index = () => {
   const chapters = [
@@ -157,11 +157,74 @@ const Index = () => {
             </CardContent>
           </Card>
 
-          {/* Action Button */}
-          <div className="text-center">
-            <Button size="lg" className="gap-2">
-              <Code className="h-4 w-4" />
-              Generera Python-script
+          {/* CI/CD Status */}
+          <Card className="border-accent/20">
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <GitBranch className="h-5 w-5 text-accent" />
+                <CardTitle>GitHub CI/CD Status</CardTitle>
+              </div>
+              <CardDescription>
+                Automatisk bokbygge via GitHub Actions
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-card border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <div>
+                      <h3 className="font-medium">Workflow konfiguration</h3>
+                      <p className="text-sm text-muted-foreground">GitHub Actions YAML skapad</p>
+                    </div>
+                  </div>
+                  <Badge variant="secondary" className="bg-green-100 text-green-700">Klar</Badge>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-card border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <div>
+                      <h3 className="font-medium">Markdown-filer</h3>
+                      <p className="text-sm text-muted-foreground">Bokstruktur och innehåll</p>
+                    </div>
+                  </div>
+                  <Badge variant="secondary" className="bg-green-100 text-green-700">Klar</Badge>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-card border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <Clock className="h-5 w-5 text-yellow-500" />
+                    <div>
+                      <h3 className="font-medium">GitHub repository</h3>
+                      <p className="text-sm text-muted-foreground">Anslut till GitHub för CI/CD</p>
+                    </div>
+                  </div>
+                  <Badge variant="outline" className="text-yellow-600">Väntande</Badge>
+                </div>
+              </div>
+              
+              <div className="mt-6 p-4 bg-accent/10 rounded-lg">
+                <h4 className="font-medium mb-2">Byggprocessen kommer att:</h4>
+                <ul className="text-sm space-y-1 text-muted-foreground">
+                  <li>• Konvertera Mermaid-diagram till PNG</li>
+                  <li>• Bygga PDF med Pandoc och Eisvogel-template</li>
+                  <li>• Skapa automatiska releases på main branch</li>
+                  <li>• Spara PDF som downloadable artifacts</li>
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Action Buttons */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Button size="lg" className="gap-2" variant="default">
+              <GitBranch className="h-4 w-4" />
+              Anslut till GitHub
+            </Button>
+            <Button size="lg" className="gap-2" variant="outline">
+              <Download className="h-4 w-4" />
+              Ladda ner lokalt script
             </Button>
           </div>
         </div>

@@ -1,73 +1,153 @@
-# Welcome to your Lovable project
+# Arkitektur som kod - Bokprojekt
 
-## Project info
+En omfattande bok om Infrastructure as Code på svenska.
 
-**URL**: https://lovable.dev/projects/06b7da08-f32a-4f30-b2e6-ea4cb5cd5c1c
+## 📚 Om boken
 
-## How can I edit this code?
+Denna bok täcker Infrastructure as Code från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer.
 
-There are several ways of editing your application.
+### Målgrupp
+- Systemarkitekter
+- DevOps-ingenjörer  
+- Utvecklare
+- Projektledare
+- IT-chefer
 
-**Use Lovable**
+### Innehåll
+23 kapitel som täcker:
+- Grundläggande IaC-principer
+- Molnarkitektur som kod
+- Säkerhet och compliance
+- CI/CD och automatisering
+- Organisatorisk transformation
+- Praktiska fallstudier
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/06b7da08-f32a-4f30-b2e6-ea4cb5cd5c1c) and start prompting.
+## 🛠️ Teknisk implementation
 
-Changes made via Lovable will be committed automatically to this repo.
+### Struktur
+```
+docs/                    # Bokens innehåll
+├── *.md                # Markdown-kapitel (01_inledning.md, 02_kapitel1.md, osv)
+├── images/             # Mermaid-diagram
+│   └── *.mmd          # Mermaid källfiler
+├── build_book.sh      # Lokal byggscript
+└── arkitektur_som_kod.pdf  # Genererad bok
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+.github/workflows/      # CI/CD automation
+└── build-book.yml     # GitHub Actions för automatisk bokbygge
 ```
 
-**Edit a file directly in GitHub**
+### Automatisk byggprocess
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Boken byggs automatiskt via GitHub Actions när:
+- Markdown-filer ändras i `docs/` mappen
+- Mermaid-diagram uppdateras i `docs/images/`
+- CI/CD konfiguration modifieras
 
-**Use GitHub Codespaces**
+#### Byggprocessen:
+1. **Mermaid → PNG**: Konverterar diagram till bilder
+2. **Pandoc**: Genererar PDF med Eisvogel-template
+3. **Artifact**: Sparar PDF för nedladdning
+4. **Release**: Skapar automatisk release på main branch
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Lokalt byggande
 
-## What technologies are used for this project?
+För att bygga boken lokalt:
 
-This project is built with:
+```bash
+# Krav: pandoc, texlive-xetex, mermaid-cli
+cd docs
+chmod +x build_book.sh
+./build_book.sh
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📊 Diagram och illustrationer
 
-## How can I deploy this project?
+Alla diagram skapas med Mermaid och följer dessa riktlinjer:
+- Maximalt 5 element per diagram
+- Horisontell orientering (LR)
+- Konverteras automatiskt till PNG i CI/CD
 
-Simply open [Lovable](https://lovable.dev/projects/06b7da08-f32a-4f30-b2e6-ea4cb5cd5c1c) and click on Share -> Publish.
+Exempel:
+```mermaid
+graph LR
+    A[Infrastructure] --> B[as Code]
+    B --> C[Automation]
+    C --> D[Scalability]
+    D --> E[Reliability]
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 🔄 Bidrag och uppdateringar
 
-Yes, you can!
+### Workflow för ändringar:
+1. Skapa branch för ändringar
+2. Modifiera markdown-filer i `docs/`
+3. Commit och push
+4. GitHub Actions bygger automatiskt PDF
+5. Merge till main → automatisk release
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Kapitelstruktur:
+Varje kapitel följer samma struktur:
+- H1 huvudrubrik
+- Diagram med beskrivning
+- Inledande text (500 tecken)
+- Fördjupande sektioner
+- Källor
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 🏗️ CI/CD Pipeline
+
+GitHub Actions workflow (`build-book.yml`) hanterar:
+- **Triggers**: Push/PR på markdown-filer
+- **Dependencies**: Pandoc, TeXLive, Mermaid CLI
+- **Build**: Konverterar diagram + genererar PDF
+- **Artifacts**: Sparar PDF för nedladdning
+- **Releases**: Automatiska versioner på main branch
+
+### Status badges:
+![Build Book](https://github.com/användarnamn/repo-namn/workflows/Build%20Book/badge.svg)
+
+## 📖 Kapitellista
+
+1. Inledning till arkitektur som kod
+2. Grundläggande principer för Infrastructure as Code
+3. Versionhantering och kodstruktur
+4. Automatisering och CI/CD-pipelines
+5. Molnarkitektur som kod
+6. Säkerhet i Infrastructure as Code
+7. Monitering och observabilitet
+8. Skalbarhet och prestanda
+9. Digitalisering genom kodbaserad infrastruktur
+10. Organisatorisk förändring och teamstrukturer
+11. Projektledning för IaC-initiativ
+12. Innovation genom infrastrukturtransformation
+13. Produktutveckling med IaC-verktyg
+14. Compliance och regelefterlevnad
+15. Kostnadsoptimering och resurshantering
+16. Teststrategier för infrastrukturkod
+17. Migration från traditionell infrastruktur
+18. Framtida trender och teknologier
+19. Best practices och lärda läxor
+20. Fallstudier och praktiska exempel
+21. Slutsats
+22. Ordlista
+23. Om författarna
+
+## 👥 Författare
+
+**Dr. Anna Bergström** - Senior Cloud Architect  
+**Marcus Andersson** - DevOps Engineer och Automation Specialist
+
+## 📄 Licens
+
+Detta verk är licensierat under Creative Commons Attribution-ShareAlike 4.0 International License.
+
+## 🚀 Kom igång
+
+1. Klona repository
+2. Gör ändringar i markdown-filer
+3. Push till GitHub
+4. Ladda ner genererad PDF från Actions artifacts eller Releases
+
+---
+
+*Automatiskt byggt med GitHub Actions och Pandoc*
