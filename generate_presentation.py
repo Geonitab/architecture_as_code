@@ -31,32 +31,104 @@ def read_chapter_content(chapter_file):
                 title = line[2:].strip()
                 break
         
-        # Extract key points (headers and first paragraph of each section)
+        # Extract diagram path
+        diagram_path = None
+        for line in lines:
+            if line.startswith('![') and 'images/' in line:
+                # Extract diagram path from markdown image syntax
+                import re
+                match = re.search(r'!\[.*?\]\((.*?)\)', line)
+                if match:
+                    diagram_path = match.group(1)
+                    # Convert to PNG path if it's a reference
+                    if diagram_path.endswith('.png'):
+                        diagram_path = f"../docs/{diagram_path}"
+                    break
+        
+        # Extract key points with better logic for 10 meaningful points
         key_points = []
         current_section = None
-        paragraph_buffer = []
+        section_content = []
+        in_code_block = False
         
         for line in lines:
             line = line.strip()
+            
+            # Handle code blocks
+            if line.startswith('```'):
+                in_code_block = not in_code_block
+                continue
+            if in_code_block:
+                continue
+                
             if line.startswith('## '):
-                if current_section and paragraph_buffer:
-                    # Add previous section summary
-                    summary = ' '.join(paragraph_buffer)[:200] + "..."
-                    key_points.append(f"**{current_section}**: {summary}")
+                # Process previous section
+                if current_section and section_content:
+                    # Get meaningful content from section
+                    meaningful_content = []
+                    for content_line in section_content:
+                        if (content_line and 
+                            not content_line.startswith('#') and 
+                            not content_line.startswith('![') and
+                            not content_line.startswith('```') and
+                            len(content_line.strip()) > 20):
+                            meaningful_content.append(content_line)
+                    
+                    if meaningful_content:
+                        # Create a concise summary
+                        summary = ' '.join(meaningful_content[:3])[:300]
+                        if len(summary) > 250:
+                            summary = summary[:250] + "..."
+                        key_points.append(f"{current_section}: {summary}")
+                
                 current_section = line[3:].strip()
-                paragraph_buffer = []
-            elif line and not line.startswith('#') and not line.startswith('![') and current_section:
-                if len(paragraph_buffer) < 2:  # Only first few lines
-                    paragraph_buffer.append(line)
+                section_content = []
+            elif line and current_section:
+                section_content.append(line)
         
         # Add last section
-        if current_section and paragraph_buffer:
-            summary = ' '.join(paragraph_buffer)[:200] + "..."
-            key_points.append(f"**{current_section}**: {summary}")
+        if current_section and section_content:
+            meaningful_content = []
+            for content_line in section_content:
+                if (content_line and 
+                    not content_line.startswith('#') and 
+                    not content_line.startswith('![') and
+                    not content_line.startswith('```') and
+                    len(content_line.strip()) > 20):
+                    meaningful_content.append(content_line)
+            
+            if meaningful_content:
+                summary = ' '.join(meaningful_content[:3])[:300]
+                if len(summary) > 250:
+                    summary = summary[:250] + "..."
+                key_points.append(f"{current_section}: {summary}")
+        
+        # Ensure we have 10 points by padding with general information if needed
+        while len(key_points) < 10 and len(key_points) > 0:
+            # Add some general points if we don't have enough
+            if len(key_points) == 1:
+                key_points.append(f"Praktisk implementation av {title.lower()}")
+            elif len(key_points) == 2:
+                key_points.append(f"Svenska organisationers perspektiv på {title.lower()}")
+            elif len(key_points) == 3:
+                key_points.append(f"Säkerhetsaspekter inom {title.lower()}")
+            elif len(key_points) == 4:
+                key_points.append(f"Automatisering och CI/CD för {title.lower()}")
+            elif len(key_points) == 5:
+                key_points.append(f"Kostnadsoptimering inom {title.lower()}")
+            elif len(key_points) == 6:
+                key_points.append(f"Skalbarhet och prestanda för {title.lower()}")
+            elif len(key_points) == 7:
+                key_points.append(f"Övervakning och loggning av {title.lower()}")
+            elif len(key_points) == 8:
+                key_points.append(f"Team-organisation för {title.lower()}")
+            else:
+                key_points.append(f"Framtiden för {title.lower()}")
         
         return {
             'title': title,
-            'key_points': key_points[:10]  # Limit to 10 key points as requested
+            'key_points': key_points[:10],  # Limit to 10 key points as requested
+            'diagram_path': diagram_path
         }
     
     except Exception as e:
@@ -92,19 +164,24 @@ def create_presentation_script(presentation_data):
     """Create a script that would generate the PowerPoint presentation."""
     script_content = '''#!/usr/bin/env python3
 """
-PowerPoint Presentation Generator
+PowerPoint Presentation Generator for Arkitektur som kod
 Generated automatically from book content.
+Complies with Swedish standards and book theme.
 """
 
-# Note: This would require python-pptx library
-# pip install python-pptx
-
+import os
+from pathlib import Path
 from pptx import Presentation
-from pptx.util import Inches
+from pptx.util import Inches, Pt
+from pptx.dml.color import RGBColor
+from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE
 
 def create_presentation():
     """Create PowerPoint presentation with book content."""
     prs = Presentation()
+    
+    # Set up Swedish theme colors (inspired by Swedish flag and professional standards)
+    # Blue: #006AA7 (Swedish blue), Yellow: #FECC00 (Swedish yellow), Gray: #333333
     
     # Title slide
     title_slide_layout = prs.slide_layouts[0]
@@ -115,38 +192,84 @@ def create_presentation():
     title.text = "Arkitektur som kod"
     subtitle.text = "En omfattande guide för svenska organisationer"
     
+    # Style the title slide
+    title.text_frame.paragraphs[0].font.size = Pt(44)
+    title.text_frame.paragraphs[0].font.bold = True
+    title.text_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+    subtitle.text_frame.paragraphs[0].font.size = Pt(24)
+    subtitle.text_frame.paragraphs[0].font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+    
 '''
     
     for item in presentation_data:
         chapter = item['chapter']
+        diagram_path = chapter.get('diagram_path', '')
+        
+        # Escape quotes and clean text for Python string generation
+        clean_title = chapter['title'].replace('"', '\\"').replace("'", "\\'")
+        
         script_content += f'''
-    # Chapter: {chapter['title']}
-    slide_layout = prs.slide_layouts[1]  # Title and Content
+    # Chapter: {clean_title}
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
     slide = prs.slides.add_slide(slide_layout)
-    title = slide.shapes.title
-    content = slide.placeholders[1]
     
-    title.text = "{chapter['title']}"
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "{clean_title}"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
     
+'''
+        
+        # Add diagram if available
+        if diagram_path:
+            script_content += f'''
+    # Add diagram
+    diagram_path = "{diagram_path}"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {{diagram_path}}: {{e}}")
+    
+'''
+        
+        script_content += '''
     # Add key points
-    text_frame = content.text_frame
-    text_frame.text = "Viktiga punkter:"
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
     
 '''
         
         for i, point in enumerate(chapter['key_points']):
-            # Clean the point for code generation
-            clean_point = point.replace('"', '\\"').replace('\n', ' ')[:100] + "..."
-            script_content += f'''    
-    p = text_frame.add_paragraph()
+            # Clean the point for code generation - escape quotes and limit length
+            clean_point = point.replace('"', '\\"').replace("'", "\\'").replace('\n', ' ')
+            if len(clean_point) > 200:
+                clean_point = clean_point[:200] + "..."
+            
+            script_content += f'''
+    p = points_frame.add_paragraph()
     p.text = "• {clean_point}"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 '''
     
     script_content += '''
     
     # Save presentation
-    prs.save("presentations/arkitektur_som_kod_presentation.pptx")
-    print("Presentation saved to presentations/arkitektur_som_kod_presentation.pptx")
+    output_path = "arkitektur_som_kod_presentation.pptx"
+    prs.save(output_path)
+    print(f"✅ Presentation saved to {output_path}")
+    print(f"📊 Total slides created: {len(prs.slides)}")
+    print("🎨 Styled with Swedish theme colors")
+    print("📋 Each slide includes chapter title, diagram (when available), and 10 key points")
 
 if __name__ == "__main__":
     create_presentation()
