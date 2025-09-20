@@ -194,13 +194,24 @@ const Index = () => {
                 
                 <div className="flex items-center justify-between p-3 bg-card border rounded-lg">
                   <div className="flex items-center gap-3">
-                    <Clock className="h-5 w-5 text-yellow-500" />
+                    <CheckCircle className="h-5 w-5 text-green-500" />
                     <div>
                       <h3 className="font-medium">GitHub repository</h3>
-                      <p className="text-sm text-muted-foreground">Anslut till GitHub för CI/CD</p>
+                      <p className="text-sm text-muted-foreground">CI/CD pipeline aktiverad</p>
                     </div>
                   </div>
-                  <Badge variant="outline" className="text-yellow-600">Väntande</Badge>
+                  <Badge variant="secondary" className="bg-green-100 text-green-700">Aktiv</Badge>
+                </div>
+                
+                <div className="flex items-center justify-between p-3 bg-card border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    <div>
+                      <h3 className="font-medium">Senaste build</h3>
+                      <p className="text-sm text-muted-foreground">Framgångsrik PDF-generering</p>
+                    </div>
+                  </div>
+                  <Badge variant="secondary" className="bg-green-100 text-green-700">✓ Klar</Badge>
                 </div>
               </div>
               
