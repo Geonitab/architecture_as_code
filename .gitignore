@@ -32,3 +32,4 @@ test-reports/
 .pytest_cache/
 *.pyc
 *.pyo
+tests/

@@ -47,7 +47,7 @@ Boken byggs automatiskt via GitHub Actions när:
 
 #### Byggprocessen:
 1. **Mermaid → PNG**: Konverterar diagram till bilder
-2. **Pandoc**: Genererar PDF med Eisvogel-template
+2. **Pandoc**: Genererar PDF/EPUB/DOCX med konfigurerad Pandoc-yaml
 3. **Artifact**: Sparar PDF för nedladdning
 4. **Release**: Skapar automatisk release på main branch
 
@@ -60,7 +60,25 @@ För att bygga boken lokalt:
 cd docs
 chmod +x build_book.sh
 ./build_book.sh
+
+# För att generera alla format (PDF, EPUB, DOCX):
+./build_book.sh --all-formats
 ```
+
+#### Pandoc-konfiguration
+
+Projektet använder en dedikerad Pandoc-konfigurationsfil (`docs/pandoc.yaml`) som säkerställer:
+
+- **Kapitel på nya sidor**: `top-level-division: chapter` gör att varje H1-rubrik (kapitel) börjar på en ny sida
+- **Enhetlig formatering**: Samma inställningar för alla utdataformat (PDF, EPUB, DOCX)
+- **Svensk språkstöd**: Rätt språkinställningar för svenska texten
+- **Automatisk innehållsförteckning**: Med 3 nivåers djup
+- **Kapitelinumrering**: Automatisk numrering av alla kapitel
+
+Konfigurationen stöder:
+- **PDF**: Via XeLaTeX med Eisvogel-template för professionell layout
+- **EPUB**: Med kapitelindelning på H1-nivå för e-läsare
+- **DOCX**: För redigering i Microsoft Word eller kompatibla program
 
 ## 📊 Diagram och illustrationer
 
