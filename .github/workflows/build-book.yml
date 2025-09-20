@@ -45,7 +45,7 @@ jobs:
     - name: Download Eisvogel template
       run: |
         mkdir -p ~/.local/share/pandoc/templates
-        wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ~/.local/share/pandoc/templates/eisvogel.latex
+        wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/template-multi-file/eisvogel.latex -O ~/.local/share/pandoc/templates/eisvogel.latex
         
     - name: Convert Mermaid diagrams to PNG
       run: |
