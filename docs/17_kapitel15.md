@@ -185,8 +185,9 @@ resource "aws_autoscaling_group" "cost_aware" {
 ```
 
 ### Kubernetes Cost Optimization
+
 ```yaml
-# kubernetes/cost-optimization.yaml
+# kubernetes/cost-optimization-quota.yaml
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -201,7 +202,10 @@ spec:
     persistentvolumeclaims: "10"
     count/pods: "50"
     count/services: "10"
----
+```
+
+```yaml
+# kubernetes/cost-optimization-limits.yaml
 apiVersion: v1
 kind: LimitRange
 metadata:
@@ -222,8 +226,10 @@ spec:
       cpu: "50m"
       memory: "128Mi"
     type: Container
----
-# Vertical Pod Autoscaler för cost optimization
+```
+
+```yaml
+# kubernetes/vertical-pod-autoscaler.yaml
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -245,8 +251,10 @@ spec:
       minAllowed:
         cpu: "100m"
         memory: "256Mi"
----
-# Horizontal Pod Autoscaler med custom metrics
+```
+
+```yaml
+# kubernetes/horizontal-pod-autoscaler.yaml
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:

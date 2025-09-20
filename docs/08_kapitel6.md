@@ -90,6 +90,8 @@ För svenska organisationer måste CI-pipelines inkludera automatiserad valideri
 
 Automated testing strategies för IaC inkluderar static analysis, unit testing av terraform modules, integration testing mot test environments, och policy compliance validation. Dessa tester exekveras parallellt för att minimera feedback time och identifiera problem tidigt i utvecklingscykeln.
 
+## Avancerade teststrategier
+
 ### Advanced testing strategies för svenska miljöer
 
 Svenska organisationer kräver särskilt omfattande testing på grund av höga compliance-krav och risk-aversion. Teststrategier måste inkludera:
