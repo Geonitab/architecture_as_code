@@ -1,30 +1,31 @@
 # Inledning till arkitektur som kod
 
-Infrastructure as Code (IaC) representerar en fundamental förändring i hur vi hanterar och utvecklar IT-infrastruktur. Genom att behandla infrastruktur som kod möjliggörs samma metodiker som används inom mjukvaruutveckling för infrastrukturhantering.
+Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela arkitekturen - från applikationer till infrastruktur - definieras, versionshanteras och hanteras genom kod. Detta approach möjliggör samma metodiker som traditionell mjukvaruutveckling för hela IT-landskapet.
 
 ![Inledning till arkitektur som kod](images/diagram_01_inledning.png)
 
-Diagrammet illustrerar övergången från traditionella manuella processer till kodbaserade automatiserade lösningar som möjliggör skalbar infrastruktur.
+Diagrammet illustrerar evolutionen från manuella processer via Infrastructure as Code till den omfattande visionen av Architecture as Code, där hela systemarkitekturen kodifieras.
 
-## Bakgrund och motivation
+## Från Infrastructure as Code till Architecture as Code
 
-Infrastructure as Code uppstod som svar på de utmaningar som organisationer stötte på med manuell infrastrukturhantering. Traditionella metoder medförde hög risk för mänskliga fel, begränsad reproducerbarhet och svårigheter att hantera komplexa miljöer i stor skala.
+Infrastructure as Code (IaC) var det första steget mot kodifiering av IT-resurser. Genom att behandla infrastruktur som kod uppnåddes automatisering, reproducerbarhet och versionskontroll av serverresurser, nätverk och molnresurser.
 
-Genom att kodifiera infrastrukturdefinitioner kan organisationer uppnå samma fördelar som mjukvaruutveckling erbjuder: versionskontroll, automatiserad testning, kontinuerlig integration och deployment. Detta resulterar i ökad tillförlitlighet, snabbare leveranser och bättre spårbarhet av förändringar.
+Architecture as Code bygger vidare på denna grund men omfattar ett bredare perspektiv. Medan IaC fokuserar på infrastrukturkomponenter, inkluderar Architecture as Code även applikationsarkitektur, dataflöden, säkerhetspolicies, compliance-regler och organisatoriska strukturer - allt definierat som kod.
 
 ## Definition och omfattning
 
-Infrastructure as Code definieras som praktiken att hantera och tillhandahålla infrastruktur genom maskinläsbar kod istället för manuella processer eller interaktiva konfigurationsverktyg. Denna approach omfattar allt från servrar och nätverk till databaser och säkerhetspolicies.
+Architecture as Code definieras som praktiken att beskriva, versionhantera och automatisera hela systemarkitekturen genom maskinläsbar kod. Detta omfattar inte bara infrastrukturen utan även applikationskomponenter, integrationsmönster, dataarkitektur och organisatoriska processer.
 
-IaC möjliggör deklarativ beskrivning av önskad infrastrukturtillstånd, där verktyg automatiskt säkerställer att den faktiska infrastrukturen matchar den definierade specifikationen. Detta skapar förutsägbarhet och konsistens across olika miljöer och utvecklingsstadier.
+Denna holistiska approach möjliggör end-to-end automatisering där förändringar i krav automatiskt propagerar genom hela arkitekturen - från applikationslogik via infrastruktur till deployment och monitering.
 
 ## Bokens syfte och målgrupp
 
-Denna bok vänder sig till systemarkitekter, utvecklare, devops-ingenjörer och projektledare som vill förstå och implementera Infrastructure as Code i sina organisationer. Målet är att ge både teoretisk fördjupning och praktisk vägledning för att framgångsrikt transformera infrastrukturhantering.
+Denna bok vänder sig till systemarkitekter, utvecklare, devops-ingenjörer och projektledare som vill förstå och implementera Architecture as Code i sina organisationer. Infrastructure as Code behandlas som ett viktigt praktiskt exempel och grundpelare, men inte som det enda fokuset.
 
-Läsaren kommer att få omfattande kunskap om tekniker, verktyg, organisatoriska aspekter och best practices inom IaC. Boken täcker hela spektrumet från grundläggande principer till avancerade implementationsstrategier och framtida utvecklingstrender.
+Läsaren kommer att få omfattande kunskap om hur hela systemarkitekturen kan kodifieras, från grundläggande IaC-principer till avancerade arkitekturmönster som omfattar hela organisationens digitala ekosystem.
 
 Källor:
-- HashiCorp. "Infrastructure as Code: A Guide." HashiCorp Learn.
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - AWS. "Infrastructure as Code Best Practices." Amazon Web Services Documentation.
 - Morris, K. "Infrastructure as Code: Managing Servers in the Cloud." O'Reilly Media, 2020.
+- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
