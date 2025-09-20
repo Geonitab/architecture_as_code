@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Code, Layers, GitBranch, CheckCircle, Clock, Download } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const chapters = [
@@ -228,8 +229,14 @@ const Index = () => {
           </Card>
 
           {/* Action Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Button size="lg" className="gap-2" variant="default">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Button size="lg" className="gap-2" variant="default" asChild>
+              <Link to="/preview">
+                <BookOpen className="h-4 w-4" />
+                Förhandsgranska bok
+              </Link>
+            </Button>
+            <Button size="lg" className="gap-2" variant="outline">
               <GitBranch className="h-4 w-4" />
               Anslut till GitHub
             </Button>
