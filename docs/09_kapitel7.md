@@ -150,6 +150,8 @@ output "vpc_id" {
 }
 ```
 
+## Terraform konfiguration och miljöhantering
+
 ### Environment-specific Configuration
 ```hcl
 # environments/production/main.tf
@@ -228,6 +230,8 @@ resource "aws_cloudwatch_dashboard" "main" {
   })
 }
 ```
+
+## Automation och DevOps integration
 
 ### CI/CD Pipeline Integration
 ```yaml

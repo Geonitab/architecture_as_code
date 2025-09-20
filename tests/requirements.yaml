@@ -3,7 +3,7 @@
 book:
   title: "Arkitektur som kod"
   language: "svenska"
-  total_chapters: 23
+  total_chapters: 25
   
   # Required chapter structure
   chapters:
@@ -19,83 +19,91 @@ book:
       title: "Versionhantering och kodstruktur"
       area: "Systemutveckling"
       required: true
-    - filename: "04_kapitel3.md"
+    - filename: "04_adr_kapitel.md"
+      title: "Architecture Decision Records (ADR)"
+      area: "Grundläggande koncept"
+      required: true
+    - filename: "05_kapitel3.md"
       title: "Automatisering och CI/CD-pipelines"
       area: "Systemutveckling"
       required: true
-    - filename: "05_kapitel4.md"
+    - filename: "06_kapitel4.md"
       title: "Molnarkitektur som kod"
       area: "Arkitektur"
       required: true
-    - filename: "06_kapitel5.md"
+    - filename: "07_kapitel5.md"
       title: "Säkerhet i Infrastructure as Code"
       area: "Säkerhet"
       required: true
-    - filename: "07_kapitel6.md"
+    - filename: "08_kapitel6.md"
       title: "DevOps och CI/CD för Infrastructure as Code"
       area: "Systemutveckling"
       required: true
-    - filename: "08_kapitel7.md"
+    - filename: "09_kapitel7.md"
       title: "Infrastruktur som kod i praktiken"
       area: "Praktisk tillämpning"
       required: true
-    - filename: "09_kapitel8.md"
+    - filename: "10_kapitel8.md"
       title: "Monitering och observabilitet"
       area: "Drift och övervakning"
       required: true
-    - filename: "10_kapitel9.md"
+    - filename: "11_kapitel9.md"
       title: "Skalbarhet och prestanda"
       area: "Arkitektur"
       required: true
-    - filename: "11_kapitel10.md"
+    - filename: "12_kapitel10.md"
       title: "Digitalisering genom kodbaserad infrastruktur"
       area: "Strategisk utveckling"
       required: true
-    - filename: "12_kapitel11.md"
+    - filename: "13_kapitel11.md"
       title: "Organisatorisk förändring och teamstrukturer"
       area: "Organisationsutveckling"
       required: true
-    - filename: "13_kapitel12.md"
+    - filename: "14_kapitel12.md"
       title: "Projektledning för IaC-initiativ"
       area: "Projektledning"
       required: true
-    - filename: "14_kapitel13.md"
+    - filename: "15_kapitel13.md"
       title: "Innovation genom infrastrukturtransformation"
       area: "Innovation"
       required: true
-    - filename: "15_kapitel14.md"
+    - filename: "16_kapitel14.md"
       title: "Produktutveckling med IaC-verktyg"
       area: "Produktutveckling"
       required: true
-    - filename: "16_kapitel15.md"
+    - filename: "17_kapitel15.md"
       title: "Compliance och regelefterlevnad"
       area: "Governance"
       required: true
-    - filename: "17_kapitel16.md"
+    - filename: "18_kapitel16.md"
       title: "Teststrategier för infrastruktukod"
       area: "Kvalitetssäkring"
       required: true
-    - filename: "18_kapitel17.md"
+    - filename: "19_kapitel17.md"
       title: "Migration från traditionell infrastruktur"
       area: "Migration"
       required: true
-    - filename: "19_kapitel18.md"
+    - filename: "20_kapitel18.md"
       title: "Kostnadsoptimering och resurshantering"
       area: "Ekonomisk optimering"
       required: true
-    - filename: "20_kapitel19.md"
+    - filename: "21_kapitel20.md"
       title: "Framtida trender inom Infrastructure as Code"
       area: "Framtidsspaning"
       required: true
-    - filename: "21_slutsats.md"
+    - filename: "22_kapitel19.md"
+      title: "Framtida trender och teknologier"
+      area: "Innovation"
+      required: true
+    - filename: "23_slutsats.md"
       title: "Slutsats och vägen framåt"
       area: "Sammanfattning"
       required: true
-    - filename: "22_ordlista.md"
+    - filename: "24_ordlista.md"
       title: "Ordlista och definitioner"
       area: "Referens"
       required: true
-    - filename: "23_om_forfattarna.md"
+    - filename: "25_om_forfattarna.md"
       title: "Om författarna"
       area: "Appendix"
       required: true
@@ -103,15 +111,15 @@ book:
   # Special chapters with different requirements
   special_chapters:
     ordlista:
-      filename: "22_ordlista.md"
+      filename: "24_ordlista.md"
       requires_diagram: false
       requires_sources: false
     authors:
-      filename: "23_om_forfattarna.md"
+      filename: "25_om_forfattarna.md"
       requires_diagram: false
       requires_sources: false
     conclusion:
-      filename: "21_slutsats.md"
+      filename: "23_slutsats.md"
       requires_diagram: false
       requires_sources: true
 
