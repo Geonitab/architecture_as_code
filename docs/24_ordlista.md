@@ -2,6 +2,8 @@
 
 Denna ordlista innehåller definitioner av centrala termer som används genom boken.
 
+## Grundläggande koncept och verktyg
+
 **API (Application Programming Interface):** Gränssnitt som möjliggör kommunikation mellan olika mjukvarukomponenter eller system genom standardiserade protokoll och dataformat.
 
 **Automatisering:** Process där manuella uppgifter utförs automatiskt av datorsystem utan mänsklig intervention, vilket ökar effektivitet och minskar felrisk.
@@ -40,6 +42,8 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **Zero Trust:** Säkerhetsmodell som aldrig litar på och alltid verifierar användare och enheter innan access till resurser beviljas.
 
+## Deployment och operationella koncept
+
 **Blue-Green Deployment:** Deploymentstrategi där två identiska produktionsmiljöer (blå och grön) används för att möjliggöra snabb rollback och minimal downtime.
 
 **Canary Release:** Gradvis utrullningsstrategi där nya versioner först deployeras till en liten subset av användare för riskminimering och validering.
@@ -68,6 +72,8 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **State Drift:** Situation där den faktiska infrastrukturtillståndet avviker från den definierade önskade tillståndet i Infrastructure as Code-definitioner.
 
+## Kostnadshantering och optimering
+
 **FinOps:** Disciplin som kombinerar finansiell hantering med molnoperationer för att maximera affärsvärdet av molninvesteringar genom kostnadsoptimering och resource management.
 
 **Rightsizing:** Process för att optimera molnresurser genom att matcha instance-storlekar och typer med faktiska prestandakrav och användningsmönster.
@@ -75,6 +81,12 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 **Spot Instances:** Molninstanser som använder överskottskapacitet till kraftigt reducerade priser men kan termineras med kort varsel när kapacitet behövs för on-demand användning.
 
 **Cost Allocation Tags:** Metadataetiketter som används för att kategorisera och spåra molnresurskostnader per projekt, team, miljö eller andra organisatoriska dimensioner.
+
+**Cost Governance:** Ramverk av policies, processer och verktyg för att styra och kontrollera molnkostnader inom en organisation.
+
+**Resource Quotas:** Begränsningar som sätts på hur mycket av en viss resurs (CPU, minne, lagring) som kan konsumeras inom en given scope eller namespace.
+
+## Testning och kvalitetssäkring
 
 **Terratest:** Open source Go-bibliotek för automatiserad testning av Infrastructure as Code, särskilt designat för Terraform-moduler och cloud infrastructure.
 
@@ -84,6 +96,12 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **Chaos Engineering:** Disciplin för att experimentellt introducera fel i system för att bygga tillit till systemets förmåga att motstå turbulenta förhållanden i produktion.
 
+**Integration Testing:** Testning som verifierar att olika komponenter eller services fungerar korrekt tillsammans när de är integrerade i ett system.
+
+**Compliance Testing:** Automatiserad validering av att system och konfigurationer följer relevanta regulatoriska krav, säkerhetsstandarder och organisatoriska policies.
+
+## Strategiska och organisatoriska koncept
+
 **Cloud-First Strategy:** Strategisk approach där organisationer primärt väljer molnbaserade lösningar för nya IT-initiativ innan on-premises alternativ övervägs.
 
 **Digital Transformation:** Fundamental förändring av affärsoperationer och värdeleverans genom integration av digital teknik i alla aspekter av verksamheten.
@@ -91,14 +109,6 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 **Multi-Cloud:** Strategi att använda molntjänster från flera olika leverantörer för att undvika vendor lock-in och optimera för specifika capabilities eller kostnader.
 
 **Data Sovereignty:** Konceptet att digital data är underkastat lagarna och juridiktionen i det land där den lagras eller bearbetas.
-
-**Cost Governance:** Ramverk av policies, processer och verktyg för att styra och kontrollera molnkostnader inom en organisation.
-
-**Resource Quotas:** Begränsningar som sätts på hur mycket av en viss resurs (CPU, minne, lagring) som kan konsumeras inom en given scope eller namespace.
-
-**Integration Testing:** Testning som verifierar att olika komponenter eller services fungerar korrekt tillsammans när de är integrerade i ett system.
-
-**Compliance Testing:** Automatiserad validering av att system och konfigurationer följer relevanta regulatoriska krav, säkerhetsstandarder och organisatoriska policies.
 
 **Conway's Law:** Observation att organisationer designar system som speglar deras kommunikationsstrukturer, vilket påverkar hur team bör organiseras för optimal systemdesign.
 

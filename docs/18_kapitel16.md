@@ -257,6 +257,8 @@ test_gdpr_data_classification_valid if {
 }
 ```
 
+## Kubernetes integrationstestning
+
 ### Kubernetes Infrastructure Testing
 ```yaml
 # test/k8s-test-suite.yaml
@@ -308,7 +310,9 @@ data:
     fi
     
     echo "All infrastructure tests passed!"
+```
 
+```yaml
 ---
 apiVersion: batch/v1
 kind: Job
@@ -340,6 +344,8 @@ spec:
       restartPolicy: Never
   backoffLimit: 3
 ```
+
+## Pipeline automation för infrastrukturtestning
 
 ### CI/CD Pipeline för Infrastructure Testing
 ```yaml
