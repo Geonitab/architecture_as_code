@@ -1,6 +1,6 @@
 name: Build Book
 
-on:
+"on":
   push:
     branches: [main]
     paths:
@@ -15,7 +15,7 @@ on:
       - 'docs/images/**/*.mmd'
       - '.github/workflows/build-book.yml'
       - 'generate_book.py'
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 env:
   PANDOC_VERSION: "3.1.9"
