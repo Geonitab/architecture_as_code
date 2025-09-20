@@ -61,7 +61,7 @@ const Index = () => {
                 <CardTitle>Projektöversikt</CardTitle>
               </div>
               <CardDescription>
-                Iteration 1: Kapitelstruktur och planering
+                Iteration 2: AI-prompt utvecklad och GitHub CI/CD aktiverad
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -76,7 +76,7 @@ const Index = () => {
                 </div>
                 <div className="bg-muted/20 p-4 rounded-lg">
                   <h3 className="font-semibold text-muted-foreground">Status</h3>
-                  <p className="text-2xl font-bold text-primary">Planering</p>
+                  <p className="text-2xl font-bold text-primary">Utveckling</p>
                 </div>
               </div>
               
