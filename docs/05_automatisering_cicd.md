@@ -1,18 +1,88 @@
 # Automatisering och CI/CD-pipelines
 
-Kontinuerlig integration och deployment (CI/CD) för Infrastructure as Code möjliggör säker och effektiv automatisering av infrastrukturändringar. Genom att implementera robusta pipelines kan organisationer accelerera leveranser samtidigt som de bibehåller hög kvalitet och säkerhet. Som vi såg i [kapitel 3 om versionhantering](03_kapitel2.md), utgör CI/CD-pipelines en naturlig förlängning av git-baserade workflows för infrastrukturkod.
-
 ![Automatisering och CI/CD-pipelines](images/diagram_04_kapitel3.png)
 
-Diagrammet visar det grundläggande CI/CD-flödet från code commit genom validation och testing till deployment och monitoring, vilket säkerställer kvalitetskontroll genom hela processen. Detta flöde kommer att bli särskilt viktigt när vi utforskar [molnarkitektur som kod](05_kapitel4.md) och [säkerhet i Infrastructure as Code](06_kapitel5.md).
+Kontinuerlig integration och kontinuerlig deployment (CI/CD) utgör ryggraden i modern mjukvaruutveckling, och när det gäller Infrastructure as Code (IaC) blir dessa processer ännu mer kritiska. I detta kapitel utforskar vi djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-pipelines som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, pålitliga och spårbara operationer.
+
+Att förstå CI/CD för Infrastructure as Code kräver en fundamental förskjutning i tankesättet från traditionell infrastrukturhantering till kod-centrerad automation. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och ad-hoc-lösningar, erbjuder modern IaC-automation konsistens, repeterbarhet och transparens genom hela infrastrukturlivscykeln. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
+
+Diagrammet ovan illustrerar det grundläggande CI/CD-flödet från kod-commit genom validering och testning till deployment och monitoring. Detta flöde representerar en systematisk approach där varje steg är designat för att fånga fel tidigt, säkerställa kvalitet och minimera risker i produktionsmiljöer. För svenska organisationer innebär detta särskilda överväganden kring data residency, compliance-validering och kostnadsoptimering i svenska kronor.
+
+## Den teoretiska grunden för CI/CD-automation
+
+Continuous Integration och Continuous Deployment representerar mer än bara tekniska processer - de utgör en filosofi för mjukvaruutveckling som prioriterar snabb feedback, incrementell förbättring och riskreducering genom automation. När dessa principer appliceras på Infrastructure as Code, uppstår unika möjligheter och utmaningar som kräver djup förståelse för både tekniska och organisatoriska aspekter.
+
+### Historisk kontext och utveckling
+
+CI/CD-konceptet har sina rötter i Extreme Programming (XP) och Agile-metodologier från tidigt 2000-tal, men tillämpningen på infrastruktur har utvecklats parallellt med molnteknologins framväxt. Tidiga infrastrukturadministratörer förlitade sig på manuella processer, konfigurationsskript och "infrastructure as pets" - där varje server var unik och kräfte individuell omsorg. Detta approach fungerade för mindre miljöer men skalade inte för moderna, distribuerade system med hundratals eller tusentals komponenter.
+
+Framväxten av "infrastructure as cattle" - där servrar behandlas som standardiserade, utbytbara enheter - möjliggjorde systematic automation som CI/CD-principer kunde tillämpas på. Container-teknologi, molnleverantörers API:er och verktyg som Terraform och Ansible accelererade denna utveckling genom att erbjuda programmatiska interfaces för infrastrukturhantering.
+
+För svenska organisationer har denna utveckling sammanfallit med ökande regulatoriska krav, särskilt GDPR och Datainspektionens riktlinjer för tekniska och organisatoriska säkerhetsåtgärder. Detta har skapat en unik situation där automation inte bara är en effektivitetsförbättring utan en nödvändighet för compliance och riskhanteiing.
+
+### Fundamentala principer för IaC-automation
+
+**Immutability och versionkontroll:** Infrastruktur som kod följer samma principer som traditionell mjukvaruutveckling, där all konfiguration versionshanteras och förändringar spåras genom git-historik. Detta möjliggör reproducerbar infrastruktur där samma kod-version alltid producerar identiska miljöer. För svenska organisationer innebär detta förbättrad compliance-dokumentation och möjlighet att demonstrera kontrollerbar förändring av kritiska system.
+
+**Declarative konfiguration:** IaC-verktyg som Terraform och CloudFormation använder deklarativ syntax där utvecklare specificerar önskat slutresultat snarare än stegen för att nå dit. Detta approach reducerar komplexitet och felkällor samtidigt som det möjliggör sophisticated dependency management och parallelisering av infrastrukturåtgärder.
+
+**Testbarhet och validering:** Infrastrukturkod kan testas på samma sätt som applikationskod genom unit tests, integration tests och end-to-end-validering. Detta möjliggör "shift-left" testing där fel upptäcks tidigt i utvecklingsprocessen snarare än i produktionsmiljöer där kostnaden för korrigering är betydligt högre.
+
+**Automation över dokumentation:** Istället för att förlita sig på manuella checklistor och procedurdokument som lätt blir föråldrade, automatiserar CI/CD-pipelines alla steg i infrastrukturdistribution. Detta säkerställer konsistens och reducerar human error samtidigt som det skapar automatisk dokumentation av alla genomförda åtgärder.
+
+### Organisatoriska implikationer av CI/CD-automation
+
+Implementering av CI/CD för Infrastructure as Code påverkar organisationer på multipla nivåer. Tekniska team måste utveckla nya färdigheter inom programmatic infrastructure management, medan affärsprocesser måste anpassas för att dra nytta av accelererad leveranskapacitet.
+
+**Kulturell transformation:** Övergången till CI/CD-baserad infrastruktur kräver en kulturell förskjutning från risk-averse, manuella processer till risk-managed automation. Detta innebär att organisationer måste utveckla tillit till automatiserade system medan de behåller nödvändiga kontroller för compliance och säkerhet.
+
+**Kompetensuveckling:** IT-professional måste utveckla programmeringskunskaper, förstå cloud provider APIs och lära sig avancerade automation-verktyg. Denna kompetensförändring kräver investment i training och recruitment av personal med DevOps-färdigheter.
+
+**Compliance och governance:** Svenska organisationer måste säkerställa att automatiserade processer uppfyller regulatoriska krav. Detta inkluderar audit trails, data residency controls och separtion of duties som traditionellt implementerats genom manuella processer.
+
+Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI/CD-pipelines en naturlig förlängning av git-baserade workflows för infrastrukturkod. Detta kapitel bygger vidare på dessa koncept och utforskar hur svenska organisationer kan implementera avancerade automation-strategier som balanserar effektivitet med regulatoriska krav. Senare kommer vi att se hur dessa principles tillämpas i [molnarkitektur som kod](07_molnarkitektur.md) och integreras med [säkerhetsaspekter](10_sakerhet.md).
 
 ## CI/CD-fundamentals för svenska organisationer
 
-Svenska organisationer står inför unika utmaningar när det gäller implementering av CI/CD-pipelines för Infrastructure as Code. Regulatory compliance, data residency requirements, och cost optimization i svenska kronor kräver specialized approaches som traditionella CI/CD-patterns inte alltid adresserar.
+Svenska organisationer opererar i en komplex regulatorisk miljö som kräver särskild uppmärksamhet vid implementering av CI/CD-pipelines för Infrastructure as Code. GDPR, Datainspektionens riktlinjer, MSB:s föreskrifter för kritisk infrastruktur och sektorsspecifika regleringar skapar en unik kontext där automation måste balansera effektivitet med stringenta compliance-krav.
+
+### Regulatorisk komplexitet och automation
+
+Den svenska regulatoriska landskapet påverkar CI/CD-design på fundamentala sätt. GDPR:s krav på data protection by design och by default innebär att pipelines måste inkludera automatiserad validering av dataskydd-implementering. Article 25 kräver att tekniska och organisatoriska åtgärder implementeras för att säkerställa att endast personuppgifter som är nödvändiga för specifika ändamål behandlas. För IaC-pipelines innebär detta automatiserad scanning för GDPR-compliance, data residency-validering och audit trail-generering.
+
+Datainspektionens riktlinjer för tekniska säkerhetsåtgärder kräver systematisk implementation av kryptering, access controls och logging. Traditionella manuella processer för dessa kontroller är inte bara ineffektiva utan också felbenägna när de tillämpas på moderna, dynamiska infrastrukturer. CI/CD-automation erbjuder möjligheten att systematiskt enforça dessa krav genom kodifierade policies och automatiserad compliance-validering.
+
+MSB:s föreskrifter för samhällsviktig verksamhet kräver robust incidenthantering, kontinuitetsplanering och systematisk riskbedömning. För organisationer inom energi, transport, finans och andra kritiska sektorer måste CI/CD-pipelines inkludera specialized validering för operational resilience och disaster recovery-kapacitet.
+
+### Ekonomiska överväganden för svenska organisationer
+
+Kostnadsoptimering i svenska kronor kräver sophisticated monitoring och budgetkontroller som traditionella CI/CD-patterns inte addresserar. Svenska företag måste hantera valutaexponering, regionala prisskillnader och compliance-kostnader som påverkar infrastrukturinvesteringar.
+
+Cloud provider pricing varierar betydligt mellan regioner, och svenska organisationer med data residency-krav är begränsade till EU-regioner som ofta har högre kostnader än globala regioner. CI/CD-pipelines måste därför inkludera cost estimation, budget threshold-validering och automated resource optimization som tar hänsyn till svensk företagsekonomi.
+
+Quarterly budgetering och svenska redovisningsstandarder kräver detailed cost attribution och forecasting som automatiserade pipelines kan leverera genom integration med ekonomisystem och automated reporting i svenska kronor. Detta möjliggör proaktiv kostnadshantering snarare än reaktiv budgetövervakning.
+
+### Teknisk skuld och legacy system-integration
+
+Svenska organisationer har ofta betydande investeringar i legacy-system som måste integreras med moderna CI/CD-approaches. Mainframe-system, on-premises infrastrukturer och proprietära lösningar kräver hybrid automation-strategier som kan hantera både moderna cloud-native workloads och traditionella system.
+
+Incremental modernisation genom CI/CD möjliggör gradual övergång från legacy till modern infrastruktur utan disruptive big-bang migrations. Detta approach reducerar risk och möjliggör learning och anpassning under transformationsprocessen.
+
+Integration med svenska leverantörer och lokala tjänsteleverantörer kräver också specialized CI/CD-konfigurationer som kan hantera olika API:er, autentiseringssystem och SLA-krav. Detta komplexitet kräver modulär pipeline-design som kan anpassas för olika leverantörer och tjänster.
 
 ### GDPR-compliant pipeline design
 
-För svenska organisationer innebär GDPR compliance att CI/CD-pipelines måste hantera personal data med särskild försiktighet genom hela deployment lifecycle. Detta kräver comprehensive audit trails, data anonymization capabilities, och automated compliance validation:
+GDPR compliance i CI/CD-pipelines för Infrastructure as Code kräver en holistisk approach som integrerar data protection principles i varje steg av automation-processen. Article 25 i GDPR mandaterar "data protection by design och by default", vilket innebär att tekniska och organisatoriska åtgärder måste implementeras från första design-stadiet av system och processer.
+
+För Infrastructure as Code betyder detta att pipelines måste automatiskt validera att all infrastruktur som distribueras följer GDPR:s principer för data minimization, purpose limitation och storage limitation. Personal data får aldrig hardkodas i infrastrukturkonfigurationer, kryptering måste enforças som standard, och audit trails måste genereras för alla infrastrukturändringar som kan påverka personuppgifter.
+
+**Data discovery och klassificering:** Automatiserad scanning för personal data patterns i infrastructure code är första försvarslinjen för GDPR compliance. CI/CD-pipelines måste implementera sophisticated scanning som kan identifiera både direkta identifierare (som personnummer) och indirekta identifierare som i kombination kan användas för att identifiera enskilda personer.
+
+**Automated compliance validation:** Policy engines som Open Policy Agent (OPA) eller cloud provider-specifika compliance-verktyg kan automatiskt validera att infrastrukturkonfigurationer följer GDPR-requirements. Detta inkluderar verification av encryption settings, access controls, data retention policies och cross-border data transfer restrictions.
+
+**Audit trail generation:** Varje pipeline-execution måste generera comprehensive audit logs som dokumenterar vad som distribuerats, av vem, när och varför. Dessa logs måste själva följa GDPR-principer för personuppgiftsbehandling och lagras säkert enligt svenska legal retention requirements.
+
+Följande exempel illustrerar en GitHub Actions workflow som implementerar comprehensive GDPR compliance-kontroller för svenska organisationer:
 
 ```yaml
 # .github/workflows/svenska-iac-pipeline.yml
@@ -58,7 +128,7 @@ jobs:
           # Sök efter vanliga personal data patterns i IaC-kod
           PERSONAL_DATA_PATTERNS=(
             "personnummer"
-            "social.*security"
+            "social.*security"  
             "credit.*card"
             "bank.*account"
             "email.*address"
@@ -83,710 +153,82 @@ jobs:
           fi
           
           echo "✅ GDPR compliance check genomförd"
-      
-      - name: Data Residency Validation
-        run: |
-          echo "🇸🇪 Validerar svenska data residency krav..."
-          
-          # Kontrollera att AWS regions är svenska/nordiska
-          ALLOWED_REGIONS=("eu-north-1" "eu-central-1" "eu-west-1")
-          
-          # Sök efter region konfigurationer
-          REGION_VIOLATIONS=$(grep -r "region\s*=" infrastructure/ modules/ | grep -v -E "(eu-north-1|eu-central-1|eu-west-1)" || true)
-          
-          if [ -n "$REGION_VIOLATIONS" ]; then
-            echo "❌ Data residency violation hittad:"
-            echo "$REGION_VIOLATIONS"
-            echo "Endast EU-regioner tillåtna för svenska data"
-            exit 1
-          fi
-          
-          echo "✅ Data residency requirements uppfyllda"
-      
-      - name: Audit Trail Setup
-        run: |
-          echo "📝 Skapar GDPR audit trail..."
-          
-          mkdir -p audit-logs
-          
-          cat > audit-logs/pipeline-audit.json << EOF
-          {
-            "audit_id": "$(uuidgen)",
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "event_type": "iac_pipeline_execution",
-            "organization": "$ORGANIZATION_NAME",
-            "environment": "$ENVIRONMENT",
-            "compliance_framework": "GDPR",
-            "data_residency": "Sweden",
-            "git_commit": "$GITHUB_SHA",
-            "git_author": "$GITHUB_ACTOR",
-            "repository": "$GITHUB_REPOSITORY",
-            "workflow_run": "$GITHUB_RUN_ID",
-            "compliance_checks": {
-              "gdpr_data_scan": "passed",
-              "data_residency": "passed",
-              "audit_logging": "enabled"
-            }
-          }
-          EOF
-          
-          echo "📄 Audit trail skapad: audit-logs/pipeline-audit.json"
-      
-      - name: Upload GDPR Audit Logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: gdpr-audit-logs
-          path: audit-logs/
-          retention-days: 2555  # 7 år enligt svenska lagkrav
-
-  # Syntax och static analysis
-  code-quality-analysis:
-    name: Code Quality & Security Analysis
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout kod
-        uses: actions/checkout@v4
-      
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
-      
-      - name: Terraform Format Check
-        run: |
-          echo "🔧 Kontrollerar Terraform formatering..."
-          terraform fmt -check -recursive
-          
-          if [ $? -ne 0 ]; then
-            echo "❌ Terraform kod är inte korrekt formaterad"
-            echo "Kör 'terraform fmt -recursive' för att fixa"
-            exit 1
-          fi
-          
-          echo "✅ Terraform formatering korrekt"
-      
-      - name: Terraform Validation
-        run: |
-          echo "🔍 Validerar Terraform syntax..."
-          
-          for dir in infrastructure/environments/*/; do
-            if [ -d "$dir" ]; then
-              echo "Validerar $dir..."
-              cd "$dir"
-              terraform init -backend=false
-              terraform validate
-              cd - > /dev/null
-            fi
-          done
-          
-          echo "✅ Terraform syntax validation genomförd"
-      
-      - name: Security Scanning med Trivy
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'config'
-          scan-ref: 'infrastructure/'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL,HIGH,MEDIUM'
-      
-      - name: Upload Security Scan Results
-        uses: github/codeql-action/upload-sarif@v2
-        if: always()
-        with:
-          sarif_file: 'trivy-results.sarif'
-      
-      - name: Policy Validation med OPA/Conftest
-        run: |
-          echo "📋 Validerar organisatoriska policies..."
-          
-          # Installera conftest
-          curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
-          sudo mv conftest /usr/local/bin
-          
-          # Svenska organisationspolicies
-          mkdir -p policies
-          
-          cat > policies/svenska-compliance.rego << 'EOF'
-          package svenska.compliance
-          
-          # GDPR Compliance Rules
-          deny[msg] {
-            input.resource.aws_instance
-            not input.resource.aws_instance[_].encrypted_ebs_block_device
-            msg := "EBS volumes måste vara krypterade för GDPR compliance"
-          }
-          
-          deny[msg] {
-            input.resource.aws_s3_bucket
-            not input.resource.aws_s3_bucket[_].server_side_encryption_configuration
-            msg := "S3 buckets måste ha server-side encryption aktiverat"
-          }
-          
-          # Svenska Data Residency Rules
-          deny[msg] {
-            input.provider.aws.region
-            not input.provider.aws.region == "eu-north-1"
-            not input.provider.aws.region == "eu-central-1"
-            not input.provider.aws.region == "eu-west-1"
-            msg := sprintf("AWS region %s är inte tillåten för svenska data residency", [input.provider.aws.region])
-          }
-          
-          # Cost Control Rules
-          deny[msg] {
-            input.resource.aws_instance[name].instance_type
-            startswith(input.resource.aws_instance[name].instance_type, "x1")
-            msg := sprintf("Instance type %s är för dyr för %s environment", [input.resource.aws_instance[name].instance_type, input.terraform.environment])
-          }
-          
-          # Tagging Requirements
-          deny[msg] {
-            input.resource[resource_type][name]
-            resource_type != "data"
-            not input.resource[resource_type][name].tags
-            msg := sprintf("Resource %s.%s saknar obligatoriska tags", [resource_type, name])
-          }
-          
-          required_tags := ["Environment", "CostCenter", "Organization", "DataClassification", "GDPRCompliant"]
-          
-          deny[msg] {
-            input.resource[resource_type][name].tags
-            resource_type != "data"
-            required_tag := required_tags[_]
-            not input.resource[resource_type][name].tags[required_tag]
-            msg := sprintf("Resource %s.%s saknar obligatorisk tag: %s", [resource_type, name, required_tag])
-          }
-          EOF
-          
-          # Kör policy validation
-          for tf_file in $(find infrastructure/ -name "*.tf"); do
-            echo "Validerar policies för $tf_file..."
-            conftest verify --policy policies/ "$tf_file"
-          done
-          
-          echo "✅ Policy validation genomförd"
-
-  # Kostnadskontroll och budgetvalidering
-  cost-analysis:
-    name: Kostnadskontroll och Budget Validation
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
-    
-    steps:
-      - name: Checkout kod
-        uses: actions/checkout@v4
-      
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
-      
-      - name: Infracost Setup
-        uses: infracost/infracost-gh-action@master
-        with:
-          api-key: ${{ secrets.INFRACOST_API_KEY }}
-          currency: SEK  # Svenska kronor
-      
-      - name: Generate Cost Estimate
-        run: |
-          echo "💰 Beräknar infrastrukturkostnader i svenska kronor..."
-          
-          # Generera cost breakdown för varje miljö
-          for env_dir in infrastructure/environments/*/; do
-            if [ -d "$env_dir" ]; then
-              env_name=$(basename "$env_dir")
-              echo "Beräknar kostnader för $env_name miljö..."
-              
-              cd "$env_dir"
-              terraform init -backend=false
-              
-              infracost breakdown \
-                --path . \
-                --format json \
-                --out-file "../../cost-estimate-$env_name.json" \
-                --currency SEK
-              
-              infracost output \
-                --path "../../cost-estimate-$env_name.json" \
-                --format table \
-                --out-file "../../cost-summary-$env_name.txt"
-              
-              cd - > /dev/null
-            fi
-          done
-          
-          echo "✅ Kostnadskalkylering slutförd"
-      
-      - name: Cost Threshold Validation
-        run: |
-          echo "📊 Validerar kostnader mot svenska budgetgränser..."
-          
-          # Sätt svenska budget limits (i SEK per månad)
-          case "$ENVIRONMENT" in
-            "development") MAX_MONTHLY_COST_SEK=5000 ;;
-            "staging") MAX_MONTHLY_COST_SEK=15000 ;;
-            "production") MAX_MONTHLY_COST_SEK=50000 ;;
-            *) MAX_MONTHLY_COST_SEK=10000 ;;
-          esac
-          
-          # Kontrollera cost estimates
-          for cost_file in cost-estimate-*.json; do
-            if [ -f "$cost_file" ]; then
-              MONTHLY_COST=$(jq -r '.totalMonthlyCost' "$cost_file")
-              ENV_NAME=$(echo "$cost_file" | sed 's/cost-estimate-\(.*\)\.json/\1/')
-              
-              echo "Månadskostnad för $ENV_NAME: $MONTHLY_COST SEK"
-              
-              # Konvertera till numerisk jämförelse
-              if (( $(echo "$MONTHLY_COST > $MAX_MONTHLY_COST_SEK" | bc -l) )); then
-                echo "❌ Kostnadsgräns överskriden för $ENV_NAME!"
-                echo "Beräknad kostnad: $MONTHLY_COST SEK"
-                echo "Maximal budget: $MAX_MONTHLY_COST_SEK SEK"
-                exit 1
-              fi
-            fi
-          done
-          
-          echo "✅ Alla kostnader inom svenska budgetgränser"
-      
-      - name: Generate Swedish Cost Report
-        run: |
-          echo "📈 Genererar svenskt kostnadsrapport..."
-          
-          cat > cost-report-swedish.md << EOF
-          # Kostnadsrapport för $ORGANIZATION_NAME
-          
-          **Miljö:** $ENVIRONMENT  
-          **Datum:** $(date '+%Y-%m-%d %H:%M') (svensk tid)  
-          **Valuta:** Svenska kronor (SEK)  
-          **Kostnadscenter:** $COST_CENTER
-          
-          ## Månadskostnader per miljö
-          
-          EOF
-          
-          for summary_file in cost-summary-*.txt; do
-            if [ -f "$summary_file" ]; then
-              ENV_NAME=$(echo "$summary_file" | sed 's/cost-summary-\(.*\)\.txt/\1/')
-              echo "### $ENV_NAME miljö" >> cost-report-swedish.md
-              echo '```' >> cost-report-swedish.md
-              cat "$summary_file" >> cost-report-swedish.md
-              echo '```' >> cost-report-swedish.md
-              echo "" >> cost-report-swedish.md
-            fi
-          done
-          
-          cat >> cost-report-swedish.md << EOF
-          ## Kostnadskontroller
-          
-          - ✅ GDPR-compliant kryptering aktiverad
-          - ✅ Svenska data residency-krav uppfyllda
-          - ✅ Automatisk cost monitoring aktiverad
-          - ✅ Budget alerts konfigurerade
-          
-          ## Rekommendationer
-          
-          1. Använd reserved instances för production workloads
-          2. Aktivera auto-scaling för development miljöer
-          3. Implementera scheduled shutdown för non-production
-          4. Överväg svenska molnleverantörer för vissa workloads
-          
-          ---
-          *Genererad automatiskt av svenska IaC pipeline*
-          EOF
-          
-          echo "📄 Svenskt kostnadsrapport skapat: cost-report-swedish.md"
-      
-      - name: Upload Cost Analysis
-        uses: actions/upload-artifact@v4
-        with:
-          name: cost-analysis-${{ env.ENVIRONMENT }}
-          path: |
-            cost-estimate-*.json
-            cost-summary-*.txt
-            cost-report-swedish.md
-          retention-days: 90
-
-  # Environment-specifik validering
-  environment-validation:
-    name: Environment-specific Validation
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        environment: [development, staging, production]
-        
-    steps:
-      - name: Checkout kod
-        uses: actions/checkout@v4
-      
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
-      
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-north-1  # Stockholm region
-      
-      - name: Terraform Plan
-        run: |
-          echo "📋 Skapar Terraform plan för ${{ matrix.environment }}..."
-          
-          cd infrastructure/environments/${{ matrix.environment }}
-          
-          # Konfigurera svenska backend
-          cat > backend.tf << EOF
-          terraform {
-            backend "s3" {
-              bucket         = "$ORGANIZATION_NAME-terraform-state"
-              key            = "environments/${{ matrix.environment }}/terraform.tfstate"
-              region         = "eu-north-1"
-              encrypt        = true
-              dynamodb_table = "$ORGANIZATION_NAME-terraform-locks"
-            }
-          }
-          EOF
-          
-          terraform init
-          terraform plan \
-            -var="environment=${{ matrix.environment }}" \
-            -var="organization_name=$ORGANIZATION_NAME" \
-            -var="cost_center=$COST_CENTER" \
-            -var="gdpr_compliance=true" \
-            -var="data_residency=Sweden" \
-            -out=tfplan-${{ matrix.environment }}
-          
-          # Spara plan för senare användning
-          terraform show -json tfplan-${{ matrix.environment }} > tfplan-${{ matrix.environment }}.json
-          
-          echo "✅ Terraform plan skapat för ${{ matrix.environment }}"
-      
-      - name: Plan Analysis
-        run: |
-          echo "🔍 Analyserar Terraform plan för ${{ matrix.environment }}..."
-          
-          cd infrastructure/environments/${{ matrix.environment }}
-          
-          # Analysera plan för potentiella problem
-          PLAN_JSON="tfplan-${{ matrix.environment }}.json"
-          
-          # Kontrollera för destructive changes
-          DESTRUCTIVE_CHANGES=$(jq -r '.resource_changes[]? | select(.change.actions[]? == "delete" or .change.actions[]? == "replace") | .address' "$PLAN_JSON" 2>/dev/null || echo "")
-          
-          if [ -n "$DESTRUCTIVE_CHANGES" ]; then
-            echo "⚠️ VARNING: Destructive changes upptäckta i ${{ matrix.environment }}:"
-            echo "$DESTRUCTIVE_CHANGES"
-            
-            if [ "${{ matrix.environment }}" = "production" ]; then
-              echo "❌ Destructive changes inte tillåtna i production utan explicit godkännande"
-              # Kräv manual approval för production destructive changes
-              exit 1
-            fi
-          fi
-          
-          # Kontrollera för stora cost changes
-          NEW_RESOURCES=$(jq -r '.resource_changes[]? | select(.change.actions[]? == "create") | .address' "$PLAN_JSON" 2>/dev/null | wc -l)
-          
-          if [ "$NEW_RESOURCES" -gt 10 ]; then
-            echo "⚠️ VARNING: Många nya resurser ($NEW_RESOURCES) skapas i ${{ matrix.environment }}"
-          fi
-          
-          echo "✅ Plan analys slutförd för ${{ matrix.environment }}"
-      
-      - name: Swedish Compliance Validation
-        run: |
-          echo "🇸🇪 Validerar svenska compliance för ${{ matrix.environment }}..."
-          
-          cd infrastructure/environments/${{ matrix.environment }}
-          
-          PLAN_JSON="tfplan-${{ matrix.environment }}.json"
-          
-          # Kontrollera GDPR compliance
-          UNENCRYPTED_STORAGE=$(jq -r '.planned_values.root_module.resources[]? | select(.type == "aws_s3_bucket" or .type == "aws_ebs_volume" or .type == "aws_db_instance") | select(.values.encrypted != true) | .address' "$PLAN_JSON" 2>/dev/null || echo "")
-          
-          if [ -n "$UNENCRYPTED_STORAGE" ]; then
-            echo "❌ GDPR VIOLATION: Okrypterad lagring upptäckt:"
-            echo "$UNENCRYPTED_STORAGE"
-            exit 1
-          fi
-          
-          # Kontrollera svenska tagging
-          MISSING_TAGS=$(jq -r '.planned_values.root_module.resources[]? | select(.values.tags.Country != "Sweden" or .values.tags.GDPRCompliant != "true") | .address' "$PLAN_JSON" 2>/dev/null || echo "")
-          
-          if [ -n "$MISSING_TAGS" ]; then
-            echo "❌ TAGGING VIOLATION: Svenska obligatoriska tags saknas:"
-            echo "$MISSING_TAGS"
-            exit 1
-          fi
-          
-          echo "✅ Svenska compliance validering slutförd för ${{ matrix.environment }}"
-      
-      - name: Upload Terraform Plans
-        uses: actions/upload-artifact@v4
-        with:
-          name: terraform-plans-${{ matrix.environment }}
-          path: infrastructure/environments/${{ matrix.environment }}/tfplan*
-          retention-days: 30
-
-  # Deployment till development (automatisk)
-  deploy-development:
-    name: Deploy to Development
-    runs-on: ubuntu-latest
-    needs: [gdpr-compliance-check, code-quality-analysis, cost-analysis, environment-validation]
-    if: github.ref == 'refs/heads/development' && github.event_name == 'push'
-    environment: development
-    
-    steps:
-      - name: Checkout kod
-        uses: actions/checkout@v4
-      
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
-      
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-north-1
-      
-      - name: Deploy Infrastructure
-        run: |
-          echo "🚀 Deploying till development miljö..."
-          
-          cd infrastructure/environments/development
-          
-          terraform init
-          terraform apply -auto-approve \
-            -var="environment=development" \
-            -var="organization_name=$ORGANIZATION_NAME" \
-            -var="cost_center=$COST_CENTER"
-          
-          echo "✅ Development deployment slutförd"
-      
-      - name: Post-Deployment Validation
-        run: |
-          echo "🔧 Kör post-deployment validering..."
-          
-          cd infrastructure/environments/development
-          
-          # Hämta outputs
-          terraform output -json > deployment-outputs.json
-          
-          # Validera att resurser är tillgängliga
-          VPC_ID=$(jq -r '.vpc_id.value' deployment-outputs.json 2>/dev/null || echo "")
-          
-          if [ -n "$VPC_ID" ]; then
-            echo "✅ VPC skapat: $VPC_ID"
-            
-            # Kontrollera VPC connectivity
-            aws ec2 describe-vpcs --vpc-ids "$VPC_ID" --region eu-north-1
-          fi
-          
-          echo "✅ Post-deployment validering slutförd"
-
-  # Deployment till staging (kräver manual approval)
-  deploy-staging:
-    name: Deploy to Staging
-    runs-on: ubuntu-latest
-    needs: [gdpr-compliance-check, code-quality-analysis, cost-analysis, environment-validation]
-    if: github.ref == 'refs/heads/staging' && github.event_name == 'push'
-    environment: 
-      name: staging
-      url: https://staging.${{ vars.DOMAIN_NAME }}
-    
-    steps:
-      - name: Manual Approval Required
-        run: |
-          echo "⏳ Staging deployment kräver manual godkännande..."
-          echo "Kontrollera kostnadsprognoser och säkerhetsrapporten innan fortsättning"
-      
-      - name: Checkout kod
-        uses: actions/checkout@v4
-      
-      - name: Deploy to Staging
-        run: |
-          echo "🚀 Deploying till staging miljö..."
-          
-          cd infrastructure/environments/staging
-          
-          terraform init
-          terraform apply -auto-approve \
-            -var="environment=staging" \
-            -var="organization_name=$ORGANIZATION_NAME" \
-            -var="cost_center=$COST_CENTER"
-          
-          echo "✅ Staging deployment slutförd"
-
-  # Deployment till production (kräver multiple approvals)
-  deploy-production:
-    name: Deploy to Production
-    runs-on: ubuntu-latest
-    needs: [gdpr-compliance-check, code-quality-analysis, cost-analysis, environment-validation]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    environment: 
-      name: production
-      url: https://${{ vars.DOMAIN_NAME }}
-    
-    steps:
-      - name: Production Deployment Checklist
-        run: |
-          echo "🔒 Production deployment checklist:"
-          echo "✅ GDPR compliance validerat"
-          echo "✅ Säkerhetsscan genomförd"
-          echo "✅ Kostnadsprognoser inom budget"
-          echo "✅ Svenska data residency bekräftad"
-          echo "✅ Manual approval erhållet"
-          echo ""
-          echo "⚠️ VIKTIGT: Production deployment påverkar live-system"
-          echo "Säkerställ att rollback-plan finns tillgänglig"
-      
-      - name: Checkout kod
-        uses: actions/checkout@v4
-      
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
-      
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_PROD }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_PROD }}
-          aws-region: eu-north-1
-      
-      - name: Production Deployment
-        run: |
-          echo "🚀 Deploying till production miljö..."
-          
-          cd infrastructure/environments/production
-          
-          # Backup current state
-          terraform state pull > state-backup-$(date +%Y%m%d-%H%M%S).json
-          
-          terraform init
-          
-          # Kör plan först för final validation
-          terraform plan \
-            -var="environment=production" \
-            -var="organization_name=$ORGANIZATION_NAME" \
-            -var="cost_center=$COST_CENTER" \
-            -out=production-plan
-          
-          # Apply med extra försiktighet
-          terraform apply production-plan
-          
-          echo "✅ Production deployment slutförd"
-      
-      - name: Production Health Check
-        run: |
-          echo "🏥 Kör production health checks..."
-          
-          cd infrastructure/environments/production
-          
-          # Hämta critical outputs
-          terraform output -json > production-outputs.json
-          
-          # Health check för key services
-          API_ENDPOINT=$(jq -r '.api_endpoint.value' production-outputs.json 2>/dev/null || echo "")
-          
-          if [ -n "$API_ENDPOINT" ]; then
-            echo "Testing API endpoint: $API_ENDPOINT"
-            
-            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$API_ENDPOINT/health" || echo "000")
-            
-            if [ "$HTTP_STATUS" = "200" ]; then
-              echo "✅ API endpoint responding correctly"
-            else
-              echo "❌ API endpoint health check failed (HTTP $HTTP_STATUS)"
-              exit 1
-            fi
-          fi
-          
-          echo "✅ Production health checks slutförda"
-      
-      - name: Notify Swedish Teams
-        run: |
-          echo "📢 Notifierar svenska team om production deployment..."
-          
-          DEPLOYMENT_MESSAGE="🇸🇪 Production deployment slutförd för $ORGANIZATION_NAME
-          
-          Miljö: Production
-          Tid: $(date '+%Y-%m-%d %H:%M') (svensk tid)
-          Commit: $GITHUB_SHA
-          Författare: $GITHUB_ACTOR
-          
-          Kostnadscenter: $COST_CENTER
-          Data residency: Sverige
-          GDPR compliance: Aktiverad
-          
-          Kontrollera monitoring dashboards för systemhälsa."
-          
-          # Skicka notification (implementera baserat på teams setup)
-          echo "$DEPLOYMENT_MESSAGE"
-          
-          # Exempel: Microsoft Teams webhook
-          # curl -H 'Content-Type: application/json' -d '{"text":"'$DEPLOYMENT_MESSAGE'"}' ${{ secrets.TEAMS_WEBHOOK_URL }}
-
-  # Cleanup och säkerhet
-  cleanup:
-    name: Cleanup and Security
-    runs-on: ubuntu-latest
-    needs: [deploy-development, deploy-staging, deploy-production]
-    if: always()
-    
-    steps:
-      - name: Clean Sensitive Data
-        run: |
-          echo "🧹 Rengör känslig data från pipeline..."
-          
-          # Ta bort temporära state files
-          find . -name "*.tfstate*" -delete
-          find . -name "terraform.tfvars" -delete
-          
-          # Rensa cache
-          find . -name ".terraform" -type d -exec rm -rf {} + 2>/dev/null || true
-          
-          echo "✅ Cleanup slutförd"
-      
-      - name: Security Audit Log
-        run: |
-          echo "🔐 Skapar säkerhetsaudit för svenska compliance..."
-          
-          cat > security-audit.json << EOF
-          {
-            "audit_id": "$(uuidgen)",
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "pipeline_run": "$GITHUB_RUN_ID",
-            "organization": "$ORGANIZATION_NAME",
-            "compliance_framework": "GDPR",
-            "security_controls": {
-              "encryption_verified": true,
-              "data_residency_sweden": true,
-              "audit_logging_enabled": true,
-              "access_controls_verified": true,
-              "cost_controls_applied": true
-            },
-            "deployment_summary": {
-              "environments_deployed": ["development", "staging", "production"],
-              "security_scans_passed": true,
-              "compliance_checks_passed": true,
-              "cost_validation_passed": true
-            },
-            "retention_period": "7_years",
-            "next_audit_date": "$(date -d '+1 year' -u +%Y-%m-%dT%H:%M:%SZ)"
-          }
-          EOF
-          
-          echo "📋 Säkerhetsaudit skapad för svenska lagkrav"
 ```
+
+Detta pipeline-exempel implementerar automated scanning för personal data patterns, men detta är endast början på comprehensive GDPR compliance. En fullständig implementation skulle också inkludera automated policy validation, encryption verification och integration med Data Protection Impact Assessments (DPIA).
+**Data residency enforcement:** Svenska organisationer måste säkerställa att all personuppgiftsbehandling sker inom EU/EEA enligt GDPR:s transferbestämmelser. CI/CD-pipelines måste automatiskt validera att infrastruktur endast distribueras till godkända regioner och att data residency-krav efterlevs.
+
+**Audit trail requirements:** GDPR:s accountability principle kräver comprehensive dokumentation av alla processingaktiviteter. CI/CD-pipelines måste generera detailed audit logs som dokumenterar infrastrukturändringar, access patterns och compliance-status enligt svenska retention requirements.
+
+## Pipeline design principles
+
+Effektiva CI/CD-pipelines för Infrastructure as Code bygger på fundamentala design principles som optimerar för speed, safety och observability. Dessa principles måste anpassas för svenska organisationers unika krav kring compliance, kostnadsoptimering och regulatory reporting.
+
+### Fail-fast feedback och progressive validation
+
+Fail-fast feedback är en core principle där fel upptäcks och rapporteras så tidigt som möjligt i development lifecycle. För IaC innebär detta multilayer validation från syntax checking till comprehensive security scanning innan någon faktisk infrastruktur distribueras.
+
+**Syntax och static analysis:** Första validation-lagret kontrollerar infrastrukturkod för syntax errors, undefined variables och basic configuration mistakes. Verktyg som `terraform validate`, `ansible-lint` och cloud provider-specifika validatorer fångar många fel innan kostnadskrävande deployment-försök.
+
+**Security och compliance scanning:** Specialiserade verktyg som Checkov, tfsec och Terrascan analyserar infrastrukturkod för security misconfigurations och compliance violations. För svenska organisationer är automated GDPR scanning, encryption verification och data residency validation kritiska komponenter.
+
+**Cost estimation och budget validation:** Infrastructure changes kan ha betydande ekonomiska konsekvenser. Verktyg som Infracost kan estimera kostnader för föreslagna infrastrukturändringar och validera mot organizational budgets innan deployment genomförs.
+
+**Policy validation:** Open Policy Agent (OPA) och liknande policy engines möjliggör automated validation mot organizational policies för resource naming, security configurations och architectural standards.
+
+### Progressive deployment strategier
+
+Progressive deployment minimerar risk genom gradual rollout av infrastrukturändringar. Detta är särskilt viktigt för svenska organisationer med high availability requirements och regulatory obligations.
+
+**Environment promotion:** Ändringar flödar genom en sekvens av miljöer (development → staging → production) med increasing validation stringency och manual approval requirements för production deployments.
+
+**Blue-green deployments:** För kritiska infrastrukturkomponenter kan blue-green deployment användas där parallel infrastruktur byggs och testas innan traffic switchar till den nya versionen.
+
+**Canary releases:** Gradual rollout av infrastrukturändringar till en subset av resources eller users möjliggör monitoring av impact innan full deployment.
+
+### Automated rollback och disaster recovery
+
+Robust rollback capabilities är essentiella för maintaining system reliability och meeting svenska organisationers business continuity requirements.
+
+**State management:** Infrastructure state måste hanteras på sätt som möjliggör reliable rollback till previous known-good configurations. Detta inkluderar automated backup av Terraform state files och database snapshots.
+
+**Health monitoring:** Automated health checks efter deployment kan trigga automatisk rollback om system degradation upptäcks. Detta inkluderar både technical metrics (response times, error rates) och business metrics (transaction volumes, user engagement).
+
+**Documentation och kommunikation:** Rollback procedures måste vara well-documented och accessible för incident response teams. Automated notification systems måste informera stakeholders om infrastructure changes och rollback events.
+
+## Kostnadsoptimering och budgetkontroll
+
+Svenska organisationer måste hantera infrastrukturkostnader med particular attention till valutafluktuationer, regional pricing variations och compliance-relaterade kostnader. CI/CD-pipelines måste inkludera sophisticated cost management som går beyond simple budget alerts.
+
+### Predictive cost modeling
+
+Modern cost optimization kräver predictive modeling som kan forecast infrastructure costs baserat på usage patterns, seasonal variations och planned business growth. Machine learning-modeller kan analysera historical usage data och predict future costs med high accuracy.
+
+**Usage-based forecasting:** Analys av historical resource utilization kan predict future capacity requirements och associated costs. Detta är särskilt värdefullt för auto-scaling environments där resource usage varierar dynamiskt.
+
+**Scenario modeling:** "What-if" scenarios för olika deployment options möjliggör informed decision-making om infrastructure investments. Organisationer kan compare costs för different cloud providers, regions och service tiers.
+
+**Seasonal adjustment:** Svenska företag med seasonal business patterns (retail, tourism, education) kan optimize infrastructure costs genom automated scaling baserat på predicted demand patterns.
+
+### Automated cost optimization
+
+CI/CD-pipelines kan implementera automated cost optimization som kontinuerligt optimerar infrastructure för cost efficiency utan manual intervention.
+
+**Resource rightsizing:** Automated analysis av resource utilization kan identify oversized instances och recommend rightsizing för optimal cost-performance ratio.
+
+**Reserved instance optimization:** För predictable workloads kan pipelines automatiskt köpa reserved instances när cost savings justify the commitment.
+
+**Lifecycle management:** Automated lifecycle policies för storage, backups och archived data kan significantly reduce storage costs genom intelligent tiering och deletion of obsolete data.
+
+### Swedish-specific cost considerations
+
+Svenska organisationer har unique cost considerations som påverkar infrastructure spending patterns och optimization strategies.
+
+**Currency hedging:** Infrastructure costs i USD exponerar svenska företag för valutarisk. Cost optimization strategies måste ta hänsyn till currency fluctuations och potential hedging requirements.
+
+**Sustainability reporting:** Ökande corporate sustainability requirements driver interest i energy-efficient infrastructure. Cost optimization måste balansera financial efficiency med environmental impact.
+
+**Tax implications:** Svenska skatteregler för infrastructure investments, depreciation och operational expenses påverkar optimal spending patterns och require integration med financial planning systems.
 
 ## Pipeline design principles
 
