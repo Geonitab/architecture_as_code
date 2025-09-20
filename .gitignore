@@ -26,3 +26,9 @@ __pycache__/
 
 # Generated presentation files (regenerate with: cd presentations && python generate_pptx.py)
 presentations/*.pptx
+
+# Test artifacts and reports  
+test-reports/
+.pytest_cache/
+*.pyc
+*.pyo
