@@ -39,3 +39,21 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 **YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat som ofta används för konfigurationsfiler och IaC-definitioner.
 
 **Zero Trust:** Säkerhetsmodell som aldrig litar på och alltid verifierar användare och enheter innan access till resurser beviljas.
+
+**Blue-Green Deployment:** Deploymentstrategi där två identiska produktionsmiljöer (blå och grön) används för att möjliggöra snabb rollback och minimal downtime.
+
+**Canary Release:** Gradvis utrullningsstrategi där nya versioner först deployeras till en liten subset av användare för riskminimering och validering.
+
+**Community of Practice:** Grupp av personer som delar passion för något de gör och lär sig att göra det bättre genom regelbunden interaktion.
+
+**Conway's Law:** Observation att organisationer designar system som speglar deras kommunikationsstrukturer.
+
+**Cross-functional Team:** Team som inkluderar medlemmar med olika färdigheter och roller som arbetar tillsammans mot gemensamma mål.
+
+**GitOps:** Operational framework som använder Git som enda källa för sanning för deklarativ infrastruktur och applikationer.
+
+**Helm:** Pakethanterare för Kubernetes som använder charts för att definiera, installera och upgradera komplexa Kubernetes-applikationer.
+
+**Service Discovery:** Mekanism som möjliggör automatisk detektion och kommunikation mellan tjänster i distribuerade system.
+
+**Service Mesh:** Dedikerad infrastrukturlager som hanterar service-till-service-kommunikation, säkerhet och observability i mikroservicesarkitekturer.
