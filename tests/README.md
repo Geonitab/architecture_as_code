@@ -89,6 +89,14 @@ python3 -m pytest tests/ -v --html=test-reports/report.html --self-contained-htm
 python3 -m pytest tests/test_completeness.py -v
 ```
 
+### Manual mobile responsiveness testing:
+```bash
+# Generate a report and apply mobile styles manually
+python3 tests/run_tests.py --type technical
+# Or apply mobile styles to existing report
+python3 tests/make_mobile_responsive.py test-reports/content-validation-technical.html
+```
+
 ## 🔄 CI/CD Integration
 
 The test suite is integrated into the GitHub Actions workflow:
@@ -120,6 +128,16 @@ Test reports are generated in `test-reports/` directory:
 - `clarity-report.html` - Content clarity results
 - `technical-report.html` - Technical accuracy results
 
+### 📱 Mobile Compatibility
+
+All test reports are automatically optimized for mobile devices, including iPhone:
+- **Responsive design**: Tables convert to mobile-friendly card layouts on small screens
+- **Touch-friendly**: Properly sized buttons and interactive elements
+- **Readable text**: Optimized font sizes for mobile reading
+- **Viewport optimization**: Includes proper viewport meta tags for mobile browsers
+
+The mobile optimization is automatically applied when reports are generated using `run_tests.py`.
+
 ## ⚙️ Configuration
 
 ### Test Behavior
@@ -148,6 +166,14 @@ Install with:
 ```bash
 python3 tests/run_tests.py --install-deps
 ```
+
+### Mobile Responsiveness Tools
+
+The test suite includes mobile optimization tools:
+- `tests/mobile-responsive.css` - Mobile-friendly CSS overrides
+- `tests/make_mobile_responsive.py` - Post-processor for adding mobile styles
+
+These are automatically applied when generating reports with `run_tests.py`.
 
 ## 🚨 Common Test Failures
 
