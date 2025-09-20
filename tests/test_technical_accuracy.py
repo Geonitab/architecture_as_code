@@ -260,6 +260,37 @@ class TestTechnicalAccuracy:
                 UserWarning
             )
     
+    def test_code_block_length(self, chapter_files):
+        """Test that no code block exceeds 25 lines (half a page)."""
+        MAX_LINES = 25
+        long_code_blocks = []
+        
+        for chapter_file in chapter_files:
+            content = chapter_file.read_text(encoding='utf-8')
+            
+            # Find all code blocks regardless of language
+            code_blocks = re.findall(
+                r'```[^`]*?\n(.*?)\n```', 
+                content, 
+                re.DOTALL
+            )
+            
+            for i, code_block in enumerate(code_blocks):
+                # Count non-empty lines in the code block
+                lines = [line for line in code_block.split('\n') if line.strip()]
+                line_count = len(lines)
+                
+                if line_count > MAX_LINES:
+                    long_code_blocks.append({
+                        "file": chapter_file.name,
+                        "block_index": i + 1,
+                        "line_count": line_count,
+                        "max_allowed": MAX_LINES,
+                        "preview": code_block[:200] + "..." if len(code_block) > 200 else code_block
+                    })
+        
+        assert not long_code_blocks, f"Code blocks exceeding {MAX_LINES} lines found: {long_code_blocks}"
+
     def test_technical_term_definitions(self, chapter_files):
         """Test that technical terms are properly introduced/defined."""
         # Common technical terms that should be defined on first use
