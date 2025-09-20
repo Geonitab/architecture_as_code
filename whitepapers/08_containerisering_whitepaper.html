@@ -303,8 +303,8 @@
         <!-- Whitepaper Content -->
         <div class="whitepaper-header">
             <div class="category">Infrastructure as Code</div>
-            <h1 class="title">Ordlista</h1>
-            <p class="subtitle">Whitepaper från Ordlista av boken "Arkitektur som kod"</p>
+            <h1 class="title">Containerisering och orkestrering som kod</h1>
+            <p class="subtitle">Whitepaper från Kapitel 7 av boken "Arkitektur som kod"</p>
             
             <div class="meta-info">
                 <div class="meta-item">
@@ -346,15 +346,19 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
 
         <!-- Chapter Content -->
         <section>
-            <h1>Kapitelöversikt: Ordlista</h1>
+            <h1>Kapitelöversikt: Containerisering och orkestrering som kod</h1>
 
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="../docs/images/diagram_11_kapitel10.png" alt="Kapiteldiagram för Containerisering och orkestrering som kod" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
+            </div>
+        
             
-            <p>Denna ordlista innehåller definitioner av centrala termer som används genom boken.</p>            <p>**API (Application Programming Interface):** Gränssnitt som möjliggör kommunikation mellan olika mjukvarukomponenter eller system genom standardiserade protokoll och dataformat.</p>            <p>**Automatisering:** Process där manuella uppgifter utförs automatiskt av datorsystem utan mänsklig intervention, vilket ökar effektivitet och minskar felrisk.</p>
+            <p>Containerteknologi och orkestrering representerar paradigmskifte i hur applikationer deployeras och skalas. Genom att definiera container-infrastruktur som kod möjliggörs portable, skalbar och reproducerbar application deployment across olika miljöer och cloud providers.</p>            <p>Containers erbjuder application-level virtualization som paketerar applikationer med alla dependencies i isolated, portable units. För Infrastructure as Code innebär detta att application deployment kan standardiseras och automatiseras genom code-based definitions som säkerställer consistency mellan development, testing och production environments.</p>            <p>Docker har etablerat sig som de facto standard för containerization, medan podman och andra alternativ erbjuder daemon-less approaches för enhanced security. Container images definieras genom Dockerfiles som executable infrastructure code, vilket möjliggör version control och automated building av application artifacts.</p>
             
 
             <h2>Huvudämnen som behandlas</h2>
             <ul>
-                <li>Grundläggande koncept och verktyg</li>                <li>Deployment och operationella koncept</li>                <li>Kostnadshantering och optimering</li>                <li>Testning och kvalitetssäkring</li>                <li>Strategiska och organisatoriska koncept</li>
+                <li>Container-teknologiens roll inom IaC</li>                <li>Kubernetes som orchestration platform</li>                <li>Service mesh och advanced networking</li>                <li>Infrastructure automation med container platforms</li>                <li>Persistent storage och data management</li>                <li>Praktiska exempel</li>
             </ul>
         
         </section>
@@ -364,7 +368,7 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
             <h1>Läs mer</h1>
             <div class="callout callout-success">
                 <div class="callout-title">Fullständigt innehåll</div>
-                <p><strong>Läs mer i Ordlista av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
+                <p><strong>Läs mer i Kapitel 7 av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
             </div>
             
             <p>Boken innehåller totalt 25 kapitel som täcker alla aspekter av Infrastructure as Code för svenska organisationer, från grundläggande principer till avancerade implementationsstrategier.</p>
