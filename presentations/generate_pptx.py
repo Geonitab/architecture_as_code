@@ -38,33 +38,21 @@ def create_presentation():
     
     
     p = text_frame.add_paragraph()
-    p.text = "• **Bakgrund och motivation**: Infrastructure as Code uppstod som svar på de utmaningar som organisati..."
+    p.text = "• **Från Infrastructure as Code till Architecture as Code**: Infrastructure as Code (IaC) var det förs..."
     
     p = text_frame.add_paragraph()
-    p.text = "• **Definition och omfattning**: Infrastructure as Code definieras som praktiken att hantera och tillh..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Svenska företags IaC-resa**: Svenska organisationer har tagit olika approaches till Infrastructure..."
+    p.text = "• **Definition och omfattning**: Architecture as Code definieras som praktiken att beskriva, versionha..."
     
     p = text_frame.add_paragraph()
     p.text = "• **Bokens syfte och målgrupp**: Denna bok vänder sig till systemarkitekter, utvecklare, devops-ingenj..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Teknologisk evolution och IaC**: Infrastructure as Code utvecklas kontinuerligt som response till ..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Sammanfattning**: Infrastructure as Code representerar en fundamental transformation från traditio..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Källor och referenser**: - HashiCorp. \"Infrastructure as Code: A Guide.\" HashiCorp Learn. - AWS...."
 
-    # Chapter: Grundläggande principer för Infrastructure as Code
+    # Chapter: Grundläggande principer för Architecture as Code
     slide_layout = prs.slide_layouts[1]  # Title and Content
     slide = prs.slides.add_slide(slide_layout)
     title = slide.shapes.title
     content = slide.placeholders[1]
     
-    title.text = "Grundläggande principer för Infrastructure as Code"
+    title.text = "Grundläggande principer för Architecture as Code"
     
     # Add key points
     text_frame = content.text_frame
@@ -72,25 +60,16 @@ def create_presentation():
     
     
     p = text_frame.add_paragraph()
-    p.text = "• **Deklarativ vs imperativ approach**: Den deklarativa approachen innebär att beskriva önskat slutläg..."
+    p.text = "• **Deklarativ arkitekturdefinition**: Den deklarativa approachen inom Architecture as Code innebär at..."
     
     p = text_frame.add_paragraph()
-    p.text = "• **Idempotens och konvergens**: Idempotens säkerställer att upprepade körningar av samma IaC-kod prod..."
+    p.text = "• **Helhetsperspektiv på kodifiering**: Medan Infrastructure as Code fokuserar på infrastrukturresurse..."
     
     p = text_frame.add_paragraph()
-    p.text = "• **Immutable infrastruktur**: Principen om immutable infrastruktur innebär att infrastrukturkomponent..."
+    p.text = "• **Immutable architecture patterns**: Principen om immutable arkitektur bygger vidare på Infrastructu..."
     
     p = text_frame.add_paragraph()
-    p.text = "• **Testbarhet och kvalitetssäkring**: IaC-kod ska behandlas som vilken annan kod som helst, vilket in..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Säkerhet by design**: Infrastructure as Code möjliggör implementation av security controls från bö..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Sammanfattning**: De grundläggande principerna för Infrastructure as Code - deklarativ approach, i..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Källor och referenser**: - Puppet Labs. \"Infrastructure as Code: A Brief Introduction.\" Puppet D..."
+    p.text = "• **Testbarhet på arkitekturnivå**: Architecture as Code möjliggör testning av hela systemarkitekturen..."
 
     # Chapter: Versionhantering och kodstruktur
     slide_layout = prs.slide_layouts[1]  # Title and Content
@@ -110,27 +89,6 @@ def create_presentation():
     
     p = text_frame.add_paragraph()
     p.text = "• **Kodorganisation och modulstruktur**: Välorganiserad kodstruktur är avgörande för maintainability o..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Code review-processer för infrastruktur**: Infrastructure code review kräver specialiserade approa..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Infrastructure Change Request**: <!-- Beskriv vad som ändras och varför --> - [ ] Development......"
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Allmänna principer**: - Kommentarer och documentation på svenska - Resource names på engelska (för..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **State management och collaboration**: Terraform state management utgör en kritisk komponent för te..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Praktiska exempel**: Ett verkligt exempel på hur svenska organisationer implementerar end-to-end G..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Sammanfattning**: Versionhantering och kodstruktur för Infrastructure as Code kräver samma rigor o..."
-    
-    p = text_frame.add_paragraph()
-    p.text = "• **Källor och referenser**: - Atlassian. \"Git Workflows for Infrastructure as Code.\" Atlassian Git ..."
 
     # Chapter: Automatisering och CI/CD-pipelines
     slide_layout = prs.slide_layouts[1]  # Title and Content
@@ -206,13 +164,13 @@ def create_presentation():
     p = text_frame.add_paragraph()
     p.text = "• **Sammanfattning**: Molnarkitektur som kod representerar en fundamental evolution av Infrastructure ..."
 
-    # Chapter: Säkerhet i Infrastructure as Code
+    # Chapter: Säkerhet i Architecture as Code
     slide_layout = prs.slide_layouts[1]  # Title and Content
     slide = prs.slides.add_slide(slide_layout)
     title = slide.shapes.title
     content = slide.placeholders[1]
     
-    title.text = "Säkerhet i Infrastructure as Code"
+    title.text = "Säkerhet i Architecture as Code"
     
     # Add key points
     text_frame = content.text_frame
@@ -220,7 +178,7 @@ def create_presentation():
     
     
     p = text_frame.add_paragraph()
-    p.text = "• **Övergripande beskrivning**: Säkerhet inom Infrastructure as Code kräver en fundamental förskjutnin..."
+    p.text = "• **Övergripande beskrivning**: Säkerhet inom Architecture as Code kräver en fundamental förskjutning ..."
     
     p = text_frame.add_paragraph()
     p.text = "• **Security-by-design principer**: Security-by-design innebär att säkerhetshänsyn integreras från för..."
@@ -286,13 +244,13 @@ def create_presentation():
     p = text_frame.add_paragraph()
     p.text = "• **Sammanfattning**: DevOps och CI/CD för Infrastructure as Code skapar grunden för modern, skalbar i..."
 
-    # Chapter: Infrastruktur som kod i praktiken
+    # Chapter: Architecture as Code i praktiken
     slide_layout = prs.slide_layouts[1]  # Title and Content
     slide = prs.slides.add_slide(slide_layout)
     title = slide.shapes.title
     content = slide.placeholders[1]
     
-    title.text = "Infrastruktur som kod i praktiken"
+    title.text = "Architecture as Code i praktiken"
     
     # Add key points
     text_frame = content.text_frame
@@ -300,7 +258,7 @@ def create_presentation():
     
     
     p = text_frame.add_paragraph()
-    p.text = "• **Implementation roadmap och strategier**: Successful IaC adoption följer vanligen en phased approac..."
+    p.text = "• **Implementation roadmap och strategier**: Successful Architecture as Code adoption följer vanligen ..."
     
     p = text_frame.add_paragraph()
     p.text = "• **Tool selection och ecosystem integration**: Technology stack selection balanserar organizational r..."
@@ -865,7 +823,7 @@ def create_presentation():
 
     
     # Save presentation
-    prs.save("arkitektur_som_kod_presentation.pptx")
+    prs.save("presentations/arkitektur_som_kod_presentation.pptx")
     print("Presentation saved to presentations/arkitektur_som_kod_presentation.pptx")
 
 if __name__ == "__main__":
