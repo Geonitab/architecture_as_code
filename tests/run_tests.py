@@ -88,6 +88,17 @@ def run_tests(test_type="all", verbose=True, generate_report=True):
         
         if generate_report:
             print(f"\nTest report generated: {report_file}")
+            
+            # Apply mobile responsiveness to the generated report
+            try:
+                mobile_script = script_dir / "make_mobile_responsive.py"
+                subprocess.run([sys.executable, str(mobile_script), str(report_file)], 
+                              check=True, capture_output=True)
+                print(f"✓ Mobile responsiveness applied to {report_file.name}")
+            except subprocess.CalledProcessError as e:
+                print(f"⚠ Warning: Could not apply mobile responsiveness: {e}")
+            except Exception as e:
+                print(f"⚠ Warning: Mobile responsiveness error: {e}")
         
         return result.returncode
         
