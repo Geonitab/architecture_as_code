@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 __pycache__/
+
+# Generated presentation files (regenerate with: cd presentations && python generate_pptx.py)
+presentations/*.pptx
