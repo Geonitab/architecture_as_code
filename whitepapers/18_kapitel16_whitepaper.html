@@ -303,8 +303,8 @@
         <!-- Whitepaper Content -->
         <div class="whitepaper-header">
             <div class="category">Infrastructure as Code</div>
-            <h1 class="title">Versionhantering och kodstruktur</h1>
-            <p class="subtitle">Whitepaper från Kapitel 2 av boken "Arkitektur som kod"</p>
+            <h1 class="title">Teststrategier för infrastruktukod</h1>
+            <p class="subtitle">Whitepaper från Kapitel 17 av boken "Arkitektur som kod"</p>
             
             <div class="meta-info">
                 <div class="meta-item">
@@ -346,19 +346,19 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
 
         <!-- Chapter Content -->
         <section>
-            <h1>Kapitelöversikt: Versionhantering och kodstruktur</h1>
+            <h1>Kapitelöversikt: Teststrategier för infrastruktukod</h1>
 
             <div style="text-align: center; margin: 30px 0;">
-                <img src="../docs/images/diagram_03_kapitel2.png" alt="Kapiteldiagram för Versionhantering och kodstruktur" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
+                <img src="../docs/images/diagram_17_kapitel16.png" alt="Kapiteldiagram för Teststrategier för infrastruktukod" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
             </div>
         
             
-            <p>Effektiv versionhantering utgör ryggraden i Infrastructure as Code-implementationer. Genom att tillämpa samma metoder som mjukvaruutveckling på infrastrukturdefinitioner skapas spårbarhet, samarbetsmöjligheter och kvalitetskontroll.</p>            <p>Diagrammet illustrerar det typiska flödet från Git repository genom branching strategy och code review till slutlig deployment, vilket säkerställer kontrollerad och spårbar infrastrukturutveckling.</p>            <p>Git utgör standarden för versionhantering av IaC-kod och möjliggör distribuerat samarbete mellan team-medlemmar. Varje förändring dokumenteras med commit-meddelanden som beskriver vad som ändrats och varför, vilket skapar en komplett historik över infrastrukturutvecklingen.</p>
+            <p>*Omfattande teststrategi för Infrastructure as Code kräver multiple testing-nivåer från unit tests till end-to-end validation. Diagrammet illustrerar det strukturerade förloppet från snabba utvecklartester till omfattande integrationsvalidering.*</p>            <p>Testning av Infrastructure as Code skiljer sig fundamentalt från traditionell mjukvarutestning genom att fokusera på infrastrukturkonfiguration, resurskompatibilitet och miljökonsekvens istället för affärslogik. Effective IaC-testing säkerställer att infrastrukturkod producerar förväntade resultat konsekvent across olika miljöer.</p>            <p>Modern IaC-testning omfattar flera dimensioner: syntaktisk validering av kod, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys och functional testing av deployed infrastruktur. Denna multilevel approach identifierar problem tidigt i utvecklingscykeln när de är billigare och enklare att fixa.</p>
             
 
             <h2>Huvudämnen som behandlas</h2>
             <ul>
-                <li>Git-baserad arbetsflöde för infrastruktur</li>                <li>Kodorganisation och modulstruktur</li>
+                <li>Övergripande beskrivning</li>                <li>Unit testing för infrastrukturkod</li>                <li>Integrationstesting och miljövalidering</li>                <li>Security och compliance testing</li>                <li>Performance och skalbarhetstesting</li>                <li>Praktiska exempel</li>
             </ul>
         
         </section>
@@ -368,7 +368,7 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
             <h1>Läs mer</h1>
             <div class="callout callout-success">
                 <div class="callout-title">Fullständigt innehåll</div>
-                <p><strong>Läs mer i Kapitel 2 av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
+                <p><strong>Läs mer i Kapitel 17 av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
             </div>
             
             <p>Boken innehåller totalt 23 kapitel som täcker alla aspekter av Infrastructure as Code för svenska organisationer, från grundläggande principer till avancerade implementationsstrategier.</p>

@@ -33,10 +33,11 @@ const ChapterDetail = () => {
     { id: "18", title: "Hybridmolnstrategier", area: "Arkitektur", filename: "18_kapitel16.md" },
     { id: "19", title: "Framtida trender och teknologier", area: "Innovation", filename: "19_kapitel17.md" },
     { id: "20", title: "Best practices och lärda läxor", area: "Systemutveckling", filename: "20_kapitel18.md" },
-    { id: "21", title: "Fallstudier och praktiska exempel", area: "Praktisk tillämpning", filename: "21_kapitel19.md" },
-    { id: "22", title: "Slutsats", area: "Sammanfattning", filename: "22_slutsats.md" },
-    { id: "23", title: "Ordlista", area: "Referenser", filename: "23_ordlista.md" },
-    { id: "24", title: "Om författarna", area: "Referenser", filename: "24_om_forfattarna.md" }
+    { id: "21", title: "Använd Lovable för att skapa mockups för svenska organisationer", area: "Produkt- och tjänstutveckling", filename: "21_kapitel20.md" },
+    { id: "22", title: "Fallstudier och praktiska exempel", area: "Praktisk tillämpning", filename: "22_kapitel19.md" },
+    { id: "23", title: "Slutsats", area: "Sammanfattning", filename: "23_slutsats.md" },
+    { id: "24", title: "Ordlista", area: "Referenser", filename: "24_ordlista.md" },
+    { id: "25", title: "Om författarna", area: "Referenser", filename: "25_om_forfattarna.md" }
   ];
 
   const currentChapterIndex = chapters.findIndex(chapter => chapter.id === chapterId);

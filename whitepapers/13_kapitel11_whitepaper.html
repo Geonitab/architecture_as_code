@@ -303,8 +303,8 @@
         <!-- Whitepaper Content -->
         <div class="whitepaper-header">
             <div class="category">Infrastructure as Code</div>
-            <h1 class="title">Versionhantering och kodstruktur</h1>
-            <p class="subtitle">Whitepaper från Kapitel 2 av boken "Arkitektur som kod"</p>
+            <h1 class="title">Policy och säkerhet som kod i detalj</h1>
+            <p class="subtitle">Whitepaper från Kapitel 12 av boken "Arkitektur som kod"</p>
             
             <div class="meta-info">
                 <div class="meta-item">
@@ -346,19 +346,19 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
 
         <!-- Chapter Content -->
         <section>
-            <h1>Kapitelöversikt: Versionhantering och kodstruktur</h1>
+            <h1>Kapitelöversikt: Policy och säkerhet som kod i detalj</h1>
 
             <div style="text-align: center; margin: 30px 0;">
-                <img src="../docs/images/diagram_03_kapitel2.png" alt="Kapiteldiagram för Versionhantering och kodstruktur" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
+                <img src="../docs/images/diagram_12_kapitel11.png" alt="Kapiteldiagram för Policy och säkerhet som kod i detalj" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
             </div>
         
             
-            <p>Effektiv versionhantering utgör ryggraden i Infrastructure as Code-implementationer. Genom att tillämpa samma metoder som mjukvaruutveckling på infrastrukturdefinitioner skapas spårbarhet, samarbetsmöjligheter och kvalitetskontroll.</p>            <p>Diagrammet illustrerar det typiska flödet från Git repository genom branching strategy och code review till slutlig deployment, vilket säkerställer kontrollerad och spårbar infrastrukturutveckling.</p>            <p>Git utgör standarden för versionhantering av IaC-kod och möjliggör distribuerat samarbete mellan team-medlemmar. Varje förändring dokumenteras med commit-meddelanden som beskriver vad som ändrats och varför, vilket skapar en komplett historik över infrastrukturutvecklingen.</p>
+            <p>*Policy as Code representerar nästa evolutionssteg inom Infrastructure as Code där säkerhet, compliance och governance automatiseras genom programmerbara regler. Diagrammet visar integreringen av policy enforcement i hela utvecklingslivscykeln från design till produktion.*</p>            <p>Policy as Code transformerar hur organisationer hanterar säkerhet och compliance från reaktiva manuella processer till proaktiva automatiserade system. Som vi såg i [kapitel 6 om säkerhet](06_kapitel5.md), är säkerhet en kritisk komponent i Infrastructure as Code, men i detta kapitel fördjupar vi oss i den avancerade implementeringen av policy-drivna säkerhetslösningar.</p>            <p>Traditionella säkerhetsmodeller baserade på manuella granskningar och statiska policydokument är otillräckliga för moderna molnmiljöer som kontinuerligt förändras genom Infrastructure as Code. Policy as Code möjliggör automatisk validering av säkerhetskrav i realtid, kontinuerlig compliance-övervakning och snabb respons på nya hot och regulatoriska förändringar.</p>
             
 
             <h2>Huvudämnen som behandlas</h2>
             <ul>
-                <li>Git-baserad arbetsflöde för infrastruktur</li>                <li>Kodorganisation och modulstruktur</li>
+                <li>Övergripande beskrivning</li>                <li>Open Policy Agent (OPA) och Rego</li>                <li>Gatekeeper och Kubernetes Policy Enforcement</li>                <li>Terraform Policy Integration</li>                <li>🔒 Policy Compliance Report</li>                <li>Automatiserad Compliance Monitoring</li>
             </ul>
         
         </section>
@@ -368,7 +368,7 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
             <h1>Läs mer</h1>
             <div class="callout callout-success">
                 <div class="callout-title">Fullständigt innehåll</div>
-                <p><strong>Läs mer i Kapitel 2 av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
+                <p><strong>Läs mer i Kapitel 12 av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
             </div>
             
             <p>Boken innehåller totalt 23 kapitel som täcker alla aspekter av Infrastructure as Code för svenska organisationer, från grundläggande principer till avancerade implementationsstrategier.</p>
