@@ -4,6 +4,12 @@
 
 *Säkerhet utgör ryggraden i framgångsrik Architecture as Code-implementation. Detta kapitel utforskar hur säkerhetsprinciper integreras från första design-fasen genom automatiserad policy enforcement, proaktiv hothantering och kontinuerlig compliance-monitoring. Genom att behandla säkerhet som kod skapar organisationer robusta, skalbara och auditerbara säkerhetslösningar.*
 
+## Säkerhetsarkitekturens dimensioner
+
+![Säkerhetskonceptens samband](images/mindmap_10_sakerhet.png)
+
+*Mindmappen illustrerar de komplexa sambanden mellan olika säkerhetsaspekter i Architecture as Code, från threat modeling och Zero Trust Architecture till Policy as Code och kontinuerlig risk assessment. Denna helhetssyn är avgörande för att förstå hur säkerhet integreras genomgående i kodbaserade arkitekturer.*
+
 ## Kapitelets omfattning och mål
 
 Säkerhetsutmaningarna i dagens digitala landskap kräver en fundamental omvärdering av traditionella säkerhetsapproacher. När organisationer adopterar Architecture as Code för att hantera växande komplexitet i sina IT-miljöer, måste säkerhetsstrategier utvecklas parallellt. Detta kapitel guidar läsaren genom en omfattande förståelse av hur säkerhet integreras naturligt och effektivt i kodbaserade arkitekturer.

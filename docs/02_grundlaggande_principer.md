@@ -6,6 +6,12 @@ Architecture as Code bygger på fundamentala principer som säkerställer framg�
 
 Diagrammet visar det naturliga flödet från deklarativ kod genom versionskontroll och automatisering till reproducerbarhet och skalbarhet - de fem grundpelarna inom Architecture as Code.
 
+## Konceptuell översikt
+
+![Översikt av grundläggande principer](images/mindmap_02_principer.png)
+
+*Mindmappen ovan ger en hierarkisk översikt av de grundläggande principerna för Architecture as Code och visar sambanden mellan deklarativ arkitekturdefinition, helhetsperspektivet på kodifiering, immutable patterns och testbarhet på arkitekturnivå.*
+
 ## Deklarativ arkitekturdefinition
 
 Den deklarativa approachen inom Architecture as Code innebär att beskriva önskat systemtillstånd på alla nivåer - från applikationskomponenter till infrastruktur. Detta skiljer sig från imperativ programmering där varje steg måste specificeras explicit.

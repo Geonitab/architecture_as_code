@@ -4,6 +4,12 @@
 
 *Infrastructure as Code utgör ryggraden i moderne digitaliseringsinitiativ genom att möjliggöra snabb, skalbar och kostnadseffektiv transformation av IT-miljöer. Diagrammet illustrerar den strategiska vägen från traditionell infrastruktur till fullständigt kodbaserad digital plattform.*
 
+## Svenska digitaliseringslandskapet
+
+![Digitalisering i svenskt sammanhang](images/mindmap_19_digitalisering.png)
+
+*Mindmappen belyser de unika aspekterna av digitalisering i svensk kontext, från regulatoriska utmaningar och framgångsexempel till de specifika fördelar som IaC erbjuder svenska organisationer. Den visar hur Cloud-first strategier, svenska digitaliseringsutmaningar och internationella framgångsexempel samspelar i den svenska digitaliseringsresan.*
+
 ## Övergripande beskrivning
 
 Digitalisering handlar inte enbart om att införa ny teknik, utan om en fundamental förändring av hur organisationer levererar värde till sina kunder och intressenter. Infrastructure as Code spelar en central roll i denna transformation genom att möjliggöra agila, molnbaserade lösningar som kan anpassas efter förändrade affärsbehov med särskild hänsyn till svenska regulatoriska och kulturella förutsättningar.
