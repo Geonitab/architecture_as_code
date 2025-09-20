@@ -280,6 +280,87 @@ def create_presentation():
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
+    # Chapter: Architecture Decision Records (ADR)
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Architecture Decision Records (ADR)"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_04_adr_kapitel.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övergripande beskrivning: Architecture Decision Records (ADR) utgör en systematisk approach för att dokumentera viktiga arkitekturbeslut som påverkar systemets struktur, prestanda, säkerhet och underh..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Vad är Architecture Decision Records?: Architecture Decision Records definieras som korta textdokument som fångar viktiga arkitekturbeslut tillsammans med deras kontext och konsekvenser. Varje ADR bes..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Struktur och komponenter av ADR: Varje ADR följer en konsekvent struktur som säkerställer att all relevant information fångas systematiskt: ADR numreras sekventiellt (ADR-0001, ADR-0002, etc.) för att..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Verktyg och best practices för ADR: Flera verktyg underlättar creation och management av ADR: **adr-tools**: Command-line verktyg för att skapa och hantera ADR-filer **adr-log**: Automatisk generering..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Integration med Architecture as Code: ADR spelar en central roll i Architecture as Code-metodik genom att dokumentera designbeslut som sedan implementeras som kod. Denna integration skapar en tydlig k..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Compliance och kvalitetsstandarder: ADR-metodik stödjer svenska compliance-krav genom strukturerad dokumentation som möjliggör: **Regulatory Compliance**: Systematisk dokumentation för GDPR, PCI-DSS o..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtida utveckling och trends: ADR-metodik utvecklas kontinuerligt med integration av nya verktyg och processer: **AI-assisterade ADR**: Machine learning för att identifiera när nya ADR behövs basera..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Architecture Decision Records representerar en fundamental komponent i modern Architecture as Code-metodik. Genom strukturerad dokumentation av arkitekturbeslut skapas transparens, spå..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för architecture decision records (adr)"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för architecture decision records (adr)"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
     # Chapter: Automatisering och CI/CD-pipelines
     slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
     slide = prs.slides.add_slide(slide_layout)
@@ -358,6 +439,87 @@ def create_presentation():
 
     p = points_frame.add_paragraph()
     p.text = "• Framtiden för automatisering och ci/cd-pipelines"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    # Chapter: DevOps och CI/CD för Infrastructure as Code
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "DevOps och CI/CD för Infrastructure as Code"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_07_kapitel6.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• DevOps-kulturens betydelse för IaC: DevOps representerar en fundamental förändring i organisatorisk kultur där utvecklings- och driftteam arbetar kollaborativt genom hela systemlivscykeln. För Infrast..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Kontinuerlig integration för infrastrukturkod: CI för Infrastructure as Code säkerställer att infrastrukturändringar integreras smidigt och säkert i huvudkodbasen. Varje commit triggar en serie valide..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Avancerade teststrategier: Svenska organisationer kräver särskilt omfattande testing på grund av höga compliance-krav och risk-aversion. Teststrategier måste inkludera: **Compliance Testing**: Automat..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Deployment automation och orchestration: Automated deployment för infrastruktur kräver sofistikerade orchestration capabilities som hanterar dependencies, rollback scenarios, och multi-environment con..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Monitoring och feedback loops: Comprehensive monitoring av både infrastructure state och deployment pipeline health ger essential feedback för kontinuerlig förbättring. Metrics collection täcker infra..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: DevOps och CI/CD för Infrastructure as Code skapar grunden för modern, skalbar infrastrukturhantering med särskild hänsyn till svenska organisatoriska och regulatoriska krav. Genom att..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Referenser och vidare läsning: - Datainspektionen. \"GDPR för svenska organisationer.\" Vägledning om personuppgiftsbehandling. - Myndigheten för samhällsskydd och beredskap (MSB). \"Säkerhetsskydd fö..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övervakning och loggning av devops och ci/cd för infrastructure as code"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för devops och ci/cd för infrastructure as code"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för devops och ci/cd för infrastructure as code"
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
@@ -442,411 +604,6 @@ def create_presentation():
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
-    # Chapter: Säkerhet i Architecture as Code
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "Säkerhet i Architecture as Code"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_06_kapitel5.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övergripande beskrivning: Säkerhet inom Architecture as Code kräver en fundamental förskjutning från reaktiv till proaktiv säkerhetstänk. Traditionella säkerhetsmodeller som fokuserar på perimeterskyd..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Security-by-design principer: Security-by-design innebär att säkerhetshänsyn integreras från första design-fasen av infrastrukturprojekt istället för att läggas till som en efterkonstruktion. Detta ap..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Policy as Code implementation: Policy as Code representerar paradigmskiftet från manuella säkerhetspolicies till automatiserat policy enforcement genom programmatiska definitioner. Open Policy Agent (..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Secrets management och data protection: Comprehensive secrets management utgör foundationen för säker IaC implementation. Secrets som API keys, databas-credentials och encryption keys måste hanteras g..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Nätverkssäkerhet och mikrosegmentering: Network security design genom IaC möjliggör systematic implementation av defense-in-depth network architectures. VPC design, subnet segmentation, routing tables..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: Säkerhet inom Infrastructure as Code kräver systematisk integration av säkerhetsprinciper i alla aspekter av infrastrukturdefinition och deployment. Security-by-design, Policy as Code ..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Källor och referenser: - NIST. \"Cybersecurity Framework för Infrastructure as Code.\" NIST Special Publication, 2023. - MSB. \"Säkerhetskrav för kritisk infrastruktur.\" Myndigheten för samhällsskydd..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övervakning och loggning av säkerhet i architecture as code"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för säkerhet i architecture as code"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för säkerhet i architecture as code"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    # Chapter: DevOps och CI/CD för Infrastructure as Code
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "DevOps och CI/CD för Infrastructure as Code"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_07_kapitel6.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• DevOps-kulturens betydelse för IaC: DevOps representerar en fundamental förändring i organisatorisk kultur där utvecklings- och driftteam arbetar kollaborativt genom hela systemlivscykeln. För Infrast..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Kontinuerlig integration för infrastrukturkod: CI för Infrastructure as Code säkerställer att infrastrukturändringar integreras smidigt och säkert i huvudkodbasen. Varje commit triggar en serie valide..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Deployment automation och orchestration: Automated deployment för infrastruktur kräver sofistikerade orchestration capabilities som hanterar dependencies, rollback scenarios, och multi-environment con..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Monitoring och feedback loops: Comprehensive monitoring av både infrastructure state och deployment pipeline health ger essential feedback för kontinuerlig förbättring. Metrics collection täcker infra..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: DevOps och CI/CD för Infrastructure as Code skapar grunden för modern, skalbar infrastrukturhantering med särskild hänsyn till svenska organisatoriska och regulatoriska krav. Genom att..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Referenser och vidare läsning: - Datainspektionen. \"GDPR för svenska organisationer.\" Vägledning om personuppgiftsbehandling. - Myndigheten för samhällsskydd och beredskap (MSB). \"Säkerhetsskydd fö..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Skalbarhet och prestanda för devops och ci/cd för infrastructure as code"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övervakning och loggning av devops och ci/cd för infrastructure as code"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för devops och ci/cd för infrastructure as code"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för devops och ci/cd för infrastructure as code"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    # Chapter: Architecture as Code i praktiken
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "Architecture as Code i praktiken"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_08_kapitel7.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• Implementation roadmap och strategier: Successful Architecture as Code adoption följer vanligen en phased approach som börjar med pilot projects och gradvis expanderar till enterprise-wide implementat..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Tool selection och ecosystem integration: Technology stack selection balanserar organizational requirements med market maturity och community support. Terraform har emerged som leading multi-cloud sol..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Production readiness och operational excellence: Security-first approach implementerar comprehensive security controls från design phase. Secrets management, access controls, audit logging, och compli..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Common challenges och troubleshooting: State management complexity grows significantly som infrastructure scales och involves multiple teams. State file corruption, concurrent modifications, och state..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Enterprise integration patterns: Multi-account/subscription strategies för cloud environments provide isolation, security boundaries, och cost allocation capabilities. Infrastructure code måste handle..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: Practical Infrastructure as Code implementation balanserar technical excellence med organizational realities. Success kräver comprehensive planning, stakeholder alignment, incremental ..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Källor och referenser: - HashiCorp. \"Terraform Best Practices.\" HashiCorp Learn Platform. - AWS Well-Architected Framework. \"Infrastructure as Code.\" Amazon Web Services. - Google Cloud. \"Infrast..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övervakning och loggning av architecture as code i praktiken"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för architecture as code i praktiken"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för architecture as code i praktiken"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    # Chapter: Digitalisering genom kodbaserad infrastruktur
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "Digitalisering genom kodbaserad infrastruktur"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_09_kapitel8.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övergripande beskrivning: Digitalisering handlar inte enbart om att införa ny teknik, utan om en fundamental förändring av hur organisationer levererar värde till sina kunder och intressenter. Infrast..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Cloud-first strategier för svensk digitalisering: Sverige har utvecklat en stark position inom molnteknologi, delvis drivet av ambitiösa digitaliseringsmål inom både offentlig och privat sektor samt u..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Automatisering av affärsprocesser: IaC möjliggör automatisering som sträcker sig långt bortom traditionell IT-drift till att omfatta hela affärsprocesser med särskild hänsyn till svenska organisatione..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Digital transformation i svenska organisationer: Svenska organisationer genomgår för närvarande en av de mest omfattande digitaliseringsprocesserna i modern tid. Infrastructure as Code utgör ofta den ..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: Digitalisering genom kodbaserad infrastruktur representerar en fundamental förändring i hur svenska organisationer levererar IT-tjänster och skapar affärsvärde. IaC möjliggör den flexi..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Källor och referenser: - Digitaliseringsstyrelsen. \"Digitaliseringsstrategi för Sverige.\" Regeringskansliet, 2022. - McKinsey Digital. \"Digital Transformation in the Nordics.\" McKinsey & Company, ..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Skalbarhet och prestanda för digitalisering genom kodbaserad infrastruktur"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övervakning och loggning av digitalisering genom kodbaserad infrastruktur"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för digitalisering genom kodbaserad infrastruktur"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för digitalisering genom kodbaserad infrastruktur"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    # Chapter: Organisatorisk förändring och teamstrukturer
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "Organisatorisk förändring och teamstrukturer"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_10_kapitel9.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övergripande beskrivning: Implementering av Infrastructure as Code kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer ..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• DevOps-kulturtransformation: DevOps representerar fundamental kulturförändering från \"us vs them\" mentalitet mellan development och operations till shared ownership av product lifecycle. Denna trans..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Cross-funktionella team strukturer: Cross-functional teams för IaC implementation måste include diverse skills covering software development, systems administration, security engineering och product m..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Kompetenshöjning och utbildning: Comprehensive training program för IaC adoption måste cover technical skills, process changes och cultural transformation aspects. Multi-modal learning approaches incl..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Rollförändring och karriärutveckling: Traditional system administrator roles evolve toward Infrastructure Engineers som combine operational expertise med software development skills. Career developmen..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Change management strategier: Change management för IaC adoption måste address both technical och cultural aspects av organizational transformation. Successful change strategies include stakeholder en..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: Organisatorisk förändring utgör den mest kritiska komponenten för successful Infrastructure as Code adoption. Technical tools och processes kan implementeras relativt snabbt, men cultu..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Källor och referenser: - Puppet. \"State of DevOps Report.\" Puppet Labs, 2023. - Google. \"DORA State of DevOps Research.\" Google Cloud, 2023. - Spotify. \"Spotify Engineering Culture.\" Spotify Tec..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för organisatorisk förändring och teamstrukturer"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för organisatorisk förändring och teamstrukturer"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
     # Chapter: Containerisering och orkestrering som kod
     slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
     slide = prs.slides.add_slide(slide_layout)
@@ -925,87 +682,6 @@ def create_presentation():
 
     p = points_frame.add_paragraph()
     p.text = "• Framtiden för containerisering och orkestrering som kod"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    # Chapter: Policy och säkerhet som kod i detalj
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "Policy och säkerhet som kod i detalj"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_12_kapitel11.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övergripande beskrivning: Policy as Code transformerar hur organisationer hanterar säkerhet och compliance från reaktiva manuella processer till proaktiva automatiserade system. Som vi såg i [kapitel ..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Open Policy Agent (OPA) och Rego: Open Policy Agent har etablerats som de facto standarden för policy as code implementation genom sin flexibla arkitektur och kraftfulla deklarativa policy-språk Rego...."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Gatekeeper och Kubernetes Policy Enforcement: Kubernetes-miljöer kräver specialiserade policy enforcement-mekanismer som kan hantera dynamiska containerbaserade workloads. Gatekeeper, baserat på OPA, ..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Terraform Policy Integration: Terraform policy enforcement implementeras genom flera verktyg och approaches som validerar Infrastructure as Code före deployment. Sentinel policies, HashiCorp Consul-Co..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Automatiserad Compliance Monitoring: Kontinuerlig compliance monitoring kräver real-time övervakning av infrastrukturtillstånd och automatisk detection av policy violations. Cloud-native monitoring se..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Praktiska implementationsexempel: Verkliga implementationer av Policy as Code kräver integration med befintliga utvecklingsverktyg och processer. Genom att bygga policy validation i CI/CD pipelines sä..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: Policy as Code representerar kritisk evolution inom Infrastructure as Code som möjliggör automated governance, security enforcement och regulatory compliance. Genom att behandla polici..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Källor och referenser: - Open Policy Agent. \"Policy as Code Documentation.\" OPA Community, 2023. - Kubernetes SIG Security. \"Gatekeeper Policy Engine.\" CNCF Projects, 2023. - HashiCorp. \"Sentinel..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för policy och säkerhet som kod i detalj"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för policy och säkerhet som kod i detalj"
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
@@ -1090,6 +766,168 @@ def create_presentation():
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
+    # Chapter: Säkerhet i Architecture as Code
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Säkerhet i Architecture as Code"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_06_kapitel5.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övergripande beskrivning: Säkerhet inom Architecture as Code kräver en fundamental förskjutning från reaktiv till proaktiv säkerhetstänk. Traditionella säkerhetsmodeller som fokuserar på perimeterskyd..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Security-by-design principer: Security-by-design innebär att säkerhetshänsyn integreras från första design-fasen av infrastrukturprojekt istället för att läggas till som en efterkonstruktion. Detta ap..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Policy as Code implementation: Policy as Code representerar paradigmskiftet från manuella säkerhetspolicies till automatiserat policy enforcement genom programmatiska definitioner. Open Policy Agent (..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Secrets management och data protection: Comprehensive secrets management utgör foundationen för säker IaC implementation. Secrets som API keys, databas-credentials och encryption keys måste hanteras g..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Nätverkssäkerhet och mikrosegmentering: Network security design genom IaC möjliggör systematic implementation av defense-in-depth network architectures. VPC design, subnet segmentation, routing tables..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Säkerhet inom Infrastructure as Code kräver systematisk integration av säkerhetsprinciper i alla aspekter av infrastrukturdefinition och deployment. Security-by-design, Policy as Code ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Källor och referenser: - NIST. \"Cybersecurity Framework för Infrastructure as Code.\" NIST Special Publication, 2023. - MSB. \"Säkerhetskrav för kritisk infrastruktur.\" Myndigheten för samhällsskydd..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övervakning och loggning av säkerhet i architecture as code"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för säkerhet i architecture as code"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för säkerhet i architecture as code"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    # Chapter: Policy och säkerhet som kod i detalj
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Policy och säkerhet som kod i detalj"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_12_kapitel11.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övergripande beskrivning: Policy as Code transformerar hur organisationer hanterar säkerhet och compliance från reaktiva manuella processer till proaktiva automatiserade system. Som vi såg i [kapitel ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Open Policy Agent (OPA) och Rego: Open Policy Agent har etablerats som de facto standarden för policy as code implementation genom sin flexibla arkitektur och kraftfulla deklarativa policy-språk Rego...."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Gatekeeper och Kubernetes Policy Enforcement: Kubernetes-miljöer kräver specialiserade policy enforcement-mekanismer som kan hantera dynamiska containerbaserade workloads. Gatekeeper, baserat på OPA, ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Terraform Policy Integration: Terraform policy enforcement implementeras genom flera verktyg och approaches som validerar Infrastructure as Code före deployment. Sentinel policies, HashiCorp Consul-Co..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Automatiserad Compliance Monitoring: Kontinuerlig compliance monitoring kräver real-time övervakning av infrastrukturtillstånd och automatisk detection av policy violations. Cloud-native monitoring se..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Praktiska implementationsexempel: Verkliga implementationer av Policy as Code kräver integration med befintliga utvecklingsverktyg och processer. Genom att bygga policy validation i CI/CD pipelines sä..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Policy as Code representerar kritisk evolution inom Infrastructure as Code som möjliggör automated governance, security enforcement och regulatory compliance. Genom att behandla polici..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Källor och referenser: - Open Policy Agent. \"Policy as Code Documentation.\" OPA Community, 2023. - Kubernetes SIG Security. \"Gatekeeper Policy Engine.\" CNCF Projects, 2023. - HashiCorp. \"Sentinel..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för policy och säkerhet som kod i detalj"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för policy och säkerhet som kod i detalj"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
     # Chapter: Compliance och regelefterlevnad
     slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
     slide = prs.slides.add_slide(slide_layout)
@@ -1168,168 +1006,6 @@ def create_presentation():
 
     p = points_frame.add_paragraph()
     p.text = "• Framtiden för compliance och regelefterlevnad"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    # Chapter: Team-struktur och kompetensutveckling för IaC
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "Team-struktur och kompetensutveckling för IaC"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_15_kapitel14.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• Organisatorisk transformation för IaC: Traditionella organisationsstrukturer med separata utvecklings-, test- och drift-teams skapar silos som hindrar effektiv Infrastructure as Code adoption. Cross-f..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Kompetensområden för IaC-specialister: Infrastructure as Code professionals behöver hybrid skills som kombinerar traditional systems administration knowledge med software engineering practices. Progra..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Utbildningsstrategier och certifieringar: Strukturerade utbildningsprogram kombinerar theoretical learning med hands-on practice för effective skill development. Online platforms som A Cloud Guru, Plu..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Agile team models för infrastructure: Cross-functional infrastructure teams inkluderar cloud engineers, automation specialists, security engineers, och site reliability engineers som collaborerar on s..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Kunskapsdelning och communities of practice: Documentation strategies för Infrastructure as Code inkluderar architecture decision records, runbooks, troubleshooting guides, och best practices reposito..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Performance management och career progression: Technical career ladders för Infrastructure as Code specialists provide clear advancement paths from junior automation engineers to senior architect role..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: Successful Infrastructure as Code adoption kräver omfattande organisatorisk förändring som går beyond teknisk implementation. Team-strukturer måste redesignas för cross-functional coll..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Källor och referenser: - Gene Kim, Jez Humble, Patrick Debois, John Willis. \"The DevOps Handbook.\" IT Revolution Press. - Matthew Skelton, Manuel Pais. \"Team Topologies: Organizing Business and Tec..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för team-struktur och kompetensutveckling för iac"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för team-struktur och kompetensutveckling för iac"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    # Chapter: Kostnadsoptimering och resurshantering
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "Kostnadsoptimering och resurshantering"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    # Add diagram
-    diagram_path = "../docs/images/diagram_16_kapitel15.png"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-        except Exception as e:
-            print(f"Warning: Could not add diagram {diagram_path}: {e}")
-    
-
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
-    
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övergripande beskrivning: Kostnadsoptimering utgör en kritisk komponent i Infrastructure as Code-implementationer, särskilt när organisationer migrerar till molnbaserade lösningar. Utan proper cost ma..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• FinOps och cost governance: FinOps representerar en växande disciplin som kombinerar finansiell hantering med molnoperationer för att maximera affärsvärdet av molninvesteringar. Inom IaC-kontext inneb..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Automatisk resursskalning och rightsizing: Automatisk resursskalning utgör kärnan i kostnadseffektiv Infrastructure as Code. Genom att definiera skalningsregler baserade på faktiska användningsmönster..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Cost monitoring och alerting: Comprehensive cost monitoring kräver integration av monitoring-verktyg direkt i IaC-konfigurationerna. CloudWatch, Azure Monitor och Google Cloud Monitoring kan konfigure..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Multi-cloud cost optimization: Multi-cloud strategier kompliserar kostnadsoptimering men erbjuder också möjligheter för cost arbitrage mellan olika leverantörer. IaC-verktyg som Terraform möjliggör co..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Sammanfattning: Kostnadsoptimering inom Infrastructure as Code kräver systematisk approach som kombinerar tekniska verktyg, automatiserade processer och organisatorisk medvetenhet. Framgångsrik implem..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Källor och referenser: - AWS. \"AWS Cost Optimization Guide.\" Amazon Web Services Documentation, 2023. - FinOps Foundation. \"FinOps Framework och Best Practices.\" The Linux Foundation, 2023. - Kube..."
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Övervakning och loggning av kostnadsoptimering och resurshantering"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Team-organisation för kostnadsoptimering och resurshantering"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-
-    p = points_frame.add_paragraph()
-    p.text = "• Framtiden för kostnadsoptimering och resurshantering"
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
@@ -1414,6 +1090,168 @@ def create_presentation():
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
+    # Chapter: Architecture as Code i praktiken
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Architecture as Code i praktiken"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_08_kapitel7.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Implementation roadmap och strategier: Successful Architecture as Code adoption följer vanligen en phased approach som börjar med pilot projects och gradvis expanderar till enterprise-wide implementat..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Tool selection och ecosystem integration: Technology stack selection balanserar organizational requirements med market maturity och community support. Terraform har emerged som leading multi-cloud sol..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Production readiness och operational excellence: Security-first approach implementerar comprehensive security controls från design phase. Secrets management, access controls, audit logging, och compli..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Common challenges och troubleshooting: State management complexity grows significantly som infrastructure scales och involves multiple teams. State file corruption, concurrent modifications, och state..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Enterprise integration patterns: Multi-account/subscription strategies för cloud environments provide isolation, security boundaries, och cost allocation capabilities. Infrastructure code måste handle..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Practical Infrastructure as Code implementation balanserar technical excellence med organizational realities. Success kräver comprehensive planning, stakeholder alignment, incremental ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Källor och referenser: - HashiCorp. \"Terraform Best Practices.\" HashiCorp Learn Platform. - AWS Well-Architected Framework. \"Infrastructure as Code.\" Amazon Web Services. - Google Cloud. \"Infrast..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övervakning och loggning av architecture as code i praktiken"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för architecture as code i praktiken"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för architecture as code i praktiken"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    # Chapter: Kostnadsoptimering och resurshantering
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Kostnadsoptimering och resurshantering"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_16_kapitel15.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övergripande beskrivning: Kostnadsoptimering utgör en kritisk komponent i Infrastructure as Code-implementationer, särskilt när organisationer migrerar till molnbaserade lösningar. Utan proper cost ma..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• FinOps och cost governance: FinOps representerar en växande disciplin som kombinerar finansiell hantering med molnoperationer för att maximera affärsvärdet av molninvesteringar. Inom IaC-kontext inneb..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Automatisk resursskalning och rightsizing: Automatisk resursskalning utgör kärnan i kostnadseffektiv Infrastructure as Code. Genom att definiera skalningsregler baserade på faktiska användningsmönster..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Cost monitoring och alerting: Comprehensive cost monitoring kräver integration av monitoring-verktyg direkt i IaC-konfigurationerna. CloudWatch, Azure Monitor och Google Cloud Monitoring kan konfigure..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Multi-cloud cost optimization: Multi-cloud strategier kompliserar kostnadsoptimering men erbjuder också möjligheter för cost arbitrage mellan olika leverantörer. IaC-verktyg som Terraform möjliggör co..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Kostnadsoptimering inom Infrastructure as Code kräver systematisk approach som kombinerar tekniska verktyg, automatiserade processer och organisatorisk medvetenhet. Framgångsrik implem..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Källor och referenser: - AWS. \"AWS Cost Optimization Guide.\" Amazon Web Services Documentation, 2023. - FinOps Foundation. \"FinOps Framework och Best Practices.\" The Linux Foundation, 2023. - Kube..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övervakning och loggning av kostnadsoptimering och resurshantering"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för kostnadsoptimering och resurshantering"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för kostnadsoptimering och resurshantering"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
     # Chapter: Migration från traditionell infrastruktur
     slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
     slide = prs.slides.add_slide(slide_layout)
@@ -1492,6 +1330,330 @@ def create_presentation():
 
     p = points_frame.add_paragraph()
     p.text = "• Framtiden för migration från traditionell infrastruktur"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    # Chapter: Organisatorisk förändring och teamstrukturer
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Organisatorisk förändring och teamstrukturer"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_10_kapitel9.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övergripande beskrivning: Implementering av Infrastructure as Code kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• DevOps-kulturtransformation: DevOps representerar fundamental kulturförändering från \"us vs them\" mentalitet mellan development och operations till shared ownership av product lifecycle. Denna trans..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Cross-funktionella team strukturer: Cross-functional teams för IaC implementation måste include diverse skills covering software development, systems administration, security engineering och product m..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Kompetenshöjning och utbildning: Comprehensive training program för IaC adoption måste cover technical skills, process changes och cultural transformation aspects. Multi-modal learning approaches incl..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Rollförändring och karriärutveckling: Traditional system administrator roles evolve toward Infrastructure Engineers som combine operational expertise med software development skills. Career developmen..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Change management strategier: Change management för IaC adoption måste address both technical och cultural aspects av organizational transformation. Successful change strategies include stakeholder en..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Organisatorisk förändring utgör den mest kritiska komponenten för successful Infrastructure as Code adoption. Technical tools och processes kan implementeras relativt snabbt, men cultu..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Källor och referenser: - Puppet. \"State of DevOps Report.\" Puppet Labs, 2023. - Google. \"DORA State of DevOps Research.\" Google Cloud, 2023. - Spotify. \"Spotify Engineering Culture.\" Spotify Tec..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för organisatorisk förändring och teamstrukturer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för organisatorisk förändring och teamstrukturer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    # Chapter: Team-struktur och kompetensutveckling för IaC
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Team-struktur och kompetensutveckling för IaC"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_15_kapitel14.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Organisatorisk transformation för IaC: Traditionella organisationsstrukturer med separata utvecklings-, test- och drift-teams skapar silos som hindrar effektiv Infrastructure as Code adoption. Cross-f..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Kompetensområden för IaC-specialister: Infrastructure as Code professionals behöver hybrid skills som kombinerar traditional systems administration knowledge med software engineering practices. Progra..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Utbildningsstrategier och certifieringar: Strukturerade utbildningsprogram kombinerar theoretical learning med hands-on practice för effective skill development. Online platforms som A Cloud Guru, Plu..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Agile team models för infrastructure: Cross-functional infrastructure teams inkluderar cloud engineers, automation specialists, security engineers, och site reliability engineers som collaborerar on s..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Kunskapsdelning och communities of practice: Documentation strategies för Infrastructure as Code inkluderar architecture decision records, runbooks, troubleshooting guides, och best practices reposito..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Performance management och career progression: Technical career ladders för Infrastructure as Code specialists provide clear advancement paths from junior automation engineers to senior architect role..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Successful Infrastructure as Code adoption kräver omfattande organisatorisk förändring som går beyond teknisk implementation. Team-strukturer måste redesignas för cross-functional coll..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Källor och referenser: - Gene Kim, Jez Humble, Patrick Debois, John Willis. \"The DevOps Handbook.\" IT Revolution Press. - Matthew Skelton, Manuel Pais. \"Team Topologies: Organizing Business and Tec..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för team-struktur och kompetensutveckling för iac"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för team-struktur och kompetensutveckling för iac"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    # Chapter: Digitalisering genom kodbaserad infrastruktur
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Digitalisering genom kodbaserad infrastruktur"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_09_kapitel8.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övergripande beskrivning: Digitalisering handlar inte enbart om att införa ny teknik, utan om en fundamental förändring av hur organisationer levererar värde till sina kunder och intressenter. Infrast..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Cloud-first strategier för svensk digitalisering: Sverige har utvecklat en stark position inom molnteknologi, delvis drivet av ambitiösa digitaliseringsmål inom både offentlig och privat sektor samt u..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Automatisering av affärsprocesser: IaC möjliggör automatisering som sträcker sig långt bortom traditionell IT-drift till att omfatta hela affärsprocesser med särskild hänsyn till svenska organisatione..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Digital transformation i svenska organisationer: Svenska organisationer genomgår för närvarande en av de mest omfattande digitaliseringsprocesserna i modern tid. Infrastructure as Code utgör ofta den ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning: Digitalisering genom kodbaserad infrastruktur representerar en fundamental förändring i hur svenska organisationer levererar IT-tjänster och skapar affärsvärde. IaC möjliggör den flexi..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Källor och referenser: - Digitaliseringsstyrelsen. \"Digitaliseringsstrategi för Sverige.\" Regeringskansliet, 2022. - McKinsey Digital. \"Digital Transformation in the Nordics.\" McKinsey & Company, ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Skalbarhet och prestanda för digitalisering genom kodbaserad infrastruktur"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övervakning och loggning av digitalisering genom kodbaserad infrastruktur"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för digitalisering genom kodbaserad infrastruktur"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för digitalisering genom kodbaserad infrastruktur"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    # Chapter: Kapitel 20: Använd Lovable för att skapa mockups för svenska organisationer
+    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+    slide = prs.slides.add_slide(slide_layout)
+    
+    # Add title
+    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+    title_frame = title_box.text_frame
+    title_frame.text = "Kapitel 20: Använd Lovable för att skapa mockups för svenska organisationer"
+    title_frame.paragraphs[0].font.size = Pt(32)
+    title_frame.paragraphs[0].font.bold = True
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    # Add diagram
+    diagram_path = "../docs/images/diagram_21_kapitel20.png"
+    if os.path.exists(diagram_path):
+        try:
+            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+        except Exception as e:
+            print(f"Warning: Could not add diagram {diagram_path}: {e}")
+    
+
+    # Add key points
+    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+    points_frame = points_box.text_frame
+    points_frame.text = "Viktiga punkter:"
+    points_frame.paragraphs[0].font.size = Pt(16)
+    points_frame.paragraphs[0].font.bold = True
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    
+
+    p = points_frame.add_paragraph()
+    p.text = "• Inledning till Lovable: Lovable är en AI-driven utvecklingsplattform som revolutionerar hur svenska organisationer kan skapa interaktiva mockups och prototyper. Genom att kombinera naturlig språkbehan..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Steg-för-steg guide för implementering i svenska organisationer: **1. Miljöförberedelse** **2. Svensk lokaliseringskonfiguration** **3. Definiera svenska användarresor**"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Sammanfattning och nästa steg: Lovable erbjuder svenska organisationer en kraftfull plattform för att skapa compliance-medvetna mockups och prototyper. Genom att integrera svenska e-legitimationstjäns..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Säkerhetsaspekter inom kapitel 20: använd lovable för att skapa mockups för svenska organisationer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Automatisering och CI/CD för kapitel 20: använd lovable för att skapa mockups för svenska organisationer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Kostnadsoptimering inom kapitel 20: använd lovable för att skapa mockups för svenska organisationer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Skalbarhet och prestanda för kapitel 20: använd lovable för att skapa mockups för svenska organisationer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övervakning och loggning av kapitel 20: använd lovable för att skapa mockups för svenska organisationer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för kapitel 20: använd lovable för att skapa mockups för svenska organisationer"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för kapitel 20: använd lovable för att skapa mockups för svenska organisationer"
     p.font.size = Pt(12)
     p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
@@ -1750,6 +1912,56 @@ def create_presentation():
     points_frame.paragraphs[0].font.bold = True
     points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
     
+
+    p = points_frame.add_paragraph()
+    p.text = "• Grundläggande koncept och verktyg: **API (Application Programming Interface):** Gränssnitt som möjliggör kommunikation mellan olika mjukvarukomponenter eller system genom standardiserade protokoll och..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Deployment och operationella koncept: **Blue-Green Deployment:** Deploymentstrategi där två identiska produktionsmiljöer (blå och grön) används för att möjliggöra snabb rollback och minimal downtime. ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Kostnadshantering och optimering: **FinOps:** Disciplin som kombinerar finansiell hantering med molnoperationer för att maximera affärsvärdet av molninvesteringar genom kostnadsoptimering och resource..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Testning och kvalitetssäkring: **Terratest:** Open source Go-bibliotek för automatiserad testning av Infrastructure as Code, särskilt designat för Terraform-moduler och cloud infrastructure. **Policy ..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Strategiska och organisatoriska koncept: **Cloud-First Strategy:** Strategisk approach där organisationer primärt väljer molnbaserade lösningar för nya IT-initiativ innan on-premises alternativ övervä..."
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Kostnadsoptimering inom ordlista"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Skalbarhet och prestanda för ordlista"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Övervakning och loggning av ordlista"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Team-organisation för ordlista"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+
+    p = points_frame.add_paragraph()
+    p.text = "• Framtiden för ordlista"
+    p.font.size = Pt(12)
+    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
 
     # Chapter: Om författarna
     slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning

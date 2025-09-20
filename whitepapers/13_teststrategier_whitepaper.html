@@ -303,8 +303,8 @@
         <!-- Whitepaper Content -->
         <div class="whitepaper-header">
             <div class="category">Infrastructure as Code</div>
-            <h1 class="title">Ordlista</h1>
-            <p class="subtitle">Whitepaper från Ordlista av boken "Arkitektur som kod"</p>
+            <h1 class="title">Teststrategier för infrastruktukod</h1>
+            <p class="subtitle">Whitepaper från Kapitel 12 av boken "Arkitektur som kod"</p>
             
             <div class="meta-info">
                 <div class="meta-item">
@@ -346,15 +346,19 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
 
         <!-- Chapter Content -->
         <section>
-            <h1>Kapitelöversikt: Ordlista</h1>
+            <h1>Kapitelöversikt: Teststrategier för infrastruktukod</h1>
 
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="../docs/images/diagram_17_kapitel16.png" alt="Kapiteldiagram för Teststrategier för infrastruktukod" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
+            </div>
+        
             
-            <p>Denna ordlista innehåller definitioner av centrala termer som används genom boken.</p>            <p>**API (Application Programming Interface):** Gränssnitt som möjliggör kommunikation mellan olika mjukvarukomponenter eller system genom standardiserade protokoll och dataformat.</p>            <p>**Automatisering:** Process där manuella uppgifter utförs automatiskt av datorsystem utan mänsklig intervention, vilket ökar effektivitet och minskar felrisk.</p>
+            <p>*Omfattande teststrategi för Infrastructure as Code kräver multiple testing-nivåer från unit tests till end-to-end validation. Diagrammet illustrerar det strukturerade förloppet från snabba utvecklartester till omfattande integrationsvalidering.*</p>            <p>Testning av Infrastructure as Code skiljer sig fundamentalt från traditionell mjukvarutestning genom att fokusera på infrastrukturkonfiguration, resurskompatibilitet och miljökonsekvens istället för affärslogik. Effective IaC-testing säkerställer att infrastrukturkod producerar förväntade resultat konsekvent across olika miljöer.</p>            <p>Modern IaC-testning omfattar flera dimensioner: syntaktisk validering av kod, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys och functional testing av deployed infrastruktur. Denna multilevel approach identifierar problem tidigt i utvecklingscykeln när de är billigare och enklare att fixa.</p>
             
 
             <h2>Huvudämnen som behandlas</h2>
             <ul>
-                <li>Grundläggande koncept och verktyg</li>                <li>Deployment och operationella koncept</li>                <li>Kostnadshantering och optimering</li>                <li>Testning och kvalitetssäkring</li>                <li>Strategiska och organisatoriska koncept</li>
+                <li>Övergripande beskrivning</li>                <li>Unit testing för infrastrukturkod</li>                <li>Integrationstesting och miljövalidering</li>                <li>Security och compliance testing</li>                <li>Performance och skalbarhetstesting</li>                <li>Praktiska exempel</li>
             </ul>
         
         </section>
@@ -364,7 +368,7 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
             <h1>Läs mer</h1>
             <div class="callout callout-success">
                 <div class="callout-title">Fullständigt innehåll</div>
-                <p><strong>Läs mer i Ordlista av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
+                <p><strong>Läs mer i Kapitel 12 av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
             </div>
             
             <p>Boken innehåller totalt 25 kapitel som täcker alla aspekter av Infrastructure as Code för svenska organisationer, från grundläggande principer till avancerade implementationsstrategier.</p>
