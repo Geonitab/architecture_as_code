@@ -25,12 +25,8 @@ const BookOverview = () => {
 
   const authors = [
     {
-      name: "Dr. Anna Bergström",
-      title: "Senior Cloud Architect"
-    },
-    {
-      name: "Marcus Andersson", 
-      title: "DevOps Engineer och Automation Specialist"
+      name: "Gunnar Nordqvist",
+      title: "Certifierad Chefsarkitekt och IT-säkerhetsspecialist"
     }
   ];
 
