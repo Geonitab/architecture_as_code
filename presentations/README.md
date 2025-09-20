@@ -8,10 +8,13 @@ This directory contains presentation materials generated from the book "Arkitekt
 A comprehensive outline extracted from all 23 book chapters, showing key points and summaries for each chapter.
 
 ### generate_pptx.py  
-Python script that creates a PowerPoint presentation with slides for each chapter, including:
-- Title slide with book information
+Enhanced Python script that creates a PowerPoint presentation with slides for each chapter, including:
+- Title slide with book information and Swedish compliance notice
 - Individual slides for each of the 23 chapters
-- Key points and diagrams for each chapter
+- Up to 10 key points per chapter summarizing the content
+- Mermaid diagrams embedded on slides where available (12 chapters have diagrams)
+- Optimized layout with diagrams positioned on the right side of slides
+- Swedish compliance standards integrated throughout
 
 ### requirements.txt
 Python dependencies needed to run the PowerPoint generation script.
