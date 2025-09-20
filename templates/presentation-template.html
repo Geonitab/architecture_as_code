@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvadrat Presentation Mall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --kvadrat-blue: hsl(221, 67%, 32%);
+            --kvadrat-blue-light: hsl(217, 91%, 60%);
+            --kvadrat-blue-dark: hsl(214, 32%, 18%);
+            --kvadrat-gray: hsl(215, 20%, 46%);
+            --kvadrat-gray-light: hsl(214, 32%, 97%);
+            --success: hsl(160, 84%, 30%);
+            --warning: hsl(32, 95%, 44%);
+            --white: hsl(0, 0%, 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--kvadrat-gray-light);
+            color: var(--kvadrat-blue-dark);
+            overflow-x: auto;
+        }
+
+        .presentation-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 40px;
+            min-width: 1200px;
+        }
+
+        /* Slide styles */
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(30, 58, 138, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Slide header */
+        .slide-header {
+            height: 80px;
+            background: linear-gradient(135deg, var(--kvadrat-blue) 0%, var(--kvadrat-blue-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 48px;
+            color: var(--white);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            color: var(--kvadrat-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .brand-text {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .slide-number {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Slide content */
+        .slide-content {
+            flex: 1;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Title slide */
+        .title-slide .slide-content {
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--kvadrat-blue) 0%, var(--kvadrat-blue-dark) 100%);
+            color: var(--white);
+        }
+
+        .title-slide .slide-header {
+            display: none;
+        }
+
+        .main-title {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            letter-spacing: -2px;
+        }
+
+        .main-subtitle {
+            font-size: 32px;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 48px;
+        }
+
+        .presenter-info {
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        /* Content slide */
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--kvadrat-blue-dark);
+            margin-bottom: 40px;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 24px;
+            color: var(--kvadrat-gray);
+            margin-bottom: 32px;
+        }
+
+        /* Two column layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            flex: 1;
+        }
+
+        /* Lists */
+        .bullet-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding: 16px 0 16px 40px;
+            font-size: 24px;
+            line-height: 1.4;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 28px;
+            width: 12px;
+            height: 12px;
+            background: var(--kvadrat-blue);
+            border-radius: 50%;
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: var(--kvadrat-blue);
+            color: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+
+        .highlight-box h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .highlight-box p {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        /* Statistics */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin: 32px 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 32px 16px;
+            background: var(--kvadrat-gray-light);
+            border-radius: 12px;
+            border: 2px solid var(--kvadrat-blue-light);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--kvadrat-blue);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: var(--kvadrat-gray);
+            font-weight: 500;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: var(--kvadrat-blue-dark);
+            color: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 24px 0;
+        }
+
+        /* Progress indicators */
+        .progress-step {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--kvadrat-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step-number.completed {
+            background: var(--success);
+        }
+
+        .step-number.current {
+            background: var(--warning);
+        }
+
+        /* Thank you slide */
+        .thank-you-slide .slide-content {
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--success) 0%, var(--kvadrat-blue) 100%);
+            color: var(--white);
+        }
+
+        .thank-you-slide .slide-header {
+            display: none;
+        }
+
+        .thank-you-title {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+            margin-top: 48px;
+            font-size: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--white);
+            color: var(--kvadrat-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1400px) {
+            .presentation-container {
+                padding: 20px;
+            }
+            
+            .slide {
+                transform: scale(0.8);
+                transform-origin: top left;
+                margin-bottom: -144px; /* Adjust for scale */
+            }
+        }
+
+        @media print {
+            .slide {
+                page-break-after: always;
+                width: 297mm;
+                height: 167mm; /* 16:9 ratio for A4 landscape */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        
+        <!-- Title Slide -->
+        <div class="slide title-slide">
+            <div class="slide-content">
+                <h1 class="main-title">
+                    Arkitektur som kod
+                </h1>
+                <p class="main-subtitle">
+                    En modern approach till infrastrukturhantering
+                </p>
+                <div class="presenter-info">
+                    Kvadrat Expertteam • December 2024
+                </div>
+            </div>
+        </div>
+
+        <!-- Agenda Slide -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo-section">
+                    <div class="logo">K</div>
+                    <div class="brand-text">Kvadrat</div>
+                </div>
+                <div class="slide-number">2 / 8</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Agenda</h2>
+                <ul class="bullet-list">
+                    <li>Vad är Infrastructure as Code?</li>
+                    <li>Fördelar och utmaningar</li>
+                    <li>Implementationsstrategi</li>
+                    <li>Verktyg och teknologier</li>
+                    <li>Best practices</li>
+                    <li>Framtiden för IaC</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Problem Statement Slide -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo-section">
+                    <div class="logo">K</div>
+                    <div class="brand-text">Kvadrat</div>
+                </div>
+                <div class="slide-number">3 / 8</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Utmaningen</h2>
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: var(--kvadrat-blue); margin-bottom: 24px;">Traditionell infrastrukturhantering</h3>
+                        <ul class="bullet-list" style="font-size: 20px;">
+                            <li>Manuella processer</li>
+                            <li>Inkonsekventa miljöer</li>
+                            <li>Långsam deployment</li>
+                            <li>Höga driftskostnader</li>
+                            <li>Säkerhetsrisker</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="highlight-box">
+                            <h3>Statistik</h3>
+                            <p>Organizations using manual infrastructure management experience 3x more downtime and 5x higher operational costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solution Slide -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo-section">
+                    <div class="logo">K</div>
+                    <div class="brand-text">Kvadrat</div>
+                </div>
+                <div class="slide-number">4 / 8</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Infrastructure as Code</h2>
+                <p class="slide-subtitle">Hantera infrastruktur som utvecklingskod</p>
+                
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Mindre fel</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">75%</div>
+                        <div class="stat-label">Snabbare deployment</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">60%</div>
+                        <div class="stat-label">Lägre kostnader</div>
+                    </div>
+                </div>
+
+                <div class="code-block">
+# Terraform exempel
+resource "aws_instance" "web" {
+  ami           = "ami-0c55b159cbfafe1d0"
+  instance_type = "t2.micro"
+  
+  tags = {
+    Name = "WebServer"
+    Environment = "Production"
+  }
+}
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Process -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo-section">
+                    <div class="logo">K</div>
+                    <div class="brand-text">Kvadrat</div>
+                </div>
+                <div class="slide-number">5 / 8</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Implementationsprocess</h2>
+                <p class="slide-subtitle">Fasad approach för framgångsrik implementation</p>
+                
+                <div style="margin-top: 40px;">
+                    <div class="progress-step">
+                        <div class="step-number completed">1</div>
+                        <div>
+                            <strong>Assessment & Planning</strong><br>
+                            Kartlägg nuvarande infrastruktur och definiera mål
+                        </div>
+                    </div>
+                    
+                    <div class="progress-step">
+                        <div class="step-number completed">2</div>
+                        <div>
+                            <strong>Pilot Implementation</strong><br>
+                            Starta med icke-kritiska system för att bygga erfarenhet
+                        </div>
+                    </div>
+                    
+                    <div class="progress-step">
+                        <div class="step-number current">3</div>
+                        <div>
+                            <strong>Scaling & Integration</strong><br>
+                            Utöka till utvecklingsmiljöer och CI/CD-pipelines
+                        </div>
+                    </div>
+                    
+                    <div class="progress-step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <strong>Production Migration</strong><br>
+                            Gradvis migration av produktionssystem
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Benefits Slide -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo-section">
+                    <div class="logo">K</div>
+                    <div class="brand-text">Kvadrat</div>
+                </div>
+                <div class="slide-number">6 / 8</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Affärsfördelar</h2>
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: var(--kvadrat-blue); margin-bottom: 24px;">Tekniska fördelar</h3>
+                        <ul class="bullet-list" style="font-size: 18px;">
+                            <li>Automatisering av rutinuppgifter</li>
+                            <li>Konsistenta miljöer</li>
+                            <li>Versionskontroll av infrastruktur</li>
+                            <li>Snabbare disaster recovery</li>
+                            <li>Förbättrad säkerhet</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--success); margin-bottom: 24px;">Affärsfördelar</h3>
+                        <ul class="bullet-list" style="font-size: 18px;">
+                            <li>Minskade operativa kostnader</li>
+                            <li>Snabbare time-to-market</li>
+                            <li>Förbättrad skalbarhet</li>
+                            <li>Högre tillförlitlighet</li>
+                            <li>Konkurrensfördelar</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="logo-section">
+                    <div class="logo">K</div>
+                    <div class="brand-text">Kvadrat</div>
+                </div>
+                <div class="slide-number">7 / 8</div>
+            </div>
+            <div class="slide-content">
+                <h2 class="slide-title">Nästa steg</h2>
+                <div class="highlight-box" style="margin: 40px 0;">
+                    <h3>Kvadrat kan hjälpa er med:</h3>
+                    <p>Strategisk rådgivning, teknisk implementation, utbildning och kontinuerlig support för er IaC-resa.</p>
+                </div>
+                
+                <ul class="bullet-list">
+                    <li>Genomföra en infrastruktur-assessment</li>
+                    <li>Utveckla en anpassad IaC-strategi</li>
+                    <li>Implementera pilotprojekt</li>
+                    <li>Utbilda era team</li>
+                    <li>Tillhandahålla kontinuerlig support</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Thank You Slide -->
+        <div class="slide thank-you-slide">
+            <div class="slide-content">
+                <h1 class="thank-you-title">Tack!</h1>
+                <p style="font-size: 24px; margin-bottom: 48px;">
+                    Frågor och diskussion
+                </p>
+                
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">@</div>
+                        <div>info@kvadrat.se</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>+46 8 123 45 67</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🌐</div>
+                        <div>www.kvadrat.se</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>Stockholm, Sverige</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

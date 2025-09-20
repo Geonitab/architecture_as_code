@@ -1,0 +1,350 @@
+%%
+%% Kvadrat Book Template
+%% Professional Swedish consulting company branding
+%% Based on Eisvogel template with Kvadrat customizations
+%%
+
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+
+% Language and encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[swedish]{babel}
+
+% Kvadrat color definitions
+\usepackage{xcolor}
+\definecolor{KvadratBlue}{HTML}{1e3a8a}
+\definecolor{KvadratBlueLight}{HTML}{3b82f6}
+\definecolor{KvadratBlueDark}{HTML}{1e293b}
+\definecolor{KvadratGray}{HTML}{64748b}
+\definecolor{KvadratGrayLight}{HTML}{f1f5f9}
+\definecolor{KvadratSuccess}{HTML}{059669}
+\definecolor{KvadratWarning}{HTML}{d97706}
+
+% Typography - Inter font family
+\usepackage{fontspec}
+\setmainfont{Inter}[
+    Path = ./fonts/,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic
+]
+\setmonofont{JetBrains Mono}[
+    Path = ./fonts/,
+    Extension = .ttf,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold
+]
+
+% Page layout
+\usepackage[
+    a4paper,
+    left=25mm,
+    right=25mm,
+    top=30mm,
+    bottom=30mm,
+    headheight=15mm,
+    headsep=10mm,
+    footskip=15mm
+]{geometry}
+
+% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+% Header styling
+\fancyhead[LE,RO]{\textcolor{KvadratBlue}{\textbf{\thepage}}}
+\fancyhead[LO]{\textcolor{KvadratGray}{\small\nouppercase{\rightmark}}}
+\fancyhead[RE]{\textcolor{KvadratGray}{\small\nouppercase{\leftmark}}}
+
+% Footer styling
+\fancyfoot[C]{\textcolor{KvadratGray}{\small Arkitektur som kod - Kvadrat Professional Publication}}
+
+% Remove header rule and add custom styling
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{KvadratBlue}\leaders\hrule height \footrulewidth\hfill}}
+
+% Title page styling
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathmorphing}
+
+% Enhanced title page
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+        \newgeometry{margin=0cm}
+        
+        % Background gradient
+        \begin{tikzpicture}[remember picture,overlay]
+            \fill[KvadratBlue] (current page.south west) rectangle (current page.north east);
+            \fill[KvadratBlueDark, opacity=0.7] (current page.south west) rectangle ([yshift=10cm]current page.south east);
+        \end{tikzpicture}
+        
+        % Logo and branding
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[anchor=north west] at ([xshift=40mm,yshift=-30mm]current page.north west) {
+                \begin{minipage}{80mm}
+                    % Logo placeholder
+                    \begin{tikzpicture}
+                        \fill[white] (0,0) rectangle (12mm,12mm);
+                        \node at (6mm,6mm) {\textcolor{KvadratBlue}{\Huge\textbf{K}}};
+                    \end{tikzpicture}
+                    \hspace{4mm}
+                    \begin{minipage}[b]{50mm}
+                        \textcolor{white}{\textbf{KVADRAT}}\\
+                        \textcolor{white}{\small Professional Publication}
+                    \end{minipage}
+                \end{minipage}
+            };
+        \end{tikzpicture}
+        
+        % Main title
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[anchor=center] at ([yshift=2cm]current page.center) {
+                \begin{minipage}{140mm}
+                    \centering
+                    \textcolor{white}{\fontsize{72}{80}\selectfont\textbf{Arkitektur}}\\[5mm]
+                    \textcolor{white}{\fontsize{72}{80}\selectfont som \textcolor{KvadratBlueLight}{\textbf{kod}}}\\[15mm]
+                    \textcolor{white}{\fontsize{24}{32}\selectfont En omfattande guide till Infrastructure as Code}\\[5mm]
+                    \textcolor{white}{\fontsize{18}{24}\selectfont från grundläggande principer till avancerad implementation}
+                \end{minipage}
+            };
+        \end{tikzpicture}
+        
+        % Footer information
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[anchor=south west] at ([xshift=40mm,yshift=40mm]current page.south west) {
+                \textcolor{white}{\textbf{\Large Kvadrat Expertteam}}
+            };
+            \node[anchor=south east] at ([xshift=-40mm,yshift=40mm]current page.south east) {
+                \begin{minipage}[b]{40mm}
+                    \raggedleft
+                    \textcolor{white}{\textbf{\Large 2024}}\\
+                    \textcolor{white}{Första upplagan}
+                \end{minipage}
+            };
+        \end{tikzpicture}
+        
+        % Professional accent
+        \begin{tikzpicture}[remember picture,overlay]
+            \fill[KvadratBlueLight] ([xshift=0mm]current page.south west) rectangle ([xshift=8mm]current page.north west);
+        \end{tikzpicture}
+        
+        \restoregeometry
+    \end{titlepage}
+    \clearpage
+}
+
+% Chapter styling
+\usepackage{titlesec}
+\titleformat{\chapter}[block]
+    {\normalfont\huge\bfseries\color{KvadratBlueDark}}
+    {\textcolor{KvadratBlue}{\thechapter}}{20pt}{\Huge}
+    [\vspace{2mm}\textcolor{KvadratBlue}{\titlerule[2pt]}]
+
+\titleformat{\section}
+    {\normalfont\Large\bfseries\color{KvadratBlue}}
+    {\thesection}{1em}{}
+    [\textcolor{KvadratBlue}{\titlerule[0.5pt]}]
+
+\titleformat{\subsection}
+    {\normalfont\large\bfseries\color{KvadratBlueDark}}
+    {\thesubsection}{1em}{}
+
+% Table of contents styling
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\huge\bfseries\color{KvadratBlueDark}}
+\renewcommand{\cftchapfont}{\bfseries\color{KvadratBlue}}
+\renewcommand{\cftsecfont}{\color{KvadratBlueDark}}
+\renewcommand{\cftchappagefont}{\bfseries\color{KvadratBlue}}
+
+% Enhanced lists
+\usepackage{enumitem}
+\setlist[itemize,1]{label=\textcolor{KvadratBlue}{\textbullet}}
+\setlist[itemize,2]{label=\textcolor{KvadratBlueLight}{\textbullet}}
+\setlist[enumerate,1]{label=\textcolor{KvadratBlue}{\arabic*.}}
+
+% Code highlighting
+\usepackage{listings}
+\usepackage{lstfiracode}
+
+\lstdefinestyle{kvadrat}{
+    backgroundcolor=\color{KvadratGrayLight},
+    commentstyle=\color{KvadratGray},
+    keywordstyle=\color{KvadratBlue}\bfseries,
+    numberstyle=\tiny\color{KvadratGray},
+    stringstyle=\color{KvadratSuccess},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=leftline,
+    framerule=2pt,
+    rulecolor=\color{KvadratBlue}
+}
+\lstset{style=kvadrat}
+
+% Professional boxes and callouts
+\usepackage{mdframed}
+\usepackage{fontawesome5}
+
+% Info box
+\newmdenv[
+    linecolor=KvadratBlueLight,
+    linewidth=2pt,
+    leftmargin=10pt,
+    rightmargin=10pt,
+    backgroundcolor=KvadratGrayLight,
+    topline=false,
+    bottomline=false,
+    rightline=false
+]{infobox}
+
+% Warning box
+\newmdenv[
+    linecolor=KvadratWarning,
+    linewidth=2pt,
+    leftmargin=10pt,
+    rightmargin=10pt,
+    backgroundcolor=white,
+    topline=false,
+    bottomline=false,
+    rightline=false
+]{warningbox}
+
+% Success box
+\newmdenv[
+    linecolor=KvadratSuccess,
+    linewidth=2pt,
+    leftmargin=10pt,
+    rightmargin=10pt,
+    backgroundcolor=white,
+    topline=false,
+    bottomline=false,
+    rightline=false
+]{successbox}
+
+% Custom commands for callouts
+\newcommand{\infoblock}[2]{
+    \begin{infobox}
+        \textcolor{KvadratBlue}{\faInfoCircle} \textbf{#1}\\[0.5em]
+        #2
+    \end{infobox}
+}
+
+\newcommand{\warningblock}[2]{
+    \begin{warningbox}
+        \textcolor{KvadratWarning}{\faExclamationTriangle} \textbf{#1}\\[0.5em]
+        #2
+    \end{warningbox}
+}
+
+\newcommand{\successblock}[2]{
+    \begin{successbox}
+        \textcolor{KvadratSuccess}{\faCheckCircle} \textbf{#1}\\[0.5em]
+        #2
+    \end{successbox}
+}
+
+% Enhanced tables
+\usepackage{booktabs}
+\usepackage{colortbl}
+\arrayrulecolor{KvadratBlue}
+
+% Links and cross-references
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=KvadratBlue,
+    filecolor=KvadratBlue,
+    urlcolor=KvadratBlueLight,
+    citecolor=KvadratBlue,
+    pdfauthor={Kvadrat Expertteam},
+    pdftitle={Arkitektur som kod},
+    pdfsubject={Infrastructure as Code},
+    pdfkeywords={Infrastructure as Code, DevOps, Cloud, Automation}
+}
+
+% Graphics and figures
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+
+\captionsetup{
+    labelfont={bf,color=KvadratBlue},
+    textfont={color=KvadratBlueDark},
+    format=hang,
+    margin=10pt
+}
+
+% Professional footer for last page
+\newcommand{\kvadratfooter}{
+    \clearpage
+    \thispagestyle{empty}
+    \null\vfill
+    
+    \begin{center}
+        \begin{tikzpicture}
+            \fill[KvadratBlue] (0,0) rectangle (12mm,12mm);
+            \node at (6mm,6mm) {\textcolor{white}{\Huge\textbf{K}}};
+        \end{tikzpicture}
+        
+        \vspace{10mm}
+        
+        {\Large\textbf{\textcolor{KvadratBlue}{Kvadrat Professional Services}}}\\[5mm]
+        {\large\textcolor{KvadratGray}{Expert konsulttjänster inom teknik och arkitektur}}\\[10mm]
+        
+        \textcolor{KvadratGray}{
+            \textbf{Kontakt:} info@kvadrat.se | +46 8 123 45 67 | www.kvadrat.se\\
+            \textbf{Adress:} Stockholm, Sverige\\[5mm]
+            © 2024 Kvadrat. Alla rättigheter förbehållna.
+        }
+    \end{center}
+    
+    \vfill\null
+}
+
+% Document begins
+\begin{document}
+
+$if(title)$
+\title{$title$}
+$endif$
+
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+
+$if(date)$
+\date{$date$}
+$endif$
+
+$if(title)$
+\maketitle
+$endif$
+
+$if(toc)$
+{
+\hypersetup{linkcolor=KvadratBlue}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+\clearpage
+}
+$endif$
+
+$body$
+
+% Add professional footer
+\kvadratfooter
+
+\end{document}
