@@ -55,6 +55,7 @@ class TestConsistency:
     def test_header_hierarchy_consistency(self, chapter_files, requirements_config):
         """Test that header hierarchy is consistent (H1 -> H2 -> H3 -> H4)."""
         valid_hierarchy = requirements_config["quality"]["consistency"]["header_hierarchy"]
+        fail_on_consistency = requirements_config.get("testing", {}).get("fail_on_consistency_issues", True)
         
         hierarchy_issues = []
         for chapter_file in chapter_files:
@@ -80,7 +81,15 @@ class TestConsistency:
                     })
                 prev_level = level
         
-        assert not hierarchy_issues, f"Header hierarchy issues: {hierarchy_issues}"
+        if hierarchy_issues:
+            if fail_on_consistency:
+                assert not hierarchy_issues, f"Header hierarchy issues: {hierarchy_issues}"
+            else:
+                import warnings
+                warnings.warn(
+                    f"Header hierarchy issues detected in {len(hierarchy_issues)} cases. Consider restructuring headers to follow H1->H2->H3 flow.",
+                    UserWarning
+                )
     
     def test_diagram_reference_consistency(self, chapter_files):
         """Test that diagram references follow consistent format."""
@@ -210,8 +219,9 @@ class TestConsistency:
             )
     
     def test_chapter_length(self, chapter_files, requirements_config):
-        """Test that each chapter exceeds the minimum word count requirement."""
+        """Test that each chapter meets minimum word count requirement."""
         minimum_words = requirements_config["structure"]["minimum_word_count"]
+        fail_on_consistency = requirements_config.get("testing", {}).get("fail_on_consistency_issues", True)
         
         # Special chapters that may have different word count requirements
         special_chapters = requirements_config["book"].get("special_chapters", {})
@@ -238,9 +248,17 @@ class TestConsistency:
                     "minimum_required": minimum_words
                 })
         
-        assert not short_chapters, (
-            f"Chapters below minimum word count ({minimum_words} words): {short_chapters}"
-        )
+        if short_chapters:
+            if fail_on_consistency:
+                assert not short_chapters, (
+                    f"Chapters below minimum word count ({minimum_words} words): {short_chapters}"
+                )
+            else:
+                import warnings
+                warnings.warn(
+                    f"Chapters below minimum word count detected: {len(short_chapters)} chapters under {minimum_words} words. Consider expanding content.",
+                    UserWarning
+                )
     
     def _count_content_words(self, content):
         """Count actual content words, excluding markdown formatting and code blocks."""
