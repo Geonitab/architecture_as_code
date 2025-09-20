@@ -37,85 +37,108 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      <header className="border-b bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3 mb-2">
-            <BookOpen className="h-8 w-8 text-primary" />
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Arkitektur som kod
-            </h1>
+    <div className="min-h-screen kvadrat-gradient-subtle">
+      <header className="border-b bg-card/80 backdrop-blur-sm shadow-sm">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex items-center gap-4 mb-3">
+            <div className="flex items-center justify-center w-12 h-12 bg-primary rounded-lg shadow-kvadrat">
+              <BookOpen className="h-7 w-7 text-primary-foreground" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-foreground tracking-tight">
+                Arkitektur som kod
+              </h1>
+              <div className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mt-1">
+                En professionell Kvadrat-publikation
+              </div>
+            </div>
           </div>
-          <p className="text-muted-foreground text-lg">
-            En omfattande bok om Infrastructure as Code - från grundläggande principer till avancerad implementation
+          <p className="text-muted-foreground text-lg leading-relaxed max-w-4xl">
+            En omfattande bok om Infrastructure as Code - från grundläggande principer till avancerad implementation.
+            Utvecklad enligt Kvadrats professionella standarder för teknisk dokumentation.
           </p>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid gap-8">
-          {/* Project Overview */}
-          <Card className="border-primary/20">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Code className="h-5 w-5 text-primary" />
-                <CardTitle>Projektöversikt</CardTitle>
+      <main className="container mx-auto px-4 py-12">
+        <div className="grid gap-10">
+          {/* Project Overview - Enhanced styling */}
+          <Card className="shadow-kvadrat border-primary/20 bg-gradient-to-br from-card to-card/80">
+            <CardHeader className="pb-6">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl border border-primary/20">
+                  <Code className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-2xl text-foreground">Projektöversikt</CardTitle>
+                  <CardDescription className="text-base">
+                    Iteration 2: AI-prompt utvecklad och GitHub CI/CD aktiverad
+                  </CardDescription>
+                </div>
               </div>
-              <CardDescription>
-                Iteration 2: AI-prompt utvecklad och GitHub CI/CD aktiverad
-              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-accent/10 p-4 rounded-lg">
-                  <h3 className="font-semibold text-accent-foreground">Totalt kapitel</h3>
-                  <p className="text-2xl font-bold text-primary">{chapters.length}</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-gradient-to-br from-primary/5 to-primary/10 p-6 rounded-xl border border-primary/20">
+                  <h3 className="font-semibold text-primary mb-2">Totalt kapitel</h3>
+                  <p className="text-3xl font-bold text-primary">{chapters.length}</p>
                 </div>
-                <div className="bg-secondary/10 p-4 rounded-lg">
-                  <h3 className="font-semibold text-secondary-foreground">Fokusområden</h3>
-                  <p className="text-2xl font-bold text-primary">{areas.length}</p>
+                <div className="bg-gradient-to-br from-accent/5 to-accent/10 p-6 rounded-xl border border-accent/20">
+                  <h3 className="font-semibold text-accent mb-2">Fokusområden</h3>
+                  <p className="text-3xl font-bold text-accent">{areas.length}</p>
                 </div>
-                <div className="bg-muted/20 p-4 rounded-lg">
-                  <h3 className="font-semibold text-muted-foreground">Status</h3>
-                  <p className="text-2xl font-bold text-primary">Utveckling</p>
+                <div className="bg-gradient-to-br from-success/5 to-success/10 p-6 rounded-xl border border-success/20">
+                  <h3 className="font-semibold text-success mb-2">Status</h3>
+                  <p className="text-2xl font-bold text-success">Utveckling</p>
                 </div>
               </div>
               
-              <div className="flex flex-wrap gap-2">
-                {areas.map((area) => (
-                  <Badge key={area} variant="secondary" className="text-xs">
-                    {area}
-                  </Badge>
-                ))}
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-foreground">Fokusområden</h4>
+                <div className="flex flex-wrap gap-3">
+                  {areas.map((area) => (
+                    <Badge 
+                      key={area} 
+                      variant="secondary" 
+                      className="bg-primary/10 text-primary hover:bg-primary/20 transition-all duration-200 px-3 py-1.5 text-sm font-medium"
+                    >
+                      {area}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Chapter Structure */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Layers className="h-5 w-5 text-primary" />
-                <CardTitle>Kapitelstruktur</CardTitle>
+          {/* Chapter Structure - Enhanced */}
+          <Card className="shadow-kvadrat bg-gradient-to-br from-card to-card/80">
+            <CardHeader className="pb-6">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-xl border border-accent/20">
+                  <Layers className="h-6 w-6 text-accent" />
+                </div>
+                <div>
+                  <CardTitle className="text-2xl text-foreground">Kapitelstruktur</CardTitle>
+                  <CardDescription className="text-base">
+                    Alla planerade kapitel för boken om arkitektur som kod
+                  </CardDescription>
+                </div>
               </div>
-              <CardDescription>
-                Alla planerade kapitel för boken om arkitektur som kod
-              </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-3">
+              <div className="grid gap-4">
                 {chapters.map((chapter) => (
-                  <div key={chapter.id} className="flex items-center justify-between p-3 bg-card border rounded-lg hover:bg-accent/5 transition-colors">
-                    <div className="flex items-center gap-3">
-                      <Badge variant="outline" className="font-mono text-xs">
+                  <div key={chapter.id} className="flex items-center justify-between p-4 bg-gradient-to-r from-card to-muted/20 border border-border rounded-xl hover:border-primary/30 hover:shadow-sm transition-all duration-200">
+                    <div className="flex items-center gap-4">
+                      <Badge variant="outline" className="font-mono text-sm bg-primary/5 text-primary border-primary/30 px-3 py-1">
                         {chapter.id}
                       </Badge>
                       <div>
-                        <h3 className="font-medium">{chapter.title}</h3>
+                        <h3 className="font-semibold text-foreground text-base">{chapter.title}</h3>
                         <p className="text-sm text-muted-foreground">{chapter.area}</p>
                       </div>
                     </div>
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="bg-success/10 text-success border-success/30 font-medium">
                       {chapter.status === "completed" ? "Klar" : "Planerad"}
                     </Badge>
                   </div>
