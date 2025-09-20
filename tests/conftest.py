@@ -31,7 +31,10 @@ def requirements_config():
 @pytest.fixture(scope="session")
 def chapter_files(docs_directory):
     """List all markdown chapter files."""
-    return list(docs_directory.glob("*.md"))
+    # Get all .md files but exclude README.md
+    all_md_files = docs_directory.glob("*.md")
+    chapter_files = [f for f in all_md_files if f.name != "README.md"]
+    return chapter_files
 
 @pytest.fixture(scope="session")
 def mermaid_files(docs_directory):
