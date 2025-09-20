@@ -1,0 +1,200 @@
+name: Docs Directory Protection
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+
+env:
+  MAX_DELETIONS_RATIO: 0.1  # Maximum 10% of lines can be deleted
+  MIN_CONTENT_LENGTH: 100    # Minimum content length for chapter files
+
+jobs:
+  validate-docs-changes:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: 🔍 Analyze docs directory changes
+        id: analyze
+        run: |
+          echo "=== Analyzing docs directory changes in PR #${{ github.event.number }} ==="
+          
+          # Get the base branch
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          
+          # Get list of changed files in docs directory
+          changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD | grep '^docs/' || true)
+          
+          if [ -z "$changed_files" ]; then
+            echo "No changes detected in docs directory"
+            echo "protection_needed=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "Changed files in docs directory:"
+          echo "$changed_files"
+          
+          # Analyze each changed file for excessive deletions
+          validation_failed=false
+          critical_files_modified=false
+          summary_output=""
+          
+          for file in $changed_files; do
+            if [ -f "$file" ]; then
+              echo "--- Analyzing $file ---"
+              
+              # Get diff stats
+              diff_stats=$(git diff --numstat origin/${{ github.event.pull_request.base.ref }}...HEAD -- "$file")
+              added=$(echo "$diff_stats" | awk '{print $1}')
+              deleted=$(echo "$diff_stats" | awk '{print $2}')
+              
+              # Skip if no diff stats (binary files, etc.)
+              if [ "$added" = "-" ] || [ "$deleted" = "-" ]; then
+                echo "Skipping binary or problematic file: $file"
+                continue
+              fi
+              
+              # Convert to numbers (handle empty values)
+              added=${added:-0}
+              deleted=${deleted:-0}
+              
+              echo "  Lines added: $added"
+              echo "  Lines deleted: $deleted"
+              
+              # Check if this is a critical chapter file
+              if echo "$file" | grep -E '^docs/[0-9]+_.*\.md$'; then
+                critical_files_modified=true
+                echo "  ⚠️ Critical chapter file modified"
+              fi
+              
+              # Check for excessive deletions
+              if [ "$deleted" -gt 0 ] && [ "$added" -ge 0 ]; then
+                if [ "$added" -eq 0 ]; then
+                  deletion_ratio=1.0  # 100% deletion if no additions
+                else
+                  # Calculate deletion ratio (deleted / total_original_content)
+                  total_changes=$((added + deleted))
+                  deletion_ratio=$(echo "scale=3; $deleted / ($total_changes + $deleted)" | bc -l)
+                fi
+                
+                echo "  Deletion ratio: $deletion_ratio"
+                
+                # Check if deletion ratio exceeds threshold
+                if (( $(echo "$deletion_ratio > $MAX_DELETIONS_RATIO" | bc -l) )); then
+                  echo "  ❌ EXCESSIVE DELETIONS DETECTED!"
+                  echo "  This file has ${deletion_ratio} deletion ratio (threshold: $MAX_DELETIONS_RATIO)"
+                  validation_failed=true
+                  summary_output="$summary_output- **$file**: ${deleted} lines deleted, ${added} lines added (${deletion_ratio} deletion ratio)\\n"
+                fi
+              fi
+              
+              # Check file content length for chapter files
+              if echo "$file" | grep -E '^docs/[0-9]+_.*\.md$'; then
+                content_length=$(wc -l < "$file" 2>/dev/null || echo "0")
+                echo "  Current content length: $content_length lines"
+                
+                if [ "$content_length" -lt "$MIN_CONTENT_LENGTH" ]; then
+                  echo "  ❌ CONTENT TOO SHORT!"
+                  echo "  Chapter file has only $content_length lines (minimum: $MIN_CONTENT_LENGTH)"
+                  validation_failed=true
+                  summary_output="$summary_output- **$file**: Only ${content_length} lines of content (minimum: ${MIN_CONTENT_LENGTH})\\n"
+                fi
+              fi
+            else
+              echo "File deleted: $file"
+              if echo "$file" | grep -E '^docs/[0-9]+_.*\.md$'; then
+                echo "❌ CRITICAL CHAPTER FILE DELETED!"
+                validation_failed=true
+                critical_files_modified=true
+                summary_output="$summary_output- **$file**: Critical chapter file was deleted\\n"
+              fi
+            fi
+          done
+          
+          # Set outputs
+          echo "validation_failed=$validation_failed" >> $GITHUB_OUTPUT
+          echo "critical_files_modified=$critical_files_modified" >> $GITHUB_OUTPUT
+          echo "summary_output<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$summary_output" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          if [ "$validation_failed" = "true" ]; then
+            echo "=== VALIDATION FAILED ==="
+            echo "The changes to the docs directory are not acceptable."
+            exit 1
+          else
+            echo "=== VALIDATION PASSED ==="
+            echo "Changes to docs directory are within acceptable limits."
+          fi
+
+      - name: 📝 Comment on PR with validation results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const validation_failed = '${{ steps.analyze.outputs.validation_failed }}' === 'true';
+            const critical_files_modified = '${{ steps.analyze.outputs.critical_files_modified }}' === 'true';
+            const summary_output = `${{ steps.analyze.outputs.summary_output }}`;
+            
+            let comment_body = `## 📚 Docs Directory Protection Check\n\n`;
+            
+            if (validation_failed) {
+              comment_body += `❌ **VALIDATION FAILED** - Changes to docs directory are not acceptable.\n\n`;
+              comment_body += `### Issues detected:\n${summary_output}\n`;
+              comment_body += `### Protection Rules:\n`;
+              comment_body += `- Chapter files must not have excessive content deletions (max ${process.env.MAX_DELETIONS_RATIO * 100}% deletion ratio)\n`;
+              comment_body += `- Chapter files must maintain minimum content length (${process.env.MIN_CONTENT_LENGTH} lines)\n`;
+              comment_body += `- Critical chapter files should not be deleted\n\n`;
+              comment_body += `**Action Required:** Please review and adjust your changes to the docs directory before this PR can be merged.\n`;
+              
+              if (critical_files_modified) {
+                comment_body += `\n⚠️ **Critical chapter files have been modified.** If this is intentional, please provide justification in the PR description.\n`;
+              }
+            } else {
+              comment_body += `✅ **VALIDATION PASSED** - Changes to docs directory are within acceptable limits.\n\n`;
+              comment_body += `The modifications to the docs directory have been reviewed and are acceptable.\n`;
+            }
+            
+            // Check if there's already a comment from this action
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            
+            const existing_comment = comments.data.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('📚 Docs Directory Protection Check')
+            );
+            
+            if (existing_comment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing_comment.id,
+                body: comment_body
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comment_body
+              });
+            }
+
+      - name: 🚫 Fail if validation failed
+        if: steps.analyze.outputs.validation_failed == 'true'
+        run: |
+          echo "❌ Docs directory protection validation failed!"
+          echo "PR cannot be merged until the issues with docs directory changes are resolved."
+          exit 1

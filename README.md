@@ -34,7 +34,11 @@ docs/                    # Bokens innehåll
 └── arkitektur_som_kod.pdf  # Genererad bok
 
 .github/workflows/      # CI/CD automation
-└── build-book.yml     # GitHub Actions för automatisk bokbygge
+├── build-book.yml     # GitHub Actions för automatisk bokbygge
+└── docs-protection.yml # Skydd för docs-mappen
+
+scripts/                # Verktyg och validering
+└── validate-docs-protection.sh  # Validering av docs-ändringar
 ```
 
 ### Automatisk byggprocess
@@ -48,6 +52,22 @@ Boken byggs automatiskt via GitHub Actions när:
 1. **Mermaid → PNG**: Konverterar diagram till bilder
 2. **Pandoc**: Genererar PDF med Eisvogel-template
 3. **Artifact**: Sparar PDF för nedladdning
+
+### 🛡️ Docs Directory Protection
+
+Systemet skyddar viktigt bokinnehåll från oavsiktliga ändringar:
+
+- **Automatisk validering**: GitHub Actions kontrollerar alla ändringar i `docs/`
+- **Innehållsskydd**: Förhindrar massiva borttagningar av text (max 10% deletion ratio)
+- **Minimilängd**: Kapitel måste behålla minst 100 rader innehåll
+- **Kritiska filer**: Numrerade kapitel kan inte tas bort
+
+För att validera dina ändringar innan push:
+```bash
+./scripts/validate-docs-protection.sh
+```
+
+Se [DOCS_PROTECTION.md](DOCS_PROTECTION.md) för fullständig dokumentation.
 4. **Release**: Skapar automatisk release på main branch
 
 ### Lokalt byggande
