@@ -99,3 +99,31 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 **Integration Testing:** Testning som verifierar att olika komponenter eller services fungerar korrekt tillsammans när de är integrerade i ett system.
 
 **Compliance Testing:** Automatiserad validering av att system och konfigurationer följer relevanta regulatoriska krav, säkerhetsstandarder och organisatoriska policies.
+
+**Conway's Law:** Observation att organisationer designar system som speglar deras kommunikationsstrukturer, vilket påverkar hur team bör organiseras för optimal systemdesign.
+
+**Cross-functional Team:** Team som inkluderar medlemmar med olika färdigheter och roller som arbetar tillsammans mot gemensamma mål, essentiellt för DevOps-framgång.
+
+**DevOps Culture:** Kulturell transformation från traditionella utvecklings- och driftsilos till kollaborativa arbetssätt som betonar shared ownership och continuous improvement.
+
+**Psychological Safety:** Teammiljö där medlemmar känner sig säkra att ta risker, erkänna misstag och experimentera utan rädsla för bestraffning eller förödmjukelse.
+
+**Servant Leadership:** Ledarskapsfilosofi som fokuserar på att tjäna teamet och främja deras framgång snarare än traditionell kommando-och-kontroll-ledning.
+
+**Best Practice Evolution:** Kontinuerlig utveckling av rekommenderade metoder baserat på praktisk erfarenhet, community feedback och tekniska framsteg.
+
+**Anti-Pattern:** Vanligt förekommande men kontraproduktivt lösningsförslag som initialt verkar användbart men som leder till negativa konsekvenser.
+
+**Policy-as-Code:** Metod där organisatoriska policies, säkerhetsregler och compliance-krav definieras som kod för automatiserad enforcement och testing.
+
+**Infrastructure Governance:** Ramverk av policies, processer och verktyg för att styra och kontrollera infrastrukturutveckling och -drift inom organisationer.
+
+**Technical Debt:** Ackumulerad kostnad av shortcuts och suboptimala tekniska beslut som kräver framtida refactoring eller omarbetning för att bibehålla systemkvalitet.
+
+**Blameless Culture:** Organisationskultur som fokuserar på systemförbättringar efter incidenter snarare än individuell skuld, vilket främjar öppenhet och lärande.
+
+**Change Management:** Systematisk approach för att hantera organisatoriska förändringar, inklusive stakeholder engagement, kommunikation och motståndhantering.
+
+**DevSecOps:** Utvecklingsmetodik som integrerar säkerhetspraktiker genom hela utvecklingslivscykeln snarare än som en separat fas i slutet.
+
+**Site Reliability Engineering (SRE):** Disciplin som tillämpar mjukvaruingenjörsprinciper på operationella problem för att skapa skalbara och mycket tillförlitliga mjukvarusystem.
