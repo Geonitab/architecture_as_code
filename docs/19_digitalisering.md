@@ -1,6 +1,6 @@
 # Digitalisering genom kodbaserad infrastruktur
 
-![Digitaliseringsprocess](images/diagram_09_kapitel8.png)
+![Digitaliseringsprocess](images/diagram_19_digitalisering.png)
 
 *Infrastructure as Code utgör ryggraden i moderne digitaliseringsinitiativ genom att möjliggöra snabb, skalbar och kostnadseffektiv transformation av IT-miljöer. Diagrammet illustrerar den strategiska vägen från traditionell infrastruktur till fullständigt kodbaserad digital plattform.*
 

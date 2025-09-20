@@ -14,7 +14,7 @@ Denna bok täcker Architecture as Code från grundläggande principer till avanc
 - IT-chefer
 
 ### Innehåll
-23 kapitel som täcker:
+25 kapitel som täcker:
 - Grundläggande Architecture as Code-principer
 - Infrastructure as Code som praktiskt exempel
 - Molnarkitektur som kod
@@ -28,7 +28,7 @@ Denna bok täcker Architecture as Code från grundläggande principer till avanc
 ### Struktur
 ```
 docs/                    # Bokens innehåll
-├── *.md                # Markdown-kapitel (01_inledning.md, 02_kapitel1.md, osv)
+├── *.md                # Markdown-kapitel (01_inledning.md, 02_grundlaggande_principer.md, osv)
 ├── images/             # Mermaid-diagram
 │   └── *.mmd          # Mermaid källfiler
 ├── build_book.sh      # Lokal byggscript

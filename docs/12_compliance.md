@@ -1,8 +1,8 @@
 # Compliance och regelefterlevnad
 
-![Compliance och regelefterlevnad](images/diagram_14_kapitel13.png)
+![Compliance och regelefterlevnad](images/diagram_12_compliance.png)
 
-Infrastructure as Code spelar en central roll för att möta växande compliance-krav och regulatoriska förväntningar. Som vi såg i [kapitel 12 om policy as code](12_kapitel11.md), kan tekniska lösningar för automatiserad compliance betydligt förenkla och förbättra organisationers förmåga att uppfylla komplexa regelkrav. Detta kapitel fokuserar på de organisatoriska och processrelaterade aspekterna av compliance-hantering genom Infrastructure as Code.
+Infrastructure as Code spelar en central roll för att möta växande compliance-krav och regulatoriska förväntningar. Som vi såg i [kapitel 11 om policy as code](11_policy_sakerhet.md), kan tekniska lösningar för automatiserad compliance betydligt förenkla och förbättra organisationers förmåga att uppfylla komplexa regelkrav. Detta kapitel fokuserar på de organisatoriska och processrelaterade aspekterna av compliance-hantering genom Infrastructure as Code.
 
 ## AI och maskininlärning för infrastrukturautomatisering
 
@@ -235,9 +235,9 @@ resource "aws_vpc" "kvantsäker" {
 
 Framtida Infrastructure as Code-utveckling kommer att drivas av AI-automation, serverless-arkitekturer, beredskap för kvantdatorer och hållbarhetskrav. Organisationer måste proaktivt investera i nya teknologier, utveckla kvantsäkra säkerhetsstrategier och integrera miljöhänsyn i infrastrukturplanering.
 
-Framgång kräver kontinuerligt lärande, strategisk teknologiadoption och långsiktig vision för infrastrukturutveckling. Som vi har sett genom bokens progression från [grundläggande principer](02_kapitel1.md) till dessa avancerade framtida teknologier, utvecklas Infrastructure as Code kontinuerligt för att möta nya utmaningar och möjligheter.
+Framgång kräver kontinuerligt lärande, strategisk teknologiadoption och långsiktig vision för infrastrukturutveckling. Som vi har sett genom bokens progression från [grundläggande principer](02_grundlaggande_principer.md) till dessa avancerade framtida teknologier, utvecklas Infrastructure as Code kontinuerligt för att möta nya utmaningar och möjligheter.
 
-Svenska organisationer som investerar i dessa emerging technologies och bibehåller krypto-agilitet kommer att vara välpositionerade för framtida teknologiska störningar. Integration av dessa teknologier kräver både teknisk expertis och organisatorisk anpassningsförmåga som diskuteras i [kapitel 10 om organisatorisk förändring](10_kapitel9.md).
+Svenska organisationer som investerar i dessa emerging technologies och bibehåller krypto-agilitet kommer att vara välpositionerade för framtida teknologiska störningar. Integration av dessa teknologier kräver både teknisk expertis och organisatorisk anpassningsförmåga som diskuteras i [kapitel 17 om organisatorisk förändring](17_organisatorisk_forandring.md).
 
 ## Källor och referenser
 

@@ -1,30 +1,30 @@
 # Slutsats
 
-Infrastructure as Code har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla infrastruktur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 23 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](19_kapitel18.md).
+Infrastructure as Code har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla infrastruktur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
 
 ## Viktiga lärdomar från vår IaC-resa
 
-Implementering av IaC kräver både teknisk excellens och organisatorisk förändring. Framgångsrika transformationer karaktäriseras av stark ledningsengagemang, omfattande utbildningsprogram och gradvis adoptionsstrategi som minimerar störningar av befintlig verksamhet, enligt de principer vi utforskade i [kapitel 10 om organisatorisk förändring](10_kapitel9.md).
+Implementering av IaC kräver både teknisk excellens och organisatorisk förändring. Framgångsrika transformationer karaktäriseras av stark ledningsengagemang, omfattande utbildningsprogram och gradvis adoptionsstrategi som minimerar störningar av befintlig verksamhet, enligt de principer vi utforskade i [kapitel 17 om organisatorisk förändring](17_organisatorisk_forandring.md).
 
-Den tekniska aspekten av Infrastructure as Code kräver djup förståelse för molnteknologier, automatiseringsverktyg och säkerhetsprinciper som vi behandlade från [grundläggande principer](02_kapitel1.md) genom [avancerad policy as code](12_kapitel11.md). Samtidigt är organisatoriska faktorer ofta avgörande för framgång, inklusive kulturell förändring, kompetensutveckling och processtandardisering.
+Den tekniska aspekten av Infrastructure as Code kräver djup förståelse för molnteknologier, automatiseringsverktyg och säkerhetsprinciper som vi behandlade från [grundläggande principer](02_grundlaggande_principer.md) genom [avancerad policy as code](11_policy_sakerhet.md). Samtidigt är organisatoriska faktorer ofta avgörande för framgång, inklusive kulturell förändring, kompetensutveckling och processtandardisering.
 
 ### Progressionen genom teknisk mognad
 
-Vår genomgång började med fundamentala koncept som deklarativ kod och idempotens i [kapitel 2](02_kapitel1.md), utvecklades genom praktiska implementationsaspekter som [versionhantering](03_kapitel2.md) och [CI/CD-automation](04_kapitel3.md), och kulminerade i avancerade topics som [containerorkestrering](11_kapitel10.md) och [framtida AI-driven automation](19_kapitel18.md).
+Vår genomgång började med fundamentala koncept som deklarativ kod och idempotens i [kapitel 2](02_grundlaggande_principer.md), utvecklades genom praktiska implementationsaspekter som [versionhantering](03_versionhantering.md) och [CI/CD-automation](05_automatisering_cicd.md), och kulminerade i avancerade topics som [containerorkestrering](08_containerisering.md) och [framtida AI-driven automation](21_framtida_trender.md).
 
-Säkerhetsaspekterna som introducerades i [kapitel 6](06_kapitel5.md) fördjupades genom [policy as code](12_kapitel11.md) och [compliance-hantering](14_kapitel13.md), vilket visar hur säkerhet måste genomsyra hela IaC-implementationen från design till drift.
+Säkerhetsaspekterna som introducerades i [kapitel 10](10_sakerhet.md) fördjupades genom [policy as code](11_policy_sakerhet.md) och [compliance-hantering](12_compliance.md), vilket visar hur säkerhet måste genomsyra hela IaC-implementationen från design till drift.
 
 ### Svenska organisationers unika utmaningar och möjligheter
 
 Genom bokens kapitel har vi sett hur svenska organisationer står inför specifika utmaningar och möjligheter:
 
-- **GDPR och datasuveränitet**: Från [säkerhetskapitlet](06_kapitel5.md) till [policy implementation](12_kapitel11.md) har vi sett hur svenska/EU-regleringar kräver särskild uppmärksamhet på dataskydd och compliance
-- **Klimatmål och hållbarhet**: [Framtidskapitlet](19_kapitel18.md) belyste hur Sveriges klimatneutralitetsmål 2045 driver innovation inom carbon-aware computing och hållbar infrastruktur
-- **Digitaliseringsstrategi**: [Kapitel 9 om digitalisering](09_kapitel8.md) visade hur IaC möjliggör den digitala transformation som svenska organisationer genomgår
+- **GDPR och datasuveränitet**: Från [säkerhetskapitlet](10_sakerhet.md) till [policy implementation](11_policy_sakerhet.md) har vi sett hur svenska/EU-regleringar kräver särskild uppmärksamhet på dataskydd och compliance
+- **Klimatmål och hållbarhet**: [Framtidskapitlet](21_framtida_trender.md) belyste hur Sveriges klimatneutralitetsmål 2045 driver innovation inom carbon-aware computing och hållbar infrastruktur
+- **Digitaliseringsstrategi**: [Kapitel 19 om digitalisering](19_digitalisering.md) visade hur IaC möjliggör den digitala transformation som svenska organisationer genomgår
 
 ## Framtida utveckling och teknologiska trender
 
-Cloud-native technologies, edge computing och artificiell intelligens driver nästa generation av Infrastructure as Code, som vi utforskade djupgående i [kapitel 19 om framtida trender](19_kapitel18.md). Emerging technologies som GitOps, policy engines och intelligent automation kommer att ytterligare förenkla och förbättra IaC-capabilities.
+Cloud-native technologies, edge computing och artificiell intelligens driver nästa generation av Infrastructure as Code, som vi utforskade djupgående i [kapitel 21 om framtida trender](21_framtida_trender.md). Emerging technologies som GitOps, policy engines och intelligent automation kommer att ytterligare förenkla och förbättra IaC-capabilities.
 
 Utvecklingen mot serverless computing och fully managed services förändrar vad som behöver hanteras som infrastrukturkod. Framtiden pekar mot högre abstraktion där utvecklare fokuserar på business logic medan plattformen hanterar underliggande infrastruktur automatiskt, vilket vi såg exemplifierat i diskussionen om [Platform Engineering](19_kapitel18.md).
 

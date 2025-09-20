@@ -8,7 +8,7 @@
 8| 
 9| Boken riktar sig till systemarkitekter, utvecklare, DevOps-ingenjörer, projektledare och IT-chefer som vill förstå och implementera Infrastructure as Code.
 10| ## Nuvarande struktur
-11| Projektet innehåller **23 kapitel** (21 befintliga filer + 2 som saknas). Följande filer finns i `docs/`-mappen:
+11| Projektet innehåller **25 kapitel** totalt. Följande filer finns i `docs/`-mappen:
 12| 
 13| - `01_inledning.md` - Inledning till arkitektur som kod
 14| - `02_kapitel1.md` - Grundläggande principer för Infrastructure as Code
