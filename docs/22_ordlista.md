@@ -67,3 +67,63 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 **Immutable Infrastructure:** Infrastrukturparadigm där komponenter aldrig modifieras efter deployment utan ersätts helt när ändringar behövs.
 
 **State Drift:** Situation där den faktiska infrastrukturtillståndet avviker från den definierade önskade tillståndet i Infrastructure as Code-definitioner.
+
+**FinOps:** Disciplin som kombinerar finansiell hantering med molnoperationer för att maximera affärsvärdet av molninvesteringar genom kostnadsoptimering och resource management.
+
+**Rightsizing:** Process för att optimera molnresurser genom att matcha instance-storlekar och typer med faktiska prestandakrav och användningsmönster.
+
+**Spot Instances:** Molninstanser som använder överskottskapacitet till kraftigt reducerade priser men kan termineras med kort varsel när kapacitet behövs för on-demand användning.
+
+**Cost Allocation Tags:** Metadataetiketter som används för att kategorisera och spåra molnresurskostnader per projekt, team, miljö eller andra organisatoriska dimensioner.
+
+**Terratest:** Open source Go-bibliotek för automatiserad testning av Infrastructure as Code, särskilt designat för Terraform-moduler och cloud infrastructure.
+
+**Policy as Code:** Approach där organisatoriska policies, säkerhetsregler och compliance-krav definieras som kod och kan automatiskt enforced och testade.
+
+**OPA (Open Policy Agent):** Cloud-native policy engine som möjliggör unified policy enforcement across olika services och teknologier genom deklarativ policy språk.
+
+**Chaos Engineering:** Disciplin för att experimentellt introducera fel i system för att bygga tillit till systemets förmåga att motstå turbulenta förhållanden i produktion.
+
+**Cloud-First Strategy:** Strategisk approach där organisationer primärt väljer molnbaserade lösningar för nya IT-initiativ innan on-premises alternativ övervägs.
+
+**Digital Transformation:** Fundamental förändring av affärsoperationer och värdeleverans genom integration av digital teknik i alla aspekter av verksamheten.
+
+**Multi-Cloud:** Strategi att använda molntjänster från flera olika leverantörer för att undvika vendor lock-in och optimera för specifika capabilities eller kostnader.
+
+**Data Sovereignty:** Konceptet att digital data är underkastat lagarna och juridiktionen i det land där den lagras eller bearbetas.
+
+**Cost Governance:** Ramverk av policies, processer och verktyg för att styra och kontrollera molnkostnader inom en organisation.
+
+**Resource Quotas:** Begränsningar som sätts på hur mycket av en viss resurs (CPU, minne, lagring) som kan konsumeras inom en given scope eller namespace.
+
+**Integration Testing:** Testning som verifierar att olika komponenter eller services fungerar korrekt tillsammans när de är integrerade i ett system.
+
+**Compliance Testing:** Automatiserad validering av att system och konfigurationer följer relevanta regulatoriska krav, säkerhetsstandarder och organisatoriska policies.
+
+**Conway's Law:** Observation att organisationer designar system som speglar deras kommunikationsstrukturer, vilket påverkar hur team bör organiseras för optimal systemdesign.
+
+**Cross-functional Team:** Team som inkluderar medlemmar med olika färdigheter och roller som arbetar tillsammans mot gemensamma mål, essentiellt för DevOps-framgång.
+
+**DevOps Culture:** Kulturell transformation från traditionella utvecklings- och driftsilos till kollaborativa arbetssätt som betonar shared ownership och continuous improvement.
+
+**Psychological Safety:** Teammiljö där medlemmar känner sig säkra att ta risker, erkänna misstag och experimentera utan rädsla för bestraffning eller förödmjukelse.
+
+**Servant Leadership:** Ledarskapsfilosofi som fokuserar på att tjäna teamet och främja deras framgång snarare än traditionell kommando-och-kontroll-ledning.
+
+**Best Practice Evolution:** Kontinuerlig utveckling av rekommenderade metoder baserat på praktisk erfarenhet, community feedback och tekniska framsteg.
+
+**Anti-Pattern:** Vanligt förekommande men kontraproduktivt lösningsförslag som initialt verkar användbart men som leder till negativa konsekvenser.
+
+**Policy-as-Code:** Metod där organisatoriska policies, säkerhetsregler och compliance-krav definieras som kod för automatiserad enforcement och testing.
+
+**Infrastructure Governance:** Ramverk av policies, processer och verktyg för att styra och kontrollera infrastrukturutveckling och -drift inom organisationer.
+
+**Technical Debt:** Ackumulerad kostnad av shortcuts och suboptimala tekniska beslut som kräver framtida refactoring eller omarbetning för att bibehålla systemkvalitet.
+
+**Blameless Culture:** Organisationskultur som fokuserar på systemförbättringar efter incidenter snarare än individuell skuld, vilket främjar öppenhet och lärande.
+
+**Change Management:** Systematisk approach för att hantera organisatoriska förändringar, inklusive stakeholder engagement, kommunikation och motståndhantering.
+
+**DevSecOps:** Utvecklingsmetodik som integrerar säkerhetspraktiker genom hela utvecklingslivscykeln snarare än som en separat fas i slutet.
+
+**Site Reliability Engineering (SRE):** Disciplin som tillämpar mjukvaruingenjörsprinciper på operationella problem för att skapa skalbara och mycket tillförlitliga mjukvarusystem.
