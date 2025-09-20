@@ -5,29 +5,29 @@ import { BookOpen, Code, Layers, GitBranch, CheckCircle, Clock, Download } from 
 
 const Index = () => {
   const chapters = [
-    { id: "01", title: "Inledning", area: "Grundläggande konceptens", status: "planned" },
-    { id: "02", title: "Grundläggande principer för Infrastructure as Code", area: "Systemutveckling", status: "planned" },
-    { id: "03", title: "Versionhantering och kodstruktur", area: "Systemutveckling", status: "planned" },
-    { id: "04", title: "Automatisering och CI/CD-pipelines", area: "Systemutveckling", status: "planned" },
-    { id: "05", title: "Molnarkitektur som kod", area: "Arkitektur", status: "planned" },
-    { id: "06", title: "Säkerhet i Infrastructure as Code", area: "Säkerhet", status: "planned" },
-    { id: "07", title: "Monitering och observabilitet", area: "Systemutveckling", status: "planned" },
-    { id: "08", title: "Skalbarhet och prestanda", area: "Arkitektur", status: "planned" },
-    { id: "09", title: "Digitalisering genom kodbaserad infrastruktur", area: "Digitalisering", status: "planned" },
-    { id: "10", title: "Organisatorisk förändring och teamstrukturer", area: "Organisationsutveckling", status: "planned" },
-    { id: "11", title: "Projektledning för IaC-initiativ", area: "Projektledning", status: "planned" },
-    { id: "12", title: "Innovation genom infrastrukturtransformation", area: "Innovation", status: "planned" },
-    { id: "13", title: "Produktutveckling med IaC-verktyg", area: "Produkt- och tjänstutveckling", status: "planned" },
-    { id: "14", title: "Compliance och regelefterlevnad", area: "Säkerhet", status: "planned" },
-    { id: "15", title: "Kostnadsoptimering och resurshantering", area: "Arkitektur", status: "planned" },
-    { id: "16", title: "Teststrategier för infrastrukturkod", area: "Systemutveckling", status: "planned" },
-    { id: "17", title: "Migration från traditionell infrastruktur", area: "Digitalisering", status: "planned" },
-    { id: "18", title: "Framtida trender och teknologier", area: "Innovation", status: "planned" },
-    { id: "19", title: "Best practices och lärda läxor", area: "Styrning", status: "planned" },
-    { id: "20", title: "Fallstudier och praktiska exempel", area: "Systemutveckling", status: "planned" },
-    { id: "21", title: "Slutsats", area: "Sammanfattning", status: "planned" },
-    { id: "22", title: "Ordlista", area: "Referens", status: "planned" },
-    { id: "23", title: "Om författarna", area: "Biografi", status: "planned" }
+    { id: "01", title: "Inledning", area: "Grundläggande konceptens", status: "completed" },
+    { id: "02", title: "Grundläggande principer för Infrastructure as Code", area: "Systemutveckling", status: "completed" },
+    { id: "03", title: "Versionhantering och kodstruktur", area: "Systemutveckling", status: "completed" },
+    { id: "04", title: "Automatisering och CI/CD-pipelines", area: "Systemutveckling", status: "completed" },
+    { id: "05", title: "Molnarkitektur som kod", area: "Arkitektur", status: "completed" },
+    { id: "06", title: "Säkerhet i Infrastructure as Code", area: "Säkerhet", status: "completed" },
+    { id: "07", title: "Monitering och observabilitet", area: "Systemutveckling", status: "completed" },
+    { id: "08", title: "Skalbarhet och prestanda", area: "Arkitektur", status: "completed" },
+    { id: "09", title: "Digitalisering genom kodbaserad infrastruktur", area: "Digitalisering", status: "completed" },
+    { id: "10", title: "Organisatorisk förändring och teamstrukturer", area: "Organisationsutveckling", status: "completed" },
+    { id: "11", title: "Projektledning för IaC-initiativ", area: "Projektledning", status: "completed" },
+    { id: "12", title: "Innovation genom infrastrukturtransformation", area: "Innovation", status: "completed" },
+    { id: "13", title: "Produktutveckling med IaC-verktyg", area: "Produkt- och tjänstutveckling", status: "completed" },
+    { id: "14", title: "Compliance och regelefterlevnad", area: "Säkerhet", status: "completed" },
+    { id: "15", title: "Kostnadsoptimering och resurshantering", area: "Arkitektur", status: "completed" },
+    { id: "16", title: "Teststrategier för infrastrukturkod", area: "Systemutveckling", status: "completed" },
+    { id: "17", title: "Migration från traditionell infrastruktur", area: "Digitalisering", status: "completed" },
+    { id: "18", title: "Framtida trender och teknologier", area: "Innovation", status: "completed" },
+    { id: "19", title: "Best practices och lärda läxor", area: "Styrning", status: "completed" },
+    { id: "20", title: "Fallstudier och praktiska exempel", area: "Systemutveckling", status: "completed" },
+    { id: "21", title: "Slutsats", area: "Sammanfattning", status: "completed" },
+    { id: "22", title: "Ordlista", area: "Referens", status: "completed" },
+    { id: "23", title: "Om författarna", area: "Biografi", status: "completed" }
   ];
 
   const areas = [
@@ -115,7 +115,7 @@ const Index = () => {
                       </div>
                     </div>
                     <Badge variant="secondary" className="text-xs">
-                      {chapter.status === "planned" ? "Planerad" : "Klar"}
+                      {chapter.status === "completed" ? "Klar" : "Planerad"}
                     </Badge>
                   </div>
                 ))}
