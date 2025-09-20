@@ -15,7 +15,7 @@ fi
 for mmd_file in images/*.mmd; do
     if [ -f "$mmd_file" ]; then
         png_file="${mmd_file%.mmd}.png"
-        mmdc -i "$mmd_file" -o "$png_file" -t dark -b transparent
+        PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" -t dark -b transparent --width 1200 --height 800
         echo "Konverterade $mmd_file till $png_file"
     fi
 done
