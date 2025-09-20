@@ -1339,7 +1339,7 @@ Metrics collection för microservices architectures requires service-specific da
 
 ### Kubernetes Microservices Deployment
 ```yaml
-# user-service.yaml
+# user-service-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1388,7 +1388,10 @@ spec:
             path: /ready
             port: 8080
           initialDelaySeconds: 5
----
+```
+
+```yaml
+# user-service-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -1419,7 +1422,10 @@ spec:
       protocol: HTTP
     hosts:
     - api.company.com
----
+```
+
+```yaml
+# api-virtual-service.yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
