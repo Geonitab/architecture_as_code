@@ -1,0 +1,28 @@
+graph TD
+    A[Problemidentifiering] --> B[Kontext analys]
+    B --> C[Alternativ utvärdering]
+    C --> D[Beslut formulering]
+    D --> E[ADR dokumentation]
+    E --> F[Review process]
+    F --> G{Godkänt?}
+    G -->|Ja| H[Status: Accepted]
+    G -->|Nej| C
+    H --> I[Implementation]
+    I --> J[Monitoring]
+    J --> K{Fungerar beslut?}
+    K -->|Ja| L[Fortsatt använding]
+    K -->|Nej| M[Status: Deprecated]
+    M --> N[Nytt ADR behövs]
+    N --> A
+    
+    subgraph "ADR Struktur"
+        E1[Context]
+        E2[Decision]
+        E3[Consequences]
+        E4[Status]
+    end
+    
+    E --> E1
+    E --> E2
+    E --> E3
+    E --> E4
