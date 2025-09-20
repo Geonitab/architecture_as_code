@@ -865,7 +865,7 @@ def create_presentation():
 
     
     # Save presentation
-    prs.save("presentations/arkitektur_som_kod_presentation.pptx")
+    prs.save("arkitektur_som_kod_presentation.pptx")
     print("Presentation saved to presentations/arkitektur_som_kod_presentation.pptx")
 
 if __name__ == "__main__":
