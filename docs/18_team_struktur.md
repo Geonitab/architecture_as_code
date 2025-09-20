@@ -1,6 +1,6 @@
 # Team-struktur och kompetensutveckling för IaC
 
-![Team-struktur och kompetensutveckling](images/diagram_15_kapitel14.png)
+![Team-struktur och kompetensutveckling](images/diagram_18_team_struktur.png)
 
 Framgångsrik Infrastructure as Code implementation kräver inte endast tekniska verktyg och processer, utan också genomtänkt organisationsdesign och strategisk kompetensutveckling. Team-strukturer måste evolve för att stödja nya arbetssätt medan medarbetare utvecklar nödvändiga skills för kodbaserad infrastrukturhantering.
 
