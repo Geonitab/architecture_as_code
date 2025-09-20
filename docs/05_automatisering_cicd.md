@@ -14,75 +14,10 @@ Svenska organisationer står inför unika utmaningar när det gäller implemente
 
 För svenska organisationer innebär GDPR compliance att CI/CD-pipelines måste hantera personal data med särskild försiktighet genom hela deployment lifecycle. Detta kräver comprehensive audit trails, data anonymization capabilities, och automated compliance validation:
 
-```yaml
-# .github/workflows/svenska-iac-pipeline.yml
-# GDPR-compliant CI/CD pipeline för svenska organisationer
+**GDPR-kompatibel CI/CD Pipeline för svenska organisationer**
+*[Se kodexempel 05_CODE_1 i Appendix A: Kodexempel](26_appendix_kodexempel.md#05_code_1)*
 
-name: Svenska IaC Pipeline med GDPR Compliance
-
-on:
-  push:
-    branches: [main, staging, development]
-    paths: ['infrastructure/**', 'modules/**']
-  pull_request:
-    branches: [main, staging]
-    paths: ['infrastructure/**', 'modules/**']
-
-env:
-  TF_VERSION: '1.6.0'
-  ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
-  ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || github.ref_name }}
-  COST_CENTER: ${{ vars.COST_CENTER }}
-  GDPR_COMPLIANCE_ENABLED: 'true'
-  DATA_RESIDENCY: 'Sweden'
-  AUDIT_LOGGING: 'enabled'
-
-jobs:
-  # GDPR och säkerhetskontroller
-  gdpr-compliance-check:
-    name: GDPR Compliance Validation
-    runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, 'personal-data') || contains(github.event.head_commit.message, 'gdpr')
-    
-    steps:
-      - name: Checkout kod
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
-      
-      - name: GDPR Data Discovery Scan
-        run: |
-          echo "🔍 Scanning för personal data patterns..."
-          
-          # Sök efter vanliga personal data patterns i IaC-kod
-          PERSONAL_DATA_PATTERNS=(
-            "personnummer"
-            "social.*security"
-            "credit.*card"
-            "bank.*account"
-            "email.*address"
-            "phone.*number"
-            "date.*of.*birth"
-            "passport.*number"
-          )
-          
-          VIOLATIONS_FOUND=false
-          
-          for pattern in "${PERSONAL_DATA_PATTERNS[@]}"; do
-            if grep -ri "$pattern" infrastructure/ modules/ 2>/dev/null; then
-              echo "⚠️ GDPR VARNING: Potentiell personal data hittad: $pattern"
-              VIOLATIONS_FOUND=true
-            fi
-          done
-          
-          if [ "$VIOLATIONS_FOUND" = true ]; then
-            echo "❌ GDPR compliance check misslyckades"
-            echo "Personal data får inte hardkodas i IaC-kod"
-            exit 1
-          fi
-          
-          echo "✅ GDPR compliance check genomförd"
+Detta pipeline-exempel demonstrerar hur svenska organisationer kan implementera GDPR-compliance direkt i sina CI/CD-processer, inklusive automatisk scanning för personuppgifter och data residency validation.
       
       - name: Data Residency Validation
         run: |
