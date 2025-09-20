@@ -25,10 +25,11 @@ const Index = () => {
     { id: "17", title: "Migration från traditionell infrastruktur", area: "Digitalisering", status: "completed" },
     { id: "18", title: "Framtida trender och teknologier", area: "Innovation", status: "completed" },
     { id: "19", title: "Best practices och lärda läxor", area: "Styrning", status: "completed" },
-    { id: "20", title: "Fallstudier och praktiska exempel", area: "Systemutveckling", status: "completed" },
-    { id: "21", title: "Slutsats", area: "Sammanfattning", status: "completed" },
-    { id: "22", title: "Ordlista", area: "Referens", status: "completed" },
-    { id: "23", title: "Om författarna", area: "Biografi", status: "completed" }
+    { id: "20", title: "Lovable för design och IT-arkitektur mockups", area: "Design och Prototyping", status: "completed" },
+    { id: "21", title: "Fallstudier och praktiska exempel", area: "Systemutveckling", status: "completed" },
+    { id: "22", title: "Slutsats", area: "Sammanfattning", status: "completed" },
+    { id: "23", title: "Ordlista", area: "Referens", status: "completed" },
+    { id: "24", title: "Om författarna", area: "Biografi", status: "completed" }
   ];
 
   const areas = [

@@ -1,0 +1,57 @@
+graph TD
+    A[Arkitektur Koncept] --> B[Lovable Design Input]
+    B --> C[AI-driven Mockup Generation]
+    C --> D[Interaktiv Prototyp]
+    D --> E[Stakeholder Validering]
+    E --> F{Godkänd Design?}
+    F -->|Nej| G[Iterations och Förbättringar]
+    G --> B
+    F -->|Ja| H[Kodgenerering]
+    H --> I[Infrastructure as Code]
+    I --> J[Svensk Compliance Validering]
+    J --> K[GDPR Check]
+    K --> L[Accessibility Test]
+    L --> M[Säkerhetsgranskning]
+    M --> N[Produktions-deployment]
+    
+    subgraph "Lovable Verktyg"
+        B1[Natural Language Processing]
+        B2[Real-time Rendering]
+        B3[Component Libraries]
+        B4[Svenska Design System]
+        B --> B1
+        B --> B2
+        B --> B3
+        B --> B4
+    end
+    
+    subgraph "Svenska Krav"
+        K1[GDPR Compliance]
+        K2[BankID Integration]
+        K3[WCAG 2.1 AA]
+        K4[Svenska Språkstöd]
+        J --> K1
+        J --> K2
+        J --> K3
+        J --> K4
+    end
+    
+    subgraph "Output Formats"
+        O1[React Components]
+        O2[Terraform Code]
+        O3[API Specifications]
+        O4[Documentation]
+        H --> O1
+        H --> O2
+        H --> O3
+        H --> O4
+    end
+    
+    style A fill:#e1f5fe
+    style D fill:#f3e5f5
+    style I fill:#e8f5e8
+    style N fill:#fff3e0
+    style K1 fill:#ffebee
+    style K2 fill:#ffebee
+    style K3 fill:#ffebee
+    style K4 fill:#ffebee

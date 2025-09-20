@@ -14,7 +14,7 @@ def generate_iac_book_content():
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(images_dir, exist_ok=True)
     
-    # Bokens struktur med alla 23 filer
+    # Bokens struktur med alla 24 filer
     book_structure = [
         {
             "filename": "01_inledning.md",

@@ -146,27 +146,34 @@ const ChaptersOverview = () => {
     },
     { 
       id: "20", 
+      title: "Lovable för design och IT-arkitektur mockups", 
+      area: "Design och Prototyping",
+      summary: "En introduktion till Lovable och hur det kan användas för att skapa mockups för design och IT-arkitektur. Täcker praktiska exempel och svenska compliance-krav.",
+      keyTopics: ["Lovable verktyg", "Mockup creation", "Svenska standarder", "Design workflows"]
+    },
+    { 
+      id: "21", 
       title: "Fallstudier och praktiska exempel", 
       area: "Praktisk tillämpning",
       summary: "Detaljerade fallstudier från svenska organisationer som framgångsrikt implementerat Infrastructure as Code.",
       keyTopics: ["Case studies", "Real-world examples", "Implementation journeys", "Results achieved"]
     },
     { 
-      id: "21", 
+      id: "22", 
       title: "Slutsats", 
       area: "Sammanfattning",
       summary: "Sammanfattning av bokens huvudbudskap och rekommendationer för framtida IaC-arbete.",
       keyTopics: ["Key takeaways", "Future recommendations", "Action items", "Next steps"]
     },
     { 
-      id: "22", 
+      id: "23", 
       title: "Ordlista", 
       area: "Referenser",
       summary: "Omfattande ordlista med definitioner av termer och begrepp inom Infrastructure as Code.",
       keyTopics: ["Terminology", "Definitions", "Glossary", "Technical terms"]
     },
     { 
-      id: "23", 
+      id: "24", 
       title: "Om författarna", 
       area: "Referenser",
       summary: "Information om bokens författare och deras bakgrund inom Infrastructure as Code.",
@@ -211,7 +218,7 @@ const ChaptersOverview = () => {
           <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Utforska alla kapitel</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Bläddra genom bokens 23 kapitel och upptäck djupgående innehåll om Infrastructure as Code
+              Bläddra genom bokens 24 kapitel och upptäck djupgående innehåll om Infrastructure as Code
             </p>
             
             {/* Search and Filter */}
