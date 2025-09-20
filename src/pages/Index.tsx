@@ -207,11 +207,11 @@ const Index = () => {
                   <div className="flex items-center gap-3">
                     <CheckCircle className="h-5 w-5 text-green-500" />
                     <div>
-                      <h3 className="font-medium">Senaste build</h3>
-                      <p className="text-sm text-muted-foreground">Framgångsrik PDF-generering</p>
+                      <h3 className="font-medium">Senaste PR</h3>
+                      <p className="text-sm text-muted-foreground">Bot.md uppdaterad med förbättrade instruktioner</p>
                     </div>
                   </div>
-                  <Badge variant="secondary" className="bg-green-100 text-green-700">✓ Klar</Badge>
+                  <Badge variant="secondary" className="bg-green-100 text-green-700">✓ Merged</Badge>
                 </div>
               </div>
               
