@@ -1,10 +1,10 @@
 # Arkitektur som kod - Bokprojekt
 
-En omfattande bok om Infrastructure as Code på svenska.
+En omfattande bok om Architecture as Code på svenska, med Infrastructure as Code som praktiskt exempel.
 
 ## 📚 Om boken
 
-Denna bok täcker Infrastructure as Code från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer.
+Denna bok täcker Architecture as Code från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer. Infrastructure as Code behandlas som ett viktigt praktiskt exempel inom den bredare Architecture as Code-ramen.
 
 ### Målgrupp
 - Systemarkitekter
@@ -15,7 +15,8 @@ Denna bok täcker Infrastructure as Code från grundläggande principer till ava
 
 ### Innehåll
 23 kapitel som täcker:
-- Grundläggande IaC-principer
+- Grundläggande Architecture as Code-principer
+- Infrastructure as Code som praktiskt exempel
 - Molnarkitektur som kod
 - Säkerhet och compliance
 - CI/CD och automatisering
@@ -109,7 +110,7 @@ GitHub Actions workflow (`build-book.yml`) hanterar:
 ## 📖 Kapitellista
 
 1. Inledning till arkitektur som kod
-2. Grundläggande principer för Infrastructure as Code
+2. Grundläggande principer för Architecture as Code
 3. Versionhantering och kodstruktur
 4. Automatisering och CI/CD-pipelines
 5. Molnarkitektur som kod

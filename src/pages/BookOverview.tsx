@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 
 const BookOverview = () => {
   const themes = [
-    "Grundläggande IaC-principer",
+    "Grundläggande Architecture as Code-principer",
+    "Infrastructure as Code som praktiskt exempel",
     "Molnarkitektur som kod", 
     "Säkerhet och compliance",
     "CI/CD och automatisering",
@@ -46,11 +47,11 @@ const BookOverview = () => {
               </h1>
             </div>
             <p className="text-xl md:text-2xl text-muted-foreground mb-6">
-              En omfattande bok om Infrastructure as Code på svenska
+              En omfattande bok om Architecture as Code på svenska
             </p>
             <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
               Från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer. 
-              Lär dig hur Infrastructure as Code kan transformera din organisation och uppfylla svenska compliance-krav.
+              Lär dig hur Architecture as Code kan transformera din organisation, med Infrastructure as Code som viktigt praktiskt exempel.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -84,9 +85,10 @@ const BookOverview = () => {
             </CardHeader>
             <CardContent>
               <p className="text-lg mb-6">
-                Denna bok täcker Infrastructure as Code från grundläggande principer till avancerad implementation, 
-                med fokus på praktisk tillämpning inom svenska organisationer. Boken kombinerar teoretisk fördjupning 
-                med omfattande praktiska exempel från svenska företag som framgångsrikt implementerat IaC.
+                Denna bok täcker Architecture as Code från grundläggande principer till avancerad implementation, 
+                med fokus på praktisk tillämpning inom svenska organisationer. Infrastructure as Code behandlas som 
+                ett viktigt praktiskt exempel inom den bredare Architecture as Code-ramen, med omfattande praktiska exempel 
+                från svenska företag som framgångsrikt implementerat kodbaserad arkitektur.
               </p>
               
               <div className="grid md:grid-cols-2 gap-8">
@@ -124,7 +126,7 @@ const BookOverview = () => {
             <CardHeader>
               <CardTitle>Bokens huvudteman</CardTitle>
               <CardDescription>
-                23 kapitel som täcker alla aspekter av Infrastructure as Code
+                23 kapitel som täcker alla aspekter av Architecture as Code
               </CardDescription>
             </CardHeader>
             <CardContent>

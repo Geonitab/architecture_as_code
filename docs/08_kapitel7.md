@@ -1,12 +1,12 @@
-# Infrastruktur som kod i praktiken
+# Architecture as Code i praktiken
 
-![Infrastruktur som kod i praktiken](images/diagram_08_kapitel7.png)
+![Architecture as Code i praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementation av Infrastructure as Code kräver genomtänkt approach som balanserar tekniska möjligheter med organisatoriska begränsningar. Detta kapitel fokuserar på verkliga implementationsstrategier, common pitfalls, och proven practices för successful IaC adoption i enterprise environments.
+Praktisk implementation av Architecture as Code kräver genomtänkt approach som balanserar tekniska möjligheter med organisatoriska begränsningar. Infrastructure as Code utgör en central komponent, men måste integreras med bredare arkitekturdefinitioner. Detta kapitel fokuserar på verkliga implementationsstrategier, common pitfalls, och proven practices för successful Architecture as Code adoption i enterprise environments.
 
 ## Implementation roadmap och strategier
 
-Successful IaC adoption följer vanligen en phased approach som börjar med pilot projects och gradvis expanderar till enterprise-wide implementation. Initial phases fokuserar på non-critical environments och simple use cases för att bygga confidence och establish best practices innan production workloads migreras.
+Successful Architecture as Code adoption följer vanligen en phased approach som börjar med pilot projects och gradvis expanderar till enterprise-wide implementation. Initial phases fokuserar på non-critical environments och simple use cases för att bygga confidence och establish best practices innan production workloads migreras. Infrastructure as Code utgör ofta startpunkten för denna transformation.
 
 Assessment av current state infrastructure är critical för planning effective migration strategies. Legacy systems, technical debt, och organizational constraints måste identifieras och addressas through targeted modernization efforts. Detta inkluderar inventory av existing assets, dependency mapping, och risk assessment för olika migration scenarios.
 

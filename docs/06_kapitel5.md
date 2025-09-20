@@ -1,12 +1,12 @@
-# Säkerhet i Infrastructure as Code
+# Säkerhet i Architecture as Code
 
 ![Säkerhet som kod workflow](images/diagram_06_kapitel5.png)
 
-*Säkerhet måste integreras från början i Infrastructure as Code-processer genom automatiserad policy enforcement, kontinuerlig monitoring och proaktiv sårbarhetshantering. Diagrammet illustrerar den iterativa säkerhetsprocessen från design till produktion.*
+*Säkerhet måste integreras från början i Architecture as Code-processer genom automatiserad policy enforcement, kontinuerlig monitoring och proaktiv sårbarhetshantering. Infrastructure as Code utgör en viktig komponent i denna helhetssyn. Diagrammet illustrerar den iterativa säkerhetsprocessen från design till produktion.*
 
 ## Övergripande beskrivning
 
-Säkerhet inom Infrastructure as Code kräver en fundamental förskjutning från reaktiv till proaktiv säkerhetstänk. Traditionella säkerhetsmodeller som fokuserar på perimeterskydd och manuella säkerhetskontroller är otillräckliga för moderna, dynamiska molnmiljöer som byggs med IaC.
+Säkerhet inom Architecture as Code kräver en fundamental förskjutning från reaktiv till proaktiv säkerhetstänk. Traditionella säkerhetsmodeller som fokuserar på perimeterskydd och manuella säkerhetskontroller är otillräckliga för moderna, kodbaserade arkitekturer som omfattar allt från applikationer till infrastruktur.
 
 Security-by-design principer måste genomsyra hela infrastrukturdefinitionen, från initial arkitekturdesign till kontinuerlig drift och monitoring. Detta inkluderar automatiserad implementation av säkerhetspolicies, kontinuerlig sårbarhetsscanning och real-time threat detection som är inbyggd i infrastrukturkoden.
 
