@@ -1,10 +1,10 @@
 # Grundläggande principer för Infrastructure as Code
 
-Infrastructure as Code bygger på flera fundamentala principer som säkerställer framgångsrik implementation och långsiktig hållbarhet. Dessa principer utgör grunden för hur organisationer bör tänka kring kodbaserad infrastruktur, och fördjupar de koncept som introducerades i [kapitel 1](01_inledning.md) om Infrastructure as Code som paradigm.
+Infrastructure as Code bygger på flera fundamentala principer som säkerställer framgångsrik implementation och långsiktig hållbarhet. Dessa principer utgör grunden för hur organisationer bör tänka kring kodbaserad infrastruktur.
 
 ![Grundläggande principer diagram](images/diagram_02_kapitel1.png)
 
-Diagrammet visar det naturliga flödet från deklarativ kod genom versionskontroll och automatisering till reproducerbarhet och skalbarhet - de fem grundpelarna inom IaC. Dessa principer kommer att vara centrala för alla tekniska implementationer som vi kommer att utforska i kommande kapitel, från [versionhantering](03_kapitel2.md) till [avancerad säkerhet](12_kapitel11.md).
+Diagrammet visar det naturliga flödet från deklarativ kod genom versionskontroll och automatisering till reproducerbarhet och skalbarhet - de fem grundpelarna inom IaC.
 
 ## Deklarativ vs imperativ approach
 
@@ -26,11 +26,9 @@ Immutable infrastruktur stödjs av containerteknologier och cloud-native tjänst
 
 ## Testbarhet och kvalitetssäkring
 
-IaC-kod ska behandlas som vilken annan kod som helst, vilket innebär omfattande testning på flera nivåer. Unit-tester validerar enskilda moduler, integration-tester verifierar komponentinteraktion, och end-to-end-tester säkerställer hela systemets funktionalitet. Dessa teststrategier kommer att fördjupas betydligt i kommande kapitel om [CI/CD-pipelines](04_kapitel3.md) och [praktisk implementation](08_kapitel7.md).
+IaC-kod ska behandlas som vilken annan kod som helst, vilket innebär omfattande testning på flera nivåer. Unit-tester validerar enskilda moduler, integration-tester verifierar komponentinteraktion, och end-to-end-tester säkerställer hela systemets funktionalitet.
 
-Teststrategier inkluderar statisk kodanalys, policy validation, och infrastrukturtestning i isolerade miljöer. Automated testing pipelines säkerställer att förändringar valideras innan de når produktionsmiljöer, vilket minskar risken för störningar och säkerhetsbrister. Dessa koncept blir särskilt viktiga när vi utforskar [säkerhet i Infrastructure as Code](06_kapitel5.md) och [policy as code](12_kapitel11.md).
-
-Policy-driven testing möjliggör automatisk validering av compliance-krav och säkerhetsstandarder som en integrerad del av utvecklingsprocessen. Detta skapar grunden för den governance-approach som vi kommer att se i [kapitel 14 om compliance](14_kapitel13.md).
+Teststrategier inkluderar statisk kodanalys, policy validation, och infrastrukturtestning i isolerade miljöer. Automated testing pipelines säkerställer att förändringar valideras innan de når produktionsmiljöer, vilket minskar risken för störningar och säkerhetsbrister.
 
 Källor:
 - Puppet Labs. "Infrastructure as Code: A Brief Introduction." Puppet Documentation.
