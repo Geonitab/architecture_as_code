@@ -71,6 +71,88 @@
 71| python3 generate_book.py && docs/build_book.sh
 72| ```
 73| 
+## Tillgängliga resurser
+
+Projektet erbjuder en omfattande uppsättning resurser relaterade till boken "Arkitektur som kod":
+
+### 📖 Boken själv
+**"Arkitektur som kod" - En omfattande guide på svenska om Infrastructure as Code**
+
+- **Omfattning**: 23 kapitel som täcker hela spektrumet av Infrastructure as Code
+- **Målgrupp**: Systemarkitekter, utvecklare, DevOps-ingenjörer, projektledare och IT-chefer
+- **Teman**: Från grundläggande principer till avancerad implementation med fokus på praktisk tillämpning
+- **Format**: Professionellt formaterad PDF (~95KB) med integrerade diagram och illustrationer
+- **Språk**: Helt på svenska för svenska organisationer och utvecklare
+- **Publicering**: Automatiskt genererad och uppdaterad via CI/CD-pipeline
+
+**Huvudteman:**
+- Grundläggande IaC-principer och best practices
+- Molnarkitektur och automatisering som kod
+- Säkerhet, compliance och regelefterlevnad
+- CI/CD och DevOps-transformation
+- Organisatorisk förändring och teamstrukturer
+- Praktiska fallstudier och implementationsstrategier
+
+### 📄 Kompletterande vitböcker
+Projektet inkluderar specialiserade vitböcker som fördjupar specifika aspekter av Infrastructure as Code:
+
+- **"IaC Security Framework"** - Detaljerad guide för säkerhetsimplementation
+- **"Migration Playbook"** - Steg-för-steg guide för migration från traditionell infrastruktur
+- **"Team Transformation Guide"** - Organisatorisk förändringsledning för IaC-adoption
+- **"Cost Optimization Strategies"** - Praktiska metoder för kostnadseffektiv infrastruktur
+- **"Compliance Automation"** - Automated compliance och regelefterlevnad
+
+Dessa vitböcker är tillgängliga som separata markdown-dokument och kan genereras som individuella PDF:er.
+
+### 📊 Presentationer och diagram-stödda sammanfattningar
+Varje kapitel i boken stöds av visuella resurser för enklare förståelse och presentation:
+
+- **Mermaid-diagram**: 12+ professionella diagram som illustrerar nyckelkoncept
+  - Horisontell orientering för optimal visning
+  - Maximalt 5 element per diagram för tydlighet
+  - Svenska etiketter och beskrivningar
+  - Automatisk konvertering till PNG för integration
+
+- **Kapitelsammanfattningar**: Koncisa presentationsformat för varje tema
+  - Nyckeltal och metrikss
+  - Praktiska exempel och use cases
+  - Implementationsguider
+  - Branschspecifika anpassningar
+
+- **Visualiseringsbibliotek**: Återanvändbara diagramkomponenter
+  - CI/CD-flöden och arkitekturdiagram
+  - Säkerhetsmodeller och compliance-ramverk
+  - Teamstrukturer och organisatoriska flöden
+
+### 🌐 Website som resurshub
+React-dashboarden fungerar som central hub för alla projektresurser:
+
+**Funktionalitet:**
+- **Projektöversikt**: Real-time status för alla 23 kapitel
+- **Resursnätverk**: Direkta länkar till alla tillgängliga resurser
+- **Download-center**: Automatisk tillgång till senaste PDF-versioner
+- **Diagram-galleri**: Visuell presentation av alla Mermaid-diagram
+- **CI/CD-status**: Live-uppdateringar av byggprocesser och releases
+
+**Teknisk implementation:**
+- Modern React + TypeScript-applikation
+- Responsiv design med Tailwind CSS och shadcn/ui
+- Real-time integration med GitHub Actions
+- Automatisk uppdatering vid nya releases
+
+**Tillgänglighet:**
+- Utvecklingsserver: `npm run dev` → http://localhost:8080
+- Produktions-deployment via GitHub Pages
+- Offline-tillgång till alla genererade resurser
+- RESTful API för programmatisk åtkomst till projektdata
+
+**Resursnavigation:**
+- Interaktiv kapitellista med status-indikatorer
+- Sökfunktion för snabb resurslokalisering
+- Kategorisering efter tekniska områden
+- Direkta download-länkar för alla PDF:er och diagram
+
+Websiten uppdateras automatiskt när nya innehåll publiceras och fungerar som det centrala navet för alla som arbetar med Infrastructure as Code-implementation.
 74| ## Din uppgift
 28| Välj EN markdown-fil från `docs/`-mappen att utöka eller förbättra. Fokusera på:
 29| 
