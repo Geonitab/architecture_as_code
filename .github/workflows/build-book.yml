@@ -2,37 +2,252 @@ name: Build Book
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'docs/images/**/*.mmd'
+      - '.github/workflows/build-book.yml'
+      - 'generate_book.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'docs/images/**/*.mmd'
+      - '.github/workflows/build-book.yml'
+      - 'generate_book.py'
   workflow_dispatch:
 
+env:
+  PANDOC_VERSION: "3.1.9"
+  ARTIFACT_RETENTION_DAYS: 30
+
 jobs:
-  build:
+  build-book:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
+    
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-        run: |
-          echo 'Checking out the code...'
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
         with:
-          node-version: '14'
-        run: |
-          echo 'Setting up Node.js...'
+          fetch-depth: 0
 
-      - name: Install dependencies
-        run: |
-          echo 'Installing dependencies...'
-          npm install
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
 
-      - name: Build the project
-        run: |
-          echo 'Building the project...'
-          npm run build
+      - name: 📦 Cache package installations
+        uses: actions/cache@v3
+        with:
+          path: |
+            /var/cache/apt
+            ~/.cache/pip
+            ~/.local/share/pandoc
+          key: ${{ runner.os }}-book-deps-${{ env.PANDOC_VERSION }}-v2
+          restore-keys: |
+            ${{ runner.os }}-book-deps-
 
-      - name: Run tests
+      - name: 🔧 Install system dependencies
         run: |
-          echo 'Running tests...'
-          npm test
+          echo "=== Installing system dependencies ==="
+          sudo apt-get update
+          echo "Installing TeXLive and related packages..."
+          sudo apt-get install -y \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-plain-generic \
+            texlive-latex-extra \
+            texlive-luatex \
+            librsvg2-bin \
+            fonts-liberation \
+            fonts-dejavu
+          echo "✅ System dependencies installed"
+
+      - name: 📚 Install Pandoc
+        run: |
+          echo "=== Installing Pandoc $PANDOC_VERSION ==="
+          wget -q https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/pandoc-$PANDOC_VERSION-1-amd64.deb
+          sudo dpkg -i pandoc-$PANDOC_VERSION-1-amd64.deb
+          pandoc --version
+          echo "✅ Pandoc installed"
+
+      - name: 🎨 Install Mermaid CLI
+        run: |
+          echo "=== Installing Mermaid CLI ==="
+          npm install -g @mermaid-js/mermaid-cli
+          
+          # Install Chrome for Puppeteer
+          sudo apt-get install -y google-chrome-stable
+          
+          # Verify installation
+          mmdc --version
+          echo "✅ Mermaid CLI installed"
+
+      - name: 📋 Setup Pandoc template
+        run: |
+          echo "=== Setting up Pandoc template ==="
+          mkdir -p ~/.local/share/pandoc/templates
+          pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
+          echo "✅ Eisvogel template installed"
+
+      - name: 📝 Generate book content
+        run: |
+          echo "=== Generating book content ==="
+          python3 generate_book.py
+          echo "✅ Book content generated"
+
+      - name: 🖼️ Convert Mermaid diagrams to PNG
+        run: |
+          echo "=== Converting Mermaid diagrams ==="
+          cd docs
+          diagram_count=0
+          
+          # Check if any .mmd files exist
+          if ls images/*.mmd 1> /dev/null 2>&1; then
+            for mmd_file in images/*.mmd; do
+              if [ -f "$mmd_file" ]; then
+                png_file="${mmd_file%.mmd}.png"
+                echo "Converting $mmd_file → $png_file"
+                
+                # Set Chrome executable for Puppeteer
+                export PUPPETEER_EXECUTABLE_PATH=$(which google-chrome)
+                
+                mmdc \
+                  -i "$mmd_file" \
+                  -o "$png_file" \
+                  -t dark \
+                  -b transparent \
+                  --width 1200 \
+                  --height 800 \
+                  || echo "⚠️ Warning: Failed to convert $mmd_file"
+                
+                diagram_count=$((diagram_count + 1))
+              fi
+            done
+            echo "✅ Processed $diagram_count Mermaid diagrams"
+          else
+            echo "ℹ️ No Mermaid diagrams found to convert"
+          fi
+
+      - name: 📖 Build PDF book
+        run: |
+          echo "=== Building PDF book ==="
+          cd docs
+          
+          # List available markdown files for debugging
+          echo "Available markdown files:"
+          ls -la *.md | head -10
+          
+          # Check if all required files exist
+          required_files="01_inledning.md 02_kapitel1.md 03_kapitel2.md 04_kapitel3.md 21_slutsats.md 22_ordlista.md 23_om_forfattarna.md"
+          missing_files=""
+          for file in $required_files; do
+            if [ ! -f "$file" ]; then
+              missing_files="$missing_files $file"
+            fi
+          done
+          
+          if [ -n "$missing_files" ]; then
+            echo "⚠️ Warning: Missing files:$missing_files"
+            echo "Available files:"
+            ls *.md
+            echo "Will attempt to build with available files..."
+            
+            # Build with all available markdown files
+            available_files=$(ls *.md | sort)
+            pandoc \
+              --standalone \
+              --template="$HOME/.local/share/pandoc/templates/eisvogel.latex" \
+              --toc \
+              --toc-depth=3 \
+              --number-sections \
+              --pdf-engine=xelatex \
+              -s \
+              -o arkitektur_som_kod.pdf \
+              $available_files
+          else
+            echo "✅ All required files found"
+            # Build PDF with Pandoc using specified files
+            pandoc \
+              --standalone \
+              --template="$HOME/.local/share/pandoc/templates/eisvogel.latex" \
+              --toc \
+              --toc-depth=3 \
+              --number-sections \
+              --pdf-engine=xelatex \
+              -s \
+              -o arkitektur_som_kod.pdf \
+              01_inledning.md \
+              02_kapitel1.md \
+              03_kapitel2.md \
+              04_kapitel3.md \
+              21_slutsats.md \
+              22_ordlista.md \
+              23_om_forfattarna.md
+          fi
+          
+          # Verify PDF was created
+          if [ -f "arkitektur_som_kod.pdf" ]; then
+            file_size=$(ls -lh arkitektur_som_kod.pdf | awk '{print $5}')
+            echo "✅ PDF generated successfully (Size: $file_size)"
+            echo "PDF details:"
+            file arkitektur_som_kod.pdf
+          else
+            echo "❌ Failed to generate PDF"
+            exit 1
+          fi
+
+      - name: 📊 Book build summary
+        run: |
+          echo "=== Build Summary ==="
+          echo "Markdown files: $(ls docs/*.md | wc -l)"
+          echo "Mermaid diagrams: $(ls docs/images/*.mmd | wc -l)"
+          echo "Generated PNGs: $(ls docs/images/*.png | wc -l)"
+          echo "PDF size: $(ls -lh docs/arkitektur_som_kod.pdf | awk '{print $5}')"
+          echo "Build completed at: $(date)"
+
+      - name: 📤 Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: arkitektur-som-kod-pdf
+          path: docs/arkitektur_som_kod.pdf
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: 📤 Upload book images
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: book-diagrams
+          path: docs/images/*.png
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: 🚀 Create Release (on main branch)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          name: "Arkitektur som kod v${{ github.run_number }}"
+          body: |
+            📚 **Arkitektur som kod - Automatisk release**
+            
+            Genererad från commit: ${{ github.sha }}
+            
+            **Innehåll:**
+            - 📖 Komplett PDF-bok
+            - 🖼️ Mermaid-diagram som PNG-filer
+            
+            **Bygg-info:**
+            - Byggd med Pandoc ${{ env.PANDOC_VERSION }}
+            - XeLaTeX PDF-engine
+            - Eisvogel LaTeX template
+            
+            Ladda ner PDF:en från Assets nedan ⬇️
+          files: |
+            docs/arkitektur_som_kod.pdf
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
