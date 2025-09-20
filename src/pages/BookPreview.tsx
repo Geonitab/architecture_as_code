@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, BookOpen, Home, Eye } from "lucide-react";
+import { ChevronLeft, ChevronRight, BookOpen, Home, Eye, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 const BookPreview = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
+  const [markdownContent, setMarkdownContent] = useState<string>("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const chapters = [
     { id: "01", title: "Inledning", area: "Grundläggande konceptens" },
@@ -35,6 +39,47 @@ const BookPreview = () => {
   ];
 
   const currentChapterData = chapters[currentChapter];
+
+  // Läs markdown-fil för aktuellt kapitel
+  useEffect(() => {
+    const loadMarkdown = async () => {
+      setLoading(true);
+      setError(null);
+      
+      try {
+        const chapterNumber = currentChapterData.id.padStart(2, '0');
+        let fileName = '';
+        
+        if (currentChapterData.id === '01') {
+          fileName = `01_inledning.md`;
+        } else if (currentChapterData.id === '21') {
+          fileName = `21_slutsats.md`;
+        } else if (currentChapterData.id === '22') {
+          fileName = `22_ordlista.md`;
+        } else if (currentChapterData.id === '23') {
+          fileName = `23_om_forfattarna.md`;
+        } else {
+          fileName = `${chapterNumber}_kapitel${parseInt(currentChapterData.id)}.md`;
+        }
+        
+        const response = await fetch(`/docs/${fileName}`);
+        
+        if (!response.ok) {
+          throw new Error(`Kunde inte läsa fil: ${fileName}`);
+        }
+        
+        const content = await response.text();
+        setMarkdownContent(content);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Fel vid läsning av kapitel');
+        setMarkdownContent('');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadMarkdown();
+  }, [currentChapter, currentChapterData]);
 
   const goToPreviousChapter = () => {
     if (currentChapter > 0) {
@@ -122,37 +167,52 @@ const BookPreview = () => {
               </CardHeader>
               
               <CardContent className="p-8">
-                <div className="prose prose-slate max-w-none">
-                  <div className="bg-muted/30 p-6 rounded-lg border-l-4 border-primary">
-                    <p className="text-muted-foreground mb-0">
-                      <strong>Förhandsvisning:</strong> Detta är kapitel {currentChapterData.id} - {currentChapterData.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-2 mb-0">
-                      Markdown-innehåll från docs/{String(currentChapterData.id).padStart(2, '0')}_kapitel{currentChapterData.id}.md skulle visas här.
-                    </p>
-                  </div>
-                  
-                  <div className="mt-8 space-y-4">
-                    <h2>Exempel på innehåll</h2>
-                    <p>
-                      Detta kapitel behandlar {currentChapterData.title.toLowerCase()} inom ramen för Infrastructure as Code.
-                      Här skulle det riktiga innehållet från markdown-filen visas med full formatering.
-                    </p>
-                    
-                    <h3>Huvudavsnitt</h3>
-                    <p>
-                      Kapitlet fokuserar på {currentChapterData.area.toLowerCase()} och ger läsaren djupgående kunskap
-                      inom detta område av Infrastructure as Code.
-                    </p>
-                    
-                    <div className="bg-accent/10 p-4 rounded-lg border">
-                      <h4 className="text-sm font-medium text-accent-foreground mb-2">💡 Tips</h4>
-                      <p className="text-sm text-muted-foreground mb-0">
-                        I den riktiga implementationen skulle markdown-innehållet läsas från docs-mappen
-                        och renderas med en markdown-parser som react-markdown.
+                <div className="prose prose-slate max-w-none dark:prose-invert">
+                  {loading ? (
+                    <div className="flex items-center justify-center py-12">
+                      <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+                      <span className="ml-2 text-muted-foreground">Läser kapitel...</span>
+                    </div>
+                  ) : error ? (
+                    <div className="bg-destructive/10 p-6 rounded-lg border border-destructive/20">
+                      <p className="text-destructive font-medium">Fel vid läsning av kapitel</p>
+                      <p className="text-sm text-muted-foreground mt-2">{error}</p>
+                    </div>
+                  ) : markdownContent ? (
+                    <ReactMarkdown 
+                      components={{
+                        h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4 first:mt-0">{children}</h1>,
+                        h2: ({ children }) => <h2 className="text-2xl font-semibold mt-6 mb-3">{children}</h2>,
+                        h3: ({ children }) => <h3 className="text-xl font-semibold mt-5 mb-2">{children}</h3>,
+                        p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+                        ul: ({ children }) => <ul className="list-disc pl-6 mb-4 space-y-1">{children}</ul>,
+                        ol: ({ children }) => <ol className="list-decimal pl-6 mb-4 space-y-1">{children}</ol>,
+                        blockquote: ({ children }) => (
+                          <blockquote className="border-l-4 border-primary pl-4 my-4 italic text-muted-foreground">
+                            {children}
+                          </blockquote>
+                        ),
+                        code: ({ children, className }) => {
+                          const isInline = !className;
+                          return isInline ? (
+                            <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>
+                          ) : (
+                            <code className="block bg-muted p-4 rounded-lg overflow-x-auto text-sm font-mono">
+                              {children}
+                            </code>
+                          );
+                        }
+                      }}
+                    >
+                      {markdownContent}
+                    </ReactMarkdown>
+                  ) : (
+                    <div className="bg-muted/30 p-6 rounded-lg border-l-4 border-primary">
+                      <p className="text-muted-foreground">
+                        Inget innehåll tillgängligt för detta kapitel.
                       </p>
                     </div>
-                  </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
