@@ -9,7 +9,13 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:whitepapers": "python3 generate_whitepapers.py"
+    "generate:whitepapers": "python3 generate_whitepapers.py",
+    "test:content": "python3 -m pytest tests/ -v",
+    "test:content:report": "python3 -m pytest tests/ -v --html=test-reports/content-validation.html --self-contained-html",
+    "test:completeness": "python3 -m pytest tests/test_completeness.py -v",
+    "test:consistency": "python3 -m pytest tests/test_consistency.py -v",
+    "test:clarity": "python3 -m pytest tests/test_clarity.py -v",
+    "test:technical": "python3 -m pytest tests/test_technical_accuracy.py -v"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
