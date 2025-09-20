@@ -84,12 +84,23 @@ Om du använder tekniska termer, lägg till dem i `22_ordlista.md`:
 
 ## Instruktioner för genomförande
 
+### KRITISKT: Läs innan du skriver!
+**Du MÅSTE läsa igenom den befintliga filen helt innan du skapar eller lägger till nytt innehåll.**
+
 1. **Välj en fil** från docs/-mappen att arbeta med
-2. **Läs befintligt innehåll** noggrant  
-3. **Utöka eller förbättra** enligt strukturen ovan
-4. **Skapa/uppdatera Mermaid-diagram** om behövs
-5. **Lägg till termer** i ordlistan vid behov
-6. **Referera till diagram** i texten naturligt
+2. **LÄS HELA BEFINTLIGA FILEN FÖRST** - förstå nuvarande innehåll, struktur och ton
+3. **Analysera vad som saknas** - identifiera luckor eller områden som behöver förbättras  
+4. **Bevara befintligt innehåll** - utöka inte ersätt (såvida innehållet inte är uppenbart felaktigt)
+5. **Utöka eller förbättra** enligt strukturen ovan, men respektera befintlig stil
+6. **Skapa/uppdatera Mermaid-diagram** om behövs
+7. **Lägg till termer** i ordlistan vid behov
+8. **Referera till diagram** i texten naturligt
+
+### Viktiga riktlinjer för innehållsuppdatering:
+- **Läs först**: Förstå vad som redan finns innan du skriver något nytt
+- **Komplettera**: Bygg på befintligt innehåll istället för att skriva om det
+- **Konsistens**: Matcha den befintliga tonarten och stilnivån
+- **Sammanhang**: Se till att nytt innehåll flyter naturligt med det befintliga
 
 ## Kvalitetskrav
 - ✅ Faktiskt innehåll (inga platshållare)
