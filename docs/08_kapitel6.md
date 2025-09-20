@@ -183,6 +183,8 @@ deploy_swedish_infrastructure:
 
 Environment management strategies inkluderar infrastructure-as-code definitions för alla environments från development till production. Detta säkerställer parity mellan environments och eliminerar environment-specific configuration drift som traditionellt har orsakat deployment failures.
 
+## Avancerade deployment strategies
+
 ### Multi-environment orchestration för svenska regioner
 
 Svenska organisationer måste hantera complex multi-environment deployments som respekterar både tekniska och juridiska constraints:
@@ -247,6 +249,8 @@ module "swedish_environment" {
 ```
 
 Deployment gates implementeras för att säkerställa kvalitetskontroll innan production deployments. Dessa kan inkludera automated testing results, security scan outcomes, performance benchmarks, och manual approvals för high-risk changes. Progressive deployment techniques som blue-green och canary deployments minimerar blast radius vid problems.
+
+## Kvalitetskontroll och godkännandeprocesser
 
 ### Svenska deployment gates och approval processes
 
