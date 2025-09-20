@@ -57,3 +57,13 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 **Service Discovery:** Mekanism som möjliggör automatisk detektion och kommunikation mellan tjänster i distribuerade system.
 
 **Service Mesh:** Dedikerad infrastrukturlager som hanterar service-till-service-kommunikation, säkerhet och observability i mikroservicesarkitekturer.
+
+**Edge Computing:** Distributerad databehandlingsparadigm som placerar beräkningsresurser närmare datakällan för minskad latens och förbättrad prestanda.
+
+**Post-Quantum Cryptography:** Kryptografiska algoritmer som är designade för att vara säkra mot angrepp från både klassiska och kvantumdatorer.
+
+**Carbon-Aware Computing:** Approach för att optimera infrastrukturanvändning baserat på kolintensitet och förnybara energikällor för minskad miljöpåverkan.
+
+**Immutable Infrastructure:** Infrastrukturparadigm där komponenter aldrig modifieras efter deployment utan ersätts helt när ändringar behövs.
+
+**State Drift:** Situation där den faktiska infrastrukturtillståndet avviker från den definierade önskade tillståndet i Infrastructure as Code-definitioner.
