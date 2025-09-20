@@ -208,3 +208,61 @@ class TestConsistency:
                 f"Terminology variations detected in {len(terminology_issues)} cases",
                 UserWarning
             )
+    
+    def test_chapter_length(self, chapter_files, requirements_config):
+        """Test that each chapter exceeds the minimum word count requirement."""
+        minimum_words = requirements_config["structure"]["minimum_word_count"]
+        
+        # Special chapters that may have different word count requirements
+        special_chapters = requirements_config["book"].get("special_chapters", {})
+        special_filenames = [
+            special_chapters.get("ordlista", {}).get("filename", ""),
+            special_chapters.get("authors", {}).get("filename", ""),
+        ]
+        
+        short_chapters = []
+        for chapter_file in chapter_files:
+            content = chapter_file.read_text(encoding='utf-8')
+            
+            # Skip special chapters that don't need to meet word count requirements
+            if chapter_file.name in special_filenames:
+                continue
+            
+            # Extract text content and count words
+            word_count = self._count_content_words(content)
+            
+            if word_count < minimum_words:
+                short_chapters.append({
+                    "file": chapter_file.name,
+                    "word_count": word_count,
+                    "minimum_required": minimum_words
+                })
+        
+        assert not short_chapters, (
+            f"Chapters below minimum word count ({minimum_words} words): {short_chapters}"
+        )
+    
+    def _count_content_words(self, content):
+        """Count actual content words, excluding markdown formatting and code blocks."""
+        # Remove code blocks (both fenced and indented)
+        content_no_code = re.sub(r'```.*?```', '', content, flags=re.DOTALL)
+        content_no_code = re.sub(r'^ {4,}.*$', '', content_no_code, flags=re.MULTILINE)
+        
+        # Remove inline code
+        content_no_code = re.sub(r'`[^`]*`', '', content_no_code)
+        
+        # Remove headers (they are structural, not content)
+        content_no_code = re.sub(r'^#{1,6}\s+.*$', '', content_no_code, flags=re.MULTILINE)
+        
+        # Remove image references
+        content_no_code = re.sub(r'!\[.*?\]\([^)]*\)', '', content_no_code)
+        
+        # Remove links but keep link text
+        content_no_code = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', content_no_code)
+        
+        # Remove markdown formatting characters
+        content_no_code = re.sub(r'[*_~`#\[\]()!-]', ' ', content_no_code)
+        
+        # Split into words and count non-empty words
+        words = content_no_code.split()
+        return len([word for word in words if word.strip()])
