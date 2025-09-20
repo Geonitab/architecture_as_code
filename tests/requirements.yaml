@@ -137,6 +137,7 @@ structure:
       description: "Källor/referenser sektion"
       
   minimum_content_length: 500  # characters excluding whitespace
+  minimum_word_count: 5000     # words excluding formatting and code blocks
   maximum_title_length: 80     # characters
   
   required_diagram_format: "images/diagram_{chapter_id}_{name}.png"
