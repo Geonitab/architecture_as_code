@@ -2,125 +2,37 @@ name: Build Book
 
 on:
   push:
-    paths:
-      - 'docs/**/*.md'
-      - 'docs/images/**/*.mmd'
-      - '.github/workflows/build-book.yml'
-  pull_request:
-    paths:
-      - 'docs/**/*.md'
-      - 'docs/images/**/*.mmd'
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build-book:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Install Pandoc
-      run: |
-        wget https://github.com/jgm/pandoc/releases/download/3.1.9/pandoc-3.1.9-1-amd64.deb
-        sudo dpkg -i pandoc-3.1.9-1-amd64.deb
-        
-    - name: Install TeXLive for PDF generation
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-plain-generic
-        
-    - name: Install Node.js for Mermaid CLI
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        
-    - name: Install Mermaid CLI
-      run: |
-        npm install -g @mermaid-js/mermaid-cli
-        
-    - name: Install Chromium for Mermaid rendering
-      run: |
-        sudo apt-get install -y chromium-browser
-        
-    - name: Download Eisvogel template
-      run: |
-        mkdir -p ~/.local/share/pandoc/templates
-        wget https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex -O ~/.local/share/pandoc/templates/eisvogel.latex
-        
-    - name: Convert Mermaid diagrams to PNG
-      run: |
-        cd docs
-        for mmd_file in images/*.mmd; do
-          if [ -f "$mmd_file" ]; then
-            png_file="${mmd_file%.mmd}.png"
-            mmdc -i "$mmd_file" -o "$png_file" -t dark -b transparent --width 1200 --height 800
-            echo "Konverterade $mmd_file till $png_file"
-          fi
-        done
-        
-    - name: Build PDF book
-      run: |
-        cd docs
-        # Sortera markdown-filer i rätt ordning
-        MARKDOWN_FILES=$(ls -1 *.md | sort -V)
-        echo "Bygger bok med filer: $MARKDOWN_FILES"
-        
-        pandoc \
-          --standalone \
-          --template=eisvogel \
-          --toc \
-          --toc-depth=3 \
-          --number-sections \
-          --pdf-engine=xelatex \
-          --metadata title="Arkitektur som kod" \
-          --metadata author="Anna Bergström & Marcus Andersson" \
-          --metadata date="$(date +'%Y-%m-%d')" \
-          --metadata lang=sv \
-          --metadata book=true \
-          --metadata classoption=oneside \
-          --variable geometry:margin=2.5cm \
-          --variable fontsize=11pt \
-          --variable mainfont="DejaVu Serif" \
-          --variable sansfont="DejaVu Sans" \
-          --variable monofont="DejaVu Sans Mono" \
-          -s \
-          -o arkitektur_som_kod.pdf \
-          $MARKDOWN_FILES
-          
-    - name: Upload PDF artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: arkitektur-som-kod-pdf
-        path: docs/arkitektur_som_kod.pdf
-        retention-days: 30
-        
-    - name: Create Release on main branch
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v${{ github.run_number }}
-        release_name: Arkitektur som kod v${{ github.run_number }}
-        body: |
-          Automatiskt genererad release av boken "Arkitektur som kod"
-          
-          Byggt från commit: ${{ github.sha }}
-          Datum: ${{ github.event.head_commit.timestamp }}
-          
-          Senaste ändringar:
-          ${{ github.event.head_commit.message }}
-        draft: false
-        prerelease: false
-        
-    - name: Upload PDF to Release
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: docs/arkitektur_som_kod.pdf
-        asset_name: arkitektur_som_kod_v${{ github.run_number }}.pdf
-        asset_content_type: application/pdf
+      - name: Check out code
+        uses: actions/checkout@v2
+        run: |
+          echo 'Checking out the code...'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+        run: |
+          echo 'Setting up Node.js...'
+
+      - name: Install dependencies
+        run: |
+          echo 'Installing dependencies...'
+          npm install
+
+      - name: Build the project
+        run: |
+          echo 'Building the project...'
+          npm run build
+
+      - name: Run tests
+        run: |
+          echo 'Running tests...'
+          npm test
