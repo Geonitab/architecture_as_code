@@ -1,30 +1,77 @@
 1| # AI Assistant Prompt för Bokprojekt: Arkitektur som kod
 2| 
 3| ## Projektöversikt
-4| Du hjälper till att skapa innehåll för boken "Arkitektur som kod" - en omfattande guide på svenska om Infrastructure as Code (IaC). Boken riktar sig till systemarkitekter, utvecklare, DevOps-in[...]
+4| Du hjälper till att skapa innehåll för boken "Arkitektur som kod" - en omfattande guide på svenska om Infrastructure as Code (IaC). Detta är ett hybridprojekt som kombinerar:
 5| 
-6| ## Nuvarande struktur
-7| Följande filer finns i `docs/`-mappen:
-8| - `01_inledning.md` - Introduktion till IaC
-9| - `02_kapitel1.md` - Grundläggande principer  
-10| - `03_kapitel2.md` - Verktyg och teknologier
-11| - `04_kapitel3.md` - Molnarkitektur som kod
-12| - `05_kapitel4.md` - Säkerhet och policy som kod
-13| - `06_kapitel5.md` - [Behöver innehåll]
-14| - `07_kapitel6.md` - DevOps och CI/CD
-15| - `08_kapitel7.md` - Infrastruktur som kod i praktiken
-16| - `09_kapitel8.md` - Versionshantering och kodstandarder
-17| - `10_kapitel9.md` - Automatisering av molntjänster
-18| - `11_kapitel10.md` - Containerisering och orkestrering
-19| - `12_kapitel11.md` - Policy och säkerhet som kod i detalj
-20| - `13_kapitel12.md` - Microservices-arkitektur
-21| - `14_kapitel13.md` - Framtida trender inom IaC
-22| - `15_kapitel14.md` - Team-struktur och kompetensutveckling
-23| - `21_slutsats.md` - Sammanfattning
-24| - `22_ordlista.md` - Teknisk ordlista
-25| - `23_om_forfattarna.md` - Författarpresentationer
-26| 
-27| ## Din uppgift
+6| 1. **Bokproduktion**: Automatiserad generering och publicering av en omfattande teknisk bok
+7| 2. **React Dashboard**: En webbapplikation som visar bokprojektets status och kapitelstruktur
+8| 
+9| Boken riktar sig till systemarkitekter, utvecklare, DevOps-ingenjörer, projektledare och IT-chefer som vill förstå och implementera Infrastructure as Code.
+10| ## Nuvarande struktur
+11| Projektet innehåller **23 kapitel** (21 befintliga filer + 2 som saknas). Följande filer finns i `docs/`-mappen:
+12| 
+13| - `01_inledning.md` - Inledning till arkitektur som kod
+14| - `02_kapitel1.md` - Grundläggande principer för Infrastructure as Code
+15| - `03_kapitel2.md` - Versionhantering och kodstruktur  
+16| - `04_kapitel3.md` - Automatisering och CI/CD-pipelines
+17| - `05_kapitel4.md` - Molnarkitektur som kod
+18| - `06_kapitel5.md` - Säkerhet i Infrastructure as Code
+19| - `07_kapitel6.md` - DevOps och CI/CD för Infrastructure as Code
+20| - `08_kapitel7.md` - Infrastruktur som kod i praktiken
+21| - `09_kapitel8.md` - Digitalisering genom kodbaserad infrastruktur
+22| - `10_kapitel9.md` - Organisatorisk förändring och teamstrukturer
+23| - `11_kapitel10.md` - Containerisering och orkestrering som kod
+24| - `12_kapitel11.md` - [SAKNAS - Projektledning för IaC-initiativ]
+25| - `13_kapitel12.md` - Microservices-arkitektur som kod
+26| - `14_kapitel13.md` - Framtida trender och teknologier inom IaC
+27| - `15_kapitel14.md` - Team-struktur och kompetensutveckling för IaC
+28| - `16_kapitel15.md` - Kostnadsoptimering och resurshantering
+29| - `17_kapitel16.md` - Teststrategier för infrastruktukod
+30| - `18_kapitel17.md` - Migration från traditionell infrastruktur
+31| - `19_kapitel18.md` - [SAKNAS - Fallstudier och praktiska exempel]
+32| - `20_kapitel19.md` - Best practices och lärda läxor
+33| - `21_slutsats.md` - Slutsats
+34| - `22_ordlista.md` - Ordlista
+35| - `23_om_forfattarna.md` - Om författarna
+36|
+37| ## Teknisk infrastruktur
+38| Projektet använder följande teknologier och verktyg:
+39| 
+40| ### Bokproduktion
+41| - **Python 3.12**: Content generation via `generate_book.py`
+42| - **Pandoc 3.1.9**: Markdown till PDF-konvertering
+43| - **XeLaTeX**: PDF-renderingsmotor
+44| - **Mermaid CLI**: Diagramkonvertering (.mmd → .png)
+45| - **TeXLive**: LaTeX-distribution för PDF-generering
+46| - **Eisvogel**: LaTeX-template för professionell PDF-layout
+47| 
+48| ### React Dashboard
+49| - **Vite**: Build tool och utvecklingsserver
+50| - **React + TypeScript**: UI-ramverk  
+51| - **Tailwind CSS + shadcn/ui**: Styling och komponenter
+52| - **React Router**: Navigation
+53| 
+54| ### CI/CD Pipeline
+55| - **GitHub Actions**: Automatiserad bokbygge och publicering
+56| - **Automatiska releaser**: PDF publiceras vid push till main branch
+57| - **Artefaktlagring**: PDF tillgänglig för nedladdning efter builds
+58| 
+59| ### Kommando för byggprocesser
+60| ```bash
+61| # React-applikation
+62| npm run build     # 5 sekunder
+63| npm run dev       # Utvecklingsserver
+64| npm run lint      # ESLint (visar varningar - förväntat)
+65| 
+66| # Bokgenerering
+67| python3 generate_book.py          # <1 sekund - genererar markdown
+68| docs/build_book.sh                # 30 sekunder - full PDF med diagram
+69| 
+70| # Komplett arbetsflöde (45 sekunder - AVBRYT ALDRIG)
+71| python3 generate_book.py && docs/build_book.sh
+72| ```
+73| 
+74| ## Din uppgift
 28| Välj EN markdown-fil från `docs/`-mappen att utöka eller förbättra. Fokusera på:
 29| 
 30| ### Innehållskrav
@@ -62,12 +109,15 @@
 62| ```
 63| 
 64| ### Tekniska områden att täcka
-65| - **Systemutveckling**: CI/CD, automatisering, versionhantering
-66| - **Digitalisering**: Molnmigration, DevOps-transformation
-67| - **Arkitektur**: Microservices, containerisering, orkestrering
-68| - **Säkerhet**: Policy as Code, secrets management, compliance
-69| - **Innovation**: Emerging technologies, best practices
-70| - **Organisationsutveckling**: Team-strukturer, kompetensutveckling
+65| Bokens kapitel täcker följande fokusområden (baserat på React Dashboard-strukturen):
+66| - **Systemutveckling**: CI/CD, automatisering, versionhantering, teststrategier
+67| - **Digitalisering**: Molnmigration, DevOps-transformation, kodbaserad infrastruktur
+68| - **Arkitektur**: Microservices, containerisering, orkestrering, kostnadsoptimering
+69| - **Säkerhet**: Policy as Code, compliance, säkerhetsstrategier
+70| - **Innovation**: Framtida teknologier, best practices, transformation
+71| - **Organisationsutveckling**: Team-strukturer, kompetensutveckling, förändringsledning
+72| - **Projektledning**: IaC-initiativ, migration, implementationsstrategier
+73| - **Produkt- och tjänstutveckling**: IaC-verktyg, praktiska implementationer
 71| 
 72| ### Mermaid-diagram
 73| Varje kapitel ska ha ett associerat Mermaid-diagram i `docs/images/diagram_XX_kapitelX.mmd`:
@@ -91,7 +141,28 @@
 91| - **Term**: Kort, tydlig definition på svenska
 92| ```
 93| 
-94| ## Instruktioner för genomförande
+94| ## Validering och test
+95| **VIKTIGT**: Efter ALLA ändringar måste du validera funktionaliteten:
+96| 
+97| ### React Dashboard Validering
+98| ```bash
+99| npm run dev       # Starta utvecklingsserver
+100| # Navigera till http://localhost:8080
+101| # Ta skärmdump för att verifiera UI renderas korrekt
+102| # Kontrollera konsolen för fel
+103| ```
+104| **Förväntad UI**: Dashboard som visar 23 bokkapitel, projektstatuskort och CI/CD-statusindikatorer på svenska.
+105| 
+106| ### Bokbyggnadsvalidering  
+107| ```bash
+108| python3 generate_book.py && docs/build_book.sh
+109| ls -la docs/arkitektur_som_kod.pdf    # Ska vara ~95KB
+110| ls -la docs/images/*.png             # Ska visa 12 PNG-filer
+111| file docs/arkitektur_som_kod.pdf     # Ska bekräfta giltig PDF
+112| ```
+113| **Förväntade utdata**: PDF-fil (~95KB), 12 Mermaid-diagram konverterade till PNG, inga fel under Pandoc PDF-generering.
+114| 
+115| ## Instruktioner för genomförande
 95| 
 96| ### KRITISKT: Läs innan du skriver!
 97| **Du MÅSTE läsa igenom den befintliga filen helt innan du skapar eller lägger till nytt innehåll.**
