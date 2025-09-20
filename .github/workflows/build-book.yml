@@ -139,53 +139,61 @@ jobs:
           echo "Available markdown files:"
           ls -la *.md | head -10
           
-          # Check if all required files exist
-          required_files="01_inledning.md 02_kapitel1.md 03_kapitel2.md 04_kapitel3.md 21_slutsats.md 22_ordlista.md 23_om_forfattarna.md"
+          # Check if pandoc.yaml config exists
+          if [ ! -f "pandoc.yaml" ]; then
+            echo "❌ Error: Pandoc configuration file missing (pandoc.yaml)"
+            exit 1
+          fi
+          
+          # Define chapter files (matching local build script)
+          CHAPTER_FILES=(
+            "01_inledning.md"
+            "02_grundlaggande_principer.md"
+            "03_versionhantering.md"
+            "04_adr.md"
+            "05_automatisering_cicd.md"
+            "06_devops_cicd.md"
+            "07_molnarkitektur.md"
+            "08_containerisering.md"
+            "09_microservices.md"
+            "10_sakerhet.md"
+            "11_policy_sakerhet.md"
+            "12_compliance.md"
+            "13_teststrategier.md"
+            "14_praktisk_implementation.md"
+            "15_kostnadsoptimering.md"
+            "16_migration.md"
+            "17_organisatorisk_forandring.md"
+            "18_team_struktur.md"
+            "19_digitalisering.md"
+            "20_lovable_mockups.md"
+            "21_framtida_trender.md"
+            "22_best_practices.md"
+            "23_slutsats.md"
+            "24_ordlista.md"
+            "25_om_forfattarna.md"
+          )
+          
+          # Check if required files exist
           missing_files=""
-          for file in $required_files; do
+          for file in "${CHAPTER_FILES[@]}"; do
             if [ ! -f "$file" ]; then
               missing_files="$missing_files $file"
             fi
           done
           
           if [ -n "$missing_files" ]; then
-            echo "⚠️ Warning: Missing files:$missing_files"
+            echo "❌ Error: Missing required files:$missing_files"
             echo "Available files:"
             ls *.md
-            echo "Will attempt to build with available files..."
-            
-            # Build with all available markdown files
-            available_files=$(ls *.md | sort)
-            pandoc \
-              --standalone \
-              --template="$HOME/.local/share/pandoc/templates/eisvogel.latex" \
-              --toc \
-              --toc-depth=3 \
-              --number-sections \
-              --pdf-engine=xelatex \
-              -s \
-              -o arkitektur_som_kod.pdf \
-              $available_files
-          else
-            echo "✅ All required files found"
-            # Build PDF with Pandoc using specified files
-            pandoc \
-              --standalone \
-              --template="$HOME/.local/share/pandoc/templates/eisvogel.latex" \
-              --toc \
-              --toc-depth=3 \
-              --number-sections \
-              --pdf-engine=xelatex \
-              -s \
-              -o arkitektur_som_kod.pdf \
-              01_inledning.md \
-              02_kapitel1.md \
-              03_kapitel2.md \
-              04_kapitel3.md \
-              21_slutsats.md \
-              22_ordlista.md \
-              23_om_forfattarna.md
+            exit 1
           fi
+          
+          echo "✅ All required chapter files found"
+          
+          # Build PDF with Pandoc using defaults configuration (matching local build script)
+          echo "Generating PDF with Pandoc configuration..."
+          pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf
           
           # Verify PDF was created
           if [ -f "arkitektur_som_kod.pdf" ]; then

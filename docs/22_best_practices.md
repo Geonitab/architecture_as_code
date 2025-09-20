@@ -663,9 +663,9 @@ def implement_best_practice():
 **Owner:** {Who maintains this documentation}
 
 ---
-*Last Updated: {Date}*
-*Version: {Version number}*
-*Contributors: {List of contributors}*
+_Last Updated: {Date}_
+_Version: {Version number}_
+_Contributors: {List of contributors}_
 ```
 
 ## Sammanfattning
