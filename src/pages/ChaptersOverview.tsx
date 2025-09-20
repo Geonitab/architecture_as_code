@@ -34,139 +34,146 @@ const ChaptersOverview = () => {
     },
     { 
       id: "04", 
+      title: "Architecture Decision Records (ADR)", 
+      area: "Grundläggande koncept",
+      summary: "Strukturerad metod för att dokumentera viktiga arkitekturbeslut. Täcker ADR-format, verktyg och integration med Infrastructure as Code.",
+      keyTopics: ["Decision documentation", "ADR structure", "Architectural governance", "Compliance tracking"]
+    },
+    { 
+      id: "05", 
       title: "Automatisering och CI/CD-pipelines", 
       area: "Systemutveckling",
       summary: "Implementering av automatiserade CI/CD-pipelines för infrastrukturkod. Täcker testing, validation och deployment strategies.",
       keyTopics: ["CI/CD pipelines", "Automated testing", "Deployment strategies", "Quality gates"]
     },
     { 
-      id: "05", 
+      id: "06", 
       title: "Molnarkitektur som kod", 
       area: "Arkitektur",
       summary: "Designprinciper för molnbaserad infrastruktur som kod. Fokus på skalbarhet, resiliens och multi-cloud strategier.",
       keyTopics: ["Cloud design patterns", "Multi-cloud", "Skalbarhet", "Resiliens"]
     },
     { 
-      id: "06", 
+      id: "07", 
       title: "Säkerhet i Infrastructure as Code", 
       area: "Säkerhet",
       summary: "Säkerhetsaspekter och best practices för IaC. Inkluderar secrets management, compliance och security scanning.",
       keyTopics: ["Security by design", "Secrets management", "Compliance", "Vulnerability scanning"]
     },
     { 
-      id: "07", 
+      id: "08", 
       title: "Monitering och observabilitet", 
       area: "Systemutveckling",
       summary: "Implementering av omfattande monitoring och observabilitet för kodbaserad infrastruktur.",
       keyTopics: ["Monitoring strategies", "Observability", "Alerting", "Performance metrics"]
     },
     { 
-      id: "08", 
+      id: "09", 
       title: "Skalbarhet och prestanda", 
       area: "Arkitektur",
       summary: "Tekniker för att säkerställa skalbar och högpresterande infrastruktur genom kod.",
       keyTopics: ["Auto-scaling", "Performance optimization", "Load balancing", "Resource management"]
     },
     { 
-      id: "09", 
+      id: "10", 
       title: "Digitalisering genom kodbaserad infrastruktur", 
       area: "Digitalisering",
       summary: "Hur IaC möjliggör och accelererar digital transformation inom svenska organisationer.",
       keyTopics: ["Digital transformation", "Innovation", "Business agility", "Competitive advantage"]
     },
     { 
-      id: "10", 
+      id: "11", 
       title: "Organisatorisk förändring och teamstrukturer", 
       area: "Organisationsutveckling",
       summary: "Hantering av organisatoriska förändringar vid IaC-implementation. Fokus på team dynamics och cultural change.",
       keyTopics: ["Change management", "Team structures", "Cultural transformation", "Skills development"]
     },
     { 
-      id: "11", 
+      id: "12", 
       title: "Projektledning för IaC-initiativ", 
       area: "Projektledning",
       summary: "Projektledningsmetodiker och best practices för framgångsrika IaC-implementationer.",
       keyTopics: ["Project planning", "Risk management", "Stakeholder engagement", "Success metrics"]
     },
     { 
-      id: "12", 
+      id: "13", 
       title: "Innovation genom infrastrukturtransformation", 
       area: "Innovation",
       summary: "Hur IaC möjliggör innovation och snabbare time-to-market för nya produkter och tjänster.",
       keyTopics: ["Innovation frameworks", "Rapid prototyping", "Experimentation", "Technology adoption"]
     },
     { 
-      id: "13", 
+      id: "14", 
       title: "Produktutveckling med IaC-verktyg", 
       area: "Produkt- och tjänstutveckling",
       summary: "Integration av IaC i produktutvecklingsprocesser för snabbare och mer tillförlitliga releases.",
       keyTopics: ["Product development", "DevOps integration", "Release management", "Quality assurance"]
     },
     { 
-      id: "14", 
+      id: "15", 
       title: "Compliance och regelefterlevnad", 
       area: "Säkerhet",
       summary: "Säkerställande av compliance med svenska och europeiska regleringar genom kodbaserad infrastruktur.",
       keyTopics: ["GDPR compliance", "Regulatory requirements", "Audit trails", "Data sovereignty"]
     },
     { 
-      id: "15", 
+      id: "16", 
       title: "Kostnadsoptimering och resurshantering", 
       area: "Arkitektur",
       summary: "Strategier för kostnadsoptimering och effektiv resurshantering genom IaC.",
       keyTopics: ["Cost optimization", "Resource management", "Budget control", "ROI measurement"]
     },
     { 
-      id: "16", 
+      id: "17", 
       title: "Teststrategier för infrastrukturkod", 
       area: "Systemutveckling",
       summary: "Omfattande teststrategier för att säkerställa kvalitet och tillförlitlighet i infrastrukturkod.",
       keyTopics: ["Testing strategies", "Test automation", "Quality gates", "Validation frameworks"]
     },
     { 
-      id: "17", 
+      id: "18", 
       title: "Hybridmolnstrategier", 
       area: "Arkitektur",
       summary: "Design och implementation av hybridmolnlösningar med kodbaserad infrastruktur.",
       keyTopics: ["Hybrid cloud", "On-premises integration", "Data governance", "Connectivity"]
     },
     { 
-      id: "18", 
+      id: "19", 
       title: "Framtida trender och teknologier", 
       area: "Innovation",
       summary: "Emerging technologies och framtida trender inom Infrastructure as Code.",
       keyTopics: ["Emerging technologies", "Future trends", "Technology roadmaps", "Industry evolution"]
     },
     { 
-      id: "19", 
+      id: "20", 
       title: "Best practices och lärda läxor", 
       area: "Systemutveckling",
       summary: "Sammanställning av best practices och viktiga lärdomar från framgångsrika IaC-implementationer.",
       keyTopics: ["Best practices", "Lessons learned", "Success factors", "Common pitfalls"]
     },
     { 
-      id: "20", 
+      id: "21", 
       title: "Fallstudier och praktiska exempel", 
       area: "Praktisk tillämpning",
       summary: "Detaljerade fallstudier från svenska organisationer som framgångsrikt implementerat Infrastructure as Code.",
       keyTopics: ["Case studies", "Real-world examples", "Implementation journeys", "Results achieved"]
     },
     { 
-      id: "21", 
+      id: "22", 
       title: "Slutsats", 
       area: "Sammanfattning",
       summary: "Sammanfattning av bokens huvudbudskap och rekommendationer för framtida IaC-arbete.",
       keyTopics: ["Key takeaways", "Future recommendations", "Action items", "Next steps"]
     },
     { 
-      id: "22", 
+      id: "23", 
       title: "Ordlista", 
       area: "Referenser",
       summary: "Omfattande ordlista med definitioner av termer och begrepp inom Infrastructure as Code.",
       keyTopics: ["Terminology", "Definitions", "Glossary", "Technical terms"]
     },
     { 
-      id: "23", 
+      id: "24", 
       title: "Om författarna", 
       area: "Referenser",
       summary: "Information om bokens författare och deras bakgrund inom Infrastructure as Code.",
