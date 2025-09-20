@@ -71,213 +71,213 @@
 71| python3 generate_book.py && docs/build_book.sh
 72| ```
 73| 
-## Tillgängliga resurser
-
-Projektet erbjuder en omfattande uppsättning resurser relaterade till boken "Arkitektur som kod":
-
-### 📖 Boken själv
-**"Arkitektur som kod" - En omfattande guide på svenska om Infrastructure as Code**
-
-- **Omfattning**: 23 kapitel som täcker hela spektrumet av Infrastructure as Code
-- **Målgrupp**: Systemarkitekter, utvecklare, DevOps-ingenjörer, projektledare och IT-chefer
-- **Teman**: Från grundläggande principer till avancerad implementation med fokus på praktisk tillämpning
-- **Format**: Professionellt formaterad PDF (~95KB) med integrerade diagram och illustrationer
-- **Språk**: Helt på svenska för svenska organisationer och utvecklare
-- **Publicering**: Automatiskt genererad och uppdaterad via CI/CD-pipeline
-
-**Huvudteman:**
-- Grundläggande IaC-principer och best practices
-- Molnarkitektur och automatisering som kod
-- Säkerhet, compliance och regelefterlevnad
-- CI/CD och DevOps-transformation
-- Organisatorisk förändring och teamstrukturer
-- Praktiska fallstudier och implementationsstrategier
-
-### 📄 Kompletterande vitböcker
-Projektet inkluderar specialiserade vitböcker som fördjupar specifika aspekter av Infrastructure as Code:
-
-- **"IaC Security Framework"** - Detaljerad guide för säkerhetsimplementation
-- **"Migration Playbook"** - Steg-för-steg guide för migration från traditionell infrastruktur
-- **"Team Transformation Guide"** - Organisatorisk förändringsledning för IaC-adoption
-- **"Cost Optimization Strategies"** - Praktiska metoder för kostnadseffektiv infrastruktur
-- **"Compliance Automation"** - Automated compliance och regelefterlevnad
-
-Dessa vitböcker är tillgängliga som separata markdown-dokument och kan genereras som individuella PDF:er.
-
-### 📊 Presentationer och diagram-stödda sammanfattningar
-Varje kapitel i boken stöds av visuella resurser för enklare förståelse och presentation:
-
-- **Mermaid-diagram**: 12+ professionella diagram som illustrerar nyckelkoncept
-  - Horisontell orientering för optimal visning
-  - Maximalt 5 element per diagram för tydlighet
-  - Svenska etiketter och beskrivningar
-  - Automatisk konvertering till PNG för integration
-
-- **Kapitelsammanfattningar**: Koncisa presentationsformat för varje tema
-  - Nyckeltal och metrikss
-  - Praktiska exempel och use cases
-  - Implementationsguider
-  - Branschspecifika anpassningar
-
-- **Visualiseringsbibliotek**: Återanvändbara diagramkomponenter
-  - CI/CD-flöden och arkitekturdiagram
-  - Säkerhetsmodeller och compliance-ramverk
-  - Teamstrukturer och organisatoriska flöden
-
-### 🌐 Website som resurshub
-React-dashboarden fungerar som central hub för alla projektresurser:
-
-**Funktionalitet:**
-- **Projektöversikt**: Real-time status för alla 23 kapitel
-- **Resursnätverk**: Direkta länkar till alla tillgängliga resurser
-- **Download-center**: Automatisk tillgång till senaste PDF-versioner
-- **Diagram-galleri**: Visuell presentation av alla Mermaid-diagram
-- **CI/CD-status**: Live-uppdateringar av byggprocesser och releases
-
-**Teknisk implementation:**
-- Modern React + TypeScript-applikation
-- Responsiv design med Tailwind CSS och shadcn/ui
-- Real-time integration med GitHub Actions
-- Automatisk uppdatering vid nya releases
-
-**Tillgänglighet:**
-- Utvecklingsserver: `npm run dev` → http://localhost:8080
-- Produktions-deployment via GitHub Pages
-- Offline-tillgång till alla genererade resurser
-- RESTful API för programmatisk åtkomst till projektdata
-
-**Resursnavigation:**
-- Interaktiv kapitellista med status-indikatorer
-- Sökfunktion för snabb resurslokalisering
-- Kategorisering efter tekniska områden
-- Direkta download-länkar för alla PDF:er och diagram
-
-Websiten uppdateras automatiskt när nya innehåll publiceras och fungerar som det centrala navet för alla som arbetar med Infrastructure as Code-implementation.
-74| ## Din uppgift
-28| Välj EN markdown-fil från `docs/`-mappen att utöka eller förbättra. Fokusera på:
-29| 
-30| ### Innehållskrav
-31| - **Språk**: Svenska
-32| - **Målgrupp**: Tekniska professionnella inom IT/utveckling
-33| - **Längd**: 2000-4000 ord per kapitel
-34| - **Struktur**: Använd kapitlets befintliga struktur eller förbättra den
-35| 
-36| ### Kapitelstruktur
-37| ```markdown
-38| # Kapiteltitel (utan nummer)
-39| 
-40| ![Diagram beskrivning](images/diagram_XX_kapitelX.png)
-41| 
-42| *Inledande text som refererar till diagrammet ovan (ca 500 tecken)*
-43| 
-44| ## Övergripande beskrivning
-45| Huvudinnehåll som fördjupar kapitlets tema (ca 2500 tecken)
-46| 
-47| ## Underrubrik 1
-48| Fördjupande text om specifikt område (ca 1500 tecken)
-49| 
-50| ## Underrubrik 2  
-51| Fördjupande text om specifikt område (ca 1500 tecken)
-52| 
-53| ## Praktiska exempel
-54| Konkreta kodexempel och implementationer
-55| 
-56| ## Sammanfattning
-57| Kort sammanfattning av kapitlets huvudpunkter
-58| 
-59| ## Källor och referenser
-60| - Källa 1
-61| - Källa 2
-62| ```
-63| 
-64| ### Tekniska områden att täcka
-65| Bokens kapitel täcker följande fokusområden (baserat på React Dashboard-strukturen):
-66| - **Systemutveckling**: CI/CD, automatisering, versionhantering, teststrategier
-67| - **Digitalisering**: Molnmigration, DevOps-transformation, kodbaserad infrastruktur
-68| - **Arkitektur**: Microservices, containerisering, orkestrering, kostnadsoptimering
-69| - **Säkerhet**: Policy as Code, compliance, säkerhetsstrategier
-70| - **Innovation**: Framtida teknologier, best practices, transformation
-71| - **Organisationsutveckling**: Team-strukturer, kompetensutveckling, förändringsledning
-72| - **Projektledning**: IaC-initiativ, migration, implementationsstrategier
-73| - **Produkt- och tjänstutveckling**: IaC-verktyg, praktiska implementationer
-71| 
-72| ### Mermaid-diagram
-73| Varje kapitel ska ha ett associerat Mermaid-diagram i `docs/images/diagram_XX_kapitelX.mmd`:
-74| - **Horisontell orientering**: `graph LR` 
-75| - **Max 5 element** per diagram
-76| - **Enkla, tydliga koncept**
-77| - **Svenska etiketter**
-78| 
-79| Exempel:
-80| ```mermaid
-81| graph LR
-82|     A[Kod] --> B[CI/CD Pipeline]
-83|     B --> C[Test]
-84|     C --> D[Deploy]
-85|     D --> E[Infrastruktur]
-86| ```
-87| 
-88| ### Ordlista-bidrag
-89| Om du använder tekniska termer, lägg till dem i `22_ordlista.md`:
-90| ```markdown
-91| - **Term**: Kort, tydlig definition på svenska
-92| ```
-93| 
-94| ## Validering och test
-95| **VIKTIGT**: Efter ALLA ändringar måste du validera funktionaliteten:
-96| 
-97| ### React Dashboard Validering
-98| ```bash
-99| npm run dev       # Starta utvecklingsserver
-100| # Navigera till http://localhost:8080
-101| # Ta skärmdump för att verifiera UI renderas korrekt
-102| # Kontrollera konsolen för fel
-103| ```
-104| **Förväntad UI**: Dashboard som visar 23 bokkapitel, projektstatuskort och CI/CD-statusindikatorer på svenska.
+74| ## Diagram och bilder
+75| Alla diagram skapas med [Mermaid](https://mermaid.js.org/) och sparas som `.mmd`-filer i `docs/images/`.
+76| Dessa konverteras automatiskt till `.png` under byggprocessen.
+77| 
+78| ### Konvertera diagram manuellt
+79| ```bash
+80| mermaid docs/images/diagram_01_inledning.mmd -o docs/images/diagram_01_inledning.png
+81| ```
+82| 
+83| ## Generera thumbnails
+84| För att generera thumbnails för alla diagram (för React-dashboard):
+85| 
+86| ```bash
+87| npm run thumbnails
+88| ```
+89| 
+90| Detta skript använder `scripts/generate_thumbnails.py` för att skapa skalade versioner av alla diagram.
+91| 
+92| ## Viktiga filer
+93| - `generate_book.py`: Huvudskript för att generera bokens innehåll
+94| - `docs/build_book.sh`: Skript för att bygga PDF-versionen av boken
+95| - `react-app/src/components/Chapter.tsx`: React-komponent för att visa ett kapitel
+96| - `react-app/src/App.tsx`: Huvudapplikation för React-dashboard
+97| 
+98| ## Arbeta lokalt
+99| 
+100| ### Krav
+101| - Python 3.12
+102| - NodeJS (för React-applikationen)
+103| - TeXLive (för PDF-generering)
+104| - Mermaid CLI
 105| 
-106| ### Bokbyggnadsvalidering  
-107| ```bash
-108| python3 generate_book.py && docs/build_book.sh
-109| ls -la docs/arkitektur_som_kod.pdf    # Ska vara ~95KB
-110| ls -la docs/images/*.png             # Ska visa 12 PNG-filer
-111| file docs/arkitektur_som_kod.pdf     # Ska bekräfta giltig PDF
-112| ```
-113| **Förväntade utdata**: PDF-fil (~95KB), 12 Mermaid-diagram konverterade till PNG, inga fel under Pandoc PDF-generering.
-114| 
-115| ## Instruktioner för genomförande
-95| 
-96| ### KRITISKT: Läs innan du skriver!
-97| **Du MÅSTE läsa igenom den befintliga filen helt innan du skapar eller lägger till nytt innehåll.**
-98| 
-99| 1. **Välj en fil** från docs/-mappen att arbeta med
-100| 2. **LÄS HELA BEFINTLIGA FILEN FÖRST** - förstå nuvarande innehåll, struktur och ton
-101| 3. **Analysera vad som saknas** - identifiera luckor eller områden som behöver förbättras  
-102| 4. **Bevara befintligt innehåll** - utöka inte ersätt (såvida innehållet inte är uppenbart felaktigt)
-103| 5. **Utöka eller förbättra** enligt strukturen ovan, men respektera befintlig stil
-104| 6. **Skapa/uppdatera Mermaid-diagram** om behövs
-105| 7. **Lägg till termer** i ordlistan vid behov
-106| 8. **Referera till diagram** i texten naturligt
-107| 
-108| ### Viktiga riktlinjer för innehållsuppdatering:
-109| - **Läs först**: Förstå vad som redan finns innan du skriver något nytt
-110| - **Komplettera**: Bygg på befintligt innehåll istället för att skriva om det
-111| - **Konsistens**: Matcha den befintliga tonarten och stilnivån
-112| - **Sammanhang**: Se till att nytt innehåll flyter naturligt med det befintliga
-113| 
-114| ## Kvalitetskrav
-115| - ✅ Faktiskt innehåll (inga platshållare)
-116| - ✅ Svenska språket genomgående
-117| - ✅ Teknisk korrekthet 
-118| - ✅ Praktiska exempel med kod
-119| - ✅ Logisk progression i texten
-120| - ✅ Referenser till verkliga verktyg/teknologier
-121| 
-122| ## Exempel på förbättringar
-123| - Lägg till konkreta kodexempel
-124| - Fördjupa befintliga avsnitt
-125| - Skapa nya underrubriker för bredare täckning
-126| - Förbättra diagram för bättre förståelse
-127| - Lägg till praktiska use cases
-128| - Inkludera branschspecifika exempel
-129| 
-130| Börja med att välja vilken fil du vill arbeta med och meddela ditt val innan du börjar skriva!
+106| ### Setup
+107| 1. Installera Python-beroenden:
+108|    ```bash
+109|    pip install -r requirements.txt
+110|    ```
+111| 2. Installera NodeJS-beroenden:
+112|    ```bash
+113|    cd react-app
+114|    npm install
+115|    ```
+116| 
+117| ### Utvecklingsserver (React)
+118| ```bash
+119| cd react-app
+120| npm run dev
+121| ```
+122| 
+123| ### Bygg bok lokalt
+124| ```bash
+125| python3 generate_book.py && docs/build_book.sh
+126| ```
+127| 
+128| ## Felsökning
+129| - **Problem med PDF-generering**: Kontrollera att TeXLive är korrekt installerat och konfigurerat.
+130| - **Problem med React-applikationen**: Se till att alla NodeJS-beroenden är installerade.
+131| - **Problem med diagram**: Verifiera att Mermaid CLI är installerat och att sökvägen är korrekt.
+132| 
+133| ## Tillgängliga resurser
+134| - **GitHub repository**: [https://github.com/kvardrat/arkitektur-som-kod](https://github.com/kvardrat/arkitektur-som-kod)
+135| - **React Dashboard**: (kommer snart)
+136| - **Boken som PDF**: (kommer snart)
+137| - **Slack kanal**: #arkitektur-som-kod (internt på Kvadrat)
+138| 
+139| ## Bidra
+140| Alla bidrag är välkomna! Skapa en pull request med dina ändringar.
+141| 
+142| ### Riktlinjer
+143| - Följ projektets kodstil
+144| - Skriv tydliga commit-meddelanden
+145| - Uppdatera dokumentationen vid behov
+146| - Skapa tester för ny funktionalitet
+147| 
+148| ## Licens
+149| Projektet är licensierat under [MIT License](LICENSE).
+150| 
+151| ## Kontakt
+152| För frågor eller förslag, kontakta [johannes@kvardrat.se](mailto:johannes@kvardrat.se).
+153| 
+154| ## Tack
+155| Tack till alla som bidrar till detta projekt!
+156| ## Din uppgift
+157| Välj EN markdown-fil från `docs/`-mappen att utöka eller förbättra. Fokusera på:
+158| 
+159| ### Innehållskrav
+160| - **Språk**: Svenska
+161| - **Målgrupp**: Tekniska professionnella inom IT/utveckling
+162| - **Längd**: 2000-4000 ord per kapitel
+163| - **Struktur**: Använd kapitlets befintliga struktur eller förbättra den
+164| - **Content ratio**: 20% kod, 80% förklarande text som eftersträvas per kapitel
+165| 
+166| ### Kapitelstruktur
+167| ```markdown
+168| # Kapiteltitel (utan nummer)
+169| 
+170| ![Diagram beskrivning](images/diagram_XX_kapitelX.png)
+171| 
+172| *Inledande text som refererar till diagrammet ovan (ca 500 tecken)*
+173| 
+174| ## Övergripande beskrivning
+175| Huvudinnehåll som fördjupar kapitlets tema (ca 2500 tecken)
+176| 
+177| ## Underrubrik 1
+178| Fördjupande text om specifikt område (ca 1500 tecken)
+179| 
+180| ## Underrubrik 2  
+181| Fördjupande text om specifikt område (ca 1500 tecken)
+182| 
+183| ## Praktiska exempel
+184| Konkreta kodexempel och implementationer
+185| 
+186| ## Sammanfattning
+187| Kort sammanfattning av kapitlets huvudpunkter
+188| 
+189| ## Källor och referenser
+190| - Källa 1
+191| - Källa 2
+192| ```
+193| 
+194| ### Exempel på kod
+195| ```python
+196| def hello_world():
+197|     print("Hello, world!")
+198| 
+199| hello_world()
+200| ```
+201| 
+202| ## Checklista för innehåll
+203| 
+204| ### Allmänt
+205| - [ ] Kapitlet har en tydlig titel
+206| - [ ] Inledningen ger en bra överblick
+207| - [ ] Sammanfattningen knyter ihop kapitlet
+208| - [ ] Källor och referenser är angivna
+209| 
+210| ### Struktur
+211| - [ ] Logisk indelning i underrubriker
+212| - [ ] Användning av punktlistor och numrering
+213| - [ ] Diagram och bilder för visualisering
+214| 
+215| ### Detaljer
+216| - [ ] Korrekt användning av svenska språket
+217| - [ ] Teknisk korrekthet i beskrivningar
+218| - [ ] Praktiska och relevanta exempel
+219| - [ ] Anpassat för målgruppen
+220| 
+221| ### Kodexempel
+222| - [ ] Välformaterad kod
+223| - [ ] Kommentarer som förklarar koden
+224| - [ ] Användning av relevanta bibliotek
+225| - [ ] Möjlighet att köra koden lokalt
+226| 
+227| ## Verktyg och resurser
+228| 
+229| ### Markdown editor
+230| - [Visual Studio Code](https://code.visualstudio.com/)
+231| - [Typora](https://typora.io/)
+232| - [Obsidian](https://obsidian.md/)
+233| 
+234| ### Mermaid editor
+235| - [Mermaid Live Editor](https://mermaid.live/)
+236| - [PlantUML](https://plantuml.com/)
+237| 
+238| ### LaTeX editor
+239| - [TeXstudio](https://www.texstudio.org/)
+240| - [Overleaf](https://www.overleaf.com/)
+241| 
+242| ### Färgpalett
+243| - Primär: #004A99 (Kvadratblå)
+244| - Sekundär: #66B2FF (Ljusblå)
+245| - Accent: #FF9933 (Orange)
+246| - Bakgrund: #F0F0F0 (Ljusgrå)
+247| 
+248| ### Typsnitt
+249| - Rubriker: Inter Bold
+250| - Brödtext: Inter Regular
+251| - Kod: Fira Code
+252| 
+253| ## Tips för att skriva
+254| - Börja med en tydlig struktur
+255| - Skriv kort och koncist
+256| - Använd exempel för att förklara koncept
+257| - Tänk på läsarens perspektiv
+258| - Läs igenom och korrigera texten
+259| 
+260| ## Vanliga misstag
+261| - Otydlig struktur
+262| - För långa stycken
+263| - Svårtolkade exempel
+264| - Grammatiska fel
+265| - Inaktuell information
+266| 
+267| ## Kvalitetskrav
+268| - ✅ Faktiskt innehåll (inga platshållare)
+269| - ✅ Svenska språket genomgående
+270| - ✅ Teknisk korrekthet 
+271| - ✅ Praktiska exempel med kod
+272| - ✅ Logisk progression i texten
+273| - ✅ Referenser till verkliga verktyg/teknologier
+274| 
+275| ## Exempel på förbättringar
+276| - Lägg till konkreta kodexempel
+277| - Fördjupa befintliga avsnitt
+278| - Skapa nya underrubriker för bredare täckning
+279| - Förbättra diagram för bättre förståelse
+280| - Lägg till praktiska use cases
+281| - Inkludera branschspecifika exempel
+282| 
+283| Börja med att välja vilken fil du vill arbeta med och meddela ditt val innan du börjar skriva!
