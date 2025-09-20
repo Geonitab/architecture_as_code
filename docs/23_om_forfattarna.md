@@ -1,9 +1,11 @@
 # Om författarna
 
 ## Gunnar Nordqvist
-**IT-konsult och Arkitekt inom Infrastructure as Code**
+**Certifierad Chefsarkitekt och IT-säkerhetsspecialist**
 
-Gunnar Nordqvist är en erfaren IT-arkitekt med gedigen bakgrund inom sjukvårdssektorn och bred kompetens inom IT-tjänstehantering och IT-strategi. Som konsult på Kvadrat AB, Sveriges största nätverk av egenföretagare, bidrar han med djup expertis inom både Windows- och Linux-miljöer.
+Gunnar Nordqvist är en erfaren IT-arkitekt med gedigen bakgrund inom sjukvårdssektorn och bred kompetens inom IT-tjänstehantering och IT-strategi. Som Certifierad Chefsarkitekt och Certifierad IT-arkitekt bidrar han med djup expertis inom både Windows- och Linux-miljöer på Kvadrat AB, Sveriges största nätverk av egenföretagare.
+
+Sedan 2020 har Gunnar fokuserat intensivt på IT-säkerhet och utvecklat en djup förståelse för internationella säkerhetsstandarder och ramverk. Hans expertis omfattar ISO 27001 (informationssäkerhetsledning), NIST Cybersecurity Framework samt den nya NIS2-direktivet för cybersäkerhet inom kritisk infrastruktur.
 
 Med sin bakgrund från vården har Gunnar utvecklat en unik förståelse för hur kritisk infrastruktur måste vara robust, säker och skalbar. Hans praktiska erfarenhet av att hantera komplexa IT-miljöer i miljöer där driftsäkerhet är avgörande gör honom till en idealisk författare för en bok om Infrastructure as Code.
 
