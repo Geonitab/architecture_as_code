@@ -41,7 +41,11 @@ release/                 # Alla deliverables organiserade för distribution
 └── website/           # Komplett statisk webbsida
 
 .github/workflows/      # CI/CD automation
-└── build-book.yml     # GitHub Actions för automatisk bokbygge
+├── complete-release.yml    # Comprehensive release workflow (ALL formats)
+├── build-book-fast.yml     # Docker-based complete release (optimized)
+├── build-book.yml          # Basic PDF-only workflow (legacy)
+├── generate-whitepapers.yml # Standalone whitepaper generation
+└── generate-presentations.yml # Standalone presentation generation
 ```
 
 ### Release-leveranser
@@ -67,10 +71,32 @@ Alla deliverables samlas automatiskt i `release/`-mappen för enkel distribution
 
 ### Komplett release-byggprocess
 
-För att generera alla leveranser:
+#### Automatiska GitHub Actions workflows
+
+**Rekommenderat: Använd GitHub Actions för automatisk byggning**
+
+1. **Complete Release Workflow** (`complete-release.yml`):
+   ```
+   Trigger: Push till main branch med ändringar i relevanta filer
+   Output: Komplett GitHub Release med alla format
+   Tid: ~90 minuter
+   Inkluderar: PDF + EPUB + DOCX + PPTX + HTML + Website
+   ```
+
+2. **Docker Complete Release** (`build-book-fast.yml`):
+   ```
+   Trigger: Push till main branch med ändringar i relevanta filer
+   Output: Docker-optimerad GitHub Release med alla format  
+   Tid: ~60 minuter (med Docker caching)
+   Inkluderar: PDF + EPUB + DOCX + PPTX + HTML + Website
+   ```
+
+#### Manuell lokal byggning
+
+För att generera alla leveranser lokalt:
 
 ```bash
-# Automatisk release-byggprocess
+# Automatisk release-byggprocess (kräver alla dependencies)
 ./build_release.sh
 
 # Eller steg för steg:
@@ -176,15 +202,46 @@ Varje kapitel följer samma struktur:
 
 ## 🏗️ CI/CD Pipeline
 
-GitHub Actions workflow (`build-book.yml`) hanterar:
-- **Triggers**: Push/PR på markdown-filer
+### Comprehensive Release Workflows
+
+Projektet har flera GitHub Actions workflows för olika behov:
+
+#### 🚀 Complete Release (`complete-release.yml`) - **REKOMMENDERAD**
+Bygger ALLA leveranser i en komplett release:
+- **Triggers**: Push/PR på alla relevanta filer
+- **Leveranser**: PDF + EPUB + DOCX + Presentations + Whitepapers + Website
+- **Tid**: ~90 minuter (full installation av dependencies)
+- **Output**: Komplett release med alla format organiserade i `release/` struktur
+- **GitHub Release**: Skapar comprehensive release med alla filer
+
+#### 🐳 Docker Complete Release (`build-book-fast.yml`) 
+Docker-optimerad version av complete release:
+- **Triggers**: Push/PR på alla relevanta filer + Dockerfile changes  
+- **Leveranser**: PDF + EPUB + DOCX + Presentations + Whitepapers + Website
+- **Tid**: ~60 minuter (Docker caching för snabbare builds)
+- **Output**: Samma som complete release men med Docker optimeringar
+- **GitHub Release**: Skapar Docker-based comprehensive release
+
+#### 📖 Basic Book Build (`build-book.yml`)
+Enkel PDF-only byggprocess (legacy):
+- **Triggers**: Push/PR på markdown-filer och diagram
 - **Dependencies**: Pandoc, TeXLive, Mermaid CLI
 - **Build**: Konverterar diagram + genererar PDF
-- **Artifacts**: Sparar PDF för nedladdning
-- **Releases**: Automatiska versioner på main branch
+- **Output**: Endast PDF-format
+- **GitHub Release**: Enkel release med bara PDF
+
+### Workflow-jämförelse
+
+| Workflow | Tid | PDF | EPUB | DOCX | Presentations | Whitepapers | Website | Docker | Cache |
+|----------|-----|-----|------|------|---------------|-------------|---------|--------|-------|
+| complete-release.yml | ~90min | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| build-book-fast.yml | ~60min | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| build-book.yml | ~45min | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
 
 ### Status badges:
-![Build Book](https://github.com/användarnamn/repo-namn/workflows/Build%20Book/badge.svg)
+![Complete Release](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Complete%20Release%20Build/badge.svg)
+![Docker Release](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Complete%20Release%20Build%20(Docker)/badge.svg)
+![Basic Book](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Build%20Book/badge.svg)
 
 ## 📖 Kapitellista
 
