@@ -1,0 +1,321 @@
+name: Complete Release Build
+
+# This workflow builds all deliverables and creates comprehensive releases
+# It integrates the comprehensive build_release.sh script with GitHub Actions
+# to ensure all artifacts are properly included in releases.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'docs/images/**/*.mmd'
+      - 'generate_book.py'
+      - 'generate_whitepapers.py'
+      - 'generate_presentation.py'
+      - 'build_release.sh'
+      - 'docs/build_book.sh'
+      - '.github/workflows/complete-release.yml'
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create GitHub Release'
+        required: false
+        default: 'true'
+        type: boolean
+
+env:
+  PANDOC_VERSION: "3.1.9"
+  ARTIFACT_RETENTION_DAYS: 30
+
+jobs:
+  complete-release:
+    name: 🚀 Complete Release Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: 🔧 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 📦 Cache dependencies and tools
+        uses: actions/cache@v3
+        with:
+          path: |
+            /var/cache/apt
+            ~/.cache/pip
+            ~/.local/share/pandoc
+            ~/.npm
+            ~/.cache/puppeteer
+          key: ${{ runner.os }}-complete-release-${{ env.PANDOC_VERSION }}-v1
+          restore-keys: |
+            ${{ runner.os }}-complete-release-
+
+      - name: 🔧 Install system dependencies
+        run: |
+          echo "=== Installing system dependencies ==="
+          sudo apt-get update
+          echo "Installing TeXLive and related packages..."
+          sudo apt-get install -y \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-plain-generic \
+            texlive-latex-extra \
+            texlive-luatex \
+            texlive-fonts-extra \
+            librsvg2-bin \
+            fonts-liberation \
+            fonts-dejavu \
+            fonts-lmodern \
+            lmodern \
+            zip
+          echo "✅ System dependencies installed"
+
+      - name: 📚 Install Pandoc
+        run: |
+          echo "=== Installing Pandoc $PANDOC_VERSION ==="
+          wget -q https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/pandoc-$PANDOC_VERSION-1-amd64.deb
+          sudo dpkg -i pandoc-$PANDOC_VERSION-1-amd64.deb
+          pandoc --version
+          echo "✅ Pandoc installed"
+
+      - name: 🎨 Install Mermaid CLI and Chrome
+        run: |
+          echo "=== Installing Mermaid CLI and Chrome ==="
+          
+          # Install Chrome
+          echo "📥 Adding Google Chrome repository..."
+          curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /tmp/google-chrome.gpg
+          sudo install -o root -g root -m 644 /tmp/google-chrome.gpg /etc/apt/trusted.gpg.d/
+          echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google.list
+          
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+          
+          # Install Mermaid CLI
+          echo "📦 Installing Mermaid CLI..."
+          npm config set fund false
+          PUPPETEER_SKIP_DOWNLOAD=true npm install -g @mermaid-js/mermaid-cli
+          
+          # Verify installations
+          google-chrome --version
+          mmdc --version
+          
+          echo "✅ Mermaid CLI and Chrome installation completed"
+
+      - name: 📋 Setup Pandoc template
+        run: |
+          echo "=== Setting up Pandoc template ==="
+          mkdir -p ~/.local/share/pandoc/templates
+          
+          # Try to download Eisvogel template
+          echo "📥 Attempting to download Eisvogel template..."
+          LATEST_VERSION=$(curl -s https://api.github.com/repos/Wandmalfarbe/pandoc-latex-template/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
+          
+          if [ -n "$LATEST_VERSION" ]; then
+            echo "📦 Latest version: $LATEST_VERSION"
+            curl -L "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/$LATEST_VERSION/Eisvogel.tar.gz" -o /tmp/eisvogel.tar.gz
+            
+            if [ -f /tmp/eisvogel.tar.gz ]; then
+              cd /tmp && tar -xzf eisvogel.tar.gz
+              TEMPLATE_FILE=$(find /tmp -name "eisvogel.latex" | head -1)
+              if [ -n "$TEMPLATE_FILE" ]; then
+                cp "$TEMPLATE_FILE" ~/.local/share/pandoc/templates/
+                echo "✅ Eisvogel template installed"
+              fi
+            fi
+          fi
+          
+          # Fallback to pandoc default if Eisvogel failed
+          if [ ! -f ~/.local/share/pandoc/templates/eisvogel.latex ]; then
+            echo "🔄 Using pandoc default template as fallback..."
+            pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
+            echo "✅ Fallback template installed"
+          fi
+
+      - name: 📦 Install Node.js dependencies
+        run: |
+          echo "=== Installing Node.js dependencies ==="
+          npm ci
+          echo "✅ Node.js dependencies installed"
+
+      - name: 📦 Install Python dependencies
+        run: |
+          echo "=== Installing Python dependencies ==="
+          python3 -m pip install --upgrade pip
+          pip install python-pptx>=0.6.21
+          echo "✅ Python dependencies installed"
+
+      - name: 🏗️ Build complete release
+        run: |
+          echo "=== Running complete release build ==="
+          export PUPPETEER_EXECUTABLE_PATH=$(which google-chrome)
+          
+          # Make scripts executable
+          chmod +x build_release.sh
+          chmod +x docs/build_book.sh
+          
+          # Run the comprehensive release build
+          ./build_release.sh
+          
+          echo "✅ Complete release build finished"
+
+      - name: 📊 Release build summary
+        run: |
+          echo "=== Release Build Summary ==="
+          
+          echo "📚 Book formats:"
+          if [ -d "release/book" ]; then
+            ls -la release/book/ || echo "   No book files found"
+            if [ -f "release/book/arkitektur_som_kod.pdf" ]; then
+              echo "   📖 PDF size: $(ls -lh release/book/arkitektur_som_kod.pdf | awk '{print $5}')"
+            fi
+          fi
+          
+          echo ""
+          echo "🎤 Presentation materials:"
+          if [ -d "release/presentation" ]; then
+            ls -la release/presentation/ || echo "   No presentation files found"
+          fi
+          
+          echo ""
+          echo "📄 Whitepapers:"
+          if [ -d "release/whitepapers" ]; then
+            whitepaper_count=$(ls release/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
+            echo "   $whitepaper_count HTML whitepaper files"
+            if [ -f "release/whitepapers/whitepapers_combined.pdf" ]; then
+              echo "   ✅ Combined PDF generated"
+            fi
+          fi
+          
+          echo ""
+          echo "🌐 Website:"
+          if [ -d "release/website" ] && [ "$(ls -A release/website)" ]; then
+            website_files=$(find release/website -type f | wc -l)
+            echo "   $website_files files copied to release/website/"
+          else
+            echo "   No website files found"
+          fi
+          
+          echo ""
+          echo "📁 Total release size: $(du -sh release/ | awk '{print $1}')"
+          echo "⏰ Build completed at: $(date)"
+
+      - name: 📤 Upload book formats
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: book-formats-complete
+          path: release/book/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: 📤 Upload presentation materials
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: presentation-materials-complete
+          path: release/presentation/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: 📤 Upload whitepapers
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: whitepapers-complete
+          path: release/whitepapers/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: 📤 Upload website build
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: website-build-complete
+          path: release/website/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: 📦 Create complete release archive
+        if: success()
+        run: |
+          echo "=== Creating complete release archive ==="
+          cd release
+          zip -r ../complete-release-archive.zip .
+          cd ..
+          echo "✅ Complete release archive created"
+          ls -lh complete-release-archive.zip
+
+      - name: 📤 Upload complete release archive
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: complete-release-archive
+          path: complete-release-archive.zip
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: 🚀 Create comprehensive GitHub Release
+        if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true')
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}-complete
+          name: "Arkitektur som kod v${{ github.run_number }} - Complete Release"
+          body: |
+            📚 **Arkitektur som kod - Comprehensive Release**
+            
+            Genererad från commit: ${{ github.sha }}
+            
+            **📦 Complete Release Package Innehåll:**
+            
+            ### 📖 Book Formats
+            - `arkitektur_som_kod.pdf` - Complete PDF book
+            - `arkitektur_som_kod.epub` - EPUB format for e-readers  
+            - `arkitektur_som_kod.docx` - Microsoft Word format
+            
+            ### 🎤 Presentation Materials
+            - `arkitektur_som_kod_presentation.pptx` - PowerPoint presentation
+            - Presentation outline and generation scripts
+            
+            ### 📄 Whitepapers
+            - Individual HTML whitepapers for each chapter
+            - `whitepapers_combined.pdf` - All whitepapers in single PDF
+            
+            ### 🌐 Website
+            - Complete static website build ready for deployment
+            
+            **🛠️ Build Information:**
+            - Byggd med Pandoc ${{ env.PANDOC_VERSION }}
+            - XeLaTeX PDF-engine with Eisvogel template
+            - Mermaid diagrams converted to PNG
+            - Node.js React application built for production
+            - Python-generated presentations and whitepapers
+            
+            **📥 Download Options:**
+            - Individual components from Assets below
+            - `complete-release-archive.zip` - All deliverables in one archive
+            
+            🎯 **This release includes ALL project deliverables!**
+          files: |
+            release/book/arkitektur_som_kod.pdf
+            release/book/arkitektur_som_kod.epub
+            release/book/arkitektur_som_kod.docx
+            release/presentation/arkitektur_som_kod_presentation.pptx
+            release/whitepapers/whitepapers_combined.pdf
+            complete-release-archive.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

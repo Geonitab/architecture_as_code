@@ -1,44 +1,68 @@
-# Multi-stage Docker image for fast book building
-FROM node:18-bullseye AS mermaid-builder
+# Multi-stage Docker image for complete release building
+FROM node:18-bullseye AS release-builder
 
-# Install Mermaid CLI and Chrome in one layer
+# Install system dependencies including Chrome and LaTeX
 RUN apt-get update && apt-get install -y \
+    # Chrome and dependencies
+    wget \
+    gnupg \
     google-chrome-stable \
-    && npm install -g @mermaid-js/mermaid-cli \
+    # LaTeX and document processing
+    texlive-xetex \
+    texlive-fonts-recommended \
+    texlive-plain-generic \
+    texlive-latex-extra \
+    texlive-luatex \
+    texlive-fonts-extra \
+    # Additional tools
+    librsvg2-bin \
+    fonts-liberation \
+    fonts-dejavu \
+    fonts-lmodern \
+    lmodern \
+    python3 \
+    python3-pip \
+    zip \
     && rm -rf /var/lib/apt/lists/*
 
-FROM pandoc/latex:latest AS book-builder
+# Install Pandoc
+ARG PANDOC_VERSION=3.1.9
+RUN wget -q https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb \
+    && dpkg -i pandoc-${PANDOC_VERSION}-1-amd64.deb \
+    && rm pandoc-${PANDOC_VERSION}-1-amd64.deb
 
-# Install Node.js and additional dependencies
-RUN apk add --no-cache \
-    python3 \
-    py3-pip \
-    librsvg \
-    ttf-liberation \
-    ttf-dejavu \
-    bash \
-    curl \
-    chromium \
-    nodejs \
-    npm
-
-# Install Mermaid CLI directly in the final image
+# Install Node.js dependencies
 RUN npm install -g @mermaid-js/mermaid-cli
 
+# Install Python dependencies
+RUN pip3 install python-pptx>=0.6.21
+
 # Set Chrome executable for Puppeteer
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# Setup Pandoc template
+RUN mkdir -p ~/.local/share/pandoc/templates
+RUN pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
+
+# Try to download Eisvogel template if available
+RUN wget -qO- https://github.com/Wandmalfarbe/pandoc-latex-template/releases/latest/download/Eisvogel.tar.gz | \
+    tar -xz -C /tmp/ 2>/dev/null && \
+    find /tmp -name "eisvogel.latex" -exec cp {} ~/.local/share/pandoc/templates/ \; 2>/dev/null || \
+    echo "Using default template"
 
 # Create working directory
 WORKDIR /workspace
 
 # Copy build scripts
+COPY build_release.sh /usr/local/bin/build_release.sh
 COPY docs/build_book.sh /usr/local/bin/build_book.sh
 COPY generate_book.py /usr/local/bin/generate_book.py
-RUN chmod +x /usr/local/bin/build_book.sh
+COPY generate_whitepapers.py /usr/local/bin/generate_whitepapers.py
+COPY generate_presentation.py /usr/local/bin/generate_presentation.py
 
-# Setup Pandoc template
-RUN mkdir -p ~/.local/share/pandoc/templates && \
-    pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
+RUN chmod +x /usr/local/bin/build_release.sh \
+    && chmod +x /usr/local/bin/build_book.sh
 
-ENTRYPOINT ["/usr/local/bin/build_book.sh"]
+# Default to running the complete release build
+ENTRYPOINT ["/usr/local/bin/build_release.sh"]
