@@ -1,5 +1,12 @@
-graph LR
-    A[DevOps-kultur] --> B[CI/CD Pipeline]
-    B --> C[Automated Testing]
-    C --> D[Deployment]
-    D --> E[Monitoring]
+graph TB
+    A[Architecture as Code Repository] --> B[Multi-Domain CI/CD Pipeline]
+    B --> C[Application Architecture Validation]
+    B --> D[Data Architecture Validation]
+    B --> E[Infrastructure Architecture Validation]
+    B --> F[Security & Governance Validation]
+    C --> G[Integrated Deployment]
+    D --> G
+    E --> G
+    F --> G
+    G --> H[Holistic Monitoring & Feedback]
+    H --> A

@@ -18,7 +18,7 @@ const ChapterDetail = () => {
     { id: "03", title: "Versionhantering och kodstruktur", area: "Grundläggande koncept", filename: "03_versionhantering.md" },
     { id: "04", title: "Architecture Decision Records (ADR)", area: "Grundläggande koncept", filename: "04_adr.md" },
     { id: "05", title: "Automatisering och CI/CD-pipelines", area: "Systemutveckling", filename: "05_automatisering_cicd.md" },
-    { id: "06", title: "DevOps och CI/CD för Infrastructure as Code", area: "Systemutveckling", filename: "06_devops_cicd.md" },
+    { id: "06", title: "DevOps och CI/CD för Architecture as Code", area: "Systemutveckling", filename: "06_devops_cicd.md" },
     { id: "07", title: "Molnarkitektur som kod", area: "Arkitektur", filename: "07_molnarkitektur.md" },
     { id: "08", title: "Containerisering och orkestrering som kod", area: "Arkitektur", filename: "08_containerisering.md" },
     { id: "09", title: "Microservices-arkitektur som kod", area: "Arkitektur", filename: "09_microservices.md" },
