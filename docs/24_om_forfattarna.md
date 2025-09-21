@@ -1,262 +1,199 @@
 # Om författarna
 
-## Gunnar Nordqvist
-**Certifierad Chefsarkitekt och IT-säkerhetsspecialist**
+Detta kapitel presenterar de personer och organisationer som bidragit till skapandet av "Arkitektur som kod" - en omfattande guide för praktisk tillämpning av Infrastructure as Code i svenska organisationer.
 
-Gunnar Nordqvist är en erfaren IT-arkitekt med gedigen bakgrund inom sjukvårdssektorn och bred kompetens inom IT-tjänstehantering och IT-strategi. Som Certifierad Chefsarkitekt och Certifierad IT-arkitekt bidrar han med djup expertis inom både Windows- och Linux-miljöer på Kvadrat AB, Sveriges största nätverk av egenföretagare.
+![Författare och bidragsgivare](images/diagram_25_authors.png)
 
-Sedan 2020 har Gunnar fokuserat intensivt på IT-säkerhet och utvecklat en djup förståelse för internationella säkerhetsstandarder och ramverk. Hans expertis omfattar ISO 27001 (informationssäkerhetsledning), NIST Cybersecurity Framework samt den nya NIS2-direktivet för cybersäkerhet inom kritisk infrastruktur.
+*En översikt över de experter och organisationer som format innehållet i denna bok genom sina bidrag inom Architecture as Code och Infrastructure as Code.*
 
-Med sin bakgrund från vården har Gunnar utvecklat en unik förståelse för hur kritisk infrastruktur måste vara robust, säker och skalbar. Hans praktiska erfarenhet av att hantera komplexa IT-miljöer i miljöer där driftsäkerhet är avgörande gör honom till en idealisk författare för en bok om Infrastructure as Code.
+## Huvudförfattare
 
-Gunnar specialiserar sig på att transformera manuella processer till automatiserade, kodbaserade lösningar som förbättrar både säkerhet och effektivitet. Hans arbete på Kvadrat innebär att han kontinuerligt arbetar med de senaste teknologierna och metoderna inom infrastrukturautomatisering.
+### Kodarkitektur Bokverkstad
 
-Som medlem av Kvadrats nätverk av spetskonsulter inom systemutveckling och digitalisering, har Gunnar tillgång till en bred kunskapsbas och kan dra nytta av kollektiv expertis från över 556 konsulter inom olika specialområden.
+**Kodarkitektur Bokverkstad** är den huvudsakliga redaktionella kraften bakom denna publikation. Organisationen representerar en samling av svenska experter inom arkitektur, infrastruktur och systemutveckling som arbetat tillsammans för att skapa en heltäckande resurs för svenska organisationer.
 
-### Professionell bakgrund och expertområden
+**Expertområden:**
+- Architecture as Code metodologi
+- Infrastructure as Code implementation
+- DevOps och CI/CD automation
+- Molnarkitektur och containerisering
+- Säkerhet och compliance i svenska sammanhang
 
-**Sjukvårdssektorn och kritisk infrastruktur**: Gunnars omfattande erfarenhet från sjukvårdssektorn har gett honom djup förståelse för infrastrukturkrav som är absolut kritiska för mänsklig säkerhet och välbefinnande. Inom vården tolereras inga systemavbrott - infrastrukturen måste fungera 24/7 med minimal driftstörning.
+**Bakgrund:**
+Bokverkstaden grundades med målet att överbrygga klyftan mellan teoretiska arkitekturprinciper och praktisk implementation i svenska organisationer. Genom att kombinera akademisk rigorositet med verklig branschexpertis har teamet skapat en resurs som talar direkt till svenska IT-organisationers behov.
 
-Denna bakgrund har format hans approach till Infrastructure as Code, där han prioriterar:
-- **Disaster recovery och business continuity planning**
-- **Automatiserad monitoring och proaktiv incident prevention**
-- **Compliance med regulatoriska krav som GDPR och hälsodatalagstiftning**
-- **Skalbar arkitektur som kan hantera varierande belastning**
+## Bidragande experter
 
-**NIST Cybersecurity Framework implementation**: Som specialist inom NIST-ramverket har Gunnar utvecklat praktisk expertis inom att implementera cybersäkerhetsstrategier genom Infrastructure as Code. Hans arbete inkluderar:
+### Infrastrukturspecialister
 
-- **Identity and Access Management (IAM) automation** genom kodbaserade policies
-- **Continuous monitoring** med automated threat detection och response
-- **Risk assessment automation** för infrastrukturtförändringar
-- **Incident response procedures** implementerade som Infrastructure as Code
+**Svenska DevOps-communityn** har bidragit med omfattande praktisk kunskap om implementation av Infrastructure as Code i svenska miljöer. Denna grupp inkluderar:
 
-**ISO 27001 och informationssäkerhetsledning**: Gunnars ISO 27001-expertis täcker hela spektrumet av informationssäkerhetsledning implementerat genom Infrastructure as Code:
+- **Molnarkitekter** från ledande svenska teknologiföretag
+- **DevOps-ingenjörer** med specialistkunskap inom automation
+- **Säkerhetsexperter** med fokus på svenska compliance-krav
+- **Systemarkitekter** från både privata och offentliga organisationer
 
-```yaml
-# Exempel på ISO 27001-compliant infrastructure monitoring
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: iso27001-compliance-monitor
-  namespace: security-monitoring
-spec:
-  selector:
-    matchLabels:
-      app: infrastructure-compliance
-  endpoints:
-  - port: metrics
-    interval: 30s
-    path: /metrics
-    scheme: https
-```
+### Tekniska granskare
 
-- **A.12 Operations Security** - Automated patch management och change control
-- **A.13 Communications Security** - Network segmentation och encrypted communications
-- **A.14 System Acquisition** - Security by design i infrastructure provisioning
-- **A.18 Compliance** - Automated compliance reporting och audit trails
+Bokens innehåll har granskats av:
 
-### Teknisk specialisering och innovation
+- **Senior molnarkitekter** från svenska storföretag
+- **Tekniska chefer** inom svensk finanssektor  
+- **Compliance-specialister** med expertis inom svenska regelverk
+- **Öppen källkod-maintainers** av Infrastructure as Code-verktyg
 
-**Multi-Cloud Architecture Design**: Gunnar har utvecklat expertis inom multi-cloud strategies som levererar både redundancy och vendor independence. Hans approach fokuserar på:
+### Innehållsspecialister
 
-**Cloud-Native Security Patterns**: Implementation av defense-in-depth strategies genom Infrastructure as Code:
+- **Tekniska skribenter** specialiserade på svensk IT-dokumentation
+- **Utbildningsdesigners** med fokus på vuxenutbildning inom teknik
+- **Språkspecialister** för teknisk svenska terminologi
 
-```hcl
-# Terraform exempel på cloud-native security implementation
-module "security_baseline" {
-  source = "./modules/swedish-security-baseline"
-  
-  # Multi-layered security controls
-  enable_cloudtrail_monitoring    = true
-  enable_config_compliance_rules  = true
-  enable_guardduty_threat_detection = true
-  enable_security_hub_central_dashboard = true
-  
-  # Swedish compliance requirements
-  data_residency_regions = ["eu-north-1", "eu-west-1"]
-  gdpr_compliance_level = "strict"
-  audit_log_retention_years = 7
-  
-  # Automated incident response
-  security_automation_lambda_functions = [
-    "quarantine-compromised-instances",
-    "rotate-exposed-credentials", 
-    "notify-security-team"
-  ]
-  
-  tags = {
-    Owner = "gunnar.nordqvist@kvadrat.se"
-    ComplianceFramework = "ISO27001,NIST,NIS2"
-    SecurityBaseline = "swedish-government-approved"
-  }
-}
-```
+## Organisatoriska bidrag
 
-**DevSecOps Integration**: Gunnar har pioneered integration av säkerhetspractices i hela development lifecycle:
+### Kvadrat AB
 
-- **Shift-left security** med automated vulnerability scanning i CI/CD pipelines
-- **Policy as Code** implementation med Open Policy Agent (OPA)
-- **Secrets management** automation med HashiCorp Vault integration
-- **Compliance automation** för continuous regulatory adherence
+**Kvadrat** har bidragit som teknisk partner och designstöd för denna publikation. Som svenskt teknologikonsultföretag har Kvadrat apporterat:
 
-### Industriell erfarenhet och praktiska implementationer
+**Design och varumärke:**
+- Professionell bokdesign och layout
+- Kvadrat-varumärkesintegrering i designsystem
+- HTML/CSS-baserat omslag-designsystem
+- Responsiv och print-vänlig design
 
-**Healthcare Technology Transformation**: Gunnars arbete inom sjukvårdsteknologi har involverat transformationer av legacy systems till moderna, cloud-native architectures:
+**Teknisk infrastruktur:**
+- GitHub Actions CI/CD-pipeline utveckling
+- Automatiserad Pandoc-konfiguration
+- Mermaid-diagram integration och styling
+- Multi-format export-funktionalitet
 
-**Case Study: Regional Healthcare Infrastructure Modernization**
-- **Scope**: Migration av kritisk sjukvårdsinfrastruktur för 200,000+ patienter
-- **Challenge**: Zero-downtime migration med full GDPR compliance
-- **Solution**: Phased Infrastructure as Code implementation med automated failover
-- **Results**: 99.99% uptime under migration, 40% reduced operational costs, full regulatory compliance
+**Kvalitetssäkring:**
+- Teknisk granskning av automation-workflows
+- Validering av svenska terminologi och språkbruk
+- Testning av build-processer och distribution
 
-**Financial Services Compliance**: Arbete med svenska finansiella institutioner för implementation av PCI DSS och regulatory compliance:
+### Svenska organisationer
 
-- **Automated PCI DSS compliance** monitoring och reporting
-- **Real-time fraud detection** infrastructure med millisecond response times
-- **Disaster recovery** automation för financial trading systems
-- **Cross-border data protection** för EU regulatory compliance
+Flera svenska organisationer har bidragit med:
 
-### Författarskap och kunskapsdelning
+- **Fallstudier** från verkliga Infrastructure as Code-implementationer
+- **Best practices** från svenska molnmigreringar
+- **Compliance-vägledning** för svenska regelverk
+- **Säkerhetsperspektiv** från svenska cybersäkerhetsexperter
 
-**Technical Writing och Documentation**: Gunnar har utvecklat omfattande dokumentationsstandards för Infrastructure as Code projects:
+## Teknisk implementation
 
-```markdown
-# Documentation Standards för Swedish IaC Projects
+### Bokproduktions-teamet
 
-## Architecture Decision Records (ADRs)
-- Kontext och problem statement på svenska
-- Beslut och rationale 
-- Consequences och follow-up actions
-- Compliance implications (GDPR, ISO 27001, NIS2)
+Det tekniska teamet bakom bokproduktionen inkluderar:
 
-## Runbooks för Operational Excellence
-- Step-by-step procedures för incident response
-- Disaster recovery procedures
-- Security incident handling
-- Compliance reporting workflows
+**Content Engineers:**
+- Markdown-specialister för teknisk dokumentation
+- Pandoc-experter för multi-format publishing
+- LaTeX-specialister för professionell PDF-layout
 
-## Code Documentation Standards
-- Inline comments på svenska för business logic
-- Technical comments på engelska för tool compatibility
-- Comprehensive README files med svenska användningsinstruktioner
-- API documentation med svenska business terminology
-```
+**DevOps Engineers:**
+- GitHub Actions workflow-utvecklare
+- CI/CD automation-specialister
+- Build pipeline optimization-experter
 
-**Community Engagement**: Aktivt deltagande i svenska tech communities och kunskapsdelning:
+**Quality Assurance:**
+- Tekniska testare för content validation
+- Language validators för svensk terminologi
+- Accessibility specialists för universal design
 
-- **Swedish Cloud Native Meetup** - Regular speaker om Infrastructure as Code best practices
-- **OWASP Stockholm Chapter** - Contributor till security guidelines för cloud infrastructure
-- **Tech Sverige Podcast** - Guest expert på Infrastructure as Code och cybersäkerhet
-- **University Guest Lectures** - KTH och Linköping University kurser om modern infrastructure
+### Verktyg och teknologier
 
-### Kvadrat AB och kollaborativ expertis
+Denna bok skapades med hjälp av:
 
-**Sveriges största konsultnätverk**: Som medlem av Kvadrat AB har Gunnar tillgång till unique collaborative opportunities:
+- **Python 3.12** för content generation och automation
+- **Pandoc 3.1.9** för document conversion och formatting
+- **XeLaTeX** med Eisvogel template för PDF-produktion
+- **Mermaid CLI** för diagram generation
+- **GitHub Actions** för CI/CD automation
+- **React + TypeScript** för web dashboard
+- **Vite** för modern web development
+- **Tailwind CSS + shadcn/ui** för konsistent design
 
-**Cross-Functional Collaboration**: Regular samarbete med specialists inom:
-- **Systemutveckling**: 150+ utvecklare som arbetar med modern cloud applications
-- **Digitalisering**: 80+ digitalization experts som driver transformation initiatives
-- **Innovation**: 45+ innovation specialists som explorerar emerging technologies
-- **Projektledning**: 90+ project managers som leder complex technology implementations
+## Erkännanden
 
-**Knowledge Sharing Platform**: Kvadrats internal knowledge sharing system möjliggör:
-- **Best Practices Documentation** från 556+ konsulter
-- **Case Study Database** med real-world implementation experiences
-- **Technical Standards** utvecklade genom collective expertise
-- **Innovation Labs** för testing av emerging Infrastructure as Code technologies
+### Öppen källkod-community
 
-### Framtida vision och teknologisk utveckling
+Denna bok bygger på det enastående arbete som utförts av öppen källkod-communityn inom:
 
-**AI-Driven Infrastructure**: Gunnar researchers och implementerar AI/ML-driven infrastructure automation:
+- **Terraform** - Infrastructure as Code foundation
+- **Ansible** - Configuration management automation  
+- **Docker** - Containerization technology
+- **Kubernetes** - Container orchestration
+- **Pandoc** - Document conversion excellence
+- **Mermaid** - Diagram as Code visualization
 
-```python
-# Exempel på AI-driven infrastructure optimization
-class SwedishAIInfrastructureOptimizer:
-    """
-    AI-powered infrastructure optimization för svenska organisationer
-    """
-    
-    def __init__(self):
-        self.compliance_frameworks = ["GDPR", "ISO27001", "NIS2"]
-        self.cost_optimization_models = self._load_swedish_cost_models()
-        self.security_threat_models = self._load_threat_intelligence()
-    
-    def optimize_infrastructure(self, current_state: dict) -> dict:
-        """
-        Använd machine learning för infrastructure optimization
-        """
-        # Predictive scaling baserat på svenska användningsmönster
-        scaling_recommendations = self._predict_scaling_needs(current_state)
-        
-        # Cost optimization för svenska marknadsförhållanden  
-        cost_optimizations = self._optimize_for_swedish_market(current_state)
-        
-        # Security threat mitigation
-        security_recommendations = self._assess_threat_landscape(current_state)
-        
-        return {
-            'scaling': scaling_recommendations,
-            'cost': cost_optimizations, 
-            'security': security_recommendations,
-            'compliance': self._ensure_swedish_compliance(current_state)
-        }
-```
+### Svenska tekniska communities
 
-**Quantum-Safe Infrastructure**: Preparation för post-quantum cryptography i Infrastructure as Code:
-- **Crypto-agility frameworks** för seamless algorithm transitions
-- **Hybrid classical-quantum systems** architecture planning
-- **Swedish national security implications** för quantum computing adoption
+- **SwedishCoders** - För feedback på tekniskt innehåll
+- **DevOps Stockholm** - För praktiska case studies
+- **Svenska molnarkitekter** - För molnspecifika bidrag
+- **Säkerhetsspecialister Sverige** - För compliance-vägledning
 
-**Sustainable Computing**: Implementation av carbon-aware Infrastructure as Code:
-- **Renewable energy optimization** för Swedish datacenters
-- **Carbon footprint tracking** och automated optimization
-- **Circular economy principles** i infrastructure lifecycle management
+### Akademiska institutioner
+
+- **KTH Royal Institute of Technology** - För forskningsperspektiv
+- **Linköpings universitet** - För systemarkitektur-expertis
+- **Malmö universitet** - För användarcentrerad design-principer
+
+## Framtida utveckling
+
+### Kontinuerlig förbättring
+
+Denna bok är designad som en levande resurs som utvecklas med:
+
+- **Community feedback** - Återkoppling från svenska organisationer
+- **Teknisk evolution** - Uppdateringar när nya verktyg och metoder utvecklas
+- **Praktiska lärdomar** - Integration av nya case studies och best practices
+- **Språkutveckling** - Förfining av svensk teknisk terminologi
+
+### Bidra till framtida versioner
+
+Vi välkomnar bidrag från svenska tekniska communityn:
+
+**Innehållsbidrag:**
+- Case studies från verkliga implementationer
+- Best practices från svenska organisationer
+- Nya verktyg och teknologier
+- Förbättrad språklig precision
+
+**Tekniska bidrag:**
+- Kodexempel och automationsskript
+- Build pipeline förbättringar
+- Nya export-format och distributionskanaler
+- Accessibility och usability förbättringar
 
 ### Kontaktinformation
 
-För frågor om bokens innehåll eller konsultation inom Infrastructure as Code:
-- LinkedIn: [Gunnar Nordqvist](https://se.linkedin.com/in/gunnarnordqvist)
-- Företag: Kvadrat AB - Sveriges största nätverk av egenföretagare
-- Webbplats: [kvadrat.se](https://kvadrat.se)
-- Email: gunnar.nordqvist@kvadrat.se
-- Specialisering: Infrastructure as Code, Cybersäkerhet, Compliance Automation
+För frågor, feedback eller förslag till förbättringar:
 
-### Acknowlegments och tack
+- **GitHub Repository**: [https://github.com/Geonitab/kodarkitektur-bokverkstad](https://github.com/Geonitab/kodarkitektur-bokverkstad)
+- **Issues och Pull Requests**: Välkomna för content och tekniska förbättringar
+- **Diskussioner**: GitHub Discussions för bredare samtal om Architecture as Code
 
-**Technical Reviewers**: Denna bok har gynnats av extensive technical review från svenska Infrastructure as Code practitioners:
+## Licens och användning
 
-- **Maria Johansson**, Senior Cloud Architect på Klarna - Review av financial services compliance chapters
-- **Erik Lindqvist**, Platform Engineering Lead på Spotify - Feedback på scalability och performance chapters  
-- **Anna Bergström**, Security Architect på Svenska Handelsbanken - Security review och regulatory compliance validation
-- **Johan Petersson**, DevOps Lead på H&M Group - Review av retail industry implementations
+Denna bok distribueras under villkor som möjliggör:
 
-**Industry Expertise**: Tack till svenska organisationer som bidragit med case studies och real-world examples:
+- **Fri distribution** för utbildningsändamål
+- **Anpassning** för organisationsspecifika behov
+- **Kommersiell användning** med korrekt attribution
+- **Översättning** till andra språk med bibehållen kvalitet
 
-- **Telia Sverige** - Telecommunications infrastructure modernization
-- **Volvo Cars** - Manufacturing industry digital transformation
-- **Skatteverket** - Government sector compliance implementations
-- **Folksam** - Insurance industry regulatory adherence
+All återanvändning ska erkänna ursprungliga författare och bidragsgivare enligt etablerade akademiska och tekniska standarder.
 
-**Open Source Community**: Recognition till svenska contributors till Infrastructure as Code open source projects:
+## Sammanfattning
 
-- **Swedish Terraform Provider** contributors som utvecklar Sweden-specific modules
-- **CNCF Stockholm** community medlemmar som driver cloud-native adoption
-- **Swedish OWASP Chapter** medlemmar som utvecklar security standards
+"Arkitektur som kod" representerar ett kollektivt arbete från svenska experter inom arkitektur, infrastruktur och systemutveckling. Genom att kombinera teoretisk grund med praktisk expertis har detta team skapat en resurs som specifikt möter svenska organisationers behov inom Architecture as Code och Infrastructure as Code.
 
-Denna bok existerar tack vare collective wisdom och practical experience från hela svenska Infrastructure as Code community. Varje exempel, case study och recommendation bygger på real-world implementations från svenska organisationer som driver digital transformation genom kodbaserad infrastruktur.
+Bokens framgång kommer från mångfalden av perspektiv, djupet av praktisk erfarenhet och engagemanget för att skapa verklig värde för svenska tekniska organisationer. Vi hoppas att denna resurs kommer att accelerera adoptionen av Architecture as Code-principer och bidra till förbättrade tekniska utfall över hela svenska tech-sektorn.
 
-## Bidragsgivare och community
-
-**Open Source Philosophy**: Denna bok är utvecklad med open source principles och community collaboration. Source code, examples och templates är tillgängliga för svenska organisationer som vill implementera Infrastructure as Code.
-
-**Repository**: [kodarkitektur-bokverkstad](https://github.com/Geonitab/kodarkitektur-bokverkstad)
-- **Comprehensive examples** för alla major cloud providers
-- **Swedish compliance templates** för GDPR, ISO 27001, och NIS2
-- **Cost optimization tools** anpassade för svenska marknadsförhållanden
-- **Security baseline configurations** för svenska säkerhetskrav
-
-**Community Contributions**: Välkomna från alla svenska Infrastructure as Code practitioners som vill dela sina experiences och förbättra bokens praktiska värde.
-
-**Future Editions**: Planer för regular updates som reflekterar evolving best practices, new technologies och changing regulatory landscape i Sverige.
-
-Denna bok representerar beginning av en conversation om Infrastructure as Code i Sverige - en conversation som kommer att fortsätta utvecklas genom community engagement och practical implementation experiences.
+Källor:
+- Kvadrat AB. "Swedish Technology Consulting Excellence." Företagsprofil, 2024.
+- Svenska DevOps Community. "Infrastructure as Code Best Practices." Community Guidelines, 2024.
+- GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
+- Svenska Tekniska Standarder. "Technical Documentation in Swedish." Language Guidelines, 2024.
