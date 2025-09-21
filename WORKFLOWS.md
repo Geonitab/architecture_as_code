@@ -2,13 +2,13 @@
 
 ## Overview
 
-This repository includes several GitHub Actions workflows to handle different aspects of the book publication and release process. Each workflow serves a specific purpose and creates different outputs.
+This repository uses a unified GitHub Actions workflow to handle all aspects of the book publication and release process. The unified workflow replaces multiple separate workflows with a single, optimized solution that supports both traditional and Docker-based builds.
 
 ## Workflow Files
 
-### 🚀 Complete Release (`complete-release.yml`) - **RECOMMENDED**
+### 🎯 **Unified Build & Release (`unified-build-release.yml`) - RECOMMENDED**
 
-**Purpose**: Creates comprehensive releases with all deliverable formats.
+**Purpose**: Single comprehensive workflow that consolidates all build and release functionality.
 
 **Triggers**:
 - Push to main branch with changes to:
@@ -16,7 +16,17 @@ This repository includes several GitHub Actions workflows to handle different as
   - `docs/images/**/*.mmd` (diagrams)
   - Generation scripts (`generate_*.py`)
   - Build scripts (`build_release.sh`, `docs/build_book.sh`)
-- Manual workflow dispatch with release option
+  - `Dockerfile.book-builder`
+- Pull request validation
+- Manual workflow dispatch with customizable options:
+  - Build type: `traditional`, `docker`, or `both`
+  - Deliverables: `all`, `book-only`, `presentations-only`, `whitepapers-only`, `website-only`
+  - GitHub release creation: `true`/`false`
+
+**Build Strategies**:
+- **Traditional Build**: Full dependency installation (~90 minutes) for maximum compatibility
+- **Docker Build**: Optimized with layer caching (~60 minutes) for faster builds
+- **Both**: Runs both strategies with fallback support
 
 **Dependencies Installed**:
 - Python 3.12
@@ -31,56 +41,26 @@ This repository includes several GitHub Actions workflows to handle different as
 - 🎤 **Presentations**: PPTX with outline and scripts
 - 📄 **Whitepapers**: Individual HTML files + combined PDF
 - 🌐 **Website**: Complete static site build
-- 📦 **Archive**: Complete release archive ZIP
+- 📦 **Archive**: Complete unified release archive ZIP
 
-**GitHub Release**: Creates comprehensive release with all files attached
+**GitHub Release**: Creates comprehensive release with all files attached (tag: `v{run_number}-unified`)
 
-**Duration**: ~90 minutes (includes full dependency installation)
-
----
-
-### 🐳 Docker Complete Release (`build-book-fast.yml`)
-
-**Purpose**: Docker-optimized version of complete release for faster builds.
-
-**Triggers**:
-- Same as complete-release.yml
-- Additionally triggers on `Dockerfile.book-builder` changes
-
-**Key Features**:
-- Docker container with pre-installed dependencies
-- GitHub Actions caching for Docker layers
-- Parallel processing where possible
-- Same outputs as complete-release.yml
-
-**Outputs**: Identical to complete-release.yml
-
-**GitHub Release**: Creates Docker-tagged comprehensive release
-
-**Duration**: ~60 minutes (Docker caching reduces dependency installation time)
+**Duration**: 
+- Traditional only: ~90 minutes
+- Docker only: ~60 minutes  
+- Both strategies: ~90 minutes (runs in parallel)
 
 ---
 
-### 📖 Basic Book Build (`build-book.yml`) - **LEGACY**
+## Legacy Workflows (Removed)
 
-**Purpose**: Simple PDF-only generation (original workflow).
+The following workflows have been consolidated into the unified workflow:
 
-**Triggers**:
-- Push/PR to main branch with changes to:
-  - `docs/**/*.md`
-  - `docs/images/**/*.mmd`
-  - `generate_book.py`
-  - Workflow file itself
+### ~~🚀 Complete Release (`complete-release.yml`)~~ - **REPLACED**
+### ~~🐳 Docker Complete Release (`build-book-fast.yml`)~~ - **REPLACED**  
+### ~~📖 Basic Book Build (`build-book.yml`)~~ - **REPLACED**
 
-**Outputs**:
-- PDF book only
-- Generated diagram PNGs
-
-**GitHub Release**: Simple release with PDF only
-
-**Duration**: ~45 minutes
-
----
+All functionality from these workflows is now available in the unified workflow with improved features and flexibility.
 
 ### 📄 Whitepaper Generation (`generate-whitepapers.yml`)
 
@@ -114,30 +94,47 @@ This repository includes several GitHub Actions workflows to handle different as
 
 **No GitHub Release**: Artifacts only
 
+---
+
+### 🔍 Content Validation (`content-validation.yml`)
+
+**Purpose**: Validates repository content and structure.
+
+**Triggers**:
+- Changes to various repository files
+- Manual workflow dispatch
+
+**Outputs**:
+- Validation reports
+- Content structure analysis
+
+**No GitHub Release**: Validation only
+
+---
+
 ## Workflow Comparison
 
-| Feature | Complete Release | Docker Complete | Basic Book | Whitepapers | Presentations |
-|---------|------------------|-----------------|------------|-------------|---------------|
-| **PDF Book** | ✅ | ✅ | ✅ | ❌ | ❌ |
-| **EPUB/DOCX** | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **Presentations** | ✅ | ✅ | ❌ | ❌ | ✅ |
-| **Whitepapers** | ✅ | ✅ | ❌ | ✅ | ❌ |
-| **Website** | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **GitHub Release** | ✅ | ✅ | ✅ | ❌ | ❌ |
-| **Docker** | ❌ | ✅ | ❌ | ❌ | ❌ |
-| **Duration** | ~90min | ~60min | ~45min | ~15min | ~15min |
+| Feature | Unified Workflow | Whitepapers | Presentations | Content Validation |
+|---------|------------------|-------------|---------------|-------------------|
+| **PDF Book** | ✅ | ❌ | ❌ | ❌ |
+| **EPUB/DOCX** | ✅ | ❌ | ❌ | ❌ |
+| **Presentations** | ✅ | ❌ | ✅ | ❌ |
+| **Whitepapers** | ✅ | ✅ | ❌ | ❌ |
+| **Website** | ✅ | ❌ | ❌ | ❌ |
+| **GitHub Release** | ✅ | ❌ | ❌ | ❌ |
+| **Docker Optimization** | ✅ | ❌ | ❌ | ❌ |
+| **Traditional Build** | ✅ | ❌ | ❌ | ❌ |
+| **Selective Building** | ✅ | ❌ | ❌ | ❌ |
+| **Duration** | 60-90min | ~15min | ~15min | ~5min |
 
 ## Release Types
 
-### Complete Release Tags
-- `v{run_number}-complete` - Complete release workflow
-- `v{run_number}-docker` - Docker complete release workflow  
-- `v{run_number}` - Basic book workflow
-- `v{run_number}-fast` - Legacy fast build (deprecated)
+### Unified Release Tags
+- `v{run_number}-unified` - Unified workflow release (all deliverables)
 
 ### Release Contents
 
-**Complete Releases** include:
+**Unified Releases** include:
 ```
 Assets:
 ├── arkitektur_som_kod.pdf (PDF book)
@@ -145,71 +142,79 @@ Assets:
 ├── arkitektur_som_kod.docx (Word book)
 ├── arkitektur_som_kod_presentation.pptx (PowerPoint)
 ├── whitepapers_combined.pdf (All whitepapers)
-└── complete-release-archive.zip (Everything)
-```
-
-**Basic Releases** include:
-```
-Assets:
-└── arkitektur_som_kod.pdf (PDF book only)
+└── unified-release-archive.zip (Everything)
 ```
 
 ## Workflow Artifacts
 
-All workflows also upload artifacts with 30-day retention:
+All workflows upload artifacts with 30-day retention:
 
-### Complete Release Artifacts
-- `book-formats-complete` - All book formats (PDF, EPUB, DOCX)
-- `presentation-materials-complete` - Presentation files
-- `whitepapers-complete` - All whitepaper files
-- `website-build-complete` - Static website build
-- `complete-release-archive` - Complete archive ZIP
+### Unified Workflow Artifacts
+- `book-formats-unified` - All book formats (PDF, EPUB, DOCX)
+- `presentation-materials-unified` - Presentation files
+- `whitepapers-unified` - All whitepaper files
+- `website-build-unified` - Static website build
+- `unified-release-archive` - Complete archive ZIP
+- `unified-traditional-build` - Traditional build results
+- `unified-docker-build` - Docker build results
 
-### Docker Release Artifacts
-- Same as complete release but with `-docker` suffix
-
-### Basic Book Artifacts
-- `arkitektur-som-kod-pdf` - PDF file only
-- `book-diagrams` - Generated PNG diagrams
+### Standalone Workflow Artifacts
+- `presentation-materials` - Standalone presentation generation
+- `whitepaper-documents` - Standalone whitepaper generation
+- `whitepapers-archive` - Whitepaper collection ZIP
 
 ## Usage Recommendations
 
 ### For Production Releases
-- **Use**: `complete-release.yml` (comprehensive)
-- **Alternative**: `build-book-fast.yml` (Docker-optimized)
+- **Use**: `unified-build-release.yml` (comprehensive, all deliverables)
+- **Manual trigger options**: Choose build strategy and deliverables as needed
 
 ### For Development/Testing
-- **Use**: `build-book.yml` (quick PDF validation)
-- **Use**: Individual component workflows for specific testing
+- **Use**: `unified-build-release.yml` with `book-only` or specific deliverable types
+- **Use**: Individual component workflows for quick standalone testing
 
 ### For Distribution
-- **Book only**: Use basic workflow
-- **Complete package**: Use complete release workflows
-- **Individual components**: Use standalone component workflows
+- **Complete package**: Use unified workflow with `all` deliverables
+- **Individual components**: Use unified workflow with specific deliverable selection
+- **Standalone testing**: Use `generate-presentations.yml` or `generate-whitepapers.yml`
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Workflow timeout**: Increase timeout-minutes in workflow file
-2. **Dependency installation failure**: Check cache keys and restore-keys
-3. **Docker build failure**: Verify Dockerfile syntax and dependencies
+1. **Workflow timeout**: Both traditional and Docker builds have appropriate timeouts
+2. **Dependency installation failure**: Check cache keys and restore-keys in unified workflow
+3. **Docker build failure**: Verify Dockerfile.book-builder syntax and dependencies  
 4. **Release creation failure**: Check GITHUB_TOKEN permissions
+5. **Build strategy conflicts**: Use workflow_dispatch to specify build type manually
 
 ### Debugging
 
 1. Check workflow logs in GitHub Actions tab
-2. Download artifacts to inspect intermediate files
+2. Download artifacts to inspect intermediate files from both build strategies
 3. Run individual steps locally using provided scripts
 4. Use workflow_dispatch for manual triggering with custom parameters
 
 ## Manual Workflow Triggering
 
-All workflows support manual triggering via GitHub UI:
+### Unified Workflow Manual Triggering
+
+The unified workflow supports comprehensive manual triggering via GitHub UI:
 
 1. Go to Actions tab in GitHub
-2. Select desired workflow
+2. Select "Unified Build & Release" workflow
 3. Click "Run workflow"
-4. Choose branch and parameters (if applicable)
+4. Configure options:
+   - **Build Type**: `traditional`, `docker`, or `both`
+   - **Deliverables**: `all`, `book-only`, `presentations-only`, `whitepapers-only`, `website-only`
+   - **Create Release**: `true` or `false`
+5. Choose branch (typically `main`)
 
-The complete release workflows include an option to create GitHub releases when manually triggered.
+### Standalone Workflow Triggering
+
+Other workflows support basic manual triggering:
+- **Generate Presentations**: No parameters, creates presentation materials
+- **Generate Whitepapers**: No parameters, creates whitepaper documents
+- **Content Validation**: No parameters, validates repository structure
+
+The unified workflow includes comprehensive GitHub release creation when manually triggered with the release option enabled.
