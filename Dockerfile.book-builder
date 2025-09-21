@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     && npm install -g @mermaid-js/mermaid-cli \
     && rm -rf /var/lib/apt/lists/*
 
-FROM pandoc/latex:3.1.9 AS book-builder
+FROM pandoc/latex:latest AS book-builder
 
 # Install additional dependencies
 RUN apk add --no-cache \
