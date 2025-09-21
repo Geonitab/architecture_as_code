@@ -101,6 +101,574 @@ jobs:
           echo "✅ GDPR compliance check genomförd"
 ```
 
+### 05_CODE_2: Jenkins Pipeline för svenska organisationer med GDPR compliance
+*Refereras från Kapitel 5: [Automatisering och CI/CD-pipelines](05_automatisering_cicd.md)*
+
+```yaml
+# jenkins/svenska-iac-pipeline.groovy
+// Jenkins pipeline för svenska organisationer med GDPR compliance
+
+pipeline {
+    agent any
+    
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['development', 'staging', 'production'],
+            description: 'Target environment för deployment'
+        )
+        booleanParam(
+            name: 'FORCE_DEPLOYMENT',
+            defaultValue: false,
+            description: 'Forcera deployment även vid varningar (endast development)'
+        )
+        string(
+            name: 'COST_CENTER',
+            defaultValue: 'CC-IT-001',
+            description: 'Kostnadscenter för svenska bokföring'
+        )
+    }
+    
+    environment {
+        ORGANIZATION_NAME = 'svenska-org'
+        AWS_DEFAULT_REGION = 'eu-north-1'  // Stockholm region
+        GDPR_COMPLIANCE = 'enabled'
+        DATA_RESIDENCY = 'Sweden'
+        TERRAFORM_VERSION = '1.6.0'
+        COST_CURRENCY = 'SEK'
+        AUDIT_RETENTION_YEARS = '7'  // Svenska lagkrav
+    }
+    
+    stages {
+        stage('🇸🇪 Svenska Compliance Check') {
+            parallel {
+                stage('GDPR Data Scan') {
+                    steps {
+                        script {
+                            echo "🔍 Scanning för personal data patterns i IaC kod..."
+                            
+                            def personalDataPatterns = [
+                                'personnummer', 'social.*security', 'credit.*card',
+                                'bank.*account', 'email.*address', 'phone.*number'
+                            ]
+                            
+                            def violations = []
+                            
+                            personalDataPatterns.each { pattern ->
+                                def result = sh(
+                                    script: "grep -ri '${pattern}' infrastructure/ modules/ || true",
+                                    returnStdout: true
+                                ).trim()
+                                
+                                if (result) {
+                                    violations.add("Personal data pattern found: ${pattern}")
+                                }
+                            }
+                            
+                            if (violations) {
+                                error("GDPR VIOLATION: Personal data found in IaC code:\n${violations.join('\n')}")
+                            }
+                            
+                            echo "✅ GDPR data scan genomförd - inga violations"
+                        }
+                    }
+                }
+                
+                stage('Data Residency Validation') {
+                    steps {
+                        script {
+                            echo "🏔️ Validerar svenska data residency krav..."
+                            
+                            def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1']
+                            
+                            def regionCheck = sh(
+                                script: """
+                                    grep -r 'region\\s*=' infrastructure/ modules/ | \
+                                    grep -v -E '(eu-north-1|eu-central-1|eu-west-1)' || true
+                                """,
+                                returnStdout: true
+                            ).trim()
+                            
+                            if (regionCheck) {
+                                error("DATA RESIDENCY VIOLATION: Non-EU regions found:\n${regionCheck}")
+                            }
+                            
+                            echo "✅ Data residency requirements uppfyllda"
+                        }
+                    }
+                }
+                
+                stage('Cost Center Validation') {
+                    steps {
+                        script {
+                            echo "💰 Validerar kostnadscenter för svenska bokföring..."
+                            
+                            if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
+                                error("Ogiltigt kostnadscenter format. Använd: CC-XX-nnn")
+                            }
+                            
+                            // Validera att kostnadscenter existerar i företagets system
+                            def validCostCenters = [
+                                'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
+                            ]
+                            
+                            if (!validCostCenters.contains(params.COST_CENTER)) {
+                                error("Okänt kostnadscenter: ${params.COST_CENTER}")
+                            }
+                            
+                            echo "✅ Kostnadscenter validerat: ${params.COST_CENTER}"
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('📝 Code Quality Analysis') {
+            parallel {
+                stage('Terraform Validation') {
+                    steps {
+                        script {
+                            echo "🔧 Terraform syntax och formatering..."
+                            
+                            // Format check
+                            sh "terraform fmt -check -recursive infrastructure/"
+                            
+                            // Syntax validation
+                            dir('infrastructure/environments/${params.ENVIRONMENT}') {
+                                sh """
+                                    terraform init -backend=false
+                                    terraform validate
+                                """
+                            }
+                            
+                            echo "✅ Terraform validation slutförd"
+                        }
+                    }
+                }
+                
+                stage('Security Scanning') {
+                    steps {
+                        script {
+                            echo "🔒 Säkerhetsskanning med Checkov..."
+                            
+                            sh """
+                                pip install checkov
+                                checkov -d infrastructure/ \
+                                    --framework terraform \
+                                    --output json \
+                                    --output-file checkov-results.json \
+                                    --soft-fail
+                            """
+                            
+                            // Analysera kritiska säkerhetsproblem
+                            def results = readJSON file: 'checkov-results.json'
+                            def criticalIssues = results.results.failed_checks.findAll { 
+                                it.severity == 'CRITICAL' 
+                            }
+                            
+                            if (criticalIssues.size() > 0) {
+                                echo "⚠️ KRITISKA säkerhetsproblem funna:"
+                                criticalIssues.each { issue ->
+                                    echo "- ${issue.check_name}: ${issue.file_path}"
+                                }
+                                
+                                if (params.ENVIRONMENT == 'production') {
+                                    error("Kritiska säkerhetsproblem måste åtgärdas före production deployment")
+                                }
+                            }
+                            
+                            echo "✅ Säkerhetsskanning slutförd"
+                        }
+                    }
+                }
+                
+                stage('Svenska Policy Validation') {
+                    steps {
+                        script {
+                            echo "📋 Validerar svenska organisationspolicies..."
+                            
+                            // Skapa svenska OPA policies
+                            writeFile file: 'policies/svenska-tagging.rego', text: """
+                                package svenska.tagging
+                                
+                                required_tags := [
+                                    "Environment", "CostCenter", "Organization", 
+                                    "Country", "GDPRCompliant", "DataResidency"
+                                ]
+                                
+                                deny[msg] {
+                                    input.resource[resource_type][name]
+                                    resource_type != "data"
+                                    not input.resource[resource_type][name].tags
+                                    msg := sprintf("Resource %s.%s saknar tags", [resource_type, name])
+                                }
+                                
+                                deny[msg] {
+                                    input.resource[resource_type][name].tags
+                                    required_tag := required_tags[_]
+                                    not input.resource[resource_type][name].tags[required_tag]
+                                    msg := sprintf("Resource %s.%s saknar obligatorisk tag: %s", [resource_type, name, required_tag])
+                                }
+                            """
+                            
+                            sh """
+                                curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
+                                sudo mv conftest /usr/local/bin
+                                
+                                find infrastructure/ -name "*.tf" -exec conftest verify --policy policies/ {} \\;
+                            """
+                            
+                            echo "✅ Svenska policy validation slutförd"
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('💰 Svenska Kostnadskontroll') {
+            steps {
+                script {
+                    echo "📊 Beräknar infrastrukturkostnader i svenska kronor..."
+                    
+                    // Setup Infracost för svenska valuta
+                    sh """
+                        curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
+                        export PATH=\$PATH:\$HOME/.local/bin
+                        
+                        cd infrastructure/environments/${params.ENVIRONMENT}
+                        terraform init -backend=false
+                        
+                        infracost breakdown \\
+                            --path . \\
+                            --currency SEK \\
+                            --format json \\
+                            --out-file ../../../cost-estimate.json
+                        
+                        infracost output \\
+                            --path ../../../cost-estimate.json \\
+                            --format table \\
+                            --out-file ../../../cost-summary.txt
+                    """
+                    
+                    // Validera kostnader mot svenska budgetgränser
+                    def costData = readJSON file: 'cost-estimate.json'
+                    def monthlyCostSEK = costData.totalMonthlyCost as Double
+                    
+                    def budgetLimits = [
+                        'development': 5000,
+                        'staging': 15000,
+                        'production': 50000
+                    ]
+                    
+                    def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
+                    
+                    echo "Beräknad månadskostnad: ${monthlyCostSEK} SEK"
+                    echo "Budget för ${params.ENVIRONMENT}: ${maxBudget} SEK"
+                    
+                    if (monthlyCostSEK > maxBudget) {
+                        def overBudget = monthlyCostSEK - maxBudget
+                        echo "⚠️ BUDGET ÖVERSKRIDEN med ${overBudget} SEK!"
+                        
+                        if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
+                            error("Budget överskridning inte tillåten för production utan CFO godkännande")
+                        }
+                    }
+                    
+                    // Generera svenskt kostnadsrapport
+                    def costReport = """
+                    # Kostnadsrapport - ${env.ORGANIZATION_NAME}
+                    
+                    **Miljö:** ${params.ENVIRONMENT}
+                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} (svensk tid)
+                    **Kostnadscenter:** ${params.COST_CENTER}
+                    
+                    ## Månadskostnad
+                    - **Total:** ${monthlyCostSEK} SEK
+                    - **Budget:** ${maxBudget} SEK
+                    - **Status:** ${monthlyCostSEK <= maxBudget ? '✅ Inom budget' : '❌ Över budget'}
+                    
+                    ## Kostnadsnedbrytning
+                    ${readFile('cost-summary.txt')}
+                    
+                    ## Rekommendationer
+                    - Använd Reserved Instances för production workloads
+                    - Aktivera auto-scaling för development miljöer
+                    - Implementera scheduled shutdown för icke-kritiska system
+                    """
+                    
+                    writeFile file: 'cost-report-svenska.md', text: costReport
+                    archiveArtifacts artifacts: 'cost-report-svenska.md', fingerprint: true
+                    
+                    echo "✅ Kostnadskontroll slutförd"
+                }
+            }
+        }
+    }
+}
+```
+
+### 05_CODE_3: Terratest för svenska VPC implementation
+*Refereras från Kapitel 5: [Automatisering och CI/CD-pipelines](05_automatisering_cicd.md)*
+
+```go
+// test/svenska_vpc_test.go
+// Terratest suite för svenska VPC implementation med GDPR compliance
+
+package test
+
+import (
+    "encoding/json"
+    "fmt"
+    "strings"
+    "testing"
+    "time"
+
+    "github.com/aws/aws-sdk-go/aws"
+    "github.com/aws/aws-sdk-go/aws/session"
+    "github.com/aws/aws-sdk-go/service/ec2"
+    "github.com/aws/aws-sdk-go/service/cloudtrail"
+    "github.com/gruntwork-io/terratest/modules/terraform"
+    "github.com/gruntwork-io/terratest/modules/test-structure"
+    "github.com/stretchr/testify/assert"
+    "github.com/stretchr/testify/require"
+)
+
+// SvenskaVPCTestSuite definierar test suite för svenska VPC implementation
+type SvenskaVPCTestSuite struct {
+    TerraformOptions *terraform.Options
+    AWSSession       *session.Session
+    OrganizationName string
+    Environment      string
+    CostCenter       string
+}
+
+// TestSvenskaVPCGDPRCompliance testar GDPR compliance för VPC implementation
+func TestSvenskaVPCGDPRCompliance(t *testing.T) {
+    t.Parallel()
+
+    suite := setupSvenskaVPCTest(t, "development")
+    defer cleanupSvenskaVPCTest(t, suite)
+
+    // Deploy infrastructure
+    terraform.InitAndApply(t, suite.TerraformOptions)
+
+    // Test GDPR compliance requirements
+    t.Run("TestVPCFlowLogsEnabled", func(t *testing.T) {
+        testVPCFlowLogsEnabled(t, suite)
+    })
+
+    t.Run("TestEncryptionAtRest", func(t *testing.T) {
+        testEncryptionAtRest(t, suite)
+    })
+
+    t.Run("TestDataResidencySweden", func(t *testing.T) {
+        testDataResidencySweden(t, suite)
+    })
+
+    t.Run("TestAuditLogging", func(t *testing.T) {
+        testAuditLogging(t, suite)
+    })
+
+    t.Run("TestSvenskaTagging", func(t *testing.T) {
+        testSvenskaTagging(t, suite)
+    })
+}
+
+// setupSvenskaVPCTest förbereder test environment för svenska VPC testing
+func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
+    // Unik test identifier
+    uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
+    organizationName := fmt.Sprintf("svenska-org-%s", uniqueID)
+
+    // Terraform configuration
+    terraformOptions := &terraform.Options{
+        TerraformDir: "../infrastructure/modules/vpc",
+        Vars: map[string]interface{}{
+            "organization_name":     organizationName,
+            "environment":          environment,
+            "cost_center":          "CC-TEST-001",
+            "gdpr_compliance":      true,
+            "data_residency":       "Sweden",
+            "enable_flow_logs":     true,
+            "enable_encryption":    true,
+            "audit_logging":        true,
+        },
+        BackendConfig: map[string]interface{}{
+            "bucket": "svenska-org-terraform-test-state",
+            "key":    fmt.Sprintf("test/%s/terraform.tfstate", uniqueID),
+            "region": "eu-north-1",
+        },
+        RetryableTerraformErrors: map[string]string{
+            ".*": "Transient error - retrying...",
+        },
+        MaxRetries:         3,
+        TimeBetweenRetries: 5 * time.Second,
+    }
+
+    // AWS session för Stockholm region
+    awsSession := session.Must(session.NewSession(&aws.Config{
+        Region: aws.String("eu-north-1"),
+    }))
+
+    return &SvenskaVPCTestSuite{
+        TerraformOptions: terraformOptions,
+        AWSSession:       awsSession,
+        OrganizationName: organizationName,
+        Environment:      environment,
+        CostCenter:       "CC-TEST-001",
+    }
+}
+
+// testVPCFlowLogsEnabled validerar att VPC Flow Logs är aktiverade för GDPR compliance
+func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Hämta VPC ID från Terraform output
+    vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
+    require.NotEmpty(t, vpcID, "VPC ID should not be empty")
+
+    // AWS EC2 client
+    ec2Client := ec2.New(suite.AWSSession)
+
+    // Kontrollera Flow Logs
+    flowLogsInput := &ec2.DescribeFlowLogsInput{
+        Filters: []*ec2.Filter{
+            {
+                Name:   aws.String("resource-id"),
+                Values: []*string{aws.String(vpcID)},
+            },
+        },
+    }
+
+    flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
+    require.NoError(t, err, "Failed to describe VPC flow logs")
+
+    // Validera att Flow Logs är aktiverade
+    assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, "VPC Flow Logs should be enabled for GDPR compliance")
+
+    for _, flowLog := range flowLogsOutput.FlowLogs {
+        assert.Equal(t, "Active", *flowLog.FlowLogStatus, "Flow log should be active")
+        assert.Equal(t, "ALL", *flowLog.TrafficType, "Flow log should capture all traffic for compliance")
+    }
+
+    t.Logf("✅ VPC Flow Logs aktiverade för GDPR compliance: %s", vpcID)
+}
+
+// testEncryptionAtRest validerar att all lagring är krypterad enligt GDPR-krav
+func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Hämta KMS key från Terraform output
+    kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
+    require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
+
+    // Validera att KMS key är från Sverige region
+    assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
+
+    t.Logf("✅ Encryption at rest validerat för GDPR compliance")
+}
+
+// testDataResidencySweden validerar att all infrastruktur är inom svenska gränser
+func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Validera att VPC är i Stockholm region
+    vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
+    
+    ec2Client := ec2.New(suite.AWSSession)
+    
+    vpcOutput, err := ec2Client.DescribeVpcs(&ec2.DescribeVpcsInput{
+        VpcIds: []*string{aws.String(vpcID)},
+    })
+    require.NoError(t, err, "Failed to describe VPC")
+    require.Len(t, vpcOutput.Vpcs, 1, "Should find exactly one VPC")
+
+    // Kontrollera region från session config
+    region := *suite.AWSSession.Config.Region
+    allowedRegions := []string{"eu-north-1", "eu-central-1", "eu-west-1"}
+    
+    regionAllowed := false
+    for _, allowedRegion := range allowedRegions {
+        if region == allowedRegion {
+            regionAllowed = true
+            break
+        }
+    }
+    
+    assert.True(t, regionAllowed, "VPC must be in EU region for Swedish data residency. Found: %s", region)
+
+    t.Logf("✅ Data residency validerat - all infrastruktur i EU region: %s", region)
+}
+
+// testAuditLogging validerar att audit logging är konfigurerat enligt svenska lagkrav
+func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Kontrollera CloudTrail konfiguration
+    cloudtrailClient := cloudtrail.New(suite.AWSSession)
+    
+    trails, err := cloudtrailClient.DescribeTrails(&cloudtrail.DescribeTrailsInput{})
+    require.NoError(t, err, "Failed to list CloudTrail trails")
+
+    foundOrgTrail := false
+    for _, trail := range trails.TrailList {
+        if strings.Contains(*trail.Name, suite.OrganizationName) {
+            foundOrgTrail = true
+            t.Logf("✅ CloudTrail audit logging konfigurerat: %s", *trail.Name)
+        }
+    }
+
+    assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
+}
+
+// testSvenskaTagging validerar att alla resurser har korrekta svenska tags
+func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
+    requiredTags := []string{
+        "Environment", "Organization", "CostCenter", 
+        "Country", "GDPRCompliant", "DataResidency",
+    }
+
+    expectedTagValues := map[string]string{
+        "Environment":     suite.Environment,
+        "Organization":    suite.OrganizationName,
+        "CostCenter":      suite.CostCenter,
+        "Country":         "Sweden",
+        "GDPRCompliant":   "true",
+        "DataResidency":   "Sweden",
+    }
+
+    // Test VPC tags
+    vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
+    ec2Client := ec2.New(suite.AWSSession)
+
+    vpcTags, err := ec2Client.DescribeTags(&ec2.DescribeTagsInput{
+        Filters: []*ec2.Filter{
+            {
+                Name:   aws.String("resource-id"),
+                Values: []*string{aws.String(vpcID)},
+            },
+        },
+    })
+    require.NoError(t, err, "Failed to describe VPC tags")
+
+    // Konvertera tags till map för enklare validering
+    vpcTagMap := make(map[string]string)
+    for _, tag := range vpcTags.Tags {
+        vpcTagMap[*tag.Key] = *tag.Value
+    }
+
+    // Validera obligatoriska tags
+    for _, requiredTag := range requiredTags {
+        assert.Contains(t, vpcTagMap, requiredTag, "VPC should have required tag: %s", requiredTag)
+        
+        if expectedValue, exists := expectedTagValues[requiredTag]; exists {
+            assert.Equal(t, expectedValue, vpcTagMap[requiredTag], 
+                "Tag %s should have correct value", requiredTag)
+        }
+    }
+
+    t.Logf("✅ Svenska tagging validerat för alla resurser")
+}
+
+// cleanupSvenskaVPCTest rensar test environment
+func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
+    terraform.Destroy(t, suite.TerraformOptions)
+    t.Logf("✅ Test environment rensat för %s", suite.OrganizationName)
+}
+```
+
 ---
 
 ## Infrastructure as Code - CloudFormation {#cloudformation-iac}
