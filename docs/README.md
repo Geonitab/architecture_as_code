@@ -17,21 +17,56 @@ Detta dokument beskriver den logiska strukturen för boken "Arkitektur som kod" 
 
 | Kapitel | Fil | Titel | Beskrivning |
 |---------|-----|-------|-------------|
-| 5 | `05_automatisering_cicd.md` | Automatisering och CI/CD-pipelines | Automation av arkitekturprocesser genom CI/CD |
-| 6 | `06_devops_cicd.md` | DevOps och CI/CD för Infrastructure as Code | DevOps-praktiker specifikt för IaC |
-| 7 | `07_molnarkitektur.md` | Molnarkitektur som kod | Cloudnativ arkitektur och IaC i molnmiljöer |
-| 8 | `08_containerisering.md` | Containerisering och orkestrering som kod | Container-baserad arkitektur som kod |
-| 9 | `09_microservices.md` | Microservices-arkitektur som kod | Microservices-mönster implementerat genom kod |
+| 5 | `05_automatisering_devops_cicd.md` | Automatisering, DevOps och CI/CD för Infrastructure as Code | Holistic approach till CI/CD, DevOps-praktiker och automatisering för IaC |
+| 6 | `06_molnarkitektur.md` | Molnarkitektur som kod | Cloudnativ arkitektur och IaC i molnmiljöer |
+| 7 | `07_containerisering.md` | Containerisering och orkestrering som kod | Container-baserad arkitektur som kod |
+| 8 | `08_microservices.md` | Microservices-arkitektur som kod | Microservices-mönster implementerat genom kod |
 
-### Del 3: Säkerhet och compliance (Kapitel 10-12)
+### Del 3: Säkerhet och compliance (Kapitel 9-11)
 
 | Kapitel | Fil | Titel | Beskrivning |
 |---------|-----|-------|-------------|
-| 10 | `10_sakerhet.md` | Säkerhet i Architecture as Code | Säkerhetsaspekter och best practices |
-| 11 | `11_policy_sakerhet.md` | Policy och säkerhet som kod i detalj | Detaljerad genomgång av policy-as-code |
-| 12 | `12_compliance.md` | Compliance och regelefterlevnad | Regelefterlevnad i svenska organisationer |
+| 9 | `09_sakerhet.md` | Säkerhet i Architecture as Code | Säkerhetsaspekter och best practices |
+| 10 | `10_policy_sakerhet.md` | Policy och säkerhet som kod i detalj | Detaljerad genomgång av policy-as-code |
+| 11 | `11_compliance.md` | Compliance och regelefterlevnad | Regelefterlevnad i svenska organisationer |
 
-### Del 4: Testning och kvalitetssäkring (Kapitel 13-14)
+### Del 4: Testning och kvalitetssäkring (Kapitel 12-13)
+
+| Kapitel | Fil | Titel | Beskrivning |
+|---------|-----|-------|-------------|
+| 12 | `12_teststrategier.md` | Teststrategier för infrastruktukod | Testning av IaC och arkitekturkod |
+| 13 | `13_praktisk_implementation.md` | Architecture as Code i praktiken | Praktiska implementeringsexempel |
+
+### Del 5: Drift och hantering (Kapitel 14-15)
+
+| Kapitel | Fil | Titel | Beskrivning |
+|---------|-----|-------|-------------|
+| 14 | `14_kostnadsoptimering.md` | Kostnadsoptimering och resurshantering | Ekonomisk optimering av resurser |
+| 15 | `15_migration.md` | Migration från traditionell infrastruktur | Migrationstrategier och best practices |
+
+### Del 6: Organisatoriska aspekter (Kapitel 16-18)
+
+| Kapitel | Fil | Titel | Beskrivning |
+|---------|-----|-------|-------------|
+| 16 | `16_organisatorisk_forandring.md` | Organisatorisk förändring och teamstrukturer | Organisationsutveckling för IaC |
+| 17 | `17_team_struktur.md` | Team-struktur och kompetensutveckling för IaC | Teamorganisation och kompetensutveckling |
+| 18 | `18_digitalisering.md` | Digitalisering genom kodbaserad infrastruktur | Digital transformation genom IaC |
+
+### Del 7: Avancerade ämnen och framtid (Kapitel 19-21)
+
+| Kapitel | Fil | Titel | Beskrivning |
+|---------|-----|-------|-------------|
+| 19 | `19_lovable_mockups.md` | Använd Lovable för att skapa mockups för svenska organisationer | AI-driven utveckling och prototyping |
+| 20 | `20_framtida_trender.md` | Framtida trender inom Architecture as Code | Utvecklingstrender och teknologisk framtid |
+| 21 | `21_best_practices.md` | Best practices och lärda läxor | Sammanfattning av bästa praxis |
+
+### Del 8: Avslutning (Kapitel 22-24)
+
+| Kapitel | Fil | Titel | Beskrivning |
+|---------|-----|-------|-------------|
+| 22 | `22_slutsats.md` | Slutsats | Sammanfattande reflektioner |
+| 23 | `23_ordlista.md` | Ordlista | Ordlista och definitioner |
+| 24 | `24_om_forfattarna.md` | Om författarna | Information om författarna |
 
 | Kapitel | Fil | Titel | Beskrivning |
 |---------|-----|-------|-------------|
