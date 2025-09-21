@@ -110,6 +110,10 @@ jobs:
           echo "=== Generating presentation materials and PowerPoint file ==="
           echo "📖 Reading from docs/ directory (read-only access)"
           echo "📁 Output will be generated in presentations/ directory"
+          echo "🎯 Enhanced features:"
+          echo "   - Word limit: 20 words maximum per slide key point"
+          echo "   - Diagram integration: Automatic inclusion of chapter diagrams"
+          echo "   - Swedish theme: Professional blue color scheme"
           
           # Run the presentation generation script with --create-pptx flag
           if python3 generate_presentation.py --create-pptx; then
