@@ -1,0 +1,6 @@
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: python-pptx in /home/runner/.local/lib/python3.12/site-packages (1.0.2)
+Requirement already satisfied: Pillow>=3.3.2 in /home/runner/.local/lib/python3.12/site-packages (from python-pptx) (11.3.0)
+Requirement already satisfied: XlsxWriter>=0.5.7 in /home/runner/.local/lib/python3.12/site-packages (from python-pptx) (3.2.9)
+Requirement already satisfied: lxml>=3.1.0 in /home/runner/.local/lib/python3.12/site-packages (from python-pptx) (6.0.1)
+Requirement already satisfied: typing-extensions>=4.9.0 in /usr/lib/python3/dist-packages (from python-pptx) (4.10.0)
