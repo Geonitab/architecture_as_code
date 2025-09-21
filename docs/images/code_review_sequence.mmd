@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Dev as Utvecklare
+    participant Git as Git Repository
+    participant CI as CI/CD Pipeline
+    participant Rev as Code Reviewer
+    participant Prod as Production
+    
+    Dev->>Git: Push feature branch
+    Git->>CI: Trigger automated tests
+    CI->>CI: Terraform validate
+    CI->>CI: Security scan
+    CI->>CI: Cost estimation
+    CI->>Git: Tests completed ✓
+    Dev->>Rev: Create Pull Request
+    Rev->>Git: Review kod och test results
+    Rev->>Git: Approve efter granskning
+    Git->>CI: Merge till main branch
+    CI->>Prod: Deploy till production
+    Prod->>CI: Deployment bekräftad
