@@ -80,15 +80,15 @@ jobs:
           
           echo "✅ Pre-validation checks completed successfully"
 
-      - name: 📊 Generate presentation materials
+      - name: 📊 Generate presentation materials and PowerPoint file
         run: |
-          echo "=== Generating presentation materials ==="
+          echo "=== Generating presentation materials and PowerPoint file ==="
           echo "📖 Reading from docs/ directory (read-only access)"
           echo "📁 Output will be generated in presentations/ directory"
           
-          # Run the presentation generation script with error handling
-          if python3 generate_presentation.py; then
-            echo "✅ Presentation generation completed successfully"
+          # Run the presentation generation script with --create-pptx flag
+          if python3 generate_presentation.py --create-pptx; then
+            echo "✅ Presentation generation and PowerPoint creation completed successfully"
           else
             echo "❌ ERROR: Presentation generation failed"
             echo "   Check the script output above for specific error details"
@@ -141,6 +141,18 @@ jobs:
             validation_failed=true
           fi
           
+          echo "🔍 Checking for PowerPoint presentation file..."
+          if [ -f "presentations/arkitektur_som_kod_presentation.pptx" ]; then
+            file_size=$(ls -lh presentations/arkitektur_som_kod_presentation.pptx | awk '{print $5}')
+            echo "✅ PowerPoint presentation file created successfully"
+            echo "   📄 File size: $file_size"
+            echo "   📄 File type: $(file presentations/arkitektur_som_kod_presentation.pptx)"
+          else
+            echo "❌ VALIDATION ERROR: arkitektur_som_kod_presentation.pptx is missing"
+            echo "   Expected location: presentations/arkitektur_som_kod_presentation.pptx"
+            validation_failed=true
+          fi
+          
           # Final validation result
           if [ "$validation_failed" = true ]; then
             echo ""
@@ -153,67 +165,27 @@ jobs:
           echo ""
           echo "✅ All expected presentation files validated successfully"
 
-      - name: 📊 Install presentation dependencies and test generation
+      - name: 📊 Install presentation dependencies and create PowerPoint
         run: |
-          echo "=== Testing PowerPoint generation setup ==="
+          echo "=== Installing dependencies and creating PowerPoint ==="
           
-          # Ensure we're in the presentations directory
-          if [ ! -d "presentations" ]; then
-            echo "❌ ERROR: presentations/ directory not found"
-            exit 1
-          fi
-          
-          cd presentations
-          
-          # Check if requirements.txt exists before installing
-          if [ ! -f "requirements.txt" ]; then
-            echo "❌ ERROR: requirements.txt not found in presentations/ directory"
-            echo "   Cannot install presentation dependencies"
-            exit 1
-          fi
-          
-          echo "📦 Installing presentation dependencies from requirements.txt..."
-          echo "   Dependencies to install: $(cat requirements.txt | tr '\n' ' ')"
-          
-          # Install the required dependencies
-          if pip install -r requirements.txt; then
-            echo "✅ Presentation dependencies installed successfully"
+          # Install python-pptx directly in the main environment
+          echo "📦 Installing PowerPoint generation dependencies..."
+          if pip install python-pptx>=0.6.21; then
+            echo "✅ PowerPoint dependencies installed successfully"
           else
-            echo "❌ ERROR: Failed to install presentation dependencies"
-            echo "   Check requirements.txt content and package availability"
+            echo "❌ ERROR: Failed to install PowerPoint dependencies"
             exit 1
           fi
           
-          # Check if generate_pptx.py exists before testing
-          if [ ! -f "generate_pptx.py" ]; then
-            echo "❌ ERROR: generate_pptx.py not found in presentations/ directory"
-            echo "   Cannot validate PowerPoint generation script"
-            exit 1
-          fi
-          
-          # Validate the generated Python script syntax
-          echo "🔍 Validating PowerPoint generation script syntax..."
-          if python3 -m py_compile generate_pptx.py; then
-            echo "✅ PowerPoint generation script syntax validated successfully"
+          # Verify dependencies are available
+          echo "🔍 Verifying python-pptx installation..."
+          if python3 -c "import pptx; print(f'python-pptx version: {pptx.__version__}')"; then
+            echo "✅ python-pptx is available and working"
           else
-            echo "❌ ERROR: PowerPoint generation script has syntax errors"
-            echo "   The generated script cannot be executed"
+            echo "❌ ERROR: python-pptx cannot be imported"
             exit 1
           fi
-          
-          echo "🔍 Checking script functionality..."
-          # Additional basic validation - check if the script imports work
-          if python3 -c "import sys; sys.path.insert(0, '.'); import importlib.util; spec = importlib.util.spec_from_file_location('generate_pptx', 'generate_pptx.py'); module = importlib.util.module_from_spec(spec)"; then
-            echo "✅ PowerPoint generation script imports validated"
-          else
-            echo "⚠️  Warning: PowerPoint generation script imports could not be fully validated"
-            echo "   This may be due to environment differences but should work in proper setup"
-          fi
-          
-          # Note: We don't actually generate the .pptx file in CI as it requires
-          # significant dependencies and the file would be quite large
-          echo "ℹ️  Note: Actual PowerPoint generation skipped in CI environment"
-          echo "   Use the generated script locally with: python generate_pptx.py"
 
       - name: 📈 Presentation generation summary
         run: |
@@ -230,6 +202,11 @@ jobs:
             echo "📝 PowerPoint script lines: $script_lines"
           fi
           
+          if [ -f "presentations/arkitektur_som_kod_presentation.pptx" ]; then
+            pptx_size=$(ls -lh presentations/arkitektur_som_kod_presentation.pptx | awk '{print $5}')
+            echo "📊 PowerPoint file size: $pptx_size"
+          fi
+          
           echo "📁 Generated files:"
           ls -la presentations/
           echo "⏰ Generation completed at: $(date)"
@@ -243,6 +220,7 @@ jobs:
             presentations/presentation_outline.md
             presentations/generate_pptx.py
             presentations/requirements.txt
+            presentations/arkitektur_som_kod_presentation.pptx
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
       - name: 📝 Create presentation summary (PR only)
@@ -276,14 +254,23 @@ jobs:
               summary += `- ⚠️ Error reading generated files: ${error.message}\n`;
             }
             
-            summary += `\n### 🚀 Next Steps\n`;
-            summary += `To generate the actual PowerPoint presentation:\n`;
-            summary += `\`\`\`bash\n`;
-            summary += `cd presentations\n`;
-            summary += `pip install -r requirements.txt\n`;
-            summary += `python generate_pptx.py\n`;
-            summary += `\`\`\`\n\n`;
-            summary += `📋 **Generated files are available in the workflow artifacts.**\n\n`;
+            try {
+              if (fs.existsSync('presentations/arkitektur_som_kod_presentation.pptx')) {
+                const stats = fs.statSync('presentations/arkitektur_som_kod_presentation.pptx');
+                const fileSize = (stats.size / 1024).toFixed(1); // Size in KB
+                summary += `- ✅ **PowerPoint File**: ${fileSize} KB presentation ready for download\n`;
+              }
+            } catch (error) {
+              summary += `- ⚠️ Error reading PowerPoint file: ${error.message}\n`;
+            }
+            
+            summary += `\n### 🚀 Ready to Use\n`;
+            summary += `The PowerPoint presentation has been generated and is ready for immediate use!\n\n`;
+            summary += `📋 **All generated files are available in the workflow artifacts:**\n`;
+            summary += `- 📋 Presentation outline (Markdown)\n`;
+            summary += `- 📝 Generation script (Python)\n`;
+            summary += `- 📊 **PowerPoint presentation (.pptx)** - Ready to download and present\n`;
+            summary += `- 📦 Requirements file\n\n`;
             summary += `*Automated by Presentation Generation Workflow*`;
             
             github.rest.issues.createComment({

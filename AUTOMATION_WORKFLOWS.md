@@ -27,22 +27,31 @@ The workflow runs when:
 - **`presentation_outline.md`** - Structured outline with key points from each chapter
 - **`generate_pptx.py`** - Python script to create PowerPoint presentations
 - **`requirements.txt`** - Dependencies needed for PowerPoint generation
+- **`arkitektur_som_kod_presentation.pptx`** - Complete PowerPoint presentation file (ready to use)
 
 ### Workflow Steps
 1. **Setup Environment** - Python 3.12 with required dependencies
-2. **Generate Materials** - Run `generate_presentation.py` script
-3. **Validation** - Verify all expected files are created with correct structure
-4. **Dependency Testing** - Install and validate PowerPoint generation dependencies
-5. **Artifact Upload** - Store generated materials for download
+2. **Install PowerPoint Dependencies** - Install python-pptx library
+3. **Generate Materials** - Run `generate_presentation.py --create-pptx` script
+4. **Validation** - Verify all expected files are created with correct structure
+5. **Artifact Upload** - Store generated materials and PowerPoint file for download
 6. **PR Comments** - Add summary comment on pull requests
 
 ### Usage
-After the workflow completes:
+After the workflow completes, the PowerPoint presentation is ready for immediate use!
+
+**Download from GitHub Actions artifacts:**
+- `arkitektur_som_kod_presentation.pptx` - Complete presentation (28 slides)
+- `presentation_outline.md` - Structured outline for reference
+- `generate_pptx.py` - Script for local customization
+- `requirements.txt` - Dependencies list
+
+**For local generation or customization:**
 ```bash
-# Download artifacts from GitHub Actions
-cd presentations
-pip install -r requirements.txt
-python generate_pptx.py
+# Download artifacts from GitHub Actions or clone repository
+python3 generate_presentation.py --create-pptx
+# Or with custom output name:
+python3 generate_presentation.py --create-pptx --output my_presentation.pptx
 ```
 
 This creates a professional PowerPoint presentation with:
@@ -97,7 +106,7 @@ presentations/                   # Generated presentation materials (ignored in 
 ├── presentation_outline.md      # Chapter outlines and key points
 ├── generate_pptx.py             # PowerPoint generation script
 ├── requirements.txt             # Python dependencies
-└── *.pptx                      # Generated PowerPoint files
+└── arkitektur_som_kod_presentation.pptx  # Generated PowerPoint file (ready to use)
 
 whitepapers/                     # Generated whitepaper documents (ignored in git)
 ├── 01_inledning_whitepaper.html # Introduction whitepaper
