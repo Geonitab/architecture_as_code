@@ -15,7 +15,24 @@ It should never modify any files in the docs/ directory.
 import os
 import sys
 import glob
+import re
 from pathlib import Path
+
+def limit_words(text, max_words=20):
+    """Limit text to maximum number of words while preserving meaning."""
+    if not text:
+        return text
+    
+    words = text.split()
+    if len(words) <= max_words:
+        return text
+    
+    # Take the first max_words and add ellipsis if needed
+    limited = ' '.join(words[:max_words])
+    if len(words) > max_words:
+        limited += "..."
+    
+    return limited
 
 def read_chapter_content(chapter_file):
     """Read and parse a chapter markdown file."""
@@ -31,21 +48,21 @@ def read_chapter_content(chapter_file):
                 title = line[2:].strip()
                 break
         
-        # Extract diagram path
+        # Extract diagram path - support multiple images, pick the first one
         diagram_path = None
         for line in lines:
             if line.startswith('![') and 'images/' in line:
                 # Extract diagram path from markdown image syntax
-                import re
                 match = re.search(r'!\[.*?\]\((.*?)\)', line)
                 if match:
-                    diagram_path = match.group(1)
-                    # Convert to PNG path if it's a reference
-                    if diagram_path.endswith('.png'):
-                        diagram_path = f"../docs/{diagram_path}"
-                    break
+                    relative_path = match.group(1)
+                    # Convert to absolute path from script location
+                    if relative_path.endswith('.png'):
+                        diagram_path = os.path.join("docs", relative_path)
+                        # Take the first diagram found
+                        break
         
-        # Extract key points with better logic for 10 meaningful points
+        # Extract key points with 20-word limit for presentation slides
         key_points = []
         current_section = None
         section_content = []
@@ -64,7 +81,7 @@ def read_chapter_content(chapter_file):
             if line.startswith('## '):
                 # Process previous section
                 if current_section and section_content:
-                    # Get meaningful content from section
+                    # Get the first meaningful sentence and limit to 20 words
                     meaningful_content = []
                     for content_line in section_content:
                         if (content_line and 
@@ -75,11 +92,13 @@ def read_chapter_content(chapter_file):
                             meaningful_content.append(content_line)
                     
                     if meaningful_content:
-                        # Create a concise summary
-                        summary = ' '.join(meaningful_content[:3])[:300]
-                        if len(summary) > 250:
-                            summary = summary[:250] + "..."
-                        key_points.append(f"{current_section}: {summary}")
+                        # Take first sentence or meaningful phrase, limit to 20 words
+                        first_sentence = meaningful_content[0].split('.')[0].strip()
+                        if not first_sentence:
+                            first_sentence = meaningful_content[0][:150]  # Fallback to character limit
+                        
+                        limited_point = limit_words(first_sentence, 20)
+                        key_points.append(limited_point)
                 
                 current_section = line[3:].strip()
                 section_content = []
@@ -98,36 +117,28 @@ def read_chapter_content(chapter_file):
                     meaningful_content.append(content_line)
             
             if meaningful_content:
-                summary = ' '.join(meaningful_content[:3])[:300]
-                if len(summary) > 250:
-                    summary = summary[:250] + "..."
-                key_points.append(f"{current_section}: {summary}")
+                first_sentence = meaningful_content[0].split('.')[0].strip()
+                if not first_sentence:
+                    first_sentence = meaningful_content[0][:150]
+                
+                limited_point = limit_words(first_sentence, 20)
+                key_points.append(limited_point)
         
-        # Ensure we have 10 points by padding with general information if needed
-        while len(key_points) < 10 and len(key_points) > 0:
-            # Add some general points if we don't have enough
+        # Ensure we have at least 5 key points but no more than 10, all with 20-word limit
+        while len(key_points) < 5 and len(key_points) > 0:
+            # Add some general points if we don't have enough, all limited to 20 words
             if len(key_points) == 1:
-                key_points.append(f"Praktisk implementation av {title.lower()}")
+                key_points.append(limit_words(f"Praktisk implementation av {title.lower()} i svenska organisationer", 20))
             elif len(key_points) == 2:
-                key_points.append(f"Svenska organisationers perspektiv på {title.lower()}")
+                key_points.append(limit_words(f"Säkerhetsaspekter och best practices inom {title.lower()}", 20))
             elif len(key_points) == 3:
-                key_points.append(f"Säkerhetsaspekter inom {title.lower()}")
+                key_points.append(limit_words(f"Automatisering och CI/CD för {title.lower()}", 20))
             elif len(key_points) == 4:
-                key_points.append(f"Automatisering och CI/CD för {title.lower()}")
-            elif len(key_points) == 5:
-                key_points.append(f"Kostnadsoptimering inom {title.lower()}")
-            elif len(key_points) == 6:
-                key_points.append(f"Skalbarhet och prestanda för {title.lower()}")
-            elif len(key_points) == 7:
-                key_points.append(f"Övervakning och loggning av {title.lower()}")
-            elif len(key_points) == 8:
-                key_points.append(f"Team-organisation för {title.lower()}")
-            else:
-                key_points.append(f"Framtiden för {title.lower()}")
+                key_points.append(limit_words(f"Kostnadsoptimering och skalbarhet för {title.lower()}", 20))
         
         return {
             'title': title,
-            'key_points': key_points[:10],  # Limit to 10 key points as requested
+            'key_points': key_points[:10],  # Limit to 10 key points max, each with 20-word limit
             'diagram_path': diagram_path
         }
     
@@ -167,6 +178,7 @@ def create_presentation_script(presentation_data):
 PowerPoint Presentation Generator for Arkitektur som kod
 Generated automatically from book content.
 Complies with Swedish standards and book theme.
+All key points limited to 20 words maximum per slide.
 """
 
 import os
@@ -175,6 +187,22 @@ from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE
+
+def limit_words(text, max_words=20):
+    """Limit text to maximum number of words while preserving meaning."""
+    if not text:
+        return text
+    
+    words = text.split()
+    if len(words) <= max_words:
+        return text
+    
+    # Take the first max_words and add ellipsis if needed
+    limited = ' '.join(words[:max_words])
+    if len(words) > max_words:
+        limited += "..."
+    
+    return limited
 
 def create_presentation():
     """Create PowerPoint presentation with book content."""
@@ -199,7 +227,7 @@ def create_presentation():
     
     subtitle.text_frame.paragraphs[0].font.size = Pt(24)
     subtitle.text_frame.paragraphs[0].font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
-    
+
 '''
     
     for item in presentation_data:
@@ -249,10 +277,8 @@ def create_presentation():
 '''
         
         for i, point in enumerate(chapter['key_points']):
-            # Clean the point for code generation - escape quotes and limit length
-            clean_point = point.replace('"', '\\"').replace("'", "\\'").replace('\n', ' ')
-            if len(clean_point) > 200:
-                clean_point = clean_point[:200] + "..."
+            # Ensure each point is limited to 20 words and clean for code generation
+            clean_point = limit_words(point, 20).replace('"', '\\"').replace("'", "\\'").replace('\n', ' ')
             
             script_content += f'''
     p = points_frame.add_paragraph()
@@ -269,7 +295,8 @@ def create_presentation():
     print(f"✅ Presentation saved to {output_path}")
     print(f"📊 Total slides created: {len(prs.slides)}")
     print("🎨 Styled with Swedish theme colors")
-    print("📋 Each slide includes chapter title, diagram (when available), and 10 key points")
+    print("📋 Each slide includes chapter title, diagram (when available), and key points")
+    print("📏 All key points limited to 20 words maximum for optimal readability")
 
 if __name__ == "__main__":
     create_presentation()
@@ -346,7 +373,9 @@ def create_presentation_directly(presentation_data, output_path="arkitektur_som_
             
             for point in chapter['key_points']:
                 p = points_frame.add_paragraph()
-                p.text = f"• {point}"
+                # Ensure each point is limited to 20 words
+                limited_point = limit_words(point, 20)
+                p.text = f"• {limited_point}"
                 p.font.size = Pt(12)
                 p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
         
@@ -356,6 +385,7 @@ def create_presentation_directly(presentation_data, output_path="arkitektur_som_
         print(f"📊 Total slides created: {len(prs.slides)}")
         print("🎨 Styled with Swedish theme colors")
         print("📋 Each slide includes chapter title, diagram (when available), and key points")
+        print("📏 All key points limited to 20 words maximum for optimal readability")
         return True
         
     except Exception as e:
