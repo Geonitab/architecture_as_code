@@ -1,8 +1,8 @@
 # Architecture Decision Records (ADR)
 
-![Architecture Decision Records process](images/diagram_04_adr_kapitel.png)
+![ADR Process Flow](images/diagram_04_adr_process.png)
 
-*Architecture Decision Records representerar en strukturerad metod för att dokumentera viktiga arkitekturbeslut inom kodbaserade system. Diagrammet illustrerar hur ADR integreras i utvecklingsprocessen från problemidentifiering till beslutsdokumentation och implementering.*
+*Architecture Decision Records representerar en strukturerad metod för att dokumentera viktiga arkitekturbeslut inom kodbaserade system. Processen börjar med problemidentifiering och följer en systematisk approach för att analysera kontext, utvärdera alternativ och formulera välgrundade beslut.*
 
 ## Övergripande beskrivning
 
@@ -30,6 +30,10 @@ Officiella riktlinjer och mallar finns tillgängliga på https://adr.github.io, 
 För Infrastructure as Code-kontext innebär ADR dokumentation av beslut om teknologival, arkitekturmönster, säkerhetsstrategier och operationella policies som kodifieras i infrastrukturdefinitioner.
 
 ## Struktur och komponenter av ADR
+
+![ADR Struktur](images/diagram_04_adr_struktur.png)
+
+*Varje ADR följer en standardiserad struktur med fyra huvudkomponenter som säkerställer konsekvent och fullständig dokumentation av arkitekturbeslut.*
 
 ### Standardiserad ADR-mall
 
@@ -67,6 +71,10 @@ ADR numreras sekventiellt (ADR-0001, ADR-0002, etc.) för att skapa en kronologi
 Versionering hanteras genom Git-historik istället för inline-ändringar. Om ett beslut förändras skapas ett nytt ADR som superseder det ursprungliga, vilket bevarar den historiska kontexten.
 
 ### Status lifecycle
+
+![ADR Lifecycle](images/diagram_04_adr_lifecycle.png)
+
+*ADR-livscykeln illustrerar hur beslut utvecklas från initialt förslag genom review-processen till implementation, monitoring och eventuell deprecering när nya lösningar behövs.*
 
 ADR genomgår typiskt följande statusar:
 
