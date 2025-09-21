@@ -37,7 +37,9 @@ const ChapterDetail = () => {
     { id: "22", title: "Best practices och lärda läxor", area: "Systemutveckling", filename: "22_best_practices.md" },
     { id: "23", title: "Slutsats", area: "Sammanfattning", filename: "23_slutsats.md" },
     { id: "24", title: "Ordlista", area: "Referenser", filename: "24_ordlista.md" },
-    { id: "25", title: "Om författarna", area: "Referenser", filename: "25_om_forfattarna.md" }
+    { id: "25", title: "Om författarna", area: "Referenser", filename: "25_om_forfattarna.md" },
+    { id: "26", title: "Appendix: Kodexempel och tekniska implementationer", area: "Referenser", filename: "26_appendix_kodexempel.md" },
+    { id: "27", title: "Teknisk uppbyggnad för bokproduktion", area: "Teknik", filename: "27_teknisk_uppbyggnad.md" }
   ];
 
   const currentChapterIndex = chapters.findIndex(chapter => chapter.id === chapterId);

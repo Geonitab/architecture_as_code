@@ -185,6 +185,20 @@ const ChaptersOverview = () => {
       area: "Referenser",
       summary: "Information om bokens författare och deras bakgrund inom Infrastructure as Code.",
       keyTopics: ["Author bios", "Professional background", "Expertise", "Contributions"]
+    },
+    { 
+      id: "26", 
+      title: "Appendix: Kodexempel och tekniska implementationer", 
+      area: "Referenser",
+      summary: "Detaljerade kodexempel, konfigurationsfiler och tekniska implementationer för praktisk tillämpning.",
+      keyTopics: ["Code examples", "Configuration files", "Technical implementations", "Best practices"]
+    },
+    { 
+      id: "27", 
+      title: "Teknisk uppbyggnad för bokproduktion", 
+      area: "Teknik",
+      summary: "Beskrivning av den tekniska infrastrukturen som används för att skapa, bygga och publicera denna bok.",
+      keyTopics: ["Markdown structure", "Pandoc conversion", "GitHub Actions", "Automation workflow"]
     }
   ];
 
@@ -225,7 +239,7 @@ const ChaptersOverview = () => {
           <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Utforska alla kapitel</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Bläddra genom bokens 25 kapitel och upptäck djupgående innehåll om Infrastructure as Code
+              Bläddra genom bokens 27 kapitel och upptäck djupgående innehåll om Infrastructure as Code
             </p>
             
             {/* Search and Filter */}
