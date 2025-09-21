@@ -1,0 +1,123 @@
+requirementDiagram
+
+    requirement business_req {
+        id: 1
+        text: Säker molninfrastruktur
+        risk: high
+        verifymethod: test
+    }
+    
+    requirement compliance_req {
+        id: 2
+        text: GDPR-kompatibilitet
+        risk: high
+        verifymethod: analysis
+    }
+    
+    requirement performance_req {
+        id: 3
+        text: Skalbar prestanda
+        risk: medium
+        verifymethod: test
+    }
+    
+    requirement cost_req {
+        id: 4
+        text: Kostnadsoptimering
+        risk: medium
+        verifymethod: analysis
+    }
+
+    functionalRequirement security_config {
+        id: 1.1
+        text: Kryptering aktiverad
+        risk: high
+        verifymethod: test
+    }
+    
+    functionalRequirement network_security {
+        id: 1.2
+        text: Nätverkssegmentering
+        risk: high
+        verifymethod: test
+    }
+    
+    functionalRequirement data_protection {
+        id: 2.1
+        text: Dataminimering
+        risk: high
+        verifymethod: inspection
+    }
+    
+    functionalRequirement audit_logging {
+        id: 2.2
+        text: Revisions-loggning
+        risk: medium
+        verifymethod: test
+    }
+    
+    functionalRequirement auto_scaling {
+        id: 3.1
+        text: Automatisk skalning
+        risk: medium
+        verifymethod: test
+    }
+    
+    functionalRequirement load_balancing {
+        id: 3.2
+        text: Lastbalansering
+        risk: medium
+        verifymethod: test
+    }
+    
+    functionalRequirement resource_optimization {
+        id: 4.1
+        text: Resursoptimering
+        risk: low
+        verifymethod: analysis
+    }
+
+    element terraform_config {
+        type: "Infrastructure Code"
+    }
+    
+    element security_tests {
+        type: "Test Suite"
+    }
+    
+    element compliance_scanner {
+        type: "Analysis Tool"
+    }
+    
+    element performance_tests {
+        type: "Test Suite"
+    }
+    
+    element cost_analyzer {
+        type: "Analysis Tool"
+    }
+
+    business_req - contains -> security_config
+    business_req - contains -> network_security
+    compliance_req - contains -> data_protection
+    compliance_req - contains -> audit_logging
+    performance_req - contains -> auto_scaling
+    performance_req - contains -> load_balancing
+    cost_req - contains -> resource_optimization
+
+    security_config - satisfies -> terraform_config
+    network_security - satisfies -> terraform_config
+    data_protection - satisfies -> terraform_config
+    audit_logging - satisfies -> terraform_config
+    auto_scaling - satisfies -> terraform_config
+    load_balancing - satisfies -> terraform_config
+    resource_optimization - satisfies -> terraform_config
+
+    security_config - verifies -> security_tests
+    network_security - verifies -> security_tests
+    audit_logging - verifies -> security_tests
+    auto_scaling - verifies -> performance_tests
+    load_balancing - verifies -> performance_tests
+    
+    data_protection - verifies -> compliance_scanner
+    resource_optimization - verifies -> cost_analyzer

@@ -54,6 +54,224 @@ Skalabilitetstesting verifierar att infrastructure kan handle projected growth e
 
 Capacity planning validation genom performance testing hjälper optimize resource configurations för cost-effectiveness samtidigt som performance requirements uppfylls. Detta är särskilt important för svenska organisationer som balanserar cost optimization med service level requirements.
 
+## Krav som kod och testbarhet
+
+![Requirements och testing relation](images/diagram_requirements_testing.png)
+
+*Relationen mellan affärskrav, funktionella krav och verifieringsmetoder illustrerar hur Infrastructure as Code möjliggör spårbar testning från högre abstraktionsnivåer ner till konkreta implementationer.*
+
+Requirements-as-Code representerar ett paradigmskifte där affärskrav och compliance-krav kodifieras i maskinläsbar form tillsammans med infrastructure-koden. Detta möjliggör automatiserad validering av att infrastrukturen verkligen uppfyller de specificerade kraven genom hela utvecklingslivscykeln.
+
+Genom att definiera krav som kod skapas en direkt koppling mellan business requirements, functional requirements och de automatiserade tester som verifierar implementationen. Denna traceability är kritisk för organisationer som måste demonstrera compliance och för utvecklingsteam som behöver förstå affärskonsekvenserna av tekniska beslut.
+
+### Kravspårbarhet i praktiken
+
+Requirements traceability för Infrastructure as Code innebär att varje infrastrukturkomponent kan kopplas tillbaka till specifika affärskrav eller compliance-krav. Detta är särskilt viktigt för svenska organisationer som måste uppfylla GDPR, finansiella regleringar eller myndighetskrav.
+
+Verktyg som Open Policy Agent (OPA) möjliggör uttryck av compliance-krav som policies som kan evalueras automatiskt mot infrastructure-konfigurationer. Dessa policies blir testable requirements som kan köras kontinuerligt för att säkerställa ongoing compliance.
+
+Requirement validation testing säkerställer att infrastructure inte bara är tekniskt korrekt utan också uppfyller business intent. Detta inkluderar validering av säkerhetskrav, performance-krav, tillgänglighetskrav och kostnadsramar som defined av business stakeholders.
+
+### Automated Requirements Verification
+
+```yaml
+# requirements/security-requirements.yaml
+apiVersion: policy/v1
+kind: RequirementSet
+metadata:
+  name: swedish-security-requirements
+  version: "1.0"
+spec:
+  requirements:
+    - id: SEC-001
+      type: security
+      description: "Alla S3 buckets måste ha kryptering aktiverad"
+      priority: critical
+      compliance: ["GDPR", "ISO27001"]
+      tests:
+        - type: static-analysis
+          tool: checkov
+          rule: CKV_AWS_141
+        - type: runtime-test
+          script: test_s3_encryption.py
+    
+    - id: SEC-002  
+      type: security
+      description: "RDS instanser måste använda encrypted storage"
+      priority: critical
+      compliance: ["GDPR"]
+      tests:
+        - type: terraform-test
+          file: test_rds_encryption_test.go
+        - type: policy-test
+          file: rds_encryption.rego
+          
+    - id: PERF-001
+      type: performance
+      description: "Auto-scaling måste vara konfigurerat för production workloads"
+      priority: high
+      tests:
+        - type: integration-test
+          file: test_autoscaling_integration.py
+        - type: load-test
+          tool: k6
+          script: autoscaling_load_test.js
+```
+
+```python
+# test/requirements_validation.py
+"""
+Automatiserad validering av krav mot Infrastructure as Code
+"""
+import yaml
+import subprocess
+import json
+from typing import Dict, List, Any
+
+class RequirementValidator:
+    def __init__(self, requirements_file: str):
+        with open(requirements_file, 'r') as f:
+            self.requirements = yaml.safe_load(f)
+    
+    def validate_all_requirements(self) -> Dict[str, Any]:
+        """Kör alla krav-relaterade tester och sammanställ resultat"""
+        results = {
+            'passed': [],
+            'failed': [],
+            'skipped': [],
+            'summary': {}
+        }
+        
+        for req in self.requirements['spec']['requirements']:
+            req_id = req['id']
+            print(f"Validerar krav {req_id}: {req['description']}")
+            
+            req_result = self._validate_requirement(req)
+            
+            if req_result['status'] == 'passed':
+                results['passed'].append(req_result)
+            elif req_result['status'] == 'failed':
+                results['failed'].append(req_result)
+            else:
+                results['skipped'].append(req_result)
+        
+        results['summary'] = {
+            'total': len(self.requirements['spec']['requirements']),
+            'passed': len(results['passed']),
+            'failed': len(results['failed']),
+            'skipped': len(results['skipped']),
+            'compliance_coverage': self._calculate_compliance_coverage()
+        }
+        
+        return results
+    
+    def _validate_requirement(self, requirement: Dict) -> Dict[str, Any]:
+        """Validera ett enskilt krav genom att köra associerade tester"""
+        req_id = requirement['id']
+        test_results = []
+        
+        for test in requirement.get('tests', []):
+            test_result = self._execute_test(test, req_id)
+            test_results.append(test_result)
+        
+        # Avgör overall status för kravet
+        if all(t['passed'] for t in test_results):
+            status = 'passed'
+        elif any(t['passed'] == False for t in test_results):
+            status = 'failed'
+        else:
+            status = 'skipped'
+        
+        return {
+            'requirement_id': req_id,
+            'description': requirement['description'],
+            'priority': requirement['priority'],
+            'compliance': requirement.get('compliance', []),
+            'status': status,
+            'test_results': test_results
+        }
+    
+    def _execute_test(self, test_config: Dict, req_id: str) -> Dict[str, Any]:
+        """Exekvera ett specifikt test baserat på dess typ"""
+        test_type = test_config['type']
+        
+        if test_type == 'static-analysis':
+            return self._run_static_analysis_test(test_config, req_id)
+        elif test_type == 'terraform-test':
+            return self._run_terraform_test(test_config, req_id)
+        elif test_type == 'policy-test':
+            return self._run_policy_test(test_config, req_id)
+        elif test_type == 'integration-test':
+            return self._run_integration_test(test_config, req_id)
+        elif test_type == 'load-test':
+            return self._run_load_test(test_config, req_id)
+        else:
+            return {
+                'test_type': test_type,
+                'passed': None,
+                'message': f'Okänd testtyp: {test_type}',
+                'requirement_id': req_id
+            }
+    
+    def _run_static_analysis_test(self, test_config: Dict, req_id: str) -> Dict[str, Any]:
+        """Kör static analysis test med Checkov"""
+        tool = test_config.get('tool', 'checkov')
+        rule = test_config.get('rule')
+        
+        try:
+            cmd = f"{tool} --check {rule} --directory terraform/ --output json"
+            result = subprocess.run(cmd.split(), capture_output=True, text=True)
+            
+            if result.returncode == 0:
+                return {
+                    'test_type': 'static-analysis',
+                    'tool': tool,
+                    'rule': rule,
+                    'passed': True,
+                    'message': 'Static analysis passed',
+                    'requirement_id': req_id
+                }
+            else:
+                return {
+                    'test_type': 'static-analysis', 
+                    'tool': tool,
+                    'rule': rule,
+                    'passed': False,
+                    'message': f'Static analysis failed: {result.stderr}',
+                    'requirement_id': req_id
+                }
+        except Exception as e:
+            return {
+                'test_type': 'static-analysis',
+                'passed': None,
+                'message': f'Error running static analysis: {str(e)}',
+                'requirement_id': req_id
+            }
+    
+    def _calculate_compliance_coverage(self) -> Dict[str, float]:
+        """Beräkna compliance coverage för olika regleringar"""
+        compliance_mapping = {}
+        
+        for req in self.requirements['spec']['requirements']:
+            for compliance in req.get('compliance', []):
+                if compliance not in compliance_mapping:
+                    compliance_mapping[compliance] = {'total': 0, 'tested': 0}
+                
+                compliance_mapping[compliance]['total'] += 1
+                
+                if req.get('tests'):
+                    compliance_mapping[compliance]['tested'] += 1
+        
+        coverage = {}
+        for compliance, stats in compliance_mapping.items():
+            if stats['total'] > 0:
+                coverage[compliance] = stats['tested'] / stats['total'] * 100
+            else:
+                coverage[compliance] = 0
+        
+        return coverage
+```
+
 ## Praktiska exempel
 
 ### Terraform Unit Testing med Terratest

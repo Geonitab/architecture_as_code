@@ -26,7 +26,7 @@ Projektet innehåller **25 kapitel** totalt. Följande filer finns i `docs/`-map
 - `14_kapitel13.md` - Framtida trender och teknologier inom IaC
 - `15_kapitel14.md` - Team-struktur och kompetensutveckling för IaC
 - `16_kapitel15.md` - Kostnadsoptimering och resurshantering
-- `17_kapitel16.md` - Teststrategier för infrastruktukod
+- `17_kapitel16.md` - Teststrategier för infrastruktukod (inkl. krav som kod)
 - `18_kapitel17.md` - Migration från traditionell infrastruktur
 - `19_kapitel18.md` - [SAKNAS - Fallstudier och praktiska exempel]
 - `20_kapitel19.md` - Best practices och lärda läxor
