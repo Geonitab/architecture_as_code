@@ -1,4 +1,4 @@
-# Best practices och lärda läxor
+# Metodval och lärda läxor
 
 ![Best practices evolution](images/diagram_20_kapitel19.png)
 
