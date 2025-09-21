@@ -1,0 +1,32 @@
+classDiagram
+    class InfrastructureAsCode {
+        +String version
+        +Boolean idempotent
+        +deploy()
+        +validate()
+        +destroy()
+    }
+    
+    class CloudProvider {
+        +String name
+        +String region
+        +authenticate()
+        +provision()
+    }
+    
+    class ConfigurationManagement {
+        +String tool
+        +apply()
+        +drift_detection()
+    }
+    
+    class SecurityPolicy {
+        +String compliance_level
+        +validate_security()
+        +enforce_policy()
+    }
+    
+    InfrastructureAsCode --> CloudProvider : uses
+    InfrastructureAsCode --> ConfigurationManagement : manages
+    InfrastructureAsCode --> SecurityPolicy : enforces
+    CloudProvider --> SecurityPolicy : implements

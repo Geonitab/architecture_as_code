@@ -1,12 +1,33 @@
 #!/usr/bin/env python3
 """
-Generate PowerPoint presentation from book chapters.
+Generate PowerPoint presentation from book chapters with comprehensive diagram validation.
 
 This script reads the markdown files from docs/ directory (without modifying them)
 and creates a PowerPoint presentation in the presentations/ directory.
 
+Enhanced Features:
+- Validates that each chapter has at least one diagram
+- Ensures all types of Mermaid diagrams are represented across the presentation
+- Provides comprehensive diagram type analysis and reporting
+- Supports validation-only mode for checking coverage without generation
+
+Supported Mermaid Diagram Types:
+- Flowchart (graph LR/TB): Process flows and system workflows
+- Sequence Diagram: Interaction sequences and message flows
+- Class Diagram: Object relationships and system structure
+- Entity Relationship: Data model relationships
+- User Journey: User experience flows and touchpoints
+- Gantt Chart: Project timelines and scheduling
+- Pie Chart: Distribution and percentage breakdowns
+- Quadrant Chart: Decision matrices and positioning
+- Mindmap: Conceptual relationships and knowledge mapping
+- And more...
+
 Usage:
-    python generate_presentation.py
+    python generate_presentation.py                    # Generate presentation materials
+    python generate_presentation.py --create-pptx      # Generate PowerPoint file directly
+    python generate_presentation.py --validate-diagrams # Validate diagram coverage only
+    python generate_presentation.py --create-pptx --validate-diagrams  # Full generation with validation
 
 Note: This script ONLY reads from docs/ and creates files outside the docs/ directory.
 It should never modify any files in the docs/ directory.
@@ -17,6 +38,7 @@ import sys
 import glob
 import re
 from pathlib import Path
+import json
 
 def limit_words(text, max_words=20):
     """Limit text to maximum number of words while preserving meaning."""
@@ -33,6 +55,173 @@ def limit_words(text, max_words=20):
         limited += "..."
     
     return limited
+
+def analyze_mermaid_diagram_types():
+    """Analyze available Mermaid diagram types in the images directory."""
+    diagram_types = {
+        'flowchart': [],      # graph LR, graph TD, graph TB
+        'sequence': [],       # sequenceDiagram
+        'class': [],          # classDiagram
+        'state': [],          # stateDiagram
+        'entity_relationship': [], # erDiagram
+        'user_journey': [],   # journey
+        'gantt': [],          # gantt
+        'pie': [],            # pie
+        'quadrant': [],       # quadrantChart
+        'requirement': [],    # requirementDiagram
+        'gitgraph': [],       # gitGraph
+        'mindmap': [],        # mindmap
+        'timeline': [],       # timeline
+        'sankey': [],         # sankey
+        'xy_chart': [],       # xyChart
+        'other': []
+    }
+    
+    images_dir = Path("docs/images")
+    if not images_dir.exists():
+        return diagram_types
+    
+    mermaid_files = list(images_dir.glob("*.mmd"))
+    
+    for mmd_file in mermaid_files:
+        try:
+            content = mmd_file.read_text(encoding='utf-8').strip()
+            first_lines = content.split('\n')[:3]  # Check first 3 lines
+            
+            diagram_type = 'other'
+            
+            for line in first_lines:
+                line = line.strip().lower()
+                if line.startswith('graph ') or line.startswith('flowchart '):
+                    diagram_type = 'flowchart'
+                    break
+                elif line.startswith('sequencediagram'):
+                    diagram_type = 'sequence'
+                    break
+                elif line.startswith('classdiagram'):
+                    diagram_type = 'class'
+                    break
+                elif line.startswith('statediagram'):
+                    diagram_type = 'state'
+                    break
+                elif line.startswith('erdiagram'):
+                    diagram_type = 'entity_relationship'
+                    break
+                elif line.startswith('journey'):
+                    diagram_type = 'user_journey'
+                    break
+                elif line.startswith('gantt'):
+                    diagram_type = 'gantt'
+                    break
+                elif line.startswith('pie'):
+                    diagram_type = 'pie'
+                    break
+                elif line.startswith('quadrantchart'):
+                    diagram_type = 'quadrant'
+                    break
+                elif line.startswith('requirementdiagram'):
+                    diagram_type = 'requirement'
+                    break
+                elif line.startswith('gitgraph'):
+                    diagram_type = 'gitgraph'
+                    break
+                elif line.startswith('mindmap'):
+                    diagram_type = 'mindmap'
+                    break
+                elif line.startswith('timeline'):
+                    diagram_type = 'timeline'
+                    break
+                elif line.startswith('sankey'):
+                    diagram_type = 'sankey'
+                    break
+                elif line.startswith('xychart'):
+                    diagram_type = 'xy_chart'
+                    break
+            
+            diagram_types[diagram_type].append(str(mmd_file))
+            
+        except Exception as e:
+            print(f"Warning: Could not analyze {mmd_file}: {e}")
+    
+    return diagram_types
+
+def get_missing_diagram_types():
+    """Identify which Mermaid diagram types are missing from the collection."""
+    diagram_analysis = analyze_mermaid_diagram_types()
+    
+    # Define essential diagram types for a comprehensive presentation
+    essential_types = [
+        'flowchart', 'sequence', 'class', 'entity_relationship', 
+        'user_journey', 'gantt', 'pie', 'quadrant', 'mindmap'
+    ]
+    
+    missing_types = []
+    available_types = []
+    
+    for diagram_type in essential_types:
+        if not diagram_analysis.get(diagram_type):
+            missing_types.append(diagram_type)
+        else:
+            available_types.append(diagram_type)
+    
+    return {
+        'missing': missing_types,
+        'available': available_types,
+        'analysis': diagram_analysis
+    }
+
+def validate_chapter_diagrams():
+    """Validate that each chapter has at least one diagram."""
+    docs_dir = Path("docs")
+    if not docs_dir.exists():
+        return {}
+    
+    chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
+    validation_results = {
+        'chapters_with_diagrams': [],
+        'chapters_without_diagrams': [],
+        'total_chapters': 0,
+        'chapters_with_diagram_count': 0
+    }
+    
+    for chapter_file in chapter_files:
+        chapter_name = Path(chapter_file).name
+        
+        # Skip non-chapter files
+        if chapter_name in ['README.md', 'arkitektur_som_kod.md', 'BOOK_COVER_DESIGN.md']:
+            continue
+            
+        validation_results['total_chapters'] += 1
+        
+        try:
+            with open(chapter_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Check for diagram references
+            has_diagram = False
+            diagram_refs = []
+            
+            for line in content.split('\n'):
+                if line.startswith('![') and 'images/' in line:
+                    match = re.search(r'!\[.*?\]\((.*?)\)', line)
+                    if match:
+                        diagram_refs.append(match.group(1))
+                        has_diagram = True
+            
+            if has_diagram:
+                validation_results['chapters_with_diagrams'].append({
+                    'file': chapter_name,
+                    'diagrams': diagram_refs
+                })
+                validation_results['chapters_with_diagram_count'] += 1
+            else:
+                validation_results['chapters_without_diagrams'].append(chapter_name)
+                
+        except Exception as e:
+            print(f"Warning: Could not analyze {chapter_file}: {e}")
+            validation_results['chapters_without_diagrams'].append(chapter_name)
+    
+    return validation_results
 
 def read_chapter_content(chapter_file):
     """Read and parse a chapter markdown file."""
@@ -401,10 +590,44 @@ def main():
                        help="Create PowerPoint file directly (requires python-pptx)")
     parser.add_argument("--output", default="arkitektur_som_kod_presentation.pptx",
                        help="Output filename for PowerPoint file")
+    parser.add_argument("--validate-diagrams", action="store_true",
+                       help="Validate that all chapters have diagrams and check diagram type coverage")
     
     args = parser.parse_args()
     
     print("Analyzing book content to generate presentation...")
+    
+    # Diagram validation and analysis
+    if args.validate_diagrams:
+        print("\n🔍 Validating diagram coverage...")
+        
+        # Check chapter diagram coverage
+        chapter_validation = validate_chapter_diagrams()
+        print(f"📊 Chapter diagram analysis:")
+        print(f"   - Total chapters analyzed: {chapter_validation['total_chapters']}")
+        print(f"   - Chapters with diagrams: {chapter_validation['chapters_with_diagram_count']}")
+        print(f"   - Coverage: {(chapter_validation['chapters_with_diagram_count']/chapter_validation['total_chapters']*100):.1f}%")
+        
+        if chapter_validation['chapters_without_diagrams']:
+            print(f"⚠️  Chapters missing diagrams: {chapter_validation['chapters_without_diagrams']}")
+        
+        # Check diagram type coverage
+        missing_types = get_missing_diagram_types()
+        print(f"\n🎨 Mermaid diagram type analysis:")
+        print(f"   - Available types: {missing_types['available']}")
+        print(f"   - Missing types: {missing_types['missing']}")
+        
+        if missing_types['missing']:
+            print(f"⚠️  Missing essential diagram types: {missing_types['missing']}")
+            print("   Consider adding these types for comprehensive presentation coverage")
+        
+        # Detailed analysis
+        print(f"\n📋 Detailed diagram inventory:")
+        for diagram_type, files in missing_types['analysis'].items():
+            if files:
+                print(f"   - {diagram_type}: {len(files)} diagrams")
+        
+        print("\n" + "="*60)
     
     # Ensure presentations directory exists
     presentations_dir = Path("presentations")
