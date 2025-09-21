@@ -66,6 +66,9 @@ CHAPTER_FILES=(
     "22_slutsats.md"
     "23_ordlista.md"
     "24_om_forfattarna.md"
+    "25_framtida_utveckling.md"
+    "26_appendix_kodexempel.md"
+    "27_teknisk_uppbyggnad.md"
 )
 
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o $OUTPUT_PDF

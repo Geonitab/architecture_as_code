@@ -122,7 +122,7 @@ const BookOverview = () => {
             <CardHeader>
               <CardTitle>Bokens huvudteman</CardTitle>
               <CardDescription>
-                24 kapitel som täcker alla aspekter av Architecture as Code
+                27 kapitel som täcker alla aspekter av Architecture as Code
               </CardDescription>
             </CardHeader>
             <CardContent>
