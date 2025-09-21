@@ -236,13 +236,19 @@ def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
     
     return html_output
 
-def generate_whitepapers():
+def generate_whitepapers(release_mode=False):
     """Main function to generate whitepapers."""
     print("Generating whitepapers from book chapters...")
     
+    # Set up output directories
+    if release_mode:
+        whitepapers_dir = Path("release/whitepapers")
+        print("Release mode: Generating whitepapers to release/whitepapers/")
+    else:
+        whitepapers_dir = Path("whitepapers")
+    
     # Ensure whitepapers directory exists
-    whitepapers_dir = Path("whitepapers")
-    whitepapers_dir.mkdir(exist_ok=True)
+    whitepapers_dir.mkdir(exist_ok=True, parents=True)
     
     # Get chapter mapping and book overview
     chapter_mapping = get_chapter_mapping()
@@ -290,13 +296,24 @@ def generate_whitepapers():
         except Exception as e:
             print(f"Error writing {output_path}: {e}")
     
+    # Copy to standard location if in release mode to maintain backward compatibility
+    if release_mode:
+        standard_dir = Path("whitepapers")
+        standard_dir.mkdir(exist_ok=True)
+        import shutil
+        for html_file in whitepapers_dir.glob("*.html"):
+            shutil.copy2(html_file, standard_dir / html_file.name)
+        print(f"Whitepapers also copied to standard location: {standard_dir}/")
+    
     print(f"\nGenerated {generated_count} whitepapers in {whitepapers_dir}/")
     return generated_count > 0
 
 def main():
     """Main function."""
     try:
-        success = generate_whitepapers()
+        # Check for --release flag
+        release_mode = "--release" in sys.argv
+        success = generate_whitepapers(release_mode)
         return 0 if success else 1
     except Exception as e:
         print(f"Error: {e}")
