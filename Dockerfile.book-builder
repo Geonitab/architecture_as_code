@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 
 FROM pandoc/latex:latest AS book-builder
 
-# Install additional dependencies
+# Install Node.js and additional dependencies
 RUN apk add --no-cache \
     python3 \
     py3-pip \
@@ -18,11 +18,12 @@ RUN apk add --no-cache \
     ttf-dejavu \
     bash \
     curl \
-    chromium
+    chromium \
+    nodejs \
+    npm
 
-# Copy Mermaid CLI from previous stage
-COPY --from=mermaid-builder /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=mermaid-builder /usr/local/bin/mmdc /usr/local/bin/mmdc
+# Install Mermaid CLI directly in the final image
+RUN npm install -g @mermaid-js/mermaid-cli
 
 # Set Chrome executable for Puppeteer
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
