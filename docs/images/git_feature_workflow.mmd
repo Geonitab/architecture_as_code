@@ -1,0 +1,12 @@
+gitGraph
+    commit id: "Initial"
+    branch feature/new-vpc
+    checkout feature/new-vpc
+    commit id: "Add VPC config"
+    commit id: "Add subnets"
+    commit id: "Security groups"
+    checkout main
+    commit id: "Hotfix prod"
+    merge feature/new-vpc
+    commit id: "Deploy v1.2"
+    tag: "v1.2.0"
