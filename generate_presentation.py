@@ -277,8 +277,103 @@ if __name__ == "__main__":
     
     return script_content
 
+def create_presentation_directly(presentation_data, output_path="arkitektur_som_kod_presentation.pptx"):
+    """Create PowerPoint presentation directly without generating a script."""
+    try:
+        from pptx import Presentation
+        from pptx.util import Inches, Pt
+        from pptx.dml.color import RGBColor
+        from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE
+    except ImportError:
+        print("❌ Error: python-pptx library not installed")
+        print("   Install with: pip install python-pptx>=0.6.21")
+        return False
+    
+    try:
+        prs = Presentation()
+        
+        # Set up Swedish theme colors (inspired by Swedish flag and professional standards)
+        # Blue: #006AA7 (Swedish blue), Yellow: #FECC00 (Swedish yellow), Gray: #333333
+        
+        # Title slide
+        title_slide_layout = prs.slide_layouts[0]
+        slide = prs.slides.add_slide(title_slide_layout)
+        title = slide.shapes.title
+        subtitle = slide.placeholders[1]
+        
+        title.text = "Arkitektur som kod"
+        subtitle.text = "En omfattande guide för svenska organisationer"
+        
+        # Style the title slide
+        title.text_frame.paragraphs[0].font.size = Pt(44)
+        title.text_frame.paragraphs[0].font.bold = True
+        title.text_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+        
+        subtitle.text_frame.paragraphs[0].font.size = Pt(24)
+        subtitle.text_frame.paragraphs[0].font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+        
+        # Create slides for each chapter
+        for item in presentation_data:
+            chapter = item['chapter']
+            diagram_path = chapter.get('diagram_path', '')
+            
+            # Chapter slide
+            slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
+            slide = prs.slides.add_slide(slide_layout)
+            
+            # Add title
+            title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
+            title_frame = title_box.text_frame
+            title_frame.text = chapter['title']
+            title_frame.paragraphs[0].font.size = Pt(32)
+            title_frame.paragraphs[0].font.bold = True
+            title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+            
+            # Add diagram if available
+            if diagram_path and os.path.exists(diagram_path):
+                try:
+                    slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+                except Exception as e:
+                    print(f"Warning: Could not add diagram {diagram_path}: {e}")
+            
+            # Add key points
+            points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
+            points_frame = points_box.text_frame
+            points_frame.text = "Viktiga punkter:"
+            points_frame.paragraphs[0].font.size = Pt(16)
+            points_frame.paragraphs[0].font.bold = True
+            points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+            
+            for point in chapter['key_points']:
+                p = points_frame.add_paragraph()
+                p.text = f"• {point}"
+                p.font.size = Pt(12)
+                p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+        
+        # Save presentation
+        prs.save(output_path)
+        print(f"✅ Presentation saved to {output_path}")
+        print(f"📊 Total slides created: {len(prs.slides)}")
+        print("🎨 Styled with Swedish theme colors")
+        print("📋 Each slide includes chapter title, diagram (when available), and key points")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error creating PowerPoint presentation: {e}")
+        return False
+
 def main():
     """Main function to generate presentation materials."""
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Generate PowerPoint presentation from book chapters")
+    parser.add_argument("--create-pptx", action="store_true", 
+                       help="Create PowerPoint file directly (requires python-pptx)")
+    parser.add_argument("--output", default="arkitektur_som_kod_presentation.pptx",
+                       help="Output filename for PowerPoint file")
+    
+    args = parser.parse_args()
+    
     print("Analyzing book content to generate presentation...")
     
     # Ensure presentations directory exists
@@ -323,10 +418,27 @@ def main():
     print("   - presentation_outline.md")
     print("   - generate_pptx.py")
     print("   - requirements.txt")
-    print("\n📝 To create the PowerPoint file:")
-    print("   cd presentations")
-    print("   pip install -r requirements.txt")
-    print("   python generate_pptx.py")
+    
+    # If --create-pptx flag is provided, create the PowerPoint file directly
+    if args.create_pptx:
+        print("\n📊 Creating PowerPoint file directly...")
+        output_path = presentations_dir / args.output
+        if create_presentation_directly(presentation_data, output_path):
+            print(f"✅ PowerPoint file created: {output_path}")
+        else:
+            print("❌ Failed to create PowerPoint file")
+            print("📝 You can still use the generated script:")
+            print("   cd presentations")
+            print("   pip install -r requirements.txt")
+            print("   python generate_pptx.py")
+            return 1
+    else:
+        print("\n📝 To create the PowerPoint file:")
+        print("   cd presentations")
+        print("   pip install -r requirements.txt")
+        print("   python generate_pptx.py")
+        print("\n💡 Or use: python generate_presentation.py --create-pptx")
+    
     print("\n🚫 No files in docs/ directory were modified.")
     
     return 0
