@@ -3,7 +3,7 @@
 book:
   title: "Arkitektur som kod"
   language: "svenska"
-  total_chapters: 25
+  total_chapters: 26
   
   # Required chapter structure
   chapters:
@@ -107,6 +107,10 @@ book:
       title: "Om författarna"
       area: "Appendix"
       required: true
+    - filename: "26_appendix_kodexempel.md"
+      title: "Appendix A: Kodexempel och tekniska implementationer"
+      area: "Appendix"
+      required: true
 
   # Special chapters with different requirements
   special_chapters:
@@ -122,6 +126,10 @@ book:
       filename: "23_slutsats.md"
       requires_diagram: false
       requires_sources: true
+    appendix:
+      filename: "26_appendix_kodexempel.md"
+      requires_diagram: true
+      requires_sources: false
 
 # Content structure requirements
 structure:

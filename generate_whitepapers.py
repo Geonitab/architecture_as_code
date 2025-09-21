@@ -89,7 +89,7 @@ Boken täcker allt från grundläggande principer och verktyg till avancerade im
 säkerhetsaspekter och organisatoriska förändringar som krävs för framgångsrik IaC-adoption.
         '''.strip(),
         'target_audience': 'IT-arkitekter, DevOps-team, utvecklare och beslutsfattare inom svenska organisationer',
-        'chapters_count': 25
+        'chapters_count': 26
     }
 
 def get_chapter_mapping():
@@ -119,7 +119,8 @@ def get_chapter_mapping():
         '22_best_practices.md': 'Kapitel 21',
         '23_slutsats.md': 'Slutsats',
         '24_ordlista.md': 'Ordlista',
-        '25_om_forfattarna.md': 'Om författarna'
+        '25_om_forfattarna.md': 'Om författarna',
+        '26_appendix_kodexempel.md': 'Appendix A'
     }
 
 def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
