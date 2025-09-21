@@ -68,9 +68,136 @@
 \renewcommand{\footrulewidth}{0.5pt}
 \renewcommand{\footrule}{\hbox to\headwidth{\color{KvadratBlue}\leaders\hrule height \footrulewidth\hfill}}
 
-% Title page styling
+% Enhanced visual elements and icons
 \usepackage{tikz}
-\usetikzlibrary{patterns,decorations.pathmorphing}
+\usetikzlibrary{patterns,decorations.pathmorphing,shapes.geometric,decorations.text}
+
+% Professional section separators
+\newcommand{\kvadseparator}{
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[KvadratBlue, line width=2pt] (0,0) -- (2,0);
+            \fill[KvadratBlue] (2.2,0) circle (2pt);
+            \fill[KvadratBlueLight] (2.7,0) circle (1.5pt);
+            \fill[KvadratBlue] (3.2,0) circle (1pt);
+            \draw[KvadratBlue, line width=2pt] (3.5,0) -- (5.5,0);
+        \end{tikzpicture}
+    \end{center}
+    \vspace{8pt}
+}
+
+% Chapter opener graphic
+\newcommand{\chapteropener}[1]{
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=north east] at ([xshift=-25mm,yshift=-25mm]current page.north east) {
+            \begin{tikzpicture}
+                \fill[KvadratBlue, opacity=0.1] (0,0) rectangle (40mm,15mm);
+                \fill[KvadratBlue] (0,0) rectangle (4mm,15mm);
+                \node[anchor=west] at (6mm,7.5mm) {\textcolor{KvadratBlue}{\Large\textbf{#1}}};
+            \end{tikzpicture}
+        };
+    \end{tikzpicture}
+}
+
+% Professional sidebar elements
+\newcommand{\sidebar}[2]{
+    \begin{mdframed}[
+        linecolor=KvadratBlueLight,
+        linewidth=0pt,
+        leftmargin=0pt,
+        rightmargin=0pt,
+        backgroundcolor=KvadratGrayLight,
+        topline=false,
+        bottomline=false,
+        rightline=false,
+        leftline=true,
+        innerleftmargin=15pt,
+        innerrightmargin=10pt,
+        innertopmargin=10pt,
+        innerbottommargin=10pt,
+        frametitle={\textcolor{KvadratBlue}{\textbf{#1}}},
+        frametitleaboveskip=0pt,
+        frametitlebelowskip=5pt
+    ]
+        #2
+    \end{mdframed}
+}
+
+% Icon definitions using TikZ
+\newcommand{\iconinfo}{
+    \begin{tikzpicture}[baseline=-0.5ex]
+        \fill[KvadratBlueLight] (0,0) circle (6pt);
+        \node[white] at (0,0) {\tiny\textbf{i}};
+    \end{tikzpicture}
+}
+
+\newcommand{\iconwarning}{
+    \begin{tikzpicture}[baseline=-0.5ex]
+        \fill[KvadratWarning] (0,0) circle (6pt);
+        \node[white] at (0,0) {\tiny\textbf{!}};
+    \end{tikzpicture}
+}
+
+\newcommand{\iconsuccess}{
+    \begin{tikzpicture}[baseline=-0.5ex]
+        \fill[KvadratSuccess] (0,0) circle (6pt);
+        \node[white] at (0,0) {\tiny\textbf{✓}};
+    \end{tikzpicture}
+}
+
+\newcommand{\iconkey}{
+    \begin{tikzpicture}[baseline=-0.5ex]
+        \fill[KvadratBlue] (0,0) circle (6pt);
+        \node[white] at (0,0) {\tiny\textbf{K}};
+    \end{tikzpicture}
+}
+
+% Enhanced callout boxes with better visual hierarchy
+\renewcommand{\infoblock}[2]{
+    \kvadseparator
+    \begin{infobox}
+        \iconinfo \hspace{5pt} \textcolor{KvadratBlue}{\textbf{#1}}\\[0.7em]
+        #2
+    \end{infobox}
+    \kvadseparator
+}
+
+\renewcommand{\warningblock}[2]{
+    \kvadseparator
+    \begin{warningbox}
+        \iconwarning \hspace{5pt} \textcolor{KvadratWarning}{\textbf{#1}}\\[0.7em]
+        #2
+    \end{warningbox}
+    \kvadseparator
+}
+
+\renewcommand{\successblock}[2]{
+    \kvadseparator
+    \begin{successbox}
+        \iconsuccess \hspace{5pt} \textcolor{KvadratSuccess}{\textbf{#1}}\\[0.7em]
+        #2
+    \end{successbox}
+    \kvadseparator
+}
+
+% Key point callout
+\newcommand{\keypoint}[2]{
+    \kvadseparator
+    \begin{mdframed}[
+        linecolor=KvadratBlue,
+        linewidth=3pt,
+        leftmargin=10pt,
+        rightmargin=10pt,
+        backgroundcolor=white,
+        topline=false,
+        bottomline=false,
+        rightline=false
+    ]
+        \iconkey \hspace{5pt} \textcolor{KvadratBlue}{\textbf{#1}}\\[0.7em]
+        #2
+    \end{mdframed}
+    \kvadseparator
+}
 
 % Enhanced title page
 \renewcommand{\maketitle}{
@@ -138,21 +265,51 @@
     \clearpage
 }
 
-% Chapter styling
+% Enhanced chapter styling with visual elements
 \usepackage{titlesec}
 \titleformat{\chapter}[block]
     {\normalfont\huge\bfseries\color{KvadratBlueDark}}
-    {\textcolor{KvadratBlue}{\thechapter}}{20pt}{\Huge}
-    [\vspace{2mm}\textcolor{KvadratBlue}{\titlerule[2pt]}]
+    {
+        \begin{tikzpicture}
+            \fill[KvadratBlue] (0,0) rectangle (15mm,15mm);
+            \node[white] at (7.5mm,7.5mm) {\fontsize{24}{24}\selectfont\textbf{\thechapter}};
+        \end{tikzpicture}
+    }{20pt}{\Huge\chapteropener{Kapitel \thechapter}}
+    [
+        \vspace{5mm}
+        \begin{tikzpicture}
+            \draw[KvadratBlue, line width=3pt] (0,0) -- (\textwidth,0);
+        \end{tikzpicture}
+        \vspace{10mm}
+    ]
 
 \titleformat{\section}
     {\normalfont\Large\bfseries\color{KvadratBlue}}
-    {\thesection}{1em}{}
-    [\textcolor{KvadratBlue}{\titlerule[0.5pt]}]
+    {
+        \begin{tikzpicture}[baseline=-0.5ex]
+            \fill[KvadratBlue] (0,0) rectangle (8pt,8pt);
+            \node[white] at (4pt,4pt) {\tiny\textbf{\thesection}};
+        \end{tikzpicture}
+    }{8pt}{}
+    [
+        \vspace{2mm}
+        \textcolor{KvadratBlue}{\titlerule[1pt]}
+        \vspace{3mm}
+    ]
 
 \titleformat{\subsection}
     {\normalfont\large\bfseries\color{KvadratBlueDark}}
-    {\thesubsection}{1em}{}
+    {
+        \textcolor{KvadratBlue}{\thesubsection}
+        \begin{tikzpicture}[baseline=-0.5ex]
+            \fill[KvadratBlueLight] (0,0) circle (2pt);
+        \end{tikzpicture}
+    }{8pt}{}
+    [
+        \vspace{1mm}
+        \textcolor{KvadratBlueLight}{\titlerule[0.5pt]}
+        \vspace{2mm}
+    ]
 
 % Table of contents styling
 \usepackage{tocloft}
@@ -167,13 +324,13 @@
 \setlist[itemize,2]{label=\textcolor{KvadratBlueLight}{\textbullet}}
 \setlist[enumerate,1]{label=\textcolor{KvadratBlue}{\arabic*.}}
 
-% Code highlighting
+% Enhanced code highlighting with visual elements
 \usepackage{listings}
 \usepackage{lstfiracode}
 
 \lstdefinestyle{kvadrat}{
     backgroundcolor=\color{KvadratGrayLight},
-    commentstyle=\color{KvadratGray},
+    commentstyle=\color{KvadratGray}\textit,
     keywordstyle=\color{KvadratBlue}\bfseries,
     numberstyle=\tiny\color{KvadratGray},
     stringstyle=\color{KvadratSuccess},
@@ -183,16 +340,43 @@
     captionpos=b,
     keepspaces=true,
     numbers=left,
-    numbersep=5pt,
+    numbersep=8pt,
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
     tabsize=2,
-    frame=leftline,
-    framerule=2pt,
-    rulecolor=\color{KvadratBlue}
+    frame=l,
+    framerule=3pt,
+    rulecolor=\color{KvadratBlue},
+    xleftmargin=15pt,
+    xrightmargin=5pt,
+    aboveskip=15pt,
+    belowskip=15pt
 }
+
+% Terminal/command style
+\lstdefinestyle{terminal}{
+    backgroundcolor=\color{KvadratBlueDark},
+    basicstyle=\ttfamily\footnotesize\color{white},
+    frame=none,
+    numbers=none,
+    xleftmargin=10pt,
+    xrightmargin=5pt,
+    aboveskip=10pt,
+    belowskip=10pt,
+    breaklines=true
+}
+
 \lstset{style=kvadrat}
+
+% Enhanced command for terminal blocks
+\newcommand{\terminalblock}[1]{
+    \kvadseparator
+    \begin{lstlisting}[style=terminal]
+#1
+    \end{lstlisting}
+    \kvadseparator
+}
 
 % Professional boxes and callouts
 \usepackage{mdframed}
@@ -256,10 +440,32 @@
     \end{successbox}
 }
 
-% Enhanced tables
+% Enhanced tables with professional styling
 \usepackage{booktabs}
 \usepackage{colortbl}
+\usepackage{array}
 \arrayrulecolor{KvadratBlue}
+
+% Table header styling
+\newcommand{\tableheader}[1]{\cellcolor{KvadratBlue}\textcolor{white}{\textbf{#1}}}
+
+% Alternating row colors for better readability
+\newcommand{\tablerowa}[1]{\rowcolor{white}#1}
+\newcommand{\tablerowb}[1]{\rowcolor{KvadratGrayLight}#1}
+
+% Professional table wrapper
+\newenvironment{kvadtable}[2]{
+    \kvadseparator
+    \begin{table}[H]
+        \centering
+        \caption{\textcolor{KvadratBlue}{\textbf{#1}}}
+        \label{#2}
+        \begin{tabular}
+}{
+        \end{tabular}
+    \end{table}
+    \kvadseparator
+}
 
 % Links and cross-references
 \usepackage{hyperref}

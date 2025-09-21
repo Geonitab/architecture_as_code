@@ -23,12 +23,17 @@ if [ ! -f "pandoc.yaml" ]; then
     exit 1
 fi
 
-# Konvertera mermaid-filer till PNG
+# Konvertera mermaid-filer till PNG med Kvadrat-tema
 for mmd_file in images/*.mmd; do
     if [ -f "$mmd_file" ]; then
         png_file="${mmd_file%.mmd}.png"
-        PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" -t dark -b transparent --width 1200 --height 800
-        echo "Konverterade $mmd_file till $png_file"
+        # Use default theme with enhanced diagrams that include custom styling
+        PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" \
+            -t default \
+            -b transparent \
+            --width 1400 \
+            --height 900
+        echo "Konverterade $mmd_file till $png_file med förbättrad styling"
     fi
 done
 
