@@ -4,7 +4,7 @@
 
 Kontinuerlig integration och kontinuerlig deployment (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern mjukvaruutveckling, och när det gäller Infrastructure as Code (IaC) blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-pipelines som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, pålitliga och spårbara operationer, samtidigt som vi utvecklar Architecture as Code-praktiker som hanterar hela systemarkitekturen som kod.
 
-![Implementation Timeline](images/diagram_gantt_timeline.png)
+![Implementation Timeline](images/diagram_05_gantt_timeline.png)
 
 Diagrammet ovan visar en typisk tidsplan för IaC-implementation, från initial verktygsanalys till fullständig production-rollout.
 
