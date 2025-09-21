@@ -4,7 +4,7 @@
 
 Praktisk implementation av Architecture as Code kräver genomtänkt approach som balanserar tekniska möjligheter med organisatoriska begränsningar. Infrastructure as Code utgör en central komponent, men måste integreras med bredare arkitekturdefinitioner. Detta kapitel fokuserar på verkliga implementationsstrategier, common pitfalls, och proven practices för successful Architecture as Code adoption i enterprise environments.
 
-![Implementation User Journey](images/diagram_user_journey.png)
+![Implementation User Journey](images/diagram_13_user_journey.png)
 
 Diagrammet ovan illustrerar den typiska användarresan för IaC-implementation, från initial discovery till fullständig optimization.
 

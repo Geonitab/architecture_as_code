@@ -56,7 +56,7 @@ Capacity planning validation genom performance testing hjälper optimize resourc
 
 ## Krav som kod och testbarhet
 
-![Requirements och testing relation](images/diagram_requirements_testing.png)
+![Requirements och testing relation](images/diagram_12_requirements_testing.png)
 
 *Relationen mellan affärskrav, funktionella krav och verifieringsmetoder illustrerar hur Infrastructure as Code möjliggör spårbar testning från högre abstraktionsnivåer ner till konkreta implementationer.*
 

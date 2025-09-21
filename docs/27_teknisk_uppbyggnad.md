@@ -6,7 +6,7 @@ Detta kapitel beskriver den tekniska infrastrukturen och arbetsflödet som anvä
 
 *Diagrammet illustrerar det omfattande tekniska systemet som driver bokproduktionen, från markdown-källor via automatiserade pipelines till slutliga publikationer.*
 
-![Architecture Data Model](images/diagram_er_architecture.png)
+![Architecture Data Model](images/diagram_27_er_architecture.png)
 
 Ovanstående entitetsrelationsdiagram visar den logiska datastrukturen för hur organisationer, projekt, infrastruktur och deployments relaterar till varandra i en Architecture as Code-implementation.
 
@@ -38,7 +38,7 @@ Varje kapitel följer en konsistent struktur som optimerar både läsbarhet och 
 
 Introduktionstext med kort beskrivning av kapitlets innehåll.
 
-![Diagram titel](images/diagram_XX_filnamn.png)
+![Diagramtitel beskrivning](images/diagram_01_beskrivande_namn.png)
 
 *Bildtext som förklarar diagrammets innehåll.*
 
