@@ -4,6 +4,12 @@
 
 *Best practices för Infrastructure as Code utvecklas kontinuerligt genom practical experience, community feedback och evolving technology landscape. Diagrammet illustrerar den iterativa processen från initial implementation till mature, optimized practices.*
 
+## Best practices holistiska perspektiv
+
+![Omfattande best practices landskap](images/mindmap_22_best_practices.png)
+
+*Mindmappen presenterar det omfattande landskapet av best practices och lärda läxor inom Infrastructure as Code. Den visar sambanden mellan kodorganisation, säkerhets- och compliance-mönster, performance-optimering, governance-ramverk och internationella erfarenheter. Denna holistiska syn hjälper organisationer att förstå hur olika best practices samspelar för att skapa framgångsrik IaC-implementation.*
+
 ## Övergripande beskrivning
 
 Infrastructure as Code best practices representerar culminationen av collective wisdom från tusentals organisationer som har genomgått IaC transformation över det senaste decenniet. Dessa practices är inte statiska regler utan evolving guidelines som måste anpassas till specific organizational contexts, technological constraints och business requirements.

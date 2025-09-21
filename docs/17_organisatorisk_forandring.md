@@ -4,6 +4,12 @@
 
 *Infrastructure as Code driver fundamental organisatorisk förändring från traditionella silos till cross-funktionella DevOps-team. Diagrammet illustrerar evolutionen från isolerade team till integrerade, samarbetsinriktade strukturer som optimerar för hastighet och kvalitet.*
 
+## Organisatoriska förändringsprocessens komplexitet
+
+![Förändringsdimensioner och samband](images/mindmap_17_organisation.png)
+
+*Mindmappen visualiserar de mångsidiga aspekterna av organisatorisk förändring vid IaC-implementation. Den visar hur DevOps-kulturtransformation, cross-funktionella teamstrukturer, kompetensutveckling, rollförändring och change management är sammankopplade och måste hanteras holistiskt för framgångsrik transformation.*
+
 ## Övergripande beskrivning
 
 Implementering av Infrastructure as Code kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer med separata utvecklings-, drift- och säkerhetsteam måste genomgå fundamental restructuring för att fullt ut realisera fördelarna med IaC-baserade arbetssätt.
