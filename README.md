@@ -34,7 +34,7 @@ docs/                    # Bokens innehåll
 ├── build_book.sh      # Lokal byggscript
 └── arkitektur_som_kod.pdf  # Genererad bok
 
-release/                 # Alla deliverables organiserade för distribution
+releases/                 # Alla deliverables organiserade för distribution
 ├── book/               # Bokformat (PDF, EPUB, DOCX)
 ├── presentation/       # Presentationsmaterial (PPTX, PDF)
 ├── whitepapers/        # HTML whitepapers per kapitel
@@ -49,22 +49,22 @@ release/                 # Alla deliverables organiserade för distribution
 
 ### Release-leveranser
 
-Alla deliverables samlas automatiskt i `release/`-mappen för enkel distribution:
+Alla deliverables samlas automatiskt i `releases/`-mappen för enkel distribution:
 
-#### 📚 Bokformat (`release/book/`)
+#### 📚 Bokformat (`releases/book/`)
 - **PDF**: `arkitektur_som_kod.pdf` - Fullständig bok
 - **EPUB**: `arkitektur_som_kod.epub` - E-läsarformat  
 - **DOCX**: `arkitektur_som_kod.docx` - Microsoft Word-format
 
-#### 🎤 Presentationer (`release/presentation/`)
+#### 🎤 Presentationer (`releases/presentation/`)
 - **PPTX**: `arkitektur_som_kod_presentation.pptx` - PowerPoint-presentation
 - **PDF**: Presentation i PDF-format (manuell konvertering krävs)
 
-#### 📄 Whitepapers (`release/whitepapers/`)
+#### 📄 Whitepapers (`releases/whitepapers/`)
 - **HTML**: Individuella whitepapers per kapitel
 - **PDF**: `whitepapers_combined.pdf` - Kombinerad whitepaper-samling
 
-#### 🌐 Webbsida (`release/website/`)
+#### 🌐 Webbsida (`releases/website/`)
 - Komplett kopia av den statiska webbsidan
 - Redo för deployment till webbserver
 
@@ -97,7 +97,7 @@ docs/build_book.sh --release               # Bygg alla bokformat
 python3 generate_whitepapers.py --release  # Generera whitepapers
 python3 generate_presentation.py --release # Generera presentation
 npm run build                              # Bygg webbsida
-cp -r dist/* release/website/              # Kopiera till release
+cp -r dist/* releases/website/              # Kopiera till release
 ```
 
 ### Automatisk byggprocess
@@ -126,23 +126,23 @@ chmod +x build_book.sh
 # För att generera alla format (PDF, EPUB, DOCX):
 ./build_book.sh --all-formats
 
-# För release-byggning med utdata till release/book/:
+# För release-byggning med utdata till releases/book/:
 ./build_book.sh --release
 ```
 
 #### Komplett release-byggning
 
 ```bash
-# Bygg alla deliverables och organisera i release/
+# Bygg alla deliverables och organisera i releases/
 chmod +x build_release.sh
 ./build_release.sh
 ```
 
 Detta skapar:
-- Alla bokformat i `release/book/`
-- Presentationsmaterial i `release/presentation/`
-- HTML whitepapers i `release/whitepapers/`
-- Statisk webbsida i `release/website/`
+- Alla bokformat i `releases/book/`
+- Presentationsmaterial i `releases/presentation/`
+- HTML whitepapers i `releases/whitepapers/`
+- Statisk webbsida i `releases/website/`
 
 #### Pandoc-konfiguration
 
@@ -204,7 +204,7 @@ Konsoliderad workflow som ersätter tidigare separata workflows:
 - **Strategier**: Traditional build (~90 min) och Docker-optimized (~60 min)
 - **Leveranser**: PDF + EPUB + DOCX + Presentations + Whitepapers + Website
 - **Flexibilitet**: Välj byggstrategi och leveranser via manual trigger
-- **Output**: Komplett release med alla format organiserade i `release/` struktur
+- **Output**: Komplett release med alla format organiserade i `releases/` struktur
 - **GitHub Release**: Unified comprehensive release (`v{number}-unified`)
 - **Fallback**: Om en byggstrategi misslyckas kan den andra fortfarande slutföras
 

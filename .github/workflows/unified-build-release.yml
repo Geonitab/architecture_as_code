@@ -256,8 +256,8 @@ jobs:
               echo "📖 Building book formats only..."
               python3 generate_book.py
               cd docs && ./build_book.sh --release && cd ..
-              mkdir -p release/book
-              cp docs/arkitektur_som_kod.* release/book/ 2>/dev/null || true
+              mkdir -p releases/book
+              cp docs/arkitektur_som_kod.* releases/book/ 2>/dev/null || true
               ;;
             "presentations-only")
               echo "🎤 Building presentations only..."
@@ -270,8 +270,8 @@ jobs:
             "website-only")
               echo "🌐 Building website only..."
               npm run build
-              mkdir -p release/website
-              cp -r dist/* release/website/
+              mkdir -p releases/website
+              cp -r dist/* releases/website/
               ;;
             "all"|*)
               echo "📦 Building all deliverables..."
@@ -286,40 +286,40 @@ jobs:
           echo "=== Traditional Build Summary ==="
 
           echo "📚 Book formats:"
-          if [ -d "release/book" ]; then
-            ls -la release/book/ || echo "   No book files found"
-            if [ -f "release/book/arkitektur_som_kod.pdf" ]; then
-              echo "   📖 PDF size: $(ls -lh release/book/arkitektur_som_kod.pdf | awk '{print $5}')"
+          if [ -d "releases/book" ]; then
+            ls -la releases/book/ || echo "   No book files found"
+            if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
+              echo "   📖 PDF size: $(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}')"
             fi
           fi
 
           echo ""
           echo "🎤 Presentation materials:"
-          if [ -d "release/presentation" ]; then
-            ls -la release/presentation/ || echo "   No presentation files found"
+          if [ -d "releases/presentation" ]; then
+            ls -la releases/presentation/ || echo "   No presentation files found"
           fi
 
           echo ""
           echo "📄 Whitepapers:"
-          if [ -d "release/whitepapers" ]; then
-            whitepaper_count=$(ls release/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
+          if [ -d "releases/whitepapers" ]; then
+            whitepaper_count=$(ls releases/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
             echo "   $whitepaper_count HTML whitepaper files"
-            if [ -f "release/whitepapers/whitepapers_combined.pdf" ]; then
+            if [ -f "releases/whitepapers/whitepapers_combined.pdf" ]; then
               echo "   ✅ Combined PDF generated"
             fi
           fi
 
           echo ""
           echo "🌐 Website:"
-          if [ -d "release/website" ] && [ "$(ls -A release/website)" ]; then
-            website_files=$(find release/website -type f | wc -l)
-            echo "   $website_files files copied to release/website/"
+          if [ -d "releases/website" ] && [ "$(ls -A releases/website)" ]; then
+            website_files=$(find releases/website -type f | wc -l)
+            echo "   $website_files files copied to releases/website/"
           else
             echo "   No website files found"
           fi
 
           echo ""
-          echo "📁 Total release size: $(du -sh release/ | awk '{print $1}')"
+          echo "📁 Total release size: $(du -sh releases/ | awk '{print $1}')"
           echo "⏰ Traditional build completed at: $(date)"
 
       - name: 📤 Upload traditional build artifacts
@@ -327,7 +327,7 @@ jobs:
         if: success()
         with:
           name: unified-traditional-build
-          path: release/
+          path: releases/
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
   # Docker-optimized build (equivalent to build-book-fast.yml)
@@ -392,7 +392,7 @@ jobs:
           echo "=== Building all deliverables in Docker container ==="
 
           # Create release directory structure
-          mkdir -p release/{book,presentation,whitepapers,website}
+          mkdir -p releases/{book,presentation,whitepapers,website}
 
           # Check what deliverables to build
           DELIVERABLES="${{ needs.setup.outputs.build_deliverables }}"
@@ -451,16 +451,16 @@ jobs:
         run: |
           echo "=== Copying website to release folder ==="
           if [ -d "dist" ]; then
-            # Clean release/website directory safely
-            if [ -d "release/website" ]; then
+            # Clean releases/website directory safely
+            if [ -d "releases/website" ]; then
               # Change ownership if files exist (Docker may create them as different user)
-              if [ "$(ls -A release/website/)" ]; then
-                sudo chown -R $(id -u):$(id -g) release/website/ || true
+              if [ "$(ls -A releases/website/)" ]; then
+                sudo chown -R $(id -u):$(id -g) releases/website/ || true
               fi
-              rm -rf release/website/*
+              rm -rf releases/website/*
             fi
-            cp -r dist/* release/website/
-            echo "✅ Website copied to release/website/"
+            cp -r dist/* releases/website/
+            echo "✅ Website copied to releases/website/"
           else
             echo "❌ Website build directory 'dist' not found"
             exit 1
@@ -471,40 +471,40 @@ jobs:
           echo "=== Docker-based Build Summary ==="
 
           echo "📚 Book formats:"
-          if [ -d "release/book" ]; then
-            ls -la release/book/ || echo "   No book files found"
-            if [ -f "release/book/arkitektur_som_kod.pdf" ]; then
-              echo "   📖 PDF size: $(ls -lh release/book/arkitektur_som_kod.pdf | awk '{print $5}')"
+          if [ -d "releases/book" ]; then
+            ls -la releases/book/ || echo "   No book files found"
+            if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
+              echo "   📖 PDF size: $(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}')"
             fi
           fi
 
           echo ""
           echo "🎤 Presentation materials:"
-          if [ -d "release/presentation" ]; then
-            ls -la release/presentation/ || echo "   No presentation files found"
+          if [ -d "releases/presentation" ]; then
+            ls -la releases/presentation/ || echo "   No presentation files found"
           fi
 
           echo ""
           echo "📄 Whitepapers:"
-          if [ -d "release/whitepapers" ]; then
-            whitepaper_count=$(ls release/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
+          if [ -d "releases/whitepapers" ]; then
+            whitepaper_count=$(ls releases/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
             echo "   $whitepaper_count HTML whitepaper files"
-            if [ -f "release/whitepapers/whitepapers_combined.pdf" ]; then
+            if [ -f "releases/whitepapers/whitepapers_combined.pdf" ]; then
               echo "   ✅ Combined PDF generated"
             fi
           fi
 
           echo ""
           echo "🌐 Website:"
-          if [ -d "release/website" ] && [ "$(ls -A release/website)" ]; then
-            website_files=$(find release/website -type f | wc -l)
-            echo "   $website_files files copied to release/website/"
+          if [ -d "releases/website" ] && [ "$(ls -A releases/website)" ]; then
+            website_files=$(find releases/website -type f | wc -l)
+            echo "   $website_files files copied to releases/website/"
           else
             echo "   No website files found"
           fi
 
           echo ""
-          echo "📁 Total release size: $(du -sh release/ | awk '{print $1}')"
+          echo "📁 Total release size: $(du -sh releases/ | awk '{print $1}')"
           echo "🐳 Docker-based build completed at: $(date)"
 
       - name: 📤 Upload docker build artifacts
@@ -512,7 +512,7 @@ jobs:
         if: success()
         with:
           name: unified-docker-build
-          path: release/
+          path: releases/
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
   # Combine results and create unified release
