@@ -753,6 +753,8 @@ def main():
                        help="Output filename for PowerPoint file")
     parser.add_argument("--validate-diagrams", action="store_true",
                        help="Validate that all chapters have diagrams and check diagram type coverage")
+    parser.add_argument("--release", action="store_true",
+                       help="Generate presentation materials to release folder")
     
     args = parser.parse_args()
     
@@ -791,8 +793,13 @@ def main():
         print("\n" + "="*60)
     
     # Ensure presentations directory exists
-    presentations_dir = Path("presentations")
-    presentations_dir.mkdir(exist_ok=True)
+    if args.release:
+        presentations_dir = Path("release/presentation")
+        print("Release mode: Generating presentation materials to release/presentation/")
+    else:
+        presentations_dir = Path("presentations")
+    
+    presentations_dir.mkdir(exist_ok=True, parents=True)
     
     # Read all chapters WITHOUT modifying them
     presentation_data = generate_presentation_outline()
@@ -839,16 +846,24 @@ def main():
         output_path = presentations_dir / args.output
         if create_presentation_directly(presentation_data, output_path):
             print(f"✅ PowerPoint file created: {output_path}")
+            
+            # In release mode, also copy to standard location for backward compatibility
+            if args.release:
+                import shutil
+                standard_dir = Path("presentations")
+                standard_dir.mkdir(exist_ok=True)
+                shutil.copy2(output_path, standard_dir / args.output)
+                print(f"Presentation also copied to standard location: {standard_dir / args.output}")
         else:
             print("❌ Failed to create PowerPoint file")
             print("📝 You can still use the generated script:")
-            print("   cd presentations")
+            print(f"   cd {presentations_dir}")
             print("   pip install -r requirements.txt")
             print("   python generate_pptx.py")
             return 1
     else:
         print("\n📝 To create the PowerPoint file:")
-        print("   cd presentations")
+        print(f"   cd {presentations_dir}")
         print("   pip install -r requirements.txt")
         print("   python generate_pptx.py")
         print("\n💡 Or use: python generate_presentation.py --create-pptx")

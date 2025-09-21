@@ -4,9 +4,14 @@ if [ "$(basename "$PWD")" != "docs" ]; then
     cd docs || exit 1
 fi
 
+# Determine the release directory path (relative to docs directory)
+RELEASE_DIR="../release/book"
 OUTPUT_PDF="arkitektur_som_kod.pdf"
 OUTPUT_EPUB="arkitektur_som_kod.epub"
 OUTPUT_DOCX="arkitektur_som_kod.docx"
+RELEASE_PDF="$RELEASE_DIR/$OUTPUT_PDF"
+RELEASE_EPUB="$RELEASE_DIR/$OUTPUT_EPUB"
+RELEASE_DOCX="$RELEASE_DIR/$OUTPUT_DOCX"
 PANDOC_TEMPLATES_DIR="$HOME/.local/share/pandoc/templates"
 EISVOGEL_TEMPLATE="$PANDOC_TEMPLATES_DIR/eisvogel.latex"
 
@@ -22,6 +27,9 @@ if [ ! -f "pandoc.yaml" ]; then
     echo "Fel: Pandoc-konfigurationsfil saknas (pandoc.yaml)"
     exit 1
 fi
+
+# Ensure release directory exists
+mkdir -p "$RELEASE_DIR"
 
 # Konvertera mermaid-filer till PNG med Kvadrat-tema
 for mmd_file in images/*.mmd; do
@@ -75,18 +83,34 @@ pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o $OUTPUT_PDF
 
 echo "Bok genererad: $OUTPUT_PDF"
 
+# Copy to release directory
+cp $OUTPUT_PDF "$RELEASE_PDF"
+echo "Bok kopierad till release: $RELEASE_PDF"
+
 # Funktion för att generera andra format
 generate_other_formats() {
     echo "Genererar EPUB-format..."
     pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -t epub -o $OUTPUT_EPUB
     echo "EPUB genererad: $OUTPUT_EPUB"
+    cp $OUTPUT_EPUB "$RELEASE_EPUB"
+    echo "EPUB kopierad till release: $RELEASE_EPUB"
     
     echo "Genererar DOCX-format..."
     pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -t docx -o $OUTPUT_DOCX
     echo "DOCX genererad: $OUTPUT_DOCX"
+    cp $OUTPUT_DOCX "$RELEASE_DOCX"
+    echo "DOCX kopierad till release: $RELEASE_DOCX"
 }
 
-# Generera andra format om begärt
-if [ "$1" = "--all-formats" ]; then
+# Generera andra format om begärt eller alltid för release
+if [ "$1" = "--all-formats" ] || [ "$1" = "--release" ]; then
     generate_other_formats
+fi
+
+# Information about release directory
+if [ "$1" = "--release" ] || [ "$1" = "--all-formats" ]; then
+    echo ""
+    echo "=== RELEASE DELIVERABLES ==="
+    echo "Book formats saved to: $RELEASE_DIR"
+    ls -la "$RELEASE_DIR"
 fi
