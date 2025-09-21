@@ -1,0 +1,12 @@
+graph LR
+    A[ADR skapas] --> B[Status: Proposed]
+    B --> C{Review process}
+    C -->|Godkänt| D[Status: Accepted]
+    C -->|Ej godkänt| E[Revidering behövs]
+    E --> B
+    D --> F[Implementation]
+    F --> G[Monitoring]
+    G --> H{Fungerar?}
+    H -->|Ja| I[Fortsatt användning]
+    H -->|Nej| J[Status: Deprecated]
+    J --> K[Nytt ADR behövs]
