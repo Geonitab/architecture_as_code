@@ -5,6 +5,9 @@
 
 set -e  # Exit on any error
 
+# Make scripts executable
+chmod +x docs/build_book.sh 2>/dev/null || true
+
 echo "🚀 Starting complete release build process..."
 echo ""
 
@@ -18,9 +21,14 @@ python3 generate_book.py
 
 # 2. Build all book formats
 echo "📖 Step 2: Building book in all formats..."
-cd docs
-./build_book.sh --release
-cd ..
+if [ -f "docs/build_book.sh" ]; then
+    cd docs
+    chmod +x build_book.sh
+    ./build_book.sh --release
+    cd ..
+else
+    echo "⚠️  docs/build_book.sh not found, skipping book build"
+fi
 
 # 3. Generate whitepapers
 echo "📄 Step 3: Generating whitepapers..."
@@ -32,7 +40,12 @@ python3 generate_presentation.py --release
 
 # 5. Build website and copy to release
 echo "🌐 Step 5: Building website..."
-npm run build
+if command -v npm >/dev/null 2>&1; then
+    npm run build
+else
+    echo "⚠️  npm not found, skipping website build"
+    exit 1
+fi
 
 echo "📋 Step 6: Copying website to release folder..."
 if [ -d "dist" ]; then

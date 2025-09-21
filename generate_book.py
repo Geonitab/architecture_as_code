@@ -319,4 +319,6 @@ Källor:
     print(f"Totalt {len(mermaid_files)} mermaid-diagram skapade") 
 
 if __name__ == "__main__":
+    print("📚 Generating book content...")
     generate_iac_book_content()
+    print("✅ Book content generation completed")
