@@ -1,0 +1,188 @@
+name: Generate Presentations
+
+# This workflow automatically generates PowerPoint presentation materials from book chapters
+# when relevant files are changed. It creates presentation outlines, PowerPoint generation
+# scripts, and necessary dependencies for creating professional presentations.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'              # Trigger when book chapters are updated
+      - 'generate_presentation.py'  # Trigger when the generation script is modified
+      - '.github/workflows/generate-presentations.yml'  # Trigger on workflow changes
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'generate_presentation.py'
+      - '.github/workflows/generate-presentations.yml'
+  workflow_dispatch: {}  # Allow manual triggering
+
+env:
+  ARTIFACT_RETENTION_DAYS: 30
+
+jobs:
+  generate-presentations:
+    name: 📊 Generate Presentation Materials
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install Python dependencies
+        run: |
+          echo "=== Installing Python dependencies ==="
+          python3 -m pip install --upgrade pip
+          # Install any additional dependencies if needed
+          echo "✅ Python dependencies installed"
+
+      - name: 📊 Generate presentation materials
+        run: |
+          echo "=== Generating presentation materials ==="
+          echo "📖 Reading from docs/ directory (read-only access)"
+          echo "📁 Output will be generated in presentations/ directory"
+          
+          # Run the presentation generation script
+          python3 generate_presentation.py
+          
+          echo "✅ Presentation generation completed"
+
+      - name: 📋 Validate generated files
+        run: |
+          echo "=== Validating generated presentation files ==="
+          
+          # Check if the expected files were created
+          if [ -f "presentations/presentation_outline.md" ]; then
+            echo "✅ Presentation outline generated"
+            echo "📄 Outline size: $(ls -lh presentations/presentation_outline.md | awk '{print $5}')"
+          else
+            echo "❌ Presentation outline missing"
+            exit 1
+          fi
+          
+          if [ -f "presentations/generate_pptx.py" ]; then
+            echo "✅ PowerPoint generation script created"
+            echo "📄 Script size: $(ls -lh presentations/generate_pptx.py | awk '{print $5}')"
+          else
+            echo "❌ PowerPoint generation script missing"
+            exit 1
+          fi
+          
+          if [ -f "presentations/requirements.txt" ]; then
+            echo "✅ Requirements file created"
+            echo "📄 Requirements: $(cat presentations/requirements.txt)"
+          else
+            echo "❌ Requirements file missing"
+            exit 1
+          fi
+          
+          echo "✅ All expected presentation files validated"
+
+      - name: 📊 Install presentation dependencies and test generation
+        run: |
+          echo "=== Testing PowerPoint generation setup ==="
+          cd presentations
+          
+          # Install the required dependencies
+          pip install -r requirements.txt
+          
+          # Validate the generated Python script syntax
+          python3 -m py_compile generate_pptx.py
+          echo "✅ PowerPoint generation script syntax validated"
+          
+          # Note: We don't actually generate the .pptx file in CI as it requires
+          # significant dependencies and the file would be quite large
+
+      - name: 📈 Presentation generation summary
+        run: |
+          echo "=== Presentation Generation Summary ==="
+          echo "📚 Source chapters: $(ls docs/*.md | wc -l)"
+          
+          if [ -f "presentations/presentation_outline.md" ]; then
+            outline_sections=$(grep -c "^##" presentations/presentation_outline.md || echo "0")
+            echo "📋 Presentation sections: $outline_sections"
+          fi
+          
+          if [ -f "presentations/generate_pptx.py" ]; then
+            script_lines=$(wc -l < presentations/generate_pptx.py)
+            echo "📝 PowerPoint script lines: $script_lines"
+          fi
+          
+          echo "📁 Generated files:"
+          ls -la presentations/
+          echo "⏰ Generation completed at: $(date)"
+
+      - name: 📤 Upload presentation materials
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: presentation-materials
+          path: |
+            presentations/presentation_outline.md
+            presentations/generate_pptx.py
+            presentations/requirements.txt
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: 📝 Create presentation summary (PR only)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            let summary = `## 📊 Presentation Materials Generated\n\n`;
+            
+            // Check if files exist and get basic info
+            try {
+              if (fs.existsSync('presentations/presentation_outline.md')) {
+                const outline = fs.readFileSync('presentations/presentation_outline.md', 'utf8');
+                const sections = (outline.match(/^##/gm) || []).length;
+                summary += `- ✅ **Presentation Outline**: ${sections} sections generated\n`;
+              }
+              
+              if (fs.existsSync('presentations/generate_pptx.py')) {
+                const script = fs.readFileSync('presentations/generate_pptx.py', 'utf8');
+                const lines = script.split('\n').length;
+                summary += `- ✅ **PowerPoint Script**: ${lines} lines of Python code\n`;
+              }
+              
+              if (fs.existsSync('presentations/requirements.txt')) {
+                const requirements = fs.readFileSync('presentations/requirements.txt', 'utf8');
+                summary += `- ✅ **Dependencies**: ${requirements.trim()}\n`;
+              }
+            } catch (error) {
+              summary += `- ⚠️ Error reading generated files: ${error.message}\n`;
+            }
+            
+            summary += `\n### 🚀 Next Steps\n`;
+            summary += `To generate the actual PowerPoint presentation:\n`;
+            summary += `\`\`\`bash\n`;
+            summary += `cd presentations\n`;
+            summary += `pip install -r requirements.txt\n`;
+            summary += `python generate_pptx.py\n`;
+            summary += `\`\`\`\n\n`;
+            summary += `📋 **Generated files are available in the workflow artifacts.**\n\n`;
+            summary += `*Automated by Presentation Generation Workflow*`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
+
+      - name: 🔍 Validate docs protection
+        run: |
+          echo "=== Validating docs directory protection ==="
+          python3 scripts/validate_docs_protection.py
+          echo "✅ Docs protection validation completed"

@@ -1,0 +1,323 @@
+name: Generate Whitepapers
+
+# This workflow automatically generates individual whitepaper HTML files from book chapters
+# when relevant files are changed. Each chapter is converted into a standalone whitepaper
+# with professional formatting suitable for distribution and sharing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'              # Trigger when book chapters are updated
+      - 'generate_whitepapers.py'   # Trigger when the generation script is modified
+      - '.github/workflows/generate-whitepapers.yml'  # Trigger on workflow changes
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'generate_whitepapers.py'
+      - '.github/workflows/generate-whitepapers.yml'
+  workflow_dispatch: {}  # Allow manual triggering
+
+env:
+  ARTIFACT_RETENTION_DAYS: 30
+
+jobs:
+  generate-whitepapers:
+    name: 📄 Generate Whitepaper Documents
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install Python dependencies
+        run: |
+          echo "=== Installing Python dependencies ==="
+          python3 -m pip install --upgrade pip
+          # The whitepaper script uses only standard library modules
+          echo "✅ Python dependencies installed"
+
+      - name: 📄 Generate whitepaper documents
+        run: |
+          echo "=== Generating whitepaper documents ==="
+          echo "📖 Reading from docs/ directory (read-only access)"
+          echo "📁 Output will be generated in whitepapers/ directory"
+          
+          # Run the whitepaper generation script with detailed logging
+          python3 generate_whitepapers.py
+          
+          echo "✅ Whitepaper generation completed"
+
+      - name: 📋 Validate generated whitepapers
+        run: |
+          echo "=== Validating generated whitepaper files ==="
+          
+          # Check if whitepapers directory exists and has content
+          if [ ! -d "whitepapers" ]; then
+            echo "❌ Whitepapers directory not created"
+            exit 1
+          fi
+          
+          # Count generated HTML files
+          html_count=$(find whitepapers -name "*.html" | wc -l)
+          echo "📄 Generated whitepapers: $html_count HTML files"
+          
+          if [ "$html_count" -eq 0 ]; then
+            echo "❌ No whitepaper HTML files generated"
+            exit 1
+          fi
+          
+          # Validate HTML file structure for a sample file
+          sample_file=$(find whitepapers -name "*.html" | head -1)
+          if [ -n "$sample_file" ]; then
+            echo "🔍 Validating sample whitepaper: $(basename "$sample_file")"
+            
+            # Check for essential HTML structure
+            if grep -q "<html" "$sample_file" && grep -q "</html>" "$sample_file"; then
+              echo "✅ Valid HTML structure detected"
+            else
+              echo "❌ Invalid HTML structure in $sample_file"
+              exit 1
+            fi
+            
+            # Check for whitepaper-specific content
+            if grep -q "Infrastructure as Code" "$sample_file"; then
+              echo "✅ Whitepaper content validated"
+            else
+              echo "⚠️ Warning: Expected whitepaper content not found"
+            fi
+            
+            # Show file size for reference
+            echo "📏 Sample file size: $(ls -lh "$sample_file" | awk '{print $5}')"
+          fi
+          
+          echo "✅ Whitepaper validation completed"
+
+      - name: 🔍 Analyze whitepaper content
+        run: |
+          echo "=== Analyzing generated whitepaper content ==="
+          
+          # Get total size of all whitepapers
+          total_size=$(du -sh whitepapers/ | awk '{print $1}')
+          echo "📁 Total whitepapers size: $total_size"
+          
+          # List all generated files with sizes
+          echo "📄 Generated whitepaper files:"
+          ls -lh whitepapers/*.html | awk '{print "   " $9 " (" $5 ")"}'
+          
+          # Count chapters processed
+          source_chapters=$(ls docs/*.md | wc -l)
+          generated_papers=$(ls whitepapers/*.html | wc -l)
+          echo "📊 Conversion rate: $generated_papers/$source_chapters chapters processed"
+          
+          # Validate specific expected whitepapers exist
+          expected_papers=(
+            "01_inledning_whitepaper.html"
+            "02_grundlaggande_principer_whitepaper.html"
+            "05_automatisering_cicd_whitepaper.html"
+            "10_sakerhet_whitepaper.html"
+          )
+          
+          missing_count=0
+          for paper in "${expected_papers[@]}"; do
+            if [ -f "whitepapers/$paper" ]; then
+              echo "✅ Found expected whitepaper: $paper"
+            else
+              echo "⚠️ Missing expected whitepaper: $paper"
+              missing_count=$((missing_count + 1))
+            fi
+          done
+          
+          if [ "$missing_count" -gt 0 ]; then
+            echo "⚠️ Warning: $missing_count expected whitepapers missing"
+          fi
+
+      - name: 📊 Quality validation for whitepapers
+        run: |
+          echo "=== Performing quality validation on whitepapers ==="
+          
+          # Check for common HTML issues in whitepapers
+          error_count=0
+          
+          for html_file in whitepapers/*.html; do
+            if [ -f "$html_file" ]; then
+              filename=$(basename "$html_file")
+              
+              # Check file is not empty
+              if [ ! -s "$html_file" ]; then
+                echo "❌ Empty file: $filename"
+                error_count=$((error_count + 1))
+                continue
+              fi
+              
+              # Check for basic HTML validation
+              if ! grep -q "<title>" "$html_file"; then
+                echo "⚠️ Missing title tag: $filename"
+              fi
+              
+              if ! grep -q "charset" "$html_file"; then
+                echo "⚠️ Missing charset declaration: $filename"
+              fi
+              
+              # Check for Swedish content (books are in Swedish)
+              if grep -q "Infrastructure as Code\|Arkitektur som kod" "$html_file"; then
+                echo "✅ Content validation passed: $filename"
+              else
+                echo "⚠️ Expected content not found: $filename"
+              fi
+            fi
+          done
+          
+          if [ "$error_count" -gt 0 ]; then
+            echo "❌ Quality validation failed with $error_count errors"
+            exit 1
+          else
+            echo "✅ Quality validation passed for all whitepapers"
+          fi
+
+      - name: 📈 Whitepaper generation summary
+        run: |
+          echo "=== Whitepaper Generation Summary ==="
+          echo "📚 Source chapters: $(ls docs/*.md | wc -l)"
+          echo "📄 Generated whitepapers: $(ls whitepapers/*.html | wc -l)"
+          echo "📁 Output directory size: $(du -sh whitepapers/ | awk '{print $1}')"
+          
+          # Show breakdown by file size
+          echo ""
+          echo "📊 Whitepaper size distribution:"
+          ls -lh whitepapers/*.html | awk '{print $5}' | sort | uniq -c | awk '{print "   " $1 " files of size " $2}'
+          
+          echo ""
+          echo "⏰ Generation completed at: $(date)"
+          echo "🔗 Whitepapers are ready for distribution and sharing"
+
+      - name: 📤 Upload whitepaper documents
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: whitepaper-documents
+          path: whitepapers/*.html
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: 📦 Create whitepaper archive
+        if: success()
+        run: |
+          echo "=== Creating whitepaper archive ==="
+          cd whitepapers
+          zip -r ../whitepapers-collection.zip *.html
+          cd ..
+          echo "✅ Whitepaper archive created"
+
+      - name: 📤 Upload whitepaper archive
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: whitepapers-archive
+          path: whitepapers-collection.zip
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: 📝 Create whitepaper summary (PR only)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            let summary = `## 📄 Whitepaper Documents Generated\n\n`;
+            
+            try {
+              // Check if whitepapers directory exists
+              if (fs.existsSync('whitepapers')) {
+                const files = fs.readdirSync('whitepapers').filter(f => f.endsWith('.html'));
+                
+                summary += `- ✅ **Generated Whitepapers**: ${files.length} HTML documents\n`;
+                
+                // Calculate total size
+                let totalSize = 0;
+                files.forEach(file => {
+                  const filePath = path.join('whitepapers', file);
+                  if (fs.existsSync(filePath)) {
+                    totalSize += fs.statSync(filePath).size;
+                  }
+                });
+                
+                const totalSizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+                summary += `- 📏 **Total Size**: ${totalSizeMB} MB\n`;
+                
+                // List some example whitepapers
+                const exampleFiles = files.slice(0, 5);
+                if (exampleFiles.length > 0) {
+                  summary += `- 📑 **Example Files**:\n`;
+                  exampleFiles.forEach(file => {
+                    const chapter = file.replace('_whitepaper.html', '').replace(/^\d+_/, '');
+                    summary += `  - ${file} (${chapter})\n`;
+                  });
+                  
+                  if (files.length > 5) {
+                    summary += `  - ... and ${files.length - 5} more whitepapers\n`;
+                  }
+                }
+              } else {
+                summary += `- ❌ **Error**: Whitepapers directory not found\n`;
+              }
+            } catch (error) {
+              summary += `- ⚠️ **Error analyzing whitepapers**: ${error.message}\n`;
+            }
+            
+            summary += `\n### 📖 About the Whitepapers\n`;
+            summary += `Each whitepaper is a standalone HTML document that can be:\n`;
+            summary += `- 📧 Shared via email or web\n`;
+            summary += `- 🖨️ Printed for offline reading\n`;
+            summary += `- 📱 Viewed on any device with a web browser\n`;
+            summary += `- 🔗 Embedded in websites or documentation\n\n`;
+            summary += `📋 **All whitepapers are available in the workflow artifacts.**\n\n`;
+            summary += `*Automated by Whitepaper Generation Workflow*`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
+
+      - name: 🔍 Validate docs protection
+        run: |
+          echo "=== Validating docs directory protection ==="
+          python3 scripts/validate_docs_protection.py
+          echo "✅ Docs protection validation completed"
+
+      - name: 🎯 Performance metrics
+        if: always()
+        run: |
+          echo "=== Whitepaper Generation Performance Metrics ==="
+          
+          # Calculate generation efficiency
+          start_time=$(date -d "$(git log -1 --format=%ci)" +%s 2>/dev/null || echo "0")
+          end_time=$(date +%s)
+          
+          if [ "$start_time" -ne 0 ]; then
+            duration=$((end_time - start_time))
+            echo "⏱️ Total processing time: ${duration}s"
+          fi
+          
+          # Memory and disk usage
+          echo "💾 Disk usage: $(du -sh whitepapers/ 2>/dev/null || echo 'N/A')"
+          
+          # Files per minute (rough estimate)
+          html_count=$(find whitepapers -name "*.html" 2>/dev/null | wc -l)
+          if [ "$html_count" -gt 0 ] && [ "$duration" -gt 0 ]; then
+            files_per_minute=$(echo "scale=2; $html_count * 60 / $duration" | bc 2>/dev/null || echo "N/A")
+            echo "📊 Generation rate: ${files_per_minute} files/minute"
+          fi
+          
+          echo "✅ Performance metrics collected"
