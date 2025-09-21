@@ -223,6 +223,125 @@ def validate_chapter_diagrams():
     
     return validation_results
 
+def extract_diagram_metadata(diagram_path, chapter_content):
+    """Extract metadata and context for a diagram from its source file and chapter context."""
+    diagram_info = {
+        'source': None,
+        'type': 'unknown',
+        'purpose': None,
+        'explanation': None
+    }
+    
+    if not diagram_path:
+        return diagram_info
+    
+    # Extract base filename and find corresponding .mmd file
+    png_filename = os.path.basename(diagram_path)
+    mmd_filename = png_filename.replace('.png', '.mmd')
+    mmd_path = os.path.join("docs/images", mmd_filename)
+    
+    # Set source information
+    diagram_info['source'] = f"Källa: {mmd_filename}"
+    
+    # Try to read the mermaid source file to determine type and content
+    if os.path.exists(mmd_path):
+        try:
+            with open(mmd_path, 'r', encoding='utf-8') as f:
+                mmd_content = f.read().strip()
+            
+            # Determine diagram type from mermaid content - check multiple lines
+            content_lines = [line.strip().lower() for line in mmd_content.split('\n') if line.strip()]
+            diagram_type_found = False
+            
+            for line in content_lines:
+                if line.startswith('graph ') or line.startswith('flowchart '):
+                    diagram_info['type'] = 'Flödesschema'
+                    diagram_info['purpose'] = 'Visualiserar processflöde och systemarbetsflöde'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('sequencediagram'):
+                    diagram_info['type'] = 'Sekvensdiagram'
+                    diagram_info['purpose'] = 'Visar interaktionssekvenser och meddelandeflöden'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('classdiagram'):
+                    diagram_info['type'] = 'Klassdiagram'
+                    diagram_info['purpose'] = 'Beskriver objektrelationer och systemstruktur'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('erdiagram'):
+                    diagram_info['type'] = 'ER-diagram'
+                    diagram_info['purpose'] = 'Visualiserar datamodellrelationer och entiteter'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('journey'):
+                    diagram_info['type'] = 'Användarresa'
+                    diagram_info['purpose'] = 'Kartlägger användarupplevelse och kontaktpunkter'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('gantt'):
+                    diagram_info['type'] = 'Gantt-schema'
+                    diagram_info['purpose'] = 'Presenterar projekttidslinjer och schemaläggning'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('pie'):
+                    diagram_info['type'] = 'Cirkeldiagram'
+                    diagram_info['purpose'] = 'Visar fördelning och procentuella uppdelningar'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('quadrantchart'):
+                    diagram_info['type'] = 'Kvadrantdiagram'
+                    diagram_info['purpose'] = 'Illustrerar beslutsmatriser och positionering'
+                    diagram_type_found = True
+                    break
+                elif line.startswith('mindmap'):
+                    diagram_info['type'] = 'Mindmap'
+                    diagram_info['purpose'] = 'Strukturerar konceptuella relationer och kunskapskartor'
+                    diagram_type_found = True
+                    break
+            
+            if not diagram_type_found:
+                diagram_info['type'] = 'Arkitekturdiagram'
+                diagram_info['purpose'] = 'Visualiserar systemarkitektur och komponenter'
+        except Exception as e:
+            print(f"Warning: Could not read diagram source {mmd_path}: {e}")
+    
+    # Extract contextual explanation from chapter content around diagram reference
+    if chapter_content and diagram_path:
+        lines = chapter_content.split('\n')
+        for i, line in enumerate(lines):
+            if 'images/' in line and png_filename.replace('.png', '') in line:
+                # Look for explanation in the line after the diagram
+                if i + 1 < len(lines):
+                    next_line = lines[i + 1].strip()
+                    if next_line and not next_line.startswith('#') and not next_line.startswith('!['):
+                        # Found explanation, limit to 20 words
+                        diagram_info['explanation'] = limit_words(next_line, 18)  # Leave room for "Diagram:" prefix
+                        break
+                
+                # Look for explanation in the line before the diagram
+                if i > 0:
+                    prev_line = lines[i - 1].strip()
+                    if prev_line and not prev_line.startswith('#') and not prev_line.startswith('!['):
+                        diagram_info['explanation'] = limit_words(prev_line, 18)
+                        break
+    
+    # If no specific explanation found, create one based on diagram type and context
+    if not diagram_info['explanation']:
+        if 'kapitel' in png_filename.lower():
+            chapter_num = re.search(r'kapitel(\d+)', png_filename.lower())
+            if chapter_num:
+                diagram_info['explanation'] = f"Diagram: Kapitel {chapter_num.group(1)} - {diagram_info['purpose']}"
+            else:
+                diagram_info['explanation'] = f"Diagram: {diagram_info['purpose']}"
+        else:
+            diagram_info['explanation'] = f"Diagram: {diagram_info['purpose']}"
+        
+        # Ensure it's within word limit
+        diagram_info['explanation'] = limit_words(diagram_info['explanation'], 18)
+    
+    return diagram_info
+
 def read_chapter_content(chapter_file):
     """Read and parse a chapter markdown file."""
     try:
@@ -239,6 +358,7 @@ def read_chapter_content(chapter_file):
         
         # Extract diagram path - support multiple images, pick the first one
         diagram_path = None
+        diagram_metadata = None
         for line in lines:
             if line.startswith('![') and 'images/' in line:
                 # Extract diagram path from markdown image syntax
@@ -248,6 +368,8 @@ def read_chapter_content(chapter_file):
                     # Convert to absolute path from script location
                     if relative_path.endswith('.png'):
                         diagram_path = os.path.join("docs", relative_path)
+                        # Extract metadata for this diagram
+                        diagram_metadata = extract_diagram_metadata(diagram_path, content)
                         # Take the first diagram found
                         break
         
@@ -328,7 +450,8 @@ def read_chapter_content(chapter_file):
         return {
             'title': title,
             'key_points': key_points[:10],  # Limit to 10 key points max, each with 20-word limit
-            'diagram_path': diagram_path
+            'diagram_path': diagram_path,
+            'diagram_metadata': diagram_metadata
         }
     
     except Exception as e:
@@ -422,6 +545,7 @@ def create_presentation():
     for item in presentation_data:
         chapter = item['chapter']
         diagram_path = chapter.get('diagram_path', '')
+        diagram_metadata = chapter.get('diagram_metadata', {})
         
         # Escape quotes and clean text for Python string generation
         clean_title = chapter['title'].replace('"', '\\"').replace("'", "\\'")
@@ -443,12 +567,29 @@ def create_presentation():
         
         # Add diagram if available
         if diagram_path:
+            diagram_source = diagram_metadata.get('source', 'Källa: diagram').replace('"', '\\"').replace("'", "\\'")
+            diagram_explanation = diagram_metadata.get('explanation', '').replace('"', '\\"').replace("'", "\\'")
+            
             script_content += f'''
-    # Add diagram
+    # Add diagram with reference and explanation
     diagram_path = "{diagram_path}"
     if os.path.exists(diagram_path):
         try:
             slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+            
+            # Add diagram reference and explanation
+            diagram_ref_box = slide.shapes.add_textbox(Inches(0.5), Inches(4.4), Inches(4), Inches(0.8))
+            diagram_ref_frame = diagram_ref_box.text_frame
+            diagram_ref_frame.text = "{diagram_source}"
+            diagram_ref_frame.paragraphs[0].font.size = Pt(10)
+            diagram_ref_frame.paragraphs[0].font.color.rgb = RGBColor(102, 102, 102)  # Gray
+            
+            # Add diagram explanation
+            if "{diagram_explanation}":
+                p = diagram_ref_frame.add_paragraph()
+                p.text = "{diagram_explanation}"
+                p.font.size = Pt(10)
+                p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
         except Exception as e:
             print(f"Warning: Could not add diagram {{diagram_path}}: {{e}}")
     
@@ -486,6 +627,8 @@ def create_presentation():
     print("🎨 Styled with Swedish theme colors")
     print("📋 Each slide includes chapter title, diagram (when available), and key points")
     print("📏 All key points limited to 20 words maximum for optimal readability")
+    print("🔗 All diagrams include source references and explanatory captions")
+    print("📖 Diagram explanations provide context and purpose within 20-word limit")
 
 if __name__ == "__main__":
     create_presentation()
@@ -532,6 +675,7 @@ def create_presentation_directly(presentation_data, output_path="arkitektur_som_
         for item in presentation_data:
             chapter = item['chapter']
             diagram_path = chapter.get('diagram_path', '')
+            diagram_metadata = chapter.get('diagram_metadata', {})
             
             # Chapter slide
             slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
@@ -549,6 +693,21 @@ def create_presentation_directly(presentation_data, output_path="arkitektur_som_
             if diagram_path and os.path.exists(diagram_path):
                 try:
                     slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
+                    
+                    # Add diagram reference and explanation
+                    diagram_ref_box = slide.shapes.add_textbox(Inches(0.5), Inches(4.4), Inches(4), Inches(0.8))
+                    diagram_ref_frame = diagram_ref_box.text_frame
+                    diagram_ref_frame.text = diagram_metadata.get('source', 'Källa: diagram')
+                    diagram_ref_frame.paragraphs[0].font.size = Pt(10)
+                    diagram_ref_frame.paragraphs[0].font.color.rgb = RGBColor(102, 102, 102)  # Gray
+                    
+                    # Add diagram explanation
+                    if diagram_metadata.get('explanation'):
+                        p = diagram_ref_frame.add_paragraph()
+                        p.text = diagram_metadata.get('explanation')
+                        p.font.size = Pt(10)
+                        p.font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
+                        
                 except Exception as e:
                     print(f"Warning: Could not add diagram {diagram_path}: {e}")
             
@@ -575,6 +734,8 @@ def create_presentation_directly(presentation_data, output_path="arkitektur_som_
         print("🎨 Styled with Swedish theme colors")
         print("📋 Each slide includes chapter title, diagram (when available), and key points")
         print("📏 All key points limited to 20 words maximum for optimal readability")
+        print("🔗 All diagrams include source references and explanatory captions")
+        print("📖 Diagram explanations provide context and purpose within 20-word limit")
         return True
         
     except Exception as e:
