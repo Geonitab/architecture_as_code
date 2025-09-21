@@ -11,7 +11,7 @@ number-sections: true
 # Chapter page break configuration - This ensures H1 headers start new pages
 top-level-division: chapter
 
-# Template and styling
+# Template and styling - Use standard Eisvogel for compatibility
 template: eisvogel.latex
 
 # PDF-specific settings
@@ -22,7 +22,6 @@ metadata:
   title: "Arkitektur som kod"
   subtitle: "Infrastructure as Code i praktiken"
   author: "Kodarkitektur Bokverkstad"
-  lang: sv-SE
 
 # Variables for the Eisvogel template
 variables:

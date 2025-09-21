@@ -1,19 +1,29 @@
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#1e3a8a", "primaryTextColor": "#ffffff", "primaryBorderColor": "#1e293b", "lineColor": "#3b82f6", "fontFamily": "Inter", "fontSize": "14px", "actorBkg": "#1e3a8a", "actorBorder": "#1e293b", "actorTextColor": "#ffffff", "signalColor": "#1e293b", "signalTextColor": "#1e293b", "noteTextColor": "#1e293b", "activationBorderColor": "#1e3a8a", "activationBkgColor": "#3b82f6"}}}%%
 sequenceDiagram
-    participant Dev as Utvecklare
-    participant Git as Git Repository
-    participant CI as CI/CD Pipeline
-    participant Rev as Code Reviewer
-    participant Prod as Production
+    participant Dev as 👩‍💻<br/>Utvecklare
+    participant Git as 📂<br/>Git Repository
+    participant CI as ⚙️<br/>CI/CD Pipeline
+    participant Rev as 👀<br/>Code Reviewer
+    participant Prod as 🚀<br/>Production
     
-    Dev->>Git: Push feature branch
-    Git->>CI: Trigger automated tests
-    CI->>CI: Terraform validate
-    CI->>CI: Security scan
-    CI->>CI: Cost estimation
-    CI->>Git: Tests completed ✓
-    Dev->>Rev: Create Pull Request
-    Rev->>Git: Review kod och test results
-    Rev->>Git: Approve efter granskning
-    Git->>CI: Merge till main branch
-    CI->>Prod: Deploy till production
-    Prod->>CI: Deployment bekräftad
+    Dev->>Git: 📝 Push feature branch
+    Git->>CI: ⚡ Trigger automated tests
+    
+    Note over CI: 🛠️ Kvalitetskontroller
+    CI->>CI: ✅ Terraform validate
+    CI->>CI: 🔒 Security scan
+    CI->>CI: 💰 Cost estimation
+    CI->>CI: 🧪 Integration tests
+    
+    CI->>Git: ✅ Tests completed
+    Dev->>Rev: 📋 Create Pull Request
+    
+    Note over Rev: 👥 Human Review Process
+    Rev->>Git: 👀 Review kod och test results
+    Rev->>Git: ✅ Approve efter granskning
+    
+    Git->>CI: 🔄 Merge till main branch
+    CI->>Prod: 🚀 Deploy till production
+    Prod->>CI: ✅ Deployment bekräftad
+    
+    Note over Dev,Prod: 🎯 Hela processen automatiserad och spårbar
