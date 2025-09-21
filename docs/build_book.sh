@@ -35,12 +35,24 @@ mkdir -p "$RELEASE_DIR"
 for mmd_file in images/*.mmd; do
     if [ -f "$mmd_file" ]; then
         png_file="${mmd_file%.mmd}.png"
-        # Use default theme with enhanced diagrams that include custom styling
-        PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" \
-            -t default \
-            -b transparent \
-            --width 1400 \
-            --height 900
+        # Use Chrome flags suitable for Docker/CI environment
+        CHROME_FLAGS="${CHROME_FLAGS:-}"
+        if [ -n "$CHROME_FLAGS" ]; then
+            # Running in Docker/CI environment - use provided Chrome flags
+            PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" \
+                -t default \
+                -b transparent \
+                --width 1400 \
+                --height 900 \
+                --puppeteerConfig "{\"args\": [\"--no-sandbox\", \"--disable-setuid-sandbox\", \"--disable-dev-shm-usage\", \"--disable-accelerated-2d-canvas\", \"--no-first-run\", \"--no-zygote\", \"--disable-gpu\"]}"
+        else
+            # Local environment - use standard configuration
+            PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" \
+                -t default \
+                -b transparent \
+                --width 1400 \
+                --height 900
+        fi
         echo "Konverterade $mmd_file till $png_file med förbättrad styling"
     fi
 done

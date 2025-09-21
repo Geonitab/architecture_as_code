@@ -101,11 +101,12 @@ jobs:
           # Create release directory structure
           mkdir -p release/{book,presentation,whitepapers,website}
           
-          # Build book formats using Docker
+          # Build book formats using Docker with proper Chrome configuration
           docker run --rm \
             -v ${{ github.workspace }}:/workspace \
             -w /workspace \
             -e PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable \
+            -e CHROME_FLAGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage" \
             complete-release-builder:latest \
             bash -c "
               echo '=== Running Docker-based complete build ===' &&
@@ -132,7 +133,14 @@ jobs:
         run: |
           echo "=== Copying website to release folder ==="
           if [ -d "dist" ]; then
-            rm -rf release/website/*
+            # Clean release/website directory safely
+            if [ -d "release/website" ]; then
+              # Change ownership if files exist (Docker may create them as different user)
+              if [ "$(ls -A release/website/)" ]; then
+                sudo chown -R $(id -u):$(id -g) release/website/ || true
+              fi
+              rm -rf release/website/*
+            fi
             cp -r dist/* release/website/
             echo "✅ Website copied to release/website/"
           else
