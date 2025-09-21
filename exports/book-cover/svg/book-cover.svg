@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="210mm" height="297mm" viewBox="0 0 794 1123" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <!-- Kvadrat Brand Gradients -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(221, 67%, 32%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(214, 32%, 18%);stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsl(217, 91%, 60%);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsl(160, 84%, 30%);stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Background patterns for code architecture theme -->
+    <pattern id="gridPattern" patternUnits="userSpaceOnUse" width="60" height="60">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+    </pattern>
+    
+    <radialGradient id="nodePattern1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" />
+      <stop offset="45%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:0" />
+    </radialGradient>
+    
+    <radialGradient id="nodePattern2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" />
+      <stop offset="40%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Logo shadow filter -->
+    <filter id="logoShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="rgba(0,0,0,0.15)"/>
+    </filter>
+    
+    <!-- Text shadow filter -->
+    <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.1)"/>
+    </filter>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="794" height="1123" fill="url(#primaryGradient)"/>
+  
+  <!-- Background pattern overlay -->
+  <rect width="794" height="1123" fill="url(#gridPattern)"/>
+  
+  <!-- Network node patterns -->
+  <circle cx="119" cy="281" r="160" fill="url(#nodePattern1)"/>
+  <circle cx="675" cy="169" r="140" fill="url(#nodePattern2)"/>
+  <circle cx="596" cy="954" r="180" fill="url(#nodePattern1)"/>
+  <circle cx="198" cy="842" r="120" fill="url(#nodePattern2)"/>
+  
+  <!-- Geometric architecture elements -->
+  <g transform="translate(580, 220) rotate(15)">
+    <rect x="-60" y="-60" width="120" height="120" rx="20" 
+          fill="linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.04) 31%, rgba(255,255,255,0.04) 69%, transparent 70%)"/>
+  </g>
+  
+  <g transform="translate(675, 674) rotate(12)">
+    <rect x="-40" y="-40" width="80" height="80" rx="40" 
+          fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  </g>
+  
+  <g transform="translate(715, 562) rotate(-15)">
+    <rect x="-30" y="-30" width="60" height="60" rx="12" 
+          fill="rgba(255,255,255,0.05)"/>
+  </g>
+  
+  <!-- Network connection lines -->
+  <g transform="translate(675, 281) rotate(25)">
+    <rect x="-1" y="0" width="2" height="80" 
+          fill="linear-gradient(to bottom, rgba(255,255,255,0.1), transparent)"/>
+  </g>
+  
+  <g transform="translate(730, 506) rotate(-20)">
+    <rect x="-1" y="0" width="2" height="60" 
+          fill="linear-gradient(to bottom, rgba(255,255,255,0.08), transparent)"/>
+  </g>
+  
+  <!-- Design accent line -->
+  <rect x="0" y="0" width="10" height="1123" fill="url(#accentGradient)" rx="5"/>
+  
+  <!-- Corner accent -->
+  <circle cx="675" cy="873" r="40" fill="radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%)"/>
+  
+  <!-- Main content area -->
+  <g transform="translate(94, 151)">
+    
+    <!-- Header with logo -->
+    <g>
+      <!-- Logo background -->
+      <rect x="0" y="0" width="56" height="56" rx="14" fill="white" filter="url(#logoShadow)"/>
+      
+      <!-- Logo letter K -->
+      <text x="28" y="40" font-family="Inter, sans-serif" font-size="28" font-weight="800" 
+            text-anchor="middle" fill="hsl(221, 67%, 32%)">K</text>
+      
+      <!-- Brand text -->
+      <text x="72" y="36" font-family="Inter, sans-serif" font-size="16" font-weight="600" 
+            fill="white" opacity="0.95" letter-spacing="0.8px">KVADRAT PUBLIKATION</text>
+    </g>
+    
+    <!-- Main title -->
+    <g transform="translate(0, 189)">
+      <!-- Title line 1: "Arkitektur" -->
+      <text x="0" y="78" font-family="Inter, sans-serif" font-size="78" font-weight="900" 
+            fill="white" letter-spacing="-3px" filter="url(#textShadow)">Arkitektur</text>
+      
+      <!-- Title line 2: "som kod" with highlight -->
+      <text x="20" y="156" font-family="Inter, sans-serif" font-size="78" font-weight="900" 
+            fill="white" letter-spacing="-3px" filter="url(#textShadow)">som </text>
+      <text x="200" y="156" font-family="Inter, sans-serif" font-size="78" font-weight="900" 
+            fill="url(#accentGradient)" letter-spacing="-3px" filter="url(#textShadow)">kod</text>
+    </g>
+    
+    <!-- Subtitle -->
+    <g transform="translate(0, 377)">
+      <text font-family="Inter, sans-serif" font-size="22" font-weight="400" 
+            fill="rgba(255,255,255,0.92)" line-height="1.5">
+        <tspan x="0" y="26">En omfattande guide till Infrastructure as Code -</tspan>
+        <tspan x="0" y="59">från grundläggande principer till avancerad</tspan>
+        <tspan x="0" y="92">implementation i moderna molnmiljöer</tspan>
+      </text>
+    </g>
+    
+    <!-- Footer -->
+    <g transform="translate(0, 783)">
+      <!-- Authors -->
+      <text x="0" y="20" font-family="Inter, sans-serif" font-size="20" font-weight="700" 
+            fill="white">Expertteamet på Kvadrat</text>
+      
+      <!-- Edition info -->
+      <g transform="translate(450, 0)">
+        <!-- Year with gradient -->
+        <text x="0" y="28" font-family="Inter, sans-serif" font-size="28" font-weight="800" 
+              fill="url(#accentGradient)" text-anchor="end">2024</text>
+        <!-- Edition text -->
+        <text x="0" y="52" font-family="Inter, sans-serif" font-size="16" 
+              fill="rgba(255,255,255,0.85)" text-anchor="end">Första upplagan</text>
+      </g>
+    </g>
+    
+  </g>
+  
+  <!-- Additional metadata for editing -->
+  <metadata>
+    <title>Arkitektur som kod - Book Cover</title>
+    <description>Professional book cover design for Kvadrat's Infrastructure as Code publication</description>
+    <author>Kvadrat Design Team</author>
+    <created>2024</created>
+    <brand-guidelines>Kvadrat Brand Guidelines v1.0</brand-guidelines>
+  </metadata>
+  
+</svg>
