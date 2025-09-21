@@ -1,5 +1,7 @@
 # Slutsats
 
+![Framgångsnycklar för Infrastructure as Code](images/diagram_22_slutsats.png)
+
 Infrastructure as Code har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla infrastruktur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
 
 ## Viktiga lärdomar från vår IaC-resa

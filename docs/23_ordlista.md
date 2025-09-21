@@ -1,5 +1,7 @@
 # Ordlista
 
+![IaC Core Concepts Class Diagram](images/diagram_23_ordlista_class.png)
+
 Denna ordlista innehåller definitioner av centrala termer som används genom boken.
 
 ## Grundläggande koncept och verktyg
