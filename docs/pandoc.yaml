@@ -1,6 +1,6 @@
 ---
 # Pandoc configuration file for "Arkitektur som kod" book
-# Ensures chapters start on new pages for all output formats
+# Simplified configuration for better compatibility
 
 # General settings
 standalone: true
@@ -8,10 +8,10 @@ toc: true
 toc-depth: 3
 number-sections: true
 
-# Chapter page break configuration - This ensures H1 headers start new pages
+# Chapter page break configuration
 top-level-division: chapter
 
-# Template and styling - Use standard Eisvogel for compatibility
+# Template and styling - Try Eisvogel first, fallback to default
 template: eisvogel.latex
 
 # PDF-specific settings
@@ -22,21 +22,31 @@ metadata:
   title: "Arkitektur som kod"
   subtitle: "Infrastructure as Code i praktiken"
   author: "Kodarkitektur Bokverkstad"
+  date: "\\today"
 
-# Variables for the Eisvogel template
+# Variables for better compatibility
 variables:
-  book: true
+  documentclass: book
   classoption: 
     - oneside
     - openany
   geometry:
-    - margin=2.5cm
+    - top=2.5cm
+    - bottom=2.5cm
+    - left=2.5cm
+    - right=2.5cm
   fontsize: 11pt
   linestretch: 1.2
-  documentclass: book
+  lang: sv-SE
+  # Simplified header handling
   header-includes: |
-    \let\oldchapter\chapter
-    \renewcommand{\chapter}{\clearpage\oldchapter}
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+    \renewcommand{\sectionmark}[1]{\markright{#1}}
 
-# For EPUB output - chapters break at H1 level
+# For EPUB output
 epub-chapter-level: 1
+
+# Additional filters for better output
+filters: []

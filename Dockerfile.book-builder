@@ -47,9 +47,10 @@ RUN npm install -g @mermaid-js/mermaid-cli
 # Install Python dependencies
 RUN pip3 install python-pptx>=0.6.21
 
-# Set Chrome executable for Puppeteer
+# Set Chrome executable for Puppeteer with proper sandbox configuration
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV CHROME_FLAGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --disable-accelerated-2d-canvas --no-first-run --no-zygote --disable-gpu"
 
 # Setup Pandoc template
 RUN mkdir -p ~/.local/share/pandoc/templates
