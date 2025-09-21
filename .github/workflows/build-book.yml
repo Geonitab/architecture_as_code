@@ -95,8 +95,10 @@ jobs:
         run: |
           echo "=== Setting up Pandoc template ==="
           mkdir -p ~/.local/share/pandoc/templates
-          pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
-          echo "✅ Eisvogel template installed"
+          # Download Eisvogel template directly for better reliability
+          wget -q https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/v2.0.0/eisvogel.latex \
+            -O ~/.local/share/pandoc/templates/eisvogel.latex
+          echo "✅ Eisvogel template downloaded and installed"
 
       - name: 📝 Generate book content
         run: |
@@ -146,11 +148,15 @@ jobs:
           echo "Available markdown files:"
           ls -la *.md | head -10
           
-          # Check if pandoc.yaml config exists
+          # Verify pandoc.yaml exists and is valid
           if [ ! -f "pandoc.yaml" ]; then
             echo "❌ Error: Pandoc configuration file missing (pandoc.yaml)"
             exit 1
           fi
+          
+          echo "✅ Pandoc configuration found"
+          echo "Pandoc configuration preview:"
+          head -20 pandoc.yaml
           
           # Define chapter files (matching local build script)
           CHAPTER_FILES=(
@@ -200,28 +206,42 @@ jobs:
           
           echo "✅ All required chapter files found"
           
-          # Build PDF with Pandoc using defaults configuration (matching local build script)
-          echo "Generating PDF with Pandoc configuration..."
-          pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf
+          # Verify pandoc template is available
+          if [ ! -f ~/.local/share/pandoc/templates/eisvogel.latex ]; then
+            echo "❌ Error: Eisvogel template not found"
+            exit 1
+          fi
           
-          # Verify PDF was created
+          # Build PDF with Pandoc using defaults configuration
+          echo "Generating PDF with Pandoc configuration..."
+          pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf \
+            --verbose 2>&1 | head -50
+          
+          # Verify PDF was created successfully
           if [ -f "arkitektur_som_kod.pdf" ]; then
             file_size=$(ls -lh arkitektur_som_kod.pdf | awk '{print $5}')
             echo "✅ PDF generated successfully (Size: $file_size)"
             echo "PDF details:"
-            file arkitektur_som_kod.pdf
+            file arkitektur_som_kod.pdf || echo "File command not available"
+            ls -la arkitektur_som_kod.pdf
           else
             echo "❌ Failed to generate PDF"
+            echo "Available files in directory:"
+            ls -la
             exit 1
           fi
 
       - name: 📊 Book build summary
         run: |
           echo "=== Build Summary ==="
-          echo "Markdown files: $(ls docs/*.md | wc -l)"
-          echo "Mermaid diagrams: $(ls docs/images/*.mmd | wc -l)"
-          echo "Generated PNGs: $(ls docs/images/*.png | wc -l)"
-          echo "PDF size: $(ls -lh docs/arkitektur_som_kod.pdf | awk '{print $5}')"
+          echo "Markdown files: $(ls docs/*.md 2>/dev/null | wc -l || echo 0)"
+          echo "Mermaid diagrams: $(ls docs/images/*.mmd 2>/dev/null | wc -l || echo 0)"
+          echo "Generated PNGs: $(ls docs/images/*.png 2>/dev/null | wc -l || echo 0)"
+          if [ -f "docs/arkitektur_som_kod.pdf" ]; then
+            echo "PDF size: $(ls -lh docs/arkitektur_som_kod.pdf | awk '{print $5}')"
+          else
+            echo "⚠️ No PDF found"
+          fi
           echo "Build completed at: $(date)"
 
       - name: 📤 Upload PDF artifact
