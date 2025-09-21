@@ -1,0 +1,43 @@
+# Multi-stage Docker image for fast book building
+FROM node:18-bullseye AS mermaid-builder
+
+# Install Mermaid CLI and Chrome in one layer
+RUN apt-get update && apt-get install -y \
+    google-chrome-stable \
+    && npm install -g @mermaid-js/mermaid-cli \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM pandoc/latex:3.1.9 AS book-builder
+
+# Install additional dependencies
+RUN apk add --no-cache \
+    python3 \
+    py3-pip \
+    librsvg \
+    ttf-liberation \
+    ttf-dejavu \
+    bash \
+    curl \
+    chromium
+
+# Copy Mermaid CLI from previous stage
+COPY --from=mermaid-builder /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=mermaid-builder /usr/local/bin/mmdc /usr/local/bin/mmdc
+
+# Set Chrome executable for Puppeteer
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# Create working directory
+WORKDIR /workspace
+
+# Copy build scripts
+COPY docs/build_book.sh /usr/local/bin/build_book.sh
+COPY generate_book.py /usr/local/bin/generate_book.py
+RUN chmod +x /usr/local/bin/build_book.sh
+
+# Setup Pandoc template
+RUN mkdir -p ~/.local/share/pandoc/templates && \
+    pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
+
+ENTRYPOINT ["/usr/local/bin/build_book.sh"]
