@@ -1,12 +1,22 @@
 # Multi-stage Docker image for complete release building
 FROM node:18-bullseye AS release-builder
 
-# Install system dependencies including Chrome and LaTeX
+# Install basic dependencies first
 RUN apt-get update && apt-get install -y \
-    # Chrome and dependencies
     wget \
     gnupg \
-    google-chrome-stable \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Add Google Chrome repository and install Chrome
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install system dependencies including LaTeX
+RUN apt-get update && apt-get install -y \
     # LaTeX and document processing
     texlive-xetex \
     texlive-fonts-recommended \
