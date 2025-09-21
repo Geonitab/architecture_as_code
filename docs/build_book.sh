@@ -31,6 +31,15 @@ fi
 # Ensure release directory exists
 mkdir -p "$RELEASE_DIR"
 
+# Copy book cover to images directory for Pandoc
+echo "Kopierar bokframsida..."
+if [ -f "../exports/book-cover/png/book-cover-300dpi.png" ]; then
+    cp "../exports/book-cover/png/book-cover-300dpi.png" "images/book-cover.png"
+    echo "✅ Bokframsida kopierad till images/book-cover.png"
+else
+    echo "⚠️ Warning: Book cover not found at ../exports/book-cover/png/book-cover-300dpi.png"
+fi
+
 # Konvertera mermaid-filer till PNG med Kvadrat-tema
 for mmd_file in images/*.mmd; do
     if [ -f "$mmd_file" ]; then

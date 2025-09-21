@@ -38,12 +38,22 @@ variables:
   fontsize: 11pt
   linestretch: 1.2
   lang: sv-SE
+  cover-image: "images/book-cover.png"
+  include-before: |
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/book-cover.png}
+    \end{center}
+    \newpage
   # Simplified header handling
   header-includes: |
     \usepackage{fancyhdr}
     \pagestyle{fancy}
     \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
     \renewcommand{\sectionmark}[1]{\markright{#1}}
+    \usepackage{graphicx}
+    \usepackage{pdfpages}
 
 # For EPUB output
 epub-chapter-level: 1
