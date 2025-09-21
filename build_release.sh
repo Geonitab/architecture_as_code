@@ -52,7 +52,7 @@ echo ""
 
 # Create release directory structure
 echo "📁 Creating release directory structure..."
-mkdir -p release/{book,presentation,whitepapers,website}
+mkdir -p releases/{book,presentation,whitepapers,website}
 
 # 1. Generate book content first
 echo "📚 Step 1: Generating book content..."
@@ -113,9 +113,9 @@ fi
 
 echo "📋 Step 6: Copying website to release folder..."
 if [ -d "dist" ]; then
-    rm -rf release/website/*
-    cp -r dist/* release/website/
-    echo "✅ Website copied to release/website/"
+    rm -rf releases/website/*
+    cp -r dist/* releases/website/
+    echo "✅ Website copied to releases/website/"
 else
     echo "❌ Website build directory 'dist' not found"
     exit 1
@@ -128,7 +128,7 @@ if command -v pandoc >/dev/null 2>&1; then
     echo "# Arkitektur som kod - Whitepapers Samling" > /tmp/combined_whitepapers.md
     echo "" >> /tmp/combined_whitepapers.md
     
-    for html_file in release/whitepapers/*.html; do
+    for html_file in releases/whitepapers/*.html; do
         if [ -f "$html_file" ]; then
             # Extract content between body tags (simple approach)
             filename=$(basename "$html_file" .html)
@@ -143,7 +143,7 @@ if command -v pandoc >/dev/null 2>&1; then
     done
     
     # Convert to PDF
-    pandoc /tmp/combined_whitepapers.md -o release/whitepapers/whitepapers_combined.pdf \
+    pandoc /tmp/combined_whitepapers.md -o releases/whitepapers/whitepapers_combined.pdf \
         --pdf-engine=xelatex \
         -V documentclass=article \
         -V geometry:margin=1in \
@@ -157,7 +157,7 @@ fi
 
 # 7. Generate presentation PDF (if PPTX exists)
 echo "🎥 Step 8: Attempting to generate presentation PDF..."
-if [ -f "release/presentation/arkitektur_som_kod_presentation.pptx" ]; then
+if [ -f "releases/presentation/arkitektur_som_kod_presentation.pptx" ]; then
     echo "⚠️  PowerPoint to PDF conversion requires additional tools (LibreOffice or similar)"
     echo "   Manual conversion recommended for presentation PDF"
 else
@@ -169,30 +169,30 @@ echo ""
 echo "🎉 Release build completed successfully!"
 echo ""
 echo "=== RELEASE SUMMARY ==="
-echo "📁 Release directory: $(pwd)/release/"
+echo "📁 Release directory: $(pwd)/releases/"
 echo ""
 
 echo "📚 Book formats:"
-ls -la release/book/ 2>/dev/null || echo "   No book files found"
+ls -la releases/book/ 2>/dev/null || echo "   No book files found"
 
 echo ""
 echo "🎤 Presentation materials:"
-ls -la release/presentation/ 2>/dev/null || echo "   No presentation files found"
+ls -la releases/presentation/ 2>/dev/null || echo "   No presentation files found"
 
 echo ""
 echo "📄 Whitepapers:"
-whitepaper_count=$(ls release/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
+whitepaper_count=$(ls releases/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
 echo "   $whitepaper_count HTML whitepaper files"
-[ -f "release/whitepapers/whitepapers_combined.pdf" ] && echo "   ✅ Combined PDF generated"
+[ -f "releases/whitepapers/whitepapers_combined.pdf" ] && echo "   ✅ Combined PDF generated"
 
 echo ""
 echo "🌐 Website:"
-if [ -d "release/website" ] && [ "$(ls -A release/website)" ]; then
-    website_files=$(find release/website -type f | wc -l)
-    echo "   $website_files files copied to release/website/"
+if [ -d "releases/website" ] && [ "$(ls -A releases/website)" ]; then
+    website_files=$(find releases/website -type f | wc -l)
+    echo "   $website_files files copied to releases/website/"
 else
     echo "   No website files found"
 fi
 
 echo ""
-echo "🏆 All deliverables are ready in the release/ folder for distribution!"
+echo "🏆 All deliverables are ready in the releases/ folder for distribution!"

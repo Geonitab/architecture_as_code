@@ -242,8 +242,8 @@ def generate_whitepapers(release_mode=False):
     
     # Set up output directories
     if release_mode:
-        whitepapers_dir = Path("release/whitepapers")
-        print("Release mode: Generating whitepapers to release/whitepapers/")
+        whitepapers_dir = Path("releases/whitepapers")
+        print("Release mode: Generating whitepapers to releases/whitepapers/")
     else:
         whitepapers_dir = Path("whitepapers")
     

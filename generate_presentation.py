@@ -794,8 +794,8 @@ def main():
     
     # Ensure presentations directory exists
     if args.release:
-        presentations_dir = Path("release/presentation")
-        print("Release mode: Generating presentation materials to release/presentation/")
+        presentations_dir = Path("releases/presentation")
+        print("Release mode: Generating presentation materials to releases/presentation/")
     else:
         presentations_dir = Path("presentations")
     

@@ -1,4 +1,4 @@
-# Release Folder
+# Releases Folder
 
 This folder contains all deliverables generated during the build process, organized for easy distribution and deployment.
 

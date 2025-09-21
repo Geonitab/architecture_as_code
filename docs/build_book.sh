@@ -5,7 +5,7 @@ if [ "$(basename "$PWD")" != "docs" ]; then
 fi
 
 # Determine the release directory path (relative to docs directory)
-RELEASE_DIR="../release/book"
+RELEASE_DIR="../releases/book"
 OUTPUT_PDF="arkitektur_som_kod.pdf"
 OUTPUT_EPUB="arkitektur_som_kod.epub"
 OUTPUT_DOCX="arkitektur_som_kod.docx"
