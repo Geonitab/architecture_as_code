@@ -45,3 +45,7 @@ test-reports/
 .pytest_cache/
 *.pyc
 *.pyo
+
+# Downloaded packages
+*.deb
+*.deb.*
