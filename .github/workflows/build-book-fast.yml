@@ -1,31 +1,49 @@
-name: Build Book (Fast with Docker)
+name: Complete Release Build (Docker)
 
-"on":
+# Docker-based workflow for building all deliverables with improved caching
+# Uses the updated Dockerfile.book-builder for complete release generation
+
+on:
   push:
     branches: [main]
     paths:
       - 'docs/**/*.md'
       - 'docs/images/**/*.mmd'
-      - '.github/workflows/build-book-fast.yml'
       - 'generate_book.py'
+      - 'generate_whitepapers.py'
+      - 'generate_presentation.py'
+      - 'build_release.sh'
+      - 'docs/build_book.sh'
       - 'Dockerfile.book-builder'
+      - '.github/workflows/build-book-fast.yml'
   pull_request:
     branches: [main]
     paths:
       - 'docs/**/*.md'
       - 'docs/images/**/*.mmd'
-      - '.github/workflows/build-book-fast.yml'
       - 'generate_book.py'
+      - 'generate_whitepapers.py'
+      - 'generate_presentation.py'
+      - 'build_release.sh'
+      - 'docs/build_book.sh'
       - 'Dockerfile.book-builder'
-  workflow_dispatch: {}
+      - '.github/workflows/build-book-fast.yml'
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create GitHub Release'
+        required: false
+        default: 'true'
+        type: boolean
 
 env:
   ARTIFACT_RETENTION_DAYS: 30
 
 jobs:
-  build-book:
+  complete-release-docker:
+    name: 🐳 Complete Release Build (Docker)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     
     steps:
       - name: 📥 Checkout repository
@@ -36,16 +54,33 @@ jobs:
       - name: 🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: 🐍 Set up Python (for content generation)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: 🔧 Set up Node.js (for website build)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
       - name: 📦 Build Docker image with cache
         uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile.book-builder
-          tags: book-builder:latest
+          tags: complete-release-builder:latest
           load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64
+
+      - name: 📦 Install Node.js dependencies
+        run: |
+          echo "=== Installing Node.js dependencies ==="
+          npm ci
+          echo "✅ Node.js dependencies installed"
 
       - name: 📝 Generate book content
         run: |
@@ -53,171 +88,203 @@ jobs:
           python3 generate_book.py
           echo "✅ Book content generated"
 
-      - name: 🔧 Create build script wrapper
+      - name: 🌐 Build website
         run: |
-          cat > build_wrapper.sh << 'EOF'
-          #!/bin/bash
-          set -e
-          
-          echo "=== Converting Mermaid diagrams ==="
-          cd /workspace/docs
-          diagram_count=0
-          
-          if ls images/*.mmd 1> /dev/null 2>&1; then
-            for mmd_file in images/*.mmd; do
-              if [ -f "$mmd_file" ]; then
-                png_file="${mmd_file%.mmd}.png"
-                echo "Converting $mmd_file → $png_file"
-                
-                mmdc \
-                  -i "$mmd_file" \
-                  -o "$png_file" \
-                  -t dark \
-                  -b transparent \
-                  --width 1200 \
-                  --height 800 \
-                  || echo "⚠️ Warning: Failed to convert $mmd_file"
-                
-                diagram_count=$((diagram_count + 1))
-              fi
-            done
-            echo "✅ Processed $diagram_count Mermaid diagrams"
-          else
-            echo "ℹ️ No Mermaid diagrams found to convert"
-          fi
-          
-          echo "=== Building PDF book ==="
-          
-          # Check if pandoc.yaml config exists
-          if [ ! -f "pandoc.yaml" ]; then
-            echo "❌ Error: Pandoc configuration file missing (pandoc.yaml)"
-            exit 1
-          fi
-          
-          # Define chapter files
-          CHAPTER_FILES=(
-            "01_inledning.md"
-            "02_grundlaggande_principer.md"
-            "03_versionhantering.md"
-            "04_adr.md"
-            "05_automatisering_devops_cicd.md"
-            "06_molnarkitektur.md"
-            "07_containerisering.md"
-            "08_microservices.md"
-            "09_sakerhet.md"
-            "10_policy_sakerhet.md"
-            "11_compliance.md"
-            "12_teststrategier.md"
-            "13_praktisk_implementation.md"
-            "14_kostnadsoptimering.md"
-            "15_migration.md"
-            "16_organisatorisk_forandring.md"
-            "17_team_struktur.md"
-            "18_digitalisering.md"
-            "19_lovable_mockups.md"
-            "20_framtida_trender.md"
-            "21_best_practices.md"
-            "22_slutsats.md"
-            "23_ordlista.md"
-            "24_om_forfattarna.md"
-            "25_framtida_utveckling.md"
-            "26_appendix_kodexempel.md"
-            "27_teknisk_uppbyggnad.md"
-          )
-          
-          # Check if required files exist
-          missing_files=""
-          for file in "${CHAPTER_FILES[@]}"; do
-            if [ ! -f "$file" ]; then
-              missing_files="$missing_files $file"
-            fi
-          done
-          
-          if [ -n "$missing_files" ]; then
-            echo "❌ Error: Missing required files:$missing_files"
-            echo "Available files:"
-            ls *.md
-            exit 1
-          fi
-          
-          echo "✅ All required chapter files found"
-          
-          # Build PDF with Pandoc
-          echo "Generating PDF with Pandoc configuration..."
-          pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf
-          
-          # Verify PDF was created
-          if [ -f "arkitektur_som_kod.pdf" ]; then
-            file_size=$(ls -lh arkitektur_som_kod.pdf | awk '{print $5}')
-            echo "✅ PDF generated successfully (Size: $file_size)"
-          else
-            echo "❌ Failed to generate PDF"
-            exit 1
-          fi
-          EOF
-          
-          chmod +x build_wrapper.sh
+          echo "=== Building website ==="
+          npm run build
+          echo "✅ Website built successfully"
 
-      - name: 🏗️ Build book in Docker container
+      - name: 🏗️ Build all formats in Docker container
         run: |
+          echo "=== Building all deliverables in Docker container ==="
+          
+          # Create release directory structure
+          mkdir -p release/{book,presentation,whitepapers,website}
+          
+          # Build book formats using Docker
           docker run --rm \
             -v ${{ github.workspace }}:/workspace \
             -w /workspace \
-            book-builder:latest \
-            bash /workspace/build_wrapper.sh
+            -e PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable \
+            complete-release-builder:latest \
+            bash -c "
+              echo '=== Running Docker-based complete build ===' &&
+              cd /workspace &&
+              
+              # Build book in all formats
+              echo '📖 Building book formats...' &&
+              cd docs &&
+              ./build_book.sh --release &&
+              cd .. &&
+              
+              # Generate whitepapers
+              echo '📄 Generating whitepapers...' &&
+              python3 generate_whitepapers.py --release &&
+              
+              # Generate presentations  
+              echo '🎤 Generating presentations...' &&
+              python3 generate_presentation.py --release &&
+              
+              echo '✅ Docker-based build completed'
+            "
 
-      - name: 📊 Book build summary
+      - name: 🌐 Copy website to release
         run: |
-          echo "=== Build Summary ==="
-          echo "Markdown files: $(ls docs/*.md | wc -l)"
-          echo "Mermaid diagrams: $(ls docs/images/*.mmd 2>/dev/null | wc -l || echo 0)"
-          echo "Generated PNGs: $(ls docs/images/*.png 2>/dev/null | wc -l || echo 0)"
-          if [ -f "docs/arkitektur_som_kod.pdf" ]; then
-            echo "PDF size: $(ls -lh docs/arkitektur_som_kod.pdf | awk '{print $5}')"
+          echo "=== Copying website to release folder ==="
+          if [ -d "dist" ]; then
+            rm -rf release/website/*
+            cp -r dist/* release/website/
+            echo "✅ Website copied to release/website/"
+          else
+            echo "❌ Website build directory 'dist' not found"
+            exit 1
           fi
-          echo "Build completed at: $(date)"
 
-      - name: 📤 Upload PDF artifact
+      - name: 📊 Release build summary
+        run: |
+          echo "=== Docker-based Release Build Summary ==="
+          
+          echo "📚 Book formats:"
+          if [ -d "release/book" ]; then
+            ls -la release/book/ || echo "   No book files found"
+            if [ -f "release/book/arkitektur_som_kod.pdf" ]; then
+              echo "   📖 PDF size: $(ls -lh release/book/arkitektur_som_kod.pdf | awk '{print $5}')"
+            fi
+          fi
+          
+          echo ""
+          echo "🎤 Presentation materials:"
+          if [ -d "release/presentation" ]; then
+            ls -la release/presentation/ || echo "   No presentation files found"
+          fi
+          
+          echo ""
+          echo "📄 Whitepapers:"
+          if [ -d "release/whitepapers" ]; then
+            whitepaper_count=$(ls release/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
+            echo "   $whitepaper_count HTML whitepaper files"
+            if [ -f "release/whitepapers/whitepapers_combined.pdf" ]; then
+              echo "   ✅ Combined PDF generated"
+            fi
+          fi
+          
+          echo ""
+          echo "🌐 Website:"
+          if [ -d "release/website" ] && [ "$(ls -A release/website)" ]; then
+            website_files=$(find release/website -type f | wc -l)
+            echo "   $website_files files copied to release/website/"
+          else
+            echo "   No website files found"
+          fi
+          
+          echo ""
+          echo "📁 Total release size: $(du -sh release/ | awk '{print $1}')"
+          echo "🐳 Docker-based build completed at: $(date)"
+
+      - name: 📤 Upload book formats
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: arkitektur-som-kod-pdf-fast
-          path: docs/arkitektur_som_kod.pdf
+          name: book-formats-docker
+          path: release/book/
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
-      - name: 📤 Upload book images
+      - name: 📤 Upload presentation materials
         uses: actions/upload-artifact@v4
         if: success()
         with:
-          name: book-diagrams-fast
-          path: docs/images/*.png
+          name: presentation-materials-docker
+          path: release/presentation/
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: warn
 
-      - name: 🚀 Create Release (on main branch)
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      - name: 📤 Upload whitepapers
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: whitepapers-docker
+          path: release/whitepapers/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: 📤 Upload website build
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: website-build-docker
+          path: release/website/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: 📦 Create complete release archive
+        if: success()
+        run: |
+          echo "=== Creating complete release archive ==="
+          cd release
+          zip -r ../complete-release-docker.zip .
+          cd ..
+          echo "✅ Complete release archive created"
+          ls -lh complete-release-docker.zip
+
+      - name: 📤 Upload complete release archive
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: complete-release-docker
+          path: complete-release-docker.zip
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: 🚀 Create comprehensive GitHub Release
+        if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true')
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ github.run_number }}-fast
-          name: "Arkitektur som kod v${{ github.run_number }} (Fast Build)"
+          tag_name: v${{ github.run_number }}-docker
+          name: "Arkitektur som kod v${{ github.run_number }} - Docker Complete Release"
           body: |
-            📚 **Arkitektur som kod - Snabb Docker-baserad release**
+            📚 **Arkitektur som kod - Docker-based Complete Release**
             
             Genererad från commit: ${{ github.sha }}
             
-            **Innehåll:**
-            - 📖 Komplett PDF-bok (Docker-genererad)
-            - 🖼️ Mermaid-diagram som PNG-filer
+            **🐳 Docker-optimized Build Process**
             
-            **Optimeringar:**
-            - 🐳 Docker-baserad byggprocess
-            - 📦 Optimerad caching av dependencies
-            - ⚡ Parallell installation av verktyg
-            - 🚀 Reducerad byggtid från ~90 till ~30 minuter
+            ### 📦 Complete Release Package Innehåll:
             
-            Ladda ner PDF:en från Assets nedan ⬇️
+            #### 📖 Book Formats (Docker-built)
+            - `arkitektur_som_kod.pdf` - Complete PDF book
+            - `arkitektur_som_kod.epub` - EPUB format for e-readers  
+            - `arkitektur_som_kod.docx` - Microsoft Word format
+            
+            #### 🎤 Presentation Materials (Docker-built)
+            - `arkitektur_som_kod_presentation.pptx` - PowerPoint presentation
+            - Presentation outline and generation scripts
+            
+            #### 📄 Whitepapers (Docker-built)
+            - Individual HTML whitepapers for each chapter
+            - `whitepapers_combined.pdf` - All whitepapers in single PDF
+            
+            #### 🌐 Website
+            - Complete static website build ready for deployment
+            
+            **🛠️ Build Information:**
+            - 🐳 Built with Docker for consistent environment
+            - 📦 Optimized caching for faster builds (~60 min vs ~90 min)
+            - Pandoc with XeLaTeX PDF-engine
+            - Mermaid diagrams converted to PNG
+            - Node.js React application built for production
+            - Python-generated presentations and whitepapers
+            
+            **📥 Download Options:**
+            - Individual components from Assets below
+            - `complete-release-docker.zip` - All deliverables in one archive
+            
+            🎯 **This Docker-based release includes ALL project deliverables with improved performance!**
           files: |
-            docs/arkitektur_som_kod.pdf
+            release/book/arkitektur_som_kod.pdf
+            release/book/arkitektur_som_kod.epub
+            release/book/arkitektur_som_kod.docx
+            release/presentation/arkitektur_som_kod_presentation.pptx
+            release/whitepapers/whitepapers_combined.pdf
+            complete-release-docker.zip
           draft: false
           prerelease: false
         env:

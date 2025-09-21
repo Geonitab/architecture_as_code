@@ -5,6 +5,45 @@
 
 set -e  # Exit on any error
 
+# Function to check if a command exists
+check_command() {
+    local cmd="$1"
+    local install_hint="$2"
+    
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo "❌ ERROR: $cmd not found"
+        if [ -n "$install_hint" ]; then
+            echo "   Install with: $install_hint"
+        fi
+        return 1
+    else
+        echo "✅ $cmd is available"
+        return 0
+    fi
+}
+
+# Check required dependencies
+echo "🔍 Checking required dependencies..."
+dependencies_ok=true
+
+check_command "python3" "apt-get install python3" || dependencies_ok=false
+check_command "node" "install Node.js from https://nodejs.org/" || dependencies_ok=false
+check_command "npm" "install Node.js from https://nodejs.org/" || dependencies_ok=false
+
+# Optional but recommended dependencies
+if ! check_command "pandoc" "wget pandoc .deb and dpkg -i"; then
+    echo "⚠️  Warning: pandoc not found - book building will be skipped"
+fi
+
+if ! check_command "mmdc" "npm install -g @mermaid-js/mermaid-cli"; then
+    echo "⚠️  Warning: mermaid-cli not found - diagram conversion may fail"
+fi
+
+if [ "$dependencies_ok" != true ]; then
+    echo "❌ Required dependencies missing. Please install them first."
+    exit 1
+fi
+
 # Make scripts executable
 chmod +x docs/build_book.sh 2>/dev/null || true
 
@@ -17,14 +56,24 @@ mkdir -p release/{book,presentation,whitepapers,website}
 
 # 1. Generate book content first
 echo "📚 Step 1: Generating book content..."
-python3 generate_book.py
+if python3 generate_book.py; then
+    echo "✅ Book content generated successfully"
+else
+    echo "❌ Failed to generate book content"
+    exit 1
+fi
 
 # 2. Build all book formats
 echo "📖 Step 2: Building book in all formats..."
 if [ -f "docs/build_book.sh" ]; then
     cd docs
     chmod +x build_book.sh
-    ./build_book.sh --release
+    if ./build_book.sh --release; then
+        echo "✅ Book formats built successfully"
+    else
+        echo "❌ Failed to build book formats"
+        exit 1
+    fi
     cd ..
 else
     echo "⚠️  docs/build_book.sh not found, skipping book build"
@@ -32,16 +81,31 @@ fi
 
 # 3. Generate whitepapers
 echo "📄 Step 3: Generating whitepapers..."
-python3 generate_whitepapers.py --release
+if python3 generate_whitepapers.py --release; then
+    echo "✅ Whitepapers generated successfully"
+else
+    echo "❌ Failed to generate whitepapers"
+    exit 1
+fi
 
 # 4. Generate presentations
 echo "🎤 Step 4: Generating presentation materials..."
-python3 generate_presentation.py --release
+if python3 generate_presentation.py --release; then
+    echo "✅ Presentation materials generated successfully"
+else
+    echo "❌ Failed to generate presentation materials"
+    exit 1
+fi
 
 # 5. Build website and copy to release
 echo "🌐 Step 5: Building website..."
 if command -v npm >/dev/null 2>&1; then
-    npm run build
+    if npm run build; then
+        echo "✅ Website built successfully"
+    else
+        echo "❌ Website build failed"
+        exit 1
+    fi
 else
     echo "⚠️  npm not found, skipping website build"
     exit 1
