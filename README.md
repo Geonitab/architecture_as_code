@@ -41,11 +41,10 @@ release/                 # Alla deliverables organiserade för distribution
 └── website/           # Komplett statisk webbsida
 
 .github/workflows/      # CI/CD automation
-├── complete-release.yml    # Comprehensive release workflow (ALL formats)
-├── build-book-fast.yml     # Docker-based complete release (optimized)
-├── build-book.yml          # Basic PDF-only workflow (legacy)
-├── generate-whitepapers.yml # Standalone whitepaper generation
-└── generate-presentations.yml # Standalone presentation generation
+├── unified-build-release.yml    # Unified comprehensive workflow (ALL formats)
+├── generate-whitepapers.yml    # Standalone whitepaper generation
+├── generate-presentations.yml  # Standalone presentation generation  
+└── content-validation.yml      # Repository content validation
 ```
 
 ### Release-leveranser
@@ -73,22 +72,15 @@ Alla deliverables samlas automatiskt i `release/`-mappen för enkel distribution
 
 #### Automatiska GitHub Actions workflows
 
-**Rekommenderat: Använd GitHub Actions för automatisk byggning**
+**Rekommenderat: Använd Unified Workflow för automatisk byggning**
 
-1. **Complete Release Workflow** (`complete-release.yml`):
+1. **Unified Build & Release Workflow** (`unified-build-release.yml`):
    ```
-   Trigger: Push till main branch med ändringar i relevanta filer
+   Trigger: Push/PR till main branch med ändringar i relevanta filer
    Output: Komplett GitHub Release med alla format
-   Tid: ~90 minuter
+   Strategier: Traditional (~90 min) och Docker (~60 min)
    Inkluderar: PDF + EPUB + DOCX + PPTX + HTML + Website
-   ```
-
-2. **Docker Complete Release** (`build-book-fast.yml`):
-   ```
-   Trigger: Push till main branch med ändringar i relevanta filer
-   Output: Docker-optimerad GitHub Release med alla format  
-   Tid: ~60 minuter (med Docker caching)
-   Inkluderar: PDF + EPUB + DOCX + PPTX + HTML + Website
+   Flexibilitet: Välj leveranser och byggstrategi via manual trigger
    ```
 
 #### Manuell lokal byggning
@@ -202,46 +194,41 @@ Varje kapitel följer samma struktur:
 
 ## 🏗️ CI/CD Pipeline
 
-### Comprehensive Release Workflows
+### Unified Workflow Architecture
 
-Projektet har flera GitHub Actions workflows för olika behov:
+Projektet använder en unified GitHub Actions workflow för effektiv byggprocess:
 
-#### 🚀 Complete Release (`complete-release.yml`) - **REKOMMENDERAD**
-Bygger ALLA leveranser i en komplett release:
-- **Triggers**: Push/PR på alla relevanta filer
+#### 🎯 Unified Build & Release (`unified-build-release.yml`) - **REKOMMENDERAD**
+Konsoliderad workflow som ersätter tidigare separata workflows:
+- **Triggers**: Push/PR på alla relevanta filer, manual dispatch med parametrar
+- **Strategier**: Traditional build (~90 min) och Docker-optimized (~60 min)
 - **Leveranser**: PDF + EPUB + DOCX + Presentations + Whitepapers + Website
-- **Tid**: ~90 minuter (full installation av dependencies)
+- **Flexibilitet**: Välj byggstrategi och leveranser via manual trigger
 - **Output**: Komplett release med alla format organiserade i `release/` struktur
-- **GitHub Release**: Skapar comprehensive release med alla filer
+- **GitHub Release**: Unified comprehensive release (`v{number}-unified`)
+- **Fallback**: Om en byggstrategi misslyckas kan den andra fortfarande slutföras
 
-#### 🐳 Docker Complete Release (`build-book-fast.yml`) 
-Docker-optimerad version av complete release:
-- **Triggers**: Push/PR på alla relevanta filer + Dockerfile changes  
-- **Leveranser**: PDF + EPUB + DOCX + Presentations + Whitepapers + Website
-- **Tid**: ~60 minuter (Docker caching för snabbare builds)
-- **Output**: Samma som complete release men med Docker optimeringar
-- **GitHub Release**: Skapar Docker-based comprehensive release
+#### Workflow-funktioner
+- **Selective Building**: Bygg endast specifika leveranser (book-only, presentations-only, etc.)
+- **Multi-strategy**: Kör traditional och Docker builds parallellt eller individuellt
+- **Advanced Caching**: GitHub Actions cache för dependencies och Docker layers
+- **Error Resilience**: Graceful fallback mellan byggstrategier
 
-#### 📖 Basic Book Build (`build-book.yml`)
-Enkel PDF-only byggprocess (legacy):
-- **Triggers**: Push/PR på markdown-filer och diagram
-- **Dependencies**: Pandoc, TeXLive, Mermaid CLI
-- **Build**: Konverterar diagram + genererar PDF
-- **Output**: Endast PDF-format
-- **GitHub Release**: Enkel release med bara PDF
+### Tidigare workflows (nu ersatta)
+- ~~`complete-release.yml`~~ → Integrerad i unified workflow
+- ~~`build-book-fast.yml`~~ → Docker-strategi i unified workflow
+- ~~`build-book.yml`~~ → Book-only option i unified workflow
 
 ### Workflow-jämförelse
 
-| Workflow | Tid | PDF | EPUB | DOCX | Presentations | Whitepapers | Website | Docker | Cache |
-|----------|-----|-----|------|------|---------------|-------------|---------|--------|-------|
-| complete-release.yml | ~90min | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
-| build-book-fast.yml | ~60min | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| build-book.yml | ~45min | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
+| Workflow | Tid | PDF | EPUB | DOCX | Presentations | Whitepapers | Website | Docker | Strategies |
+|----------|-----|-----|------|------|---------------|-------------|---------|--------|------------|
+| unified-build-release.yml | 60-90min | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Multiple |
+| ~~complete-release.yml~~ | ~~90min~~ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ~~Replaced~~ |
+| ~~build-book-fast.yml~~ | ~~60min~~ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ~~Replaced~~ |
 
 ### Status badges:
-![Complete Release](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Complete%20Release%20Build/badge.svg)
-![Docker Release](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Complete%20Release%20Build%20(Docker)/badge.svg)
-![Basic Book](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Build%20Book/badge.svg)
+![Unified Build & Release](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Unified%20Build%20&%20Release/badge.svg)
 
 ## 📖 Kapitellista
 
