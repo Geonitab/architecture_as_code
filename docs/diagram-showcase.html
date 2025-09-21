@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kvadrat Enhanced Diagrams Showcase</title>
+    <style>
+        :root {
+            --kvadrat-blue: #1e3a8a;
+            --kvadrat-blue-light: #3b82f6;
+            --kvadrat-blue-dark: #1e293b;
+            --kvadrat-gray: #64748b;
+            --kvadrat-gray-light: #f1f5f9;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--kvadrat-gray-light);
+            margin: 0;
+            padding: 20px;
+            color: var(--kvadrat-blue-dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.1);
+        }
+        
+        h1 {
+            color: var(--kvadrat-blue);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+        
+        .diagram-showcase {
+            display: grid;
+            gap: 40px;
+        }
+        
+        .diagram-section {
+            border: 2px solid var(--kvadrat-blue-light);
+            border-radius: 12px;
+            padding: 30px;
+            background: var(--kvadrat-gray-light);
+        }
+        
+        .diagram-section h2 {
+            color: var(--kvadrat-blue);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .diagram-section p {
+            margin-bottom: 20px;
+            color: var(--kvadrat-gray);
+            line-height: 1.6;
+        }
+        
+        .diagram-image {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--kvadrat-blue-light);
+            background: white;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .features-list {
+            background: white;
+            border-left: 4px solid var(--kvadrat-blue);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .features-list h3 {
+            color: var(--kvadrat-blue);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .features-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .features-list li {
+            margin-bottom: 8px;
+            color: var(--kvadrat-blue-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Kvadrat Enhanced Diagrams Showcase</h1>
+        
+        <div class="features-list">
+            <h3>✨ Visual Enhancements Applied</h3>
+            <ul>
+                <li><strong>Kvadrat Brand Colors:</strong> Professional blue palette (#1e3a8a, #3b82f6, #059669)</li>
+                <li><strong>Professional Icons:</strong> Contextual emojis and symbols for clarity</li>
+                <li><strong>Subgraph Organization:</strong> Logical grouping of related elements</li>
+                <li><strong>Enhanced Typography:</strong> Inter font family for consistency</li>
+                <li><strong>Visual Hierarchy:</strong> Color-coded elements by function and importance</li>
+            </ul>
+        </div>
+        
+        <div class="diagram-showcase">
+            <div class="diagram-section">
+                <h2>📈 Architecture Evolution Diagram</h2>
+                <p>Shows the progression from traditional manual processes to modern Architecture as Code, with Infrastructure as Code as a practical example.</p>
+                <img src="images/diagram_01_inledning.png" alt="Architecture Evolution" class="diagram-image">
+            </div>
+            
+            <div class="diagram-section">
+                <h2>🔄 Core Principles Flow</h2>
+                <p>Illustrates the fundamental principles of Architecture as Code, from declarative code through to scalability benefits.</p>
+                <img src="images/diagram_02_grundlaggande_principer.png" alt="Core Principles" class="diagram-image">
+            </div>
+            
+            <div class="diagram-section">
+                <h2>🌳 Version Control Workflow</h2>
+                <p>Demonstrates a professional development workflow with branching strategy, quality gates, and deployment pipeline.</p>
+                <img src="images/diagram_03_versionhantering.png" alt="Version Control" class="diagram-image">
+            </div>
+            
+            <div class="diagram-section">
+                <h2>👥 Code Review Sequence</h2>
+                <p>Professional sequence diagram showing the complete code review and deployment process with quality controls.</p>
+                <img src="images/code_review_sequence.png" alt="Code Review Process" class="diagram-image">
+            </div>
+        </div>
+        
+        <div class="features-list" style="margin-top: 40px;">
+            <h3>🎯 Brand Alignment Features</h3>
+            <ul>
+                <li><strong>Color Consistency:</strong> All elements use official Kvadrat brand colors</li>
+                <li><strong>Professional Appearance:</strong> Suitable for enterprise presentations and documentation</li>
+                <li><strong>Accessibility:</strong> High contrast ratios for readability</li>
+                <li><strong>Scalability:</strong> Vector-based elements that work at any size</li>
+                <li><strong>Print Compatibility:</strong> Optimized for both digital and print formats</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
