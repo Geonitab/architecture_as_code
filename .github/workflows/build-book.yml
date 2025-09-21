@@ -464,8 +464,49 @@ jobs:
           
           # Build PDF with Pandoc using defaults configuration
           echo "Generating PDF with Pandoc configuration..."
-          pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf \
-            --verbose 2>&1 | head -50
+          
+          # Function to attempt PDF generation
+          attempt_pdf_generation() {
+            local template_info="$1"
+            echo "🔄 Attempting PDF generation $template_info..."
+            
+            if pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf \
+              --verbose 2>&1 | head -50; then
+              if [ -f "arkitektur_som_kod.pdf" ] && [ -s "arkitektur_som_kod.pdf" ]; then
+                return 0
+              fi
+            fi
+            return 1
+          }
+          
+          # First attempt with current template
+          if attempt_pdf_generation "(with downloaded template)"; then
+            echo "✅ PDF generation successful with downloaded template"
+          else
+            echo "⚠️  PDF generation failed with downloaded template, trying fallback..."
+            echo "🔄 Switching to pandoc default template..."
+            
+            # Generate fallback template
+            if pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex; then
+              echo "✅ Fallback template generated"
+              
+              # Attempt PDF generation with fallback template
+              if attempt_pdf_generation "(with fallback template)"; then
+                echo "✅ PDF generation successful with fallback template"
+                echo "ℹ️  Note: Using simplified formatting due to template fallback"
+              else
+                echo "❌ PDF generation failed even with fallback template"
+                echo "🔍 Checking for LaTeX errors..."
+                pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf --verbose || true
+                echo "Available files in directory:"
+                ls -la
+                exit 1
+              fi
+            else
+              echo "❌ Failed to generate fallback template"
+              exit 1
+            fi
+          fi
           
           # Verify PDF was created successfully
           if [ -f "arkitektur_som_kod.pdf" ]; then
