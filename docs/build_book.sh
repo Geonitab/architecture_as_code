@@ -169,13 +169,86 @@ else
     fi
 fi
 
+# Funktioner för att validera EPUB-fil
+validate_epub() {
+    local epub_file="$1"
+    
+    echo "Validerar EPUB-fil med EPUBCheck..."
+    
+    # Check if EPUBCheck is available
+    if ! command -v epubcheck >/dev/null 2>&1; then
+        echo "⚠️  Warning: EPUBCheck inte installerat - EPUB-validering överhoppad"
+        echo "    Installera EPUBCheck för full EPUB-validering"
+        return 0
+    fi
+    
+    # Create validation log file
+    local validation_log="../releases/book/epub-validation.log"
+    
+    # Run EPUBCheck with detailed output
+    if epubcheck "$epub_file" > "$validation_log" 2>&1; then
+        echo "✅ EPUB-validering godkänd: $epub_file"
+        echo "    Valideringslogg: $validation_log"
+        return 0
+    else
+        local exit_code=$?
+        echo "❌ EPUB-validering misslyckades för: $epub_file"
+        echo "    Valideringslogg: $validation_log"
+        
+        # Show summary of errors
+        echo "Sammanfattning av valideringsfel:"
+        grep -E "(ERROR|FATAL|WARNING)" "$validation_log" | head -10
+        
+        if [ $exit_code -eq 1 ]; then
+            echo "⚠️  EPUB har valideringsfel men kan fortfarande användas"
+            echo "    Kontrollera valideringsloggen för detaljer"
+            return 1
+        else
+            echo "❌ Kritiska fel i EPUB-filen"
+            return 2
+        fi
+    fi
+}
+
 # Funktion för att generera andra format
 generate_other_formats() {
     echo "Genererar EPUB-format..."
-    pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -t epub -o $OUTPUT_EPUB
-    echo "EPUB genererad: $OUTPUT_EPUB"
-    cp $OUTPUT_EPUB "$RELEASE_EPUB"
-    echo "EPUB kopierad till release: $RELEASE_EPUB"
+    
+    # Generate EPUB with improved metadata
+    if pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" \
+        -t epub \
+        -o $OUTPUT_EPUB \
+        --metadata date="$(date +'%Y-%m-%d')" \
+        --metadata language=sv \
+        --epub-cover-image="images/book-cover.png" \
+        2>&1; then
+        
+        echo "EPUB genererad: $OUTPUT_EPUB"
+        
+        # Validate the generated EPUB
+        validate_epub "$OUTPUT_EPUB"
+        validation_result=$?
+        
+        # Copy to release directory regardless of validation result
+        cp $OUTPUT_EPUB "$RELEASE_EPUB"
+        echo "EPUB kopierad till release: $RELEASE_EPUB"
+        
+        # Report validation status
+        case $validation_result in
+            0)
+                echo "✅ EPUB-fil validerad och klar för distribution"
+                ;;
+            1)
+                echo "⚠️  EPUB-fil har mindre valideringsfel men är användbar"
+                ;;
+            2)
+                echo "❌ EPUB-fil har kritiska fel - kontrollera valideringsloggen"
+                ;;
+        esac
+    else
+        echo "❌ EPUB-generering misslyckades"
+        return 1
+    fi
     
     echo "Genererar DOCX-format..."
     pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -t docx -o $OUTPUT_DOCX

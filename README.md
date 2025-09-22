@@ -53,8 +53,18 @@ Alla deliverables samlas automatiskt i `releases/`-mappen för enkel distributio
 
 #### 📚 Bokformat (`releases/book/`)
 - **PDF**: `arkitektur_som_kod.pdf` - Fullständig bok
-- **EPUB**: `arkitektur_som_kod.epub` - E-läsarformat  
+- **EPUB**: `arkitektur_som_kod.epub` - E-läsarformat (med automatisk EPUBCheck-validering)
 - **DOCX**: `arkitektur_som_kod.docx` - Microsoft Word-format
+- **Valideringsloggar**: `epub-validation.log` - EPUB-kvalitetskontroll
+
+#### 📋 EPUB-validering
+
+Alla EPUB-filer valideras automatiskt med [EPUBCheck](https://github.com/w3c/epubcheck) för att säkerställa:
+- Kompatibilitet med EPUB 3.3-standarden
+- Korrekt funktionalitet i olika e-läsare
+- Validering av metadata och struktur
+
+Se [docs/EPUB_VALIDATION.md](docs/EPUB_VALIDATION.md) för detaljer om EPUB-validering.
 
 #### 🎤 Presentationer (`releases/presentation/`)
 - **PPTX**: `arkitektur_som_kod_presentation.pptx` - PowerPoint-presentation
