@@ -2,7 +2,7 @@
 
 ![Architecture as Code i praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementation av Architecture as Code kräver genomtänkt approach som balanserar tekniska möjligheter med organisatoriska begränsningar. Infrastructure as Code utgör en central komponent, men måste integreras med bredare arkitekturdefinitioner. Detta kapitel fokuserar på verkliga implementationsstrategier, common pitfalls, och proven practices för successful Architecture as Code adoption i enterprise environments.
+Praktisk arkitektur som kod-implementation av Architecture as Code kräver genomtänkt approach som balanserar tekniska möjligheter med organisatoriska begränsningar. Infrastructure as Code (arkitektur som kod) utgör en central komponent, men måste integreras med bredare arkitekturdefinitioner. Detta kapitel fokuserar på verkliga arkitektur som kod-implementationsstrategier, common pitfalls, och proven practices för successful Architecture as Code adoption i enterprise environments.
 
 ![Implementation User Journey](images/diagram_13_user_journey.png)
 
@@ -10,11 +10,11 @@ Diagrammet ovan illustrerar den typiska användarresan för IaC-implementation, 
 
 ## Implementation roadmap och strategier
 
-Successful Architecture as Code adoption följer vanligen en phased approach som börjar med pilot projects och gradvis expanderar till enterprise-wide implementation. Initial phases fokuserar på non-critical environments och simple use cases för att bygga confidence och establish best practices innan production workloads migreras. Infrastructure as Code utgör ofta startpunkten för denna transformation.
+Successful Architecture as Code adoption följer vanligen en phased approach som börjar med pilot projects och gradvis expanderar till enterprise-wide implementation. Initial phases fokuserar på non-critical environments och simple use cases för att bygga confidence och establish arkitektur som kod best practices innan production workloads migreras. Infrastructure as Code (arkitektur som kod) utgör ofta startpunkten för denna transformation.
 
 Assessment av current state infrastructure är critical för planning effective migration strategies. Legacy systems, technical debt, och organizational constraints måste identifieras och addressas through targeted modernization efforts. Detta inkluderar inventory av existing assets, dependency mapping, och risk assessment för olika migration scenarios.
 
-Stakeholder alignment säkerställer organizational support för IaC initiatives. Executive sponsorship, cross-functional collaboration, och clear communication av benefits och challenges är essential för overcoming resistance och securing necessary resources. Change management strategies måste address både technical och cultural aspects av transformation.
+Stakeholder alignment säkerställer organizational support för Arkitektur som kod initiatives. Executive sponsorship, cross-functional collaboration, och clear communication av benefits och challenges är essential för overcoming resistance och securing necessary resources. Change management strategies måste address både technical och cultural aspects av transformation.
 
 ## Tool selection och ecosystem integration
 
@@ -359,11 +359,13 @@ jobs:
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Practical Infrastructure as Code implementation balanserar technical excellence med organizational realities. Success kräver comprehensive planning, stakeholder alignment, incremental delivery, och continuous improvement. Production readiness måste vara prioritized från början, medan common challenges måste anticiperas och mitigated through proven practices och robust tooling.
 
 ## Källor och referenser
 
-- HashiCorp. "Terraform Best Practices." HashiCorp Learn Platform.
+- HashiCorp. "Terraform arkitektur som kod best practices." HashiCorp Learn Platform.
 - AWS Well-Architected Framework. "Infrastructure as Code." Amazon Web Services.
 - Google Cloud. "Infrastructure as Code Design Patterns." Google Cloud Architecture Center.
 - Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.

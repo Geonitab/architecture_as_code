@@ -2,21 +2,21 @@
 
 ![Organisatorisk transformation](images/diagram_10_kapitel9.png)
 
-*Infrastructure as Code driver fundamental organisatorisk förändring från traditionella silos till cross-funktionella DevOps-team. Diagrammet illustrerar evolutionen från isolerade team till integrerade, samarbetsinriktade strukturer som optimerar för hastighet och kvalitet.*
+*Infrastructure as Code (arkitektur som kod) driver fundamental organisatorisk förändring från traditionella silos till cross-funktionella DevOps-team. Diagrammet illustrerar evolutionen från isolerade team till integrerade, samarbetsinriktade strukturer som optimerar för hastighet och kvalitet.*
 
-## Organisatoriska förändringsprocessens komplexitet
+Arkitektur som kod-metodiken utgör grunden för ## Organisatoriska förändringsprocessens komplexitet
 
 ![Förändringsdimensioner och samband](images/mindmap_17_organisation.png)
 
-*Mindmappen visualiserar de mångsidiga aspekterna av organisatorisk förändring vid IaC-implementation. Den visar hur DevOps-kulturtransformation, cross-funktionella teamstrukturer, kompetensutveckling, rollförändring och change management är sammankopplade och måste hanteras holistiskt för framgångsrik transformation.*
+*Mindmappen visualiserar de mångsidiga aspekterna av organisatorisk förändring vid Arkitektur som kod-arkitektur som kod-implementation. Den visar hur DevOps-kulturtransformation, cross-funktionella teamstrukturer, kompetensutveckling, rollförändring och change management är sammankopplade och måste hanteras holistiskt för framgångsrik transformation.*
 
 ## Övergripande beskrivning
 
-Implementering av Infrastructure as Code kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer med separata utvecklings-, drift- och säkerhetsteam måste genomgå fundamental restructuring för att fullt ut realisera fördelarna med IaC-baserade arbetssätt.
+Implementering av Infrastructure as Code (arkitektur som kod) kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer med separata utvecklings-, drift- och säkerhetsteam måste genomgå fundamental restructuring för att fullt ut realisera fördelarna med arkitektur som kod-baserade arbetssätt.
 
-Svenska organisationer står inför unika utmaningar när det gäller organisatorisk förändring genom starka fackliga traditioner, konsensusbaserade beslutsprocesser och etablerade hierarkiska struktururer. Successful IaC adoption kräver change management strategier som respekterar dessa kulturella aspekter samtidigt som de främjar agile och collaborative arbetssätt.
+Svenska organisationer står inför unika utmaningar när det gäller organisatorisk förändring genom starka fackliga traditioner, konsensusbaserade beslutsprocesser och etablerade hierarkiska struktururer. Successful arkitektur som kod adoption kräver change management strategier som respekterar dessa kulturella aspekter samtidigt som de främjar agile och collaborative arbetssätt.
 
-Conway's Law beskriver hur organisationers kommunikationsstrukturer speglas i systemarkitekturen de producerar. För IaC-success måste organisationer medvetet designa teamstrukturer som supportar microservices, API-driven arkitekturer och automated deployment patterns som Infrastructure as Code möjliggör.
+Conway's Law beskriver hur organisationers kommunikationsstrukturer speglas i systemarkitekturen de producerar. För Arkitektur som kod-success måste organisationer medvetet designa teamstrukturer som supportar microservices, API-driven arkitekturer och automated deployment patterns som Infrastructure as Code möjliggör.
 
 Modern DevOps-transformation inom svenska företag som Spotify, Klarna och King demonstrerar hur innovative organisationsdesign kan accelerate product development och operational efficiency. Dessa organisationer har utvecklat unika approaches till team autonomy, cross-functional collaboration och continuous improvement som kan adapt till olika svenska organisationskulturer.
 
@@ -28,21 +28,21 @@ Psychological safety utgör foundationen för effective DevOps teams genom att m
 
 Blameless post-mortems och failure celebration är essentiella komponenter i DevOps culture som encourage innovation och risk-taking. Svenska organisationer med strong safety cultures kan leverage dessa principles för att create environments där teams kan experiment med new technologies och approaches utan fear of retribution för honest mistakes.
 
-Continuous learning och skill development program måste support team members i developing cross-functional capabilities som bridge traditional development och operations boundaries. Investment i comprehensive training program för IaC tools, cloud platforms och automation practices ensures teams can effectively support modern infrastructure management.
+Continuous learning och skill development program måste support team members i developing cross-functional capabilities som bridge traditional development och operations boundaries. Investment i comprehensive training program för Arkitektur som kod tools, cloud platforms och automation practices ensures teams can effectively support modern infrastructure management.
 
 ## Cross-funktionella team strukturer
 
-Cross-functional teams för IaC implementation måste include diverse skills covering software development, systems administration, security engineering och product management. Effective team composition balances technical expertise med domain knowledge och ensures comprehensive coverage av infrastructure lifecycle management.
+Cross-functional teams för Arkitektur som kod arkitektur som kod-implementation måste include diverse skills covering software development, systems administration, security engineering och product management. Effective team composition balances technical expertise med domain knowledge och ensures comprehensive coverage av infrastructure lifecycle management.
 
-Team size optimization följer "two-pizza rule" principles där teams är små nog för effective communication men large nog för comprehensive skill coverage. Research suggests optimal IaC team sizes mellan 6-8 personer med representation från development, operations, security och product functions.
+Team size optimization följer "two-pizza rule" principles där teams är små nog för effective communication men large nog för comprehensive skill coverage. Research suggests optimal Arkitektur som kod team sizes mellan 6-8 personer med representation från development, operations, security och product functions.
 
 Role definition inom cross-functional teams måste support both specialized expertise och collaborative responsibilities. Infrastructure engineers, cloud architects, security specialists och product owners each contribute unique perspectives som require coordination through well-defined interfaces och shared responsibilities.
 
-Team autonomy och decision-making authority är critical för IaC success eftersom infrastructure decisions often require rapid response to operational issues. Swedish organizations med consensus-based cultures måste balance democratic decision-making med need för quick operational responses under pressure situations.
+Team autonomy och decision-making authority är critical för Arkitektur som kod success eftersom infrastructure decisions often require rapid response to operational issues. Swedish organizations med consensus-based cultures måste balance democratic decision-making med need för quick operational responses under pressure situations.
 
 ## Kompetenshöjning och utbildning
 
-Comprehensive training program för IaC adoption måste cover technical skills, process changes och cultural transformation aspects. Multi-modal learning approaches including hands-on workshops, mentorship program och certification tracks ensure diverse learning preferences och skill levels är accommodated effectively.
+Comprehensive training program för arkitektur som kod adoption måste cover technical skills, process changes och cultural transformation aspects. Multi-modal learning approaches including hands-on workshops, mentorship program och certification tracks ensure diverse learning preferences och skill levels är accommodated effectively.
 
 Technical skill development tracks ska include Infrastructure as Code tools (Terraform, CloudFormation, Pulumi), cloud platforms (AWS, Azure, GCP), containerization technologies (Docker, Kubernetes), samt automation och monitoring tools. Progressive skill development från basic concepts till advanced implementation ensures systematic capability building.
 
@@ -62,7 +62,7 @@ Management role evolution från command-and-control toward servant leadership mo
 
 ## Change management strategier
 
-Change management för IaC adoption måste address both technical och cultural aspects av organizational transformation. Successful change strategies include stakeholder engagement, communication planning, resistance management och progress measurement som ensure sustainable organizational evolution.
+Change management för arkitektur som kod adoption måste address both technical och cultural aspects av organizational transformation. Successful change strategies include stakeholder engagement, communication planning, resistance management och progress measurement som ensure sustainable organizational evolution.
 
 Stakeholder mapping och engagement strategies identify key influencers, early adopters och potential resistance sources inom organizational. Swedish organizational dynamics med strong worker representation require inclusive approaches som involve unions, work councils och employee representatives i planning och implementation processes.
 
@@ -114,7 +114,7 @@ team_structure:
         - "Threat modeling för cloud infrastructure"
         - "Security scanning integration"
       skills_required:
-        - "Cloud security best practices"
+        - "Cloud security arkitektur som kod best practices"
         - "Policy engines (OPA/AWS Config)"
         - "Security scanning tools"
         - "Compliance frameworks (ISO27001/SOC2)"
@@ -201,7 +201,7 @@ class IaCCompetencyFramework:
                 "description": "Basic understanding, requires guidance",
                 "hours_required": 40,
                 "assessment_criteria": [
-                    "Can execute predefined IaC templates",
+                    "Can execute predefined Arkitektur som kod templates",
                     "Understands basic cloud concepts",
                     "Can follow established procedures"
                 ]
@@ -210,7 +210,7 @@ class IaCCompetencyFramework:
                 "description": "Can work independently on common tasks", 
                 "hours_required": 120,
                 "assessment_criteria": [
-                    "Can create simple IaC modules",
+                    "Can create simple Arkitektur som kod modules",
                     "Understands infrastructure dependencies",
                     "Can troubleshoot common issues"
                 ]
@@ -228,7 +228,7 @@ class IaCCompetencyFramework:
                 "description": "Thought leader, can drive organizational standards",
                 "hours_required": 300,
                 "assessment_criteria": [
-                    "Can drive organizational IaC strategy",
+                    "Can drive organizational Arkitektur som kod strategy",
                     "Can design complex multi-cloud solutions",
                     "Can lead transformation initiatives"
                 ]
@@ -332,7 +332,7 @@ class IaCCompetencyFramework:
                 ],
                 "practical_exercises": [
                     "Create GDPR-compliant data pipeline",
-                    "Implement network security best practices",
+                    "Implement network security arkitektur som kod best practices",
                     "Set up automated compliance monitoring",
                     "Design incident response procedures"
                 ],
@@ -407,7 +407,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 "duration_months": 6,
                 "objectives": [
                     "Establish DevOps culture basics",
-                    "Implement basic IaC practices",
+                    "Implement basic arkitektur som kod practices",
                     "Create cross-functional teams",
                     "Set up initial toolchain"
                 ],
@@ -420,7 +420,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 ],
                 "success_criteria": [
                     "All teams trained on DevOps basics",
-                    "Basic IaC deployment pipeline operational",
+                    "Basic Arkitektur som kod deployment pipeline operational",
                     "Cross-functional teams established",
                     "Initial toolchain adopted"
                 ]
@@ -429,20 +429,20 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 "name": "Capability Development", 
                 "duration_months": 8,
                 "objectives": [
-                    "Scale IaC practices across organization",
+                    "Scale arkitektur som kod practices across organization",
                     "Implement advanced automation",
                     "Establish monitoring och observability",
                     "Mature incident response processes"
                 ],
                 "activities": [
-                    "Advanced IaC training rollout",
+                    "Advanced Arkitektur som kod training rollout",
                     "Multi-environment deployment automation",
                     "Comprehensive monitoring implementation",
                     "Incident response process development",
                     "Security integration (DevSecOps)"
                 ],
                 "success_criteria": [
-                    "IaC practices adopted by all product teams",
+                    "arkitektur som kod practices adopted by all product teams",
                     "Automated deployment across all environments",
                     "Comprehensive observability implemented",
                     "Incident response processes mature"
@@ -639,9 +639,11 @@ performance_measurement_framework:
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Organisatorisk förändring utgör den mest kritiska komponenten för successful Infrastructure as Code adoption. Technical tools och processes kan implementeras relativt snabbt, men cultural transformation och team restructuring kräver sustained effort över extended periods för att achieve lasting impact.
 
-Svenska organisationer som investerar i comprehensive change management, cross-functional team development och continuous learning culture positionerar sig för long-term success med IaC practices. Investment i people development och organizational design delivers compounding returns genom improved collaboration, faster innovation cycles och enhanced operational efficiency.
+Svenska organisationer som investerar i comprehensive change management, cross-functional team development och continuous learning culture positionerar sig för long-term success med arkitektur som kod practices. Investment i people development och organizational design delivers compounding returns genom improved collaboration, faster innovation cycles och enhanced operational efficiency.
 
 Success requires balanced focus på technical capability development, cultural transformation och measurement-driven improvement. Organizations som treats change management som equally important som technical implementation achieve significantly better outcomes från their IaC transformation investments.
 

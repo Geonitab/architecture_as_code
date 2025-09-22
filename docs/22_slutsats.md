@@ -1,20 +1,20 @@
 # Slutsats
 
-![Framgångsnycklar för Infrastructure as Code](images/diagram_22_slutsats.png)
+![Framgångsnycklar för Infrastructure as Code (arkitektur som kod)](images/diagram_22_slutsats.png)
 
-Infrastructure as Code har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla infrastruktur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
+Infrastructure as Code (arkitektur som kod) har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla infrastruktur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
 
-## Viktiga lärdomar från vår IaC-resa
+## Viktiga lärdomar från vår Arkitektur som kod-resa
 
-Implementering av IaC kräver både teknisk excellens och organisatorisk förändring. Framgångsrika transformationer karaktäriseras av stark ledningsengagemang, omfattande utbildningsprogram och gradvis adoptionsstrategi som minimerar störningar av befintlig verksamhet, enligt de principer vi utforskade i [kapitel 17 om organisatorisk förändring](17_organisatorisk_forandring.md).
+Implementering av Arkitektur som kod kräver både teknisk excellens och organisatorisk förändring. Framgångsrika transformationer karaktäriseras av stark ledningsengagemang, omfattande utbildningsprogram och gradvis adoptionsstrategi som minimerar störningar av befintlig verksamhet, enligt de principer vi utforskade i [kapitel 17 om organisatorisk förändring](17_organisatorisk_forandring.md).
 
-Den tekniska aspekten av Infrastructure as Code kräver djup förståelse för molnteknologier, automatiseringsverktyg och säkerhetsprinciper som vi behandlade från [grundläggande principer](02_grundlaggande_principer.md) genom [avancerad policy as code](11_policy_sakerhet.md). Samtidigt är organisatoriska faktorer ofta avgörande för framgång, inklusive kulturell förändring, kompetensutveckling och processtandardisering.
+Den tekniska aspekten av Infrastructure as Code kräver djup förståelse för molnteknologier, arkitektur som kod-automatiseringsverktyg och säkerhetsprinciper som vi behandlade från [grundläggande principer](02_grundlaggande_principer.md) genom [avancerad policy as code](11_policy_sakerhet.md). Samtidigt är organisatoriska faktorer ofta avgörande för framgång, inklusive kulturell förändring, kompetensutveckling och processtandardisering.
 
 ### Progressionen genom teknisk mognad
 
-Vår genomgång började med fundamentala koncept som deklarativ kod och idempotens i [kapitel 2](02_grundlaggande_principer.md), utvecklades genom praktiska implementationsaspekter som [versionhantering](03_versionhantering.md) och [CI/CD-automation](05_automatisering_cicd.md), och kulminerade i avancerade topics som [containerorkestrering](08_containerisering.md) och [framtida AI-driven automation](21_framtida_trender.md).
+Vår genomgång började med fundamentala koncept som deklarativ kod och idempotens i [kapitel 2](02_grundlaggande_principer.md), utvecklades genom praktiska arkitektur som kod-implementationsaspekter som [versionhantering](03_versionhantering.md) och [CI/CD-automation](05_arkitektur som kod-automatisering_cicd.md), och kulminerade i avancerade topics som [containerorkestrering](08_containerisering.md) och [framtida AI-driven automation](21_framtida_trender.md).
 
-Säkerhetsaspekterna som introducerades i [kapitel 10](10_sakerhet.md) fördjupades genom [policy as code](11_policy_sakerhet.md) och [compliance-hantering](12_compliance.md), vilket visar hur säkerhet måste genomsyra hela IaC-implementationen från design till drift.
+Säkerhetsaspekterna som introducerades i [kapitel 10](10_sakerhet.md) fördjupades genom [policy as code](11_policy_sakerhet.md) och [compliance-hantering](12_compliance.md), vilket visar hur säkerhet måste genomsyra hela Arkitektur som kod-arkitektur som kod-implementationen från design till drift.
 
 ### Svenska organisationers unika utmaningar och möjligheter
 
@@ -22,11 +22,11 @@ Genom bokens kapitel har vi sett hur svenska organisationer står inför specifi
 
 - **GDPR och datasuveränitet**: Från [säkerhetskapitlet](10_sakerhet.md) till [policy implementation](11_policy_sakerhet.md) har vi sett hur svenska/EU-regleringar kräver särskild uppmärksamhet på dataskydd och compliance
 - **Klimatmål och hållbarhet**: [Framtidskapitlet](21_framtida_trender.md) belyste hur Sveriges klimatneutralitetsmål 2045 driver innovation inom carbon-aware computing och hållbar infrastruktur
-- **Digitaliseringsstrategi**: [Kapitel 19 om digitalisering](19_digitalisering.md) visade hur IaC möjliggör den digitala transformation som svenska organisationer genomgår
+- **Digitaliseringsstrategi**: [Kapitel 19 om digitalisering](19_digitalisering.md) visade hur Arkitektur som kod möjliggör den digitala transformation som svenska organisationer genomgår
 
 ## Framtida utveckling och teknologiska trender
 
-Cloud-native technologies, edge computing och artificiell intelligens driver nästa generation av Infrastructure as Code, som vi utforskade djupgående i [kapitel 21 om framtida trender](21_framtida_trender.md). Emerging technologies som GitOps, policy engines och intelligent automation kommer att ytterligare förenkla och förbättra IaC-capabilities.
+Cloud-native technologies, edge computing och artificiell intelligens driver nästa generation av Infrastructure as Code, som vi utforskade djupgående i [kapitel 21 om framtida trender](21_framtida_trender.md). Emerging technologies som GitOps, policy engines och intelligent automation kommer att ytterligare förenkla och förbättra Arkitektur som kod-capabilities.
 
 Utvecklingen mot serverless computing och fully managed services förändrar vad som behöver hanteras som infrastrukturkod. Framtiden pekar mot högre abstraktion där utvecklare fokuserar på business logic medan plattformen hanterar underliggande infrastruktur automatiskt, vilket vi såg exemplifierat i diskussionen om [Platform Engineering](19_kapitel18.md).
 
@@ -40,31 +40,31 @@ Hybrid classical-quantum systems kommer att emerge där kvantdatorer används f�
 
 ## Rekommendationer för organisationer
 
-Baserat på vår genomgång från grundläggande principer till avancerade implementationer, bör organisationer påbörja sin IaC-journey med pilot projects som demonstrerar värde utan att riskera kritiska system. Investment i team education och tool standardization är kritisk för långsiktig framgång och adoption across organisationen, enligt de strategier som beskrevs i [kapitel 10 om organisatorisk förändring](10_kapitel9.md).
+Baserat på vår genomgång från grundläggande principer till avancerade implementationer, bör organisationer påbörja sin Arkitektur som kod-journey med pilot projects som demonstrerar värde utan att riskera kritiska system. Investment i team education och tool standardization är kritisk för långsiktig framgång och adoption across organisationen, enligt de strategier som beskrevs i [kapitel 10 om organisatorisk förändring](10_kapitel9.md).
 
 ### Stegvis implementationsstrategi
 
-1. **Grundläggande utbildning**: Börja med att etablera förståelse för [IaC-principer](02_kapitel1.md) och [versionhantering](03_kapitel2.md)
+1. **Grundläggande utbildning**: Börja med att etablera förståelse för [Arkitektur som kod-principer](02_kapitel1.md) och [versionhantering](03_kapitel2.md)
 2. **Pilotprojekt**: Implementera [CI/CD-pipelines](04_kapitel3.md) för mindre, icke-kritiska system
 3. **Säkerhetsintegration**: Etablera [säkerhetspraxis](06_kapitel5.md) och [policy as code](12_kapitel11.md)
 4. **Skalning och automation**: Utöka till [containerorkestrering](11_kapitel10.md) och avancerade workflows
 5. **Framtidsberedskap**: Förbereda för [emerging technologies](19_kapitel18.md) och hållbarhetskrav
 
-Etablering av center of excellence eller platform teams kan accelerera adoption genom att tillhandahålla standardiserade verktyg, best practices och support för utvecklingsteam. Governance frameworks säkerställer säkerhet och compliance utan att begränsa innovation och agility, som vi såg i [compliance-kapitlet](14_kapitel13.md).
+Etablering av center of excellence eller platform teams kan accelerera adoption genom att tillhandahålla standardiserade verktyg, arkitektur som kod best practices och support för utvecklingsteam. Governance frameworks säkerställer säkerhet och compliance utan att begränsa innovation och agility, som vi såg i [compliance-kapitlet](14_kapitel13.md).
 
 ### Kontinuerlig förbättring och mätning
 
-Continuous improvement culture är avgörande där team regelbundet utvärderar och förbättrar sina IaC-processer. Metrics och monitoring hjälper till att identifiera förbättringsområden och mäta framsteg mot definierade mål, enligt de praktiska exempel som visades i [DevOps-kapitlet](07_kapitel6.md) och [organisationskapitlet](10_kapitel9.md).
+Continuous improvement culture är avgörande där team regelbundet utvärderar och förbättrar sina Arkitektur som kod-processer. Metrics och monitoring hjälper till att identifiera förbättringsområden och mäta framsteg mot definierade mål, enligt de praktiska exempel som visades i [DevOps-kapitlet](07_kapitel6.md) och [organisationskapitlet](10_kapitel9.md).
 
-Investment i observability och monitoring från [säkerhetskapitlet](06_kapitel5.md) och [praktiska implementationen](08_kapitel7.md) möjliggör data-driven decision making och kontinuerlig optimering av IaC-processer.
+Investment i observability och monitoring från [säkerhetskapitlet](06_kapitel5.md) och [praktiska implementationen](08_kapitel7.md) möjliggör data-driven decision making och kontinuerlig optimering av arkitektur som kod-processer.
 
 ## Slutord
 
-Infrastructure as Code representerar mer än bara teknisk evolution - det är en fundamental förändring av hur vi tänker kring infrastruktur. Genom att embraca IaC-principer kan organisationer uppnå ökad agility, reliability och scalability samtidigt som de reducerar operationella kostnader och risker.
+Infrastructure as Code representerar mer än bara teknisk evolution - det är en fundamental förändring av hur vi tänker kring infrastruktur. Genom att embraca Arkitektur som kod-principer kan organisationer uppnå ökad agility, reliability och scalability samtidigt som de reducerar operationella kostnader och risker.
 
-Vår resa genom denna bok - från [introduktionen till IaC-konceptet](01_inledning.md), genom [tekniska implementationsdetaljer](02_kapitel1.md) och [praktiska utvecklingsprocesser](03_kapitel2.md), till [avancerade säkerhetsstrategier](12_kapitel11.md) och [framtida teknologier](19_kapitel18.md) - visar att Infrastructure as Code är både en teknisk discipline och en organisatorisk transformation.
+Vår resa genom denna bok - från [introduktionen till Arkitektur som kod-konceptet](01_inledning.md), genom [tekniska implementationsdetaljer](02_kapitel1.md) och [praktiska utvecklingsprocesser](03_kapitel2.md), till [avancerade säkerhetsstrategier](12_kapitel11.md) och [framtida teknologier](19_kapitel18.md) - visar att Infrastructure as Code är både en teknisk discipline och en organisatorisk transformation.
 
-Framgångsrik implementation kräver tålamod, uthållighet och commitment till continuous learning. Organisationer som investerar i att bygga robust IaC-capabilities positionerar sig för framtida teknologiska förändringar och konkurrensfördel på marknaden.
+Framgångsrik implementation kräver tålamod, uthållighet och commitment till continuous learning. Organisationer som investerar i att bygga robust Arkitektur som kod-capabilities positionerar sig för framtida teknologiska förändringar och konkurrensfördel på marknaden.
 
 ### Avslutande reflektion
 
@@ -72,7 +72,7 @@ De principer som introducerades i bokens första kapitel - deklarativ kod, idemp
 
 Svenska organisationer har unika möjligheter att leda inom sustainable och compliant Infrastructure as Code implementation. Genom att kombinera teknisk excellens med stark fokus på hållbarhet, säkerhet och regulatorisk efterlevnad kan svenska företag och offentliga organisationer skapa competitive advantages som resonerar med nationella värderingar och globala trender.
 
-Bokens progression från teori till praktik, från grundläggande till avancerat, speglar den resa som varje organisation måste genomgå för att lyckas med Infrastructure as Code. Varje kapitel bygger på tidigare kunskap och förbereder för mer komplexa utmaningar - precis som en verklig IaC-implementation.
+Bokens progression från teori till praktik, från grundläggande till avancerat, speglar den resa som varje organisation måste genomgå för att lyckas med Infrastructure as Code. Varje kapitel bygger på tidigare kunskap och förbereder för mer komplexa utmaningar - precis som en verklig Arkitektur som kod-implementation.
 
 ### Vägen framåt
 

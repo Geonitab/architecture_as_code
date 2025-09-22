@@ -2,7 +2,7 @@
 
 ![Microservices-arkitektur](images/diagram_13_kapitel12.png)
 
-Microservices-arkitektur representerar en fundamental paradigmförändring i hur vi designar, bygger och driver moderna applikationer. Denna arkitekturstil bryter ner traditionella monolitiska system i mindre, oberoende och specialiserade tjänster som kan utvecklas, deployeras och skalas självständigt. När denna kraftfulla arkitektur kombineras med Infrastructure as Code (IaC), skapas en synergistisk effekt som möjliggör både teknisk excellens och organisatorisk agilitet.
+Microservices-arkitektur representerar en fundamental paradigmförändring i hur vi designar, bygger och driver moderna applikationer. Denna arkitekturstil bryter ner traditionella monolitiska system i mindre, oberoende och specialiserade tjänster som kan utvecklas, deployeras och skalas självständigt. När denna kraftfulla arkitektur kombineras med Infrastructure as Code (arkitektur som kod) (IaC), skapas en synergistisk effekt som möjliggör både teknisk excellens och organisatorisk agilitet.
 
 För svenska organisationer innebär microservices-arkitektur som kod inte bara en teknisk transformation, utan också en kulturell och organisatorisk evolution. Detta kapitel utforskar hur svenska företag kan leverera världsledande digitala tjänster samtidigt som de upprätthåller de höga standarder för kvalitet, säkerhet och hållbarhet som kännetecknar svensk industri.
 
@@ -34,7 +34,7 @@ Sverige har en lång tradition av att bygga robusta, tillförlitliga system - fr
 **Skalbarhet anpassad till svenska marknadsförhållanden**
 Svenska marknaden karakteriseras av säsongsvariation (sommarsemester, jul), specifika användningsmönster och växelverkan mellan lokal och global närvaro. Microservices möjliggör sofistikerad skalning där olika delar av systemet kan anpassas till svenska användningsmönster utan att påverka global prestanda.
 
-## Microservices design principles för IaC
+## Microservices design principles för Arkitektur som kod
 
 Att framgångsrikt implementera microservices-arkitektur kräver en djup förståelse för de designprinciper som styr både service-design och infrastrukturen som stödjer dem. Dessa principer är inte bara tekniska riktlinjer, utan representerar en filosofi för hur moderna, distribuerade system bör byggas och drivas.
 
@@ -48,7 +48,7 @@ För svenska organisationer, där tydlig ansvarsfördelning och transparens är 
 **Loose coupling och high cohesion**
 Microservices måste designas för att minimera beroenden mellan tjänster samtidigt som relaterad funktionalitet samlas inom samma tjänst. Detta kräver noggrann reflektion över tjänstegränser och gränssnitt. Lös koppling möjliggör oberoende utveckling och deployment, medan hög kohesion säkerställer att tjänster är meningsfulla och hanteringsbara enheter.
 
-Infrastructure as Code spelar en kritisk roll här genom att definiera inte bara hur tjänster deployeras, utan också hur de kommunicerar, vilka beroenden de har, och hur dessa beroenden hanteras över tid. Denna infrastrukturkod blir en levande dokumentation av systemets arkitektur och beroenden.
+Infrastructure as Code (arkitektur som kod) spelar en kritisk roll här genom att definiera inte bara hur tjänster deployeras, utan också hur de kommunicerar, vilka beroenden de har, och hur dessa beroenden hanteras över tid. Denna infrastrukturkod blir en levande dokumentation av systemets arkitektur och beroenden.
 
 **Autonomi och ägandeskap**
 Varje mikroservice-team ska ha fullständig kontroll över sin tjänsts livscykkel - från design och utveckling till testning, deployment och drift. Detta innebär att Infrastructure as Code-definitioner också måste ägas och hanteras av samma team som utvecklar tjänsten.
@@ -62,7 +62,7 @@ Svenska teknikföretag som Spotify, Klarna och King har pioneerat microservices-
 **Spotify's Squad Model i mikroservice-kontext:**
 Spotify utvecklade sitt berömda Squad Model som perfekt alignar med microservices-arkitektur där varje Squad äger end-to-end ansvar för specifika affärskapabiliteter. Deras Infrastructure as Code-approach integrerar organisatorisk struktur med teknisk arkitektur på ett sätt som möjliggör både skalbarhet och innovation.
 
-Spotify's modell illustrerar hur microservices-arkitektur inte bara är en teknisk beslut, utan en fundamental organisatorisk strategi. Genom att aligna team-struktur med service-arkitektur skapas en naturlig koppling mellan affärsansvar och teknisk implementation. Detta möjliggör snabbare innovation eftersom team kan fatta beslut om både affärslogik och teknisk implementation utan omfattande koordination med andra team.
+Spotify's modell illustrerar hur microservices-arkitektur inte bara är en teknisk beslut, utan en fundamental organisatorisk strategi. Genom att aligna team-struktur med service-arkitektur skapas en naturlig koppling mellan affärsansvar och teknisk arkitektur som kod-implementation. Detta möjliggör snabbare innovation eftersom team kan fatta beslut om både affärslogik och teknisk arkitektur som kod-implementation utan omfattande koordination med andra team.
 
 Följande exempel visar hur Spotify-inspirerad infrastructure kan implementeras för svenska organisationer:
 
@@ -1903,6 +1903,8 @@ volumes:
 ```
 
 ### Terraform för Microservices Infrastructure
+
+Arkitektur som kod-principerna inom detta område
 ```hcl
 # microservices-infrastructure.tf
 resource "google_container_cluster" "microservices_cluster" {
@@ -1979,6 +1981,8 @@ resource "google_monitoring_alert_policy" "microservices_health" {
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Microservices-arkitektur som kod representerar mer än bara en teknisk evolution - det är en transformation som påverkar hela organisationen, från hur team organiseras till hur affärsprocesser implementeras. För svenska organisationer erbjuder denna arkitekturstil särskilda fördelar som alignar perfekt med svenska värderingar och arbetssätt.
 
 ### Strategiska fördelar för svenska organisationer
@@ -1995,7 +1999,7 @@ Den svenska approach till innovation karakteriseras av genomtänkt risktagande o
 **Hållbarhet som kompetitiv fördel**
 Svenska organisationers commitment till environmental sustainability blir en konkret competitive advantage genom microservices som kan optimeras för energy efficiency och carbon footprint. Detta är inte bara miljömässigt ansvarigt utan också ekonomiskt smart när energy costs utgör en significant del av operational expenses.
 
-### Tekniska lärdomar och best practices
+### Tekniska lärdomar och arkitektur som kod best practices
 
 **Infrastructure as Code som enabler**
 Framgångsrik microservices implementation är omöjlig utan robust Infrastructure as Code practices. Varje aspekt av systemet - från service deployment till network communication - måste definieras declaratively och hanteras through automated processes.

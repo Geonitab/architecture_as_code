@@ -1,10 +1,10 @@
 # Om författarna
 
-Detta kapitel presenterar de personer och organisationer som bidragit till skapandet av "Arkitektur som kod" - en omfattande guide för praktisk tillämpning av Infrastructure as Code i svenska organisationer.
+Detta kapitel presenterar de personer och organisationer som bidragit till skapandet av "Arkitektur som kod" - en omfattande guide för praktisk tillämpning av Infrastructure as Code (arkitektur som kod) i svenska organisationer.
 
 ![Författare och bidragsgivare](images/diagram_25_authors.png)
 
-*En översikt över de experter och organisationer som format innehållet i denna bok genom sina bidrag inom Architecture as Code och Infrastructure as Code.*
+*En översikt över de experter och organisationer som format innehållet i denna bok genom sina bidrag inom Architecture as Code och Infrastructure as Code (arkitektur som kod).*
 
 ## Huvudförfattare
 
@@ -14,13 +14,13 @@ Detta kapitel presenterar de personer och organisationer som bidragit till skapa
 
 **Expertområden:**
 - Architecture as Code metodologi
-- Infrastructure as Code implementation
+- Infrastructure as Code arkitektur som kod-implementation
 - DevOps och CI/CD automation
 - Molnarkitektur och containerisering
 - Säkerhet och compliance i svenska sammanhang
 
 **Bakgrund:**
-Bokverkstaden grundades med målet att överbrygga klyftan mellan teoretiska arkitekturprinciper och praktisk implementation i svenska organisationer. Genom att kombinera akademisk rigorositet med verklig branschexpertis har teamet skapat en resurs som talar direkt till svenska IT-organisationers behov.
+Bokverkstaden grundades med målet att överbrygga klyftan mellan teoretiska arkitekturprinciper och praktisk arkitektur som kod-implementation i svenska organisationer. Genom att kombinera akademisk rigorositet med verklig branschexpertis har teamet skapat en resurs som talar direkt till svenska IT-organisationers behov.
 
 ## Bidragande experter
 
@@ -76,7 +76,7 @@ Bokens innehåll har granskats av:
 Flera svenska organisationer har bidragit med:
 
 - **Fallstudier** från verkliga Infrastructure as Code-implementationer
-- **Best practices** från svenska molnmigreringar
+- **arkitektur som kod best practices** från svenska molnmigreringar
 - **Compliance-vägledning** för svenska regelverk
 - **Säkerhetsperspektiv** från svenska cybersäkerhetsexperter
 
@@ -148,7 +148,7 @@ Denna bok är designad som en levande resurs som utvecklas med:
 
 - **Community feedback** - Återkoppling från svenska organisationer
 - **Teknisk evolution** - Uppdateringar när nya verktyg och metoder utvecklas
-- **Praktiska lärdomar** - Integration av nya case studies och best practices
+- **Praktiska lärdomar** - Integration av nya case studies och arkitektur som kod best practices
 - **Språkutveckling** - Förfining av svensk teknisk terminologi
 
 ### Bidra till framtida versioner
@@ -188,6 +188,8 @@ All återanvändning ska erkänna ursprungliga författare och bidragsgivare enl
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 "Arkitektur som kod" representerar ett kollektivt arbete från svenska experter inom arkitektur, infrastruktur och systemutveckling. Genom att kombinera teoretisk grund med praktisk expertis har detta team skapat en resurs som specifikt möter svenska organisationers behov inom Architecture as Code och Infrastructure as Code.
 
 Bokens framgång kommer från mångfalden av perspektiv, djupet av praktisk erfarenhet och engagemanget för att skapa verklig värde för svenska tekniska organisationer. Vi hoppas att denna resurs kommer att accelerera adoptionen av Architecture as Code-principer och bidra till förbättrade tekniska utfall över hela svenska tech-sektorn.

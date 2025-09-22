@@ -1,14 +1,14 @@
 # Molnarkitektur som kod
 
-Molnarkitektur som kod representerar den naturliga evolutionen av Infrastructure as Code i cloud-native miljöer. Genom att utnyttja molnleverantörers API:er och tjänster kan organisationer skapa skalbara, resilient och kostnadseffektiva arkitekturer helt genom kod. Som vi såg i [kapitel 2 om grundläggande principer](02_kapitel1.md), är denna approach fundamental för moderna organisationer som strävar efter digital transformation och operational excellence.
+Molnarkitektur som kod representerar den naturliga evolutionen av Infrastructure as Code (arkitektur som kod) i cloud-native miljöer. Genom att utnyttja molnleverantörers API:er och tjänster kan organisationer skapa skalbara, resilient och kostnadseffektiva arkitekturer helt genom arkitektur som kod. Som vi såg i [kapitel 2 om grundläggande principer](02_kapitel1.md), är denna approach fundamental för moderna organisationer som strävar efter digital transformation och operational excellence.
 
 ![Molnarkitektur som kod](images/diagram_05_kapitel4.png)
 
-Diagrammet illustrerar progression från multi-cloud environments genom provider abstraction och resource management till state management och cross-region deployment capabilities. Denna progression möjliggör den typ av skalbar automatisering som vi kommer att fördjupa i [kapitel 4 om CI/CD-pipelines](04_kapitel3.md) och den organisatoriska förändring som diskuteras i [kapitel 10](10_kapitel9.md).
+Diagrammet illustrerar progression från multi-cloud environments genom provider abstraction och resource management till state management och cross-region deployment capabilities. Denna progression möjliggör den typ av skalbar arkitektur som kod-automatisering som vi kommer att fördjupa i [kapitel 4 om CI/CD-pipelines](04_kapitel3.md) och den organisatoriska förändring som diskuteras i [kapitel 10](10_kapitel9.md).
 
-## Molnleverantörers ekosystem för IaC
+## Molnleverantörers ekosystem för Arkitektur som kod
 
-Svenska organisationer står inför ett rikt utbud av molnleverantörer, var och en med sina egna styrkor och specialiseringar. För att uppnå framgångsrik cloud adoption måste organisationer förstå varje leverantörs unika capabilities och hur dessa kan utnyttjas genom Infrastructure as Code approaches.
+Svenska organisationer står inför ett rikt utbud av molnleverantörer, var och en med sina egna styrkor och specialiseringar. För att uppnå framgångsrik cloud adoption måste organisationer förstå varje leverantörs unika capabilities och hur dessa kan utnyttjas genom Infrastructure as Code (arkitektur som kod) approaches.
 
 ### Amazon Web Services (AWS) och svenska organisationer
 
@@ -928,7 +928,7 @@ output logAnalyticsWorkspaceId string = gdprCompliance ? logAnalytics.id : ''
 
 ### Google Cloud Platform för svenska innovationsorganisationer
 
-Google Cloud Platform (GCP) attraherar svenska tech-företag och startups genom sina machine learning capabilities och innovativa tjänster. Google Cloud Deployment Manager och Terraform Google Provider utgör primary IaC tools för GCP.
+Google Cloud Platform (GCP) attraherar svenska tech-företag och startups genom sina machine learning capabilities och innovativa tjänster. Google Cloud Deployment Manager och Terraform Google Provider utgör primary Arkitektur som kod tools för GCP.
 
 **Google Cloud Deployment Manager** använder YAML eller Python för Infrastructure as Code definitions och integrerar naturligt med Google Cloud services:
 
@@ -1931,7 +1931,7 @@ resource "aws_security_group" "resolver_sg" {
 
 Multi-cloud Infrastructure as Code strategier möjliggör distribution av workloads across flera molnleverantörer för att optimera kostnad, prestanda, och resiliens. Provider-agnostic tools som Terraform eller Pulumi används för att abstrahera leverantörspecifika skillnader och möjliggöra portabilitet.
 
-Hybrid cloud implementations kombinerar on-premises infrastruktur med public cloud services genom VPN connections, dedicated links, och edge computing. Consistent deployment och management processer across environments säkerställer operational efficiency och säkerhetskompliance.
+Hybrid cloud arkitektur som kod-implementations kombinerar on-premises infrastruktur med public cloud services genom VPN connections, dedicated links, och edge computing. Consistent deployment och management processer across environments säkerställer operational efficiency och säkerhetskompliance.
 
 ### Terraform för multi-cloud abstraktion
 
@@ -2357,7 +2357,9 @@ output "compliance_status" {
 
 ### Pulumi för programmatisk multi-cloud Infrastructure as Code
 
-Pulumi erbjuder en alternativ approach till multi-cloud IaC genom att möjliggöra användning av vanliga programmeringsspråk som TypeScript, Python, Go, och C#. För svenska utvecklarteam som föredrar programmatisk approach över deklarativ konfiguration:
+Arkitektur som kod-principerna inom detta område
+
+Pulumi erbjuder en alternativ approach till multi-cloud Arkitektur som kod genom att möjliggöra användning av vanliga programmeringsspråk som TypeScript, Python, Go, och C#. För svenska utvecklarteam som föredrar programmatisk approach över deklarativ konfiguration:
 
 ```typescript
 // pulumi/multi-cloud/index.ts
@@ -2810,7 +2812,7 @@ export const complianceStatus = {
 
 Serverless Infrastructure as Code fokuserar på function definitions, event triggers, och managed service configurations istället för traditionell server management. Detta approach reducerar operationell overhead och möjliggör automatic scaling baserat på actual usage patterns.
 
-Event-driven architectures implementeras genom cloud functions, message queues, och data streams definierade som IaC. Integration mellan services hanteras genom IAM policies, API definitions, och network configurations som säkerställer security och performance requirements.
+Event-driven architectures implementeras genom cloud functions, message queues, och data streams definierade som Arkitektur som kod. Integration mellan services hanteras genom IAM policies, API definitions, och network configurations som säkerställer security och performance requirements.
 
 ### Function-as-a-Service (FaaS) patterns för svenska organisationer
 
@@ -3688,7 +3690,7 @@ def cost_monitoring_handler(event, context):
         return {"status": "error", "error": str(e)}
 ```
 
-## Praktiska implementationsexempel
+## Praktiska arkitektur som kod-implementationsexempel
 
 För att demonstrera molnarkitektur som kod i praktiken för svenska organisationer, presenteras här kompletta implementationsexempel som visar how real-world scenarios kan lösas:
 
@@ -3830,6 +3832,8 @@ spec:
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Molnarkitektur som kod representerar en fundamental evolution av Infrastructure as Code för svenska organisationer som opererar i cloud-native miljöer. Genom att utnyttja cloud provider-specifika tjänster och capabilities kan organisationer uppnå unprecedented skalbarhet, resiliens och kostnadseffektivitet samtidigt som svenska compliance-krav uppfylls.
 
 De olika cloud provider-ekosystemen - AWS, Azure, och Google Cloud Platform - erbjuder var sitt unika värde för svenska organisationer. AWS dominerar genom omfattande tjänsteportfölj och stark närvaro i Stockholm-regionen. Azure attraherar svenska enterprise-organisationer genom stark Microsoft-integration och Sweden Central datacenter. Google Cloud Platform lockar innovationsorganisationer med sina machine learning capabilities och advanced analytics services.
@@ -3848,7 +3852,7 @@ Investment i molnarkitektur som kod betalar sig genom improved developer product
 
 Källor:
 - AWS. "Infrastructure as Code on AWS." Amazon Web Services Architecture Center.
-- Google Cloud. "Infrastructure as Code Best Practices." Google Cloud Documentation.
+- Google Cloud. "Infrastructure as Code arkitektur som kod best practices." Google Cloud Documentation.
 - Microsoft Azure. "Azure Resource Manager Templates." Azure Documentation.
 - HashiCorp. "Terraform Multi-Cloud Infrastructure." HashiCorp Learn Platform.
 - Pulumi. "Cloud Programming Model." Pulumi Documentation.

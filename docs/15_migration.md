@@ -2,23 +2,23 @@
 
 ![Migrationsprocess](images/diagram_18_kapitel17.png)
 
-*Migration från traditionell infrastruktur till Infrastructure as Code kräver systematisk planering, stegvis implementation och kontinuerlig validering. Diagrammet visar den strukturerade processen från assessment till fullständig IaC-adoption.*
+*Migration från traditionell infrastruktur till Infrastructure as Code (arkitektur som kod) kräver systematisk planering, stegvis arkitektur som kod-implementation och kontinuerlig validering. Diagrammet visar den strukturerade processen från assessment till fullständig Arkitektur som kod-adoption.*
 
 ## Övergripande beskrivning
 
-Migration från traditionell, manuellt konfigurerad infrastruktur till Infrastructure as Code representerar en av de mest kritiska transformationerna för moderna IT-organisationer. Denna process kräver inte endast teknisk omstrukturering utan också organisatorisk förändring och kulturell adaption till kodbaserade arbetssätt.
+Migration från traditionell, manuellt konfigurerad infrastruktur till Infrastructure as Code (arkitektur som kod) representerar en av de mest kritiska transformationerna för moderna IT-organisationer. Denna process kräver inte endast teknisk omstrukturering utan också organisatorisk förändring och kulturell adaption till kodbaserade arbetssätt.
 
 Svenska organisationer står inför unika migreringsutmaningar genom legacy-system som utvecklats över decennier, regulatoriska krav som begränsar förändringstakt, och behovet av att balansera innovation med operational stability. Successful migration kräver comprehensive planning som minimerar risker samtidigt som den möjliggör snabb value realization.
 
-Modern migrationsstrategier måste accommodera hybrid scenarios där legacy infrastructure coexisterar med IaC-managed resources under extended transition periods. Detta hybrid approach möjliggör gradual migration som reducerar business risk samtidigt som det möjliggör immediate benefits från IaC adoption.
+Modern migrationsstrategier måste accommodera hybrid scenarios där legacy infrastructure coexisterar med Arkitektur som kod-managed resources under extended transition periods. Detta hybrid approach möjliggör gradual migration som reducerar business risk samtidigt som det möjliggör immediate benefits från IaC adoption.
 
-Cloud-native migration pathways erbjuder opportuniteter att modernisera arkitektur samtidigt som infrastructure management kodifieras. Svenska företag kan leverage denna transformation för att implementera sustainability initiatives, improve cost efficiency och enhance security posture genom systematic IaC adoption.
+Cloud-native migration pathways erbjuder opportuniteter att modernisera arkitektur samtidigt som infrastructure management kodifieras. Svenska företag kan leverage denna transformation för att implementera sustainability initiatives, improve cost efficiency och enhance security posture genom systematic arkitektur som kod adoption.
 
 ## Assessment och planning faser
 
-Comprehensive infrastructure assessment utgör foundationen för successful IaC migration. Detta inkluderar inventory av existing resources, dependency mapping, risk assessment och cost-benefit analysis som informerar migration strategy och timeline planning.
+Comprehensive infrastructure assessment utgör foundationen för successful Arkitektur som kod migration. Detta inkluderar inventory av existing resources, dependency mapping, risk assessment och cost-benefit analysis som informerar migration strategy och timeline planning.
 
-Discovery automation verktyg som AWS Application Discovery Service, Azure Migrate och Google Cloud migration tools kan accelerate assessment processen genom automated resource inventory och dependency detection. Dessa verktyg genererar data som kan inform IaC template generation och migration prioritization.
+Discovery automation verktyg som AWS Application Discovery Service, Azure Migrate och Google Cloud migration tools kan accelerate assessment processen genom automated resource inventory och dependency detection. Dessa verktyg genererar data som kan inform Arkitektur som kod template generation och migration prioritization.
 
 Risk assessment måste identifiera critical systems, single points of failure och compliance dependencies som påverkar migration approach. Svenska financial institutions och healthcare organizations måste särskilt consider regulatory implications och downtime restrictions som påverkar migration windows.
 
@@ -36,21 +36,21 @@ Application portfolio analysis hjälper determine optimal migration strategy per
 
 ## Gradvis kodifiering av infrastruktur
 
-Infrastructure inventory automation genom tools som Terraform import, CloudFormation drift detection och Azure Resource Manager templates enables systematic conversion av existing resources till IaC management. Automated discovery kan generate initial IaC configurations som require refinement men accelerate kodification process.
+Infrastructure inventory automation genom tools som Terraform import, CloudFormation drift detection och Azure Resource Manager templates enables systematic conversion av existing resources till Arkitektur som kod management. Automated discovery kan generate initial Arkitektur som kod configurations som require refinement men accelerate kodification process.
 
-Template standardization genom reusable modules och organizational patterns ensures consistency across migrated infrastructure samtidigt som det reduces future maintenance overhead. Svenska government agencies har successfully implemented standardized IaC templates för common infrastructure patterns across different departments.
+Template standardization genom reusable modules och organizational patterns ensures consistency across migrated infrastructure samtidigt som det reduces future maintenance overhead. Svenska government agencies har successfully implemented standardized Arkitektur som kod templates för common infrastructure patterns across different departments.
 
-Configuration drift elimination genom IaC adoption requires systematic reconciliation mellan existing resource configurations och desired IaC state. Gradual enforcement av IaC-managed configuration ensures infrastructure stability samtidigt som det eliminates manual configuration inconsistencies.
+Configuration drift elimination genom arkitektur som kod adoption requires systematic reconciliation mellan existing resource configurations och desired Arkitektur som kod state. Gradual enforcement av Arkitektur som kod-managed configuration ensures infrastructure stability samtidigt som det eliminates manual configuration inconsistencies.
 
 Version control integration för infrastructure changes enables systematic tracking av migration progress samt provides rollback capabilities för problematic changes. Git-based workflows för infrastructure management etablishes foundation för collaborative infrastructure development och operational transparency.
 
 ## Team transition och kompetensutveckling
 
-Skills development programs måste prepare traditional system administrators och network engineers för IaC-based workflows. Training curricula ska encompass Infrastructure as Code tools, cloud platforms, DevOps practices och automation scripting för comprehensive capability development.
+Skills development programs måste prepare traditional system administrators och network engineers för Arkitektur som kod-based workflows. Training curricula ska encompass Infrastructure as Code tools, cloud platforms, DevOps practices och automation scripting för comprehensive capability development.
 
-Organizational structure evolution från traditional silos till cross-functional teams enables effective IaC adoption. Svenska telecommunications companies som Telia har successfully transitioned från separate development och operations teams till integrated DevOps teams som manage infrastructure as code.
+Organizational structure evolution från traditional silos till cross-functional teams enables effective arkitektur som kod adoption. Svenska telecommunications companies som Telia har successfully transitioned från separate development och operations teams till integrated DevOps teams som manage infrastructure as code.
 
-Cultural transformation från manual processes till automated workflows requires change management programs som address resistance och promotes automation adoption. Success stories från early adopters can motivate broader organizational acceptance av IaC practices.
+Cultural transformation från manual processes till automated workflows requires change management programs som address resistance och promotes automation adoption. Success stories från early adopters can motivate broader organizational acceptance av arkitektur som kod practices.
 
 Mentorship programs pairing experienced cloud engineers med traditional infrastructure teams accelerates knowledge transfer och reduces adoption friction. External consulting support kan supplement internal capabilities during initial migration phases för complex enterprise environments.
 
@@ -67,7 +67,7 @@ import pandas as pd
 
 class InfrastructureMigrationAssessment:
     """
-    Automatiserad bedömning av befintlig infrastruktur för IaC-migration
+    Automatiserad bedömning av befintlig infrastruktur för Arkitektur som kod-migration
     """
     
     def __init__(self, region='eu-north-1'):
@@ -77,7 +77,7 @@ class InfrastructureMigrationAssessment:
         self.cloudformation = boto3.client('cloudformation', region_name=region)
         
     def discover_unmanaged_resources(self) -> Dict:
-        """Upptäck resurser som inte hanteras av IaC"""
+        """Upptäck resurser som inte hanteras av Arkitektur som kod"""
         
         unmanaged_resources = {
             'ec2_instances': self._find_unmanaged_ec2(),
@@ -108,7 +108,7 @@ class InfrastructureMigrationAssessment:
         for reservation in response['Reservations']:
             for instance in reservation['Instances']:
                 if instance['State']['Name'] != 'terminated':
-                    # Kontrollera om instansen är managed av IaC
+                    # Kontrollera om instansen är managed av Arkitektur som kod
                     is_managed = self._is_resource_managed(instance.get('Tags', []))
                     
                     if not is_managed:
@@ -127,7 +127,7 @@ class InfrastructureMigrationAssessment:
         return unmanaged_instances
     
     def _is_resource_managed(self, tags: List[Dict]) -> bool:
-        """Kontrollera om resurs är managed av IaC"""
+        """Kontrollera om resurs är managed av Arkitektur som kod"""
         
         iac_indicators = [
             'aws:cloudformation:stack-name',
@@ -228,7 +228,7 @@ resource "aws_instance" "migrated_instance_{i}" {{
                 'resources': low_complexity,
                 'estimated_duration': f"{len(low_complexity) * 2} dagar",
                 'start_date': 'Vecka 1-2',
-                'prerequisites': ['IaC training completion', 'Tool setup', 'Backup verification']
+                'prerequisites': ['Arkitektur som kod training completion', 'Tool setup', 'Backup verification']
             },
             'wave_2_medium_risk': {
                 'resources': medium_complexity,
@@ -251,7 +251,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
     """Generera comprehensive migration playbook för svenska organisationer"""
     
     playbook = f"""
-# IaC Migration Playbook för {assessment_results.get('organization_name', 'Organization')}
+# Arkitektur som kod Migration Playbook för {assessment_results.get('organization_name', 'Organization')}
 
 ## Executive Summary
 - **Totalt antal resurser att migrera:** {assessment_results['summary']['total_unmanaged_resources']}
@@ -262,7 +262,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 ## Fas 1: Förberedelse (Vecka 1-2)
 
 ### Team Training
-- [ ] IaC grundutbildning för alla teammedlemmar
+- [ ] Arkitektur som kod grundutbildning för alla teammedlemmar
 - [ ] Terraform/CloudFormation hands-on workshops
 - [ ] Git workflows för infrastructure management
 - [ ] Svenska compliance-krav (GDPR, MSB)
@@ -283,7 +283,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 
 ### Low-Risk Resources Migration
 - [ ] Migrera development/test miljöer först
-- [ ] Validera IaC templates och processer
+- [ ] Validera Arkitektur som kod templates och processer
 - [ ] Dokumentera lessons learned
 - [ ] Refinera migration procedures
 
@@ -313,10 +313,10 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] Infrastructure cost review och optimization
 - [ ] Team workflow refinement
 - [ ] Documentation och knowledge transfer
-- [ ] Continuous improvement implementation
+- [ ] Continuous improvement arkitektur som kod-implementation
 
 ### Long-term Sustainability
-- [ ] Regular IaC best practices review
+- [ ] Regular Arkitektur som kod arkitektur som kod best practices review
 - [ ] Team cross-training program
 - [ ] Tool evaluation och updates
 - [ ] Compliance monitoring automation
@@ -508,7 +508,7 @@ Outputs:
 ```bash
 #!/bin/bash
 # migration/test-migration.sh
-# Comprehensive testing script för IaC migration validation
+# Comprehensive testing script för Arkitektur som kod migration validation
 
 set -e
 
@@ -516,7 +516,7 @@ PROJECT_NAME=${1:-"migration-test"}
 ENVIRONMENT=${2:-"staging"}
 REGION=${3:-"eu-north-1"}
 
-echo "Starting IaC migration testing för projekt: $PROJECT_NAME"
+echo "Starting Arkitektur som kod migration testing för projekt: $PROJECT_NAME"
 echo "Environment: $ENVIRONMENT"
 echo "Region: $REGION"
 
@@ -689,16 +689,18 @@ echo "5. Document lessons learned"
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Migration från traditionell infrastruktur till Infrastructure as Code representerar en kritisk transformation som kräver systematisk planering, gradvis implementation och omfattande testing. Svenska organisationer som framgångsrikt genomför denna migration positionerar sig för ökad agility, förbättrad säkerhet och betydande kostnadsmässiga fördelar.
 
 Framgångsfaktorer inkluderar comprehensive assessment, realistisk timeline planning, extensive team training och robust testing frameworks. Hybrid migration strategies möjliggör risk minimization samtidigt som de levererar immediate value från IaC adoption.
 
-Investment i proper migration planning och execution resulterar i långsiktiga fördelar genom improved operational efficiency, enhanced security posture och reduced technical debt. Svenska organisationer som följer systematic migration approaches kan förvänta sig successful transformation till modern, kodbaserad infrastrukturhantering.
+Investment i proper migration planning och execution resulterar i långsiktiga fördelar genom improved operational efficiency, enhanced security posture och reduced technical debt. Svenska organisationer som följer systematic migration approaches kan förvänta sig successful transformation till modern, arkitektur som kod-baserad infrastrukturhantering.
 
 ## Källor och referenser
 
 - AWS. "Large-Scale Migration och Modernization Guide." Amazon Web Services, 2023.
-- Microsoft. "Azure Migration Framework och Best Practices." Microsoft Azure Documentation, 2023.
+- Microsoft. "Azure Migration Framework och arkitektur som kod best practices." Microsoft Azure Documentation, 2023.
 - Google Cloud. "Infrastructure Migration Strategies." Google Cloud Architecture Center, 2023.
 - Gartner. "Infrastructure Migration Trends in Nordic Countries." Gartner Research, 2023.
 - ITIL Foundation. "IT Service Management för Cloud Migration." AXELOS, 2023.

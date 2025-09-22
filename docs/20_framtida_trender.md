@@ -2,11 +2,11 @@
 
 ![Framtida trender](images/diagram_19_kapitel18.png)
 
-*Landskapet för Infrastructure as Code utvecklas snabbt med nya paradigm som edge computing, quantum-safe kryptografi och AI-driven automation. Diagrammet visar konvergensen av emerging technologies som formar nästa generation av infrastrukturlösningar.*
+*Landskapet för Infrastructure as Code (arkitektur som kod) utvecklas snabbt med nya paradigm som edge computing, quantum-safe kryptografi och AI-driven automation. Diagrammet visar konvergensen av emerging technologies som formar nästa generation av infrastrukturlösningar.*
 
 ## Övergripande beskrivning
 
-Infrastructure as Code står inför omfattande transformation driven av teknologiska genombrott inom artificiell intelligens, quantum computing, edge computing och miljömedvetenhet. Som vi har sett genom bokens progression från [grundläggande principer](02_kapitel1.md) till [avancerade policy-implementationer](12_kapitel11.md), utvecklas IaC kontinuerligt för att möta nya utmaningar och möjligheter.
+Infrastructure as Code (arkitektur som kod) står inför omfattande transformation driven av teknologiska genombrott inom artificiell intelligens, quantum computing, edge computing och miljömedvetenhet. Som vi har sett genom bokens progression från [grundläggande principer](02_kapitel1.md) till [avancerade policy-arkitektur som kod-implementationer](12_kapitel11.md), utvecklas IaC kontinuerligt för att möta nya utmaningar och möjligheter.
 
 Framtiden för Infrastructure as Code kommer att präglas av intelligent automation som kan fatta komplexa beslut baserat på historiska data, real-time metrics och prediktiv analys. Machine learning-algoritmer kommer att optimera resurstilldelning, förutsäga systemfel och automatiskt implementera säkerhetsförbättringar utan mänsklig intervention.
 
@@ -23,6 +23,8 @@ Predictive scaling använder historiska data och machine learning models för at
 Anomaly detection systems powered av unsupervised learning kan identifiera unusual patterns i infrastructure behavior som can indicate security threats, performance degradation eller configuration drift. Automated response systems can then implement corrective actions based på predefined policies och learned behaviors.
 
 ### AI-Driven Infrastructure Optimization
+
+Arkitektur som kod-principerna inom detta område
 
 ```python
 # ai_optimization/intelligent_scaling.py
@@ -118,7 +120,7 @@ class AIInfrastructureOptimizer:
         return {
             'total_potential_savings_sek': sum(r['annual_savings_sek'] for r in prioritized_recommendations),
             'recommendations': prioritized_recommendations,
-            'implementation_roadmap': self._create_implementation_roadmap(prioritized_recommendations),
+            'arkitektur som kod-implementation_roadmap': self._create_implementation_roadmap(prioritized_recommendations),
             'risk_assessment': self._assess_optimization_risks(prioritized_recommendations)
         }
     
@@ -381,11 +383,13 @@ class QuantumSafeInfrastructure:
 
 Edge computing förändrar fundamentalt hur Infrastructure as Code designas och implementeras. Istället för centraliserade molnresurser distribueras compute resources närmare användare och data sources för att minimera latency och förbättra prestanda.
 
-5G networks och IoT proliferation driver behovet av edge infrastructure som kan hantera massive amounts av real-time data processing. Svenska företag inom autonoma fordon, smart manufacturing och telecommunications leder utvecklingen av edge computing applications som kräver sophisticated IaC orchestration.
+5G networks och IoT proliferation driver behovet av edge infrastructure som kan hantera massive amounts av real-time data processing. Svenska företag inom autonoma fordon, smart manufacturing och telecommunications leder utvecklingen av edge computing applications som kräver sophisticated Arkitektur som kod orchestration.
 
 Multi-cloud och hybrid edge deployments kräver nya automation patterns som kan hantera resource distribution över geografiskt distribuerade locations. GitOps workflows must be adapted för edge environments med intermittent connectivity och limited compute resources.
 
 ### Edge Infrastructure Automation
+
+Arkitektur som kod-principerna inom detta område
 
 ```yaml
 # edge-infrastructure/k3s-edge-cluster.yaml
@@ -476,7 +480,7 @@ Environmental sustainability blir allt viktigare inom Infrastructure as Code med
 
 Carbon-aware scheduling optimerar workload placement baserat på electricity grid carbon intensity, vilket möjliggör automatisk migration av non-critical workloads till regions med renewable energy sources. Svenska organisations kan leverera på sustainability commitments genom intelligent workload orchestration.
 
-Circular economy principles appliceras på infrastructure genom extended hardware lifecycles, improved resource utilization och sustainable disposal practices. IaC enables fine-grained resource tracking och optimization som minimerar waste och maximizar resource efficiency.
+Circular economy principles appliceras på infrastructure genom extended hardware lifecycles, improved resource utilization och sustainable disposal practices. Arkitektur som kod enables fine-grained resource tracking och optimization som minimerar waste och maximizar resource efficiency.
 
 ### Carbon-Aware Infrastructure
 
@@ -754,7 +758,7 @@ class GreenIaCMetrics:
         }
 ```
 
-## Nästa generations IaC-verktyg och paradigm
+## Nästa generations Arkitektur som kod-verktyg och paradigm
 
 DevOps evolution fortsätter med nya verktyg och methodologies som förbättrar utvecklarhastighet, operational efficiency och system reliability. GitOps, Platform Engineering och Internal Developer Platforms (IDPs) representerar next-generation approaches för infrastructure management.
 
@@ -1016,11 +1020,13 @@ Hybrid classical-quantum systems kommer att emerge där quantum computers använ
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Framtiden för Infrastructure as Code karakteriseras av intelligent automation, environmental sustainability och enhanced security capabilities. Svenska organisationer som investerar i emerging technologies och maintains crypto-agility kommer att vara well-positioned för future technological disruptions.
 
 AI-driven infrastructure optimization, carbon-aware computing och post-quantum cryptography readiness representerar essential capabilities för competitive advantage. Integration av these technologies kräver både technical expertise och organizational adaptability som diskuteras i tidigare kapitel.
 
-Success i future IaC landscape kräver continuous learning, experimentation och willingness för att adopt new paradigms. Som demonstrerat genom bokens progression från [grundläggande koncept](01_inledning.md) till advanced future technologies, evolution inom Infrastructure as Code är constant och accelerating.
+Success i future Arkitektur som kod landscape kräver continuous learning, experimentation och willingness för att adopt new paradigms. Som demonstrerat genom bokens progression från [grundläggande koncept](01_inledning.md) till advanced future technologies, evolution inom Infrastructure as Code är constant och accelerating.
 
 ## Källor och referenser
 
