@@ -44,8 +44,16 @@ class TestCompleteness:
         """Test that chapter files follow naming convention."""
         expected_pattern = re.compile(r"^\d{2}_.*\.md$")
         
+        # Get special chapter filenames that are allowed as exceptions
+        special_chapters = requirements_config["book"].get("special_chapters", {})
+        allowed_exceptions = {special_config["filename"] for special_config in special_chapters.values()}
+        
         invalid_names = []
         for chapter_file in chapter_files:
+            # Skip files that are explicitly allowed as exceptions
+            if chapter_file.name in allowed_exceptions:
+                continue
+                
             if not expected_pattern.match(chapter_file.name):
                 invalid_names.append(chapter_file.name)
         
