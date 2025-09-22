@@ -162,8 +162,29 @@ jobs:
             fonts-dejavu \
             fonts-lmodern \
             lmodern \
-            zip
+            zip \
+            openjdk-11-jdk \
+            wget \
+            unzip
           echo "✅ System dependencies installed"
+
+      - name: 📚 Install EPUBCheck
+        run: |
+          echo "=== Installing EPUBCheck for EPUB validation ==="
+          cd /tmp
+          wget -q https://github.com/w3c/epubcheck/releases/download/v5.1.0/epubcheck-5.1.0.zip
+          unzip -q epubcheck-5.1.0.zip
+          sudo mv epubcheck-5.1.0 /opt/
+          sudo ln -sf /opt/epubcheck-5.1.0/epubcheck.jar /usr/local/bin/
+          
+          # Create wrapper script
+          echo '#!/bin/bash' | sudo tee /usr/local/bin/epubcheck
+          echo 'java -jar /opt/epubcheck-5.1.0/epubcheck.jar "$@"' | sudo tee -a /usr/local/bin/epubcheck
+          sudo chmod +x /usr/local/bin/epubcheck
+          
+          # Test EPUBCheck installation
+          epubcheck --version
+          echo "✅ EPUBCheck installed and ready"
 
       - name: 📚 Install Pandoc
         run: |

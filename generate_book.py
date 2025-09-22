@@ -1,4 +1,55 @@
 import os
+import subprocess
+import sys
+
+def validate_epub_file(epub_path):
+    """
+    Validera EPUB-fil med EPUBCheck.
+    
+    Args:
+        epub_path (str): Sökväg till EPUB-filen
+        
+    Returns:
+        tuple: (success: bool, log_output: str)
+    """
+    try:
+        # Check if EPUBCheck is available
+        result = subprocess.run(['epubcheck', '--version'], 
+                               capture_output=True, text=True, timeout=10)
+        if result.returncode != 0:
+            return False, "EPUBCheck är inte tillgängligt"
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        return False, "EPUBCheck är inte installerat eller inte tillgängligt"
+    
+    try:
+        # Run EPUBCheck validation
+        print(f"🔍 Validerar EPUB-fil: {epub_path}")
+        result = subprocess.run(['epubcheck', epub_path], 
+                               capture_output=True, text=True, timeout=60)
+        
+        # Log the validation output
+        log_output = result.stdout + result.stderr
+        
+        if result.returncode == 0:
+            print("✅ EPUB-validering godkänd")
+            return True, log_output
+        else:
+            print("⚠️  EPUB-validering avslöjade problem")
+            # Count different types of issues
+            fatal_count = log_output.count('FATAL')
+            error_count = log_output.count('ERROR') - fatal_count  # Subtract fatals from errors
+            warning_count = log_output.count('WARNING')
+            
+            print(f"   - Fatala fel: {fatal_count}")
+            print(f"   - Fel: {error_count}")
+            print(f"   - Varningar: {warning_count}")
+            
+            return False, log_output
+            
+    except subprocess.TimeoutExpired:
+        return False, "EPUBCheck timeout - filen kan vara för stor eller skadad"
+    except Exception as e:
+        return False, f"Fel vid EPUB-validering: {str(e)}"
 
 def generate_iac_book_content():
     """
@@ -321,4 +372,24 @@ Källor:
 if __name__ == "__main__":
     print("📚 Generating book content...")
     generate_iac_book_content()
+    
+    # Check if EPUB file exists and validate it
+    epub_path = "docs/arkitektur_som_kod.epub"
+    if os.path.exists(epub_path):
+        print("\n📖 Kontrollerar befintlig EPUB-fil...")
+        success, log_output = validate_epub_file(epub_path)
+        
+        # Save validation log
+        log_path = "docs/epub-validation.log"
+        try:
+            with open(log_path, 'w', encoding='utf-8') as f:
+                f.write(f"EPUB-valideringslogg för: {epub_path}\n")
+                f.write(f"Datum: {subprocess.run(['date'], capture_output=True, text=True).stdout}")
+                f.write(f"Status: {'GODKÄND' if success else 'FEL UPPTÄCKTA'}\n")
+                f.write("=" * 50 + "\n")
+                f.write(log_output)
+            print(f"📄 Valideringslogg sparad: {log_path}")
+        except Exception as e:
+            print(f"⚠️  Kunde inte spara valideringslogg: {e}")
+    
     print("✅ Book content generation completed")

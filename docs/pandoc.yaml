@@ -22,7 +22,9 @@ metadata:
   title: "Arkitektur som kod"
   subtitle: "Infrastructure as Code i praktiken"
   author: "Kodarkitektur Bokverkstad"
-  date: "\\today"
+  date: "2024"
+  language: sv
+  lang: sv-SE
 
 # Variables for better compatibility
 variables:

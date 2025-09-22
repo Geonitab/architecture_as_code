@@ -33,7 +33,20 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
     zip \
+    # Java for EPUBCheck
+    openjdk-11-jdk \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
+
+# Install EPUBCheck for EPUB validation
+RUN cd /tmp && \
+    wget -q https://github.com/w3c/epubcheck/releases/download/v5.1.0/epubcheck-5.1.0.zip && \
+    unzip -q epubcheck-5.1.0.zip && \
+    mv epubcheck-5.1.0 /opt/ && \
+    ln -sf /opt/epubcheck-5.1.0/epubcheck.jar /usr/local/bin/ && \
+    echo '#!/bin/bash\njava -jar /opt/epubcheck-5.1.0/epubcheck.jar "$@"' > /usr/local/bin/epubcheck && \
+    chmod +x /usr/local/bin/epubcheck && \
+    rm -f epubcheck-5.1.0.zip
 
 # Install Pandoc
 ARG PANDOC_VERSION=3.1.9
