@@ -13,7 +13,9 @@ Contains book formats generated from the markdown source:
 ### `/presentation/`
 Contains presentation materials:
 - `arkitektur_som_kod_presentation.pptx` - PowerPoint presentation
-- `arkitektur_som_kod_presentation.pdf` - PDF version of presentation
+- `presentation_outline.md` - Presentation content outline
+- `generate_pptx.py` - Script to regenerate presentation
+- `requirements.txt` - Python dependencies for presentation generation
 
 ### `/whitepapers/`
 Contains individual chapter whitepapers:
@@ -22,7 +24,8 @@ Contains individual chapter whitepapers:
 
 ### `/website/`
 Contains a complete copy of the static website build:
-- Static website files for deployment
+- Static website files ready for deployment
+- All assets and dependencies included
 
 ## Build Process
 
@@ -40,3 +43,10 @@ After running the build process, all deliverables will be available in their res
 - Publishing to various platforms
 - Archive and backup purposes
 - Deployment workflows
+
+## Automation
+
+This folder structure is maintained by:
+- `build_release.sh` - Main build script
+- `unified-build-release.yml` - GitHub Actions workflow
+- Individual component generation scripts

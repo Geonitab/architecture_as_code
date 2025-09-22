@@ -240,10 +240,35 @@ jobs:
           pip install python-pptx>=0.6.21
           echo "✅ Python dependencies installed"
 
+      - name: 🧪 Test content generation capability
+        run: |
+          echo "=== Testing basic content generation ==="
+          echo "🐍 Python version: $(python3 --version)"
+          echo "📄 Testing generate_book.py..."
+          python3 -c "import os; print('📁 Current directory:', os.getcwd()); print('📄 Files:', os.listdir('.'))"
+          
+          # Test basic script functionality
+          python3 -c "
+          try:
+              exec(open('generate_book.py').read())
+              print('✅ generate_book.py syntax is valid')
+          except Exception as e:
+              print(f'❌ generate_book.py has issues: {e}')
+          "
+          
+          echo "📄 Testing docs directory..."
+          ls -la docs/ | head -10
+
       - name: 🏗️ Build complete release (traditional)
         run: |
           echo "=== Running traditional complete release build ==="
           export PUPPETEER_EXECUTABLE_PATH=$(which google-chrome)
+
+          # Create release directory structure upfront
+          echo "📁 Creating release directory structure..."
+          mkdir -p releases/{book,presentation,whitepapers,website}
+          echo "✅ Release directories created:"
+          ls -la releases/
 
           # Make scripts executable
           chmod +x build_release.sh
@@ -251,27 +276,44 @@ jobs:
 
           # Check what deliverables to build
           DELIVERABLES="${{ needs.setup.outputs.build_deliverables }}"
+          echo "🎯 Building deliverables: $DELIVERABLES"
+          
           case $DELIVERABLES in
             "book-only")
               echo "📖 Building book formats only..."
+              echo "📝 Step 1: Generating book content..."
               python3 generate_book.py
+              echo "📝 Step 2: Building book formats..."
               cd docs && ./build_book.sh --release && cd ..
+              echo "📝 Step 3: Verifying book files..."
+              ls -la docs/arkitektur_som_kod.* || echo "⚠️ No book files found in docs/"
+              echo "📝 Step 4: Copying book files to releases..."
               mkdir -p releases/book
-              cp docs/arkitektur_som_kod.* releases/book/ 2>/dev/null || true
+              cp docs/arkitektur_som_kod.* releases/book/ 2>/dev/null || echo "⚠️ Could not copy book files"
+              echo "📝 Step 5: Verifying book files in releases..."
+              ls -la releases/book/ || echo "⚠️ No book files found in releases/book/"
               ;;
             "presentations-only")
               echo "🎤 Building presentations only..."
               python3 generate_presentation.py --release
+              echo "📝 Verifying presentation files..."
+              ls -la releases/presentation/ || echo "⚠️ No presentation files found"
               ;;
             "whitepapers-only")
               echo "📄 Building whitepapers only..."
               python3 generate_whitepapers.py --release
+              echo "📝 Verifying whitepaper files..."
+              ls -la releases/whitepapers/ || echo "⚠️ No whitepaper files found"
               ;;
             "website-only")
               echo "🌐 Building website only..."
               npm run build
+              echo "📝 Verifying website build..."
+              ls -la dist/ || echo "⚠️ No dist directory found"
               mkdir -p releases/website
               cp -r dist/* releases/website/
+              echo "📝 Verifying website files in releases..."
+              ls -la releases/website/ | head -10
               ;;
             "all"|*)
               echo "📦 Building all deliverables..."
@@ -280,6 +322,60 @@ jobs:
           esac
 
           echo "✅ Traditional build completed"
+
+      - name: 🔍 Verify files were created (traditional)
+        run: |
+          echo "=== Verifying traditional build output files ==="
+          
+          echo "📁 Release directory structure:"
+          find releases/ -type d | sort
+          
+          echo ""
+          echo "📄 All files in releases directory:"
+          find releases/ -type f | sort
+          
+          echo ""
+          echo "📊 File count by directory:"
+          for dir in releases/*/; do
+            if [ -d "$dir" ]; then
+              count=$(find "$dir" -type f | wc -l)
+              echo "  $(basename "$dir"): $count files"
+            fi
+          done
+          
+          echo ""
+          echo "🔍 Checking for expected key files:"
+          
+          # Check for book files
+          if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
+            echo "✅ Book PDF found ($(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}'))"
+          else
+            echo "❌ Book PDF not found"
+          fi
+          
+          # Check for presentation files
+          presentation_files=$(find releases/presentation -name "*.md" -o -name "*.py" -o -name "*.txt" -o -name "*.pptx" | wc -l)
+          if [ "$presentation_files" -gt 0 ]; then
+            echo "✅ Presentation materials found ($presentation_files files)"
+          else
+            echo "❌ No presentation materials found"
+          fi
+          
+          # Check for whitepaper files
+          whitepaper_files=$(find releases/whitepapers -name "*.html" -o -name "*.pdf" | wc -l)
+          if [ "$whitepaper_files" -gt 0 ]; then
+            echo "✅ Whitepaper files found ($whitepaper_files files)"
+          else
+            echo "❌ No whitepaper files found"
+          fi
+          
+          # Check for website files
+          website_files=$(find releases/website -type f | wc -l)
+          if [ "$website_files" -gt 0 ]; then
+            echo "✅ Website files found ($website_files files)"
+          else
+            echo "❌ No website files found"
+          fi
 
       - name: 📊 Traditional build summary
         run: |
@@ -392,10 +488,14 @@ jobs:
           echo "=== Building all deliverables in Docker container ==="
 
           # Create release directory structure
+          echo "📁 Creating release directory structure..."
           mkdir -p releases/{book,presentation,whitepapers,website}
+          echo "✅ Release directories created:"
+          ls -la releases/
 
           # Check what deliverables to build
           DELIVERABLES="${{ needs.setup.outputs.build_deliverables }}"
+          echo "🎯 Building deliverables: $DELIVERABLES"
 
           # Build using Docker with proper Chrome configuration
           docker run --rm \
@@ -411,17 +511,26 @@ jobs:
               case '$DELIVERABLES' in
                 'book-only')
                   echo '📖 Building book formats only...' &&
+                  echo '📝 Step 1: Generating book content...' &&
+                  python3 generate_book.py &&
+                  echo '📝 Step 2: Building book formats...' &&
                   cd docs &&
                   ./build_book.sh --release &&
-                  cd ..
+                  cd .. &&
+                  echo '📝 Step 3: Verifying book files...' &&
+                  ls -la releases/book/ || echo '⚠️ No book files found'
                   ;;
                 'presentations-only')
                   echo '🎤 Building presentations only...' &&
-                  python3 generate_presentation.py --release
+                  python3 generate_presentation.py --release &&
+                  echo '📝 Verifying presentation files...' &&
+                  ls -la releases/presentation/ || echo '⚠️ No presentation files found'
                   ;;
                 'whitepapers-only')
                   echo '📄 Building whitepapers only...' &&
-                  python3 generate_whitepapers.py --release
+                  python3 generate_whitepapers.py --release &&
+                  echo '📝 Verifying whitepaper files...' &&
+                  ls -la releases/whitepapers/ || echo '⚠️ No whitepaper files found'
                   ;;
                 'website-only')
                   echo '🌐 Website already built, nothing to do in Docker...'
@@ -429,22 +538,34 @@ jobs:
                 'all'|*)
                   echo '📦 Building all deliverables...' &&
                   # Build book in all formats
-                  echo '📖 Building book formats...' &&
+                  echo '📖 Step 1: Building book formats...' &&
+                  echo '📝 Generating book content...' &&
+                  python3 generate_book.py &&
                   cd docs &&
                   ./build_book.sh --release &&
                   cd .. &&
+                  echo '📝 Verifying book files...' &&
+                  ls -la releases/book/ || echo '⚠️ No book files found' &&
 
                   # Generate whitepapers
-                  echo '📄 Generating whitepapers...' &&
+                  echo '📄 Step 2: Generating whitepapers...' &&
                   python3 generate_whitepapers.py --release &&
+                  echo '📝 Verifying whitepaper files...' &&
+                  ls -la releases/whitepapers/ || echo '⚠️ No whitepaper files found' &&
 
                   # Generate presentations
-                  echo '🎤 Generating presentations...' &&
-                  python3 generate_presentation.py --release
+                  echo '🎤 Step 3: Generating presentations...' &&
+                  python3 generate_presentation.py --release &&
+                  echo '📝 Verifying presentation files...' &&
+                  ls -la releases/presentation/ || echo '⚠️ No presentation files found'
                   ;;
               esac &&
 
-              echo '✅ Docker-based build completed'
+              echo '✅ Docker-based build completed' &&
+              echo '📁 Final directory structure:' &&
+              find releases/ -type d | sort &&
+              echo '📄 Final file count:' &&
+              find releases/ -type f | wc -l
             "
 
       - name: 🌐 Copy website to release
@@ -461,9 +582,69 @@ jobs:
             fi
             cp -r dist/* releases/website/
             echo "✅ Website copied to releases/website/"
+            echo "📝 Website files copied:"
+            find releases/website -type f | head -10
+            echo "📊 Total website files: $(find releases/website -type f | wc -l)"
           else
             echo "❌ Website build directory 'dist' not found"
             exit 1
+          fi
+
+      - name: 🔍 Verify files were created (Docker)
+        run: |
+          echo "=== Verifying Docker build output files ==="
+          
+          # Fix ownership issues that might occur with Docker
+          sudo chown -R $(id -u):$(id -g) releases/ || true
+          
+          echo "📁 Release directory structure:"
+          find releases/ -type d | sort
+          
+          echo ""
+          echo "📄 All files in releases directory:"
+          find releases/ -type f | sort
+          
+          echo ""
+          echo "📊 File count by directory:"
+          for dir in releases/*/; do
+            if [ -d "$dir" ]; then
+              count=$(find "$dir" -type f | wc -l)
+              echo "  $(basename "$dir"): $count files"
+            fi
+          done
+          
+          echo ""
+          echo "🔍 Checking for expected key files:"
+          
+          # Check for book files
+          if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
+            echo "✅ Book PDF found ($(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}'))"
+          else
+            echo "❌ Book PDF not found"
+          fi
+          
+          # Check for presentation files
+          presentation_files=$(find releases/presentation -name "*.md" -o -name "*.py" -o -name "*.txt" -o -name "*.pptx" 2>/dev/null | wc -l)
+          if [ "$presentation_files" -gt 0 ]; then
+            echo "✅ Presentation materials found ($presentation_files files)"
+          else
+            echo "❌ No presentation materials found"
+          fi
+          
+          # Check for whitepaper files
+          whitepaper_files=$(find releases/whitepapers -name "*.html" -o -name "*.pdf" 2>/dev/null | wc -l)
+          if [ "$whitepaper_files" -gt 0 ]; then
+            echo "✅ Whitepaper files found ($whitepaper_files files)"
+          else
+            echo "❌ No whitepaper files found"
+          fi
+          
+          # Check for website files
+          website_files=$(find releases/website -type f 2>/dev/null | wc -l)
+          if [ "$website_files" -gt 0 ]; then
+            echo "✅ Website files found ($website_files files)"
+          else
+            echo "❌ No website files found"
           fi
 
       - name: 📊 Docker build summary
@@ -537,23 +718,51 @@ jobs:
           echo "=== Merging build results ==="
           mkdir -p final-release/{book,presentation,whitepapers,website}
 
+          echo "📋 Available artifacts:"
+          ls -la artifacts/ || echo "No artifacts directory found"
+          
+          if [ -d "artifacts" ]; then
+            find artifacts/ -type d | sort
+            echo ""
+            echo "📄 Artifact contents:"
+            find artifacts/ -type f | sort
+          fi
+
           # Prefer traditional build results, fallback to docker
           if [ -d "artifacts/unified-traditional-build" ]; then
             echo "📋 Using traditional build results as primary"
+            echo "📄 Traditional build contents:"
+            find artifacts/unified-traditional-build/ -type f | sort
             cp -r artifacts/unified-traditional-build/* final-release/
             BUILD_SOURCE="traditional"
           elif [ -d "artifacts/unified-docker-build" ]; then
             echo "🐳 Using docker build results"
+            echo "📄 Docker build contents:"
+            find artifacts/unified-docker-build/ -type f | sort
             cp -r artifacts/unified-docker-build/* final-release/
             BUILD_SOURCE="docker"
           else
             echo "❌ No successful build artifacts found"
+            echo "Available directories in artifacts/:"
+            ls -la artifacts/ 2>/dev/null || echo "No artifacts directory exists"
             exit 1
           fi
 
           echo "✅ Build results merged from $BUILD_SOURCE build"
+          echo ""
           echo "📁 Final release structure:"
-          find final-release -type f | head -20
+          find final-release -type d | sort
+          echo ""
+          echo "📄 Final release files:"
+          find final-release -type f | sort
+          echo ""
+          echo "📊 Final file counts:"
+          for dir in final-release/*/; do
+            if [ -d "$dir" ]; then
+              count=$(find "$dir" -type f | wc -l)
+              echo "  $(basename "$dir"): $count files"
+            fi
+          done
 
       - name: 📤 Upload individual components
         uses: actions/upload-artifact@v4
