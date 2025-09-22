@@ -2,25 +2,25 @@
 
 ![Test pyramid för IaC](images/diagram_17_kapitel16.png)
 
-*Omfattande teststrategi för Infrastructure as Code kräver multiple testing-nivåer från unit tests till end-to-end validation. Diagrammet illustrerar det strukturerade förloppet från snabba utvecklartester till omfattande integrationsvalidering.*
+*Omfattande teststrategi för Infrastructure as Code (arkitektur som kod) kräver multiple testing-nivåer från unit tests till end-to-end validation. Diagrammet illustrerar det strukturerade förloppet från snabba utvecklartester till omfattande integrationsvalidering.*
 
 ## Övergripande beskrivning
 
-Testning av Infrastructure as Code skiljer sig fundamentalt från traditionell mjukvarutestning genom att fokusera på infrastrukturkonfiguration, resurskompatibilitet och miljökonsekvens istället för affärslogik. Effective IaC-testing säkerställer att infrastrukturkod producerar förväntade resultat konsekvent across olika miljöer.
+Testning av Infrastructure as Code (arkitektur som kod) skiljer sig fundamentalt från traditionell mjukvarutestning genom att fokusera på infrastrukturkonfiguration, resurskompatibilitet och miljökonsekvens istället för affärslogik. Effective Arkitektur som kod-testing säkerställer att infrastrukturkod producerar förväntade resultat konsekvent across olika miljöer.
 
-Modern IaC-testning omfattar flera dimensioner: syntaktisk validering av kod, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys och functional testing av deployed infrastruktur. Denna multilevel approach identifierar problem tidigt i utvecklingscykeln när de är billigare och enklare att fixa.
+Modern Arkitektur som kod-testning omfattar flera dimensioner: syntaktisk validering av kod, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys och functional testing av deployed infrastruktur. Denna multilevel approach identifierar problem tidigt i utvecklingscykeln när de är billigare och enklare att fixa.
 
 Svenska organisationer med strikta compliance-krav måste implementera comprehensive testing som validerar både teknisk funktionalitet och regulatory conformance. Detta inkluderar GDPR data protection controls, financial services regulations och government security standards som måste verifieras automatiskt.
 
-Test automation for IaC möjliggör continuous integration och continuous deployment patterns som accelererar delivery samtidigt som de minskar risk för produktionsstörningar. Infrastructure testing pipelines kan köra parallellt med application testing för att säkerställa end-to-end quality assurance.
+Test automation for Arkitektur som kod möjliggör continuous integration och continuous deployment patterns som accelererar delivery samtidigt som de minskar risk för produktionsstörningar. Infrastructure testing pipelines kan köra parallellt med application testing för att säkerställa end-to-end quality assurance.
 
 ## Unit testing för infrastrukturkod
 
 Unit testing för Infrastructure as Code fokuserar på validation av enskilda moduler och resources utan att faktiskt deploya infrastruktur. Detta möjliggör snabb feedback och early detection av konfigurationsfel, vilket är kritiskt för developer productivity och code quality.
 
-Terraform testing verktyg som Terratest, terraform-compliance och checkov möjliggör automated validation av HCL-kod mot predefined policies och best practices. Dessa verktyg kan integreras i IDE:er för real-time feedback under development samt i CI/CD pipelines för automated quality gates.
+Terraform testing verktyg som Terratest, terraform-compliance och checkov möjliggör automated validation av HCL-kod mot predefined policies och arkitektur som kod best practices. Dessa verktyg kan integreras i IDE:er för real-time feedback under development samt i CI/CD pipelines för automated quality gates.
 
-Unit tests för IaC bör validera resource configurations, variable validations, output consistency och module interface contracts. Detta är särskilt viktigt för reusable modules som används across multiple projects där förändringar kan ha wide-ranging impact på dependent resources.
+Unit tests för Arkitektur som kod bör validera resource configurations, variable validations, output consistency och module interface contracts. Detta är särskilt viktigt för reusable modules som används across multiple projects där förändringar kan ha wide-ranging impact på dependent resources.
 
 Mock testing strategies för cloud resources möjliggör testing utan faktiska cloud costs, vilket är essentiellt för frequent testing cycles. Verktyg som LocalStack och cloud provider simulators kan simulate cloud services locally för comprehensive testing utan infrastructure provisioning costs.
 
@@ -58,11 +58,11 @@ Capacity planning validation genom performance testing hjälper optimize resourc
 
 ![Requirements och testing relation](images/diagram_12_requirements_testing.png)
 
-*Relationen mellan affärskrav, funktionella krav och verifieringsmetoder illustrerar hur Infrastructure as Code möjliggör spårbar testning från högre abstraktionsnivåer ner till konkreta implementationer.*
+*Relationen mellan affärskrav, funktionella krav och verifieringsmetoder illustrerar hur Infrastructure as Code möjliggör spårbar testning från högre abstraktionsnivåer ner till konkreta arkitektur som kod-implementationer.*
 
 Requirements-as-Code representerar ett paradigmskifte där affärskrav och compliance-krav kodifieras i maskinläsbar form tillsammans med infrastructure-koden. Detta möjliggör automatiserad validering av att infrastrukturen verkligen uppfyller de specificerade kraven genom hela utvecklingslivscykeln.
 
-Genom att definiera krav som kod skapas en direkt koppling mellan business requirements, functional requirements och de automatiserade tester som verifierar implementationen. Denna traceability är kritisk för organisationer som måste demonstrera compliance och för utvecklingsteam som behöver förstå affärskonsekvenserna av tekniska beslut.
+Genom att definiera krav som kod skapas en direkt koppling mellan business requirements, functional requirements och de automatiserade tester som verifierar arkitektur som kod-implementationen. Denna traceability är kritisk för organisationer som måste demonstrera compliance och för utvecklingsteam som behöver förstå affärskonsekvenserna av tekniska beslut.
 
 ### Kravspårbarhet i praktiken
 
@@ -300,7 +300,7 @@ func TestTerraformSwedishInfrastructure(t *testing.T) {
         TerraformDir: terraformDir,
         Vars: map[string]interface{}{
             "environment":      "test",
-            "project_name":     "iac-test-" + uniqueId,
+            "project_name":     "arkitektur som kod-test-" + uniqueId,
             "region":          "eu-north-1", // Stockholm för svenska krav
             "enable_gdpr_logs": true,
             "data_classification": "internal",
@@ -325,7 +325,7 @@ func TestTerraformSwedishInfrastructure(t *testing.T) {
         if resource.Type == "aws_instance" || resource.Type == "aws_rds_instance" {
             tags := resource.AttributeValues["tags"].(map[string]interface{})
             
-            assert.Equal(t, "iac-test-" + uniqueId, tags["Project"])
+            assert.Equal(t, "arkitektur som kod-test-" + uniqueId, tags["Project"])
             assert.Equal(t, "test", tags["Environment"])
             assert.Equal(t, "internal", tags["DataClassification"])
             
@@ -478,6 +478,8 @@ test_gdpr_data_classification_valid if {
 ## Kubernetes integrationstestning
 
 ### Kubernetes Infrastructure Testing
+
+Arkitektur som kod-principerna inom detta område
 ```yaml
 # test/k8s-test-suite.yaml
 apiVersion: v1
@@ -566,6 +568,8 @@ spec:
 ## Pipeline automation för infrastrukturtestning
 
 ### CI/CD Pipeline för Infrastructure Testing
+
+Arkitektur som kod-principerna inom detta område
 ```yaml
 # .github/workflows/infrastructure-testing.yml
 name: Infrastructure Testing Pipeline
@@ -716,16 +720,18 @@ jobs:
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Comprehensive testing strategies för Infrastructure as Code är essential för att säkerställa reliable, secure och cost-effective infrastructure deployments. En väl designad test pyramid med unit tests, integration tests och end-to-end validation kan dramatiskt reducera production issues och förbättra developer confidence.
 
 Svenska organisationer måste särskilt fokusera på compliance testing som validates GDPR requirements, financial regulations och government security standards. Automated policy testing med verktyg som OPA möjliggör continuous compliance verification utan manual overhead.
 
-Investment i robust IaC testing frameworks pays off genom reduced production incidents, faster development cycles och improved regulatory compliance. Modern testing verktyg och cloud-native testing strategies möjliggör comprehensive validation utan prohibitive costs eller complexity.
+Investment i robust Arkitektur som kod testing frameworks pays off genom reduced production incidents, faster development cycles och improved regulatory compliance. Modern testing verktyg och cloud-native testing strategies möjliggör comprehensive validation utan prohibitive costs eller complexity.
 
 ## Källor och referenser
 
 - Terratest Documentation. "Infrastructure Testing for Terraform." Gruntwork, 2023.
-- Open Policy Agent. "Policy Testing Best Practices." CNCF OPA Project, 2023.
+- Open Policy Agent. "Policy Testing arkitektur som kod best practices." CNCF OPA Project, 2023.
 - AWS. "Infrastructure Testing Strategy Guide." Amazon Web Services, 2023.
 - Kubernetes. "Testing Infrastructure och Applications." Kubernetes Documentation, 2023.
 - NIST. "Security Testing for Cloud Infrastructure." NIST Cybersecurity Framework, 2023.

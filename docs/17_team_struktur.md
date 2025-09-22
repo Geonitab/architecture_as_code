@@ -1,16 +1,16 @@
-# Team-struktur och kompetensutveckling för IaC
+# Team-struktur och kompetensutveckling för Arkitektur som kod
 
 ![Team-struktur och kompetensutveckling](images/diagram_18_team_struktur.png)
 
-Framgångsrik Infrastructure as Code implementation kräver inte endast tekniska verktyg och processer, utan också genomtänkt organisationsdesign och strategisk kompetensutveckling. Team-strukturer måste evolve för att stödja nya arbetssätt medan medarbetare utvecklar nödvändiga skills för kodbaserad infrastrukturhantering.
+Framgångsrik Infrastructure as Code (arkitektur som kod) arkitektur som kod-implementation kräver inte endast tekniska verktyg och processer, utan också genomtänkt organisationsdesign och strategisk kompetensutveckling. Team-strukturer måste evolve för att stödja nya arbetssätt medan medarbetare utvecklar nödvändiga skills för arkitektur som kod-baserad infrastrukturhantering.
 
-## Organisatorisk transformation för IaC
+## Organisatorisk transformation för Arkitektur som kod
 
-Traditionella organisationsstrukturer med separata utvecklings-, test- och drift-teams skapar silos som hindrar effektiv Infrastructure as Code adoption. Cross-functional teams med shared responsibility för hela systemlivscykeln möjliggör snabbare feedback loops och högre kvalitet i leveranser.
+Traditionella organisationsstrukturer med separata utvecklings-, test- och drift-teams skapar silos som hindrar effektiv Infrastructure as Code (arkitektur som kod) adoption. Cross-functional teams med shared responsibility för hela systemlivscykeln möjliggör snabbare feedback loops och högre kvalitet i leveranser.
 
 Conway's Law observerar att organisationsstruktur reflekteras i system design, vilket betyder att team boundaries direkt påverkar infrastructure architecture. Väldesignade team-strukturer resulterar i modulära, maintainable infrastructure solutions, medan poorly organized teams producerar fragmented, complex systems.
 
-Platform teams fungerar som internal service providers som bygger och underhåller Infrastructure as Code capabilities för application teams. Denna model balanserar centralized expertise med decentralized autonomy, vilket möjliggör scaling av IaC practices across stora organisationer.
+Platform teams fungerar som internal service providers som bygger och underhåller Infrastructure as Code capabilities för application teams. Denna model balanserar centralized expertise med decentralized autonomy, vilket möjliggör scaling av arkitektur som kod practices across stora organisationer.
 
 ## Kompetensområden för IaC-specialister
 
@@ -22,13 +22,15 @@ Software engineering practices som version control, testing, code review, och CI
 
 ## Utbildningsstrategier och certifieringar
 
-Strukturerade utbildningsprogram kombinerar theoretical learning med hands-on practice för effective skill development. Online platforms som A Cloud Guru, Pluralsight, och Linux Academy erbjuder comprehensive courses för olika IaC tools och cloud platforms.
+Strukturerade utbildningsprogram kombinerar theoretical learning med hands-on practice för effective skill development. Online platforms som A Cloud Guru, Pluralsight, och Linux Academy erbjuder comprehensive courses för olika Arkitektur som kod tools och cloud platforms.
 
 Industry certifications som AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer, eller HashiCorp Certified Terraform Associate provide standardized validation av technical competencies. Certification paths guide learning progression och demonstrate professional commitment to employers.
 
 Internal training programs customized för organizational context och specific technology stacks accelerate skill development. Mentorship programs pair experienced practitioners med newcomers för knowledge transfer och career development support.
 
 ## Agile team models för infrastructure
+
+Arkitektur som kod-principerna inom detta område
 
 Cross-functional infrastructure teams inkluderar cloud engineers, automation specialists, security engineers, och site reliability engineers som collaborerar on shared objectives. Product owner roles för infrastructure teams prioritize features och improvements baserat på internal customer needs.
 
@@ -38,7 +40,7 @@ Infrastructure as a product mindset treats internal teams som customers med serv
 
 ## Kunskapsdelning och communities of practice
 
-Documentation strategies för Infrastructure as Code inkluderar architecture decision records, runbooks, troubleshooting guides, och best practices repositories. Knowledge bases maintained collectively by teams ensure information accessibility och reduce bus factor risks.
+Documentation strategies för Infrastructure as Code inkluderar architecture decision records, runbooks, troubleshooting guides, och arkitektur som kod best practices repositories. Knowledge bases maintained collectively by teams ensure information accessibility och reduce bus factor risks.
 
 Communities of practice inom organisationer facilitar knowledge sharing across team boundaries. Regular meetups, lightning talks, och technical presentations enable cross-pollination av ideas och foster continuous learning culture.
 
@@ -48,7 +50,7 @@ External community participation through open source contributions, conference p
 
 Technical career ladders för Infrastructure as Code specialists provide clear advancement paths from junior automation engineers to senior architect roles. Competency frameworks define expected skills, knowledge, och impact at different career levels.
 
-Performance metrics för IaC teams inkluderar both technical indicators som infrastructure reliability, deployment frequency, och change failure rate, samt soft skills som collaboration effectiveness och knowledge sharing contributions.
+Performance metrics för Arkitektur som kod teams inkluderar both technical indicators som infrastructure reliability, deployment frequency, och change failure rate, samt soft skills som collaboration effectiveness och knowledge sharing contributions.
 
 Leadership development programs prepare senior technical contributors för management roles within infrastructure organizations. Skills like stakeholder management, strategic planning, och team building become essential för career advancement.
 
@@ -61,7 +63,7 @@ teams:
   platform-team:
     mission: "Provide Infrastructure as Code capabilities and tooling"
     responsibilities:
-      - Core IaC framework development
+      - Core Arkitektur som kod framework development
       - Tool standardization and governance
       - Training and documentation
       - Platform engineering
@@ -89,7 +91,7 @@ teams:
     responsibilities:
       - Application infrastructure definition
       - Service deployment and monitoring
-      - Application security implementation
+      - Application security arkitektur som kod-implementation
       - Performance optimization
 ```
 
@@ -145,7 +147,7 @@ teams:
 ### Training Program Structure
 ```yaml
 # training-program.yaml
-iac-training-program:
+arkitektur som kod-training-program:
   duration: "12 weeks"
   format: "Blended learning"
   
@@ -217,7 +219,7 @@ iac-training-program:
       - Final project presentation (20%)
     
     certification:
-      internal: "IaC Practitioner Certificate"
+      internal: "Arkitektur som kod Practitioner Certificate"
       external: "AWS/Azure/GCP certification support"
 ```
 
@@ -240,7 +242,7 @@ in Infrastructure as Code practices across the organization.
 ### Activities
 
 #### Monthly Tech Talks
-- 45-minute presentations on IaC topics
+- 45-minute presentations on Arkitektur som kod topics
 - Internal case studies and lessons learned
 - External speaker sessions
 - Tool demonstrations and comparisons
@@ -260,16 +262,16 @@ in Infrastructure as Code practices across the organization.
 ### Knowledge Sharing
 
 #### Wiki and Documentation
-- Best practices repository
+- arkitektur som kod best practices repository
 - Architecture decision records
 - Troubleshooting guides
 - Tool comparisons and recommendations
 
 #### Slack/Teams Channels
-- #iac-general for discussions
-- #iac-help for troubleshooting
-- #iac-announcements for updates
-- #iac-tools for tool discussions
+- #arkitektur som kod-general for discussions
+- #arkitektur som kod-help for troubleshooting
+- #arkitektur som kod-announcements for updates
+- #arkitektur som kod-tools for tool discussions
 
 #### Code Repositories
 - Shared module libraries
@@ -287,6 +289,8 @@ in Infrastructure as Code practices across the organization.
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Successful Infrastructure as Code adoption kräver omfattande organisatorisk förändring som går beyond teknisk implementation. Team-strukturer måste redesignas för cross-functional collaboration, comprehensive skill development programs möjliggör effective tool adoption, och communities of practice fostrar kontinuerlig learning och innovation. Investment i människor och processer är lika viktigt som investment i tekniska verktyg.
 
 ## Källor och referenser

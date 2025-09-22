@@ -8,7 +8,7 @@ Detta kapitel beskriver den tekniska infrastrukturen och arbetsflödet som anvä
 
 ![Architecture Data Model](images/diagram_27_er_architecture.png)
 
-Ovanstående entitetsrelationsdiagram visar den logiska datastrukturen för hur organisationer, projekt, infrastruktur och deployments relaterar till varandra i en Architecture as Code-implementation.
+Ovanstående entitetsrelationsdiagram visar den logiska datastrukturen för hur organisationer, projekt, infrastruktur och deployments relaterar till varandra i en Architecture as Code-arkitektur som kod-implementation.
 
 ## Markdown-filer: Struktur och syfte
 
@@ -81,11 +81,11 @@ pdf-engine: xelatex
 # Metadata och variabler
 metadata:
   title: "Arkitektur som kod"
-  subtitle: "Infrastructure as Code i praktiken"
+  subtitle: "Infrastructure as Code (arkitektur som kod) i praktiken"
   author: "Kodarkitektur Bokverkstad"
 ```
 
-### Build-process och automatisering
+### Build-process och arkitektur som kod-automatisering
 
 `build_book.sh` orchestrerar hela build-processen:
 
@@ -302,9 +302,11 @@ Systemet är designat för kontinuerlig förbättring:
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Den tekniska uppbyggnaden för "Arkitektur som kod" demonstrerar praktisk tillämpning av bokens egna principer. Genom att kodifiera hela publikationsprocessen uppnås:
 
-- **Automatisering**: Komplett CI/CD för bokproduktion
+- **arkitektur som kod-automatisering**: Komplett CI/CD för bokproduktion
 - **Kvalitet**: Konsistent format och professionell presentation
 - **Effektivitet**: Snabb iteration och feedback-loopar
 - **Skalbarhet**: Enkelt att utöka med nytt innehåll och format

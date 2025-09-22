@@ -1,10 +1,10 @@
 # Framtida utveckling och trender
 
-Detta kapitel utforskar framtida utvecklingstrender inom Architecture as Code och Infrastructure as Code, med särskilt fokus på hur svenska organisationer kan förbereda sig för kommande teknologiska förändringar och möjligheter.
+Detta kapitel utforskar framtida utvecklingstrender inom Architecture as Code och Infrastructure as Code (arkitektur som kod), med särskilt fokus på hur svenska organisationer kan förbereda sig för kommande teknologiska förändringar och möjligheter.
 
 ![Framtida utveckling och trender](images/diagram_25_future_trends.png)
 
-*En visualisering av de viktigaste trenderna och teknologiska utvecklingarna som kommer att forma Architecture as Code och Infrastructure as Code under de kommande åren.*
+*En visualisering av de viktigaste trenderna och teknologiska utvecklingarna som kommer att forma Architecture as Code och Infrastructure as Code (arkitektur som kod) under de kommande åren.*
 
 ## Teknologiska trender som formar framtiden
 
@@ -59,7 +59,7 @@ Platform Engineering etableras som egen disciplin inom Architecture as Code:
 - **Golden paths**: Standardiserade, förvaliderade utvecklingsvägar
 - **Platform teams**: Dedikerade team för plattformsutveckling och -underhåll
 
-**Svenska implementationer:**
+**Svenska arkitektur som kod-implementationer:**
 - Integration med svenska utvecklargemenskaper
 - Anpassning till svenska arbetsmiljöer och kulturer
 - Fokus på work-life balance i platform design
@@ -92,7 +92,7 @@ GitOps utvecklas bortom grundläggande CI/CD:
 Zero Trust blir standard för Infrastructure as Code:
 
 - **Identity-first security**: Identitetsbaserad säkerhet för alla resurser
-- **Microsegmentation**: Granulär nätverkssegmentering genom kod
+- **Microsegmentation**: Granulär nätverkssegmentering genom arkitektur som kod
 - **Continuous verification**: Kontinuerlig validering av användar- och enhetsidentiteter
 - **Swedish identity standards**: Integration med BankID och andra svenska identitetstjänster
 
@@ -119,6 +119,8 @@ RegTech integreras i Infrastructure as Code:
 ## Organisatoriska förändringar
 
 ### Remote-first infrastructure
+
+Arkitektur som kod-principerna inom detta område
 
 **Distribuerat arbetssätt**
 COVID-19 påskyndar övergången till remote-first organisationer:
@@ -161,6 +163,8 @@ Serverless utvecklas bortom enkla funktioner:
 - **Edge functions**: Serverless computing på edge-noder
 
 ### Infrastructure Mesh
+
+Arkitektur som kod-principerna inom detta område
 
 **Service mesh för infrastruktur**
 Infrastructure Mesh etableras som nytt paradigm:
@@ -246,6 +250,8 @@ Utveckling av framtidsorienterade kompetenser:
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Framtiden för Architecture as Code och Infrastructure as Code präglas av konvergens mellan AI, kvantdatorer, edge computing och hållbarhet. Svenska organisationer har unika möjligheter att leda utvecklingen genom sina styrkor inom teknisk innovation, hållbarhet och kvalitet.
 
 Nyckeln till framgång ligger i proaktiv förberedelse, kontinuerlig kompetensutveckling och strategiska partnerskap. Organisationer som investerar i framtidskompatibla teknologier och kompetenser idag kommer att vara bäst positionerade för att dra nytta av morgondagens möjligheter.

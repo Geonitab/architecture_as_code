@@ -2,11 +2,11 @@
 
 ![Containerisering och orkestrering](images/diagram_11_kapitel10.png)
 
-Containerteknologi och orkestrering representerar paradigmskifte i hur applikationer deployeras och skalas. Genom att definiera container-infrastruktur som kod möjliggörs portable, skalbar och reproducerbar application deployment across olika miljöer och cloud providers.
+Arkitektur som kod-metodiken utgör grunden för containerteknologi och orkestrering representerar paradigmskifte i hur applikationer deployeras och skalas. Genom att definiera container-infrastruktur som kod möjliggörs portable, skalbar och reproducerbar application deployment across olika miljöer och cloud providers.
 
 ## Container-teknologiens roll inom IaC
 
-Containers erbjuder application-level virtualization som paketerar applikationer med alla dependencies i isolated, portable units. För Infrastructure as Code innebär detta att application deployment kan standardiseras och automatiseras genom code-based definitions som säkerställer consistency mellan development, testing och production environments.
+Containers erbjuder application-level virtualization som paketerar applikationer med alla dependencies i isolated, portable units. För Infrastructure as Code (arkitektur som kod) innebär detta att application deployment kan standardiseras och automatiseras genom code-based definitions som säkerställer consistency mellan development, testing och production environments.
 
 Docker har etablerat sig som de facto standard för containerization, medan podman och andra alternativ erbjuder daemon-less approaches för enhanced security. Container images definieras genom Dockerfiles som executable infrastructure code, vilket möjliggör version control och automated building av application artifacts.
 
@@ -14,7 +14,7 @@ Container registries fungerar som centralized repositories för image distributi
 
 ## Kubernetes som orchestration platform
 
-Kubernetes har emergerat som leading container orchestration platform genom dess declarative configuration model och extensive ecosystem. YAML-based manifests definierar desired state för applications, services, och infrastructure components, vilket alignar perfekt med Infrastructure as Code principles.
+Kubernetes har emergerat som leading container orchestration platform genom dess declarative configuration model och extensive ecosystem. YAML-based manifests definierar desired state för applications, services, och infrastructure components, vilket alignar perfekt med Infrastructure as Code (arkitektur som kod) principles.
 
 Kubernetes objects som Deployments, Services, ConfigMaps, och Secrets möjliggör comprehensive application lifecycle management through code. Pod specifications, resource quotas, network policies, och persistent volume claims kan alla definieras declaratively och managed through version control systems.
 
@@ -29,6 +29,8 @@ Traffic management policies definieras as code för load balancing, circuit brea
 Observability configurations för tracing, metrics collection, och logging integration managed through declarative specifications. This enables comprehensive monitoring och debugging capabilities while maintaining consistency across distributed service architectures.
 
 ## Infrastructure automation med container platforms
+
+Arkitektur som kod-principerna inom detta område
 
 Container-native infrastructure tools som Crossplane och Operator Framework extend Kubernetes för complete infrastructure management. These platforms möjliggör provisioning och management av cloud resources through Kubernetes-native APIs och custom resource definitions.
 
@@ -232,12 +234,14 @@ resource "google_container_node_pool" "primary_nodes" {
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Containerisering och orkestrering som kod transformerar application deployment från manual, error-prone processes till automated, reliable workflows. Kubernetes och associerade verktyg möjliggör sophisticated application management genom declarative configurations, medan GitOps patterns säkerställer consistent och auditable deployment processes. Success kräver comprehensive understanding av container networking, storage management, och security implications.
 
 ## Källor och referenser
 
 - Kubernetes Documentation. "Concepts and Architecture." The Kubernetes Project.
-- Docker Inc. "Docker Best Practices." Docker Documentation.
+- Docker Inc. "Docker arkitektur som kod best practices." Docker Documentation.
 - Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.
 - Helm Community. "Chart Development Guide." Helm Documentation.
 - Istio Project. "Service Mesh Architecture." Istio Service Mesh.

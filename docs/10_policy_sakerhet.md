@@ -2,11 +2,11 @@
 
 ![Policy och säkerhet som kod](images/diagram_12_kapitel11.png)
 
-*Policy as Code representerar nästa evolutionssteg inom Infrastructure as Code där säkerhet, compliance och governance automatiseras genom programmerbara regler. Diagrammet visar integreringen av policy enforcement i hela utvecklingslivscykeln från design till produktion.*
+*Policy as Code representerar nästa evolutionssteg inom Infrastructure as Code (arkitektur som kod) där säkerhet, compliance och governance automatiseras genom programmerbara regler. Diagrammet visar integreringen av policy enforcement i hela utvecklingslivscykeln från design till produktion.*
 
 ## Introduktion och kontextualisering
 
-I en värld där svenska organisationer hanterar allt mer komplexa digitala infrastrukturer samtidigt som regulatoriska krav skärps kontinuerligt, har Policy as Code (PaC) framträtt som en oumbärlig disciplin inom Infrastructure as Code. Medan [kapitel 10 om säkerhet](10_sakerhet.md) introducerade grundläggande säkerhetsprinciper, tar detta kapitel ett djupt dyk i den avancerade implementeringen av policy-drivna säkerhetslösningar och introducerar läsaren till Open Security Controls Assessment Language (OSCAL) - en revolutionerande standard för säkerhetshantering.
+I en värld där svenska organisationer hanterar allt mer komplexa digitala infrastrukturer samtidigt som regulatoriska krav skärps kontinuerligt, har Policy as Code (PaC) framträtt som en oumbärlig disciplin inom Infrastructure as Code (arkitektur som kod). Medan [kapitel 10 om säkerhet](10_sakerhet.md) introducerade grundläggande säkerhetsprinciper, tar detta kapitel ett djupt dyk i den avancerade implementeringen av policy-drivna säkerhetslösningar och introducerar läsaren till Open Security Controls Assessment Language (OSCAL) - en revolutionerande standard för säkerhetshantering.
 
 Det traditionella paradigmet för säkerhets- och compliance-hantering kännetecknas av manuella processer, statiska dokumentation och reaktiva strategier. Denna approach skapar flaskhalsar i moderna utvecklingscykler där infrastrukturändringar sker flera gånger dagligen genom automated CI/CD-pipelines. Svenska organisationer, som traditionellt varit föregångare inom säkerhet och regelefterlevnad, står nu inför utmaningen att digitalisera och automatisera dessa processer utan att kompromissa med säkerhetsnivån.
 
@@ -14,9 +14,11 @@ Policy as Code adresserar denna utmaning genom att transformera säkerhet från 
 
 I den svenska kontexten möter organisationer en komplex regulatorisk miljö som inkluderar EU:s allmänna dataskyddsförordning (GDPR), Myndigheten för samhällsskydd och beredskaps (MSB) säkerhetskrav för kritisk infrastruktur, NIS2-direktivet, och branschspecifika regleringar inom finansiella tjänster, vård och offentlig sektor. Traditionella compliance-approaches baserade på manuella kontroller och dokumentbaserade policies är inte bara ineffektiva utan också riskfyllda i dynamiska molnmiljöer.
 
-Detta kapitel utforskar hur Policy as Code, förstärkt med OSCAL-standarder, möjliggör för svenska organisationer att uppnå unprecedented nivåer av säkerhetsautomatisering och compliance-övervakning. Vi kommer att undersöka verkliga implementationspattern, analysera case studies från svenska organisationer, och ge läsaren konkreta verktyg för att implementera enterprise-grade policy management.
+Detta kapitel utforskar hur Policy as Code, förstärkt med OSCAL-standarder, möjliggör för svenska organisationer att uppnå unprecedented nivåer av säkerhetsarkitektur som kod-automatisering och compliance-övervakning. Vi kommer att undersöka verkliga arkitektur som kod-implementationspattern, analysera case studies från svenska organisationer, och ge läsaren konkreta verktyg för att implementera enterprise-grade policy management.
 
 ## Evolutionen av säkerhetshantering inom Infrastructure as Code
+
+Arkitektur som kod-principerna inom detta område
 
 Säkerhetshantering inom Infrastructure as Code har genomgått en betydande evolution från ad-hoc skript och manuella checklistor till sofistikerade policy engines och automated compliance frameworks. Denna evolution kan delas in i fyra distinkta faser, var och en med sina egna karakteristiska utmaningar och möjligheter.
 
@@ -26,7 +28,7 @@ I infrastrukturens barndom utfördes säkerhetsvalidering primärt genom manuell
 
 Utmaningarna var många: inkonsistent tillämpning av säkerhetspolicies, långa feedback-loopar mellan utveckling och säkerhet, och begränsad skalbarhet när organisationer växte och antalet infrastrukturresurser ökade exponentiellt. Dokumentation blev snabbt föråldrad, och kunskapsöverföring mellan team var problematisk.
 
-**Fas 2: Scriptbaserad Automatisering (2015-2018)**
+**Fas 2: Scriptbaserad arkitektur som kod-automatisering (2015-2018)**
 
 När organisationer började inse begränsningarna med manuella processer började de utveckla skript för att automatisera säkerhetsvalidering. Python-skript, Bash-scripts och powershell-moduler utvecklades för att kontrollera infrastrukturkonfigurationer mot företagspolicies. Denna approach möjliggjorde snabbare validering men saknade standardisering och var svår att underhålla.
 
@@ -34,7 +36,7 @@ Svenska utvecklingsteam började experimentera med custom security validation sc
 
 **Fas 3: Policy Engine Integration (2018-2021)**
 
-Introduktionen av dedikerade policy engines som Open Policy Agent (OPA) markerade en vändpunkt i utvecklingen av säkerhetsautomatisering. Dessa verktyg erbjöd standardiserade sätt att uttrycka och utvärdera policies, vilket möjliggjorde separation av policy logic från implementation details.
+Introduktionen av dedikerade policy engines som Open Policy Agent (OPA) markerade en vändpunkt i utvecklingen av säkerhetsautomatisering. Dessa verktyg erbjöd standardiserade sätt att uttrycka och utvärdera policies, vilket möjliggjorde separation av policy logic från arkitektur som kod-implementation details.
 
 Kubernetes adoption i svenska organisationer drev utvecklingen av sofistikerade admission controllers och policy enforcement points. Gatekeeper, baserat på OPA, blev snabbt de facto standarden för Kubernetes policy enforcement. Svenska enterprise-organisationer började utveckla comprehensive policy libraries som täckte allt från basic security hygiene till complex compliance requirements.
 
@@ -733,6 +735,8 @@ OSCAL Profiles möjliggör svenska organisationer att skapa customized säkerhet
 
 ### Component Definition för Infrastructure as Code
 
+Arkitektur som kod-principerna inom detta område
+
 En av OSCAL:s mest kraftfulla capabilities är möjligheten att dokumentera how specific technology components implementerar säkerhetskontroller. För Infrastructure as Code-practitioners möjliggör detta automatic generation av säkerhetsdokumentation och compliance validation directly från infrastructure definitions.
 
 ```json
@@ -984,7 +988,7 @@ class OSCALSystemSecurityPlanGenerator:
                         "state": "operational"
                     },
                     "authorization-boundary": {
-                        "description": "AWS Account boundary inkluderande alla IaC-managed resources"
+                        "description": "AWS Account boundary inkluderande alla Arkitektur som kod-managed resources"
                     }
                 },
                 "system-implementation": {
@@ -1166,7 +1170,7 @@ class OSCALSystemSecurityPlanGenerator:
                 "uuid": self._generate_uuid(),
                 "type": "software",
                 "title": f"{resource['type']} - {resource['name']}",
-                "description": f"IaC-managed {resource['type']} implementation",
+                "description": f"Arkitektur som kod-managed {resource['type']} implementation",
                 "status": {
                     "state": "operational"
                 },
@@ -2609,6 +2613,8 @@ Svenska organisationer som har successful implementerat Policy as Code har typic
 
 ## Sammanfattning och framtidsperspektiv
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Policy as Code representerar en fundamental transformation inom Infrastructure as Code som möjliggör automated governance, enhanced security och consistent regulatory compliance. För svenska organisationer erbjuder denna approach unprecedented capabilities för att hantera complex compliance landscapes samtidigt som development velocity maintainas.
 
 Integration av OSCAL (Open Security Controls Assessment Language) med traditional Policy as Code approaches skapar powerful synergies som möjliggör standardized security control representation, automated compliance assessment och seamless integration mellan olika security tools. Svenska organisationer som adopterar OSCAL-based approaches positionerar sig för framtida regulatory changes och growing compliance complexity.
@@ -2623,7 +2629,7 @@ Som vi move forward till [kapitel 12 om compliance och regelefterlevnad](12_comp
 
 ## Källor och referenser
 
-- Open Policy Agent Community. "OPA Policy as Code Best Practices." OPA Documentation, 2024.
+- Open Policy Agent Community. "OPA Policy as Code arkitektur som kod best practices." OPA Documentation, 2024.
 - NIST. "OSCAL - Open Security Controls Assessment Language." NIST Special Publication, 2024.
 - Kubernetes SIG Security. "Gatekeeper Policy Engine Architecture Guide." CNCF Documentation, 2024.
 - European Union. "GDPR Implementation Guidelines för Cloud Infrastructure." EU Publications, 2024.
@@ -2640,7 +2646,7 @@ Enterprise-grade policy management inkluderar policy lifecycle management, versi
 
 ## Sammanfattning
 
-Policy as Code representerar kritisk evolution inom Infrastructure as Code som möjliggör automated governance, security enforcement och regulatory compliance. Genom att behandla policies som kod kan organisationer uppnå samma fördelar som IaC erbjuder: version control, testing, automation och consistency.
+Policy as Code representerar kritisk evolution inom Infrastructure as Code som möjliggör automated governance, security enforcement och regulatory compliance. Genom att behandla policies som kod kan organisationer uppnå samma fördelar som Arkitektur som kod erbjuder: version control, testing, automation och consistency.
 
 Svenska organisationer som implementerar comprehensive Policy as Code capabilities positionerar sig starkt för future regulatory changes och growing compliance requirements. Investment i policy automation delivers compounding benefits genom reduced manual oversight, faster compliance responses och improved security posture.
 

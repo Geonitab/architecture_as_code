@@ -2,7 +2,7 @@
 
 ![Säkerhet som kod workflow](images/diagram_06_kapitel5.png)
 
-*Säkerhet utgör ryggraden i framgångsrik Architecture as Code-implementation. Detta kapitel utforskar hur säkerhetsprinciper integreras från första design-fasen genom automatiserad policy enforcement, proaktiv hothantering och kontinuerlig compliance-monitoring. Genom att behandla säkerhet som kod skapar organisationer robusta, skalbara och auditerbara säkerhetslösningar.*
+*Säkerhet utgör ryggraden i framgångsrik Architecture as Code-arkitektur som kod-implementation. Detta kapitel utforskar hur säkerhetsprinciper integreras från första design-fasen genom automatiserad policy enforcement, proaktiv hothantering och kontinuerlig compliance-monitoring. Genom att behandla säkerhet som kod skapar organisationer robusta, skalbara och auditerbara säkerhetslösningar.*
 
 ## Säkerhetsarkitekturens dimensioner
 
@@ -18,7 +18,7 @@ Traditionella säkerhetsmodeller, byggda för statiska miljöer med tydliga peri
 
 Svenska organisationer navigerar särskilt komplexa säkerhetslandskap. GDPR-compliance, MSB:s riktlinjer för kritisk infrastruktur, finansiella regulatoriska krav och sektorsspecifika säkerhetsstandarder skapar ett multidimensionellt kravbild. Samtidigt driver digitaliseringsinitiativ behovet av snabbare innovation och kortare time-to-market. Architecture as Code erbjuder lösningen genom att automatisera compliance-kontroller och möjliggöra "secure by default" arkitekturer.
 
-Detta kapitel behandlar säkerhet ur ett helhetsperspektiv där tekniska implementationer, organisatoriska processer och regulatoriska krav samverkar. Läsaren får djupgående förståelse för threat modeling, risk assessment, policy automation och incident response i kodbaserade miljöer. Särskild uppmärksamhet ges åt sektion 10.6 som introducerar avancerade säkerhetsarkitekturmönster för enterprise-miljöer.
+Detta kapitel behandlar säkerhet ur ett helhetsperspektiv där tekniska arkitektur som kod-implementationer, organisatoriska processer och regulatoriska krav samverkar. Läsaren får djupgående förståelse för threat modeling, risk assessment, policy automation och incident response i kodbaserade miljöer. Särskild uppmärksamhet ges åt sektion 10.6 som introducerar avancerade säkerhetsarkitekturmönster för enterprise-miljöer.
 
 ## Teoretisk grund: Säkerhetsarkitektur i den digitala tidsåldern
 
@@ -30,11 +30,11 @@ Modern verksamhet demolerar dessa antaganden systematiskt. Molnbaserade tjänste
 
 Zero Trust Architecture (ZTA) representerar den nödvändiga evolutionen av säkerhetsfilosofin. Grundprincipen "never trust, always verify" innebär att varje användare, enhet och nätverkstransaktion valideras explicit oavsett location eller tidigare autentisering. Detta kräver granular identitetshantering, kontinuerlig posture assessment och policy-driven access controls.
 
-I Architecture as Code-sammanhang möjliggör ZTA systematisk implementation av trust policies genom kod. Nätverkssegmentering, mikrosegmentering, service mesh policies och IAM-konfigurationer definieras deklarativt och enforced konsistent across alla miljöer. Detta skapar "trust as code" där säkerhetsbeslut blir reproducerbara, testbara och auditerbara.
+I Architecture as Code-sammanhang möjliggör ZTA systematisk implementation av trust policies genom arkitektur som kod. Nätverkssegmentering, mikrosegmentering, service mesh policies och IAM-konfigurationer definieras deklarativt och enforced konsistent across alla miljöer. Detta skapar "trust as code" där säkerhetsbeslut blir reproducerbara, testbara och auditerbara.
 
 ### Threat modeling för kodbaserade arkitekturer
 
-Effektiv säkerhetsarkitektur börjar med djupgående förståelse av hotlandskapet och attack vectors som är relevanta för den specifika arkitekturen. Threat modeling för Architecture as Code-miljöer skiljer sig markant från traditionell application threat modeling genom att inkludera infrastrukturnivån, CI/CD-pipelines och automatiseringsverktyg som potentiella attack surfaces.
+Effektiv säkerhetsarkitektur börjar med djupgående förståelse av hotlandskapet och attack vectors som är relevanta för den specifika arkitekturen. Threat modeling för Architecture as Code-miljöer skiljer sig markant från traditionell application threat modeling genom att inkludera infrastrukturnivån, CI/CD-pipelines och arkitektur som kod-automatiseringsverktyg som potentiella attack surfaces.
 
 STRIDE-metodologin (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) tillhandahåller systematisk framework för att identifiera säkerhetshot på olika arkitekturnivåer. För IaC-miljöer måste STRIDE appliceras på infrastrukturkod, deployment pipelines, secrets management systems och runtime environments.
 
@@ -64,7 +64,7 @@ Policy as Code representerar paradigmskiftet från imperativ till deklarativ sä
 
 Open Policy Agent (OPA) har etablerat sig som de facto standard för policy-as-code implementation. OPA's Rego-språk tillhandahåller expressiv syntax för att definiera komplexa säkerhetspolicies som kan evalueras across heterogena tekniska stakcar. Rego policies kan integreras i CI/CD pipelines, admission controllers, API gateways och runtime environments för comprehensive policy coverage.
 
-HashiCorp Sentinel erbjuder alternativ approach med fokus på Infrastructure as Code-specifika policies. Sentinel policies kan enforceas på Terraform plan-nivå för att förhindra non-compliant infrastructure deployments. AWS Config Rules och Azure Policy tillhandahåller cloud-nativa policy engines med deeper integration i respektive cloud platforms.
+HashiCorp Sentinel erbjuder alternativ approach med fokus på Infrastructure as Code (arkitektur som kod)-specifika policies. Sentinel policies kan enforceas på Terraform plan-nivå för att förhindra non-compliant infrastructure deployments. AWS Config Rules och Azure Policy tillhandahåller cloud-nativa policy engines med deeper integration i respektive cloud platforms.
 
 ### Regulatory compliance automation
 
@@ -98,11 +98,11 @@ Security-by-design representerar inte bara en implementationsstrategi utan en fu
 
 Kodbaserade arkitekturer erbjuder unique möjlighet att bake-in säkerhet från första designprincip. När infrastruktur, applikationer och policies definieras genom samma kodbaserad approach, kan säkerhetsbeslut versionhanteras, testades och deployeras med samma rigor som functional requirements. Detta skapar "security-first" mindset där säkerhetskonsiderationer driver architectural decisions rather än constraining them.
 
-Defense in depth strategies får profound förändring genom Architecture as Code implementation. Traditionella layered security approaches implementerades ofta through disparate tools och manual configuration management. IaC möjliggör orchestrated security controls där network policies, host configurations, application security settings och data protection measures koordineras through unified codebase.
+Defense in depth strategies får profound förändring genom Architecture as Code implementation. Traditionella layered security approaches implementerades ofta through disparate tools och manual configuration management. Arkitektur som kod möjliggör orchestrated security controls där network policies, host configurations, application security settings och data protection measures koordineras through unified codebase.
 
 Immutability principles från infrastructure-as-code extends naturally till säkerhetskonfigurationer. Immutable infrastructure patterns där servers aldrig patched in-place utan ersätts completely genom fresh deployments eliminerar configuration drift och tillhandahåller forensic benefits. När compromise detecteras kan entire infrastructure regenerated från known-good state defined i kod.
 
-### Zero Trust Architecture implementation genom kod
+### Zero Trust Architecture implementation genom arkitektur som kod
 
 Zero Trust Architecture (ZTA) transformation säkerhetsarkitektur från location-based trust till identity-based verification. Traditional network security approaches granted implicit trust baserat på network location - resources inside corporate networks presumed trustworthy medan external traffic heavily scrutinized. ZTA eliminates notion av trusted internal networks genom requiring explicit verification för every user, device och transaction.
 
@@ -150,7 +150,7 @@ Modern distributed architectures proliferate secrets exponentially compared till
 
 Comprehensive secrets management encompasses hela lifecycle från initial generation genom distribution, rotation och eventual revocation. Each stage requires specific security controls och automated processes för att minimize human error och reduce exposure windows.
 
-Secret generation must follow cryptographic best practices med adequate entropy och unpredictability. Automated key generation services som HashiCorp Vault eller cloud-native solutions som AWS Secrets Manager provide cryptographically strong secret generation med appropriate randomness sources. Manual secret creation should avoided except för highly controlled circumstances.
+Secret generation must follow cryptographic arkitektur som kod best practices med adequate entropy och unpredictability. Automated key generation services som HashiCorp Vault eller cloud-native solutions som AWS Secrets Manager provide cryptographically strong secret generation med appropriate randomness sources. Manual secret creation should avoided except för highly controlled circumstances.
 
 Distribution mechanisms must balance security med operational efficiency. Direct embedding av secrets i infrastructure code represents fundamental anti-pattern som compromises både security och auditability. Instead, secrets should distributed through secure channels som encrypted configuration management systems, secrets management APIs eller runtime secret injection mechanisms.
 
@@ -178,13 +178,13 @@ Privacy-by-design principles från GDPR Article 25 require organizations att imp
 
 ## Secrets management och data protection
 
-Comprehensive secrets management utgör foundationen för säker IaC implementation. Secrets som API keys, databas-credentials och encryption keys måste hanteras genom dedicated secret management systems istället för att hardkodas i infrastructure configurations.
+Comprehensive secrets management utgör foundationen för säker Arkitektur som kod implementation. Secrets som API keys, databas-credentials och encryption keys måste hanteras genom dedicated secret management systems istället för att hardkodas i infrastructure configurations.
 
-HashiCorp Vault, AWS Secrets Manager, Azure Key Vault och Kubernetes Secrets erbjuder programmatic interfaces för secret retrieval som kan integreras seamlessly i IaC workflows. Dynamic secrets generation och automatic rotation reducerar risk för credential compromise.
+HashiCorp Vault, AWS Secrets Manager, Azure Key Vault och Kubernetes Secrets erbjuder programmatic interfaces för secret retrieval som kan integreras seamlessly i Arkitektur som kod workflows. Dynamic secrets generation och automatic rotation reducerar risk för credential compromise.
 
-Data encryption at rest och in transit måste konfigureras som standard i alla infrastructure components. IaC templates kan enforça encryption för databaser, storage systems och kommunikationskanaler genom standardized modules och policy validations.
+Data encryption at rest och in transit måste konfigureras som standard i alla infrastructure components. Arkitektur som kod templates kan enforça encryption för databaser, storage systems och kommunikationskanaler genom standardized modules och policy validations.
 
-Key management lifecycle including key generation, distribution, rotation och revocation måste automatiseras genom IaC-integrated key management services. Svenska organisationer med höga säkerhetskrav kan implementera HSM-backed key management för kritiska encryption keys.
+Key management lifecycle including key generation, distribution, rotation och revocation måste automatiseras genom Arkitektur som kod-integrated key management services. Svenska organisationer med höga säkerhetskrav kan implementera HSM-backed key management för kritiska encryption keys.
 
 ## Nätverkssäkerhet och microsegmentering
 
@@ -489,7 +489,7 @@ resource "aws_s3_bucket" "audit_logs" {
 }
 ```
 
-Denna Terraform-modul implementerar comprehensive security foundation som addresserar kritiska säkerhetsdomäner för svenska organisationer. Modulen följer infrastructure-as-code best practices medan den säkerställer compliance med svenska och europeiska regulatory requirements.
+Denna Terraform-modul implementerar comprehensive security foundation som addresserar kritiska säkerhetsdomäner för svenska organisationer. Modulen följer infrastructure-as-code arkitektur som kod best practices medan den säkerställer compliance med svenska och europeiska regulatory requirements.
 
 KMS key management implementation följer cryptographic best practices med automated key rotation och granular access controls. Security groups implementerar zero trust networking principles med default deny policies. CloudTrail configuration tillhandahåller comprehensive audit logging som möter GDPR requirements för data processing documentation.
 
@@ -956,15 +956,17 @@ Data Protection Impact Assessments (DPIAs) blir automated genom infrastructure-a
 
 Privacy by Design principles från GDPR Article 25 requires organizations att implement data protection från initial system design. Infrastructure-as-code templates kan incorporate privacy controls som default configurations: encryption by default, data minimization settings och automatic retention policy enforcement.
 
-Data Subject Rights automation through IaC enables systematic implementation av GDPR rights: right to access, rectification, erasure och data portability. Automated data discovery och classification systems kan identify personal data across infrastructure components och facilitate rapid response till data subject requests.
+Data Subject Rights automation through Arkitektur som kod enables systematic implementation av GDPR rights: right to access, rectification, erasure och data portability. Automated data discovery och classification systems kan identify personal data across infrastructure components och facilitate rapid response till data subject requests.
 
 ### MSB Guidelines för Critical Infrastructure Protection
+
+Arkitektur som kod-principerna inom detta område
 
 Myndigheten för samhällsskydd och beredskap (MSB) provides comprehensive guidelines för cybersecurity inom critical infrastructure sectors. Architecture as Code implementations must align med MSB's risk-based approach till cybersecurity management.
 
 Incident reporting requirements under MSB regulations can automated genom security monitoring systems som detect significant incidents och automatically generate incident reports för regulatory submission. Automated incident classification baserat på MSB severity criteria ensures timely compliance med reporting obligations.
 
-Business continuity och disaster recovery requirements från MSB can systematically implemented genom IaC approaches. Infrastructure definitions kan include automated backup procedures, failover mechanisms och recovery testing schedules som ensure operational resilience.
+Business continuity och disaster recovery requirements från MSB can systematically implemented genom Arkitektur som kod approaches. Infrastructure definitions kan include automated backup procedures, failover mechanisms och recovery testing schedules som ensure operational resilience.
 
 ### Financial Sector Compliance Automation
 
@@ -997,6 +999,8 @@ Service mesh security architectures provide comprehensive protection för micros
 ## Security Testing och Validation Strategies  
 
 ### Infrastructure Security Testing Automation
+
+Arkitektur som kod-principerna inom detta område
 
 Traditional penetration testing approaches prove inadequate för cloud-native environments där infrastructure changes continuously genom automated deployments. Infrastructure security testing must automated och integrated i CI/CD pipelines för continuous validation.
 
@@ -1064,9 +1068,11 @@ Cybersecurity workforce development represents critical challenge för svenska o
 
 ## Sammanfattning och framtida utveckling
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Säkerhet inom Architecture as Code representerar fundamental transformation från traditionella, reaktiva säkerhetsapproaches till proaktiva, kodbaserade säkerhetslösningar som integreras naturligt i moderna utvecklingsprocesser. Detta paradigmskifte möjliggör svenska organisationer att bygga robusta, skalbara och auditerbara säkerhetslösningar som möter både nuvarande regulatoriska krav och framtida säkerhetsutmaningar.
 
-Implementation av security-by-design principer genom Infrastructure as Code skapar systematic approach till säkerhetsarkitektur där säkerhetsbeslut versionhanteras, testas och deployeras med samma rigor som funktionella requirements. Zero Trust Architecture implementation genom kodbaserade policies möjliggör granular access control och continuous verification som anpassar sig till modern distributed computing realities.
+Implementation av security-by-design principer genom Infrastructure as Code (arkitektur som kod) skapar systematic approach till säkerhetsarkitektur där säkerhetsbeslut versionhanteras, testas och deployeras med samma rigor som funktionella requirements. Zero Trust Architecture implementation genom kodbaserade policies möjliggör granular access control och continuous verification som anpassar sig till modern distributed computing realities.
 
 Policy as Code automation transforms compliance från manual, fel-prone processes till systematiska, automated frameworks som can continuously evaluate regulatory requirements mot actual infrastructure configurations. För svenska organisationer navigerar detta complex regulatory landscape inkluderar GDPR, MSB guidelines och sector-specific requirements, automated compliance provides significant operational advantages och reduced regulatory risk.
 

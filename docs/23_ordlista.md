@@ -1,14 +1,14 @@
 # Ordlista
 
-![IaC Core Concepts Class Diagram](images/diagram_23_ordlista_class.png)
+![Arkitektur som kod Core Concepts Class Diagram](images/diagram_23_ordlista_class.png)
 
-Denna ordlista innehåller definitioner av centrala termer som används genom boken.
+Arkitektur som kod-metodiken utgör grunden för denna ordlista innehåller definitioner av centrala termer som används genom boken.
 
 ## Grundläggande koncept och verktyg
 
 **API (Application Programming Interface):** Gränssnitt som möjliggör kommunikation mellan olika mjukvarukomponenter eller system genom standardiserade protokoll och dataformat.
 
-**Automatisering:** Process där manuella uppgifter utförs automatiskt av datorsystem utan mänsklig intervention, vilket ökar effektivitet och minskar felrisk.
+**arkitektur som kod-automatisering:** Process där manuella uppgifter utförs automatiskt av datorsystem utan mänsklig intervention, vilket ökar effektivitet och minskar felrisk.
 
 **CI/CD (Continuous Integration/Continuous Deployment):** Utvecklingsmetodik som integrerar kodändringar kontinuerligt och automatiserar deployment-processen för snabbare och säkrare leveranser.
 
@@ -22,9 +22,9 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **Git:** Distribuerat versionhanteringssystem för att spåra ändringar i källkod under utveckling med support för branching och merging.
 
-**Idempotens:** Egenskap hos operationer som producerar samma resultat oavsett hur många gånger de körs, kritiskt för säker automatisering.
+**Idempotens:** Egenskap hos operationer som producerar samma resultat oavsett hur många gånger de körs, kritiskt för säker arkitektur som kod-automatisering.
 
-**Infrastructure as Code (IaC):** Praktiken att hantera infrastruktur genom kod istället för manuella processer, vilket möjliggör versionskontroll och automatisering.
+**Infrastructure as Code (arkitektur som kod) (arkitektur som kod) (IaC):** Praktiken att hantera infrastruktur genom arkitektur som kod istället för manuella processer, vilket möjliggör versionskontroll och automatisering.
 
 **JSON (JavaScript Object Notation):** Textbaserat dataformat för strukturerad informationsutbyte mellan system med human-readable syntax.
 
@@ -38,9 +38,9 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **Policy as Code:** Approach där säkerhets- och compliance-regler definieras som kod för automatiserad evaluering och enforcement.
 
-**Terraform:** Infrastructure as Code-verktyg som använder deklarativ syntax för att definiera och hantera cloud infrastructure resources.
+**Terraform:** Infrastructure as Code (arkitektur som kod)-verktyg som använder deklarativ syntax för att definiera och hantera cloud infrastructure resources.
 
-**YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat som ofta används för konfigurationsfiler och IaC-definitioner.
+**YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat som ofta används för konfigurationsfiler och Arkitektur som kod-definitioner.
 
 **Zero Trust:** Säkerhetsmodell som aldrig litar på och alltid verifierar användare och enheter innan access till resurser beviljas.
 

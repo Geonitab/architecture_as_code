@@ -2,9 +2,9 @@
 
 ![Compliance och regelefterlevnad](images/diagram_12_compliance.png)
 
-Infrastructure as Code spelar en central roll för att möta växande compliance-krav och regulatoriska förväntningar. Som vi såg i [kapitel 11 om policy as code](11_policy_sakerhet.md), kan tekniska lösningar för automatiserad compliance betydligt förenkla och förbättra organisationers förmåga att uppfylla komplexa regelkrav. Detta kapitel fokuserar på de organisatoriska och processrelaterade aspekterna av compliance-hantering genom Infrastructure as Code.
+Infrastructure as Code (arkitektur som kod) spelar en central roll för att möta växande compliance-krav och regulatoriska förväntningar. Som vi såg i [kapitel 11 om policy as code](11_policy_sakerhet.md), kan tekniska lösningar för automatiserad compliance betydligt förenkla och förbättra organisationers förmåga att uppfylla komplexa regelkrav. Detta kapitel fokuserar på de organisatoriska och processrelaterade aspekterna av compliance-hantering genom Infrastructure as Code (arkitektur som kod).
 
-## AI och maskininlärning för infrastrukturautomatisering
+## AI och maskininlärning för infrastrukturarkitektur som kod-automatisering
 
 Artificiell intelligens revolutionerar Infrastructure as Code genom intelligent automation, prediktiv skalning och självläkande system. Maskininlärningsalgoritmer analyserar historiska data för att optimera resursallokering, förutsäga fel och automatiskt justera infrastrukturkonfigurationer baserat på förändrade efterfrågemönster.
 
@@ -32,7 +32,7 @@ Zero-trust-arkitekturprinciper blir inbäddade i infrastrukturdefinitioner som s
 
 Kvantdatorers påverkan på Infrastructure as Code kommer att kräva en grundläggande omtänkning av säkerhetsmodeller, beräkningsarkitekturer och resurshanteringsstrategier. Kvantresistent kryptografi måste integreras i infrastruktursäkerhetsramverk.
 
-Post-kvant kryptografi-implementeringar kräver uppdaterade säkerhetsprotokoll och krypteringsmekanismer för all infrastrukturkommunikation. IaC-verktyg måste stödja kvantsäkra algoritmer och förbereda för övergången bort från nuvarande kryptografiska standarder.
+Post-kvant kryptografi-implementeringar kräver uppdaterade säkerhetsprotokoll och krypteringsmekanismer för all infrastrukturkommunikation. Arkitektur som kod-verktyg måste stödja kvantsäkra algoritmer och förbereda för övergången bort från nuvarande kryptografiska standarder.
 
 Kvantförstärkta optimeringsalgoritmer kan lösa komplexa infrastrukturplacerings-, routing- och resursallokeringsproblem som är beräkningsintensiva för klassiska datorer. Detta öppnar möjligheter för oöverträffad infrastruktureffektivitet och kapacitet.
 
@@ -233,6 +233,8 @@ resource "aws_vpc" "kvantsäker" {
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Framtida Infrastructure as Code-utveckling kommer att drivas av AI-automation, serverless-arkitekturer, beredskap för kvantdatorer och hållbarhetskrav. Organisationer måste proaktivt investera i nya teknologier, utveckla kvantsäkra säkerhetsstrategier och integrera miljöhänsyn i infrastrukturplanering.
 
 Framgång kräver kontinuerligt lärande, strategisk teknologiadoption och långsiktig vision för infrastrukturutveckling. Som vi har sett genom bokens progression från [grundläggande principer](02_grundlaggande_principer.md) till dessa avancerade framtida teknologier, utvecklas Infrastructure as Code kontinuerligt för att möta nya utmaningar och möjligheter.

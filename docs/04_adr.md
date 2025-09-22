@@ -6,9 +6,9 @@
 
 ## Övergripande beskrivning
 
-Architecture Decision Records (ADR) utgör en systematisk approach för att dokumentera viktiga arkitekturbeslut som påverkar systemets struktur, prestanda, säkerhet och underhållbarhet. ADR-metoden introducerades av Michael Nygard och har blivit en etablerad best practice inom moderna systemutveckling.
+Arkitektur som kod-metodiken utgör grunden för architecture Decision Records (ADR) utgör en systematisk approach för att dokumentera viktiga arkitekturbeslut som påverkar systemets struktur, prestanda, säkerhet och underhållbarhet. ADR-metoden introducerades av Michael Nygard och har blivit en etablerad best practice inom moderna systemutveckling.
 
-För svenska organisationer som implementerar Architecture as Code och Infrastructure as Code är ADR särskilt värdefullt eftersom det säkerställer att arkitekturbeslut dokumenteras på ett strukturerat sätt som uppfyller compliance-krav och underlättar kunskapsöverföring mellan team och tidsepoker.
+För svenska organisationer som implementerar Architecture as Code och Infrastructure as Code (arkitektur som kod) är ADR särskilt värdefullt eftersom det säkerställer att arkitekturbeslut dokumenteras på ett strukturerat sätt som uppfyller compliance-krav och underlättar kunskapsöverföring mellan team och tidsepoker.
 
 ADR fungerar som arkitekturens "commit messages" - korta, fokuserade dokument som fångar sammanhanget (context), problemet, det valda alternativet och konsekvenserna av viktiga arkitekturbeslut. Detta möjliggör spårbarhet och förståelse för varför specifika tekniska val gjordes.
 
@@ -27,7 +27,7 @@ ADR-format följer vanligtvis en strukturerad mall som inkluderar:
 
 Officiella riktlinjer och mallar finns tillgängliga på https://adr.github.io, som fungerar som den primära resursen för ADR-metodiken. Denna webbplats underhålls av ADR-communityn och innehåller standardiserade mallar, verktyg och exempel.
 
-För Infrastructure as Code-kontext innebär ADR dokumentation av beslut om teknologival, arkitekturmönster, säkerhetsstrategier och operationella policies som kodifieras i infrastrukturdefinitioner.
+För Infrastructure as Code (arkitektur som kod)-kontext innebär ADR dokumentation av beslut om teknologival, arkitekturmönster, säkerhetsstrategier och operationella policies som kodifieras i infrastrukturdefinitioner.
 
 ## Struktur och komponenter av ADR
 
@@ -51,7 +51,7 @@ som ledde till behovet av detta beslut.
 
 ## Decision
 Det specifika beslutet som fattades, inklusive tekniska detaljer
-och implementation approach.
+och arkitektur som kod-implementation approach.
 
 ## Consequences
 ### Positiva konsekvenser
@@ -74,7 +74,7 @@ Versionering hanteras genom Git-historik istället för inline-ändringar. Om et
 
 ![ADR Lifecycle](images/diagram_04_adr_lifecycle.png)
 
-*ADR-livscykeln illustrerar hur beslut utvecklas från initialt förslag genom review-processen till implementation, monitoring och eventuell deprecering när nya lösningar behövs.*
+*ADR-livscykeln illustrerar hur beslut utvecklas från initialt förslag genom review-processen till arkitektur som kod-implementation, monitoring och eventuell deprecering när nya lösningar behövs.*
 
 ADR genomgår typiskt följande statusar:
 
@@ -86,6 +86,8 @@ ADR genomgår typiskt följande statusar:
 ## Praktiska exempel på ADR
 
 ### Exempel 1: Val av Infrastructure as Code-verktyg
+
+Arkitektur som kod-principerna inom detta område
 
 ```markdown
 # ADR-0003: Val av Terraform för Infrastructure as Code
@@ -158,7 +160,7 @@ Infrastructure as Code.
 - Extensive documentation och training
 ```
 
-## Verktyg och best practices för ADR
+## Verktyg och arkitektur som kod best practices för ADR
 
 ### ADR-verktyg och integration
 
@@ -174,7 +176,7 @@ För Infrastructure as Code-projekt rekommenderas integration av ADR i Git repos
 docs/
 ├── adr/
 │   ├── 0001-record-architecture-decisions.md
-│   ├── 0002-use-terraform-for-iac.md
+│   ├── 0002-use-terraform-for-arkitektur som kod.md
 │   └── 0003-implement-zero-trust.md
 ├── infrastructure/
 └── README.md
@@ -241,6 +243,8 @@ Svenska organisationer kan dra nytta av europeiska initiativ för standardiserin
 
 ## Sammanfattning
 
+
+Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Architecture Decision Records representerar en fundamental komponent i modern Architecture as Code-metodik. Genom strukturerad dokumentation av arkitekturbeslut skapas transparens, spårbarhet och kunskapsöverföring som är kritisk för svenska organisationers digitaliseringsinitiativ.
 
 Effektiv ADR-implementation kräver organisatoriskt stöd, standardiserade processer och integration med befintliga utvecklingsworkflows. För Infrastructure as Code-projekt möjliggör ADR koppling mellan designintentioner och kod-implementation som förbättrar maintainability och compliance.

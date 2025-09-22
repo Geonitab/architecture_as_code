@@ -1,6 +1,6 @@
-# Appendix A: Kodexempel och tekniska implementationer
+# Appendix A: Kodexempel och tekniska arkitektur som kod-implementationer
 
-Denna appendix innehåller alla kodexempel, konfigurationsfiler och tekniska implementationer som refereras till i bokens huvudkapitel. Kodexemplen är organiserade efter typ och användningsområde för att göra det enkelt att hitta specifika implementationer.
+Denna appendix innehåller alla kodexempel, konfigurationsfiler och tekniska arkitektur som kod-implementationer som refereras till i bokens huvudkapitel. Kodexemplen är organiserade efter typ och användningsområde för att göra det enkelt att hitta specifika implementationer.
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 
@@ -10,9 +10,9 @@ Denna appendix innehåller alla kodexempel, konfigurationsfiler och tekniska imp
 
 Kodexemplen är organiserade i följande kategorier:
 
-1. **[CI/CD Pipelines och automatisering](#cicd-pipelines)**
-2. **[Infrastructure as Code - Terraform](#terraform-iac)**
-3. **[Infrastructure as Code - CloudFormation](#cloudformation-iac)**
+1. **[CI/CD Pipelines och arkitektur som kod-automatisering](#cicd-pipelines)**
+2. **[Infrastructure as Code (arkitektur som kod) - Terraform](#terraform-iac)**
+3. **[Infrastructure as Code (arkitektur som kod) - CloudFormation](#cloudformation-arkitektur som kod)**
 4. **[Automationsskript och verktyg](#automation-scripts)**
 5. **[Säkerhet och compliance](#security-compliance)**
 6. **[Testning och validering](#testing-validation)**
@@ -23,7 +23,7 @@ Varje kodexempel har en unik identifierare i formatet `[KAPITEL]_CODE_[NUMMER]` 
 
 ---
 
-## CI/CD Pipelines och automatisering {#cicd-pipelines}
+## CI/CD Pipelines och arkitektur som kod-automatisering {#cicd-pipelines}
 
 Denna sektion innehåller alla exempel på CI/CD-pipelines, GitHub Actions workflows och automationsprocesser för svenska organisationer.
 
@@ -31,10 +31,10 @@ Denna sektion innehåller alla exempel på CI/CD-pipelines, GitHub Actions workf
 *Refereras från Kapitel 5: [Automatisering och CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
-# .github/workflows/svenska-iac-pipeline.yml
+# .github/workflows/svenska-arkitektur som kod-pipeline.yml
 # GDPR-compliant CI/CD pipeline för svenska organisationer
 
-name: Svenska IaC Pipeline med GDPR Compliance
+name: Svenska Arkitektur som kod Pipeline med GDPR Compliance
 
 on:
   push:
@@ -71,7 +71,7 @@ jobs:
         run: |
           echo "🔍 Scanning för personal data patterns..."
           
-          # Sök efter vanliga personal data patterns i IaC-kod
+          # Sök efter vanliga personal data patterns i Arkitektur som kod-kod
           PERSONAL_DATA_PATTERNS=(
             "personnummer"
             "social.*security"
@@ -94,7 +94,7 @@ jobs:
           
           if [ "$VIOLATIONS_FOUND" = true ]; then
             echo "❌ GDPR compliance check misslyckades"
-            echo "Personal data får inte hardkodas i IaC-kod"
+            echo "Personal data får inte hardkodas i Arkitektur som kod-kod"
             exit 1
           fi
           
@@ -105,7 +105,7 @@ jobs:
 *Refereras från Kapitel 5: [Automatisering och CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
-# jenkins/svenska-iac-pipeline.groovy
+# jenkins/svenska-arkitektur som kod-pipeline.groovy
 // Jenkins pipeline för svenska organisationer med GDPR compliance
 
 pipeline {
@@ -145,7 +145,7 @@ pipeline {
                 stage('GDPR Data Scan') {
                     steps {
                         script {
-                            echo "🔍 Scanning för personal data patterns i IaC kod..."
+                            echo "🔍 Scanning för personal data patterns i Arkitektur som kod kod..."
                             
                             def personalDataPatterns = [
                                 'personnummer', 'social.*security', 'credit.*card',
@@ -166,7 +166,7 @@ pipeline {
                             }
                             
                             if (violations) {
-                                error("GDPR VIOLATION: Personal data found in IaC code:\n${violations.join('\n')}")
+                                error("GDPR VIOLATION: Personal data found in Arkitektur som kod code:\n${violations.join('\n')}")
                             }
                             
                             echo "✅ GDPR data scan genomförd - inga violations"
@@ -671,7 +671,9 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 ---
 
-## Infrastructure as Code - CloudFormation {#cloudformation-iac}
+## Infrastructure as Code - CloudFormation {
+
+Arkitektur som kod-principerna inom detta område#cloudformation-arkitektur som kod}
 
 Denna sektion innehåller CloudFormation templates för AWS-infrastruktur anpassad för svenska organisationer.
 
@@ -737,7 +739,9 @@ Resources:
 Denna sektion innehåller Python-skript och andra automationsverktyg för Infrastructure as Code-hantering.
 
 ### 22_CODE_1: Omfattande testramverk för Infrastructure as Code
-*Refereras från Kapitel 22: [Best practices och lärda läxor](22_best_practices.md)*
+
+Arkitektur som kod-principerna inom detta område
+*Refereras från Kapitel 22: [arkitektur som kod best practices och lärda läxor](22_best_practices.md)*
 
 ```python
 # testing/comprehensive_iac_testing.py
@@ -763,7 +767,7 @@ class TestCase:
 class ComprehensiveIaCTesting:
     """
     Comprehensive testing framework för Infrastructure as Code
-    Based på svenska best practices och international standards
+    Based på svenska arkitektur som kod best practices och international standards
     """
     
     def __init__(self, region='eu-north-1'):
