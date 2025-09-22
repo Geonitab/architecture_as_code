@@ -16,13 +16,13 @@ const ChaptersOverview = () => {
       title: "Inledning till arkitektur som kod", 
       area: "Grundläggande koncept",
       summary: "En introduktion till Infrastructure as Code och dess fundamentala principer. Täcker bakgrund, motivation och definierar omfattningen för kodbaserad infrastruktur.",
-      keyTopics: ["IaC definition", "Traditionella utmaningar", "Svenska drivkrafter", "Compliance krav"]
+      keyTopics: ["Infrastructure as Code definition", "Traditionella utmaningar", "Svenska drivkrafter", "Compliance krav"]
     },
     { 
       id: "02", 
       title: "Grundläggande principer för Infrastructure as Code", 
       area: "Grundläggande koncept",
-      summary: "Fundamentala principer som säkerställer framgångsrik IaC-implementation. Fokus på deklarativ approach, versionskontroll och automatisering.",
+      summary: "Fundamentala principer som säkerställer framgångsrik Infrastructure as Code-implementation. Fokus på deklarativ approach, versionskontroll och automatisering.",
       keyTopics: ["Deklarativ vs imperativ", "Versionskontroll", "Automatisering", "Reproducerbarhet"]
     },
     { 
@@ -71,7 +71,7 @@ const ChaptersOverview = () => {
       id: "09", 
       title: "Säkerhet i Architecture as Code", 
       area: "Säkerhet",
-      summary: "Säkerhetsaspekter och best practices för IaC. Inkluderar secrets management, compliance och security scanning.",
+      summary: "Säkerhetsaspekter och best practices för Infrastructure as Code. Inkluderar secrets management, compliance och security scanning.",
       keyTopics: ["Security by design", "Secrets management", "Compliance", "Vulnerability scanning"]
     },
     { 
@@ -106,7 +106,7 @@ const ChaptersOverview = () => {
       id: "14", 
       title: "Kostnadsoptimering och resurshantering", 
       area: "Arkitektur",
-      summary: "Strategier för kostnadsoptimering och effektiv resurshantering genom IaC.",
+      summary: "Strategier för kostnadsoptimering och effektiv resurshantering genom Infrastructure as Code.",
       keyTopics: ["Cost optimization", "Resource management", "Budget control", "ROI measurement"]
     },
     { 
@@ -120,12 +120,12 @@ const ChaptersOverview = () => {
       id: "16", 
       title: "Organisatorisk förändring och teamstrukturer", 
       area: "Organisationsutveckling",
-      summary: "Hantering av organisatoriska förändringar vid IaC-implementation. Fokus på team dynamics och cultural change.",
+      summary: "Hantering av organisatoriska förändringar vid Infrastructure as Code-implementation. Fokus på team dynamics och cultural change.",
       keyTopics: ["Change management", "Team structures", "Cultural transformation", "Skills development"]
     },
     { 
       id: "17", 
-      title: "Team-struktur och kompetensutveckling för IaC", 
+      title: "Team-struktur och kompetensutveckling för Infrastructure as Code", 
       area: "Organisationsutveckling",
       summary: "Optimala teamstrukturer och kompetensutvecklingsstrategier för Infrastructure as Code.",
       keyTopics: ["Team topology", "Skills development", "Training programs", "Knowledge sharing"]
@@ -134,7 +134,7 @@ const ChaptersOverview = () => {
       id: "18", 
       title: "Digitalisering genom kodbaserad infrastruktur", 
       area: "Digitalisering",
-      summary: "Hur IaC möjliggör och accelererar digital transformation inom svenska organisationer.",
+      summary: "Hur Infrastructure as Code möjliggör och accelererar digital transformation inom svenska organisationer.",
       keyTopics: ["Digital transformation", "Innovation", "Business agility", "Competitive advantage"]
     },
     { 
@@ -155,14 +155,14 @@ const ChaptersOverview = () => {
       id: "21", 
       title: "Best practices och lärda läxor", 
       area: "Systemutveckling",
-      summary: "Sammanställning av best practices och viktiga lärdomar från framgångsrika IaC-implementationer.",
+      summary: "Sammanställning av best practices och viktiga lärdomar från framgångsrika Infrastructure as Code-implementationer.",
       keyTopics: ["Best practices", "Lessons learned", "Success factors", "Common pitfalls"]
     },
     { 
       id: "22", 
       title: "Slutsats", 
       area: "Sammanfattning",
-      summary: "Sammanfattning av bokens huvudbudskap och rekommendationer för framtida IaC-arbete.",
+      summary: "Sammanfattning av bokens huvudbudskap och rekommendationer för framtida Infrastructure as Code-arbete.",
       keyTopics: ["Key takeaways", "Future recommendations", "Action items", "Next steps"]
     },
     { 

@@ -99,7 +99,7 @@ för att hantera AWS och Azure-miljöer. Nuvarande manuella processer
 skapar inconsistens och operationella risker.
 
 ## Decision
-Vi kommer att använda Terraform som primärt IaC-verktyg för alla
+Vi kommer att använda Terraform som primärt Infrastructure as Code-verktyg för alla
 cloud-miljöer, med HashiCorp Configuration Language (HCL) som
 standardsyntax.
 

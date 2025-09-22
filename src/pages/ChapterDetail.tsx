@@ -29,7 +29,7 @@ const ChapterDetail = () => {
     { id: "14", title: "Kostnadsoptimering och resurshantering", area: "Arkitektur", filename: "14_kostnadsoptimering.md" },
     { id: "15", title: "Migration från traditionell infrastruktur", area: "Arkitektur", filename: "15_migration.md" },
     { id: "16", title: "Organisatorisk förändring och teamstrukturer", area: "Organisationsutveckling", filename: "16_organisatorisk_forandring.md" },
-    { id: "17", title: "Team-struktur och kompetensutveckling för IaC", area: "Organisationsutveckling", filename: "17_team_struktur.md" },
+    { id: "17", title: "Team-struktur och kompetensutveckling för Infrastructure as Code", area: "Organisationsutveckling", filename: "17_team_struktur.md" },
     { id: "18", title: "Digitalisering genom kodbaserad infrastruktur", area: "Digitalisering", filename: "18_digitalisering.md" },
     { id: "19", title: "Använd Lovable för att skapa mockups för svenska organisationer", area: "Produkt- och tjänstutveckling", filename: "19_lovable_mockups.md" },
     { id: "20", title: "Framtida trender och teknologier", area: "Innovation", filename: "20_framtida_trender.md" },

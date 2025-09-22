@@ -2,13 +2,13 @@
 
 ![Automatisering och CI/CD-pipelines](images/diagram_04_kapitel3.png)
 
-Kontinuerlig integration och kontinuerlig deployment (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern mjukvaruutveckling, och när det gäller Infrastructure as Code (IaC) blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-pipelines som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, pålitliga och spårbara operationer, samtidigt som vi utvecklar Architecture as Code-praktiker som hanterar hela systemarkitekturen som kod.
+Kontinuerlig integration och kontinuerlig deployment (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern mjukvaruutveckling, och när det gäller Infrastructure as Code blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-pipelines som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, pålitliga och spårbara operationer, samtidigt som vi utvecklar Architecture as Code-praktiker som hanterar hela systemarkitekturen som kod.
 
 ![Implementation Timeline](images/diagram_05_gantt_timeline.png)
 
-Diagrammet ovan visar en typisk tidsplan för IaC-implementation, från initial verktygsanalys till fullständig production-rollout.
+Diagrammet ovan visar en typisk tidsplan för Infrastructure as Code-implementation, från initial verktygsanalys till fullständig production-rollout.
 
-Att förstå CI/CD för Infrastructure as Code kräver en fundamental förskjutning i tankesättet från traditionell infrastrukturhantering till kod-centrerad automation. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och ad-hoc-lösningar, erbjuder modern IaC-automation konsistens, repeterbarhet och transparens genom hela infrastrukturlivscykeln. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
+Att förstå CI/CD för Infrastructure as Code kräver en fundamental förskjutning i tankesättet från traditionell infrastrukturhantering till kod-centrerad automation. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och ad-hoc-lösningar, erbjuder modern Infrastructure as Code-automation konsistens, repeterbarhet och transparens genom hela infrastrukturlivscykeln. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
 
 Diagrammet ovan illustrerar det grundläggande CI/CD-flödet från kod-commit genom validering och testning till deployment och monitoring. Detta flöde representerar en systematisk approach där varje steg är designat för att fånga fel tidigt, säkerställa kvalitet och minimera risker i produktionsmiljöer. För svenska organisationer innebär detta särskilda överväganden kring data residency, compliance-validering och kostnadsoptimering i svenska kronor.
 
@@ -24,11 +24,11 @@ Framväxten av "infrastructure as cattle" - där servrar behandlas som standardi
 
 För svenska organisationer har denna utveckling sammanfallit med ökande regulatoriska krav, särskilt GDPR och Datainspektionens riktlinjer för tekniska och organisatoriska säkerhetsåtgärder. Detta har skapat en unik situation där automation inte bara är en effektivitetsförbättring utan en nödvändighet för compliance och riskhanteiing.
 
-### Fundamentala principer för IaC-automation
+### Fundamentala principer för Infrastructure as Code-automation
 
 **Immutability och versionkontroll:** Infrastruktur som kod följer samma principer som traditionell mjukvaruutveckling, där all konfiguration versionshanteras och förändringar spåras genom git-historik. Detta möjliggör reproducerbar infrastruktur där samma kod-version alltid producerar identiska miljöer. För svenska organisationer innebär detta förbättrad compliance-dokumentation och möjlighet att demonstrera kontrollerbar förändring av kritiska system.
 
-**Declarative konfiguration:** IaC-verktyg som Terraform och CloudFormation använder deklarativ syntax där utvecklare specificerar önskat slutresultat snarare än stegen för att nå dit. Detta approach reducerar komplexitet och felkällor samtidigt som det möjliggör sophisticated dependency management och parallelisering av infrastrukturåtgärder.
+**Declarative konfiguration:** Infrastructure as Code-verktyg som Terraform och CloudFormation använder deklarativ syntax där utvecklare specificerar önskat slutresultat snarare än stegen för att nå dit. Detta approach reducerar komplexitet och felkällor samtidigt som det möjliggör sophisticated dependency management och parallelisering av infrastrukturåtgärder.
 
 **Testbarhet och validering:** Infrastrukturkod kan testas på samma sätt som applikationskod genom unit tests, integration tests och end-to-end-validering. Detta möjliggör "shift-left" testing där fel upptäcks tidigt i utvecklingsprocessen snarare än i produktionsmiljöer där kostnaden för korrigering är betydligt högre.
 
@@ -48,7 +48,7 @@ Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI
 
 ## Från Infrastructure as Code till Architecture as Code DevOps
 
-Traditionella DevOps-praktiker fokuserade primärt på applikationsutveckling och deployment, medan Infrastructure as Code (IaC) utvidgade detta till infrastrukturhantering. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet.
+Traditionella DevOps-praktiker fokuserade primärt på applikationsutveckling och deployment, medan Infrastructure as Code utvidgade detta till infrastrukturhantering. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet.
 
 ### Holistic DevOps för Architecture as Code
 
@@ -80,7 +80,7 @@ Svenska organisationer opererar i en komplex regulatorisk miljö som kräver sä
 
 ### Regulatorisk komplexitet och automation
 
-Den svenska regulatoriska landskapet påverkar CI/CD-design på fundamentala sätt. GDPR:s krav på data protection by design och by default innebär att pipelines måste inkludera automatiserad validering av dataskydd-implementering. Article 25 kräver att tekniska och organisatoriska åtgärder implementeras för att säkerställa att endast personuppgifter som är nödvändiga för specifika ändamål behandlas. För IaC-pipelines innebär detta automatiserad scanning för GDPR-compliance, data residency-validering och audit trail-generering.
+Den svenska regulatoriska landskapet påverkar CI/CD-design på fundamentala sätt. GDPR:s krav på data protection by design och by default innebär att pipelines måste inkludera automatiserad validering av dataskydd-implementering. Article 25 kräver att tekniska och organisatoriska åtgärder implementeras för att säkerställa att endast personuppgifter som är nödvändiga för specifika ändamål behandlas. För Infrastructure as Code-pipelines innebär detta automatiserad scanning för GDPR-compliance, data residency-validering och audit trail-generering.
 
 Datainspektionens riktlinjer för tekniska säkerhetsåtgärder kräver systematisk implementation av kryptering, access controls och logging. Traditionella manuella processer för dessa kontroller är inte bara ineffektiva utan också felbenägna när de tillämpas på moderna, dynamiska infrastrukturer. CI/CD-automation erbjuder möjligheten att systematiskt enforça dessa krav genom kodifierade policies och automatiserad compliance-validering.
 
@@ -198,7 +198,7 @@ jobs:
               ;;
               
             "infrastructure")
-              # Traditional IaC validation within broader architecture context
+              # Traditional Infrastructure as Code validation within broader architecture context
               terraform -chdir=architecture/infrastructure init -backend=false
               terraform -chdir=architecture/infrastructure validate
               
@@ -278,7 +278,7 @@ Effektiva CI/CD-pipelines för Infrastructure as Code bygger på fundamentala de
 
 ### Fail-fast feedback och progressive validation
 
-Fail-fast feedback är en core principle där fel upptäcks och rapporteras så tidigt som möjligt i development lifecycle. För IaC innebär detta multilayer validation från syntax checking till comprehensive security scanning innan någon faktisk infrastruktur distribueras.
+Fail-fast feedback är en core principle där fel upptäcks och rapporteras så tidigt som möjligt i development lifecycle. För Infrastructure as Code innebär detta multilayer validation från syntax checking till comprehensive security scanning innan någon faktisk infrastruktur distribueras.
 
 **Syntax och static analysis:** Första validation-lagret kontrollerar infrastrukturkod för syntax errors, undefined variables och basic configuration mistakes. Verktyg som `terraform validate`, `ansible-lint` och cloud provider-specifika validatorer fångar många fel innan kostnadskrävande deployment-försök.
 
@@ -310,7 +310,7 @@ Robust rollback capabilities är essentiella för maintaining system reliability
 
 ## Automated testing strategier
 
-Multi-level testing strategies för IaC inkluderar syntax validation, unit testing av moduler, integration testing av komponenter, och end-to-end testing av kompletta miljöer. Varje testnivå adresserar specifika risker och kvalitetsaspekter med ökande komplexitet och exekvering-cost.
+Multi-level testing strategies för Infrastructure as Code inkluderar syntax validation, unit testing av moduler, integration testing av komponenter, och end-to-end testing av kompletta miljöer. Varje testnivå adresserar specifiska risker och kvalitetsaspekter med ökande komplexitet och exekvering-cost.
 
 Static analysis tools som tflint, checkov, eller terrascan integreras för att identifiera säkerhetsrisker, policy violations, och best practice deviations. Dynamic testing i sandbox-miljöer validerar faktisk funktionalitet och prestanda under realistiska conditions.
 
@@ -326,12 +326,12 @@ För containerbaserade infrastrukturtester möjliggör Docker och Kubernetes tes
 
 ```dockerfile
 # test/Dockerfile.svenska-compliance-test
-# Container för svenska IaC compliance testing
+# Container för svenska Infrastructure as Code compliance testing
 
 FROM ubuntu:22.04
 
 LABEL maintainer="svenska-it-team@organization.se"
-LABEL description="Compliance testing container för svenska IaC implementationer"
+LABEL description="Compliance testing container för svenska Infrastructure as Code implementationer"
 
 # Installera grundläggande verktyg
 RUN apt-get update && apt-get install -y \
@@ -522,7 +522,7 @@ För svenska organisationer kräver monitoring särskild uppmärksamhet på GDPR
 
 ```yaml
 # monitoring/svenska-pipeline-monitoring.yaml
-# Comprehensive monitoring för svenska IaC pipelines
+# Comprehensive monitoring för svenska Infrastructure as Code pipelines
 
 apiVersion: v1
 kind: ConfigMap
@@ -596,7 +596,7 @@ Modern CI/CD approaches som GitOps, progressive delivery, och infrastructure tes
 
 Testing strategier för Infrastructure as Code inkluderar multiple levels från syntax validation till comprehensive integration testing. Terratest och container-based testing frameworks möjliggör automated validation av GDPR compliance, cost thresholds, och security requirements som en integrerad del av deployment pipelines.
 
-Monitoring och observability för svenska IaC pipelines kräver comprehensive metrics collection som inkluderar både technical performance indicators och business compliance metrics. Automated alerting ensures rapid response till compliance violations, cost overruns, och technical failures genom integration med svenska incident management processes.
+Monitoring och observability för svenska Infrastructure as Code pipelines kräver comprehensive metrics collection som inkluderar både technical performance indicators och business compliance metrics. Automated alerting ensures rapid response till compliance violations, cost overruns, och technical failures genom integration med svenska incident management processes.
 
 Investment i sophisticated CI/CD-pipelines för Infrastructure as Code betalar sig genom reduced deployment risk, improved compliance posture, faster feedback cycles, och enhanced operational reliability. Som vi kommer att se i [kapitel 6 om molnarkitektur](06_molnarkitektur.md), blir dessa capabilities ännu mer kritiska när svenska organisationer adopterar cloud-native architectures och multi-cloud strategies.
 

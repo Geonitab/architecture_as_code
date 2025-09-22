@@ -106,7 +106,7 @@ const BookOverview = () => {
                 <div>
                   <h3 className="font-semibold mb-4">Vad du kommer att lära dig</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Designa och implementera omfattande IaC-lösningar</li>
+                    <li>• Designa och implementera omfattande Infrastructure as Code-lösningar</li>
                     <li>• Etablera robusta workflows för infrastrukturutveckling</li>
                     <li>• Navigera svenska compliance-krav</li>
                     <li>• Leda organisatorisk transformation</li>
@@ -190,7 +190,7 @@ const BookOverview = () => {
           {/* Call to Action */}
           <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
             <CardContent className="text-center py-8">
-              <h2 className="text-2xl font-bold mb-4">Redo att börja din IaC-resa?</h2>
+              <h2 className="text-2xl font-bold mb-4">Redo att börja din Infrastructure as Code-resa?</h2>
               <p className="text-lg text-muted-foreground mb-6">
                 Utforska kapitel, ladda ner resurser eller kontakta oss för mer information
               </p>
