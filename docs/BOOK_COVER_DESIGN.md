@@ -1,7 +1,7 @@
 # Book Cover Design - "Arkitektur som kod"
 
 ## Overview
-Professional book cover design for Kvadrat's "Arkitektur som kod" (Infrastructure as Code) publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
+Professional book cover design for Kvadrat's "Arkitektur som kod" publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
 
 ## Design Variations
 
