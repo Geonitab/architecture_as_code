@@ -50,7 +50,7 @@ Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI
 
 Arkitektur som kod-principerna inom detta område
 
-Traditionella DevOps-praktiker fokuserade primärt på applikationsutveckling och deployment, medan Infrastructure as Code (IaC) utvidgade detta till infrastrukturhantering. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet.
+Traditionella DevOps-praktiker fokuserade primärt på applikationsutveckling och deployment, medan arkitektur som kod utvidgade detta till arkitekturhantering som helhet. Arkitektur som kod representerar en evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet.
 
 ### Holistic DevOps för Architecture as Code
 
@@ -78,7 +78,7 @@ Detta holistiska approach kräver DevOps-praktiker som kan hantera komplexiteten
 
 ## CI/CD-fundamentals för svenska organisationer
 
-Svenska organisationer opererar i en komplex regulatorisk miljö som kräver särskild uppmärksamhet vid implementering av CI/CD-pipelines för Infrastructure as Code. GDPR, Datainspektionens riktlinjer, MSB:s föreskrifter för kritisk infrastruktur och sektorsspecifika regleringar skapar en unik kontext där automation måste balansera effektivitet med stringenta compliance-krav.
+Svenska organisationer opererar i en komplex regulatorisk miljö som kräver särskild uppmärksamhet vid implementering av CI/CD-pipelines för arkitektur som kod. GDPR, Datainspektionens riktlinjer, MSB:s föreskrifter för kritisk infrastruktur och sektorsspecifika regleringar skapar en unik kontext där automation måste balansera effektivitet med stringenta compliance-krav.
 
 ### Regulatorisk komplexitet och automation
 
@@ -98,7 +98,7 @@ Quarterly budgetering och svenska redovisningsstandarder kräver detailed cost a
 
 ### GDPR-compliant pipeline design
 
-GDPR compliance i CI/CD-pipelines för Infrastructure as Code kräver en holistisk approach som integrerar data protection principles i varje steg av automation-processen. Article 25 i GDPR mandaterar "data protection by design och by default", vilket innebär att tekniska och organisatoriska åtgärder måste implementeras från första design-stadiet av system och processer.
+GDPR compliance i CI/CD-pipelines för arkitektur som kod kräver en holistisk approach som integrerar data protection principles i varje steg av automation-processen. Article 25 i GDPR mandaterar "data protection by design och by default", vilket innebär att tekniska och organisatoriska åtgärder måste implementeras från första design-stadiet av system och processer.
 
 För arkitektur som kod betyder detta att pipelines måste automatiskt validera att all arkitektur som distribueras följer GDPR:s principer för data minimization, purpose limitation och storage limitation. Personal data får aldrig hardkodas i arkitekturkonfigurationer, kryptering måste enforças som standard, och audit trails måste genereras för alla arkitekturändringar som kan påverka personuppgifter.
 
@@ -276,7 +276,7 @@ jobs:
 
 ## Pipeline design principles
 
-Effektiva CI/CD-pipelines för Infrastructure as Code bygger på fundamentala design principles som optimerar för speed, safety och observability. Dessa principles måste anpassas för svenska organisationers unika krav kring compliance, kostnadsoptimering och regulatory reporting.
+Effektiva CI/CD-pipelines för arkitektur som kod bygger på fundamentala design principles som optimerar för speed, safety och observability. Dessa principles måste anpassas för svenska organisationers unika krav kring compliance, kostnadsoptimering och regulatory reporting.
 
 ### Fail-fast feedback och progressive validation
 
@@ -590,7 +590,7 @@ Architecture as Code kräver en mogen DevOps-kultur som kan hantera komplexitete
 
 
 Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Automatisering, DevOps och CI/CD-pipelines för Infrastructure as Code utgör en kritisk komponent för svenska organisationer som strävar efter digital excellence och regulatory compliance. Genom att implementera robusta, automated pipelines kan organisationer accelerera infrastrukturleveranser samtidigt som de bibehåller höga standarder för säkerhet, quality, och compliance.
+Automatisering, DevOps och CI/CD-pipelines för arkitektur som kod utgör en kritisk komponent för svenska organisationer som strävar efter digital excellence och regulatory compliance. Genom att implementera robusta, automated pipelines kan organisationer accelerera arkitekturleveranser samtidigt som de bibehåller höga standarder för säkerhet, quality, och compliance.
 
 Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta holistiska approach kräver sophisticated pipelines som kan hantera applikationer, data, infrastruktur och policies som en integrerad helhet, samtidigt som svenska compliance-krav uppfylls.
 
@@ -598,19 +598,19 @@ Svenska organisationer har specifika krav som påverkar pipeline design, inklusi
 
 Modern CI/CD approaches som GitOps, progressive delivery, och infrastructure testing möjliggör sophisticated deployment strategies som minimerar risk samtidigt som de maximerar deployment velocity. För svenska organisationer innebär detta särskild fokus på blue-green deployments för production systems, canary releases för gradual rollouts, och automated rollback capabilities för snabb recovery.
 
-Testing strategier för Infrastructure as Code inkluderar multiple levels från syntax validation till comprehensive integration testing. Terratest och container-based testing frameworks möjliggör automated validation av GDPR compliance, cost thresholds, och security requirements som en integrerad del av deployment pipelines.
+Testing strategier för arkitektur som kod inkluderar multiple levels från syntax validation till comprehensive integration testing. Terratest och container-based testing frameworks möjliggör automated validation av GDPR compliance, cost thresholds, och security requirements som en integrerad del av deployment pipelines.
 
 Monitoring och observability för svenska Arkitektur som kod pipelines kräver comprehensive metrics collection som inkluderar både technical performance indicators och business compliance metrics. Automated alerting ensures rapid response till compliance violations, cost overruns, och technical failures genom integration med svenska incident management processes.
 
-Investment i sophisticated CI/CD-pipelines för Infrastructure as Code betalar sig genom reduced deployment risk, improved compliance posture, faster feedback cycles, och enhanced operational reliability. Som vi kommer att se i [kapitel 6 om molnarkitektur](06_molnarkitektur.md), blir dessa capabilities ännu mer kritiska när svenska organisationer adopterar cloud-native architectures och multi-cloud strategies.
+Investment i sophisticated CI/CD-pipelines för arkitektur som kod betalar sig genom reduced deployment risk, improved compliance posture, faster feedback cycles, och enhanced operational reliability. Som vi kommer att se i [kapitel 6 om molnarkitektur](06_molnarkitektur.md), blir dessa capabilities ännu mer kritiska när svenska organisationer adopterar cloud-native architectures och multi-cloud strategies.
 
-Framgångsrik implementation av CI/CD för Infrastructure as Code kräver balance mellan automation och human oversight, särskilt för production deployments och compliance-critical changes. Svenska organisationer som investerar i mature pipeline automation och comprehensive testing strategies uppnår significant competitive advantages genom improved deployment reliability och accelerated innovation cycles.
+Framgångsrik implementation av CI/CD för arkitektur som kod kräver balance mellan automation och human oversight, särskilt för production deployments och compliance-critical changes. Svenska organisationer som investerar i mature pipeline automation och comprehensive testing strategies uppnår significant competitive advantages genom improved deployment reliability och accelerated innovation cycles.
 
 Referenser:
-- Jenkins. "Infrastructure as Code with Jenkins." Jenkins Documentation.
-- GitHub Actions. "CI/CD for Infrastructure as Code." GitHub Documentation.
-- Azure DevOps. "Infrastructure as Code Pipelines." Microsoft Azure Documentation.
-- GitLab. "GitOps and Infrastructure as Code." GitLab Documentation.
+- Jenkins. "Architecture as Code with Jenkins." Jenkins Documentation.
+- GitHub Actions. "CI/CD for Architecture as Code." GitHub Documentation.
+- Azure DevOps. "Architecture as Code Pipelines." Microsoft Azure Documentation.
+- GitLab. "GitOps and Architecture as Code." GitLab Documentation.
 - Terraform. "Automated Testing for Terraform." HashiCorp Learn Platform.
 - Kubernetes. "GitOps Principles and Practices." Cloud Native Computing Foundation.
 - GDPR.eu. "Infrastructure Compliance Requirements." GDPR Guidelines.

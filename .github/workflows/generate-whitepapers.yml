@@ -90,7 +90,7 @@ jobs:
             fi
             
             # Check for whitepaper-specific content
-            if grep -q "Infrastructure as Code" "$sample_file"; then
+            if grep -q "arkitektur som kod" "$sample_file"; then
               echo "✅ Whitepaper content validated"
             else
               echo "⚠️ Warning: Expected whitepaper content not found"
@@ -169,7 +169,7 @@ jobs:
               fi
               
               # Check for Swedish content (books are in Swedish)
-              if grep -q "Infrastructure as Code\|Arkitektur som kod" "$html_file"; then
+              if grep -q "arkitektur som kod" "$html_file"; then
                 echo "✅ Content validation passed: $filename"
               else
                 echo "⚠️ Expected content not found: $filename"

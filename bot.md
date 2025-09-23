@@ -1,32 +1,32 @@
 # AI Assistant Prompt för Bokprojekt: Arkitektur som kod
 
 ## Projektöversikt
-Du hjälper till att skapa innehåll för boken "Arkitektur som kod" - en omfattande guide på svenska om Infrastructure as Code (IaC). Detta är ett hybridprojekt som kombinerar:
+Du hjälper till att skapa innehåll för boken "Arkitektur som kod" - en omfattande guide på svenska om arkitektur som kod. Detta är ett hybridprojekt som kombinerar:
 
 1. **Bokproduktion**: Automatiserad generering och publicering av en omfattande teknisk bok
 2. **React Dashboard**: En webbapplikation som visar bokprojektets status och kapitelstruktur
 
-Boken riktar sig till systemarkitekter, utvecklare, DevOps-ingenjörer, projektledare och IT-chefer som vill förstå och implementera Infrastructure as Code.
+Boken riktar sig till systemarkitekter, utvecklare, DevOps-ingenjörer, projektledare och IT-chefer som vill förstå och implementera arkitektur som kod.
 ## Nuvarande struktur
 Projektet innehåller **25 kapitel** totalt. Följande filer finns i `docs/`-mappen:
 
 - `01_inledning.md` - Inledning till arkitektur som kod
-- `02_kapitel1.md` - Grundläggande principer för Infrastructure as Code
+- `02_kapitel1.md` - Grundläggande principer för arkitektur som kod
 - `03_kapitel2.md` - Versionhantering och kodstruktur  
 - `04_kapitel3.md` - Automatisering och CI/CD-pipelines
 - `05_kapitel4.md` - Molnarkitektur som kod
-- `06_kapitel5.md` - Säkerhet i Infrastructure as Code
-- `07_kapitel6.md` - DevOps och CI/CD för Infrastructure as Code
-- `08_kapitel7.md` - Infrastruktur som kod i praktiken
+- `06_kapitel5.md` - Säkerhet i arkitektur som kod
+- `07_kapitel6.md` - DevOps och CI/CD för arkitektur som kod
+- `08_kapitel7.md` - Arkitektur som kod i praktiken
 - `09_kapitel8.md` - Digitalisering genom kodbaserad infrastruktur
 - `10_kapitel9.md` - Organisatorisk förändring och teamstrukturer
 - `11_kapitel10.md` - Containerisering och orkestrering som kod
-- `12_kapitel11.md` - [SAKNAS - Projektledning för IaC-initiativ]
+- `12_kapitel11.md` - [SAKNAS - Projektledning för arkitektur som kod]
 - `13_kapitel12.md` - Microservices-arkitektur som kod
-- `14_kapitel13.md` - Framtida trender och teknologier inom IaC
-- `15_kapitel14.md` - Team-struktur och kompetensutveckling för IaC
+- `14_kapitel13.md` - Framtida trender och teknologier inom arkitektur som kod
+- `15_kapitel14.md` - Team-struktur och kompetensutveckling för arkitektur som kod
 - `16_kapitel15.md` - Kostnadsoptimering och resurshantering
-- `17_kapitel16.md` - Teststrategier för infrastruktukod (inkl. krav som kod)
+- `17_kapitel16.md` - Teststrategier för arkitekturkod (inkl. krav som kod)
 - `18_kapitel17.md` - Migration från traditionell infrastruktur
 - `19_kapitel18.md` - [SAKNAS - Fallstudier och praktiska exempel]
 - `20_kapitel19.md` - Best practices och lärda läxor

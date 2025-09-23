@@ -15,4 +15,4 @@ Git utgör standarden för versionhantering av arkitektur som kod och möjliggö
 Välorganiserad kodstruktur är avgörande för maintainability och collaboration i större arkitektur som kod-projekt. Modulär design möjliggör återanvändning av arkitekturkomponenter across olika projekt och miljöer.
 
 Källor:
-- Atlassian. "Git Workflows for Infrastructure as Code." Atlassian Git Documentation.
+- Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation.

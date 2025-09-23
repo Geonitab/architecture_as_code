@@ -140,7 +140,7 @@ hybrid cloud-miljö.
 ## Decision
 Implementation av Zero Trust Network Architecture med mikrosegmentering,
 multi-factor authentication och kontinuerlig verifiering genom
-Infrastructure as Code.
+arkitektur som kod.
 
 ## Consequences
 
@@ -170,7 +170,7 @@ Flera verktyg underlättar creation och management av ADR:
 **adr-log**: Automatisk generering av ADR-index och timeline
 **Architecture Decision Record plugins**: Integration med IDE:er som VS Code
 
-För Infrastructure as Code-projekt rekommenderas integration av ADR i Git repository structure:
+För arkitektur som kod-projekt rekommenderas integration av ADR i Git repository structure:
 
 ```
 docs/
@@ -212,7 +212,7 @@ Effektiv ADR-implementation kräver etablerade review-processer:
 
 ADR spelar en central roll i Architecture as Code-metodik genom att dokumentera designbeslut som sedan implementeras som kod. Denna integration skapar en tydlig koppling mellan intentioner och implementation.
 
-Infrastructure as Code-templates kan referera till relevant ADR för att förklara designbeslut och implementation choices. Detta skapar självdokumenterande infrastruktur där koden kompletteras med arkitekturrational.
+Arkitektur som kod-templates kan referera till relevant ADR för att förklara designbeslut och implementation choices. Detta skapar självdokumenterande infrastruktur där koden kompletteras med arkitekturrational.
 
 Automated validation kan implementeras för att säkerställa att infrastructure code följer established ADR. Policy as Code-verktyg som Open Policy Agent kan enforça arkitekturriktlinjer baserade på documented decisions i ADR.
 
@@ -237,7 +237,7 @@ ADR-metodik utvecklas kontinuerligt med integration av nya verktyg och processer
 **Automated Decision Tracking**: Integration med architectural analysis verktyg
 **Cross-organizational ADR Sharing**: Standardiserade format för sharing av anonymized architectural patterns
 
-För Infrastructure as Code-kontext utvecklas verktyg för automatisk correlation mellan ADR och deployed infrastructure, vilket möjliggör real-time validation av architectural compliance.
+För arkitektur som kod-kontext utvecklas verktyg för automatisk correlation mellan ADR och deployed infrastructure, vilket möjliggör real-time validation av architectural compliance.
 
 Svenska organisationer kan dra nytta av europeiska initiativ för standardisering av digital documentation practices som bygger på ADR-metodologi för ökad interoperabilitet och compliance.
 
@@ -247,7 +247,7 @@ Svenska organisationer kan dra nytta av europeiska initiativ för standardiserin
 Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Architecture Decision Records representerar en fundamental komponent i modern Architecture as Code-metodik. Genom strukturerad dokumentation av arkitekturbeslut skapas transparens, spårbarhet och kunskapsöverföring som är kritisk för svenska organisationers digitaliseringsinitiativ.
 
-Effektiv ADR-implementation kräver organisatoriskt stöd, standardiserade processer och integration med befintliga utvecklingsworkflows. För Infrastructure as Code-projekt möjliggör ADR koppling mellan designintentioner och kod-implementation som förbättrar maintainability och compliance.
+Effektiv ADR-implementation kräver organisatoriskt stöd, standardiserade processer och integration med befintliga utvecklingsworkflows. För arkitektur som kod-projekt möjliggör ADR koppling mellan designintentioner och kod-implementation som förbättrar maintainability och compliance.
 
 Svenska organisationer som adopterar ADR-metodik positionerar sig för framgångsrik Architecture as Code-transformation med robusta governance-processer och transparent beslutsdokumentation som stödjer både interna krav och externa compliance-förväntningar.
 

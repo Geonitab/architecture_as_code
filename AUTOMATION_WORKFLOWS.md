@@ -57,7 +57,7 @@ python3 generate_presentation.py --create-pptx --output my_presentation.pptx
 This creates a professional PowerPoint presentation with:
 - Title slides for each chapter
 - Key bullet points and concepts
-- Swedish-language content optimized for Infrastructure as Code topics
+- Swedish-language content optimized for architecture as code topics
 - Professional Kvadrat branding and styling
 
 ## Whitepaper Generation Workflow

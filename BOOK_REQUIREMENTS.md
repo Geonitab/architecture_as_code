@@ -2,7 +2,7 @@
 
 ## Översikt
 
-Detta dokument definierar de omfattande kraven för innehållet i boken "Arkitektur som Kod" - en teknisk bok som täcker Architecture as Code från grundläggande principer till avancerad implementation, med Infrastructure as Code som praktiskt exempel.
+Detta dokument definierar de omfattande kraven för innehållet i boken "Arkitektur som Kod" - en teknisk bok som täcker arkitektur som kod från grundläggande principer till avancerad implementation.
 
 ## 1. Målgrupp (Target Audience)
 
@@ -28,7 +28,7 @@ Detta dokument definierar de omfattande kraven för innehållet i boken "Arkitek
 
 ## 2. Centrala Teman (Core Themes)
 
-### Huvudtema: Architecture as Code
+### Huvudtema: Arkitektur som kod
 **Definition**: Praktiken att beskriva, versionhantera och automatisera hela systemarkitekturen genom maskinläsbar kod, vilket omfattar infrastruktur, applikationer, dataflöden, säkerhetspolicies och organisatoriska processer.
 
 ### Underteman (23 kapitel)
@@ -50,7 +50,7 @@ Detta dokument definierar de omfattande kraven för innehållet i boken "Arkitek
 - **Teamstrukturer**: DevOps-kultur, cross-funktionella team
 - **Projektledning**: Agile metoder för infrastruktur, risk management
 - **Innovation**: Experimentell utveckling, prototyping
-- **Produktutveckling**: IaC som enabler för produktteam
+- **Produktutveckling**: Arkitektur som kod som enabler för produktteam
 
 #### D. Styrning och Optimering (Kapitel 14-17)
 - **Compliance**: Regelefterlevnad, auditspår, policy as code
@@ -95,7 +95,7 @@ Varje kapitel följer en konsistent struktur på 8-12 sidor:
 
 ### Sektionsindelning
 #### Del I: Grund (Kapitel 1-3)
-Introduktion till Architecture as Code, grundläggande principer och kodstruktur
+Introduktion till arkitektur som kod, grundläggande principer och kodstruktur
 
 #### Del II: Implementation (Kapitel 4-8) 
 Praktisk implementation av automatisering, molnarkitektur och säkerhet
@@ -246,7 +246,7 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 #### 6.1 Primärspråk: Svenska
 - **Målgrupp**: Svenska IT-professionella
 - **Terminologi**: Svenska termer med engelska i parentes vid första användning
-- **Exempel**: "Infrastruktur som kod (Infrastructure as Code, IaC)"
+- **Exempel**: "Arkitektur som kod (engelska: Architecture as Code)"
 - **Konsistens**: Samma svenska term används konsekvent genom hela boken
 
 #### 6.2 Engelska termer
@@ -291,7 +291,6 @@ med syntax highlighting
 
 **Fastställda svenska termer**:
 - Arkitektur som kod → Architecture as Code
-- Infrastruktur som kod → Infrastructure as Code  
 - Molnplattform → Cloud platform
 - Kodlager → Code repository
 - Deployment → Driftsättning

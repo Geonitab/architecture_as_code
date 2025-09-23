@@ -39,7 +39,7 @@ Example diagrams enhanced:
 - `diagram_02_grundlaggande_principer.mmd`: Core principles flow with benefits
 - `diagram_03_versionhantering.mmd`: Version control workflow with quality gates
 - `code_review_sequence.mmd`: Professional sequence diagram with icons
-- `diagram_04_iac_tools_quadrant.mmd`: Tool selection matrix with clear quadrants
+- `diagram_04_architecture_tools_quadrant.mmd`: Tool selection matrix with clear quadrants
 
 ## LaTeX Template Visual Enhancements
 
