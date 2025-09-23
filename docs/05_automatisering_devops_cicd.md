@@ -1,14 +1,14 @@
-# Automatisering, DevOps och CI/CD för arkitektur som kod
+# Automatisering, utveckling och drift samt CI/CD för arkitektur som kod
 
 ![Automatisering och CI/CD-rörledningar](images/diagram_04_kapitel3.png)
 
-Kontinuerlig integration och kontinuerlig driftsättning (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern programvaruutveckling, och när det gäller arkitektur som kod blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-rörledningar som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, tillförlitliga och spårbara verksamheter, samtidigt som vi utvecklar Architecture as Code-metoder som hanterar hela systemarkitekturen som kod.
+Kontinuerlig integration och kontinuerlig driftsättning (CI/CD) tillsammans med utveckling och drift-kulturen utgör ryggraden i modern programvaruutveckling, och när det gäller arkitektur som kod blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-rörledningar som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, tillförlitliga och spårbara verksamheter, samtidigt som vi utvecklar Architecture as Code-metoder som hanterar hela systemarkitekturen som kod.
 
 ![arkitektur som kod-implementering Tidslinje](images/diagram_05_gantt_timeline.png)
 
 Diagrammet ovan visar en typisk tidsplan för arkitektur som kod-implementering, från initial verktygsanalys till fullständig produktionsutrullning.
 
-Att förstå CI/CD för arkitektur som kod kräver en grundläggande förskjutning i tankesättet från traditionell infrastrukturhantering till kodcentrerad automatisering. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och tillfälliga lösningar, erbjuder modern automatisering inom arkitektur som kod konsekvens, repeterbarhet och transparens genom hela infrastrukturens livscykel. Architecture as Code representerar nästa utvecklingssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
+Att förstå CI/CD för arkitektur som kod kräver en grundläggande förskjutning i tankesättet från traditionell infrastrukturhantering till kodcentrerad automatisering. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och tillfälliga lösningar, erbjuder modern automatisering inom arkitektur som kod konsekvens, repeterbarhet och transparens genom hela infrastrukturens livscykel. Architecture as Code representerar nästa utvecklingssteg där utveckling och drift-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
 
 Diagrammet ovan illustrerar det grundläggande CI/CD-flödet från kodbekräftelse genom validering och testning till driftsättning och övervakning. Detta flöde representerar en systematisk metod där varje steg är utformat för att fånga fel tidigt, säkerställa kvalitet och minimera risker i produktionsmiljöer. För svenska organisationer innebär detta särskilda överväganden kring dataplacering, efterlevnadsvalidering och kostnadsoptimering i svenska kronor.
 
@@ -40,13 +40,13 @@ Implementering av CI/CD för arkitektur som kod påverkar organisationer på mul
 
 **Kulturell transformation:** Övergången till CI/CD-baserad infrastruktur kräver en kulturell förskjutning från risk-averse, manuella processer till risk-managed automation. Detta innebär att organisationer måste utveckla tillit till automatiserade system medan de behåller nödvändiga kontroller för compliance och säkerhet.
 
-**Kompetensuveckling:** IT-professional måste utveckla programmeringskunskaper, förstå cloud provider APIs och lära sig avancerade automation-verktyg. Denna kompetensförändring kräver investment i training och recruitment av personal med DevOps-färdigheter.
+**Kompetensuveckling:** IT-personal måste utveckla programmeringskunskaper, förstå molnleverantörs-API:er och lära sig avancerade automatiseringsverktyg. Denna kompetensförändring kräver investeringar i utbildning och rekrytering av personal med utveckling och drift-färdigheter.
 
 **Compliance och governance:** Svenska organisationer måste säkerställa att automatiserade processer uppfyller regulatoriska krav. Detta inkluderar audit trails, data residency controls och separtion of duties som traditionellt implementerats genom manuella processer.
 
 Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI/CD-pipelines en naturlig förlängning av git-baserade workflows för arkitektur som kod. Detta kapitel bygger vidare på dessa koncept och utforskar hur svenska organisationer kan implementera avancerade automation-strategier som balanserar effektivitet med regulatoriska krav. Senare kommer vi att se hur dessa principles tillämpas i [molnarkitektur som kod](07_molnarkitektur.md) och integreras med [säkerhetsaspekter](10_sakerhet.md).
 
-## Från arkitektur som kod till Architecture as Code DevOps
+## Från arkitektur som kod till Architecture as Code utveckling och drift
 
 Arkitektur som kod-principerna inom detta område
 
@@ -74,7 +74,7 @@ Detta holistiska approach kräver DevOps-praktiker som kan hantera komplexiteten
 
 **Svenska compliance-integration:** GDPR, MSB-säkerhetskrav och sektorsspecifik reglering integreras naturligt i arkitekturkoden snarare än som externa kontroller.
 
-**Collaborative architecture evolution:** Svenska konsensuskultur tillämpas på arkitekturevolution där alla stakeholders bidrar till arkitekturkodbasen genom transparenta, demokratiska processer.
+**Gemensam arkitekturutveckling:** Svensk konsensuskultur tillämpas på arkitekturevolution där alla intressenter bidrar till arkitekturkodbasen genom transparenta, demokratiska processer.
 
 ## CI/CD-fundamentals för svenska organisationer
 
@@ -292,23 +292,23 @@ Fail-fast feedback är en core principle där fel upptäcks och rapporteras så 
 
 ### Progressive deployment strategier
 
-Progressive deployment minimerar risk genom gradual rollout av infrastrukturändringar. Detta är särskilt viktigt för svenska organisationer med high availability requirements och regulatory obligations.
+Progressiv driftsättning minimerar risk genom gradvis utrullning av infrastrukturändringar. Detta är särskilt viktigt för svenska organisationer med höga tillgänglighetskrav och regulatoriska förpliktelser.
 
 **Environment promotion:** Ändringar flödar genom en sekvens av miljöer (development → staging → production) med increasing validation stringency och manual approval requirements för production deployments.
 
-**Blue-green deployments:** För kritiska infrastrukturkomponenter kan blue-green deployment användas där parallel infrastruktur byggs och testas innan traffic switchar till den nya versionen.
+**Blå-grön driftsättningar:** För kritiska infrastrukturkomponenter kan blå-grön driftsättning användas där parallell infrastruktur byggs och testas innan trafik växlar till den nya versionen.
 
-**Canary releases:** Gradual rollout av infrastrukturändringar till en subset av resources eller users möjliggör monitoring av impact innan full deployment.
+**Kanariesläpp:** Gradvis utrullning av infrastrukturändringar till en delmängd av resurser eller användare möjliggör övervakning av påverkan innan fullständig driftsättning.
 
-### Automated rollback och disaster recovery
+### Automatiserad återställning och katastrofåterställning
 
-Robust rollback capabilities är essentiella för maintaining system reliability och meeting svenska organisationers business continuity requirements.
+Robusta återställningskapaciteter är avgörande för att upprätthålla systemtillförlitlighet och uppfylla svenska organisationers kontinuitetskrav.
 
-**State management:** Infrastructure state måste hanteras på sätt som möjliggör reliable rollback till previous known-good configurations. Detta inkluderar automated backup av Terraform state files och database snapshots.
+**Tillståndshantering:** Infrastrukturtillstånd måste hanteras på sätt som möjliggör tillförlitlig återställning till tidigare kända fungerande konfigurationer. Detta inkluderar automatiserad säkerhetskopiering av Terraform-tillståndsfiler och databasögonblicksbilder.
 
-**Health monitoring:** Automated health checks efter deployment kan trigga automatisk rollback om system degradation upptäcks. Detta inkluderar både technical metrics (response times, error rates) och business metrics (transaction volumes, user engagement).
+**Hälsoövervakning:** Automatiserade hälsokontroller efter driftsättning kan utlösa automatisk återställning om systemförsämring upptäcks. Detta inkluderar både tekniska mätvärden (svarstider, felfrekvenser) och verksamhetsmätvärden (transaktionsvolymer, användarengagemang).
 
-**Documentation och kommunikation:** Rollback procedures måste vara well-documented och accessible för incident response teams. Automated notification systems måste informera stakeholders om infrastructure changes och rollback events.
+**Dokumentation och kommunikation:** Återställningsprocedurer måste vara väldokumenterade och tillgängliga för incidenthanteringsteam. Automatiserade notifikationssystem måste informera intressenter om infrastrukturändringar och återställningshändelser.
 
 ## Automated testing strategier
 
@@ -581,7 +581,7 @@ Architecture as Code kräver en mogen DevOps-kultur som kan hantera komplexitete
 ### Svenska Architecture as Code Cultural Practices
 
 - **Transparent Architecture Governance:** Alla arkitekturbeslut dokumenteras och delas öppet inom organisationen
-- **Consensus-Driven Architecture Evolution:** Arkitekturändringar genomgår demokratiska beslutprocesser med alla stakeholders
+- **Konsensusdriven arkitekturutveckling:** Arkitekturändringar genomgår demokratiska beslutprocesser med alla intressenter
 - **Risk-Aware Innovation:** Innovation balanseras med försiktig riskhantering enligt svenska organisationskultur
 - **Continuous Architecture Learning:** Regelbunden kompetensutveckling för hela arkitekturlandskapet
 - **Collaborative Cross-Domain Teams:** Tvärfunktionella team som äger hela arkitekturstacken

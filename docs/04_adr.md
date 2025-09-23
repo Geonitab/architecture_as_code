@@ -121,7 +121,7 @@ standardsyntax.
 ### Mitigering
 - Utbildningsprogram för development teams
 - Implementation av Terraform remote state med Azure Storage
-- Pilot projekt innan full rollout
+- Pilotprojekt innan fullständig utrullning
 ```
 
 ### Exempel 2: Säkerhetsarkitektur för svenska organisationer
@@ -167,7 +167,7 @@ arkitektur som kod.
 Flera verktyg underlättar creation och management av ADR:
 
 **adr-tools**: Command-line verktyg för att skapa och hantera ADR-filer
-**adr-log**: Automatisk generering av ADR-index och timeline
+**adr-log**: Automatisk generering av ADR-index och tidslinje
 **Architecture Decision Record plugins**: Integration med IDE:er som VS Code
 
 För arkitektur som kod-projekt rekommenderas integration av ADR i Git repository structure:
@@ -194,7 +194,7 @@ ADR fungerar optimalt när integrerat i Git-baserade utvecklingsarbetsflöden:
 
 För att uppfylla svenska compliance-krav bör ADR följa specifika kvalitetsstandards:
 
-**Språk**: ADR kan skrivas på svenska för interna stakeholders med engelska technical terms för verktygskompatibilitet
+**Språk**: ADR kan skrivas på svenska för interna intressenter med engelska tekniska termer för verktygskompatibilitet
 **Spårbarhet**: Klar länkning mellan ADR och implementerad kod
 **Åtkomst**: Transparent tillgång för revisorer och efterlevnadsansvariga
 **Retention**: Långsiktig arkivering enligt organisatoriska policier
@@ -252,7 +252,7 @@ Effektiv ADR-implementation kräver organisatoriskt stöd, standardiserade proce
 Svenska organisationer som antar ADR-metodik positionerar sig för framgångsrik Architecture as Code-transformation med robusta styrningsprocesser och transparent beslutsdokumentation som stödjer både interna krav och externa efterlevnadsförväntningar.
 
 Källor:
-- Architecture Decision Records Community. "ADR Guidelines and Templates." https://adr.github.io
+- Architecture Decision Records Community. "ADR-riktlinjer och mallar." https://adr.github.io
 - Nygard, M. "Documenting Architecture Decisions." 2011. 
 - ThoughtWorks. "Architecture Decision Records." Technology Radar, 2023.
 - Regeringen. "Digital strategi för Sverige." Digitalisering för trygghet, välfärd och konkurrenskraft, 2022.
