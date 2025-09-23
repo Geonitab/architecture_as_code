@@ -7,21 +7,21 @@ import { Link } from "react-router-dom";
 const Index = () => {
   const chapters = [
     { id: "01", title: "Inledning", area: "Grundläggande konceptens", status: "completed" },
-    { id: "02", title: "Grundläggande principer för Infrastructure as Code", area: "Systemutveckling", status: "completed" },
+    { id: "02", title: "Grundläggande principer för arkitektur som kod", area: "Systemutveckling", status: "completed" },
     { id: "03", title: "Versionhantering och kodstruktur", area: "Systemutveckling", status: "completed" },
     { id: "04", title: "Automatisering och CI/CD-pipelines", area: "Systemutveckling", status: "completed" },
     { id: "05", title: "Molnarkitektur som kod", area: "Arkitektur", status: "completed" },
-    { id: "06", title: "Säkerhet i Infrastructure as Code", area: "Säkerhet", status: "completed" },
+    { id: "06", title: "Säkerhet i arkitektur som kod", area: "Säkerhet", status: "completed" },
     { id: "07", title: "Monitering och observabilitet", area: "Systemutveckling", status: "completed" },
     { id: "08", title: "Skalbarhet och prestanda", area: "Arkitektur", status: "completed" },
-    { id: "09", title: "Digitalisering genom kodbaserad infrastruktur", area: "Digitalisering", status: "completed" },
+    { id: "09", title: "Digitalisering genom arkitektur som kod", area: "Digitalisering", status: "completed" },
     { id: "10", title: "Organisatorisk förändring och teamstrukturer", area: "Organisationsutveckling", status: "completed" },
-    { id: "11", title: "Projektledning för IaC-initiativ", area: "Projektledning", status: "completed" },
-    { id: "12", title: "Innovation genom infrastrukturtransformation", area: "Innovation", status: "completed" },
-    { id: "13", title: "Produktutveckling med IaC-verktyg", area: "Produkt- och tjänstutveckling", status: "completed" },
+    { id: "11", title: "Projektledning för arkitektur som kod", area: "Projektledning", status: "completed" },
+    { id: "12", title: "Innovation genom arkitektur som kod", area: "Innovation", status: "completed" },
+    { id: "13", title: "Produktutveckling med arkitektur som kod", area: "Produkt- och tjänstutveckling", status: "completed" },
     { id: "14", title: "Compliance och regelefterlevnad", area: "Säkerhet", status: "completed" },
     { id: "15", title: "Kostnadsoptimering och resurshantering", area: "Arkitektur", status: "completed" },
-    { id: "16", title: "Teststrategier för infrastrukturkod", area: "Systemutveckling", status: "completed" },
+    { id: "16", title: "Teststrategier för arkitektur som kod", area: "Systemutveckling", status: "completed" },
     { id: "17", title: "Migration från traditionell infrastruktur", area: "Digitalisering", status: "completed" },
     { id: "18", title: "Framtida trender och teknologier", area: "Innovation", status: "completed" },
     { id: "19", title: "Best practices och lärda läxor", area: "Styrning", status: "completed" },
@@ -54,7 +54,7 @@ const Index = () => {
             </div>
           </div>
           <p className="text-muted-foreground text-lg leading-relaxed max-w-4xl">
-            En omfattande bok om Infrastructure as Code - från grundläggande principer till avancerad implementation.
+            En omfattande bok om arkitektur som kod - från grundläggande principer till avancerad implementation.
             Utvecklad enligt Kvadrats professionella standarder för teknisk dokumentation.
           </p>
         </div>
