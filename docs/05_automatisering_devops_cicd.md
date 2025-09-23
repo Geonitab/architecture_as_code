@@ -26,11 +26,11 @@ För svenska organisationer har denna utveckling sammanfallit med ökande regula
 
 ### Fundamentala principer för Arkitektur som kod-automation
 
-**Immutability och versionkontroll:** Infrastruktur som kod följer samma principer som traditionell mjukvaruutveckling, där all konfiguration versionshanteras och förändringar spåras genom git-historik. Detta möjliggör reproducerbar infrastruktur där samma kod-version alltid producerar identiska miljöer. För svenska organisationer innebär detta förbättrad compliance-dokumentation och möjlighet att demonstrera kontrollerbar förändring av kritiska system.
+**Immutability och versionkontroll:** Arkitektur som kod följer samma principer som traditionell mjukvaruutveckling, där all konfiguration versionshanteras och förändringar spåras genom git-historik. Detta möjliggör reproducerbar arkitektur som kod där samma kod-version alltid producerar identiska miljöer. För svenska organisationer innebär detta förbättrad compliance-dokumentation och möjlighet att demonstrera kontrollerbar förändring av kritiska system.
 
 **Declarative konfiguration:** Arkitektur som kod-verktyg som Terraform och CloudFormation använder deklarativ syntax där utvecklare specificerar önskat slutresultat snarare än stegen för att nå dit. Detta approach reducerar komplexitet och felkällor samtidigt som det möjliggör sophisticated dependency management och parallelisering av infrastrukturåtgärder.
 
-**Testbarhet och validering:** Infrastrukturkod kan testas på samma sätt som applikationskod genom unit tests, integration tests och end-to-end-validering. Detta möjliggör "shift-left" testing där fel upptäcks tidigt i utvecklingsprocessen snarare än i produktionsmiljöer där kostnaden för korrigering är betydligt högre.
+**Testbarhet och validering:** Arkitektur som kod kan testas på samma sätt som applikationskod genom unit tests, integration tests och end-to-end-validering. Detta möjliggör "shift-left" testing där fel upptäcks tidigt i utvecklingsprocessen snarare än i produktionsmiljöer där kostnaden för korrigering är betydligt högre.
 
 **Automation över dokumentation:** Istället för att förlita sig på manuella checklistor och procedurdokument som lätt blir föråldrade, automatiserar CI/CD-pipelines alla steg i infrastrukturdistribution. Detta säkerställer konsistens och reducerar human error samtidigt som det skapar automatisk dokumentation av alla genomförda åtgärder.
 
@@ -44,7 +44,7 @@ Implementering av CI/CD för Infrastructure as Code påverkar organisationer på
 
 **Compliance och governance:** Svenska organisationer måste säkerställa att automatiserade processer uppfyller regulatoriska krav. Detta inkluderar audit trails, data residency controls och separtion of duties som traditionellt implementerats genom manuella processer.
 
-Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI/CD-pipelines en naturlig förlängning av git-baserade workflows för infrastrukturkod. Detta kapitel bygger vidare på dessa koncept och utforskar hur svenska organisationer kan implementera avancerade automation-strategier som balanserar effektivitet med regulatoriska krav. Senare kommer vi att se hur dessa principles tillämpas i [molnarkitektur som kod](07_molnarkitektur.md) och integreras med [säkerhetsaspekter](10_sakerhet.md).
+Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI/CD-pipelines en naturlig förlängning av git-baserade workflows för arkitektur som kod. Detta kapitel bygger vidare på dessa koncept och utforskar hur svenska organisationer kan implementera avancerade automation-strategier som balanserar effektivitet med regulatoriska krav. Senare kommer vi att se hur dessa principles tillämpas i [molnarkitektur som kod](07_molnarkitektur.md) och integreras med [säkerhetsaspekter](10_sakerhet.md).
 
 ## Från Infrastructure as Code till Architecture as Code DevOps
 
@@ -115,7 +115,7 @@ Detta pipeline-exempel demonstrerar hur svenska organisationer kan implementera 
 
 ## CI/CD-pipelines för Architecture as Code
 
-Architecture as Code CI/CD-pipelines skiljer sig från traditionella pipelines genom att hantera flera sammankopplade arkitekturdomäner samtidigt. Istället för att fokusera enbart på applikationskod eller infrastrukturkod, validerar och deployar dessa pipelines hela arkitekturdefinitioner som omfattar applikationer, data, infrastruktur och policies som en sammanhängande enhet.
+Architecture as Code CI/CD-pipelines skiljer sig från traditionella pipelines genom att hantera flera sammankopplade arkitekturdomäner samtidigt. Istället för att fokusera enbart på applikationskod eller arkitektur som kod, validerar och deployar dessa pipelines hela arkitekturdefinitioner som omfattar applikationer, data, infrastruktur och policies som en sammanhängande enhet.
 
 ### Architecture as Code Pipeline-arkitektur
 
@@ -282,9 +282,9 @@ Effektiva CI/CD-pipelines för Infrastructure as Code bygger på fundamentala de
 
 Fail-fast feedback är en core principle där fel upptäcks och rapporteras så tidigt som möjligt i development lifecycle. För Arkitektur som kod innebär detta multilayer validation från syntax checking till comprehensive security scanning innan någon faktisk infrastruktur distribueras.
 
-**Syntax och static analysis:** Första validation-lagret kontrollerar infrastrukturkod för syntax errors, undefined variables och basic configuration mistakes. Verktyg som `terraform validate`, `ansible-lint` och cloud provider-specifika validatorer fångar många fel innan kostnadskrävande deployment-försök.
+**Syntax och static analysis:** Första validation-lagret kontrollerar arkitektur som kod för syntax errors, undefined variables och basic configuration mistakes. Verktyg som `terraform validate`, `ansible-lint` och cloud provider-specifika validatorer fångar många fel innan kostnadskrävande deployment-försök.
 
-**Security och compliance scanning:** Specialiserade verktyg som Checkov, tfsec och Terrascan analyserar infrastrukturkod för security misconfigurations och compliance violations. För svenska organisationer är automated GDPR scanning, encryption verification och data residency validation kritiska komponenter.
+**Security och compliance scanning:** Specialiserade verktyg som Checkov, tfsec och Terrascan analyserar arkitektur som kod för security misconfigurations och compliance violations. För svenska organisationer är automated GDPR scanning, encryption verification och data residency validation kritiska komponenter.
 
 **Cost estimation och budget validation:** Infrastructure changes kan ha betydande ekonomiska konsekvenser. Verktyg som Infracost kan estimera kostnader för föreslagna infrastrukturändringar och validera mot organizational budgets innan deployment genomförs.
 

@@ -28,7 +28,7 @@ Genom bokens kapitel har vi sett hur svenska organisationer står inför specifi
 
 Cloud-native technologies, edge computing och artificiell intelligens driver nästa generation av Infrastructure as Code, som vi utforskade djupgående i [kapitel 21 om framtida trender](21_framtida_trender.md). Emerging technologies som GitOps, policy engines och intelligent automation kommer att ytterligare förenkla och förbättra Arkitektur som kod-capabilities.
 
-Utvecklingen mot serverless computing och fully managed services förändrar vad som behöver hanteras som infrastrukturkod. Framtiden pekar mot högre abstraktion där utvecklare fokuserar på business logic medan plattformen hanterar underliggande infrastruktur automatiskt, vilket vi såg exemplifierat i diskussionen om [Platform Engineering](19_kapitel18.md).
+Utvecklingen mot serverless computing och fully managed services förändrar vad som behöver hanteras som arkitektur som kod. Framtiden pekar mot högre abstraktion där utvecklare fokuserar på business logic medan plattformen hanterar underliggande arkitektur automatiskt, vilket vi såg exemplifierat i diskussionen om [Platform Engineering](19_kapitel18.md).
 
 Machine learning-baserade optimeringar kommer att möjliggöra intelligent resursallokering, kostnadsprediktering och säkerhetshotsdetektion. Detta skapar självläkande system som kontinuerligt optimerar sig baserat på användningsmönster och prestanda-metrics, enligt de AI-drivna principerna från [framtidskapitlet](19_kapitel18.md).
 

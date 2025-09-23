@@ -36,13 +36,13 @@ I Architecture as Code-sammanhang möjliggör ZTA systematisk implementation av 
 
 Effektiv säkerhetsarkitektur börjar med djupgående förståelse av hotlandskapet och attack vectors som är relevanta för den specifika arkitekturen. Threat modeling för Architecture as Code-miljöer skiljer sig markant från traditionell application threat modeling genom att inkludera infrastrukturnivån, CI/CD-pipelines och arkitektur som kod-automatiseringsverktyg som potentiella attack surfaces.
 
-STRIDE-metodologin (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) tillhandahåller systematisk framework för att identifiera säkerhetshot på olika arkitekturnivåer. För IaC-miljöer måste STRIDE appliceras på infrastrukturkod, deployment pipelines, secrets management systems och runtime environments.
+STRIDE-metodologin (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) tillhandahåller systematisk framework för att identifiera säkerhetshot på olika arkitekturnivåer. För arkitektur som kod-miljöer måste STRIDE appliceras på arkitektur som kod, deployment pipelines, secrets management systems och runtime environments.
 
 Supply chain attacks representerar särskilt kritiska hot för kodbaserade arkitekturer. När infrastruktur definieras genom tredjepartsmoduler, container images och externa APIs skapas betydande dependencies som kan komprometteras. SolarWinds-attacken 2020 demonstrerade hur sofistikerade motståndare kan infiltrera utvecklingsverktyg för att nå downstream targets.
 
-Code injection attacks får nya dimensioner när infrastrukturkod exekveras automatiskt utan mänsklig granskning. Malicious Terraform modules, korrupta Kubernetes manifests eller komprometterade Ansible playbooks kan resultera i privilege escalation, data exfiltration eller denial of service på infrastrukturnivå.
+Code injection attacks får nya dimensioner när arkitektur som kod exekveras automatiskt utan mänsklig granskning. Malicious Terraform modules, korrupta Kubernetes manifests eller komprometterade Ansible playbooks kan resultera i privilege escalation, data exfiltration eller denial of service på arkitekturnivå.
 
-Insider threats måste också omvärderas för kodbaserade miljöer. Utvecklare med access till infrastrukturkod kan potentiellt förändra säkerhetskonfigurationer, skapa backdoors eller exfiltrera sensitive data genom subtila kodförändringar som passerar code review-processer.
+Insider threats måste också omvärderas för kodbaserade miljöer. Utvecklare med access till arkitektur som kod kan potentiellt förändra säkerhetskonfigurationer, skapa backdoors eller exfiltrera sensitive data genom subtila kodförändringar som passerar code review-processer.
 
 ### Risk assessment och continuous compliance
 

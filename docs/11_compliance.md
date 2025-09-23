@@ -24,7 +24,7 @@ Edge computing-integration kräver distribuerade infrastrukturhanteringsmöjligh
 
 Policy as Code blir allt mer sofistikerat med automatiserad compliance-kontroll, kontinuerlig styrningsverkställighet och dynamisk policyanpassning. Policyer utvecklas från statiska regler mot intelligenta riktlinjer som anpassar sig baserat på kontext, riskbedömning och affärsmål.
 
-Automatiserade compliance-ramverk integrerar regulatoriska krav direkt i infrastrukturkod-arbetsflöden. Kontinuerlig compliance-övervakning säkerställer att infrastrukturändringar bibehåller efterlevnad av säkerhetsstandarder, branschregleringar och organisatoriska policyer utan manuell intervention.
+Automatiserade compliance-ramverk integrerar regulatoriska krav direkt i arkitektur som kod-arbetsflöden. Kontinuerlig compliance-övervakning säkerställer att arkitekturändringar bibehåller efterlevnad av säkerhetsstandarder, branschregleringar och organisatoriska policyer utan manuell intervention.
 
 Zero-trust-arkitekturprinciper blir inbäddade i infrastrukturdefinitioner som standardpraxis. Varje komponent, anslutning och åtkomstbegäran kräver explicit verifiering och auktorisering, vilket skapar en inneboende säker infrastruktur för moderna hotlandskap.
 
@@ -42,7 +42,7 @@ Miljöhållbarhet blir central övervägande för infrastrukturdesign och drift.
 
 Integration av förnybar energi kräver dynamisk infrastrukturhantering som anpassar beräkningsarbetsbelastningar till tillgången på ren energi. Smart grid-integration och energilagringskoordinering blir integrerade delar av infrastrukturautomation.
 
-Cirkulär ekonomi-principer tillämpade på infrastruktur inkluderar automatiserad hårdvarulivscykelhantering, resursåtervinningsoptimering och avfallsreduceringsstrategier. Infrastrukturkod inkluderar hållbarhetsmetriker och miljöpåverkanshänsyn som förstklassiga bekymmer.
+Cirkulär ekonomi-principer tillämpade på arkitektur inkluderar automatiserad hårdvarulivscykelhantering, resursåtervinningsoptimering och avfallsreduceringsstrategier. Arkitektur som kod inkluderar hållbarhetsmetriker och miljöpåverkanshänsyn som förstklassiga bekymmer.
 
 ## Praktiska exempel
 

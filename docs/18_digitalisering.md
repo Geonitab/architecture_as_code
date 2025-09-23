@@ -326,7 +326,7 @@ resource "aws_vpn_connection" "hybrid_connection" {
 
 ## Automatisering av affärsprocesser
 
-Arkitektur som kod möjliggör automatisering som sträcker sig långt bortom traditionell IT-drift till att omfatta hela affärsprocesser med särskild hänsyn till svenska organisationers behov av transparens, compliance och effektivitet. Genom att definiera infrastruktur som kod kan organisationer skapa självbetjäningslösningar för utvecklare och affärsanvändare som följer svenska arkitektur som kod best practices för governance och riskhantering.
+Arkitektur som kod möjliggör automatisering som sträcker sig långt bortom traditionell IT-drift till att omfatta hela affärsprocesser med särskild hänsyn till svenska organisationers behov av transparens, compliance och effektivitet. Genom att definiera arkitektur som kod kan organisationer skapa självbetjäningslösningar för utvecklare och affärsanvändare som följer svenska arkitektur som kod best practices för governance och riskhantering.
 
 ### End-to-end processautomatisering för svenska organisationer
 

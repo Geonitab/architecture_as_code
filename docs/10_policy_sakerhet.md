@@ -419,7 +419,7 @@ Open Security Controls Assessment Language (OSCAL) representerar en paradigmskif
 
 OSCAL adresserar en fundamental utmaning inom enterprise säkerhetshantering: fragmenteringen av säkerhetskontroller, assessment-processer och compliance-frameworks. Traditionellt har organisationer varit tvungna att hantera múltipla, inkompatibla säkerhetsstandarder (ISO 27001, NIST Cybersecurity Framework, SOC 2, GDPR, etc.) genom separata system och processer. OSCAL möjliggör en unified approach där säkerhetskontroller kan uttryckas, mappas och automatiseras genom en gemensam meta-language.
 
-För Infrastructure as Code-practitioners representerar OSCAL möjligheten att integrera säkerhetskontroller direkt i utvecklingsprocessen genom machine-readable formats som kan valideras, testats och deployeras tillsammans med infrastrukturkod. Detta skapar en seamless integration mellan security governance och infrastructure automation som tidigare varit tekniskt omöjlig att uppnå.
+För arkitektur som kod-practitioners representerar OSCAL möjligheten att integrera säkerhetskontroller direkt i utvecklingsprocessen genom machine-readable formats som kan valideras, testats och deployeras tillsammans med arkitektur som kod. Detta skapar en seamless integration mellan security governance och architecture automation som tidigare varit tekniskt omöjlig att uppnå.
 
 ### OSCAL-arkitektur och komponenter
 

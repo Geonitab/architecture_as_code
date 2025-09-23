@@ -48,7 +48,7 @@ För svenska organisationer, där tydlig ansvarsfördelning och transparens är 
 **Loose coupling och high cohesion**
 Microservices måste designas för att minimera beroenden mellan tjänster samtidigt som relaterad funktionalitet samlas inom samma tjänst. Detta kräver noggrann reflektion över tjänstegränser och gränssnitt. Lös koppling möjliggör oberoende utveckling och deployment, medan hög kohesion säkerställer att tjänster är meningsfulla och hanteringsbara enheter.
 
-Infrastructure as Code (arkitektur som kod) spelar en kritisk roll här genom att definiera inte bara hur tjänster deployeras, utan också hur de kommunicerar, vilka beroenden de har, och hur dessa beroenden hanteras över tid. Denna infrastrukturkod blir en levande dokumentation av systemets arkitektur och beroenden.
+Infrastructure as Code (arkitektur som kod) spelar en kritisk roll här genom att definiera inte bara hur tjänster deployeras, utan också hur de kommunicerar, vilka beroenden de har, och hur dessa beroenden hanteras över tid. Denna arkitektur som kod blir en levande dokumentation av systemets arkitektur och beroenden.
 
 **Autonomi och ägandeskap**
 Varje mikroservice-team ska ha fullständig kontroll över sin tjänsts livscykkel - från design och utveckling till testning, deployment och drift. Detta innebär att Infrastructure as Code-definitioner också måste ägas och hanteras av samma team som utvecklar tjänsten.
