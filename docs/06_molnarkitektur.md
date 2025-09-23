@@ -14,9 +14,9 @@ Svenska organisationer står inför ett rikt utbud av molnleverantörer, var och
 
 AWS dominerar den globala molnmarknaden och har etablerat stark närvaro i Sverige genom datacenters i Stockholm-regionen. För svenska organisationer erbjuder AWS omfattande tjänster som är särskilt relevanta för lokala compliance-krav och prestanda-behov.
 
-**AWS CloudFormation** utgör AWS:s native Infrastructure as Code-tjänst som möjliggör deklarativ definition av AWS-resurser genom JSON eller YAML templates. CloudFormation hanterar resource dependencies automatiskt och säkerställer att infrastructure deployments är reproducerbara och rollback-capable:
+**AWS CloudFormation** utgör AWS:s native Infrastructure as Code-tjänst som möjliggör deklarativ definition av AWS-resurser genom JSON eller YAML templates. CloudFormation hanterar resource dependencies automatiskt och säkerställer att infrastructure deployments är reproducerbara och återställningscapable:
 
-För en detaljerad CloudFormation template som implementerar VPC setup för svenska organisationer med GDPR compliance, se [07_CODE_1: VPC Setup för svenska organisationer](#07_CODE_1) i Appendix A.
+För en detaljerad CloudFormation template som implementerar VPC konfiguration för svenska organisationer med GDPR efterlevnad, se [07_CODE_1: VPC Konfiguration för svenska organisationer](#07_CODE_1) i Appendix A.
 
 **AWS CDK (Cloud Development Kit)** revolutionerar Infrastructure as Code genom att möjliggöra definition av cloud resources med programmeringsspråk som TypeScript, Python, Java och C#. För svenska utvecklarteam som redan behärskar dessa språk reducerar CDK learning curve och möjliggör återanvändning av befintliga programmeringskunskaper:
 
@@ -926,9 +926,9 @@ output keyVaultId string = gdprCompliance ? keyVault.id : ''
 output logAnalyticsWorkspaceId string = gdprCompliance ? logAnalytics.id : ''
 ```
 
-### Google Cloud Platform för svenska innovationsorganisationer
+### Google Cloud Plattform för svenska innovationsorganisationer
 
-Google Cloud Platform (GCP) attraherar svenska tech-företag och startups genom sina machine learning capabilities och innovativa tjänster. Google Cloud Deployment Manager och Terraform Google Provider utgör primary Arkitektur som kod tools för GCP.
+Google Cloud Plattform (GCP) attraherar svenska tech-företag och startups genom sina machine learning capabilities och innovativa tjänster. Google Cloud Deployment Manager och Terraform Google Provider utgör primary Arkitektur som kod verktyg för GCP.
 
 **Google Cloud Deployment Manager** använder YAML eller Python för Infrastructure as Code definitions och integrerar naturligt med Google Cloud services:
 

@@ -10,7 +10,7 @@ Diagrammet illustrerar evolutionen från manuella processer till den omfattande 
 
 Traditionella metoder för systemarkitektur har ofta varit manuella och dokumentbaserade. Architecture as Code bygger på etablerade principer från mjukvaruutveckling och tillämpar dessa på hela systemlandskapet.
 
-Detta inkluderar inte bara infrastrukturkomponenter, utan även applikationsarkitektur, dataflöden, säkerhetspolicies, compliance-regler och organisatoriska strukturer - allt definierat som kod.
+Detta inkluderar inte bara infrastrukturkomponenter, utan även applikationsarkitektur, dataflöden, säkerhetspolicies, efterlevnadsregler och organisatoriska strukturer - allt definierat som kod.
 
 ## Definition och omfattning
 

@@ -59,7 +59,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Setup Node.js
+      - name: Konfiguration Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
@@ -109,7 +109,7 @@ spec:
       type: security
       description: "Alla S3 buckets måste ha kryptering aktiverad"
       priority: critical
-      compliance: ["GDPR", "ISO27001"]
+      efterlevnad: ["GDPR", "ISO27001"]
       policy: |
         package security.s3_encryption
         
@@ -120,12 +120,12 @@ spec:
         }
     
     - id: GDPR-001
-      type: compliance  
+      type: efterlevnad  
       description: "Persondata måste lagras inom EU/EES"
       priority: critical
-      compliance: ["GDPR"]
+      efterlevnad: ["GDPR"]
       policy: |
-        package compliance.data_residency
+        package efterlevnad.data_residency
         
         deny[msg] {
           input.resource_type == "aws_rds_instance"
@@ -177,7 +177,7 @@ class RequirementsValidator:
 Svenska organisationer drar särskild nytta av Requirements as Code för att automatiskt validera GDPR-efterlevnad, finansiella regleringar och myndighetskrav som konstant måste uppfyllas.
 
 Källor:
-- Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
+- Red Hat. "Architecture as Code Principles and Bästa metoder." Red Hat Developer.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - GitLab. "Documentation as Code: Bästa metoder och implementering." GitLab Documentation, 2024.

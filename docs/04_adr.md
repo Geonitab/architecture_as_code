@@ -145,7 +145,7 @@ arkitektur som kod.
 ## Consequences
 
 ### Positiva konsekvenser
-- Förbättrad compliance med svenska säkerhetskrav
+- Förbättrad efterlevnad av svenska säkerhetskrav
 - Reducerad attack surface genom mikrosegmentering
 - Förbättrad auditbarhet och spårbarhet
 
@@ -166,7 +166,7 @@ arkitektur som kod.
 
 Flera verktyg underlättar creation och management av ADR:
 
-**adr-tools**: Command-line verktyg för att skapa och hantera ADR-filer
+**adr-verktyg**: Kommandoradsverktyg för att skapa och hantera ADR-filer
 **adr-log**: Automatisk generering av ADR-index och tidslinje
 **Architecture Decision Record plugins**: Integration med IDE:er som VS Code
 
@@ -188,11 +188,11 @@ ADR fungerar optimalt när integrerat i Git-baserade utvecklingsarbetsflöden:
 
 **Kodgranskningar**: ADR inkluderas i kodgranskningsprocessen för arkitekturändringar
 **Branch Protection**: Kräver ADR för major architectural changes
-**Automation**: CI/CD pipelines kan validera att relevant ADR finns för significant changes
+**Automatisering**: CI/CD-rörledningar kan validera att relevant ADR finns för significant changes
 
 ### Kvalitetsstandards för svenska organisationer
 
-För att uppfylla svenska compliance-krav bör ADR följa specifika kvalitetsstandards:
+För att uppfylla svenska efterlevnadskrav bör ADR följa specifika kvalitetsstandards:
 
 **Språk**: ADR kan skrivas på svenska för interna intressenter med engelska tekniska termer för verktygskompatibilitet
 **Spårbarhet**: Klar länkning mellan ADR och implementerad kod
@@ -204,7 +204,7 @@ För att uppfylla svenska compliance-krav bör ADR följa specifika kvalitetssta
 Effektiv ADR-implementering kräver etablerade granskningsprocesser:
 
 **Intressentengagemang**: Relevanta team och arkitekter involveras i granskning
-**Tidsplan**: Definierade tidsgränser för återkoppling och beslut
+**Tidslinje**: Definierade tidsgränser för återkoppling och beslut
 **Escalation**: Tydliga eskaleringsvägar för disputed decisions
 **Approval Authority**: Dokumenterade roller för olika typer av arkitekturbeslut
 
@@ -218,11 +218,11 @@ Automated validation kan implementeras för att säkerställa att infrastructure
 
 För svenska organisationer möjliggör denna integration transparent styrning och efterlevnad där arkitekturbeslut kan spåras från initial dokumentation genom implementering till operativ driftsättning.
 
-## Compliance och kvalitetsstandarder
+## Efterlevnad och kvalitetsstandarder
 
-ADR-metodik stödjer svenska compliance-krav genom strukturerad dokumentation som möjliggör:
+ADR-metodik stödjer svenska efterlevnadskrav genom strukturerad dokumentation som möjliggör:
 
-**Regulatory Compliance**: Systematisk dokumentation för GDPR, PCI-DSS och branschspecifika regleringar
+**Regleringsefterlevnad**: Systematisk dokumentation för GDPR, PCI-DSS och branschspecifika regleringar
 **Audit Readiness**: Komplett spår av arkitekturbeslut och deras rationale
 **Risk Management**: Dokumenterade riskbedömningar och mitigation strategies
 **Knowledge Management**: Strukturerad kunskapsöverföring mellan team och över tid
@@ -239,7 +239,7 @@ ADR-metodik utvecklas kontinuerligt med integration av nya verktyg och processer
 
 För arkitektur som kod-sammanhang utvecklas verktyg för automatisk korrelation mellan ADR och driftsatt infrastruktur, vilket möjliggör realtidsvalidering av arkitektonisk efterlevnad.
 
-Svenska organisationer kan dra nytta av europeiska initiativ för standardisering av digital documentation practices som bygger på ADR-metodologi för ökad interoperabilitet och compliance.
+Svenska organisationer kan dra nytta av europeiska initiativ för standardisering av digital documentation practices som bygger på ADR-metodologi för ökad interoperabilitet och efterlevnad.
 
 ## Sammanfattning
 
@@ -247,7 +247,7 @@ Svenska organisationer kan dra nytta av europeiska initiativ för standardiserin
 Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Architecture Decision Records representerar en fundamental komponent i modern Architecture as Code-metodik. Genom strukturerad dokumentation av arkitekturbeslut skapas transparens, spårbarhet och kunskapsöverföring som är kritisk för svenska organisationers digitaliseringsinitiativ.
 
-Effektiv ADR-implementation kräver organisatoriskt stöd, standardiserade processer och integration med befintliga utvecklingsworkflows. För arkitektur som kod-projekt möjliggör ADR koppling mellan designintentioner och kod-implementation som förbättrar maintainability och compliance.
+Effektiv ADR-implementation kräver organisatoriskt stöd, standardiserade processer och integration med befintliga utvecklingsarbetsflöden. För arkitektur som kod-projekt möjliggör ADR koppling mellan designintentioner och kod-implementation som förbättrar maintainability och efterlevnad.
 
 Svenska organisationer som antar ADR-metodik positionerar sig för framgångsrik Architecture as Code-transformation med robusta styrningsprocesser och transparent beslutsdokumentation som stödjer både interna krav och externa efterlevnadsförväntningar.
 
