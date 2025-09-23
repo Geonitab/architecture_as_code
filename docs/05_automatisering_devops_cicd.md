@@ -32,7 +32,7 @@ För svenska organisationer har denna utveckling sammanfallit med ökande regula
 
 **Testbarhet och validering:** Arkitektur som kod kan testas på samma sätt som applikationskod genom enhetstester, integrationstester och fullständig systemvalidering. Detta möjliggör "skifta åt vänster"-testning där fel upptäcks tidigt i utvecklingsprocessen snarare än i produktionsmiljöer där kostnaden för korrigering är betydligt högre.
 
-**Automation över dokumentation:** Istället för att förlita sig på manuella checklistor och procedurdokument som lätt blir föråldrade, automatiserar CI/CD-pipelines alla steg i infrastrukturdistribution. Detta säkerställer konsistens och reducerar human error samtidigt som det skapar automatisk dokumentation av alla genomförda åtgärder.
+**Automation över dokumentation:** Istället för att förlita sig på manuella checklistor och procedurdokument som lätt blir föråldrade, automatiserar CI/CD-rörledningar alla steg i infrastrukturdistribution. Detta säkerställer konsistens och reducerar mänskliga fel samtidigt som det skapar automatisk dokumentation av alla genomförda åtgärder.
 
 ### Organisatoriska implikationer av CI/CD-automation
 
@@ -44,7 +44,7 @@ Implementering av CI/CD för arkitektur som kod påverkar organisationer på mul
 
 **Efterlevnad och styrning:** Svenska organisationer måste säkerställa att automatiserade processer uppfyller regulatoriska krav. Detta inkluderar audit trails, data residency controls och separtion of duties som traditionellt implementerats genom manuella processer.
 
-Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI/CD-pipelines en naturlig förlängning av git-baserade workflows för arkitektur som kod. Detta kapitel bygger vidare på dessa koncept och utforskar hur svenska organisationer kan implementera avancerade automation-strategier som balanserar effektivitet med regulatoriska krav. Senare kommer vi att se hur dessa principles tillämpas i [molnarkitektur som kod](07_molnarkitektur.md) och integreras med [säkerhetsaspekter](10_sakerhet.md).
+Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI/CD-rörledningar en naturlig förlängning av git-baserade arbetsflöden för arkitektur som kod. Detta kapitel bygger vidare på dessa koncept och utforskar hur svenska organisationer kan implementera avancerade automatiseringsstrategier som balanserar effektivitet med regulatoriska krav. Senare kommer vi att se hur dessa principer tillämpas i [molnarkitektur som kod](07_molnarkitektur.md) och integreras med [säkerhetsaspekter](10_sakerhet.md).
 
 ## Från arkitektur som kod till Architecture as Code utveckling och drift
 
@@ -92,9 +92,9 @@ MSB:s föreskrifter för samhällsviktig verksamhet kräver robust incidenthante
 
 Kostnadsoptimering i svenska kronor kräver avancerad övervakning och budgetkontroller som traditionella CI/CD-mönster inte hanterar. Svenska företag måste hantera valutaexponering, regionala prisskillnader och efterlevnadskostnader som påverkar infrastrukturinvesteringar.
 
-Cloud provider pricing varierar betydligt mellan regioner, och svenska organisationer med data residency-krav är begränsade till EU-regioner som ofta har högre kostnader än globala regioner. CI/CD-pipelines måste därför inkludera cost estimation, budget threshold-validering och automated resource optimization som tar hänsyn till svensk företagsekonomi.
+Molnleverantörspriser varierar betydligt mellan regioner, och svenska organisationer med datahemvist-krav är begränsade till EU-regioner som ofta har högre kostnader än globala regioner. CI/CD-rörledningar måste därför inkludera kostnadsuppskattning, budgettröskelvärdesvalidering och automatiserad resursoptimering som tar hänsyn till svensk företagsekonomi.
 
-Quarterly budgetering och svenska redovisningsstandarder kräver detailed cost attribution och forecasting som automatiserade pipelines kan leverera genom integration med ekonomisystem och automated reporting i svenska kronor. Detta möjliggör proaktiv kostnadshantering snarare än reaktiv budgetövervakning.
+Kvartalsvis budgetering och svenska redovisningsstandarder kräver detaljerad kostnadsallokering och prognostisering som automatiserade rörledningar kan leverera genom integration med ekonomisystem och automatiserad rapportering i svenska kronor. Detta möjliggör proaktiv kostnadshantering snarare än reaktiv budgetövervakning.
 
 ### GDPR-compliant pipeline design
 
@@ -171,7 +171,7 @@ jobs:
       
       - name: Konfiguration Architecture Verktyg
         run: |
-          # Installera architectural validation verktyg
+          # Installera arkitekturvalidering verktyg
           npm install -g @asyncapi/cli @swagger-api/swagger-validator
           pip install architectural-lint yamllint
           curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz

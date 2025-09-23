@@ -38,15 +38,15 @@ Documentation as Code (DaC) representerar principen att behandla dokumentation s
 
 **Versionskontroll och historik**: Genom att lagra dokumentation i Git eller andra versionskontrollsystem får organisationer automatisk spårbarhet av förändringar, möjlighet att återställa tidigare versioner och full historik över dokumentationens utveckling.
 
-**Kollaboration och granskning**: Pull requests och merge-processer säkerställer att dokumentationsändringar granskas innan de publiceras. Detta förbättrar kvaliteten och minskar risken för felaktig eller föråldrad information.
+**Kollaboration och granskning**: Pull requests och sammanslagningsprocesser säkerställer att dokumentationsändringar granskas innan de publiceras. Detta förbättrar kvaliteten och minskar risken för felaktig eller föråldrad information.
 
-**CI/CD-integration**: Automatiserade pipelines kan generera, validera och publicera dokumentation automatiskt när kod förändras. Detta eliminerar manuella steg och säkerställer att dokumentationen alltid är uppdaterad.
+**CI/CD-integration**: Automatiserade rörledningar kan generera, validera och publicera dokumentation automatiskt när kod förändras. Detta eliminerar manuella steg och säkerställer att dokumentationen alltid är uppdaterad.
 
 ### Praktisk implementering
 
 ```yaml
 # .github/workflows/docs.yml
-name: Documentation Build and Deploy
+name: Documentation Build and Distribuera
 on:
   push:
     paths: ['docs/**', 'README.md']
@@ -72,7 +72,7 @@ jobs:
           npm run docs:build
           npm run docs:lint
           
-      - name: Deploy to GitHub Pages
+      - name: Distribuera till GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -84,11 +84,11 @@ Moderna verktyg som GitBook, Gitiles och MkDocs möjliggör automatisk genererin
 
 ## Requirements as Code
 
-Requirements as Code (RaC) transformerar traditionell kravspecifikation från textdokument till maskinläsbar kod som kan exekveras, valideras och automatiseras. Detta paradigmskifte möjliggör kontinuerlig verifiering av att systemet uppfyller sina krav genom hela utvecklingslivscykeln.
+Requirements as Code (RaC) transformerar traditionell kravspecifikation från textdokument till maskinläsbar kod som kan köras, valideras och automatiseras. Detta paradigmskifte möjliggör kontinuerlig verifiering av att systemet uppfyller sina krav genom hela utvecklingslivscykeln.
 
 ### Automatisering och traceability
 
-**Automatiserad validering**: Krav uttryckta som kod kan exekveras automatiskt mot systemet för att verifiera efterlevnad. Detta eliminerar manuell testning och säkerställer konsekvent validering.
+**Automatiserad validering**: Krav uttryckta som kod kan köras automatiskt mot systemet för att verifiera efterlevnad. Detta eliminerar manuell testning och säkerställer konsekvent validering.
 
 **Direkt koppling mellan krav och kod**: Varje systemkomponent kan kopplas tillbaka till specifika krav, vilket skapar fullständig spårbarhet från affärsbehov till teknisk implementering.
 

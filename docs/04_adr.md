@@ -188,7 +188,7 @@ ADR fungerar optimalt när integrerat i Git-baserade utvecklingsarbetsflöden:
 
 **Kodgranskningar**: ADR inkluderas i kodgranskningsprocessen för arkitekturändringar
 **Branch Protection**: Kräver ADR för major architectural changes
-**Automatisering**: CI/CD-rörledningar kan validera att relevant ADR finns för significant changes
+**Automatisering**: CI/CD-rörledningar kan validera att relevant ADR finns för betydande förändringar
 
 ### Kvalitetsstandards för svenska organisationer
 
