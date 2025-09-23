@@ -123,8 +123,10 @@ jobs:
           expected_papers=(
             "01_inledning_whitepaper.html"
             "02_grundlaggande_principer_whitepaper.html"
-            "05_automatisering_cicd_whitepaper.html"
-            "10_sakerhet_whitepaper.html"
+            "05_automatisering_devops_cicd_whitepaper.html"
+            "09_sakerhet_whitepaper.html"
+            "25_framtida_utveckling_whitepaper.html"
+            "27_teknisk_uppbyggnad_whitepaper.html"
           )
           
           missing_count=0
