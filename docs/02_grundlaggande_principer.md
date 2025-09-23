@@ -38,7 +38,7 @@ Documentation as Code (DaC) representerar principen att behandla dokumentation s
 
 **Versionskontroll och historik**: Genom att lagra dokumentation i Git eller andra versionskontrollsystem får organisationer automatisk spårbarhet av förändringar, möjlighet att återställa tidigare versioner och full historik över dokumentationens utveckling.
 
-**Samarbete och granskning**: Förfrågningar om sammanslagning och sammanslagningsprocesser säkerställer att dokumentationsändringar granskas innan de publiceras. Detta förbättrar kvaliteten och minskar risken för felaktig eller föråldrad information.
+**Kollaboration och granskning**: Pull requests och merge-processer säkerställer att dokumentationsändringar granskas innan de publiceras. Detta förbättrar kvaliteten och minskar risken för felaktig eller föråldrad information.
 
 **CI/CD-integration**: Automatiserade pipelines kan generera, validera och publicera dokumentation automatiskt när kod förändras. Detta eliminerar manuella steg och säkerställer att dokumentationen alltid är uppdaterad.
 
