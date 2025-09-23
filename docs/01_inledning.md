@@ -1,6 +1,6 @@
 # Inledning till arkitektur som kod
 
-Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela systemarkitekturen definieras, versionshanteras och hanteras genom kod. Detta tillvägagångssätt möjliggör samma metodiker som traditionell mjukvaruutveckling för hela organisationens tekniska landskap.
+Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela systemarkitekturen definieras, versionshanteras och hanteras genom kod. Detta approach möjliggör samma metodiker som traditionell mjukvaruutveckling för hela organisationens tekniska landskap.
 
 ![Inledning till arkitektur som kod](images/diagram_01_inledning.png)
 
@@ -10,13 +10,13 @@ Diagrammet illustrerar evolutionen från manuella processer till den omfattande 
 
 Traditionella metoder för systemarkitektur har ofta varit manuella och dokumentbaserade. Architecture as Code bygger på etablerade principer från mjukvaruutveckling och tillämpar dessa på hela systemlandskapet.
 
-Detta inkluderar inte bara infrastrukturkomponenter, utan även applikationsarkitektur, dataflöden, säkerhetspolicies, efterlevnadsregler och organisatoriska strukturer - allt definierat som kod.
+Detta inkluderar inte bara infrastrukturkomponenter, utan även applikationsarkitektur, dataflöden, säkerhetspolicies, compliance-regler och organisatoriska strukturer - allt definierat som kod.
 
 ## Definition och omfattning
 
 Architecture as Code definieras som praktiken att beskriva, versionhantera och automatisera hela systemarkitekturen genom maskinläsbar kod. Detta omfattar applikationskomponenter, integrationsmönster, dataarkitektur, infrastruktur och organisatoriska processer.
 
-Denna holistiska metod möjliggör genomgående automatisering där förändringar i krav automatiskt propagerar genom hela arkitekturen - från applikationslogik till driftsättning och övervakning.
+Denna holistiska approach möjliggör end-to-end automatisering där förändringar i krav automatiskt propagerar genom hela arkitekturen - från applikationslogik till deployment och monitering.
 
 ## Bokens syfte och målgrupp
 

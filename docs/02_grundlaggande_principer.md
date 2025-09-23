@@ -1,6 +1,6 @@
 # Grundläggande principer för Architecture as Code
 
-Architecture as Code bygger på fundamentala principer som säkerställer framgångsrik implementering av kodifierad systemarkitektur. Dessa principer omfattar hela systemlandskapet och skapar en helhetssyn för arkitekturhantering.
+Architecture as Code bygger på fundamentala principer som säkerställer framgångsrik implementation av kodifierad systemarkitektur. Dessa principer omfattar hela systemlandskapet och skapar en helhetssyn för arkitekturhantering.
 
 ![Grundläggande principer diagram](images/diagram_02_kapitel1.png)
 
@@ -8,17 +8,17 @@ Diagrammet visar det naturliga flödet från deklarativ kod genom versionskontro
 
 ## Deklarativ arkitekturdefinition
 
-Det deklarativa tillvägagångssättet inom Architecture as Code innebär att beskriva önskat systemtillstånd på alla nivåer - från applikationskomponenter till infrastruktur. Detta skiljer sig från imperativ programmering där varje steg måste specificeras explicit.
+Den deklarativa approachen inom Architecture as Code innebär att beskriva önskat systemtillstånd på alla nivåer - från applikationskomponenter till infrastruktur. Detta skiljer sig från imperativ programmering där varje steg måste specificeras explicit.
 
 Deklarativ definition möjliggör att beskriva arkitekturens önskade tillstånd, vilket Architecture as Code utvidgar till att omfatta applikationsarkitektur, API-kontrakt och organisatoriska strukturer.
 
 ## Helhetsperspektiv på kodifiering
 
-Architecture as Code omfattar hela systemekosystemet genom ett holistiskt tillvägagångssätt. Detta inkluderar applikationslogik, dataflöden, säkerhetspolicies, efterlevnadsregler och organisationsstrukturer.
+Architecture as Code omfattar hela systemekosystemet genom en holistisk approach. Detta inkluderar applikationslogik, dataflöden, säkerhetspolicies, compliance-regler och organisationsstrukturer.
 
 Ett praktiskt exempel är hur en förändring i en applikations API automatiskt kan propagera genom hela arkitekturen - från säkerhetskonfigurationer till dokumentation - allt eftersom det är definierat som kod.
 
-## Oföränderliga arkitekturmönster
+## Immutable architecture patterns
 
 Principen om immutable arkitektur innebär att hela systemarkitekturen hanteras genom oföränderliga komponenter. Istället för att modifiera befintliga delar skapas nya versioner som ersätter gamla på alla nivåer.
 
@@ -26,7 +26,7 @@ Detta skapar förutsägbarhet och eliminerar architectural drift - där system g
 
 ## Testbarhet på arkitekturnivå
 
-Architecture as Code möjliggör testning av hela systemarkitekturen, inte bara enskilda komponenter. Detta inkluderar validering av arkitekturmönster, efterlevnad av designprinciper och verifiering av genomgående flöden.
+Architecture as Code möjliggör testning av hela systemarkitekturen, inte bara enskilda komponenter. Detta inkluderar validering av arkitekturmönster, compliance med designprinciper och verifiering av end-to-end-flöden.
 
 Arkitekturtester validerar designbeslut, systemkomplexitet och säkerställer att hela arkitekturen fungerar som avsett.
 
@@ -38,15 +38,15 @@ Documentation as Code (DaC) representerar principen att behandla dokumentation s
 
 **Versionskontroll och historik**: Genom att lagra dokumentation i Git eller andra versionskontrollsystem får organisationer automatisk spårbarhet av förändringar, möjlighet att återställa tidigare versioner och full historik över dokumentationens utveckling.
 
-**Kollaboration och granskning**: Pull requests och sammanslagningsprocesser säkerställer att dokumentationsändringar granskas innan de publiceras. Detta förbättrar kvaliteten och minskar risken för felaktig eller föråldrad information.
+**Kollaboration och granskning**: Pull requests och merge-processer säkerställer att dokumentationsändringar granskas innan de publiceras. Detta förbättrar kvaliteten och minskar risken för felaktig eller föråldrad information.
 
-**CI/CD-integration**: Automatiserade rörledningar kan generera, validera och publicera dokumentation automatiskt när kod förändras. Detta eliminerar manuella steg och säkerställer att dokumentationen alltid är uppdaterad.
+**CI/CD-integration**: Automatiserade pipelines kan generera, validera och publicera dokumentation automatiskt när kod förändras. Detta eliminerar manuella steg och säkerställer att dokumentationen alltid är uppdaterad.
 
-### Praktisk implementering
+### Praktisk implementation
 
 ```yaml
 # .github/workflows/docs.yml
-name: Documentation Build and Distribuera
+name: Documentation Build and Deploy
 on:
   push:
     paths: ['docs/**', 'README.md']
@@ -59,7 +59,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Konfiguration Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
@@ -72,7 +72,7 @@ jobs:
           npm run docs:build
           npm run docs:lint
           
-      - name: Distribuera till GitHub Pages
+      - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -84,15 +84,15 @@ Moderna verktyg som GitBook, Gitiles och MkDocs möjliggör automatisk genererin
 
 ## Requirements as Code
 
-Requirements as Code (RaC) transformerar traditionell kravspecifikation från textdokument till maskinläsbar kod som kan köras, valideras och automatiseras. Detta paradigmskifte möjliggör kontinuerlig verifiering av att systemet uppfyller sina krav genom hela utvecklingslivscykeln.
+Requirements as Code (RaC) transformerar traditionell kravspecifikation från textdokument till maskinläsbar kod som kan exekveras, valideras och automatiseras. Detta paradigmskifte möjliggör kontinuerlig verifiering av att systemet uppfyller sina krav genom hela utvecklingslivscykeln.
 
 ### Automatisering och traceability
 
-**Automatiserad validering**: Krav uttryckta som kod kan köras automatiskt mot systemet för att verifiera efterlevnad. Detta eliminerar manuell testning och säkerställer konsekvent validering.
+**Automatiserad validering**: Krav uttryckta som kod kan exekveras automatiskt mot systemet för att verifiera compliance. Detta eliminerar manuell testning och säkerställer konsekvent validering.
 
-**Direkt koppling mellan krav och kod**: Varje systemkomponent kan kopplas tillbaka till specifika krav, vilket skapar fullständig spårbarhet från affärsbehov till teknisk implementering.
+**Direkt koppling mellan krav och kod**: Varje systemkomponent kan kopplas tillbaka till specifika krav, vilket skapar fullständig traceability från affärsbehov till teknisk implementation.
 
-**Kontinuerlig efterlevnad**: Förändringar i systemet valideras automatiskt mot alla definierade krav, vilket förhindrar återfall och säkerställer pågående efterlevnad.
+**Continuous compliance**: Förändringar i systemet valideras automatiskt mot alla definierade krav, vilket förhindrar regression och säkerställer ongoing compliance.
 
 ### Praktiskt exempel med Open Policy Agent (OPA)
 
@@ -109,7 +109,7 @@ spec:
       type: security
       description: "Alla S3 buckets måste ha kryptering aktiverad"
       priority: critical
-      efterlevnad: ["GDPR", "ISO27001"]
+      compliance: ["GDPR", "ISO27001"]
       policy: |
         package security.s3_encryption
         
@@ -120,12 +120,12 @@ spec:
         }
     
     - id: GDPR-001
-      type: efterlevnad  
+      type: compliance  
       description: "Persondata måste lagras inom EU/EES"
       priority: critical
-      efterlevnad: ["GDPR"]
+      compliance: ["GDPR"]
       policy: |
-        package efterlevnad.data_residency
+        package compliance.data_residency
         
         deny[msg] {
           input.resource_type == "aws_rds_instance"
@@ -174,13 +174,13 @@ class RequirementsValidator:
         }
 ```
 
-Svenska organisationer drar särskild nytta av Requirements as Code för att automatiskt validera GDPR-efterlevnad, finansiella regleringar och myndighetskrav som konstant måste uppfyllas.
+Svenska organisationer drar särskild nytta av Requirements as Code för att automatiskt validera GDPR-compliance, finansiella regleringar och myndighetskrav som konstant måste uppfyllas.
 
 Källor:
-- Red Hat. "Architecture as Code Principles and Bästa metoder." Red Hat Developer.
+- Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- GitLab. "Documentation as Code: Bästa metoder och implementering." GitLab Documentation, 2024.
+- GitLab. "Documentation as Code: Best Practices and Implementation." GitLab Documentation, 2024.
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
 - Atlassian. "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
 - NIST. "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.
