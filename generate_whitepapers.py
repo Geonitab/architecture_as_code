@@ -24,13 +24,29 @@ def read_chapter_content(chapter_file):
         with open(chapter_file, 'r', encoding='utf-8') as f:
             content = f.read()
         
+        # Check if file is empty or too short
+        if len(content.strip()) < 10:
+            print(f"Warning: {chapter_file} appears to be empty or too short")
+            return None
+        
         # Extract chapter title (first h1)
         lines = content.split('\n')
         title = "Untitled Chapter"
+        title_found = False
         for line in lines:
             if line.startswith('# '):
                 title = line[2:].strip()
+                title_found = True
                 break
+        
+        # If no H1 title found, try to extract from filename
+        if not title_found:
+            filename = os.path.basename(chapter_file)
+            # Convert filename to readable title
+            title_base = filename.replace('.md', '').replace('_', ' ')
+            # Capitalize words
+            title = ' '.join(word.capitalize() for word in title_base.split())
+            print(f"Warning: No H1 title found in {chapter_file}, using filename-based title: {title}")
         
         # Extract diagram reference
         diagram_path = None
@@ -59,10 +75,39 @@ def read_chapter_content(chapter_file):
                     section_headers.append(line[3:].strip())
                 continue
             
+            # Skip markdown code blocks, bullet points, and other formatting
+            if (line.startswith('```') or line.startswith('*') or 
+                line.startswith('-') or line.startswith('>')):
+                continue
+            
             # Collect first few substantial paragraphs
-            if paragraph_count < 3 and len(line) > 50:
+            if paragraph_count < 3 and len(line) > 30:  # Lowered from 50 to 30 for edge cases
                 condensed_content.append(line)
                 paragraph_count += 1
+        
+        # If we don't have enough content, try to extract from any substantial text
+        if paragraph_count == 0:
+            print(f"Warning: No substantial paragraphs found in {chapter_file}, extracting any available text")
+            for line in lines:
+                line = line.strip()
+                # Skip headers, empty lines, images, and short lines
+                if (not line or line.startswith('#') or line.startswith('![') or 
+                    line.startswith('```') or len(line) < 20):
+                    continue
+                if len(condensed_content) < 2:  # Get at least something
+                    condensed_content.append(line)
+                else:
+                    break
+        
+        # Provide fallback content if still empty
+        if not condensed_content:
+            condensed_content = [f"Detta kapitel behandlar {title.lower()} inom Infrastructure as Code för svenska organisationer."]
+            print(f"Warning: Using fallback content for {chapter_file}")
+        
+        # Provide fallback section headers if none found
+        if not section_headers:
+            section_headers = ["Introduktion", "Implementering", "Best Practices"]
+            print(f"Warning: No section headers found in {chapter_file}, using fallback headers")
         
         return {
             'title': title,
@@ -89,7 +134,7 @@ Boken täcker allt från grundläggande principer och verktyg till avancerade im
 säkerhetsaspekter och organisatoriska förändringar som krävs för framgångsrik IaC-adoption.
         '''.strip(),
         'target_audience': 'IT-arkitekter, DevOps-team, utvecklare och beslutsfattare inom svenska organisationer',
-        'chapters_count': 26
+        'chapters_count': 27
     }
 
 def get_chapter_mapping():
@@ -99,28 +144,29 @@ def get_chapter_mapping():
         '02_grundlaggande_principer.md': 'Kapitel 1',
         '03_versionhantering.md': 'Kapitel 2', 
         '04_adr.md': 'Kapitel 3',
-        '05_automatisering_cicd.md': 'Kapitel 4',
-        '06_devops_cicd.md': 'Kapitel 5',
-        '07_molnarkitektur.md': 'Kapitel 6',
-        '08_containerisering.md': 'Kapitel 7',
-        '09_microservices.md': 'Kapitel 8',
-        '10_sakerhet.md': 'Kapitel 9',
-        '11_policy_sakerhet.md': 'Kapitel 10',
-        '12_compliance.md': 'Kapitel 11',
-        '13_teststrategier.md': 'Kapitel 12',
-        '14_praktisk_implementation.md': 'Kapitel 13',
-        '15_kostnadsoptimering.md': 'Kapitel 14',
-        '16_migration.md': 'Kapitel 15',
-        '17_organisatorisk_forandring.md': 'Kapitel 16',
-        '18_team_struktur.md': 'Kapitel 17',
-        '19_digitalisering.md': 'Kapitel 18',
-        '20_lovable_mockups.md': 'Kapitel 19',
-        '21_framtida_trender.md': 'Kapitel 20',
-        '22_best_practices.md': 'Kapitel 21',
-        '23_slutsats.md': 'Slutsats',
-        '24_ordlista.md': 'Ordlista',
-        '25_om_forfattarna.md': 'Om författarna',
-        '26_appendix_kodexempel.md': 'Appendix A'
+        '05_automatisering_devops_cicd.md': 'Kapitel 4',
+        '06_molnarkitektur.md': 'Kapitel 5',
+        '07_containerisering.md': 'Kapitel 6',
+        '08_microservices.md': 'Kapitel 7',
+        '09_sakerhet.md': 'Kapitel 8',
+        '10_policy_sakerhet.md': 'Kapitel 9',
+        '11_compliance.md': 'Kapitel 10',
+        '12_teststrategier.md': 'Kapitel 11',
+        '13_praktisk_implementation.md': 'Kapitel 12',
+        '14_kostnadsoptimering.md': 'Kapitel 13',
+        '15_migration.md': 'Kapitel 14',
+        '16_organisatorisk_forandring.md': 'Kapitel 15',
+        '17_team_struktur.md': 'Kapitel 16',
+        '18_digitalisering.md': 'Kapitel 17',
+        '19_lovable_mockups.md': 'Kapitel 18',
+        '20_framtida_trender.md': 'Kapitel 19',
+        '21_best_practices.md': 'Kapitel 20',
+        '22_slutsats.md': 'Kapitel 21',
+        '23_ordlista.md': 'Ordlista',
+        '24_om_forfattarna.md': 'Om författarna',
+        '25_framtida_utveckling.md': 'Kapitel 22',
+        '26_appendix_kodexempel.md': 'Appendix A',
+        '27_teknisk_uppbyggnad.md': 'Appendix B'
     }
 
 def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
@@ -258,13 +304,25 @@ def generate_whitepapers(release_mode=False):
     docs_dir = Path("docs")
     chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
     
+    print(f"Found {len(chapter_files)} markdown files in docs/ directory")
+    print(f"Chapter mapping contains {len(chapter_mapping)} entries")
+    
     generated_count = 0
+    skipped_files = []
+    error_files = []
     
     for chapter_file in chapter_files:
         filename = os.path.basename(chapter_file)
         
         # Skip files that aren't in our mapping (like build artifacts)
         if filename not in chapter_mapping:
+            # Log the reason for skipping
+            if filename.startswith('README') or filename.isupper() or filename.startswith('BOOK_') or filename.startswith('EPUB_') or filename.startswith('TERMINOLOGI_'):
+                print(f"Skipping non-chapter file: {filename}")
+                skipped_files.append((filename, "Non-chapter file (README, metadata, etc.)"))
+            else:
+                print(f"WARNING: Chapter file {filename} not found in mapping - this chapter will not have a whitepaper!")
+                skipped_files.append((filename, "Missing from chapter mapping"))
             continue
             
         print(f"Processing {filename}...")
@@ -273,6 +331,7 @@ def generate_whitepapers(release_mode=False):
         chapter_data = read_chapter_content(chapter_file)
         if not chapter_data:
             print(f"Failed to read {filename}, skipping...")
+            error_files.append((filename, "Failed to read chapter content"))
             continue
         
         # Get chapter reference
@@ -282,6 +341,7 @@ def generate_whitepapers(release_mode=False):
         html_content = create_whitepaper_html(chapter_data, chapter_ref, book_overview)
         if not html_content:
             print(f"Failed to generate HTML for {filename}, skipping...")
+            error_files.append((filename, "Failed to generate HTML"))
             continue
         
         # Write whitepaper file
@@ -295,6 +355,7 @@ def generate_whitepapers(release_mode=False):
             generated_count += 1
         except Exception as e:
             print(f"Error writing {output_path}: {e}")
+            error_files.append((filename, f"Write error: {e}"))
     
     # Copy to standard location if in release mode to maintain backward compatibility
     if release_mode:
@@ -305,7 +366,30 @@ def generate_whitepapers(release_mode=False):
             shutil.copy2(html_file, standard_dir / html_file.name)
         print(f"Whitepapers also copied to standard location: {standard_dir}/")
     
-    print(f"\nGenerated {generated_count} whitepapers in {whitepapers_dir}/")
+    # Print summary
+    print(f"\n=== WHITEPAPER GENERATION SUMMARY ===")
+    print(f"Generated {generated_count} whitepapers in {whitepapers_dir}/")
+    print(f"Total files processed: {len(chapter_files)}")
+    print(f"Files skipped: {len(skipped_files)}")
+    print(f"Files with errors: {len(error_files)}")
+    
+    if skipped_files:
+        print(f"\nSkipped files:")
+        for filename, reason in skipped_files:
+            print(f"  - {filename}: {reason}")
+    
+    if error_files:
+        print(f"\nFiles with errors:")
+        for filename, reason in error_files:
+            print(f"  - {filename}: {reason}")
+    
+    print(f"\nExpected chapter files based on mapping: {len(chapter_mapping)}")
+    if generated_count != len(chapter_mapping):
+        missing_count = len(chapter_mapping) - generated_count
+        print(f"WARNING: {missing_count} chapters did not generate whitepapers!")
+    else:
+        print("SUCCESS: All chapters have whitepapers!")
+    
     return generated_count > 0
 
 def main():
