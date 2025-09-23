@@ -268,8 +268,9 @@ Konsoliderad workflow som ersätter tidigare separata workflows:
 
 ## 👥 Författare
 
-**Dr. Anna Bergström** - Senior Cloud Architect  
-**Marcus Andersson** - DevOps Engineer och Automation Specialist
+**Kodarkitektur Bokverkstad** - Huvudförfattare och redaktionell kraft bakom publikationen
+
+En samling svenska experter inom arkitektur, infrastruktur och systemutveckling som arbetat tillsammans för att skapa en heltäckande resurs för svenska organisationer inom arkitektur som kod.
 
 ## 📄 Licens
 
