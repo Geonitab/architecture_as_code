@@ -1,10 +1,10 @@
 # Arkitektur som kod - Bokprojekt
 
-En omfattande bok om Architecture as Code på svenska, med Infrastructure as Code som praktiskt exempel.
+En omfattande bok om arkitektur som kod på svenska, med praktiska exempel och fallstudier.
 
 ## 📚 Om boken
 
-Denna bok täcker Architecture as Code från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer. Infrastructure as Code behandlas som ett viktigt praktiskt exempel inom den bredare Architecture as Code-ramen.
+Denna bok täcker arkitektur som kod från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer.
 
 ### Målgrupp
 - Systemarkitekter
@@ -15,13 +15,13 @@ Denna bok täcker Architecture as Code från grundläggande principer till avanc
 
 ### Innehåll
 25 kapitel som täcker:
-- Grundläggande Architecture as Code-principer
-- Infrastructure as Code som praktiskt exempel
-- Molnarkitektur som kod
+- Grundläggande principer för arkitektur som kod
+- Versionhantering och kodstrukturer
+- Molnarkitektur och automatisering
 - Säkerhet och compliance
-- CI/CD och automatisering
+- CI/CD och teststrategier
 - Organisatorisk transformation
-- Praktiska fallstudier
+- Praktiska fallstudier och implementationer
 
 ## 🛠️ Teknisk implementation
 
@@ -179,10 +179,10 @@ Alla diagram skapas med Mermaid och följer dessa riktlinjer:
 Exempel:
 ```mermaid
 graph LR
-    A[Infrastructure] --> B[as Code]
-    B --> C[Automation]
-    C --> D[Scalability]
-    D --> E[Reliability]
+    A[Arkitektur] --> B[som kod]
+    B --> C[Automatisering]
+    C --> D[Skalbarhet]
+    D --> E[Tillförlitlighet]
 ```
 
 ## 🔄 Bidrag och uppdateringar
@@ -243,28 +243,28 @@ Konsoliderad workflow som ersätter tidigare separata workflows:
 ## 📖 Kapitellista
 
 1. Inledning till arkitektur som kod
-2. Grundläggande principer för Architecture as Code
+2. Grundläggande principer
 3. Versionhantering och kodstruktur
-4. Automatisering och CI/CD-pipelines
+4. Automatisering och DevOps
 5. Molnarkitektur som kod
-6. Säkerhet i Infrastructure as Code
-7. Monitering och observabilitet
-8. Skalbarhet och prestanda
-9. Digitalisering genom kodbaserad infrastruktur
-10. Organisatorisk förändring och teamstrukturer
-11. Projektledning för IaC-initiativ
-12. Innovation genom infrastrukturtransformation
-13. Produktutveckling med IaC-verktyg
-14. Compliance och regelefterlevnad
-15. Kostnadsoptimering och resurshantering
-16. Teststrategier för infrastrukturkod
-17. Migration från traditionell infrastruktur
-18. Framtida trender och teknologier
-19. Best practices och lärda läxor
-20. Fallstudier och praktiska exempel
-21. Slutsats
-22. Ordlista
-23. Om författarna
+6. Säkerhet i arkitektur som kod
+7. Containerisering
+8. Microservices
+9. Säkerhetspolicies
+10. Compliance och regelefterlevnad
+11. Teststrategier
+12. Praktisk implementation
+13. Kostnadsoptimering
+14. Migration och förändring
+15. Organisatorisk förändring
+16. Teamstrukturer
+17. Digitalisering
+18. Framtida trender
+19. Best practices
+20. Slutsats
+21. Ordlista
+22. Om författarna
+23. Framtida utveckling
 
 ## 👥 Författare
 
