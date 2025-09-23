@@ -6,7 +6,7 @@
 
 This is a hybrid repository serving two primary purposes:
 
-1. **Book Publishing**: Automated generation and publishing of "Arkitektur som kod" (Infrastructure as Code in Swedish) - a comprehensive technical book
+1. **Book Publishing**: Automated generation and publishing of "Arkitektur som kod" - a comprehensive technical book on architecture as code principles
 2. **React Dashboard**: A web application that displays book project status and chapter structure
 
 ## Working Effectively
