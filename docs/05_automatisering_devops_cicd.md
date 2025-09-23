@@ -26,7 +26,7 @@ För svenska organisationer har denna utveckling sammanfallit med ökande regula
 
 ### Fundamentala principer för Arkitektur som kod-automation
 
-**Immutability och versionkontroll:** Arkitektur som kod följer samma principer som traditionell mjukvaruutveckling, där all konfiguration versionshanteras och förändringar spåras genom git-historik. Detta möjliggör reproducerbar arkitektur som kod där samma kod-version alltid producerar identiska miljöer. För svenska organisationer innebär detta förbättrad compliance-dokumentation och möjlighet att demonstrera kontrollerbar förändring av kritiska system.
+**Oföränderlighet och versionkontroll:** Arkitektur som kod följer samma principer som traditionell mjukvaruutveckling, där all konfiguration versionshanteras och förändringar spåras genom git-historik. Detta möjliggör reproducerbar arkitektur som kod där samma kodversion alltid producerar identiska miljöer. För svenska organisationer innebär detta förbättrad efterlevnadsdokumentation och möjlighet att demonstrera kontrollerbar förändring av kritiska system.
 
 **Declarative konfiguration:** Arkitektur som kod-verktyg som Terraform och CloudFormation använder deklarativ syntax där utvecklare specificerar önskat slutresultat snarare än stegen för att nå dit. Detta approach reducerar komplexitet och felkällor samtidigt som det möjliggör sophisticated dependency management och parallelisering av infrastrukturåtgärder.
 
@@ -92,7 +92,7 @@ MSB:s föreskrifter för samhällsviktig verksamhet kräver robust incidenthante
 
 Kostnadsoptimering i svenska kronor kräver avancerad övervakning och budgetkontroller som traditionella CI/CD-mönster inte hanterar. Svenska företag måste hantera valutaexponering, regionala prisskillnader och efterlevnadskostnader som påverkar infrastrukturinvesteringar.
 
-Cloud provider pricing varierar betydligt mellan regioner, och svenska organisationer med data residency-krav är begränsade till EU-regioner som ofta har högre kostnader än globala regioner. CI/CD-pipelines måste därför inkludera cost estimation, budget threshold-validering och automated resource optimization som tar hänsyn till svensk företagsekonomi.
+Molnleverantörers prissättning varierar betydligt mellan regioner, och svenska organisationer med dataresidenskrav är begränsade till EU-regioner som ofta har högre kostnader än globala regioner. CI/CD-flöden måste därför inkludera kostnadsuppskattning, budgettröskelvali​dering och automatiserad resursoptimering som tar hänsyn till svensk företagsekonomi.
 
 Quarterly budgetering och svenska redovisningsstandarder kräver detailed cost attribution och forecasting som automatiserade pipelines kan leverera genom integration med ekonomisystem och automated reporting i svenska kronor. Detta möjliggör proaktiv kostnadshantering snarare än reaktiv budgetövervakning.
 
@@ -106,9 +106,9 @@ För arkitektur som kod betyder detta att pipelines måste automatiskt validera 
 
 **Automatiserad efterlevnadsvalidering:** Policymotorer som Open Policy Agent (OPA) eller molnleverantörsspecifika efterlevnadsverktyg kan automatiskt validera att infrastrukturkonfigurationer följer GDPR-krav. Detta inkluderar verifiering av krypteringsinställningar, åtkomstkontroller, databevarandepolicier och gränsöverskridande dataöverföringsbegränsningar.
 
-**Audit trail generation:** Varje pipeline-execution måste generera comprehensive audit logs som dokumenterar vad som distribuerats, av vem, när och varför. Dessa logs måste själva följa GDPR-principer för personuppgiftsbehandling och lagras säkert enligt svenska legal retention requirements.
+**Spårbarhet för revision:** Varje rörledningsexekvering måste generera omfattande revisionsloggar som dokumenterar vad som distribuerats, av vem, när och varför. Dessa loggar måste själva följa GDPR-principer för personuppgiftsbehandling och lagras säkert enligt svenska juridiska bevarandekrav.
 
-**GDPR-kompatibel CI/CD Pipeline för svenska organisationer**
+**GDPR-kompatibelt CI/CD-flöde för svenska organisationer**
 *[Se kodexempel 05_CODE_1 i Appendix A: Kodexempel](26_appendix_kodexempel.md#05_code_1)*
 
 Detta pipeline-exempel demonstrerar hur svenska organisationer kan implementera GDPR-compliance direkt i sina CI/CD-processer, inklusive automatisk scanning för personuppgifter och data residency validation.
@@ -164,7 +164,7 @@ jobs:
         domain: [application, data, infrastructure, security, governance]
     
     steps:
-      - name: Checkout Architecture Repository
+      - name: Hämta arkitekturförråd
         uses: actions/checkout@v4
         with:
           fetch-depth: 0

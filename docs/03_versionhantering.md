@@ -8,7 +8,7 @@ Diagrammet illustrerar det typiska flödet från Git-förråd genom förgrenings
 
 ## Git-baserad arbetsflöde för infrastruktur
 
-Git utgör standarden för versionhantering av arkitektur som kod och möjliggör distribuerat samarbete mellan team-medlemmar. Varje förändring dokumenteras med commit-meddelanden som beskriver vad som ändrats och varför, vilket skapar en komplett historik över arkitekturutvecklingen.
+Git utgör standarden för versionhantering av arkitektur som kod och möjliggör distribuerat samarbete mellan team-medlemmar. Varje förändring dokumenteras med incheckningsmedd​elanden som beskriver vad som ändrats och varför, vilket skapar en komplett historik över arkitekturutvecklingen.
 
 ## Kodorganisation och modulstruktur
 

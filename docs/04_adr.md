@@ -10,7 +10,7 @@ Arkitektur som kod-metodiken utgör grunden för Architecture Decision Records (
 
 För svenska organisationer som implementerar Architecture as Code och arkitektur som kod är ADR särskilt värdefullt eftersom det säkerställer att arkitekturbeslut dokumenteras på ett strukturerat sätt som uppfyller efterlevnadskrav och underlättar kunskapsöverföring mellan team och tidsepoker.
 
-ADR fungerar som arkitekturens "commit messages" - korta, fokuserade dokument som fångar sammanhanget (context), problemet, det valda alternativet och konsekvenserna av viktiga arkitekturbeslut. Detta möjliggör spårbarhet och förståelse för varför specifika tekniska val gjordes.
+ADR fungerar som arkitekturens "incheckningsmeddelanden" - korta, fokuserade dokument som fångar sammanhanget, problemet, det valda alternativet och konsekvenserna av viktiga arkitekturbeslut. Detta möjliggör spårbarhet och förståelse för varför specifika tekniska val gjordes.
 
 Den svenska digitaliseringsstrategin betonar vikten av transparenta och spårbara beslut inom offentlig sektor. ADR-metoden stödjer dessa krav genom att skapa en revisionsspår av arkitekturbeslut som kan granskas och utvärderas över tid.
 
@@ -170,7 +170,7 @@ Flera verktyg underlättar creation och management av ADR:
 **adr-log**: Automatisk generering av ADR-index och tidslinje
 **Architecture Decision Record plugins**: Integration med IDE:er som VS Code
 
-För arkitektur som kod-projekt rekommenderas integration av ADR i Git repository structure:
+För arkitektur som kod-projekt rekommenderas integration av ADR i Git-förrådsstruktur:
 
 ```
 docs/
@@ -187,7 +187,7 @@ docs/
 ADR fungerar optimalt när integrerat i Git-baserade utvecklingsarbetsflöden:
 
 **Kodgranskningar**: ADR inkluderas i kodgranskningsprocessen för arkitekturändringar
-**Branch Protection**: Kräver ADR för major architectural changes
+**Grensskydd**: Kräver ADR för större arkitekturändringar
 **Automation**: CI/CD pipelines kan validera att relevant ADR finns för significant changes
 
 ### Kvalitetsstandards för svenska organisationer
