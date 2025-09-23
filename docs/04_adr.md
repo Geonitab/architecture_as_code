@@ -2,13 +2,13 @@
 
 ![ADR Process Flow](images/diagram_04_adr_process.png)
 
-*Architecture Decision Records representerar en strukturerad metod för att dokumentera viktiga arkitekturbeslut inom kodbaserade system. Processen börjar med problemidentifiering och följer en systematisk approach för att analysera kontext, utvärdera alternativ och formulera välgrundade beslut.*
+*Architecture Decision Records representerar en strukturerad metod för att dokumentera viktiga arkitekturbeslut inom kodbaserade system. Processen börjar med problemidentifiering och följer ett systematiskt tillvägagångssätt för att analysera sammanhang, utvärdera alternativ och formulera välgrundade beslut.*
 
 ## Övergripande beskrivning
 
-Arkitektur som kod-metodiken utgör grunden för architecture Decision Records (ADR) utgör en systematisk approach för att dokumentera viktiga arkitekturbeslut som påverkar systemets struktur, prestanda, säkerhet och underhållbarhet. ADR-metoden introducerades av Michael Nygard och har blivit en etablerad best practice inom moderna systemutveckling.
+Arkitektur som kod-metodiken utgör grunden för Architecture Decision Records (ADR) som utgör ett systematiskt tillvägagångssätt för att dokumentera viktiga arkitekturbeslut som påverkar systemets struktur, prestanda, säkerhet och underhållbarhet. ADR-metoden introducerades av Michael Nygard och har blivit en etablerad bästa praxis inom moderna systemutveckling.
 
-För svenska organisationer som implementerar Architecture as Code och arkitektur som kod är ADR särskilt värdefullt eftersom det säkerställer att arkitekturbeslut dokumenteras på ett strukturerat sätt som uppfyller compliance-krav och underlättar kunskapsöverföring mellan team och tidsepoker.
+För svenska organisationer som implementerar Architecture as Code och arkitektur som kod är ADR särskilt värdefullt eftersom det säkerställer att arkitekturbeslut dokumenteras på ett strukturerat sätt som uppfyller efterlevnadskrav och underlättar kunskapsöverföring mellan team och tidsepoker.
 
 ADR fungerar som arkitekturens "commit messages" - korta, fokuserade dokument som fångar sammanhanget (context), problemet, det valda alternativet och konsekvenserna av viktiga arkitekturbeslut. Detta möjliggör spårbarhet och förståelse för varför specifika tekniska val gjordes.
 
@@ -151,12 +151,12 @@ arkitektur som kod.
 
 ### Negativa konsekvenser
 - Ökad komplexitet i nätverksarkitektur
-- Performance overhead för kontinuerlig verifiering
+- Prestationsöverhuvud för kontinuerlig verifiering
 - Högre operationella kostnader
 
 ### Mitigering
 - Fasad implementation med pilot-projekt
-- Performance monitoring och optimering
+- Prestandaövervakning och optimering
 - Extensive documentation och training
 ```
 
@@ -182,9 +182,9 @@ docs/
 └── README.md
 ```
 
-### Git integration och workflow
+### Git-integration och arbetsflöde
 
-ADR fungerar optimalt när integrerat i Git-baserade utvecklingsworkflows:
+ADR fungerar optimalt när integrerat i Git-baserade utvecklingsarbetsflöden:
 
 **Pull Request Reviews**: ADR inkluderas i code review-processen för arkitekturändringar
 **Branch Protection**: Kräver ADR för major architectural changes
@@ -199,12 +199,12 @@ För att uppfylla svenska compliance-krav bör ADR följa specifika kvalitetssta
 **Åtkomst**: Transparent access för auditors och compliance officers
 **Retention**: Långsiktig arkivering enligt organisatoriska policier
 
-### Review och governance process
+### Gransknings- och styrningsprocess
 
-Effektiv ADR-implementation kräver etablerade review-processer:
+Effektiv ADR-implementering kräver etablerade granskningsprocesser:
 
-**Stakeholder Engagement**: Relevanta team och arkitekter involveras i review
-**Timeline**: Definierade deadlines för feedback och beslut
+**Intressentengagemang**: Relevanta team och arkitekter involveras i granskning
+**Tidsplan**: Definierade tidsgränser för återkoppling och beslut
 **Escalation**: Tydliga eskaleringsvägar för disputed decisions
 **Approval Authority**: Dokumenterade roller för olika typer av arkitekturbeslut
 
@@ -216,7 +216,7 @@ Arkitektur som kod-templates kan referera till relevant ADR för att förklara d
 
 Automated validation kan implementeras för att säkerställa att infrastructure code följer established ADR. Policy as Code-verktyg som Open Policy Agent kan enforça arkitekturriktlinjer baserade på documented decisions i ADR.
 
-För svenska organisationer möjliggör denna integration transparent governance och compliance där arkitekturbeslut kan spåras från initial dokumentation genom implementation till operational deployment.
+För svenska organisationer möjliggör denna integration transparent styrning och efterlevnad där arkitekturbeslut kan spåras från initial dokumentation genom implementering till operativ driftsättning.
 
 ## Compliance och kvalitetsstandarder
 
@@ -237,7 +237,7 @@ ADR-metodik utvecklas kontinuerligt med integration av nya verktyg och processer
 **Automated Decision Tracking**: Integration med architectural analysis verktyg
 **Cross-organizational ADR Sharing**: Standardiserade format för sharing av anonymized architectural patterns
 
-För arkitektur som kod-kontext utvecklas verktyg för automatisk correlation mellan ADR och deployed infrastructure, vilket möjliggör real-time validation av architectural compliance.
+För arkitektur som kod-sammanhang utvecklas verktyg för automatisk korrelation mellan ADR och driftsatt infrastruktur, vilket möjliggör realtidsvalidering av arkitektonisk efterlevnad.
 
 Svenska organisationer kan dra nytta av europeiska initiativ för standardisering av digital documentation practices som bygger på ADR-metodologi för ökad interoperabilitet och compliance.
 
@@ -249,7 +249,7 @@ Architecture Decision Records representerar en fundamental komponent i modern Ar
 
 Effektiv ADR-implementation kräver organisatoriskt stöd, standardiserade processer och integration med befintliga utvecklingsworkflows. För arkitektur som kod-projekt möjliggör ADR koppling mellan designintentioner och kod-implementation som förbättrar maintainability och compliance.
 
-Svenska organisationer som adopterar ADR-metodik positionerar sig för framgångsrik Architecture as Code-transformation med robusta governance-processer och transparent beslutsdokumentation som stödjer både interna krav och externa compliance-förväntningar.
+Svenska organisationer som antar ADR-metodik positionerar sig för framgångsrik Architecture as Code-transformation med robusta styrningsprocesser och transparent beslutsdokumentation som stödjer både interna krav och externa efterlevnadsförväntningar.
 
 Källor:
 - Architecture Decision Records Community. "ADR Guidelines and Templates." https://adr.github.io

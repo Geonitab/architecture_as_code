@@ -1,6 +1,6 @@
 # Inledning till arkitektur som kod
 
-Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela systemarkitekturen definieras, versionshanteras och hanteras genom kod. Detta approach möjliggör samma metodiker som traditionell mjukvaruutveckling för hela organisationens tekniska landskap.
+Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela systemarkitekturen definieras, versionshanteras och hanteras genom kod. Detta tillvägagångssätt möjliggör samma metodiker som traditionell mjukvaruutveckling för hela organisationens tekniska landskap.
 
 ![Inledning till arkitektur som kod](images/diagram_01_inledning.png)
 
@@ -16,7 +16,7 @@ Detta inkluderar inte bara infrastrukturkomponenter, utan även applikationsarki
 
 Architecture as Code definieras som praktiken att beskriva, versionhantera och automatisera hela systemarkitekturen genom maskinläsbar kod. Detta omfattar applikationskomponenter, integrationsmönster, dataarkitektur, infrastruktur och organisatoriska processer.
 
-Denna holistiska approach möjliggör end-to-end automatisering där förändringar i krav automatiskt propagerar genom hela arkitekturen - från applikationslogik till deployment och monitering.
+Denna holistiska metod möjliggör genomgående automatisering där förändringar i krav automatiskt propagerar genom hela arkitekturen - från applikationslogik till driftsättning och övervakning.
 
 ## Bokens syfte och målgrupp
 

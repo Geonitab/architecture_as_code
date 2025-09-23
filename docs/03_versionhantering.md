@@ -4,7 +4,7 @@ Effektiv versionhantering utgör ryggraden i arkitektur som kod-implementationer
 
 ![Versionhantering och kodstruktur](images/diagram_03_kapitel2.png)
 
-Diagrammet illustrerar det typiska flödet från Git repository genom branching strategy och code review till slutlig deployment, vilket säkerställer kontrollerad och spårbar infrastrukturutveckling.
+Diagrammet illustrerar det typiska flödet från Git-förråd genom förgreningsstrategi och kodgranskning till slutlig driftsättning, vilket säkerställer kontrollerad och spårbar infrastrukturutveckling.
 
 ## Git-baserad arbetsflöde för infrastruktur
 
@@ -12,7 +12,7 @@ Git utgör standarden för versionhantering av arkitektur som kod och möjliggö
 
 ## Kodorganisation och modulstruktur
 
-Välorganiserad kodstruktur är avgörande för maintainability och collaboration i större arkitektur som kod-projekt. Modulär design möjliggör återanvändning av arkitekturkomponenter across olika projekt och miljöer.
+Välorganiserad kodstruktur är avgörande för underhållbarhet och samarbete i större arkitektur som kod-projekt. Modulär design möjliggör återanvändning av arkitekturkomponenter över olika projekt och miljöer.
 
 Källor:
 - Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation.
