@@ -12,7 +12,7 @@
 
 ## Övergripande beskrivning
 
-Infrastructure as Code best practices representerar culminationen av collective wisdom från tusentals organisationer som har genomgått arkitektur som kod transformation över det senaste decenniet. Dessa practices är inte statiska regler utan evolving guidelines som måste anpassas till specific organizational contexts, technological constraints och business requirements.
+Infrastructure as Code bästa praxis representerar kulmen av kollektiv visdom från tusentals organisationer som har genomgått transformation inom arkitektur som kod över det senaste decenniet. Dessa metoder är inte statiska regler utan utvecklande riktlinjer som måste anpassas till specifika organisatoriska sammanhang, teknologiska begränsningar och affärskrav.
 
 Svenska organisationer har bidragit significantly till global Arkitektur som kod best practice development genom innovative approaches till regulatory compliance, sustainable computing och collaborative development models. Companies som Spotify, Klarna och Ericsson har utvecklat patterns som nu används worldwide för scaling arkitektur som kod practices i large, complex organizations.
 

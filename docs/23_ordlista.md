@@ -2,7 +2,7 @@
 
 ![Arkitektur som kod Core Concepts Class Diagram](images/diagram_23_ordlista_class.png)
 
-Arkitektur som kod-metodiken utgör grunden för denna ordlista innehåller definitioner av centrala termer som används genom boken.
+Denna ordlista innehåller definitioner av centrala termer som används genom boken och som utgör grunden för arkitektur som kod-metodiken.
 
 ## Grundläggande koncept och verktyg
 

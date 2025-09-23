@@ -1,6 +1,6 @@
 # Om författarna
 
-Detta kapitel presenterar de personer och organisationer som bidragit till skapandet av "Arkitektur som kod" - en omfattande guide för praktisk tillämpning av Infrastructure as Code (arkitektur som kod) i svenska organisationer.
+Detta kapitel presenterar de personer och organisationer som bidragit till skapandet av "Arkitektur som kod" - en omfattande guide för praktisk tillämpning av Infrastructure as Code i svenska organisationer.
 
 ![Författare och bidragsgivare](images/diagram_25_authors.png)
 

@@ -2,7 +2,7 @@
 
 ![Digitaliseringsprocess](images/diagram_19_digitalisering.png)
 
-*Infrastructure as Code (arkitektur som kod) utgör ryggraden i moderne digitaliseringsinitiativ genom att möjliggöra snabb, skalbar och kostnadseffektiv transformation av IT-miljöer. Diagrammet illustrerar den strategiska vägen från traditionell infrastruktur till fullständigt kodbaserad digital plattform.*
+*Infrastructure as Code utgör ryggraden i moderna digitaliseringsinitiativ genom att möjliggöra snabb, skalbar och kostnadseffektiv transformation av IT-miljöer. Diagrammet illustrerar den strategiska vägen från traditionell infrastruktur till fullständigt kodbaserad digital plattform.*
 
 ## Svenska digitaliseringslandskapet
 
@@ -12,7 +12,7 @@
 
 ## Övergripande beskrivning
 
-Digitalisering handlar inte enbart om att införa ny teknik, utan om en fundamental förändring av hur organisationer levererar värde till sina kunder och intressenter. Infrastructure as Code (arkitektur som kod) spelar en central roll i denna transformation genom att möjliggöra agila, molnbaserade lösningar som kan anpassas efter förändrade affärsbehov med särskild hänsyn till svenska regulatoriska och kulturella förutsättningar.
+Digitalisering handlar inte enbart om att införa ny teknik, utan om en grundläggande förändring av hur organisationer levererar värde till sina kunder och intressenter. Infrastructure as Code spelar en central roll i denna transformation genom att möjliggöra smidiga, molnbaserade lösningar som kan anpassas efter förändrade affärsbehov med särskild hänsyn till svenska regulatoriska och kulturella förutsättningar.
 
 ### Svenska digitaliseringsutmaningar och möjligheter
 

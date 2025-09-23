@@ -2,7 +2,7 @@
 
 ![Containerisering och orkestrering](images/diagram_11_kapitel10.png)
 
-Arkitektur som kod-metodiken utgör grunden för containerteknologi och orkestrering representerar paradigmskifte i hur applikationer deployeras och skalas. Genom att definiera arkitektur som kod för containrar möjliggörs portable, skalbar och reproducerbar application deployment across olika miljöer och cloud providers.
+Arkitektur som kod-metodiken utgör grunden för containerteknologi och orkestrering representerar paradigmskifte i hur applikationer driftsätts och skalas. Genom att definiera arkitektur som kod för containrar möjliggörs portabel, skalbar och reproducerbar applikationsdriftsättning över olika miljöer och molnleverantörer.
 
 ## Container-teknologiens roll inom arkitektur som kod
 

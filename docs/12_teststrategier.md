@@ -6,7 +6,7 @@
 
 ## Övergripande beskrivning
 
-Testning av Infrastructure as Code (arkitektur som kod) skiljer sig fundamentalt från traditionell mjukvarutestning genom att fokusera på arkitekturkonfiguration, resurskompatibilitet och miljökonsekvens istället för affärslogik. Effective Arkitektur som kod-testing säkerställer att arkitektur som kod producerar förväntade resultat konsekvent across olika miljöer.
+Testning av Infrastructure as Code skiljer sig grundläggande från traditionell programvarutestning genom att fokusera på arkitekturkonfiguration, resurskompatibilitet och miljökonsekvens istället för affärslogik. Effektiv testning av arkitektur som kod säkerställer att arkitektur som kod producerar förväntade resultat konsekvent över olika miljöer.
 
 Modern Arkitektur som kod-testning omfattar flera dimensioner: syntaktisk validering av kod, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys och functional testing av deployed infrastruktur. Denna multilevel approach identifierar problem tidigt i utvecklingscykeln när de är billigare och enklare att fixa.
 

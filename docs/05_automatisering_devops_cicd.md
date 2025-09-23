@@ -1,20 +1,20 @@
-# arkitektur som kod-automatisering, DevOps och CI/CD för arkitektur som kod
+# Automatisering, DevOps och CI/CD för arkitektur som kod
 
-![arkitektur som kod-automatisering och CI/CD-pipelines](images/diagram_04_kapitel3.png)
+![Automatisering och CI/CD-rörledningar](images/diagram_04_kapitel3.png)
 
-Kontinuerlig integration och kontinuerlig deployment (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern mjukvaruutveckling, och när det gäller arkitektur som kod blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-pipelines som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, pålitliga och spårbara operationer, samtidigt som vi utvecklar Architecture as Code-praktiker som hanterar hela systemarkitekturen som kod.
+Kontinuerlig integration och kontinuerlig driftsättning (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern programvaruutveckling, och när det gäller arkitektur som kod blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-rörledningar som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, tillförlitliga och spårbara verksamheter, samtidigt som vi utvecklar Architecture as Code-metoder som hanterar hela systemarkitekturen som kod.
 
 ![arkitektur som kod-implementation Timeline](images/diagram_05_gantt_timeline.png)
 
 Diagrammet ovan visar en typisk tidsplan för Arkitektur som kod-arkitektur som kod-implementation, från initial verktygsanalys till fullständig production-rollout.
 
-Att förstå CI/CD för arkitektur som kod kräver en fundamental förskjutning i tankesättet från traditionell infrastrukturhantering till kod-centrerad automation. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och ad-hoc-lösningar, erbjuder modern Arkitektur som kod-automation konsistens, repeterbarhet och transparens genom hela infrastrukturlivscykeln. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
+Att förstå CI/CD för arkitektur som kod kräver en grundläggande förskjutning i tankesättet från traditionell infrastrukturhantering till kodcentrerad automatisering. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och tillfälliga lösningar, erbjuder modern automatisering inom arkitektur som kod konsekvens, repeterbarhet och transparens genom hela infrastrukturens livscykel. Architecture as Code representerar nästa utvecklingssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
 
-Diagrammet ovan illustrerar det grundläggande CI/CD-flödet från kod-commit genom validering och testning till deployment och monitoring. Detta flöde representerar en systematisk approach där varje steg är designat för att fånga fel tidigt, säkerställa kvalitet och minimera risker i produktionsmiljöer. För svenska organisationer innebär detta särskilda överväganden kring data residency, compliance-validering och kostnadsoptimering i svenska kronor.
+Diagrammet ovan illustrerar det grundläggande CI/CD-flödet från kodbekräftelse genom validering och testning till driftsättning och övervakning. Detta flöde representerar en systematisk metod där varje steg är utformat för att fånga fel tidigt, säkerställa kvalitet och minimera risker i produktionsmiljöer. För svenska organisationer innebär detta särskilda överväganden kring dataplacering, efterlevnadsvalidering och kostnadsoptimering i svenska kronor.
 
 ## Den teoretiska grunden för CI/CD-automation
 
-Continuous Integration och Continuous Deployment representerar mer än bara tekniska processer - de utgör en filosofi för mjukvaruutveckling som prioriterar snabb feedback, incrementell förbättring och riskreducering genom automation. När dessa principer appliceras på arkitektur som kod, uppstår unika möjligheter och utmaningar som kräver djup förståelse för både tekniska och organisatoriska aspekter.
+Kontinuerlig integration och kontinuerlig driftsättning representerar mer än bara tekniska processer - de utgör en filosofi för programvaruutveckling som prioriterar snabb återkoppling, stegvis förbättring och riskminskning genom automatisering. När dessa principer tillämpas på arkitektur som kod, uppstår unika möjligheter och utmaningar som kräver djup förståelse för både tekniska och organisatoriska aspekter.
 
 ### Historisk kontext och utveckling
 

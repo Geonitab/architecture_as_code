@@ -2,7 +2,7 @@
 
 ![Compliance och regelefterlevnad](images/diagram_12_compliance.png)
 
-Infrastructure as Code (arkitektur som kod) spelar en central roll för att möta växande compliance-krav och regulatoriska förväntningar. Som vi såg i [kapitel 11 om policy as code](11_policy_sakerhet.md), kan tekniska lösningar för automatiserad compliance betydligt förenkla och förbättra organisationers förmåga att uppfylla komplexa regelkrav. Detta kapitel fokuserar på de organisatoriska och processrelaterade aspekterna av compliance-hantering genom Infrastructure as Code (arkitektur som kod).
+Infrastructure as Code spelar en central roll för att möta växande efterlevnadskrav och regulatoriska förväntningar. Som vi såg i [kapitel 11 om policy as code](11_policy_sakerhet.md), kan tekniska lösningar för automatiserad efterlevnad betydligt förenkla och förbättra organisationers förmåga att uppfylla komplexa regelkrav. Detta kapitel fokuserar på de organisatoriska och processrelaterade aspekterna av efterlevnadshantering genom Infrastructure as Code.
 
 ## AI och maskininlärning för infrastrukturarkitektur som kod-automatisering
 

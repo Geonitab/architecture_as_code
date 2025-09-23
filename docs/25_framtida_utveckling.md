@@ -1,6 +1,6 @@
 # Framtida utveckling och trender
 
-Detta kapitel utforskar framtida utvecklingstrender inom Architecture as Code och Infrastructure as Code (arkitektur som kod), med särskilt fokus på hur svenska organisationer kan förbereda sig för kommande teknologiska förändringar och möjligheter.
+Detta kapitel utforskar framtida utvecklingstrender inom Architecture as Code och Infrastructure as Code, med särskilt fokus på hur svenska organisationer kan förbereda sig för kommande teknologiska förändringar och möjligheter.
 
 ![Framtida utveckling och trender](images/diagram_25_future_trends.png)
 

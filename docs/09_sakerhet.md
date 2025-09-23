@@ -12,9 +12,9 @@
 
 ## Kapitelets omfattning och mål
 
-Säkerhetsutmaningarna i dagens digitala landskap kräver en fundamental omvärdering av traditionella säkerhetsapproacher. När organisationer adopterar Architecture as Code för att hantera växande komplexitet i sina IT-miljöer, måste säkerhetsstrategier utvecklas parallellt. Detta kapitel guidar läsaren genom en omfattande förståelse av hur säkerhet integreras naturligt och effektivt i kodbaserade arkitekturer.
+Säkerhetsutmaningarna i dagens digitala landskap kräver en grundläggande omvärdering av traditionella säkerhetsmetoder. När organisationer antar Architecture as Code för att hantera växande komplexitet i sina IT-miljöer, måste säkerhetsstrategier utvecklas parallellt. Detta kapitel vägleder läsaren genom en omfattande förståelse av hur säkerhet integreras naturligt och effektivt i kodbaserade arkitekturer.
 
-Traditionella säkerhetsmodeller, byggda för statiska miljöer med tydliga perimetrar, blir snabbt föråldrade i molnbaserade, mikroservice-orienterade arkitekturer. Istället för att behandla säkerhet som en separat domän eller efterkonstruktion, måste moderna organisationer anamma security-as-code principer där säkerhetsbeslut kodifieras, versionhanteras och automatiseras tillsammans med resten av arkitekturen.
+Traditionella säkerhetsmodeller, byggda för statiska miljöer med tydliga perimetrar, blir snabbt föråldrade i molnbaserade, mikroservice-orienterade arkitekturer. Istället för att behandla säkerhet som en separat domän eller efterkonstruktion, måste moderna organisationer anamma säkerhet-som-kod-principer där säkerhetsbeslut kodifieras, versionhanteras och automatiseras tillsammans med resten av arkitekturen.
 
 Svenska organisationer navigerar särskilt komplexa säkerhetslandskap. GDPR-compliance, MSB:s riktlinjer för kritisk infrastruktur, finansiella regulatoriska krav och sektorsspecifika säkerhetsstandarder skapar ett multidimensionellt kravbild. Samtidigt driver digitaliseringsinitiativ behovet av snabbare innovation och kortare time-to-market. Architecture as Code erbjuder lösningen genom att automatisera compliance-kontroller och möjliggöra "secure by default" arkitekturer.
 

@@ -6,7 +6,7 @@
 
 ## Övergripande beskrivning
 
-Kostnadsoptimering utgör en kritisk komponent i Infrastructure as Code (arkitektur som kod)-arkitektur som kod-implementationer, särskilt när organisationer migrerar till molnbaserade lösningar. Utan proper cost management kan molnkostnader snabbt eskalera och undergräva de ekonomiska fördelarna med Arkitektur som kod.
+Kostnadsoptimering utgör en kritisk komponent i Infrastructure as Code-implementeringar, särskilt när organisationer migrerar till molnbaserade lösningar. Utan korrekt kostnadshantering kan molnkostnader snabbt eskalera och undergräva de ekonomiska fördelarna med arkitektur som kod.
 
 Moderna molnleverantörer erbjuder pay-as-you-use modeller som kan vara både fördelaktiga och riskfyllda. Arkitektur som kod möjliggör exakt kontroll över resursallokering och automatiserad kostnadsoptimering genom policy-driven resource management och intelligent skalning.
 

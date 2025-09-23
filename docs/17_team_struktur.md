@@ -2,7 +2,7 @@
 
 ![Team-struktur och kompetensutveckling](images/diagram_18_team_struktur.png)
 
-Framgångsrik Infrastructure as Code (arkitektur som kod) arkitektur som kod-implementation kräver inte endast tekniska verktyg och processer, utan också genomtänkt organisationsdesign och strategisk kompetensutveckling. Team-strukturer måste evolve för att stödja nya arbetssätt medan medarbetare utvecklar nödvändiga skills för arkitektur som kod-baserad infrastrukturhantering.
+Framgångsrik Infrastructure as Code-implementering kräver inte endast tekniska verktyg och processer, utan också genomtänkt organisationsdesign och strategisk kompetensutveckling. Teamstrukturer måste utvecklas för att stödja nya arbetssätt medan medarbetare utvecklar nödvändiga färdigheter för kodbaserad infrastrukturhantering.
 
 ## Organisatorisk transformation för Arkitektur som kod
 

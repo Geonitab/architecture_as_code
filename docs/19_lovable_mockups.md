@@ -4,7 +4,7 @@
 
 ## Inledning till Lovable
 
-Arkitektur som kod-metodiken utgör grunden för lovable är en AI-driven utvecklingsplattform som revolutionerar hur svenska organisationer kan skapa interaktiva mockups och prototyper. Genom att kombinera naturlig språkbehandling med kodgenerering möjliggör Lovable snabb utveckling av användargränssnitt som är anpassade för svenska compliance-krav och användarförväntningar.
+Lovable är en AI-driven utvecklingsplattform som revolutionerar hur svenska organisationer kan skapa interaktiva mockups och prototyper. Genom att kombinera naturlig språkbehandling med kodgenerering möjliggör Lovable snabb utveckling av användargränssnitt som är anpassade för svenska efterlevnadskrav och användarförväntningar.
 
 För svenska organisationer innebär detta en unik möjlighet att:
 - Accelerera prototyputveckling med fokus på svenska språket och kulturella kontext

@@ -1,6 +1,6 @@
 # Molnarkitektur som kod
 
-Molnarkitektur som kod representerar den naturliga evolutionen av arkitektur som kod i cloud-native miljöer. Genom att utnyttja molnleverantörers API:er och tjänster kan organisationer skapa skalbara, resilient och kostnadseffektiva arkitekturer helt genom arkitektur som kod. Som vi såg i [kapitel 2 om grundläggande principer](02_kapitel1.md), är denna approach fundamental för moderna organisationer som strävar efter digital transformation och operational excellence.
+Molnarkitektur som kod representerar den naturliga utvecklingen av arkitektur som kod i molnbaserade miljöer. Genom att utnyttja molnleverantörers API:er och tjänster kan organisationer skapa skalbara, motståndskraftiga och kostnadseffektiva arkitekturer helt genom arkitektur som kod. Som vi såg i [kapitel 2 om grundläggande principer](02_kapitel1.md), är denna metod grundläggande för moderna organisationer som strävar efter digital omvandling och operativ excellens.
 
 ![Molnarkitektur som kod](images/diagram_05_kapitel4.png)
 

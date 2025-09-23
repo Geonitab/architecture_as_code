@@ -12,7 +12,7 @@ Arkitektur som kod-metodiken utgör grunden för ## Organisatoriska förändring
 
 ## Övergripande beskrivning
 
-Implementering av Infrastructure as Code (arkitektur som kod) kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer med separata utvecklings-, drift- och säkerhetsteam måste genomgå fundamental restructuring för att fullt ut realisera fördelarna med arkitektur som kod-baserade arbetssätt.
+Implementering av Infrastructure as Code kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer med separata utvecklings-, drift- och säkerhetsteam måste genomgå grundläggande omstrukturering för att fullt ut realisera fördelarna med kodbaserade arbetssätt.
 
 Svenska organisationer står inför unika utmaningar när det gäller organisatorisk förändring genom starka fackliga traditioner, konsensusbaserade beslutsprocesser och etablerade hierarkiska struktururer. Successful arkitektur som kod adoption kräver change management strategier som respekterar dessa kulturella aspekter samtidigt som de främjar agile och collaborative arbetssätt.
 

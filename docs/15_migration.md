@@ -6,7 +6,7 @@
 
 ## Övergripande beskrivning
 
-Migration från traditionell, manuellt konfigurerad infrastruktur till Infrastructure as Code (arkitektur som kod) representerar en av de mest kritiska transformationerna för moderna IT-organisationer. Denna process kräver inte endast teknisk omstrukturering utan också organisatorisk förändring och kulturell adaption till kodbaserade arbetssätt.
+Migration från traditionell, manuellt konfigurerad infrastruktur till Infrastructure as Code representerar en av de mest kritiska transformationerna för moderna IT-organisationer. Denna process kräver inte endast teknisk omstrukturering utan också organisatorisk förändring och kulturell anpassning till kodbaserade arbetssätt.
 
 Svenska organisationer står inför unika migreringsutmaningar genom legacy-system som utvecklats över decennier, regulatoriska krav som begränsar förändringstakt, och behovet av att balansera innovation med operational stability. Successful migration kräver comprehensive planning som minimerar risker samtidigt som den möjliggör snabb value realization.
 

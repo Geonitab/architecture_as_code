@@ -1,6 +1,6 @@
 # Appendix A: Kodexempel och tekniska arkitektur som kod-implementationer
 
-Denna appendix innehåller alla kodexempel, konfigurationsfiler och tekniska arkitektur som kod-implementationer som refereras till i bokens huvudkapitel. Kodexemplen är organiserade efter typ och användningsområde för att göra det enkelt att hitta specifika implementationer.
+Denna appendix innehåller alla kodexempel, konfigurationsfiler och tekniska implementeringar som refereras till i bokens huvudkapitel. Kodexemplen är organiserade efter typ och användningsområde för att göra det enkelt att hitta specifika implementationer.
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 

@@ -2,11 +2,11 @@
 
 ![Framgångsnycklar för arkitektur som kod](images/diagram_22_slutsats.png)
 
-Arkitektur som kod har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla arkitektur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
+Arkitektur som kod har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla arkitektur som kod har vi möjliggjort samma noggrannhet, processer och kvalitetskontroller som länge funnits inom programvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
 
 ## Viktiga lärdomar från vår Arkitektur som kod-resa
 
-Implementering av Arkitektur som kod kräver både teknisk excellens och organisatorisk förändring. Framgångsrika transformationer karaktäriseras av stark ledningsengagemang, omfattande utbildningsprogram och gradvis adoptionsstrategi som minimerar störningar av befintlig verksamhet, enligt de principer vi utforskade i [kapitel 17 om organisatorisk förändring](17_organisatorisk_forandring.md).
+Implementering av arkitektur som kod kräver både teknisk excellens och organisatorisk förändring. Framgångsrika transformationer kännetecknas av stark ledningsengagemang, omfattande utbildningsprogram och gradvis införandestrategi som minimerar störningar av befintlig verksamhet, enligt de principer vi utforskade i [kapitel 17 om organisatorisk förändring](17_organisatorisk_forandring.md).
 
 Den tekniska aspekten av Infrastructure as Code kräver djup förståelse för molnteknologier, arkitektur som kod-automatiseringsverktyg och säkerhetsprinciper som vi behandlade från [grundläggande principer](02_grundlaggande_principer.md) genom [avancerad policy as code](11_policy_sakerhet.md). Samtidigt är organisatoriska faktorer ofta avgörande för framgång, inklusive kulturell förändring, kompetensutveckling och processtandardisering.
 

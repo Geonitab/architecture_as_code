@@ -2,7 +2,7 @@
 
 ![Architecture as Code i praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk arkitektur som kod-implementation av Architecture as Code kräver genomtänkt approach som balanserar tekniska möjligheter med organisatoriska begränsningar. Infrastructure as Code (arkitektur som kod) utgör en central komponent, men måste integreras med bredare arkitekturdefinitioner. Detta kapitel fokuserar på verkliga arkitektur som kod-implementationsstrategier, common pitfalls, och proven practices för successful Architecture as Code adoption i enterprise environments.
+Praktisk implementering av Architecture as Code kräver genomtänkt tillvägagångssätt som balanserar tekniska möjligheter med organisatoriska begränsningar. Infrastructure as Code utgör en central komponent, men måste integreras med bredare arkitekturdefinitioner. Detta kapitel fokuserar på verkliga implementeringsstrategier, vanliga fallgropar, och beprövade metoder för framgångsrik Architecture as Code-adoption i företagsmiljöer.
 
 ![Implementation User Journey](images/diagram_13_user_journey.png)
 

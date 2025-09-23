@@ -6,7 +6,7 @@
 
 ## Övergripande beskrivning
 
-Arkitektur som kod står inför omfattande transformation driven av teknologiska genombrott inom artificiell intelligens, quantum computing, edge computing och miljömedvetenhet. Som vi har sett genom bokens progression från [grundläggande principer](02_kapitel1.md) till [avancerade policy-arkitektur som kod-implementationer](12_kapitel11.md), utvecklas arkitektur som kod kontinuerligt för att möta nya utmaningar och möjligheter.
+Arkitektur som kod står inför omfattande transformation driven av teknologiska genombrott inom artificiell intelligens, kvantdatorer, edge computing och miljömedvetenhet. Som vi har sett genom bokens utveckling från [grundläggande principer](02_kapitel1.md) till [avancerade policy-implementeringar](12_kapitel11.md), utvecklas arkitektur som kod kontinuerligt för att möta nya utmaningar och möjligheter.
 
 Framtiden för Infrastructure as Code kommer att präglas av intelligent automation som kan fatta komplexa beslut baserat på historiska data, real-time metrics och prediktiv analys. Machine learning-algoritmer kommer att optimera resurstilldelning, förutsäga systemfel och automatiskt implementera säkerhetsförbättringar utan mänsklig intervention.
 
