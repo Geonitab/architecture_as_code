@@ -8,7 +8,7 @@
 
 Arkitektur som kod-metodiken utgör grunden för architecture Decision Records (ADR) utgör en systematisk approach för att dokumentera viktiga arkitekturbeslut som påverkar systemets struktur, prestanda, säkerhet och underhållbarhet. ADR-metoden introducerades av Michael Nygard och har blivit en etablerad best practice inom moderna systemutveckling.
 
-För svenska organisationer som implementerar Architecture as Code och Infrastructure as Code (arkitektur som kod) är ADR särskilt värdefullt eftersom det säkerställer att arkitekturbeslut dokumenteras på ett strukturerat sätt som uppfyller compliance-krav och underlättar kunskapsöverföring mellan team och tidsepoker.
+För svenska organisationer som implementerar Architecture as Code och arkitektur som kod är ADR särskilt värdefullt eftersom det säkerställer att arkitekturbeslut dokumenteras på ett strukturerat sätt som uppfyller compliance-krav och underlättar kunskapsöverföring mellan team och tidsepoker.
 
 ADR fungerar som arkitekturens "commit messages" - korta, fokuserade dokument som fångar sammanhanget (context), problemet, det valda alternativet och konsekvenserna av viktiga arkitekturbeslut. Detta möjliggör spårbarhet och förståelse för varför specifika tekniska val gjordes.
 
@@ -27,7 +27,7 @@ ADR-format följer vanligtvis en strukturerad mall som inkluderar:
 
 Officiella riktlinjer och mallar finns tillgängliga på https://adr.github.io, som fungerar som den primära resursen för ADR-metodiken. Denna webbplats underhålls av ADR-communityn och innehåller standardiserade mallar, verktyg och exempel.
 
-För Infrastructure as Code (arkitektur som kod)-kontext innebär ADR dokumentation av beslut om teknologival, arkitekturmönster, säkerhetsstrategier och operationella policies som kodifieras i infrastrukturdefinitioner.
+För arkitektur som kod-kontext innebär ADR dokumentation av beslut om teknologival, arkitekturmönster, säkerhetsstrategier och operationella policies som kodifieras i arkitekturdefinitioner.
 
 ## Struktur och komponenter av ADR
 

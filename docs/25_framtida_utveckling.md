@@ -135,7 +135,7 @@ COVID-19 påskyndar övergången till remote-first organisationer:
 **Miljöfokuserad utveckling**
 Hållbarhet blir central för teknisk beslutfattning:
 
-- **Carbon-aware computing**: Infrastruktur som optimerar för lägsta koldioxidavtryck
+- **Carbon-aware computing**: Arkitektur som optimerar för lägsta koldioxidavtryck
 - **Green software practices**: Utveckling optimerad för energieffektivitet
 - **Circular IT**: Återanvändning och återvinning av IT-resurser
 - **Swedish climate goals**: Bidrag till Sveriges klimatneutralitetsmål
@@ -158,7 +158,7 @@ Roller och kompetenser utvecklas för Architecture as Code:
 Serverless utvecklas bortom enkla funktioner:
 
 - **Serverless containers**: Containrar utan serverhantering
-- **Event-driven automation**: Infrastruktur som reagerar på händelser
+- **Event-driven automation**: Arkitektur som reagerar på händelser
 - **Serverless databases**: Databaser som skalar automatiskt
 - **Edge functions**: Serverless computing på edge-noder
 

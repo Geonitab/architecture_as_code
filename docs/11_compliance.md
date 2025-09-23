@@ -14,9 +14,9 @@ Automatiserade incident response-system utnyttjar AI för att upptäcka anomalie
 
 ## Cloud-native och serverless utveckling
 
-Serverless computing fortsätter att utvecklas bortom enkla function-as-a-service mot omfattande serverless-arkitekturer. Infrastructure as Code måste anpassas för att hantera händelsedrivna arkitekturer, automatisk skalning och pay-per-use-prismodeller som karakteriserar serverless-plattformar.
+Serverless computing fortsätter att utvecklas bortom enkla function-as-a-service mot omfattande serverless-arkitekturer. Arkitektur som kod måste anpassas för att hantera händelsedrivna arkitekturer, automatisk skalning och pay-per-use-prismodeller som karakteriserar serverless-plattformar.
 
-Händelsedriven infrastruktur reagerar automatiskt på affärshändelser och systemförhållanden. Infrastrukturdefinitioner inkluderar händelseutlösare, responsmekanismer och komplex workflow-orkestrering som möjliggör reaktiv infrastruktur som anpassar sig till förändrade krav i realtid.
+Händelsedriven arkitektur reagerar automatiskt på affärshändelser och systemförhållanden. Arkitekturdefinitioner inkluderar händelseutlösare, responsmekanismer och komplex workflow-orkestrering som möjliggör reaktiv arkitektur som anpassar sig till förändrade krav i realtid.
 
 Edge computing-integration kräver distribuerade arkitekturhanteringsmöjligheter som hanterar latenskänsliga arbetsbelastningar, lokal databehandling och intermittent anslutning. Arkitektur som kod-verktyg måste stödja hybrid edge-cloud-arkitekturer med synkroniserad konfigurationshantering.
 

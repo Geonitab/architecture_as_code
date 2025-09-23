@@ -1,8 +1,8 @@
 # Slutsats
 
-![Framgångsnycklar för Infrastructure as Code (arkitektur som kod)](images/diagram_22_slutsats.png)
+![Framgångsnycklar för arkitektur som kod](images/diagram_22_slutsats.png)
 
-Infrastructure as Code (arkitektur som kod) har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla infrastruktur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
+Arkitektur som kod har transformerat hur organisationer tänker kring och hanterar IT-infrastruktur. Genom att behandla arkitektur som kod har vi möjliggjort samma rigor, processer och kvalitetskontroller som länge funnits inom mjukvaruutveckling. Denna resa genom bokens 25 kapitel har visat vägen från [grundläggande koncept](01_inledning.md) till [framtidens avancerade teknologier](21_framtida_trender.md).
 
 ## Viktiga lärdomar från vår Arkitektur som kod-resa
 

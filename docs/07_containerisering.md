@@ -6,7 +6,7 @@ Arkitektur som kod-metodiken utgör grunden för containerteknologi och orkestre
 
 ## Container-teknologiens roll inom arkitektur som kod
 
-Containers erbjuder application-level virtualization som paketerar applikationer med alla dependencies i isolated, portable units. För Infrastructure as Code (arkitektur som kod) innebär detta att application deployment kan standardiseras och automatiseras genom code-based definitions som säkerställer consistency mellan development, testing och production environments.
+Containers erbjuder application-level virtualization som paketerar applikationer med alla dependencies i isolated, portable units. För arkitektur som kod innebär detta att application deployment kan standardiseras och automatiseras genom code-based definitions som säkerställer consistency mellan development, testing och production environments.
 
 Docker har etablerat sig som de facto standard för containerization, medan podman och andra alternativ erbjuder daemon-less approaches för enhanced security. Container images definieras genom Dockerfiles som executable infrastructure code, vilket möjliggör version control och automated building av application artifacts.
 
@@ -14,7 +14,7 @@ Container registries fungerar som centralized repositories för image distributi
 
 ## Kubernetes som orchestration platform
 
-Kubernetes har emergerat som leading container orchestration platform genom dess declarative configuration model och extensive ecosystem. YAML-based manifests definierar desired state för applications, services, och infrastructure components, vilket alignar perfekt med Infrastructure as Code (arkitektur som kod) principles.
+Kubernetes har emergerat som leading container orchestration platform genom dess declarative configuration model och extensive ecosystem. YAML-based manifests definierar desired state för applications, services, och infrastructure components, vilket alignar perfekt med arkitektur som kod principles.
 
 Kubernetes objects som Deployments, Services, ConfigMaps, och Secrets möjliggör comprehensive application lifecycle management through code. Pod specifications, resource quotas, network policies, och persistent volume claims kan alla definieras declaratively och managed through version control systems.
 

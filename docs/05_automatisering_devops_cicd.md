@@ -2,7 +2,7 @@
 
 ![arkitektur som kod-automatisering och CI/CD-pipelines](images/diagram_04_kapitel3.png)
 
-Kontinuerlig integration och kontinuerlig deployment (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern mjukvaruutveckling, och när det gäller Infrastructure as Code (arkitektur som kod) (arkitektur som kod) blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-pipelines som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, pålitliga och spårbara operationer, samtidigt som vi utvecklar Architecture as Code-praktiker som hanterar hela systemarkitekturen som kod.
+Kontinuerlig integration och kontinuerlig deployment (CI/CD) tillsammans med DevOps-kulturen utgör ryggraden i modern mjukvaruutveckling, och när det gäller arkitektur som kod blir dessa processer ännu mer kritiska. Detta kapitel utforskar djupgående hur svenska organisationer kan implementera robusta, säkra och effektiva CI/CD-pipelines som förvandlar infrastrukturhantering från manuella, felbenägna processer till automatiserade, pålitliga och spårbara operationer, samtidigt som vi utvecklar Architecture as Code-praktiker som hanterar hela systemarkitekturen som kod.
 
 ![arkitektur som kod-implementation Timeline](images/diagram_05_gantt_timeline.png)
 
@@ -100,7 +100,7 @@ Quarterly budgetering och svenska redovisningsstandarder kräver detailed cost a
 
 GDPR compliance i CI/CD-pipelines för Infrastructure as Code kräver en holistisk approach som integrerar data protection principles i varje steg av automation-processen. Article 25 i GDPR mandaterar "data protection by design och by default", vilket innebär att tekniska och organisatoriska åtgärder måste implementeras från första design-stadiet av system och processer.
 
-För Infrastructure as Code betyder detta att pipelines måste automatiskt validera att all infrastruktur som distribueras följer GDPR:s principer för data minimization, purpose limitation och storage limitation. Personal data får aldrig hardkodas i infrastrukturkonfigurationer, kryptering måste enforças som standard, och audit trails måste genereras för alla infrastrukturändringar som kan påverka personuppgifter.
+För arkitektur som kod betyder detta att pipelines måste automatiskt validera att all arkitektur som distribueras följer GDPR:s principer för data minimization, purpose limitation och storage limitation. Personal data får aldrig hardkodas i arkitekturkonfigurationer, kryptering måste enforças som standard, och audit trails måste genereras för alla arkitekturändringar som kan påverka personuppgifter.
 
 **Data discovery och klassificering:** Automatiserad scanning för personal data patterns i infrastructure code är första försvarslinjen för GDPR compliance. CI/CD-pipelines måste implementera sophisticated scanning som kan identifiera både direkta identifierare (som personnummer) och indirekta identifierare som i kombination kan användas för att identifiera enskilda personer.
 

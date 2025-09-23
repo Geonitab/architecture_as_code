@@ -64,7 +64,7 @@ Policy as Code representerar paradigmskiftet från imperativ till deklarativ sä
 
 Open Policy Agent (OPA) har etablerat sig som de facto standard för policy-as-code implementation. OPA's Rego-språk tillhandahåller expressiv syntax för att definiera komplexa säkerhetspolicies som kan evalueras across heterogena tekniska stakcar. Rego policies kan integreras i CI/CD pipelines, admission controllers, API gateways och runtime environments för comprehensive policy coverage.
 
-HashiCorp Sentinel erbjuder alternativ approach med fokus på Infrastructure as Code (arkitektur som kod)-specifika policies. Sentinel policies kan enforceas på Terraform plan-nivå för att förhindra non-compliant infrastructure deployments. AWS Config Rules och Azure Policy tillhandahåller cloud-nativa policy engines med deeper integration i respektive cloud platforms.
+HashiCorp Sentinel erbjuder alternativ approach med fokus på arkitektur som kod-specifika policies. Sentinel policies kan enforceas på Terraform plan-nivå för att förhindra non-compliant infrastructure deployments. AWS Config Rules och Azure Policy tillhandahåller cloud-nativa policy engines med deeper integration i respektive cloud platforms.
 
 ### Regulatory compliance automation
 
@@ -1072,7 +1072,7 @@ Cybersecurity workforce development represents critical challenge för svenska o
 Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Säkerhet inom Architecture as Code representerar fundamental transformation från traditionella, reaktiva säkerhetsapproaches till proaktiva, kodbaserade säkerhetslösningar som integreras naturligt i moderna utvecklingsprocesser. Detta paradigmskifte möjliggör svenska organisationer att bygga robusta, skalbara och auditerbara säkerhetslösningar som möter både nuvarande regulatoriska krav och framtida säkerhetsutmaningar.
 
-Implementation av security-by-design principer genom Infrastructure as Code (arkitektur som kod) skapar systematic approach till säkerhetsarkitektur där säkerhetsbeslut versionhanteras, testas och deployeras med samma rigor som funktionella requirements. Zero Trust Architecture implementation genom kodbaserade policies möjliggör granular access control och continuous verification som anpassar sig till modern distributed computing realities.
+Implementation av security-by-design principer genom arkitektur som kod skapar systematic approach till säkerhetsarkitektur där säkerhetsbeslut versionhanteras, testas och deployeras med samma rigor som funktionella requirements. Zero Trust Architecture implementation genom kodbaserade policies möjliggör granular access control och continuous verification som anpassar sig till modern distributed computing realities.
 
 Policy as Code automation transforms compliance från manual, fel-prone processes till systematiska, automated frameworks som can continuously evaluate regulatory requirements mot actual infrastructure configurations. För svenska organisationer navigerar detta complex regulatory landscape inkluderar GDPR, MSB guidelines och sector-specific requirements, automated compliance provides significant operational advantages och reduced regulatory risk.
 

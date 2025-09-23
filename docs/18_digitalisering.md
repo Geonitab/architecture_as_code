@@ -67,7 +67,7 @@ Sverige har utvecklat en stark position inom molnteknologi, delvis drivet av amb
 Regeringens digitaliseringsstrategi "Digital agenda för Sverige 2025" betonar betydelsen av molnteknik för att uppnå målen om en digitalt sammanhållen offentlig förvaltning. Strategin specificerar att svenska myndigheter ska:
 
 - Prioritera cloud-first lösningar som följer EU:s regler för datasuveränitet
-- Implementera automatiserad infrastruktur som möjliggör delning av IT-tjänster mellan myndigheter  
+- Implementera automatiserad arkitektur som möjliggör delning av IT-tjänster mellan myndigheter  
 - Utveckla gemensamma plattformar för medborgarservice baserade på öppen källkod
 - Säkerställa cybersäkerhet och beredskap genom arkitektur som kod-baserad infrastruktur
 

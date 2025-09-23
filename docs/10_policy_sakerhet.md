@@ -2,7 +2,7 @@
 
 ![Policy och säkerhet som kod](images/diagram_12_kapitel11.png)
 
-*Policy as Code representerar nästa evolutionssteg inom Infrastructure as Code (arkitektur som kod) där säkerhet, compliance och governance automatiseras genom programmerbara regler. Diagrammet visar integreringen av policy enforcement i hela utvecklingslivscykeln från design till produktion.*
+*Policy as Code representerar nästa evolutionssteg inom arkitektur som kod där säkerhet, compliance och governance automatiseras genom programmerbara regler. Diagrammet visar integreringen av policy enforcement i hela utvecklingslivscykeln från design till produktion.*
 
 ## Introduktion och kontextualisering
 

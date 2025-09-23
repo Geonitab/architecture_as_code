@@ -1,6 +1,6 @@
 # Molnarkitektur som kod
 
-Molnarkitektur som kod representerar den naturliga evolutionen av Infrastructure as Code (arkitektur som kod) i cloud-native miljöer. Genom att utnyttja molnleverantörers API:er och tjänster kan organisationer skapa skalbara, resilient och kostnadseffektiva arkitekturer helt genom arkitektur som kod. Som vi såg i [kapitel 2 om grundläggande principer](02_kapitel1.md), är denna approach fundamental för moderna organisationer som strävar efter digital transformation och operational excellence.
+Molnarkitektur som kod representerar den naturliga evolutionen av arkitektur som kod i cloud-native miljöer. Genom att utnyttja molnleverantörers API:er och tjänster kan organisationer skapa skalbara, resilient och kostnadseffektiva arkitekturer helt genom arkitektur som kod. Som vi såg i [kapitel 2 om grundläggande principer](02_kapitel1.md), är denna approach fundamental för moderna organisationer som strävar efter digital transformation och operational excellence.
 
 ![Molnarkitektur som kod](images/diagram_05_kapitel4.png)
 
@@ -8,7 +8,7 @@ Diagrammet illustrerar progression från multi-cloud environments genom provider
 
 ## Molnleverantörers ekosystem för Arkitektur som kod
 
-Svenska organisationer står inför ett rikt utbud av molnleverantörer, var och en med sina egna styrkor och specialiseringar. För att uppnå framgångsrik cloud adoption måste organisationer förstå varje leverantörs unika capabilities och hur dessa kan utnyttjas genom Infrastructure as Code (arkitektur som kod) approaches.
+Svenska organisationer står inför ett rikt utbud av molnleverantörer, var och en med sina egna styrkor och specialiseringar. För att uppnå framgångsrik cloud adoption måste organisationer förstå varje leverantörs unika capabilities och hur dessa kan utnyttjas genom arkitektur som kod approaches.
 
 ### Amazon Web Services (AWS) och svenska organisationer
 
