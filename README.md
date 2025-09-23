@@ -268,9 +268,7 @@ Konsoliderad workflow som ersätter tidigare separata workflows:
 
 ## 👥 Författare
 
-**Kodarkitektur Bokverkstad** - Huvudförfattare och redaktionell kraft bakom publikationen
-
-En samling svenska experter inom arkitektur, infrastruktur och systemutveckling som arbetat tillsammans för att skapa en heltäckande resurs för svenska organisationer inom arkitektur som kod.
+**Gunnar Nordqvist** - Författare
 
 ## 📄 Licens
 
