@@ -1,0 +1,64 @@
+---
+# Pandoc configuration file for "Arkitektur som kod" book
+# Simplified configuration for better compatibility
+
+# General settings
+standalone: true
+toc: true
+toc-depth: 3
+number-sections: true
+
+# Chapter page break configuration
+top-level-division: chapter
+
+# Template and styling - Try Eisvogel first, fallback to default
+template: eisvogel.latex
+
+# PDF-specific settings
+pdf-engine: xelatex
+
+# Metadata for document
+metadata:
+  title: "Architecture as Code"
+  subtitle: "A Comprehensive Guide"
+  author: "Kodarkitektur Bokverkstad"
+  date: "2024"
+  language: en
+  lang: en-US
+
+# Variables for better compatibility
+variables:
+  documentclass: book
+  classoption: 
+    - oneside
+    - openany
+  geometry:
+    - top=2.5cm
+    - bottom=2.5cm
+    - left=2.5cm
+    - right=2.5cm
+  fontsize: 11pt
+  linestretch: 1.2
+  lang: en-US
+  cover-image: "images/book-cover.png"
+  include-before: |
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/book-cover.png}
+    \end{center}
+    \newpage
+  # Simplified header handling
+  header-includes: |
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+    \renewcommand{\sectionmark}[1]{\markright{#1}}
+    \usepackage{graphicx}
+    \usepackage{pdfpages}
+
+# For EPUB output
+epub-chapter-level: 1
+
+# Additional filters for better output
+filters: []
