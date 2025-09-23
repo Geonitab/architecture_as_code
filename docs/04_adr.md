@@ -85,23 +85,23 @@ ADR genomgår typiskt följande statusar:
 
 ## Praktiska exempel på ADR
 
-### Exempel 1: Val av Infrastructure as Code-verktyg
+### Exempel 1: Val av arkitektur som kod-verktyg
 
 Arkitektur som kod-principerna inom detta område
 
 ```markdown
-# ADR-0003: Val av Terraform för Infrastructure as Code
+# ADR-0003: Val av Terraform för arkitektur som kod
 
 ## Status
 Accepted
 
 ## Context
-Organisationen behöver standardisera på ett Infrastructure as Code-verktyg
+Organisationen behöver standardisera på ett arkitektur som kod-verktyg
 för att hantera AWS och Azure-miljöer. Nuvarande manuella processer
 skapar inconsistens och operationella risker.
 
 ## Decision
-Vi kommer att använda Terraform som primärt IaC-verktyg för alla
+Vi kommer att använda Terraform som primärt arkitektur som kod-verktyg för alla
 cloud-miljöer, med HashiCorp Configuration Language (HCL) som
 standardsyntax.
 

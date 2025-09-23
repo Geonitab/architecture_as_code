@@ -38,7 +38,7 @@ Machine learning-baserade prediktiva skalningsmodeller kan inkorporeras i Arkite
 
 Comprehensive cost monitoring kräver integration av monitoring-verktyg direkt i Arkitektur som kod-konfigurationerna. CloudWatch, Azure Monitor och Google Cloud Monitoring kan konfigureras som kod för att spåra kostnader på granulär nivå och trigga alerts när threshold-värden överskrids.
 
-Real-time kostnadsspårning möjliggör proaktiv kostnadshantering istället för reaktiva åtgärder efter att budget redan överskrids. IaC-baserade monitoring-lösningar kan automatiskt implementera cost controls som resource termination eller approval workflows för kostnadskritiska operationer.
+Real-time kostnadsspårning möjliggör proaktiv kostnadshantering istället för reaktiva åtgärder efter att budget redan överskrids. Arkitektur som kod-baserade monitoring-lösningar kan automatiskt implementera cost controls som resource termination eller approval workflows för kostnadskritiska operationer.
 
 Svenska organisations rapporteringskrav kan automatiseras genom Arkitektur som kod-definierade dashboards och rapporter som genereras regelbundet och distribueras till relevanta stakeholders. Integration med företags ERP-system möjliggör seamless financial planning och budgetering.
 

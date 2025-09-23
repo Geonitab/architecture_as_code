@@ -903,7 +903,7 @@ class OSCALSystemSecurityPlanGenerator:
         self.aws_client = boto3.client('sts')
         
     def generate_ssp(self, profile_href: str, system_name: str) -> Dict[str, Any]:
-        """Generera comprehensive SSP från IaC definitions"""
+        """Generera comprehensive SSP från arkitektur som kod definitions"""
         
         # Parse Terraform configurations
         terraform_resources = self._parse_terraform_resources()

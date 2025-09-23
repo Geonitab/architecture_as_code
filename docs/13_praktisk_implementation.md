@@ -6,7 +6,7 @@ Praktisk arkitektur som kod-implementation av Architecture as Code kräver genom
 
 ![Implementation User Journey](images/diagram_13_user_journey.png)
 
-Diagrammet ovan illustrerar den typiska användarresan för IaC-implementation, från initial discovery till fullständig optimization.
+Diagrammet ovan illustrerar den typiska användarresan för arkitektur som kod-implementation, från initial discovery till fullständig optimization.
 
 ## Implementation roadmap och strategier
 

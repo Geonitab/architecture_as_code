@@ -1,4 +1,4 @@
-# arkitektur som kod-automatisering, DevOps och CI/CD för Infrastructure as Code (arkitektur som kod)
+# arkitektur som kod-automatisering, DevOps och CI/CD för arkitektur som kod
 
 ![arkitektur som kod-automatisering och CI/CD-pipelines](images/diagram_04_kapitel3.png)
 
@@ -8,13 +8,13 @@ Kontinuerlig integration och kontinuerlig deployment (CI/CD) tillsammans med Dev
 
 Diagrammet ovan visar en typisk tidsplan för Arkitektur som kod-arkitektur som kod-implementation, från initial verktygsanalys till fullständig production-rollout.
 
-Att förstå CI/CD för Infrastructure as Code kräver en fundamental förskjutning i tankesättet från traditionell infrastrukturhantering till kod-centrerad automation. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och ad-hoc-lösningar, erbjuder modern Arkitektur som kod-automation konsistens, repeterbarhet och transparens genom hela infrastrukturlivscykeln. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
+Att förstå CI/CD för arkitektur som kod kräver en fundamental förskjutning i tankesättet från traditionell infrastrukturhantering till kod-centrerad automation. Där traditionella metoder förlitade sig på manuella konfigurationer, checklistor och ad-hoc-lösningar, erbjuder modern Arkitektur som kod-automation konsistens, repeterbarhet och transparens genom hela infrastrukturlivscykeln. Architecture as Code representerar nästa evolutionssteg där DevOps-kulturen och CI/CD-processer omfattar hela systemarkitekturen som en sammanhängande enhet. Detta paradigmskifte är inte bara tekniskt - det påverkar organisationsstruktur, arbetsflöden och även juridiska aspekter för svenska företag som måste navigera GDPR, svensk datahanteringslagstiftning och sektorsspecifika regleringar.
 
 Diagrammet ovan illustrerar det grundläggande CI/CD-flödet från kod-commit genom validering och testning till deployment och monitoring. Detta flöde representerar en systematisk approach där varje steg är designat för att fånga fel tidigt, säkerställa kvalitet och minimera risker i produktionsmiljöer. För svenska organisationer innebär detta särskilda överväganden kring data residency, compliance-validering och kostnadsoptimering i svenska kronor.
 
 ## Den teoretiska grunden för CI/CD-automation
 
-Continuous Integration och Continuous Deployment representerar mer än bara tekniska processer - de utgör en filosofi för mjukvaruutveckling som prioriterar snabb feedback, incrementell förbättring och riskreducering genom automation. När dessa principer appliceras på Infrastructure as Code, uppstår unika möjligheter och utmaningar som kräver djup förståelse för både tekniska och organisatoriska aspekter.
+Continuous Integration och Continuous Deployment representerar mer än bara tekniska processer - de utgör en filosofi för mjukvaruutveckling som prioriterar snabb feedback, incrementell förbättring och riskreducering genom automation. När dessa principer appliceras på arkitektur som kod, uppstår unika möjligheter och utmaningar som kräver djup förståelse för både tekniska och organisatoriska aspekter.
 
 ### Historisk kontext och utveckling
 
@@ -36,7 +36,7 @@ För svenska organisationer har denna utveckling sammanfallit med ökande regula
 
 ### Organisatoriska implikationer av CI/CD-automation
 
-Implementering av CI/CD för Infrastructure as Code påverkar organisationer på multipla nivåer. Tekniska team måste utveckla nya färdigheter inom programmatic infrastructure management, medan affärsprocesser måste anpassas för att dra nytta av accelererad leveranskapacitet.
+Implementering av CI/CD för arkitektur som kod påverkar organisationer på multipla nivåer. Tekniska team måste utveckla nya färdigheter inom programmatic infrastructure management, medan affärsprocesser måste anpassas för att dra nytta av accelererad leveranskapacitet.
 
 **Kulturell transformation:** Övergången till CI/CD-baserad infrastruktur kräver en kulturell förskjutning från risk-averse, manuella processer till risk-managed automation. Detta innebär att organisationer måste utveckla tillit till automatiserade system medan de behåller nödvändiga kontroller för compliance och säkerhet.
 
@@ -46,7 +46,7 @@ Implementering av CI/CD för Infrastructure as Code påverkar organisationer på
 
 Som vi såg i [kapitel 3 om versionhantering](03_versionhantering.md), utgör CI/CD-pipelines en naturlig förlängning av git-baserade workflows för arkitektur som kod. Detta kapitel bygger vidare på dessa koncept och utforskar hur svenska organisationer kan implementera avancerade automation-strategier som balanserar effektivitet med regulatoriska krav. Senare kommer vi att se hur dessa principles tillämpas i [molnarkitektur som kod](07_molnarkitektur.md) och integreras med [säkerhetsaspekter](10_sakerhet.md).
 
-## Från Infrastructure as Code till Architecture as Code DevOps
+## Från arkitektur som kod till Architecture as Code DevOps
 
 Arkitektur som kod-principerna inom detta område
 

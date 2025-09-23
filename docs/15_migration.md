@@ -10,7 +10,7 @@ Migration från traditionell, manuellt konfigurerad infrastruktur till Infrastru
 
 Svenska organisationer står inför unika migreringsutmaningar genom legacy-system som utvecklats över decennier, regulatoriska krav som begränsar förändringstakt, och behovet av att balansera innovation med operational stability. Successful migration kräver comprehensive planning som minimerar risker samtidigt som den möjliggör snabb value realization.
 
-Modern migrationsstrategier måste accommodera hybrid scenarios där legacy infrastructure coexisterar med Arkitektur som kod-managed resources under extended transition periods. Detta hybrid approach möjliggör gradual migration som reducerar business risk samtidigt som det möjliggör immediate benefits från IaC adoption.
+Modern migrationsstrategier måste accommodera hybrid scenarios där legacy infrastructure coexisterar med Arkitektur som kod-managed resources under extended transition periods. Detta hybrid approach möjliggör gradual migration som reducerar business risk samtidigt som det möjliggör immediate benefits från arkitektur som kod adoption.
 
 Cloud-native migration pathways erbjuder opportuniteter att modernisera arkitektur samtidigt som infrastructure management kodifieras. Svenska företag kan leverage denna transformation för att implementera sustainability initiatives, improve cost efficiency och enhance security posture genom systematic arkitektur som kod adoption.
 
@@ -693,7 +693,7 @@ echo "5. Document lessons learned"
 Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
 Migration från traditionell infrastruktur till Infrastructure as Code representerar en kritisk transformation som kräver systematisk planering, gradvis implementation och omfattande testing. Svenska organisationer som framgångsrikt genomför denna migration positionerar sig för ökad agility, förbättrad säkerhet och betydande kostnadsmässiga fördelar.
 
-Framgångsfaktorer inkluderar comprehensive assessment, realistisk timeline planning, extensive team training och robust testing frameworks. Hybrid migration strategies möjliggör risk minimization samtidigt som de levererar immediate value från IaC adoption.
+Framgångsfaktorer inkluderar comprehensive assessment, realistisk timeline planning, extensive team training och robust testing frameworks. Hybrid migration strategies möjliggör risk minimization samtidigt som de levererar immediate value från arkitektur som kod adoption.
 
 Investment i proper migration planning och execution resulterar i långsiktiga fördelar genom improved operational efficiency, enhanced security posture och reduced technical debt. Svenska organisationer som följer systematic migration approaches kan förvänta sig successful transformation till modern, arkitektur som kod-baserad infrastrukturhantering.
 

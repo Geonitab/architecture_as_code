@@ -71,7 +71,7 @@ Regeringens digitaliseringsstrategi "Digital agenda för Sverige 2025" betonar b
 - Utveckla gemensamma plattformar för medborgarservice baserade på öppen källkod
 - Säkerställa cybersäkerhet och beredskap genom arkitektur som kod-baserad infrastruktur
 
-Detta skapar efterfrågan på IaC-lösningar som kan hantera känslig data enligt GDPR och Offentlighets- och sekretesslagen samtidigt som de möjliggör innovation och effektivitet. Praktiskt innebär detta:
+Detta skapar efterfrågan på arkitektur som kod-lösningar som kan hantera känslig data enligt GDPR och Offentlighets- och sekretesslagen samtidigt som de möjliggör innovation och effektivitet. Praktiskt innebär detta:
 
 ```hcl
 # Svenska myndigheter - Arkitektur som kod template för GDPR-compliant cloud

@@ -394,7 +394,7 @@ class IaCCompetencyFramework:
         return competency_matrix
 
 def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
-    """Skapa comprehensive organizational change plan för IaC adoption"""
+    """Skapa comprehensive organizational change plan för arkitektur som kod adoption"""
     
     change_plan = {
         "organization": organization_assessment["name"],
@@ -645,7 +645,7 @@ Organisatorisk förändring utgör den mest kritiska komponenten för successful
 
 Svenska organisationer som investerar i comprehensive change management, cross-functional team development och continuous learning culture positionerar sig för long-term success med arkitektur som kod practices. Investment i people development och organizational design delivers compounding returns genom improved collaboration, faster innovation cycles och enhanced operational efficiency.
 
-Success requires balanced focus på technical capability development, cultural transformation och measurement-driven improvement. Organizations som treats change management som equally important som technical implementation achieve significantly better outcomes från their IaC transformation investments.
+Success requires balanced focus på technical capability development, cultural transformation och measurement-driven improvement. Organizations som treats change management som equally important som technical implementation achieve significantly better outcomes från their arkitektur som kod transformation investments.
 
 ## Källor och referenser
 

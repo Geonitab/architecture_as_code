@@ -18,7 +18,7 @@ Serverless computing fortsätter att utvecklas bortom enkla function-as-a-servic
 
 Händelsedriven infrastruktur reagerar automatiskt på affärshändelser och systemförhållanden. Infrastrukturdefinitioner inkluderar händelseutlösare, responsmekanismer och komplex workflow-orkestrering som möjliggör reaktiv infrastruktur som anpassar sig till förändrade krav i realtid.
 
-Edge computing-integration kräver distribuerade infrastrukturhanteringsmöjligheter som hanterar latenskänsliga arbetsbelastningar, lokal databehandling och intermittent anslutning. IaC-verktyg måste stödja hybrid edge-cloud-arkitekturer med synkroniserad konfigurationshantering.
+Edge computing-integration kräver distribuerade arkitekturhanteringsmöjligheter som hanterar latenskänsliga arbetsbelastningar, lokal databehandling och intermittent anslutning. Arkitektur som kod-verktyg måste stödja hybrid edge-cloud-arkitekturer med synkroniserad konfigurationshantering.
 
 ## Policydriven infrastruktur och styrning
 

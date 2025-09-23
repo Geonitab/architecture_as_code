@@ -12,7 +12,7 @@ Conway's Law observerar att organisationsstruktur reflekteras i system design, v
 
 Platform teams fungerar som internal service providers som bygger och underhåller Infrastructure as Code capabilities för application teams. Denna model balanserar centralized expertise med decentralized autonomy, vilket möjliggör scaling av arkitektur som kod practices across stora organisationer.
 
-## Kompetensområden för IaC-specialister
+## Kompetensområden för arkitektur som kod-specialister
 
 Infrastructure as Code professionals behöver hybrid skills som kombinerar traditional systems administration knowledge med software engineering practices. Programming skills i språk som Python, Go, eller PowerShell blir essentiella för automation script development och tool integration.
 

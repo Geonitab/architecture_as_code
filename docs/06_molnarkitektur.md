@@ -1185,7 +1185,7 @@ outputs:
       logRetention: "7-years"
 ```
 
-## Cloud-native IaC patterns
+## Cloud-native arkitektur som kod patterns
 
 Cloud-native Infrastructure as Code patterns utnyttjar molnspecifika tjänster och capabilities för att skapa optimala arkitekturer. Dessa patterns inkluderar serverless computing, managed databases, auto-scaling groups, och event-driven architectures som eliminerar traditionell infrastrukturhantering.
 

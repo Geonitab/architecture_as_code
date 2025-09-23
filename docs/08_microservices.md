@@ -2,7 +2,7 @@
 
 ![Microservices-arkitektur](images/diagram_13_kapitel12.png)
 
-Microservices-arkitektur representerar en fundamental paradigmförändring i hur vi designar, bygger och driver moderna applikationer. Denna arkitekturstil bryter ner traditionella monolitiska system i mindre, oberoende och specialiserade tjänster som kan utvecklas, deployeras och skalas självständigt. När denna kraftfulla arkitektur kombineras med Infrastructure as Code (arkitektur som kod) (IaC), skapas en synergistisk effekt som möjliggör både teknisk excellens och organisatorisk agilitet.
+Microservices-arkitektur representerar en fundamental paradigmförändring i hur vi designar, bygger och driver moderna applikationer. Denna arkitekturstil bryter ner traditionella monolitiska system i mindre, oberoende och specialiserade tjänster som kan utvecklas, deployeras och skalas självständigt. När denna kraftfulla arkitektur kombineras med arkitektur som kod, skapas en synergistisk effekt som möjliggör både teknisk excellens och organisatorisk agilitet.
 
 För svenska organisationer innebär microservices-arkitektur som kod inte bara en teknisk transformation, utan också en kulturell och organisatorisk evolution. Detta kapitel utforskar hur svenska företag kan leverera världsledande digitala tjänster samtidigt som de upprätthåller de höga standarder för kvalitet, säkerhet och hållbarhet som kännetecknar svensk industri.
 

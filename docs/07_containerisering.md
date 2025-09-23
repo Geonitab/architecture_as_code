@@ -4,7 +4,7 @@
 
 Arkitektur som kod-metodiken utgör grunden för containerteknologi och orkestrering representerar paradigmskifte i hur applikationer deployeras och skalas. Genom att definiera arkitektur som kod för containrar möjliggörs portable, skalbar och reproducerbar application deployment across olika miljöer och cloud providers.
 
-## Container-teknologiens roll inom IaC
+## Container-teknologiens roll inom arkitektur som kod
 
 Containers erbjuder application-level virtualization som paketerar applikationer med alla dependencies i isolated, portable units. För Infrastructure as Code (arkitektur som kod) innebär detta att application deployment kan standardiseras och automatiseras genom code-based definitions som säkerställer consistency mellan development, testing och production environments.
 

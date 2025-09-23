@@ -1,6 +1,6 @@
 # Teststrategier för infrastruktukod
 
-![Test pyramid för IaC](images/diagram_17_kapitel16.png)
+![Test pyramid för arkitektur som kod](images/diagram_17_kapitel16.png)
 
 *Omfattande teststrategi för Infrastructure as Code (arkitektur som kod) kräver multiple testing-nivåer från unit tests till end-to-end validation. Diagrammet illustrerar det strukturerade förloppet från snabba utvecklartester till omfattande integrationsvalidering.*
 
