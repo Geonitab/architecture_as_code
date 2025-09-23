@@ -18,7 +18,7 @@ Architecture as Code omfattar hela systemekosystemet genom ett holistiskt tillv�
 
 Ett praktiskt exempel är hur en förändring i en applikations API automatiskt kan propagera genom hela arkitekturen - från säkerhetskonfigurationer till dokumentation - allt eftersom det är definierat som kod.
 
-## Immutable architecture patterns
+## Oföränderliga arkitekturmönster
 
 Principen om immutable arkitektur innebär att hela systemarkitekturen hanteras genom oföränderliga komponenter. Istället för att modifiera befintliga delar skapas nya versioner som ersätter gamla på alla nivåer.
 
@@ -180,7 +180,7 @@ Källor:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- GitLab. "Documentation as Code: Best Practices and Implementation." GitLab Documentation, 2024.
+- GitLab. "Documentation as Code: Bästa metoder och implementering." GitLab Documentation, 2024.
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
 - Atlassian. "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
 - NIST. "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.

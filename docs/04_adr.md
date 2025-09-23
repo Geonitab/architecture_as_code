@@ -74,11 +74,11 @@ Versionering hanteras genom Git-historik istället för inline-ändringar. Om et
 
 ![ADR Lifecycle](images/diagram_04_adr_lifecycle.png)
 
-*ADR-livscykeln illustrerar hur beslut utvecklas från initialt förslag genom review-processen till arkitektur som kod-implementation, monitoring och eventuell deprecering när nya lösningar behövs.*
+*ADR-livscykeln illustrerar hur beslut utvecklas från initialt förslag genom granskningsprocessen till arkitektur som kod-implementering, övervakning och eventuell avveckling när nya lösningar behövs.*
 
 ADR genomgår typiskt följande statusar:
 
-**Proposed**: Initialt förslag som undergår review och diskussion
+**Föreslagen**: Initialt förslag som genomgår granskning och diskussion
 **Accepted**: Godkänt beslut som ska implementeras
 **Deprecated**: Beslut som inte längre rekommenderas men kan finnas kvar i system
 **Superseded**: Ersatt av ett nyare ADR med referens till ersättaren
@@ -160,7 +160,7 @@ arkitektur som kod.
 - Extensive documentation och training
 ```
 
-## Verktyg och arkitektur som kod best practices för ADR
+## Verktyg och bästa metoder för ADR inom arkitektur som kod
 
 ### ADR-verktyg och integration
 
@@ -186,7 +186,7 @@ docs/
 
 ADR fungerar optimalt när integrerat i Git-baserade utvecklingsarbetsflöden:
 
-**Pull Request Reviews**: ADR inkluderas i code review-processen för arkitekturändringar
+**Kodgranskningar**: ADR inkluderas i kodgranskningsprocessen för arkitekturändringar
 **Branch Protection**: Kräver ADR för major architectural changes
 **Automation**: CI/CD pipelines kan validera att relevant ADR finns för significant changes
 
@@ -196,7 +196,7 @@ För att uppfylla svenska compliance-krav bör ADR följa specifika kvalitetssta
 
 **Språk**: ADR kan skrivas på svenska för interna stakeholders med engelska technical terms för verktygskompatibilitet
 **Spårbarhet**: Klar länkning mellan ADR och implementerad kod
-**Åtkomst**: Transparent access för auditors och compliance officers
+**Åtkomst**: Transparent tillgång för revisorer och efterlevnadsansvariga
 **Retention**: Långsiktig arkivering enligt organisatoriska policier
 
 ### Gransknings- och styrningsprocess
@@ -235,7 +235,7 @@ ADR-metodik utvecklas kontinuerligt med integration av nya verktyg och processer
 
 **AI-assisterade ADR**: Machine learning för att identifiera när nya ADR behövs baserat på code changes
 **Automated Decision Tracking**: Integration med architectural analysis verktyg
-**Cross-organizational ADR Sharing**: Standardiserade format för sharing av anonymized architectural patterns
+**Organisationsövergripande ADR-delning**: Standardiserade format för delning av anonymiserade arkitekturmönster
 
 För arkitektur som kod-sammanhang utvecklas verktyg för automatisk korrelation mellan ADR och driftsatt infrastruktur, vilket möjliggör realtidsvalidering av arkitektonisk efterlevnad.
 

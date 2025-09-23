@@ -10,9 +10,9 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **arkitektur som kod-automatisering:** Process där manuella uppgifter utförs automatiskt av datorsystem utan mänsklig intervention, vilket ökar effektivitet och minskar felrisk.
 
-**CI/CD (Continuous Integration/Continuous Deployment):** Utvecklingsmetodik som integrerar kodändringar kontinuerligt och automatiserar deployment-processen för snabbare och säkrare leveranser.
+**CI/CD (Continuous Integration/Continuous Deployment):** Utvecklingsmetodik som integrerar kodändringar kontinuerligt och automatiserar driftsättningsprocessen för snabbare och säkrare leveranser.
 
-**Cloud Computing:** Leverans av IT-tjänster som servrar, lagring och applikationer över internet med on-demand access och pay-per-use modeller.
+**Cloud Computing:** Leverans av IT-tjänster som servrar, lagring och applikationer över internet med åtkomst på begäran och betalning per användning.
 
 **Containers:** Lätt virtualiseringsteknik som paketerar applikationer med alla dependencies för portabel körning across olika miljöer och plattformar.
 
@@ -28,25 +28,25 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **JSON (JavaScript Object Notation):** Textbaserat dataformat för strukturerad informationsutbyte mellan system med human-readable syntax.
 
-**Kubernetes:** Open-source containerorkestreringsplattform för automatiserad deployment, scaling och hantering av containeriserade applikationer.
+**Kubernetes:** Öppen källkod containerorkestreringsplattform för automatiserad driftsättning, skalning och hantering av containeriserade applikationer.
 
 **Microservices:** Arkitekturell approach där applikationer byggs som små, oberoende tjänster som kommunicerar via väldefinierade API:er.
 
-**Monitoring:** Kontinuerlig övervakning av system för att upptäcka problem, optimera prestanda och säkerställa tillgänglighet.
+**Övervakning:** Kontinuerlig systemövervakning för att upptäcka problem, optimera prestanda och säkerställa tillgänglighet.
 
 **Orchestration:** Automatiserad koordination och hantering av komplexa arbetsflöden och system för att uppnå desired state.
 
-**Policy as Code:** Approach där säkerhets- och compliance-regler definieras som kod för automatiserad evaluering och enforcement.
+**Policy as Code:** Tillvägagångssätt där säkerhets- och efterlevnadsregler definieras som kod för automatiserad utvärdering och verkställande.
 
 **Terraform:** Infrastructure as Code (arkitektur som kod)-verktyg som använder deklarativ syntax för att definiera och hantera cloud infrastructure resources.
 
 **YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat som ofta används för konfigurationsfiler och Arkitektur som kod-definitioner.
 
-**Zero Trust:** Säkerhetsmodell som aldrig litar på och alltid verifierar användare och enheter innan access till resurser beviljas.
+**Zero Trust:** Säkerhetsmodell som aldrig litar på och alltid verifierar användare och enheter innan åtkomst till resurser beviljas.
 
-## Deployment och operationella koncept
+## Driftsättning och operationella koncept
 
-**Blue-Green Deployment:** Deploymentstrategi där två identiska produktionsmiljöer (blå och grön) används för att möjliggöra snabb rollback och minimal downtime.
+**Blå-grön driftsättning:** Driftsättningsstrategi där två identiska produktionsmiljöer (blå och grön) används för att möjliggöra snabb återställning och minimal stilleståndstid.
 
 **Canary Release:** Gradvis utrullningsstrategi där nya versioner först deployeras till en liten subset av användare för riskminimering och validering.
 
@@ -54,7 +54,7 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **Conway's Law:** Observation att organisationer designar system som speglar deras kommunikationsstrukturer.
 
-**Cross-functional Team:** Team som inkluderar medlemmar med olika färdigheter och roller som arbetar tillsammans mot gemensamma mål.
+**Tvärfunktionellt team:** Team som inkluderar medlemmar med olika färdigheter och roller som arbetar tillsammans mot gemensamma mål.
 
 **GitOps:** Operational framework som använder Git som enda källa för sanning för deklarativ infrastruktur och applikationer.
 
@@ -70,7 +70,7 @@ Denna ordlista innehåller definitioner av centrala termer som används genom bo
 
 **Carbon-Aware Computing:** Approach för att optimera infrastrukturanvändning baserat på kolintensitet och förnybara energikällor för minskad miljöpåverkan.
 
-**Immutable Infrastructure:** Infrastrukturparadigm där komponenter aldrig modifieras efter deployment utan ersätts helt när ändringar behövs.
+**Oföränderlig infrastruktur:** Infrastrukturparadigm där komponenter aldrig modifieras efter driftsättning utan ersätts helt när ändringar behövs.
 
 **State Drift:** Situation där den faktiska infrastrukturtillståndet avviker från den definierade önskade tillståndet i Infrastructure as Code-definitioner.
 
