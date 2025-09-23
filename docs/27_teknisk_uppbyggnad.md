@@ -1,4 +1,4 @@
-# Teknisk uppbyggnad för bokproduktion
+# Appendix B: Teknisk uppbyggnad för bokproduktion
 
 Detta kapitel beskriver den tekniska infrastrukturen och arbetsflödet som används för att skapa, bygga och publicera "Arkitektur som kod". Systemet exemplifierar praktisk tillämpning av Architecture as Code-principerna genom att använda kod för att definiera och automatisera hela bokproduktionsprocessen.
 
@@ -23,10 +23,10 @@ docs/
 ├── 03_versionhantering.md             # Git och versionskontroll
 ├── ...                                # Tekniska kapitel (04-22)
 ├── 23_slutsats.md                     # Avslutning
-├── 24_ordlista.md                     # Terminologi
+├── 24_framtida_utveckling.md          # Framtida utveckling och trender
 ├── 25_om_forfattarna.md               # Författarinformation
-├── 26_appendix_kodexempel.md          # Tekniska exempel
-└── 27_teknisk_uppbyggnad.md           # Detta kapitel
+├── 26_appendix_kodexempel.md          # Tekniska exempel (Appendix A)
+└── 27_teknisk_uppbyggnad.md           # Detta appendix (Appendix B)
 ```
 
 ### Markdown-struktur och semantik

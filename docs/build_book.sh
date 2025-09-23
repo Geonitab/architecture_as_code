@@ -112,8 +112,8 @@ CHAPTER_FILES=(
     "21_best_practices.md"
     "22_slutsats.md"
     "23_ordlista.md"
-    "24_om_forfattarna.md"
-    "25_framtida_utveckling.md"
+    "24_framtida_utveckling.md"
+    "25_om_forfattarna.md"
     "26_appendix_kodexempel.md"
     "27_teknisk_uppbyggnad.md"
 )

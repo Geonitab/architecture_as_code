@@ -1,6 +1,6 @@
 # Arkitektur som kod - Bokstruktur
 
-Detta dokument beskriver den logiska strukturen för boken "Arkitektur som kod" som är organiserad i 25 kapitel som bygger på varandra för att ge en komplett förståelse av Architecture as Code och Infrastructure as Code för svenska organisationer.
+Detta dokument beskriver den logiska strukturen för boken "Arkitektur som kod" som är organiserad i 27 kapitel som bygger på varandra för att ge en komplett förståelse av Architecture as Code och Infrastructure as Code för svenska organisationer.
 
 ## Kapitelstruktur
 
@@ -60,13 +60,21 @@ Detta dokument beskriver den logiska strukturen för boken "Arkitektur som kod" 
 | 20 | `20_framtida_trender.md` | Framtida trender inom Architecture as Code | Utvecklingstrender och teknologisk framtid |
 | 21 | `21_best_practices.md` | Best practices och lärda läxor | Sammanfattning av bästa praxis |
 
-### Del 8: Avslutning (Kapitel 22-24)
+### Del 8: Avslutning (Kapitel 22-25)
 
 | Kapitel | Fil | Titel | Beskrivning |
 |---------|-----|-------|-------------|
 | 22 | `22_slutsats.md` | Slutsats | Sammanfattande reflektioner |
 | 23 | `23_ordlista.md` | Ordlista | Ordlista och definitioner |
-| 24 | `24_om_forfattarna.md` | Om författarna | Information om författarna |
+| 24 | `24_framtida_utveckling.md` | Framtida utveckling och trender | Framtida utveckling inom området |
+| 25 | `25_om_forfattarna.md` | Om författarna | Information om författarna |
+
+### Appendix
+
+| Kapitel | Fil | Titel | Beskrivning |
+|---------|-----|-------|-------------|
+| A | `26_appendix_kodexempel.md` | Appendix A: Kodexempel | Tekniska implementationer |
+| B | `27_teknisk_uppbyggnad.md` | Appendix B: Teknisk uppbyggnad | Teknisk uppbyggnad för bokproduktion |
 
 | Kapitel | Fil | Titel | Beskrivning |
 |---------|-----|-------|-------------|
@@ -101,7 +109,7 @@ Detta dokument beskriver den logiska strukturen för boken "Arkitektur som kod" 
 | Kapitel | Fil | Titel | Beskrivning |
 |---------|-----|-------|-------------|
 | 23 | `23_slutsats.md` | Slutsats | Sammanfattning och framtidsperspektiv |
-| 24 | `24_ordlista.md` | Ordlista | Definitioner av viktiga termer |
+| 24 | `24_framtida_utveckling.md` | Framtida utveckling och trender | Framtida utveckling inom området |
 | 25 | `25_om_forfattarna.md` | Om författarna | Information om bokens författare |
 
 ## Diagram och bilder
@@ -134,7 +142,7 @@ Boken byggs automatiskt vid ändringar i `docs/` katalogen genom GitHub Actions.
 
 ## Kapitel navigation
 
-Kapitlen är numrerade 01-25 och organiserade för att:
+Kapitlen är numrerade 01-27 och organiserade för att:
 - **Bygga på varandra logiskt**: Varje kapitel förutsätter kunskap från tidigare kapitel
 - **Gruppera relaterade ämnen**: Liknande ämnen behandlas tillsammans
 - **Balansera teori och praktik**: Teoretiska grunder följs av praktiska implementationer

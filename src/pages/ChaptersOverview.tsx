@@ -174,17 +174,17 @@ const ChaptersOverview = () => {
     },
     { 
       id: "24", 
-      title: "Om författarna", 
-      area: "Referenser",
-      summary: "Information om bokens författare och deras bakgrund inom Infrastructure as Code.",
-      keyTopics: ["Author bios", "Professional background", "Expertise", "Contributions"]
-    },
-    { 
-      id: "25", 
       title: "Framtida utveckling och trender", 
       area: "Innovation",
       summary: "Utforskar framtida utvecklingstrender inom Architecture as Code och Infrastructure as Code.",
       keyTopics: ["Future trends", "Technology evolution", "AI/ML integration", "Sustainability"]
+    },
+    { 
+      id: "25", 
+      title: "Om författarna", 
+      area: "Referenser",
+      summary: "Information om bokens författare och deras bakgrund inom Infrastructure as Code.",
+      keyTopics: ["Author bios", "Professional background", "Expertise", "Contributions"]
     },
     { 
       id: "26", 
@@ -195,8 +195,8 @@ const ChaptersOverview = () => {
     },
     { 
       id: "27", 
-      title: "Teknisk uppbyggnad för bokproduktion", 
-      area: "Teknik",
+      title: "Appendix B: Teknisk uppbyggnad för bokproduktion", 
+      area: "Referenser",
       summary: "Beskrivning av den tekniska infrastrukturen som används för att skapa, bygga och publicera denna bok.",
       keyTopics: ["Markdown structure", "Pandoc conversion", "GitHub Actions", "Automation workflow"]
     }

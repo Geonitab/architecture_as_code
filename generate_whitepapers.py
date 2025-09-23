@@ -89,7 +89,7 @@ Boken täcker allt från grundläggande principer och verktyg till avancerade im
 säkerhetsaspekter och organisatoriska förändringar som krävs för framgångsrik IaC-adoption.
         '''.strip(),
         'target_audience': 'IT-arkitekter, DevOps-team, utvecklare och beslutsfattare inom svenska organisationer',
-        'chapters_count': 26
+        'chapters_count': 27
     }
 
 def get_chapter_mapping():
@@ -97,30 +97,31 @@ def get_chapter_mapping():
     return {
         '01_inledning.md': 'Inledning',
         '02_grundlaggande_principer.md': 'Kapitel 1',
-        '03_versionhantering.md': 'Kapitel 2', 
+        '03_versionhantering.md': 'Kapitel 2',
         '04_adr.md': 'Kapitel 3',
-        '05_automatisering_cicd.md': 'Kapitel 4',
-        '06_devops_cicd.md': 'Kapitel 5',
-        '07_molnarkitektur.md': 'Kapitel 6',
-        '08_containerisering.md': 'Kapitel 7',
-        '09_microservices.md': 'Kapitel 8',
-        '10_sakerhet.md': 'Kapitel 9',
-        '11_policy_sakerhet.md': 'Kapitel 10',
-        '12_compliance.md': 'Kapitel 11',
-        '13_teststrategier.md': 'Kapitel 12',
-        '14_praktisk_implementation.md': 'Kapitel 13',
-        '15_kostnadsoptimering.md': 'Kapitel 14',
-        '16_migration.md': 'Kapitel 15',
-        '17_organisatorisk_forandring.md': 'Kapitel 16',
-        '18_team_struktur.md': 'Kapitel 17',
-        '19_digitalisering.md': 'Kapitel 18',
-        '20_lovable_mockups.md': 'Kapitel 19',
-        '21_framtida_trender.md': 'Kapitel 20',
-        '22_best_practices.md': 'Kapitel 21',
-        '23_slutsats.md': 'Slutsats',
-        '24_ordlista.md': 'Ordlista',
+        '05_automatisering_devops_cicd.md': 'Kapitel 4',
+        '06_molnarkitektur.md': 'Kapitel 5',
+        '07_containerisering.md': 'Kapitel 6',
+        '08_microservices.md': 'Kapitel 7',
+        '09_sakerhet.md': 'Kapitel 8',
+        '10_policy_sakerhet.md': 'Kapitel 9',
+        '11_compliance.md': 'Kapitel 10',
+        '12_teststrategier.md': 'Kapitel 11',
+        '13_praktisk_implementation.md': 'Kapitel 12',
+        '14_kostnadsoptimering.md': 'Kapitel 13',
+        '15_migration.md': 'Kapitel 14',
+        '16_organisatorisk_forandring.md': 'Kapitel 15',
+        '17_team_struktur.md': 'Kapitel 16',
+        '18_digitalisering.md': 'Kapitel 17',
+        '19_lovable_mockups.md': 'Kapitel 18',
+        '20_framtida_trender.md': 'Kapitel 19',
+        '21_best_practices.md': 'Kapitel 20',
+        '22_slutsats.md': 'Kapitel 21',
+        '23_ordlista.md': 'Ordlista',
+        '24_framtida_utveckling.md': 'Kapitel 22',
         '25_om_forfattarna.md': 'Om författarna',
-        '26_appendix_kodexempel.md': 'Appendix A'
+        '26_appendix_kodexempel.md': 'Appendix A',
+        '27_teknisk_uppbyggnad.md': 'Appendix B'
     }
 
 def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
