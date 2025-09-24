@@ -276,14 +276,17 @@ Detta kapitel ger läsaren de verktyg och kunskaper som behövs för att framgå
           {/* Navigation */}
           <div className="flex justify-between items-center">
             <div>
-              {goToPreviousChapter() && (
-                <Button variant="outline" className="gap-2" asChild>
-                  <Link to={goToPreviousChapter()!}>
-                    <ChevronLeft className="h-4 w-4" />
-                    Föregående kapitel
-                  </Link>
-                </Button>
-              )}
+              {(() => {
+                const prevChapterPath = goToPreviousChapter();
+                return prevChapterPath ? (
+                  <Button variant="outline" className="gap-2" asChild>
+                    <Link to={prevChapterPath}>
+                      <ChevronLeft className="h-4 w-4" />
+                      Föregående kapitel
+                    </Link>
+                  </Button>
+                ) : null;
+              })()}
             </div>
             
             <div className="text-center">
@@ -299,14 +302,17 @@ Detta kapitel ger läsaren de verktyg och kunskaper som behövs för att framgå
             </div>
             
             <div>
-              {goToNextChapter() && (
-                <Button variant="outline" className="gap-2" asChild>
-                  <Link to={goToNextChapter()!}>
-                    Nästa kapitel
-                    <ChevronRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              )}
+              {(() => {
+                const nextChapterPath = goToNextChapter();
+                return nextChapterPath ? (
+                  <Button variant="outline" className="gap-2" asChild>
+                    <Link to={nextChapterPath}>
+                      Nästa kapitel
+                      <ChevronRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                ) : null;
+              })()}
             </div>
           </div>
 
