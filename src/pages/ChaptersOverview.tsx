@@ -289,12 +289,20 @@ const ChaptersOverview = () => {
                         </CardDescription>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="gap-2" asChild>
-                      <Link to={`/chapter/${chapter.id}`}>
-                        <Eye className="h-4 w-4" />
-                        Läs kapitel
-                      </Link>
-                    </Button>
+                    <div className="flex gap-2">
+                      <Button variant="outline" size="sm" className="gap-2" asChild>
+                        <Link to={`/chapter/${chapter.id}`}>
+                          <Eye className="h-4 w-4" />
+                          Läs kapitel
+                        </Link>
+                      </Button>
+                      <Button variant="secondary" size="sm" className="gap-2" asChild>
+                        <Link to="/preview">
+                          <BookOpen className="h-4 w-4" />
+                          Redigera
+                        </Link>
+                      </Button>
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent>
