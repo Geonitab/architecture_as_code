@@ -2,15 +2,19 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, BookOpen, Home, Eye, Loader2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, BookOpen, Home, Eye, Loader2, Edit } from "lucide-react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import MarkdownEditor from "@/components/MarkdownEditor";
+import { useToast } from "@/hooks/use-toast";
 
 const BookPreview = () => {
   const [currentChapter, setCurrentChapter] = useState(0);
   const [markdownContent, setMarkdownContent] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const { toast } = useToast();
 
   const chapters = [
     { id: "01", title: "Inledning", area: "Grundläggande konceptens" },
@@ -93,6 +97,33 @@ const BookPreview = () => {
     }
   };
 
+  const handleEditContent = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveContent = async (newContent: string) => {
+    try {
+      // For demo purposes, we'll just update the local state
+      // In a real implementation, you'd save to your backend/file system
+      setMarkdownContent(newContent);
+      setIsEditing(false);
+      toast({
+        title: "Sparat",
+        description: "Kapitlet har sparats framgångsrikt.",
+      });
+    } catch (err) {
+      toast({
+        title: "Fel",
+        description: "Kunde inte spara kapitlet.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card/50 to-muted/30">
       {/* Header */}
@@ -163,6 +194,15 @@ const BookPreview = () => {
                     </div>
                     <CardTitle className="text-2xl">{currentChapterData.title}</CardTitle>
                   </div>
+                  <Button
+                    onClick={handleEditContent}
+                    variant="outline"
+                    size="sm"
+                    className="gap-2"
+                  >
+                    <Edit className="h-4 w-4" />
+                    Redigera
+                  </Button>
                 </div>
               </CardHeader>
               
@@ -246,6 +286,15 @@ const BookPreview = () => {
           </div>
         </div>
       </div>
+      
+      {isEditing && (
+        <MarkdownEditor
+          content={markdownContent}
+          title={currentChapterData.title}
+          onSave={handleSaveContent}
+          onCancel={handleCancelEdit}
+        />
+      )}
     </div>
   );
 };
