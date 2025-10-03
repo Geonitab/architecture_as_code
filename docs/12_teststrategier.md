@@ -24,6 +24,604 @@ Unit tests för Arkitektur som kod bör validera resource configurations, variab
 
 Mock testing strategies för cloud resources möjliggör testing utan faktiska cloud costs, vilket är essentiellt för frequent testing cycles. Verktyg som LocalStack och cloud provider simulators kan simulate cloud services locally för comprehensive testing utan infrastructure provisioning costs.
 
+## Testhantering med Vitest för arkitektur som kod
+
+Vitest är ett modernt testramverk byggt för Vite-ekosystemet som erbjuder snabb och effektiv testning av JavaScript/TypeScript-kod. För arkitektur som kod-projekt som använder Infrastructure as Code med moderna verktyg är Vitest särskilt relevant för att testa konfigurationsgeneratorer, validation scripts och automation verktyg som ofta skrivs i TypeScript eller JavaScript.
+
+### Varför Vitest är relevant för arkitektur som kod
+
+Många moderna Infrastructure as Code workflows inkluderar TypeScript/JavaScript-komponenter för att generera, validera eller transformera infrastrukturkonfigurationer. Vitest möjliggör snabb unit testing av dessa komponenter med förstklassig TypeScript-support, vilket är kritiskt för att säkerställa korrekt konfigurationsgenerering innan deployment.
+
+Vitest's snabba execution och watch mode möjliggör tight development feedback loops när man utvecklar infrastructure configuration generators eller policy validation scripts. Detta är särskilt värdefullt för arkitektur som kod-projekt där konfigurationsfel kan leda till costly infrastructure mistakes.
+
+Integration med Vite build tooling innebär att samma utvecklingsmiljö kan användas för både application code och infrastructure-relaterad kod, vilket reducerar context switching och förbättrar developer experience för team som arbetar med both application och infrastructure code.
+
+### Konfiguration av Vitest för Infrastructure as Code-projekt
+
+För att integrera Vitest i ett arkitektur som kod-projekt behöver vi först installera nödvändiga dependencies och konfigurera test environment:
+
+```bash
+# Installera Vitest och relaterade dependencies
+npm install -D vitest @vitest/ui
+npm install -D @types/node  # För Node.js API:er
+
+# För coverage rapportering
+npm install -D @vitest/coverage-v8
+```
+
+Skapa en `vitest.config.ts` fil i projekt root:
+
+```typescript
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+import path from 'path';
+
+export default defineConfig({
+  test: {
+    // Använd globals för att undvika imports i varje testfil
+    globals: true,
+    
+    // Test environment (node för infrastructure tooling)
+    environment: 'node',
+    
+    // Coverage konfiguration
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        '**/*.config.ts',
+        '**/types/**',
+      ],
+      // Kräv minst 80% coverage för infrastructure code
+      lines: 80,
+      functions: 80,
+      branches: 80,
+      statements: 80,
+    },
+    
+    // Test timeout för infrastructure operations
+    testTimeout: 30000,
+    
+    // Inkludera test filer
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}'],
+    
+    // Exclude patterns
+    exclude: [
+      'node_modules',
+      'dist',
+      '.terraform',
+      '**/*.d.ts',
+    ],
+  },
+  
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@infra': path.resolve(__dirname, './infrastructure'),
+    },
+  },
+});
+```
+
+### Praktiska exempel för Infrastructure as Code testing
+
+#### Exempel 1: Testa Terraform Configuration Generator
+
+```typescript
+// src/generators/terraform-config.ts
+export interface TerraformConfig {
+  provider: string;
+  region: string;
+  environment: string;
+  resources: ResourceConfig[];
+}
+
+export interface ResourceConfig {
+  type: string;
+  name: string;
+  properties: Record<string, any>;
+}
+
+export class TerraformConfigGenerator {
+  generateVPCConfig(
+    environment: string,
+    region: string = 'eu-north-1'
+  ): TerraformConfig {
+    // Validera svenska regioner för GDPR compliance
+    const swedishRegions = ['eu-north-1', 'eu-west-1'];
+    if (!swedishRegions.includes(region)) {
+      throw new Error('Region måste vara inom EU för GDPR compliance');
+    }
+
+    return {
+      provider: 'aws',
+      region,
+      environment,
+      resources: [
+        {
+          type: 'aws_vpc',
+          name: `vpc-${environment}`,
+          properties: {
+            cidr_block: '10.0.0.0/16',
+            enable_dns_hostnames: true,
+            enable_dns_support: true,
+            tags: {
+              Name: `vpc-${environment}`,
+              Environment: environment,
+              ManagedBy: 'Terraform',
+              GdprCompliant: 'true',
+              DataResidency: 'Sweden',
+            },
+          },
+        },
+      ],
+    };
+  }
+
+  generateRDSConfig(
+    environment: string,
+    instanceClass: string = 'db.t3.micro',
+    encrypted: boolean = true
+  ): ResourceConfig {
+    // Säkerställ encryption för production
+    if (environment === 'production' && !encrypted) {
+      throw new Error('Production databaser måste ha encryption aktiverad');
+    }
+
+    return {
+      type: 'aws_db_instance',
+      name: `rds-${environment}`,
+      properties: {
+        allocated_storage: environment === 'production' ? 100 : 20,
+        engine: 'postgres',
+        engine_version: '14.7',
+        instance_class: instanceClass,
+        storage_encrypted: encrypted,
+        backup_retention_period: environment === 'production' ? 30 : 7,
+        multi_az: environment === 'production',
+        tags: {
+          Environment: environment,
+          GdprCompliant: 'true',
+          EncryptionEnabled: encrypted.toString(),
+        },
+      },
+    };
+  }
+}
+```
+
+```typescript
+// src/generators/terraform-config.test.ts
+import { describe, it, expect } from 'vitest';
+import { TerraformConfigGenerator } from './terraform-config';
+
+describe('TerraformConfigGenerator', () => {
+  const generator = new TerraformConfigGenerator();
+
+  describe('generateVPCConfig', () => {
+    it('ska generera VPC config för svenska regioner', () => {
+      const config = generator.generateVPCConfig('production', 'eu-north-1');
+      
+      expect(config.provider).toBe('aws');
+      expect(config.region).toBe('eu-north-1');
+      expect(config.environment).toBe('production');
+      expect(config.resources).toHaveLength(1);
+    });
+
+    it('ska inkludera GDPR compliance tags', () => {
+      const config = generator.generateVPCConfig('production');
+      const vpc = config.resources[0];
+      
+      expect(vpc.properties.tags).toMatchObject({
+        GdprCompliant: 'true',
+        DataResidency: 'Sweden',
+      });
+    });
+
+    it('ska kasta fel för icke-EU regioner', () => {
+      expect(() => {
+        generator.generateVPCConfig('production', 'us-east-1');
+      }).toThrow('Region måste vara inom EU för GDPR compliance');
+    });
+
+    it('ska aktivera DNS support och hostnames', () => {
+      const config = generator.generateVPCConfig('development');
+      const vpc = config.resources[0];
+      
+      expect(vpc.properties.enable_dns_hostnames).toBe(true);
+      expect(vpc.properties.enable_dns_support).toBe(true);
+    });
+  });
+
+  describe('generateRDSConfig', () => {
+    it('ska kräva encryption för production miljöer', () => {
+      expect(() => {
+        generator.generateRDSConfig('production', 'db.t3.micro', false);
+      }).toThrow('Production databaser måste ha encryption aktiverad');
+    });
+
+    it('ska generera korrekt RDS config för production', () => {
+      const config = generator.generateRDSConfig('production');
+      
+      expect(config.type).toBe('aws_db_instance');
+      expect(config.properties.storage_encrypted).toBe(true);
+      expect(config.properties.multi_az).toBe(true);
+      expect(config.properties.backup_retention_period).toBe(30);
+      expect(config.properties.allocated_storage).toBe(100);
+    });
+
+    it('ska använda lägre resurser för development miljö', () => {
+      const config = generator.generateRDSConfig('development');
+      
+      expect(config.properties.allocated_storage).toBe(20);
+      expect(config.properties.backup_retention_period).toBe(7);
+      expect(config.properties.multi_az).toBeUndefined();
+    });
+
+    it('ska inkludera GDPR compliance tags', () => {
+      const config = generator.generateRDSConfig('production');
+      
+      expect(config.properties.tags).toMatchObject({
+        GdprCompliant: 'true',
+        EncryptionEnabled: 'true',
+      });
+    });
+  });
+});
+```
+
+#### Exempel 2: Testa Infrastructure Validation Scripts
+
+```typescript
+// src/validators/infrastructure-validator.ts
+export interface ValidationResult {
+  valid: boolean;
+  errors: string[];
+  warnings: string[];
+}
+
+export class InfrastructureValidator {
+  validateResourceTags(
+    tags: Record<string, string>,
+    requiredTags: string[] = ['Environment', 'ManagedBy']
+  ): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    // Kontrollera required tags
+    for (const tag of requiredTags) {
+      if (!tags[tag]) {
+        errors.push(`Saknar required tag: ${tag}`);
+      }
+    }
+
+    // Validera GDPR compliance för svenska organisationer
+    if (tags['DataClassification']) {
+      const validClassifications = ['public', 'internal', 'confidential', 'personal'];
+      if (!validClassifications.includes(tags['DataClassification'])) {
+        errors.push(
+          `Ogiltig DataClassification: ${tags['DataClassification']}`
+        );
+      }
+    }
+
+    // Warn om GdprCompliant tag saknas för känslig data
+    if (tags['DataClassification'] === 'personal' && !tags['GdprCompliant']) {
+      warnings.push('GdprCompliant tag rekommenderas för personal data');
+    }
+
+    return {
+      valid: errors.length === 0,
+      errors,
+      warnings,
+    };
+  }
+
+  validateSecurityGroup(
+    rules: Array<{ port: number; cidr: string }>
+  ): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    for (const rule of rules) {
+      // Kontrollera öppna portar
+      if (rule.cidr === '0.0.0.0/0') {
+        if ([22, 3389, 3306, 5432].includes(rule.port)) {
+          errors.push(
+            `Port ${rule.port} ska inte vara öppen mot internet (0.0.0.0/0)`
+          );
+        }
+      }
+
+      // Varning för vanliga portar
+      if (rule.cidr === '0.0.0.0/0' && [80, 443].includes(rule.port)) {
+        warnings.push(
+          `Port ${rule.port} är öppen mot internet - verifiera att detta är avsiktligt`
+        );
+      }
+    }
+
+    return {
+      valid: errors.length === 0,
+      errors,
+      warnings,
+    };
+  }
+}
+```
+
+```typescript
+// src/validators/infrastructure-validator.test.ts
+import { describe, it, expect } from 'vitest';
+import { InfrastructureValidator } from './infrastructure-validator';
+
+describe('InfrastructureValidator', () => {
+  const validator = new InfrastructureValidator();
+
+  describe('validateResourceTags', () => {
+    it('ska validera att required tags finns', () => {
+      const tags = {
+        Environment: 'production',
+        ManagedBy: 'Terraform',
+      };
+
+      const result = validator.validateResourceTags(tags);
+      
+      expect(result.valid).toBe(true);
+      expect(result.errors).toHaveLength(0);
+    });
+
+    it('ska rapportera fel när required tags saknas', () => {
+      const tags = {
+        Environment: 'production',
+      };
+
+      const result = validator.validateResourceTags(tags);
+      
+      expect(result.valid).toBe(false);
+      expect(result.errors).toContain('Saknar required tag: ManagedBy');
+    });
+
+    it('ska validera DataClassification värden', () => {
+      const tags = {
+        Environment: 'production',
+        ManagedBy: 'Terraform',
+        DataClassification: 'invalid-value',
+      };
+
+      const result = validator.validateResourceTags(tags);
+      
+      expect(result.valid).toBe(false);
+      expect(result.errors[0]).toContain('Ogiltig DataClassification');
+    });
+
+    it('ska varna om GdprCompliant tag saknas för personal data', () => {
+      const tags = {
+        Environment: 'production',
+        ManagedBy: 'Terraform',
+        DataClassification: 'personal',
+      };
+
+      const result = validator.validateResourceTags(tags);
+      
+      expect(result.warnings).toContain(
+        'GdprCompliant tag rekommenderas för personal data'
+      );
+    });
+
+    it('ska acceptera giltiga DataClassification värden', () => {
+      const validClassifications = ['public', 'internal', 'confidential', 'personal'];
+      
+      for (const classification of validClassifications) {
+        const tags = {
+          Environment: 'production',
+          ManagedBy: 'Terraform',
+          DataClassification: classification,
+        };
+
+        const result = validator.validateResourceTags(tags);
+        expect(result.valid).toBe(true);
+      }
+    });
+  });
+
+  describe('validateSecurityGroup', () => {
+    it('ska blockera SSH öppet mot internet', () => {
+      const rules = [{ port: 22, cidr: '0.0.0.0/0' }];
+      
+      const result = validator.validateSecurityGroup(rules);
+      
+      expect(result.valid).toBe(false);
+      expect(result.errors[0]).toContain('Port 22 ska inte vara öppen');
+    });
+
+    it('ska blockera databas portar öppna mot internet', () => {
+      const rules = [
+        { port: 3306, cidr: '0.0.0.0/0' },  // MySQL
+        { port: 5432, cidr: '0.0.0.0/0' },  // PostgreSQL
+      ];
+      
+      const result = validator.validateSecurityGroup(rules);
+      
+      expect(result.valid).toBe(false);
+      expect(result.errors).toHaveLength(2);
+    });
+
+    it('ska varna för HTTP/HTTPS öppet mot internet', () => {
+      const rules = [
+        { port: 80, cidr: '0.0.0.0/0' },
+        { port: 443, cidr: '0.0.0.0/0' },
+      ];
+      
+      const result = validator.validateSecurityGroup(rules);
+      
+      expect(result.valid).toBe(true);
+      expect(result.warnings).toHaveLength(2);
+    });
+
+    it('ska acceptera restricted CIDR blocks', () => {
+      const rules = [
+        { port: 22, cidr: '10.0.0.0/8' },
+        { port: 3306, cidr: '192.168.1.0/24' },
+      ];
+      
+      const result = validator.validateSecurityGroup(rules);
+      
+      expect(result.valid).toBe(true);
+      expect(result.errors).toHaveLength(0);
+    });
+  });
+});
+```
+
+### Integration i CI/CD Pipeline
+
+Vitest kan integreras i CI/CD pipelines för automated testing av infrastructure code:
+
+```yaml
+# .github/workflows/infrastructure-validation.yml
+name: Infrastructure Code Validation
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'infrastructure/**'
+      - 'tests/**'
+  push:
+    branches: [main, develop]
+
+jobs:
+  vitest-validation:
+    runs-on: ubuntu-latest
+    name: Vitest Infrastructure Tests
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Run Vitest Tests
+        run: npm run test:vitest
+        
+      - name: Generate Coverage Report
+        run: npm run test:coverage
+        
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/coverage-final.json
+          flags: infrastructure-code
+          
+      - name: Comment PR with Coverage
+        if: github.event_name == 'pull_request'
+        uses: romeovs/lcov-reporter-action@v0.3.1
+        with:
+          lcov-file: ./coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+Lägg till test scripts i `package.json`:
+
+```json
+{
+  "scripts": {
+    "test:vitest": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
+  }
+}
+```
+
+### Rekommendationer för testorganisering
+
+**Filstruktur för Infrastructure Code Tests:**
+
+```
+project/
+├── src/
+│   ├── generators/
+│   │   ├── terraform-config.ts
+│   │   └── terraform-config.test.ts
+│   ├── validators/
+│   │   ├── infrastructure-validator.ts
+│   │   └── infrastructure-validator.test.ts
+│   └── utils/
+│       ├── compliance-checker.ts
+│       └── compliance-checker.test.ts
+├── tests/
+│   ├── integration/
+│   │   └── end-to-end.test.ts
+│   └── fixtures/
+│       └── sample-configs.ts
+├── vitest.config.ts
+└── package.json
+```
+
+**Best Practices för Infrastructure Testing med Vitest:**
+
+1. **Snabba unit tests:** Håll unit tests snabba (<100ms per test) för att möjliggöra effektiv watch mode under development.
+
+2. **Isolerade tester:** Varje test ska vara oberoende och kunna köras i valfri ordning utan side effects.
+
+3. **Beskrivande test namn:** Använd tydliga test beskrivningar som dokumenterar expected behavior: `'ska kasta fel för icke-EU regioner'`.
+
+4. **Test fixtures:** Använd shared test fixtures för common infrastructure configurations, men var försiktig med mutable state.
+
+5. **Coverage mål:** Sikta på minst 80% code coverage för infrastructure configuration och validation code, men fokusera på meaningful tests snarare än coverage metrics.
+
+6. **Mock externa beroenden:** Använd Vitest's mocking capabilities för att mocka cloud provider SDKs och external APIs:
+
+```typescript
+import { vi } from 'vitest';
+import * as AWS from 'aws-sdk';
+
+vi.mock('aws-sdk', () => ({
+  EC2: vi.fn(() => ({
+    describeInstances: vi.fn().mockResolvedValue({
+      Reservations: [],
+    }),
+  })),
+}));
+```
+
+7. **Snapshot testing:** Använd snapshot tests för att validera generated configuration files:
+
+```typescript
+it('ska generera korrekt terraform config', () => {
+  const config = generator.generateFullConfig('production');
+  expect(config).toMatchSnapshot();
+});
+```
+
+### Automation och Watch Mode
+
+En av Vitest's största fördelar är watch mode som möjliggör continuous testing under development:
+
+```bash
+# Starta watch mode för automated re-testing
+npm run test:watch
+
+# Kör endast relaterade tester när filer ändras
+npm run test:watch -- --changed
+
+# Kör tests med UI för interaktiv debugging
+npm run test:ui
+```
+
+Detta möjliggör tight feedback loops där infrastructure code changes omedelbart valideras, vilket reducerar tiden mellan code change och feedback från seconds till milliseconds.
+
+För svenska organisationer med strikta compliance krav kan automated testing med Vitest säkerställa att infrastructure configurations konsekvent uppfyller GDPR requirements, security policies och organizational standards innan deployment.
+
 ## Integrationstesting och miljövalidering
 
 Integration testing för Infrastructure as Code verifierar att different infrastructure components fungerar tillsammans korrekt och att deployed infrastruktur möter performance och security requirements. Detta kräver temporary test environments som closely mirror production configurations.
@@ -736,3 +1334,4 @@ Investment i robust Arkitektur som kod testing frameworks pays off genom reduced
 - Kubernetes. "Testing Infrastructure och Applications." Kubernetes Documentation, 2023.
 - NIST. "Security Testing for Cloud Infrastructure." NIST Cybersecurity Framework, 2023.
 - CSA. "Cloud Security Testing Guidelines." Cloud Security Alliance, 2023.
+- Vitest. "Next Generation Testing Framework." Vitest Documentation, 2024.
