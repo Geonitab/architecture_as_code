@@ -26,8 +26,8 @@ def pytest_addoption(parser):
     parser.addoption(
         "--language",
         action="store",
-        default="english",  # Changed from "svenska" to "english" as default
-        help="Language to test: english (Swedish files have been removed)"
+        default="english",
+        help="Language to test (default: english)"
     )
 
 @pytest.fixture(scope="session")
@@ -38,11 +38,8 @@ def language(request):
 @pytest.fixture(scope="session")
 def requirements_config(language):
     """Load book requirements configuration based on language."""
-    # Note: Swedish files have been replaced with English content
-    # All files now contain English, so we use requirements_en.yaml
     requirements_file = TESTS_DIR / "requirements_en.yaml"
     if not requirements_file.exists():
-        # Fallback to requirements.yaml if requirements_en.yaml doesn't exist
         requirements_file = TESTS_DIR / "requirements.yaml"
     with open(requirements_file, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
@@ -54,7 +51,6 @@ def chapter_files(docs_directory, language):
     all_md_files = list(docs_directory.glob("*.md"))
     
     # List of non-chapter files to exclude
-    # Note: _en versions have been removed, all files now contain English
     non_chapter_files = {
         "README.md",
         "TERMINOLOGI_JUSTERING.md",
@@ -65,7 +61,6 @@ def chapter_files(docs_directory, language):
         "EPUB_VALIDATION.md"
     }
     
-    # All files are now in English (Swedish content replaced)
     # Filter out non-chapter files
     chapter_files = [f for f in all_md_files if f.name not in non_chapter_files]
     
@@ -98,7 +93,7 @@ This is the first section with sufficient content to meet minimum requirements. 
 
 This is the second section that provides additional depth and ensures we meet the minimum subsection requirements.
 
-Källor:
+Sources:
 - Test Reference 1
 - Test Reference 2
 """

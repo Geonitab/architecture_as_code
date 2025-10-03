@@ -120,18 +120,23 @@ class TestConsistency:
         for chapter_file in chapter_files:
             content = chapter_file.read_text(encoding='utf-8')
             
-            # Find sources section
+            # Remove code blocks to avoid false positives
+            content_no_code = re.sub(r'```.*?```', '', content, flags=re.DOTALL)
+            content_no_code = re.sub(r'`[^`]+`', '', content_no_code)
+            
+            # Find sources section (accept both "Sources:" and "Källor:")
+            # Must be at the start of a line
             sources_match = re.search(
-                r'(Källor?:.*?)(?=\n\n|\n#|\Z)', 
-                content, 
-                re.IGNORECASE | re.DOTALL
+                r'^((?:Sources?|Källor?):.*?)(?=\n\n|\n#|\Z)', 
+                content_no_code, 
+                re.IGNORECASE | re.DOTALL | re.MULTILINE
             )
             
             if sources_match:
                 sources_text = sources_match.group(1)
                 
-                # Check format: should be "Källor:" followed by list items
-                if not re.search(r'Källor?:\s*\n\s*-', sources_text, re.IGNORECASE):
+                # Check format: should be "Sources:" or "Källor:" followed by list items
+                if not re.search(r'(?:Sources?|Källor?):\s*\n\s*-', sources_text, re.IGNORECASE):
                     sources_issues.append({
                         "file": chapter_file.name,
                         "issue": "Sources section should use bullet list format",
@@ -144,14 +149,7 @@ class TestConsistency:
         """Test that content is consistently in the expected language."""
         language = requirements_config["book"]["language"]
         
-        if language == "svenska":
-            # Common English words that shouldn't appear in Swedish text
-            wrong_language_indicators = [
-                r'\bthe\b', r'\band\b', r'\bor\b', r'\bwith\b', r'\bfor\b',
-                r'\bin\b', r'\bon\b', r'\bat\b', r'\bby\b', r'\bfrom\b'
-            ]
-            issue_prefix = "Possible English text detected"
-        elif language == "english":
+        if language == "english":
             # Common Swedish words that shouldn't appear in English text
             wrong_language_indicators = [
                 r'\boch\b', r'\batt\b', r'\bför\b', r'\bsom\b', r'\bmed\b',
@@ -194,11 +192,9 @@ class TestConsistency:
     
     def test_consistent_terminology(self, chapter_files):
         """Test for consistent use of technical terminology."""
-        # Define preferred Swedish terminology
+        # Define preferred terminology
         terminology_preferences = {
             r'\bInfrastructure as Code\b': 'Infrastructure as Code',  # Keep English
-            r'\binfrastruktur som kod\b': 'Infrastructure as Code',  # Standardize
-            r'\barkitektur som kod\b': 'Architecture as Code',      # Standardize
             r'\bCI/CD\b': 'CI/CD',                                   # Keep abbreviation
         }
         

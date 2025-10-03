@@ -1,8 +1,8 @@
 ---
-# Content requirements specification for "Arkitektur som Kod" book
+# Content requirements specification for "Architecture as Code" book
 book:
-  title: "Arkitektur som kod"
-  language: "svenska"
+  title: "Architecture as Code"
+  language: "english"
   total_chapters: 27
   
   # Required chapter structure
@@ -156,13 +156,13 @@ structure:
   required_sections:
     - name: "title"
       pattern: "^# .+"
-      description: "H1 huvudrubrik"
+      description: "H1 heading"
     - name: "diagram_reference"
       pattern: "!\\[.*\\]\\(images/diagram_.*\\.png\\)"
       description: "Mermaid diagram reference"
     - name: "sources"
-      pattern: "(?i)källor?:"
-      description: "Källor/referenser sektion"
+      pattern: "(?i)(?:sources?|källor?):"
+      description: "Sources/references section"
       
   minimum_content_length: 500  # characters excluding whitespace
   minimum_word_count: 2000     # words excluding formatting and code blocks - reduced for practical book with code examples
@@ -180,7 +180,6 @@ quality:
   consistency:
     header_hierarchy: ["h1", "h2", "h3", "h4"]
     consistent_terminology: true
-    swedish_language: true
     
   technical_accuracy:
     validate_code_blocks: true
