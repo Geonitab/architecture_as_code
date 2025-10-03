@@ -4,29 +4,29 @@
 
 *Migration from Traditional Infrastructure to Infrastructure as Code (Architecture as Code) requires systematisk planering, stegvis Architecture as Code-implementation and kontinuerlig validation. Diagram shows The Structureerade processen from assessment to fullständig Architecture as Code-adoption.*
 
-## Övergripande Description
+## Overall Description
 
-Migration from traditionell, manuellt konfigurerad infrastructure to Infrastructure as Code representerar a of the mest kritiska transformationerna for moderna IT-organisationer. This process requires not endast technical omStructureering without också organisatorisk change and cultural anpassning to kodbaserade arbetssätt.
+Migration from traditionell, manuellt konfigurerad infrastructure to Infrastructure as Code represents a of the mest kritiska transformationerna for modern IT-organisationer. This process requires not endast technical omStructureering without också organisatorisk change and cultural anpassning to code-based arbetssätt.
 
-Svenska organisationer står infor unika migreringsChallenges through legacy-systems as utvecklats over decennier, regulatoriska krav as begränsar forändringstakt, and behovet of to balansera innovation with operational stability. Successful migration requires comprehensive planning as minimizes risker simultaneously as The enables snabb value realization.
+Swedish organizations face unika migreringsChallenges through legacy-systems as utvecklats over decennier, regulatoriska requirements as begränsar forändringstakt, and need of to balansera innovation with operational stability. Successful migration requires comprehensive planning as minimizes risker simultaneously as The enables snabb value realization.
 
 Modern migrationsstrategier must accommodera hybrid scenarios where legacy infrastructure coexisterar with Architecture as Code-managed resources under extended transition periods. This hybrid approach enables gradual migration as reducerar business risk simultaneously as the enables imwithiate benefits from Architecture as Code adoption.
 
-Cloud-native migration pathways erbjuder opportuniteter to modernisera architecture simultaneously as infrastructure management kodifieras. Svenska foretag can leverage This transformation to implementera sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
+Cloud-native migration pathways erbjuder opportuniteter to modernisera architecture simultaneously as infrastructure management are codified. Svenska foretag can leverage This transformation to implementera sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
 
 ## Assessment and planning faser
 
-Comprehensive infrastructure assessment utgör foundationen for successful Architecture as Code migration. This includes inventory of existing resources, dependency mapping, risk assessment and cost-benefit analysis as informerar migration strategy and timeline planning.
+Comprehensive infrastructure assessment forms foundationen for successful Architecture as Code migration. This includes inventory of existing resources, dependency mapping, risk assessment and cost-benefit analysis as informerar migration strategy and timeline planning.
 
 Discovery automation verktyg that AWS Application Discovery Service, Azure Migrate and Google Cloud migration tools can accelerate assessment processen through automated resource inventory and dependency detection. These verktyg genererar data as can inform Architecture as Code template generation and migration prioritization.
 
-Risk assessment must identifiera critical systems, single points of failure and compliance dependencies as påverkar migration approach. Svenska financial institutions and healthcare organizations must särskilt consider regulatory implications and downtime restrictions as påverkar migration windows.
+Risk assessment must identifiera critical systems, single points of failure and compliance dependencies as affect migration approach. Svenska financial institutions and healthcare organizations must particularly consider regulatory implications and downtime restrictions as affect migration windows.
 
 Migration wave planning balancerar technical dependencies with business priorities to minimize risk and maximize value realization. Pilot projects with non-critical systems enables team learning and process refinement innan critical systems migration påbörjas.
 
 ## Lift-and-shift vs re-architecting
 
-Lift-and-shift migration representerar The snabbaste the way to cloud adoption but limiterar potential benefits from cloud-native capabilities. This approach is lämplig for applications with tight timelines or limited modernization budget, but requires follow-up optimization for long-term value.
+Lift-and-shift migration represents The snabbaste the way to cloud adoption but limiterar potential benefits from cloud-native capabilities. This approach is lämplig for applications with tight timelines or limited modernization budget, but requires follow-up optimization for long-term value.
 
 Re-architecting for cloud-native patterns enables maximum value from cloud investment through improved scalability, resilience and cost optimization. Svenska retail companies that Klarna has demonstrerat how re-architecting enables global expansion and innovation acceleration through cloud-native infrastructure.
 
@@ -38,7 +38,7 @@ Application portfolio analysis hjälper determine optimal migration strategy per
 
 Infrastructure inventory automation through tools that Terraform import, CloudFormation drift detection and Azure Resource Manager templates enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations as require refinement but accelerate kodification process.
 
-Template standardization through reusable modules and organizational patterns ensures consistency across migrated infrastructure simultaneously as the reduces future maintenance overhead. Svenska government agencies has successfully implemented standardized Architecture as Code templates for common infrastructure patterns across different departments.
+Template standardization through reusable modules and organizational patterns ensures consistency across migrated infrastructure simultaneously as the reduces future maintenance overhead. Swedish government agencies has successfully implemented standardized Architecture as Code templates for common infrastructure patterns across different departments.
 
 Configuration drift elimination through Architecture as Code adoption requires systematic reconciliation between existing resource configurations and desired Architecture as Code state. Gradual enforcement of Architecture as Code-managed configuration ensures infrastructure stability simultaneously as the eliminates manual configuration inconsistencies.
 
@@ -187,7 +187,7 @@ resource "aws_instance" "migrated_instance_{in}" {{
     Project = "{instance.get('tags', {}).get('Project', 'migration-project')}"
   }}
   
-  # VIKTIGT: Importera existing resurs instead of skapa new
+  # VIKTIGT: Importera existing resurs instead of create new
   # terraform import aws_instance.migrated_instance_{in} {instance['instance_id']}
 }}
 """
@@ -265,7 +265,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] architecture as code grundutbildning for all teammedlemmar
 - [ ] Terraform/CloudFormation hands-on workshops
 - [ ] Git workflows for infrastructure management
-- [ ] Svenska compliance-krav (GDPR, MSB)
+- [ ] Svenska compliance-requirements (GDPR, MSB)
 
 ### Tool Setup
 - [ ] Terraform/CloudFormation development environment
@@ -275,14 +275,14 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 
 ### Risk Mitigation
 - [ ] Fullständig backup of all kritiska systems
-- [ ] Rollback procedures dokumenterade
+- [ ] Rollback procedures documentserade
 - [ ] Emergency contacts and eskalationsplan
 - [ ] Test environment for migration validation
 
 ## Fas 2: Pilot Migration (Vecka 3-4)
 
 ### Low-Risk Resources Migration
-- [ ] Migrera development/test miljöer first
+- [ ] Migrera development/test environments first
 - [ ] Validate architecture as code templates and processes
 - [ ] Dokumentera lessons learned
 - [ ] Refinera migration procedures
@@ -690,12 +690,12 @@ echo "5. Document lessons learned"
 ## Summary
 
 
-The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Migration from Traditional Infrastructure to Infrastructure as Code representerar a kritisk transformation as requires systematisk planering, gradually implementation and comprehensive testing. Svenska organisationer as framgångsrikt throughfor This migration positionerar itself for ökad agility, forbättrad säkerhet and betydande kostnadsmässiga Benefits.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
+Migration from Traditional Infrastructure to Infrastructure as Code represents a kritisk transformation as requires systematisk planering, gradually implementation and comprehensive testing. Svenska organisationer as framgångsrikt throughfor This migration positionerar itself for ökad agility, forbättrad säkerhet and betydande kostnadsmässiga Benefits.
 
 Framgångsfaktorer includes comprehensive assessment, realistisk timeline planning, extensive team training and robust testing frameworks. Hybrid migration strategies enables risk minimization simultaneously as the levererar imwithiate value from Architecture as Code adoption.
 
-Investment in proper migration planning and execution resulterar in långsiktiga Benefits through improved operational efficiency, enhanced security posture and reduced technical debt. Svenska organisationer as följer systematic migration approaches can forvänta itself successful transformation to modern, Architecture as Code-baserad infraStructurehantering.
+Investment in proper migration planning and execution resulterar in långsiktiga Benefits through improved operational efficiency, enhanced security posture and reduced technical debt. Svenska organisationer as follows systematic migration approaches can forvänta itself successful transformation to modern, Architecture as Code-baserad infrastructurehantering.
 
 ## Sources and referenser
 

@@ -4,27 +4,27 @@
 
 *Infrastructure as Code (Architecture as Code) driver fundamental organisatorisk change from traditionella silos to cross-funktionella DevOps-team. Diagram illustrerar evolutionen from isolerade team to integrerade, samarbetsinriktade Structures as optimerar for hastighet and kvalitet.*
 
-Architecture as Code-metodiken utgör grunden for ## organizational forändringsprocessens komplexitet
+Architecture as Code methodology forms the foundation for ## organizational forändringsprocessens komplexitet
 
 ![Förändringsdimensioner and samband](images/mindmap_17_organisation.png)
 
 *Mindmappen visualiserar the mångsidiga aspekterna of organisatorisk change at Architecture as Code-Architecture as Code-implementation. The shows how DevOps-kulturtransformation, cross-funktionella teamStructureer, competence development, rollforändring and change management is sammankopplade and must is managed holistiskt for successful transformation.*
 
-## Övergripande Description
+## Overall Description
 
-implementation of Infrastructure as Code requires djupgående organizational changes as sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå Fundamental omStructureering to fullt ut realisera Benefitsna with kodbaserade arbetssätt.
+implementation of Infrastructure as Code requires djupgående organizational changes as sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå Fundamental omStructureering to fullt ut realisera Benefitsna with code-based arbetssätt.
 
-Svenska organisationer står infor unika Challenges when the gäller organisatorisk change through starka fackliga traditioner, konsensusbaserade beslutsprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier as respekterar These kulturella aspekter simultaneously as the främjar agile and collaborative arbetssätt.
+Swedish organizations face unika Challenges when the gäller organisatorisk change through starka fackliga traditioner, konsensusbaserade decisionssprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier as respekterar These kulturella aspekter simultaneously as the främjar agile and collaborative arbetssätt.
 
 Conway's Law describes how organisationers kommunikationsStructureer speglas in system architecture the producerar. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Infrastructure as Code enables.
 
-Modern DevOps-transformation within svenska foretag that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer has utvecklat unika approaches to team autonomy, cross-functional collaboration and continuous improvement as can adapt to olika svenska organisationskulturer.
+Modern DevOps-transformation within svenska foretag that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer has utvecklat unika approaches to team autonomy, cross-functional collaboration and continuous improvement as can adapt to different svenska organisationskulturer.
 
 ## DevOps-kulturtransformation
 
-DevOps representerar fundamental kulturforändering from "us vs them" mentalitet between development and operations to shared ownership of product lifecycle. This transformation requires investment in both tekniska tools and kulturella forändringsinitiativ as promote collaboration, transparency and continuous learning.
+DevOps represents fundamental kulturforändering from "us vs them" mentalitet between development and operations to shared ownership of product lifecycle. This transformation requires investment in both technical tools and kulturella forändringsinitiativ as promote collaboration, transparency and continuous learning.
 
-Psychological safety utgör foundationen for effective DevOps teams by enable open communication about mistakes, experimentation and continuous improvement. Svenska workplace culture with emphasis at consensus and equality provides natural foundation for building psychologically safe environments as support DevOps practices.
+Psychological safety forms foundationen for effective DevOps teams by enable open communication about mistakes, experimentation and continuous improvement. Svenska workplace culture with emphasis at consensus and equality provides natural foundation for building psychologically safe environments as support DevOps practices.
 
 Blameless post-mortems and failure celebration is essentiella components in DevOps culture as encourage innovation and risk-taking. Svenska organisationer with strong safety cultures can leverage These principles to create environments where teams can experiment with new technologies and approaches without fear of retribution for honest mistakes.
 
@@ -34,11 +34,11 @@ Continuous learning and skill development program must support team members in d
 
 Cross-functional teams for Architecture as Code Architecture as Code-implementation must include diverse skills covering software development, systems administration, security engineering and product management. Effective team composition balances technical expertise with domain knowledge and ensures comprehensive coverage of infrastructure lifecycle management.
 
-Team size optimization följer "two-pizza rule" principles where teams is small nog for effective communication but large nog for comprehensive skill coverage. Research suggests optimal Architecture as Code team sizes between 6-8 personer with representation from development, operations, security and product functions.
+Team size optimization follows "two-pizza rule" principles where teams is stemplate nog for effective communication but large nog for comprehensive skill coverage. Research suggests optimal Architecture as Code team sizes between 6-8 personer with representation from development, operations, security and product functions.
 
 Role definition within cross-functional teams must support both specialized expertise and collaborative responsibilities. Infrastructure engineers, cloud architects, security specialists and product owners each contribute unique perspectives as require coordination through well-defined interfaces and shared responsibilities.
 
-Team autonomy and decision-making authority is critical for Architecture as Code success efterwhich infrastructure decisions often require rapid response to operational issues. Swedish organizations with consensus-based cultures must balance democratic decision-making with need for quick operational responses under pressure situations.
+Team autonomy and decision-making authority is critical for Architecture as Code success because infrastructure decisions often require rapid response to operational issues. Swedish organizations with consensus-based cultures must balance democratic decision-making with need for quick operational responses under pressure situations.
 
 ## Kompetenshöjning and utbildning
 
@@ -72,7 +72,7 @@ Resistance management techniques include identifying root causes of resistance, 
 
 ## Praktiska example
 
-### DevOps Team Structure Blueprint
+### DevOps Team structure Blueprint
 ```yaml
 # organizational_design/devops_team_structure.yaml
 team_structure:
@@ -249,7 +249,7 @@ class IaCCompetencyFramework:
             },
             "security_compliance": {
                 "security": ["Identity management", "Network security", "Encryption"],
-                "compliance": ["GDPR", "ISO27001", "SOC2", "Svenska säkerhetskrav"],
+                "compliance": ["GDPR", "ISO27001", "SOC2", "Svenska säkerhetsrequirements"],
                 "policy": ["Policy as Code", "Automated compliance", "Audit trails"]
             },
             "operations_monitoring": {
@@ -307,9 +307,9 @@ class IaCCompetencyFramework:
                 ],
                 "practical_exercises": [
                     "Deploy Swedish GDPR-compliant S3 bucket",
-                    "Create VPC with svenska säkerhetskrav", 
+                    "Create VPC with svenska säkerhetsrequirements", 
                     "Implementera IAM policies for Swedish organizations",
-                    "Set up monitoring according to MSB-riktlinjer"
+                    "Set up monitoring according to MSB-guidelines"
                 ],
                 "assessment": {
                     "type": "practical_project",
@@ -326,7 +326,7 @@ class IaCCompetencyFramework:
                 "prerequisites": ["Cloud fundamentals", "Basic security concepts"],
                 "learning_objectives": [
                     "Implementera GDPR-compliant infrastructure",
-                    "Förstå MSB säkerhetskrav",
+                    "Förstå MSB säkerhetsrequirements",
                     "Skapa automated compliance checking",
                     "design secure network architectures"
                 ],
@@ -338,7 +338,7 @@ class IaCCompetencyFramework:
                 ],
                 "assessment": {
                     "type": "compliance_audit",
-                    "description": "Demonstrate infrastructure meets svenska säkerhetskrav"
+                    "description": "Demonstrate infrastructure meets svenska säkerhetsrequirements"
                 }
             })
             
@@ -640,8 +640,8 @@ performance_measurement_framework:
 ## Summary
 
 
-The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Organisatorisk change utgör The mest kritiska komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
+Organisatorisk change forms The mest kritiska komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
 
 Svenska organisationer as investerar in comprehensive change management, cross-functional team development and continuous learning culture positionerar itself for long-term success with Architecture as Code practices. Investment in people development and organizational design delivers compounding returns through improved collaboration, faster innovation cycles and enhanced operational efficiency.
 

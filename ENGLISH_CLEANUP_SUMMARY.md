@@ -26,9 +26,9 @@ Created `scripts/fix_svengelska_to_english.py` - a comprehensive pattern-matchin
 
 **Pass 1: Common Svengelska Patterns** (1,700+ fixes)
 - Fixed "which" → "as" (common machine translation error)
-- Fixed Swedish articles (den/det/ett → the/a)
+- Fixed Swedish articles (the/it/A → the/a)
 - Fixed mixed verb forms
-- Fixed declarative/deklarativ and similar technical terms
+- Fixed declarative/declarative and similar technical terms
 - Fixed "systems" vs "system" confusion
 - Total: 39 files modified
 
@@ -41,18 +41,18 @@ Created `scripts/fix_svengelska_to_english.py` - a comprehensive pattern-matchin
 - Total: 30 files modified
 
 **Pass 3: Clearly Swedish Words** (600+ fixes)
-- utan → without (87 occurrences)
-- mellan → between (79 occurrences)
-- utveckling/utveckla/utvecklas → development/develop/is developed
-- hantera/hanterar/hantering → handle/handles/handling
-- möjliggöra/möjligheter → enable/possibilities
-- säkerställa/säkerställer → ensure/ensures
-- användning/använder/använda → use/uses/use
-- kunskap/kunskaper → knowledge
-- följande → following
-- beskriver/beskriva → describes/describe
-- omfattande/omfattar → comprehensive/encompasses
-- genomförande/genomföra → implementation/implement
+- without → without (87 occurrences)
+- between → between (79 occurrences)
+- development/develop/is developed → development/develop/is developed
+- handle/handles/handling → handle/handles/handling
+- enable/possibilities → enable/possibilities
+- ensure/ensures → ensure/ensures
+- use/uses/use → use/uses/use
+- knowledge/knowledge → knowledge
+- following → following
+- describes/describe → describes/describe
+- comprehensive/encompasses → comprehensive/encompasses
+- implementation/implement → implementation/implement
 - Total: 39 files modified
 
 ### Total Impact

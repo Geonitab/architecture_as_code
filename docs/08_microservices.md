@@ -2,7 +2,7 @@
 
 ![Microservices-architecture](images/diagram_13_kapitel12.png)
 
-Microservices-architecture representerar a Fundamental paradigmforändring in how vi utformar, bygger and driver moderna applikationer. This arkitekturstil bryter ner traditionella monolitiska systems in mindre, oberoende and specialiserade tjänster as can is developed, driftsättas and skalas självständigt. When This kraftfulla architecture kombineras with Architecture as Code, are created a samverkande effekt as enables both technical excellence and organisatorisk smidighet.
+Microservices-architecture represents a Fundamental paradigmforändring in how vi utformar, bygger and driver modern applications. This arkitekturstil bryter ner traditionella monolitiska systems in mindre, oberoende and specialiserade tjänster as can is developed, driftsättas and skalas självständigt. When This kraftfulla architecture kombineras with Architecture as Code, are created a samverkande effekt as enables both technical excellence and organisatorisk smidighet.
 
 For Swedish organizations means microservices-Architecture as Code not only a technical transformation, without också a cultural and organisatorisk evolution. This chapters utforskar how svenska foretag can leverera världsledande digitala tjänster simultaneously as the upprätthåller the höga standarder for kvalitet, säkerhet and hållbarhet as kännetecknar svensk industri.
 
@@ -10,61 +10,61 @@ For Swedish organizations means microservices-Architecture as Code not only a te
 
 ### Varfor svenska organisationer väljer microservices
 
-Svenska foretag that Spotify, Klarna, King and H&M has blivit globala digitala ledare by anta microservices-architecture tidigt. Deras success illustrerar why This arkitekturstil is särskilt väl lämpad for svenska organisationers värderingar and arbetssätt.
+Svenska foretag that Spotify, Klarna, King and H&M has become globala digitala ledare by anta microservices-architecture tidigt. Deras success illustrerar why This arkitekturstil is particularly väl lämpad for svenska organisationers värderingar and arbetssätt.
 
 **Organisatorisk autonomi and ansvarstagande**
 Svenska foretagskulturer präglas of platta organisationer, högt fortroende and individuellt ansvar. Microservices-architecture speglar These värderingar by ge utvecklingsteam fullständig ägandeskap over sina tjänster. each team blir a "mini-startup" within organisationen, with ansvar for all from design and development to drift and support.
 
-This organizational mönster, that Spotify populariserade through sitt berömda "Squad Model", enables snabba beslut and innovation at lokal nivå simultaneously as organisationen as helhet behåller strategisk riktning. For Swedish organizations, where konsensus and kollegiala beslut is djupt rotade värderingar, erbjuder microservices a Structure as balanserar autonomi with ansvarighet.
+This organizational mönster, that Spotify populariserade through sitt berömda "Squad Model", enables snabba decisions and innovation at lokal nivå simultaneously as organisationen as helhet behåller strategisk riktning. For Swedish organizations, where konsensus and kollegiala decisions is djupt rotade värderingar, erbjuder microservices a structure as balanserar autonomi with ansvarighet.
 
 **Kvalitet through specialisering**
-Svenska produkter is världsberömda for their kvalitet and hållbarhet. Microservices-architecture enables same fokus at kvalitet within mjukvaruutveckling by låta team specialisera itself at specifika affärsdomäner. When A team can fokusera sina tekniska färdigheter and domänkunskap at a avgränsad problemställning, resulterar the naturligt in högre kvalitet and innovation.
+Svenska produkter is världsberömda for their kvalitet and hållbarhet. Microservices-architecture enables same fokus at kvalitet within mjukvaruutveckling by låta team specialisera itself at specific affärsdomäner. When A team can fokusera sina technical färdigheter and domänkunskap at a avgränsad problemställning, resulterar the naturligt in högre kvalitet and innovation.
 
 **Hållbarhet and resursoptimering**
-Sveriges starka miljöwithvetenhet and commitment to hållbarhet återspeglas också in how svenska organisationer think about technical architecture. Microservices enables granulär resursoptimering - each tjänst can skalas and optimeras baserat at sina specifika behov rather than to entire applikationen must dimensioneras for The mest resurskrävande komponenten.
+Sveriges starka miljöwithvetenhet and commitment to hållbarhet återspeglas också in how svenska organisationer think about technical architecture. Microservices enables granulär resursoptimering - each tjänst can skalas and optimeras baserat at sina specific behov rather than to entire applikationen must dimensioneras for The mest resurskrävande komponenten.
 
 ### Tekniska fordelar with svenska perspektiv
 
 **Teknologisk mångfald with stabila fundament**
-Svenska organisationer värdesätter both innovation and stabilitet. Microservices-architecture enables "innovation at the edges" - team can experimentera with new technologies and metoder for sina specifika tjänster without to riskera stabiliteten in andra parts of systemet. This tovägagångssätt speglar svensk pragmatism: våga fornya where the gör skillnad, but behåll stabilitet where the is kritiskt.
+Svenska organisationer värdesätter both innovation and stabilitet. Microservices-architecture enables "innovation at the edges" - team can experimentera with new technologies and metoder for sina specific tjänster without to riskera stabiliteten in andra parts of systemet. This tovägagångssätt speglar svensk pragmatism: våga fornya where the gör skillnad, but behåll stabilitet where the is kritiskt.
 
 **Resiliens and robusthet**
-Sverige has a lång tradition of to bygga robusta, toforlitliga systems - from vår infrastructure to våra demokratiska institutioner. Microservices-architecture överfor This filosofi to mjukvarudomänen by skapa systems as can handle partiella fel without total systemkollaps. When a tjänst får problem, can resten of systemet fortsätta fungera, often with degraderad but användbar funktionalitet.
+Sverige has a lång tradition of to bygga robusta, toforlitliga systems - from vår infrastructure to våra demokratiska institutioner. Microservices-architecture överfor This filosofi to mjukvarudomänen by creating systems as can handle partiella fel without total systemkollaps. When a tjänst får problem, can resten of systemet fortsätta fungera, often with degraderad but användbar funktionalitet.
 
 **scalability anpassad to svenska marknadsforhållanden**
-Svenska marknaden karakteriseras of säsongsvariation (whichmarsemester, jul), specifika användningsmönster and växelverkan between lokal and global whenvaro. Microservices enables sofistikerad skalning where olika parts of systemet can anpassas to svenska användningsmönster without to påverka global prestanda.
+Svenska marknaden karakteriseras of säsongsvariation (whichmarsemester, jul), specific användningsmönster and växelverkan between lokal and global whenvaro. Microservices enables sofistikerad skalning where different parts of systemet can anpassas to svenska användningsmönster without to påverka global performance.
 
 ## Microservices design principles for Architecture as Code
 
-to framgångsrikt implementera microservices-architecture requires a deep forståelse for the design principles as styr both service-design and infraStructureen as stödjer dem. These principles is not only tekniska riktlinjer, without representerar a filosofi for how moderna, distribuerade systems bör byggas and drivas.
+to framgångsrikt implementera microservices-architecture requires a deep understanding for the design principles as styr both service-design and infrastructureen as supports dem. These principles is not only technical guidelines, without represents a filosofi for how modern, distribuerade systems bör byggas and drivas.
 
 ### Fundamental service design principles
 
 **Single Responsibility and bounded contexts**
-each microservice ska ha A tydligt, väldefinierat ansvar as korresponderar with a specifik affärskapabilitet or domän. This concepts, härledd from Domain-Driven design (DDD), ensures tjänster is developed about natural affärsgränser rather than tekniska bekvämligheter.
+each microservice ska ha A tydligt, väldefinierat ansvar as korresponderar with a specifik affärcreatebilitet or domän. This concepts, härledd from Domain-Driven design (DDD), ensures tjänster is developed about natural affärsgränser rather than technical bekvämligheter.
 
-For Swedish organizations, where tydlig ansvarsfordelning and transparens is centrala värderingar, blir The principle of single responsibility extra viktig. When a tjänst has A klart defined ansvar, blir the också tydligt as team that äger the, which affärsmetrik The påverkar, and how The bidrar to organisationens övergripande mål.
+For Swedish organizations, where tydlig ansvarsfordelning and transparens is centrala värderingar, blir The principle of single responsibility extra viktig. When a tjänst has A klart defined ansvar, blir the också tydligt as team that äger the, which affärsmetrik The affect, and how The bidrar to organisationens overall mål.
 
 **Loose coupling and high cohesion**
 Microservices must designas to minimera beroenden between tjänster simultaneously as relaterad funktionalitet samlas within same tjänst. This requires noggrann reflektion over tjänstegränser and gränssnitt. Lös koppling enables oberoende development and deployment, withan hög kohesion ensures tjänster is meningsfulla and hanteringsbara enheter.
 
-Infrastructure as Code (Architecture as Code) spelar a kritisk roll here by definiera not only how tjänster deployeras, without också how the kommunicerar, which beroenden the has, and how These beroenden is managed over time. This Architecture as Code blir a levande documentation of systemets architecture and beroenden.
+Infrastructure as Code (Architecture as Code) spelar a kritisk roll here by definiera not only how tjänster deployeras, without också how the kommunicerar, which beroenden the has, and how These beroenden is managed over time. This Architecture as Code blir a levande documentation of system's architecture and beroenden.
 
 **Autonomi and ägandeskap**
 each mikroservice-team ska ha fullständig kontroll over their tjänsts livscykkel - from design and development to testing, deployment and drift. This means to Infrastructure as Code-definitioner också must ägas and is managed of same team as develops tjänsten.
 
-For Swedish organizations, where "lagom" and balans is viktiga värderingar, handlar autonomi not about total oberoende without about to ha rätt nivå of självständighet to vara effektiv simultaneously as man bidrar to helheten.
+For Swedish organizations, where "lagom" and balans is important värderingar, handlar autonomi not about total oberoende without about to ha rätt nivå of självständighet to vara effective simultaneously as man bidrar to helheten.
 
 ### Svenska organisationers microservices-drivna transformation
 
 Svenska teknikforetag that Spotify, Klarna and King has pioneerat microservices-arkitekturer as enabled global skalning simultaneously as the bibehållit svenska värderingar about kvalitet, hållbarhet and innovation. Deras framgångar demonstrerar how Infrastructure as Code can handle komplexiteten in distribuerade systems withan svenska regulatory requirements that GDPR and PCI-DSS bibehålls.
 
-**Spotify's Squad Model in mikroservice-kontext:**
-Spotify utvecklade sitt berömda Squad Model as perfekt alignar with microservices-architecture where each Squad äger end-to-end ansvar for specifika affärskapabiliteter. Deras Infrastructure as Code-approach integrerar organisatorisk Structure with technical architecture at A sätt as enables both scalability and innovation.
+**Spotify's Squad Model in mikroservice-context:**
+Spotify utvecklade sitt berömda Squad Model as perfekt alignar with microservices-architecture where each Squad äger end-to-end ansvar for specific affärcreatebiliteter. Deras Infrastructure as Code-approach integrerar organisatorisk structure with technical architecture at A sätt as enables both scalability and innovation.
 
-Spotify's modell illustrerar how microservices-architecture not only is a technical beslut, without a fundamental organisatorisk strategi. by aligna team-Structure with service-architecture are created a naturlig koppling between affärsansvar and technical Architecture as Code-implementation. This enables snabbare innovation efterwhich team can fatta beslut about both affärslogik and technical Architecture as Code-implementation without comprehensive koordination with andra team.
+Spotify's modell illustrerar how microservices-architecture not only is a technical decisions, without a fundamental organisatorisk strategi. by aligna team-structure with service-architecture are created a naturlig koppling between affärsansvar and technical Architecture as Code-implementation. This enables snabbare innovation because team can fatta decisions about both affärslogik and technical Architecture as Code-implementation without comprehensive koordination with andra team.
 
-Following Example shows how Spotify-inspirerad infrastructure can implementeras for Swedish organizations:
+Following examples shows how Spotify-inspirerad infrastructure can implementeras for Swedish organizations:
 
 ```hcl
 # Spotify-inspired microservice infrastructure
@@ -171,10 +171,10 @@ module "squad_microservice" {
 **Klarna's regulated microservices:**
 As a licensierad bank and betalningsinstitution must Klarna navigera a komplex landskapet of finansiell reglering simultaneously as the levererar innovativa fintech-tjänster. Deras microservices-architecture illustrerar how svenska foretag can balansera regulatory compliance with technical innovation.
 
-Klarna's utmaning is unik within the svenska tekniklandskapet - the must hålla same strikta standarder as traditionella banker simultaneously as the konkurrerar with moderna fintech-startups at användarupplevelse and innovationstakt. Deras lösning means to baka in compliance and riskhäntering direkt in infraStructureen through Infrastructure as Code.
+Klarna's utmaning is unik within the svenska tekniklandskapet - the must hålla same strikta standarder as traditionella banker simultaneously as the konkurrerar with modern fintech-startups at användarupplevelse and innovationstakt. Deras lösning means to baka in compliance and riskhäntering direkt in infrastructureen through Infrastructure as Code.
 
 each microservice at Klarna must handle flera lager of compliance:
-- **Finansinspektionens krav**: Svenska banklagar requires specifik rapportering and riskhantering
+- **Finansinspektionens requirements**: Svenska banklagar requires specifik rapportering and riskhantering
 - **PCI-DSS**: Kreditkortsindustrin standard for säker handling of kortdata  
 - **GDPR**: Europeiska dataskyddsforordningen for personuppgifter
 - **PSD2**: Öppna bankdirektivet for betalningstjänster
@@ -206,7 +206,7 @@ spec:
           name: payment-processing
           businessFunction: "Real-time payment processing for svenska e-handel"
           
-          # Finansinspektionens krav
+          # Finansinspektionens requirements
           regulatoryCompliance:
             finansinspektionen: true
             psd2: true
@@ -315,31 +315,31 @@ spec:
         - "--requires-finansinspektionen-approval=true"
 ```
 
-This konfiguration illustrerar how compliance can byggas in direkt in infraStructureen rather than to läggas to as A efterkonstruerat lager. each aspekt of service-definitionen - from storage encryption to audit logging - is designad to möta specifika regulatory krav.
+This konfiguration illustrerar how compliance can byggas in direkt in infrastructureen rather than to läggas to as A efterkonstruerat lager. each aspekt of service-definitionen - from storage encryption to audit logging - is designad to möta specific regulatory requirements.
 
 **to forstå service boundaries in komplexa domäner**
-a of the största Challengesna with microservices-architecture is to identifiera rätta service boundaries. This is särskilt komplext in svenska organisationer where affärsprocesser often involverar flera regulatoriska krav and intressentgrupper.
+a of the största Challengesna with microservices-architecture is to identifiera rätta service boundaries. This is particularly komplext in svenska organisationer where affärsprocesser often involverar flera regulatoriska requirements and intressentgrupper.
 
-Service boundaries definieras through domain-driven design principles where each microservice representerar a bounded context within affärsdomänen. For Swedish organizations means This to ta hänsyn to flera factors:
+Service boundaries are defined through domain-driven design principles where each microservice represents a bounded context within affärsdomänen. For Swedish organizations means This to ta hänsyn to flera factors:
 
-**Regulatoriska boundaries**: Olika parts of verksamheten can omfattas of olika regulatoriska krav. a e-handelsplattform can behöva separata tjänster for kundhantering (GDPR), betalningshantering (PCI-DSS), and produktkataloger (konsumentskyddslagar).
+**Regulatoriska boundaries**: Olika parts of verksamheten can omfattas of different regulatoriska requirements. a e-handelsplattform can behöva separata tjänster for kundhantering (GDPR), betalningshantering (PCI-DSS), and produktkataloger (konsumentskyddslagar).
 
-**organizational boundaries**: Svenska foretagskulturer tenderar to vara konsensusorienterade, which påverkar how team can organiseras about services. Service boundaries bör aligna with how organisationen naturligt tar beslut and äger ansvar.
+**organizational boundaries**: Svenska foretagskulturer tenderar to vara konsensusorienterade, which affect how team can organiseras about services. Service boundaries bör aligna with how organisationen naturligt tar decisions and äger ansvar.
 
-**Tekniska boundaries**: Olika parts of systemet can ha olika tekniska krav for prestanda, scalability or säkerhet. a analyslast as körs nattetid can ha helt andra infraStructurekrav än a realtidsbetalning.
+**Tekniska boundaries**: Olika parts of systemet can ha different technical requirements for performance, scalability or säkerhet. a analyslast as körs nattetid can ha helt andra infrastructurerequirements än a realtidsbetalning.
 
-**Data boundaries**: GDPR and andra dataskyddslagar requires tydlig ägande and handling of personuppgifter. Service boundaries must reflektera how data flödar through organisationen and as legala ansvar as finns for olika typer of data.
+**Data boundaries**: GDPR and andra dataskyddslagar requires tydlig ägande and handling of personuppgifter. Service boundaries must reflektera how data flödar through organisationen and as legala ansvar as finns for different typer of data.
 
 ### Sustainable microservices for svenska environmental goals
 
-Sverige is världsledande within environmental sustainability and klimatansvar. Svenska organisationer forväntas not only minimera their miljöpåverkan, without aktivt bidra to a hållbar framtid. This värdering has deep påverkan at how microservices-arkitekturer designas and implementeras.
+Sverige is världsledande within environmental sustainability and klimatansvar. Svenska organisationer forväntas not only minimera their miljöpåverkan, without aktivt bidra to a hållbar framtid. This värdering has deep impact at how microservices-arkitekturer designas and implementeras.
 
 **Energy-aware architecture decisions**
-Traditionellt has mjukvaruarkitektur fokuserat at funktionalitet, prestanda and kostnad. Svenska organisationer lägger to energy efficiency as a primär designparameter. This means to microservices must utformas with withvetenhet about deras energiforbrukning and carbon footprint.
+Traditionellt has mjukvaruarkitektur fokuserat at funktionalitet, performance and kostnad. Svenska organisationer lägger to energy efficiency as a primär designparameter. This means to microservices must utformas with withvetenhet about their energiforbrukning and carbon footprint.
 
-Microservices-architecture erbjuder unika possibilities for hållbar design efterwhich each tjänst can optimeras individuellt for energy efficiency. This includes:
+Microservices-architecture erbjuder unika possibilities for hållbar design because each tjänst can optimeras individuellt for energy efficiency. This includes:
 
-**Intelligent workload scheduling**: Olika microservices has olika energiprofiler. Batch-jobb and analytiska arbetsbelastningar can schemaläggas to köra when fornybar energi is mest togänglig in the svenska elnätet, withan realtidstjänster must vara togängliga 24/7.
+**Intelligent workload scheduling**: Olika microservices has different energiprofiler. Batch-jobb and analytiska arbetsbelastningar can schemaläggas to köra when fornybar energi is mest togänglig in the svenska elnätet, withan realtidstjänster must vara available 24/7.
 
 **Right-sizing and resource optimization**: instead of over-dimensionera infrastructure "for säkerhets skull", enables microservices granulär optimering where each tjänst får exakt the resurser The behöver.
 
@@ -567,41 +567,41 @@ async def deploy_green_microservices():
 ```
 
 **implementation of green computing principles**
-This implementation illustrerar how svenska värderingar about miljöansvar can integreras direkt in microservices-infraStructureen. by göra sustainability to a first-class concern in Infrastructure as Code, can organisationer automatisera miljömässiga optimeringar without to kompromissa with affärskritisk funktionalitet.
+This implementation illustrerar how svenska värderingar about miljöansvar can integreras direkt in microservices-infrastructureen. by göra sustainability to a first-class concern in Infrastructure as Code, can organisationer automatisera miljömässiga optimeringar without to kompromissa with affärskritisk funktionalitet.
 
-The code ovan demonstrerar flera viktiga concepts:
+The code ovan demonstrerar flera important concepts:
 
 **Temporal load shifting**: by identifiera when svenska elnätet has högst andel fornybar energi (typiskt nattetid when vindkraft producerar mest), can icke-kritiska workloads automatically schemaläggas for These tider.
 
 **Intelligent scaling based at energy sources**: Rather than to only skala baserat at efterfrågan, tar systemet hänsyn to energy sources and can välja to köra mindre energiintensiva versions of tjänster when fossila bränslen dominerar energimixen.
 
-**Carbon accounting and reporting**: Automatisk insamling and rapportering of carbon metrics enables data-driven beslut about infrastructure optimering and stödjer svenska organisationers sustainability reporting.
+**Carbon accounting and reporting**: Automatisk insamling and rapportering of carbon metrics enables data-driven decisions about infrastructure optimering and supports svenska organisationers sustainability reporting.
 
-**Integration with svenska energy infrastructure**: by integrera with svenska energimyndigheten APIs and electricity maps, can systemet fatta real-time beslut baserat at faktisk energy mix in svenska elnätet.
+**Integration with svenska energy infrastructure**: by integrera with svenska energimyndigheten APIs and electricity maps, can systemet fatta real-time decisions baserat at faktisk energy mix in svenska elnätet.
 
-Single responsibility principle appliceras at service level, which means to each microservice has A specifikt, väldefinierat ansvar. For Infrastructure as Code betyder This to infrastructure components också organiseras about service boundaries, which enables independent scaling, deployment, and maintenance of different systems parts simultaneously as svenska values about clarity, responsibility and accountability upprätthålls.
+Single responsibility principle appliceras at service level, which means to each microservice has A specific, väldefinierat ansvar. For Infrastructure as Code betyder This to infrastructure components också organiseras about service boundaries, which enables independent scaling, deployment, and maintenance of different systems parts simultaneously as svenska values about clarity, responsibility and accountability upprätthålls.
 
 ## Service discovery and communication patterns
 
-in a microservices-architecture is formågan for tjänster to hitta and kommunicera with varandra fundamental for systemets funktionalitet. Service discovery mechanisms enables dynamic location and communication between microservices without hard-coded endpoints, which is kritiskt for systems as kontinuerligt is developed and skalas.
+in a microservices-architecture is formågan for tjänster to hitta and kommunicera with varandra fundamental for system's funktionalitet. Service discovery mechanisms enables dynamic location and communication between microservices without hard-coded endpoints, which is kritiskt for systems as kontinuerligt is developed and skalas.
 
 ### Challengesna with distributed communication
 
-When monolitiska applikationer delas upp in microservices, transformeras the as previous var in-process function calls to network calls between separata tjänster. This introducerar flera new komplexiteter:
+When monolithic applications are divided in microservices, the transformation is previous var in-process function calls to network calls between separata tjänster. This introducerar flera new komplexiteter:
 
-**Network reliability**: To skillnad from function calls within same process, can network kommunikation misslyckas of many anledningar - network partitions, overloaded services, or temporära infraStructureproblem. Microservices must designas to handle These failure modes gracefully.
+**Network reliability**: To skillnad from function calls within same process, can network kommunikation misslyckas of many anledningar - network partitions, overloaded services, or temporära infrastructureproblem. Microservices must designas to handle These failure modes gracefully.
 
 **Latency and performance**: Network calls is orders of magnitude långsammare än in-process calls. This requires careful design of service interactions to undvika "chatty" kommunikationsmönster as can degradera overall systems performance.
 
-**Service location and discovery**: in dynamiska miljöer where services can starta, stoppa and flytta between olika hosts, behövs robusta mechanisms to lokalisera services without hard-coded addresses.
+**Service location and discovery**: in dynamiska environments where services can starta, stoppa and flytta between different hosts, behövs robusta mechanisms to lokalisera services without hard-coded addresses.
 
 **Load balancing and failover**: Traffic must distribueras over multiple instances of same service, and systemet must be able to automatisk failover to healthy instances when problem uppstår.
 
-For Swedish organizations, where reliability and user experience is prioriterade högt, blir These challenges särskilt viktiga to addressera through thoughtful Infrastructure as Code design.
+For Swedish organizations, where reliability and user experience is prioriterade högt, blir These challenges particularly important to addressera through thoughtful Infrastructure as Code design.
 
 ### Svenska enterprise service discovery patterns
 
-Svenska foretag opererar often in hybridmiljöer as kombinerar on-premise systems with cloud services, simultaneously as the must uppfylla strikta krav at data residency and regulatory compliance. This creates unika Challenges for service discovery as must handle both technical complexity and legal constraints.
+Svenska foretag opererar often in hybridenvironments as kombinerar on-premise systems with cloud services, simultaneously as the must uppfylla strikta requirements at data residency and regulatory compliance. This creates unika Challenges for service discovery as must handle both technical complexity and legal constraints.
 
 **Hybrid cloud complexity**
 Many svenska organisationer can not or vill not flytta all systems to public cloud at grund of regulatory requirements, existing investments, or strategic considerations. Deras microservices-arkitekturer must wherefor fungera seamlessly across on-premise datacenter and cloud environments.
@@ -620,7 +620,7 @@ global:
   domain: consul
   datacenter: "stockholm-dc1"
   
-  # Svenska-specifika konfigurationer
+  # Svenska-specific konfigurationer
   enterprise:
     licenseSecretName: "consul-enterprise-license"
     licenseSecretKey: "key"
@@ -638,7 +638,7 @@ global:
       format: "json"
       path: "/vault/audit/consul-audit.log"
       description: "Svenska audit log for compliance"
-      retention: "7y"  # Svenska lagkrav
+      retention: "7y"  # Svenska lagrequirements
       
   # Integration with svenska identity providers
   acls:
@@ -763,7 +763,7 @@ ui:
 ```
 
 **Fordjupning of service discovery architecture**
-Ovanstående konfiguration illustrerar flera viktiga aspekter of enterprise service discovery for Swedish organizations:
+Ovanstående konfiguration illustrerar flera important aspekter of enterprise service discovery for Swedish organizations:
 
 **Geographic distribution for resilience**: by distribuera Consul clusters over flera svenska datacenter (Stockholm, Göteborg, Malmö), uppnås both high availability and compliance with data residency requirements. This mönster speglar how svenska organisationer often think about geography as a natural disaster recovery strategy.
 
@@ -778,7 +778,7 @@ Microservices kommunicerar primarily through två huvudkategorier of patterns: s
 **Synchronous communication: REST and gRPC**
 Synchronous patterns, where a service skickar a request and väntar at response innan The fortsätter, is enklast to forstå and debugga but creates tight coupling between services.
 
-REST APIs has blivit dominant for external interfaces at grund of their simplicity and universal support. For Swedish organizations, where API design often must vara transparent and accessible for partners and regulators, erbjuder REST välbekanta patterns for authentication, documentation, and testing.
+REST APIs has become dominant for external interfaces at grund of their simplicity and universal support. For Swedish organizations, where API design often must vara transparent and accessible for partners and regulators, erbjuder REST välbekanta patterns for authentication, documentation, and testing.
 
 gRPC erbjuder superior performance for internal service communication through binary protocols and efficient serialization. For svenska tech companies that Spotify and Klarna, where latency directly impacts user experience and business metrics, can gRPC optimizations ge significant competitive advantages.
 
@@ -909,7 +909,7 @@ transaction.state.log.min.isr=2
 PROPERTIES
 }
 
-# Topics for olika svenska financial services
+# Topics for different svenska financial services
 resource "kafka_topic" "svenska_financial_topics" {
   for_each = {
     "payment-transactions" = {
@@ -1023,9 +1023,9 @@ resource "aws_msk_connect_connector" "svenska_schema_registry" {
 ```
 
 **Djupanalys of financial messaging requirements**
-Ovanstående Terraform configuration demonstrerar how Infrastructure as Code can användas to implementera enterprise-grade messaging infrastructure as möter svenska financial services' unika krav:
+Ovanstående Terraform configuration demonstrerar how Infrastructure as Code can användas to implementera enterprise-grade messaging infrastructure as möter svenska financial services' unika requirements:
 
-**Regulatory compliance through design**: Konfigurationen shows how regulatory krav that 7-års dataretendering for finansiella transaktioner can byggas in direkt in messaging infrastructure. This is not något as läggs to efteråt, without a fundamental design principle.
+**Regulatory compliance through design**: Konfigurationen shows how regulatory requirements that 7-års dataretendering for finansiella transaktioner can byggas in direkt in messaging infrastructure. This is not något as läggs to efteråt, without a fundamental design principle.
 
 **Performance for high-frequency trading**: With instance types as kafka.m5.2xlarge and provisioned throughput får svenska financial institutions The performance as krävs for modern algorithmic trading and real-time risk management.
 
@@ -1033,7 +1033,7 @@ Ovanstående Terraform configuration demonstrerar how Infrastructure as Code can
 
 **Security layers for financial data**: Multiple encryption layers (KMS, TLS, in-cluster encryption) ensures financial data is protected both in transit and at rest, which is critical for PCI-DSS compliance.
 
-API gateways functions as unified entry points for external clients and implement cross-cutting concerns as authentication, rate limiting, and request routing. Gateway configurations definieras as code for consistent policy enforcement and traffic management across service topologies with extra focus at svenska privacy laws and consumer protection regulations.
+API gateways functions as unified entry points for external clients and implement cross-cutting concerns as authentication, rate limiting, and request routing. Gateway configurations are defined as code for consistent policy enforcement and traffic management across service topologies with extra focus at svenska privacy laws and consumer protection regulations.
 
 ### Intelligent API gateway for svenska e-commerce
 
@@ -1043,7 +1043,7 @@ Svenska e-commerce foretag that H&M and IKEA opererar globalt but must efterleva
 When svenska e-commerce foretag expanderar globalt möter the a complex web of regulations:
 
 **Konsumentverket**: Svenska konsumentskyddslagar requires specific disclosures for pricing, delivery, and return policies
-**GDPR**: Europeiska dataskyddslagar påverkar how customer data can samlas in and användas
+**GDPR**: Europeiska dataskyddslagar affect how customer data can samlas in and användas
 **Distant selling regulations**: Different EU countries has varying requirements for online sales
 **VAT and tax regulations**: Tax calculation must vara correct for customer's location
 
@@ -1474,11 +1474,11 @@ spec:
 ```
 
 **Arkitekturella insights from intelligent gateway implementation**
-This implementation of a intelligent API gateway illustrerar flera viktiga architectural patterns for svenska e-commerce:
+This implementation of a intelligent API gateway illustrerar flera important architectural patterns for svenska e-commerce:
 
 **Compliance as a first-class citizen**: instead of treat GDPR and konsumentskydd as add-on features, is compliance integrat in each aspect of gateway's functionality. This approach reduces risk for compliance violations and gör the enklare to demonstrera compliance for regulators.
 
-**Intelligent routing baserat at context**: Gateway tar beslut not only baserat at URL paths without också baserat at customer characteristics, time of day, and business context. This enables sophisticated user experiences as svensk business hours optimization or geographic-specific features.
+**Intelligent routing baserat at context**: Gateway tar decisions not only baserat at URL paths without också baserat at customer characteristics, time of day, and business context. This enables sophisticated user experiences as svensk business hours optimization or geographic-specific features.
 
 **Automated data rights management**: GDPR's requirements for data portability and right to be forgotten is implementerade as standard API endpoints. This gör the möjligt for svenska foretag to handle data rights requests efficiently without manual intervention.
 
@@ -1493,13 +1493,13 @@ a of the mest fundamental Challengesna in microservices-architecture is how data
 **Isolation and autonomy benefits**
 Database per service pattern ger each microservice full control over their data, which enables:
 
-**Schema evolution**: Team can ändra their database schema without to påverka andra services. This is särskilt värdefullt for svenska organisations often consensus-driven development processes, where changes can tas quickly within A team without extensive coordination.
+**Schema evolution**: Team can ändra their database schema without to påverka andra services. This is particularly valuable for Swedish organizations often consensus-driven development processes, where changes can tas quickly within A team without extensive coordination.
 
 **Technology diversity**: Olika services can välja optimal database technologies for sina specific use cases. a analytics service can use columnar databases for complex queries, withan a session service uses in-memory stores for low latency.
 
 **Scaling independence**: Services can skala their data storage independent of andra services. This is critical for svenska seasonal businesses as ser dramatic load variations.
 
-**Failure isolation**: Database problems in a service påverkar not andra services directly. This alignment with svenska values about resilience and robustness.
+**Failure isolation**: Database problems in a service affect not andra services directly. This alignment with svenska values about resilience and robustness.
 
 **Challenges with distributed data**
 Database per service pattern introducerar also significanta challenges:
@@ -1520,7 +1520,7 @@ in distribuerade systems must organisationer välja between strong consistency a
 Financial services that Klarna must maintain strict consistency for financial transactions withan the can accept eventual consistency for mindre critical data as user preferences or product catalogs.
 
 **Event sourcing for audit trails**
-Many svenska foretag implementerar event sourcing patterns where all business changes recorded as immutable events. This approach is särskilt valuable for regulatory compliance efterwhich the ger complete audit trails of all data changes over time.
+Many svenska foretag implement event sourcing patterns where all business changes recorded as immutable events. This approach is particularly valuable for regulatory compliance because the ger complete audit trails of all data changes over time.
 
 **Saga patterns for distributed transactions**
 When business processes spänner over multiple microservices, används saga patterns to coordinate distributed transactions. Sagas can implementeras that:
@@ -1528,7 +1528,7 @@ When business processes spänner over multiple microservices, används saga patt
 **Choreography**: Services communicate direkt with each other through events
 **Orchestration**: a central coordinator service dirigerar the whole process
 
-For Swedish organizations foredras often orchestration patterns efterwhich the ger more explicitly control and easier troubleshooting, which aligns with svenska values about transparency and accountability.
+For Swedish organizations foredras often orchestration patterns because the ger more explicitly control and easier troubleshooting, which aligns with svenska values about transparency and accountability.
 
 ### Data synchronization strategies
 
@@ -1542,13 +1542,13 @@ CQRS patterns separerar write operations (commands) from read operations (querie
 **Read side**: Optimized for queries with eventual consistency and high performance
 
 **Data lakes and analytical systems**
-Svenska organisationer implementerar often centralized data lakes for analytics where data from all microservices is aggregated for business intelligence and machine learning. This requires careful ETL processes as respect data privacy laws.
+Svenska organisationer implement often centralized data lakes for analytics where data from all microservices is aggregated for business intelligence and machine learning. This requires careful ETL processes as respect data privacy laws.
 
-Event-driven architectures leverage asynchronous communication patterns for loose coupling and high scalability. Event streaming platforms and event sourcing mechanisms definieras through infrastructure code for reliable event propagation and systems state reconstruction.
+Event-driven architectures leverage asynchronous communication patterns for loose coupling and high scalability. Event streaming platforms and event sourcing mechanisms are defined through infrastructure code for reliable event propagation and systems state reconstruction.
 
 ## Service mesh implementation
 
-Service mesh technology representerar a paradigm shift in how microservices kommunicerar and handles cross-cutting concerns. instead of implementera communication logic within each service, abstraheras This to a dedicated infrastructure layer as handles all service-to-service communication transparent.
+Service mesh technology represents a paradigm shift in how microservices kommunicerar and handles cross-cutting concerns. instead of implementera communication logic within each service, abstraheras This to a dedicated infrastructure layer as handles all service-to-service communication transparent.
 
 ### understanding of service mesh architecture
 
@@ -1561,7 +1561,7 @@ Service mesh creates a clear separation between business logic and infrastructur
 **Observability**: Automatic metrics, tracing, and logging for all communication
 **Traffic management**: Circuit breakers, retries, timeouts, and canary deployments
 
-For Swedish organizations, where separation of concerns and clear responsibilities is viktiga values, erbjuder service mesh a clean architectural solution.
+For Swedish organizations, where separation of concerns and clear responsibilities is important values, erbjuder service mesh a clean architectural solution.
 
 **Sidecar proxy pattern**
 Service mesh implementeras typically through sidecar proxies as deployeras alongside each service instance. These proxies intercept all network traffic and apply policies transparently. This pattern enables:
@@ -1605,7 +1605,7 @@ each microservice must ha their egen deployment pipeline as can köra independen
 Svenska organisationer foredrar often graduated deployment strategies where changes testas thoroughly innan the reaches production. This alignment with svenska values about quality and risk aversion while sto enabling innovation.
 
 **Database migration handling**
-Database changes in microservices environments requires special consideration efterwhich services cannot deployeras atomically with their database schemas. Backward compatible changes must implementeras through multi-phase deployments.
+Database changes in microservices environments requires special consideration because services cannot deployeras atomically with their database schemas. Backward compatible changes must implementeras through multi-phase deployments.
 
 **Feature flags and configuration management**
 Feature flags enables decoupling of deployment from feature activation. Svenska organizations can deploy new code to production but activate features only after thorough testing and validation.
@@ -1982,8 +1982,8 @@ resource "google_monitoring_alert_policy" "microservices_health" {
 ## Summary
 
 
-The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Microservices-Architecture as Code representerar mer än only a technical evolution - the is a transformation as påverkar entire organisationen, from how team organiseras to how affärsprocesser implementeras. For Swedish organizations erbjuder This arkitekturstil särskilda Benefits as alignar perfekt with svenska värderingar and arbetssätt.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
+Microservices-Architecture as Code represents mer än only a technical evolution - the is a transformation as affect entire organisationen, from how team organiseras to how affärsprocesser implementeras. For Swedish organizations erbjuder This arkitekturstil särskilda Benefits as alignar perfekt with svenska värderingar and arbetssätt.
 
 ### Strategiska fordelar for Swedish organizations
 
@@ -1997,12 +1997,12 @@ Svenska produkter is kända världen over for their kvalitet and hållbarhet. Mi
 The svenska approach to innovation karakteriseras of throughtänkt risktagande and långsiktig planering. Microservices-architecture enables "innovation at the edges" where new technologies and metoder can testas in isolerade parts of systemet without to äventyra core business functions.
 
 **Hållbarhet as kompetitiv fordel**
-Svenska organisationers commitment to environmental sustainability blir a konkret competitive advantage through microservices as can optimeras for energy efficiency and carbon footprint. This is not only miljömässigt ansvarigt without också ekonomiskt smart when energy costs utgör a significant del of operational expenses.
+Svenska organisationers commitment to environmental sustainability blir a konkret competitive advantage through microservices as can optimeras for energy efficiency and carbon footprint. This is not only miljömässigt ansvarigt without också ekonomiskt smart when energy costs forms a significant del of operational expenses.
 
 ### Tekniska lessons and architecture as code best practices
 
 **Infrastructure as Code as enabler**
-successful microservices implementation is omöjlig without robust Infrastructure as Code practices. each aspekt of systemet - from service deployment to network communication - must definieras declaratively and is managed through automated processes.
+successful microservices implementation is omöjlig without robust Infrastructure as Code practices. each aspekt of systemet - from service deployment to network communication - must are defined declaratively and is managed through automated processes.
 
 **Observability as fundamental requirement**
 in distribuerade systems can not observability behandlas as a efterkonstruktion. Monitoring, logging, and tracing must byggas in from början and vara comprehensive across all services and interactions.
