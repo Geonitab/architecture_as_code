@@ -18,7 +18,7 @@ Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where
 
 ```
 docs/
-├── 01_inledning.md                    # Introduktion and vision
+├── 01_introduction.md                    # Introduktion and vision
 ├── 02_grundlaggande_principer.md      # Fundamental Concepts
 ├── 03_versionhantering.md             # Git and version control
 ├── ...                                # Tekniska chapter (04-22)

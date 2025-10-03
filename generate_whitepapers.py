@@ -140,7 +140,7 @@ säkerhetsaspekter och organisatoriska förändringar som krävs för framgångs
 def get_chapter_mapping():
     """Return mapping of chapter files to readable chapter numbers."""
     return {
-        '01_inledning.md': 'Inledning',
+        '01_introduction.md': 'Inledning',
         '02_grundlaggande_principer.md': 'Kapitel 1',
         '03_versionhantering.md': 'Kapitel 2', 
         '04_adr.md': 'Kapitel 3',
@@ -148,7 +148,7 @@ def get_chapter_mapping():
         '06_molnarkitektur.md': 'Kapitel 5',
         '07_containerisering.md': 'Kapitel 6',
         '08_microservices.md': 'Kapitel 7',
-        '09_sakerhet.md': 'Kapitel 8',
+        '09_security.md': 'Kapitel 8',
         '10_policy_sakerhet.md': 'Kapitel 9',
         '11_compliance.md': 'Kapitel 10',
         '12_teststrategier.md': 'Kapitel 11',
@@ -161,8 +161,8 @@ def get_chapter_mapping():
         '19_lovable_mockups.md': 'Kapitel 18',
         '20_framtida_trender.md': 'Kapitel 19',
         '21_best_practices.md': 'Kapitel 20',
-        '22_slutsats.md': 'Kapitel 21',
-        '23_ordlista.md': 'Ordlista',
+        '22_conclusion.md': 'Kapitel 21',
+        '23_glossary.md': 'Ordlista',
         '24_om_forfattarna.md': 'Om författarna',
         '25_framtida_utveckling.md': 'Kapitel 22',
         '26_appendix_kodexempel.md': 'Appendix A',

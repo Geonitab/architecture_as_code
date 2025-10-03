@@ -46,9 +46,9 @@ class TestWhitepaperGeneration(unittest.TestCase):
         
         # Check for key chapters
         expected_files = [
-            '01_inledning.md',
+            '01_introduction.md',
             '05_automatisering_devops_cicd.md',  # Updated filename
-            '09_sakerhet.md',  # Updated numbering
+            '09_security.md',  # Updated numbering
             '25_framtida_utveckling.md',  # New chapter
             '27_teknisk_uppbyggnad.md'   # New chapter
         ]

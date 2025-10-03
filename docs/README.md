@@ -26,7 +26,7 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 1 | `01_inledning.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Infrastructure as Code |
+| 1 | `01_introduction.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Infrastructure as Code |
 | 2 | `02_grundlaggande_principer.md` | Fundamental Principles of Architecture as Code | Fundamental principles including declarative architecture definition and holistic perspective |
 | 3 | `03_versionhantering.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
@@ -41,7 +41,7 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 | 6 | `06_molnarkitektur.md` | Cloud Architecture as Code | Cloud-native architecture and IaC in cloud environments |
 | 7 | `07_containerisering.md` | Containerization and Orchestration as Code | Container-based Architecture as Code |
 | 8 | `08_microservices.md` | Microservices-Architecture as Code | Microservices patterns implemented through code |
-| 9 | `09_sakerhet.md` | Security in Architecture as Code | Security aspects and best practices |
+| 9 | `09_security.md` | Security in Architecture as Code | Security aspects and best practices |
 | 10 | `10_policy_sakerhet.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |
 | 11 | `11_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance in Swedish organizations |
 
@@ -68,8 +68,8 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 | 19 | `19_lovable_mockups.md` | Using Lovable to Create Mockups for Swedish Organizations | AI-driven development and prototyping |
 | 20 | `20_framtida_trender.md` | Future Trends in Architecture as Code | Development trends and technological future |
 | 21 | `21_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
-| 22 | `22_slutsats.md` | Conclusion | Concluding reflections |
-| 23 | `23_ordlista.md` | Glossary | Glossary and definitions |
+| 22 | `22_conclusion.md` | Conclusion | Concluding reflections |
+| 23 | `23_glossary.md` | Glossary | Glossary and definitions |
 | 24 | `24_om_forfattarna.md` | About the Authors | Information about the authors |
 
 ### Appendices

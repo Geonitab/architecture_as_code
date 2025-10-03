@@ -89,7 +89,7 @@ echo "Genererar PDF med Pandoc-konfiguration..."
 
 # Build chapter list with descriptive names
 CHAPTER_FILES=(
-    "01_inledning.md"
+    "01_introduction.md"
     "02_grundlaggande_principer.md"
     "03_versionhantering.md"
     "04_adr.md"
@@ -97,7 +97,7 @@ CHAPTER_FILES=(
     "06_molnarkitektur.md"
     "07_containerisering.md"
     "08_microservices.md"
-    "09_sakerhet.md"
+    "09_security.md"
     "10_policy_sakerhet.md"
     "11_compliance.md"
     "12_teststrategier.md"
@@ -110,8 +110,8 @@ CHAPTER_FILES=(
     "19_lovable_mockups.md"
     "20_framtida_trender.md"
     "21_best_practices.md"
-    "22_slutsats.md"
-    "23_ordlista.md"
+    "22_conclusion.md"
+    "23_glossary.md"
     "24_om_forfattarna.md"
     "25_framtida_utveckling.md"
     "26_appendix_kodexempel.md"

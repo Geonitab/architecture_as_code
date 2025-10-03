@@ -2,7 +2,7 @@
 
 ![Framgångsnycklar for architecture as code](images/diagram_22_slutsats.png)
 
-Architecture as Code has transformed how organisationer think about and handles IT-infrastructure. Through treating Architecture as Code has vi enabled same precision, processes and quality controls as long existed within software development. This journey genAbout the Books 25 chapter has shown the way from [Fundamental Concepts](01_inledning.md) to [future advanced technologies](21_framtida_trender.md).
+Architecture as Code has transformed how organisationer think about and handles IT-infrastructure. Through treating Architecture as Code has vi enabled same precision, processes and quality controls as long existed within software development. This journey genAbout the Books 25 chapter has shown the way from [Fundamental Concepts](01_introduction.md) to [future advanced technologies](21_framtida_trender.md).
 
 ## Viktiga lessons from vår Architecture as Code-journey
 
@@ -60,7 +60,7 @@ Investment in observability and monitoring from [säkerhetskapitlet](06_kapitel5
 
 Architecture as Code represents mer than only technical evolution - the is a fundamental change of how vi think about infrastructure. by embraca Architecture as Code-principles can organisationer achieve increased agility, reliability and scalability while the reduces operational kostnader and risker.
 
-Vår journey through This bok - from [introduktionen to Architecture as Code-konceptet](01_inledning.md), through [technical implementationsdetaljer](02_kapitel1.md) and [praktiska utvecklingsprocesser](03_kapitel2.md), to [advanced security strategies](12_kapitel11.md) and [framtida technologies](19_kapitel18.md) - shows to Architecture as Code is both a technical discipline and a Organizational transformation.
+Vår journey through This bok - from [introduktionen to Architecture as Code-konceptet](01_introduction.md), through [technical implementationsdetaljer](02_kapitel1.md) and [praktiska utvecklingsprocesser](03_kapitel2.md), to [advanced security strategies](12_kapitel11.md) and [framtida technologies](19_kapitel18.md) - shows to Architecture as Code is both a technical discipline and a Organizational transformation.
 
 successful implementation requires tålamod, uthållighet and commitment to continuous learning. Organisationer as investerar in to bygga robust Architecture as Code-capabilities position themselves for framtida teknologiska changes and konkurrensfordel at marknaden.
 
@@ -76,7 +76,7 @@ Bokens progression from teori to praktik, from Fundamental to avancerat, speglar
 
 Architecture as Code is not a destination without a continuous journey of learning, experimentation and improvement. the tools, processes and principles as is described in This bok will to is developed, but the fundamental koncepten about code-driven infrastructure, automation and reproducibility will to forbli relevanta.
 
-Which vi has sett genAbout the Books 23 chapter, from [Fundamental introduction](01_inledning.md) to [framtida visioner](19_kapitel18.md), represents Architecture as Code framtiden for IT operations. Organisationer as investerar in This journey idag creates foundation for morgondagens digitala success.
+Which vi has sett genAbout the Books 23 chapter, from [Fundamental introduction](01_introduction.md) to [framtida visioner](19_kapitel18.md), represents Architecture as Code framtiden for IT operations. Organisationer as investerar in This journey idag creates foundation for morgondagens digitala success.
 
 Sources:
 - Industry reports on Architecture as Code adoption trends

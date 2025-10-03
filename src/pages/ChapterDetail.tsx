@@ -13,7 +13,7 @@ const ChapterDetail = () => {
   const [error, setError] = useState<string | null>(null);
 
   const chapters = [
-    { id: "01", title: "Inledning till arkitektur som kod", area: "Del 1: Grunder", filename: "01_inledning.md" },
+    { id: "01", title: "Inledning till arkitektur som kod", area: "Del 1: Grunder", filename: "01_introduction.md" },
     { id: "02", title: "Grundläggande principer för Architecture as Code", area: "Del 1: Grunder", filename: "02_grundlaggande_principer.md" },
     { id: "03", title: "Versionhantering och kodstruktur", area: "Del 1: Grunder", filename: "03_versionhantering.md" },
     { id: "04", title: "Architecture Decision Records (ADR)", area: "Del 1: Grunder", filename: "04_adr.md" },
@@ -21,7 +21,7 @@ const ChapterDetail = () => {
     { id: "06", title: "Molnarkitektur som kod", area: "Del 2: Teknisk implementation", filename: "06_molnarkitektur.md" },
     { id: "07", title: "Containerisering och orkestrering som kod", area: "Del 2: Teknisk implementation", filename: "07_containerisering.md" },
     { id: "08", title: "Microservices-arkitektur som kod", area: "Del 2: Teknisk implementation", filename: "08_microservices.md" },
-    { id: "09", title: "Säkerhet i Architecture as Code", area: "Del 2: Teknisk implementation", filename: "09_sakerhet.md" },
+    { id: "09", title: "Säkerhet i Architecture as Code", area: "Del 2: Teknisk implementation", filename: "09_security.md" },
     { id: "10", title: "Policy och säkerhet som kod i detalj", area: "Del 2: Teknisk implementation", filename: "10_policy_sakerhet.md" },
     { id: "11", title: "Compliance och regelefterlevnad", area: "Del 2: Teknisk implementation", filename: "11_compliance.md" },
     { id: "12", title: "Teststrategier för infrastruktukod", area: "Del 3: Testning & drift", filename: "12_teststrategier.md" },
@@ -34,8 +34,8 @@ const ChapterDetail = () => {
     { id: "19", title: "Använd Lovable för att skapa mockups för svenska organisationer", area: "Del 4: Organisation & framtid", filename: "19_lovable_mockups.md" },
     { id: "20", title: "Framtida trender och teknologier", area: "Del 4: Organisation & framtid", filename: "20_framtida_trender.md" },
     { id: "21", title: "Best practices och lärda läxor", area: "Del 4: Organisation & framtid", filename: "21_best_practices.md" },
-    { id: "22", title: "Slutsats", area: "Del 4: Organisation & framtid", filename: "22_slutsats.md" },
-    { id: "23", title: "Ordlista", area: "Del 4: Organisation & framtid", filename: "23_ordlista.md" },
+    { id: "22", title: "Slutsats", area: "Del 4: Organisation & framtid", filename: "22_conclusion.md" },
+    { id: "23", title: "Ordlista", area: "Del 4: Organisation & framtid", filename: "23_glossary.md" },
     { id: "24", title: "Om författarna", area: "Del 4: Organisation & framtid", filename: "24_om_forfattarna.md" },
     { id: "25", title: "Framtida utveckling och trender", area: "Appendix", filename: "25_framtida_utveckling.md" },
     { id: "26", title: "Appendix: Kodexempel och tekniska implementationer", area: "Appendix", filename: "26_appendix_kodexempel.md" },
