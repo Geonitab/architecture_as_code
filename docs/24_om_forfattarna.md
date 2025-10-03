@@ -1,16 +1,16 @@
 # About the Authors
 
-This chapters presenterar the personer and organisationer which bidragit to skapandet of "Architecture as Code" - a comprehensive guide for praktisk toämpning of Infrastructure as Code in svenska organisationer.
+This chapters presenterar the personer and organisationer as bidragit to skapandet of "Architecture as Code" - a comprehensive guide for praktisk toämpning of Infrastructure as Code in svenska organisationer.
 
 ![Författare and bidragsgivare](images/diagram_25_authors.png)
 
-*a översikt over the experter and organisationer which format Contentset in This bok through sina bidrag within Architecture as Code and Infrastructure as Code (Architecture as Code).*
+*a Overview over the experter and organisationer as format Contentset in This bok through sina bidrag within Architecture as Code and Infrastructure as Code (Architecture as Code).*
 
 ## Huvudforfattare
 
 ### Kodarkitektur Bokverkstad
 
-**Kodarkitektur Bokverkstad** is den huvudsakliga redaktionella kraften bakom This publikation. Organisationen representerar a samling of svenska experter within architecture, infraStructure and systemutveckling which arbetat tosammans for to skapa a heltäckande resurs for svenska organisationer.
+**Kodarkitektur Bokverkstad** is The huvudsakliga redaktionella kraften bakom This publikation. Organisationen representerar a samling of svenska experter within architecture, infrastructure and systemutveckling as arbetat tosammans to skapa a heltäckande resurs for Swedish organizations.
 
 **Expertområden:**
 - Architecture as Code metodologi
@@ -20,7 +20,7 @@ This chapters presenterar the personer and organisationer which bidragit to skap
 - Security and compliance in svenska sammanhang
 
 **Background:**
-Bokverkstaden grundades with målet to överbrygga klyftan mellan teoretiska arkitekturprinciper and praktisk Architecture as Code-implementation in svenska organisationer. Through to kombinera akademisk rigorositet with verklig branschexpertis har teamet skapat a resurs which talar direkt to svenska IT-organisationers behov.
+Bokverkstaden grundades with målet to överbrygga klyftan mellan teoretiska arkitekturprinciper and praktisk Architecture as Code-implementation in svenska organisationer. by kombinera akademisk rigorositet with verklig branschexpertis har teamet skapat a resurs as talar direkt to svenska IT-organisationers behov.
 
 ## Bidragande experter
 
@@ -31,7 +31,7 @@ Bokverkstaden grundades with målet to överbrygga klyftan mellan teoretiska ark
 - **Molnarkitekter** from ledande svenska teknologiforetag
 - **DevOps Engineers** with specialistkunskap within automation
 - **Säkerhetsexperter** with fokus at svenska compliance-krav
-- **systems Architects** from both privata and offentliga organisationer
+- **system architects** from both privata and offentliga organisationer
 
 ### Tekniska granskare
 
@@ -50,17 +50,17 @@ Book content har granskats of:
 
 ## organizational bidrag
 
-### Kwhatrat AB
+### Kvadrat AB
 
-**Kwhatrat** har bidragit which technical partner and designstöd for This publikation. Which svenskt teknologikonsultforetag har Kwhatrat apporterat:
+**Kvadrat** har bidragit as technical partner and designstöd for This publikation. Which svenskt teknologikonsultforetag har Kvadrat apporterat:
 
 **design and varumärke:**
 - Professionell bokdesign and layout
-- Kwhatrat-varumärkesintegrering in designsystem
+- Kvadrat-varumärkesintegrering in designsystem
 - HTML/CSS-baserat omslag-designsystem
 - Responsiv and print-vänlig design
 
-**technical infraStructure:**
+**technical infrastructure:**
 - GitHub Actions CI/CD-pipeline utveckling
 - Automatiserad Pandoc-konfiguration
 - Mermaid diagrams integration and styling
@@ -101,7 +101,7 @@ the tekniska teamet bakom bokproduktionen includes:
 - Language validators for svensk terminologi
 - Accessibility specialists for universal design
 
-### Verktyg and technologies
+### Tools and technologies
 
 This bok skapades with hjälp of:
 
@@ -118,7 +118,7 @@ This bok skapades with hjälp of:
 
 ### Öppen källkod-community
 
-This bok builds on the enastående arbete which utforts of öppen källkod-communityn within:
+This bok builds on the enastående arbete as utforts of öppen källkod-communityn within:
 
 - **Terraform** - Infrastructure as Code foundation
 - **Ansible** - Configuration management automation  
@@ -137,17 +137,17 @@ This bok builds on the enastående arbete which utforts of öppen källkod-commu
 ### Akademiska institutioner
 
 - **KTH Royal Institute of Technology** - For forskningsperspektiv
-- **Linköpings universitet** - For systems architecture-expertis
+- **Linköpings universitet** - For system architecture-expertis
 - **Malmö universitet** - For användarcentrerad design-principles
 
 ## Framtida utveckling
 
 ### Kontinuerlig forbättring
 
-This bok is designad which a levande resurs which utvecklas with:
+This bok is designad as a levande resurs as utvecklas with:
 
 - **Community feedback** - Återkoppling from svenska organisationer
-- **technical evolution** - Uppdateringar when new verktyg and metoder utvecklas
+- **technical evolution** - Uppdateringar when new tools and metoder utvecklas
 - **Praktiska lessons** - Integration of new case studies and Architecture as Code best practices
 - **Språkutveckling** - Forfining of svensk technical terminologi
 
@@ -158,7 +158,7 @@ Vi välkomnar bidrag from svenska tekniska communityn:
 **Contentssbidrag:**
 - Case studies from verkliga implementationer
 - Best practices from svenska organisationer
-- new verktyg and technologies
+- new tools and technologies
 - Forbättrad språklig precision
 
 **Tekniska bidrag:**
@@ -177,7 +177,7 @@ For frågor, feedback or forslag to forbättringar:
 
 ## Licens and användning
 
-This bok distribueras under villkor which enables:
+This bok distribueras under villkor as enables:
 
 - **Fri distribution** for utbildningsändamål
 - **Anpassning** for organisationsspecifika behov
@@ -189,13 +189,13 @@ All återanvändning ska erkänna ursprungliga forfattare and bidragsgivare acco
 ## Summary
 
 
-Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-"Architecture as Code" representerar ett kollektivt arbete from svenska experter within architecture, infraStructure and systemutveckling. Through to kombinera teoretisk grund with praktisk expertis har This team skapat a resurs which specifikt möter svenska organisationers behov within Architecture as Code and Infrastructure as Code.
+The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+"Architecture as Code" representerar A kollektivt arbete from svenska experter within architecture, infrastructure and systemutveckling. by kombinera teoretisk grund with praktisk expertis har This team skapat a resurs as specifikt möter svenska organisationers behov within Architecture as Code and Infrastructure as Code.
 
-Bokens success kommer from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget for to skapa verklig värde for svenska tekniska organisationer. Vi hoppas to This resurs kommer to accelerera adoptionen of Architecture as Code-principles and bidra to forbättrade tekniska utfall over entire svenska tech-sektorn.
+Bokens success kommer from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to skapa verklig värde for svenska tekniska organisationer. Vi hoppas to This resurs kommer to accelerera adoptionen of Architecture as Code-principles and bidra to forbättrade tekniska utfall over entire svenska tech-sektorn.
 
 Sources:
-- Kwhatrat AB. "Swedish Technology Consulting Excellence." Foretagsprofil, 2024.
+- Kvadrat AB. "Swedish Technology Consulting Excellence." Foretagsprofil, 2024.
 - Svenska DevOps Community. "Infrastructure as Code Best Practices." Community Guidelines, 2024.
 - GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
 - Svenska Tekniska Standarder. "Technical Documentation in Swedish." Language Guidelines, 2024.

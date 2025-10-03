@@ -2,103 +2,103 @@
 
 ![Architecture as Code Core Concepts Class Diagram](images/diagram_23_ordlista_class.png)
 
-This Glossary Contentser definitioner of centrala termer which används genAbout the Book and which utgör grunden for Architecture as Code-metodiken.
+This Glossary Contentser definitioner of centrala termer as används genAbout the Book and as utgör grunden for Architecture as Code-metodiken.
 
-## Grundläggande concepts and verktyg
+## Fundamental Concepts and verktyg
 
-**API (Application Programming Interface):** Gränssnitt which enables kommunikation mellan olika mjukvarukomponenter or systems through standardiserade protokoll and dataformat.
+**API (Application Programming Interface):** Gränssnitt as enables kommunikation mellan olika mjukvarukomponenter or systems through standardiserade protokoll and dataformat.
 
 **Architecture as Code-automation:** Process where manuella uppgifter utfors automatically of datorsystem utan mänsklig intervention, that ökar effektivitet and minskar felrisk.
 
-**CI/CD (Continuous Integration/Continuous Deployment):** Utvecklingsmetodik which integrerar kodändringar kontinuerligt and automatiserar driftsättningsprocessen for snabbare and säkrare leveranser.
+**CI/CD (Continuous Integration/Continuous Deployment):** Utvecklingsmetodik as integrerar kodändringar kontinuerligt and automatiserar driftsättningsprocessen for snabbare and säkrare leveranser.
 
-**Cloud Computing:** Leverans of IT-tjänster which servrar, lagring and applikationer over internet with åtkomst at begäran and betalning per användning.
+**Cloud Computing:** Leverans of IT-tjänster as servrar, lagring and applikationer over internet with åtkomst at begäran and betalning per användning.
 
-**Containers:** Lätt virtualiseringsteknik which paketerar applikationer with all dependencies for portabel körning across olika miljöer and plattformar.
+**Containers:** Lätt virtualiseringsteknik as paketerar applikationer with all dependencies for portabel körning across olika miljöer and plattformar.
 
-**Deklarativ programming:** Programmeringsparadigm which beskriver desired slutresultat instead for specifika step for to uppnå the, which enables högre abstraktion.
+**Declarative programming:** Programmeringsparadigm as beskriver desired slutresultat instead for specifika step to uppnå the, which enables högre abstraktion.
 
-**DevOps:** cultural and technical approach which kombinerar utveckling (Dev) and drift (Ops) for snabbare leveranser and forbättrat samarbete mellan team.
+**DevOps:** cultural and technical approach as kombinerar utveckling (Dev) and drift (Ops) for snabbare leveranser and forbättrat samarbete mellan team.
 
-**Git:** Distribuerat versionhanteringssystem for to spåra ändringar in källkod under utveckling with support for branching and merging.
+**Git:** Distribuerat versionhanteringssystem to spåra ändringar in källkod under utveckling with support for branching and merging.
 
-**Idempotens:** Egenskap hos operationer which producerar same resultat oavsett how många gånger the körs, kritiskt for säker Architecture as Code-automation.
+**Idempotens:** Egenskap hos operationer as producerar same resultat oavsett how många gånger the körs, kritiskt for säker Architecture as Code-automation.
 
-**Infrastructure as Code (Architecture as Code) (Architecture as Code) (IaC):** Praktiken to hantera infraStructure through Architecture as Code instead for manuella processes, which enables version control and automation.
+**Infrastructure as Code (Architecture as Code) (Architecture as Code) (IaC):** Praktiken to hantera infrastructure through Architecture as Code instead for manuella processes, which enables version control and automation.
 
 **JSON (JavaScript Object Notation):** Textbaserat dataformat for Structureerad informationsutbyte mellan systems with human-readable syntax.
 
 **Kubernetes:** Öppen källkod containerorkestreringsplattform for automatiserad driftsättning, skalning and hantering of containeriserade applikationer.
 
-**Microservices:** Arkitekturell approach where applikationer byggs which små, oberoende tjänster which kommunicerar via väldefinierade API:er.
+**Microservices:** Arkitekturell approach where applikationer byggs as små, oberoende tjänster as kommunicerar via väldefinierade API:er.
 
-**Övervakning:** Kontinuerlig systemövervakning for to upptäcka problem, optimera prestanda and säkerställa togänglighet.
+**Övervakning:** Kontinuerlig systemövervakning to upptäcka problem, optimera prestanda and säkerställa togänglighet.
 
-**Orchestration:** Automatiserad koordination and hantering of komplexa arbetsflöden and systems for to uppnå desired state.
+**Orchestration:** Automatiserad koordination and hantering of komplexa arbetsflöden and systems to uppnå desired state.
 
-**Policy as Code:** Tovägagångssätt where säkerhets- and efterlevnadsregler definieras which code for automatiserad utvärdering and verkställande.
+**Policy as Code:** Tovägagångssätt where säkerhets- and efterlevnadsregler definieras as code for automatiserad utvärdering and verkställande.
 
-**Terraform:** Infrastructure as Code (Architecture as Code)-verktyg which använder deklarativ syntax for to definiera and hantera cloud infrastructure resources.
+**Terraform:** Infrastructure as Code (Architecture as Code)-verktyg as använder declarative syntax to definiera and hantera cloud infrastructure resources.
 
-**YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat which often används for konfigurationsfiler and Architecture as Code-definitioner.
+**YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat as often används for konfigurationsfiler and Architecture as Code-definitioner.
 
-**Zero Trust:** Säkerhetsmodell which aldrig litar at and alltid verifierar användare and enheter innan åtkomst to resurser beviljas.
+**Zero Trust:** Säkerhetsmodell as aldrig litar at and alltid verifierar användare and enheter innan åtkomst to resurser beviljas.
 
 ## Driftsättning and operationella concepts
 
-**Blå-grön driftsättning:** Driftsättningsstrategi where två identiska produktionsmiljöer (blå and grön) används for to möjliggöra snabb återställning and minimal stoeståndstid.
+**Blå-grön driftsättning:** Driftsättningsstrategi where två identiska produktionsmiljöer (blå and grön) används to möjliggöra snabb återställning and minimal stoeståndstid.
 
 **Canary Release:** gradually utrullningsstrategi where new versions forst deployeras to a liten subset of användare for riskminimering and validation.
 
-**Community of Practice:** Grupp of personer which parts passion for något the gör and lär itself to göra the bättre through regelbunden interaktion.
+**Community of Practice:** Grupp of personer as parts passion for något the gör and lär itself to göra the bättre through regelbunden interaktion.
 
-**Conway's Law:** Observation to organisationer designar systems which speglar deras kommunikationsStructureer.
+**Conway's Law:** Observation to organisationer designar systems as speglar deras kommunikationsStructureer.
 
-**Tvärfunktionellt team:** Team which includes withlemmar with olika färdigheter and roller which arbetar tosammans mot gemensamma mål.
+**Tvärfunktionellt team:** Team as includes withlemmar with olika färdigheter and roller as arbetar tosammans mot gemensamma mål.
 
-**GitOps:** Operational framework which använder Git which enda källa for sanning for deklarativ infraStructure and applikationer.
+**GitOps:** Operational framework as använder Git as enda källa for sanning for declarative infrastructure and applikationer.
 
-**Helm:** Pakethanterare for Kubernetes which använder charts for to definiera, installera and upgradera komplexa Kubernetes-applikationer.
+**Helm:** Pakethanterare for Kubernetes as använder charts to definiera, installera and upgradera komplexa Kubernetes-applikationer.
 
-**Service Discovery:** Mekanism which enables automatisk detektion and kommunikation mellan tjänster in distribuerade systems.
+**Service Discovery:** Mekanism as enables automatisk detektion and kommunikation mellan tjänster in distribuerade systems.
 
-**Service Mesh:** Dedikerad infraStructurelager which hanterar service-to-service-kommunikation, säkerhet and observability in mikroservicesarkitekturer.
+**Service Mesh:** Dedikerad infraStructurelager as hanterar service-to-service-kommunikation, säkerhet and observability in mikroservicesarkitekturer.
 
-**Edge Computing:** Distributerad databehandlingsparadigm which placerar beräkningsresurser whenmare datakällan for minskad latens and forbättrad prestanda.
+**Edge Computing:** Distributerad databehandlingsparadigm as placerar beräkningsresurser whenmare datakällan for minskad latens and forbättrad prestanda.
 
-**Post-Quantum Cryptography:** Kryptografiska algoritmer which is designade for to vara säkra mot angrepp from both klassiska and kvantumdatorer.
+**Post-Quantum Cryptography:** Kryptografiska algoritmer as is designade to vara säkra mot angrepp from both klassiska and kvantumdatorer.
 
-**Carbon-Aware Computing:** Approach for to optimera infraStructureanvändning baserat at kolintensitet and fornybara energiSources for minskad miljöpåverkan.
+**Carbon-Aware Computing:** Approach to optimera infraStructureanvändning baserat at kolintensitet and fornybara energiSources for minskad miljöpåverkan.
 
-**Oforänderlig infraStructure:** InfraStructureparadigm where components aldrig modifieras efter driftsättning utan ersätts helt when ändringar behövs.
+**Oforänderlig infrastructure:** InfraStructureparadigm where components aldrig modifieras efter driftsättning utan ersätts helt when ändringar behövs.
 
-**State Drift:** Situation where den faktiska infraStructuretoståndet avviker from den definierade desired toståndet in Infrastructure as Code-definitioner.
+**State Drift:** Situation where The faktiska infraStructuretoståndet avviker from The definierade desired toståndet in Infrastructure as Code-definitioner.
 
 ## Kostnadshantering and optimering
 
-**FinOps:** Disciplin which kombinerar finansiell hantering with molnoperationer for to maximera affärsvärdet of molninvesteringar through kostnadsoptimering and resource management.
+**FinOps:** Disciplin as kombinerar finansiell hantering with molnoperationer to maximera affärsvärdet of molninvesteringar through kostnadsoptimering and resource management.
 
-**Rightsizing:** Process for to optimera molnresurser through to matcha instance-storlekar and typer with faktiska prestandakrav and användningsmönster.
+**Rightsizing:** Process to optimera molnresurser by matcha instance-storlekar and typer with faktiska prestandakrav and användningsmönster.
 
-**Spot Instances:** Molninstanser which använder överskottskapacitet to kraftigt reducerade priser men can termineras with kort varsel when kapacitet behövs for on-demand användning.
+**Spot Instances:** Molninstanser as använder överskottskapacitet to kraftigt reducerade priser men can termineras with kort varsel when kapacitet behövs for on-demand användning.
 
-**Cost Allocation Tags:** Metadataetiketter which används for to kategorisera and spåra molnresurskostnader per projekt, team, miljö or andra organizational dimensioner.
+**Cost Allocation Tags:** Metadataetiketter as används to kategorisera and spåra molnresurskostnader per projekt, team, miljö or andra organizational dimensioner.
 
-**Cost Governance:** Ramverk of policies, processes and verktyg for to styra and kontrollera molnkostnader within a organisation.
+**Cost Governance:** Ramverk of policies, processes and verktyg to styra and kontrollera molnkostnader within a organisation.
 
-**Resource Quotas:** Begränsningar which sätts at how mycket of a viss resurs (CPU, minne, lagring) which can konsumeras within a given scope or namespace.
+**Resource Quotas:** Begränsningar as sätts at how mycket of a viss resurs (CPU, minne, lagring) which can konsumeras within a given scope or namespace.
 
 ## testing and kvalitetssäkring
 
 **Terratest:** Open source Go-bibliotek for automatiserad testing of Infrastructure as Code, särskilt designat for Terraform-moduler and cloud infrastructure.
 
-**Policy as Code:** Approach where organizational policies, säkerhetsregler and compliance-krav definieras which code and can automatically enforced and testade.
+**Policy as Code:** Approach where organizational policies, säkerhetsregler and compliance-krav definieras as code and can automatically enforced and testade.
 
-**OPA (Open Policy Agent):** Cloud-native policy engine which enables unified policy enforcement across olika services and technologies through deklarativ policy språk.
+**OPA (Open Policy Agent):** Cloud-native policy engine as enables unified policy enforcement across olika services and technologies through declarative policy språk.
 
-**Chaos Engineering:** Disciplin for to experimentellt introducera fel in systems for to bygga toit to systemets formåga to motstå turbulenta forhållanden in produktion.
+**Chaos Engineering:** Disciplin to experimentellt introducera fel in systems to bygga toit to systemets formåga to motstå turbulenta forhållanden in produktion.
 
-**Integration Testing:** testing which verifierar to olika components or services fungerar korrekt tosammans when the is integrerade in ett systems.
+**Integration Testing:** testing as verifierar to olika components or services fungerar korrekt tosammans when the is integrerade in A systems.
 
 **Compliance Testing:** Automatiserad validation of to systems and konfigurationer följer relevanta regulatoriska krav, säkerhetsstandarder and organizational policies.
 
@@ -106,36 +106,36 @@ This Glossary Contentser definitioner of centrala termer which används genAbout
 
 **Cloud-First Strategy:** Strategisk approach where organisationer primärt väljer molnbaserade lösningar for new IT-initiativ innan on-premises alternativ övervägs.
 
-**Digital Transformation:** Fundamental forändring of affärsoperationer and värdeleverans through integration of digital teknik in all aspekter of verksamheten.
+**Digital Transformation:** Fundamental change of affärsoperationer and värdeleverans through integration of digital teknik in all aspekter of verksamheten.
 
-**Multi-Cloud:** Strategi to använda molntjänster from flera olika leverantörer for to undvika vendor lock-in and optimera for specifika capabilities or kostnader.
+**Multi-Cloud:** Strategi to använda molntjänster from flera olika leverantörer to undvika vendor lock-in and optimera for specifika capabilities or kostnader.
 
-**Data Sovereignty:** Konceptet to digital data is underkastat lagarna and juridiktionen in the land where den lagras or bearbetas.
+**Data Sovereignty:** Konceptet to digital data is underkastat lagarna and juridiktionen in the land where The lagras or bearbetas.
 
-**Conway's Law:** Observation to organisationer designar systems which speglar deras kommunikationsStructureer, which påverkar how team bör organiseras for optimal systemdesign.
+**Conway's Law:** Observation to organisationer designar systems as speglar deras kommunikationsStructureer, which påverkar how team bör organiseras for optimal systemdesign.
 
-**Cross-functional Team:** Team which includes withlemmar with olika färdigheter and roller which arbetar tosammans mot gemensamma mål, essentiellt for DevOps-success.
+**Cross-functional Team:** Team as includes withlemmar with olika färdigheter and roller as arbetar tosammans mot gemensamma mål, essentiellt for DevOps-success.
 
-**DevOps Culture:** cultural transformation from traditionella utvecklings- and driftsilos to kollaborativa arbetssätt which betonar shared ownership and continuous improvement.
+**DevOps Culture:** cultural transformation from traditionella utvecklings- and driftsilos to kollaborativa arbetssätt as betonar shared ownership and continuous improvement.
 
 **Psychological Safety:** Teammiljö where withlemmar känner itself säkra to ta risker, erkänna misstag and experimentera utan rädsla for bestraffning or forödmjukelse.
 
-**Servant Leadership:** Ledarskapsfilosofi which fokuserar at to tjäna teamet and främja deras success snarare än traditionell kommando-and-kontroll-ledning.
+**Servant Leadership:** Ledarskapsfilosofi as fokuserar at to tjäna teamet and främja deras success snarare än traditionell kommando-and-kontroll-ledning.
 
 **Best Practice Evolution:** Kontinuerlig utveckling of rekommenderade metoder baserat at praktisk erfarenhet, community feedback and tekniska framsteg.
 
-**Anti-Pattern:** Vanligt forekommande men kontraproduktivt lösningsforslag which initialt verkar användbart men which leder to negativa konsekvenser.
+**Anti-Pattern:** Vanligt forekommande men kontraproduktivt lösningsforslag as initialt verkar användbart men as leder to negativa konsekvenser.
 
-**Policy-as-Code:** Metod where organizational policies, säkerhetsregler and compliance-krav definieras which code for automatiserad enforcement and testing.
+**Policy-as-Code:** Metod where organizational policies, säkerhetsregler and compliance-krav definieras as code for automatiserad enforcement and testing.
 
-**Infrastructure Governance:** Ramverk of policies, processes and verktyg for to styra and kontrollera infraStructureutveckling and -drift within organisationer.
+**Infrastructure Governance:** Ramverk of policies, processes and verktyg to styra and kontrollera infraStructureutveckling and -drift within organisationer.
 
-**Technical Debt:** Ackumulerad kostnad of shortcuts and suboptimala tekniska beslut which requires framtida refactoring or omarbetning for to bibehålla systemkvalitet.
+**Technical Debt:** Ackumulerad kostnad of shortcuts and suboptimala tekniska beslut as requires framtida refactoring or omarbetning to bibehålla systemkvalitet.
 
-**Blameless Culture:** Organisationskultur which fokuserar at systemforbättringar efter incidenter snarare än individuell skuld, which främjar öppenhet and lärande.
+**Blameless Culture:** Organisationskultur as fokuserar at systemforbättringar efter incidenter snarare än individuell skuld, which främjar öppenhet and lärande.
 
-**Change Management:** Systematisk approach for to hantera organizational forändringar, including stakeholder engagement, kommunikation and motståndhantering.
+**Change Management:** Systematisk approach to hantera organizational changes, including stakeholder engagement, kommunikation and motståndhantering.
 
-**DevSecOps:** Utvecklingsmetodik which integrerar säkerhetspraktiker through entire utvecklingslivscykeln snarare än which a separat fas in slutet.
+**DevSecOps:** Utvecklingsmetodik as integrerar säkerhetspraktiker through entire utvecklingslivscykeln snarare än as a separat fas in slutet.
 
-**Site Reliability Engineering (SRE):** Disciplin which toämpar mjukvaruingenjörsprinciper at operationella problem for to skapa skalbara and mycket toforlitliga mjukvarusystem.
+**Site Reliability Engineering (SRE):** Disciplin as toämpar mjukvaruingenjörsprinciper at operationella problem to skapa skalbara and mycket toforlitliga mjukvarusystem.

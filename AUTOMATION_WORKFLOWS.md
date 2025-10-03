@@ -58,7 +58,7 @@ This creates a professional PowerPoint presentation with:
 - Title slides for each chapter
 - Key bullet points and concepts
 - Swedish-language content optimized for architecture as code topics
-- Professional Kwhatrat branding and styling
+- Professional Kvadrat branding and styling
 
 ## Whitepaper Generation Workflow
 
@@ -87,11 +87,11 @@ The workflow runs when:
 
 ### Features
 Each whitepaper includes:
-- **Professional HTML design** - Modern, responsive layout with Kwhatrat branding
+- **Professional HTML design** - Modern, responsive layout with Kvadrat branding
 - **Swedish Content** - Optimized for Swedish organizations and compliance requirements
 - **Standalone Format** - Can be shared independently via email, web, or print
 - **SEO Optimized** - Proper meta tags and structured content
-- **Print-Ready** - CSS styling optimized for both screen and print withia
+- **Print-Ready** - CSS styling optimized for both screen and print media
 
 ## File Structure
 

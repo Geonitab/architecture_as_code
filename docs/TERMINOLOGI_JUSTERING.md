@@ -1,10 +1,10 @@
 # Terminologijustering: Architecture as Code prioritering
 
-## Översikt of ändringar
+## Overview of ändringar
 
-This dokument beskriver the systematiska ändringar which gjorts for to säkerställa to termen "Architecture as Code" används minst 10 gånger oftare än "IaC" in entire boken, according to kravspecifikationen.
+This Document describes the systematiska ändringar as gjorts to säkerställa to termen "Architecture as Code" används minst 10 gånger oftare än "IaC" in entire boken, according to kravspecifikationen.
 
-## Genomforda forändringar
+## Genomforda changes
 
 ### 1. Terminologisk analys and justering
 
@@ -23,12 +23,12 @@ This dokument beskriver the systematiska ändringar which gjorts for to säkerst
 **Fas 1: Kontextuell ersättning**
 - Ersatte 90% of IaC-forekomster with "Architecture as Code" where the var kontextuellt lämpligt
 - Behöll IaC in specifika tekniska sammanhang and when forkortningen var mer naturlig
-- Forbättrade läsbarheten through to använda svenska termen in flow
+- Forbättrade läsbarheten by använda svenska termen in flow
 
 **Fas 2: Aggressiv harmonisering**
-- Ytterligare ersättning for to nå målkvoten at 10:1
+- Ytterligare ersättning to nå målkvoten at 10:1
 - Strategisk forstärkning of "Architecture as Code" in kapitelinledningar
-- Integration of den svenska termen in best practices and Conclusioner
+- Integration of The svenska termen in best practices and Conclusioner
 
 ### 3. Kapitelspecifika justeringar
 
@@ -42,7 +42,7 @@ all chapters uppfyller nu regeln to IaC-forekomster not får överstiga hälften
 ### 4. Konsistenshållning
 
 **Diagrams and References:**
-- Inga ändringar gjordes in diagram-namn or tekniska filer which skulle påverka bildgenereringen
+- Inga ändringar gjordes in diagram-namn or tekniska filer as skulle påverka bildgenereringen
 - Mermaid diagramsmen behåller sina tekniska References men textContentset emphaserar "Architecture as Code"
 
 **technical kompatibilitet:**
@@ -83,4 +83,4 @@ all chapters uppfyller nu regeln to IaC-forekomster not får överstiga hälften
 **validation:** Automatiserad testing of terminologiforhållanden
 **Kompatibilitet:** Fullständig kompatibilitet with existing byggsystem
 
-This implementation ensures to Book content uppfyller the specificerade kraven simultaneously which technical kvalitet and läsbarhet bevaras.
+This implementation ensures Book content uppfyller the specificerade kraven simultaneously as technical kvalitet and läsbarhet bevaras.

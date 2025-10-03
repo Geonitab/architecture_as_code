@@ -1,6 +1,6 @@
 # Sammanställning of kvarvarande engelska uttryck in boken
 
-This sammanställning identifierar engelska uttryck which fortfarande finns in boken for to avgöra vilka which ska vara kvar at engelska and vilka which borde översättas to svenska.
+This sammanställning identifierar engelska uttryck as fortfarande finns in boken to avgöra vilka as ska vara kvar at engelska and vilka as borde översättas to svenska.
 
 ## Tekniska termer and akronymer
 
@@ -100,4 +100,4 @@ This sammanställning identifierar engelska uttryck which fortfarande finns in b
 
 ## Next Steps
 
-Baserat at This sammanställning can du avgöra vilka uttryck which ska behållas at engelska and vilka which ska översättas. Jag can sedan throughfora the översättningar du önskar systematiskt through entire boken.
+Baserat at This sammanställning can du avgöra vilka uttryck as ska behållas at engelska and vilka as ska översättas. Jag can sedan throughfora the översättningar du önskar systematiskt through entire boken.

@@ -1,13 +1,13 @@
 # Book Cover design - "Architecture as Code"
 
 ## Overview
-Professional book cover design for Kwhatrat's "Architecture as Code" publication. The design follows Kwhatrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
+Professional book cover design for Kvadrat's "Architecture as Code" publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
 
 ## design Variations
 
 ### Primary design (Dark Theme)
 **File:** `templates/book-cover-final.html`
-- Modern gradient background (Kwhatrat Blue to Dark Blue)
+- Modern gradient background (Kvadrat Blue to Dark Blue)
 - Advanced code architecture visual elements
 - Professional typography with highlighted "code" text
 - Suitable for both digital and print formats
@@ -40,8 +40,8 @@ The design is available in multiple high-resolution formats:
 - **JPEG**: Compressed format for digital distribution
 
 ### Digital Formats
-- **PNG**: Withium resolution for web use (150 DPI)
-- **JPEG**: Optimized for social withia and email
+- **PNG**: Medium resolution for web use (150 DPI)
+- **JPEG**: Optimized for social media and email
 - **SVG**: Vector format for infinite scalability
 
 ## Technical Specifications
@@ -52,7 +52,7 @@ The design is available in multiple high-resolution formats:
 - **Resolution**: 300 DPI for print, 150 DPI for screen
 
 ### Brand Compliance
-The design strictly follows Kwhatrat Brand Guidelines:
+The design strictly follows Kvadrat Brand Guidelines:
 
 #### Color Palette
 ```css
@@ -68,7 +68,7 @@ The design strictly follows Kwhatrat Brand Guidelines:
 - **Hierarchy**: Clear typography scale with proper contrast
 
 #### Logo
-- Kwhatrat "K" logo in white rounded square
+- Kvadrat "K" logo in white rounded square
 - Proper spacing and brand text
 - Consistent placement and sizing
 
@@ -95,7 +95,7 @@ The design strictly follows Kwhatrat Brand Guidelines:
 
 ### For Digital Distribution
 1. **High-quality web**: Use PNG 300 DPI version
-2. **Social withia**: Use JPEG 150 DPI version
+2. **Social media**: Use JPEG 150 DPI version
 3. **Email attachments**: Use compressed JPEG format
 
 ### For Further Editing
@@ -142,7 +142,7 @@ scripts/
 ## Quality Assurance
 
 ### Brand Guidelines Compliance
-- ✅ Kwhatrat color palette strictly followed
+- ✅ Kvadrat color palette strictly followed
 - ✅ Typography hierarchy maintained
 - ✅ Logo placement and sizing correct
 - ✅ Professional aesthetic aligned with brand
@@ -168,7 +168,7 @@ scripts/
 4. Update documentation if necessary
 
 ### Brand Updates
-If Kwhatrat brand guidelines change:
+If Kvadrat brand guidelines change:
 1. Update CSS custom properties in source files
 2. Regenerate all exports
 3. Verify compliance with new guidelines
@@ -184,5 +184,5 @@ For questions about the design or technical implementation:
 
 **design Version**: 1.0  
 **Created**: December 2024  
-**Brand Guidelines**: Kwhatrat v1.0  
+**Brand Guidelines**: Kvadrat v1.0  
 **Formats**: HTML/CSS, SVG, PDF, PNG, JPEG

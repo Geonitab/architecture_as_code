@@ -1,10 +1,10 @@
 # Appendix A: Kodexempel and tekniska architecture as code-implementationer
 
-This appendix Contentser all kodExample, konfigurationsfiler and tekniska implementeringar which refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde for to göra the enkelt to hitta specifika implementationer.
+This appendix Contentser all kodExample, konfigurationsfiler and tekniska implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to göra the enkelt to hitta specifika implementationer.
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 
-*This appendix fungerar which a praktisk referenssamling for all tekniska implementationer which demonstreras genAbout the Book. each kodExample is kategoriserat and märkt with References tobaka to relevanta chapters.*
+*This appendix fungerar as a praktisk referenssamling for all tekniska implementationer as demonstreras genAbout the Book. each kodExample is kategoriserat and märkt with References tobaka to relevanta chapters.*
 
 ## Navigering in appendix
 
@@ -25,9 +25,9 @@ each kodExample har a unik identifierare in formatet `[chapters]_CODE_[NUMMER]` 
 
 ## CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}
 
-This sektion Contentser all Example at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for svenska organisationer.
+This sektion Contentser all Example at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for Swedish organizations.
 
-### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline for svenska organisationer
+### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline for Swedish organizations
 *Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
@@ -101,7 +101,7 @@ jobs:
           echo "✅ GDPR compliance check genomförd"
 ```
 
-### 05_CODE_2: Jenkins Pipeline for svenska organisationer with GDPR compliance
+### 05_CODE_2: Jenkins Pipeline for Swedish organizations with GDPR compliance
 *Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
@@ -177,7 +177,7 @@ pipeline {
                 stage('Data Residency Validation') {
                     steps {
                         script {
-                            echo "🏔️ Validerar svenska data residency krav..."
+                            echo "🏔️ Validates svenska data residency krav..."
                             
                             def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1']
                             
@@ -201,13 +201,13 @@ pipeline {
                 stage('Cost Center Validation') {
                     steps {
                         script {
-                            echo "💰 Validerar kostnadscenter för svenska bokföring..."
+                            echo "💰 Validates kostnadscenter för svenska bokföring..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
                                 error("Ogiltigt kostnadscenter format. Använd: CC-XX-nnn")
                             }
                             
-                            // Validera to kostnadscenter existerar in företagets systems
+                            // Validate to kostnadscenter existerar in företagets systems
                             def validCostCenters = [
                                 'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
                             ]
@@ -285,7 +285,7 @@ pipeline {
                 stage('Svenska Policy Validation') {
                     steps {
                         script {
-                            echo "📋 Validerar svenska organisationspolicies..."
+                            echo "📋 Validates svenska organisationspolicies..."
                             
                             // Skapa svenska OPA policies
                             writeFile file: 'policies/svenska-tagging.rego', text: """
@@ -350,7 +350,7 @@ pipeline {
                             --out-file ../../../cost-summary.txt
                     """
                     
-                    // Validera kostnader mot svenska budgetgränser
+                    // Validate kostnader mot svenska budgetgränser
                     def costData = readJSON file: 'cost-estimate.json'
                     def monthlyCostSEK = costData.totalMonthlyCost as Double
                     
@@ -519,7 +519,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
     }
 }
 
-// testVPCFlowLogsEnabled validerar to VPC Flow Logs is aktiverade för GDPR compliance
+// testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade för GDPR compliance
 func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Hämta VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
@@ -541,7 +541,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
     require.NoError(t, err, "Failed to describe VPC flow logs")
 
-    // Validera to Flow Logs is aktiverade
+    // Validate to Flow Logs is aktiverade
     assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, "VPC Flow Logs should be enabled for GDPR compliance")
 
     for _, flowLog := range flowLogsOutput.FlowLogs {
@@ -552,21 +552,21 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ VPC Flow Logs aktiverade för GDPR compliance: %s", vpcID)
 }
 
-// testEncryptionAtRest validerar to all lagring is krypterad according to GDPR-krav
+// testEncryptionAtRest validates to all lagring is krypterad according to GDPR-krav
 func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Hämta KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
 
-    // Validera to KMS key is from Sverige region
+    // Validate to KMS key is from Sverige region
     assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
 
     t.Logf("✅ Encryption at rest validerat för GDPR compliance")
 }
 
-// testDataResidencySweden validerar to all infrastruktur is inom svenska gränser
+// testDataResidencySweden validates to all infrastruktur is inom svenska gränser
 func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Validera to VPC is in Stockholm region
+    // Validate to VPC is in Stockholm region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
     ec2Client := ec2.New(suite.AWSSession)
@@ -594,7 +594,7 @@ func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ Data residency validerat - all infrastruktur in EU region: %s", region)
 }
 
-// testAuditLogging validerar to audit logging is konfigurerat according to svenska lagkrav
+// testAuditLogging validates to audit logging is konfigurerat according to svenska lagkrav
 func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Kontrollera CloudTrail konfiguration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
@@ -613,7 +613,7 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validerar to all resurser har korrekta svenska tags
+// testSvenskaTagging validates to all resurser har korrekta svenska tags
 func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
@@ -649,7 +649,7 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
         vpcTagMap[*tag.Key] = *tag.Value
     }
 
-    // Validera obligatoriska tags
+    // Validate obligatoriska tags
     for _, requiredTag := range requiredTags {
         assert.Contains(t, vpcTagMap, requiredTag, "VPC should have required tag: %s", requiredTag)
         
@@ -675,9 +675,9 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 Architecture as Code-principerna within This område#cloudformation-Architecture as Code}
 
-This sektion Contentser CloudFormation templates for AWS-infraStructure anpassad for svenska organisationer.
+This sektion Contentser CloudFormation templates for AWS-infrastructure anpassad for Swedish organizations.
 
-### 07_CODE_1: VPC Setup for svenska organisationer with GDPR compliance
+### 07_CODE_1: VPC Setup for Swedish organizations with GDPR compliance
 *Refereras from chapters 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
@@ -835,9 +835,9 @@ class ComprehensiveIaCTesting:
 
 ## Configuration Files {#configuration}
 
-This sektion Contentser konfigurationsfiler for olika verktyg and tjänster.
+This sektion Contentser konfigurationsfiler for olika tools and tjänster.
 
-### 22_CODE_2: Governance policy configuration for svenska organisationer
+### 22_CODE_2: Governance policy configuration for Swedish organizations
 *Refereras from chapters 22: [Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```yaml
@@ -931,7 +931,7 @@ compliance_monitoring:
 
 ## References and navigering
 
-each kodExample in This appendix can refereras from huvudtexten with dess unika identifierare. For to hitta specifika implementationer:
+each kodExample in This appendix can refereras from huvudtexten with dess unika identifierare. to hitta specifika implementationer:
 
 1. **Använd sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
 2. **Följ kategorierna** - Navigera to relevant sektion baserat at användningwhichråde
@@ -940,7 +940,7 @@ each kodExample in This appendix can refereras from huvudtexten with dess unika 
 ### Konventioner for kodexempel
 
 - **Kommentarer**: all kodExample Contentser svenska kommentarer for klarhet
-- **Säkerhet**: Säkerhetsaspekter is markerade with 🔒
+- **Säkerhet**: Security aspects is markerade with 🔒
 - **GDPR-compliance**: GDPR-relaterade konfigurationer is markerade with 🇪🇺
 - **Svenska anpassningar**: Lokala anpassningar is markerade with 🇸🇪
 

@@ -1,14 +1,14 @@
-# Kwhatrat Brand Guidelines
+# Kvadrat Brand Guidelines
 ## Grafisk profil for Kodarkitektur Bokverkstad
 
-### Översikt
-This dokument definierar den kompletta grafiska profilen for all Kwhatrat-publikationer, including bok, whitepapers, presentationer and webbplats.
+### Overview
+This document defines The kompletta grafiska profilen for all Kvadrat-publikationer, including bok, whitepapers, presentationer and webbplats.
 
 ## Logotyp and Varumärke
 
 ### Huvudlogotyp
 - **Symbol**: Stiliserad "K" in kwhatratisk form
-- **Färg**: Kwhatrat Blå (#1e3a8a) at vit Background
+- **Färg**: Kvadrat Blå (#1e3a8a) at vit Background
 - **Alternativ**: Vit logotyp at mörk Background
 - **Minsta storlek**: 24px digitalt, 12mm print
 
@@ -44,9 +44,9 @@ This dokument definierar den kompletta grafiska profilen for all Kwhatrat-publik
 ```
 
 ### Färganvändning
-- **Kwhatrat Blå**: Primär färg for rubriker, logotyp, viktiga element
-- **Kwhatrat Ljusblå**: Accenter, interaktiva element, highlights
-- **Kwhatrat Mörkblå**: Brödtext, subheadings
+- **Kvadrat Blå**: Primär färg for rubriker, logotyp, viktiga element
+- **Kvadrat Ljusblå**: Accenter, interaktiva element, highlights
+- **Kvadrat Mörkblå**: Brödtext, subheadings
 - **Grå toner**: Sekunwhere text, borders, Backgrounder
 
 ## Typografi
@@ -57,12 +57,12 @@ This dokument definierar den kompletta grafiska profilen for all Kwhatrat-publik
 - **Fallback**: systems-ui, -apple-systems, sans-serif
 
 ### Hierarki
-- **H1**: 48-72px, font-weight: 800, Kwhatrat Mörkblå
-- **H2**: 32-48px, font-weight: 700, Kwhatrat Blå  
-- **H3**: 24-32px, font-weight: 600, Kwhatrat Mörkblå
-- **H4**: 20-24px, font-weight: 600, Kwhatrat Blå
-- **Body**: 16-18px, font-weight: 400, Kwhatrat Mörkblå
-- **Small**: 14px, font-weight: 400, Kwhatrat Grå
+- **H1**: 48-72px, font-weight: 800, Kvadrat Mörkblå
+- **H2**: 32-48px, font-weight: 700, Kvadrat Blå  
+- **H3**: 24-32px, font-weight: 600, Kvadrat Mörkblå
+- **H4**: 20-24px, font-weight: 600, Kvadrat Blå
+- **Body**: 16-18px, font-weight: 400, Kvadrat Mörkblå
+- **Small**: 14px, font-weight: 400, Kvadrat Grå
 
 ### Tekstegenskaper
 - **Line height**: 1.4-1.6 for optimal läsbarhet
@@ -89,7 +89,7 @@ xl: 32px
 
 ### Border radius
 - **Small**: 4px (buttons, small cards)
-- **Withium**: 8px (cards, containers)
+- **Medium**: 8px (cards, containers)
 - **Large**: 12px (hero elements, major cards)
 
 ## Visuella element
@@ -115,33 +115,33 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ### Ikoner
 - **Stil**: Outline style (Lucide React ikoner)
 - **Storlek**: 16px, 20px, 24px standardstorlekar
-- **Färg**: Följer textfärg or Kwhatrat Blå for accenter
+- **Färg**: Följer textfärg or Kvadrat Blå for accenter
 
 ## Mallar and implementation
 
 ### Webbplats
 - **Layout**: Grid-baserad with tydlig hierarki
-- **Navigation**: Enkel, ren navigation with Kwhatrat-färger
+- **Navigation**: Enkel, ren navigation with Kvadrat-färger
 - **Cards**: Avrundade hörn, subtila skuggor, tydliga borders
-- **Buttons**: Kwhatrat Blå primär, outline sekunwhere
+- **Buttons**: Kvadrat Blå primär, outline sekunwhere
 
 ### Presentations
 - **Format**: 16:9 widescreen (1280x720px)
-- **Master**: Kwhatrat-header with logotyp and sidnummer
-- **Background**: Kwhatrat gradient or ljus Background
+- **Master**: Kvadrat-header with logotyp and sidnummer
+- **Background**: Kvadrat gradient or ljus Background
 - **Typografi**: Stora, läsbara fonter
 
 ### PDF/Bok
 - **Format**: A4 (210x297mm)
 - **Marginaler**: 25mm at all sidor
 - **Header**: Kapiteltitel and sidnummer
-- **Footer**: Kwhatrat branding
+- **Footer**: Kvadrat branding
 - **Färger**: Optimerade for both skärm and print
 
 ### Whitepapers
 - **Format**: A4 professionell layout
-- **Header**: Kwhatrat logotyp and foretagsinformation
-- **Typografi**: Hierarkisk Structure with Kwhatrat-färger
+- **Header**: Kvadrat logotyp and foretagsinformation
+- **Typografi**: Hierarkisk Structure with Kvadrat-färger
 - **Callouts**: Färgkodade informationsboxar
 
 ## Accessibility Guidelines
@@ -149,8 +149,8 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ### Färgkontrast
 - **AA Standard**: Minst 4.5:1 for normal text
 - **AAA Standard**: Minst 7:1 for stor text
-- **Kwhatrat Blå at vit**: ✅ 8.2:1 ratio
-- **Kwhatrat Grå at vit**: ✅ 4.7:1 ratio
+- **Kvadrat Blå at vit**: ✅ 8.2:1 ratio
+- **Kvadrat Grå at vit**: ✅ 4.7:1 ratio
 
 ### Responsiv design
 - **Breakpoints**:
@@ -162,7 +162,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ## Användningsexempel
 
 ### Korrekt användning
-✅ Kwhatrat Blå for primära knappar and länkar
+✅ Kvadrat Blå for primära knappar and länkar
 ✅ Konsekvent spacing according to scale
 ✅ Korrekt typografihierarki
 ✅ Lämplig friyta runt logotyp
@@ -179,31 +179,31 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 
 ### Webbplats
 - [ ] CSS custom properties konfigurerade
-- [ ] Tailwind config uppdaterad with Kwhatrat-färger
-- [ ] Typografi korrekt implementerad
+- [ ] Tailwind config uppdaterad with Kvadrat-färger
+- [ ] Typografi korrekt implemented
 - [ ] components följer design systems
 - [ ] Responsiv design testad
 
 ### PDF/Bok
-- [ ] LaTeX template with Kwhatrat-branding
+- [ ] LaTeX template with Kvadrat-branding
 - [ ] Korrekta färger for print
 - [ ] Typografi optimerad for läsbarhet
 - [ ] Logotyp korrekt placerad
 
 ### Presentations
 - [ ] Master slides skapade
-- [ ] Kwhatrat-färger implementerade
+- [ ] Kvadrat-färger implementerade
 - [ ] Konsekvent layout mellan slides
 - [ ] Läsbara fonts in all storlekar
 
 ### Whitepapers
 - [ ] Template HTML/CSS skapad
-- [ ] Professional layout implementerad
-- [ ] Kwhatrat branding konsekvent
+- [ ] Professional layout implemented
+- [ ] Kvadrat branding konsekvent
 - [ ] Print-optimerad styling
 
 ## Kontakt for brand guidelines
 For frågor about grafisk profil or implementation:
-- **E-post**: brand@kwhatrat.se
+- **E-post**: brand@Kvadrat.se
 - **Dokumentversion**: 1.0
 - **Senast uppdaterad**: December 2024

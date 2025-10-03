@@ -1,25 +1,25 @@
 # technical uppbyggnad for bokproduktion
 
-This chapters beskriver den tekniska infraStructureen and arbetsflödet which används for to skapa, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk toämpning of Architecture as Code-principerna through to använda code for to definiera and automatisera entire bokproduktionsprocessen.
+This chapters beskriver The tekniska infraStructureen and arbetsflödet as används to skapa, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk toämpning of Architecture as Code-principerna by använda code to definiera and automatisera entire bokproduktionsprocessen.
 
 ![technical architecture for bokproduktion](images/diagram_27_teknisk_uppbyggnad.png)
 
-*Diagrammet illustrerar the comprehensive tekniska systemet which driver bokproduktionen, from markdown-Sources via automatiserade pipelines to slutliga publikationer.*
+*Diagram illustrerar the comprehensive tekniska systemet as driver bokproduktionen, from markdown-Sources via automatiserade pipelines to slutliga publikationer.*
 
 ![Architecture Data Model](images/diagram_27_er_architecture.png)
 
-Ovanstående entitetsrelationsdiagram shows den logiska dataStructureen for how organisationer, projekt, infraStructure and deployments relaterar to varandra in a Architecture as Code-Architecture as Code-implementation.
+Ovanstående entitetsrelationsdiagram shows The logiska dataStructureen for how organisationer, projekt, infrastructure and deployments relaterar to varandra in a Architecture as Code-Architecture as Code-implementation.
 
 ## Markdown-filer: Structure and syfte
 
 ### Filorganisation and namnkonvention
 
-Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where each fil representerar ett chapters:
+Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where each File representerar A chapters:
 
 ```
 docs/
 ├── 01_inledning.md                    # Introduktion och vision
-├── 02_grundlaggande_principer.md      # Grundläggande concepts
+├── 02_grundlaggande_principer.md      # Fundamental Concepts
 ├── 03_versionhantering.md             # Git och version control
 ├── ...                                # Tekniska chapters (04-22)
 ├── 23_slutsats.md                     # Avslutning
@@ -31,14 +31,14 @@ docs/
 
 ### Markdown-struktur and semantik
 
-each chapters följer a konsistent Structure which optimerar both läsbarhet and maskinell bearbetning:
+each chapters följer a konsistent Structure as optimerar both läsbarhet and maskinell bearbetning:
 
 ```markdown
 # Kapiteltitel (H1 - creates ny sida in PDF)
 
-Introduktionstext med kort beskrivning of kapitlets innehåll.
+Introduktionstext med kort Description of kapitlets innehåll.
 
-![Diagramtitel beskrivning](images/diagram_01_beskrivande_namn.png)
+![Diagramtitel Description](images/diagram_01_beskrivande_namn.png)
 
 *Bildtext as förklarar diagrammets innehåll.*
 
@@ -53,7 +53,7 @@ Introduktionstext med kort beskrivning of kapitlets innehåll.
 
 ### Automatisk innehållsgenerering
 
-Systemet använder `generate_book.py` for to automatically generera and uppdatera kapitelContents:
+Systemet använder `generate_book.py` to automatically generera and uppdatera kapitelContents:
 
 - **Iterativ generering**: creates Contents in kontrollerade batch-processes
 - **Mermaid-integration**: Automatisk generering of diagram-placeholders
@@ -67,7 +67,7 @@ Systemet använder `generate_book.py` for to automatically generera and uppdater
 Pandoc-konverteringen styrs of `pandoc.yaml` which definierar all format-specifika inställningar:
 
 ```yaml
-# Grundläggande inställningar
+# Fundamental inställningar
 standalone: true
 toc: true
 toc-depth: 3
@@ -171,7 +171,7 @@ jobs:
 **Presentation Generation** (`generate-presentations.yml`):
 - PowerPoint-material from bokkapitel
 - Structureerade presentationsoutlines
-- Kwhatrat-branding and professionell styling
+- Kvadrat-branding and professionell styling
 
 **Whitepaper Generation** (`generate-whitepapers.yml`):
 - Individuella HTML-dokument per chapters
@@ -207,7 +207,7 @@ def generate_presentation_outline():
 Systemet genererar:
 - **Presentation outline**: Structureerad markdown with nyckelbudskap
 - **Python PowerPoint-script**: Automatisk slide-generering
-- **Kwhatrat-branding**: Konsistent visuell identitet
+- **Kvadrat-branding**: Konsistent visuell identitet
 - **Contentssoptimering**: Anpassat for muntlig presentation
 
 ### Distribution and användning
@@ -229,7 +229,7 @@ Resultatet is professionella PowerPoint-presentationer optimerade for:
 
 ### Omslag-designsystem
 
-Bokens omslag are created through ett HTML/CSS-baserat designsystem:
+Bokens omslag are created through A HTML/CSS-baserat designsystem:
 
 ```
 exports/book-cover/
@@ -243,9 +243,9 @@ exports/book-cover/
     └── generate_book_cover_exports.py
 ```
 
-### Kwhatrat-varumärkesintegrering
+### Kvadrat-varumärkesintegrering
 
-Designsystemet implementerar Kwhatrat-identiteten:
+Designsystemet implementerar Kvadrat-identiteten:
 
 ```css
 :root {
@@ -267,19 +267,19 @@ Designsystemet implementerar Kwhatrat-identiteten:
 
 `generate_whitepapers.py` creates standalone HTML-dokument:
 
-- **26 individuella whitepapers**: Ett per chapters
+- **26 individuella whitepapers**: A per chapters
 - **Professionell HTML-design**: Responsiv and print-vänlig
-- **Svenska anpassningar**: Optimerat for svenska organisationer
+- **Svenska anpassningar**: Optimerat for Swedish organizations
 - **SEO-optimering**: Korrekt meta-data and Structure
 - **Distribution-vänligt**: can delas via e-post, webb or print
 
 ## technical architecture and systemintegration
 
-### holistic view at arkitekturen
+### holistic view at architecture
 
 Entire systemet exemplifierar Architecture as Code through:
 
-1. **codified Contentsshantering**: Markdown which källa for sanning
+1. **codified Contentsshantering**: Markdown as källa for sanning
 2. **Automatiserad pipeline**: Ingen manuell intervention krävs
 3. **version control**: Fullständig historik over all ändringar
 4. **reproducibility**: Identiska builds from same källkod
@@ -288,7 +288,7 @@ Entire systemet exemplifierar Architecture as Code through:
 ### Kvalitetssäkring and testing
 
 - **Automatiserad validation**: Kontinuerlig kontroll of Contents and format
-- **Build-verification**: ensures to all format genereras korrekt
+- **Build-verification**: ensures all format genereras korrekt
 - **Performance-monitoring**: Spårning of build-tider and resursanvändning
 - **Error-hantering**: Robusta felwithdelanden and återställningsmekanismer
 
@@ -303,8 +303,8 @@ Systemet is designat for kontinuerlig forbättring:
 ## Summary
 
 
-Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Den tekniska uppbyggnaden for "Architecture as Code" demonstrerar praktisk toämpning of bokens egna principles. Through to kodifiera entire publikationsprocessen uppnås:
+The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+The tekniska uppbyggnaden for "Architecture as Code" demonstrerar praktisk toämpning of bokens egna principles. by kodifiera entire publikationsprocessen uppnås:
 
 - **Architecture as Code-automation**: Komplett CI/CD for bokproduktion
 - **Kvalitet**: Konsistent format and professionell presentation
@@ -312,7 +312,7 @@ Den tekniska uppbyggnaden for "Architecture as Code" demonstrerar praktisk toäm
 - **scalability**: Enkelt to utöka with nytt Contents and format
 - **Transparens**: Öppen källkod and dokumenterad process
 
-This tekniska systems fungerar which a konkret illustration of how Architecture as Code-principerna can toämpas även utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
+This tekniska systems fungerar as a konkret illustration of how Architecture as Code-principerna can toämpas även utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
 
 Sources:
 - GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.

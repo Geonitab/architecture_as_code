@@ -1,8 +1,8 @@
 # EPUB Validation Documentation
 
-## Översikt
+## Overview
 
-This projekt includes automatisk validation of EPUB-filer with hjälp of EPUBCheck for to säkerställa to genererade EPUB-filer följer EPUB-standarden and fungerar korrekt in olika läsare.
+This projekt includes automatisk validation of EPUB-filer with hjälp of EPUBCheck to säkerställa to genererade EPUB-filer följer EPUB-standarden and fungerar korrekt in olika läsare.
 
 ## EPUBCheck
 
@@ -37,7 +37,7 @@ sudo chmod +x /usr/local/bin/epubcheck
 
 EPUB-validation is integrerad in byggprocessen:
 
-1. **`docs/build_book.sh`**: Validerar EPUB-fil efter generering
+1. **`docs/build_book.sh`**: Validates EPUB-File efter generering
 2. **`generate_book.py`**: Kontrollerar existing EPUB-filer
 3. **GitHub Actions**: Automatisk validation in CI/CD-pipeline
 
@@ -45,8 +45,8 @@ EPUB-validation is integrerad in byggprocessen:
 
 Valideringen producerar följande typer of problem:
 
-- **FATAL**: Kritiska fel which gör EPUB-filen oanvändbar
-- **ERROR**: Fel which can påverka kompatibilitet
+- **FATAL**: Kritiska fel as gör EPUB-filen oanvändbar
+- **ERROR**: Fel as can påverka kompatibilitet
 - **WARNING**: Varningar for mindre problem
 - **INFO**: Informationswithdelanden
 
@@ -64,13 +64,13 @@ Valideringsresultat sparas in:
 Ny testfil `tests/test_epub_validation.py` Contentser:
 
 ```python
-# Grundläggande tester
+# Fundamental tester
 test_epubcheck_available()           # EPUBCheck is tillgängligt
-test_epub_file_exists()             # EPUB-fil finns
+test_epub_file_exists()             # EPUB-File finns
 test_epub_file_validation()         # Komplett valideringstest
 test_release_epub_validation()      # Release EPUB-validation
 test_epub_metadata_present()        # Metadata is närvarande
-test_epub_structure_integrity()     # Grundläggande strukturintegritet
+test_epub_structure_integrity()     # Fundamental strukturintegritet
 ```
 
 ### Köra Tester
@@ -116,7 +116,7 @@ epubcheck docs/arkitektur_som_kod.epub
 # Verbose utdata
 epubcheck -v docs/arkitektur_som_kod.epub
 
-# Spara utdata till fil
+# Spara utdata till File
 epubcheck docs/arkitektur_som_kod.epub > validation-debug.log 2>&1
 ```
 
@@ -161,7 +161,7 @@ validate_epub "$OUTPUT_EPUB"
 
 ### Godkänd validation
 
-a EPUB-fil anses godkänd about:
+a EPUB-File anses godkänd about:
 - **0 fatala fel** (FATAL count = 0)
 - **≤10 fel** (ERROR count ≤ 10)
 - **Varningar accepterade** (WARNING count ignoreras)
@@ -187,8 +187,8 @@ EPUB-validation is integrerad in `.github/workflows/unified-build-release.yml`:
 
 1. **EPUBCheck-installation** under systemdependenser
 2. **Automatisk validation** under byggprocessen
-3. **Valideringsloggar** sparas which artefakter
-4. **testing** which a del of kvalitetskontroll
+3. **Valideringsloggar** sparas as artefakter
+4. **testing** as a del of kvalitetskontroll
 
 ### Felhantering
 
