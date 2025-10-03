@@ -1,14 +1,14 @@
 # Version Control and Code Structure
 
-Effektiv versionhantering utgör ryggraden in Infrastructure as Code-implementationer. Through to toämpa same metoder which mjukvaruutveckling at infraStructuredefinitioner are created spårbarhet, samarbetsmöjligheter and kvalitetskontroll.
+Effektiv versionhantering utgör ryggraden in Infrastructure as Code-implementationer. by toämpa same metoder as mjukvaruutveckling at infraStructuredefinitioner are created spårbarhet, samarbetsmöjligheter and kvalitetskontroll.
 
 ![Version Control and Code Structure](images/diagram_03_kapitel2.png)
 
-Diagrammet illustrerar the typiska flow from Git repository through branching strategy and code review to slutlig deployment, which ensures kontrollerad and spårbar infraStructureutveckling.
+Diagram illustrerar the typiska flow from Git repository through branching strategy and code review to slutlig deployment, that ensure kontrollerad and spårbar infraStructureutveckling.
 
 ## Git-baserad arbetsflöde for infrastruktur
 
-Git utgör standarden for versionhantering of IaC-code and enables distribuerat samarbete mellan team-withlemmar. each forändring dokumenteras with commit-withdelanden which beskriver what that ändrats and why, which creates a komplett historik over infraStructureutvecklingen.
+Git utgör standarden for versionhantering of IaC-code and enables distribuerat samarbete between team-withlemmar. each change dokumenteras with commit-withdelanden as describes what that ändrats and why, which creates a komplett history of infraStructureutvecklingen.
 
 ## Kodorganisation and modulstruktur
 

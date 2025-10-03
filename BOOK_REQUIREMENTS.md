@@ -1,16 +1,16 @@
-# Kravspecifikation for "architecture which code"
+# Kravspecifikation for "architecture as code"
 
-## Översikt
+## Overview
 
-This dokument definierar the comprehensive kraven for Contentset in boken "Architecture as Code" - a technical bok which täcker Architecture as Code from grundläggande principles to avancerad implementation.
+This document defines the comprehensive kraven for Contentset in boken "Architecture as Code" - a technical bok as täcker Architecture as Code from Fundamental principles to avancerad implementation.
 
 ## 1. Target Audience (Target Audience)
 
 ### Primär målgrupp
-- **systems Architects** (5-15 års erfarenhet): Behöver fordjupad forståelse for how traditionella arkitekturprinciper appliceras in koddriven miljö
+- **system architects** (5-15 års erfarenhet): Behöver fordjupad forståelse for how traditionella arkitekturprinciper appliceras in koddriven miljö
 - **DevOps Engineers** (3-10 års erfarenhet): Vill expandera from infraStructureautomation to helhetslösningar
-- **Developers** (3-12 års erfarenhet): Söker forståelse for arkitektoniska beslut and kodStructure at systemnivå
-- **Project Managers** (5-15 års erfarenhet): Behöver inblick in tekniska aspekter for to leda transformation
+- **Developers** (3-12 års erfarenhet): Söker forståelse for arkitektoniska beslut and kodStructure at system level
+- **Project Managers** (5-15 års erfarenhet): Behöver inblick in tekniska aspekter to leda transformation
 - **IT Managers** (8-20 års erfarenhet): Vill forstå strategiska Benefits and organizational implikationer
 
 ### Sekunwhere målgrupp
@@ -20,22 +20,22 @@ This dokument definierar the comprehensive kraven for Contentset in boken "Archi
 - **Säkerhetsspecialister** which behöver forstå arkitekturautomation
 
 ### Förkunskapskrav
-- Grundläggande forståelse for molnplattformar (AWS, Azure, GCP)
+- Fundamental forståelse for molnplattformar (AWS, Azure, GCP)
 - Erfarenhet of version control (Git)
-- Kunskap about minst ett programmeringsspråk
+- Knowledge about minst A programmeringsspråk
 - Forståelse for CI/CD-concepts
-- Grundläggande Unix/Linux-kunskaper
+- Fundamental Unix/Linux-knowledge
 
 ## 2. Centrala Teman (Core Themes)
 
 ### Huvudtema: Architecture as Code
-**definition**: Praktiken to describe, versionhantera and automatisera entire systemarkitekturen through maskinläsbar code, which encompasses infraStructure, applikationer, data flows, säkerhetspolicies and organizational processes.
+**definition**: Praktiken to describe, versionhantera and automatisera entire system architecture through maskinläsbar code, which encompasses infrastructure, applikationer, data flows, security policies and organizational processes.
 
 ### Underteman (23 chapters)
 
-#### A. Grundläggande concepts (chapters 1-3)
+#### A. Fundamental Concepts (chapters 1-3)
 - **Teoretisk grund**: Evolution from manuella processes to koddriven architecture
-- **Principiell forståelse**: Deklarativ vs. imperative code, immutabilitet, idempotens
+- **Principiell forståelse**: Declarative vs. imperative code, immutabilitet, idempotens
 - **version control**: KodStructure, branching-strategier, merge-processes
 
 #### B. Praktisk implementation (chapters 4-8)
@@ -48,9 +48,9 @@ This dokument definierar the comprehensive kraven for Contentset in boken "Archi
 #### C. Organisatorisk Transformation (chapters 9-13)
 - **Digitalisering**: Transformationsstrategier, change management
 - **TeamStructureer**: DevOps-kultur, cross-funktionella team
-- **Projektledning**: Agile metoder for infraStructure, risk management
-- **Innovation**: Experimentell utveckling, prototyping
-- **Produktutveckling**: Architecture as Code which enabler for produktteam
+- **Projektledning**: Agile metoder for infrastructure, risk management
+- **Innovation**: Experimentell development, prototyping
+- **Produktutveckling**: Architecture as Code as enabler for produktteam
 
 #### D. Styrning and Optimering (chapters 14-17)
 - **Compliance**: Regelefterlevnad, auditspår, policy as code
@@ -70,32 +70,32 @@ This dokument definierar the comprehensive kraven for Contentset in boken "Archi
 ### Bokens övergripande struktur
 **Format**: 23 chapters + appendix (Glossary, About the Authors)
 **Omfattning**: ~200-300 sidor total
-**Språk**: Svenska (with engelska termer in parentes vid forsta användning)
+**Språk**: Svenska (with engelska termer in parentes at forsta use)
 
-### Kapitelstruktur (Standardmall)
+### Chapter Structure (Standardmall)
 each chapters följer a konsistent Structure at 8-12 sidor:
 
 #### 3.1 Kapiteluppbyggnad
 1. **Huvudrubrik (H1)** - Kapitelnamn
 2. **Ingresstext** (150-200 ord) - Kapitelets Purpose and Contents
-3. **Huvuddiagram** - Mermaid diagrams which illustrerar kapitelets huvudkoncept
+3. **Huvuddiagram** - Mermaid diagrams as illustrerar kapitelets huvudkoncept
 4. **Teoretisk grund** (800-1200 ord) - Konceptuell forklaring
 5. **Practical implementation** (1200-1800 ord) - Konkreta Example and kodlösningar
 6. **Svenska compliance-aspekter** (400-600 ord) - Specifika krav and Recommendations
-7. **Verktyg and technologies** (600-800 ord) - Specifika lösningar and alternativ
+7. **Tools and technologies** (600-800 ord) - Specifika lösningar and alternativ
 8. **Best practices** (400-600 ord) - Recommendations and antipatterns
 9. **Summary** (200-300 ord) - Nyckelpoäng and take-aways
 10. **Sources and References** - Akademiska and industriella Sources
 
 #### 3.2 Tvärgående struktur
-- **Progressiv komplexitet**: each chapters builds on tidigare kunskap
+- **Progressiv komplexitet**: each chapters builds on previous knowledge
 - **Återkommande Example**: same fiktiva organisation används through entire boken
-- **Cross-References**: explicitly koppling mellan relaterade chapters
+- **Cross-References**: explicitly koppling between relaterade chapters
 - **Praktisk orientering**: Minst 60% practical Contents vs 40% teori
 
 ### Sektionsindelning
 #### Del in: Grund (chapters 1-3)
-Introduktion to Architecture as Code, grundläggande principles and kodStructure
+Introduktion to Architecture as Code, Fundamental principles and kodStructure
 
 #### Del II: implementation (chapters 4-8) 
 Practical implementation of automation, molnarkitektur and säkerhet
@@ -113,11 +113,11 @@ Framtidstrender, best practices and Summary
 
 ### Djupnivåer per kapiteltyp
 
-#### Grundläggande chapters (1-3): Konceptuell nivå
+#### Fundamental chapters (1-3): Konceptuell nivå
 - **Teori**: 70% - Forklaring of concepts and principles
 - **Praktik**: 30% - Enkla Example and demonstrationer
 - **KodExample**: Pseudo-code and enkla script
-- **Target Audience**: all läsare ska kunna följa
+- **Target Audience**: all läsare ska be able to följa
 
 #### Implementationskapitel (4-8): Interwithiär nivå
 - **Teori**: 40% - Fordjupade tekniska concepts
@@ -161,7 +161,7 @@ Framtidstrender, best practices and Summary
 ## 5. Example and Diagram (Examples and Diagrams)
 
 ### Genomgående case study
-**"Svenska Teknik AB"** - a fiktiv withelstörr technical organisation which används which huvudExample through entire boken:
+**"Svenska Teknik AB"** - a fiktiv withelstörr technical organisation as används as huvudExample through entire boken:
 - **Storlek**: 200 anställda, 15 Developers
 - **operations**: SaaS-plattform for svensk marknad
 - **Utmaning**: Migration from on-premise to cloud-native
@@ -194,7 +194,7 @@ graph LR
 1. **Problemställning** (2-3 rader text)
 2. **Lösning** (kodblock with syntax highlighting)
 3. **Forklaring** (4-6 rader kommentar)
-4. **Variation/alternativ** (vid behov)
+4. **Variation/alternativ** (at behov)
 
 **Example - Terraform infrastructure**:
 ```hcl
@@ -211,14 +211,14 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
   
   tags = {
     miljö = "produktion"
-    kostnadsställe = "utveckling"
+    kostnadsställe = "development"
   }
 }
 ```
 
 #### 5.3 Praktiska scenarios
 **Per chapters minst 2-3 scenarios**:
-- **Scenario 1**: Grundläggande implementation
+- **Scenario 1**: Fundamental implementation
 - **Scenario 2**: Mellankomplicerad lösning with edge cases
 - **Scenario 3**: Avancerad implementation with svenska specifika krav
 
@@ -245,13 +245,13 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 
 #### 6.1 Primärspråk: Svenska
 - **Target Audience**: Svenska IT-professionella
-- **Terminologi**: Svenska termer with engelska in parentes vid forsta användning
+- **Terminologi**: Svenska termer with engelska in parentes at forsta use
 - **Example**: "Architecture as Code (engelska: Architecture as Code)"
 - **Konsistens**: same svenska term används konsekvent through entire boken
 
 #### 6.2 Engelska termer
 **When engelska används**:
-- Etablerade branschtermer utan svenska motsvarighet
+- Etablerade branschtermer without svenska motsvarighet
 - API-namn and tekniska specifikationer
 - Kodkommentarer and konfigurationsfiler
 - Citat from engelska Sources
@@ -262,9 +262,9 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 ### Stilriktlinjer
 
 #### 6.3 Ton and stil
-- **Professionell men togänglig**: technical precision utan to vara överdrivet akademisk
-- **Inkluderande**: Undviker jargong which exkluderar junior Developers
-- **Praktisk orientering**: Fokus at toämpning snarare än teoretisk abstraktion
+- **Professionell but togänglig**: technical precision without to vara överdrivet akademisk
+- **Inkluderande**: Undviker jargong as exkluderar junior Developers
+- **Praktisk orientering**: Fokus at toämpning rather than teoretisk abstraktion
 - **Svenska perspektiv**: Specifika References to svenska regulatoriska krav and branschpraxis
 
 #### 6.4 Textstruktur
@@ -277,14 +277,14 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 - **H1**: Kapiteltitel
 - **H2**: Huvudsektioner (3-5 per chapters)
 - **H3**: Undersektioner (2-4 per huvudsektion)
-- **H4**: Endast vid behov for specifika punkter
+- **H4**: Endast at behov for specifika punkter
 
 #### 6.5 Kodreferenser in text
 **Format**: `kodstycken` with backticks for inline code
 **Blockcitat**: 
 ```
 Längre kodexempel in egna block
-med syntax highlighting
+with syntax highlighting
 ```
 
 #### 6.6 Terminologikonsistens
@@ -304,11 +304,11 @@ med syntax highlighting
 - **Flesch-Kincaid**: Målnivå svenska gymnasiet/högskola
 - **Meningslängd**: Throughsnitt 15-20 ord per mening
 - **Passiv form**: Maximalt 15% of meningarna
-- **Jargong**: Forklaras vid forsta användning
+- **Jargong**: Forklaras at forsta use
 
 #### 6.8 technical precision
 - **Faktakontroll**: all tekniska påståenden verifieras
-- **versions**: Specificerade versions for all verktyg and technologies
+- **versions**: Specificerade versions for all tools and technologies
 - **testing**: all kodExample testas innan publicering
 - **References**: Akademiska and industriella Sources for all påståenden
 
@@ -333,7 +333,7 @@ med syntax highlighting
 **Passiv form acceptabel for**:
 - Processbeskrivningar where aktören is oviktig
 - Formella definitioner
-- Beskrivning of etablerade standarder
+- Description of etablerade standarder
 
 ## Ytterligare Kvalitetskriterier
 
@@ -344,13 +344,13 @@ med syntax highlighting
 - Svenska compliance-krav verifieras mot aktuell lagstiftning
 
 ### Pedagogisk progression
-- each chapters builds on tidigare kunskaper
+- each chapters builds on previous knowledge
 - Svårighetsgraden ökar gradually
 - Återkommande concepts forstärks through repetition
-- Praktiska övningar kopplar to tidigare teoretiska parts
+- Praktiska övningar kopplar to previous teoretiska parts
 
 ### Branschrelevans
-- Fokus at verktyg and metoder which används in svenska organisationer
+- Fokus at tools and metoder as används in svenska organisationer
 - Fallstudier from svenska foretag and myndigheter
 - Hänsyn to svenska regulatoriska krav (GDPR, Säkerhetsskyddslagen)
 - Integration with svenska molnleverantörer and konsulttjänster
@@ -359,8 +359,8 @@ med syntax highlighting
 - Alternativ text for all diagram and bilder
 - Färgblind-vänlig färgpalett in diagram
 - Tydlig Structure for skärmläsare
-- Undvikande of kulturspecifika References which can exkludera
+- Undvikande of kulturspecifika References as can exkludera
 
 ---
 
-*This kravdokument ska användas which grund for all forfattningsaktiviteter and regelbundet uppdateras baserat at feedback from Target Audienceen and forändringar in tekniklandskapet.*
+*This kravdokument ska användas as grund for all forfattningsaktiviteter and regelbundet uppdateras baserat at feedback from Target Audienceen and changes in tekniklandskapet.*

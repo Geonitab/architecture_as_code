@@ -1,11 +1,11 @@
 # CI/CD Setup komplett
 
-GitHub Actions konfiguration for automatisk bokbygge har skapats.
+GitHub Actions konfiguration for automatisk bokbygge has skapats.
 
 ## Filer skapade:
 - `.github/workflows/build-book.yml` - GitHub Actions workflow
-- `README.md` - Uppdaterad projektdokumentation
-- Uppdaterad interface with CI/CD status
+- `README.md` - Up-to-date projektdokumentation
+- Up-to-date interface with CI/CD status
 
 ## Next Steps:
 

@@ -1,6 +1,6 @@
 # Sammanställning of kvarvarande engelska uttryck in boken
 
-This sammanställning identifierar engelska uttryck which fortfarande finns in boken for to avgöra vilka which ska vara kvar at engelska and vilka which borde översättas to svenska.
+This sammanställning identifierar engelska uttryck as fortfarande finns in boken to avgöra as as ska vara kvar at engelska and as as borde översättas to svenska.
 
 ## Tekniska termer and akronymer
 
@@ -75,7 +75,7 @@ This sammanställning identifierar engelska uttryck which fortfarande finns in b
 7. **Timeline** → **tidslinje**
 8. **Compliance** → **efterlevnad**
 
-### Medel prioritet (can översättas vid naturlig kontext)
+### Medel prioritet (can översättas at naturlig kontext)
 1. **Framework** → **ramverk**
 2. **Platform** → **plattform**
 3. **Tools** → **verktyg**
@@ -93,11 +93,11 @@ This sammanställning identifierar engelska uttryck which fortfarande finns in b
 
 ## Anmärkningar
 
-- Många of the engelska uttrycken finns kvar trots tidigare korrigeringar
-- Vissa chapters har konsekvent svenska uttryck withan andra har mer engelska
+- Many of the engelska uttrycken finns kvar trots previous korrigeringar
+- Vissa chapters has konsekvent svenska uttryck withan andra has mer engelska
 - Tekniska produktnamn and etablerade akronymer bör generellt behållas at engelska
 - Affärsprocesstermer bör konsekvent översättas for bättre läsbarhet at svenska
 
 ## Next Steps
 
-Baserat at This sammanställning can du avgöra vilka uttryck which ska behållas at engelska and vilka which ska översättas. Jag can sedan throughfora the översättningar du önskar systematiskt through entire boken.
+Baserat at This sammanställning can du avgöra as uttryck as ska behållas at engelska and as as ska översättas. Jag can sedan throughfora the översättningar du önskar systematiskt through entire boken.

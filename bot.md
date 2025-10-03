@@ -1,14 +1,14 @@
 # AI Assistant Prompt for Bokprojekt: Architecture as Code
 
 ## Projektöversikt
-Du hjälper to to skapa Contents for boken "Architecture as Code" - a comprehensive guide at svenska about Architecture as Code. This is ett hybridprojekt which kombinerar:
+Du hjälper to to skapa Contents for boken "Architecture as Code" - a comprehensive guide at svenska about Architecture as Code. This is A hybridprojekt as kombinerar:
 
 1. **Bokproduktion**: Automatiserad generering and publicering of a comprehensive technical bok
-2. **React Dashboard**: a webbapplikation which shows bokprojektets status and kapitelStructure
+2. **React Dashboard**: a webbapplikation as shows bokprojektets status and kapitelStructure
 
-Boken riktar itself to systems Architects, Developers, DevOps Engineers, Project Managers and IT Managers which vill forstå and implementera Architecture as Code.
+Boken riktar itself to system architects, Developers, DevOps Engineers, Project Managers and IT Managers as vill forstå and implementera Architecture as Code.
 ## Nuvarande struktur
-Projektet Contentser **25 chapters** totalt. Följande filer finns in `docs/`-mappen:
+Projektet Contentser **25 chapters** totalt. Following filer finns in `docs/`-mappen:
 
 - `01_inledning.md` - Introduction to Architecture as Code
 - `02_kapitel1.md` - Fundamental principles of Architecture as Code
@@ -18,9 +18,9 @@ Projektet Contentser **25 chapters** totalt. Följande filer finns in `docs/`-ma
 - `06_kapitel5.md` - Security in Architecture as Code
 - `07_kapitel6.md` - DevOps and CI/CD for Architecture as Code
 - `08_kapitel7.md` - Architecture as Code in praktiken
-- `09_kapitel8.md` - Digitalisering through kodbaserad infraStructure
-- `10_kapitel9.md` - Organisatorisk forändring and teamStructureer
-- `11_kapitel10.md` - Containerization and Orchestration which code
+- `09_kapitel8.md` - Digitalisering through kodbaserad infrastructure
+- `10_kapitel9.md` - Organisatorisk change and teamStructureer
+- `11_kapitel10.md` - Containerization and Orchestration as code
 - `12_kapitel11.md` - [SAKNAS - Projektledning for Architecture as Code]
 - `13_kapitel12.md` - Microservices-Architecture as Code
 - `14_kapitel13.md` - Framtida trender and technologies within Architecture as Code
@@ -35,7 +35,7 @@ Projektet Contentser **25 chapters** totalt. Följande filer finns in `docs/`-ma
 - `23_om_forfattarna.md` - About the Authors
 
 ## technical infrastruktur
-Projektet använder följande technologies and verktyg:
+Projektet uses following technologies and verktyg:
 
 ### Bokproduktion
 - **Python 3.12**: Content generation via `generate_book.py`
@@ -53,7 +53,7 @@ Projektet använder följande technologies and verktyg:
 
 ### CI/CD Pipeline
 - **GitHub Actions**: Automatiserad bokbygge and publicering
-- **Automatiska releaser**: PDF publiceras vid push to main branch
+- **Automatiska releaser**: PDF published at push to main branch
 - **Artefaktlagring**: PDF togänglig for nedladdning efter builds
 
 ### Kommando for byggprocesser
@@ -65,14 +65,14 @@ npm run lint      # ESLint (shows varningar - förväntat)
 
 # Bokgenerering
 python3 generate_book.py          # <1 sekund - genererar markdown
-docs/build_book.sh                # 30 sekunder - full PDF med diagram
+docs/build_book.sh                # 30 sekunder - full PDF with diagram
 
 # Komplett arbetsflöde (45 sekunder - AVBRYT ALDRIG)
 python3 generate_book.py && docs/build_book.sh
 ```
 
 ## Diagram and bilder
-all diagram are created med [Mermaid](https://mermaid.js.org/) och sparas as `.mmd`-filer in `docs/images/`.
+all diagram are created with [Mermaid](https://mermaid.js.org/) and sparas as `.mmd`-filer in `docs/images/`.
 These konverteras automatically to `.png` under byggprocessen.
 
 ### Konvertera diagram manuellt
@@ -81,18 +81,18 @@ mermaid docs/images/diagram_01_inledning.mmd -o docs/images/diagram_01_inledning
 ```
 
 ## Generera thumbnails
-For to generera thumbnails for all diagram (for React-dashboard):
+to generera thumbnails for all diagram (for React-dashboard):
 
 ```bash
 npm run thumbnails
 ```
 
-This skript använder `scripts/generate_thumbnails.py` for to skapa skalade versions of all diagram.
+This skript uses `scripts/generate_thumbnails.py` to skapa skalade versions of all diagram.
 
 ## Viktiga filer
-- `generate_book.py`: Huvudskript for to generera Book content
-- `docs/build_book.sh`: Skript for to bygga PDF-versionen of boken
-- `react-app/src/components/Chapter.tsx`: React-komponent for to visa ett chapters
+- `generate_book.py`: Huvudskript to generera Book content
+- `docs/build_book.sh`: Skript to bygga PDF-versionen of boken
+- `react-app/src/components/Chapter.tsx`: React-komponent to visa A chapters
 - `react-app/src/App.tsx`: Huvudapplikation for React-dashboard
 
 ## Arbeta lokalt
@@ -134,7 +134,7 @@ python3 generate_book.py && docs/build_book.sh
 - **GitHub repository**: [https://github.com/kvardrat/architecture-as-code](https://github.com/kvardrat/architecture-as-code)
 - **React Dashboard**: (kommer snart)
 - **Boken that PDF**: (kommer snart)
-- **Slack kanal**: #architecture-that-code (internt at Kwhatrat)
+- **Slack kanal**: #architecture-that-code (internt at Kvadrat)
 
 ## Bidra
 all bidrag is välkomna! Skapa a pull request with dina ändringar.
@@ -142,8 +142,8 @@ all bidrag is välkomna! Skapa a pull request with dina ändringar.
 ### Riktlinjer
 - Följ projektets kodstil
 - Skriv tydliga commit-withdelanden
-- Uppdatera dokumentationen vid behov
-- Skapa tester for ny funktionalitet
+- Uppdatera dokumentationen at behov
+- Skapa tester for new funktionalitet
 
 ## Licens
 Projektet is licensierat under [MIT License](LICENSE).
@@ -152,26 +152,25 @@ Projektet is licensierat under [MIT License](LICENSE).
 For frågor or forslag, kontakta [johannes@kvardrat.se](mailto:johannes@kvardrat.se).
 
 ## Tack
-Tack to all which bidrar to This projekt!
+Tack to all as bidrar to This projekt!
 ## Din uppgift
-Välj a markdown-fil from `docs/`-mappen to utöka or forbättra. Fokusera at:
+Välj a markdown-File from `docs/`-mappen to utöka or forbättra. Fokusera at:
 
 ### Contentsskrav
 - **Språk**: Svenska
-- **Target Audience**: Tekniska professionnella within IT/utveckling
+- **Target Audience**: Tekniska professionnella within IT/development
 - **Längd**: 2000-4000 ord per chapters
-- **Structure**: Använd kapitlets existing Structure or forbättra den
-- **Content ratio**: 20% code, 80% forklarande text which eftersträvas per chapters
+- **Structure**: Använd kapitlets existing Structure or forbättra The - **Content ratio**: 20% code, 80% forklarande text as eftersträvas per chapters
 
-### Kapitelstruktur
+### Chapter Structure
 ```markdown
-# Kapiteltitel (utan nummer)
+# Kapiteltitel (without nummer)
 
-![Diagram beskrivning](images/diagram_XX_kapitelX.png)
+![Diagram Description](images/diagram_XX_kapitelX.png)
 
-*Inledande text as refererar till diagrammet ovan (ca 500 tecken)*
+*Inledande text as refererar to diagram ovan (ca 500 tecken)*
 
-## Övergripande beskrivning
+## Övergripande Description
 Huvudinnehåll as fördjupar kapitlets tema (ca 2500 tecken)
 
 ## Underrubrik 1
@@ -181,12 +180,12 @@ Fördjupande text about specifikt område (ca 1500 tecken)
 Fördjupande text about specifikt område (ca 1500 tecken)
 
 ## Praktiska example
-Konkreta kodexempel och implementationer
+Konkreta kodexempel and implementationer
 
 ## Sammanfattning
 Kort sammanfattning of kapitlets huvudpunkter
 
-## Källor och referenser
+## Källor and referenser
 - Källa 1
 - Källa 2
 ```
@@ -199,33 +198,33 @@ def hello_world():
 hello_world()
 ```
 
-## Checklista for innehåll
+## Checklista for content
 
 ### Allmänt
-- [ ] Kapitlet har a tydlig titel
-- [ ] Inledningen ger a bra överblick
+- [ ] Kapitlet has a tydlig Title
+- [ ] Inledningen ger a good överblick
 - [ ] Summaryen knyter ihop kapitlet
 - [ ] Sources and References is angivna
 
 ### Structure
 - [ ] Logisk indelning in underrubriker
-- [ ] Användning of punktlistor and numrering
+- [ ] Use of punktlistor and numrering
 - [ ] Diagram and bilder for visualisering
 
 ### Detaljer
-- [ ] Korrekt användning of svenska språket
+- [ ] Korrekt use of svenska språket
 - [ ] technical korrekthet in beskrivningar
 - [ ] Praktiska and relevanta Example
 - [ ] Anpassat for Target Audienceen
 
 ### Kodexempel
 - [ ] Välformaterad code
-- [ ] Kommentarer which forklarar koden
-- [ ] Användning of relevanta bibliotek
-- [ ] Möjlighet to köra koden lokalt
+- [ ] Kommentarer as forklarar the code
+- [ ] Use of relevanta bibliotek
+- [ ] Possibility to köra the code lokalt
 - [ ] Kodpartier får aldrig vara längre än a sida
 
-## Verktyg and resurser
+## Tools and resurser
 
 ### Markdown editor
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -251,10 +250,10 @@ hello_world()
 - Brödtext: Inter Regular
 - code: Fira Code
 
-## Tips for to skriva
+## Tips to skriva
 - Börja with a tydlig Structure
 - Skriv kort and koncist
-- Använd Example for to forklara concepts
+- Använd Example to forklara concepts
 - Tänk at läsarens perspektiv
 - Läs ithrough and korrigera texten
 
@@ -281,4 +280,4 @@ hello_world()
 - Lägg to praktiska use cases
 - Inkludera branschspecifika Example
 
-Börja with to välja vilken fil du vill arbeta with and withdela ditt val innan du börjar skriva!
+Börja with to välja as File du vill arbeta with and withdela ditt val innan du börjar skriva!

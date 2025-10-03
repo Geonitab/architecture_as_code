@@ -7,7 +7,7 @@ A comprehensive book about Architecture as Code, with practical examples and cas
 This book covers Architecture as Code from fundamental principles to advanced implementation, with a focus on practical application.
 
 ### Target Audience
-- systems Architects
+- system architects
 - DevOps Engineers  
 - Developers
 - Project Managers

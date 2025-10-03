@@ -2,23 +2,23 @@
 
 ![Team Structure and Competenciesutveckling](images/diagram_18_team_struktur.png)
 
-successful Infrastructure as Code-implementation requires not endast tekniska verktyg and processes, utan också throughtänkt organisationsdesign and strategisk competence development. TeamStructureer must utvecklas for to stödja new arbetssätt withan witharbetare utvecklar nödvändiga färdigheter for kodbaserad infraStructurehantering.
+successful Infrastructure as Code-implementation requires not endast tekniska tools and processes, without också throughtänkt organisationsdesign and strategisk competence development. TeamStructureer must is developed to stödja new arbetssätt withan witharbetare develops nödvändiga färdigheter for kodbaserad infraStructurehantering.
 
 ## Organizational transformation for Architecture as Code
 
-Traditionella organisationsStructureer with separata utvecklings-, test- and drift-teams creates silos which hindrar effektiv Infrastructure as Code (Architecture as Code) adoption. Cross-functional teams with shared responsibility for entire systemlivscykeln enables snabbare feedback loops and högre kvalitet in leveranser.
+Traditionella organizational structures with separata utvecklings-, test- and drift-teams creates silos as hindrar effektiv Infrastructure as Code (Architecture as Code) adoption. Cross-functional teams with shared responsibility for entire systemlivscykeln enables snabbare feedback loops and högre kvalitet in leveranser.
 
-Conway's Law observerar to organisationsStructure reflekteras in systems design, which betyder to team boundaries direkt påverkar infrastructure architecture. Väldesignade team-Structureer resulterar in modulära, maintainable infrastructure solutions, withan poorly organized teams producerar fragmented, complex systems.
+Conway's Law observerar to organizational structure reflekteras in systems design, which betyder to team boundaries direkt påverkar infrastructure architecture. Väldesignade team-Structures resulterar in modulära, maintainable infrastructure solutions, withan poorly organized teams producerar fragmented, complex systems.
 
-Platform teams fungerar which internal service providers which bygger and underhåller Infrastructure as Code capabilities for application teams. This model balanserar centralized expertise with decentralized autonomy, which enables scaling of Architecture as Code practices across stora organisationer.
+Platform teams functions as internal service providers as bygger and underhåller Infrastructure as Code capabilities for application teams. This model balanserar centralized expertise with decentralized autonomy, which enables scaling of Architecture as Code practices across large organisationer.
 
 ## Kompetenwhichråden for architecture as code-specialister
 
-Infrastructure as Code professionals behöver hybrid skills which kombinerar traditional systems administration knowledge with software engineering practices. Programming skills in språk that Python, Go, or PowerShell blir essentiella for automation script development and tool integration.
+Infrastructure as Code professionals behöver hybrid skills as kombinerar traditional systems administration knowledge with software engineering practices. Programming skills in språk that Python, Go, or PowerShell blir essentiella for automation script development and tool integration.
 
-Cloud platform expertise for AWS, Azure, GCP, or hybrid environments requires deep forståelse for service offerings, pricing models, security implications, and operational characteristics. Multi-cloud competency blir all viktigare which organisationer adopterar cloud-agnostic strategies.
+Cloud platform expertise for AWS, Azure, GCP, or hybrid environments requires deep forståelse for service offerings, pricing models, security implications, and operational characteristics. Multi-cloud competency blir all viktigare as organisationer adopterar cloud-agnostic strategies.
 
-Software engineering practices which version control, testing, code review, and CI/CD pipelines must integreras in infrastructure workflows. Understanding of software architecture patterns, design principles, and refactoring techniques appliceras at infrastructure code development.
+Software engineering practices as version control, testing, code review, and CI/CD pipelines must integreras in infrastructure workflows. Understanding of software architecture patterns, design principles, and refactoring techniques appliceras at infrastructure code development.
 
 ## Utbildningsstrategier and certifieringar
 
@@ -32,11 +32,11 @@ Internal training programs customized for organizational context and specific te
 
 Architecture as Code-principerna within This område
 
-Cross-functional infrastructure teams includes cloud engineers, automation specialists, security engineers, and site reliability engineers which collaborerar on shared objectives. Product owner roles for infrastructure teams prioritize features and improvements baserat at internal customer needs.
+Cross-functional infrastructure teams includes cloud engineers, automation specialists, security engineers, and site reliability engineers as collaborerar on shared objectives. Product owner roles for infrastructure teams prioritize features and improvements baserat at internal customer needs.
 
 Scrum or Kanban methodologies applied to infrastructure work provide structure for planning, execution, and continuous improvement. Sprint planning for infrastructure changes balanserar feature development with operational maintenance and technical debt reduction.
 
-Infrastructure as a product mindset treats internal teams which customers with service level agreements, documentation requirements, and user experience considerations. This approach drives quality improvements and customer satisfaction for infrastructure services.
+Infrastructure as a product mindset treats internal teams as customers with service level agreements, documentation requirements, and user experience considerations. This approach drives quality improvements and customer satisfaction for infrastructure services.
 
 ## Kunskapsdelning and communities of practice
 
@@ -50,7 +50,7 @@ External community participation through open source contributions, conference p
 
 Technical career ladders for Infrastructure as Code specialists provide clear advancement paths from junior automation engineers to senior architect roles. Competency frameworks define expected skills, knowledge, and impact at different career levels.
 
-Performance metrics for Architecture as Code teams includes both technical indicators which infrastructure reliability, deployment frequency, and change failure rate, samt soft skills which collaboration effectiveness and knowledge sharing contributions.
+Performance metrics for Architecture as Code teams includes both technical indicators as infrastructure reliability, deployment frequency, and change failure rate, samt soft skills as collaboration effectiveness and knowledge sharing contributions.
 
 Leadership development programs prepare senior technical contributors for management roles within infrastructure organizations. Skills like stakeholder management, strategic planning, and team building become essential for career advancement.
 
@@ -290,8 +290,8 @@ in Infrastructure as Code practices across the organization.
 ## Summary
 
 
-Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Successful Infrastructure as Code adoption requires comprehensive organisatorisk forändring which går beyond Technical implementation. Team-Structureer must redesignas for cross-functional collaboration, comprehensive skill development programs enables effective tool adoption, and communities of practice fostrar kontinuerlig learning and innovation. Investment in människor and processes is lika viktigt which investment in tekniska verktyg.
+The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Successful Infrastructure as Code adoption requires comprehensive organisatorisk change as går beyond Technical implementation. Team-Structures must redesignas for cross-functional collaboration, comprehensive skill development programs enables effective tool adoption, and communities of practice fostrar kontinuerlig learning and innovation. Investment in människor and processes is lika viktigt as investment in tekniska verktyg.
 
 ## Sources and referenser
 

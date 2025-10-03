@@ -1,11 +1,20 @@
 # English Migration Summary
 
-## Overview
+## ⚠️ IMPORTANT UPDATE
 
-This document summarizes the completed migration from bilingual (Swedish/English) to English-only markdown content in the Kodarkitektur Bokverkstad repository.
+**Previous Status**: The original migration documentation claimed the repository was "English-only" but this was inaccurate.
 
-**Migration Date**: October 3, 2025  
-**Status**: ✅ COMPLETE
+**Actual Status**: The repository contained extensive Swedish-English mixing ("Svengelska") in 39 markdown files.
+
+**Current Status (October 3, 2025)**: ✅ SUBSTANTIALLY CLEANED UP
+
+A comprehensive English language cleanup has been performed. See `ENGLISH_CLEANUP_SUMMARY.md` for details.
+
+---
+
+## Original Migration Documentation (Historical)
+
+This section contains the original (inaccurate) migration claims for historical reference.
 
 ## What Was Done
 

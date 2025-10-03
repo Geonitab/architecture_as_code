@@ -1,14 +1,14 @@
 # Kodarkitektur Bokverkstad - Grafisk profil
 
-## Översikt
-a comprehensive grafisk profil which is anpassad for Kwhatrat.se:s visuella identitet and designspråk.
+## Overview
+a comprehensive grafisk profil as is anpassad for Kvadrat.se:s visuella identitet and designspråk.
 
 ## Färgpalett
 
 ### Primära färger
-- **Kwhatrat Blå**: `#1e3a8a` (HSL: 221 67% 32%) - Huvudfärg for rubriker and viktiga element
-- **Kwhatrat Mörkblå**: `#1e293b` (HSL: 214 32% 18%) - For text and kontrast
-- **Kwhatrat Ljusblå**: `#3b82f6` (HSL: 217 91% 60%) - For accenter and interaktiva element
+- **Kvadrat Blå**: `#1e3a8a` (HSL: 221 67% 32%) - Huvudfärg for rubriker and viktiga element
+- **Kvadrat Mörkblå**: `#1e293b` (HSL: 214 32% 18%) - For text and kontrast
+- **Kvadrat Ljusblå**: `#3b82f6` (HSL: 217 91% 60%) - For accenter and interaktiva element
 
 ### Sekunwherea färger
 - **Neutral Grå**: `#64748b` (HSL: 215 20% 46%) - For sekunwhere text
@@ -50,10 +50,10 @@ a comprehensive grafisk profil which is anpassad for Kwhatrat.se:s visuella iden
 
 ### Bokens framsida
 - Logotyp: Övre vänster hörn
-- Titel: Centrerad, stor typografi
-- Undertitel: Under titel, withium storlek
+- Title: Centrerad, stor typografi
+- Undertitel: Under Title, Medium storlek
 - Forfattare: Längst ner
-- Background: Gradient from Kwhatrat Blå to Mörkblå
+- Background: Gradient from Kvadrat Blå to Mörkblå
 
 ### Whitepapers
 - Standardformat: A4
@@ -64,8 +64,8 @@ a comprehensive grafisk profil which is anpassad for Kwhatrat.se:s visuella iden
 ### Presentationsmallar
 - Format: 16:9 widescreen
 - Masterlayout with logotyp and sidnummer
-- Konsistent användning of färger and typografi
-- Bullet points with Kwhatrat Blå accenter
+- Konsistent use of färger and typografi
+- Bullet points with Kvadrat Blå accenter
 
 ### Webbplatslayout
 - Responsiv design
@@ -93,7 +93,7 @@ a comprehensive grafisk profil which is anpassad for Kwhatrat.se:s visuella iden
 all färger and mått definieras that CSS custom properties for enkel underhåll.
 
 ### Tailwind Configuration
-Anpassad konfiguration which matchar designsystemet.
+Anpassad konfiguration as matchar designsystemet.
 
 ### Komponentbibliotek
-Konsistenta React-components which följer designsystemet.
+Konsistenta React-components as följer designsystemet.
