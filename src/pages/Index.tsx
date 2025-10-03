@@ -6,34 +6,37 @@ import { Link } from "react-router-dom";
 
 const Index = () => {
   const chapters = [
-    { id: "01", title: "Inledning", area: "Grundläggande konceptens", status: "completed" },
-    { id: "02", title: "Grundläggande principer för arkitektur som kod", area: "Systemutveckling", status: "completed" },
-    { id: "03", title: "Versionhantering och kodstruktur", area: "Systemutveckling", status: "completed" },
-    { id: "04", title: "Automatisering och CI/CD-pipelines", area: "Systemutveckling", status: "completed" },
-    { id: "05", title: "Molnarkitektur som kod", area: "Arkitektur", status: "completed" },
-    { id: "06", title: "Säkerhet i arkitektur som kod", area: "Säkerhet", status: "completed" },
-    { id: "07", title: "Monitering och observabilitet", area: "Systemutveckling", status: "completed" },
-    { id: "08", title: "Skalbarhet och prestanda", area: "Arkitektur", status: "completed" },
-    { id: "09", title: "Digitalisering genom arkitektur som kod", area: "Digitalisering", status: "completed" },
-    { id: "10", title: "Organisatorisk förändring och teamstrukturer", area: "Organisationsutveckling", status: "completed" },
-    { id: "11", title: "Projektledning för arkitektur som kod", area: "Projektledning", status: "completed" },
-    { id: "12", title: "Innovation genom arkitektur som kod", area: "Innovation", status: "completed" },
-    { id: "13", title: "Produktutveckling med arkitektur som kod", area: "Produkt- och tjänstutveckling", status: "completed" },
-    { id: "14", title: "Compliance och regelefterlevnad", area: "Säkerhet", status: "completed" },
-    { id: "15", title: "Kostnadsoptimering och resurshantering", area: "Arkitektur", status: "completed" },
-    { id: "16", title: "Teststrategier för arkitektur som kod", area: "Systemutveckling", status: "completed" },
-    { id: "17", title: "Migration från traditionell infrastruktur", area: "Digitalisering", status: "completed" },
-    { id: "18", title: "Framtida trender och teknologier", area: "Innovation", status: "completed" },
-    { id: "19", title: "Best practices och lärda läxor", area: "Styrning", status: "completed" },
-    { id: "20", title: "Fallstudier och praktiska exempel", area: "Systemutveckling", status: "completed" },
-    { id: "21", title: "Slutsats", area: "Sammanfattning", status: "completed" },
-    { id: "22", title: "Ordlista", area: "Referens", status: "completed" },
-    { id: "23", title: "Om författarna", area: "Biografi", status: "completed" }
+    { id: "01", title: "Inledning", area: "Del 1: Grunder", status: "completed" },
+    { id: "02", title: "Grundläggande principer för arkitektur som kod", area: "Del 1: Grunder", status: "completed" },
+    { id: "03", title: "Versionhantering och kodstruktur", area: "Del 1: Grunder", status: "completed" },
+    { id: "04", title: "Architecture Decision Records (ADR)", area: "Del 1: Grunder", status: "completed" },
+    { id: "05", title: "Automatisering, DevOps och CI/CD", area: "Del 2: Teknisk implementation", status: "completed" },
+    { id: "06", title: "Molnarkitektur som kod", area: "Del 2: Teknisk implementation", status: "completed" },
+    { id: "07", title: "Containerisering och orkestrering", area: "Del 2: Teknisk implementation", status: "completed" },
+    { id: "08", title: "Microservices-arkitektur", area: "Del 2: Teknisk implementation", status: "completed" },
+    { id: "09", title: "Säkerhet i arkitektur som kod", area: "Del 2: Teknisk implementation", status: "completed" },
+    { id: "10", title: "Policy och säkerhet som kod", area: "Del 2: Teknisk implementation", status: "completed" },
+    { id: "11", title: "Compliance och regelefterlevnad", area: "Del 2: Teknisk implementation", status: "completed" },
+    { id: "12", title: "Teststrategier för infrastrukturkod", area: "Del 3: Testning & drift", status: "completed" },
+    { id: "13", title: "Architecture as Code i praktiken", area: "Del 3: Testning & drift", status: "completed" },
+    { id: "14", title: "Kostnadsoptimering och resurshantering", area: "Del 3: Testning & drift", status: "completed" },
+    { id: "15", title: "Migration från traditionell infrastruktur", area: "Del 3: Testning & drift", status: "completed" },
+    { id: "16", title: "Organisatorisk förändring", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "17", title: "Team-struktur och kompetensutveckling", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "18", title: "Digitalisering genom kodbaserad infrastruktur", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "19", title: "Lovable för svenska organisationer", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "20", title: "Framtida trender och teknologier", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "21", title: "Best practices och lärda läxor", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "22", title: "Slutsats", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "23", title: "Ordlista", area: "Del 4: Organisation & framtid", status: "completed" },
+    { id: "24", title: "Om författarna", area: "Del 4: Organisation & framtid", status: "completed" }
   ];
 
   const areas = [
-    "Systemutveckling", "Digitalisering", "Produkt- och tjänstutveckling", 
-    "Innovation", "Arkitektur", "Organisationsutveckling", "Säkerhet", "Projektledning"
+    "Del 1: Grunder", 
+    "Del 2: Teknisk implementation", 
+    "Del 3: Testning & drift", 
+    "Del 4: Organisation & framtid"
   ];
 
   return (
