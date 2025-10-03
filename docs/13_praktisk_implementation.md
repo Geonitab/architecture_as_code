@@ -6,7 +6,7 @@ Praktisk implementation of Architecture as Code requires throughtänkt approach 
 
 ![implementation User Journey](images/diagram_13_user_journey.png)
 
-Diagram ovan illustrerar The typical användarresan for Architecture as Code-implementation, from initial discovery to fullständig optimization.
+Diagram ovan illustrerar The typical användarresan for Architecture as Code-implementation, from initial discovery to complete optimization.
 
 ## implementation roadmap and strategier
 
@@ -154,7 +154,7 @@ output "vpc_id" {
 }
 ```
 
-## Terraform konfiguration and miljöhantering
+## Terraform configuration and miljöhantering
 
 ### Environment-specific Configuration
 ```hcl
@@ -360,8 +360,8 @@ jobs:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from början, withan common challenges must anticiperas and mitigated through proven practices and robust tooling.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from beginning, withan common challenges must anticiperas and mitigated through proven practices and robust tooling.
 
 ## Sources and referenser
 

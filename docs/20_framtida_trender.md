@@ -2,29 +2,29 @@
 
 ![Framtida trender](images/diagram_19_kapitel18.png)
 
-*Landskapet for Infrastructure as Code (Architecture as Code) is developed snabbt with new paradigm as edge computing, quantum-safe kryptografi and AI-driven automation. Diagram shows konvergensen of emerging technologies as formar nästa generation of infrastructurelösningar.*
+*Landskapet for Infrastructure as Code (Architecture as Code) is developed snabbt with new paradigm as edge computing, quantum-safe kryptografi and AI-driven automation. Diagram shows konvergensen of emerging technologies as formar next generation of infrastructurelösningar.*
 
 ## Overall Description
 
-Architecture as Code står infor comprehensive transformation driven of teknologiska throughbrott within artificiell intelligens, kvantdatorer, edge computing and miljöwithvetenhet. Which vi has sett genAbout the Books development from [Fundamental principles](02_kapitel1.md) to [advanced policy-implementeringar](12_kapitel11.md), is developed Architecture as Code kontinuerligt to möta new Challenges and possibilities.
+Architecture as Code stands infor comprehensive transformation driven of teknologiska throughbrott within artificiell intelligens, kvantdatorer, edge computing and miljöwithvetenhet. Which vi has sett genAbout the Books development from [Fundamental principles](02_kapitel1.md) to [advanced policy-implementeringar](12_kapitel11.md), is developed Architecture as Code kontinuerligt to meet new Challenges and possibilities.
 
-Framtiden for Infrastructure as Code will to präglas of intelligent automation as can fatta complex decisions based on historiska data, real-time metrics and prediktiv analys. Machine learning-algoritmer will to optimera resurstodelning, forutsäga systemfel and automatically implementera säkerhetsforbättringar without mänsklig intervention.
+Framtiden for Infrastructure as Code will to präglas of intelligent automation as can fatta complex decisions based on historiska data, real-time metrics and prediktiv analys. Machine learning-algoritmer will to optimera resurstodelning, forutsäga systemfel and automatically implementera säkerhetsforbättringar without human intervention.
 
-Svenska organisationer must forbereda itself for These teknologiska changes by develop flexibla arkitekturer and investera in competence development. Which diskuterat in [chapters 10 about organisatorisk change](10_kapitel9.md), requires teknologisk evolution också organizational anpassningar and new arbetssätt.
+Svenska organisationer must forbereda itself for These teknologiska changes by develop flexibla arkitekturer and investera in competence development. Which diskuterat in [chapters 10 about organisatorisk change](10_kapitel9.md), requires teknologisk evolution also organizational anpassningar and new way of working.
 
-Sustainability and miljöwithvetenhet blir all importantre drivkrafter within infrastructure development. Carbon-aware computing, renewable energy optimization and circular economy principles will to integreras in Infrastructure as Code to möta klimatmål and regulatory requirements within EU and Sverige.
+Sustainability and miljöwithvetenhet blir all importantre drivkrafter within infrastructure development. Carbon-aware computing, renewable energy optimization and circular economy principles will to integreras in Infrastructure as Code to meet klimatmål and regulatory requirements within EU and Sverige.
 
 ## Artificiell intelligens and maskininlärning integration
 
-AI and ML-integration in Infrastructure as Code transformerar from reactive to prediktiva systems as can anticipera and forebygga problem before the uppstår. Intelligent automation extends beyond simple rule-based systems to complex decision-making capabilities as can optimize for multiple objectives simultaneously.
+AI and ML-integration in Infrastructure as Code transformerar from reactive to prediktiva systems as can anticipera and forebygga problem before the arises. Intelligent automation extends beyond simple rule-based systems to complex decision-making capabilities as can optimize for multiple objectives simultaneously.
 
-Predictive scaling uses historiska data and machine learning models to forutsäga kapacitetsbehov and automatically skala infrastructure before demand spikes inträffar. This results in forbättrad performance and kostnadseffektivitet through elimination of both over-provisioning and under-provisioning scenarios.
+Predictive scaling uses historiska data and machine learning models to forutsäga kapacitetsbehov and automatically skala infrastructure before demand spikes inträffar. This results in improved performance and kostnadseffektivitet through elimination of both over-provisioning and under-provisioning scenarios.
 
 Anomaly detection systems powered of unsupervised learning can identify unusual patterns in infrastructure behavior as can indicate security threats, performance degradation or configuration drift. Automated response systems can then implement corrective actions based at predefined policies and learned behaviors.
 
 ### AI-Driven Infrastructure Optimization
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 
 ```python
 # ai_optimization/intelligent_scaling.py
@@ -57,12 +57,12 @@ class AIInfrastructureOptimizer:
         self.swedish_holidays = self._load_swedish_holidays()
     
     def predict_infrastructure_demand(self, forecast_hours=24) -> dict:
-        """Förutsäg infrastrukturbehov for nästa 24 timmar"""
+        """Förutsäg infrastrukturbehov for next 24 timmar"""
         
         # Hämta historisk data
         historical_metrics = self._get_historical_metrics(days=30)
         
-        # Feature engineering for svenska användningsmönster
+        # Feature engineering for svenska usage patterns
         features = self._engineer_swedish_features(historical_metrics)
         
         # Förutsäg CPU and minnesanvändning
@@ -226,7 +226,7 @@ class AIInfrastructureOptimizer:
         return impact_assessment
     
     def _optimize_for_swedish_hours(self) -> list:
-        """Optimera for svenska arbetstider and användningsmönster"""
+        """Optimera for svenska arbetstider and usage patterns"""
         
         optimizations = []
         
@@ -385,11 +385,11 @@ Edge computing forändrar fundamentalt how Infrastructure as Code designas and i
 
 5G networks and IoT proliferation driver need of edge infrastructure as can handle massive amounts of real-time data processing. Svenska foretag within autonoma fordon, smart manufacturing and telecommunications leder utvecklingen of edge computing applications as requires sophisticated Architecture as Code orchestration.
 
-Multi-cloud and hybrid edge deployments requires new automation patterns as can handle resource distribution over geografiskt distribuerade locations. GitOps workflows must be adapted for edge environments with intermittent connectivity and limited compute resources.
+Multi-cloud and hybrid edge deployments requires new automation patterns as can handle resource distribution over geografiskt distributed locations. GitOps workflows must be adapted for edge environments with intermittent connectivity and limited compute resources.
 
 ### Edge Infrastructure Automation
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 
 ```yaml
 # edge-infrastructure/k3s-edge-cluster.yaml
@@ -478,7 +478,7 @@ spec:
 
 Environmental sustainability blir all importantre within Infrastructure as Code with fokus at carbon footprint reduction, renewable energy usage and resource efficiency optimization. EU:s Green Deal and Sveriges klimatneutralitetsmål 2045 driver organisationer to implementera carbon-aware computing strategies.
 
-Carbon-aware scheduling optimerar workload placement based on electricity grid carbon intensity, which enables automatisk migration of non-critical workloads to regions with renewable energy sources. Svenska organisations can leverera at sustainability commitments through intelligent workload orchestration.
+Carbon-aware scheduling optimerar workload placement based on electricity grid carbon intensity, which enables automatic migration of non-critical workloads to regions with renewable energy sources. Svenska organisations can leverera at sustainability commitments through intelligent workload orchestration.
 
 Circular economy principles appliceras at infrastructure through extended hardware lifecycles, improved resource utilization and sustainable disposal practices. Architecture as Code enables fine-grained resource tracking and optimization as minimizes waste and maximizar resource efficiency.
 
@@ -760,7 +760,7 @@ class GreenIaCMetrics:
 
 ## Nästa generations Architecture as Code-tools and paradigm
 
-DevOps evolution fortsätter with new tools and methodologies as improves utvecklarhastighet, operational efficiency and systems reliability. GitOps, Platform Engineering and Internal Developer Platforms (IDPs) represents next-generation approaches for infrastructure management.
+DevOps evolution continues with new tools and methodologies as improves utvecklarhastighet, operational efficiency and systems reliability. GitOps, Platform Engineering and Internal Developer Platforms (IDPs) represents next-generation approaches for infrastructure management.
 
 immutable infrastructure principles evolution toward ephemeral computing where entire application stacks can be recreated from scratch within minutes. This approach eliminates configuration drift completely and provides ultimate consistency between environments.
 
@@ -1010,18 +1010,18 @@ async def get_platform_metrics():
     }
 ```
 
-## Quantum computing impact at säkerhet
+## Quantum computing impact at security
 
 Quantum computing development hotar current cryptographic standards and requires proactive preparation for post-quantum cryptography transition. Infrastructure as Code must evolve to support quantum-safe algorithms and crypto-agility principles as enables snabb migration between cryptographic systems.
 
 NIST post-quantum cryptography standards provides guidance for selecting quantum-resistant algorithms, but implementation in cloud infrastructure requires careful planning and phased migration strategies. Svenska organisationer with critical security requirements must börja planera for quantum-safe transitions nu.
 
-Hybrid classical-quantum systems will to emerge where quantum computers används for specific optimization problems withan classical systems handles general computing workloads. Infrastructure orchestration must support both paradigms seamlessly.
+Hybrid classical-quantum systems will to emerge where quantum computers is used for specific optimization problems withan classical systems handles general computing workloads. Infrastructure orchestration must support both paradigms seamlessly.
 
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
 Framtiden for Infrastructure as Code karakteriseras of intelligent automation, environmental sustainability and enhanced security capabilities. Svenska organisationer as investerar in emerging technologies and maintains crypto-agility will to vara well-positioned for future technological disruptions.
 
 AI-driven infrastructure optimization, carbon-aware computing and post-quantum cryptography readiness represents essential capabilities for competitive advantage. Integration of these technologies requires both technical expertise and organizational adaptability as diskuteras in previous chapters.

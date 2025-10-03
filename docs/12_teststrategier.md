@@ -6,13 +6,13 @@
 
 ## Overall Description
 
-testing of Infrastructure as Code differs itself Fundamental from traditionell programvarutestning by fokusera at arkitekturkonfiguration, resurskompatibilitet and miljökonsekvens instead for affärslogik. Effective testing of Architecture as Code ensures Architecture as Code producerar forväntade resultat konsekvent over different environments.
+testing of Infrastructure as Code differs itself Fundamental from traditional programvarutestning by fokusera at arkitekturkonfiguration, resurskompatibilitet and miljökonsekvens instead for affärslogik. Effective testing of Architecture as Code ensures Architecture as Code produces forväntade resultat konsekvent over different environments.
 
 Modern Architecture as Code-testing encompasses multiple dimensioner: syntaktisk validation of code, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys and functional testing of deployed infrastructure. This multilevel approach identifierar problem early in utvecklingscykeln when the is billigare and enklare to fixa.
 
 Svenska organisationer with strict compliance-requirements must implementera comprehensive testing as validates both technical funktionalitet and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards as must verifieras automatically.
 
-Test automation for Architecture as Code enables continuous integration and continuous deployment patterns as accelererar delivery while the reduces risk for produktionsstörningar. Infrastructure testing pipelines can köra parallellt with application testing to ensure end-to-end quality assurance.
+Test automation for Architecture as Code enables continuous integration and continuous deployment patterns as accelererar delivery while the reduces risk for produktionsstörningar. Infrastructure testing pipelines can run parallellt with application testing to ensure end-to-end quality assurance.
 
 ## Unit testing for architecture as code
 
@@ -20,7 +20,7 @@ Unit testing for Infrastructure as Code focuses on validation of individual modu
 
 Terraform testing verktyg that Terratest, terraform-compliance and checkov enables automated validation of HCL-code mot predefined policies and Architecture as Code best practices. These verktyg can integreras in IDE:er for real-time feedback under development samt in CI/CD pipelines for automated quality gates.
 
-Unit tests for Architecture as Code bör validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly viktigt for reusable modules as används across multiple projects where changes can ha wide-ranging impact at dependent resources.
+Unit tests for Architecture as Code should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly viktigt for reusable modules as is used across multiple projects where changes can ha wide-ranging impact at dependent resources.
 
 Mock testing strategies for cloud resources enables testing without faktiska cloud costs, which is essentiellt for frequent testing cycles. Verktyg that LocalStack and cloud provider simulators can simulate cloud services locally for comprehensive testing without infrastructure provisioning costs.
 
@@ -34,11 +34,11 @@ Many modern Infrastructure as Code workflows includes TypeScript/JavaScript-comp
 
 Vitest's snabba execution and watch mode enables tight development feedback loops when man develops infrastructure configuration generators or policy validation scripts. This is particularly valuable for Architecture as Code-projekt where konfigurationsfel can leda to costly infrastructure mistakes.
 
-Integration with Vite build tooling means to same utvecklingsmiljö can användas for both application code and infrastructure-relaterad code, which reducerar context switching and improves developer experience for team as arbetar with both application and infrastructure code.
+Integration with Vite build tooling means to same utvecklingsmiljö can be used for both application code and infrastructure-relaterad code, which reduces context switching and improves developer experience for team as arbetar with both application and infrastructure code.
 
 ### Konfiguration of Vitest for Infrastructure as Code-projekt
 
-to integrera Vitest in A Architecture as Code-projekt behöver vi forst installera nödvändiga dependencies and konfigurera test environment:
+to integrera Vitest in A Architecture as Code-projekt needs vi forst installera necessary dependencies and konfigurera test environment:
 
 ```bash
 # Installera Vitest and relaterade dependencies
@@ -64,7 +64,7 @@ export default defineConfig({
     // Test environment (node for infrastructure tooling)
     environment: 'node',
     
-    // Coverage konfiguration
+    // Coverage configuration
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -252,7 +252,7 @@ describe('TerraformConfigGenerator', () => {
       expect(config.properties.allocated_storage).toBe(100);
     });
 
-    it('ska use lägre resurser for development miljö', () => {
+    it('ska use lägre resurser for development environment', () => {
       const config = generator.generateRDSConfig('development');
       
       expect(config.properties.allocated_storage).toBe(20);
@@ -611,20 +611,20 @@ a of Vitest's biggest Benefits is watch mode as enables continuous testing under
 # Starta watch mode for automated re-testing
 npm run test:watch
 
-# Kör endast relaterade tester when filer ändras
+# Kör endast relaterade tester when filer changes
 npm run test:watch -- --changed
 
 # Kör tests with UI for interaktiv debugging
 npm run test:ui
 ```
 
-This enables tight feedback loops where infrastructure code changes owithelbart valitheir, which reducerar tiden between code change and feedback from seconds to milliseconds.
+This enables tight feedback loops where infrastructure code changes owithelbart valitheir, which reduces tiden between code change and feedback from seconds to milliseconds.
 
 For Swedish organizations with strict compliance requirements can automated testing with Vitest ensure to infrastructure configurations konsekvent meets GDPR requirements, security policies and organizational standards before deployment.
 
 ## Integrationstesting and miljövalidering
 
-Integration testing for Infrastructure as Code verifierar to different infrastructure components functions tosammans korrekt and to deployed infrastructure möter performance and security requirements. This requires temporary test environments as closely mirror production configurations.
+Integration testing for Infrastructure as Code verifierar to different infrastructure components functions tosammans korrekt and to deployed infrastructure meets performance and security requirements. This requires temporary test environments as closely mirror production configurations.
 
 End-to-end testing workflows must validate entire deployment pipelines from source code changes to functional infrastructure. This includes testing of CI/CD pipeline configurations, secret management, monitoring setup and rollback procedures as is critical for production stability.
 
@@ -636,9 +636,9 @@ Chaos engineering principles can appliceras at infrastructure testing by systema
 
 Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, chosention of encryption settings and verification of network security policies.
 
-Compliance testing automation ensures infrastructure configurations möter regulatory requirements kontinuerligt. Svenska organisationer must validate GDPR compliance, financial regulations and government security standards through automated testing as can provide audit trails for compliance reporting.
+Compliance testing automation ensures infrastructure configurations meets regulatory requirements kontinuerligt. Svenska organisationer must validate GDPR compliance, financial regulations and government security standards through automated testing as can provide audit trails for compliance reporting.
 
-Policy-as-code frameworks that Open Policy Agent (OPA) and AWS Config Rules enables declarative definition of compliance policies as can enforced automatically under infrastructure deployment. This preventative approach is mer effective än reactive compliance monitoring.
+Policy-as-code frameworks that Open Policy Agent (OPA) and AWS Config Rules enables declarative definition of compliance policies as can enforced automatically under infrastructure deployment. This preventative approach is mer effective than reactive compliance monitoring.
 
 Vulnerability scanning for infrastructure dependencies must include container images, operating systems configurations and third-party software components. Integration with security scanning tools in CI/CD pipelines ensures security vulnerabilities identifieras before deployment to production.
 
@@ -650,7 +650,7 @@ Load testing strategies must validate auto-scaling configurations, resource limi
 
 Skalabilitetstesting verifierar to infrastructure can handle projected growth efficiently through automated scaling mechanisms. This includes testing of horizontal scaling for stateless services and validation of data partitioning strategies for stateful systems.
 
-Capacity planning validation through performance testing hjälper optimize resource configurations for cost-effectiveness while performance requirements uppfylls. This is particularly important for Swedish organizations as balanserar cost optimization with service level requirements.
+Capacity planning validation through performance testing helps optimize resource configurations for cost-effectiveness while performance requirements uppfylls. This is particularly important for Swedish organizations as balanserar cost optimization with service level requirements.
 
 ## Requirements as Code and testbarhet
 
@@ -658,9 +658,9 @@ Capacity planning validation through performance testing hjälper optimize resou
 
 *The relationship between business requirements, functional requirements and verification methods illustrerar how Infrastructure as Code enables traceable testing from higher abstraction levels down to concrete Architecture as Code-implementations.*
 
-Requirements-as-Code represents A paradigmskifte where business requirements and compliance-requirements are codified in maskinläsbar form together with infrastructure-the code. This enables automatiserad validation of to infrastructureen verkligen meets the specificerade requirementsen through entire utvecklingslivscykeln.
+Requirements-as-Code represents A paradigmskifte where business requirements and compliance-requirements are codified in machine-readable form together with infrastructure-the code. This enables automatiserad validation of to infrastructureen verkligen meets the specificerade requirementsen through entire utvecklingslivscykeln.
 
-by definiera Requirements as Code are created a direkt koppling between business requirements, functional requirements and the automatiserade tester as verifierar Architecture as Code-implementationen. This traceability is critical for organisationer as must demonstrera compliance and for utvecklingsteam as behöver forstå affärsconsequences of technical decisions.
+by definiera Requirements as Code are created a direkt koppling between business requirements, functional requirements and the automatiserade tester as verifierar Architecture as Code-implementationen. This traceability is critical for organisationer as must demonstrate compliance and for utvecklingsteam as needs understand affärsconsequences of technical decisions.
 
 ### Kravtraceability in praktiken
 
@@ -668,7 +668,7 @@ Requirements traceability for Infrastructure as Code means to each infrastructur
 
 Verktyg that Open Policy Agent (OPA) enables uttryck of compliance-requirements as policies as can evalueras automatically mot infrastructure-konfigurationer. These policies blir testable requirements as can köras kontinuerligt to ensure ongoing compliance.
 
-Requirement validation testing ensures infrastructure not only is tekniskt korrekt without också meets business intent. This includes validation of säkerhetsrequirements, performance-requirements, togänglighetsrequirements and kostnadsramar as defined of business stakeholders.
+Requirement validation testing ensures infrastructure not only is tekniskt korrekt without also meets business intent. This includes validation of security requirements, performance-requirements, togänglighetsrequirements and kostnadsramar as defined of business stakeholders.
 
 ### Automated Requirements Verification
 
@@ -764,7 +764,7 @@ class RequirementValidator:
         return results
     
     def _validate_requirement(self, requirement: Dict) -> Dict[str, Any]:
-        """Validate A enskilt requirements by köra associerade tester"""
+        """Validate A enskilt requirements by run associerade tester"""
         req_id = requirement['id']
         test_results = []
         
@@ -1077,7 +1077,7 @@ test_gdpr_data_classification_valid if {
 
 ### Kubernetes Infrastructure Testing
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 ```yaml
 # test/k8s-test-suite.yaml
 apiVersion: v1
@@ -1167,7 +1167,7 @@ spec:
 
 ### CI/CD Pipeline for Infrastructure Testing
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 ```yaml
 # .github/workflows/infrastructure-testing.yml
 name: Infrastructure Testing Pipeline
@@ -1289,12 +1289,12 @@ jobs:
           
       - name: Swedish Security Standards
         run: |
-          # MSB säkerhetsrequirements for critical infrastruktur
+          # MSB security requirements for critical infrastruktur
           ./scripts/msb-compliance-check.sh terraform/
           
-          # Validate to svenska regioner används
+          # Validate to svenska regioner is used
           if grep -r "us-" terraform/ --include="*.tf"; then
-            echo "WARNING: Amerikanska regioner upptäckta - kontrollera datasuveränitet"
+            echo "WARNING: Amerikanska regioner upptäckta - kontrollera data sovereignty"
           fi
 
   performance-testing:
@@ -1319,7 +1319,7 @@ jobs:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
 Comprehensive testing strategies for Infrastructure as Code is essential to ensure reliable, secure and cost-effective infrastructure deployments. a väl designad test pyramid with unit tests, integration tests and end-to-end validation can dramatiskt reducera production issues and improve developer confidence.
 
 Svenska organisationer must particularly fokusera at compliance testing as validates GDPR requirements, financial regulations and government security standards. Automated policy testing with verktyg that OPA enables continuous compliance verification without manual overhead.

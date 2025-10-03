@@ -1,6 +1,6 @@
 # Appendix A: Kodexempel and technical architecture as code-implementations
 
-This appendix contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to göra the enkelt to hitta specific implementations.
+This appendix contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to do the enkelt to hitta specific implementations.
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 
@@ -54,7 +54,7 @@ env:
   AUDIT_LOGGING: 'enabled'
 
 jobs:
-  # GDPR and säkerhetskontroller
+  # GDPR and security controls
   gdpr-compliance-check:
     name: GDPR Compliance Validation
     runs-on: ubuntu-latest
@@ -94,7 +94,7 @@ jobs:
           
           if [ "$VIOLATIONS_FOUND" = true ]; then
             echo "❌ GDPR compliance check misslyckades"
-            echo "Personal data får not hardkodas in architecture as code-code"
+            echo "Personal data may not hardkodas in architecture as code-code"
             exit 1
           fi
           
@@ -260,7 +260,7 @@ pipeline {
                                     --soft-fail
                             """
                             
-                            // Analysera kritiska säkerhetsproblem
+                            // Analysera critical säkerhetsproblem
                             def results = readJSON file: 'checkov-results.json'
                             def criticalIssues = results.results.failed_checks.findAll { 
                                 it.severity == 'CRITICAL' 
@@ -393,7 +393,7 @@ pipeline {
                     ## Rekommendationer
                     - Use Reserved Instances for production workloads
                     - Aktivera auto-scaling for development environments
-                    - Implementera scheduled shutdown for icke-kritiska systems
+                    - Implementera scheduled shutdown for icke-critical systems
                     """
                     
                     writeFile file: 'cost-report-svenska.md', text: costReport
@@ -596,7 +596,7 @@ func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 // testAuditLogging validates to audit logging is konfigurerat according to svenska lagrequirements
 func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Kontrollera CloudTrail konfiguration
+    // Kontrollera CloudTrail configuration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
     
     trails, err := cloudtrailClient.DescribeTrails(&cloudtrail.DescribeTrailsInput{})
@@ -673,7 +673,7 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 ## Infrastructure as Code - CloudFormation {
 
-Architecture as Code-principerna within This område#cloudformation-Architecture as Code}
+Architecture as Code-principerna within This area#cloudformation-Architecture as Code}
 
 This sektion contains CloudFormation templates for AWS-infrastructure adapted for Swedish organizations.
 
@@ -696,7 +696,7 @@ Parameters:
     Type: String
     Default: internal
     AllowedValues: [public, internal, confidential, restricted]
-    Description: 'Dataklassificering according to svenska säkerhetsstandarder'
+    Description: 'Dataklassificering according to svenska security standards'
   
   ComplianceRequirements:
     Type: CommaDelimitedList
@@ -740,7 +740,7 @@ This sektion contains Python-skript and andra automationsverktyg for Infrastruct
 
 ### 22_CODE_1: comprehensive testramverk for Infrastructure as Code
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 *Refereras from chapters 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```python
@@ -835,7 +835,7 @@ class ComprehensiveIaCTesting:
 
 ## Configuration Files {#configuration}
 
-This sektion contains konfigurationsfiler for different tools and tjänster.
+This sektion contains konfigurationsfiler for different tools and services.
 
 ### 22_CODE_2: Governance policy configuration for Swedish organizations
 *Refereras from chapters 22: [Best Practices and Lessons Learned](22_best_practices.md)*
@@ -940,7 +940,7 @@ each kodexamples in This appendix can refereras from huvudtexten with dess uniqu
 ### Konventioner for kodexempel
 
 - **Kommentarer**: all kodexamples contains svenska kommentarer for klarhet
-- **Säkerhet**: Security aspects is markerade with 🔒
+- **Security**: Security aspects is markerade with 🔒
 - **GDPR-compliance**: GDPR-relaterade konfigurationer is markerade with 🇪🇺
 - **Svenska anpassningar**: Lokala anpassningar is markerade with 🇸🇪
 

@@ -1,6 +1,6 @@
 # About the Authors
 
-This chapters presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk toämpning of Infrastructure as Code in svenska organisationer.
+This chapters presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk application of Infrastructure as Code in Swedish organizations.
 
 ![Författare and bidragsgivare](images/diagram_25_authors.png)
 
@@ -20,7 +20,7 @@ This chapters presenterar the personer and organisationer as bidragit to createn
 - Security and compliance in svenska context
 
 **Background:**
-Bokverkstaden grundades with målet to överbrygga klyftan between teoretiska arkitekturprinciper and praktisk Architecture as Code-implementation in svenska organisationer. by kombinera akademisk rigorositet with verklig branschexpertis has teamet createt a resurs as talar direkt to svenska IT-organisationers behov.
+Bokverkstaden grundades with målet to överbrygga klyftan between teoretiska arkitekturprinciper and praktisk Architecture as Code-implementation in Swedish organizations. by kombinera akademisk rigorositet with verklig branschexpertis has teamet created a resurs as talar direkt to svenska IT-organisationers behov.
 
 ## Bidragande experter
 
@@ -40,7 +40,7 @@ Book content has granskats of:
 - **Senior molnarkitekter** from svenska storforetag
 - **Tekniska chefer** within svensk finanssektor  
 - **Compliance-specialister** with expertis within svenska regelverk
-- **Öppen källkod-maintainers** of Infrastructure as Code tool
+- **Open source code-maintainers** of Infrastructure as Code tool
 
 ### Contentssspecialister
 
@@ -62,7 +62,7 @@ Book content has granskats of:
 
 **technical infrastructure:**
 - GitHub Actions CI/CD-pipeline development
-- Automatiserad Pandoc-konfiguration
+- Automatiserad Pandoc-configuration
 - Mermaid diagrams integration and styling
 - Multi-format export-funktionalitet
 
@@ -73,7 +73,7 @@ Book content has granskats of:
 
 ### Svenska organisationer
 
-Flera svenska organisationer has bidragit with:
+Flera Swedish organizations has bidragit with:
 
 - **Fallstudier** from verkliga Infrastructure as Code-implementations
 - **Architecture as Code best practices** from svenska molnmigreringar
@@ -116,9 +116,9 @@ This bok createdes with hjälp of:
 
 ## Erkännanden
 
-### Öppen källkod-community
+### Open source code-community
 
-This bok builds on the enastående arbete as utforts of öppen källkod-community within:
+This bok builds on the enastående arbete as utforts of öppen source code-community within:
 
 - **Terraform** - Infrastructure as Code foundation
 - **Ansible** - Configuration management automation  
@@ -142,11 +142,11 @@ This bok builds on the enastående arbete as utforts of öppen källkod-communit
 
 ## Framtida development
 
-### Kontinuerlig forbättring
+### Kontinuerlig improvement
 
 This bok is designad as a levande resurs as is developed with:
 
-- **Community feedback** - Återkoppling from svenska organisationer
+- **Community feedback** - Återkoppling from Swedish organizations
 - **technical evolution** - Uppdateringar when new tools and methods is developed
 - **Praktiska lessons** - Integration of new case studies and Architecture as Code best practices
 - **Språkutveckling** - Forfining of svensk technical terminologi
@@ -157,22 +157,22 @@ Vi välkomnar bidrag from svenska technical community:
 
 **Contentssbidrag:**
 - Case studies from verkliga implementations
-- Best practices from svenska organisationer
+- Best practices from Swedish organizations
 - new tools and technologies
 - Forbättrad språklig precision
 
 **Tekniska bidrag:**
 - Kodexamples and automationsskript
-- Build pipeline forbättringar
+- Build pipeline improvements
 - new export-format and distributionskanaler
-- Accessibility and usability forbättringar
+- Accessibility and usability improvements
 
 ### Kontaktinformation
 
-For frågor, feedback or forslag to forbättringar:
+For frågor, feedback or forslag to improvements:
 
 - **GitHub Repository**: [https://github.com/Geonitab/kodarkitektur-bokverkstad](https://github.com/Geonitab/kodarkitektur-bokverkstad)
-- **Issues and Pull Requests**: Välkomna for content and technical forbättringar
+- **Issues and Pull Requests**: Välkomna for content and technical improvements
 - **Diskussioner**: GitHub Discussions for bredare samtal about Architecture as Code
 
 ## Licens and use
@@ -182,15 +182,15 @@ This bok is distributed under villkor as enables:
 - **Fri distribution** for utbildningsändamål
 - **Anpassning** for organisationsspecific behov
 - **Kommersiell use** with korrekt attribution
-- **Översättning** to andra språk with bibehållen kvalitet
+- **Översättning** to andra language with bibehållen kvalitet
 
 All reuse ska erkänna ursprungliga forfattare and bidragsgivare according to etablerade akademiska and technical standarder.
 
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-"Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team createt a resurs as specific möter svenska organisationers behov within Architecture as Code and Infrastructure as Code.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+"Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team created a resurs as specific meets svenska organisationers behov within Architecture as Code and Infrastructure as Code.
 
 Bokens success will from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig value for svenska technical organisationer. Vi hoppas to This resurs will to accelerera adoptionen of Architecture as Code-principles and bidra to improved technical utfall over entire svenska tech-sektorn.
 

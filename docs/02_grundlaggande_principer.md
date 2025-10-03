@@ -80,17 +80,17 @@ jobs:
           publish_dir: ./docs/dist
 ```
 
-Moderna verktyg that GitBook, Gitiles and MkDocs enables automatisk generering of webbdocumentsation from Markdown-filer lagrade together with the code.
+Moderna verktyg that GitBook, Gitiles and MkDocs enables automatic generering of webbdocumentsation from Markdown-filer lagrade together with the code.
 
 ## Requirements as Code
 
-Requirements as Code (RaC) transformerar traditionell requirementsspecifiction from text documents to maskinläsbar code as can exekveras, valitheir and automatiseras. This paradigmskifte enables kontinuerlig verification of to systemet meets sina requirements through entire utvecklingslivscykeln.
+Requirements as Code (RaC) transformerar traditional requirementsspecifiction from text documents to machine-readable code as can exekveras, valitheir and automatiseras. This paradigmskifte enables kontinuerlig verification of to systemet meets sina requirements through entire utvecklingslivscykeln.
 
 ### automation and traceability
 
 **Automatiserad validation**: Krav uttryckta as code can exekveras automatically mot systemet to verifiera compliance. This eliminates manuell testing and ensures konsekvent validation.
 
-**Direkt koppling between requirements and code**: each systemkomponent can kopplas tobaka to specific requirements, which creates fullständig traceability from business needs to Technical implementation.
+**Direkt koppling between requirements and code**: each systemkomponent can kopplas tobaka to specific requirements, which creates complete traceability from business needs to Technical implementation.
 
 **Continuous compliance**: Changes in systemet valitheir automatically mot all definierade requirements, which forhindrar regression and ensures ongoing compliance.
 
@@ -174,7 +174,7 @@ class RequirementsValidator:
         }
 ```
 
-Svenska organisationer drar särskild nytta of Requirements as Code to automatically validate GDPR-compliance, finansiella regleringar and myndighetsrequirements as konstant must uppfyllas.
+Svenska organisationer drar particular nytta of Requirements as Code to automatically validate GDPR-compliance, finansiella regleringar and myndighetsrequirements as konstant must uppfyllas.
 
 Sources:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.

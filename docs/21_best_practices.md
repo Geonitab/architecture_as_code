@@ -8,13 +8,13 @@
 
 ![comprehensive best practices landskap](images/mindmap_22_best_practices.png)
 
-*Mindmappen presenterar the comprehensive landskapet of Best Practices and Lessons Learned within Infrastructure as Code (Architecture as Code). The shows sambanden between kodorganisation, säkerhets- and compliance-pattern, performance-optimering, governance-ramverk and internationella erfarenheter. This holistiska syn hjälper organisationer to forstå how different best practices samspelar to create successful Architecture as Code-Architecture as Code-implementation.*
+*Mindmappen presenterar the comprehensive landskapet of Best Practices and Lessons Learned within Infrastructure as Code (Architecture as Code). The shows sambanden between kodorganisation, security- and compliance-pattern, performance-optimering, governance-ramverk and internationella erfarenheter. This holistiska syn helps organisationer to understand how different best practices samspelar to create successful Architecture as Code-Architecture as Code-implementation.*
 
 ## Overall Description
 
-Infrastructure as Code bästa praxis represents culmination of collective wisdom from thousands organisationer as has undergone transformation within Architecture as Code over the last decade. These methods is not static rules without evolving guidelines as must adapted to specific organizational context, teknologiska begränsningar and business requirements.
+Infrastructure as Code best praxis represents culmination of collective wisdom from thousands organisationer as has undergone transformation within Architecture as Code over the last decade. These methods is not static rules without evolving guidelines as must adapted to specific organizational context, teknologiska begränsningar and business requirements.
 
-Svenska organisationer has bidragit significantly to global Architecture as Code best practice development through innovative approaches to regulatory compliance, sustainable computing and collaborative development models. Companies that Spotify, Klarna and Ericsson has developed patterns as nu används worldwide for scaling Architecture as Code practices in large, complex organizations.
+Svenska organisationer has bidragit significantly to global Architecture as Code best practice development through innovative approaches to regulatory compliance, sustainable computing and collaborative development models. Companies that Spotify, Klarna and Ericsson has developed patterns as nu is used worldwide for scaling Architecture as Code practices in large, complex organizations.
 
 Lärda läxor from early Architecture as Code adopters reveal common pitfalls and anti-patterns as can undvikas through careful planning and gradual implementation. Understanding these lessons enables organizations to accelerate their IaC journey while the avoid costly mistakes as previously derailed transformation initiatives.
 
@@ -176,7 +176,7 @@ Contract negotiation strategies for infrastructure tooling must balance cost, fu
 
 Vendor performance monitoring and relationship management ensure ongoing value delivery from tooling investments. Regular vendor reviews, performance scorecards and strategic planning sessions help maintain productive partnerships and identify optimization opportunities.
 
-## Kontinuerlig forbättring and innovation
+## Kontinuerlig improvement and innovation
 
 Systematic continuous improvement programs for Infrastructure as Code environments drive ongoing optimization of processes, tools and outcomes through data-driven decision making and regular retrospectives. Svenska organizations have pioneered improvement frameworks as balance stability with innovation.
 
@@ -254,17 +254,17 @@ Research partnerships with academic institutions provide access to advanced rese
 
 International collaboration enables Swedish organizations to participate in global standards development, share Nordic perspectives and build relationships with international partners. This global engagement enhances Swedish influence in international technology development and provides access to worldwide expertise.
 
-## Kontinuerlig forbättring and development
+## Kontinuerlig improvement and development
 
 ![Continuous improvement framework](images/diagram_22_continuous_improvement.png)
 
-*Kontinuerlig forbättring of Infrastructure as Code-praktiker requires systematic approach to learning, adaptation and evolution. Diagram illustrerar feedback loops between praktisk erfarenhet, teknologisk development and organisatorisk maturity as driver sustainable Architecture as Code transformation.*
+*Kontinuerlig improvement of Infrastructure as Code-praktiker requires systematic approach to learning, adaptation and evolution. Diagram illustrerar feedback loops between praktisk erfarenhet, teknologisk development and organisatorisk maturity as driver sustainable Architecture as Code transformation.*
 
 successful Infrastructure as Code-implementation is not A one-time projekt without a continuous journey of learning, adaptation and refinement. Svenska organisationer as has achieved sustainable Architecture as Code success understand to best practices must evolve continuously based on changing technology landscape, business requirements and lessons learned from real-world implementation challenges.
 
 ### Lärande from misslyckanden and incidenter
 
-Organisatorisk maturity within Architecture as Code development will främst from systematic learning from failures, incidents and unexpected challenges as uppstår under practical implementation. Svenska tech companies that Spotify and Klarna has developed sophisticated incident response frameworks as treat infrastructure failures as valuable learning opportunities rather than simple problems to fix.
+Organisatorisk maturity within Architecture as Code development will främst from systematic learning from failures, incidents and unexpected challenges as arises under practical implementation. Svenska tech companies that Spotify and Klarna has developed sophisticated incident response frameworks as treat infrastructure failures as valuable learning opportunities rather than simple problems to fix.
 
 Incident retrospectives for infrastructure-related issues should focus at root cause analysis of both technical and process failures. Common patterns as emerge from svenska organizations include inadequate testing in staging environments, insufficient monitoring of infrastructure changes and poor communication between development and operations teams during critical deployments.
 
@@ -314,7 +314,7 @@ External knowledge sharing through conferences, blog posts and open source contr
 
 Mentorship programs for Architecture as Code practitioners help accelerate individual skill development and ensure knowledge transfer between experienced and emerging infrastructure professionals. Svenska organizations have developed particularly effective mentorship approaches as combine technical training with broader professional development support.
 
-### Svenska organisationsexempel at kontinuerlig forbättring
+### Svenska organisationsexempel at kontinuerlig improvement
 
 **Klarna** has demonstrated exceptional commitment to continuous Architecture as Code improvement through their evolution from traditional deployment practices to fully automated, scalable infrastructure management. Their journey illustrates how financial services companies can achieve both regulatory compliance and rapid innovation through systematic infrastructure automation maturity development.
 
@@ -327,7 +327,7 @@ Mentorship programs for Architecture as Code practitioners help accelerate indiv
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
 Best practices for Infrastructure as Code represents accumulated wisdom from global community of practitioners as has navigerat challenges of scaling infrastructure management at enterprise level. Svenska organisationer has contributed significantly to these practices through innovative approaches to compliance, sustainability and collaborative development.
 
 Effective implementation of Architecture as Code best practices requires balanced consideration of technical excellence, business value, regulatory compliance and environmental responsibility. Svenska organizations as embrace comprehensive best practice frameworks position themselves for sustainable long-term success in rapidly evolving technology landscape.

@@ -2,7 +2,7 @@
 
 ![Containerization and Orchestration](images/diagram_11_kapitel10.png)
 
-Architecture as Code methodology forms the foundation for containerteknologi and orkestrering represents paradigmskifte in how applications driftsätts and skalas. by definiera Architecture as Code for containrar is enabled portabel, skalbar and reproducerbar applikationsdriftsättning over different environments and cloud providers.
+Architecture as Code methodology forms the foundation for containerteknologi and orkestrering represents paradigmskifte in how applications driftsätts and skalas. by definiera Architecture as Code for containrar is enabled portabel, skalbar and reproducible applikationsdriftsättning over different environments and cloud providers.
 
 ## Container-teknologiens roll within architecture as code
 
@@ -30,7 +30,7 @@ Observability configurations for tracing, metrics collection, and logging integr
 
 ## Infrastructure automation with container platforms
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 
 Container-native infrastructure tools that Crossplane and Operator Framework extend Kubernetes for complete infrastructure management. These platforms enables provisioning and management of cloud resources through Kubernetes-native APIs and custom resource definitions.
 
@@ -235,7 +235,7 @@ resource "google_container_node_pool" "primary_nodes" {
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
 Containerization and Orchestration as code transformerar application deployment from manual, error-prone processes to automated, reliable workflows. Kubernetes and associerade verktyg enables sophisticated application management through declarative configurations, withan GitOps patterns ensures consistent and auditable deployment processes. Success requires comprehensive understanding of container networking, storage management, and security implications.
 
 ## Sources and referenser

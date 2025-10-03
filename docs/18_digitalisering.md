@@ -2,33 +2,33 @@
 
 ![Digitaliseringsprocess](images/diagram_19_digitalisering.png)
 
-*Infrastructure as Code forms the backbone in modern digitaliseringsinitiativ by enable snabb, skalbar and kostnadseffektiv transformation of IT-environments. Diagram illustrerar The strategiska the way from traditionell infrastructure to fullständigt kodbaserad digital plattform.*
+*Infrastructure as Code forms the backbone in modern digitaliseringsinitiativ by enable snabb, skalbar and kostnadseffektiv transformation of IT-environments. Diagram illustrerar The strategiska the way from traditional infrastructure to fullständigt kodbaserad digital plattform.*
 
 ## Svenska digitaliseringslandskapet
 
 ![Digitalisering in svenskt context](images/mindmap_19_digitalisering.png)
 
-*Mindmappen belyser the unique aspekterna of digitalisering in svensk context, from regulatory Challenges and framgångsexamples to the specific Benefits that Architecture as Code erbjuder svenska organisationer. The shows how Cloud-first strategier, svenska digitaliseringsChallenges and internationella framgångsexamples samspelar in The svenska digitaliseringsresan.*
+*Mindmappen belyser the unique aspekterna of digitalisering in svensk context, from regulatory Challenges and framgångsexamples to the specific Benefits that Architecture as Code erbjuder Swedish organizations. The shows how Cloud-first strategier, svenska digitaliseringsChallenges and internationella framgångsexamples samspelar in The svenska digitaliseringsresan.*
 
 ## Overall Description
 
-Digitalisering is not only about to introducing new technology, without about a fundamental change in how organisationer delivers value to sina customers and stakeholders. Infrastructure as Code spelar a central roll in This transformation by enable agile, cloud-based solutions as can adapted to changing business needs with särskild hänsyn to svenska regulatory and cultural conditions.
+Digitalisering is not only about to introducing new technology, without about a fundamental change in how organisationer delivers value to sina customers and stakeholders. Infrastructure as Code spelar a central roll in This transformation by enable agile, cloud-based solutions as can adapted to changing business needs with particular consideration to svenska regulatory and cultural conditions.
 
 ### Svenska digitaliseringsutmaningar and possibilities
 
-Svensk public sector and wheningsliv står infor comprehensive digitaliseringsChallenges where traditionella IT-Structures often forms flaskhalsar for innovation and effektivitet. according to Digitaliseringsstyrelsens last rapport from 2023 has svenska organisationer investerat over 180 miljarder kronor in digitaliseringsinitiativ the last five åren, but many projekt has misslyckats at grund of bristande infrastructurestyrning and technical skuld.
+Svensk public sector and wheningsliv stands infor comprehensive digitaliseringsChallenges where traditionella IT-Structures often forms flaskhalsar for innovation and effektivitet. according to Digitaliseringsstyrelsens last rapport from 2023 has Swedish organizations investerat over 180 miljarder kronor in digitaliseringsinitiativ the last five åren, but many projekt has misslyckats at grund of bristande infrastructurestyrning and technical skuld.
 
-Architecture as Code-baserade solutions erbjuder möjligheten to bryta These begränsningar through Architecture as Code-automation, standardisering and scalability as specific adresserar svenska Challenges:
+Architecture as Code-baserade solutions erbjuder opportunity to bryta These begränsningar through Architecture as Code-automation, standardisering and scalability as specific adresserar svenska Challenges:
 
 **Regulatorisk compliance**: Svenska organisationer must navigera komplex lagstiftning including GDPR, Bokforingslagen, and branschspecific regelverk that Finansinspektionens foreskrifter for finansiella institutioner. Architecture as Code enables automatiserad compliance-checking and audit-spårning that ensure kontinuerlig regelefterlevnad.
 
-**Kostnadseffektivitet**: With svenska lönenivåer and höga driftskostnader is Architecture as Code-automation critical for konkurrenskraft. Architecture as Code reducerar manuellt arbete with upp to 70% according to implementeringsstudier from svenska foretag that Telia and Volvo Cars.
+**Kostnadseffektivitet**: With svenska lönenivåer and high driftskostnader is Architecture as Code-automation critical for konkurrenskraft. Architecture as Code reduces manuellt arbete with upp to 70% according to implementeringsstudier from svenska foretag that Telia and Volvo Cars.
 
-**KompetensChallenges**: Sverige upplever brist at IT-specialister, which gör the kritiskt to standardisera and automatisera infrastructurehantering. Architecture as Code enables to smaller specialized team can handle complex environments through Architecture as Codebaserade templates and Architecture as Code best practices.
+**KompetensChallenges**: Sverige upplever brist at IT-specialister, which does the kritiskt to standardisera and automatisera infrastructurehantering. Architecture as Code enables to smaller specialized team can handle complex environments through Architecture as Codebaserade templates and Architecture as Code best practices.
 
-**Säkerhet and datasuveränitet**: Svenska organisationer prioriterar högt säkerhet and kontroll over data. Architecture as Code enables consistent security configurations and encryption-at-rest as standard, which is essentiellt for svenska myndigheters and foretags fortroende.
+**Security and data sovereignty**: Svenska organisationer prioriterar högt security and kontroll over data. Architecture as Code enables consistent security configurations and encryption-at-rest as standard, which is essentiellt for svenska myndigheters and foretags fortroende.
 
-The code-based infrastructureen enables DevOps-methods as sammanbinder development and drift, which results in snabbare leveranser and higher kvalitet. This is particularly viktigt for Swedish organizations as behöver konkurrera at a global marknad while the follows lokala regelverk and säkerhetsrequirements.
+The code-based infrastructureen enables DevOps-methods as sammanbinder development and drift, which results in snabbare leveranser and higher kvalitet. This is particularly viktigt for Swedish organizations as needs konkurrera at a global marknad while the follows lokala regelverk and security requirements.
 
 ### Digitaliseringsprocessens dimensioner in svensk context
 
@@ -36,27 +36,27 @@ Digitaliseringsprocessen through Architecture as Code encompasses multiple dimen
 
 **technical transformation**: Migration from on-premise datacenter to hybrid- and multi-cloud arkitekturer as respekterar svenska data residency-requirements. This includes Architecture as Code-implementation of microservices, containerisering and API-first arkitekturer as enables snabb innovation.
 
-**Organisatorisk change**: Inforande of cross-funktionella team according to svenska samarbetskultur with fokus at consensus and witharbetarinflytande. Svenska organisationer behöver balansera agila arbetssätt with traditionella hierarkiska Structures and starka fackliga traditioner.
+**Organisatorisk change**: Inforande of cross-funktionella team according to svenska samarbetskultur with fokus at consensus and witharbetarinflytande. Svenska organisationer needs balansera agila way of working with traditionella hierarkiska Structures and starka fackliga traditioner.
 
 **cultural development**: Change mot mer datadrivna decisionssprocesser and "fail fast"-mentalitet within ramen for svensk riskwithvetenhet and långsiktigt tänkande. This requires careful change management as respekterar svenska values about trygghet and stabilitet.
 
-**competence development**: Systematisk upskilling of existing personal in Architecture as Code-technologies with fokus at svenska utbildningsmodor as combines teoretisk knowledge with praktisk toämpning.
+**competence development**: Systematisk upskilling of existing personal in Architecture as Code-technologies with fokus at svenska utbildningsmodor as combines teoretisk knowledge with praktisk application.
 
-successful Architecture as Code-implementation requires balans between These aspekter with particularly fokus at svenska organisationers behov of transparency, consensus-building and långsiktig hållbarhet.
+successful Architecture as Code-implementation requires balans between These aspekter with particularly fokus at svenska organisationers behov of transparency, consensus-building and long-term sustainability.
 
 ### Svenska digitaliseringsframgångar and lessons
 
-Flera svenska organisationer has throughfort exemplariska digitaliseringstransformationer as demonstrerar Architecture as Code:s potential:
+Flera Swedish organizations has throughfort exemplariska digitaliseringstransformationer as demonstrerar Architecture as Code:s potential:
 
-**Spotify**: Revolutionerade musikindustrin through cloud-native architecture from start, with Architecture as Code as möjliggjorde skalning from svenskt startup to global plattform with 500+ miljoner user. Deras "Spotify Model" for agile organisation has inspirerait foretag världen over.
+**Spotify**: Revolutionerade musikindustrin through cloud-native architecture from start, with Architecture as Code as enabled skalning from svenskt startup to global plattform with 500+ miljoner user. Deras "Spotify Model" for agile organisation has inspirerait foretag världen over.
 
-**Klarna**: Transformerade betalningsbranschen through API-first architecture byggd at Architecture as Code, which möjliggjorde expansion to 45 länder with konsistent Security and compliance. Deras approach to regulated fintech innovation has become modell for andra svenska fintechs.
+**Klarna**: Transformerade betalningsbranschen through API-first architecture byggd at Architecture as Code, which enabled expansion to 45 länder with konsistent Security and compliance. Deras approach to regulated fintech innovation has become modell for andra svenska fintechs.
 
-**Volvo Cars**: Throughforde digital transformation from traditionell biltoverkare to mobility service provider through comprehensive IoT- and cloud-plattform baserad at Architecture as Code. This möjliggjorde development of autonoma körtjänster and subscription-baserade affärsmodor.
+**Volvo Cars**: Throughforde digital transformation from traditional biltoverkare to mobility service provider through comprehensive IoT- and cloud-plattform baserad at Architecture as Code. This enabled development of autonoma körtjänster and subscription-baserade affärsmodor.
 
 **Skatteverket**: Moderniserade Sveriges skattesystem through cloud-first strategi with Architecture as Code, which resulterade in 99.8% uptime under deklarationsperioden and 50% snabbare handläggningstider for foretagsdeklarationer.
 
-These framgångar shows to svenska organisationer can uppnå världsledande digitalisering through strategisk use of Architecture as Code kombinerat with svenska styrkor within innovation, design and sustainability.
+These framgångar shows to Swedish organizations can achieve världsledande digitalisering through strategisk use of Architecture as Code kombinerat with svenska styrkor within innovation, design and sustainability.
 
 ## Cloud-first strategier for svensk digitalisering
 
@@ -64,11 +64,11 @@ Sverige has developed a strong position within molnteknologi, delvis driven by a
 
 ### Regeringens digitaliseringsstrategi and Architecture as Code
 
-Regeringens digitaliseringsstrategi "Digital agenda for Sverige 2025" emphasizes betydelsen of molnteknik to uppnå målen about a digitalt sammanhållen offentlig forvaltning. Strategin specificerar to svenska myndigheter ska:
+Regeringens digitaliseringsstrategi "Digital agenda for Sverige 2025" emphasizes betydelsen of molnteknik to achieve målen about a digitalt sammanhållen offentlig forvaltning. Strategin specifies to svenska myndigheter ska:
 
-- Prioritera cloud-first solutions as follows EU:s rules for datasuveränitet
-- Implementera automatiserad architecture as enables delning of IT-tjänster between myndigheter  
-- Develop gemensamma plattformar for withborgarservice baserade at öppen källkod
+- Prioritera cloud-first solutions as follows EU:s rules for data sovereignty
+- Implementera automatiserad architecture as enables delning of IT-services between myndigheter  
+- Develop gemensamma plattformar for withborgarservice baserade at öppen source code
 - Ensure cybersäkerhet and beredskap through Architecture as Code-baserad infrastructure
 
 This creates efterfrågan at Architecture as Code-solutions as can handle känslig data according to GDPR and Offentlighets- and sekretesslagen while the enables innovation and effektivitet. practical means This:
@@ -85,7 +85,7 @@ terraform {
     }
   }
   
-  # State lagring with kryptering according to svenska säkerhetsrequirements
+  # State lagring with kryptering according to svenska security requirements
   backend "s3" {
     bucket         = "svenska-myndighet-terraform-state"
     key            = "government/production/terraform.tfstate"
@@ -132,7 +132,7 @@ resource "aws_vpc" "myndighet_vpc" {
   
   tags = merge(local.myndighet_tags, {
     Name = "${var.myndighet_namn}-vpc"
-    Syfte = "Myndighets-VPC for digitala tjänster"
+    Syfte = "Myndighets-VPC for digitala services"
   })
 }
 
@@ -144,7 +144,7 @@ resource "aws_subnet" "offentlig_zon" {
   cidr_block        = cidrsubnet(var.vpc_cidr, 8, count.index)
   availability_zone = var.availability_zones[count.index]
   
-  map_public_ip_on_launch = false  # Ingen automatisk public IP for säkerhet
+  map_public_ip_on_launch = false  # Ingen automatic public IP for security
   
   tags = merge(local.myndighet_tags, {
     Name           = "${var.myndighet_namn}-offentlig-${count.index + 1}"
@@ -187,15 +187,15 @@ resource "aws_subnet" "känslig_zon" {
 Svenska foretag that Spotify, Klarna and King has shown the way by bygga sina technical plattformar at molnbaserad infrastructure from foundation. Deras success demonstrerar how Architecture as Code enables snabb skalning and global expansion while technical skuld minimeras and svenska values about sustainability and innovation bevaras.
 
 **Spotify's Architecture as Code-architecture for global skalning:**
-Spotify utvecklade their egen Architecture as Code-plattform kallad "Backstage" which möjliggjorde skalning from 1 miljon to 500+ miljoner user without linjär ökning of infrastructure complexity. Deras approach includes:
+Spotify utvecklade their egen Architecture as Code-plattform kallad "Backstage" which enabled skalning from 1 miljon to 500+ miljoner user without linjär ökning of infrastructure complexity. Deras approach includes:
 
 - Microservices with egen infrastructure definition per service
 - Automated compliance checking for GDPR and musikrättigheter
 - Cost-aware scaling as respekterar svenska hållbarhetsmål
-- Developer self-service portaler as reducerar time-to-market from veckor to timmar
+- Developer self-service portaler as reduces time-to-market from veckor to timmar
 
 **Klarna's regulated fintech Architecture as Code:**
-Which licensierad bank must Klarna följa Finansinspektionens strict requirements while the innoverar snabbt. Deras Architecture as Code-strategi includes:
+Which licensierad bank must Klarna follow Finansinspektionens strict requirements while the innoverar snabbt. Deras Architecture as Code-strategi includes:
 
 - Automated audit trails for all infrastructure changes
 - Real-time compliance monitoring according to PCI-DSS and EBA-guidelines
@@ -204,12 +204,12 @@ Which licensierad bank must Klarna följa Finansinspektionens strict requirement
 
 ### Cloud-leverantörers svenska satsningar
 
-Cloud-first implementation requires dock noggrann planering of hybrid- and multi-cloud strategier. Svenska organisationer must navigera between different cloud providers while the ensures datasuveränitet and follows nationella säkerhetsrequirements.
+Cloud-first implementation requires dock noggrann planering of hybrid- and multi-cloud strategier. Svenska organisationer must navigera between different cloud providers while the ensures data sovereignty and follows nationella security requirements.
 
 **AWS Nordic expansion:**
-Amazon Web Services etablerade their forsta nordiska region in Stockholm 2018, specific to möta svenska and nordiska requirements at data residency. AWS Stockholm region erbjuder:
+Amazon Web Services etablerade their forsta nordiska region in Stockholm 2018, specific to meet svenska and nordiska requirements at data residency. AWS Stockholm region erbjuder:
 
-- Fysisk datasuveränitet within Sveriges gränser
+- Fysisk data sovereignty within Sveriges gränser
 - Sub-5ms latency to entire Norden
 - Compliance certifieringar including C5 (Tyskland) and ISO 27001
 - Dedicated support at svenska språket
@@ -223,16 +223,16 @@ Microsoft investerade over 2 miljarder kronor in svenska cloud-infrastructure wi
 - Partnership with svenska systemintegratörer that Avanade and Evry
 
 **Google Cloud Nordic:**
-Google etablerade their forsta nordiska region in Finland 2021 but erbjuder svenska organisationer:
+Google etablerade their forsta nordiska region in Finland 2021 but erbjuder Swedish organizations:
 
 - EU-baserad data processing for GDPR compliance
 - Carbon-neutral operations according to svenska hållbarhetsmål
 - AI/ML capabilities for svenska forskningsorganisationer
-- Integration with öppen källkod-ekosystem as is populärt in Sverige
+- Integration with öppen source code-ekosystem as is populärt in Sverige
 
 ### Hybrid cloud strategier for Swedish organizations
 
-Many svenska organisationer choose hybrid cloud-modor as combines on-premise infrastructure with cloud services to balansera kontroll, kostnad and compliance:
+Many Swedish organizations choose hybrid cloud-modor as combines on-premise infrastructure with cloud services to balansera kontroll, kostnad and compliance:
 
 ```yaml
 # Svenska hybrid cloud architecture as code with Terraform
@@ -324,13 +324,13 @@ resource "aws_vpn_connection" "hybrid_connection" {
 }
 ```
 
-## automation of affärsprocesser
+## automation of business processes
 
-Architecture as Code enables automation as sträcker itself långt bortom traditionell IT-drift to to encompass entire affärsprocesser with särskild hänsyn to svenska organisationers behov of transparency, compliance and effektivitet. by definiera Architecture as Code can organisationer create självbetjäningslösningar for Developers and affärsanvändare as follows svenska Architecture as Code best practices for governance and riskhantering.
+Architecture as Code enables automation as sträcker itself långt bortom traditional IT-drift to to encompass entire business processes with particular consideration to svenska organisationers behov of transparency, compliance and effektivitet. by definiera Architecture as Code can organisationer create självbetjäningslösningar for Developers and affärsanvändare as follows svenska Architecture as Code best practices for governance and riskhantering.
 
 ### End-to-end processautomatisering for Swedish organizations
 
-Moderna svenska organisationer implement comprehensive affärsprocessautomatisering as integrerar Architecture as Code with business logic to create sömlösa, compliance-withvetna workflows:
+Moderna Swedish organizations implement comprehensive affärsprocessautomatisering as integrerar Architecture as Code with business logic to create sömlösa, compliance-withvetna workflows:
 
 **Automatisk kundregistrering with KYC (Know Your Customer):**
 ```python
@@ -345,7 +345,7 @@ from terraform_python_api import Terraform
 
 class SwedishCustomerOnboarding:
     """
-    Automatiserad kundregistrering for svenska finansiella tjänster
+    Automatiserad kundregistrering for svenska finansiella services
     """
     
     def __init__(self):
@@ -386,7 +386,7 @@ class SwedishCustomerOnboarding:
             'gdpr_compliant': True
         })
         
-        # step 4: Skapa kundkonto in säker databas
+        # step 4: Skapa kundkonto in secure databas
         await self.create_customer_account(application_data, customer_infrastructure)
         
         # step 5: Skicka välkomstmeddelande at svenska
@@ -470,14 +470,14 @@ class SwedishCustomerOnboarding:
         return tf_result
 ```
 
-examples at affärsprocessautomatisering includes automatisk provisionering of utvecklingsenvironments, dynamisk skalning of resurser based on affärsbelastning, samt integrated handling of Security and compliance through policy-as-code. This reducerar manuellt arbete and reduces the risk of mänskliga fel while svenska requirements at transparency and traceability uppfylls.
+examples at affärsprocessautomatisering includes automatic provisionering of utvecklingsenvironments, dynamisk skalning of resurser based on affärsbelastning, samt integrated handling of Security and compliance through policy-as-code. This reduces manuellt arbete and reduces the risk of human errors while svenska requirements at transparency and traceability uppfylls.
 
 ### Finansiella institutioners automatiseringslösningar
 
-Svenska finansiella institutioner that Nordea and SEB has implementerat comprehensive automatiseringslösningar baserade at Architecture as Code to handle regulatory requirements while the delivers innovativa digitala tjänster. These solutions enables snabb lansering of new produkter without to kompromissa with säkerhet or compliance.
+Svenska finansiella institutioner that Nordea and SEB has implementerat comprehensive automatiseringslösningar baserade at Architecture as Code to handle regulatory requirements while the delivers innovativa digitala services. These solutions enables snabb lansering of new produkter without to kompromissa with security or compliance.
 
-**SEB:s DevOps-plattform for finansiella tjänster:**
-SEB utvecklade a intern plattform kallad "SEB Developer Experience" which automatiserar entire livscykeln for finansiella applications:
+**SEB:s DevOps-plattform for finansiella services:**
+SEB utvecklade a intern plattform kallad "SEB Developer Experience" which automates entire livscykeln for finansiella applications:
 
 ```yaml
 # SEB-inspired financial services automation
@@ -548,7 +548,7 @@ spec:
         factor: 2
         maxDuration: 3m
       
-  # Compliance hooks for finansiella tjänster
+  # Compliance hooks for finansiella services
   hooks:
   - name: pre-deployment-compliance-check
     template:
@@ -565,9 +565,9 @@ spec:
         args: ["--service", "${service_name}", "--timestamp", "{{workflow.creationTimestamp}}"]
 ```
 
-### automation with Machine Learning for svenska verksamheter
+### automation with Machine Learning for svenska operations
 
-automation through Architecture as Code creates också possibilities for kontinuerlig optimering of resurser and kostnader with hjälp of machine learning. Machine learning-algoritmer can analyze användningsmönster and automatically adjust infrastructure for optimal performance and kostnadseffektivitet with hänsyn to svenska arbetstider and semesterperioder.
+automation through Architecture as Code creates also possibilities for kontinuerlig optimering of resurser and kostnader with hjälp of machine learning. Machine learning-algoritmer can analyze usage patterns and automatically adjust infrastructure for optimal performance and kostnadseffektivitet with consideration to svenska arbetstider and semesterperioder.
 
 ```python
 # ml_automation/swedish_workload_optimizer.py
@@ -600,7 +600,7 @@ class SwedishWorkloadOptimizer:
         
     def collect_swedish_usage_patterns(self, days_back=90):
         """
-        Samla användningsdata with hänsyn to svenska arbetstider
+        Samla användningsdata with consideration to svenska arbetstider
         """
         
         end_time = datetime.utcnow()
@@ -645,7 +645,7 @@ class SwedishWorkloadOptimizer:
     
     def train_swedish_prediction_model(self, usage_data):
         """
-        Träna ML-modell for svenska användningsmönster
+        Träna ML-modell for svenska usage patterns
         """
         
         # Features for svenska arbetstider and kultur
@@ -683,7 +683,7 @@ class SwedishWorkloadOptimizer:
         Generera skalningsrekommendationer for Swedish organizations
         """
         
-        # Förutsäg use for nästa vecka
+        # Förutsäg use for next vecka
         future_predictions = self._predict_next_week(usage_data)
         
         recommendations = {
@@ -804,15 +804,15 @@ class SwedishWorkloadOptimizer:
 
 ### API-first automation for svenska ekosystem
 
-Svenska organisationer implement också API-first strategier as enables smidig integration between interna systems and externa partners, which is particularly viktigt in The svenska contexten where many foretag is del of större nordiska or europeiska ekosystem.
+Svenska organisationer implement also API-first strategier as enables smidig integration between interna systems and externa partners, which is particularly viktigt in The svenska contexten where many foretag is del of större nordiska or europeiska ekosystem.
 
-## Digital transformation in svenska organisationer
+## Digital transformation in Swedish organizations
 
-Svenska organisationer throughgår for whenvarande a of the most comprehensive digitaliseringsprocesserna in modern time. Infrastructure as Code forms often The technical foundation as enables This transformation by creating flexibla, skalbara and kostnadseffektiva IT-environments.
+Svenska organisationer undergoes for whenvarande a of the most comprehensive digitaliseringsprocesserna in modern time. Infrastructure as Code forms often The technical foundation as enables This transformation by creating flexibla, skalbara and kostnadseffektiva IT-environments.
 
-Traditionella svenska industriforetag that Volvo, Ericsson and ABB has omdefinierat sina affärsmodor through digitaliseringsinitiativ as builds on modern molninfrastructure. Architecture as Code has enabled for These foretag to develop IoT-plattformar, AI-tjänster and dataanalytiska solutions as creates new intäktsSources.
+Traditionella svenska industriforetag that Volvo, Ericsson and ABB has omdefinierat sina affärsmodor through digitaliseringsinitiativ as builds on modern molninfrastructure. Architecture as Code has enabled for These foretag to develop IoT-plattformar, AI-services and dataanalytiska solutions as creates new intäktsSources.
 
-Kommunal sektor has också omfamnat Architecture as Code as A verktyg to modernisera withborgarservice. Digitala plattformar for e-tjänster, öppna data and smart city-initiativ builds on kodbaserad infrastructure as can adapted to different kommuners specific behov and resurser.
+Kommunal sektor has also omfamnat Architecture as Code as A verktyg to modernisera withborgarservice. Digitala plattformar for e-services, öppna data and smart city-initiativ builds on kodbaserad infrastructure as can adapted to different kommuners specific behov and resurser.
 
 Challenges within digital transformation includes kompetensbrist, cultural motstånd and complex legacy-systems. Architecture as Code contributes to to minska These Challenges by standardisera processes, enable iterativ development and reducera technical komplexitet.
 
@@ -834,9 +834,9 @@ terraform {
   }
 }
 
-# AWS for globala tjänster
+# AWS for globala services
 provider "aws" {
-  region = "eu-north-1"  # Stockholm region for datasuveränitet
+  region = "eu-north-1"  # Stockholm region for data sovereignty
 }
 
 # Azure for Microsoft-integrationer
@@ -895,7 +895,7 @@ jobs:
           
       - name: Svenska Säkerhetsrequirements
         run: |
-          # MSB:s säkerhetsrequirements for critical infrastruktur
+          # MSB:s security requirements for critical infrastruktur
           ./scripts/msb-security-validation.sh
 ```
 
@@ -922,10 +922,10 @@ def provision_development_environment():
     if not validate_swedish_team_structure(team_name):
         return jsonify({'error': 'Invalid team structure'}), 400
     
-    # Konfigurera miljö based on svenska regelverk
+    # Konfigurera environment based on svenska regelverk
     config = {
         'team': team_name,
-        'region': 'eu-north-1',  # Stockholm for datasuveränitet
+        'region': 'eu-north-1',  # Stockholm for data sovereignty
         'encryption': True,
         'audit_logging': True,
         'gdpr_compliance': True,
@@ -969,7 +969,7 @@ class SwedishCloudCostOptimizer:
         self.cloudwatch = boto3.client('cloudwatch', region_name='eu-north-1')
         
     def analyze_usage_patterns(self, timeframe_days=30):
-        """Analysera användningsmönster for svenska arbetstider"""
+        """Analysera usage patterns for svenska arbetstider"""
         
         # Hämta metriker for svenska arbetstider (07:00-18:00 CET)
         swedish_business_hours = self.get_business_hours_metrics()
@@ -988,7 +988,7 @@ class SwedishCloudCostOptimizer:
         return usage_data
     
     def recommend_scaling_strategy(self, usage_data):
-        """Rekommendera skalningsstrategi based on svenska användningsmönster"""
+        """Rekommendera skalningsstrategi based on svenska usage patterns"""
         
         # Träna modell to förutsäga resursanvändning
         features = ['hour', 'is_business_hour', 'is_holiday']
@@ -1012,12 +1012,12 @@ class SwedishCloudCostOptimizer:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-Digitalisering through kodbaserad infrastructure represents a fundamental change in how svenska organisationer delivers IT-tjänster and creates affärsvärde. Architecture as Code enables The flexibilitet, scalability and säkerhet as krävs for successful digital transformation.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+Digitalisering through kodbaserad infrastructure represents a fundamental change in how Swedish organizations delivers IT-services and creates affärsvärde. Architecture as Code enables The flexibilitet, scalability and security as krävs for successful digital transformation.
 
-Framgångsfaktorer includes strategisk planering of cloud-first initiativ, comprehensive automation of affärsprocesser, samt kontinuerlig competence development within organisationen. Svenska organisationer as omfamnar These principles position themselves starkt for framtiden.
+Framgångsfaktorer includes strategisk planering of cloud-first initiativ, comprehensive automation of business processes, samt kontinuerlig competence development within organisationen. Svenska organisationer as omfamnar These principles position themselves starkt for framtiden.
 
-Viktiga lessons from svenska digitaliseringsinitiativ shows to technical transformation must kombineras with organisatorisk and cultural change to uppnå bestående resultat. Architecture as Code forms The technical foundation, but success requires helhetsperspektiv at digitalisering.
+Viktiga lessons from svenska digitaliseringsinitiativ shows to technical transformation must kombineras with organisatorisk and cultural change to achieve bestående resultat. Architecture as Code forms The technical foundation, but success requires helhetsperspektiv at digitalisering.
 
 ## Sources and referenser
 

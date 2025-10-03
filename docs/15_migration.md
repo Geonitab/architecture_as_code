@@ -2,15 +2,15 @@
 
 ![Migrationsprocess](images/diagram_18_kapitel17.png)
 
-*Migration from Traditional Infrastructure to Infrastructure as Code (Architecture as Code) requires systematic planering, stegvis Architecture as Code-implementation and kontinuerlig validation. Diagram shows The Structureerade processen from assessment to fullständig Architecture as Code-adoption.*
+*Migration from Traditional Infrastructure to Infrastructure as Code (Architecture as Code) requires systematic planering, stegvis Architecture as Code-implementation and kontinuerlig validation. Diagram shows The Structureerade processen from assessment to complete Architecture as Code-adoption.*
 
 ## Overall Description
 
-Migration from traditionell, manuellt konfigurerad infrastructure to Infrastructure as Code represents a of the most kritiska transformationerna for modern IT-organisationer. This process requires not endast technical omStructureering without också organisatorisk change and cultural anpassning to code-based arbetssätt.
+Migration from traditional, manuellt konfigurerad infrastructure to Infrastructure as Code represents a of the most critical transformationerna for modern IT-organisationer. This process requires not endast technical omStructureering without also organisatorisk change and cultural anpassning to code-based way of working.
 
 Swedish organizations face unique migreringsChallenges through legacy-systems as developed over decennier, regulatory requirements as begränsar forändringstakt, and need of to balansera innovation with operational stability. Successful migration requires comprehensive planning as minimizes risker while The enables snabb value realization.
 
-Modern migrationsstrategier must accommodera hybrid scenarios where legacy infrastructure coexisterar with Architecture as Code-managed resources under extended transition periods. This hybrid approach enables gradual migration as reducerar business risk while the enables imwithiate benefits from Architecture as Code adoption.
+Modern migrationsstrategier must accommodera hybrid scenarios where legacy infrastructure coexisterar with Architecture as Code-managed resources under extended transition periods. This hybrid approach enables gradual migration as reduces business risk while the enables imwithiate benefits from Architecture as Code adoption.
 
 Cloud-native migration pathways erbjuder opportuniteter to modernisera architecture while infrastructure management are codified. Svenska foretag can leverage This transformation to implementera sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
 
@@ -32,7 +32,7 @@ Re-architecting for cloud-native patterns enables maximum value from cloud inves
 
 Hybrid approaches that "lift-and-improve" balancerar speed-to-market with modernization benefits through selective re-architecting of critical components while majority of application forblir unchanged. This approach can deliver imwithiate cloud benefits while the enables iterative modernization.
 
-Application portfolio analysis hjälper determine optimal migration strategy per application based on technical fit, business value and modernization potential. Legacy applications with limited business value can candidate for retirement rather than migration, which reducerar overall migration scope.
+Application portfolio analysis helps determine optimal migration strategy per application based on technical fit, business value and modernization potential. Legacy applications with limited business value can candidate for retirement rather than migration, which reduces overall migration scope.
 
 ## gradual kodifiering of infrastruktur
 
@@ -171,7 +171,7 @@ provider "aws" {{
             terraform_code += f"""
 # Migration of existing EC2-instans {instance['instance_id']}
 resource "aws_instance" "migrated_instance_{in}" {{
-  # OBSERVERA: This konfiguration must verifieras and adapted
+  # OBSERVERA: This configuration must verifieras and adapted
   instance_type = "{instance['instance_type']}"
   subnet_id     = "{instance['subnet_id']}"
   
@@ -195,9 +195,9 @@ resource "aws_instance" "migrated_instance_{in}" {{
         terraform_code += """
 # Migration checklist:
 # 1. Granska genererade konfigurationer noggrant
-# 2. Testa in development-miljö first  
+# 2. Testa in development-environment first  
 # 3. Importera existing resurser with terraform import
-# 4. Kör terraform plan to verifiera to inga förändringar planeras
+# 4. Kör terraform plan to verifiera to inga changes planeras
 # 5. Implementera gradual with låg-risk resurser first
 # 6. Uppdatera monitoring and alerting efter migration
 """
@@ -271,10 +271,10 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] Terraform/CloudFormation development environment
 - [ ] Git repository for infrastructure code
 - [ ] CI/CD pipeline for infrastructure deployment
-- [ ] Monitoring and alerting konfiguration
+- [ ] Monitoring and alerting configuration
 
 ### Risk Mitigation
-- [ ] Fullständig backup of all kritiska systems
+- [ ] Fullständig backup of all critical systems
 - [ ] Rollback procedures documentserade
 - [ ] Emergency contacts and eskalationsplan
 - [ ] Test environment for migration validation
@@ -358,7 +358,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 4. **Team Resistance:** Mitigated through training and change management
 
 ### Contingency Plans
-- Immediate rollback procedures for kritiska issues
+- Immediate rollback procedures for critical issues
 - Emergency support contacts and escalation
 - Alternative migration approaches for problem resources
 - Business continuity plans for extended downtime
@@ -396,7 +396,7 @@ Resources:
   ExistingVPC:
     Type: AWS::EC2::VPC
     Properties:
-      # These värden must matcha existing VPC-konfiguration exakt
+      # These värden must matcha existing VPC-configuration exakt
       CidrBlock: '10.0.0.0/16'  # Uppdatera with faktiskt CIDR
       EnableDnsHostnames: true
       EnableDnsSupport: true
@@ -416,7 +416,7 @@ Resources:
   ExistingInstance:
     Type: AWS::EC2::Instance
     Properties:
-      # These värden must matcha existing instans-konfiguration
+      # These värden must matcha existing instans-configuration
       InstanceType: 't3.medium'  # Uppdatera with actual instance type
       ImageId: 'ami-0c94855bb95b03c2e'  # Uppdatera with actual AMI
       SubnetId: !Ref ExistingSubnet
@@ -434,7 +434,7 @@ Resources:
         - Key: ImportDate
           Value: !Sub '${AWS::Timestamp}'
 
-  # Säkerhet group for importerad instans
+  # Security group for importerad instans
   ExistingSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -562,7 +562,7 @@ cd terraform/migration
 terraform init
 terraform plan -var="project_name=$PROJECT_NAME" -var="environment=$ENVIRONMENT" -out=migration.plan
 
-# Analysera plan for oväntade förändringar
+# Analysera plan for oväntade changes
 terraform show -json migration.plan > /tmp/terraform-plan.json
 
 # Kontrollera to inga resurser planeras for destruction
@@ -624,7 +624,7 @@ def validate_tagging_compliance(region='eu-north-1'):
 
 def validate_security_compliance():
     """Validate säkerhetskonfiguration efter migration"""
-    # implementation for säkerhetskontroller
+    # implementation for security controls
     pass
 
 if __name__ == '__main__':
@@ -690,8 +690,8 @@ echo "5. Document lessons learned"
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-Migration from Traditional Infrastructure to Infrastructure as Code represents a critical transformation as requires systematic planering, gradual implementation and comprehensive testing. Svenska organisationer as successfully performs This migration position themselves for increased agility, forbättrad säkerhet and significant cost benefits.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+Migration from Traditional Infrastructure to Infrastructure as Code represents a critical transformation as requires systematic planering, gradual implementation and comprehensive testing. Svenska organisationer as successfully performs This migration position themselves for increased agility, improved security and significant cost benefits.
 
 Framgångsfaktorer includes comprehensive assessment, realistisk timeline planning, extensive team training and robust testing frameworks. Hybrid migration strategies enables risk minimization while the delivers imwithiate value from Architecture as Code adoption.
 

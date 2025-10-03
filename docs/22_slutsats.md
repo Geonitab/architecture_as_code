@@ -14,51 +14,51 @@ The technical aspect of Infrastructure as Code requires deep understanding for c
 
 Vår throughgång började with Fundamental Concepts as declarative code and idempotens in [chapters 2](02_grundlaggande_principer.md), utvecklades through praktiska Architecture as Code-implementationsaspekter that [version control](03_versionhantering.md) and [CI/CD-automation](05_Architecture as Code-automatisering_cicd.md), and kulminerade in advanced topics that [containerorkestrering](08_containerisering.md) and [framtida AI-driven automation](21_framtida_trender.md).
 
-Säkerhetsaspekterna as introducerades in [chapters 10](10_sakerhet.md) fordjupades through [policy as code](11_policy_sakerhet.md) and [compliance-handling](12_compliance.md), which shows how säkerhet must throughsyra entire Architecture as Code-Architecture as Code-implementationen from design to drift.
+Säkerhetsaspekterna as introducerades in [chapters 10](10_sakerhet.md) fordjupades through [policy as code](11_policy_sakerhet.md) and [compliance-handling](12_compliance.md), which shows how security must throughsyra entire Architecture as Code-Architecture as Code-implementationen from design to drift.
 
 ### Svenska organisationers unique utmaningar and possibilities
 
-GenAbout the Books chapters has vi sett how svenska organisationer står infor specific Challenges and possibilities:
+GenAbout the Books chapters has vi sett how Swedish organizations stands infor specific Challenges and possibilities:
 
-- **GDPR and datasuveränitet**: From [säkerhetskapitlet](10_sakerhet.md) to [policy implementation](11_policy_sakerhet.md) has vi sett how svenska/EU-regleringar requires särskild uppmärksamhet at dataskydd and compliance
-- **Klimatmål and hållbarhet**: [Framtidskapitlet](21_framtida_trender.md) belyste how Sveriges klimatneutralitetsmål 2045 driver innovation within carbon-aware computing and sustainable infrastructure
-- **Digitaliseringsstrategi**: [chapters 19 about digitalisering](19_digitalisering.md) visade how Architecture as Code enables The digitala transformation as svenska organisationer throughgår
+- **GDPR and data sovereignty**: From [säkerhetskapitlet](10_sakerhet.md) to [policy implementation](11_policy_sakerhet.md) has vi sett how svenska/EU-regleringar requires particular attention at dataskydd and compliance
+- **Klimatmål and sustainability**: [Framtidskapitlet](21_framtida_trender.md) belyste how Sveriges klimatneutralitetsmål 2045 driver innovation within carbon-aware computing and sustainable infrastructure
+- **Digitaliseringsstrategi**: [chapters 19 about digitalisering](19_digitalisering.md) visade how Architecture as Code enables The digitala transformation as Swedish organizations undergoes
 
 ## Framtida development and teknologiska trender
 
-Cloud-native technologies, edge computing and artificiell intelligens driver nästa generation of Infrastructure as Code, which vi explored djupgående in [chapters 21 about framtida trender](21_framtida_trender.md). Emerging technologies that GitOps, policy engines and intelligent automation will to ytterligare simplify and improve Architecture as Code-capabilities.
+Cloud-native technologies, edge computing and artificiell intelligens driver next generation of Infrastructure as Code, which vi explored in-depth in [chapters 21 about framtida trender](21_framtida_trender.md). Emerging technologies that GitOps, policy engines and intelligent automation will to ytterligare simplify and improve Architecture as Code-capabilities.
 
-Utvecklingen mot serverless computing and fully managed services forändrar what as behöver is managed that Architecture as Code. Framtiden pekar mot higher abstraktion where Developers focuses on business logic withan plattformen handles underliggande architecture automatically, which vi såg exemplifierat in diskussionen about [Platform Engineering](19_kapitel18.md).
+Utvecklingen mot serverless computing and fully managed services forändrar what as needs is managed that Architecture as Code. Framtiden pekar mot higher abstraktion where Developers focuses on business logic withan plattformen handles underliggande architecture automatically, which vi saw exemplifierat in diskussionen about [Platform Engineering](19_kapitel18.md).
 
-Machine learning-baserade optimeringar will to enable intelligent resource allocation, kostnadsprediktering and säkerhetshotsdetektion. This creates självläkande systems as kontinuerligt optimerar itself based on användningsmönster and performance-metrics, according to the AI-drivna principerna from [framtidskapitlet](19_kapitel18.md).
+Machine learning-baserade optimeringar will to enable intelligent resource allocation, kostnadsprediktering and säkerhetshotsdetektion. This creates självläkande systems as kontinuerligt optimerar itself based on usage patterns and performance-metrics, according to the AI-drivna principerna from [framtidskapitlet](19_kapitel18.md).
 
-### Kvantteknologi and säkerhetsutmaningar as vi diskuterade in [chapters 19](19_kapitel18.md), requires kvantdatorers development proaktiv forberedelse for post-quantum cryptography transition. Svenska organisationer with kritiska säkerhetsrequirements must börja planera for quantum-safe transitions nu, which bygger vidare at the security principles as etablerades in [chapters 6](06_kapitel5.md) and [chapters 12](12_kapitel11.md).
+### Kvantteknologi and säkerhetsutmaningar as vi diskuterade in [chapters 19](19_kapitel18.md), requires kvantdatorers development proaktiv forberedelse for post-quantum cryptography transition. Svenska organisationer with critical security requirements must börja planera for quantum-safe transitions nu, which bygger vidare at the security principles as etablerades in [chapters 6](06_kapitel5.md) and [chapters 12](12_kapitel11.md).
 
-Hybrid classical-quantum systems will to emerge where kvantdatorer används for specific optimerungsproblem withan klassiska systems handles general computing workloads. Infrastructure orchestration must stödja båda paradigmen sömlöst.
+Hybrid classical-quantum systems will to emerge where kvantdatorer is used for specific optimerungsproblem withan klassiska systems handles general computing workloads. Infrastructure orchestration must support båda paradigmen sömlöst.
 
 ## Recommendations for organisationer
 
-Baserat at vår throughgång from Fundamental principles to advanced implementations, bör organisationer påbörja their Architecture as Code-journey with pilot projects as demonstrerar value without to riskera kritiska systems. Investment in team education and tool standardization is critical for långsiktig success and adoption across organisationen, according to the strategier as beskrevs in [chapters 10 about organisatorisk change](10_kapitel9.md).
+Baserat at vår throughgång from Fundamental principles to advanced implementations, should organisationer påbörja their Architecture as Code-journey with pilot projects as demonstrerar value without to riskera critical systems. Investment in team education and tool standardization is critical for long-term success and adoption across organisationen, according to the strategier as beskrevs in [chapters 10 about organisatorisk change](10_kapitel9.md).
 
 ### Stegvis implementationsstrategi
 
 1. **Fundamental utbildning**: Börja with to etablera understanding for [Architecture as Code-principles](02_kapitel1.md) and [version control](03_kapitel2.md)
-2. **Pilotprojekt**: Implementera [CI/CD-pipelines](04_kapitel3.md) for smaller, icke-kritiska systems
+2. **Pilotprojekt**: Implementera [CI/CD-pipelines](04_kapitel3.md) for smaller, icke-critical systems
 3. **Säkerhetsintegration**: Etablera [säkerhetspraxis](06_kapitel5.md) and [policy as code](12_kapitel11.md)
 4. **Skalning and automation**: Utöka to [containerorkestrering](11_kapitel10.md) and advanced workflows
 5. **Framtidsberedskap**: Forbereda for [emerging technologies](19_kapitel18.md) and hållbarhetsrequirements
 
-Etablering of center of excellence or platform teams can accelerera adoption by tohandahålla standardized verktyg, Architecture as Code best practices and support for utvecklingsteam. Governance frameworks ensures Security and compliance without to begränsa innovation and agility, which vi såg in [compliance-kapitlet](14_kapitel13.md).
+Etablering of center of excellence or platform teams can accelerera adoption by tohandahålla standardized verktyg, Architecture as Code best practices and support for utvecklingsteam. Governance frameworks ensures Security and compliance without to begränsa innovation and agility, which vi saw in [compliance-kapitlet](14_kapitel13.md).
 
-### Kontinuerlig forbättring and mätning
+### Kontinuerlig improvement and mätning
 
-Continuous improvement culture is crucial where team regelbundet evaluater and improves sina Architecture as Code-processes. Metrics and monitoring hjälper to to identify forbättringwhichråden and mäta framsteg mot definierade goals, according to the praktiska examples as visades in [DevOps-kapitlet](07_kapitel6.md) and [organisationskapitlet](10_kapitel9.md).
+Continuous improvement culture is crucial where team regelbundet evaluater and improves sina Architecture as Code-processes. Metrics and monitoring helps to to identify forbättringwhichråden and mäta framsteg mot definierade goals, according to the praktiska examples as visades in [DevOps-kapitlet](07_kapitel6.md) and [organisationskapitlet](10_kapitel9.md).
 
 Investment in observability and monitoring from [säkerhetskapitlet](06_kapitel5.md) and [praktiska implementationen](08_kapitel7.md) enables data-driven decision making and kontinuerlig optimering of Architecture as Code-processes.
 
 ## Slutord
 
-Infrastructure as Code represents mer än only technical evolution - the is a fundamental change of how vi think about infrastructure. by embraca Architecture as Code-principles can organisationer uppnå increased agility, reliability and scalability while the reducerar operational kostnader and risker.
+Infrastructure as Code represents mer than only technical evolution - the is a fundamental change of how vi think about infrastructure. by embraca Architecture as Code-principles can organisationer achieve increased agility, reliability and scalability while the reduces operational kostnader and risker.
 
 Vår journey through This bok - from [introduktionen to Architecture as Code-konceptet](01_inledning.md), through [technical implementationsdetaljer](02_kapitel1.md) and [praktiska utvecklingsprocesser](03_kapitel2.md), to [advanced security strategies](12_kapitel11.md) and [framtida technologies](19_kapitel18.md) - shows to Infrastructure as Code is both a technical discipline and a Organizational transformation.
 
@@ -68,7 +68,7 @@ successful implementation requires tålamod, uthållighet and commitment to cont
 
 the principles as introducerades in bokens forsta chapters - declarative code, idempotens, testbarhet and automation - throughsyrar all aspekter of modern infrastructurehantering. From [Fundamental version control](03_kapitel2.md) to [AI-driven optimization](19_kapitel18.md), These fundamental principles forblir konstanta also when teknologierna is developed.
 
-Svenska organisationer has unique possibilities to leda within sustainable and compliant Infrastructure as Code implementation. by kombinera technical excellence with strong fokus at hållbarhet, säkerhet and regulatorisk efterlevnad can svenska foretag and offentliga organisationer create competitive advantages as resonerar with nationella values and globala trender.
+Svenska organisationer has unique possibilities to leda within sustainable and compliant Infrastructure as Code implementation. by kombinera technical excellence with strong fokus at sustainability, security and regulatorisk compliance can svenska foretag and offentliga organisationer create competitive advantages as resonerar with nationella values and globala trender.
 
 Bokens progression from teori to praktik, from Fundamental to avancerat, speglar The journey as each organisation must throughgå to lyckas with Infrastructure as Code. each chapters builds on previous knowledge and forbereder for mer complex Challenges - precis as a verklig Architecture as Code-implementation.
 

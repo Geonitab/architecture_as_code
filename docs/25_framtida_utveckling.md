@@ -1,6 +1,6 @@
 # Framtida development and trender
 
-This chapters utforskar framtida utvecklingstrender within Architecture as Code and Infrastructure as Code, with particularly fokus at how svenska organisationer can forbereda itself for kommande teknologiska changes and possibilities.
+This chapters utforskar framtida utvecklingstrender within Architecture as Code and Infrastructure as Code, with particularly fokus at how Swedish organizations can forbereda itself for kommande teknologiska changes and possibilities.
 
 ![Framtida development and trender](images/diagram_25_future_trends.png)
 
@@ -16,7 +16,7 @@ AI will to revolutionera how vi designar, implement and handles Infrastructure a
 - **Prediktiv skalning**: AI-systems as automatically forutser resursbehov based on historiska pattern
 - **Intelligent resursoptimering**: Maskininlärning for kontinuerlig kostnadsoptimering
 - **Automatisk problemlösning**: AI-agenter as identifierar and åtgärdar infrastructureproblem
-- **Smart säkerhetsövervakning**: ML-baserad hotdetektering and automatisk respons
+- **Smart säkerhetsövervakning**: ML-baserad hotdetektering and automatic respons
 
 **Svenska organisationers possibilities:**
 - Integration with svenska AI-initiativ that AI Sweden
@@ -25,8 +25,8 @@ AI will to revolutionera how vi designar, implement and handles Infrastructure a
 
 ### Quantum Computing and kryptografi
 
-**Quantum-säker infrastructure**
-Kvantdatorer will to kräva fundamental omtänkning of säkerhetsarkitektur:
+**Quantum-secure infrastructure**
+Kvantdatorer will to kräva fundamental omtänkning of security architecture:
 
 - **Post-quantum kryptografi**: Migration to kvant-resistenta krypteringsalgoritmer
 - **Quantum Key Distribution**: Säker nyckelhantering with kvantmekaniska principles
@@ -40,7 +40,7 @@ Kvantdatorer will to kräva fundamental omtänkning of säkerhetsarkitektur:
 ### Edge Computing and distribuerad infrastruktur
 
 **Decentraliserad architecture**
-Forskjutning from centraliserade datacenter to distribuerade edge-resurser:
+Forskjutning from centraliserade datacenter to distributed edge-resurser:
 
 - **5G-integration**: Utnyttjande of 5G-nätverks låga latens for edge-applications
 - **Fog computing**: Beräkningar whena användarna for realtidsapplikationer
@@ -69,7 +69,7 @@ Platform Engineering etableras as egen disciplin within Architecture as Code:
 **Kostnadswithvetenhet**
 FinOps-praxis blir central for Infrastructure as Code:
 
-- **Real-time cost tracking**: Kontinuerlig övervakning of molnkostnader
+- **Real-time cost tracking**: Kontinuerlig monitoring of molnkostnader
 - **Resource right-sizing**: AI-driven optimering of resource allocation
 - **Carbon accounting**: Miljöpåverkan as del of kostnadsoptimering
 - **Swedish cost optimization**: Anpassning to svenska energipriser and miljömål
@@ -91,7 +91,7 @@ GitOps is developed bortom Fundamental CI/CD:
 **Fortroende through verification**
 Zero Trust blir standard for Infrastructure as Code:
 
-- **Identity-first security**: Identitetsbaserad säkerhet for all resurser
+- **Identity-first security**: Identitetsbaserad security for all resurser
 - **Microsegmentation**: Granulär nätverkssegmentering through Architecture as Code
 - **Continuous verification**: Kontinuerlig validation of användar- and enhetsidentiteter
 - **Swedish identity standards**: Integration with BankID and andra svenska identitetstjänster
@@ -101,7 +101,7 @@ Zero Trust blir standard for Infrastructure as Code:
 **Integritet from foundation**
 Privacy by design blir obligatoriskt for Swedish organizations:
 
-- **GDPR automation**: Automatiserad efterlevnad of dataskyddsforordningen
+- **GDPR automation**: Automatiserad compliance of dataskyddsforordningen
 - **Data minimization**: Automatisk begränsning of datainsamling
 - **Consent management**: codified handling of användarsamtycken
 - **Right to be forgotten**: Automatiserad radering of personal data
@@ -111,18 +111,18 @@ Privacy by design blir obligatoriskt for Swedish organizations:
 **Automatiserad regelefterlevnad**
 RegTech integreras in Infrastructure as Code:
 
-- **Compliance monitoring**: Real-time övervakning of regelefterlevnad
+- **Compliance monitoring**: Real-time monitoring of regelefterlevnad
 - **Automated reporting**: Automatisk rapportering to myndigheter
-- **Risk assessment**: AI-driven riskbedömning of infrastructureändringar
+- **Risk assessment**: AI-driven riskbedömning of infrastructure changes
 - **Swedish regulatory focus**: Specialisering at svenska and EU-regelverk
 
 ## organizational changes
 
 ### Remote-first infrastructure
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 
-**Distribuerat arbetssätt**
+**Distribuerat way of working**
 COVID-19 påskyndar övergången to remote-first organisationer:
 
 - **Cloud-native collaboration**: Verktyg for distribuerad infrastructure development
@@ -133,7 +133,7 @@ COVID-19 påskyndar övergången to remote-first organisationer:
 ### Sustainability-driven development
 
 **Miljöfokuserad development**
-Hållbarhet blir central for technical decisionsfattning:
+Sustainability blir central for technical decisionsfattning:
 
 - **Carbon-aware computing**: architecture as optimerar for lägsta koldioxidavtryck
 - **Green software practices**: Development optimerad for energieffektivitet
@@ -164,7 +164,7 @@ Serverless is developed bortom enkla funktioner:
 
 ### Infrastructure Mesh
 
-Architecture as Code-principerna within This område
+Architecture as Code-principerna within This area
 
 **Service mesh for infrastructure**
 Infrastructure Mesh etableras as nytt paradigm:
@@ -179,8 +179,8 @@ Infrastructure Mesh etableras as nytt paradigm:
 **Oforänderlig infrastructure**
 Immutability utvidgas to all infrastructurelagre:
 
-- **immutable networks**: Nätverk as ersätts instead for modifieras
-- **immutable data**: DataStructureer as aldrig ändras
+- **immutable networks**: Nätverk as is replaced instead for modifieras
+- **immutable data**: DataStructureer as aldrig changes
 - **immutable policies**: Security policies as not can modifieras
 - **Version everything**: Fullständig versionering of all infrastructure components
 
@@ -251,8 +251,8 @@ Development of framtidsorienterade kompetenser:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-Framtiden for Architecture as Code and Infrastructure as Code präglas of konvergens between AI, kvantdatorer, edge computing and hållbarhet. Svenska organisationer has unique possibilities to leda utvecklingen through sina styrkor within technical innovation, hållbarhet and kvalitet.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+Framtiden for Architecture as Code and Infrastructure as Code präglas of konvergens between AI, kvantdatorer, edge computing and sustainability. Svenska organisationer has unique possibilities to leda utvecklingen through sina styrkor within technical innovation, sustainability and kvalitet.
 
 Nyckeln to success ligger in proaktiv forberedelse, kontinuerlig competence development and strategiska partnerskap. Organisationer as investerar in framtidskompatibla technologies and kompetenser idag will to vara bäst positionerade to dra nytta of morgondagens possibilities.
 

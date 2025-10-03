@@ -12,11 +12,11 @@ Architecture as Code methodology forms the foundation for ## organizational for�
 
 ## Overall Description
 
-implementation of Infrastructure as Code requires djupgående organizational changes as sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå Fundamental omStructureering to fullt ut realisera Benefitsna with code-based arbetssätt.
+implementation of Infrastructure as Code requires in-depth organizational changes as sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå Fundamental omStructureering to fullt ut realisera Benefitsna with code-based way of working.
 
-Swedish organizations face unique Challenges when the gäller organisatorisk change through starka fackliga traditioner, konsensusbaserade decisionssprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier as respekterar These cultural aspekter while the främjar agile and collaborative arbetssätt.
+Swedish organizations face unique Challenges when the applies organisatorisk change through starka fackliga traditioner, konsensusbaserade decisionssprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier as respekterar These cultural aspekter while the främjar agile and collaborative way of working.
 
-Conway's Law describes how organisationers kommunikationsStructureer speglas in system architecture the producerar. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Infrastructure as Code enables.
+Conway's Law describes how organisationers kommunikationsStructureer speglas in system architecture the produces. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Infrastructure as Code enables.
 
 Modern DevOps-transformation within svenska foretag that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer has developed unique approaches to team autonomy, cross-functional collaboration and continuous improvement as can adapt to different svenska organisationskulturer.
 
@@ -249,7 +249,7 @@ class IaCCompetencyFramework:
             },
             "security_compliance": {
                 "security": ["Identity management", "Network security", "Encryption"],
-                "compliance": ["GDPR", "ISO27001", "SOC2", "Svenska säkerhetsrequirements"],
+                "compliance": ["GDPR", "ISO27001", "SOC2", "Svenska security requirements"],
                 "policy": ["Policy as Code", "Automated compliance", "Audit trails"]
             },
             "operations_monitoring": {
@@ -307,7 +307,7 @@ class IaCCompetencyFramework:
                 ],
                 "practical_exercises": [
                     "Deploy Swedish GDPR-compliant S3 bucket",
-                    "Create VPC with svenska säkerhetsrequirements", 
+                    "Create VPC with svenska security requirements", 
                     "Implementera IAM policies for Swedish organizations",
                     "Set up monitoring according to MSB-guidelines"
                 ],
@@ -326,7 +326,7 @@ class IaCCompetencyFramework:
                 "prerequisites": ["Cloud fundamentals", "Basic security concepts"],
                 "learning_objectives": [
                     "Implementera GDPR-compliant infrastructure",
-                    "Förstå MSB säkerhetsrequirements",
+                    "Förstå MSB security requirements",
                     "Skapa automated compliance checking",
                     "design secure network architectures"
                 ],
@@ -338,7 +338,7 @@ class IaCCompetencyFramework:
                 ],
                 "assessment": {
                     "type": "compliance_audit",
-                    "description": "Demonstrate infrastructure meets svenska säkerhetsrequirements"
+                    "description": "Demonstrate infrastructure meets svenska security requirements"
                 }
             })
             
@@ -640,8 +640,8 @@ performance_measurement_framework:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-Organisatorisk change forms The most kritiska komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+Organisatorisk change forms The most critical komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
 
 Svenska organisationer as investerar in comprehensive change management, cross-functional team development and continuous learning culture position themselves for long-term success with Architecture as Code practices. Investment in people development and organizational design delivers compounding returns through improved collaboration, faster innovation cycles and enhanced operational efficiency.
 

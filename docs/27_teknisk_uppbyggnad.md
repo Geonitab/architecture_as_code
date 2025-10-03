@@ -1,6 +1,6 @@
 # technical uppbyggnad for bokproduktion
 
-This chapters describes The technical infrastructureen and arbetsflödet as används to create, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk toämpning of Architecture as Code-principerna by use code to definiera and automatisera entire bokproduktionsprocessen.
+This chapters describes The technical infrastructureen and arbetsflödet as is used to create, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk application of Architecture as Code-principerna by use code to definiera and automatisera entire bokproduktionsprocessen.
 
 ![technical architecture for bokproduktion](images/diagram_27_teknisk_uppbyggnad.png)
 
@@ -58,7 +58,7 @@ Systemet uses `generate_book.py` to automatically generera and uppdatera kapitel
 - **Iterativ generering**: creates Contents in kontrollerade batch-processes
 - **Mermaid-integration**: Automatisk generering of diagram-placeholders
 - **Konsistenshållning**: ensures enhetlig structure over all chapters
-- **version control**: all ändringar spåras through Git
+- **version control**: all changes is tracked through Git
 
 ## Pandoc: Konvertering and formatering
 
@@ -118,7 +118,7 @@ pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf
 
 ### Huvudworkflow for bokproduktion
 
-`build-book.yml` automatiserar entire publikationsprocessen:
+`build-book.yml` automates entire publikationsprocessen:
 
 ```yaml
 name: Build Book
@@ -281,8 +281,8 @@ Entire systemet exemplifierar Architecture as Code through:
 
 1. **codified Contentsshantering**: Markdown as källa for sanning
 2. **Automatiserad pipeline**: Ingen manuell intervention krävs
-3. **version control**: Fullständig history of all ändringar
-4. **reproducibility**: Identiska builds from same källkod
+3. **version control**: Fullständig history of all changes
+4. **reproducibility**: Identiska builds from same source code
 5. **scalability**: Enkelt to lägga to new chapters and format
 
 ### Kvalitetssäkring and testing
@@ -294,7 +294,7 @@ Entire systemet exemplifierar Architecture as Code through:
 
 ### Framtida development
 
-Systemet is designat for kontinuerlig forbättring:
+Systemet is designat for kontinuerlig improvement:
 - **Modulär architecture**: Enkelt to uppdatera individual components
 - **API-possibilities**: Potential for integration with externa systems
 - **Skalning**: Stöd for fler format and distributionskanaler
@@ -303,16 +303,16 @@ Systemet is designat for kontinuerlig forbättring:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk toämpning of bokens own principles. by kodifiera entire publikationsprocessen uppnås:
+The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk application of bokens own principles. by kodifiera entire publikationsprocessen is achieved:
 
 - **Architecture as Code-automation**: Komplett CI/CD for bokproduktion
 - **Kvalitet**: Konsistent format and professionell presentation
 - **Effektivitet**: Snabb iteration and feedback-loopar
 - **scalability**: Enkelt to utöka with nytt Contents and format
-- **Transparens**: Öppen källkod and documentserad process
+- **Transparens**: Open source code and documentserad process
 
-This technical systems functions as a konkret illustration of how Architecture as Code-principerna can toämpas also utanfor traditionella IT-systems, which creates value through automation, reproducibility and kontinuerlig forbättring.
+This technical systems functions as a konkret illustration of how Architecture as Code-principerna can be applied also utanfor traditionella IT-systems, which creates value through automation, reproducibility and kontinuerlig improvement.
 
 Sources:
 - GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.
