@@ -1,17 +1,17 @@
 # Framtida development and trender
 
-This chapter explores framtida utvecklingstrender within Architecture as Code and Infrastructure as Code, with particularly fokus at how Swedish organizations can forbereda itself for kommande teknologiska changes and possibilities.
+This chapter explores framtida utvecklingstrender within Architecture as Code and Architecture as Code, with particularly fokus at how Swedish organizations can forbereda itself for kommande teknologiska changes and possibilities.
 
 ![Framtida development and trender](images/diagram_25_future_trends.png)
 
-*a visualisering of the importantste trenderna and teknologiska utvecklingarna as will to forma Architecture as Code and Infrastructure as Code (Architecture as Code) under the kommande åren.*
+*a visualisering of the importantste trenderna and teknologiska utvecklingarna as will to forma Architecture as Code and Architecture as Code (Architecture as Code) under the kommande åren.*
 
 ## Teknologiska trender as formar framtiden
 
 ### Artificiell intelligens and maskininlärning
 
 **AI-driven infrastructure**
-AI will to revolutionera how vi designar, implement and handles Infrastructure as Code:
+AI will to revolutionera how vi designar, implement and handles Architecture as Code:
 
 - **Prediktiv skalning**: AI-systems as automatically forutser resursbehov based on historiska pattern
 - **Intelligent resursoptimering**: Maskininlärning for continuous kostnadsoptimering
@@ -67,7 +67,7 @@ Platform Engineering etableras as egen disciplin within Architecture as Code:
 ### FinOps and ekonomisk optimering
 
 **Kostnadswithvetenhet**
-FinOps-praxis becomes central for Infrastructure as Code:
+FinOps-praxis becomes central for Architecture as Code:
 
 - **Real-time cost tracking**: Continuous monitoring of molnkostnader
 - **Resource right-sizing**: AI-driven optimering of resource allocation
@@ -89,7 +89,7 @@ GitOps is developed bortom Fundamental CI/CD:
 ### Zero Trust Architecture
 
 **Fortroende through verification**
-Zero Trust becomes standard for Infrastructure as Code:
+Zero Trust becomes standard for Architecture as Code:
 
 - **Identity-first security**: Identitetsbaserad security for all resurser
 - **Microsegmentation**: Granulär nätverkssegmentering through Architecture as Code
@@ -109,7 +109,7 @@ Privacy by design becomes obligatoriskt for Swedish organizations:
 ### Regulatory Technology (RegTech)
 
 **Automatiserad regelefterlevnad**
-RegTech integreras in Infrastructure as Code:
+RegTech integreras in Architecture as Code:
 
 - **Compliance monitoring**: Real-time monitoring of regelefterlevnad
 - **Automated reporting**: Automatisk rapportering to myndigheter
@@ -193,7 +193,7 @@ Sverige develops oberoende technical kapacitet:
 
 - **Swedish cloud providers**: Stöd for svenska cloud providers
 - **EU cloud initiatives**: Deltagande in EU:s molnstrategi
-- **Open source leadership**: Sverige as leader within open source Infrastructure as Code
+- **Open source leadership**: Sverige as leader within open source Architecture as Code
 - **Technology transfer**: Överforing of technology from forskningsinstitutioner
 
 ### Nordic cooperation
@@ -252,7 +252,7 @@ Development of framtidsorienterade kompetenser:
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Framtiden for Architecture as Code and Infrastructure as Code präglas of konvergens between AI, kvantdatorer, edge computing and sustainability. Swedish organizations has unique possibilities to leda utvecklingen through sina styrkor within technical innovation, sustainability and kvalitet.
+Framtiden for Architecture as Code and Architecture as Code präglas of konvergens between AI, kvantdatorer, edge computing and sustainability. Swedish organizations has unique possibilities to leda utvecklingen through sina styrkor within technical innovation, sustainability and kvalitet.
 
 Nyckeln to success ligger in proaktiv forberedelse, continuous competence development and strategiska partnerskap. Organisationer as investerar in framtidskompatibla technologies and kompetenser idag will to vara bäst positionerade to dra nytta of morgondagens possibilities.
 

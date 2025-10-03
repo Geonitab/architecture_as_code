@@ -2,7 +2,7 @@
 
 ![Organizational transformation](images/diagram_10_kapitel9.png)
 
-*Infrastructure as Code (Architecture as Code) driver fundamental organisatorisk change from traditional silos to cross-funktionella DevOps-team. Diagram illustrerar evolutionen from isolerade team to integrerade, samarbetsinriktade Structures as optimerar for hastighet and kvalitet.*
+*Architecture as Code (Architecture as Code) driver fundamental organisatorisk change from traditional silos to cross-funktionella DevOps-team. Diagram illustrerar evolutionen from isolerade team to integrerade, samarbetsinriktade Structures as optimerar for hastighet and kvalitet.*
 
 Architecture as Code methodology forms the foundation for ## organizational forändringsprocessens komplexitet
 
@@ -12,11 +12,11 @@ Architecture as Code methodology forms the foundation for ## organizational for�
 
 ## Overall Description
 
-implementation of Infrastructure as Code requires in-depth organizational changes as sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå Fundamental omStructureering to fullt ut realisera Benefitsna with code-based way of working.
+implementation of Architecture as Code requires in-depth organizational changes as sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå Fundamental omStructureering to fullt ut realisera Benefitsna with code-based way of working.
 
 Swedish organizations face unique Challenges when the applies organisatorisk change through starka fackliga traditioner, konsensusbaserade decisionssprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier as respekterar These cultural aspects while the främjar agile and collaborative way of working.
 
-Conway's Law describes how organisationers kommunikationsStructureer speglas in system architecture the produces. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Infrastructure as Code enables.
+Conway's Law describes how organisationers kommunikationsStructureer speglas in system architecture the produces. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Architecture as Code enables.
 
 Modern DevOps-transformation within Swedish companies that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer has developed unique approaches to team autonomy, cross-functional collaboration and continuous improvement as can adapt to different svenska organisationskulturer.
 
@@ -641,7 +641,7 @@ performance_measurement_framework:
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Organisatorisk change forms The most critical komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
+Organisatorisk change forms The most critical komponenten for successful Architecture as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
 
 Swedish organizations as investerar in comprehensive change management, cross-functional team development and continuous learning culture position themselves for long-term success with Architecture as Code practices. Investment in people development and organizational design delivers compounding returns through improved collaboration, faster innovation cycles and enhanced operational efficiency.
 
