@@ -10,7 +10,7 @@ Containers erbjuder application-level virtualization as paketerar applications w
 
 Docker has etablerat itself as the facto standard for containerization, withan podman and andra alternatives erbjuder daemon-less approaches for enhanced security. Container images are defined through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.
 
-Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, withan image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation innan deployment.
+Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, withan image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation before deployment.
 
 ## Kubernetes as orchestration platform
 

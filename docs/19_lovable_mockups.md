@@ -1,4 +1,4 @@
-# chapters 20: Använd Lovable to create mockups for Swedish organizations
+# chapters 20: Use Lovable to create mockups for Swedish organizations
 
 ![Lovable Workflow Diagram](images/diagram_21_kapitel20.png)
 
@@ -7,7 +7,7 @@
 Lovable is a AI-driven utvecklingsplattform as revolutionerar how svenska organisationer can create interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb development of användargränssnitt as is anpassade for svenska compliance requirements and användarforväntningar.
 
 For Swedish organizations means This a unik possibility to:
-- Accelerera prototyputveckling with fokus at svenska språket and kulturella context
+- Accelerera prototyputveckling with fokus at svenska språket and cultural context
 - Ensure compliance from början of designprocessen
 - Integrera with svenska e-legitimationstjänster redan in mockup-fasen
 - Skapa användargränssnitt as follows svenska togänglighetsstandarder
@@ -96,7 +96,7 @@ export interface SwedishEIDProvider {
 export interface SwedishComplianceConfig {
   gdpr: {
     consentManagement: boolean;
-    dataRetention: number; // månader
+    dataRetention: number; // months
     rightToErasure: boolean;
   };
   wcag: {
@@ -431,7 +431,7 @@ Lovable erbjuder svenska organisationer a kraftfull plattform to create complian
 
 ### Rekommenderade nästa step:
 
-1. **Pilotprojekt**: Starta with A mindre projekt to validate approach
+1. **Pilotprojekt**: Starta with A smaller projekt to validate approach
 2. **Teamutbildning**: Utbilda Developers in Lovable and svenska compliance-requirements
 3. **Processintegration**: Integrera Lovable in existing utvecklingsprocesser
 4. **Kontinuerlig forbättring**: Etablera feedback-loopar for användbarhet and compliance

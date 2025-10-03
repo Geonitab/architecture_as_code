@@ -204,7 +204,7 @@ pipeline {
                             echo "💰 Validates kostnadscenter for svenska bokföring..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
-                                error("Ogiltigt kostnadscenter format. Använd: CC-XX-nnn")
+                                error("Ogiltigt kostnadscenter format. Use: CC-XX-nnn")
                             }
                             
                             // Validate to kostnadscenter existerar in företagets systems
@@ -391,7 +391,7 @@ pipeline {
                     ${readFile('cost-summary.txt')}
                     
                     ## Rekommendationer
-                    - Använd Reserved Instances for production workloads
+                    - Use Reserved Instances for production workloads
                     - Aktivera auto-scaling for development environments
                     - Implementera scheduled shutdown for icke-kritiska systems
                     """
@@ -675,7 +675,7 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 Architecture as Code-principerna within This område#cloudformation-Architecture as Code}
 
-This sektion contains CloudFormation templates for AWS-infrastructure anpassad for Swedish organizations.
+This sektion contains CloudFormation templates for AWS-infrastructure adapted for Swedish organizations.
 
 ### 07_CODE_1: VPC Setup for Swedish organizations with GDPR compliance
 *Refereras from chapters 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
@@ -931,11 +931,11 @@ compliance_monitoring:
 
 ## References and navigering
 
-each kodexamples in This appendix can refereras from huvudtexten with dess unika identifierare. to hitta specific implementations:
+each kodexamples in This appendix can refereras from huvudtexten with dess unique identifierare. to hitta specific implementations:
 
-1. **Använd sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
-2. **Följ kategorierna** - Navigera to relevant sektion baserat at användningwhichråde
-3. **Använd korshänvisningar** - Följ länkar tobaka to huvudkapitlen for context
+1. **Use sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
+2. **Följ kategorierna** - Navigera to relevant sektion based on användningwhichråde
+3. **Use korshänvisningar** - Följ länkar tobaka to huvudkapitlen for context
 
 ### Konventioner for kodexempel
 
@@ -946,7 +946,7 @@ each kodexamples in This appendix can refereras from huvudtexten with dess unika
 
 ### Uppdateringar and underhåll
 
-This appendix uppdateras löpande when new kodexamples läggs to in bokens huvudkapitel. For senaste versionen of kodexamples, se bokens GitHub-repository.
+This appendix uppdateras löpande when new kodexamples läggs to in bokens huvudkapitel. For last versionen of kodexamples, se bokens GitHub-repository.
 
 ---
 

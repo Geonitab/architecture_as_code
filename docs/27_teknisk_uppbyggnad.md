@@ -271,7 +271,7 @@ Designsystemet implement Kvadrat-identiteten:
 - **Professionell HTML-design**: Responsiv and print-vänlig
 - **Svenska anpassningar**: Optimerat for Swedish organizations
 - **SEO-optimering**: Korrekt meta-data and structure
-- **Distribution-vänligt**: can delas via e-post, webb or print
+- **Distribution-vänligt**: can shared via e-post, webb or print
 
 ## technical architecture and systemintegration
 
@@ -304,7 +304,7 @@ Systemet is designat for kontinuerlig forbättring:
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk toämpning of bokens egna principles. by kodifiera entire publikationsprocessen uppnås:
+The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk toämpning of bokens own principles. by kodifiera entire publikationsprocessen uppnås:
 
 - **Architecture as Code-automation**: Komplett CI/CD for bokproduktion
 - **Kvalitet**: Konsistent format and professionell presentation
@@ -312,7 +312,7 @@ The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk toä
 - **scalability**: Enkelt to utöka with nytt Contents and format
 - **Transparens**: Öppen källkod and documentserad process
 
-This technical systems functions as a konkret illustration of how Architecture as Code-principerna can toämpas also utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
+This technical systems functions as a konkret illustration of how Architecture as Code-principerna can toämpas also utanfor traditionella IT-systems, which creates value through automation, reproducibility and kontinuerlig forbättring.
 
 Sources:
 - GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.

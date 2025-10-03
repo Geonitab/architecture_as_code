@@ -16,9 +16,9 @@ This Glossary contains definitioner of centrala termer as används genAbout the 
 
 **Containers:** Lätt virtualiseringsteknik as paketerar applications with all dependencies for portabel körning across different environments and plattformar.
 
-**Declarative programming:** Programmeringsparadigm that describes desired slutresultat instead for specific step to uppnå the, which enables högre abstraktion.
+**Declarative programming:** Programmeringsparadigm that describes desired slutresultat instead for specific step to uppnå the, which enables higher abstraktion.
 
-**DevOps:** cultural and technical approach as kombinerar development (Dev) and drift (Ops) for snabbare leveranser and forbättrat samarbete between team.
+**DevOps:** cultural and technical approach as combines development (Dev) and drift (Ops) for snabbare leveranser and forbättrat samarbete between team.
 
 **Git:** Distribuerat versionhanteringssystem to spåra ändringar in källkod under development with support for branching and merging.
 
@@ -34,7 +34,7 @@ This Glossary contains definitioner of centrala termer as används genAbout the 
 
 **Övervakning:** Kontinuerlig systemövervakning to upptäcka problem, optimera performance and ensure togänglighet.
 
-**Orchestration:** Automatiserad koordination and handling of komplexa arbetsflöden and systems to uppnå desired state.
+**Orchestration:** Automatiserad koordination and handling of complex arbetsflöden and systems to uppnå desired state.
 
 **Policy as Code:** Tovägagångssätt where säkerhets- and efterlevnadsregler are defined as code for automatiserad utvärdering and verkställande.
 
@@ -42,23 +42,23 @@ This Glossary contains definitioner of centrala termer as används genAbout the 
 
 **YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat as often används for konfigurationsfiler and Architecture as Code-definitioner.
 
-**Zero Trust:** Säkerhetsmodell as aldrig litar at and always verifierar user and enheter innan åtkomst to resurser beviljas.
+**Zero Trust:** Säkerhetsmodell as aldrig litar at and always verifierar user and enheter before åtkomst to resurser beviljas.
 
 ## Driftsättning and operational concepts
 
-**Blå-grön driftsättning:** Driftsättningsstrategi where två identiska produktionsenvironments (blå and grön) används to enable snabb återställning and minimal stoeståndstid.
+**Blå-green driftsättning:** Driftsättningsstrategi where två identiska production environments (blå and green) används to enable snabb återställning and minimal stoeståndstid.
 
-**Canary Release:** gradually utrullningsstrategi where new versions forst deployeras to a liten subset of user for riskminimering and validation.
+**Canary Release:** gradual utrullningsstrategi where new versions forst deployeras to a liten subset of user for riskminimering and validation.
 
 **Community of Practice:** Grupp of personer as parts passion for något the gör and lär itself to göra the bättre through regelbunden interaktion.
 
 **Conway's Law:** Observation to organisationer designar systems as speglar their kommunikationsStructureer.
 
-**Tvärfunktionellt team:** Team as includes withlemmar with different färdigheter and roller as arbetar tosammans mot gemensamma mål.
+**Tvärfunktionellt team:** Team as includes withlemmar with different färdigheter and roller as arbetar tosammans mot gemensamma goals.
 
 **GitOps:** Operational framework as uses Git as enda källa for sanning for declarative infrastructure and applications.
 
-**Helm:** Pakethanterare for Kubernetes as uses charts to definiera, installera and upgradera komplexa Kubernetes-applications.
+**Helm:** Pakethanterare for Kubernetes as uses charts to definiera, installera and upgradera complex Kubernetes-applications.
 
 **Service Discovery:** Mekanism as enables automatisk detektion and kommunikation between tjänster in distribuerade systems.
 
@@ -68,7 +68,7 @@ This Glossary contains definitioner of centrala termer as används genAbout the 
 
 **Post-Quantum Cryptography:** Kryptografiska algoritmer as is designade to vara säkra mot angrepp from both klassiska and kvantumdatorer.
 
-**Carbon-Aware Computing:** Approach to optimera infrastructureanvändning baserat at kolintensitet and fornybara energiSources for minskad miljöpåverkan.
+**Carbon-Aware Computing:** Approach to optimera infrastructureanvändning based on kolintensitet and fornybara energiSources for minskad miljöpåverkan.
 
 **Oforänderlig infrastructure:** InfraStructureparadigm where components aldrig modifieras efter driftsättning without ersätts helt when ändringar behövs.
 
@@ -76,7 +76,7 @@ This Glossary contains definitioner of centrala termer as används genAbout the 
 
 ## Kostnadshantering and optimering
 
-**FinOps:** Disciplin as kombinerar finansiell handling with molnoperationer to maximera affärsvärdet of molninvesteringar through kostnadsoptimering and resource management.
+**FinOps:** Disciplin as combines finansiell handling with molnoperationer to maximera affärsvärdet of molninvesteringar through kostnadsoptimering and resource management.
 
 **Rightsizing:** Process to optimera molnresurser by matcha instance-storlekar and typer with faktiska performancerequirements and användningsmönster.
 
@@ -96,33 +96,33 @@ This Glossary contains definitioner of centrala termer as används genAbout the 
 
 **OPA (Open Policy Agent):** Cloud-native policy engine as enables unified policy enforcement across different services and technologies through declarative policy språk.
 
-**Chaos Engineering:** Disciplin to experimentellt introducera fel in systems to bygga toit to system's formåga to motstå turbulenta forhållanden in produktion.
+**Chaos Engineering:** Disciplin to experimentellt introducera fel in systems to bygga toit to system's ability to motstå turbulenta conditions in produktion.
 
 **Integration Testing:** testing as verifierar to different components or services functions korrekt tosammans when the is integrerade in A systems.
 
-**Compliance Testing:** Automatiserad validation of to systems and konfigurationer follows relevanta regulatoriska requirements, säkerhetsstandarder and organizational policies.
+**Compliance Testing:** Automatiserad validation of to systems and konfigurationer follows relevanta regulatory requirements, säkerhetsstandarder and organizational policies.
 
 ## Strategiska and organizational concepts
 
-**Cloud-First Strategy:** Strategisk approach where organisationer primärt väljer molnbaserade lösningar for new IT-initiativ innan on-premises alternatives övervägs.
+**Cloud-First Strategy:** Strategisk approach where organisationer primarily choose cloud-based solutions for new IT-initiativ before on-premises alternatives övervägs.
 
-**Digital Transformation:** Fundamental change of affärsoperationer and värdeleverans through integration of digital teknik in all aspekter of verksamheten.
+**Digital Transformation:** fundamental change in affärsoperationer and värdeleverans through integration of digital technology in all aspekter of verksamheten.
 
-**Multi-Cloud:** Strategi to use molntjänster from flera different leverantörer to undvika vendor lock-in and optimera for specific capabilities or kostnader.
+**Multi-Cloud:** Strategi to use molntjänster from multiple different leverantörer to undvika vendor lock-in and optimera for specific capabilities or kostnader.
 
 **Data Sovereignty:** Konceptet to digital data is underkastat lagarna and juridiktionen in the land where The lagras or bearbetas.
 
-**Conway's Law:** Observation to organisationer designar systems as speglar their kommunikationsStructureer, which affect how team bör organiseras for optimal systemdesign.
+**Conway's Law:** Observation to organisationer designar systems as speglar their kommunikationsStructureer, which affects how team bör organiseras for optimal systemdesign.
 
-**Cross-functional Team:** Team as includes withlemmar with different färdigheter and roller as arbetar tosammans mot gemensamma mål, essentiellt for DevOps-success.
+**Cross-functional Team:** Team as includes withlemmar with different färdigheter and roller as arbetar tosammans mot gemensamma goals, essentiellt for DevOps-success.
 
 **DevOps Culture:** cultural transformation from traditionella utvecklings- and driftsilos to kollaborativa arbetssätt as emphasizes shared ownership and continuous improvement.
 
-**Psychological Safety:** Teammiljö where withlemmar känner itself säkra to ta risker, erkänna misstag and experimentera without rädsla for bestraffning or forödmjukelse.
+**Psychological Safety:** Teammiljö where withlemmar känner itself säkra to ta risker, erkänna misstag and experiment without rädsla for bestraffning or forödmjukelse.
 
-**Servant Leadership:** Ledarskapsfilosofi as fokuserar at to tjäna teamet and främja their success rather than traditionell kommando-and-kontroll-ledning.
+**Servant Leadership:** Ledarskapsfilosofi as focuses on to tjäna teamet and främja their success rather than traditionell kommando-and-kontroll-ledning.
 
-**Best Practice Evolution:** Kontinuerlig development of rekommenderade metoder baserat at praktisk erfarenhet, community feedback and technical framsteg.
+**Best Practice Evolution:** Kontinuerlig development of rekommenderade methods based on praktisk erfarenhet, community feedback and technical framsteg.
 
 **Anti-Pattern:** Vanligt forekommande but kontraproduktivt lösningsforslag as initialt verkar användbart but as leder to negative consequences.
 
@@ -132,7 +132,7 @@ This Glossary contains definitioner of centrala termer as används genAbout the 
 
 **Technical Debt:** Ackumulerad kostnad of shortcuts and suboptimala technical decisions as requires framtida refactoring or omarbetning to bibehålla systemkvalitet.
 
-**Blameless Culture:** Organisationskultur as fokuserar at systemforbättringar efter incidenter rather than individuell skuld, which främjar öppenhet and lärande.
+**Blameless Culture:** Organisationskultur as focuses on systemforbättringar efter incidenter rather than individual skuld, which främjar öppenhet and lärande.
 
 **Change Management:** Systematisk approach to handle organizational changes, including stakeholder engagement, kommunikation and motståndhantering.
 

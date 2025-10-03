@@ -40,12 +40,12 @@ Book content has granskats of:
 - **Senior molnarkitekter** from svenska storforetag
 - **Tekniska chefer** within svensk finanssektor  
 - **Compliance-specialister** with expertis within svenska regelverk
-- **Öppen källkod-maintainers** of Infrastructure as Code-verktyg
+- **Öppen källkod-maintainers** of Infrastructure as Code tool
 
 ### Contentssspecialister
 
-- **Tekniska skribenter** specialiserade at svensk IT-documentation
-- **Utbildningsdesigners** with fokus at vuxenutbildning within teknik
+- **Tekniska skribenter** specialized at svensk IT-documentation
+- **Utbildningsdesigners** with fokus at vuxenutbildning within technology
 - **Språkspecialister** for technical svenska terminologi
 
 ## organizational bidrag
@@ -147,7 +147,7 @@ This bok builds on the enastående arbete as utforts of öppen källkod-communit
 This bok is designad as a levande resurs as is developed with:
 
 - **Community feedback** - Återkoppling from svenska organisationer
-- **technical evolution** - Uppdateringar when new tools and metoder is developed
+- **technical evolution** - Uppdateringar when new tools and methods is developed
 - **Praktiska lessons** - Integration of new case studies and Architecture as Code best practices
 - **Språkutveckling** - Forfining of svensk technical terminologi
 
@@ -177,7 +177,7 @@ For frågor, feedback or forslag to forbättringar:
 
 ## Licens and use
 
-This bok distribueras under villkor as enables:
+This bok is distributed under villkor as enables:
 
 - **Fri distribution** for utbildningsändamål
 - **Anpassning** for organisationsspecific behov
@@ -192,7 +192,7 @@ All reuse ska erkänna ursprungliga forfattare and bidragsgivare according to et
 The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
 "Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team createt a resurs as specific möter svenska organisationers behov within Architecture as Code and Infrastructure as Code.
 
-Bokens success kommer from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig värde for svenska technical organisationer. Vi hoppas to This resurs kommer to accelerera adoptionen of Architecture as Code-principles and bidra to forbättrade technical utfall over entire svenska tech-sektorn.
+Bokens success will from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig value for svenska technical organisationer. Vi hoppas to This resurs will to accelerera adoptionen of Architecture as Code-principles and bidra to improved technical utfall over entire svenska tech-sektorn.
 
 Sources:
 - Kvadrat AB. "Swedish Technology Consulting Excellence." Foretagsprofil, 2024.

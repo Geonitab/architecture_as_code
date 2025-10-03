@@ -8,37 +8,37 @@
 
 ![Säkerhetskonceptens samband](images/mindmap_10_sakerhet.png)
 
-*Mindmappen illustrerar the komplexa sambanden between different security aspects in Architecture as Code, from threat modeling and Zero Trust Architecture to Policy as Code and kontinuerlig risk assessment. This holistic view is crucial to forstå how säkerhet integreras throughgående in code-based arkitekturer.*
+*Mindmappen illustrerar the complex sambanden between different security aspects in Architecture as Code, from threat modeling and Zero Trust Architecture to Policy as Code and kontinuerlig risk assessment. This holistic view is crucial to forstå how säkerhet integreras throughgående in code-based arkitekturer.*
 
-## Kapitelets omfattning and mål
+## Kapitelets omfattning and goals
 
-SäkerhetsChallengesna in dagens digitala landskap requires a Fundamental omvärdering of traditionella säkerhetsmetoder. When organisationer antar Architecture as Code to handle växande komplexitet in sina IT-environments, must security strategies is developed parallellt. This chapters vägleder läsaren through a comprehensive understanding of how säkerhet integreras naturligt and effektivt in code-based arkitekturer.
+SäkerhetsChallengesna in dagens digitala landskap requires a Fundamental omvärdering of traditionella säkerhetsmetoder. When organisationer antar Architecture as Code to handle growing komplexitet in sina IT-environments, must security strategies is developed parallellt. This chapters vägleder läsaren through a comprehensive understanding of how säkerhet integreras naturligt and effektivt in code-based arkitekturer.
 
-Traditionella säkerhetsmodor, byggda for statiska environments with tydliga perimetrar, blir snabbt foråldrade in molnbaserade, mikroservice-orienterade arkitekturer. instead of treat säkerhet as a separat domän or efterkonstruktion, must modern organisationer anamma säkerhet-that-code-principles where säkerhetsdecisions are codified, versionhanteras and automatiseras together with resten of architecture.
+Traditionella säkerhetsmodor, byggda for static environments with clear perimetrar, blir snabbt foråldrade in cloud-based, mikroservice-orienterade arkitekturer. instead of treat säkerhet as a separat domän or efterkonstruktion, must modern organisationer anamma säkerhet-that-code-principles where säkerhetsdecisions are codified, versionhanteras and automatiseras together with resten of architecture.
 
-Svenska organisationer navigerar particularly komplexa säkerhetslandskap. GDPR-compliance, MSB:s guidelines for kritisk infrastructure, finansiella regulatoriska requirements and sektorsspecific säkerhetsstandarder creates A multidimensionellt requirementsbild. simultaneously driver digitaliseringsinitiativ need of snabbare innovation and shortre time-to-market. Architecture as Code erbjuder lösningen by automatisera compliance-kontroller and enable "secure by default" arkitekturer.
+Svenska organisationer navigerar particularly complex säkerhetslandskap. GDPR-compliance, MSB:s guidelines for critical infrastructure, finansiella regulatory requirements and sektorsspecific säkerhetsstandarder creates A multidimensionellt requirementsbild. simultaneously driver digitaliseringsinitiativ need of snabbare innovation and shortre time-to-market. Architecture as Code erbjuder lösningen by automatisera compliance-kontroller and enable "secure by default" arkitekturer.
 
-This chapters behandlar säkerhet ur A helhetsperspektiv where technical Architecture as Code-implementations, organizational processes and regulatoriska requirements samverkar. Läsaren får djupgående understanding for threat modeling, risk assessment, policy automation and incident response in code-based environments. Särskild uppmärksamhet ges åt sektion 10.6 as introducerar advanced säkerhetsarkitekturmönster for enterprise-environments.
+This chapters behandlar säkerhet ur A helhetsperspektiv where technical Architecture as Code-implementations, organizational processes and regulatory requirements samverkar. Läsaren får djupgående understanding for threat modeling, risk assessment, policy automation and incident response in code-based environments. Särskild uppmärksamhet ges åt sektion 10.6 as introduces advanced säkerhetsarkitekturmönster for enterprise-environments.
 
 ## Teoretisk grund: Säkerhetsarkitektur in The digitala tidsåldern
 
 ### Paradigmskiftet from perimeterskydd to zero trust
 
-The traditional security philosophy was built on the assumption about a tydlig gräns between "insidan" and "utsidan" of organisationen. Nätverksperimetrar, brandväggar and VPN-lösningar createde a "hård utsida, mjuk insida" modell where resurser within perimetern implicit betraktades as betrodda. This paradigm fungerade when the flesta resurser var fysiskt lokaliserade in kontrollerade datacenter and user arbetade from fasta kontor.
+The traditional security philosophy was built on the assumption about a clear gräns between "insidan" and "utsidan" of organisationen. Nätverksperimetrar, brandväggar and VPN-solutions createde a "hård utsida, mjuk insida" modell where resurser within perimetern implicit betraktades as betrodda. This paradigm worked when the flesta resurser var fysiskt lokaliserade in kontrollerade datacenter and user arbetade from fasta kontor.
 
 Modern operations demolerar These antaganden systematiskt. Molnbaserade tjänster distribuerar resurser across multipla leverantörer and geografiska regioner. Remote-arbete gör användarnas nätverk to säkerhetsperimeterens forlängning. API-driven architecture creates mängder of service-to-service kommunikation as traditionella perimeterkontroller not can handle effektivt.
 
 Zero Trust Architecture (ZTA) represents The nödvändiga evolutionen of säkerhetsfilosofin. Grundprincipen "never trust, always verify" means to each user, enhet and nätverkstransaktion valitheir explicitly oavsett location or previous autentisering. This requires granular identitetshantering, kontinuerlig posture assessment and policy-driven access controls.
 
-in Architecture as Code-context enables ZTA systematisk implementation of trust policies through Architecture as Code. Nätverkssegmentering, mikrosegmentering, service mesh policies and IAM-konfigurationer are defined deklarativt and enforced konsistent across all environments. This creates "trust as code" where säkerhetsdecisions blir reproducerbara, testbara and auditerbara.
+in Architecture as Code-context enables ZTA systematic implementation of trust policies through Architecture as Code. Nätverkssegmentering, mikrosegmentering, service mesh policies and IAM-konfigurationer are defined deklarativt and enforced konsistent across all environments. This creates "trust as code" where säkerhetsdecisions blir reproducerbara, testbara and auditerbara.
 
 ### Threat modeling for code-based arkitekturer
 
-Effective säkerhetsarkitektur begins with djupgående understanding of hotlandskapet and attack vectors as is relevanta for The specific architecture. Threat modeling for Architecture as Code-environments differs itself markant from traditionell application threat modeling by inkludera infrastructurenivån, CI/CD-pipelines and Architecture as Code-automation tools as potentiella attack surfaces.
+Effective säkerhetsarkitektur begins with djupgående understanding of hotlandskapet and attack vectors as is relevanta for The specific architecture. Threat modeling for Architecture as Code-environments differs itself markant from traditionell application threat modeling by include infrastructurenivån, CI/CD-pipelines and Architecture as Code-automation tools as potentiella attack surfaces.
 
-STRIDE-metodologin (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) tohandahåller systematisk framework to identifiera säkerhetshot at different arkitekturnivåer. For Architecture as Code-environments must STRIDE appliceras at Architecture as Code, deployment pipelines, secrets management systems and runtime environments.
+STRIDE-metodologin (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) tohandahåller systematic framework to identify säkerhetshot at different arkitekturnivåer. For Architecture as Code-environments must STRIDE appliceras at Architecture as Code, deployment pipelines, secrets management systems and runtime environments.
 
-Supply chain attacks represents particularly kritiska hot for code-based arkitekturer. When infrastructure are defined through tredjepartsmoduler, container images and externa APIs are created betydande dependencies as can komprometteras. SolarWinds-attacken 2020 demonstrerade how sofistikerade motståndare can infiltrera utvecklingsverktyg to nå downstream targets.
+Supply chain attacks represents particularly kritiska hot for code-based arkitekturer. When infrastructure are defined through tredjepartsmoduler, container images and externa APIs are created significant dependencies as can komprometteras. SolarWinds-attacken 2020 demonstrerade how sofistikerade motståndare can infiltrera utvecklingsverktyg to nå downstream targets.
 
 Code injection attacks får new dimensioner when Architecture as Code exekveras automatically without mänsklig granskning. Malicious Terraform modules, korrupta Kubernetes manifests or komprometterade Ansible playbooks can resultera in privilege escalation, data exfiltration or denial of service at architecture level.
 
@@ -46,23 +46,23 @@ Insider threats must också omvärtheir for code-based environments. Developers 
 
 ### Risk assessment and continuous compliance
 
-Traditionell risk assessment throughfors periodiskt as punktinsatser, often årligen or in samband with större systemforändringar. This approach is fundamentalt inkompatibel with kontinuerlig deployment and infrastructure evolution as karakteriserar modern utvecklingsenvironments.
+Traditionell risk assessment is performed periodiskt as punktinsatser, often årligen or in samband with större systemforändringar. This approach is fundamentalt inkompatibel with kontinuerlig deployment and infrastructure evolution as karakteriserar modern utvecklingsenvironments.
 
-Continuous risk assessment integrerar riskutvärdering in utvecklingslivscykeln through automatiserade tools and policy engines. each infrastructureändring analyzes automatically for säkerhetsimplikationer innan deployment. Risk scores beräknas dynamiskt baserat at forändringarnas impact at attack surface, data exposure and compliance posture.
+Continuous risk assessment integrerar riskutvärdering in utvecklingslivscykeln through automatiserade tools and policy engines. each infrastructureändring analyzes automatically for säkerhetsimplikationer before deployment. Risk scores beräknas dynamiskt based on forändringarnas impact at attack surface, data exposure and compliance posture.
 
 Kvantitativ riskanalys blir mer throughforbar when infrastructure are defined as code. Blast radius-beräkningar can automatiseras through dependency analysis of infrastructure components. Potential impact assessment baseras at data classification and service criticality as are codified in infrastructure tags and metadata.
 
-Compliance-as-code transformation traditionella audit-processes from reaktiva to proaktiva. instead of throughfora compliance-kontroller efter deployment, valitheir regulatory requirements kontinuerligt under utvecklingsprocessen. GDPR Article 25 ("Data Protection by design and by Default") can implementeras through automated policy checks that ensure persondata-handling follows privacy principles from forsta kodrad.
+Compliance-as-code transformation traditionella audit-processes from reactive to proaktiva. instead of throughfora compliance-kontroller after deployment, valitheir regulatory requirements kontinuerligt under utvecklingsprocessen. GDPR Article 25 ("Data Protection by design and by Default") can implementeras through automated policy checks that ensure persondata-handling follows privacy principles from forsta kodrad.
 
 ## Policy as Code: Automatiserad säkerhetsstyrning
 
 ### Evolution from manuell to automatiserad policy enforcement
 
-Traditionell säkerhetsstyrning builds on manuella processes, documentsbaserade policies and människodrivna kontroller. Säkerhetsavdelningar forfattar policy-documents in naturligt språk, which sedan översätts to technical konfigurationer of different team. This approach creates interpretationsluckor, implementationsinkonsistenser and significanta tidsfordröjningar between policy-uppdateringar and Technical implementation.
+Traditionell säkerhetsstyrning builds on manuella processes, documentsbaserade policies and människodrivna kontroller. Säkerhetsavdelningar forfattar policy-documents in naturligt språk, which then översätts to technical konfigurationer of different team. This approach creates interpretationsluckor, implementationsinkonsistenser and significanta tidsfordröjningar between policy-uppdateringar and Technical implementation.
 
-Policy as Code represents paradigmskiftet from imperative to declarative säkerhetsstyrning. Security policies are defined in maskinläsbar form as can evalueras automatically mot infrastructurekonfigurationer. This eliminates översättningstappen between policy intention and Technical implementation, simultaneously as the enables real-time policy enforcement.
+Policy as Code represents paradigmskiftet from imperative to declarative säkerhetsstyrning. Security policies are defined in maskinläsbar form as can evalueras automatically mot infrastructurekonfigurationer. This eliminates översättningstappen between policy intention and Technical implementation, while the enables real-time policy enforcement.
 
-Open Policy Agent (OPA) has etablerat itself as the facto standard for policy-as-code implementation. OPA's Rego-språk tohandahåller expressiv syntax to definiera komplexa security policies as can evalueras across heterogena technical stakcar. Rego policies can integreras in CI/CD pipelines, admission controllers, API gateways and runtime environments for comprehensive policy coverage.
+Open Policy Agent (OPA) has etablerat itself as the facto standard for policy-as-code implementation. OPA's Rego-språk tohandahåller expressiv syntax to definiera complex security policies as can evalueras across heterogena technical stakcar. Rego policies can integreras in CI/CD pipelines, admission controllers, API gateways and runtime environments for comprehensive policy coverage.
 
 HashiCorp Sentinel erbjuder alternatives approach with fokus at Architecture as Code-specific policies. Sentinel policies can enforceas at Terraform plan-nivå to forhindra non-compliant infrastructure deployments. AWS Config Rules and Azure Policy tohandahåller cloud-nativa policy engines with deeper integration in respektive cloud platforms.
 
@@ -74,19 +74,19 @@ Manuell compliance management blir ohållbar when organisationer opererar across
 
 GDPR Article 32 requires "appropriate technical measures" for data security. This can implementeras through automated policies as verificar encryption status for databaser as lagrar persondata, ensures access logging for sensitive systems and kontrollerar data retention policies. Rego-baserade GDPR policies can detect violations real-time and triggera rewithiation workflows.
 
-PCI-DSS Requirements can similaritets are codified as policies as kontrollerar network segmentation for cardholder data environments, encryption implementation for data transmission and access control configurations for payment processing systems. Automated PCI compliance validation reducerar audit preparation time from månader to dagar.
+PCI-DSS Requirements can similaritets are codified as policies as kontrollerar network segmentation for cardholder data environments, encryption implementation for data transmission and access control configurations for payment processing systems. Automated PCI compliance validation reducerar audit preparation time from months to dagar.
 
 Financial sector organizations must följa additional requirements from Finansinspektionen and European Banking Authority. These can implemented as custom policies as kontrollerar data residency requirements, operational resilience measures and outsourcing risk management controls.
 
 ### Custom policy development for organisationsspecific requirements
 
-Withan standardized compliance frameworks tohandahåller foundational policy requirements, develops organisationer often internal security standards as reflekterar their unika risk profile and business context. Custom policy development enables enforcement of organisationsspecific säkerhetsrequirements as går beyond external regulatory requirements.
+Withan standardized compliance frameworks tohandahåller foundational policy requirements, develops organisationer often internal security standards as reflekterar their unique risk profile and business context. Custom policy development enables enforcement of organisationsspecific säkerhetsrequirements as går beyond external regulatory requirements.
 
-Svenska foretag with international operations must often reconcile conflicting regulatory requirements between jurisdictions. Custom policies can implement tiered compliance approach where stricter requirements applied baserat at data classification and geographic location. Policies can enforça svenskt dataskydd for EU citizens also when data processed in third countries with adequate protection levels.
+Svenska foretag with international operations must often reconcile conflicting regulatory requirements between jurisdictions. Custom policies can implement tiered compliance approach where stricter requirements applied based on data classification and geographic location. Policies can enforça svenskt dataskydd for EU citizens also when data processed in third countries with adequate protection levels.
 
 Industry-specific organizations develops often specialized security requirements. Healthcare providers must implement additional patient privacy protections beyond GDPR. Financial institutions require enhanced anti-money laundering controls. Government agencies follows särskilda säkerhetsskyddslagen requirements. Custom policies enable systematic enforcement of these sector-specific controls.
 
-Organizational maturity and risk tolerance också driver custom policy development. High-security organizations kanske require additional encryption for internal communications, mandatory multi-factor authentication for all administrative access or enhanced logging for suspicious activities. Policies can gradually tightened as organizations mature their security posture.
+Organizational maturity and risk tolerance också driver custom policy development. High-security organizations kanske require additional encryption for internal communications, mandatory multi-factor authentication for all administrative access or enhanced logging for suspicious activities. Policies can gradual tightened as organizations mature their security posture.
 
 Advanced policy development includes dynamic policy evaluation based at runtime context. Time-of-day restrictions for administrative access, geolocation-based access controls and anomaly-driven policy tightening can implemented through sophisticated policy logic as adapts to changing threat conditions.
 
@@ -94,7 +94,7 @@ Advanced policy development includes dynamic policy evaluation based at runtime 
 
 ### Foundational security principles for code-based arkitekturer
 
-Security-by-design represents not only a implementationsstrategi without a fundamental filosofisk approach to system architecture. Traditionella säkerhetsmodor behandlar säkerhet as additiv komponent - något as läggs to efter to primär funktionalitet is designad and implemented. This approach resulterar systematiskt in säkerhetsluckor, komplex integration and höga rewithiation-kostnader.
+Security-by-design represents not only a implementationsstrategi without a fundamental filosofisk approach to system architecture. Traditionella säkerhetsmodor behandlar säkerhet as additiv komponent - något as läggs to efter to primär funktionalitet is designad and implemented. This approach results systematiskt in säkerhetsluckor, komplex integration and höga rewithiation-kostnader.
 
 Kodbaserade arkitekturer erbjuder unique possibility to bake-in säkerhet from forsta designprincip. When infrastructure, applications and policies are defined through same kodbaserad approach, can säkerhetsdecisions versionhanteras, testades and deployeras with same rigor as functional requirements. This creates "security-first" mindset where säkerhetskonsiderationer driver architectural decisions rather än constraining them.
 
@@ -104,7 +104,7 @@ Immutability principles from infrastructure-as-code extends naturally to securit
 
 ### Zero Trust Architecture implementation through architecture as code
 
-Zero Trust Architecture (ZTA) transformation säkerhetsarkitektur from location-based trust to identity-based verification. Traditional network security approaches granted implicit trust baserat at network location - resources inside corporate networks presuwith trustworthy withan external traffic heavily scrutinized. ZTA eliminates notion of trusted internal networks through requiring explicitly verification for every user, device and transaction.
+Zero Trust Architecture (ZTA) transformation säkerhetsarkitektur from location-based trust to identity-based verification. Traditional network security approaches granted implicit trust based on network location - resources inside corporate networks presuwith trustworthy withan external traffic heavily scrutinized. ZTA eliminates notion of trusted internal networks through requiring explicitly verification for every user, device and transaction.
 
 implementation of ZTA through Architecture as Code creates systematic approach to trust boundaries and verification mechanisms. Identity and device verification policies can defined as infrastructure code as consistently enforced across all environments. Network micro-segmentation rules, service mesh policies and application-level authorization controls koordineras through unified policy framework.
 
@@ -118,7 +118,7 @@ Modern threat landscape demands risk-based approach to säkerhetsarkitektur wher
 
 Risk-based security architectures leverage data classification, threat intelligence and business impact analysis to determinera appropriate security control levels for different systems components. High-value assets with significant business impact receive enhanced protection methods withan lower-risk resources can protected with standard baseline controls.
 
-Architecture as Code enables dynamic risk-based security through programmable policy frameworks. Asset classification metadata embedded in infrastructure definitions can drive automated security control selection. Threat intelligence feeds can integrated with policy engines to adjust protection levels baserat at current threat conditions.
+Architecture as Code enables dynamic risk-based security through programmable policy frameworks. Asset classification metadata embedded in infrastructure definitions can drive automated security control selection. Threat intelligence feeds can integrated with policy engines to adjust protection levels based on current threat conditions.
 
 Quantitative risk assessment becomes feasible when infrastructure relationships and dependencies explicitly defined in code. Blast radius calculations can perforwith automatically through dependency analysis of infrastructure components. Business impact assessment can automated through integration with service catalogs and SLA definitions.
 
@@ -168,7 +168,7 @@ Homomorphic encryption and secure multi-party computation represent emerging tec
 
 ### Data classification and handling procedures
 
-Effective data protection begins with comprehensive data classification framework as identifies and categorizes data baserat at sensitivity levels, regulatory requirements and business value. Without clear understanding of what data requires protection, organizations cannot implement appropriate security controls.
+Effective data protection begins with comprehensive data classification framework as identifies and categorizes data based on sensitivity levels, regulatory requirements and business value. Without clear understanding of what data requires protection, organizations cannot implement appropriate security controls.
 
 Data discovery and classification tools can automated much of the classification process through content analysis, pattern recognition and machine learning techniques. However, business context and regulatory requirements often require human judgment for accurate classification. Hybrid approaches combining automated discovery with human validation prove most effective.
 
@@ -194,7 +194,7 @@ Traditional network security architectures built at assumption of trusted intern
 
 Software-defined networking (SDN) transforms network security from hardware-centric to code-driven approach. Network policies can defined through infrastructure code and automatically deployed across hybrid cloud environments. This enables consistent security policy enforcement regardless of underlying network infrastructure variations.
 
-Microsegmentation represents evolution from coarse-grained network security to granular, application-aware traffic control. Traditional VLANs and subnets provide crude segmentation baserat at network topology. Microsegmentation enables precise traffic control baserat at application identity, user context and data classification.
+Microsegmentation represents evolution from coarse-grained network security to granular, application-aware traffic control. Traditional VLANs and subnets provide crude segmentation based on network topology. Microsegmentation enables precise traffic control based on application identity, user context and data classification.
 
 Container networking introduces additional complexity where traditional network security assumptions break down. Containers share network namespaces withan maintaining process isolation. Service-to-service communication often bypasses traditional network security controls. Container network interfaces (CNI) provide standardized approach for implementing network policies for containerized applications.
 
@@ -204,7 +204,7 @@ Service mesh architectures provide comprehensive solution for securing inter-ser
 
 Mutual TLS (mTLS) enforcement through service mesh ensures every service-to-service communication encrypted and authenticated. Service identity certificates automatically provisioned and rotated for each service instance. This eliminates manual certificate management overhead withan providing strong authentication for every network connection.
 
-Policy-driven traffic routing enables sophisticated security controls through centralized policy management. Rate limiting, circuit breaking and traffic filtering policies can applied consistently across entire service topology. These policies can dynamically adjusted baserat at threat intelligence or service health indicators.
+Policy-driven traffic routing enables sophisticated security controls through centralized policy management. Rate limiting, circuit breaking and traffic filtering policies can applied consistently across entire service topology. These policies can dynamically adjusted based on threat intelligence or service health indicators.
 
 Observability capabilities inherent in service mesh architectures provide unprecedented visibility into application-level network traffic. Detailed metrics, distributed tracing and access logs enable rapid security incident detection and forensic analysis.
 
@@ -212,7 +212,7 @@ Observability capabilities inherent in service mesh architectures provide unprec
 
 ### Säkerhetsorchestrering and automatiserad incident response
 
-Modern enterprise säkerhetsarkitekturer requires sofistikerad orchestration of multiple security tools and processes to handle växande volymer of security events and increasingly sophisticated attack techniques. Manual incident response processes cannot scale to meet requirements of modern threat landscape where attacks evolve within minutes or hours.
+Modern enterprise säkerhetsarkitekturer requires sofistikerad orchestration of multiple security tools and processes to handle growing volymer of security events and increasingly sophisticated attack techniques. Manual incident response processes cannot scale to meet requirements of modern threat landscape where attacks evolve within minutes or hours.
 
 Security Orchestration, Automation and Response (SOAR) platforms transform incident response from reactive manual processes to proactive automated workflows. SOAR implementations leverage predefined playbooks as automate common response scenarios: automatic threat containment, evidence collection, stakeholder notification and preliminary impact assessment.
 
@@ -238,7 +238,7 @@ Unified security policy management across multiple cloud environments requires a
 
 Identity federation enables single sign-on and consistent access control across multi-cloud deployments. Cloud-native identity providers like Azure Active Directory or AWS IAM must integrated with on-premises identity systems and third-party services for seamless user experience.
 
-Data governance for multi-cloud environments requires sophisticated classification and protection mechanisms. Data residency requirements, cross-border transfer restrictions and varying encryption requirements must automatically enforced baserat at data classification and regulatory requirements.
+Data governance for multi-cloud environments requires sophisticated classification and protection mechanisms. Data residency requirements, cross-border transfer restrictions and varying encryption requirements must automatically enforced based on data classification and regulatory requirements.
 
 ### Security observability and analytics patterns
 
@@ -248,7 +248,7 @@ Centralized logging aggregation brings security events from multiple sources int
 
 Security metrics and key performance indicators (KPIs) provide quantitative measurement of security program effectiveness. Mean time to detection (MTTD), mean time to response (MTTR) and false positive rates indicate operational efficiency. Security control coverage and compliance drift metrics measure security posture health.
 
-Threat modeling automation leverages observability data to continuously update threat models baserat at observed attack patterns. This enables proactive security architecture improvements through identifying emerging attack vectors and vulnerabilities before they fully exploited.
+Threat modeling automation leverages observability data to continuously update threat models based on observed attack patterns. This enables proactive security architecture improvements through identifying emerging attack vectors and vulnerabilities before they fully exploited.
 
 ### Emerging security technologies and future trends
 
@@ -278,7 +278,7 @@ terraform {
 }
 
 # Security basline for Swedish organizations
-# This konfiguration follows MSB:s guidelines for kritisk infrastruktur
+# This konfiguration follows MSB:s guidelines for critical infrastruktur
 # and implement GDPR-compliance through design
 locals {
   security_tags = {
@@ -291,7 +291,7 @@ locals {
     Environment = var.environment
   }
   
-  # Svenska säkerhetsrequirements baserat at MSB:s guidelines
+  # Svenska säkerhetsrequirements based on MSB:s guidelines
   required_encryption = true
   audit_logging_required = true
   gdpr_compliance = var.data_classification != "public"
@@ -657,7 +657,7 @@ gdpr_violations contains violation if {
         "type": "erasure_capability_missing",
         "resource": input.resource_id,
         "article": "GDPR Article 17",
-        "message": "Funktionalitet for radering of personuppgifter saknas",
+        "message": "Funktionalitet for radering of personal data saknas",
         "severity": "medium", 
         "remediation": "Implementera automatisk radering or manual process for dataradering"
     }
@@ -670,7 +670,7 @@ Policy logic implement both technical requirements (encryption, access controls)
 
 ### Advanced Security Monitoring and Threat Detection
 
-Automatiserad säkerhetsmonitoring represents kritisk komponent in modern security architecture where traditional manual monitoring approaches cannot scale to meet requirements of distributed cloud environments. Following Python implementation demonstrerar comprehensive approach to automated security monitoring as integrerar multiple data sources and threat intelligence.
+Automatiserad säkerhetsmonitoring represents critical komponent in modern security architecture where traditional manual monitoring approaches cannot scale to meet requirements of distributed cloud environments. Following Python implementation demonstrerar comprehensive approach to automated security monitoring as integrerar multiple data sources and threat intelligence.
 
 ```python
 # security_monitoring/advanced_threat_detection.py
@@ -920,7 +920,7 @@ class AdvancedThreatDetection:
         }
     
     def _calculate_threat_score(self, activity: Dict) -> float:
-        """Calculate numerical threat score baserat at multiple risk factors"""
+        """Calculate numerical threat score based on multiple risk factors"""
         base_score = 0.0
         
         # Geographic location risk (non-EU access)
@@ -944,7 +944,7 @@ class AdvancedThreatDetection:
 
 This Python framework implement enterprise-grade security monitoring as specifically addresserar svenska organisationers requirements. Systemet integrerar multiple AWS security services withan the provides advanced correlation capabilities for sophisticated threat detection.
 
-Framework implement automated response capabilities as can triggered baserat at threat severity levels. GDPR compliance monitoring ensures continuous evaluation of data protection requirements with automated notification for potential violations.
+Framework implement automated response capabilities as can triggered based on threat severity levels. GDPR compliance monitoring ensures continuous evaluation of data protection requirements with automated notification for potential violations.
 
 ## Svenska Compliance and Regulatory Framework
 
@@ -964,7 +964,7 @@ Architecture as Code-principerna within This område
 
 Myndigheten for samhällsskydd and beredskap (MSB) provides comprehensive guidelines for cybersecurity within critical infrastructure sectors. Architecture as Code implementations must align with MSB's risk-based approach to cybersecurity management.
 
-Incident reporting requirements under MSB regulations can automated through security monitoring systems as detect significant incidents and automatically generate incident reports for regulatory submission. Automated incident classification baserat at MSB severity criteria ensures timely compliance with reporting obligations.
+Incident reporting requirements under MSB regulations can automated through security monitoring systems as detect significant incidents and automatically generate incident reports for regulatory submission. Automated incident classification based on MSB severity criteria ensures timely compliance with reporting obligations.
 
 Business continuity and disaster recovery requirements from MSB can systematically implemented through Architecture as Code approaches. Infrastructure definitions can include automated backup procedures, failover mechanisms and recovery testing schedules as ensure operational resilience.
 
@@ -1042,7 +1042,7 @@ Manual security processes create bottlenecks as tempt teams to bypass security c
 
 ### Security Maturity Models for Continuous Improvement
 
-Security maturity assessments provide structured frameworks for evaluating current security posture and identifying improvement opportunities. Maturity models enable organizations to prioritize security investments baserat at current capabilities and business requirements.
+Security maturity assessments provide structured frameworks for evaluating current security posture and identifying improvement opportunities. Maturity models enable organizations to prioritize security investments based on current capabilities and business requirements.
 
 Capability Maturity Model Integration (CMMI) for security provides five-level maturity framework from initial reactive security to optimized proactive security management. Swedish organizations can leverage CMMI assessments for benchmarking against industry peers.
 
@@ -1060,7 +1060,7 @@ Zero-knowledge proofs enable privacy-preserving authentication and verification 
 
 ### Strategic Security Recommendations for Svenska Organizations
 
-Swedish organizations should prioritize security architecture investments baserat at regulatory requirements, threat landscape evolution and business transformation objectives. Investment priorities should aligned with national cybersecurity strategies and EU-wide cybersecurity initiatives.
+Swedish organizations should prioritize security architecture investments based on regulatory requirements, threat landscape evolution and business transformation objectives. Investment priorities should aligned with national cybersecurity strategies and EU-wide cybersecurity initiatives.
 
 Public-private cybersecurity collaboration through organizations like Swedish Incert provides threat intelligence sharing and coordinated incident response capabilities. Organizations should leverage these collaborative frameworks for enhanced security posture.
 
@@ -1070,15 +1070,15 @@ Cybersecurity workforce development represents critical challenge for svenska or
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-Säkerhet within Architecture as Code represents fundamental transformation from traditionella, reaktiva säkerhetsapproaches to proaktiva, code-based säkerhetslösningar as integreras naturligt in modern utvecklingsprocesser. This paradigmskifte enables svenska organisationer to bygga robusta, skalbara and auditerbara säkerhetslösningar as möter both nuvarande regulatoriska requirements and framtida säkerhetsChallenges.
+Säkerhet within Architecture as Code represents fundamental transformation from traditionella, reactive säkerhetsapproaches to proaktiva, code-based säkerhetslösningar as integreras naturligt in modern utvecklingsprocesser. This paradigmskifte enables svenska organisationer to bygga robusta, skalbara and auditerbara säkerhetslösningar as möter both nuvarande regulatory requirements and framtida säkerhetsChallenges.
 
-implementation of security-by-design principles through Architecture as Code creates systematic approach to säkerhetsarkitektur where säkerhetsdecisions versionhanteras, testas and deployeras with same rigor as functional requirements. Zero Trust Architecture implementation through code-based policies enables granular access control and continuous verification as anpassar itself to modern distributed computing realities.
+implementation of security-by-design principles through Architecture as Code creates systematic approach to säkerhetsarkitektur where säkerhetsdecisions versionhanteras, be tested and deployeras with same rigor as functional requirements. Zero Trust Architecture implementation through code-based policies enables granular access control and continuous verification as anpassar itself to modern distributed computing realities.
 
 Policy as Code automation transforms compliance from manual, fel-prone processes to systematiska, automated frameworks as can continuously evaluate regulatory requirements mot actual infrastructure configurations. For Swedish organizations navigerar This complex regulatory landscape includes GDPR, MSB guidelines and sector-specific requirements, automated compliance provides significant operational advantages and reduced regulatory risk.
 
 Advanced security architecture patterns, particularly those covered in Section 10.6, demonstrerar how sophisticated enterprise security requirements can addressed through coordinated implementation of security orchestration, AI-enhanced threat detection and multi-cloud security strategies. These patterns provide scalable approaches for large organizations with complex security requirements.
 
-Svenska organisationer as systematically implement Architecture as Code security strategies positionerar itself for successful digital transformation while maintaining strong security posture and regulatory compliance. Investment in comprehensive security automation through code proves cost-effective through reduced security incidents, faster compliance validation and improved operational efficiency.
+Svenska organisationer as systematically implement Architecture as Code security strategies position themselves for successful digital transformation while maintaining strong security posture and regulatory compliance. Investment in comprehensive security automation through code proves cost-effective through reduced security incidents, faster compliance validation and improved operational efficiency.
 
 Future evolution of security architecture continues toward increased automation, AI enhancement and quantum-ready implementations. Swedish organizations should prepare for these trends through building adaptable, code-driven security frameworks as can evolve with emerging technologies and changing threat landscapes.
 
@@ -1093,7 +1093,7 @@ successful implementation of These security strategies requires organizational c
 - ENISA. "Cloud Security Guidelines for EU-organisationer." European Union Agency for Cybersecurity, 2023.
 - ISO/IEC 27001:2022. "Information Security Management Systems - Requirements." International Organization for Standardization.
 
-### Svenska myndigheter and regulatoriska källor
+### Svenska myndigheter and regulatory källor
 - MSB. "Allmänna råd about informationssäkerhet for samhällsimportant and digitala tjänster." Myndigheten for samhällsskydd and beredskap, 2023.
 - MSB. "Vägledning for riskanalys according to NIS-direktivet." Myndigheten for samhällsskydd and beredskap, 2023.
 - Finansinspektionen. "Foreskrifter about operativa risker." FFFS 2014:1, up-to-date 2023.
@@ -1124,4 +1124,4 @@ successful implementation of These security strategies requires organizational c
 - ISACA. "COBIT 2019 Framework for Governance and Management of Enterprise IT." ISACA International.
 - (ISC)² "Cybersecurity Workforce Study." International Information systems Security Certification Consortium, 2023.
 
-*all Sources verifierade per december 2023. Regulatory frameworks and technical standards uppdateras regelbundet - konsultera aktuella versions for senaste requirements.*
+*all Sources verifierade per december 2023. Regulatory frameworks and technical standards uppdateras regelbundet - konsultera aktuella versions for last requirements.*

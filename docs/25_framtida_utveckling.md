@@ -4,16 +4,16 @@ This chapters utforskar framtida utvecklingstrender within Architecture as Code 
 
 ![Framtida development and trender](images/diagram_25_future_trends.png)
 
-*a visualisering of the importantste trenderna and teknologiska utvecklingarna as kommer to forma Architecture as Code and Infrastructure as Code (Architecture as Code) under the kommande åren.*
+*a visualisering of the importantste trenderna and teknologiska utvecklingarna as will to forma Architecture as Code and Infrastructure as Code (Architecture as Code) under the kommande åren.*
 
 ## Teknologiska trender as formar framtiden
 
 ### Artificiell intelligens and maskininlärning
 
 **AI-driven infrastructure**
-AI kommer to revolutionera how vi designar, implement and handles Infrastructure as Code:
+AI will to revolutionera how vi designar, implement and handles Infrastructure as Code:
 
-- **Prediktiv skalning**: AI-systems as automatically forutser resursbehov baserat at historiska mönster
+- **Prediktiv skalning**: AI-systems as automatically forutser resursbehov based on historiska pattern
 - **Intelligent resursoptimering**: Maskininlärning for kontinuerlig kostnadsoptimering
 - **Automatisk problemlösning**: AI-agenter as identifierar and åtgärdar infrastructureproblem
 - **Smart säkerhetsövervakning**: ML-baserad hotdetektering and automatisk respons
@@ -26,7 +26,7 @@ AI kommer to revolutionera how vi designar, implement and handles Infrastructure
 ### Quantum Computing and kryptografi
 
 **Quantum-säker infrastructure**
-Kvantdatorer kommer to kräva fundamental omtänkning of säkerhetsarkitektur:
+Kvantdatorer will to kräva fundamental omtänkning of säkerhetsarkitektur:
 
 - **Post-quantum kryptografi**: Migration to kvant-resistenta krypteringsalgoritmer
 - **Quantum Key Distribution**: Säker nyckelhantering with kvantmekaniska principles
@@ -70,7 +70,7 @@ Platform Engineering etableras as egen disciplin within Architecture as Code:
 FinOps-praxis blir central for Infrastructure as Code:
 
 - **Real-time cost tracking**: Kontinuerlig övervakning of molnkostnader
-- **Resource right-sizing**: AI-driven optimering of resursallokering
+- **Resource right-sizing**: AI-driven optimering of resource allocation
 - **Carbon accounting**: Miljöpåverkan as del of kostnadsoptimering
 - **Swedish cost optimization**: Anpassning to svenska energipriser and miljömål
 
@@ -79,9 +79,9 @@ FinOps-praxis blir central for Infrastructure as Code:
 **Nästa generation GitOps**
 GitOps is developed bortom Fundamental CI/CD:
 
-- **Multi-cluster GitOps**: Handling of infrastructure over flera kluster and environments
+- **Multi-cluster GitOps**: Handling of infrastructure over multiple kluster and environments
 - **GitOps for data**: Datahantering and ML-pipelines through GitOps-principles
-- **Progressive delivery**: gradually utrullning with automatiska säkerhetsventiler
+- **Progressive delivery**: gradual utrullning with automatiska säkerhetsventiler
 - **Compliance as Code**: Regelefterlevnad integrated in GitOps-workflows
 
 ## Security and compliance-evolution
@@ -104,7 +104,7 @@ Privacy by design blir obligatoriskt for Swedish organizations:
 - **GDPR automation**: Automatiserad efterlevnad of dataskyddsforordningen
 - **Data minimization**: Automatisk begränsning of datainsamling
 - **Consent management**: codified handling of användarsamtycken
-- **Right to be forgotten**: Automatiserad radering of personuppgifter
+- **Right to be forgotten**: Automatiserad radering of personal data
 
 ### Regulatory Technology (RegTech)
 
@@ -128,7 +128,7 @@ COVID-19 påskyndar övergången to remote-first organisationer:
 - **Cloud-native collaboration**: Verktyg for distribuerad infrastructure development
 - **Asynchronous operations**: InfraStructurehaning oberoende of tidszon
 - **Digital-first processes**: all processes designade for digital-first environments
-- **Swedish work culture**: Anpassning to svenska värderingar about work-life balance
+- **Swedish work culture**: Anpassning to svenska values about work-life balance
 
 ### Sustainability-driven development
 
@@ -146,7 +146,7 @@ Hållbarhet blir central for technical decisionsfattning:
 Roller and kompetenser is developed for Architecture as Code:
 
 - **Platform engineers**: New specialistroll for plattformsutveckling
-- **Infrastructure developers**: Developers specialiserade at infrastructure
+- **Infrastructure developers**: Developers specialized at infrastructure
 - **DevSecOps engineers**: Integration of Security in utvecklingsprocesser
 - **Swedish education**: Anpassning of svenska training programs
 
@@ -193,8 +193,8 @@ Sverige develops oberoende technical kapacitet:
 
 - **Swedish cloud providers**: Stöd for svenska cloud providers
 - **EU cloud initiatives**: Deltagande in EU:s molnstrategi
-- **Open source leadership**: Sverige as ledare within open source Infrastructure as Code
-- **Technology transfer**: Överforing of teknik from forskningsinstitutioner
+- **Open source leadership**: Sverige as leader within open source Infrastructure as Code
+- **Technology transfer**: Överforing of technology from forskningsinstitutioner
 
 ### Nordic cooperation
 
@@ -209,9 +209,9 @@ Samarbete between nordiska länder within Architecture as Code:
 ### Sustainable technology leadership
 
 **Hållbar teknikledning**
-Sverige as världsledare within hållbar teknologi:
+Sverige as världsledare within sustainable teknologi:
 
-- **Green datacenters**: Världens mest energieffektiva datacenter
+- **Green datacenters**: Världens most energieffektiva datacenter
 - **Renewable energy integration**: Integration with svensk fornybar energi
 - **Carbon-negative computing**: Teknik as faktiskt reduces koldioxidutsläpp
 - **Circular economy**: Cirkulär ekonomi for IT-infrastructure
@@ -252,11 +252,11 @@ Development of framtidsorienterade kompetenser:
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructurehantering in svenska organisationer.
-Framtiden for Architecture as Code and Infrastructure as Code präglas of konvergens between AI, kvantdatorer, edge computing and hållbarhet. Svenska organisationer has unika possibilities to leda utvecklingen through sina styrkor within technical innovation, hållbarhet and kvalitet.
+Framtiden for Architecture as Code and Infrastructure as Code präglas of konvergens between AI, kvantdatorer, edge computing and hållbarhet. Svenska organisationer has unique possibilities to leda utvecklingen through sina styrkor within technical innovation, hållbarhet and kvalitet.
 
-Nyckeln to success ligger in proaktiv forberedelse, kontinuerlig competence development and strategiska partnerskap. Organisationer as investerar in framtidskompatibla technologies and kompetenser idag kommer to vara bäst positionerade to dra nytta of morgondagens possibilities.
+Nyckeln to success ligger in proaktiv forberedelse, kontinuerlig competence development and strategiska partnerskap. Organisationer as investerar in framtidskompatibla technologies and kompetenser idag will to vara bäst positionerade to dra nytta of morgondagens possibilities.
 
-Sverige has potential to bli a global ledare within hållbar Architecture as Code, which would create betydande ekonomiska and miljömässiga Benefits for Swedish organizations and samhället in stort.
+Sverige has potential to become a global leader within sustainable Architecture as Code, which would create significant economic and environmental benefits for Swedish organizations and society at large.
 
 Sources:
 - Gartner. "Top Strategic Technology Trends 2024." Gartner Research, 2024.

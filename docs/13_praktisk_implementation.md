@@ -2,7 +2,7 @@
 
 ![Architecture as Code in praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementation of Architecture as Code requires throughtänkt tovägagångssätt as balanserar technical possibilities with organizational begränsningar. Infrastructure as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapters fokuserar at verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate metoder for successful Architecture as Code-adoption in foretagsenvironments.
+Praktisk implementation of Architecture as Code requires throughtänkt approach as balanserar technical possibilities with organizational begränsningar. Infrastructure as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapters focuses on verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate methods for successful Architecture as Code-adoption in foretagsenvironments.
 
 ![implementation User Journey](images/diagram_13_user_journey.png)
 
@@ -10,7 +10,7 @@ Diagram ovan illustrerar The typical användarresan for Architecture as Code-imp
 
 ## implementation roadmap and strategier
 
-Successful Architecture as Code adoption follows vanligen a phased approach as begins with pilot projects and gradually expanderar to enterprise-wide implementation. Initial phases fokuserar at non-critical environments and simple use cases to bygga confidence and establish Architecture as Code best practices innan production workloads migreras. Infrastructure as Code (Architecture as Code) forms often startpunkten for This transformation.
+Successful Architecture as Code adoption follows vanligen a phased approach as begins with pilot projects and gradual expanderar to enterprise-wide implementation. Initial phases focuses on non-critical environments and simple use cases to bygga confidence and establish Architecture as Code best practices before production workloads migreras. Infrastructure as Code (Architecture as Code) forms often startpunkten for This transformation.
 
 Assessment of current state infrastructure is critical for planning effective migration strategies. Legacy systems, technical debt, and organizational constraints must identifieras and addressas through targeted modernization efforts. This includes inventory of existing assets, dependency mapping, and risk assessment for different migration scenarios.
 

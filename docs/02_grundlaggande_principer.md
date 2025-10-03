@@ -22,7 +22,7 @@ A practical example is how a change in an application's API automatically can pr
 
 The principle of immutable architecture means the entire system architecture is managed through immutable components. instead of modifying existing parts, new versions are created that replace old ones at all levels.
 
-This creates predictability and eliminates architectural drift - where systems gradually diverge from their intended design over time.
+This creates predictability and eliminates architectural drift - where systems gradual diverge from their intended design over time.
 
 ## Testability at architecture level
 
