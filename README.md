@@ -1,44 +1,44 @@
-# Arkitektur som kod - Bokprojekt
+# Architecture as Code - Book Project
 
-En omfattande bok om arkitektur som kod på svenska, med praktiska exempel och fallstudier.
+A comprehensive book about Architecture as Code in Swedish, with practical examples and case studies.
 
-## 📚 Om boken
+## 📚 About the Book
 
-Denna bok täcker arkitektur som kod från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer.
+This book covers Architecture as Code from fundamental principles to advanced implementation, with a focus on practical application within Swedish organizations.
 
-### Målgrupp
-- Systemarkitekter
-- DevOps-ingenjörer  
-- Utvecklare
-- Projektledare
-- IT-chefer
+### Target Audience
+- systems Architects
+- DevOps Engineers  
+- Developers
+- Project Managers
+- IT Managers
 
-### Innehåll
-25 kapitel som täcker:
-- Grundläggande principer för arkitektur som kod
-- Versionhantering och kodstrukturer
-- Molnarkitektur och automatisering
-- Säkerhet och compliance
-- CI/CD och teststrategier
-- Organisatorisk transformation
-- Praktiska fallstudier och implementationer
+### Contents
+27 chapters covering:
+- Fundamental principles of Architecture as Code
+- Version control and code structures
+- Cloud architecture and automation
+- Security and compliance
+- CI/CD and testing strategies
+- Organizational transformation
+- Practical case studies and implementations
 
-## 🛠️ Teknisk implementation
+## 🛠️ Technical implementation
 
-### Struktur
+### Structure
 ```
-docs/                    # Bokens innehåll
-├── *.md                # Markdown-kapitel (01_inledning.md, 02_grundlaggande_principer.md, osv)
-├── images/             # Mermaid-diagram
-│   └── *.mmd          # Mermaid källfiler
-├── build_book.sh      # Lokal byggscript
-└── arkitektur_som_kod.pdf  # Genererad bok
+docs/                    # Book content
+├── *.md                # Markdown chapters (01_inledning.md, 02_grundlaggande_principer.md, etc.)
+├── images/             # Mermaid diagrams
+│   └── *.mmd          # Mermaid source files
+├── build_book.sh      # Local build script
+└── arkitektur_som_kod.pdf  # Generated book
 
-releases/                 # Alla deliverables organiserade för distribution
-├── book/               # Bokformat (PDF, EPUB, DOCX)
-├── presentation/       # Presentationsmaterial (PPTX, PDF)
-├── whitepapers/        # HTML whitepapers per kapitel
-└── website/           # Komplett statisk webbsida
+releases/                 # All deliverables organized for distribution
+├── book/               # Book formats (PDF, EPUB, DOCX)
+├── presentation/       # Presentation materials (PPTX, PDF)
+├── whitepapers/        # HTML whitepapers per chapter
+└── website/           # Complete static website
 
 .github/workflows/      # CI/CD automation
 ├── unified-build-release.yml    # Unified comprehensive workflow (ALL formats)
@@ -47,240 +47,162 @@ releases/                 # Alla deliverables organiserade för distribution
 └── content-validation.yml      # Repository content validation
 ```
 
-### Release-leveranser
+### Release Deliverables
 
-Alla deliverables samlas automatiskt i `releases/`-mappen för enkel distribution:
+All releases are automatically generated and published through GitHub Actions workflows.
 
-#### 📚 Bokformat (`releases/book/`)
-- **PDF**: `arkitektur_som_kod.pdf` - Fullständig bok
-- **EPUB**: `arkitektur_som_kod.epub` - E-läsarformat (med automatisk EPUBCheck-validering)
-- **DOCX**: `arkitektur_som_kod.docx` - Microsoft Word-format
-- **Valideringsloggar**: `epub-validation.log` - EPUB-kvalitetskontroll
+**Book Formats:**
+- PDF (using Pandoc + Eisvogel template)
+- EPUB (electronic book format)
+- DOCX (Microsoft Word format)
 
-#### 📋 EPUB-validering
+**Presentation Materials:**
+- PowerPoint (PPTX) with speaker notes
+- PDF version for easy sharing
+- Individual chapter slides
 
-Alla EPUB-filer valideras automatiskt med [EPUBCheck](https://github.com/w3c/epubcheck) för att säkerställa:
-- Kompatibilitet med EPUB 3.3-standarden
-- Korrekt funktionalitet i olika e-läsare
-- Validering av metadata och struktur
+**Whitepapers:**
+- HTML whitepapers for each chapter
+- Responsive design for web publishing
+- Includes diagrams and code examples
 
-Se [docs/EPUB_VALIDATION.md](docs/EPUB_VALIDATION.md) för detaljer om EPUB-validering.
+**Website:**
+- Complete static site with all content
+- Chapter navigation
+- Search functionality
+- Mobile-responsive design
 
-#### 🎤 Presentationer (`releases/presentation/`)
-- **PPTX**: `arkitektur_som_kod_presentation.pptx` - PowerPoint-presentation
-- **PDF**: Presentation i PDF-format (manuell konvertering krävs)
+## 🚀 Building the Book
 
-#### 📄 Whitepapers (`releases/whitepapers/`)
-- **HTML**: Individuella whitepapers per kapitel
-- **PDF**: `whitepapers_combined.pdf` - Kombinerad whitepaper-samling
+### Prerequisites
 
-#### 🌐 Webbsida (`releases/website/`)
-- Komplett kopia av den statiska webbsidan
-- Redo för deployment till webbserver
-
-### Komplett release-byggprocess
-
-#### Automatiska GitHub Actions workflows
-
-**Rekommenderat: Använd Unified Workflow för automatisk byggning**
-
-1. **Unified Build & Release Workflow** (`unified-build-release.yml`):
-   ```
-   Trigger: Push/PR till main branch med ändringar i relevanta filer
-   Output: Komplett GitHub Release med alla format
-   Strategier: Traditional (~90 min) och Docker (~60 min)
-   Inkluderar: PDF + EPUB + DOCX + PPTX + HTML + Website
-   Flexibilitet: Välj leveranser och byggstrategi via manual trigger
-   ```
-
-#### Manuell lokal byggning
-
-För att generera alla leveranser lokalt:
-
+**For PDF Generation:**
 ```bash
-# Automatisk release-byggprocess (kräver alla dependencies)
-./build_release.sh
+# Install Pandoc (3.1.9 or later)
+wget https://github.com/jgm/pandoc/releases/download/3.1.9/pandoc-3.1.9-1-amd64.deb
+sudo dpkg -in pandoc-3.1.9-1-amd64.deb
 
-# Eller steg för steg:
-python3 generate_book.py                    # Generera bokinnehåll
-docs/build_book.sh --release               # Bygg alla bokformat
-python3 generate_whitepapers.py --release  # Generera whitepapers
-python3 generate_presentation.py --release # Generera presentation
-npm run build                              # Bygg webbsida
-cp -r dist/* releases/website/              # Kopiera till release
+# Install LaTeX (for PDF generation)
+sudo apt-get update
+sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-plain-generic
+
+# Install Mermaid CLI (for diagram conversion)
+npm install -g @mermaid-js/mermaid-cli
 ```
 
-### Automatisk byggprocess
-
-Boken byggs automatiskt via GitHub Actions när:
-- Markdown-filer ändras i `docs/` mappen
-- Mermaid-diagram uppdateras i `docs/images/`
-- CI/CD konfiguration modifieras
-
-#### Byggprocessen:
-1. **Mermaid → PNG**: Konverterar diagram till bilder
-2. **Pandoc**: Genererar PDF/EPUB/DOCX med konfigurerad Pandoc-yaml
-3. **Artifact**: Sparar PDF för nedladdning
-4. **Release**: Skapar automatisk release på main branch
-
-### Lokalt byggande
-
-För att bygga boken lokalt:
-
+**For Web Dashboard:**
 ```bash
-# Krav: pandoc, texlive-xetex, mermaid-cli
-cd docs
-chmod +x build_book.sh
-./build_book.sh
-
-# För att generera alla format (PDF, EPUB, DOCX):
-./build_book.sh --all-formats
-
-# För release-byggning med utdata till releases/book/:
-./build_book.sh --release
+# Install Node.js dependencies
+npm install --legacy-peer-deps
 ```
 
-#### Komplett release-byggning
+### Build Commands
 
+**Generate Book Content:**
 ```bash
-# Bygg alla deliverables och organisera i releases/
-chmod +x build_release.sh
+# Generate all markdown files
+python3 generate_book.py
+
+# Build PDF with diagrams
+cd docs && ./build_book.sh
+```
+
+**Run Web Dashboard:**
+```bash
+# Development server
+npm run dev
+
+# Production build
+npm run build
+```
+
+**Generate All Formats:**
+```bash
+# Complete release build
 ./build_release.sh
 ```
 
-Detta skapar:
-- Alla bokformat i `releases/book/`
-- Presentationsmaterial i `releases/presentation/`
-- HTML whitepapers i `releases/whitepapers/`
-- Statisk webbsida i `releases/website/`
+## 📖 Chapter Overview
 
-#### Pandoc-konfiguration
+1. **Introduction** - Introduction to Architecture as Code
+2. **Fundamental Principles** - Core principles of Architecture as Code
+3. **Version Control** - Version management and code structure
+4. **ADR** - Architecture Decision Records
+5. **Automation & CI/CD** - Automation, DevOps and CI/CD
+6. **Cloud Architecture** - Cloud architecture as code
+7. **Containerization** - Containerization and orchestration
+8. **Microservices** - Microservices and API design
+9. **Security** - Security in Architecture as Code
+10. **Policy as Code** - Policy as code and security automation
+11. **Compliance** - Compliance and regulatory adherence
+12. **Testing** - Testing strategies for architecture code
+13. **implementation** - Practical implementation
+14. **Cost Optimization** - Cost optimization and resource management
+15. **Migration** - Migration from traditional infrastructure
+16. **Organizational Change** - Organizational change and cultural transformation
+17. **Team Structure** - Team structure and competencies
+18. **Digitalization** - Digitalization and business value
+19. **Lovable Mockups** - Lovable mockups and user-centered design
+20. **Future Trends** - Future trends in Architecture as Code
+21. **Best Practices** - Best practices and lessons learned
+22. **Conclusion** - Conclusion
+23. **Glossary** - Glossary of terms
+24. **About Authors** - About the authors
+25. **Future Development** - Future development and roadmap
+26. **Appendix** - Code examples and templates
+27. **Technical Architecture** - Technical architecture of the book
 
-Projektet använder en dedikerad Pandoc-konfigurationsfil (`docs/pandoc.yaml`) som säkerställer:
+## 🎨 React Dashboard
 
-- **Kapitel på nya sidor**: `top-level-division: chapter` gör att varje H1-rubrik (kapitel) börjar på en ny sida
-- **Enhetlig formatering**: Samma inställningar för alla utdataformat (PDF, EPUB, DOCX)
-- **Svensk språkstöd**: Rätt språkinställningar för svenska texten
-- **Automatisk innehållsförteckning**: Med 3 nivåers djup
-- **Kapitelinumrering**: Automatisk numrering av alla kapitel
+The project includes a React-based web dashboard that provides:
+- Book project status overview
+- Chapter structure visualization
+- CI/CD pipeline status
+- Build artifacts and downloads
 
-Konfigurationen stöder:
-- **PDF**: Via XeLaTeX med Eisvogel-template för professionell layout
-- **EPUB**: Med kapitelindelning på H1-nivå för e-läsare
-- **DOCX**: För redigering i Microsoft Word eller kompatibla program
+**Technologies:**
+- React + TypeScript
+- Vite (build tool)
+- Tailwind CSS + shadcn/ui components
+- React Router
 
-## 📊 Diagram och illustrationer
+## 🔄 CI/CD Workflows
 
-Alla diagram skapas med Mermaid och följer dessa riktlinjer:
-- Maximalt 5 element per diagram
-- Horisontell orientering (LR)
-- Konverteras automatiskt till PNG i CI/CD
+All builds are automated through GitHub Actions:
 
-Exempel:
-```mermaid
-graph LR
-    A[Arkitektur] --> B[som kod]
-    B --> C[Automatisering]
-    C --> D[Skalbarhet]
-    D --> E[Tillförlitlighet]
-```
+### Unified Build & Release
+Triggers on push to main branch or docs changes:
+- Builds all book formats (PDF, EPUB, DOCX)
+- Generates presentations
+- Creates whitepapers
+- Builds static website
+- Creates GitHub release with all artifacts
 
-## 🔄 Bidrag och uppdateringar
+### Individual Workflows
+- `generate-whitepapers.yml` - Standalone whitepaper generation
+- `generate-presentations.yml` - Standalone presentation generation
+- `content-validation.yml` - Validates markdown and structure
 
-### Workflow för ändringar:
-1. Skapa branch för ändringar
-2. Modifiera markdown-filer i `docs/`
-3. Commit och push
-4. GitHub Actions bygger automatiskt PDF
-5. Merge till main → automatisk release
+## 📝 Contributing
 
-### Kapitelstruktur:
-Varje kapitel följer samma struktur:
-- H1 huvudrubrik
-- Diagram med beskrivning
-- Inledande text (500 tecken)
-- Fördjupande sektioner
-- Källor
+To contribute to the book content:
 
-## 🏗️ CI/CD Pipeline
+1. Edit markdown files in `docs/` directory
+2. Follow the existing structure and style
+3. Test locally with `python3 generate_book.py && cd docs && ./build_book.sh`
+4. Submit a pull request
 
-### Unified Workflow Architecture
+## 📄 License
 
-Projektet använder en unified GitHub Actions workflow för effektiv byggprocess:
+This book project is maintained by Geonit AB.
 
-#### 🎯 Unified Build & Release (`unified-build-release.yml`) - **REKOMMENDERAD**
-Konsoliderad workflow som ersätter tidigare separata workflows:
-- **Triggers**: Push/PR på alla relevanta filer, manual dispatch med parametrar
-- **Strategier**: Traditional build (~90 min) och Docker-optimized (~60 min)
-- **Leveranser**: PDF + EPUB + DOCX + Presentations + Whitepapers + Website
-- **Flexibilitet**: Välj byggstrategi och leveranser via manual trigger
-- **Output**: Komplett release med alla format organiserade i `releases/` struktur
-- **GitHub Release**: Unified comprehensive release (`v{number}-unified`)
-- **Fallback**: Om en byggstrategi misslyckas kan den andra fortfarande slutföras
+## 🔗 Related Resources
 
-#### Workflow-funktioner
-- **Selective Building**: Bygg endast specifika leveranser (book-only, presentations-only, etc.)
-- **Multi-strategy**: Kör traditional och Docker builds parallellt eller individuellt
-- **Advanced Caching**: GitHub Actions cache för dependencies och Docker layers
-- **Error Resilience**: Graceful fallback mellan byggstrategier
-
-### Tidigare workflows (nu ersatta)
-- ~~`complete-release.yml`~~ → Integrerad i unified workflow
-- ~~`build-book-fast.yml`~~ → Docker-strategi i unified workflow
-- ~~`build-book.yml`~~ → Book-only option i unified workflow
-
-### Workflow-jämförelse
-
-| Workflow | Tid | PDF | EPUB | DOCX | Presentations | Whitepapers | Website | Docker | Strategies |
-|----------|-----|-----|------|------|---------------|-------------|---------|--------|------------|
-| unified-build-release.yml | 60-90min | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | Multiple |
-| ~~complete-release.yml~~ | ~~90min~~ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ~~Replaced~~ |
-| ~~build-book-fast.yml~~ | ~~60min~~ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ~~Replaced~~ |
-
-### Status badges:
-![Unified Build & Release](https://github.com/Geonitab/kodarkitektur-bokverkstad/workflows/Unified%20Build%20&%20Release/badge.svg)
-
-## 📖 Kapitellista
-
-1. Inledning till arkitektur som kod
-2. Grundläggande principer
-3. Versionhantering och kodstruktur
-4. Automatisering och DevOps
-5. Molnarkitektur som kod
-6. Säkerhet i arkitektur som kod
-7. Containerisering
-8. Microservices
-9. Säkerhetspolicies
-10. Compliance och regelefterlevnad
-11. Teststrategier
-12. Praktisk implementation
-13. Kostnadsoptimering
-14. Migration och förändring
-15. Organisatorisk förändring
-16. Teamstrukturer
-17. Digitalisering
-18. Framtida trender
-19. Best practices
-20. Slutsats
-21. Ordlista
-22. Om författarna
-23. Framtida utveckling
-
-## 👥 Författare
-
-**Gunnar Nordqvist** - Författare
-
-## 📄 Licens
-
-Detta verk är licensierat under Creative Commons Attribution-ShareAlike 4.0 International License.
-
-## 🚀 Kom igång
-
-1. Klona repository
-2. Gör ändringar i markdown-filer
-3. Push till GitHub
-4. Ladda ner genererad PDF från Actions artifacts eller Releases
+- [Architecture as Code Principles](https://www.thoughtworks.com/radar/techniques/architecture-as-code)
+- [Infrastructure as Code Best Practices](https://www.terraform.io/docs)
+- [Documentation as Code](https://www.writethedocs.org/guide/docs-as-code/)
 
 ---
 
-*Automatiskt byggt med GitHub Actions och Pandoc*
+**Note:** This is the English version of the main README. For the Swedish version, see `README.md` (without _en suffix).
+

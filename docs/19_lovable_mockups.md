@@ -1,22 +1,22 @@
-# Kapitel 20: Använd Lovable för att skapa mockups för svenska organisationer
+# chapters 20: Använd Lovable for to skapa mockups for svenska organisationer
 
 ![Lovable Workflow Diagram](images/diagram_21_kapitel20.png)
 
-## Inledning till Lovable
+## Inledning to Lovable
 
-Lovable är en AI-driven utvecklingsplattform som revolutionerar hur svenska organisationer kan skapa interaktiva mockups och prototyper. Genom att kombinera naturlig språkbehandling med kodgenerering möjliggör Lovable snabb utveckling av användargränssnitt som är anpassade för svenska efterlevnadskrav och användarförväntningar.
+Lovable is a AI-driven utvecklingsplattform which revolutionerar how svenska organisationer can skapa interaktiva mockups and prototyper. Through to kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb utveckling of användargränssnitt which is anpassade for svenska efterlevnadskrav and användarforväntningar.
 
-För svenska organisationer innebär detta en unik möjlighet att:
-- Accelerera prototyputveckling med fokus på svenska språket och kulturella kontext
-- Säkerställa compliance från början av designprocessen
-- Integrera med svenska e-legitimationstjänster redan i mockup-fasen
-- Skapa användargränssnitt som följer svenska tillgänglighetsstandarder
+For svenska organisationer means This a unik möjlighet to:
+- Accelerera prototyputveckling with fokus at svenska språket and kulturella kontext
+- Säkerställa compliance from början of designprocessen
+- Integrera with svenska e-legitimationstjänster redan in mockup-fasen
+- Skapa användargränssnitt which följer svenska togänglighetsstandarder
 
-## Steg-för-steg guide för implementering i svenska organisationer
+## step-for-step guide for implementation in svenska organisationer
 
-### Fas 1: Förberedelse och uppsättning
+### Fas 1: Förberedelse and uppsättning
 
-**1. Miljöförberedelse**
+**1. Miljöforberedelse**
 ```bash
 # Skapa utvecklingsmiljö för svenska organisationer
 mkdir svenska-mockups
@@ -44,7 +44,7 @@ module.exports = {
 };
 ```
 
-### Fas 2: Design för svenska användarfall
+### Fas 2: design for svenska användarfall
 
 **3. Definiera svenska användarresor**
 ```yaml
@@ -67,24 +67,24 @@ userflows:
       - compliance_reporting: "Regelrapportering"
 ```
 
-**4. Lovable prompt för svensk e-förvaltning**
+**4. Lovable prompt for svensk e-forvaltning**
 ```typescript
-// Exempel på Lovable-prompt för svensk myndighetsportal
+// example at Lovable-prompt för svensk myndighetsportal
 const sweGovPortalPrompt = `
-Skapa en responsiv webbportal för svensk e-förvaltning med:
+Skapa a responsiv webbportal för svensk e-förvaltning med:
 - Inloggning via BankID och Freja eID
 - Flerspråkigt stöd (svenska, engelska, arabiska, finska)
 - WCAG 2.1 AA-kompatibel design
-- Tillgänglighetsfunktioner enligt svensk lag
+- Tillgänglighetsfunktioner according to svensk lag
 - Säker dokumenthantering med e-signatur
 - Integrerad ärendehantering
 - Mobiloptimerad för svenska enheter
 `;
 ```
 
-### Fas 3: Teknisk integration
+### Fas 3: technical integration
 
-**5. TypeScript-implementering för svenska tjänster**
+**5. TypeScript-implementation for svenska tjänster**
 ```typescript
 // src/types/swedish-services.ts
 export interface SwedishEIDProvider {
@@ -123,13 +123,13 @@ export class SwedishAuthService {
   }
   
   async validateGDPRConsent(userId: string): Promise<boolean> {
-    // GDPR-samtycke validering
+    // GDPR-samtycke validation
     return await this.checkConsentStatus(userId);
   }
 }
 ```
 
-**6. JavaScript-integration för myndighetssystem**
+**6. JavaScript-integration for myndighetssystem**
 ```javascript
 // public/js/swedish-mockup-enhancements.js
 class SwedishAccessibilityManager {
@@ -145,7 +145,7 @@ class SwedishAccessibilityManager {
   }
   
   setupKeyboardNavigation() {
-    // Tangentbordsnavigation enligt svenska standarder
+    // Tangentbordsnavigation according to svenska standarder
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Tab') {
         this.handleSwedishTabOrder(e);
@@ -169,9 +169,9 @@ class SwedishAccessibilityManager {
 }
 ```
 
-## Praktiska exempel för svenska sektorer
+## Praktiska example for svenska sektorer
 
-### Exempel 1: E-förvaltningsportal för kommun
+### Example 1: E-forvaltningsportal for kommun
 
 ```typescript
 // kommun-portal-mockup.ts
@@ -191,7 +191,7 @@ const kommunPortalMockup = {
   design: {
     colorScheme: "high-contrast",
     fontSize: "adjustable",
-    language: ["sv", "en", "ar"],
+    language: ["sv", "a", "ar"],
     navigation: "keyboard-friendly"
   },
   integrations: {
@@ -202,7 +202,7 @@ const kommunPortalMockup = {
 };
 ```
 
-### Exempel 2: Finansiell compliance-tjänst
+### Example 2: Finansiell compliance-tjänst
 
 ```yaml
 # financial-compliance-mockup.yml
@@ -230,9 +230,9 @@ financial_service:
       retention_period: "5_years"
 ```
 
-## Compliance-fokus för svenska organisationer
+## Compliance-fokus for svenska organisationer
 
-### GDPR-implementering i Lovable mockups
+### GDPR-implementation in Lovable mockups
 
 ```typescript
 // gdpr-compliance.ts
@@ -276,7 +276,7 @@ export class GDPRComplianceManager {
 }
 ```
 
-### WCAG 2.1 AA-implementering
+### WCAG 2.1 AA-implementation
 
 ```javascript
 // wcag-compliance.js
@@ -300,7 +300,7 @@ class WCAGCompliance {
   }
   
   setupKeyboardAccess() {
-    // Alla interaktiva element ska vara tangentbordstillgängliga
+    // all interaktiva element ska vara tangentbordstillgängliga
     const interactiveElements = document.querySelectorAll(
       'button, a, input, select, textarea, [tabindex]'
     );
@@ -314,7 +314,7 @@ class WCAGCompliance {
 }
 ```
 
-### Integration med svenska e-legitimationstjänster
+### Integration with svenska e-legitimationstjänster
 
 ```typescript
 // e-legitimation-integration.ts
@@ -353,9 +353,9 @@ export class SwedishELegitimationService {
 }
 ```
 
-## Teknisk integration och arkitektur som kod best practices
+## technical integration and architecture as code best practices
 
-### Workflow-integration med svenska utvecklingsmiljöer
+### Workflow-integration with svenska utvecklingsmiljöer
 
 ```yaml
 # .github/workflows/swedish-compliance-check.yml
@@ -386,7 +386,7 @@ jobs:
           npm run check:data-protection
 ```
 
-### Performance optimization för svenska användare
+### Performance optimization for svenska användare
 
 ```typescript
 // performance-optimization.ts
@@ -418,23 +418,23 @@ export class SwedishPerformanceOptimizer {
 }
 ```
 
-## Sammanfattning och nästa steg
+## Summary and nästa step
 
 
-Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Lovable erbjuder svenska organisationer en kraftfull plattform för att skapa compliance-medvetna mockups och prototyper. Genom att integrera svenska e-legitimationstjänster, implementera WCAG 2.1 AA-standarder och följa GDPR-riktlinjer från början, kan organisationer:
+Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Lovable erbjuder svenska organisationer a kraftfull plattform for to skapa compliance-withvetna mockups and prototyper. Through to integrera svenska e-legitimationstjänster, implementera WCAG 2.1 AA-standarder and följa GDPR-riktlinjer from början, can organisationer:
 
-1. **Accelerera utvecklingsprocessen** med AI-driven kodgenerering
-2. **Säkerställa compliance** redan i mockup-fasen
-3. **Förbättra tillgänglighet** för alla svenska användare
-4. **Integrera svenska tjänster** som BankID och Freja eID
+1. **Accelerera utvecklingsprocessen** with AI-driven kodgenerering
+2. **Säkerställa compliance** redan in mockup-fasen
+3. **Forbättra togänglighet** for all svenska användare
+4. **Integrera svenska tjänster** that BankID and Freja eID
 
-### Rekommenderade nästa steg:
+### Rekommenderade nästa step:
 
-1. **Pilotprojekt**: Starta med ett mindre projekt för att validera approach
-2. **Teamutbildning**: Utbilda utvecklare i Lovable och svenska compliance-krav
-3. **Processintegration**: Integrera Lovable i befintliga utvecklingsprocesser
-4. **Kontinuerlig förbättring**: Etablera feedback-loopar för användbarhet och compliance
+1. **Pilotprojekt**: Starta with ett mindre projekt for to validera approach
+2. **Teamutbildning**: Utbilda Developers in Lovable and svenska compliance-krav
+3. **Processintegration**: Integrera Lovable in existing utvecklingsprocesser
+4. **Kontinuerlig forbättring**: Etablera feedback-loopar for användbarhet and compliance
 
 **Viktiga resurser:**
 - [Digg - Vägledning för webbtillgänglighet](https://www.digg.se/webbtillganglighet)
@@ -442,4 +442,4 @@ Lovable erbjuder svenska organisationer en kraftfull plattform för att skapa co
 - [E-legitimationsnämnden](https://www.elegnamnden.se/)
 - [WCAG 2.1 AA Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 
-Genom att följa denna guide kan svenska organisationer effektivt använda Lovable för att skapa mockups som inte bara är funktionella och användarvänliga, utan också uppfyller alla relevanta svenska och europeiska compliance-krav.
+Through to följa This guide can svenska organisationer effektivt använda Lovable for to skapa mockups which not only is funktionella and användarvänliga, utan också uppfyller all relevanta svenska and europeiska compliance-krav.

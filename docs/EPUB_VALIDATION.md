@@ -2,18 +2,18 @@
 
 ## Översikt
 
-Detta projekt inkluderar automatisk validering av EPUB-filer med hjälp av EPUBCheck för att säkerställa att genererade EPUB-filer följer EPUB-standarden och fungerar korrekt i olika läsare.
+This projekt includes automatisk validation of EPUB-filer with hjälp of EPUBCheck for to säkerställa to genererade EPUB-filer följer EPUB-standarden and fungerar korrekt in olika läsare.
 
 ## EPUBCheck
 
-[EPUBCheck](https://github.com/w3c/epubcheck) är det officiella valideringsverktyget från W3C för EPUB-filer. Det kontrollerar att EPUB-filer följer EPUB-specifikationen och identifierar potentiella kompatibilitetsproblem.
+[EPUBCheck](https://github.com/w3c/epubcheck) is the officiella valideringsverktyget from W3C för EPUB-filer. the kontrollerar to EPUB-filer följer EPUB-specifikationen och identifierar potentiella kompatibilitetsproblem.
 
 ### Installation
 
-EPUBCheck installeras automatiskt i:
+EPUBCheck installeras automatically in:
 - GitHub Actions CI/CD-miljön
 - Docker-byggningsmiljön
-- Kan installeras lokalt med följande steg:
+- can installeras lokalt with följande step:
 
 ```bash
 # Installera Java (krävs för EPUBCheck)
@@ -31,55 +31,55 @@ echo 'java -jar /opt/epubcheck-5.1.0/epubcheck.jar "$@"' | sudo tee -a /usr/loca
 sudo chmod +x /usr/local/bin/epubcheck
 ```
 
-## Automatisk Validering
+## Automatisk validation
 
-### I Byggprocessen
+### in Byggprocessen
 
-EPUB-validering är integrerad i byggprocessen:
+EPUB-validation is integrerad in byggprocessen:
 
 1. **`docs/build_book.sh`**: Validerar EPUB-fil efter generering
-2. **`generate_book.py`**: Kontrollerar befintliga EPUB-filer
-3. **GitHub Actions**: Automatisk validering i CI/CD-pipeline
+2. **`generate_book.py`**: Kontrollerar existing EPUB-filer
+3. **GitHub Actions**: Automatisk validation in CI/CD-pipeline
 
 ### Valideringsutdata
 
-Valideringen producerar följande typer av problem:
+Valideringen producerar följande typer of problem:
 
-- **FATAL**: Kritiska fel som gör EPUB-filen oanvändbar
-- **ERROR**: Fel som kan påverka kompatibilitet
-- **WARNING**: Varningar för mindre problem
-- **INFO**: Informationsmeddelanden
+- **FATAL**: Kritiska fel which gör EPUB-filen oanvändbar
+- **ERROR**: Fel which can påverka kompatibilitet
+- **WARNING**: Varningar for mindre problem
+- **INFO**: Informationswithdelanden
 
 ### Loggar
 
-Valideringsresultat sparas i:
+Valideringsresultat sparas in:
 - `docs/epub-validation.log` - Detaljerad valideringslogg
-- `releases/book/epub-validation.log` - Valideringslogg för release-version
+- `releases/book/epub-validation.log` - Valideringslogg for release-version
 - `docs/epub-validation-test.log` - Testvalideringslogg
 
-## Testning
+## testing
 
 ### Automatiska Tester
 
-Ny testfil `tests/test_epub_validation.py` innehåller:
+Ny testfil `tests/test_epub_validation.py` Contentser:
 
 ```python
 # Grundläggande tester
-test_epubcheck_available()           # EPUBCheck är tillgängligt
+test_epubcheck_available()           # EPUBCheck is tillgängligt
 test_epub_file_exists()             # EPUB-fil finns
 test_epub_file_validation()         # Komplett valideringstest
-test_release_epub_validation()      # Release EPUB-validering
-test_epub_metadata_present()        # Metadata är närvarande
+test_release_epub_validation()      # Release EPUB-validation
+test_epub_metadata_present()        # Metadata is närvarande
 test_epub_structure_integrity()     # Grundläggande strukturintegritet
 ```
 
 ### Köra Tester
 
 ```bash
-# Kör alla tester inklusive EPUB-validering
+# Kör all tester including EPUB-validation
 python3 tests/run_tests.py --type all
 
-# Kör endast EPUB-validering
+# Kör endast EPUB-validation
 python3 -m pytest tests/test_epub_validation.py -v
 ```
 
@@ -88,29 +88,29 @@ python3 -m pytest tests/test_epub_validation.py -v
 ### Vanliga Problem
 
 #### 1. "Content is not allowed in prolog"
-**Problem**: Ogiltiga tecken i början av XHTML-filer
+**Problem**: Ogiltiga tecken in början of XHTML-filer
 **Lösning**: 
-- Kontrollera att markdown-filer har UTF-8 kodning utan BOM
-- Se till att Pandoc-konfiguration är korrekt
+- Kontrollera to markdown-filer har UTF-8 kodning utan BOM
+- Se to to Pandoc-konfiguration is korrekt
 
 #### 2. "Fragment identifier is not defined"
-**Problem**: Brutna interna länkar i EPUB
+**Problem**: Brutna interna länkar in EPUB
 **Lösning**:
-- Kontrollera att alla referenser i markdown är korrekta
-- Se till att kapitelrubriker följer konsekvent format
+- Kontrollera to all References in markdown is korrekta
+- Se to to kapitelrubriker följer konsekvent format
 
 #### 3. "Date value does not follow recommended syntax"
-**Problem**: Felaktig datumformat i metadata
+**Problem**: Felaktig datumformat in metadata
 **Lösning**:
-- Metadata date-fält bör vara i ISO 8601-format (YYYY-MM-DD)
-- Konfigurerat i `pandoc.yaml`
+- Metadata date-fält bör vara in ISO 8601-format (YYYY-MM-DD)
+- Konfigurerat in `pandoc.yaml`
 
 ### Debugging
 
-För detaljerad felsökning:
+For detaljerad felsökning:
 
 ```bash
-# Manuell validering
+# Manuell validation
 epubcheck docs/arkitektur_som_kod.epub
 
 # Verbose utdata
@@ -124,13 +124,13 @@ epubcheck docs/arkitektur_som_kod.epub > validation-debug.log 2>&1
 
 ### Pandoc-konfiguration
 
-`docs/pandoc.yaml` innehåller EPUB-specifika inställningar:
+`docs/pandoc.yaml` Contentser EPUB-specifika inställningar:
 
 ```yaml
 # Metadata för korrekt EPUB-generering
 metadata:
-  title: "Arkitektur som kod"
-  subtitle: "Infrastructure as Code i praktiken"
+  title: "architecture as code"
+  subtitle: "Infrastructure as Code in praktiken"
   author: "Kodarkitektur Bokverkstad"
   date: "2024"              # ISO-format för kompatibilitet
   language: sv
@@ -142,10 +142,10 @@ epub-chapter-level: 1        # Kapitelnivå för EPUB-struktur
 
 ### Byggskript-konfiguration
 
-I `docs/build_book.sh`:
+in `docs/build_book.sh`:
 
 ```bash
-# Förbättrad EPUB-generering med validering
+# Förbättrad EPUB-generering med validation
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" \
     -t epub \
     -o $OUTPUT_EPUB \
@@ -153,28 +153,28 @@ pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" \
     --metadata language=sv \
     --epub-cover-image="images/book-cover.png"
 
-# Automatisk validering efter generering
+# Automatisk validation efter generering
 validate_epub "$OUTPUT_EPUB"
 ```
 
 ## Kvalitetsstandarder
 
-### Godkänd Validering
+### Godkänd validation
 
-En EPUB-fil anses godkänd om:
+a EPUB-fil anses godkänd about:
 - **0 fatala fel** (FATAL count = 0)
 - **≤10 fel** (ERROR count ≤ 10)
 - **Varningar accepterade** (WARNING count ignoreras)
 
 ### Kritiska Fel
 
-EPUB-filen avvisas om:
-- **>0 fatala fel** (förhindrar läsning)
+EPUB-filen avvisas about:
+- **>0 fatala fel** (forhindrar läsning)
 - **>10 fel** (påverkar kompatibilitet avsevärt)
 
 ### Rapportering
 
-Valideringsresultat rapporteras i:
+Valideringsresultat rapporteras in:
 - GitHub Actions workflow-loggar
 - Test-rapporter
 - Release-artefakter
@@ -183,12 +183,12 @@ Valideringsresultat rapporteras i:
 
 ### GitHub Actions
 
-EPUB-validering är integrerad i `.github/workflows/unified-build-release.yml`:
+EPUB-validation is integrerad in `.github/workflows/unified-build-release.yml`:
 
 1. **EPUBCheck-installation** under systemdependenser
-2. **Automatisk validering** under byggprocessen
-3. **Valideringsloggar** sparas som artefakter
-4. **Testning** som en del av kvalitetskontroll
+2. **Automatisk validation** under byggprocessen
+3. **Valideringsloggar** sparas which artefakter
+4. **testing** which a del of kvalitetskontroll
 
 ### Felhantering
 
@@ -200,25 +200,25 @@ EPUB-validering är integrerad i `.github/workflows/unified-build-release.yml`:
 
 ### Planerade Funktioner
 
-1. **Automatisk reparation** av vanliga EPUB-fel
-2. **Anpassad EPUBCheck-konfiguration** för projektet
-3. **Integration med fler EPUB-validatorer**
-4. **Automatisk kompatibilitetstestning** med populära läsare
+1. **Automatisk reparation** of vanliga EPUB-fel
+2. **Anpassad EPUBCheck-konfiguration** for projektet
+3. **Integration with fler EPUB-validatorer**
+4. **Automatisk kompatibilitetstestning** with populära läsare
 
 ### Kvalitetsmål
 
-- **0 fatala fel** i alla release-versioner
-- **≤5 fel** i release-versioner
-- **100% strukturintegritet** för alla EPUB-filer
+- **0 fatala fel** in all release-versions
+- **≤5 fel** in release-versions
+- **100% Structureintegritet** for all EPUB-filer
 
 ## Support
 
-För problem med EPUB-validering:
+For problem with EPUB-validation:
 
 1. Kontrollera valideringsloggar
-2. Kör manuell validering med `epubcheck`
+2. Kör manuell validation with `epubcheck`
 3. Kontrollera Pandoc-konfiguration
 4. Verifiera markdown-filernas kodning
-5. Granska testresultat i `tests/test_epub_validation.py`
+5. Granska testresultat in `tests/test_epub_validation.py`
 
-Valideringen hjälper till att säkerställa att EPUB-filer fungerar optimalt i alla e-läsare och följer industristandarder för digital bokpublicering.
+Valideringen hjälper to to säkerställa to EPUB-filer fungerar optimalt in all e-läsare and följer industristandarder for digital bokpublicering.

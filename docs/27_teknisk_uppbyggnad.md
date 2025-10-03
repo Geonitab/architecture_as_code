@@ -1,70 +1,70 @@
-# Teknisk uppbyggnad för bokproduktion
+# technical uppbyggnad for bokproduktion
 
-Detta kapitel beskriver den tekniska infrastrukturen och arbetsflödet som används för att skapa, bygga och publicera "Arkitektur som kod". Systemet exemplifierar praktisk tillämpning av Architecture as Code-principerna genom att använda kod för att definiera och automatisera hela bokproduktionsprocessen.
+This chapters beskriver den tekniska infraStructureen and arbetsflödet which används for to skapa, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk toämpning of Architecture as Code-principerna through to använda code for to definiera and automatisera entire bokproduktionsprocessen.
 
-![Teknisk arkitektur för bokproduktion](images/diagram_27_teknisk_uppbyggnad.png)
+![technical architecture for bokproduktion](images/diagram_27_teknisk_uppbyggnad.png)
 
-*Diagrammet illustrerar det omfattande tekniska systemet som driver bokproduktionen, från markdown-källor via automatiserade pipelines till slutliga publikationer.*
+*Diagrammet illustrerar the comprehensive tekniska systemet which driver bokproduktionen, from markdown-Sources via automatiserade pipelines to slutliga publikationer.*
 
 ![Architecture Data Model](images/diagram_27_er_architecture.png)
 
-Ovanstående entitetsrelationsdiagram visar den logiska datastrukturen för hur organisationer, projekt, infrastruktur och deployments relaterar till varandra i en Architecture as Code-arkitektur som kod-implementation.
+Ovanstående entitetsrelationsdiagram shows den logiska dataStructureen for how organisationer, projekt, infraStructure and deployments relaterar to varandra in a Architecture as Code-Architecture as Code-implementation.
 
-## Markdown-filer: Struktur och syfte
+## Markdown-filer: Structure and syfte
 
-### Filorganisation och namnkonvention
+### Filorganisation and namnkonvention
 
-Bokens innehåll är organiserat i 27 markdown-filer inom `docs/`-katalogen, där varje fil representerar ett kapitel:
+Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where each fil representerar ett chapters:
 
 ```
 docs/
 ├── 01_inledning.md                    # Introduktion och vision
-├── 02_grundlaggande_principer.md      # Grundläggande koncept
-├── 03_versionhantering.md             # Git och versionskontroll
-├── ...                                # Tekniska kapitel (04-22)
+├── 02_grundlaggande_principer.md      # Grundläggande concepts
+├── 03_versionhantering.md             # Git och version control
+├── ...                                # Tekniska chapters (04-22)
 ├── 23_slutsats.md                     # Avslutning
 ├── 24_ordlista.md                     # Terminologi
 ├── 25_om_forfattarna.md               # Författarinformation
-├── 26_appendix_kodexempel.md          # Tekniska exempel
-└── 27_teknisk_uppbyggnad.md           # Detta kapitel
+├── 26_appendix_kodexempel.md          # Tekniska example
+└── 27_teknisk_uppbyggnad.md           # Detta chapters
 ```
 
-### Markdown-struktur och semantik
+### Markdown-struktur and semantik
 
-Varje kapitel följer en konsistent struktur som optimerar både läsbarhet och maskinell bearbetning:
+each chapters följer a konsistent Structure which optimerar both läsbarhet and maskinell bearbetning:
 
 ```markdown
-# Kapiteltitel (H1 - skapar ny sida i PDF)
+# Kapiteltitel (H1 - creates ny sida in PDF)
 
-Introduktionstext med kort beskrivning av kapitlets innehåll.
+Introduktionstext med kort beskrivning of kapitlets innehåll.
 
 ![Diagramtitel beskrivning](images/diagram_01_beskrivande_namn.png)
 
-*Bildtext som förklarar diagrammets innehåll.*
+*Bildtext as förklarar diagrammets innehåll.*
 
 ## Huvudsektion (H2)
 ### Undersektion (H3)
 #### Detaljsektion (H4)
 
 - Listpunkter för strukturerat innehåll
-- Kodexempel i fenced code blocks
+- Kodexempel in fenced code blocks
 - Referenser och källor
 ```
 
 ### Automatisk innehållsgenerering
 
-Systemet använder `generate_book.py` för att automatiskt generera och uppdatera kapitelinnehåll:
+Systemet använder `generate_book.py` for to automatically generera and uppdatera kapitelContents:
 
-- **Iterativ generering**: Skapar innehåll i kontrollerade batch-processer
-- **Mermaid-integration**: Automatisk generering av diagram-placeholders
-- **Konsistenshållning**: Säkerställer enhetlig struktur över alla kapitel
-- **Versionskontroll**: Alla ändringar spåras genom Git
+- **Iterativ generering**: creates Contents in kontrollerade batch-processes
+- **Mermaid-integration**: Automatisk generering of diagram-placeholders
+- **Konsistenshållning**: ensures enhetlig Structure over all chapters
+- **version control**: all ändringar spåras through Git
 
-## Pandoc: Konvertering och formatering
+## Pandoc: Konvertering and formatering
 
 ### Konfigurationssystem
 
-Pandoc-konverteringen styrs av `pandoc.yaml` som definierar alla format-specifika inställningar:
+Pandoc-konverteringen styrs of `pandoc.yaml` which definierar all format-specifika inställningar:
 
 ```yaml
 # Grundläggande inställningar
@@ -80,45 +80,45 @@ pdf-engine: xelatex
 
 # Metadata och variabler
 metadata:
-  title: "Arkitektur som kod"
-  subtitle: "Infrastructure as Code (arkitektur som kod) i praktiken"
+  title: "architecture as code"
+  subtitle: "Infrastructure as Code (architecture as code) in praktiken"
   author: "Kodarkitektur Bokverkstad"
 ```
 
-### Build-process och arkitektur som kod-automatisering
+### Build-process and architecture as code-automation
 
-`build_book.sh` orchestrerar hela build-processen:
+`build_book.sh` orchestrerar entire build-processen:
 
-1. **Miljövalidering**: Kontrollerar Pandoc, XeLaTeX och Mermaid CLI
-2. **Diagram-konvertering**: Konverterar `.mmd`-filer till PNG-format
-3. **PDF-generering**: Sammanställer alla kapitel till en sammanhållen bok
-4. **Format-variationer**: Stöd för PDF, EPUB och DOCX-export
+1. **Miljövalidering**: Kontrollerar Pandoc, XeLaTeX and Mermaid CLI
+2. **Diagram-konvertering**: Konverterar `.mmd`-filer to PNG-format
+3. **PDF-generering**: Sammanställer all chapters to a sammanhållen bok
+4. **Format-variationer**: Stöd for PDF, EPUB and DOCX-export
 
 ```bash
 # Konvertera Mermaid-diagram
 for mmd_file in images/*.mmd; do
     png_file="${mmd_file%.mmd}.png"
-    mmdc -i "$mmd_file" -o "$png_file" \
+    mmdc -in "$mmd_file" -o "$png_file" \
          -t default -b transparent \
          --width 1400 --height 900
 done
 
-# Generera PDF med alla kapitel
+# Generera PDF med all chapters
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf
 ```
 
-### Kvalitetssäkring och validering
+### Kvalitetssäkring and validation
 
-- **Template-validering**: Automatisk kontroll av Eisvogel-mall
+- **Template-validation**: Automatisk kontroll of Eisvogel-mall
 - **Konfigurationskontroll**: Verifierar pandoc.yaml-inställningar
-- **Bildhantering**: Säkerställer alla diagram-referenser är giltiga
-- **Utdata-verifiering**: Kontrollerar genererade filer
+- **Bildhantering**: ensures all diagram-References is giltiga
+- **Utdata-verification**: Kontrollerar genererade filer
 
 ## GitHub Actions: CI/CD-pipeline
 
-### Huvudworkflow för bokproduktion
+### Huvudworkflow for bokproduktion
 
-`build-book.yml` automatiserar hela publikationsprocessen:
+`build-book.yml` automatiserar entire publikationsprocessen:
 
 ```yaml
 name: Build Book
@@ -138,25 +138,25 @@ jobs:
     timeout-minutes: 90
 ```
 
-### Workflow-steg och optimeringar
+### Workflow-step and optimeringar
 
 1. **Miljöuppställning (15 minuter)**:
    - Python 3.12 installation
-   - TeXLive och XeLaTeX (8+ minuter)
+   - TeXLive and XeLaTeX (8+ minuter)
    - Pandoc 3.1.9 installation
-   - Mermaid CLI med Chrome-dependencies
+   - Mermaid CLI with Chrome-dependencies
 
-2. **Cachning och prestanda**:
-   - APT-paket caching för snabbare builds
+2. **Cachning and prestanda**:
+   - APT-paket caching for snabbare builds
    - Pip-dependencies caching
    - Node.js modules caching
 
 3. **Build-process (30 sekunder)**:
-   - Diagram-generering från Mermaid-källor
-   - PDF-kompilering med Pandoc
-   - Kvalitetskontroller och validering
+   - Diagram-generering from Mermaid-Sources
+   - PDF-kompilering with Pandoc
+   - quality controls and validation
 
-4. **Publicering och distribution**:
+4. **Publicering and distribution**:
    - Automatisk release-skapande vid main-branch pushes
    - Artifact-lagring (30 dagar)
    - PDF-distribution via GitHub Releases
@@ -165,28 +165,28 @@ jobs:
 
 **Content Validation** (`content-validation.yml`):
 - Markdown-syntaxvalidering
-- Länk-kontroll och bildvalidering
+- Länk-kontroll and bildvalidering
 - Språklig kvalitetskontroll
 
 **Presentation Generation** (`generate-presentations.yml`):
-- PowerPoint-material från bokkapitel
-- Strukturerade presentationsoutlines
-- Kvadrat-branding och professionell styling
+- PowerPoint-material from bokkapitel
+- Structureerade presentationsoutlines
+- Kwhatrat-branding and professionell styling
 
 **Whitepaper Generation** (`generate-whitepapers.yml`):
-- Individuella HTML-dokument per kapitel
-- Standalone-format för distribution
-- SEO-optimerat och print-vänligt
+- Individuella HTML-dokument per chapters
+- Standalone-format for distribution
+- SEO-optimerat and print-vänligt
 
-## Presentation-material: Förberedelse och generering
+## Presentation-material: Förberedelse and generering
 
 ### Automatisk outline-generering
 
-`generate_presentation.py` skapar presentationsmaterial från bokinnehåll:
+`generate_presentation.py` creates Presentation materials from bokContents:
 
 ```python
 def generate_presentation_outline():
-    """Genererar presentationsoutline från alla bokkapitel."""
+    """Genererar presentationsoutline from all bokkapitel."""
     docs_dir = Path("docs")
     chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
     
@@ -205,31 +205,31 @@ def generate_presentation_outline():
 ### PowerPoint-integration
 
 Systemet genererar:
-- **Presentation outline**: Strukturerad markdown med nyckelbudskap
+- **Presentation outline**: Structureerad markdown with nyckelbudskap
 - **Python PowerPoint-script**: Automatisk slide-generering
-- **Kvadrat-branding**: Konsistent visuell identitet
-- **Innehållsoptimering**: Anpassat för muntlig presentation
+- **Kwhatrat-branding**: Konsistent visuell identitet
+- **Contentssoptimering**: Anpassat for muntlig presentation
 
-### Distribution och användning
+### Distribution and användning
 
 ```bash
-# Ladda ner artifacts från GitHub Actions
+# Ladda ner artifacts from GitHub Actions
 cd presentations
 pip install -r requirements.txt
 python generate_pptx.py
 ```
 
-Resultatet är professionella PowerPoint-presentationer optimerade för:
-- Konferenser och workshops
-- Utbildningssyfte
-- Marknadsföringsaktiviteter
+Resultatet is professionella PowerPoint-presentationer optimerade for:
+- Konferenser and workshops
+- UtbildningsPurpose
+- Marknadsforingsaktiviteter
 - Tekniska seminarier
 
-## Omslag och whitepapers: Design och integration
+## Omslag and whitepapers: design and integration
 
 ### Omslag-designsystem
 
-Bokens omslag skapas genom ett HTML/CSS-baserat designsystem:
+Bokens omslag are created through ett HTML/CSS-baserat designsystem:
 
 ```
 exports/book-cover/
@@ -243,9 +243,9 @@ exports/book-cover/
     └── generate_book_cover_exports.py
 ```
 
-### Kvadrat-varumärkesintegrering
+### Kwhatrat-varumärkesintegrering
 
-Designsystemet implementerar Kvadrat-identiteten:
+Designsystemet implementerar Kwhatrat-identiteten:
 
 ```css
 :root {
@@ -265,56 +265,56 @@ Designsystemet implementerar Kvadrat-identiteten:
 
 ### Whitepaper-generering
 
-`generate_whitepapers.py` skapar standalone HTML-dokument:
+`generate_whitepapers.py` creates standalone HTML-dokument:
 
-- **26 individuella whitepapers**: Ett per kapitel
-- **Professionell HTML-design**: Responsiv och print-vänlig
-- **Svenska anpassningar**: Optimerat för svenska organisationer
-- **SEO-optimering**: Korrekt meta-data och struktur
-- **Distribution-vänligt**: Kan delas via e-post, webb eller print
+- **26 individuella whitepapers**: Ett per chapters
+- **Professionell HTML-design**: Responsiv and print-vänlig
+- **Svenska anpassningar**: Optimerat for svenska organisationer
+- **SEO-optimering**: Korrekt meta-data and Structure
+- **Distribution-vänligt**: can delas via e-post, webb or print
 
-## Teknisk arkitektur och systemintegration
+## technical architecture and systemintegration
 
-### Helhetssyn på arkitekturen
+### holistic view at arkitekturen
 
-Hela systemet exemplifierar Architecture as Code genom:
+Entire systemet exemplifierar Architecture as Code through:
 
-1. **Kodifierad innehållshantering**: Markdown som källa för sanning
+1. **codified Contentsshantering**: Markdown which källa for sanning
 2. **Automatiserad pipeline**: Ingen manuell intervention krävs
-3. **Versionskontroll**: Fullständig historik över alla ändringar
-4. **Reproducerbarhet**: Identiska builds från samma källkod
-5. **Skalbarhet**: Enkelt att lägga till nya kapitel och format
+3. **version control**: Fullständig historik over all ändringar
+4. **reproducibility**: Identiska builds from same källkod
+5. **scalability**: Enkelt to lägga to new chapters and format
 
-### Kvalitetssäkring och testning
+### Kvalitetssäkring and testing
 
-- **Automatiserad validering**: Kontinuerlig kontroll av innehåll och format
-- **Build-verifiering**: Säkerställer att alla format genereras korrekt
-- **Performance-monitoring**: Spårning av build-tider och resursanvändning
-- **Error-hantering**: Robusta felmeddelanden och återställningsmekanismer
+- **Automatiserad validation**: Kontinuerlig kontroll of Contents and format
+- **Build-verification**: ensures to all format genereras korrekt
+- **Performance-monitoring**: Spårning of build-tider and resursanvändning
+- **Error-hantering**: Robusta felwithdelanden and återställningsmekanismer
 
 ### Framtida utveckling
 
-Systemet är designat för kontinuerlig förbättring:
-- **Modulär arkitektur**: Enkelt att uppdatera enskilda komponenter
-- **API-möjligheter**: Potential för integration med externa system
-- **Skalning**: Stöd för fler format och distributionskanaler
-- **Internationalisering**: Förberedelse för flerspråkig publicering
+Systemet is designat for kontinuerlig forbättring:
+- **Modulär architecture**: Enkelt to uppdatera individual components
+- **API-möjligheter**: Potential for integration with externa systems
+- **Skalning**: Stöd for fler format and distributionskanaler
+- **Internationalisering**: Forberedelse for flerspråkig publicering
 
-## Sammanfattning
+## Summary
 
 
-Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Den tekniska uppbyggnaden för "Arkitektur som kod" demonstrerar praktisk tillämpning av bokens egna principer. Genom att kodifiera hela publikationsprocessen uppnås:
+Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Den tekniska uppbyggnaden for "Architecture as Code" demonstrerar praktisk toämpning of bokens egna principles. Through to kodifiera entire publikationsprocessen uppnås:
 
-- **arkitektur som kod-automatisering**: Komplett CI/CD för bokproduktion
-- **Kvalitet**: Konsistent format och professionell presentation
-- **Effektivitet**: Snabb iteration och feedback-loopar
-- **Skalbarhet**: Enkelt att utöka med nytt innehåll och format
-- **Transparens**: Öppen källkod och dokumenterad process
+- **Architecture as Code-automation**: Komplett CI/CD for bokproduktion
+- **Kvalitet**: Konsistent format and professionell presentation
+- **Effektivitet**: Snabb iteration and feedback-loopar
+- **scalability**: Enkelt to utöka with nytt Contents and format
+- **Transparens**: Öppen källkod and dokumenterad process
 
-Detta tekniska system fungerar som en konkret illustration av hur Architecture as Code-principerna kan tillämpas även utanför traditionella IT-system, vilket skapar värde genom automation, reproducerbarhet och kontinuerlig förbättring.
+This tekniska systems fungerar which a konkret illustration of how Architecture as Code-principerna can toämpas även utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
 
-Källor:
+Sources:
 - GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.
 - Pandoc User's Guide. "Creating documents with Pandoc." John MacFarlane, 2024.
 - Mermaid Documentation. "Diagram syntax and examples." Mermaid Community, 2024.

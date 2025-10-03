@@ -1,7 +1,7 @@
 # Docs Directory Protection Guidelines
 
 ## Purpose
-This file provides guidelines to prevent unintended modifications to the `docs/` directory, which contains the source content for the "Arkitektur som kod" book.
+This file provides guidelines to prevent unintended modifications to the `docs/` directory, which contains the source content for the "Architecture as Code" book.
 
 ## Rules for Working with the Repository
 
@@ -12,7 +12,7 @@ This file provides guidelines to prevent unintended modifications to the `docs/`
 - **Creating tools** that read from `docs/` to generate content elsewhere
 
 ### ❌ Restricted Operations  
-- **Modifying** existing files in `docs/` directory without explicit book content approval
+- **Modifying** existing files in `docs/` directory without explicitly book content approval
 - **Deleting** content from markdown files in `docs/`
 - **Truncating** or reducing the substantial content in book chapters
 - **Changing** the book's core content structure

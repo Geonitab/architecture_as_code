@@ -1,24 +1,24 @@
-# Molnarkitektur som kod
+# Cloud Architecture as Code
 
-Molnarkitektur som kod representerar den naturliga utvecklingen av arkitektur som kod i molnbaserade miljöer. Genom att utnyttja molnleverantörers API:er och tjänster kan organisationer skapa skalbara, motståndskraftiga och kostnadseffektiva arkitekturer helt genom arkitektur som kod. Som vi såg i [kapitel 2 om grundläggande principer](02_kapitel1.md), är denna metod grundläggande för moderna organisationer som strävar efter digital omvandling och operativ excellens.
+Cloud Architecture as Code representerar den natural utvecklingen of Architecture as Code in molnbaserade miljöer. Through to utnyttja molnleverantörers API:er and tjänster can organisationer skapa skalbara, motståndskraftiga and kostnadseffektiva arkitekturer helt through Architecture as Code. Which vi såg in [chapters 2 about grundläggande principles](02_kapitel1.md), is This metod grundläggande for moderna organisationer which strävar efter digital omvandling and operativ excellence.
 
-![Molnarkitektur som kod](images/diagram_05_kapitel4.png)
+![Cloud Architecture as Code](images/diagram_05_kapitel4.png)
 
-Diagrammet illustrerar progression från multi-cloud environments genom provider abstraction och resource management till state management och cross-region deployment capabilities. Denna progression möjliggör den typ av skalbar arkitektur som kod-automatisering som vi kommer att fördjupa i [kapitel 4 om CI/CD-pipelines](04_kapitel3.md) och den organisatoriska förändring som diskuteras i [kapitel 10](10_kapitel9.md).
+Diagrammet illustrerar progression from multi-cloud environments through provider abstraction and resource management to state management and cross-region deployment capabilities. This progression enables den typ of skalbar Architecture as Code-automation which vi kommer to fordjupa in [chapters 4 about CI/CD-pipelines](04_kapitel3.md) and den organizational forändring which diskuteras in [chapters 10](10_kapitel9.md).
 
-## Molnleverantörers ekosystem för Arkitektur som kod
+## Molnleverantörers ekosystem for Architecture as Code
 
-Svenska organisationer står inför ett rikt utbud av molnleverantörer, var och en med sina egna styrkor och specialiseringar. För att uppnå framgångsrik cloud adoption måste organisationer förstå varje leverantörs unika capabilities och hur dessa kan utnyttjas genom arkitektur som kod approaches.
+Svenska organisationer står infor ett rikt utbud of molnleverantörer, var and a with sina egna styrkor and specialiseringar. For to uppnå successful cloud adoption must organisationer forstå each leverantörs unika capabilities and how These can utnyttjas through Architecture as Code approaches.
 
-### Amazon Web Services (AWS) och svenska organisationer
+### Amazon Web Services (AWS) and svenska organisationer
 
-AWS dominerar den globala molnmarknaden och har etablerat stark närvaro i Sverige genom datacenters i Stockholm-regionen. För svenska organisationer erbjuder AWS omfattande tjänster som är särskilt relevanta för lokala compliance-krav och prestanda-behov.
+AWS dominerar den globala molnmarknaden and har etablerat strong whenvaro in Sverige through datacenters in Stockholm-regionen. For svenska organisationer erbjuder AWS comprehensive tjänster which is särskilt relevanta for lokala compliance-krav and prestanda-behov.
 
-**AWS CloudFormation** utgör AWS:s native Infrastructure as Code-tjänst som möjliggör deklarativ definition av AWS-resurser genom JSON eller YAML templates. CloudFormation hanterar resource dependencies automatiskt och säkerställer att infrastructure deployments är reproducerbara och återställningscapable:
+**AWS CloudFormation** utgör AWS:s native Infrastructure as Code-tjänst which enables deklarativ definition of AWS-resurser through JSON or YAML templates. CloudFormation hanterar resource dependencies automatically and ensures to infrastructure deployments is reproducerbara and återställningscapable:
 
-För en detaljerad CloudFormation template som implementerar VPC konfiguration för svenska organisationer med GDPR efterlevnad, se [07_CODE_1: VPC Konfiguration för svenska organisationer](#07_CODE_1) i Appendix A.
+For a detaljerad CloudFormation template which implementerar VPC konfiguration for svenska organisationer with GDPR efterlevnad, se [07_CODE_1: VPC Konfiguration for svenska organisationer](#07_CODE_1) in Appendix A.
 
-**AWS CDK (Cloud Development Kit)** revolutionerar Infrastructure as Code genom att möjliggöra definition av cloud resources med programmeringsspråk som TypeScript, Python, Java och C#. För svenska utvecklarteam som redan behärskar dessa språk reducerar CDK learning curve och möjliggör återanvändning av befintliga programmeringskunskaper:
+**AWS CDK (Cloud Development Kit)** revolutionerar Infrastructure as Code through to möjliggöra definition of cloud resources with programmeringsspråk that TypeScript, Python, Java and C#. For svenska utvecklarteam which redan behärskar These språk reducerar CDK learning curve and enables återanvändning of existing programmeringskunskaper:
 
 ```typescript
 // cdk/svenska-org-infrastructure.ts
@@ -41,7 +41,7 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: SvenskaOrgInfrastructureProps) {
     super(scope, id, props);
 
-    // Definiera common tags för alla resurser
+    // Definiera common tags för all resurser
     const commonTags = {
       Environment: props.environment,
       DataClassification: props.dataClassification,
@@ -84,14 +84,14 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
       }
     });
 
-    // Tillämpa common tags på VPC
+    // Tillämpa common tags at VPC
     Object.entries(commonTags).forEach(([key, value]) => {
       cdk.Tags.of(vpc).add(key, value);
     });
 
     // GDPR-compliant KMS key för databaskryptering
     const databaseEncryptionKey = new kms.Key(this, 'DatabaseEncryptionKey', {
-      description: 'KMS key för databaskryptering enligt GDPR-krav',
+      description: 'KMS key för databaskryptering according to GDPR-krav',
       enableKeyRotation: true,
       removalPolicy: props.environment === 'production' ? 
         cdk.RemovalPolicy.RETAIN : cdk.RemovalPolicy.DESTROY
@@ -151,7 +151,7 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
     // Security groups med svenska säkerhetsstandarder
     const webSecurityGroup = new ec2.SecurityGroup(this, 'WebSecurityGroup', {
       vpc,
-      description: 'Security group för web tier enligt svenska säkerhetskrav',
+      description: 'Security group för web tier according to svenska säkerhetskrav',
       allowAllOutbound: false
     });
 
@@ -159,7 +159,7 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
     webSecurityGroup.addIngressRule(
       ec2.Peer.anyIpv4(),
       ec2.Port.tcp(443),
-      'HTTPS från internet'
+      'HTTPS from internet'
     );
 
     // Tillåt utgående trafik endast till nödvändiga tjänster
@@ -179,10 +179,10 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
     appSecurityGroup.addIngressRule(
       webSecurityGroup,
       ec2.Port.tcp(8080),
-      'Trafik från web tier'
+      'Trafik from web tier'
     );
 
-    // Database security group - endast från app tier
+    // Database security group - endast from app tier
     const dbSecurityGroup = new ec2.SecurityGroup(this, 'DatabaseSecurityGroup', {
       vpc,
       description: 'Security group för database tier med minimal access',
@@ -192,7 +192,7 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
     dbSecurityGroup.addIngressRule(
       appSecurityGroup,
       ec2.Port.tcp(5432),
-      'PostgreSQL från application tier'
+      'PostgreSQL from application tier'
     );
 
     // VPC Endpoints för AWS services (undviker data exfiltration via internet)
@@ -236,7 +236,7 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
     });
   }
 
-  // Metod för att lägga till svenska holidayschedules för cost optimization
+  // Metod för to lägga till svenska holidayschedules för cost optimization
   addSwedishHolidayScheduling(resource: cdk.Resource) {
     const swedishHolidays = [
       '2024-01-01', // Nyårsdagen
@@ -248,7 +248,7 @@ export class SvenskaOrgInfrastructureStack extends cdk.Stack {
       '2024-05-20', // Annandag pingst
       '2024-06-21', // Midsommarafton
       '2024-06-22', // Midsommardagen
-      '2024-11-02', // Alla helgons dag
+      '2024-11-02', // all helgons dag
       '2024-12-24', // Julafton
       '2024-12-25', // Juldagen
       '2024-12-26', // Annandag jul
@@ -288,11 +288,11 @@ new SvenskaOrgInfrastructureStack(app, 'SvenskaOrgProd', {
 });
 ```
 
-### Microsoft Azure för svenska organisationer
+### Microsoft Azure for svenska organisationer
 
-Microsoft Azure har utvecklat stark position i Sverige, särskilt inom offentlig sektor och traditionella enterprise-organisationer. Azure Resource Manager (ARM) templates och Bicep utgör Microsofts primary Infrastructure as Code offerings.
+Microsoft Azure har utvecklat strong position in Sverige, särskilt within offentlig sektor and traditionella enterprise-organisationer. Azure Resource Manager (ARM) templates and Bicep utgör Microsofts primary Infrastructure as Code offerings.
 
-**Azure Resource Manager (ARM) Templates** möjliggör deklarativ definition av Azure-resurser genom JSON-baserade templates. För svenska organisationer som redan använder Microsoft-produkter utgör ARM templates en naturlig extension av befintliga Microsoft-skickigheter:
+**Azure Resource Manager (ARM) Templates** enables deklarativ definition of Azure-resurser through JSON-baserade templates. For svenska organisationer which redan använder Microsoft-produkter utgör ARM templates a naturlig extension of existing Microsoft-skickigheter:
 
 ```json
 {
@@ -316,7 +316,7 @@ Microsoft Azure har utvecklat stark position i Sverige, särskilt inom offentlig
       "defaultValue": "internal",
       "allowedValues": ["public", "internal", "confidential", "restricted"],
       "metadata": {
-        "description": "Dataklassificering enligt svenska säkerhetsstandarder"
+        "description": "Dataklassificering according to svenska säkerhetsstandarder"
       }
     },
     "organizationName": {
@@ -450,7 +450,7 @@ Microsoft Azure har utvecklat stark position i Sverige, särskilt inom offentlig
           {
             "name": "Allow-HTTPS-Inbound",
             "properties": {
-              "description": "Tillåt HTTPS trafik från internet",
+              "description": "Tillåt HTTPS trafik from internet",
               "protocol": "Tcp",
               "sourcePortRange": "*",
               "destinationPortRange": "443",
@@ -533,7 +533,7 @@ Microsoft Azure har utvecklat stark position i Sverige, särskilt inom offentlig
       "type": "string",
       "value": "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
       "metadata": {
-        "description": "Resource ID för det skapade virtual network"
+        "description": "Resource ID för the skapade virtual network"
       }
     },
     "subnetIds": {
@@ -544,7 +544,7 @@ Microsoft Azure har utvecklat stark position i Sverige, särskilt inom offentlig
         "database": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('subnetNames').database)]"
       },
       "metadata": {
-        "description": "Resource IDs för alla skapade subnets"
+        "description": "Resource IDs för all skapade subnets"
       }
     },
     "complianceStatus": {
@@ -565,7 +565,7 @@ Microsoft Azure har utvecklat stark position i Sverige, särskilt inom offentlig
 }
 ```
 
-**Azure Bicep** representerar nästa generation av ARM templates med förbättrad syntax och developer experience. Bicep kompilerar till ARM templates men erbjuder mer läsbar och maintainable kod:
+**Azure Bicep** representerar nästa generation of ARM templates with forbättrad syntax and developer experience. Bicep kompilerar to ARM templates men erbjuder mer läsbar and maintainable code:
 
 ```bicep
 // bicep/svenska-org-infrastructure.bicep
@@ -575,7 +575,7 @@ Microsoft Azure har utvecklat stark position i Sverige, särskilt inom offentlig
 @allowed(['development', 'staging', 'production'])
 param environmentType string = 'development'
 
-@description('Dataklassificering enligt svenska säkerhetsstandarder')
+@description('Dataklassificering according to svenska säkerhetsstandarder')
 @allowed(['public', 'internal', 'confidential', 'restricted'])
 param dataClassification string = 'internal'
 
@@ -588,7 +588,7 @@ param costCenter string
 @description('Aktivera GDPR compliance features')
 param gdprCompliance bool = true
 
-@description('Lista över compliance-krav')
+@description('Lista over compliance-krav')
 param complianceRequirements array = ['gdpr']
 
 // Variabler för konsistent naming och configuration
@@ -596,7 +596,7 @@ var resourcePrefix = '${organizationName}-${environmentType}'
 var location = 'Sweden Central'
 var isProduction = environmentType == 'production'
 
-// Common tags för alla resurser
+// Common tags för all resurser
 var commonTags = {
   Environment: environmentType
   DataClassification: dataClassification
@@ -634,7 +634,7 @@ resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2023-09-01' = if
   }
 }
 
-// Key Vault för säker hantering av secrets och encryption keys
+// Key Vault för säker hantering of secrets och encryption keys
 resource keyVault 'Microsoft.KeyVault/vaults@2023-02-01' = if (gdprCompliance) {
   name: '${resourcePrefix}-kv'
   location: location
@@ -739,7 +739,7 @@ resource webNsg 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
       {
         name: 'Allow-HTTPS-Inbound'
         properties: {
-          description: 'Tillåt HTTPS trafik från internet'
+          description: 'Tillåt HTTPS trafik from internet'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '443'
@@ -777,7 +777,7 @@ resource appNsg 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
       {
         name: 'Allow-Web-To-App'
         properties: {
-          description: 'Tillåt trafik från web tier till app tier'
+          description: 'Tillåt trafik from web tier till app tier'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '8080'
@@ -801,7 +801,7 @@ resource dbNsg 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
       {
         name: 'Allow-App-To-DB'
         properties: {
-          description: 'Tillåt databasanslutningar från app tier'
+          description: 'Tillåt databasanslutningar from app tier'
           protocol: 'Tcp'
           sourcePortRange: '*'
           destinationPortRange: '5432'
@@ -830,7 +830,7 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2023-06-01-pr
   }
   properties: {
     administratorLogin: 'pgadmin'
-    administratorLoginPassword: 'TempPassword123!' // Kommer att ändras via Key Vault
+    administratorLoginPassword: 'TempPassword123!' // Kommer to ändras via Key Vault
     version: '15'
     storage: {
       storageSizeGB: 128
@@ -926,11 +926,11 @@ output keyVaultId string = gdprCompliance ? keyVault.id : ''
 output logAnalyticsWorkspaceId string = gdprCompliance ? logAnalytics.id : ''
 ```
 
-### Google Cloud Plattform för svenska innovationsorganisationer
+### Google Cloud Plattform for svenska innovationsorganisationer
 
-Google Cloud Plattform (GCP) attraherar svenska tech-företag och startups genom sina machine learning capabilities och innovativa tjänster. Google Cloud Deployment Manager och Terraform Google Provider utgör primary Arkitektur som kod verktyg för GCP.
+Google Cloud Plattform (GCP) attraherar svenska tech-foretag and startups through sina machine learning capabilities and innovativa tjänster. Google Cloud Deployment Manager and Terraform Google Provider utgör primary Architecture as Code verktyg for GCP.
 
-**Google Cloud Deployment Manager** använder YAML eller Python för Infrastructure as Code definitions och integrerar naturligt med Google Cloud services:
+**Google Cloud Deployment Manager** använder YAML or Python for Infrastructure as Code definitions and integrerar naturligt with Google Cloud services:
 
 ```yaml
 # gcp/svenska-org-infrastructure.yaml
@@ -1059,7 +1059,7 @@ resources:
           queryStringLength: 4500
           queryPlansPerMinute: 20
 
-  # Cloud KMS för kryptering av känslig data
+  # Cloud KMS för kryptering of känslig data
   - name: svenska-org-keyring
     type: cloudkms.v1.keyRing
     properties:
@@ -1082,7 +1082,7 @@ resources:
   - name: allow-web-to-app
     type: compute.v1.firewall
     properties:
-      description: "Tillåt HTTPS trafik från web till app tier"
+      description: "Tillåt HTTPS trafik from web till app tier"
       network: $(ref.svenska-org-vpc.selfLink)
       direction: INGRESS
       priority: 1000
@@ -1097,7 +1097,7 @@ resources:
   - name: allow-app-to-database
     type: compute.v1.firewall
     properties:
-      description: "Tillåt databasanslutningar från app tier"
+      description: "Tillåt databasanslutningar from app tier"
       network: $(ref.svenska-org-vpc.selfLink)
       direction: INGRESS
       priority: 1000
@@ -1160,7 +1160,7 @@ resources:
             condition:
               age: 2555  # 7 år för svenska krav
       retentionPolicy:
-        retentionPeriod: 220752000  # 7 år i sekunder
+        retentionPeriod: 220752000  # 7 år in sekunder
       iamConfiguration:
         uniformBucketLevelAccess:
           enabled: true
@@ -1185,15 +1185,15 @@ outputs:
       logRetention: "7-years"
 ```
 
-## Cloud-native arkitektur som kod patterns
+## Cloud-native architecture as code patterns
 
-Cloud-native Infrastructure as Code patterns utnyttjar molnspecifika tjänster och capabilities för att skapa optimala arkitekturer. Dessa patterns inkluderar serverless computing, managed databases, auto-scaling groups, och event-driven architectures som eliminerar traditionell infrastrukturhantering.
+Cloud-native Infrastructure as Code patterns utnyttjar molnspecifika tjänster and capabilities for to skapa optimala arkitekturer. These patterns includes serverless computing, managed databases, auto-scaling groups, and event-driven architectures which eliminates traditionell infraStructurehantering.
 
-Microservices-baserade arkitekturer implementeras genom containerorkestrering, service mesh, och API gateways definierade som kod. Detta möjliggör loose coupling, independent scaling, och teknologidiversifiering samtidigt som operationell komplexitet hanteras genom automation.
+Microservices-baserade arkitekturer implementeras through containerorkestrering, service mesh, and API gateways definierade which code. This enables loose coupling, independent scaling, and teknologidiversifiering simultaneously which operationell komplexitet is managed through automation.
 
 ### Container-First arkitekturpattern
 
-Modern molnarkitektur bygger på containerisering som fundamental abstraktion för applikationsdeployment. För svenska organisationer innebär detta att infrastrukturdefinitioner fokuserar på container orchestration platforms som Kubernetes, AWS ECS, Azure Container Instances, eller Google Cloud Run:
+Modern molnarkitektur builds on containerisering which fundamental abstraktion for applikationsdeployment. For svenska organisationer means This to infraStructuredefinitioner fokuserar at container orchestration platforms that Kubernetes, AWS ECS, Azure Container Instances, or Google Cloud Run:
 
 ```terraform
 # terraform/container-platform.tf
@@ -1371,7 +1371,7 @@ resource "kubernetes_manifest" "istio_peer_authentication" {
   }
 }
 
-# GDPR compliance genom Pod Disruption Budgets
+# GDPR compliance through Pod Disruption Budgets
 resource "kubernetes_pod_disruption_budget" "application_pdb" {
   count = length(var.environments)
   
@@ -1392,9 +1392,9 @@ resource "kubernetes_pod_disruption_budget" "application_pdb" {
 }
 ```
 
-### Serverless-first pattern för svenska innovationsorganisationer
+### Serverless-first pattern for svenska innovationsorganisationer
 
-Serverless arkitekturer möjliggör unprecedented skalbarhet och kostnadseffektivitet för svenska organisationer. Infrastructure as Code för serverless fokuserar på function definitions, event routing, och managed service integrations:
+Serverless arkitekturer enables unprecedented scalability and kostnadseffektivitet for svenska organisationer. Infrastructure as Code for serverless fokuserar at function definitions, event routing, and managed service integrations:
 
 ```terraform
 # terraform/serverless-platform.tf
@@ -1442,7 +1442,7 @@ resource "aws_lambda_function" "svenska_api_gateway" {
   })
 }
 
-# Event-driven arkitektur med SQS för svenska organisationer
+# Event-driven architecture med SQS för svenska organisationer
 resource "aws_sqs_queue" "svenska_event_queue" {
   name                       = "${var.organization_name}-events-${var.environment}"
   delay_seconds              = 0
@@ -1682,9 +1682,9 @@ resource "aws_cloudwatch_event_target" "gdpr_processor" {
 }
 ```
 
-### Hybrid cloud pattern för svenska enterprise-organisationer
+### Hybrid cloud pattern for svenska enterprise-organisationer
 
-Många svenska organisationer kräver hybrid cloud approaches som kombinerar on-premises infrastruktur med public cloud services för att uppfylla regulatory, performance, eller legacy system requirements:
+Många svenska organisationer requires hybrid cloud approaches which kombinerar on-premises infraStructure with public cloud services for to uppfylla regulatory, performance, or legacy systems requirements:
 
 ```terraform
 # terraform/hybrid-cloud.tf
@@ -1743,7 +1743,7 @@ resource "aws_vpn_connection" "svenska_org_vpn" {
 # AWS Storage Gateway för hybrid storage
 resource "aws_storagegateway_gateway" "svenska_org_storage_gw" {
   gateway_name   = "${var.organization_name}-storage-gw-${var.environment}"
-  gateway_timezone = "GMT+1:00"  # Svensk tid
+  gateway_timezone = "GMT+1:00"  # Svensk time
   gateway_type     = "FILE_S3"
   
   tags = merge(local.common_tags, {
@@ -1894,7 +1894,7 @@ resource "aws_security_group" "resolver_sg" {
     to_port     = 53
     protocol    = "tcp"
     cidr_blocks = [var.vpc_cidr, var.on_premises_cidr]
-    description = "DNS TCP från VPC och on-premises"
+    description = "DNS TCP from VPC och on-premises"
   }
   
   ingress {
@@ -1902,7 +1902,7 @@ resource "aws_security_group" "resolver_sg" {
     to_port     = 53
     protocol    = "udp"
     cidr_blocks = [var.vpc_cidr, var.on_premises_cidr]
-    description = "DNS UDP från VPC och on-premises"
+    description = "DNS UDP from VPC och on-premises"
   }
   
   egress {
@@ -1929,13 +1929,13 @@ resource "aws_security_group" "resolver_sg" {
 
 ## Multi-cloud strategier
 
-Multi-cloud Infrastructure as Code strategier möjliggör distribution av workloads across flera molnleverantörer för att optimera kostnad, prestanda, och resiliens. Provider-agnostic tools som Terraform eller Pulumi används för att abstrahera leverantörspecifika skillnader och möjliggöra portabilitet.
+Multi-cloud Infrastructure as Code strategier enables distribution of workloads across flera molnleverantörer for to optimera kostnad, prestanda, and resiliens. Provider-agnostic tools that Terraform or Pulumi används for to abstrahera leverantörspecifika skillnader and möjliggöra portabilitet.
 
-Hybrid cloud arkitektur som kod-implementations kombinerar on-premises infrastruktur med public cloud services genom VPN connections, dedicated links, och edge computing. Consistent deployment och management processer across environments säkerställer operational efficiency och säkerhetskompliance.
+Hybrid cloud Architecture as Code-implementations kombinerar on-premises infraStructure with public cloud services through VPN connections, dedicated links, and edge computing. Consistent deployment and management processes across environments ensures operational efficiency and säkerhetskompliance.
 
-### Terraform för multi-cloud abstraktion
+### Terraform for multi-cloud abstraktion
 
-Terraform utgör den mest mogna lösningen för multi-cloud Infrastructure as Code genom sitt omfattande provider ecosystem. För svenska organisationer möjliggör Terraform unified management av AWS, Azure, Google Cloud, och on-premises resurser genom en konsistent deklarativ syntax:
+Terraform utgör den mest mogna lösningen for multi-cloud Infrastructure as Code through sitt comprehensive provider ecosystem. For svenska organisationer enables Terraform unified management of AWS, Azure, Google Cloud, and on-premises resurser through a konsistent deklarativ syntax:
 
 ```hcl
 # terraform/multi-cloud/main.tf
@@ -2249,7 +2249,7 @@ resource "aws_security_group_rule" "allow_azure_traffic" {
   protocol          = "tcp"
   cidr_blocks       = [data.external.azure_ip_ranges.result.ip_ranges[count.index]]
   security_group_id = module.aws_infrastructure.app_security_group_id
-  description       = "HTTPS från Azure ${count.index + 1}"
+  description       = "HTTPS from Azure ${count.index + 1}"
 }
 
 # Multi-cloud cost optimization
@@ -2355,11 +2355,11 @@ output "compliance_status" {
 }
 ```
 
-### Pulumi för programmatisk multi-cloud Infrastructure as Code
+### Pulumi for programmatisk multi-cloud Infrastructure as Code
 
-Arkitektur som kod-principerna inom detta område
+Architecture as Code-principerna within This område
 
-Pulumi erbjuder en alternativ approach till multi-cloud Arkitektur som kod genom att möjliggöra användning av vanliga programmeringsspråk som TypeScript, Python, Go, och C#. För svenska utvecklarteam som föredrar programmatisk approach över deklarativ konfiguration:
+Pulumi erbjuder a alternativ approach to multi-cloud Architecture as Code through to möjliggöra användning of vanliga programmeringsspråk that TypeScript, Python, Go, and C#. For svenska utvecklarteam which foredrar programmatisk approach over deklarativ konfiguration:
 
 ```typescript
 // pulumi/multi-cloud/index.ts
@@ -2378,7 +2378,7 @@ const environment = config.require("environment");
 const dataClassification = config.get("dataClassification") || "internal";
 const complianceRequirements = config.getObject<string[]>("complianceRequirements") || ["gdpr"];
 
-// Svenska common tags/labels för alla providers
+// Svenska common tags/labels för all providers
 const swedishTags = {
     Organization: organizationName,
     Environment: environment,
@@ -2472,7 +2472,7 @@ class AWSInfrastructure extends pulumi.ComponentResource {
             dbSubnetGroupName: dbSubnetGroup.name,
             backupRetentionPeriod: environment === "production" ? 30 : 7,
             backupWindow: "03:00-04:00",  // Svenska nattetid
-            maintenanceWindow: "sat:04:00-sat:05:00",  // Lördag natt svensk tid
+            maintenanceWindow: "sat:04:00-sat:05:00",  // Lördag natt svensk time
             deletionProtection: environment === "production",
             enabledCloudwatchLogsExports: ["postgresql"],
             tags: {
@@ -2810,13 +2810,13 @@ export const complianceStatus = {
 
 ## Serverless infrastruktur
 
-Serverless Infrastructure as Code fokuserar på function definitions, event triggers, och managed service configurations istället för traditionell server management. Detta approach reducerar operationell overhead och möjliggör automatic scaling baserat på actual usage patterns.
+Serverless Infrastructure as Code fokuserar at function definitions, event triggers, and managed service configurations instead for traditionell server management. This approach reducerar operationell overhead and enables automatic scaling baserat at actual usage patterns.
 
-Event-driven architectures implementeras genom cloud functions, message queues, och data streams definierade som Arkitektur som kod. Integration mellan services hanteras genom IAM policies, API definitions, och network configurations som säkerställer security och performance requirements.
+Event-driven architectures implementeras through cloud functions, message queues, and data streams definierade that Architecture as Code. Integration mellan services is managed through IAM policies, API definitions, and network configurations which ensures security and performance requirements.
 
-### Function-as-a-Service (FaaS) patterns för svenska organisationer
+### Function-as-a-Service (FaaS) patterns for svenska organisationer
 
-Serverless funktioner utgör kärnan i modern cloud-native arkitektur och möjliggör unprecedented skalbarhet och kostnadseffektivitet. För svenska organisationer innebär FaaS-patterns att infrastrukturdefinitioner fokuserar på business logic istället för underlying compute resources:
+Serverless funktioner utgör kärnan in modern cloud-native architecture and enables unprecedented scalability and kostnadseffektivitet. For svenska organisationer means FaaS-patterns to infraStructuredefinitioner fokuserar at business logic instead for underlying compute resources:
 
 ```yaml
 # serverless.yml
@@ -2986,7 +2986,7 @@ functions:
       COST_ALLOCATION_TAGS: Environment,CostCenter,Organization
     events:
       - schedule:
-          rate: cron(0 8 * * ? *)  # 08:00 svensk tid varje dag
+          rate: cron(0 8 * * ? *)  # 08:00 svensk time each dag
           description: Daglig kostnadskontroll för svenska organisationen
           input:
             checkType: daily
@@ -3129,7 +3129,7 @@ resources:
           - Key: Purpose
             Value: Dead-Letter-Queue
           - Key: Component
-            Value: Audit-System
+            Value: Audit-systems
 
     # CloudWatch Dashboard för svenska monitoring
     ServerlessMonitoringDashboard:
@@ -3272,9 +3272,9 @@ custom:
       - functionDuration
 ```
 
-### Event-driven arkitektur för svenska organisationer
+### Event-driven architecture for svenska organisationer
 
-Event-driven arkitekturer utgör grunden för modern serverless systems och möjliggör loose coupling mellan services. För svenska organisationer innebär detta särskild fokus på GDPR-compliant event processing och audit trails:
+Event-driven arkitekturer utgör grunden for modern serverless systems and enables loose coupling mellan services. For svenska organisationer means This särskild fokus at GDPR-compliant event processing and audit trails:
 
 ```python
 # serverless/event_processing.py
@@ -3358,10 +3358,10 @@ class SwedishEventProcessor:
             # Log event för audit trail
             self._audit_log_event(event)
             
-            # Spara event i DynamoDB
+            # Spara event in DynamoDB
             self._store_event(event)
             
-            # Process baserat på event type
+            # Process baserat at event type
             result = self._route_event(event)
             
             # GDPR-specific processing
@@ -3401,7 +3401,7 @@ class SwedishEventProcessor:
         self.audit_table.put_item(Item=audit_entry)
     
     def _store_event(self, event: SwedishEvent) -> None:
-        """Spara event i DynamoDB med svenska kryptering"""
+        """Spara event in DynamoDB med svenska kryptering"""
         event_item = {
             'event_id': event.event_id,
             'event_type': event.event_type.value,
@@ -3434,7 +3434,7 @@ class SwedishEventProcessor:
         return processor(event)
     
     def _process_gdpr_request(self, event: SwedishEvent) -> Dict[str, Any]:
-        """Process GDPR data subject request enligt svenska krav"""
+        """Process GDPR data subject request according to svenska krav"""
         request_data = event.payload
         
         # Validera GDPR request format
@@ -3475,11 +3475,11 @@ class SwedishEventProcessor:
         }
     
     def _process_gdpr_deletion(self, event: SwedishEvent) -> Dict[str, Any]:
-        """Process GDPR data deletion enligt svenska krav"""
+        """Process GDPR data deletion according to svenska krav"""
         deletion_data = event.payload
         data_subject_id = event.data_subject_id
         
-        # Lista alla databaser och tabeller som kan innehålla personal data
+        # Lista all databaser och tabeller as can innehålla personal data
         data_stores = [
             {'type': 'dynamodb', 'table': f'{ORGANIZATION_NAME}-{ENVIRONMENT}-users'},
             {'type': 'dynamodb', 'table': f'{ORGANIZATION_NAME}-{ENVIRONMENT}-profiles'},
@@ -3532,7 +3532,7 @@ class SwedishEventProcessor:
         """Process cost alert för svenska budgetkontroll"""
         cost_data = event.payload
         
-        # Konvertera till svenska kronor om nödvändigt
+        # Konvertera till svenska kronor about nödvändigt
         if cost_data.get('currency') != 'SEK':
             sek_amount = self._convert_to_sek(
                 cost_data['amount'], 
@@ -3564,13 +3564,13 @@ class SwedishEventProcessor:
         }
     
     def _calculate_retention_date(self, data_classification: str) -> str:
-        """Beräkna retention date enligt svenska lagkrav"""
+        """Beräkna retention date according to svenska lagkrav"""
         retention_periods = {
             'public': 365,      # 1 år
             'internal': 1095,   # 3 år  
-            'personal': 2555,   # 7 år enligt bokföringslagen
+            'personal': 2555,   # 7 år according to bokföringslagen
             'sensitive': 2555,  # 7 år
-            'financial': 2555   # 7 år enligt bokföringslagen
+            'financial': 2555   # 7 år according to bokföringslagen
         }
         
         days = retention_periods.get(data_classification, 365)
@@ -3578,7 +3578,7 @@ class SwedishEventProcessor:
         return retention_date.isoformat()
     
     def _calculate_ttl(self, data_classification: str) -> int:
-        """Beräkna TTL för DynamoDB enligt svenska krav"""
+        """Beräkna TTL för DynamoDB according to svenska krav"""
         current_time = int(datetime.now(timezone.utc).timestamp())
         retention_days = {
             'public': 365,
@@ -3592,16 +3592,16 @@ class SwedishEventProcessor:
         return current_time + (days * 24 * 60 * 60)
     
     def _format_swedish_cost_alert(self, cost_data: Dict[str, Any]) -> str:
-        """Formatera cost alert på svenska"""
+        """Formatera cost alert at svenska"""
         return f"""
 Kostnadsvarning för {ORGANIZATION_NAME}
 
 Miljö: {ENVIRONMENT}
 Aktuell kostnad: {cost_data.get('amount_sek', cost_data['amount']):.2f} SEK
 Budget: {cost_data.get('budget_sek', cost_data.get('budget', 'N/A'))} SEK
-Procent av budget: {cost_data.get('percentage', 'N/A')}%
+Procent of budget: {cost_data.get('percentage', 'N/A')}%
 
-Datum: {datetime.now().strftime('%Y-%m-%d %H:%M')} (svensk tid)
+Datum: {datetime.now().strftime('%Y-%m-%d %H:%M')} (svensk time)
 
 Kostnadscenter: {cost_data.get('cost_center', 'N/A')}
 Tjänster: {', '.join(cost_data.get('services', []))}
@@ -3644,7 +3644,7 @@ def cost_monitoring_handler(event, context):
     processor = SwedishEventProcessor()
     
     try:
-        # Hämta aktuella kostnader från Cost Explorer
+        # Hämta aktuella kostnader from Cost Explorer
         cost_explorer = boto3.client('ce', region_name='eu-north-1')
         
         end_date = datetime.now().strftime('%Y-%m-%d')
@@ -3690,9 +3690,9 @@ def cost_monitoring_handler(event, context):
         return {"status": "error", "error": str(e)}
 ```
 
-## Praktiska arkitektur som kod-implementationsexempel
+## Praktiska architecture as code-implementationsexempel
 
-För att demonstrera molnarkitektur som kod i praktiken för svenska organisationer, presenteras här kompletta implementationsexempel som visar how real-world scenarios kan lösas:
+For to demonstrera Cloud Architecture as Code in praktiken for svenska organisationer, presenteras här kompletta implementationsExample which shows how real-world scenarios can lösas:
 
 ### Implementationsexempel 1: Svenska e-handelslösning
 
@@ -3721,7 +3721,7 @@ module "svenska_ecommerce_infrastructure" {
   enable_gdpr_customer_portal = true
   
   # Svenska lokaliseringskrav
-  supported_languages    = ["sv", "en"]
+  supported_languages    = ["sv", "a"]
   default_currency      = "SEK"
   tax_calculation_rules = "swedish_vat"
   
@@ -3830,29 +3830,29 @@ spec:
           periodSeconds: 5
 ```
 
-## Sammanfattning
+## Summary
 
 
-Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Molnarkitektur som kod representerar en fundamental evolution av Infrastructure as Code för svenska organisationer som opererar i cloud-native miljöer. Genom att utnyttja cloud provider-specifika tjänster och capabilities kan organisationer uppnå unprecedented skalbarhet, resiliens och kostnadseffektivitet samtidigt som svenska compliance-krav uppfylls.
+Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Cloud Architecture as Code representerar a fundamental evolution of Infrastructure as Code for svenska organisationer which opererar in cloud-native miljöer. Through to utnyttja cloud provider-specifika tjänster and capabilities can organisationer uppnå unprecedented scalability, resiliens and kostnadseffektivitet simultaneously which svenska compliance-krav uppfylls.
 
-De olika cloud provider-ekosystemen - AWS, Azure, och Google Cloud Platform - erbjuder var sitt unika värde för svenska organisationer. AWS dominerar genom omfattande tjänsteportfölj och stark närvaro i Stockholm-regionen. Azure attraherar svenska enterprise-organisationer genom stark Microsoft-integration och Sweden Central datacenter. Google Cloud Platform lockar innovationsorganisationer med sina machine learning capabilities och advanced analytics services.
+the olika cloud provider-ekosystemen - AWS, Azure, and Google Cloud Platform - erbjuder var sitt unika värde for svenska organisationer. AWS dominerar through comprehensive tjänsteportfölj and strong whenvaro in Stockholm-regionen. Azure attraherar svenska enterprise-organisationer through strong Microsoft-integration and Sweden Central datacenter. Google Cloud Platform lockar innovationsorganisationer with sina machine learning capabilities and advanced analytics services.
 
-Multi-cloud strategier möjliggör optimal distribution av workloads för att maximera prestanda, minimera kostnader och säkerställa resiliens. Tools som Terraform och Pulumi abstraherar provider-specifika skillnader och möjliggör konsistent management across olika cloud environments. För svenska organisationer innebär detta möjligheten att kombinera AWS för primary workloads, Azure för disaster recovery, och Google Cloud för analytics och machine learning.
+Multi-cloud strategier enables optimal distribution of workloads for to maximera prestanda, minimera kostnader and säkerställa resiliens. Tools that Terraform and Pulumi abstraherar provider-specifika skillnader and enables konsistent management across olika cloud environments. For svenska organisationer means This möjligheten to kombinera AWS for primary workloads, Azure for disaster recovery, and Google Cloud for analytics and machine learning.
 
-Serverless arkitekturer revolutionerar hur svenska organisationer tänker kring infrastructure management genom att eliminera traditional server administration och möjliggöra automatic scaling baserat på actual demand. Function-as-a-Service patterns, event-driven architectures, och managed services reducerar operational overhead samtidigt som de säkerställer GDPR compliance genom built-in security och audit capabilities.
+Serverless arkitekturer revolutionerar how svenska organisationer think about infrastructure management through to eliminera traditional server administration and möjliggöra automatic scaling baserat at actual demand. Function-as-a-Service patterns, event-driven architectures, and managed services reducerar operational overhead simultaneously which the ensures GDPR compliance through built-in security and audit capabilities.
 
-Container-first approaches med Kubernetes som orchestration platform utgör grunden för modern cloud-native applications. För svenska organisationer möjliggör detta portable workloads som kan köras across olika cloud providers samtidigt som consistent security policies och compliance requirements upprätthålls.
+Container-first approaches with Kubernetes which orchestration platform utgör grunden for modern cloud-native applications. For svenska organisationer enables This portable workloads which can köras across olika cloud providers simultaneously which consistent security policies and compliance requirements upprätthålls.
 
-Hybrid cloud implementations kombinerar on-premises infrastruktur med public cloud services för svenska organisationer som har legacy systems eller specifika regulatory requirements. Detta approach möjliggör gradual cloud migration samtidigt som känslig data kan behållas inom svenska gränser enligt data residency requirements.
+Hybrid cloud implementations kombinerar on-premises infraStructure with public cloud services for svenska organisationer which har legacy systems or specifika regulatory requirements. This approach enables gradual cloud migration simultaneously which känslig data can behållas within svenska gränser according to data residency requirements.
 
-Svenska organisationer som implementerar molnarkitektur som kod kan uppnå significant competitive advantages genom reduced time-to-market, improved scalability, enhanced security, och optimized costs. Samtidigt säkerställer proper implementation av Infrastructure as Code patterns att GDPR compliance, svensk data residency, och other regulatory requirements uppfylls automatically som en del av deployment processerna.
+Svenska organisationer which implementerar Cloud Architecture as Code can uppnå significant competitive advantages through reduced time-to-market, improved scalability, enhanced security, and optimized costs. simultaneously ensures proper implementation of Infrastructure as Code patterns to GDPR compliance, svensk data residency, and other regulatory requirements uppfylls automatically which a del of deployment processerna.
 
-Investment i molnarkitektur som kod betalar sig genom improved developer productivity, reduced operational overhead, enhanced system reliability, och better disaster recovery capabilities. Som vi kommer att se i [kapitel 6 om säkerhet](06_kapitel5.md), är dessa benefits särskilt viktiga när security och compliance requirements integreras som en natural del av infrastructure definition och deployment processer.
+Investment in Cloud Architecture as Code betalar itself through improved developer productivity, reduced operational overhead, enhanced systems reliability, and better disaster recovery capabilities. Which vi kommer to se in [chapters 6 about säkerhet](06_kapitel5.md), is These benefits särskilt viktiga when security and compliance requirements integreras which a natural del of infrastructure definition and deployment processes.
 
-Källor:
+Sources:
 - AWS. "Infrastructure as Code on AWS." Amazon Web Services Architecture Center.
-- Google Cloud. "Infrastructure as Code arkitektur som kod best practices." Google Cloud Documentation.
+- Google Cloud. "Infrastructure as Code Architecture as Code best practices." Google Cloud Documentation.
 - Microsoft Azure. "Azure Resource Manager Templates." Azure Documentation.
 - HashiCorp. "Terraform Multi-Cloud Infrastructure." HashiCorp Learn Platform.
 - Pulumi. "Cloud Programming Model." Pulumi Documentation.

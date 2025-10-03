@@ -1,44 +1,44 @@
-# Teststrategier för infrastruktukod
+# Teststrategier for infrastruktukod
 
-![Test pyramid för arkitektur som kod](images/diagram_17_kapitel16.png)
+![Test pyramid for architecture as code](images/diagram_17_kapitel16.png)
 
-*Omfattande teststrategi för Infrastructure as Code (arkitektur som kod) kräver multiple testing-nivåer från unit tests till end-to-end validation. Diagrammet illustrerar det strukturerade förloppet från snabba utvecklartester till omfattande integrationsvalidering.*
+*comprehensive teststrategi for Infrastructure as Code (Architecture as Code) requires multiple testing-levels from unit tests to end-to-end validation. Diagrammet illustrerar the Structureerade forloppet from snabba utvecklartester to comprehensive integrationsvalidering.*
 
 ## Övergripande beskrivning
 
-Testning av Infrastructure as Code skiljer sig grundläggande från traditionell programvarutestning genom att fokusera på arkitekturkonfiguration, resurskompatibilitet och miljökonsekvens istället för affärslogik. Effektiv testning av arkitektur som kod säkerställer att arkitektur som kod producerar förväntade resultat konsekvent över olika miljöer.
+testing of Infrastructure as Code differs itself grundläggande from traditionell programvarutestning through to fokusera at arkitekturkonfiguration, resurskompatibilitet and miljökonsekvens instead for affärslogik. Effektiv testing of Architecture as Code ensures to Architecture as Code producerar forväntade resultat konsekvent over olika miljöer.
 
-Modern Arkitektur som kod-testning omfattar flera dimensioner: syntaktisk validering av kod, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys och functional testing av deployed infrastruktur. Denna multilevel approach identifierar problem tidigt i utvecklingscykeln när de är billigare och enklare att fixa.
+Modern Architecture as Code-testing encompasses flera dimensioner: syntaktisk validation of code, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys and functional testing of deployed infraStructure. This multilevel approach identifierar problem tidigt in utvecklingscykeln when the is billigare and enklare to fixa.
 
-Svenska organisationer med strikta compliance-krav måste implementera comprehensive testing som validerar både teknisk funktionalitet och regulatory conformance. Detta inkluderar GDPR data protection controls, financial services regulations och government security standards som måste verifieras automatiskt.
+Svenska organisationer with strikta compliance-krav must implementera comprehensive testing which validerar both technical funktionalitet and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards which must verifieras automatically.
 
-Test automation for Arkitektur som kod möjliggör continuous integration och continuous deployment patterns som accelererar delivery samtidigt som de minskar risk för produktionsstörningar. Infrastructure testing pipelines kan köra parallellt med application testing för att säkerställa end-to-end quality assurance.
+Test automation for Architecture as Code enables continuous integration and continuous deployment patterns which accelererar delivery simultaneously which the minskar risk for produktionsstörningar. Infrastructure testing pipelines can köra parallellt with application testing for to säkerställa end-to-end quality assurance.
 
-## Unit testing för arkitektur som kod
+## Unit testing for architecture as code
 
-Unit testing för Infrastructure as Code fokuserar på validation av enskilda moduler och resources utan att faktiskt deploya infrastruktur. Detta möjliggör snabb feedback och early detection av konfigurationsfel, vilket är kritiskt för developer productivity och code quality.
+Unit testing for Infrastructure as Code fokuserar at validation of individual moduler and resources utan to faktiskt deploya infraStructure. This enables snabb feedback and early detection of konfigurationsfel, which is kritiskt for developer productivity and code quality.
 
-Terraform testing verktyg som Terratest, terraform-compliance och checkov möjliggör automated validation av HCL-kod mot predefined policies och arkitektur som kod best practices. Dessa verktyg kan integreras i IDE:er för real-time feedback under development samt i CI/CD pipelines för automated quality gates.
+Terraform testing verktyg that Terratest, terraform-compliance and checkov enables automated validation of HCL-code mot predefined policies and Architecture as Code best practices. These verktyg can integreras in IDE:er for real-time feedback under development samt in CI/CD pipelines for automated quality gates.
 
-Unit tests för Arkitektur som kod bör validera resource configurations, variable validations, output consistency och module interface contracts. Detta är särskilt viktigt för reusable modules som används across multiple projects där förändringar kan ha wide-ranging impact på dependent resources.
+Unit tests for Architecture as Code bör validera resource configurations, variable validations, output consistency and module interface contracts. This is särskilt viktigt for reusable modules which används across multiple projects where forändringar can ha wide-ranging impact at dependent resources.
 
-Mock testing strategies för cloud resources möjliggör testing utan faktiska cloud costs, vilket är essentiellt för frequent testing cycles. Verktyg som LocalStack och cloud provider simulators kan simulate cloud services locally för comprehensive testing utan infrastructure provisioning costs.
+Mock testing strategies for cloud resources enables testing utan faktiska cloud costs, which is essentiellt for frequent testing cycles. Verktyg that LocalStack and cloud provider simulators can simulate cloud services locally for comprehensive testing utan infrastructure provisioning costs.
 
-## Testhantering med Vitest för arkitektur som kod
+## Testhantering with Vitest for architecture as code
 
-Vitest är ett modernt testramverk byggt för Vite-ekosystemet som erbjuder snabb och effektiv testning av JavaScript/TypeScript-kod. För arkitektur som kod-projekt som använder Infrastructure as Code med moderna verktyg är Vitest särskilt relevant för att testa konfigurationsgeneratorer, validation scripts och automation verktyg som ofta skrivs i TypeScript eller JavaScript.
+Vitest is ett modernt testramverk byggt for Vite-ekosystemet which erbjuder snabb and effektiv testing of JavaScript/TypeScript-code. For Architecture as Code-projekt which använder Infrastructure as Code with moderna verktyg is Vitest särskilt relevant for to testa konfigurationsgeneratorer, validation scripts and automation verktyg which often skrivs in TypeScript or JavaScript.
 
-### Varför Vitest är relevant för arkitektur som kod
+### Varfor Vitest is relevant for architecture as code
 
-Många moderna Infrastructure as Code workflows inkluderar TypeScript/JavaScript-komponenter för att generera, validera eller transformera infrastrukturkonfigurationer. Vitest möjliggör snabb unit testing av dessa komponenter med förstklassig TypeScript-support, vilket är kritiskt för att säkerställa korrekt konfigurationsgenerering innan deployment.
+Många moderna Infrastructure as Code workflows includes TypeScript/JavaScript-components for to generera, validera or transformera infraStructurekonfigurationer. Vitest enables snabb unit testing of These components with forstklassig TypeScript-support, which is kritiskt for to säkerställa korrekt konfigurationsgenerering innan deployment.
 
-Vitest's snabba execution och watch mode möjliggör tight development feedback loops när man utvecklar infrastructure configuration generators eller policy validation scripts. Detta är särskilt värdefullt för arkitektur som kod-projekt där konfigurationsfel kan leda till costly infrastructure mistakes.
+Vitest's snabba execution and watch mode enables tight development feedback loops when man utvecklar infrastructure configuration generators or policy validation scripts. This is särskilt värdefullt for Architecture as Code-projekt where konfigurationsfel can leda to costly infrastructure mistakes.
 
-Integration med Vite build tooling innebär att samma utvecklingsmiljö kan användas för både application code och infrastructure-relaterad kod, vilket reducerar context switching och förbättrar developer experience för team som arbetar med both application och infrastructure code.
+Integration with Vite build tooling means to same utvecklingsmiljö can användas for both application code and infrastructure-relaterad code, which reducerar context switching and forbättrar developer experience for team which arbetar with both application and infrastructure code.
 
-### Konfiguration av Vitest för Infrastructure as Code-projekt
+### Konfiguration of Vitest for Infrastructure as Code-projekt
 
-För att integrera Vitest i ett arkitektur som kod-projekt behöver vi först installera nödvändiga dependencies och konfigurera test environment:
+For to integrera Vitest in ett Architecture as Code-projekt behöver vi forst installera nödvändiga dependencies and konfigurera test environment:
 
 ```bash
 # Installera Vitest och relaterade dependencies
@@ -49,7 +49,7 @@ npm install -D @types/node  # För Node.js API:er
 npm install -D @vitest/coverage-v8
 ```
 
-Skapa en `vitest.config.ts` fil i projekt root:
+Skapa a `vitest.config.ts` fil in projekt root:
 
 ```typescript
 // vitest.config.ts
@@ -58,7 +58,7 @@ import path from 'path';
 
 export default defineConfig({
   test: {
-    // Använd globals för att undvika imports i varje testfil
+    // Använd globals för to undvika imports in each testfil
     globals: true,
     
     // Test environment (node för infrastructure tooling)
@@ -105,9 +105,9 @@ export default defineConfig({
 });
 ```
 
-### Praktiska exempel för Infrastructure as Code testing
+### Praktiska example for Infrastructure as Code testing
 
-#### Exempel 1: Testa Terraform Configuration Generator
+#### Example 1: Testa Terraform Configuration Generator
 
 ```typescript
 // src/generators/terraform-config.ts
@@ -132,7 +132,7 @@ export class TerraformConfigGenerator {
     // Validera svenska regioner för GDPR compliance
     const swedishRegions = ['eu-north-1', 'eu-west-1'];
     if (!swedishRegions.includes(region)) {
-      throw new Error('Region måste vara inom EU för GDPR compliance');
+      throw new Error('Region must vara inom EU för GDPR compliance');
     }
 
     return {
@@ -167,7 +167,7 @@ export class TerraformConfigGenerator {
   ): ResourceConfig {
     // Säkerställ encryption för production
     if (environment === 'production' && !encrypted) {
-      throw new Error('Production databaser måste ha encryption aktiverad');
+      throw new Error('Production databaser must ha encryption aktiverad');
     }
 
     return {
@@ -223,7 +223,7 @@ describe('TerraformConfigGenerator', () => {
     it('ska kasta fel för icke-EU regioner', () => {
       expect(() => {
         generator.generateVPCConfig('production', 'us-east-1');
-      }).toThrow('Region måste vara inom EU för GDPR compliance');
+      }).toThrow('Region must vara inom EU för GDPR compliance');
     });
 
     it('ska aktivera DNS support och hostnames', () => {
@@ -239,7 +239,7 @@ describe('TerraformConfigGenerator', () => {
     it('ska kräva encryption för production miljöer', () => {
       expect(() => {
         generator.generateRDSConfig('production', 'db.t3.micro', false);
-      }).toThrow('Production databaser måste ha encryption aktiverad');
+      }).toThrow('Production databaser must ha encryption aktiverad');
     });
 
     it('ska generera korrekt RDS config för production', () => {
@@ -272,7 +272,7 @@ describe('TerraformConfigGenerator', () => {
 });
 ```
 
-#### Exempel 2: Testa Infrastructure Validation Scripts
+#### Example 2: Testa Infrastructure Validation Scripts
 
 ```typescript
 // src/validators/infrastructure-validator.ts
@@ -307,7 +307,7 @@ export class InfrastructureValidator {
       }
     }
 
-    // Warn om GdprCompliant tag saknas för känslig data
+    // Warn about GdprCompliant tag saknas för känslig data
     if (tags['DataClassification'] === 'personal' && !tags['GdprCompliant']) {
       warnings.push('GdprCompliant tag rekommenderas för personal data');
     }
@@ -330,7 +330,7 @@ export class InfrastructureValidator {
       if (rule.cidr === '0.0.0.0/0') {
         if ([22, 3389, 3306, 5432].includes(rule.port)) {
           errors.push(
-            `Port ${rule.port} ska inte vara öppen mot internet (0.0.0.0/0)`
+            `Port ${rule.port} ska not vara öppen mot internet (0.0.0.0/0)`
           );
         }
       }
@@ -338,7 +338,7 @@ export class InfrastructureValidator {
       // Varning för vanliga portar
       if (rule.cidr === '0.0.0.0/0' && [80, 443].includes(rule.port)) {
         warnings.push(
-          `Port ${rule.port} är öppen mot internet - verifiera att detta är avsiktligt`
+          `Port ${rule.port} is öppen mot internet - verifiera to detta is avsiktligt`
         );
       }
     }
@@ -361,7 +361,7 @@ describe('InfrastructureValidator', () => {
   const validator = new InfrastructureValidator();
 
   describe('validateResourceTags', () => {
-    it('ska validera att required tags finns', () => {
+    it('ska validera to required tags finns', () => {
       const tags = {
         Environment: 'production',
         ManagedBy: 'Terraform',
@@ -397,7 +397,7 @@ describe('InfrastructureValidator', () => {
       expect(result.errors[0]).toContain('Ogiltig DataClassification');
     });
 
-    it('ska varna om GdprCompliant tag saknas för personal data', () => {
+    it('ska varna about GdprCompliant tag saknas för personal data', () => {
       const tags = {
         Environment: 'production',
         ManagedBy: 'Terraform',
@@ -434,7 +434,7 @@ describe('InfrastructureValidator', () => {
       const result = validator.validateSecurityGroup(rules);
       
       expect(result.valid).toBe(false);
-      expect(result.errors[0]).toContain('Port 22 ska inte vara öppen');
+      expect(result.errors[0]).toContain('Port 22 ska not vara öppen');
     });
 
     it('ska blockera databas portar öppna mot internet', () => {
@@ -476,9 +476,9 @@ describe('InfrastructureValidator', () => {
 });
 ```
 
-### Integration i CI/CD Pipeline
+### Integration in CI/CD Pipeline
 
-Vitest kan integreras i CI/CD pipelines för automated testing av infrastructure code:
+Vitest can integreras in CI/CD pipelines for automated testing of infrastructure code:
 
 ```yaml
 # .github/workflows/infrastructure-validation.yml
@@ -529,7 +529,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-Lägg till test scripts i `package.json`:
+Lägg to test scripts in `package.json`:
 
 ```json
 {
@@ -542,9 +542,9 @@ Lägg till test scripts i `package.json`:
 }
 ```
 
-### Rekommendationer för testorganisering
+### Recommendations for testorganisering
 
-**Filstruktur för Infrastructure Code Tests:**
+**FilStructure for Infrastructure Code Tests:**
 
 ```
 project/
@@ -567,19 +567,19 @@ project/
 └── package.json
 ```
 
-**Best Practices för Infrastructure Testing med Vitest:**
+**Best Practices for Infrastructure Testing with Vitest:**
 
-1. **Snabba unit tests:** Håll unit tests snabba (<100ms per test) för att möjliggöra effektiv watch mode under development.
+1. **Snabba unit tests:** Håll unit tests snabba (<100ms per test) for to möjliggöra effektiv watch mode under development.
 
-2. **Isolerade tester:** Varje test ska vara oberoende och kunna köras i valfri ordning utan side effects.
+2. **Isolerade tester:** each test ska vara oberoende and kunna köras in valfri ordning utan side effects.
 
-3. **Beskrivande test namn:** Använd tydliga test beskrivningar som dokumenterar expected behavior: `'ska kasta fel för icke-EU regioner'`.
+3. **Beskrivande test namn:** Använd tydliga test beskrivningar which dokumenterar expected behavior: `'ska kasta fel for icke-EU regioner'`.
 
-4. **Test fixtures:** Använd shared test fixtures för common infrastructure configurations, men var försiktig med mutable state.
+4. **Test fixtures:** Använd shared test fixtures for common infrastructure configurations, men var forsiktig with mutable state.
 
-5. **Coverage mål:** Sikta på minst 80% code coverage för infrastructure configuration och validation code, men fokusera på meaningful tests snarare än coverage metrics.
+5. **Coverage mål:** Sikta at minst 80% code coverage for infrastructure configuration and validation code, men fokusera at meaningful tests snarare än coverage metrics.
 
-6. **Mock externa beroenden:** Använd Vitest's mocking capabilities för att mocka cloud provider SDKs och external APIs:
+6. **Mock externa beroenden:** Använd Vitest's mocking capabilities for to mocka cloud provider SDKs and external APIs:
 
 ```typescript
 import { vi } from 'vitest';
@@ -594,7 +594,7 @@ vi.mock('aws-sdk', () => ({
 }));
 ```
 
-7. **Snapshot testing:** Använd snapshot tests för att validera generated configuration files:
+7. **Snapshot testing:** Använd snapshot tests for to validera generated configuration files:
 
 ```typescript
 it('ska generera korrekt terraform config', () => {
@@ -603,9 +603,9 @@ it('ska generera korrekt terraform config', () => {
 });
 ```
 
-### Automation och Watch Mode
+### Automation and Watch Mode
 
-En av Vitest's största fördelar är watch mode som möjliggör continuous testing under development:
+a of Vitest's största Benefits is watch mode which enables continuous testing under development:
 
 ```bash
 # Starta watch mode för automated re-testing
@@ -618,57 +618,57 @@ npm run test:watch -- --changed
 npm run test:ui
 ```
 
-Detta möjliggör tight feedback loops där infrastructure code changes omedelbart valideras, vilket reducerar tiden mellan code change och feedback från seconds till milliseconds.
+This enables tight feedback loops where infrastructure code changes owithelbart valideras, which reducerar tiden mellan code change and feedback from seconds to milliseconds.
 
-För svenska organisationer med strikta compliance krav kan automated testing med Vitest säkerställa att infrastructure configurations konsekvent uppfyller GDPR requirements, security policies och organizational standards innan deployment.
+For svenska organisationer with strikta compliance krav can automated testing with Vitest säkerställa to infrastructure configurations konsekvent uppfyller GDPR requirements, security policies and organizational standards innan deployment.
 
-## Integrationstesting och miljövalidering
+## Integrationstesting and miljövalidering
 
-Integration testing för Infrastructure as Code verifierar att different infrastructure components fungerar tillsammans korrekt och att deployed infrastruktur möter performance och security requirements. Detta kräver temporary test environments som closely mirror production configurations.
+Integration testing for Infrastructure as Code verifierar to different infrastructure components fungerar tosammans korrekt and to deployed infraStructure möter performance and security requirements. This requires temporary test environments which closely mirror production configurations.
 
-End-to-end testing workflows måste validate hela deployment pipelines från source code changes till functional infrastructure. Detta inkluderar testing av CI/CD pipeline configurations, secret management, monitoring setup och rollback procedures som är critical för production stability.
+End-to-end testing workflows must validate entire deployment pipelines from source code changes to functional infrastructure. This includes testing of CI/CD pipeline configurations, secret management, monitoring setup and rollback procedures which is critical for production stability.
 
-Environment parity testing säkerställer att infrastructure behaves consistently across development, staging och production miljöer. Denna testing identifierar environment-specific issues som kan orsaka deployment failures eller performance discrepancies mellan miljöer.
+Environment parity testing ensures to infrastructure behaves consistently across development, staging and production miljöer. This testing identifierar environment-specific issues which can orsaka deployment failures or performance discrepancies mellan miljöer.
 
-Chaos engineering principles kan appliceras på infrastructure testing genom att systematiskt introduce failures i test environments för att validate resilience och recovery mechanisms. Detta är särskilt värdefullt för mission-critical systems som kräver high availability guarantees.
+Chaos engineering principles can appliceras at infrastructure testing through to systematiskt introduce failures in test environments for to validate resilience and recovery mechanisms. This is särskilt värdefullt for mission-critical systems which requires high availability guarantees.
 
-## Security och compliance testing
+## Security and compliance testing
 
-Security testing för Infrastructure as Code måste validate både infrastructure configuration security och operational security controls. Detta inkluderar scanning för common security misconfigurations, valdation av encryption settings och verification av network security policies.
+Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, valdation of encryption settings and verification of network security policies.
 
-Compliance testing automation säkerställer att infrastructure configurations möter regulatory requirements kontinuerligt. Svenska organisationer måste validate GDPR compliance, financial regulations och government security standards through automated testing som kan provide audit trails för compliance reporting.
+Compliance testing automation ensures to infrastructure configurations möter regulatory requirements kontinuerligt. Svenska organisationer must validate GDPR compliance, financial regulations and government security standards through automated testing which can provide audit trails for compliance reporting.
 
-Policy-as-code frameworks som Open Policy Agent (OPA) och AWS Config Rules möjliggör declarative definition av compliance policies som kan enforced automatically under infrastructure deployment. Detta preventative approach är mer effective än reactive compliance monitoring.
+Policy-as-code frameworks that Open Policy Agent (OPA) and AWS Config Rules enables declarative definition of compliance policies which can enforced automatically under infrastructure deployment. This preventative approach is mer effective än reactive compliance monitoring.
 
-Vulnerability scanning för infrastructure dependencies måste include container images, operating system configurations och third-party software components. Integration med security scanning tools i CI/CD pipelines ensures att security vulnerabilities identifieras innan deployment till production.
+Vulnerability scanning for infrastructure dependencies must include container images, operating systems configurations and third-party software components. Integration with security scanning tools in CI/CD pipelines ensures to security vulnerabilities identifieras innan deployment to production.
 
-## Performance och skalbarhetstesting
+## Performance and skalbarhetstesting
 
-Performance testing för Infrastructure as Code fokuserar på validation av infrastructure capacity, response times och resource utilization under various load conditions. Detta är critical för applications som kräver predictable performance characteristics under varying traffic patterns.
+Performance testing for Infrastructure as Code fokuserar at validation of infrastructure capacity, response times and resource utilization under various load conditions. This is critical for applications which requires predictable performance characteristics under varying traffic patterns.
 
-Load testing strategies måste validate auto-scaling configurations, resource limits och failover mechanisms under realistic traffic scenarios. Infrastructure performance testing kan include database performance under load, network throughput validation och storage I/O capacity verification.
+Load testing strategies must validate auto-scaling configurations, resource limits and failover mechanisms under realistic traffic scenarios. Infrastructure performance testing can include database performance under load, network throughput validation and storage in/O capacity verification.
 
-Skalabilitetstesting verifierar att infrastructure kan handle projected growth efficiently through automated scaling mechanisms. Detta inkluderar testing av horizontal scaling för stateless services och validation av data partitioning strategies för stateful systems.
+Skalabilitetstesting verifierar to infrastructure can handle projected growth efficiently through automated scaling mechanisms. This includes testing of horizontal scaling for stateless services and validation of data partitioning strategies for stateful systems.
 
-Capacity planning validation genom performance testing hjälper optimize resource configurations för cost-effectiveness samtidigt som performance requirements uppfylls. Detta är särskilt important för svenska organisationer som balanserar cost optimization med service level requirements.
+Capacity planning validation through performance testing hjälper optimize resource configurations for cost-effectiveness simultaneously which performance requirements uppfylls. This is särskilt important for svenska organisationer which balanserar cost optimization with service level requirements.
 
-## Krav som kod och testbarhet
+## Requirements as Code and testbarhet
 
-![Requirements och testing relation](images/diagram_12_requirements_testing.png)
+![Requirements and testing relation](images/diagram_12_requirements_testing.png)
 
-*Relationen mellan affärskrav, funktionella krav och verifieringsmetoder illustrerar hur Infrastructure as Code möjliggör spårbar testning från högre abstraktionsnivåer ner till konkreta arkitektur som kod-implementationer.*
+*Relationen mellan affärskrav, funktionella krav and verifieringsmetoder illustrerar how Infrastructure as Code enables spårbar testing from högre abstraktionsnivåer ner to konkreta Architecture as Code-implementationer.*
 
-Requirements-as-Code representerar ett paradigmskifte där affärskrav och compliance-krav kodifieras i maskinläsbar form tillsammans med infrastructure-koden. Detta möjliggör automatiserad validering av att infrastrukturen verkligen uppfyller de specificerade kraven genom hela utvecklingslivscykeln.
+Requirements-as-Code representerar ett paradigmskifte where affärskrav and compliance-krav kodifieras in maskinläsbar form tosammans with infrastructure-koden. This enables automatiserad validation of to infraStructureen verkligen uppfyller the specificerade kraven through entire utvecklingslivscykeln.
 
-Genom att definiera krav som kod skapas en direkt koppling mellan business requirements, functional requirements och de automatiserade tester som verifierar arkitektur som kod-implementationen. Denna traceability är kritisk för organisationer som måste demonstrera compliance och för utvecklingsteam som behöver förstå affärskonsekvenserna av tekniska beslut.
+Through to definiera Requirements as Code are created a direkt koppling mellan business requirements, functional requirements and the automatiserade tester which verifierar Architecture as Code-implementationen. This traceability is kritisk for organisationer which must demonstrera compliance and for utvecklingsteam which behöver forstå affärskonsekvenserna of tekniska beslut.
 
-### Kravspårbarhet i praktiken
+### Kravspårbarhet in praktiken
 
-Requirements traceability för Infrastructure as Code innebär att varje infrastrukturkomponent kan kopplas tillbaka till specifika affärskrav eller compliance-krav. Detta är särskilt viktigt för svenska organisationer som måste uppfylla GDPR, finansiella regleringar eller myndighetskrav.
+Requirements traceability for Infrastructure as Code means to each infraStructurekomponent can kopplas tobaka to specifika affärskrav or compliance-krav. This is särskilt viktigt for svenska organisationer which must uppfylla GDPR, finansiella regleringar or myndighetskrav.
 
-Verktyg som Open Policy Agent (OPA) möjliggör uttryck av compliance-krav som policies som kan evalueras automatiskt mot infrastructure-konfigurationer. Dessa policies blir testable requirements som kan köras kontinuerligt för att säkerställa ongoing compliance.
+Verktyg that Open Policy Agent (OPA) enables uttryck of compliance-krav which policies which can evalueras automatically mot infrastructure-konfigurationer. These policies blir testable requirements which can köras kontinuerligt for to säkerställa ongoing compliance.
 
-Requirement validation testing säkerställer att infrastructure inte bara är tekniskt korrekt utan också uppfyller business intent. Detta inkluderar validering av säkerhetskrav, performance-krav, tillgänglighetskrav och kostnadsramar som defined av business stakeholders.
+Requirement validation testing ensures to infrastructure not only is tekniskt korrekt utan också uppfyller business intent. This includes validation of säkerhetskrav, performance-krav, togänglighetskrav and kostnadsramar which defined of business stakeholders.
 
 ### Automated Requirements Verification
 
@@ -683,7 +683,7 @@ spec:
   requirements:
     - id: SEC-001
       type: security
-      description: "Alla S3 buckets måste ha kryptering aktiverad"
+      description: "all S3 buckets must ha kryptering aktiverad"
       priority: critical
       compliance: ["GDPR", "ISO27001"]
       tests:
@@ -695,7 +695,7 @@ spec:
     
     - id: SEC-002  
       type: security
-      description: "RDS instanser måste använda encrypted storage"
+      description: "RDS instanser must använda encrypted storage"
       priority: critical
       compliance: ["GDPR"]
       tests:
@@ -706,7 +706,7 @@ spec:
           
     - id: PERF-001
       type: performance
-      description: "Auto-scaling måste vara konfigurerat för production workloads"
+      description: "Auto-scaling must vara konfigurerat för production workloads"
       priority: high
       tests:
         - type: integration-test
@@ -719,7 +719,7 @@ spec:
 ```python
 # test/requirements_validation.py
 """
-Automatiserad validering av krav mot Infrastructure as Code
+Automatiserad validation of krav mot Infrastructure as Code
 """
 import yaml
 import subprocess
@@ -732,7 +732,7 @@ class RequirementValidator:
             self.requirements = yaml.safe_load(f)
     
     def validate_all_requirements(self) -> Dict[str, Any]:
-        """Kör alla krav-relaterade tester och sammanställ resultat"""
+        """Kör all krav-relaterade tester och sammanställ resultat"""
         results = {
             'passed': [],
             'failed': [],
@@ -764,7 +764,7 @@ class RequirementValidator:
         return results
     
     def _validate_requirement(self, requirement: Dict) -> Dict[str, Any]:
-        """Validera ett enskilt krav genom att köra associerade tester"""
+        """Validera ett enskilt krav through to köra associerade tester"""
         req_id = requirement['id']
         test_results = []
         
@@ -790,7 +790,7 @@ class RequirementValidator:
         }
     
     def _execute_test(self, test_config: Dict, req_id: str) -> Dict[str, Any]:
-        """Exekvera ett specifikt test baserat på dess typ"""
+        """Exekvera ett specifikt test baserat at dess typ"""
         test_type = test_config['type']
         
         if test_type == 'static-analysis':
@@ -870,9 +870,9 @@ class RequirementValidator:
         return coverage
 ```
 
-## Praktiska exempel
+## Praktiska example
 
-### Terraform Unit Testing med Terratest
+### Terraform Unit Testing with Terratest
 ```go
 // test/terraform_test.go
 package test
@@ -898,7 +898,7 @@ func TestTerraformSwedishInfrastructure(t *testing.T) {
         TerraformDir: terraformDir,
         Vars: map[string]interface{}{
             "environment":      "test",
-            "project_name":     "arkitektur som kod-test-" + uniqueId,
+            "project_name":     "architecture as code-test-" + uniqueId,
             "region":          "eu-north-1", // Stockholm för svenska krav
             "enable_gdpr_logs": true,
             "data_classification": "internal",
@@ -915,15 +915,15 @@ func TestTerraformSwedishInfrastructure(t *testing.T) {
     // Kör terraform init och plan
     terraform.InitAndPlan(t, terraformOptions)
 
-    // Validera att plan innehåller förväntade resources
+    // Validera to plan innehåller förväntade resources
     planStruct := terraform.InitAndPlanAndShowWithStruct(t, terraformOptions)
     
-    // Test: Validera att alla resurser har korrekta tags
+    // Test: Validera to all resurser har korrekta tags
     for _, resource := range planStruct.PlannedValues.RootModule.Resources {
         if resource.Type == "aws_instance" || resource.Type == "aws_rds_instance" {
             tags := resource.AttributeValues["tags"].(map[string]interface{})
             
-            assert.Equal(t, "arkitektur som kod-test-" + uniqueId, tags["Project"])
+            assert.Equal(t, "architecture as code-test-" + uniqueId, tags["Project"])
             assert.Equal(t, "test", tags["Environment"])
             assert.Equal(t, "internal", tags["DataClassification"])
             
@@ -936,15 +936,15 @@ func TestTerraformSwedishInfrastructure(t *testing.T) {
     // Test: Validera säkerhetskonfiguration
     for _, resource := range planStruct.PlannedValues.RootModule.Resources {
         if resource.Type == "aws_s3_bucket" {
-            // Validera att S3 buckets har encryption enabled
+            // Validera to S3 buckets har encryption enabled
             encryption := resource.AttributeValues["server_side_encryption_configuration"]
-            assert.NotNil(t, encryption, "S3 bucket måste ha encryption konfigurerad")
+            assert.NotNil(t, encryption, "S3 bucket must ha encryption konfigurerad")
         }
         
         if resource.Type == "aws_rds_instance" {
-            // Validera att RDS instances har encryption at rest
+            // Validera to RDS instances har encryption at rest
             encrypted := resource.AttributeValues["storage_encrypted"].(bool)
-            assert.True(t, encrypted, "RDS instans måste ha storage encryption aktiverad")
+            assert.True(t, encrypted, "RDS instans must ha storage encryption aktiverad")
         }
     }
 
@@ -956,12 +956,12 @@ func TestTerraformSwedishInfrastructure(t *testing.T) {
 }
 
 func validateInfrastructureDeployment(t *testing.T, terraformOptions *terraform.Options, uniqueId string) {
-    // Hämta outputs från terraform
+    // Hämta outputs from terraform
     vpcId := terraform.Output(t, terraformOptions, "vpc_id")
-    require.NotEmpty(t, vpcId, "VPC ID ska inte vara tom")
+    require.NotEmpty(t, vpcId, "VPC ID ska not vara tom")
 
     dbEndpoint := terraform.Output(t, terraformOptions, "database_endpoint")
-    require.NotEmpty(t, dbEndpoint, "Database endpoint ska inte vara tom")
+    require.NotEmpty(t, dbEndpoint, "Database endpoint ska not vara tom")
 
     // Test: Validera nätverkskonfiguration
     validateNetworkConfiguration(t, vpcId)
@@ -974,29 +974,29 @@ func validateInfrastructureDeployment(t *testing.T, terraformOptions *terraform.
 }
 
 func validateNetworkConfiguration(t *testing.T, vpcId string) {
-    // Implementation för nätverksvalidering
+    // implementation för nätverksvalidering
     // Kontrollera subnets, routing tables, security groups etc.
 }
 
 func validateDatabaseConnectivity(t *testing.T, endpoint string) {
-    // Implementation för databasconnectivity testing
-    // Kontrollera att databas är accessible och responsiv
+    // implementation för databasconnectivity testing
+    // Kontrollera to databas is accessible och responsiv
 }
 
 func validateMonitoringSetup(t *testing.T, terraformOptions *terraform.Options) {
-    // Implementation för monitoring validation
+    // implementation för monitoring validation
     // Kontrollera CloudWatch metrics, alarms, logging etc.
 }
 ```
 
-### Policy-as-Code Testing med OPA
+### Policy-as-Code Testing with OPA
 ```rego
 # policies/aws_security_test.rego
 package aws.security.test
 
 import rego.v1
 
-# Test: S3 Buckets måste ha encryption
+# Test: S3 Buckets must ha encryption
 test_s3_encryption_required if {
     input_s3_without_encryption := {
         "resource_type": "aws_s3_bucket",
@@ -1027,7 +1027,7 @@ test_s3_encryption_allowed if {
     aws.security.s3_encryption_required with input as input_s3_with_encryption
 }
 
-# Test: EC2 instances måste ha säkerhetgrupper konfigurerade
+# Test: EC2 instances must ha säkerhetgrupper konfigurerade
 test_ec2_security_groups_required if {
     input_ec2_without_sg := {
         "resource_type": "aws_instance",
@@ -1077,7 +1077,7 @@ test_gdpr_data_classification_valid if {
 
 ### Kubernetes Infrastructure Testing
 
-Arkitektur som kod-principerna inom detta område
+Architecture as Code-principerna within This område
 ```yaml
 # test/k8s-test-suite.yaml
 apiVersion: v1
@@ -1109,7 +1109,7 @@ data:
     echo "Testing Network Policies..."
     NAMESPACES=$(kubectl get ns --no-headers -o custom-columns=":metadata.name")
     for ns in $NAMESPACES; do
-      if [ "$ns" != "kube-system" ] && [ "$ns" != "kube-public" ]; then
+      if [ "$ns" != "kube-systems" ] && [ "$ns" != "kube-public" ]; then
         if ! kubectl get networkpolicy -n $ns --no-headers 2>/dev/null | grep -q .; then
           echo "WARNING: No network policies in namespace $ns"
         fi
@@ -1163,11 +1163,11 @@ spec:
   backoffLimit: 3
 ```
 
-## Pipeline automation för infrastrukturtestning
+## Pipeline automation for infrastrukturtestning
 
-### CI/CD Pipeline för Infrastructure Testing
+### CI/CD Pipeline for Infrastructure Testing
 
-Arkitektur som kod-principerna inom detta område
+Architecture as Code-principerna within This område
 ```yaml
 # .github/workflows/infrastructure-testing.yml
 name: Infrastructure Testing Pipeline
@@ -1279,7 +1279,7 @@ jobs:
       
       - name: GDPR Compliance Check
         run: |
-          # Kontrollera att alla databaser har encryption
+          # Kontrollera to all databaser har encryption
           grep -r "storage_encrypted.*=.*true" terraform/ || \
           (echo "ERROR: Icke-krypterade databaser upptäckta" && exit 1)
           
@@ -1292,7 +1292,7 @@ jobs:
           # MSB säkerhetskrav för kritisk infrastruktur
           ./scripts/msb-compliance-check.sh terraform/
           
-          # Validera att svenska regioner används
+          # Validera to svenska regioner används
           if grep -r "us-" terraform/ --include="*.tf"; then
             echo "WARNING: Amerikanska regioner upptäckta - kontrollera datasuveränitet"
           fi
@@ -1316,22 +1316,22 @@ jobs:
           ./scripts/cost-analysis.sh terraform/
 ```
 
-## Sammanfattning
+## Summary
 
 
-Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Comprehensive testing strategies för Infrastructure as Code är essential för att säkerställa reliable, secure och cost-effective infrastructure deployments. En väl designad test pyramid med unit tests, integration tests och end-to-end validation kan dramatiskt reducera production issues och förbättra developer confidence.
+Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Comprehensive testing strategies for Infrastructure as Code is essential for to säkerställa reliable, secure and cost-effective infrastructure deployments. a väl designad test pyramid with unit tests, integration tests and end-to-end validation can dramatiskt reducera production issues and forbättra developer confidence.
 
-Svenska organisationer måste särskilt fokusera på compliance testing som validates GDPR requirements, financial regulations och government security standards. Automated policy testing med verktyg som OPA möjliggör continuous compliance verification utan manual overhead.
+Svenska organisationer must särskilt fokusera at compliance testing which validates GDPR requirements, financial regulations and government security standards. Automated policy testing with verktyg that OPA enables continuous compliance verification utan manual overhead.
 
-Investment i robust Arkitektur som kod testing frameworks pays off genom reduced production incidents, faster development cycles och improved regulatory compliance. Modern testing verktyg och cloud-native testing strategies möjliggör comprehensive validation utan prohibitive costs eller complexity.
+Investment in robust Architecture as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing verktyg and cloud-native testing strategies enables comprehensive validation utan prohibitive costs or complexity.
 
-## Källor och referenser
+## Sources and referenser
 
 - Terratest Documentation. "Infrastructure Testing for Terraform." Gruntwork, 2023.
-- Open Policy Agent. "Policy Testing arkitektur som kod best practices." CNCF OPA Project, 2023.
+- Open Policy Agent. "Policy Testing Architecture as Code best practices." CNCF OPA Project, 2023.
 - AWS. "Infrastructure Testing Strategy Guide." Amazon Web Services, 2023.
-- Kubernetes. "Testing Infrastructure och Applications." Kubernetes Documentation, 2023.
+- Kubernetes. "Testing Infrastructure and Applications." Kubernetes Documentation, 2023.
 - NIST. "Security Testing for Cloud Infrastructure." NIST Cybersecurity Framework, 2023.
 - CSA. "Cloud Security Testing Guidelines." Cloud Security Alliance, 2023.
 - Vitest. "Next Generation Testing Framework." Vitest Documentation, 2024.

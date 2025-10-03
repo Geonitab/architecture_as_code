@@ -1,204 +1,204 @@
-# Kravspecifikation för "Arkitektur som Kod"
+# Kravspecifikation for "architecture which code"
 
 ## Översikt
 
-Detta dokument definierar de omfattande kraven för innehållet i boken "Arkitektur som Kod" - en teknisk bok som täcker arkitektur som kod från grundläggande principer till avancerad implementation.
+This dokument definierar the comprehensive kraven for Contentset in boken "Architecture as Code" - a technical bok which täcker Architecture as Code from grundläggande principles to avancerad implementation.
 
-## 1. Målgrupp (Target Audience)
+## 1. Target Audience (Target Audience)
 
 ### Primär målgrupp
-- **Systemarkitekter** (5-15 års erfarenhet): Behöver fördjupad förståelse för hur traditionella arkitekturprinciper appliceras i koddriven miljö
-- **DevOps-ingenjörer** (3-10 års erfarenhet): Vill expandera från infrastrukturautomation till helhetslösningar
-- **Utvecklare** (3-12 års erfarenhet): Söker förståelse för arkitektoniska beslut och kodstruktur på systemnivå
-- **Projektledare** (5-15 års erfarenhet): Behöver inblick i tekniska aspekter för att leda transformation
-- **IT-chefer** (8-20 års erfarenhet): Vill förstå strategiska fördelar och organisatoriska implikationer
+- **systems Architects** (5-15 års erfarenhet): Behöver fordjupad forståelse for how traditionella arkitekturprinciper appliceras in koddriven miljö
+- **DevOps Engineers** (3-10 års erfarenhet): Vill expandera from infraStructureautomation to helhetslösningar
+- **Developers** (3-12 års erfarenhet): Söker forståelse for arkitektoniska beslut and kodStructure at systemnivå
+- **Project Managers** (5-15 års erfarenhet): Behöver inblick in tekniska aspekter for to leda transformation
+- **IT Managers** (8-20 års erfarenhet): Vill forstå strategiska Benefits and organizational implikationer
 
-### Sekundär målgrupp
-- **Tekniska konsulter** som implementerar lösningar åt kunder
-- **Studenter** inom datavetenskap och systemutveckling (avancerad nivå)
-- **Produktägare** som arbetar med tekniska produkter
-- **Säkerhetsspecialister** som behöver förstå arkitekturautomation
+### Sekunwhere målgrupp
+- **Tekniska konsulter** which implementerar lösningar åt kunder
+- **Studenter** within datavetenskap and systemutveckling (avancerad nivå)
+- **Produktägare** which arbetar with tekniska produkter
+- **Säkerhetsspecialister** which behöver forstå arkitekturautomation
 
 ### Förkunskapskrav
-- Grundläggande förståelse för molnplattformar (AWS, Azure, GCP)
-- Erfarenhet av versionskontroll (Git)
-- Kunskap om minst ett programmeringsspråk
-- Förståelse för CI/CD-koncept
+- Grundläggande forståelse for molnplattformar (AWS, Azure, GCP)
+- Erfarenhet of version control (Git)
+- Kunskap about minst ett programmeringsspråk
+- Forståelse for CI/CD-concepts
 - Grundläggande Unix/Linux-kunskaper
 
 ## 2. Centrala Teman (Core Themes)
 
-### Huvudtema: Arkitektur som kod
-**Definition**: Praktiken att beskriva, versionhantera och automatisera hela systemarkitekturen genom maskinläsbar kod, vilket omfattar infrastruktur, applikationer, dataflöden, säkerhetspolicies och organisatoriska processer.
+### Huvudtema: Architecture as Code
+**definition**: Praktiken to describe, versionhantera and automatisera entire systemarkitekturen through maskinläsbar code, which encompasses infraStructure, applikationer, data flows, säkerhetspolicies and organizational processes.
 
-### Underteman (23 kapitel)
+### Underteman (23 chapters)
 
-#### A. Grundläggande Koncept (Kapitel 1-3)
-- **Teoretisk grund**: Evolution från manuella processer till koddriven arkitektur
-- **Principiell förståelse**: Deklarativ vs. imperativ kod, immutabilitet, idempotens
-- **Versionskontroll**: Kodstruktur, branching-strategier, merge-processer
+#### A. Grundläggande concepts (chapters 1-3)
+- **Teoretisk grund**: Evolution from manuella processes to koddriven architecture
+- **Principiell forståelse**: Deklarativ vs. imperative code, immutabilitet, idempotens
+- **version control**: KodStructure, branching-strategier, merge-processes
 
-#### B. Praktisk Implementation (Kapitel 4-8)
-- **Automatisering**: CI/CD-pipelines, deployment-strategier
+#### B. Praktisk implementation (chapters 4-8)
+- **automation**: CI/CD-pipelines, deployment-strategier
 - **Molnarkitektur**: Multi-cloud, hybrid cloud, cloud-native patterns
 - **Säkerhet**: Security as Code, compliance automation
 - **Observabilitet**: Monitoring as Code, logging, tracing
-- **Prestanda**: Skalbarhet, optimering, resursstyrning
+- **Prestanda**: scalability, optimering, resursstyrning
 
-#### C. Organisatorisk Transformation (Kapitel 9-13)
+#### C. Organisatorisk Transformation (chapters 9-13)
 - **Digitalisering**: Transformationsstrategier, change management
-- **Teamstrukturer**: DevOps-kultur, cross-funktionella team
-- **Projektledning**: Agile metoder för infrastruktur, risk management
+- **TeamStructureer**: DevOps-kultur, cross-funktionella team
+- **Projektledning**: Agile metoder for infraStructure, risk management
 - **Innovation**: Experimentell utveckling, prototyping
-- **Produktutveckling**: Arkitektur som kod som enabler för produktteam
+- **Produktutveckling**: Architecture as Code which enabler for produktteam
 
-#### D. Styrning och Optimering (Kapitel 14-17)
+#### D. Styrning and Optimering (chapters 14-17)
 - **Compliance**: Regelefterlevnad, auditspår, policy as code
 - **Kostnadsoptimering**: FinOps, resursplanering, cost allocation
-- **Testning**: Infrastrukturtester, chaos engineering
-- **Migration**: Från legacy system, transformationsplaner
+- **testing**: InfraStructuretester, chaos engineering
+- **Migration**: From legacy systems, transformationsplaner
 
-#### E. Fördjupning och Framtid (Kapitel 18-23)
+#### E. Fördjupning and Framtid (chapters 18-23)
 - **Framtidstrends**: Emerging technologies, AI/ML integration
 - **Best Practices**: Lärda läxor, antipatterns, maturity models
 - **Fallstudier**: Verkliga implementationer, svenska case studies
-- **Slutsats**: Sammanfattning, rekommendationer
-- **Referensmaterial**: Ordlista, författarpresentationer
+- **Conclusion**: Summary, Recommendations
+- **Referensmaterial**: Glossary, forfattarpresentationer
 
-## 3. Struktur (Structure)
+## 3. Structure (Structure)
 
 ### Bokens övergripande struktur
-**Format**: 23 kapitel + appendix (Ordlista, Om författarna)
+**Format**: 23 chapters + appendix (Glossary, About the Authors)
 **Omfattning**: ~200-300 sidor total
-**Språk**: Svenska (med engelska termer i parentes vid första användning)
+**Språk**: Svenska (with engelska termer in parentes vid forsta användning)
 
 ### Kapitelstruktur (Standardmall)
-Varje kapitel följer en konsistent struktur på 8-12 sidor:
+each chapters följer a konsistent Structure at 8-12 sidor:
 
 #### 3.1 Kapiteluppbyggnad
 1. **Huvudrubrik (H1)** - Kapitelnamn
-2. **Ingresstext** (150-200 ord) - Kapitelets syfte och innehåll
-3. **Huvuddiagram** - Mermaid-diagram som illustrerar kapitelets huvudkoncept
-4. **Teoretisk grund** (800-1200 ord) - Konceptuell förklaring
-5. **Praktisk implementation** (1200-1800 ord) - Konkreta exempel och kodlösningar
-6. **Svenska compliance-aspekter** (400-600 ord) - Specifika krav och rekommendationer
-7. **Verktyg och teknologier** (600-800 ord) - Specifika lösningar och alternativ
-8. **Best practices** (400-600 ord) - Rekommendationer och antipatterns
-9. **Sammanfattning** (200-300 ord) - Nyckelpoäng och take-aways
-10. **Källor och referenser** - Akademiska och industriella källor
+2. **Ingresstext** (150-200 ord) - Kapitelets Purpose and Contents
+3. **Huvuddiagram** - Mermaid diagrams which illustrerar kapitelets huvudkoncept
+4. **Teoretisk grund** (800-1200 ord) - Konceptuell forklaring
+5. **Practical implementation** (1200-1800 ord) - Konkreta Example and kodlösningar
+6. **Svenska compliance-aspekter** (400-600 ord) - Specifika krav and Recommendations
+7. **Verktyg and technologies** (600-800 ord) - Specifika lösningar and alternativ
+8. **Best practices** (400-600 ord) - Recommendations and antipatterns
+9. **Summary** (200-300 ord) - Nyckelpoäng and take-aways
+10. **Sources and References** - Akademiska and industriella Sources
 
 #### 3.2 Tvärgående struktur
-- **Progressiv komplexitet**: Varje kapitel bygger på tidigare kunskap
-- **Återkommande exempel**: Samma fiktiva organisation används genom hela boken
-- **Cross-referenser**: Explicit koppling mellan relaterade kapitel
-- **Praktisk orientering**: Minst 60% praktiskt innehåll vs 40% teori
+- **Progressiv komplexitet**: each chapters builds on tidigare kunskap
+- **Återkommande Example**: same fiktiva organisation används through entire boken
+- **Cross-References**: explicitly koppling mellan relaterade chapters
+- **Praktisk orientering**: Minst 60% practical Contents vs 40% teori
 
 ### Sektionsindelning
-#### Del I: Grund (Kapitel 1-3)
-Introduktion till arkitektur som kod, grundläggande principer och kodstruktur
+#### Del in: Grund (chapters 1-3)
+Introduktion to Architecture as Code, grundläggande principles and kodStructure
 
-#### Del II: Implementation (Kapitel 4-8) 
-Praktisk implementation av automatisering, molnarkitektur och säkerhet
+#### Del II: implementation (chapters 4-8) 
+Practical implementation of automation, molnarkitektur and säkerhet
 
-#### Del III: Organisation (Kapitel 9-13)
-Organisatorisk transformation och teamstrukturer
+#### Del III: Organisation (chapters 9-13)
+Organizational transformation and teamStructureer
 
-#### Del IV: Styrning (Kapitel 14-17)
-Compliance, kostnadsoptimering och migration
+#### Del IV: Styrning (chapters 14-17)
+Compliance, kostnadsoptimering and migration
 
-#### Del V: Fördjupning (Kapitel 18-23)
-Framtidstrender, best practices och sammanfattning
+#### Del V: Fördjupning (chapters 18-23)
+Framtidstrender, best practices and Summary
 
-## 4. Teknisk Djup (Technical Depth)
+## 4. technical deep (Technical Depth)
 
 ### Djupnivåer per kapiteltyp
 
-#### Grundläggande kapitel (1-3): Konceptuell nivå
-- **Teori**: 70% - Förklaring av koncept och principer
-- **Praktik**: 30% - Enkla exempel och demonstrationer
-- **Kodexempel**: Pseudo-kod och enkla script
-- **Målgrupp**: Alla läsare ska kunna följa
+#### Grundläggande chapters (1-3): Konceptuell nivå
+- **Teori**: 70% - Forklaring of concepts and principles
+- **Praktik**: 30% - Enkla Example and demonstrationer
+- **KodExample**: Pseudo-code and enkla script
+- **Target Audience**: all läsare ska kunna följa
 
-#### Implementationskapitel (4-8): Intermediär nivå
-- **Teori**: 40% - Fördjupade tekniska koncept
+#### Implementationskapitel (4-8): Interwithiär nivå
+- **Teori**: 40% - Fordjupade tekniska concepts
 - **Praktik**: 60% - Konkreta implementationer
-- **Kodexempel**: Fullständiga script och konfigurationer
+- **KodExample**: Fullständiga script and konfigurationer
 - **Verktygsspecifikt**: Terraform, Ansible, CloudFormation, Kubernetes manifests
 
 #### Organisationskapitel (9-13): Strategisk nivå
-- **Teori**: 60% - Organisationsteori och change management
-- **Praktik**: 40% - Implementationsplaner och frameworks
-- **Kodexempel**: Policy as Code, governance frameworks
-- **Målgrupp**: Ledning och senior tekniker
+- **Teori**: 60% - Organisationsteori and change management
+- **Praktik**: 40% - Implementationsplaner and frameworks
+- **KodExample**: Policy as Code, governance frameworks
+- **Target Audience**: Ledning and senior tekniker
 
 #### Styrningskapitel (14-17): Avancerad nivå
-- **Teori**: 30% - Regelverk och compliance frameworks
-- **Praktik**: 70% - Konkreta implementationer av compliance
-- **Kodexempel**: Policy engines, audit scripts, test frameworks
+- **Teori**: 30% - Regelverk and compliance frameworks
+- **Praktik**: 70% - Konkreta implementationer of compliance
+- **KodExample**: Policy engines, audit scripts, test frameworks
 - **Svenska specifika krav**: GDPR, finansiell reglering, offentlig sektor
 
 #### Fördjupningskapitel (18-23): Expert nivå
-- **Teori**: 50% - Cutting-edge koncept och framtidstrender
+- **Teori**: 50% - Cutting-edge concepts and framtidstrender
 - **Praktik**: 50% - Experimentella implementationer
-- **Kodexempel**: Avancerade patterns, AI/ML integration
-- **Research-orienterat**: Akademiska referenser och emerging technologies
+- **KodExample**: advanced patterns, AI/ML integration
+- **Research-orienterat**: Akademiska References and emerging technologies
 
-### Tekniska krav per kapitel
+### Tekniska krav per chapters
 
 #### Kodexempel
-- **Format**: Markdown code blocks med syntax highlighting
+- **Format**: Markdown code blocks with syntax highlighting
 - **Språk**: Primärt YAML, HCL (Terraform), Python, Bash
-- **Längd**: 10-50 rader per exempel
-- **Kommentarer**: Svensk kommentering av kod
-- **Testbarhet**: Alla exempel ska vara körbara med minimal setup
+- **Längd**: 10-50 rader per Example
+- **Kommentarer**: Svensk kommentering of code
+- **Testbarhet**: all Example ska vara körbara with minimal setup
 
 #### Arkitekturdiagram
-- **Verktyg**: Mermaid för konsistens och versionskontroll
-- **Stil**: Enhetlig färgpalett och symboler
-- **Komplexitet**: Maximalt 7 komponenter per diagram
+- **Verktyg**: Mermaid for konsistens and version control
+- **Stil**: Enhetlig färgpalett and symboler
+- **Komplexitet**: Maximalt 7 components per diagram
 - **Typer**: Flödesdiagram, sekvensdiagram, arkitekturdiagram
 
-## 5. Exempel och Diagram (Examples and Diagrams)
+## 5. Example and Diagram (Examples and Diagrams)
 
 ### Genomgående case study
-**"Svenska Teknik AB"** - En fiktiv medelstörr teknisk organisation som används som huvudexempel genom hela boken:
-- **Storlek**: 200 anställda, 15 utvecklare
-- **Verksamhet**: SaaS-plattform för svensk marknad
-- **Utmaning**: Migration från on-premise till cloud-native
-- **Compliance**: GDPR, svenska bokföringslagen, finansiell reglering
+**"Svenska Teknik AB"** - a fiktiv withelstörr technical organisation which används which huvudExample through entire boken:
+- **Storlek**: 200 anställda, 15 Developers
+- **operations**: SaaS-plattform for svensk marknad
+- **Utmaning**: Migration from on-premise to cloud-native
+- **Compliance**: GDPR, svenska bokforingslagen, finansiell reglering
 
-### Diagramtyper och riktlinjer
+### Diagramtyper and riktlinjer
 
-#### 5.1 Mermaid-diagram (Primär visualisering)
-**Teknisk implementation**:
-- **Filformat**: .mmd source files i docs/images/
-- **Konvertering**: Automatisk till PNG via CI/CD
+#### 5.1 Mermaid diagrams (Primär visualisering)
+**Technical implementation**:
+- **Filformat**: .mmd source files in docs/images/
+- **Konvertering**: Automatisk to PNG via CI/CD
 - **Versionshantering**: Källfiler under version control
 
 **Designriktlinjer**:
-- **Layout**: Horisontell orientering (graph LR) som standard
+- **Layout**: Horisontell orientering (graph LR) which standard
 - **Komplexitet**: 3-7 element per diagram
-- **Färger**: Konsistent färgpalett enligt brand guidelines
-- **Text**: Svenska beskrivningar, engelska termer i parentes
+- **Färger**: Konsistent färgpalett according to brand guidelines
+- **Text**: Svenska beskrivningar, engelska termer in parentes
 
 **Diagramtyper**:
 ```mermaid
 graph LR
-    A[Huvudkoncept] --> B[Implementation]
+    A[Huvudkoncept] --> B[implementation]
     B --> C[Resultat]
     C --> D[Fördelar]
 ```
 
 #### 5.2 Kodexempel
-**Struktur per exempel**:
+**Structure per Example**:
 1. **Problemställning** (2-3 rader text)
-2. **Lösning** (kodblock med syntax highlighting)
-3. **Förklaring** (4-6 rader kommentar)
+2. **Lösning** (kodblock with syntax highlighting)
+3. **Forklaring** (4-6 rader kommentar)
 4. **Variation/alternativ** (vid behov)
 
-**Exempel - Terraform infrastructure**:
+**Example - Terraform infrastructure**:
 ```hcl
-# Skapa en skalbar webbapplikation i Azure
+# Skapa a skalbar webbapplikation in Azure
 resource "azurerm_app_service_plan" "svenska_teknik" {
   name                = "svenska-teknik-plan"
   location            = "West Europe"
@@ -217,80 +217,80 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 ```
 
 #### 5.3 Praktiska scenarios
-**Per kapitel minst 2-3 scenarios**:
+**Per chapters minst 2-3 scenarios**:
 - **Scenario 1**: Grundläggande implementation
-- **Scenario 2**: Mellankomplicerad lösning med edge cases
-- **Scenario 3**: Avancerad implementation med svenska specifika krav
+- **Scenario 2**: Mellankomplicerad lösning with edge cases
+- **Scenario 3**: Avancerad implementation with svenska specifika krav
 
-### Illustrationer och visuella hjälpmedel
+### Illustrationer and visuella hjälpwithel
 
-#### 5.4 Screenshots och UI-exempel
+#### 5.4 Screenshots and UI-example
 - **Verktyg**: Azure Portal, AWS Console, kubectl output
-- **Format**: PNG med konsistent storlek och format
-- **Anonymisering**: Alla känsliga data maskas ut
-- **Språk**: Svenska interface när möjligt
+- **Format**: PNG with konsistent storlek and format
+- **Anonymisering**: all känsliga data maskas ut
+- **Språk**: Svenska interface when möjligt
 
-#### 5.5 Tabeller och matriser
+#### 5.5 Tabor and matriser
 **Formatering**:
 ```markdown
 | Verktyg | Användningsområde | Komplexitet | Svenska support |
 |---------|-------------------|--------------|-----------------|
-| Terraform | Infrastructure | Medel | Dokumentation |
+| Terraform | Infrastructure | Medel | documentation |
 | Ansible | Konfiguration | Låg | Community |
 ```
 
-## 6. Språk och Stil (Language and Style)
+## 6. Språk and Stil (Language and Style)
 
 ### Språkpolicy
 
 #### 6.1 Primärspråk: Svenska
-- **Målgrupp**: Svenska IT-professionella
-- **Terminologi**: Svenska termer med engelska i parentes vid första användning
-- **Exempel**: "Arkitektur som kod (engelska: Architecture as Code)"
-- **Konsistens**: Samma svenska term används konsekvent genom hela boken
+- **Target Audience**: Svenska IT-professionella
+- **Terminologi**: Svenska termer with engelska in parentes vid forsta användning
+- **Example**: "Architecture as Code (engelska: Architecture as Code)"
+- **Konsistens**: same svenska term används konsekvent through entire boken
 
 #### 6.2 Engelska termer
-**När engelska används**:
+**When engelska används**:
 - Etablerade branschtermer utan svenska motsvarighet
-- API-namn och tekniska specifikationer
-- Kodkommentarer och konfigurationsfiler
-- Citat från engelska källor
+- API-namn and tekniska specifikationer
+- Kodkommentarer and konfigurationsfiler
+- Citat from engelska Sources
 
-**Format för introduktion av engelska termer**:
-"Kontinuerlig integration (Continuous Integration, CI) möjliggör..."
+**Format for introduktion of engelska termer**:
+"Kontinuerlig integration (Continuous Integration, CI) enables..."
 
 ### Stilriktlinjer
 
-#### 6.3 Ton och stil
-- **Professionell men tillgänglig**: Teknisk precision utan att vara överdrivet akademisk
-- **Inkluderande**: Undviker jargong som exkluderar junior utvecklare
-- **Praktisk orientering**: Fokus på tillämpning snarare än teoretisk abstraktion
-- **Svenska perspektiv**: Specifika referenser till svenska regulatoriska krav och branschpraxis
+#### 6.3 Ton and stil
+- **Professionell men togänglig**: technical precision utan to vara överdrivet akademisk
+- **Inkluderande**: Undviker jargong which exkluderar junior Developers
+- **Praktisk orientering**: Fokus at toämpning snarare än teoretisk abstraktion
+- **Svenska perspektiv**: Specifika References to svenska regulatoriska krav and branschpraxis
 
 #### 6.4 Textstruktur
-**Styckestruktur**:
+**StyckeStructure**:
 - **Längd**: 3-6 meningar per stycke
-- **En huvudidé per stycke**
-- **Logisk progression**: Från allmänt till specifikt
+- **a huvudidé per stycke**
+- **Logisk progression**: From allmänt to specifikt
 
-**Rubrikstruktur**:
+**RubrikStructure**:
 - **H1**: Kapiteltitel
-- **H2**: Huvudsektioner (3-5 per kapitel)
+- **H2**: Huvudsektioner (3-5 per chapters)
 - **H3**: Undersektioner (2-4 per huvudsektion)
-- **H4**: Endast vid behov för specifika punkter
+- **H4**: Endast vid behov for specifika punkter
 
-#### 6.5 Kodreferenser i text
-**Format**: `kodstycken` med backticks för inline kod
+#### 6.5 Kodreferenser in text
+**Format**: `kodstycken` with backticks for inline code
 **Blockcitat**: 
 ```
-Längre kodexempel i egna block
+Längre kodexempel in egna block
 med syntax highlighting
 ```
 
 #### 6.6 Terminologikonsistens
 
 **Fastställda svenska termer**:
-- Arkitektur som kod → Architecture as Code
+- Architecture as Code → Architecture as Code
 - Molnplattform → Cloud platform
 - Kodlager → Code repository
 - Deployment → Driftsättning
@@ -302,65 +302,65 @@ med syntax highlighting
 
 #### 6.7 Läsbarhet
 - **Flesch-Kincaid**: Målnivå svenska gymnasiet/högskola
-- **Meningslängd**: Genomsnitt 15-20 ord per mening
-- **Passiv form**: Maximalt 15% av meningarna
-- **Jargong**: Förklaras vid första användning
+- **Meningslängd**: Throughsnitt 15-20 ord per mening
+- **Passiv form**: Maximalt 15% of meningarna
+- **Jargong**: Forklaras vid forsta användning
 
-#### 6.8 Teknisk precision
-- **Faktakontroll**: Alla tekniska påståenden verifieras
-- **Versioner**: Specificerade versioner för alla verktyg och teknologier
-- **Testning**: Alla kodexempel testas innan publicering
-- **Referenser**: Akademiska och industriella källor för alla påståenden
+#### 6.8 technical precision
+- **Faktakontroll**: all tekniska påståenden verifieras
+- **versions**: Specificerade versions for all verktyg and technologies
+- **testing**: all kodExample testas innan publicering
+- **References**: Akademiska and industriella Sources for all påståenden
 
 #### 6.9 Svenska språknormer
-- **Stavning**: Svenska akademiens ordlista (SAOL)
-- **Grammatik**: Svenska skrivregler enligt Språkrådet
-- **Interpunktion**: Standard svenska regler
-- **Språkgranskning**: Professionell korrekturläsning före publicering
+- **Stavning**: Svenska akademiens Glossary (SAOL)
+- **Grammatik**: Svenska skrivregler according to Språkrådet
+- **Interpunktion**: Standard svenska rules
+- **Språkgranskning**: Professionell korrekturläsning fore publicering
 
 ### Specifika stilval
 
 #### 6.10 Personligt pronomen
-- **Tilltal**: "Du" (inte "ni" eller "man")
-- **Författare**: "Vi" när det refererar till författarnas åsikter
-- **Läsare**: "Du kommer att lära dig..." (inte "man kan lära sig...")
+- **Total**: "Du" (not "ni" or "man")
+- **Forfattare**: "Vi" when the refererar to forfattarnas åsikter
+- **Läsare**: "Du kommer to lära dig..." (not "man can lära itself...")
 
 #### 6.11 Aktiv vs passiv form
-**Föredra aktiv form**:
-- ✅ "Terraform skapar infrastrukturen automatiskt"
-- ❌ "Infrastrukturen skapas automatiskt av Terraform"
+**Foredra aktiv form**:
+- ✅ "Terraform creates infraStructureen automatically"
+- ❌ "InfraStructureen are created automatically of Terraform"
 
-**Passiv form acceptabel för**:
-- Processbeskrivningar där aktören är oviktig
+**Passiv form acceptabel for**:
+- Processbeskrivningar where aktören is oviktig
 - Formella definitioner
-- Beskrivning av etablerade standarder
+- Beskrivning of etablerade standarder
 
 ## Ytterligare Kvalitetskriterier
 
-### Teknisk korrekthet
-- Alla kodexempel ska vara syntaktiskt korrekta
-- Versionsnummer specificeras för alla verktyg
-- Best practices uppdateras enligt senaste branschstandarder
+### technical korrekthet
+- all kodExample ska vara syntaktiskt korrekta
+- Versionsnummer be specified for all verktyg
+- Best practices uppdateras according to senaste branschstandarder
 - Svenska compliance-krav verifieras mot aktuell lagstiftning
 
 ### Pedagogisk progression
-- Varje kapitel bygger på tidigare kunskaper
-- Svårighetsgraden ökar gradvis
-- Återkommande koncept förstärks genom repetition
-- Praktiska övningar kopplar till tidigare teoretiska delar
+- each chapters builds on tidigare kunskaper
+- Svårighetsgraden ökar gradually
+- Återkommande concepts forstärks through repetition
+- Praktiska övningar kopplar to tidigare teoretiska parts
 
 ### Branschrelevans
-- Fokus på verktyg och metoder som används i svenska organisationer
-- Fallstudier från svenska företag och myndigheter
-- Hänsyn till svenska regulatoriska krav (GDPR, Säkerhetsskyddslagen)
-- Integration med svenska molnleverantörer och konsulttjänster
+- Fokus at verktyg and metoder which används in svenska organisationer
+- Fallstudier from svenska foretag and myndigheter
+- Hänsyn to svenska regulatoriska krav (GDPR, Säkerhetsskyddslagen)
+- Integration with svenska molnleverantörer and konsulttjänster
 
-### Tillgänglighet och inkludering
-- Alternativ text för alla diagram och bilder
-- Färgblind-vänlig färgpalett i diagram
-- Tydlig struktur för skärmläsare
-- Undvikande av kulturspecifika referenser som kan exkludera
+### Tillgänglighet and inkludering
+- Alternativ text for all diagram and bilder
+- Färgblind-vänlig färgpalett in diagram
+- Tydlig Structure for skärmläsare
+- Undvikande of kulturspecifika References which can exkludera
 
 ---
 
-*Detta kravdokument ska användas som grund för alla författningsaktiviteter och regelbundet uppdateras baserat på feedback från målgruppen och förändringar i tekniklandskapet.*
+*This kravdokument ska användas which grund for all forfattningsaktiviteter and regelbundet uppdateras baserat at feedback from Target Audienceen and forändringar in tekniklandskapet.*

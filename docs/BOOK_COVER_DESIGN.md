@@ -1,15 +1,15 @@
-# Book Cover Design - "Arkitektur som kod"
+# Book Cover design - "Architecture as Code"
 
 ## Overview
-Professional book cover design for Kvadrat's "Arkitektur som kod" publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
+Professional book cover design for Kwhatrat's "Architecture as Code" publication. The design follows Kwhatrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
 
-## Design Variations
+## design Variations
 
-### Primary Design (Dark Theme)
+### Primary design (Dark Theme)
 **File:** `templates/book-cover-final.html`
-- Modern gradient background (Kvadrat Blue to Dark Blue)
+- Modern gradient background (Kwhatrat Blue to Dark Blue)
 - Advanced code architecture visual elements
-- Professional typography with highlighted "kod" text
+- Professional typography with highlighted "code" text
 - Suitable for both digital and print formats
 
 ### Light Theme Variation
@@ -18,7 +18,7 @@ Professional book cover design for Kvadrat's "Arkitektur som kod" publication. T
 - Maintains brand consistency with adjusted contrast
 - Ideal for specific publishing requirements
 
-### Minimal Design
+### Minimal design
 **File:** `templates/book-cover-minimal.html`
 - Simplified layout with clean lines
 - Focus on typography and essential elements
@@ -40,8 +40,8 @@ The design is available in multiple high-resolution formats:
 - **JPEG**: Compressed format for digital distribution
 
 ### Digital Formats
-- **PNG**: Medium resolution for web use (150 DPI)
-- **JPEG**: Optimized for social media and email
+- **PNG**: Withium resolution for web use (150 DPI)
+- **JPEG**: Optimized for social withia and email
 - **SVG**: Vector format for infinite scalability
 
 ## Technical Specifications
@@ -52,7 +52,7 @@ The design is available in multiple high-resolution formats:
 - **Resolution**: 300 DPI for print, 150 DPI for screen
 
 ### Brand Compliance
-The design strictly follows Kvadrat Brand Guidelines:
+The design strictly follows Kwhatrat Brand Guidelines:
 
 #### Color Palette
 ```css
@@ -64,15 +64,15 @@ The design strictly follows Kvadrat Brand Guidelines:
 
 #### Typography
 - **Font**: Inter (weights: 400, 500, 600, 700, 800, 900)
-- **Fallback**: system-ui, -apple-system, sans-serif
+- **Fallback**: systems-ui, -apple-systems, sans-serif
 - **Hierarchy**: Clear typography scale with proper contrast
 
 #### Logo
-- Kvadrat "K" logo in white rounded square
+- Kwhatrat "K" logo in white rounded square
 - Proper spacing and brand text
 - Consistent placement and sizing
 
-### Design Elements
+### design Elements
 
 #### Code Architecture Theme
 - Geometric patterns suggesting network connectivity
@@ -82,7 +82,7 @@ The design strictly follows Kvadrat Brand Guidelines:
 
 #### Layout Structure
 - **Header**: Logo and brand information
-- **Main Content**: Title with emphasized "kod" highlight
+- **Main Content**: Title with emphasized "code" highlight
 - **Subtitle**: Comprehensive description
 - **Footer**: Author and edition information
 
@@ -95,7 +95,7 @@ The design strictly follows Kvadrat Brand Guidelines:
 
 ### For Digital Distribution
 1. **High-quality web**: Use PNG 300 DPI version
-2. **Social media**: Use JPEG 150 DPI version
+2. **Social withia**: Use JPEG 150 DPI version
 3. **Email attachments**: Use compressed JPEG format
 
 ### For Further Editing
@@ -111,7 +111,7 @@ python3 scripts/generate_book_cover_exports.py
 ```
 Generates all export formats automatically.
 
-### Design Variations
+### design Variations
 ```bash
 python3 scripts/generate_cover_variations.py
 ```
@@ -136,13 +136,13 @@ exports/book-cover/
 
 scripts/
 ├── generate_book_cover_exports.py    # Export generation script
-└── generate_cover_variations.py      # Design variations script
+└── generate_cover_variations.py      # design variations script
 ```
 
 ## Quality Assurance
 
 ### Brand Guidelines Compliance
-- ✅ Kvadrat color palette strictly followed
+- ✅ Kwhatrat color palette strictly followed
 - ✅ Typography hierarchy maintained
 - ✅ Logo placement and sizing correct
 - ✅ Professional aesthetic aligned with brand
@@ -161,14 +161,14 @@ scripts/
 
 ## Maintenance
 
-### Updating the Design
+### Updating the design
 1. Modify source HTML/CSS files in `templates/`
 2. Run export generation script to update all formats
 3. Test print quality and brand compliance
 4. Update documentation if necessary
 
 ### Brand Updates
-If Kvadrat brand guidelines change:
+If Kwhatrat brand guidelines change:
 1. Update CSS custom properties in source files
 2. Regenerate all exports
 3. Verify compliance with new guidelines
@@ -177,12 +177,12 @@ If Kvadrat brand guidelines change:
 
 For questions about the design or technical implementation:
 - Review brand guidelines in `exports/book-cover/source/`
-- Check design system documentation
+- Check design systems documentation
 - Follow established color and typography standards
 
 ---
 
-**Design Version**: 1.0  
+**design Version**: 1.0  
 **Created**: December 2024  
-**Brand Guidelines**: Kvadrat v1.0  
+**Brand Guidelines**: Kwhatrat v1.0  
 **Formats**: HTML/CSS, SVG, PDF, PNG, JPEG

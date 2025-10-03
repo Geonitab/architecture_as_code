@@ -1,54 +1,54 @@
-# Architecture as Code i praktiken
+# Architecture as Code in praktiken
 
-![Architecture as Code i praktiken](images/diagram_08_kapitel7.png)
+![Architecture as Code in praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementering av Architecture as Code kräver genomtänkt tillvägagångssätt som balanserar tekniska möjligheter med organisatoriska begränsningar. Infrastructure as Code utgör en central komponent, men måste integreras med bredare arkitekturdefinitioner. Detta kapitel fokuserar på verkliga implementeringsstrategier, vanliga fallgropar, och beprövade metoder för framgångsrik Architecture as Code-adoption i företagsmiljöer.
+Praktisk implementation of Architecture as Code requires throughtänkt tovägagångssätt which balanserar tekniska möjligheter with organizational begränsningar. Infrastructure as Code utgör a central komponent, men must integreras with bredare arkitekturdefinitioner. This chapters fokuserar at verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate metoder for successful Architecture as Code-adoption in foretagsmiljöer.
 
-![Implementation User Journey](images/diagram_13_user_journey.png)
+![implementation User Journey](images/diagram_13_user_journey.png)
 
-Diagrammet ovan illustrerar den typiska användarresan för arkitektur som kod-implementation, från initial discovery till fullständig optimization.
+Diagrammet ovan illustrerar den typiska användarresan for Architecture as Code-implementation, from initial discovery to fullständig optimization.
 
-## Implementation roadmap och strategier
+## implementation roadmap and strategier
 
-Successful Architecture as Code adoption följer vanligen en phased approach som börjar med pilot projects och gradvis expanderar till enterprise-wide implementation. Initial phases fokuserar på non-critical environments och simple use cases för att bygga confidence och establish arkitektur som kod best practices innan production workloads migreras. Infrastructure as Code (arkitektur som kod) utgör ofta startpunkten för denna transformation.
+Successful Architecture as Code adoption följer vanligen a phased approach which börjar with pilot projects and gradually expanderar to enterprise-wide implementation. Initial phases fokuserar at non-critical environments and simple use cases for to bygga confidence and establish Architecture as Code best practices innan production workloads migreras. Infrastructure as Code (Architecture as Code) utgör often startpunkten for This transformation.
 
-Assessment av current state infrastructure är critical för planning effective migration strategies. Legacy systems, technical debt, och organizational constraints måste identifieras och addressas through targeted modernization efforts. Detta inkluderar inventory av existing assets, dependency mapping, och risk assessment för olika migration scenarios.
+Assessment of current state infrastructure is critical for planning effective migration strategies. Legacy systems, technical debt, and organizational constraints must identifieras and addressas through targeted modernization efforts. This includes inventory of existing assets, dependency mapping, and risk assessment for olika migration scenarios.
 
-Stakeholder alignment säkerställer organizational support för Arkitektur som kod initiatives. Executive sponsorship, cross-functional collaboration, och clear communication av benefits och challenges är essential för overcoming resistance och securing necessary resources. Change management strategies måste address både technical och cultural aspects av transformation.
+Stakeholder alignment ensures organizational support for Architecture as Code initiatives. Executive sponsorship, cross-functional collaboration, and clear communication of benefits and challenges is essential for overcoming resistance and securing necessary resources. Change management strategies must address both technical and cultural aspects of transformation.
 
-## Tool selection och ecosystem integration
+## Tool selection and ecosystem integration
 
-Technology stack selection balanserar organizational requirements med market maturity och community support. Terraform har emerged som leading multi-cloud solution, medan cloud-native tools som CloudFormation, ARM templates, och Google Deployment Manager erbjuder deep integration med specific platforms.
+Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform har emerged which leading multi-cloud solution, withan cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager erbjuder deep integration with specific platforms.
 
-Integration med existing toolchains kräver careful consideration av workflows, security requirements, och operational procedures. Source control systems, CI/CD platforms, monitoring solutions, och security scanning tools måste seamlessly integrate för holistic development experience.
+Integration with existing toolchains requires careful consideration of workflows, security requirements, and operational procedures. Source control systems, CI/CD platforms, monitoring solutions, and security scanning tools must seamlessly integrate for holistic development experience.
 
-Vendor evaluation criteria inkluderar technical capabilities, roadmap alignment, commercial terms, och long-term viability. Open source solutions erbjuder flexibility och community innovation, medan commercial platforms provide enterprise support och advanced features. Hybrid approaches combinerar benefits från both models.
+Vendor evaluation criteria includes technical capabilities, roadmap alignment, commercial terms, and long-term viability. Open source solutions erbjuder flexibility and community innovation, withan commercial platforms provide enterprise support and advanced features. Hybrid approaches combinerar benefits from both models.
 
-## Production readiness och operational excellence
+## Production readiness and operational excellence
 
-Security-first approach implementerar comprehensive security controls från design phase. Secrets management, access controls, audit logging, och compliance validation måste vara built-in rather than bolt-on features. Automated security scanning och policy enforcement säkerställer consistent security posture.
+Security-first approach implementerar comprehensive security controls from design phase. Secrets management, access controls, audit logging, and compliance validation must vara built-in rather than bolt-on features. Automated security scanning and policy enforcement ensures consistent security posture.
 
-High availability design principles appliceras på infrastructure code genom redundancy, failover mechanisms, och disaster recovery procedures. Infrastructure definitions måste handle various failure scenarios gracefully och provide automatic recovery capabilities where possible.
+High availability design principles appliceras at infrastructure code through redundancy, failover mechanisms, and disaster recovery procedures. Infrastructure definitions must handle various failure scenarios gracefully and provide automatic recovery capabilities where possible.
 
-Monitoring och observability för infrastructure-as-code environments kräver specialized approaches som track både code changes och resulting infrastructure state. Drift detection, compliance monitoring, och performance tracking provide essential feedback för continuous improvement.
+Monitoring and observability for infrastructure-as-code environments requires specialized approaches which track both code changes and resulting infrastructure state. Drift detection, compliance monitoring, and performance tracking provide essential feedback for continuous improvement.
 
-## Common challenges och troubleshooting
+## Common challenges and troubleshooting
 
-State management complexity grows significantly som infrastructure scales och involves multiple teams. State file corruption, concurrent modifications, och state drift kan cause serious operational problems. Remote state backends, state locking mechanisms, och regular state backups are essential för production environments.
+State management complexity grows significantly which infrastructure scales and involves multiple teams. State file corruption, concurrent modifications, and state drift can cause serious operational problems. Remote state backends, state locking mechanisms, and regular state backups are essential for production environments.
 
-Dependency management mellan infrastructure components kräver careful orchestration för avoid circular dependencies och ensure proper creation/destruction order. Modular design patterns och clear interface definitions help manage complexity som systems grow.
+Dependency management mellan infrastructure components requires careful orchestration for avoid circular dependencies and ensure proper creation/destruction order. Modular design patterns and clear interface definitions help manage complexity which systems grow.
 
-Version compatibility issues mellan tools, providers, och infrastructure definitions can cause unexpected failures. Comprehensive testing, staged rollouts, och dependency pinning strategies help mitigate these risks i production environments.
+Version compatibility issues mellan tools, providers, and infrastructure definitions can cause unexpected failures. Comprehensive testing, staged rollouts, and dependency pinning strategies help mitigate these risks in production environments.
 
 ## Enterprise integration patterns
 
-Multi-account/subscription strategies för cloud environments provide isolation, security boundaries, och cost allocation capabilities. Infrastructure code måste handle cross-account dependencies, permission management, och centralized governance requirements.
+Multi-account/subscription strategies for cloud environments provide isolation, security boundaries, and cost allocation capabilities. Infrastructure code must handle cross-account dependencies, permission management, and centralized governance requirements.
 
-Hybrid cloud implementations require specialized approaches för networking, identity management, och data synchronization between on-premises och cloud environments. Infrastructure code måste abstract underlying platform differences while providing consistent management experience.
+Hybrid cloud implementations require specialized approaches for networking, identity management, and data synchronization between on-premises and cloud environments. Infrastructure code must abstract underlying platform differences while providing consistent management experience.
 
-Compliance och governance frameworks måste vara embedded i infrastructure code workflows. Automated policy enforcement, audit trails, och compliance reporting capabilities ensure regulatory requirements are met consistently across all environments.
+Compliance and governance frameworks must vara embedded in infrastructure code workflows. Automated policy enforcement, audit trails, and compliance reporting capabilities ensure regulatory requirements are met consistently across all environments.
 
-## Praktiska exempel
+## Praktiska example
 
 ### Terraform Module Structure
 ```hcl
@@ -154,7 +154,7 @@ output "vpc_id" {
 }
 ```
 
-## Terraform konfiguration och miljöhantering
+## Terraform konfiguration and miljöhantering
 
 ### Environment-specific Configuration
 ```hcl
@@ -235,7 +235,7 @@ resource "aws_cloudwatch_dashboard" "main" {
 }
 ```
 
-## Automation och DevOps integration
+## Automation and DevOps integration
 
 ### CI/CD Pipeline Integration
 ```yaml
@@ -357,16 +357,16 @@ jobs:
     # Similar steps as deploy job but for production environment
 ```
 
-## Sammanfattning
+## Summary
 
 
-Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Practical Infrastructure as Code implementation balanserar technical excellence med organizational realities. Success kräver comprehensive planning, stakeholder alignment, incremental delivery, och continuous improvement. Production readiness måste vara prioritized från början, medan common challenges måste anticiperas och mitigated through proven practices och robust tooling.
+Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from början, withan common challenges must anticiperas and mitigated through proven practices and robust tooling.
 
-## Källor och referenser
+## Sources and referenser
 
-- HashiCorp. "Terraform arkitektur som kod best practices." HashiCorp Learn Platform.
+- HashiCorp. "Terraform Architecture as Code best practices." HashiCorp Learn Platform.
 - AWS Well-Architected Framework. "Infrastructure as Code." Amazon Web Services.
-- Google Cloud. "Infrastructure as Code Design Patterns." Google Cloud Architecture Center.
+- Google Cloud. "Infrastructure as Code design Patterns." Google Cloud Architecture Center.
 - Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.
-- Puppet Labs. "Infrastructure as Code Implementation Guide." Puppet Enterprise Documentation.
+- Puppet Labs. "Infrastructure as Code implementation Guide." Puppet Enterprise Documentation.

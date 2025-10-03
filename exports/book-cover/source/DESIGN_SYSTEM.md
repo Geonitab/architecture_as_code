@@ -1,24 +1,24 @@
 # Kodarkitektur Bokverkstad - Grafisk profil
 
 ## Översikt
-En omfattande grafisk profil som är anpassad för Kvadrat.se:s visuella identitet och designspråk.
+a comprehensive grafisk profil which is anpassad for Kwhatrat.se:s visuella identitet and designspråk.
 
 ## Färgpalett
 
 ### Primära färger
-- **Kvadrat Blå**: `#1e3a8a` (HSL: 221 67% 32%) - Huvudfärg för rubriker och viktiga element
-- **Kvadrat Mörkblå**: `#1e293b` (HSL: 214 32% 18%) - För text och kontrast
-- **Kvadrat Ljusblå**: `#3b82f6` (HSL: 217 91% 60%) - För accenter och interaktiva element
+- **Kwhatrat Blå**: `#1e3a8a` (HSL: 221 67% 32%) - Huvudfärg for rubriker and viktiga element
+- **Kwhatrat Mörkblå**: `#1e293b` (HSL: 214 32% 18%) - For text and kontrast
+- **Kwhatrat Ljusblå**: `#3b82f6` (HSL: 217 91% 60%) - For accenter and interaktiva element
 
-### Sekundära färger
-- **Neutral Grå**: `#64748b` (HSL: 215 20% 46%) - För sekundär text
-- **Ljus Grå**: `#f1f5f9` (HSL: 214 32% 97%) - För bakgrunder
-- **Vit**: `#ffffff` (HSL: 0 0% 100%) - För kort och huvudsaklig bakgrund
+### Sekunwherea färger
+- **Neutral Grå**: `#64748b` (HSL: 215 20% 46%) - For sekunwhere text
+- **Ljus Grå**: `#f1f5f9` (HSL: 214 32% 97%) - For Backgrounder
+- **Vit**: `#ffffff` (HSL: 0 0% 100%) - For kort and huvudsaklig Background
 
-### Accent och specialfärger
-- **Framgång Grön**: `#059669` (HSL: 160 84% 30%) - För statusindikationer
-- **Varning Amber**: `#d97706` (HSL: 32 95% 44%) - För uppmärksamhet
-- **Fel Röd**: `#dc2626` (HSL: 0 84% 51%) - För felmeddelanden
+### Accent and specialfärger
+- **success Grön**: `#059669` (HSL: 160 84% 30%) - For statusindikationer
+- **Varning Amber**: `#d97706` (HSL: 32 95% 44%) - For uppmärksamhet
+- **Fel Röd**: `#dc2626` (HSL: 0 84% 51%) - For felwithdelanden
 
 ## Typografi
 
@@ -31,69 +31,69 @@ En omfattande grafisk profil som är anpassad för Kvadrat.se:s visuella identit
 - **Small**: 0.875rem (14px), font-weight: 400, line-height: 1.5
 
 ### Fontfamiljer
-- **Primär**: Inter, system-ui, sans-serif
+- **Primär**: Inter, systems-ui, sans-serif
 - **Monospace**: 'JetBrains Mono', Consolas, monospace
 
-## Logotyp och visuella element
+## Logotyp and visuella element
 
 ### Logotypriktlinjer
 - Minsta storlek: 120px bredd
-- Friytor: Minst 1x logotypens höjd på alla sidor
-- Färgvarianter: Mörk, ljus, och monokrom
+- Friytor: Minst 1x logotypens höjd at all sidor
+- Färgvarianter: Mörk, ljus, and monokrom
 
 ### Visuella element
-- **Rundade hörn**: 8px för kort, 4px för mindre element
-- **Skuggor**: Subtila, mjuka skuggor för djup
-- **Gradients**: Subtila gradienter från primär till accent
+- **Rundade hörn**: 8px for kort, 4px for mindre element
+- **Skuggor**: Subtila, mjuka skuggor for deep
+- **Gradients**: Subtila gradienter from primär to accent
 
 ## Mallar
 
 ### Bokens framsida
 - Logotyp: Övre vänster hörn
 - Titel: Centrerad, stor typografi
-- Undertitel: Under titel, medium storlek
-- Författare: Längst ner
-- Bakgrund: Gradient från Kvadrat Blå till Mörkblå
+- Undertitel: Under titel, withium storlek
+- Forfattare: Längst ner
+- Background: Gradient from Kwhatrat Blå to Mörkblå
 
 ### Whitepapers
 - Standardformat: A4
-- Marginaler: 2.5cm på alla sidor
-- Typsnitt: Inter för rubriker, system för text
-- Färgschema: Primära färger med sparsam accent
+- Marginaler: 2.5cm at all sidor
+- Typsnitt: Inter for rubriker, systems for text
+- Färgschema: Primära färger with sparsam accent
 
 ### Presentationsmallar
 - Format: 16:9 widescreen
-- Masterlayout med logotyp och sidnummer
-- Konsistent användning av färger och typografi
-- Bullet points med Kvadrat Blå accenter
+- Masterlayout with logotyp and sidnummer
+- Konsistent användning of färger and typografi
+- Bullet points with Kwhatrat Blå accenter
 
 ### Webbplatslayout
 - Responsiv design
 - Enhetlig navigering
 - Tydlig informationshierarki
-- Optimerad för tillgänglighet
+- Optimerad for togänglighet
 
 ## Användningsriktlinjer
 
 ### Gör
-- Använd konsekventa marginaler och utfyllnad
+- Använd konsekventa marginaler and utfyllnad
 - Följ färgpaletten strikt
-- Använd tillräcklig kontrast för tillgänglighet
-- Håll designen ren och professionell
+- Använd toräcklig kontrast for togänglighet
+- Håll designen ren and professionell
 
-### Gör inte
-- Blanda olika fonter utanför systemet
-- Använd färger utanför paletten
+### Gör not
+- Blanda olika fonter utanfor systemet
+- Använd färger utanfor paletten
 - Överanvänd accent färger
 - Glöm responsiv design
 
-## Teknisk implementation
+## Technical implementation
 
 ### CSS Custom Properties
-Alla färger och mått definieras som CSS custom properties för enkel underhåll.
+all färger and mått definieras that CSS custom properties for enkel underhåll.
 
 ### Tailwind Configuration
-Anpassad konfiguration som matchar designsystemet.
+Anpassad konfiguration which matchar designsystemet.
 
 ### Komponentbibliotek
-Konsistenta React-komponenter som följer designsystemet.
+Konsistenta React-components which följer designsystemet.

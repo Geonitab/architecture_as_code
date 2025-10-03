@@ -1,67 +1,67 @@
-# AI Assistant Prompt för Bokprojekt: Arkitektur som kod
+# AI Assistant Prompt for Bokprojekt: Architecture as Code
 
 ## Projektöversikt
-Du hjälper till att skapa innehåll för boken "Arkitektur som kod" - en omfattande guide på svenska om arkitektur som kod. Detta är ett hybridprojekt som kombinerar:
+Du hjälper to to skapa Contents for boken "Architecture as Code" - a comprehensive guide at svenska about Architecture as Code. This is ett hybridprojekt which kombinerar:
 
-1. **Bokproduktion**: Automatiserad generering och publicering av en omfattande teknisk bok
-2. **React Dashboard**: En webbapplikation som visar bokprojektets status och kapitelstruktur
+1. **Bokproduktion**: Automatiserad generering and publicering of a comprehensive technical bok
+2. **React Dashboard**: a webbapplikation which shows bokprojektets status and kapitelStructure
 
-Boken riktar sig till systemarkitekter, utvecklare, DevOps-ingenjörer, projektledare och IT-chefer som vill förstå och implementera arkitektur som kod.
+Boken riktar itself to systems Architects, Developers, DevOps Engineers, Project Managers and IT Managers which vill forstå and implementera Architecture as Code.
 ## Nuvarande struktur
-Projektet innehåller **25 kapitel** totalt. Följande filer finns i `docs/`-mappen:
+Projektet Contentser **25 chapters** totalt. Följande filer finns in `docs/`-mappen:
 
-- `01_inledning.md` - Inledning till arkitektur som kod
-- `02_kapitel1.md` - Grundläggande principer för arkitektur som kod
-- `03_kapitel2.md` - Versionhantering och kodstruktur  
-- `04_kapitel3.md` - Automatisering och CI/CD-pipelines
-- `05_kapitel4.md` - Molnarkitektur som kod
-- `06_kapitel5.md` - Säkerhet i arkitektur som kod
-- `07_kapitel6.md` - DevOps och CI/CD för arkitektur som kod
-- `08_kapitel7.md` - Arkitektur som kod i praktiken
-- `09_kapitel8.md` - Digitalisering genom kodbaserad infrastruktur
-- `10_kapitel9.md` - Organisatorisk förändring och teamstrukturer
-- `11_kapitel10.md` - Containerisering och orkestrering som kod
-- `12_kapitel11.md` - [SAKNAS - Projektledning för arkitektur som kod]
-- `13_kapitel12.md` - Microservices-arkitektur som kod
-- `14_kapitel13.md` - Framtida trender och teknologier inom arkitektur som kod
-- `15_kapitel14.md` - Team-struktur och kompetensutveckling för arkitektur som kod
-- `16_kapitel15.md` - Kostnadsoptimering och resurshantering
-- `17_kapitel16.md` - Teststrategier för arkitekturkod (inkl. krav som kod)
-- `18_kapitel17.md` - Migration från traditionell infrastruktur
-- `19_kapitel18.md` - [SAKNAS - Fallstudier och praktiska exempel]
-- `20_kapitel19.md` - Best practices och lärda läxor
-- `21_slutsats.md` - Slutsats
-- `22_ordlista.md` - Ordlista
-- `23_om_forfattarna.md` - Om författarna
+- `01_inledning.md` - Introduction to Architecture as Code
+- `02_kapitel1.md` - Fundamental principles of Architecture as Code
+- `03_kapitel2.md` - Version Control and Code Structure  
+- `04_kapitel3.md` - automation and CI/CD-pipelines
+- `05_kapitel4.md` - Cloud Architecture as Code
+- `06_kapitel5.md` - Security in Architecture as Code
+- `07_kapitel6.md` - DevOps and CI/CD for Architecture as Code
+- `08_kapitel7.md` - Architecture as Code in praktiken
+- `09_kapitel8.md` - Digitalisering through kodbaserad infraStructure
+- `10_kapitel9.md` - Organisatorisk forändring and teamStructureer
+- `11_kapitel10.md` - Containerization and Orchestration which code
+- `12_kapitel11.md` - [SAKNAS - Projektledning for Architecture as Code]
+- `13_kapitel12.md` - Microservices-Architecture as Code
+- `14_kapitel13.md` - Framtida trender and technologies within Architecture as Code
+- `15_kapitel14.md` - Team Structure and Competenciesutveckling for Architecture as Code
+- `16_kapitel15.md` - Cost Optimization and Resource Management
+- `17_kapitel16.md` - Testing Strategies for Architecture Code (inkl. Requirements as Code)
+- `18_kapitel17.md` - Migration from Traditional Infrastructure
+- `19_kapitel18.md` - [SAKNAS - Fallstudier and praktiska Example]
+- `20_kapitel19.md` - Best Practices and Lessons Learned
+- `21_Conclusion.md` - Conclusion
+- `22_Glossary.md` - Glossary
+- `23_om_forfattarna.md` - About the Authors
 
-## Teknisk infrastruktur
-Projektet använder följande teknologier och verktyg:
+## technical infrastruktur
+Projektet använder följande technologies and verktyg:
 
 ### Bokproduktion
 - **Python 3.12**: Content generation via `generate_book.py`
-- **Pandoc 3.1.9**: Markdown till PDF-konvertering
+- **Pandoc 3.1.9**: Markdown to PDF-konvertering
 - **XeLaTeX**: PDF-renderingsmotor
 - **Mermaid CLI**: Diagramkonvertering (.mmd → .png)
-- **TeXLive**: LaTeX-distribution för PDF-generering
-- **Eisvogel**: LaTeX-template för professionell PDF-layout
+- **TeXLive**: LaTeX-distribution for PDF-generering
+- **Eisvogel**: LaTeX-template for professionell PDF-layout
 
 ### React Dashboard
-- **Vite**: Build tool och utvecklingsserver
+- **Vite**: Build tool and utvecklingsserver
 - **React + TypeScript**: UI-ramverk  
-- **Tailwind CSS + shadcn/ui**: Styling och komponenter
+- **Tailwind CSS + shadcn/ui**: Styling and components
 - **React Router**: Navigation
 
 ### CI/CD Pipeline
-- **GitHub Actions**: Automatiserad bokbygge och publicering
-- **Automatiska releaser**: PDF publiceras vid push till main branch
-- **Artefaktlagring**: PDF tillgänglig för nedladdning efter builds
+- **GitHub Actions**: Automatiserad bokbygge and publicering
+- **Automatiska releaser**: PDF publiceras vid push to main branch
+- **Artefaktlagring**: PDF togänglig for nedladdning efter builds
 
-### Kommando för byggprocesser
+### Kommando for byggprocesser
 ```bash
 # React-applikation
 npm run build     # 5 sekunder
 npm run dev       # Utvecklingsserver
-npm run lint      # ESLint (visar varningar - förväntat)
+npm run lint      # ESLint (shows varningar - förväntat)
 
 # Bokgenerering
 python3 generate_book.py          # <1 sekund - genererar markdown
@@ -71,9 +71,9 @@ docs/build_book.sh                # 30 sekunder - full PDF med diagram
 python3 generate_book.py && docs/build_book.sh
 ```
 
-## Diagram och bilder
-Alla diagram skapas med [Mermaid](https://mermaid.js.org/) och sparas som `.mmd`-filer i `docs/images/`.
-Dessa konverteras automatiskt till `.png` under byggprocessen.
+## Diagram and bilder
+all diagram are created med [Mermaid](https://mermaid.js.org/) och sparas as `.mmd`-filer in `docs/images/`.
+These konverteras automatically to `.png` under byggprocessen.
 
 ### Konvertera diagram manuellt
 ```bash
@@ -81,26 +81,26 @@ mermaid docs/images/diagram_01_inledning.mmd -o docs/images/diagram_01_inledning
 ```
 
 ## Generera thumbnails
-För att generera thumbnails för alla diagram (för React-dashboard):
+For to generera thumbnails for all diagram (for React-dashboard):
 
 ```bash
 npm run thumbnails
 ```
 
-Detta skript använder `scripts/generate_thumbnails.py` för att skapa skalade versioner av alla diagram.
+This skript använder `scripts/generate_thumbnails.py` for to skapa skalade versions of all diagram.
 
 ## Viktiga filer
-- `generate_book.py`: Huvudskript för att generera bokens innehåll
-- `docs/build_book.sh`: Skript för att bygga PDF-versionen av boken
-- `react-app/src/components/Chapter.tsx`: React-komponent för att visa ett kapitel
-- `react-app/src/App.tsx`: Huvudapplikation för React-dashboard
+- `generate_book.py`: Huvudskript for to generera Book content
+- `docs/build_book.sh`: Skript for to bygga PDF-versionen of boken
+- `react-app/src/components/Chapter.tsx`: React-komponent for to visa ett chapters
+- `react-app/src/App.tsx`: Huvudapplikation for React-dashboard
 
 ## Arbeta lokalt
 
 ### Krav
 - Python 3.12
-- NodeJS (för React-applikationen)
-- TeXLive (för PDF-generering)
+- NodeJS (for React-applikationen)
+- TeXLive (for PDF-generering)
 - Mermaid CLI
 
 ### Setup
@@ -126,42 +126,42 @@ python3 generate_book.py && docs/build_book.sh
 ```
 
 ## Felsökning
-- **Problem med PDF-generering**: Kontrollera att TeXLive är korrekt installerat och konfigurerat.
-- **Problem med React-applikationen**: Se till att alla NodeJS-beroenden är installerade.
-- **Problem med diagram**: Verifiera att Mermaid CLI är installerat och att sökvägen är korrekt.
+- **Problem with PDF-generering**: Kontrollera to TeXLive is korrekt installerat and konfigurerat.
+- **Problem with React-applikationen**: Se to to all NodeJS-beroenden is installerade.
+- **Problem with diagram**: Verifiera to Mermaid CLI is installerat and to sökvägen is korrekt.
 
 ## Tillgängliga resurser
-- **GitHub repository**: [https://github.com/kvardrat/arkitektur-som-kod](https://github.com/kvardrat/arkitektur-som-kod)
+- **GitHub repository**: [https://github.com/kvardrat/architecture-as-code](https://github.com/kvardrat/architecture-as-code)
 - **React Dashboard**: (kommer snart)
-- **Boken som PDF**: (kommer snart)
-- **Slack kanal**: #arkitektur-som-kod (internt på Kvadrat)
+- **Boken that PDF**: (kommer snart)
+- **Slack kanal**: #architecture-that-code (internt at Kwhatrat)
 
 ## Bidra
-Alla bidrag är välkomna! Skapa en pull request med dina ändringar.
+all bidrag is välkomna! Skapa a pull request with dina ändringar.
 
 ### Riktlinjer
 - Följ projektets kodstil
-- Skriv tydliga commit-meddelanden
+- Skriv tydliga commit-withdelanden
 - Uppdatera dokumentationen vid behov
-- Skapa tester för ny funktionalitet
+- Skapa tester for ny funktionalitet
 
 ## Licens
-Projektet är licensierat under [MIT License](LICENSE).
+Projektet is licensierat under [MIT License](LICENSE).
 
 ## Kontakt
-För frågor eller förslag, kontakta [johannes@kvardrat.se](mailto:johannes@kvardrat.se).
+For frågor or forslag, kontakta [johannes@kvardrat.se](mailto:johannes@kvardrat.se).
 
 ## Tack
-Tack till alla som bidrar till detta projekt!
+Tack to all which bidrar to This projekt!
 ## Din uppgift
-Välj EN markdown-fil från `docs/`-mappen att utöka eller förbättra. Fokusera på:
+Välj a markdown-fil from `docs/`-mappen to utöka or forbättra. Fokusera at:
 
-### Innehållskrav
+### Contentsskrav
 - **Språk**: Svenska
-- **Målgrupp**: Tekniska professionnella inom IT/utveckling
-- **Längd**: 2000-4000 ord per kapitel
-- **Struktur**: Använd kapitlets befintliga struktur eller förbättra den
-- **Content ratio**: 20% kod, 80% förklarande text som eftersträvas per kapitel
+- **Target Audience**: Tekniska professionnella within IT/utveckling
+- **Längd**: 2000-4000 ord per chapters
+- **Structure**: Använd kapitlets existing Structure or forbättra den
+- **Content ratio**: 20% code, 80% forklarande text which eftersträvas per chapters
 
 ### Kapitelstruktur
 ```markdown
@@ -169,29 +169,29 @@ Välj EN markdown-fil från `docs/`-mappen att utöka eller förbättra. Fokuser
 
 ![Diagram beskrivning](images/diagram_XX_kapitelX.png)
 
-*Inledande text som refererar till diagrammet ovan (ca 500 tecken)*
+*Inledande text as refererar till diagrammet ovan (ca 500 tecken)*
 
 ## Övergripande beskrivning
-Huvudinnehåll som fördjupar kapitlets tema (ca 2500 tecken)
+Huvudinnehåll as fördjupar kapitlets tema (ca 2500 tecken)
 
 ## Underrubrik 1
-Fördjupande text om specifikt område (ca 1500 tecken)
+Fördjupande text about specifikt område (ca 1500 tecken)
 
 ## Underrubrik 2  
-Fördjupande text om specifikt område (ca 1500 tecken)
+Fördjupande text about specifikt område (ca 1500 tecken)
 
-## Praktiska exempel
+## Praktiska example
 Konkreta kodexempel och implementationer
 
 ## Sammanfattning
-Kort sammanfattning av kapitlets huvudpunkter
+Kort sammanfattning of kapitlets huvudpunkter
 
 ## Källor och referenser
 - Källa 1
 - Källa 2
 ```
 
-### Exempel på kod
+### Example at code
 ```python
 def hello_world():
     print("Hello, world!")
@@ -199,33 +199,33 @@ def hello_world():
 hello_world()
 ```
 
-## Checklista för innehåll
+## Checklista for innehåll
 
 ### Allmänt
-- [ ] Kapitlet har en tydlig titel
-- [ ] Inledningen ger en bra överblick
-- [ ] Sammanfattningen knyter ihop kapitlet
-- [ ] Källor och referenser är angivna
+- [ ] Kapitlet har a tydlig titel
+- [ ] Inledningen ger a bra överblick
+- [ ] Summaryen knyter ihop kapitlet
+- [ ] Sources and References is angivna
 
-### Struktur
-- [ ] Logisk indelning i underrubriker
-- [ ] Användning av punktlistor och numrering
-- [ ] Diagram och bilder för visualisering
+### Structure
+- [ ] Logisk indelning in underrubriker
+- [ ] Användning of punktlistor and numrering
+- [ ] Diagram and bilder for visualisering
 
 ### Detaljer
-- [ ] Korrekt användning av svenska språket
-- [ ] Teknisk korrekthet i beskrivningar
-- [ ] Praktiska och relevanta exempel
-- [ ] Anpassat för målgruppen
+- [ ] Korrekt användning of svenska språket
+- [ ] technical korrekthet in beskrivningar
+- [ ] Praktiska and relevanta Example
+- [ ] Anpassat for Target Audienceen
 
 ### Kodexempel
-- [ ] Välformaterad kod
-- [ ] Kommentarer som förklarar koden
-- [ ] Användning av relevanta bibliotek
-- [ ] Möjlighet att köra koden lokalt
-- [ ] Kodpartier får aldrig vara längre än en sida
+- [ ] Välformaterad code
+- [ ] Kommentarer which forklarar koden
+- [ ] Användning of relevanta bibliotek
+- [ ] Möjlighet to köra koden lokalt
+- [ ] Kodpartier får aldrig vara längre än a sida
 
-## Verktyg och resurser
+## Verktyg and resurser
 
 ### Markdown editor
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -241,44 +241,44 @@ hello_world()
 - [Overleaf](https://www.overleaf.com/)
 
 ### Färgpalett
-- Primär: #004A99 (Kvadratblå)
-- Sekundär: #66B2FF (Ljusblå)
+- Primär: #004A99 (Kwhatratblå)
+- Sekunwhere: #66B2FF (Ljusblå)
 - Accent: #FF9933 (Orange)
-- Bakgrund: #F0F0F0 (Ljusgrå)
+- Background: #F0F0F0 (Ljusgrå)
 
 ### Typsnitt
 - Rubriker: Inter Bold
 - Brödtext: Inter Regular
-- Kod: Fira Code
+- code: Fira Code
 
-## Tips för att skriva
-- Börja med en tydlig struktur
-- Skriv kort och koncist
-- Använd exempel för att förklara koncept
-- Tänk på läsarens perspektiv
-- Läs igenom och korrigera texten
+## Tips for to skriva
+- Börja with a tydlig Structure
+- Skriv kort and koncist
+- Använd Example for to forklara concepts
+- Tänk at läsarens perspektiv
+- Läs ithrough and korrigera texten
 
 ## Vanliga misstag
-- Otydlig struktur
-- För långa stycken
-- Svårtolkade exempel
+- Otydlig Structure
+- For långa stycken
+- Svårtolkade Example
 - Grammatiska fel
 - Inaktuell information
 
 ## Kvalitetskrav
-- ✅ Faktiskt innehåll (inga platshållare)
-- ✅ Svenska språket genomgående
-- ✅ Teknisk korrekthet 
-- ✅ Praktiska exempel med kod
-- ✅ Logisk progression i texten
-- ✅ Referenser till verkliga verktyg/teknologier
+- ✅ Faktiskt Contents (inga platshållare)
+- ✅ Svenska språket throughgående
+- ✅ technical korrekthet 
+- ✅ Praktiska Example with code
+- ✅ Logisk progression in texten
+- ✅ References to verkliga verktyg/technologies
 
-## Exempel på förbättringar
-- Lägg till konkreta kodexempel
-- Fördjupa befintliga avsnitt
-- Skapa nya underrubriker för bredare täckning
-- Förbättra diagram för bättre förståelse
-- Lägg till praktiska use cases
-- Inkludera branschspecifika exempel
+## Example at forbättringar
+- Lägg to konkreta kodExample
+- Fordjupa existing avsnitt
+- Skapa new underrubriker for bredare täckning
+- Forbättra diagram for bättre forståelse
+- Lägg to praktiska use cases
+- Inkludera branschspecifika Example
 
-Börja med att välja vilken fil du vill arbeta med och meddela ditt val innan du börjar skriva!
+Börja with to välja vilken fil du vill arbeta with and withdela ditt val innan du börjar skriva!

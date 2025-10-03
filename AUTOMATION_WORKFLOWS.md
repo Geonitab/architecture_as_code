@@ -27,7 +27,7 @@ The workflow runs when:
 - **`presentation_outline.md`** - Structured outline with key points from each chapter
 - **`generate_pptx.py`** - Python script to create PowerPoint presentations
 - **`requirements.txt`** - Dependencies needed for PowerPoint generation
-- **`arkitektur_som_kod_presentation.pptx`** - Complete PowerPoint presentation file (ready to use)
+- **`arkitektur_which_kod_presentation.pptx`** - Complete PowerPoint presentation file (ready to use)
 
 ### Workflow Steps
 1. **Setup Environment** - Python 3.12 with required dependencies
@@ -38,10 +38,10 @@ The workflow runs when:
 6. **PR Comments** - Add summary comment on pull requests
 
 ### Usage
-After the workflow completes, the PowerPoint presentation is ready for immediate use!
+After the workflow completes, the PowerPoint presentation is ready for imwithiate use!
 
 **Download from GitHub Actions artifacts:**
-- `arkitektur_som_kod_presentation.pptx` - Complete presentation (28 slides)
+- `arkitektur_which_kod_presentation.pptx` - Complete presentation (28 slides)
 - `presentation_outline.md` - Structured outline for reference
 - `generate_pptx.py` - Script for local customization
 - `requirements.txt` - Dependencies list
@@ -58,7 +58,7 @@ This creates a professional PowerPoint presentation with:
 - Title slides for each chapter
 - Key bullet points and concepts
 - Swedish-language content optimized for architecture as code topics
-- Professional Kvadrat branding and styling
+- Professional Kwhatrat branding and styling
 
 ## Whitepaper Generation Workflow
 
@@ -87,11 +87,11 @@ The workflow runs when:
 
 ### Features
 Each whitepaper includes:
-- **Professional HTML Design** - Modern, responsive layout with Kvadrat branding
+- **Professional HTML design** - Modern, responsive layout with Kwhatrat branding
 - **Swedish Content** - Optimized for Swedish organizations and compliance requirements
 - **Standalone Format** - Can be shared independently via email, web, or print
 - **SEO Optimized** - Proper meta tags and structured content
-- **Print-Ready** - CSS styling optimized for both screen and print media
+- **Print-Ready** - CSS styling optimized for both screen and print withia
 
 ## File Structure
 
@@ -167,7 +167,7 @@ Generated files are:
    - Verify: Python script syntax using validation steps
 
 3. **HTML Validation Errors**
-   - Issue: Missing or malformed HTML structure
+   - Issue: Missing or malforwith HTML structure
    - Solution: Workflows include comprehensive validation steps
 
 ### Monitoring
