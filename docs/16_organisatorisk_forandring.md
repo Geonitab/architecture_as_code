@@ -1,76 +1,76 @@
-# Organisatorisk förändring och teamstrukturer
+# Organisatorisk forändring and teamstrukturer
 
-![Organisatorisk transformation](images/diagram_10_kapitel9.png)
+![Organizational transformation](images/diagram_10_kapitel9.png)
 
-*Infrastructure as Code (arkitektur som kod) driver fundamental organisatorisk förändring från traditionella silos till cross-funktionella DevOps-team. Diagrammet illustrerar evolutionen från isolerade team till integrerade, samarbetsinriktade strukturer som optimerar för hastighet och kvalitet.*
+*Infrastructure as Code (Architecture as Code) driver fundamental organisatorisk forändring from traditionella silos to cross-funktionella DevOps-team. Diagrammet illustrerar evolutionen from isolerade team to integrerade, samarbetsinriktade Structureer which optimerar for hastighet and kvalitet.*
 
-Arkitektur som kod-metodiken utgör grunden för ## Organisatoriska förändringsprocessens komplexitet
+Architecture as Code-metodiken utgör grunden for ## organizational forändringsprocessens komplexitet
 
-![Förändringsdimensioner och samband](images/mindmap_17_organisation.png)
+![Förändringsdimensioner and samband](images/mindmap_17_organisation.png)
 
-*Mindmappen visualiserar de mångsidiga aspekterna av organisatorisk förändring vid Arkitektur som kod-arkitektur som kod-implementation. Den visar hur DevOps-kulturtransformation, cross-funktionella teamstrukturer, kompetensutveckling, rollförändring och change management är sammankopplade och måste hanteras holistiskt för framgångsrik transformation.*
+*Mindmappen visualiserar the mångsidiga aspekterna of organisatorisk forändring vid Architecture as Code-Architecture as Code-implementation. Den shows how DevOps-kulturtransformation, cross-funktionella teamStructureer, competence development, rollforändring and change management is sammankopplade and must is managed holistiskt for successful transformation.*
 
 ## Övergripande beskrivning
 
-Implementering av Infrastructure as Code kräver djupgående organisatoriska förändringar som sträcker sig långt bortom teknisk transformation. Traditionella IT-organisationer med separata utvecklings-, drift- och säkerhetsteam måste genomgå grundläggande omstrukturering för att fullt ut realisera fördelarna med kodbaserade arbetssätt.
+implementation of Infrastructure as Code requires djupgående organizational forändringar which sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå grundläggande omStructureering for to fullt ut realisera Benefitsna with kodbaserade arbetssätt.
 
-Svenska organisationer står inför unika utmaningar när det gäller organisatorisk förändring genom starka fackliga traditioner, konsensusbaserade beslutsprocesser och etablerade hierarkiska struktururer. Successful arkitektur som kod adoption kräver change management strategier som respekterar dessa kulturella aspekter samtidigt som de främjar agile och collaborative arbetssätt.
+Svenska organisationer står infor unika Challenges when the gäller organisatorisk forändring through starka fackliga traditioner, konsensusbaserade beslutsprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier which respekterar These kulturella aspekter simultaneously which the främjar agile and collaborative arbetssätt.
 
-Conway's Law beskriver hur organisationers kommunikationsstrukturer speglas i systemarkitekturen de producerar. För Arkitektur som kod-success måste organisationer medvetet designa teamstrukturer som supportar microservices, API-driven arkitekturer och automated deployment patterns som Infrastructure as Code möjliggör.
+Conway's Law beskriver how organisationers kommunikationsStructureer speglas in systemarkitekturen the producerar. For Architecture as Code-success must organisationer withvetet designa teamStructureer which supportar microservices, API-driven arkitekturer and automated deployment patterns that Infrastructure as Code enables.
 
-Modern DevOps-transformation inom svenska företag som Spotify, Klarna och King demonstrerar hur innovative organisationsdesign kan accelerate product development och operational efficiency. Dessa organisationer har utvecklat unika approaches till team autonomy, cross-functional collaboration och continuous improvement som kan adapt till olika svenska organisationskulturer.
+Modern DevOps-transformation within svenska foretag that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer har utvecklat unika approaches to team autonomy, cross-functional collaboration and continuous improvement which can adapt to olika svenska organisationskulturer.
 
 ## DevOps-kulturtransformation
 
-DevOps representerar fundamental kulturförändering från "us vs them" mentalitet mellan development och operations till shared ownership av product lifecycle. Denna transformation kräver investment i både tekniska verktyg och kulturella förändringsinitiativ som promote collaboration, transparency och continuous learning.
+DevOps representerar fundamental kulturforändering from "us vs them" mentalitet mellan development and operations to shared ownership of product lifecycle. This transformation requires investment in both tekniska verktyg and kulturella forändringsinitiativ which promote collaboration, transparency and continuous learning.
 
-Psychological safety utgör foundationen för effective DevOps teams genom att möjliggöra open communication kring mistakes, experimentation och continuous improvement. Svenska workplace culture med emphasis på consensus och equality provides natural foundation för building psychologically safe environments som support DevOps practices.
+Psychological safety utgör foundationen for effective DevOps teams through to möjliggöra open communication about mistakes, experimentation and continuous improvement. Svenska workplace culture with emphasis at consensus and equality provides natural foundation for building psychologically safe environments which support DevOps practices.
 
-Blameless post-mortems och failure celebration är essentiella komponenter i DevOps culture som encourage innovation och risk-taking. Svenska organisationer med strong safety cultures kan leverage dessa principles för att create environments där teams kan experiment med new technologies och approaches utan fear of retribution för honest mistakes.
+Blameless post-mortems and failure celebration is essentiella components in DevOps culture which encourage innovation and risk-taking. Svenska organisationer with strong safety cultures can leverage These principles for to create environments where teams can experiment with new technologies and approaches utan fear of retribution for honest mistakes.
 
-Continuous learning och skill development program måste support team members i developing cross-functional capabilities som bridge traditional development och operations boundaries. Investment i comprehensive training program för Arkitektur som kod tools, cloud platforms och automation practices ensures teams can effectively support modern infrastructure management.
+Continuous learning and skill development program must support team members in developing cross-functional capabilities which bridge traditional development and operations boundaries. Investment in comprehensive training program for Architecture as Code tools, cloud platforms and automation practices ensures teams can effectively support modern infrastructure management.
 
-## Cross-funktionella team strukturer
+## Cross-funktionella team structures
 
-Cross-functional teams för Arkitektur som kod arkitektur som kod-implementation måste include diverse skills covering software development, systems administration, security engineering och product management. Effective team composition balances technical expertise med domain knowledge och ensures comprehensive coverage av infrastructure lifecycle management.
+Cross-functional teams for Architecture as Code Architecture as Code-implementation must include diverse skills covering software development, systems administration, security engineering and product management. Effective team composition balances technical expertise with domain knowledge and ensures comprehensive coverage of infrastructure lifecycle management.
 
-Team size optimization följer "two-pizza rule" principles där teams är små nog för effective communication men large nog för comprehensive skill coverage. Research suggests optimal Arkitektur som kod team sizes mellan 6-8 personer med representation från development, operations, security och product functions.
+Team size optimization följer "two-pizza rule" principles where teams is små nog for effective communication men large nog for comprehensive skill coverage. Research suggests optimal Architecture as Code team sizes mellan 6-8 personer with representation from development, operations, security and product functions.
 
-Role definition inom cross-functional teams måste support both specialized expertise och collaborative responsibilities. Infrastructure engineers, cloud architects, security specialists och product owners each contribute unique perspectives som require coordination through well-defined interfaces och shared responsibilities.
+Role definition within cross-functional teams must support both specialized expertise and collaborative responsibilities. Infrastructure engineers, cloud architects, security specialists and product owners each contribute unique perspectives which require coordination through well-defined interfaces and shared responsibilities.
 
-Team autonomy och decision-making authority är critical för Arkitektur som kod success eftersom infrastructure decisions often require rapid response to operational issues. Swedish organizations med consensus-based cultures måste balance democratic decision-making med need för quick operational responses under pressure situations.
+Team autonomy and decision-making authority is critical for Architecture as Code success efterwhich infrastructure decisions often require rapid response to operational issues. Swedish organizations with consensus-based cultures must balance democratic decision-making with need for quick operational responses under pressure situations.
 
-## Kompetenshöjning och utbildning
+## Kompetenshöjning and utbildning
 
-Comprehensive training program för arkitektur som kod adoption måste cover technical skills, process changes och cultural transformation aspects. Multi-modal learning approaches including hands-on workshops, mentorship program och certification tracks ensure diverse learning preferences och skill levels är accommodated effectively.
+Comprehensive training program for Architecture as Code adoption must cover technical skills, process changes and cultural transformation aspects. Multi-modal learning approaches including hands-on workshops, mentorship program and certification tracks ensure diverse learning preferences and skill levels is accommodated effectively.
 
-Technical skill development tracks ska include Infrastructure as Code tools (Terraform, CloudFormation, Pulumi), cloud platforms (AWS, Azure, GCP), containerization technologies (Docker, Kubernetes), samt automation och monitoring tools. Progressive skill development från basic concepts till advanced implementation ensures systematic capability building.
+Technical skill development tracks ska include Infrastructure as Code tools (Terraform, CloudFormation, Pulumi), cloud platforms (AWS, Azure, GCP), containerization technologies (Docker, Kubernetes), samt automation and monitoring tools. Progressive skill development from basic concepts to advanced implementation ensures systematic capability building.
 
-Process training för DevOps workflows, git-based collaboration, code review practices och incident response procedures ensures teams can effectively coordinate complex infrastructure management activities. Integration av these processes med existing organizational workflows minimizes disruption samtidigt som new capabilities utvecklas.
+Process training for DevOps workflows, git-based collaboration, code review practices and incident response procedures ensures teams can effectively coordinate complex infrastructure management activities. Integration of these processes with existing organizational workflows minimizes disruption simultaneously which new capabilities utvecklas.
 
-Cultural transformation workshops focusing on DevOps principles, blameless culture, continuous improvement och cross-functional collaboration helps teams adapt till new working methods. Svenska organizations kan leverage existing collaboration traditions för att accelerate adoption av these new cultural patterns.
+Cultural transformation workshops focusing on DevOps principles, blameless culture, continuous improvement and cross-functional collaboration helps teams adapt to new working methods. Svenska organizations can leverage existing collaboration traditions for to accelerate adoption of these new cultural patterns.
 
-## Rollförändring och karriärutveckling
+## Rollforändring and karriärutveckling
 
-Traditional system administrator roles evolve toward Infrastructure Engineers som combine operational expertise med software development skills. Career development paths måste provide clear progression opportunities som recognize both technical depth och breadth av cross-functional capabilities.
+Traditional systems administrator roles evolve toward Infrastructure Engineers which combine operational expertise with software development skills. Career development paths must provide clear progression opportunities which recognize both technical depth and breadth of cross-functional capabilities.
 
-Security professional integration in DevOps teams creates DevSecOps practices där security considerations är embedded throughout infrastructure lifecycle. Security engineers develop new skills i automated compliance, policy-as-code och security scanning integration medan de maintain specialization i threat analysis och risk assessment.
+Security professional integration in DevOps teams creates DevSecOps practices where security considerations is embedded throughout infrastructure lifecycle. Security engineers develop new skills in automated compliance, policy-as-code and security scanning integration withan the maintain specialization in threat analysis and risk assessment.
 
-Network engineering roles transform toward software-defined networking och cloud networking specializations som require programming skills alongside traditional networking expertise. Cloud networking specialists develop capabilities i infrastructure automation samtidigt som de maintain deep technical knowledge i network protocols och architecture.
+Network engineering roles transform toward software-defined networking and cloud networking specializations which require programming skills alongside traditional networking expertise. Cloud networking specialists develop capabilities in infrastructure automation simultaneously which the maintain deep technical knowledge in network protocols and architecture.
 
-Management role evolution från command-and-control toward servant leadership models som support team autonomy och decision-making. Swedish managers med collaborative leadership styles är well-positioned för supporting DevOps team structures som emphasize distributed decision-making och continuous improvement.
+Management role evolution from command-and-control toward servant leadership models which support team autonomy and decision-making. Swedish managers with collaborative leadership styles is well-positioned for supporting DevOps team structures which emphasize distributed decision-making and continuous improvement.
 
 ## Change management strategier
 
-Change management för arkitektur som kod adoption måste address both technical och cultural aspects av organizational transformation. Successful change strategies include stakeholder engagement, communication planning, resistance management och progress measurement som ensure sustainable organizational evolution.
+Change management for Architecture as Code adoption must address both technical and cultural aspects of organizational transformation. Successful change strategies include stakeholder engagement, communication planning, resistance management and progress measurement which ensure sustainable organizational evolution.
 
-Stakeholder mapping och engagement strategies identify key influencers, early adopters och potential resistance sources inom organizational. Swedish organizational dynamics med strong worker representation require inclusive approaches som involve unions, work councils och employee representatives i planning och implementation processes.
+Stakeholder mapping and engagement strategies identify key influencers, early adopters and potential resistance sources within organizational. Swedish organizational dynamics with strong worker representation require inclusive approaches which involve unions, work councils and employee representatives in planning and implementation processes.
 
-Communication strategies måste provide transparent information kring transformation goals, timeline, expected impacts och support resources. Regular town halls, progress updates och feedback sessions maintain organizational engagement samtidigt som they address concerns och questions från different stakeholder groups.
+Communication strategies must provide transparent information about transformation goals, timeline, expected impacts and support resources. Regular town halls, progress updates and feedback sessions maintain organizational engagement simultaneously which they address concerns and questions from different stakeholder groups.
 
-Resistance management techniques include identifying root causes av resistance, providing targeted support för concerned individuals och creating positive incentives för adoption. Understanding that resistance often stems från fear av job loss eller skill obsolescence allows organizations att address these concerns proactively through retraining och career development opportunities.
+Resistance management techniques include identifying root causes of resistance, providing targeted support for concerned individuals and creating positive incentives for adoption. Understanding that resistance often stems from fear of job loss or skill obsolescence allows organizations to address these concerns proactively through retraining and career development opportunities.
 
-## Praktiska exempel
+## Praktiska example
 
 ### DevOps Team Structure Blueprint
 ```yaml
@@ -114,7 +114,7 @@ team_structure:
         - "Threat modeling för cloud infrastructure"
         - "Security scanning integration"
       skills_required:
-        - "Cloud security arkitektur som kod best practices"
+        - "Cloud security architecture as code best practices"
         - "Policy engines (OPA/AWS Config)"
         - "Security scanning tools"
         - "Compliance frameworks (ISO27001/SOC2)"
@@ -151,9 +151,9 @@ team_structure:
     on_call_rotation: "1 week rotation, shared mellan SRE och Infrastructure Engineers"
     
   success_metrics:
-    infrastructure_deployment_time: "< 15 minutes från commit till production"
+    infrastructure_deployment_time: "< 15 minutes from commit till production"
     incident_resolution_time: "< 30 minutes for P1 incidents"
-    developer_satisfaction: "> 4.5/5 i quarterly surveys"
+    developer_satisfaction: "> 4.5/5 in quarterly surveys"
     infrastructure_cost_efficiency: "10% yearly improvement"
     security_compliance_score: "> 95%"
 
@@ -201,7 +201,7 @@ class IaCCompetencyFramework:
                 "description": "Basic understanding, requires guidance",
                 "hours_required": 40,
                 "assessment_criteria": [
-                    "Can execute predefined Arkitektur som kod templates",
+                    "Can execute predefined architecture as code templates",
                     "Understands basic cloud concepts",
                     "Can follow established procedures"
                 ]
@@ -210,7 +210,7 @@ class IaCCompetencyFramework:
                 "description": "Can work independently on common tasks", 
                 "hours_required": 120,
                 "assessment_criteria": [
-                    "Can create simple Arkitektur som kod modules",
+                    "Can create simple architecture as code modules",
                     "Understands infrastructure dependencies",
                     "Can troubleshoot common issues"
                 ]
@@ -228,7 +228,7 @@ class IaCCompetencyFramework:
                 "description": "Thought leader, can drive organizational standards",
                 "hours_required": 300,
                 "assessment_criteria": [
-                    "Can drive organizational Arkitektur som kod strategy",
+                    "Can drive organizational architecture as code strategy",
                     "Can design complex multi-cloud solutions",
                     "Can lead transformation initiatives"
                 ]
@@ -277,7 +277,7 @@ class IaCCompetencyFramework:
             "learning_modules": []
         }
         
-        # Generera learning modules baserat på focus domains
+        # Generera learning modules baserat at focus domains
         for domain in focus_domains:
             if domain in self.skill_domains:
                 modules = self._generate_domain_modules(domain, current_level, target_level)
@@ -309,7 +309,7 @@ class IaCCompetencyFramework:
                     "Deploy Swedish GDPR-compliant S3 bucket",
                     "Create VPC med svenska säkerhetskrav", 
                     "Implementera IAM policies för svenska organisationer",
-                    "Set up monitoring enligt MSB-riktlinjer"
+                    "Set up monitoring according to MSB-riktlinjer"
                 ],
                 "assessment": {
                     "type": "practical_project",
@@ -328,13 +328,13 @@ class IaCCompetencyFramework:
                     "Implementera GDPR-compliant infrastructure",
                     "Förstå MSB säkerhetskrav",
                     "Skapa automated compliance checking",
-                    "Design secure network architectures"
+                    "design secure network architectures"
                 ],
                 "practical_exercises": [
                     "Create GDPR-compliant data pipeline",
-                    "Implement network security arkitektur som kod best practices",
+                    "Implement network security architecture as code best practices",
                     "Set up automated compliance monitoring",
-                    "Design incident response procedures"
+                    "design incident response procedures"
                 ],
                 "assessment": {
                     "type": "compliance_audit",
@@ -394,7 +394,7 @@ class IaCCompetencyFramework:
         return competency_matrix
 
 def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
-    """Skapa comprehensive organizational change plan för arkitektur som kod adoption"""
+    """Skapa comprehensive organizational change plan för architecture as code adoption"""
     
     change_plan = {
         "organization": organization_assessment["name"],
@@ -407,7 +407,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 "duration_months": 6,
                 "objectives": [
                     "Establish DevOps culture basics",
-                    "Implement basic arkitektur som kod practices",
+                    "Implement basic architecture as code practices",
                     "Create cross-functional teams",
                     "Set up initial toolchain"
                 ],
@@ -420,7 +420,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 ],
                 "success_criteria": [
                     "All teams trained on DevOps basics",
-                    "Basic Arkitektur som kod deployment pipeline operational",
+                    "Basic architecture as code deployment pipeline operational",
                     "Cross-functional teams established",
                     "Initial toolchain adopted"
                 ]
@@ -429,20 +429,20 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 "name": "Capability Development", 
                 "duration_months": 8,
                 "objectives": [
-                    "Scale arkitektur som kod practices across organization",
+                    "Scale architecture as code practices across organization",
                     "Implement advanced automation",
                     "Establish monitoring och observability",
                     "Mature incident response processes"
                 ],
                 "activities": [
-                    "Advanced Arkitektur som kod training rollout",
+                    "Advanced architecture as code training rollout",
                     "Multi-environment deployment automation",
                     "Comprehensive monitoring implementation",
                     "Incident response process development",
                     "Security integration (DevSecOps)"
                 ],
                 "success_criteria": [
-                    "arkitektur som kod practices adopted by all product teams",
+                    "architecture as code practices adopted by all product teams",
                     "Automated deployment across all environments",
                     "Comprehensive observability implemented",
                     "Incident response processes mature"
@@ -518,10 +518,10 @@ performance_measurement_framework:
         high: "1 per week - 1 per day"
         medium: "1 per month - 1 per week" 
         low: "< 1 per month"
-      collection_method: "Automated från CI/CD pipeline"
+      collection_method: "Automated from CI/CD pipeline"
       
     lead_time_for_changes:
-      description: "Time från code commit till production deployment"
+      description: "Time from code commit till production deployment"
       measurement: "Hours/days"
       target_values:
         elite: "< 1 hour"
@@ -531,14 +531,14 @@ performance_measurement_framework:
       collection_method: "Git och deployment tool integration"
       
     mean_time_to_recovery:
-      description: "Time to recover från production incidents"
+      description: "Time to recover from production incidents"
       measurement: "Hours"
       target_values:
         elite: "< 1 hour"
         high: "< 1 day"
         medium: "1 day - 1 week"
         low: "> 1 week"
-      collection_method: "Incident management system"
+      collection_method: "Incident management systems"
       
     change_failure_rate:
       description: "Percentage of deployments causing production issues"
@@ -586,7 +586,7 @@ performance_measurement_framework:
       description: "Investment in learning och experimentation"
       measurement: "Hours per person per quarter"
       target: "> 40 hours"
-      collection_method: "Learning management system"
+      collection_method: "Learning management systems"
       
     collaboration_effectiveness:
       description: "Cross-functional team collaboration quality"
@@ -598,7 +598,7 @@ performance_measurement_framework:
       description: "Number of new ideas/experiments per quarter"
       measurement: "Count per team member"
       target: "> 2 per quarter"
-      collection_method: "Innovation tracking system"
+      collection_method: "Innovation tracking systems"
 
   collection_automation:
     data_sources:
@@ -637,21 +637,21 @@ performance_measurement_framework:
       tracking: "Monitor improvement progress monthly"
 ```
 
-## Sammanfattning
+## Summary
 
 
-Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Organisatorisk förändring utgör den mest kritiska komponenten för successful Infrastructure as Code adoption. Technical tools och processes kan implementeras relativt snabbt, men cultural transformation och team restructuring kräver sustained effort över extended periods för att achieve lasting impact.
+Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Organisatorisk forändring utgör den mest kritiska komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, men cultural transformation and team restructuring requires sustained effort over extended periods for to achieve lasting impact.
 
-Svenska organisationer som investerar i comprehensive change management, cross-functional team development och continuous learning culture positionerar sig för long-term success med arkitektur som kod practices. Investment i people development och organizational design delivers compounding returns genom improved collaboration, faster innovation cycles och enhanced operational efficiency.
+Svenska organisationer which investerar in comprehensive change management, cross-functional team development and continuous learning culture positionerar itself for long-term success with Architecture as Code practices. Investment in people development and organizational design delivers compounding returns through improved collaboration, faster innovation cycles and enhanced operational efficiency.
 
-Success requires balanced focus på technical capability development, cultural transformation och measurement-driven improvement. Organizations som treats change management som equally important som technical implementation achieve significantly better outcomes från their arkitektur som kod transformation investments.
+Success requires balanced focus at technical capability development, cultural transformation and measurement-driven improvement. Organizations which treats change management which equally important which technical implementation achieve significantly better outcomes from their Architecture as Code transformation investments.
 
-## Källor och referenser
+## Sources and referenser
 
 - Puppet. "State of DevOps Report." Puppet Labs, 2023.
 - Google. "DORA State of DevOps Research." Google Cloud, 2023.
 - Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.
-- Team Topologies. "Organizing Business och Technology Teams." IT Revolution Press, 2023.
+- Team Topologies. "Organizing Business and Technology Teams." IT Revolution Press, 2023.
 - Accelerate. "Building High Performing Technology Organizations." IT Revolution Press, 2023.
 - McKinsey. "Organizational Transformation in Nordic Companies." McKinsey & Company, 2023.

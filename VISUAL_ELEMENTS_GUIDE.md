@@ -1,12 +1,12 @@
-# Visual Elements Documentation - Kvadrat Book Design
+# Visual Elements Documentation - Kwhatrat Book design
 
 ## Overview
 
-This document explains the enhanced visual elements added to the "Arkitektur som kod" book to align with Kvadrat's professional graphical profile. All elements are designed to improve readability while maintaining the professional theme defined in `BRAND_GUIDELINES.md`.
+This document explains the enhanced visual elements added to the "Architecture as Code" book to align with Kwhatrat's professional graphical profile. All elements are designed to improve readability while maintaining the professional theme defined in `BRAND_GUIDELINES.md`.
 
 ## Color Scheme Alignment
 
-All visual elements use the official Kvadrat color palette:
+All visual elements use the official Kwhatrat color palette:
 
 - **Primary Blue** (`#1e3a8a`): Main headings, borders, primary elements
 - **Light Blue** (`#3b82f6`): Accents, interactive elements, highlights  
@@ -19,9 +19,9 @@ All visual elements use the official Kvadrat color palette:
 ## Enhanced Mermaid Diagrams
 
 ### Theme Configuration
-Location: `docs/mermaid-kvadrat-theme.json`
+Location: `docs/mermaid-kwhatrat-theme.json`
 
-The Mermaid diagrams now use a custom Kvadrat theme that ensures:
+The Mermaid diagrams now use a custom Kwhatrat theme that ensures:
 - Consistent brand colors across all diagrams
 - Professional typography using Inter font family
 - Appropriate contrast ratios for readability
@@ -32,7 +32,7 @@ All Mermaid diagrams have been enhanced with:
 - **Icons and Emojis**: Visual indicators for different types of elements (👩‍💻 for developers, 🚀 for deployment, etc.)
 - **Subgraph Organization**: Logical grouping of related elements
 - **Color Coding**: Different colors for different types of processes or states
-- **Professional Styling**: Consistent with Kvadrat brand guidelines
+- **Professional Styling**: Consistent with Kwhatrat brand guidelines
 
 Example diagrams enhanced:
 - `diagram_01_inledning.mmd`: Evolution from traditional to modern architecture
@@ -51,11 +51,11 @@ Enhanced chapter headers with:
 - **Section numbering**: Small visual indicators for sections and subsections
 
 ### Professional Separators
-**Command**: `\kvadseparator`
+**Command**: `\kwhatseparator`
 
 Creates elegant section separators with:
 - Horizontal blue lines
-- Graduated dots in Kvadrat colors
+- Graduated dots in Kwhatrat colors
 - Consistent spacing
 
 ### Enhanced Callout Boxes
@@ -84,7 +84,7 @@ Creates elegant section separators with:
 #### Key Point Block
 **Command**: `\keypoint{Title}{Content}`
 - Thick blue left border
-- Kvadrat "K" icon
+- Kwhatrat "K" icon
 - Emphasizes critical information
 - Highest visual priority
 
@@ -103,24 +103,24 @@ Professional sidebar boxes for:
 Enhanced with:
 - Blue left border (3pt thickness)
 - Light gray background
-- Syntax highlighting in Kvadrat colors
+- Syntax highlighting in Kwhatrat colors
 - Professional spacing and margins
 
 #### Terminal Blocks
 **Command**: `\terminalblock{Content}`
-- Dark blue background (Kvadrat Dark Blue)
+- Dark blue background (Kwhatrat Dark Blue)
 - White text for command-line appearance
 - No line numbers for clean terminal look
 
 ### Table Enhancements
 
 #### Professional Tables
-**Environment**: `\begin{kvadtable}{Caption}{Label}...\end{kvadtable}`
+**Environment**: `\begin{kwhattable}{Caption}{Label}...\end{kwhattable}`
 
 Features:
 - Blue table headers with white text
 - Alternating row colors for readability
-- Professional borders using Kvadrat colors
+- Professional borders using Kwhatrat colors
 - Consistent spacing and typography
 
 #### Table Styling Commands
@@ -133,12 +133,12 @@ Features:
 ### TikZ-based Icons
 All icons are created using TikZ for consistent quality:
 
-- `\iconinfo`: Blue circle with "i" - for information
+- `\iconinfo`: Blue circle with "in" - for information
 - `\iconwarning`: Orange circle with "!" - for warnings  
 - `\iconsuccess`: Green circle with "✓" - for success
 - `\iconkey`: Blue circle with "K" - for key points
 
-### Icon Design Principles
+### Icon design Principles
 - Consistent 12pt circle diameter
 - High contrast colors for accessibility
 - Simple, recognizable symbols
@@ -186,13 +186,13 @@ All visual elements maintain:
 - **Print Compatibility**: All elements work in both digital and print formats
 - **Scalability**: Elements remain legible at different sizes
 
-## Implementation Notes
+## implementation Notes
 
 ### Build Process Integration
 The enhanced visual elements are integrated into the build process via:
-- `docs/build_book.sh`: Updated to use Kvadrat Mermaid theme
-- `docs/pandoc.yaml`: Configured to use enhanced Kvadrat LaTeX template
-- `templates/kvadrat-book-template.latex`: Contains all visual element definitions
+- `docs/build_book.sh`: Updated to use Kwhatrat Mermaid theme
+- `docs/pandoc.yaml`: Configured to use enhanced Kwhatrat LaTeX template
+- `templates/kwhatrat-book-template.latex`: Contains all visual element definitions
 
 ### Maintaining Consistency
 To ensure consistent application:
@@ -202,17 +202,17 @@ To ensure consistent application:
 4. Maintain proper spacing using the provided separators
 
 ### Future Enhancements
-The visual system is designed to be extensible:
+The visual systems is designed to be extensible:
 - Additional icon types can be added using the same TikZ pattern
-- New callout types can be created following the existing mdframed patterns
+- New callout types can be created following the existing mdfrawith patterns
 - Diagram themes can be updated centrally via the JSON configuration
 
 ## File Locations
 
-- **LaTeX Template**: `templates/kvadrat-book-template.latex`
-- **Mermaid Theme**: `docs/mermaid-kvadrat-theme.json`
+- **LaTeX Template**: `templates/kwhatrat-book-template.latex`
+- **Mermaid Theme**: `docs/mermaid-kwhatrat-theme.json`
 - **Build Script**: `docs/build_book.sh`
 - **Pandoc Config**: `docs/pandoc.yaml`
 - **Example Usage**: `docs/02_grundlaggande_principer.md`
 
-This documentation should be referenced when adding new content to ensure all visual elements align with Kvadrat's professional standards and brand guidelines.
+This documentation should be referenced when adding new content to ensure all visual elements align with Kwhatrat's professional standards and brand guidelines.

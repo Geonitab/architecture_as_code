@@ -1,6 +1,6 @@
 # Content Validation Test Suite
 
-This directory contains a comprehensive test suite for validating the "Arkitektur som Kod" book content. The tests ensure that all content meets quality requirements for completeness, consistency, clarity, and technical accuracy.
+This directory contains a comprehensive test suite for validating the "Architecture as Code" book content. The tests ensure that all content meets quality requirements for completeness, consistency, clarity, and technical accuracy.
 
 ## 🧪 Test Suite Overview
 

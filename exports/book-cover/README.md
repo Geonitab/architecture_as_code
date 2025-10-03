@@ -1,7 +1,7 @@
 # Book Cover Design Files
 
 ## Overview
-This directory contains the complete book cover design for "Arkitektur som kod" in multiple formats.
+This directory contains the complete book cover design for "Architecture as Code" in multiple formats.
 
 ## Files Included
 

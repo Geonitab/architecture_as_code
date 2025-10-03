@@ -1,29 +1,30 @@
-# Inledning till arkitektur som kod
+# Introduction to Architecture as Code
 
-Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela systemarkitekturen definieras, versionshanteras och hanteras genom kod. Detta approach möjliggör samma metodiker som traditionell mjukvaruutveckling för hela organisationens tekniska landskap.
+Architecture as Code represents a paradigm shift in systems development where the entire systems architecture is defined, version-controlled, and managed through code. This approach enables the same methodologies as traditional software development for an organization's entire technical landscape.
 
-![Inledning till arkitektur som kod](images/diagram_01_inledning.png)
+![Introduction to Architecture as Code](images/diagram_01_inledning.png)
 
-Diagrammet illustrerar evolutionen från manuella processer till den omfattande visionen av Architecture as Code, där hela systemarkitekturen kodifieras.
+The diagram illustrates the evolution from manual processes to the comprehensive vision of Architecture as Code, where the entire systems architecture is codified.
 
-## Evolution mot arkitektur som kod
+## Evolution towards Architecture as Code
 
-Traditionella metoder för systemarkitektur har ofta varit manuella och dokumentbaserade. Architecture as Code bygger på etablerade principer från mjukvaruutveckling och tillämpar dessa på hela systemlandskapet.
+Traditional methods for systems architecture have often been manual and document-based. Architecture as Code builds on established principles from software development and applies them to the entire systems landscape.
 
-Detta inkluderar inte bara infrastrukturkomponenter, utan även applikationsarkitektur, dataflöden, säkerhetspolicies, compliance-regler och organisatoriska strukturer - allt definierat som kod.
+This includes not only infrastructure components, but also application architecture, data flows, security policies, compliance rules, and organizational structures - all defined as code.
 
-## Definition och omfattning
+## definition and Scope
 
-Architecture as Code definieras som praktiken att beskriva, versionhantera och automatisera hela systemarkitekturen genom maskinläsbar kod. Detta omfattar applikationskomponenter, integrationsmönster, dataarkitektur, infrastruktur och organisatoriska processer.
+Architecture as Code is defined as the practice of describing, version-controlling, and automating the entire systems architecture through machine-readable code. This encompasses application components, integration patterns, data architecture, infrastructure, and organizational processes.
 
-Denna holistiska approach möjliggör end-to-end automatisering där förändringar i krav automatiskt propagerar genom hela arkitekturen - från applikationslogik till deployment och monitering.
+This holistic approach enables end-to-end automation where changes in requirements automatically propagate through the entire architecture - from application logic to deployment and monitoring.
 
-## Bokens syfte och målgrupp
+## Purpose and Target Audience of the Book
 
-Denna bok vänder sig till systemarkitekter, utvecklare, projektledare och IT-beslutsfattare som vill förstå och implementera Architecture as Code i sina organisationer. 
+This book is aimed at systems architects, developers, project managers, and IT decision-makers who want to understand and implement Architecture as Code in their organizations.
 
-Läsaren kommer att få omfattande kunskap om hur hela systemarkitekturen kan kodifieras, från grundläggande principer till avancerade arkitekturmönster som omfattar hela organisationens digitala ekosystem.
+The reader will gain comprehensive knowledge of how the entire systems architecture can be codified, from fundamental principles to advanced architecture patterns that encompass an organization's entire digital ecosystem.
 
-Källor:
+Sources:
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
+

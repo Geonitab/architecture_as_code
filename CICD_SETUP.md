@@ -1,34 +1,34 @@
 # CI/CD Setup komplett
 
-GitHub Actions konfiguration för automatisk bokbygge har skapats.
+GitHub Actions konfiguration for automatisk bokbygge har skapats.
 
 ## Filer skapade:
 - `.github/workflows/build-book.yml` - GitHub Actions workflow
 - `README.md` - Uppdaterad projektdokumentation
-- Uppdaterad interface med CI/CD status
+- Uppdaterad interface with CI/CD status
 
-## Nästa steg:
+## Next Steps:
 
-1. **Anslut till GitHub**:
-   - Klicka GitHub-knappen i Lovable
+1. **Anslut to GitHub**:
+   - Klicka GitHub-knappen in Lovable
    - Auktorisera Lovable GitHub App
    - Skapa repository
 
-2. **Automatisk byggprocess startar när**:
-   - Markdown-filer ändras i `docs/`
-   - Mermaid-diagram uppdateras
-   - Push till main branch
+2. **Automatisk byggprocess startar when**:
+   - Markdown-filer ändras in `docs/`
+   - Mermaid diagrams uppdateras
+   - Push to main branch
 
 3. **Workflow bygger**:
    - Konverterar .mmd → .png
-   - Skapar PDF med Pandoc
-   - Sparar som GitHub Release
-   - Artifacts för nedladdning
+   - creates PDF with Pandoc
+   - Sparar that GitHub Release
+   - Artifacts for nedladdning
 
-## Byggprocessen inkluderar:
-- Pandoc med Eisvogel LaTeX-template
-- Mermaid CLI för diagramkonvertering
-- TeXLive för PDF-rendering
-- Automatiska releases med versionsnummer
+## Byggprocessen includes:
+- Pandoc with Eisvogel LaTeX-template
+- Mermaid CLI for diagramkonvertering
+- TeXLive for PDF-rendering
+- Automatiska releases with versionsnummer
 
-**Status: CI/CD pipeline redo för deployment!**
+**Status: CI/CD pipeline redo for deployment!**

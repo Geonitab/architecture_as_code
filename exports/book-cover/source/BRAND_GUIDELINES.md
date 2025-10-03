@@ -1,24 +1,24 @@
-# Kvadrat Brand Guidelines
-## Grafisk profil för Kodarkitektur Bokverkstad
+# Kwhatrat Brand Guidelines
+## Grafisk profil for Kodarkitektur Bokverkstad
 
 ### Översikt
-Detta dokument definierar den kompletta grafiska profilen för alla Kvadrat-publikationer, inklusive bok, whitepapers, presentationer och webbplats.
+This dokument definierar den kompletta grafiska profilen for all Kwhatrat-publikationer, including bok, whitepapers, presentationer and webbplats.
 
-## Logotyp och Varumärke
+## Logotyp and Varumärke
 
 ### Huvudlogotyp
-- **Symbol**: Stiliserad "K" i kvadratisk form
-- **Färg**: Kvadrat Blå (#1e3a8a) på vit bakgrund
-- **Alternativ**: Vit logotyp på mörk bakgrund
+- **Symbol**: Stiliserad "K" in kwhatratisk form
+- **Färg**: Kwhatrat Blå (#1e3a8a) at vit Background
+- **Alternativ**: Vit logotyp at mörk Background
 - **Minsta storlek**: 24px digitalt, 12mm print
 
 ### Logotypanvändning
-- **Friyta**: Minst 1x logotypens höjd på alla sidor
-- **Placering**: Primärt övre vänster, sekundärt övre höger
-- **Förbjudna användningar**:
-  - Förvrängning eller rotation
+- **Friyta**: Minst 1x logotypens höjd at all sidor
+- **Placering**: Primärt övre vänster, sekunwheret övre höger
+- **Forbjudna användningar**:
+  - Forvrängning or rotation
   - Andra färger än definierade
-  - Placering på störande bakgrunder
+  - Placering at störande Backgrounder
 
 ## Färgpalett
 
@@ -29,7 +29,7 @@ Detta dokument definierar den kompletta grafiska profilen för alla Kvadrat-publ
 --kvadrat-blue-dark: hsl(214, 32%, 18%)   /* #1e293b */
 ```
 
-### Sekundära färger
+### Sekunwherea färger
 ```css
 --kvadrat-gray: hsl(215, 20%, 46%)        /* #64748b */
 --kvadrat-gray-light: hsl(214, 32%, 97%)  /* #f1f5f9 */
@@ -44,35 +44,35 @@ Detta dokument definierar den kompletta grafiska profilen för alla Kvadrat-publ
 ```
 
 ### Färganvändning
-- **Kvadrat Blå**: Primär färg för rubriker, logotyp, viktiga element
-- **Kvadrat Ljusblå**: Accenter, interaktiva element, highlights
-- **Kvadrat Mörkblå**: Brödtext, subheadings
-- **Grå toner**: Sekundär text, borders, bakgrunder
+- **Kwhatrat Blå**: Primär färg for rubriker, logotyp, viktiga element
+- **Kwhatrat Ljusblå**: Accenter, interaktiva element, highlights
+- **Kwhatrat Mörkblå**: Brödtext, subheadings
+- **Grå toner**: Sekunwhere text, borders, Backgrounder
 
 ## Typografi
 
 ### Fontfamiljer
-- **Primär**: Inter (webfont och system font)
-- **Monospace**: JetBrains Mono (kodblock och teknisk text)
-- **Fallback**: system-ui, -apple-system, sans-serif
+- **Primär**: Inter (webfont and systems font)
+- **Monospace**: JetBrains Mono (kodblock and technical text)
+- **Fallback**: systems-ui, -apple-systems, sans-serif
 
 ### Hierarki
-- **H1**: 48-72px, font-weight: 800, Kvadrat Mörkblå
-- **H2**: 32-48px, font-weight: 700, Kvadrat Blå  
-- **H3**: 24-32px, font-weight: 600, Kvadrat Mörkblå
-- **H4**: 20-24px, font-weight: 600, Kvadrat Blå
-- **Body**: 16-18px, font-weight: 400, Kvadrat Mörkblå
-- **Small**: 14px, font-weight: 400, Kvadrat Grå
+- **H1**: 48-72px, font-weight: 800, Kwhatrat Mörkblå
+- **H2**: 32-48px, font-weight: 700, Kwhatrat Blå  
+- **H3**: 24-32px, font-weight: 600, Kwhatrat Mörkblå
+- **H4**: 20-24px, font-weight: 600, Kwhatrat Blå
+- **Body**: 16-18px, font-weight: 400, Kwhatrat Mörkblå
+- **Small**: 14px, font-weight: 400, Kwhatrat Grå
 
 ### Tekstegenskaper
-- **Line height**: 1.4-1.6 för optimal läsbarhet
-- **Letter spacing**: -0.025em för stora rubriker
-- **Max line length**: 65-75 tecken för optimal läsbarhet
+- **Line height**: 1.4-1.6 for optimal läsbarhet
+- **Letter spacing**: -0.025em for stora rubriker
+- **Max line length**: 65-75 tecken for optimal läsbarhet
 
-## Layout och Spacing
+## Layout and Spacing
 
-### Grid system
-- **Container width**: Max 1200px för desktop
+### Grid systems
+- **Container width**: Max 1200px for desktop
 - **Padding**: 16px mobil, 24px tablet, 48px desktop
 - **Margins**: 24px mellan sektioner, 48px mellan huvudsektioner
 
@@ -89,7 +89,7 @@ xl: 32px
 
 ### Border radius
 - **Small**: 4px (buttons, small cards)
-- **Medium**: 8px (cards, containers)
+- **Withium**: 8px (cards, containers)
 - **Large**: 12px (hero elements, major cards)
 
 ## Visuella element
@@ -115,95 +115,95 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ### Ikoner
 - **Stil**: Outline style (Lucide React ikoner)
 - **Storlek**: 16px, 20px, 24px standardstorlekar
-- **Färg**: Följer textfärg eller Kvadrat Blå för accenter
+- **Färg**: Följer textfärg or Kwhatrat Blå for accenter
 
-## Mallar och implementering
+## Mallar and implementation
 
 ### Webbplats
-- **Layout**: Grid-baserad med tydlig hierarki
-- **Navigation**: Enkel, ren navigation med Kvadrat-färger
+- **Layout**: Grid-baserad with tydlig hierarki
+- **Navigation**: Enkel, ren navigation with Kwhatrat-färger
 - **Cards**: Avrundade hörn, subtila skuggor, tydliga borders
-- **Buttons**: Kvadrat Blå primär, outline sekundär
+- **Buttons**: Kwhatrat Blå primär, outline sekunwhere
 
 ### Presentations
 - **Format**: 16:9 widescreen (1280x720px)
-- **Master**: Kvadrat-header med logotyp och sidnummer
-- **Bakgrund**: Kvadrat gradient eller ljus bakgrund
+- **Master**: Kwhatrat-header with logotyp and sidnummer
+- **Background**: Kwhatrat gradient or ljus Background
 - **Typografi**: Stora, läsbara fonter
 
 ### PDF/Bok
 - **Format**: A4 (210x297mm)
-- **Marginaler**: 25mm på alla sidor
-- **Header**: Kapiteltitel och sidnummer
-- **Footer**: Kvadrat branding
-- **Färger**: Optimerade för både skärm och print
+- **Marginaler**: 25mm at all sidor
+- **Header**: Kapiteltitel and sidnummer
+- **Footer**: Kwhatrat branding
+- **Färger**: Optimerade for both skärm and print
 
 ### Whitepapers
 - **Format**: A4 professionell layout
-- **Header**: Kvadrat logotyp och företagsinformation
-- **Typografi**: Hierarkisk struktur med Kvadrat-färger
+- **Header**: Kwhatrat logotyp and foretagsinformation
+- **Typografi**: Hierarkisk Structure with Kwhatrat-färger
 - **Callouts**: Färgkodade informationsboxar
 
 ## Accessibility Guidelines
 
 ### Färgkontrast
-- **AA Standard**: Minst 4.5:1 för normal text
-- **AAA Standard**: Minst 7:1 för stor text
-- **Kvadrat Blå på vit**: ✅ 8.2:1 ratio
-- **Kvadrat Grå på vit**: ✅ 4.7:1 ratio
+- **AA Standard**: Minst 4.5:1 for normal text
+- **AAA Standard**: Minst 7:1 for stor text
+- **Kwhatrat Blå at vit**: ✅ 8.2:1 ratio
+- **Kwhatrat Grå at vit**: ✅ 4.7:1 ratio
 
 ### Responsiv design
 - **Breakpoints**:
   - Mobile: 320px-768px
   - Tablet: 768px-1024px  
   - Desktop: 1024px+
-- **Touch targets**: Minst 44px för interaktiva element
+- **Touch targets**: Minst 44px for interaktiva element
 
 ## Användningsexempel
 
 ### Korrekt användning
-✅ Kvadrat Blå för primära knappar och länkar
-✅ Konsekvent spacing enligt scale
+✅ Kwhatrat Blå for primära knappar and länkar
+✅ Konsekvent spacing according to scale
 ✅ Korrekt typografihierarki
 ✅ Lämplig friyta runt logotyp
-✅ Färgkombinationer med tillräcklig kontrast
+✅ Färgkombinationer with toräcklig kontrast
 
 ### Undvik
 ❌ Andra färger än definierade
-❌ Förvrängd eller felaktig logotypanvändning  
+❌ Forvrängd or felaktig logotypanvändning  
 ❌ Inkonsekvent spacing
 ❌ Fel typografihierarki
-❌ Låg kontrast mellan text och bakgrund
+❌ Låg kontrast mellan text and Background
 
-## Implementation checklist
+## implementation checklist
 
 ### Webbplats
 - [ ] CSS custom properties konfigurerade
-- [ ] Tailwind config uppdaterad med Kvadrat-färger
+- [ ] Tailwind config uppdaterad with Kwhatrat-färger
 - [ ] Typografi korrekt implementerad
-- [ ] Komponenter följer design system
+- [ ] components följer design systems
 - [ ] Responsiv design testad
 
 ### PDF/Bok
-- [ ] LaTeX template med Kvadrat-branding
-- [ ] Korrekta färger för print
-- [ ] Typografi optimerad för läsbarhet
+- [ ] LaTeX template with Kwhatrat-branding
+- [ ] Korrekta färger for print
+- [ ] Typografi optimerad for läsbarhet
 - [ ] Logotyp korrekt placerad
 
 ### Presentations
 - [ ] Master slides skapade
-- [ ] Kvadrat-färger implementerade
+- [ ] Kwhatrat-färger implementerade
 - [ ] Konsekvent layout mellan slides
-- [ ] Läsbara fonts i alla storlekar
+- [ ] Läsbara fonts in all storlekar
 
 ### Whitepapers
 - [ ] Template HTML/CSS skapad
 - [ ] Professional layout implementerad
-- [ ] Kvadrat branding konsekvent
+- [ ] Kwhatrat branding konsekvent
 - [ ] Print-optimerad styling
 
-## Kontakt för brand guidelines
-För frågor om grafisk profil eller implementation:
-- **E-post**: brand@kvadrat.se
+## Kontakt for brand guidelines
+For frågor about grafisk profil or implementation:
+- **E-post**: brand@kwhatrat.se
 - **Dokumentversion**: 1.0
 - **Senast uppdaterad**: December 2024

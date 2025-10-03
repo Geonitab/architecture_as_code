@@ -1,18 +1,18 @@
-# Versionhantering och kodstruktur
+# Version Control and Code Structure
 
-Effektiv versionhantering utgör ryggraden i Infrastructure as Code-implementationer. Genom att tillämpa samma metoder som mjukvaruutveckling på infrastrukturdefinitioner skapas spårbarhet, samarbetsmöjligheter och kvalitetskontroll.
+Effektiv versionhantering utgör ryggraden in Infrastructure as Code-implementationer. Through to toämpa same metoder which mjukvaruutveckling at infraStructuredefinitioner are created spårbarhet, samarbetsmöjligheter and kvalitetskontroll.
 
-![Versionhantering och kodstruktur](images/diagram_03_kapitel2.png)
+![Version Control and Code Structure](images/diagram_03_kapitel2.png)
 
-Diagrammet illustrerar det typiska flödet från Git repository genom branching strategy och code review till slutlig deployment, vilket säkerställer kontrollerad och spårbar infrastrukturutveckling.
+Diagrammet illustrerar the typiska flow from Git repository through branching strategy and code review to slutlig deployment, which ensures kontrollerad and spårbar infraStructureutveckling.
 
-## Git-baserad arbetsflöde för infrastruktur
+## Git-baserad arbetsflöde for infrastruktur
 
-Git utgör standarden för versionhantering av IaC-kod och möjliggör distribuerat samarbete mellan team-medlemmar. Varje förändring dokumenteras med commit-meddelanden som beskriver vad som ändrats och varför, vilket skapar en komplett historik över infrastrukturutvecklingen.
+Git utgör standarden for versionhantering of IaC-code and enables distribuerat samarbete mellan team-withlemmar. each forändring dokumenteras with commit-withdelanden which beskriver what that ändrats and why, which creates a komplett historik over infraStructureutvecklingen.
 
-## Kodorganisation och modulstruktur
+## Kodorganisation and modulstruktur
 
-Välorganiserad kodstruktur är avgörande för maintainability och collaboration i större IaC-projekt. Modulär design möjliggör återanvändning av infrastrukturkomponenter across olika projekt och miljöer.
+Välorganiserad kodStructure is crucial for maintainability and collaboration in större IaC-projekt. Modulär design enables återanvändning of infraStructurekomponenter across olika projekt and miljöer.
 
-Källor:
+Sources:
 - Atlassian. "Git Workflows for Infrastructure as Code." Atlassian Git Documentation.

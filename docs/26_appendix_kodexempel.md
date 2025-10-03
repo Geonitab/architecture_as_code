@@ -1,40 +1,40 @@
-# Appendix A: Kodexempel och tekniska arkitektur som kod-implementationer
+# Appendix A: Kodexempel and tekniska architecture as code-implementationer
 
-Denna appendix innehåller alla kodexempel, konfigurationsfiler och tekniska implementeringar som refereras till i bokens huvudkapitel. Kodexemplen är organiserade efter typ och användningsområde för att göra det enkelt att hitta specifika implementationer.
+This appendix Contentser all kodExample, konfigurationsfiler and tekniska implementeringar which refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde for to göra the enkelt to hitta specifika implementationer.
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 
-*Denna appendix fungerar som en praktisk referenssamling för alla tekniska implementationer som demonstreras genom boken. Varje kodexempel är kategoriserat och märkt med referenser tillbaka till relevanta kapitel.*
+*This appendix fungerar which a praktisk referenssamling for all tekniska implementationer which demonstreras genAbout the Book. each kodExample is kategoriserat and märkt with References tobaka to relevanta chapters.*
 
-## Navigering i appendix
+## Navigering in appendix
 
-Kodexemplen är organiserade i följande kategorier:
+Kodexemplen is organiserade in följande kategorier:
 
-1. **[CI/CD Pipelines och arkitektur som kod-automatisering](#cicd-pipelines)**
-2. **[Infrastructure as Code (arkitektur som kod) - Terraform](#terraform-iac)**
-3. **[Infrastructure as Code (arkitektur som kod) - CloudFormation](#cloudformation-arkitektur som kod)**
-4. **[Automationsskript och verktyg](#automation-scripts)**
-5. **[Säkerhet och compliance](#security-compliance)**
-6. **[Testning och validering](#testing-validation)**
+1. **[CI/CD Pipelines and Architecture as Code-automation](#cicd-pipelines)**
+2. **[Infrastructure as Code (Architecture as Code) - Terraform](#terraform-iac)**
+3. **[Infrastructure as Code (Architecture as Code) - CloudFormation](#cloudformation-Architecture as Code)**
+4. **[Automationsskript and verktyg](#automation-scripts)**
+5. **[Security and compliance](#security-compliance)**
+6. **[testing and validation](#testing-validation)**
 7. **[Konfigurationsfiler](#configuration)**
-8. **[Shell-skript och verktyg](#shell-scripts)**
+8. **[Shell-skript and verktyg](#shell-scripts)**
 
-Varje kodexempel har en unik identifierare i formatet `[KAPITEL]_CODE_[NUMMER]` för enkel referens från huvudtexten.
+each kodExample har a unik identifierare in formatet `[chapters]_CODE_[NUMMER]` for enkel referens from huvudtexten.
 
 ---
 
-## CI/CD Pipelines och arkitektur som kod-automatisering {#cicd-pipelines}
+## CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}
 
-Denna sektion innehåller alla exempel på CI/CD-pipelines, GitHub Actions workflows och automationsprocesser för svenska organisationer.
+This sektion Contentser all Example at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for svenska organisationer.
 
-### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline för svenska organisationer
-*Refereras från Kapitel 5: [Automatisering och CI/CD-pipelines](05_automatisering_cicd.md)*
+### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline for svenska organisationer
+*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
-# .github/workflows/svenska-arkitektur som kod-pipeline.yml
+# .github/workflows/svenska-architecture as code-pipeline.yml
 # GDPR-compliant CI/CD pipeline för svenska organisationer
 
-name: Svenska Arkitektur som kod Pipeline med GDPR Compliance
+name: Svenska architecture as code Pipeline med GDPR Compliance
 
 on:
   push:
@@ -61,7 +61,7 @@ jobs:
     if: contains(github.event.head_commit.message, 'personal-data') || contains(github.event.head_commit.message, 'gdpr')
     
     steps:
-      - name: Checkout kod
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -71,7 +71,7 @@ jobs:
         run: |
           echo "🔍 Scanning för personal data patterns..."
           
-          # Sök efter vanliga personal data patterns i Arkitektur som kod-kod
+          # Sök efter vanliga personal data patterns in architecture as code-code
           PERSONAL_DATA_PATTERNS=(
             "personnummer"
             "social.*security"
@@ -94,18 +94,18 @@ jobs:
           
           if [ "$VIOLATIONS_FOUND" = true ]; then
             echo "❌ GDPR compliance check misslyckades"
-            echo "Personal data får inte hardkodas i Arkitektur som kod-kod"
+            echo "Personal data får not hardkodas in architecture as code-code"
             exit 1
           fi
           
           echo "✅ GDPR compliance check genomförd"
 ```
 
-### 05_CODE_2: Jenkins Pipeline för svenska organisationer med GDPR compliance
-*Refereras från Kapitel 5: [Automatisering och CI/CD-pipelines](05_automatisering_cicd.md)*
+### 05_CODE_2: Jenkins Pipeline for svenska organisationer with GDPR compliance
+*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
-# jenkins/svenska-arkitektur som kod-pipeline.groovy
+# jenkins/svenska-architecture as code-pipeline.groovy
 // Jenkins pipeline för svenska organisationer med GDPR compliance
 
 pipeline {
@@ -145,7 +145,7 @@ pipeline {
                 stage('GDPR Data Scan') {
                     steps {
                         script {
-                            echo "🔍 Scanning för personal data patterns i Arkitektur som kod kod..."
+                            echo "🔍 Scanning för personal data patterns in architecture as code code..."
                             
                             def personalDataPatterns = [
                                 'personnummer', 'social.*security', 'credit.*card',
@@ -166,7 +166,7 @@ pipeline {
                             }
                             
                             if (violations) {
-                                error("GDPR VIOLATION: Personal data found in Arkitektur som kod code:\n${violations.join('\n')}")
+                                error("GDPR VIOLATION: Personal data found in architecture as code code:\n${violations.join('\n')}")
                             }
                             
                             echo "✅ GDPR data scan genomförd - inga violations"
@@ -207,7 +207,7 @@ pipeline {
                                 error("Ogiltigt kostnadscenter format. Använd: CC-XX-nnn")
                             }
                             
-                            // Validera att kostnadscenter existerar i företagets system
+                            // Validera to kostnadscenter existerar in företagets systems
                             def validCostCenters = [
                                 'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
                             ]
@@ -273,7 +273,7 @@ pipeline {
                                 }
                                 
                                 if (params.ENVIRONMENT == 'production') {
-                                    error("Kritiska säkerhetsproblem måste åtgärdas före production deployment")
+                                    error("Kritiska säkerhetsproblem must åtgärdas före production deployment")
                                 }
                             }
                             
@@ -328,7 +328,7 @@ pipeline {
         stage('💰 Svenska Kostnadskontroll') {
             steps {
                 script {
-                    echo "📊 Beräknar infrastrukturkostnader i svenska kronor..."
+                    echo "📊 Beräknar infrastrukturkostnader in svenska kronor..."
                     
                     // Setup Infracost för svenska valuta
                     sh """
@@ -370,7 +370,7 @@ pipeline {
                         echo "⚠️ BUDGET ÖVERSKRIDEN med ${overBudget} SEK!"
                         
                         if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
-                            error("Budget överskridning inte tillåten för production utan CFO godkännande")
+                            error("Budget överskridning not tillåten för production utan CFO godkännande")
                         }
                     }
                     
@@ -379,13 +379,13 @@ pipeline {
                     # Kostnadsrapport - ${env.ORGANIZATION_NAME}
                     
                     **Miljö:** ${params.ENVIRONMENT}
-                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} (svensk tid)
+                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} (svensk time)
                     **Kostnadscenter:** ${params.COST_CENTER}
                     
                     ## Månadskostnad
                     - **Total:** ${monthlyCostSEK} SEK
                     - **Budget:** ${maxBudget} SEK
-                    - **Status:** ${monthlyCostSEK <= maxBudget ? '✅ Inom budget' : '❌ Över budget'}
+                    - **Status:** ${monthlyCostSEK <= maxBudget ? '✅ Inom budget' : '❌ over budget'}
                     
                     ## Kostnadsnedbrytning
                     ${readFile('cost-summary.txt')}
@@ -393,7 +393,7 @@ pipeline {
                     ## Rekommendationer
                     - Använd Reserved Instances för production workloads
                     - Aktivera auto-scaling för development miljöer
-                    - Implementera scheduled shutdown för icke-kritiska system
+                    - Implementera scheduled shutdown för icke-kritiska systems
                     """
                     
                     writeFile file: 'cost-report-svenska.md', text: costReport
@@ -407,8 +407,8 @@ pipeline {
 }
 ```
 
-### 05_CODE_3: Terratest för svenska VPC implementation
-*Refereras från Kapitel 5: [Automatisering och CI/CD-pipelines](05_automatisering_cicd.md)*
+### 05_CODE_3: Terratest for svenska VPC implementation
+*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```go
 // test/svenska_vpc_test.go
@@ -519,9 +519,9 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
     }
 }
 
-// testVPCFlowLogsEnabled validerar att VPC Flow Logs är aktiverade för GDPR compliance
+// testVPCFlowLogsEnabled validerar to VPC Flow Logs is aktiverade för GDPR compliance
 func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Hämta VPC ID från Terraform output
+    // Hämta VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     require.NotEmpty(t, vpcID, "VPC ID should not be empty")
 
@@ -541,7 +541,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
     require.NoError(t, err, "Failed to describe VPC flow logs")
 
-    // Validera att Flow Logs är aktiverade
+    // Validera to Flow Logs is aktiverade
     assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, "VPC Flow Logs should be enabled for GDPR compliance")
 
     for _, flowLog := range flowLogsOutput.FlowLogs {
@@ -552,21 +552,21 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ VPC Flow Logs aktiverade för GDPR compliance: %s", vpcID)
 }
 
-// testEncryptionAtRest validerar att all lagring är krypterad enligt GDPR-krav
+// testEncryptionAtRest validerar to all lagring is krypterad according to GDPR-krav
 func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Hämta KMS key från Terraform output
+    // Hämta KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
 
-    // Validera att KMS key är från Sverige region
+    // Validera to KMS key is from Sverige region
     assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
 
     t.Logf("✅ Encryption at rest validerat för GDPR compliance")
 }
 
-// testDataResidencySweden validerar att all infrastruktur är inom svenska gränser
+// testDataResidencySweden validerar to all infrastruktur is inom svenska gränser
 func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Validera att VPC är i Stockholm region
+    // Validera to VPC is in Stockholm region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
     ec2Client := ec2.New(suite.AWSSession)
@@ -577,7 +577,7 @@ func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
     require.NoError(t, err, "Failed to describe VPC")
     require.Len(t, vpcOutput.Vpcs, 1, "Should find exactly one VPC")
 
-    // Kontrollera region från session config
+    // Kontrollera region from session config
     region := *suite.AWSSession.Config.Region
     allowedRegions := []string{"eu-north-1", "eu-central-1", "eu-west-1"}
     
@@ -591,10 +591,10 @@ func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
     
     assert.True(t, regionAllowed, "VPC must be in EU region for Swedish data residency. Found: %s", region)
 
-    t.Logf("✅ Data residency validerat - all infrastruktur i EU region: %s", region)
+    t.Logf("✅ Data residency validerat - all infrastruktur in EU region: %s", region)
 }
 
-// testAuditLogging validerar att audit logging är konfigurerat enligt svenska lagkrav
+// testAuditLogging validerar to audit logging is konfigurerat according to svenska lagkrav
 func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Kontrollera CloudTrail konfiguration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
@@ -613,7 +613,7 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validerar att alla resurser har korrekta svenska tags
+// testSvenskaTagging validerar to all resurser har korrekta svenska tags
 func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
@@ -643,7 +643,7 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     })
     require.NoError(t, err, "Failed to describe VPC tags")
 
-    // Konvertera tags till map för enklare validering
+    // Konvertera tags till map för enklare validation
     vpcTagMap := make(map[string]string)
     for _, tag := range vpcTags.Tags {
         vpcTagMap[*tag.Key] = *tag.Value
@@ -659,7 +659,7 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
         }
     }
 
-    t.Logf("✅ Svenska tagging validerat för alla resurser")
+    t.Logf("✅ Svenska tagging validerat för all resurser")
 }
 
 // cleanupSvenskaVPCTest rensar test environment
@@ -673,12 +673,12 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 ## Infrastructure as Code - CloudFormation {
 
-Arkitektur som kod-principerna inom detta område#cloudformation-arkitektur som kod}
+Architecture as Code-principerna within This område#cloudformation-Architecture as Code}
 
-Denna sektion innehåller CloudFormation templates för AWS-infrastruktur anpassad för svenska organisationer.
+This sektion Contentser CloudFormation templates for AWS-infraStructure anpassad for svenska organisationer.
 
-### 07_CODE_1: VPC Setup för svenska organisationer med GDPR compliance
-*Refereras från Kapitel 7: [Molnarkitektur som kod](07_molnarkitektur.md)*
+### 07_CODE_1: VPC Setup for svenska organisationer with GDPR compliance
+*Refereras from chapters 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
 # cloudformation/svenska-org-vpc.yaml
@@ -696,12 +696,12 @@ Parameters:
     Type: String
     Default: internal
     AllowedValues: [public, internal, confidential, restricted]
-    Description: 'Dataklassificering enligt svenska säkerhetsstandarder'
+    Description: 'Dataklassificering according to svenska säkerhetsstandarder'
   
   ComplianceRequirements:
     Type: CommaDelimitedList
     Default: "gdpr,iso27001"
-    Description: 'Lista över compliance-krav som måste uppfyllas'
+    Description: 'Lista over compliance-krav as must uppfyllas'
 
 Conditions:
   IsProduction: !Equals [!Ref EnvironmentType, production]
@@ -736,12 +736,12 @@ Resources:
 
 ## Automation Scripts {#automation-scripts}
 
-Denna sektion innehåller Python-skript och andra automationsverktyg för Infrastructure as Code-hantering.
+This sektion Contentser Python-skript and andra automationsverktyg for Infrastructure as Code-hantering.
 
-### 22_CODE_1: Omfattande testramverk för Infrastructure as Code
+### 22_CODE_1: comprehensive testramverk for Infrastructure as Code
 
-Arkitektur som kod-principerna inom detta område
-*Refereras från Kapitel 22: [arkitektur som kod best practices och lärda läxor](22_best_practices.md)*
+Architecture as Code-principerna within This område
+*Refereras from chapters 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```python
 # testing/comprehensive_iac_testing.py
@@ -767,7 +767,7 @@ class TestCase:
 class ComprehensiveIaCTesting:
     """
     Comprehensive testing framework för Infrastructure as Code
-    Based på svenska arkitektur som kod best practices och international standards
+    Based at svenska architecture as code best practices och international standards
     """
     
     def __init__(self, region='eu-north-1'):
@@ -835,10 +835,10 @@ class ComprehensiveIaCTesting:
 
 ## Configuration Files {#configuration}
 
-Denna sektion innehåller konfigurationsfiler för olika verktyg och tjänster.
+This sektion Contentser konfigurationsfiler for olika verktyg and tjänster.
 
-### 22_CODE_2: Governance policy configuration för svenska organisationer
-*Refereras från Kapitel 22: [Best practices och lärda läxor](22_best_practices.md)*
+### 22_CODE_2: Governance policy configuration for svenska organisationer
+*Refereras from chapters 22: [Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```yaml
 # governance/svenska-governance-policy.yaml
@@ -929,25 +929,25 @@ compliance_monitoring:
 
 ---
 
-## Referenser och navigering
+## References and navigering
 
-Varje kodexempel i denna appendix kan refereras från huvudtexten med dess unika identifierare. För att hitta specifika implementationer:
+each kodExample in This appendix can refereras from huvudtexten with dess unika identifierare. For to hitta specifika implementationer:
 
-1. **Använd sökfunktion** - Sök efter kodtyp eller teknologi (t.ex. "Terraform", "CloudFormation", "Python")
-2. **Följ kategorierna** - Navigera till relevant sektion baserat på användningsområde
-3. **Använd korshänvisningar** - Följ länkar tillbaka till huvudkapitlen för kontext
+1. **Använd sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
+2. **Följ kategorierna** - Navigera to relevant sektion baserat at användningwhichråde
+3. **Använd korshänvisningar** - Följ länkar tobaka to huvudkapitlen for kontext
 
-### Konventioner för kodexempel
+### Konventioner for kodexempel
 
-- **Kommentarer**: Alla kodexempel innehåller svenska kommentarer för klarhet
-- **Säkerhet**: Säkerhetsaspekter är markerade med 🔒
-- **GDPR-compliance**: GDPR-relaterade konfigurationer är markerade med 🇪🇺
-- **Svenska anpassningar**: Lokala anpassningar är markerade med 🇸🇪
+- **Kommentarer**: all kodExample Contentser svenska kommentarer for klarhet
+- **Säkerhet**: Säkerhetsaspekter is markerade with 🔒
+- **GDPR-compliance**: GDPR-relaterade konfigurationer is markerade with 🇪🇺
+- **Svenska anpassningar**: Lokala anpassningar is markerade with 🇸🇪
 
-### Uppdateringar och underhåll
+### Uppdateringar and underhåll
 
-Denna appendix uppdateras löpande när nya kodexempel läggs till i bokens huvudkapitel. För senaste versionen av kodexempel, se bokens GitHub-repository.
+This appendix uppdateras löpande when new kodExample läggs to in bokens huvudkapitel. For senaste versionen of kodExample, se bokens GitHub-repository.
 
 ---
 
-*För mer information om specifika implementationer, se respektive huvudkapitel där kodexemplen introduceras och förklaras i sitt sammanhang.*
+*For mer information about specifika implementationer, se respektive huvudkapitel where kodexemplen introduceras and forklaras in sitt sammanhang.*

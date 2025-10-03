@@ -26,8 +26,8 @@ def pytest_addoption(parser):
     parser.addoption(
         "--language",
         action="store",
-        default="svenska",
-        help="Language to test: svenska or english"
+        default="english",  # Changed from "svenska" to "english" as default
+        help="Language to test: english (Swedish files have been removed)"
     )
 
 @pytest.fixture(scope="session")
@@ -38,9 +38,11 @@ def language(request):
 @pytest.fixture(scope="session")
 def requirements_config(language):
     """Load book requirements configuration based on language."""
-    if language == "english":
-        requirements_file = TESTS_DIR / "requirements_en.yaml"
-    else:
+    # Note: Swedish files have been replaced with English content
+    # All files now contain English, so we use requirements_en.yaml
+    requirements_file = TESTS_DIR / "requirements_en.yaml"
+    if not requirements_file.exists():
+        # Fallback to requirements.yaml if requirements_en.yaml doesn't exist
         requirements_file = TESTS_DIR / "requirements.yaml"
     with open(requirements_file, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
@@ -52,22 +54,20 @@ def chapter_files(docs_directory, language):
     all_md_files = list(docs_directory.glob("*.md"))
     
     # List of non-chapter files to exclude
+    # Note: _en versions have been removed, all files now contain English
     non_chapter_files = {
-        "README.md", "README_en.md",
-        "TERMINOLOGI_JUSTERING.md", "TERMINOLOGI_JUSTERING_en.md",
-        "SVENGELSKA_FIXES_SUMMARY.md", "SVENGELSKA_FIXES_SUMMARY_en.md",
-        "ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md", "ENGELSKA_UTTRYCK_SAMMANSTÄLLNING_en.md",
-        "language_deviations_issue.md", "language_deviations_issue_en.md",
-        "BOOK_COVER_DESIGN.md", "BOOK_COVER_DESIGN_en.md",
-        "EPUB_VALIDATION.md", "EPUB_VALIDATION_en.md"
+        "README.md",
+        "TERMINOLOGI_JUSTERING.md",
+        "SVENGELSKA_FIXES_SUMMARY.md",
+        "ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md",
+        "language_deviations_issue.md",
+        "BOOK_COVER_DESIGN.md",
+        "EPUB_VALIDATION.md"
     }
     
-    if language == "english":
-        # Filter for English files (those ending with _en.md)
-        chapter_files = [f for f in all_md_files if f.name.endswith("_en.md") and f.name not in non_chapter_files]
-    else:
-        # Filter for Swedish files (those NOT ending with _en.md)
-        chapter_files = [f for f in all_md_files if not f.name.endswith("_en.md") and f.name not in non_chapter_files]
+    # All files are now in English (Swedish content replaced)
+    # Filter out non-chapter files
+    chapter_files = [f for f in all_md_files if f.name not in non_chapter_files]
     
     return chapter_files
 

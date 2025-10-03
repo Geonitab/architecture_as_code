@@ -370,26 +370,50 @@ Källor:
     print(f"Totalt {len(mermaid_files)} mermaid-diagram skapade") 
 
 if __name__ == "__main__":
-    print("📚 Generating book content...")
-    generate_iac_book_content()
+    print("=" * 80)
+    print("📚 GENERATE_BOOK.PY - ENGLISH MIGRATION NOTICE")
+    print("=" * 80)
+    print()
+    print("⚠️  CONTENT GENERATION DISABLED")
+    print()
+    print("This script previously generated Swedish content.")
+    print("The repository now uses English markdown files exclusively.")
+    print()
+    print("English content is maintained manually in the docs/ directory.")
+    print("The generate_iac_book_content() function has been disabled to prevent")
+    print("overwriting the English files with Swedish content.")
+    print()
+    print("If you need to regenerate content, please:")
+    print("  1. Update the book_structure in generate_iac_book_content() to use English")
+    print("  2. Uncomment the function call below")
+    print("  3. Run this script")
+    print()
+    print("=" * 80)
+    print()
     
-    # Check if EPUB file exists and validate it
+    # Content generation disabled - uncomment to regenerate
+    # generate_iac_book_content()
+    
+    # EPUB validation is still active
     epub_path = "docs/arkitektur_som_kod.epub"
     if os.path.exists(epub_path):
-        print("\n📖 Kontrollerar befintlig EPUB-fil...")
+        print("📖 Checking existing EPUB file...")
         success, log_output = validate_epub_file(epub_path)
         
         # Save validation log
         log_path = "docs/epub-validation.log"
         try:
             with open(log_path, 'w', encoding='utf-8') as f:
-                f.write(f"EPUB-valideringslogg för: {epub_path}\n")
-                f.write(f"Datum: {subprocess.run(['date'], capture_output=True, text=True).stdout}")
-                f.write(f"Status: {'GODKÄND' if success else 'FEL UPPTÄCKTA'}\n")
+                f.write(f"EPUB validation log for: {epub_path}\n")
+                f.write(f"Date: {subprocess.run(['date'], capture_output=True, text=True).stdout}")
+                f.write(f"Status: {'APPROVED' if success else 'ERRORS FOUND'}\n")
                 f.write("=" * 50 + "\n")
                 f.write(log_output)
-            print(f"📄 Valideringslogg sparad: {log_path}")
+            print(f"📄 Validation log saved: {log_path}")
         except Exception as e:
-            print(f"⚠️  Kunde inte spara valideringslogg: {e}")
+            print(f"⚠️  Could not save validation log: {e}")
+    else:
+        print("ℹ️  No EPUB file found to validate")
     
-    print("✅ Book content generation completed")
+    print()
+    print("✅ Script completed")

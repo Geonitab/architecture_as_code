@@ -1,14 +1,14 @@
-# Sammanställning av svengelska-justeringar
+# Sammanställning of svengelska-justeringar
 
-## Genomförda förändringar
+## Genomforda forändringar
 
 ### Systematiska ersättningar
 1. **pipeline/pipelines** → **rörledning/rörledningar**
-2. **significant changes** → **betydande förändringar**
+2. **significant changes** → **betydande forändringar**
 3. **execution** → **körning**
 4. **human error** → **mänskliga fel**
 5. **workflows** → **arbetsflöden**
-6. **principles** → **principer**
+6. **principles** → **principles**
 7. **cost estimation** → **kostnadsuppskattning**
 8. **budget threshold** → **budgettröskelvärde**
 9. **automated resource optimization** → **automatiserad resursoptimering**
@@ -19,7 +19,7 @@
 14. **data residency** → **datahemvist**
 15. **cloud provider pricing** → **molnleverantörspriser**
 
-### Tekniska termer som behålls på engelska
+### Tekniska termer which behålls at engelska
 - API, REST, GraphQL, JSON, YAML
 - Docker, Kubernetes, Terraform, Ansible
 - Git, GitHub, GitLab
@@ -31,17 +31,17 @@
 - Documentation as Code (DaC)
 - Requirements as Code (RaC)
 
-### Filer som uppdaterats
+### Filer which uppdaterats
 - docs/02_grundlaggande_principer.md
 - docs/04_adr.md  
 - docs/05_automatisering_devops_cicd.md
 
-## Principer för fortsatt arbete
+## principles for fortsatt arbete
 
-1. **Tekniska produktnamn** och etablerade akronymer behålls på engelska
-2. **Affärsprocesstermer** och vanligt språk översätts till svenska
-3. **Sammansatta termer** anpassas med svenska grammatik (CI/CD-rörledning)
-4. **Verb i löpande text** översätts till svenska (execute → köra, validate → validera)
-5. **Kontext avgör** - tekniska sammanhang kan ha mer engelska än affärssammanhang
+1. **Tekniska produktnamn** and etablerade akronymer behålls at engelska
+2. **Affärsprocesstermer** and vanligt språk översätts to svenska
+3. **Sammansatta termer** anpassas with svenska grammatik (CI/CD-rörledning)
+4. **Verb in löpande text** översätts to svenska (execute → köra, validate → validera)
+5. **Kontext avgör** - tekniska sammanhang can ha mer engelska än affärssammanhang
 
-Svengelska-rensningen fortsätter systematiskt genom hela bokens dokumentation för att säkerställa konsekvent svensk terminologi där det är naturligt.
+Svengelska-rensningen fortsätter systematiskt through entire bokens documentation for to säkerställa konsekvent svensk terminologi where the is naturligt.

@@ -178,16 +178,11 @@ class TestCompleteness:
         language = requirements_config["book"]["language"]
         
         # Get all actual markdown chapter files (numbered files) for the language
+        # Note: Swedish files have been replaced with English content
+        # All numbered files now contain English
         actual_chapters = set()
-        if language == "english":
-            # Get English numbered chapter files
-            for md_file in docs_directory.glob("[0-9][0-9]_*_en.md"):
-                actual_chapters.add(md_file.name)
-        else:
-            # Get Swedish numbered chapter files (not ending with _en.md)
-            for md_file in docs_directory.glob("[0-9][0-9]_*.md"):
-                if not md_file.name.endswith("_en.md"):
-                    actual_chapters.add(md_file.name)
+        for md_file in docs_directory.glob("[0-9][0-9]_*.md"):
+            actual_chapters.add(md_file.name)
         
         # Get expected chapters from requirements
         expected_chapters = set()

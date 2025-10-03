@@ -1,10 +1,10 @@
-# Sammanställning av kvarvarande engelska uttryck i boken
+# Sammanställning of kvarvarande engelska uttryck in boken
 
-Denna sammanställning identifierar engelska uttryck som fortfarande finns i boken för att avgöra vilka som ska vara kvar på engelska och vilka som borde översättas till svenska.
+This sammanställning identifierar engelska uttryck which fortfarande finns in boken for to avgöra vilka which ska vara kvar at engelska and vilka which borde översättas to svenska.
 
-## Tekniska termer och akronymer
+## Tekniska termer and akronymer
 
-### Etablerade branschtermer (troligen behålla på engelska)
+### Etablerade branschtermer (troligen behålla at engelska)
 - **API** (Application Programming Interface)
 - **CI/CD** (Continuous Integration/Continuous Deployment)
 - **DevOps** (Development and Operations)
@@ -18,9 +18,9 @@ Denna sammanställning identifierar engelska uttryck som fortfarande finns i bok
 - **REST/GraphQL** (API-arkitekturer)
 
 ### Teknikspecifika uttryck
-- **Pull request/Pull requests** → *förfrågningar om sammanslagning* (redan korrigerad i vissa filer)
+- **Pull request/Pull requests** → *forfrågningar about sammanslagning* (redan korrigerad in vissa filer)
 - **Commit/Commits** → *incheckning/incheckningar* (delvis korrigerad)
-- **Repository** → *förråd* (delvis korrigerad)
+- **Repository** → *forråd* (delvis korrigerad)
 - **Pipeline** → *rörledning/flöde* (delvis korrigerad)
 - **Workflow** → *arbetsflöde* (delvis korrigerad)
 - **Setup** → *konfiguration/installation*
@@ -28,7 +28,7 @@ Denna sammanställning identifierar engelska uttryck som fortfarande finns i bok
 - **Tools** → *verktyg*
 - **Platform** → *plattform*
 
-## Affärsuttryck och processtermer
+## Affärsuttryck and processtermer
 
 ### Bör troligen översättas
 - **Best practices** → *bästa metoder/rekommenderade metoder*
@@ -40,7 +40,7 @@ Denna sammanställning identifierar engelska uttryck som fortfarande finns i bok
 - **End-to-end** → *fullständig/komplett*
 - **Cross-functional** → *tvärfunktionell*
 - **Compliance** → *efterlevnad/regelefterlevnad*
-- **Testing** → *testning*
+- **Testing** → *testing*
 - **Migration** → *migrering/övergång*
 - **Digitalization** → *digitalisering*
 - **Mockup** → *prototyp/skiss*
@@ -49,21 +49,21 @@ Denna sammanställning identifierar engelska uttryck som fortfarande finns i bok
 ## Sammansatta engelska termer
 
 ### Architecture as Code-relaterade
-- **Infrastructure as Code (IaC)** - redan hanterat enligt terminologijustering
-- **Documentation as Code (DaC)** → *dokumentation som kod*
-- **Requirements as Code (RaC)** → *krav som kod*
-- **Architecture as Code** - huvudterm för boken, behålls
+- **Infrastructure as Code (IaC)** - redan hanterat according to terminologijustering
+- **Documentation as Code (DaC)** → *Documentation as Code*
+- **Requirements as Code (RaC)** → *Requirements as Code*
+- **Architecture as Code** - huvudterm for boken, behålls
 - **Code review** → *kodgranskning*
 
 ### Utvecklingsprocesser
-- **Implementation** → *implementering/genomförande*
+- **implementation** → *implementation/throughforande*
 - **Deployment** → *driftsättning*
 - **Monitoring** → *övervakning*
 - **Access** → *åtkomst*
-- **Approach** → *tillvägagångssätt/metod*
-- **Structure** → *struktur*
+- **Approach** → *tovägagångssätt/metod*
+- **Structure** → *Structure*
 
-## Rekommendationer för översättning
+## Recommendations for översättning
 
 ### Hög prioritet (bör översättas)
 1. **Best practices** → **bästa metoder**
@@ -75,15 +75,15 @@ Denna sammanställning identifierar engelska uttryck som fortfarande finns i bok
 7. **Timeline** → **tidslinje**
 8. **Compliance** → **efterlevnad**
 
-### Medel prioritet (kan översättas vid naturlig kontext)
+### Medel prioritet (can översättas vid naturlig kontext)
 1. **Framework** → **ramverk**
 2. **Platform** → **plattform**
 3. **Tools** → **verktyg**
 4. **Setup** → **konfiguration**
-5. **Testing** → **testning**
+5. **Testing** → **testing**
 6. **Migration** → **migrering**
 
-### Låg prioritet (behåll engelska i tekniska sammanhang)
+### Låg prioritet (behåll engelska in tekniska sammanhang)
 1. **API** (etablerad branschterm)
 2. **CI/CD** (etablerad akronym)
 3. **DevOps** (etablerad branschterm)
@@ -93,11 +93,11 @@ Denna sammanställning identifierar engelska uttryck som fortfarande finns i bok
 
 ## Anmärkningar
 
-- Många av de engelska uttrycken finns kvar trots tidigare korrigeringar
-- Vissa kapitel har konsekvent svenska uttryck medan andra har mer engelska
-- Tekniska produktnamn och etablerade akronymer bör generellt behållas på engelska
-- Affärsprocesstermer bör konsekvent översättas för bättre läsbarhet på svenska
+- Många of the engelska uttrycken finns kvar trots tidigare korrigeringar
+- Vissa chapters har konsekvent svenska uttryck withan andra har mer engelska
+- Tekniska produktnamn and etablerade akronymer bör generellt behållas at engelska
+- Affärsprocesstermer bör konsekvent översättas for bättre läsbarhet at svenska
 
-## Nästa steg
+## Next Steps
 
-Baserat på denna sammanställning kan du avgöra vilka uttryck som ska behållas på engelska och vilka som ska översättas. Jag kan sedan genomföra de översättningar du önskar systematiskt genom hela boken.
+Baserat at This sammanställning can du avgöra vilka uttryck which ska behållas at engelska and vilka which ska översättas. Jag can sedan throughfora the översättningar du önskar systematiskt through entire boken.

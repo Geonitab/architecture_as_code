@@ -1,60 +1,60 @@
-# Migration från traditionell infrastruktur
+# Migration from Traditional Infrastructure
 
 ![Migrationsprocess](images/diagram_18_kapitel17.png)
 
-*Migration från traditionell infrastruktur till Infrastructure as Code (arkitektur som kod) kräver systematisk planering, stegvis arkitektur som kod-implementation och kontinuerlig validering. Diagrammet visar den strukturerade processen från assessment till fullständig Arkitektur som kod-adoption.*
+*Migration from Traditional Infrastructure to Infrastructure as Code (Architecture as Code) requires systematisk planering, stegvis Architecture as Code-implementation and kontinuerlig validation. Diagrammet shows den Structureerade processen from assessment to fullständig Architecture as Code-adoption.*
 
 ## Övergripande beskrivning
 
-Migration från traditionell, manuellt konfigurerad infrastruktur till Infrastructure as Code representerar en av de mest kritiska transformationerna för moderna IT-organisationer. Denna process kräver inte endast teknisk omstrukturering utan också organisatorisk förändring och kulturell anpassning till kodbaserade arbetssätt.
+Migration from traditionell, manuellt konfigurerad infraStructure to Infrastructure as Code representerar a of the mest kritiska transformationerna for moderna IT-organisationer. This process requires not endast technical omStructureering utan också organisatorisk forändring and cultural anpassning to kodbaserade arbetssätt.
 
-Svenska organisationer står inför unika migreringsutmaningar genom legacy-system som utvecklats över decennier, regulatoriska krav som begränsar förändringstakt, och behovet av att balansera innovation med operational stability. Successful migration kräver comprehensive planning som minimerar risker samtidigt som den möjliggör snabb value realization.
+Svenska organisationer står infor unika migreringsChallenges through legacy-systems which utvecklats over decennier, regulatoriska krav which begränsar forändringstakt, and behovet of to balansera innovation with operational stability. Successful migration requires comprehensive planning which minimizes risker simultaneously which den enables snabb value realization.
 
-Modern migrationsstrategier måste accommodera hybrid scenarios där legacy infrastructure coexisterar med Arkitektur som kod-managed resources under extended transition periods. Detta hybrid approach möjliggör gradual migration som reducerar business risk samtidigt som det möjliggör immediate benefits från arkitektur som kod adoption.
+Modern migrationsstrategier must accommodera hybrid scenarios where legacy infrastructure coexisterar with Architecture as Code-managed resources under extended transition periods. This hybrid approach enables gradual migration which reducerar business risk simultaneously which the enables imwithiate benefits from Architecture as Code adoption.
 
-Cloud-native migration pathways erbjuder opportuniteter att modernisera arkitektur samtidigt som infrastructure management kodifieras. Svenska företag kan leverage denna transformation för att implementera sustainability initiatives, improve cost efficiency och enhance security posture genom systematic arkitektur som kod adoption.
+Cloud-native migration pathways erbjuder opportuniteter to modernisera architecture simultaneously which infrastructure management kodifieras. Svenska foretag can leverage This transformation for to implementera sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
 
-## Assessment och planning faser
+## Assessment and planning faser
 
-Comprehensive infrastructure assessment utgör foundationen för successful Arkitektur som kod migration. Detta inkluderar inventory av existing resources, dependency mapping, risk assessment och cost-benefit analysis som informerar migration strategy och timeline planning.
+Comprehensive infrastructure assessment utgör foundationen for successful Architecture as Code migration. This includes inventory of existing resources, dependency mapping, risk assessment and cost-benefit analysis which informerar migration strategy and timeline planning.
 
-Discovery automation verktyg som AWS Application Discovery Service, Azure Migrate och Google Cloud migration tools kan accelerate assessment processen genom automated resource inventory och dependency detection. Dessa verktyg genererar data som kan inform Arkitektur som kod template generation och migration prioritization.
+Discovery automation verktyg that AWS Application Discovery Service, Azure Migrate and Google Cloud migration tools can accelerate assessment processen through automated resource inventory and dependency detection. These verktyg genererar data which can inform Architecture as Code template generation and migration prioritization.
 
-Risk assessment måste identifiera critical systems, single points of failure och compliance dependencies som påverkar migration approach. Svenska financial institutions och healthcare organizations måste särskilt consider regulatory implications och downtime restrictions som påverkar migration windows.
+Risk assessment must identifiera critical systems, single points of failure and compliance dependencies which påverkar migration approach. Svenska financial institutions and healthcare organizations must särskilt consider regulatory implications and downtime restrictions which påverkar migration windows.
 
-Migration wave planning balancerar technical dependencies med business priorities för att minimize risk och maximize value realization. Pilot projects med non-critical systems möjliggör team learning och process refinement innan critical system migration påbörjas.
+Migration wave planning balancerar technical dependencies with business priorities for to minimize risk and maximize value realization. Pilot projects with non-critical systems enables team learning and process refinement innan critical systems migration påbörjas.
 
 ## Lift-and-shift vs re-architecting
 
-Lift-and-shift migration representerar den snabbaste vägen till cloud adoption men limiterar potential benefits från cloud-native capabilities. Denna approach är lämplig för applications med tight timelines eller limited modernization budget, men kräver follow-up optimization för long-term value.
+Lift-and-shift migration representerar den snabbaste the way to cloud adoption men limiterar potential benefits from cloud-native capabilities. This approach is lämplig for applications with tight timelines or limited modernization budget, men requires follow-up optimization for long-term value.
 
-Re-architecting för cloud-native patterns möjliggör maximum value från cloud investment genom improved scalability, resilience och cost optimization. Svenska retail companies som Klarna har demonstrerat hur re-architecting enables global expansion och innovation acceleration through cloud-native infrastructure.
+Re-architecting for cloud-native patterns enables maximum value from cloud investment through improved scalability, resilience and cost optimization. Svenska retail companies that Klarna har demonstrerat how re-architecting enables global expansion and innovation acceleration through cloud-native infrastructure.
 
-Hybrid approaches som "lift-and-improve" balancerar speed-to-market med modernization benefits genom selective re-architecting av critical components samtidigt som majority av application förblir unchanged. Detta approach kan deliver immediate cloud benefits samtidigt som det möjliggör iterative modernization.
+Hybrid approaches that "lift-and-improve" balancerar speed-to-market with modernization benefits through selective re-architecting of critical components simultaneously which majority of application forblir unchanged. This approach can deliver imwithiate cloud benefits simultaneously which the enables iterative modernization.
 
-Application portfolio analysis hjälper determine optimal migration strategy per application baserat på technical fit, business value och modernization potential. Legacy applications med limited business value kan candidate för retirement rather than migration, vilket reducerar overall migration scope.
+Application portfolio analysis hjälper determine optimal migration strategy per application baserat at technical fit, business value and modernization potential. Legacy applications with limited business value can candidate for retirement rather than migration, which reducerar overall migration scope.
 
-## Gradvis kodifiering av infrastruktur
+## gradually kodifiering of infrastruktur
 
-Infrastructure inventory automation genom tools som Terraform import, CloudFormation drift detection och Azure Resource Manager templates enables systematic conversion av existing resources till Arkitektur som kod management. Automated discovery kan generate initial Arkitektur som kod configurations som require refinement men accelerate kodification process.
+Infrastructure inventory automation through tools that Terraform import, CloudFormation drift detection and Azure Resource Manager templates enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations which require refinement men accelerate kodification process.
 
-Template standardization genom reusable modules och organizational patterns ensures consistency across migrated infrastructure samtidigt som det reduces future maintenance overhead. Svenska government agencies har successfully implemented standardized Arkitektur som kod templates för common infrastructure patterns across different departments.
+Template standardization through reusable modules and organizational patterns ensures consistency across migrated infrastructure simultaneously which the reduces future maintenance overhead. Svenska government agencies har successfully implemented standardized Architecture as Code templates for common infrastructure patterns across different departments.
 
-Configuration drift elimination genom arkitektur som kod adoption requires systematic reconciliation mellan existing resource configurations och desired Arkitektur som kod state. Gradual enforcement av Arkitektur som kod-managed configuration ensures infrastructure stability samtidigt som det eliminates manual configuration inconsistencies.
+Configuration drift elimination through Architecture as Code adoption requires systematic reconciliation mellan existing resource configurations and desired Architecture as Code state. Gradual enforcement of Architecture as Code-managed configuration ensures infrastructure stability simultaneously which the eliminates manual configuration inconsistencies.
 
-Version control integration för infrastructure changes enables systematic tracking av migration progress samt provides rollback capabilities för problematic changes. Git-based workflows för infrastructure management etablishes foundation för collaborative infrastructure development och operational transparency.
+Version control integration for infrastructure changes enables systematic tracking of migration progress samt provides rollback capabilities for problematic changes. Git-based workflows for infrastructure management etablishes foundation for collaborative infrastructure development and operational transparency.
 
-## Team transition och kompetensutveckling
+## Team transition and competence development
 
-Skills development programs måste prepare traditional system administrators och network engineers för Arkitektur som kod-based workflows. Training curricula ska encompass Infrastructure as Code tools, cloud platforms, DevOps practices och automation scripting för comprehensive capability development.
+Skills development programs must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows. Training curricula ska encompass Infrastructure as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.
 
-Organizational structure evolution från traditional silos till cross-functional teams enables effective arkitektur som kod adoption. Svenska telecommunications companies som Telia har successfully transitioned från separate development och operations teams till integrated DevOps teams som manage infrastructure as code.
+Organizational structure evolution from traditional silos to cross-functional teams enables effective Architecture as Code adoption. Svenska telecommunications companies that Telia har successfully transitioned from separate development and operations teams to integrated DevOps teams which manage infrastructure as code.
 
-Cultural transformation från manual processes till automated workflows requires change management programs som address resistance och promotes automation adoption. Success stories från early adopters can motivate broader organizational acceptance av arkitektur som kod practices.
+Cultural transformation from manual processes to automated workflows requires change management programs which address resistance and promotes automation adoption. Success stories from early adopters can motivate broader organizational acceptance of Architecture as Code practices.
 
-Mentorship programs pairing experienced cloud engineers med traditional infrastructure teams accelerates knowledge transfer och reduces adoption friction. External consulting support kan supplement internal capabilities during initial migration phases för complex enterprise environments.
+Mentorship programs pairing experienced cloud engineers with traditional infrastructure teams accelerates knowledge transfer and reduces adoption friction. External consulting support can supplement internal capabilities during initial migration phases for complex enterprise environments.
 
-## Praktiska exempel
+## Praktiska example
 
 ### Migration Assessment Automation
 ```python
@@ -67,7 +67,7 @@ import pandas as pd
 
 class InfrastructureMigrationAssessment:
     """
-    Automatiserad bedömning av befintlig infrastruktur för Arkitektur som kod-migration
+    Automatiserad bedömning of existing infrastruktur för architecture as code-migration
     """
     
     def __init__(self, region='eu-north-1'):
@@ -77,7 +77,7 @@ class InfrastructureMigrationAssessment:
         self.cloudformation = boto3.client('cloudformation', region_name=region)
         
     def discover_unmanaged_resources(self) -> Dict:
-        """Upptäck resurser som inte hanteras av Arkitektur som kod"""
+        """Upptäck resurser as not is managed of architecture as code"""
         
         unmanaged_resources = {
             'ec2_instances': self._find_unmanaged_ec2(),
@@ -99,16 +99,16 @@ class InfrastructureMigrationAssessment:
         return unmanaged_resources
     
     def _find_unmanaged_ec2(self) -> List[Dict]:
-        """Hitta EC2-instanser som inte hanteras av CloudFormation/Terraform"""
+        """Hitta EC2-instanser as not is managed of CloudFormation/Terraform"""
         
-        # Hämta alla EC2-instanser
+        # Hämta all EC2-instanser
         response = self.ec2.describe_instances()
         unmanaged_instances = []
         
         for reservation in response['Reservations']:
             for instance in reservation['Instances']:
                 if instance['State']['Name'] != 'terminated':
-                    # Kontrollera om instansen är managed av Arkitektur som kod
+                    # Kontrollera about instansen is managed of architecture as code
                     is_managed = self._is_resource_managed(instance.get('Tags', []))
                     
                     if not is_managed:
@@ -127,7 +127,7 @@ class InfrastructureMigrationAssessment:
         return unmanaged_instances
     
     def _is_resource_managed(self, tags: List[Dict]) -> bool:
-        """Kontrollera om resurs är managed av Arkitektur som kod"""
+        """Kontrollera about resurs is managed of architecture as code"""
         
         iac_indicators = [
             'aws:cloudformation:stack-name',
@@ -141,12 +141,12 @@ class InfrastructureMigrationAssessment:
         return any(indicator in tag_keys for indicator in iac_indicators)
     
     def generate_terraform_migration_plan(self, unmanaged_resources: Dict) -> str:
-        """Generera Terraform-kod för migration av unmanaged resources"""
+        """Generera Terraform-code för migration of unmanaged resources"""
         
         terraform_code = """
-# Automatiskt genererad migration plan
+# automatically genererad migration plan
 # Genererat: {date}
-# Totalt antal resurser att migrera: {total_resources}
+# Totalt antal resurser to migrera: {total_resources}
 
 terraform {{
   required_providers {{
@@ -167,19 +167,19 @@ provider "aws" {{
         )
         
         # Generera Terraform för EC2-instanser
-        for i, instance in enumerate(unmanaged_resources.get('ec2_instances', [])):
+        for in, instance in enumerate(unmanaged_resources.get('ec2_instances', [])):
             terraform_code += f"""
-# Migration av befintlig EC2-instans {instance['instance_id']}
-resource "aws_instance" "migrated_instance_{i}" {{
-  # OBSERVERA: Denna konfiguration måste verifieras och anpassas
+# Migration of existing EC2-instans {instance['instance_id']}
+resource "aws_instance" "migrated_instance_{in}" {{
+  # OBSERVERA: Denna konfiguration must verifieras och anpassas
   instance_type = "{instance['instance_type']}"
   subnet_id     = "{instance['subnet_id']}"
   
   vpc_security_group_ids = {json.dumps(instance['security_groups'])}
   
-  # Behåll befintliga tags och lägg till migration-info
+  # Behåll existing tags och lägg till migration-info
   tags = {{
-    Name = "{instance.get('tags', {}).get('Name', f'migrated-instance-{i}')}"
+    Name = "{instance.get('tags', {}).get('Name', f'migrated-instance-{in}')}"
     MigratedFrom = "{instance['instance_id']}"
     MigrationDate = "{datetime.now().strftime('%Y-%m-%d')}"
     ManagedBy = "terraform"
@@ -187,18 +187,18 @@ resource "aws_instance" "migrated_instance_{i}" {{
     Project = "{instance.get('tags', {}).get('Project', 'migration-project')}"
   }}
   
-  # VIKTIGT: Importera befintlig resurs istället för att skapa ny
-  # terraform import aws_instance.migrated_instance_{i} {instance['instance_id']}
+  # VIKTIGT: Importera existing resurs instead för to skapa ny
+  # terraform import aws_instance.migrated_instance_{in} {instance['instance_id']}
 }}
 """
         
         terraform_code += """
 # Migration checklist:
 # 1. Granska genererade konfigurationer noggrant
-# 2. Testa i development-miljö först  
-# 3. Importera befintliga resurser med terraform import
-# 4. Kör terraform plan för att verifiera att inga förändringar planeras
-# 5. Implementera gradvis med låg-risk resurser först
+# 2. Testa in development-miljö först  
+# 3. Importera existing resurser med terraform import
+# 4. Kör terraform plan för to verifiera to inga förändringar planeras
+# 5. Implementera gradually med låg-risk resurser först
 # 6. Uppdatera monitoring och alerting efter migration
 """
         
@@ -228,7 +228,7 @@ resource "aws_instance" "migrated_instance_{i}" {{
                 'resources': low_complexity,
                 'estimated_duration': f"{len(low_complexity) * 2} dagar",
                 'start_date': 'Vecka 1-2',
-                'prerequisites': ['Arkitektur som kod training completion', 'Tool setup', 'Backup verification']
+                'prerequisites': ['architecture as code training completion', 'Tool setup', 'Backup verification']
             },
             'wave_2_medium_risk': {
                 'resources': medium_complexity,
@@ -251,10 +251,10 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
     """Generera comprehensive migration playbook för svenska organisationer"""
     
     playbook = f"""
-# Arkitektur som kod Migration Playbook för {assessment_results.get('organization_name', 'Organization')}
+# architecture as code Migration Playbook för {assessment_results.get('organization_name', 'Organization')}
 
 ## Executive Summary
-- **Totalt antal resurser att migrera:** {assessment_results['summary']['total_unmanaged_resources']}
+- **Totalt antal resurser to migrera:** {assessment_results['summary']['total_unmanaged_resources']}
 - **Migrations-komplexitet:** {assessment_results['summary']['migration_complexity']}
 - **Estimerad effort:** {assessment_results['summary']['estimated_migration_effort']}
 - **Risk-bedömning:** {assessment_results['summary']['risk_assessment']}
@@ -262,7 +262,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 ## Fas 1: Förberedelse (Vecka 1-2)
 
 ### Team Training
-- [ ] Arkitektur som kod grundutbildning för alla teammedlemmar
+- [ ] architecture as code grundutbildning för all teammedlemmar
 - [ ] Terraform/CloudFormation hands-on workshops
 - [ ] Git workflows för infrastructure management
 - [ ] Svenska compliance-krav (GDPR, MSB)
@@ -274,7 +274,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] Monitoring och alerting konfiguration
 
 ### Risk Mitigation
-- [ ] Fullständig backup av alla kritiska system
+- [ ] Fullständig backup of all kritiska systems
 - [ ] Rollback procedures dokumenterade
 - [ ] Emergency contacts och eskalationsplan
 - [ ] Test environment för migration validation
@@ -283,12 +283,12 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 
 ### Low-Risk Resources Migration
 - [ ] Migrera development/test miljöer först
-- [ ] Validera Arkitektur som kod templates och processer
+- [ ] Validera architecture as code templates och processes
 - [ ] Dokumentera lessons learned
 - [ ] Refinera migration procedures
 
 ### Quality Gates
-- [ ] Automated testing av migrerade resurser
+- [ ] Automated testing of migrerade resurser
 - [ ] Performance verification
 - [ ] Security compliance validation
 - [ ] Cost optimization review
@@ -302,7 +302,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] Network infrastructure migration
 
 ### Continuous Monitoring
-- [ ] Real-time monitoring av migrerade system
+- [ ] Real-time monitoring of migrerade systems
 - [ ] Automated alerting för anomalier
 - [ ] Performance benchmarking
 - [ ] Cost tracking och optimization
@@ -313,10 +313,10 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] Infrastructure cost review och optimization
 - [ ] Team workflow refinement
 - [ ] Documentation och knowledge transfer
-- [ ] Continuous improvement arkitektur som kod-implementation
+- [ ] Continuous improvement architecture as code-implementation
 
 ### Long-term Sustainability
-- [ ] Regular Arkitektur som kod arkitektur som kod best practices review
+- [ ] Regular architecture as code architecture as code best practices review
 - [ ] Team cross-training program
 - [ ] Tool evaluation och updates
 - [ ] Compliance monitoring automation
@@ -324,7 +324,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 ## Svenska Compliance Considerations
 
 ### GDPR Requirements
-- [ ] Data residency i svenska/EU regioner
+- [ ] Data residency in svenska/EU regioner
 - [ ] Encryption at rest och in transit
 - [ ] Access logging och audit trails
 - [ ] Data retention policy implementation
@@ -346,16 +346,16 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 ### Operational Metrics
 - Mean time to recovery improvement: Target 60%
 - Change failure rate reduction: Target 50%
-- Team satisfaction med nya processer: Target 8/10
+- Team satisfaction med new processes: Target 8/10
 - Knowledge transfer completion: Target 100%
 
 ## Risk Management
 
 ### High-Priority Risks
-1. **Service Downtime:** Mitigated genom maintenance windows och rollback plans
-2. **Data Loss:** Mitigated genom comprehensive backups och testing
-3. **Security Compliance:** Mitigated genom automated compliance validation
-4. **Team Resistance:** Mitigated genom training och change management
+1. **Service Downtime:** Mitigated through maintenance windows och rollback plans
+2. **Data Loss:** Mitigated through comprehensive backups och testing
+3. **Security Compliance:** Mitigated through automated compliance validation
+4. **Team Resistance:** Mitigated through training och change management
 
 ### Contingency Plans
 - Immediate rollback procedures för kritiska issues
@@ -371,16 +371,16 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 ```yaml
 # migration/legacy-import-template.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Template för import av befintliga resurser till CloudFormation management'
+Description: 'Template för import of existing resurser till CloudFormation management'
 
 Parameters:
   ExistingVPCId:
     Type: String
-    Description: 'ID för befintlig VPC som ska importeras'
+    Description: 'ID för existing VPC as ska importeras'
     
   ExistingInstanceId:
     Type: String  
-    Description: 'ID för befintlig EC2-instans som ska importeras'
+    Description: 'ID för existing EC2-instans as ska importeras'
     
   Environment:
     Type: String
@@ -389,14 +389,14 @@ Parameters:
     
   ProjectName:
     Type: String
-    Description: 'Namn på projektet för resource tagging'
+    Description: 'Namn at projektet för resource tagging'
 
 Resources:
-  # Import av befintlig VPC
+  # Import of existing VPC
   ExistingVPC:
     Type: AWS::EC2::VPC
     Properties:
-      # Dessa värden måste matcha befintlig VPC-konfiguration exakt
+      # Dessa värden must matcha existing VPC-konfiguration exakt
       CidrBlock: '10.0.0.0/16'  # Uppdatera med faktiskt CIDR
       EnableDnsHostnames: true
       EnableDnsSupport: true
@@ -412,11 +412,11 @@ Resources:
         - Key: ImportDate
           Value: !Sub '${AWS::Timestamp}'
 
-  # Import av befintlig EC2-instans
+  # Import of existing EC2-instans
   ExistingInstance:
     Type: AWS::EC2::Instance
     Properties:
-      # Dessa värden måste matcha befintlig instans-konfiguration
+      # Dessa värden must matcha existing instans-konfiguration
       InstanceType: 't3.medium'  # Uppdatera med faktisk instance type
       ImageId: 'ami-0c94855bb95b03c2e'  # Uppdatera med faktisk AMI
       SubnetId: !Ref ExistingSubnet
@@ -438,14 +438,14 @@ Resources:
   ExistingSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: 'Imported security group för legacy system'
+      GroupDescription: 'Imported security group för legacy systems'
       VpcId: !Ref ExistingVPC
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 22
           ToPort: 22
           CidrIp: '10.0.0.0/8'  # Begränsa SSH access
-          Description: 'SSH access från internal network'
+          Description: 'SSH access from internal network'
         - IpProtocol: tcp
           FromPort: 80
           ToPort: 80
@@ -498,17 +498,17 @@ Outputs:
   ImportInstructions:
     Description: 'Instruktioner för resource import'
     Value: !Sub |
-      För att importera befintliga resurser:
+      För to importera existing resurser:
       1. aws cloudformation create-stack --stack-name ${ProjectName}-import --template-body file://legacy-import-template.yaml
       2. aws cloudformation import-resources-to-stack --stack-name ${ProjectName}-import --resources file://import-resources.json
-      3. Verifiera att import var framgångsrik med: aws cloudformation describe-stacks --stack-name ${ProjectName}-import
+      3. Verifiera to import var successful med: aws cloudformation describe-stacks --stack-name ${ProjectName}-import
 ```
 
 ### Migration Testing Framework  
 ```bash
 #!/bin/bash
 # migration/test-migration.sh
-# Comprehensive testing script för Arkitektur som kod migration validation
+# Comprehensive testing script för architecture as code migration validation
 
 set -e
 
@@ -516,14 +516,14 @@ PROJECT_NAME=${1:-"migration-test"}
 ENVIRONMENT=${2:-"staging"}
 REGION=${3:-"eu-north-1"}
 
-echo "Starting Arkitektur som kod migration testing för projekt: $PROJECT_NAME"
+echo "Starting architecture as code migration testing för projekt: $PROJECT_NAME"
 echo "Environment: $ENVIRONMENT"
 echo "Region: $REGION"
 
 # Pre-migration testing
 echo "=== Pre-Migration Tests ==="
 
-# Test 1: Verifiera att alla resurser är inventerade
+# Test 1: Verifiera to all resurser is inventerade
 echo "Testing resource inventory..."
 aws ec2 describe-instances --region $REGION --query 'Reservations[*].Instances[?State.Name!=`terminated`]' > /tmp/pre-migration-instances.json
 aws rds describe-db-instances --region $REGION > /tmp/pre-migration-rds.json
@@ -565,7 +565,7 @@ terraform plan -var="project_name=$PROJECT_NAME" -var="environment=$ENVIRONMENT"
 # Analysera plan för oväntade förändringar
 terraform show -json migration.plan > /tmp/terraform-plan.json
 
-# Kontrollera att inga resurser planeras för destruction
+# Kontrollera to inga resurser planeras för destruction
 DESTROY_COUNT=$(jq '.resource_changes[] | select(.change.actions[] == "delete") | .address' /tmp/terraform-plan.json | wc -l)
 
 if [ $DESTROY_COUNT -gt 0 ]; then
@@ -577,7 +577,7 @@ fi
 # Test 5: Import validation
 echo "Testing resource import procedures..."
 
-# Skapa test import för en sample resource
+# Skapa test import för a sample resource
 SAMPLE_INSTANCE_ID=$(jq -r '.[] | .[] | .InstanceId' /tmp/pre-migration-instances.json | head -1)
 
 if [ "$SAMPLE_INSTANCE_ID" != "null" ] && [ "$SAMPLE_INSTANCE_ID" != "" ]; then
@@ -599,7 +599,7 @@ import boto3
 import json
 
 def validate_tagging_compliance(region='eu-north-1'):
-    """Validera att alla migrerade resurser har korrekta tags"""
+    """Validera to all migrerade resurser har korrekta tags"""
     ec2 = boto3.client('ec2', region_name=region)
     
     required_tags = ['ManagedBy', 'Environment', 'Project']
@@ -624,7 +624,7 @@ def validate_tagging_compliance(region='eu-north-1'):
 
 def validate_security_compliance():
     """Validera säkerhetskonfiguration efter migration"""
-    # Implementation för säkerhetskontroller
+    # implementation för säkerhetskontroller
     pass
 
 if __name__ == '__main__':
@@ -687,21 +687,21 @@ echo "4. Monitor performance för 24 hours"
 echo "5. Document lessons learned"
 ```
 
-## Sammanfattning
+## Summary
 
 
-Den moderna arkitektur som kod-metodiken representerar framtiden för infrastrukturhantering i svenska organisationer.
-Migration från traditionell infrastruktur till Infrastructure as Code representerar en kritisk transformation som kräver systematisk planering, gradvis implementation och omfattande testing. Svenska organisationer som framgångsrikt genomför denna migration positionerar sig för ökad agility, förbättrad säkerhet och betydande kostnadsmässiga fördelar.
+Den moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
+Migration from Traditional Infrastructure to Infrastructure as Code representerar a kritisk transformation which requires systematisk planering, gradually implementation and comprehensive testing. Svenska organisationer which framgångsrikt throughfor This migration positionerar itself for ökad agility, forbättrad säkerhet and betydande kostnadsmässiga Benefits.
 
-Framgångsfaktorer inkluderar comprehensive assessment, realistisk timeline planning, extensive team training och robust testing frameworks. Hybrid migration strategies möjliggör risk minimization samtidigt som de levererar immediate value från arkitektur som kod adoption.
+Framgångsfaktorer includes comprehensive assessment, realistisk timeline planning, extensive team training and robust testing frameworks. Hybrid migration strategies enables risk minimization simultaneously which the levererar imwithiate value from Architecture as Code adoption.
 
-Investment i proper migration planning och execution resulterar i långsiktiga fördelar genom improved operational efficiency, enhanced security posture och reduced technical debt. Svenska organisationer som följer systematic migration approaches kan förvänta sig successful transformation till modern, arkitektur som kod-baserad infrastrukturhantering.
+Investment in proper migration planning and execution resulterar in långsiktiga Benefits through improved operational efficiency, enhanced security posture and reduced technical debt. Svenska organisationer which följer systematic migration approaches can forvänta itself successful transformation to modern, Architecture as Code-baserad infraStructurehantering.
 
-## Källor och referenser
+## Sources and referenser
 
-- AWS. "Large-Scale Migration och Modernization Guide." Amazon Web Services, 2023.
-- Microsoft. "Azure Migration Framework och arkitektur som kod best practices." Microsoft Azure Documentation, 2023.
+- AWS. "Large-Scale Migration and Modernization Guide." Amazon Web Services, 2023.
+- Microsoft. "Azure Migration Framework and Architecture as Code best practices." Microsoft Azure Documentation, 2023.
 - Google Cloud. "Infrastructure Migration Strategies." Google Cloud Architecture Center, 2023.
 - Gartner. "Infrastructure Migration Trends in Nordic Countries." Gartner Research, 2023.
-- ITIL Foundation. "IT Service Management för Cloud Migration." AXELOS, 2023.
-- Swedish Government. "Digital Transformation Guidelines för Public Sector." Digitaliseringsstyrelsen, 2023.
+- ITIL Foundation. "IT Service Management for Cloud Migration." AXELOS, 2023.
+- Swedish Government. "Digital Transformation Guidelines for Public Sector." Digitaliseringsstyrelsen, 2023.

@@ -191,7 +191,7 @@ All workflows upload artifacts with 30-day retention:
 ### Debugging
 
 1. Check workflow logs in GitHub Actions tab
-2. Download artifacts to inspect intermediate files from both build strategies
+2. Download artifacts to inspect interwithiate files from both build strategies
 3. Run individual steps locally using provided scripts
 4. Use workflow_dispatch for manual triggering with custom parameters
 
