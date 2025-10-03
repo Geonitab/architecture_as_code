@@ -4,13 +4,13 @@
 
 This document describes the English translation project for the "Arkitektur som kod" (Architecture as Code) book project.
 
-**Status: ✅ COMPLETE** - All 40 markdown files successfully translated to English.
+**Status: ✅ COMPLETE** - All 47 markdown files successfully translated to English.
 
 ## Completed Work
 
-### Files Translated (40 total)
+### Files Translated (47 total)
 
-**Root Level Documentation (10 files):**
+**Root Level Documentation (13 files):**
 - README_en.md - Main project README
 - AUTOMATION_WORKFLOWS_en.md - Workflow automation documentation
 - BOOK_REQUIREMENTS_en.md - Book requirements specification
@@ -21,6 +21,9 @@ This document describes the English translation project for the "Arkitektur som 
 - TEST_WORKFLOW_en.md - Testing workflow documentation
 - VISUAL_ELEMENTS_GUIDE_en.md - Visual elements guide
 - bot_en.md - AI assistant prompt documentation
+- CICD_SETUP_en.md - CI/CD setup documentation
+- TRANSLATION_PROJECT_en.md - Translation project documentation
+- WORKFLOWS_en.md - GitHub Actions workflows documentation
 
 **Book Chapters (27 files):**
 All chapters from 01_inledning_en.md through 27_teknisk_uppbyggnad_en.md:
@@ -52,10 +55,14 @@ All chapters from 01_inledning_en.md through 27_teknisk_uppbyggnad_en.md:
 26. Appendix: Code Examples and Templates
 27. Technical Architecture of the Book
 
-**Supporting Documentation (3 files):**
+**Supporting Documentation (7 files):**
 - docs/README_en.md - Documentation README
 - docs/BOOK_COVER_DESIGN_en.md - Book cover design documentation
 - docs/TERMINOLOGI_JUSTERING_en.md - Terminology adjustments
+- docs/ENGELSKA_UTTRYCK_SAMMANSTÄLLNING_en.md - English expression compilation
+- docs/EPUB_VALIDATION_en.md - EPUB validation documentation
+- docs/SVENGELSKA_FIXES_SUMMARY_en.md - Svengelska fixes summary
+- docs/language_deviations_issue_en.md - Language deviations tracking issue
 
 ### Translation Methodology
 
@@ -208,10 +215,10 @@ Total translation mappings: 150+ phrase pairs
 
 ## File Statistics
 
-- **Total files created:** 40
-- **Total lines translated:** ~20,000+
+- **Total files created:** 47
+- **Total lines translated:** ~22,000+
 - **Chapter files:** 27 (complete book structure)
-- **Documentation files:** 13 (supporting materials)
+- **Documentation files:** 20 (supporting materials)
 - **Scripts created:** 4 (reusable translation tools)
 - **Code blocks preserved:** 100%
 - **Structure integrity:** 100%
@@ -250,11 +257,11 @@ maintaining the bilingual repository structure.
 ### Problem Statement Requirements
 
 ✅ **Requirement 1:** "Identifiera alla md-filer i projektet"
-   - All 40 markdown files identified and cataloged
+   - All 47 markdown files identified and cataloged
    - Systematic discovery implemented in translation scripts
 
 ✅ **Requirement 2:** "Skapa en engelsk version av innehållet utan att ändra det ursprungliga svenska innehållet"
-   - All 40 English versions created
+   - All 47 English versions created
    - Swedish originals remain completely unchanged
    - Verified: 0 modifications to Swedish files
 
@@ -272,7 +279,7 @@ maintaining the bilingual repository structure.
 
 ## Conclusion
 
-The translation infrastructure is in place and has successfully created English versions of all 40 markdown files. The automated translation provides:
+The translation infrastructure is in place and has successfully created English versions of all 47 markdown files. The automated translation provides:
 
 - **Complete coverage:** All files translated
 - **Structural integrity:** 100% markdown structure preserved  
