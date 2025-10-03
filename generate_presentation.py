@@ -188,7 +188,7 @@ def validate_chapter_diagrams():
         chapter_name = Path(chapter_file).name
         
         # Skip non-chapter files
-        if chapter_name in ['README.md', 'arkitektur_som_kod.md', 'BOOK_COVER_DESIGN.md', 'EPUB_VALIDATION.md']:
+        if chapter_name in ['README.md', 'arkitektur_som_kod.md', 'BOOK_COVER_DESIGN.md']:
             continue
             
         validation_results['total_chapters'] += 1

@@ -99,8 +99,7 @@ def main():
     # Get all markdown files except images directory
     md_files = []
     for file_path in docs_dir.glob("*.md"):
-        if file_path.name not in ["ENGLISH_EXPRESSION_COMPILATION.md"]:
-            md_files.append(file_path)
+        md_files.append(file_path)
     
     print(f"📚 Processing {len(md_files)} markdown files...")
     print("=" * 50)
