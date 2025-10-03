@@ -2,7 +2,7 @@
 
 ## Overview of ändringar
 
-This Document describes the systematiska ändringar as gjorts to säkerställa to termen "Architecture as Code" används minst 10 gånger oftare än "IaC" in entire boken, according to kravspecifikationen.
+This Document describes the systematiska ändringar as gjorts to ensure to termen "Architecture as Code" används minst 10 gånger oftare än "IaC" in entire boken, according to kravspecifikationen.
 
 ## Genomforda changes
 
@@ -23,7 +23,7 @@ This Document describes the systematiska ändringar as gjorts to säkerställa t
 **Fas 1: Kontextuell ersättning**
 - Ersatte 90% of IaC-forekomster with "Architecture as Code" where the var kontextuellt lämpligt
 - Behöll IaC in specifika tekniska sammanhang and when forkortningen var mer naturlig
-- Forbättrade läsbarheten by använda svenska termen in flow
+- Forbättrade läsbarheten by use svenska termen in flow
 
 **Fas 2: Aggressiv harmonisering**
 - Ytterligare ersättning to nå målkvoten at 10:1
@@ -42,8 +42,8 @@ all chapters uppfyller nu regeln to IaC-forekomster not får överstiga hälften
 ### 4. Konsistenshållning
 
 **Diagrams and References:**
-- Inga ändringar gjordes in diagram-namn or tekniska filer as skulle påverka bildgenereringen
-- Mermaid diagramsmen behåller sina tekniska References men textContentset emphaserar "Architecture as Code"
+- Inga ändringar gjordes in diagram-namn or tekniska filer as would påverka bildgenereringen
+- Mermaid diagramsmen behåller sina tekniska References but textContentset emphaserar "Architecture as Code"
 
 **technical kompatibilitet:**
 - all länkar and References to externa resurser bevarade

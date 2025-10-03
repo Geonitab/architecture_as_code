@@ -44,4 +44,4 @@
 4. **Verb in löpande text** översätts to svenska (execute → köra, validate → validate)
 5. **Kontext avgör** - tekniska sammanhang can ha mer engelska än affärssammanhang
 
-Svengelska-rensningen fortsätter systematiskt through entire bokens documentation to säkerställa konsekvent svensk terminologi where the is naturligt.
+Svengelska-rensningen fortsätter systematiskt through entire bokens documentation to ensure konsekvent svensk terminologi where the is naturligt.

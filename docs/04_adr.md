@@ -6,17 +6,17 @@
 
 ## Övergripande Description
 
-Architecture as Code-metodiken utgör grunden for Architecture Decision Records (ADR) which utgör A systematiskt tovägagångssätt to dokumentera viktiga architecture decisions as påverkar systemets Structure, prestanda, säkerhet and underhållbarhet. ADR-metoden introducerades of Michael Nygard and har blivit a etablerad bästa praxis within moderna systemutveckling.
+Architecture as Code-metodiken utgör grunden for Architecture Decision Records (ADR) which utgör A systematiskt tovägagångssätt to dokumentera viktiga architecture decisions as påverkar systemets Structure, prestanda, säkerhet and underhållbarhet. ADR-metoden introducerades of Michael Nygard and has blivit a etablerad bästa praxis within moderna systemutveckling.
 
-For Swedish organizations as implementerar Architecture as Code and Architecture as Code is ADR särskilt värdefullt efterwhich the ensures architecture decisions dokumenteras at A Structureerat sätt as uppfyller efterlevnadskrav and underlättar kunskapsöverforing mellan team and tidsepoker.
+For Swedish organizations as implementerar Architecture as Code and Architecture as Code is ADR särskilt värdefullt efterwhich the ensures architecture decisions dokumenteras at A Structureerat sätt as uppfyller efterlevnadskrav and underlättar kunskapsöverforing between team and tidsepoker.
 
 ADR functions as architecture's "commit messages" - korta, fokuserade dokument as fångar sammanhanget (context), problemet, the valda alternativet and konsekvenserna of viktiga architecture decisions. This enables spårbarhet and forståelse for why specifika tekniska val gjordes.
 
 The svenska digitaliseringsstrategin betonar vikten of transparenta and spårbara beslut within offentlig sektor. ADR-metoden stödjer These krav by skapa a revisionsspår of architecture decisions as can granskas and utvärderas over time.
 
-## Vad is Architecture Decision Records?
+## What is Architecture Decision Records?
 
-Architecture Decision Records definieras as korta textdokument as fångar viktiga architecture decisions tosammans with deras kontext and konsekvenser. each ADR beskriver A specifikt beslut, problemet the löser, alternativen that övervägdes and motiveringen bakom the valda alternativet.
+Architecture Decision Records definieras as korta textdokument as fångar viktiga architecture decisions tosammans with deras kontext and konsekvenser. each ADR describes A specifikt beslut, problemet the löser, alternativen that övervägdes and motiveringen bakom the valda alternativet.
 
 ADR-format följer vanligtvis a Structureerad mall as includes:
 
@@ -46,27 +46,27 @@ each ADR följer a konsekvent Structure that ensure all relevant information få
 [Proposed | Accepted | Deprecated | Superseded]
 
 ## Context
-Description of problemet as behöver lösas och the omständigheter
-as ledde till behovet of detta beslut.
+Description of problemet as behöver lösas and the omständigheter
+as ledde to behovet of this beslut.
 
 ## Decision
 the specifika beslutet as fattades, including tekniska detaljer
-och architecture as code-implementation approach.
+and architecture as code-implementation approach.
 
 ## Consequences
 ### Positiva konsekvenser
-- Förväntade fördelar och förbättringar
+- Förväntade fördelar and förbättringar
 
 ### Negativa konsekvenser
-- Identifierade risker och begränsningar
+- Identifierade risker and begränsningar
 
 ### Mitigering
-- Åtgärder för to hantera negativa konsekvenser
+- Åtgärder to handle negativa konsekvenser
 ```
 
 ### Numrering and versionering
 
-ADR numreras sekventiellt (ADR-0001, ADR-0002, etc.) to skapa a kronologisk ordning and enkel referens. Numreringen is permanent - även about A ADR depreceras or ersätts behålls originalets nummer.
+ADR numreras sekventiellt (ADR-0001, ADR-0002, etc.) to skapa a kronologisk ordning and enkel referens. Numreringen is permanent - also about A ADR depreceras or ersätts behålls originalets nummer.
 
 Versionering is managed through Git-history instead for inline-ändringar. about A beslut forändras are created A nytt ADR as superseder the ursprungliga, which bevarar The historiska kontexten.
 
@@ -74,13 +74,13 @@ Versionering is managed through Git-history instead for inline-ändringar. about
 
 ![ADR Lifecycle](images/diagram_04_adr_lifecycle.png)
 
-*ADR-livscykeln illustrerar how beslut utvecklas from initialt forslag through granskningsprocessen to Architecture as Code-implementation, övervakning and eventuell avveckling when new lösningar behövs.*
+*ADR-livscykeln illustrerar how beslut is developed from initialt forslag through granskningsprocessen to Architecture as Code-implementation, övervakning and eventuell avveckling when new lösningar behövs.*
 
-ADR throughgår typiskt följande statusar:
+ADR throughgår typiskt following statusar:
 
 **Foreslagen**: Initialt forslag as throughgår granskning and diskussion
 **Accepted**: Godkänt beslut as ska implementeras
-**Deprecated**: Beslut as not längre rekommenderas men can finnas kvar in systems
+**Deprecated**: Beslut as not längre rekommenderas but can finnas kvar in systems
 **Superseded**: Ersatt of A nyare ADR with referens to ersättaren
 
 ## Praktiska example at ADR
@@ -90,37 +90,37 @@ ADR throughgår typiskt följande statusar:
 Architecture as Code-principerna within This område
 
 ```markdown
-# ADR-0003: Val of Terraform för architecture as code
+# ADR-0003: Val of Terraform for architecture as code
 
 ## Status
 Accepted
 
 ## Context
 Organisationen behöver standardisera at A architecture as code-verktyg
-för to hantera AWS och Azure-miljöer. Nuvarande manuella processes
-creates inconsistens och operationella risker.
+to handle AWS and Azure-miljöer. Nuvarande manuella processes
+creates inconsistens and operationella risker.
 
 ## Decision
-Vi kommer to använda Terraform as primärt architecture as code-verktyg för all
-cloud-miljöer, med HashiCorp Configuration Language (HCL) as
+Vi kommer to use Terraform as primärt architecture as code-verktyg for all
+cloud-miljöer, with HashiCorp Configuration Language (HCL) as
 standardsyntax.
 
 ## Consequences
 
 ### Positiva konsekvenser
-- Multi-cloud support för AWS och Azure
-- Stor community och comprehensive provider-ekosystem
+- Multi-cloud support for AWS and Azure
+- Stor community and comprehensive provider-ekosystem
 - Declarative syntax as matchar våra policy-krav
-- State management för spårbarhet
+- State management for spårbarhet
 
 ### Negativa konsekvenser
-- Inlärningskurva för team as is vana vid imperative scripting
+- Inlärningskurva for team as is vana at imperative scripting
 - State file management komplexitet
-- Kostnad för Terraform Cloud eller Enterprise features
+- Kostnad for Terraform Cloud or Enterprise features
 
 ### Mitigering
-- training programs för development teams
-- implementation of Terraform remote state med Azure Storage
+- training programs for development teams
+- implementation of Terraform remote state with Azure Storage
 - Pilotprojekt innan fullständig utrullning
 ```
 
@@ -133,13 +133,13 @@ standardsyntax.
 Accepted
 
 ## Context
-GDPR och MSB:s riktlinjer för cybersäkerhet requires robusta säkerhetsåtgärder.
-Traditionell perimeter-baserad säkerhet is otillräcklig för modern
+GDPR and MSB:s riktlinjer for cybersäkerhet requires robusta säkerhetsåtgärder.
+Traditionell perimeter-baserad säkerhet is otillräcklig for modern
 hybrid cloud-miljö.
 
 ## Decision
-implementation of Zero Trust Network Architecture med mikrosegmentering,
-multi-factor authentication och kontinuerlig verification through
+implementation of Zero Trust Network Architecture with mikrosegmentering,
+multi-factor authentication and kontinuerlig verification through
 architecture as code.
 
 ## Consequences
@@ -147,17 +147,17 @@ architecture as code.
 ### Positiva konsekvenser
 - Förbättrad efterlevnad of svenska säkerhetskrav
 - Reducerad attack surface through mikrosegmentering
-- Förbättrad auditbarhet och spårbarhet
+- Förbättrad auditbarhet and spårbarhet
 
 ### Negativa konsekvenser
 - Ökad komplexitet in nätverksarkitektur
-- Prestationsöverhuvud för kontinuerlig verification
+- Prestationsöverhuvud for kontinuerlig verification
 - Högre operationella kostnader
 
 ### Mitigering
-- Fasad implementation med pilot-projekt
-- Prestandaövervakning och optimering
-- Extensive documentation och training
+- Fasad implementation with pilot-projekt
+- Prestandaövervakning and optimering
+- Extensive documentation and training
 ```
 
 ## Tools and bästa metoder for ADR within architecture as code
@@ -166,7 +166,7 @@ architecture as code.
 
 Flera verktyg underlättar creation and management of ADR:
 
-**adr-verktyg**: Kommandoradsverktyg to skapa and hantera ADR-filer
+**adr-verktyg**: Kommandoradsverktyg to skapa and handle ADR-filer
 **adr-log**: Automatisk generering of ADR-index and tidslinje
 **Architecture Decision Record plugins**: Integration with IDE:er that VS Code
 
@@ -195,7 +195,7 @@ ADR functions optimalt when integrerat in Git-baserade utvecklingsarbetsflöden:
 to uppfylla svenska efterlevnadskrav bör ADR följa specifika kvalitetsstandards:
 
 **Språk**: ADR can skrivas at svenska for interna intressenter with engelska tekniska termer for verktygskompatibilitet
-**Spårbarhet**: Klar länkning mellan ADR and implemented code
+**Spårbarhet**: Klar länkning between ADR and implemented code
 **Åtkomst**: Transparent togång for revisorer and efterlevnadsansvariga
 **Retention**: Långsiktig arkivering according to organizational policier
 
@@ -210,11 +210,11 @@ Effektiv ADR-implementation requires etablerade granskningsprocesser:
 
 ## Integration with Architecture as Code
 
-ADR spelar a central roll in Architecture as Code-metodik by dokumentera design decisions as sedan implementeras as code. This integration creates a tydlig koppling mellan intentioner and implementation.
+ADR spelar a central roll in Architecture as Code-metodik by dokumentera design decisions as sedan implementeras as code. This integration creates a tydlig koppling between intentioner and implementation.
 
 Architecture as Code-templates can referera to relevant ADR to forklara design decisions and implementation choices. This creates självdokumenterande infrastructure where the code kompletteras with arkitekturrational.
 
-Automated validation can implementeras to säkerställa to infrastructure code följer established ADR. Policy as Code-verktyg that Open Policy Agent can enforça arkitekturriktlinjer baserade at documented decisions in ADR.
+Automated validation can implementeras to ensure to infrastructure code följer established ADR. Policy as Code-verktyg that Open Policy Agent can enforça arkitekturriktlinjer baserade at documented decisions in ADR.
 
 For Swedish organizations enables This integration transparent styrning and efterlevnad where architecture decisions can spåras from initial documentation through implementation to operativ driftsättning.
 
@@ -225,19 +225,19 @@ ADR-metodik stödjer svenska efterlevnadskrav through Structureerad documentatio
 **Regleringsefterlevnad**: Systematisk documentation for GDPR, PCI-DSS and branschspecifika regleringar
 **Audit Readiness**: Komplett spår of architecture decisions and deras rationale
 **Risk Management**: Dokumenterade riskbedömningar and mitigation strategies
-**Knowledge Management**: Structureerad kunskapsöverforing mellan team and over time
+**Knowledge Management**: Structureerad kunskapsöverforing between team and over time
 
-Svenska organisationer within offentlig sektor can använda ADR to uppfylla transparenskrav and demokratisk insyn in tekniska beslut as påverkar withborgarservice and datahantering.
+Svenska organisationer within offentlig sektor can use ADR to uppfylla transparenskrav and demokratisk insyn in tekniska beslut as påverkar withborgarservice and datahantering.
 
-## Framtida utveckling and trends
+## Framtida development and trends
 
-ADR-metodik utvecklas kontinuerligt with integration of new tools and processes:
+ADR-metodik is developed kontinuerligt with integration of new tools and processes:
 
 **AI-assisterade ADR**: Machine learning to identifiera when new ADR behövs baserat at code changes
 **Automated Decision Tracking**: Integration with architectural analysis verktyg
 **Organisationsövergripande ADR-delning**: Standardiserade format for delning of anonymiserade architecture patterns
 
-For Architecture as Code-sammanhang utvecklas verktyg for automatisk korrelation mellan ADR and driftsatt infrastructure, which enables realtidsvalidering of arkitektonisk efterlevnad.
+For Architecture as Code-sammanhang is developed verktyg for automatisk korrelation between ADR and driftsatt infrastructure, which enables realtidsvalidering of arkitektonisk efterlevnad.
 
 Svenska organisationer can dra nytta of europeiska initiativ for standardisering of digital documentation practices as builds on ADR-metodologi for ökad interoperabilitet and efterlevnad.
 
@@ -247,7 +247,7 @@ Svenska organisationer can dra nytta of europeiska initiativ for standardisering
 The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
 Architecture Decision Records representerar a fundamental komponent in modern Architecture as Code-metodik. Through Structured documentation of architecture decisions are created transparens, spårbarhet and kunskapsöverforing as is kritisk for svenska organisationers digitaliseringsinitiativ.
 
-Effektiv ADR-implementation requires organisatoriskt stöd, standardiserade processes and integration with existing utvecklingsarbetsflöden. For Architecture as Code-projekt enables ADR koppling mellan designintentioner and code-implementation as improves maintainability and efterlevnad.
+Effektiv ADR-implementation requires organisatoriskt stöd, standardiserade processes and integration with existing utvecklingsarbetsflöden. For Architecture as Code-projekt enables ADR koppling between designintentioner and code-implementation as improves maintainability and efterlevnad.
 
 Svenska organisationer as antar ADR-metodik positionerar itself for successful Architecture as Code-transformation with robusta styrningsprocesser and transparent beslutsdokumentation as stödjer both interna krav and externa efterlevnadsforväntningar.
 

@@ -22,9 +22,9 @@ This document defines the comprehensive kraven for Contentset in boken "Architec
 ### Förkunskapskrav
 - Fundamental forståelse for molnplattformar (AWS, Azure, GCP)
 - Erfarenhet of version control (Git)
-- Kunskap about minst A programmeringsspråk
+- Knowledge about minst A programmeringsspråk
 - Forståelse for CI/CD-concepts
-- Fundamental Unix/Linux-kunskaper
+- Fundamental Unix/Linux-knowledge
 
 ## 2. Centrala Teman (Core Themes)
 
@@ -49,7 +49,7 @@ This document defines the comprehensive kraven for Contentset in boken "Architec
 - **Digitalisering**: Transformationsstrategier, change management
 - **TeamStructureer**: DevOps-kultur, cross-funktionella team
 - **Projektledning**: Agile metoder for infrastructure, risk management
-- **Innovation**: Experimentell utveckling, prototyping
+- **Innovation**: Experimentell development, prototyping
 - **Produktutveckling**: Architecture as Code as enabler for produktteam
 
 #### D. Styrning and Optimering (chapters 14-17)
@@ -70,7 +70,7 @@ This document defines the comprehensive kraven for Contentset in boken "Architec
 ### Bokens övergripande struktur
 **Format**: 23 chapters + appendix (Glossary, About the Authors)
 **Omfattning**: ~200-300 sidor total
-**Språk**: Svenska (with engelska termer in parentes vid forsta användning)
+**Språk**: Svenska (with engelska termer in parentes at forsta use)
 
 ### Chapter Structure (Standardmall)
 each chapters följer a konsistent Structure at 8-12 sidor:
@@ -88,9 +88,9 @@ each chapters följer a konsistent Structure at 8-12 sidor:
 10. **Sources and References** - Akademiska and industriella Sources
 
 #### 3.2 Tvärgående struktur
-- **Progressiv komplexitet**: each chapters builds on previous kunskap
+- **Progressiv komplexitet**: each chapters builds on previous knowledge
 - **Återkommande Example**: same fiktiva organisation används through entire boken
-- **Cross-References**: explicitly koppling mellan relaterade chapters
+- **Cross-References**: explicitly koppling between relaterade chapters
 - **Praktisk orientering**: Minst 60% practical Contents vs 40% teori
 
 ### Sektionsindelning
@@ -117,7 +117,7 @@ Framtidstrender, best practices and Summary
 - **Teori**: 70% - Forklaring of concepts and principles
 - **Praktik**: 30% - Enkla Example and demonstrationer
 - **KodExample**: Pseudo-code and enkla script
-- **Target Audience**: all läsare ska kunna följa
+- **Target Audience**: all läsare ska be able to följa
 
 #### Implementationskapitel (4-8): Interwithiär nivå
 - **Teori**: 40% - Fordjupade tekniska concepts
@@ -194,7 +194,7 @@ graph LR
 1. **Problemställning** (2-3 rader text)
 2. **Lösning** (kodblock with syntax highlighting)
 3. **Forklaring** (4-6 rader kommentar)
-4. **Variation/alternativ** (vid behov)
+4. **Variation/alternativ** (at behov)
 
 **Example - Terraform infrastructure**:
 ```hcl
@@ -211,7 +211,7 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
   
   tags = {
     miljö = "produktion"
-    kostnadsställe = "utveckling"
+    kostnadsställe = "development"
   }
 }
 ```
@@ -245,13 +245,13 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 
 #### 6.1 Primärspråk: Svenska
 - **Target Audience**: Svenska IT-professionella
-- **Terminologi**: Svenska termer with engelska in parentes vid forsta användning
+- **Terminologi**: Svenska termer with engelska in parentes at forsta use
 - **Example**: "Architecture as Code (engelska: Architecture as Code)"
 - **Konsistens**: same svenska term används konsekvent through entire boken
 
 #### 6.2 Engelska termer
 **When engelska används**:
-- Etablerade branschtermer utan svenska motsvarighet
+- Etablerade branschtermer without svenska motsvarighet
 - API-namn and tekniska specifikationer
 - Kodkommentarer and konfigurationsfiler
 - Citat from engelska Sources
@@ -262,7 +262,7 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 ### Stilriktlinjer
 
 #### 6.3 Ton and stil
-- **Professionell men togänglig**: technical precision utan to vara överdrivet akademisk
+- **Professionell but togänglig**: technical precision without to vara överdrivet akademisk
 - **Inkluderande**: Undviker jargong as exkluderar junior Developers
 - **Praktisk orientering**: Fokus at toämpning rather than teoretisk abstraktion
 - **Svenska perspektiv**: Specifika References to svenska regulatoriska krav and branschpraxis
@@ -277,14 +277,14 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 - **H1**: Kapiteltitel
 - **H2**: Huvudsektioner (3-5 per chapters)
 - **H3**: Undersektioner (2-4 per huvudsektion)
-- **H4**: Endast vid behov for specifika punkter
+- **H4**: Endast at behov for specifika punkter
 
 #### 6.5 Kodreferenser in text
 **Format**: `kodstycken` with backticks for inline code
 **Blockcitat**: 
 ```
 Längre kodexempel in egna block
-med syntax highlighting
+with syntax highlighting
 ```
 
 #### 6.6 Terminologikonsistens
@@ -304,7 +304,7 @@ med syntax highlighting
 - **Flesch-Kincaid**: Målnivå svenska gymnasiet/högskola
 - **Meningslängd**: Throughsnitt 15-20 ord per mening
 - **Passiv form**: Maximalt 15% of meningarna
-- **Jargong**: Forklaras vid forsta användning
+- **Jargong**: Forklaras at forsta use
 
 #### 6.8 technical precision
 - **Faktakontroll**: all tekniska påståenden verifieras
@@ -344,7 +344,7 @@ med syntax highlighting
 - Svenska compliance-krav verifieras mot aktuell lagstiftning
 
 ### Pedagogisk progression
-- each chapters builds on previous kunskaper
+- each chapters builds on previous knowledge
 - Svårighetsgraden ökar gradually
 - Återkommande concepts forstärks through repetition
 - Praktiska övningar kopplar to previous teoretiska parts

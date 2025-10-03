@@ -8,7 +8,7 @@ This appendix Contentser all kodExample, konfigurationsfiler and tekniska implem
 
 ## Navigering in appendix
 
-Kodexemplen is organiserade in följande kategorier:
+Kodexemplen is organiserade in following kategorier:
 
 1. **[CI/CD Pipelines and Architecture as Code-automation](#cicd-pipelines)**
 2. **[Infrastructure as Code (Architecture as Code) - Terraform](#terraform-iac)**
@@ -19,7 +19,7 @@ Kodexemplen is organiserade in följande kategorier:
 7. **[Konfigurationsfiler](#configuration)**
 8. **[Shell-skript and verktyg](#shell-scripts)**
 
-each kodExample har a unik identifierare in formatet `[chapters]_CODE_[NUMMER]` for enkel referens from huvudtexten.
+each kodExample has a unik identifierare in formatet `[chapters]_CODE_[NUMMER]` for enkel referens from huvudtexten.
 
 ---
 
@@ -32,9 +32,9 @@ This sektion Contentser all Example at CI/CD-pipelines, GitHub Actions workflows
 
 ```yaml
 # .github/workflows/svenska-architecture as code-pipeline.yml
-# GDPR-compliant CI/CD pipeline för svenska organisationer
+# GDPR-compliant CI/CD pipeline for Swedish organizations
 
-name: Svenska architecture as code Pipeline med GDPR Compliance
+name: Svenska architecture as code Pipeline with GDPR Compliance
 
 on:
   push:
@@ -46,15 +46,15 @@ on:
 
 env:
   TF_VERSION: '1.6.0'
-  ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
+  ORGANIZATION_NAME: ${{ whose.ORGANIZATION_NAME }}
   ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || github.ref_name }}
-  COST_CENTER: ${{ vars.COST_CENTER }}
+  COST_CENTER: ${{ whose.COST_CENTER }}
   GDPR_COMPLIANCE_ENABLED: 'true'
   DATA_RESIDENCY: 'Sweden'
   AUDIT_LOGGING: 'enabled'
 
 jobs:
-  # GDPR och säkerhetskontroller
+  # GDPR and säkerhetskontroller
   gdpr-compliance-check:
     name: GDPR Compliance Validation
     runs-on: ubuntu-latest
@@ -69,7 +69,7 @@ jobs:
       
       - name: GDPR Data Discovery Scan
         run: |
-          echo "🔍 Scanning för personal data patterns..."
+          echo "🔍 Scanning for personal data patterns..."
           
           # Sök efter vanliga personal data patterns in architecture as code-code
           PERSONAL_DATA_PATTERNS=(
@@ -106,7 +106,7 @@ jobs:
 
 ```yaml
 # jenkins/svenska-architecture as code-pipeline.groovy
-// Jenkins pipeline för svenska organisationer med GDPR compliance
+// Jenkins pipeline for Swedish organizations with GDPR compliance
 
 pipeline {
     agent any
@@ -115,17 +115,17 @@ pipeline {
         choice(
             name: 'ENVIRONMENT',
             choices: ['development', 'staging', 'production'],
-            description: 'Target environment för deployment'
+            description: 'Target environment for deployment'
         )
         booleanParam(
             name: 'FORCE_DEPLOYMENT',
             defaultValue: false,
-            description: 'Forcera deployment även vid varningar (endast development)'
+            description: 'Forcera deployment also at varningar (endast development)'
         )
         string(
             name: 'COST_CENTER',
             defaultValue: 'CC-IT-001',
-            description: 'Kostnadscenter för svenska bokföring'
+            description: 'Kostnadscenter for svenska bokföring'
         )
     }
     
@@ -145,7 +145,7 @@ pipeline {
                 stage('GDPR Data Scan') {
                     steps {
                         script {
-                            echo "🔍 Scanning för personal data patterns in architecture as code code..."
+                            echo "🔍 Scanning for personal data patterns in architecture as code code..."
                             
                             def personalDataPatterns = [
                                 'personnummer', 'social.*security', 'credit.*card',
@@ -201,7 +201,7 @@ pipeline {
                 stage('Cost Center Validation') {
                     steps {
                         script {
-                            echo "💰 Validates kostnadscenter för svenska bokföring..."
+                            echo "💰 Validates kostnadscenter for svenska bokföring..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
                                 error("Ogiltigt kostnadscenter format. Använd: CC-XX-nnn")
@@ -228,7 +228,7 @@ pipeline {
                 stage('Terraform Validation') {
                     steps {
                         script {
-                            echo "🔧 Terraform syntax och formatering..."
+                            echo "🔧 Terraform syntax and formatering..."
                             
                             // Format check
                             sh "terraform fmt -check -recursive infrastructure/"
@@ -249,7 +249,7 @@ pipeline {
                 stage('Security Scanning') {
                     steps {
                         script {
-                            echo "🔒 Säkerhetsskanning med Checkov..."
+                            echo "🔒 Säkerhetsskanning with Checkov..."
                             
                             sh """
                                 pip install checkov
@@ -330,7 +330,7 @@ pipeline {
                 script {
                     echo "📊 Beräknar infrastrukturkostnader in svenska kronor..."
                     
-                    // Setup Infracost för svenska valuta
+                    // Setup Infracost for svenska valuta
                     sh """
                         curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
                         export PATH=\$PATH:\$HOME/.local/bin
@@ -363,14 +363,14 @@ pipeline {
                     def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
                     
                     echo "Beräknad månadskostnad: ${monthlyCostSEK} SEK"
-                    echo "Budget för ${params.ENVIRONMENT}: ${maxBudget} SEK"
+                    echo "Budget for ${params.ENVIRONMENT}: ${maxBudget} SEK"
                     
                     if (monthlyCostSEK > maxBudget) {
                         def overBudget = monthlyCostSEK - maxBudget
-                        echo "⚠️ BUDGET ÖVERSKRIDEN med ${overBudget} SEK!"
+                        echo "⚠️ BUDGET ÖVERSKRIDEN with ${overBudget} SEK!"
                         
                         if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
-                            error("Budget överskridning not tillåten för production utan CFO godkännande")
+                            error("Budget överskridning not tillåten for production without CFO godkännande")
                         }
                     }
                     
@@ -385,15 +385,15 @@ pipeline {
                     ## Månadskostnad
                     - **Total:** ${monthlyCostSEK} SEK
                     - **Budget:** ${maxBudget} SEK
-                    - **Status:** ${monthlyCostSEK <= maxBudget ? '✅ Inom budget' : '❌ over budget'}
+                    - **Status:** ${monthlyCostSEK <= maxBudget ? '✅ Within budget' : '❌ over budget'}
                     
                     ## Kostnadsnedbrytning
                     ${readFile('cost-summary.txt')}
                     
                     ## Rekommendationer
-                    - Använd Reserved Instances för production workloads
-                    - Aktivera auto-scaling för development miljöer
-                    - Implementera scheduled shutdown för icke-kritiska systems
+                    - Använd Reserved Instances for production workloads
+                    - Aktivera auto-scaling for development miljöer
+                    - Implementera scheduled shutdown for icke-kritiska systems
                     """
                     
                     writeFile file: 'cost-report-svenska.md', text: costReport
@@ -412,7 +412,7 @@ pipeline {
 
 ```go
 // test/svenska_vpc_test.go
-// Terratest suite för svenska VPC implementation med GDPR compliance
+// Terratest suite for svenska VPC implementation with GDPR compliance
 
 package test
 
@@ -433,7 +433,7 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// SvenskaVPCTestSuite definierar test suite för svenska VPC implementation
+// SvenskaVPCTestSuite definierar test suite for svenska VPC implementation
 type SvenskaVPCTestSuite struct {
     TerraformOptions *terraform.Options
     AWSSession       *session.Session
@@ -442,7 +442,7 @@ type SvenskaVPCTestSuite struct {
     CostCenter       string
 }
 
-// TestSvenskaVPCGDPRCompliance testar GDPR compliance för VPC implementation
+// TestSvenskaVPCGDPRCompliance testar GDPR compliance for VPC implementation
 func TestSvenskaVPCGDPRCompliance(t *testing.T) {
     t.Parallel()
 
@@ -474,7 +474,7 @@ func TestSvenskaVPCGDPRCompliance(t *testing.T) {
     })
 }
 
-// setupSvenskaVPCTest förbereder test environment för svenska VPC testing
+// setupSvenskaVPCTest förbereder test environment for svenska VPC testing
 func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
     // Unik test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
@@ -483,7 +483,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
     // Terraform configuration
     terraformOptions := &terraform.Options{
         TerraformDir: "../infrastructure/modules/vpc",
-        Vars: map[string]interface{}{
+        Whose: map[string]interface{}{
             "organization_name":     organizationName,
             "environment":          environment,
             "cost_center":          "CC-TEST-001",
@@ -505,7 +505,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
         TimeBetweenRetries: 5 * time.Second,
     }
 
-    // AWS session för Stockholm region
+    // AWS session for Stockholm region
     awsSession := session.Must(session.NewSession(&aws.Config{
         Region: aws.String("eu-north-1"),
     }))
@@ -519,7 +519,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
     }
 }
 
-// testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade för GDPR compliance
+// testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade for GDPR compliance
 func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Hämta VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
@@ -549,7 +549,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
         assert.Equal(t, "ALL", *flowLog.TrafficType, "Flow log should capture all traffic for compliance")
     }
 
-    t.Logf("✅ VPC Flow Logs aktiverade för GDPR compliance: %s", vpcID)
+    t.Logf("✅ VPC Flow Logs aktiverade for GDPR compliance: %s", vpcID)
 }
 
 // testEncryptionAtRest validates to all lagring is krypterad according to GDPR-krav
@@ -561,10 +561,10 @@ func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Validate to KMS key is from Sverige region
     assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
 
-    t.Logf("✅ Encryption at rest validerat för GDPR compliance")
+    t.Logf("✅ Encryption at rest validerat for GDPR compliance")
 }
 
-// testDataResidencySweden validates to all infrastruktur is inom svenska gränser
+// testDataResidencySweden validates to all infrastruktur is within svenska gränser
 func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Validate to VPC is in Stockholm region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
@@ -613,7 +613,7 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validates to all resurser har korrekta svenska tags
+// testSvenskaTagging validates to all resurser has korrekta svenska tags
 func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
@@ -643,7 +643,7 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     })
     require.NoError(t, err, "Failed to describe VPC tags")
 
-    // Konvertera tags till map för enklare validation
+    // Konvertera tags to map for enklare validation
     vpcTagMap := make(map[string]string)
     for _, tag := range vpcTags.Tags {
         vpcTagMap[*tag.Key] = *tag.Value
@@ -659,13 +659,13 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
         }
     }
 
-    t.Logf("✅ Svenska tagging validerat för all resurser")
+    t.Logf("✅ Svenska tagging validerat for all resurser")
 }
 
 // cleanupSvenskaVPCTest rensar test environment
 func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
     terraform.Destroy(t, suite.TerraformOptions)
-    t.Logf("✅ Test environment rensat för %s", suite.OrganizationName)
+    t.Logf("✅ Test environment rensat for %s", suite.OrganizationName)
 }
 ```
 
@@ -683,14 +683,14 @@ This sektion Contentser CloudFormation templates for AWS-infrastructure anpassad
 ```yaml
 # cloudformation/svenska-org-vpc.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'VPC setup för svenska organisationer med GDPR compliance'
+Description: 'VPC setup for Swedish organizations with GDPR compliance'
 
 Parameters:
   EnvironmentType:
     Type: String
     Default: development
     AllowedValues: [development, staging, production]
-    Description: 'Miljötyp för deployment'
+    Description: 'Miljötyp for deployment'
   
   DataClassification:
     Type: String
@@ -736,7 +736,7 @@ Resources:
 
 ## Automation Scripts {#automation-scripts}
 
-This sektion Contentser Python-skript and andra automationsverktyg for Infrastructure as Code-hantering.
+This sektion Contentser Python-skript and andra automationsverktyg for Infrastructure as Code-handling.
 
 ### 22_CODE_1: comprehensive testramverk for Infrastructure as Code
 
@@ -766,8 +766,8 @@ class TestCase:
 
 class ComprehensiveIaCTesting:
     """
-    Comprehensive testing framework för Infrastructure as Code
-    Based at svenska architecture as code best practices och international standards
+    Comprehensive testing framework for Infrastructure as Code
+    Based at svenska architecture as code best practices and international standards
     """
     
     def __init__(self, region='eu-north-1'):

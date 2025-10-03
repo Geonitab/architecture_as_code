@@ -66,7 +66,7 @@ This document defines The kompletta grafiska profilen for all Kvadrat-publikatio
 
 ### Tekstegenskaper
 - **Line height**: 1.4-1.6 for optimal läsbarhet
-- **Letter spacing**: -0.025em for stora rubriker
+- **Letter spacing**: -0.025em for large rubriker
 - **Max line length**: 65-75 tecken for optimal läsbarhet
 
 ## Layout and Spacing
@@ -74,7 +74,7 @@ This document defines The kompletta grafiska profilen for all Kvadrat-publikatio
 ### Grid systems
 - **Container width**: Max 1200px for desktop
 - **Padding**: 16px mobil, 24px tablet, 48px desktop
-- **Margins**: 24px mellan sektioner, 48px mellan huvudsektioner
+- **Margins**: 24px between sektioner, 48px between huvudsektioner
 
 ### Spacing scale
 ```css
@@ -129,7 +129,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 - **Format**: 16:9 widescreen (1280x720px)
 - **Master**: Kvadrat-header with logotyp and sidnummer
 - **Background**: Kvadrat gradient or ljus Background
-- **Typografi**: Stora, läsbara fonter
+- **Typografi**: Large, läsbara fonter
 
 ### PDF/Bok
 - **Format**: A4 (210x297mm)
@@ -161,7 +161,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 
 ## Användningsexempel
 
-### Korrekt användning
+### Korrekt use
 ✅ Kvadrat Blå for primära knappar and länkar
 ✅ Konsekvent spacing according to scale
 ✅ Korrekt typografihierarki
@@ -173,7 +173,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ❌ Forvrängd or incorrect logotypanvändning  
 ❌ Inkonsekvent spacing
 ❌ Fel typografihierarki
-❌ Låg kontrast mellan text and Background
+❌ Låg kontrast between text and Background
 
 ## implementation checklist
 
@@ -193,7 +193,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ### Presentations
 - [ ] Master slides skapade
 - [ ] Kvadrat-färger implementerade
-- [ ] Konsekvent layout mellan slides
+- [ ] Konsekvent layout between slides
 - [ ] Läsbara fonts in all storlekar
 
 ### Whitepapers

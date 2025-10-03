@@ -6,7 +6,7 @@
 
 ## Övergripande Description
 
-Kostnadsoptimering utgör a kritisk komponent in Infrastructure as Code-implementeringar, särskilt when organisationer migrerar to molnbaserade lösningar. Utan korrekt kostnadshantering can molnkostnader snabbt eskalera and undergräva the ekonomiska Benefitsna with Architecture as Code.
+Kostnadsoptimering utgör a kritisk komponent in Infrastructure as Code-implementeringar, särskilt when organisationer migrerar to molnbaserade lösningar. Without korrekt kostnadshantering can molnkostnader snabbt eskalera and undergräva the ekonomiska Benefitsna with Architecture as Code.
 
 Moderna molnleverantörer erbjuder pay-as-you-use modor as can vara both fordelaktiga and riskfyllda. Architecture as Code enables exakt kontroll over resursallokering and automatiserad kostnadsoptimering through policy-driven resource management and intelligent skalning.
 
@@ -16,13 +16,13 @@ successful kostnadsoptimering requires kombination of tekniska verktyg, organiza
 
 ## FinOps and cost governance
 
-FinOps representerar a växande disciplin as kombinerar finansiell hantering with molnoperationer to maximera affärsvärdet of molninvesteringar. Within Architecture as Code-kontext means This to integrera kostnadshänsyn direkt in infraStructuredefinitionerna and deployment-processerna.
+FinOps representerar a växande disciplin as kombinerar finansiell handling with molnoperationer to maximera affärsvärdet of molninvesteringar. Within Architecture as Code-kontext means This to integrera kostnadshänsyn direkt in infraStructuredefinitionerna and deployment-processerna.
 
 Governance-ramverk for kostnadshantering must encompass automatiserade policies for resurskonfiguration, budget-alerts and regelbunden kostnadsanalys. Terraform Enterprise, AWS Cost Management and Azure Cost Management erbjuder API:er as can integreras in Architecture as Code-workflows for real-time kostnadskontroll.
 
-Svenska organisationer must också hantera compliance-krav as påverkar kostnadsoptimering, såwhich GDPR-relaterade datalagringskrav as can begränsa möjligheten to använda vissa geografiska regioner with lägre priser. Architecture as Code-baserade compliance-policies can automatisera These begränsningar simultaneously as the optimerar kostnader within toåtna parametrar.
+Svenska organisationer must också handle compliance-krav as påverkar kostnadsoptimering, såwhich GDPR-relaterade datalagringskrav as can begränsa möjligheten to use vissa geografiska regioner with lägre priser. Architecture as Code-baserade compliance-policies can automatisera These begränsningar simultaneously as the optimerar kostnader within toåtna parametrar.
 
-implementation of cost allocation tags and chargeback-modor through Architecture as Code enables transparent kostnadsdistribution mellan olika team, projekt and affärsenheter. This creates incitament for Developers to göra kostnadsmässigt optimala design decisions.
+implementation of cost allocation tags and chargeback-modor through Architecture as Code enables transparent kostnadsdistribution between olika team, projekt and affärsenheter. This creates incitament for Developers to göra kostnadsmässigt optimala design decisions.
 
 ## Automatisk resursskalning and rightsizing
 
@@ -30,7 +30,7 @@ Automatisk resursskalning utgör kärnan in kostnadseffektiv Infrastructure as C
 
 Kubernetes Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) can konfigureras through Architecture as Code to automatically justera resursallokering baserat at CPU-, minnes- and custom metrics. This is särskilt värdefullt for Swedish organizations with tydliga arbetstidsmönster as enables forutsägbar scaling.
 
-Cloud-leverantörer erbjuder rightsizing-Recommendations baserade at historisk användning, men These must integreras in Architecture as Code-workflows to bli actionable. Terraform providers for AWS, Azure and GCP can automatically implementera rightsizing-Recommendations through Architecture as Code-reviewprocesser.
+Cloud-leverantörer erbjuder rightsizing-Recommendations baserade at historisk use, but These must integreras in Architecture as Code-workflows to bli actionable. Terraform providers for AWS, Azure and GCP can automatically implementera rightsizing-Recommendations through Architecture as Code-reviewprocesser.
 
 Machine learning-baserade prediktiva skalningsmodor can inkorporeras in Architecture as Code-definitioner to anticipera resursbelastning and pre-emptivt skala infrastructure. This is särskilt effektivt for foretag with säsongsmässiga variationer or forutsägbara affärszykler.
 
@@ -46,11 +46,11 @@ Anomaly detection for molnkostnader can implementeras through machine learning-a
 
 ## Multi-cloud cost optimization
 
-Multi-cloud strategier kompliserar kostnadsoptimering men erbjuder också möjligheter for cost arbitrage mellan olika leverantörer. Architecture as Code-verktyg that Terraform enables consistent cost management across olika cloud providers through unified configuration and monitoring.
+Multi-cloud strategier kompliserar kostnadsoptimering but erbjuder också possibilities for cost arbitrage between olika leverantörer. Architecture as Code-verktyg that Terraform enables consistent cost management across olika cloud providers through unified configuration and monitoring.
 
-Cross-cloud cost comparison requires normalisering of pricing models and service offerings mellan leverantörer. Open source-verktyg that Cloud Custodian and Kubecost can integreras in Architecture as Code-pipelines to automatisera This analys and rekommendera optimal resource placement.
+Cross-cloud cost comparison requires normalisering of pricing models and service offerings between leverantörer. Open source-verktyg that Cloud Custodian and Kubecost can integreras in Architecture as Code-pipelines to automatisera This analys and rekommendera optimal resource placement.
 
-Data transfer costs mellan cloud providers utgör often a osynlig kostnadskälla as can optimeras through strategisk architecture-design. Architecture as Code-baserad network topologi can minimera inter-cloud traffic simultaneously as The maximerar intra-cloud efficiency.
+Data transfer costs between cloud providers utgör often a osynlig kostnadskälla as can optimeras through strategisk architecture-design. Architecture as Code-baserad network topologi can minimera inter-cloud traffic simultaneously as The maximerar intra-cloud efficiency.
 
 Hybrid cloud-strategier can optimera kostnader by behålla vissa workloads on-premises withan cloud-nativer arbetsbelastningar flyttas to molnet. Architecture as Code enables coordinated management of båda miljöerna with unified cost tracking and optimization.
 
@@ -68,7 +68,7 @@ terraform {
   }
 }
 
-# Cost allocation tags för all infrastruktur
+# Cost allocation tags for all infrastruktur
 locals {
   cost_tags = {
     CostCenter     = var.cost_center
@@ -80,7 +80,7 @@ locals {
   }
 }
 
-# Budget med automatiska alerts
+# Budget with automatiska alerts
 resource "aws_budgets_budget" "project_budget" {
   name         = "${var.project_name}-budget"
   budget_type  = "COST"
@@ -111,12 +111,12 @@ resource "aws_budgets_budget" "project_budget" {
   }
 }
 
-# Cost-optimerad EC2 med Spot instances
+# Cost-optimerad EC2 with Spot instances
 resource "aws_launch_template" "cost_optimized" {
   name_prefix   = "${var.project_name}-cost-opt-"
   image_id      = data.aws_ami.amazon_linux.id
   
-  # Mischade instance types för cost optimization
+  # Mischade instance types for cost optimization
   instance_requirements {
     memory_mib {
       min = 2048
@@ -129,7 +129,7 @@ resource "aws_launch_template" "cost_optimized" {
     instance_generations = ["current"]
   }
 
-  # Spot instance preference för kostnadsoptimering
+  # Spot instance preference for kostnadsoptimering
   instance_market_options {
     market_type = "spot"
     spot_options {
@@ -143,7 +143,7 @@ resource "aws_launch_template" "cost_optimized" {
   }
 }
 
-# Auto Scaling med kostnadshänsyn
+# Auto Scaling with kostnadshänsyn
 resource "aws_autoscaling_group" "cost_aware" {
   name                = "${var.project_name}-cost-aware-asg"
   vpc_zone_identifier = var.private_subnet_ids
@@ -151,7 +151,7 @@ resource "aws_autoscaling_group" "cost_aware" {
   max_size            = var.max_instances
   desired_capacity    = var.desired_instances
 
-  # Blandad instanstyp-strategi för kostnadsoptimering
+  # Blandad instanstyp-strategi for kostnadsoptimering
   mixed_instances_policy {
     instances_distribution {
       on_demand_base_capacity                  = 1
@@ -306,7 +306,7 @@ import pandas as pd
 
 class AWSCostOptimizer:
     """
-    Automatiserad kostnadsoptimering för AWS-resurser
+    Automatiserad kostnadsoptimering for AWS-resurser
     """
     
     def __init__(self, region='eu-north-1'):
@@ -316,7 +316,7 @@ class AWSCostOptimizer:
         self.cloudwatch = boto3.client('cloudwatch', region_name=region)
         
     def analyze_cost_trends(self, days_back=30) -> Dict:
-        """Analysera kostnadstrender för senaste perioden"""
+        """Analysera kostnadstrender for senaste perioden"""
         
         end_date = datetime.now().date()
         start_date = end_date - timedelta(days=days_back)
@@ -411,7 +411,7 @@ class AWSCostOptimizer:
         
         unattached_volumes = []
         for volume in response['Volumes']:
-            # Beräkna månadskostnad baserat at volymstorlek och typ
+            # Beräkna månadskostnad baserat at volymstorlek and typ
             monthly_cost = self._calculate_ebs_monthly_cost(volume)
             
             unattached_volumes.append({
@@ -425,9 +425,9 @@ class AWSCostOptimizer:
         return unattached_volumes
     
     def _calculate_ebs_monthly_cost(self, volume: Dict) -> float:
-        """Beräkna månadskostnad för EBS-volym"""
+        """Beräkna månadskostnad for EBS-volym"""
         
-        # Prisexempel för eu-north-1 (Stockholm)
+        # Prisexempel for eu-north-1 (Stockholm)
         pricing = {
             'gp3': 0.096,  # USD per GB/månad
             'gp2': 0.114,
@@ -437,11 +437,11 @@ class AWSCostOptimizer:
             'sc1': 0.028
         }
         
-        cost_per_gb = pricing.get(volume['VolumeType'], 0.114)  # Default till gp2
+        cost_per_gb = pricing.get(volume['VolumeType'], 0.114)  # Default to gp2
         return volume['Size'] * cost_per_gb
 
 def generate_terraform_cost_optimizations(cost_plan: Dict) -> str:
-    """Generera Terraform-code för to implementera kostnadsoptimeringar"""
+    """Generera Terraform-code to implementera kostnadsoptimeringar"""
     
     terraform_code = """
 # automatically genererade kostnadsoptimeringar
@@ -458,7 +458,7 @@ def generate_terraform_cost_optimizations(cost_plan: Dict) -> str:
     # Generera spot instance configurations
     if cost_plan['recommendations']['spot_instances']:
         terraform_code += """
-# Spot Instance Configuration för kostnadsoptimering
+# Spot Instance Configuration for kostnadsoptimering
 resource "aws_launch_template" "spot_optimized" {
   name_prefix   = "{project}-spot-"
   
@@ -494,7 +494,7 @@ resource "aws_launch_template" "spot_optimized" {
 The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
 Kostnadsoptimering within Infrastructure as Code requires systematisk approach as kombinerar tekniska verktyg, automatiserade processes and organisatorisk withvetenhet. successful implementation resulterar in betydande kostnadsbesparingar simultaneously as prestanda and säkerhet bibehålls.
 
-Viktiga framgångsfaktorer includes proaktiv monitoring, automatiserad rightsizing, intelligent användning of spot instances and reserved capacity, samt kontinuerlig optimering baserad at faktiska användningsmönster. FinOps-praktiker ensures kostnadshänsyn integreras naturligt in utvecklingsprocessen.
+Viktiga framgångsfaktorer includes proaktiv monitoring, automatiserad rightsizing, intelligent use of spot instances and reserved capacity, samt kontinuerlig optimering baserad at faktiska användningsmönster. FinOps-praktiker ensures kostnadshänsyn integreras naturligt in utvecklingsprocessen.
 
 Svenska organisationer as implementerar These strategier can uppnå 20-40% kostnadsreduktion in sina molnoperationer simultaneously as the ensures regulatory compliance and prestanda-krav.
 

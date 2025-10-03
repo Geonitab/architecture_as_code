@@ -2,15 +2,15 @@
 
 ![Framtida trender](images/diagram_19_kapitel18.png)
 
-*Landskapet for Infrastructure as Code (Architecture as Code) utvecklas snabbt with new paradigm as edge computing, quantum-safe kryptografi and AI-driven automation. Diagram shows konvergensen of emerging technologies as formar nästa generation of infraStructurelösningar.*
+*Landskapet for Infrastructure as Code (Architecture as Code) is developed snabbt with new paradigm as edge computing, quantum-safe kryptografi and AI-driven automation. Diagram shows konvergensen of emerging technologies as formar nästa generation of infraStructurelösningar.*
 
 ## Övergripande Description
 
-Architecture as Code står infor comprehensive transformation driven of teknologiska throughbrott within artificiell intelligens, kvantdatorer, edge computing and miljöwithvetenhet. Which vi har sett genAbout the Books utveckling from [Fundamental principles](02_kapitel1.md) to [advanced policy-implementeringar](12_kapitel11.md), utvecklas Architecture as Code kontinuerligt to möta new Challenges and möjligheter.
+Architecture as Code står infor comprehensive transformation driven of teknologiska throughbrott within artificiell intelligens, kvantdatorer, edge computing and miljöwithvetenhet. Which vi has sett genAbout the Books development from [Fundamental principles](02_kapitel1.md) to [advanced policy-implementeringar](12_kapitel11.md), is developed Architecture as Code kontinuerligt to möta new Challenges and possibilities.
 
-Framtiden for Infrastructure as Code kommer to präglas of intelligent automation as can fatta komplexa beslut baserat at historiska data, real-time metrics and prediktiv analys. Machine learning-algoritmer kommer to optimera resurstodelning, forutsäga systemfel and automatically implementera säkerhetsforbättringar utan mänsklig intervention.
+Framtiden for Infrastructure as Code kommer to präglas of intelligent automation as can fatta komplexa beslut baserat at historiska data, real-time metrics and prediktiv analys. Machine learning-algoritmer kommer to optimera resurstodelning, forutsäga systemfel and automatically implementera säkerhetsforbättringar without mänsklig intervention.
 
-Svenska organisationer must forbereda itself for These teknologiska changes by utveckla flexibla arkitekturer and investera in competence development. Which diskuterat in [chapters 10 about organisatorisk change](10_kapitel9.md), requires teknologisk evolution också organizational anpassningar and new arbetssätt.
+Svenska organisationer must forbereda itself for These teknologiska changes by develop flexibla arkitekturer and investera in competence development. Which diskuterat in [chapters 10 about organisatorisk change](10_kapitel9.md), requires teknologisk evolution också organizational anpassningar and new arbetssätt.
 
 Sustainability and miljöwithvetenhet blir all viktigare drivkrafter within infraStructureutveckling. Carbon-aware computing, renewable energy optimization and circular economy principles kommer to integreras in Infrastructure as Code to möta klimatmål and regulatoriska krav within EU and Sverige.
 
@@ -18,7 +18,7 @@ Sustainability and miljöwithvetenhet blir all viktigare drivkrafter within infr
 
 AI and ML-integration in Infrastructure as Code transformerar from reaktiva to prediktiva systems as can anticipera and forebygga problem innan the uppstår. Intelligent automation extends beyond simple rule-based systems to complex decision-making capabilities as can optimize for multiple objectives simultaneously.
 
-Predictive scaling använder historiska data and machine learning models to forutsäga kapacitetsbehov and automatically skala infrastructure innan demand spikes inträffar. This resulterar in forbättrad prestanda and kostnadseffektivitet through elimination of both over-provisioning and under-provisioning scenarios.
+Predictive scaling uses historiska data and machine learning models to forutsäga kapacitetsbehov and automatically skala infrastructure innan demand spikes inträffar. This resulterar in forbättrad prestanda and kostnadseffektivitet through elimination of both over-provisioning and under-provisioning scenarios.
 
 Anomaly detection systems powered of unsupervised learning can identifiera unusual patterns in infrastructure behavior as can indicate security threats, performance degradation or configuration drift. Automated response systems can then implement corrective actions based at predefined policies and learned behaviors.
 
@@ -39,7 +39,7 @@ import json
 
 class AIInfrastructureOptimizer:
     """
-    AI-driven infrastructure optimization för svenska molnmiljöer
+    AI-driven infrastructure optimization for svenska molnmiljöer
     """
     
     def __init__(self, region='eu-north-1'):
@@ -52,20 +52,20 @@ class AIInfrastructureOptimizer:
         self.cost_optimizer = self._initialize_cost_model()
         self.anomaly_detector = self._initialize_anomaly_model()
         
-        # Svenska arbetstider och helger
+        # Svenska arbetstider and helger
         self.swedish_business_hours = (7, 18)  # 07:00 - 18:00 CET
         self.swedish_holidays = self._load_swedish_holidays()
     
     def predict_infrastructure_demand(self, forecast_hours=24) -> dict:
-        """Förutsäg infrastrukturbehov för nästa 24 timmar"""
+        """Förutsäg infrastrukturbehov for nästa 24 timmar"""
         
         # Hämta historisk data
         historical_metrics = self._get_historical_metrics(days=30)
         
-        # Feature engineering för svenska användningsmönster
+        # Feature engineering for svenska användningsmönster
         features = self._engineer_swedish_features(historical_metrics)
         
-        # Förutsäg CPU och minnesanvändning
+        # Förutsäg CPU and minnesanvändning
         cpu_predictions = self.demand_predictor.predict(features)
         memory_predictions = self._predict_memory_usage(features)
         
@@ -88,7 +88,7 @@ class AIInfrastructureOptimizer:
         }
     
     def optimize_costs_intelligently(self) -> dict:
-        """AI-driven kostnadsoptimering med svenska affärslogik"""
+        """AI-driven kostnadsoptimering with svenska affärslogik"""
         
         # Hämta kostnadstrends
         cost_data = self._get_cost_trends(days=90)
@@ -226,7 +226,7 @@ class AIInfrastructureOptimizer:
         return impact_assessment
     
     def _optimize_for_swedish_hours(self) -> list:
-        """Optimera för svenska arbetstider och användningsmönster"""
+        """Optimera for svenska arbetstider and användningsmönster"""
         
         optimizations = []
         
@@ -260,10 +260,10 @@ class AIInfrastructureOptimizer:
             'risk_level': 'low'
         })
         
-        # Lambda scheduling för batch jobs
+        # Lambda scheduling for batch jobs
         optimizations.append({
             'type': 'batch_job_optimization',
-            'description': 'Schemalägg batch jobs under svenska natten för lägre kostnader',
+            'description': 'Schemalägg batch jobs under svenska natten for lägre kostnader',
             'terraform_changes': '''
             resource "aws_cloudwatch_event_rule" "batch_schedule" {
               name                = "swedish_batch_schedule"
@@ -279,7 +279,7 @@ class AIInfrastructureOptimizer:
         return optimizations
     
     def _load_swedish_holidays(self) -> set:
-        """Ladda svenska helger för 2024-2025"""
+        """Ladda svenska helger for 2024-2025"""
         return {
             datetime(2024, 1, 1).date(),   # Nyårsdagen
             datetime(2024, 1, 6).date(),   # Trettondedag jul
@@ -297,7 +297,7 @@ class AIInfrastructureOptimizer:
 
 class QuantumSafeInfrastructure:
     """
-    Post-quantum cryptography integration för framtidssäker infrastruktur
+    Post-quantum cryptography integration for framtidssäker infrastruktur
     """
     
     def __init__(self):
@@ -308,19 +308,19 @@ class QuantumSafeInfrastructure:
         }
     
     def generate_quantum_safe_terraform(self) -> str:
-        """Generera Terraform code för quantum-safe kryptografi"""
+        """Generera Terraform code for quantum-safe kryptografi"""
         
         return '''
         # Quantum-safe infrastructure configuration
         
-        # KMS Key med post-quantum algorithms
+        # KMS Key with post-quantum algorithms
         resource "aws_kms_key" "quantum_safe" {
           description              = "Post-quantum cryptography key"
           customer_master_key_spec = "SYMMETRIC_DEFAULT"
           key_usage               = "ENCRYPT_DECRYPT"
           
           # Planerad post-quantum algorithm support
-          # När AWS har stöd för PQC algorithms
+          # When AWS has stöd for PQC algorithms
           # algorithm_suite = "CRYSTALS_KYBER_1024"
           
           tags = {
@@ -330,7 +330,7 @@ class QuantumSafeInfrastructure:
           }
         }
         
-        # SSL/TLS certificates med hybrid classical/quantum-safe approach
+        # SSL/TLS certificates with hybrid classical/quantum-safe approach
         resource "aws_acm_certificate" "quantum_hybrid" {
           domain_name       = var.domain_name
           validation_method = "DNS"
@@ -345,21 +345,21 @@ class QuantumSafeInfrastructure:
           }
         }
         
-        # Application Load Balancer med quantum-safe TLS policies
+        # Application Load Balancer with quantum-safe TLS policies
         resource "aws_lb" "quantum_safe" {
           name               = "quantum-safe-alb"
           load_balancer_type = "application"
           security_groups    = [aws_security_group.quantum_safe.id]
           subnets           = var.subnet_ids
           
-          # Custom SSL policy för quantum-safe algorithms
-          # Kommer to uppdateras när AWS releases PQC support
+          # Custom SSL policy for quantum-safe algorithms
+          # Kommer to uppdateras when AWS releases PQC support
         }
         
-        # Security Group med restriktiva rules för quantum era
+        # Security Group with restriktiva rules for quantum era
         resource "aws_security_group" "quantum_safe" {
           name_prefix = "quantum-safe-"
-          description = "Security group med quantum-safe networking"
+          description = "Security group with quantum-safe networking"
           vpc_id      = var.vpc_id
           
           # Endast tillåt quantum-safe TLS versions
@@ -368,7 +368,7 @@ class QuantumSafeInfrastructure:
             to_port     = 443
             protocol    = "tcp"
             cidr_blocks = var.allowed_cidrs
-            description = "HTTPS med quantum-safe TLS"
+            description = "HTTPS with quantum-safe TLS"
           }
           
           tags = {
@@ -381,11 +381,11 @@ class QuantumSafeInfrastructure:
 
 ## Edge computing and distribuerad infrastruktur
 
-Edge computing forändrar fundamentalt how Infrastructure as Code designas and implementeras. instead for centraliserade molnresurser distribueras compute resources whenmare användare and data sources to minimera latency and forbättra prestanda.
+Edge computing forändrar fundamentalt how Infrastructure as Code designas and implementeras. instead for centraliserade molnresurser distribueras compute resources whenmare user and data sources to minimera latency and forbättra prestanda.
 
-5G networks and IoT proliferation driver behovet of edge infrastructure as can hantera massive amounts of real-time data processing. Svenska foretag within autonoma fordon, smart manufacturing and telecommunications leder utvecklingen of edge computing applications as requires sophisticated Architecture as Code orchestration.
+5G networks and IoT proliferation driver behovet of edge infrastructure as can handle massive amounts of real-time data processing. Svenska foretag within autonoma fordon, smart manufacturing and telecommunications leder utvecklingen of edge computing applications as requires sophisticated Architecture as Code orchestration.
 
-Multi-cloud and hybrid edge deployments requires new automation patterns as can hantera resource distribution over geografiskt distribuerade locations. GitOps workflows must be adapted for edge environments with intermittent connectivity and limited compute resources.
+Multi-cloud and hybrid edge deployments requires new automation patterns as can handle resource distribution over geografiskt distribuerade locations. GitOps workflows must be adapted for edge environments with intermittent connectivity and limited compute resources.
 
 ### Edge Infrastructure Automation
 
@@ -423,7 +423,7 @@ spec:
         edge-compute: "true"
         location: "stockholm"
       
-      # Resource constraints för edge environments
+      # Resource constraints for edge environments
       containers:
       - name: processor
         image: registry.swedish-company.se/edge-analytics:v2.1.0
@@ -444,7 +444,7 @@ spec:
         - name: GDPR_MODE
           value: "strict"
         
-        # Local storage för edge caching
+        # Local storage for edge caching
         volumeMounts:
         - name: edge-cache
           mountPath: /cache
@@ -456,7 +456,7 @@ spec:
           type: DirectoryOrCreate
 
 ---
-# Edge gateway för data aggregation
+# Edge gateway for data aggregation
 apiVersion: v1
 kind: Service
 metadata:
@@ -493,7 +493,7 @@ import json
 
 class CarbonAwareScheduler:
     """
-    Carbon-aware infrastructure scheduling för svenska organisationer
+    Carbon-aware infrastructure scheduling for Swedish organizations
     """
     
     def __init__(self):
@@ -506,9 +506,9 @@ class CarbonAwareScheduler:
         self.ec2 = boto3.client('ec2')
         
     def get_carbon_intensity(self, region: str) -> dict:
-        """Hämta carbon intensity för AWS region"""
+        """Hämta carbon intensity for AWS region"""
         
-        # Map AWS regions till electricity map zones
+        # Map AWS regions to electricity map zones
         zone_mapping = {
             'eu-north-1': 'SE',  # Sweden
             'eu-west-1': 'IE',   # Ireland  
@@ -537,7 +537,7 @@ class CarbonAwareScheduler:
         except:
             pass
         
-        # Fallback till statiska värden
+        # Fallback to statiska värden
         return {
             'carbon_intensity': 150 if region == 'eu-north-1' else 350,
             'renewable_ratio': self.aws_regions[region]['renewable_ratio'],
@@ -588,7 +588,7 @@ class CarbonAwareScheduler:
         return scheduling_plan
     
     def _generate_carbon_aware_terraform(self, region: str, workload_config: dict) -> str:
-        """Generera Terraform code för carbon-aware deployment"""
+        """Generera Terraform code for carbon-aware deployment"""
         
         return f'''
         # Carbon-aware infrastructure deployment
@@ -602,7 +602,7 @@ class CarbonAwareScheduler:
         }}
         
         provider "aws" {{
-          region = "{region}"  # Vald för låg carbon intensity
+          region = "{region}"  # Vald for låg carbon intensity
           
           default_tags {{
             tags = {{
@@ -614,13 +614,13 @@ class CarbonAwareScheduler:
           }}
         }}
         
-        # EC2 instances med sustainability focus
+        # EC2 instances with sustainability focus
         resource "aws_instance" "carbon_optimized" {{
           count         = {workload_config.get('instance_count', 2)}
           ami           = data.aws_ami.sustainable.id
           instance_type = "{self._select_efficient_instance_type(workload_config)}"
           
-          # Använd spot instances för sustainability
+          # Använd spot instances for sustainability
           instance_market_options {{
             market_type = "spot"
             spot_options {{
@@ -628,9 +628,9 @@ class CarbonAwareScheduler:
             }}
           }}
           
-          # Optimera för energy efficiency
+          # Optimera for energy efficiency
           credit_specification {{
-            cpu_credits = "standard"  # Burstable instances för efficiency
+            cpu_credits = "standard"  # Burstable instances for efficiency
           }}
           
           tags = {{
@@ -658,7 +658,7 @@ class CarbonAwareScheduler:
           }}
         }}
         
-        # CloudWatch för carbon tracking
+        # CloudWatch for carbon tracking
         resource "aws_cloudwatch_dashboard" "sustainability" {{
           dashboard_name = "sustainability-metrics"
           
@@ -682,16 +682,16 @@ class CarbonAwareScheduler:
         '''
     
     def implement_circular_economy_practices(self) -> dict:
-        """Implementera circular economy principles för infrastructure"""
+        """Implementera circular economy principles for infrastructure"""
         
         return {
             'resource_lifecycle_management': {
                 'terraform_configuration': '''
-                # Extended lifecycle för resources
+                # Extended lifecycle for resources
                 resource "aws_instance" "long_lived" {
                   instance_type = "t3.medium"
                   
-                  # Optimize för längre livslängd
+                  # Optimize for längre livslängd
                   hibernation = true
                   
                   lifecycle {
@@ -715,26 +715,26 @@ class CarbonAwareScheduler:
                 ]
             },
             'resource_sharing_optimization': {
-                'implementation': 'Multi-tenant architecture för resource sharing',
+                'implementation': 'Multi-tenant architecture for resource sharing',
                 'estimated_efficiency_gain': '40%'
             },
             'end_of_life_management': {
                 'data_erasure': 'Automated secure data wiping',
-                'hardware_recycling': 'Partner med certified e-waste recyclers',
-                'component_reuse': 'Salvage usable components för repair programs'
+                'hardware_recycling': 'Partner with certified e-waste recyclers',
+                'component_reuse': 'Salvage usable components for repair programs'
             }
         }
 
 class GreenIaCMetrics:
     """
-    Sustainability metrics tracking för Infrastructure as Code
+    Sustainability metrics tracking for Infrastructure as Code
     """
     
     def __init__(self):
         self.carbon_footprint_baseline = 1200  # kg CO2 per month baseline
         
     def calculate_sustainability_score(self, infrastructure_config: dict) -> dict:
-        """Beräkna sustainability score för infrastructure"""
+        """Beräkna sustainability score for infrastructure"""
         
         metrics = {
             'carbon_efficiency': self._calculate_carbon_efficiency(infrastructure_config),
@@ -780,7 +780,7 @@ import uuid
 app = FastAPI(title="Svenska IDP - Internal Developer Platform")
 
 class ApplicationRequest(BaseModel):
-    """Request för ny application provisioning"""
+    """Request for new application provisioning"""
     team_name: str
     application_name: str
     environment: str  # dev, staging, production
@@ -792,7 +792,7 @@ class ApplicationRequest(BaseModel):
     expected_traffic: str = "low"  # low, medium, high
 
 class PlatformService:
-    """Core platform service för self-service infrastructure"""
+    """Core platform service for self-service infrastructure"""
     
     def __init__(self):
         self.k8s_client = k8s.ApiClient()
@@ -812,7 +812,7 @@ class PlatformService:
         terraform_config = self._generate_terraform_config(request, app_id)
         terraform_result = await self._apply_terraform_configuration(terraform_config)
         
-        # Setup monitoring och observability
+        # Setup monitoring and observability
         monitoring_config = self._setup_monitoring(request, app_id)
         
         # Konfigurera CI/CD pipeline
@@ -834,10 +834,10 @@ class PlatformService:
         }
     
     def _generate_terraform_config(self, request: ApplicationRequest, app_id: str) -> str:
-        """Generera Terraform configuration för application stack"""
+        """Generera Terraform configuration for application stack"""
         
         return f'''
-        # Generated Terraform för {app_id}
+        # Generated Terraform for {app_id}
         terraform {{
           required_providers {{
             aws = {{
@@ -877,7 +877,7 @@ class PlatformService:
           tags = local.common_tags
         }}
         
-        # Container registry för application
+        # Container registry for application
         resource "aws_ecr_repository" "app" {{
           name = local.app_id
           
@@ -917,7 +917,7 @@ class PlatformService:
             return '''
             # GDPR-specific resources
             resource "aws_kms_key" "gdpr_encryption" {
-              description = "GDPR encryption key för ${local.app_id}"
+              description = "GDPR encryption key for ${local.app_id}"
               
               tags = merge(local.common_tags, {
                 DataClassification = "personal"
@@ -926,7 +926,7 @@ class PlatformService:
               })
             }
             
-            # CloudTrail för GDPR audit logging
+            # CloudTrail for GDPR audit logging
             resource "aws_cloudtrail" "gdpr_audit" {
               name = "${local.app_id}-gdpr-audit"
               s3_bucket_name = aws_s3_bucket.gdpr_audit_logs.bucket
@@ -970,7 +970,7 @@ class PlatformService:
 
 @app.post("/api/v1/applications")
 async def create_application(request: ApplicationRequest):
-    """API endpoint för application provisioning"""
+    """API endpoint for application provisioning"""
     
     try:
         platform_service = PlatformService()
@@ -981,9 +981,9 @@ async def create_application(request: ApplicationRequest):
 
 @app.get("/api/v1/teams/{team_name}/applications")
 async def list_team_applications(team_name: str):
-    """Lista all applications för A team"""
+    """Lista all applications for A team"""
     
-    # implementation skulle hämta from database
+    # implementation would hämta from database
     return {
         'team': team_name,
         'applications': [
@@ -998,7 +998,7 @@ async def list_team_applications(team_name: str):
 
 @app.get("/api/v1/platform/metrics")
 async def get_platform_metrics():
-    """Platform metrics och health status"""
+    """Platform metrics and health status"""
     
     return {
         'total_applications': 127,
@@ -1012,11 +1012,11 @@ async def get_platform_metrics():
 
 ## Quantum computing påverkan at säkerhet
 
-Quantum computing development hotar current cryptographic standards and requires proactive preparation for post-quantum cryptography transition. Infrastructure as Code must evolve to support quantum-safe algorithms and crypto-agility principles as enables snabb migration mellan cryptographic systems.
+Quantum computing development hotar current cryptographic standards and requires proactive preparation for post-quantum cryptography transition. Infrastructure as Code must evolve to support quantum-safe algorithms and crypto-agility principles as enables snabb migration between cryptographic systems.
 
-NIST post-quantum cryptography standards provides guidance for selecting quantum-resistant algorithms, men implementation in cloud infrastructure requires careful planning and phased migration strategies. Svenska organisationer with critical security requirements must börja planera for quantum-safe transitions nu.
+NIST post-quantum cryptography standards provides guidance for selecting quantum-resistant algorithms, but implementation in cloud infrastructure requires careful planning and phased migration strategies. Svenska organisationer with critical security requirements must börja planera for quantum-safe transitions nu.
 
-Hybrid classical-quantum systems kommer to emerge where quantum computers används for specific optimization problems withan classical systems hanterar general computing workloads. Infrastructure orchestration must support both paradigms seamlessly.
+Hybrid classical-quantum systems kommer to emerge where quantum computers används for specific optimization problems withan classical systems handles general computing workloads. Infrastructure orchestration must support both paradigms seamlessly.
 
 ## Summary
 

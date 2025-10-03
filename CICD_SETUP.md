@@ -1,6 +1,6 @@
 # CI/CD Setup komplett
 
-GitHub Actions konfiguration for automatisk bokbygge har skapats.
+GitHub Actions konfiguration for automatisk bokbygge has skapats.
 
 ## Filer skapade:
 - `.github/workflows/build-book.yml` - GitHub Actions workflow

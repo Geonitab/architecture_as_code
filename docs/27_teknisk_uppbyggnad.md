@@ -1,6 +1,6 @@
 # technical uppbyggnad for bokproduktion
 
-This chapters beskriver The tekniska infraStructureen and arbetsflödet as används to skapa, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk toämpning of Architecture as Code-principerna by använda code to definiera and automatisera entire bokproduktionsprocessen.
+This chapters describes The tekniska infraStructureen and arbetsflödet as används to skapa, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk toämpning of Architecture as Code-principerna by use code to definiera and automatisera entire bokproduktionsprocessen.
 
 ![technical architecture for bokproduktion](images/diagram_27_teknisk_uppbyggnad.png)
 
@@ -18,15 +18,15 @@ Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where
 
 ```
 docs/
-├── 01_inledning.md                    # Introduktion och vision
+├── 01_inledning.md                    # Introduktion and vision
 ├── 02_grundlaggande_principer.md      # Fundamental Concepts
-├── 03_versionhantering.md             # Git och version control
+├── 03_versionhantering.md             # Git and version control
 ├── ...                                # Tekniska chapters (04-22)
 ├── 23_slutsats.md                     # Avslutning
 ├── 24_ordlista.md                     # Terminologi
 ├── 25_om_forfattarna.md               # Författarinformation
 ├── 26_appendix_kodexempel.md          # Tekniska example
-└── 27_teknisk_uppbyggnad.md           # Detta chapters
+└── 27_teknisk_uppbyggnad.md           # This chapters
 ```
 
 ### Markdown-struktur and semantik
@@ -34,26 +34,26 @@ docs/
 each chapters följer a konsistent Structure as optimerar both läsbarhet and maskinell bearbetning:
 
 ```markdown
-# Kapiteltitel (H1 - creates ny sida in PDF)
+# Kapiteltitel (H1 - creates new sida in PDF)
 
-Introduktionstext med kort Description of kapitlets innehåll.
+Introduktionstext with kort Description of kapitlets content.
 
 ![Diagramtitel Description](images/diagram_01_beskrivande_namn.png)
 
-*Bildtext as förklarar diagrammets innehåll.*
+*Bildtext as förklarar diagrammets content.*
 
 ## Huvudsektion (H2)
 ### Undersektion (H3)
 #### Detaljsektion (H4)
 
-- Listpunkter för strukturerat innehåll
+- Listpunkter for strukturerat content
 - Kodexempel in fenced code blocks
-- Referenser och källor
+- Referenser and källor
 ```
 
 ### Automatisk innehållsgenerering
 
-Systemet använder `generate_book.py` to automatically generera and uppdatera kapitelContents:
+Systemet uses `generate_book.py` to automatically generera and uppdatera kapitelContents:
 
 - **Iterativ generering**: creates Contents in kontrollerade batch-processes
 - **Mermaid-integration**: Automatisk generering of diagram-placeholders
@@ -74,11 +74,11 @@ toc-depth: 3
 number-sections: true
 top-level-division: chapter
 
-# Eisvogel-mall för professionell PDF-layout
+# Eisvogel-mall for professionell PDF-layout
 template: eisvogel.latex
 pdf-engine: xelatex
 
-# Metadata och variabler
+# Metadata and variabler
 metadata:
   title: "architecture as code"
   subtitle: "Infrastructure as Code (architecture as code) in praktiken"
@@ -103,7 +103,7 @@ for mmd_file in images/*.mmd; do
          --width 1400 --height 900
 done
 
-# Generera PDF med all chapters
+# Generera PDF with all chapters
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf
 ```
 
@@ -157,7 +157,7 @@ jobs:
    - quality controls and validation
 
 4. **Publicering and distribution**:
-   - Automatisk release-skapande vid main-branch pushes
+   - Automatisk release-skapande at main-branch pushes
    - Artifact-lagring (30 dagar)
    - PDF-distribution via GitHub Releases
 
@@ -210,7 +210,7 @@ Systemet genererar:
 - **Kvadrat-branding**: Konsistent visuell identitet
 - **Contentssoptimering**: Anpassat for muntlig presentation
 
-### Distribution and användning
+### Distribution and use
 
 ```bash
 # Ladda ner artifacts from GitHub Actions
@@ -290,13 +290,13 @@ Entire systemet exemplifierar Architecture as Code through:
 - **Automatiserad validation**: Kontinuerlig kontroll of Contents and format
 - **Build-verification**: ensures all format genereras korrekt
 - **Performance-monitoring**: Spårning of build-tider and resursanvändning
-- **Error-hantering**: Robusta felwithdelanden and återställningsmekanismer
+- **Error-handling**: Robusta felwithdelanden and återställningsmekanismer
 
-### Framtida utveckling
+### Framtida development
 
 Systemet is designat for kontinuerlig forbättring:
 - **Modulär architecture**: Enkelt to uppdatera individual components
-- **API-möjligheter**: Potential for integration with externa systems
+- **API-possibilities**: Potential for integration with externa systems
 - **Skalning**: Stöd for fler format and distributionskanaler
 - **Internationalisering**: Forberedelse for flerspråkig publicering
 
@@ -312,7 +312,7 @@ The tekniska uppbyggnaden for "Architecture as Code" demonstrerar praktisk toäm
 - **scalability**: Enkelt to utöka with nytt Contents and format
 - **Transparens**: Öppen källkod and dokumenterad process
 
-This tekniska systems functions as a konkret illustration of how Architecture as Code-principerna can toämpas även utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
+This tekniska systems functions as a konkret illustration of how Architecture as Code-principerna can toämpas also utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
 
 Sources:
 - GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.

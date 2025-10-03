@@ -8,7 +8,7 @@ Diagram illustrerar the typiska flow from Git repository through branching strat
 
 ## Git-baserad arbetsflöde for infrastruktur
 
-Git utgör standarden for versionhantering of IaC-code and enables distribuerat samarbete mellan team-withlemmar. each change dokumenteras with commit-withdelanden as beskriver what that ändrats and why, which creates a komplett history of infraStructureutvecklingen.
+Git utgör standarden for versionhantering of IaC-code and enables distribuerat samarbete between team-withlemmar. each change dokumenteras with commit-withdelanden as describes what that ändrats and why, which creates a komplett history of infraStructureutvecklingen.
 
 ## Kodorganisation and modulstruktur
 

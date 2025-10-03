@@ -2,7 +2,7 @@
 
 ![Architecture as Code in praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementation of Architecture as Code requires throughtänkt tovägagångssätt as balanserar tekniska möjligheter with organizational begränsningar. Infrastructure as Code utgör a central komponent, men must integreras with bredare arkitekturdefinitioner. This chapters fokuserar at verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate metoder for successful Architecture as Code-adoption in foretagsmiljöer.
+Praktisk implementation of Architecture as Code requires throughtänkt tovägagångssätt as balanserar tekniska possibilities with organizational begränsningar. Infrastructure as Code utgör a central komponent, but must integreras with bredare arkitekturdefinitioner. This chapters fokuserar at verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate metoder for successful Architecture as Code-adoption in foretagsmiljöer.
 
 ![implementation User Journey](images/diagram_13_user_journey.png)
 
@@ -18,7 +18,7 @@ Stakeholder alignment ensures organizational support for Architecture as Code in
 
 ## Tool selection and ecosystem integration
 
-Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform har emerged as leading multi-cloud solution, withan cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager erbjuder deep integration with specific platforms.
+Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform has emerged as leading multi-cloud solution, withan cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager erbjuder deep integration with specific platforms.
 
 Integration with existing toolchains requires careful consideration of workflows, security requirements, and operational procedures. Source control systems, CI/CD platforms, monitoring solutions, and security scanning tools must seamlessly integrate for holistic development experience.
 
@@ -36,9 +36,9 @@ Monitoring and observability for infrastructure-as-code environments requires sp
 
 State management complexity grows significantly as infrastructure scales and involves multiple teams. State file corruption, concurrent modifications, and state drift can cause serious operational problems. Remote state backends, state locking mechanisms, and regular state backups are essential for production environments.
 
-Dependency management mellan infrastructure components requires careful orchestration for avoid circular dependencies and ensure proper creation/destruction order. Modular design patterns and clear interface definitions help manage complexity as systems grow.
+Dependency management between infrastructure components requires careful orchestration for avoid circular dependencies and ensure proper creation/destruction order. Modular design patterns and clear interface definitions help manage complexity as systems grow.
 
-Version compatibility issues mellan tools, providers, and infrastructure definitions can cause unexpected failures. Comprehensive testing, staged rollouts, and dependency pinning strategies help mitigate these risks in production environments.
+Version compatibility issues between tools, providers, and infrastructure definitions can cause unexpected failures. Comprehensive testing, staged rollouts, and dependency pinning strategies help mitigate these risks in production environments.
 
 ## Enterprise integration patterns
 

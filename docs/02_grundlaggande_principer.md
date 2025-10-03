@@ -90,7 +90,7 @@ Requirements as Code (RaC) transformerar traditionell kravspecifikation from tex
 
 **Automatiserad validation**: Krav uttryckta as code can exekveras automatically mot systemet to verifiera compliance. This eliminates manuell testing and ensures konsekvent validation.
 
-**Direkt koppling mellan krav and code**: each systemkomponent can kopplas tobaka to specifika krav, which creates fullständig traceability from affärsbehov to Technical implementation.
+**Direkt koppling between krav and code**: each systemkomponent can kopplas tobaka to specifika krav, which creates fullständig traceability from affärsbehov to Technical implementation.
 
 **Continuous compliance**: Changes in systemet valideras automatically mot all definierade krav, which forhindrar regression and ensures ongoing compliance.
 
@@ -121,7 +121,7 @@ spec:
     
     - id: GDPR-001
       type: compliance  
-      description: "Persondata must lagras inom EU/EES"
+      description: "Persondata must lagras within EU/EES"
       priority: critical
       compliance: ["GDPR"]
       policy: |

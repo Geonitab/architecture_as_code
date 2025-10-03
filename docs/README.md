@@ -37,7 +37,7 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 | 12 | `12_teststrategier.md` | Teststrategier for infrastruktukod | testing of IaC and architecture code |
 | 13 | `13_praktisk_implementation.md` | Architecture as Code in praktiken | Praktiska implementeringsExample |
 
-### Del 5: Drift and hantering (chapters 14-15)
+### Del 5: Drift and handling (chapters 14-15)
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
@@ -56,7 +56,7 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 19 | `19_lovable_mockups.md` | Använd Lovable to skapa mockups for Swedish organizations | AI-driven utveckling and prototyping |
+| 19 | `19_lovable_mockups.md` | Använd Lovable to skapa mockups for Swedish organizations | AI-driven development and prototyping |
 | 20 | `20_framtida_trender.md` | Future Trends in Architecture as Code | Utvecklingstrender and teknologisk framtid |
 | 21 | `21_best_practices.md` | Best Practices and Lessons Learned | Summary of bästa praxis |
 
@@ -73,7 +73,7 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 | 13 | `13_teststrategier.md` | Teststrategier for infrastruktukod | testing of IaC and architecture code |
 | 14 | `14_praktisk_implementation.md` | Architecture as Code in praktiken | Praktiska implementeringsExample |
 
-### Del 5: Drift and hantering (chapters 15-16)
+### Del 5: Drift and handling (chapters 15-16)
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
@@ -92,7 +92,7 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 20 | `20_lovable_mockups.md` | Använd Lovable to skapa mockups for Swedish organizations | AI-driven utveckling and prototyping |
+| 20 | `20_lovable_mockups.md` | Använd Lovable to skapa mockups for Swedish organizations | AI-driven development and prototyping |
 | 21 | `21_framtida_trender.md` | Framtida trender and technologies | Kommande utvecklingar within området |
 | 22 | `22_best_practices.md` | Best Practices and Lessons Learned | Samlade erfarenheter and Recommendations |
 
@@ -110,7 +110,7 @@ Katalogen `images/` Contentser:
 - **Mermaid-filer** (`.mmd`): Källkod for diagram as automatically konverteras to PNG
 - **PNG-filer** (`.png`): Genererade diagrambilder as används in boken
 
-each chapters har associerade diagram as illustrerar viktiga concepts and processes.
+each chapters has associerade diagram as illustrerar viktiga concepts and processes.
 
 ## Byggprocess
 
@@ -130,12 +130,12 @@ cd docs
 
 ### CI/CD
 
-Boken byggs automatically vid ändringar in `docs/` katalogen through GitHub Actions.
+Boken byggs automatically at ändringar in `docs/` katalogen through GitHub Actions.
 
 ## chapters navigation
 
 Kapitlen is numrerade 01-25 and organiserade for to:
-- **Bygga at varandra logiskt**: each chapters forutsätter kunskap from previous chapters
+- **Bygga at varandra logiskt**: each chapters forutsätter knowledge from previous chapters
 - **Gruppera relaterade ämnen**: Liknande ämnen behandlas tosammans
 - **Balansera teori and praktik**: Teoretiska grunder följs of praktiska implementationer
 - **Anpassas for svenska forhållanden**: Specifika hänsyn to svenska regelkrav and organisationskultur

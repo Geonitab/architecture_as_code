@@ -64,7 +64,7 @@ a comprehensive grafisk profil as is anpassad for Kvadrat.se:s visuella identite
 ### Presentationsmallar
 - Format: 16:9 widescreen
 - Masterlayout with logotyp and sidnummer
-- Konsistent användning of färger and typografi
+- Konsistent use of färger and typografi
 - Bullet points with Kvadrat Blå accenter
 
 ### Webbplatslayout

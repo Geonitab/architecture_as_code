@@ -2,19 +2,19 @@
 
 ![Containerization and Orchestration](images/diagram_11_kapitel10.png)
 
-Architecture as Code-metodiken utgör grunden for containerteknologi and orkestrering representerar paradigmskifte in how applikationer driftsätts and skalas. by definiera Architecture as Code for containrar möjliggörs portabel, skalbar and reproducerbar applikationsdriftsättning over olika miljöer and molnleverantörer.
+Architecture as Code-metodiken utgör grunden for containerteknologi and orkestrering representerar paradigmskifte in how applikationer driftsätts and skalas. by definiera Architecture as Code for containrar is enabled portabel, skalbar and reproducerbar applikationsdriftsättning over olika miljöer and molnleverantörer.
 
 ## Container-teknologiens roll within architecture as code
 
-Containers erbjuder application-level virtualization as paketerar applikationer with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions that ensure consistency mellan development, testing and production environments.
+Containers erbjuder application-level virtualization as paketerar applikationer with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions that ensure consistency between development, testing and production environments.
 
-Docker har etablerat itself as the facto standard for containerization, withan podman and andra alternativ erbjuder daemon-less approaches for enhanced security. Container images definieras through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.
+Docker has etablerat itself as the facto standard for containerization, withan podman and andra alternativ erbjuder daemon-less approaches for enhanced security. Container images definieras through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.
 
 Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, withan image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation innan deployment.
 
 ## Kubernetes as orchestration platform
 
-Kubernetes har emergerat as leading container orchestration platform through dess declarative configuration model and extensive ecosystem. YAML-based manifests definierar desired state for applications, services, and infrastructure components, which alignar perfekt with Architecture as Code principles.
+Kubernetes has emergerat as leading container orchestration platform through dess declarative configuration model and extensive ecosystem. YAML-based manifests definierar desired state for applications, services, and infrastructure components, which alignar perfekt with Architecture as Code principles.
 
 Kubernetes objects that Deployments, Services, ConfigMaps, and Secrets enables comprehensive application lifecycle management through code. Pod specifications, resource quotas, network policies, and persistent volume claims can all definieras declaratively and managed through version control systems.
 
@@ -22,7 +22,7 @@ Helm charts extend Kubernetes capabilities through templating and package manage
 
 ## Service mesh and advanced networking
 
-Service mesh architectures that Istio and Linkerd implementeras through Infrastructure as Code to hantera inter-service communication, security policies, and observability. These platforms abstract networking complexity from application developers while providing fine-grained control through configuration files.
+Service mesh architectures that Istio and Linkerd implementeras through Infrastructure as Code to handle inter-service communication, security policies, and observability. These platforms abstract networking complexity from application developers while providing fine-grained control through configuration files.
 
 Traffic management policies definieras as code for load balancing, circuit breaking, retry mechanisms, and canary deployments. Security policies for mutual TLS, access control, and authentication/authorization can be version controlled and automatically applied across service topologies.
 

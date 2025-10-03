@@ -2,7 +2,7 @@
 
 ![Team Structure and Competenciesutveckling](images/diagram_18_team_struktur.png)
 
-successful Infrastructure as Code-implementation requires not endast tekniska tools and processes, utan också throughtänkt organisationsdesign and strategisk competence development. TeamStructureer must utvecklas to stödja new arbetssätt withan witharbetare utvecklar nödvändiga färdigheter for kodbaserad infraStructurehantering.
+successful Infrastructure as Code-implementation requires not endast tekniska tools and processes, without också throughtänkt organisationsdesign and strategisk competence development. TeamStructureer must is developed to stödja new arbetssätt withan witharbetare develops nödvändiga färdigheter for kodbaserad infraStructurehantering.
 
 ## Organizational transformation for Architecture as Code
 
@@ -10,7 +10,7 @@ Traditionella organizational structures with separata utvecklings-, test- and dr
 
 Conway's Law observerar to organizational structure reflekteras in systems design, which betyder to team boundaries direkt påverkar infrastructure architecture. Väldesignade team-Structures resulterar in modulära, maintainable infrastructure solutions, withan poorly organized teams producerar fragmented, complex systems.
 
-Platform teams functions as internal service providers as bygger and underhåller Infrastructure as Code capabilities for application teams. This model balanserar centralized expertise with decentralized autonomy, which enables scaling of Architecture as Code practices across stora organisationer.
+Platform teams functions as internal service providers as bygger and underhåller Infrastructure as Code capabilities for application teams. This model balanserar centralized expertise with decentralized autonomy, which enables scaling of Architecture as Code practices across large organisationer.
 
 ## Kompetenwhichråden for architecture as code-specialister
 

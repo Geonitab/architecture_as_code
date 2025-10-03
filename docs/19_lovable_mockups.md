@@ -4,11 +4,11 @@
 
 ## Inledning to Lovable
 
-Lovable is a AI-driven utvecklingsplattform as revolutionerar how svenska organisationer can skapa interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb utveckling of användargränssnitt as is anpassade for svenska efterlevnadskrav and användarforväntningar.
+Lovable is a AI-driven utvecklingsplattform as revolutionerar how svenska organisationer can skapa interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb development of användargränssnitt as is anpassade for svenska efterlevnadskrav and användarforväntningar.
 
-For Swedish organizations means This a unik möjlighet to:
+For Swedish organizations means This a unik possibility to:
 - Accelerera prototyputveckling with fokus at svenska språket and kulturella kontext
-- Säkerställa compliance from början of designprocessen
+- Ensure compliance from början of designprocessen
 - Integrera with svenska e-legitimationstjänster redan in mockup-fasen
 - Skapa användargränssnitt as följer svenska togänglighetsstandarder
 
@@ -18,7 +18,7 @@ For Swedish organizations means This a unik möjlighet to:
 
 **1. Miljöforberedelse**
 ```bash
-# Skapa utvecklingsmiljö för svenska organisationer
+# Skapa utvecklingsmiljö for Swedish organizations
 mkdir svenska-mockups
 cd svenska-mockups
 npm init -y
@@ -51,7 +51,7 @@ module.exports = {
 # svenska-userflows.yml
 userflows:
   e_government:
-    name: "E-tjänst för myndighet"
+    name: "E-tjänst for myndighet"
     steps:
       - identification: "BankID/Freja eID"
       - form_filling: "Digitalt formulär"
@@ -69,16 +69,16 @@ userflows:
 
 **4. Lovable prompt for svensk e-forvaltning**
 ```typescript
-// example at Lovable-prompt för svensk myndighetsportal
+// example at Lovable-prompt for svensk myndighetsportal
 const sweGovPortalPrompt = `
-Skapa a responsiv webbportal för svensk e-förvaltning med:
-- Inloggning via BankID och Freja eID
+Skapa a responsiv webbportal for svensk e-förvaltning with:
+- Inloggning via BankID and Freja eID
 - Flerspråkigt stöd (svenska, engelska, arabiska, finska)
 - WCAG 2.1 AA-kompatibel design
 - Tillgänglighetsfunktioner according to svensk lag
-- Säker dokumenthantering med e-signatur
+- Säker dokumenthantering with e-signatur
 - Integrated ärendehantering
-- Mobiloptimerad för svenska enheter
+- Mobiloptimerad for svenska enheter
 `;
 ```
 
@@ -154,9 +154,9 @@ class SwedishAccessibilityManager {
   }
   
   setupScreenReaderSupport() {
-    // Skärmläsarstöd för svenska
+    // Skärmläsarstöd for svenska
     const ariaLabels = {
-      'logga-in': 'Logga in med BankID eller Freja eID',
+      'logga-in': 'Logga in with BankID or Freja eID',
       'kontakt': 'Kontakta myndigheten',
       'tillganglighet': 'Tillgänglighetsalternativ'
     };
@@ -243,7 +243,7 @@ export class GDPRComplianceManager {
       categories: {
         necessary: {
           name: 'Nödvändiga cookies',
-          description: 'Krävs för webbplatsens grundfunktioner',
+          description: 'Krävs for webbplatsens grundfunktioner',
           required: true
         },
         analytics: {
@@ -253,7 +253,7 @@ export class GDPRComplianceManager {
         },
         marketing: {
           name: 'Marknadsföringskakor',
-          description: 'För personaliserad marknadsföring',
+          description: 'For personaliserad marknadsföring',
           required: false
         }
       }
@@ -263,7 +263,7 @@ export class GDPRComplianceManager {
   }
   
   async handleDataSubjectRights(): Promise<void> {
-    // Implementera rätt till radering, portabilitet etc.
+    // Implementera rätt to radering, portabilitet etc.
     const dataRights = [
       'access', 'rectification', 'erasure', 
       'portability', 'restriction', 'objection'
@@ -288,7 +288,7 @@ class WCAGCompliance {
   }
   
   implementColorContrast() {
-    // Säkerställ minst 4.5:1 kontrast för normal text
+    // Säkerställ minst 4.5:1 kontrast for normal text
     const colors = {
       primary: '#003366',      // Mörk blå
       secondary: '#0066CC',    // Ljusare blå  
@@ -323,7 +323,7 @@ export class SwedishELegitimationService {
     return {
       endpoint: 'https://appapi2.test.bankid.com/rp/v5.1/',
       certificates: 'svenska-ca-certs',
-      environment: 'production', // eller 'test'
+      environment: 'production', // or 'test'
       autoStartToken: true,
       qrCodeGeneration: true
     };
@@ -340,7 +340,7 @@ export class SwedishELegitimationService {
   }
   
   async handleELegitimation(): Promise<ELegitimationConfig> {
-    // Integration med e-legitimationsnämndens tjänster
+    // Integration with e-legitimationsnämndens tjänster
     return {
       samlEndpoint: 'https://eid.elegnamnden.se/saml',
       assuranceLevel: 'substantial',
@@ -386,13 +386,13 @@ jobs:
           npm run check:data-protection
 ```
 
-### Performance optimization for svenska användare
+### Performance optimization for svenska user
 
 ```typescript
 // performance-optimization.ts
 export class SwedishPerformanceOptimizer {
   async optimizeForSwedishNetworks(): Promise<void> {
-    // Optimera för svenska nätverksförhållanden
+    // Optimera for svenska nätverksförhållanden
     const optimizations = {
       cdn: 'stockholm-region',
       imageCompression: 'webp',
@@ -405,7 +405,7 @@ export class SwedishPerformanceOptimizer {
   }
   
   async implementProgressiveLoading(): Promise<void> {
-    // Progressiv laddning för långsamma anslutningar
+    // Progressiv laddning for långsamma anslutningar
     const criticalPath = [
       'authentication-components',
       'gdpr-consent-banner', 
@@ -425,8 +425,8 @@ The moderna Architecture as Code-metodiken representerar framtiden for infraStru
 Lovable erbjuder svenska organisationer a kraftfull plattform to skapa compliance-withvetna mockups and prototyper. by integrera svenska e-legitimationstjänster, implementera WCAG 2.1 AA-standarder and följa GDPR-riktlinjer from början, can organisationer:
 
 1. **Accelerera utvecklingsprocessen** with AI-driven kodgenerering
-2. **Säkerställa compliance** redan in mockup-fasen
-3. **Forbättra togänglighet** for all svenska användare
+2. **Ensure compliance** redan in mockup-fasen
+3. **Forbättra togänglighet** for all svenska user
 4. **Integrera svenska tjänster** that BankID and Freja eID
 
 ### Rekommenderade nästa step:
@@ -437,9 +437,9 @@ Lovable erbjuder svenska organisationer a kraftfull plattform to skapa complianc
 4. **Kontinuerlig forbättring**: Etablera feedback-loopar for användbarhet and compliance
 
 **Viktiga resurser:**
-- [Digg - Vägledning för webbtillgänglighet](https://www.digg.se/webbtillganglighet)
+- [Digg - Vägledning for webbtillgänglighet](https://www.digg.se/webbtillganglighet)
 - [Datainspektionen - GDPR-vägledning](https://www.datainspektionen.se/)
 - [E-legitimationsnämnden](https://www.elegnamnden.se/)
 - [WCAG 2.1 AA Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 
-by följa This guide can svenska organisationer effektivt använda Lovable to skapa mockups as not only is funktionella and användarvänliga, utan också uppfyller all relevanta svenska and europeiska compliance-krav.
+by följa This guide can svenska organisationer effektivt use Lovable to skapa mockups as not only is funktionella and användarvänliga, without också uppfyller all relevanta svenska and europeiska compliance-krav.

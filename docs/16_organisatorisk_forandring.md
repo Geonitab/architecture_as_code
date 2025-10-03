@@ -8,7 +8,7 @@ Architecture as Code-metodiken utgör grunden for ## organizational forändrings
 
 ![Förändringsdimensioner and samband](images/mindmap_17_organisation.png)
 
-*Mindmappen visualiserar the mångsidiga aspekterna of organisatorisk change vid Architecture as Code-Architecture as Code-implementation. The shows how DevOps-kulturtransformation, cross-funktionella teamStructureer, competence development, rollforändring and change management is sammankopplade and must is managed holistiskt for successful transformation.*
+*Mindmappen visualiserar the mångsidiga aspekterna of organisatorisk change at Architecture as Code-Architecture as Code-implementation. The shows how DevOps-kulturtransformation, cross-funktionella teamStructureer, competence development, rollforändring and change management is sammankopplade and must is managed holistiskt for successful transformation.*
 
 ## Övergripande Description
 
@@ -16,17 +16,17 @@ implementation of Infrastructure as Code requires djupgående organizational cha
 
 Svenska organisationer står infor unika Challenges when the gäller organisatorisk change through starka fackliga traditioner, konsensusbaserade beslutsprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier as respekterar These kulturella aspekter simultaneously as the främjar agile and collaborative arbetssätt.
 
-Conway's Law beskriver how organisationers kommunikationsStructureer speglas in system architecture the producerar. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Infrastructure as Code enables.
+Conway's Law describes how organisationers kommunikationsStructureer speglas in system architecture the producerar. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Infrastructure as Code enables.
 
-Modern DevOps-transformation within svenska foretag that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer har utvecklat unika approaches to team autonomy, cross-functional collaboration and continuous improvement as can adapt to olika svenska organisationskulturer.
+Modern DevOps-transformation within svenska foretag that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer has utvecklat unika approaches to team autonomy, cross-functional collaboration and continuous improvement as can adapt to olika svenska organisationskulturer.
 
 ## DevOps-kulturtransformation
 
-DevOps representerar fundamental kulturforändering from "us vs them" mentalitet mellan development and operations to shared ownership of product lifecycle. This transformation requires investment in both tekniska tools and kulturella forändringsinitiativ as promote collaboration, transparency and continuous learning.
+DevOps representerar fundamental kulturforändering from "us vs them" mentalitet between development and operations to shared ownership of product lifecycle. This transformation requires investment in both tekniska tools and kulturella forändringsinitiativ as promote collaboration, transparency and continuous learning.
 
-Psychological safety utgör foundationen for effective DevOps teams by möjliggöra open communication about mistakes, experimentation and continuous improvement. Svenska workplace culture with emphasis at consensus and equality provides natural foundation for building psychologically safe environments as support DevOps practices.
+Psychological safety utgör foundationen for effective DevOps teams by enable open communication about mistakes, experimentation and continuous improvement. Svenska workplace culture with emphasis at consensus and equality provides natural foundation for building psychologically safe environments as support DevOps practices.
 
-Blameless post-mortems and failure celebration is essentiella components in DevOps culture as encourage innovation and risk-taking. Svenska organisationer with strong safety cultures can leverage These principles to create environments where teams can experiment with new technologies and approaches utan fear of retribution for honest mistakes.
+Blameless post-mortems and failure celebration is essentiella components in DevOps culture as encourage innovation and risk-taking. Svenska organisationer with strong safety cultures can leverage These principles to create environments where teams can experiment with new technologies and approaches without fear of retribution for honest mistakes.
 
 Continuous learning and skill development program must support team members in developing cross-functional capabilities as bridge traditional development and operations boundaries. Investment in comprehensive training program for Architecture as Code tools, cloud platforms and automation practices ensures teams can effectively support modern infrastructure management.
 
@@ -34,7 +34,7 @@ Continuous learning and skill development program must support team members in d
 
 Cross-functional teams for Architecture as Code Architecture as Code-implementation must include diverse skills covering software development, systems administration, security engineering and product management. Effective team composition balances technical expertise with domain knowledge and ensures comprehensive coverage of infrastructure lifecycle management.
 
-Team size optimization följer "two-pizza rule" principles where teams is små nog for effective communication men large nog for comprehensive skill coverage. Research suggests optimal Architecture as Code team sizes mellan 6-8 personer with representation from development, operations, security and product functions.
+Team size optimization följer "two-pizza rule" principles where teams is small nog for effective communication but large nog for comprehensive skill coverage. Research suggests optimal Architecture as Code team sizes between 6-8 personer with representation from development, operations, security and product functions.
 
 Role definition within cross-functional teams must support both specialized expertise and collaborative responsibilities. Infrastructure engineers, cloud architects, security specialists and product owners each contribute unique perspectives as require coordination through well-defined interfaces and shared responsibilities.
 
@@ -46,7 +46,7 @@ Comprehensive training program for Architecture as Code adoption must cover tech
 
 Technical skill development tracks ska include Infrastructure as Code tools (Terraform, CloudFormation, Pulumi), cloud platforms (AWS, Azure, GCP), containerization technologies (Docker, Kubernetes), samt automation and monitoring tools. Progressive skill development from basic concepts to advanced implementation ensures systematic capability building.
 
-Process training for DevOps workflows, git-based collaboration, code review practices and incident response procedures ensures teams can effectively coordinate complex infrastructure management activities. Integration of these processes with existing organizational workflows minimizes disruption simultaneously as new capabilities utvecklas.
+Process training for DevOps workflows, git-based collaboration, code review practices and incident response procedures ensures teams can effectively coordinate complex infrastructure management activities. Integration of these processes with existing organizational workflows minimizes disruption simultaneously as new capabilities is developed.
 
 Cultural transformation workshops focusing on DevOps principles, blameless culture, continuous improvement and cross-functional collaboration helps teams adapt to new working methods. Svenska organizations can leverage existing collaboration traditions to accelerate adoption of these new cultural patterns.
 
@@ -83,10 +83,10 @@ team_structure:
   roles:
     - role: "Team Lead / Product Owner"
       responsibilities:
-        - "Strategic direction och product roadmap"
+        - "Strategic direction and product roadmap"
         - "Stakeholder communication"
-        - "Resource allocation och prioritization"
-        - "Team development och performance management"
+        - "Resource allocation and prioritization"
+        - "Team development and performance management"
       skills_required:
         - "Product management"
         - "Technical leadership"
@@ -111,7 +111,7 @@ team_structure:
       responsibilities:
         - "Security policy as code"
         - "Compliance automation"
-        - "Threat modeling för cloud infrastructure"
+        - "Threat modeling for cloud infrastructure"
         - "Security scanning integration"
       skills_required:
         - "Cloud security architecture as code best practices"
@@ -123,7 +123,7 @@ team_structure:
       count: 2
       responsibilities:
         - "CI/CD pipeline development"
-        - "Monitoring och observability"
+        - "Monitoring and observability"
         - "Self-service tool development"
         - "Developer experience improvement"
       skills_required:
@@ -148,10 +148,10 @@ team_structure:
     daily_standup: "09:00 CET daily"
     sprint_length: "2 weeks"
     retrospective: "End of each sprint"
-    on_call_rotation: "1 week rotation, shared mellan SRE och Infrastructure Engineers"
+    on_call_rotation: "1 week rotation, shared between SRE and Infrastructure Engineers"
     
   success_metrics:
-    infrastructure_deployment_time: "< 15 minutes from commit till production"
+    infrastructure_deployment_time: "< 15 minutes from commit to production"
     incident_resolution_time: "< 30 minutes for P1 incidents"
     developer_satisfaction: "> 4.5/5 in quarterly surveys"
     infrastructure_cost_efficiency: "10% yearly improvement"
@@ -159,16 +159,16 @@ team_structure:
 
   communication_patterns:
     internal_team:
-      - "Daily standups för coordination"
+      - "Daily standups for coordination"
       - "Weekly technical deep-dives"
       - "Monthly team retrospectives"
       - "Quarterly goal setting sessions"
       
     external_stakeholders:
-      - "Bi-weekly demos för product teams"
+      - "Bi-weekly demos for product teams"
       - "Monthly steering committee updates"
       - "Quarterly business review presentations"
-      - "Ad-hoc consultation för complex integrations"
+      - "Ad-hoc consultation for complex integrations"
 
   decision_making:
     technical_decisions: "Consensus among technical team members"
@@ -179,7 +179,7 @@ team_structure:
   continuous_improvement:
     learning_budget: "40 hours per person per quarter"
     conference_attendance: "2 team members per year at major conferences"
-    experimentation_time: "20% time för innovation projects"
+    experimentation_time: "20% time for innovation projects"
     knowledge_sharing: "Monthly internal tech talks"
 ```
 
@@ -192,7 +192,7 @@ import json
 
 class IaCCompetencyFramework:
     """
-    Comprehensive competency framework för Infrastructure as Code skills
+    Comprehensive competency framework for Infrastructure as Code skills
     """
     
     def __init__(self):
@@ -216,7 +216,7 @@ class IaCCompetencyFramework:
                 ]
             },
             "advanced": {
-                "description": "Can design och lead complex implementations",
+                "description": "Can design and lead complex implementations",
                 "hours_required": 200,
                 "assessment_criteria": [
                     "Can architect multi-environment solutions",
@@ -261,7 +261,7 @@ class IaCCompetencyFramework:
     
     def create_learning_path(self, current_level: str, target_level: str, 
                            focus_domains: List[str]) -> Dict:
-        """Skapa personalized learning path för individual"""
+        """Skapa personalized learning path for individual"""
         
         current_hours = self.competency_levels[current_level]["hours_required"]
         target_hours = self.competency_levels[target_level]["hours_required"]
@@ -287,7 +287,7 @@ class IaCCompetencyFramework:
     
     def _generate_domain_modules(self, domain: str, current_level: str, 
                                 target_level: str) -> List[Dict]:
-        """Generera learning modules för specific domain"""
+        """Generera learning modules for specific domain"""
         
         modules = []
         domain_skills = self.skill_domains[domain]
@@ -295,7 +295,7 @@ class IaCCompetencyFramework:
         # Terraform Fundamentals Module
         if domain == "infrastructure_as_code":
             modules.append({
-                "name": "Terraform Fundamentals för Svenska Organisationer",
+                "name": "Terraform Fundamentals for Swedish organizations",
                 "duration_hours": 16,
                 "type": "hands_on_workshop",
                 "prerequisites": ["Basic Linux", "Cloud basics"],
@@ -303,24 +303,24 @@ class IaCCompetencyFramework:
                     "Skapa basic Terraform configurations",
                     "Förstå state management",
                     "Implementera svenska compliance patterns",
-                    "Integrara med svensk cloud infrastructure"
+                    "Integrara with svensk cloud infrastructure"
                 ],
                 "practical_exercises": [
                     "Deploy Swedish GDPR-compliant S3 bucket",
-                    "Create VPC med svenska säkerhetskrav", 
-                    "Implementera IAM policies för svenska organisationer",
+                    "Create VPC with svenska säkerhetskrav", 
+                    "Implementera IAM policies for Swedish organizations",
                     "Set up monitoring according to MSB-riktlinjer"
                 ],
                 "assessment": {
                     "type": "practical_project",
-                    "description": "Deploy complete web application infrastructure med svenska compliance"
+                    "description": "Deploy complete web application infrastructure with svenska compliance"
                 }
             })
             
         # Cloud Security Module
         if domain == "security_compliance":
             modules.append({
-                "name": "Cloud Security för Svenska Regelverk",
+                "name": "Cloud Security for Svenska Regelverk",
                 "duration_hours": 12,
                 "type": "blended_learning",
                 "prerequisites": ["Cloud fundamentals", "Basic security concepts"],
@@ -346,7 +346,7 @@ class IaCCompetencyFramework:
     
     def track_progress(self, individual_id: str, completed_module: str, 
                       assessment_score: float) -> Dict:
-        """Track learning progress för individual"""
+        """Track learning progress for individual"""
         
         progress_record = {
             "individual_id": individual_id,
@@ -360,7 +360,7 @@ class IaCCompetencyFramework:
         return progress_record
     
     def generate_team_competency_matrix(self, team_members: List[Dict]) -> Dict:
-        """Generera team competency matrix för skills gap analysis"""
+        """Generera team competency matrix for skills gap analysis"""
         
         competency_matrix = {
             "team_id": f"team_{datetime.now().strftime('%Y%m%d')}",
@@ -394,7 +394,7 @@ class IaCCompetencyFramework:
         return competency_matrix
 
 def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
-    """Skapa comprehensive organizational change plan för architecture as code adoption"""
+    """Skapa comprehensive organizational change plan for architecture as code adoption"""
     
     change_plan = {
         "organization": organization_assessment["name"],
@@ -413,7 +413,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 ],
                 "activities": [
                     "DevOps culture workshops",
-                    "Tool selection och setup",
+                    "Tool selection and setup",
                     "Team restructuring",
                     "Initial training program",
                     "Pilot project implementation"
@@ -431,7 +431,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 "objectives": [
                     "Scale architecture as code practices across organization",
                     "Implement advanced automation",
-                    "Establish monitoring och observability",
+                    "Establish monitoring and observability",
                     "Mature incident response processes"
                 ],
                 "activities": [
@@ -449,13 +449,13 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
                 ]
             },
             {
-                "name": "Optimization och Innovation",
+                "name": "Optimization and Innovation",
                 "duration_months": 4,
                 "objectives": [
                     "Optimize existing processes",
                     "Implement advanced practices",
                     "Foster continuous innovation",
-                    "Measure och improve business outcomes"
+                    "Measure and improve business outcomes"
                 ],
                 "activities": [
                     "Process optimization based on metrics",
@@ -496,7 +496,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
             "Gradual rollout to minimize disruption",
             "Comprehensive training to address skill gaps",
             "Clear communication to manage expectations",
-            "Strong support structure för teams"
+            "Strong support structure for teams"
         ]
     }
     
@@ -507,7 +507,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
 ```yaml
 # metrics/devops_performance_metrics.yaml
 performance_measurement_framework:
-  name: "DevOps Team Performance Metrics för Svenska Organisationer"
+  name: "DevOps Team Performance Metrics for Swedish organizations"
   
   technical_metrics:
     deployment_frequency:
@@ -521,14 +521,14 @@ performance_measurement_framework:
       collection_method: "Automated from CI/CD pipeline"
       
     lead_time_for_changes:
-      description: "Time from code commit till production deployment"
+      description: "Time from code commit to production deployment"
       measurement: "Hours/days"
       target_values:
         elite: "< 1 hour"
         high: "1 day - 1 week"
         medium: "1 week - 1 month"
         low: "> 1 month"
-      collection_method: "Git och deployment tool integration"
+      collection_method: "Git and deployment tool integration"
       
     mean_time_to_recovery:
       description: "Time to recover from production incidents"
@@ -548,7 +548,7 @@ performance_measurement_framework:
         high: "16-30%"
         medium: "31-45%"
         low: "> 45%"
-      collection_method: "Incident correlation med deployments"
+      collection_method: "Incident correlation with deployments"
 
   business_metrics:
     infrastructure_cost_efficiency:
@@ -561,7 +561,7 @@ performance_measurement_framework:
       description: "Developer self-service capability"
       measurement: "Hours spent on infrastructure tasks per sprint"
       target: "< 20% of development time"
-      collection_method: "Time tracking och developer surveys"
+      collection_method: "Time tracking and developer surveys"
       
     compliance_adherence:
       description: "Adherence to svenska regulatory requirements"
@@ -577,13 +577,13 @@ performance_measurement_framework:
 
   cultural_metrics:
     psychological_safety:
-      description: "Team member comfort with taking risks och admitting mistakes"
+      description: "Team member comfort with taking risks and admitting mistakes"
       measurement: "Survey score (1-5)"
       target: "> 4.0"
       collection_method: "Quarterly team health surveys"
       
     learning_culture:
-      description: "Investment in learning och experimentation"
+      description: "Investment in learning and experimentation"
       measurement: "Hours per person per quarter"
       target: "> 40 hours"
       collection_method: "Learning management systems"
@@ -602,16 +602,16 @@ performance_measurement_framework:
 
   collection_automation:
     data_sources:
-      - "GitLab/GitHub API för code metrics"
-      - "Jenkins/GitLab CI för deployment metrics"
-      - "PagerDuty/OpsGenie för incident metrics"
-      - "AWS/Azure billing API för cost metrics"
-      - "Survey tools för cultural metrics"
+      - "GitLab/GitHub API for code metrics"
+      - "Jenkins/GitLab CI for deployment metrics"
+      - "PagerDuty/OpsGenie for incident metrics"
+      - "AWS/Azure billing API for cost metrics"
+      - "Survey tools for cultural metrics"
       
     dashboard_tools:
-      - "Grafana för technical metrics visualization"
-      - "Tableau för business metrics analysis"
-      - "Internal dashboard för team metrics"
+      - "Grafana for technical metrics visualization"
+      - "Tableau for business metrics analysis"
+      - "Internal dashboard for team metrics"
       
     reporting_schedule:
       daily: ["Deployment frequency", "Incident count"]
@@ -623,7 +623,7 @@ performance_measurement_framework:
     metric_review:
       frequency: "Monthly team retrospectives"
       participants: ["Team members", "Product owner", "Engineering manager"]
-      outcome: "Improvement actions with owners och timelines"
+      outcome: "Improvement actions with owners and timelines"
       
     benchmarking:
       internal: "Compare teams within organization"
@@ -641,7 +641,7 @@ performance_measurement_framework:
 
 
 The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Organisatorisk change utgör The mest kritiska komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, men cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
+Organisatorisk change utgör The mest kritiska komponenten for successful Infrastructure as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.
 
 Svenska organisationer as investerar in comprehensive change management, cross-functional team development and continuous learning culture positionerar itself for long-term success with Architecture as Code practices. Investment in people development and organizational design delivers compounding returns through improved collaboration, faster innovation cycles and enhanced operational efficiency.
 
