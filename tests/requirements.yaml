@@ -2,7 +2,7 @@
 # Content requirements specification for "Arkitektur som Kod" book
 book:
   title: "Arkitektur som kod"
-  language: "svenska"
+  language: "english"  # Content is now in English after migration
   total_chapters: 27
   
   # Required chapter structure
@@ -180,7 +180,7 @@ quality:
   consistency:
     header_hierarchy: ["h1", "h2", "h3", "h4"]
     consistent_terminology: true
-    swedish_language: true
+    swedish_language: false  # Content is now in English
     
   technical_accuracy:
     validate_code_blocks: true

@@ -36,48 +36,44 @@ This directory contains a comprehensive test suite for validating the "Architect
 
 ## 📋 Requirements Configuration
 
-The test suite uses `requirements.yaml` for Swedish content and `requirements_en.yaml` for English content to define:
+The test suite uses `requirements.yaml` to define:
 - Expected book structure (27 chapters)
 - Content quality standards
 - Technical validation rules
 - Special chapter exceptions (glossary, authors, etc.)
+- Language setting (English after migration)
+
+**Note:** After the English migration, all content is now in English but retains the original Swedish filenames (e.g., `01_inledning.md`). The `requirements_en.yaml` file has been updated to reflect this but is no longer actively used by the test suite.
 
 ## 🌍 Language Support
 
-The test suite supports testing both Swedish and English content:
+The repository has completed migration to English:
 
-### Testing Swedish Content (Default)
+### Current State (Post-Migration)
+- All chapter files contain **English content**
+- Files retain their **original Swedish filenames** (e.g., `01_inledning.md`, `02_grundlaggande_principer.md`)
+- Tests default to **English language validation**
+- The `requirements.yaml` file has been updated with `language: "english"`
+
+### Running Tests
 ```bash
-# Run all tests on Swedish content (default behavior)
+# Run all tests (validates English content in Swedish-named files)
 python3 -m pytest tests/ -v
 
-# Explicitly specify Swedish
-python3 -m pytest tests/ -v --language=svenska
-```
-
-### Testing English Content
-```bash
-# Run all tests on English content
+# Tests default to English, but you can explicitly specify
 python3 -m pytest tests/ -v --language=english
-
-# Run specific test categories on English content
-python3 -m pytest tests/test_consistency.py -v --language=english
-python3 -m pytest tests/test_completeness.py -v --language=english
 ```
 
-### Language-Specific Behavior
+### Historical Context
 
-- **Swedish tests** (`--language=svenska`):
-  - Use `requirements.yaml` configuration
-  - Test files without `_en.md` suffix
-  - Check for English words in Swedish content
-  
-- **English tests** (`--language=english`):
-  - Use `requirements_en.yaml` configuration
-  - Test files with `_en.md` suffix
-  - Check for Swedish words in English content
+Previously, the repository supported dual-language content with:
+- Swedish files (e.g., `01_inledning.md`) containing Swedish content
+- English files (e.g., `01_inledning_en.md`) containing English translations
 
-Both language configurations support the same test categories: completeness, consistency, clarity, and technical accuracy.
+The migration is now complete:
+- All `_en.md` files have been removed
+- Original files now contain English content
+- Tests validate English language consistency
 
 ## 🚀 Running Tests
 

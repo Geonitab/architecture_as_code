@@ -38,12 +38,10 @@ def language(request):
 @pytest.fixture(scope="session")
 def requirements_config(language):
     """Load book requirements configuration based on language."""
-    # Note: Swedish files have been replaced with English content
-    # All files now contain English, so we use requirements_en.yaml
-    requirements_file = TESTS_DIR / "requirements_en.yaml"
-    if not requirements_file.exists():
-        # Fallback to requirements.yaml if requirements_en.yaml doesn't exist
-        requirements_file = TESTS_DIR / "requirements.yaml"
+    # Note: After migration, files retain Swedish filenames but contain English content
+    # requirements.yaml has the correct filenames (without _en suffix)
+    # requirements_en.yaml was for the old _en.md files and is now obsolete
+    requirements_file = TESTS_DIR / "requirements.yaml"
     with open(requirements_file, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
 
