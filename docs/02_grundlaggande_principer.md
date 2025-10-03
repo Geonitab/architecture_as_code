@@ -2,7 +2,7 @@
 
 Architecture as Code builds on fundamental principles that ensure successful implementation of codified system architecture. These principles encompass the entire system landscape and create a holistic view of architecture management.
 
-![Fundamental principles diagram](images/diagram_02_kapitel1.png)
+![Fundamental principles diagram](images/diagram_02_chapter1.png)
 
 Diagram shows the natural flow from declarative code through version control and automation to reproducibility and scalability - the five fundamental pillars within Architecture as Code.
 

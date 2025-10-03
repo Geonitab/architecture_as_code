@@ -7,7 +7,7 @@ book:
   
   # Required chapter structure
   chapters:
-    - filename: "01_inledning.md"
+    - filename: "01_introduction.md"
       title: "Inledning till arkitektur som kod"
       area: "Grundläggande koncept"
       required: true
@@ -39,7 +39,7 @@ book:
       title: "Microservices och distribuerade system"
       area: "Arkitektur"
       required: true
-    - filename: "09_sakerhet.md"
+    - filename: "09_security.md"
       title: "Säkerhet i Infrastructure as Code"
       area: "Säkerhet"
       required: true
@@ -91,11 +91,11 @@ book:
       title: "Metodval och erfarenheter"
       area: "Best practices"
       required: true
-    - filename: "22_slutsats.md"
+    - filename: "22_conclusion.md"
       title: "Slutsats och vägen framåt"
       area: "Sammanfattning"
       required: true
-    - filename: "23_ordlista.md"
+    - filename: "23_glossary.md"
       title: "Ordlista och definitioner"
       area: "Referens"
       required: true
@@ -119,7 +119,7 @@ book:
   # Special chapters with different requirements
   special_chapters:
     ordlista:
-      filename: "23_ordlista.md"
+      filename: "23_glossary.md"
       requires_diagram: false
       requires_sources: false
     authors:
@@ -127,7 +127,7 @@ book:
       requires_diagram: false
       requires_sources: false
     conclusion:
-      filename: "22_slutsats.md"
+      filename: "22_conclusion.md"
       requires_diagram: false
       requires_sources: true
     appendix:

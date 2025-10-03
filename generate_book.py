@@ -119,7 +119,7 @@ Källor:
 
 Architecture as Code bygger på fundamentala principer som säkerställer framgångsrik implementation av kodifierad systemarkitektur. Dessa principer omfattar hela systemlandskapet och skapar en helhetssyn för arkitekturhantering.
 
-![Grundläggande principer diagram](images/diagram_02_kapitel1.png)
+![Grundläggande principer diagram](images/diagram_02_chapter1.png)
 
 Diagrammet visar det naturliga flödet från deklarativ kod genom versionskontroll och automatisering till reproducerbarhet och skalbarhet - de fem grundpelarna inom Architecture as Code.
 
