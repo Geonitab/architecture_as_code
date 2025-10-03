@@ -241,6 +241,9 @@ def get_files_to_translate() -> List[Path]:
         'SOLUTION_SUMMARY.md',
         'DOCS_PROTECTION.md',
         'bot.md',
+        'CICD_SETUP.md',
+        'TRANSLATION_PROJECT.md',
+        'WORKFLOWS.md',
     ]
     
     for filename in root_md_files:
@@ -263,6 +266,10 @@ def get_files_to_translate() -> List[Path]:
             'README.md',
             'BOOK_COVER_DESIGN.md',
             'TERMINOLOGI_JUSTERING.md',
+            'ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md',
+            'EPUB_VALIDATION.md',
+            'SVENGELSKA_FIXES_SUMMARY.md',
+            'language_deviations_issue.md',
         ]
         
         for filename in docs_support_files:

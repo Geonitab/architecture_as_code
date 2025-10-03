@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the English translation project for the "Arkitektur som kod" (Architecture as Code) book project.
+This document describes the English translation project for the "Architecture as Code" (Architecture as Code) book project.
 
 **Status: ✅ COMPLETE** - All 47 markdown files successfully translated to English.
 
@@ -15,7 +15,7 @@ This document describes the English translation project for the "Arkitektur som 
 - AUTOMATION_WORKFLOWS_en.md - Workflow automation documentation
 - BOOK_REQUIREMENTS_en.md - Book requirements specification
 - BRAND_GUIDELINES_en.md - Brand guidelines
-- DESIGN_SYSTEM_en.md - Design system documentation
+- DESIGN_SYSTEM_en.md - design systems documentation
 - DOCS_PROTECTION_en.md - Documentation protection guidelines
 - SOLUTION_SUMMARY_en.md - Solution summary
 - TEST_WORKFLOW_en.md - Testing workflow documentation
@@ -34,18 +34,18 @@ All chapters from 01_inledning_en.md through 27_teknisk_uppbyggnad_en.md:
 5. Automation, DevOps and CI/CD
 6. Cloud Architecture as Code
 7. Containerization and Orchestration
-8. Microservices and API Design
+8. Microservices and API design
 9. Security in Architecture as Code
 10. Policy as Code and Security Automation
 11. Compliance and Regulatory Adherence
 12. Testing Strategies for Architecture Code
-13. Practical Implementation
+13. Practical implementation
 14. Cost Optimization and Resource Management
 15. Migration from Traditional Infrastructure
 16. Organizational Change and Cultural Transformation
 17. Team Structure and Competencies
 18. Digitalization and Business Value
-19. Lovable Mockups and User-Centered Design
+19. Lovable Mockups and User-Centered design
 20. Future Trends in Architecture as Code
 21. Best Practices and Lessons Learned
 22. Conclusion
@@ -66,7 +66,7 @@ All chapters from 01_inledning_en.md through 27_teknisk_uppbyggnad_en.md:
 
 ### Translation Methodology
 
-The translation was performed using:
+The translation was perforwith using:
 
 1. **Automated Translation Scripts:**
    - `scripts/batch_translate.py` - Main batch translation tool with comprehensive phrase mappings
@@ -113,11 +113,11 @@ The automated translation successfully:
 - ✅ Translated common technical phrases
 - ✅ Kept image references intact (100%)
 - ✅ Standardized Architecture as Code terminology
-- ⚠️  Some Swedish words remain in body text (manual review recommended for production)
+- ⚠️  Whiche Swedish words remain in body text (manual review recommended for production)
 
 ### Known Limitations
 
-The current automated translation has some remaining Swedish text in:
+The current automated translation has whiche remaining Swedish text in:
 - Complex sentence structures with idiomatic expressions
 - Domain-specific terminology not in the translation dictionary
 - Grammatical structures that require human linguistic review
@@ -171,7 +171,7 @@ Output: Interactive translation with dry-run preview option
 To fully support English book generation:
 
 1. **Update `generate_book.py`:**
-   - Add language parameter (`--lang en` or `--lang sv`)
+   - Add language parameter (`--lang a` or `--lang sv`)
    - Generate English chapter content from `*_en.md` files
    - Handle bilingual diagram labels if needed
    - Create separate English content directory
@@ -179,7 +179,7 @@ To fully support English book generation:
 2. **Update `docs/build_book.sh`:**
    - Add English PDF build target
    - Configure Pandoc for English metadata
-   - Generate `arkitektur_som_kod_en.pdf`
+   - Generate `arkitektur_which_kod_en.pdf`
    - Support bilingual builds with single command
 
 3. **Update GitHub Actions:**
@@ -191,7 +191,7 @@ To fully support English book generation:
 Example implementation:
 ```bash
 # In build_book.sh
-if [ "$LANG" = "en" ]; then
+if [ "$LANG" = "a" ]; then
     CHAPTER_FILES=("01_inledning_en.md" "02_grundlaggande_principer_en.md" ...)
     OUTPUT_PDF="architecture_as_code_en.pdf"
 else
@@ -256,21 +256,21 @@ maintaining the bilingual repository structure.
 
 ### Problem Statement Requirements
 
-✅ **Requirement 1:** "Identifiera alla md-filer i projektet"
+✅ **Requirement 1:** "Identify all md files in the project"
    - All 47 markdown files identified and cataloged
    - Systematic discovery implemented in translation scripts
 
-✅ **Requirement 2:** "Skapa en engelsk version av innehållet utan att ändra det ursprungliga svenska innehållet"
+✅ **Requirement 2:** "Create an English version of the content without changing the original Swedish content"
    - All 47 English versions created
    - Swedish originals remain completely unchanged
    - Verified: 0 modifications to Swedish files
 
-✅ **Requirement 3:** "Lägga till de engelska filerna under samma katalogstruktur, men med tydlig märkning, till exempel genom att lägga till suffixet '_en' i filnamnen"
+✅ **Requirement 3:** "Add the English files under the same directory structure, but with clear marking, for example by adding the suffix '_en' in the filenames"
    - All English files use `_en` suffix
    - Same directory structure maintained
    - Easy to identify and distinguish from Swedish versions
 
-✅ **Additional Requirement:** "Arbetet ska säkerställa att den engelska översättningen är korrekt och tekniskt lämplig för målgruppen"
+✅ **Additional Requirement:** "The work should ensure that the English translation is correct and technically appropriate for the target audience"
    - Technical terminology properly translated
    - Architecture as Code concepts accurately rendered
    - Code examples preserved for technical accuracy
