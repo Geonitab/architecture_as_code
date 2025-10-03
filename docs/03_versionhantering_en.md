@@ -1,15 +1,18 @@
-# 03 Versionhantering - English Version
+# Version Control and Code Structure
 
-**Note:** This is a placeholder for the English translation of `03_versionhantering.md`.
+Effektiv versionhantering utgör ryggraden in Infrastructure as Code-implementationer. Through to toämpa same metoder which mjukvaruutveckling at infraStructuredefinitioner are created spårbarhet, samarbetsmöjligheter and kvalitetskontroll.
 
-This file requires professional translation to ensure technical accuracy and readability.
+![Version Control and Code Structure](images/diagram_03_kapitel2.png)
 
-## Translation Status
-- [ ] Content translated
-- [ ] Technical terms verified
-- [ ] Code examples reviewed
-- [ ] Final proofreading complete
+Diagrammet illustrerar the typiska flow from Git repository through branching strategy and code review to slutlig deployment, which ensures kontrollerad and spårbar infraStructureutveckling.
 
----
+## Git-baserad arbetsflöde for infrastruktur
 
-Original file: `03_versionhantering.md`
+Git utgör standarden for versionhantering of IaC-code and enables distribuerat samarbete mellan team-withlemmar. each forändring dokumenteras with commit-withdelanden which beskriver what that ändrats and why, which creates a komplett historik over infraStructureutvecklingen.
+
+## Kodorganisation and modulstruktur
+
+Välorganiserad kodStructure is crucial for maintainability and collaboration in större IaC-projekt. Modulär design enables återanvändning of infraStructurekomponenter across olika projekt and miljöer.
+
+Sources:
+- Atlassian. "Git Workflows for Infrastructure as Code." Atlassian Git Documentation.

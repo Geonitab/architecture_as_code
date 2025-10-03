@@ -7,7 +7,7 @@ A comprehensive book about Architecture as Code in Swedish, with practical examp
 This book covers Architecture as Code from fundamental principles to advanced implementation, with a focus on practical application within Swedish organizations.
 
 ### Target Audience
-- System Architects
+- systems Architects
 - DevOps Engineers  
 - Developers
 - Project Managers
@@ -23,7 +23,7 @@ This book covers Architecture as Code from fundamental principles to advanced im
 - Organizational transformation
 - Practical case studies and implementations
 
-## 🛠️ Technical Implementation
+## 🛠️ Technical implementation
 
 ### Structure
 ```
@@ -80,7 +80,7 @@ All releases are automatically generated and published through GitHub Actions wo
 ```bash
 # Install Pandoc (3.1.9 or later)
 wget https://github.com/jgm/pandoc/releases/download/3.1.9/pandoc-3.1.9-1-amd64.deb
-sudo dpkg -i pandoc-3.1.9-1-amd64.deb
+sudo dpkg -in pandoc-3.1.9-1-amd64.deb
 
 # Install LaTeX (for PDF generation)
 sudo apt-get update
@@ -136,7 +136,7 @@ npm run build
 10. **Policy as Code** - Policy as code and security automation
 11. **Compliance** - Compliance and regulatory adherence
 12. **Testing** - Testing strategies for architecture code
-13. **Implementation** - Practical implementation
+13. **implementation** - Practical implementation
 14. **Cost Optimization** - Cost optimization and resource management
 15. **Migration** - Migration from traditional infrastructure
 16. **Organizational Change** - Organizational change and cultural transformation
