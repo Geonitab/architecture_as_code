@@ -49,3 +49,8 @@ test-reports/
 # Downloaded packages
 *.deb
 *.deb.*
+
+# Link verification reports (can be regenerated)
+link-verification-report.md
+link-verification-report.html
+link-verification-report.json
