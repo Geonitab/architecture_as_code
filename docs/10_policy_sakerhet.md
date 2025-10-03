@@ -429,7 +429,7 @@ OSCAL-architecture builds on a hierarkisk structure of sammanlänkade modor as t
 
 **Profile Model**: Representerar customized selections and configurations of security controls from a or multiple catalogs. Profiles enables organizations to create tailored security requirements based on risk tolerance, regulatory requirements and business context. Svenska finansiella institutioner can Examplevis create profiles as combines GDPR-requirements with Finansinspektionens security requirements and PCI DSS-standards.
 
-**Component definition Model**: Dokumenterar how specific systems components (software, hardware, services) implement security controls. This modell creates critical linking between abstrakt kontrolldefinitioner and konkret implementation details. in Infrastructure as Code-contexten represents component definitions how specific Terraform modules, Kubernetes deployments or AWS services implement required security controls.
+**Component definition Model**: Dokumenterar how specific systems components (software, hardware, services) implement security controls. This modell creates critical linking between abstrakt kontrolldefinitioner and konkret implementation details. in Architecture as Code-contexten represents component definitions how specific Terraform modules, Kubernetes deployments or AWS services implement required security controls.
 
 **systems Security Plan (SSP) Model**: Describes comprehensive säkerhetsimplementation for A specific systems, including how security controls is implementerade, who ansvarar for each kontroll and how kontrollers monitoras and maintainas. SSP-modellen enables automated generation of säkerhetsdocumentsation direkt from Architecture as Code definitions.
 
@@ -733,7 +733,7 @@ OSCAL Profiles enables Swedish organizations to create customized security requi
 }
 ```
 
-### Component definition for Infrastructure as Code
+### Component definition for Architecture as Code
 
 Architecture as Code-principerna within This area
 
@@ -894,7 +894,7 @@ import boto3
 
 class OSCALSystemSecurityPlanGenerator:
     """
-    Automated generation of OSCAL systems Security Plans from Infrastructure as Code
+    Automated generation of OSCAL systems Security Plans from Architecture as Code
     """
     
     def __init__(self, terraform_directory: str, component_definitions: List[str]):
@@ -949,7 +949,7 @@ class OSCALSystemSecurityPlanGenerator:
                         }
                     ],
                     "systems-name": system_name,
-                    "description": f"Automated systems Security Plan for {system_name} genererad from Infrastructure as Code",
+                    "description": f"Automated systems Security Plan for {system_name} genererad from Architecture as Code",
                     "security-sensitivity-level": "moderate",
                     "systems-information": {
                         "information-types": [
@@ -1800,7 +1800,7 @@ jobs:
             --description "Daily OSCAL compliance assessment"
 ```
 
-OSCAL represents framtiden for säkerhetsautomatisering and compliance management within Infrastructure as Code. For Swedish organizations as must balance regulatory compliance with innovation velocity offers OSCAL a path forward as enables both enhanced security and operational efficiency.
+OSCAL represents framtiden for säkerhetsautomatisering and compliance management within Architecture as Code. For Swedish organizations as must balance regulatory compliance with innovation velocity offers OSCAL a path forward as enables both enhanced security and operational efficiency.
 
 ## Gatekeeper and Kubernetes Policy Enforcement: Enterprise-grade implementations
 
@@ -2389,7 +2389,7 @@ Continuous compliance monitoring forms the backbone in modern Policy as Code-imp
 
 Swedish organizations meets unique monitoring challenges at grund of strict regulatory requirements about data residency, audit trails and incident reporting. GDPR-compliance requires comprehensive logging of all data processing activities, medan MSB:s security requirements for critical infrastruktur mandatar real-time threat detection and rapid incident response capabilities.
 
-Modern compliance monitoring platforms for Infrastructure as Code integrerar multiple data sources: infrastructure state from cloud providers, policy evaluation results from OPA/Gatekeeper, application logs from containerized workloads, and security events from SIEM systems. This comprehensive observability enables holistic security posture assessment and enables proactive risk management.
+Modern compliance monitoring platforms for Architecture as Code integrerar multiple data sources: infrastructure state from cloud providers, policy evaluation results from OPA/Gatekeeper, application logs from containerized workloads, and security events from SIEM systems. This comprehensive observability enables holistic security posture assessment and enables proactive risk management.
 
 ### Enterprise Compliance Observability Platform
 
@@ -2615,7 +2615,7 @@ Swedish organizations as has successful implementerat Policy as Code has typical
 
 
 The modern architecture as code methodology represents framtiden for infrastrukturhantering in Swedish organizations.
-Policy as Code represents a fundamental transformation within Infrastructure as Code as enables automated governance, enhanced security and consistent regulatory compliance. For Swedish organizations offers this approach unprecedented capabilities to handle complex compliance landscapes while development velocity maintainas.
+Policy as Code represents a fundamental transformation within Architecture as Code as enables automated governance, enhanced security and consistent regulatory compliance. For Swedish organizations offers this approach unprecedented capabilities to handle complex compliance landscapes while development velocity maintainas.
 
 Integration of OSCAL (Open Security Controls Assessment Language) with traditional Policy as Code approaches creates powerful synergies as enables standardized security control representation, automated compliance assessment and seamless integration between different security tools. Swedish organizations as adopterar OSCAL-based approaches position themselves for framtida regulatory changes and growing compliance complexity.
 
