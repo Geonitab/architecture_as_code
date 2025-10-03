@@ -2,7 +2,7 @@
 
 ![Architecture as Code in praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementation of Architecture as Code requires throughtänkt approach as balanserar technical possibilities with organizational begränsningar. Infrastructure as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapter focuses on verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate methods for successful Architecture as Code-adoption in foretagsenvironments.
+Praktisk implementation of Architecture as Code requires throughtänkt approach as balanserar technical possibilities with organizational begränsningar. Architecture as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapter focuses on verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate methods for successful Architecture as Code-adoption in foretagsenvironments.
 
 ![implementation User Journey](images/diagram_13_user_journey.png)
 
@@ -10,7 +10,7 @@ Diagram above illustrerar The typical användarresan for Architecture as Code-im
 
 ## implementation roadmap and strategier
 
-Successful Architecture as Code adoption follows vanligen a phased approach as begins with pilot projects and gradual expanderar to enterprise-wide implementation. Initial phases focuses on non-critical environments and simple use cases to bygga confidence and establish Architecture as Code best practices before production workloads migreras. Infrastructure as Code (Architecture as Code) forms often startpunkten for This transformation.
+Successful Architecture as Code adoption follows vanligen a phased approach as begins with pilot projects and gradual expanderar to enterprise-wide implementation. Initial phases focuses on non-critical environments and simple use cases to bygga confidence and establish Architecture as Code best practices before production workloads migreras. Architecture as Code (Architecture as Code) forms often startpunkten for This transformation.
 
 Assessment of current state infrastructure is critical for planning effective migration strategies. Legacy systems, technical debt, and organizational constraints must identifieras and addressas through targeted modernization efforts. This includes inventory of existing assets, dependency mapping, and risk assessment for different migration scenarios.
 
@@ -361,12 +361,12 @@ jobs:
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from beginning, with common challenges must anticiperas and mitigated through proven practices and robust tooling.
+Practical Architecture as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from beginning, with common challenges must anticiperas and mitigated through proven practices and robust tooling.
 
 ## Sources and referenser
 
 - HashiCorp. "Terraform Architecture as Code best practices." HashiCorp Learn Platform.
-- AWS Well-Architected Framework. "Infrastructure as Code." Amazon Web Services.
-- Google Cloud. "Infrastructure as Code design Patterns." Google Cloud Architecture Center.
+- AWS Well-Architected Framework. "Architecture as Code." Amazon Web Services.
+- Google Cloud. "Architecture as Code design Patterns." Google Cloud Architecture Center.
 - Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.
 - Puppet Labs. "Infrastructure as Code implementation Guide." Puppet Enterprise Documentation.

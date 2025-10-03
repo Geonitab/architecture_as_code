@@ -2,11 +2,11 @@
 
 ![Cost optimization workflow](images/diagram_16_kapitel15.png)
 
-*Effective kostnadsoptimering within Infrastructure as Code (Architecture as Code) requires systematic monitoring, automatiserad resurshantering and continuous optimering. Diagram shows the iterativa forloppet from initial kostnadsanalys to implementation of besparingsstrategier.*
+*Effective kostnadsoptimering within Architecture as Code (Architecture as Code) requires systematic monitoring, automatiserad resurshantering and continuous optimering. Diagram shows the iterativa forloppet from initial kostnadsanalys to implementation of besparingsstrategier.*
 
 ## Overall Description
 
-Cost optimization forms a critical komponent in Infrastructure as Code-implementeringar, particularly when organisationer migrerar to cloud-based solutions. Without korrekt kostnadshantering can molnkostnader snabbt eskalera and undergräva the ekonomiska Benefitsna with Architecture as Code.
+Cost optimization forms a critical komponent in Architecture as Code-implementeringar, particularly when organisationer migrerar to cloud-based solutions. Without korrekt kostnadshantering can molnkostnader snabbt eskalera and undergräva the ekonomiska Benefitsna with Architecture as Code.
 
 Moderna cloud providers offers pay-as-you-use modor as can vara both fordelaktiga and riskfyllda. Architecture as Code enables exakt kontroll over resource allocation and automatiserad kostnadsoptimering through policy-driven resource management and intelligent skalning.
 
@@ -26,7 +26,7 @@ implementation of cost allocation tags and chargeback-modor through Architecture
 
 ## Automatisk resursskalning and rightsizing
 
-Automatisk resursskalning forms kärnan in kostnadseffektiv Infrastructure as Code. by definiera skalningsregler baserade at faktiska usage patterns can organisationer undvika over-provisionering while the ensures adekvat performance.
+Automatisk resursskalning forms kärnan in kostnadseffektiv Architecture as Code. by definiera skalningsregler baserade at faktiska usage patterns can organisationer undvika over-provisionering while the ensures adekvat performance.
 
 Kubernetes Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) can konfigureras through Architecture as Code to automatically adjust resource allocation based on CPU-, minnes- and custom metrics. This is particularly valuable for Swedish organizations with clear working hours patterns as enables predictable scaling.
 
@@ -492,7 +492,7 @@ resource "aws_launch_template" "spot_optimized" {
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Cost optimization within Infrastructure as Code requires systematic approach as combines technical tools, automated processes and organizational awareness. successful implementation results in significant cost savings while performance and security is maintained.
+Cost optimization within Architecture as Code requires systematic approach as combines technical tools, automated processes and organizational awareness. successful implementation results in significant cost savings while performance and security is maintained.
 
 Viktiga framgångsfaktorer includes proaktiv monitoring, automatiserad rightsizing, intelligent use of spot instances and reserved capacity, samt continuous optimering baserad at faktiska usage patterns. FinOps-praktiker ensures kostnadshänsyn integreras naturligt in development process.
 

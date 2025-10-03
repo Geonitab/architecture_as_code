@@ -6,21 +6,21 @@
 
 ## Introduktion and contextualisering
 
-in a värld where Swedish organizations handles all mer complex digitala infrastructures while regulatory requirements skärps kontinuerligt, has Policy as Code (PaC) framträtt as a oumbärlig disciplin within Infrastructure as Code (Architecture as Code). Withan [chapter 10 about security](10_sakerhet.md) introducerade Fundamental security principles, tar This chapter A djupt dyk in The advanced implementeringen of policy-drivna security solutions and introduces läsaren to Open Security Controls Assessment Language (OSCAL) - a revolutionerande standard for security management.
+in a värld where Swedish organizations handles all mer complex digitala infrastructures while regulatory requirements skärps kontinuerligt, has Policy as Code (PaC) framträtt as a oumbärlig disciplin within Architecture as Code (Architecture as Code). Withan [chapter 10 about security](10_sakerhet.md) introducerade Fundamental security principles, tar This chapter A djupt dyk in The advanced implementeringen of policy-drivna security solutions and introduces läsaren to Open Security Controls Assessment Language (OSCAL) - a revolutionerande standard for security management.
 
 the traditional paradigmet for security- and compliance-handling are characterized of manual processes, static documentation and reactive strategier. This approach creates flaskhalsar in modern utvecklingscykler where infrastructure changes sker multiple gånger dagligen through automated CI/CD-pipelines. Swedish organizations, which traditionally varit foregångare within security and regelefterlevnad, stands nu infor utmaningen to digitalisera and automatisera These processes without to kompromissa with säkerhetsnivån.
 
-Policy as Code adresserar This utmaning by transformera security from a extern kontrollmekanism to a integrated part of development process. by uttrycka security requirements, compliance-rules and governance-policies as code is achieved same Benefits that Infrastructure as Code offers: version control, testbarhet, återanvändbarhet, and konsistent deployment over environments and team.
+Policy as Code adresserar This utmaning by transformera security from a extern kontrollmekanism to a integrated part of development process. by uttrycka security requirements, compliance-rules and governance-policies as code is achieved same Benefits that Architecture as Code offers: version control, testbarhet, återanvändbarhet, and konsistent deployment over environments and team.
 
 in The svenska contexten meets organisationer a complex regulatory environment as includes EU:s allmänna dataskyddsforordning (GDPR), Myndigheten for societal protection and beredskaps (MSB) security requirements for critical infrastructure, NIS2-direktivet, and branschspecific regulations within finansiella services, vård and public sector. Traditionella compliance-approaches baserade at manual controls and documentsbaserade policies is not only ineffective without also riskfyllda in dynamiska molnenvironments.
 
 This chapter explores how Policy as Code, forstärkt with OSCAL-standarder, enables for Swedish organizations to achieve unprecedented levels of säkerhetsArchitecture as Code-automation and compliance-monitoring. We will to undersöka verkliga Architecture as Code-implementationspattern, analyze case studies from Swedish organizations, and ge läsaren concrete tools to implement enterprise-grade policy management.
 
-## Evolutionen of security management within Infrastructure as Code
+## Evolutionen of security management within Architecture as Code
 
 Architecture as Code-principerna within This area
 
-Security management within Infrastructure as Code has undergone a significant evolution from ad-hoc skript and manual checklists to sofistikerade policy engines and automated compliance frameworks. This evolution can shared in in four distinct faser, var and a with their own characteristic Challenges and possibilities.
+Security management within Architecture as Code has undergone a significant evolution from ad-hoc skript and manual checklists to sofistikerade policy engines and automated compliance frameworks. This evolution can shared in in four distinct faser, var and a with their own characteristic Challenges and possibilities.
 
 **Fas 1: Manual Säkerhetsvalidering (2010-2015)**
 
@@ -415,7 +415,7 @@ Enterprise-grade OPA deployments requires also considerations about high availab
 
 ## OSCAL: Open Security Controls Assessment Language - Revolutionerande säkerhetsstandardisering
 
-Open Security Controls Assessment Language (OSCAL) represents a paradigm shift within security management and compliance-automation. Developed of NIST (National Institute of Standards and Technology), offers OSCAL a standardiserad approach to representera, handle and automatisera security controls and assessment-processes. For Swedish organizations as must navigate complex regulatory environment while the implement Infrastructure as Code, forms OSCAL a game-changing technology as enables unprecedented automation and interoperabilitet.
+Open Security Controls Assessment Language (OSCAL) represents a paradigm shift within security management and compliance-automation. Developed of NIST (National Institute of Standards and Technology), offers OSCAL a standardiserad approach to representera, handle and automatisera security controls and assessment-processes. For Swedish organizations as must navigate complex regulatory environment while the implement Architecture as Code, forms OSCAL a game-changing technology as enables unprecedented automation and interoperabilitet.
 
 OSCAL adresserar a fundamental utmaning within enterprise security management: fragmenteringen of security controls, assessment-processes and compliance-frameworks. Traditionellt has organisationer varit tvungna to handle múltipla, inkompatibla security standards (ISO 27001, NIST Cybersecurity Framework, SOC 2, GDPR, etc.) through separata systems and processes. OSCAL enables a unified approach where security controls can uttryckas, mappas and automatiseras through a gemensam meta-language.
 
@@ -431,7 +431,7 @@ OSCAL-architecture builds on a hierarkisk structure of sammanlänkade modor as t
 
 **Component definition Model**: Dokumenterar how specific systems components (software, hardware, services) implement security controls. This modell creates critical linking between abstrakt kontrolldefinitioner and konkret implementation details. in Infrastructure as Code-contexten represents component definitions how specific Terraform modules, Kubernetes deployments or AWS services implement required security controls.
 
-**systems Security Plan (SSP) Model**: Describes comprehensive säkerhetsimplementation for A specific systems, including how security controls is implementerade, who ansvarar for each kontroll and how kontrollers monitoras and maintainas. SSP-modellen enables automated generation of säkerhetsdocumentsation direkt from Infrastructure as Code definitions.
+**systems Security Plan (SSP) Model**: Describes comprehensive säkerhetsimplementation for A specific systems, including how security controls is implementerade, who ansvarar for each kontroll and how kontrollers monitoras and maintainas. SSP-modellen enables automated generation of säkerhetsdocumentsation direkt from Architecture as Code definitions.
 
 **Assessment Plan and Assessment Results Models**: Definierar how security controls should assessas and documents resultaten of These assessments. These modor enables automated compliance testing and continuous monitoring of security controls through integration with CI/CD pipelines.
 
@@ -737,7 +737,7 @@ OSCAL Profiles enables Swedish organizations to create customized security requi
 
 Architecture as Code-principerna within This area
 
-a of OSCAL:s most kraftfulla capabilities is opportunity to document how specific technology components implement security controls. For Infrastructure as Code-practitioners enables This automatic generation of säkerhetsdocumentsation and compliance validation directly from infrastructure definitions.
+a of OSCAL:s most kraftfulla capabilities is opportunity to document how specific technology components implement security controls. For Architecture as Code-practitioners enables This automatic generation of säkerhetsdocumentsation and compliance validation directly from infrastructure definitions.
 
 ```json
 {
@@ -881,7 +881,7 @@ a of OSCAL:s most kraftfulla capabilities is opportunity to document how specifi
 
 ### systems Security Plan automation with OSCAL
 
-a of OSCAL:s most transformativa capabilities is opportunity to automatically generera comprehensive systems Security Plans (SSP) from Infrastructure as Code definitions kombinerat with component definitions. This revolutionerar säkerhetsdocumentsation from static, manually maintained documents to dynamic, continuously updated representations of actual systems state.
+a of OSCAL:s most transformativa capabilities is opportunity to automatically generera comprehensive systems Security Plans (SSP) from Architecture as Code definitions kombinerat with component definitions. This revolutionerar säkerhetsdocumentsation from static, manually maintained documents to dynamic, continuously updated representations of actual systems state.
 
 ```python
 # oscal_ssp_generator.py
@@ -1806,7 +1806,7 @@ OSCAL represents framtiden for säkerhetsautomatisering and compliance managemen
 
 Kubernetes-environments represents a unique utmaning for policy enforcement at grund of their dynamiska natur and complex orchestration patterns. Gatekeeper, based on OPA, has framträtt as The ledande solution for Kubernetes admission control, enables comprehensive policy enforcement as integreras seamlessly with Kubernetes-native workflows.
 
-For Swedish organizations as adopterar containerisering and Kubernetes as central del of their Infrastructure as Code-strategi, represents Gatekeeper a critical capability to ensure to security policies enforcement automatically over all deployments, oavsett development team or application complexity.
+For Swedish organizations as adopterar containerisering and Kubernetes as central del of their Architecture as Code-strategi, represents Gatekeeper a critical capability to ensure to security policies enforcement automatically over all deployments, oavsett development team or application complexity.
 
 Gatekeeper's admission controller architecture enables policy evaluation at deployment-time, which forhindrar non-compliant workloads from to någonsin reach production. This proactive approach is fundamental for Swedish organizations as must demonstrate preventive controls to regulators and maintain continuous compliance.
 

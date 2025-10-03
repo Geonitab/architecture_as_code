@@ -736,9 +736,9 @@ Resources:
 
 ## Automation Scripts {#automation-scripts}
 
-This sektion contains Python-skript and andra automationsverktyg for Infrastructure as Code-handling.
+This sektion contains Python-skript and andra automationsverktyg for Architecture as Code-handling.
 
-### 22_CODE_1: comprehensive testramverk for Infrastructure as Code
+### 22_CODE_1: comprehensive testramverk for Architecture as Code
 
 Architecture as Code-principerna within This area
 *Refereras from chapter 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*

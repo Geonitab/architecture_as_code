@@ -8,7 +8,7 @@ Architecture as Code has transformed how organisationer think about and handles 
 
 implementation of Architecture as Code requires both technical excellence and organisatorisk change. successful transformations are characterized of strong management commitment, comprehensive training programs and gradual inforandestrategi as minimizes disruptions of existing operations, according to the principles vi explored in [chapter 17 about organisatorisk change](17_organisatorisk_forandring.md).
 
-The technical aspect of Infrastructure as Code requires deep understanding for cloud technologies, Architecture as Code-automation tools and security principles as vi covered from [Fundamental principles](02_grundlaggande_principer.md) through [advanced policy as code](11_policy_sakerhet.md). simultaneously is organizational factors often crucial for success, including cultural change, competence development and process standardization.
+The technical aspect of Architecture as Code requires deep understanding for cloud technologies, Architecture as Code-automation tools and security principles as vi covered from [Fundamental principles](02_grundlaggande_principer.md) through [advanced policy as code](11_policy_sakerhet.md). simultaneously is organizational factors often crucial for success, including cultural change, competence development and process standardization.
 
 ### Progressionen through technical maturity
 
@@ -26,7 +26,7 @@ GenAbout the Books chapter has vi sett how Swedish organizations stands infor sp
 
 ## Framtida development and teknologiska trender
 
-Cloud-native technologies, edge computing and artificiell intelligens driver next generation of Infrastructure as Code, which vi explored in-depth in [chapter 21 about framtida trender](21_framtida_trender.md). Emerging technologies that GitOps, policy engines and intelligent automation will to ytterligare simplify and improve Architecture as Code-capabilities.
+Cloud-native technologies, edge computing and artificiell intelligens driver next generation of Architecture as Code, which vi explored in-depth in [chapter 21 about framtida trender](21_framtida_trender.md). Emerging technologies that GitOps, policy engines and intelligent automation will to ytterligare simplify and improve Architecture as Code-capabilities.
 
 Utvecklingen mot serverless computing and fully managed services forändrar what as needs is managed that Architecture as Code. Framtiden pekar mot higher abstraktion where Developers focuses on business logic with plattformen handles underliggande architecture automatically, which vi saw exemplifierat in diskussionen about [Platform Engineering](19_kapitel18.md).
 
@@ -58,9 +58,9 @@ Investment in observability and monitoring from [säkerhetskapitlet](06_kapitel5
 
 ## Slutord
 
-Infrastructure as Code represents mer than only technical evolution - the is a fundamental change of how vi think about infrastructure. by embraca Architecture as Code-principles can organisationer achieve increased agility, reliability and scalability while the reduces operational kostnader and risker.
+Architecture as Code represents mer than only technical evolution - the is a fundamental change of how vi think about infrastructure. by embraca Architecture as Code-principles can organisationer achieve increased agility, reliability and scalability while the reduces operational kostnader and risker.
 
-Vår journey through This bok - from [introduktionen to Architecture as Code-konceptet](01_inledning.md), through [technical implementationsdetaljer](02_kapitel1.md) and [praktiska utvecklingsprocesser](03_kapitel2.md), to [advanced security strategies](12_kapitel11.md) and [framtida technologies](19_kapitel18.md) - shows to Infrastructure as Code is both a technical discipline and a Organizational transformation.
+Vår journey through This bok - from [introduktionen to Architecture as Code-konceptet](01_inledning.md), through [technical implementationsdetaljer](02_kapitel1.md) and [praktiska utvecklingsprocesser](03_kapitel2.md), to [advanced security strategies](12_kapitel11.md) and [framtida technologies](19_kapitel18.md) - shows to Architecture as Code is both a technical discipline and a Organizational transformation.
 
 successful implementation requires tålamod, uthållighet and commitment to continuous learning. Organisationer as investerar in to bygga robust Architecture as Code-capabilities position themselves for framtida teknologiska changes and konkurrensfordel at marknaden.
 
@@ -68,18 +68,18 @@ successful implementation requires tålamod, uthållighet and commitment to cont
 
 the principles as introducerades in bokens forsta chapter - declarative code, idempotens, testbarhet and automation - throughsyrar all aspects of modern infrastructure management. From [Fundamental version control](03_kapitel2.md) to [AI-driven optimization](19_kapitel18.md), These fundamental principles forblir konstanta also when teknologierna is developed.
 
-Swedish organizations has unique possibilities to leda within sustainable and compliant Infrastructure as Code implementation. by kombinera technical excellence with strong fokus at sustainability, security and regulatory compliance can Swedish companies and offentliga organisationer create competitive advantages as resonerar with nationella values and globala trender.
+Swedish organizations has unique possibilities to leda within sustainable and compliant Architecture as Code implementation. by kombinera technical excellence with strong fokus at sustainability, security and regulatory compliance can Swedish companies and offentliga organisationer create competitive advantages as resonerar with nationella values and globala trender.
 
-Bokens progression from teori to praktik, from Fundamental to avancerat, speglar The journey as each organisation must throughgå to lyckas with Infrastructure as Code. each chapter builds on previous knowledge and forbereder for mer complex Challenges - precis as a verklig Architecture as Code-implementation.
+Bokens progression from teori to praktik, from Fundamental to avancerat, speglar The journey as each organisation must throughgå to lyckas with Architecture as Code. each chapter builds on previous knowledge and forbereder for mer complex Challenges - precis as a verklig Architecture as Code-implementation.
 
 ### the way framåt
 
-Infrastructure as Code is not a destination without a continuous journey of learning, experimentation and improvement. the tools, processes and principles as is described in This bok will to is developed, but the fundamental koncepten about code-driven infrastructure, automation and reproducibility will to forbli relevanta.
+Architecture as Code is not a destination without a continuous journey of learning, experimentation and improvement. the tools, processes and principles as is described in This bok will to is developed, but the fundamental koncepten about code-driven infrastructure, automation and reproducibility will to forbli relevanta.
 
-Which vi has sett genAbout the Books 23 chapter, from [Fundamental introduction](01_inledning.md) to [framtida visioner](19_kapitel18.md), represents Infrastructure as Code framtiden for IT operations. Organisationer as investerar in This journey idag creates foundation for morgondagens digitala success.
+Which vi has sett genAbout the Books 23 chapter, from [Fundamental introduction](01_inledning.md) to [framtida visioner](19_kapitel18.md), represents Architecture as Code framtiden for IT operations. Organisationer as investerar in This journey idag creates foundation for morgondagens digitala success.
 
 Sources:
-- Industry reports on IaC adoption trends
+- Industry reports on Architecture as Code adoption trends
 - Expert interviews and case studies  
 - Research on emerging technologies
 - Best practice documentation from leading organizations

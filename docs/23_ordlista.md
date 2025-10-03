@@ -24,7 +24,7 @@ This Glossary contains definitioner of centrala termer as is used genAbout the B
 
 **Idempotens:** Egenskap at operationer as produces same resultat oavsett how many gånger the is run, kritiskt for secure Architecture as Code-automation.
 
-**Infrastructure as Code (Architecture as Code) (Architecture as Code) (IaC):** Praktiken to handle infrastructure through Architecture as Code instead for manual processes, which enables version control and automation.
+**Architecture as Code (Architecture as Code) (Architecture as Code) (Architecture as Code):** Praktiken to handle infrastructure through Architecture as Code instead for manual processes, which enables version control and automation.
 
 **JSON (JavaScript Object Notation):** Textbaserat dataformat for Structured informationsutbyte between systems with human-readable syntax.
 
@@ -72,7 +72,7 @@ This Glossary contains definitioner of centrala termer as is used genAbout the B
 
 **Oforänderlig infrastructure:** InfraStructureparadigm where components aldrig modifieras efter deployment without is replaced helt when changes is needed.
 
-**State Drift:** Situation where The faktiska infrastructuretoståndet avviker from The definierade desired toståndet in Infrastructure as Code-definitioner.
+**State Drift:** Situation where The faktiska infrastructuretoståndet avviker from The definierade desired toståndet in Architecture as Code-definitioner.
 
 ## Kostnadshantering and optimering
 
