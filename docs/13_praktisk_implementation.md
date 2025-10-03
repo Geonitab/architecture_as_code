@@ -2,11 +2,11 @@
 
 ![Architecture as Code in praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementation of Architecture as Code requires throughtänkt approach as balanserar technical possibilities with organizational begränsningar. Infrastructure as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapters focuses on verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate methods for successful Architecture as Code-adoption in foretagsenvironments.
+Praktisk implementation of Architecture as Code requires throughtänkt approach as balanserar technical possibilities with organizational begränsningar. Infrastructure as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapter focuses on verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate methods for successful Architecture as Code-adoption in foretagsenvironments.
 
 ![implementation User Journey](images/diagram_13_user_journey.png)
 
-Diagram ovan illustrerar The typical användarresan for Architecture as Code-implementation, from initial discovery to complete optimization.
+Diagram above illustrerar The typical användarresan for Architecture as Code-implementation, from initial discovery to complete optimization.
 
 ## implementation roadmap and strategier
 
@@ -18,11 +18,11 @@ Stakeholder alignment ensures organizational support for Architecture as Code in
 
 ## Tool selection and ecosystem integration
 
-Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform has emerged as leading multi-cloud solution, withan cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager erbjuder deep integration with specific platforms.
+Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform has emerged as leading multi-cloud solution, with cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager offers deep integration with specific platforms.
 
 Integration with existing toolchains requires careful consideration of workflows, security requirements, and operational procedures. Source control systems, CI/CD platforms, monitoring solutions, and security scanning tools must seamlessly integrate for holistic development experience.
 
-Vendor evaluation criteria includes technical capabilities, roadmap alignment, commercial terms, and long-term viability. Open source solutions erbjuder flexibility and community innovation, withan commercial platforms provide enterprise support and advanced features. Hybrid approaches combinerar benefits from both models.
+Vendor evaluation criteria includes technical capabilities, roadmap alignment, commercial terms, and long-term viability. Open source solutions offers flexibility and community innovation, with commercial platforms provide enterprise support and advanced features. Hybrid approaches combinerar benefits from both models.
 
 ## Production readiness and operational excellence
 
@@ -360,8 +360,8 @@ jobs:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
-Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from beginning, withan common challenges must anticiperas and mitigated through proven practices and robust tooling.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from beginning, with common challenges must anticiperas and mitigated through proven practices and robust tooling.
 
 ## Sources and referenser
 

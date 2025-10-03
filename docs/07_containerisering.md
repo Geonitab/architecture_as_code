@@ -2,15 +2,15 @@
 
 ![Containerization and Orchestration](images/diagram_11_kapitel10.png)
 
-Architecture as Code methodology forms the foundation for containerteknologi and orkestrering represents paradigmskifte in how applications driftsätts and skalas. by definiera Architecture as Code for containrar is enabled portabel, skalbar and reproducible applikationsdriftsättning over different environments and cloud providers.
+Architecture as Code methodology forms the foundation for containerteknologi and orkestrering represents paradigm shift in how applications driftsätts and skalas. by definiera Architecture as Code for containrar is enabled portabel, skalbar and reproducible applikationsdriftsättning over different environments and cloud providers.
 
 ## Container-teknologiens roll within architecture as code
 
-Containers erbjuder application-level virtualization as paketerar applications with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions that ensure consistency between development, testing and production environments.
+Containers offers application-level virtualization as paketerar applications with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions that ensure consistency between development, testing and production environments.
 
-Docker has etablerat itself as the facto standard for containerization, withan podman and andra alternatives erbjuder daemon-less approaches for enhanced security. Container images are defined through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.
+Docker has etablerat itself as the facto standard for containerization, with podman and andra alternatives offers daemon-less approaches for enhanced security. Container images are defined through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.
 
-Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, withan image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation before deployment.
+Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, with image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation before deployment.
 
 ## Kubernetes as orchestration platform
 
@@ -235,8 +235,8 @@ resource "google_container_node_pool" "primary_nodes" {
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
-Containerization and Orchestration as code transformerar application deployment from manual, error-prone processes to automated, reliable workflows. Kubernetes and associerade verktyg enables sophisticated application management through declarative configurations, withan GitOps patterns ensures consistent and auditable deployment processes. Success requires comprehensive understanding of container networking, storage management, and security implications.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Containerization and Orchestration as code transformerar application deployment from manual, error-prone processes to automated, reliable workflows. Kubernetes and associerade tools enables sophisticated application management through declarative configurations, with GitOps patterns ensures consistent and auditable deployment processes. Success requires comprehensive understanding of container networking, storage management, and security implications.
 
 ## Sources and referenser
 

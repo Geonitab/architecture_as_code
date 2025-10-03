@@ -1,6 +1,6 @@
 # About the Authors
 
-This chapters presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk application of Infrastructure as Code in Swedish organizations.
+This chapter presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk application of Infrastructure as Code in Swedish organizations.
 
 ![Författare and bidragsgivare](images/diagram_25_authors.png)
 
@@ -71,7 +71,7 @@ Book content has granskats of:
 - validation of svenska terminologi and språkbruk
 - testing of build-processes and distribution
 
-### Svenska organisationer
+### Swedish organizations
 
 Flera Swedish organizations has bidragit with:
 
@@ -129,7 +129,7 @@ This bok builds on the enastående arbete as utforts of öppen source code-commu
 
 ### Svenska technical communities
 
-- **SwedishCoders** - For feedback at tekniskt Contents
+- **SwedishCoders** - For feedback at technical Contents
 - **DevOps Stockholm** - For praktiska case studies
 - **Svenska molnarkitekter** - For molnspecific bidrag
 - **Säkerhetsspecialister Sverige** - For compliance-vägledning
@@ -142,7 +142,7 @@ This bok builds on the enastående arbete as utforts of öppen source code-commu
 
 ## Framtida development
 
-### Kontinuerlig improvement
+### Continuous improvement
 
 This bok is designad as a levande resurs as is developed with:
 
@@ -184,12 +184,12 @@ This bok is distributed under villkor as enables:
 - **Kommersiell use** with korrekt attribution
 - **Översättning** to andra language with bibehållen kvalitet
 
-All reuse ska erkänna ursprungliga forfattare and bidragsgivare according to etablerade akademiska and technical standarder.
+All reuse should erkänna ursprungliga forfattare and bidragsgivare according to etablerade akademiska and technical standarder.
 
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
 "Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team created a resurs as specific meets svenska organisationers behov within Architecture as Code and Infrastructure as Code.
 
 Bokens success will from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig value for svenska technical organisationer. Vi hoppas to This resurs will to accelerera adoptionen of Architecture as Code-principles and bidra to improved technical utfall over entire svenska tech-sektorn.

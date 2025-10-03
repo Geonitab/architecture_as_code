@@ -79,7 +79,7 @@ Versionering is managed through Git-history instead for inline-changes. about A 
 ADR undergoes typically following statusar:
 
 **Foreslagen**: Initialt forslag as undergoes granskning and diskussion
-**Accepted**: Godkänt decisions as ska implementeras
+**Accepted**: Godkänt decisions as should implementeras
 **Deprecated**: Beslut as not längre rekommentheir but can finnas kvar in systems
 **Superseded**: Ersatt of A nyare ADR with referens to ersättaren
 
@@ -133,13 +133,13 @@ standardsyntax.
 Accepted
 
 ## Context
-GDPR and MSB:s guidelines for cybersäkerhet requires robusta security measures.
+GDPR and MSB:s guidelines for cybersäkerhet requires robust security measures.
 Traditionell perimeter-baserad security is otillräcklig for modern
 hybrid cloud-environment.
 
 ## Decision
 implementation of Zero Trust Network Architecture with mikrosegmentering,
-multi-factor authentication and kontinuerlig verification through
+multi-factor authentication and continuous verification through
 architecture as code.
 
 ## Consequences
@@ -151,7 +151,7 @@ architecture as code.
 
 ### Negativa consequences
 - Ökad komplexitet in nätverksarkitektur
-- Prestationsöverhuvud for kontinuerlig verification
+- Prestationsöverhuvud for continuous verification
 - Högre operational kostnader
 
 ### Mitigering
@@ -164,7 +164,7 @@ architecture as code.
 
 ### ADR-tools and integration
 
-Flera verktyg facilitates creation and management of ADR:
+Flera tools facilitates creation and management of ADR:
 
 **adr tool**: Kommandoradsverktyg to create and handle ADR-filer
 **adr-log**: Automatisk generering of ADR-index and tidslinje
@@ -216,40 +216,40 @@ Architecture as Code-templates can referera to relevant ADR to forklara design d
 
 Automated validation can implementeras to ensure to infrastructure code follows established ADR. Policy as Code tool that Open Policy Agent can enforça arkitekturguidelines baserade at documented decisions in ADR.
 
-For Swedish organizations enables This integration transparent styrning and compliance where architecture decisions can is tracked from initial documentation through implementation to operativ deployment.
+For Swedish organizations enables This integration transparent governance and compliance where architecture decisions can is tracked from initial documentation through implementation to operativ deployment.
 
-## Efterlevnad and kvalitetsstandarder
+## Compliance and kvalitetsstandarder
 
 ADR-metodik supports svenska compliance requirements through Structured documentation as enables:
 
-**Regleringsefterlevnad**: Systematisk documentation for GDPR, PCI-DSS and branschspecific regleringar
+**Regleringsefterlevnad**: Systematisk documentation for GDPR, PCI-DSS and branschspecific regulations
 **Audit Readiness**: Komplett spår of architecture decisions and their rationale
 **Risk Management**: Dokumenterade riskbedömningar and mitigation strategies
 **Knowledge Management**: Structured knowledge transfer between team and over time
 
-Svenska organisationer within the public sector can use ADR to meet transparensrequirements and demokratisk insyn in technical decisions as affects withborgarservice and datahantering.
+Swedish organizations within the public sector can use ADR to meet transparensrequirements and demokratisk insyn in technical decisions as affects withborgarservice and datahantering.
 
 ## Framtida development and trends
 
 ADR-metodik is developed kontinuerligt with integration of new tools and processes:
 
 **AI-assisterade ADR**: Machine learning to identify when new ADR is needed based on code changes
-**Automated Decision Tracking**: Integration with architectural analysis verktyg
+**Automated Decision Tracking**: Integration with architectural analysis tools
 **Organisationsövergripande ADR-delning**: Standardiserade format for delning of anonymiserade architecture patterns
 
-In the Architecture as Code context is developed verktyg for automatic korrelation between ADR and driftsatt infrastructure, which enables realtidsvalidering of arkitektonisk compliance.
+In the Architecture as Code context is developed tools for automatic korrelation between ADR and driftsatt infrastructure, which enables realtidsvalidering of arkitektonisk compliance.
 
-Svenska organisationer can dra nytta of europeiska initiativ for standardisering of digital documentation practices as builds on ADR-metodologi for increased interoperabilitet and compliance.
+Swedish organizations can dra nytta of europeiska initiativ for standardisering of digital documentation practices as builds on ADR-metodologi for increased interoperabilitet and compliance.
 
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
 Architecture Decision Records represents a fundamental komponent in modern Architecture as Code-metodik. Through Structured documentation of architecture decisions are created transparency, traceability and knowledge transfer as is critical for svenska organisationers digitaliseringsinitiativ.
 
 Effective ADR-implementation requires organisatoriskt stöd, standardized processes and integration with existing utvecklingsarbetsflöden. For Architecture as Code-projekt enables ADR koppling between designintentioner and code-implementation as improves maintainability and compliance.
 
-Svenska organisationer as antar ADR-metodik position themselves for successful Architecture as Code-transformation with robusta styrningsprocesser and transparent decisionssdocumentsation as supports both interna requirements and externa efterlevnadsforväntningar.
+Swedish organizations as antar ADR-metodik position themselves for successful Architecture as Code-transformation with robust styrningsprocesser and transparent decisionssdocumentsation as supports both interna requirements and externa efterlevnadsforväntningar.
 
 Sources:
 - Architecture Decision Records Community. "ADR-guidelines and templates." https://adr.github.io

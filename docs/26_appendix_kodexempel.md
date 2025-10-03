@@ -4,7 +4,7 @@ This appendix contains all kodexamples, konfigurationsfiler and technical implem
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 
-*This appendix functions as a praktisk referenssamling for all technical implementations as demonstreras genAbout the Book. each kodexamples is kategoriserat and märkt with References tobaka to relevanta chapters.*
+*This appendix functions as a praktisk referenssamling for all technical implementations as demonstreras genAbout the Book. each kodexamples is kategoriserat and märkt with References tobaka to relevanta chapter.*
 
 ## Navigering in appendix
 
@@ -13,13 +13,13 @@ Kodexemplen is organiserade in following kategorier:
 1. **[CI/CD Pipelines and Architecture as Code-automation](#cicd-pipelines)**
 2. **[Infrastructure as Code (Architecture as Code) - Terraform](#terraform-iac)**
 3. **[Infrastructure as Code (Architecture as Code) - CloudFormation](#cloudformation-Architecture as Code)**
-4. **[Automationsskript and verktyg](#automation-scripts)**
+4. **[Automationsskript and tools](#automation-scripts)**
 5. **[Security and compliance](#security-compliance)**
 6. **[testing and validation](#testing-validation)**
 7. **[Konfigurationsfiler](#configuration)**
-8. **[Shell-skript and verktyg](#shell-scripts)**
+8. **[Shell-skript and tools](#shell-scripts)**
 
-each kodexamples has a unik identifierare in formatet `[chapters]_CODE_[NUMMER]` for enkel referens from huvudtexten.
+each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]` for enkel referens from huvudtexten.
 
 ---
 
@@ -28,7 +28,7 @@ each kodexamples has a unik identifierare in formatet `[chapters]_CODE_[NUMMER]`
 This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for Swedish organizations.
 
 ### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline for Swedish organizations
-*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
 # .github/workflows/svenska-architecture as code-pipeline.yml
@@ -102,7 +102,7 @@ jobs:
 ```
 
 ### 05_CODE_2: Jenkins Pipeline for Swedish organizations with GDPR compliance
-*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
 # jenkins/svenska-architecture as code-pipeline.groovy
@@ -408,7 +408,7 @@ pipeline {
 ```
 
 ### 05_CODE_3: Terratest for svenska VPC implementation
-*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```go
 // test/svenska_vpc_test.go
@@ -678,7 +678,7 @@ Architecture as Code-principerna within This area#cloudformation-Architecture as
 This sektion contains CloudFormation templates for AWS-infrastructure adapted for Swedish organizations.
 
 ### 07_CODE_1: VPC Setup for Swedish organizations with GDPR compliance
-*Refereras from chapters 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
+*Refereras from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
 # cloudformation/svenska-org-vpc.yaml
@@ -741,7 +741,7 @@ This sektion contains Python-skript and andra automationsverktyg for Infrastruct
 ### 22_CODE_1: comprehensive testramverk for Infrastructure as Code
 
 Architecture as Code-principerna within This area
-*Refereras from chapters 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
+*Refereras from chapter 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```python
 # testing/comprehensive_iac_testing.py
@@ -838,7 +838,7 @@ class ComprehensiveIaCTesting:
 This sektion contains konfigurationsfiler for different tools and services.
 
 ### 22_CODE_2: Governance policy configuration for Swedish organizations
-*Refereras from chapters 22: [Best Practices and Lessons Learned](22_best_practices.md)*
+*Refereras from chapter 22: [Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```yaml
 # governance/svenska-governance-policy.yaml
@@ -941,7 +941,7 @@ each kodexamples in This appendix can refereras from huvudtexten with dess uniqu
 
 - **Kommentarer**: all kodexamples contains svenska kommentarer for klarhet
 - **Security**: Security aspects is markerade with 🔒
-- **GDPR-compliance**: GDPR-relaterade konfigurationer is markerade with 🇪🇺
+- **GDPR-compliance**: GDPR-relaterade configurations is markerade with 🇪🇺
 - **Svenska anpassningar**: Lokala anpassningar is markerade with 🇸🇪
 
 ### Uppdateringar and underhåll

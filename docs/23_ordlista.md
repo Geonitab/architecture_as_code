@@ -4,7 +4,7 @@
 
 This Glossary contains definitioner of centrala termer as is used genAbout the Book and as forms the foundation for Architecture as Code methodology.
 
-## Fundamental Concepts and verktyg
+## Fundamental Concepts and tools
 
 **API (Application Programming Interface):** Gränssnitt as enables kommunikation between different mjukvarukomponenter or systems through standardized protokoll and dataformat.
 
@@ -30,15 +30,15 @@ This Glossary contains definitioner of centrala termer as is used genAbout the B
 
 **Kubernetes:** Open source code containerorkestreringsplattform for automatiserad deployment, skalning and handling of containeriserade applications.
 
-**Microservices:** Arkitekturell approach where applications byggs as stemplate, oberoende services as kommunicerar via väldefinierade API:er.
+**Microservices:** Arkitekturell approach where applications byggs as stemplate, oberoende services as kommunicerar via väldefinierade APIs.
 
-**Övervakning:** Kontinuerlig systemövervakning to upptäcka problem, optimera performance and ensure togänglighet.
+**Övervakning:** Continuous systemövervakning to upptäcka problem, optimera performance and ensure togänglighet.
 
 **Orchestration:** Automatiserad koordination and handling of complex workflows and systems to achieve desired state.
 
 **Policy as Code:** Tovägagångssätt where security- and efterlevnadsregler are defined as code for automatiserad utvärdering and verkställande.
 
-**Terraform:** Infrastructure as Code (Architecture as Code)-verktyg as uses declarative syntax to definiera and handle cloud infrastructure resources.
+**Terraform:** Infrastructure as Code (Architecture as Code)-tools as uses declarative syntax to definiera and handle cloud infrastructure resources.
 
 **YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat as often is used for konfigurationsfiler and Architecture as Code-definitioner.
 
@@ -84,7 +84,7 @@ This Glossary contains definitioner of centrala termer as is used genAbout the B
 
 **Cost Allocation Tags:** Metadataetiketter as is used to kategorisera and spåra molnresurskostnader per projekt, team, environment or andra organizational dimensioner.
 
-**Cost Governance:** Ramverk of policies, processes and verktyg to styra and kontrollera molnkostnader within a organisation.
+**Cost Governance:** Ramverk of policies, processes and tools to styra and kontrollera molnkostnader within a organisation.
 
 **Resource Quotas:** Begränsningar as sätts at how very of a viss resurs (CPU, minne, lagring) which can konsumeras within a given scope or namespace.
 
@@ -100,35 +100,35 @@ This Glossary contains definitioner of centrala termer as is used genAbout the B
 
 **Integration Testing:** testing as verifierar to different components or services functions korrekt tosammans when the is integrerade in A systems.
 
-**Compliance Testing:** Automatiserad validation of to systems and konfigurationer follows relevanta regulatory requirements, security standards and organizational policies.
+**Compliance Testing:** Automatiserad validation of to systems and configurations follows relevanta regulatory requirements, security standards and organizational policies.
 
 ## Strategiska and organizational concepts
 
 **Cloud-First Strategy:** Strategisk approach where organisationer primarily choose cloud-based solutions for new IT-initiativ before on-premises alternatives övervägs.
 
-**Digital Transformation:** fundamental change in affärsoperationer and värdeleverans through integration of digital technology in all aspekter of verksamheten.
+**Digital Transformation:** fundamental change in affärsoperationer and värdeleverans through integration of digital technology in all aspects of verksamheten.
 
 **Multi-Cloud:** Strategi to use molntjänster from multiple different providers to undvika vendor lock-in and optimera for specific capabilities or kostnader.
 
-**Data Sovereignty:** Konceptet to digital data is underkastat lagarna and juridiktionen in the land where The lagras or bearbetas.
+**Data Sovereignty:** Konceptet to digital data is underkastat lagarna and juridiktionen in the land where The is stored or bearbetas.
 
 **Conway's Law:** Observation to organisationer designar systems as speglar their kommunikationsStructureer, which affects how team should organiseras for optimal systemdesign.
 
 **Cross-functional Team:** Team as includes withlemmar with different skills and roller as arbetar tosammans mot gemensamma goals, essentiellt for DevOps-success.
 
-**DevOps Culture:** cultural transformation from traditionella utvecklings- and driftsilos to kollaborativa way of working as emphasizes shared ownership and continuous improvement.
+**DevOps Culture:** cultural transformation from traditional utvecklings- and driftsilos to kollaborativa way of working as emphasizes shared ownership and continuous improvement.
 
 **Psychological Safety:** Teammiljö where withlemmar känner itself secure to ta risker, erkänna misstag and experiment without rädsla for bestraffning or forödmjukelse.
 
 **Servant Leadership:** Ledarskapsfilosofi as focuses on to tjäna teamet and främja their success rather than traditional kommando-and-kontroll-ledning.
 
-**Best Practice Evolution:** Kontinuerlig development of rekommenderade methods based on praktisk erfarenhet, community feedback and technical framsteg.
+**Best Practice Evolution:** Continuous development of rekommenderade methods based on praktisk erfarenhet, community feedback and technical framsteg.
 
 **Anti-Pattern:** Vanligt forekommande but kontraproduktivt lösningsforslag as initialt verkar användbart but as leder to negative consequences.
 
 **Policy-as-Code:** Metod where organizational policies, säkerhetsregler and compliance-requirements are defined as code for automatiserad enforcement and testing.
 
-**Infrastructure Governance:** Ramverk of policies, processes and verktyg to styra and kontrollera infrastructure development and -drift within organisationer.
+**Infrastructure Governance:** Ramverk of policies, processes and tools to styra and kontrollera infrastructure development and -drift within organisationer.
 
 **Technical Debt:** Ackumulerad kostnad of shortcuts and suboptimala technical decisions as requires framtida refactoring or omarbetning to bibehålla systemkvalitet.
 
@@ -138,4 +138,4 @@ This Glossary contains definitioner of centrala termer as is used genAbout the B
 
 **DevSecOps:** Utvecklingsmetodik as integrerar säkerhetspraktiker through entire utvecklingslivscykeln rather than as a separat fas in slutet.
 
-**Site Reliability Engineering (SRE):** Disciplin as toämpar mjukvaruingenjörsprinciper at operational problem to create skalbara and very toforlitliga mjukvarusystem.
+**Site Reliability Engineering (SRE):** Disciplin as toämpar mjukvaruingenjörsprinciper at operational problem to create skalbara and very reliable mjukvarusystem.

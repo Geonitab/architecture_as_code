@@ -2,55 +2,55 @@
 
 ![automation and CI/CD-pipelines](images/diagram_04_kapitel3.png)
 
-Kontinuerlig integration and kontinuerlig deployment (CI/CD) together with development and drift-kulturen forms the backbone in modern software development, and when the applies Architecture as Code blir These processes ännu mer critical. This chapters utforskar in-depth how Swedish organizations can implementera robusta, secure and effektiva CI/CD-pipelines as forvandlar infrastructurehantering from manual, error-prone processes to automatiserade, toforlitliga and traceable operations, while vi develops Architecture as Code-methods as handles entire system architecture as code.
+Continuous integration and continuous deployment (CI/CD) together with development and operations culture forms the backbone in modern software development, and when the applies Architecture as Code becomes These processes even more critical. This chapter explores in-depth how Swedish organizations can implement robust, secure and effective CI/CD-pipelines as transforms infrastructure management from manual, error-prone processes to automated, reliable and traceable operations, while we develop Architecture as Code-methods as handles entire system architecture as code.
 
 ![architecture as code-implementation Tidslinje](images/diagram_05_gantt_timeline.png)
 
-Diagram ovan shows a typisk tidsplan for Architecture as Code-implementation, from initial verktygsanalys to complete produktionsutrullning.
+Diagram above shows a typical timeline for Architecture as Code-implementation, from initial tool analysis to complete production rollout.
 
-to understand CI/CD for Architecture as Code requires a Fundamental forskjutning in tankesättet from traditional infrastructurehantering to kodcentrerad automation. Where traditionella methods relied on manual konfigurationer, checklists and tofälliga solutions, erbjuder modern automation within Architecture as Code konsekvens, repeterbarhet and transparency through entire infrastructureens livscykel. Architecture as Code represents next utvecklingssteg where development and drift-kulturen and CI/CD-processes encompasses the entire system architecture as a cohesive unit. This paradigmskifte is not only tekniskt - the affects organizational structure, workflows and also juridiska aspekter for svenska foretag as must navigera GDPR, svensk datahanteringslagstiftning and sektorsspecific regleringar.
+to understand CI/CD for Architecture as Code requires a Fundamental shift in mindset from traditional infrastructure management to code-centric automation. Where traditional methods relied on manual configurations, checklists and ad-hoc solutions, offers modern automation within Architecture as Code consistency, repeatability and transparency throughout the entire infrastructure lifecycle. Architecture as Code represents next development step where development and operations culture and CI/CD-processes encompasses the entire system architecture as a cohesive unit. This paradigm shift is not only technical - the affects organizational structure, workflows and also legal aspects for Swedish companies as must navigate GDPR, svensk data management legislation and sector-specific regulations.
 
-Diagram ovan illustrerar the Fundamental CI/CD-flow from kodbekräftelse through validation and testing to deployment and monitoring. This flöde represents a systematic metod where each step is utformat to fånga fel early, ensure kvalitet and minimera risker in production environments. For Swedish organizations means This particular considerations about dataplacering, efterlevnadsvalidering and kostnadsoptimering in svenska kronor.
+Diagram above illustrerar the Fundamental CI/CD-flow from kodbekräftelse through validation and testing to deployment and monitoring. This flöde represents a systematic metod where each step is utformat to fånga fel early, ensure kvalitet and minimera risker in production environments. For Swedish organizations means This particular considerations about dataplacering, compliance validation and kostnadsoptimering in svenska kronor.
 
 ## The teoretiska foundation for CI/CD-automation
 
-Kontinuerlig integration and kontinuerlig deployment represents mer than only technical processes - the forms a filosofi for software development as prioriterar snabb återkoppling, stegvis improvement and riskminskning through automation. When These principles be applied at Architecture as Code, arises unique possibilities and Challenges as requires deep understanding for both technical and organizational aspekter.
+Continuous integration and continuous deployment represents mer than only technical processes - the forms a filosofi for software development as prioriterar snabb återkoppling, stegvis improvement and riskminskning through automation. When These principles be applied at Architecture as Code, arises unique possibilities and Challenges as requires deep understanding for both technical and organizational aspects.
 
 ### Historisk context and development
 
 The CI/CD concept has its roots in Extreme Programming (XP) and agile methodologies from early 2000s, but the application to infrastructure has developed in parallel with cloud technology's emergence. Early infrastructure administrators relied on manual processes, configuration scripts and "infrastructure as pets" - where each server was unique and required individual care. This approach worked for smaller environments but did not scale for modern, distributed systems with hundreds or thousands components.
 
-The emergence of "infrastructure as cattle" - where servers are treated as standardized, replaceable units - enabled systematic automation that CI/CD-principles could be applied at. Container-teknologi, cloud providers' API:er and verktyg that Terraform and Ansible accelererade This development by erbjuda programmatiska interfaces for infrastructurehantering.
+The emergence of "infrastructure as cattle" - where servers are treated as standardized, replaceable units - enabled systematic automation that CI/CD-principles could be applied at. Container technology, cloud providers' APIs and tools that Terraform and Ansible accelerated This development by erbjuda programmatic interfaces for infrastructure management.
 
-For Swedish organizations has This development coincided with increasing regulatory requirements, particularly GDPR and Datainspektionens guidelines for technical and organizational security measures. This has created a unik situation where automation not only is a efficiency improvement without a necessity for compliance and riskhantering.
+For Swedish organizations has This development coincided with increasing regulatory requirements, particularly GDPR and Datainspektionens guidelines for technical and organizational security measures. This has created a unique situation where automation not only is a efficiency improvement without a necessity for compliance and risk management.
 
 ### fundamental principles for Architecture as Code-automation
 
 **Immutability and version control:** Architecture as Code follows same principles as traditional software development, where all configuration is version-controlled and changes is tracked through git-history. This enables reproducible Architecture as Code where same code-version always produces identical environments. For Swedish organizations means This improved compliance documentation and possibility to demonstrate controllable change of critical systems.
 
-**Declarative configuration:** Architecture as Code tool that Terraform and CloudFormation uses declarative syntax where Developers specifies desired end result rather than steps to reach dit. This approach reduces complexity and error sources while the enables sophisticated dependency management and parallelization of infrastructureåtgärder.
+**Declarative configuration:** Architecture as Code tool that Terraform and CloudFormation uses declarative syntax where Developers specifies desired end result rather than steps to reach it. This approach reduces complexity and error sources while the enables sophisticated dependency management and parallelization of infrastructure actions.
 
-**Testbarhet and validation:** Architecture as Code can be tested in the same way as applikationskod through enhetstester, integrationstester and complete systemvalidering. This enables "shift left"-testing where errors are detected early in development process rather than in production environments where cost of correction is significantly higher.
+**Testability and validation:** Architecture as Code can be tested in the same way as application code through unit tests, integration tests and complete system validation. This enables "shift left"-testing where errors are detected early in development process rather than in production environments where cost of correction is significantly higher.
 
-**Automation over documentation:** instead of rely itself at manual checklists and procedurdocuments as easily blir outdated, automates CI/CD-pipelines all step in infrastructure distribution. This ensures consistency and reduces human errors while the creates automatic documentation of all performed measures.
+**Automation over documentation:** instead of rely itself at manual checklists and procedurdocuments as easily becomes outdated, automates CI/CD-pipelines all step in infrastructure distribution. This ensures consistency and reduces human errors while the creates automatic documentation of all performed measures.
 
 ### organizational implikationer of CI/CD-automation
 
-implementation of CI/CD for Architecture as Code affects organisationer at multipla levels. Tekniska team must develop new skills within programmatic infrastructure management, withan business processes must adapted to dra nytta of accelererad leverancreatecitet.
+implementation of CI/CD for Architecture as Code affects organisationer at multipla levels. Tekniska team must develop new skills within programmatic infrastructure management, with business processes must adapted to dra nytta of accelererad leverancreatecitet.
 
-**cultural transformation:** Övergången to CI/CD-baserad infrastructure requires a cultural forskjutning from risk-averse, manual processes to risk-managed automation. This means to organisationer must develop toit to automatiserade systems withan the maintains necessary kontroller for compliance and security.
+**cultural transformation:** Övergången to CI/CD-baserad infrastructure requires a cultural shift from risk-averse, manual processes to risk-managed automation. This means to organisationer must develop toit to automated systems with the maintains necessary controls for compliance and security.
 
-**Kompetensuveckling:** IT-personal must develop programmeringskunskaper, understand molnleverantörs-API:er and lära itself advanced automation tools. This kompetensforändring requires investeringar in utbildning and rekrytering of personal with development and drift-skills.
+**Kompetensuveckling:** IT-personal must develop programmeringskunskaper, understand molnleverantörs-APIs and lära itself advanced automation tools. This kompetensforändring requires investeringar in utbildning and rekrytering of personal with development and drift-skills.
 
-**Efterlevnad and styrning:** Svenska organisationer must ensure to automatiserade processes meets regulatory requirements. This includes audit trails, data residency controls and separtion of duties as traditionellt implementerats through manual processes.
+**Compliance and governance:** Swedish organizations must ensure to automated processes meets regulatory requirements. This includes audit trails, data residency controls and separation of duties as traditionally implemented through manual processes.
 
-Which vi saw in [chapters 3 about version control](03_versionhantering.md), forms CI/CD-pipelines a naturlig forlängning of git-baserade workflows for Architecture as Code. This chapters bygger vidare at These concepts and utforskar how Swedish organizations can implementera advanced automatiseringsstrategier as balanserar effektivitet with regulatory requirements. Later will vi to se how These principles be applied in [Cloud Architecture as Code](07_molnarkitektur.md) and integreras with [security aspects](10_sakerhet.md).
+Which vi saw in [chapter 3 about version control](03_versionhantering.md), forms CI/CD-pipelines a naturlig forlängning of git-baserade workflows for Architecture as Code. This chapter bygger vidare at These concepts and explores how Swedish organizations can implement advanced automatiseringsstrategier as balanserar effektivitet with regulatory requirements. Later will vi to se how These principles be applied in [Cloud Architecture as Code](07_molnarkitektur.md) and integreras with [security aspects](10_sakerhet.md).
 
 ## from architecture as code to Architecture as Code development and drift
 
 Architecture as Code-principerna within This area
 
-Traditionella DevOps-praktiker focused primarily at application development and deployment, withan Architecture as Code expanded this to architecture management as whole. Architecture as Code represents a evolutionary step where DevOps-kulturen and CI/CD-processes encompasses the entire system architecture as a cohesive unit.
+Traditional DevOps practices focused primarily at application development and deployment, with Architecture as Code expanded this to architecture management as whole. Architecture as Code represents a evolutionary step where DevOps culture and CI/CD-processes encompasses the entire system architecture as a cohesive unit.
 
 ### Holistic DevOps for Architecture as Code
 
@@ -62,60 +62,60 @@ in Architecture as Code-paradigmet are treated all arkitekturkomponenter as code
 - **Security Architecture:** Säkerhetspolicier, access controls and efterlevnadsregler
 - **Organisationsarkitektur:** TeamStructureer, processes and ansvarwhichråden
 
-This holistiska approach requires DevOps-praktiker as can handle komplexiteten of sammankopplade arkitekturelement while the maintains hastighet and kvalitet in leveransprocessen.
+This holistiska approach requires DevOps practices as can handle komplexiteten of interconnected arkitekturelement while the maintains hastighet and kvalitet in leveransprocessen.
 
 ### Nyckelfaktorer for successful svenska Architecture as Code DevOps
 
-**cultural transformation for helhetsperspektiv:** Svenska organisationer must develop a kultur as forstår architecture as a cohesive whole. This requires tvärdiscipliwhent samarbete between Developers, arkitekter, operations-team and affärsanalytiker.
+**cultural transformation for helhetsperspektiv:** Swedish organizations must develop a kultur as forstår architecture as a cohesive whole. This requires tvärdiscipliwhent samarbete between Developers, arkitekter, operations-team and affärsanalytiker.
 
-**Styrning as code:** all arkitekturstyrning, design principles and decisions are codified and is version-controlled. Architecture Decision Records (ADR), designguidelines and compliance requirements blir del of The kodifierade architecture.
+**Governance as code:** all architecture governance, design principles and decisions are codified and is version-controlled. Architecture Decision Records (ADR), design guidelines and compliance requirements becomes del of The codified architecture.
 
 **Full traceability:** From business requirements to implemented architecture must each change vara traceable through entire system landscape. This includes impact on applications, data, infrastructure and organizational processes.
 
-**Svenska efterlevnadsintegration:** GDPR, MSB-security requirements and sektorsspecifik reglering integreras naturligt in arkitekturkoden rather than as externa kontroller.
+**Svenska efterlevnadsintegration:** GDPR, MSB-security requirements and sektorsspecifik reglering integreras naturligt in arkitekturkoden rather than as externa controls.
 
 **Gemensam arkitekturutveckling:** Svensk konsensuskultur be applied at arkitekturevolution where all stakeholders contributes to arkitekturkodbasen through transparent, demokratiska processes.
 
 ## CI/CD-fundamentals for Swedish organizations
 
-Svenska organisationer opererar in a komplex regulatorisk environment as requires particular attention at implementation of CI/CD-pipelines for Architecture as Code. GDPR, Datainspektionens guidelines, MSB:s foreskrifter for critical infrastructure and sektorsspecific regleringar creates a unik context where automation must balansera effektivitet with stringenta compliance requirements.
+Swedish organizations operates in a complex regulatory environment as requires particular attention at implementation of CI/CD-pipelines for Architecture as Code. GDPR, Datainspektionens guidelines, MSB's regulations for critical infrastructure and sector-specific regulations creates a unique context where automation must balance effektivitet with stringent compliance requirements.
 
 ### Regulatorisk complexity and automation
 
-The svenska regulatory landskapet affects CI/CD-design at fundamental way. GDPR:s requirements at data protection by design and by default means to pipelines must include automatiserad validation of dataskydd-implementation. Article 25 requires to technical and organizational measures implementeras to ensure to endast personal data as is necessary for specific ändamål are treated. For Architecture as Code-pipelines means This automatiserad scanning for GDPR-compliance, data residency-validation and audit trail-generering.
+The Swedish regulatory landscape affects CI/CD-design at fundamental way. GDPR:s requirements at data protection by design and by default means to pipelines must include automated validation of data protection implementation. Article 25 requires to technical and organizational measures implementeras to ensure to endast personal data as is necessary for specific purposes are treated. For Architecture as Code-pipelines means This automated scanning for GDPR-compliance, data residency-validation and audit trail generation.
 
-Datainspektionens guidelines for technical security measures requires systematic implementation of kryptering, access controls and loggning. Traditionella manual processes for These kontroller is not only ineffektiva without also error-prone when the be applied at modern, dynamiska infrastructureer. CI/CD-automation erbjuder opportunity to systematiskt verkställa These requirements through Architecture as Codeifierade policier and automatiserad efterlevnadsvalidering.
+Datainspektionens guidelines for technical security measures requires systematic implementation of encryption, access controls and logging. Traditionella manual processes for These controls is not only ineffective without also error-prone when the be applied at modern, dynamic infrastructures. CI/CD-automation offers opportunity to systematiskt enforce These requirements through codified policies as code and automatiserad compliance validation.
 
-MSB:s foreskrifter for samhällsviktig operations requires robust incidenthantering, kontinuitetsplanering and systematic riskbedömning. For organisationer within energi, transport, finans and andra critical sektorer must CI/CD-flows include specialiserad validation for operativ motståndskraft and katastrofåterställningcreatecitet.
+MSB's regulations for samhällsviktig operations requires robust incidenthantering, kontinuitetsplanering and systematic riskbedömning. For organisationer within energi, transport, finans and andra critical sektorer must CI/CD-flows include specialiserad validation for operativ motståndskraft and katastrofåterställningcreatecitet.
 
 ### Ekonomiska considerations for Swedish organizations
 
-Kostnadsoptimering in svenska kronor requires avancerad monitoring and budgetkontroller as traditionella CI/CD-pattern not handles. Svenska foretag must handle valutaexponering, regionala prisskillnader and efterlevnadskostnader as affects infrastructureinvesteringar.
+Cost optimization in Swedish kronor requires advanced monitoring and budget controls as traditional CI/CD-pattern not handles. Svenska companies must handle currency exposure, regional price differences and compliance costs as affects infrastructure investments.
 
 Cloud provider prices vary significantly between regioner, and Swedish organizations with data residency requirements is limited to EU regions as often has higher kostnader than globala regioner. CI/CD-pipelines must therefore include cost estimation, budget threshold validation and automatiserad resursoptimering as takes into account Swedish business economics.
 
-Kvartalsvis budgetering and svenska redovisningsstandarder requires detaljerad kostnadsallokering and prognostisering as automatiserade pipelines can leverera through integration with ekonomisystem and automatiserad rapportering in svenska kronor. This enables proaktiv kostnadshantering rather than reaktiv budgetövervakning.
+Kvartalsvis budgetering and svenska redovisningsstandarder requires detaljerad kostnadsallokering and prognostisering as automated pipelines can leverera through integration with ekonomisystem and automatiserad rapportering in svenska kronor. This enables proaktiv kostnadshantering rather than reaktiv budgetövervakning.
 
 ### GDPR-compliant pipeline design
 
 GDPR compliance in CI/CD-pipelines for Architecture as Code requires a holistic approach as integrerar data protection principles in each step of automation-processen. Article 25 in GDPR mandaterar "data protection by design and by default", which means to technical and organizational measures must implementeras from forsta design-stadiet of systems and processes.
 
-For Architecture as Code betyder This to pipelines must automatically validate to all architecture as is distributed follows GDPR:s principles for data minimization, purpose limitation and storage limitation. Personal data may aldrig hardkodas in arkitekturkonfigurationer, kryptering must enforças as standard, and audit trails must genereras for all architecture changes as can affect personal data.
+For Architecture as Code means This to pipelines must automatically validate to all architecture as is distributed follows GDPR:s principles for data minimization, purpose limitation and storage limitation. Personal data may aldrig hardkodas in architecture configurations, encryption must enforced as standard, and audit trails must is generated for all architecture changes that can affect personal data.
 
-**Dataupptäckt and klassificering:** Automatiserad skanning for personuppgiftsmönster in infrastructurekod is forsta forsvarslinjen for GDPR-compliance. CI/CD-flows must implementera avancerad skanning as can identify both direkta identifierare (which personnummer) and indirekta identifierare as in kombination can be used to identify individual personer.
+**Dataupptäckt and klassificering:** Automatiserad skanning for personuppgiftsmönster in infrastructurekod is forsta forsvarslinjen for GDPR-compliance. CI/CD-flows must implement advanced skanning as can identify both direkta identifierare (which personnummer) and indirekta identifierare as in kombination can be used to identify individual personer.
 
-**Automatiserad efterlevnadsvalidering:** Policymotorer that Open Policy Agent (OPA) or molnleverantörsspecific efterlevnadsverktyg can automatically validate to infrastructurekonfigurationer follows GDPR-requirements. This includes verification of krypteringsinställningar, access controls, databevarandepolicier and gränsöverskridande dataöverforingsbegränsningar.
+**Automated compliance validation:** Policy engines that Open Policy Agent (OPA) or cloud provider-specific compliance tools can automatically validate to infrastructure configurations follows GDPR-requirements. This includes verification of encryption settings, access controls, data retention policies and cross-border data transfer restrictions.
 
-**Audit trail generation:** each pipeline-execution must generera comprehensive audit logs as documentserar what as distribuerats, of who, when and why. These logs must själva follow GDPR-principles for personuppgiftsbehandling and lagras säkert according to svenska legal retention requirements.
+**Audit trail generation:** each pipeline-execution must generera comprehensive audit logs as documents what was distributed, of who, when and why. These logs must themselves follow GDPR-principles for personal data processing and stored securely according to Swedish legal retention requirements.
 
 **GDPR-kompatibel CI/CD Pipeline for Swedish organizations**
 *[Se kodexamples 05_CODE_1 in Appendix A: Kodexamples](26_appendix_kodexamples.md#05_code_1)*
 
-This pipeline-examples demonstrerar how Swedish organizations can implementera GDPR-compliance direkt in sina CI/CD-processes, including automatic scanning for personal data and data residency validation.
+This pipeline-examples demonstrerar how Swedish organizations can implement GDPR-compliance direkt in sina CI/CD-processes, including automatic scanning for personal data and data residency validation.
 
 ## CI/CD-pipelines for Architecture as Code
 
-Architecture as Code CI/CD-pipelines differs itself from traditionella pipelines by handle multiple sammankopplade architecture domains simultaneously. instead of fokusera only at applikationskod or Architecture as Code, validates and deployar These pipelines entire architecture definitions as encompasses applications, data, infrastructure and policies as a cohesive unit.
+Architecture as Code CI/CD-pipelines differs from traditional pipelines by handle multiple interconnected architecture domains simultaneously. instead of focus only at application code or Architecture as Code, validates and deploys These pipelines entire architecture definitions as encompasses applications, data, infrastructure and policies as a cohesive unit.
 
 ### Architecture as Code Pipeline-architecture
 
@@ -171,7 +171,7 @@ jobs:
       
       - name: Konfiguration Architecture Verktyg
         run: |
-          # Installera arkitekturvalidering verktyg
+          # Installera arkitekturvalidering tools
           npm install -g @asyncapi/cli @swagger-api/swagger-validator
           pip install architectural-lint yamllint
           curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
@@ -284,7 +284,7 @@ Fail-fast feedback is a core principle where errors are detected and reported as
 
 **Syntax and static analysis:** Forsta validation-lagret kontrollerar Architecture as Code for syntax errors, undefined variables and basic configuration mistakes. Verktyg that `terraform validate`, `ansible-lint` and cloud provider-specific validatorer capture many fel before kostnadskrävande deployment-forsök.
 
-**Security and compliance scanning:** Specialiserade verktyg that Checkov, tfsec and Terrascan analyzer Architecture as Code for security misconfigurations and compliance violations. For Swedish organizations is automated GDPR scanning, encryption verification and data residency validation critical components.
+**Security and compliance scanning:** Specialiserade tools that Checkov, tfsec and Terrascan analyzer Architecture as Code for security misconfigurations and compliance violations. For Swedish organizations is automated GDPR scanning, encryption verification and data residency validation critical components.
 
 **Cost estimation and budget validation:** Infrastructure changes can ha significant economic consequences. Verktyg that Infracost can estimera kostnader for proposed infrastructure changes and validate mot organizational budgets before deployment is performed.
 
@@ -304,7 +304,7 @@ Progressiv deployment minimizes risk through gradual utrullning of infrastructur
 
 Robusta återställningcreateciteter is crucial to upprätthålla systemtoforlitlighet and meet svenska organisationers kontinuitetsrequirements.
 
-**Toståndshantering:** InfraStructuretostånd must is managed at way as enables toforlitlig recovery to previous kända fungerande konfigurationer. This includes automatiserad säkerhetskopiering of Terraform-toståndsfiler and databasögonblicksbilder.
+**Toståndshantering:** InfraStructuretostånd must is managed at way as enables toforlitlig recovery to previous kända fungerande configurations. This includes automatiserad säkerhetskopiering of Terraform-toståndsfiler and databasögonblicksbilder.
 
 **Hälsoövervakning:** Automatiserade hälsokontroller efter deployment can utlösa automatic recovery about systemforsämring upptäcks. This includes both technical mätvärden (svarstider, felfrekvenser) and verksamhetsmätvärden (transaktionsvolymer, användarengagemang).
 
@@ -314,7 +314,7 @@ Robusta återställningcreateciteter is crucial to upprätthålla systemtoforlit
 
 Multi-level testningsstrategier for Architecture as Code includes syntax validation, unit testing of moduler, integration testing of components, and complete testing of kompletta environments. each testnivå adresserar specific risker and kvalitetsaspekter with increasing complexity and exekvering-cost.
 
-Static analysis verktyg as tflint, checkov, or terrascan integreras to identify säkerhetsrisker, policy violations, and best metodavvikelser. Dynamic testing in sandbox-environments validates actual funktionalitet and performance under realistiska conditions.
+Static analysis tools as tflint, checkov, or terrascan integreras to identify säkerhetsrisker, policy violations, and best metodavvikelser. Dynamic testing in sandbox-environments validates actual funktionalitet and performance under realistiska conditions.
 
 ### Terratest for Swedish organizations
 
@@ -335,7 +335,7 @@ FROM ubuntu:22.04
 LABEL maintainer="svenska-it-team@organization.se"
 LABEL description="Efterlevnadstestning container for svenska architecture as code implementations"
 
-# Installera Fundamental verktyg
+# Installera Fundamental tools
 RUN apt-get update && apt-get install -y \
     curl \
     wget \
@@ -354,7 +354,7 @@ RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
     && mv terraform /usr/local/bin/ \
     && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-# Installera svenska compliance verktyg
+# Installera svenska compliance tools
 RUN pip3 install \
     checkov \
     terrascan \
@@ -488,9 +488,9 @@ class TestSvenskaArchitectureCompliance:
             f"Security policy gaps: {consistency_report.security_gaps}"
 ```
 
-## Kostnadsoptimering and budgetkontroll
+## Cost optimization and budgetkontroll
 
-Svenska organisationer must handle infrastructurekostnader with particular attention to valutafluktuationer, regional pricing variations and compliance-relaterade kostnader. CI/CD-pipelines must include sophisticated cost management as goes beyond simple budget alerts.
+Swedish organizations must handle infrastructurekostnader with particular attention to valutafluktuationer, regional pricing variations and compliance-relaterade kostnader. CI/CD-pipelines must include sophisticated cost management as goes beyond simple budget alerts.
 
 ### Predictive cost modeling
 
@@ -500,15 +500,15 @@ Modern cost optimization requires predictive modeling as can forecast infrastruc
 
 **Scenario modeling:** "What-if" scenarios for different deployment options enables inforwith decision-making about infrastructure investments. Organisationer can compare costs for different cloud providers, regions and service tiers.
 
-**Seasonal adjustment:** Svenska foretag with seasonal business patterns (retail, tourism, education) can optimize infrastructure costs through automated scaling based on predicted demand patterns.
+**Seasonal adjustment:** Svenska companies with seasonal business patterns (retail, tourism, education) can optimize infrastructure costs through automated scaling based on predicted demand patterns.
 
 ### Swedish-specific cost considerations
 
-Svenska organisationer has unique cost considerations as affects infrastructure spending patterns and optimization strategies.
+Swedish organizations has unique cost considerations as affects infrastructure spending patterns and optimization strategies.
 
-**Currency hedging:** Infrastructure costs in USD exponerar svenska foretag for valutarisk. Cost optimization strategies must ta consideration to currency fluctuations and potential hedging requirements.
+**Currency hedging:** Infrastructure costs in USD exponerar Swedish companies for valutarisk. Cost optimization strategies must ta consideration to currency fluctuations and potential hedging requirements.
 
-**Sustainability reporting:** Ökande corporate sustainability requirements driver interest in energy-efficient infrastructure. Cost optimization must balansera financial efficiency with environmental impact.
+**Sustainability reporting:** Ökande corporate sustainability requirements driver interest in energy-efficient infrastructure. Cost optimization must balance financial efficiency with environmental impact.
 
 **Tax implications:** Svenska skatteregler for infrastructure investments, depreciation and operational expenses affects optimal spending patterns and require integration with financial planning systems.
 
@@ -582,19 +582,19 @@ Architecture as Code requires a mogen DevOps-kultur as can handle komplexiteten 
 
 - **Transparent Architecture Governance:** all architecture decisions are documented and shared öppet within organisationen
 - **Konsensusdriven arkitekturutveckling:** Arkitekturändringar undergoes demokratiska decisionsprocesser with all stakeholders
-- **Risk-Aware Innovation:** Innovation balanseras with forsiktig riskhantering according to svenska organisationskultur
+- **Risk-Aware Innovation:** Innovation balanseras with forsiktig risk management according to svenska organisationskultur
 - **Continuous Architecture Learning:** Regelbunden competence development for entire arkitekturlandskapet
 - **Collaborative Cross-Domain Teams:** Tvärfunktionella team that owns entire arkitekturstacken
 
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
-Automation, DevOps and CI/CD-pipelines for Architecture as Code forms a critical komponent for Swedish organizations as strävar efter digital excellence and regulatory compliance. by implementera robusta, automated pipelines can organisationer accelerera arkitekturleveranser while the maintains high standarder for security, quality, and compliance.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Automation, DevOps and CI/CD-pipelines for Architecture as Code forms a critical komponent for Swedish organizations as strävar efter digital excellence and regulatory compliance. by implement robust, automated pipelines can organisationer accelerera arkitekturleveranser while the maintains high standarder for security, quality, and compliance.
 
-Architecture as Code represents next evolutionary step where DevOps-kulturen and CI/CD-processes encompasses the entire system architecture as a cohesive unit. This holistiska approach requires sophisticated pipelines as can handle applications, data, infrastructure and policies as an integrated whole, while svenska compliance-requirements uppfylls.
+Architecture as Code represents next evolutionary step where DevOps culture and CI/CD-processes encompasses the entire system architecture as a cohesive unit. This holistiska approach requires sophisticated pipelines as can handle applications, data, infrastructure and policies as an integrated whole, while svenska compliance-requirements uppfylls.
 
-Svenska organisationer has specific requirements as affects pipeline design, including GDPR compliance validation, svenska data residency requirements, cost optimization in svenska kronor, and integration with svenska business processes. These requirements requires specialized pipeline stages as automated compliance checking, cost threshold validation, and comprehensive audit logging according to svenska lagrequirements.
+Swedish organizations has specific requirements as affects pipeline design, including GDPR compliance validation, svenska data residency requirements, cost optimization in svenska kronor, and integration with svenska business processes. These requirements requires specialized pipeline stages as automated compliance checking, cost threshold validation, and comprehensive audit logging according to svenska lagrequirements.
 
 Modern CI/CD approaches that GitOps, progressive delivery, and infrastructure testing enables sophisticated deployment strategies as minimizes risk while the maximerar deployment velocity. For Swedish organizations means This particular fokus at blue-green deployments for production systems, canary releases for gradual rollouts, and automated rollback capabilities for snabb recovery.
 
@@ -602,9 +602,9 @@ Testing strategier for Architecture as Code includes multiple levels from syntax
 
 Monitoring and observability for svenska Architecture as Code pipelines requires comprehensive metrics collection as includes both technical performance indicators and business compliance metrics. Automated alerting ensures rapid response to compliance violations, cost overruns, and technical failures through integration with svenska incident management processes.
 
-Investment in sophisticated CI/CD-pipelines for Architecture as Code betalar itself through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. Which vi will to se in [chapters 6 about molnarkitektur](06_molnarkitektur.md), blir These capabilities ännu mer critical when Swedish organizations adopterar cloud-native architectures and multi-cloud strategies.
+Investment in sophisticated CI/CD-pipelines for Architecture as Code betalar itself through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. Which vi will to se in [chapter 6 about molnarkitektur](06_molnarkitektur.md), becomes These capabilities even more critical when Swedish organizations adopterar cloud-native architectures and multi-cloud strategies.
 
-successful implementation of CI/CD for Architecture as Code requires balance between automation and human oversight, particularly for production deployments and compliance-critical changes. Svenska organisationer as investerar in mature pipeline automation and comprehensive testing strategies uppnår significant competitive advantages through improved deployment reliability and accelerated innovation cycles.
+successful implementation of CI/CD for Architecture as Code requires balance between automation and human oversight, particularly for production deployments and compliance-critical changes. Swedish organizations as investerar in mature pipeline automation and comprehensive testing strategies uppnår significant competitive advantages through improved deployment reliability and accelerated innovation cycles.
 
 References:
 - Jenkins. "Architecture as Code with Jenkins." Jenkins Documentation.
@@ -617,5 +617,5 @@ References:
 - Swedish Data Protection Authority. "Technical and Organizational Measures." Datainspektionen Guidelines.
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - The DevOps Institute. "Architecture-Driven DevOps Practices." DevOps Research and Assessment.
-- Datainspektionen. "GDPR for Swedish organizations." Guidance about personuppgiftsbehandling.
+- Datainspektionen. "GDPR for Swedish organizations." Guidance about personal data processing.
 - Myndigheten for societal protection and beredskap (MSB). "Säkerhetsskydd for informationssystem." MSBFS 2020:6.

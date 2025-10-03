@@ -80,11 +80,11 @@ jobs:
           publish_dir: ./docs/dist
 ```
 
-Moderna verktyg that GitBook, Gitiles and MkDocs enables automatic generering of webbdocumentsation from Markdown-filer lagrade together with the code.
+Moderna tools that GitBook, Gitiles and MkDocs enables automatic generering of webbdocumentsation from Markdown-filer lagrade together with the code.
 
 ## Requirements as Code
 
-Requirements as Code (RaC) transformerar traditional requirementsspecifiction from text documents to machine-readable code as can exekveras, valitheir and automatiseras. This paradigmskifte enables kontinuerlig verification of to systemet meets sina requirements through entire utvecklingslivscykeln.
+Requirements as Code (RaC) transformerar traditional requirementsspecifiction from text documents to machine-readable code as can exekveras, valitheir and automatiseras. This paradigm shift enables continuous verification of to systemet meets sina requirements through entire utvecklingslivscykeln.
 
 ### automation and traceability
 
@@ -107,7 +107,7 @@ spec:
   requirements:
     - id: SEC-001
       type: security
-      description: "all S3 buckets must ha kryptering aktiverad"
+      description: "all S3 buckets must ha encryption aktiverad"
       priority: critical
       compliance: ["GDPR", "ISO27001"]
       policy: |
@@ -121,7 +121,7 @@ spec:
     
     - id: GDPR-001
       type: compliance  
-      description: "Persondata must lagras within EU/EES"
+      description: "Persondata must is stored within EU/EES"
       priority: critical
       compliance: ["GDPR"]
       policy: |
@@ -136,7 +136,7 @@ spec:
 
 ### validation and test-automation
 
-Requirements as Code integreras naturligt with test-automation by requirements blir executable specifications:
+Requirements as Code integreras naturligt with test-automation by requirements becomes executable specifications:
 
 ```python
 # test/requirements_validation.py
@@ -174,7 +174,7 @@ class RequirementsValidator:
         }
 ```
 
-Svenska organisationer drar particular nytta of Requirements as Code to automatically validate GDPR-compliance, finansiella regleringar and myndighetsrequirements as konstant must uppfyllas.
+Swedish organizations drar particular nytta of Requirements as Code to automatically validate GDPR-compliance, finansiella regulations and myndighetsrequirements as konstant must uppfyllas.
 
 Sources:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.

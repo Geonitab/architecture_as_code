@@ -1,4 +1,4 @@
-# chapters 20: Use Lovable to create mockups for Swedish organizations
+# chapter 20: Use Lovable to create mockups for Swedish organizations
 
 ![Lovable Workflow Diagram](images/diagram_21_kapitel20.png)
 
@@ -6,7 +6,7 @@
 
 Lovable is a AI-driven utvecklingsplattform as revolutionerar how Swedish organizations can create interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb development of användargränssnitt as is anpassade for svenska compliance requirements and användarforväntningar.
 
-For Swedish organizations means This a unik possibility to:
+For Swedish organizations means This a unique possibility to:
 - Accelerera prototyputveckling with fokus at svenska språket and cultural context
 - Ensure compliance from beginning of designprocessen
 - Integrera with svenska e-legitimationstjänster redan in mockup-fasen
@@ -300,7 +300,7 @@ class WCAGCompliance {
   }
   
   setupKeyboardAccess() {
-    // all interaktiva element ska vara tangentbordstillgängliga
+    // all interaktiva element should be tangentbordstillgängliga
     const interactiveElements = document.querySelectorAll(
       'button, a, input, select, textarea, [tabindex]'
     );
@@ -421,8 +421,8 @@ export class SwedishPerformanceOptimizer {
 ## Summary and next step
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
-Lovable erbjuder Swedish organizations a kraftfull plattform to create compliance-withvetna mockups and prototyper. by integrera svenska e-legitimationstjänster, implementera WCAG 2.1 AA-standarder and follow GDPR-guidelines from beginning, can organisationer:
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Lovable offers Swedish organizations a kraftfull plattform to create compliance-withvetna mockups and prototyper. by integrera svenska e-legitimationstjänster, implement WCAG 2.1 AA-standarder and follow GDPR-guidelines from beginning, can organisationer:
 
 1. **Accelerera development process** with AI-driven kodgenerering
 2. **Ensure compliance** redan in mockup-fasen
@@ -434,7 +434,7 @@ Lovable erbjuder Swedish organizations a kraftfull plattform to create complianc
 1. **Pilotprojekt**: Starta with A smaller projekt to validate approach
 2. **Teamutbildning**: Utbilda Developers in Lovable and svenska compliance-requirements
 3. **Processintegration**: Integrera Lovable in existing utvecklingsprocesser
-4. **Kontinuerlig improvement**: Etablera feedback-loopar for användbarhet and compliance
+4. **Continuous improvement**: Etablera feedback-loopar for användbarhet and compliance
 
 **Viktiga resurser:**
 - [Digg - Guidance for webbtillgänglighet](https://www.digg.se/webbtillganglighet)

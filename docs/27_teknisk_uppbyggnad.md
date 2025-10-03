@@ -1,10 +1,10 @@
 # technical uppbyggnad for bokproduktion
 
-This chapters describes The technical infrastructureen and arbetsflödet as is used to create, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk application of Architecture as Code-principerna by use code to definiera and automatisera entire bokproduktionsprocessen.
+This chapter describes The technical infrastructureen and arbetsflödet as is used to create, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk application of Architecture as Code-principerna by use code to definiera and automatisera entire bokproduktionsprocessen.
 
 ![technical architecture for bokproduktion](images/diagram_27_teknisk_uppbyggnad.png)
 
-*The diagram illustrates the comprehensive technical systemet as driver bokproduktionen, from markdown-Sources via automatiserade pipelines to slutliga publikationer.*
+*The diagram illustrates the comprehensive technical systemet as driver bokproduktionen, from markdown-Sources via automated pipelines to slutliga publikationer.*
 
 ![Architecture Data Model](images/diagram_27_er_architecture.png)
 
@@ -14,24 +14,24 @@ Ovanstående entitetsrelationsdiagram shows The logiska dataStructureen for how 
 
 ### Filorganisation and namnkonvention
 
-Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where each File represents A chapters:
+Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where each File represents A chapter:
 
 ```
 docs/
 ├── 01_inledning.md                    # Introduktion and vision
 ├── 02_grundlaggande_principer.md      # Fundamental Concepts
 ├── 03_versionhantering.md             # Git and version control
-├── ...                                # Tekniska chapters (04-22)
+├── ...                                # Tekniska chapter (04-22)
 ├── 23_slutsats.md                     # Avslutning
 ├── 24_ordlista.md                     # Terminologi
 ├── 25_om_forfattarna.md               # Författarinformation
 ├── 26_appendix_kodexempel.md          # Tekniska example
-└── 27_teknisk_uppbyggnad.md           # This chapters
+└── 27_teknisk_uppbyggnad.md           # This chapter
 ```
 
 ### Markdown-struktur and semantik
 
-each chapters follows a konsistent structure as optimerar both läsbarhet and maskinell bearbetning:
+each chapter follows a konsistent structure as optimerar both läsbarhet and maskinell bearbetning:
 
 ```markdown
 # Kapiteltitel (H1 - creates new sida in PDF)
@@ -57,7 +57,7 @@ Systemet uses `generate_book.py` to automatically generera and uppdatera kapitel
 
 - **Iterativ generering**: creates Contents in kontrollerade batch-processes
 - **Mermaid-integration**: Automatisk generering of diagram-placeholders
-- **Konsistenshållning**: ensures enhetlig structure over all chapters
+- **Konsistenshållning**: ensures enhetlig structure over all chapter
 - **version control**: all changes is tracked through Git
 
 ## Pandoc: Konvertering and formatering
@@ -91,7 +91,7 @@ metadata:
 
 1. **Miljövalidering**: Kontrollerar Pandoc, XeLaTeX and Mermaid CLI
 2. **Diagram-konvertering**: Konverterar `.mmd`-filer to PNG-format
-3. **PDF-generering**: Sammanställer all chapters to a sammanhållen bok
+3. **PDF-generering**: Sammanställer all chapter to a sammanhållen bok
 4. **Format-variationer**: Stöd for PDF, EPUB and DOCX-export
 
 ```bash
@@ -103,7 +103,7 @@ for mmd_file in images/*.mmd; do
          --width 1400 --height 900
 done
 
-# Generera PDF with all chapters
+# Generera PDF with all chapter
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o arkitektur_som_kod.pdf
 ```
 
@@ -174,7 +174,7 @@ jobs:
 - Kvadrat-branding and professionell styling
 
 **Whitepaper Generation** (`generate-whitepapers.yml`):
-- Individuella HTML-documents per chapters
+- Individuella HTML-documents per chapter
 - Standalone-format for distribution
 - SEO-optimerat and print-vänligt
 
@@ -267,7 +267,7 @@ Designsystemet implement Kvadrat-identiteten:
 
 `generate_whitepapers.py` creates standalone HTML-documents:
 
-- **26 individuella whitepapers**: A per chapters
+- **26 individuella whitepapers**: A per chapter
 - **Professionell HTML-design**: Responsiv and print-vänlig
 - **Svenska anpassningar**: Optimerat for Swedish organizations
 - **SEO-optimering**: Korrekt meta-data and structure
@@ -283,18 +283,18 @@ Entire systemet exemplifierar Architecture as Code through:
 2. **Automatiserad pipeline**: Ingen manuell intervention krävs
 3. **version control**: Fullständig history of all changes
 4. **reproducibility**: Identiska builds from same source code
-5. **scalability**: Enkelt to lägga to new chapters and format
+5. **scalability**: Enkelt to lägga to new chapter and format
 
 ### Kvalitetssäkring and testing
 
-- **Automatiserad validation**: Kontinuerlig kontroll of Contents and format
-- **Build-verification**: ensures all format genereras korrekt
+- **Automatiserad validation**: Continuous kontroll of Contents and format
+- **Build-verification**: ensures all format is generated korrekt
 - **Performance-monitoring**: Spårning of build-tider and resursanvändning
 - **Error-handling**: Robusta felwithdelanden and återställningsmekanismer
 
 ### Framtida development
 
-Systemet is designat for kontinuerlig improvement:
+Systemet is designat for continuous improvement:
 - **Modulär architecture**: Enkelt to uppdatera individual components
 - **API-possibilities**: Potential for integration with externa systems
 - **Skalning**: Stöd for fler format and distributionskanaler
@@ -303,7 +303,7 @@ Systemet is designat for kontinuerlig improvement:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
 The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk application of bokens own principles. by kodifiera entire publikationsprocessen is achieved:
 
 - **Architecture as Code-automation**: Komplett CI/CD for bokproduktion
@@ -312,7 +312,7 @@ The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk appl
 - **scalability**: Enkelt to utöka with nytt Contents and format
 - **Transparens**: Open source code and documentserad process
 
-This technical systems functions as a konkret illustration of how Architecture as Code-principerna can be applied also utanfor traditionella IT-systems, which creates value through automation, reproducibility and kontinuerlig improvement.
+This technical systems functions as a konkret illustration of how Architecture as Code-principerna can be applied also utanfor traditional IT-systems, which creates value through automation, reproducibility and continuous improvement.
 
 Sources:
 - GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.

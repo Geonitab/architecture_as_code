@@ -2,31 +2,31 @@
 
 ![Compliance and Regulatory Adherence](images/diagram_12_compliance.png)
 
-Infrastructure as Code spelar a central roll to meet growing compliance requirements and regulatory expectations. Which vi saw in [chapters 11 about policy as code](11_policy_sakerhet.md), can technical solutions for automatiserad compliance significantly simplify and improve organisationers ability to meet complex regulatory requirements. This chapters focuses on the organizational and process-related aspekterna of compliance management through Infrastructure as Code.
+Infrastructure as Code spelar a central roll to meet growing compliance requirements and regulatory expectations. Which vi saw in [chapter 11 about policy as code](11_policy_sakerhet.md), can technical solutions for automatiserad compliance significantly simplify and improve organisationers ability to meet complex regulatory requirements. This chapter focuses on the organizational and process-related aspekterna of compliance management through Infrastructure as Code.
 
 ## AI and maskininlärning for infrastrukturarchitecture as code-automation
 
-Artificiell intelligens revolutionerar Infrastructure as Code through intelligent automation, prediktiv skalning and självläkande systems. Maskininlärningsalgoritmer analyzer historiska data to optimera resource allocation, forutsäga fel and automatically adjust infrastructurekonfigurationer based on changing efterfrågemönster.
+Artificiell intelligens revolutionerar Infrastructure as Code through intelligent automation, prediktiv skalning and självläkande systems. Maskininlärningsalgoritmer analyzer historiska data to optimera resource allocation, forutsäga fel and automatically adjust infrastructure configurations based on changing efterfrågemönster.
 
 Intelligent resursoptimering uses AI to kontinuerligt adjust infrastructureinställningar for optimal kostnad, performance and sustainability. Algoritmer can automatically adjust instansstorlekar, lagringskonfigurationer and nätverksinställningar based on realtidsanvändningsmönster and affärsmål.
 
-Automatiserade incident response-systems utnyttjar AI to upptäcka anomalier, diagnostisera problem and implementera korrigerande measures without human intervention. Natural language processing enables konversationsgränssnitt for infrastructurehantering, which does complex operationer available for icke-technical stakeholders.
+Automatiserade incident response-systems utnyttjar AI to upptäcka anomalier, diagnostisera problem and implement korrigerande measures without human intervention. Natural language processing enables konversationsgränssnitt for infrastructure management, which does complex operationer available for icke-technical stakeholders.
 
 ## Cloud-native and serverless development
 
 Serverless computing continues to is developed bortom enkla function-as-a-service mot comprehensive serverless-arkitekturer. Architecture as Code must adapted to handle händelsedrivna arkitekturer, automatic skalning and pay-per-use-prismodor as karakteriserar serverless-plattformar.
 
-Händelsedriven architecture reagerar automatically at affärshändelser and systemforhållanden. Arkitekturdefinitioner includes händelseutlösare, responsmekanismer and komplex workflow-orkestrering as enables reaktiv architecture as anpassar itself to changing requirements in realtid.
+Händelsedriven architecture reagerar automatically at affärshändelser and systemforhållanden. Arkitekturdefinitioner includes händelseutlösare, responsmekanismer and complex workflow-orkestrering as enables reaktiv architecture as anpassar itself to changing requirements in realtid.
 
 Edge computing-integration requires distributed arkitekturhanteringsmöjligheter as handles latenskänsliga arbetsbelastningar, lokal databehandling and intermittent anslutning. Architecture as Code tool must support hybrid edge-cloud-arkitekturer with synkroniserad konfigurationshantering.
 
-## Policydriven infrastruktur and styrning
+## Policydriven infrastruktur and governance
 
-Policy as Code blir all mer sofistikerat with automatiserad compliance-kontroll, kontinuerlig styrningsverkställighet and dynamisk policyanpassning. Policyer is developed from static rules mot intelligenta guidelines as anpassar itself based on context, riskbedömning and affärsmål.
+Policy as Code becomes all mer sofistikerat with automatiserad compliance-kontroll, continuous styrningsverkställighet and dynamisk policyanpassning. Policyer is developed from static rules mot intelligenta guidelines as anpassar itself based on context, riskbedömning and affärsmål.
 
-Automatiserade compliance-ramverk integrerar regulatory requirements direkt in Architecture as Code-workflows. Kontinuerlig compliance-monitoring ensures architecture changes maintains compliance of security standards, branschregleringar and organizational policyer without manuell intervention.
+Automatiserade compliance-ramverk integrerar regulatory requirements direkt in Architecture as Code-workflows. Continuous compliance-monitoring ensures architecture changes maintains compliance of security standards, branschregleringar and organizational policyer without manuell intervention.
 
-Zero-trust-arkitekturprinciper blir inbäddade in infrastructure definitions as standardpraxis. each komponent, anslutning and åtkomstbegäran requires explicitly verification and auktorisering, which creates a inneboende secure infrastructure for modern hotlandskap.
+Zero-trust-arkitekturprinciper becomes inbäddade in infrastructure definitions as standardpraxis. each komponent, anslutning and åtkomstbegäran requires explicitly verification and auktorisering, which creates a inneboende secure infrastructure for modern hotlandskap.
 
 ## Kvantdatorer and next generations technologies
 
@@ -38,9 +38,9 @@ Kvantforstärkta optimeringsalgoritmer can lösa complex infrastructureplacering
 
 ## Sustainability and green databehandling
 
-Miljöhållbarhet blir central övervägande for infrastructuredesign and drift. Kolwithveten infrastructurehantering skiftar automatically arbetsbelastningar to regioner with togänglighet for fornybar energi, optimerar for energieffektivitet and minimizes miljöpåverkan.
+Miljöhållbarhet becomes central övervägande for infrastructuredesign and drift. Kolwithveten infrastructure management skiftar automatically arbetsbelastningar to regioner with togänglighet for fornybar energi, optimerar for energieffektivitet and minimizes miljöpåverkan.
 
-Integration of fornybar energi requires dynamisk infrastructurehantering as anpassar beräkningsarbetsbelastningar to togången at ren energi. Smart grid-integration and energilagringskoordinering blir integrerade parts of infrastructureautomation.
+Integration of fornybar energi requires dynamisk infrastructure management as anpassar beräkningsarbetsbelastningar to togången at ren energi. Smart grid-integration and energilagringskoordinering becomes integrerade parts of infrastructureautomation.
 
 Cirkulär ekonomi-principles toämpade at architecture includes automatiserad hårdvarulivscykelhantering, resursåtervinningsoptimering and avfallsreduceringsstrategier. Architecture as Code includes hållbarhetsmetriker and miljöpåverkanshänsyn as forstklassiga bekymmer.
 
@@ -234,12 +234,12 @@ resource "aws_vpc" "kvantsäker" {
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructurehantering in Swedish organizations.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
 Framtida Infrastructure as Code-development will to drivas of AI-automation, serverless-arkitekturer, beredskap for kvantdatorer and hållbarhetsrequirements. Organisationer must proaktivt investera in new technologies, develop kvantsäkra security strategies and integrera miljöhänsyn in infrastructureplanering.
 
 success requires kontinuerligt lärande, strategisk teknologiadoption and long-term vision for infrastructure development. Which vi has sett genAbout the Books progression from [Fundamental principles](02_grundlaggande_principer.md) to These advanced framtida technologies, is developed Infrastructure as Code kontinuerligt to meet new Challenges and possibilities.
 
-Svenska organisationer as investerar in These emerging technologies and maintains krypto-agilitet will to vara välpositionerade for framtida teknologiska disruptions. Integration of These technologies requires both technical expertis and organisatorisk anpassningsformåga as diskuteras in [chapters 17 about organisatorisk change](17_organisatorisk_forandring.md).
+Swedish organizations as investerar in These emerging technologies and maintains krypto-agilitet will to vara välpositionerade for framtida teknologiska disruptions. Integration of These technologies requires both technical expertis and organisatorisk anpassningsformåga as diskuteras in [chapter 17 about organisatorisk change](17_organisatorisk_forandring.md).
 
 ## Sources and referenser
 
