@@ -313,7 +313,8 @@ def main():
         'README.md', 'BOOK_REQUIREMENTS.md', 'bot.md',
         'AUTOMATION_WORKFLOWS.md', 'DESIGN_SYSTEM.md',
         'BRAND_GUIDELINES.md', 'VISUAL_ELEMENTS_GUIDE.md',
-        'TEST_WORKFLOW.md', 'SOLUTION_SUMMARY.md', 'DOCS_PROTECTION.md'
+        'TEST_WORKFLOW.md', 'SOLUTION_SUMMARY.md', 'DOCS_PROTECTION.md',
+        'CICD_SETUP.md', 'TRANSLATION_PROJECT.md', 'WORKFLOWS.md'
     ]
     
     for filename in root_files:
@@ -324,7 +325,9 @@ def main():
     # All docs files
     docs_dir = Path('docs')
     if docs_dir.exists():
-        for pattern in ['[0-9][0-9]_*.md', 'README.md', 'BOOK_COVER_DESIGN.md', 'TERMINOLOGI_JUSTERING.md']:
+        for pattern in ['[0-9][0-9]_*.md', 'README.md', 'BOOK_COVER_DESIGN.md', 'TERMINOLOGI_JUSTERING.md', 
+                        'ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md', 'EPUB_VALIDATION.md', 
+                        'SVENGELSKA_FIXES_SUMMARY.md', 'language_deviations_issue.md']:
             for path in docs_dir.glob(pattern):
                 if not path.stem.endswith('_en'):
                     files_to_process.append(path)
