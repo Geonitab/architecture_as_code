@@ -161,27 +161,27 @@ const BookOverview = () => {
             <CardContent>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/20">
-                  <h3 className="font-semibold mb-2">Grundläggande koncept</h3>
+                  <h3 className="font-semibold mb-2">Del 1: Grunder</h3>
                   <p className="text-sm text-muted-foreground mb-2">Kapitel 1-4</p>
-                  <p className="text-sm">Fundamental principles, core tools och basic workflows</p>
+                  <p className="text-sm">Grundläggande koncept, principer och dokumentationspraxis</p>
                 </div>
                 
                 <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/20">
-                  <h3 className="font-semibold mb-2">Tekniska implementationer</h3>
-                  <p className="text-sm text-muted-foreground mb-2">Kapitel 5-12</p>
-                  <p className="text-sm">Security, scaling, compliance och specialized use cases</p>
+                  <h3 className="font-semibold mb-2">Del 2: Teknisk implementation</h3>
+                  <p className="text-sm text-muted-foreground mb-2">Kapitel 5-11</p>
+                  <p className="text-sm">Automation, molnarkitektur, säkerhet och compliance</p>
                 </div>
                 
                 <div className="p-4 bg-orange-500/10 rounded-lg border border-orange-500/20">
-                  <h3 className="font-semibold mb-2">Organisatoriska aspekter</h3>
-                  <p className="text-sm text-muted-foreground mb-2">Kapitel 13-18</p>
-                  <p className="text-sm">Team dynamics, cultural change och cost optimization</p>
+                  <h3 className="font-semibold mb-2">Del 3: Testning & drift</h3>
+                  <p className="text-sm text-muted-foreground mb-2">Kapitel 12-15</p>
+                  <p className="text-sm">Teststrategier, praktisk implementation och kostnadsoptimering</p>
                 </div>
                 
                 <div className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/20">
-                  <h3 className="font-semibold mb-2">Framtiden</h3>
-                  <p className="text-sm text-muted-foreground mb-2">Kapitel 19-23</p>
-                  <p className="text-sm">Emerging technologies och next-generation approaches</p>
+                  <h3 className="font-semibold mb-2">Del 4: Organisation & framtid</h3>
+                  <p className="text-sm text-muted-foreground mb-2">Kapitel 16-24</p>
+                  <p className="text-sm">Organisationsförändring, team, digitalisering och framtidsperspektiv</p>
                 </div>
               </div>
             </CardContent>

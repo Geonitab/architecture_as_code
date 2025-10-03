@@ -1,158 +1,143 @@
 # Architecture as Code - Bokstruktur
 
-This Document describes The logiska Structureen for boken "Architecture as Code" which is organized in 25 chapters as builds on varandra to provide a complete understanding of Architecture as Code and Infrastructure as Code for Swedish organizations.
+This document describes the logical structure for the book "Architecture as Code" which is organized in four distinct parts with 23 main chapters that build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for Swedish organizations.
+
+## Table of Contents
+
+### Part 1: Fundamentals (Chapters 1-4)
+Foundational concepts, principles, and documentation practices
+
+### Part 2: Implementation & Technology (Chapters 5-11)
+Technical implementation, cloud architecture, security, and compliance
+
+### Part 3: Testing & Operations (Chapters 12-15)
+Testing strategies, practical implementation, cost optimization, and migration
+
+### Part 4: Organization & Future (Chapters 16-23)
+Organizational transformation, teams, digitalization, future trends, and conclusion
+
+---
 
 ## Chapter Structure
 
-### Part 1: Fundamentals and Core Concepts (chapters 1-4)
+### Part 1: Fundamentals (Chapters 1-4)
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
+**Focus:** Foundational concepts, principles, and documentation practices for Architecture as Code
+
+| Chapter | File | Title | Description |
+|---------|------|-------|-------------|
 | 1 | `01_inledning.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Infrastructure as Code |
-| 2 | `02_grundlaggande_principer.md` | Fundamental Principles of Architecture as Code | fundamental principles as declarative architecture definition and helhetsperspektiv |
+| 2 | `02_grundlaggande_principer.md` | Fundamental Principles of Architecture as Code | Fundamental principles including declarative architecture definition and holistic perspective |
 | 3 | `03_versionhantering.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
 
-### Part 2: Core Implementation (chapters 5-9)
+### Part 2: Implementation & Technology (Chapters 5-11)
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
+**Focus:** Technical implementation, cloud architecture, containerization, security, and compliance
+
+| Chapter | File | Title | Description |
+|---------|------|-------|-------------|
 | 5 | `05_automatisering_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
 | 6 | `06_molnarkitektur.md` | Cloud Architecture as Code | Cloud-native architecture and IaC in cloud environments |
-| 7 | `07_containerisering.md` | Containerization and Orchestration as code | Container-based Architecture as Code |
+| 7 | `07_containerisering.md` | Containerization and Orchestration as Code | Container-based Architecture as Code |
 | 8 | `08_microservices.md` | Microservices-Architecture as Code | Microservices patterns implemented through code |
-
-### Part 3: Security and Compliance (chapters 9-11)
-
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
 | 9 | `09_sakerhet.md` | Security in Architecture as Code | Security aspects and best practices |
-| 10 | `10_policy_sakerhet.md` | Policy and säkerhet as code in detalj | Detailed review of policy-as-code |
-| 11 | `11_compliance.md` | Compliance and Regulatory Adherence | Regelefterlevnad in svenska organisationer |
+| 10 | `10_policy_sakerhet.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |
+| 11 | `11_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance in Swedish organizations |
 
-### Del 4: testing and kvalitetssäkring (chapters 12-13)
+### Part 3: Testing & Operations (Chapters 12-15)
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 12 | `12_teststrategier.md` | Teststrategier for infrastruktukod | testing of IaC and architecture code |
-| 13 | `13_praktisk_implementation.md` | Architecture as Code in praktiken | Praktiska implementeringsExample |
+**Focus:** Testing strategies, practical implementation, cost optimization, and migration
 
-### Del 5: Drift and handling (chapters 14-15)
+| Chapter | File | Title | Description |
+|---------|------|-------|-------------|
+| 12 | `12_teststrategier.md` | Testing Strategies for Infrastructure Code | Testing of IaC and architecture code |
+| 13 | `13_praktisk_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
+| 14 | `14_kostnadsoptimering.md` | Cost Optimization and Resource Management | Economic optimization of resources |
+| 15 | `15_migration.md` | Migration from Traditional Infrastructure | Migration strategies and best practices |
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 14 | `14_kostnadsoptimering.md` | Cost Optimization and Resource Management | Ekonomisk optimering of resurser |
-| 15 | `15_migration.md` | Migration from Traditional Infrastructure | Migrationstrategier and best practices |
+### Part 4: Organization & Future (Chapters 16-23)
 
-### Del 6: organizational aspekter (chapters 16-18)
+**Focus:** Organizational transformation, team development, digitalization, and future perspectives
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 16 | `16_organisatorisk_forandring.md` | Organisatorisk change and teamStructureer | Organisationsutveckling for IaC |
-| 17 | `17_team_Structure.md` | Team Structure and Competenciesutveckling for IaC | Teamorganisation and competence development |
-| 18 | `18_digitalisering.md` | Digitalisering through kodbaserad infrastructure | Digital transformation through IaC |
+| Chapter | File | Title | Description |
+|---------|------|-------|-------------|
+| 16 | `16_organisatorisk_forandring.md` | Organizational Change and Team Structures | Organizational development for IaC |
+| 17 | `17_team_struktur.md` | Team Structure and Competency Development for IaC | Team organization and competency development |
+| 18 | `18_digitalisering.md` | Digitalization through Code-based Infrastructure | Digital transformation through IaC |
+| 19 | `19_lovable_mockups.md` | Using Lovable to Create Mockups for Swedish Organizations | AI-driven development and prototyping |
+| 20 | `20_framtida_trender.md` | Future Trends in Architecture as Code | Development trends and technological future |
+| 21 | `21_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
+| 22 | `22_slutsats.md` | Conclusion | Concluding reflections |
+| 23 | `23_ordlista.md` | Glossary | Glossary and definitions |
+| 24 | `24_om_forfattarna.md` | About the Authors | Information about the authors |
 
-### Del 7: advanced ämnen and framtid (chapters 19-21)
+### Appendices
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 19 | `19_lovable_mockups.md` | Använd Lovable to skapa mockups for Swedish organizations | AI-driven development and prototyping |
-| 20 | `20_framtida_trender.md` | Future Trends in Architecture as Code | Utvecklingstrender and teknologisk framtid |
-| 21 | `21_best_practices.md` | Best Practices and Lessons Learned | Summary of bästa praxis |
+| File | Title | Description |
+|------|-------|-------------|
+| `25_framtida_utveckling.md` | Future Development and Trends | Extended perspectives on future developments |
+| `26_appendix_kodexempel.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
+| `27_teknisk_uppbyggnad.md` | Technical Structure for Book Production | Technical book production infrastructure |
 
-### Del 8: Avslutning (chapters 22-24)
+---
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 22 | `22_Conclusion.md` | Conclusion | Sammanfattande reflektioner |
-| 23 | `23_Glossary.md` | Glossary | Glossary and definitioner |
-| 24 | `24_om_forfattarna.md` | About the Authors | Information About the Authors |
+## Book Organization Principles
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 13 | `13_teststrategier.md` | Teststrategier for infrastruktukod | testing of IaC and architecture code |
-| 14 | `14_praktisk_implementation.md` | Architecture as Code in praktiken | Praktiska implementeringsExample |
+The book's four-part structure follows a logical progression:
 
-### Del 5: Drift and handling (chapters 15-16)
+1. **Part 1: Fundamentals** - Establishes core concepts and principles that underpin all Architecture as Code work
+2. **Part 2: Implementation & Technology** - Dives deep into technical implementation across various architectural domains
+3. **Part 3: Testing & Operations** - Covers quality assurance, practical application, and operational concerns
+4. **Part 4: Organization & Future** - Addresses organizational transformation and future perspectives
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 15 | `15_kostnadsoptimering.md` | Cost Optimization and Resource Management | Ekonomisk optimering of resurser |
-| 16 | `16_migration.md` | Migration from Traditional Infrastructure | Migrationstrategier and best practices |
+This structure ensures:
+- **Logical progression**: Each part builds upon knowledge from previous parts
+- **Thematic grouping**: Related topics are covered together for better comprehension
+- **Balance**: Theory and practice are balanced throughout all parts
+- **Adaptability**: Content is adapted for Swedish organizational contexts and regulatory requirements
 
-### Del 6: organizational aspekter (chapters 17-19)
+## Diagrams and Images
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 17 | `17_organisatorisk_forandring.md` | Organisatorisk change and teamStructureer | Organisationsutveckling for IaC |
-| 18 | `18_team_Structure.md` | Team Structure and Competenciesutveckling for IaC | Teamorganisation and competence development |
-| 19 | `19_digitalisering.md` | Digitalisering through kodbaserad infrastructure | Digital transformation through IaC |
+The `images/` directory contains:
+- **Mermaid files** (`.mmd`): Source code for diagrams that are automatically converted to PNG
+- **PNG files** (`.png`): Generated diagram images used in the book
 
-### Del 7: advanced ämnen and framtid (chapters 20-22)
+Each chapter has associated diagrams that illustrate key concepts and processes.
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 20 | `20_lovable_mockups.md` | Använd Lovable to skapa mockups for Swedish organizations | AI-driven development and prototyping |
-| 21 | `21_framtida_trender.md` | Framtida trender and technologies | Kommande utvecklingar within området |
-| 22 | `22_best_practices.md` | Best Practices and Lessons Learned | Samlade erfarenheter and Recommendations |
+## Build Process
 
-### Del 8: Avslutning (chapters 23-25)
+The book is built automatically through:
 
-| chapters | File | Title | Description |
-|---------|-----|-------|-------------|
-| 23 | `23_Conclusion.md` | Conclusion | Summary and framtidsperspektiv |
-| 24 | `24_Glossary.md` | Glossary | Definitioner of viktiga termer |
-| 25 | `25_om_forfattarna.md` | About the Authors | Information About the Books forfattare |
+1. **Diagram generation**: Mermaid diagrams are converted to PNG images
+2. **PDF generation**: All chapters are combined into a complete PDF using Pandoc
+3. **Version control**: The entire process is version controlled via Git
 
-## Diagram and bilder
-
-Katalogen `images/` Contentser:
-- **Mermaid-filer** (`.mmd`): Källkod for diagram as automatically konverteras to PNG
-- **PNG-filer** (`.png`): Genererade diagrambilder as används in boken
-
-each chapters has associerade diagram as illustrerar viktiga concepts and processes.
-
-## Byggprocess
-
-Boken byggs automatically through:
-
-1. **Diagram-generering**: Mermaid diagrams konverteras to PNG-bilder
-2. **PDF-generering**: all chapters kombineras to a komplett PDF with Pandoc
-3. **version control**: Entire processen is versionshanterad via Git
-
-### Lokalt byggande
+### Local Building
 
 ```bash
-# Bygg entire boken
+# Build the complete book
 cd docs
 ./build_book.sh
 ```
 
 ### CI/CD
 
-Boken byggs automatically at ändringar in `docs/` katalogen through GitHub Actions.
-
-## chapters navigation
-
-Kapitlen is numrerade 01-25 and organiserade for to:
-- **Bygga at varandra logiskt**: each chapters forutsätter knowledge from previous chapters
-- **Gruppera relaterade ämnen**: Liknande ämnen behandlas tosammans
-- **Balansera teori and praktik**: Teoretiska grunder följs of praktiska implementationer
-- **Anpassas for svenska forhållanden**: Specifika hänsyn to svenska regelkrav and organisationskultur
+The book is built automatically when changes are made to the `docs/` directory through GitHub Actions.
 
 ## Target Audience
 
-Boken riktar itself to:
-- IT-arkitekter and systemdesigners
-- DevOps Engineers and infraStructurespecialister
-- Developers as arbetar with cloud technologies
-- Teknikledare and beslutsfattare
-- Project Managers for digitaliseringsinitiativ
+This book is intended for:
+- IT architects and system designers
+- DevOps engineers and infrastructure specialists
+- Developers working with cloud technologies
+- Technology leaders and decision makers
+- Project managers for digitalization initiatives
 
-## Författare and bidragsgivare
+## Authors and Contributors
 
-Se `25_om_forfattarna.md` for detaljerad information About the Books forfattare and bidragsgivare.
+See `24_om_forfattarna.md` for detailed information about the book's authors and contributors.
 
 ---
 
-*This documentation uppdaterades senast: 2024-09-20*
+*Last updated: 2024-12-03*

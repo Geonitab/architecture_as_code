@@ -14,189 +14,189 @@ const ChaptersOverview = () => {
     { 
       id: "01", 
       title: "Inledning till arkitektur som kod", 
-      area: "Grundläggande koncept",
+      area: "Del 1: Grunder",
       summary: "En introduktion till Infrastructure as Code och dess fundamentala principer. Täcker bakgrund, motivation och definierar omfattningen för kodbaserad infrastruktur.",
       keyTopics: ["IaC definition", "Traditionella utmaningar", "Svenska drivkrafter", "Compliance krav"]
     },
     { 
       id: "02", 
       title: "Grundläggande principer för Infrastructure as Code", 
-      area: "Grundläggande koncept",
+      area: "Del 1: Grunder",
       summary: "Fundamentala principer som säkerställer framgångsrik IaC-implementation. Fokus på deklarativ approach, versionskontroll och automatisering.",
       keyTopics: ["Deklarativ vs imperativ", "Versionskontroll", "Automatisering", "Reproducerbarhet"]
     },
     { 
       id: "03", 
       title: "Versionhantering och kodstruktur", 
-      area: "Systemutveckling",
+      area: "Del 1: Grunder",
       summary: "Best practices för att strukturera och versionshantera infrastrukturkod. Inkluderar Git workflows och kodorganisation.",
       keyTopics: ["Git workflows", "Kodstruktur", "Branching strategies", "Collaboration"]
     },
     { 
       id: "04", 
       title: "Architecture Decision Records (ADR)", 
-      area: "Grundläggande koncept",
+      area: "Del 1: Grunder",
       summary: "Strukturerad metod för att dokumentera viktiga arkitekturbeslut. Täcker ADR-format, verktyg och integration med Infrastructure as Code.",
       keyTopics: ["Decision documentation", "ADR structure", "Architectural governance", "Compliance tracking"]
     },
     { 
       id: "05", 
       title: "Automatisering, DevOps och CI/CD för Infrastructure as Code", 
-      area: "Systemutveckling",
+      area: "Del 2: Teknisk implementation",
       summary: "Comprehensive approach till CI/CD-pipelines, DevOps-kulturen och automatisering för Infrastructure as Code. Kombinerar fundamentala automation-principer med holistic Architecture as Code-praktiker.",
       keyTopics: ["CI/CD pipelines", "DevOps kultur", "Architecture as Code", "Svenska compliance", "Automated testing", "Progressive delivery"]
     },
     { 
       id: "06", 
       title: "Molnarkitektur som kod", 
-      area: "Arkitektur",
+      area: "Del 2: Teknisk implementation",
       summary: "Designprinciper för molnbaserad infrastruktur som kod. Fokus på skalbarhet, resiliens och multi-cloud strategier.",
       keyTopics: ["Cloud design patterns", "Multi-cloud", "Skalbarhet", "Resiliens"]
     },
     { 
       id: "07", 
       title: "Containerisering och orkestrering som kod", 
-      area: "Arkitektur",
+      area: "Del 2: Teknisk implementation",
       summary: "Container-baserad arkitektur implementerad genom kod. Täcker Kubernetes, Docker och container orchestration.",
       keyTopics: ["Container technology", "Kubernetes", "Docker", "Orchestration"]
     },
     { 
       id: "08", 
       title: "Microservices-arkitektur som kod", 
-      area: "Arkitektur",
+      area: "Del 2: Teknisk implementation",
       summary: "Implementation av microservices-arkitektur genom Infrastructure as Code-principer.",
       keyTopics: ["Microservices design", "Service mesh", "API management", "Distributed systems"]
     },
     { 
       id: "09", 
       title: "Säkerhet i Architecture as Code", 
-      area: "Säkerhet",
+      area: "Del 2: Teknisk implementation",
       summary: "Säkerhetsaspekter och best practices för IaC. Inkluderar secrets management, compliance och security scanning.",
       keyTopics: ["Security by design", "Secrets management", "Compliance", "Vulnerability scanning"]
     },
     { 
       id: "10", 
       title: "Policy och säkerhet som kod i detalj", 
-      area: "Säkerhet",
+      area: "Del 2: Teknisk implementation",
       summary: "Detaljerad genomgång av policy-as-code implementation och säkerhetsautomatisering.",
       keyTopics: ["Policy as code", "Security automation", "Compliance frameworks", "Governance"]
     },
     { 
       id: "11", 
       title: "Compliance och regelefterlevnad", 
-      area: "Säkerhet",
+      area: "Del 2: Teknisk implementation",
       summary: "Säkerställande av compliance med svenska och europeiska regleringar genom kodbaserad infrastruktur.",
       keyTopics: ["GDPR compliance", "Regulatory requirements", "Audit trails", "Data sovereignty"]
     },
     { 
       id: "12", 
       title: "Teststrategier för infrastrukturkod", 
-      area: "Systemutveckling",
+      area: "Del 3: Testning & drift",
       summary: "Omfattande teststrategier för att säkerställa kvalitet och tillförlitlighet i infrastrukturkod.",
       keyTopics: ["Testing strategies", "Test automation", "Quality gates", "Validation frameworks"]
     },
     { 
       id: "13", 
       title: "Architecture as Code i praktiken", 
-      area: "Systemutveckling",
+      area: "Del 3: Testning & drift",
       summary: "Praktiska implementeringsexempel och best practices för Architecture as Code i svenska organisationer.",
       keyTopics: ["Practical implementation", "Real-world examples", "Best practices", "Svenska case studies"]
     },
     { 
       id: "14", 
       title: "Kostnadsoptimering och resurshantering", 
-      area: "Arkitektur",
+      area: "Del 3: Testning & drift",
       summary: "Strategier för kostnadsoptimering och effektiv resurshantering genom IaC.",
       keyTopics: ["Cost optimization", "Resource management", "Budget control", "ROI measurement"]
     },
     { 
       id: "15", 
       title: "Migration från traditionell infrastruktur", 
-      area: "Arkitektur",
+      area: "Del 3: Testning & drift",
       summary: "Migrationstrategier och best practices för övergång från traditionell till kodbaserad infrastruktur.",
       keyTopics: ["Migration strategies", "Legacy modernization", "Risk management", "Phased approach"]
     },
     { 
       id: "16", 
       title: "Organisatorisk förändring och teamstrukturer", 
-      area: "Organisationsutveckling",
+      area: "Del 4: Organisation & framtid",
       summary: "Hantering av organisatoriska förändringar vid IaC-implementation. Fokus på team dynamics och cultural change.",
       keyTopics: ["Change management", "Team structures", "Cultural transformation", "Skills development"]
     },
     { 
       id: "17", 
       title: "Team-struktur och kompetensutveckling för IaC", 
-      area: "Organisationsutveckling",
+      area: "Del 4: Organisation & framtid",
       summary: "Optimala teamstrukturer och kompetensutvecklingsstrategier för Infrastructure as Code.",
       keyTopics: ["Team topology", "Skills development", "Training programs", "Knowledge sharing"]
     },
     { 
       id: "18", 
       title: "Digitalisering genom kodbaserad infrastruktur", 
-      area: "Digitalisering",
+      area: "Del 4: Organisation & framtid",
       summary: "Hur IaC möjliggör och accelererar digital transformation inom svenska organisationer.",
       keyTopics: ["Digital transformation", "Innovation", "Business agility", "Competitive advantage"]
     },
     { 
       id: "19", 
       title: "Använd Lovable för att skapa mockups för svenska organisationer", 
-      area: "Produkt- och tjänstutveckling",
+      area: "Del 4: Organisation & framtid",
       summary: "Omfattande guide för att använda Lovable för att skapa compliance-medvetna mockups anpassade för svenska organisationer.",
       keyTopics: ["Lovable platform", "GDPR compliance", "WCAG 2.1 AA", "BankID/Freja eID", "Svenska användarfall"]
     },
     { 
       id: "20", 
       title: "Framtida trender och teknologier", 
-      area: "Innovation",
+      area: "Del 4: Organisation & framtid",
       summary: "Emerging technologies och framtida trender inom Infrastructure as Code.",
       keyTopics: ["Emerging technologies", "Future trends", "Technology roadmaps", "Industry evolution"]
     },
     { 
       id: "21", 
       title: "Best practices och lärda läxor", 
-      area: "Systemutveckling",
+      area: "Del 4: Organisation & framtid",
       summary: "Sammanställning av best practices och viktiga lärdomar från framgångsrika IaC-implementationer.",
       keyTopics: ["Best practices", "Lessons learned", "Success factors", "Common pitfalls"]
     },
     { 
       id: "22", 
       title: "Slutsats", 
-      area: "Sammanfattning",
+      area: "Del 4: Organisation & framtid",
       summary: "Sammanfattning av bokens huvudbudskap och rekommendationer för framtida IaC-arbete.",
       keyTopics: ["Key takeaways", "Future recommendations", "Action items", "Next steps"]
     },
     { 
       id: "23", 
       title: "Ordlista", 
-      area: "Referenser",
+      area: "Del 4: Organisation & framtid",
       summary: "Omfattande ordlista med definitioner av termer och begrepp inom Infrastructure as Code.",
       keyTopics: ["Terminology", "Definitions", "Glossary", "Technical terms"]
     },
     { 
       id: "24", 
       title: "Om författarna", 
-      area: "Referenser",
+      area: "Del 4: Organisation & framtid",
       summary: "Information om bokens författare och deras bakgrund inom Infrastructure as Code.",
       keyTopics: ["Author bios", "Professional background", "Expertise", "Contributions"]
     },
     { 
       id: "25", 
       title: "Framtida utveckling och trender", 
-      area: "Innovation",
+      area: "Appendix",
       summary: "Utforskar framtida utvecklingstrender inom Architecture as Code och Infrastructure as Code.",
       keyTopics: ["Future trends", "Technology evolution", "AI/ML integration", "Sustainability"]
     },
     { 
       id: "26", 
       title: "Appendix: Kodexempel och tekniska implementationer", 
-      area: "Referenser",
+      area: "Appendix",
       summary: "Detaljerade kodexempel, konfigurationsfiler och tekniska implementationer för praktisk tillämpning.",
       keyTopics: ["Code examples", "Configuration files", "Technical implementations", "Best practices"]
     },
     { 
       id: "27", 
       title: "Teknisk uppbyggnad för bokproduktion", 
-      area: "Teknik",
+      area: "Appendix",
       summary: "Beskrivning av den tekniska infrastrukturen som används för att skapa, bygga och publicera denna bok.",
       keyTopics: ["Markdown structure", "Pandoc conversion", "GitHub Actions", "Automation workflow"]
     }
