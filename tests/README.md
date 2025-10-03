@@ -16,7 +16,7 @@ This directory contains a comprehensive test suite for validating the "Architect
    - Header hierarchy consistency
    - Title format standardization
    - Diagram reference format
-   - Language consistency (Swedish or English based on `--language` flag)
+   - Language consistency (based on `--language` flag)
    - Terminology usage patterns
 
 3. **`test_clarity.py`** - Checks content quality and readability
@@ -36,7 +36,7 @@ This directory contains a comprehensive test suite for validating the "Architect
 
 ## 📋 Requirements Configuration
 
-The test suite uses `requirements.yaml` for Swedish content and `requirements_en.yaml` for English content to define:
+The test suite uses `requirements_en.yaml` (or `requirements.yaml` as fallback) to define:
 - Expected book structure (27 chapters)
 - Content quality standards
 - Technical validation rules
@@ -44,38 +44,23 @@ The test suite uses `requirements.yaml` for Swedish content and `requirements_en
 
 ## 🌍 Language Support
 
-The test suite supports testing both Swedish and English content:
+The test suite supports testing content in different languages.
 
-### Testing Swedish Content (Default)
+### Running Tests
 ```bash
-# Run all tests on Swedish content (default behavior)
+# Run all tests with default settings
 python3 -m pytest tests/ -v
 
-# Explicitly specify Swedish
-python3 -m pytest tests/ -v --language=svenska
-```
-
-### Testing English Content
-```bash
-# Run all tests on English content
+# Explicitly specify language (default: english)
 python3 -m pytest tests/ -v --language=english
-
-# Run specific test categories on English content
-python3 -m pytest tests/test_consistency.py -v --language=english
-python3 -m pytest tests/test_completeness.py -v --language=english
 ```
 
 ### Language-Specific Behavior
 
-- **Swedish tests** (`--language=svenska`):
-  - Use `requirements.yaml` configuration
-  - Test files without `_en.md` suffix
-  - Check for English words in Swedish content
-  
-- **English tests** (`--language=english`):
-  - Use `requirements_en.yaml` configuration
-  - Test files with `_en.md` suffix
-  - Check for Swedish words in English content
+The test suite validates:
+- Content files (`.md` or `_en.md` suffix based on language setting)
+- Language consistency (checks for mixed language content)
+- Appropriate configuration file usage
 
 Both language configurations support the same test categories: completeness, consistency, clarity, and technical accuracy.
 
