@@ -192,6 +192,34 @@ To contribute to the book content:
 3. Test locally with `python3 generate_book.py && cd docs && ./build_book.sh`
 4. Submit a pull request
 
+## 🔍 Link Verification
+
+The repository includes a comprehensive link verification tool to ensure all links in documentation are valid.
+
+**Run link verification:**
+```bash
+python3 scripts/verify_links.py
+```
+
+This generates three reports:
+- `link-verification-report.md` - Markdown summary
+- `link-verification-report.html` - Interactive HTML report
+- `link-verification-report.json` - Machine-readable JSON
+
+**Advanced options:**
+```bash
+# Custom timeout for slow connections
+python3 scripts/verify_links.py --timeout 20
+
+# Verbose output
+python3 scripts/verify_links.py --verbose
+
+# Custom output location
+python3 scripts/verify_links.py --output reports/links
+```
+
+For complete documentation, see [LINK_VERIFICATION.md](LINK_VERIFICATION.md)
+
 ## 📄 License
 
 This book project is maintained by Geonit AB.
