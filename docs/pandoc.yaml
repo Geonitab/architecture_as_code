@@ -20,7 +20,7 @@ pdf-engine: xelatex
 # Metadata for document
 metadata:
   title: "Arkitektur som kod"
-  subtitle: "Infrastructure as Code i praktiken"
+  subtitle: "Architecture as Code i praktiken"
   author: "Kodarkitektur Bokverkstad"
   date: "2024"
   language: sv

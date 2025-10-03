@@ -235,7 +235,7 @@
                     \centering
                     \textcolor{white}{\fontsize{72}{80}\selectfont\textbf{Arkitektur}}\\[5mm]
                     \textcolor{white}{\fontsize{72}{80}\selectfont som \textcolor{KvadratBlueLight}{\textbf{kod}}}\\[15mm]
-                    \textcolor{white}{\fontsize{24}{32}\selectfont En omfattande guide till Infrastructure as Code}\\[5mm]
+                    \textcolor{white}{\fontsize{24}{32}\selectfont En omfattande guide till Architecture as Code}\\[5mm]
                     \textcolor{white}{\fontsize{18}{24}\selectfont från grundläggande principer till avancerad implementation}
                 \end{minipage}
             };
@@ -477,8 +477,8 @@
     citecolor=KvadratBlue,
     pdfauthor={Kvadrat Expertteam},
     pdftitle={Arkitektur som kod},
-    pdfsubject={Infrastructure as Code},
-    pdfkeywords={Infrastructure as Code, DevOps, Cloud, Automation}
+    pdfsubject={Architecture as Code},
+    pdfkeywords={Architecture as Code, DevOps, Cloud, Automation}
 }
 
 % Graphics and figures
