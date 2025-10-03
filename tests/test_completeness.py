@@ -173,12 +173,21 @@ class TestCompleteness:
         assert images_dir.exists(), "Images directory does not exist"
         assert images_dir.is_dir(), "Images path is not a directory"
     
-    def test_no_orphaned_chapters(self, docs_directory, requirements_config):
+    def test_no_orphaned_chapters(self, docs_directory, requirements_config, chapter_files):
         """Test that all chapters in docs directory are defined in requirements."""
-        # Get all actual markdown chapter files (numbered files)
+        language = requirements_config["book"]["language"]
+        
+        # Get all actual markdown chapter files (numbered files) for the language
         actual_chapters = set()
-        for md_file in docs_directory.glob("[0-9][0-9]_*.md"):
-            actual_chapters.add(md_file.name)
+        if language == "english":
+            # Get English numbered chapter files
+            for md_file in docs_directory.glob("[0-9][0-9]_*_en.md"):
+                actual_chapters.add(md_file.name)
+        else:
+            # Get Swedish numbered chapter files (not ending with _en.md)
+            for md_file in docs_directory.glob("[0-9][0-9]_*.md"):
+                if not md_file.name.endswith("_en.md"):
+                    actual_chapters.add(md_file.name)
         
         # Get expected chapters from requirements
         expected_chapters = set()

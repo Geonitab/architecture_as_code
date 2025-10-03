@@ -1,117 +1,117 @@
 ---
 # Content requirements specification for "Arkitektur som Kod" book
 book:
-  title: "Arkitektur som kod"
-  language: "svenska"
+  title: "Architecture as Code"
+  language: "english"
   total_chapters: 27
   
   # Required chapter structure
   chapters:
-    - filename: "01_inledning.md"
+    - filename: "01_inledning_en.md"
       title: "Inledning till arkitektur som kod"
       area: "Grundläggande koncept"
       required: true
-    - filename: "02_grundlaggande_principer.md"
+    - filename: "02_grundlaggande_principer_en.md"
       title: "Grundläggande principer för Architecture as Code"
       area: "Grundläggande koncept"
       required: true
-    - filename: "03_versionhantering.md"
+    - filename: "03_versionhantering_en.md"
       title: "Versionhantering och kodstruktur"
       area: "Systemutveckling"
       required: true
-    - filename: "04_adr.md"
+    - filename: "04_adr_en.md"
       title: "Architecture Decision Records (ADR)"
       area: "Grundläggande koncept"
       required: true
-    - filename: "05_automatisering_devops_cicd.md"
+    - filename: "05_automatisering_devops_cicd_en.md"
       title: "Automatisering, DevOps och CI/CD för Infrastructure as Code"
       area: "Systemutveckling"
       required: true
-    - filename: "06_molnarkitektur.md"
+    - filename: "06_molnarkitektur_en.md"
       title: "Molnarkitektur som kod"
       area: "Arkitektur"
       required: true
-    - filename: "07_containerisering.md"
+    - filename: "07_containerisering_en.md"
       title: "Containerisering och orkestrering"
       area: "Arkitektur"
       required: true
-    - filename: "08_microservices.md"
+    - filename: "08_microservices_en.md"
       title: "Microservices och distribuerade system"
       area: "Arkitektur"
       required: true
-    - filename: "09_sakerhet.md"
+    - filename: "09_sakerhet_en.md"
       title: "Säkerhet i Infrastructure as Code"
       area: "Säkerhet"
       required: true
-    - filename: "10_policy_sakerhet.md"
+    - filename: "10_policy_sakerhet_en.md"
       title: "Policy som kod och säkerhetsautomatisering"
       area: "Säkerhet"
       required: true
-    - filename: "11_compliance.md"
+    - filename: "11_compliance_en.md"
       title: "Compliance och regelefterlevnad"
       area: "Governance"
       required: true
-    - filename: "12_teststrategier.md"
+    - filename: "12_teststrategier_en.md"
       title: "Teststrategier för infrastruktukod"
       area: "Kvalitetssäkring"
       required: true
-    - filename: "13_praktisk_implementation.md"
+    - filename: "13_praktisk_implementation_en.md"
       title: "Praktisk implementation av Architecture as Code"
       area: "Praktisk tillämpning"
       required: true
-    - filename: "14_kostnadsoptimering.md"
+    - filename: "14_kostnadsoptimering_en.md"
       title: "Kostnadsoptimering och resurshantering"
       area: "Ekonomisk optimering"
       required: true
-    - filename: "15_migration.md"
+    - filename: "15_migration_en.md"
       title: "Migration från traditionell infrastruktur"
       area: "Migration"
       required: true
-    - filename: "16_organisatorisk_forandring.md"
+    - filename: "16_organisatorisk_forandring_en.md"
       title: "Organisatorisk förändring och teamstrukturer"
       area: "Organisationsutveckling"
       required: true
-    - filename: "17_team_struktur.md"
+    - filename: "17_team_struktur_en.md"
       title: "Team-struktur för skalbar IaC"
       area: "Organisationsutveckling"
       required: true
-    - filename: "18_digitalisering.md"
+    - filename: "18_digitalisering_en.md"
       title: "Digitalisering genom kodbaserad infrastruktur"
       area: "Strategisk utveckling"
       required: true
-    - filename: "19_lovable_mockups.md"
+    - filename: "19_lovable_mockups_en.md"
       title: "Lovable Mockups och prototyping"
       area: "Produktutveckling"
       required: true
-    - filename: "20_framtida_trender.md"
+    - filename: "20_framtida_trender_en.md"
       title: "Framtida trender inom Infrastructure as Code"
       area: "Framtidsspaning"
       required: true
-    - filename: "21_best_practices.md"
+    - filename: "21_best_practices_en.md"
       title: "Metodval och erfarenheter"
       area: "Best practices"
       required: true
-    - filename: "22_slutsats.md"
+    - filename: "22_slutsats_en.md"
       title: "Slutsats och vägen framåt"
       area: "Sammanfattning"
       required: true
-    - filename: "23_ordlista.md"
+    - filename: "23_ordlista_en.md"
       title: "Ordlista och definitioner"
       area: "Referens"
       required: true
-    - filename: "24_om_forfattarna.md"
+    - filename: "24_om_forfattarna_en.md"
       title: "Om författarna"
       area: "Appendix"
       required: true
-    - filename: "25_framtida_utveckling.md"
+    - filename: "25_framtida_utveckling_en.md"
       title: "Framtida utveckling"
       area: "Framtidsspaning"
       required: true
-    - filename: "26_appendix_kodexempel.md"
+    - filename: "26_appendix_kodexempel_en.md"
       title: "Appendix A: Kodexempel och tekniska implementationer"
       area: "Appendix"
       required: true
-    - filename: "27_teknisk_uppbyggnad.md"
+    - filename: "27_teknisk_uppbyggnad_en.md"
       title: "Teknisk uppbyggnad"
       area: "Appendix"
       required: true
@@ -119,35 +119,35 @@ book:
   # Special chapters with different requirements
   special_chapters:
     ordlista:
-      filename: "23_ordlista.md"
+      filename: "23_ordlista_en.md"
       requires_diagram: false
       requires_sources: false
     authors:
-      filename: "24_om_forfattarna.md"
+      filename: "24_om_forfattarna_en.md"
       requires_diagram: false
       requires_sources: false
     conclusion:
-      filename: "22_slutsats.md"
+      filename: "22_slutsats_en.md"
       requires_diagram: false
       requires_sources: true
     appendix:
-      filename: "26_appendix_kodexempel.md"
+      filename: "26_appendix_kodexempel_en.md"
       requires_diagram: true
       requires_sources: false
     teknisk:
-      filename: "27_teknisk_uppbyggnad.md"
+      filename: "27_teknisk_uppbyggnad_en.md"
       requires_diagram: true
       requires_sources: false
     framtida:
-      filename: "25_framtida_utveckling.md"
+      filename: "25_framtida_utveckling_en.md"
       requires_diagram: false
       requires_sources: true
     book_cover:
-      filename: "BOOK_COVER_DESIGN.md"
+      filename: "BOOK_COVER_DESIGN_en.md"
       requires_diagram: false
       requires_sources: false
     epub_validation:
-      filename: "EPUB_VALIDATION.md"
+      filename: "EPUB_VALIDATION_en.md"
       requires_diagram: false
       requires_sources: false
 
@@ -193,7 +193,7 @@ filesystem:
   docs_directory: "docs"
   images_directory: "docs/images"
   mermaid_extension: ".mmd"
-  markdown_extension: ".md"
+  markdown_extension: "_en.md"
   
 # CI/CD integration
 testing:

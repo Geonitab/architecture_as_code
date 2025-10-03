@@ -21,19 +21,54 @@ def docs_directory():
     """Docs directory containing markdown files."""
     return DOCS_DIR
 
+def pytest_addoption(parser):
+    """Add custom command line options."""
+    parser.addoption(
+        "--language",
+        action="store",
+        default="svenska",
+        help="Language to test: svenska or english"
+    )
+
 @pytest.fixture(scope="session")
-def requirements_config():
-    """Load book requirements configuration."""
-    requirements_file = TESTS_DIR / "requirements.yaml"
+def language(request):
+    """Get the language from command line option."""
+    return request.config.getoption("--language")
+
+@pytest.fixture(scope="session")
+def requirements_config(language):
+    """Load book requirements configuration based on language."""
+    if language == "english":
+        requirements_file = TESTS_DIR / "requirements_en.yaml"
+    else:
+        requirements_file = TESTS_DIR / "requirements.yaml"
     with open(requirements_file, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
 
 @pytest.fixture(scope="session")
-def chapter_files(docs_directory):
-    """List all markdown chapter files."""
+def chapter_files(docs_directory, language):
+    """List all markdown chapter files for the specified language."""
     # Get all .md files but exclude README.md
-    all_md_files = docs_directory.glob("*.md")
-    chapter_files = [f for f in all_md_files if f.name != "README.md"]
+    all_md_files = list(docs_directory.glob("*.md"))
+    
+    # List of non-chapter files to exclude
+    non_chapter_files = {
+        "README.md", "README_en.md",
+        "TERMINOLOGI_JUSTERING.md", "TERMINOLOGI_JUSTERING_en.md",
+        "SVENGELSKA_FIXES_SUMMARY.md", "SVENGELSKA_FIXES_SUMMARY_en.md",
+        "ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md", "ENGELSKA_UTTRYCK_SAMMANSTÄLLNING_en.md",
+        "language_deviations_issue.md", "language_deviations_issue_en.md",
+        "BOOK_COVER_DESIGN.md", "BOOK_COVER_DESIGN_en.md",
+        "EPUB_VALIDATION.md", "EPUB_VALIDATION_en.md"
+    }
+    
+    if language == "english":
+        # Filter for English files (those ending with _en.md)
+        chapter_files = [f for f in all_md_files if f.name.endswith("_en.md") and f.name not in non_chapter_files]
+    else:
+        # Filter for Swedish files (those NOT ending with _en.md)
+        chapter_files = [f for f in all_md_files if not f.name.endswith("_en.md") and f.name not in non_chapter_files]
+    
     return chapter_files
 
 @pytest.fixture(scope="session")

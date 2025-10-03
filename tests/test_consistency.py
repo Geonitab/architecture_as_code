@@ -141,15 +141,26 @@ class TestConsistency:
         assert not sources_issues, f"Sources section issues: {sources_issues}"
     
     def test_language_consistency(self, chapter_files, requirements_config):
-        """Test that content is consistently in Swedish."""
-        if requirements_config["book"]["language"] != "svenska":
-            pytest.skip("Language consistency test only applies to Swedish content")
+        """Test that content is consistently in the expected language."""
+        language = requirements_config["book"]["language"]
         
-        # Common English words that shouldn't appear in Swedish text
-        english_indicators = [
-            r'\bthe\b', r'\band\b', r'\bor\b', r'\bwith\b', r'\bfor\b',
-            r'\bin\b', r'\bon\b', r'\bat\b', r'\bby\b', r'\bfrom\b'
-        ]
+        if language == "svenska":
+            # Common English words that shouldn't appear in Swedish text
+            wrong_language_indicators = [
+                r'\bthe\b', r'\band\b', r'\bor\b', r'\bwith\b', r'\bfor\b',
+                r'\bin\b', r'\bon\b', r'\bat\b', r'\bby\b', r'\bfrom\b'
+            ]
+            issue_prefix = "Possible English text detected"
+        elif language == "english":
+            # Common Swedish words that shouldn't appear in English text
+            wrong_language_indicators = [
+                r'\boch\b', r'\batt\b', r'\bför\b', r'\bsom\b', r'\bmed\b',
+                r'\bav\b', r'\btill\b', r'\bär\b', r'\bdet\b', r'\bden\b',
+                r'\bi\b', r'\bpå\b', r'\bhan\b', r'\bhar\b', r'\bvar\b'
+            ]
+            issue_prefix = "Possible Swedish text detected"
+        else:
+            pytest.skip(f"Language consistency test not configured for language: {language}")
         
         language_issues = []
         for chapter_file in chapter_files:
@@ -159,7 +170,7 @@ class TestConsistency:
             content_no_code = re.sub(r'```.*?```', '', content, flags=re.DOTALL)
             content_no_code = re.sub(r'`[^`]+`', '', content_no_code)
             
-            for pattern in english_indicators:
+            for pattern in wrong_language_indicators:
                 matches = list(re.finditer(pattern, content_no_code, re.IGNORECASE))
                 if matches:
                     for match in matches[:3]:  # Limit to first 3 matches
@@ -169,7 +180,7 @@ class TestConsistency:
                         
                         language_issues.append({
                             "file": chapter_file.name,
-                            "issue": f"Possible English text detected: '{match.group()}'",
+                            "issue": f"{issue_prefix}: '{match.group()}'",
                             "context": context
                         })
         
