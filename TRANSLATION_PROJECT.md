@@ -70,11 +70,11 @@ All chapters from 01_inledning_en.md through 27_teknisk_uppbyggnad_en.md:
 **Supporting Documentation (12 files):**
 - docs/README_en.md - Documentation README
 - docs/BOOK_COVER_DESIGN_en.md - Book cover design documentation
-- docs/TERMINOLOGI_JUSTERING_en.md - Terminology adjustments
-- docs/ENGELSKA_UTTRYCK_SAMMANSTÄLLNING_en.md - English expression compilation
+- docs/TERMINOLOGY_ADJUSTMENT.md - Terminology adjustments (renamed from TERMINOLOGI_JUSTERING.md)
+- docs/ENGLISH_EXPRESSION_COMPILATION.md - English expression compilation (renamed from ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md)
 - docs/EPUB_VALIDATION_en.md - EPUB validation documentation
-- docs/SVENGELSKA_FIXES_SUMMARY_en.md - Svengelska fixes summary
-- docs/language_deviations_issue_en.md - Language deviations tracking issue
+- docs/MIXED_LANGUAGE_FIXES_SUMMARY.md - Mixed language fixes summary (renamed from SVENGELSKA_FIXES_SUMMARY.md)
+- docs/LANGUAGE_DEVIATIONS_ISSUE.md - Language deviations tracking issue (renamed from language_deviations_issue.md)
 - exports/book-cover/README_en.md - Book cover exports documentation
 - exports/book-cover/source/BRAND_GUIDELINES_en.md - Brand guidelines (for cover source)
 - exports/book-cover/source/DESIGN_SYSTEM_en.md - Design system (for cover source)
