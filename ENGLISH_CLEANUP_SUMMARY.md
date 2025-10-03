@@ -113,11 +113,11 @@ These remaining instances are minimal and do not significantly impact readabilit
 - 25_framtida_utveckling.md
 - 26_appendix_kodexempel.md
 - 27_teknisk_uppbyggnad.md
-- ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md
+- ENGLISH_EXPRESSION_COMPILATION.md (renamed from ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md)
 - EPUB_VALIDATION.md
 - README.md
-- SVENGELSKA_FIXES_SUMMARY.md
-- TERMINOLOGI_JUSTERING.md
+- MIXED_LANGUAGE_FIXES_SUMMARY.md (renamed from SVENGELSKA_FIXES_SUMMARY.md)
+- TERMINOLOGY_ADJUSTMENT.md (renamed from TERMINOLOGI_JUSTERING.md)
 
 ### Other Directories
 - exports/book-cover/source/BRAND_GUIDELINES.md

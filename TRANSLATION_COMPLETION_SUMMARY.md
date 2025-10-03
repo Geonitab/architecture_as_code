@@ -148,11 +148,11 @@ All chapters 01-27 with English translations:
 ### Supporting Documentation (12 files)
 - docs/README_en.md
 - docs/BOOK_COVER_DESIGN_en.md
-- docs/TERMINOLOGI_JUSTERING_en.md
-- docs/ENGELSKA_UTTRYCK_SAMMANSTÄLLNING_en.md
+- docs/TERMINOLOGY_ADJUSTMENT.md (renamed from TERMINOLOGI_JUSTERING_en.md)
+- docs/ENGLISH_EXPRESSION_COMPILATION.md (renamed from ENGELSKA_UTTRYCK_SAMMANSTÄLLNING_en.md)
 - docs/EPUB_VALIDATION_en.md
-- docs/SVENGELSKA_FIXES_SUMMARY_en.md
-- docs/language_deviations_issue_en.md
+- docs/MIXED_LANGUAGE_FIXES_SUMMARY.md (renamed from SVENGELSKA_FIXES_SUMMARY_en.md)
+- docs/LANGUAGE_DEVIATIONS_ISSUE.md (renamed from language_deviations_issue_en.md)
 - exports/book-cover/README_en.md ✨ NEW
 - exports/book-cover/source/BRAND_GUIDELINES_en.md ✨ NEW
 - exports/book-cover/source/DESIGN_SYSTEM_en.md ✨ NEW

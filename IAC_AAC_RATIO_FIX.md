@@ -150,7 +150,7 @@ Add to your test suite:
 ## Related Documentation
 
 - **PR #113**: Previous attempt to fix the ratio (had merge conflicts)
-- **TERMINOLOGI_JUSTERING.md**: Earlier terminology adjustment documentation
+- **TERMINOLOGY_ADJUSTMENT.md**: Earlier terminology adjustment documentation (renamed from TERMINOLOGI_JUSTERING.md)
 - **BOOK_REQUIREMENTS.md**: Overall book requirements and standards
 
 ## Conclusion

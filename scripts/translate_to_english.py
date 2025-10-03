@@ -265,11 +265,11 @@ def get_files_to_translate() -> List[Path]:
         docs_support_files = [
             'README.md',
             'BOOK_COVER_DESIGN.md',
-            'TERMINOLOGI_JUSTERING.md',
-            'ENGELSKA_UTTRYCK_SAMMANSTÄLLNING.md',
+            'TERMINOLOGY_ADJUSTMENT.md',
+            'ENGLISH_EXPRESSION_COMPILATION.md',
             'EPUB_VALIDATION.md',
-            'SVENGELSKA_FIXES_SUMMARY.md',
-            'language_deviations_issue.md',
+            'MIXED_LANGUAGE_FIXES_SUMMARY.md',
+            'LANGUAGE_DEVIATIONS_ISSUE.md',
         ]
         
         for filename in docs_support_files:
