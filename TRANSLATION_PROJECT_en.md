@@ -4,11 +4,11 @@
 
 This document describes the English translation project for the "Architecture as Code" (Architecture as Code) book project.
 
-**Status: ✅ COMPLETE** - All 47 markdown files successfully translated to English.
+**Status: ✅ COMPLETE** - All 52 markdown files successfully translated to English.
 
 ## Completed Work
 
-### Files Translated (47 total)
+### Files Translated (52 total)
 
 **Root Level Documentation (13 files):**
 - README_en.md - Main project README
@@ -55,7 +55,7 @@ All chapters from 01_inledning_en.md through 27_teknisk_uppbyggnad_en.md:
 26. Appendix: Code Examples and Templates
 27. Technical Architecture of the Book
 
-**Supporting Documentation (7 files):**
+**Supporting Documentation (12 files):**
 - docs/README_en.md - Documentation README
 - docs/BOOK_COVER_DESIGN_en.md - Book cover design documentation
 - docs/TERMINOLOGI_JUSTERING_en.md - Terminology adjustments
@@ -63,6 +63,11 @@ All chapters from 01_inledning_en.md through 27_teknisk_uppbyggnad_en.md:
 - docs/EPUB_VALIDATION_en.md - EPUB validation documentation
 - docs/SVENGELSKA_FIXES_SUMMARY_en.md - Svengelska fixes summary
 - docs/language_deviations_issue_en.md - Language deviations tracking issue
+- exports/book-cover/README_en.md - Book cover exports documentation
+- exports/book-cover/source/BRAND_GUIDELINES_en.md - Brand guidelines (for cover source)
+- exports/book-cover/source/DESIGN_SYSTEM_en.md - Design system (for cover source)
+- releases/README_en.md - Releases folder documentation
+- tests/README_en.md - Test suite documentation
 
 ### Translation Methodology
 
@@ -73,6 +78,7 @@ The translation was perforwith using:
    - `scripts/postprocess_translations.py` - Post-processing improvements for translation quality
    - `scripts/translate_to_english.py` - Core translation infrastructure and framework
    - `scripts/comprehensive_translation.py` - Advanced translation utilities
+   - `scripts/translate_remaining_docs.py` - Script for translating additional documentation files
 
 2. **Translation Approach:**
    - Preserved all markdown structure (headings, code blocks, links, images)
