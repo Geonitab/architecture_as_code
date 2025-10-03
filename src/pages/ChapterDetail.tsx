@@ -17,7 +17,7 @@ const ChapterDetail = () => {
     { id: "02", title: "Grundläggande principer för Architecture as Code", area: "Grundläggande koncept", filename: "02_grundlaggande_principer.md" },
     { id: "03", title: "Versionhantering och kodstruktur", area: "Grundläggande koncept", filename: "03_versionhantering.md" },
     { id: "04", title: "Architecture Decision Records (ADR)", area: "Grundläggande koncept", filename: "04_adr.md" },
-    { id: "05", title: "Automatisering, DevOps och CI/CD för Infrastructure as Code", area: "Systemutveckling", filename: "05_automatisering_devops_cicd.md" },
+    { id: "05", title: "Automatisering, DevOps och CI/CD för Architecture as Code", area: "Systemutveckling", filename: "05_automatisering_devops_cicd.md" },
     { id: "06", title: "Molnarkitektur som kod", area: "Arkitektur", filename: "06_molnarkitektur.md" },
     { id: "07", title: "Containerisering och orkestrering som kod", area: "Arkitektur", filename: "07_containerisering.md" },
     { id: "08", title: "Microservices-arkitektur som kod", area: "Arkitektur", filename: "08_microservices.md" },
@@ -29,7 +29,7 @@ const ChapterDetail = () => {
     { id: "14", title: "Kostnadsoptimering och resurshantering", area: "Arkitektur", filename: "14_kostnadsoptimering.md" },
     { id: "15", title: "Migration från traditionell infrastruktur", area: "Arkitektur", filename: "15_migration.md" },
     { id: "16", title: "Organisatorisk förändring och teamstrukturer", area: "Organisationsutveckling", filename: "16_organisatorisk_forandring.md" },
-    { id: "17", title: "Team-struktur och kompetensutveckling för IaC", area: "Organisationsutveckling", filename: "17_team_struktur.md" },
+    { id: "17", title: "Team-struktur och kompetensutveckling för Architecture as Code", area: "Organisationsutveckling", filename: "17_team_struktur.md" },
     { id: "18", title: "Digitalisering genom kodbaserad infrastruktur", area: "Digitalisering", filename: "18_digitalisering.md" },
     { id: "19", title: "Använd Lovable för att skapa mockups för svenska organisationer", area: "Produkt- och tjänstutveckling", filename: "19_lovable_mockups.md" },
     { id: "20", title: "Framtida trender och teknologier", area: "Innovation", filename: "20_framtida_trender.md" },
@@ -75,11 +75,11 @@ const ChapterDetail = () => {
 
 ![Kapiteldiagram](images/diagram_${currentChapterData.id}_${currentChapterData.filename.split('_')[1]?.split('.')[0] || 'kapitel'}.png)
 
-Det här kapitlet täcker viktiga aspekter av Infrastructure as Code inom området **${currentChapterData.area}**.
+Det här kapitlet täcker viktiga aspekter av Architecture as Code inom området **${currentChapterData.area}**.
 
 ## Översikt
 
-Detta kapitel ger en djupgående förklaring av koncepten och metoderna inom detta specifika område av Infrastructure as Code.
+Detta kapitel ger en djupgående förklaring av koncepten och metoderna inom detta specifika område av Architecture as Code.
 
 ## Nyckelämnen
 
@@ -96,7 +96,7 @@ Kapitlet innehåller konkreta exempel och kodexempel som kan användas direkt i 
 
 ## Sammanfattning
 
-Detta kapitel ger läsaren de verktyg och kunskaper som behövs för att framgångsrikt implementera dessa aspekter av Infrastructure as Code.
+Detta kapitel ger läsaren de verktyg och kunskaper som behövs för att framgångsrikt implementera dessa aspekter av Architecture as Code.
 
 ---
 

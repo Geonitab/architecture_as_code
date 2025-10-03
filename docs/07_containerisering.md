@@ -22,7 +22,7 @@ Helm charts extend Kubernetes capabilities through templating and package manage
 
 ## Service mesh and advanced networking
 
-Service mesh architectures that Istio and Linkerd implementeras through Infrastructure as Code to handle inter-service communication, security policies, and observability. These platforms abstract networking complexity from application developers while providing fine-grained control through configuration files.
+Service mesh architectures that Istio and Linkerd implementeras through Architecture as Code to handle inter-service communication, security policies, and observability. These platforms abstract networking complexity from application developers while providing fine-grained control through configuration files.
 
 Traffic management policies are defined as code for load balancing, circuit breaking, retry mechanisms, and canary deployments. Security policies for mutual TLS, access control, and authentication/authorization can be version controlled and automatically applied across service topologies.
 

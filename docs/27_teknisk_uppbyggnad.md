@@ -81,7 +81,7 @@ pdf-engine: xelatex
 # Metadata and variabler
 metadata:
   title: "architecture as code"
-  subtitle: "Infrastructure as Code (architecture as code) in praktiken"
+  subtitle: "Architecture as Code (architecture as code) in praktiken"
   author: "Kodarkitektur Bokverkstad"
 ```
 

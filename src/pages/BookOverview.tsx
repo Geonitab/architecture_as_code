@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const BookOverview = () => {
   const themes = [
     "Grundläggande Architecture as Code-principer",
-    "Infrastructure as Code som praktiskt exempel",
+    "Architecture as Code som praktiskt exempel",
     "Molnarkitektur som kod", 
     "Säkerhet och compliance",
     "CI/CD och automatisering",
@@ -47,7 +47,7 @@ const BookOverview = () => {
             </p>
             <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
               Från grundläggande principer till avancerad implementation, med fokus på praktisk tillämpning inom svenska organisationer. 
-              Lär dig hur Architecture as Code kan transformera din organisation, med Infrastructure as Code som viktigt praktiskt exempel.
+              Lär dig hur Architecture as Code kan transformera din organisation, med Architecture as Code som viktigt praktiskt exempel.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -82,7 +82,7 @@ const BookOverview = () => {
             <CardContent>
               <p className="text-lg mb-6">
                 Denna bok täcker Architecture as Code från grundläggande principer till avancerad implementation, 
-                med fokus på praktisk tillämpning inom svenska organisationer. Infrastructure as Code behandlas som 
+                med fokus på praktisk tillämpning inom svenska organisationer. Architecture as Code behandlas som 
                 ett viktigt praktiskt exempel inom den bredare Architecture as Code-ramen, med omfattande praktiska exempel 
                 från svenska företag som framgångsrikt implementerat kodbaserad arkitektur.
               </p>
@@ -106,7 +106,7 @@ const BookOverview = () => {
                 <div>
                   <h3 className="font-semibold mb-4">Vad du kommer att lära dig</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Designa och implementera omfattande IaC-lösningar</li>
+                    <li>• Designa och implementera omfattande Architecture as Code-lösningar</li>
                     <li>• Etablera robusta workflows för infrastrukturutveckling</li>
                     <li>• Navigera svenska compliance-krav</li>
                     <li>• Leda organisatorisk transformation</li>
@@ -190,7 +190,7 @@ const BookOverview = () => {
           {/* Call to Action */}
           <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
             <CardContent className="text-center py-8">
-              <h2 className="text-2xl font-bold mb-4">Redo att börja din IaC-resa?</h2>
+              <h2 className="text-2xl font-bold mb-4">Redo att börja din Architecture as Code-resa?</h2>
               <p className="text-lg text-muted-foreground mb-6">
                 Utforska kapitel, ladda ner resurser eller kontakta oss för mer information
               </p>

@@ -2,11 +2,11 @@
 
 ![Migrationsprocess](images/diagram_18_kapitel17.png)
 
-*Migration from Traditional Infrastructure to Infrastructure as Code (Architecture as Code) requires systematic planering, stegvis Architecture as Code-implementation and continuous validation. Diagram shows The Structureerade processen from assessment to complete Architecture as Code-adoption.*
+*Migration from Traditional Infrastructure to Architecture as Code (Architecture as Code) requires systematic planering, stegvis Architecture as Code-implementation and continuous validation. Diagram shows The Structureerade processen from assessment to complete Architecture as Code-adoption.*
 
 ## Overall Description
 
-Migration from traditional, manuellt konfigurerad infrastructure to Infrastructure as Code represents a of the most critical transformationerna for modern IT-organisationer. This process requires not endast technical omStructureering without also organisatorisk change and cultural anpassning to code-based way of working.
+Migration from traditional, manuellt konfigurerad infrastructure to Architecture as Code represents a of the most critical transformationerna for modern IT-organisationer. This process requires not endast technical omStructureering without also organisatorisk change and cultural anpassning to code-based way of working.
 
 Swedish organizations face unique migreringsChallenges through legacy-systems as developed over decennier, regulatory requirements as begränsar forändringstakt, and need of to balance innovation with operational stability. Successful migration requires comprehensive planning as minimizes risker while The enables snabb value realization.
 
@@ -46,7 +46,7 @@ Version control integration for infrastructure changes enables systematic tracki
 
 ## Team transition and competence development
 
-Skills development programs must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows. Training curricula should encompass Infrastructure as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.
+Skills development programs must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows. Training curricula should encompass Architecture as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.
 
 Organizational structure evolution from traditional silos to cross-functional teams enables effective Architecture as Code adoption. Svenska telecommunications companies that Telia has successfully transitioned from separate development and operations teams to integrated DevOps teams as manage infrastructure as code.
 
@@ -691,7 +691,7 @@ echo "5. Document lessons learned"
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Migration from Traditional Infrastructure to Infrastructure as Code represents a critical transformation as requires systematic planering, gradual implementation and comprehensive testing. Swedish organizations as successfully performs This migration position themselves for increased agility, improved security and significant cost benefits.
+Migration from Traditional Infrastructure to Architecture as Code represents a critical transformation as requires systematic planering, gradual implementation and comprehensive testing. Swedish organizations as successfully performs This migration position themselves for increased agility, improved security and significant cost benefits.
 
 Framgångsfaktorer includes comprehensive assessment, realistisk timeline planning, extensive team training and robust testing frameworks. Hybrid migration strategies enables risk minimization while the delivers imwithiate value from Architecture as Code adoption.
 

@@ -2,27 +2,27 @@
 
 ![architecture as code best practices evolution](images/diagram_20_kapitel19.png)
 
-*Architecture as Code best practices for Infrastructure as Code (Architecture as Code) is developed kontinuerligt through practical experience, community feedback and evolving technology landscape. Diagram illustrerar The iterativa processen from initial Architecture as Code-implementation to mature, optimized practices.*
+*Architecture as Code best practices for Architecture as Code (Architecture as Code) is developed kontinuerligt through practical experience, community feedback and evolving technology landscape. Diagram illustrerar The iterativa processen from initial Architecture as Code-implementation to mature, optimized practices.*
 
 ## Best practices holistiska perspektiv
 
 ![comprehensive best practices landskap](images/mindmap_22_best_practices.png)
 
-*Mindmappen presenterar the comprehensive landskapet of Best Practices and Lessons Learned within Infrastructure as Code (Architecture as Code). The shows sambanden between kodorganisation, security- and compliance-pattern, performance-optimering, governance-ramverk and internationella erfarenheter. This holistiska syn helps organisationer to understand how different best practices samspelar to create successful Architecture as Code-Architecture as Code-implementation.*
+*Mindmappen presenterar the comprehensive landskapet of Best Practices and Lessons Learned within Architecture as Code (Architecture as Code). The shows sambanden between kodorganisation, security- and compliance-pattern, performance-optimering, governance-ramverk and internationella erfarenheter. This holistiska syn helps organisationer to understand how different best practices samspelar to create successful Architecture as Code-Architecture as Code-implementation.*
 
 ## Overall Description
 
-Infrastructure as Code best praxis represents culmination of collective wisdom from thousands organisationer as has undergone transformation within Architecture as Code over the last decade. These methods is not static rules without evolving guidelines as must adapted to specific organizational context, teknologiska begränsningar and business requirements.
+Architecture as Code best praxis represents culmination of collective wisdom from thousands organisationer as has undergone transformation within Architecture as Code over the last decade. These methods is not static rules without evolving guidelines as must adapted to specific organizational context, teknologiska begränsningar and business requirements.
 
 Swedish organizations has bidragit significantly to global Architecture as Code best practice development through innovative approaches to regulatory compliance, sustainable computing and collaborative development models. Companies that Spotify, Klarna and Ericsson has developed patterns as nu is used worldwide for scaling Architecture as Code practices in large, complex organizations.
 
-Lärda läxor from early Architecture as Code adopters reveal common pitfalls and anti-patterns as can undvikas through careful planning and gradual implementation. Understanding these lessons enables organizations to accelerate their IaC journey while the avoid costly mistakes as previously derailed transformation initiatives.
+Lärda läxor from early Architecture as Code adopters reveal common pitfalls and anti-patterns as can undvikas through careful planning and gradual implementation. Understanding these lessons enables organizations to accelerate their Architecture as Code journey while the avoid costly mistakes as previously derailed transformation initiatives.
 
 Modern best practices emphasize sustainability, security-by-design and developer experience optimization alongside traditional concerns as reliability, scalability and cost efficiency. Svenska organizations with strong environmental consciousness and social responsibility values can leverage Architecture as Code for achieving both technical and sustainability goals.
 
 ## code organisation and modulstruktur
 
-Effective code organization forms foundationen for maintainable and scalable Infrastructure as Code implementations. Well-structured repositories with clear hierarchies, consistent naming conventions and logical module boundaries enable team collaboration and reduce onboarding time for new contributors.
+Effective code organization forms foundationen for maintainable and scalable Architecture as Code implementations. Well-structured repositories with clear hierarchies, consistent naming conventions and logical module boundaries enable team collaboration and reduce onboarding time for new contributors.
 
 Repository structure best practices recommend separation of concerns between shared modules, environment-specific configurations and application-specific infrastructure. Swedish government agencies have successfully implemented standardized repository structures as enable code sharing between different departments with the maintain appropriate isolation for sensitive components.
 
@@ -32,7 +32,7 @@ Versioning strategies for infrastructure modules must balance stability with inn
 
 ## Security and compliance patterns
 
-Security-first design patterns have emerged as fundamental requirements for modern Infrastructure as Code implementations. These patterns emphasize defense-in-depth, principle of least privilege and zero-trust architectures as are implemented through code rather than manual configuration.
+Security-first design patterns have emerged as fundamental requirements for modern Architecture as Code implementations. These patterns emphasize defense-in-depth, principle of least privilege and zero-trust architectures as are implemented through code rather than manual configuration.
 
 Compliance automation patterns for svenska regulatory requirements demonstrate how organizations can embed regulatory controls directly into infrastructure definitions. GDPR compliance patterns for data residency, encryption and audit logging can be codified in reusable modules as automatically enforce regulatory requirements across all deployments.
 
@@ -46,13 +46,13 @@ Infrastructure performance optimization patterns focus at cost efficiency, resou
 
 Multi-region deployment patterns for global scalability must consider data sovereignty requirements, latency optimization and disaster recovery capabilities. Swedish SaaS companies serving global markets have pioneered approaches as balance performance optimization with svenska data protection requirements.
 
-Database scaling patterns for Infrastructure as Code encompass both vertical and horizontal scaling strategies, read replica management and backup automation. Financial services organizations in Sverige have developed particularly robust patterns for managing sensitive financial data at scale with the maintain audit trails and regulatory compliance.
+Database scaling patterns for Architecture as Code encompass both vertical and horizontal scaling strategies, read replica management and backup automation. Financial services organizations in Sverige have developed particularly robust patterns for managing sensitive financial data at scale with the maintain audit trails and regulatory compliance.
 
 Monitoring and observability patterns demonstrate how comprehensive systems visibility can be embedded in infrastructure definitions. Swedish telecommunications companies have developed advanced monitoring patterns as provide real-time insights into systems performance, user experience and business metrics through infrastructure-defined observability stacks.
 
 ## Governance and policy enforcement
 
-Governance frameworks for Infrastructure as Code must balance developer autonomy with organizational control through clear policies, automated enforcement and exception handling processes. Swedish government organizations have developed comprehensive governance models as ensure compliance without stifling innovation.
+Governance frameworks for Architecture as Code must balance developer autonomy with organizational control through clear policies, automated enforcement and exception handling processes. Swedish government organizations have developed comprehensive governance models as ensure compliance without stifling innovation.
 
 Policy-as-code implementation patterns demonstrate how organizational policies can be codified, version controlled and automatically enforced across all infrastructure deployments. These patterns enable consistent policy application while the provide transparency and auditability for compliance purposes.
 
@@ -66,7 +66,7 @@ Global best practice evolution has been significantly influenced of svenska inno
 
 Cross-cultural collaboration patterns from svenska multinational companies demonstrate how Architecture as Code practices can be adapted to different cultural contexts with the maintain technical consistency. These patterns is particularly valuable for global organizations as need to balance local regulations with standardized technical practices.
 
-Sustainability patterns for green computing have been pioneered of svenska organizations with strong environmental commitments. These patterns demonstrate how Infrastructure as Code can optimize for carbon footprint reduction, renewable energy usage and efficient resource utilization without compromising performance or reliability.
+Sustainability patterns for green computing have been pioneered of svenska organizations with strong environmental commitments. These patterns demonstrate how Architecture as Code can optimize for carbon footprint reduction, renewable energy usage and efficient resource utilization without compromising performance or reliability.
 
 Open source contribution patterns from swedish tech community showcase how organizations can benefit from and contribute to global Architecture as Code ecosystem development. Sustainable open source practices ensure long-term viability of critical infrastructure tools with the foster innovation and knowledge sharing.
 
@@ -74,7 +74,7 @@ Open source contribution patterns from swedish tech community showcase how organ
 
 ## Incident management and response patterns
 
-Effective incidenthantering forms a critical komponent for operational excellence within Infrastructure as Code-environments. When infrastructure are defined as code, requires incidentresponse new approaches as combines traditional operational practices with version control, automation and collaborative development workflows.
+Effective incidenthantering forms a critical komponent for operational excellence within Architecture as Code-environments. When infrastructure are defined as code, requires incidentresponse new approaches as combines traditional operational practices with version control, automation and collaborative development workflows.
 
 Swedish organizations has developed sophisticated incident management patterns as integrerar Architecture as Code practices with emergency response procedures. These patterns emphasize rapid response, transparent communication and systematic learning from each incident to strengthen overall systems resilience.
 
@@ -86,7 +86,7 @@ Incident response automation patterns enable organizations to respond rapidly to
 
 Proactive incident prevention strategies focus at identifying and addressing potential issues before the become critical problems. Swedish healthcare organizations have developed comprehensive monitoring patterns as provide early warning signals for infrastructure drift, security vulnerabilities and performance degradation.
 
-Risk assessment integration with Infrastructure as Code enables organizations to continuously evaluate potential failure scenarios and implement preventive measures. Automated compliance scanning, security vulnerability assessment and performance monitoring provide foundation for proactive incident prevention.
+Risk assessment integration with Architecture as Code enables organizations to continuously evaluate potential failure scenarios and implement preventive measures. Automated compliance scanning, security vulnerability assessment and performance monitoring provide foundation for proactive incident prevention.
 
 Emergency preparedness exercises specifically designed for Architecture as Code environments help teams practice response procedures, test automation workflows and identify improvement opportunities. Swedish government agencies conduct regular tabletop exercises as simulate complex infrastructure incidents and test coordinated response capabilities.
 
@@ -94,13 +94,13 @@ Emergency preparedness exercises specifically designed for Architecture as Code 
 
 Automated incident response workflows reduce response time and ensure consistent handling of infrastructure emergencies. Swedish telecommunications companies have developed self-healing infrastructure patterns as automatically detect issues, attempt rewithiation and escalate to human operators when necessary.
 
-Runbook automation for Infrastructure as Code environments codifies emergency procedures in executable scripts as can be triggered automatically or manually during incidents. These automated runbooks ensure consistent response procedures and reduce human error under pressure.
+Runbook automation for Architecture as Code environments codifies emergency procedures in executable scripts as can be triggered automatically or manually during incidents. These automated runbooks ensure consistent response procedures and reduce human error under pressure.
 
 Communication automation patterns ensure stakeholders receive timely updates during incidents through automated status pages, notification systems and escalation procedures. Svenska financial services organizations have implemented comprehensive communication workflows as maintain transparency with the protect sensitive information.
 
 ## documentation and knowledge management
 
-Comprehensive documentation strategies for Infrastructure as Code environments must balance technical detail with accessibility for diverse stakeholders. Effective documentation serves as both reference material for daily operations and knowledge transfer mechanism for organizational continuity.
+Comprehensive documentation strategies for Architecture as Code environments must balance technical detail with accessibility for diverse stakeholders. Effective documentation serves as both reference material for daily operations and knowledge transfer mechanism for organizational continuity.
 
 Svenska organizations have pioneered approaches to living documentation as automatically updates from infrastructure code, deployment logs and operational metrics. This dynamic documentation approach ensures accuracy with reducing maintenance overhead associated with traditional documentation approaches.
 
@@ -110,7 +110,7 @@ Documentation automation patterns demonstrate how comprehensive documentation ca
 
 ### Architecture Decision Records for Architecture as Code
 
-Architecture Decision Records (ADRs) specifically designed for Infrastructure as Code decisions provide valuable context for future teams and capture reasoning behind complex technical choices. Swedish government organizations have standardized ADR formats as align with regulatory documentation requirements.
+Architecture Decision Records (ADRs) specifically designed for Architecture as Code decisions provide valuable context for future teams and capture reasoning behind complex technical choices. Swedish government organizations have standardized ADR formats as align with regulatory documentation requirements.
 
 ADR automation patterns enable teams to capture architectural decisions directly in code repositories alongside infrastructure definitions. This co-location approach ensures architectural context remains accessible and relevant for ongoing development activities.
 
@@ -118,7 +118,7 @@ Decision impact tracking through ADRs helps organizations understand long-term c
 
 ### Operational Runbook Management
 
-Operational runbooks for Infrastructure as Code environments must be executable, testable and version controlled together with infrastructure definitions. Svenska healthcare organizations have developed comprehensive runbook management approaches as ensure procedures remain current and effective.
+Operational runbooks for Architecture as Code environments must be executable, testable and version controlled together with infrastructure definitions. Svenska healthcare organizations have developed comprehensive runbook management approaches as ensure procedures remain current and effective.
 
 Runbook testing patterns enable organizations to validate operational procedures regularly through automated testing, simulation exercises and real-world validation. These testing approaches help identify outdated procedures and maintain operational readiness.
 
@@ -126,7 +126,7 @@ Collaborative runbook development patterns encourage input from multiple stakeho
 
 ## Utbildning and competence development
 
-Strategisk competence development for Infrastructure as Code requires comprehensive training programs as address both technical skills and organizational transformation challenges. Svenska organizations have developed innovative training approaches as combine formal education with practical experience and peer learning.
+Strategisk competence development for Architecture as Code requires comprehensive training programs as address both technical skills and organizational transformation challenges. Svenska organizations have developed innovative training approaches as combine formal education with practical experience and peer learning.
 
 Cross-functional training patterns break down traditional silos between development, operations and security teams through shared learning experiences and collaborative skill development. These patterns facilitate cultural transformation alongside technical adoption of Architecture as Code practices.
 
@@ -144,7 +144,7 @@ Mentorship programs pair experienced Architecture as Code practitioners with tea
 
 ### Certifiering and standarder
 
-Professional certification paths for Infrastructure as Code practitioners help establish industry standards and provide career advancement opportunities. Svenska professional organizations have contributed to international certification standards as reflect Nordic approaches to sustainable technology practices.
+Professional certification paths for Architecture as Code practitioners help establish industry standards and provide career advancement opportunities. Svenska professional organizations have contributed to international certification standards as reflect Nordic approaches to sustainable technology practices.
 
 Internal certification programs developed by large Swedish enterprises provide organization-specific training that aligns with company standards, tools and procedures. These programs ensure consistent skill levels across teams with supporting individual professional development.
 
@@ -152,7 +152,7 @@ Skills validation frameworks enable organizations to assess competency levels, i
 
 ## Verktygsval and leverantörshantering
 
-Strategic tool selection for Infrastructure as Code environments requires careful evaluation of technical capabilities, vendor stability, community support and long-term viability. Svenska organizations have developed comprehensive evaluation frameworks as balance imwithiate needs with strategic considerations.
+Strategic tool selection for Architecture as Code environments requires careful evaluation of technical capabilities, vendor stability, community support and long-term viability. Svenska organizations have developed comprehensive evaluation frameworks as balance imwithiate needs with strategic considerations.
 
 Multi-vendor strategies reduce dependency risks with providing flexibility to adopt best-of-breed solutions for different infrastructure domains. Swedish telecommunications companies have pioneered vendor management approaches as maintain competitive negotiating positions with ensuring operational continuity.
 
@@ -178,17 +178,17 @@ Vendor performance monitoring and relationship management ensure ongoing value d
 
 ## Continuous improvement and innovation
 
-Systematic continuous improvement programs for Infrastructure as Code environments drive ongoing optimization of processes, tools and outcomes through data-driven decision making and regular retrospectives. Svenska organizations have pioneered improvement frameworks as balance stability with innovation.
+Systematic continuous improvement programs for Architecture as Code environments drive ongoing optimization of processes, tools and outcomes through data-driven decision making and regular retrospectives. Svenska organizations have pioneered improvement frameworks as balance stability with innovation.
 
 Innovation management patterns help organizations balance exploration of new technologies with operational reliability requirements. These patterns provide structured approaches for evaluating emerging tools, techniques and practices with maintaining systems stability and business continuity.
 
-Experimentation frameworks enable safe exploration of new IaC practices through controlled pilot projects, isolated environments and gradual rollout procedures. Swedish research institutions have developed sophisticated experimentation approaches as accelerate learning with managing risks.
+Experimentation frameworks enable safe exploration of new Architecture as Code practices through controlled pilot projects, isolated environments and gradual rollout procedures. Swedish research institutions have developed sophisticated experimentation approaches as accelerate learning with managing risks.
 
 Feedback loop optimization ensures rapid information flow from operational experiences back to development practices, enabling quick adaptation and continuous learning. These loops help organizations respond quickly to changing requirements and emerging opportunities.
 
 ### Mätning and utvärdering
 
-Comprehensive metrics frameworks for Infrastructure as Code environments provide visibility into technical performance, business value and operational effectiveness. Svenska companies have developed balanced scorecards as track both technical metrics and business outcomes from Architecture as Code investments.
+Comprehensive metrics frameworks for Architecture as Code environments provide visibility into technical performance, business value and operational effectiveness. Svenska companies have developed balanced scorecards as track both technical metrics and business outcomes from Architecture as Code investments.
 
 Performance trending analysis helps organizations identify improvement opportunities and measure progress towards strategic objectives. Historical data analysis reveals patterns, trends and correlations as inform future planning and optimization efforts.
 
@@ -196,7 +196,7 @@ Benchmarking programs both internal and external provide comparative context for
 
 ### Innovation management
 
-Innovation pipeline management for Infrastructure as Code helps organizations systematically explore emerging technologies with maintaining focus at proven practices for production systems. This balanced approach enables competitive advantage without compromising operational reliability.
+Innovation pipeline management for Architecture as Code helps organizations systematically explore emerging technologies with maintaining focus at proven practices for production systems. This balanced approach enables competitive advantage without compromising operational reliability.
 
 Research and development programs specifically focused at Architecture as Code innovations help organizations stay ahead of technology trends and contribute to industry advancement. Svenska universities have partnered with industry for collaborative research as benefits both academic understanding and practical application.
 
@@ -204,17 +204,17 @@ Technology scouting programs identify emerging tools, techniques and practices a
 
 ## Riskhantering and affärskontinuitet
 
-Comprehensive risk management strategies for Infrastructure as Code environments must address both traditional operational risks and new risks introduced of code-defined infrastructure. Svenska organizations have developed sophisticated risk frameworks as integrate technical risks with business continuity planning.
+Comprehensive risk management strategies for Architecture as Code environments must address both traditional operational risks and new risks introduced of code-defined infrastructure. Svenska organizations have developed sophisticated risk frameworks as integrate technical risks with business continuity planning.
 
 Business continuity planning specifically adapted for Architecture as Code environments considers both infrastructure failure scenarios and risks associated with code repositories, deployment pipelines and automation systems. These plans ensure organizations can maintain operations also under complex failure conditions.
 
-Risk assessment integration with Infrastructure as Code development processes enables proactive identification and mitigation of potential issues before the impact production systems. Automated risk scanning, compliance checking and security assessment provide continuous risk visibility.
+Risk assessment integration with Architecture as Code development processes enables proactive identification and mitigation of potential issues before the impact production systems. Automated risk scanning, compliance checking and security assessment provide continuous risk visibility.
 
 Disaster recovery patterns for code-defined infrastructure demonstrate how traditional DR approaches must evolve for environments where infrastructure can be recreated from code repositories. Swedish financial institutions have pioneered DR approaches as leverage Architecture as Code for rapid environment reconstruction.
 
 ### Affärsimpaktanalys
 
-Business impact analysis for Infrastructure as Code environments must consider both direct operational impacts and secondary effects from automation failures, code repository compromise or deployment pipeline disruption. Swedish government agencies have developed comprehensive impact assessment frameworks.
+Business impact analysis for Architecture as Code environments must consider both direct operational impacts and secondary effects from automation failures, code repository compromise or deployment pipeline disruption. Swedish government agencies have developed comprehensive impact assessment frameworks.
 
 Recovery time objectives (RTO) and recovery point objectives (RPO) for Architecture as Code environments require careful consideration of code repository recovery, automation systems restoration and infrastructure recreation procedures. These objectives drive design decisions for backup strategies and recovery procedures.
 
@@ -222,7 +222,7 @@ Critical process identification helps organizations prioritize protection effort
 
 ### Krishantering
 
-Crisis management procedures specifically designed for Infrastructure as Code environments integrate technical response capabilities with business communication requirements. Svenska enterprises have developed comprehensive crisis management frameworks as coordinate technical and business responses.
+Crisis management procedures specifically designed for Architecture as Code environments integrate technical response capabilities with business communication requirements. Svenska enterprises have developed comprehensive crisis management frameworks as coordinate technical and business responses.
 
 Emergency communication plans ensure stakeholders receive appropriate information during infrastructure crises without compromising security or creating additional confusion. These plans include both internal communication protocols and external customer communication strategies.
 
@@ -230,7 +230,7 @@ Crisis leadership structures define clear decision-making authority and escalati
 
 ## Community engagement and open source bidrag
 
-Strategic community engagement for Infrastructure as Code enables organizations to both benefit from and contribute to broader ecosystem development. Svenska companies have established leadership positions in global Architecture as Code communities through consistent, valuable contributions and collaborative partnership approaches.
+Strategic community engagement for Architecture as Code enables organizations to both benefit from and contribute to broader ecosystem development. Svenska companies have established leadership positions in global Architecture as Code communities through consistent, valuable contributions and collaborative partnership approaches.
 
 Open source contribution strategies help organizations share innovations, attract talent and influence technology direction with building industry relationships and enhancing organizational reputation. These contributions position Swedish organizations as thought leaders in global infrastructure automation community.
 
@@ -258,9 +258,9 @@ International collaboration enables Swedish organizations to participate in glob
 
 ![Continuous improvement framework](images/diagram_22_continuous_improvement.png)
 
-*Continuous improvement of Infrastructure as Code-praktiker requires systematic approach to learning, adaptation and evolution. Diagram illustrerar feedback loops between praktisk erfarenhet, teknologisk development and organisatorisk maturity as driver sustainable Architecture as Code transformation.*
+*Continuous improvement of Architecture as Code-praktiker requires systematic approach to learning, adaptation and evolution. Diagram illustrerar feedback loops between praktisk erfarenhet, teknologisk development and organisatorisk maturity as driver sustainable Architecture as Code transformation.*
 
-successful Infrastructure as Code-implementation is not A one-time projekt without a continuous journey of learning, adaptation and refinement. Swedish organizations as has achieved sustainable Architecture as Code success understand to best practices must evolve continuously based on changing technology landscape, business requirements and lessons learned from real-world implementation challenges.
+successful Architecture as Code-implementation is not A one-time projekt without a continuous journey of learning, adaptation and refinement. Swedish organizations as has achieved sustainable Architecture as Code success understand to best practices must evolve continuously based on changing technology landscape, business requirements and lessons learned from real-world implementation challenges.
 
 ### Lärande from misslyckanden and incidenter
 
@@ -284,11 +284,11 @@ Community engagement with open source projects and technology vendors provides s
 
 ### Mognadsnivåer for Architecture as Code-implementation
 
-Organizational maturity models for Infrastructure as Code help teams understand their current capabilities and plan systematic improvement paths toward more sophisticated implementation practices. Svenska organizations have contributed significantly to these maturity frameworks through their emphasis at sustainability, collaboration and long-term thinking.
+Organizational maturity models for Architecture as Code help teams understand their current capabilities and plan systematic improvement paths toward more sophisticated implementation practices. Svenska organizations have contributed significantly to these maturity frameworks through their emphasis at sustainability, collaboration and long-term thinking.
 
 **Initial Level** organizations typically begin with manual infrastructure management and limited automation. Focus at this level is establishing basic version control, simple automation scripts and foundational monitoring capabilities. Swedish government agencies often start here when transitioning from traditional IT management approaches.
 
-**Developing Level** organizations implement comprehensive Infrastructure as Code practices with automated deployment pipelines, systematic testing and basic policy enforcement. Most svenska Medium-sized companies reach this level within their first year of serious Architecture as Code adoption, typically achieving 70-80% infrastructure automation coverage.
+**Developing Level** organizations implement comprehensive Architecture as Code practices with automated deployment pipelines, systematic testing and basic policy enforcement. Most svenska Medium-sized companies reach this level within their first year of serious Architecture as Code adoption, typically achieving 70-80% infrastructure automation coverage.
 
 **Advanced Level** organizations achieve full automation coverage with sophisticated governance frameworks, comprehensive security automation and advanced monitoring capabilities. Large svenska enterprises that Ericsson and H&M have reached this level through multi-year transformation programs and significant investment in tooling and training.
 
@@ -296,7 +296,7 @@ Organizational maturity models for Infrastructure as Code help teams understand 
 
 ### Förändringshantering for evolving praktiker
 
-Change management for evolving IaC practices requires careful balance between innovation adoption and operational stability. Svenska organizations excel at collaborative change management approaches as emphasize consensus building, gradual implementation and comprehensive stakeholder engagement throughout transformation processes.
+Change management for evolving Architecture as Code practices requires careful balance between innovation adoption and operational stability. Svenska organizations excel at collaborative change management approaches as emphasize consensus building, gradual implementation and comprehensive stakeholder engagement throughout transformation processes.
 
 Communication strategies for infrastructure changes must accommodate different stakeholder groups with varying technical backgrounds and risk tolerances. Swedish consensus culture provides natural framework for building broad organizational support for Architecture as Code evolution, though it whichetimes slows rapid technology adoption compared to more hierarchical organizational structures.
 
@@ -322,13 +322,13 @@ Mentorship programs for Architecture as Code practitioners help accelerate indiv
 
 **Ericsson** showcases how traditional technology companies can successfully transform their infrastructure practices through multi-year maturity development programs. Their experience demonstrates that even large, established organizations can achieve significant Architecture as Code transformation through sustained commitment to gradual improvement and employee development.
 
-**Swedish Government Digital Service** (DIGG) illustrates how public sector organizations can implement modern Architecture as Code practices with maintaining strict security and compliance requirements. Their approach demonstrates that government agencies can achieve both operational efficiency and regulatory compliance through thoughtful IaC adoption and continuous improvement practices.
+**Swedish Government Digital Service** (DIGG) illustrates how public sector organizations can implement modern Architecture as Code practices with maintaining strict security and compliance requirements. Their approach demonstrates that government agencies can achieve both operational efficiency and regulatory compliance through thoughtful Architecture as Code adoption and continuous improvement practices.
 
 ## Summary
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Best practices for Infrastructure as Code represents accumulated wisdom from global community of practitioners as has navigerat challenges of scaling infrastructure management at enterprise level. Swedish organizations has contributed significantly to these practices through innovative approaches to compliance, sustainability and collaborative development.
+Best practices for Architecture as Code represents accumulated wisdom from global community of practitioners as has navigerat challenges of scaling infrastructure management at enterprise level. Swedish organizations has contributed significantly to these practices through innovative approaches to compliance, sustainability and collaborative development.
 
 Effective implementation of Architecture as Code best practices requires balanced consideration of technical excellence, business value, regulatory compliance and environmental responsibility. Svenska organizations as embrace comprehensive best practice frameworks position themselves for sustainable long-term success in rapidly evolving technology landscape.
 
@@ -336,9 +336,9 @@ Continuous evolution of best practices through community contribution, experimen
 
 ## Sources and referenser
 
-- Cloud Native Computing Foundation. "Infrastructure as Code Best Practices." CNCF, 2023.
+- Cloud Native Computing Foundation. "Architecture as Code Best Practices." CNCF, 2023.
 - HashiCorp. "Terraform Best Practices Guide." HashiCorp Documentation, 2023.
-- AWS. "Well-Architected Framework for Infrastructure as Code." Amazon Web Services, 2023.
+- AWS. "Well-Architected Framework for Architecture as Code." Amazon Web Services, 2023.
 - Google. "Site Reliability Engineering Best Practices." Google SRE Team, 2023.
 - Puppet. "Infrastructure Automation Best Practices." Puppet Labs, 2023.
 - Swedish Cloud Association. "Cloud Best Practices for Swedish organizations." SWCA, 2023.

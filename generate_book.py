@@ -54,7 +54,7 @@ def validate_epub_file(epub_path):
 def generate_iac_book_content():
     """
     Genererar alla markdown-filer för boken 'Arkitektur som kod'
-    Fokus: Architecture as Code med Infrastructure as Code som praktiskt exempel
+    Fokus: Architecture as Code med Architecture as Code som praktiskt exempel
     """
     
     # Definiera mappar
@@ -74,7 +74,7 @@ def generate_iac_book_content():
             "mermaid_code": """graph LR
     A[Traditionell arkitektur] --> B[Manuella processer]
     C[Architecture as Code] --> D[Automatiserade processer] 
-    E[Infrastructure as Code] --> F[Praktiskt exempel]""",
+    E[Architecture as Code] --> F[Praktiskt exempel]""",
             "content": """# Inledning till arkitektur som kod
 
 Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela systemarkitekturen definieras, versionshanteras och hanteras genom kod. Detta approach möjliggör samma metodiker som traditionell mjukvaruutveckling för hela organisationens tekniska landskap.
@@ -315,7 +315,7 @@ Källor:
     D --> E[Deployment]""",
             "content": """# Versionhantering och kodstruktur
 
-Effektiv versionhantering utgör ryggraden i Infrastructure as Code-implementationer. Genom att tillämpa samma metoder som mjukvaruutveckling på infrastrukturdefinitioner skapas spårbarhet, samarbetsmöjligheter och kvalitetskontroll.
+Effektiv versionhantering utgör ryggraden i Architecture as Code-implementationer. Genom att tillämpa samma metoder som mjukvaruutveckling på infrastrukturdefinitioner skapas spårbarhet, samarbetsmöjligheter och kvalitetskontroll.
 
 ![Versionhantering och kodstruktur](images/diagram_03_kapitel2.png)
 
@@ -323,14 +323,14 @@ Diagrammet illustrerar det typiska flödet från Git repository genom branching 
 
 ## Git-baserad arbetsflöde för infrastruktur
 
-Git utgör standarden för versionhantering av IaC-kod och möjliggör distribuerat samarbete mellan team-medlemmar. Varje förändring dokumenteras med commit-meddelanden som beskriver vad som ändrats och varför, vilket skapar en komplett historik över infrastrukturutvecklingen.
+Git utgör standarden för versionhantering av Architecture as Code-kod och möjliggör distribuerat samarbete mellan team-medlemmar. Varje förändring dokumenteras med commit-meddelanden som beskriver vad som ändrats och varför, vilket skapar en komplett historik över infrastrukturutvecklingen.
 
 ## Kodorganisation och modulstruktur
 
-Välorganiserad kodstruktur är avgörande för maintainability och collaboration i större IaC-projekt. Modulär design möjliggör återanvändning av infrastrukturkomponenter across olika projekt och miljöer.
+Välorganiserad kodstruktur är avgörande för maintainability och collaboration i större Architecture as Code-projekt. Modulär design möjliggör återanvändning av infrastrukturkomponenter across olika projekt och miljöer.
 
 Källor:
-- Atlassian. "Git Workflows for Infrastructure as Code." Atlassian Git Documentation."""
+- Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation."""
         }
     ]
     

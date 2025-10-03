@@ -11,8 +11,8 @@ This appendix contains all kodexamples, konfigurationsfiler and technical implem
 Kodexemplen is organiserade in following kategorier:
 
 1. **[CI/CD Pipelines and Architecture as Code-automation](#cicd-pipelines)**
-2. **[Infrastructure as Code (Architecture as Code) - Terraform](#terraform-iac)**
-3. **[Infrastructure as Code (Architecture as Code) - CloudFormation](#cloudformation-Architecture as Code)**
+2. **[Architecture as Code (Architecture as Code) - Terraform](#terraform-iac)**
+3. **[Architecture as Code (Architecture as Code) - CloudFormation](#cloudformation-Architecture as Code)**
 4. **[Automationsskript and tools](#automation-scripts)**
 5. **[Security and compliance](#security-compliance)**
 6. **[testing and validation](#testing-validation)**
@@ -671,7 +671,7 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 ---
 
-## Infrastructure as Code - CloudFormation {
+## Architecture as Code - CloudFormation {
 
 Architecture as Code-principerna within This area#cloudformation-Architecture as Code}
 
@@ -736,9 +736,9 @@ Resources:
 
 ## Automation Scripts {#automation-scripts}
 
-This sektion contains Python-skript and andra automationsverktyg for Infrastructure as Code-handling.
+This sektion contains Python-skript and andra automationsverktyg for Architecture as Code-handling.
 
-### 22_CODE_1: comprehensive testramverk for Infrastructure as Code
+### 22_CODE_1: comprehensive testramverk for Architecture as Code
 
 Architecture as Code-principerna within This area
 *Refereras from chapter 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
@@ -766,7 +766,7 @@ class TestCase:
 
 class ComprehensiveIaCTesting:
     """
-    Comprehensive testing framework for Infrastructure as Code
+    Comprehensive testing framework for Architecture as Code
     Based at svenska architecture as code best practices and international standards
     """
     

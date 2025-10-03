@@ -12,7 +12,7 @@ This sammanställning identifierar engelska uttryck as fortfarande finns in boke
 - **GitHub/GitLab** (plattformar)
 - **Docker** (containerteknologi)
 - **Kubernetes** (orkestreringssystem)
-- **Terraform** (Infrastructure as Code-verktyg)
+- **Terraform** (Architecture as Code-verktyg)
 - **AWS/Azure/GCP** (molnleverantörer)
 - **YAML/JSON** (dataformat)
 - **REST/GraphQL** (API-arkitekturer)
@@ -49,7 +49,7 @@ This sammanställning identifierar engelska uttryck as fortfarande finns in boke
 ## Sammansatta engelska termer
 
 ### Architecture as Code-relaterade
-- **Infrastructure as Code (IaC)** - redan hanterat according to terminologijustering
+- **Architecture as Code** - redan hanterat according to terminologijustering
 - **Documentation as Code (DaC)** → *Documentation as Code*
 - **Requirements as Code (RaC)** → *Requirements as Code*
 - **Architecture as Code** - huvudterm for boken, behålls

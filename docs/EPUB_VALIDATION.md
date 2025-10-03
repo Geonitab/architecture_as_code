@@ -130,7 +130,7 @@ epubcheck docs/arkitektur_som_kod.epub > validation-debug.log 2>&1
 # Metadata for korrekt EPUB-generering
 metadata:
   title: "architecture as code"
-  subtitle: "Infrastructure as Code in praktiken"
+  subtitle: "Architecture as Code in praktiken"
   author: "Kodarkitektur Bokverkstad"
   date: "2024"              # ISO-format for kompatibilitet
   language: sv

@@ -1,6 +1,6 @@
 # Architecture as Code - Bokstruktur
 
-This Document describes The logiska Structureen for boken "Architecture as Code" which is organized in 25 chapters as builds on varandra to provide a complete understanding of Architecture as Code and Infrastructure as Code for Swedish organizations.
+This Document describes The logiska Structureen for boken "Architecture as Code" which is organized in 25 chapters as builds on varandra to provide a complete understanding of Architecture as Code and Architecture as Code for Swedish organizations.
 
 ## Chapter Structure
 
@@ -8,7 +8,7 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 1 | `01_inledning.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Infrastructure as Code |
+| 1 | `01_inledning.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Architecture as Code |
 | 2 | `02_grundlaggande_principer.md` | Fundamental Principles of Architecture as Code | fundamental principles as declarative architecture definition and helhetsperspektiv |
 | 3 | `03_versionhantering.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
@@ -17,8 +17,8 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 5 | `05_automatisering_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
-| 6 | `06_molnarkitektur.md` | Cloud Architecture as Code | Cloud-native architecture and IaC in cloud environments |
+| 5 | `05_automatisering_devops_cicd.md` | Automation, DevOps and CI/CD for Architecture as Code | Holistic approach to CI/CD, DevOps practices and automation for Architecture as Code |
+| 6 | `06_molnarkitektur.md` | Cloud Architecture as Code | Cloud-native architecture and Architecture as Code in cloud environments |
 | 7 | `07_containerisering.md` | Containerization and Orchestration as code | Container-based Architecture as Code |
 | 8 | `08_microservices.md` | Microservices-Architecture as Code | Microservices patterns implemented through code |
 
@@ -34,7 +34,7 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 12 | `12_teststrategier.md` | Teststrategier for infrastruktukod | testing of IaC and architecture code |
+| 12 | `12_teststrategier.md` | Teststrategier for infrastruktukod | testing of Architecture as Code and architecture code |
 | 13 | `13_praktisk_implementation.md` | Architecture as Code in praktiken | Praktiska implementeringsExample |
 
 ### Del 5: Drift and handling (chapters 14-15)
@@ -48,9 +48,9 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 16 | `16_organisatorisk_forandring.md` | Organisatorisk change and teamStructureer | Organisationsutveckling for IaC |
-| 17 | `17_team_Structure.md` | Team Structure and Competenciesutveckling for IaC | Teamorganisation and competence development |
-| 18 | `18_digitalisering.md` | Digitalisering through kodbaserad infrastructure | Digital transformation through IaC |
+| 16 | `16_organisatorisk_forandring.md` | Organisatorisk change and teamStructureer | Organisationsutveckling for Architecture as Code |
+| 17 | `17_team_Structure.md` | Team Structure and Competenciesutveckling for Architecture as Code | Teamorganisation and competence development |
+| 18 | `18_digitalisering.md` | Digitalisering through kodbaserad infrastructure | Digital transformation through Architecture as Code |
 
 ### Del 7: advanced ämnen and framtid (chapters 19-21)
 
@@ -70,7 +70,7 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 13 | `13_teststrategier.md` | Teststrategier for infrastruktukod | testing of IaC and architecture code |
+| 13 | `13_teststrategier.md` | Teststrategier for infrastruktukod | testing of Architecture as Code and architecture code |
 | 14 | `14_praktisk_implementation.md` | Architecture as Code in praktiken | Praktiska implementeringsExample |
 
 ### Del 5: Drift and handling (chapters 15-16)
@@ -84,9 +84,9 @@ This Document describes The logiska Structureen for boken "Architecture as Code"
 
 | chapters | File | Title | Description |
 |---------|-----|-------|-------------|
-| 17 | `17_organisatorisk_forandring.md` | Organisatorisk change and teamStructureer | Organisationsutveckling for IaC |
-| 18 | `18_team_Structure.md` | Team Structure and Competenciesutveckling for IaC | Teamorganisation and competence development |
-| 19 | `19_digitalisering.md` | Digitalisering through kodbaserad infrastructure | Digital transformation through IaC |
+| 17 | `17_organisatorisk_forandring.md` | Organisatorisk change and teamStructureer | Organisationsutveckling for Architecture as Code |
+| 18 | `18_team_Structure.md` | Team Structure and Competenciesutveckling for Architecture as Code | Teamorganisation and competence development |
+| 19 | `19_digitalisering.md` | Digitalisering through kodbaserad infrastructure | Digital transformation through Architecture as Code |
 
 ### Del 7: advanced ämnen and framtid (chapters 20-22)
 

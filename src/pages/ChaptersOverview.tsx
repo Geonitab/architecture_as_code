@@ -15,14 +15,14 @@ const ChaptersOverview = () => {
       id: "01", 
       title: "Inledning till arkitektur som kod", 
       area: "Grundläggande koncept",
-      summary: "En introduktion till Infrastructure as Code och dess fundamentala principer. Täcker bakgrund, motivation och definierar omfattningen för kodbaserad infrastruktur.",
-      keyTopics: ["IaC definition", "Traditionella utmaningar", "Svenska drivkrafter", "Compliance krav"]
+      summary: "En introduktion till Architecture as Code och dess fundamentala principer. Täcker bakgrund, motivation och definierar omfattningen för kodbaserad infrastruktur.",
+      keyTopics: ["Architecture as Code definition", "Traditionella utmaningar", "Svenska drivkrafter", "Compliance krav"]
     },
     { 
       id: "02", 
-      title: "Grundläggande principer för Infrastructure as Code", 
+      title: "Grundläggande principer för Architecture as Code", 
       area: "Grundläggande koncept",
-      summary: "Fundamentala principer som säkerställer framgångsrik IaC-implementation. Fokus på deklarativ approach, versionskontroll och automatisering.",
+      summary: "Fundamentala principer som säkerställer framgångsrik Architecture as Code-implementation. Fokus på deklarativ approach, versionskontroll och automatisering.",
       keyTopics: ["Deklarativ vs imperativ", "Versionskontroll", "Automatisering", "Reproducerbarhet"]
     },
     { 
@@ -36,14 +36,14 @@ const ChaptersOverview = () => {
       id: "04", 
       title: "Architecture Decision Records (ADR)", 
       area: "Grundläggande koncept",
-      summary: "Strukturerad metod för att dokumentera viktiga arkitekturbeslut. Täcker ADR-format, verktyg och integration med Infrastructure as Code.",
+      summary: "Strukturerad metod för att dokumentera viktiga arkitekturbeslut. Täcker ADR-format, verktyg och integration med Architecture as Code.",
       keyTopics: ["Decision documentation", "ADR structure", "Architectural governance", "Compliance tracking"]
     },
     { 
       id: "05", 
-      title: "Automatisering, DevOps och CI/CD för Infrastructure as Code", 
+      title: "Automatisering, DevOps och CI/CD för Architecture as Code", 
       area: "Systemutveckling",
-      summary: "Comprehensive approach till CI/CD-pipelines, DevOps-kulturen och automatisering för Infrastructure as Code. Kombinerar fundamentala automation-principer med holistic Architecture as Code-praktiker.",
+      summary: "Comprehensive approach till CI/CD-pipelines, DevOps-kulturen och automatisering för Architecture as Code. Kombinerar fundamentala automation-principer med holistic Architecture as Code-praktiker.",
       keyTopics: ["CI/CD pipelines", "DevOps kultur", "Architecture as Code", "Svenska compliance", "Automated testing", "Progressive delivery"]
     },
     { 
@@ -64,14 +64,14 @@ const ChaptersOverview = () => {
       id: "08", 
       title: "Microservices-arkitektur som kod", 
       area: "Arkitektur",
-      summary: "Implementation av microservices-arkitektur genom Infrastructure as Code-principer.",
+      summary: "Implementation av microservices-arkitektur genom Architecture as Code-principer.",
       keyTopics: ["Microservices design", "Service mesh", "API management", "Distributed systems"]
     },
     { 
       id: "09", 
       title: "Säkerhet i Architecture as Code", 
       area: "Säkerhet",
-      summary: "Säkerhetsaspekter och best practices för IaC. Inkluderar secrets management, compliance och security scanning.",
+      summary: "Säkerhetsaspekter och best practices för Architecture as Code. Inkluderar secrets management, compliance och security scanning.",
       keyTopics: ["Security by design", "Secrets management", "Compliance", "Vulnerability scanning"]
     },
     { 
@@ -106,7 +106,7 @@ const ChaptersOverview = () => {
       id: "14", 
       title: "Kostnadsoptimering och resurshantering", 
       area: "Arkitektur",
-      summary: "Strategier för kostnadsoptimering och effektiv resurshantering genom IaC.",
+      summary: "Strategier för kostnadsoptimering och effektiv resurshantering genom Architecture as Code.",
       keyTopics: ["Cost optimization", "Resource management", "Budget control", "ROI measurement"]
     },
     { 
@@ -120,21 +120,21 @@ const ChaptersOverview = () => {
       id: "16", 
       title: "Organisatorisk förändring och teamstrukturer", 
       area: "Organisationsutveckling",
-      summary: "Hantering av organisatoriska förändringar vid IaC-implementation. Fokus på team dynamics och cultural change.",
+      summary: "Hantering av organisatoriska förändringar vid Architecture as Code-implementation. Fokus på team dynamics och cultural change.",
       keyTopics: ["Change management", "Team structures", "Cultural transformation", "Skills development"]
     },
     { 
       id: "17", 
-      title: "Team-struktur och kompetensutveckling för IaC", 
+      title: "Team-struktur och kompetensutveckling för Architecture as Code", 
       area: "Organisationsutveckling",
-      summary: "Optimala teamstrukturer och kompetensutvecklingsstrategier för Infrastructure as Code.",
+      summary: "Optimala teamstrukturer och kompetensutvecklingsstrategier för Architecture as Code.",
       keyTopics: ["Team topology", "Skills development", "Training programs", "Knowledge sharing"]
     },
     { 
       id: "18", 
       title: "Digitalisering genom kodbaserad infrastruktur", 
       area: "Digitalisering",
-      summary: "Hur IaC möjliggör och accelererar digital transformation inom svenska organisationer.",
+      summary: "Hur Architecture as Code möjliggör och accelererar digital transformation inom svenska organisationer.",
       keyTopics: ["Digital transformation", "Innovation", "Business agility", "Competitive advantage"]
     },
     { 
@@ -148,42 +148,42 @@ const ChaptersOverview = () => {
       id: "20", 
       title: "Framtida trender och teknologier", 
       area: "Innovation",
-      summary: "Emerging technologies och framtida trender inom Infrastructure as Code.",
+      summary: "Emerging technologies och framtida trender inom Architecture as Code.",
       keyTopics: ["Emerging technologies", "Future trends", "Technology roadmaps", "Industry evolution"]
     },
     { 
       id: "21", 
       title: "Best practices och lärda läxor", 
       area: "Systemutveckling",
-      summary: "Sammanställning av best practices och viktiga lärdomar från framgångsrika IaC-implementationer.",
+      summary: "Sammanställning av best practices och viktiga lärdomar från framgångsrika Architecture as Code-implementationer.",
       keyTopics: ["Best practices", "Lessons learned", "Success factors", "Common pitfalls"]
     },
     { 
       id: "22", 
       title: "Slutsats", 
       area: "Sammanfattning",
-      summary: "Sammanfattning av bokens huvudbudskap och rekommendationer för framtida IaC-arbete.",
+      summary: "Sammanfattning av bokens huvudbudskap och rekommendationer för framtida Architecture as Code-arbete.",
       keyTopics: ["Key takeaways", "Future recommendations", "Action items", "Next steps"]
     },
     { 
       id: "23", 
       title: "Ordlista", 
       area: "Referenser",
-      summary: "Omfattande ordlista med definitioner av termer och begrepp inom Infrastructure as Code.",
+      summary: "Omfattande ordlista med definitioner av termer och begrepp inom Architecture as Code.",
       keyTopics: ["Terminology", "Definitions", "Glossary", "Technical terms"]
     },
     { 
       id: "24", 
       title: "Om författarna", 
       area: "Referenser",
-      summary: "Information om bokens författare och deras bakgrund inom Infrastructure as Code.",
+      summary: "Information om bokens författare och deras bakgrund inom Architecture as Code.",
       keyTopics: ["Author bios", "Professional background", "Expertise", "Contributions"]
     },
     { 
       id: "25", 
       title: "Framtida utveckling och trender", 
       area: "Innovation",
-      summary: "Utforskar framtida utvecklingstrender inom Architecture as Code och Infrastructure as Code.",
+      summary: "Utforskar framtida utvecklingstrender inom Architecture as Code och Architecture as Code.",
       keyTopics: ["Future trends", "Technology evolution", "AI/ML integration", "Sustainability"]
     },
     { 
@@ -239,7 +239,7 @@ const ChaptersOverview = () => {
           <div className="mb-8">
             <h2 className="text-3xl font-bold mb-4">Utforska alla kapitel</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Bläddra genom bokens 27 kapitel och upptäck djupgående innehåll om Infrastructure as Code
+              Bläddra genom bokens 27 kapitel och upptäck djupgående innehåll om Architecture as Code
             </p>
             
             {/* Search and Filter */}

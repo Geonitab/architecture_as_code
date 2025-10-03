@@ -26,7 +26,7 @@
 - AWS, Azure, GCP
 - DevOps, CI/CD
 - OAuth, JWT, SSL/TLS
-- Infrastructure as Code (IaC)
+- Architecture as Code
 - Architecture as Code
 - Documentation as Code (DaC)
 - Requirements as Code (RaC)

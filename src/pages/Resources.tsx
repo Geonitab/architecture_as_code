@@ -19,8 +19,8 @@ const Resources = () => {
 
   const whitepapers = [
     {
-      title: "Svenska Compliance-krav för IaC",
-      description: "Omfattande guide till GDPR, MSB säkerhetskrav och andra svenska regleringar som påverkar Infrastructure as Code-implementationer.",
+      title: "Svenska Compliance-krav för Architecture as Code",
+      description: "Omfattande guide till GDPR, MSB säkerhetskrav och andra svenska regleringar som påverkar Architecture as Code-implementationer.",
       size: "2.1 MB",
       format: "PDF",
       category: "Compliance",
@@ -28,8 +28,8 @@ const Resources = () => {
       releaseDate: "2024-03-01"
     },
     {
-      title: "ROI Calculator för IaC-projekt",
-      description: "Excel-mall för att beräkna avkastning på investering i Infrastructure as Code-initiativ, anpassad för svenska organisationer.",
+      title: "ROI Calculator för Architecture as Code-projekt",
+      description: "Excel-mall för att beräkna avkastning på investering i Architecture as Code-initiativ, anpassad för svenska organisationer.",
       size: "450 KB",
       format: "XLSX",
       category: "Business Case",
@@ -37,8 +37,8 @@ const Resources = () => {
       releaseDate: "2024-02-15"
     },
     {
-      title: "IaC Security Checklist",
-      description: "Detaljerad säkerhetschecklista för Infrastructure as Code med fokus på svenska säkerhetsstandarder och best practices.",
+      title: "Architecture as Code Security Checklist",
+      description: "Detaljerad säkerhetschecklista för Architecture as Code med fokus på svenska säkerhetsstandarder och best practices.",
       size: "1.8 MB",
       format: "PDF",
       category: "Säkerhet",
@@ -47,7 +47,7 @@ const Resources = () => {
     },
     {
       title: "Team Readiness Assessment",
-      description: "Verktyg för att bedöma organisationens mognad och redo för Infrastructure as Code-transformation.",
+      description: "Verktyg för att bedöma organisationens mognad och redo för Architecture as Code-transformation.",
       size: "650 KB",
       format: "PDF",
       category: "Assessment",
@@ -58,8 +58,8 @@ const Resources = () => {
 
   const presentations = [
     {
-      title: "IaC för svenska organisationer - Introduktion",
-      description: "Grundläggande presentation om Infrastructure as Code och dess relevans för svenska organisationer.",
+      title: "Architecture as Code för svenska organisationer - Introduktion",
+      description: "Grundläggande presentation om Architecture as Code och dess relevans för svenska organisationer.",
       slides: 45,
       format: "PPTX",
       category: "Introduktion",
@@ -68,7 +68,7 @@ const Resources = () => {
       releaseDate: "2024-03-10"
     },
     {
-      title: "Teknisk implementation av IaC",
+      title: "Teknisk implementation av Architecture as Code",
       description: "Djupgående teknisk presentation för utvecklare och DevOps-team om praktisk implementation.",
       slides: 78,
       format: "PPTX",
@@ -78,8 +78,8 @@ const Resources = () => {
       releaseDate: "2024-02-28"
     },
     {
-      title: "Säkerhet i Infrastructure as Code",
-      description: "Specialiserad presentation om säkerhetsaspekter och compliance i IaC-miljöer.",
+      title: "Säkerhet i Architecture as Code",
+      description: "Specialiserad presentation om säkerhetsaspekter och compliance i Architecture as Code-miljöer.",
       slides: 56,
       format: "PPTX",
       category: "Säkerhet",
@@ -88,8 +88,8 @@ const Resources = () => {
       releaseDate: "2024-02-05"
     },
     {
-      title: "Organisatorisk förändring och IaC",
-      description: "Presentation om change management och organisatoriska aspekter av IaC-transformation.",
+      title: "Organisatorisk förändring och Architecture as Code",
+      description: "Presentation om change management och organisatoriska aspekter av Architecture as Code-transformation.",
       slides: 42,
       format: "PPTX",
       category: "Change Management",
@@ -161,7 +161,7 @@ const Resources = () => {
             <h2 className="text-3xl font-bold mb-4">Resurser och nedladdningar</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Ladda ner boken, whitepapers, presentationer och kodexempel för att fördjupa din kunskap 
-              om Infrastructure as Code och stödja din organisations transformation.
+              om Architecture as Code och stödja din organisations transformation.
             </p>
           </div>
 

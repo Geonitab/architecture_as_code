@@ -1,10 +1,10 @@
 # About the Authors
 
-This chapter presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk application of Infrastructure as Code in Swedish organizations.
+This chapter presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk application of Architecture as Code in Swedish organizations.
 
 ![Författare and bidragsgivare](images/diagram_25_authors.png)
 
-*a Overview over the experter and organisationer as format Contentset in This bok through sina bidrag within Architecture as Code and Infrastructure as Code (Architecture as Code).*
+*a Overview over the experter and organisationer as format Contentset in This bok through sina bidrag within Architecture as Code and Architecture as Code (Architecture as Code).*
 
 ## Huvudforfattare
 
@@ -14,7 +14,7 @@ This chapter presenterar the personer and organisationer as bidragit to creatend
 
 **Expertområden:**
 - Architecture as Code metodologi
-- Infrastructure as Code Architecture as Code-implementation
+- Architecture as Code Architecture as Code-implementation
 - DevOps and CI/CD automation
 - Molnarkitektur and containerisering
 - Security and compliance in svenska context
@@ -26,7 +26,7 @@ Bokverkstaden grundades with målet to överbrygga klyftan between teoretiska ar
 
 ### Infrastrukturspecialister
 
-**Svenska DevOps-community** has bidragit with comprehensive praktisk knowledge about implementation of Infrastructure as Code in svenska environments. This grupp includes:
+**Svenska DevOps-community** has bidragit with comprehensive praktisk knowledge about implementation of Architecture as Code in svenska environments. This grupp includes:
 
 - **Molnarkitekter** from ledande svenska teknologiforetag
 - **DevOps Engineers** with specialistkunskap within automation
@@ -40,7 +40,7 @@ Book content has granskats of:
 - **Senior molnarkitekter** from svenska storforetag
 - **Tekniska chefer** within svensk finanssektor  
 - **Compliance-specialister** with expertis within svenska regelverk
-- **Open source code-maintainers** of Infrastructure as Code tool
+- **Open source code-maintainers** of Architecture as Code tool
 
 ### Contentssspecialister
 
@@ -75,7 +75,7 @@ Book content has granskats of:
 
 Flera Swedish organizations has bidragit with:
 
-- **Fallstudier** from verkliga Infrastructure as Code-implementations
+- **Fallstudier** from verkliga Architecture as Code-implementations
 - **Architecture as Code best practices** from svenska molnmigreringar
 - **Compliance-vägledning** for svenska regelverk
 - **Säkerhetsperspektiv** from svenska cybersäkerhetsexperter
@@ -120,7 +120,7 @@ This bok createdes with hjälp of:
 
 This bok builds on the enastående arbete as utforts of öppen source code-community within:
 
-- **Terraform** - Infrastructure as Code foundation
+- **Terraform** - Architecture as Code foundation
 - **Ansible** - Configuration management automation  
 - **Docker** - Containerization technology
 - **Kubernetes** - Container orchestration
@@ -190,12 +190,12 @@ All reuse should erkänna ursprungliga forfattare and bidragsgivare according to
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-"Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team created a resurs as specific meets svenska organisationers behov within Architecture as Code and Infrastructure as Code.
+"Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team created a resurs as specific meets svenska organisationers behov within Architecture as Code and Architecture as Code.
 
 Bokens success will from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig value for svenska technical organisationer. Vi hoppas to This resurs will to accelerera adoptionen of Architecture as Code-principles and bidra to improved technical utfall over entire svenska tech-sektorn.
 
 Sources:
 - Kvadrat AB. "Swedish Technology Consulting Excellence." Foretagsprofil, 2024.
-- Svenska DevOps Community. "Infrastructure as Code Best Practices." Community Guidelines, 2024.
+- Svenska DevOps Community. "Architecture as Code Best Practices." Community Guidelines, 2024.
 - GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
 - Svenska Tekniska Standarder. "Technical Documentation in Swedish." Language Guidelines, 2024.

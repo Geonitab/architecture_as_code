@@ -14,11 +14,11 @@ Swedish organizations face A rich selection of cloud providers, var and a with t
 
 AWS dominerar The globala molnmarknaden and has etablerat strong whenvaro in Sverige through datacenters in Stockholm-regionen. For Swedish organizations offers AWS comprehensive services as is particularly relevanta for lokala compliance-requirements and performance-behov.
 
-**AWS CloudFormation** forms AWS:s native Infrastructure as Code-service as enables declarative definition of AWS-resurser through JSON or YAML templates. CloudFormation handles resource dependencies automatically and ensures infrastructure deployments is reproducerbara and återställningscapable:
+**AWS CloudFormation** forms AWS:s native Architecture as Code-service as enables declarative definition of AWS-resurser through JSON or YAML templates. CloudFormation handles resource dependencies automatically and ensures infrastructure deployments is reproducerbara and återställningscapable:
 
 For a detaljerad CloudFormation template as implement VPC configuration for Swedish organizations with GDPR compliance, se [07_CODE_1: VPC Konfiguration for Swedish organizations](#07_CODE_1) in Appendix A.
 
-**AWS CDK (Cloud Development Kit)** revolutionerar Infrastructure as Code by enable definition of cloud resources with programmeringsspråk that TypeScript, Python, Java and C#. For svenska utvecklarteam as redan behärskar These language reduces CDK learning curve and enables reuse of existing programmeringskunskaper:
+**AWS CDK (Cloud Development Kit)** revolutionerar Architecture as Code by enable definition of cloud resources with programmeringsspråk that TypeScript, Python, Java and C#. For svenska utvecklarteam as redan behärskar These language reduces CDK learning curve and enables reuse of existing programmeringskunskaper:
 
 ```typescript
 // cdk/svenska-org-infrastructure.ts
@@ -290,7 +290,7 @@ new SvenskaOrgInfrastructureStack(app, 'SvenskaOrgProd', {
 
 ### Microsoft Azure for Swedish organizations
 
-Microsoft Azure has developed strong position in Sverige, particularly within the public sector and traditional enterprise-organisationer. Azure Resource Manager (ARM) templates and Bicep forms Microsofts primary Infrastructure as Code offerings.
+Microsoft Azure has developed strong position in Sverige, particularly within the public sector and traditional enterprise-organisationer. Azure Resource Manager (ARM) templates and Bicep forms Microsofts primary Architecture as Code offerings.
 
 **Azure Resource Manager (ARM) Templates** enables declarative definition of Azure-resurser through JSON-baserade templates. For Swedish organizations as redan uses Microsoft-produkter forms ARM templates a naturlig extension of existing Microsoft-skickigheter:
 
@@ -930,7 +930,7 @@ output logAnalyticsWorkspaceId string = gdprCompliance ? logAnalytics.id : ''
 
 Google Cloud Plattform (GCP) attraherar svenska tech-companies and startups through sina machine learning capabilities and innovativa services. Google Cloud Deployment Manager and Terraform Google Provider forms primary Architecture as Code tools for GCP.
 
-**Google Cloud Deployment Manager** uses YAML or Python for Infrastructure as Code definitions and integrerar naturligt with Google Cloud services:
+**Google Cloud Deployment Manager** uses YAML or Python for Architecture as Code definitions and integrerar naturligt with Google Cloud services:
 
 ```yaml
 # gcp/svenska-org-infrastructure.yaml
@@ -1187,7 +1187,7 @@ outputs:
 
 ## Cloud-native architecture as code patterns
 
-Cloud-native Infrastructure as Code patterns utnyttjar molnspecific services and capabilities to create optimala arkitekturer. These patterns includes serverless computing, managed databases, auto-scaling groups, and event-driven architectures as eliminates traditional infrastructure management.
+Cloud-native Architecture as Code patterns utnyttjar molnspecific services and capabilities to create optimala arkitekturer. These patterns includes serverless computing, managed databases, auto-scaling groups, and event-driven architectures as eliminates traditional infrastructure management.
 
 Microservices-baserade arkitekturer implementeras through containerorkestrering, service mesh, and API gateways definierade as code. This enables loose coupling, independent scaling, and teknologidiversifiering while operationell komplexitet is managed through automation.
 
@@ -1394,7 +1394,7 @@ resource "kubernetes_pod_disruption_budget" "application_pdb" {
 
 ### Serverless-first pattern for svenska innovationsorganisationer
 
-Serverless arkitekturer enables unprecedented scalability and kostnadseffektivitet for Swedish organizations. Infrastructure as Code for serverless focuses on function definitions, event routing, and managed service integrations:
+Serverless arkitekturer enables unprecedented scalability and kostnadseffektivitet for Swedish organizations. Architecture as Code for serverless focuses on function definitions, event routing, and managed service integrations:
 
 ```terraform
 # terraform/serverless-platform.tf
@@ -1929,13 +1929,13 @@ resource "aws_security_group" "resolver_sg" {
 
 ## Multi-cloud strategier
 
-Multi-cloud Infrastructure as Code strategier enables distribution of workloads across multiple cloud providers to optimera kostnad, performance, and resiliens. Provider-agnostic tools that Terraform or Pulumi is used to abstrahera leverantörspecific skillnader and enable portabilitet.
+Multi-cloud Architecture as Code strategier enables distribution of workloads across multiple cloud providers to optimera kostnad, performance, and resiliens. Provider-agnostic tools that Terraform or Pulumi is used to abstrahera leverantörspecific skillnader and enable portabilitet.
 
 Hybrid cloud Architecture as Code-implementations combines on-premises infrastructure with public cloud services through VPN connections, dedicated links, and edge computing. Consistent deployment and management processes across environments ensures operational efficiency and säkerhetskompliance.
 
 ### Terraform for multi-cloud abstraktion
 
-Terraform forms The most mogna solution for multi-cloud Infrastructure as Code through sitt comprehensive provider ecosystem. For Swedish organizations enables Terraform unified management of AWS, Azure, Google Cloud, and on-premises resurser through a konsistent declarative syntax:
+Terraform forms The most mogna solution for multi-cloud Architecture as Code through sitt comprehensive provider ecosystem. For Swedish organizations enables Terraform unified management of AWS, Azure, Google Cloud, and on-premises resurser through a konsistent declarative syntax:
 
 ```hcl
 # terraform/multi-cloud/main.tf
@@ -2355,7 +2355,7 @@ output "compliance_status" {
 }
 ```
 
-### Pulumi for programmatisk multi-cloud Infrastructure as Code
+### Pulumi for programmatisk multi-cloud Architecture as Code
 
 Architecture as Code-principerna within This area
 
@@ -2810,7 +2810,7 @@ export const complianceStatus = {
 
 ## Serverless infrastruktur
 
-Serverless Infrastructure as Code focuses on function definitions, event triggers, and managed service configurations instead for traditional server management. This approach reduces operationell overhead and enables automatic scaling based on actual usage patterns.
+Serverless Architecture as Code focuses on function definitions, event triggers, and managed service configurations instead for traditional server management. This approach reduces operationell overhead and enables automatic scaling based on actual usage patterns.
 
 Event-driven architectures implementeras through cloud functions, message queues, and data streams definierade that Architecture as Code. Integration between services is managed through IAM policies, API definitions, and network configurations that ensure security and performance requirements.
 
@@ -3834,7 +3834,7 @@ spec:
 
 
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Cloud Architecture as Code represents a fundamental evolution of Infrastructure as Code for Swedish organizations as operates in cloud-native environments. by utnyttja cloud provider-specific services and capabilities can organisationer achieve unprecedented scalability, resiliens and kostnadseffektivitet while svenska compliance-requirements uppfylls.
+Cloud Architecture as Code represents a fundamental evolution of Architecture as Code for Swedish organizations as operates in cloud-native environments. by utnyttja cloud provider-specific services and capabilities can organisationer achieve unprecedented scalability, resiliens and kostnadseffektivitet while svenska compliance-requirements uppfylls.
 
 the different cloud provider ecosystems - AWS, Azure, and Google Cloud Platform - offers var sitt unique value for Swedish organizations. AWS dominerar through comprehensive tjänsteportfölj and strong whenvaro in Stockholm-regionen. Azure attraherar svenska enterprise-organisationer through strong Microsoft-integration and Sweden Central datacenter. Google Cloud Platform lockar innovationsorganisationer with sina machine learning capabilities and advanced analytics services.
 
@@ -3846,13 +3846,13 @@ Container-first approaches with Kubernetes as orchestration platform forms the f
 
 Hybrid cloud implementations combines on-premises infrastructure with public cloud services for Swedish organizations as has legacy systems or specific regulatory requirements. This approach enables gradual cloud migration while känslig data can behållas within svenska gränser according to data residency requirements.
 
-Swedish organizations as implement Cloud Architecture as Code can achieve significant competitive advantages through reduced time-to-market, improved scalability, enhanced security, and optimized costs. simultaneously ensures proper implementation of Infrastructure as Code patterns to GDPR compliance, svensk data residency, and other regulatory requirements uppfylls automatically as a del of deployment processerna.
+Swedish organizations as implement Cloud Architecture as Code can achieve significant competitive advantages through reduced time-to-market, improved scalability, enhanced security, and optimized costs. simultaneously ensures proper implementation of Architecture as Code patterns to GDPR compliance, svensk data residency, and other regulatory requirements uppfylls automatically as a del of deployment processerna.
 
 Investment in Cloud Architecture as Code betalar itself through improved developer productivity, reduced operational overhead, enhanced systems reliability, and better disaster recovery capabilities. Which vi will to se in [chapter 6 about security](06_kapitel5.md), is These benefits particularly important when security and compliance requirements integreras as a natural del of infrastructure definition and deployment processes.
 
 Sources:
-- AWS. "Infrastructure as Code on AWS." Amazon Web Services Architecture Center.
-- Google Cloud. "Infrastructure as Code Architecture as Code best practices." Google Cloud Documentation.
+- AWS. "Architecture as Code on AWS." Amazon Web Services Architecture Center.
+- Google Cloud. "Architecture as Code Architecture as Code best practices." Google Cloud Documentation.
 - Microsoft Azure. "Azure Resource Manager Templates." Azure Documentation.
 - HashiCorp. "Terraform Multi-Cloud Infrastructure." HashiCorp Learn Platform.
 - Pulumi. "Cloud Programming Model." Pulumi Documentation.

@@ -2,7 +2,7 @@
 
 ![Digitaliseringsprocess](images/diagram_19_digitalisering.png)
 
-*Infrastructure as Code forms the backbone in modern digitaliseringsinitiativ by enable snabb, skalbar and kostnadseffektiv transformation of IT-environments. Diagram illustrerar The strategiska the way from traditional infrastructure to fullständigt kodbaserad digital plattform.*
+*Architecture as Code forms the backbone in modern digitaliseringsinitiativ by enable snabb, skalbar and kostnadseffektiv transformation of IT-environments. Diagram illustrerar The strategiska the way from traditional infrastructure to fullständigt kodbaserad digital plattform.*
 
 ## Svenska digitaliseringslandskapet
 
@@ -12,7 +12,7 @@
 
 ## Overall Description
 
-Digitalisering is not only about to introducing new technology, without about a fundamental change in how organisationer delivers value to sina customers and stakeholders. Infrastructure as Code spelar a central roll in This transformation by enable agile, cloud-based solutions as can adapted to changing business needs with particular consideration to svenska regulatory and cultural conditions.
+Digitalisering is not only about to introducing new technology, without about a fundamental change in how organisationer delivers value to sina customers and stakeholders. Architecture as Code spelar a central roll in This transformation by enable agile, cloud-based solutions as can adapted to changing business needs with particular consideration to svenska regulatory and cultural conditions.
 
 ### Svenska digitaliseringsutmaningar and possibilities
 
@@ -808,7 +808,7 @@ Swedish organizations implement also API-first strategier as enables smidig inte
 
 ## Digital transformation in Swedish organizations
 
-Swedish organizations undergoes for whenvarande a of the most comprehensive digitaliseringsprocesserna in modern time. Infrastructure as Code forms often The technical foundation as enables This transformation by creating flexibla, skalbara and kostnadseffektiva IT-environments.
+Swedish organizations undergoes for whenvarande a of the most comprehensive digitaliseringsprocesserna in modern time. Architecture as Code forms often The technical foundation as enables This transformation by creating flexibla, skalbara and kostnadseffektiva IT-environments.
 
 Traditionella svenska industriforetag that Volvo, Ericsson and ABB has omdefinierat sina affärsmodor through digitaliseringsinitiativ as builds on modern molninfrastructure. Architecture as Code has enabled for These companies to develop IoT-plattformar, AI-services and dataanalytiska solutions as creates new intäktsSources.
 
@@ -1026,4 +1026,4 @@ Viktiga lessons from svenska digitaliseringsinitiativ shows to technical transfo
 - AWS. "Cloud Adoption Framework for Swedish organizations." Amazon Web Services, 2023.
 - Microsoft. "Azure for svensk public sector." Microsoft Sverige, 2023.
 - SANS Institute. "Cloud Security for nordiska organisationer." SANS Security Research, 2023.
-- Gartner. "Infrastructure as Code Trends in Europe." Gartner Research, 2023.
+- Gartner. "Architecture as Code Trends in Europe." Gartner Research, 2023.

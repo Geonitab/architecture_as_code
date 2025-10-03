@@ -105,7 +105,7 @@ const Contact = () => {
             <h2 className="text-3xl font-bold mb-4">Kontakta oss</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Har du frågor om boken, vill diskutera konsulttjänster eller är intresserad av 
-              utbildning inom Infrastructure as Code? Vi hjälper gärna till!
+              utbildning inom Architecture as Code? Vi hjälper gärna till!
             </p>
           </div>
 

@@ -48,19 +48,19 @@ For Swedish organizations, where clear division of responsibility and transparen
 **Loose coupling and high cohesion**
 Microservices must designas to minimera beroenden between services while relaterad funktionalitet samlas within same service. This requires noggrann reflektion over tjänstegränser and gränssnitt. Lös koppling enables oberoende development and deployment, with hög kohesion ensures services is meningsfulla and hanteringsbara units.
 
-Infrastructure as Code (Architecture as Code) spelar a critical roll here by definiera not only how services deployeras, without also how the kommunicerar, which beroenden the has, and how These beroenden is managed over time. This Architecture as Code becomes a levande documentation of system's architecture and beroenden.
+Architecture as Code (Architecture as Code) spelar a critical roll here by definiera not only how services deployeras, without also how the kommunicerar, which beroenden the has, and how These beroenden is managed over time. This Architecture as Code becomes a levande documentation of system's architecture and beroenden.
 
 **Autonomi and ägandeskap**
-each mikroservice-team should ha complete kontroll over their tjänsts livscykkel - from design and development to testing, deployment and drift. This means to Infrastructure as Code-definitioner also must ägas and is managed of same team as develops tjänsten.
+each mikroservice-team should ha complete kontroll over their tjänsts livscykkel - from design and development to testing, deployment and drift. This means to Architecture as Code-definitioner also must ägas and is managed of same team as develops tjänsten.
 
 For Swedish organizations, where "lagom" and balans is important values, is about autonomi not about total oberoende without about to ha rätt level of självständighet to vara effective while man contributes to helheten.
 
 ### Svenska organisationers microservices-drivna transformation
 
-Svenska teknikforetag that Spotify, Klarna and King has pioneerat microservices-arkitekturer as enabled global skalning while the bibehållit svenska values about kvalitet, sustainability and innovation. Deras framgångar demonstrerar how Infrastructure as Code can handle komplexiteten in distributed systems with svenska regulatory requirements that GDPR and PCI-DSS is maintained.
+Svenska teknikforetag that Spotify, Klarna and King has pioneerat microservices-arkitekturer as enabled global skalning while the bibehållit svenska values about kvalitet, sustainability and innovation. Deras framgångar demonstrerar how Architecture as Code can handle komplexiteten in distributed systems with svenska regulatory requirements that GDPR and PCI-DSS is maintained.
 
 **Spotify's Squad Model in mikroservice-context:**
-Spotify utvecklade sitt berömda Squad Model as perfekt alignar with microservices-architecture where each Squad owns end-to-end responsibility for specific affärcreatebiliteter. Deras Infrastructure as Code-approach integrerar organisatorisk structure with technical architecture at A way as enables both scalability and innovation.
+Spotify utvecklade sitt berömda Squad Model as perfekt alignar with microservices-architecture where each Squad owns end-to-end responsibility for specific affärcreatebiliteter. Deras Architecture as Code-approach integrerar organisatorisk structure with technical architecture at A way as enables both scalability and innovation.
 
 Spotify's modell illustrerar how microservices-architecture not only is a technical decisions, without a fundamental organisatorisk strategi. by aligna team-structure with service-architecture are created a naturlig koppling between affärsansvar and technical Architecture as Code-implementation. This enables snabbare innovation because team can fatta decisions about both affärslogik and technical Architecture as Code-implementation without comprehensive koordination with andra team.
 
@@ -171,7 +171,7 @@ module "squad_microservice" {
 **Klarna's regulated microservices:**
 As a licensierad bank and betalningsinstitution must Klarna navigate a complex landskapet of finansiell reglering while the delivers innovativa fintech-services. Deras microservices-architecture illustrerar how Swedish companies can balance regulatory compliance with technical innovation.
 
-Klarna's utmaning is unique within the svenska tekniklandskapet - the must hålla same strict standarder as traditional banker while the konkurrerar with modern fintech-startups at användarupplevelse and innovationstakt. Deras lösning means to baka in compliance and riskhäntering direkt in infrastructureen through Infrastructure as Code.
+Klarna's utmaning is unique within the svenska tekniklandskapet - the must hålla same strict standarder as traditional banker while the konkurrerar with modern fintech-startups at användarupplevelse and innovationstakt. Deras lösning means to baka in compliance and riskhäntering direkt in infrastructureen through Architecture as Code.
 
 each microservice at Klarna must handle multiple lager of compliance:
 - **Finansinspektionens requirements**: Svenska banklagar requires specifik rapportering and risk management
@@ -180,7 +180,7 @@ each microservice at Klarna must handle multiple lager of compliance:
 - **PSD2**: Öppna bankdirektivet for betalningstjänster
 - **AML/KYC**: Anti-penningtvätt and knowledge about kund-regulationer
 
-Deras Infrastructure as Code-approach includes automated regulatory reporting, real-time risk monitoring, and immutable audit trails as does the possible to bevisa compliance both for regulatorer and interna revisorer:
+Deras Architecture as Code-approach includes automated regulatory reporting, real-time risk monitoring, and immutable audit trails as does the possible to bevisa compliance both for regulatorer and interna revisorer:
 
 ```yaml
 # klarna-inspired-financial-microservice.yaml
@@ -567,7 +567,7 @@ async def deploy_green_microservices():
 ```
 
 **implementation of green computing principles**
-This implementation illustrerar how svenska values about miljöansvar can integreras direkt in microservices-infrastructureen. by do sustainability to a first-class concern in Infrastructure as Code, can organisationer automatisera environmental optimeringar without to kompromissa with affärskritisk funktionalitet.
+This implementation illustrerar how svenska values about miljöansvar can integreras direkt in microservices-infrastructureen. by do sustainability to a first-class concern in Architecture as Code, can organisationer automatisera environmental optimeringar without to kompromissa with affärskritisk funktionalitet.
 
 The code above demonstrerar multiple important concepts:
 
@@ -579,7 +579,7 @@ The code above demonstrerar multiple important concepts:
 
 **Integration with svenska energy infrastructure**: by integrera with svenska energimyndigheten APIs and electricity maps, can systemet fatta real-time decisions based on actual energy mix in svenska elnätet.
 
-Single responsibility principle appliceras at service level, which means to each microservice has A specific, well-defined responsibility. For Infrastructure as Code means This to infrastructure components also organiseras about service boundaries, which enables independent scaling, deployment, and maintenance of different systems parts while svenska values about clarity, responsibility and accountability upprätthålls.
+Single responsibility principle appliceras at service level, which means to each microservice has A specific, well-defined responsibility. For Architecture as Code means This to infrastructure components also organiseras about service boundaries, which enables independent scaling, deployment, and maintenance of different systems parts while svenska values about clarity, responsibility and accountability upprätthålls.
 
 ## Service discovery and communication patterns
 
@@ -597,7 +597,7 @@ When monolithic applications are divided in microservices, the transformation is
 
 **Load balancing and failover**: Traffic must is distributed over multiple instances of same service, and systemet must be able to automatic failover to healthy instances when problem arises.
 
-For Swedish organizations, where reliability and user experience is prioriterade högt, becomes These challenges particularly important to addressera through thoughtful Infrastructure as Code design.
+For Swedish organizations, where reliability and user experience is prioriterade högt, becomes These challenges particularly important to addressera through thoughtful Architecture as Code design.
 
 ### Svenska enterprise service discovery patterns
 
@@ -1023,7 +1023,7 @@ resource "aws_msk_connect_connector" "svenska_schema_registry" {
 ```
 
 **Djupanalys of financial messaging requirements**
-Ovanstående Terraform configuration demonstrerar how Infrastructure as Code can be used to implement enterprise-grade messaging infrastructure as meets svenska financial services' unique requirements:
+Ovanstående Terraform configuration demonstrerar how Architecture as Code can be used to implement enterprise-grade messaging infrastructure as meets svenska financial services' unique requirements:
 
 **Regulatory compliance through design**: Konfigurationen shows how regulatory requirements that 7-års dataretendering for finansiella transaktioner can byggas in direkt in messaging infrastructure. This is not something as läggs to efteråt, without a fundamental design principle.
 
@@ -1637,7 +1637,7 @@ Svenska companies with global presence must consider geographic scaling strategi
 
 Scaling strategies for microservices include horizontal pod autoscaling based on CPU/memory metrics, custom metrics from application performance, or predictive scaling based on historical patterns. Infrastructure code defines scaling policies and resource limits for each service independently.
 
-Blue-green deployments and canary releases implementeras per service for safe deployment practices. Infrastructure as Code provisions parallel environments and traffic splitting mechanisms as enable gradual rollouts with automatic rollback capabilities.
+Blue-green deployments and canary releases implementeras per service for safe deployment practices. Architecture as Code provisions parallel environments and traffic splitting mechanisms as enable gradual rollouts with automatic rollback capabilities.
 
 ## Monitoring and observability
 
@@ -2001,8 +2001,8 @@ Svenska organisationers commitment to environmental sustainability becomes a kon
 
 ### Tekniska lessons and architecture as code best practices
 
-**Infrastructure as Code as enabler**
-successful microservices implementation is omöjlig without robust Infrastructure as Code practices. each aspekt of systemet - from service deployment to network communication - must are defined declaratively and is managed through automated processes.
+**Architecture as Code as enabler**
+successful microservices implementation is omöjlig without robust Architecture as Code practices. each aspekt of systemet - from service deployment to network communication - must are defined declaratively and is managed through automated processes.
 
 **Observability as fundamental requirement**
 in distributed systems can not observability are treated as a efterkonstruktion. Monitoring, logging, and tracing must byggas in from beginning and vara comprehensive across all services and interactions.
@@ -2011,7 +2011,7 @@ in distributed systems can not observability are treated as a efterkonstruktion.
 Swedish organizations operational in a environment of high expectations at security and privacy. Microservices-architecture enables "security by design" through service mesh, automatic encryption, and granular access controls.
 
 **Compliance automation**
-Regulatory requirements that GDPR, PCI-DSS, and svenska financial regulations can automatiseras through Infrastructure as Code, which reduces both compliance risk and operational overhead.
+Regulatory requirements that GDPR, PCI-DSS, and svenska financial regulations can automatiseras through Architecture as Code, which reduces both compliance risk and operational overhead.
 
 ### organizational transformation insights
 
