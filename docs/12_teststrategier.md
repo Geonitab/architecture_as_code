@@ -12,7 +12,7 @@ Modern Architecture as Code-testing encompasses flera dimensioner: syntaktisk va
 
 Svenska organisationer with strikta compliance-krav must implementera comprehensive testing as validates both technical funktionalitet and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards as must verifieras automatically.
 
-Test automation for Architecture as Code enables continuous integration and continuous deployment patterns as accelererar delivery simultaneously as the minskar risk for produktionsstörningar. Infrastructure testing pipelines can köra parallellt with application testing to säkerställa end-to-end quality assurance.
+Test automation for Architecture as Code enables continuous integration and continuous deployment patterns as accelererar delivery simultaneously as the reduces risk for produktionsstörningar. Infrastructure testing pipelines can köra parallellt with application testing to säkerställa end-to-end quality assurance.
 
 ## Unit testing for architecture as code
 
@@ -34,7 +34,7 @@ Många moderna Infrastructure as Code workflows includes TypeScript/JavaScript-c
 
 Vitest's snabba execution and watch mode enables tight development feedback loops when man utvecklar infrastructure configuration generators or policy validation scripts. This is särskilt värdefullt for Architecture as Code-projekt where konfigurationsfel can leda to costly infrastructure mistakes.
 
-Integration with Vite build tooling means to same utvecklingsmiljö can användas for both application code and infrastructure-relaterad code, which reducerar context switching and forbättrar developer experience for team as arbetar with both application and infrastructure code.
+Integration with Vite build tooling means to same utvecklingsmiljö can användas for both application code and infrastructure-relaterad code, which reducerar context switching and improves developer experience for team as arbetar with both application and infrastructure code.
 
 ### Konfiguration of Vitest for Infrastructure as Code-projekt
 
@@ -577,7 +577,7 @@ project/
 
 4. **Test fixtures:** Använd shared test fixtures for common infrastructure configurations, men var forsiktig with mutable state.
 
-5. **Coverage mål:** Sikta at minst 80% code coverage for infrastructure configuration and validation code, men fokusera at meaningful tests snarare än coverage metrics.
+5. **Coverage mål:** Sikta at minst 80% code coverage for infrastructure configuration and validation code, men fokusera at meaningful tests rather than coverage metrics.
 
 6. **Mock externa beroenden:** Använd Vitest's mocking capabilities to mocka cloud provider SDKs and external APIs:
 
@@ -624,7 +624,7 @@ For Swedish organizations with strikta compliance krav can automated testing wit
 
 ## Integrationstesting and miljövalidering
 
-Integration testing for Infrastructure as Code verifierar to different infrastructure components fungerar tosammans korrekt and to deployed infrastructure möter performance and security requirements. This requires temporary test environments as closely mirror production configurations.
+Integration testing for Infrastructure as Code verifierar to different infrastructure components functions tosammans korrekt and to deployed infrastructure möter performance and security requirements. This requires temporary test environments as closely mirror production configurations.
 
 End-to-end testing workflows must validate entire deployment pipelines from source code changes to functional infrastructure. This includes testing of CI/CD pipeline configurations, secret management, monitoring setup and rollback procedures as is critical for production stability.
 
@@ -658,7 +658,7 @@ Capacity planning validation through performance testing hjälper optimize resou
 
 *Relationen mellan affärskrav, funktionella krav and verifieringsmetoder illustrerar how Infrastructure as Code enables spårbar testing from högre abstraktionsnivåer ner to konkreta Architecture as Code-implementationer.*
 
-Requirements-as-Code representerar A paradigmskifte where affärskrav and compliance-krav kodifieras in maskinläsbar form tosammans with infrastructure-koden. This enables automatiserad validation of to infraStructureen verkligen uppfyller the specificerade kraven through entire utvecklingslivscykeln.
+Requirements-as-Code representerar A paradigmskifte where affärskrav and compliance-krav kodifieras in maskinläsbar form tosammans with infrastructure-the code. This enables automatiserad validation of to infraStructureen verkligen uppfyller the specificerade kraven through entire utvecklingslivscykeln.
 
 by definiera Requirements as Code are created a direkt koppling mellan business requirements, functional requirements and the automatiserade tester as verifierar Architecture as Code-implementationen. This traceability is kritisk for organisationer as must demonstrera compliance and for utvecklingsteam as behöver forstå affärskonsekvenserna of tekniska beslut.
 

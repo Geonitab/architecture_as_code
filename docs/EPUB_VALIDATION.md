@@ -2,7 +2,7 @@
 
 ## Overview
 
-This projekt includes automatisk validation of EPUB-filer with hjälp of EPUBCheck to säkerställa to genererade EPUB-filer följer EPUB-standarden and fungerar korrekt in olika läsare.
+This projekt includes automatisk validation of EPUB-filer with hjälp of EPUBCheck to säkerställa to genererade EPUB-filer följer EPUB-standarden and functions korrekt in olika läsare.
 
 ## EPUBCheck
 
@@ -35,7 +35,7 @@ sudo chmod +x /usr/local/bin/epubcheck
 
 ### in Byggprocessen
 
-EPUB-validation is integrerad in byggprocessen:
+EPUB-validation is integrated in byggprocessen:
 
 1. **`docs/build_book.sh`**: Validates EPUB-File efter generering
 2. **`generate_book.py`**: Kontrollerar existing EPUB-filer
@@ -100,7 +100,7 @@ python3 -m pytest tests/test_epub_validation.py -v
 - Se to to kapitelrubriker följer konsekvent format
 
 #### 3. "Date value does not follow recommended syntax"
-**Problem**: Felaktig datumformat in metadata
+**Problem**: Incorrect datumformat in metadata
 **Lösning**:
 - Metadata date-fält bör vara in ISO 8601-format (YYYY-MM-DD)
 - Konfigurerat in `pandoc.yaml`
@@ -183,7 +183,7 @@ Valideringsresultat rapporteras in:
 
 ### GitHub Actions
 
-EPUB-validation is integrerad in `.github/workflows/unified-build-release.yml`:
+EPUB-validation is integrated in `.github/workflows/unified-build-release.yml`:
 
 1. **EPUBCheck-installation** under systemdependenser
 2. **Automatisk validation** under byggprocessen
@@ -221,4 +221,4 @@ For problem with EPUB-validation:
 4. Verifiera markdown-filernas kodning
 5. Granska testresultat in `tests/test_epub_validation.py`
 
-Valideringen hjälper to to säkerställa to EPUB-filer fungerar optimalt in all e-läsare and följer industristandarder for digital bokpublicering.
+Valideringen hjälper to to säkerställa to EPUB-filer functions optimalt in all e-läsare and följer industristandarder for digital bokpublicering.

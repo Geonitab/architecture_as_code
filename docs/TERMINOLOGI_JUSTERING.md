@@ -48,7 +48,7 @@ all chapters uppfyller nu regeln to IaC-forekomster not får överstiga hälften
 **technical kompatibilitet:**
 - all länkar and References to externa resurser bevarade
 - KodExample and tekniska specifikationer opåverkade
-- Bokgenereringsskriptet fungerar identiskt
+- Bokgenereringsskriptet functions identiskt
 
 ## Implementeringsdetaljer
 
@@ -67,12 +67,12 @@ all chapters uppfyller nu regeln to IaC-forekomster not får överstiga hälften
 ### successful mål
 ✅ **Totalforhållande**: 16.73:1 (mål: ≥10:1)
 ✅ **Kapitelkrav**: Inga chapters bryter mot 0.5-regeln
-✅ **technical kompatibilitet**: all byggsystem fungerar
+✅ **technical kompatibilitet**: all byggsystem functions
 ✅ **Contentsskvalitet**: Bibehållen svensk terminologi and läsbarhet
 
 ### Långsiktig fordel
 - Stärker svensk technical terminologi
-- Forbättrar togänglighet for svenskspråkiga läsare
+- Improves togänglighet for svenskspråkiga läsare
 - Behåller technical precision where internationella termer is nödvändiga
 - creates konsistent användarupplevelse through entire boken
 

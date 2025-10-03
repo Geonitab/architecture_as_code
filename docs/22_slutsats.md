@@ -52,7 +52,7 @@ Etablering of center of excellence or platform teams can accelerera adoption by 
 
 ### Kontinuerlig forbättring and mätning
 
-Continuous improvement culture is crucial where team regelbundet utvärderar and forbättrar sina Architecture as Code-processes. Metrics and monitoring hjälper to to identifiera forbättringwhichråden and mäta framsteg mot definierade mål, according to the praktiska Example as visades in [DevOps-kapitlet](07_kapitel6.md) and [organisationskapitlet](10_kapitel9.md).
+Continuous improvement culture is crucial where team regelbundet utvärderar and improves sina Architecture as Code-processes. Metrics and monitoring hjälper to to identifiera forbättringwhichråden and mäta framsteg mot definierade mål, according to the praktiska Example as visades in [DevOps-kapitlet](07_kapitel6.md) and [organisationskapitlet](10_kapitel9.md).
 
 Investment in observability and monitoring from [säkerhetskapitlet](06_kapitel5.md) and [praktiska implementationen](08_kapitel7.md) enables data-driven decision making and kontinuerlig optimering of Architecture as Code-processes.
 
@@ -70,7 +70,7 @@ the principles as introducerades in bokens forsta chapters - declarative code, i
 
 Svenska organisationer har unika möjligheter to leda within sustainable and compliant Infrastructure as Code implementation. by kombinera technical excellence with strong fokus at hållbarhet, säkerhet and regulatorisk efterlevnad can svenska foretag and offentliga organisationer skapa competitive advantages as resonerar with nationella värderingar and globala trender.
 
-Bokens progression from teori to praktik, from Fundamental to avancerat, speglar The journey as each organisation must throughgå to lyckas with Infrastructure as Code. each chapters builds on tidigare kunskap and forbereder for mer komplexa Challenges - precis as a verklig Architecture as Code-implementation.
+Bokens progression from teori to praktik, from Fundamental to avancerat, speglar The journey as each organisation must throughgå to lyckas with Infrastructure as Code. each chapters builds on previous kunskap and forbereder for mer komplexa Challenges - precis as a verklig Architecture as Code-implementation.
 
 ### the way framåt
 

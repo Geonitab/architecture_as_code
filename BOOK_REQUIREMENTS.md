@@ -88,7 +88,7 @@ each chapters följer a konsistent Structure at 8-12 sidor:
 10. **Sources and References** - Akademiska and industriella Sources
 
 #### 3.2 Tvärgående struktur
-- **Progressiv komplexitet**: each chapters builds on tidigare kunskap
+- **Progressiv komplexitet**: each chapters builds on previous kunskap
 - **Återkommande Example**: same fiktiva organisation används through entire boken
 - **Cross-References**: explicitly koppling mellan relaterade chapters
 - **Praktisk orientering**: Minst 60% practical Contents vs 40% teori
@@ -264,7 +264,7 @@ resource "azurerm_app_service_plan" "svenska_teknik" {
 #### 6.3 Ton and stil
 - **Professionell men togänglig**: technical precision utan to vara överdrivet akademisk
 - **Inkluderande**: Undviker jargong as exkluderar junior Developers
-- **Praktisk orientering**: Fokus at toämpning snarare än teoretisk abstraktion
+- **Praktisk orientering**: Fokus at toämpning rather than teoretisk abstraktion
 - **Svenska perspektiv**: Specifika References to svenska regulatoriska krav and branschpraxis
 
 #### 6.4 Textstruktur
@@ -344,10 +344,10 @@ med syntax highlighting
 - Svenska compliance-krav verifieras mot aktuell lagstiftning
 
 ### Pedagogisk progression
-- each chapters builds on tidigare kunskaper
+- each chapters builds on previous kunskaper
 - Svårighetsgraden ökar gradually
 - Återkommande concepts forstärks through repetition
-- Praktiska övningar kopplar to tidigare teoretiska parts
+- Praktiska övningar kopplar to previous teoretiska parts
 
 ### Branschrelevans
 - Fokus at tools and metoder as används in svenska organisationer

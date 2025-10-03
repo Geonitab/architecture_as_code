@@ -1,6 +1,6 @@
 # Fundamental Principles of Architecture as Code
 
-Architecture as Code builds on fundamental principles as ensures successful implementation of codified system architecture. These principles encompasses the entire system landscape and creates a holistic view for architecture management.
+Architecture as Code builds on fundamental principles that ensure successful implementation of codified system architecture. These principles encompass the entire system landscape and create a holistic view of architecture management.
 
 ![Fundamental principles diagram](images/diagram_02_kapitel1.png)
 
@@ -8,39 +8,39 @@ Diagram shows the natural flow from declarative code through version control and
 
 ## Declarative architecture definition
 
-The deklarativa approach in Architecture as Code means describing desired system state at all levels - from application components to infrastructure. This differs from imperative programming where each step must be specified explicitly.
+The declarative approach in Architecture as Code means describing the desired system state at all levels - from application components to infrastructure. This differs from imperative programming where each step must be specified explicitly.
 
-Declarative definition enables describing architecture's desired state, that Architecture as Code extends to encompass application architecture, API-contracts and organizational Structures.
+Declarative definition enables describing architecture's desired state, that Architecture as Code extends to encompass application architecture, API-contracts and organizational structures.
 
-## Helhetsperspektiv at kodifiering
+## Holistic perspective on codification
 
 Architecture as Code encompasses the entire system ecosystem through a holistic approach. This includes application logic, data flows, security policies, compliance-rules and organizational structures.
 
-A practical Example is how a change in a application's API automatically can propagate through entire architecture - from security configurations to documentation - all that is defined as code.
+A practical example is how a change in an application's API automatically can propagate through the entire architecture - from security configurations to documentation - all of which is defined as code.
 
 ## immutable architecture patterns
 
-Principen about immutable architecture means the entire system architecture is managed through immutable components. instead to modify existing parts are created new versions as replace old at all levels.
+The principle of immutable architecture means the entire system architecture is managed through immutable components. instead of modifying existing parts, new versions are created that replace old ones at all levels.
 
 This creates predictability and eliminates architectural drift - where systems gradually diverge from their intended design over time.
 
-## Testbarhet at architecture level
+## Testability at architecture level
 
 Architecture as Code enables testing of entire system architecture, not only individual components. This includes validation of architecture patterns, compliance with design principles and verification of end-to-end flows.
 
-Arkitekturtester validates design decisions, system complexity and ensures the entire architecture fungerar as avsett.
+Architecture tests validate design decisions, system complexity and ensures the entire architecture functions as intended.
 
 ## Documentation as Code
 
-Documentation as Code (DaC) represents the principle of treat documentation as a integrerad del of codebase snarare än as A separat artefakt. This means to documentation stored together with koden, version-controlled with the same tools and undergoes the same quality assurance processes as applikationskoden.
+Documentation as Code (DaC) represents the principle of treating documentation as an integrated part of codebase rather than as a separate artifact. This means that documentation is stored together with the code, version-controlled using the same tools and undergoes the same quality assurance processes as the application code.
 
 ### Benefits with Documentation as Code
 
-**version control and history**: by lagra documentation in Git or other version control systems organizations get automatic traceability of changes, ability to restore tidigare versions and full historik over documentation's development.
+**version control and history**: by storing documentation in Git or other version control systems organizations get automatic traceability of changes, ability to restore previous versions and full history of documentation's development.
 
-**Collaboration and review**: Pull requests and merge-processes ensures documentation changes are reviewed before being published. This forbättrar quality and minskar risken for felaktig or foråldrad information.
+**Collaboration and review**: Pull requests and merge-processes ensures documentation changes are reviewed before being published. This improves quality and reduces the risk of incorrect or outdated information.
 
-**CI/CD integration**: Automated pipelines can generate, validate and publish documentation automatically when code changes. This eliminates manual steps and ensures dokumentationen alltid is uppdaterad.
+**CI/CD integration**: Automated pipelines can generate, validate and publish documentation automatically when code changes. This eliminates manual steps and ensures the documentation is always up-to-date.
 
 ### Practical implementation
 
@@ -80,7 +80,7 @@ jobs:
           publish_dir: ./docs/dist
 ```
 
-Moderna verktyg that GitBook, Gitiles and MkDocs enables automatisk generering of webbdokumentation from Markdown-filer lagrade tosammans with koden.
+Moderna verktyg that GitBook, Gitiles and MkDocs enables automatisk generering of webbdokumentation from Markdown-filer lagrade tosammans with the code.
 
 ## Requirements as Code
 

@@ -10,7 +10,7 @@ Architecture as Code-metodiken utgör grunden for Architecture Decision Records 
 
 For Swedish organizations as implementerar Architecture as Code and Architecture as Code is ADR särskilt värdefullt efterwhich the ensures architecture decisions dokumenteras at A Structureerat sätt as uppfyller efterlevnadskrav and underlättar kunskapsöverforing mellan team and tidsepoker.
 
-ADR fungerar as architecture's "commit messages" - korta, fokuserade dokument as fångar sammanhanget (context), problemet, the valda alternativet and konsekvenserna of viktiga architecture decisions. This enables spårbarhet and forståelse for why specifika tekniska val gjordes.
+ADR functions as architecture's "commit messages" - korta, fokuserade dokument as fångar sammanhanget (context), problemet, the valda alternativet and konsekvenserna of viktiga architecture decisions. This enables spårbarhet and forståelse for why specifika tekniska val gjordes.
 
 The svenska digitaliseringsstrategin betonar vikten of transparenta and spårbara beslut within offentlig sektor. ADR-metoden stödjer These krav by skapa a revisionsspår of architecture decisions as can granskas and utvärderas over time.
 
@@ -25,7 +25,7 @@ ADR-format följer vanligtvis a Structureerad mall as includes:
 **Decision**: the specifika beslutet as fattades
 **Consequences**: Forväntade positiva and negativa konsekvenser
 
-Officiella riktlinjer and mallar finns togängliga at https://adr.github.io, which fungerar as The primära resursen for ADR-metodiken. This webbplats underhålls of ADR-communityn and Contentser standardiserade mallar, tools and Example.
+Officiella riktlinjer and mallar finns togängliga at https://adr.github.io, which functions as The primära resursen for ADR-metodiken. This webbplats underhålls of ADR-communityn and Contentser standardiserade mallar, tools and Example.
 
 For Architecture as Code-kontext means ADR documentation of beslut about teknologival, architecture patterns, säkerhetsstrategier and operationella policies as kodifieras in arkitekturdefinitioner.
 
@@ -33,11 +33,11 @@ For Architecture as Code-kontext means ADR documentation of beslut about teknolo
 
 ![ADR Structure](images/diagram_04_adr_struktur.png)
 
-*each ADR följer a standardiserad Structure with fyra huvudkomponenter as ensures konsekvent and fullständig documentation of architecture decisions.*
+*each ADR följer a standardiserad Structure with fyra huvudkomponenter that ensure konsekvent and fullständig documentation of architecture decisions.*
 
 ### Standardiserad ADR-mall
 
-each ADR följer a konsekvent Structure as ensures all relevant information fångas systematiskt:
+each ADR följer a konsekvent Structure that ensure all relevant information fångas systematiskt:
 
 ```markdown
 # ADR-XXXX: [Kort Description of beslutet]
@@ -68,7 +68,7 @@ och architecture as code-implementation approach.
 
 ADR numreras sekventiellt (ADR-0001, ADR-0002, etc.) to skapa a kronologisk ordning and enkel referens. Numreringen is permanent - även about A ADR depreceras or ersätts behålls originalets nummer.
 
-Versionering is managed through Git-historik instead for inline-ändringar. about A beslut forändras are created A nytt ADR as superseder the ursprungliga, which bevarar The historiska kontexten.
+Versionering is managed through Git-history instead for inline-ändringar. about A beslut forändras are created A nytt ADR as superseder the ursprungliga, which bevarar The historiska kontexten.
 
 ### Status lifecycle
 
@@ -184,7 +184,7 @@ docs/
 
 ### Git-integration and arbetsflöde
 
-ADR fungerar optimalt when integrerat in Git-baserade utvecklingsarbetsflöden:
+ADR functions optimalt when integrerat in Git-baserade utvecklingsarbetsflöden:
 
 **Kodgranskningar**: ADR inkluderas in kodgranskningsprocessen for arkitekturändringar
 **Branch Protection**: requires ADR for major architectural changes
@@ -212,7 +212,7 @@ Effektiv ADR-implementation requires etablerade granskningsprocesser:
 
 ADR spelar a central roll in Architecture as Code-metodik by dokumentera design decisions as sedan implementeras as code. This integration creates a tydlig koppling mellan intentioner and implementation.
 
-Architecture as Code-templates can referera to relevant ADR to forklara design decisions and implementation choices. This creates självdokumenterande infrastructure where koden kompletteras with arkitekturrational.
+Architecture as Code-templates can referera to relevant ADR to forklara design decisions and implementation choices. This creates självdokumenterande infrastructure where the code kompletteras with arkitekturrational.
 
 Automated validation can implementeras to säkerställa to infrastructure code följer established ADR. Policy as Code-verktyg that Open Policy Agent can enforça arkitekturriktlinjer baserade at documented decisions in ADR.
 
@@ -247,7 +247,7 @@ Svenska organisationer can dra nytta of europeiska initiativ for standardisering
 The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
 Architecture Decision Records representerar a fundamental komponent in modern Architecture as Code-metodik. Through Structured documentation of architecture decisions are created transparens, spårbarhet and kunskapsöverforing as is kritisk for svenska organisationers digitaliseringsinitiativ.
 
-Effektiv ADR-implementation requires organisatoriskt stöd, standardiserade processes and integration with existing utvecklingsarbetsflöden. For Architecture as Code-projekt enables ADR koppling mellan designintentioner and code-implementation as forbättrar maintainability and efterlevnad.
+Effektiv ADR-implementation requires organisatoriskt stöd, standardiserade processes and integration with existing utvecklingsarbetsflöden. For Architecture as Code-projekt enables ADR koppling mellan designintentioner and code-implementation as improves maintainability and efterlevnad.
 
 Svenska organisationer as antar ADR-metodik positionerar itself for successful Architecture as Code-transformation with robusta styrningsprocesser and transparent beslutsdokumentation as stödjer both interna krav and externa efterlevnadsforväntningar.
 

@@ -6,11 +6,11 @@ Architecture as Code-metodiken utgör grunden for containerteknologi and orkestr
 
 ## Container-teknologiens roll within architecture as code
 
-Containers erbjuder application-level virtualization as paketerar applikationer with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions as ensures consistency mellan development, testing and production environments.
+Containers erbjuder application-level virtualization as paketerar applikationer with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions that ensure consistency mellan development, testing and production environments.
 
 Docker har etablerat itself as the facto standard for containerization, withan podman and andra alternativ erbjuder daemon-less approaches for enhanced security. Container images definieras through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.
 
-Container registries fungerar as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, withan image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation innan deployment.
+Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, withan image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation innan deployment.
 
 ## Kubernetes as orchestration platform
 

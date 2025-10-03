@@ -20,7 +20,7 @@ Svensk offentlig sektor and wheningsliv står infor comprehensive digitalisering
 
 Architecture as Code-baserade lösningar erbjuder möjligheten to bryta These begränsningar through Architecture as Code-automation, standardisering and scalability as specifikt adresserar svenska Challenges:
 
-**Regulatorisk compliance**: Svenska organisationer must navigera komplex lagstiftning including GDPR, Bokforingslagen, and branschspecifika regelverk that Finansinspektionens foreskrifter for finansiella institutioner. Architecture as Code enables automatiserad compliance-checking and audit-spårning as ensures kontinuerlig regelefterlevnad.
+**Regulatorisk compliance**: Svenska organisationer must navigera komplex lagstiftning including GDPR, Bokforingslagen, and branschspecifika regelverk that Finansinspektionens foreskrifter for finansiella institutioner. Architecture as Code enables automatiserad compliance-checking and audit-spårning that ensure kontinuerlig regelefterlevnad.
 
 **Kostnadseffektivitet**: With svenska lönenivåer and höga driftskostnader is Architecture as Code-automation kritisk for konkurrenskraft. Architecture as Code reducerar manuellt arbete with upp to 70% according to implementeringsstudier from svenska foretag that Telia and Volvo Cars.
 
@@ -470,7 +470,7 @@ class SwedishCustomerOnboarding:
         return tf_result
 ```
 
-Example at affärsprocessautomatisering includes automatisk provisionering of utvecklingsmiljöer, dynamisk skalning of resurser baserat at affärsbelastning, samt integrerad hantering of Security and compliance through policy-as-code. This reducerar manuellt arbete and minskar risken for mänskliga fel simultaneously as svenska krav at transparens and spårbarhet uppfylls.
+Example at affärsprocessautomatisering includes automatisk provisionering of utvecklingsmiljöer, dynamisk skalning of resurser baserat at affärsbelastning, samt integrated hantering of Security and compliance through policy-as-code. This reducerar manuellt arbete and reduces the risk of mänskliga fel simultaneously as svenska krav at transparens and spårbarhet uppfylls.
 
 ### Finansiella institutioners automatiseringslösningar
 

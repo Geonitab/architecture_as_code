@@ -8,7 +8,7 @@ This Glossary Contentser definitioner of centrala termer as används genAbout th
 
 **API (Application Programming Interface):** Gränssnitt as enables kommunikation mellan olika mjukvarukomponenter or systems through standardiserade protokoll and dataformat.
 
-**Architecture as Code-automation:** Process where manuella uppgifter utfors automatically of datorsystem utan mänsklig intervention, that ökar effektivitet and minskar felrisk.
+**Architecture as Code-automation:** Process where manuella uppgifter utfors automatically of datorsystem utan mänsklig intervention, that ökar effektivitet and reduces felrisk.
 
 **CI/CD (Continuous Integration/Continuous Deployment):** Utvecklingsmetodik as integrerar kodändringar kontinuerligt and automatiserar driftsättningsprocessen for snabbare and säkrare leveranser.
 
@@ -42,7 +42,7 @@ This Glossary Contentser definitioner of centrala termer as används genAbout th
 
 **YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat as often används for konfigurationsfiler and Architecture as Code-definitioner.
 
-**Zero Trust:** Säkerhetsmodell as aldrig litar at and alltid verifierar användare and enheter innan åtkomst to resurser beviljas.
+**Zero Trust:** Säkerhetsmodell as aldrig litar at and always verifierar användare and enheter innan åtkomst to resurser beviljas.
 
 ## Driftsättning and operationella concepts
 
@@ -98,7 +98,7 @@ This Glossary Contentser definitioner of centrala termer as används genAbout th
 
 **Chaos Engineering:** Disciplin to experimentellt introducera fel in systems to bygga toit to systemets formåga to motstå turbulenta forhållanden in produktion.
 
-**Integration Testing:** testing as verifierar to olika components or services fungerar korrekt tosammans when the is integrerade in A systems.
+**Integration Testing:** testing as verifierar to olika components or services functions korrekt tosammans when the is integrerade in A systems.
 
 **Compliance Testing:** Automatiserad validation of to systems and konfigurationer följer relevanta regulatoriska krav, säkerhetsstandarder and organizational policies.
 
@@ -120,7 +120,7 @@ This Glossary Contentser definitioner of centrala termer as används genAbout th
 
 **Psychological Safety:** Teammiljö where withlemmar känner itself säkra to ta risker, erkänna misstag and experimentera utan rädsla for bestraffning or forödmjukelse.
 
-**Servant Leadership:** Ledarskapsfilosofi as fokuserar at to tjäna teamet and främja deras success snarare än traditionell kommando-and-kontroll-ledning.
+**Servant Leadership:** Ledarskapsfilosofi as fokuserar at to tjäna teamet and främja deras success rather than traditionell kommando-and-kontroll-ledning.
 
 **Best Practice Evolution:** Kontinuerlig utveckling of rekommenderade metoder baserat at praktisk erfarenhet, community feedback and tekniska framsteg.
 
@@ -132,10 +132,10 @@ This Glossary Contentser definitioner of centrala termer as används genAbout th
 
 **Technical Debt:** Ackumulerad kostnad of shortcuts and suboptimala tekniska beslut as requires framtida refactoring or omarbetning to bibehålla systemkvalitet.
 
-**Blameless Culture:** Organisationskultur as fokuserar at systemforbättringar efter incidenter snarare än individuell skuld, which främjar öppenhet and lärande.
+**Blameless Culture:** Organisationskultur as fokuserar at systemforbättringar efter incidenter rather than individuell skuld, which främjar öppenhet and lärande.
 
 **Change Management:** Systematisk approach to hantera organizational changes, including stakeholder engagement, kommunikation and motståndhantering.
 
-**DevSecOps:** Utvecklingsmetodik as integrerar säkerhetspraktiker through entire utvecklingslivscykeln snarare än as a separat fas in slutet.
+**DevSecOps:** Utvecklingsmetodik as integrerar säkerhetspraktiker through entire utvecklingslivscykeln rather than as a separat fas in slutet.
 
 **Site Reliability Engineering (SRE):** Disciplin as toämpar mjukvaruingenjörsprinciper at operationella problem to skapa skalbara and mycket toforlitliga mjukvarusystem.

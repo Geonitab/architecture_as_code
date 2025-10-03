@@ -77,7 +77,7 @@ Skapa a responsiv webbportal för svensk e-förvaltning med:
 - WCAG 2.1 AA-kompatibel design
 - Tillgänglighetsfunktioner according to svensk lag
 - Säker dokumenthantering med e-signatur
-- Integrerad ärendehantering
+- Integrated ärendehantering
 - Mobiloptimerad för svenska enheter
 `;
 ```

@@ -28,7 +28,7 @@ The traditionella säkerhetsfilosofin byggde at forutsättningen about a tydlig 
 
 Modern operations demolerar These antaganden systematiskt. Molnbaserade tjänster distribuerar resurser across multipla leverantörer and geografiska regioner. Remote-arbete gör användarnas nätverk to säkerhetsperimeterens forlängning. API-driven architecture creates mängder of service-to-service kommunikation as traditionella perimeterkontroller not can hantera effektivt.
 
-Zero Trust Architecture (ZTA) representerar The nödvändiga evolutionen of säkerhetsfilosofin. Grundprincipen "never trust, always verify" means to each användare, enhet and nätverkstransaktion valideras explicitly oavsett location or tidigare autentisering. This requires granular identitetshantering, kontinuerlig posture assessment and policy-driven access controls.
+Zero Trust Architecture (ZTA) representerar The nödvändiga evolutionen of säkerhetsfilosofin. Grundprincipen "never trust, always verify" means to each användare, enhet and nätverkstransaktion valideras explicitly oavsett location or previous autentisering. This requires granular identitetshantering, kontinuerlig posture assessment and policy-driven access controls.
 
 in Architecture as Code-sammanhang enables ZTA systematisk implementation of trust policies through Architecture as Code. Nätverkssegmentering, mikrosegmentering, service mesh policies and IAM-konfigurationer definieras deklarativt and enforced konsistent across all miljöer. This creates "trust as code" where säkerhetsbeslut blir reproducerbara, testbara and auditerbara.
 
@@ -52,7 +52,7 @@ Continuous risk assessment integrerar riskutvärdering in utvecklingslivscykeln 
 
 Kvantitativ riskanalys blir mer throughforbar when infrastructure definieras as code. Blast radius-beräkningar can automatiseras through dependency analysis of infraStructurekomponenter. Potential impact assessment baseras at data classification and service criticality as kodifieras in infrastructure tags and metadata.
 
-Compliance-as-code transformation traditionella audit-processes from reaktiva to proaktiva. instead of throughfora compliance-kontroller efter deployment, valideras regulatory requirements kontinuerligt under utvecklingsprocessen. GDPR Article 25 ("Data Protection by design and by Default") can implementeras through automated policy checks as ensures persondata-hantering följer privacy principles from forsta kodrad.
+Compliance-as-code transformation traditionella audit-processes from reaktiva to proaktiva. instead of throughfora compliance-kontroller efter deployment, valideras regulatory requirements kontinuerligt under utvecklingsprocessen. GDPR Article 25 ("Data Protection by design and by Default") can implementeras through automated policy checks that ensure persondata-hantering följer privacy principles from forsta kodrad.
 
 ## Policy as Code: Automatiserad säkerhetsstyrning
 
@@ -1096,7 +1096,7 @@ successful implementation of These säkerhetsstrategier requires organizational 
 ### Svenska myndigheter and regulatoriska källor
 - MSB. "Allmänna råd about informationssäkerhet for samhällsviktiga and digitala tjänster." Myndigheten for samhällsskydd and beredskap, 2023.
 - MSB. "Vägledning for riskanalys according to NIS-direktivet." Myndigheten for samhällsskydd and beredskap, 2023.
-- Finansinspektionen. "Foreskrifter about operativa risker." FFFS 2014:1, uppdaterad 2023.
+- Finansinspektionen. "Foreskrifter about operativa risker." FFFS 2014:1, up-to-date 2023.
 - Dataskyddslagen (SFS 2018:218). "Lag with kompletterande bestämmelser to EU:s dataskyddsforordning."
 - Säkerhetsskyddslagen (SFS 2018:585). "Lag about säkerhetsskydd."
 

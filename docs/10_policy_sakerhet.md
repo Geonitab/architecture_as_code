@@ -10,7 +10,7 @@ in a värld where svenska organisationer hanterar all mer komplexa digitala infr
 
 the traditionella paradigmet for säkerhets- and compliance-hantering are characterized of manuella processes, statiska documentation and reaktiva strategier. This approach creates flaskhalsar in moderna utvecklingscykler where infraStructureändringar sker flera gånger dagligen through automated CI/CD-pipelines. Svenska organisationer, which traditionellt varit foregångare within säkerhet and regelefterlevnad, står nu infor utmaningen to digitalisera and automatisera These processes utan to kompromissa with säkerhetsnivån.
 
-Policy as Code adresserar This utmaning by transformera säkerhet from a extern kontrollmekanism to a integrerad del of utvecklingsprocessen. by uttrycka säkerhetskrav, compliance-rules and governance-policies as code uppnås same Benefits that Infrastructure as Code erbjuder: version control, testbarhet, återanvändbarhet, and konsistent deployment over miljöer and team.
+Policy as Code adresserar This utmaning by transformera säkerhet from a extern kontrollmekanism to a integrated part of utvecklingsprocessen. by uttrycka säkerhetskrav, compliance-rules and governance-policies as code uppnås same Benefits that Infrastructure as Code erbjuder: version control, testbarhet, återanvändbarhet, and konsistent deployment over miljöer and team.
 
 in The svenska kontexten möter organisationer a komplex regulatorisk miljö as includes EU:s allmänna dataskyddsforordning (GDPR), Myndigheten for samhällsskydd and beredskaps (MSB) säkerhetskrav for kritisk infrastructure, NIS2-direktivet, and branschspecifika regleringar within finansiella tjänster, vård and offentlig sektor. Traditionella compliance-approaches baserade at manuella kontroller and dokumentbaserade policies is not only ineffektiva utan också riskfyllda in dynamiska molnmiljöer.
 
@@ -26,7 +26,7 @@ Säkerhetshantering within Infrastructure as Code har throughgått a betydande e
 
 in infraStructureens barndom utfordes säkerhetsvalidering primärt through manuella processes. Säkerhetsteam granskade infraStructurekonfigurationer efter deployment, often veckор or månader efter to resurserna blev produktiva. This reaktiva approach ledde to upptäckten of säkerhetsproblem långt efter to the kunde orsaka skada. Svenska organisationer, with sina strikta säkerhetskrav, var särskilt utsatta for the ineffektiviteter that This approach withforde.
 
-Challengesna var många: inkonsistent toämpning of security policies, långa feedback-loopar mellan utveckling and säkerhet, and begränsad scalability when organisationer växte and antalet infraStructureresurser ökade exponentiellt. documentation blev snabbt foråldrad, and kunskapsöverforing mellan team var problematisk.
+Challengesna var många: inkonsistent toämpning of security policies, långa feedback-loopar mellan utveckling and säkerhet, and begränsad scalability when organisationer växte and antalet infraStructureresurser ökade exponentiellt. documentation blev snabbt outdated, and kunskapsöverforing mellan team var problematisk.
 
 **Fas 2: Scriptbaserad Architecture as Code-automation (2015-2018)**
 
@@ -48,7 +48,7 @@ Svenska organisationer is nu in forfronten of to adoptера comprehensive polic
 
 ## Open Policy Agent (OPA) and Rego: Grunden for policy-driven säkerhet
 
-Open Policy Agent har etablerats as the facto standarden for policy as code implementation through their flexibla architecture and kraftfulla deklarativa policy-språk Rego. OPA:s success ligger in dess formåga to separera policy logic from application logic, which enables centraliserad policy management simultaneously as utvecklingsteam behåller autonomi over sina applikationer and infraStructureer.
+Open Policy Agent har etablerats as the facto standarden for policy as code implementation through their flexibla architecture and kraftfulla declarative policy-språk Rego. OPA:s success ligger in dess formåga to separera policy logic from application logic, which enables centraliserad policy management simultaneously as utvecklingsteam behåller autonomi over sina applikationer and infraStructureer.
 
 Rego-språket representerar a paradigm shift from imperative to declarative policy definition. instead of specificera "how" något ska göras, fokuserar Rego at "what" which ska uppnås. This approach resulterar in policies as is mer läsbara, testbara and underhållbara jämfort with traditionella script-baserade lösningar.
 
@@ -419,7 +419,7 @@ Open Security Controls Assessment Language (OSCAL) representerar a paradigmskift
 
 OSCAL adresserar a fundamental utmaning within enterprise säkerhetshantering: fragmenteringen of säkerhetskontroller, assessment-processes and compliance-frameworks. Traditionellt har organisationer varit tvungna to hantera múltipla, inkompatibla säkerhetsstandarder (ISO 27001, NIST Cybersecurity Framework, SOC 2, GDPR, etc.) through separata systems and processes. OSCAL enables a unified approach where säkerhetskontroller can uttryckas, mappas and automatiseras through a gemensam meta-language.
 
-For Architecture as Code-practitioners representerar OSCAL möjligheten to integrera säkerhetskontroller direkt in utvecklingsprocessen through machine-readable formats as can valideras, testats and deployeras tosammans with Architecture as Code. This creates a seamless integration mellan security governance and architecture automation as tidigare varit tekniskt omöjlig to uppnå.
+For Architecture as Code-practitioners representerar OSCAL möjligheten to integrera säkerhetskontroller direkt in utvecklingsprocessen through machine-readable formats as can valideras, testats and deployeras tosammans with Architecture as Code. This creates a seamless integration mellan security governance and architecture automation as previous varit tekniskt omöjlig to uppnå.
 
 ### OSCAL-architecture and components
 
@@ -1812,7 +1812,7 @@ Gatekeeper's admission controller architecture enables policy evaluation vid dep
 
 ### Enterprise Constraint Template design
 
-Constraint Templates in Gatekeeper fungerar as reusable policy definitions as can konfigureras with parametrar for different environments and use cases. For svenska enterprise-miljöer requires constraint templates sophisticated logic as can hantera complex regulatory requirements simultaneously as the ger development teams toräcklig flexibilitet for innovation.
+Constraint Templates in Gatekeeper functions as reusable policy definitions as can konfigureras with parametrar for different environments and use cases. For svenska enterprise-miljöer requires constraint templates sophisticated logic as can hantera complex regulatory requirements simultaneously as the ger development teams toräcklig flexibilitet for innovation.
 
 ```yaml
 # gatekeeper/swedish-enterprise-constraints.yaml
@@ -2111,7 +2111,7 @@ spec:
 
 ### Network Policy automation and enforcement
 
-Kubernetes Network Policies utgör a fundamental säkerhetskomponent for micro-segmentation, men their manual configuration is error-prone and svår to maintain in large-scale environments. Svenska organisationer requires automated network policy generation and enforcement as ensures proper network segmentation simultaneously as The ger development teams flexibility.
+Kubernetes Network Policies utgör a fundamental säkerhetskomponent for micro-segmentation, men their manual configuration is error-prone and svår to maintain in large-scale environments. Svenska organisationer requires automated network policy generation and enforcement that ensure proper network segmentation simultaneously as The ger development teams flexibility.
 
 ```yaml
 # gatekeeper/network-policy-constraint.yaml
@@ -2385,7 +2385,7 @@ data:
 
 ## Automatiserad Compliance Monitoring och Enterprise Observability
 
-Kontinuerlig compliance monitoring utgör ryggraden in moderna Policy as Code-implementationer för svenska enterprise-miljöer. Effective monitoring går betydligt längre än traditional logging och encompasses real-time policy evaluation, predictive compliance analysis och automated remediation capabilities as ensures organisationer maintainar regulatory adherence även när infrastructure evolves rapidly.
+Kontinuerlig compliance monitoring utgör ryggraden in moderna Policy as Code-implementationer för svenska enterprise-miljöer. Effective monitoring går betydligt längre än traditional logging och encompasses real-time policy evaluation, predictive compliance analysis och automated remediation capabilities that ensure organisationer maintainar regulatory adherence även när infrastructure evolves rapidly.
 
 Svenska organisationer möter unique monitoring challenges at grund of strikta regulatory requirements about data residency, audit trails och incident reporting. GDPR-compliance requires comprehensive logging of all data processing activities, medan MSB:s säkerhetskrav för kritisk infrastruktur mandatar real-time threat detection och rapid incident response capabilities.
 

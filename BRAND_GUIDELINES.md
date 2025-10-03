@@ -170,7 +170,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 
 ### Undvik
 ❌ Andra färger än definierade
-❌ Forvrängd or felaktig logotypanvändning  
+❌ Forvrängd or incorrect logotypanvändning  
 ❌ Inkonsekvent spacing
 ❌ Fel typografihierarki
 ❌ Låg kontrast mellan text and Background
@@ -179,7 +179,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 
 ### Webbplats
 - [ ] CSS custom properties konfigurerade
-- [ ] Tailwind config uppdaterad with Kvadrat-färger
+- [ ] Tailwind config up-to-date with Kvadrat-färger
 - [ ] Typografi korrekt implemented
 - [ ] components följer design systems
 - [ ] Responsiv design testad
@@ -206,4 +206,4 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 For frågor about grafisk profil or implementation:
 - **E-post**: brand@Kvadrat.se
 - **Dokumentversion**: 1.0
-- **Senast uppdaterad**: December 2024
+- **Senast up-to-date**: December 2024

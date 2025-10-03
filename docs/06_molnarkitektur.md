@@ -2812,7 +2812,7 @@ export const complianceStatus = {
 
 Serverless Infrastructure as Code fokuserar at function definitions, event triggers, and managed service configurations instead for traditionell server management. This approach reducerar operationell overhead and enables automatic scaling baserat at actual usage patterns.
 
-Event-driven architectures implementeras through cloud functions, message queues, and data streams definierade that Architecture as Code. Integration mellan services is managed through IAM policies, API definitions, and network configurations as ensures security and performance requirements.
+Event-driven architectures implementeras through cloud functions, message queues, and data streams definierade that Architecture as Code. Integration mellan services is managed through IAM policies, API definitions, and network configurations that ensure security and performance requirements.
 
 ### Function-as-a-Service (FaaS) patterns for Swedish organizations
 

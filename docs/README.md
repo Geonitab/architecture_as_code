@@ -135,7 +135,7 @@ Boken byggs automatically vid ändringar in `docs/` katalogen through GitHub Act
 ## chapters navigation
 
 Kapitlen is numrerade 01-25 and organiserade for to:
-- **Bygga at varandra logiskt**: each chapters forutsätter kunskap from tidigare chapters
+- **Bygga at varandra logiskt**: each chapters forutsätter kunskap from previous chapters
 - **Gruppera relaterade ämnen**: Liknande ämnen behandlas tosammans
 - **Balansera teori and praktik**: Teoretiska grunder följs of praktiska implementationer
 - **Anpassas for svenska forhållanden**: Specifika hänsyn to svenska regelkrav and organisationskultur

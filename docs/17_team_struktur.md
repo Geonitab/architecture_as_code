@@ -10,7 +10,7 @@ Traditionella organizational structures with separata utvecklings-, test- and dr
 
 Conway's Law observerar to organizational structure reflekteras in systems design, which betyder to team boundaries direkt påverkar infrastructure architecture. Väldesignade team-Structures resulterar in modulära, maintainable infrastructure solutions, withan poorly organized teams producerar fragmented, complex systems.
 
-Platform teams fungerar as internal service providers as bygger and underhåller Infrastructure as Code capabilities for application teams. This model balanserar centralized expertise with decentralized autonomy, which enables scaling of Architecture as Code practices across stora organisationer.
+Platform teams functions as internal service providers as bygger and underhåller Infrastructure as Code capabilities for application teams. This model balanserar centralized expertise with decentralized autonomy, which enables scaling of Architecture as Code practices across stora organisationer.
 
 ## Kompetenwhichråden for architecture as code-specialister
 

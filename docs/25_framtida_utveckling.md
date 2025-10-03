@@ -82,7 +82,7 @@ GitOps utvecklas bortom Fundamental CI/CD:
 - **Multi-cluster GitOps**: Hantering of infrastructure over flera kluster and miljöer
 - **GitOps for data**: Datahantering and ML-pipelines through GitOps-principles
 - **Progressive delivery**: gradually utrullning with automatiska säkerhetsventiler
-- **Compliance as Code**: Regelefterlevnad integrerad in GitOps-workflows
+- **Compliance as Code**: Regelefterlevnad integrated in GitOps-workflows
 
 ## Security and compliance-evolution
 
@@ -213,7 +213,7 @@ Sverige as världsledare within hållbar teknologi:
 
 - **Green datacenters**: Världens mest energieffektiva datacenter
 - **Renewable energy integration**: Integration with svensk fornybar energi
-- **Carbon-negative computing**: Teknik as faktiskt minskar koldioxidutsläpp
+- **Carbon-negative computing**: Teknik as faktiskt reduces koldioxidutsläpp
 - **Circular economy**: Cirkulär ekonomi for IT-infrastructure
 
 ## Förberedelser for framtiden

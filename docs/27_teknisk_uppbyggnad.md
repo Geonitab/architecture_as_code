@@ -281,7 +281,7 @@ Entire systemet exemplifierar Architecture as Code through:
 
 1. **codified Contentsshantering**: Markdown as källa for sanning
 2. **Automatiserad pipeline**: Ingen manuell intervention krävs
-3. **version control**: Fullständig historik over all ändringar
+3. **version control**: Fullständig history of all ändringar
 4. **reproducibility**: Identiska builds from same källkod
 5. **scalability**: Enkelt to lägga to new chapters and format
 
@@ -312,7 +312,7 @@ The tekniska uppbyggnaden for "Architecture as Code" demonstrerar praktisk toäm
 - **scalability**: Enkelt to utöka with nytt Contents and format
 - **Transparens**: Öppen källkod and dokumenterad process
 
-This tekniska systems fungerar as a konkret illustration of how Architecture as Code-principerna can toämpas även utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
+This tekniska systems functions as a konkret illustration of how Architecture as Code-principerna can toämpas även utanfor traditionella IT-systems, which creates värde through automation, reproducibility and kontinuerlig forbättring.
 
 Sources:
 - GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.

@@ -93,7 +93,7 @@ This sammanställning identifierar engelska uttryck as fortfarande finns in boke
 
 ## Anmärkningar
 
-- Många of the engelska uttrycken finns kvar trots tidigare korrigeringar
+- Många of the engelska uttrycken finns kvar trots previous korrigeringar
 - Vissa chapters har konsekvent svenska uttryck withan andra har mer engelska
 - Tekniska produktnamn and etablerade akronymer bör generellt behållas at engelska
 - Affärsprocesstermer bör konsekvent översättas for bättre läsbarhet at svenska

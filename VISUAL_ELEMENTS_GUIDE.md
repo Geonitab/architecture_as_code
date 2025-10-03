@@ -21,7 +21,7 @@ All visual elements use the official Kvadrat color palette:
 ### Theme Configuration
 Location: `docs/mermaid-Kvadrat-theme.json`
 
-The Mermaid diagrams now use a custom Kvadrat theme that ensures:
+The Mermaid diagrams now use a custom Kvadrat theme that ensure:
 - Consistent brand colors across all diagrams
 - Professional typography using Inter font family
 - Appropriate contrast ratios for readability

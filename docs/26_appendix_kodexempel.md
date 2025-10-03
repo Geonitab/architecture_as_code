@@ -4,7 +4,7 @@ This appendix Contentser all kodExample, konfigurationsfiler and tekniska implem
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 
-*This appendix fungerar as a praktisk referenssamling for all tekniska implementationer as demonstreras genAbout the Book. each kodExample is kategoriserat and märkt with References tobaka to relevanta chapters.*
+*This appendix functions as a praktisk referenssamling for all tekniska implementationer as demonstreras genAbout the Book. each kodExample is kategoriserat and märkt with References tobaka to relevanta chapters.*
 
 ## Navigering in appendix
 

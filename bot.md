@@ -219,9 +219,9 @@ hello_world()
 
 ### Kodexempel
 - [ ] Välformaterad code
-- [ ] Kommentarer as forklarar koden
+- [ ] Kommentarer as forklarar the code
 - [ ] Användning of relevanta bibliotek
-- [ ] Möjlighet to köra koden lokalt
+- [ ] Möjlighet to köra the code lokalt
 - [ ] Kodpartier får aldrig vara längre än a sida
 
 ## Tools and resurser

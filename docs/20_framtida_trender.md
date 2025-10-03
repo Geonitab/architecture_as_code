@@ -760,7 +760,7 @@ class GreenIaCMetrics:
 
 ## Nästa generations Architecture as Code-tools and paradigm
 
-DevOps evolution fortsätter with new tools and methodologies as forbättrar utvecklarhastighet, operational efficiency and systems reliability. GitOps, Platform Engineering and Internal Developer Platforms (IDPs) representerar next-generation approaches for infrastructure management.
+DevOps evolution fortsätter with new tools and methodologies as improves utvecklarhastighet, operational efficiency and systems reliability. GitOps, Platform Engineering and Internal Developer Platforms (IDPs) representerar next-generation approaches for infrastructure management.
 
 immutable infrastructure principles evolution toward ephemeral computing where entire application stacks can be recreated from scratch within minutes. This approach eliminates configuration drift completely and provides ultimate consistency between environments.
 
@@ -1024,7 +1024,7 @@ Hybrid classical-quantum systems kommer to emerge where quantum computers använ
 The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
 Framtiden for Infrastructure as Code karakteriseras of intelligent automation, environmental sustainability and enhanced security capabilities. Svenska organisationer as investerar in emerging technologies and maintains crypto-agility kommer to vara well-positioned for future technological disruptions.
 
-AI-driven infrastructure optimization, carbon-aware computing and post-quantum cryptography readiness representerar essential capabilities for competitive advantage. Integration of these technologies requires both technical expertise and organizational adaptability as diskuteras in tidigare chapters.
+AI-driven infrastructure optimization, carbon-aware computing and post-quantum cryptography readiness representerar essential capabilities for competitive advantage. Integration of these technologies requires both technical expertise and organizational adaptability as diskuteras in previous chapters.
 
 Success in future Architecture as Code landscape requires continuous learning, experimentation and willingness to adopt new paradigms. Which demonstrerat genAbout the Books progression from [Fundamental Concepts](01_inledning.md) to advanced future technologies, evolution within Infrastructure as Code is constant and accelerating.
 
