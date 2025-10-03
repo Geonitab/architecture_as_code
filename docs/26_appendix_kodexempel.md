@@ -1,10 +1,10 @@
-# Appendix A: Kodexempel and tekniska architecture as code-implementationer
+# Appendix A: Kodexempel and technical architecture as code-implementations
 
-This appendix Contentser all kodExample, konfigurationsfiler and tekniska implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to göra the enkelt to hitta specifika implementationer.
+This appendix contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to do the enkelt to hitta specific implementations.
 
 ![Kodexempel appendix](images/diagram_26_appendix.png)
 
-*This appendix functions as a praktisk referenssamling for all tekniska implementationer as demonstreras genAbout the Book. each kodExample is kategoriserat and märkt with References tobaka to relevanta chapters.*
+*This appendix functions as a praktisk referenssamling for all technical implementations as demonstreras genAbout the Book. each kodexamples is kategoriserat and märkt with References tobaka to relevanta chapter.*
 
 ## Navigering in appendix
 
@@ -13,22 +13,22 @@ Kodexemplen is organiserade in following kategorier:
 1. **[CI/CD Pipelines and Architecture as Code-automation](#cicd-pipelines)**
 2. **[Infrastructure as Code (Architecture as Code) - Terraform](#terraform-iac)**
 3. **[Infrastructure as Code (Architecture as Code) - CloudFormation](#cloudformation-Architecture as Code)**
-4. **[Automationsskript and verktyg](#automation-scripts)**
+4. **[Automationsskript and tools](#automation-scripts)**
 5. **[Security and compliance](#security-compliance)**
 6. **[testing and validation](#testing-validation)**
 7. **[Konfigurationsfiler](#configuration)**
-8. **[Shell-skript and verktyg](#shell-scripts)**
+8. **[Shell-skript and tools](#shell-scripts)**
 
-each kodExample has a unik identifierare in formatet `[chapters]_CODE_[NUMMER]` for enkel referens from huvudtexten.
+each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]` for enkel referens from huvudtexten.
 
 ---
 
 ## CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}
 
-This sektion Contentser all Example at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for Swedish organizations.
+This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for Swedish organizations.
 
 ### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline for Swedish organizations
-*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
 # .github/workflows/svenska-architecture as code-pipeline.yml
@@ -54,7 +54,7 @@ env:
   AUDIT_LOGGING: 'enabled'
 
 jobs:
-  # GDPR and säkerhetskontroller
+  # GDPR and security controls
   gdpr-compliance-check:
     name: GDPR Compliance Validation
     runs-on: ubuntu-latest
@@ -94,7 +94,7 @@ jobs:
           
           if [ "$VIOLATIONS_FOUND" = true ]; then
             echo "❌ GDPR compliance check misslyckades"
-            echo "Personal data får not hardkodas in architecture as code-code"
+            echo "Personal data may not hardkodas in architecture as code-code"
             exit 1
           fi
           
@@ -102,7 +102,7 @@ jobs:
 ```
 
 ### 05_CODE_2: Jenkins Pipeline for Swedish organizations with GDPR compliance
-*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```yaml
 # jenkins/svenska-architecture as code-pipeline.groovy
@@ -136,7 +136,7 @@ pipeline {
         DATA_RESIDENCY = 'Sweden'
         TERRAFORM_VERSION = '1.6.0'
         COST_CURRENCY = 'SEK'
-        AUDIT_RETENTION_YEARS = '7'  // Svenska lagkrav
+        AUDIT_RETENTION_YEARS = '7'  // Svenska lagrequirements
     }
     
     stages {
@@ -177,7 +177,7 @@ pipeline {
                 stage('Data Residency Validation') {
                     steps {
                         script {
-                            echo "🏔️ Validates svenska data residency krav..."
+                            echo "🏔️ Validates svenska data residency requirements..."
                             
                             def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1']
                             
@@ -204,7 +204,7 @@ pipeline {
                             echo "💰 Validates kostnadscenter for svenska bokföring..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
-                                error("Ogiltigt kostnadscenter format. Använd: CC-XX-nnn")
+                                error("Ogiltigt kostnadscenter format. Use: CC-XX-nnn")
                             }
                             
                             // Validate to kostnadscenter existerar in företagets systems
@@ -260,7 +260,7 @@ pipeline {
                                     --soft-fail
                             """
                             
-                            // Analysera kritiska säkerhetsproblem
+                            // Analysera critical säkerhetsproblem
                             def results = readJSON file: 'checkov-results.json'
                             def criticalIssues = results.results.failed_checks.findAll { 
                                 it.severity == 'CRITICAL' 
@@ -391,9 +391,9 @@ pipeline {
                     ${readFile('cost-summary.txt')}
                     
                     ## Rekommendationer
-                    - Använd Reserved Instances for production workloads
-                    - Aktivera auto-scaling for development miljöer
-                    - Implementera scheduled shutdown for icke-kritiska systems
+                    - Use Reserved Instances for production workloads
+                    - Aktivera auto-scaling for development environments
+                    - Implementera scheduled shutdown for icke-critical systems
                     """
                     
                     writeFile file: 'cost-report-svenska.md', text: costReport
@@ -408,7 +408,7 @@ pipeline {
 ```
 
 ### 05_CODE_3: Terratest for svenska VPC implementation
-*Refereras from chapters 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
 
 ```go
 // test/svenska_vpc_test.go
@@ -552,7 +552,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ VPC Flow Logs aktiverade for GDPR compliance: %s", vpcID)
 }
 
-// testEncryptionAtRest validates to all lagring is krypterad according to GDPR-krav
+// testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
 func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Hämta KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
@@ -594,9 +594,9 @@ func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ Data residency validerat - all infrastruktur in EU region: %s", region)
 }
 
-// testAuditLogging validates to audit logging is konfigurerat according to svenska lagkrav
+// testAuditLogging validates to audit logging is konfigurerat according to svenska lagrequirements
 func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Kontrollera CloudTrail konfiguration
+    // Kontrollera CloudTrail configuration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
     
     trails, err := cloudtrailClient.DescribeTrails(&cloudtrail.DescribeTrailsInput{})
@@ -673,12 +673,12 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 ## Infrastructure as Code - CloudFormation {
 
-Architecture as Code-principerna within This område#cloudformation-Architecture as Code}
+Architecture as Code-principerna within This area#cloudformation-Architecture as Code}
 
-This sektion Contentser CloudFormation templates for AWS-infrastructure anpassad for Swedish organizations.
+This sektion contains CloudFormation templates for AWS-infrastructure adapted for Swedish organizations.
 
 ### 07_CODE_1: VPC Setup for Swedish organizations with GDPR compliance
-*Refereras from chapters 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
+*Refereras from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
 # cloudformation/svenska-org-vpc.yaml
@@ -696,12 +696,12 @@ Parameters:
     Type: String
     Default: internal
     AllowedValues: [public, internal, confidential, restricted]
-    Description: 'Dataklassificering according to svenska säkerhetsstandarder'
+    Description: 'Dataklassificering according to svenska security standards'
   
   ComplianceRequirements:
     Type: CommaDelimitedList
     Default: "gdpr,iso27001"
-    Description: 'Lista over compliance-krav as must uppfyllas'
+    Description: 'Lista over compliance-requirements as must uppfyllas'
 
 Conditions:
   IsProduction: !Equals [!Ref EnvironmentType, production]
@@ -736,12 +736,12 @@ Resources:
 
 ## Automation Scripts {#automation-scripts}
 
-This sektion Contentser Python-skript and andra automationsverktyg for Infrastructure as Code-handling.
+This sektion contains Python-skript and andra automationsverktyg for Infrastructure as Code-handling.
 
 ### 22_CODE_1: comprehensive testramverk for Infrastructure as Code
 
-Architecture as Code-principerna within This område
-*Refereras from chapters 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
+Architecture as Code-principerna within This area
+*Refereras from chapter 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```python
 # testing/comprehensive_iac_testing.py
@@ -835,10 +835,10 @@ class ComprehensiveIaCTesting:
 
 ## Configuration Files {#configuration}
 
-This sektion Contentser konfigurationsfiler for olika tools and tjänster.
+This sektion contains konfigurationsfiler for different tools and services.
 
 ### 22_CODE_2: Governance policy configuration for Swedish organizations
-*Refereras from chapters 22: [Best Practices and Lessons Learned](22_best_practices.md)*
+*Refereras from chapter 22: [Best Practices and Lessons Learned](22_best_practices.md)*
 
 ```yaml
 # governance/svenska-governance-policy.yaml
@@ -931,23 +931,23 @@ compliance_monitoring:
 
 ## References and navigering
 
-each kodExample in This appendix can refereras from huvudtexten with dess unika identifierare. to hitta specifika implementationer:
+each kodexamples in This appendix can refereras from huvudtexten with dess unique identifierare. to hitta specific implementations:
 
-1. **Använd sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
-2. **Följ kategorierna** - Navigera to relevant sektion baserat at användningwhichråde
-3. **Använd korshänvisningar** - Följ länkar tobaka to huvudkapitlen for kontext
+1. **Use sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
+2. **Följ kategorierna** - Navigera to relevant sektion based on användningwhichråde
+3. **Use korshänvisningar** - Följ länkar tobaka to huvudkapitlen for context
 
 ### Konventioner for kodexempel
 
-- **Kommentarer**: all kodExample Contentser svenska kommentarer for klarhet
-- **Säkerhet**: Security aspects is markerade with 🔒
-- **GDPR-compliance**: GDPR-relaterade konfigurationer is markerade with 🇪🇺
+- **Kommentarer**: all kodexamples contains svenska kommentarer for klarhet
+- **Security**: Security aspects is markerade with 🔒
+- **GDPR-compliance**: GDPR-relaterade configurations is markerade with 🇪🇺
 - **Svenska anpassningar**: Lokala anpassningar is markerade with 🇸🇪
 
 ### Uppdateringar and underhåll
 
-This appendix uppdateras löpande when new kodExample läggs to in bokens huvudkapitel. For senaste versionen of kodExample, se bokens GitHub-repository.
+This appendix uppdateras löpande when new kodexamples läggs to in bokens huvudkapitel. For last versionen of kodexamples, se bokens GitHub-repository.
 
 ---
 
-*For mer information about specifika implementationer, se respektive huvudkapitel where kodexemplen introduceras and forklaras in sitt sammanhang.*
+*For mer information about specific implementations, se respektive huvudkapitel where kodexemplen introduceras and forklaras in sitt context.*

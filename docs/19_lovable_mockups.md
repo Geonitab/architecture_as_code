@@ -1,18 +1,18 @@
-# chapters 20: Använd Lovable to skapa mockups for Swedish organizations
+# chapter 20: Use Lovable to create mockups for Swedish organizations
 
 ![Lovable Workflow Diagram](images/diagram_21_kapitel20.png)
 
 ## Inledning to Lovable
 
-Lovable is a AI-driven utvecklingsplattform as revolutionerar how svenska organisationer can skapa interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb development of användargränssnitt as is anpassade for svenska efterlevnadskrav and användarforväntningar.
+Lovable is a AI-driven utvecklingsplattform as revolutionerar how Swedish organizations can create interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb development of användargränssnitt as is anpassade for svenska compliance requirements and användarforväntningar.
 
-For Swedish organizations means This a unik possibility to:
-- Accelerera prototyputveckling with fokus at svenska språket and kulturella kontext
-- Ensure compliance from början of designprocessen
+For Swedish organizations means This a unique possibility to:
+- Accelerera prototyputveckling with fokus at svenska språket and cultural context
+- Ensure compliance from beginning of designprocessen
 - Integrera with svenska e-legitimationstjänster redan in mockup-fasen
-- Skapa användargränssnitt as följer svenska togänglighetsstandarder
+- Skapa användargränssnitt as follows svenska togänglighetsstandarder
 
-## step-for-step guide for implementation in svenska organisationer
+## step-for-step guide for implementation in Swedish organizations
 
 ### Fas 1: Förberedelse and uppsättning
 
@@ -51,7 +51,7 @@ module.exports = {
 # svenska-userflows.yml
 userflows:
   e_government:
-    name: "E-tjänst for myndighet"
+    name: "E-service for myndighet"
     steps:
       - identification: "BankID/Freja eID"
       - form_filling: "Digitalt formulär"
@@ -59,7 +59,7 @@ userflows:
       - status_tracking: "Ärendeuppföljning"
   
   financial_service:
-    name: "Finansiell tjänst"
+    name: "Finansiell service"
     steps:
       - kyc_check: "Kundkännedom"
       - risk_assessment: "Riskbedömning"
@@ -76,15 +76,15 @@ Skapa a responsiv webbportal for svensk e-förvaltning with:
 - Flerspråkigt stöd (svenska, engelska, arabiska, finska)
 - WCAG 2.1 AA-kompatibel design
 - Tillgänglighetsfunktioner according to svensk lag
-- Säker dokumenthantering with e-signatur
+- Säker documentshantering with e-signatur
 - Integrated ärendehantering
-- Mobiloptimerad for svenska enheter
+- Mobiloptimerad for svenska units
 `;
 ```
 
 ### Fas 3: technical integration
 
-**5. TypeScript-implementation for svenska tjänster**
+**5. TypeScript-implementation for svenska services**
 ```typescript
 // src/types/swedish-services.ts
 export interface SwedishEIDProvider {
@@ -96,7 +96,7 @@ export interface SwedishEIDProvider {
 export interface SwedishComplianceConfig {
   gdpr: {
     consentManagement: boolean;
-    dataRetention: number; // månader
+    dataRetention: number; // months
     rightToErasure: boolean;
   };
   wcag: {
@@ -138,7 +138,7 @@ class SwedishAccessibilityManager {
   }
   
   initializeSwedishA11y() {
-    // Implementera svenska tillgänglighetsriktlinjer
+    // Implementera svenska tillgänglighetsguidelines
     this.setupKeyboardNavigation();
     this.setupScreenReaderSupport();
     this.setupHighContrastMode();
@@ -158,7 +158,7 @@ class SwedishAccessibilityManager {
     const ariaLabels = {
       'logga-in': 'Logga in with BankID or Freja eID',
       'kontakt': 'Kontakta myndigheten',
-      'tillganglighet': 'Tillgänglighetsalternativ'
+      'tillganglighet': 'Tillgänglighetsalternatives'
     };
     
     Object.entries(ariaLabels).forEach(([id, label]) => {
@@ -171,7 +171,7 @@ class SwedishAccessibilityManager {
 
 ## Praktiska example for svenska sektorer
 
-### Example 1: E-forvaltningsportal for kommun
+### examples 1: E-forvaltningsportal for kommun
 
 ```typescript
 // kommun-portal-mockup.ts
@@ -187,7 +187,7 @@ interface KommunPortal {
 }
 
 const kommunPortalMockup = {
-  name: "Malmö Stad E-tjänster",
+  name: "Malmö Stad E-services",
   design: {
     colorScheme: "high-contrast",
     fontSize: "adjustable",
@@ -202,7 +202,7 @@ const kommunPortalMockup = {
 };
 ```
 
-### Example 2: Finansiell compliance-tjänst
+### examples 2: Finansiell compliance-service
 
 ```yaml
 # financial-compliance-mockup.yml
@@ -243,12 +243,12 @@ export class GDPRComplianceManager {
       categories: {
         necessary: {
           name: 'Nödvändiga cookies',
-          description: 'Krävs for webbplatsens grundfunktioner',
+          description: 'Krävs for websiteens grundfunktioner',
           required: true
         },
         analytics: {
           name: 'Analyskakor',
-          description: 'Hjälper oss förbättra webbplatsen',
+          description: 'Hjälper oss förbättra websiteen',
           required: false
         },
         marketing: {
@@ -300,7 +300,7 @@ class WCAGCompliance {
   }
   
   setupKeyboardAccess() {
-    // all interaktiva element ska vara tangentbordstillgängliga
+    // all interaktiva element should be tangentbordstillgängliga
     const interactiveElements = document.querySelectorAll(
       'button, a, input, select, textarea, [tabindex]'
     );
@@ -340,7 +340,7 @@ export class SwedishELegitimationService {
   }
   
   async handleELegitimation(): Promise<ELegitimationConfig> {
-    // Integration with e-legitimationsnämndens tjänster
+    // Integration with e-legitimationsnämndens services
     return {
       samlEndpoint: 'https://eid.elegnamnden.se/saml',
       assuranceLevel: 'substantial',
@@ -355,7 +355,7 @@ export class SwedishELegitimationService {
 
 ## technical integration and architecture as code best practices
 
-### Workflow-integration with svenska utvecklingsmiljöer
+### Workflow-integration with svenska utvecklingsenvironments
 
 ```yaml
 # .github/workflows/swedish-compliance-check.yml
@@ -418,28 +418,28 @@ export class SwedishPerformanceOptimizer {
 }
 ```
 
-## Summary and nästa step
+## Summary and next step
 
 
-The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Lovable erbjuder svenska organisationer a kraftfull plattform to skapa compliance-withvetna mockups and prototyper. by integrera svenska e-legitimationstjänster, implementera WCAG 2.1 AA-standarder and följa GDPR-riktlinjer from början, can organisationer:
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Lovable offers Swedish organizations a kraftfull plattform to create compliance-withvetna mockups and prototyper. by integrera svenska e-legitimationstjänster, implement WCAG 2.1 AA-standarder and follow GDPR-guidelines from beginning, can organisationer:
 
-1. **Accelerera utvecklingsprocessen** with AI-driven kodgenerering
+1. **Accelerera development process** with AI-driven kodgenerering
 2. **Ensure compliance** redan in mockup-fasen
 3. **Forbättra togänglighet** for all svenska user
-4. **Integrera svenska tjänster** that BankID and Freja eID
+4. **Integrera svenska services** that BankID and Freja eID
 
-### Rekommenderade nästa step:
+### Rekommenderade next step:
 
-1. **Pilotprojekt**: Starta with A mindre projekt to validate approach
-2. **Teamutbildning**: Utbilda Developers in Lovable and svenska compliance-krav
+1. **Pilotprojekt**: Starta with A smaller projekt to validate approach
+2. **Teamutbildning**: Utbilda Developers in Lovable and svenska compliance-requirements
 3. **Processintegration**: Integrera Lovable in existing utvecklingsprocesser
-4. **Kontinuerlig forbättring**: Etablera feedback-loopar for användbarhet and compliance
+4. **Continuous improvement**: Etablera feedback-loopar for användbarhet and compliance
 
 **Viktiga resurser:**
-- [Digg - Vägledning for webbtillgänglighet](https://www.digg.se/webbtillganglighet)
+- [Digg - Guidance for webbtillgänglighet](https://www.digg.se/webbtillganglighet)
 - [Datainspektionen - GDPR-vägledning](https://www.datainspektionen.se/)
 - [E-legitimationsnämnden](https://www.elegnamnden.se/)
 - [WCAG 2.1 AA Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 
-by följa This guide can svenska organisationer effektivt use Lovable to skapa mockups as not only is funktionella and användarvänliga, without också uppfyller all relevanta svenska and europeiska compliance-krav.
+by follow This guide can Swedish organizations effektivt use Lovable to create mockups as not only is funktionella and användarvänliga, without also meets all relevanta svenska and europeiska compliance-requirements.

@@ -26,5 +26,5 @@ The reader will gain comprehensive knowledge of how the entire system architectu
 
 Sources:
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
+- Martin, R. "Clean Architecture: A Craftsman's Guide to Software structure." Prentice Hall, 2017.
 

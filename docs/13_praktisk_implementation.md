@@ -2,31 +2,31 @@
 
 ![Architecture as Code in praktiken](images/diagram_08_kapitel7.png)
 
-Praktisk implementation of Architecture as Code requires throughtänkt tovägagångssätt as balanserar tekniska possibilities with organizational begränsningar. Infrastructure as Code utgör a central komponent, but must integreras with bredare arkitekturdefinitioner. This chapters fokuserar at verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate metoder for successful Architecture as Code-adoption in foretagsmiljöer.
+Praktisk implementation of Architecture as Code requires throughtänkt approach as balanserar technical possibilities with organizational begränsningar. Infrastructure as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapter focuses on verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate methods for successful Architecture as Code-adoption in foretagsenvironments.
 
 ![implementation User Journey](images/diagram_13_user_journey.png)
 
-Diagram ovan illustrerar The typiska användarresan for Architecture as Code-implementation, from initial discovery to fullständig optimization.
+Diagram above illustrerar The typical användarresan for Architecture as Code-implementation, from initial discovery to complete optimization.
 
 ## implementation roadmap and strategier
 
-Successful Architecture as Code adoption följer vanligen a phased approach as börjar with pilot projects and gradually expanderar to enterprise-wide implementation. Initial phases fokuserar at non-critical environments and simple use cases to bygga confidence and establish Architecture as Code best practices innan production workloads migreras. Infrastructure as Code (Architecture as Code) utgör often startpunkten for This transformation.
+Successful Architecture as Code adoption follows vanligen a phased approach as begins with pilot projects and gradual expanderar to enterprise-wide implementation. Initial phases focuses on non-critical environments and simple use cases to bygga confidence and establish Architecture as Code best practices before production workloads migreras. Infrastructure as Code (Architecture as Code) forms often startpunkten for This transformation.
 
-Assessment of current state infrastructure is critical for planning effective migration strategies. Legacy systems, technical debt, and organizational constraints must identifieras and addressas through targeted modernization efforts. This includes inventory of existing assets, dependency mapping, and risk assessment for olika migration scenarios.
+Assessment of current state infrastructure is critical for planning effective migration strategies. Legacy systems, technical debt, and organizational constraints must identifieras and addressas through targeted modernization efforts. This includes inventory of existing assets, dependency mapping, and risk assessment for different migration scenarios.
 
 Stakeholder alignment ensures organizational support for Architecture as Code initiatives. Executive sponsorship, cross-functional collaboration, and clear communication of benefits and challenges is essential for overcoming resistance and securing necessary resources. Change management strategies must address both technical and cultural aspects of transformation.
 
 ## Tool selection and ecosystem integration
 
-Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform has emerged as leading multi-cloud solution, withan cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager erbjuder deep integration with specific platforms.
+Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform has emerged as leading multi-cloud solution, with cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager offers deep integration with specific platforms.
 
 Integration with existing toolchains requires careful consideration of workflows, security requirements, and operational procedures. Source control systems, CI/CD platforms, monitoring solutions, and security scanning tools must seamlessly integrate for holistic development experience.
 
-Vendor evaluation criteria includes technical capabilities, roadmap alignment, commercial terms, and long-term viability. Open source solutions erbjuder flexibility and community innovation, withan commercial platforms provide enterprise support and advanced features. Hybrid approaches combinerar benefits from both models.
+Vendor evaluation criteria includes technical capabilities, roadmap alignment, commercial terms, and long-term viability. Open source solutions offers flexibility and community innovation, with commercial platforms provide enterprise support and advanced features. Hybrid approaches combinerar benefits from both models.
 
 ## Production readiness and operational excellence
 
-Security-first approach implementerar comprehensive security controls from design phase. Secrets management, access controls, audit logging, and compliance validation must vara built-in rather than bolt-on features. Automated security scanning and policy enforcement ensures consistent security posture.
+Security-first approach implement comprehensive security controls from design phase. Secrets management, access controls, audit logging, and compliance validation must vara built-in rather than bolt-on features. Automated security scanning and policy enforcement ensures consistent security posture.
 
 High availability design principles appliceras at infrastructure code through redundancy, failover mechanisms, and disaster recovery procedures. Infrastructure definitions must handle various failure scenarios gracefully and provide automatic recovery capabilities where possible.
 
@@ -50,7 +50,7 @@ Compliance and governance frameworks must vara embedded in infrastructure code w
 
 ## Praktiska example
 
-### Terraform Module Structure
+### Terraform Module structure
 ```hcl
 # modules/web-application/main.tf
 variable "environment" {
@@ -154,7 +154,7 @@ output "vpc_id" {
 }
 ```
 
-## Terraform konfiguration and miljöhantering
+## Terraform configuration and miljöhantering
 
 ### Environment-specific Configuration
 ```hcl
@@ -360,8 +360,8 @@ jobs:
 ## Summary
 
 
-The moderna Architecture as Code-metodiken representerar framtiden for infraStructurehantering in svenska organisationer.
-Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from början, withan common challenges must anticiperas and mitigated through proven practices and robust tooling.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Practical Infrastructure as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from beginning, with common challenges must anticiperas and mitigated through proven practices and robust tooling.
 
 ## Sources and referenser
 

@@ -22,7 +22,7 @@ A practical example is how a change in an application's API automatically can pr
 
 The principle of immutable architecture means the entire system architecture is managed through immutable components. instead of modifying existing parts, new versions are created that replace old ones at all levels.
 
-This creates predictability and eliminates architectural drift - where systems gradually diverge from their intended design over time.
+This creates predictability and eliminates architectural drift - where systems gradual diverge from their intended design over time.
 
 ## Testability at architecture level
 
@@ -80,19 +80,19 @@ jobs:
           publish_dir: ./docs/dist
 ```
 
-Moderna verktyg that GitBook, Gitiles and MkDocs enables automatisk generering of webbdokumentation from Markdown-filer lagrade tosammans with the code.
+Moderna tools that GitBook, Gitiles and MkDocs enables automatic generering of webbdocumentsation from Markdown-filer lagrade together with the code.
 
 ## Requirements as Code
 
-Requirements as Code (RaC) transformerar traditionell kravspecifikation from textdokument to maskinläsbar code as can exekveras, valideras and automatiseras. This paradigmskifte enables kontinuerlig verification of to systemet uppfyller sina krav through entire utvecklingslivscykeln.
+Requirements as Code (RaC) transformerar traditional requirementsspecifiction from text documents to machine-readable code as can exekveras, valitheir and automatiseras. This paradigm shift enables continuous verification of to systemet meets sina requirements through entire utvecklingslivscykeln.
 
 ### automation and traceability
 
 **Automatiserad validation**: Krav uttryckta as code can exekveras automatically mot systemet to verifiera compliance. This eliminates manuell testing and ensures konsekvent validation.
 
-**Direkt koppling between krav and code**: each systemkomponent can kopplas tobaka to specifika krav, which creates fullständig traceability from affärsbehov to Technical implementation.
+**Direkt koppling between requirements and code**: each systemkomponent can kopplas tobaka to specific requirements, which creates complete traceability from business needs to Technical implementation.
 
-**Continuous compliance**: Changes in systemet valideras automatically mot all definierade krav, which forhindrar regression and ensures ongoing compliance.
+**Continuous compliance**: Changes in systemet valitheir automatically mot all definierade requirements, which forhindrar regression and ensures ongoing compliance.
 
 ### practical example with Open Policy Agent (OPA)
 
@@ -101,13 +101,13 @@ Requirements as Code (RaC) transformerar traditionell kravspecifikation from tex
 apiVersion: policy/v1
 kind: RequirementSet
 metadata:
-  name: svenska-sakerhetskrav
+  name: svenska-sakerhetsrequirements
   version: "1.2"
 spec:
   requirements:
     - id: SEC-001
       type: security
-      description: "all S3 buckets must ha kryptering aktiverad"
+      description: "all S3 buckets must ha encryption aktiverad"
       priority: critical
       compliance: ["GDPR", "ISO27001"]
       policy: |
@@ -121,7 +121,7 @@ spec:
     
     - id: GDPR-001
       type: compliance  
-      description: "Persondata must lagras within EU/EES"
+      description: "Persondata must is stored within EU/EES"
       priority: critical
       compliance: ["GDPR"]
       policy: |
@@ -136,7 +136,7 @@ spec:
 
 ### validation and test-automation
 
-Requirements as Code integreras naturligt with test-automation by krav blir executable specifications:
+Requirements as Code integreras naturligt with test-automation by requirements becomes executable specifications:
 
 ```python
 # test/requirements_validation.py
@@ -174,11 +174,11 @@ class RequirementsValidator:
         }
 ```
 
-Svenska organisationer drar särskild nytta of Requirements as Code to automatically validate GDPR-compliance, finansiella regleringar and myndighetskrav as konstant must uppfyllas.
+Swedish organizations drar particular nytta of Requirements as Code to automatically validate GDPR-compliance, finansiella regulations and myndighetsrequirements as konstant must uppfyllas.
 
 Sources:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
-- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
+- Martin, R. "Clean Architecture: A Craftsman's Guide to Software structure." Prentice Hall, 2017.
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - GitLab. "Documentation as Code: Best Practices and implementation." GitLab Documentation, 2024.
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
