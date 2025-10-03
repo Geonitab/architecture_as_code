@@ -53,12 +53,7 @@ def chapter_files(docs_directory, language):
     # List of non-chapter files to exclude
     non_chapter_files = {
         "README.md",
-        "TERMINOLOGY_ADJUSTMENT.md",
-        "MIXED_LANGUAGE_FIXES_SUMMARY.md",
-        "ENGLISH_EXPRESSION_COMPILATION.md",
-        "LANGUAGE_DEVIATIONS_ISSUE.md",
         "BOOK_COVER_DESIGN.md",
-        "EPUB_VALIDATION.md"
     }
     
     # Filter out non-chapter files

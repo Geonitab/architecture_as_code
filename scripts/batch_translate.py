@@ -325,9 +325,7 @@ def main():
     # All docs files
     docs_dir = Path('docs')
     if docs_dir.exists():
-        for pattern in ['[0-9][0-9]_*.md', 'README.md', 'BOOK_COVER_DESIGN.md', 'TERMINOLOGY_ADJUSTMENT.md', 
-                        'ENGLISH_EXPRESSION_COMPILATION.md', 'EPUB_VALIDATION.md', 
-                        'MIXED_LANGUAGE_FIXES_SUMMARY.md', 'LANGUAGE_DEVIATIONS_ISSUE.md']:
+        for pattern in ['[0-9][0-9]_*.md', 'README.md', 'BOOK_COVER_DESIGN.md']:
             for path in docs_dir.glob(pattern):
                 if not path.stem.endswith('_en'):
                     files_to_process.append(path)
