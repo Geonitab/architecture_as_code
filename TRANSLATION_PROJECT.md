@@ -1,10 +1,22 @@
 # Translation Project Documentation
 
-## Overview
+## ⚠️ MIGRATION COMPLETE
+
+**This documentation is now historical.**
+
+As of the latest commit, all Swedish markdown files have been replaced with their English versions. The `_en.md` suffix files have been removed, and all markdown files now contain English content while maintaining their original filenames.
+
+The repository is now English-only.
+
+---
+
+## Historical Overview
 
 This document describes the English translation project for the "Architecture as Code" (Architecture as Code) book project.
 
-**Status: ✅ COMPLETE** - All 52 markdown files successfully translated to English.
+**Original Status: ✅ COMPLETE** - All 52 markdown files successfully translated to English.
+
+**Migration Status: ✅ COMPLETE** - Swedish files replaced with English content, `_en.md` files removed.
 
 ## Completed Work
 

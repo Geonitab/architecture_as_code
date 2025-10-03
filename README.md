@@ -1,10 +1,10 @@
 # Architecture as Code - Book Project
 
-A comprehensive book about Architecture as Code in Swedish, with practical examples and case studies.
+A comprehensive book about Architecture as Code, with practical examples and case studies.
 
 ## 📚 About the Book
 
-This book covers Architecture as Code from fundamental principles to advanced implementation, with a focus on practical application within Swedish organizations.
+This book covers Architecture as Code from fundamental principles to advanced implementation, with a focus on practical application.
 
 ### Target Audience
 - systems Architects
@@ -204,5 +204,7 @@ This book project is maintained by Geonit AB.
 
 ---
 
-**Note:** This is the English version of the main README. For the Swedish version, see `README.md` (without _en suffix).
+## 🌍 Language
+
+All book content is in English.
 

@@ -281,89 +281,22 @@ def get_files_to_translate() -> List[Path]:
 
 
 def main():
-    """Main function to translate all markdown files."""
+    """Main function - script is now obsolete."""
     print("=" * 70)
-    print("📚 Markdown Translation: Swedish → English")
-    print("=" * 70)
-    print()
-    
-    # Get files to translate
-    files = get_files_to_translate()
-    
-    print(f"Found {len(files)} files to translate\n")
-    
-    # First pass: dry run to show what will be done
-    print("🔍 Dry run - showing what will be created:")
-    print("-" * 70)
-    for file_path in files:
-        success, message = translate_file(file_path, dry_run=True)
-        if success:
-            print(f"  {message}")
-    
-    print()
-    print("=" * 70)
-    print("⚠️  NOTE: This is a TEMPLATE generator only!")
-    print("=" * 70)
-    print("""
-The script creates English file templates with:
-- Preserved markdown structure (headers, code blocks, links)
-- Basic term translations for common technical terms
-- Original Swedish text for manual translation
-
-NEXT STEPS REQUIRED:
-1. Review each generated *_en.md file
-2. Manually translate or use professional translation service
-3. Verify technical accuracy
-4. Update generate_book.py for English book generation
-5. Update build_book.sh for English PDF building
-
-This ensures translation quality and technical correctness.
-""")
-    
-    # Ask for confirmation
-    response = input("\nProceed with creating template files? (y/N): ").strip().lower()
-    
-    if response != 'y':
-        print("\n❌ Translation cancelled.")
-        return
-    
-    print("\n" + "=" * 70)
-    print("🚀 Creating English template files...")
+    print("⚠️  TRANSLATION SCRIPT - OBSOLETE")
     print("=" * 70)
     print()
-    
-    # Actual translation
-    success_count = 0
-    skip_count = 0
-    error_count = 0
-    
-    for file_path in files:
-        success, message = translate_file(file_path, dry_run=False)
-        print(f"  {message}")
-        
-        if success:
-            success_count += 1
-        elif "Skipping" in message or "exists" in message:
-            skip_count += 1
-        else:
-            error_count += 1
-    
+    print("This script is no longer needed.")
+    print()
+    print("The repository has been migrated to English-only markdown files.")
+    print("Swedish content has been replaced with English content, and all")
+    print("_en.md files have been removed.")
+    print()
+    print("All markdown files now contain English content.")
     print()
     print("=" * 70)
-    print("📊 Summary")
-    print("=" * 70)
-    print(f"  ✅ Created: {success_count}")
-    print(f"  ⏭️  Skipped: {skip_count}")
-    print(f"  ❌ Errors: {error_count}")
-    print()
-    
-    if success_count > 0:
-        print("✨ Template files created successfully!")
-        print()
-        print("⚠️  IMPORTANT: All *_en.md files need manual translation review!")
-        print("   The files contain structure and basic term translations only.")
-        print()
 
 
 if __name__ == "__main__":
     main()
+
