@@ -1,5 +1,11 @@
 ---
-# Content requirements specification for "Arkitektur som Kod" book
+# OBSOLETE: This file is kept for historical reference only
+# After the English migration, all files use the Swedish naming convention (e.g., 01_inledning.md)
+# but contain English content. Use requirements.yaml instead.
+#
+# Content requirements specification for "Arkitektur som Kod" book (English version)
+# This file has been updated to reflect post-migration filenames (without _en suffix)
+# but is no longer actively used by the test suite.
 book:
   title: "Architecture as Code"
   language: "english"
