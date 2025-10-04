@@ -170,6 +170,20 @@ The project includes a React-based web dashboard that provides:
 - Vite (build tool)
 - Tailwind CSS + shadcn/ui components
 - React Router
+- react-syntax-highlighter with Prism.js (code syntax highlighting)
+
+**Code Syntax Highlighting:**
+
+The book preview feature uses Prism.js via `react-syntax-highlighter` to provide syntax highlighting for code blocks with a dark theme (VS Code Dark+). Supported languages include:
+- JavaScript/TypeScript
+- Python
+- YAML
+- JSON
+- Bash/Shell
+- Dockerfile
+- And many more...
+
+Code blocks in markdown are automatically detected and highlighted based on the language identifier (e.g., ` ```yaml`, ` ```python`, ` ```javascript`).
 
 ## 🔄 CI/CD Workflows
 

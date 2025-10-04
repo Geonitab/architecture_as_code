@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight, BookOpen, Home, Eye, Loader2, Edit } from "lucide-react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import MarkdownEditor from "@/components/MarkdownEditor";
 import { useToast } from "@/hooks/use-toast";
 
@@ -234,12 +236,28 @@ const BookPreview = () => {
                         ),
                         code: ({ children, className }) => {
                           const isInline = !className;
-                          return isInline ? (
-                            <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>
-                          ) : (
-                            <code className="block bg-muted p-4 rounded-lg overflow-x-auto text-sm font-mono">
-                              {children}
-                            </code>
+                          if (isInline) {
+                            return <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono">{children}</code>;
+                          }
+                          
+                          // Extract language from className (format: language-xxx)
+                          const match = /language-(\w+)/.exec(className || '');
+                          const language = match ? match[1] : 'text';
+                          
+                          return (
+                            <SyntaxHighlighter
+                              language={language}
+                              style={vscDarkPlus}
+                              customStyle={{
+                                borderRadius: '0.5rem',
+                                padding: '1rem',
+                                fontSize: '0.875rem',
+                                margin: '1rem 0',
+                              }}
+                              showLineNumbers={true}
+                            >
+                              {String(children).replace(/\n$/, '')}
+                            </SyntaxHighlighter>
                           );
                         }
                       }}
