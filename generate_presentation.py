@@ -86,11 +86,12 @@ def analyze_mermaid_diagram_types():
     for mmd_file in mermaid_files:
         try:
             content = mmd_file.read_text(encoding='utf-8').strip()
-            first_lines = content.split('\n')[:3]  # Check first 3 lines
+            lines = content.split('\n')
             
             diagram_type = 'other'
             
-            for line in first_lines:
+            # Check all lines to handle YAML frontmatter and config blocks
+            for line in lines:
                 line = line.strip().lower()
                 if line.startswith('graph ') or line.startswith('flowchart '):
                     diagram_type = 'flowchart'
