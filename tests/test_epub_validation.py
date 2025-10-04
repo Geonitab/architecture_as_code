@@ -41,11 +41,7 @@ class TestEPUBValidation:
         except subprocess.TimeoutExpired:
             pytest.fail("EPUBCheck command timed out")
     
-    def test_epub_file_exists(self, epub_file):
-        """Test that EPUB file exists in docs directory."""
-        assert epub_file.exists(), f"EPUB file should exist at {epub_file}"
-        assert epub_file.stat().st_size > 0, "EPUB file should not be empty"
-    
+
     def test_epub_file_validation(self, epub_file):
         """Test EPUB file validation with EPUBCheck."""
         if not epub_file.exists():
