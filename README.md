@@ -93,8 +93,13 @@ npm install -g @mermaid-js/mermaid-cli
 **For Web Dashboard:**
 ```bash
 # Install Node.js dependencies
+# Note: Requires --legacy-peer-deps due to @toast-ui/react-editor React 17 compatibility
 npm install --legacy-peer-deps
 ```
+
+**Known Security Issues:**
+- The `markdown` package has a ReDoS vulnerability (GHSA-wx77-rp39-c6vg) with no fix available. The impact is minimal as it's only used for static content rendering.
+- Some dependencies require `--legacy-peer-deps` due to React version compatibility. See [package.json](package.json) for details.
 
 ### Build Commands
 
