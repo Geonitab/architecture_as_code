@@ -216,6 +216,7 @@ The project uses a comprehensive design token system for consistent UI design:
 
 ### Documentation
 - [DESIGN_TOKENS.md](DESIGN_TOKENS.md) - Complete design token reference
+- [DESIGN_TOKENS_QUICK_REFERENCE.md](DESIGN_TOKENS_QUICK_REFERENCE.md) - Quick reference guide
 - [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) - Visual design guidelines
 
 ### Example Usage
