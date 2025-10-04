@@ -251,7 +251,7 @@ jobs:
       - name: 📦 Install Node.js dependencies
         run: |
           echo "=== Installing Node.js dependencies ==="
-          npm ci
+          npm ci --legacy-peer-deps
           echo "✅ Node.js dependencies installed"
 
       - name: 📦 Install Python dependencies
@@ -489,7 +489,7 @@ jobs:
       - name: 📦 Install Node.js dependencies
         run: |
           echo "=== Installing Node.js dependencies ==="
-          npm ci
+          npm ci --legacy-peer-deps
           echo "✅ Node.js dependencies installed"
 
       - name: 📝 Generate book content
