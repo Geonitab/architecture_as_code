@@ -1,5 +1,4 @@
----
-# Content requirements specification for "Arkitektur som Kod" book
+# Content requirements specification for "Architecture as Code" book
 book:
   title: "Architecture as Code"
   language: "english"
@@ -8,117 +7,117 @@ book:
   # Required chapter structure
   chapters:
     - filename: "01_introduction.md"
-      title: "Inledning till arkitektur som kod"
-      area: "Grundläggande koncept"
+      title: "Introduction to Architecture as Code"
+      area: "Basic Concepts"
       required: true
     - filename: "02_grundlaggande_principer.md"
-      title: "Grundläggande principer för Architecture as Code"
-      area: "Grundläggande koncept"
+      title: "Basic Principles of Architecture as Code"
+      area: "Basic Concepts"
       required: true
     - filename: "03_versionhantering.md"
-      title: "Versionhantering och kodstruktur"
-      area: "Systemutveckling"
+      title: "Version Control and Code Structure"
+      area: "System Development"
       required: true
     - filename: "04_adr.md"
       title: "Architecture Decision Records (ADR)"
-      area: "Grundläggande koncept"
+      area: "Basic Concepts"
       required: true
     - filename: "05_automatisering_devops_cicd.md"
-      title: "Automatisering, DevOps och CI/CD för Infrastructure as Code"
-      area: "Systemutveckling"
+      title: "Automation, DevOps and CI/CD for Infrastructure as Code"
+      area: "System Development"
       required: true
     - filename: "06_molnarkitektur.md"
-      title: "Molnarkitektur som kod"
-      area: "Arkitektur"
+      title: "Cloud Architecture as Code"
+      area: "Architecture"
       required: true
     - filename: "07_containerisering.md"
-      title: "Containerisering och orkestrering"
-      area: "Arkitektur"
+      title: "Containerization and Orchestration"
+      area: "Architecture"
       required: true
     - filename: "08_microservices.md"
-      title: "Microservices och distribuerade system"
-      area: "Arkitektur"
+      title: "Microservices and Distributed Systems"
+      area: "Architecture"
       required: true
     - filename: "09_security.md"
-      title: "Säkerhet i Infrastructure as Code"
-      area: "Säkerhet"
+      title: "Security in Infrastructure as Code"
+      area: "Security"
       required: true
     - filename: "10_policy_sakerhet.md"
-      title: "Policy som kod och säkerhetsautomatisering"
-      area: "Säkerhet"
+      title: "Policy as Code and Security Automation"
+      area: "Security"
       required: true
     - filename: "11_compliance.md"
-      title: "Compliance och regelefterlevnad"
+      title: "Compliance and Regulatory Compliance"
       area: "Governance"
       required: true
     - filename: "12_teststrategier.md"
-      title: "Teststrategier för infrastruktukod"
-      area: "Kvalitetssäkring"
+      title: "Testing Strategies for Infrastructure Code"
+      area: "Quality Assurance"
       required: true
     - filename: "13_praktisk_implementation.md"
-      title: "Praktisk implementation av Architecture as Code"
-      area: "Praktisk tillämpning"
+      title: "Practical Implementation of Architecture as Code"
+      area: "Practical Application"
       required: true
     - filename: "14_kostnadsoptimering.md"
-      title: "Kostnadsoptimering och resurshantering"
-      area: "Ekonomisk optimering"
+      title: "Cost Optimization and Resource Management"
+      area: "Economic Optimization"
       required: true
     - filename: "15_migration.md"
-      title: "Migration från traditionell infrastruktur"
+      title: "Migration from Traditional Infrastructure"
       area: "Migration"
       required: true
     - filename: "16_organisatorisk_forandring.md"
-      title: "Organisatorisk förändring och teamstrukturer"
-      area: "Organisationsutveckling"
+      title: "Organizational Change and Team Structures"
+      area: "Organizational Development"
       required: true
     - filename: "17_team_struktur.md"
-      title: "Team-struktur för skalbar IaC"
-      area: "Organisationsutveckling"
+      title: "Team Structure for Scalable IaC"
+      area: "Organizational Development"
       required: true
     - filename: "18_digitalisering.md"
-      title: "Digitalisering genom kodbaserad infrastruktur"
-      area: "Strategisk utveckling"
+      title: "Digitalization through Code-Based Infrastructure"
+      area: "Strategic Development"
       required: true
     - filename: "19_lovable_mockups.md"
-      title: "Lovable Mockups och prototyping"
-      area: "Produktutveckling"
+      title: "Lovable Mockups and Prototyping"
+      area: "Product Development"
       required: true
     - filename: "20_framtida_trender.md"
-      title: "Framtida trender inom Infrastructure as Code"
-      area: "Framtidsspaning"
+      title: "Future Trends in Infrastructure as Code"
+      area: "Future Outlook"
       required: true
     - filename: "21_best_practices.md"
-      title: "Metodval och erfarenheter"
-      area: "Best practices"
+      title: "Method Selection and Experiences"
+      area: "Best Practices"
       required: true
     - filename: "22_conclusion.md"
-      title: "Slutsats och vägen framåt"
-      area: "Sammanfattning"
+      title: "Conclusion and the Way Forward"
+      area: "Summary"
       required: true
     - filename: "23_glossary.md"
-      title: "Ordlista och definitioner"
-      area: "Referens"
+      title: "Glossary and Definitions"
+      area: "Reference"
       required: true
     - filename: "24_om_forfattarna.md"
-      title: "Om författarna"
+      title: "About the Authors"
       area: "Appendix"
       required: true
     - filename: "25_framtida_utveckling.md"
-      title: "Framtida utveckling"
-      area: "Framtidsspaning"
+      title: "Future Development"
+      area: "Future Outlook"
       required: true
     - filename: "26_appendix_kodexempel.md"
-      title: "Appendix A: Kodexempel och tekniska implementationer"
+      title: "Appendix A: Code Examples and Technical Implementations"
       area: "Appendix"
       required: true
     - filename: "27_teknisk_uppbyggnad.md"
-      title: "Teknisk uppbyggnad"
+      title: "Technical Setup"
       area: "Appendix"
       required: true
 
   # Special chapters with different requirements
   special_chapters:
-    ordlista:
+    glossary:
       filename: "23_glossary.md"
       requires_diagram: false
       requires_sources: false
@@ -134,11 +133,11 @@ book:
       filename: "26_appendix_kodexempel.md"
       requires_diagram: true
       requires_sources: false
-    teknisk:
+    technical:
       filename: "27_teknisk_uppbyggnad.md"
       requires_diagram: true
       requires_sources: false
-    framtida:
+    future:
       filename: "25_framtida_utveckling.md"
       requires_diagram: false
       requires_sources: true
@@ -161,7 +160,7 @@ structure:
       pattern: "!\\[.*\\]\\(images/diagram_.*\\.png\\)"
       description: "Mermaid diagram reference"
     - name: "sources"
-      pattern: "(?i)(?:sources?|källor?):"
+      pattern: "(?i)(?:sources?|references?):"
       description: "Sources/references section"
       
   minimum_content_length: 500  # characters excluding whitespace
