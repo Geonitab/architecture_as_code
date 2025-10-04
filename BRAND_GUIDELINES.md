@@ -119,6 +119,9 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 
 ## Mallar and implementation
 
+### Design Tokens
+För detaljerad information om designtokens och hur de implementeras, se [DESIGN_TOKENS.md](DESIGN_TOKENS.md).
+
 ### Webbplats
 - **Layout**: Grid-baserad with tydlig hierarki
 - **Navigation**: Enkel, ren navigation with Kvadrat-färger

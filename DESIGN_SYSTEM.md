@@ -89,6 +89,9 @@ a comprehensive grafisk profil as is anpassad for Kvadrat.se:s visuella identite
 
 ## Technical implementation
 
+### Design Tokens
+For en djupgående översikt över designtokens och hur de säkerställer att designen guidar utvecklingen, se [DESIGN_TOKENS.md](DESIGN_TOKENS.md).
+
 ### CSS Custom Properties
 all färger and mått definieras that CSS custom properties for enkel underhåll.
 
