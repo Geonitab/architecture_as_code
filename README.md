@@ -171,6 +171,12 @@ The project includes a React-based web dashboard that provides:
 - Tailwind CSS + shadcn/ui components
 - React Router
 
+**Design System:**
+- Kvadrat-aligned design tokens for consistent branding
+- Comprehensive color, typography, and spacing system
+- Dark mode support
+- See [DESIGN_TOKENS.md](DESIGN_TOKENS.md) for detailed documentation
+
 ## 🔄 CI/CD Workflows
 
 All builds are automated through GitHub Actions:
@@ -196,6 +202,36 @@ To contribute to the book content:
 2. Follow the existing structure and style
 3. Test locally with `python3 generate_book.py && cd docs && ./build_book.sh`
 4. Submit a pull request
+
+## 🎨 Design System
+
+The project uses a comprehensive design token system for consistent UI design:
+
+### Design Tokens
+- **Colors**: Kvadrat brand colors, semantic colors, neutral tones
+- **Typography**: Inter and JetBrains Mono font families
+- **Spacing**: Consistent spacing scale
+- **Shadows**: Custom Kvadrat-branded shadows
+- **Animations**: Smooth, performant animations
+
+### Documentation
+- [DESIGN_TOKENS.md](DESIGN_TOKENS.md) - Complete design token reference
+- [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) - Visual design guidelines
+
+### Example Usage
+```tsx
+// Using design tokens in components
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+<Card className="shadow-kvadrat border-primary/20">
+  <Badge className="bg-success text-success-foreground">
+    Active
+  </Badge>
+</Card>
+```
+
+See the [DesignTokensExample component](src/components/examples/DesignTokensExample.tsx) for a comprehensive showcase of all design tokens in action.
 
 ## 🔍 Link Verification
 
