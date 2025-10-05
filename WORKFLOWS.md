@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository uses a unified GitHub Actions workflow to handle all aspects of the book publication and release process. The unified workflow replaces multiple separate workflows with a single, optimized solution that supports both traditional and Docker-based builds.
+This repository uses a unified GitHub Actions workflow to handle all aspects of the book publication and release process. The unified workflow uses an optimized Docker-based build strategy for fast and reliable builds.
 
 ## Workflow Files
 
@@ -19,14 +19,11 @@ This repository uses a unified GitHub Actions workflow to handle all aspects of 
   - `Dockerfile.book-builder`
 - Pull request validation
 - Manual workflow dispatch with customizable options:
-  - Build type: `traditional`, `docker`, or `both`
   - Deliverables: `all`, `book-only`, `presentations-only`, `whitepapers-only`, `website-only`
   - GitHub release creation: `true`/`false`
 
-**Build Strategies**:
-- **Traditional Build**: Full dependency installation (~90 minutes) for maximum compatibility
-- **Docker Build**: Optimized with layer caching (~60 minutes) for faster builds
-- **Both**: Runs both strategies with fallback support
+**Build Strategy**:
+- **Docker Build**: Optimized with layer caching (~60 minutes) for fast, reliable builds
 
 **Dependencies Installed**:
 - Python 3.12
@@ -45,10 +42,7 @@ This repository uses a unified GitHub Actions workflow to handle all aspects of 
 
 **GitHub Release**: Creates comprehensive release with all files attached (tag: `v{run_number}-unified`)
 
-**Duration**: 
-- Traditional only: ~90 minutes
-- Docker only: ~60 minutes  
-- Both strategies: ~90 minutes (runs in parallel)
+**Duration**: ~60 minutes
 
 ---
 
@@ -123,9 +117,8 @@ All functionality from these workflows is now available in the unified workflow 
 | **Website** | ✅ | ❌ | ❌ | ❌ |
 | **GitHub Release** | ✅ | ❌ | ❌ | ❌ |
 | **Docker Optimization** | ✅ | ❌ | ❌ | ❌ |
-| **Traditional Build** | ✅ | ❌ | ❌ | ❌ |
 | **Selective Building** | ✅ | ❌ | ❌ | ❌ |
-| **Duration** | 60-90min | ~15min | ~15min | ~5min |
+| **Duration** | ~60min | ~15min | ~15min | ~5min |
 
 ## Release Types
 
@@ -155,7 +148,6 @@ All workflows upload artifacts with 30-day retention:
 - `whitepapers-unified` - All whitepaper files
 - `website-build-unified` - Static website build
 - `unified-release-archive` - Complete archive ZIP
-- `unified-traditional-build` - Traditional build results
 - `unified-docker-build` - Docker build results
 
 ### Standalone Workflow Artifacts
@@ -167,7 +159,7 @@ All workflows upload artifacts with 30-day retention:
 
 ### For Production Releases
 - **Use**: `unified-build-release.yml` (comprehensive, all deliverables)
-- **Manual trigger options**: Choose build strategy and deliverables as needed
+- **Manual trigger options**: Choose deliverables as needed
 
 ### For Development/Testing
 - **Use**: `unified-build-release.yml` with `book-only` or specific deliverable types
@@ -182,16 +174,15 @@ All workflows upload artifacts with 30-day retention:
 
 ### Common Issues
 
-1. **Workflow timeout**: Both traditional and Docker builds have appropriate timeouts
-2. **Dependency installation failure**: Check cache keys and restore-keys in unified workflow
+1. **Workflow timeout**: Docker builds have appropriate timeouts (60 minutes)
+2. **Dependency installation failure**: Check Docker image build logs
 3. **Docker build failure**: Verify Dockerfile.book-builder syntax and dependencies  
 4. **Release creation failure**: Check GITHUB_TOKEN permissions
-5. **Build strategy conflicts**: Use workflow_dispatch to specify build type manually
 
 ### Debugging
 
 1. Check workflow logs in GitHub Actions tab
-2. Download artifacts to inspect interwithiate files from both build strategies
+2. Download artifacts to inspect intermediate files
 3. Run individual steps locally using provided scripts
 4. Use workflow_dispatch for manual triggering with custom parameters
 
@@ -205,7 +196,6 @@ The unified workflow supports comprehensive manual triggering via GitHub UI:
 2. Select "Unified Build & Release" workflow
 3. Click "Run workflow"
 4. Configure options:
-   - **Build Type**: `traditional`, `docker`, or `both`
    - **Deliverables**: `all`, `book-only`, `presentations-only`, `whitepapers-only`, `website-only`
    - **Create Release**: `true` or `false`
 5. Choose branch (typically `main`)
