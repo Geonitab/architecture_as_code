@@ -10,23 +10,23 @@ config:
     tertiaryColor: '#fff'
 ---
 graph TD
-    A[Problemidentifiering] --> B[Kontext analys]
-    B --> C[Alternativ utvärdering]
-    C --> D[Beslut formulering]
-    D --> E[ADR dokumentation]
-    E --> F[Review process]
-    F --> G{Godkänt?}
-    G -->|Ja| H[Status: Accepted]
-    G -->|Nej| C
+    A[Problem Identification] --> B[Context Analysis]
+    B --> C[Alternative Evaluation]
+    C --> D[Decision Formulation]
+    D --> E[ADR Documentation]
+    E --> F[Review Process]
+    F --> G{Approved?}
+    G -->|Yes| H[Status: Accepted]
+    G -->|No| C
     H --> I[Implementation]
     I --> J[Monitoring]
-    J --> K{Fungerar beslut?}
-    K -->|Ja| L[Fortsatt använding]
-    K -->|Nej| M[Status: Deprecated]
-    M --> N[Nytt ADR behövs]
+    J --> K{Decision Works?}
+    K -->|Yes| L[Continued Use]
+    K -->|No| M[Status: Deprecated]
+    M --> N[New ADR Needed]
     N --> A
     
-    subgraph "ADR Struktur"
+    subgraph "ADR Structure"
         E1[Context]
         E2[Decision]
         E3[Consequences]
