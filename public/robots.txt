@@ -1,14 +1,14 @@
-User-agent: Googlebot
-Allow: /
+Användar-agent: Googlebot
+Tillåt: /
 
-User-agent: Bingbot
-Allow: /
+Användar- agent: Bingbot
+Tillåt: /
 
-User-agent: Twitterbot
-Allow: /
+Användaren: Twitterbot
+Tillåt: /
 
-User-agent: facebookexternalhit
-Allow: /
+Användar-agent: facebookexternalhitt
+Tillåt: /
 
-User-agent: *
-Allow: /
+Användar- agent: *
+Tillåt: /

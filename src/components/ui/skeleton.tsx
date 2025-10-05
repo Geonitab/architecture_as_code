@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
+Importera { cn} från &quot;@/lib/utils&quot;;;
 
-function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("animate-pulse rounded-md bg-muted", className)} {...props} />;
+Funktion Skelett({ klassnamn, . ..Props}: Reaktion.HTMLAttributer&lt;HTMLDivElement&gt;)
+Return &lt;div klassName={cn (&quot;animate- pulse rundad- md bg-muted&quot;, klassnamn)} {...props} /&gt;
 }
 
-export { Skeleton };
+Exportera { Skelett };

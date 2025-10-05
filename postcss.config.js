@@ -1,6 +1,6 @@
-export default {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
+Export förval {Name
+Insticksprogram: {
+Tailwindss: {},
+Autoprefixer: {},
+},
+}

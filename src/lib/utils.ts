@@ -1,6 +1,6 @@
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
+Importera { clsx, typ ClassValue } från &quot;clsx&quot;;
+Import { veraMerge } från &quot;knapp-sammans&quot;;
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
+Exportfunktion cn(...input: ClassValue[])
+Retura
 }
