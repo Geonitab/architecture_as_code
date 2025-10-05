@@ -1,0 +1,48 @@
+name: Translate Codebase to Swedish
+
+# Tillåter manuell körning från Actions-fliken på GitHub
+on:
+  workflow_dispatch:
+
+jobs:
+  translate-and-commit:
+    runs-on: ubuntu-latest
+    
+    # Ger workflown skrivrättigheter till repot för att kunna pusha ändringar
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -U translators
+
+      - name: Run translation script
+        run: python translate_repo.py
+
+      - name: Commit and push changes
+        run: |
+          # Konfigurera git med en bot-användare
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Lägg till alla ändrade filer
+          git add .
+          
+          # Kontrollera om det finns några ändringar att committa
+          if git diff-index --quiet HEAD; then
+            echo "Inga ändringar att committa."
+          else
+            # Committa och pusha ändringarna
+            git commit -m "chore: Automatiskt översatt filer till svenska"
+            git push
+          fi
