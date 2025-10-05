@@ -105,7 +105,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: 🐍 Set up Python (for content generation)
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
@@ -475,7 +475,7 @@ jobs:
 
       - name: 🚀 Create comprehensive GitHub Release
         if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true')
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}-unified
           name: "Arkitektur som kod v${{ github.run_number }} - Unified Release"
