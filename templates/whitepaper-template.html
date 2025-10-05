@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kvadrat Whitepaper Mall</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    
     <style>
         :root {
             --kvadrat-blue: hsl(221, 67%, 32%);
@@ -184,7 +189,7 @@
             color: var(--kvadrat-blue-dark);
         }
 
-        /* Code blocks */
+        /* Code blocks - Enhanced for Prism.js syntax highlighting */
         code {
             font-family: 'JetBrains Mono', Consolas, monospace;
             background: var(--kvadrat-gray-light);
@@ -194,7 +199,7 @@
         }
 
         pre {
-            background: var(--kvadrat-gray-light);
+            background: #2d2d2d !important; /* Dark background for code blocks */
             padding: 16px;
             border-radius: 8px;
             margin: 16px 0;
@@ -205,6 +210,24 @@
         pre code {
             background: none;
             padding: 0;
+            color: #ccc; /* Light text for dark background */
+        }
+        
+        /* Prism.js overrides for better integration */
+        pre[class*="language-"] {
+            margin: 16px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--kvadrat-blue);
+        }
+        
+        code[class*="language-"] {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* Line numbers styling */
+        .line-numbers .line-numbers-rows {
+            border-right: 1px solid #555;
         }
 
         /* Call-out boxes */
@@ -442,5 +465,20 @@ resource "aws_security_group" "web" {
             <div>© 2024 Kvadrat. Alla rättigheter förbehållna.</div>
         </footer>
     </div>
+    
+    <!-- Prism.js core and plugins for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <!-- Language support for common languages in the book -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-docker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-terraform.min.js"></script>
 </body>
 </html>

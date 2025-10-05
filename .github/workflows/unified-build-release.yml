@@ -5,6 +5,12 @@ name: Unified Build & Release
 # and build-book.yml into a single optimized workflow supporting both traditional
 # and Docker-based builds with comprehensive deliverable generation (books,
 # presentations, whitepapers, websites).
+#
+# SYNTAX HIGHLIGHTING:
+# - HTML deliverables (whitepapers, presentations) use Prism.js via CDN for syntax highlighting
+# - PDF/EPUB/DOCX deliverables use Pandoc's built-in Skylighting engine for syntax highlighting
+# - Prism.js CSS and JavaScript are loaded from CDN in HTML templates (no installation needed)
+# - Pandoc syntax highlighting is configured via docs/pandoc.yaml (highlight-style: tango)
 
 on:
   push:
@@ -19,6 +25,11 @@ on:
       - 'generate_presentation.py'
       - 'build_release.sh'
       - 'docs/build_book.sh'
+      # Templates (includes Prism.js syntax highlighting configuration)
+      - 'templates/**/*.html'
+      - 'templates/**/*.latex'
+      # Pandoc configuration (includes syntax highlighting settings)
+      - 'docs/pandoc.yaml'
       # Docker and workflow files
       - 'Dockerfile.book-builder'
       - '.github/workflows/unified-build-release.yml'
@@ -32,6 +43,9 @@ on:
       - 'generate_presentation.py'
       - 'build_release.sh'
       - 'docs/build_book.sh'
+      - 'templates/**/*.html'
+      - 'templates/**/*.latex'
+      - 'docs/pandoc.yaml'
       - 'Dockerfile.book-builder'
       - '.github/workflows/unified-build-release.yml'
   workflow_dispatch:
