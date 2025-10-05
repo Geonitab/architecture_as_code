@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kvadrat Presentation Mall</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    
     <style>
         :root {
             --kvadrat-blue: hsl(221, 67%, 32%);
@@ -228,9 +233,9 @@
             font-weight: 500;
         }
 
-        /* Code blocks */
+        /* Code blocks - Enhanced for Prism.js syntax highlighting */
         .code-block {
-            background: var(--kvadrat-blue-dark);
+            background: #2d2d2d;
             color: var(--white);
             padding: 32px;
             border-radius: 12px;
@@ -238,6 +243,17 @@
             font-size: 18px;
             line-height: 1.6;
             margin: 24px 0;
+        }
+        
+        pre[class*="language-"] {
+            margin: 24px 0;
+            border-radius: 12px;
+            font-size: 18px;
+        }
+        
+        code[class*="language-"] {
+            font-size: 18px;
+            line-height: 1.6;
         }
 
         /* Progress indicators */
@@ -591,5 +607,20 @@ resource "aws_instance" "web" {
         </div>
 
     </div>
+    
+    <!-- Prism.js core and plugins for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <!-- Language support for common languages in presentations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-docker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-terraform.min.js"></script>
 </body>
 </html>

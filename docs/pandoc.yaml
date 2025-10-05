@@ -17,6 +17,10 @@ template: eisvogel.latex
 # PDF-specific settings
 pdf-engine: xelatex
 
+# Syntax highlighting configuration
+highlight-style: tango
+# Alternative highlight styles: pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, tango
+
 # Metadata for document
 metadata:
   title: "Arkitektur som kod"
