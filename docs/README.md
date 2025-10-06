@@ -27,8 +27,8 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 1 | `01_introduction.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Infrastructure as Code |
-| 2 | `02_grundlaggande_principer.md` | Fundamental Principles of Architecture as Code | Fundamental principles including declarative architecture definition and holistic perspective |
-| 3 | `03_versionhantering.md` | Version Control and Code Structure | Best practices for version control of architecture code |
+| 2 | `02_fundamental_principles.md` | Fundamental Principles of Architecture as Code | Fundamental principles including declarative architecture definition and holistic perspective |
+| 3 | `03_version_control.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
 
 ### Part 2: Implementation & Technology (Chapters 5-11)
@@ -37,12 +37,12 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 5 | `05_automatisering_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
-| 6 | `06_molnarkitektur.md` | Cloud Architecture as Code | Cloud-native architecture and IaC in cloud environments |
-| 7 | `07_containerisering.md` | Containerization and Orchestration as Code | Container-based Architecture as Code |
+| 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
+| 6 | `06_cloud_architecture.md` | Cloud Architecture as Code | Cloud-native architecture and IaC in cloud environments |
+| 7 | `07_containerization.md` | Containerization and Orchestration as Code | Container-based Architecture as Code |
 | 8 | `08_microservices.md` | Microservices-Architecture as Code | Microservices patterns implemented through code |
 | 9 | `09_security.md` | Security in Architecture as Code | Security aspects and best practices |
-| 10 | `10_policy_sakerhet.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |
+| 10 | `10_policy_and_security.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |
 | 11 | `11_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance in Swedish organizations |
 
 ### Part 3: Testing & Operations (Chapters 12-15)
@@ -51,9 +51,9 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 12 | `12_teststrategier.md` | Testing Strategies for Infrastructure Code | Testing of IaC and architecture code |
-| 13 | `13_praktisk_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
-| 14 | `14_kostnadsoptimering.md` | Cost Optimization and Resource Management | Economic optimization of resources |
+| 12 | `12_testing_strategies.md` | Testing Strategies for Infrastructure Code | Testing of IaC and architecture code |
+| 13 | `13_practical_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
+| 14 | `14_cost_optimization.md` | Cost Optimization and Resource Management | Economic optimization of resources |
 | 15 | `15_migration.md` | Migration from Traditional Infrastructure | Migration strategies and best practices |
 
 ### Part 4: Organization & Future (Chapters 16-23)
@@ -62,23 +62,23 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 16 | `16_organisatorisk_forandring.md` | Organizational Change and Team Structures | Organizational development for IaC |
-| 17 | `17_team_struktur.md` | Team Structure and Competency Development for IaC | Team organization and competency development |
-| 18 | `18_digitalisering.md` | Digitalization through Code-based Infrastructure | Digital transformation through IaC |
+| 16 | `16_organizational_change.md` | Organizational Change and Team Structures | Organizational development for IaC |
+| 17 | `17_team_structure.md` | Team Structure and Competency Development for IaC | Team organization and competency development |
+| 18 | `18_digitalization.md` | Digitalization through Code-based Infrastructure | Digital transformation through IaC |
 | 19 | `19_lovable_mockups.md` | Using Lovable to Create Mockups for Swedish Organizations | AI-driven development and prototyping |
-| 20 | `20_framtida_trender.md` | Future Trends in Architecture as Code | Development trends and technological future |
+| 20 | `20_future_trends.md` | Future Trends in Architecture as Code | Development trends and technological future |
 | 21 | `21_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 | 22 | `22_conclusion.md` | Conclusion | Concluding reflections |
 | 23 | `23_glossary.md` | Glossary | Glossary and definitions |
-| 24 | `24_om_forfattarna.md` | About the Authors | Information about the authors |
+| 24 | `24_about_the_authors.md` | About the Authors | Information about the authors |
 
 ### Appendices
 
 | File | Title | Description |
 |------|-------|-------------|
-| `25_framtida_utveckling.md` | Future Development and Trends | Extended perspectives on future developments |
-| `26_appendix_kodexempel.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
-| `27_teknisk_uppbyggnad.md` | Technical Structure for Book Production | Technical book production infrastructure |
+| `25_future_development.md` | Future Development and Trends | Extended perspectives on future developments |
+| `26_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
+| `27_technical_architecture.md` | Technical Structure for Book Production | Technical book production infrastructure |
 | `28_ai_agent_team.md` | AI-agentteam för projektleverans | Struktur, roller och processer för virtuellt agentteam |
 
 ---
@@ -137,7 +137,7 @@ This book is intended for:
 
 ## Authors and Contributors
 
-See `24_om_forfattarna.md` for detailed information about the book's authors and contributors.
+See `24_about_the_authors.md` for detailed information about the book's authors and contributors.
 
 ---
 

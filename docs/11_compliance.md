@@ -237,9 +237,9 @@ resource "aws_vpc" "kvantsäker" {
 The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
 Framtida Architecture as Code-development will to drivas of AI-automation, serverless-arkitekturer, beredskap for kvantdatorer and hållbarhetsrequirements. Organisationer must proaktivt investera in new technologies, develop kvantsäkra security strategies and integrera miljöhänsyn in infrastructureplanering.
 
-success requires kontinuerligt lärande, strategisk teknologiadoption and long-term vision for infrastructure development. Which vi has sett genAbout the Books progression from [Fundamental principles](02_grundlaggande_principer.md) to These advanced framtida technologies, is developed Architecture as Code kontinuerligt to meet new Challenges and possibilities.
+success requires kontinuerligt lärande, strategisk teknologiadoption and long-term vision for infrastructure development. Which vi has sett genAbout the Books progression from [Fundamental principles](02_fundamental_principles.md) to These advanced framtida technologies, is developed Architecture as Code kontinuerligt to meet new Challenges and possibilities.
 
-Swedish organizations as investerar in These emerging technologies and maintains krypto-agilitet will to vara välpositionerade for framtida teknologiska disruptions. Integration of These technologies requires both technical expertis and organisatorisk anpassningsformåga as diskuteras in [chapter 17 about organisatorisk change](17_organisatorisk_forandring.md).
+Swedish organizations as investerar in These emerging technologies and maintains krypto-agilitet will to vara välpositionerade for framtida teknologiska disruptions. Integration of These technologies requires both technical expertis and organisatorisk anpassningsformåga as diskuteras in [chapter 16 about organizational change](16_organizational_change.md).
 
 ## Sources and referenser
 

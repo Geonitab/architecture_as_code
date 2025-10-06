@@ -19,14 +19,14 @@ Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where
 ```
 docs/
 ├── 01_introduction.md                    # Introduktion and vision
-├── 02_grundlaggande_principer.md      # Fundamental Concepts
-├── 03_versionhantering.md             # Git and version control
+├── 02_fundamental_principles.md      # Fundamental Concepts
+├── 03_version_control.md             # Git and version control
 ├── ...                                # Tekniska chapter (04-22)
 ├── 23_slutsats.md                     # Avslutning
 ├── 24_ordlista.md                     # Terminologi
 ├── 25_om_forfattarna.md               # Författarinformation
-├── 26_appendix_kodexempel.md          # Tekniska example
-└── 27_teknisk_uppbyggnad.md           # This chapter
+├── 26_appendix_code_examples.md          # Tekniska example
+└── 27_technical_architecture.md           # This chapter
 ```
 
 ### Markdown-struktur and semantik

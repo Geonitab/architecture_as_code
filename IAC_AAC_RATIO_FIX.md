@@ -33,7 +33,7 @@ Created a comprehensive Python script (`scripts/fix_aac_iac_ratio.py`) that:
 
 After automated replacements improved the ratio from 2.81:1 to 18.03:1, strategic manual replacements were made in specific files to reach the 20:1 target:
 
-**File: `docs/10_policy_sakerhet.md`** (7 replacements)
+**File: `docs/10_policy_and_security.md`** (7 replacements)
 - Context-aware replacements in policy and security discussions
 - Preserved semantic meaning while emphasizing AaC focus
 - Examples:
@@ -54,26 +54,26 @@ After automated replacements improved the ratio from 2.81:1 to 18.03:1, strategi
 ### Files Modified
 
 **Automated Replacements (20 files)**:
-- `03_versionhantering.md` - 4 replacements
-- `06_molnarkitektur.md` - 8 replacements (7 auto + 1 manual)
-- `07_containerisering.md` - 1 replacement
+- `03_version_control.md` - 4 replacements
+- `06_cloud_architecture.md` - 8 replacements (7 auto + 1 manual)
+- `07_containerization.md` - 1 replacement
 - `08_microservices.md` - 13 replacements
-- `10_policy_sakerhet.md` - 16 replacements (9 auto + 7 manual)
+- `10_policy_and_security.md` - 16 replacements (9 auto + 7 manual)
 - `11_compliance.md` - 6 replacements
-- `12_teststrategier.md` - 12 replacements
-- `13_praktisk_implementation.md` - 5 replacements
-- `14_kostnadsoptimering.md` - 4 replacements
+- `12_testing_strategies.md` - 12 replacements
+- `13_practical_implementation.md` - 5 replacements
+- `14_cost_optimization.md` - 4 replacements
 - `15_migration.md` - 4 replacements
-- `16_organisatorisk_forandring.md` - 4 replacements
-- `17_team_struktur.md` - 8 replacements
-- `18_digitalisering.md` - 4 replacements
-- `20_framtida_trender.md` - 9 replacements
+- `16_organizational_change.md` - 4 replacements
+- `17_team_structure.md` - 8 replacements
+- `18_digitalization.md` - 4 replacements
+- `20_future_trends.md` - 9 replacements
 - `21_best_practices.md` - 35 replacements
-- `22_slutsats.md` - 9 replacements
-- `23_ordlista.md` - 3 replacements
-- `24_om_forfattarna.md` - 8 replacements
-- `25_framtida_utveckling.md` - 8 replacements
-- `26_appendix_kodexempel.md` - 2 replacements
+- `22_conclusion.md` - 9 replacements
+- `23_glossary.md` - 3 replacements
+- `24_about_the_authors.md` - 8 replacements
+- `25_future_development.md` - 8 replacements
+- `26_appendix_code_examples.md` - 2 replacements
 
 **Total**: 163 replacements across 20 chapter files
 

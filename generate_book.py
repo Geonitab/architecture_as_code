@@ -107,7 +107,7 @@ Källor:
         },
         
         {
-            "filename": "02_grundlaggande_principer.md", 
+            "filename": "02_fundamental_principles.md", 
             "title": "Grundläggande principer för Architecture as Code",
             "area": "Systemutveckling",
             "mermaid_code": """graph LR
@@ -305,7 +305,7 @@ Källor:
         
         # Resterande 21 kapitel kommer här (förkortade för brevity)
         {
-            "filename": "03_versionhantering.md",
+            "filename": "03_version_control.md",
             "title": "Versionhantering och kodstruktur", 
             "area": "Systemutveckling",
             "mermaid_code": """graph LR

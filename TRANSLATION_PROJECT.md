@@ -213,7 +213,7 @@ if [ "$LANG" = "a" ]; then
     CHAPTER_FILES=("01_inledning_en.md" "02_grundlaggande_principer_en.md" ...)
     OUTPUT_PDF="architecture_as_code_en.pdf"
 else
-    CHAPTER_FILES=("01_inledning.md" "02_grundlaggande_principer.md" ...)
+    CHAPTER_FILES=("01_introduction.md" "02_fundamental_principles.md" ...)
     OUTPUT_PDF="arkitektur_som_kod.pdf"
 fi
 ```
