@@ -1,366 +1,301 @@
-# Kravspecifikation for "architecture as code"
-
-## Overview
-
-This document defines the comprehensive kraven for Contentset in boken "Architecture as Code" - a technical bok as täcker Architecture as Code from Fundamental principles to avancerad implementation.
-
-## 1. Target Audience (Target Audience)
-
-### Primär målgrupp
-- **system architects** (5-15 års erfarenhet): Behöver fordjupad forståelse for how traditionella arkitekturprinciper appliceras in koddriven miljö
-- **DevOps Engineers** (3-10 års erfarenhet): Vill expandera from infraStructureautomation to helhetslösningar
-- **Developers** (3-12 års erfarenhet): Söker forståelse for arkitektoniska beslut and kodStructure at system level
-- **Project Managers** (5-15 års erfarenhet): Behöver inblick in tekniska aspekter to leda transformation
-- **IT Managers** (8-20 års erfarenhet): Vill forstå strategiska Benefits and organizational implikationer
-
-### Sekunwhere målgrupp
-- **Tekniska konsulter** which implementerar lösningar åt kunder
-- **Studenter** within datavetenskap and systemutveckling (avancerad nivå)
-- **Produktägare** which arbetar with tekniska produkter
-- **Säkerhetsspecialister** which behöver forstå arkitekturautomation
-
-### Förkunskapskrav
-- Fundamental forståelse for molnplattformar (AWS, Azure, GCP)
-- Erfarenhet of version control (Git)
-- Knowledge about minst A programmeringsspråk
-- Forståelse for CI/CD-concepts
-- Fundamental Unix/Linux-knowledge
-
-## 2. Centrala Teman (Core Themes)
-
-### Huvudtema: Architecture as Code
-**definition**: Praktiken to describe, versionhantera and automatisera entire system architecture through maskinläsbar code, which encompasses infrastructure, applikationer, data flows, security policies and organizational processes.
-
-### Underteman (23 chapters)
-
-#### A. Fundamental Concepts (chapters 1-3)
-- **Teoretisk grund**: Evolution from manuella processes to koddriven architecture
-- **Principiell forståelse**: Declarative vs. imperative code, immutabilitet, idempotens
-- **version control**: KodStructure, branching-strategier, merge-processes
-
-#### B. Praktisk implementation (chapters 4-8)
-- **automation**: CI/CD-pipelines, deployment-strategier
-- **Molnarkitektur**: Multi-cloud, hybrid cloud, cloud-native patterns
-- **Säkerhet**: Security as Code, compliance automation
-- **Observabilitet**: Monitoring as Code, logging, tracing
-- **Prestanda**: scalability, optimering, resursstyrning
-
-#### C. Organisatorisk Transformation (chapters 9-13)
-- **Digitalisering**: Transformationsstrategier, change management
-- **TeamStructureer**: DevOps-kultur, cross-funktionella team
-- **Projektledning**: Agile metoder for infrastructure, risk management
-- **Innovation**: Experimentell development, prototyping
-- **Produktutveckling**: Architecture as Code as enabler for produktteam
-
-#### D. Styrning and Optimering (chapters 14-17)
-- **Compliance**: Regelefterlevnad, auditspår, policy as code
-- **Kostnadsoptimering**: FinOps, resursplanering, cost allocation
-- **testing**: InfraStructuretester, chaos engineering
-- **Migration**: From legacy systems, transformationsplaner
-
-#### E. Fördjupning and Framtid (chapters 18-23)
-- **Framtidstrends**: Emerging technologies, AI/ML integration
-- **Best Practices**: Lärda läxor, antipatterns, maturity models
-- **Fallstudier**: Verkliga implementationer, svenska case studies
-- **Conclusion**: Summary, Recommendations
-- **Referensmaterial**: Glossary, forfattarpresentationer
-
-## 3. Structure (Structure)
-
-### Bokens övergripande struktur
-**Format**: 23 chapters + appendix (Glossary, About the Authors)
-**Omfattning**: ~200-300 sidor total
-**Språk**: Svenska (with engelska termer in parentes at forsta use)
-
-### Chapter Structure (Standardmall)
-each chapters följer a konsistent Structure at 8-12 sidor:
-
-#### 3.1 Kapiteluppbyggnad
-1. **Huvudrubrik (H1)** - Kapitelnamn
-2. **Ingresstext** (150-200 ord) - Kapitelets Purpose and Contents
-3. **Huvuddiagram** - Mermaid diagrams as illustrerar kapitelets huvudkoncept
-4. **Teoretisk grund** (800-1200 ord) - Konceptuell forklaring
-5. **Practical implementation** (1200-1800 ord) - Konkreta Example and kodlösningar
-6. **Svenska compliance-aspekter** (400-600 ord) - Specifika krav and Recommendations
-7. **Tools and technologies** (600-800 ord) - Specifika lösningar and alternativ
-8. **Best practices** (400-600 ord) - Recommendations and antipatterns
-9. **Summary** (200-300 ord) - Nyckelpoäng and take-aways
-10. **Sources and References** - Akademiska and industriella Sources
-
-#### 3.2 Tvärgående struktur
-- **Progressiv komplexitet**: each chapters builds on previous knowledge
-- **Återkommande Example**: same fiktiva organisation används through entire boken
-- **Cross-References**: explicitly koppling between relaterade chapters
-- **Praktisk orientering**: Minst 60% practical Contents vs 40% teori
-
-### Sektionsindelning
-#### Del in: Grund (chapters 1-3)
-Introduktion to Architecture as Code, Fundamental principles and kodStructure
-
-#### Del II: implementation (chapters 4-8) 
-Practical implementation of automation, molnarkitektur and säkerhet
-
-#### Del III: Organisation (chapters 9-13)
-Organizational transformation and teamStructureer
-
-#### Del IV: Styrning (chapters 14-17)
-Compliance, kostnadsoptimering and migration
-
-#### Del V: Fördjupning (chapters 18-23)
-Framtidstrender, best practices and Summary
-
-## 4. technical deep (Technical Depth)
-
-### Djupnivåer per kapiteltyp
-
-#### Fundamental chapters (1-3): Konceptuell nivå
-- **Teori**: 70% - Forklaring of concepts and principles
-- **Praktik**: 30% - Enkla Example and demonstrationer
-- **KodExample**: Pseudo-code and enkla script
-- **Target Audience**: all läsare ska be able to följa
-
-#### Implementationskapitel (4-8): Interwithiär nivå
-- **Teori**: 40% - Fordjupade tekniska concepts
-- **Praktik**: 60% - Konkreta implementationer
-- **KodExample**: Fullständiga script and konfigurationer
-- **Verktygsspecifikt**: Terraform, Ansible, CloudFormation, Kubernetes manifests
-
-#### Organisationskapitel (9-13): Strategisk nivå
-- **Teori**: 60% - Organisationsteori and change management
-- **Praktik**: 40% - Implementationsplaner and frameworks
-- **KodExample**: Policy as Code, governance frameworks
-- **Target Audience**: Ledning and senior tekniker
-
-#### Styrningskapitel (14-17): Avancerad nivå
-- **Teori**: 30% - Regelverk and compliance frameworks
-- **Praktik**: 70% - Konkreta implementationer of compliance
-- **KodExample**: Policy engines, audit scripts, test frameworks
-- **Svenska specifika krav**: GDPR, finansiell reglering, offentlig sektor
-
-#### Fördjupningskapitel (18-23): Expert nivå
-- **Teori**: 50% - Cutting-edge concepts and framtidstrender
-- **Praktik**: 50% - Experimentella implementationer
-- **KodExample**: advanced patterns, AI/ML integration
-- **Research-orienterat**: Akademiska References and emerging technologies
-
-### Tekniska krav per chapters
-
-#### Kodexempel
-- **Format**: Markdown code blocks with syntax highlighting
-- **Språk**: Primärt YAML, HCL (Terraform), Python, Bash
-- **Längd**: 10-50 rader per Example
-- **Kommentarer**: Svensk kommentering of code
-- **Testbarhet**: all Example ska vara körbara with minimal setup
-
-#### Arkitekturdiagram
-- **Verktyg**: Mermaid for konsistens and version control
-- **Stil**: Enhetlig färgpalett and symboler
-- **Komplexitet**: Maximalt 7 components per diagram
-- **Typer**: Flödesdiagram, sekvensdiagram, arkitekturdiagram
-
-## 5. Example and Diagram (Examples and Diagrams)
-
-### Genomgående case study
-**"Svenska Teknik AB"** - a fiktiv withelstörr technical organisation as används as huvudExample through entire boken:
-- **Storlek**: 200 anställda, 15 Developers
-- **operations**: SaaS-plattform for svensk marknad
-- **Utmaning**: Migration from on-premise to cloud-native
-- **Compliance**: GDPR, svenska bokforingslagen, finansiell reglering
-
-### Diagramtyper and riktlinjer
-
-#### 5.1 Mermaid diagrams (Primär visualisering)
-**Technical implementation**:
-- **Filformat**: .mmd source files in docs/images/
-- **Konvertering**: Automatisk to PNG via CI/CD
-- **Versionshantering**: Källfiler under version control
-
-**Designriktlinjer**:
-- **Layout**: Horisontell orientering (graph LR) which standard
-- **Komplexitet**: 3-7 element per diagram
-- **Färger**: Konsistent färgpalett according to brand guidelines
-- **Text**: Svenska beskrivningar, engelska termer in parentes
-
-**Diagramtyper**:
-```mermaid
-graph LR
-    A[Huvudkoncept] --> B[implementation]
-    B --> C[Resultat]
-    C --> D[Fördelar]
-```
-
-#### 5.2 Kodexempel
-**Structure per Example**:
-1. **Problemställning** (2-3 rader text)
-2. **Lösning** (kodblock with syntax highlighting)
-3. **Forklaring** (4-6 rader kommentar)
-4. **Variation/alternativ** (at behov)
-
-**Example - Terraform infrastructure**:
-```hcl
-# Skapa a skalbar webbapplikation in Azure
-resource "azurerm_app_service_plan" "svenska_teknik" {
-  name                = "svenska-teknik-plan"
-  location            = "West Europe"
-  resource_group_name = azurerm_resource_group.main.name
-  
-  sku {
-    tier = "Standard"
-    size = "S1"
-  }
-  
-  tags = {
-    miljö = "produktion"
-    kostnadsställe = "development"
-  }
-}
-```
-
-#### 5.3 Praktiska scenarios
-**Per chapters minst 2-3 scenarios**:
-- **Scenario 1**: Fundamental implementation
-- **Scenario 2**: Mellankomplicerad lösning with edge cases
-- **Scenario 3**: Avancerad implementation with svenska specifika krav
-
-### Illustrationer and visuella hjälpwithel
-
-#### 5.4 Screenshots and UI-example
-- **Verktyg**: Azure Portal, AWS Console, kubectl output
-- **Format**: PNG with konsistent storlek and format
-- **Anonymisering**: all känsliga data maskas ut
-- **Språk**: Svenska interface when möjligt
-
-#### 5.5 Tabor and matriser
-**Formatering**:
-```markdown
-| Verktyg | Användningsområde | Komplexitet | Svenska support |
-|---------|-------------------|--------------|-----------------|
-| Terraform | Infrastructure | Medel | documentation |
-| Ansible | Konfiguration | Låg | Community |
-```
-
-## 6. Språk and Stil (Language and Style)
-
-### Språkpolicy
-
-#### 6.1 Primärspråk: Svenska
-- **Target Audience**: Svenska IT-professionella
-- **Terminologi**: Svenska termer with engelska in parentes at forsta use
-- **Example**: "Architecture as Code (engelska: Architecture as Code)"
-- **Konsistens**: same svenska term används konsekvent through entire boken
-
-#### 6.2 Engelska termer
-**When engelska används**:
-- Etablerade branschtermer without svenska motsvarighet
-- API-namn and tekniska specifikationer
-- Kodkommentarer and konfigurationsfiler
-- Citat from engelska Sources
-
-**Format for introduktion of engelska termer**:
-"Kontinuerlig integration (Continuous Integration, CI) enables..."
-
-### Stilriktlinjer
-
-#### 6.3 Ton and stil
-- **Professionell but togänglig**: technical precision without to vara överdrivet akademisk
-- **Inkluderande**: Undviker jargong as exkluderar junior Developers
-- **Praktisk orientering**: Fokus at toämpning rather than teoretisk abstraktion
-- **Svenska perspektiv**: Specifika References to svenska regulatoriska krav and branschpraxis
-
-#### 6.4 Textstruktur
-**StyckeStructure**:
-- **Längd**: 3-6 meningar per stycke
-- **a huvudidé per stycke**
-- **Logisk progression**: From allmänt to specifikt
-
-**RubrikStructure**:
-- **H1**: Kapiteltitel
-- **H2**: Huvudsektioner (3-5 per chapters)
-- **H3**: Undersektioner (2-4 per huvudsektion)
-- **H4**: Endast at behov for specifika punkter
-
-#### 6.5 Kodreferenser in text
-**Format**: `kodstycken` with backticks for inline code
-**Blockcitat**: 
-```
-Längre kodexempel in egna block
-with syntax highlighting
-```
-
-#### 6.6 Terminologikonsistens
-
-**Fastställda svenska termer**:
-- Architecture as Code → Architecture as Code
-- Molnplattform → Cloud platform
-- Kodlager → Code repository
-- Deployment → Driftsättning
-- Pipeline → Automatiseringskedja
-- Monitoring → Övervakning
-- Compliance → Regelefterlevnad
-
-### Kvalitetskriterier
-
-#### 6.7 Läsbarhet
-- **Flesch-Kincaid**: Målnivå svenska gymnasiet/högskola
-- **Meningslängd**: Throughsnitt 15-20 ord per mening
-- **Passiv form**: Maximalt 15% of meningarna
-- **Jargong**: Forklaras at forsta use
-
-#### 6.8 technical precision
-- **Faktakontroll**: all tekniska påståenden verifieras
-- **versions**: Specificerade versions for all tools and technologies
-- **testing**: all kodExample testas innan publicering
-- **References**: Akademiska and industriella Sources for all påståenden
-
-#### 6.9 Svenska språknormer
-- **Stavning**: Svenska akademiens Glossary (SAOL)
-- **Grammatik**: Svenska skrivregler according to Språkrådet
-- **Interpunktion**: Standard svenska rules
-- **Språkgranskning**: Professionell korrekturläsning fore publicering
-
-### Specifika stilval
-
-#### 6.10 Personligt pronomen
-- **Total**: "Du" (not "ni" or "man")
-- **Forfattare**: "Vi" when the refererar to forfattarnas åsikter
-- **Läsare**: "Du kommer to lära dig..." (not "man can lära itself...")
-
-#### 6.11 Aktiv vs passiv form
-**Foredra aktiv form**:
-- ✅ "Terraform creates infraStructureen automatically"
-- ❌ "InfraStructureen are created automatically of Terraform"
-
-**Passiv form acceptabel for**:
-- Processbeskrivningar where aktören is oviktig
-- Formella definitioner
-- Description of etablerade standarder
-
-## Ytterligare Kvalitetskriterier
-
-### technical korrekthet
-- all kodExample ska vara syntaktiskt korrekta
-- Versionsnummer be specified for all verktyg
-- Best practices uppdateras according to senaste branschstandarder
-- Svenska compliance-krav verifieras mot aktuell lagstiftning
-
-### Pedagogisk progression
-- each chapters builds on previous knowledge
-- Svårighetsgraden ökar gradually
-- Återkommande concepts forstärks through repetition
-- Praktiska övningar kopplar to previous teoretiska parts
-
-### Branschrelevans
-- Fokus at tools and metoder as används in svenska organisationer
-- Fallstudier from svenska foretag and myndigheter
-- Hänsyn to svenska regulatoriska krav (GDPR, Säkerhetsskyddslagen)
-- Integration with svenska molnleverantörer and konsulttjänster
-
-### Tillgänglighet and inkludering
-- Alternativ text for all diagram and bilder
-- Färgblind-vänlig färgpalett in diagram
-- Tydlig Structure for skärmläsare
-- Undvikande of kulturspecifika References as can exkludera
-
+---
+book:
+  title: "Architecture as Code"
+  language: "english"
+  total_chapters: 27
+  chapters:
+    - filename: "01_introduction.md"
+      title: "Introduction to Architecture as Code"
+      area: "Basic Concepts"
+      required: true
+    - filename: "02_fundamental_principles.md"
+      title: "Fundamental Principles of Architecture as Code"
+      area: "Basic Concepts"
+      required: true
+    - filename: "03_version_control.md"
+      title: "Version Control and Code Structure"
+      area: "System Development"
+      required: true
+    - filename: "04_adr.md"
+      title: "Architecture Decision Records (ADR)"
+      area: "Basic Concepts"
+      required: true
+    - filename: "05_automation_devops_cicd.md"
+      title: "Automation, DevOps and CI/CD for Infrastructure as Code"
+      area: "System Development"
+      required: true
+    - filename: "06_cloud_architecture.md"
+      title: "Cloud Architecture as Code"
+      area: "Architecture"
+      required: true
+    - filename: "07_containerization.md"
+      title: "Containerization and Orchestration"
+      area: "Architecture"
+      required: true
+    - filename: "08_microservices.md"
+      title: "Microservices and Distributed Systems"
+      area: "Architecture"
+      required: true
+    - filename: "09_security.md"
+      title: "Security in Infrastructure as Code"
+      area: "Security"
+      required: true
+    - filename: "10_policy_and_security.md"
+      title: "Policy as Code and Security Automation"
+      area: "Security"
+      required: true
+    - filename: "11_compliance.md"
+      title: "Compliance and Regulatory Alignment"
+      area: "Governance"
+      required: true
+    - filename: "12_testing_strategies.md"
+      title: "Testing Strategies for Infrastructure Code"
+      area: "Quality Assurance"
+      required: true
+    - filename: "13_practical_implementation.md"
+      title: "Practical Implementation of Architecture as Code"
+      area: "Practical Application"
+      required: true
+    - filename: "14_cost_optimization.md"
+      title: "Cost Optimisation and Resource Management"
+      area: "Economic Optimisation"
+      required: true
+    - filename: "15_migration.md"
+      title: "Migration from Traditional Infrastructure"
+      area: "Migration"
+      required: true
+    - filename: "16_organizational_change.md"
+      title: "Organisational Change and Team Structures"
+      area: "Organisational Development"
+      required: true
+    - filename: "17_team_structure.md"
+      title: "Team Structure for Scalable IaC"
+      area: "Organisational Development"
+      required: true
+    - filename: "18_digitalization.md"
+      title: "Digitalisation through Code-Based Infrastructure"
+      area: "Strategic Development"
+      required: true
+    - filename: "19_lovable_mockups.md"
+      title: "Lovable Mockups and Prototyping"
+      area: "Product Development"
+      required: true
+    - filename: "20_future_trends.md"
+      title: "Future Trends in Infrastructure as Code"
+      area: "Future Outlook"
+      required: true
+    - filename: "21_best_practices.md"
+      title: "Method Selection and Lessons Learned"
+      area: "Best Practices"
+      required: true
+    - filename: "22_conclusion.md"
+      title: "Conclusion and the Way Forward"
+      area: "Summary"
+      required: true
+    - filename: "23_glossary.md"
+      title: "Glossary and Definitions"
+      area: "Reference"
+      required: true
+    - filename: "24_about_the_authors.md"
+      title: "About the Authors"
+      area: "Appendix"
+      required: true
+    - filename: "25_future_development.md"
+      title: "Future Development"
+      area: "Future Outlook"
+      required: true
+    - filename: "26_appendix_code_examples.md"
+      title: "Appendix A: Code Examples and Technical Implementations"
+      area: "Appendix"
+      required: true
+    - filename: "27_technical_architecture.md"
+      title: "Technical Architecture Blueprint"
+      area: "Appendix"
+      required: true
+  special_chapters:
+    glossary:
+      filename: "23_glossary.md"
+      requires_diagram: false
+      requires_sources: false
+    authors:
+      filename: "24_about_the_authors.md"
+      requires_diagram: false
+      requires_sources: false
+    conclusion:
+      filename: "22_conclusion.md"
+      requires_diagram: false
+      requires_sources: true
+    appendix:
+      filename: "26_appendix_code_examples.md"
+      requires_diagram: true
+      requires_sources: false
+    technical:
+      filename: "27_technical_architecture.md"
+      requires_diagram: true
+      requires_sources: false
+    future:
+      filename: "25_future_development.md"
+      requires_diagram: false
+      requires_sources: true
+    book_cover:
+      filename: "BOOK_COVER_DESIGN.md"
+      requires_diagram: false
+      requires_sources: false
+    epub_validation:
+      filename: "EPUB_VALIDATION.md"
+      requires_diagram: false
+      requires_sources: false
+structure:
+  required_sections:
+    - name: "title"
+      pattern: "^# .+"
+      description: "H1 heading"
+    - name: "diagram_reference"
+      pattern: "!\\[.*\\]\\(images/diagram_.*\\.png\\)"
+      description: "Mermaid diagram reference"
+    - name: "sources"
+      pattern: "(?i)(?:sources?|references?):"
+      description: "Sources/references section"
+  minimum_content_length: 500
+  minimum_word_count: 2000
+  maximum_title_length: 80
+quality:
+  clarity:
+    min_paragraphs: 3
+    max_sentence_length: 150
+    required_subsections: 2
+  consistency:
+    header_hierarchy: ["h1", "h2", "h3", "h4"]
+    consistent_terminology: true
+  technical_accuracy:
+    validate_code_blocks: true
+    validate_diagram_references: true
+    check_external_links: false
+    validate_yaml_examples: true
+filesystem:
+  docs_directory: "docs"
+  images_directory: "docs/images"
+  mermaid_extension: ".mmd"
+  markdown_extension: ".md"
+testing:
+  fail_on_missing_chapters: true
+  fail_on_formatting_errors: true
+  fail_on_clarity_issues: false
+  fail_on_technical_errors: false
+  fail_on_consistency_issues: false
+  generate_reports: true
+  report_format: "markdown"
+  report_location: "test-reports/"
 ---
 
-*This kravdokument ska användas as grund for all forfattningsaktiviteter and regelbundet uppdateras baserat at feedback from Target Audienceen and changes in tekniklandskapet.*
+# Requirements Specification for "Architecture as Code"
+
+## Overview
+This document defines the content, quality and delivery requirements for the book "Architecture as Code". The goal is to produce a comprehensive, production-ready manuscript that explains how to document and automate modern software architecture using code. The specification covers the intended audience, chapter plan, writing standards, file system expectations and supporting automation so that contributors can deliver consistent results.
+
+## Target Audience
+### Primary Readers
+- **System Architects (5–15 years experience)** – need to understand how classical architectural principles translate into code-driven workflows.
+- **DevOps Engineers (3–10 years experience)** – want to extend infrastructure automation into holistic architecture automation.
+- **Software Developers (3–12 years experience)** – seek architectural decision-making skills beyond implementation details.
+- **Project Managers (5–15 years experience)** – require a technical view of architecture as code to lead transformation projects.
+- **IT Managers (8–20 years experience)** – evaluate strategic benefits and organisational implications of codified architecture.
+
+### Secondary Readers
+- Technical consultants implementing customer solutions.
+- Advanced students in computer science or software engineering programmes.
+- Product owners responsible for technically complex products.
+- Security specialists who need to understand automation guardrails.
+
+### Prerequisites
+Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable with Git, know at least one programming language, understand CI/CD concepts and possess basic Unix/Linux proficiency.
+
+## Core Themes
+### Primary Theme
+**Architecture as Code** – the practice of describing, versioning and automating complete system architecture through machine-readable artefacts that cover infrastructure, applications, data flows, security policies and organisational processes.
+
+### Chapter Breakdown
+| # | Filename | Title | Focus Area | Required |
+|---|----------|-------|------------|----------|
+| 01 | 01_introduction.md | Introduction to Architecture as Code | Basic Concepts | Yes |
+| 02 | 02_fundamental_principles.md | Fundamental Principles of Architecture as Code | Basic Concepts | Yes |
+| 03 | 03_version_control.md | Version Control and Code Structure | System Development | Yes |
+| 04 | 04_adr.md | Architecture Decision Records (ADR) | Basic Concepts | Yes |
+| 05 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Infrastructure as Code | System Development | Yes |
+| 06 | 06_cloud_architecture.md | Cloud Architecture as Code | Architecture | Yes |
+| 07 | 07_containerization.md | Containerization and Orchestration | Architecture | Yes |
+| 08 | 08_microservices.md | Microservices and Distributed Systems | Architecture | Yes |
+| 09 | 09_security.md | Security in Infrastructure as Code | Security | Yes |
+| 10 | 10_policy_and_security.md | Policy as Code and Security Automation | Security | Yes |
+| 11 | 11_compliance.md | Compliance and Regulatory Alignment | Governance | Yes |
+| 12 | 12_testing_strategies.md | Testing Strategies for Infrastructure Code | Quality Assurance | Yes |
+| 13 | 13_practical_implementation.md | Practical Implementation of Architecture as Code | Practical Application | Yes |
+| 14 | 14_cost_optimization.md | Cost Optimisation and Resource Management | Economic Optimisation | Yes |
+| 15 | 15_migration.md | Migration from Traditional Infrastructure | Migration | Yes |
+| 16 | 16_organizational_change.md | Organisational Change and Team Structures | Organisational Development | Yes |
+| 17 | 17_team_structure.md | Team Structure for Scalable IaC | Organisational Development | Yes |
+| 18 | 18_digitalization.md | Digitalisation through Code-Based Infrastructure | Strategic Development | Yes |
+| 19 | 19_lovable_mockups.md | Lovable Mockups and Prototyping | Product Development | Yes |
+| 20 | 20_future_trends.md | Future Trends in Infrastructure as Code | Future Outlook | Yes |
+| 21 | 21_best_practices.md | Method Selection and Lessons Learned | Best Practices | Yes |
+| 22 | 22_conclusion.md | Conclusion and the Way Forward | Summary | Yes |
+| 23 | 23_glossary.md | Glossary and Definitions | Reference | Yes |
+| 24 | 24_about_the_authors.md | About the Authors | Appendix | Yes |
+| 25 | 25_future_development.md | Future Development | Future Outlook | Yes |
+| 26 | 26_appendix_code_examples.md | Appendix A: Code Examples and Technical Implementations | Appendix | Yes |
+| 27 | 27_technical_architecture.md | Technical Architecture Blueprint | Appendix | Yes |
+
+### Special Chapter Requirements
+- **Glossary (`23_glossary.md`)** – no diagrams or sources required.
+- **About the Authors (`24_about_the_authors.md`)** – no diagrams or sources required.
+- **Conclusion (`22_conclusion.md`)** – does not require diagrams but must cite sources.
+- **Appendix A (`26_appendix_code_examples.md`)** – diagrams are required; sources are optional.
+- **Technical Architecture (`27_technical_architecture.md`)** – diagrams are required; sources are optional.
+- **Future Development (`25_future_development.md`)** – sources are required; diagrams are optional.
+- **Book Cover (`BOOK_COVER_DESIGN.md`)** – no diagrams or sources required.
+- **EPUB Validation (`EPUB_VALIDATION.md`)** – no diagrams or sources required.
+
+## Content Structure Requirements
+- Every chapter must begin with an H1 heading (`# Title`).
+- Include at least one diagram reference using the pattern `![...](images/diagram_<chapter>_<name>.png)`.
+- Provide a clearly labelled "Sources" or "References" section.
+- Minimum body length: 500 characters excluding whitespace.
+- Minimum word count: 2,000 words, excluding formatting and code blocks.
+- Maximum title length: 80 characters.
+
+## Quality Standards
+### Clarity
+- At least three paragraphs per chapter.
+- Maximum sentence length: 150 characters to support readability.
+- Provide at least two H2 sections per chapter.
+
+### Consistency
+- Follow heading hierarchy: H1 > H2 > H3 > H4.
+- Use consistent terminology for recurring concepts and technology names.
+
+### Technical Accuracy
+- Validate all code blocks.
+- Ensure every diagram reference resolves to an existing image.
+- YAML examples must parse successfully.
+- External link checking is optional but encouraged.
+
+## File System Expectations
+- Store chapters in the `docs/` directory using the `.md` extension.
+- Store diagram assets in `docs/images/` using the naming scheme `diagram_<chapter>_<name>.png`.
+- Mermaid source files use the `.mmd` extension.
+
+## Testing and Automation
+- Automated checks fail when chapters are missing or incorrectly formatted.
+- Clarity, technical accuracy and consistency checks provide warnings unless otherwise specified.
+- Generate markdown reports in `test-reports/`.
+- Contributors should integrate requirements into CI/CD pipelines so that pull requests surface documentation issues early.
+
+## Version Control and Collaboration Guidelines
+- Track requirements and chapter content in Git to maintain a full history of changes.
+- Use pull requests for peer review, focusing on accuracy, completeness and alignment with this specification.
+- Document architecture decisions using ADRs to explain rationale for major structural or tooling choices.
+
+## Delivery Expectations
+- Each chapter submission must include diagrams, code samples and references that meet the standards above.
+- Final delivery includes a validated EPUB and supporting artefacts defined in the special chapter requirements.
+- Ensure the manuscript remains cohesive by keeping terminology, formatting and narrative style consistent across all chapters.

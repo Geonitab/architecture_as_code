@@ -2,9 +2,10 @@
 Pytest configuration and shared fixtures for book content testing.
 """
 import os
-import yaml
 from pathlib import Path
+
 import pytest
+import yaml
 
 # Get project root directory
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -35,14 +36,33 @@ def language(request):
     """Get the language from command line option."""
     return request.config.getoption("--language")
 
+def _load_markdown_front_matter(path: Path) -> dict:
+    """Extract YAML front matter from a markdown file."""
+    with open(path, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+
+    if not lines or lines[0].strip() != "---":
+        raise ValueError(f"File {path} does not start with YAML front matter")
+
+    front_matter_lines = []
+    for line in lines[1:]:
+        if line.strip() == "---":
+            break
+        front_matter_lines.append(line)
+    else:
+        raise ValueError(f"File {path} is missing closing YAML front matter delimiter")
+
+    data = yaml.safe_load("".join(front_matter_lines))
+    if not isinstance(data, dict):
+        raise ValueError(f"Front matter in {path} did not produce a dictionary")
+    return data
+
+
 @pytest.fixture(scope="session")
 def requirements_config(language):
-    """Load book requirements configuration based on language."""
-    requirements_file = TESTS_DIR / "requirements_en.yaml"
-    if not requirements_file.exists():
-        requirements_file = TESTS_DIR / "requirements.yaml"
-    with open(requirements_file, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    """Load book requirements configuration from the markdown requirements file."""
+    requirements_file = PROJECT_ROOT / "BOOK_REQUIREMENTS.md"
+    return _load_markdown_front_matter(requirements_file)
 
 @pytest.fixture(scope="session")
 def chapter_files(docs_directory, language):
