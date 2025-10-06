@@ -44,7 +44,7 @@ implementation of CI/CD for Architecture as Code affects organisationer at multi
 
 **Compliance and governance:** Swedish organizations must ensure to automated processes meets regulatory requirements. This includes audit trails, data residency controls and separation of duties as traditionally implemented through manual processes.
 
-Which vi saw in [chapter 3 about version control](03_versionhantering.md), forms CI/CD-pipelines a naturlig forlängning of git-baserade workflows for Architecture as Code. This chapter bygger vidare at These concepts and explores how Swedish organizations can implement advanced automatiseringsstrategier as balanserar effektivitet with regulatory requirements. Later will vi to se how These principles be applied in [Cloud Architecture as Code](07_molnarkitektur.md) and integreras with [security aspects](10_sakerhet.md).
+Which vi saw in [chapter 3 about version control](03_version_control.md), forms CI/CD-pipelines a naturlig forlängning of git-baserade workflows for Architecture as Code. This chapter bygger vidare at These concepts and explores how Swedish organizations can implement advanced automatiseringsstrategier as balanserar effektivitet with regulatory requirements. Later will vi to se how These principles be applied in [Cloud Architecture as Code](07_molnarkitektur.md) and integreras with [security aspects](10_sakerhet.md).
 
 ## from architecture as code to Architecture as Code development and drift
 
@@ -602,7 +602,7 @@ Testing strategier for Architecture as Code includes multiple levels from syntax
 
 Monitoring and observability for svenska Architecture as Code pipelines requires comprehensive metrics collection as includes both technical performance indicators and business compliance metrics. Automated alerting ensures rapid response to compliance violations, cost overruns, and technical failures through integration with svenska incident management processes.
 
-Investment in sophisticated CI/CD-pipelines for Architecture as Code betalar itself through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. Which vi will to se in [chapter 6 about molnarkitektur](06_molnarkitektur.md), becomes These capabilities even more critical when Swedish organizations adopterar cloud-native architectures and multi-cloud strategies.
+Investment in sophisticated CI/CD-pipelines for Architecture as Code betalar itself through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. Which vi will to se in [chapter 6 about molnarkitektur](06_cloud_architecture.md), becomes These capabilities even more critical when Swedish organizations adopterar cloud-native architectures and multi-cloud strategies.
 
 successful implementation of CI/CD for Architecture as Code requires balance between automation and human oversight, particularly for production deployments and compliance-critical changes. Swedish organizations as investerar in mature pipeline automation and comprehensive testing strategies uppnår significant competitive advantages through improved deployment reliability and accelerated innovation cycles.
 

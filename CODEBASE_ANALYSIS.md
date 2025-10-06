@@ -224,9 +224,8 @@ export default defineConfig({
    - "Skapar", "Mermaid-diagram sparat till"
    - ❌ Code in Swedish
 
-5. **Book Content (docs/)**: According to README "All book content is in English" but file names suggest Swedish:
-   - `01_inledning.md` (inledning = introduction in Swedish)
-   - `02_grundlaggande_principer.md` (Swedish filename)
+5. **Book Content (docs/)**: According to README "All book content is in English" but previously several filenames used Swedish.
+   - Now standardized as `01_introduction.md`, `02_fundamental_principles.md`, etc.
 
 **Impact**: 
 - Confusing for international contributors

@@ -28,7 +28,7 @@ each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]
 This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for Swedish organizations.
 
 ### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline for Swedish organizations
-*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
 # .github/workflows/svenska-architecture as code-pipeline.yml
@@ -102,7 +102,7 @@ jobs:
 ```
 
 ### 05_CODE_2: Jenkins Pipeline for Swedish organizations with GDPR compliance
-*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
 # jenkins/svenska-architecture as code-pipeline.groovy
@@ -408,7 +408,7 @@ pipeline {
 ```
 
 ### 05_CODE_3: Terratest for svenska VPC implementation
-*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automatisering_cicd.md)*
+*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```go
 // test/svenska_vpc_test.go

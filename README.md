@@ -28,7 +28,7 @@ This book covers Architecture as Code from fundamental principles to advanced im
 ### Structure
 ```
 docs/                    # Book content
-├── *.md                # Markdown chapters (01_inledning.md, 02_grundlaggande_principer.md, etc.)
+├── *.md                # Markdown chapters (01_introduction.md, 02_fundamental_principles.md, etc.)
 ├── images/             # Mermaid diagrams
 │   └── *.mmd          # Mermaid source files
 ├── build_book.sh      # Local build script

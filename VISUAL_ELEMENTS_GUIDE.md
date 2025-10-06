@@ -213,6 +213,6 @@ The visual systems is designed to be extensible:
 - **Mermaid Theme**: `docs/mermaid-Kvadrat-theme.json`
 - **Build Script**: `docs/build_book.sh`
 - **Pandoc Config**: `docs/pandoc.yaml`
-- **Example Usage**: `docs/02_grundlaggande_principer.md`
+- **Example Usage**: `docs/02_fundamental_principles.md`
 
 This documentation should be referenced when adding new content to ensure all visual elements align with Kvadrat's professional standards and brand guidelines.

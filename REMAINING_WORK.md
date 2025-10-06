@@ -25,17 +25,17 @@ Based on spot-checking, these files likely need the most attention:
 
 ### High Priority (Heavy Swedish Content)
 1. `docs/08_microservices.md` - Contains Swedish paragraphs and sentences
-2. `docs/06_molnarkitektur.md` - Large file with remaining Swedish content
-3. `docs/09_sakerhet.md` - Security content with Swedish terminology
-4. `docs/10_policy_sakerhet.md` - Policy content with Swedish phrases
+2. `docs/06_cloud_architecture.md` - Large file with remaining Swedish content
+3. `docs/09_security.md` - Security content with Swedish terminology
+4. `docs/10_policy_and_security.md` - Policy content with Swedish phrases
 5. `BOOK_REQUIREMENTS.md` - Requirements doc with Swedish sections
 
 ### Medium Priority (Some Swedish Remaining)
-6. `docs/05_automatisering_devops_cicd.md`
+6. `docs/05_automation_devops_cicd.md`
 7. `docs/04_adr.md`
-8. `docs/18_digitalisering.md`
-9. `docs/22_slutsats.md`
-10. `docs/23_ordlista.md`
+8. `docs/18_digitalization.md`
+9. `docs/22_conclusion.md`
+10. `docs/23_glossary.md`
 
 ### Low Priority (Minimal Issues)
 - Most chapter files (01-03, 11-17, 19-21, 24-27)

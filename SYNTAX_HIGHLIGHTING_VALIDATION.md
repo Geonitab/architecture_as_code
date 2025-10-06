@@ -95,7 +95,7 @@ npm run lint
 
 ## Code Blocks in Source Content
 
-### Sample from `docs/02_grundlaggande_principer.md`:
+### Sample from `docs/02_fundamental_principles.md`:
 
 **YAML Block**:
 ```yaml
