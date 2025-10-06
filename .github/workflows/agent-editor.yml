@@ -62,7 +62,7 @@ jobs:
           export AGENT_STYLE="$style_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Editor-agentens plan
 
 ## Mål

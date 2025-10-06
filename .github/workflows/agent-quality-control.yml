@@ -62,7 +62,7 @@ jobs:
           export AGENT_DEFECTS="$defect_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Quality Control-agentens plan
 
 ## Mål

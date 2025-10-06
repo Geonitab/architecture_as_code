@@ -62,7 +62,7 @@ jobs:
           export AGENT_BACKLOG="$backlog_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Project Manager-agentens plan
 
 ## Mål

@@ -62,7 +62,7 @@ jobs:
           export AGENT_DEPENDENCIES="$dependency_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Requirements Analyst-agentens plan
 
 ## Mål
