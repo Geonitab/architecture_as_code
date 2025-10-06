@@ -144,6 +144,17 @@ To operationalize the virtual team defined in `docs/28_ai_agent_team.md`, dedica
 
 Each workflow accepts three text-based inputs (`objective` plus two optional context fields tailored to the role) and renders a structured checklist aligned with the responsibilities and ceremonies described in the AI agent team playbook. This makes it easy to orchestrate or audit agent contributions directly from GitHub Actions.
 
+To launch an agent manually from the repository root, supply the inputs when invoking the workflow with the GitHub CLI:
+
+```bash
+gh workflow run agent-architect.yml \
+  -f objective="Kartlägg integrationsmönster" \
+  -f architecture_context="Fokus på säkerhet och dataflöden" \
+  -f collaboration_notes="Synka med Developer om latency" 
+```
+
+Omit optional fields to fall back on the default guidance defined in the workflow.
+
 ## Release Types
 
 ### Unified Release Tags
