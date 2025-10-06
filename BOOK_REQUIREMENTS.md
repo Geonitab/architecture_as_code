@@ -2,7 +2,7 @@
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 27
+  total_chapters: 30
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -111,6 +111,18 @@ book:
     - filename: "27_technical_architecture.md"
       title: "Technical Architecture Blueprint"
       area: "Appendix"
+      required: true
+    - filename: "28_ai_agent_team.md"
+      title: "AI Agent Team for Architecture as Code Initiatives"
+      area: "Collaboration"
+      required: true
+    - filename: "29_governance_as_code.md"
+      title: "Governance as Code"
+      area: "Governance"
+      required: true
+    - filename: "30_samspelet_mellan_mjuka_as_code.md"
+      title: "The Interplay Between Soft As Code Disciplines"
+      area: "Strategic Development"
       required: true
   special_chapters:
     glossary:
