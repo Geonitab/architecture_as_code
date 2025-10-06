@@ -36,7 +36,7 @@ This directory contains a comprehensive test suite for validating the "Architect
 
 ## 📋 Requirements Configuration
 
-The test suite uses `requirements_en.yaml` (or `requirements.yaml` as fallback) to define:
+The test suite reads the YAML front matter at the top of `BOOK_REQUIREMENTS.md` to define:
 - Expected book structure (27 chapters)
 - Content quality standards
 - Technical validation rules
@@ -171,7 +171,7 @@ Tests are configured to be practical for an evolving book:
 
 ### Customization
 
-Modify `requirements.yaml` to adjust:
+Modify the YAML front matter in `BOOK_REQUIREMENTS.md` to adjust:
 - Content quality thresholds
 - Required section patterns
 - Special chapter rules
@@ -232,7 +232,7 @@ Planned improvements:
 
 When adding new tests:
 1. Follow the existing test structure and naming conventions
-2. Update `requirements.yaml` for new validation rules
+2. Update the YAML front matter in `BOOK_REQUIREMENTS.md` for new validation rules
 3. Add appropriate fixtures in `conftest.py`
 4. Include both positive and negative test cases
 5. Document the purpose and expected behavior
