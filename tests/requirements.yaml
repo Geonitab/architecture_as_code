@@ -3,7 +3,7 @@
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 27
+  total_chapters: 28
   
   # Required chapter structure
   chapters:
@@ -114,6 +114,10 @@ book:
     - filename: "27_technical_architecture.md"
       title: "Teknisk uppbyggnad"
       area: "Appendix"
+      required: true
+    - filename: "28_ai_agent_team.md"
+      title: "AI-agentteam för Architecture as Code"
+      area: "Organisationsutveckling"
       required: true
 
   # Special chapters with different requirements

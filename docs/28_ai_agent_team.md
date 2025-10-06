@@ -4,6 +4,8 @@ Detta dokument beskriver den virtuella agentgrupp som ska samarbeta kring projek
 
 ## Övergripande arbetsflöde
 
+![AI-agentteamets kommunikation](images/diagram_28_ai_agent_team.png)
+
 1. **Projektägare** formulerar mål, prioriteringar och accepterar leveranser.
 2. **Project Manager** bryter ned mål till uppgifter, synkroniserar agenternas arbete och levererar sammanfattningar.
 3. Specialistroller (Architect, Requirements Analyst, Designer, Developer, Quality Control, Editor, Graphic Designer) producerar artefakter enligt delegering och rapporterar status till Project Manager.

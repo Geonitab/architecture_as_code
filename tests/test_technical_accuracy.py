@@ -1,13 +1,28 @@
-"""
-Technical accuracy validator for book content.
+"""Technical accuracy validator for book content.
 
 Validates code snippets, diagrams, and technical examples.
 """
-import pytest
-import re
-import yaml
 import json
 from pathlib import Path
+import re
+
+import pytest
+
+try:  # pragma: no cover - executed in environments with PyYAML
+    import yaml  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover - exercised in CI sandbox
+    from .utils import simple_yaml
+
+    class _FallbackYaml:
+        """Adapter that mimics the subset of the PyYAML API we rely on."""
+
+        YAMLError = simple_yaml.YAMLError
+
+        @staticmethod
+        def safe_load(data: str):
+            return simple_yaml.safe_load(data)
+
+    yaml = _FallbackYaml()
 
 
 class TestTechnicalAccuracy:

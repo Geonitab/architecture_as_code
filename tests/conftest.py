@@ -1,10 +1,15 @@
-"""
-Pytest configuration and shared fixtures for book content testing.
-"""
+"""Pytest configuration and shared fixtures for book content testing."""
+import json
 import os
-import yaml
 from pathlib import Path
 import pytest
+
+try:  # pragma: no cover - exercised indirectly by the tests
+    import yaml  # type: ignore
+except ModuleNotFoundError:  # pragma: no cover - triggered in CI environment
+    yaml = None
+
+from .utils.simple_yaml import safe_load as fallback_yaml_load
 
 # Get project root directory
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -35,14 +40,35 @@ def language(request):
     """Get the language from command line option."""
     return request.config.getoption("--language")
 
+def _load_structured_file(path: Path):
+    """Load a structured configuration file with graceful YAML fallback."""
+    text = path.read_text(encoding="utf-8")
+    if path.suffix in {".yaml", ".yml"}:
+        if yaml is not None:
+            return yaml.safe_load(text)
+        return fallback_yaml_load(text)
+    if path.suffix == ".json":
+        return json.loads(text)
+    raise ValueError(f"Unsupported configuration format: {path}")
+
+
 @pytest.fixture(scope="session")
 def requirements_config(language):
     """Load book requirements configuration based on language."""
-    requirements_file = TESTS_DIR / "requirements_en.yaml"
-    if not requirements_file.exists():
-        requirements_file = TESTS_DIR / "requirements.yaml"
-    with open(requirements_file, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+    candidate_files = [
+        TESTS_DIR / "requirements_en.yaml",
+        TESTS_DIR / "requirements_en.yml",
+        TESTS_DIR / "requirements_en.json",
+        TESTS_DIR / "requirements.yaml",
+        TESTS_DIR / "requirements.yml",
+        TESTS_DIR / "requirements.json",
+    ]
+
+    for candidate in candidate_files:
+        if candidate.exists():
+            return _load_structured_file(candidate)
+
+    raise FileNotFoundError("No requirements configuration file found")
 
 @pytest.fixture(scope="session")
 def chapter_files(docs_directory, language):

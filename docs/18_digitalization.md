@@ -1,4 +1,4 @@
-# Digitalisering through architecture as architecture as code-baserad infrastruktur
+# Digitalisering med kodbaserad infrastruktur
 
 ![Digitaliseringsprocess](images/diagram_19_digitalisering.png)
 
