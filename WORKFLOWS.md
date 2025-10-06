@@ -127,6 +127,23 @@ All functionality from these workflows is now available in the unified workflow 
 | **Selective Building** | ✅ | ❌ | ❌ | ❌ |
 | **Duration** | 60-90min | ~15min | ~15min | ~5min |
 
+### 🤖 AI Agent Playbook Workflows
+
+To operationalize the virtual team defined in `docs/28_ai_agent_team.md`, dedicated reusable workflows are available for each agent role. They can be triggered manually (`workflow_dispatch`) or invoked from other workflows (`workflow_call`) to generate role-specific action plans that are published to the step summary and returned as workflow outputs.
+
+| Workflow | Role focus | Primary responsibilities captured |
+|----------|------------|-----------------------------------|
+| `agent-project-manager.yml` | Project Manager | Sprintmål, koordination och rapportering |
+| `agent-architect.yml` | Architect | Arkitekturprinciper, diagram och riskgranskning |
+| `agent-requirements-analyst.yml` | Requirements Analyst | Kravinsamling, backloggstruktur och spårbarhet |
+| `agent-designer.yml` | Designer | UX/UI-iterationer, prototyper och designbeslut |
+| `agent-developer.yml` | Developer | Implementation, tester och tekniska risker |
+| `agent-quality-control.yml` | Quality Control | Teststrategi, kvalitetsmått och rapportering |
+| `agent-editor.yml` | Editor | Dokumentationsuppdateringar och publicering |
+| `agent-graphic-designer.yml` | Graphic Designer | Visuella resurser, format och brand-efterlevnad |
+
+Each workflow accepts three text-based inputs (`objective` plus two optional context fields tailored to the role) and renders a structured checklist aligned with the responsibilities and ceremonies described in the AI agent team playbook. This makes it easy to orchestrate or audit agent contributions directly from GitHub Actions.
+
 ## Release Types
 
 ### Unified Release Tags

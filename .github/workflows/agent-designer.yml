@@ -1,0 +1,108 @@
+name: Designer Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      objective:
+        description: "Vilken designuppgift ska prioriteras?"
+        required: true
+      design_brief:
+        description: "Länk eller sammanfattning av krav, användarflöden eller varumärkesmål"
+        required: false
+        default: ""
+      research_notes:
+        description: "Insikter från användartester, workshops eller tidigare iterationer"
+        required: false
+        default: ""
+  workflow_call:
+    inputs:
+      objective:
+        required: true
+        type: string
+      design_brief:
+        required: false
+        type: string
+        default: ""
+      research_notes:
+        required: false
+        type: string
+        default: ""
+    outputs:
+      plan:
+        description: "Designer-agentens plan"
+        value: ${{ jobs.plan.outputs.plan }}
+
+jobs:
+  plan:
+    name: Sammanställ designplan
+    runs-on: ubuntu-latest
+    outputs:
+      plan: ${{ steps.compose.outputs.plan }}
+    steps:
+      - name: Komponera plan
+        id: compose
+        env:
+          OBJECTIVE: ${{ inputs.objective }}
+          DESIGN_BRIEF: ${{ inputs.design_brief }}
+          RESEARCH_NOTES: ${{ inputs.research_notes }}
+        run: |
+          set -euo pipefail
+          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          brief_value="${DESIGN_BRIEF:-}"
+          if [ -z "$brief_value" ]; then
+            brief_value="Inget designunderlag angivet."
+          fi
+          research_value="${RESEARCH_NOTES:-}"
+          if [ -z "$research_value" ]; then
+            research_value="Inga researchnoteringar angivna."
+          fi
+
+          export AGENT_OBJECTIVE="$objective"
+          export AGENT_BRIEF="$brief_value"
+          export AGENT_RESEARCH="$research_value"
+
+          summary=$(
+            cat <<'PLAN' | envsubst
+# Designer-agentens plan
+
+## Mål
+$AGENT_OBJECTIVE
+
+## Designunderlag
+$AGENT_BRIEF
+
+## Research- och inspirationsnoter
+$AGENT_RESEARCH
+
+## Primära ansvar enligt 28_ai_agent_team.md
+- Ta fram wireframes, skisser och interaktionsflöden.
+- Säkerställa efterlevnad av design- och varumärkesriktlinjer.
+- Validera förslag tillsammans med Developer och Quality Control.
+- Dokumentera designbeslut och komponentbibliotek.
+
+## Rekommenderad arbetsgång
+1. Bekräfta användarbehov och KPI:er tillsammans med Requirements Analyst.
+2. Ta fram eller uppdatera wireframes/prototyper baserat på designbriefen.
+3. Synka med Architect om arkitekturpåverkan och med Developer om implementeringsförutsättningar.
+4. Förbereda material för kvalitetsgranskning och demo.
+5. Uppdatera designbiblioteket och länka nya resurser till Editor.
+
+## Leverabler
+- Uppdaterade wireframes eller prototyper.
+- Dokumenterade interaktionsflöden och komponentbeskrivningar.
+- Feedbacklista och rekommenderade nästa iterationer.
+
+## Kontrollpunkter
+- Stäm av mot varumärkes- och tillgänglighetskrav.
+- Säkerställ att designen täcker prioriterade user stories.
+- Kommunicera beroenden och beslut till Project Manager.
+PLAN
+          )
+
+          printf '%s\n' "$summary"
+          printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "plan<<EOF"
+            printf '%s\n' "$summary"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"

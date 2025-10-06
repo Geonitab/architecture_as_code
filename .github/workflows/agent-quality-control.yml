@@ -1,0 +1,108 @@
+name: Quality Control Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      objective:
+        description: "Vilken kvalitetssäkringsuppgift ska genomföras?"
+        required: true
+      test_scope:
+        description: "Vilka komponenter, funktioner eller riskområden ska testas?"
+        required: false
+        default: ""
+      defect_context:
+        description: "Kända defekter, blockerare eller risknivåer"
+        required: false
+        default: ""
+  workflow_call:
+    inputs:
+      objective:
+        required: true
+        type: string
+      test_scope:
+        required: false
+        type: string
+        default: ""
+      defect_context:
+        required: false
+        type: string
+        default: ""
+    outputs:
+      plan:
+        description: "Quality Control-agentens plan"
+        value: ${{ jobs.plan.outputs.plan }}
+
+jobs:
+  plan:
+    name: Sammanställ QA-plan
+    runs-on: ubuntu-latest
+    outputs:
+      plan: ${{ steps.compose.outputs.plan }}
+    steps:
+      - name: Komponera plan
+        id: compose
+        env:
+          OBJECTIVE: ${{ inputs.objective }}
+          TEST_SCOPE: ${{ inputs.test_scope }}
+          DEFECT_CONTEXT: ${{ inputs.defect_context }}
+        run: |
+          set -euo pipefail
+          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          scope_value="${TEST_SCOPE:-}"
+          if [ -z "$scope_value" ]; then
+            scope_value="Inget testscope angivet."
+          fi
+          defect_value="${DEFECT_CONTEXT:-}"
+          if [ -z "$defect_value" ]; then
+            defect_value="Inga kända defekter eller risker angivna."
+          fi
+
+          export AGENT_OBJECTIVE="$objective"
+          export AGENT_SCOPE="$scope_value"
+          export AGENT_DEFECTS="$defect_value"
+
+          summary=$(
+            cat <<'PLAN' | envsubst
+# Quality Control-agentens plan
+
+## Mål
+$AGENT_OBJECTIVE
+
+## Testscope
+$AGENT_SCOPE
+
+## Defekt- och riskkontext
+$AGENT_DEFECTS
+
+## Primära ansvar enligt 28_ai_agent_team.md
+- Underhålla testsviter (enhet, integration, E2E).
+- Genomföra kvalitetsgranskningar av kod och dokumentation.
+- Samla mätvärden för testresultat, bugghantering och releasekvalitet.
+- Rekommendera process- och verktygsförbättringar.
+
+## Rekommenderad arbetsgång
+1. Bekräfta testmålen med Project Manager och Developer.
+2. Uppdatera testdata och körplan för prioriterade områden.
+3. Kör automatiserade och manuella tester, dokumentera resultat.
+4. Sammanställ kvalitetsindikatorer (täckning, defekter, blockerare).
+5. Leverera rapport med rekommendationer och klartecken/åtgärdspunkter.
+
+## Leverabler
+- Testloggar och rapporter med status mot acceptanskriterier.
+- Lista över defekter, risker och föreslagna åtgärder.
+- Uppdaterad kvalitetsdashboard eller KPI-uppföljning.
+
+## Kontrollpunkter
+- Säkerställ spårbarhet till krav och designbeslut.
+- Synka med Developer och Requirements Analyst om funna gap.
+- Informera Editor om dokumentationsbehov kring releasen.
+PLAN
+          )
+
+          printf '%s\n' "$summary"
+          printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "plan<<EOF"
+            printf '%s\n' "$summary"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"

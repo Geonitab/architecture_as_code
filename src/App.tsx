@@ -11,6 +11,7 @@ import Resources from "./pages/Resources";
 import Index from "./pages/Index";
 import BookPreview from "./pages/BookPreview";
 import NotFound from "./pages/NotFound";
+import AIAgentTeam from "./pages/AIAgentTeam";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/preview" element={<BookPreview />} />
+          <Route path="/ai-agent-team" element={<AIAgentTeam />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

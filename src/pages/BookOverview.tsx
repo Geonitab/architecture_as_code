@@ -63,6 +63,12 @@ const BookOverview = () => {
                   Ladda ner resurser
                 </Link>
               </Button>
+              <Button size="lg" variant="outline" className="gap-2" asChild>
+                <Link to="/ai-agent-team">
+                  <Users className="h-4 w-4" />
+                  AI-agentteamet
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -204,6 +210,12 @@ const BookOverview = () => {
                 <Button size="lg" variant="outline" className="gap-2" asChild>
                   <Link to="/contact">
                     Kontakta oss
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="gap-2" asChild>
+                  <Link to="/ai-agent-team">
+                    <Users className="h-4 w-4" />
+                    Utforska AI-teamet
                   </Link>
                 </Button>
               </div>
