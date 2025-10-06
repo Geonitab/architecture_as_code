@@ -62,7 +62,7 @@ jobs:
           export AGENT_COLLAB="$collaboration_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Architect-agentens riktlinje
 
 ## Mål

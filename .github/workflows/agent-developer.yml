@@ -62,7 +62,7 @@ jobs:
           export AGENT_RISKS="$risk_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Developer-agentens plan
 
 ## Mål

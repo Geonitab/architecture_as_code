@@ -62,7 +62,7 @@ jobs:
           export AGENT_RESEARCH="$research_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Designer-agentens plan
 
 ## Mål

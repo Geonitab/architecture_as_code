@@ -62,7 +62,7 @@ jobs:
           export AGENT_ASSETS="$asset_value"
 
           summary=$(
-            cat <<'PLAN' | envsubst
+            cat <<PLAN
 # Graphic Designer-agentens plan
 
 ## Mål
