@@ -4,6 +4,75 @@ if [ "$(basename "$PWD")" != "docs" ]; then
     cd docs || exit 1
 fi
 
+# Helper to run package manager commands with sudo when necessary
+run_with_privileges() {
+    if [ "$(id -u)" -eq 0 ]; then
+        "$@"
+    elif command -v sudo >/dev/null 2>&1; then
+        sudo "$@"
+    else
+        return 1
+    fi
+}
+
+# Ensure Pandoc is available, installing it when possible
+ensure_pandoc() {
+    if command -v pandoc >/dev/null 2>&1; then
+        return 0
+    fi
+
+    echo "⚠️  Pandoc saknas – försöker installera automatiskt..."
+
+    if command -v apt-get >/dev/null 2>&1; then
+        if run_with_privileges env DEBIAN_FRONTEND=noninteractive apt-get update && \
+           run_with_privileges env DEBIAN_FRONTEND=noninteractive apt-get install -y pandoc; then
+            echo "✅ Pandoc installerat via apt-get"
+            return 0
+        fi
+    elif command -v apt >/dev/null 2>&1; then
+        if run_with_privileges env DEBIAN_FRONTEND=noninteractive apt update && \
+           run_with_privileges env DEBIAN_FRONTEND=noninteractive apt install -y pandoc; then
+            echo "✅ Pandoc installerat via apt"
+            return 0
+        fi
+    elif command -v dnf >/dev/null 2>&1; then
+        if run_with_privileges dnf install -y pandoc; then
+            echo "✅ Pandoc installerat via dnf"
+            return 0
+        fi
+    elif command -v yum >/dev/null 2>&1; then
+        if run_with_privileges yum install -y pandoc; then
+            echo "✅ Pandoc installerat via yum"
+            return 0
+        fi
+    elif command -v pacman >/dev/null 2>&1; then
+        if run_with_privileges pacman -Sy --noconfirm pandoc; then
+            echo "✅ Pandoc installerat via pacman"
+            return 0
+        fi
+    elif command -v zypper >/dev/null 2>&1; then
+        if run_with_privileges zypper install -y pandoc; then
+            echo "✅ Pandoc installerat via zypper"
+            return 0
+        fi
+    elif command -v brew >/dev/null 2>&1; then
+        if brew list pandoc >/dev/null 2>&1 || brew install pandoc; then
+            echo "✅ Pandoc installerat via Homebrew"
+            return 0
+        fi
+    fi
+
+    echo "❌ Misslyckades med att installera Pandoc automatiskt. Installera Pandoc manuellt och kör skriptet igen."
+    return 1
+}
+
+# Ensure Pandoc is available before continuing
+if ! command -v pandoc >/dev/null 2>&1; then
+    if ! ensure_pandoc; then
+        exit 1
+    fi
+fi
+
 # Determine the release directory path (relative to docs directory)
 RELEASE_DIR="../releases/book"
 OUTPUT_PDF="arkitektur_som_kod.pdf"
@@ -15,11 +84,47 @@ RELEASE_DOCX="$RELEASE_DIR/$OUTPUT_DOCX"
 PANDOC_TEMPLATES_DIR="$HOME/.local/share/pandoc/templates"
 EISVOGEL_TEMPLATE="$PANDOC_TEMPLATES_DIR/eisvogel.latex"
 
-# Check if Eisvogel template exists
+# Ensure Eisvogel template exists (install automatically if missing)
 if [ ! -f "$EISVOGEL_TEMPLATE" ]; then
-    echo "Fel: Pandoc-mall Eisvogel saknas ($EISVOGEL_TEMPLATE)"
-    echo "Installera med: pandoc --print-default-data-file eisvogel.latex > $EISVOGEL_TEMPLATE"
-    exit 1
+    echo "⚠️  Eisvogel template saknas – försöker installera automatiskt..."
+    mkdir -p "$PANDOC_TEMPLATES_DIR"
+
+    if command -v pandoc >/dev/null 2>&1 && pandoc --print-default-data-file eisvogel.latex > "$EISVOGEL_TEMPLATE" 2>/dev/null; then
+        echo "✅ Eisvogel template installerad till $EISVOGEL_TEMPLATE"
+    else
+        echo "⚠️  Direkt installation misslyckades – försöker ladda ner från GitHub..."
+
+        TEMP_DIR=$(mktemp -d)
+        TEMPLATE_ARCHIVE="$TEMP_DIR/Eisvogel.tar.gz"
+
+        if command -v curl >/dev/null 2>&1; then
+            curl -fsSL "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/latest/download/Eisvogel.tar.gz" -o "$TEMPLATE_ARCHIVE"
+        elif command -v wget >/dev/null 2>&1; then
+            wget -qO "$TEMPLATE_ARCHIVE" "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/latest/download/Eisvogel.tar.gz"
+        else
+            echo "❌ Varken curl eller wget finns tillgängligt för att hämta mallen."
+            echo "   Installera verktygen eller lägg till mallen manuellt."
+            rm -rf "$TEMP_DIR"
+            exit 1
+        fi
+
+        if [ -s "$TEMPLATE_ARCHIVE" ] && tar -xzf "$TEMPLATE_ARCHIVE" -C "$TEMP_DIR" 2>/dev/null; then
+            FOUND_TEMPLATE=$(find "$TEMP_DIR" -name "eisvogel.latex" -print -quit)
+            if [ -n "$FOUND_TEMPLATE" ] && cp "$FOUND_TEMPLATE" "$EISVOGEL_TEMPLATE"; then
+                echo "✅ Eisvogel template nedladdad och installerad till $EISVOGEL_TEMPLATE"
+            else
+                echo "❌ Kunde inte extrahera Eisvogel template från nedladdat arkiv."
+                rm -rf "$TEMP_DIR"
+                exit 1
+            fi
+        else
+            echo "❌ Misslyckades med att ladda ner Eisvogel template från GitHub."
+            rm -rf "$TEMP_DIR"
+            exit 1
+        fi
+
+        rm -rf "$TEMP_DIR"
+    fi
 fi
 
 # Check if pandoc.yaml config exists
