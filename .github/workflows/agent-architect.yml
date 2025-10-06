@@ -100,9 +100,15 @@ PLAN
             )
 
           printf '%s\n' "$summary"
-          printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
-          {
-            echo "plan<<EOF"
-            printf '%s\n' "$summary"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+
+          if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+            printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -n "${GITHUB_OUTPUT:-}" ]; then
+            {
+              echo "plan<<EOF"
+              printf '%s\n' "$summary"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
