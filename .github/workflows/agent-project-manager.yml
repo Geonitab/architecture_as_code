@@ -14,6 +14,11 @@ on:
         description: "Lista över nya eller uppdaterade backloggposter"
         required: false
         default: ""
+      trigger_architect:
+        description: "Ska Architect-agenten aktiveras?"
+        required: false
+        default: false
+        type: boolean
   workflow_call:
     inputs:
       objective:
@@ -27,6 +32,10 @@ on:
         required: false
         type: string
         default: ""
+      trigger_architect:
+        required: false
+        type: boolean
+        default: false
     outputs:
       plan:
         description: "Sammanfattning av Project Manager-agentens plan"
@@ -106,3 +115,14 @@ PLAN
             printf '%s\n' "$summary"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
+
+  architect:
+    name: Aktivera Architect-agenten
+    needs: plan
+    if: ${{ inputs.trigger_architect == true || inputs.trigger_architect == 'true' }}
+    uses: ./.github/workflows/agent-architect.yml
+    with:
+      objective: ${{ format('Arkitektstöd för: {0}', inputs.objective) }}
+      architecture_context: ${{ inputs.sprint_context }}
+      collaboration_notes: ${{ needs.plan.outputs.plan }}
+    secrets: inherit
