@@ -80,6 +80,7 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 | `26_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
 | `27_technical_architecture.md` | Technical Structure for Book Production | Technical book production infrastructure |
 | `28_ai_agent_team.md` | AI-agentteam för projektleverans | Struktur, roller och processer för virtuellt agentteam |
+| `29_design_tokens.md` | Design Tokens as the Backbone of Cross-Channel Experience | Cross-channel design governance, accessibility, and ARIA alignment |
 
 ---
 
