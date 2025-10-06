@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       objective:
-        description: "Vilket arkitekturellt mål ska agenten uppnå?"
+        description: "What architectural goal should the agent achieve?"
         required: true
       architecture_context:
-        description: "Kända begränsningar, beslut eller systemberoenden"
+        description: "Known constraints, decisions, or system dependencies"
         required: false
         default: ""
       collaboration_notes:
-        description: "Koordinationspunkter med andra roller (t.ex. Developer, Designer)"
+        description: "Coordination points with other roles (e.g., Developer, Designer)"
         required: false
         default: ""
   workflow_call:
@@ -29,17 +29,17 @@ on:
         default: ""
     outputs:
       plan:
-        description: "Arkitektens planerade nästa steg"
+        description: "The architect's planned next steps"
         value: ${{ jobs.plan.outputs.plan }}
 
 jobs:
   plan:
-    name: Sammanställ arkitekturplan
+    name: Compile Architecture Plan
     runs-on: ubuntu-latest
     outputs:
       plan: ${{ steps.compose.outputs.plan }}
     steps:
-      - name: Komponera plan
+      - name: Compose Plan
         id: compose
         env:
           OBJECTIVE: ${{ inputs.objective }}
@@ -51,17 +51,17 @@ jobs:
         run: |
           set -euo pipefail
           objective_source="${OBJECTIVE:-${DISPATCH_OBJECTIVE:-}}"
-          objective="${objective_source:-Ingen specifik målsättning angiven.}"
+          objective="${objective_source:-No specific objective provided.}"
 
           context_source="${ARCHITECTURE_CONTEXT:-${DISPATCH_CONTEXT:-}}"
           context_value="${context_source:-}"
           if [ -z "$context_value" ]; then
-            context_value="Ingen ytterligare kontext angiven."
+            context_value="No additional context provided."
           fi
           collaboration_source="${COLLABORATION_NOTES:-${DISPATCH_COLLABORATION:-}}"
           collaboration_value="${collaboration_source:-}"
           if [ -z "$collaboration_value" ]; then
-            collaboration_value="Inga samarbetsnoteringar angivna."
+            collaboration_value="No collaboration notes provided."
           fi
 
           export AGENT_OBJECTIVE="$objective"
@@ -70,39 +70,39 @@ jobs:
 
           summary=$(
             cat <<PLAN
-# Architect-agentens riktlinje
+# Architect Agent's Guideline
 
-## Mål
+## Objective
 $AGENT_OBJECTIVE
 
-## Arkitekturkontext
+## Architecture Context
 $AGENT_CONTEXT
 
-## Samarbetsnoteringar
+## Collaboration Notes
 $AGENT_COLLAB
 
-## Primära ansvar enligt 28_ai_agent_team.md
-- Definiera systemets struktur, principer och riktlinjer.
-- Uppdatera arkitekturartefakter som referensmodeller och komponentkartor.
-- Granska förslag från Requirements Analyst och Developer för skalbarhet och robusthet.
-- Samverka med Graphic Designer för att visualisera arkitekturdiagram.
+## Primary Responsibilities (from 28_ai_agent_team.md)
+- Define the system's structure, principles, and guidelines.
+- Update architecture artifacts such as reference models and component maps.
+- Review proposals from the Requirements Analyst and Developer for scalability and robustness.
+- Collaborate with the Graphic Designer to visualize architecture diagrams.
 
-## Rekommenderad arbetsgång
-1. Bekräfta arkitekturella mål och eventuella constraints.
-2. Uppdatera eller skapa relevanta arkitekturdokument och diagram.
-3. Synka med Developer om tekniska beslut och med Designer om UX-konsekvenser.
-4. Identifiera risker kopplade till skalbarhet, säkerhet och teknisk skuld.
-5. Dokumentera beslut i arkitekturloggen och kommunicera ändringar till Project Manager.
+## Recommended Workflow
+1. Confirm architectural objectives and any constraints.
+2. Update or create relevant architecture documents and diagrams.
+3. Sync with the Developer on technical decisions and the Designer on UX implications.
+4. Identify risks related to scalability, security, and technical debt.
+5. Document decisions in the architecture log and communicate changes to the Project Manager.
 
-## Leverabler
-- Arkitekturprinciper och riktlinjer.
-- Uppdaterade diagram (Mermaid/PlantUML) och komponentbeskrivningar.
-- Rekommendationer för tekniska beslut och prioriteringar.
+## Deliverables
+- Architecture principles and guidelines.
+- Updated diagrams (Mermaid/PlantUML) and component descriptions.
+- Recommendations for technical decisions and priorities.
 
-## Kontrollpunkter
-- Säkerställ att krav och arkitektur är spårbara.
-- Stäm av att föreslagna lösningar stödjer KPI:er och kvalitetsmål.
-- Förbered underlag till sprintdemo eller beslutspunkter.
+## Checkpoints
+- Ensure that requirements and architecture are traceable.
+- Verify that proposed solutions support KPIs and quality goals.
+- Prepare materials for sprint demos or decision points.
 PLAN
             )
 
