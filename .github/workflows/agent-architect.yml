@@ -1,0 +1,108 @@
+name: Architect Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      objective:
+        description: "Vilket arkitekturellt mål ska agenten uppnå?"
+        required: true
+      architecture_context:
+        description: "Kända begränsningar, beslut eller systemberoenden"
+        required: false
+        default: ""
+      collaboration_notes:
+        description: "Koordinationspunkter med andra roller (t.ex. Developer, Designer)"
+        required: false
+        default: ""
+  workflow_call:
+    inputs:
+      objective:
+        required: true
+        type: string
+      architecture_context:
+        required: false
+        type: string
+        default: ""
+      collaboration_notes:
+        required: false
+        type: string
+        default: ""
+    outputs:
+      plan:
+        description: "Arkitektens planerade nästa steg"
+        value: ${{ jobs.plan.outputs.plan }}
+
+jobs:
+  plan:
+    name: Sammanställ arkitekturplan
+    runs-on: ubuntu-latest
+    outputs:
+      plan: ${{ steps.compose.outputs.plan }}
+    steps:
+      - name: Komponera plan
+        id: compose
+        env:
+          OBJECTIVE: ${{ inputs.objective || github.event.inputs.objective }}
+          ARCHITECTURE_CONTEXT: ${{ inputs.architecture_context || github.event.inputs.architecture_context }}
+          COLLABORATION_NOTES: ${{ inputs.collaboration_notes || github.event.inputs.collaboration_notes }}
+        run: |
+          set -euo pipefail
+          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          context_value="${ARCHITECTURE_CONTEXT:-}"
+          if [ -z "$context_value" ]; then
+            context_value="Ingen ytterligare kontext angiven."
+          fi
+          collaboration_value="${COLLABORATION_NOTES:-}"
+          if [ -z "$collaboration_value" ]; then
+            collaboration_value="Inga samarbetsnoteringar angivna."
+          fi
+
+          export AGENT_OBJECTIVE="$objective"
+          export AGENT_CONTEXT="$context_value"
+          export AGENT_COLLAB="$collaboration_value"
+
+          summary=$(
+            cat <<'PLAN' | envsubst
+# Architect-agentens riktlinje
+
+## Mål
+$AGENT_OBJECTIVE
+
+## Arkitekturkontext
+$AGENT_CONTEXT
+
+## Samarbetsnoteringar
+$AGENT_COLLAB
+
+## Primära ansvar enligt 28_ai_agent_team.md
+- Definiera systemets struktur, principer och riktlinjer.
+- Uppdatera arkitekturartefakter som referensmodeller och komponentkartor.
+- Granska förslag från Requirements Analyst och Developer för skalbarhet och robusthet.
+- Samverka med Graphic Designer för att visualisera arkitekturdiagram.
+
+## Rekommenderad arbetsgång
+1. Bekräfta arkitekturella mål och eventuella constraints.
+2. Uppdatera eller skapa relevanta arkitekturdokument och diagram.
+3. Synka med Developer om tekniska beslut och med Designer om UX-konsekvenser.
+4. Identifiera risker kopplade till skalbarhet, säkerhet och teknisk skuld.
+5. Dokumentera beslut i arkitekturloggen och kommunicera ändringar till Project Manager.
+
+## Leverabler
+- Arkitekturprinciper och riktlinjer.
+- Uppdaterade diagram (Mermaid/PlantUML) och komponentbeskrivningar.
+- Rekommendationer för tekniska beslut och prioriteringar.
+
+## Kontrollpunkter
+- Säkerställ att krav och arkitektur är spårbara.
+- Stäm av att föreslagna lösningar stödjer KPI:er och kvalitetsmål.
+- Förbered underlag till sprintdemo eller beslutspunkter.
+PLAN
+            )
+
+          printf '%s\n' "$summary"
+          printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "plan<<EOF"
+            printf '%s\n' "$summary"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"

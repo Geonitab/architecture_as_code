@@ -1,0 +1,108 @@
+name: Developer Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      objective:
+        description: "Vilken utvecklingsuppgift ska slutföras?"
+        required: true
+      implementation_scope:
+        description: "Kodområden, komponenter eller stories som omfattas"
+        required: false
+        default: ""
+      technical_risks:
+        description: "Kända tekniska risker, blockerare eller beroenden"
+        required: false
+        default: ""
+  workflow_call:
+    inputs:
+      objective:
+        required: true
+        type: string
+      implementation_scope:
+        required: false
+        type: string
+        default: ""
+      technical_risks:
+        required: false
+        type: string
+        default: ""
+    outputs:
+      plan:
+        description: "Developer-agentens plan"
+        value: ${{ jobs.plan.outputs.plan }}
+
+jobs:
+  plan:
+    name: Sammanställ utvecklingsplan
+    runs-on: ubuntu-latest
+    outputs:
+      plan: ${{ steps.compose.outputs.plan }}
+    steps:
+      - name: Komponera plan
+        id: compose
+        env:
+          OBJECTIVE: ${{ inputs.objective || github.event.inputs.objective }}
+          IMPLEMENTATION_SCOPE: ${{ inputs.implementation_scope || github.event.inputs.implementation_scope }}
+          TECHNICAL_RISKS: ${{ inputs.technical_risks || github.event.inputs.technical_risks }}
+        run: |
+          set -euo pipefail
+          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          scope_value="${IMPLEMENTATION_SCOPE:-}"
+          if [ -z "$scope_value" ]; then
+            scope_value="Inget definierat omfattningsområde angivet."
+          fi
+          risk_value="${TECHNICAL_RISKS:-}"
+          if [ -z "$risk_value" ]; then
+            risk_value="Inga kända tekniska risker angivna."
+          fi
+
+          export AGENT_OBJECTIVE="$objective"
+          export AGENT_SCOPE="$scope_value"
+          export AGENT_RISKS="$risk_value"
+
+          summary=$(
+            cat <<'PLAN' | envsubst
+# Developer-agentens plan
+
+## Mål
+$AGENT_OBJECTIVE
+
+## Implementationsomfång
+$AGENT_SCOPE
+
+## Tekniska risker och beroenden
+$AGENT_RISKS
+
+## Primära ansvar enligt 28_ai_agent_team.md
+- Implementera funktionalitet enligt arkitekturella riktlinjer och design.
+- Skriva enhetliga kodstandarder och automatiserade tester.
+- Dela upp arbetet i granskbara pull requests och samarbeta med Quality Control.
+- Eskalera tekniska hinder eller risker till Project Manager.
+
+## Rekommenderad arbetsgång
+1. Synka med Architect och Designer för att säkerställa samsyn om lösningen.
+2. Skapa utvecklingsplan med tydliga deluppgifter och teststrategi.
+3. Implementera och skriva tester iterativt, följ kodstandarder och checklistor.
+4. Genomför egenkontroller och koordinera code review och QA.
+5. Förbered demo och dokumentera viktiga tekniska beslut.
+
+## Leverabler
+- Kodförändringar med tillhörande tester.
+- Uppdaterad teknisk dokumentation eller ADR vid behov.
+- Sammanfattning av risker, återstående arbete och rekommenderade nästa steg.
+
+## Kontrollpunkter
+- Säkerställ täckning av acceptanskriterier och icke-funktionella krav.
+- Kommunicera beroenden till Requirements Analyst och Project Manager.
+- Synka med Quality Control kring testdata och körinstruktioner.
+PLAN
+          )
+
+          printf '%s\n' "$summary"
+          printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "plan<<EOF"
+            printf '%s\n' "$summary"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"

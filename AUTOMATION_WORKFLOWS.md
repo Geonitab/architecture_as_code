@@ -198,6 +198,23 @@ ls -la whitepapers/
 - Generated files are stored outside the docs directory
 - Validation scripts ensure content integrity
 
+## AI Agent Playbook Workflows
+
+Complementing the generation pipelines, eight lightweight GitHub Actions workflows translate the responsibilities in `docs/28_ai_agent_team.md` into actionable checklists for each virtual agent role:
+
+| Workflow | Fokus |
+|----------|-------|
+| `agent-project-manager.yml` | Planering, koordination och rapportering |
+| `agent-architect.yml` | Arkitekturprinciper, beslut och diagram |
+| `agent-requirements-analyst.yml` | Kravinsamling, spårbarhet och prioritering |
+| `agent-designer.yml` | Designiterationer, prototyper och UX-samordning |
+| `agent-developer.yml` | Implementation, kodstandarder och tekniska risker |
+| `agent-quality-control.yml` | Teststrategi, kvalitetsmätning och rapporter |
+| `agent-editor.yml` | Dokumentationsuppdateringar och publicering |
+| `agent-graphic-designer.yml` | Visuella resurser och brandefterlevnad |
+
+Each workflow exposes the same pattern of inputs (`objective` + two optional context strings) and produces a markdown action plan through `$GITHUB_STEP_SUMMARY` and workflow outputs. Use them to bootstrap discussions, enforce consistency, or integrate structured prompts into higher-level orchestration.
+
 ### Access Control
 - Workflows run with standard GitHub Actions permissions
 - No external services or credentials required
