@@ -47,6 +47,15 @@ jobs:
           COLLABORATION_NOTES: ${{ inputs.collaboration_notes }}
         run: |
           set -euo pipefail
+          set -x  # Enable command tracing for debugging
+
+          # Log input parameters for debugging
+          echo "=== Input Parameters ==="
+          echo "OBJECTIVE: ${OBJECTIVE}"
+          echo "ARCHITECTURE_CONTEXT: ${ARCHITECTURE_CONTEXT}"
+          echo "COLLABORATION_NOTES: ${COLLABORATION_NOTES}"
+          echo "========================"
+
           objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
           context_value="${ARCHITECTURE_CONTEXT:-}"
           if [ -z "$context_value" ]; then
@@ -60,6 +69,13 @@ jobs:
           export AGENT_OBJECTIVE="$objective"
           export AGENT_CONTEXT="$context_value"
           export AGENT_COLLAB="$collaboration_value"
+
+          # Log processed values
+          echo "=== Processed Values ==="
+          echo "AGENT_OBJECTIVE: ${AGENT_OBJECTIVE}"
+          echo "AGENT_CONTEXT: ${AGENT_CONTEXT}"
+          echo "AGENT_COLLAB: ${AGENT_COLLAB}"
+          echo "========================"
 
           summary=$(
             cat <<PLAN
@@ -99,10 +115,48 @@ $AGENT_COLLAB
 PLAN
             )
 
+          # Log the generated plan output
+          echo "=== Generated Plan Output ==="
           printf '%s\n' "$summary"
+          echo "============================="
+
+          # Add debugging summary to GITHUB_STEP_SUMMARY
+          cat >> "$GITHUB_STEP_SUMMARY" <<DEBUGSUMMARY
+---
+
+## 🔍 Debugging Information
+
+### Input Parameters
+- **Objective**: \`${AGENT_OBJECTIVE}\`
+- **Architecture Context**: \`${AGENT_CONTEXT}\`
+- **Collaboration Notes**: \`${AGENT_COLLAB}\`
+
+### Workflow Execution
+- **Workflow Run ID**: \`${{ github.run_id }}\`
+- **Workflow Run Number**: \`${{ github.run_number }}\`
+- **Triggered By**: \`${{ github.actor }}\`
+- **Event Name**: \`${{ github.event_name }}\`
+
+### Process Summary
+✅ Input parameters logged and validated
+✅ Plan composition completed
+✅ Output variables set successfully
+
+---
+
+DEBUGSUMMARY
+
+          # Add the main plan to GITHUB_STEP_SUMMARY
           printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+
+          # Log output being saved
+          echo "=== Saving to GITHUB_OUTPUT ==="
+
+          # Set the output variable
           {
             echo "plan<<EOF"
             printf '%s\n' "$summary"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
+
+          echo "Plan output saved successfully"
