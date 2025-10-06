@@ -74,7 +74,6 @@ on:
           - 'book-only'
           - 'presentations-only'
           - 'whitepapers-only'
-          - 'website-only'
 
 env:
   PANDOC_VERSION: "3.1.9"
@@ -341,14 +340,9 @@ jobs:
               ls -la releases/whitepapers/ || echo "⚠️ No whitepaper files found"
               ;;
             "website-only")
-              echo "🌐 Building website only..."
-              npm run build
-              echo "📝 Verifying website build..."
-              ls -la dist/ || echo "⚠️ No dist directory found"
+              echo "🌐 Skipping website build (no frontend available)..."
               mkdir -p releases/website
-              cp -r dist/* releases/website/
-              echo "📝 Verifying website files in releases..."
-              ls -la releases/website/ | head -10
+              echo "📝 Website deliverable skipped"
               ;;
             "all"|*)
               echo "📦 Building all deliverables..."
@@ -512,11 +506,9 @@ jobs:
           python3 generate_book.py
           echo "✅ Book content generated"
 
-      - name: 🌐 Build website
+      - name: 🌐 Skip website build
         run: |
-          echo "=== Building website ==="
-          npm run build
-          echo "✅ Website built successfully"
+          echo "=== Skipping website build (no frontend available) ==="
 
       - name: 🏗️ Build all formats in Docker container
         run: |
@@ -568,7 +560,7 @@ jobs:
                   ls -la releases/whitepapers/ || echo '⚠️ No whitepaper files found'
                   ;;
                 'website-only')
-                  echo '🌐 Website already built, nothing to do in Docker...'
+                  echo '🌐 Skipping website build (no frontend available)...'
                   ;;
                 'all'|*)
                   echo '📦 Building all deliverables...' &&
@@ -603,27 +595,9 @@ jobs:
               find releases/ -type f | wc -l
             "
 
-      - name: 🌐 Copy website to release
+      - name: 🌐 Skip website copy
         run: |
-          echo "=== Copying website to release folder ==="
-          if [ -d "dist" ]; then
-            # Clean releases/website directory safely
-            if [ -d "releases/website" ]; then
-              # Change ownership if files exist (Docker may create them as different user)
-              if [ "$(ls -A releases/website/)" ]; then
-                sudo chown -R $(id -u):$(id -g) releases/website/ || true
-              fi
-              rm -rf releases/website/*
-            fi
-            cp -r dist/* releases/website/
-            echo "✅ Website copied to releases/website/"
-            echo "📝 Website files copied:"
-            find releases/website -type f | head -10
-            echo "📊 Total website files: $(find releases/website -type f | wc -l)"
-          else
-            echo "❌ Website build directory 'dist' not found"
-            exit 1
-          fi
+          echo "=== Skipping website copy (no website build artifacts) ==="
 
       - name: 🔍 Verify files were created (Docker)
         run: |
@@ -871,7 +845,6 @@ jobs:
             - ✅ Docker-optimized builds with caching
             - ✅ Traditional comprehensive builds
             - ✅ Standalone presentations and whitepapers
-            - ✅ Website generation
 
             ### 📦 Complete Release Package Contents:
 
@@ -888,15 +861,12 @@ jobs:
             - Individual HTML whitepapers for each chapter
             - `whitepapers_combined.pdf` - All whitepapers in single PDF
 
-            #### 🌐 Website
-            - Complete static website build ready for deployment
-
             **🛠️ Build Information:**
             - Built with unified workflow (replaces 3 separate workflows)
             - Pandoc ${{ env.PANDOC_VERSION }} with XeLaTeX PDF-engine
             - Docker optimization for faster builds
             - Mermaid diagrams converted to PNG
-            - React application built for production
+            - Website generation skipped (frontend not available)
             - Python-generated presentations and whitepapers
 
             **📥 Download Options:**

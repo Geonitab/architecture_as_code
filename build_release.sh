@@ -158,36 +158,11 @@ else
     exit 1
 fi
 
-# 5. Build website and copy to release
-log "🌐 Step 5: Building website..."
-if command -v npm >/dev/null 2>&1; then
-    if npm run build; then
-        log "✅ Website built successfully"
-        # Verify dist directory exists
-        verify_directory "dist" "Website build directory"
-    else
-        log "❌ Website build failed"
-        exit 1
-    fi
-else
-    log "⚠️  npm not found, skipping website build"
-    exit 1
-fi
-
-log "📋 Step 6: Copying website to release folder..."
-if [ -d "dist" ]; then
-    rm -rf releases/website/*
-    cp -r dist/* releases/website/
-    log "✅ Website copied to releases/website/"
-    # Verify website files were copied
-    verify_directory "releases/website" "Website release directory"
-else
-    log "❌ Website build directory 'dist' not found"
-    exit 1
-fi
+# 5. Website build skipped (frontend removed)
+log "🌐 Step 5: Skipping website build (no frontend available)"
 
 # 6. Generate combined whitepaper PDF (optional)
-log "📑 Step 7: Generating combined whitepaper PDF..."
+log "📑 Step 6: Generating combined whitepaper PDF..."
 if command -v pandoc >/dev/null 2>&1; then
     # Create a temporary combined markdown file from all HTML whitepapers
     log "Creating combined whitepaper content..."
@@ -233,7 +208,7 @@ else
 fi
 
 # 7. Generate presentation PDF (if PPTX exists)
-log "🎥 Step 8: Attempting to generate presentation PDF..."
+log "🎥 Step 7: Attempting to generate presentation PDF..."
 if [ -f "releases/presentation/arkitektur_som_kod_presentation.pptx" ]; then
     log "⚠️  PowerPoint to PDF conversion requires additional tools (LibreOffice or similar)"
     log "   Manual conversion recommended for presentation PDF"
