@@ -45,14 +45,21 @@ jobs:
           OBJECTIVE: ${{ inputs.objective }}
           ARCHITECTURE_CONTEXT: ${{ inputs.architecture_context }}
           COLLABORATION_NOTES: ${{ inputs.collaboration_notes }}
+          DISPATCH_OBJECTIVE: ${{ github.event.inputs.objective }}
+          DISPATCH_CONTEXT: ${{ github.event.inputs.architecture_context }}
+          DISPATCH_COLLABORATION: ${{ github.event.inputs.collaboration_notes }}
         run: |
           set -euo pipefail
-          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
-          context_value="${ARCHITECTURE_CONTEXT:-}"
+          objective_source="${OBJECTIVE:-${DISPATCH_OBJECTIVE:-}}"
+          objective="${objective_source:-Ingen specifik målsättning angiven.}"
+
+          context_source="${ARCHITECTURE_CONTEXT:-${DISPATCH_CONTEXT:-}}"
+          context_value="${context_source:-}"
           if [ -z "$context_value" ]; then
             context_value="Ingen ytterligare kontext angiven."
           fi
-          collaboration_value="${COLLABORATION_NOTES:-}"
+          collaboration_source="${COLLABORATION_NOTES:-${DISPATCH_COLLABORATION:-}}"
+          collaboration_value="${collaboration_source:-}"
           if [ -z "$collaboration_value" ]; then
             collaboration_value="Inga samarbetsnoteringar angivna."
           fi
@@ -100,9 +107,15 @@ PLAN
             )
 
           printf '%s\n' "$summary"
-          printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
-          {
-            echo "plan<<EOF"
-            printf '%s\n' "$summary"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+
+          if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+            printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -n "${GITHUB_OUTPUT:-}" ]; then
+            {
+              echo "plan<<EOF"
+              printf '%s\n' "$summary"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
