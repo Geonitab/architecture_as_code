@@ -82,64 +82,85 @@ def analyze_mermaid_diagram_types():
         return diagram_types
     
     mermaid_files = list(images_dir.glob("*.mmd"))
-    
+
     for mmd_file in mermaid_files:
         try:
-            content = mmd_file.read_text(encoding='utf-8').strip()
-            first_lines = content.split('\n')[:3]  # Check first 3 lines
-            
+            content = mmd_file.read_text(encoding='utf-8').split('\n')
+
+            filtered_lines = []
+            in_front_matter = False
+
+            for raw_line in content:
+                stripped = raw_line.strip()
+
+                if not stripped:
+                    continue
+
+                if stripped == '---':
+                    in_front_matter = not in_front_matter
+                    continue
+
+                if in_front_matter:
+                    continue
+
+                if stripped.startswith('%%'):
+                    continue
+
+                filtered_lines.append(stripped.lower())
+                if len(filtered_lines) >= 20:
+                    break
+
             diagram_type = 'other'
-            
-            for line in first_lines:
-                line = line.strip().lower()
+
+            for line in filtered_lines:
                 if line.startswith('graph ') or line.startswith('flowchart '):
                     diagram_type = 'flowchart'
                     break
-                elif line.startswith('sequencediagram'):
+                if line.startswith('sequencediagram'):
                     diagram_type = 'sequence'
                     break
-                elif line.startswith('classdiagram'):
+                if line.startswith('classdiagram'):
                     diagram_type = 'class'
                     break
-                elif line.startswith('statediagram'):
+                if line.startswith('statediagram'):
                     diagram_type = 'state'
                     break
-                elif line.startswith('erdiagram'):
+                if line.startswith('erdiagram'):
                     diagram_type = 'entity_relationship'
                     break
-                elif line.startswith('journey'):
+                if line.startswith('journey'):
                     diagram_type = 'user_journey'
                     break
-                elif line.startswith('gantt'):
+                if line.startswith('gantt'):
                     diagram_type = 'gantt'
                     break
-                elif line.startswith('pie'):
+                if line.startswith('pie'):
                     diagram_type = 'pie'
                     break
-                elif line.startswith('quadrantchart'):
+                if line.startswith('quadrantchart'):
                     diagram_type = 'quadrant'
                     break
-                elif line.startswith('requirementdiagram'):
+                if line.startswith('requirementdiagram'):
                     diagram_type = 'requirement'
                     break
-                elif line.startswith('gitgraph'):
+                if line.startswith('gitgraph'):
                     diagram_type = 'gitgraph'
                     break
-                elif line.startswith('mindmap'):
+                if line.startswith('mindmap'):
                     diagram_type = 'mindmap'
                     break
-                elif line.startswith('timeline'):
+                if line.startswith('timeline'):
                     diagram_type = 'timeline'
                     break
-                elif line.startswith('sankey'):
+                if line.startswith('sankey'):
                     diagram_type = 'sankey'
                     break
-                elif line.startswith('xychart'):
+                if line.startswith('xychart'):
                     diagram_type = 'xy_chart'
                     break
-            
+
             diagram_types[diagram_type].append(str(mmd_file))
-            
+
         except Exception as e:
             print(f"Warning: Could not analyze {mmd_file}: {e}")
     

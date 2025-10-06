@@ -4,6 +4,8 @@
 
 For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organization. When we speak about compliance as code, architecture as code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organizations can benefit from their combined strength.
 
+![Soft as code ecosystem](images/diagram_30_soft_as_code.png)
+
 ## A Shared DNA
 
 Even though the disciplines address different problem spaces, they share a common DNA. The goal is to take soft artifacts—policies, architectural principles, design descriptions, documentation, governance models—and convert them into:
@@ -98,3 +100,10 @@ At the same time, data governance, security, and ethics become even more importa
 The interplay between soft "as code" disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organizations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, architecture as code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.
 
 When these disciplines integrate, change ceases to be a threat and becomes a natural part of daily work. Teams can adapt rapidly to new requirements, experiment with new ideas, and still maintain a stable core of shared principles. The result is an organization that dares to combine softness and structure—where human creativity is supported by the precision of code.
+
+## Sources
+
+Sources:
+- [Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)
+- [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)
+- [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
