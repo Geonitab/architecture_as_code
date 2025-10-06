@@ -79,6 +79,7 @@ Organizational transformation, teams, digitalization, future trends, and conclus
 | `25_framtida_utveckling.md` | Future Development and Trends | Extended perspectives on future developments |
 | `26_appendix_kodexempel.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
 | `27_teknisk_uppbyggnad.md` | Technical Structure for Book Production | Technical book production infrastructure |
+| `28_ai_agent_team.md` | AI-agentteam för projektleverans | Struktur, roller och processer för virtuellt agentteam |
 
 ---
 
