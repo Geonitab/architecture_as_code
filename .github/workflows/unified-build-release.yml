@@ -1,10 +1,9 @@
 ---
 name: Unified Build & Release
 
-# This unified workflow consolidates complete-release.yml, build-book-fast.yml,
-# and build-book.yml into a single optimized workflow supporting both traditional
-# and Docker-based builds with comprehensive deliverable generation (books,
-# presentations, whitepapers, websites).
+# This streamlined workflow consolidates complete-release.yml, build-book-fast.yml,
+# and build-book.yml into a single optimized Docker-based workflow with comprehensive
+# deliverable generation (books, presentations, whitepapers, websites).
 #
 # SYNTAX HIGHLIGHTING:
 # - HTML deliverables (whitepapers, presentations) use Prism.js via CDN for syntax highlighting
@@ -50,15 +49,6 @@ on:
       - '.github/workflows/unified-build-release.yml'
   workflow_dispatch:
     inputs:
-      build_type:
-        description: 'Build Environment Type'
-        required: false
-        default: 'both'
-        type: choice
-        options:
-          - 'traditional'
-          - 'docker'
-          - 'both'
       create_release:
         description: 'Create GitHub Release'
         required: false
@@ -81,385 +71,23 @@ env:
   ARTIFACT_RETENTION_DAYS: 30
 
 jobs:
-  # Determine build strategy based on inputs or defaults
+  # Determine deliverables based on inputs or defaults
   setup:
-    name: 🔧 Setup Build Strategy
+    name: 🔧 Setup Build Configuration
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
-      run_traditional: ${{ steps.strategy.outputs.run_traditional }}
-      run_docker: ${{ steps.strategy.outputs.run_docker }}
       build_deliverables: ${{ steps.strategy.outputs.build_deliverables }}
     steps:
-      - name: 📋 Determine build strategy
+      - name: 📋 Determine build configuration
         id: strategy
         run: |
-          echo "=== Determining Build Strategy ==="
+          echo "=== Determining Build Configuration ==="
 
-          # Determine build type
-          BUILD_TYPE="${{ github.event.inputs.build_type || 'both' }}"
           DELIVERABLES="${{ github.event.inputs.deliverables || 'all' }}"
-
-          case $BUILD_TYPE in
-            "traditional")
-              echo "run_traditional=true" >> $GITHUB_OUTPUT
-              echo "run_docker=false" >> $GITHUB_OUTPUT
-              echo "🏗️ Build strategy: Traditional environment only"
-              ;;
-            "docker")
-              echo "run_traditional=false" >> $GITHUB_OUTPUT
-              echo "run_docker=true" >> $GITHUB_OUTPUT
-              echo "🐳 Build strategy: Docker environment only"
-              ;;
-            "both"|*)
-              echo "run_traditional=true" >> $GITHUB_OUTPUT
-              echo "run_docker=true" >> $GITHUB_OUTPUT
-              echo "🔄 Build strategy: Both traditional and Docker environments"
-              ;;
-          esac
 
           echo "build_deliverables=$DELIVERABLES" >> $GITHUB_OUTPUT
           echo "📦 Deliverables to build: $DELIVERABLES"
-
-  # Traditional comprehensive build (equivalent to complete-release.yml)
-  traditional-build:
-    name: 🚀 Traditional Complete Build
-    runs-on: ubuntu-latest
-    timeout-minutes: 90
-    needs: setup
-    if: needs.setup.outputs.run_traditional == 'true'
-
-    steps:
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🐍 Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
-
-      - name: 🔧 Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: 📦 Cache dependencies and tools
-        uses: actions/cache@v3
-        with:
-          path: |
-            /var/cache/apt
-            ~/.cache/pip
-            ~/.local/share/pandoc
-            ~/.npm
-            ~/.cache/puppeteer
-          key: ${{ runner.os }}-unified-traditional-${{ env.PANDOC_VERSION }}-v1
-          restore-keys: |
-            ${{ runner.os }}-unified-traditional-
-
-      - name: 🔧 Install system dependencies
-        run: |
-          echo "=== Installing system dependencies ==="
-          sudo apt-get update
-          echo "Installing TeXLive and related packages..."
-          sudo apt-get install -y \
-            texlive-xetex \
-            texlive-fonts-recommended \
-            texlive-plain-generic \
-            texlive-latex-extra \
-            texlive-luatex \
-            texlive-fonts-extra \
-            librsvg2-bin \
-            fonts-liberation \
-            fonts-dejavu \
-            fonts-lmodern \
-            lmodern \
-            zip \
-            openjdk-11-jdk \
-            wget \
-            unzip
-          echo "✅ System dependencies installed"
-
-      - name: 📚 Install EPUBCheck
-        run: |
-          echo "=== Installing EPUBCheck for EPUB validation ==="
-          cd /tmp
-          wget -q https://github.com/w3c/epubcheck/releases/download/v5.1.0/epubcheck-5.1.0.zip
-          unzip -q epubcheck-5.1.0.zip
-          sudo mv epubcheck-5.1.0 /opt/
-          sudo ln -sf /opt/epubcheck-5.1.0/epubcheck.jar /usr/local/bin/
-          
-          # Create wrapper script
-          echo '#!/bin/bash' | sudo tee /usr/local/bin/epubcheck
-          echo 'java -jar /opt/epubcheck-5.1.0/epubcheck.jar "$@"' | sudo tee -a /usr/local/bin/epubcheck
-          sudo chmod +x /usr/local/bin/epubcheck
-          
-          # Test EPUBCheck installation
-          epubcheck --version
-          echo "✅ EPUBCheck installed and ready"
-
-      - name: 📚 Install Pandoc
-        run: |
-          echo "=== Installing Pandoc $PANDOC_VERSION ==="
-          wget -q https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/pandoc-$PANDOC_VERSION-1-amd64.deb
-          sudo dpkg -i pandoc-$PANDOC_VERSION-1-amd64.deb
-          pandoc --version
-          echo "✅ Pandoc installed"
-
-      - name: 🎨 Install Mermaid CLI and Chrome
-        run: |
-          echo "=== Installing Mermaid CLI and Chrome ==="
-
-          # Install Chrome
-          echo "📥 Adding Google Chrome repository..."
-          curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /tmp/google-chrome.gpg
-          sudo install -o root -g root -m 644 /tmp/google-chrome.gpg /etc/apt/trusted.gpg.d/
-          echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google.list
-
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
-          # Install Mermaid CLI
-          echo "📦 Installing Mermaid CLI..."
-          npm config set fund false
-          PUPPETEER_SKIP_DOWNLOAD=true npm install -g @mermaid-js/mermaid-cli
-
-          # Verify installations
-          google-chrome --version
-          mmdc --version
-
-          echo "✅ Mermaid CLI and Chrome installation completed"
-
-      - name: 📋 Setup Pandoc template
-        run: |
-          echo "=== Setting up Pandoc template ==="
-          mkdir -p ~/.local/share/pandoc/templates
-
-          # Try to download Eisvogel template
-          echo "📥 Attempting to download Eisvogel template..."
-          LATEST_VERSION=$(curl -s https://api.github.com/repos/Wandmalfarbe/pandoc-latex-template/releases/latest | grep '"tag_name"' | cut -d'"' -f4)
-
-          if [ -n "$LATEST_VERSION" ]; then
-            echo "📦 Latest version: $LATEST_VERSION"
-            curl -L "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/download/$LATEST_VERSION/Eisvogel.tar.gz" -o /tmp/eisvogel.tar.gz
-
-            if [ -f /tmp/eisvogel.tar.gz ]; then
-              cd /tmp && tar -xzf eisvogel.tar.gz
-              TEMPLATE_FILE=$(find /tmp -name "eisvogel.latex" | head -1)
-              if [ -n "$TEMPLATE_FILE" ]; then
-                cp "$TEMPLATE_FILE" ~/.local/share/pandoc/templates/
-                echo "✅ Eisvogel template installed"
-              fi
-            fi
-          fi
-
-          # Fallback to pandoc default if Eisvogel failed
-          if [ ! -f ~/.local/share/pandoc/templates/eisvogel.latex ]; then
-            echo "🔄 Using pandoc default template as fallback..."
-            pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
-            echo "✅ Fallback template installed"
-          fi
-
-      - name: 📦 Install Node.js dependencies
-        run: |
-          echo "=== Installing Node.js dependencies ==="
-          npm ci --legacy-peer-deps
-          echo "✅ Node.js dependencies installed"
-
-      - name: 📦 Install Python dependencies
-        run: |
-          echo "=== Installing Python dependencies ==="
-          python3 -m pip install --upgrade pip
-          pip install python-pptx>=0.6.21
-          echo "✅ Python dependencies installed"
-
-      - name: 🧪 Test content generation capability
-        run: |
-          echo "=== Testing basic content generation ==="
-          echo "🐍 Python version: $(python3 --version)"
-          echo "📄 Testing generate_book.py..."
-          python3 -c "import os; print('📁 Current directory:', os.getcwd()); print('📄 Files:', os.listdir('.'))"
-          
-          # Test basic script functionality
-          python3 -c "
-          try:
-              exec(open('generate_book.py').read())
-              print('✅ generate_book.py syntax is valid')
-          except Exception as e:
-              print(f'❌ generate_book.py has issues: {e}')
-          "
-          
-          echo "📄 Testing docs directory..."
-          ls -la docs/ | head -10
-
-      - name: 🏗️ Build complete release (traditional)
-        run: |
-          echo "=== Running traditional complete release build ==="
-          export PUPPETEER_EXECUTABLE_PATH=$(which google-chrome)
-
-          # Create release directory structure upfront
-          echo "📁 Creating release directory structure..."
-          mkdir -p releases/{book,presentation,whitepapers,website}
-          echo "✅ Release directories created:"
-          ls -la releases/
-
-          # Make scripts executable
-          chmod +x build_release.sh
-          chmod +x docs/build_book.sh
-
-          # Check what deliverables to build
-          DELIVERABLES="${{ needs.setup.outputs.build_deliverables }}"
-          echo "🎯 Building deliverables: $DELIVERABLES"
-          
-          case $DELIVERABLES in
-            "book-only")
-              echo "📖 Building book formats only..."
-              echo "📝 Step 1: Generating book content..."
-              python3 generate_book.py
-              echo "📝 Step 2: Building book formats..."
-              cd docs && ./build_book.sh --release && cd ..
-              echo "📝 Step 3: Verifying book files..."
-              ls -la docs/arkitektur_som_kod.* || echo "⚠️ No book files found in docs/"
-              echo "📝 Step 4: Copying book files to releases..."
-              mkdir -p releases/book
-              cp docs/arkitektur_som_kod.* releases/book/ 2>/dev/null || echo "⚠️ Could not copy book files"
-              echo "📝 Step 5: Verifying book files in releases..."
-              ls -la releases/book/ || echo "⚠️ No book files found in releases/book/"
-              ;;
-            "presentations-only")
-              echo "🎤 Building presentations only..."
-              python3 generate_presentation.py --release
-              echo "📝 Verifying presentation files..."
-              ls -la releases/presentation/ || echo "⚠️ No presentation files found"
-              ;;
-            "whitepapers-only")
-              echo "📄 Building whitepapers only..."
-              python3 generate_whitepapers.py --release
-              echo "📝 Verifying whitepaper files..."
-              ls -la releases/whitepapers/ || echo "⚠️ No whitepaper files found"
-              ;;
-            "website-only")
-              echo "🌐 Building website only..."
-              npm run build
-              echo "📝 Verifying website build..."
-              ls -la dist/ || echo "⚠️ No dist directory found"
-              mkdir -p releases/website
-              cp -r dist/* releases/website/
-              echo "📝 Verifying website files in releases..."
-              ls -la releases/website/ | head -10
-              ;;
-            "all"|*)
-              echo "📦 Building all deliverables..."
-              ./build_release.sh
-              ;;
-          esac
-
-          echo "✅ Traditional build completed"
-
-      - name: 🔍 Verify files were created (traditional)
-        run: |
-          echo "=== Verifying traditional build output files ==="
-          
-          echo "📁 Release directory structure:"
-          find releases/ -type d | sort
-          
-          echo ""
-          echo "📄 All files in releases directory:"
-          find releases/ -type f | sort
-          
-          echo ""
-          echo "📊 File count by directory:"
-          for dir in releases/*/; do
-            if [ -d "$dir" ]; then
-              count=$(find "$dir" -type f | wc -l)
-              echo "  $(basename "$dir"): $count files"
-            fi
-          done
-          
-          echo ""
-          echo "🔍 Checking for expected key files:"
-          
-          # Check for book files
-          if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
-            echo "✅ Book PDF found ($(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}'))"
-          else
-            echo "❌ Book PDF not found"
-          fi
-          
-          # Check for presentation files
-          presentation_files=$(find releases/presentation -name "*.md" -o -name "*.py" -o -name "*.txt" -o -name "*.pptx" | wc -l)
-          if [ "$presentation_files" -gt 0 ]; then
-            echo "✅ Presentation materials found ($presentation_files files)"
-          else
-            echo "❌ No presentation materials found"
-          fi
-          
-          # Check for whitepaper files
-          whitepaper_files=$(find releases/whitepapers -name "*.html" -o -name "*.pdf" | wc -l)
-          if [ "$whitepaper_files" -gt 0 ]; then
-            echo "✅ Whitepaper files found ($whitepaper_files files)"
-          else
-            echo "❌ No whitepaper files found"
-          fi
-          
-          # Check for website files
-          website_files=$(find releases/website -type f | wc -l)
-          if [ "$website_files" -gt 0 ]; then
-            echo "✅ Website files found ($website_files files)"
-          else
-            echo "❌ No website files found"
-          fi
-
-      - name: 📊 Traditional build summary
-        run: |
-          echo "=== Traditional Build Summary ==="
-
-          echo "📚 Book formats:"
-          if [ -d "releases/book" ]; then
-            ls -la releases/book/ || echo "   No book files found"
-            if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
-              echo "   📖 PDF size: $(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}')"
-            fi
-          fi
-
-          echo ""
-          echo "🎤 Presentation materials:"
-          if [ -d "releases/presentation" ]; then
-            ls -la releases/presentation/ || echo "   No presentation files found"
-          fi
-
-          echo ""
-          echo "📄 Whitepapers:"
-          if [ -d "releases/whitepapers" ]; then
-            whitepaper_count=$(ls releases/whitepapers/*.html 2>/dev/null | wc -l || echo "0")
-            echo "   $whitepaper_count HTML whitepaper files"
-            if [ -f "releases/whitepapers/whitepapers_combined.pdf" ]; then
-              echo "   ✅ Combined PDF generated"
-            fi
-          fi
-
-          echo ""
-          echo "🌐 Website:"
-          if [ -d "releases/website" ] && [ "$(ls -A releases/website)" ]; then
-            website_files=$(find releases/website -type f | wc -l)
-            echo "   $website_files files copied to releases/website/"
-          else
-            echo "   No website files found"
-          fi
-
-          echo ""
-          echo "📁 Total release size: $(du -sh releases/ | awk '{print $1}')"
-          echo "⏰ Traditional build completed at: $(date)"
-
-      - name: 📤 Upload traditional build artifacts
-        uses: actions/upload-artifact@v4
-        if: success()
-        with:
-          name: unified-traditional-build
-          path: releases/
-          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
   # Docker-optimized build (equivalent to build-book-fast.yml)
   docker-build:
@@ -467,7 +95,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     needs: setup
-    if: needs.setup.outputs.run_docker == 'true'
 
     steps:
       - name: 📥 Checkout repository
@@ -736,8 +363,8 @@ jobs:
     name: 📦 Finalize & Release
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    needs: [setup, traditional-build, docker-build]
-    if: always() && (needs.traditional-build.result == 'success' || needs.docker-build.result == 'success')
+    needs: [setup, docker-build]
+    if: always() && needs.docker-build.result == 'success'
 
     steps:
       - name: 📥 Checkout repository
@@ -763,27 +390,19 @@ jobs:
             find artifacts/ -type f | sort
           fi
 
-          # Prefer traditional build results, fallback to docker
-          if [ -d "artifacts/unified-traditional-build" ]; then
-            echo "📋 Using traditional build results as primary"
-            echo "📄 Traditional build contents:"
-            find artifacts/unified-traditional-build/ -type f | sort
-            cp -r artifacts/unified-traditional-build/* final-release/
-            BUILD_SOURCE="traditional"
-          elif [ -d "artifacts/unified-docker-build" ]; then
+          if [ -d "artifacts/unified-docker-build" ]; then
             echo "🐳 Using docker build results"
             echo "📄 Docker build contents:"
             find artifacts/unified-docker-build/ -type f | sort
             cp -r artifacts/unified-docker-build/* final-release/
-            BUILD_SOURCE="docker"
           else
-            echo "❌ No successful build artifacts found"
+            echo "❌ No successful Docker build artifacts found"
             echo "Available directories in artifacts/:"
             ls -la artifacts/ 2>/dev/null || echo "No artifacts directory exists"
             exit 1
           fi
 
-          echo "✅ Build results merged from $BUILD_SOURCE build"
+          echo "✅ Build results merged from docker build"
           echo ""
           echo "📁 Final release structure:"
           find final-release -type d | sort
@@ -866,10 +485,9 @@ jobs:
 
             **🔄 Unified Build Process**
 
-            This release was generated using the new unified workflow that consolidates:
+            This release was generated using the unified Docker-based workflow that consolidates:
             - ✅ Complete release functionality (all formats)
             - ✅ Docker-optimized builds with caching
-            - ✅ Traditional comprehensive builds
             - ✅ Standalone presentations and whitepapers
             - ✅ Website generation
 
