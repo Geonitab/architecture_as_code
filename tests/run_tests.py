@@ -30,8 +30,24 @@ def install_requirements():
             return False
     return True
 
+def ensure_dependencies_installed():
+    """Ensure runtime Python dependencies required by the test suite are available."""
+
+    try:
+        import yaml  # noqa: F401 - we only need to ensure the package can be imported
+    except ModuleNotFoundError:
+        print("Required dependency 'pyyaml' is missing. Attempting automatic installation...")
+        if not install_requirements():
+            print("Failed to install required test dependencies. Aborting.")
+            return False
+    return True
+
+
 def run_tests(test_type="all", verbose=True, generate_report=True):
     """Run content validation tests."""
+
+    if not ensure_dependencies_installed():
+        return 1
     
     # Ensure we're in the right directory
     script_dir = Path(__file__).parent
