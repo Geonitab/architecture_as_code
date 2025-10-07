@@ -13,7 +13,14 @@ permissions:
   issues: write
 
 jobs:
+  delay_for_issue_response:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for issue response labeling
+        run: sleep 15
+
   prepare_design_pr:
+    needs: delay_for_issue_response
     if: >-
       contains(github.event.issue.labels.*.name, 'design') ||
       contains(github.event.issue.labels.*.name, 'Design') ||
