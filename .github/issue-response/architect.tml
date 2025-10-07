@@ -1,0 +1,12 @@
+Hello! After reviewing this issue, the {{bot_name}} bot will take the lead.
+
+**Architect Mission**
+- Translate "{{issue_title}}" into an architecture deliverable that aligns with the programme guardrails.
+- Confirm integration points, critical data flows, and non-functional constraints before implementation work begins.
+
+**Immediate Next Steps**
+1. Capture the current baseline architecture and highlight impacted components.
+2. Draft a proposed target architecture or sequence of diagrams outlining the desired end state.
+3. List technical risks, dependencies, and follow-up questions for the Developer and Project Manager bots.
+
+The Architect bot will share the first architecture outline shortly so the rest of the team can proceed with confidence.
