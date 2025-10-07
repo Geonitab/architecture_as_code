@@ -39,17 +39,17 @@ jobs:
 
             const botAssignments = [
               { name: 'Designer', keywords: ['ui', 'ux', 'visual', 'styling', 'layout', 'mockup', 'branding'] },
-              { name: 'Arkitekt', keywords: ['architecture', 'architectural', 'blueprint', 'system layout', 'system map', 'infrastructure'] },
-              { name: 'Kvalitetskontroll', keywords: ['bug', 'issue', 'error', 'test', 'testing', 'qa', 'quality', 'failure'] },
-              { name: 'Utvecklare', keywords: ['develop', 'development', 'implement', 'implementation', 'code', 'coding', 'feature', 'fix'] },
-              { name: 'Dokumentatör', keywords: ['documentation', 'document', 'docs', 'guide', 'manual', 'readme'] },
-              { name: 'Kravanalytiker', keywords: ['requirement', 'requirements', 'analysis', 'specification', 'user story', 'acceptance criteria'] },
-              { name: 'Redaktör', keywords: ['edit', 'editing', 'copy', 'proofread', 'language', 'grammar', 'tone'] },
+              { name: 'Architect', keywords: ['architecture', 'architectural', 'blueprint', 'system layout', 'system map', 'infrastructure'] },
+              { name: 'Quality Assurance', keywords: ['bug', 'issue', 'error', 'test', 'testing', 'qa', 'quality', 'failure'] },
+              { name: 'Developer', keywords: ['develop', 'development', 'implement', 'implementation', 'code', 'coding', 'feature', 'fix'] },
+              { name: 'Documentarian', keywords: ['documentation', 'document', 'docs', 'guide', 'manual', 'readme'] },
+              { name: 'Requirements Analyst', keywords: ['requirement', 'requirements', 'analysis', 'specification', 'user story', 'acceptance criteria'] },
+              { name: 'Editor', keywords: ['edit', 'editing', 'copy', 'proofread', 'language', 'grammar', 'tone'] },
             ];
 
             const assignedBot = botAssignments.find(({ keywords }) =>
               keywords.some((keyword) => content.includes(keyword))
-            )?.name || 'Kravanalytiker';
+            )?.name || 'Requirements Analyst';
 
             await github.rest.issues.createComment({
               owner,
