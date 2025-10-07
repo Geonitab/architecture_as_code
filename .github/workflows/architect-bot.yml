@@ -48,6 +48,9 @@ jobs:
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          OPENAI_API_KEY: ${{ secrets.ARCHITECT_BOT_OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.ARCHITECT_BOT_MODEL }}
+          OPENAI_BASE_URL: ${{ vars.ARCHITECT_BOT_OPENAI_BASE_URL }}
 
       - name: Create architecture response pull request
         uses: peter-evans/create-pull-request@v6
