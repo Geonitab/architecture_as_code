@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       objective:
-        description: "Vilken designuppgift ska prioriteras?"
+        description: "Which design task should be prioritized?"
         required: true
       design_brief:
-        description: "Länk eller sammanfattning av krav, användarflöden eller varumärkesmål"
+        description: "Link or summary of requirements, user flows, or brand goals"
         required: false
         default: ""
       research_notes:
-        description: "Insikter från användartester, workshops eller tidigare iterationer"
+        description: "Insights from user tests, workshops, or previous iterations"
         required: false
         default: ""
   workflow_call:
@@ -29,17 +29,17 @@ on:
         default: ""
     outputs:
       plan:
-        description: "Designer-agentens plan"
+        description: "Designer agent plan"
         value: ${{ jobs.plan.outputs.plan }}
 
 jobs:
   plan:
-    name: Sammanställ designplan
+    name: Compile design plan
     runs-on: ubuntu-latest
     outputs:
       plan: ${{ steps.compose.outputs.plan }}
     steps:
-      - name: Komponera plan
+      - name: Compose plan
         id: compose
         env:
           OBJECTIVE: ${{ inputs.objective }}
@@ -47,14 +47,14 @@ jobs:
           RESEARCH_NOTES: ${{ inputs.research_notes }}
         run: |
           set -euo pipefail
-          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          objective="${OBJECTIVE:-No specific objective provided.}"
           brief_value="${DESIGN_BRIEF:-}"
           if [ -z "$brief_value" ]; then
-            brief_value="Inget designunderlag angivet."
+            brief_value="No design brief provided."
           fi
           research_value="${RESEARCH_NOTES:-}"
           if [ -z "$research_value" ]; then
-            research_value="Inga researchnoteringar angivna."
+            research_value="No research notes provided."
           fi
 
           export AGENT_OBJECTIVE="$objective"
@@ -63,39 +63,39 @@ jobs:
 
           summary=$(
             cat <<PLAN
-# Designer-agentens plan
+# Designer agent plan
 
-## Mål
+## Objectives
 $AGENT_OBJECTIVE
 
-## Designunderlag
+## Design brief
 $AGENT_BRIEF
 
-## Research- och inspirationsnoter
+## Research and inspiration notes
 $AGENT_RESEARCH
 
-## Primära ansvar enligt 28_ai_agent_team.md
-- Ta fram wireframes, skisser och interaktionsflöden.
-- Säkerställa efterlevnad av design- och varumärkesriktlinjer.
-- Validera förslag tillsammans med Developer och Quality Control.
-- Dokumentera designbeslut och komponentbibliotek.
+## Primary responsibilities from 28_ai_agent_team.md
+- Produce wireframes, sketches, and interaction flows.
+- Ensure adherence to design and brand guidelines.
+- Validate proposals together with the Developer and Quality Control.
+- Document design decisions and the component library.
 
-## Rekommenderad arbetsgång
-1. Bekräfta användarbehov och KPI:er tillsammans med Requirements Analyst.
-2. Ta fram eller uppdatera wireframes/prototyper baserat på designbriefen.
-3. Synka med Architect om arkitekturpåverkan och med Developer om implementeringsförutsättningar.
-4. Förbereda material för kvalitetsgranskning och demo.
-5. Uppdatera designbiblioteket och länka nya resurser till Editor.
+## Recommended workflow
+1. Confirm user needs and KPIs together with the Requirements Analyst.
+2. Create or update wireframes/prototypes based on the design brief.
+3. Sync with the Architect on architectural impact and with the Developer on implementation feasibility.
+4. Prepare materials for quality review and demos.
+5. Update the design library and link new resources for the Editor.
 
-## Leverabler
-- Uppdaterade wireframes eller prototyper.
-- Dokumenterade interaktionsflöden och komponentbeskrivningar.
-- Feedbacklista och rekommenderade nästa iterationer.
+## Deliverables
+- Updated wireframes or prototypes.
+- Documented interaction flows and component descriptions.
+- Feedback list and recommended next iterations.
 
-## Kontrollpunkter
-- Stäm av mot varumärkes- och tillgänglighetskrav.
-- Säkerställ att designen täcker prioriterade user stories.
-- Kommunicera beroenden och beslut till Project Manager.
+## Checkpoints
+- Align with brand and accessibility requirements.
+- Ensure the design covers prioritized user stories.
+- Communicate dependencies and decisions to the Project Manager.
 PLAN
           )
 

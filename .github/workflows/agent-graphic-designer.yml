@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       objective:
-        description: "Vilken grafisk leverans ska tas fram?"
+        description: "Which graphic deliverable should be produced?"
         required: true
       visual_scope:
-        description: "Vilka diagram, illustrationer eller media ska produceras?"
+        description: "Which diagrams, illustrations, or media should be produced?"
         required: false
         default: ""
       asset_requests:
-        description: "Önskade format, färdiga mallar eller brand-krav"
+        description: "Requested formats, ready-made templates, or brand requirements"
         required: false
         default: ""
   workflow_call:
@@ -29,17 +29,17 @@ on:
         default: ""
     outputs:
       plan:
-        description: "Graphic Designer-agentens plan"
+        description: "Graphic Designer plan"
         value: ${{ jobs.plan.outputs.plan }}
 
 jobs:
   plan:
-    name: Sammanställ grafisk plan
+    name: Compile graphic plan
     runs-on: ubuntu-latest
     outputs:
       plan: ${{ steps.compose.outputs.plan }}
     steps:
-      - name: Komponera plan
+      - name: Compose plan
         id: compose
         env:
           OBJECTIVE: ${{ inputs.objective }}
@@ -47,14 +47,14 @@ jobs:
           ASSET_REQUESTS: ${{ inputs.asset_requests }}
         run: |
           set -euo pipefail
-          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          objective="${OBJECTIVE:-No specific objective provided.}"
           scope_value="${VISUAL_SCOPE:-}"
           if [ -z "$scope_value" ]; then
-            scope_value="Inget visuellt scope angivet."
+            scope_value="No visual scope provided."
           fi
           asset_value="${ASSET_REQUESTS:-}"
           if [ -z "$asset_value" ]; then
-            asset_value="Inga särskilda format- eller mallönskemål angivna."
+            asset_value="No specific format or template requests provided."
           fi
 
           export AGENT_OBJECTIVE="$objective"
@@ -63,39 +63,39 @@ jobs:
 
           summary=$(
             cat <<PLAN
-# Graphic Designer-agentens plan
+# Graphic Designer plan
 
-## Mål
+## Objectives
 $AGENT_OBJECTIVE
 
-## Visuellt scope
+## Visual scope
 $AGENT_SCOPE
 
-## Begärda tillgångar och format
+## Requested assets and formats
 $AGENT_ASSETS
 
-## Primära ansvar enligt 28_ai_agent_team.md
-- Producera visuella diagram och illustrationer för arkitektur och processer.
-- Säkerställa att visualiseringar är korrekta och integrerade i dokumentation.
-- Underhålla bibliotek av grafiska komponenter och teman.
-- Ta fram snabbskisser som stöd för Designer och Developer.
+## Primary responsibilities from 28_ai_agent_team.md
+- Produce visual diagrams and illustrations for architecture and processes.
+- Ensure visualizations are accurate and integrated into documentation.
+- Maintain a library of graphic components and themes.
+- Create quick sketches to support the Designer and Developer.
 
-## Rekommenderad arbetsgång
-1. Bekräfta leveransmål och målgrupp med Project Manager och Architect.
-2. Samla nödvändigt källdata från Architect, Designer och Editor.
-3. Skapa eller uppdatera diagram med överenskommen stil (Mermaid/PlantUML/Illustrator).
-4. Utföra kvalitetskontroll mot brand guidelines och tekniska krav.
-5. Leverera filer och länkar till Editor samt dokumentera versionsinformation.
+## Recommended workflow
+1. Confirm delivery goals and target audience with the Project Manager and Architect.
+2. Gather necessary source data from the Architect, Designer, and Editor.
+3. Create or update diagrams using the agreed style (Mermaid/PlantUML/Illustrator).
+4. Perform quality checks against brand guidelines and technical requirements.
+5. Deliver files and links to the Editor and document version information.
 
-## Leverabler
-- Uppdaterade diagram eller visuella resurser enligt scope.
-- Exporter i önskade format (SVG/PNG/PDF) samt källfiler.
-- Versionslogg och rekommendationer för vidare iterationer.
+## Deliverables
+- Updated diagrams or visual assets according to the scope.
+- Exports in requested formats (SVG/PNG/PDF) and source files.
+- Version log and recommendations for further iterations.
 
-## Kontrollpunkter
-- Verifiera att grafiken är spårbar till arkitektur- och kravbeslut.
-- Säkerställ att tillgänglighets- och kontrastkrav uppfylls.
-- Kommunicera eventuella blockerare eller behov av kompletterande data.
+## Checkpoints
+- Verify that the visuals map back to architecture and requirements decisions.
+- Ensure accessibility and contrast requirements are met.
+- Communicate blockers or the need for additional data.
 PLAN
           )
 

@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       objective:
-        description: "Vilken dokumentationsuppgift ska slutföras?"
+        description: "Which documentation task should be completed?"
         required: true
       documentation_scope:
-        description: "Vilka dokument, sektioner eller format ska uppdateras?"
+        description: "Which documents, sections, or formats should be updated?"
         required: false
         default: ""
       style_notes:
-        description: "Riktlinjer, språknoteringar eller källor som måste följas"
+        description: "Guidelines, language notes, or sources that must be followed"
         required: false
         default: ""
   workflow_call:
@@ -29,17 +29,17 @@ on:
         default: ""
     outputs:
       plan:
-        description: "Editor-agentens plan"
+        description: "Editor plan"
         value: ${{ jobs.plan.outputs.plan }}
 
 jobs:
   plan:
-    name: Sammanställ dokumentationsplan
+    name: Compile documentation plan
     runs-on: ubuntu-latest
     outputs:
       plan: ${{ steps.compose.outputs.plan }}
     steps:
-      - name: Komponera plan
+      - name: Compose plan
         id: compose
         env:
           OBJECTIVE: ${{ inputs.objective }}
@@ -47,14 +47,14 @@ jobs:
           STYLE_NOTES: ${{ inputs.style_notes }}
         run: |
           set -euo pipefail
-          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          objective="${OBJECTIVE:-No specific objective provided.}"
           scope_value="${DOCUMENTATION_SCOPE:-}"
           if [ -z "$scope_value" ]; then
-            scope_value="Inget dokumentationsomfång angivet."
+            scope_value="No documentation scope provided."
           fi
           style_value="${STYLE_NOTES:-}"
           if [ -z "$style_value" ]; then
-            style_value="Inga stil- eller språknoter angivna."
+            style_value="No style or language notes provided."
           fi
 
           export AGENT_OBJECTIVE="$objective"
@@ -63,39 +63,39 @@ jobs:
 
           summary=$(
             cat <<PLAN
-# Editor-agentens plan
+# Editor plan
 
-## Mål
+## Objectives
 $AGENT_OBJECTIVE
 
-## Dokumentationsomfång
+## Documentation scope
 $AGENT_SCOPE
 
-## Stil- och språknoter
+## Style and language notes
 $AGENT_STYLE
 
-## Primära ansvar enligt 28_ai_agent_team.md
-- Skapa och uppdatera dokumentation i docs/ och relaterade filer.
-- Säkerställa struktur, språkstandard och versionsspårning.
-- Synkronisera med Requirements Analyst och Designer för uppdaterade beslut.
-- Sammanställa sprintanteckningar och kunskapsmaterial.
+## Primary responsibilities from 28_ai_agent_team.md
+- Create and update documentation in docs/ and related files.
+- Ensure structure, language standards, and version tracking.
+- Sync with the Requirements Analyst and Designer for the latest decisions.
+- Compile sprint notes and knowledge materials.
 
-## Rekommenderad arbetsgång
-1. Inventera befintliga dokument och identifiera vad som behöver ändras.
-2. Uppdatera innehåll enligt riktlinjer och spåra ändringar i changelog.
-3. Verifiera att dokumentationen speglar senaste krav, design och implementering.
-4. Koordinera med Graphic Designer om visualiseringar behöver uppdateras.
-5. Leverera publiceringsredo material och meddela Project Manager.
+## Recommended workflow
+1. Review existing documents and identify what needs to change.
+2. Update content according to guidelines and track changes in the changelog.
+3. Verify that the documentation reflects the latest requirements, design, and implementation.
+4. Coordinate with the Graphic Designer if visualizations need updates.
+5. Deliver publication-ready material and notify the Project Manager.
 
-## Leverabler
-- Uppdaterade dokument med versionsnoteringar.
-- Kommunikationsunderlag eller release-notiser till projektägaren.
-- Lista över eventuella uppföljningsaktiviteter eller saknade källor.
+## Deliverables
+- Updated documents with version notes.
+- Communication materials or release notes for the project owner.
+- List of follow-up activities or missing sources.
 
-## Kontrollpunkter
-- Säkerställ språkgranskning och konsekvent terminologi.
-- Håll docs/README.md uppdaterad med senaste ändringar.
-- Bekräfta att QA- och kravartefakter refereras korrekt.
+## Checkpoints
+- Ensure language review and consistent terminology.
+- Keep docs/README.md updated with the latest changes.
+- Confirm that QA and requirements artifacts are referenced correctly.
 PLAN
           )
 

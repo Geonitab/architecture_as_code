@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       objective:
-        description: "Vilken kvalitetssäkringsuppgift ska genomföras?"
+        description: "Which quality assurance task should be performed?"
         required: true
       test_scope:
-        description: "Vilka komponenter, funktioner eller riskområden ska testas?"
+        description: "Which components, features, or risk areas should be tested?"
         required: false
         default: ""
       defect_context:
-        description: "Kända defekter, blockerare eller risknivåer"
+        description: "Known defects, blockers, or risk levels"
         required: false
         default: ""
   workflow_call:
@@ -29,17 +29,17 @@ on:
         default: ""
     outputs:
       plan:
-        description: "Quality Control-agentens plan"
+        description: "Quality Control plan"
         value: ${{ jobs.plan.outputs.plan }}
 
 jobs:
   plan:
-    name: Sammanställ QA-plan
+    name: Compile QA plan
     runs-on: ubuntu-latest
     outputs:
       plan: ${{ steps.compose.outputs.plan }}
     steps:
-      - name: Komponera plan
+      - name: Compose plan
         id: compose
         env:
           OBJECTIVE: ${{ inputs.objective }}
@@ -47,14 +47,14 @@ jobs:
           DEFECT_CONTEXT: ${{ inputs.defect_context }}
         run: |
           set -euo pipefail
-          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          objective="${OBJECTIVE:-No specific objective provided.}"
           scope_value="${TEST_SCOPE:-}"
           if [ -z "$scope_value" ]; then
-            scope_value="Inget testscope angivet."
+            scope_value="No test scope provided."
           fi
           defect_value="${DEFECT_CONTEXT:-}"
           if [ -z "$defect_value" ]; then
-            defect_value="Inga kända defekter eller risker angivna."
+            defect_value="No known defects or risks provided."
           fi
 
           export AGENT_OBJECTIVE="$objective"
@@ -63,39 +63,39 @@ jobs:
 
           summary=$(
             cat <<PLAN
-# Quality Control-agentens plan
+# Quality Control plan
 
-## Mål
+## Objectives
 $AGENT_OBJECTIVE
 
-## Testscope
+## Test scope
 $AGENT_SCOPE
 
-## Defekt- och riskkontext
+## Defect and risk context
 $AGENT_DEFECTS
 
-## Primära ansvar enligt 28_ai_agent_team.md
-- Underhålla testsviter (enhet, integration, E2E).
-- Genomföra kvalitetsgranskningar av kod och dokumentation.
-- Samla mätvärden för testresultat, bugghantering och releasekvalitet.
-- Rekommendera process- och verktygsförbättringar.
+## Primary responsibilities from 28_ai_agent_team.md
+- Maintain test suites (unit, integration, E2E).
+- Perform quality reviews of code and documentation.
+- Collect metrics for test results, bug management, and release quality.
+- Recommend process and tooling improvements.
 
-## Rekommenderad arbetsgång
-1. Bekräfta testmålen med Project Manager och Developer.
-2. Uppdatera testdata och körplan för prioriterade områden.
-3. Kör automatiserade och manuella tester, dokumentera resultat.
-4. Sammanställ kvalitetsindikatorer (täckning, defekter, blockerare).
-5. Leverera rapport med rekommendationer och klartecken/åtgärdspunkter.
+## Recommended workflow
+1. Confirm test objectives with the Project Manager and Developer.
+2. Update test data and execution plans for prioritized areas.
+3. Run automated and manual tests, documenting the results.
+4. Compile quality indicators (coverage, defects, blockers).
+5. Deliver a report with recommendations and go/no-go actions.
 
-## Leverabler
-- Testloggar och rapporter med status mot acceptanskriterier.
-- Lista över defekter, risker och föreslagna åtgärder.
-- Uppdaterad kvalitetsdashboard eller KPI-uppföljning.
+## Deliverables
+- Test logs and reports with status against acceptance criteria.
+- List of defects, risks, and recommended actions.
+- Updated quality dashboard or KPI tracking.
 
-## Kontrollpunkter
-- Säkerställ spårbarhet till krav och designbeslut.
-- Synka med Developer och Requirements Analyst om funna gap.
-- Informera Editor om dokumentationsbehov kring releasen.
+## Checkpoints
+- Ensure traceability to requirements and design decisions.
+- Sync with the Developer and Requirements Analyst on identified gaps.
+- Inform the Editor about documentation needs for the release.
 PLAN
           )
 

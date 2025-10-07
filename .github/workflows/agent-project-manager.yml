@@ -4,19 +4,19 @@ on:
   workflow_dispatch:
     inputs:
       objective:
-        description: "Vilket mål ska Project Manager-agenten fokusera på?"
+        description: "Which goal should the Project Manager agent focus on?"
         required: false
-        default: "Ingen specifik målsättning angiven."
+        default: "No specific objective provided."
       sprint_context:
-        description: "Ytterligare kontext, länkar eller hinder som påverkar sprinten"
+        description: "Additional context, links, or blockers affecting the sprint"
         required: false
         default: ""
       backlog_updates:
-        description: "Lista över nya eller uppdaterade backloggposter"
+        description: "List of new or updated backlog items"
         required: false
         default: ""
       trigger_architect:
-        description: "Ska Architect-agenten aktiveras?"
+        description: "Should the Architect agent be triggered?"
         required: false
         default: false
         type: boolean
@@ -25,7 +25,7 @@ on:
       objective:
         required: false
         type: string
-        default: "Ingen specifik målsättning angiven."
+        default: "No specific objective provided."
       sprint_context:
         required: false
         type: string
@@ -40,17 +40,17 @@ on:
         default: false
     outputs:
       plan:
-        description: "Sammanfattning av Project Manager-agentens plan"
+        description: "Summary of the Project Manager plan"
         value: ${{ jobs.plan.outputs.plan }}
 
 jobs:
   plan:
-    name: Sammanställ Project Manager-plan
+    name: Compile Project Manager plan
     runs-on: ubuntu-latest
     outputs:
       plan: ${{ steps.compose.outputs.plan }}
     steps:
-      - name: Komponera plan
+      - name: Compose plan
         id: compose
         env:
           OBJECTIVE: ${{ inputs.objective }}
@@ -58,14 +58,14 @@ jobs:
           BACKLOG_UPDATES: ${{ inputs.backlog_updates }}
         run: |
           set -euo pipefail
-          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          objective="${OBJECTIVE:-No specific objective provided.}"
           context_value="${SPRINT_CONTEXT:-}"
           if [ -z "$context_value" ]; then
-            context_value="Ingen ytterligare kontext angiven."
+            context_value="No additional context provided."
           fi
           backlog_value="${BACKLOG_UPDATES:-}"
           if [ -z "$backlog_value" ]; then
-            backlog_value="Inga backlogguppdateringar angivna."
+            backlog_value="No backlog updates provided."
           fi
 
           export AGENT_OBJECTIVE="$objective"
@@ -74,39 +74,39 @@ jobs:
 
           summary=$(
             cat <<PLAN
-# Project Manager-agentens plan
+# Project Manager plan
 
-## Mål
+## Objectives
 $AGENT_OBJECTIVE
 
-## Kontext
+## Context
 $AGENT_CONTEXT
 
-## Backlogguppdateringar
+## Backlog updates
 $AGENT_BACKLOG
 
-## Primära ansvar enligt 28_ai_agent_team.md
-- Översätt projektägarens direktiv till sprintmål och uppgifter.
-- Prioritera backloggen och synkronisera specialistrollerna.
-- Hålla dagliga synkar och eskalera blockerare.
-- Konsolidera status, risker och rekommendationer till projektägaren.
+## Primary responsibilities from 28_ai_agent_team.md
+- Translate the project owner's directives into sprint goals and tasks.
+- Prioritize the backlog and coordinate specialist roles.
+- Lead daily syncs and escalate blockers.
+- Consolidate status, risks, and recommendations for the project owner.
 
-## Rekommenderad arbetsgång
-1. Bekräfta sprintmål och definiera accepterade leveranser.
-2. Koordinera beroenden mellan Architect, Requirements Analyst, Designer och Developer.
-3. Säkerställ att Quality Control och Editor har planerade kvalitetsgranskningar.
-4. Uppdatera rapportformatet med KPI:er (ledtid, blockerare, teststatus, dokumentationsläge).
-5. Förbered sprintrapport med tydliga beslutspunkter för projektägaren.
+## Recommended workflow
+1. Confirm sprint goals and define accepted deliverables.
+2. Coordinate dependencies between the Architect, Requirements Analyst, Designer, and Developer.
+3. Ensure Quality Control and the Editor have planned quality reviews.
+4. Update reporting with KPIs (lead time, blockers, test status, documentation state).
+5. Prepare the sprint report with clear decision points for the project owner.
 
-## Ceremonier att facilitera
-- Sprintplanering
-- Dagliga synkar
-- Sprintdemo och retrospektiv
+## Ceremonies to facilitate
+- Sprint planning
+- Daily syncs
+- Sprint demo and retrospective
 
-## Förväntade leverabler
-- Uppdaterad sprintbacklogg
-- Dagliga statuskort från varje roll
-- Sprintrapport till projektägaren
+## Expected deliverables
+- Updated sprint backlog
+- Daily status notes from each role
+- Sprint report for the project owner
 PLAN
           )
 
@@ -119,12 +119,12 @@ PLAN
           } >> "$GITHUB_OUTPUT"
 
   architect:
-    name: Aktivera Architect-agenten
+    name: Trigger Architect agent
     needs: plan
     if: ${{ inputs.trigger_architect == true || inputs.trigger_architect == 'true' }}
     uses: ./.github/workflows/agent-architect.yml
     with:
-      objective: ${{ format('Arkitektstöd för: {0}', inputs.objective) }}
+      objective: ${{ format('Architect support for: {0}', inputs.objective) }}
       architecture_context: ${{ inputs.sprint_context }}
       collaboration_notes: ${{ needs.plan.outputs.plan }}
     secrets: inherit

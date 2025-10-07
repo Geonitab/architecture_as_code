@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       objective:
-        description: "Vilket kravrelaterat mål ska agenten fokusera på?"
+        description: "Which requirements-related objective should the agent focus on?"
         required: true
       stakeholder_context:
-        description: "Sammanfattning av stakeholder-insikter eller affärsmål"
+        description: "Summary of stakeholder insights or business goals"
         required: false
         default: ""
       dependency_notes:
-        description: "Identifierade beroenden eller acceptanskriterier att bevaka"
+        description: "Identified dependencies or acceptance criteria to monitor"
         required: false
         default: ""
   workflow_call:
@@ -29,17 +29,17 @@ on:
         default: ""
     outputs:
       plan:
-        description: "Requirements Analystens plan"
+        description: "Requirements Analyst plan"
         value: ${{ jobs.plan.outputs.plan }}
 
 jobs:
   plan:
-    name: Sammanställ kravplan
+    name: Compile requirements plan
     runs-on: ubuntu-latest
     outputs:
       plan: ${{ steps.compose.outputs.plan }}
     steps:
-      - name: Komponera plan
+      - name: Compose plan
         id: compose
         env:
           OBJECTIVE: ${{ inputs.objective }}
@@ -47,14 +47,14 @@ jobs:
           DEPENDENCY_NOTES: ${{ inputs.dependency_notes }}
         run: |
           set -euo pipefail
-          objective="${OBJECTIVE:-Ingen specifik målsättning angiven.}"
+          objective="${OBJECTIVE:-No specific objective provided.}"
           context_value="${STAKEHOLDER_CONTEXT:-}"
           if [ -z "$context_value" ]; then
-            context_value="Ingen stakeholderkontext angiven."
+            context_value="No stakeholder context provided."
           fi
           dependency_value="${DEPENDENCY_NOTES:-}"
           if [ -z "$dependency_value" ]; then
-            dependency_value="Inga beroenden eller acceptanskriterier angivna."
+            dependency_value="No dependencies or acceptance criteria provided."
           fi
 
           export AGENT_OBJECTIVE="$objective"
@@ -63,39 +63,39 @@ jobs:
 
           summary=$(
             cat <<PLAN
-# Requirements Analyst-agentens plan
+# Requirements Analyst plan
 
-## Mål
+## Objectives
 $AGENT_OBJECTIVE
 
-## Stakeholderkontext
+## Stakeholder context
 $AGENT_CONTEXT
 
-## Beroenden och acceptanskriterier
+## Dependencies and acceptance criteria
 $AGENT_DEPENDENCIES
 
-## Primära ansvar enligt 28_ai_agent_team.md
-- Fånga funktionella och icke-funktionella krav med tydlig spårbarhet.
-- Dokumentera user stories, acceptanskriterier och prioriteringar.
-- Utföra gap-analyser och hålla kravbasen uppdaterad.
-- Synka förändringar med Designer, Developer och Project Manager.
+## Primary responsibilities from 28_ai_agent_team.md
+- Capture functional and non-functional requirements with clear traceability.
+- Document user stories, acceptance criteria, and priorities.
+- Perform gap analyses and keep the requirements baseline updated.
+- Coordinate changes with the Designer, Developer, and Project Manager.
 
-## Rekommenderad arbetsgång
-1. Bekräfta målbild och identifiera viktigaste stakeholder-behoven.
-2. Strukturera krav i backlogg (epics, stories, acceptanskriterier).
-3. Validera krav med Architect för teknisk genomförbarhet och med Designer för UX-konsekvenser.
-4. Uppdatera spårbarhetsmatris mellan krav, design, implementation och tester.
-5. Eskalera risker eller oklarheter till Project Manager och föreslå nästa steg.
+## Recommended workflow
+1. Confirm the target outcome and identify the most important stakeholder needs.
+2. Structure requirements in the backlog (epics, stories, acceptance criteria).
+3. Validate requirements with the Architect for technical feasibility and with the Designer for UX impact.
+4. Update the traceability matrix between requirements, design, implementation, and tests.
+5. Escalate risks or uncertainties to the Project Manager and propose next steps.
 
-## Leverabler
-- Uppdaterad kravbacklogg med prioritet och status.
-- Dokumenterade acceptanskriterier och kompletterande research.
-- Rekommenderad plan för kommande refinement eller workshops.
+## Deliverables
+- Updated requirements backlog with priority and status.
+- Documented acceptance criteria and supporting research.
+- Recommended plan for upcoming refinement sessions or workshops.
 
-## Kontrollpunkter
-- Säkerställ att nya krav följer KPI:er och kvalitetsmål.
-- Samordna med Quality Control kring testbara kriterier.
-- Informera Editor om dokumentationsförändringar.
+## Checkpoints
+- Ensure new requirements align with KPIs and quality goals.
+- Coordinate with Quality Control on testable criteria.
+- Inform the Editor about documentation updates.
 PLAN
           )
 
