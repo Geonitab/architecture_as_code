@@ -87,10 +87,10 @@ jobs:
         id: parse-ai
         run: |
           AI_RESPONSE='${{ steps.ai-analyze.outputs.response }}'
-          echo "formatted_text=$(echo $AI_RESPONSE | jq -r '.formatted_text // empty')" >> $GITHUB_OUTPUT
-          echo "needs_new_issue=$(echo $AI_RESPONSE | jq -r '.needs_new_issue // false')" >> $GITHUB_OUTPUT
-          echo "new_title=$(echo $AI_RESPONSE | jq -r '.new_issue_title // empty')" >> $GITHUB_OUTPUT
-          echo "new_body=$(echo $AI_RESPONSE | jq -r '.new_issue_body // empty')" >> $GITHUB_OUTPUT
+          echo "formatted_text=$(echo "$AI_RESPONSE" | jq -r '.formatted_text // empty')" >> $GITHUB_OUTPUT
+          echo "needs_new_issue=$(echo "$AI_RESPONSE" | jq -r '.needs_new_issue // false')" >> $GITHUB_OUTPUT
+          echo "new_title=$(echo "$AI_RESPONSE" | jq -r '.new_issue_title // empty')" >> $GITHUB_OUTPUT
+          echo "new_body=$(echo "$AI_RESPONSE" | jq -r '.new_issue_body // empty')" >> $GITHUB_OUTPUT
         env:
           AI_RESPONSE: ${{ steps.ai-analyze.outputs.response }}
 
