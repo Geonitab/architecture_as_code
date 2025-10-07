@@ -22,6 +22,9 @@ jobs:
        contains(fromJSON('["dev","Dev","DEV"]'), github.event.label.name))
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for issue response labeling
+        run: sleep 15
+
       - name: Check out repository
         uses: actions/checkout@v4
 
