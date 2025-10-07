@@ -81,4 +81,13 @@ jobs:
               body: commentBody,
             });
 
+            if (assignedBot === 'Architect') {
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: latestIssue.number,
+                labels: ['architecture'],
+              });
+            }
+
             core.info(`Assigned ${assignedBot} bot to issue #${latestIssue.number}.`);

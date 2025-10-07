@@ -141,6 +141,7 @@ To operationalize the virtual team defined in `docs/28_ai_agent_team.md`, dedica
 | `agent-quality-control.yml` | Quality Control | Teststrategi, kvalitetsmått och rapportering |
 | `agent-editor.yml` | Editor | Dokumentationsuppdateringar och publicering |
 | `agent-graphic-designer.yml` | Graphic Designer | Visuella resurser, format och brand-efterlevnad |
+| `architect-bot.yml` | Architect bot PR creator | Skapar automatiskt ett arkitektur-svar i en pull request när en issue märks `architecture` |
 
 Each workflow accepts three text-based inputs (`objective` plus two optional context fields tailored to the role) and renders a structured checklist aligned with the responsibilities and ceremonies described in the AI agent team playbook. This makes it easy to orchestrate or audit agent contributions directly from GitHub Actions.
 

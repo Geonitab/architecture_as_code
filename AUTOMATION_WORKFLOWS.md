@@ -212,6 +212,7 @@ Complementing the generation pipelines, eight lightweight GitHub Actions workflo
 | `agent-quality-control.yml` | Teststrategi, kvalitetsmätning och rapporter |
 | `agent-editor.yml` | Dokumentationsuppdateringar och publicering |
 | `agent-graphic-designer.yml` | Visuella resurser och brandefterlevnad |
+| `architect-bot.yml` | Automatisk arkitektbot | Genererar en arkitektur-respons och pull request när en issue får etiketten `architecture` |
 
 Each workflow exposes the same pattern of inputs (`objective` + two optional context strings) and produces a markdown action plan through `$GITHUB_STEP_SUMMARY` and workflow outputs. Use them to bootstrap discussions, enforce consistency, or integrate structured prompts into higher-level orchestration.
 

@@ -1,0 +1,50 @@
+name: Architect Bot - Auto PR
+
+on:
+  issues:
+    types:
+      - labeled
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  prepare_architecture_pr:
+    if: github.event.label.name == 'architecture'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate architecture response
+        run: python scripts/architect_bot.py
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Create architecture response pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: architect/issue-${{ github.event.issue.number }}
+          base: ${{ github.event.repository.default_branch }}
+          title: "Add architecture solution for issue #${{ github.event.issue.number }}"
+          commit-message: "Add architecture solution outline for issue #${{ github.event.issue.number }}"
+          labels: architecture
+          body: |
+            ## Summary
+            - Automatically generated architecture response for #${{ github.event.issue.number }}
+            - Review the outline and fill in implementation details as needed.
+
+            Fixes #${{ github.event.issue.number }}
+          add-paths: |
+            docs/architecture/**
