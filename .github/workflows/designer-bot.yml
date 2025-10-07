@@ -1,0 +1,57 @@
+name: Designer Bot - Auto PR
+
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+      - reopened
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  prepare_design_pr:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'design') ||
+      contains(github.event.issue.labels.*.name, 'Design') ||
+      contains(github.event.issue.labels.*.name, 'DESIGN') ||
+      (github.event.label != null &&
+       contains(fromJSON('["design","Design","DESIGN"]'), github.event.label.name))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate design response
+        run: python scripts/designer_bot.py
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Create design response pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: designer/issue-${{ github.event.issue.number }}
+          base: ${{ github.event.repository.default_branch }}
+          title: "Add design plan for issue #${{ github.event.issue.number }}"
+          commit-message: "Add design plan for issue #${{ github.event.issue.number }}"
+          labels: design
+          body: |
+            ## Summary
+            - Automatically generated design response for #${{ github.event.issue.number }}
+            - Review the outline and refine deliverables, assets, and approvals.
+
+            Fixes #${{ github.event.issue.number }}
+          add-paths: |
+            docs/design/**
