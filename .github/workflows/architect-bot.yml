@@ -6,7 +6,7 @@ on:
       - opened
       - labeled
       - reopened
-  workflow_dispatch:
+  workflow_dispatch:  # Möjliggör manuell körning
 
 permissions:
   contents: write
@@ -55,6 +55,9 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.ARCHITECT_BOT_OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ vars.ARCHITECT_BOT_MODEL }}
           OPENAI_BASE_URL: ${{ vars.ARCHITECT_BOT_OPENAI_BASE_URL }}
+
+      - name: Push branch to remote
+        run: git push origin architect/issue-${{ github.event.issue.number }}
 
       - name: Create architecture response pull request
         uses: peter-evans/create-pull-request@v6
