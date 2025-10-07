@@ -308,6 +308,7 @@ def _parse_ai_sections(response_json: dict[str, Any], issue_body: str) -> Sectio
 
     message = choices[0].get("message", {}) if isinstance(choices[0], dict) else {}
     content = _extract_message_content(message)
+    content = message.get("content", "") if isinstance(message, dict) else ""
     if not content:
         print("Chat completion response did not include message content")
         return []
@@ -320,6 +321,10 @@ def _parse_ai_sections(response_json: dict[str, Any], issue_body: str) -> Sectio
 
     if not isinstance(ai_plan, dict):
         print("Chat completion message content JSON did not produce an object")
+        return []
+
+    except json.JSONDecodeError:
+        print("Chat completion message content was not valid JSON")
         return []
 
     sections: Sections = [("Issue Overview", [blockquote(issue_body)])]
