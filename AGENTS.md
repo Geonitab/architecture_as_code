@@ -1,12 +1,21 @@
- Architecture as Code Book Workshop - Development Instructions
-ALWAYS follow these instructions first and fallback to additional search and context gathering ONLY if the information in these instructions is incomplete or found to be in error.
-Project Overview
+# Architecture as Code Book Workshop - Development Instructions
+
+**ALWAYS follow these instructions first and fallback to additional search and context gathering ONLY if the information in these instructions is incomplete or found to be in error.**
+
+## Project Overview
+
 This is a hybrid repository serving two primary purposes:
-	1	Book Publishing: Automated generation and publishing of “Architecture as Code” - a comprehensive technical book on architecture as code principles
-	2	React Dashboard: A web application that displays book project status and chapter structure
-Working Effectively
-Initial Setup and Dependencies
-NEVER CANCEL long-running installs. Build processes can take 15+ minutes. Always use timeouts of 60+ minutes for installs.
+
+1. **Book Publishing**: Automated generation and publishing of "Architecture as Code" - a comprehensive technical book on architecture as code principles
+2. **React Dashboard**: A web application that displays book project status and chapter structure
+
+## Working Effectively
+
+### Initial Setup and Dependencies
+
+**NEVER CANCEL long-running installs.** Build processes can take 15+ minutes. Always use timeouts of 60+ minutes for installs.
+
+```bash
 # Install Node.js dependencies (30 seconds)
 npm install
 
@@ -125,3 +134,4 @@ Critical Notes
 	•	Chrome dependency required: Mermaid CLI needs Chrome browser for PNG generation
 	•	English content: All book content is in English, UI labels are in English
 	•	PDF generation works: Even if Mermaid fails, Pandoc will generate PDF with text placeholders
+
