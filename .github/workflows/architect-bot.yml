@@ -3,7 +3,9 @@ name: Architect Bot - Auto PR
 on:
   issues:
     types:
+      - opened
       - labeled
+      - reopened
 
 
 permissions:
@@ -13,7 +15,12 @@ permissions:
 
 jobs:
   prepare_architecture_pr:
-    if: contains(fromJSON('["architecture","Architecture","ARCHITECTURE"]'), github.event.label.name)
+    if: >-
+      contains(github.event.issue.labels.*.name, 'architecture') ||
+      contains(github.event.issue.labels.*.name, 'Architecture') ||
+      contains(github.event.issue.labels.*.name, 'ARCHITECTURE') ||
+      (github.event.label != null &&
+       contains(fromJSON('["architecture","Architecture","ARCHITECTURE"]'), github.event.label.name))
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
