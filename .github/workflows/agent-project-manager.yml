@@ -5,7 +5,8 @@ on:
     inputs:
       objective:
         description: "Vilket mål ska Project Manager-agenten fokusera på?"
-        required: true
+        required: false
+        default: "Ingen specifik målsättning angiven."
       sprint_context:
         description: "Ytterligare kontext, länkar eller hinder som påverkar sprinten"
         required: false
@@ -22,8 +23,9 @@ on:
   workflow_call:
     inputs:
       objective:
-        required: true
+        required: false
         type: string
+        default: "Ingen specifik målsättning angiven."
       sprint_context:
         required: false
         type: string
