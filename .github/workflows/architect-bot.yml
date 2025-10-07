@@ -39,7 +39,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.8'  # Specific version to avoid compatibility issues
+          python-version: '3.9'  # Specific version to avoid compatibility issues
 
       - name: Generate architecture response
         run: python scripts/architect_bot.py
