@@ -1,4 +1,4 @@
-name: Placeholder Agent
+name: Minimal Placeholder Agent
 
 on:
   workflow_dispatch:
@@ -16,41 +16,39 @@ on:
     outputs:
       plan:
         description: "Summary emitted by the placeholder agent"
-        value: ${{ jobs.bootstrap.outputs.plan }}
+        value: ${{ jobs.placeholder.outputs.plan }}
 
 jobs:
-  bootstrap:
+  placeholder:
     name: Initialize placeholder agent
     runs-on: ubuntu-latest
     outputs:
-      plan: ${{ steps.summarize.outputs.plan }}
+      plan: ${{ steps.define_plan.outputs.plan }}
     steps:
-      - name: Summarize agent state
-        id: summarize
-        env:
-          OBJECTIVE_INPUT: ${{ inputs.objective }}
-          DISPATCH_OBJECTIVE: ${{ github.event.inputs.objective }}
+      - name: Define agent summary
+        id: define_plan
+        shell: bash
         run: |
           set -euo pipefail
-          objective_source="${OBJECTIVE_INPUT:-${DISPATCH_OBJECTIVE:-}}"
-          if [ -z "$objective_source" ]; then
-            objective_source="No specific objective provided."
+
+          objective="${{ inputs.objective }}"
+          if [ -z "$objective" ]; then
+            objective="$(jq -r '.inputs.objective // ""' "$GITHUB_EVENT_PATH")"
           fi
 
-          summary=$(cat <<PLAN
-# Placeholder Agent
+          if [ -z "$objective" ]; then
+            objective="No specific objective provided."
+          fi
+
+          summary="# Placeholder Agent
 
 ## Objective
-$objective_source
+$objective
 
 ## Status
 - Agent initialized successfully.
 - No default actions are defined. Configure steps as needed.
-
-## Notes
-This workflow is intentionally minimal so it can always start and be extended safely.
-PLAN
-)
+"
 
           printf '%s\n' "$summary"
 
