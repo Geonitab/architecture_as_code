@@ -25,7 +25,7 @@ jobs:
           pip install -U translators
 
       - name: Run translation script
-        # Uppdaterad sökväg till skriptet
+        # Updated path to the script
         run: python scripts/translate_repo.py
 
       - name: Commit and push changes
@@ -36,8 +36,8 @@ jobs:
           git add .
           
           if git diff-index --quiet HEAD; then
-            echo "Inga ändringar att committa."
+            echo "No changes to commit."
           else
-            git commit -m "chore: Automatiskt översatt filer till svenska"
+            git commit -m "chore: Automatically translated files to Swedish"
             git push
           fi

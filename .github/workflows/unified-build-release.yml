@@ -836,7 +836,7 @@ jobs:
           body: |
             📚 **Arkitektur som kod - Unified Complete Release**
 
-            Genererad från commit: ${{ github.sha }}
+            Generated from commit: ${{ github.sha }}
 
             **🔄 Unified Build Process**
 
