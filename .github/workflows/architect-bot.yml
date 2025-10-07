@@ -61,19 +61,40 @@ jobs:
           OPENAI_MODEL: ${{ vars.ARCHITECT_BOT_MODEL }}
           OPENAI_BASE_URL: ${{ vars.ARCHITECT_BOT_OPENAI_BASE_URL }}
 
+      - name: Debug Script Output
+        run: |
+          echo "Output of the script:"
+          python scripts/architect_bot.py
+          echo "Listing all files after the script execution:"
+          ls -la
+          echo "Checking directory for changes:"
+          git status
+          git diff
+
       - name: Create and switch to branch
         run: git checkout -b architect/issue-${{ github.event.issue.number }}
 
       - name: Stage and commit changes
         run: |
-          git add .
-          git commit -m "Generated architecture response for issue #${{ github.event.issue.number }}"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Generated architecture response for issue #${{ github.event.issue.number }}"
+          else
+            echo "No changes to commit."
+          fi
 
       - name: Push branch to remote
-        run: git push origin architect/issue-${{ github.event.issue.number }}
+        if: ${{ always() }}
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git push origin architect/issue-${{ github.event.issue.number }}
+          else
+            echo "No changes to push."
+          fi
 
       - name: Create architecture response pull request
         uses: peter-evans/create-pull-request@v6
+        if: ${{ always() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: architect/issue-${{ github.event.issue.number }}
