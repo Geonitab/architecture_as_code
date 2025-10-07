@@ -66,6 +66,35 @@ def _json_list(value: Any) -> list[Any]:
     return [value]
 
 
+def _extract_message_content(message: Any) -> str:
+    """Return the textual content from a chat completion message payload."""
+
+    if isinstance(message, dict):
+        content = message.get("content")
+    else:
+        content = message
+
+    if isinstance(content, str):
+        return content.strip()
+
+    if isinstance(content, list):
+        parts: list[str] = []
+        for item in content:
+            if isinstance(item, dict):
+                if "text" in item:
+                    parts.append(str(item["text"]))
+                elif "content" in item:
+                    parts.append(str(item["content"]))
+            elif isinstance(item, str):
+                parts.append(item)
+        return "\n".join(part.strip() for part in parts if part.strip())
+
+    if content is None:
+        return ""
+
+    return str(content).strip()
+
+
 def _format_pillars(pillars: Iterable[Any]) -> SectionContent:
     lines: SectionContent = []
     for pillar in pillars:
@@ -278,6 +307,7 @@ def _parse_ai_sections(response_json: dict[str, Any], issue_body: str) -> Sectio
         return []
 
     message = choices[0].get("message", {}) if isinstance(choices[0], dict) else {}
+    content = _extract_message_content(message)
     content = message.get("content", "") if isinstance(message, dict) else ""
     if not content:
         print("Chat completion response did not include message content")
@@ -285,6 +315,14 @@ def _parse_ai_sections(response_json: dict[str, Any], issue_body: str) -> Sectio
 
     try:
         ai_plan = json.loads(content)
+    except (json.JSONDecodeError, TypeError):
+        print("Chat completion message content was not valid JSON")
+        return []
+
+    if not isinstance(ai_plan, dict):
+        print("Chat completion message content JSON did not produce an object")
+        return []
+
     except json.JSONDecodeError:
         print("Chat completion message content was not valid JSON")
         return []
