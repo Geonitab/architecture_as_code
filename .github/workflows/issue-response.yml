@@ -18,6 +18,8 @@ jobs:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
+            const fs = require('fs');
+            const path = require('path');
 
             const { data: issues } = await github.rest.issues.listForRepo({
               owner,
@@ -51,11 +53,32 @@ jobs:
               keywords.some((keyword) => content.includes(keyword))
             )?.name || 'Requirements Analyst';
 
+            const templatesDir = path.join(process.env.GITHUB_WORKSPACE, '.github', 'issue-response');
+            const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            const templatePaths = [
+              path.join(templatesDir, `${slugify(assignedBot)}.tml`),
+              path.join(templatesDir, 'issue-response.tml'),
+            ];
+
+            let commentTemplate = `Hello! After reviewing this issue, the ${assignedBot} bot will take the lead. They will follow up with the next steps shortly.`;
+
+            for (const templatePath of templatePaths) {
+              if (fs.existsSync(templatePath)) {
+                commentTemplate = fs.readFileSync(templatePath, 'utf8');
+                break;
+              }
+            }
+
+            const commentBody = commentTemplate
+              .replace(/{{\s*bot_name\s*}}/gi, assignedBot)
+              .replace(/{{\s*issue_title\s*}}/gi, (latestIssue.title || '').trim())
+              .replace(/{{\s*issue_number\s*}}/gi, latestIssue.number);
+
             await github.rest.issues.createComment({
               owner,
               repo,
               issue_number: latestIssue.number,
-              body: `Hello! After reviewing this issue, the ${assignedBot} bot will take the lead. They will follow up with the next steps shortly.`,
+              body: commentBody,
             });
 
             core.info(`Assigned ${assignedBot} bot to issue #${latestIssue.number}.`);
