@@ -1,0 +1,95 @@
+name: AI Agent - Read/Write Log File
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write  # För att commita filer
+  issues: read     # För att läsa issue-kommentarer
+  models: read     # För AI-inference
+
+jobs:
+  process-agent-input:
+    if: contains(github.event.comment.body, '/agent add:')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Behövs för push
+
+      - name: Extract input text from comment
+        id: extract
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commentBody = context.payload.comment.body;
+            const match = commentBody.match(/\/agent add:\s*(.+)/i);
+            if (match) {
+              core.setOutput('input-text', match[1].trim());
+              core.setOutput('issue-number', context.issue.number.toString());
+            } else {
+              core.setFailFast(false);
+              core.setOutput('input-text', '');
+            }
+
+      - name: Analyze and format text with AI (optional validation)
+        if: steps.extract.outputs.input-text != ''
+        id: ai-format
+        uses: actions/ai-inference@v1
+        with:
+          model: xai/grok-3-mini  # Använd Grok för naturlig processering
+          system-prompt: |
+            Du är en hjälpsam agent som formaterar inkommande text från andra agenter. 
+            Lägg till en timestamp och en kort sammanfattning. Se till att texten är säker och relevant. 
+            Returnera bara den formaterade versionen, t.ex.: "[YYYY-MM-DD HH:MM] Från agent Y: [sammanfattning] - Original: [text]".
+          prompt: |
+            Formatera denna input-text: ${{ steps.extract.outputs.input-text }}
+            Lägg till current timestamp och en 1-radig sammanfattning.
+
+      - name: Read existing log and append new entry
+        if: steps.extract.outputs.input-text != ''
+        run: |
+          LOG_FILE="agent_log.md"
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          FORMATTED_TEXT="${{ steps.ai-format.outputs.response || steps.extract.outputs.input-text }}"
+          
+          # Läs befintlig fil (eller skapa om den inte finns)
+          if [ -f "$LOG_FILE" ]; then
+            cat "$LOG_FILE" > temp_log.md
+          else
+            echo "# Agent Log" > temp_log.md
+            echo "" >> temp_log.md
+          fi
+          
+          # Append ny entry
+          echo "## Ny entry från issue #${{ steps.extract.outputs.issue-number }} ($TIMESTAMP)" >> temp_log.md
+          echo "$FORMATTED_TEXT" >> temp_log.md
+          echo "" >> temp_log.md
+          echo "---" >> temp_log.md
+          
+          # Ersätt original med ny
+          mv temp_log.md "$LOG_FILE"
+
+      - name: Commit and push changes
+        if: steps.extract.outputs.input-text != ''
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub AI Agent"
+          git add agent_log.md
+          COMMIT_MSG="AI Agent: Added input from issue #${{ steps.extract.outputs.issue-number }} - ${{ steps.ai-format.outputs.response ? 'AI-formaterad' : 'Direkt append' }} (${{ github.event.comment.user.login }})"
+          git commit -m "$COMMIT_MSG"
+          git push
+
+      - name: Comment on issue for confirmation
+        if: steps.extract.outputs.input-text != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ Tack! Din text har lagts till i agent_log.md via AI-agenten. Se commit: https://github.com/${context.repo.owner}/${context.repo.repo}/commit/${{ github.sha }}`
+            });
