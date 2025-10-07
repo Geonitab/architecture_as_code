@@ -1,26 +1,33 @@
-name: AI Agent - Read/Write Log File
+name: AI Agent - Read Issues & Create New If Needed
 
 on:
   issue_comment:
     types: [created]
+  issues:
+    types: [opened]  # Ny trigger: När en issue öppnas
 
 permissions:
-  contents: write  # För att commita filer
-  issues: read     # För att läsa issue-kommentarer
-  models: read     # För AI-inference
+  contents: write  # För commit/push till loggfil
+  issues: write   # Ny: För att läsa/skriva issues (skapa nya)
+  models: read    # För AI-inference
 
 jobs:
-  process-agent-input:
-    if: contains(github.event.comment.body, '/agent add:')
+  process-issue-or-comment:
+    # Trigga på /agent add: i kommentarer (som tidigare) ELLER på nya issues
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '/agent add:'))
+      || github.event_name == 'issues'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Behövs för push
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract input text from comment
-        id: extract
+      # Hantera kommentar-input (som tidigare, för bakåtkompatibilitet)
+      - name: Extract input from comment (if applicable)
+        id: extract-comment
+        if: github.event_name == 'issue_comment'
         uses: actions/github-script@v7
         with:
           script: |
@@ -29,67 +36,124 @@ jobs:
             if (match) {
               core.setOutput('input-text', match[1].trim());
               core.setOutput('issue-number', context.issue.number.toString());
+              core.setOutput('source-type', 'comment');
             } else {
-              core.setFailFast(false);
               core.setOutput('input-text', '');
             }
 
-      - name: Analyze and format text with AI (optional validation)
-        if: steps.extract.outputs.input-text != ''
-        id: ai-format
+      # Extrahera issue-body om det är en ny issue
+      - name: Extract issue body
+        id: extract-issue
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueBody = context.payload.issue.body || '';
+            core.setOutput('input-text', issueBody);
+            core.setOutput('issue-number', context.issue.number.toString());
+            core.setOutput('source-type', 'issue');
+
+      # Sätt en gemensam input-text (från kommentar eller issue)
+      - name: Set input text
+        id: set-input
+        run: |
+          INPUT_TEXT="${{ steps.extract-comment.outputs.input-text || steps.extract-issue.outputs.input-text }}"
+          echo "input-text=$INPUT_TEXT" >> $GITHUB_OUTPUT
+          echo "source-issue=${{ steps.extract-comment.outputs.issue-number || steps.extract-issue.outputs.issue-number }}" >> $GITHUB_OUTPUT
+
+      - name: Analyze with AI: Format & Decide on New Issue
+        if: steps.set-input.outputs.input-text != ''
+        id: ai-analyze
         uses: actions/ai-inference@v1
         with:
-          model: xai/grok-3-mini  # Använd Grok för naturlig processering
+          model: xai/grok-3-mini  # Grok för smart analys
           system-prompt: |
-            Du är en hjälpsam agent som formaterar inkommande text från andra agenter. 
-            Lägg till en timestamp och en kort sammanfattning. Se till att texten är säker och relevant. 
-            Returnera bara den formaterade versionen, t.ex.: "[YYYY-MM-DD HH:MM] Från agent Y: [sammanfattning] - Original: [text]".
+            Du är en AI-agent som processar issues och kommentarer. 
+            För input-text: Formatera den med timestamp och sammanfattning. 
+            Analysera om mer info behövs (t.ex. otydligt, saknar data). 
+            Returnera JSON: 
+            {
+              "formatted_text": "[YYYY-MM-DD HH:MM] Sammanfattning: [kort desc] - Original: [text]",
+              "needs_new_issue": true/false,
+              "new_issue_title": "Titel om true, annars ''",
+              "new_issue_body": "Body med förklaring och länk till original-issue om true, annars ''"
+            }
           prompt: |
-            Formatera denna input-text: ${{ steps.extract.outputs.input-text }}
-            Lägg till current timestamp och en 1-radig sammanfattning.
+            Input: ${{ steps.set-input.outputs.input-text }}
+            Original source: Issue #${{ steps.set-input.outputs.source-issue }}
 
-      - name: Read existing log and append new entry
-        if: steps.extract.outputs.input-text != ''
+      - name: Parse AI response (JSON)
+        if: steps.set-input.outputs.input-text != ''
+        id: parse-ai
+        run: |
+          AI_RESPONSE='${{ steps.ai-analyze.outputs.response }}'
+          echo "formatted_text=$(echo $AI_RESPONSE | jq -r '.formatted_text // empty')" >> $GITHUB_OUTPUT
+          echo "needs_new_issue=$(echo $AI_RESPONSE | jq -r '.needs_new_issue // false')" >> $GITHUB_OUTPUT
+          echo "new_title=$(echo $AI_RESPONSE | jq -r '.new_issue_title // empty')" >> $GITHUB_OUTPUT
+          echo "new_body=$(echo $AI_RESPONSE | jq -r '.new_issue_body // empty')" >> $GITHUB_OUTPUT
+        env:
+          AI_RESPONSE: ${{ steps.ai-analyze.outputs.response }}
+
+      # Append till loggfil (som tidigare, med formaterad text)
+      - name: Read existing log and append
+        if: steps.set-input.outputs.input-text != ''
         run: |
           LOG_FILE="agent_log.md"
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
-          FORMATTED_TEXT="${{ steps.ai-format.outputs.response || steps.extract.outputs.input-text }}"
+          FORMATTED="${{ steps.parse-ai.outputs.formatted_text }}"
           
-          # Läs befintlig fil (eller skapa om den inte finns)
           if [ -f "$LOG_FILE" ]; then
             cat "$LOG_FILE" > temp_log.md
           else
             echo "# Agent Log" > temp_log.md
-            echo "" >> temp_log.md
           fi
           
-          # Append ny entry
-          echo "## Ny entry från issue #${{ steps.extract.outputs.issue-number }} ($TIMESTAMP)" >> temp_log.md
-          echo "$FORMATTED_TEXT" >> temp_log.md
+          echo "## Entry från ${{ steps.set-input.outputs.source-issue }} ($TIMESTAMP)" >> temp_log.md
+          echo "$FORMATTED" >> temp_log.md
           echo "" >> temp_log.md
           echo "---" >> temp_log.md
           
-          # Ersätt original med ny
           mv temp_log.md "$LOG_FILE"
 
-      - name: Commit and push changes
-        if: steps.extract.outputs.input-text != ''
+      # Skapa ny issue om AI beslutar det
+      - name: Create follow-up issue if needed
+        if: steps.parse-ai.outputs.needs_new_issue == 'true' && steps.parse-ai.outputs.new_title != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const newTitle = '${{ steps.parse-ai.outputs.new_title }}';
+            const newBody = '${{ steps.parse-ai.outputs.new_body }}' + '\n\nRelaterat till: #${{ steps.set-input.outputs.source-issue }}';
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: newTitle,
+              body: newBody
+            });
+            
+            core.info(`Skapade ny issue: ${newTitle}`);
+
+      - name: Commit log changes
+        if: steps.set-input.outputs.input-text != ''
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub AI Agent"
           git add agent_log.md
-          COMMIT_MSG="AI Agent: Added input from issue #${{ steps.extract.outputs.issue-number }} - ${{ steps.ai-format.outputs.response ? 'AI-formaterad' : 'Direkt append' }} (${{ github.event.comment.user.login }})"
-          git commit -m "$COMMIT_MSG"
+          ACTION_TAKEN="${{ steps.parse-ai.outputs.needs_new_issue == 'true' && 'Skapade ny issue' || 'Endast loggad' }}"
+          COMMIT_MSG="AI Agent: Processade ${{ steps.set-input.outputs.source-type }} #${{ steps.set-input.outputs.source-issue }} - $ACTION_TAKEN"
+          git commit -m "$COMMIT_MSG" || exit 0  # Skip om inga ändringar
           git push
 
-      - name: Comment on issue for confirmation
-        if: steps.extract.outputs.input-text != ''
+      # Bekräftelse-kommentar i original-issue
+      - name: Comment on original issue
+        if: steps.set-input.outputs.input-text != ''
         uses: actions/github-script@v7
         with:
           script: |
+            const actionMsg = '${{ steps.parse-ai.outputs.needs_new_issue == 'true' ? 'Analyserad och ny issue skapad!' : 'Analyserad och loggad.' }}';
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `✅ Tack! Din text har lagts till i agent_log.md via AI-agenten. Se commit: https://github.com/${context.repo.owner}/${context.repo.repo}/commit/${{ github.sha }}`
+              issue_number: ${{ steps.set-input.outputs.source-issue }},
+              body: `🤖 AI-agenten har processat din input! $actionMsg Se loggen i agent_log.md.`
             });
