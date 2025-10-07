@@ -6,7 +6,7 @@ on:
       - opened
       - labeled
       - reopened
-  workflow_dispatch:  # Allow manual triggering
+  workflow_dispatch:  # Möjliggör manuell körning
 
 permissions:
   contents: write
@@ -37,6 +37,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Configure Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -44,6 +49,17 @@ jobs:
 
       - name: Generate architecture response
         run: python scripts/architect_bot.py
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_MODELS_MODEL: openai/gpt-4
+          GITHUB_MODELS_BASE_URL: https://models.github.ai/inference
+          OPENAI_API_KEY: ${{ secrets.ARCHITECT_BOT_OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.ARCHITECT_BOT_MODEL }}
+          OPENAI_BASE_URL: ${{ vars.ARCHITECT_BOT_OPENAI_BASE_URL }}
 
       - name: Create and switch to branch
         run: git checkout -b architect/issue-${{ github.event.issue.number }}
