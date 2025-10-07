@@ -2,17 +2,7 @@ name: Minimal Placeholder Agent
 
 on:
   workflow_dispatch:
-    inputs:
-      objective:
-        description: "Optional objective for the placeholder agent"
-        required: false
-        default: ""
   workflow_call:
-    inputs:
-      objective:
-        required: false
-        type: string
-        default: ""
     outputs:
       plan:
         description: "Summary emitted by the placeholder agent"
@@ -31,21 +21,18 @@ jobs:
         run: |
           set -euo pipefail
 
-          objective=""
-          if [ -f "$GITHUB_EVENT_PATH" ]; then
-            objective="$(jq -r '(
-              .inputs.objective //
-              .workflow_call.inputs.objective //
-              .workflow_dispatch.inputs.objective //
-              ""
-            )' "$GITHUB_EVENT_PATH" 2>/dev/null || printf '')"
-          fi
+          objective_file="docs/agents/placeholder-objective.md"
 
-          if [ -z "$objective" ]; then
-            objective="No specific objective provided."
+          if [ -f "$objective_file" ]; then
+            objective="$(cat "$objective_file")"
+          else
+            objective="Objective file '$objective_file' was not found."
           fi
 
           summary="# Placeholder Agent
+
+## Objective Source
+- $objective_file
 
 ## Objective
 $objective
