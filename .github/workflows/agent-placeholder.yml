@@ -1,0 +1,65 @@
+name: Minimal Placeholder Agent
+
+on:
+  workflow_dispatch:
+    inputs:
+      objective:
+        description: "Optional objective for the placeholder agent"
+        required: false
+        default: ""
+  workflow_call:
+    inputs:
+      objective:
+        required: false
+        type: string
+        default: ""
+    outputs:
+      plan:
+        description: "Summary emitted by the placeholder agent"
+        value: ${{ jobs.placeholder.outputs.plan }}
+
+jobs:
+  placeholder:
+    name: Initialize placeholder agent
+    runs-on: ubuntu-latest
+    outputs:
+      plan: ${{ steps.define_plan.outputs.plan }}
+    steps:
+      - name: Define agent summary
+        id: define_plan
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          objective="${{ inputs.objective }}"
+          if [ -z "$objective" ]; then
+            objective="$(jq -r '.inputs.objective // ""' "$GITHUB_EVENT_PATH")"
+          fi
+
+          if [ -z "$objective" ]; then
+            objective="No specific objective provided."
+          fi
+
+          summary="# Placeholder Agent
+
+## Objective
+$objective
+
+## Status
+- Agent initialized successfully.
+- No default actions are defined. Configure steps as needed.
+"
+
+          printf '%s\n' "$summary"
+
+          if [ -n "${GITHUB_STEP_SUMMARY:-}" ]; then
+            printf '%s\n' "$summary" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+          if [ -n "${GITHUB_OUTPUT:-}" ]; then
+            {
+              echo "plan<<EOF"
+              printf '%s\n' "$summary"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
