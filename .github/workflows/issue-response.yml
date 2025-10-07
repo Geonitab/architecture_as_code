@@ -44,14 +44,22 @@ jobs:
               { name: 'Architect', keywords: ['architecture', 'architectural', 'blueprint', 'system layout', 'system map', 'infrastructure'] },
               { name: 'Quality Assurance', keywords: ['bug', 'issue', 'error', 'test', 'testing', 'qa', 'quality', 'failure'] },
               { name: 'Developer', keywords: ['develop', 'development', 'implement', 'implementation', 'code', 'coding', 'feature', 'fix'] },
-              { name: 'Documentarian', keywords: ['documentation', 'document', 'docs', 'guide', 'manual', 'readme'] },
+              { name: 'Editor', keywords: ['documentation', 'document', 'docs', 'guide', 'manual', 'readme', 'edit', 'editing', 'copy', 'proofread', 'language', 'grammar', 'tone'] },
               { name: 'Requirements Analyst', keywords: ['requirement', 'requirements', 'analysis', 'specification', 'user story', 'acceptance criteria'] },
-              { name: 'Editor', keywords: ['edit', 'editing', 'copy', 'proofread', 'language', 'grammar', 'tone'] },
             ];
 
             const assignedBot = botAssignments.find(({ keywords }) =>
               keywords.some((keyword) => content.includes(keyword))
             )?.name || 'Requirements Analyst';
+
+            const labelByBot = {
+              Architect: 'architecture',
+              Designer: 'design',
+              Developer: 'dev',
+              'Quality Assurance': 'QA',
+              Editor: 'documentation',
+              'Requirements Analyst': 'Req',
+            };
 
             const templatesDir = path.join(process.env.GITHUB_WORKSPACE, '.github', 'issue-response');
             const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -81,13 +89,17 @@ jobs:
               body: commentBody,
             });
 
-            if (assignedBot === 'Architect') {
-              await github.rest.issues.addLabels({
-                owner,
-                repo,
-                issue_number: latestIssue.number,
-                labels: ['architecture'],
-              });
+            const labelToAdd = labelByBot[assignedBot];
+            if (labelToAdd) {
+              const existingLabels = (latestIssue.labels || []).map((label) => label.name?.toLowerCase?.()).filter(Boolean);
+              if (!existingLabels.includes(labelToAdd.toLowerCase())) {
+                await github.rest.issues.addLabels({
+                  owner,
+                  repo,
+                  issue_number: latestIssue.number,
+                  labels: [labelToAdd],
+                });
+              }
             }
 
             core.info(`Assigned ${assignedBot} bot to issue #${latestIssue.number}.`);
