@@ -6,7 +6,7 @@ on:
       - opened
       - labeled
       - reopened
-  workflow_dispatch:  # Möjliggör manuell körning
+  workflow_dispatch:  # Allow manual triggering
 
 permissions:
   contents: write
@@ -44,17 +44,14 @@ jobs:
 
       - name: Generate architecture response
         run: python scripts/architect_bot.py
-        env:
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-          ISSUE_BODY: ${{ github.event.issue.body }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_MODELS_MODEL: openai/gpt-4
-          GITHUB_MODELS_BASE_URL: https://models.github.ai/inference
-          OPENAI_API_KEY: ${{ secrets.ARCHITECT_BOT_OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ vars.ARCHITECT_BOT_MODEL }}
-          OPENAI_BASE_URL: ${{ vars.ARCHITECT_BOT_OPENAI_BASE_URL }}
+
+      - name: Create and switch to branch
+        run: git checkout -b architect/issue-${{ github.event.issue.number }}
+
+      - name: Stage and commit changes
+        run: |
+          git add .
+          git commit -m "Generated architecture response for issue #${{ github.event.issue.number }}"
 
       - name: Push branch to remote
         run: git push origin architect/issue-${{ github.event.issue.number }}
