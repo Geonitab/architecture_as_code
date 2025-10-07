@@ -31,9 +31,14 @@ jobs:
         run: |
           set -euo pipefail
 
-          objective="${{ inputs.objective }}"
-          if [ -z "$objective" ]; then
-            objective="$(jq -r '.inputs.objective // ""' "$GITHUB_EVENT_PATH")"
+          objective=""
+          if [ -f "$GITHUB_EVENT_PATH" ]; then
+            objective="$(jq -r '(
+              .inputs.objective //
+              .workflow_call.inputs.objective //
+              .workflow_dispatch.inputs.objective //
+              ""
+            )' "$GITHUB_EVENT_PATH" 2>/dev/null || printf '')"
           fi
 
           if [ -z "$objective" ]; then
