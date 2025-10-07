@@ -12,7 +12,7 @@ jobs:
     name: Respond to latest issue
     runs-on: ubuntu-latest
     steps:
-      - name: Thank user for latest issue
+      - name: Assign best-fit bot to latest issue
         uses: actions/github-script@v7
         with:
           script: |
@@ -35,11 +35,27 @@ jobs:
 
             const latestIssue = issues[0];
 
+            const content = `${latestIssue.title} ${latestIssue.body || ''}`.toLowerCase();
+
+            const botAssignments = [
+              { name: 'Designer', keywords: ['ui', 'ux', 'visual', 'styling', 'layout', 'mockup', 'branding'] },
+              { name: 'Arkitekt', keywords: ['architecture', 'architectural', 'blueprint', 'system layout', 'system map', 'infrastructure'] },
+              { name: 'Kvalitetskontroll', keywords: ['bug', 'issue', 'error', 'test', 'testing', 'qa', 'quality', 'failure'] },
+              { name: 'Utvecklare', keywords: ['develop', 'development', 'implement', 'implementation', 'code', 'coding', 'feature', 'fix'] },
+              { name: 'Dokumentatör', keywords: ['documentation', 'document', 'docs', 'guide', 'manual', 'readme'] },
+              { name: 'Kravanalytiker', keywords: ['requirement', 'requirements', 'analysis', 'specification', 'user story', 'acceptance criteria'] },
+              { name: 'Redaktör', keywords: ['edit', 'editing', 'copy', 'proofread', 'language', 'grammar', 'tone'] },
+            ];
+
+            const assignedBot = botAssignments.find(({ keywords }) =>
+              keywords.some((keyword) => content.includes(keyword))
+            )?.name || 'Kravanalytiker';
+
             await github.rest.issues.createComment({
               owner,
               repo,
               issue_number: latestIssue.number,
-              body: 'Thank you for posting an issue',
+              body: `Hello! After reviewing this issue, the ${assignedBot} bot will take the lead. They will follow up with the next steps shortly.`,
             });
 
-            core.info(`Responded to issue #${latestIssue.number}.`);
+            core.info(`Assigned ${assignedBot} bot to issue #${latestIssue.number}.`);
