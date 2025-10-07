@@ -121,6 +121,21 @@ The .github/workflows/build-book.yml automatically:
 	•	Generates PDF with Pandoc and Eisvogel template
 	•	Creates GitHub releases with PDF attachments
 	•	Stores artifacts for 30 days
+
+### AI Bot Issue Label Matrix
+
+Several specialized automation bots monitor GitHub issues and trigger workflows when specific labels are applied. Use the correct label so the intended bot responds automatically:
+
+| Bot | Workflow File | Trigger Labels |
+| --- | ------------- | -------------- |
+| Architect Bot | `.github/workflows/architect-bot.yml` | `architecture` (case-insensitive) |
+| Developer Bot | `.github/workflows/developer-bot.yml` | `dev` (case-insensitive) |
+| Designer Bot | `.github/workflows/designer-bot.yml` | `design` (case-insensitive) |
+| Editor Bot | `.github/workflows/editor-bot.yml` | `documentation` (case-insensitive) |
+| QA Bot | `.github/workflows/qa-bot.yml` | `qa` (case-insensitive) |
+| Requirements Bot | `.github/workflows/requirements-bot.yml` | `req` (case-insensitive) |
+
+Each workflow listens for newly opened, reopened, or relabeled issues. Apply or update the appropriate label to dispatch the matching bot and generate the related automation response.
 NEVER modify the GitHub Actions timeout values - they are set correctly for the long-running dependency installations.
 Performance Expectations
 	•	React build: 5 seconds
