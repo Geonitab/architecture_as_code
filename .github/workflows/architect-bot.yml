@@ -56,6 +56,9 @@ jobs:
           OPENAI_MODEL: ${{ vars.ARCHITECT_BOT_MODEL }}
           OPENAI_BASE_URL: ${{ vars.ARCHITECT_BOT_OPENAI_BASE_URL }}
 
+      - name: Create and switch to branch
+        run: git checkout -b architect/issue-${{ github.event.issue.number }}
+
       - name: Push branch to remote
         run: git push origin architect/issue-${{ github.event.issue.number }}
 
