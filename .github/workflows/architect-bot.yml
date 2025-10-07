@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   prepare_architecture_pr:
-    if: github.event.label.name == 'architecture'
+    if: toLower(github.event.label.name) == 'architecture'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
