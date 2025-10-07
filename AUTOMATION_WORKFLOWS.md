@@ -11,6 +11,21 @@ Two new automation workflows have been added to the repository:
 
 Both workflows automatically trigger when relevant content changes and generate high-quality, professionally formatted output files.
 
+## Issue Response Bots
+
+The automation suite also includes specialized GitHub issue bots that produce
+structured response outlines whenever a matching label is applied:
+
+- **Architect Bot** (`architect-bot.yml`) – Generates architecture solution plans in `docs/architecture/`.
+- **Editor Bot** (`editor-bot.yml`) – Produces documentation outlines in `docs/documentation/` for the `documentation` label.
+- **Designer Bot** (`designer-bot.yml`) – Captures design considerations in `docs/design/` for the `design` label.
+- **Developer Bot** (`developer-bot.yml`) – Builds implementation plans in `docs/development/` for the `dev` label.
+- **QA Bot** (`qa-bot.yml`) – Provides quality assurance strategies in `docs/quality/` for the `QA` label.
+- **Requirements Bot** (`requirements-bot.yml`) – Records requirement inventories in `docs/requirements/` for the `Req` label.
+
+Each workflow checks out the repository, runs a dedicated Python helper under
+`scripts/`, and opens a pull request containing the generated markdown file.
+
 ## Presentation Generation Workflow
 
 ### Purpose

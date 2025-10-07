@@ -1,0 +1,57 @@
+name: QA Bot - Auto PR
+
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+      - reopened
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  prepare_quality_pr:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'QA') ||
+      contains(github.event.issue.labels.*.name, 'qa') ||
+      contains(github.event.issue.labels.*.name, 'Qa') ||
+      (github.event.label != null &&
+       contains(fromJSON('["QA","qa","Qa"]'), github.event.label.name))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate quality assurance response
+        run: python scripts/qa_bot.py
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Create quality assurance response pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: qa/issue-${{ github.event.issue.number }}
+          base: ${{ github.event.repository.default_branch }}
+          title: "Add QA plan for issue #${{ github.event.issue.number }}"
+          commit-message: "Add QA plan for issue #${{ github.event.issue.number }}"
+          labels: QA
+          body: |
+            ## Summary
+            - Automatically generated QA response for #${{ github.event.issue.number }}
+            - Review the plan and align coverage, metrics, and sign-off expectations.
+
+            Fixes #${{ github.event.issue.number }}
+          add-paths: |
+            docs/quality/**
