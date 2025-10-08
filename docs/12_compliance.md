@@ -239,7 +239,7 @@ Framtida Architecture as Code-development will to drivas of AI-automation, serve
 
 success requires kontinuerligt lärande, strategisk teknologiadoption and long-term vision for infrastructure development. Which vi has sett genAbout the Books progression from [Fundamental principles](02_fundamental_principles.md) to These advanced framtida technologies, is developed Architecture as Code kontinuerligt to meet new Challenges and possibilities.
 
-Swedish organizations as investerar in These emerging technologies and maintains krypto-agilitet will to vara välpositionerade for framtida teknologiska disruptions. Integration of These technologies requires both technical expertis and organisatorisk anpassningsformåga as diskuteras in [chapter 16 about organizational change](16_organizational_change.md).
+Swedish organizations as investerar in These emerging technologies and maintains krypto-agilitet will to vara välpositionerade for framtida teknologiska disruptions. Integration of These technologies requires both technical expertis and organisatorisk anpassningsformåga as diskuteras in [chapter 16 about organizational change](17_organizational_change.md).
 
 ## Sources and referenser
 

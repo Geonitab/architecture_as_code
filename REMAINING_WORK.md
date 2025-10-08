@@ -33,9 +33,9 @@ Based on spot-checking, these files likely need the most attention:
 ### Medium Priority (Some Swedish Remaining)
 6. `docs/05_automation_devops_cicd.md`
 7. `docs/04_adr.md`
-8. `docs/18_digitalization.md`
-9. `docs/22_conclusion.md`
-10. `docs/23_glossary.md`
+8. `docs/21_digitalization.md`
+9. `docs/27_conclusion.md`
+10. `docs/28_glossary.md`
 
 ### Low Priority (Minimal Issues)
 - Most chapter files (01-03, 11-17, 19-21, 24-27)

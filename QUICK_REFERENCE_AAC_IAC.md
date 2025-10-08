@@ -49,7 +49,7 @@ Add to your test workflow:
 
 ### Content Files
 All chapter files in `docs/`:
-- `01_introduction.md` through `27_technical_architecture.md`
+- `01_introduction.md` through `31_technical_architecture.md`
 - Only numbered markdown files are analyzed
 
 ### Tool Files

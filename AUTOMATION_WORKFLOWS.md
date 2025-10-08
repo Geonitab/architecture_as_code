@@ -215,7 +215,7 @@ ls -la whitepapers/
 
 ## AI Agent Playbook Workflows
 
-Complementing the generation pipelines, eight lightweight GitHub Actions workflows translate the responsibilities in `docs/28_ai_agent_team.md` into actionable checklists for each virtual agent role:
+Complementing the generation pipelines, eight lightweight GitHub Actions workflows translate the responsibilities in `docs/20_ai_agent_team.md` into actionable checklists for each virtual agent role:
 
 | Workflow | Fokus |
 |----------|-------|

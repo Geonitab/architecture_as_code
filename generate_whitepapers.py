@@ -134,39 +134,43 @@ Boken täcker allt från grundläggande principer och verktyg till avancerade im
 säkerhetsaspekter och organisatoriska förändringar som krävs för framgångsrik IaC-adoption.
         '''.strip(),
         'target_audience': 'IT-arkitekter, DevOps-team, utvecklare och beslutsfattare inom svenska organisationer',
-        'chapters_count': 27
+        'chapters_count': 31
     }
 
 def get_chapter_mapping():
     """Return mapping of chapter files to readable chapter numbers."""
     return {
-        '01_introduction.md': 'Inledning',
-        '02_fundamental_principles.md': 'Kapitel 1',
-        '03_version_control.md': 'Kapitel 2', 
-        '04_adr.md': 'Kapitel 3',
-        '05_automation_devops_cicd.md': 'Kapitel 4',
-        '06_cloud_architecture.md': 'Kapitel 5',
-        '07_containerization.md': 'Kapitel 6',
-        '08_microservices.md': 'Kapitel 7',
-        '09_security.md': 'Kapitel 8',
-        '10_policy_and_security.md': 'Kapitel 9',
-        '11_compliance.md': 'Kapitel 10',
-        '12_testing_strategies.md': 'Kapitel 11',
-        '13_practical_implementation.md': 'Kapitel 12',
-        '14_cost_optimization.md': 'Kapitel 13',
-        '15_migration.md': 'Kapitel 14',
-        '16_organizational_change.md': 'Kapitel 15',
-        '17_team_structure.md': 'Kapitel 16',
-        '18_digitalization.md': 'Kapitel 17',
-        '19_lovable_mockups.md': 'Kapitel 18',
-        '20_future_trends.md': 'Kapitel 19',
-        '21_best_practices.md': 'Kapitel 20',
-        '22_conclusion.md': 'Kapitel 21',
-        '23_glossary.md': 'Ordlista',
-        '24_about_the_authors.md': 'Om författarna',
-        '25_future_development.md': 'Kapitel 22',
-        '26_appendix_code_examples.md': 'Appendix A',
-        '27_technical_architecture.md': 'Appendix B'
+        '01_introduction.md': 'Kapitel 1',
+        '02_fundamental_principles.md': 'Kapitel 2',
+        '03_version_control.md': 'Kapitel 3',
+        '04_adr.md': 'Kapitel 4',
+        '05_automation_devops_cicd.md': 'Kapitel 5',
+        '06_cloud_architecture.md': 'Kapitel 6',
+        '07_containerization.md': 'Kapitel 7',
+        '08_microservices.md': 'Kapitel 8',
+        '09_security.md': 'Kapitel 9',
+        '10_policy_and_security.md': 'Kapitel 10',
+        '11_governance_as_code.md': 'Kapitel 11',
+        '12_compliance.md': 'Kapitel 12',
+        '13_testing_strategies.md': 'Kapitel 13',
+        '14_practical_implementation.md': 'Kapitel 14',
+        '15_cost_optimization.md': 'Kapitel 15',
+        '16_migration.md': 'Kapitel 16',
+        '17_organizational_change.md': 'Kapitel 17',
+        '18_team_structure.md': 'Kapitel 18',
+        '19_management_as_code.md': 'Kapitel 19',
+        '20_ai_agent_team.md': 'Kapitel 20',
+        '21_digitalization.md': 'Kapitel 21',
+        '22_lovable_mockups.md': 'Kapitel 22',
+        '23_soft_as_code_interplay.md': 'Kapitel 23',
+        '24_best_practices.md': 'Kapitel 24',
+        '25_future_trends.md': 'Kapitel 25',
+        '26_future_development.md': 'Kapitel 26',
+        '27_conclusion.md': 'Kapitel 27',
+        '28_glossary.md': 'Ordlista',
+        '29_about_the_authors.md': 'Om författarna',
+        '30_appendix_code_examples.md': 'Appendix A',
+        '31_technical_architecture.md': 'Appendix B'
     }
 
 def create_whitepaper_html(chapter_data, chapter_ref, book_overview):

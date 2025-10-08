@@ -129,7 +129,7 @@ All functionality from these workflows is now available in the unified workflow 
 
 ### 🤖 AI Agent Playbook Workflows
 
-To operationalize the virtual team defined in `docs/28_ai_agent_team.md`, dedicated reusable workflows are available for each agent role. They can be triggered manually (`workflow_dispatch`) or invoked from other workflows (`workflow_call`) to generate role-specific action plans that are published to the step summary and returned as workflow outputs.
+To operationalize the virtual team defined in `docs/20_ai_agent_team.md`, dedicated reusable workflows are available for each agent role. They can be triggered manually (`workflow_dispatch`) or invoked from other workflows (`workflow_call`) to generate role-specific action plans that are published to the step summary and returned as workflow outputs.
 
 | Workflow | Role focus | Primary responsibilities captured |
 |----------|------------|-----------------------------------|

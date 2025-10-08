@@ -2,7 +2,7 @@
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 30
+  total_chapters: 31
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -44,109 +44,113 @@ book:
       title: "Policy as Code and Security Automation"
       area: "Security"
       required: true
-    - filename: "11_compliance.md"
-      title: "Compliance and Regulatory Alignment"
-      area: "Governance"
-      required: true
-    - filename: "12_testing_strategies.md"
-      title: "Testing Strategies for Infrastructure Code"
-      area: "Quality Assurance"
-      required: true
-    - filename: "13_practical_implementation.md"
-      title: "Practical Implementation of Architecture as Code"
-      area: "Practical Application"
-      required: true
-    - filename: "14_cost_optimization.md"
-      title: "Cost Optimisation and Resource Management"
-      area: "Economic Optimisation"
-      required: true
-    - filename: "15_migration.md"
-      title: "Migration from Traditional Infrastructure"
-      area: "Migration"
-      required: true
-    - filename: "16_organizational_change.md"
-      title: "Organisational Change and Team Structures"
-      area: "Organisational Development"
-      required: true
-    - filename: "17_team_structure.md"
-      title: "Team Structure for Scalable IaC"
-      area: "Organisational Development"
-      required: true
-    - filename: "18_digitalization.md"
-      title: "Digitalisation through Code-Based Infrastructure"
-      area: "Strategic Development"
-      required: true
-    - filename: "19_lovable_mockups.md"
-      title: "Lovable Mockups and Prototyping"
-      area: "Product Development"
-      required: true
-    - filename: "20_future_trends.md"
-      title: "Future Trends in Infrastructure as Code"
-      area: "Future Outlook"
-      required: true
-    - filename: "21_best_practices.md"
-      title: "Method Selection and Lessons Learned"
-      area: "Best Practices"
-      required: true
-    - filename: "22_conclusion.md"
-      title: "Conclusion and the Way Forward"
-      area: "Summary"
-      required: true
-    - filename: "23_glossary.md"
-      title: "Glossary and Definitions"
-      area: "Reference"
-      required: true
-    - filename: "24_about_the_authors.md"
-      title: "About the Authors"
-      area: "Appendix"
-      required: true
-    - filename: "25_future_development.md"
-      title: "Future Development"
-      area: "Future Outlook"
-      required: true
-    - filename: "26_appendix_code_examples.md"
-      title: "Appendix A: Code Examples and Technical Implementations"
-      area: "Appendix"
-      required: true
-    - filename: "27_technical_architecture.md"
-      title: "Technical Architecture Blueprint"
-      area: "Appendix"
-      required: true
-    - filename: "28_ai_agent_team.md"
-      title: "AI Agent Team for Architecture as Code Initiatives"
-      area: "Collaboration"
-      required: true
-    - filename: "29_governance_as_code.md"
+    - filename: "11_governance_as_code.md"
       title: "Governance as Code"
       area: "Governance"
       required: true
-    - filename: "30_samspelet_mellan_mjuka_as_code.md"
+    - filename: "12_compliance.md"
+      title: "Compliance and Regulatory Alignment"
+      area: "Governance"
+      required: true
+    - filename: "13_testing_strategies.md"
+      title: "Testing Strategies for Infrastructure Code"
+      area: "Quality Assurance"
+      required: true
+    - filename: "14_practical_implementation.md"
+      title: "Practical Implementation of Architecture as Code"
+      area: "Practical Application"
+      required: true
+    - filename: "15_cost_optimization.md"
+      title: "Cost Optimisation and Resource Management"
+      area: "Economic Optimisation"
+      required: true
+    - filename: "16_migration.md"
+      title: "Migration from Traditional Infrastructure"
+      area: "Migration"
+      required: true
+    - filename: "17_organizational_change.md"
+      title: "Organisational Change and Team Structures"
+      area: "Organisational Development"
+      required: true
+    - filename: "18_team_structure.md"
+      title: "Team Structure for Scalable IaC"
+      area: "Organisational Development"
+      required: true
+    - filename: "19_management_as_code.md"
+      title: "Management as Code"
+      area: "Leadership"
+      required: true
+    - filename: "20_ai_agent_team.md"
+      title: "AI Agent Team for Architecture as Code Initiatives"
+      area: "Collaboration"
+      required: true
+    - filename: "21_digitalization.md"
+      title: "Digitalisation through Code-Based Infrastructure"
+      area: "Strategic Development"
+      required: true
+    - filename: "22_lovable_mockups.md"
+      title: "Lovable Mockups and Prototyping"
+      area: "Product Development"
+      required: true
+    - filename: "23_soft_as_code_interplay.md"
       title: "The Interplay Between Soft As Code Disciplines"
       area: "Strategic Development"
       required: true
+    - filename: "24_best_practices.md"
+      title: "Method Selection and Lessons Learned"
+      area: "Best Practices"
+      required: true
+    - filename: "25_future_trends.md"
+      title: "Future Trends in Infrastructure as Code"
+      area: "Future Outlook"
+      required: true
+    - filename: "26_future_development.md"
+      title: "Future Development"
+      area: "Future Outlook"
+      required: true
+    - filename: "27_conclusion.md"
+      title: "Conclusion and the Way Forward"
+      area: "Summary"
+      required: true
+    - filename: "28_glossary.md"
+      title: "Glossary and Definitions"
+      area: "Reference"
+      required: true
+    - filename: "29_about_the_authors.md"
+      title: "About the Authors"
+      area: "Appendix"
+      required: true
+    - filename: "30_appendix_code_examples.md"
+      title: "Appendix A: Code Examples and Technical Implementations"
+      area: "Appendix"
+      required: true
+    - filename: "31_technical_architecture.md"
+      title: "Technical Architecture Blueprint"
+      area: "Appendix"
+      required: true
   special_chapters:
     glossary:
-      filename: "23_glossary.md"
+      filename: "28_glossary.md"
       requires_diagram: false
       requires_sources: false
     authors:
-      filename: "24_about_the_authors.md"
+      filename: "29_about_the_authors.md"
       requires_diagram: false
       requires_sources: false
     conclusion:
-      filename: "22_conclusion.md"
+      filename: "27_conclusion.md"
       requires_diagram: false
       requires_sources: true
     appendix:
-      filename: "26_appendix_code_examples.md"
+      filename: "30_appendix_code_examples.md"
       requires_diagram: true
       requires_sources: false
     technical:
-      filename: "27_technical_architecture.md"
+      filename: "31_technical_architecture.md"
       requires_diagram: true
       requires_sources: false
     future:
-      filename: "25_future_development.md"
+      filename: "26_future_development.md"
       requires_diagram: false
       requires_sources: true
     book_cover:
@@ -239,31 +243,35 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | 08 | 08_microservices.md | Microservices and Distributed Systems | Architecture | Yes |
 | 09 | 09_security.md | Security in Infrastructure as Code | Security | Yes |
 | 10 | 10_policy_and_security.md | Policy as Code and Security Automation | Security | Yes |
-| 11 | 11_compliance.md | Compliance and Regulatory Alignment | Governance | Yes |
-| 12 | 12_testing_strategies.md | Testing Strategies for Infrastructure Code | Quality Assurance | Yes |
-| 13 | 13_practical_implementation.md | Practical Implementation of Architecture as Code | Practical Application | Yes |
-| 14 | 14_cost_optimization.md | Cost Optimisation and Resource Management | Economic Optimisation | Yes |
-| 15 | 15_migration.md | Migration from Traditional Infrastructure | Migration | Yes |
-| 16 | 16_organizational_change.md | Organisational Change and Team Structures | Organisational Development | Yes |
-| 17 | 17_team_structure.md | Team Structure for Scalable IaC | Organisational Development | Yes |
-| 18 | 18_digitalization.md | Digitalisation through Code-Based Infrastructure | Strategic Development | Yes |
-| 19 | 19_lovable_mockups.md | Lovable Mockups and Prototyping | Product Development | Yes |
-| 20 | 20_future_trends.md | Future Trends in Infrastructure as Code | Future Outlook | Yes |
-| 21 | 21_best_practices.md | Method Selection and Lessons Learned | Best Practices | Yes |
-| 22 | 22_conclusion.md | Conclusion and the Way Forward | Summary | Yes |
-| 23 | 23_glossary.md | Glossary and Definitions | Reference | Yes |
-| 24 | 24_about_the_authors.md | About the Authors | Appendix | Yes |
-| 25 | 25_future_development.md | Future Development | Future Outlook | Yes |
-| 26 | 26_appendix_code_examples.md | Appendix A: Code Examples and Technical Implementations | Appendix | Yes |
-| 27 | 27_technical_architecture.md | Technical Architecture Blueprint | Appendix | Yes |
+| 11 | 11_governance_as_code.md | Governance as Code | Governance | Yes |
+| 12 | 12_compliance.md | Compliance and Regulatory Alignment | Governance | Yes |
+| 13 | 13_testing_strategies.md | Testing Strategies for Infrastructure Code | Quality Assurance | Yes |
+| 14 | 14_practical_implementation.md | Practical Implementation of Architecture as Code | Practical Application | Yes |
+| 15 | 15_cost_optimization.md | Cost Optimisation and Resource Management | Economic Optimisation | Yes |
+| 16 | 16_migration.md | Migration from Traditional Infrastructure | Migration | Yes |
+| 17 | 17_organizational_change.md | Organisational Change and Team Structures | Organisational Development | Yes |
+| 18 | 18_team_structure.md | Team Structure for Scalable IaC | Organisational Development | Yes |
+| 19 | 19_management_as_code.md | Management as Code | Leadership | Yes |
+| 20 | 20_ai_agent_team.md | AI Agent Team for Architecture as Code Initiatives | Collaboration | Yes |
+| 21 | 21_digitalization.md | Digitalisation through Code-Based Infrastructure | Strategic Development | Yes |
+| 22 | 22_lovable_mockups.md | Lovable Mockups and Prototyping | Product Development | Yes |
+| 23 | 23_soft_as_code_interplay.md | The Interplay Between Soft As Code Disciplines | Strategic Development | Yes |
+| 24 | 24_best_practices.md | Method Selection and Lessons Learned | Best Practices | Yes |
+| 25 | 25_future_trends.md | Future Trends in Infrastructure as Code | Future Outlook | Yes |
+| 26 | 26_future_development.md | Future Development | Future Outlook | Yes |
+| 27 | 27_conclusion.md | Conclusion and the Way Forward | Summary | Yes |
+| 28 | 28_glossary.md | Glossary and Definitions | Reference | Yes |
+| 29 | 29_about_the_authors.md | About the Authors | Appendix | Yes |
+| 30 | 30_appendix_code_examples.md | Appendix A: Code Examples and Technical Implementations | Appendix | Yes |
+| 31 | 31_technical_architecture.md | Technical Architecture Blueprint | Appendix | Yes |
 
 ### Special Chapter Requirements
-- **Glossary (`23_glossary.md`)** – no diagrams or sources required.
-- **About the Authors (`24_about_the_authors.md`)** – no diagrams or sources required.
-- **Conclusion (`22_conclusion.md`)** – does not require diagrams but must cite sources.
-- **Appendix A (`26_appendix_code_examples.md`)** – diagrams are required; sources are optional.
-- **Technical Architecture (`27_technical_architecture.md`)** – diagrams are required; sources are optional.
-- **Future Development (`25_future_development.md`)** – sources are required; diagrams are optional.
+- **Glossary (`28_glossary.md`)** – no diagrams or sources required.
+- **About the Authors (`29_about_the_authors.md`)** – no diagrams or sources required.
+- **Conclusion (`27_conclusion.md`)** – does not require diagrams but must cite sources.
+- **Appendix A (`30_appendix_code_examples.md`)** – diagrams are required; sources are optional.
+- **Technical Architecture (`31_technical_architecture.md`)** – diagrams are required; sources are optional.
+- **Future Development (`26_future_development.md`)** – sources are required; diagrams are optional.
 - **Book Cover (`BOOK_COVER_DESIGN.md`)** – no diagrams or sources required.
 - **EPUB Validation (`EPUB_VALIDATION.md`)** – no diagrams or sources required.
 
