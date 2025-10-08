@@ -1,6 +1,6 @@
 # Architecture as Code - Book Project
 
-This repository powers the publication workflow for the book *Architecture as Code* and the accompanying React-based project dashboard. It contains the complete manuscript, automation scripts for generating multi-format releases, and a status overview application for stakeholders.
+This repository powers the publication workflow for the book *Architecture as Code*. It contains the complete manuscript alongside automation scripts for generating multi-format releases and distribution assets.
 
 ## 📚 About the Book
 
@@ -51,9 +51,6 @@ releases/                 # Git-ignored distribution bundles populated by build 
 
 .github/workflows/        # Automation for builds, bot responses, and content validation
 └── *.yml                 # Includes unified-build-release.yml, generate-presentations.yml, generate-whitepapers.yml, and specialised bot workflows
-
-src/                      # React dashboard exposing project health and chapter status
-└── pages/Index.tsx       # Main dashboard view rendered by Vite
 ```
 
 ## 🚀 Build and Automation Workflow
@@ -61,7 +58,7 @@ src/                      # React dashboard exposing project health and chapter 
 ### Prerequisites
 - **Pandoc 3.1.9+** and **XeLaTeX** (`texlive-xetex`, `texlive-fonts-recommended`, `texlive-plain-generic`) for PDF output.
 - **Mermaid CLI (`@mermaid-js/mermaid-cli`)** for diagram generation.
-- **Node.js & npm** for the React dashboard.
+- **Node.js & npm** for running JavaScript-based helper scripts (no front-end assets are currently included).
 - **Python 3.12+** for content automation scripts.【F:docs/build_book.sh†L1-L171】【F:build_release.sh†L1-L59】
 
 ### Core Commands
@@ -75,10 +72,6 @@ cd docs && ./build_book.sh
 # Create the full distribution bundle (book formats, presentation, whitepapers, website)
 ./build_release.sh
 
-# Front-end workflows
-npm install        # Install dashboard dependencies
-npm run dev        # Start Vite dev server at http://localhost:5173
-npm run build      # Production bundle for the dashboard
 ```
 
 The GitHub Actions pipeline (`.github/workflows/unified-build-release.yml`) mirrors these commands to produce release artifacts whenever book content or automation scripts change.【F:build_release.sh†L1-L212】
@@ -88,23 +81,6 @@ The GitHub Actions pipeline (`.github/workflows/unified-build-release.yml`) mirr
 - **Presentation materials:** `arkitektur_som_kod_presentation.pptx` containing chapter summaries and speaker notes.
 - **Whitepapers:** HTML exports for each chapter designed for responsive reading.
 - **Static website:** Production-ready site mirroring the manuscript for web distribution.【F:releases/README.md†L1-L48】
-
-## 🖥️ React Dashboard
-
-The dashboard (implemented with Vite and React) surfaces live progress for the publishing programme. It highlights chapter readiness, automation status, and release verification so editors and engineers share a single source of truth. The UI is composed with shadcn/ui, Tailwind CSS, Radix primitives, and supporting libraries for charts, markdown rendering, and syntax highlighting.【F:package.json†L8-L73】【F:AGENTS.md†L33-L118】
-
-### Key Capabilities
-- Project status cards that reflect release readiness and automation health.【F:AGENTS.md†L51-L58】
-- Chapter catalogue listing the manuscript chapters for quick navigation between sections.【F:AGENTS.md†L51-L58】【F:docs/README.md†L7-L125】
-- CI/CD status widgets aligned with the unified release workflow and validation steps.【F:AGENTS.md†L51-L58】【F:.github/workflows/unified-build-release.yml†L1-L33】
-- English-language UI to support global collaboration and review workflows.【F:AGENTS.md†L51-L58】
-
-### Front-end Stack
-- React 18 + TypeScript bundled with Vite
-- Tailwind CSS utilities combined with shadcn/ui and Radix UI components
-- React Router for navigation
-- `react-markdown` and `react-syntax-highlighter` for rendered book previews and code samples
-- TanStack Query for data orchestration when synchronising build metadata【F:package.json†L18-L74】
 
 ## 🔄 CI/CD Workflows
 
@@ -126,8 +102,7 @@ Key workflows include:
    cd docs && ./build_book.sh
    ```
 3. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
-4. For dashboard updates, install dependencies with `npm install` and run `npm run build` (or `npm run dev`) to ensure the UI compiles cleanly.
-5. Commit changes with clear messages and submit a pull request following repository guidelines.
+4. Commit changes with clear messages and submit a pull request following repository guidelines.
 
 ## 🔍 Link Verification
 
@@ -145,5 +120,5 @@ The Architecture as Code book workshop maintains the repository, coordinates rel
 
 ## 🌍 Language
 
-Manuscript chapters, automation output, and UI labels are maintained in English to streamline translation workflows and international collaboration.【F:docs/README.md†L1-L159】【F:AGENTS.md†L112-L123】
+Manuscript chapters and automation output are maintained in English to streamline translation workflows and international collaboration.【F:docs/README.md†L1-L159】【F:AGENTS.md†L115-L123】
 
