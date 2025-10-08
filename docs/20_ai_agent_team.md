@@ -11,24 +11,7 @@ Detta dokument beskriver den virtuella agentgrupp som ska samarbeta kring projek
 3. Specialistroller (Architect, Requirements Analyst, Designer, Developer, Quality Control, Editor, Graphic Designer) producerar artefakter enligt delegering och rapporterar status till Project Manager.
 4. Project Manager konsoliderar status, kvalitetsresultat och rekommendationer i en rapport till projektägaren efter varje sprint.
 
-```mermaid
-graph TD
-    PO[Projektägare] --> PM[Project Manager]
-    PM --> ARCH[Architect]
-    PM --> RA[Requirements Analyst]
-    PM --> DES[Designer]
-    PM --> DEV[Developer]
-    PM --> QC[Quality Control]
-    PM --> ED[Editor]
-    PM --> GD[Graphic Designer]
-    ARCH --> PM
-    RA --> PM
-    DES --> PM
-    DEV --> PM
-    QC --> PM
-    ED --> PM
-    GD --> PM
-```
+*Diagram source: [`images/diagram_28_agent_team.mmd`](images/diagram_28_agent_team.mmd)*
 
 ## Roller och ansvar
 

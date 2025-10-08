@@ -1,0 +1,20 @@
+%% Team-of-teams leadership structure
+flowchart TD
+    subgraph Squad Blueprint
+        Roles[Role Mix Definition]
+        Rituals[Team Rituals]
+        Interfaces[External Interfaces]
+    end
+
+    subgraph Team of Teams
+        Nexus[Nexus Governance]
+        SharedServices[Shared Services Agreements]
+        Dependencies[Dependency Map]
+    end
+
+    Roles --> Nexus
+    Rituals --> Nexus
+    Interfaces --> SharedServices
+    Dependencies --> Nexus
+    SharedServices --> Support[Support Functions Automation]
+    Nexus --> Visibility[Organisation Dashboard]
