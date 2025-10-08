@@ -119,6 +119,16 @@ Reference material, author information, and technical enablers
 
 ---
 
+### Archived Drafts
+
+The `archive/` folder stores markdown chapters that have been retired from the active manuscript. These files are excluded from the automated build sequence in `build_book.sh` but remain available for reference and future revisions.
+
+| File | Original Chapter | Notes |
+|------|------------------|-------|
+| `archive/32_code_oriented_organisations.md` | Chapter 32 | Explores cultural dynamics in code-centric organisations; overlaps with existing organisational guidance and is currently treated as background material. |
+
+---
+
 ## Book Organization Principles
 
 The book's seven-part structure follows a logical progression:
