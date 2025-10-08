@@ -4,10 +4,9 @@
 
 ## Project Overview
 
-This is a hybrid repository serving two primary purposes:
+This repository focuses on a single goal:
 
-1. **Book Publishing**: Automated generation and publishing of "Architecture as Code" - a comprehensive technical book on architecture as code principles
-2. **React Dashboard**: A web application that displays book project status and chapter structure
+1. **Book Publishing**: Automated generation and publishing of "Architecture as Code" - a comprehensive technical book on architecture as code principles. (Historical documentation may reference a React dashboard, but the front-end source code has been removed from the project.)
 
 ## Working Effectively
 
@@ -16,7 +15,7 @@ This is a hybrid repository serving two primary purposes:
 **NEVER CANCEL long-running installs.** Build processes can take 15+ minutes. Always use timeouts of 60+ minutes for installs.
 
 ```bash
-# Install Node.js dependencies (30 seconds)
+# Optional: install Node.js dependencies for helper scripts (30 seconds)
 npm install
 
 # Install book publishing dependencies (8+ minutes - NEVER CANCEL, timeout: 1800s)
@@ -35,11 +34,6 @@ mkdir -p ~/.local/share/pandoc/templates
 pandoc --print-default-template=latex > ~/.local/share/pandoc/templates/eisvogel.latex
 Build and Test Commands
 CRITICAL TIMING - NEVER CANCEL these operations:
-# React web application
-npm run build     # 5 seconds (timeout: 60s)
-npm run dev       # Ready in <1 second, runs indefinitely
-npm run lint      # 2 seconds (timeout: 30s) - NOTE: Will show warnings, this is expected
-
 # Book generation
 python3 generate_book.py          # <1 second - generates markdown content
 docs/build_book.sh                # 30 seconds (timeout: 300s) - full PDF build with diagrams
@@ -48,13 +42,6 @@ docs/build_book.sh                # 30 seconds (timeout: 300s) - full PDF build 
 python3 generate_book.py && docs/build_book.sh
 Validation Requirements
 MANUAL VALIDATION: After ANY changes, you MUST test actual functionality:
-React Application Validation
-# Start dev server and verify it loads correctly
-npm run dev
-# Navigate to http://localhost:8080 in browser
-# Take screenshot to verify UI renders properly
-# Check console for errors
-Expected UI: Dashboard showing 23 book chapters, project status cards, and CI/CD status indicators in English.
 Book Building Validation
 # Generate and build complete book
 python3 generate_book.py && docs/build_book.sh
@@ -71,15 +58,10 @@ Key Technical Details
 Repository Structure
 docs/                     # Book content
 ├── *.md                 # 15 markdown chapter files
-├── images/*.mmd         # 12 Mermaid diagram source files  
+├── images/*.mmd         # 12 Mermaid diagram source files
 ├── images/*.png         # Generated PNG diagrams
 ├── build_book.sh        # Local PDF build script
 └── architecture_as_code.pdf # Generated book (95KB with images)
-
-src/                      # React web application
-├── components/ui/       # shadcn/ui components
-├── pages/Index.tsx      # Main dashboard page
-└── App.tsx             # React router setup
 
 .github/workflows/       # CI/CD automation
 └── build-book.yml      # Automated PDF publishing on push
@@ -87,32 +69,25 @@ Common Issues and Solutions
 Mermaid CLI Chrome Error:
 # If mmdc fails with Chrome error, ensure Chrome executable is available:
 PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i input.mmd -o output.png
-ESLint Warnings: The linting will show warnings about React refresh and TypeScript interfaces. This is expected and does not prevent builds.
+ESLint Warnings: Existing lint configurations are retained for historical reasons and may reference React refresh or TypeScript interfaces. These warnings are expected until the front-end is reinstated and do not prevent book builds.
 TeXLive Installation: Takes 8+ minutes and includes kernel updates. This is normal - NEVER CANCEL.
 Development Workflow
-	1	Always run existing validation first: npm run build && npm run lint
-	2	Test book generation: python3 generate_book.py && docs/build_book.sh
-	3	Make minimal changes
-	4	Re-validate immediately: Re-run builds after each change
-	5	Test UI changes manually: Start dev server and verify in browser
-	6	ALWAYS run linting before committing: npm run lint
+1. Test book generation first: `python3 generate_book.py && docs/build_book.sh`
+2. Make minimal changes.
+3. Re-validate immediately by rerunning the book build after each change.
+4. Run additional scripts as needed (e.g., `npm run generate:whitepapers`).
 Technology Stack
-React Web Application
-	•	Vite: Build tool and dev server
-	•	React + TypeScript: UI framework
-	•	Tailwind CSS + shadcn/ui: Styling and components
-	•	React Router: Navigation
-	•	ESLint: Code linting
-Book Publishing
-	•	Python 3.12: Content generation script
-	•	Pandoc 3.1.9: Markdown to PDF conversion
-	•	XeLaTeX: PDF rendering engine
-	•	Mermaid CLI: Diagram generation (.mmd → .png)
-	•	TeXLive: LaTeX distribution for PDF generation
-CI/CD
-	•	GitHub Actions: Automated book building and publishing
-	•	Automatic releases: PDF published on main branch pushes
-	•	Artifact storage: PDF available for download after builds
+- **Publishing Toolchain**
+  - Python 3.12: Content generation script
+  - Pandoc 3.1.9: Markdown to PDF conversion
+  - XeLaTeX: PDF rendering engine
+  - Mermaid CLI: Diagram generation (`.mmd` → `.png`)
+  - TeXLive: LaTeX distribution for PDF generation
+- **Automation & Utilities**
+  - Node.js/npm: Wrapper scripts and linting utilities (no front-end currently included)
+  - GitHub Actions: Automated book building and publishing
+  - Automatic releases: PDF published on main branch pushes
+  - Artifact storage: PDF available for download after builds
 GitHub Actions Integration
 The .github/workflows/build-book.yml automatically:
 	•	Triggers on changes to docs/**/*.md or docs/images/**/*.mmd
@@ -138,8 +113,6 @@ Several specialized automation bots monitor GitHub issues and trigger workflows 
 Each workflow listens for newly opened, reopened, or relabeled issues. Apply or update the appropriate label to dispatch the matching bot and generate the related automation response.
 NEVER modify the GitHub Actions timeout values - they are set correctly for the long-running dependency installations.
 Performance Expectations
-	•	React build: 5 seconds
-	•	React dev server startup: <1 second
 	•	Book content generation: <1 second
 	•	Complete book build with diagrams: 30 seconds
 	•	Full CI/CD pipeline: 15+ minutes (due to dependency installs)
@@ -147,6 +120,6 @@ Critical Notes
 	•	NEVER CANCEL builds or long-running commands - Dependency installs can take 15+ minutes
 	•	Always use proper timeouts: 60+ minutes for installs, 5+ minutes for builds
 	•	Chrome dependency required: Mermaid CLI needs Chrome browser for PNG generation
-	•	English content: All book content is in English, UI labels are in English
+	•	English content: All manuscript text and automation outputs are maintained in English
 	•	PDF generation works: Even if Mermaid fails, Pandoc will generate PDF with text placeholders
 
