@@ -1,257 +1,149 @@
 # Architecture as Code - Book Project
 
-A comprehensive book about Architecture as Code, with practical examples and case studies.
+This repository powers the publication workflow for the book *Architecture as Code* and the accompanying React-based project dashboard. It contains the complete manuscript, automation scripts for generating multi-format releases, and a status overview application for stakeholders.
 
 ## 📚 About the Book
 
-This book covers Architecture as Code from fundamental principles to advanced implementation, with a focus on practical application.
+The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-two chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is written with Swedish public-sector and enterprise contexts in mind, combining conceptual guidance, practical templates, and illustrative diagrams.【F:docs/README.md†L1-L131】【F:docs/32_code_oriented_organisations.md†L1-L64】
 
 ### Target Audience
-- system architects
-- DevOps Engineers  
-- Developers
-- Project Managers
-- IT Managers
+- System and enterprise architects
+- DevOps and platform engineers
+- Software developers working with cloud-native stacks
+- Technology leaders, managers, and programme owners
+- Transformation teams driving digitalisation initiatives【F:docs/README.md†L146-L159】
 
-### Contents
-27 chapters covering:
-- Fundamental principles of Architecture as Code
-- Version control and code structures
-- Cloud architecture and automation
-- Security and compliance
-- CI/CD and testing strategies
-- Organizational transformation
-- Practical case studies and implementations
+## 📖 Narrative Structure
 
-## 🛠️ Technical implementation
+### Seven Core Parts
 
-### Structure
+| Part | Chapters | Focus |
+| --- | --- | --- |
+| Part 1 – Foundations | 1-4 | Core concepts, guiding principles, and documentation practices for Architecture as Code |
+| Part 2 – Architecture Platform | 5-8 | Automation tooling, cloud environments, containerisation, and microservices foundations |
+| Part 3 – Security & Governance | 9-12 | Security automation, policy enforcement, governance models, and compliance obligations |
+| Part 4 – Delivery & Operations | 13-16 | Testing strategies, delivery pipelines, cost management, and migration playbooks |
+| Part 5 – Organization & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
+| Part 6 – Experience & Best Practices | 22-24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
+| Part 7 – Future & Wrap-up | 25-27 | Strategic outlook, forward-looking development plans, and closing guidance |【F:docs/README.md†L7-L120】
+
+### Appendices and Extended Material
+- **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
+- **Chapter 29 – About the Authors:** Contributor biographies and acknowledgements.
+- **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
+- **Chapter 31 – Technical Structure for Book Production:** Tooling overview for the publishing platform.
+- **Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Deep dive into the cultural strengths and risks of repository-driven collaboration.【F:docs/README.md†L112-L125】【F:docs/32_code_oriented_organisations.md†L1-L64】
+
+## 🧭 Repository Layout
+
 ```
-docs/                    # Book content
-├── *.md                # Markdown chapters (01_introduction.md, 02_fundamental_principles.md, etc.)
-├── images/             # Mermaid diagrams
-│   └── *.mmd          # Mermaid source files
-├── build_book.sh      # Local build script
-└── arkitektur_som_kod.pdf  # Generated book
+docs/                     # Manuscript chapters, diagrams, and publishing assets
+├── *.md                  # Numbered chapters and appendices (01_introduction.md … 32_code_oriented_organisations.md)
+├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
+├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation
+└── pandoc.yaml           # Shared Pandoc configuration
 
-releases/                 # All deliverables organized for distribution
-├── book/               # Book formats (PDF, EPUB, DOCX)
-├── presentation/       # Presentation materials (PPTX, PDF)
-├── whitepapers/        # HTML whitepapers per chapter
-└── website/           # Complete static website
+releases/                 # Git-ignored distribution bundles populated by build scripts
+├── book/                 # arkitektur_som_kod.{pdf,epub,docx}
+├── presentation/         # arkitektur_som_kod_presentation.pptx and supporting files
+├── whitepapers/          # Per-chapter HTML exports
+└── website/              # Static site build output
 
-.github/workflows/      # CI/CD automation
-├── unified-build-release.yml    # Unified comprehensive workflow (ALL formats)
-├── generate-whitepapers.yml    # Standalone whitepaper generation
-├── generate-presentations.yml  # Standalone presentation generation  
-└── content-validation.yml      # Repository content validation
+.github/workflows/        # Automation for builds, bot responses, and content validation
+└── *.yml                 # Includes unified-build-release.yml, generate-presentations.yml, generate-whitepapers.yml, and specialised bot workflows
+
+src/                      # React dashboard exposing project health and chapter status
+└── pages/Index.tsx       # Main dashboard view rendered by Vite
 ```
 
-### Release Deliverables
-
-All releases are automatically generated and published through GitHub Actions workflows.
-
-**Book Formats:**
-- PDF (using Pandoc + Eisvogel template)
-- EPUB (electronic book format)
-- DOCX (Microsoft Word format)
-
-**Presentation Materials:**
-- PowerPoint (PPTX) with speaker notes
-- PDF version for easy sharing
-- Individual chapter slides
-
-**Whitepapers:**
-- HTML whitepapers for each chapter
-- Responsive design for web publishing
-- Includes diagrams and code examples
-
-**Website:**
-- Complete static site with all content
-- Chapter navigation
-- Search functionality
-- Mobile-responsive design
-
-## 🚀 Building the Book
+## 🚀 Build and Automation Workflow
 
 ### Prerequisites
+- **Pandoc 3.1.9+** and **XeLaTeX** (`texlive-xetex`, `texlive-fonts-recommended`, `texlive-plain-generic`) for PDF output.
+- **Mermaid CLI (`@mermaid-js/mermaid-cli`)** for diagram generation.
+- **Node.js & npm** for the React dashboard.
+- **Python 3.12+** for content automation scripts.【F:docs/build_book.sh†L1-L171】【F:build_release.sh†L1-L59】
 
-**For PDF Generation:**
+### Core Commands
 ```bash
-# Install Pandoc (3.1.9 or later)
-wget https://github.com/jgm/pandoc/releases/download/3.1.9/pandoc-3.1.9-1-amd64.deb
-sudo dpkg -in pandoc-3.1.9-1-amd64.deb
-
-# Install LaTeX (for PDF generation)
-sudo apt-get update
-sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-plain-generic
-
-# Install Mermaid CLI (for diagram conversion)
-npm install -g @mermaid-js/mermaid-cli
-```
-
-**For Web Dashboard:**
-```bash
-# Install Node.js dependencies
-# Note: Requires --legacy-peer-deps due to @toast-ui/react-editor React 17 compatibility
-npm install --legacy-peer-deps
-```
-
-**Known Security Issues:**
-- The `markdown` package has a ReDoS vulnerability (GHSA-wx77-rp39-c6vg) with no fix available. The impact is minimal as it's only used for static content rendering.
-- Some dependencies require `--legacy-peer-deps` due to React version compatibility. See [package.json](package.json) for details.
-
-### Build Commands
-
-**Generate Book Content:**
-```bash
-# Generate all markdown files
+# Regenerate chapter content from automation scripts
 python3 generate_book.py
 
-# Build PDF with diagrams
+# Build PDF, EPUB, and DOCX (runs diagram export, copies cover art, and writes to releases/book/)
 cd docs && ./build_book.sh
-```
 
-**Run Web Dashboard:**
-```bash
-# Development server
-npm run dev
-
-# Production build
-npm run build
-```
-
-**Generate All Formats:**
-```bash
-# Complete release build
+# Create the full distribution bundle (book formats, presentation, whitepapers, website)
 ./build_release.sh
+
+# Front-end workflows
+npm install        # Install dashboard dependencies
+npm run dev        # Start Vite dev server at http://localhost:5173
+npm run build      # Production bundle for the dashboard
 ```
 
-## 📖 Chapter Overview
+The GitHub Actions pipeline (`.github/workflows/unified-build-release.yml`) mirrors these commands to produce release artifacts whenever book content or automation scripts change.【F:build_release.sh†L1-L212】
 
-1. **Introduction** - Introduction to Architecture as Code
-2. **Fundamental Principles** - Core principles of Architecture as Code
-3. **Version Control** - Version management and code structure
-4. **ADR** - Architecture Decision Records
-5. **Automation & CI/CD** - Automation, DevOps and CI/CD
-6. **Cloud Architecture** - Cloud architecture as code
-7. **Containerization** - Containerization and orchestration
-8. **Microservices** - Microservices and API design
-9. **Security** - Security in Architecture as Code
-10. **Policy as Code** - Policy as code and security automation
-11. **Compliance** - Compliance and regulatory adherence
-12. **Testing** - Testing strategies for architecture code
-13. **implementation** - Practical implementation
-14. **Cost Optimization** - Cost optimization and resource management
-15. **Migration** - Migration from traditional infrastructure
-16. **Organizational Change** - Organizational change and cultural transformation
-17. **Team Structure** - Team structure and competencies
-18. **Digitalization** - Digitalization and business value
-19. **Lovable Mockups** - Lovable mockups and user-centered design
-20. **Future Trends** - Future trends in Architecture as Code
-21. **Best Practices** - Best practices and lessons learned
-22. **Conclusion** - Conclusion
-23. **Glossary** - Glossary of terms
-24. **About Authors** - About the authors
-25. **Future Development** - Future development and roadmap
-26. **Appendix** - Code examples and templates
-27. **Technical Architecture** - Technical architecture of the book
+## 📦 Release Deliverables
+- **Book formats:** `arkitektur_som_kod.pdf`, `.epub`, and `.docx` generated via Pandoc with the Eisvogel template.
+- **Presentation materials:** `arkitektur_som_kod_presentation.pptx` containing chapter summaries and speaker notes.
+- **Whitepapers:** HTML exports for each chapter designed for responsive reading.
+- **Static website:** Production-ready site mirroring the manuscript for web distribution.【F:releases/README.md†L1-L48】
 
-## 🎨 React Dashboard
+## 🖥️ React Dashboard
 
-The project includes a React-based web dashboard that provides:
-- Book project status overview
-- Chapter structure visualization
-- CI/CD pipeline status
-- Build artifacts and downloads
+The dashboard (implemented with Vite and React) surfaces live progress for the publishing programme. It highlights chapter readiness, automation status, and release verification so editors and engineers share a single source of truth. The UI is composed with shadcn/ui, Tailwind CSS, Radix primitives, and supporting libraries for charts, markdown rendering, and syntax highlighting.【F:package.json†L8-L73】【F:AGENTS.md†L33-L118】
 
-**Technologies:**
-- React + TypeScript
-- Vite (build tool)
-- Tailwind CSS + shadcn/ui components
-- React Router
-- react-syntax-highlighter with Prism.js (code syntax highlighting)
+### Key Capabilities
+- Project status cards that reflect release readiness and automation health.【F:AGENTS.md†L51-L58】
+- Chapter catalogue listing the manuscript chapters for quick navigation between sections.【F:AGENTS.md†L51-L58】【F:docs/README.md†L7-L125】
+- CI/CD status widgets aligned with the unified release workflow and validation steps.【F:AGENTS.md†L51-L58】【F:.github/workflows/unified-build-release.yml†L1-L33】
+- English-language UI to support global collaboration and review workflows.【F:AGENTS.md†L51-L58】
 
-**Code Syntax Highlighting:**
-
-The book preview feature uses Prism.js via `react-syntax-highlighter` to provide syntax highlighting for code blocks with a dark theme (VS Code Dark+). Supported languages include:
-- JavaScript/TypeScript
-- Python
-- YAML
-- JSON
-- Bash/Shell
-- Dockerfile
-- And many more...
-
-Code blocks in markdown are automatically detected and highlighted based on the language identifier (e.g., ` ```yaml`, ` ```python`, ` ```javascript`).
+### Front-end Stack
+- React 18 + TypeScript bundled with Vite
+- Tailwind CSS utilities combined with shadcn/ui and Radix UI components
+- React Router for navigation
+- `react-markdown` and `react-syntax-highlighter` for rendered book previews and code samples
+- TanStack Query for data orchestration when synchronising build metadata【F:package.json†L18-L74】
 
 ## 🔄 CI/CD Workflows
 
-All builds are automated through GitHub Actions:
+GitHub Actions automate validation and publishing. The primary pipeline (`unified-build-release.yml`) runs the full release script, while companion workflows handle targeted tasks such as presentation generation, whitepaper exports, translation support, and specialised bot responses for architecture, development, design, editorial, QA, and requirements queries.【F:build_release.sh†L1-L212】【F:.github/workflows/architect-bot.yml†L1-L7】
 
-### Unified Build & Release
-Triggers on push to main branch or docs changes:
-- Builds all book formats (PDF, EPUB, DOCX)
-- Generates presentations
-- Creates whitepapers
-- Builds static website
-- Creates GitHub release with all artifacts
-
-### Individual Workflows
-- `generate-whitepapers.yml` - Standalone whitepaper generation
-- `generate-presentations.yml` - Standalone presentation generation
-- `content-validation.yml` - Validates markdown and structure
+Key workflows include:
+- `unified-build-release.yml` – orchestrates book, presentation, whitepaper, and website builds, then prepares distribution assets.
+- `generate-presentations.yml` and `generate-whitepapers.yml` – regenerate individual deliverables on demand.
+- `content-validation.yml` – checks documentation quality and structural rules before merges.
+- `architect-bot.yml`, `developer-bot.yml`, `designer-bot.yml`, `editor-bot.yml`, `qa-bot.yml`, and `requirements-bot.yml` – automation bots that respond to labelled GitHub issues.
+- `issue-response.yml` and `translate.yml` – support triage messaging and localisation workflows.【F:.github/workflows/architect-bot.yml†L1-L7】【F:.github/workflows/unified-build-release.yml†L1-L15】
 
 ## 📝 Contributing
 
-To contribute to the book content:
-
-1. Edit markdown files in `docs/` directory
-2. Follow the existing structure and style
-3. Test locally with `python3 generate_book.py && cd docs && ./build_book.sh`
-4. Submit a pull request
+1. Update the relevant markdown chapter(s) under `docs/` or supporting automation scripts.
+2. Regenerate content and verify outputs:
+   ```bash
+   python3 generate_book.py
+   cd docs && ./build_book.sh
+   ```
+3. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
+4. For dashboard updates, install dependencies with `npm install` and run `npm run build` (or `npm run dev`) to ensure the UI compiles cleanly.
+5. Commit changes with clear messages and submit a pull request following repository guidelines.
 
 ## 🔍 Link Verification
 
-The repository includes a comprehensive link verification tool to ensure all links in documentation are valid.
+Use `scripts/verify_links.py` to validate internal and external references across the manuscript and supporting docs. The script emits Markdown, HTML, and JSON reports to aid review and CI integration.【F:scripts/verify_links.py†L1-L160】【F:LINK_VERIFICATION.md†L1-L120】
 
-**Run link verification:**
 ```bash
-python3 scripts/verify_links.py
+python3 scripts/verify_links.py            # default run
+python3 scripts/verify_links.py --timeout 20  # custom timeout for slow endpoints
+python3 scripts/verify_links.py --output reports/links  # custom output location
 ```
 
-This generates three reports:
-- `link-verification-report.md` - Markdown summary
-- `link-verification-report.html` - Interactive HTML report
-- `link-verification-report.json` - Machine-readable JSON
+## 📄 Governance
 
-**Advanced options:**
-```bash
-# Custom timeout for slow connections
-python3 scripts/verify_links.py --timeout 20
-
-# Verbose output
-python3 scripts/verify_links.py --verbose
-
-# Custom output location
-python3 scripts/verify_links.py --output reports/links
-```
-
-For complete documentation, see [LINK_VERIFICATION.md](LINK_VERIFICATION.md)
-
-## 📄 License
-
-This book project is maintained by Geonit AB.
-
-## 🔗 Related Resources
-
-- [Architecture as Code Principles](https://www.thoughtworks.com/radar/techniques/architecture-as-code)
-- [Infrastructure as Code Best Practices](https://www.terraform.io/docs)
-- [Documentation as Code](https://www.writethedocs.org/guide/docs-as-code/)
-
----
+The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/29_about_the_authors.md` for contributor biographies and ownership details.【F:docs/29_about_the_authors.md†L1-L200】
 
 ## 🌍 Language
 
-All book content is in English.
+Manuscript chapters, automation output, and UI labels are maintained in English to streamline translation workflows and international collaboration.【F:docs/README.md†L1-L159】【F:AGENTS.md†L112-L123】
 
