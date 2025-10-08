@@ -17,6 +17,7 @@ A key principle is alignment with continuous delivery cadences. Management caden
 A DevOps loop is often depicted as a continuous cycle: plan, code, build, test, release, deploy, operate, observe, and feed insights back into planning. MaC expands this loop by articulating leadership responsibilities in each stage. During planning, management-as-code repositories define strategic intents, budget envelopes, and compliance constraints. The coding phase includes management scripts for feature approval workflows or objective tracking. Build and test stages incorporate automated validation of management artefacts, such as ensuring new OKRs align with portfolio policies. Release and deploy phases use policy-as-code to verify that launch criteria—risk sign-off, stakeholder notifications, capacity adjustments—are satisfied. The operate stage relies on management dashboards generated from code to review service health, financial performance, and staffing adequacy. Observation feeds into adaptive management routines, triggering updates to strategy code or organisational design specifications.
 
 ```mermaid
+%% Source: images/diagram_19_devops_management_loop.mmd
 flowchart LR
     A[Plan] --> B[Code]
     B --> C[Build]
@@ -26,6 +27,7 @@ flowchart LR
     F --> G[Operate]
     G --> H[Observe]
     H --> A
+
     subgraph Management Contributions
         MA[Strategic Objectives as Code]
         MB[Policy Automation Scripts]
@@ -33,6 +35,7 @@ flowchart LR
         MD[Operational Dashboards]
         ME[Adaptive Governance Rules]
     end
+
     A -. consumes .-> MA
     B -. references .-> MB
     C -. validates .-> MC
@@ -40,6 +43,8 @@ flowchart LR
     G -. monitors .-> MD
     H -. updates .-> ME
 ```
+
+*Diagram source: [`images/diagram_19_devops_management_loop.mmd`](images/diagram_19_devops_management_loop.mmd)*
 
 The diagram illustrates how management artefacts intersect with each loop phase. Instead of management being an external approval layer, MaC ensures that leadership intent is encoded at the same points where DevOps teams act. Planning repositories can provide strategic intents expressed in YAML files, while automation transforms these definitions into backlog templates or alerts when proposals deviate from strategic goals. During operation, monitoring dashboards generated from configuration code link service-level indicators to financial KPIs. As teams observe anomalies, adaptive governance rules encoded in policy files trigger scenario playbooks or review cadences.
 
@@ -49,6 +54,7 @@ MaC provides a robust foundation for governance-as-code, where leadership rules 
 Automated compliance tests run alongside software unit tests. For instance, a pull request adjusting a service’s operating budget triggers simulations that verify it stays within the portfolio guardrails declared in management code. If the change would breach the guardrails, the PR fails and prompts the contributor to adjust the request or seek executive approval. This automation dramatically reduces the manual overhead of governance and gives leaders more time to focus on strategic initiatives.
 
 ```mermaid
+%% Source: images/diagram_19_governance_pipeline.mmd
 graph TD
     subgraph Governance Repo
         Policy[Policy Definitions]
@@ -56,14 +62,18 @@ graph TD
         Playbooks[Escalation Playbooks]
         Roles[Approval Matrices]
     end
+
     Policy -->|CI Integration| Checks[Automated Policy Checks]
     Guardrails -->|Simulation| Checks
     Playbooks -->|Incident Automation| Workflow[Incident Workflow Engine]
     Roles -->|Access Control| IAM[Identity and Access Platform]
+
     Checks -->|Pass/Fail| PR[Pull Requests]
     Workflow --> Response[Executive Response Team]
     IAM --> PR
 ```
+
+*Diagram source: [`images/diagram_19_governance_pipeline.mmd`](images/diagram_19_governance_pipeline.mmd)*
 
 This governance diagram emphasises how management repositories integrate with CI pipelines, incident workflows, and identity platforms. By codifying playbooks and roles, leadership actions become auditable and repeatable. Every update to these artefacts follows the same review process as software code, enabling cross-functional transparency.
 
@@ -73,6 +83,7 @@ GitHub is a natural home for MaC artefacts due to its robust collaboration featu
 GitHub Actions automate the validation and deployment of management artefacts. A workflow might parse OKR definitions written in Markdown and publish them to an internal portal, while another converts competency frameworks encoded in JSON into dashboards. Actions can also notify leadership channels when management policies change, ensuring stakeholders are aware of updates in near real-time. Discussions and Issues offer living forums for management decisions, replacing informal email threads. Leadership proposals start as GitHub Issues with templates prompting for context, risk analysis, and resource implications. Discussions host exploratory conversations before a policy is formalised into code. Once consensus emerges, a PR updates the relevant management artefact, referencing the Issue or Discussion for traceability.
 
 ```mermaid
+%% Source: images/diagram_19_github_management_flow.mmd
 flowchart LR
     Repo[Management Repository]
     Issues[Structured Issue Templates]
@@ -91,6 +102,8 @@ flowchart LR
     Actions --> Alerts
 ```
 
+*Diagram source: [`images/diagram_19_github_management_flow.mmd`](images/diagram_19_github_management_flow.mmd)*
+
 The GitHub integration diagram shows how ideas move from Discussions to Issues, through PRs, and into automated publishing. This approach embeds management into the same cadence as engineering work while adding the visibility executives need for governance.
 
 ## Management in Change Management Pipelines
@@ -102,6 +115,7 @@ GitHub Issues provide a structured interface for capturing management work. Cust
 Discussions encourage asynchronous deliberation. Leadership teams can host strategic retrospectives, policy design workshops, or budget prioritisation debates within GitHub. Threads stay searchable, and the resulting consensus links directly to the code change that implements it, providing institutional memory that normalises management participation in developer-centric tools.
 
 ```mermaid
+%% Source: images/diagram_19_management_workflow.mmd
 graph LR
     Topic[Management Topic Raised]
     Template[Issue Template Applied]
@@ -117,6 +131,8 @@ graph LR
     Decision --> Archive
     FollowUp --> Archive
 ```
+
+*Diagram source: [`images/diagram_19_management_workflow.mmd`](images/diagram_19_management_workflow.mmd)*
 
 The workflow diagram demonstrates how Issues and Discussions guide management work from inception to archival, ensuring nothing gets lost and every action is traceable.
 
@@ -136,17 +152,20 @@ MaC enables repeatable patterns for designing teams and scaling leadership acros
 For teams of teams, MaC includes meta-structures that map dependencies, shared services, and governance forums. Executable artefacts can generate visualisations of team topology, highlight communication channels, and schedule synchronisation rituals. Leaders adjust structures through PRs that modify the underlying configuration, ensuring organisational design evolves deliberately while automation sets up collaboration infrastructure such as shared communication channels and recurring events.
 
 ```mermaid
+%% Source: images/diagram_19_team_of_teams.mmd
 flowchart TD
     subgraph Squad Blueprint
         Roles[Role Mix Definition]
         Rituals[Team Rituals]
         Interfaces[External Interfaces]
     end
+
     subgraph Team of Teams
         Nexus[Nexus Governance]
         SharedServices[Shared Services Agreements]
         Dependencies[Dependency Map]
     end
+
     Roles --> Nexus
     Rituals --> Nexus
     Interfaces --> SharedServices
@@ -154,6 +173,8 @@ flowchart TD
     SharedServices --> Support[Support Functions Automation]
     Nexus --> Visibility[Organisation Dashboard]
 ```
+
+*Diagram source: [`images/diagram_19_team_of_teams.mmd`](images/diagram_19_team_of_teams.mmd)*
 
 This team topology diagram demonstrates how squad-level definitions inform team-of-teams governance, with automation producing visibility and support structures.
 

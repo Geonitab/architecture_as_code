@@ -1,0 +1,17 @@
+%% GitHub workflow for management artefacts
+flowchart LR
+    Repo[Management Repository]
+    Issues[Structured Issue Templates]
+    Discussions[Leadership Discussions]
+    PRs[Pull Requests]
+    Actions[GitHub Actions]
+    Portal[Management Portal]
+    Alerts[Leadership Notifications]
+
+    Repo --> Issues
+    Repo --> Discussions
+    Issues --> PRs
+    Discussions --> PRs
+    PRs --> Actions
+    Actions --> Portal
+    Actions --> Alerts
