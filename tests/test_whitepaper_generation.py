@@ -41,16 +41,17 @@ class TestWhitepaperGeneration(unittest.TestCase):
         """Test that chapter mapping includes all expected files."""
         mapping = get_chapter_mapping()
         
-        # Should have 27 chapters
-        self.assertEqual(len(mapping), 27, f"Expected 27 chapters, got {len(mapping)}")
+        # Should have 31 chapters
+        self.assertEqual(len(mapping), 31, f"Expected 31 chapters, got {len(mapping)}")
         
         # Check for key chapters
         expected_files = [
             '01_introduction.md',
-            '05_automation_devops_cicd.md',  # Updated filename
-            '09_security.md',  # Updated numbering
-            '25_future_development.md',  # New chapter
-            '27_technical_architecture.md'   # New chapter
+            '05_automation_devops_cicd.md',
+            '11_governance_as_code.md',
+            '20_ai_agent_team.md',
+            '23_soft_as_code_interplay.md',
+            '31_technical_architecture.md'
         ]
         
         for expected_file in expected_files:
@@ -69,7 +70,7 @@ class TestWhitepaperGeneration(unittest.TestCase):
         """Test that book overview has correct chapter count."""
         overview = get_book_overview()
         
-        self.assertEqual(overview['chapters_count'], 27, "Book overview should reflect 27 chapters")
+        self.assertEqual(overview['chapters_count'], 31, "Book overview should reflect 31 chapters")
         self.assertIn('title', overview)
         self.assertIn('subtitle', overview)
         self.assertIn('description', overview)

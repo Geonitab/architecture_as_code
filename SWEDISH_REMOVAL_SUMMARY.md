@@ -64,7 +64,7 @@ All 27 chapter files in the `docs/` directory were processed through 6 comprehen
 
 ## Files Modified
 All chapter files in `docs/`:
-- 01_introduction.md through 27_technical_architecture.md
+- 01_introduction.md through 31_technical_architecture.md
 
 Plus one supporting file:
 - ENGLISH_CLEANUP_SUMMARY.md

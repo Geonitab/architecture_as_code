@@ -14,7 +14,7 @@ Ovanstående entitetsrelationsdiagram shows The logiska dataStructureen for how 
 
 ### Filorganisation and namnkonvention
 
-Book content is organiserat in 27 markdown-filer within `docs/`-katalogen, where each File represents A chapter:
+Book content is organiserat in 31 markdown-filer within `docs/`-katalogen, where each File represents A chapter:
 
 ```
 docs/
@@ -22,11 +22,17 @@ docs/
 ├── 02_fundamental_principles.md      # Fundamental Concepts
 ├── 03_version_control.md             # Git and version control
 ├── ...                                # Tekniska chapter (04-22)
-├── 23_slutsats.md                     # Avslutning
-├── 24_ordlista.md                     # Terminologi
-├── 25_om_forfattarna.md               # Författarinformation
-├── 26_appendix_code_examples.md          # Tekniska example
-└── 27_technical_architecture.md           # This chapter
+├── 21_digitalization.md             # Digitaliseringsstrategi
+├── 22_lovable_mockups.md           # Produktupptäckt med Lovable
+├── 23_soft_as_code_interplay.md    # Samspel mellan mjuka discipliner
+├── 24_best_practices.md            # Metodval och erfarenheter
+├── 25_future_trends.md             # Framtida trender
+├── 26_future_development.md        # Långsiktig utveckling
+├── 27_conclusion.md                # Avslutning
+├── 28_glossary.md                  # Terminologi
+├── 29_about_the_authors.md         # Författarinformation
+├── 30_appendix_code_examples.md    # Tekniska exempel
+└── 31_technical_architecture.md    # Detta kapitel
 ```
 
 ### Markdown-struktur and semantik

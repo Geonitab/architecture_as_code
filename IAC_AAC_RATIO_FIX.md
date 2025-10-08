@@ -59,21 +59,21 @@ After automated replacements improved the ratio from 2.81:1 to 18.03:1, strategi
 - `07_containerization.md` - 1 replacement
 - `08_microservices.md` - 13 replacements
 - `10_policy_and_security.md` - 16 replacements (9 auto + 7 manual)
-- `11_compliance.md` - 6 replacements
-- `12_testing_strategies.md` - 12 replacements
-- `13_practical_implementation.md` - 5 replacements
-- `14_cost_optimization.md` - 4 replacements
-- `15_migration.md` - 4 replacements
-- `16_organizational_change.md` - 4 replacements
-- `17_team_structure.md` - 8 replacements
-- `18_digitalization.md` - 4 replacements
-- `20_future_trends.md` - 9 replacements
-- `21_best_practices.md` - 35 replacements
-- `22_conclusion.md` - 9 replacements
-- `23_glossary.md` - 3 replacements
-- `24_about_the_authors.md` - 8 replacements
-- `25_future_development.md` - 8 replacements
-- `26_appendix_code_examples.md` - 2 replacements
+- `12_compliance.md` - 6 replacements
+- `13_testing_strategies.md` - 12 replacements
+- `14_practical_implementation.md` - 5 replacements
+- `15_cost_optimization.md` - 4 replacements
+- `16_migration.md` - 4 replacements
+- `17_organizational_change.md` - 4 replacements
+- `18_team_structure.md` - 8 replacements
+- `21_digitalization.md` - 4 replacements
+- `25_future_trends.md` - 9 replacements
+- `24_best_practices.md` - 35 replacements
+- `27_conclusion.md` - 9 replacements
+- `28_glossary.md` - 3 replacements
+- `29_about_the_authors.md` - 8 replacements
+- `26_future_development.md` - 8 replacements
+- `30_appendix_code_examples.md` - 2 replacements
 
 **Total**: 163 replacements across 20 chapter files
 
