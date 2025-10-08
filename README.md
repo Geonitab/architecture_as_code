@@ -4,7 +4,7 @@ This repository powers the publication workflow for the book *Architecture as Co
 
 ## 📚 About the Book
 
-The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-two chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is written with Swedish public-sector and enterprise contexts in mind, combining conceptual guidance, practical templates, and illustrative diagrams.【F:docs/README.md†L1-L131】【F:docs/32_code_oriented_organisations.md†L1-L64】
+The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-one chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is written with Swedish public-sector and enterprise contexts in mind, combining conceptual guidance, practical templates, and illustrative diagrams.【F:docs/README.md†L1-L139】
 
 ### Target Audience
 - System and enterprise architects
@@ -31,14 +31,17 @@ The book explores how to treat architecture and infrastructure work as software 
 - **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
 - **Chapter 29 – About the Authors:** Contributor biographies and acknowledgements.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Chapter 31 – Technical Structure for Book Production:** Tooling overview for the publishing platform.
-- **Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Deep dive into the cultural strengths and risks of repository-driven collaboration.【F:docs/README.md†L112-L125】【F:docs/32_code_oriented_organisations.md†L1-L64】
+- **Chapter 31 – Technical Structure for Book Production:** Tooling overview for the publishing platform.【F:docs/README.md†L97-L139】
+
+### Archived Drafts
+- **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/README.md†L81-L108】【F:docs/archive/README.md†L1-L9】
 
 ## 🧭 Repository Layout
 
 ```
 docs/                     # Manuscript chapters, diagrams, and publishing assets
-├── *.md                  # Numbered chapters and appendices (01_introduction.md … 32_code_oriented_organisations.md)
+├── *.md                  # Numbered chapters and appendices (01_introduction.md … 31_technical_architecture.md)
+├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
 ├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation
 └── pandoc.yaml           # Shared Pandoc configuration
