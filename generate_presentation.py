@@ -39,7 +39,13 @@ import glob
 import re
 from pathlib import Path
 import json
-import yaml
+
+try:
+    import yaml
+except ImportError as exc:  # pragma: no cover - dependency check
+    print("❌ Error: PyYAML library not installed")
+    print("   Install with: pip install PyYAML>=6.0")
+    sys.exit(1)
 
 
 def _load_canonical_chapter_filenames(requirements_path=Path("BOOK_REQUIREMENTS.md")):
@@ -903,7 +909,12 @@ def main():
         f.write(pptx_script)
     
     # Create requirements file for presentation generation
-    requirements = "python-pptx>=0.6.21\n"
+    requirements = "\n".join(
+        [
+            "python-pptx>=0.6.21",
+            "PyYAML>=6.0",
+        ]
+    ) + "\n"
     with open(presentations_dir / "requirements.txt", 'w', encoding='utf-8') as f:
         f.write(requirements)
     

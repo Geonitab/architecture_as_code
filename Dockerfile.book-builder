@@ -58,7 +58,7 @@ RUN wget -q https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pa
 RUN npm install -g @mermaid-js/mermaid-cli
 
 # Install Python dependencies
-RUN pip3 install python-pptx>=0.6.21
+RUN pip3 install python-pptx>=0.6.21 PyYAML>=6.0
 
 # Set Chrome executable for Puppeteer with proper sandbox configuration
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
