@@ -15,54 +15,67 @@ run_with_privileges() {
     fi
 }
 
+# Resolve the best available Chrome/Chromium binary for Mermaid CLI
+find_chrome_executable() {
+    local candidate
+    for candidate in google-chrome google-chrome-stable chromium-browser chromium; do
+        if command -v "$candidate" >/dev/null 2>&1; then
+            command -v "$candidate"
+            return 0
+        fi
+    done
+
+    return 1
+}
+
 # Ensure Pandoc is available, installing it when possible
 ensure_pandoc() {
     if command -v pandoc >/dev/null 2>&1; then
         return 0
     fi
 
-    echo "⚠️  Pandoc saknas – försöker installera automatiskt..."
+    echo "⚠️  Pandoc is missing – attempting automatic installation..."
 
     if command -v apt-get >/dev/null 2>&1; then
         if run_with_privileges env DEBIAN_FRONTEND=noninteractive apt-get update && \
            run_with_privileges env DEBIAN_FRONTEND=noninteractive apt-get install -y pandoc; then
-            echo "✅ Pandoc installerat via apt-get"
+            echo "✅ Pandoc installed via apt-get"
             return 0
         fi
     elif command -v apt >/dev/null 2>&1; then
         if run_with_privileges env DEBIAN_FRONTEND=noninteractive apt update && \
            run_with_privileges env DEBIAN_FRONTEND=noninteractive apt install -y pandoc; then
-            echo "✅ Pandoc installerat via apt"
+            echo "✅ Pandoc installed via apt"
             return 0
         fi
     elif command -v dnf >/dev/null 2>&1; then
         if run_with_privileges dnf install -y pandoc; then
-            echo "✅ Pandoc installerat via dnf"
+            echo "✅ Pandoc installed via dnf"
             return 0
         fi
     elif command -v yum >/dev/null 2>&1; then
         if run_with_privileges yum install -y pandoc; then
-            echo "✅ Pandoc installerat via yum"
+            echo "✅ Pandoc installed via yum"
             return 0
         fi
     elif command -v pacman >/dev/null 2>&1; then
         if run_with_privileges pacman -Sy --noconfirm pandoc; then
-            echo "✅ Pandoc installerat via pacman"
+            echo "✅ Pandoc installed via pacman"
             return 0
         fi
     elif command -v zypper >/dev/null 2>&1; then
         if run_with_privileges zypper install -y pandoc; then
-            echo "✅ Pandoc installerat via zypper"
+            echo "✅ Pandoc installed via zypper"
             return 0
         fi
     elif command -v brew >/dev/null 2>&1; then
         if brew list pandoc >/dev/null 2>&1 || brew install pandoc; then
-            echo "✅ Pandoc installerat via Homebrew"
+            echo "✅ Pandoc installed via Homebrew"
             return 0
         fi
     fi
 
-    echo "❌ Misslyckades med att installera Pandoc automatiskt. Installera Pandoc manuellt och kör skriptet igen."
+    echo "❌ Failed to install Pandoc automatically. Install Pandoc manually and rerun the script."
     return 1
 }
 
@@ -86,13 +99,13 @@ EISVOGEL_TEMPLATE="$PANDOC_TEMPLATES_DIR/eisvogel.latex"
 
 # Ensure Eisvogel template exists (install automatically if missing)
 if [ ! -f "$EISVOGEL_TEMPLATE" ]; then
-    echo "⚠️  Eisvogel template saknas – försöker installera automatiskt..."
+    echo "⚠️  Eisvogel template missing – attempting automatic installation..."
     mkdir -p "$PANDOC_TEMPLATES_DIR"
 
     if command -v pandoc >/dev/null 2>&1 && pandoc --print-default-data-file eisvogel.latex > "$EISVOGEL_TEMPLATE" 2>/dev/null; then
-        echo "✅ Eisvogel template installerad till $EISVOGEL_TEMPLATE"
+        echo "✅ Eisvogel template installed at $EISVOGEL_TEMPLATE"
     else
-        echo "⚠️  Direkt installation misslyckades – försöker ladda ner från GitHub..."
+        echo "⚠️  Direct installation failed – downloading from GitHub..."
 
         TEMP_DIR=$(mktemp -d)
         TEMPLATE_ARCHIVE="$TEMP_DIR/Eisvogel.tar.gz"
@@ -102,8 +115,8 @@ if [ ! -f "$EISVOGEL_TEMPLATE" ]; then
         elif command -v wget >/dev/null 2>&1; then
             wget -qO "$TEMPLATE_ARCHIVE" "https://github.com/Wandmalfarbe/pandoc-latex-template/releases/latest/download/Eisvogel.tar.gz"
         else
-            echo "❌ Varken curl eller wget finns tillgängligt för att hämta mallen."
-            echo "   Installera verktygen eller lägg till mallen manuellt."
+            echo "❌ Neither curl nor wget is available to download the template."
+            echo "   Install one of those tools or add the template manually."
             rm -rf "$TEMP_DIR"
             exit 1
         fi
@@ -111,14 +124,14 @@ if [ ! -f "$EISVOGEL_TEMPLATE" ]; then
         if [ -s "$TEMPLATE_ARCHIVE" ] && tar -xzf "$TEMPLATE_ARCHIVE" -C "$TEMP_DIR" 2>/dev/null; then
             FOUND_TEMPLATE=$(find "$TEMP_DIR" -name "eisvogel.latex" -print -quit)
             if [ -n "$FOUND_TEMPLATE" ] && cp "$FOUND_TEMPLATE" "$EISVOGEL_TEMPLATE"; then
-                echo "✅ Eisvogel template nedladdad och installerad till $EISVOGEL_TEMPLATE"
+                echo "✅ Eisvogel template downloaded and installed at $EISVOGEL_TEMPLATE"
             else
-                echo "❌ Kunde inte extrahera Eisvogel template från nedladdat arkiv."
+                echo "❌ Could not extract the Eisvogel template from the downloaded archive."
                 rm -rf "$TEMP_DIR"
                 exit 1
             fi
         else
-            echo "❌ Misslyckades med att ladda ner Eisvogel template från GitHub."
+            echo "❌ Failed to download the Eisvogel template from GitHub."
             rm -rf "$TEMP_DIR"
             exit 1
         fi
@@ -129,7 +142,7 @@ fi
 
 # Check if pandoc.yaml config exists
 if [ ! -f "pandoc.yaml" ]; then
-    echo "Fel: Pandoc-konfigurationsfil saknas (pandoc.yaml)"
+    echo "Error: Missing Pandoc configuration file (pandoc.yaml)"
     exit 1
 fi
 
@@ -137,39 +150,67 @@ fi
 mkdir -p "$RELEASE_DIR"
 
 # Copy book cover to images directory for Pandoc
-echo "Kopierar bokframsida..."
+echo "Copying book cover..."
 if [ -f "../exports/book-cover/png/book-cover-300dpi.png" ]; then
     cp "../exports/book-cover/png/book-cover-300dpi.png" "images/book-cover.png"
-    echo "✅ Bokframsida kopierad till images/book-cover.png"
+    echo "✅ Book cover copied to images/book-cover.png"
 else
-    echo "⚠️ Warning: Book cover not found at ../exports/book-cover/png/book-cover-300dpi.png"
+    echo "⚠️  Warning: Book cover not found at ../exports/book-cover/png/book-cover-300dpi.png"
 fi
 
-# Konvertera mermaid-filer till PNG med Kvadrat-tema
+CHROME_FLAGS="${CHROME_FLAGS:-}"
+CHROME_EXECUTABLE=""
+PUPPETEER_CONFIG_FILE=""
+
+if CHROME_EXECUTABLE=$(find_chrome_executable); then
+    export PUPPETEER_EXECUTABLE_PATH="$CHROME_EXECUTABLE"
+else
+    echo "⚠️  Warning: No Chrome or Chromium executable found in PATH. Mermaid CLI will rely on its bundled Chromium."
+    unset PUPPETEER_EXECUTABLE_PATH
+fi
+
+if [ -n "$CHROME_FLAGS" ]; then
+    read -r -a CHROME_FLAGS_ARRAY <<< "$CHROME_FLAGS"
+    if [ ${#CHROME_FLAGS_ARRAY[@]} -gt 0 ]; then
+        PUPPETEER_CONFIG_FILE=$(mktemp)
+        {
+            echo '{'
+            echo '  "args": ['
+            for i in "${!CHROME_FLAGS_ARRAY[@]}"; do
+                flag=${CHROME_FLAGS_ARRAY[$i]}
+                if [ "$i" -gt 0 ]; then
+                    printf ',\n'
+                fi
+                printf '    "%s"' "$flag"
+            done
+            printf '\n'
+            echo '  ]'
+            echo '}'
+        } > "$PUPPETEER_CONFIG_FILE"
+        trap 'if [ -n "$PUPPETEER_CONFIG_FILE" ]; then rm -f "$PUPPETEER_CONFIG_FILE"; fi' EXIT
+    fi
+fi
+
+# Convert Mermaid files to PNG with Kvadrat styling
 for mmd_file in images/*.mmd; do
     if [ -f "$mmd_file" ]; then
         png_file="${mmd_file%.mmd}.png"
-        
-        # Check if Chrome flags are set (Docker/CI environment)
-        CHROME_FLAGS="${CHROME_FLAGS:-}"
         conversion_success=false
-        
-        if [ -n "$CHROME_FLAGS" ]; then
-            # Running in Docker/CI environment - use provided Chrome flags
+
+        if [ -n "$PUPPETEER_CONFIG_FILE" ]; then
             echo "Converting $mmd_file (Docker/CI mode)..."
-            if PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" \
+            if mmdc -i "$mmd_file" -o "$png_file" \
                 -t default \
                 -b transparent \
                 --width 1400 \
                 --height 900 \
-                --puppeteerConfig "{\"args\": [\"--no-sandbox\", \"--disable-setuid-sandbox\", \"--disable-dev-shm-usage\", \"--disable-accelerated-2d-canvas\", \"--no-first-run\", \"--no-zygote\", \"--disable-gpu\"]}" \
+                --puppeteerConfigFile "$PUPPETEER_CONFIG_FILE" \
                 2>/dev/null; then
                 conversion_success=true
             fi
         else
-            # Local environment - use standard configuration
             echo "Converting $mmd_file (local mode)..."
-            if PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i "$mmd_file" -o "$png_file" \
+            if mmdc -i "$mmd_file" -o "$png_file" \
                 -t default \
                 -b transparent \
                 --width 1400 \
@@ -178,19 +219,17 @@ for mmd_file in images/*.mmd; do
                 conversion_success=true
             fi
         fi
-        
-        # Check conversion result and create placeholder if needed
+
         if [ "$conversion_success" = true ] && [ -f "$png_file" ] && [ -s "$png_file" ]; then
-            echo "✅ Konverterade $mmd_file till $png_file med förbättrad styling"
+            echo "✅ Converted $mmd_file to $png_file with enhanced styling"
         else
-            echo "⚠️ Warning: Failed to convert $mmd_file, skipping (PDF generation will continue)"
-            # Don't fail the build - PDF generation can continue with text placeholders
+            echo "⚠️  Warning: Failed to convert $mmd_file, skipping (PDF generation will continue)"
         fi
     fi
 done
 
-# Generera PDF med Pandoc använd konfigurationsfil
-echo "Genererar PDF med Pandoc-konfiguration..."
+# Generate PDF using the Pandoc configuration file
+echo "Generating PDF with Pandoc defaults..."
 
 # Build chapter list with descriptive names
 CHAPTER_FILES=(
@@ -235,25 +274,25 @@ CHAPTER_FILES=(
     "31_technical_architecture.md"
 )
 
-pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o $OUTPUT_PDF 2>&1
+pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
 
 # Check if PDF was actually generated
 if [ -f "$OUTPUT_PDF" ] && [ -s "$OUTPUT_PDF" ]; then
-    echo "✅ Bok genererad: $OUTPUT_PDF ($(ls -lh $OUTPUT_PDF | awk '{print $5}'))"
-    
+    echo "✅ Book generated: $OUTPUT_PDF ($(ls -lh "$OUTPUT_PDF" | awk '{print $5}'))"
+
     # Copy to release directory
-    if cp $OUTPUT_PDF "$RELEASE_PDF" 2>/dev/null; then
-        echo "✅ Bok kopierad till release: $RELEASE_PDF"
+    if cp "$OUTPUT_PDF" "$RELEASE_PDF" 2>/dev/null; then
+        echo "✅ Book copied to release directory: $RELEASE_PDF"
     else
-        echo "⚠️ Warning: Could not copy PDF to release directory"
+        echo "⚠️  Warning: Could not copy PDF to release directory"
     fi
 else
-    echo "❌ Error: PDF generation failed with Eisvogel template"
-    echo "Attempting fallback with default template..."
-    
+    echo "❌ Error: PDF generation failed with the Eisvogel template"
+    echo "Attempting fallback with the default template..."
+
     # Try with default LaTeX template
     if pandoc "${CHAPTER_FILES[@]}" \
-        -o $OUTPUT_PDF \
+        -o "$OUTPUT_PDF" \
         --toc \
         --toc-depth=3 \
         --number-sections \
@@ -266,15 +305,15 @@ else
         --variable geometry=margin=2.5cm \
         --variable fontsize=11pt \
         2>&1; then
-        
+
         if [ -f "$OUTPUT_PDF" ] && [ -s "$OUTPUT_PDF" ]; then
-            echo "✅ Fallback PDF generation succeeded: $OUTPUT_PDF ($(ls -lh $OUTPUT_PDF | awk '{print $5}'))"
-            
+            echo "✅ Fallback PDF generation succeeded: $OUTPUT_PDF ($(ls -lh "$OUTPUT_PDF" | awk '{print $5}'))"
+
             # Copy to release directory
-            if cp $OUTPUT_PDF "$RELEASE_PDF" 2>/dev/null; then
-                echo "✅ Fallback PDF kopierad till release: $RELEASE_PDF"
+            if cp "$OUTPUT_PDF" "$RELEASE_PDF" 2>/dev/null; then
+                echo "✅ Fallback PDF copied to release directory: $RELEASE_PDF"
             else
-                echo "⚠️ Warning: Could not copy fallback PDF to release directory"
+                echo "⚠️  Warning: Could not copy fallback PDF to release directory"
             fi
         else
             echo "❌ Error: Even fallback PDF generation failed"
@@ -286,16 +325,16 @@ else
     fi
 fi
 
-# Funktioner för att validera EPUB-fil
+# Function to validate EPUB files
 validate_epub() {
     local epub_file="$1"
     
-    echo "Validerar EPUB-fil med EPUBCheck..."
+    echo "Validating EPUB file with EPUBCheck..."
     
     # Check if EPUBCheck is available
     if ! command -v epubcheck >/dev/null 2>&1; then
-        echo "⚠️  Warning: EPUBCheck inte installerat - EPUB-validering överhoppad"
-        echo "    Installera EPUBCheck för full EPUB-validering"
+        echo "⚠️  Warning: EPUBCheck is not installed - skipping EPUB validation"
+        echo "    Install EPUBCheck to enable full EPUB validation"
         return 0
     fi
     
@@ -304,77 +343,76 @@ validate_epub() {
     
     # Run EPUBCheck with detailed output
     if epubcheck "$epub_file" > "$validation_log" 2>&1; then
-        echo "✅ EPUB-validering godkänd: $epub_file"
-        echo "    Valideringslogg: $validation_log"
+        echo "✅ EPUB validation passed: $epub_file"
+        echo "    Validation log: $validation_log"
         return 0
     else
         local exit_code=$?
-        echo "❌ EPUB-validering misslyckades för: $epub_file"
-        echo "    Valideringslogg: $validation_log"
-        
-        # Show summary of errors
-        echo "Sammanfattning av valideringsfel:"
+        echo "❌ EPUB validation failed for: $epub_file"
+        echo "    Validation log: $validation_log"
+
+        echo "Summary of validation issues:"
         grep -E "(ERROR|FATAL|WARNING)" "$validation_log" | head -10
-        
+
         if [ $exit_code -eq 1 ]; then
-            echo "⚠️  EPUB har valideringsfel men kan fortfarande användas"
-            echo "    Kontrollera valideringsloggen för detaljer"
+            echo "⚠️  EPUB contains validation warnings but can still be distributed"
+            echo "    Review the validation log for additional details"
             return 1
         else
-            echo "❌ Kritiska fel i EPUB-filen"
+            echo "❌ Critical errors detected in the EPUB file"
             return 2
         fi
     fi
 }
 
-# Funktion för att generera andra format
+# Function to generate other formats
 generate_other_formats() {
-    echo "Genererar EPUB-format..."
-    
+    echo "Generating EPUB format..."
+
     # Generate EPUB with improved metadata
     if pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" \
         -t epub \
-        -o $OUTPUT_EPUB \
+        -o "$OUTPUT_EPUB" \
         --metadata date="$(date +'%Y-%m-%d')" \
         --metadata language=sv \
         --epub-cover-image="images/book-cover.png" \
         2>&1; then
-        
-        echo "EPUB genererad: $OUTPUT_EPUB"
-        
+
+        echo "EPUB generated: $OUTPUT_EPUB"
+
         # Validate the generated EPUB
         validate_epub "$OUTPUT_EPUB"
         validation_result=$?
-        
+
         # Copy to release directory regardless of validation result
-        cp $OUTPUT_EPUB "$RELEASE_EPUB"
-        echo "EPUB kopierad till release: $RELEASE_EPUB"
-        
+        cp "$OUTPUT_EPUB" "$RELEASE_EPUB"
+        echo "EPUB copied to release directory: $RELEASE_EPUB"
+
         # Report validation status
         case $validation_result in
             0)
-                echo "✅ EPUB-fil validerad och klar för distribution"
+                echo "✅ EPUB file validated and ready for distribution"
                 ;;
             1)
-                echo "⚠️  EPUB-fil har mindre valideringsfel men är användbar"
+                echo "⚠️  EPUB file has minor validation issues but remains usable"
                 ;;
             2)
-                echo "❌ EPUB-fil har kritiska fel - kontrollera valideringsloggen"
+                echo "❌ EPUB file contains critical issues - review the validation log"
                 ;;
         esac
     else
-        echo "❌ EPUB-generering misslyckades"
+        echo "❌ EPUB generation failed"
         return 1
     fi
-    
-    echo "Genererar DOCX-format..."
-    pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -t docx -o $OUTPUT_DOCX
-    echo "DOCX genererad: $OUTPUT_DOCX"
-    cp $OUTPUT_DOCX "$RELEASE_DOCX"
-    echo "DOCX kopierad till release: $RELEASE_DOCX"
+
+    echo "Generating DOCX format..."
+    pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -t docx -o "$OUTPUT_DOCX"
+    echo "DOCX generated: $OUTPUT_DOCX"
+    cp "$OUTPUT_DOCX" "$RELEASE_DOCX"
+    echo "DOCX copied to release directory: $RELEASE_DOCX"
 }
 
-# Generera andra format om begärt eller alltid för release
+# Generate additional formats when requested or for release builds
 if [ "$1" = "--all-formats" ] || [ "$1" = "--release" ]; then
     generate_other_formats
 fi
