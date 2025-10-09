@@ -4,14 +4,14 @@ This repository powers the publication workflow for the book *Architecture as Co
 
 ## 📚 About the Book
 
-The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-one chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is written with Swedish public-sector and enterprise contexts in mind, combining conceptual guidance, practical templates, and illustrative diagrams.【F:docs/README.md†L1-L139】
+The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-one chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is written with Swedish public-sector and enterprise contexts in mind, combining conceptual guidance, practical templates, and illustrative diagrams.【F:docs/book_structure.md†L1-L139】
 
 ### Target Audience
 - System and enterprise architects
 - DevOps and platform engineers
 - Software developers working with cloud-native stacks
 - Technology leaders, managers, and programme owners
-- Transformation teams driving digitalisation initiatives【F:docs/README.md†L146-L159】
+- Transformation teams driving digitalisation initiatives【F:docs/book_structure.md†L146-L159】
 
 ## 📖 Narrative Structure
 
@@ -25,16 +25,16 @@ The book explores how to treat architecture and infrastructure work as software 
 | Part 4 – Delivery & Operations | 13-16 | Testing strategies, delivery pipelines, cost management, and migration playbooks |
 | Part 5 – Organization & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
 | Part 6 – Experience & Best Practices | 22-24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
-| Part 7 – Future & Wrap-up | 25-27 | Strategic outlook, forward-looking development plans, and closing guidance |【F:docs/README.md†L7-L120】
+| Part 7 – Future & Wrap-up | 25-27 | Strategic outlook, forward-looking development plans, and closing guidance |【F:docs/book_structure.md†L7-L120】
 
 ### Appendices and Extended Material
 - **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
 - **Chapter 29 – About the Authors:** Contributor biographies and acknowledgements.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Chapter 31 – Technical Structure for Book Production:** Tooling overview for the publishing platform.【F:docs/README.md†L97-L139】
+- **Chapter 31 – Technical Structure for Book Production:** Tooling overview for the publishing platform.【F:docs/book_structure.md†L97-L139】
 
 ### Archived Drafts
-- **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/README.md†L81-L108】【F:docs/archive/README.md†L1-L9】
+- **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/book_structure.md†L81-L108】【F:docs/archive/README.md†L1-L9】
 
 ## 🧭 Repository Layout
 
@@ -123,5 +123,5 @@ The Architecture as Code book workshop maintains the repository, coordinates rel
 
 ## 🌍 Language
 
-Manuscript chapters and automation output are maintained in English to streamline translation workflows and international collaboration.【F:docs/README.md†L1-L159】【F:AGENTS.md†L115-L123】
+Manuscript chapters and automation output are maintained in English to streamline translation workflows and international collaboration.【F:docs/book_structure.md†L1-L159】【F:AGENTS.md†L115-L123】
 
