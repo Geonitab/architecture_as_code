@@ -65,21 +65,26 @@ def requirements_config(language):
     return _load_markdown_front_matter(requirements_file)
 
 @pytest.fixture(scope="session")
-def chapter_files(docs_directory, language):
-    """List all markdown chapter files for the specified language."""
-    # Get all .md files but exclude README.md
-    all_md_files = list(docs_directory.glob("*.md"))
-    
-    # List of non-chapter files to exclude
-    non_chapter_files = {
-        "README.md",
-        "BOOK_COVER_DESIGN.md",
+def chapter_files(docs_directory, requirements_config):
+    """List canonical chapter files defined in the requirements specification."""
+    book_config = requirements_config.get("book", {})
+
+    # Canonical chapters are the numbered entries in the requirements file
+    canonical_filenames = {
+        chapter["filename"]
+        for chapter in book_config.get("chapters", [])
+        if chapter.get("filename")
     }
-    
-    # Filter out non-chapter files
-    chapter_files = [f for f in all_md_files if f.name not in non_chapter_files]
-    
-    return chapter_files
+
+    # Collect matching markdown files from docs/
+    chapter_paths = [
+        path
+        for path in docs_directory.glob("*.md")
+        if path.name in canonical_filenames
+    ]
+
+    # Sort for deterministic ordering across tests
+    return sorted(chapter_paths, key=lambda path: path.name)
 
 @pytest.fixture(scope="session")
 def mermaid_files(docs_directory):

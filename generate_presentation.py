@@ -39,6 +39,37 @@ import glob
 import re
 from pathlib import Path
 import json
+import yaml
+
+
+def _load_canonical_chapter_filenames(requirements_path=Path("BOOK_REQUIREMENTS.md")):
+    """Load canonical chapter filenames from the requirements specification."""
+    if not requirements_path.exists():
+        return set()
+
+    content = requirements_path.read_text(encoding="utf-8").splitlines()
+    if not content or content[0].strip() != "---":
+        return set()
+
+    front_matter_lines = []
+    for line in content[1:]:
+        if line.strip() == "---":
+            break
+        front_matter_lines.append(line)
+
+    if not front_matter_lines:
+        return set()
+
+    data = yaml.safe_load("\n".join(front_matter_lines)) or {}
+    book_config = data.get("book", {})
+
+    canonical = {
+        chapter.get("filename")
+        for chapter in book_config.get("chapters", [])
+        if chapter.get("filename")
+    }
+
+    return canonical
 
 def limit_words(text, max_words=20):
     """Limit text to maximum number of words while preserving meaning."""
@@ -198,6 +229,7 @@ def validate_chapter_diagrams():
         return {}
     
     chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
+    canonical_filenames = _load_canonical_chapter_filenames()
     validation_results = {
         'chapters_with_diagrams': [],
         'chapters_without_diagrams': [],
@@ -207,11 +239,19 @@ def validate_chapter_diagrams():
     
     for chapter_file in chapter_files:
         chapter_name = Path(chapter_file).name
-        
-        # Skip non-chapter files
-        if chapter_name in ['README.md', 'arkitektur_som_kod.md', 'BOOK_COVER_DESIGN.md']:
+
+        # Skip files that are not part of the canonical manuscript
+        if canonical_filenames:
+            if chapter_name not in canonical_filenames:
+                continue
+        else:
+            # Fallback filters if requirements file is unavailable
+            if chapter_name.startswith('part_'):
+                continue
+
+        if chapter_name in ['README.md', 'arkitektur_som_kod.md']:
             continue
-            
+
         validation_results['total_chapters'] += 1
         
         try:
@@ -223,10 +263,21 @@ def validate_chapter_diagrams():
             diagram_refs = []
             
             for line in content.split('\n'):
-                if line.startswith('![') and 'images/' in line:
-                    match = re.search(r'!\[.*?\]\((.*?)\)', line)
+                stripped = line.strip()
+
+                if stripped.startswith('![') and 'images/' in stripped:
+                    match = re.search(r'!\[.*?\]\((.*?)\)', stripped)
                     if match:
                         diagram_refs.append(match.group(1))
+                        has_diagram = True
+                        continue
+
+                # Treat explicit diagram source references as diagrams even without PNG embeds
+                if 'diagram source' in stripped.lower() and 'images/' in stripped:
+                    matches = re.findall(r'\(images/(diagram_[^\)]+)\)', stripped, re.IGNORECASE)
+                    if matches:
+                        for ref in matches:
+                            diagram_refs.append(f"images/{ref}")
                         has_diagram = True
             
             if has_diagram:
