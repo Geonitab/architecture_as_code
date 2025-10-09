@@ -44,21 +44,30 @@ jobs:
           echo "=== Installing Python dependencies ==="
           python3 -m pip install --upgrade pip
           
-          # Install python-pptx library for PowerPoint generation
-          echo "📊 Installing PowerPoint generation dependencies..."
-          if pip install python-pptx>=0.6.21; then
-            echo "✅ python-pptx installed successfully"
+          # Install presentation dependencies
+          echo "📊 Installing PowerPoint and YAML dependencies..."
+          if pip install python-pptx>=0.6.21 PyYAML>=6.0; then
+            echo "✅ python-pptx and PyYAML installed successfully"
           else
-            echo "❌ ERROR: Failed to install python-pptx"
+            echo "❌ ERROR: Failed to install presentation dependencies"
             exit 1
           fi
-          
+
           # Verify python-pptx is available
           echo "🔍 Verifying python-pptx installation..."
           if python3 -c "import pptx; print(f'python-pptx version: {pptx.__version__}')"; then
             echo "✅ python-pptx is available and working"
           else
             echo "❌ ERROR: python-pptx cannot be imported"
+            exit 1
+          fi
+
+          # Verify PyYAML is available
+          echo "🔍 Verifying PyYAML installation..."
+          if python3 -c "import yaml; print(f'PyYAML version: {yaml.__version__}')"; then
+            echo "✅ PyYAML is available and working"
+          else
+            echo "❌ ERROR: PyYAML cannot be imported"
             exit 1
           fi
           
