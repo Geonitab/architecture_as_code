@@ -33,8 +33,8 @@ metadata:
 # Variables for better compatibility
 variables:
   documentclass: book
-  classoption: 
-    - oneside
+  classoption:
+    - twoside
     - openany
   geometry:
     - top=2.5cm
@@ -55,9 +55,31 @@ variables:
   # Simplified header handling
   header-includes: |
     \usepackage{fancyhdr}
+    \usepackage{titlesec}
+    \setlength{\headheight}{14pt}
     \pagestyle{fancy}
-    \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-    \renewcommand{\sectionmark}[1]{\markright{#1}}
+    \fancyhf{}
+    \newcommand{\currentpartletter}{}
+    \newcommand{\currentparttitle}{}
+    \newcommand{\currentpartformat}{}
+    \newcommand{\setbookpart}[1]{%
+      \renewcommand{\currentpartletter}{\thepart}%
+      \renewcommand{\currentparttitle}{#1}%
+      \renewcommand{\currentpartformat}{PART~\thepart\space--\space #1}%
+    }
+    \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+    \fancyhead[LE]{\small\bfseries \currentpartformat}
+    \fancyhead[RO]{\small\bfseries \leftmark}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\partname}{Part}
+    \renewcommand{\thepart}{\Alph{part}}
+    \titleformat{\part}[display]
+      {\bfseries\centering\Huge}
+      {PART \thepart}
+      {0pt}
+      {\thispagestyle{empty}\vspace*{0.5\textheight}}
+    \titlespacing*{\part}{0pt}{0pt}{0pt}
     \usepackage{graphicx}
     \usepackage{pdfpages}
 
