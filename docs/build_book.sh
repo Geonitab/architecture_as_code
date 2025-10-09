@@ -194,33 +194,41 @@ echo "Genererar PDF med Pandoc-konfiguration..."
 
 # Build chapter list with descriptive names
 CHAPTER_FILES=(
+    "part_a_foundations.md"
     "01_introduction.md"
     "02_fundamental_principles.md"
     "03_version_control.md"
     "04_adr.md"
+    "part_b_architecture_platform.md"
     "05_automation_devops_cicd.md"
     "06_cloud_architecture.md"
     "07_containerization.md"
     "08_microservices.md"
+    "part_c_security_governance.md"
     "09_security.md"
     "10_policy_and_security.md"
     "11_governance_as_code.md"
     "12_compliance.md"
+    "part_d_delivery_operations.md"
     "13_testing_strategies.md"
     "14_practical_implementation.md"
     "15_cost_optimization.md"
     "16_migration.md"
+    "part_e_organization_leadership.md"
     "17_organizational_change.md"
     "18_team_structure.md"
     "19_management_as_code.md"
     "20_ai_agent_team.md"
     "21_digitalization.md"
+    "part_f_experience_best_practices.md"
     "22_lovable_mockups.md"
     "23_soft_as_code_interplay.md"
     "24_best_practices.md"
+    "part_g_future_wrap_up.md"
     "25_future_trends.md"
     "26_future_development.md"
     "27_conclusion.md"
+    "part_h_appendices.md"
     "28_glossary.md"
     "29_about_the_authors.md"
     "30_appendix_code_examples.md"
@@ -254,7 +262,7 @@ else
         --metadata title="Arkitektur som kod" \
         --metadata author="Kodarkitektur Bokverkstad" \
         --variable documentclass=book \
-        --variable classoption=oneside \
+        --variable classoption=twoside \
         --variable geometry=margin=2.5cm \
         --variable fontsize=11pt \
         2>&1; then
