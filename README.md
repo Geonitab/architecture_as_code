@@ -79,6 +79,17 @@ cd docs && ./build_book.sh
 
 The GitHub Actions pipeline (`.github/workflows/unified-build-release.yml`) mirrors these commands to produce release artifacts whenever book content or automation scripts change.【F:build_release.sh†L1-L212】
 
+### MkDocs Documentation Site
+
+The MkDocs configuration in `mkdocs.yml` publishes every chapter and appendix as a browsable documentation site. Use the standard MkDocs commands to iterate locally:
+
+```bash
+mkdocs serve   # start local preview server
+mkdocs build   # render static site into the site/ directory
+```
+
+Continuous integration enforces successful builds through the `Build MkDocs Site` workflow, which runs whenever `docs/` sources or the MkDocs configuration change.【F:mkdocs.yml†L1-L53】【F:.github/workflows/build-mkdocs.yml†L1-L35】
+
 ## 📦 Release Deliverables
 - **Book formats:** `arkitektur_som_kod.pdf`, `.epub`, and `.docx` generated via Pandoc with the Eisvogel template.
 - **Presentation materials:** `arkitektur_som_kod_presentation.pptx` containing chapter summaries and speaker notes.

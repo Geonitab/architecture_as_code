@@ -59,3 +59,6 @@ link-verification-report.json
 docs/arkitektur_som_kod.pdf
 docs/arkitektur_som_kod.epub
 docs/arkitektur_som_kod.docx
+
+# MkDocs build output
+site/
