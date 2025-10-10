@@ -122,7 +122,7 @@ jobs:
           echo "🎯 Enhanced features:"
           echo "   - Word limit: 20 words maximum per slide key point"
           echo "   - Diagram integration: Automatic inclusion of chapter diagrams"
-          echo "   - Swedish theme: Professional blue color scheme"
+          echo "   - Swedish theme: Professional blue colour scheme"
           
           # Run the presentation generation script with --create-pptx flag
           if python3 generate_presentation.py --create-pptx; then
