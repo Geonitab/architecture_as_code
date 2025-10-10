@@ -40,6 +40,9 @@ releases/whitepapers/*
 releases/website/*
 !releases/README.md
 
+# MkDocs output (built during CI and deployments)
+site/
+
 # Test artifacts and reports  
 test-reports/
 .pytest_cache/
@@ -59,3 +62,4 @@ link-verification-report.json
 docs/arkitektur_som_kod.pdf
 docs/arkitektur_som_kod.epub
 docs/arkitektur_som_kod.docx
+

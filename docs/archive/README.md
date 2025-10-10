@@ -1,6 +1,6 @@
 # Archived Book Drafts
 
-This folder stores manuscript material that no longer belongs to the primary 31-chapter structure described in `docs/README.md`. Files kept here remain valuable reference drafts but are excluded from automated builds (`docs/build_book.sh`) so that only the canonical chapters are rendered.
+This folder stores manuscript material that no longer belongs to the primary 31-chapter structure described in `docs/book_structure.md`. Files kept here remain valuable reference drafts but are excluded from automated builds (`docs/build_book.sh`) so that only the canonical chapters are rendered.
 
 ## Current Contents
 

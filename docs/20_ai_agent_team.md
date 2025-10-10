@@ -88,7 +88,7 @@ Detta dokument beskriver den virtuella agentgrupp som ska samarbeta kring projek
 - **Dagliga statuskort**: Kort sammanfattning (max 5 punkter) från varje roll till Project Manager.
 - **Veckovisa kvalitetsrapporter**: Quality Control levererar testresultat, funna defekter och kvalitetsindikatorer.
 - **Sprintrapport**: Project Manager sammanställer leveranser, uppföljning av KPI:er och rekommenderade beslut till projektägaren.
-- **Dokumentationslogg**: Editor uppdaterar versionslogg i `docs/README.md` för att spåra ändringar i kunskapsbasen.
+- **Dokumentationslogg**: Editor uppdaterar versionslogg i `docs/book_structure.md` för att spåra ändringar i kunskapsbasen.
 
 ## Kommunikationskanaler
 
