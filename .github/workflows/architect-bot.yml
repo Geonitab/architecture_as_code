@@ -6,7 +6,7 @@ on:
       - opened
       - labeled
       - reopened
-  workflow_dispatch:  # Möjliggör manuell körning
+  workflow_dispatch:  # Enables manual execution
 
 permissions:
   contents: write
