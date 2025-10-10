@@ -10,6 +10,7 @@ on:
     paths:
       - 'docs/**'
       - 'mkdocs.yml'
+  workflow_dispatch: # Tillåter manuell körning av arbetsflödet
 
 permissions:
   contents: write
