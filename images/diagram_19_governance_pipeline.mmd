@@ -1,0 +1,17 @@
+%% Governance repository automation flow
+graph TD
+    subgraph Governance Repo
+        Policy[Policy Definitions]
+        Guardrails[Budget Guardrails]
+        Playbooks[Escalation Playbooks]
+        Roles[Approval Matrices]
+    end
+
+    Policy -->|CI Integration| Checks[Automated Policy Checks]
+    Guardrails -->|Simulation| Checks
+    Playbooks -->|Incident Automation| Workflow[Incident Workflow Engine]
+    Roles -->|Access Control| IAM[Identity and Access Platform]
+
+    Checks -->|Pass/Fail| PR[Pull Requests]
+    Workflow --> Response[Executive Response Team]
+    IAM --> PR

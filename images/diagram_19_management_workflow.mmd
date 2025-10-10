@@ -1,0 +1,15 @@
+%% Issue and discussion lifecycle for management topics
+graph LR
+    Topic[Management Topic Raised]
+    Template[Issue Template Applied]
+    Analysis[Cross-Functional Analysis]
+    Decision[Decision Logged in PR]
+    FollowUp[Automated Follow-up Tasks]
+    Archive[Historical Record]
+
+    Topic --> Template
+    Template --> Analysis
+    Analysis --> Decision
+    Decision --> FollowUp
+    Decision --> Archive
+    FollowUp --> Archive

@@ -1,0 +1,23 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
+---
+graph TB
+    A[Architecture as Code Repository] --> B[Multi-Domain CI/CD Pipeline]
+    B --> C[Application Architecture Validation]
+    B --> D[Data Architecture Validation]
+    B --> E[Infrastructure Architecture Validation]
+    B --> F[Security & Governance Validation]
+    C --> G[Integrated Deployment]
+    D --> G
+    E --> G
+    F --> G
+    G --> H[Holistic Monitoring & Feedback]
+    H --> A

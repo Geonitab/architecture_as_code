@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/17_organizational_change/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Organizational Change and Team Structures - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../16_migration/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../18_team_structure/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/17_organizational_change.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#organisatorisk-change-and-teamstrukturer" class="nav-link">Organisatorisk change and teamstrukturer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overall-description" class="nav-link">Overall Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#devops-kulturtransformation" class="nav-link">DevOps-kulturtransformation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cross-funktionella-team-structures" class="nav-link">Cross-funktionella team structures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#kompetenshojning-and-utbildning" class="nav-link">Kompetenshöjning and utbildning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#rollforandring-and-karriarutveckling" class="nav-link">Rollforändring and karriärutveckling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#change-management-strategier" class="nav-link">Change management strategier</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#praktiska-example" class="nav-link">Praktiska example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sources-and-referenser" class="nav-link">Sources and referenser</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="organisatorisk-change-and-teamstrukturer">Organisatorisk change and teamstrukturer</h1>
+<p><img alt="Organizational transformation" src="images/diagram_10_kapitel9.png" /></p>
+<p><em>Architecture as Code (Architecture as Code) driver fundamental organisatorisk change from traditional silos to cross-funktionella DevOps-team. Diagram illustrerar evolutionen from isolerade team to integrerade, samarbetsinriktade Structures as optimerar for hastighet and kvalitet.</em></p>
+<p>Architecture as Code methodology forms the foundation for ## organizational forändringsprocessens komplexitet</p>
+<p><img alt="Förändringsdimensioner and samband" src="../images/mindmap_17_organisation.png" /></p>
+<p><em>Mindmappen visualiserar the mångsidiga aspekterna of organisatorisk change at Architecture as Code-Architecture as Code-implementation. The shows how DevOps-kulturtransformation, cross-funktionella teamStructureer, competence development, rollforändring and change management is interconnected and must is managed holistiskt for successful transformation.</em></p>
+<h2 id="overall-description">Overall Description</h2>
+<p>implementation of Architecture as Code requires in-depth organizational changes as sträcker itself långt bortom technical transformation. Traditionella IT-organisationer with separata utvecklings-, drift- and säkerhetsteam must throughgå Fundamental omStructureering to fullt ut realisera Benefitsna with code-based way of working.</p>
+<p>Swedish organizations face unique Challenges when the applies organisatorisk change through starka fackliga traditioner, konsensusbaserade decisionssprocesser and etablerade hierarkiska Structureurer. Successful Architecture as Code adoption requires change management strategier as respekterar These cultural aspects while the främjar agile and collaborative way of working.</p>
+<p>Conway's Law describes how organisationers kommunikationsStructureer speglas in system architecture the produces. For Architecture as Code-success must organisationer withvetet designa teamStructureer as supportar microservices, API-driven arkitekturer and automated deployment patterns that Architecture as Code enables.</p>
+<p>Modern DevOps-transformation within Swedish companies that Spotify, Klarna and King demonstrerar how innovative organisationsdesign can accelerate product development and operational efficiency. These organisationer has developed unique approaches to team autonomy, cross-functional collaboration and continuous improvement as can adapt to different svenska organisationskulturer.</p>
+<h2 id="devops-kulturtransformation">DevOps-kulturtransformation</h2>
+<p>DevOps represents fundamental kulturforändering from "us vs them" mentalitet between development and operations to shared ownership of product lifecycle. This transformation requires investment in both technical tools and cultural forändringsinitiativ as promote collaboration, transparency and continuous learning.</p>
+<p>Psychological safety forms foundationen for effective DevOps teams by enable open communication about mistakes, experimentation and continuous improvement. Svenska workplace culture with emphasis at consensus and equality provides natural foundation for building psychologically safe environments as support DevOps practices.</p>
+<p>Blameless post-mortems and failure celebration is essentiella components in DevOps culture as encourage innovation and risk-taking. Swedish organizations with strong safety cultures can leverage These principles to create environments where teams can experiment with new technologies and approaches without fear of retribution for honest mistakes.</p>
+<p>Continuous learning and skill development program must support team members in developing cross-functional capabilities as bridge traditional development and operations boundaries. Investment in comprehensive training program for Architecture as Code tools, cloud platforms and automation practices ensures teams can effectively support modern infrastructure management.</p>
+<h2 id="cross-funktionella-team-structures">Cross-funktionella team structures</h2>
+<p>Cross-functional teams for Architecture as Code Architecture as Code-implementation must include diverse skills covering software development, systems administration, security engineering and product management. Effective team composition balances technical expertise with domain knowledge and ensures comprehensive coverage of infrastructure lifecycle management.</p>
+<p>Team size optimization follows "two-pizza rule" principles where teams is stemplate nog for effective communication but large nog for comprehensive skill coverage. Research suggests optimal Architecture as Code team sizes between 6-8 personer with representation from development, operations, security and product functions.</p>
+<p>Role definition within cross-functional teams must support both specialized expertise and collaborative responsibilities. Infrastructure engineers, cloud architects, security specialists and product owners each contribute unique perspectives as require coordination through well-defined interfaces and shared responsibilities.</p>
+<p>Team autonomy and decision-making authority is critical for Architecture as Code success because infrastructure decisions often require rapid response to operational issues. Swedish organizations with consensus-based cultures must balance democratic decision-making with need for quick operational responses under pressure situations.</p>
+<h2 id="kompetenshojning-and-utbildning">Kompetenshöjning and utbildning</h2>
+<p>Comprehensive training program for Architecture as Code adoption must cover technical skills, process changes and cultural transformation aspects. Multi-modal learning approaches including hands-on workshops, mentorship program and certification tracks ensure diverse learning preferences and skill levels is accommodated effectively.</p>
+<p>Technical skill development tracks should include Infrastructure as Code tools (Terraform, CloudFormation, Pulumi), cloud platforms (AWS, Azure, GCP), containerization technologies (Docker, Kubernetes), samt automation and monitoring tools. Progressive skill development from basic concepts to advanced implementation ensures systematic capability building.</p>
+<p>Process training for DevOps workflows, git-based collaboration, code review practices and incident response procedures ensures teams can effectively coordinate complex infrastructure management activities. Integration of these processes with existing organizational workflows minimizes disruption while new capabilities is developed.</p>
+<p>Cultural transformation workshops focusing on DevOps principles, blameless culture, continuous improvement and cross-functional collaboration helps teams adapt to new working methods. Svenska organizations can leverage existing collaboration traditions to accelerate adoption of these new cultural patterns.</p>
+<h2 id="rollforandring-and-karriarutveckling">Rollforändring and karriärutveckling</h2>
+<p>Traditional systems administrator roles evolve toward Infrastructure Engineers as combine operational expertise with software development skills. Career development paths must provide clear progression opportunities as recognize both technical depth and breadth of cross-functional capabilities.</p>
+<p>Security professional integration in DevOps teams creates DevSecOps practices where security considerations is embedded throughout infrastructure lifecycle. Security engineers develop new skills in automated compliance, policy-as-code and security scanning integration with the maintain specialization in threat analysis and risk assessment.</p>
+<p>Network engineering roles transform toward software-defined networking and cloud networking specializations as require programming skills alongside traditional networking expertise. Cloud networking specialists develop capabilities in infrastructure automation while the maintain deep technical knowledge in network protocols and architecture.</p>
+<p>Management role evolution from command-and-control toward servant leadership models as support team autonomy and decision-making. Swedish managers with collaborative leadership styles is well-positioned for supporting DevOps team structures as emphasize distributed decision-making and continuous improvement.</p>
+<h2 id="change-management-strategier">Change management strategier</h2>
+<p>Change management for Architecture as Code adoption must address both technical and cultural aspects of organizational transformation. Successful change strategies include stakeholder engagement, communication planning, resistance management and progress measurement as ensure sustainable organizational evolution.</p>
+<p>Stakeholder mapping and engagement strategies identify key influencers, early adopters and potential resistance sources within organizational. Swedish organizational dynamics with strong worker representation require inclusive approaches as involve unions, work councils and employee representatives in planning and implementation processes.</p>
+<p>Communication strategies must provide transparent information about transformation goals, timeline, expected impacts and support resources. Regular town halls, progress updates and feedback sessions maintain organizational engagement while they address concerns and questions from different stakeholder groups.</p>
+<p>Resistance management techniques include identifying root causes of resistance, providing targeted support for concerned individuals and creating positive incentives for adoption. Understanding that resistance often stems from fear of job loss or skill obsolescence allows organizations to address these concerns proactively through retraining and career development opportunities.</p>
+<h2 id="praktiska-example">Praktiska example</h2>
+<h3 id="devops-team-structure-blueprint">DevOps Team structure Blueprint</h3>
+<pre><code class="language-yaml"># organizational_design/devops_team_structure.yaml
+team_structure:
+  name: &quot;Infrastructure Platform Team&quot;
+  size: 7
+  mission: &quot;Enable autonomous product teams through self-service infrastructure&quot;
+
+  roles:
+    - role: &quot;Team Lead / Product Owner&quot;
+      responsibilities:
+        - &quot;Strategic direction and product roadmap&quot;
+        - &quot;Stakeholder communication&quot;
+        - &quot;Resource allocation and prioritization&quot;
+        - &quot;Team development and performance management&quot;
+      skills_required:
+        - &quot;Product management&quot;
+        - &quot;Technical leadership&quot;
+        - &quot;Agile methodologies&quot;
+        - &quot;Stakeholder management&quot;
+
+    - role: &quot;Senior Infrastructure Engineer&quot;
+      count: 2
+      responsibilities:
+        - &quot;Infrastructure as Code development&quot;
+        - &quot;Cloud architecture design&quot;
+        - &quot;Platform automation&quot;
+        - &quot;Technical mentoring&quot;
+      skills_required:
+        - &quot;Terraform/CloudFormation expert&quot;
+        - &quot;Multi-cloud platforms (AWS/Azure/GCP)&quot;
+        - &quot;Containerization (Docker/Kubernetes)&quot;
+        - &quot;CI/CD pipelines&quot;
+        - &quot;Programming (Python/Go/Bash)&quot;
+
+    - role: &quot;Cloud Security Engineer&quot;
+      responsibilities:
+        - &quot;Security policy as code&quot;
+        - &quot;Compliance automation&quot;
+        - &quot;Threat modeling for cloud infrastructure&quot;
+        - &quot;Security scanning integration&quot;
+      skills_required:
+        - &quot;Cloud security architecture as code best practices&quot;
+        - &quot;Policy engines (OPA/AWS Config)&quot;
+        - &quot;Security scanning tools&quot;
+        - &quot;Compliance frameworks (ISO27001/SOC2)&quot;
+
+    - role: &quot;Platform Automation Engineer&quot;
+      count: 2
+      responsibilities:
+        - &quot;CI/CD pipeline development&quot;
+        - &quot;Monitoring and observability&quot;
+        - &quot;Self-service tool development&quot;
+        - &quot;Developer experience improvement&quot;
+      skills_required:
+        - &quot;GitOps workflows&quot;
+        - &quot;Monitoring stack (Prometheus/Grafana)&quot;
+        - &quot;API development&quot;
+        - &quot;Developer tooling&quot;
+
+    - role: &quot;Site Reliability Engineer&quot;
+      responsibilities:
+        - &quot;Production operations&quot;
+        - &quot;Incident response&quot;
+        - &quot;Capacity planning&quot;
+        - &quot;Performance optimization&quot;
+      skills_required:
+        - &quot;Production operations&quot;
+        - &quot;Incident management&quot;
+        - &quot;Performance analysis&quot;
+        - &quot;Automation scripting&quot;
+
+  working_agreements:
+    daily_standup: &quot;09:00 CET daily&quot;
+    sprint_length: &quot;2 weeks&quot;
+    retrospective: &quot;End of each sprint&quot;
+    on_call_rotation: &quot;1 week rotation, shared between SRE and Infrastructure Engineers&quot;
+
+  success_metrics:
+    infrastructure_deployment_time: &quot;&lt; 15 minutes from commit to production&quot;
+    incident_resolution_time: &quot;&lt; 30 minutes for P1 incidents&quot;
+    developer_satisfaction: &quot;&gt; 4.5/5 in quarterly surveys&quot;
+    infrastructure_cost_efficiency: &quot;10% yearly improvement&quot;
+    security_compliance_score: &quot;&gt; 95%&quot;
+
+  communication_patterns:
+    internal_team:
+      - &quot;Daily standups for coordination&quot;
+      - &quot;Weekly technical deep-dives&quot;
+      - &quot;Monthly team retrospectives&quot;
+      - &quot;Quarterly goal setting sessions&quot;
+
+    external_stakeholders:
+      - &quot;Bi-weekly demos for product teams&quot;
+      - &quot;Monthly steering committee updates&quot;
+      - &quot;Quarterly business review presentations&quot;
+      - &quot;Ad-hoc consultation for complex integrations&quot;
+
+  decision_making:
+    technical_decisions: &quot;Consensus among technical team members&quot;
+    architectural_decisions: &quot;Technical lead with team input&quot;
+    strategic_decisions: &quot;Product owner with business stakeholder input&quot;
+    operational_decisions: &quot;On-call engineer authority with escalation path&quot;
+
+  continuous_improvement:
+    learning_budget: &quot;40 hours per person per quarter&quot;
+    conference_attendance: &quot;2 team members per year at major conferences&quot;
+    experimentation_time: &quot;20% time for innovation projects&quot;
+    knowledge_sharing: &quot;Monthly internal tech talks&quot;
+</code></pre>
+<h3 id="training-program-framework">Training Program Framework</h3>
+<pre><code class="language-python"># training/iac_competency_framework.py
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+import json
+
+class IaCCompetencyFramework:
+    &quot;&quot;&quot;
+    Comprehensive competency framework for Infrastructure as Code skills
+    &quot;&quot;&quot;
+
+    def __init__(self):
+        self.competency_levels = {
+            &quot;novice&quot;: {
+                &quot;description&quot;: &quot;Basic understanding, requires guidance&quot;,
+                &quot;hours_required&quot;: 40,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can execute predefined architecture as code templates&quot;,
+                    &quot;Understands basic cloud concepts&quot;,
+                    &quot;Can follow established procedures&quot;
+                ]
+            },
+            &quot;intermediate&quot;: {
+                &quot;description&quot;: &quot;Can work independently on common tasks&quot;, 
+                &quot;hours_required&quot;: 120,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can create simple architecture as code modules&quot;,
+                    &quot;Understands infrastructure dependencies&quot;,
+                    &quot;Can troubleshoot common issues&quot;
+                ]
+            },
+            &quot;advanced&quot;: {
+                &quot;description&quot;: &quot;Can design and lead complex implementations&quot;,
+                &quot;hours_required&quot;: 200,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can architect multi-environment solutions&quot;,
+                    &quot;Can mentor others effectively&quot;,
+                    &quot;Can design reusable patterns&quot;
+                ]
+            },
+            &quot;expert&quot;: {
+                &quot;description&quot;: &quot;Thought leader, can drive organizational standards&quot;,
+                &quot;hours_required&quot;: 300,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can drive organizational architecture as code strategy&quot;,
+                    &quot;Can design complex multi-cloud solutions&quot;,
+                    &quot;Can lead transformation initiatives&quot;
+                ]
+            }
+        }
+
+        self.skill_domains = {
+            &quot;infrastructure_as_code&quot;: {
+                &quot;tools&quot;: [&quot;Terraform&quot;, &quot;CloudFormation&quot;, &quot;Pulumi&quot;, &quot;Ansible&quot;],
+                &quot;concepts&quot;: [&quot;Declarative syntax&quot;, &quot;State management&quot;, &quot;Module design&quot;],
+                &quot;practices&quot;: [&quot;Code organization&quot;, &quot;Testing strategies&quot;, &quot;CI/CD integration&quot;]
+            },
+            &quot;cloud_platforms&quot;: {
+                &quot;aws&quot;: [&quot;EC2&quot;, &quot;VPC&quot;, &quot;RDS&quot;, &quot;Lambda&quot;, &quot;S3&quot;, &quot;IAM&quot;],
+                &quot;azure&quot;: [&quot;Virtual Machines&quot;, &quot;Resource Groups&quot;, &quot;Storage&quot;, &quot;Functions&quot;],
+                &quot;gcp&quot;: [&quot;Compute Engine&quot;, &quot;VPC&quot;, &quot;Cloud Storage&quot;, &quot;Cloud Functions&quot;],
+                &quot;multi_cloud&quot;: [&quot;Provider abstraction&quot;, &quot;Cost optimization&quot;, &quot;Governance&quot;]
+            },
+            &quot;security_compliance&quot;: {
+                &quot;security&quot;: [&quot;Identity management&quot;, &quot;Network security&quot;, &quot;Encryption&quot;],
+                &quot;compliance&quot;: [&quot;GDPR&quot;, &quot;ISO27001&quot;, &quot;SOC2&quot;, &quot;Svenska security requirements&quot;],
+                &quot;policy&quot;: [&quot;Policy as Code&quot;, &quot;Automated compliance&quot;, &quot;Audit trails&quot;]
+            },
+            &quot;operations_monitoring&quot;: {
+                &quot;monitoring&quot;: [&quot;Metrics collection&quot;, &quot;Alerting&quot;, &quot;Dashboards&quot;],
+                &quot;logging&quot;: [&quot;Log aggregation&quot;, &quot;Analysis&quot;, &quot;Retention&quot;],
+                &quot;incident_response&quot;: [&quot;Runbooks&quot;, &quot;Post-mortems&quot;, &quot;Automation&quot;]
+            }
+        }
+
+    def create_learning_path(self, current_level: str, target_level: str, 
+                           focus_domains: List[str]) -&gt; Dict:
+        &quot;&quot;&quot;Skapa personalized learning path for individual&quot;&quot;&quot;
+
+        current_hours = self.competency_levels[current_level][&quot;hours_required&quot;]
+        target_hours = self.competency_levels[target_level][&quot;hours_required&quot;]
+        required_hours = target_hours - current_hours
+
+        learning_path = {
+            &quot;individual_id&quot;: f&quot;learner_{datetime.now().strftime('%Y%m%d_%H%M%S')}&quot;,
+            &quot;current_level&quot;: current_level,
+            &quot;target_level&quot;: target_level,
+            &quot;estimated_duration_hours&quot;: required_hours,
+            &quot;estimated_timeline_weeks&quot;: required_hours // 10,  # 10 hours per week
+            &quot;focus_domains&quot;: focus_domains,
+            &quot;learning_modules&quot;: []
+        }
+
+        # Generera learning modules based on focus domains
+        for domain in focus_domains:
+            if domain in self.skill_domains:
+                modules = self._generate_domain_modules(domain, current_level, target_level)
+                learning_path[&quot;learning_modules&quot;].extend(modules)
+
+        return learning_path
+
+    def _generate_domain_modules(self, domain: str, current_level: str, 
+                                target_level: str) -&gt; List[Dict]:
+        &quot;&quot;&quot;Generera learning modules for specific domain&quot;&quot;&quot;
+
+        modules = []
+        domain_skills = self.skill_domains[domain]
+
+        # Terraform Fundamentals Module
+        if domain == &quot;infrastructure_as_code&quot;:
+            modules.append({
+                &quot;name&quot;: &quot;Terraform Fundamentals for Swedish organizations&quot;,
+                &quot;duration_hours&quot;: 16,
+                &quot;type&quot;: &quot;hands_on_workshop&quot;,
+                &quot;prerequisites&quot;: [&quot;Basic Linux&quot;, &quot;Cloud basics&quot;],
+                &quot;learning_objectives&quot;: [
+                    &quot;Skapa basic Terraform configurations&quot;,
+                    &quot;Förstå state management&quot;,
+                    &quot;Implementera svenska compliance patterns&quot;,
+                    &quot;Integrara with svensk cloud infrastructure&quot;
+                ],
+                &quot;practical_exercises&quot;: [
+                    &quot;Deploy Swedish GDPR-compliant S3 bucket&quot;,
+                    &quot;Create VPC with svenska security requirements&quot;, 
+                    &quot;Implementera IAM policies for Swedish organizations&quot;,
+                    &quot;Set up monitoring according to MSB-guidelines&quot;
+                ],
+                &quot;assessment&quot;: {
+                    &quot;type&quot;: &quot;practical_project&quot;,
+                    &quot;description&quot;: &quot;Deploy complete web application infrastructure with svenska compliance&quot;
+                }
+            })
+
+        # Cloud Security Module
+        if domain == &quot;security_compliance&quot;:
+            modules.append({
+                &quot;name&quot;: &quot;Cloud Security for Svenska Regelverk&quot;,
+                &quot;duration_hours&quot;: 12,
+                &quot;type&quot;: &quot;blended_learning&quot;,
+                &quot;prerequisites&quot;: [&quot;Cloud fundamentals&quot;, &quot;Basic security concepts&quot;],
+                &quot;learning_objectives&quot;: [
+                    &quot;Implementera GDPR-compliant infrastructure&quot;,
+                    &quot;Förstå MSB security requirements&quot;,
+                    &quot;Skapa automated compliance checking&quot;,
+                    &quot;design secure network architectures&quot;
+                ],
+                &quot;practical_exercises&quot;: [
+                    &quot;Create GDPR-compliant data pipeline&quot;,
+                    &quot;Implement network security architecture as code best practices&quot;,
+                    &quot;Set up automated compliance monitoring&quot;,
+                    &quot;design incident response procedures&quot;
+                ],
+                &quot;assessment&quot;: {
+                    &quot;type&quot;: &quot;compliance_audit&quot;,
+                    &quot;description&quot;: &quot;Demonstrate infrastructure meets svenska security requirements&quot;
+                }
+            })
+
+        return modules
+
+    def track_progress(self, individual_id: str, completed_module: str, 
+                      assessment_score: float) -&gt; Dict:
+        &quot;&quot;&quot;Track learning progress for individual&quot;&quot;&quot;
+
+        progress_record = {
+            &quot;individual_id&quot;: individual_id,
+            &quot;module_completed&quot;: completed_module,
+            &quot;completion_date&quot;: datetime.now().isoformat(),
+            &quot;assessment_score&quot;: assessment_score,
+            &quot;certification_earned&quot;: assessment_score &gt;= 0.8,
+            &quot;next_recommended_module&quot;: self._recommend_next_module(individual_id)
+        }
+
+        return progress_record
+
+    def generate_team_competency_matrix(self, team_members: List[Dict]) -&gt; Dict:
+        &quot;&quot;&quot;Generera team competency matrix for skills gap analysis&quot;&quot;&quot;
+
+        competency_matrix = {
+            &quot;team_id&quot;: f&quot;team_{datetime.now().strftime('%Y%m%d')}&quot;,
+            &quot;assessment_date&quot;: datetime.now().isoformat(),
+            &quot;team_size&quot;: len(team_members),
+            &quot;overall_readiness&quot;: 0,
+            &quot;skill_gaps&quot;: [],
+            &quot;training_recommendations&quot;: [],
+            &quot;members&quot;: []
+        }
+
+        total_competency = 0
+
+        for member in team_members:
+            member_assessment = {
+                &quot;name&quot;: member[&quot;name&quot;],
+                &quot;role&quot;: member[&quot;role&quot;],
+                &quot;current_skills&quot;: member.get(&quot;skills&quot;, {}),
+                &quot;competency_score&quot;: self._calculate_competency_score(member),
+                &quot;development_needs&quot;: self._identify_development_needs(member),
+                &quot;certification_status&quot;: member.get(&quot;certifications&quot;, [])
+            }
+
+            competency_matrix[&quot;members&quot;].append(member_assessment)
+            total_competency += member_assessment[&quot;competency_score&quot;]
+
+        competency_matrix[&quot;overall_readiness&quot;] = total_competency / len(team_members)
+        competency_matrix[&quot;skill_gaps&quot;] = self._identify_team_skill_gaps(team_members)
+        competency_matrix[&quot;training_recommendations&quot;] = self._recommend_team_training(competency_matrix)
+
+        return competency_matrix
+
+def create_organizational_change_plan(organization_assessment: Dict) -&gt; Dict:
+    &quot;&quot;&quot;Skapa comprehensive organizational change plan for architecture as code adoption&quot;&quot;&quot;
+
+    change_plan = {
+        &quot;organization&quot;: organization_assessment[&quot;name&quot;],
+        &quot;current_state&quot;: organization_assessment[&quot;current_maturity&quot;],
+        &quot;target_state&quot;: &quot;advanced_devops&quot;,
+        &quot;timeline_months&quot;: 18,
+        &quot;phases&quot;: [
+            {
+                &quot;name&quot;: &quot;Foundation Building&quot;,
+                &quot;duration_months&quot;: 6,
+                &quot;objectives&quot;: [
+                    &quot;Establish DevOps culture basics&quot;,
+                    &quot;Implement basic architecture as code practices&quot;,
+                    &quot;Create cross-functional teams&quot;,
+                    &quot;Set up initial toolchain&quot;
+                ],
+                &quot;activities&quot;: [
+                    &quot;DevOps culture workshops&quot;,
+                    &quot;Tool selection and setup&quot;,
+                    &quot;Team restructuring&quot;,
+                    &quot;Initial training program&quot;,
+                    &quot;Pilot project implementation&quot;
+                ],
+                &quot;success_criteria&quot;: [
+                    &quot;All teams trained on DevOps basics&quot;,
+                    &quot;Basic architecture as code deployment pipeline operational&quot;,
+                    &quot;Cross-functional teams established&quot;,
+                    &quot;Initial toolchain adopted&quot;
+                ]
+            },
+            {
+                &quot;name&quot;: &quot;Capability Development&quot;, 
+                &quot;duration_months&quot;: 8,
+                &quot;objectives&quot;: [
+                    &quot;Scale architecture as code practices across organization&quot;,
+                    &quot;Implement advanced automation&quot;,
+                    &quot;Establish monitoring and observability&quot;,
+                    &quot;Mature incident response processes&quot;
+                ],
+                &quot;activities&quot;: [
+                    &quot;Advanced architecture as code training rollout&quot;,
+                    &quot;Multi-environment deployment automation&quot;,
+                    &quot;Comprehensive monitoring implementation&quot;,
+                    &quot;Incident response process development&quot;,
+                    &quot;Security integration (DevSecOps)&quot;
+                ],
+                &quot;success_criteria&quot;: [
+                    &quot;architecture as code practices adopted by all product teams&quot;,
+                    &quot;Automated deployment across all environments&quot;,
+                    &quot;Comprehensive observability implemented&quot;,
+                    &quot;Incident response processes mature&quot;
+                ]
+            },
+            {
+                &quot;name&quot;: &quot;Optimization and Innovation&quot;,
+                &quot;duration_months&quot;: 4,
+                &quot;objectives&quot;: [
+                    &quot;Optimize existing processes&quot;,
+                    &quot;Implement advanced practices&quot;,
+                    &quot;Foster continuous innovation&quot;,
+                    &quot;Measure and improve business outcomes&quot;
+                ],
+                &quot;activities&quot;: [
+                    &quot;Process optimization based on metrics&quot;,
+                    &quot;Advanced practices implementation&quot;,
+                    &quot;Innovation time allocation&quot;,
+                    &quot;Business value measurement&quot;,
+                    &quot;Knowledge sharing program&quot;
+                ],
+                &quot;success_criteria&quot;: [
+                    &quot;Optimized processes delivering measurable value&quot;,
+                    &quot;Innovation culture established&quot;,
+                    &quot;Strong business outcome improvements&quot;,
+                    &quot;Self-sustaining improvement culture&quot;
+                ]
+            }
+        ],
+        &quot;change_management&quot;: {
+            &quot;communication_strategy&quot;: [
+                &quot;Monthly all-hands updates&quot;,
+                &quot;Quarterly progress reviews&quot;, 
+                &quot;Success story sharing&quot;,
+                &quot;Feedback collection mechanisms&quot;
+            ],
+            &quot;resistance_management&quot;: [
+                &quot;Early stakeholder engagement&quot;,
+                &quot;Addressing skill development concerns&quot;,
+                &quot;Providing clear career progression paths&quot;,
+                &quot;Celebrating early wins&quot;
+            ],
+            &quot;success_measurement&quot;: [
+                &quot;Employee satisfaction surveys&quot;,
+                &quot;Technical capability assessments&quot;,
+                &quot;Business value metrics&quot;,
+                &quot;Cultural transformation indicators&quot;
+            ]
+        },
+        &quot;risk_mitigation&quot;: [
+            &quot;Gradual rollout to minimize disruption&quot;,
+            &quot;Comprehensive training to address skill gaps&quot;,
+            &quot;Clear communication to manage expectations&quot;,
+            &quot;Strong support structure for teams&quot;
+        ]
+    }
+
+    return change_plan
+</code></pre>
+<h3 id="performance-measurement-framework">Performance Measurement Framework</h3>
+<pre><code class="language-yaml"># metrics/devops_performance_metrics.yaml
+performance_measurement_framework:
+  name: &quot;DevOps Team Performance Metrics for Swedish organizations&quot;
+
+  technical_metrics:
+    deployment_frequency:
+      description: &quot;How often team deploys to production&quot;
+      measurement: &quot;Deployments per day/week&quot;
+      target_values:
+        elite: &quot;&gt; 1 per day&quot;
+        high: &quot;1 per week - 1 per day&quot;
+        medium: &quot;1 per month - 1 per week&quot; 
+        low: &quot;&lt; 1 per month&quot;
+      collection_method: &quot;Automated from CI/CD pipeline&quot;
+
+    lead_time_for_changes:
+      description: &quot;Time from code commit to production deployment&quot;
+      measurement: &quot;Hours/days&quot;
+      target_values:
+        elite: &quot;&lt; 1 hour&quot;
+        high: &quot;1 day - 1 week&quot;
+        medium: &quot;1 week - 1 month&quot;
+        low: &quot;&gt; 1 month&quot;
+      collection_method: &quot;Git and deployment tool integration&quot;
+
+    mean_time_to_recovery:
+      description: &quot;Time to recover from production incidents&quot;
+      measurement: &quot;Hours&quot;
+      target_values:
+        elite: &quot;&lt; 1 hour&quot;
+        high: &quot;&lt; 1 day&quot;
+        medium: &quot;1 day - 1 week&quot;
+        low: &quot;&gt; 1 week&quot;
+      collection_method: &quot;Incident management systems&quot;
+
+    change_failure_rate:
+      description: &quot;Percentage of deployments causing production issues&quot;
+      measurement: &quot;Percentage&quot;
+      target_values:
+        elite: &quot;0-15%&quot;
+        high: &quot;16-30%&quot;
+        medium: &quot;31-45%&quot;
+        low: &quot;&gt; 45%&quot;
+      collection_method: &quot;Incident correlation with deployments&quot;
+
+  business_metrics:
+    infrastructure_cost_efficiency:
+      description: &quot;Cost per unit of business value delivered&quot;
+      measurement: &quot;SEK per transaction/user/feature&quot;
+      target: &quot;10% yearly improvement&quot;
+      collection_method: &quot;Cloud billing API integration&quot;
+
+    developer_productivity:
+      description: &quot;Developer self-service capability&quot;
+      measurement: &quot;Hours spent on infrastructure tasks per sprint&quot;
+      target: &quot;&lt; 20% of development time&quot;
+      collection_method: &quot;Time tracking and developer surveys&quot;
+
+    compliance_adherence:
+      description: &quot;Adherence to svenska regulatory requirements&quot;
+      measurement: &quot;Compliance score (0-100%)&quot;
+      target: &quot;&gt; 95%&quot;
+      collection_method: &quot;Automated compliance scanning&quot;
+
+    customer_satisfaction:
+      description: &quot;Internal customer (developer) satisfaction&quot;
+      measurement: &quot;Net Promoter Score&quot;
+      target: &quot;&gt; 50&quot;
+      collection_method: &quot;Quarterly developer surveys&quot;
+
+  cultural_metrics:
+    psychological_safety:
+      description: &quot;Team member comfort with taking risks and admitting mistakes&quot;
+      measurement: &quot;Survey score (1-5)&quot;
+      target: &quot;&gt; 4.0&quot;
+      collection_method: &quot;Quarterly team health surveys&quot;
+
+    learning_culture:
+      description: &quot;Investment in learning and experimentation&quot;
+      measurement: &quot;Hours per person per quarter&quot;
+      target: &quot;&gt; 40 hours&quot;
+      collection_method: &quot;Learning management systems&quot;
+
+    collaboration_effectiveness:
+      description: &quot;Cross-functional team collaboration quality&quot;
+      measurement: &quot;Survey score (1-5)&quot;
+      target: &quot;&gt; 4.0&quot;
+      collection_method: &quot;360-degree feedback&quot;
+
+    innovation_rate:
+      description: &quot;Number of new ideas/experiments per quarter&quot;
+      measurement: &quot;Count per team member&quot;
+      target: &quot;&gt; 2 per quarter&quot;
+      collection_method: &quot;Innovation tracking systems&quot;
+
+  collection_automation:
+    data_sources:
+      - &quot;GitLab/GitHub API for code metrics&quot;
+      - &quot;Jenkins/GitLab CI for deployment metrics&quot;
+      - &quot;PagerDuty/OpsGenie for incident metrics&quot;
+      - &quot;AWS/Azure billing API for cost metrics&quot;
+      - &quot;Survey tools for cultural metrics&quot;
+
+    dashboard_tools:
+      - &quot;Grafana for technical metrics visualization&quot;
+      - &quot;Tableau for business metrics analysis&quot;
+      - &quot;Internal dashboard for team metrics&quot;
+
+    reporting_schedule:
+      daily: [&quot;Deployment frequency&quot;, &quot;Incident count&quot;]
+      weekly: [&quot;Lead time trends&quot;, &quot;Cost analysis&quot;]
+      monthly: [&quot;Team performance review&quot;, &quot;Business value assessment&quot;]
+      quarterly: [&quot;Cultural metrics&quot;, &quot;Strategic review&quot;]
+
+  improvement_process:
+    metric_review:
+      frequency: &quot;Monthly team retrospectives&quot;
+      participants: [&quot;Team members&quot;, &quot;Product owner&quot;, &quot;Engineering manager&quot;]
+      outcome: &quot;Improvement actions with owners and timelines&quot;
+
+    benchmarking:
+      internal: &quot;Compare teams within organization&quot;
+      industry: &quot;Compare with DevOps industry standards&quot;
+      regional: &quot;Compare with svenska tech companies&quot;
+
+    action_planning:
+      identification: &quot;Identify lowest-performing metrics&quot;
+      root_cause: &quot;Analyze underlying causes&quot;
+      solutions: &quot;Develop targeted improvement initiatives&quot;
+      tracking: &quot;Monitor improvement progress monthly&quot;
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Organisatorisk change forms The most critical komponenten for successful Architecture as Code adoption. Technical tools and processes can implementeras relativt snabbt, but cultural transformation and team restructuring requires sustained effort over extended periods to achieve lasting impact.</p>
+<p>Swedish organizations as investerar in comprehensive change management, cross-functional team development and continuous learning culture position themselves for long-term success with Architecture as Code practices. Investment in people development and organizational design delivers compounding returns through improved collaboration, faster innovation cycles and enhanced operational efficiency.</p>
+<p>Success requires balanced focus at technical capability development, cultural transformation and measurement-driven improvement. Organizations as treats change management as equally important as technical implementation achieve significantly better outcomes from their Architecture as Code transformation investments.</p>
+<h2 id="sources-and-referenser">Sources and referenser</h2>
+<ul>
+<li>Puppet. "State of DevOps Report." Puppet Labs, 2023.</li>
+<li>Google. "DORA State of DevOps Research." Google Cloud, 2023.</li>
+<li>Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.</li>
+<li>Team Topologies. "Organizing Business and Technology Teams." IT Revolution Press, 2023.</li>
+<li>Accelerate. "Building High Performing Technology Organizations." IT Revolution Press, 2023.</li>
+<li>McKinsey. "Organizational Transformation in Nordic Companies." McKinsey &amp; Company, 2023.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

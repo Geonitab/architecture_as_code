@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/31_technical_architecture/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Technical Structure for Book Production - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../30_appendix_code_examples/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/31_technical_architecture.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#technical-uppbyggnad-for-bokproduktion" class="nav-link">technical uppbyggnad for bokproduktion</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#markdown-filer-structure-and-syfte" class="nav-link">Markdown-filer: structure and syfte</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#pandoc-konvertering-and-formatering" class="nav-link">Pandoc: Konvertering and formatering</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#github-actions-cicd-pipeline" class="nav-link">GitHub Actions: CI/CD-pipeline</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#presentation-material-forberedelse-and-generering" class="nav-link">Presentation-material: Förberedelse and generering</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#omslag-and-whitepapers-design-and-integration" class="nav-link">Omslag and whitepapers: design and integration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#technical-architecture-and-systemintegration" class="nav-link">technical architecture and systemintegration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="technical-uppbyggnad-for-bokproduktion">technical uppbyggnad for bokproduktion</h1>
+<p>This chapter describes The technical infrastructureen and arbetsflödet as is used to create, bygga and publicera "Architecture as Code". Systemet exemplifierar praktisk application of Architecture as Code-principerna by use code to definiera and automatisera entire bokproduktionsprocessen.</p>
+<p><img alt="technical architecture for bokproduktion" src="../images/diagram_27_teknisk_uppbyggnad.png" /></p>
+<p><em>The diagram illustrates the comprehensive technical systemet as driver bokproduktionen, from markdown-Sources via automated pipelines to slutliga publikationer.</em></p>
+<p><img alt="Architecture Data Model" src="../images/diagram_27_er_architecture.png" /></p>
+<p>Ovanstående entitetsrelationsdiagram shows The logiska dataStructureen for how organisationer, projekt, infrastructure and deployments relaterar to varandra in a Architecture as Code-Architecture as Code-implementation.</p>
+<h2 id="markdown-filer-structure-and-syfte">Markdown-filer: structure and syfte</h2>
+<h3 id="filorganisation-and-namnkonvention">Filorganisation and namnkonvention</h3>
+<p>Book content is organiserat in 31 markdown-filer within <code>docs/</code>-katalogen, where each File represents A chapter:</p>
+<pre><code>docs/
+├── 01_introduction.md                    # Introduktion and vision
+├── 02_fundamental_principles.md      # Fundamental Concepts
+├── 03_version_control.md             # Git and version control
+├── ...                                # Tekniska chapter (04-22)
+├── 21_digitalization.md             # Digitaliseringsstrategi
+├── 22_lovable_mockups.md           # Produktupptäckt med Lovable
+├── 23_soft_as_code_interplay.md    # Samspel mellan mjuka discipliner
+├── 24_best_practices.md            # Metodval och erfarenheter
+├── 25_future_trends.md             # Framtida trender
+├── 26_future_development.md        # Långsiktig utveckling
+├── 27_conclusion.md                # Avslutning
+├── 28_glossary.md                  # Terminologi
+├── 29_about_the_authors.md         # Författarinformation
+├── 30_appendix_code_examples.md    # Tekniska exempel
+└── 31_technical_architecture.md    # Detta kapitel
+</code></pre>
+<h3 id="markdown-struktur-and-semantik">Markdown-struktur and semantik</h3>
+<p>each chapter follows a konsistent structure as optimerar both läsbarhet and maskinell bearbetning:</p>
+<pre><code class="language-markdown"># Kapiteltitel (H1 - creates new sida in PDF)
+
+Introduktionstext with kort Description of kapitlets content.
+
+![Diagramtitel Description](images/diagram_01_beskrivande_namn.png)
+
+*Bildtext as förklarar diagrammets content.*
+
+## Huvudsektion (H2)
+### Undersektion (H3)
+#### Detaljsektion (H4)
+
+- Listpunkter for strukturerat content
+- Kodexempel in fenced code blocks
+- Referenser and källor
+</code></pre>
+<h3 id="automatisk-innehallsgenerering">Automatisk innehållsgenerering</h3>
+<p>Systemet uses <code>generate_book.py</code> to automatically generera and uppdatera kapitelContents:</p>
+<ul>
+<li><strong>Iterativ generering</strong>: creates Contents in kontrollerade batch-processes</li>
+<li><strong>Mermaid-integration</strong>: Automatisk generering of diagram-placeholders</li>
+<li><strong>Konsistenshållning</strong>: ensures enhetlig structure over all chapter</li>
+<li><strong>version control</strong>: all changes is tracked through Git</li>
+</ul>
+<h2 id="pandoc-konvertering-and-formatering">Pandoc: Konvertering and formatering</h2>
+<h3 id="konfigurationssystem">Konfigurationssystem</h3>
+<p>Pandoc-konverteringen styrs of <code>pandoc.yaml</code> which definierar all format-specific inställningar:</p>
+<pre><code class="language-yaml"># Fundamental inställningar
+standalone: true
+toc: true
+toc-depth: 3
+number-sections: true
+top-level-division: chapter
+
+# Eisvogel-template for professionell PDF-layout
+template: eisvogel.latex
+pdf-engine: xelatex
+
+# Metadata and variabler
+metadata:
+  title: &quot;architecture as code&quot;
+  subtitle: &quot;Infrastructure as Code (architecture as code) in praktiken&quot;
+  author: &quot;Kodarkitektur Bokverkstad&quot;
+</code></pre>
+<h3 id="build-process-and-architecture-as-code-automation">Build-process and architecture as code-automation</h3>
+<p><code>build_book.sh</code> orchestrerar entire build-processen:</p>
+<ol>
+<li><strong>Miljövalidering</strong>: Kontrollerar Pandoc, XeLaTeX and Mermaid CLI</li>
+<li><strong>Diagram-konvertering</strong>: Konverterar <code>.mmd</code>-filer to PNG-format</li>
+<li><strong>PDF-generering</strong>: Sammanställer all chapter to a sammanhållen bok</li>
+<li><strong>Format-variationer</strong>: Stöd for PDF, EPUB and DOCX-export</li>
+</ol>
+<pre><code class="language-bash"># Konvertera Mermaid-diagram
+for mmd_file in images/*.mmd; do
+    png_file=&quot;${mmd_file%.mmd}.png&quot;
+    mmdc -in &quot;$mmd_file&quot; -o &quot;$png_file&quot; \
+         -t default -b transparent \
+         --width 1400 --height 900
+done
+
+# Generera PDF with all chapter
+pandoc --defaults=pandoc.yaml &quot;${CHAPTER_FILES[@]}&quot; -o arkitektur_som_kod.pdf
+</code></pre>
+<h3 id="kvalitetssakring-and-validation">Kvalitetssäkring and validation</h3>
+<ul>
+<li><strong>Template-validation</strong>: Automatisk kontroll of Eisvogel-template</li>
+<li><strong>Konfigurationskontroll</strong>: Verifierar pandoc.yaml-inställningar</li>
+<li><strong>Bildhantering</strong>: ensures all diagram-References is giltiga</li>
+<li><strong>Utdata-verification</strong>: Kontrollerar genererade filer</li>
+</ul>
+<h2 id="github-actions-cicd-pipeline">GitHub Actions: CI/CD-pipeline</h2>
+<h3 id="huvudworkflow-for-bokproduktion">Huvudworkflow for bokproduktion</h3>
+<p><code>build-book.yml</code> automates entire publikationsprocessen:</p>
+<pre><code class="language-yaml">name: Build Book
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+      - 'docs/images/**/*.mmd'
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  build-book:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+</code></pre>
+<h3 id="workflow-step-and-optimeringar">Workflow-step and optimeringar</h3>
+<ol>
+<li><strong>Miljöuppställning (15 minuter)</strong>:</li>
+<li>Python 3.12 installation</li>
+<li>TeXLive and XeLaTeX (8+ minuter)</li>
+<li>Pandoc 3.1.9 installation</li>
+<li>
+<p>Mermaid CLI with Chrome-dependencies</p>
+</li>
+<li>
+<p><strong>Cachning and performance</strong>:</p>
+</li>
+<li>APT-paket caching for snabbare builds</li>
+<li>Pip-dependencies caching</li>
+<li>
+<p>Node.js modules caching</p>
+</li>
+<li>
+<p><strong>Build-process (30 sekunder)</strong>:</p>
+</li>
+<li>Diagram-generering from Mermaid-Sources</li>
+<li>PDF-kompilering with Pandoc</li>
+<li>
+<p>quality controls and validation</p>
+</li>
+<li>
+<p><strong>Publicering and distribution</strong>:</p>
+</li>
+<li>Automatisk release-creatende at main-branch pushes</li>
+<li>Artifact-lagring (30 dagar)</li>
+<li>PDF-distribution via GitHub Releases</li>
+</ol>
+<h3 id="kompletterande-workflows">Kompletterande workflows</h3>
+<p><strong>Content Validation</strong> (<code>content-validation.yml</code>):
+- Markdown-syntaxvalidering
+- Länk-kontroll and bildvalidering
+- Språklig quality control</p>
+<p><strong>Presentation Generation</strong> (<code>generate-presentations.yml</code>):
+- PowerPoint-material from bokkapitel
+- Structureerade presentationsoutlines
+- Kvadrat-branding and professionell styling</p>
+<p><strong>Whitepaper Generation</strong> (<code>generate-whitepapers.yml</code>):
+- Individuella HTML-documents per chapter
+- Standalone-format for distribution
+- SEO-optimerat and print-vänligt</p>
+<h2 id="presentation-material-forberedelse-and-generering">Presentation-material: Förberedelse and generering</h2>
+<h3 id="automatisk-outline-generering">Automatisk outline-generering</h3>
+<p><code>generate_presentation.py</code> creates Presentation materials from bokContents:</p>
+<pre><code class="language-python">def generate_presentation_outline():
+    &quot;&quot;&quot;Genererar presentationsoutline from all bokkapitel.&quot;&quot;&quot;
+    docs_dir = Path(&quot;docs&quot;)
+    chapter_files = sorted(glob.glob(str(docs_dir / &quot;*.md&quot;)))
+
+    presentation_data = []
+    for chapter_file in chapter_files:
+        chapter_data = read_chapter_content(chapter_file)
+        if chapter_data:
+            presentation_data.append({
+                'file': Path(chapter_file).name,
+                'chapter': chapter_data
+            })
+
+    return presentation_data
+</code></pre>
+<h3 id="powerpoint-integration">PowerPoint-integration</h3>
+<p>Systemet genererar:
+- <strong>Presentation outline</strong>: Structured markdown with nyckelbudskap
+- <strong>Python PowerPoint-script</strong>: Automatisk slide-generering
+- <strong>Kvadrat-branding</strong>: Konsistent visuell identitet
+- <strong>Contentssoptimering</strong>: Anpassat for muntlig presentation</p>
+<h3 id="distribution-and-use">Distribution and use</h3>
+<pre><code class="language-bash"># Ladda ner artifacts from GitHub Actions
+cd presentations
+pip install -r requirements.txt
+python generate_pptx.py
+</code></pre>
+<p>Resultatet is professionella PowerPoint-presentationer optimerade for:
+- Konferenser and workshops
+- UtbildningsPurpose
+- Marknadsforingsaktiviteter
+- Tekniska seminarier</p>
+<h2 id="omslag-and-whitepapers-design-and-integration">Omslag and whitepapers: design and integration</h2>
+<h3 id="omslag-designsystem">Omslag-designsystem</h3>
+<p>Bokens omslag are created through A HTML/CSS-baserat designsystem:</p>
+<pre><code>exports/book-cover/
+├── source/
+│   ├── book-cover.html              # Huvuddesign
+│   ├── book-cover-light.html        # Ljus variant
+│   └── book-cover-minimal.html      # Minimal design
+├── pdf/                             # Print-färdiga PDF-filer
+├── png/                             # Högupplösta PNG-exportar
+└── scripts/
+    └── generate_book_cover_exports.py
+</code></pre>
+<h3 id="kvadrat-varumarkesintegrering">Kvadrat-varumärkesintegrering</h3>
+<p>Designsystemet implement Kvadrat-identiteten:</p>
+<pre><code class="language-css">:root {
+    --kvadrat-blue: hsl(221, 67%, 32%);
+    --kvadrat-blue-light: hsl(217, 91%, 60%);
+    --kvadrat-blue-dark: hsl(214, 32%, 18%);
+    --success: hsl(160, 84%, 30%);
+}
+
+.title {
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -2px;
+}
+</code></pre>
+<h3 id="whitepaper-generering">Whitepaper-generering</h3>
+<p><code>generate_whitepapers.py</code> creates standalone HTML-documents:</p>
+<ul>
+<li><strong>26 individuella whitepapers</strong>: A per chapter</li>
+<li><strong>Professionell HTML-design</strong>: Responsiv and print-vänlig</li>
+<li><strong>Svenska anpassningar</strong>: Optimerat for Swedish organizations</li>
+<li><strong>SEO-optimering</strong>: Korrekt meta-data and structure</li>
+<li><strong>Distribution-vänligt</strong>: can shared via e-post, webb or print</li>
+</ul>
+<h2 id="technical-architecture-and-systemintegration">technical architecture and systemintegration</h2>
+<h3 id="holistic-view-at-architecture">holistic view at architecture</h3>
+<p>Entire systemet exemplifierar Architecture as Code through:</p>
+<ol>
+<li><strong>codified Contentsshantering</strong>: Markdown as källa for sanning</li>
+<li><strong>Automatiserad pipeline</strong>: Ingen manuell intervention krävs</li>
+<li><strong>version control</strong>: Fullständig history of all changes</li>
+<li><strong>reproducibility</strong>: Identiska builds from same source code</li>
+<li><strong>scalability</strong>: Enkelt to lägga to new chapter and format</li>
+</ol>
+<h3 id="kvalitetssakring-and-testing">Kvalitetssäkring and testing</h3>
+<ul>
+<li><strong>Automatiserad validation</strong>: Continuous kontroll of Contents and format</li>
+<li><strong>Build-verification</strong>: ensures all format is generated korrekt</li>
+<li><strong>Performance-monitoring</strong>: Spårning of build-tider and resursanvändning</li>
+<li><strong>Error-handling</strong>: Robusta felwithdelanden and återställningsmekanismer</li>
+</ul>
+<h3 id="framtida-development">Framtida development</h3>
+<p>Systemet is designat for continuous improvement:
+- <strong>Modulär architecture</strong>: Enkelt to uppdatera individual components
+- <strong>API-possibilities</strong>: Potential for integration with externa systems
+- <strong>Skalning</strong>: Stöd for fler format and distributionskanaler
+- <strong>Internationalisering</strong>: Forberedelse for flerspråkig publicering</p>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+The technical uppbyggnaden for "Architecture as Code" demonstrerar praktisk application of bokens own principles. by kodifiera entire publikationsprocessen is achieved:</p>
+<ul>
+<li><strong>Architecture as Code-automation</strong>: Komplett CI/CD for bokproduktion</li>
+<li><strong>Kvalitet</strong>: Konsistent format and professionell presentation</li>
+<li><strong>Effektivitet</strong>: Snabb iteration and feedback-loopar</li>
+<li><strong>scalability</strong>: Enkelt to utöka with nytt Contents and format</li>
+<li><strong>Transparens</strong>: Open source code and documentserad process</li>
+</ul>
+<p>This technical systems functions as a konkret illustration of how Architecture as Code-principerna can be applied also utanfor traditional IT-systems, which creates value through automation, reproducibility and continuous improvement.</p>
+<p>Sources:
+- GitHub Actions Documentation. "Workflow syntax for GitHub Actions." GitHub, 2024.
+- Pandoc User's Guide. "Creating documents with Pandoc." John MacFarlane, 2024.
+- Mermaid Documentation. "Diagram syntax and examples." Mermaid Community, 2024.
+- LaTeX Project. "The Eisvogel template documentation." LaTeX Community, 2024.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

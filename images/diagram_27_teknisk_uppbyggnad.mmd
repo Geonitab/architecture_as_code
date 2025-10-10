@@ -1,0 +1,96 @@
+graph TB
+    %% Källkodshantering
+    subgraph "Källkod och innehåll"
+        MD[📝 Markdown-filer<br/>27 kapitel i docs/]
+        MMD[🎨 Mermaid-diagram<br/>images/*.mmd]
+        PY[🐍 Python-skript<br/>generate_book.py]
+        SH[⚙️ Build-skript<br/>build_book.sh]
+        YAML[📋 Konfiguration<br/>pandoc.yaml]
+    end
+
+    %% GitHub Repository
+    subgraph "GitHub Repository"
+        REPO[📦 Git Repository<br/>Version Control]
+        GHA[🔄 GitHub Actions<br/>CI/CD Workflows]
+    end
+
+    %% Build Pipeline
+    subgraph "Build Pipeline"
+        subgraph "Miljöförberedelse"
+            PYTHON[🐍 Python 3.12]
+            PANDOC[📖 Pandoc 3.1.9]
+            LATEX[📄 XeLaTeX + TeXLive]
+            CHROME[🌐 Chrome + Mermaid CLI]
+        end
+        
+        subgraph "Build-process"
+            GEN[🔧 Innehållsgenerering<br/>generate_book.py]
+            CONV[🎨 Diagramkonvertering<br/>*.mmd → *.png]
+            BUILD[📚 PDF-bygge<br/>Pandoc + Eisvogel]
+            VAL[✅ Validering<br/>Kvalitetskontroll]
+        end
+    end
+
+    %% Output Formats
+    subgraph "Utdataformat"
+        PDF[📕 PDF-bok<br/>arkitektur_som_kod.pdf]
+        EPUB[📱 EPUB-format<br/>E-läsare]
+        DOCX[📄 Word-dokument<br/>Redigering]
+        HTML[🌐 HTML-sidor<br/>Whitepapers]
+        PPTX[📊 PowerPoint<br/>Presentationer]
+    end
+
+    %% Distribution
+    subgraph "Distribution"
+        REL[🚀 GitHub Releases<br/>Automatisk publicering]
+        ART[📦 Build Artifacts<br/>30 dagars lagring]
+        DOWN[⬇️ Nedladdning<br/>PDF och material]
+    end
+
+    %% Data Flow
+    MD --> REPO
+    MMD --> REPO
+    PY --> REPO
+    SH --> REPO
+    YAML --> REPO
+    
+    REPO --> GHA
+    GHA --> PYTHON
+    GHA --> PANDOC
+    GHA --> LATEX
+    GHA --> CHROME
+    
+    PYTHON --> GEN
+    CHROME --> CONV
+    PANDOC --> BUILD
+    LATEX --> BUILD
+    
+    GEN --> VAL
+    CONV --> BUILD
+    BUILD --> VAL
+    
+    VAL --> PDF
+    VAL --> EPUB
+    VAL --> DOCX
+    VAL --> HTML
+    VAL --> PPTX
+    
+    PDF --> REL
+    EPUB --> ART
+    DOCX --> ART
+    HTML --> ART
+    PPTX --> ART
+    
+    REL --> DOWN
+    ART --> DOWN
+
+    %% Styling
+    classDef source fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef build fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef output fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef distribution fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+
+    class MD,MMD,PY,SH,YAML source
+    class PYTHON,PANDOC,LATEX,CHROME,GEN,CONV,BUILD,VAL build
+    class PDF,EPUB,DOCX,HTML,PPTX output
+    class REL,ART,DOWN distribution

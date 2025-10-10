@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/15_cost_optimization/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Cost Optimization and Resource Management - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../14_practical_implementation/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../16_migration/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/15_cost_optimization.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#cost-optimization-and-resource-management" class="nav-link">Cost Optimization and Resource Management</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overall-description" class="nav-link">Overall Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#finops-and-cost-governance" class="nav-link">FinOps and cost governance</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#automatisk-resursskalning-and-rightsizing" class="nav-link">Automatisk resursskalning and rightsizing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cost-monitoring-and-alerting" class="nav-link">Cost monitoring and alerting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#multi-cloud-cost-optimization" class="nav-link">Multi-cloud cost optimization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#praktiska-example" class="nav-link">Praktiska example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sources-and-referenser" class="nav-link">Sources and referenser</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="cost-optimization-and-resource-management">Cost Optimization and Resource Management</h1>
+<p><img alt="Cost optimization workflow" src="images/diagram_16_kapitel15.png" /></p>
+<p><em>Effective kostnadsoptimering within Architecture as Code (Architecture as Code) requires systematic monitoring, automatiserad resurshantering and continuous optimering. Diagram shows the iterativa forloppet from initial kostnadsanalys to implementation of besparingsstrategier.</em></p>
+<h2 id="overall-description">Overall Description</h2>
+<p>Cost optimization forms a critical komponent in Architecture as Code-implementeringar, particularly when organisationer migrerar to cloud-based solutions. Without korrekt kostnadshantering can molnkostnader snabbt eskalera and undergräva the ekonomiska Benefitsna with Architecture as Code.</p>
+<p>Moderna cloud providers offers pay-as-you-use modor as can vara both fordelaktiga and riskfyllda. Architecture as Code enables exakt kontroll over resource allocation and automatiserad kostnadsoptimering through policy-driven resource management and intelligent skalning.</p>
+<p>Swedish organizations face unique Challenges when the applies molnkostnader, including valutafluktuationer, regulatory requirements as affects datalagring, and need of to balance kostnadseffektivitet with performance and security. Architecture as Code-baserade solutions offers tools to addressera These Challenges systematiskt.</p>
+<p>successful kostnadsoptimering requires kombination of technical tools, organizational processes and kulturforändringar as främjar cost-awareness bland utvecklings- and driftteam. This includes Architecture as Code-implementation of FinOps-praktiker as integrerar finansiell accountability in entire utvecklingslivscykeln.</p>
+<h2 id="finops-and-cost-governance">FinOps and cost governance</h2>
+<p>FinOps represents a growing disciplin as combines finansiell handling with molnoperationer to maximera affärsvärdet of molninvesteringar. Within Architecture as Code-context means This to integrera kostnadshänsyn direkt in infrastructure definitionsna and deployment-processerna.</p>
+<p>Governance-ramverk for kostnadshantering must encompass automated policies for resurskonfiguration, budget-alerts and regelbunden kostnadsanalys. Terraform Enterprise, AWS Cost Management and Azure Cost Management offers APIs as can integreras in Architecture as Code-workflows for real-time kostnadskontroll.</p>
+<p>Swedish organizations must also handle compliance-requirements as affects kostnadsoptimering, såwhich GDPR-relaterade datalagringsrequirements as can begränsa opportunity to use vissa geografiska regioner with lägre priser. Architecture as Code-baserade compliance-policies can automatisera These begränsningar while the optimerar kostnader within toåtna parametrar.</p>
+<p>implementation of cost allocation tags and chargeback-modor through Architecture as Code enables transparent kostnadsdistribution between different team, projekt and affärsenheter. This creates incitament for Developers to do kostnadsmässigt optimala design decisions.</p>
+<h2 id="automatisk-resursskalning-and-rightsizing">Automatisk resursskalning and rightsizing</h2>
+<p>Automatisk resursskalning forms kärnan in kostnadseffektiv Architecture as Code. by definiera skalningsregler baserade at faktiska usage patterns can organisationer undvika over-provisionering while the ensures adekvat performance.</p>
+<p>Kubernetes Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) can konfigureras through Architecture as Code to automatically adjust resource allocation based on CPU-, minnes- and custom metrics. This is particularly valuable for Swedish organizations with clear working hours patterns as enables predictable scaling.</p>
+<p>Cloud-providers offers rightsizing-Recommendations baserade at historisk use, but These must integreras in Architecture as Code-workflows to bli actionable. Terraform providers for AWS, Azure and GCP can automatically implement rightsizing-Recommendations through Architecture as Code-reviewprocesser.</p>
+<p>Machine learning-baserade prediktiva skalningsmodor can inkorporeras in Architecture as Code-definitioner to anticipera resursbelastning and pre-emptivt skala infrastructure. This is particularly effektivt for companies with säsongsmässiga variationer or forutsägbara affärszykler.</p>
+<h2 id="cost-monitoring-and-alerting">Cost monitoring and alerting</h2>
+<p>Comprehensive cost monitoring requires integration of monitoring tool direkt in Architecture as Code-konfigurationerna. CloudWatch, Azure Monitor and Google Cloud Monitoring can konfigureras as code to spåra kostnader at granulär level and trigga alerts when threshold-värden överskrids.</p>
+<p>Real-time kostnadsspårning enables proaktiv kostnadshantering instead for reactive measures efter to budget redan överskrids. Architecture as Code-baserade monitoring-solutions can automatically implement cost controls as resource termination or approval workflows for kostnadskritiska operationer.</p>
+<p>Svenska organisations rapporteringsrequirements can automatiseras through Architecture as Code-definierade dashboards and rapporter as is generated regelbundet and is distributed to relevanta stakeholders. Integration with foretags ERP-systems enables seamless financial planning and budgetering.</p>
+<p>Anomaly detection for molnkostnader can implementeras through machine learning-algoritmer as tränas at historiska usage patterns. These can integreras in Architecture as Code-workflows to automatically flagga and potentiellt rewithiera onormala kostnadsspurtar.</p>
+<h2 id="multi-cloud-cost-optimization">Multi-cloud cost optimization</h2>
+<p>Multi-cloud strategier kompliserar kostnadsoptimering but offers also possibilities for cost arbitrage between different providers. Architecture as Code tool that Terraform enables consistent cost management across different cloud providers through unified configuration and monitoring.</p>
+<p>Cross-cloud cost comparison requires normalisering of pricing models and service offerings between providers. Open source tool that Cloud Custodian and Kubecost can integreras in Architecture as Code-pipelines to automatisera This analys and rekommendera optimal resource placement.</p>
+<p>Data transfer costs between cloud providers forms often a osynlig kostnadskälla as can optimeras through strategisk architecture-design. Architecture as Code-baserad network topologi can minimera inter-cloud traffic while The maximerar intra-cloud efficiency.</p>
+<p>Hybrid cloud-strategier can optimera kostnader by behålla vissa workloads on-premises with cloud-nativer arbetsbelastningar flyttas to molnet. Architecture as Code enables coordinated management of båda environmentsna with unified cost tracking and optimization.</p>
+<h2 id="praktiska-example">Praktiska example</h2>
+<h3 id="cost-aware-terraform-configuration">Cost-Aware Terraform Configuration</h3>
+<pre><code class="language-hcl"># cost_optimized_infrastructure.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 5.0&quot;
+    }
+  }
+}
+
+# Cost allocation tags for all infrastruktur
+locals {
+  cost_tags = {
+    CostCenter     = var.cost_center
+    Project        = var.project_name
+    Environment    = var.environment
+    Owner          = var.team_email
+    BudgetAlert    = var.budget_threshold
+    ReviewDate     = formatdate(&quot;YYYY-MM-DD&quot;, timeadd(timestamp(), &quot;30*24h&quot;))
+  }
+}
+
+# Budget with automatiska alerts
+resource &quot;aws_budgets_budget&quot; &quot;project_budget&quot; {
+  name         = &quot;${var.project_name}-budget&quot;
+  budget_type  = &quot;COST&quot;
+  limit_amount = var.monthly_budget_limit
+  limit_unit   = &quot;USD&quot;
+  time_unit    = &quot;MONTHLY&quot;
+
+  cost_filters = {
+    Tag = {
+      Project = [var.project_name]
+    }
+  }
+
+  notification {
+    comparison_operator        = &quot;GREATER_THAN&quot;
+    threshold                 = 80
+    threshold_type            = &quot;PERCENTAGE&quot;
+    notification_type         = &quot;ACTUAL&quot;
+    subscriber_email_addresses = [var.team_email, var.finance_email]
+  }
+
+  notification {
+    comparison_operator        = &quot;GREATER_THAN&quot;  
+    threshold                 = 100
+    threshold_type            = &quot;PERCENTAGE&quot;
+    notification_type          = &quot;FORECASTED&quot;
+    subscriber_email_addresses = [var.team_email, var.finance_email]
+  }
+}
+
+# Cost-optimerad EC2 with Spot instances
+resource &quot;aws_launch_template&quot; &quot;cost_optimized&quot; {
+  name_prefix   = &quot;${var.project_name}-cost-opt-&quot;
+  image_id      = data.aws_ami.amazon_linux.id
+
+  # Mischade instance types for cost optimization
+  instance_requirements {
+    memory_mib {
+      min = 2048
+      max = 8192
+    }
+    vcpu_count {
+      min = 1
+      max = 4
+    }
+    instance_generations = [&quot;current&quot;]
+  }
+
+  # Spot instance preference for kostnadsoptimering
+  instance_market_options {
+    market_type = &quot;spot&quot;
+    spot_options {
+      max_price = var.max_spot_price
+    }
+  }
+
+  tag_specifications {
+    resource_type = &quot;instance&quot;
+    tags = local.cost_tags
+  }
+}
+
+# Auto Scaling with kostnadshänsyn
+resource &quot;aws_autoscaling_group&quot; &quot;cost_aware&quot; {
+  name                = &quot;${var.project_name}-cost-aware-asg&quot;
+  vpc_zone_identifier = var.private_subnet_ids
+  min_size            = var.min_instances
+  max_size            = var.max_instances
+  desired_capacity    = var.desired_instances
+
+  # Blandad instanstyp-strategi for kostnadsoptimering
+  mixed_instances_policy {
+    instances_distribution {
+      on_demand_base_capacity                  = 1
+      on_demand_percentage_above_base_capacity = 20
+      spot_allocation_strategy                 = &quot;diversified&quot;
+    }
+
+    launch_template {
+      launch_template_specification {
+        launch_template_id = aws_launch_template.cost_optimized.id
+        version            = &quot;$Latest&quot;
+      }
+    }
+  }
+
+  tag {
+    key                 = &quot;Name&quot;
+    value               = &quot;${var.project_name}-cost-optimized&quot;
+    propagate_at_launch = true
+  }
+
+  dynamic &quot;tag&quot; {
+    for_each = local.cost_tags
+    content {
+      key                 = tag.key
+      value               = tag.value
+      propagate_at_launch = true
+    }
+  }
+}
+</code></pre>
+<h3 id="kubernetes-cost-optimization">Kubernetes Cost Optimization</h3>
+<pre><code class="language-yaml"># kubernetes/cost-optimization-quota.yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: cost-control-quota
+  namespace: production
+spec:
+  hard:
+    requests.cpu: &quot;20&quot;
+    requests.memory: 40Gi
+    limits.cpu: &quot;40&quot;
+    limits.memory: 80Gi
+    persistentvolumeclaims: &quot;10&quot;
+    count/pods: &quot;50&quot;
+    count/services: &quot;10&quot;
+</code></pre>
+<pre><code class="language-yaml"># kubernetes/cost-optimization-limits.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cost-control-limits
+  namespace: production
+spec:
+  limits:
+  - default:
+      cpu: &quot;500m&quot;
+      memory: &quot;1Gi&quot;
+    defaultRequest:
+      cpu: &quot;100m&quot;
+      memory: &quot;256Mi&quot;
+    max:
+      cpu: &quot;2&quot;
+      memory: &quot;4Gi&quot;
+    min:
+      cpu: &quot;50m&quot;
+      memory: &quot;128Mi&quot;
+    type: Container
+</code></pre>
+<pre><code class="language-yaml"># kubernetes/vertical-pod-autoscaler.yaml
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: cost-optimized-vpa
+  namespace: production
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-application
+  updatePolicy:
+    updateMode: &quot;Auto&quot;
+  resourcePolicy:
+    containerPolicies:
+    - containerName: app
+      maxAllowed:
+        cpu: &quot;1&quot;
+        memory: &quot;2Gi&quot;
+      minAllowed:
+        cpu: &quot;100m&quot;
+        memory: &quot;256Mi&quot;
+</code></pre>
+<pre><code class="language-yaml"># kubernetes/horizontal-pod-autoscaler.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cost-aware-hpa
+  namespace: production
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-application
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Percent
+        value: 100
+        periodSeconds: 60
+</code></pre>
+<h3 id="cost-monitoring-automation">Cost Monitoring Automation</h3>
+<pre><code class="language-python"># cost_monitoring/cost_optimizer.py
+import boto3
+import json
+from datetime import datetime, timedelta
+from typing import Dict, List
+import pandas as pd
+
+class AWSCostOptimizer:
+    &quot;&quot;&quot;
+    Automatiserad kostnadsoptimering for AWS-resurser
+    &quot;&quot;&quot;
+
+    def __init__(self, region='eu-north-1'):
+        self.cost_explorer = boto3.client('ce', region_name=region)
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.cloudwatch = boto3.client('cloudwatch', region_name=region)
+
+    def analyze_cost_trends(self, days_back=30) -&gt; Dict:
+        &quot;&quot;&quot;Analysera kostnadstrender for last perioden&quot;&quot;&quot;
+
+        end_date = datetime.now().date()
+        start_date = end_date - timedelta(days=days_back)
+
+        response = self.cost_explorer.get_cost_and_usage(
+            TimePeriod={
+                'Start': start_date.strftime('%Y-%m-%d'),
+                'End': end_date.strftime('%Y-%m-%d')
+            },
+            Granularity='DAILY',
+            Metrics=['BlendedCost'],
+            GroupBy=[
+                {'Type': 'DIMENSION', 'Key': 'SERVICE'},
+                {'Type': 'TAG', 'Key': 'Project'}
+            ]
+        )
+
+        return self._process_cost_data(response)
+
+    def identify_rightsizing_opportunities(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Identifiera EC2-instanser as can rightsizas&quot;&quot;&quot;
+
+        rightsizing_response = self.cost_explorer.get_rightsizing_recommendation(
+            Service='AmazonEC2',
+            Configuration={
+                'BenefitsConsidered': True,
+                'RecommendationTarget': 'SAME_INSTANCE_FAMILY'
+            }
+        )
+
+        opportunities = []
+
+        for recommendation in rightsizing_response.get('RightsizingRecommendations', []):
+            if recommendation['RightsizingType'] == 'Modify':
+                opportunities.append({
+                    'instance_id': recommendation['CurrentInstance']['ResourceId'],
+                    'current_type': recommendation['CurrentInstance']['InstanceName'],
+                    'recommended_type': recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['InstanceName'],
+                    'estimated_monthly_savings': float(recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['EstimatedMonthlySavings']),
+                    'utilization': recommendation['CurrentInstance']['UtilizationMetrics']
+                })
+
+        return opportunities
+
+    def get_unused_resources(self) -&gt; Dict:
+        &quot;&quot;&quot;Identifiera oanvända resurser as can termineras&quot;&quot;&quot;
+
+        unused_resources = {
+            'unattached_volumes': self._find_unattached_ebs_volumes(),
+            'unused_elastic_ips': self._find_unused_elastic_ips(),
+            'idle_load_balancers': self._find_idle_load_balancers(),
+            'stopped_instances': self._find_stopped_instances()
+        }
+
+        return unused_resources
+
+    def generate_cost_optimization_plan(self, project_tag: str) -&gt; Dict:
+        &quot;&quot;&quot;Generera comprehensive kostnadsoptimeringsplan&quot;&quot;&quot;
+
+        plan = {
+            'project': project_tag,
+            'analysis_date': datetime.now().isoformat(),
+            'current_monthly_cost': self._get_current_monthly_cost(project_tag),
+            'recommendations': {
+                'rightsizing': self.identify_rightsizing_opportunities(),
+                'unused_resources': self.get_unused_resources(),
+                'reserved_instances': self._analyze_reserved_instance_opportunities(),
+                'spot_instances': self._analyze_spot_instance_opportunities()
+            },
+            'potential_monthly_savings': 0
+        }
+
+        # Beräkna total potentiell besparing
+        total_savings = 0
+        for rec_type, recommendations in plan['recommendations'].items():
+            if isinstance(recommendations, list):
+                total_savings += sum(rec.get('estimated_monthly_savings', 0) for rec in recommendations)
+            elif isinstance(recommendations, dict):
+                total_savings += recommendations.get('estimated_monthly_savings', 0)
+
+        plan['potential_monthly_savings'] = total_savings
+        plan['savings_percentage'] = (total_savings / plan['current_monthly_cost']) * 100 if plan['current_monthly_cost'] &gt; 0 else 0
+
+        return plan
+
+    def _find_unattached_ebs_volumes(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Hitta icke-anslutna EBS-volymer&quot;&quot;&quot;
+
+        response = self.ec2.describe_volumes(
+            Filters=[{'Name': 'status', 'Values': ['available']}]
+        )
+
+        unattached_volumes = []
+        for volume in response['Volumes']:
+            # Beräkna månadskostnad based on volymstorlek and typ
+            monthly_cost = self._calculate_ebs_monthly_cost(volume)
+
+            unattached_volumes.append({
+                'volume_id': volume['VolumeId'],
+                'size_gb': volume['Size'],
+                'volume_type': volume['VolumeType'],
+                'estimated_monthly_savings': monthly_cost,
+                'creation_date': volume['CreateTime'].isoformat()
+            })
+
+        return unattached_volumes
+
+    def _calculate_ebs_monthly_cost(self, volume: Dict) -&gt; float:
+        &quot;&quot;&quot;Beräkna månadskostnad for EBS-volym&quot;&quot;&quot;
+
+        # Prisexempel for eu-north-1 (Stockholm)
+        pricing = {
+            'gp3': 0.096,  # USD per GB/månad
+            'gp2': 0.114,
+            'io1': 0.142,
+            'io2': 0.142,
+            'st1': 0.050,
+            'sc1': 0.028
+        }
+
+        cost_per_gb = pricing.get(volume['VolumeType'], 0.114)  # Default to gp2
+        return volume['Size'] * cost_per_gb
+
+def generate_terraform_cost_optimizations(cost_plan: Dict) -&gt; str:
+    &quot;&quot;&quot;Generera Terraform-code to implement kostnadsoptimeringar&quot;&quot;&quot;
+
+    terraform_code = &quot;&quot;&quot;
+# automatically genererade kostnadsoptimeringar
+# Genererat: {date}
+# Projekt: {project}
+# Potentiell månadsbesparing: ${savings:.2f}
+
+&quot;&quot;&quot;.format(
+        date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        project=cost_plan['project'],
+        savings=cost_plan['potential_monthly_savings']
+    )
+
+    # Generera spot instance configurations
+    if cost_plan['recommendations']['spot_instances']:
+        terraform_code += &quot;&quot;&quot;
+# Spot Instance Configuration for kostnadsoptimering
+resource &quot;aws_launch_template&quot; &quot;spot_optimized&quot; {
+  name_prefix   = &quot;{project}-spot-&quot;
+
+  instance_market_options {{
+    market_type = &quot;spot&quot;
+    spot_options {{
+      max_price = &quot;{max_spot_price}&quot;
+    }}
+  }}
+
+  # Cost allocation tags
+  tag_specifications {{
+    resource_type = &quot;instance&quot;
+    tags = {{
+      Project = &quot;{project}&quot;
+      CostOptimization = &quot;spot-instance&quot;
+      EstimatedSavings = &quot;${estimated_savings}&quot;
+    }}
+  }}
+}}
+&quot;&quot;&quot;.format(
+            project=cost_plan['project'],
+            max_spot_price=cost_plan['recommendations']['spot_instances'].get('recommended_max_price', '0.10'),
+            estimated_savings=cost_plan['recommendations']['spot_instances'].get('estimated_monthly_savings', 0)
+        )
+
+    return terraform_code
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Cost optimization within Architecture as Code requires systematic approach as combines technical tools, automated processes and organizational awareness. successful implementation results in significant cost savings while performance and security is maintained.</p>
+<p>Viktiga framgångsfaktorer includes proaktiv monitoring, automatiserad rightsizing, intelligent use of spot instances and reserved capacity, samt continuous optimering baserad at faktiska usage patterns. FinOps-praktiker ensures kostnadshänsyn integreras naturligt in development process.</p>
+<p>Swedish organizations as implement These strategier can achieve 20-40% kostnadsreduktion in sina molnoperationer while the ensures regulatory compliance and performance-requirements.</p>
+<h2 id="sources-and-referenser">Sources and referenser</h2>
+<ul>
+<li>AWS. "AWS Cost Optimization Guide." Amazon Web Services Documentation, 2023.</li>
+<li>FinOps Foundation. "FinOps Framework and Architecture as Code best practices." The Linux Foundation, 2023.</li>
+<li>Kubecost. "Kubernetes Cost Optimization Guide." Kubecost Documentation, 2023.</li>
+<li>Cloud Security Alliance. "Cloud Cost Optimization Security Guidelines." CSA Research, 2023.</li>
+<li>Gartner. "Cloud Cost Optimization Strategies for European Organizations." Gartner Research, 2023.</li>
+<li>Microsoft. "Azure Cost Management Architecture as Code best practices." Microsoft Azure Documentation, 2023.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/30_appendix_code_examples/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Appendix A – Code Examples and Technical Implementations - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../29_about_the_authors/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../31_technical_architecture/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/30_appendix_code_examples.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#appendix-a-kodexempel-and-technical-architecture-as-code-implementations" class="nav-link">Appendix A: Kodexempel and technical architecture as code-implementations</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#navigering-in-appendix" class="nav-link">Navigering in appendix</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cicd-pipelines-and-architecture-as-code-automation-cicd-pipelines" class="nav-link">CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#infrastructure-as-code-cloudformation" class="nav-link">Infrastructure as Code - CloudFormation {</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#automation-scripts-automation-scripts" class="nav-link">Automation Scripts {#automation-scripts}</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#configuration-files-configuration" class="nav-link">Configuration Files {#configuration}</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#references-and-navigering" class="nav-link">References and navigering</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="appendix-a-kodexempel-and-technical-architecture-as-code-implementations">Appendix A: Kodexempel and technical architecture as code-implementations</h1>
+<p>This appendix contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to do the enkelt to hitta specific implementations.</p>
+<p><img alt="Kodexempel appendix" src="images/diagram_26_appendix.png" /></p>
+<p><em>This appendix functions as a praktisk referenssamling for all technical implementations as demonstreras genAbout the Book. each kodexamples is kategoriserat and märkt with References tobaka to relevanta chapter.</em></p>
+<h2 id="navigering-in-appendix">Navigering in appendix</h2>
+<p>Kodexemplen is organiserade in following kategorier:</p>
+<ol>
+<li><strong><a href="#cicd-pipelines">CI/CD Pipelines and Architecture as Code-automation</a></strong></li>
+<li><strong><a href="#terraform-iac">Infrastructure as Code (Architecture as Code) - Terraform</a></strong></li>
+<li><strong><a href="#cloudformation-Architecture as Code">Infrastructure as Code (Architecture as Code) - CloudFormation</a></strong></li>
+<li><strong><a href="#automation-scripts">Automationsskript and tools</a></strong></li>
+<li><strong><a href="#security-compliance">Security and compliance</a></strong></li>
+<li><strong><a href="#testing-validation">testing and validation</a></strong></li>
+<li><strong><a href="#configuration">Konfigurationsfiler</a></strong></li>
+<li><strong><a href="#shell-scripts">Shell-skript and tools</a></strong></li>
+</ol>
+<p>each kodexamples has a unique identifierare in formatet <code>[chapter]_CODE_[NUMMER]</code> for enkel referens from huvudtexten.</p>
+<hr />
+<h2 id="cicd-pipelines-and-architecture-as-code-automation-cicd-pipelines">CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}</h2>
+<p>This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for Swedish organizations.</p>
+<h3 id="05_code_1-gdpr-kompatibel-cicd-pipeline-for-swedish-organizations">05_CODE_1: GDPR-kompatibel CI/CD Pipeline for Swedish organizations</h3>
+<p><em>Refereras from chapter 5: <a href="../05_automation_devops_cicd/">automation and CI/CD-pipelines</a></em></p>
+<pre><code class="language-yaml"># .github/workflows/svenska-architecture as code-pipeline.yml
+# GDPR-compliant CI/CD pipeline for Swedish organizations
+
+name: Svenska architecture as code Pipeline with GDPR Compliance
+
+on:
+  push:
+    branches: [main, staging, development]
+    paths: ['infrastructure/**', 'modules/**']
+  pull_request:
+    branches: [main, staging]
+    paths: ['infrastructure/**', 'modules/**']
+
+env:
+  TF_VERSION: '1.6.0'
+  ORGANIZATION_NAME: ${{ whose.ORGANIZATION_NAME }}
+  ENVIRONMENT: ${{ github.ref_name == 'main' &amp;&amp; 'production' || github.ref_name }}
+  COST_CENTER: ${{ whose.COST_CENTER }}
+  GDPR_COMPLIANCE_ENABLED: 'true'
+  DATA_RESIDENCY: 'Sweden'
+  AUDIT_LOGGING: 'enabled'
+
+jobs:
+  # GDPR and security controls
+  gdpr-compliance-check:
+    name: GDPR Compliance Validation
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, 'personal-data') || contains(github.event.head_commit.message, 'gdpr')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: GDPR Data Discovery Scan
+        run: |
+          echo &quot;🔍 Scanning for personal data patterns...&quot;
+
+          # Sök efter vanliga personal data patterns in architecture as code-code
+          PERSONAL_DATA_PATTERNS=(
+            &quot;personnummer&quot;
+            &quot;social.*security&quot;
+            &quot;credit.*card&quot;
+            &quot;bank.*account&quot;
+            &quot;email.*address&quot;
+            &quot;phone.*number&quot;
+            &quot;date.*of.*birth&quot;
+            &quot;passport.*number&quot;
+          )
+
+          VIOLATIONS_FOUND=false
+
+          for pattern in &quot;${PERSONAL_DATA_PATTERNS[@]}&quot;; do
+            if grep -ri &quot;$pattern&quot; infrastructure/ modules/ 2&gt;/dev/null; then
+              echo &quot;⚠️ GDPR VARNING: Potentiell personal data hittad: $pattern&quot;
+              VIOLATIONS_FOUND=true
+            fi
+          done
+
+          if [ &quot;$VIOLATIONS_FOUND&quot; = true ]; then
+            echo &quot;❌ GDPR compliance check misslyckades&quot;
+            echo &quot;Personal data may not hardkodas in architecture as code-code&quot;
+            exit 1
+          fi
+
+          echo &quot;✅ GDPR compliance check genomförd&quot;
+</code></pre>
+<h3 id="05_code_2-jenkins-pipeline-for-swedish-organizations-with-gdpr-compliance">05_CODE_2: Jenkins Pipeline for Swedish organizations with GDPR compliance</h3>
+<p><em>Refereras from chapter 5: <a href="../05_automation_devops_cicd/">automation and CI/CD-pipelines</a></em></p>
+<pre><code class="language-yaml"># jenkins/svenska-architecture as code-pipeline.groovy
+// Jenkins pipeline for Swedish organizations with GDPR compliance
+
+pipeline {
+    agent any
+
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['development', 'staging', 'production'],
+            description: 'Target environment for deployment'
+        )
+        booleanParam(
+            name: 'FORCE_DEPLOYMENT',
+            defaultValue: false,
+            description: 'Forcera deployment also at varningar (endast development)'
+        )
+        string(
+            name: 'COST_CENTER',
+            defaultValue: 'CC-IT-001',
+            description: 'Kostnadscenter for svenska bokföring'
+        )
+    }
+
+    environment {
+        ORGANIZATION_NAME = 'svenska-org'
+        AWS_DEFAULT_REGION = 'eu-north-1'  // Stockholm region
+        GDPR_COMPLIANCE = 'enabled'
+        DATA_RESIDENCY = 'Sweden'
+        TERRAFORM_VERSION = '1.6.0'
+        COST_CURRENCY = 'SEK'
+        AUDIT_RETENTION_YEARS = '7'  // Svenska lagrequirements
+    }
+
+    stages {
+        stage('🇸🇪 Svenska Compliance Check') {
+            parallel {
+                stage('GDPR Data Scan') {
+                    steps {
+                        script {
+                            echo &quot;🔍 Scanning for personal data patterns in architecture as code code...&quot;
+
+                            def personalDataPatterns = [
+                                'personnummer', 'social.*security', 'credit.*card',
+                                'bank.*account', 'email.*address', 'phone.*number'
+                            ]
+
+                            def violations = []
+
+                            personalDataPatterns.each { pattern -&gt;
+                                def result = sh(
+                                    script: &quot;grep -ri '${pattern}' infrastructure/ modules/ || true&quot;,
+                                    returnStdout: true
+                                ).trim()
+
+                                if (result) {
+                                    violations.add(&quot;Personal data pattern found: ${pattern}&quot;)
+                                }
+                            }
+
+                            if (violations) {
+                                error(&quot;GDPR VIOLATION: Personal data found in architecture as code code:\n${violations.join('\n')}&quot;)
+                            }
+
+                            echo &quot;✅ GDPR data scan genomförd - inga violations&quot;
+                        }
+                    }
+                }
+
+                stage('Data Residency Validation') {
+                    steps {
+                        script {
+                            echo &quot;🏔️ Validates svenska data residency requirements...&quot;
+
+                            def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1']
+
+                            def regionCheck = sh(
+                                script: &quot;&quot;&quot;
+                                    grep -r 'region\\s*=' infrastructure/ modules/ | \
+                                    grep -v -E '(eu-north-1|eu-central-1|eu-west-1)' || true
+                                &quot;&quot;&quot;,
+                                returnStdout: true
+                            ).trim()
+
+                            if (regionCheck) {
+                                error(&quot;DATA RESIDENCY VIOLATION: Non-EU regions found:\n${regionCheck}&quot;)
+                            }
+
+                            echo &quot;✅ Data residency requirements uppfyllda&quot;
+                        }
+                    }
+                }
+
+                stage('Cost Center Validation') {
+                    steps {
+                        script {
+                            echo &quot;💰 Validates kostnadscenter for svenska bokföring...&quot;
+
+                            if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
+                                error(&quot;Ogiltigt kostnadscenter format. Use: CC-XX-nnn&quot;)
+                            }
+
+                            // Validate to kostnadscenter existerar in företagets systems
+                            def validCostCenters = [
+                                'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
+                            ]
+
+                            if (!validCostCenters.contains(params.COST_CENTER)) {
+                                error(&quot;Okänt kostnadscenter: ${params.COST_CENTER}&quot;)
+                            }
+
+                            echo &quot;✅ Kostnadscenter validerat: ${params.COST_CENTER}&quot;
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('📝 Code Quality Analysis') {
+            parallel {
+                stage('Terraform Validation') {
+                    steps {
+                        script {
+                            echo &quot;🔧 Terraform syntax and formatering...&quot;
+
+                            // Format check
+                            sh &quot;terraform fmt -check -recursive infrastructure/&quot;
+
+                            // Syntax validation
+                            dir('infrastructure/environments/${params.ENVIRONMENT}') {
+                                sh &quot;&quot;&quot;
+                                    terraform init -backend=false
+                                    terraform validate
+                                &quot;&quot;&quot;
+                            }
+
+                            echo &quot;✅ Terraform validation slutförd&quot;
+                        }
+                    }
+                }
+
+                stage('Security Scanning') {
+                    steps {
+                        script {
+                            echo &quot;🔒 Säkerhetsskanning with Checkov...&quot;
+
+                            sh &quot;&quot;&quot;
+                                pip install checkov
+                                checkov -d infrastructure/ \
+                                    --framework terraform \
+                                    --output json \
+                                    --output-file checkov-results.json \
+                                    --soft-fail
+                            &quot;&quot;&quot;
+
+                            // Analysera critical säkerhetsproblem
+                            def results = readJSON file: 'checkov-results.json'
+                            def criticalIssues = results.results.failed_checks.findAll { 
+                                it.severity == 'CRITICAL' 
+                            }
+
+                            if (criticalIssues.size() &gt; 0) {
+                                echo &quot;⚠️ KRITISKA säkerhetsproblem funna:&quot;
+                                criticalIssues.each { issue -&gt;
+                                    echo &quot;- ${issue.check_name}: ${issue.file_path}&quot;
+                                }
+
+                                if (params.ENVIRONMENT == 'production') {
+                                    error(&quot;Kritiska säkerhetsproblem must åtgärdas före production deployment&quot;)
+                                }
+                            }
+
+                            echo &quot;✅ Säkerhetsskanning slutförd&quot;
+                        }
+                    }
+                }
+
+                stage('Svenska Policy Validation') {
+                    steps {
+                        script {
+                            echo &quot;📋 Validates svenska organisationspolicies...&quot;
+
+                            // Skapa svenska OPA policies
+                            writeFile file: 'policies/svenska-tagging.rego', text: &quot;&quot;&quot;
+                                package svenska.tagging
+
+                                required_tags := [
+                                    &quot;Environment&quot;, &quot;CostCenter&quot;, &quot;Organization&quot;, 
+                                    &quot;Country&quot;, &quot;GDPRCompliant&quot;, &quot;DataResidency&quot;
+                                ]
+
+                                deny[msg] {
+                                    input.resource[resource_type][name]
+                                    resource_type != &quot;data&quot;
+                                    not input.resource[resource_type][name].tags
+                                    msg := sprintf(&quot;Resource %s.%s saknar tags&quot;, [resource_type, name])
+                                }
+
+                                deny[msg] {
+                                    input.resource[resource_type][name].tags
+                                    required_tag := required_tags[_]
+                                    not input.resource[resource_type][name].tags[required_tag]
+                                    msg := sprintf(&quot;Resource %s.%s saknar obligatorisk tag: %s&quot;, [resource_type, name, required_tag])
+                                }
+                            &quot;&quot;&quot;
+
+                            sh &quot;&quot;&quot;
+                                curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
+                                sudo mv conftest /usr/local/bin
+
+                                find infrastructure/ -name &quot;*.tf&quot; -exec conftest verify --policy policies/ {} \\;
+                            &quot;&quot;&quot;
+
+                            echo &quot;✅ Svenska policy validation slutförd&quot;
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('💰 Svenska Kostnadskontroll') {
+            steps {
+                script {
+                    echo &quot;📊 Beräknar infrastrukturkostnader in svenska kronor...&quot;
+
+                    // Setup Infracost for svenska valuta
+                    sh &quot;&quot;&quot;
+                        curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
+                        export PATH=\$PATH:\$HOME/.local/bin
+
+                        cd infrastructure/environments/${params.ENVIRONMENT}
+                        terraform init -backend=false
+
+                        infracost breakdown \\
+                            --path . \\
+                            --currency SEK \\
+                            --format json \\
+                            --out-file ../../../cost-estimate.json
+
+                        infracost output \\
+                            --path ../../../cost-estimate.json \\
+                            --format table \\
+                            --out-file ../../../cost-summary.txt
+                    &quot;&quot;&quot;
+
+                    // Validate kostnader mot svenska budgetgränser
+                    def costData = readJSON file: 'cost-estimate.json'
+                    def monthlyCostSEK = costData.totalMonthlyCost as Double
+
+                    def budgetLimits = [
+                        'development': 5000,
+                        'staging': 15000,
+                        'production': 50000
+                    ]
+
+                    def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
+
+                    echo &quot;Beräknad månadskostnad: ${monthlyCostSEK} SEK&quot;
+                    echo &quot;Budget for ${params.ENVIRONMENT}: ${maxBudget} SEK&quot;
+
+                    if (monthlyCostSEK &gt; maxBudget) {
+                        def overBudget = monthlyCostSEK - maxBudget
+                        echo &quot;⚠️ BUDGET ÖVERSKRIDEN with ${overBudget} SEK!&quot;
+
+                        if (params.ENVIRONMENT == 'production' &amp;&amp; !params.FORCE_DEPLOYMENT) {
+                            error(&quot;Budget överskridning not tillåten for production without CFO godkännande&quot;)
+                        }
+                    }
+
+                    // Generera svenskt kostnadsrapport
+                    def costReport = &quot;&quot;&quot;
+                    # Kostnadsrapport - ${env.ORGANIZATION_NAME}
+
+                    **Miljö:** ${params.ENVIRONMENT}
+                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} (svensk time)
+                    **Kostnadscenter:** ${params.COST_CENTER}
+
+                    ## Månadskostnad
+                    - **Total:** ${monthlyCostSEK} SEK
+                    - **Budget:** ${maxBudget} SEK
+                    - **Status:** ${monthlyCostSEK &lt;= maxBudget ? '✅ Within budget' : '❌ over budget'}
+
+                    ## Kostnadsnedbrytning
+                    ${readFile('cost-summary.txt')}
+
+                    ## Rekommendationer
+                    - Use Reserved Instances for production workloads
+                    - Aktivera auto-scaling for development environments
+                    - Implementera scheduled shutdown for icke-critical systems
+                    &quot;&quot;&quot;
+
+                    writeFile file: 'cost-report-svenska.md', text: costReport
+                    archiveArtifacts artifacts: 'cost-report-svenska.md', fingerprint: true
+
+                    echo &quot;✅ Kostnadskontroll slutförd&quot;
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="05_code_3-terratest-for-svenska-vpc-implementation">05_CODE_3: Terratest for svenska VPC implementation</h3>
+<p><em>Refereras from chapter 5: <a href="../05_automation_devops_cicd/">automation and CI/CD-pipelines</a></em></p>
+<pre><code class="language-go">// test/svenska_vpc_test.go
+// Terratest suite for svenska VPC implementation with GDPR compliance
+
+package test
+
+import (
+    &quot;encoding/json&quot;
+    &quot;fmt&quot;
+    &quot;strings&quot;
+    &quot;testing&quot;
+    &quot;time&quot;
+
+    &quot;github.com/aws/aws-sdk-go/aws&quot;
+    &quot;github.com/aws/aws-sdk-go/aws/session&quot;
+    &quot;github.com/aws/aws-sdk-go/service/ec2&quot;
+    &quot;github.com/aws/aws-sdk-go/service/cloudtrail&quot;
+    &quot;github.com/gruntwork-io/terratest/modules/terraform&quot;
+    &quot;github.com/gruntwork-io/terratest/modules/test-structure&quot;
+    &quot;github.com/stretchr/testify/assert&quot;
+    &quot;github.com/stretchr/testify/require&quot;
+)
+
+// SvenskaVPCTestSuite definierar test suite for svenska VPC implementation
+type SvenskaVPCTestSuite struct {
+    TerraformOptions *terraform.Options
+    AWSSession       *session.Session
+    OrganizationName string
+    Environment      string
+    CostCenter       string
+}
+
+// TestSvenskaVPCGDPRCompliance testar GDPR compliance for VPC implementation
+func TestSvenskaVPCGDPRCompliance(t *testing.T) {
+    t.Parallel()
+
+    suite := setupSvenskaVPCTest(t, &quot;development&quot;)
+    defer cleanupSvenskaVPCTest(t, suite)
+
+    // Deploy infrastructure
+    terraform.InitAndApply(t, suite.TerraformOptions)
+
+    // Test GDPR compliance requirements
+    t.Run(&quot;TestVPCFlowLogsEnabled&quot;, func(t *testing.T) {
+        testVPCFlowLogsEnabled(t, suite)
+    })
+
+    t.Run(&quot;TestEncryptionAtRest&quot;, func(t *testing.T) {
+        testEncryptionAtRest(t, suite)
+    })
+
+    t.Run(&quot;TestDataResidencySweden&quot;, func(t *testing.T) {
+        testDataResidencySweden(t, suite)
+    })
+
+    t.Run(&quot;TestAuditLogging&quot;, func(t *testing.T) {
+        testAuditLogging(t, suite)
+    })
+
+    t.Run(&quot;TestSvenskaTagging&quot;, func(t *testing.T) {
+        testSvenskaTagging(t, suite)
+    })
+}
+
+// setupSvenskaVPCTest förbereder test environment for svenska VPC testing
+func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
+    // Unik test identifier
+    uniqueID := strings.ToLower(fmt.Sprintf(&quot;test-%d&quot;, time.Now().Unix()))
+    organizationName := fmt.Sprintf(&quot;svenska-org-%s&quot;, uniqueID)
+
+    // Terraform configuration
+    terraformOptions := &amp;terraform.Options{
+        TerraformDir: &quot;../infrastructure/modules/vpc&quot;,
+        Whose: map[string]interface{}{
+            &quot;organization_name&quot;:     organizationName,
+            &quot;environment&quot;:          environment,
+            &quot;cost_center&quot;:          &quot;CC-TEST-001&quot;,
+            &quot;gdpr_compliance&quot;:      true,
+            &quot;data_residency&quot;:       &quot;Sweden&quot;,
+            &quot;enable_flow_logs&quot;:     true,
+            &quot;enable_encryption&quot;:    true,
+            &quot;audit_logging&quot;:        true,
+        },
+        BackendConfig: map[string]interface{}{
+            &quot;bucket&quot;: &quot;svenska-org-terraform-test-state&quot;,
+            &quot;key&quot;:    fmt.Sprintf(&quot;test/%s/terraform.tfstate&quot;, uniqueID),
+            &quot;region&quot;: &quot;eu-north-1&quot;,
+        },
+        RetryableTerraformErrors: map[string]string{
+            &quot;.*&quot;: &quot;Transient error - retrying...&quot;,
+        },
+        MaxRetries:         3,
+        TimeBetweenRetries: 5 * time.Second,
+    }
+
+    // AWS session for Stockholm region
+    awsSession := session.Must(session.NewSession(&amp;aws.Config{
+        Region: aws.String(&quot;eu-north-1&quot;),
+    }))
+
+    return &amp;SvenskaVPCTestSuite{
+        TerraformOptions: terraformOptions,
+        AWSSession:       awsSession,
+        OrganizationName: organizationName,
+        Environment:      environment,
+        CostCenter:       &quot;CC-TEST-001&quot;,
+    }
+}
+
+// testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade for GDPR compliance
+func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Hämta VPC ID from Terraform output
+    vpcID := terraform.Output(t, suite.TerraformOptions, &quot;vpc_id&quot;)
+    require.NotEmpty(t, vpcID, &quot;VPC ID should not be empty&quot;)
+
+    // AWS EC2 client
+    ec2Client := ec2.New(suite.AWSSession)
+
+    // Kontrollera Flow Logs
+    flowLogsInput := &amp;ec2.DescribeFlowLogsInput{
+        Filters: []*ec2.Filter{
+            {
+                Name:   aws.String(&quot;resource-id&quot;),
+                Values: []*string{aws.String(vpcID)},
+            },
+        },
+    }
+
+    flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
+    require.NoError(t, err, &quot;Failed to describe VPC flow logs&quot;)
+
+    // Validate to Flow Logs is aktiverade
+    assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, &quot;VPC Flow Logs should be enabled for GDPR compliance&quot;)
+
+    for _, flowLog := range flowLogsOutput.FlowLogs {
+        assert.Equal(t, &quot;Active&quot;, *flowLog.FlowLogStatus, &quot;Flow log should be active&quot;)
+        assert.Equal(t, &quot;ALL&quot;, *flowLog.TrafficType, &quot;Flow log should capture all traffic for compliance&quot;)
+    }
+
+    t.Logf(&quot;✅ VPC Flow Logs aktiverade for GDPR compliance: %s&quot;, vpcID)
+}
+
+// testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
+func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Hämta KMS key from Terraform output
+    kmsKeyArn := terraform.Output(t, suite.TerraformOptions, &quot;kms_key_arn&quot;)
+    require.NotEmpty(t, kmsKeyArn, &quot;KMS key ARN should not be empty&quot;)
+
+    // Validate to KMS key is from Sverige region
+    assert.Contains(t, kmsKeyArn, &quot;eu-north-1&quot;, &quot;KMS key should be in Stockholm region for data residency&quot;)
+
+    t.Logf(&quot;✅ Encryption at rest validerat for GDPR compliance&quot;)
+}
+
+// testDataResidencySweden validates to all infrastruktur is within svenska gränser
+func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Validate to VPC is in Stockholm region
+    vpcID := terraform.Output(t, suite.TerraformOptions, &quot;vpc_id&quot;)
+
+    ec2Client := ec2.New(suite.AWSSession)
+
+    vpcOutput, err := ec2Client.DescribeVpcs(&amp;ec2.DescribeVpcsInput{
+        VpcIds: []*string{aws.String(vpcID)},
+    })
+    require.NoError(t, err, &quot;Failed to describe VPC&quot;)
+    require.Len(t, vpcOutput.Vpcs, 1, &quot;Should find exactly one VPC&quot;)
+
+    // Kontrollera region from session config
+    region := *suite.AWSSession.Config.Region
+    allowedRegions := []string{&quot;eu-north-1&quot;, &quot;eu-central-1&quot;, &quot;eu-west-1&quot;}
+
+    regionAllowed := false
+    for _, allowedRegion := range allowedRegions {
+        if region == allowedRegion {
+            regionAllowed = true
+            break
+        }
+    }
+
+    assert.True(t, regionAllowed, &quot;VPC must be in EU region for Swedish data residency. Found: %s&quot;, region)
+
+    t.Logf(&quot;✅ Data residency validerat - all infrastruktur in EU region: %s&quot;, region)
+}
+
+// testAuditLogging validates to audit logging is konfigurerat according to svenska lagrequirements
+func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
+    // Kontrollera CloudTrail configuration
+    cloudtrailClient := cloudtrail.New(suite.AWSSession)
+
+    trails, err := cloudtrailClient.DescribeTrails(&amp;cloudtrail.DescribeTrailsInput{})
+    require.NoError(t, err, &quot;Failed to list CloudTrail trails&quot;)
+
+    foundOrgTrail := false
+    for _, trail := range trails.TrailList {
+        if strings.Contains(*trail.Name, suite.OrganizationName) {
+            foundOrgTrail = true
+            t.Logf(&quot;✅ CloudTrail audit logging konfigurerat: %s&quot;, *trail.Name)
+        }
+    }
+
+    assert.True(t, foundOrgTrail, &quot;Organization CloudTrail should exist for audit logging&quot;)
+}
+
+// testSvenskaTagging validates to all resurser has korrekta svenska tags
+func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
+    requiredTags := []string{
+        &quot;Environment&quot;, &quot;Organization&quot;, &quot;CostCenter&quot;, 
+        &quot;Country&quot;, &quot;GDPRCompliant&quot;, &quot;DataResidency&quot;,
+    }
+
+    expectedTagValues := map[string]string{
+        &quot;Environment&quot;:     suite.Environment,
+        &quot;Organization&quot;:    suite.OrganizationName,
+        &quot;CostCenter&quot;:      suite.CostCenter,
+        &quot;Country&quot;:         &quot;Sweden&quot;,
+        &quot;GDPRCompliant&quot;:   &quot;true&quot;,
+        &quot;DataResidency&quot;:   &quot;Sweden&quot;,
+    }
+
+    // Test VPC tags
+    vpcID := terraform.Output(t, suite.TerraformOptions, &quot;vpc_id&quot;)
+    ec2Client := ec2.New(suite.AWSSession)
+
+    vpcTags, err := ec2Client.DescribeTags(&amp;ec2.DescribeTagsInput{
+        Filters: []*ec2.Filter{
+            {
+                Name:   aws.String(&quot;resource-id&quot;),
+                Values: []*string{aws.String(vpcID)},
+            },
+        },
+    })
+    require.NoError(t, err, &quot;Failed to describe VPC tags&quot;)
+
+    // Konvertera tags to map for enklare validation
+    vpcTagMap := make(map[string]string)
+    for _, tag := range vpcTags.Tags {
+        vpcTagMap[*tag.Key] = *tag.Value
+    }
+
+    // Validate obligatoriska tags
+    for _, requiredTag := range requiredTags {
+        assert.Contains(t, vpcTagMap, requiredTag, &quot;VPC should have required tag: %s&quot;, requiredTag)
+
+        if expectedValue, exists := expectedTagValues[requiredTag]; exists {
+            assert.Equal(t, expectedValue, vpcTagMap[requiredTag], 
+                &quot;Tag %s should have correct value&quot;, requiredTag)
+        }
+    }
+
+    t.Logf(&quot;✅ Svenska tagging validerat for all resurser&quot;)
+}
+
+// cleanupSvenskaVPCTest rensar test environment
+func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
+    terraform.Destroy(t, suite.TerraformOptions)
+    t.Logf(&quot;✅ Test environment rensat for %s&quot;, suite.OrganizationName)
+}
+</code></pre>
+<hr />
+<h2 id="infrastructure-as-code-cloudformation">Infrastructure as Code - CloudFormation {</h2>
+<p>Architecture as Code-principerna within This area#cloudformation-Architecture as Code}</p>
+<p>This sektion contains CloudFormation templates for AWS-infrastructure adapted for Swedish organizations.</p>
+<h3 id="07_code_1-vpc-setup-for-swedish-organizations-with-gdpr-compliance">07_CODE_1: VPC Setup for Swedish organizations with GDPR compliance</h3>
+<p><em>Refereras from chapter 7: <a href="07_molnarkitektur.md">Cloud Architecture as Code</a></em></p>
+<pre><code class="language-yaml"># cloudformation/svenska-org-vpc.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'VPC setup for Swedish organizations with GDPR compliance'
+
+Parameters:
+  EnvironmentType:
+    Type: String
+    Default: development
+    AllowedValues: [development, staging, production]
+    Description: 'Miljötyp for deployment'
+
+  DataClassification:
+    Type: String
+    Default: internal
+    AllowedValues: [public, internal, confidential, restricted]
+    Description: 'Dataklassificering according to svenska security standards'
+
+  ComplianceRequirements:
+    Type: CommaDelimitedList
+    Default: &quot;gdpr,iso27001&quot;
+    Description: 'Lista over compliance-requirements as must uppfyllas'
+
+Conditions:
+  IsProduction: !Equals [!Ref EnvironmentType, production]
+  RequiresGDPR: !Contains [!Ref ComplianceRequirements, gdpr]
+  RequiresISO27001: !Contains [!Ref ComplianceRequirements, iso27001]
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !If [IsProduction, '10.0.0.0/16', '10.1.0.0/16']
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${AWS::StackName}-vpc'
+        - Key: Environment
+          Value: !Ref EnvironmentType
+        - Key: DataClassification
+          Value: !Ref DataClassification
+        - Key: GDPRCompliant
+          Value: !If [RequiresGDPR, 'true', 'false']
+        - Key: ISO27001Compliant
+          Value: !If [RequiresISO27001, 'true', 'false']
+        - Key: Country
+          Value: 'Sweden'
+        - Key: Region
+          Value: 'eu-north-1'
+</code></pre>
+<hr />
+<h2 id="automation-scripts-automation-scripts">Automation Scripts {#automation-scripts}</h2>
+<p>This sektion contains Python-skript and andra automationsverktyg for Architecture as Code-handling.</p>
+<h3 id="22_code_1-comprehensive-testramverk-for-architecture-as-code">22_CODE_1: comprehensive testramverk for Architecture as Code</h3>
+<p>Architecture as Code-principerna within This area
+<em>Refereras from chapter 22: <a href="22_best_practices.md">Architecture as Code Best Practices and Lessons Learned</a></em></p>
+<pre><code class="language-python"># testing/comprehensive_iac_testing.py
+import pytest
+import boto3
+import json
+import yaml
+from typing import Dict, List, Any
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+
+@dataclass
+class TestCase:
+    name: str
+    description: str
+    test_type: str
+    severity: str
+    expected_result: Any
+    actual_result: Any = None
+    status: str = &quot;pending&quot;
+    execution_time: float = 0.0
+
+class ComprehensiveIaCTesting:
+    &quot;&quot;&quot;
+    Comprehensive testing framework for Infrastructure as Code
+    Based at svenska architecture as code best practices and international standards
+    &quot;&quot;&quot;
+
+    def __init__(self, region='eu-north-1'):
+        self.region = region
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.s3 = boto3.client('s3', region_name=region)
+        self.iam = boto3.client('iam', region_name=region)
+        self.test_results = []
+
+    def test_infrastructure_security(self, stack_name: str) -&gt; List[TestCase]:
+        &quot;&quot;&quot;Test comprehensive security configuration&quot;&quot;&quot;
+
+        security_tests = [
+            self._test_encryption_at_rest(),
+            self._test_encryption_in_transit(),
+            self._test_vpc_flow_logs(),
+            self._test_security_groups(),
+            self._test_iam_policies(),
+            self._test_s3_bucket_policies(),
+            self._test_rds_security()
+        ]
+
+        return security_tests
+
+    def _test_encryption_at_rest(self) -&gt; TestCase:
+        &quot;&quot;&quot;Verify all storage resources use encryption at rest&quot;&quot;&quot;
+        test = TestCase(
+            name=&quot;Encryption at Rest Validation&quot;,
+            description=&quot;Verify all storage uses encryption&quot;,
+            test_type=&quot;security&quot;,
+            severity=&quot;high&quot;,
+            expected_result=&quot;All storage encrypted&quot;
+        )
+
+        try:
+            # Test S3 bucket encryption
+            buckets = self.s3.list_buckets()['Buckets']
+            unencrypted_buckets = []
+
+            for bucket in buckets:
+                bucket_name = bucket['Name']
+                try:
+                    encryption = self.s3.get_bucket_encryption(Bucket=bucket_name)
+                    if not encryption.get('ServerSideEncryptionConfiguration'):
+                        unencrypted_buckets.append(bucket_name)
+                except self.s3.exceptions.ClientError:
+                    unencrypted_buckets.append(bucket_name)
+
+            if unencrypted_buckets:
+                test.status = &quot;failed&quot;
+                test.actual_result = f&quot;Unencrypted buckets: {unencrypted_buckets}&quot;
+            else:
+                test.status = &quot;passed&quot;
+                test.actual_result = &quot;All S3 buckets encrypted&quot;
+
+        except Exception as e:
+            test.status = &quot;error&quot;
+            test.actual_result = f&quot;Test error: {str(e)}&quot;
+
+        return test
+</code></pre>
+<hr />
+<h2 id="configuration-files-configuration">Configuration Files {#configuration}</h2>
+<p>This sektion contains konfigurationsfiler for different tools and services.</p>
+<h3 id="22_code_2-governance-policy-configuration-for-swedish-organizations">22_CODE_2: Governance policy configuration for Swedish organizations</h3>
+<p><em>Refereras from chapter 22: <a href="22_best_practices.md">Best Practices and Lessons Learned</a></em></p>
+<pre><code class="language-yaml"># governance/svenska-governance-policy.yaml
+governance_framework:
+  organization: &quot;Svenska Organization AB&quot;
+  compliance_standards: [&quot;GDPR&quot;, &quot;ISO27001&quot;, &quot;SOC2&quot;]
+  data_residency: &quot;Sweden&quot;
+  regulatory_authority: &quot;Integritetsskyddsmyndigheten (IMY)&quot;
+
+policy_enforcement:
+  automated_checks:
+    pre_deployment:
+      - &quot;cost_estimation&quot;
+      - &quot;security_scanning&quot;
+      - &quot;compliance_validation&quot;
+      - &quot;resource_tagging&quot;
+
+    post_deployment:
+      - &quot;security_monitoring&quot;
+      - &quot;cost_monitoring&quot;
+      - &quot;performance_monitoring&quot;
+      - &quot;compliance_auditing&quot;
+
+  manual_approvals:
+    production_deployments:
+      approvers: [&quot;Tech Lead&quot;, &quot;Security Team&quot;, &quot;Compliance Officer&quot;]
+      criteria:
+        - &quot;Security review completed&quot;
+        - &quot;Cost impact assessed&quot;
+        - &quot;GDPR compliance verified&quot;
+        - &quot;Business stakeholder approval&quot;
+
+    emergency_changes:
+      approvers: [&quot;Incident Commander&quot;, &quot;Security Lead&quot;]
+      max_approval_time: &quot;30 minutes&quot;
+      post_incident_review: &quot;required&quot;
+
+cost_governance:
+  budget_controls:
+    development: 
+      monthly_limit: &quot;10000 SEK&quot;
+      alert_threshold: &quot;80%&quot;
+      auto_shutdown: &quot;enabled&quot;
+
+    staging:
+      monthly_limit: &quot;25000 SEK&quot;
+      alert_threshold: &quot;85%&quot;
+      auto_shutdown: &quot;disabled&quot;
+
+    production:
+      monthly_limit: &quot;100000 SEK&quot;
+      alert_threshold: &quot;90%&quot;
+      auto_shutdown: &quot;disabled&quot;
+      escalation: &quot;immediate&quot;
+
+security_policies:
+  data_protection:
+    encryption:
+      at_rest: &quot;mandatory&quot;
+      in_transit: &quot;mandatory&quot;
+      key_management: &quot;AWS KMS with customer managed keys&quot;
+
+    access_control:
+      principle: &quot;least_privilege&quot;
+      mfa_required: true
+      session_timeout: &quot;8 hours&quot;
+      privileged_access_review: &quot;quarterly&quot;
+
+    monitoring:
+      security_events: &quot;all_logged&quot;
+      anomaly_detection: &quot;enabled&quot;
+      incident_response: &quot;24/7&quot;
+      retention_period: &quot;7 years&quot;
+
+compliance_monitoring:
+  gdpr_requirements:
+    data_mapping: &quot;automated&quot;
+    consent_management: &quot;integrated&quot;
+    right_to_erasure: &quot;implemented&quot;
+    data_breach_notification: &quot;automated&quot;
+
+  audit_requirements:
+    frequency: &quot;quarterly&quot;
+    scope: &quot;all_infrastructure&quot;
+    external_auditor: &quot;required_annually&quot;
+    evidence_collection: &quot;automated&quot;
+</code></pre>
+<hr />
+<h2 id="references-and-navigering">References and navigering</h2>
+<p>each kodexamples in This appendix can refereras from huvudtexten with dess unique identifierare. to hitta specific implementations:</p>
+<ol>
+<li><strong>Use sökfunktion</strong> - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")</li>
+<li><strong>Följ kategorierna</strong> - Navigera to relevant sektion based on användningwhichråde</li>
+<li><strong>Use korshänvisningar</strong> - Följ länkar tobaka to huvudkapitlen for context</li>
+</ol>
+<h3 id="konventioner-for-kodexempel">Konventioner for kodexempel</h3>
+<ul>
+<li><strong>Kommentarer</strong>: all kodexamples contains svenska kommentarer for klarhet</li>
+<li><strong>Security</strong>: Security aspects is markerade with 🔒</li>
+<li><strong>GDPR-compliance</strong>: GDPR-relaterade configurations is markerade with 🇪🇺</li>
+<li><strong>Svenska anpassningar</strong>: Lokala anpassningar is markerade with 🇸🇪</li>
+</ul>
+<h3 id="uppdateringar-and-underhall">Uppdateringar and underhåll</h3>
+<p>This appendix uppdateras löpande when new kodexamples läggs to in bokens huvudkapitel. For last versionen of kodexamples, se bokens GitHub-repository.</p>
+<hr />
+<p><em>For mer information about specific implementations, se respektive huvudkapitel where kodexemplen introduceras and forklaras in sitt context.</em></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

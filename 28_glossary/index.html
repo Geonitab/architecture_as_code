@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/28_glossary/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Glossary - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../27_conclusion/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../29_about_the_authors/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/28_glossary.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#glossary" class="nav-link">Glossary</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#fundamental-concepts-and-tools" class="nav-link">Fundamental Concepts and tools</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#driftsattning-and-operational-concepts" class="nav-link">Driftsättning and operational concepts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#kostnadshantering-and-optimering" class="nav-link">Kostnadshantering and optimering</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#testing-and-kvalitetssakring" class="nav-link">testing and kvalitetssäkring</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#strategiska-and-organizational-concepts" class="nav-link">Strategiska and organizational concepts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="glossary">Glossary</h1>
+<p><img alt="Architecture as Code Core Concepts Class Diagram" src="../images/diagram_23_ordlista_class.png" /></p>
+<p>This Glossary contains definitioner of centrala termer as is used genAbout the Book and as forms the foundation for Architecture as Code methodology.</p>
+<h2 id="fundamental-concepts-and-tools">Fundamental Concepts and tools</h2>
+<p><strong>API (Application Programming Interface):</strong> Gränssnitt as enables kommunikation between different mjukvarukomponenter or systems through standardized protokoll and dataformat.</p>
+<p><strong>Architecture as Code-automation:</strong> Process where manual uppgifter utfors automatically of datorsystem without human intervention, that ökar effektivitet and reduces felrisk.</p>
+<p><strong>CI/CD (Continuous Integration/Continuous Deployment):</strong> Utvecklingsmetodik as integrerar kodändringar kontinuerligt and automates driftsättningsprocessen for snabbare and säkrare leveranser.</p>
+<p><strong>Cloud Computing:</strong> Leverans of IT-services as servers, lagring and applications over internet with åtkomst at begäran and betalning per use.</p>
+<p><strong>Containers:</strong> Lätt virtualiseringsteknik as paketerar applications with all dependencies for portabel körning across different environments and plattformar.</p>
+<p><strong>Declarative programming:</strong> Programmeringsparadigm that describes desired end result instead for specific step to achieve the, which enables higher abstraktion.</p>
+<p><strong>DevOps:</strong> cultural and technical approach as combines development (Dev) and drift (Ops) for snabbare leveranser and forbättrat samarbete between team.</p>
+<p><strong>Git:</strong> Distribuerat versionhanteringssystem to spåra changes in source code under development with support for branching and merging.</p>
+<p><strong>Idempotens:</strong> Egenskap at operationer as produces same resultat oavsett how many gånger the is run, kritiskt for secure Architecture as Code-automation.</p>
+<p><strong>Architecture as Code (Architecture as Code) (Architecture as Code) (Architecture as Code):</strong> Praktiken to handle infrastructure through Architecture as Code instead for manual processes, which enables version control and automation.</p>
+<p><strong>JSON (JavaScript Object Notation):</strong> Textbaserat dataformat for Structured informationsutbyte between systems with human-readable syntax.</p>
+<p><strong>Kubernetes:</strong> Open source code containerorkestreringsplattform for automatiserad deployment, skalning and handling of containeriserade applications.</p>
+<p><strong>Microservices:</strong> Arkitekturell approach where applications byggs as stemplate, oberoende services as kommunicerar via väldefinierade APIs.</p>
+<p><strong>Övervakning:</strong> Continuous systemövervakning to upptäcka problem, optimera performance and ensure togänglighet.</p>
+<p><strong>Orchestration:</strong> Automatiserad koordination and handling of complex workflows and systems to achieve desired state.</p>
+<p><strong>Policy as Code:</strong> Tovägagångssätt where security- and efterlevnadsregler are defined as code for automatiserad utvärdering and verkställande.</p>
+<p><strong>Terraform:</strong> Infrastructure as Code (Architecture as Code)-tools as uses declarative syntax to definiera and handle cloud infrastructure resources.</p>
+<p><strong>YAML (YAML Ain't Markup Language):</strong> Människoläsbart dataserialiseringsformat as often is used for konfigurationsfiler and Architecture as Code-definitioner.</p>
+<p><strong>Zero Trust:</strong> Säkerhetsmodell as aldrig litar at and always verifierar user and units before åtkomst to resurser beviljas.</p>
+<h2 id="driftsattning-and-operational-concepts">Driftsättning and operational concepts</h2>
+<p><strong>Blå-green deployment:</strong> Driftsättningsstrategi where två identical production environments (blå and green) is used to enable snabb recovery and minimal stoeståndstid.</p>
+<p><strong>Canary Release:</strong> gradual utrullningsstrategi where new versions forst deployeras to a liten subset of user for riskminimering and validation.</p>
+<p><strong>Community of Practice:</strong> Grupp of personer as parts passion for something the does and lär itself to do the bättre through regelbunden interaktion.</p>
+<p><strong>Conway's Law:</strong> Observation to organisationer designar systems as speglar their kommunikationsStructureer.</p>
+<p><strong>Tvärfunktionellt team:</strong> Team as includes withlemmar with different skills and roller as arbetar tosammans mot gemensamma goals.</p>
+<p><strong>GitOps:</strong> Operational framework as uses Git as enda källa for sanning for declarative infrastructure and applications.</p>
+<p><strong>Helm:</strong> Pakethanterare for Kubernetes as uses charts to definiera, installera and upgradera complex Kubernetes-applications.</p>
+<p><strong>Service Discovery:</strong> Mekanism as enables automatic detektion and kommunikation between services in distributed systems.</p>
+<p><strong>Service Mesh:</strong> Dedikerad infrastructurelager as handles service-to-service-kommunikation, security and observability in mikroservicesarkitekturer.</p>
+<p><strong>Edge Computing:</strong> Distributerad databehandlingsparadigm as placerar beräkningsresurser whenmare datakällan for minskad latens and improved performance.</p>
+<p><strong>Post-Quantum Cryptography:</strong> Kryptografiska algoritmer as is designade to vara secure mot angrepp from both klassiska and kvantumdatorer.</p>
+<p><strong>Carbon-Aware Computing:</strong> Approach to optimera infrastructureanvändning based on kolintensitet and fornybara energiSources for minskad miljöpåverkan.</p>
+<p><strong>Oforänderlig infrastructure:</strong> InfraStructureparadigm where components aldrig modifieras efter deployment without is replaced helt when changes is needed.</p>
+<p><strong>State Drift:</strong> Situation where The faktiska infrastructuretoståndet avviker from The definierade desired toståndet in Architecture as Code-definitioner.</p>
+<h2 id="kostnadshantering-and-optimering">Kostnadshantering and optimering</h2>
+<p><strong>FinOps:</strong> Disciplin as combines finansiell handling with molnoperationer to maximera affärsvärdet of molninvesteringar through kostnadsoptimering and resource management.</p>
+<p><strong>Rightsizing:</strong> Process to optimera molnresurser by matcha instance-storlekar and typer with faktiska performancerequirements and usage patterns.</p>
+<p><strong>Spot Instances:</strong> Molninstanser as uses överskottcreatecitet to kraftigt reducerade priser but can termineras with kort varsel when kapacitet is needed for on-demand use.</p>
+<p><strong>Cost Allocation Tags:</strong> Metadataetiketter as is used to kategorisera and spåra molnresurskostnader per projekt, team, environment or andra organizational dimensioner.</p>
+<p><strong>Cost Governance:</strong> Ramverk of policies, processes and tools to styra and kontrollera molnkostnader within a organisation.</p>
+<p><strong>Resource Quotas:</strong> Begränsningar as sätts at how very of a viss resurs (CPU, minne, lagring) which can konsumeras within a given scope or namespace.</p>
+<h2 id="testing-and-kvalitetssakring">testing and kvalitetssäkring</h2>
+<p><strong>Terratest:</strong> Open source Go-bibliotek for automatiserad testing of Infrastructure as Code, particularly designat for Terraform-moduler and cloud infrastructure.</p>
+<p><strong>Policy as Code:</strong> Approach where organizational policies, säkerhetsregler and compliance-requirements are defined as code and can automatically enforced and testade.</p>
+<p><strong>OPA (Open Policy Agent):</strong> Cloud-native policy engine as enables unified policy enforcement across different services and technologies through declarative policy language.</p>
+<p><strong>Chaos Engineering:</strong> Disciplin to experimentellt introducera fel in systems to bygga toit to system's ability to motstå turbulenta conditions in produktion.</p>
+<p><strong>Integration Testing:</strong> testing as verifierar to different components or services functions korrekt tosammans when the is integrerade in A systems.</p>
+<p><strong>Compliance Testing:</strong> Automatiserad validation of to systems and configurations follows relevanta regulatory requirements, security standards and organizational policies.</p>
+<h2 id="strategiska-and-organizational-concepts">Strategiska and organizational concepts</h2>
+<p><strong>Cloud-First Strategy:</strong> Strategisk approach where organisationer primarily choose cloud-based solutions for new IT-initiativ before on-premises alternatives övervägs.</p>
+<p><strong>Digital Transformation:</strong> fundamental change in affärsoperationer and värdeleverans through integration of digital technology in all aspects of verksamheten.</p>
+<p><strong>Multi-Cloud:</strong> Strategi to use molntjänster from multiple different providers to undvika vendor lock-in and optimera for specific capabilities or kostnader.</p>
+<p><strong>Data Sovereignty:</strong> Konceptet to digital data is underkastat lagarna and juridiktionen in the land where The is stored or bearbetas.</p>
+<p><strong>Conway's Law:</strong> Observation to organisationer designar systems as speglar their kommunikationsStructureer, which affects how team should organiseras for optimal systemdesign.</p>
+<p><strong>Cross-functional Team:</strong> Team as includes withlemmar with different skills and roller as arbetar tosammans mot gemensamma goals, essentiellt for DevOps-success.</p>
+<p><strong>DevOps Culture:</strong> cultural transformation from traditional utvecklings- and driftsilos to kollaborativa way of working as emphasizes shared ownership and continuous improvement.</p>
+<p><strong>Psychological Safety:</strong> Teammiljö where withlemmar känner itself secure to ta risker, erkänna misstag and experiment without rädsla for bestraffning or forödmjukelse.</p>
+<p><strong>Servant Leadership:</strong> Ledarskapsfilosofi as focuses on to tjäna teamet and främja their success rather than traditional kommando-and-kontroll-ledning.</p>
+<p><strong>Best Practice Evolution:</strong> Continuous development of rekommenderade methods based on praktisk erfarenhet, community feedback and technical framsteg.</p>
+<p><strong>Anti-Pattern:</strong> Vanligt forekommande but kontraproduktivt lösningsforslag as initialt verkar användbart but as leder to negative consequences.</p>
+<p><strong>Policy-as-Code:</strong> Metod where organizational policies, säkerhetsregler and compliance-requirements are defined as code for automatiserad enforcement and testing.</p>
+<p><strong>Infrastructure Governance:</strong> Ramverk of policies, processes and tools to styra and kontrollera infrastructure development and -drift within organisationer.</p>
+<p><strong>Technical Debt:</strong> Ackumulerad kostnad of shortcuts and suboptimala technical decisions as requires framtida refactoring or omarbetning to bibehålla systemkvalitet.</p>
+<p><strong>Blameless Culture:</strong> Organisationskultur as focuses on systemforbättringar efter incidenter rather than individual skuld, which främjar öppenhet and lärande.</p>
+<p><strong>Change Management:</strong> Systematisk approach to handle organizational changes, including stakeholder engagement, kommunikation and motståndhantering.</p>
+<p><strong>DevSecOps:</strong> Utvecklingsmetodik as integrerar säkerhetspraktiker through entire utvecklingslivscykeln rather than as a separat fas in slutet.</p>
+<p><strong>Site Reliability Engineering (SRE):</strong> Disciplin as toämpar mjukvaruingenjörsprinciper at operational problem to create skalbara and very reliable mjukvarusystem.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

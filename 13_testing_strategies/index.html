@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/13_testing_strategies/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Testing Strategies for Infrastructure Code - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../12_compliance/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../14_practical_implementation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/13_testing_strategies.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#teststrategier-for-infrastruktukod" class="nav-link">Teststrategier for infrastruktukod</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#overall-description" class="nav-link">Overall Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#unit-testing-for-architecture-as-code" class="nav-link">Unit testing for architecture as code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#testhantering-with-vitest-for-architecture-as-code" class="nav-link">Testhantering with Vitest for architecture as code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#integrationstesting-and-miljovalidering" class="nav-link">Integrationstesting and miljövalidering</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#security-and-compliance-testing" class="nav-link">Security and compliance testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#performance-and-skalbarhetstesting" class="nav-link">Performance and skalbarhetstesting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#requirements-as-code-and-testbarhet" class="nav-link">Requirements as Code and testbarhet</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#praktiska-example" class="nav-link">Praktiska example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#kubernetes-integrationstestning" class="nav-link">Kubernetes integrationstestning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#pipeline-automation-for-infrastrukturtestning" class="nav-link">Pipeline automation for infrastrukturtestning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sources-and-referenser" class="nav-link">Sources and referenser</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="teststrategier-for-infrastruktukod">Teststrategier for infrastruktukod</h1>
+<p><img alt="Test pyramid for architecture as code" src="images/diagram_17_kapitel16.png" /></p>
+<p><em>comprehensive teststrategi for Architecture as Code (Architecture as Code) requires multiple testing-levels from unit tests to end-to-end validation. The diagram illustrates the Structureerade forloppet from snabba utvecklartester to comprehensive integrationsvalidering.</em></p>
+<h2 id="overall-description">Overall Description</h2>
+<p>testing of Architecture as Code differs Fundamental from traditional programvarutestning by focus at arkitekturkonfiguration, resurskompatibilitet and miljökonsekvens instead for affärslogik. Effective testing of Architecture as Code ensures Architecture as Code produces forväntade resultat konsekvent over different environments.</p>
+<p>Modern Architecture as Code-testing encompasses multiple dimensioner: syntaktisk validation of code, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys and functional testing of deployed infrastructure. This multilevel approach identifierar problem early in utvecklingscykeln when the is billigare and enklare to fixa.</p>
+<p>Swedish organizations with strict compliance-requirements must implement comprehensive testing as validates both technical funktionalitet and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards as must verifieras automatically.</p>
+<p>Test automation for Architecture as Code enables continuous integration and continuous deployment patterns as accelererar delivery while the reduces risk for produktionsstörningar. Infrastructure testing pipelines can run parallellt with application testing to ensure end-to-end quality assurance.</p>
+<h2 id="unit-testing-for-architecture-as-code">Unit testing for architecture as code</h2>
+<p>Unit testing for Architecture as Code focuses on validation of individual moduler and resources without to faktiskt deploya infrastructure. This enables snabb feedback and early detection of konfigurationsfel, which is kritiskt for developer productivity and code quality.</p>
+<p>Terraform testing tools that Terratest, terraform-compliance and checkov enables automated validation of HCL-code mot predefined policies and Architecture as Code best practices. These tools can integreras in IDE:er for real-time feedback under development samt in CI/CD pipelines for automated quality gates.</p>
+<p>Unit tests for Architecture as Code should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly viktigt for reusable modules as is used across multiple projects where changes can ha wide-ranging impact at dependent resources.</p>
+<p>Mock testing strategies for cloud resources enables testing without faktiska cloud costs, which is essentiellt for frequent testing cycles. Verktyg that LocalStack and cloud provider simulators can simulate cloud services locally for comprehensive testing without infrastructure provisioning costs.</p>
+<h2 id="testhantering-with-vitest-for-architecture-as-code">Testhantering with Vitest for architecture as code</h2>
+<p>Vitest is A modernt testramverk byggt for Vite-ekosystemet as offers snabb and effective testing of JavaScript/TypeScript-code. For Architecture as Code-projekt as uses Architecture as Code with modern tools is Vitest particularly relevant to testa konfigurationsgeneratorer, validation scripts and automation tools as often skrivs in TypeScript or JavaScript.</p>
+<h3 id="varfor-vitest-is-relevant-for-architecture-as-code">Varfor Vitest is relevant for architecture as code</h3>
+<p>Many modern Architecture as Code workflows includes TypeScript/JavaScript-components to generera, validate or transformera infrastructure configurations. Vitest enables snabb unit testing of These components with forstklassig TypeScript-support, which is kritiskt to ensure korrekt konfigurationsgenerering before deployment.</p>
+<p>Vitest's snabba execution and watch mode enables tight development feedback loops when man develops infrastructure configuration generators or policy validation scripts. This is particularly valuable for Architecture as Code-projekt where konfigurationsfel can leda to costly infrastructure mistakes.</p>
+<p>Integration with Vite build tooling means to same utvecklingsmiljö can be used for both application code and infrastructure-relaterad code, which reduces context switching and improves developer experience for team as arbetar with both application and infrastructure code.</p>
+<h3 id="konfiguration-of-vitest-for-architecture-as-code-projekt">Konfiguration of Vitest for Architecture as Code-projekt</h3>
+<p>to integrera Vitest in A Architecture as Code-projekt needs vi forst installera necessary dependencies and konfigurera test environment:</p>
+<pre><code class="language-bash"># Installera Vitest and relaterade dependencies
+npm install -D vitest @vitest/ui
+npm install -D @types/node  # For Node.js APIs
+
+# For coverage rapportering
+npm install -D @vitest/coverage-v8
+</code></pre>
+<p>Skapa a <code>vitest.config.ts</code> File in projekt root:</p>
+<pre><code class="language-typescript">// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+import path from 'path';
+
+export default defineConfig({
+  test: {
+    // Use globals to undvika imports in each testfil
+    globals: true,
+
+    // Test environment (node for infrastructure tooling)
+    environment: 'node',
+
+    // Coverage configuration
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        '**/*.config.ts',
+        '**/types/**',
+      ],
+      // Kräv minst 80% coverage for infrastructure code
+      lines: 80,
+      functions: 80,
+      branches: 80,
+      statements: 80,
+    },
+
+    // Test timeout for infrastructure operations
+    testTimeout: 30000,
+
+    // Inkludera test filer
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}'],
+
+    // Exclude patterns
+    exclude: [
+      'node_modules',
+      'dist',
+      '.terraform',
+      '**/*.d.ts',
+    ],
+  },
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@infra': path.resolve(__dirname, './infrastructure'),
+    },
+  },
+});
+</code></pre>
+<h3 id="praktiska-example-for-infrastructure-as-code-testing">Praktiska example for Infrastructure as Code testing</h3>
+<h4 id="examples-1-testa-terraform-configuration-generator">examples 1: Testa Terraform Configuration Generator</h4>
+<pre><code class="language-typescript">// src/generators/terraform-config.ts
+export interface TerraformConfig {
+  provider: string;
+  region: string;
+  environment: string;
+  resources: ResourceConfig[];
+}
+
+export interface ResourceConfig {
+  type: string;
+  name: string;
+  properties: Record&lt;string, any&gt;;
+}
+
+export class TerraformConfigGenerator {
+  generateVPCConfig(
+    environment: string,
+    region: string = 'eu-north-1'
+  ): TerraformConfig {
+    // Validate svenska regioner for GDPR compliance
+    const swedishRegions = ['eu-north-1', 'eu-west-1'];
+    if (!swedishRegions.includes(region)) {
+      throw new Error('Region must vara within EU for GDPR compliance');
+    }
+
+    return {
+      provider: 'aws',
+      region,
+      environment,
+      resources: [
+        {
+          type: 'aws_vpc',
+          name: `vpc-${environment}`,
+          properties: {
+            cidr_block: '10.0.0.0/16',
+            enable_dns_hostnames: true,
+            enable_dns_support: true,
+            tags: {
+              Name: `vpc-${environment}`,
+              Environment: environment,
+              ManagedBy: 'Terraform',
+              GdprCompliant: 'true',
+              DataResidency: 'Sweden',
+            },
+          },
+        },
+      ],
+    };
+  }
+
+  generateRDSConfig(
+    environment: string,
+    instanceClass: string = 'db.t3.micro',
+    encrypted: boolean = true
+  ): ResourceConfig {
+    // Säkerställ encryption for production
+    if (environment === 'production' &amp;&amp; !encrypted) {
+      throw new Error('Production databaser must ha encryption aktiverad');
+    }
+
+    return {
+      type: 'aws_db_instance',
+      name: `rds-${environment}`,
+      properties: {
+        allocated_storage: environment === 'production' ? 100 : 20,
+        engine: 'postgres',
+        engine_version: '14.7',
+        instance_class: instanceClass,
+        storage_encrypted: encrypted,
+        backup_retention_period: environment === 'production' ? 30 : 7,
+        multi_az: environment === 'production',
+        tags: {
+          Environment: environment,
+          GdprCompliant: 'true',
+          EncryptionEnabled: encrypted.toString(),
+        },
+      },
+    };
+  }
+}
+</code></pre>
+<pre><code class="language-typescript">// src/generators/terraform-config.test.ts
+import { describe, it, expect } from 'vitest';
+import { TerraformConfigGenerator } from './terraform-config';
+
+describe('TerraformConfigGenerator', () =&gt; {
+  const generator = new TerraformConfigGenerator();
+
+  describe('generateVPCConfig', () =&gt; {
+    it('should generera VPC config for svenska regioner', () =&gt; {
+      const config = generator.generateVPCConfig('production', 'eu-north-1');
+
+      expect(config.provider).toBe('aws');
+      expect(config.region).toBe('eu-north-1');
+      expect(config.environment).toBe('production');
+      expect(config.resources).toHaveLength(1);
+    });
+
+    it('should include GDPR compliance tags', () =&gt; {
+      const config = generator.generateVPCConfig('production');
+      const vpc = config.resources[0];
+
+      expect(vpc.properties.tags).toMatchObject({
+        GdprCompliant: 'true',
+        DataResidency: 'Sweden',
+      });
+    });
+
+    it('should kasta fel for non-EU regions', () =&gt; {
+      expect(() =&gt; {
+        generator.generateVPCConfig('production', 'us-east-1');
+      }).toThrow('Region must vara within EU for GDPR compliance');
+    });
+
+    it('should aktivera DNS support and hostnames', () =&gt; {
+      const config = generator.generateVPCConfig('development');
+      const vpc = config.resources[0];
+
+      expect(vpc.properties.enable_dns_hostnames).toBe(true);
+      expect(vpc.properties.enable_dns_support).toBe(true);
+    });
+  });
+
+  describe('generateRDSConfig', () =&gt; {
+    it('should kräva encryption for production environments', () =&gt; {
+      expect(() =&gt; {
+        generator.generateRDSConfig('production', 'db.t3.micro', false);
+      }).toThrow('Production databaser must ha encryption aktiverad');
+    });
+
+    it('should generera korrekt RDS config for production', () =&gt; {
+      const config = generator.generateRDSConfig('production');
+
+      expect(config.type).toBe('aws_db_instance');
+      expect(config.properties.storage_encrypted).toBe(true);
+      expect(config.properties.multi_az).toBe(true);
+      expect(config.properties.backup_retention_period).toBe(30);
+      expect(config.properties.allocated_storage).toBe(100);
+    });
+
+    it('should use lägre resurser for development environment', () =&gt; {
+      const config = generator.generateRDSConfig('development');
+
+      expect(config.properties.allocated_storage).toBe(20);
+      expect(config.properties.backup_retention_period).toBe(7);
+      expect(config.properties.multi_az).toBeUndefined();
+    });
+
+    it('should include GDPR compliance tags', () =&gt; {
+      const config = generator.generateRDSConfig('production');
+
+      expect(config.properties.tags).toMatchObject({
+        GdprCompliant: 'true',
+        EncryptionEnabled: 'true',
+      });
+    });
+  });
+});
+</code></pre>
+<h4 id="examples-2-testa-infrastructure-validation-scripts">examples 2: Testa Infrastructure Validation Scripts</h4>
+<pre><code class="language-typescript">// src/validators/infrastructure-validator.ts
+export interface ValidationResult {
+  valid: boolean;
+  errors: string[];
+  warnings: string[];
+}
+
+export class InfrastructureValidator {
+  validateResourceTags(
+    tags: Record&lt;string, string&gt;,
+    requiredTags: string[] = ['Environment', 'ManagedBy']
+  ): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    // Kontrollera required tags
+    for (const tag of requiredTags) {
+      if (!tags[tag]) {
+        errors.push(`Saknar required tag: ${tag}`);
+      }
+    }
+
+    // Validate GDPR compliance for Swedish organizations
+    if (tags['DataClassification']) {
+      const validClassifications = ['public', 'internal', 'confidential', 'personal'];
+      if (!validClassifications.includes(tags['DataClassification'])) {
+        errors.push(
+          `Ogiltig DataClassification: ${tags['DataClassification']}`
+        );
+      }
+    }
+
+    // Warn about GdprCompliant tag saknas for känslig data
+    if (tags['DataClassification'] === 'personal' &amp;&amp; !tags['GdprCompliant']) {
+      warnings.push('GdprCompliant tag rekommentheir for personal data');
+    }
+
+    return {
+      valid: errors.length === 0,
+      errors,
+      warnings,
+    };
+  }
+
+  validateSecurityGroup(
+    rules: Array&lt;{ port: number; cidr: string }&gt;
+  ): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    for (const rule of rules) {
+      // Kontrollera öppna portar
+      if (rule.cidr === '0.0.0.0/0') {
+        if ([22, 3389, 3306, 5432].includes(rule.port)) {
+          errors.push(
+            `Port ${rule.port} should not vara öppen mot internet (0.0.0.0/0)`
+          );
+        }
+      }
+
+      // Varning for vanliga portar
+      if (rule.cidr === '0.0.0.0/0' &amp;&amp; [80, 443].includes(rule.port)) {
+        warnings.push(
+          `Port ${rule.port} is öppen mot internet - verifiera to this is avsiktligt`
+        );
+      }
+    }
+
+    return {
+      valid: errors.length === 0,
+      errors,
+      warnings,
+    };
+  }
+}
+</code></pre>
+<pre><code class="language-typescript">// src/validators/infrastructure-validator.test.ts
+import { describe, it, expect } from 'vitest';
+import { InfrastructureValidator } from './infrastructure-validator';
+
+describe('InfrastructureValidator', () =&gt; {
+  const validator = new InfrastructureValidator();
+
+  describe('validateResourceTags', () =&gt; {
+    it('should validate to required tags exists', () =&gt; {
+      const tags = {
+        Environment: 'production',
+        ManagedBy: 'Terraform',
+      };
+
+      const result = validator.validateResourceTags(tags);
+
+      expect(result.valid).toBe(true);
+      expect(result.errors).toHaveLength(0);
+    });
+
+    it('should rapportera fel when required tags saknas', () =&gt; {
+      const tags = {
+        Environment: 'production',
+      };
+
+      const result = validator.validateResourceTags(tags);
+
+      expect(result.valid).toBe(false);
+      expect(result.errors).toContain('Saknar required tag: ManagedBy');
+    });
+
+    it('should validate DataClassification värden', () =&gt; {
+      const tags = {
+        Environment: 'production',
+        ManagedBy: 'Terraform',
+        DataClassification: 'invalid-value',
+      };
+
+      const result = validator.validateResourceTags(tags);
+
+      expect(result.valid).toBe(false);
+      expect(result.errors[0]).toContain('Ogiltig DataClassification');
+    });
+
+    it('should varna about GdprCompliant tag saknas for personal data', () =&gt; {
+      const tags = {
+        Environment: 'production',
+        ManagedBy: 'Terraform',
+        DataClassification: 'personal',
+      };
+
+      const result = validator.validateResourceTags(tags);
+
+      expect(result.warnings).toContain(
+        'GdprCompliant tag rekommentheir for personal data'
+      );
+    });
+
+    it('should acceptera giltiga DataClassification värden', () =&gt; {
+      const validClassifications = ['public', 'internal', 'confidential', 'personal'];
+
+      for (const classification of validClassifications) {
+        const tags = {
+          Environment: 'production',
+          ManagedBy: 'Terraform',
+          DataClassification: classification,
+        };
+
+        const result = validator.validateResourceTags(tags);
+        expect(result.valid).toBe(true);
+      }
+    });
+  });
+
+  describe('validateSecurityGroup', () =&gt; {
+    it('should blockera SSH öppet mot internet', () =&gt; {
+      const rules = [{ port: 22, cidr: '0.0.0.0/0' }];
+
+      const result = validator.validateSecurityGroup(rules);
+
+      expect(result.valid).toBe(false);
+      expect(result.errors[0]).toContain('Port 22 should not vara öppen');
+    });
+
+    it('should blockera databas portar öppna mot internet', () =&gt; {
+      const rules = [
+        { port: 3306, cidr: '0.0.0.0/0' },  // MySQL
+        { port: 5432, cidr: '0.0.0.0/0' },  // PostgreSQL
+      ];
+
+      const result = validator.validateSecurityGroup(rules);
+
+      expect(result.valid).toBe(false);
+      expect(result.errors).toHaveLength(2);
+    });
+
+    it('should varna for HTTP/HTTPS öppet mot internet', () =&gt; {
+      const rules = [
+        { port: 80, cidr: '0.0.0.0/0' },
+        { port: 443, cidr: '0.0.0.0/0' },
+      ];
+
+      const result = validator.validateSecurityGroup(rules);
+
+      expect(result.valid).toBe(true);
+      expect(result.warnings).toHaveLength(2);
+    });
+
+    it('should acceptera restricted CIDR blocks', () =&gt; {
+      const rules = [
+        { port: 22, cidr: '10.0.0.0/8' },
+        { port: 3306, cidr: '192.168.1.0/24' },
+      ];
+
+      const result = validator.validateSecurityGroup(rules);
+
+      expect(result.valid).toBe(true);
+      expect(result.errors).toHaveLength(0);
+    });
+  });
+});
+</code></pre>
+<h3 id="integration-in-cicd-pipeline">Integration in CI/CD Pipeline</h3>
+<p>Vitest can integreras in CI/CD pipelines for automated testing of infrastructure code:</p>
+<pre><code class="language-yaml"># .github/workflows/infrastructure-validation.yml
+name: Infrastructure Code Validation
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'infrastructure/**'
+      - 'tests/**'
+  push:
+    branches: [main, develop]
+
+jobs:
+  vitest-validation:
+    runs-on: ubuntu-latest
+    name: Vitest Infrastructure Tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Vitest Tests
+        run: npm run test:vitest
+
+      - name: Generate Coverage Report
+        run: npm run test:coverage
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/coverage-final.json
+          flags: infrastructure-code
+
+      - name: Comment PR with Coverage
+        if: github.event_name == 'pull_request'
+        uses: romeovs/lcov-reporter-action@v0.3.1
+        with:
+          lcov-file: ./coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+</code></pre>
+<p>Lägg to test scripts in <code>package.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;test:vitest&quot;: &quot;vitest run&quot;,
+    &quot;test:watch&quot;: &quot;vitest watch&quot;,
+    &quot;test:coverage&quot;: &quot;vitest run --coverage&quot;,
+    &quot;test:ui&quot;: &quot;vitest --ui&quot;
+  }
+}
+</code></pre>
+<h3 id="recommendations-for-testorganisering">Recommendations for testorganisering</h3>
+<p><strong>FilStructure for Infrastructure Code Tests:</strong></p>
+<pre><code>project/
+├── src/
+│   ├── generators/
+│   │   ├── terraform-config.ts
+│   │   └── terraform-config.test.ts
+│   ├── validators/
+│   │   ├── infrastructure-validator.ts
+│   │   └── infrastructure-validator.test.ts
+│   └── utils/
+│       ├── compliance-checker.ts
+│       └── compliance-checker.test.ts
+├── tests/
+│   ├── integration/
+│   │   └── end-to-end.test.ts
+│   └── fixtures/
+│       └── sample-configs.ts
+├── vitest.config.ts
+└── package.json
+</code></pre>
+<p><strong>Best Practices for Infrastructure Testing with Vitest:</strong></p>
+<ol>
+<li>
+<p><strong>Snabba unit tests:</strong> Håll unit tests snabba (&lt;100ms per test) to enable effective watch mode under development.</p>
+</li>
+<li>
+<p><strong>Isolerade tester:</strong> each test should be oberoende and be able to köras in valfri ordning without side effects.</p>
+</li>
+<li>
+<p><strong>Beskrivande test namn:</strong> Use clear test descriptions as documents expected behavior: <code>'should kasta fel for non-EU regions'</code>.</p>
+</li>
+<li>
+<p><strong>Test fixtures:</strong> Use shared test fixtures for common infrastructure configurations, but var forsiktig with mutable state.</p>
+</li>
+<li>
+<p><strong>Coverage goals:</strong> Sikta at minst 80% code coverage for infrastructure configuration and validation code, but focus at meaningful tests rather than coverage metrics.</p>
+</li>
+<li>
+<p><strong>Mock externa beroenden:</strong> Use Vitest's mocking capabilities to mocka cloud provider SDKs and external APIs:</p>
+</li>
+</ol>
+<pre><code class="language-typescript">import { vi } from 'vitest';
+import * as AWS from 'aws-sdk';
+
+vi.mock('aws-sdk', () =&gt; ({
+  EC2: vi.fn(() =&gt; ({
+    describeInstances: vi.fn().mockResolvedValue({
+      Reservations: [],
+    }),
+  })),
+}));
+</code></pre>
+<ol>
+<li><strong>Snapshot testing:</strong> Use snapshot tests to validate generated configuration files:</li>
+</ol>
+<pre><code class="language-typescript">it('should generera korrekt terraform config', () =&gt; {
+  const config = generator.generateFullConfig('production');
+  expect(config).toMatchSnapshot();
+});
+</code></pre>
+<h3 id="automation-and-watch-mode">Automation and Watch Mode</h3>
+<p>a of Vitest's biggest Benefits is watch mode as enables continuous testing under development:</p>
+<pre><code class="language-bash"># Starta watch mode for automated re-testing
+npm run test:watch
+
+# Kör endast relaterade tester when filer changes
+npm run test:watch -- --changed
+
+# Kör tests with UI for interaktiv debugging
+npm run test:ui
+</code></pre>
+<p>This enables tight feedback loops where infrastructure code changes owithelbart valitheir, which reduces tiden between code change and feedback from seconds to milliseconds.</p>
+<p>For Swedish organizations with strict compliance requirements can automated testing with Vitest ensure to infrastructure configurations konsekvent meets GDPR requirements, security policies and organizational standards before deployment.</p>
+<h2 id="integrationstesting-and-miljovalidering">Integrationstesting and miljövalidering</h2>
+<p>Integration testing for Architecture as Code verifierar to different infrastructure components functions tosammans korrekt and to deployed infrastructure meets performance and security requirements. This requires temporary test environments as closely mirror production configurations.</p>
+<p>End-to-end testing workflows must validate entire deployment pipelines from source code changes to functional infrastructure. This includes testing of CI/CD pipeline configurations, secret management, monitoring setup and rollback procedures as is critical for production stability.</p>
+<p>Environment parity testing ensures infrastructure behaves consistently across development, staging and production environments. This testing identifierar environment-specific issues as can cause deployment failures or performance discrepancies between environments.</p>
+<p>Chaos engineering principles can appliceras at infrastructure testing by systematiskt introduce failures in test environments to validate resilience and recovery mechanisms. This is particularly valuable for mission-critical systems as requires high availability guarantees.</p>
+<h2 id="security-and-compliance-testing">Security and compliance testing</h2>
+<p>Security testing for Architecture as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, chosention of encryption settings and verification of network security policies.</p>
+<p>Compliance testing automation ensures infrastructure configurations meets regulatory requirements kontinuerligt. Swedish organizations must validate GDPR compliance, financial regulations and government security standards through automated testing as can provide audit trails for compliance reporting.</p>
+<p>Policy-as-code frameworks that Open Policy Agent (OPA) and AWS Config Rules enables declarative definition of compliance policies as can enforced automatically under infrastructure deployment. This preventative approach is mer effective than reactive compliance monitoring.</p>
+<p>Vulnerability scanning for infrastructure dependencies must include container images, operating systems configurations and third-party software components. Integration with security scanning tools in CI/CD pipelines ensures security vulnerabilities identifieras before deployment to production.</p>
+<h2 id="performance-and-skalbarhetstesting">Performance and skalbarhetstesting</h2>
+<p>Performance testing for Architecture as Code focuses on validation of infrastructure capacity, response times and resource utilization under various load conditions. This is critical for applications as requires predictable performance characteristics under varying traffic patterns.</p>
+<p>Load testing strategies must validate auto-scaling configurations, resource limits and failover mechanisms under realistic traffic scenarios. Infrastructure performance testing can include database performance under load, network throughput validation and storage in/O capacity verification.</p>
+<p>Skalabilitetstesting verifierar to infrastructure can handle projected growth efficiently through automated scaling mechanisms. This includes testing of horizontal scaling for stateless services and validation of data partitioning strategies for stateful systems.</p>
+<p>Capacity planning validation through performance testing helps optimize resource configurations for cost-effectiveness while performance requirements uppfylls. This is particularly important for Swedish organizations as balanserar cost optimization with service level requirements.</p>
+<h2 id="requirements-as-code-and-testbarhet">Requirements as Code and testbarhet</h2>
+<p><img alt="Requirements and testing relation" src="../images/diagram_12_requirements_testing.png" /></p>
+<p><em>The relationship between business requirements, functional requirements and verification methods illustrerar how Architecture as Code enables traceable testing from higher abstraction levels down to concrete Architecture as Code-implementations.</em></p>
+<p>Requirements-as-Code represents A paradigm shift where business requirements and compliance-requirements are codified in machine-readable form together with infrastructure-the code. This enables automated validation of to infrastructureen verkligen meets the specificerade requirementsen through entire utvecklingslivscykeln.</p>
+<p>by definiera Requirements as Code are created a direkt koppling between business requirements, functional requirements and the automated tester as verifierar Architecture as Code-implementationen. This traceability is critical for organisationer as must demonstrate compliance and for utvecklingsteam as needs understand affärsconsequences of technical decisions.</p>
+<h3 id="kravtraceability-in-praktiken">Kravtraceability in praktiken</h3>
+<p>Requirements traceability for Architecture as Code means to each infrastructurekomponent can kopplas tobaka to specific business requirements or compliance-requirements. This is particularly viktigt for Swedish organizations as must meet GDPR, finansiella regulations or myndighetsrequirements.</p>
+<p>Verktyg that Open Policy Agent (OPA) enables uttryck of compliance-requirements as policies as can evalueras automatically mot infrastructure-configurations. These policies becomes testable requirements as can köras kontinuerligt to ensure ongoing compliance.</p>
+<p>Requirement validation testing ensures infrastructure not only is technical korrekt without also meets business intent. This includes validation of security requirements, performance-requirements, togänglighetsrequirements and kostnadsramar as defined of business stakeholders.</p>
+<h3 id="automated-requirements-verification">Automated Requirements Verification</h3>
+<pre><code class="language-yaml"># requirements/security-requirements.yaml
+apiVersion: policy/v1
+kind: RequirementSet
+metadata:
+  name: swedish-security-requirements
+  version: &quot;1.0&quot;
+spec:
+  requirements:
+    - id: SEC-001
+      type: security
+      description: &quot;all S3 buckets must ha encryption aktiverad&quot;
+      priority: critical
+      compliance: [&quot;GDPR&quot;, &quot;ISO27001&quot;]
+      tests:
+        - type: static-analysis
+          tool: checkov
+          rule: CKV_AWS_141
+        - type: runtime-test
+          script: test_s3_encryption.py
+
+    - id: SEC-002  
+      type: security
+      description: &quot;RDS instanser must use encrypted storage&quot;
+      priority: critical
+      compliance: [&quot;GDPR&quot;]
+      tests:
+        - type: terraform-test
+          file: test_rds_encryption_test.go
+        - type: policy-test
+          file: rds_encryption.rego
+
+    - id: PERF-001
+      type: performance
+      description: &quot;Auto-scaling must vara konfigurerat for production workloads&quot;
+      priority: high
+      tests:
+        - type: integration-test
+          file: test_autoscaling_integration.py
+        - type: load-test
+          tool: k6
+          script: autoscaling_load_test.js
+</code></pre>
+<pre><code class="language-python"># test/requirements_validation.py
+&quot;&quot;&quot;
+Automatiserad validation of requirements mot Infrastructure as Code
+&quot;&quot;&quot;
+import yaml
+import subprocess
+import json
+from typing import Dict, List, Any
+
+class RequirementValidator:
+    def __init__(self, requirements_file: str):
+        with open(requirements_file, 'r') as f:
+            self.requirements = yaml.safe_load(f)
+
+    def validate_all_requirements(self) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Kör all requirements-relaterade tester and sammanställ resultat&quot;&quot;&quot;
+        results = {
+            'passed': [],
+            'failed': [],
+            'skipped': [],
+            'summary': {}
+        }
+
+        for req in self.requirements['spec']['requirements']:
+            req_id = req['id']
+            print(f&quot;Validates requirements {req_id}: {req['description']}&quot;)
+
+            req_result = self._validate_requirement(req)
+
+            if req_result['status'] == 'passed':
+                results['passed'].append(req_result)
+            elif req_result['status'] == 'failed':
+                results['failed'].append(req_result)
+            else:
+                results['skipped'].append(req_result)
+
+        results['summary'] = {
+            'total': len(self.requirements['spec']['requirements']),
+            'passed': len(results['passed']),
+            'failed': len(results['failed']),
+            'skipped': len(results['skipped']),
+            'compliance_coverage': self._calculate_compliance_coverage()
+        }
+
+        return results
+
+    def _validate_requirement(self, requirement: Dict) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Validate A enskilt requirements by run associerade tester&quot;&quot;&quot;
+        req_id = requirement['id']
+        test_results = []
+
+        for test in requirement.get('tests', []):
+            test_result = self._execute_test(test, req_id)
+            test_results.append(test_result)
+
+        # Avgör overall status for requirementset
+        if all(t['passed'] for t in test_results):
+            status = 'passed'
+        elif any(t['passed'] == False for t in test_results):
+            status = 'failed'
+        else:
+            status = 'skipped'
+
+        return {
+            'requirement_id': req_id,
+            'description': requirement['description'],
+            'priority': requirement['priority'],
+            'compliance': requirement.get('compliance', []),
+            'status': status,
+            'test_results': test_results
+        }
+
+    def _execute_test(self, test_config: Dict, req_id: str) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Exekvera A specific test based on dess typ&quot;&quot;&quot;
+        test_type = test_config['type']
+
+        if test_type == 'static-analysis':
+            return self._run_static_analysis_test(test_config, req_id)
+        elif test_type == 'terraform-test':
+            return self._run_terraform_test(test_config, req_id)
+        elif test_type == 'policy-test':
+            return self._run_policy_test(test_config, req_id)
+        elif test_type == 'integration-test':
+            return self._run_integration_test(test_config, req_id)
+        elif test_type == 'load-test':
+            return self._run_load_test(test_config, req_id)
+        else:
+            return {
+                'test_type': test_type,
+                'passed': None,
+                'message': f'Okänd testtyp: {test_type}',
+                'requirement_id': req_id
+            }
+
+    def _run_static_analysis_test(self, test_config: Dict, req_id: str) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Kör static analysis test with Checkov&quot;&quot;&quot;
+        tool = test_config.get('tool', 'checkov')
+        rule = test_config.get('rule')
+
+        try:
+            cmd = f&quot;{tool} --check {rule} --directory terraform/ --output json&quot;
+            result = subprocess.run(cmd.split(), capture_output=True, text=True)
+
+            if result.returncode == 0:
+                return {
+                    'test_type': 'static-analysis',
+                    'tool': tool,
+                    'rule': rule,
+                    'passed': True,
+                    'message': 'Static analysis passed',
+                    'requirement_id': req_id
+                }
+            else:
+                return {
+                    'test_type': 'static-analysis', 
+                    'tool': tool,
+                    'rule': rule,
+                    'passed': False,
+                    'message': f'Static analysis failed: {result.stderr}',
+                    'requirement_id': req_id
+                }
+        except Exception as e:
+            return {
+                'test_type': 'static-analysis',
+                'passed': None,
+                'message': f'Error running static analysis: {str(e)}',
+                'requirement_id': req_id
+            }
+
+    def _calculate_compliance_coverage(self) -&gt; Dict[str, float]:
+        &quot;&quot;&quot;Beräkna compliance coverage for different regulations&quot;&quot;&quot;
+        compliance_mapping = {}
+
+        for req in self.requirements['spec']['requirements']:
+            for compliance in req.get('compliance', []):
+                if compliance not in compliance_mapping:
+                    compliance_mapping[compliance] = {'total': 0, 'tested': 0}
+
+                compliance_mapping[compliance]['total'] += 1
+
+                if req.get('tests'):
+                    compliance_mapping[compliance]['tested'] += 1
+
+        coverage = {}
+        for compliance, stats in compliance_mapping.items():
+            if stats['total'] &gt; 0:
+                coverage[compliance] = stats['tested'] / stats['total'] * 100
+            else:
+                coverage[compliance] = 0
+
+        return coverage
+</code></pre>
+<h2 id="praktiska-example">Praktiska example</h2>
+<h3 id="terraform-unit-testing-with-terratest">Terraform Unit Testing with Terratest</h3>
+<pre><code class="language-go">// test/terraform_test.go
+package test
+
+import (
+    &quot;testing&quot;
+    &quot;github.com/gruntwork-io/terratest/modules/terraform&quot;
+    &quot;github.com/gruntwork-io/terratest/modules/test-structure&quot;
+    &quot;github.com/stretchr/testify/assert&quot;
+    &quot;github.com/stretchr/testify/require&quot;
+)
+
+func TestTerraformSwedishInfrastructure(t *testing.T) {
+    t.Parallel()
+
+    // Sätt upp test environment
+    terraformDir := &quot;../terraform/swedish-infrastructure&quot;
+
+    // Generera unique suffix for test resources
+    uniqueId := test-structure.UniqueId()
+
+    terraformOptions := &amp;terraform.Options{
+        TerraformDir: terraformDir,
+        Whose: map[string]interface{}{
+            &quot;environment&quot;:      &quot;test&quot;,
+            &quot;project_name&quot;:     &quot;architecture as code-test-&quot; + uniqueId,
+            &quot;region&quot;:          &quot;eu-north-1&quot;, // Stockholm for svenska requirements
+            &quot;enable_gdpr_logs&quot;: true,
+            &quot;data_classification&quot;: &quot;internal&quot;,
+        },
+        BackendConfig: map[string]interface{}{
+            &quot;bucket&quot;: &quot;terraform-state-test-&quot; + uniqueId,
+            &quot;region&quot;: &quot;eu-north-1&quot;,
+        },
+    }
+
+    // Cleanup resources efter test
+    defer terraform.Destroy(t, terraformOptions)
+
+    // Kör terraform init and plan
+    terraform.InitAndPlan(t, terraformOptions)
+
+    // Validate to plan contains förväntade resources
+    planStruct := terraform.InitAndPlanAndShowWithStruct(t, terraformOptions)
+
+    // Test: Validate to all resurser has korrekta tags
+    for _, resource := range planStruct.PlannedValues.RootModule.Resources {
+        if resource.Type == &quot;aws_instance&quot; || resource.Type == &quot;aws_rds_instance&quot; {
+            tags := resource.AttributeValues[&quot;tags&quot;].(map[string]interface{})
+
+            assert.Equal(t, &quot;architecture as code-test-&quot; + uniqueId, tags[&quot;Project&quot;])
+            assert.Equal(t, &quot;test&quot;, tags[&quot;Environment&quot;])
+            assert.Equal(t, &quot;internal&quot;, tags[&quot;DataClassification&quot;])
+
+            // Validate GDPR compliance tags
+            assert.Contains(t, tags, &quot;GdprApplicable&quot;)
+            assert.Contains(t, tags, &quot;DataRetention&quot;)
+        }
+    }
+
+    // Test: Validate säkerhetskonfiguration
+    for _, resource := range planStruct.PlannedValues.RootModule.Resources {
+        if resource.Type == &quot;aws_s3_bucket&quot; {
+            // Validate to S3 buckets has encryption enabled
+            encryption := resource.AttributeValues[&quot;server_side_encryption_configuration&quot;]
+            assert.NotNil(t, encryption, &quot;S3 bucket must ha encryption konfigurerad&quot;)
+        }
+
+        if resource.Type == &quot;aws_rds_instance&quot; {
+            // Validate to RDS instances has encryption at rest
+            encrypted := resource.AttributeValues[&quot;storage_encrypted&quot;].(bool)
+            assert.True(t, encrypted, &quot;RDS instans must ha storage encryption aktiverad&quot;)
+        }
+    }
+
+    // Kör terraform apply
+    terraform.Apply(t, terraformOptions)
+
+    // Test: Validate faktiska infrastructure deployment
+    validateInfrastructureDeployment(t, terraformOptions, uniqueId)
+}
+
+func validateInfrastructureDeployment(t *testing.T, terraformOptions *terraform.Options, uniqueId string) {
+    // Hämta outputs from terraform
+    vpcId := terraform.Output(t, terraformOptions, &quot;vpc_id&quot;)
+    require.NotEmpty(t, vpcId, &quot;VPC ID should not vara tom&quot;)
+
+    dbEndpoint := terraform.Output(t, terraformOptions, &quot;database_endpoint&quot;)
+    require.NotEmpty(t, dbEndpoint, &quot;Database endpoint should not vara tom&quot;)
+
+    // Test: Validate nätverkskonfiguration
+    validateNetworkConfiguration(t, vpcId)
+
+    // Test: Validate database connectivity
+    validateDatabaseConnectivity(t, dbEndpoint)
+
+    // Test: Validate monitoring and logging
+    validateMonitoringSetup(t, terraformOptions)
+}
+
+func validateNetworkConfiguration(t *testing.T, vpcId string) {
+    // implementation for nätverksvalidering
+    // Kontrollera subnets, routing tables, security groups etc.
+}
+
+func validateDatabaseConnectivity(t *testing.T, endpoint string) {
+    // implementation for databasconnectivity testing
+    // Kontrollera to databas is accessible and responsiv
+}
+
+func validateMonitoringSetup(t *testing.T, terraformOptions *terraform.Options) {
+    // implementation for monitoring validation
+    // Kontrollera CloudWatch metrics, alarms, logging etc.
+}
+</code></pre>
+<h3 id="policy-as-code-testing-with-opa">Policy-as-Code Testing with OPA</h3>
+<pre><code class="language-rego"># policies/aws_security_test.rego
+package aws.security.test
+
+import rego.v1
+
+# Test: S3 Buckets must ha encryption
+test_s3_encryption_required if {
+    input_s3_without_encryption := {
+        &quot;resource_type&quot;: &quot;aws_s3_bucket&quot;,
+        &quot;attributes&quot;: {
+            &quot;bucket&quot;: &quot;test-bucket&quot;,
+            &quot;server_side_encryption_configuration&quot;: null
+        }
+    }
+
+    not aws.security.s3_encryption_required with input as input_s3_without_encryption
+}
+
+test_s3_encryption_allowed if {
+    input_s3_with_encryption := {
+        &quot;resource_type&quot;: &quot;aws_s3_bucket&quot;, 
+        &quot;attributes&quot;: {
+            &quot;bucket&quot;: &quot;test-bucket&quot;,
+            &quot;server_side_encryption_configuration&quot;: [{
+                &quot;rule&quot;: [{
+                    &quot;apply_server_side_encryption_by_default&quot;: [{
+                        &quot;sse_algorithm&quot;: &quot;AES256&quot;
+                    }]
+                }]
+            }]
+        }
+    }
+
+    aws.security.s3_encryption_required with input as input_s3_with_encryption
+}
+
+# Test: EC2 instances must ha säkerhetgrupper konfigurerade
+test_ec2_security_groups_required if {
+    input_ec2_without_sg := {
+        &quot;resource_type&quot;: &quot;aws_instance&quot;,
+        &quot;attributes&quot;: {
+            &quot;instance_type&quot;: &quot;t3.micro&quot;,
+            &quot;vpc_security_group_ids&quot;: []
+        }
+    }
+
+    not aws.security.ec2_security_groups_required with input as input_ec2_without_sg
+}
+
+# Test: Svenska GDPR compliance
+test_gdpr_data_classification_required if {
+    input_without_classification := {
+        &quot;resource_type&quot;: &quot;aws_rds_instance&quot;,
+        &quot;attributes&quot;: {
+            &quot;tags&quot;: {
+                &quot;Environment&quot;: &quot;production&quot;,
+                &quot;Project&quot;: &quot;customer-app&quot;
+            }
+        }
+    }
+
+    not sweden.gdpr.data_classification_required with input as input_without_classification
+}
+
+test_gdpr_data_classification_valid if {
+    input_with_classification := {
+        &quot;resource_type&quot;: &quot;aws_rds_instance&quot;,
+        &quot;attributes&quot;: {
+            &quot;tags&quot;: {
+                &quot;Environment&quot;: &quot;production&quot;, 
+                &quot;Project&quot;: &quot;customer-app&quot;,
+                &quot;DataClassification&quot;: &quot;personal&quot;,
+                &quot;GdprApplicable&quot;: &quot;true&quot;,
+                &quot;DataRetention&quot;: &quot;7years&quot;
+            }
+        }
+    }
+
+    sweden.gdpr.data_classification_required with input as input_with_classification
+}
+</code></pre>
+<h2 id="kubernetes-integrationstestning">Kubernetes integrationstestning</h2>
+<h3 id="kubernetes-infrastructure-testing">Kubernetes Infrastructure Testing</h3>
+<p>Architecture as Code-principerna within This area</p>
+<pre><code class="language-yaml"># test/k8s-test-suite.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: infrastructure-tests
+  namespace: testing
+data:
+  test-runner.sh: |
+    #!/bin/bash
+    set -e
+
+    echo &quot;Starting Infrastructure as Code testing for Kubernetes...&quot;
+
+    # Test 1: Validate resource quotas
+    echo &quot;Testing resource quotas...&quot;
+    kubectl get resourcequota -n production -o json | \
+    jq '.items[0].status.used | to_entries[] | select(.value == &quot;0&quot;)' | \
+    if [ $(wc -l) -gt 0 ]; then
+      echo &quot;WARNING: Unused resource quotas detected&quot;
+    fi
+
+    # Test 2: Validate security policies
+    echo &quot;Testing Pod Security Policies...&quot;
+    kubectl get psp | grep -E &quot;(privileged|hostNetwork)&quot; &amp;&amp; \
+    echo &quot;ERROR: Privileged security policies detected&quot; &amp;&amp; exit 1
+
+    # Test 3: Validate network policies
+    echo &quot;Testing Network Policies...&quot;
+    NAMESPACES=$(kubectl get ns --no-headers -o custom-columns=&quot;:metadata.name&quot;)
+    for ns in $NAMESPACES; do
+      if [ &quot;$ns&quot; != &quot;kube-systems&quot; ] &amp;&amp; [ &quot;$ns&quot; != &quot;kube-public&quot; ]; then
+        if ! kubectl get networkpolicy -n $ns --no-headers 2&gt;/dev/null | grep -q .; then
+          echo &quot;WARNING: No network policies in namespace $ns&quot;
+        fi
+      fi
+    done
+
+    # Test 4: Validate svenska compliance requirements
+    echo &quot;Testing GDPR compliance for persistent volumes...&quot;
+    kubectl get pv -o json | \
+    jq -r '.items[] | select(.spec.csi.driver == &quot;ebs.csi.aws.com&quot;) | 
+           select(.spec.csi.volumeAttributes.encrypted != &quot;true&quot;) | 
+           .metadata.name' | \
+    if [ $(wc -l) -gt 0 ]; then
+      echo &quot;ERROR: Unencrypted persistent volumes detected&quot;
+      exit 1
+    fi
+
+    echo &quot;All infrastructure tests passed!&quot;
+</code></pre>
+<pre><code class="language-yaml">---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: infrastructure-test-job
+  namespace: testing
+spec:
+  template:
+    spec:
+      containers:
+      - name: test-runner
+        image: bitnami/kubectl:latest
+        command: [&quot;/bin/bash&quot;]
+        args: [&quot;/scripts/test-runner.sh&quot;]
+        volumeMounts:
+        - name: test-scripts
+          mountPath: /scripts
+        env:
+        - name: KUBECONFIG
+          value: /etc/kubeconfig/config
+      volumes:
+      - name: test-scripts
+        configMap:
+          name: infrastructure-tests
+          defaultMode: 0755
+      - name: kubeconfig
+        secret:
+          secretName: kubeconfig
+      restartPolicy: Never
+  backoffLimit: 3
+</code></pre>
+<h2 id="pipeline-automation-for-infrastrukturtestning">Pipeline automation for infrastrukturtestning</h2>
+<h3 id="cicd-pipeline-for-infrastructure-testing">CI/CD Pipeline for Infrastructure Testing</h3>
+<p>Architecture as Code-principerna within This area</p>
+<pre><code class="language-yaml"># .github/workflows/infrastructure-testing.yml
+name: Infrastructure Testing Pipeline
+
+on:
+  pull_request:
+    paths: 
+      - 'terraform/**'
+      - 'kubernetes/**'
+      - 'policies/**'
+  push:
+    branches: [main, develop]
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    name: Static Code Analysis
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive terraform/
+
+      - name: Terraform Validation
+        run: |
+          cd terraform
+          terraform init -backend=false
+          terraform validate
+
+      - name: Security Scanning with Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: terraform/
+          framework: terraform
+          output_format: cli,sarif
+          output_file_path: reports/checkov-report.sarif
+
+      - name: Policy Testing with OPA
+        run: |
+          # Installera OPA
+          curl -L -o opa https://openpolicyagent.org/downloads/v0.57.0/opa_linux_amd64_static
+          chmod +x opa
+
+          # Kör policy tests
+          ./opa test policies/
+
+  unit-testing:
+    runs-on: ubuntu-latest
+    name: Unit Testing with Terratest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+
+      - name: Install Dependencies
+        run: |
+          cd test
+          go mod download
+
+      - name: Run Unit Tests
+        run: |
+          cd test
+          go test -v -timeout 30m
+        env:
+          AWS_DEFAULT_REGION: eu-north-1
+          TF_VAR_test_mode: true
+
+  integration-testing:
+    runs-on: ubuntu-latest
+    name: Integration Testing
+    if: github.event_name == 'push'
+    needs: [static-analysis, unit-testing]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      - name: Deploy Test Infrastructure
+        run: |
+          cd terraform/test-environment
+          terraform init
+          terraform plan -var=&quot;test_run_id=${{ github.run_id }}&quot;
+          terraform apply -auto-approve -var=&quot;test_run_id=${{ github.run_id }}&quot;
+
+      - name: Run Integration Tests
+        run: |
+          cd test/integration
+          go test -v -timeout 45m -tags=integration
+
+      - name: Cleanup Test Infrastructure
+        if: always()
+        run: |
+          cd terraform/test-environment
+          terraform destroy -auto-approve -var=&quot;test_run_id=${{ github.run_id }}&quot;
+
+  compliance-validation:
+    runs-on: ubuntu-latest
+    name: Compliance Validation
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: GDPR Compliance Check
+        run: |
+          # Kontrollera to all databaser has encryption
+          grep -r &quot;storage_encrypted.*=.*true&quot; terraform/ || \
+          (echo &quot;ERROR: Icke-krypterade databaser upptäckta&quot; &amp;&amp; exit 1)
+
+          # Kontrollera data classification tags
+          grep -r &quot;DataClassification&quot; terraform/ || \
+          (echo &quot;ERROR: Data classification tags saknas&quot; &amp;&amp; exit 1)
+
+      - name: Swedish Security Standards
+        run: |
+          # MSB security requirements for critical infrastruktur
+          ./scripts/msb-compliance-check.sh terraform/
+
+          # Validate to svenska regioner is used
+          if grep -r &quot;us-&quot; terraform/ --include=&quot;*.tf&quot;; then
+            echo &quot;WARNING: Amerikanska regioner upptäckta - kontrollera data sovereignty&quot;
+          fi
+
+  performance-testing:
+    runs-on: ubuntu-latest
+    name: Performance Testing
+    if: contains(github.event.pull_request.title, 'performance') || github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Infrastructure Performance Tests
+        run: |
+          # Kör load tests mot test infrastruktur
+          cd test/performance
+          ./run-load-tests.sh
+
+      - name: Cost Analysis
+        run: |
+          # Beräkna förvänkade kostnader for infrastructure changes
+          ./scripts/cost-analysis.sh terraform/
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Comprehensive testing strategies for Architecture as Code is essential to ensure reliable, secure and cost-effective infrastructure deployments. a väl designad test pyramid with unit tests, integration tests and end-to-end validation can dramatiskt reducera production issues and improve developer confidence.</p>
+<p>Swedish organizations must particularly focus at compliance testing as validates GDPR requirements, financial regulations and government security standards. Automated policy testing with tools that OPA enables continuous compliance verification without manual overhead.</p>
+<p>Investment in robust Architecture as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies enables comprehensive validation without prohibitive costs or complexity.</p>
+<h2 id="sources-and-referenser">Sources and referenser</h2>
+<ul>
+<li>Terratest Documentation. "Infrastructure Testing for Terraform." Gruntwork, 2023.</li>
+<li>Open Policy Agent. "Policy Testing Architecture as Code best practices." CNCF OPA Project, 2023.</li>
+<li>AWS. "Infrastructure Testing Strategy Guide." Amazon Web Services, 2023.</li>
+<li>Kubernetes. "Testing Infrastructure and Applications." Kubernetes Documentation, 2023.</li>
+<li>NIST. "Security Testing for Cloud Infrastructure." NIST Cybersecurity Framework, 2023.</li>
+<li>CSA. "Cloud Security Testing Guidelines." Cloud Security Alliance, 2023.</li>
+<li>Vitest. "Next Generation Testing Framework." Vitest Documentation, 2024.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

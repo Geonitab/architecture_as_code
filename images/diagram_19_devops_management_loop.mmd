@@ -1,0 +1,25 @@
+%% Management contributions embedded in DevOps loop
+flowchart LR
+    A[Plan] --> B[Code]
+    B --> C[Build]
+    C --> D[Test]
+    D --> E[Release]
+    E --> F[Deploy]
+    F --> G[Operate]
+    G --> H[Observe]
+    H --> A
+
+    subgraph Management Contributions
+        MA[Strategic Objectives as Code]
+        MB[Policy Automation Scripts]
+        MC[Budget Guardrails]
+        MD[Operational Dashboards]
+        ME[Adaptive Governance Rules]
+    end
+
+    A -. consumes .-> MA
+    B -. references .-> MB
+    C -. validates .-> MC
+    F -. enforces .-> MB
+    G -. monitors .-> MD
+    H -. updates .-> ME

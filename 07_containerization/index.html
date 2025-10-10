@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/07_containerization/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Containerization and Orchestration as Code - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../06_cloud_architecture/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../08_microservices/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/07_containerization.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#containerization-and-orchestration-as-code" class="nav-link">Containerization and Orchestration as code</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#container-teknologiens-roll-within-architecture-as-code" class="nav-link">Container-teknologiens roll within architecture as code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#kubernetes-as-orchestration-platform" class="nav-link">Kubernetes as orchestration platform</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#service-mesh-and-advanced-networking" class="nav-link">Service mesh and advanced networking</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#infrastructure-automation-with-container-platforms" class="nav-link">Infrastructure automation with container platforms</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#persistent-storage-and-data-management" class="nav-link">Persistent storage and data management</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#praktiska-example" class="nav-link">Praktiska example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sources-and-referenser" class="nav-link">Sources and referenser</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="containerization-and-orchestration-as-code">Containerization and Orchestration as code</h1>
+<p><img alt="Containerization and Orchestration" src="../images/diagram_11_kapitel10.png" /></p>
+<p>Architecture as Code methodology forms the foundation for containerteknologi and orkestrering represents paradigm shift in how applications driftsätts and skalas. by definiera Architecture as Code for containrar is enabled portabel, skalbar and reproducible applikationsdriftsättning over different environments and cloud providers.</p>
+<h2 id="container-teknologiens-roll-within-architecture-as-code">Container-teknologiens roll within architecture as code</h2>
+<p>Containers offers application-level virtualization as paketerar applications with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions that ensure consistency between development, testing and production environments.</p>
+<p>Docker has etablerat itself as the facto standard for containerization, with podman and andra alternatives offers daemon-less approaches for enhanced security. Container images are defined through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.</p>
+<p>Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, with image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation before deployment.</p>
+<h2 id="kubernetes-as-orchestration-platform">Kubernetes as orchestration platform</h2>
+<p>Kubernetes has emergerat as leading container orchestration platform through dess declarative configuration model and extensive ecosystem. YAML-based manifests definierar desired state for applications, services, and infrastructure components, which alignar perfekt with Architecture as Code principles.</p>
+<p>Kubernetes objects that Deployments, Services, ConfigMaps, and Secrets enables comprehensive application lifecycle management through code. Pod specifications, resource quotas, network policies, and persistent volume claims can all are defined declaratively and managed through version control systems.</p>
+<p>Helm charts extend Kubernetes capabilities through templating and package management for complex applications. Chart repositories enable reusable infrastructure patterns and standardized deployment procedures across different environments and organizational units.</p>
+<h2 id="service-mesh-and-advanced-networking">Service mesh and advanced networking</h2>
+<p>Service mesh architectures that Istio and Linkerd implementeras through Architecture as Code to handle inter-service communication, security policies, and observability. These platforms abstract networking complexity from application developers while providing fine-grained control through configuration files.</p>
+<p>Traffic management policies are defined as code for load balancing, circuit breaking, retry mechanisms, and canary deployments. Security policies for mutual TLS, access control, and authentication/authorization can be version controlled and automatically applied across service topologies.</p>
+<p>Observability configurations for tracing, metrics collection, and logging integration managed through declarative specifications. This enables comprehensive monitoring and debugging capabilities while maintaining consistency across distributed service architectures.</p>
+<h2 id="infrastructure-automation-with-container-platforms">Infrastructure automation with container platforms</h2>
+<p>Architecture as Code-principerna within This area</p>
+<p>Container-native infrastructure tools that Crossplane and Operator Framework extend Kubernetes for complete infrastructure management. These platforms enables provisioning and management of cloud resources through Kubernetes-native APIs and custom resource definitions.</p>
+<p>GitOps workflows implement continuous delivery for both applications and infrastructure through Git repositories as single source of truth. Tools that ArgoCD and Flux automate deployment processes through continuous monitoring of Git state and automatic reconciliation of cluster state.</p>
+<p>Multi-cluster management platforms centralize policy enforcement, resource allocation, and governance across distributed Kubernetes environments. Federation and cluster API specifications standardize cluster lifecycle management through declarative configurations.</p>
+<h2 id="persistent-storage-and-data-management">Persistent storage and data management</h2>
+<p>Persistent volume management for containerized applications requires careful consideration of performance, availability, and backup requirements. Storage classes and persistent volume claims are defined as infrastructure code for automated provisioning and lifecycle management.</p>
+<p>Database operators for PostgreSQL, MongoDB, and andra systems enable database-as-code deployment patterns. These operators handle complex operations as backup scheduling, high availability configuration, and automated recovery through custom resource definitions.</p>
+<p>Data protection strategies implementeras through backup operators and disaster recovery procedures definierade as code. This ensures consistent data protection policies across environments and automated recovery capabilities during incidents.</p>
+<h2 id="praktiska-example">Praktiska example</h2>
+<h3 id="kubernetes-deployment-configuration">Kubernetes Deployment Configuration</h3>
+<pre><code class="language-yaml"># app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-application
+  namespace: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-application
+  template:
+    metadata:
+      labels:
+        app: web-application
+    spec:
+      containers:
+      - name: app
+        image: registry.company.com/web-app:v1.2.3
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: &quot;256Mi&quot;
+            cpu: &quot;250m&quot;
+          limits:
+            memory: &quot;512Mi&quot;
+            cpu: &quot;500m&quot;
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-application-service
+spec:
+  selector:
+    app: web-application
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
+</code></pre>
+<h3 id="helm-chart-for-application-stack">Helm Chart for Application Stack</h3>
+<pre><code class="language-yaml"># values.yaml
+application:
+  name: web-application
+  image:
+    repository: registry.company.com/web-app
+    tag: &quot;v1.2.3&quot;
+    pullPolicy: IfNotPresent
+
+  replicas: 3
+
+  resources:
+    requests:
+      memory: &quot;256Mi&quot;
+      cpu: &quot;250m&quot;
+    limits:
+      memory: &quot;512Mi&quot;
+      cpu: &quot;500m&quot;
+
+database:
+  enabled: true
+  type: postgresql
+  version: &quot;14&quot;
+  persistence:
+    size: 10Gi
+    storageClass: &quot;fast-ssd&quot;
+
+monitoring:
+  enabled: true
+  prometheus:
+    scrapeInterval: 30s
+  grafana:
+    dashboards: true
+</code></pre>
+<h3 id="docker-compose-for-development-environment">Docker Compose for Development Environment</h3>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - &quot;8080:8080&quot;
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/appdb
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: appdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - &quot;5432:5432&quot;
+
+  redis:
+    image: redis:alpine
+    ports:
+      - &quot;6379:6379&quot;
+
+volumes:
+  postgres_data:
+</code></pre>
+<h3 id="terraform-for-kubernetes-cluster">Terraform for Kubernetes Cluster</h3>
+<pre><code class="language-hcl"># kubernetes-cluster.tf
+resource &quot;google_container_cluster&quot; &quot;primary&quot; {
+  name     = &quot;production-cluster&quot;
+  location = &quot;us-central1&quot;
+
+  remove_default_node_pool = true
+  initial_node_count       = 1
+
+  network    = google_compute_network.vpc.name
+  subnetwork = google_compute_subnetwork.subnet.name
+
+  release_channel {
+    channel = &quot;STABLE&quot;
+  }
+
+  workload_identity_config {
+    workload_pool = &quot;${var.project_id}.svc.id.goog&quot;
+  }
+
+  addons_config {
+    horizontal_pod_autoscaling {
+      disabled = false
+    }
+    network_policy_config {
+      disabled = false
+    }
+  }
+}
+
+resource &quot;google_container_node_pool&quot; &quot;primary_nodes&quot; {
+  name       = &quot;primary-node-pool&quot;
+  location   = &quot;us-central1&quot;
+  cluster    = google_container_cluster.primary.name
+  node_count = 3
+
+  node_config {
+    preemptible  = false
+    machine_type = &quot;e2-medium&quot;
+
+    service_account = google_service_account.kubernetes.email
+    oauth_scopes = [
+      &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+    ]
+  }
+
+  autoscaling {
+    min_node_count = 1
+    max_node_count = 10
+  }
+
+  management {
+    auto_repair  = true
+    auto_upgrade = true
+  }
+}
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Containerization and Orchestration as code transformerar application deployment from manual, error-prone processes to automated, reliable workflows. Kubernetes and associerade tools enables sophisticated application management through declarative configurations, with GitOps patterns ensures consistent and auditable deployment processes. Success requires comprehensive understanding of container networking, storage management, and security implications.</p>
+<h2 id="sources-and-referenser">Sources and referenser</h2>
+<ul>
+<li>Kubernetes Documentation. "Concepts and Architecture." The Kubernetes Project.</li>
+<li>Docker Inc. "Docker Architecture as Code best practices." Docker Documentation.</li>
+<li>Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.</li>
+<li>Helm Community. "Chart Development Guide." Helm Documentation.</li>
+<li>Istio Project. "Service Mesh Architecture." Istio Service Mesh.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

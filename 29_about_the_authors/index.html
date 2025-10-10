@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/29_about_the_authors/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>About the Authors - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="../06_cloud_architecture/" class="dropdown-item">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../28_glossary/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../30_appendix_code_examples/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/29_about_the_authors.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#about-the-authors" class="nav-link">About the Authors</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#huvudforfattare" class="nav-link">Huvudforfattare</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#bidragande-experter" class="nav-link">Bidragande experter</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#organizational-bidrag" class="nav-link">organizational bidrag</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#technical-implementation" class="nav-link">Technical implementation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#erkannanden" class="nav-link">Erkännanden</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#framtida-development" class="nav-link">Framtida development</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#licens-and-use" class="nav-link">Licens and use</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="about-the-authors">About the Authors</h1>
+<p>This chapter presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk application of Architecture as Code in Swedish organizations.</p>
+<p><img alt="Författare and bidragsgivare" src="images/diagram_25_authors.png" /></p>
+<p><em>a Overview over the experter and organisationer as format Contentset in This bok through sina bidrag within Architecture as Code and Architecture as Code (Architecture as Code).</em></p>
+<h2 id="huvudforfattare">Huvudforfattare</h2>
+<h3 id="kodarkitektur-bokverkstad">Kodarkitektur Bokverkstad</h3>
+<p><strong>Kodarkitektur Bokverkstad</strong> is The huvudsakliga redaktionella kraften behind This publikation. Organisationen represents a samling of svenska experter within architecture, infrastructure and system development as arbetat tosammans to create a heltäckande resurs for Swedish organizations.</p>
+<p><strong>Expertområden:</strong>
+- Architecture as Code metodologi
+- Architecture as Code Architecture as Code-implementation
+- DevOps and CI/CD automation
+- Molnarkitektur and containerisering
+- Security and compliance in svenska context</p>
+<p><strong>Background:</strong>
+Bokverkstaden grundades with målet to överbrygga klyftan between teoretiska arkitekturprinciper and praktisk Architecture as Code-implementation in Swedish organizations. by kombinera akademisk rigorositet with verklig branschexpertis has teamet created a resurs as talar direkt to svenska IT-organisationers behov.</p>
+<h2 id="bidragande-experter">Bidragande experter</h2>
+<h3 id="infrastrukturspecialister">Infrastrukturspecialister</h3>
+<p><strong>Svenska DevOps-community</strong> has bidragit with comprehensive praktisk knowledge about implementation of Architecture as Code in svenska environments. This grupp includes:</p>
+<ul>
+<li><strong>Molnarkitekter</strong> from ledande svenska teknologiforetag</li>
+<li><strong>DevOps Engineers</strong> with specialistkunskap within automation</li>
+<li><strong>Säkerhetsexperter</strong> with fokus at svenska compliance-requirements</li>
+<li><strong>system architects</strong> from both privata and offentliga organisationer</li>
+</ul>
+<h3 id="tekniska-granskare">Tekniska granskare</h3>
+<p>Book content has granskats of:</p>
+<ul>
+<li><strong>Senior molnarkitekter</strong> from svenska storforetag</li>
+<li><strong>Tekniska chefer</strong> within svensk finanssektor  </li>
+<li><strong>Compliance-specialister</strong> with expertis within svenska regelverk</li>
+<li><strong>Open source code-maintainers</strong> of Architecture as Code tool</li>
+</ul>
+<h3 id="contentssspecialister">Contentssspecialister</h3>
+<ul>
+<li><strong>Tekniska skribenter</strong> specialized at svensk IT-documentation</li>
+<li><strong>Utbildningsdesigners</strong> with fokus at vuxenutbildning within technology</li>
+<li><strong>Språkspecialister</strong> for technical svenska terminologi</li>
+</ul>
+<h2 id="organizational-bidrag">organizational bidrag</h2>
+<h3 id="kvadrat-ab">Kvadrat AB</h3>
+<p><strong>Kvadrat</strong> has bidragit as technical partner and designstöd for This publikation. Which svenskt teknologikonsultforetag has Kvadrat apporterat:</p>
+<p><strong>design and varumärke:</strong>
+- Professionell bokdesign and layout
+- Kvadrat-varumärkesintegrering in designsystem
+- HTML/CSS-baserat omslag-designsystem
+- Responsiv and print-vänlig design</p>
+<p><strong>technical infrastructure:</strong>
+- GitHub Actions CI/CD-pipeline development
+- Automatiserad Pandoc-configuration
+- Mermaid diagrams integration and styling
+- Multi-format export-funktionalitet</p>
+<p><strong>Kvalitetssäkring:</strong>
+- technical granskning of automation-workflows
+- validation of svenska terminologi and språkbruk
+- testing of build-processes and distribution</p>
+<h3 id="swedish-organizations">Swedish organizations</h3>
+<p>Flera Swedish organizations has bidragit with:</p>
+<ul>
+<li><strong>Fallstudier</strong> from verkliga Architecture as Code-implementations</li>
+<li><strong>Architecture as Code best practices</strong> from svenska molnmigreringar</li>
+<li><strong>Compliance-vägledning</strong> for svenska regelverk</li>
+<li><strong>Säkerhetsperspektiv</strong> from svenska cybersäkerhetsexperter</li>
+</ul>
+<h2 id="technical-implementation">Technical implementation</h2>
+<h3 id="bokproduktions-teamet">Bokproduktions-teamet</h3>
+<p>the technical teamet behind bokproduktionen includes:</p>
+<p><strong>Content Engineers:</strong>
+- Markdown-specialister for technical documentation
+- Pandoc-experter for multi-format publishing
+- LaTeX-specialister for professionell PDF-layout</p>
+<p><strong>DevOps Engineers:</strong>
+- GitHub Actions workflow-Developers
+- CI/CD automation-specialister
+- Build pipeline optimization-experter</p>
+<p><strong>Quality Assurance:</strong>
+- Tekniska testare for content validation
+- Language validators for svensk terminologi
+- Accessibility specialists for universal design</p>
+<h3 id="tools-and-technologies">Tools and technologies</h3>
+<p>This bok createdes with hjälp of:</p>
+<ul>
+<li><strong>Python 3.12</strong> for content generation and automation</li>
+<li><strong>Pandoc 3.1.9</strong> for document conversion and formatting</li>
+<li><strong>XeLaTeX</strong> with Eisvogel template for PDF-produktion</li>
+<li><strong>Mermaid CLI</strong> for diagram generation</li>
+<li><strong>GitHub Actions</strong> for CI/CD automation</li>
+<li><strong>React + TypeScript</strong> for web dashboard</li>
+<li><strong>Vite</strong> for modern web development</li>
+<li><strong>Tailwind CSS + shadcn/ui</strong> for konsistent design</li>
+</ul>
+<h2 id="erkannanden">Erkännanden</h2>
+<h3 id="open-source-code-community">Open source code-community</h3>
+<p>This bok builds on the enastående arbete as utforts of öppen source code-community within:</p>
+<ul>
+<li><strong>Terraform</strong> - Infrastructure as Code foundation</li>
+<li><strong>Ansible</strong> - Configuration management automation  </li>
+<li><strong>Docker</strong> - Containerization technology</li>
+<li><strong>Kubernetes</strong> - Container orchestration</li>
+<li><strong>Pandoc</strong> - Document conversion excellence</li>
+<li><strong>Mermaid</strong> - Diagram as Code visualization</li>
+</ul>
+<h3 id="svenska-technical-communities">Svenska technical communities</h3>
+<ul>
+<li><strong>SwedishCoders</strong> - For feedback at technical Contents</li>
+<li><strong>DevOps Stockholm</strong> - For praktiska case studies</li>
+<li><strong>Svenska molnarkitekter</strong> - For molnspecific bidrag</li>
+<li><strong>Säkerhetsspecialister Sverige</strong> - For compliance-vägledning</li>
+</ul>
+<h3 id="akademiska-institutioner">Akademiska institutioner</h3>
+<ul>
+<li><strong>KTH Royal Institute of Technology</strong> - For forskningsperspektiv</li>
+<li><strong>Linköpings universitet</strong> - For system architecture-expertis</li>
+<li><strong>Malmö universitet</strong> - For användarcentrerad design-principles</li>
+</ul>
+<h2 id="framtida-development">Framtida development</h2>
+<h3 id="continuous-improvement">Continuous improvement</h3>
+<p>This bok is designad as a levande resurs as is developed with:</p>
+<ul>
+<li><strong>Community feedback</strong> - Återkoppling from Swedish organizations</li>
+<li><strong>technical evolution</strong> - Uppdateringar when new tools and methods is developed</li>
+<li><strong>Praktiska lessons</strong> - Integration of new case studies and Architecture as Code best practices</li>
+<li><strong>Språkutveckling</strong> - Forfining of svensk technical terminologi</li>
+</ul>
+<h3 id="bidra-to-framtida-versions">Bidra to framtida versions</h3>
+<p>Vi välkomnar bidrag from svenska technical community:</p>
+<p><strong>Contentssbidrag:</strong>
+- Case studies from verkliga implementations
+- Best practices from Swedish organizations
+- new tools and technologies
+- Forbättrad språklig precision</p>
+<p><strong>Tekniska bidrag:</strong>
+- Kodexamples and automationsskript
+- Build pipeline improvements
+- new export-format and distributionskanaler
+- Accessibility and usability improvements</p>
+<h3 id="kontaktinformation">Kontaktinformation</h3>
+<p>For frågor, feedback or forslag to improvements:</p>
+<ul>
+<li><strong>GitHub Repository</strong>: <a href="https://github.com/Geonitab/kodarkitektur-bokverkstad">https://github.com/Geonitab/kodarkitektur-bokverkstad</a></li>
+<li><strong>Issues and Pull Requests</strong>: Välkomna for content and technical improvements</li>
+<li><strong>Diskussioner</strong>: GitHub Discussions for bredare samtal about Architecture as Code</li>
+</ul>
+<h2 id="licens-and-use">Licens and use</h2>
+<p>This bok is distributed under villkor as enables:</p>
+<ul>
+<li><strong>Fri distribution</strong> for utbildningsändamål</li>
+<li><strong>Anpassning</strong> for organisationsspecific behov</li>
+<li><strong>Kommersiell use</strong> with korrekt attribution</li>
+<li><strong>Översättning</strong> to andra language with bibehållen kvalitet</li>
+</ul>
+<p>All reuse should erkänna ursprungliga forfattare and bidragsgivare according to etablerade akademiska and technical standarder.</p>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+"Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team created a resurs as specific meets svenska organisationers behov within Architecture as Code and Architecture as Code.</p>
+<p>Bokens success will from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig value for svenska technical organisationer. Vi hoppas to This resurs will to accelerera adoptionen of Architecture as Code-principles and bidra to improved technical utfall over entire svenska tech-sektorn.</p>
+<p>Sources:
+- Kvadrat AB. "Swedish Technology Consulting Excellence." Foretagsprofil, 2024.
+- Svenska DevOps Community. "Architecture as Code Best Practices." Community Guidelines, 2024.
+- GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
+- Svenska Tekniska Standarder. "Technical Documentation in Swedish." Language Guidelines, 2024.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

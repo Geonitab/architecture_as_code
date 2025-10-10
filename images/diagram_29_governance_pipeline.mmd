@@ -1,0 +1,30 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#1c5d3f'
+    primaryTextColor: '#ffffff'
+    primaryBorderColor: '#114029'
+    lineColor: '#6ab187'
+    secondaryColor: '#f0c419'
+    tertiaryColor: '#ffffff'
+---
+%% Governance as Code approval flow across stakeholders
+sequenceDiagram
+    participant Author as Policy Author
+    participant Repo as Git Repository
+    participant CI as CI/CD Checks
+    participant Review as Governance Reviewers
+    participant Deploy as Production Controls
+
+    Author->>Repo: Draft governance update
+    Repo->>CI: Trigger automated policy tests
+    CI-->>Repo: Report compliance status
+    Repo->>Review: Open pull request for approval
+    Review-->>Repo: Provide review comments
+    Author->>Repo: Apply requested changes
+    Repo->>CI: Re-run automated tests
+    CI-->>Review: Confirm guardrails satisfied
+    Review->>Repo: Approve and merge change
+    Repo->>Deploy: Promote policy to production
+    Deploy-->>Author: Publish audit trail

@@ -1,0 +1,29 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
+---
+%%{init: {"theme": "base", "themeVariables": {"quadrant1Fill": "#BB2528", "quadrant2Fill": "#F8B229", "quadrant3Fill": "#7C0000", "quadrant4Fill": "#006100", "quadrant1TextFill": "#ffffff", "quadrant2TextFill": "#000000", "quadrant3TextFill": "#ffffff", "quadrant4TextFill": "#ffffff", "primaryColor": "#BB2528", "primaryTextColor": "#7C0000", "fontFamily": "Inter"}}}%%
+quadrantChart
+    title 🛠️ IaC Tool Selection Matrix - Quadrant Analysis
+    x-axis Low Multi-cloud Support --> High Multi-cloud Support
+    y-axis Low Ease of Use --> High Ease of Use
+    quadrant-1 🏆 Strategic Leaders
+    quadrant-2 ⚠️ Niche Players  
+    quadrant-3 ❌ Limited Utility
+    quadrant-4 🌟 Multi-platform Leaders
+    
+    Terraform: [0.9, 0.7]
+    CloudFormation: [0.2, 0.8]
+    Azure ARM: [0.2, 0.6]
+    Google CDM: [0.2, 0.7]
+    Ansible: [0.8, 0.8]
+    Pulumi: [0.8, 0.6]
+    AWS CDK: [0.7, 0.7]
+    Serverless: [0.6, 0.9]

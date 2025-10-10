@@ -1,0 +1,4143 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/06_cloud_architecture/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Cloud Architecture as Code - Architecture as Code</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Architecture as Code</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Overview</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href=".." class="dropdown-item">Welcome</a>
+</li>
+                                    
+<li>
+    <a href="../book_structure/" class="dropdown-item">Book Structure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 1 – Foundations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../01_introduction/" class="dropdown-item">Introduction to Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../02_fundamental_principles/" class="dropdown-item">Fundamental Principles of Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../03_version_control/" class="dropdown-item">Version Control and Code Structure</a>
+</li>
+                                    
+<li>
+    <a href="../04_adr/" class="dropdown-item">Architecture Decision Records (ADR)</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 2 – Architecture Platform</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../05_automation_devops_cicd/" class="dropdown-item">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Cloud Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../07_containerization/" class="dropdown-item">Containerization and Orchestration as Code</a>
+</li>
+                                    
+<li>
+    <a href="../08_microservices/" class="dropdown-item">Microservices Architecture as Code</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 3 – Security & Governance</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../09_security/" class="dropdown-item">Security in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../10_policy_and_security/" class="dropdown-item">Policy and Security as Code in Detail</a>
+</li>
+                                    
+<li>
+    <a href="../11_governance_as_code/" class="dropdown-item">Governance as Code</a>
+</li>
+                                    
+<li>
+    <a href="../12_compliance/" class="dropdown-item">Compliance and Regulatory Adherence</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 4 – Delivery & Operations</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../13_testing_strategies/" class="dropdown-item">Testing Strategies for Infrastructure Code</a>
+</li>
+                                    
+<li>
+    <a href="../14_practical_implementation/" class="dropdown-item">Architecture as Code in Practice</a>
+</li>
+                                    
+<li>
+    <a href="../15_cost_optimization/" class="dropdown-item">Cost Optimization and Resource Management</a>
+</li>
+                                    
+<li>
+    <a href="../16_migration/" class="dropdown-item">Migration from Traditional Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 5 – Organization & Leadership</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../17_organizational_change/" class="dropdown-item">Organizational Change and Team Structures</a>
+</li>
+                                    
+<li>
+    <a href="../18_team_structure/" class="dropdown-item">Team Structure and Competency Development for IaC</a>
+</li>
+                                    
+<li>
+    <a href="../19_management_as_code/" class="dropdown-item">Management as Code</a>
+</li>
+                                    
+<li>
+    <a href="../20_ai_agent_team/" class="dropdown-item">AI Agent Team for Architecture as Code Initiatives</a>
+</li>
+                                    
+<li>
+    <a href="../21_digitalization/" class="dropdown-item">Digitalization through Code-based Infrastructure</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 6 – Experience & Best Practices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../22_lovable_mockups/" class="dropdown-item">Using Lovable to Create Mockups for Swedish Organizations</a>
+</li>
+                                    
+<li>
+    <a href="../23_soft_as_code_interplay/" class="dropdown-item">Interplay Between Soft-As-Code Disciplines</a>
+</li>
+                                    
+<li>
+    <a href="../24_best_practices/" class="dropdown-item">Best Practices and Lessons Learned</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Part 7 – Future & Wrap-up</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../25_future_trends/" class="dropdown-item">Future Trends in Architecture as Code</a>
+</li>
+                                    
+<li>
+    <a href="../26_future_development/" class="dropdown-item">Future Development</a>
+</li>
+                                    
+<li>
+    <a href="../27_conclusion/" class="dropdown-item">Conclusion</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Appendices</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../28_glossary/" class="dropdown-item">Glossary</a>
+</li>
+                                    
+<li>
+    <a href="../29_about_the_authors/" class="dropdown-item">About the Authors</a>
+</li>
+                                    
+<li>
+    <a href="../30_appendix_code_examples/" class="dropdown-item">Appendix A – Code Examples and Technical Implementations</a>
+</li>
+                                    
+<li>
+    <a href="../31_technical_architecture/" class="dropdown-item">Technical Structure for Book Production</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../05_automation_devops_cicd/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../07_containerization/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/example/architecture_as_code/edit/master/docs/06_cloud_architecture.md" class="nav-link">Edit on architecture_as_code
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#cloud-architecture-as-code" class="nav-link">Cloud Architecture as Code</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#molnleverantorers-ekosystem-for-architecture-as-code" class="nav-link">Molnleverantörers ekosystem for Architecture as Code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cloud-native-architecture-as-code-patterns" class="nav-link">Cloud-native architecture as code patterns</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#multi-cloud-strategier" class="nav-link">Multi-cloud strategier</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#serverless-infrastruktur" class="nav-link">Serverless infrastruktur</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#praktiska-architecture-as-code-implementationsexempel" class="nav-link">Praktiska architecture as code-implementationsexempel</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="cloud-architecture-as-code">Cloud Architecture as Code</h1>
+<p>Cloud Architecture as Code represents The natural utvecklingen of Architecture as Code in cloud-based environments. by utnyttja cloud providers' APIs and services can organisationer create skalbara, motståndskraftiga and kostnadseffektiva arkitekturer helt through Architecture as Code. Which vi saw in <a href="02_kapitel1.md">chapter 2 about Fundamental principles</a>, is This metod Fundamental for modern organisationer as strävar efter digital omvandling and operativ excellence.</p>
+<p><img alt="Cloud Architecture as Code" src="../images/diagram_05_kapitel4.png" /></p>
+<p>Diagram illustrerar progression from multi-cloud environments through provider abstraction and resource management to state management and cross-region deployment capabilities. This progression enables The typ of skalbar Architecture as Code-automation as vi will to fordjupa in <a href="04_kapitel3.md">chapter 4 about CI/CD-pipelines</a> and The organizational change as diskuteras in <a href="10_kapitel9.md">chapter 10</a>.</p>
+<h2 id="molnleverantorers-ekosystem-for-architecture-as-code">Molnleverantörers ekosystem for Architecture as Code</h2>
+<p>Swedish organizations face A rich selection of cloud providers, var and a with their own styrkor and specialiseringar. to achieve successful cloud adoption must organisationer understand each leverantörs unique capabilities and how These can utnyttjas through Architecture as Code approaches.</p>
+<h3 id="amazon-web-services-aws-and-swedish-organizations">Amazon Web Services (AWS) and Swedish organizations</h3>
+<p>AWS dominerar The globala molnmarknaden and has etablerat strong whenvaro in Sverige through datacenters in Stockholm-regionen. For Swedish organizations offers AWS comprehensive services as is particularly relevanta for lokala compliance-requirements and performance-behov.</p>
+<p><strong>AWS CloudFormation</strong> forms AWS:s native Infrastructure as Code-service as enables declarative definition of AWS-resurser through JSON or YAML templates. CloudFormation handles resource dependencies automatically and ensures infrastructure deployments is reproducerbara and återställningscapable:</p>
+<p>For a detaljerad CloudFormation template as implement VPC configuration for Swedish organizations with GDPR compliance, se <a href="#07_CODE_1">07_CODE_1: VPC Konfiguration for Swedish organizations</a> in Appendix A.</p>
+<p><strong>AWS CDK (Cloud Development Kit)</strong> revolutionerar Architecture as Code by enable definition of cloud resources with programmeringsspråk that TypeScript, Python, Java and C#. For svenska utvecklarteam as redan behärskar These language reduces CDK learning curve and enables reuse of existing programmeringskunskaper:</p>
+<pre><code class="language-typescript">// cdk/svenska-org-infrastructure.ts
+import * as cdk from 'aws-cdk-lib';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as rds from 'aws-cdk-lib/aws-rds';
+import * as logs from 'aws-cdk-lib/aws-logs';
+import * as kms from 'aws-cdk-lib/aws-kms';
+import { Construct } from 'constructs';
+
+export interface SvenskaOrgInfrastructureProps extends cdk.StackProps {
+  environment: 'development' | 'staging' | 'production';
+  dataClassification: 'public' | 'internal' | 'confidential' | 'restricted';
+  complianceRequirements: string[];
+  costCenter: string;
+  organizationalUnit: string;
+}
+
+export class SvenskaOrgInfrastructureStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props: SvenskaOrgInfrastructureProps) {
+    super(scope, id, props);
+
+    // Definiera common tags for all resurser
+    const commonTags = {
+      Environment: props.environment,
+      DataClassification: props.dataClassification,
+      CostCenter: props.costCenter,
+      OrganizationalUnit: props.organizationalUnit,
+      Country: 'Sweden',
+      Region: 'eu-north-1',
+      ComplianceRequirements: props.complianceRequirements.join(','),
+      ManagedBy: 'AWS-CDK',
+      LastUpdated: new Date().toISOString().split('T')[0]
+    };
+
+    // Skapa VPC with svenska security requirements
+    const vpc = new ec2.Vpc(this, 'SvenskaOrgVPC', {
+      cidr: props.environment === 'production' ? '10.0.0.0/16' : '10.1.0.0/16',
+      maxAzs: props.environment === 'production' ? 3 : 2,
+      enableDnsHostnames: true,
+      enableDnsSupport: true,
+      subnetConfiguration: [
+        {
+          cidrMask: 24,
+          name: 'Public',
+          subnetType: ec2.SubnetType.PUBLIC,
+        },
+        {
+          cidrMask: 24,
+          name: 'Private',
+          subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
+        },
+        {
+          cidrMask: 24,
+          name: 'Database',
+          subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+        }
+      ],
+      flowLogs: {
+        cloudwatch: {
+          logRetention: logs.RetentionDays.THREE_MONTHS
+        }
+      }
+    });
+
+    // Tillämpa common tags at VPC
+    Object.entries(commonTags).forEach(([key, value]) =&gt; {
+      cdk.Tags.of(vpc).add(key, value);
+    });
+
+    // GDPR-compliant KMS key for databaskryptering
+    const databaseEncryptionKey = new kms.Key(this, 'DatabaseEncryptionKey', {
+      description: 'KMS key for databaskryptering according to GDPR-requirements',
+      enableKeyRotation: true,
+      removalPolicy: props.environment === 'production' ? 
+        cdk.RemovalPolicy.RETAIN : cdk.RemovalPolicy.DESTROY
+    });
+
+    // Database subnet group for isolerad databas-tier
+    const dbSubnetGroup = new rds.SubnetGroup(this, 'DatabaseSubnetGroup', {
+      vpc,
+      description: 'Subnet group for GDPR-compliant databaser',
+      vpcSubnets: {
+        subnetType: ec2.SubnetType.PRIVATE_ISOLATED
+      }
+    });
+
+    // RDS instans with svenska security requirements
+    if (props.environment === 'production') {
+      const database = new rds.DatabaseInstance(this, 'PrimaryDatabase', {
+        engine: rds.DatabaseInstanceEngine.postgres({
+          version: rds.PostgresEngineVersion.VER_15_4
+        }),
+        instanceType: ec2.InstanceType.of(ec2.InstanceClass.R5, ec2.InstanceSize.LARGE),
+        vpc,
+        subnetGroup: dbSubnetGroup,
+        storageEncrypted: true,
+        storageEncryptionKey: databaseEncryptionKey,
+        backupRetention: cdk.Duration.days(30),
+        deletionProtection: true,
+        deleteAutomatedBackups: false,
+        enablePerformanceInsights: true,
+        monitoringInterval: cdk.Duration.seconds(60),
+        cloudwatchLogsExports: ['postgresql'],
+        parameters: {
+          // Svenska tidszon and locale
+          'timezone': 'Europe/Stockholm',
+          'lc_messages': 'sv_SE.UTF-8',
+          'lc_monetary': 'sv_SE.UTF-8',
+          'lc_numeric': 'sv_SE.UTF-8',
+          'lc_time': 'sv_SE.UTF-8',
+          // GDPR-relevanta inställningar
+          'log_statement': 'all',
+          'log_min_duration_statement': '0',
+          'shared_preload_libraries': 'pg_stat_statements',
+          // Säkerhetsinställningar
+          'ssl': 'on',
+          'ssl_ciphers': 'HIGH:!aNULL:!MD5',
+          'ssl_prefer_server_ciphers': 'on'
+        }
+      });
+
+      // Tillämpa svenska compliance tags
+      cdk.Tags.of(database).add('DataResidency', 'Sweden');
+      cdk.Tags.of(database).add('GDPRCompliant', 'true');
+      cdk.Tags.of(database).add('ISO27001Compliant', 'true');
+      cdk.Tags.of(database).add('BackupRetention', '30-days');
+    }
+
+    // Security groups with svenska security standards
+    const webSecurityGroup = new ec2.SecurityGroup(this, 'WebSecurityGroup', {
+      vpc,
+      description: 'Security group for web tier according to svenska security requirements',
+      allowAllOutbound: false
+    });
+
+    // Begränsa inkommande trafik to HTTPS endast
+    webSecurityGroup.addIngressRule(
+      ec2.Peer.anyIpv4(),
+      ec2.Port.tcp(443),
+      'HTTPS from internet'
+    );
+
+    // Tillåt utgående trafik endast to necessary services
+    webSecurityGroup.addEgressRule(
+      ec2.Peer.anyIpv4(),
+      ec2.Port.tcp(443),
+      'HTTPS utgående'
+    );
+
+    // Application security group with restriktiv access
+    const appSecurityGroup = new ec2.SecurityGroup(this, 'AppSecurityGroup', {
+      vpc,
+      description: 'Security group for application tier',
+      allowAllOutbound: false
+    });
+
+    appSecurityGroup.addIngressRule(
+      webSecurityGroup,
+      ec2.Port.tcp(8080),
+      'Trafik from web tier'
+    );
+
+    // Database security group - endast from app tier
+    const dbSecurityGroup = new ec2.SecurityGroup(this, 'DatabaseSecurityGroup', {
+      vpc,
+      description: 'Security group for database tier with minimal access',
+      allowAllOutbound: false
+    });
+
+    dbSecurityGroup.addIngressRule(
+      appSecurityGroup,
+      ec2.Port.tcp(5432),
+      'PostgreSQL from application tier'
+    );
+
+    // VPC Endpoints for AWS services (undviker data exfiltration via internet)
+    const s3Endpoint = vpc.addGatewayEndpoint('S3Endpoint', {
+      service: ec2.GatewayVpcEndpointAwsService.S3
+    });
+
+    const ec2Endpoint = vpc.addInterfaceEndpoint('EC2Endpoint', {
+      service: ec2.InterfaceVpcEndpointAwsService.EC2,
+      privateDnsEnabled: true
+    });
+
+    const rdsEndpoint = vpc.addInterfaceEndpoint('RDSEndpoint', {
+      service: ec2.InterfaceVpcEndpointAwsService.RDS,
+      privateDnsEnabled: true
+    });
+
+    // CloudWatch for monitoring and GDPR compliance logging
+    const monitoringLogGroup = new logs.LogGroup(this, 'MonitoringLogGroup', {
+      logGroupName: `/aws/svenska-org/${props.environment}/monitoring`,
+      retention: logs.RetentionDays.THREE_MONTHS,
+      encryptionKey: databaseEncryptionKey
+    });
+
+    // Outputs for cross-stack references
+    new cdk.CfnOutput(this, 'VPCId', {
+      value: vpc.vpcId,
+      description: 'VPC ID for svenska organisationen',
+      exportName: `${this.stackName}-VPC-ID`
+    });
+
+    new cdk.CfnOutput(this, 'ComplianceStatus', {
+      value: JSON.stringify({
+        gdprCompliant: props.complianceRequirements.includes('gdpr'),
+        iso27001Compliant: props.complianceRequirements.includes('iso27001'),
+        dataResidency: 'Sweden',
+        encryptionEnabled: true,
+        auditLoggingEnabled: true
+      }),
+      description: 'Compliance status for deployed infrastructure'
+    });
+  }
+
+  // Metod to lägga to svenska holidayschedules for cost optimization
+  addSwedishHolidayScheduling(resource: cdk.Resource) {
+    const swedishHolidays = [
+      '2024-01-01', // Nyårsdagen
+      '2024-01-06', // Trettondedag jul
+      '2024-03-29', // Långfredagen
+      '2024-04-01', // Annandag påsk
+      '2024-05-01', // Första maj
+      '2024-05-09', // Kristi himmelsfärdsdag
+      '2024-05-20', // Annandag pingst
+      '2024-06-21', // Midsommarafton
+      '2024-06-22', // Midsommardagen
+      '2024-11-02', // all helgons dag
+      '2024-12-24', // Julafton
+      '2024-12-25', // Juldagen
+      '2024-12-26', // Annandag jul
+      '2024-12-31'  // Nyårsafton
+    ];
+
+    cdk.Tags.of(resource).add('SwedishHolidays', swedishHolidays.join(','));
+    cdk.Tags.of(resource).add('CostOptimization', 'SwedishSchedule');
+  }
+}
+
+// Usage example
+const app = new cdk.App();
+
+new SvenskaOrgInfrastructureStack(app, 'SvenskaOrgDev', {
+  environment: 'development',
+  dataClassification: 'internal',
+  complianceRequirements: ['gdpr'],
+  costCenter: 'CC-1001',
+  organizationalUnit: 'IT-Development',
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: 'eu-north-1'
+  }
+});
+
+new SvenskaOrgInfrastructureStack(app, 'SvenskaOrgProd', {
+  environment: 'production',
+  dataClassification: 'confidential',
+  complianceRequirements: ['gdpr', 'iso27001'],
+  costCenter: 'CC-2001',
+  organizationalUnit: 'IT-Production',
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: 'eu-north-1'
+  }
+});
+</code></pre>
+<h3 id="microsoft-azure-for-swedish-organizations">Microsoft Azure for Swedish organizations</h3>
+<p>Microsoft Azure has developed strong position in Sverige, particularly within the public sector and traditional enterprise-organisationer. Azure Resource Manager (ARM) templates and Bicep forms Microsofts primary Architecture as Code offerings.</p>
+<p><strong>Azure Resource Manager (ARM) Templates</strong> enables declarative definition of Azure-resurser through JSON-baserade templates. For Swedish organizations as redan uses Microsoft-produkter forms ARM templates a naturlig extension of existing Microsoft-skickigheter:</p>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#&quot;,
+  &quot;contentVersion&quot;: &quot;1.0.0.0&quot;,
+  &quot;metadata&quot;: {
+    &quot;description&quot;: &quot;Azure infrastructure for Swedish organizations with GDPR compliance&quot;,
+    &quot;author&quot;: &quot;Svenska IT-avdelningen&quot;
+  },
+  &quot;parameters&quot;: {
+    &quot;environmentType&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;defaultValue&quot;: &quot;development&quot;,
+      &quot;allowedValues&quot;: [&quot;development&quot;, &quot;staging&quot;, &quot;production&quot;],
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Miljötyp for deployment&quot;
+      }
+    },
+    &quot;dataClassification&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;defaultValue&quot;: &quot;internal&quot;,
+      &quot;allowedValues&quot;: [&quot;public&quot;, &quot;internal&quot;, &quot;confidential&quot;, &quot;restricted&quot;],
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Dataklassificering according to svenska security standards&quot;
+      }
+    },
+    &quot;organizationName&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;defaultValue&quot;: &quot;svenska-org&quot;,
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Organisationsnamn for resource naming&quot;
+      }
+    },
+    &quot;costCenter&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Kostnadscenter for fakturering&quot;
+      }
+    },
+    &quot;gdprCompliance&quot;: {
+      &quot;type&quot;: &quot;bool&quot;,
+      &quot;defaultValue&quot;: true,
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Aktivera GDPR compliance features&quot;
+      }
+    }
+  },
+  &quot;variables&quot;: {
+    &quot;resourcePrefix&quot;: &quot;[concat(parameters('organizationName'), '-', parameters('environmentType'))]&quot;,
+    &quot;location&quot;: &quot;Sweden Central&quot;,
+    &quot;vnetName&quot;: &quot;[concat(variables('resourcePrefix'), '-vnet')]&quot;,
+    &quot;subnetNames&quot;: {
+      &quot;web&quot;: &quot;[concat(variables('resourcePrefix'), '-web-subnet')]&quot;,
+      &quot;app&quot;: &quot;[concat(variables('resourcePrefix'), '-app-subnet')]&quot;,
+      &quot;database&quot;: &quot;[concat(variables('resourcePrefix'), '-db-subnet')]&quot;
+    },
+    &quot;nsgNames&quot;: {
+      &quot;web&quot;: &quot;[concat(variables('resourcePrefix'), '-web-nsg')]&quot;,
+      &quot;app&quot;: &quot;[concat(variables('resourcePrefix'), '-app-nsg')]&quot;,
+      &quot;database&quot;: &quot;[concat(variables('resourcePrefix'), '-db-nsg')]&quot;
+    },
+    &quot;commonTags&quot;: {
+      &quot;Environment&quot;: &quot;[parameters('environmentType')]&quot;,
+      &quot;DataClassification&quot;: &quot;[parameters('dataClassification')]&quot;,
+      &quot;CostCenter&quot;: &quot;[parameters('costCenter')]&quot;,
+      &quot;Country&quot;: &quot;Sweden&quot;,
+      &quot;Region&quot;: &quot;Sweden Central&quot;,
+      &quot;GDPRCompliant&quot;: &quot;[string(parameters('gdprCompliance'))]&quot;,
+      &quot;ManagedBy&quot;: &quot;ARM-Template&quot;,
+      &quot;LastDeployed&quot;: &quot;[utcNow()]&quot;
+    }
+  },
+  &quot;resources&quot;: [
+    {
+      &quot;type&quot;: &quot;Microsoft.Network/virtualNetworks&quot;,
+      &quot;apiVersion&quot;: &quot;2023-04-01&quot;,
+      &quot;name&quot;: &quot;[variables('vnetName')]&quot;,
+      &quot;location&quot;: &quot;[variables('location')]&quot;,
+      &quot;tags&quot;: &quot;[variables('commonTags')]&quot;,
+      &quot;properties&quot;: {
+        &quot;addressSpace&quot;: {
+          &quot;addressPrefixes&quot;: [
+            &quot;[if(equals(parameters('environmentType'), 'production'), '10.0.0.0/16', '10.1.0.0/16')]&quot;
+          ]
+        },
+        &quot;enableDdosProtection&quot;: &quot;[equals(parameters('environmentType'), 'production')]&quot;,
+        &quot;subnets&quot;: [
+          {
+            &quot;name&quot;: &quot;[variables('subnetNames').web]&quot;,
+            &quot;properties&quot;: {
+              &quot;addressPrefix&quot;: &quot;[if(equals(parameters('environmentType'), 'production'), '10.0.1.0/24', '10.1.1.0/24')]&quot;,
+              &quot;networkSecurityGroup&quot;: {
+                &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgNames').web)]&quot;
+              },
+              &quot;serviceEndpoints&quot;: [
+                {
+                  &quot;service&quot;: &quot;Microsoft.Storage&quot;,
+                  &quot;locations&quot;: [&quot;Sweden Central&quot;, &quot;Sweden South&quot;]
+                },
+                {
+                  &quot;service&quot;: &quot;Microsoft.KeyVault&quot;,
+                  &quot;locations&quot;: [&quot;Sweden Central&quot;, &quot;Sweden South&quot;]
+                }
+              ]
+            }
+          },
+          {
+            &quot;name&quot;: &quot;[variables('subnetNames').app]&quot;,
+            &quot;properties&quot;: {
+              &quot;addressPrefix&quot;: &quot;[if(equals(parameters('environmentType'), 'production'), '10.0.2.0/24', '10.1.2.0/24')]&quot;,
+              &quot;networkSecurityGroup&quot;: {
+                &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgNames').app)]&quot;
+              },
+              &quot;serviceEndpoints&quot;: [
+                {
+                  &quot;service&quot;: &quot;Microsoft.Sql&quot;,
+                  &quot;locations&quot;: [&quot;Sweden Central&quot;, &quot;Sweden South&quot;]
+                }
+              ]
+            }
+          },
+          {
+            &quot;name&quot;: &quot;[variables('subnetNames').database]&quot;,
+            &quot;properties&quot;: {
+              &quot;addressPrefix&quot;: &quot;[if(equals(parameters('environmentType'), 'production'), '10.0.3.0/24', '10.1.3.0/24')]&quot;,
+              &quot;networkSecurityGroup&quot;: {
+                &quot;id&quot;: &quot;[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgNames').database)]&quot;
+              },
+              &quot;delegations&quot;: [
+                {
+                  &quot;name&quot;: &quot;Microsoft.DBforPostgreSQL/flexibleServers&quot;,
+                  &quot;properties&quot;: {
+                    &quot;serviceName&quot;: &quot;Microsoft.DBforPostgreSQL/flexibleServers&quot;
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      &quot;dependsOn&quot;: [
+        &quot;[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgNames').web)]&quot;,
+        &quot;[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgNames').app)]&quot;,
+        &quot;[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgNames').database)]&quot;
+      ]
+    },
+    {
+      &quot;type&quot;: &quot;Microsoft.Network/networkSecurityGroups&quot;,
+      &quot;apiVersion&quot;: &quot;2023-04-01&quot;,
+      &quot;name&quot;: &quot;[variables('nsgNames').web]&quot;,
+      &quot;location&quot;: &quot;[variables('location')]&quot;,
+      &quot;tags&quot;: &quot;[union(variables('commonTags'), createObject('Tier', 'Web'))]&quot;,
+      &quot;properties&quot;: {
+        &quot;securityRules&quot;: [
+          {
+            &quot;name&quot;: &quot;Allow-HTTPS-Inbound&quot;,
+            &quot;properties&quot;: {
+              &quot;description&quot;: &quot;Tillåt HTTPS trafik from internet&quot;,
+              &quot;protocol&quot;: &quot;Tcp&quot;,
+              &quot;sourcePortRange&quot;: &quot;*&quot;,
+              &quot;destinationPortRange&quot;: &quot;443&quot;,
+              &quot;sourceAddressPrefix&quot;: &quot;Internet&quot;,
+              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+              &quot;access&quot;: &quot;Allow&quot;,
+              &quot;priority&quot;: 100,
+              &quot;direction&quot;: &quot;Inbound&quot;
+            }
+          },
+          {
+            &quot;name&quot;: &quot;Allow-HTTP-Redirect&quot;,
+            &quot;properties&quot;: {
+              &quot;description&quot;: &quot;Tillåt HTTP for redirect to HTTPS&quot;,
+              &quot;protocol&quot;: &quot;Tcp&quot;,
+              &quot;sourcePortRange&quot;: &quot;*&quot;,
+              &quot;destinationPortRange&quot;: &quot;80&quot;,
+              &quot;sourceAddressPrefix&quot;: &quot;Internet&quot;,
+              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+              &quot;access&quot;: &quot;Allow&quot;,
+              &quot;priority&quot;: 110,
+              &quot;direction&quot;: &quot;Inbound&quot;
+            }
+          },
+          {
+            &quot;name&quot;: &quot;Deny-All-Inbound&quot;,
+            &quot;properties&quot;: {
+              &quot;description&quot;: &quot;Neka all other inkommande trafik&quot;,
+              &quot;protocol&quot;: &quot;*&quot;,
+              &quot;sourcePortRange&quot;: &quot;*&quot;,
+              &quot;destinationPortRange&quot;: &quot;*&quot;,
+              &quot;sourceAddressPrefix&quot;: &quot;*&quot;,
+              &quot;destinationAddressPrefix&quot;: &quot;*&quot;,
+              &quot;access&quot;: &quot;Deny&quot;,
+              &quot;priority&quot;: 4096,
+              &quot;direction&quot;: &quot;Inbound&quot;
+            }
+          }
+        ]
+      }
+    },
+    {
+      &quot;condition&quot;: &quot;[parameters('gdprCompliance')]&quot;,
+      &quot;type&quot;: &quot;Microsoft.KeyVault/vaults&quot;,
+      &quot;apiVersion&quot;: &quot;2023-02-01&quot;,
+      &quot;name&quot;: &quot;[concat(variables('resourcePrefix'), '-kv')]&quot;,
+      &quot;location&quot;: &quot;[variables('location')]&quot;,
+      &quot;tags&quot;: &quot;[union(variables('commonTags'), createObject('Purpose', 'GDPR-Compliance'))]&quot;,
+      &quot;properties&quot;: {
+        &quot;sku&quot;: {
+          &quot;family&quot;: &quot;A&quot;,
+          &quot;name&quot;: &quot;standard&quot;
+        },
+        &quot;tenantId&quot;: &quot;[subscription().tenantId]&quot;,
+        &quot;enabledForDeployment&quot;: false,
+        &quot;enabledForDiskEncryption&quot;: true,
+        &quot;enabledForTemplateDeployment&quot;: true,
+        &quot;enableSoftDelete&quot;: true,
+        &quot;softDeleteRetentionInDays&quot;: 90,
+        &quot;enablePurgeProtection&quot;: &quot;[equals(parameters('environmentType'), 'production')]&quot;,
+        &quot;enableRbacAuthorization&quot;: true,
+        &quot;networkAcls&quot;: {
+          &quot;defaultAction&quot;: &quot;Deny&quot;,
+          &quot;bypass&quot;: &quot;AzureServices&quot;,
+          &quot;virtualNetworkRules&quot;: [
+            {
+              &quot;id&quot;: &quot;[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('subnetNames').app)]&quot;,
+              &quot;ignoreMissingVnetServiceEndpoint&quot;: false
+            }
+          ]
+        }
+      },
+      &quot;dependsOn&quot;: [
+        &quot;[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]&quot;
+      ]
+    }
+  ],
+  &quot;outputs&quot;: {
+    &quot;vnetId&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;value&quot;: &quot;[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]&quot;,
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Resource ID for the createde virtual network&quot;
+      }
+    },
+    &quot;subnetIds&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;value&quot;: {
+        &quot;web&quot;: &quot;[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('subnetNames').web)]&quot;,
+        &quot;app&quot;: &quot;[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('subnetNames').app)]&quot;,
+        &quot;database&quot;: &quot;[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'), variables('subnetNames').database)]&quot;
+      },
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Resource IDs for all createde subnets&quot;
+      }
+    },
+    &quot;complianceStatus&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;value&quot;: {
+        &quot;gdprCompliant&quot;: &quot;[parameters('gdprCompliance')]&quot;,
+        &quot;dataResidency&quot;: &quot;Sweden&quot;,
+        &quot;encryptionEnabled&quot;: true,
+        &quot;auditLoggingEnabled&quot;: true,
+        &quot;networkSegmentation&quot;: true,
+        &quot;accessControlEnabled&quot;: true
+      },
+      &quot;metadata&quot;: {
+        &quot;description&quot;: &quot;Compliance status for deployed infrastructure&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p><strong>Azure Bicep</strong> represents next generation of ARM templates with improved syntax and developer experience. Bicep kompilerar to ARM templates but offers mer läsbar and maintainable code:</p>
+<pre><code class="language-bicep">// bicep/svenska-org-infrastructure.bicep
+// Azure Bicep for Swedish organizations with GDPR compliance
+
+@description('Miljötyp for deployment')
+@allowed(['development', 'staging', 'production'])
+param environmentType string = 'development'
+
+@description('Dataklassificering according to svenska security standards')
+@allowed(['public', 'internal', 'confidential', 'restricted'])
+param dataClassification string = 'internal'
+
+@description('Organisationsnamn for resource naming')
+param organizationName string = 'svenska-org'
+
+@description('Kostnadscenter for fakturering')
+param costCenter string
+
+@description('Aktivera GDPR compliance features')
+param gdprCompliance bool = true
+
+@description('Lista over compliance-requirements')
+param complianceRequirements array = ['gdpr']
+
+// Variabler for konsistent naming and configuration
+var resourcePrefix = '${organizationName}-${environmentType}'
+var location = 'Sweden Central'
+var isProduction = environmentType == 'production'
+
+// Common tags for all resurser
+var commonTags = {
+  Environment: environmentType
+  DataClassification: dataClassification
+  CostCenter: costCenter
+  Country: 'Sweden'
+  Region: 'Sweden Central'
+  GDPRCompliant: string(gdprCompliance)
+  ComplianceRequirements: join(complianceRequirements, ',')
+  ManagedBy: 'Azure-Bicep'
+  LastDeployed: utcNow('yyyy-MM-dd')
+}
+
+// Log Analytics Workspace for Swedish organizations
+resource logAnalytics 'Microsoft.OperationalInsights/workspaces@2023-09-01' = if (gdprCompliance) {
+  name: '${resourcePrefix}-law'
+  location: location
+  tags: union(commonTags, {
+    Purpose: 'GDPR-Compliance-Logging'
+  })
+  properties: {
+    sku: {
+      name: 'PerGB2018'
+    }
+    retentionInDays: isProduction ? 90 : 30
+    features: {
+      searchVersion: 1
+      legacy: false
+      enableLogAccessUsingOnlyResourcePermissions: true
+    }
+    workspaceCapping: {
+      dailyQuotaGb: isProduction ? 50 : 10
+    }
+    publicNetworkAccessForIngestion: 'Disabled'
+    publicNetworkAccessForQuery: 'Disabled'
+  }
+}
+
+// Key Vault for secure handling of secrets and encryption keys
+resource keyVault 'Microsoft.KeyVault/vaults@2023-02-01' = if (gdprCompliance) {
+  name: '${resourcePrefix}-kv'
+  location: location
+  tags: union(commonTags, {
+    Purpose: 'Secret-Management'
+  })
+  properties: {
+    sku: {
+      family: 'A'
+      name: 'standard'
+    }
+    tenantId: subscription().tenantId
+    enabledForDeployment: false
+    enabledForDiskEncryption: true
+    enabledForTemplateDeployment: true
+    enableSoftDelete: true
+    softDeleteRetentionInDays: 90
+    enablePurgeProtection: isProduction
+    enableRbacAuthorization: true
+    networkAcls: {
+      defaultAction: 'Deny'
+      bypass: 'AzureServices'
+    }
+  }
+}
+
+// Virtual Network with svenska security requirements
+resource vnet 'Microsoft.Network/virtualNetworks@2023-04-01' = {
+  name: '${resourcePrefix}-vnet'
+  location: location
+  tags: commonTags
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        isProduction ? '10.0.0.0/16' : '10.1.0.0/16'
+      ]
+    }
+    enableDdosProtection: isProduction
+    subnets: [
+      {
+        name: 'web-subnet'
+        properties: {
+          addressPrefix: isProduction ? '10.0.1.0/24' : '10.1.1.0/24'
+          networkSecurityGroup: {
+            id: webNsg.id
+          }
+          serviceEndpoints: [
+            {
+              service: 'Microsoft.Storage'
+              locations: ['Sweden Central', 'Sweden South']
+            }
+            {
+              service: 'Microsoft.KeyVault'
+              locations: ['Sweden Central', 'Sweden South']
+            }
+          ]
+        }
+      }
+      {
+        name: 'app-subnet'
+        properties: {
+          addressPrefix: isProduction ? '10.0.2.0/24' : '10.1.2.0/24'
+          networkSecurityGroup: {
+            id: appNsg.id
+          }
+          serviceEndpoints: [
+            {
+              service: 'Microsoft.Sql'
+              locations: ['Sweden Central', 'Sweden South']
+            }
+          ]
+        }
+      }
+      {
+        name: 'database-subnet'
+        properties: {
+          addressPrefix: isProduction ? '10.0.3.0/24' : '10.1.3.0/24'
+          networkSecurityGroup: {
+            id: dbNsg.id
+          }
+          delegations: [
+            {
+              name: 'Microsoft.DBforPostgreSQL/flexibleServers'
+              properties: {
+                serviceName: 'Microsoft.DBforPostgreSQL/flexibleServers'
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+
+// Network Security Groups with restriktiva säkerhetsregler
+resource webNsg 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
+  name: '${resourcePrefix}-web-nsg'
+  location: location
+  tags: union(commonTags, { Tier: 'Web' })
+  properties: {
+    securityRules: [
+      {
+        name: 'Allow-HTTPS-Inbound'
+        properties: {
+          description: 'Tillåt HTTPS trafik from internet'
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          destinationPortRange: '443'
+          sourceAddressPrefix: 'Internet'
+          destinationAddressPrefix: '*'
+          access: 'Allow'
+          priority: 100
+          direction: 'Inbound'
+        }
+      }
+      {
+        name: 'Allow-HTTP-Redirect'
+        properties: {
+          description: 'Tillåt HTTP for redirect to HTTPS'
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          destinationPortRange: '80'
+          sourceAddressPrefix: 'Internet'
+          destinationAddressPrefix: '*'
+          access: 'Allow'
+          priority: 110
+          direction: 'Inbound'
+        }
+      }
+    ]
+  }
+}
+
+resource appNsg 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
+  name: '${resourcePrefix}-app-nsg'
+  location: location
+  tags: union(commonTags, { Tier: 'Application' })
+  properties: {
+    securityRules: [
+      {
+        name: 'Allow-Web-To-App'
+        properties: {
+          description: 'Tillåt trafik from web tier to app tier'
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          destinationPortRange: '8080'
+          sourceAddressPrefix: isProduction ? '10.0.1.0/24' : '10.1.1.0/24'
+          destinationAddressPrefix: '*'
+          access: 'Allow'
+          priority: 100
+          direction: 'Inbound'
+        }
+      }
+    ]
+  }
+}
+
+resource dbNsg 'Microsoft.Network/networkSecurityGroups@2023-04-01' = {
+  name: '${resourcePrefix}-db-nsg'
+  location: location
+  tags: union(commonTags, { Tier: 'Database' })
+  properties: {
+    securityRules: [
+      {
+        name: 'Allow-App-To-DB'
+        properties: {
+          description: 'Tillåt databasanslutningar from app tier'
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          destinationPortRange: '5432'
+          sourceAddressPrefix: isProduction ? '10.0.2.0/24' : '10.1.2.0/24'
+          destinationAddressPrefix: '*'
+          access: 'Allow'
+          priority: 100
+          direction: 'Inbound'
+        }
+      }
+    ]
+  }
+}
+
+// PostgreSQL Flexible Server for GDPR-compliant data storage
+resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2023-06-01-preview' = if (isProduction) {
+  name: '${resourcePrefix}-postgres'
+  location: location
+  tags: union(commonTags, {
+    DatabaseEngine: 'PostgreSQL'
+    DataResidency: 'Sweden'
+  })
+  sku: {
+    name: 'Standard_D4s_v3'
+    tier: 'GeneralPurpose'
+  }
+  properties: {
+    administratorLogin: 'pgadmin'
+    administratorLoginPassword: 'TempPassword123!' // Kommer to changes via Key Vault
+    version: '15'
+    storage: {
+      storageSizeGB: 128
+      autoGrow: 'Enabled'
+    }
+    backup: {
+      backupRetentionDays: 35
+      geoRedundantBackup: 'Enabled'
+    }
+    network: {
+      delegatedSubnetResourceId: '${vnet.id}/subnets/database-subnet'
+      privateDnsZoneArmResourceId: postgresPrivateDnsZone.id
+    }
+    highAvailability: {
+      mode: 'ZoneRedundant'
+    }
+    maintenanceWindow: {
+      customWindow: 'Enabled'
+      dayOfWeek: 6 // Lördag
+      startHour: 2
+      startMinute: 0
+    }
+  }
+}
+
+// Private DNS Zone for PostgreSQL
+resource postgresPrivateDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = if (isProduction) {
+  name: '${resourcePrefix}-postgres.private.postgres.database.azure.com'
+  location: 'global'
+  tags: commonTags
+}
+
+resource postgresPrivateDnsZoneVnetLink 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2020-06-01' = if (isProduction) {
+  parent: postgresPrivateDnsZone
+  name: '${resourcePrefix}-postgres-vnet-link'
+  location: 'global'
+  properties: {
+    registrationEnabled: false
+    virtualNetwork: {
+      id: vnet.id
+    }
+  }
+}
+
+// Diagnostic Settings for GDPR compliance logging
+resource vnetDiagnostics 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = if (gdprCompliance) {
+  name: '${resourcePrefix}-vnet-diagnostics'
+  scope: vnet
+  properties: {
+    workspaceId: logAnalytics.id
+    logs: [
+      {
+        categoryGroup: 'allLogs'
+        enabled: true
+        retentionPolicy: {
+          enabled: true
+          days: isProduction ? 90 : 30
+        }
+      }
+    ]
+    metrics: [
+      {
+        category: 'AllMetrics'
+        enabled: true
+        retentionPolicy: {
+          enabled: true
+          days: isProduction ? 90 : 30
+        }
+      }
+    ]
+  }
+}
+
+// Outputs for cross-template references
+output vnetId string = vnet.id
+output subnetIds object = {
+  web: '${vnet.id}/subnets/web-subnet'
+  app: '${vnet.id}/subnets/app-subnet'
+  database: '${vnet.id}/subnets/database-subnet'
+}
+
+output complianceStatus object = {
+  gdprCompliant: gdprCompliance
+  dataResidency: 'Sweden'
+  encryptionEnabled: true
+  auditLoggingEnabled: gdprCompliance
+  networkSegmentation: true
+  accessControlEnabled: true
+  backupRetention: isProduction ? '35-days' : '7-days'
+}
+
+output keyVaultId string = gdprCompliance ? keyVault.id : ''
+output logAnalyticsWorkspaceId string = gdprCompliance ? logAnalytics.id : ''
+</code></pre>
+<h3 id="google-cloud-plattform-for-svenska-innovationsorganisationer">Google Cloud Plattform for svenska innovationsorganisationer</h3>
+<p>Google Cloud Plattform (GCP) attraherar svenska tech-companies and startups through sina machine learning capabilities and innovativa services. Google Cloud Deployment Manager and Terraform Google Provider forms primary Architecture as Code tools for GCP.</p>
+<p><strong>Google Cloud Deployment Manager</strong> uses YAML or Python for Architecture as Code definitions and integrerar naturligt with Google Cloud services:</p>
+<pre><code class="language-yaml"># gcp/svenska-org-infrastructure.yaml
+# Deployment Manager template for Swedish organizations
+
+resources:
+  # VPC Network for svensk data residency
+  - name: svenska-org-vpc
+    type: compute.v1.network
+    properties:
+      description: &quot;VPC for Swedish organizations with GDPR compliance&quot;
+      autoCreateSubnetworks: false
+      routingConfig:
+        routingMode: REGIONAL
+    metadata:
+      labels:
+        environment: $(ref.environment)
+        data-classification: $(ref.dataClassification)
+        country: sweden
+        gdpr-compliant: &quot;true&quot;
+
+  # Subnets with svenska regionrequirements
+  - name: web-subnet
+    type: compute.v1.subnetwork
+    properties:
+      description: &quot;Web tier subnet for svenska applications&quot;
+      network: $(ref.svenska-org-vpc.selfLink)
+      ipCidrRange: &quot;10.0.1.0/24&quot;
+      region: europe-north1
+      enableFlowLogs: true
+      logConfig:
+        enable: true
+        flowSampling: 1.0
+        aggregationInterval: INTERVAL_5_SEC
+        metadata: INCLUDE_ALL_METADATA
+      secondaryIpRanges:
+        - rangeName: pods
+          ipCidrRange: &quot;10.1.0.0/16&quot;
+        - rangeName: services
+          ipCidrRange: &quot;10.2.0.0/20&quot;
+
+  - name: app-subnet
+    type: compute.v1.subnetwork
+    properties:
+      description: &quot;Application tier subnet&quot;
+      network: $(ref.svenska-org-vpc.selfLink)
+      ipCidrRange: &quot;10.0.2.0/24&quot;
+      region: europe-north1
+      enableFlowLogs: true
+      logConfig:
+        enable: true
+        flowSampling: 1.0
+        aggregationInterval: INTERVAL_5_SEC
+
+  - name: database-subnet
+    type: compute.v1.subnetwork
+    properties:
+      description: &quot;Database tier subnet with privat åtkomst&quot;
+      network: $(ref.svenska-org-vpc.selfLink)
+      ipCidrRange: &quot;10.0.3.0/24&quot;
+      region: europe-north1
+      enableFlowLogs: true
+      purpose: PRIVATE_SERVICE_CONNECT
+
+  # Cloud SQL for GDPR-compliant databaser
+  - name: svenska-org-postgres
+    type: sqladmin.v1beta4.instance
+    properties:
+      name: svenska-org-postgres-$(ref.environment)
+      region: europe-north1
+      databaseVersion: POSTGRES_15
+      settings:
+        tier: db-custom-4-16384
+        edition: ENTERPRISE
+        availabilityType: REGIONAL
+        dataDiskType: PD_SSD
+        dataDiskSizeGb: 100
+        storageAutoResize: true
+        storageAutoResizeLimit: 500
+
+        # Svenska tidszon and locale
+        databaseFlags:
+          - name: timezone
+            value: &quot;Europe/Stockholm&quot;
+          - name: lc_messages
+            value: &quot;sv_SE.UTF-8&quot;
+          - name: log_statement
+            value: &quot;all&quot;
+          - name: log_min_duration_statement
+            value: &quot;0&quot;
+          - name: ssl
+            value: &quot;on&quot;
+
+        # Backup and recovery for svenska requirements
+        backupConfiguration:
+          enabled: true
+          startTime: &quot;02:00&quot;
+          location: &quot;europe-north1&quot;
+          backupRetentionSettings:
+            retentionUnit: COUNT
+            retainedBackups: 30
+          transactionLogRetentionDays: 7
+          pointInTimeRecoveryEnabled: true
+
+        # Säkerhetsinställningar
+        ipConfiguration:
+          ipv4Enabled: false
+          privateNetwork: $(ref.svenska-org-vpc.selfLink)
+          enablePrivatePathForGoogleCloudServices: true
+          authorizedNetworks: []
+          requireSsl: true
+
+        # Maintenance for svenska arbetstider
+        maintenanceWindow:
+          hour: 2
+          day: 6  # Lördag
+          updateTrack: stable
+
+        deletionProtectionEnabled: true
+
+        # GDPR compliance logging
+        insights:
+          queryInsightsEnabled: true
+          recordApplicationTags: true
+          recordClientAddress: true
+          queryStringLength: 4500
+          queryPlansPerMinute: 20
+
+  # Cloud KMS for encryption of känslig data
+  - name: svenska-org-keyring
+    type: cloudkms.v1.keyRing
+    properties:
+      parent: projects/$(env.project)/locations/europe-north1
+      keyRingId: svenska-org-keyring-$(ref.environment)
+
+  - name: database-encryption-key
+    type: cloudkms.v1.cryptoKey
+    properties:
+      parent: $(ref.svenska-org-keyring.name)
+      cryptoKeyId: database-encryption-key
+      purpose: ENCRYPT_DECRYPT
+      versionTemplate:
+        algorithm: GOOGLE_SYMMETRIC_ENCRYPTION
+        protectionLevel: SOFTWARE
+      rotationPeriod: 7776000s  # 90 dagar
+      nextRotationTime: $(ref.nextRotationTime)
+
+  # Firewall rules for secure nätverkstrafik
+  - name: allow-web-to-app
+    type: compute.v1.firewall
+    properties:
+      description: &quot;Tillåt HTTPS trafik from web to app tier&quot;
+      network: $(ref.svenska-org-vpc.selfLink)
+      direction: INGRESS
+      priority: 1000
+      sourceRanges:
+        - &quot;10.0.1.0/24&quot;
+      targetTags:
+        - &quot;app-server&quot;
+      allowed:
+        - IPProtocol: tcp
+          ports: [&quot;8080&quot;]
+
+  - name: allow-app-to-database
+    type: compute.v1.firewall
+    properties:
+      description: &quot;Tillåt databasanslutningar from app tier&quot;
+      network: $(ref.svenska-org-vpc.selfLink)
+      direction: INGRESS
+      priority: 1000
+      sourceRanges:
+        - &quot;10.0.2.0/24&quot;
+      targetTags:
+        - &quot;database-server&quot;
+      allowed:
+        - IPProtocol: tcp
+          ports: [&quot;5432&quot;]
+
+  - name: deny-all-ingress
+    type: compute.v1.firewall
+    properties:
+      description: &quot;Neka all other inkommande trafik&quot;
+      network: $(ref.svenska-org-vpc.selfLink)
+      direction: INGRESS
+      priority: 65534
+      sourceRanges:
+        - &quot;0.0.0.0/0&quot;
+      denied:
+        - IPProtocol: all
+
+  # Cloud Logging for GDPR compliance
+  - name: svenska-org-log-sink
+    type: logging.v2.sink
+    properties:
+      name: svenska-org-compliance-sink
+      destination: storage.googleapis.com/svenska-org-audit-logs-$(ref.environment)
+      filter: |
+        resource.type=&quot;gce_instance&quot; OR
+        resource.type=&quot;cloud_sql_database&quot; OR
+        resource.type=&quot;gce_network&quot; OR
+        protoPayload.authenticationInfo.principalEmail!=&quot;&quot;
+      uniqueWriterIdentity: true
+
+  # Cloud Storage for audit logs with svenska data residency
+  - name: svenska-org-audit-logs
+    type: storage.v1.bucket
+    properties:
+      name: svenska-org-audit-logs-$(ref.environment)
+      location: EUROPE-NORTH1
+      storageClass: STANDARD
+      versioning:
+        enabled: true
+      lifecycle:
+        rule:
+          - action:
+              type: SetStorageClass
+              storageClass: NEARLINE
+            condition:
+              age: 30
+          - action:
+              type: SetStorageClass  
+              storageClass: COLDLINE
+            condition:
+              age: 90
+          - action:
+              type: Delete
+            condition:
+              age: 2555  # 7 år for svenska requirements
+      retentionPolicy:
+        retentionPeriod: 220752000  # 7 år in sekunder
+      iamConfiguration:
+        uniformBucketLevelAccess:
+          enabled: true
+      encryption:
+        defaultKmsKeyName: $(ref.database-encryption-key.name)
+
+outputs:
+  - name: vpcId
+    value: $(ref.svenska-org-vpc.id)
+  - name: subnetIds
+    value:
+      web: $(ref.web-subnet.id)
+      app: $(ref.app-subnet.id)
+      database: $(ref.database-subnet.id)
+  - name: complianceStatus
+    value:
+      gdprCompliant: true
+      dataResidency: &quot;Sweden&quot;
+      encryptionEnabled: true
+      auditLoggingEnabled: true
+      backupRetention: &quot;30-days&quot;
+      logRetention: &quot;7-years&quot;
+</code></pre>
+<h2 id="cloud-native-architecture-as-code-patterns">Cloud-native architecture as code patterns</h2>
+<p>Cloud-native Infrastructure as Code patterns utnyttjar molnspecific services and capabilities to create optimala arkitekturer. These patterns includes serverless computing, managed databases, auto-scaling groups, and event-driven architectures as eliminates traditional infrastructure management.</p>
+<p>Microservices-baserade arkitekturer implementeras through containerorkestrering, service mesh, and API gateways definierade as code. This enables loose coupling, independent scaling, and teknologidiversifiering while operationell komplexitet is managed through automation.</p>
+<h3 id="container-first-arkitekturpattern">Container-First arkitekturpattern</h3>
+<p>Modern molnarkitektur builds on containerisering as fundamental abstraktion for applikationsdeployment. For Swedish organizations means This to infrastructure definitions focuses on container orchestration platforms that Kubernetes, AWS ECS, Azure Container Instances, or Google Cloud Run:</p>
+<pre><code class="language-terraform"># terraform/container-platform.tf
+# Container platform for Swedish organizations
+
+resource &quot;kubernetes_namespace&quot; &quot;application_namespace&quot; {
+  count = length(var.environments)
+
+  metadata {
+    name = &quot;${var.organization_name}-${var.environments[count.index]}&quot;
+
+    labels = {
+      &quot;app.kubernetes.io/managed-by&quot; = &quot;terraform&quot;
+      &quot;svenska.se/environment&quot;       = var.environments[count.index]
+      &quot;svenska.se/data-classification&quot; = var.data_classification
+      &quot;svenska.se/cost-center&quot;       = var.cost_center
+      &quot;svenska.se/gdpr-compliant&quot;    = &quot;true&quot;
+      &quot;svenska.se/backup-policy&quot;     = var.environments[count.index] == &quot;production&quot; ? &quot;daily&quot; : &quot;weekly&quot;
+    }
+
+    annotations = {
+      &quot;svenska.se/contact-email&quot;     = var.contact_email
+      &quot;svenska.se/created-date&quot;      = timestamp()
+      &quot;svenska.se/compliance-review&quot; = var.compliance_review_date
+    }
+  }
+}
+
+# Resource Quotas for kostnadskontroll and resource governance
+resource &quot;kubernetes_resource_quota&quot; &quot;namespace_quota&quot; {
+  count = length(var.environments)
+
+  metadata {
+    name      = &quot;${var.organization_name}-${var.environments[count.index]}-quota&quot;
+    namespace = kubernetes_namespace.application_namespace[count.index].metadata[0].name
+  }
+
+  spec {
+    hard = {
+      &quot;requests.cpu&quot;    = var.environments[count.index] == &quot;production&quot; ? &quot;8&quot; : &quot;2&quot;
+      &quot;requests.memory&quot; = var.environments[count.index] == &quot;production&quot; ? &quot;16Gi&quot; : &quot;4Gi&quot;
+      &quot;limits.cpu&quot;      = var.environments[count.index] == &quot;production&quot; ? &quot;16&quot; : &quot;4&quot;
+      &quot;limits.memory&quot;   = var.environments[count.index] == &quot;production&quot; ? &quot;32Gi&quot; : &quot;8Gi&quot;
+      &quot;persistentvolumeclaims&quot; = var.environments[count.index] == &quot;production&quot; ? &quot;10&quot; : &quot;3&quot;
+      &quot;requests.storage&quot; = var.environments[count.index] == &quot;production&quot; ? &quot;100Gi&quot; : &quot;20Gi&quot;
+      &quot;count/pods&quot;      = var.environments[count.index] == &quot;production&quot; ? &quot;50&quot; : &quot;10&quot;
+      &quot;count/services&quot;  = var.environments[count.index] == &quot;production&quot; ? &quot;20&quot; : &quot;5&quot;
+    }
+  }
+}
+
+# Network Policies for mikrosegmentering and security
+resource &quot;kubernetes_network_policy&quot; &quot;default_deny_all&quot; {
+  count = length(var.environments)
+
+  metadata {
+    name      = &quot;default-deny-all&quot;
+    namespace = kubernetes_namespace.application_namespace[count.index].metadata[0].name
+  }
+
+  spec {
+    pod_selector {}
+    policy_types = [&quot;Ingress&quot;, &quot;Egress&quot;]
+  }
+}
+
+resource &quot;kubernetes_network_policy&quot; &quot;allow_web_to_app&quot; {
+  count = length(var.environments)
+
+  metadata {
+    name      = &quot;allow-web-to-app&quot;
+    namespace = kubernetes_namespace.application_namespace[count.index].metadata[0].name
+  }
+
+  spec {
+    pod_selector {
+      match_labels = {
+        &quot;app.kubernetes.io/component&quot; = &quot;application&quot;
+      }
+    }
+
+    policy_types = [&quot;Ingress&quot;]
+
+    ingress {
+      from {
+        pod_selector {
+          match_labels = {
+            &quot;app.kubernetes.io/component&quot; = &quot;web&quot;
+          }
+        }
+      }
+      ports {
+        protocol = &quot;TCP&quot;
+        port     = &quot;8080&quot;
+      }
+    }
+  }
+}
+
+# Pod Security Standards for svenska security requirements
+resource &quot;kubernetes_pod_security_policy&quot; &quot;svenska_org_psp&quot; {
+  metadata {
+    name = &quot;${var.organization_name}-pod-security-policy&quot;
+  }
+
+  spec {
+    privileged                 = false
+    allow_privilege_escalation = false
+    required_drop_capabilities = [&quot;ALL&quot;]
+    volumes                    = [&quot;configMap&quot;, &quot;emptyDir&quot;, &quot;projected&quot;, &quot;secret&quot;, &quot;downwardAPI&quot;, &quot;persistentVolumeClaim&quot;]
+
+    run_as_user {
+      rule = &quot;MustRunAsNonRoot&quot;
+    }
+
+    run_as_group {
+      rule = &quot;MustRunAs&quot;
+      range {
+        min = 1
+        max = 65535
+      }
+    }
+
+    supplemental_groups {
+      rule = &quot;MustRunAs&quot;
+      range {
+        min = 1
+        max = 65535
+      }
+    }
+
+    fs_group {
+      rule = &quot;RunAsAny&quot;
+    }
+
+    se_linux {
+      rule = &quot;RunAsAny&quot;
+    }
+  }
+}
+
+# Service Mesh configuration for svenska mikroservices
+resource &quot;kubernetes_manifest&quot; &quot;istio_namespace&quot; {
+  count = var.enable_service_mesh ? length(var.environments) : 0
+
+  manifest = {
+    apiVersion = &quot;v1&quot;
+    kind       = &quot;Namespace&quot;
+    metadata = {
+      name = &quot;${var.organization_name}-${var.environments[count.index]}-istio&quot;
+      labels = {
+        &quot;istio-injection&quot; = &quot;enabled&quot;
+        &quot;svenska.se/service-mesh&quot; = &quot;istio&quot;
+        &quot;svenska.se/mtls-mode&quot; = &quot;strict&quot;
+      }
+    }
+  }
+}
+
+resource &quot;kubernetes_manifest&quot; &quot;istio_peer_authentication&quot; {
+  count = var.enable_service_mesh ? length(var.environments) : 0
+
+  manifest = {
+    apiVersion = &quot;security.istio.io/v1beta1&quot;
+    kind       = &quot;PeerAuthentication&quot;
+    metadata = {
+      name      = &quot;default&quot;
+      namespace = kubernetes_manifest.istio_namespace[count.index].manifest.metadata.name
+    }
+    spec = {
+      mtls = {
+        mode = &quot;STRICT&quot;
+      }
+    }
+  }
+}
+
+# GDPR compliance through Pod Disruption Budgets
+resource &quot;kubernetes_pod_disruption_budget&quot; &quot;application_pdb&quot; {
+  count = length(var.environments)
+
+  metadata {
+    name      = &quot;${var.organization_name}-app-pdb&quot;
+    namespace = kubernetes_namespace.application_namespace[count.index].metadata[0].name
+  }
+
+  spec {
+    min_available = var.environments[count.index] == &quot;production&quot; ? &quot;2&quot; : &quot;1&quot;
+    selector {
+      match_labels = {
+        &quot;app.kubernetes.io/name&quot; = var.organization_name
+        &quot;app.kubernetes.io/component&quot; = &quot;application&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<h3 id="serverless-first-pattern-for-svenska-innovationsorganisationer">Serverless-first pattern for svenska innovationsorganisationer</h3>
+<p>Serverless arkitekturer enables unprecedented scalability and kostnadseffektivitet for Swedish organizations. Architecture as Code for serverless focuses on function definitions, event routing, and managed service integrations:</p>
+<pre><code class="language-terraform"># terraform/serverless-platform.tf
+# Serverless platform for Swedish organizations
+
+# AWS Lambda funktioner with svenska compliance-requirements
+resource &quot;aws_lambda_function&quot; &quot;svenska_api_gateway&quot; {
+  filename         = &quot;svenska-api-${var.version}.zip&quot;
+  function_name    = &quot;${var.organization_name}-api-gateway-${var.environment}&quot;
+  role            = aws_iam_role.lambda_execution_role.arn
+  handler         = &quot;index.handler&quot;
+  source_code_hash = filebase64sha256(&quot;svenska-api-${var.version}.zip&quot;)
+  runtime         = &quot;nodejs18.x&quot;
+  timeout         = 30
+  memory_size     = 512
+
+  environment {
+    variables = {
+      ENVIRONMENT           = var.environment
+      DATA_CLASSIFICATION   = var.data_classification
+      GDPR_ENABLED         = &quot;true&quot;
+      LOG_LEVEL            = var.environment == &quot;production&quot; ? &quot;INFO&quot; : &quot;DEBUG&quot;
+      SWEDISH_TIMEZONE     = &quot;Europe/Stockholm&quot;
+      COST_CENTER          = var.cost_center
+      COMPLIANCE_MODE      = &quot;svenska-gdpr&quot;
+    }
+  }
+
+  vpc_config {
+    subnet_ids         = var.private_subnet_ids
+    security_group_ids = [aws_security_group.lambda_sg.id]
+  }
+
+  tracing_config {
+    mode = &quot;Active&quot;
+  }
+
+  dead_letter_config {
+    target_arn = aws_sqs_queue.dlq.arn
+  }
+
+  tags = merge(local.common_tags, {
+    Function = &quot;API-Gateway&quot;
+    Runtime  = &quot;Node.js18&quot;
+  })
+}
+
+# Event-driven architecture with SQS for Swedish organizations
+resource &quot;aws_sqs_queue&quot; &quot;svenska_event_queue&quot; {
+  name                       = &quot;${var.organization_name}-events-${var.environment}&quot;
+  delay_seconds              = 0
+  max_message_size           = 262144
+  message_retention_seconds  = 1209600  # 14 dagar
+  receive_wait_time_seconds  = 20
+  visibility_timeout_seconds = 120
+
+  kms_master_key_id = aws_kms_key.svenska_org_key.arn
+
+  redrive_policy = jsonencode({
+    deadLetterTargetArn = aws_sqs_queue.dlq.arn
+    maxReceiveCount     = 3
+  })
+
+  tags = merge(local.common_tags, {
+    MessageRetention = &quot;14-days&quot;
+    Purpose         = &quot;Event-Processing&quot;
+  })
+}
+
+resource &quot;aws_sqs_queue&quot; &quot;dlq&quot; {
+  name                      = &quot;${var.organization_name}-dlq-${var.environment}&quot;
+  message_retention_seconds = 1209600  # 14 dagar
+  kms_master_key_id        = aws_kms_key.svenska_org_key.arn
+
+  tags = merge(local.common_tags, {
+    Purpose = &quot;Dead-Letter-Queue&quot;
+  })
+}
+
+# DynamoDB for svenskt data residency
+resource &quot;aws_dynamodb_table&quot; &quot;svenska_data_store&quot; {
+  name           = &quot;${var.organization_name}-data-${var.environment}&quot;
+  billing_mode   = &quot;PAY_PER_REQUEST&quot;
+  hash_key       = &quot;id&quot;
+  range_key      = &quot;timestamp&quot;
+  stream_enabled = true
+  stream_view_type = &quot;NEW_AND_OLD_IMAGES&quot;
+
+  attribute {
+    name = &quot;id&quot;
+    type = &quot;S&quot;
+  }
+
+  attribute {
+    name = &quot;timestamp&quot;
+    type = &quot;S&quot;
+  }
+
+  attribute {
+    name = &quot;data_subject_id&quot;
+    type = &quot;S&quot;
+  }
+
+  global_secondary_index {
+    name     = &quot;DataSubjectIndex&quot;
+    hash_key = &quot;data_subject_id&quot;
+    projection_type = &quot;ALL&quot;
+  }
+
+  ttl {
+    attribute_name = &quot;ttl&quot;
+    enabled        = true
+  }
+
+  server_side_encryption {
+    enabled     = true
+    kms_key_arn = aws_kms_key.svenska_org_key.arn
+  }
+
+  point_in_time_recovery {
+    enabled = var.environment == &quot;production&quot;
+  }
+
+  tags = merge(local.common_tags, {
+    DataType       = &quot;Personal-Data&quot;
+    GDPRCompliant  = &quot;true&quot;
+    DataResidency  = &quot;Sweden&quot;
+  })
+}
+
+# API Gateway with svenska security requirements
+resource &quot;aws_api_gateway_rest_api&quot; &quot;svenska_api&quot; {
+  name        = &quot;${var.organization_name}-api-${var.environment}&quot;
+  description = &quot;API Gateway for svenska organisationen with GDPR compliance&quot;
+
+  endpoint_configuration {
+    types = [&quot;REGIONAL&quot;]
+  }
+
+  policy = jsonencode({
+    Version = &quot;2012-10-17&quot;
+    Statement = [
+      {
+        Effect = &quot;Allow&quot;
+        Principal = &quot;*&quot;
+        Action = &quot;execute-api:Invoke&quot;
+        Resource = &quot;*&quot;
+        Condition = {
+          IpAddress = {
+            &quot;aws:sourceIp&quot; = var.allowed_ip_ranges
+          }
+        }
+      }
+    ]
+  })
+
+  tags = local.common_tags
+}
+
+# CloudWatch Logs for GDPR compliance and auditability
+resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_logs&quot; {
+  name              = &quot;/aws/lambda/${aws_lambda_function.svenska_api_gateway.function_name}&quot;
+  retention_in_days = var.environment == &quot;production&quot; ? 90 : 30
+  kms_key_id       = aws_kms_key.svenska_org_key.arn
+
+  tags = merge(local.common_tags, {
+    LogRetention = var.environment == &quot;production&quot; ? &quot;90-days&quot; : &quot;30-days&quot;
+    Purpose      = &quot;GDPR-Compliance&quot;
+  })
+}
+
+# Step Functions for svenska business processes
+resource &quot;aws_sfn_state_machine&quot; &quot;svenska_workflow&quot; {
+  name     = &quot;${var.organization_name}-workflow-${var.environment}&quot;
+  role_arn = aws_iam_role.step_functions_role.arn
+
+  definition = jsonencode({
+    Comment = &quot;Svenska organisationens GDPR-compliant workflow&quot;
+    StartAt = &quot;ValidateInput&quot;
+    States = {
+      ValidateInput = {
+        Type = &quot;Task&quot;
+        Resource = aws_lambda_function.input_validator.arn
+        Next = &quot;ProcessData&quot;
+        Retry = [
+          {
+            ErrorEquals     = [&quot;Lambda.ServiceException&quot;, &quot;Lambda.AWSLambdaException&quot;]
+            IntervalSeconds = 2
+            MaxAttempts     = 3
+            BackoffRate     = 2.0
+          }
+        ]
+        Catch = [
+          {
+            ErrorEquals = [&quot;States.TaskFailed&quot;]
+            Next        = &quot;FailureHandler&quot;
+          }
+        ]
+      }
+      ProcessData = {
+        Type = &quot;Task&quot;
+        Resource = aws_lambda_function.data_processor.arn
+        Next = &quot;AuditLog&quot;
+      }
+      AuditLog = {
+        Type = &quot;Task&quot;
+        Resource = aws_lambda_function.audit_logger.arn
+        Next = &quot;Success&quot;
+      }
+      Success = {
+        Type = &quot;Succeed&quot;
+      }
+      FailureHandler = {
+        Type = &quot;Task&quot;
+        Resource = aws_lambda_function.failure_handler.arn
+        End = true
+      }
+    }
+  })
+
+  logging_configuration {
+    log_destination        = &quot;${aws_cloudwatch_log_group.step_functions_logs.arn}:*&quot;
+    include_execution_data = true
+    level                 = &quot;ALL&quot;
+  }
+
+  tracing_configuration {
+    enabled = true
+  }
+
+  tags = merge(local.common_tags, {
+    WorkflowType = &quot;GDPR-Data-Processing&quot;
+    Purpose      = &quot;Business-Process-Automation&quot;
+  })
+}
+
+# EventBridge for event-driven svenska organizationer
+resource &quot;aws_cloudwatch_event_bus&quot; &quot;svenska_event_bus&quot; {
+  name = &quot;${var.organization_name}-events-${var.environment}&quot;
+
+  tags = merge(local.common_tags, {
+    Purpose = &quot;Event-Driven-Architecture&quot;
+  })
+}
+
+resource &quot;aws_cloudwatch_event_rule&quot; &quot;gdpr_data_request&quot; {
+  name           = &quot;${var.organization_name}-gdpr-request-${var.environment}&quot;
+  description    = &quot;GDPR data subject rights requests&quot;
+  event_bus_name = aws_cloudwatch_event_bus.svenska_event_bus.name
+
+  event_pattern = jsonencode({
+    source      = [&quot;svenska.gdpr&quot;]
+    detail-type = [&quot;Data Subject Request&quot;]
+    detail = {
+      requestType = [&quot;access&quot;, &quot;rectification&quot;, &quot;erasure&quot;, &quot;portability&quot;]
+    }
+  })
+
+  tags = merge(local.common_tags, {
+    GDPRFunction = &quot;Data-Subject-Rights&quot;
+  })
+}
+
+resource &quot;aws_cloudwatch_event_target&quot; &quot;gdpr_processor&quot; {
+  rule           = aws_cloudwatch_event_rule.gdpr_data_request.name
+  event_bus_name = aws_cloudwatch_event_bus.svenska_event_bus.name
+  target_id      = &quot;GDPRProcessor&quot;
+  arn           = aws_sfn_state_machine.svenska_workflow.arn
+  role_arn      = aws_iam_role.eventbridge_role.arn
+
+  input_transformer {
+    input_paths = {
+      dataSubjectId = &quot;$.detail.dataSubjectId&quot;
+      requestType   = &quot;$.detail.requestType&quot;
+      timestamp     = &quot;$.time&quot;
+    }
+    input_template = jsonencode({
+      dataSubjectId    = &quot;&lt;dataSubjectId&gt;&quot;
+      requestType      = &quot;&lt;requestType&gt;&quot;
+      processingTime   = &quot;&lt;timestamp&gt;&quot;
+      complianceMode   = &quot;svenska-gdpr&quot;
+      environment      = var.environment
+    })
+  }
+}
+</code></pre>
+<h3 id="hybrid-cloud-pattern-for-svenska-enterprise-organisationer">Hybrid cloud pattern for svenska enterprise-organisationer</h3>
+<p>Many Swedish organizations requires hybrid cloud approaches as combines on-premises infrastructure with public cloud services to meet regulatory, performance, or legacy systems requirements:</p>
+<pre><code class="language-terraform"># terraform/hybrid-cloud.tf
+# Hybrid cloud infrastructure for svenska enterprise-organisationer
+
+# AWS Direct Connect for dedicerad konnektivitet
+resource &quot;aws_dx_connection&quot; &quot;svenska_org_dx&quot; {
+  name            = &quot;${var.organization_name}-dx-${var.environment}&quot;
+  bandwidth       = var.environment == &quot;production&quot; ? &quot;10Gbps&quot; : &quot;1Gbps&quot;
+  location        = &quot;Stockholm Interxion STO1&quot;  # Svenska datacenter
+  provider_name   = &quot;Interxion&quot;
+
+  tags = merge(local.common_tags, {
+    ConnectionType = &quot;Direct-Connect&quot;
+    Location      = &quot;Stockholm&quot;
+    Bandwidth     = var.environment == &quot;production&quot; ? &quot;10Gbps&quot; : &quot;1Gbps&quot;
+  })
+}
+
+# Virtual Private Gateway for VPN connectivity
+resource &quot;aws_vpn_gateway&quot; &quot;svenska_org_vgw&quot; {
+  vpc_id            = var.vpc_id
+  availability_zone = var.primary_az
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${var.organization_name}-vgw-${var.environment}&quot;
+    Type = &quot;VPN-Gateway&quot;
+  })
+}
+
+# Customer Gateway for on-premises connectivity
+resource &quot;aws_customer_gateway&quot; &quot;svenska_org_cgw&quot; {
+  bgp_asn    = 65000
+  ip_address = var.on_premises_public_ip
+  type       = &quot;ipsec.1&quot;
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${var.organization_name}-cgw-${var.environment}&quot;
+    Location = &quot;On-Premises-Stockholm&quot;
+  })
+}
+
+# Site-to-Site VPN for secure hybrid connectivity
+resource &quot;aws_vpn_connection&quot; &quot;svenska_org_vpn&quot; {
+  vpn_gateway_id      = aws_vpn_gateway.svenska_org_vgw.id
+  customer_gateway_id = aws_customer_gateway.svenska_org_cgw.id
+  type               = &quot;ipsec.1&quot;
+  static_routes_only = false
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${var.organization_name}-vpn-${var.environment}&quot;
+    Type = &quot;Site-to-Site-VPN&quot;
+  })
+}
+
+# AWS Storage Gateway for hybrid storage
+resource &quot;aws_storagegateway_gateway&quot; &quot;svenska_org_storage_gw&quot; {
+  gateway_name   = &quot;${var.organization_name}-storage-gw-${var.environment}&quot;
+  gateway_timezone = &quot;GMT+1:00&quot;  # Svensk time
+  gateway_type     = &quot;FILE_S3&quot;
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${var.organization_name}-storage-gateway&quot;
+    Type = &quot;File-Gateway&quot;
+    Location = &quot;On-Premises&quot;
+  })
+}
+
+# S3 bucket for hybrid file shares with svenska data residency
+resource &quot;aws_s3_bucket&quot; &quot;hybrid_file_share&quot; {
+  bucket = &quot;${var.organization_name}-hybrid-files-${var.environment}&quot;
+
+  tags = merge(local.common_tags, {
+    Purpose = &quot;Hybrid-File-Share&quot;
+    DataResidency = &quot;Sweden&quot;
+  })
+}
+
+resource &quot;aws_s3_bucket_server_side_encryption_configuration&quot; &quot;hybrid_encryption&quot; {
+  bucket = aws_s3_bucket.hybrid_file_share.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      kms_master_key_id = aws_kms_key.svenska_org_key.arn
+      sse_algorithm     = &quot;aws:kms&quot;
+    }
+    bucket_key_enabled = true
+  }
+}
+
+# AWS Database Migration Service for hybrid data sync
+resource &quot;aws_dms_replication_instance&quot; &quot;svenska_org_dms&quot; {
+  replication_instance_class   = var.environment == &quot;production&quot; ? &quot;dms.t3.large&quot; : &quot;dms.t3.micro&quot;
+  replication_instance_id     = &quot;${var.organization_name}-dms-${var.environment}&quot;
+
+  allocated_storage            = var.environment == &quot;production&quot; ? 100 : 20
+  apply_immediately           = var.environment != &quot;production&quot;
+  auto_minor_version_upgrade  = true
+  availability_zone           = var.primary_az
+  engine_version              = &quot;3.4.7&quot;
+  multi_az                    = var.environment == &quot;production&quot;
+  publicly_accessible         = false
+  replication_subnet_group_id = aws_dms_replication_subnet_group.svenska_org_dms_subnet.id
+  vpc_security_group_ids      = [aws_security_group.dms_sg.id]
+
+  tags = merge(local.common_tags, {
+    Purpose = &quot;Hybrid-Data-Migration&quot;
+  })
+}
+
+resource &quot;aws_dms_replication_subnet_group&quot; &quot;svenska_org_dms_subnet&quot; {
+  replication_subnet_group_description = &quot;DMS subnet group for svenska organisationen&quot;
+  replication_subnet_group_id          = &quot;${var.organization_name}-dms-subnet-${var.environment}&quot;
+  subnet_ids                            = var.private_subnet_ids
+
+  tags = local.common_tags
+}
+
+# AWS App Mesh for hybrid service mesh
+resource &quot;aws_appmesh_mesh&quot; &quot;svenska_org_mesh&quot; {
+  name = &quot;${var.organization_name}-mesh-${var.environment}&quot;
+
+  spec {
+    egress_filter {
+      type = &quot;ALLOW_ALL&quot;
+    }
+  }
+
+  tags = merge(local.common_tags, {
+    MeshType = &quot;Hybrid-Service-Mesh&quot;
+  })
+}
+
+# Route53 Resolver for hybrid DNS
+resource &quot;aws_route53_resolver_endpoint&quot; &quot;inbound&quot; {
+  name      = &quot;${var.organization_name}-resolver-inbound-${var.environment}&quot;
+  direction = &quot;INBOUND&quot;
+
+  security_group_ids = [aws_security_group.resolver_sg.id]
+
+  dynamic &quot;ip_address&quot; {
+    for_each = var.private_subnet_ids
+    content {
+      subnet_id = ip_address.value
+    }
+  }
+
+  tags = merge(local.common_tags, {
+    ResolverType = &quot;Inbound&quot;
+    Purpose      = &quot;Hybrid-DNS&quot;
+  })
+}
+
+resource &quot;aws_route53_resolver_endpoint&quot; &quot;outbound&quot; {
+  name      = &quot;${var.organization_name}-resolver-outbound-${var.environment}&quot;
+  direction = &quot;OUTBOUND&quot;
+
+  security_group_ids = [aws_security_group.resolver_sg.id]
+
+  dynamic &quot;ip_address&quot; {
+    for_each = var.private_subnet_ids
+    content {
+      subnet_id = ip_address.value
+    }
+  }
+
+  tags = merge(local.common_tags, {
+    ResolverType = &quot;Outbound&quot;
+    Purpose      = &quot;Hybrid-DNS&quot;
+  })
+}
+
+# Security Groups for hybrid connectivity
+resource &quot;aws_security_group&quot; &quot;dms_sg&quot; {
+  name_prefix = &quot;${var.organization_name}-dms-&quot;
+  description = &quot;Security group for DMS replication instance&quot;
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = &quot;tcp&quot;
+    cidr_blocks = [var.on_premises_cidr]
+    description = &quot;All traffic from on-premises&quot;
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 65535
+    protocol    = &quot;tcp&quot;
+    cidr_blocks = [&quot;0.0.0.0/0&quot;]
+    description = &quot;All outbound traffic&quot;
+  }
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${var.organization_name}-dms-sg&quot;
+  })
+}
+
+resource &quot;aws_security_group&quot; &quot;resolver_sg&quot; {
+  name_prefix = &quot;${var.organization_name}-resolver-&quot;
+  description = &quot;Security group for Route53 Resolver endpoints&quot;
+  vpc_id      = var.vpc_id
+
+  ingress {
+    from_port   = 53
+    to_port     = 53
+    protocol    = &quot;tcp&quot;
+    cidr_blocks = [var.vpc_cidr, var.on_premises_cidr]
+    description = &quot;DNS TCP from VPC and on-premises&quot;
+  }
+
+  ingress {
+    from_port   = 53
+    to_port     = 53
+    protocol    = &quot;udp&quot;
+    cidr_blocks = [var.vpc_cidr, var.on_premises_cidr]
+    description = &quot;DNS UDP from VPC and on-premises&quot;
+  }
+
+  egress {
+    from_port   = 53
+    to_port     = 53
+    protocol    = &quot;tcp&quot;
+    cidr_blocks = [var.on_premises_cidr]
+    description = &quot;DNS TCP to on-premises&quot;
+  }
+
+  egress {
+    from_port   = 53
+    to_port     = 53
+    protocol    = &quot;udp&quot;
+    cidr_blocks = [var.on_premises_cidr]
+    description = &quot;DNS UDP to on-premises&quot;
+  }
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${var.organization_name}-resolver-sg&quot;
+  })
+}
+</code></pre>
+<h2 id="multi-cloud-strategier">Multi-cloud strategier</h2>
+<p>Multi-cloud Infrastructure as Code strategier enables distribution of workloads across multiple cloud providers to optimera kostnad, performance, and resiliens. Provider-agnostic tools that Terraform or Pulumi is used to abstrahera leverantörspecific skillnader and enable portabilitet.</p>
+<p>Hybrid cloud Architecture as Code-implementations combines on-premises infrastructure with public cloud services through VPN connections, dedicated links, and edge computing. Consistent deployment and management processes across environments ensures operational efficiency and säkerhetskompliance.</p>
+<h3 id="terraform-for-multi-cloud-abstraktion">Terraform for multi-cloud abstraktion</h3>
+<p>Terraform forms The most mogna solution for multi-cloud Infrastructure as Code through sitt comprehensive provider ecosystem. For Swedish organizations enables Terraform unified management of AWS, Azure, Google Cloud, and on-premises resurser through a konsistent declarative syntax:</p>
+<pre><code class="language-hcl"># terraform/multi-cloud/main.tf
+# Multi-cloud infrastructure for Swedish organizations
+
+terraform {
+  required_version = &quot;&gt;= 1.0&quot;
+
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 5.0&quot;
+    }
+    azurerm = {
+      source  = &quot;hashicorp/azurerm&quot;
+      version = &quot;~&gt; 3.0&quot;
+    }
+    google = {
+      source  = &quot;hashicorp/google&quot;
+      version = &quot;~&gt; 4.0&quot;
+    }
+    kubernetes = {
+      source  = &quot;hashicorp/kubernetes&quot;
+      version = &quot;~&gt; 2.0&quot;
+    }
+  }
+
+  backend &quot;s3&quot; {
+    bucket  = &quot;svenska-org-terraform-state&quot;
+    key     = &quot;multi-cloud/terraform.tfstate&quot;
+    region  = &quot;eu-north-1&quot;
+    encrypt = true
+  }
+}
+
+# AWS Provider for Stockholm region
+provider &quot;aws&quot; {
+  region = &quot;eu-north-1&quot;
+  alias  = &quot;stockholm&quot;
+
+  default_tags {
+    tags = {
+      Project         = var.project_name
+      Environment     = var.environment
+      Country         = &quot;Sweden&quot;
+      DataResidency   = &quot;Sweden&quot;
+      ManagedBy       = &quot;Terraform&quot;
+      CostCenter      = var.cost_center
+      GDPRCompliant   = &quot;true&quot;
+    }
+  }
+}
+
+# Azure Provider for Sweden Central
+provider &quot;azurerm&quot; {
+  features {
+    key_vault {
+      purge_soft_delete_on_destroy = false
+    }
+  }
+  alias = &quot;sweden&quot;
+}
+
+# Google Cloud Provider for europe-north1
+provider &quot;google&quot; {
+  project = var.gcp_project_id
+  region  = &quot;europe-north1&quot;
+  alias   = &quot;finland&quot;
+}
+
+# Local values for konsistent naming across providers
+locals {
+  resource_prefix = &quot;${var.organization_name}-${var.environment}&quot;
+
+  common_tags = {
+    Project         = var.project_name
+    Environment     = var.environment
+    Organization    = var.organization_name
+    Country         = &quot;Sweden&quot;
+    DataResidency   = &quot;Nordic&quot;
+    ManagedBy       = &quot;Terraform&quot;
+    CostCenter      = var.cost_center
+    GDPRCompliant   = &quot;true&quot;
+    CreatedDate     = formatdate(&quot;YYYY-MM-DD&quot;, timestamp())
+  }
+
+  # GDPR data residency requirements
+  data_residency_requirements = {
+    personal_data      = &quot;Sweden&quot;
+    sensitive_data     = &quot;Sweden&quot;
+    financial_data     = &quot;Sweden&quot;
+    health_data        = &quot;Sweden&quot;
+    operational_data   = &quot;Nordic&quot;
+    public_data        = &quot;Global&quot;
+  }
+}
+
+# AWS Infrastructure for primary workloads
+module &quot;aws_infrastructure&quot; {
+  source = &quot;./modules/aws&quot;
+  providers = {
+    aws = aws.stockholm
+  }
+
+  organization_name    = var.organization_name
+  environment         = var.environment
+  resource_prefix     = local.resource_prefix
+  common_tags         = local.common_tags
+
+  # AWS-specific configuration
+  vpc_cidr           = var.aws_vpc_cidr
+  availability_zones = var.aws_availability_zones
+  enable_nat_gateway = var.environment == &quot;production&quot;
+  enable_vpn_gateway = true
+
+  # Data residency and compliance
+  data_classification      = var.data_classification
+  compliance_requirements  = var.compliance_requirements
+  backup_retention_days    = var.environment == &quot;production&quot; ? 90 : 30
+
+  # Cost optimization
+  enable_spot_instances    = var.environment != &quot;production&quot;
+  enable_scheduled_scaling = true
+}
+
+# Azure Infrastructure for disaster recovery
+module &quot;azure_infrastructure&quot; {
+  source = &quot;./modules/azure&quot;
+  providers = {
+    azurerm = azurerm.sweden
+  }
+
+  organization_name   = var.organization_name
+  environment        = &quot;${var.environment}-dr&quot;
+  resource_prefix    = &quot;${local.resource_prefix}-dr&quot;
+  common_tags        = merge(local.common_tags, { Purpose = &quot;Disaster-Recovery&quot; })
+
+  # Azure-specific configuration
+  location                = &quot;Sweden Central&quot;
+  vnet_address_space     = var.azure_vnet_cidr
+  enable_ddos_protection = var.environment == &quot;production&quot;
+
+  # DR-specific settings
+  enable_cross_region_backup = true
+  backup_geo_redundancy     = &quot;GRS&quot;
+  dr_automation_enabled     = var.environment == &quot;production&quot;
+}
+
+# Google Cloud for analytics and ML workloads
+module &quot;gcp_infrastructure&quot; {
+  source = &quot;./modules/gcp&quot;
+  providers = {
+    google = google.finland
+  }
+
+  organization_name = var.organization_name
+  environment      = &quot;${var.environment}-analytics&quot;
+  resource_prefix  = &quot;${local.resource_prefix}-analytics&quot;
+  common_labels    = {
+    for k, v in local.common_tags : 
+    lower(replace(k, &quot;_&quot;, &quot;-&quot;)) =&gt; lower(v)
+  }
+
+  # GCP-specific configuration
+  region                = &quot;europe-north1&quot;
+  network_name         = &quot;${local.resource_prefix}-analytics-vpc&quot;
+  enable_private_google_access = true
+
+  # Analytics and ML-specific features
+  enable_bigquery      = true
+  enable_dataflow      = true
+  enable_vertex_ai     = var.environment == &quot;production&quot;
+
+  # Data governance for svenska requirements
+  enable_data_catalog  = true
+  enable_dlp_api      = true
+  data_residency_zone = &quot;europe-north1&quot;
+}
+
+# Cross-provider networking for hybrid connectivity
+resource &quot;aws_customer_gateway&quot; &quot;azure_gateway&quot; {
+  provider   = aws.stockholm
+  bgp_asn    = 65515
+  ip_address = module.azure_infrastructure.vpn_gateway_public_ip
+  type       = &quot;ipsec.1&quot;
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${local.resource_prefix}-azure-cgw&quot;
+    Type = &quot;Azure-Connection&quot;
+  })
+}
+
+resource &quot;aws_vpn_connection&quot; &quot;aws_azure_connection&quot; {
+  provider            = aws.stockholm
+  vpn_gateway_id      = module.aws_infrastructure.vpn_gateway_id
+  customer_gateway_id = aws_customer_gateway.azure_gateway.id
+  type               = &quot;ipsec.1&quot;
+  static_routes_only = false
+
+  tags = merge(local.common_tags, {
+    Name = &quot;${local.resource_prefix}-aws-azure-vpn&quot;
+    Connection = &quot;AWS-Azure-Hybrid&quot;
+  })
+}
+
+# Shared services across all clouds
+resource &quot;kubernetes_namespace&quot; &quot;shared_services&quot; {
+  count = length(var.kubernetes_clusters)
+
+  metadata {
+    name = &quot;shared-services&quot;
+    labels = merge(local.common_tags, {
+      &quot;app.kubernetes.io/managed-by&quot; = &quot;terraform&quot;
+      &quot;svenska.se/shared-service&quot;    = &quot;true&quot;
+    })
+  }
+}
+
+# Multi-cloud monitoring with Prometheus federation
+resource &quot;kubernetes_manifest&quot; &quot;prometheus_federation&quot; {
+  count = length(var.kubernetes_clusters)
+
+  manifest = {
+    apiVersion = &quot;v1&quot;
+    kind       = &quot;ConfigMap&quot;
+    metadata = {
+      name      = &quot;prometheus-federation-config&quot;
+      namespace = kubernetes_namespace.shared_services[count.index].metadata[0].name
+    }
+    data = {
+      &quot;prometheus.yml&quot; = yamlencode({
+        global = {
+          scrape_interval = &quot;15s&quot;
+          external_labels = {
+            cluster   = var.kubernetes_clusters[count.index].name
+            region    = var.kubernetes_clusters[count.index].region
+            provider  = var.kubernetes_clusters[count.index].provider
+          }
+        }
+
+        scrape_configs = [
+          {
+            job_name = &quot;federate&quot;
+            scrape_interval = &quot;15s&quot;
+            honor_labels = true
+            metrics_path = &quot;/federate&quot;
+            params = {
+              &quot;match[]&quot; = [
+                &quot;{job=~\&quot;kubernetes-.*\&quot;}&quot;,
+                &quot;{__name__=~\&quot;job:.*\&quot;}&quot;,
+                &quot;{__name__=~\&quot;svenska_org:.*\&quot;}&quot;
+              ]
+            }
+            static_configs = var.kubernetes_clusters[count.index].prometheus_endpoints
+          }
+        ]
+
+        rule_files = [
+          &quot;/etc/prometheus/rules/*.yml&quot;
+        ]
+      })
+    }
+  }
+}
+
+# Cross-cloud DNS for service discovery
+data &quot;aws_route53_zone&quot; &quot;primary&quot; {
+  provider = aws.stockholm
+  name     = var.dns_zone_name
+}
+
+resource &quot;aws_route53_record&quot; &quot;azure_services&quot; {
+  provider = aws.stockholm
+  count    = length(var.azure_service_endpoints)
+
+  zone_id = data.aws_route53_zone.primary.zone_id
+  name    = var.azure_service_endpoints[count.index].name
+  type    = &quot;CNAME&quot;
+  ttl     = 300
+  records = [var.azure_service_endpoints[count.index].endpoint]
+}
+
+resource &quot;aws_route53_record&quot; &quot;gcp_services&quot; {
+  provider = aws.stockholm
+  count    = length(var.gcp_service_endpoints)
+
+  zone_id = data.aws_route53_zone.primary.zone_id
+  name    = var.gcp_service_endpoints[count.index].name
+  type    = &quot;CNAME&quot;
+  ttl     = 300
+  records = [var.gcp_service_endpoints[count.index].endpoint]
+}
+
+# Cross-provider security groups synchronization
+data &quot;external&quot; &quot;azure_ip_ranges&quot; {
+  program = [&quot;python3&quot;, &quot;${path.module}/scripts/get-azure-ip-ranges.py&quot;]
+
+  query = {
+    subscription_id = var.azure_subscription_id
+    resource_group  = module.azure_infrastructure.resource_group_name
+  }
+}
+
+resource &quot;aws_security_group_rule&quot; &quot;allow_azure_traffic&quot; {
+  provider          = aws.stockholm
+  count            = length(data.external.azure_ip_ranges.result.ip_ranges)
+
+  type              = &quot;ingress&quot;
+  from_port         = 443
+  to_port           = 443
+  protocol          = &quot;tcp&quot;
+  cidr_blocks       = [data.external.azure_ip_ranges.result.ip_ranges[count.index]]
+  security_group_id = module.aws_infrastructure.app_security_group_id
+  description       = &quot;HTTPS from Azure ${count.index + 1}&quot;
+}
+
+# Multi-cloud cost optimization
+resource &quot;aws_budgets_budget&quot; &quot;multi_cloud_budget&quot; {
+  provider = aws.stockholm
+  count    = var.environment == &quot;production&quot; ? 1 : 0
+
+  name     = &quot;${local.resource_prefix}-multi-cloud-budget&quot;
+  budget_type = &quot;COST&quot;
+  limit_amount = var.monthly_budget_limit
+  limit_unit   = &quot;USD&quot;
+  time_unit    = &quot;MONTHLY&quot;
+
+  cost_filters {
+    tag = {
+      Project = [var.project_name]
+    }
+  }
+
+  notification {
+    comparison_operator        = &quot;GREATER_THAN&quot;
+    threshold                 = 80
+    threshold_type            = &quot;PERCENTAGE&quot;
+    notification_type         = &quot;ACTUAL&quot;
+    subscriber_email_addresses = var.budget_notification_emails
+  }
+
+  notification {
+    comparison_operator        = &quot;GREATER_THAN&quot;
+    threshold                 = 100
+    threshold_type            = &quot;PERCENTAGE&quot;
+    notification_type          = &quot;FORECASTED&quot;
+    subscriber_email_addresses = var.budget_notification_emails
+  }
+}
+
+# Multi-cloud backup strategy
+resource &quot;aws_s3_bucket&quot; &quot;cross_cloud_backup&quot; {
+  provider = aws.stockholm
+  bucket   = &quot;${local.resource_prefix}-cross-cloud-backup&quot;
+
+  tags = merge(local.common_tags, {
+    Purpose = &quot;Cross-Cloud-Backup&quot;
+  })
+}
+
+resource &quot;aws_s3_bucket_replication_configuration&quot; &quot;cross_region_replication&quot; {
+  provider   = aws.stockholm
+  depends_on = [aws_s3_bucket_versioning.backup_versioning]
+
+  role   = aws_iam_role.replication_role.arn
+  bucket = aws_s3_bucket.cross_cloud_backup.id
+
+  rule {
+    id     = &quot;cross-region-replication&quot;
+    status = &quot;Enabled&quot;
+
+    destination {
+      bucket        = &quot;arn:aws:s3:::${local.resource_prefix}-cross-cloud-backup-replica&quot;
+      storage_class = &quot;STANDARD_IA&quot;
+
+      encryption_configuration {
+        replica_kms_key_id = aws_kms_key.backup_key.arn
+      }
+    }
+  }
+}
+
+# Outputs for cross-provider integration
+output &quot;aws_vpc_id&quot; {
+  description = &quot;AWS VPC ID for cross-provider networking&quot;
+  value       = module.aws_infrastructure.vpc_id
+}
+
+output &quot;azure_vnet_id&quot; {
+  description = &quot;Azure VNet ID for cross-provider networking&quot;
+  value       = module.azure_infrastructure.vnet_id
+}
+
+output &quot;gcp_network_id&quot; {
+  description = &quot;GCP VPC Network ID for cross-provider networking&quot;
+  value       = module.gcp_infrastructure.network_id
+}
+
+output &quot;multi_cloud_endpoints&quot; {
+  description = &quot;Service endpoints across all cloud providers&quot;
+  value = {
+    aws_api_endpoint   = module.aws_infrastructure.api_gateway_endpoint
+    azure_app_url      = module.azure_infrastructure.app_service_url
+    gcp_analytics_url  = module.gcp_infrastructure.analytics_endpoint
+  }
+}
+
+output &quot;compliance_status&quot; {
+  description = &quot;Compliance status across all cloud providers&quot;
+  value = {
+    aws_gdpr_compliant   = module.aws_infrastructure.gdpr_compliant
+    azure_gdpr_compliant = module.azure_infrastructure.gdpr_compliant
+    gcp_gdpr_compliant   = module.gcp_infrastructure.gdpr_compliant
+    data_residency_zones = local.data_residency_requirements
+    cross_cloud_backup   = aws_s3_bucket.cross_cloud_backup.arn
+  }
+}
+</code></pre>
+<h3 id="pulumi-for-programmatisk-multi-cloud-infrastructure-as-code">Pulumi for programmatisk multi-cloud Infrastructure as Code</h3>
+<p>Architecture as Code-principerna within This area</p>
+<p>Pulumi offers a alternatives approach to multi-cloud Architecture as Code by enable use of vanliga programmeringsspråk that TypeScript, Python, Go, and C#. For svenska utvecklarteam as foredrar programmatisk approach over declarative configuration:</p>
+<pre><code class="language-typescript">// pulumi/multi-cloud/index.ts
+// Multi-cloud infrastructure with Pulumi for Swedish organizations
+
+import * as aws from &quot;@pulumi/aws&quot;;
+import * as azure from &quot;@pulumi/azure-native&quot;;
+import * as gcp from &quot;@pulumi/gcp&quot;;
+import * as kubernetes from &quot;@pulumi/kubernetes&quot;;
+import * as pulumi from &quot;@pulumi/pulumi&quot;;
+
+// Konfiguration for Swedish organizations
+const config = new pulumi.Config();
+const organizationName = config.require(&quot;organizationName&quot;);
+const environment = config.require(&quot;environment&quot;);
+const dataClassification = config.get(&quot;dataClassification&quot;) || &quot;internal&quot;;
+const complianceRequirements = config.getObject&lt;string[]&gt;(&quot;complianceRequirements&quot;) || [&quot;gdpr&quot;];
+
+// Svenska common tags/labels for all providers
+const swedishTags = {
+    Organization: organizationName,
+    Environment: environment,
+    Country: &quot;Sweden&quot;,
+    DataResidency: &quot;Nordic&quot;,
+    GDPRCompliant: &quot;true&quot;,
+    ManagedBy: &quot;Pulumi&quot;,
+    CostCenter: config.require(&quot;costCenter&quot;),
+    CreatedDate: new Date().toISOString().split('T')[0]
+};
+
+// Provider configurations for svenska regioner
+const awsProvider = new aws.Provider(&quot;aws-stockholm&quot;, {
+    region: &quot;eu-north-1&quot;,
+    defaultTags: {
+        tags: swedishTags
+    }
+});
+
+const azureProvider = new azure.Provider(&quot;azure-sweden&quot;, {
+    location: &quot;Sweden Central&quot;
+});
+
+const gcpProvider = new gcp.Provider(&quot;gcp-finland&quot;, {
+    project: config.require(&quot;gcpProjectId&quot;),
+    region: &quot;europe-north1&quot;
+});
+
+// AWS Infrastructure for primary workloads
+class AWSInfrastructure extends pulumi.ComponentResource {
+    public readonly vpc: aws.ec2.Vpc;
+    public readonly subnets: aws.ec2.Subnet[];
+    public readonly database: aws.rds.Instance;
+    public readonly apiGateway: aws.apigateway.RestApi;
+
+    constructor(name: string, args: any, opts?: pulumi.ComponentResourceOptions) {
+        super(&quot;svenska:aws:Infrastructure&quot;, name, {}, opts);
+
+        // VPC with svenska security requirements
+        this.vpc = new aws.ec2.Vpc(`${name}-vpc`, {
+            cidrBlock: environment === &quot;production&quot; ? &quot;10.0.0.0/16&quot; : &quot;10.1.0.0/16&quot;,
+            enableDnsHostnames: true,
+            enableDnsSupport: true,
+            tags: {
+                Name: `${organizationName}-${environment}-vpc`,
+                Purpose: &quot;Primary-Infrastructure&quot;
+            }
+        }, { provider: awsProvider, parent: this });
+
+        // Private subnets for svenska data residency
+        this.subnets = [];
+        const azs = aws.getAvailabilityZones({
+            state: &quot;available&quot;
+        }, { provider: awsProvider });
+
+        azs.then(zones =&gt; {
+            zones.names.slice(0, 2).forEach((az, index) =&gt; {
+                const subnet = new aws.ec2.Subnet(`${name}-private-subnet-${index}`, {
+                    vpcId: this.vpc.id,
+                    cidrBlock: environment === &quot;production&quot; ? 
+                        `10.0.${index + 1}.0/24` : 
+                        `10.1.${index + 1}.0/24`,
+                    availabilityZone: az,
+                    mapPublicIpOnLaunch: false,
+                    tags: {
+                        Name: `${organizationName}-private-subnet-${index}`,
+                        Type: &quot;Private&quot;,
+                        DataResidency: &quot;Sweden&quot;
+                    }
+                }, { provider: awsProvider, parent: this });
+
+                this.subnets.push(subnet);
+            });
+        });
+
+        // RDS PostgreSQL for svenska GDPR-requirements
+        const dbSubnetGroup = new aws.rds.SubnetGroup(`${name}-db-subnet-group`, {
+            subnetIds: this.subnets.map(s =&gt; s.id),
+            tags: {
+                Name: `${organizationName}-db-subnet-group`,
+                Purpose: &quot;Database-GDPR-Compliance&quot;
+            }
+        }, { provider: awsProvider, parent: this });
+
+        this.database = new aws.rds.Instance(`${name}-postgres`, {
+            engine: &quot;postgres&quot;,
+            engineVersion: &quot;15.4&quot;,
+            instanceClass: environment === &quot;production&quot; ? &quot;db.r5.large&quot; : &quot;db.t3.micro&quot;,
+            allocatedStorage: environment === &quot;production&quot; ? 100 : 20,
+            storageEncrypted: true,
+            dbSubnetGroupName: dbSubnetGroup.name,
+            backupRetentionPeriod: environment === &quot;production&quot; ? 30 : 7,
+            backupWindow: &quot;03:00-04:00&quot;,  // Svenska nattetid
+            maintenanceWindow: &quot;sat:04:00-sat:05:00&quot;,  // Lördag natt svensk time
+            deletionProtection: environment === &quot;production&quot;,
+            enabledCloudwatchLogsExports: [&quot;postgresql&quot;],
+            tags: {
+                Name: `${organizationName}-postgres`,
+                DataType: &quot;Personal-Data&quot;,
+                GDPRCompliant: &quot;true&quot;,
+                BackupStrategy: environment === &quot;production&quot; ? &quot;30-days&quot; : &quot;7-days&quot;
+            }
+        }, { provider: awsProvider, parent: this });
+
+        // API Gateway with svenska security requirements
+        this.apiGateway = new aws.apigateway.RestApi(`${name}-api`, {
+            name: `${organizationName}-api-${environment}`,
+            description: &quot;API Gateway for svenska organisationen with GDPR compliance&quot;,
+            endpointConfiguration: {
+                types: &quot;REGIONAL&quot;
+            },
+            policy: JSON.stringify({
+                Version: &quot;2012-10-17&quot;,
+                Statement: [{
+                    Effect: &quot;Allow&quot;,
+                    Principal: &quot;*&quot;,
+                    Action: &quot;execute-api:Invoke&quot;,
+                    Resource: &quot;*&quot;,
+                    Condition: {
+                        IpAddress: {
+                            &quot;aws:sourceIp&quot;: args.allowedIpRanges || [&quot;0.0.0.0/0&quot;]
+                        }
+                    }
+                }]
+            })
+        }, { provider: awsProvider, parent: this });
+
+        this.registerOutputs({
+            vpcId: this.vpc.id,
+            subnetIds: this.subnets.map(s =&gt; s.id),
+            databaseEndpoint: this.database.endpoint,
+            apiGatewayUrl: this.apiGateway.executionArn
+        });
+    }
+}
+
+// Azure Infrastructure for disaster recovery
+class AzureInfrastructure extends pulumi.ComponentResource {
+    public readonly resourceGroup: azure.resources.ResourceGroup;
+    public readonly vnet: azure.network.VirtualNetwork;
+    public readonly sqlServer: azure.sql.Server;
+    public readonly appService: azure.web.WebApp;
+
+    constructor(name: string, args: any, opts?: pulumi.ComponentResourceOptions) {
+        super(&quot;svenska:azure:Infrastructure&quot;, name, {}, opts);
+
+        // Resource Group for svenska DR-environment
+        this.resourceGroup = new azure.resources.ResourceGroup(`${name}-rg`, {
+            resourceGroupName: `${organizationName}-${environment}-dr-rg`,
+            location: &quot;Sweden Central&quot;,
+            tags: {
+                ...swedishTags,
+                Purpose: &quot;Disaster-Recovery&quot;
+            }
+        }, { provider: azureProvider, parent: this });
+
+        // Virtual Network for svenska data residency
+        this.vnet = new azure.network.VirtualNetwork(`${name}-vnet`, {
+            virtualNetworkName: `${organizationName}-${environment}-dr-vnet`,
+            resourceGroupName: this.resourceGroup.name,
+            location: this.resourceGroup.location,
+            addressSpace: {
+                addressPrefixes: [environment === &quot;production&quot; ? &quot;172.16.0.0/16&quot; : &quot;172.17.0.0/16&quot;]
+            },
+            subnets: [
+                {
+                    name: &quot;app-subnet&quot;,
+                    addressPrefix: environment === &quot;production&quot; ? &quot;172.16.1.0/24&quot; : &quot;172.17.1.0/24&quot;,
+                    serviceEndpoints: [
+                        { service: &quot;Microsoft.Sql&quot;, locations: [&quot;Sweden Central&quot;] },
+                        { service: &quot;Microsoft.Storage&quot;, locations: [&quot;Sweden Central&quot;] }
+                    ]
+                },
+                {
+                    name: &quot;database-subnet&quot;,
+                    addressPrefix: environment === &quot;production&quot; ? &quot;172.16.2.0/24&quot; : &quot;172.17.2.0/24&quot;,
+                    delegations: [{
+                        name: &quot;Microsoft.Sql/managedInstances&quot;,
+                        serviceName: &quot;Microsoft.Sql/managedInstances&quot;
+                    }]
+                }
+            ],
+            tags: {
+                ...swedishTags,
+                NetworkType: &quot;Disaster-Recovery&quot;
+            }
+        }, { provider: azureProvider, parent: this });
+
+        // SQL Server for GDPR-compliant backup
+        this.sqlServer = new azure.sql.Server(`${name}-sql`, {
+            serverName: `${organizationName}-${environment}-dr-sql`,
+            resourceGroupName: this.resourceGroup.name,
+            location: this.resourceGroup.location,
+            administratorLogin: &quot;sqladmin&quot;,
+            administratorLoginPassword: args.sqlAdminPassword,
+            version: &quot;12.0&quot;,
+            minimalTlsVersion: &quot;1.2&quot;,
+            tags: {
+                ...swedishTags,
+                DatabaseType: &quot;Disaster-Recovery&quot;,
+                DataResidency: &quot;Sweden&quot;
+            }
+        }, { provider: azureProvider, parent: this });
+
+        // App Service for svenska applications
+        const appServicePlan = new azure.web.AppServicePlan(`${name}-asp`, {
+            name: `${organizationName}-${environment}-dr-asp`,
+            resourceGroupName: this.resourceGroup.name,
+            location: this.resourceGroup.location,
+            sku: {
+                name: environment === &quot;production&quot; ? &quot;P1v2&quot; : &quot;B1&quot;,
+                tier: environment === &quot;production&quot; ? &quot;PremiumV2&quot; : &quot;Basic&quot;
+            },
+            tags: swedishTags
+        }, { provider: azureProvider, parent: this });
+
+        this.appService = new azure.web.WebApp(`${name}-app`, {
+            name: `${organizationName}-${environment}-dr-app`,
+            resourceGroupName: this.resourceGroup.name,
+            location: this.resourceGroup.location,
+            serverFarmId: appServicePlan.id,
+            siteConfig: {
+                alwaysOn: environment === &quot;production&quot;,
+                ftpsState: &quot;Disabled&quot;,
+                minTlsVersion: &quot;1.2&quot;,
+                http20Enabled: true,
+                appSettings: [
+                    { name: &quot;ENVIRONMENT&quot;, value: `${environment}-dr` },
+                    { name: &quot;DATA_CLASSIFICATION&quot;, value: dataClassification },
+                    { name: &quot;GDPR_ENABLED&quot;, value: &quot;true&quot; },
+                    { name: &quot;SWEDEN_TIMEZONE&quot;, value: &quot;Europe/Stockholm&quot; },
+                    { name: &quot;COMPLIANCE_MODE&quot;, value: &quot;svenska-gdpr&quot; }
+                ]
+            },
+            tags: {
+                ...swedishTags,
+                AppType: &quot;Disaster-Recovery&quot;
+            }
+        }, { provider: azureProvider, parent: this });
+
+        this.registerOutputs({
+            resourceGroupName: this.resourceGroup.name,
+            vnetId: this.vnet.id,
+            sqlServerName: this.sqlServer.name,
+            appServiceUrl: this.appService.defaultHostName.apply(hostname =&gt; `https://${hostname}`)
+        });
+    }
+}
+
+// Google Cloud Infrastructure for analytics
+class GCPInfrastructure extends pulumi.ComponentResource {
+    public readonly network: gcp.compute.Network;
+    public readonly bigQueryDataset: gcp.bigquery.Dataset;
+    public readonly cloudFunction: gcp.cloudfunctions.Function;
+
+    constructor(name: string, args: any, opts?: pulumi.ComponentResourceOptions) {
+        super(&quot;svenska:gcp:Infrastructure&quot;, name, {}, opts);
+
+        // VPC Network for svenska analytics
+        this.network = new gcp.compute.Network(`${name}-network`, {
+            name: `${organizationName}-${environment}-analytics-vpc`,
+            description: &quot;VPC for svenska analytics and ML workloads&quot;,
+            autoCreateSubnetworks: false
+        }, { provider: gcpProvider, parent: this });
+
+        // Subnet for svenska data residency
+        const analyticsSubnet = new gcp.compute.Subnetwork(`${name}-analytics-subnet`, {
+            name: `${organizationName}-analytics-subnet`,
+            ipCidrRange: &quot;10.2.0.0/24&quot;,
+            region: &quot;europe-north1&quot;,
+            network: this.network.id,
+            enableFlowLogs: true,
+            logConfig: {
+                enable: true,
+                flowSampling: 1.0,
+                aggregationInterval: &quot;INTERVAL_5_SEC&quot;,
+                metadata: &quot;INCLUDE_ALL_METADATA&quot;
+            },
+            secondaryIpRanges: [
+                {
+                    rangeName: &quot;pods&quot;,
+                    ipCidrRange: &quot;10.3.0.0/16&quot;
+                },
+                {
+                    rangeName: &quot;services&quot;, 
+                    ipCidrRange: &quot;10.4.0.0/20&quot;
+                }
+            ]
+        }, { provider: gcpProvider, parent: this });
+
+        // BigQuery Dataset for svenska data analytics
+        this.bigQueryDataset = new gcp.bigquery.Dataset(`${name}-analytics-dataset`, {
+            datasetId: `${organizationName}_${environment}_analytics`,
+            friendlyName: `Svenska ${organizationName} Analytics Dataset`,
+            description: &quot;Analytics dataset for svenska organisationen with GDPR compliance&quot;,
+            location: &quot;europe-north1&quot;,
+            defaultTableExpirationMs: environment === &quot;production&quot; ? 
+                7 * 24 * 60 * 60 * 1000 : // 7 dagar for production
+                24 * 60 * 60 * 1000,      // 1 dag for dev/staging
+
+            access: [
+                {
+                    role: &quot;OWNER&quot;,
+                    userByEmail: args.dataOwnerEmail
+                },
+                {
+                    role: &quot;READER&quot;, 
+                    specialGroup: &quot;projectReaders&quot;
+                }
+            ],
+
+            labels: {
+                organization: organizationName.toLowerCase(),
+                environment: environment,
+                country: &quot;sweden&quot;,
+                gdpr_compliant: &quot;true&quot;,
+                data_residency: &quot;nordic&quot;
+            }
+        }, { provider: gcpProvider, parent: this });
+
+        // Cloud Function for svenska GDPR data processing
+        const functionSourceBucket = new gcp.storage.Bucket(`${name}-function-source`, {
+            name: `${organizationName}-${environment}-function-source`,
+            location: &quot;EUROPE-NORTH1&quot;,
+            uniformBucketLevelAccess: true,
+            labels: {
+                purpose: &quot;cloud-function-source&quot;,
+                data_residency: &quot;sweden&quot;
+            }
+        }, { provider: gcpProvider, parent: this });
+
+        const functionSourceObject = new gcp.storage.BucketObject(`${name}-function-zip`, {
+            name: &quot;svenska-gdpr-processor.zip&quot;,
+            bucket: functionSourceBucket.name,
+            source: new pulumi.asset.FileAsset(&quot;./functions/svenska-gdpr-processor.zip&quot;)
+        }, { provider: gcpProvider, parent: this });
+
+        this.cloudFunction = new gcp.cloudfunctions.Function(`${name}-gdpr-processor`, {
+            name: `${organizationName}-gdpr-processor-${environment}`,
+            description: &quot;GDPR data processing function for svenska organisationen&quot;,
+            runtime: &quot;nodejs18&quot;,
+            availableMemoryMb: 256,
+            timeout: 60,
+            entryPoint: &quot;processGDPRRequest&quot;,
+            region: &quot;europe-north1&quot;,
+
+            sourceArchiveBucket: functionSourceBucket.name,
+            sourceArchiveObject: functionSourceObject.name,
+
+            httpsTrigger: {},
+
+            environmentVariables: {
+                ENVIRONMENT: environment,
+                DATA_CLASSIFICATION: dataClassification,
+                GDPR_ENABLED: &quot;true&quot;,
+                SWEDISH_TIMEZONE: &quot;Europe/Stockholm&quot;,
+                BIGQUERY_DATASET: this.bigQueryDataset.datasetId,
+                COMPLIANCE_MODE: &quot;svenska-gdpr&quot;
+            },
+
+            labels: {
+                organization: organizationName.toLowerCase(),
+                environment: environment,
+                function_type: &quot;gdpr_processor&quot;,
+                data_residency: &quot;sweden&quot;
+            }
+        }, { provider: gcpProvider, parent: this });
+
+        this.registerOutputs({
+            networkId: this.network.id,
+            bigQueryDatasetId: this.bigQueryDataset.datasetId,
+            cloudFunctionUrl: this.cloudFunction.httpsTriggerUrl
+        });
+    }
+}
+
+// Main multi-cloud deployment
+const awsInfra = new AWSInfrastructure(&quot;aws-primary&quot;, {
+    allowedIpRanges: config.getObject&lt;string[]&gt;(&quot;allowedIpRanges&quot;) || [&quot;0.0.0.0/0&quot;]
+});
+
+const azureInfra = new AzureInfrastructure(&quot;azure-dr&quot;, {
+    sqlAdminPassword: config.requireSecret(&quot;sqlAdminPassword&quot;)
+});
+
+const gcpInfra = new GCPInfrastructure(&quot;gcp-analytics&quot;, {
+    dataOwnerEmail: config.require(&quot;dataOwnerEmail&quot;)
+});
+
+// Cross-cloud monitoring setup
+const crossCloudMonitoring = new kubernetes.core.v1.Namespace(&quot;cross-cloud-monitoring&quot;, {
+    metadata: {
+        name: &quot;monitoring&quot;,
+        labels: {
+            &quot;app.kubernetes.io/managed-by&quot;: &quot;pulumi&quot;,
+            &quot;svenska.se/monitoring-type&quot;: &quot;cross-cloud&quot;
+        }
+    }
+});
+
+// Export key outputs for cross-provider integration
+export const multiCloudEndpoints = {
+    aws: {
+        apiGatewayUrl: awsInfra.apiGateway.executionArn,
+        vpcId: awsInfra.vpc.id
+    },
+    azure: {
+        appServiceUrl: azureInfra.appService.defaultHostName.apply(hostname =&gt; `https://${hostname}`),
+        resourceGroupName: azureInfra.resourceGroup.name
+    },
+    gcp: {
+        analyticsUrl: gcpInfra.cloudFunction.httpsTriggerUrl,
+        networkId: gcpInfra.network.id
+    }
+};
+
+export const complianceStatus = {
+    gdprCompliant: true,
+    dataResidencyZones: {
+        aws: &quot;eu-north-1 (Stockholm)&quot;,
+        azure: &quot;Sweden Central&quot;,
+        gcp: &quot;europe-north1 (Finland)&quot;
+    },
+    encryptionEnabled: true,
+    auditLoggingEnabled: true,
+    crossCloudBackupEnabled: true
+};
+</code></pre>
+<h2 id="serverless-infrastruktur">Serverless infrastruktur</h2>
+<p>Serverless Infrastructure as Code focuses on function definitions, event triggers, and managed service configurations instead for traditional server management. This approach reduces operationell overhead and enables automatic scaling based on actual usage patterns.</p>
+<p>Event-driven architectures implementeras through cloud functions, message queues, and data streams definierade that Architecture as Code. Integration between services is managed through IAM policies, API definitions, and network configurations that ensure security and performance requirements.</p>
+<h3 id="function-as-a-service-faas-patterns-for-swedish-organizations">Function-as-a-Service (FaaS) patterns for Swedish organizations</h3>
+<p>Serverless funktioner forms kärnan in modern cloud-native architecture and enables unprecedented scalability and kostnadseffektivitet. For Swedish organizations means FaaS-patterns to infrastructure definitions focuses on business logic instead for underlying compute resources:</p>
+<pre><code class="language-yaml"># serverless.yml
+# Serverless Framework for Swedish organizations
+
+service: svenska-org-serverless
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-north-1  # Stockholm region for svenska data residency
+  stage: ${opt:stage, 'development'}
+  memorySize: 256
+  timeout: 30
+
+  # Svenska environment variables
+  environment:
+    STAGE: ${self:provider.stage}
+    REGION: ${self:provider.region}
+    DATA_CLASSIFICATION: ${env:DATA_CLASSIFICATION, 'internal'}
+    GDPR_ENABLED: true
+    SWEDISH_TIMEZONE: Europe/Stockholm
+    COST_CENTER: ${env:COST_CENTER}
+    ORGANIZATION: ${env:ORGANIZATION_NAME}
+    COMPLIANCE_REQUIREMENTS: ${env:COMPLIANCE_REQUIREMENTS, 'gdpr'}
+
+  # IAM Roles for svenska security requirements
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+          Resource: 
+            - arn:aws:logs:${self:provider.region}:*:*
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - arn:aws:dynamodb:${self:provider.region}:*:table/${self:service}-${self:provider.stage}-*
+        - Effect: Allow
+          Action:
+            - kms:Decrypt
+            - kms:Encrypt
+            - kms:GenerateDataKey
+          Resource:
+            - arn:aws:kms:${self:provider.region}:*:key/*
+          Condition:
+            StringEquals:
+              'kms:ViaService': 
+                - dynamodb.${self:provider.region}.amazonaws.com
+                - s3.${self:provider.region}.amazonaws.com
+
+  # VPC configuration for svenska security requirements
+  vpc:
+    securityGroupIds:
+      - ${env:SECURITY_GROUP_ID}
+    subnetIds:
+      - ${env:PRIVATE_SUBNET_1_ID}
+      - ${env:PRIVATE_SUBNET_2_ID}
+
+  # CloudWatch Logs for GDPR compliance
+  logs:
+    restApi: true
+    frameworkLambda: true
+
+  # Tracing for svenska monitoring
+  tracing:
+    lambda: true
+    apiGateway: true
+
+  # Tags for svenska governance
+  tags:
+    Organization: ${env:ORGANIZATION_NAME}
+    Environment: ${self:provider.stage}
+    Country: Sweden
+    DataResidency: Sweden
+    GDPRCompliant: true
+    ManagedBy: Serverless-Framework
+    CostCenter: ${env:COST_CENTER}
+    CreatedDate: ${env:DEPLOY_DATE}
+
+# Svenska serverless functions
+functions:
+  # GDPR Data Subject Rights API
+  gdprDataSubjectAPI:
+    handler: src/handlers/gdpr.dataSubjectRequestHandler
+    description: GDPR data subject rights API for svenska organisationen
+    memorySize: 512
+    timeout: 60
+    reservedConcurrency: 50
+    environment:
+      GDPR_TABLE_NAME: ${self:service}-${self:provider.stage}-gdpr-requests
+      AUDIT_TABLE_NAME: ${self:service}-${self:provider.stage}-audit-log
+      ENCRYPTION_KEY_ARN: ${env:GDPR_KMS_KEY_ARN}
+      DATA_RETENTION_DAYS: ${env:DATA_RETENTION_DAYS, '90'}
+    events:
+      - http:
+          path: /gdpr/data-subject-request
+          method: post
+          cors:
+            origin: ${env:ALLOWED_ORIGINS, '*'}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - X-Swedish-Org-Token
+          authorizer:
+            name: gdprAuthorizer
+            type: COGNITO_USER_POOLS
+            arn: ${env:COGNITO_USER_POOL_ARN}
+          request:
+            schemas:
+              application/json: ${file(schemas/gdpr-request.json)}
+    tags:
+      Function: GDPR-Data-Subject-Rights
+      DataType: Personal-Data
+      ComplianceLevel: Critical
+
+  # Svenska audit logging function
+  auditLogger:
+    handler: src/handlers/audit.logEventHandler
+    description: Audit logging for svenska compliance-requirements
+    memorySize: 256
+    timeout: 30
+    environment:
+      AUDIT_TABLE_NAME: ${self:service}-${self:provider.stage}-audit-log
+      LOG_RETENTION_YEARS: ${env:LOG_RETENTION_YEARS, '7'}
+      SWEDISH_LOCALE: sv_SE.UTF-8
+    events:
+      - stream:
+          type: dynamodb
+          arn:
+            Fn::GetAtt: [GdprRequestsTable, StreamArn]
+          batchSize: 10
+          startingPosition: LATEST
+          maximumBatchingWindowInSeconds: 5
+    deadLetter:
+      targetArn: 
+        Fn::GetAtt: [AuditDLQ, Arn]
+    tags:
+      Function: Audit-Logging
+      RetentionPeriod: 7-years
+      ComplianceType: Swedish-Requirements
+
+  # Kostnadskontroll for Swedish organizations
+  costMonitoring:
+    handler: src/handlers/cost.monitoringHandler
+    description: Kostnadskontroll and budgetvarningar for Swedish organizations
+    memorySize: 256
+    timeout: 120
+    environment:
+      BUDGET_TABLE_NAME: ${self:service}-${self:provider.stage}-budgets
+      NOTIFICATION_TOPIC_ARN: ${env:COST_NOTIFICATION_TOPIC_ARN}
+      SWEDISH_CURRENCY: SEK
+      COST_ALLOCATION_TAGS: Environment,CostCenter,Organization
+    events:
+      - schedule:
+          rate: cron(0 8 * * ? *)  # 08:00 svensk time each dag
+          description: Daglig kostnadskontroll for svenska organisationen
+          input:
+            checkType: daily
+            currency: SEK
+            timezone: Europe/Stockholm
+      - schedule:
+          rate: cron(0 8 ? * MON *)  # 08:00 måndagar for veckorapport
+          description: Veckovis kostnadskontroll
+          input:
+            checkType: weekly
+            generateReport: true
+    tags:
+      Function: Cost-Monitoring
+      Schedule: Daily-Weekly
+      Currency: SEK
+
+  # Svenska data processing pipeline
+  dataProcessor:
+    handler: src/handlers/data.processingHandler
+    description: Data processing pipeline for Swedish organizations
+    memorySize: 1024
+    timeout: 900  # 15 minuter for batch processing
+    reservedConcurrency: 10
+    environment:
+      DATA_BUCKET_NAME: ${env:DATA_BUCKET_NAME}
+      PROCESSED_BUCKET_NAME: ${env:PROCESSED_BUCKET_NAME}
+      ENCRYPTION_KEY_ARN: ${env:DATA_ENCRYPTION_KEY_ARN}
+      GDPR_ANONYMIZATION_ENABLED: true
+      SWEDISH_DATA_RESIDENCY: true
+    events:
+      - s3:
+          bucket: ${env:DATA_BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: incoming/
+            - suffix: .json
+    layers:
+      - ${env:PANDAS_LAYER_ARN}  # Data processing libraries
+    tags:
+      Function: Data-Processing
+      DataType: Batch-Processing
+      AnonymizationEnabled: true
+
+# Svenska DynamoDB tables
+resources:
+  Resources:
+    # GDPR requests table
+    GdprRequestsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-${self:provider.stage}-gdpr-requests
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: requestId
+            AttributeType: S
+          - AttributeName: dataSubjectId
+            AttributeType: S
+          - AttributeName: createdAt
+            AttributeType: S
+        KeySchema:
+          - AttributeName: requestId
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: DataSubjectIndex
+            KeySchema:
+              - AttributeName: dataSubjectId
+                KeyType: HASH
+              - AttributeName: createdAt
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        PointInTimeRecoverySpecification:
+          PointInTimeRecoveryEnabled: ${self:provider.stage, 'production', true, false}
+        SSESpecification:
+          SSEEnabled: true
+          KMSMasterKeyId: ${env:GDPR_KMS_KEY_ARN}
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
+        Tags:
+          - Key: Purpose
+            Value: GDPR-Data-Subject-Requests
+          - Key: DataType
+            Value: Personal-Data
+          - Key: Retention
+            Value: ${env:DATA_RETENTION_DAYS, '90'}-days
+          - Key: Country
+            Value: Sweden
+
+    # Audit log table for svenska compliance
+    AuditLogTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-${self:provider.stage}-audit-log
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: eventId
+            AttributeType: S
+          - AttributeName: timestamp
+            AttributeType: S
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: eventId
+            KeyType: HASH
+          - AttributeName: timestamp
+            KeyType: RANGE
+        GlobalSecondaryIndexes:
+          - IndexName: UserAuditIndex
+            KeySchema:
+              - AttributeName: userId
+                KeyType: HASH
+              - AttributeName: timestamp
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+        PointInTimeRecoverySpecification:
+          PointInTimeRecoveryEnabled: true
+        SSESpecification:
+          SSEEnabled: true
+          KMSMasterKeyId: ${env:AUDIT_KMS_KEY_ARN}
+        Tags:
+          - Key: Purpose
+            Value: Compliance-Audit-Logging
+          - Key: Retention
+            Value: 7-years
+          - Key: ComplianceType
+            Value: Swedish-Requirements
+
+    # Dead Letter Queue for svenska error handling
+    AuditDLQ:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:service}-${self:provider.stage}-audit-dlq
+        MessageRetentionPeriod: 1209600  # 14 dagar
+        KmsMasterKeyId: ${env:AUDIT_KMS_KEY_ARN}
+        Tags:
+          - Key: Purpose
+            Value: Dead-Letter-Queue
+          - Key: Component
+            Value: Audit-systems
+
+    # CloudWatch Dashboard for svenska monitoring
+    ServerlessMonitoringDashboard:
+      Type: AWS::CloudWatch::Dashboard
+      Properties:
+        DashboardName: ${self:service}-${self:provider.stage}-svenska-monitoring
+        DashboardBody: 
+          Fn::Sub: |
+            {
+              &quot;widgets&quot;: [
+                {
+                  &quot;type&quot;: &quot;metric&quot;,
+                  &quot;x&quot;: 0,
+                  &quot;y&quot;: 0,
+                  &quot;width&quot;: 12,
+                  &quot;height&quot;: 6,
+                  &quot;properties&quot;: {
+                    &quot;metrics&quot;: [
+                      [ &quot;AWS/Lambda&quot;, &quot;Invocations&quot;, &quot;FunctionName&quot;, &quot;${GdprDataSubjectAPILambdaFunction}&quot; ],
+                      [ &quot;.&quot;, &quot;Errors&quot;, &quot;.&quot;, &quot;.&quot; ],
+                      [ &quot;.&quot;, &quot;Duration&quot;, &quot;.&quot;, &quot;.&quot; ]
+                    ],
+                    &quot;view&quot;: &quot;timeSeries&quot;,
+                    &quot;stacked&quot;: false,
+                    &quot;region&quot;: &quot;${AWS::Region}&quot;,
+                    &quot;title&quot;: &quot;GDPR Function Metrics&quot;,
+                    &quot;period&quot;: 300
+                  }
+                },
+                {
+                  &quot;type&quot;: &quot;metric&quot;, 
+                  &quot;x&quot;: 0,
+                  &quot;y&quot;: 6,
+                  &quot;width&quot;: 12,
+                  &quot;height&quot;: 6,
+                  &quot;properties&quot;: {
+                    &quot;metrics&quot;: [
+                      [ &quot;AWS/DynamoDB&quot;, &quot;ConsumedReadCapacityUnits&quot;, &quot;TableName&quot;, &quot;${GdprRequestsTable}&quot; ],
+                      [ &quot;.&quot;, &quot;ConsumedWriteCapacityUnits&quot;, &quot;.&quot;, &quot;.&quot; ]
+                    ],
+                    &quot;view&quot;: &quot;timeSeries&quot;,
+                    &quot;stacked&quot;: false,
+                    &quot;region&quot;: &quot;${AWS::Region}&quot;,
+                    &quot;title&quot;: &quot;GDPR Table Capacity&quot;,
+                    &quot;period&quot;: 300
+                  }
+                }
+              ]
+            }
+
+  Outputs:
+    GdprApiEndpoint:
+      Description: GDPR API endpoint for svenska data subject requests
+      Value:
+        Fn::Join:
+          - ''
+          - - https://
+            - Ref: RestApiApigEvent
+            - .execute-api.
+            - ${self:provider.region}
+            - .amazonaws.com/
+            - ${self:provider.stage}
+            - /gdpr/data-subject-request
+      Export:
+        Name: ${self:service}-${self:provider.stage}-gdpr-api-endpoint
+
+    ComplianceStatus:
+      Description: Compliance status for serverless infrastructure
+      Value:
+        Fn::Sub: |
+          {
+            &quot;gdprCompliant&quot;: true,
+            &quot;dataResidency&quot;: &quot;Sweden&quot;,
+            &quot;auditLoggingEnabled&quot;: true,
+            &quot;encryptionEnabled&quot;: true,
+            &quot;retentionPolicies&quot;: {
+              &quot;gdprData&quot;: &quot;${env:DATA_RETENTION_DAYS, '90'} days&quot;,
+              &quot;auditLogs&quot;: &quot;7 years&quot;
+            }
+          }
+
+# Svenska plugins for extended functionality
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-domain-manager
+  - serverless-prune-plugin
+  - serverless-plugin-tracing
+  - serverless-plugin-aws-alerts
+
+# Custom configuration for Swedish organizations
+custom:
+  # Webpack for optimized bundles
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: true
+    packager: 'npm'
+    excludeFiles: src/**/*.test.js
+
+  # Domain management for svenska domains
+  customDomain:
+    domainName: ${env:CUSTOM_DOMAIN_NAME, ''}
+    stage: ${self:provider.stage}
+    certificateName: ${env:SSL_CERTIFICATE_NAME, ''}
+    createRoute53Record: true
+    endpointType: 'regional'
+    securityPolicy: tls_1_2
+    apiType: rest
+
+  # Automated pruning for cost optimization
+  prune:
+    automatic: true
+    number: 5  # Behåll 5 last versionerna
+
+  # CloudWatch Alerts for svenska monitoring
+  alerts:
+    stages:
+      - production
+      - staging
+    topics:
+      alarm: ${env:ALARM_TOPIC_ARN}
+    definitions:
+      functionErrors:
+        metric: errors
+        threshold: 5
+        statistic: Sum
+        period: 300
+        evaluationPeriods: 2
+        comparisonOperator: GreaterThanThreshold
+        treatMissingData: notBreaching
+      functionDuration:
+        metric: duration
+        threshold: 10000  # 10 sekunder
+        statistic: Average
+        period: 300
+        evaluationPeriods: 2
+        comparisonOperator: GreaterThanThreshold
+    alarms:
+      - functionErrors
+      - functionDuration
+</code></pre>
+<h3 id="event-driven-architecture-for-swedish-organizations">Event-driven architecture for Swedish organizations</h3>
+<p>Event-driven arkitekturer forms the foundation for modern serverless systems and enables loose coupling between services. For Swedish organizations means This particular fokus at GDPR-compliant event processing and audit trails:</p>
+<pre><code class="language-python"># serverless/event_processing.py
+# Event-driven architecture for Swedish organizations with GDPR compliance
+
+import json
+import boto3
+import logging
+import os
+from datetime import datetime, timezone
+from typing import Dict, List, Any, Optional
+from dataclasses import dataclass, asdict
+from enum import Enum
+
+# Konfiguration for Swedish organizations
+SWEDISH_TIMEZONE = 'Europe/Stockholm'
+ORGANIZATION_NAME = os.environ.get('ORGANIZATION_NAME', 'svenska-org')
+ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
+GDPR_ENABLED = os.environ.get('GDPR_ENABLED', 'true').lower() == 'true'
+DATA_CLASSIFICATION = os.environ.get('DATA_CLASSIFICATION', 'internal')
+
+# AWS clients with svenska configuration
+dynamodb = boto3.resource('dynamodb', region_name='eu-north-1')
+sns = boto3.client('sns', region_name='eu-north-1')
+sqs = boto3.client('sqs', region_name='eu-north-1')
+s3 = boto3.client('s3', region_name='eu-north-1')
+
+# Logging configuration for svenska compliance
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+class EventType(Enum):
+    &quot;&quot;&quot;Svenska event types for GDPR compliance&quot;&quot;&quot;
+    GDPR_DATA_REQUEST = &quot;gdpr.data_request&quot;
+    GDPR_DATA_DELETION = &quot;gdpr.data_deletion&quot;
+    GDPR_DATA_RECTIFICATION = &quot;gdpr.data_rectification&quot;
+    GDPR_DATA_PORTABILITY = &quot;gdpr.data_portability&quot;
+    USER_REGISTRATION = &quot;user.registration&quot;
+    USER_LOGIN = &quot;user.login&quot;
+    USER_LOGOUT = &quot;user.logout&quot;
+    DATA_PROCESSING = &quot;data.processing&quot;
+    AUDIT_LOG = &quot;audit.log&quot;
+    COST_ALERT = &quot;cost.alert&quot;
+    SECURITY_INCIDENT = &quot;security.incident&quot;
+
+@dataclass
+class SwedishEvent:
+    &quot;&quot;&quot;Standardiserad event structure for Swedish organizations&quot;&quot;&quot;
+    event_id: str
+    event_type: EventType
+    timestamp: str
+    source: str
+    data_subject_id: Optional[str]
+    data_classification: str
+    gdpr_lawful_basis: Optional[str]
+    payload: Dict[str, Any]
+    metadata: Dict[str, Any]
+
+    def __post_init__(self):
+        &quot;&quot;&quot;Validate svenska GDPR-requirements&quot;&quot;&quot;
+        if self.data_classification in ['personal', 'sensitive'] and not self.data_subject_id:
+            raise ValueError(&quot;Data subject ID krävs for personal/sensitive data&quot;)
+
+        if GDPR_ENABLED and self.data_classification == 'personal' and not self.gdpr_lawful_basis:
+            raise ValueError(&quot;GDPR lawful basis krävs for personal data processing&quot;)
+
+class SwedishEventProcessor:
+    &quot;&quot;&quot;Event processor for Swedish organizations with GDPR compliance&quot;&quot;&quot;
+
+    def __init__(self):
+        self.event_table = dynamodb.Table(f'{ORGANIZATION_NAME}-{ENVIRONMENT}-events')
+        self.audit_table = dynamodb.Table(f'{ORGANIZATION_NAME}-{ENVIRONMENT}-audit-log')
+        self.gdpr_table = dynamodb.Table(f'{ORGANIZATION_NAME}-{ENVIRONMENT}-gdpr-requests')
+
+    def process_event(self, event: SwedishEvent) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Process event with svenska compliance-requirements&quot;&quot;&quot;
+        try:
+            # Log event for audit trail
+            self._audit_log_event(event)
+
+            # Spara event in DynamoDB
+            self._store_event(event)
+
+            # Process based on event type
+            result = self._route_event(event)
+
+            # GDPR-specific processing
+            if GDPR_ENABLED and event.data_classification in ['personal', 'sensitive']:
+                self._process_gdpr_requirements(event)
+
+            logger.info(f&quot;Successfully processed event {event.event_id} of type {event.event_type.value}&quot;)
+            return {&quot;status&quot;: &quot;success&quot;, &quot;event_id&quot;: event.event_id, &quot;result&quot;: result}
+
+        except Exception as e:
+            logger.error(f&quot;Error processing event {event.event_id}: {str(e)}&quot;)
+            self._handle_event_error(event, e)
+            raise
+
+    def _audit_log_event(self, event: SwedishEvent) -&gt; None:
+        &quot;&quot;&quot;Skapa audit log entry for svenska compliance&quot;&quot;&quot;
+        audit_entry = {
+            'audit_id': f&quot;audit-{event.event_id}&quot;,
+            'timestamp': event.timestamp,
+            'event_type': event.event_type.value,
+            'source': event.source,
+            'data_subject_id': event.data_subject_id,
+            'data_classification': event.data_classification,
+            'gdpr_lawful_basis': event.gdpr_lawful_basis,
+            'organization': ORGANIZATION_NAME,
+            'environment': ENVIRONMENT,
+            'compliance_flags': {
+                'gdpr_processed': GDPR_ENABLED,
+                'audit_logged': True,
+                'data_residency': 'Sweden',
+                'encryption_used': True
+            },
+            'retention_until': self._calculate_retention_date(event.data_classification),
+            'ttl': self._calculate_ttl(event.data_classification)
+        }
+
+        self.audit_table.put_item(Item=audit_entry)
+
+    def _store_event(self, event: SwedishEvent) -&gt; None:
+        &quot;&quot;&quot;Spara event in DynamoDB with svenska encryption&quot;&quot;&quot;
+        event_item = {
+            'event_id': event.event_id,
+            'event_type': event.event_type.value,
+            'timestamp': event.timestamp,
+            'source': event.source,
+            'data_subject_id': event.data_subject_id,
+            'data_classification': event.data_classification,
+            'gdpr_lawful_basis': event.gdpr_lawful_basis,
+            'payload': json.dumps(event.payload),
+            'metadata': event.metadata,
+            'ttl': self._calculate_ttl(event.data_classification)
+        }
+
+        self.event_table.put_item(Item=event_item)
+
+    def _route_event(self, event: SwedishEvent) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Route event to appropriate processor&quot;&quot;&quot;
+        processors = {
+            EventType.GDPR_DATA_REQUEST: self._process_gdpr_request,
+            EventType.GDPR_DATA_DELETION: self._process_gdpr_deletion,
+            EventType.GDPR_DATA_RECTIFICATION: self._process_gdpr_rectification,
+            EventType.GDPR_DATA_PORTABILITY: self._process_gdpr_portability,
+            EventType.USER_REGISTRATION: self._process_user_registration,
+            EventType.DATA_PROCESSING: self._process_data_processing,
+            EventType.COST_ALERT: self._process_cost_alert,
+            EventType.SECURITY_INCIDENT: self._process_security_incident
+        }
+
+        processor = processors.get(event.event_type, self._default_processor)
+        return processor(event)
+
+    def _process_gdpr_request(self, event: SwedishEvent) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Process GDPR data subject request according to svenska requirements&quot;&quot;&quot;
+        request_data = event.payload
+
+        # Validate GDPR request format
+        required_fields = ['request_type', 'data_subject_email', 'verification_token']
+        if not all(field in request_data for field in required_fields):
+            raise ValueError(&quot;Invalid GDPR request format&quot;)
+
+        # Skapa GDPR request entry
+        gdpr_request = {
+            'request_id': f&quot;gdpr-{event.event_id}&quot;,
+            'timestamp': event.timestamp,
+            'request_type': request_data['request_type'],
+            'data_subject_id': event.data_subject_id,
+            'data_subject_email': request_data['data_subject_email'],
+            'verification_token': request_data['verification_token'],
+            'status': 'pending',
+            'lawful_basis_used': event.gdpr_lawful_basis,
+            'processing_deadline': self._calculate_gdpr_deadline(),
+            'organization': ORGANIZATION_NAME,
+            'environment': ENVIRONMENT,
+            'metadata': {
+                'source_ip': request_data.get('source_ip'),
+                'user_agent': request_data.get('user_agent'),
+                'swedish_locale': True,
+                'data_residency': 'Sweden'
+            }
+        }
+
+        self.gdpr_table.put_item(Item=gdpr_request)
+
+        # Skicka notification to GDPR team
+        self._send_gdpr_notification(gdpr_request)
+
+        return {
+            &quot;request_id&quot;: gdpr_request['request_id'],
+            &quot;status&quot;: &quot;created&quot;,
+            &quot;processing_deadline&quot;: gdpr_request['processing_deadline']
+        }
+
+    def _process_gdpr_deletion(self, event: SwedishEvent) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Process GDPR data deletion according to svenska requirements&quot;&quot;&quot;
+        deletion_data = event.payload
+        data_subject_id = event.data_subject_id
+
+        # Lista all databaser and tabeller as can innehålla personal data
+        data_stores = [
+            {'type': 'dynamodb', 'table': f'{ORGANIZATION_NAME}-{ENVIRONMENT}-users'},
+            {'type': 'dynamodb', 'table': f'{ORGANIZATION_NAME}-{ENVIRONMENT}-profiles'},
+            {'type': 'dynamodb', 'table': f'{ORGANIZATION_NAME}-{ENVIRONMENT}-activities'},
+            {'type': 's3', 'bucket': f'{ORGANIZATION_NAME}-{ENVIRONMENT}-user-data'},
+            {'type': 'rds', 'database': f'{ORGANIZATION_NAME}_production'}
+        ]
+
+        deletion_results = []
+
+        for store in data_stores:
+            try:
+                if store['type'] == 'dynamodb':
+                    result = self._delete_from_dynamodb(store['table'], data_subject_id)
+                elif store['type'] == 's3':
+                    result = self._delete_from_s3(store['bucket'], data_subject_id)
+                elif store['type'] == 'rds':
+                    result = self._delete_from_rds(store['database'], data_subject_id)
+
+                deletion_results.append({
+                    'store': store,
+                    'status': 'success',
+                    'records_deleted': result.get('deleted_count', 0)
+                })
+
+            except Exception as e:
+                deletion_results.append({
+                    'store': store,
+                    'status': 'error',
+                    'error': str(e)
+                })
+                logger.error(f&quot;Error deleting from {store}: {str(e)}&quot;)
+
+        # Log deletion for audit
+        deletion_audit = {
+            'deletion_id': f&quot;deletion-{event.event_id}&quot;,
+            'timestamp': event.timestamp,
+            'data_subject_id': data_subject_id,
+            'deletion_results': deletion_results,
+            'total_stores_processed': len(data_stores),
+            'successful_deletions': sum(1 for r in deletion_results if r['status'] == 'success'),
+            'gdpr_compliant': all(r['status'] == 'success' for r in deletion_results)
+        }
+
+        self.audit_table.put_item(Item=deletion_audit)
+
+        return deletion_audit
+
+    def _process_cost_alert(self, event: SwedishEvent) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Process cost alert for svenska budgetkontroll&quot;&quot;&quot;
+        cost_data = event.payload
+
+        # Konvertera to svenska kronor about nödvändigt
+        if cost_data.get('currency') != 'SEK':
+            sek_amount = self._convert_to_sek(
+                cost_data['amount'], 
+                cost_data.get('currency', 'USD')
+            )
+            cost_data['amount_sek'] = sek_amount
+
+        # Skapa svensk cost alert
+        alert_message = self._format_swedish_cost_alert(cost_data)
+
+        # Skicka to svenska notification channels
+        sns.publish(
+            TopicArn=os.environ.get('COST_ALERT_TOPIC_ARN'),
+            Subject=f&quot;Kostnadsvarning - {ORGANIZATION_NAME} {ENVIRONMENT}&quot;,
+            Message=alert_message,
+            MessageAttributes={
+                'Organization': {'DataType': 'String', 'StringValue': ORGANIZATION_NAME},
+                'Environment': {'DataType': 'String', 'StringValue': ENVIRONMENT},
+                'AlertType': {'DataType': 'String', 'StringValue': 'cost'},
+                'Currency': {'DataType': 'String', 'StringValue': 'SEK'},
+                'Language': {'DataType': 'String', 'StringValue': 'svenska'}
+            }
+        )
+
+        return {
+            &quot;alert_sent&quot;: True,
+            &quot;currency&quot;: &quot;SEK&quot;,
+            &quot;amount&quot;: cost_data.get('amount_sek', cost_data['amount'])
+        }
+
+    def _calculate_retention_date(self, data_classification: str) -&gt; str:
+        &quot;&quot;&quot;Beräkna retention date according to svenska lagrequirements&quot;&quot;&quot;
+        retention_periods = {
+            'public': 365,      # 1 år
+            'internal': 1095,   # 3 år  
+            'personal': 2555,   # 7 år according to bokföringslagen
+            'sensitive': 2555,  # 7 år
+            'financial': 2555   # 7 år according to bokföringslagen
+        }
+
+        days = retention_periods.get(data_classification, 365)
+        retention_date = datetime.now(timezone.utc) + timedelta(days=days)
+        return retention_date.isoformat()
+
+    def _calculate_ttl(self, data_classification: str) -&gt; int:
+        &quot;&quot;&quot;Beräkna TTL for DynamoDB according to svenska requirements&quot;&quot;&quot;
+        current_time = int(datetime.now(timezone.utc).timestamp())
+        retention_days = {
+            'public': 365,
+            'internal': 1095,
+            'personal': 2555,
+            'sensitive': 2555,
+            'financial': 2555
+        }
+
+        days = retention_days.get(data_classification, 365)
+        return current_time + (days * 24 * 60 * 60)
+
+    def _format_swedish_cost_alert(self, cost_data: Dict[str, Any]) -&gt; str:
+        &quot;&quot;&quot;Formatera cost alert at svenska&quot;&quot;&quot;
+        return f&quot;&quot;&quot;
+Kostnadsvarning for {ORGANIZATION_NAME}
+
+Miljö: {ENVIRONMENT}
+Current kostnad: {cost_data.get('amount_sek', cost_data['amount']):.2f} SEK
+Budget: {cost_data.get('budget_sek', cost_data.get('budget', 'N/A'))} SEK
+Procent of budget: {cost_data.get('percentage', 'N/A')}%
+
+Datum: {datetime.now().strftime('%Y-%m-%d %H:%M')} (svensk time)
+
+Kostnadscenter: {cost_data.get('cost_center', 'N/A')}
+Tjänster: {', '.join(cost_data.get('services', []))}
+
+For mer information, kontakta IT-avdelningen.
+        &quot;&quot;&quot;.strip()
+
+# Lambda function handlers for svenska event processing
+def gdpr_event_handler(event, context):
+    &quot;&quot;&quot;Lambda handler for GDPR events&quot;&quot;&quot;
+    processor = SwedishEventProcessor()
+
+    try:
+        # Parse incoming event
+        if 'Records' in event:
+            # SQS/SNS event
+            results = []
+            for record in event['Records']:
+                event_data = json.loads(record['body'])
+                swedish_event = SwedishEvent(**event_data)
+                result = processor.process_event(swedish_event)
+                results.append(result)
+            return {&quot;processed_events&quot;: len(results), &quot;results&quot;: results}
+        else:
+            # Direct invocation
+            swedish_event = SwedishEvent(**event)
+            result = processor.process_event(swedish_event)
+            return result
+
+    except Exception as e:
+        logger.error(f&quot;Error in GDPR event handler: {str(e)}&quot;)
+        return {
+            &quot;status&quot;: &quot;error&quot;,
+            &quot;error&quot;: str(e),
+            &quot;event_id&quot;: event.get('event_id', 'unknown')
+        }
+
+def cost_monitoring_handler(event, context):
+    &quot;&quot;&quot;Lambda handler for svenska cost monitoring&quot;&quot;&quot;
+    processor = SwedishEventProcessor()
+
+    try:
+        # Hämta aktuella kostnader from Cost Explorer
+        cost_explorer = boto3.client('ce', region_name='eu-north-1')
+
+        end_date = datetime.now().strftime('%Y-%m-%d')
+        start_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+
+        response = cost_explorer.get_cost_and_usage(
+            TimePeriod={'Start': start_date, 'End': end_date},
+            Granularity='DAILY',
+            Metrics=['BlendedCost'],
+            GroupBy=[
+                {'Type': 'DIMENSION', 'Key': 'SERVICE'},
+                {'Type': 'TAG', 'Key': 'Environment'},
+                {'Type': 'TAG', 'Key': 'CostCenter'}
+            ]
+        )
+
+        # Skapa cost event
+        cost_event = SwedishEvent(
+            event_id=f&quot;cost-{int(datetime.now().timestamp())}&quot;,
+            event_type=EventType.COST_ALERT,
+            timestamp=datetime.now(timezone.utc).isoformat(),
+            source=&quot;aws-cost-monitoring&quot;,
+            data_subject_id=None,
+            data_classification=&quot;internal&quot;,
+            gdpr_lawful_basis=None,
+            payload={
+                &quot;cost_data&quot;: response,
+                &quot;currency&quot;: &quot;USD&quot;,
+                &quot;date_range&quot;: {&quot;start&quot;: start_date, &quot;end&quot;: end_date}
+            },
+            metadata={
+                &quot;organization&quot;: ORGANIZATION_NAME,
+                &quot;environment&quot;: ENVIRONMENT,
+                &quot;monitoring_type&quot;: &quot;daily&quot;
+            }
+        )
+
+        result = processor.process_event(cost_event)
+        return result
+
+    except Exception as e:
+        logger.error(f&quot;Error in cost monitoring handler: {str(e)}&quot;)
+        return {&quot;status&quot;: &quot;error&quot;, &quot;error&quot;: str(e)}
+</code></pre>
+<h2 id="praktiska-architecture-as-code-implementationsexempel">Praktiska architecture as code-implementationsexempel</h2>
+<p>to demonstrate Cloud Architecture as Code in praktiken for Swedish organizations, presenteras here kompletta implementationsexamples as shows how real-world scenarios can lösas:</p>
+<h3 id="implementationsexempel-1-svenska-e-handelslosning">Implementationsexempel 1: Svenska e-handelslösning</h3>
+<pre><code class="language-terraform"># terraform/ecommerce-platform/main.tf
+# Komplett e-handelslösning for Swedish organizations
+
+module &quot;svenska_ecommerce_infrastructure&quot; {
+  source = &quot;./modules/ecommerce&quot;
+
+  # Organisationskonfiguration
+  organization_name = &quot;svenska-handel&quot;
+  environment      = var.environment
+  region          = &quot;eu-north-1&quot;  # Stockholm for svenska data residency
+
+  # GDPR and compliance-requirements
+  gdpr_compliance_enabled = true
+  data_residency_region   = &quot;Sweden&quot;
+  audit_logging_enabled   = true
+  encryption_at_rest      = true
+
+  # E-handelsspecific requirements
+  enable_payment_processing = true
+  enable_inventory_management = true
+  enable_customer_analytics = true
+  enable_gdpr_customer_portal = true
+
+  # Svenska lokaliseringsrequirements
+  supported_languages    = [&quot;sv&quot;, &quot;a&quot;]
+  default_currency      = &quot;SEK&quot;
+  tax_calculation_rules = &quot;swedish_vat&quot;
+
+  # Security and performance
+  enable_waf                = true
+  enable_ddos_protection   = true
+  enable_cdn               = true
+  ssl_certificate_domain   = var.domain_name
+
+  # Backup and disaster recovery
+  backup_retention_days        = 90
+  enable_cross_region_backup  = true
+  disaster_recovery_region    = &quot;eu-central-1&quot;
+
+  tags = {
+    Project       = &quot;Svenska-Ecommerce&quot;
+    BusinessUnit  = &quot;Retail&quot;
+    CostCenter    = &quot;CC-RETAIL-001&quot;
+    Compliance    = &quot;GDPR,PCI-DSS&quot;
+    DataType      = &quot;Customer,Payment,Inventory&quot;
+  }
+}
+</code></pre>
+<h3 id="implementationsexempel-2-svenska-healthtech-plattform">Implementationsexempel 2: Svenska healthtech-plattform</h3>
+<pre><code class="language-yaml"># kubernetes/healthtech-platform.yaml
+# Kubernetes deployment for svenska healthtech with particular security requirements
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: svenska-healthtech
+  labels:
+    app.kubernetes.io/name: svenska-healthtech
+    svenska.se/data-classification: &quot;sensitive&quot;
+    svenska.se/gdpr-compliant: &quot;true&quot;
+    svenska.se/hipaa-compliant: &quot;true&quot;
+    svenska.se/patient-data: &quot;true&quot;
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-portal
+  namespace: svenska-healthtech
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: patient-portal
+  template:
+    metadata:
+      labels:
+        app: patient-portal
+        svenska.se/component: &quot;patient-facing&quot;
+        svenska.se/data-access: &quot;patient-data&quot;
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 2000
+      containers:
+      - name: patient-portal
+        image: svenska-healthtech/patient-portal:v1.2.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: connection-string
+        - name: GDPR_ENABLED
+          value: &quot;true&quot;
+        - name: PATIENT_DATA_ENCRYPTION
+          value: &quot;AES-256&quot;
+        - name: AUDIT_LOGGING
+          value: &quot;enabled&quot;
+        - name: SWEDISH_LOCALE
+          value: &quot;sv_SE.UTF-8&quot;
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        resources:
+          requests:
+            memory: &quot;256Mi&quot;
+            cpu: &quot;250m&quot;
+          limits:
+            memory: &quot;512Mi&quot;
+            cpu: &quot;500m&quot;
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+Cloud Architecture as Code represents a fundamental evolution of Architecture as Code for Swedish organizations as operates in cloud-native environments. by utnyttja cloud provider-specific services and capabilities can organisationer achieve unprecedented scalability, resiliens and kostnadseffektivitet while svenska compliance-requirements uppfylls.</p>
+<p>the different cloud provider ecosystems - AWS, Azure, and Google Cloud Platform - offers var sitt unique value for Swedish organizations. AWS dominerar through comprehensive tjänsteportfölj and strong whenvaro in Stockholm-regionen. Azure attraherar svenska enterprise-organisationer through strong Microsoft-integration and Sweden Central datacenter. Google Cloud Platform lockar innovationsorganisationer with sina machine learning capabilities and advanced analytics services.</p>
+<p>Multi-cloud strategier enables optimal distribution of workloads to maximera performance, minimera kostnader and ensure resiliens. Tools that Terraform and Pulumi abstraherar provider-specific skillnader and enables konsistent management across different cloud environments. For Swedish organizations means This opportunity to kombinera AWS for primary workloads, Azure for disaster recovery, and Google Cloud for analytics and machine learning.</p>
+<p>Serverless arkitekturer revolutionerar how Swedish organizations think about infrastructure management by eliminera traditional server administration and enable automatic scaling based on actual demand. Function-as-a-Service patterns, event-driven architectures, and managed services reduces operational overhead while the ensures GDPR compliance through built-in security and audit capabilities.</p>
+<p>Container-first approaches with Kubernetes as orchestration platform forms the foundation for modern cloud-native applications. For Swedish organizations enables This portable workloads as can köras across different cloud providers while consistent security policies and compliance requirements upprätthålls.</p>
+<p>Hybrid cloud implementations combines on-premises infrastructure with public cloud services for Swedish organizations as has legacy systems or specific regulatory requirements. This approach enables gradual cloud migration while känslig data can behållas within svenska gränser according to data residency requirements.</p>
+<p>Swedish organizations as implement Cloud Architecture as Code can achieve significant competitive advantages through reduced time-to-market, improved scalability, enhanced security, and optimized costs. simultaneously ensures proper implementation of Architecture as Code patterns to GDPR compliance, svensk data residency, and other regulatory requirements uppfylls automatically as a del of deployment processerna.</p>
+<p>Investment in Cloud Architecture as Code betalar itself through improved developer productivity, reduced operational overhead, enhanced systems reliability, and better disaster recovery capabilities. Which vi will to se in <a href="06_kapitel5.md">chapter 6 about security</a>, is These benefits particularly important when security and compliance requirements integreras as a natural del of infrastructure definition and deployment processes.</p>
+<p>Sources:
+- AWS. "Architecture as Code on AWS." Amazon Web Services Architecture Center.
+- Google Cloud. "Architecture as Code Architecture as Code best practices." Google Cloud Documentation.
+- Microsoft Azure. "Azure Resource Manager Templates." Azure Documentation.
+- HashiCorp. "Terraform Multi-Cloud Infrastructure." HashiCorp Learn Platform.
+- Pulumi. "Cloud Programming Model." Pulumi Documentation.
+- Kubernetes. "Cloud Native Applications." Cloud Native Computing Foundation.
+- GDPR.eu. "GDPR Compliance for Cloud Infrastructure." GDPR Guidelines.
+- Swedish Data Protection Authority. "Cloud Services and Data Protection." Datainspektionen Guidelines.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
