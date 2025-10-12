@@ -2528,3 +2528,594 @@ resource "aws_launch_template" "spot_optimized" {
     
     return terraform_code
 ```
+
+## Security and compliance {#security-compliance}
+
+### 10_CODE_1: Advanced Policy-as-Code module for Swedish compliance {#10_code_1}
+*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
+
+```rego
+package se.enterprise.security
+
+import rego.v1
+
+encryption_required_services := {
+    "aws_s3_bucket",
+    "aws_rds_instance",
+    "aws_rds_cluster",
+    "aws_efs_file_system",
+    "aws_dynamodb_table",
+    "aws_redshift_cluster",
+    "aws_elasticsearch_domain"
+}
+
+administrative_ports := {22, 3389, 5432, 3306, 1433, 27017, 6379, 9200, 5601}
+allowed_public_ports := {80, 443}
+eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
+
+encryption_compliant[resource] {
+    resource := input.resources[_]
+    resource.type in encryption_required_services
+    encryption := get_encryption_status(resource)
+    validation := validate_encryption_strength(encryption)
+    validation.compliant
+}
+
+get_encryption_status(resource) := result {
+    resource.type == "aws_s3_bucket"
+    result := {
+        "at_rest": has_s3_encryption(resource),
+        "in_transit": has_s3_ssl_policy(resource),
+        "key_management": resource.attributes.kms_key_type
+    }
+}
+
+get_encryption_status(resource) := result {
+    resource.type == "aws_rds_instance"
+    result := {
+        "at_rest": resource.attributes.storage_encrypted,
+        "in_transit": resource.attributes.force_ssl,
+        "key_management": resource.attributes.kms_key_type
+    }
+}
+
+validate_encryption_strength(encryption) := result {
+    encryption.at_rest
+    encryption.in_transit
+    key_validation := validate_key_management(encryption.key_management)
+    result := {
+        "compliant": key_validation.approved,
+        "strength": key_validation.strength,
+        "recommendations": key_validation.recommendations
+    }
+}
+
+validate_key_management("customer_managed") := {
+    "approved": true,
+    "strength": "high",
+    "recommendations": []
+}
+
+validate_key_management("aws_managed") := {
+    "approved": true,
+    "strength": "medium",
+    "recommendations": [
+        "Consider migrating to customer managed keys for greater control",
+        "Enable automatic key rotation"
+    ]
+}
+
+validate_key_management(_) := {
+    "approved": false,
+    "strength": "low",
+    "recommendations": [
+        "Configure an approved KMS key",
+        "Document ownership within the OSCAL profile"
+    ]
+}
+
+network_security_violations[violation] {
+    resource := input.resources[_]
+    resource.type == "aws_security_group"
+    violation := check_ingress_rules(resource)
+    violation.severity in ["critical", "high"]
+}
+
+check_ingress_rules(sg) := violation {
+    rule := sg.attributes.ingress[_]
+    rule.cidr_blocks[_] == "0.0.0.0/0"
+    rule.from_port in administrative_ports
+    violation := {
+        "type": "critical_port_exposure",
+        "severity": "critical",
+        "port": rule.from_port,
+        "security_group": sg.attributes.name,
+        "message": sprintf("Administrative port %v is exposed to the internet", [rule.from_port]),
+        "remediation": "Restrict access to dedicated management networks",
+        "reference": "MSB 3.2.1 Network Segmentation"
+    }
+}
+
+check_ingress_rules(sg) := violation {
+    rule := sg.attributes.ingress[_]
+    rule.cidr_blocks[_] == "0.0.0.0/0"
+    not rule.from_port in allowed_public_ports
+    not rule.from_port in administrative_ports
+    violation := {
+        "type": "non_standard_port_exposure",
+        "severity": "high",
+        "port": rule.from_port,
+        "security_group": sg.attributes.name,
+        "message": sprintf("Non-standard port %v is exposed to the internet", [rule.from_port]),
+        "remediation": "Validate the business requirement and narrow the CIDR range",
+        "reference": "MSB 3.2.2 Minimal Exposure"
+    }
+}
+
+data_sovereignty_compliant[resource] {
+    resource := input.resources[_]
+    resource.type in {
+        "aws_s3_bucket", "aws_rds_instance", "aws_rds_cluster",
+        "aws_dynamodb_table", "aws_elasticsearch_domain",
+        "aws_redshift_cluster", "aws_efs_file_system"
+    }
+    classification := determine_classification(resource)
+    result := validate_region(resource, classification)
+    result.compliant
+}
+
+determine_classification(resource) := classification {
+    classification := resource.attributes.tags["DataClassification"]
+    classification != ""
+}
+
+determine_classification(resource) := "personal" {
+    contains(lower(resource.attributes.name), "personal")
+}
+
+determine_classification(resource) := "personal" {
+    resource.type in ["aws_rds_instance", "aws_rds_cluster"]
+    indicators := {"user", "customer", "gdpr", "pii"}
+    some indicator in indicators
+    contains(lower(resource.attributes.identifier), indicator)
+}
+
+determine_classification(_) := "internal"
+
+validate_region(resource, "personal") := {
+    "compliant": get_resource_region(resource) in eu_regions,
+    "requirement": "GDPR Articles 44–49"
+}
+
+validate_region(resource, _) := {
+    "compliant": true,
+    "requirement": "Internal data — EU residency not mandatory"
+}
+
+get_resource_region(resource) := region {
+    region := resource.attributes.region
+    region != ""
+}
+
+get_resource_region(resource) := region {
+    az := resource.attributes.availability_zone
+    region := substring(az, 0, count(az) - 1)
+}
+
+get_resource_region(_) := "unknown"
+
+compliance_assessment := result {
+    encryption_violations := [
+        create_encryption_violation(resource) |
+        resource := input.resources[_];
+        resource.type in encryption_required_services;
+        not encryption_compliant[resource]
+    ]
+
+    network_violations := [v | v := network_security_violations[_]]
+
+    sovereignty_violations := [
+        create_sovereignty_violation(resource) |
+        resource := input.resources[_];
+        resource.type in encryption_required_services;
+        not data_sovereignty_compliant[resource]
+    ]
+
+    violations := array.concat(array.concat(encryption_violations, network_violations), sovereignty_violations)
+
+    result := {
+        "overall_score": calculate_score(violations),
+        "violations": violations,
+        "regulators": {
+            "gdpr": assess_regulator("GDPR", violations),
+            "msb": assess_regulator("MSB", violations),
+            "iso27001": assess_regulator("ISO 27001", violations)
+        }
+    }
+}
+
+create_encryption_violation(resource) := {
+    "type": "encryption_required",
+    "severity": "critical",
+    "resource": resource.type,
+    "message": "Mandatory encryption is disabled",
+    "remediation": "Enable encryption at rest and enforce TLS in transit",
+    "reference": "GDPR Article 32"
+}
+
+create_sovereignty_violation(resource) := {
+    "type": "data_sovereignty",
+    "severity": "critical",
+    "resource": resource.type,
+    "message": sprintf("Personal data stored outside approved EU regions (%v)", [get_resource_region(resource)]),
+    "remediation": "Move the workload to an EU region or document an adequacy decision",
+    "reference": "GDPR Articles 44–49"
+}
+
+calculate_score(violations) := score {
+    penalties := [penalty |
+        violation := violations[_];
+        penalty := severity_penalties[violation.severity]
+    ]
+    score := math.max(0, 100 - sum(penalties))
+}
+
+severity_penalties := {
+    "critical": 25,
+    "high": 15,
+    "medium": 10,
+    "low": 5
+}
+
+assess_regulator(name, violations) := {
+    "name": name,
+    "open_findings": count([v | v := violations[_]; contains(lower(v.reference), lower(name))])
+}
+```
+
+### 10_CODE_2: OSCAL profile for regulated Swedish financial services {#10_code_2}
+*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
+
+```json
+{
+  "profile": {
+    "uuid": "87654321-4321-8765-4321-876543218765",
+    "metadata": {
+      "title": "Swedish Financial Institutions Security Profile",
+      "published": "2024-01-15T11:00:00Z",
+      "last-modified": "2024-01-15T11:00:00Z",
+      "version": "2.1",
+      "oscal-version": "1.1.2",
+      "props": [
+        { "name": "organization", "value": "Swedish Financial Sector" },
+        { "name": "jurisdiction", "value": "Sweden" }
+      ]
+    },
+    "imports": [
+      {
+        "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+        "include-controls": [
+          { "matching": [ { "pattern": "ac-.*" }, { "pattern": "au-.*" }, { "pattern": "sc-.*" } ] }
+        ]
+      },
+      {
+        "href": "swedish-regional-catalog.json",
+        "include-controls": [
+          { "matching": [ { "pattern": "gdpr-.*" }, { "pattern": "msb-.*" } ] }
+        ]
+      }
+    ],
+    "merge": {
+      "combine": { "method": "merge" }
+    },
+    "modify": {
+      "set-parameters": [
+        {
+          "param-id": "gdpr-art32-1_prm1",
+          "values": ["AES-256-GCM"]
+        },
+        {
+          "param-id": "gdpr-art32-1_prm2",
+          "values": ["AWS KMS customer managed keys backed by HSM"]
+        },
+        {
+          "param-id": "msb-3.2.1_prm1",
+          "values": ["Zero Trust segmentation enforced via AWS Network Firewall"]
+        }
+      ],
+      "alters": [
+        {
+          "control-id": "gdpr-art32-1",
+          "adds": [
+            {
+              "position": "after",
+              "by-id": "gdpr-art32-1_gdn",
+              "parts": [
+                {
+                  "id": "gdpr-art32-1_fin-guidance",
+                  "name": "guidance",
+                  "title": "Finansinspektionen Supplement",
+                  "prose": "Payment service providers must use FIPS 140-2 validated encryption modules and review key material every 90 days."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "control-id": "msb-3.2.1",
+          "adds": [
+            {
+              "position": "after",
+              "by-id": "msb-3.2.1_gdn",
+              "parts": [
+                {
+                  "id": "msb-3.2.1_fin-requirement",
+                  "name": "requirement",
+                  "title": "Financial Sector Isolation",
+                  "prose": "Critical payment workloads must be isolated in dedicated network segments with inspection by AWS Network Firewall and VPC Traffic Mirroring."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the Swedish financial profile.
+
+```json
+{
+  "component-definition": {
+    "uuid": "11223344-5566-7788-99aa-bbccddeeff00",
+    "metadata": {
+      "title": "AWS Components for Swedish Regulated Workloads",
+      "published": "2024-01-15T12:00:00Z",
+      "last-modified": "2024-01-15T12:00:00Z",
+      "version": "1.5",
+      "oscal-version": "1.1.2"
+    },
+    "components": [
+      {
+        "uuid": "comp-aws-rds-mysql",
+        "type": "software",
+        "title": "Amazon RDS MySQL",
+        "description": "Managed relational database configured for GDPR Article 32 compliance.",
+        "control-implementations": [
+          {
+            "source": "swedish-regional-catalog.json",
+            "implemented-requirements": [
+              {
+                "control-id": "gdpr-art32-1.1",
+                "description": "Encryption at rest enabled with customer managed KMS keys.",
+                "statements": [
+                  {
+                    "statement-id": "gdpr-art32-1.1_smt",
+                    "description": "Default encryption uses AES-256 with keys rotated every 365 days.",
+                    "implementation-status": { "state": "implemented" }
+                  }
+                ],
+                "props": [
+                  { "name": "kms-key-type", "value": "customer-managed" },
+                  { "name": "rotation", "value": "365 days" }
+                ]
+              },
+              {
+                "control-id": "msb-3.2.1.1",
+                "description": "Database subnet groups isolated from public subnets.",
+                "statements": [
+                  {
+                    "statement-id": "msb-3.2.1.1_smt",
+                    "description": "Only application load balancers within the VPC may initiate connections.",
+                    "implementation-status": { "state": "implemented" }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "comp-aws-s3",
+        "type": "software",
+        "title": "Amazon S3 Secure Bucket",
+        "description": "Object storage with automatic encryption and access logging.",
+        "control-implementations": [
+          {
+            "source": "swedish-regional-catalog.json",
+            "implemented-requirements": [
+              {
+                "control-id": "gdpr-art32-1.2",
+                "description": "Enforced TLS 1.2 for all data in transit.",
+                "statements": [
+                  {
+                    "statement-id": "gdpr-art32-1.2_smt",
+                    "description": "S3 bucket policies block non-TLS requests and log denials.",
+                    "implementation-status": { "state": "implemented" }
+                  }
+                ]
+              },
+              {
+                "control-id": "msb-3.2.1.2",
+                "description": "Zero Trust verification for access using IAM conditions.",
+                "statements": [
+                  {
+                    "statement-id": "msb-3.2.1.2_smt",
+                    "description": "IAM policies require device posture attributes for privileged access.",
+                    "implementation-status": { "state": "planned" }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "uuid": "comp-aws-network-firewall",
+        "type": "software",
+        "title": "AWS Network Firewall",
+        "description": "Edge inspection enforcing MSB segmentation and logging requirements.",
+        "control-implementations": [
+          {
+            "source": "swedish-regional-catalog.json",
+            "implemented-requirements": [
+              {
+                "control-id": "msb-3.2.1",
+                "description": "Micro-segmentation between payment and support zones.",
+                "statements": [
+                  {
+                    "statement-id": "msb-3.2.1_smt",
+                    "description": "Stateful rules restrict lateral movement and mirror traffic to a central collector.",
+                    "implementation-status": { "state": "implemented" }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### 10_CODE_4: Automated OSCAL System Security Plan generator {#10_code_4}
+*Referenced from Chapter 10.* This Python utility ingests Terraform state, merges it with component definitions, and produces a machine-readable OSCAL SSP. The script is designed to run inside CI so every deployment updates the compliance evidence set.
+
+```python
+"""Generate OSCAL System Security Plans from Terraform configurations."""
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, Iterable, List
+
+import boto3
+import hcl2
+
+
+@dataclass
+class ComponentDefinition:
+    """Representation of an OSCAL component definition file."""
+
+    path: Path
+    content: Dict[str, Any]
+
+
+class OSCALSSPGenerator:
+    """Build an OSCAL-compliant System Security Plan from source files."""
+
+    def __init__(self, terraform_directory: Path, component_paths: Iterable[Path]):
+        self.terraform_directory = terraform_directory
+        self.component_paths = list(component_paths)
+        self.sts = boto3.client("sts")
+
+    def generate(self, profile_href: str, system_name: str) -> Dict[str, Any]:
+        resources = self._parse_terraform()
+        components = self._load_components()
+        mappings = self._map_resources_to_components(resources, components)
+        implementations = self._build_control_implementations(mappings)
+
+        now = datetime.utcnow().isoformat() + "Z"
+        return {
+            "system-security-plan": {
+                "uuid": self._uuid(),
+                "metadata": {
+                    "title": f"System Security Plan – {system_name}",
+                    "published": now,
+                    "last-modified": now,
+                    "version": "1.0",
+                    "oscal-version": "1.1.2",
+                    "props": [
+                        {"name": "organization", "value": "Swedish Enterprise"},
+                        {"name": "system-name", "value": system_name}
+                    ]
+                },
+                "import-profile": {"href": profile_href},
+                "system-characteristics": {
+                    "system-ids": [
+                        {
+                            "identifier-type": "https://ietf.org/rfc/rfc4122",
+                            "id": self._account_id()
+                        }
+                    ],
+                    "system-name": system_name,
+                    "description": f"Automated SSP generated from Terraform for {system_name}",
+                    "security-sensitivity-level": "moderate"
+                },
+                "control-implementation": {
+                    "implemented-requirements": implementations
+                }
+            }
+        }
+
+    def _parse_terraform(self) -> List[Dict[str, Any]]:
+        resources: List[Dict[str, Any]] = []
+        for tf_file in self.terraform_directory.rglob("*.tf"):
+            with tf_file.open("r", encoding="utf-8") as handle:
+                data = hcl2.load(handle)
+                resources.extend(data.get("resource", []))
+        return resources
+
+    def _load_components(self) -> List[ComponentDefinition]:
+        components: List[ComponentDefinition] = []
+        for path in self.component_paths:
+            with path.open("r", encoding="utf-8") as handle:
+                components.append(ComponentDefinition(path, json.load(handle)))
+        return components
+
+    def _map_resources_to_components(
+        self,
+        resources: List[Dict[str, Any]],
+        components: List[ComponentDefinition],
+    ) -> Dict[str, ComponentDefinition]:
+        mappings: Dict[str, ComponentDefinition] = {}
+        for resource in resources:
+            resource_type = next(iter(resource.keys()))
+            for component in components:
+                if resource_type in json.dumps(component.content):
+                    mappings[resource_type] = component
+        return mappings
+
+    def _build_control_implementations(
+        self, mappings: Dict[str, ComponentDefinition]
+    ) -> List[Dict[str, Any]]:
+        implementations: List[Dict[str, Any]] = []
+        for component in mappings.values():
+            definition = component.content["component-definition"]
+            for comp in definition.get("components", []):
+                implementations.extend(
+                    comp.get("control-implementations", [])
+                )
+        return implementations
+
+    def _uuid(self) -> str:
+        return datetime.utcnow().strftime("ssp-%Y%m%d%H%M%S")
+
+    def _account_id(self) -> str:
+        return self.sts.get_caller_identity()["Account"]
+
+
+def load_component_paths(directory: Path) -> List[Path]:
+    return sorted(directory.glob("*.json"))
+
+
+def save_ssp(output_path: Path, ssp: Dict[str, Any]) -> None:
+    output_path.write_text(json.dumps(ssp, indent=2), encoding="utf-8")
+
+
+if __name__ == "__main__":
+    tf_dir = Path("infrastructure")
+    components_dir = Path("oscal/components")
+    generator = OSCALSSPGenerator(tf_dir, load_component_paths(components_dir))
+    plan = generator.generate(
+        profile_href="profiles/swedish-financial-profile.json",
+        system_name="Payments Platform"
+    )
+    save_ssp(Path("artifacts/system-security-plan.json"), plan)
+```
