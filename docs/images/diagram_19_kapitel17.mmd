@@ -1,16 +1,11 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
-graph LR
+flowchart LR
     A[Assessment] --> B[Planning]
     B --> C[Migration]
     C --> D[Validation]
-    D --> E[Optimization]
+    D --> E[Optimisation]
+    
+    style A fill:#e5e7eb,stroke:#9ca3af,color:#1f2937
+    style B fill:#d1d5db,stroke:#6b7280,color:#1f2937
+    style C fill:#9ca3af,stroke:#4b5563,color:#1f2937
+    style D fill:#9ca3af,stroke:#4b5563,color:#1f2937
+    style E fill:#6b7280,stroke:#374151,color:#f9fafb
