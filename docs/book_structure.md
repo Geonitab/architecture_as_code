@@ -109,7 +109,7 @@ Reference material, author information, and technical enablers
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 28 | `28_glossary.md` | Glossary | Glossary and definitions |
-| 29 | `29_about_the_authors.md` | About the Authors | Information about the authors |
+| 29 | `29_about_the_authors.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
 | 30 | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
 | 31 | `31_technical_architecture.md` | Technical Structure for Book Production | Technical book production infrastructure |
 
@@ -182,7 +182,7 @@ This book is intended for:
 
 ## Authors and Contributors
 
-See `29_about_the_authors.md` for detailed information about the book's authors and contributors.
+See `29_about_the_authors.md` for detailed information about the book's author and the expertise behind this comprehensive guide.
 
 ---
 
