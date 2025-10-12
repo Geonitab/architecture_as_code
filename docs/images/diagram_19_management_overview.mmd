@@ -1,0 +1,21 @@
+%% Diagram: Management as Code overview
+flowchart TD
+    Vision[Leadership Vision]
+    Guardrails[Policy & Guardrail Definitions]
+    Automation[Automated Workflows]
+    Teams[Delivery Teams]
+    Feedback[Operational Feedback]
+
+    Vision --> Guardrails
+    Guardrails --> Automation
+    Automation --> Teams
+    Teams --> Feedback
+    Feedback --> Vision
+
+    subgraph Governance Cycle
+        Vision
+        Guardrails
+        Automation
+        Teams
+        Feedback
+    end

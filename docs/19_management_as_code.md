@@ -3,6 +3,34 @@
 ## Introduction
 Management as Code (MaC) extends the well-established principles of Infrastructure as Code and Architecture as Code into the realm of organisational leadership. It treats management intent, governance routines, and decision frameworks as executable artefacts that can be versioned, tested, automated, and refined. In organisations where the entire delivery pipeline is codified, management practices that remain trapped in meetings, slide decks, or undocumented intuition quickly become bottlenecks. A MaC discipline eliminates that bottleneck by encoding strategic direction, operational constraints, and cultural values into the same repositories that power the technology stack. This chapter explores how MaC manifests in fully code-based environments, how management roles adapt to DevOps loops, and how tooling such as GitHub can embed leadership into the change lifecycle while addressing budgeting, capability development, and the orchestration of multiple teams or teams-of-teams.
 
+```mermaid
+%% Source: images/diagram_19_management_overview.mmd
+flowchart TD
+    Vision[Leadership Vision]
+    Guardrails[Policy & Guardrail Definitions]
+    Automation[Automated Workflows]
+    Teams[Delivery Teams]
+    Feedback[Operational Feedback]
+
+    Vision --> Guardrails
+    Guardrails --> Automation
+    Automation --> Teams
+    Teams --> Feedback
+    Feedback --> Vision
+
+    subgraph Governance Cycle
+        Vision
+        Guardrails
+        Automation
+        Teams
+        Feedback
+    end
+```
+
+*Diagram source: [`images/diagram_19_management_overview.mmd`](images/diagram_19_management_overview.mmd)*
+
+The overview diagram introduces Management as Code as a self-reinforcing loop where leadership vision flows into codified guardrails, automation, and delivery teams while operational feedback continuously informs future strategic intent. It frames the remainder of the chapter by emphasising that MaC is not a one-off documentation exercise but an active governance system that evolves with every iteration of the software delivery lifecycle.
+
 ## Defining Management as Code
 At its core, MaC is the systematic translation of management artefacts into reproducible code. Policies, playbooks, delegation models, role definitions, and decision guardrails are captured as declarative specifications that tooling can enforce. Rather than issuing static policy documents, leadership teams create repositories that contain structured definitions for escalation thresholds, strategic objectives and key results (OKRs), and the criteria for portfolio prioritisation. Automation hooks process these definitions to trigger workflows, generate dashboards, or enforce access controls. By storing these assets in Git repositories, management directives acquire the same benefits as other code: auditability, peer review, continuous integration, and rollback.
 
