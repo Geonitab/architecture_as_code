@@ -1,52 +1,50 @@
-# Containerization and Orchestration as code
+# Containerisation and Orchestration as Code
 
-![Containerization and Orchestration](images/diagram_11_kapitel10.png)
+![Containerisation and Orchestration](images/diagram_11_kapitel10.png)
 
-Architecture as Code methodology forms the foundation for containerteknologi and orkestrering represents paradigm shift in how applications driftsätts and skalas. by definiera Architecture as Code for containrar is enabled portabel, skalbar and reproducible applikationsdriftsättning over different environments and cloud providers.
+The Architecture as Code methodology forms the foundation for container technology and orchestration, representing a paradigm shift in how applications are deployed and scaled. By defining Architecture as Code for containers, teams enable portable, scalable, and reproducible application deployment across environments and cloud providers.
 
-## Container-teknologiens roll within architecture as code
+## The role of container technology within Architecture as Code
 
-Containers offers application-level virtualization as paketerar applications with all dependencies in isolated, portable units. For Architecture as Code means This to application deployment can standardiseras and automatiseras through code-based definitions that ensure consistency between development, testing and production environments.
+Containers offer application-level virtualisation by packaging applications with all dependencies in isolated, portable units. For Architecture as Code this means application deployment can be standardised and automated through code-based definitions that ensure consistency between development, testing, and production environments.
 
-Docker has etablerat itself as the facto standard for containerization, with podman and andra alternatives offers daemon-less approaches for enhanced security. Container images are defined through Dockerfiles as executable infrastructure code, which enables version control and automated building of application artifacts.
+Docker has established itself as the de facto standard for containerisation, with Podman and other alternatives offering daemon-less approaches for enhanced security. Container images are defined through Dockerfiles as executable infrastructure code, enabling version control and automated building of application artefacts.
 
-Container registries functions as centralized repositories for image distribution and versioning. Private registries ensures corporate security requirements, with image scanning and vulnerability assessment integreras in CI/CD pipelines for automated security validation before deployment.
+Container registries function as centralised repositories for image distribution and versioning. Private registries ensure organisational security requirements are met, with image scanning and vulnerability assessment integrated into CI/CD pipelines for automated security validation before deployment.
 
-## Kubernetes as orchestration platform
+## Kubernetes as an orchestration platform
 
-Kubernetes has emergerat as leading container orchestration platform through dess declarative configuration model and extensive ecosystem. YAML-based manifests definierar desired state for applications, services, and infrastructure components, which alignar perfekt with Architecture as Code principles.
+Kubernetes has emerged as the leading container orchestration platform through its declarative configuration model and extensive ecosystem. YAML-based manifests define the desired state for applications, services, and infrastructure components, aligning perfectly with Architecture as Code principles.
 
-Kubernetes objects that Deployments, Services, ConfigMaps, and Secrets enables comprehensive application lifecycle management through code. Pod specifications, resource quotas, network policies, and persistent volume claims can all are defined declaratively and managed through version control systems.
+Kubernetes objects such as Deployments, Services, ConfigMaps, and Secrets enable comprehensive application lifecycle management through code. Pod specifications, resource quotas, network policies, and persistent volume claims can all be defined declaratively and managed through version control systems.
 
-Helm charts extend Kubernetes capabilities through templating and package management for complex applications. Chart repositories enable reusable infrastructure patterns and standardized deployment procedures across different environments and organizational units.
+Helm charts extend Kubernetes capabilities through templating and package management for complex applications. Chart repositories enable reusable infrastructure patterns and standardised deployment procedures across different environments and organisational units.
 
 ## Service mesh and advanced networking
 
-Service mesh architectures that Istio and Linkerd implementeras through Architecture as Code to handle inter-service communication, security policies, and observability. These platforms abstract networking complexity from application developers while providing fine-grained control through configuration files.
+Service mesh architectures such as Istio and Linkerd are implemented through Architecture as Code to handle inter-service communication, security policies, and observability. These platforms abstract networking complexity from application developers while providing fine-grained control through configuration files.
 
-Traffic management policies are defined as code for load balancing, circuit breaking, retry mechanisms, and canary deployments. Security policies for mutual TLS, access control, and authentication/authorization can be version controlled and automatically applied across service topologies.
+Traffic management policies are defined as code for load balancing, circuit breaking, retry mechanisms, and canary deployments. Security policies for mutual TLS, access control, and authentication/authorisation can be version controlled and automatically applied across service topologies.
 
-Observability configurations for tracing, metrics collection, and logging integration managed through declarative specifications. This enables comprehensive monitoring and debugging capabilities while maintaining consistency across distributed service architectures.
+Observability configurations for tracing, metrics collection, and logging integration are managed through declarative specifications. This enables comprehensive monitoring and debugging capabilities while maintaining consistency across distributed service architectures.
 
 ## Infrastructure automation with container platforms
 
-Architecture as Code-principerna within This area
+Container-native infrastructure tools such as Crossplane and the Operator Framework extend Kubernetes for complete infrastructure management. These platforms enable provisioning and management of cloud resources through Kubernetes-native APIs and custom resource definitions.
 
-Container-native infrastructure tools that Crossplane and Operator Framework extend Kubernetes for complete infrastructure management. These platforms enables provisioning and management of cloud resources through Kubernetes-native APIs and custom resource definitions.
+GitOps workflows implement continuous delivery for both applications and infrastructure through Git repositories as the single source of truth. Tools such as Argo CD and Flux automate deployment processes by continuously monitoring Git state and automatically reconciling cluster state.
 
-GitOps workflows implement continuous delivery for both applications and infrastructure through Git repositories as single source of truth. Tools that ArgoCD and Flux automate deployment processes through continuous monitoring of Git state and automatic reconciliation of cluster state.
-
-Multi-cluster management platforms centralize policy enforcement, resource allocation, and governance across distributed Kubernetes environments. Federation and cluster API specifications standardize cluster lifecycle management through declarative configurations.
+Multi-cluster management platforms centralise policy enforcement, resource allocation, and governance across distributed Kubernetes environments. Federation and Cluster API specifications standardise cluster lifecycle management through declarative configurations.
 
 ## Persistent storage and data management
 
-Persistent volume management for containerized applications requires careful consideration of performance, availability, and backup requirements. Storage classes and persistent volume claims are defined as infrastructure code for automated provisioning and lifecycle management.
+Persistent volume management for containerised applications requires careful consideration of performance, availability, and backup requirements. Storage classes and persistent volume claims are defined as infrastructure code for automated provisioning and lifecycle management.
 
-Database operators for PostgreSQL, MongoDB, and andra systems enable database-as-code deployment patterns. These operators handle complex operations as backup scheduling, high availability configuration, and automated recovery through custom resource definitions.
+Database operators for PostgreSQL, MongoDB, and other systems enable database-as-code deployment patterns. These operators handle complex operations such as backup scheduling, high availability configuration, and automated recovery through custom resource definitions.
 
-Data protection strategies implementeras through backup operators and disaster recovery procedures definierade as code. This ensures consistent data protection policies across environments and automated recovery capabilities during incidents.
+Data protection strategies are implemented through backup operators and disaster recovery procedures defined as code. This ensures consistent data protection policies across environments and automated recovery capabilities during incidents.
 
-## Praktiska example
+## Practical examples
 
 ### Kubernetes Deployment Configuration
 ```yaml
@@ -107,9 +105,9 @@ application:
     repository: registry.company.com/web-app
     tag: "v1.2.3"
     pullPolicy: IfNotPresent
-  
+
   replicas: 3
-  
+
   resources:
     requests:
       memory: "256Mi"
@@ -234,14 +232,13 @@ resource "google_container_node_pool" "primary_nodes" {
 
 ## Summary
 
+The modern Architecture as Code methodology provides a global foundation for infrastructure management across industries. Containerisation and orchestration as code transform application deployment from manual, error-prone processes to automated, reliable workflows. Kubernetes and associated tools enable sophisticated application management through declarative configurations, while GitOps patterns ensure consistent and auditable deployment processes. Success requires a thorough understanding of container networking, storage management, and security implications that can be applied in any region.
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Containerization and Orchestration as code transformerar application deployment from manual, error-prone processes to automated, reliable workflows. Kubernetes and associerade tools enables sophisticated application management through declarative configurations, with GitOps patterns ensures consistent and auditable deployment processes. Success requires comprehensive understanding of container networking, storage management, and security implications.
-
-## Sources and referenser
+## Sources and references
 
 - Kubernetes Documentation. "Concepts and Architecture." The Kubernetes Project.
 - Docker Inc. "Docker Architecture as Code best practices." Docker Documentation.
 - Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.
 - Helm Community. "Chart Development Guide." Helm Documentation.
 - Istio Project. "Service Mesh Architecture." Istio Service Mesh.
+
