@@ -1,178 +1,115 @@
-# Team structure and Competenciesutveckling for Architecture as Code
+# Team Structure and Competency Development for Architecture as Code
 
-![Team structure and Competenciesutveckling](images/diagram_18_team_struktur.png)
+![Team collaboration ecosystem showing leadership, platform enablement, shared services, and feedback loops](images/diagram_18_team_collaboration.png)
 
-successful Architecture as Code-implementation requires not endast technical tools and processes, without also throughtänkt organisationsdesign and strategisk competence development. TeamStructureer must is developed to support new way of working with witharbetare develops necessary skills for kodbaserad infrastructure management.
+Successful Architecture as Code adoption demands far more than tools; it requires an intentionally designed operating model where leadership, enablement teams, and delivery squads share accountability. The collaboration ecosystem illustrated above shows how platform governance, shared services, and communities of practice reinforce one another to create reliable delivery loops.
 
-## Organizational transformation for Architecture as Code
+## Organisational transformation for Architecture as Code
 
-Traditionella organizational structures with separata utvecklings-, test- and drift-teams creates silos as hindrar effective Architecture as Code (Architecture as Code) adoption. Cross-functional teams with shared responsibility for entire systemlivscykeln enables snabbare feedback loops and higher kvalitet in leveranser.
+Traditional organisational charts that separate development, testing, and operations create silos which hinder Architecture as Code practices. Cross-functional teams with shared responsibility for the entire service lifecycle achieve faster feedback, higher quality, and sustainable flow. Reorganising around product-aligned delivery teams also improves transparency because the system design mirrors the communication pathways predicted by Conway's Law.
 
-Conway's Law observerar to organizational structure reflekteras in systems design, which means to team boundaries direkt affects infrastructure architecture. Väldesignade team-Structures results in modulära, maintainable infrastructure solutions, with poorly organized teams produces fragmented, complex systems.
+Platform teams act as internal service providers. They own the common toolchains, guardrails, and reusable modules that allow application teams to move quickly without sacrificing governance. This balance of central expertise and decentralised autonomy is essential for scaling Architecture as Code in large enterprises.
 
-Platform teams functions as internal service providers as bygger and underhåller Architecture as Code capabilities for application teams. This model balanserar centralized expertise with decentralized autonomy, which enables scaling of Architecture as Code practices across large organisationer.
+## Competency domains for Architecture as Code specialists
 
-## Kompetenwhichråden for architecture as code-specialister
+![Competency development loop illustrating assessment, planning, learning, application, knowledge sharing, and measurement](images/diagram_18_competency_cycle.png)
 
-Architecture as Code professionals needs hybrid skills as combines traditional systems administration knowledge with software engineering practices. Programming skills in language that Python, Go, or PowerShell becomes essentiella for automation script development and tool integration.
+Architecture as Code specialists blend system engineering, software craftsmanship, and cloud fluency. Core skills include modern programming languages for automation (such as Python, Go, or PowerShell), multi-cloud familiarity spanning AWS, Azure, and Google Cloud, and disciplined software engineering practices like version control, testing, and peer review. The competency development loop depicted above highlights how continuous assessment, learning, and knowledge sharing reinforce professional growth.
 
-Cloud platform expertise for AWS, Azure, GCP, or hybrid environments requires deep understanding for service offerings, pricing models, security implications, and operational characteristics. Multi-cloud competency becomes all importantre as organisationer adopterar cloud-agnostic strategies.
+Soft skills are equally significant. Practitioners must communicate design intent, negotiate trade-offs with stakeholders, and mentor peers adopting new tooling. These interpersonal abilities ensure technical decisions are understood and adopted across the organisation.
 
-Software engineering practices as version control, testing, code review, and CI/CD pipelines must integreras in infrastructure workflows. Understanding of software architecture patterns, design principles, and refactoring techniques appliceras at infrastructure code development.
+### Skills matrix reference
 
-## Utbildningsstrategier and certifieringar
+Teams often need a shared view of expectations at each stage of mastery. The checklist below captures the technical and interpersonal competencies to evaluate during quarterly development conversations.
 
-Structureerade training programs combines theoretical learning with hands-on practice for effective skill development. Online platforms that A Cloud Guru, Pluralsight, and Linux Academy offers comprehensive courses for different Architecture as Code tools and cloud platforms.
-
-Industry certifications that AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer, or HashiCorp Certified Terraform Associate provide standardized validation of technical competencies. Certification paths guide learning progression and demonstrate professional commitment to employers.
-
-Internal training programs customized for organizational context and specific technology stacks accelerate skill development. Mentorship programs pair experienced practitioners with newcomers for knowledge transfer and career development support.
-
-## Agile team models for infrastructure
-
-Architecture as Code-principerna within This area
-
-Cross-functional infrastructure teams includes cloud engineers, automation specialists, security engineers, and site reliability engineers as collaborerar on shared objectives. Product owner roles for infrastructure teams prioritize features and improvements based on internal customer needs.
-
-Scrum or Kanban methodologies applied to infrastructure work provide structure for planning, execution, and continuous improvement. Sprint planning for infrastructure changes balanserar feature development with operational maintenance and technical debt reduction.
-
-Infrastructure as a product mindset treats internal teams as customers with service level agreements, documentation requirements, and user experience considerations. This approach drives quality improvements and customer satisfaction for infrastructure services.
-
-## Kunskapsdelning and communities of practice
-
-Documentation strategies for Architecture as Code includes architecture decision records, runbooks, troubleshooting guides, and Architecture as Code best practices repositories. Knowledge bases maintained collectively by teams ensure information accessibility and reduce bus factor risks.
-
-Communities of practice within organisationer facilitar knowledge sharing across team boundaries. Regular meetups, lightning talks, and technical presentations enable cross-pollination of ideas and foster continuous learning culture.
-
-External community participation through open source contributions, conference presentations, and blog writing enhances both individual development and organizational reputation. Industry networking builds valuable connections and keeps teams current with emerging trends.
-
-## Performance management and career progression
-
-Technical career ladders for Architecture as Code specialists provide clear advancement paths from junior automation engineers to senior architect roles. Competency frameworks define expected skills, knowledge, and impact at different career levels.
-
-Performance metrics for Architecture as Code teams includes both technical indicators as infrastructure reliability, deployment frequency, and change failure rate, samt soft skills as collaboration effectiveness and knowledge sharing contributions.
-
-Leadership development programs prepare senior technical contributors for management roles within infrastructure organizations. Skills like stakeholder management, strategic planning, and team building become essential for career advancement.
-
-## Praktiska example
-
-### Team structure definition
-```yaml
-# team-structure.yaml
-teams:
-  platform-team:
-    mission: "Provide Infrastructure as Code capabilities and tooling"
-    responsibilities:
-      - Core architecture as code framework development
-      - Tool standardization and governance
-      - Training and documentation
-      - Platform engineering
-    
-    roles:
-      - Platform Engineer (3)
-      - Cloud Architect (1)
-      - DevOps Engineer (2)
-      - Security Engineer (1)
-    
-    metrics:
-      - Developer experience satisfaction
-      - Platform adoption rate
-      - Mean time to provision infrastructure
-      - Security compliance percentage
-
-  application-teams:
-    model: "Cross-functional product teams"
-    composition:
-      - Product Owner (1)
-      - Software Engineers (4-6)
-      - Cloud Engineer (1)
-      - QA Engineer (1)
-    
-    responsibilities:
-      - Application infrastructure definition
-      - Service deployment and monitoring
-      - Application security architecture as code-implementation
-      - Performance optimization
-```
-
-### Skills Matrix Template
 ```markdown
-# Infrastructure as Code Skills Matrix
+# Architecture as Code Skills Matrix
 
 ## Technical Skills
 
-### Beginner (Level 1)
-- [ ] Basic Git operations (clone, commit, push, pull)
-- [ ] Understanding of cloud computing concepts
-- [ ] Basic Linux/Windows administration
-- [ ] YAML/JSON syntax understanding
-- [ ] Basic networking concepts
+### Foundation (Level 1)
+- [ ] Execute basic Git operations (clone, commit, push, pull)
+- [ ] Explain core cloud computing concepts
+- [ ] Perform routine Linux or Windows administration tasks
+- [ ] Read and edit YAML or JSON structures
+- [ ] Describe fundamental networking concepts
 
-### Intermediate (Level 2)
-- [ ] Terraform/CloudFormation module development
-- [ ] CI/CD pipeline creation and maintenance
-- [ ] Container fundamentals (Docker)
-- [ ] Infrastructure monitoring and alerting
-- [ ] Security scanning and compliance
+### Practitioner (Level 2)
+- [ ] Build and reuse Terraform or CloudFormation modules
+- [ ] Create and maintain CI/CD pipelines
+- [ ] Apply container fundamentals (Docker)
+- [ ] Configure infrastructure monitoring and alerting
+- [ ] Implement security scanning and compliance checks
 
 ### Advanced (Level 3)
-- [ ] Multi-cloud architecture design
-- [ ] Kubernetes cluster management
-- [ ] Advanced automation scripting
-- [ ] Infrastructure cost optimization
-- [ ] Disaster recovery planning
+- [ ] Design multi-cloud architectures
+- [ ] Operate Kubernetes clusters at scale
+- [ ] Develop advanced automation scripts
+- [ ] Optimise infrastructure spend
+- [ ] Design disaster recovery strategies
 
 ### Expert (Level 4)
-- [ ] Platform architecture design
-- [ ] Tool evaluation and selection
-- [ ] Mentoring and knowledge transfer
-- [ ] Strategic planning and roadmapping
-- [ ] Cross-team collaboration leadership
+- [ ] Architect platform-level capabilities
+- [ ] Evaluate and select new tooling
+- [ ] Mentor colleagues and lead knowledge transfer
+- [ ] Shape strategic roadmaps
+- [ ] Facilitate cross-team collaboration
 
-## Soft Skills
+## Interpersonal Skills
 
 ### Communication
-- [ ] Technical writing and documentation
-- [ ] Presentation and training delivery
-- [ ] Stakeholder management
-- [ ] Conflict resolution
+- [ ] Produce clear technical documentation
+- [ ] Deliver presentations and training sessions
+- [ ] Manage stakeholder expectations
+- [ ] Resolve conflicts constructively
 
 ### Leadership
-- [ ] Team mentoring and coaching
-- [ ] Project planning and execution
-- [ ] Change management
-- [ ] Strategic thinking
+- [ ] Coach and mentor team members
+- [ ] Plan and execute complex projects
+- [ ] Lead organisational change initiatives
+- [ ] Contribute to long-term strategic thinking
 ```
 
-### Training Program structure
+Managers revisit the matrix alongside metrics and feedback to tailor coaching plans, ensuring each engineer advances at a sustainable pace.
+
+## Learning strategies and certifications
+
+Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms (A Cloud Guru, Pluralsight, Linux Academy) provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer Expert, and HashiCorp Certified Terraform Associate validate proficiency and guide progression through increasingly advanced competencies.
+
+To turn knowledge into practice, organisations invest in sandbox environments, lab challenges, and pair programming. Managers should track completion, but also emphasise practical demonstrations of new capabilities applied to real delivery scenarios.
+
+### Training programme blueprint
+
+The following programme structure translates the learning strategy into an actionable plan. It is introduced before implementation so teams understand how each module reinforces core Architecture as Code responsibilities.
+
 ```yaml
 # training-program.yaml
-architecture as code-training-program:
+architecture_as_code_training_program:
   duration: "12 weeks"
   format: "Blended learning"
-  
+
   modules:
-    week-1-2:
+    week_1_2:
       title: "Foundation Skills"
       topics:
         - Git version control
-        - Cloud platform basics
+        - Cloud platform fundamentals
         - Infrastructure concepts
       deliverables:
         - Personal development environment setup
         - Basic Git workflow demonstration
-    
-    week-3-4:
+
+    week_3_4:
       title: "Infrastructure as Code Fundamentals"
       topics:
-        - Terraform basics
-        - YAML/JSON data formats
-        - Resource management concepts
+        - Terraform modules
+        - YAML and JSON data formats
+        - Resource management principles
       deliverables:
         - Simple infrastructure deployment
         - Code review participation
-    
-    week-5-6:
+
+    week_5_6:
       title: "Automation and CI/CD"
       topics:
         - Pipeline development
@@ -181,8 +118,8 @@ architecture as code-training-program:
       deliverables:
         - Automated deployment pipeline
         - Test suite implementation
-    
-    week-7-8:
+
+    week_7_8:
       title: "Security and Compliance"
       topics:
         - Security scanning
@@ -191,18 +128,18 @@ architecture as code-training-program:
       deliverables:
         - Security policy implementation
         - Compliance audit preparation
-    
-    week-9-10:
+
+    week_9_10:
       title: "Monitoring and Observability"
       topics:
         - Infrastructure monitoring
         - Alerting strategies
-        - Performance optimization
+        - Performance optimisation
       deliverables:
         - Monitoring dashboard creation
         - Alert configuration
-    
-    week-11-12:
+
+    week_11_12:
       title: "Advanced Topics and Capstone"
       topics:
         - Architecture patterns
@@ -217,32 +154,90 @@ architecture as code-training-program:
       - Practical assignments (60%)
       - Peer code reviews (20%)
       - Final project presentation (20%)
-    
+
     certification:
-      internal: "architecture as code Practitioner Certificate"
-      external: "AWS/Azure/GCP certification support"
+      internal: "Architecture as Code Practitioner Certificate"
+      external: "Support for AWS, Azure, or GCP certification"
 ```
 
-### Community of Practice Framework
+After completing each module, facilitators review the measurable deliverables to confirm knowledge transfer into production delivery. Capstone demonstrations and code reviews provide tangible evidence that the curriculum elevates team capability.
+
+## Agile team models for infrastructure
+
+Architecture as Code thrives when infrastructure is treated as a product. Cross-functional teams include cloud engineers, automation specialists, security experts, and site reliability engineers collaborating on a prioritised backlog. Product owners representing internal customers balance feature acceleration, resilience, and compliance.
+
+Scrum or Kanban provide planning cadence and make operational work visible. Teams blend roadmap items with service improvements and technical debt remediation to maintain long-term velocity. Service level objectives, error budgets, and deployment frequency metrics ensure platform engineering efforts are tied to business value.
+
+### Platform and product team charter
+
+The YAML definition below formalises the accountability boundaries established earlier. It is positioned within the team model discussion to demonstrate how governance choices appear in executable documentation.
+
+```yaml
+# team-structure.yaml
+teams:
+  platform_team:
+    mission: "Provide Architecture as Code capabilities and tooling"
+    responsibilities:
+      - Core Architecture as Code framework development
+      - Tool standardisation and governance
+      - Training and documentation enablement
+      - Platform engineering services
+
+    roles:
+      - Platform Engineer (3)
+      - Cloud Architect (1)
+      - DevOps Engineer (2)
+      - Security Engineer (1)
+
+    metrics:
+      - Developer experience satisfaction
+      - Platform adoption rate
+      - Mean time to provision infrastructure
+      - Security compliance percentage
+
+  application_teams:
+    model: "Cross-functional product teams"
+    composition:
+      - Product Owner (1)
+      - Software Engineers (4-6)
+      - Cloud Engineer (1)
+      - Quality Engineer (1)
+
+    responsibilities:
+      - Application infrastructure definition
+      - Service deployment and monitoring
+      - Application security automation
+      - Performance optimisation
+```
+
+Following the charter, teams host quarterly alignment reviews to check whether service levels and adoption targets remain realistic. Any gaps drive updates to responsibilities, metrics, or staffing.
+
+## Knowledge sharing and communities of practice
+
+Documented runbooks, architecture decision records, troubleshooting guides, and curated repositories form the knowledge backbone for Architecture as Code. Teams co-maintain these references to reduce the bus factor and to keep onboarding friction low. Communities of practice connect practitioners across product lines through short talks, clinics, and peer coaching, ensuring ideas diffuse rapidly beyond immediate squads.
+
+### Community of practice framework
+
+This template accompanies the knowledge sharing guidance. It clarifies roles, cadences, and collaboration platforms so that community leaders can launch a consistent operating rhythm.
+
 ```markdown
 # Infrastructure as Code Community of Practice
 
 ## Purpose
-Foster knowledge sharing, collaboration, and continuous learning 
-in Infrastructure as Code practices across the organization.
+Foster knowledge sharing, collaboration, and continuous learning in Architecture as Code practices across the organisation.
 
-## structure
+## Structure
 
 ### Core Team
 - Community Leader (Platform Team)
 - Technical Advocates (from each application team)
-- Learning & Development Partner
+- Learning and Development Partner
 - Security Representative
 
 ### Activities
 
 #### Monthly Tech Talks
-- 45-minute presentations on architecture as code topics
+- 45-minute presentations on Architecture as Code topics
 - Internal case studies and lessons learned
 - External speaker sessions
 - Tool demonstrations and comparisons
@@ -262,20 +257,20 @@ in Infrastructure as Code practices across the organization.
 ### Knowledge Sharing
 
 #### Wiki and Documentation
-- architecture as code best practices repository
+- Architecture as Code best practice repository
 - Architecture decision records
 - Troubleshooting guides
 - Tool comparisons and recommendations
 
-#### Slack/Teams Channels
-- #architecture as code-general for discussions
-- #architecture as code-help for troubleshooting
-- #architecture as code-announcements for updates
-- #architecture as code-tools for tool discussions
+#### Collaboration Channels
+- #architecture-as-code-general for discussions
+- #architecture-as-code-help for troubleshooting
+- #architecture-as-code-announcements for updates
+- #architecture-as-code-tools for tool discussions
 
 #### Code Repositories
 - Shared module libraries
-- examples implementations
+- Example implementations
 - Template repositories
 - Learning exercises
 
@@ -287,16 +282,23 @@ in Infrastructure as Code practices across the organization.
 - Innovation and improvement suggestions
 ```
 
+Community coordinators review these artefacts after each quarter, ensuring insights captured during talks and workshops make their way into documentation, reusable modules, and the broader operating model.
+
+## Performance management and career progression
+
+Clear technical career pathways help specialists envision advancement from associate automation engineers to senior architects. Competency frameworks articulate the behaviours, technical mastery, and leadership impact expected at each level. Balanced scorecards combine operational indicators (deployment frequency, change failure rate, mean time to restore) with softer measures such as knowledge sharing contributions and cross-team collaboration.
+
+Leadership development pathways prepare senior individual contributors for management roles when appropriate. Training on stakeholder management, strategic planning, and inclusive team building equips future leaders to steward Architecture as Code capabilities responsibly.
+
 ## Summary
 
+Architecture as Code succeeds when teams evolve their operating model alongside their tooling. Purposeful organisational design, continuous skill development, disciplined knowledge sharing, and measurable performance management create a resilient ecosystem. By aligning leadership support, platform enablement, and empowered delivery teams, organisations sustain the momentum required to treat infrastructure as a strategic asset.
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Successful Architecture as Code adoption requires comprehensive organisatorisk change as goes beyond Technical implementation. Team-Structures must redesignas for cross-functional collaboration, comprehensive skill development programs enables effective tool adoption, and communities of practice fostrar continuous learning and innovation. Investment in människor and processes is lika viktigt as investment in technical tools.
+## Sources and references
 
-## Sources and referenser
-
-- Gene Kim, Jez Humble, Patrick Debois, John Willis. "The DevOps Handbook." IT Revolution Press.
-- Matthew Skelton, Manuel Pais. "Team Topologies: Organizing Business and Technology Teams." IT Revolution Press.
+- Gene Kim, Jez Humble, Patrick Debois, John Willis. *The DevOps Handbook.* IT Revolution Press.
+- Matthew Skelton, Manuel Pais. *Team Topologies: Organizing Business and Technology Teams.* IT Revolution Press.
 - Google Cloud. "DevOps Research and Assessment (DORA) Reports." Google Cloud Platform.
-- Atlassian. "DevOps Team structure and Best Practices." Atlassian Documentation.
-- HashiCorp. "Architecture as Code Maturity Model." HashiCorp Learn Platform.
+- Atlassian. "DevOps Team Structure and Best Practices." Atlassian Documentation.
+- HashiCorp. "Infrastructure as Code Maturity Model." HashiCorp Learn Platform.
+
