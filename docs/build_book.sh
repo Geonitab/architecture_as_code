@@ -296,19 +296,11 @@ else
     echo "Attempting fallback with the default template..."
 
     # Try with default LaTeX template
-    if pandoc "${CHAPTER_FILES[@]}" \
+    # Reuse the shared pandoc defaults so LaTeX helpers like \setbookpart stay defined
+    if pandoc --defaults=pandoc.yaml \
+        --template=default \
+        "${CHAPTER_FILES[@]}" \
         -o "$OUTPUT_PDF" \
-        --toc \
-        --toc-depth=3 \
-        --number-sections \
-        --top-level-division=chapter \
-        --pdf-engine=xelatex \
-        --metadata title="Arkitektur som kod" \
-        --metadata author="Kodarkitektur Bokverkstad" \
-        --variable documentclass=book \
-        --variable classoption=twoside \
-        --variable geometry=margin=2.5cm \
-        --variable fontsize=11pt \
         2>&1; then
 
         if [ -f "$OUTPUT_PDF" ] && [ -s "$OUTPUT_PDF" ]; then
