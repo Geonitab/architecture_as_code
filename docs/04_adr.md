@@ -8,11 +8,11 @@
 
 Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR) which forms a systematic approach for documenting important architecture decisions that affects the system structure, performance, security and maintainability. ADR method was introduced by Michael Nygard and has become an established best practice in modern system development.
 
-For Swedish organizations implementing Architecture as Code, ADR is particularly valuable because it ensures architecture decisions are documented in a structured manner that meets compliance requirements and facilitates knowledge transfer between teams and over time.
+For organizations implementing Architecture as Code, ADR is particularly valuable because it ensures architecture decisions are documented in a structured manner that meets compliance requirements and facilitates knowledge transfer between teams and over time.
 
 ADR functions as architecture's "commit messages" - short, focused documents that capture context (context), problem, the chosen alternative and consequences of important architecture decisions. This enables traceability and understanding for why specific technical choices were made.
 
-The Swedish digitalization strategy emphasizes the importance of transparent and traceable decisions within the public sector. ADR method supports these requirements by creating a audit trail of architecture decisions that can be reviewed and evaluated over time.
+Modern digitalization strategies emphasize the importance of transparent and traceable decisions within the public sector. ADR method supports these requirements by creating an audit trail of architecture decisions that can be reviewed and evaluated over time.
 
 ## What is Architecture Decision Records?
 
@@ -124,7 +124,7 @@ standardsyntax.
 - Pilotprojekt before complete utrullning
 ```
 
-### examples 2: Security Architecture for Swedish organizations
+### Example 2: Security Architecture Implementation
 
 ```markdown
 # ADR-0007: Zero Trust Network Architecture
@@ -190,14 +190,14 @@ ADR functions optimalt when integrerat in Git-baserade utvecklingsarbetsflöden:
 **Branch Protection**: requires ADR for major architectural changes
 **automation**: CI/CD-pipelines can validate to relevant ADR exist for significant changes
 
-### Kvalitetsstandards for Swedish organizations
+### Quality Standards for Compliance
 
-to meet svenska compliance requirements should ADR follow specific kvalitetsstandards:
+To meet compliance requirements, ADR should follow specific quality standards:
 
-**Språk**: ADR can skrivas at svenska for interna stakeholders with engelska technical termer for verktygskompatibilitet
-**Spårbarhet**: Klar länkning between ADR and implemented code
-**Åtkomst**: Transparent togång for revisorer and efterlevnadsansvariga
-**Retention**: Långsiktig arkivering according to organizational policier
+**Language**: ADR should be written in English for consistency and tool compatibility
+**Traceability**: Clear linking between ADR and implemented code
+**Access**: Transparent access for auditors and compliance officers
+**Retention**: Long-term archiving according to organizational policies
 
 ### Gransknings- and styrningsprocess
 
@@ -216,7 +216,7 @@ Architecture as Code-templates can referera to relevant ADR to forklara design d
 
 Automated validation can implementeras to ensure to infrastructure code follows established ADR. Policy as Code tool that Open Policy Agent can enforça arkitekturguidelines baserade at documented decisions in ADR.
 
-For Swedish organizations enables This integration transparent governance and compliance where architecture decisions can is tracked from initial documentation through implementation to operativ deployment.
+For organizations, this integration enables transparent governance and compliance where architecture decisions can be tracked from initial documentation through implementation to operational deployment.
 
 ## Compliance and kvalitetsstandarder
 
@@ -227,7 +227,7 @@ ADR-metodik supports svenska compliance requirements through Structured document
 **Risk Management**: Dokumenterade riskbedömningar and mitigation strategies
 **Knowledge Management**: Structured knowledge transfer between team and over time
 
-Swedish organizations within the public sector can use ADR to meet transparensrequirements and demokratisk insyn in technical decisions as affects withborgarservice and datahantering.
+Public sector organizations can use ADR to meet transparency requirements and democratic oversight in technical decisions that affect citizen services and data handling.
 
 ## Framtida development and trends
 
@@ -239,21 +239,19 @@ ADR-metodik is developed kontinuerligt with integration of new tools and process
 
 In the Architecture as Code context is developed tools for automatic korrelation between ADR and driftsatt infrastructure, which enables realtidsvalidering of arkitektonisk compliance.
 
-Swedish organizations can dra nytta of europeiska initiativ for standardisering of digital documentation practices as builds on ADR-metodologi for increased interoperabilitet and compliance.
+Organizations can benefit from international initiatives for standardization of digital documentation practices that build on ADR methodology for increased interoperability and compliance.
 
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Architecture Decision Records represents a fundamental komponent in modern Architecture as Code-metodik. Through Structured documentation of architecture decisions are created transparency, traceability and knowledge transfer as is critical for svenska organisationers digitaliseringsinitiativ.
+The modern Architecture as Code methodology represents the future of infrastructure management for organizations worldwide.
+Architecture Decision Records represent a fundamental component in modern Architecture as Code methodology. Through structured documentation of architecture decisions, transparency, traceability and knowledge transfer are created which are critical for digital transformation initiatives.
 
-Effective ADR-implementation requires organisatoriskt stöd, standardized processes and integration with existing utvecklingsarbetsflöden. For Architecture as Code-projekt enables ADR koppling between designintentioner and code-implementation as improves maintainability and compliance.
+Effective ADR implementation requires organizational support, standardized processes and integration with existing development workflows. For Architecture as Code projects, ADR enables the connection between design intentions and code implementation that improves maintainability and compliance.
 
-Swedish organizations as antar ADR-metodik position themselves for successful Architecture as Code-transformation with robust styrningsprocesser and transparent decisionssdocumentsation as supports both interna requirements and externa efterlevnadsforväntningar.
+Organizations that adopt ADR methodology position themselves for successful Architecture as Code transformation with robust governance processes and transparent decision documentation that supports both internal requirements and external compliance expectations.
 
 Sources:
 - Architecture Decision Records Community. "ADR-guidelines and templates." https://adr.github.io
 - Nygard, M. "Documenting Architecture Decisions." 2011. 
 - ThoughtWorks. "Architecture Decision Records." Technology Radar, 2023.
-- Regeringen. "Digital strategi for Sverige." Digitalisering for trygghet, välfärd and konkurrenskraft, 2022.
-- MSB. "Guidance for informationssäkerhet." Myndigheten for societal protection and beredskap, 2023.
