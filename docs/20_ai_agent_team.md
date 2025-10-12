@@ -1,127 +1,60 @@
-# AI-agentteam för Architecture as Code-initiativet
+# AI Agent Team for the Architecture as Code Initiative
 
-Detta dokument beskriver den virtuella agentgrupp som ska samarbeta kring projektet "Architecture as Code" och rapportera till projektägaren. Teamet består av specialiserade roller som arbetar iterativt i tvåveckorscykler och följer principer för spårbarhet, dokumentation och kvalitetskontroll. Projektägaren (du) fungerar som slutlig beslutsfattare och mottagare av rapporter från Project Manager-agenten.
+The Architecture as Code initiative relies on a cohesive ensemble of AI agents that operate as a digital delivery team. Each agent contributes specialised expertise while adhering to a single backlog, common documentation practices, and shared quality thresholds. This chapter reframes the agent ecosystem in British English, translating previous checklists into narrative guidance that emphasises collaboration, accountability, and the continual refinement of project artefacts.
 
-## Övergripande arbetsflöde
+## 20.1 Multi-Agent Operating Model
 
-![AI-agenternas samarbetsflöde](images/diagram_28_agent_team.png)
+![AI agent collaboration flow](images/diagram_28_agent_team.png)
 
-1. **Projektägare** formulerar mål, prioriteringar och accepterar leveranser.
-2. **Project Manager** bryter ned mål till uppgifter, synkroniserar agenternas arbete och levererar sammanfattningar.
-3. Specialistroller (Architect, Requirements Analyst, Designer, Developer, Quality Control, Editor, Graphic Designer) producerar artefakter enligt delegering och rapporterar status till Project Manager.
-4. Project Manager konsoliderar status, kvalitetsresultat och rekommendationer i en rapport till projektägaren efter varje sprint.
+The operating model begins with the project owner defining priorities and acceptable outcomes. The Project Manager agent transforms those directions into sprint goals, decomposes them into manageable cases, and steers the flow of information between the specialists. Architect, Requirements Analyst, Designer, Developer, Quality Control, Editor, and Graphic Designer agents execute their craft in tight feedback loops, returning insights and artefacts to the Project Manager. The Project Manager consolidates the overall status, flags risks, and recommends decisions back to the project owner at the end of each iteration. *Diagram source: [`images/diagram_28_agent_team.mmd`](images/diagram_28_agent_team.mmd).* 
 
-*Diagram source: [`images/diagram_28_agent_team.mmd`](images/diagram_28_agent_team.mmd)*
+## 20.2 Role Narratives and Responsibilities
 
-## Roller och ansvar
+The Project Manager acts as the coordinating nucleus. They translate strategic directives into prioritised cases, facilitate daily synchronisation, surface blockers early, and prepare a sprint packet that captures completed work, unresolved risks, and suggested trade-offs. Their orchestration ensures that each specialist agent understands the context of their deliverables and the dependencies that bind them.
 
+The Architect curates the overall system blueprint. They specify architectural guardrails, document integration patterns, and sanity-check technical proposals emerging from other agents. By partnering closely with the Graphic Designer, the Architect keeps diagrams consistent with the latest design language while ensuring they remain technically authoritative.
 
-### Project Manager (central agent)
+The Requirements Analyst conducts structured discovery with the project owner and other stakeholders. They translate findings into user stories, acceptance criteria, and prioritisation notes while maintaining traceability between evolving requirements, architectural decisions, and quality evidence.
 
-- Tar emot projektägarens direktiv och översätter dem till sprintmål.
-- Prioriterar backloggen, skapar uppgiftskort och koordinerar beroenden.
-- Håller dagliga synkroniseringar med specialistroller och säkerställer att blockerare eskaleras.
-- Konsoliderar statusrapporter, risker och rekommendationer till projektägaren efter varje sprint.
+The Designer (covering both UI and UX perspectives) renders interactive journeys and interface compositions that satisfy the prioritised requirements. Their review sessions with the Developer and Quality Control agents focus on feasibility, accessibility, and adherence to brand guidelines so that downstream rework stays minimal.
 
-### Architect
+The Developer implements functionality that aligns with architectural and design agreements. They maintain coding standards, integrate automated testing, and advocate for incremental pull requests that remain easy to review. When technical risks or infrastructure constraints arise, the Developer flags them to the Project Manager and Architect without delay.
 
-- Definierar övergripande systemstruktur, arkitekturprinciper och tekniska riktlinjer.
-- Skapar och uppdaterar arkitekturartefakter (t.ex. referensarkitekturer, komponentkartor).
-- Granskar tekniska förslag från Developer och Requirements Analyst för att säkra skalbarhet och robusthet.
-- Samarbetar med Graphic Designer för att visualisera arkitekturdiagram.
+The Quality Control agent builds and evolves the automated test suites that validate the solution from unit to end-to-end levels. They synthesise test coverage telemetry, defect trends, and release-readiness indicators into succinct recommendations that influence backlog ordering and definition-of-done adjustments.
 
-### Requirements Analyst
+The Editor safeguards the repository’s written record. They update documentation across `docs/`, ensure terminology remains consistent, and align release notes with the outcomes communicated to the project owner. Their partnership with the Requirements Analyst ensures that every policy or design decision is mirrored in the documented knowledge base.
 
-- Fångar funktionella och icke-funktionella krav genom strukturerade intervjuer med projektägaren.
-- Dokumenterar user stories, acceptanskriterier och prioriteringar i backloggen.
-- Säkerställer spårbarhet mellan krav, design, implementering och tester.
-- Genomför regelbundna gap-analyser och uppdaterar kravbasen vid förändringar.
+The Graphic Designer produces the visual narratives—Mermaid diagrams, illustrative frames, and themed assets—that clarify architectural decisions and team workflows. They maintain a version-controlled library of graphics and iterate alongside the Architect and Editor so that visuals and text reinforce one another.
 
-### Designer (UI/UX)
+## 20.3 Collaboration Patterns Without Temporal Gating
 
-- Tar fram wireframes, skisser och interaktionsflöden baserade på prioriterade krav.
-- Säkerställer att lösningar följer gällande design- och varumärkesriktlinjer.
-- Validerar förslag tillsammans med Developer och Quality Control för att minimera återkommande iterationer.
-- Dokumenterar designbeslut och komponentbibliotek i delade mallar.
+The agent collective maintains living cases that accumulate insights whenever two or more specialists exchange information. Rather than tracking activities against a rigid timetable, the focus lies on how communications revise shared artefacts and decisions.
 
-### Developer
+| Communication Thread | Primary Participants | Case Update Applied |
+|----------------------|----------------------|---------------------|
+| Backlog refinement for a new feature proposal | Project Manager, Requirements Analyst, Architect | User story expanded with architectural guardrails and acceptance tests linked to repository cases. |
+| Interface critique on a prototype | Designer, Developer, Quality Control | Design case amended with accessibility notes, test hooks, and implementation constraints for subsequent sprint work. |
+| Diagram validation for stakeholder briefing | Architect, Graphic Designer, Editor | Diagram asset updated, referenced documentation refreshed, and publication checklist marked complete for the relevant release note. |
+| Release-readiness review before deployment | Project Manager, Quality Control, Developer | Deployment case annotated with risk mitigations, test evidence attached, and go/no-go decision captured for audit history. |
+| Policy change affecting documentation | Project Manager, Editor, Requirements Analyst | Governance case revised with new policy text, traceability matrix regenerated, and affected chapters scheduled for editorial updates. |
 
-- Implementerar funktionalitet enligt arkitekturella riktlinjer och designunderlag.
-- Skriver enhetliga kodstandarder, automatiserade tester och integrerar med CI/CD-pipelines.
-- Delar upp arbetet i små, granskbara pull requests och samarbetar nära med Quality Control.
-- Rapporterar tekniska hinder eller risker till Project Manager för snabb åtgärd.
+## 20.4 Governance, Reporting, and Onboarding
 
-### Quality Control
+Sprint rituals anchor collaboration. Fortnightly planning sessions connect the project owner’s objectives with the forthcoming sprint commitment, while brief daily synchronisations allow the Project Manager to redirect attention when blockers emerge. Demonstrations at the end of each sprint showcase artefacts to the project owner, and retrospectives catalogue process improvements that the Project Manager threads into the next iteration.
 
-- Bygger och underhåller testsviter (enhetstest, integrationstest och slut-till-slut-test).
-- Genomför kvalitetsgranskningar av kod, dokumentation och leveranser innan de godkänns av projektägaren.
-- Samlar mätvärden (testtäckning, bugghantering, release-kvalitet) och presenterar dem för Project Manager.
-- Rekommenderar förbättringar av processer och verktyg för att öka kvalitet och säkerhet.
+Reporting follows a predictable cadence. Each agent submits a concise daily note to the Project Manager summarising progress, concerns, and upcoming intent. The Quality Control agent compiles a weekly quality digest that highlights coverage trends, defect counts, and outstanding risks. The Project Manager curates these inputs into an end-of-sprint report that blends delivery outcomes with recommendations for strategic decisions.
 
-### Editor
+Communication channels remain purposeful. A project-wide workspace (for example Slack or Microsoft Teams) broadcasts priorities and policy updates. Designers and Graphic Designers co-create in collaborative whiteboarding tools to accelerate feedback. Technical discussions and backlog triage run through platforms such as GitHub Projects or Linear, ensuring traceability between dialogues and the cases they influence. Quality findings are logged in knowledge bases like Notion or Confluence so that stakeholders can audit release readiness at any time.
 
-- Skapar och uppdaterar dokumentation i `docs/`-mappen, inklusive README, API-specifikationer och release-noteringar.
-- Säkerställer att alla artefakter följer fastställd struktur, språkstandard och versionsspårning.
-- Synkroniserar med Requirements Analyst och Designer för att hålla dokumentation uppdaterad med senaste beslut.
-- Publikt sammanställer sprintanteckningar och kunskapsbasmaterial för intern delning.
+Quality measures underpin accountability. Lead time from requirement to release is tracked with a target of staying within two sprints. Automated tests aim for at least eighty-five per cent coverage of critical components, and documentation changes are expected within twenty-four hours of any governance or design decision. The Project Manager monitors blocker counts per sprint, striving to keep them below three by driving rapid escalation and resolution.
 
-### Graphic Designer
+Onboarding for new agents blends orientation with practical delivery. The Project Manager briefs the newcomer on strategic aims, backlog structure, and working agreements. The Editor provides access to documentation standards and historical change logs, after which the Quality Control agent outlines the test strategy and release checkpoints. The Architect concludes the introduction by walking through the current system design. The onboarding agent confirms understanding by presenting a short delivery plan for their first sprint contribution, creating immediate alignment with the rest of the team.
 
-- Producerar visuella diagram (Mermaid/PlantUML) för arkitekturöversikter, processflöden och teamstruktur.
-- Samarbetar med Architect och Editor för att säkerställa att visualiseringar är korrekta och integrerade i dokumentationen.
-- Håller ett versionshanterat bibliotek av grafiska komponenter och teman.
-- Tar fram snabbskisser åt Designer och Developer för att påskynda idéutbyte.
+## Sources
 
-## Sprintceremonier och artefakter
-
-
-| Ceremoni | Deltagare | Frekvens | Resultat |
-|----------|-----------|----------|----------|
-| Sprintplanering | Projektägare (mål), Project Manager, samtliga specialistroller | Varannan vecka | Sprintmål, åtaganden och uppdaterad backlog |
-| Daglig synk | Project Manager, relevanta specialistroller | Dagligen | Statusuppdatering, identifierade hinder och nästa steg |
-| Demonstration | Project Manager, Developer, Designer, Quality Control | Varannan vecka | Genomgång av levererat arbete, demo till projektägare |
-| Retrospektiv | Project Manager, hela teamet | Varannan vecka | Förbättringslista och åtgärdsplan |
-
-## Rapporteringsstruktur
-
-
-- **Dagliga statuskort**: Kort sammanfattning (max 5 punkter) från varje roll till Project Manager.
-- **Veckovisa kvalitetsrapporter**: Quality Control levererar testresultat, funna defekter och kvalitetsindikatorer.
-- **Sprintrapport**: Project Manager sammanställer leveranser, uppföljning av KPI:er och rekommenderade beslut till projektägaren.
-- **Dokumentationslogg**: Editor uppdaterar versionslogg i `docs/book_structure.md` för att spåra ändringar i kunskapsbasen.
-
-## Kommunikationskanaler
-
-
-| Kanal | Syfte | Verktygsförslag |
-|-------|-------|----------------|
-| Projektkanal | Övergripande information, sprintmål, beslut | Slack, Microsoft Teams |
-| Designforum | UI/UX-iterationer, diagramfeedback | FigJam, Miro |
-| Tekniksync | Kod- och arkitekturfrågor | GitHub Projects, Linear |
-| Kvalitetsrapportering | Testresultat, release-approval | Notion, Confluence |
-
-## Kvalitetsmått och KPI:er
-
-
-- Ledtid från krav till release (mål: < 2 sprintar).
-- Testtäckning för kritiska komponenter (mål: ≥ 85 %).
-- Dokumentationsuppdateringar inom 24 timmar efter beslut.
-- Antal blockerare per sprint (mål: < 3).
-
-## Onboarding av nya agentroller
-
-
-1. Project Manager introducerar projektets mål, backlogg och verktyg.
-2. Editor delar dokumentationsstandarder och åtkomst till `docs/`.
-3. Quality Control beskriver teststrategi och kvalitetskriterier.
-4. Architect går igenom arkitekturplan och tekniska riktlinjer.
-5. Agenten bekräftar förståelse genom att presentera sin första leveransplan för kommande sprint.
-
-## Källor
-
-Sources:
 - [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
 - [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)
 - [Google Project Management Guide – Working with cross-functional teams](https://www.coursera.org/articles/cross-functional-team)
 
-Denna struktur säkerställer att samtliga AI-agenter arbetar koordinerat, levererar mätbara resultat och kontinuerligt rapporterar status till projektägaren via Project Manager.
+This chapter establishes a coherent, English-language reference for how AI agents collaborate on the Architecture as Code initiative, ensuring that narrative, visuals, and decision logs remain synchronised.
+
