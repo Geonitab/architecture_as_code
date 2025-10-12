@@ -2,7 +2,7 @@
 
 ![Framgångsnycklar for architecture as code](images/diagram_22_slutsats.png)
 
-Architecture as Code has transformed how organisationer think about and handles IT-infrastructure. Through treating Architecture as Code has vi enabled same precision, processes and quality controls as long existed within software development. This journey genAbout the Books 25 chapter has shown the way from [Fundamental Concepts](01_introduction.md) to [future advanced technologies](25_future_trends.md).
+Architecture as Code has transformed how organisationer think about and handles IT-infrastructure. Through treating Architecture as Code has vi enabled same precision, processes and quality controls as long existed within software development. This journey genAbout the Books 25 chapter has shown the way from [Fundamental Concepts](01_introduction.md) to [future advanced technologies](25_future_trends_development.md).
 
 ## Viktiga lessons from vår Architecture as Code-journey
 
@@ -12,7 +12,7 @@ The technical aspect of Architecture as Code requires deep understanding for clo
 
 ### Progressionen through technical maturity
 
-Vår throughgång började with Fundamental Concepts as declarative code and idempotens in [chapter 2](02_fundamental_principles.md), utvecklades through praktiska Architecture as Code-implementationsaspekter that [version control](03_version_control.md) and [CI/CD-automation](05_automation_devops_cicd.md), and kulminerade in advanced topics that [containerorkestrering](07_containerization.md) and [framtida AI-driven automation](25_future_trends.md).
+Vår throughgång började with Fundamental Concepts as declarative code and idempotens in [chapter 2](02_fundamental_principles.md), utvecklades through praktiska Architecture as Code-implementationsaspekter that [version control](03_version_control.md) and [CI/CD-automation](05_automation_devops_cicd.md), and kulminerade in advanced topics that [containerorkestrering](07_containerization.md) and [framtida AI-driven automation](25_future_trends_development.md).
 
 Säkerhetsaspekterna as introducerades in [chapter 10](10_sakerhet.md) fordjupades through [policy as code](11_policy_sakerhet.md) and [compliance-handling](12_compliance.md), which shows how security must throughsyra entire Architecture as Code-Architecture as Code-implementationen from design to drift.
 
@@ -21,12 +21,12 @@ Säkerhetsaspekterna as introducerades in [chapter 10](10_sakerhet.md) fordjupad
 GenAbout the Books chapter has vi sett how Swedish organizations stands infor specific Challenges and possibilities:
 
 - **GDPR and data sovereignty**: From [säkerhetskapitlet](10_sakerhet.md) to [policy implementation](11_policy_sakerhet.md) has vi sett how svenska/EU-regulations requires particular attention at dataskydd and compliance
-- **Klimatmål and sustainability**: [Framtidskapitlet](25_future_trends.md) belyste how Sveriges klimatneutralitetsmål 2045 driver innovation within carbon-aware computing and sustainable infrastructure
+- **Klimatmål and sustainability**: [Framtidskapitlet](25_future_trends_development.md) belyste how Sveriges klimatneutralitetsmål 2045 driver innovation within carbon-aware computing and sustainable infrastructure
 - **Digitaliseringsstrategi**: [chapter 19 about digitalisering](19_digitalisering.md) visade how Architecture as Code enables The digitala transformation as Swedish organizations undergoes
 
 ## Framtida development and teknologiska trender
 
-Cloud-native technologies, edge computing and artificiell intelligens driver next generation of Architecture as Code, which vi explored in-depth in [chapter 20 about framtida trender](25_future_trends.md). Emerging technologies that GitOps, policy engines and intelligent automation will to ytterligare simplify and improve Architecture as Code-capabilities.
+Cloud-native technologies, edge computing and artificiell intelligens driver next generation of Architecture as Code, which vi explored in-depth in [chapter 20 about framtida trender](25_future_trends_development.md). Emerging technologies that GitOps, policy engines and intelligent automation will to ytterligare simplify and improve Architecture as Code-capabilities.
 
 Utvecklingen mot serverless computing and fully managed services forändrar what as needs is managed that Architecture as Code. Framtiden pekar mot higher abstraktion where Developers focuses on business logic with plattformen handles underliggande architecture automatically, which vi saw exemplifierat in diskussionen about [Platform Engineering](19_kapitel18.md).
 
@@ -76,7 +76,7 @@ Bokens progression from teori to praktik, from Fundamental to avancerat, speglar
 
 Architecture as Code is not a destination without a continuous journey of learning, experimentation and improvement. the tools, processes and principles as is described in This bok will to is developed, but the fundamental koncepten about code-driven infrastructure, automation and reproducibility will to forbli relevanta.
 
-Which vi has sett genAbout the Books 23 chapter, from [Fundamental introduction](01_introduction.md) to [framtida visioner](25_future_trends.md), represents Architecture as Code framtiden for IT operations. Organisationer as investerar in This journey idag creates foundation for morgondagens digitala success.
+Which vi has sett genAbout the Books 23 chapter, from [Fundamental introduction](01_introduction.md) to [framtida visioner](25_future_trends_development.md), represents Architecture as Code framtiden for IT operations. Organisationer as investerar in This journey idag creates foundation for morgondagens digitala success.
 
 Sources:
 - Industry reports on Architecture as Code adoption trends

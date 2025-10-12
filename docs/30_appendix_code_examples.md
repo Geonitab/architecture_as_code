@@ -741,7 +741,7 @@ This sektion contains Python-skript and andra automationsverktyg for Architectur
 ### 22_CODE_1: comprehensive testramverk for Architecture as Code
 
 Architecture as Code-principerna within This area
-*Refereras from chapter 22: [Architecture as Code Best Practices and Lessons Learned](22_best_practices.md)*
+*Refereras from chapter 24: [Architecture as Code Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```python
 # testing/comprehensive_iac_testing.py
@@ -838,7 +838,7 @@ class ComprehensiveIaCTesting:
 This sektion contains konfigurationsfiler for different tools and services.
 
 ### 22_CODE_2: Governance policy configuration for Swedish organizations
-*Refereras from chapter 22: [Best Practices and Lessons Learned](22_best_practices.md)*
+*Refereras from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```yaml
 # governance/svenska-governance-policy.yaml
