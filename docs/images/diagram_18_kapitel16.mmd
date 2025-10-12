@@ -2,15 +2,41 @@
 config:
   theme: 'base'
   themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
+    primaryColor: '#1B4F72'
+    primaryTextColor: '#ffffff'
+    primaryBorderColor: '#145374'
+    lineColor: '#1B98E0'
+    secondaryColor: '#F5F0E1'
+    tertiaryColor: '#0E3A53'
 ---
-graph LR
-    A[Unit Tests] --> B[Integration Tests]
-    B --> C[Security Tests]
-    C --> D[Performance Tests]
-    D --> E[Production Deploy]
+flowchart LR
+    subgraph Assessment[Discovery & Assessment]
+        direction TB
+        A1[Inventory assets]\n(CMDB, tagging, contracts)
+        A2[Map dependencies]\n(Network, data flow, latency)
+        A3[Risk baseline]\n(Regulation, resilience, cost)
+    end
+
+    subgraph Planning[Migration Design]
+        direction TB
+        B1[Segment workloads]\n(Retain, rehost, refactor, retire)
+        B2[Wave planning]\n(Priority, capacity, change windows)
+        B3[Control framework]\n(Policy as code, logging, guardrails)
+    end
+
+    subgraph Delivery[Execution & Stabilisation]
+        direction TB
+        C1[Landing zone ready]\n(Network, identity, budgets)
+        C2[Codify resources]\n(Imports, module adoption)
+        C3[Validate]\n(Tests, compliance, cost checks)
+    end
+
+    subgraph Optimise[Operate & Improve]
+        direction TB
+        D1[Feedback loops]\n(Incident review, metrics)
+        D2[Optimise spend]\n(FinOps, capacity rightsizing)
+        D3[Expand patterns]\n(Self-service, platform products)
+    end
+
+    Assessment --> Planning --> Delivery --> Optimise
+    Optimise --> Assessment
