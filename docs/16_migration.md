@@ -16,6 +16,10 @@ Cloud-native migration pathways offer opportunities to modernise architecture wh
 
 ## Assessment and Planning Phase
 
+![Assessment Workflow](images/diagram_16_migration_assessment.png)
+
+*The assessment workflow begins with automated discovery and proceeds through classification, risk analysis, and planning phases. This systematic approach ensures comprehensive coverage and realistic migration timelines.*
+
 Comprehensive infrastructure assessment forms the foundation for successful Architecture as Code migration. This includes inventory of existing resources, dependency mapping, risk assessment, and cost-benefit analysis that informs migration strategy and timeline planning.
 
 Discovery automation tools such as AWS Application Discovery Service, Azure Migrate, and Google Cloud migration tools can accelerate the assessment process through automated resource inventory and dependency detection. These tools generate data that can inform Architecture as Code template generation and migration prioritisation.
@@ -35,6 +39,10 @@ Hybrid approaches such as "lift-and-improve" balance speed-to-market with modern
 Application portfolio analysis helps determine the optimal migration strategy per application based on technical fit, business value, and modernisation potential. Legacy applications with limited business value may be candidates for retirement rather than migration, which reduces overall migration scope.
 
 ## Gradual Infrastructure Codification
+
+![Codification Flow](images/diagram_16_codification_flow.png)
+
+*The codification process transforms legacy infrastructure into code-managed resources through discovery, template generation, validation, and version control. This iterative approach minimises risk whilst ensuring accuracy.*
 
 Infrastructure inventory automation through tools such as Terraform import, CloudFormation drift detection, and Azure Resource Manager templates enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations that require refinement but accelerate the codification process.
 

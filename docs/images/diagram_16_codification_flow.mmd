@@ -1,0 +1,25 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
+---
+graph LR
+    A[Legacy Infrastructure] --> B[Discover Resources]
+    B --> C[Generate IaC Templates]
+    C --> D[Review & Refine]
+    D --> E[Import to IaC Tool]
+    E --> F{Validation}
+    F -->|Pass| G[Apply Tags]
+    F -->|Fail| D
+    G --> H[Enable Drift Detection]
+    H --> I[Version Control]
+    I --> J[Managed Infrastructure]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style J fill:#9f9,stroke:#333,stroke-width:2px

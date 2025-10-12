@@ -1,0 +1,25 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
+---
+flowchart TB
+    Start[Start Assessment] --> Discover[Automated Resource Discovery]
+    Discover --> Inventory[Generate Resource Inventory]
+    Inventory --> Classify{Classify Resources}
+    Classify -->|Managed by IaC| Skip[Skip - Already Managed]
+    Classify -->|Unmanaged| Analyse[Analyse Dependencies]
+    Analyse --> Priority[Assign Migration Priority]
+    Priority --> Risk[Risk Assessment]
+    Risk --> Estimate[Effort Estimation]
+    Estimate --> Timeline[Create Migration Timeline]
+    Timeline --> Playbook[Generate Migration Playbook]
+    Skip --> Report[Assessment Report]
+    Playbook --> Report
+    Report --> End[Ready for Migration]
