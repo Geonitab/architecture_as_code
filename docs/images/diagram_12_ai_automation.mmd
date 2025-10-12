@@ -1,0 +1,17 @@
+%% Diagram: AI-Augmented Compliance Automation
+flowchart LR
+    subgraph Data_Sources[Operational Inputs]
+        A1[Cloud Telemetry]
+        A2[Policy Violations]
+        A3[Business Context]
+    end
+    Data_Sources --> B[AI Compliance Engine]
+    B --> C[Risk Scoring]
+    C --> D{Decision Gateway}
+    D -->|Compliant| E[Evidence Vault\n& Reporting]
+    D -->|At Risk| F[Remediation\nWorkflow]
+    F --> G[Infrastructure as Code\nUpdate]
+    G --> H[Automated\nDeployment]
+    H --> Data_Sources
+    F --> I[Human Review\n& Approval]
+    I --> G
