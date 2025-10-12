@@ -1,7 +1,7 @@
 site_name: Architecture as Code
 site_description: "Architecture as Code book content published as a browsable documentation site."
 site_url: http://aac.geon.se/
-repo_url: https://github.com/example/architecture_as_code
+repo_url: https://github.com/geonitab/architecture_as_code
 repo_name: architecture_as_code
 nav:
   - Overview:
