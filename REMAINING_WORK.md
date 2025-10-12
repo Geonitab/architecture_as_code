@@ -24,11 +24,11 @@ After comprehensive automated cleanup fixing 2,400+ Svengelska issues, the repos
 Based on spot-checking, these files likely need the most attention:
 
 ### High Priority (Heavy Swedish Content)
-1. `docs/08_microservices.md` - Contains Swedish paragraphs and sentences
-2. `docs/06_cloud_architecture.md` - Large file with remaining Swedish content
-3. `docs/09_security.md` - Security content with Swedish terminology
-4. `docs/10_policy_and_security.md` - Policy content with Swedish phrases
-5. `BOOK_REQUIREMENTS.md` - Requirements doc with Swedish sections
+1. `docs/09_security.md` - Security content with Swedish terminology
+2. `docs/10_policy_and_security.md` - Policy content with Swedish phrases
+3. `BOOK_REQUIREMENTS.md` - Requirements doc with Swedish sections
+
+> **Update:** Former chapters covering cloud architecture and microservices have been retired; focus translation efforts on the remaining active manuscripts.
 
 ### Medium Priority (Some Swedish Remaining)
 6. `docs/05_automation_devops_cicd.md`

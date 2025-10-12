@@ -57,7 +57,6 @@ After automated replacements improved the ratio from 2.81:1 to 18.03:1, strategi
 - `03_version_control.md` - 4 replacements
 - `06_cloud_architecture.md` - 8 replacements (7 auto + 1 manual)
 - `07_containerization.md` - 1 replacement
-- `08_microservices.md` - 13 replacements
 - `10_policy_and_security.md` - 16 replacements (9 auto + 7 manual)
 - `12_compliance.md` - 6 replacements
 - `13_testing_strategies.md` - 12 replacements
@@ -75,7 +74,9 @@ After automated replacements improved the ratio from 2.81:1 to 18.03:1, strategi
 - `26_future_development.md` - 8 replacements
 - `30_appendix_code_examples.md` - 2 replacements
 
-**Total**: 163 replacements across 20 chapter files
+> **Note:** The former Chapter 8 (Microservices) has been retired from the active manuscript since this fix was recorded.
+
+**Total**: 163 replacements across 19 active chapter files at the time of the update
 
 ### Remaining IaC Mentions
 

@@ -122,9 +122,7 @@ All chapters 01-27 with English translations:
 - 03_versionhantering_en.md - Version Control
 - 04_adr_en.md - Architecture Decision Records
 - 05_automatisering_devops_cicd_en.md - Automation, DevOps and CI/CD
-- 06_molnarkitektur_en.md - Cloud Architecture
 - 07_containerisering_en.md - Containerization
-- 08_microservices_en.md - Microservices
 - 09_sakerhet_en.md - Security
 - 10_policy_sakerhet_en.md - Policy as Code
 - 11_compliance_en.md - Compliance
@@ -141,9 +139,10 @@ All chapters 01-27 with English translations:
 - 22_slutsats_en.md - Conclusion
 - 23_ordlista_en.md - Glossary
 - 24_om_forfattarna_en.md - About the Authors
-- 25_framtida_utveckling_en.md - Future Development
 - 26_appendix_kodexempel_en.md - Appendix: Code Examples
 - 27_teknisk_uppbyggnad_en.md - Technical Architecture
+
+> **Note:** Earlier translations for the retired Chapters 6 and 8 are preserved only in historical release artifacts and are no longer maintained in the active manuscript.
 
 ### Supporting Documentation (12 files)
 - docs/README_en.md

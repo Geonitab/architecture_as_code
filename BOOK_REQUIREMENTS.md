@@ -2,7 +2,7 @@
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 31
+  total_chapters: 30
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -24,16 +24,8 @@ book:
       title: "Automation, DevOps and CI/CD for Infrastructure as Code"
       area: "System Development"
       required: true
-    - filename: "06_cloud_architecture.md"
-      title: "Cloud Architecture as Code"
-      area: "Architecture"
-      required: true
     - filename: "07_containerization.md"
       title: "Containerization and Orchestration"
-      area: "Architecture"
-      required: true
-    - filename: "08_microservices.md"
-      title: "Microservices and Distributed Systems"
       area: "Architecture"
       required: true
     - filename: "09_security.md"
@@ -238,9 +230,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | 03 | 03_version_control.md | Version Control and Code Structure | System Development | Yes |
 | 04 | 04_adr.md | Architecture Decision Records (ADR) | Basic Concepts | Yes |
 | 05 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Infrastructure as Code | System Development | Yes |
-| 06 | 06_cloud_architecture.md | Cloud Architecture as Code | Architecture | Yes |
 | 07 | 07_containerization.md | Containerization and Orchestration | Architecture | Yes |
-| 08 | 08_microservices.md | Microservices and Distributed Systems | Architecture | Yes |
 | 09 | 09_security.md | Security in Infrastructure as Code | Security | Yes |
 | 10 | 10_policy_and_security.md | Policy as Code and Security Automation | Security | Yes |
 | 11 | 11_governance_as_code.md | Governance as Code | Governance | Yes |
