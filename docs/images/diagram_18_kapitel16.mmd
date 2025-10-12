@@ -9,8 +9,17 @@ config:
     secondaryColor: '#006100'
     tertiaryColor: '#fff'
 ---
-graph LR
-    A[Unit Tests] --> B[Integration Tests]
-    B --> C[Security Tests]
-    C --> D[Performance Tests]
-    D --> E[Production Deploy]
+graph TB
+    A[Assessment & Planning] --> B[Discovery & Inventory]
+    B --> C[Migration Strategy]
+    C --> D{Approach}
+    D -->|Lift & Shift| E[Quick Migration]
+    D -->|Re-architect| F[Cloud-Native Design]
+    D -->|Hybrid| G[Incremental Modernisation]
+    E --> H[Infrastructure Codification]
+    F --> H
+    G --> H
+    H --> I[Testing & Validation]
+    I --> J[Team Training]
+    J --> K[Production Migration]
+    K --> L[Continuous Optimisation]
