@@ -1,80 +1,81 @@
-# Digitalisation through Code-Based Infrastructure
+# Digital Transformation through Code-Based Infrastructure
 
-![Digitaliseringsprocess](images/diagram_19_digitalisering.png)
+![Digital transformation process](images/diagram_21_digitalisation_process.png)
 
-*Architecture as Code forms the backbone in modern digitaliseringsinitiativ by enable snabb, skalbar and kostnadseffektiv transformation of IT-environments. Diagram illustrerar The strategiska the way from traditional infrastructure to fullständigt kodbaserad digital plattform.*
+*Architecture as Code forms the foundation of modern digital transformation initiatives by enabling rapid, scalable, and cost-effective transformation of IT environments. The diagram illustrates the strategic journey from traditional infrastructure to a fully code-based digital platform, showing how organisations transition from manual processes to automated, declarative infrastructure management.*
 
-## Svenska digitaliseringslandskapet
+## Digital Transformation Landscape
 
-![Digitalisering in svenskt context](images/mindmap_19_digitalisering.png)
+![Digital transformation dimensions](images/mindmap_21_digitalisation.png)
 
-*Mindmappen belyser the unique aspekterna of digitalisering in svensk context, from regulatory Challenges and framgångsexamples to the specific Benefits that Architecture as Code offers Swedish organizations. The shows how Cloud-first strategier, svenska digitaliseringsChallenges and internationella framgångsexamples samspelar in The svenska digitaliseringsresan.*
+*This mindmap illustrates the multidimensional nature of digital transformation through Architecture as Code. It shows how cloud-first strategies, organisational challenges, and proven success patterns interconnect to shape the digital transformation journey. The visualisation highlights key technical, cultural, and business dimensions that organisations must address to achieve successful transformation.*
 
-## Overall Description
+## Overview
 
-Digitalisering is not only about to introducing new technology, without about a fundamental change in how organisationer delivers value to sina customers and stakeholders. Architecture as Code spelar a central roll in This transformation by enable agile, cloud-based solutions as can adapted to changing business needs with particular consideration to svenska regulatory and cultural conditions.
+Digital transformation represents more than the introduction of new technology—it embodies a fundamental shift in how organisations deliver value to customers and stakeholders. Architecture as Code plays a central role in this transformation by enabling agile, cloud-based solutions that adapt to evolving business needs whilst maintaining robust governance, security, and compliance frameworks.
 
-### Svenska digitaliseringsutmaningar and possibilities
+### Digital Transformation Challenges and Opportunities
 
-Svensk public sector and wheningsliv stands infor comprehensive digitaliseringsChallenges where traditional IT-Structures often forms flaskhalsar for innovation and effektivitet. according to Digitaliseringsstyrelsens last rapport from 2023 has Swedish organizations investerat over 180 miljarder kronor in digitaliseringsinitiativ the last five åren, but many projekt has misslyckats at grund of bristande infrastructurestyrning and technical skuld.
+Public and private sector organisations worldwide face significant digital transformation challenges where legacy IT structures often form bottlenecks for innovation and efficiency. According to recent industry reports, organisations globally have invested over £500 billion in digital transformation initiatives in the past five years, yet many projects fail due to inadequate infrastructure governance and accumulating technical debt.
 
-Architecture as Code-baserade solutions offers opportunity to bryta These begränsningar through Architecture as Code-automation, standardisering and scalability as specific adresserar svenska Challenges:
+Architecture as Code-based solutions offer opportunities to break these limitations through automation, standardisation, and scalability that specifically address common transformation challenges:
 
-**Regulatorisk compliance**: Swedish organizations must navigate complex lagstiftning including GDPR, Bokforingslagen, and branschspecific regelverk that Finansinspektionens regulations for finansiella institutioner. Architecture as Code enables automatiserad compliance-checking and audit-spårning that ensure continuous regelefterlevnad.
+**Regulatory Compliance**: Organisations must navigate complex legislation including GDPR, sector-specific regulations, and regional data sovereignty requirements. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed environments.
 
-**Kostnadseffektivitet**: With svenska lönenivåer and high driftskostnader is Architecture as Code-automation critical for konkurrenskraft. Architecture as Code reduces manuellt arbete with upp to 70% according to implementeringsstudier from Swedish companies that Telia and Volvo Cars.
+**Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Studies demonstrate that Infrastructure as Code reduces manual effort by up to 70%, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
 
-**KompetensChallenges**: Sverige upplever brist at IT-specialister, which does the kritiskt to standardisera and automatisera infrastructure management. Architecture as Code enables to smaller specialized team can handle complex environments through Architecture as Codebaserade templates and Architecture as Code best practices.
+**Skills Challenges**: The IT industry experiences persistent shortages of specialist talent, making it critical to standardise and automate infrastructure management. Architecture as Code enables smaller, specialised teams to manage complex environments through reusable templates, proven patterns, and community best practices.
 
-**Security and data sovereignty**: Swedish organizations prioriterar högt security and kontroll over data. Architecture as Code enables consistent security configurations and encryption-at-rest as standard, which is essentiellt for svenska myndigheters and foretags fortroende.
+**Security and Data Governance**: Organisations prioritise security and data control in an increasingly regulated landscape. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement that builds trust with customers, regulators, and stakeholders.
 
-The code-based infrastructureen enables DevOps-methods as sammanbinder development and drift, which results in snabbare leveranser and higher kvalitet. This is particularly viktigt for Swedish organizations as needs konkurrera at a global marknad while the follows lokala regelverk and security requirements.
+Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets whilst maintaining compliance with diverse regional regulations and security requirements.
 
-### Digitaliseringsprocessens dimensioner in svensk context
+### Digital Transformation Dimensions
 
-Digitaliseringsprocessen through Architecture as Code encompasses multiple dimensioner as is particularly relevanta for Swedish organizations:
+The digital transformation process through Architecture as Code encompasses multiple dimensions that organisations must address holistically:
 
-**technical transformation**: Migration from on-premise datacenter to hybrid- and multi-cloud arkitekturer as respekterar svenska data residency-requirements. This includes Architecture as Code-implementation of microservices, containerisering and API-first arkitekturer as enables snabb innovation.
+**Technical Transformation**: Migration from on-premise data centres to hybrid and multi-cloud architectures that respect data residency requirements. This includes implementing microservices, containerisation, and API-first architectures that enable rapid innovation whilst maintaining operational resilience.
 
-**Organisatorisk change**: Inforande of cross-funktionella team according to svenska samarbetskultur with fokus at consensus and witharbetarinflytande. Swedish organizations needs balance agila way of working with traditional hierarkiska Structures and starka fackliga traditioner.
+**Organisational Change**: Introduction of cross-functional teams aligned with agile principles, balancing autonomous delivery with necessary oversight. Organisations must adapt hierarchical structures whilst preserving essential governance, risk management, and compliance frameworks.
 
-**cultural development**: Change mot mer datadrivna decisionssprocesser and "fail fast"-mentalitet within ramen for svensk riskwithvetenhet and långsiktigt tänkande. This requires careful change management as respekterar svenska values about trygghet and stabilitet.
+**Cultural Evolution**: Shift towards data-driven decision-making and experimental learning whilst maintaining appropriate risk awareness and long-term strategic thinking. This requires careful change management that respects organisational values around stability, transparency, and stakeholder engagement.
 
-**competence development**: Systematisk upskilling of existing personal in Architecture as Code-technologies with fokus at svenska utbildningsmodor as combines teoretisk knowledge with praktisk application.
+**Competence Development**: Systematic upskilling of existing personnel in Architecture as Code technologies, combining theoretical knowledge with practical application through hands-on training, mentorship programmes, and community collaboration.
 
-successful Architecture as Code-implementation requires balans between These aspects with particularly fokus at svenska organisationers behov of transparency, consensus-building and long-term sustainability.
+Successful Architecture as Code implementation requires balance between these aspects, with particular focus on organisational needs for transparency, stakeholder consensus, and sustainable transformation that delivers lasting value.
 
-### Svenska digitaliseringsframgångar and lessons
+### Digital Transformation Success Stories
 
-Flera Swedish organizations has throughfort exemplariska digitaliseringstransformationer as demonstrerar Architecture as Code:s potential:
+Several global organisations have executed exemplary digital transformations that demonstrate Architecture as Code's potential:
 
-**Spotify**: Revolutionerade musikindustrin through cloud-native architecture from start, with Architecture as Code as enabled skalning from svenskt startup to global plattform with 500+ miljoner user. Deras "Spotify Model" for agile organisation has inspirerait companies världen over.
+**Spotify**: Revolutionised the music industry through cloud-native architecture from inception, with Infrastructure as Code enabling scaling from a European start-up to a global platform serving over 500 million users. Their "Spotify Model" for agile organisation has inspired companies worldwide, demonstrating how technical excellence and organisational design reinforce one another.
 
-**Klarna**: Transformerade betalningsbranschen through API-first architecture byggd at Architecture as Code, which enabled expansion to 45 länder with konsistent Security and compliance. Deras approach to regulated fintech innovation has become modell for andra svenska fintechs.
+**Stripe**: Transformed the payments industry through API-first architecture built on Infrastructure as Code, enabling expansion to 46 countries with consistent security and compliance. Their approach to regulated fintech innovation has become a model for other technology companies entering highly regulated sectors.
 
-**Volvo Cars**: Throughforde digital transformation from traditional biltoverkare to mobility service provider through comprehensive IoT- and cloud-plattform baserad at Architecture as Code. This enabled development of autonoma körtjänster and subscription-baserade affärsmodor.
+**Netflix**: Executed comprehensive digital transformation from traditional content distributor to global streaming platform through an extensive cloud platform based on Infrastructure as Code. This enabled development of personalised recommendation systems and content delivery networks that serve hundreds of millions of subscribers across diverse geographic regions.
 
-**Skatteverket**: Moderniserade Sveriges skattesystem through cloud-first strategi with Architecture as Code, which resulterade in 99.8% uptime under deklarationsperioden and 50% snabbare handläggningstider for foretagsdeklarationer.
+**Capital One**: Pioneered cloud adoption in the financial services sector through a cloud-first strategy with Infrastructure as Code, achieving 99.99% uptime for critical banking systems whilst reducing infrastructure costs by 40% and accelerating feature deployment by 70%.
 
-These framgångar shows to Swedish organizations can achieve världsledande digitalisering through strategisk use of Architecture as Code kombinerat with svenska styrkor within innovation, design and sustainability.
+These success stories demonstrate that organisations can achieve world-leading digital transformation through strategic use of Architecture as Code combined with organisational strengths in innovation, design thinking, and sustainable business practices.
 
-## Cloud-first strategier for svensk digitalisering
+## Cloud-First Strategies for Digital Transformation
 
-Sverige has developed a strong position within molnteknologi, delvis driven by ambitious digitalization goals within both offentlig and privat sektor samt unique conditions as green energy, stable infrastructure and high digital maturity bland population. Cloud-first strategier means to organisationer primarily choose cloud-based solutions for new initiativ, which requires comprehensive Architecture as Code-kompetens adapted for Swedish conditions.
+Organisations worldwide have developed strong positions within cloud technology, driven by ambitious digitalisation goals across public and private sectors. Cloud-first strategies mean that organisations primarily choose cloud-based solutions for new initiatives, requiring comprehensive Architecture as Code competence adapted to regulatory, security, and operational requirements.
 
-### Regeringens digitaliseringsstrategi and Architecture as Code
+### Enterprise Digital Strategy and Architecture as Code
 
-Regeringens digitaliseringsstrategi "Digital agenda for Sverige 2025" emphasizes betydelsen of molnteknik to achieve målen about a digitalt sammanhållen offentlig forvaltning. Strategin specifies to svenska myndigheter should:
+Modern digital strategies emphasise cloud technology's role in achieving goals for integrated, efficient service delivery. Leading organisations specify that teams should:
 
-- Prioritera cloud-first solutions as follows EU:s rules for data sovereignty
-- Implementera automatiserad architecture as enables delning of IT-services between myndigheter  
-- Develop gemensamma plattformar for withborgarservice baserade at öppen source code
-- Ensure cybersäkerhet and beredskap through Architecture as Code-baserad infrastructure
+- Prioritise cloud-first solutions complying with data sovereignty regulations
+- Implement automated architecture enabling shared IT services across departments
+- Develop common platforms for user services based on open-source technologies
+- Ensure cybersecurity and resilience through Infrastructure as Code-based controls
 
-This creates efterfrågan at Architecture as Code-solutions as can handle känslig data according to GDPR and Offentlighets- and sekretesslagen while the enables innovation and effektivitet. practical means This:
+This creates demand for Architecture as Code solutions that handle sensitive data according to GDPR and sector-specific regulations whilst enabling innovation and efficiency. Practically, this means:
+
 
 ```hcl
-# Svenska myndigheter - architecture as code template for GDPR-compliant cloud
+# Enterprise Architecture as Code Template for GDPR-Compliant Cloud
 terraform {
   required_version = ">= 1.5"
   
@@ -85,742 +86,155 @@ terraform {
     }
   }
   
-  # State lagring with encryption according to svenska security requirements
+  # State storage with encryption for compliance
   backend "s3" {
-    bucket         = "svenska-myndighet-terraform-state"
-    key            = "government/production/terraform.tfstate"
-    region         = "eu-north-1"  # Stockholm - svenska data residency
+    bucket         = "enterprise-terraform-state"
+    key            = "production/terraform.tfstate"
+    region         = "eu-west-1"  # European data residency
     encrypt        = true
-    kms_key_id     = "arn:aws:kms:eu-north-1:ACCOUNT:key/12345678-1234-1234-1234-123456789012"
+    kms_key_id     = "arn:aws:kms:eu-west-1:ACCOUNT:key/example-key-id"
     dynamodb_table = "terraform-locks"
     
-    # Audit logging for myndighetsändamål
+    # Audit logging for compliance
     versioning = true
-    lifecycle_rule {
-      enabled = true
-      expiration {
-        days = 2555  # 7 år according to Arkivlagen
-      }
-    }
   }
 }
 
-# Svenska myndighets-tags as krävs according to Regleringsbrev
+# Enterprise resource tags for governance
 locals {
-  myndighet_tags = {
-    Myndighet           = var.myndighet_namn
-    Verksamhetsområde   = var.verksamhetsområde
-    Anslagspost         = var.anslagspost
-    Aktivitet           = var.aktivitet_kod
-    Projekt             = var.projekt_nummer
-    Kostnadsställe      = var.kostnadsställe
-    DataKlassificering  = var.data_klassificering
-    Säkerhetsklass      = var.säkerhetsklass
-    Handläggare         = var.ansvarig_handläggare
-    Arkivklassning      = var.arkiv_klassning
-    BevarandeTid        = var.bevarande_tid
-    Offentlighet        = var.offentlighets_princip
-    SkapadDatum         = formatdate("YYYY-MM-DD", timestamp())
+  enterprise_tags = {
+    Organisation      = var.organisation_name
+    Environment       = var.environment
+    CostCentre        = var.cost_centre
+    DataClassification = var.data_classification
+    ComplianceLevel   = var.compliance_level
+    CreatedDate       = formatdate("YYYY-MM-DD", timestamp())
   }
 }
 
-# VPC for myndighets-workloads with säkerhetszoner
-resource "aws_vpc" "myndighet_vpc" {
+# VPC for enterprise workloads with security zones
+resource "aws_vpc" "enterprise_vpc" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
   
-  tags = merge(local.myndighet_tags, {
-    Name = "${var.myndighet_namn}-vpc"
-    Syfte = "Myndighets-VPC for digitala services"
+  tags = merge(local.enterprise_tags, {
+    Name = "${var.organisation_name}-vpc"
+    Purpose = "Enterprise VPC for digital services"
   })
 }
 
-# Säkerhetszoner according to MSB:s guidelines
-resource "aws_subnet" "offentlig_zon" {
+# Security zones following best practices
+resource "aws_subnet" "public_zone" {
   count = length(var.availability_zones)
   
-  vpc_id            = aws_vpc.myndighet_vpc.id
+  vpc_id            = aws_vpc.enterprise_vpc.id
   cidr_block        = cidrsubnet(var.vpc_cidr, 8, count.index)
   availability_zone = var.availability_zones[count.index]
   
-  map_public_ip_on_launch = false  # Ingen automatic public IP for security
+  map_public_ip_on_launch = false  # No automatic public IP for security
   
-  tags = merge(local.myndighet_tags, {
-    Name           = "${var.myndighet_namn}-offentlig-${count.index + 1}"
-    Säkerhetszon   = "Offentlig"
-    MSB_Klassning  = "Allmän handling"
+  tags = merge(local.enterprise_tags, {
+    Name         = "${var.organisation_name}-public-${count.index + 1}"
+    SecurityZone = "Public"
+    Tier         = "DMZ"
   })
 }
 
-resource "aws_subnet" "intern_zon" {
+resource "aws_subnet" "application_zone" {
   count = length(var.availability_zones)
   
-  vpc_id            = aws_vpc.myndighet_vpc.id
+  vpc_id            = aws_vpc.enterprise_vpc.id
   cidr_block        = cidrsubnet(var.vpc_cidr, 8, count.index + 10)
   availability_zone = var.availability_zones[count.index]
   
-  tags = merge(local.myndighet_tags, {
-    Name           = "${var.myndighet_namn}-intern-${count.index + 1}"
-    Säkerhetszon   = "Intern"
-    MSB_Klassning  = "Internt documents"
+  tags = merge(local.enterprise_tags, {
+    Name         = "${var.organisation_name}-app-${count.index + 1}"
+    SecurityZone = "Application"
+    Tier         = "Internal"
   })
 }
 
-resource "aws_subnet" "känslig_zon" {
+resource "aws_subnet" "data_zone" {
   count = length(var.availability_zones)
   
-  vpc_id            = aws_vpc.myndighet_vpc.id
+  vpc_id            = aws_vpc.enterprise_vpc.id
   cidr_block        = cidrsubnet(var.vpc_cidr, 8, count.index + 20)
   availability_zone = var.availability_zones[count.index]
   
-  tags = merge(local.myndighet_tags, {
-    Name           = "${var.myndighet_namn}-känslig-${count.index + 1}"
-    Säkerhetszon   = "Känslig"
-    MSB_Klassning  = "Sekretessbelagd handling"
+  tags = merge(local.enterprise_tags, {
+    Name         = "${var.organisation_name}-data-${count.index + 1}"
+    SecurityZone = "Data"
+    Tier         = "Restricted"
   })
 }
 ```
 
-### Svenska foretags cloud-first framgångar
 
-Svenska companies that Spotify, Klarna and King has shown the way by bygga sina technical plattformar at molnbaserad infrastructure from foundation. Deras success demonstrerar how Architecture as Code enables snabb skalning and global expansion while technical skuld minimeras and svenska values about sustainability and innovation bevaras.
+### Enterprise Cloud-First Success Stories
 
-**Spotify's Architecture as Code-architecture for global skalning:**
-Spotify utvecklade their egen Architecture as Code-plattform kallad "Backstage" which enabled skalning from 1 miljon to 500+ miljoner user without linjär ökning of infrastructure complexity. Deras approach includes:
+Global enterprises such as Spotify, Netflix, and Capital One have demonstrated leadership by building their technical platforms on cloud-based infrastructure from inception. Their success demonstrates how Architecture as Code enables rapid scaling and global expansion whilst minimising technical debt and maintaining organisational values around sustainability and innovation.
 
-- Microservices with egen infrastructure definition per service
-- Automated compliance checking for GDPR and musikrättigheter
-- Cost-aware scaling as respekterar svenska hållbarhetsmål
-- Developer self-service portaler as reduces time-to-market from veckor to timmar
+**Spotify's Infrastructure as Code Architecture for Global Scaling:**
+Spotify developed their own Infrastructure as Code platform called "Backstage" which enabled scaling from 1 million to over 500 million users without linear increases in infrastructure complexity. Their approach includes:
 
-**Klarna's regulated fintech Architecture as Code:**
-Which licensierad bank must Klarna follow Finansinspektionens strict requirements while the innoverar snabbt. Deras Architecture as Code-strategi includes:
+- Microservices with dedicated infrastructure definitions per service
+- Automated compliance checking for GDPR and intellectual property rights
+- Cost-aware scaling that supports sustainability objectives
+- Developer self-service portals that reduce time-to-market from weeks to hours
+
+**Capital One's Regulated Financial Infrastructure as Code:**
+As a licensed bank, Capital One must follow strict regulatory requirements whilst innovating rapidly. Their Infrastructure as Code strategy includes:
 
 - Automated audit trails for all infrastructure changes
-- Real-time compliance monitoring according to PCI-DSS and EBA-guidelines
-- immutable infrastructure as enables point-in-time recovery
-- Multi-region deployment for business continuity according to BCBS standards
+- Real-time compliance monitoring according to PCI-DSS and regulatory guidelines
+- Immutable infrastructure enabling point-in-time recovery
+- Multi-region deployment for business continuity according to industry standards
 
-### Cloud-leverantörers svenska satsningar
+### Cloud Provider Ecosystem
 
-Cloud-first implementation requires dock noggrann planering of hybrid- and multi-cloud strategier. Swedish organizations must navigate between different cloud providers while the ensures data sovereignty and follows nationella security requirements.
+Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers whilst ensuring data sovereignty and regulatory compliance.
 
-**AWS Nordic expansion:**
-Amazon Web Services etablerade their forsta nordiska region in Stockholm 2018, specific to meet svenska and nordiska requirements at data residency. AWS Stockholm region offers:
+**AWS Global Infrastructure:**
+Amazon Web Services operates regions globally with specific features to meet data residency requirements:
 
-- Fysisk data sovereignty within Sveriges gränser
-- Sub-5ms latency to entire Norden
-- Compliance certifieringar including C5 (Tyskland) and ISO 27001
-- Dedicated support at svenska språket
+- Physical data sovereignty within regional boundaries
+- Low-latency connectivity across geographic zones
+- Comprehensive compliance certifications including ISO 27001, SOC 2, and PCI-DSS
+- Dedicated support with regional expertise
 
-**Microsoft Sverige Cloud:**
-Microsoft investerade over 2 miljarder kronor in svenska cloud-infrastructure with regioner in Gävle and Sandviken. Deras svenska satsning includes:
+**Microsoft Azure:**
+Microsoft has invested significantly in cloud infrastructure with global reach:
 
-- Azure Government Cloud for svenska myndigheter
-- Integration with svenska identity providers (BankID, Freja eID)
-- Compliance with Svensk code for bolagsstyrning
-- Partnership with svenska systemintegratörer that Avanade and Evry
+- Azure Government Cloud for public sector organisations
+- Integration with enterprise identity providers
+- Compliance with industry governance standards
+- Partnership ecosystem with system integrators
 
-**Google Cloud Nordic:**
-Google etablerade their forsta nordiska region in Finland 2021 but offers Swedish organizations:
+**Google Cloud Platform:**
+Google operates global cloud regions emphasising:
 
-- EU-baserad data processing for GDPR compliance
-- Carbon-neutral operations according to svenska hållbarhetsmål
-- AI/ML capabilities for svenska forskningsorganisationer
-- Integration with öppen source code-ekosystem as is populärt in Sverige
+- EU-based data processing for GDPR compliance
+- Carbon-neutral operations aligned with sustainability goals
+- Advanced AI/ML capabilities for research and innovation
+- Integration with open-source ecosystems
 
-### Hybrid cloud strategier for Swedish organizations
+## Digital Transformation in Enterprises
 
-Many Swedish organizations choose hybrid cloud-modor as combines on-premise infrastructure with cloud services to balance kontroll, kostnad and compliance:
+Organisations worldwide are undergoing comprehensive digital transformation processes. Architecture as Code forms the technical foundation enabling this transformation by creating flexible, scalable, and cost-effective IT environments.
 
+Traditional industrial companies such as General Electric, Siemens, and ABB have redefined their business models through digital initiatives built on modern cloud infrastructure. Architecture as Code has enabled these companies to develop IoT platforms, AI services, and data analytics solutions that create new revenue streams.
+
+Public sector organisations have also embraced Architecture as Code as a tool to modernise citizen services. Digital platforms for e-services, open data, and smart city initiatives build on code-based infrastructure that adapts to different organisational needs and resources.
+
+Challenges within digital transformation include skills shortages, cultural resistance, and complex legacy systems. Architecture as Code helps address these challenges by standardising processes, enabling iterative development, and reducing technical complexity.
+
+## Practical Examples
+
+
+### Multi-Cloud Enterprise Strategy
 ```yaml
-# Svenska hybrid cloud architecture as code with Terraform
-# On-premise VMware vSphere + AWS hybrid setup
-terraform {
-  required_providers {
-    vsphere = {
-      source  = "hashicorp/vsphere"
-      version = "~> 2.0"
-    }
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-# On-premise Swedish datacenter
-provider "vsphere" {
-  user                 = var.vsphere_user
-  password             = var.vsphere_password
-  vsphere_server       = var.vsphere_server  # Svenskt datacenter
-  allow_unverified_ssl = false
-}
-
-# AWS Stockholm region for cloud workloads
-provider "aws" {
-  region = "eu-north-1"
-}
-
-# On-premise sensitive data infrastructure
-module "sensitive_workloads" {
-  source = "./modules/vsphere-sensitive"
-  
-  # Känsliga systems as must vara on-premise
-  workloads = {
-    "hr-systems"      = { cpu = 4, memory = 8192, storage = 100 }
-    "payroll-systems" = { cpu = 8, memory = 16384, storage = 500 }
-    "audit-logs"     = { cpu = 2, memory = 4096, storage = 1000 }
-  }
-  
-  # Svenska compliance requirements
-  data_classification = "känslig"
-  retention_years     = 7
-  encryption_required = true
-  audit_logging       = true
-}
-
-# Cloud workloads for scalable services
-module "cloud_workloads" {
-  source = "./modules/aws-scalable"
-  
-  # Public-facing services as can vara in cloud
-  services = {
-    "customer-portal" = { 
-      min_capacity = 2, 
-      max_capacity = 20,
-      target_cpu = 70 
-    }
-    "api-gateway" = { 
-      min_capacity = 3, 
-      max_capacity = 50,
-      target_cpu = 60 
-    }
-    "analytics-platform" = { 
-      min_capacity = 1, 
-      max_capacity = 10,
-      target_cpu = 80 
-    }
-  }
-  
-  # Svenska molnrequirements
-  region = "eu-north-1"  # Stockholm
-  backup_region = "eu-west-1"  # Dublin for DR
-  data_residency = "eu"
-  gdpr_compliant = true
-}
-
-# VPN connection between on-premise and cloud
-resource "aws_vpn_connection" "hybrid_connection" {
-  customer_gateway_id = aws_customer_gateway.swedish_datacenter.id
-  type               = "ipsec.1"
-  transit_gateway_id = aws_ec2_transit_gateway.svenska_hybrid_gateway.id
-  
-  tags = {
-    Name = "Svenska Hybrid Cloud VPN"
-    Syfte = "Säker anslutning between svenskt datacenter and AWS"
-  }
-}
-```
-
-## automation of business processes
-
-Architecture as Code enables automation as sträcker itself långt bortom traditional IT-drift to to encompass entire business processes with particular consideration to svenska organisationers behov of transparency, compliance and effektivitet. by definiera Architecture as Code can organisationer create självbetjäningslösningar for Developers and affärsanvändare as follows svenska Architecture as Code best practices for governance and risk management.
-
-### End-to-end processautomatisering for Swedish organizations
-
-Moderna Swedish organizations implement comprehensive affärsprocessautomatisering as integrerar Architecture as Code with business logic to create sömlösa, compliance-withvetna workflows:
-
-**Automatisk kundregistrering with KYC (Know Your Customer):**
-```python
-# business_automation/swedish_customer_onboarding.py
-"""
-Automatiserad kundregistrering as follows svenska KYC-requirements
-"""
-import asyncio
-from datetime import datetime
-import boto3
-from terraform_python_api import Terraform
-
-class SwedishCustomerOnboarding:
-    """
-    Automatiserad kundregistrering for svenska finansiella services
-    """
-    
-    def __init__(self):
-        self.terraform = Terraform()
-        self.ses_client = boto3.client('ses', region_name='eu-north-1')
-        self.rds_client = boto3.client('rds', region_name='eu-north-1')
-        
-    async def process_customer_application(self, application_data):
-        """
-        Bearbeta kundansökan according to svenska regulatory requirements
-        """
-        
-        # step 1: Validate svensk identitet with BankID
-        bankid_result = await self.validate_swedish_identity(
-            application_data['personal_number'],
-            application_data['bankid_session']
-        )
-        
-        if not bankid_result['valid']:
-            return {'status': 'rejected', 'reason': 'Ogiltig svensk identitet'}
-        
-        # step 2: KYC screening according to Finansinspektionens requirements
-        kyc_result = await self.perform_kyc_screening(application_data)
-        
-        if kyc_result['risk_level'] == 'high':
-            # Automatisk escalation to compliance team
-            await self.escalate_to_compliance(application_data, kyc_result)
-            return {'status': 'manual_review', 'reason': 'Hög risk - manuell granskning krävs'}
-        
-        # step 3: Automatisk infrastruktur-provisionering for new kund
-        customer_infrastructure = await self.provision_customer_infrastructure({
-            'customer_id': application_data['customer_id'],
-            'data_classification': 'customer_pii',
-            'retention_years': 7,  # Svenska lagrequirements
-            'backup_regions': ['eu-north-1', 'eu-west-1'],  # EU residency
-            'encryption_level': 'AES-256',
-            'audit_logging': True,
-            'gdpr_compliant': True
-        })
-        
-        # step 4: Skapa kundkonto in secure databas
-        await self.create_customer_account(application_data, customer_infrastructure)
-        
-        # step 5: Skicka välkomstmeddelande at svenska
-        await self.send_welcome_communication(application_data)
-        
-        # step 6: Logga aktivitet for compliance audit
-        await self.log_compliance_activity({
-            'activity': 'customer_onboarding_completed',
-            'customer_id': application_data['customer_id'],
-            'timestamp': datetime.utcnow().isoformat(),
-            'regulatory_basis': 'Finansinspektionens föreskrifter FFFS 2017:11',
-            'data_processing_legal_basis': 'Avtal (GDPR Artikel 6.1.b)',
-            'retention_period': '7 år efter kontraktets upphörande'
-        })
-        
-        return {'status': 'approved', 'customer_id': application_data['customer_id']}
-    
-    async def provision_customer_infrastructure(self, config):
-        """
-        Provisiona kundunik infrastruktur with architecture as code
-        """
-        
-        # Terraform configuration for new kund
-        terraform_config = f"""
-        # Kundunik infrastruktur - {config['customer_id']}
-        resource "aws_s3_bucket" "customer_data_{config['customer_id']}" {{
-          bucket = "customer-data-{config['customer_id']}-{random_id.bucket_suffix.hex}"
-          
-          tags = {{
-            CustomerID = "{config['customer_id']}"
-            DataClassification = "{config['data_classification']}"
-            RetentionYears = "{config['retention_years']}"
-            GDPRCompliant = "{config['gdpr_compliant']}"
-            CreatedDate = "{datetime.utcnow().strftime('%Y-%m-%d')}"
-            Purpose = "Kunddata according to svensk finanslagstiftning"
-          }}
-        }}
-        
-        resource "aws_s3_bucket_encryption_configuration" "customer_encryption_{config['customer_id']}" {{
-          bucket = aws_s3_bucket.customer_data_{config['customer_id']}.id
-          
-          rule {{
-            apply_server_side_encryption_by_default {{
-              sse_algorithm = "{config['encryption_level']}"
-            }}
-            bucket_key_enabled = true
-          }}
-        }}
-        
-        resource "aws_s3_bucket_versioning" "customer_versioning_{config['customer_id']}" {{
-          bucket = aws_s3_bucket.customer_data_{config['customer_id']}.id
-          versioning_configuration {{
-            status = "Enabled"
-          }}
-        }}
-        
-        resource "aws_s3_bucket_lifecycle_configuration" "customer_lifecycle_{config['customer_id']}" {{
-          bucket = aws_s3_bucket.customer_data_{config['customer_id']}.id
-          
-          rule {{
-            id     = "customer_data_retention"
-            status = "Enabled"
-            
-            expiration {{
-              days = {config['retention_years'] * 365}
-            }}
-            
-            noncurrent_version_expiration {{
-              noncurrent_days = 90
-            }}
-          }}
-        }}
-        """
-        
-        # Apply Terraform configuration
-        tf_result = await self.terraform.apply_configuration(
-            terraform_config,
-            auto_approve=True
-        )
-        
-        return tf_result
-```
-
-examples at affärsprocessautomatisering includes automatic provisionering of utvecklingsenvironments, dynamisk skalning of resurser based on affärsbelastning, samt integrated handling of Security and compliance through policy-as-code. This reduces manuellt arbete and reduces the risk of human errors while svenska requirements at transparency and traceability uppfylls.
-
-### Finansiella institutioners automatiseringslösningar
-
-Svenska finansiella institutioner that Nordea and SEB has implementerat comprehensive automatiseringslösningar baserade at Architecture as Code to handle regulatory requirements while the delivers innovativa digitala services. These solutions enables snabb lansering of new produkter without to kompromissa with security or compliance.
-
-**SEB:s DevOps-plattform for finansiella services:**
-SEB utvecklade a intern plattform kallad "SEB Developer Experience" which automates entire livscykeln for finansiella applications:
-
-```yaml
-# SEB-inspired financial services automation
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: financial-service-${service_name}
-  namespace: seb-financial-services
-  labels:
-    business-unit: ${business_unit}
-    regulatory-classification: ${regulatory_class}
-    cost-center: ${cost_center}
-spec:
-  project: financial-services
-  source:
-    repoURL: https://git.seb.se/financial-infrastructure
-    targetRevision: main
-    path: services/${service_name}
-    helm:
-      values: |
-        financialService:
-          name: ${service_name}
-          businessUnit: ${business_unit}
-          regulatoryRequirements:
-            pciDss: ${pci_required}
-            mifid2: ${mifid_required}
-            psd2: ${psd2_required}
-            gdpr: true
-            finansinspektionen: true
-          
-          security:
-            encryptionAtRest: AES-256
-            encryptionInTransit: TLS-1.3
-            auditLogging: comprehensive
-            accessLogging: all-transactions
-            
-          compliance:
-            dataRetention: 7-years
-            backupRegions: ["eu-north-1", "eu-west-1"]
-            auditTrail: immutable
-            transactionLogging: real-time
-            
-          monitoring:
-            alerting: 24x7
-            sla: 99.95%
-            responseTime: <100ms-p95
-            language: swedish
-            
-  destination:
-    server: https://kubernetes.seb.internal
-    namespace: ${business_unit}-${environment}
-  
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-    syncOptions:
-    - CreateNamespace=true
-    - PrunePropagationPolicy=foreground
-    - PruneLast=true
-    
-    # Svenska deployment windows according to arbetstidslagstiftning
-    retry:
-      limit: 3
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
-      
-  # Compliance hooks for finansiella services
-  hooks:
-  - name: pre-deployment-compliance-check
-    template:
-      container:
-        image: seb-compliance-scanner:latest
-        command: ["compliance-scan"]
-        args: ["--service", "${service_name}", "--regulatory-class", "${regulatory_class}"]
-        
-  - name: post-deployment-audit-log
-    template:
-      container:
-        image: seb-audit-logger:latest
-        command: ["log-deployment"]
-        args: ["--service", "${service_name}", "--timestamp", "{{workflow.creationTimestamp}}"]
-```
-
-### automation with Machine Learning for svenska operations
-
-automation through Architecture as Code creates also possibilities for continuous optimering of resurser and kostnader with hjälp of machine learning. Machine learning-algoritmer can analyze usage patterns and automatically adjust infrastructure for optimal performance and kostnadseffektivitet with consideration to svenska arbetstider and semesterperioder.
-
-```python
-# ml_automation/swedish_workload_optimizer.py
-"""
-ML-driven infrastruktur optimering for Swedish organizations
-"""
-import pandas as pd
-import numpy as np
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import StandardScaler
-import boto3
-from datetime import datetime, timedelta
-import tensorflow as tf
-
-class SwedishWorkloadOptimizer:
-    """
-    ML-baserad optimering of infrastruktur for svenska arbetsmönster
-    """
-    
-    def __init__(self):
-        self.model = RandomForestRegressor(n_estimators=100, random_state=42)
-        self.scaler = StandardScaler()
-        self.cloudwatch = boto3.client('cloudwatch', region_name='eu-north-1')
-        self.ec2 = boto3.client('ec2', region_name='eu-north-1')
-        
-        # Svenska helger and semesterperioder
-        self.swedish_holidays = self._load_swedish_holidays()
-        self.summer_vacation = (6, 7, 8)  # Juni-Augusti
-        self.winter_vacation = (12, 1)    # December-Januari
-        
-    def collect_swedish_usage_patterns(self, days_back=90):
-        """
-        Samla användningsdata with consideration to svenska arbetstider
-        """
-        
-        end_time = datetime.utcnow()
-        start_time = end_time - timedelta(days=days_back)
-        
-        # Hämta CPU utilization metrics
-        cpu_response = self.cloudwatch.get_metric_statistics(
-            Namespace='AWS/EC2',
-            MetricName='CPUUtilization',
-            Dimensions=[],
-            StartTime=start_time,
-            EndTime=end_time,
-            Period=3600,  # Hourly data
-            Statistics=['Average']
-        )
-        
-        # Skapa DataFrame with svenska arbetstider features
-        usage_data = []
-        for point in cpu_response['Datapoints']:
-            timestamp = point['Timestamp']
-            
-            # Svenska features
-            is_business_hour = 8 <= timestamp.hour <= 17
-            is_weekend = timestamp.weekday() >= 5
-            is_holiday = self._is_swedish_holiday(timestamp)
-            is_vacation_period = timestamp.month in self.summer_vacation or timestamp.month in self.winter_vacation
-            
-            usage_data.append({
-                'timestamp': timestamp,
-                'hour': timestamp.hour,
-                'day_of_week': timestamp.weekday(),
-                'month': timestamp.month,
-                'cpu_usage': point['Average'],
-                'is_business_hour': is_business_hour,
-                'is_weekend': is_weekend,
-                'is_holiday': is_holiday,
-                'is_vacation_period': is_vacation_period,
-                'season': self._get_swedish_season(timestamp.month)
-            })
-        
-        return pd.DataFrame(usage_data)
-    
-    def train_swedish_prediction_model(self, usage_data):
-        """
-        Träna ML-modell for svenska usage patterns
-        """
-        
-        # Features for svenska arbetstider and kultur
-        features = [
-            'hour', 'day_of_week', 'month',
-            'is_business_hour', 'is_weekend', 'is_holiday',
-            'is_vacation_period', 'season'
-        ]
-        
-        X = usage_data[features]
-        y = usage_data['cpu_usage']
-        
-        # Encode categorical features
-        X_encoded = pd.get_dummies(X, columns=['season'])
-        
-        # Scale features
-        X_scaled = self.scaler.fit_transform(X_encoded)
-        
-        # Train model
-        self.model.fit(X_scaled, y)
-        
-        # Calculate feature importance for svenska patterns
-        feature_importance = pd.DataFrame({
-            'feature': X_encoded.columns,
-            'importance': self.model.feature_importances_
-        }).sort_values('importance', ascending=False)
-        
-        print("Top Svenska Arbetsmönster Features:")
-        print(feature_importance.head(10))
-        
-        return self.model
-    
-    def generate_scaling_recommendations(self, usage_data):
-        """
-        Generera skalningsrekommendationer for Swedish organizations
-        """
-        
-        # Förutsäg use for next vecka
-        future_predictions = self._predict_next_week(usage_data)
-        
-        recommendations = {
-            'immediate_actions': [],
-            'weekly_schedule': {},
-            'vacation_adjustments': {},
-            'cost_savings_potential': 0,
-            'sustainability_impact': {}
-        }
-        
-        # Analys of svenska arbetstider
-        business_hours_avg = usage_data[usage_data['is_business_hour'] == True]['cpu_usage'].mean()
-        off_hours_avg = usage_data[usage_data['is_business_hour'] == False]['cpu_usage'].mean()
-        vacation_avg = usage_data[usage_data['is_vacation_period'] == True]['cpu_usage'].mean()
-        
-        # Rekommendationer based on svenska pattern
-        if off_hours_avg < business_hours_avg * 0.3:
-            recommendations['immediate_actions'].append({
-                'action': 'Implementera natt-scaling',
-                'description': 'Skala ner instanser 22:00-06:00 for 70% kostnadsbesparing',
-                'potential_savings_sek': self._calculate_savings(usage_data, 'night_scaling'),
-                'environmental_benefit': 'Reduced CO2 emissions during low-usage hours'
-            })
-        
-        if vacation_avg < business_hours_avg * 0.5:
-            recommendations['vacation_adjustments'] = {
-                'summer_vacation': {
-                    'scale_factor': 0.4,
-                    'period': 'June-August',
-                    'savings_sek': self._calculate_savings(usage_data, 'summer_scaling')
-                },
-                'winter_vacation': {
-                    'scale_factor': 0.6,
-                    'period': 'December-January',
-                    'savings_sek': self._calculate_savings(usage_data, 'winter_scaling')
-                }
-            }
-        
-        # Sustainability recommendations for Swedish organizations
-        recommendations['sustainability_impact'] = {
-            'carbon_footprint_reduction': '25-40% under off-peak hours',
-            'green_energy_optimization': 'Align compute-intensive tasks with Swedish hydro peak hours',
-            'circular_economy': 'Longer instance lifecycle through predictive scaling'
-        }
-        
-        return recommendations
-    
-    def implement_swedish_autoscaling(self, recommendations):
-        """
-        Implementera autoscaling according to svenska rekommendationer
-        """
-        
-        # Skapa autoscaling policy for svenska arbetstider
-        autoscaling_policy = {
-            'business_hours': {
-                'min_capacity': 3,
-                'max_capacity': 20,
-                'target_cpu': 70,
-                'scale_up_cooldown': 300,
-                'scale_down_cooldown': 600
-            },
-            'off_hours': {
-                'min_capacity': 1,
-                'max_capacity': 5,
-                'target_cpu': 80,
-                'scale_up_cooldown': 600,
-                'scale_down_cooldown': 300
-            },
-            'vacation_periods': {
-                'min_capacity': 1,
-                'max_capacity': 3,
-                'target_cpu': 85,
-                'scale_up_cooldown': 900,
-                'scale_down_cooldown': 300
-            }
-        }
-        
-        # Terraform for autoscaling implementation
-        terraform_config = self._generate_autoscaling_terraform(autoscaling_policy)
-        
-        return terraform_config
-    
-    def _is_swedish_holiday(self, date):
-        """Check if date is Swedish holiday"""
-        return date.strftime('%Y-%m-%d') in self.swedish_holidays
-    
-    def _get_swedish_season(self, month):
-        """Get Swedish season based on month"""
-        if month in [12, 1, 2]:
-            return 'winter'
-        elif month in [3, 4, 5]:
-            return 'spring'
-        elif month in [6, 7, 8]:
-            return 'summer'
-        else:
-            return 'autumn'
-    
-    def _load_swedish_holidays(self):
-        """Load Swedish holiday dates"""
-        return [
-            '2024-01-01',  # Nyårsdagen
-            '2024-01-06',  # Trettondedag jul
-            '2024-03-29',  # Långfredagen
-            '2024-03-31',  # Påskdagen
-            '2024-04-01',  # Annandag påsk
-            '2024-05-01',  # Första maj
-            '2024-05-09',  # Kristi himmelsfärdsdag
-            '2024-05-19',  # Pingstdagen
-            '2024-06-06',  # Nationaldagen
-            '2024-06-21',  # Midsommarafton
-            '2024-11-02',  # all helgons dag
-            '2024-12-24',  # Julafton
-            '2024-12-25',  # Juldagen
-            '2024-12-26',  # Annandag jul
-            '2024-12-31',  # Nyårsafton
-        ]
-```
-
-### API-first automation for svenska ekosystem
-
-Swedish organizations implement also API-first strategier as enables smidig integration between interna systems and externa partners, which is particularly viktigt in The svenska contexten where many companies is del of större nordiska or europeiska ekosystem.
-
-## Digital transformation in Swedish organizations
-
-Swedish organizations undergoes for whenvarande a of the most comprehensive digitaliseringsprocesserna in modern time. Architecture as Code forms often The technical foundation as enables This transformation by creating flexibla, skalbara and kostnadseffektiva IT-environments.
-
-Traditionella svenska industriforetag that Volvo, Ericsson and ABB has omdefinierat sina affärsmodor through digitaliseringsinitiativ as builds on modern molninfrastructure. Architecture as Code has enabled for These companies to develop IoT-plattformar, AI-services and dataanalytiska solutions as creates new intäktsSources.
-
-Kommunal sektor has also omfamnat Architecture as Code as A tools to modernisera withborgarservice. Digitala plattformar for e-services, öppna data and smart city-initiativ builds on kodbaserad infrastructure as can adapted to different kommuners specific behov and resurser.
-
-Challenges within digital transformation includes kompetensbrist, cultural motstånd and complex legacy-systems. Architecture as Code contributes to to minska These Challenges by standardisera processes, enable iterativ development and reducera technical komplexitet.
-
-## Praktiska example
-
-### Multi-Cloud Digitaliseringsstrategi
-```yaml
-# terraform/main.tf - Multi-cloud setup for svensk organisation
+# terraform/main.tf - Multi-cloud setup for global enterprise
 terraform {
   required_providers {
     aws = {
@@ -834,24 +248,24 @@ terraform {
   }
 }
 
-# AWS for globala services
+# AWS for global services
 provider "aws" {
-  region = "eu-north-1"  # Stockholm region for data sovereignty
+  region = "eu-west-1"  # European region for data sovereignty
 }
 
-# Azure for Microsoft-integrationer
+# Azure for Microsoft integrations
 provider "azurerm" {
   features {}
-  location = "Sweden Central"
+  location = "West Europe"
 }
 
-# Gemensam resurstagging for kostnadsstyrning
+# Common resource tagging for cost management
 locals {
   common_tags = {
-    Organization = "Svenska AB"
+    Organisation = "Global Enterprise Ltd"
     Environment  = var.environment
     Project      = var.project_name
-    CostCenter   = var.cost_center
+    CostCentre   = var.cost_centre
     DataClass    = var.data_classification
   }
 }
@@ -867,10 +281,10 @@ module "azure_infrastructure" {
 }
 ```
 
-### Automatiserad Compliance Pipeline
+### Automated Compliance Pipeline
 ```yaml
 # .github/workflows/compliance-check.yml
-name: Compliance and Säkerhetskontroll
+name: Compliance and Security Check
 
 on:
   pull_request:
@@ -882,24 +296,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: GDPR Datakartläggning
+      - name: GDPR Data Mapping
         run: |
-          # Kontrollera to all databaser has encryption aktiverad
+          # Verify all databases have encryption enabled
           terraform plan | grep -E "(encrypt|encryption)" || exit 1
           
-      - name: PCI-DSS Kontroller
+      - name: PCI-DSS Checks
         if: contains(github.event.pull_request.title, 'payment')
         run: |
-          # Validate PCI-DSS requirements for betalningsinfrastruktur
+          # Validate PCI-DSS requirements for payment infrastructure
           ./scripts/pci-compliance-check.sh
           
-      - name: Svenska Säkerhetsrequirements
+      - name: Security Requirements Validation
         run: |
-          # MSB:s security requirements for critical infrastruktur
-          ./scripts/msb-security-validation.sh
+          # Industry security requirements for critical infrastructure
+          ./scripts/security-validation.sh
 ```
 
-### Self-Service Utvecklarportal
+### Self-Service Developer Portal
 ```python
 # developer_portal/infrastructure_provisioning.py
 from flask import Flask, request, jsonify
@@ -911,31 +325,31 @@ app = Flask(__name__)
 @app.route('/provision/environment', methods=['POST'])
 def provision_development_environment():
     """
-    Automatisk provisionering of utvecklingsmiljö
-    for svenska utvecklingsteam
+    Automatic provisioning of development environment
+    for enterprise development teams
     """
     team_name = request.json.get('team_name')
     project_type = request.json.get('project_type')
     compliance_level = request.json.get('compliance_level', 'standard')
     
-    # Validate svensk organisationsstruktur
-    if not validate_swedish_team_structure(team_name):
+    # Validate organisational structure
+    if not validate_team_structure(team_name):
         return jsonify({'error': 'Invalid team structure'}), 400
     
-    # Konfigurera environment based on svenska regelverk
+    # Configure environment based on regulatory requirements
     config = {
         'team': team_name,
-        'region': 'eu-north-1',  # Stockholm for data sovereignty
+        'region': 'eu-west-1',  # European data residency
         'encryption': True,
         'audit_logging': True,
         'gdpr_compliance': True,
         'retention_policy': '7_years' if compliance_level == 'financial' else '3_years'
     }
     
-    # Kör Terraform for infrastruktur-provisionering
+    # Run Terraform for infrastructure provisioning
     tf_runner = TerraformRunner()
     result = tf_runner.apply_configuration(
-        template='swedish_development_environment',
+        template='enterprise_development_environment',
         variables=config
     )
     
@@ -945,85 +359,26 @@ def provision_development_environment():
         'compliance_report': result['compliance_status']
     })
 
-def validate_swedish_team_structure(team_name):
-    """Validate teamnamn according to svensk organisationsstandard"""
-    # implementation for validation of teamstruktur
+def validate_team_structure(team_name):
+    """Validate team name according to organisational standard"""
+    # Implementation for validation of team structure
     return True
 ```
 
-### Kostnadoptimering with ML
-```python
-# cost_optimization/ml_optimizer.py
-import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
-import boto3
-
-class SwedishCloudCostOptimizer:
-    """
-    Machine Learning-baserad kostnadsoptimering
-    for svenska molnresurser
-    """
-    
-    def __init__(self):
-        self.model = RandomForestRegressor()
-        self.cloudwatch = boto3.client('cloudwatch', region_name='eu-north-1')
-        
-    def analyze_usage_patterns(self, timeframe_days=30):
-        """Analysera usage patterns for svenska arbetstider"""
-        
-        # Hämta metriker for svenska arbetstider (07:00-18:00 CET)
-        swedish_business_hours = self.get_business_hours_metrics()
-        
-        # Justera for svenska helger and semesterperioder
-        holiday_adjustments = self.apply_swedish_holiday_patterns()
-        
-        usage_data = pd.DataFrame({
-            'hour': swedish_business_hours['hours'],
-            'usage': swedish_business_hours['cpu_usage'],
-            'cost': swedish_business_hours['cost'],
-            'is_business_hour': swedish_business_hours['is_business'],
-            'is_holiday': holiday_adjustments
-        })
-        
-        return usage_data
-    
-    def recommend_scaling_strategy(self, usage_data):
-        """Rekommendera skalningsstrategi based on svenska usage patterns"""
-        
-        # Träna modell to förutsäga resursanvändning
-        features = ['hour', 'is_business_hour', 'is_holiday']
-        X = usage_data[features]
-        y = usage_data['usage']
-        
-        self.model.fit(X, y)
-        
-        # Generera rekommendationer
-        recommendations = {
-            'scale_down_hours': [22, 23, 0, 1, 2, 3, 4, 5, 6],  # Nattimmar
-            'scale_up_hours': [8, 9, 10, 13, 14, 15],  # Arbetstid
-            'weekend_scaling': 0.3,  # 30% of vardagcreatecitet
-            'summer_vacation_scaling': 0.5,  # Semesterperiod juli-augusti
-            'expected_savings': self.calculate_potential_savings(usage_data)
-        }
-        
-        return recommendations
-```
 
 ## Summary
 
+Digital transformation through code-based infrastructure represents a fundamental shift in how organisations deliver IT services and create business value. Architecture as Code enables the flexibility, scalability, and security required for successful digital transformation whilst maintaining robust governance frameworks.
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Digitalisering through kodbaserad infrastructure represents a fundamental change in how Swedish organizations delivers IT-services and creates affärsvärde. Architecture as Code enables The flexibilitet, scalability and security as krävs for successful digital transformation.
+Success factors include strategic planning of cloud-first initiatives, comprehensive automation of delivery processes, and continuous competence development within organisations. Organisations that embrace these principles position themselves strongly for sustainable growth and competitive advantage.
 
-Framgångsfaktorer includes strategisk planering of cloud-first initiativ, comprehensive automation of business processes, samt continuous competence development within organisationen. Swedish organizations as omfamnar These principles position themselves starkt for framtiden.
+Key lessons from digital transformation initiatives demonstrate that technical transformation must combine with organisational and cultural change to achieve lasting results. Architecture as Code forms the technical foundation, but success requires a holistic perspective on transformation that engages people, processes, and technology in concert.
 
-Viktiga lessons from svenska digitaliseringsinitiativ shows to technical transformation must kombineras with organisatorisk and cultural change to achieve bestående resultat. Architecture as Code forms The technical foundation, but success requires helhetsperspektiv at digitalisering.
+## Sources and References
 
-## Sources and referenser
-
-- Digitaliseringsstyrelsen. "Digitaliseringsstrategi for Sverige." Regeringskansliet, 2022.
-- McKinsey Digital. "Digital Transformation in the Nordics." McKinsey & Company, 2023.
-- AWS. "Cloud Adoption Framework for Swedish organizations." Amazon Web Services, 2023.
-- Microsoft. "Azure for svensk public sector." Microsoft Sverige, 2023.
-- SANS Institute. "Cloud Security for nordiska organisationer." SANS Security Research, 2023.
-- Gartner. "Architecture as Code Trends in Europe." Gartner Research, 2023.
+- Gartner. "Cloud Adoption Strategies for Enterprises." Gartner Research, 2023.
+- McKinsey Digital. "Digital Transformation: A Global Perspective." McKinsey & Company, 2023.
+- AWS. "Cloud Adoption Framework for Enterprises." Amazon Web Services, 2023.
+- Microsoft. "Azure for Enterprise Digital Transformation." Microsoft Azure, 2023.
+- HashiCorp. "Infrastructure as Code Best Practices." HashiCorp Learn, 2023.
+- SANS Institute. "Cloud Security for Enterprise Organisations." SANS Security Research, 2023.
