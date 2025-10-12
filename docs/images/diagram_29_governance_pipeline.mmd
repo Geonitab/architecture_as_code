@@ -2,29 +2,41 @@
 config:
   theme: 'base'
   themeVariables:
-    primaryColor: '#1c5d3f'
-    primaryTextColor: '#ffffff'
-    primaryBorderColor: '#114029'
-    lineColor: '#6ab187'
-    secondaryColor: '#f0c419'
-    tertiaryColor: '#ffffff'
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
 ---
-%% Governance as Code approval flow across stakeholders
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#BB2528", "primaryTextColor": "#ffffff", "primaryBorderColor": "#7C0000", "lineColor": "#F8B229", "fontFamily": "Inter", "fontSize": "14px", "actorBkg": "#BB2528", "actorBorder": "#7C0000", "actorTextColor": "#ffffff", "signalColor": "#7C0000", "signalTextColor": "#7C0000", "noteTextColor": "#7C0000", "activationBorderColor": "#BB2528", "activationBkgColor": "#006100"}}}%%
 sequenceDiagram
-    participant Author as Policy Author
-    participant Repo as Git Repository
-    participant CI as CI/CD Checks
-    participant Review as Governance Reviewers
-    participant Deploy as Production Controls
+    participant Author as 👤<br/>Policy Author
+    participant Repo as 📂<br/>Git Repository
+    participant CI as ⚙️<br/>CI/CD Checks
+    participant Review as 👥<br/>Governance Reviewers
+    participant Deploy as 🚀<br/>Production Controls
 
-    Author->>Repo: Draft governance update
-    Repo->>CI: Trigger automated policy tests
-    CI-->>Repo: Report compliance status
-    Repo->>Review: Open pull request for approval
-    Review-->>Repo: Provide review comments
-    Author->>Repo: Apply requested changes
-    Repo->>CI: Re-run automated tests
-    CI-->>Review: Confirm guardrails satisfied
-    Review->>Repo: Approve and merge change
-    Repo->>Deploy: Promote policy to production
-    Deploy-->>Author: Publish audit trail
+    Author->>Repo: 📝 Draft governance update
+    Repo->>CI: ⚡ Trigger automated policy tests
+    
+    Note over CI: 🔍 Automated Validation
+    CI->>CI: ✅ Schema validation
+    CI->>CI: 🔒 Security policy check
+    CI->>CI: 📋 Compliance verification
+    CI->>CI: 🧪 Policy simulation tests
+    
+    CI-->>Repo: ✅ Compliance status confirmed
+    Repo->>Review: 📋 Open pull request for approval
+    
+    Note over Review: 👀 Human Governance Review
+    Review->>Repo: 💬 Provide review comments
+    Author->>Repo: 🔧 Apply requested changes
+    Repo->>CI: 🔄 Re-run automated tests
+    CI-->>Review: ✅ Confirm guardrails satisfied
+    
+    Review->>Repo: ✔️ Approve and merge change
+    Repo->>Deploy: 🚀 Promote policy to production
+    Deploy-->>Author: 📊 Publish audit trail
+    
+    Note over Author,Deploy: 🎯 Full governance lifecycle automated and traceable
