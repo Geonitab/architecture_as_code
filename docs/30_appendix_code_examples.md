@@ -738,6 +738,271 @@ Resources:
 
 This sektion contains Python-skript and andra automationsverktyg for Architecture as Code-handling.
 
+### 16_CODE_1: Migration assessment accelerator
+
+*Referenced from Chapter 16: [Migration from Traditional Infrastructure](16_migration.md)*
+
+```python
+# migration_assessment/infrastructure_discovery.py
+import boto3
+import json
+from datetime import datetime
+from typing import Dict, List
+
+
+class InfrastructureMigrationAssessment:
+    """
+    Automated assessment for discovering unmanaged infrastructure prior to Architecture as Code adoption.
+    """
+
+    def __init__(self, region: str = 'eu-north-1') -> None:
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.elb = boto3.client('elbv2', region_name=region)
+        self.cloudformation = boto3.client('cloudformation', region_name=region)
+
+    def discover_unmanaged_resources(self) -> Dict[str, List[Dict]]:
+        """Compile unmanaged resources alongside migration summary statistics."""
+        unmanaged_resources: Dict[str, List[Dict]] = {
+            'ec2_instances': self._find_unmanaged_ec2(),
+            'load_balancers': self._find_unmanaged_load_balancers(),
+            'rds_instances': self._find_unmanaged_rds(),
+        }
+
+        total_resources = sum(len(resources) for resources in unmanaged_resources.values())
+        unmanaged_resources['summary'] = {
+            'total_unmanaged_resources': total_resources,
+            'migration_complexity': self._assess_migration_complexity(unmanaged_resources),
+            'estimated_migration_effort': self._estimate_migration_effort(total_resources),
+            'risk_assessment': self._assess_migration_risks(unmanaged_resources),
+        }
+
+        return unmanaged_resources
+
+    def _find_unmanaged_ec2(self) -> List[Dict]:
+        """Return EC2 instances that are not owned by an Architecture as Code workflow."""
+        response = self.ec2.describe_instances()
+        unmanaged_instances: List[Dict] = []
+
+        for reservation in response.get('Reservations', []):
+            for instance in reservation.get('Instances', []):
+                if instance.get('State', {}).get('Name') == 'terminated':
+                    continue
+
+                tags = instance.get('Tags', [])
+                if not self._is_resource_managed(tags):
+                    unmanaged_instances.append({
+                        'instance_id': instance['InstanceId'],
+                        'instance_type': instance['InstanceType'],
+                        'launch_time': instance['LaunchTime'].isoformat(),
+                        'vpc_id': instance.get('VpcId'),
+                        'subnet_id': instance.get('SubnetId'),
+                        'security_groups': [sg['GroupId'] for sg in instance.get('SecurityGroups', [])],
+                        'tags': {tag['Key']: tag['Value'] for tag in tags},
+                        'migration_priority': self._calculate_migration_priority(tags),
+                        'estimated_downtime': self._estimate_downtime(tags),
+                    })
+
+        return unmanaged_instances
+
+    def _find_unmanaged_rds(self) -> List[Dict]:
+        """Return unmanaged RDS instances with metadata useful for migration planning."""
+        response = self.rds.describe_db_instances()
+        unmanaged_rds: List[Dict] = []
+
+        for instance in response.get('DBInstances', []):
+            tags = self.rds.list_tags_for_resource(ResourceName=instance['DBInstanceArn']).get('TagList', [])
+            if not self._is_resource_managed(tags):
+                unmanaged_rds.append({
+                    'identifier': instance['DBInstanceIdentifier'],
+                    'engine': instance['Engine'],
+                    'db_instance_class': instance['DBInstanceClass'],
+                    'multi_az': instance['MultiAZ'],
+                    'storage_type': instance['StorageType'],
+                    'tags': {tag['Key']: tag['Value'] for tag in tags},
+                })
+
+        return unmanaged_rds
+
+    def _find_unmanaged_load_balancers(self) -> List[Dict]:
+        """Return load balancers without Architecture as Code ownership metadata."""
+        response = self.elb.describe_load_balancers()
+        unmanaged_lbs: List[Dict] = []
+
+        for lb in response.get('LoadBalancers', []):
+            arn = lb['LoadBalancerArn']
+            tag_descriptions = self.elb.describe_tags(ResourceArns=[arn]).get('TagDescriptions', [])
+            tags = tag_descriptions[0].get('Tags', []) if tag_descriptions else []
+            if not self._is_resource_managed(tags):
+                unmanaged_lbs.append({
+                    'name': lb['LoadBalancerName'],
+                    'type': lb['Type'],
+                    'scheme': lb['Scheme'],
+                    'vpc_id': lb.get('VpcId'),
+                    'tags': {tag['Key']: tag['Value'] for tag in tags},
+                })
+
+        return unmanaged_lbs
+
+    def _is_resource_managed(self, tags: List[Dict]) -> bool:
+        indicators = {
+            'aws:cloudformation:stack-name',
+            'terraform:workspace',
+            'pulumi:stack',
+            'ManagedBy',
+        }
+        return any(tag.get('Key') in indicators for tag in tags)
+
+    def _calculate_migration_priority(self, tags: List[Dict]) -> str:
+        tag_map = {tag['Key']: tag['Value'] for tag in tags}
+        if tag_map.get('Criticality') == 'high':
+            return 'high'
+        if tag_map.get('Environment') == 'production':
+            return 'medium'
+        return 'low'
+
+    def _estimate_downtime(self, tags: List[Dict]) -> str:
+        tag_map = {tag['Key']: tag['Value'] for tag in tags}
+        if tag_map.get('AvailabilityRequirement') == '24x7':
+            return 'maintenance window required'
+        return 'deploy during office hours'
+
+    def _assess_migration_complexity(self, unmanaged_resources: Dict[str, List[Dict]]) -> str:
+        critical_instances = [
+            instance
+            for instance in unmanaged_resources.get('ec2_instances', [])
+            if instance['migration_priority'] == 'high'
+        ]
+        if len(critical_instances) > 5:
+            return 'high'
+        if len(critical_instances) > 0:
+            return 'medium'
+        return 'low'
+
+    def _estimate_migration_effort(self, total_resources: int) -> str:
+        if total_resources > 50:
+            return '12+ weeks'
+        if total_resources > 20:
+            return '6-12 weeks'
+        return 'under 6 weeks'
+
+    def _assess_migration_risks(self, unmanaged_resources: Dict[str, List[Dict]]) -> List[str]:
+        risks = []
+        if unmanaged_resources.get('rds_instances'):
+            risks.append('Ensure data residency and encryption controls for databases.')
+        if unmanaged_resources.get('load_balancers'):
+            risks.append('Document network mappings to preserve routing and certificate chains.')
+        if unmanaged_resources.get('ec2_instances'):
+            risks.append('Capture operating system configuration and patch status before import.')
+        return risks or ['Standard migration risk profile.']
+
+    def generate_terraform_migration_plan(self, unmanaged_resources: Dict[str, List[Dict]]) -> str:
+        """Produce a Terraform template stub that can be refined by the migration squad."""
+        header = f"""# Automatically generated migration plan
+# Generated: {datetime.now():%Y-%m-%d %H:%M:%S}
+# Total unmanaged EC2 instances: {len(unmanaged_resources.get('ec2_instances', []))}
+
+terraform {{
+  required_providers {{
+    aws = {{
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }}
+  }}
+}}
+
+provider "aws" {{
+  region = "eu-north-1"  # Stockholm region
+}}
+
+"""
+        body = ''
+        for index, instance in enumerate(unmanaged_resources.get('ec2_instances', []), start=1):
+            body += f"""# Migration of existing EC2 instance {instance['instance_id']}
+resource "aws_instance" "migrated_instance_{index}" {{
+  instance_type = "{instance['instance_type']}"
+  subnet_id     = "{instance.get('subnet_id', '')}"
+  vpc_security_group_ids = {json.dumps(instance.get('security_groups', []))}
+
+  tags = {{
+    Name         = "{instance.get('tags', {}).get('Name', f'migrated-instance-{index}')}"
+    MigratedFrom = "{instance['instance_id']}"
+    MigrationDate = "{datetime.now():%Y-%m-%d}"
+    ManagedBy    = "terraform"
+  }}
+
+  # Import existing resource instead of creating a replacement
+  # terraform import aws_instance.migrated_instance_{index} {instance['instance_id']}
+}
+
+"""
+        footer = """# Migration checklist:
+# 1. Review generated configurations with platform and security teams.
+# 2. Test in a non-production account.
+# 3. Use terraform import for each resource.
+# 4. Execute terraform plan and capture the output for change advisory boards.
+# 5. Schedule cutover with agreed maintenance windows.
+"""
+        return header + body + footer
+
+    def create_migration_timeline(self, unmanaged_resources: Dict[str, List[Dict]]) -> Dict:
+        """Build a wave-based migration timeline aligned to risk levels."""
+        waves = {'low': [], 'medium': [], 'high': []}
+        for instance in unmanaged_resources.get('ec2_instances', []):
+            waves[instance['migration_priority']].append(instance)
+
+        return {
+            'wave_1_low_risk': {
+                'resources': waves['low'],
+                'estimated_duration_days': len(waves['low']) * 2,
+                'focus': 'Developer and test systems',
+            },
+            'wave_2_medium_risk': {
+                'resources': waves['medium'],
+                'estimated_duration_days': len(waves['medium']) * 4,
+                'focus': 'Business-critical services with fallback options',
+            },
+            'wave_3_high_risk': {
+                'resources': waves['high'],
+                'estimated_duration_days': len(waves['high']) * 7,
+                'focus': 'Mission-critical or regulated workloads',
+            },
+        }
+
+
+def generate_migration_playbook(assessment_results: Dict) -> str:
+    """Create a formatted migration playbook for executive stakeholders."""
+    summary = assessment_results.get('summary', {})
+    return f"""# Architecture as Code Migration Playbook for {assessment_results.get('organization_name', 'Organisation')}
+
+## Executive Summary
+- Total unmanaged resources: {summary.get('total_unmanaged_resources', 0)}
+- Migration complexity: {summary.get('migration_complexity', 'unknown')}
+- Estimated effort: {summary.get('estimated_migration_effort', 'TBC')}
+- Risk highlights: {'; '.join(summary.get('risk_assessment', []))}
+
+## Next Steps
+1. Confirm landing zone readiness and guardrails.
+2. Approve migration waves and maintenance windows.
+3. Allocate funding for training, automation, and post-migration optimisation.
+4. Capture lessons learned after each wave and iterate on standards.
+
+## Swedish Compliance Checklist
+- Data residency confirmed for Stockholm or EU regions.
+- Encryption in transit and at rest validated.
+- Change documentation stored for Finansinspektionen or public sector audits.
+- Incident response playbooks updated with Architecture as Code processes.
+
+## Metrics to Track
+- Lead time for infrastructure change requests.
+- Percentage of resources governed by Architecture as Code repositories.
+- Monthly cost variance compared with baseline forecasts.
+- Time to recover after failed deployments.
+
+"""
+```
+
+
 ### 22_CODE_1: comprehensive testramverk for Architecture as Code
 
 Architecture as Code-principerna within This area
@@ -836,6 +1101,141 @@ class ComprehensiveIaCTesting:
 ## Configuration Files {#configuration}
 
 This sektion contains konfigurationsfiler for different tools and services.
+
+### 16_CODE_2: Legacy workload import template
+
+*Referenced from Chapter 16: [Migration from Traditional Infrastructure](16_migration.md)*
+
+```yaml
+# migration/legacy-import-template.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Import existing workloads into CloudFormation management without rebuilding services'
+
+Parameters:
+  ExistingVPCId:
+    Type: String
+    Description: 'Identifier of the VPC that should be managed by CloudFormation'
+
+  ExistingInstanceId:
+    Type: String
+    Description: 'Identifier of the EC2 instance that will be imported'
+
+  Environment:
+    Type: String
+    Default: 'production'
+    AllowedValues: ['development', 'staging', 'production']
+
+  ProjectName:
+    Type: String
+    Description: 'Project name used for tagging and reporting'
+
+Resources:
+  ImportedVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: '10.0.0.0/16'  # Replace with actual CIDR
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-vpc'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+        - Key: ImportedFrom
+          Value: !Ref ExistingVPCId
+        - Key: ImportDate
+          Value: !Sub '${AWS::Timestamp}'
+
+  ImportedSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Security group created to mirror legacy rules'
+      VpcId: !Ref ImportedVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: '10.0.0.0/8'
+          Description: 'SSH access from internal networks'
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: '0.0.0.0/0'
+          Description: 'HTTP access for web workloads'
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: '0.0.0.0/0'
+          Description: 'HTTPS access for secure traffic'
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-sg'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+
+  ImportedSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref ImportedVPC
+      CidrBlock: '10.0.1.0/24'  # Replace with the existing subnet CIDR
+      AvailabilityZone: 'eu-north-1a'
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-subnet'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: NetworkTier
+          Value: 'Private'
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+
+  ImportedInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: 't3.medium'  # Replace with the current instance type
+      ImageId: 'ami-0c94855bb95b03c2e'  # Replace with the running AMI
+      SubnetId: !Ref ImportedSubnet
+      SecurityGroupIds:
+        - !Ref ImportedSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-instance'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+        - Key: ImportedFrom
+          Value: !Ref ExistingInstanceId
+        - Key: ImportDate
+          Value: !Sub '${AWS::Timestamp}'
+
+Outputs:
+  ImportedVPCId:
+    Description: 'Identifier of the VPC now governed by CloudFormation'
+    Value: !Ref ImportedVPC
+    Export:
+      Name: !Sub '${AWS::StackName}-VPC-ID'
+
+  ImportedInstanceId:
+    Description: 'Identifier of the EC2 instance imported into CloudFormation'
+    Value: !Ref ImportedInstance
+    Export:
+      Name: !Sub '${AWS::StackName}-Instance-ID'
+
+  ImportSteps:
+    Description: 'Guidance for completing the import process'
+    Value: !Sub |
+      To import existing resources:
+        1. aws cloudformation create-stack --stack-name ${ProjectName}-import --template-body file://legacy-import-template.yaml
+        2. aws cloudformation import-resources-to-stack --stack-name ${ProjectName}-import --resources file://import-resources.json
+        3. aws cloudformation describe-stacks --stack-name ${ProjectName}-import
+```
+
 
 ### 22_CODE_2: Governance policy configuration for Swedish organizations
 *Refereras from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
@@ -2528,3 +2928,119 @@ resource "aws_launch_template" "spot_optimized" {
     
     return terraform_code
 ```
+
+## Shell Scripts {#shell-scripts}
+
+This sektion samlar shell-skript och kommandon som stöder Architecture as Code-arbetsflöden.
+
+### 16_CODE_3: Migration validation harness
+
+*Referenced from Chapter 16: [Migration from Traditional Infrastructure](16_migration.md)*
+
+```bash
+#!/usr/bin/env bash
+# migration/test-migration.sh
+# Comprehensive validation script for Architecture as Code migration waves
+
+set -euo pipefail
+
+PROJECT_NAME=${1:-"migration-test"}
+ENVIRONMENT=${2:-"staging"}
+REGION=${3:-"eu-north-1"}
+
+log() {
+  printf '[%s] %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$1"
+}
+
+log "Starting Architecture as Code migration validation for project: ${PROJECT_NAME}"
+log "Environment: ${ENVIRONMENT}"
+log "Region: ${REGION}"
+
+log "=== Pre-Migration Checks ==="
+
+log "1. Capturing infrastructure inventory"
+aws ec2 describe-instances --region "${REGION}" \
+  --query 'Reservations[*].Instances[?State.Name!=`terminated`]' \
+  > "/tmp/${PROJECT_NAME}-instances.json"
+aws rds describe-db-instances --region "${REGION}" \
+  > "/tmp/${PROJECT_NAME}-rds.json"
+
+INSTANCE_COUNT=$(jq '.[] | length' "/tmp/${PROJECT_NAME}-instances.json" | jq -s 'add // 0')
+RDS_COUNT=$(jq '.DBInstances | length' "/tmp/${PROJECT_NAME}-rds.json")
+
+log "   ➤ EC2 instances discovered: ${INSTANCE_COUNT}"
+log "   ➤ RDS instances discovered: ${RDS_COUNT}"
+
+log "2. Verifying recent backups"
+aws ec2 describe-snapshots --region "${REGION}" --owner-ids self \
+  --query 'Snapshots[?StartTime>=`'"$(date -u -d '7 days ago' +%Y-%m-%dT%H:%M:%SZ)"'`]' \
+  > "/tmp/${PROJECT_NAME}-snapshots.json"
+SNAPSHOT_COUNT=$(jq 'length' "/tmp/${PROJECT_NAME}-snapshots.json")
+
+if [[ ${SNAPSHOT_COUNT} -lt ${INSTANCE_COUNT} ]]; then
+  log "WARNING: Snapshot coverage is lower than the EC2 instance count"
+fi
+
+log "=== Migration Execution Checks ==="
+
+log "3. Validating Terraform plan"
+pushd terraform/migration >/dev/null
+terraform init -input=false
+terraform plan -input=false -var="project_name=${PROJECT_NAME}" -var="environment=${ENVIRONMENT}" -out="/tmp/${PROJECT_NAME}.plan"
+terraform show -json "/tmp/${PROJECT_NAME}.plan" > "/tmp/${PROJECT_NAME}-plan.json"
+DELETES=$(jq '.resource_changes[] | select(.change.actions[] == "delete") | .address' "/tmp/${PROJECT_NAME}-plan.json" | wc -l)
+popd >/dev/null
+
+if [[ ${DELETES} -gt 0 ]]; then
+  log "ERROR: Terraform plan contains destructive changes"
+  exit 1
+fi
+
+log "4. Dry-running resource import"
+SAMPLE_INSTANCE=$(jq -r '.[] | .[] | .InstanceId' "/tmp/${PROJECT_NAME}-instances.json" | head -1)
+if [[ -n "${SAMPLE_INSTANCE}" && "${SAMPLE_INSTANCE}" != null ]]; then
+  terraform -chdir=terraform/migration import -input=false -lock=false -dry-run aws_instance.test_import "${SAMPLE_INSTANCE}" || log "WARNING: Dry-run import failed for ${SAMPLE_INSTANCE}"
+fi
+
+log "=== Post-Migration Preparation ==="
+
+log "5. Preparing compliance validation"
+python3 - <<'PY'
+import boto3
+
+REQUIRED_TAGS = {'ManagedBy', 'Environment', 'Project'}
+ec2 = boto3.client('ec2', region_name='${REGION}')
+non_compliant = []
+
+reservations = ec2.describe_instances().get('Reservations', [])
+for reservation in reservations:
+    for instance in reservation.get('Instances', []):
+        if instance.get('State', {}).get('Name') == 'terminated':
+            continue
+        tags = {tag['Key']: tag['Value'] for tag in instance.get('Tags', [])}
+        missing = sorted(REQUIRED_TAGS - tags.keys())
+        if missing:
+            non_compliant.append((instance['InstanceId'], missing))
+
+if non_compliant:
+    print('Instances missing required tags:')
+    for instance_id, missing in non_compliant:
+        print(f"  {instance_id}: {', '.join(missing)}")
+else:
+    print('All instances satisfy tagging policy requirements.')
+PY
+
+log "6. Capturing post-migration performance baseline"
+METRICS_FILE="/tmp/${PROJECT_NAME}-metrics.json"
+aws cloudwatch get-metric-statistics \
+  --namespace AWS/EC2 \
+  --metric-name CPUUtilization \
+  --start-time "$(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%S)" \
+  --end-time "$(date -u +%Y-%m-%dT%H:%M:%S)" \
+  --period 300 \
+  --statistics Average \
+  --region "${REGION}" > "${METRICS_FILE}"
+
+log "Validation complete. Review artefacts in /tmp for detailed outputs."
+```
+
