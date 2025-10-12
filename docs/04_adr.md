@@ -145,7 +145,7 @@ architecture as code.
 ## Consequences
 
 ### Positiva consequences
-- Förbättrad compliance of svenska security requirements
+- Förbättrad compliance of security requirements
 - Reducerad attack surface through mikrosegmentering
 - Förbättrad auditbarhet and traceability
 
@@ -220,7 +220,7 @@ For organizations, this integration enables transparent governance and complianc
 
 ## Compliance and kvalitetsstandarder
 
-ADR-metodik supports svenska compliance requirements through Structured documentation as enables:
+ADR-metodik supports compliance requirements through Structured documentation as enables:
 
 **Regleringsefterlevnad**: Systematisk documentation for GDPR, PCI-DSS and branschspecific regulations
 **Audit Readiness**: Komplett spår of architecture decisions and their rationale

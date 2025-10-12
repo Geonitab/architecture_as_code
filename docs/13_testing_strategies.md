@@ -10,7 +10,7 @@ testing of Architecture as Code differs Fundamental from traditional programvaru
 
 Modern Architecture as Code-testing encompasses multiple dimensioner: syntaktisk validation of code, policy compliance checking, kostnadsprognoser, säkerhetssårbarhetanalys and functional testing of deployed infrastructure. This multilevel approach identifierar problem early in utvecklingscykeln when the is billigare and enklare to fixa.
 
-Swedish organizations with strict compliance-requirements must implement comprehensive testing as validates both technical funktionalitet and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards as must verifieras automatically.
+organizations with strict compliance-requirements must implement comprehensive testing as validates both technical funktionalitet and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards as must verifieras automatically.
 
 Test automation for Architecture as Code enables continuous integration and continuous deployment patterns as accelererar delivery while the reduces risk for produktionsstörningar. Infrastructure testing pipelines can run parallellt with application testing to ensure end-to-end quality assurance.
 
@@ -129,7 +129,7 @@ export class TerraformConfigGenerator {
     environment: string,
     region: string = 'eu-north-1'
   ): TerraformConfig {
-    // Validate svenska regioner for GDPR compliance
+    // Validate regioner for GDPR compliance
     const swedishRegions = ['eu-north-1', 'eu-west-1'];
     if (!swedishRegions.includes(region)) {
       throw new Error('Region must vara within EU for GDPR compliance');
@@ -201,7 +201,7 @@ describe('TerraformConfigGenerator', () => {
   const generator = new TerraformConfigGenerator();
 
   describe('generateVPCConfig', () => {
-    it('should generera VPC config for svenska regioner', () => {
+    it('should generera VPC config for regioner', () => {
       const config = generator.generateVPCConfig('production', 'eu-north-1');
       
       expect(config.provider).toBe('aws');
@@ -297,7 +297,7 @@ export class InfrastructureValidator {
       }
     }
 
-    // Validate GDPR compliance for Swedish organizations
+    // Validate GDPR compliance for organizations
     if (tags['DataClassification']) {
       const validClassifications = ['public', 'internal', 'confidential', 'personal'];
       if (!validClassifications.includes(tags['DataClassification'])) {
@@ -620,7 +620,7 @@ npm run test:ui
 
 This enables tight feedback loops where infrastructure code changes owithelbart valitheir, which reduces tiden between code change and feedback from seconds to milliseconds.
 
-For Swedish organizations with strict compliance requirements can automated testing with Vitest ensure to infrastructure configurations konsekvent meets GDPR requirements, security policies and organizational standards before deployment.
+For organizations with strict compliance requirements can automated testing with Vitest ensure to infrastructure configurations konsekvent meets GDPR requirements, security policies and organizational standards before deployment.
 
 ## Integrationstesting and miljövalidering
 
@@ -636,7 +636,7 @@ Chaos engineering principles can appliceras at infrastructure testing by systema
 
 Security testing for Architecture as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, chosention of encryption settings and verification of network security policies.
 
-Compliance testing automation ensures infrastructure configurations meets regulatory requirements kontinuerligt. Swedish organizations must validate GDPR compliance, financial regulations and government security standards through automated testing as can provide audit trails for compliance reporting.
+Compliance testing automation ensures infrastructure configurations meets regulatory requirements kontinuerligt. organizations must validate GDPR compliance, financial regulations and government security standards through automated testing as can provide audit trails for compliance reporting.
 
 Policy-as-code frameworks that Open Policy Agent (OPA) and AWS Config Rules enables declarative definition of compliance policies as can enforced automatically under infrastructure deployment. This preventative approach is mer effective than reactive compliance monitoring.
 
@@ -650,7 +650,7 @@ Load testing strategies must validate auto-scaling configurations, resource limi
 
 Skalabilitetstesting verifierar to infrastructure can handle projected growth efficiently through automated scaling mechanisms. This includes testing of horizontal scaling for stateless services and validation of data partitioning strategies for stateful systems.
 
-Capacity planning validation through performance testing helps optimize resource configurations for cost-effectiveness while performance requirements uppfylls. This is particularly important for Swedish organizations as balanserar cost optimization with service level requirements.
+Capacity planning validation through performance testing helps optimize resource configurations for cost-effectiveness while performance requirements uppfylls. This is particularly important for organizations as balanserar cost optimization with service level requirements.
 
 ## Requirements as Code and testbarhet
 
@@ -664,7 +664,7 @@ by definiera Requirements as Code are created a direkt koppling between business
 
 ### Kravtraceability in praktiken
 
-Requirements traceability for Architecture as Code means to each infrastructurekomponent can kopplas tobaka to specific business requirements or compliance-requirements. This is particularly viktigt for Swedish organizations as must meet GDPR, finansiella regulations or myndighetsrequirements.
+Requirements traceability for Architecture as Code means to each infrastructurekomponent can kopplas tobaka to specific business requirements or compliance-requirements. This is particularly viktigt for organizations as must meet GDPR, finansiella regulations or myndighetsrequirements.
 
 Verktyg that Open Policy Agent (OPA) enables uttryck of compliance-requirements as policies as can evalueras automatically mot infrastructure-configurations. These policies becomes testable requirements as can köras kontinuerligt to ensure ongoing compliance.
 
@@ -899,7 +899,7 @@ func TestTerraformSwedishInfrastructure(t *testing.T) {
         Whose: map[string]interface{}{
             "environment":      "test",
             "project_name":     "architecture as code-test-" + uniqueId,
-            "region":          "eu-north-1", // Stockholm for svenska requirements
+            "region":          "eu-north-1", // Stockholm for requirements
             "enable_gdpr_logs": true,
             "data_classification": "internal",
         },
@@ -1040,7 +1040,7 @@ test_ec2_security_groups_required if {
     not aws.security.ec2_security_groups_required with input as input_ec2_without_sg
 }
 
-# Test: Svenska GDPR compliance
+# Test: GDPR compliance
 test_gdpr_data_classification_required if {
     input_without_classification := {
         "resource_type": "aws_rds_instance",
@@ -1116,7 +1116,7 @@ data:
       fi
     done
     
-    # Test 4: Validate svenska compliance requirements
+    # Test 4: Validate compliance requirements
     echo "Testing GDPR compliance for persistent volumes..."
     kubectl get pv -o json | \
     jq -r '.items[] | select(.spec.csi.driver == "ebs.csi.aws.com") | 
@@ -1287,12 +1287,12 @@ jobs:
           grep -r "DataClassification" terraform/ || \
           (echo "ERROR: Data classification tags saknas" && exit 1)
           
-      - name: Swedish Security Standards
+      - name: Security Standards
         run: |
           # MSB security requirements for critical infrastruktur
           ./scripts/msb-compliance-check.sh terraform/
           
-          # Validate to svenska regioner is used
+          # Validate to regioner is used
           if grep -r "us-" terraform/ --include="*.tf"; then
             echo "WARNING: Amerikanska regioner upptäckta - kontrollera data sovereignty"
           fi
@@ -1319,10 +1319,10 @@ jobs:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in organizations.
 Comprehensive testing strategies for Architecture as Code is essential to ensure reliable, secure and cost-effective infrastructure deployments. a väl designad test pyramid with unit tests, integration tests and end-to-end validation can dramatiskt reducera production issues and improve developer confidence.
 
-Swedish organizations must particularly focus at compliance testing as validates GDPR requirements, financial regulations and government security standards. Automated policy testing with tools that OPA enables continuous compliance verification without manual overhead.
+organizations must particularly focus at compliance testing as validates GDPR requirements, financial regulations and government security standards. Automated policy testing with tools that OPA enables continuous compliance verification without manual overhead.
 
 Investment in robust Architecture as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies enables comprehensive validation without prohibitive costs or complexity.
 

@@ -26,7 +26,7 @@ Perimeter-based defences designed for static environments become ineffective in 
 . Security can no longer be treated as a separate afterthought. Modern organisations must embrace security-as-code principles wh
 ere critical decisions are codified, version-controlled, and automated alongside the rest of the architecture estate.
 
-Swedish organisations in particular operate within a dense mesh of regulatory obligations. GDPR, the Swedish Civil Contingencies
+organizations in particular operate within a dense mesh of regulatory obligations. GDPR, the Civil Contingencies
  Agency (MSB) guidance for critical infrastructure, sectoral regulations, and financial supervision requirements create a multid
 imensional compliance landscape. At the same time, ongoing digital transformation programmes demand faster innovation and shorte
 r time-to-market. Architecture as Code addresses both pressures by automating compliance controls and embedding "secure by defau
@@ -252,11 +252,11 @@ g authentication and authorisation, which can be integrated via code-driven appr
  solutions reduce reliance on central providers, while confidential computing and trusted execution environments (TEEs) protect d
 ata during processing—even from cloud operators.
 
-## Practical implementation: security architecture in Swedish environments
+## Practical implementation: security architecture in environments
 
 ### Comprehensive security foundation module
 
-The following Terraform module demonstrates a foundational enterprise security pattern tailored for Swedish organisations. It ap
+The following Terraform module demonstrates a foundational enterprise security pattern tailored for organizations. It ap
 plies defence-in-depth principles through automated controls for encryption, access management, audit logging, and threat detect
 ion.
 
@@ -268,7 +268,7 @@ terraform {
   }
 }
 
-# Security baseline for Swedish organisations
+# Security baseline for organizations
 # Aligns with MSB guidance for critical infrastructure and enforces GDPR compliance
 locals {
   security_tags = {
@@ -287,7 +287,7 @@ locals {
   gdpr_compliance            = var.data_classification != "public"
   backup_encryption_required = var.data_classification in ["internal", "confidential", "restricted"]
 
-  # Approved EU regions for Swedish data protection programmes
+  # Approved EU regions for data protection programmes
   approved_regions = ["eu-north-1", "eu-west-1", "eu-central-1"]
 }
 
@@ -298,7 +298,7 @@ resource "aws_kms_key" "org_key" {
   key_usage                = "ENCRYPT_DECRYPT"
   deletion_window_in_days  = 30
 
-  # Automated rotation in line with Swedish security expectations
+  # Automated rotation in line with security expectations
   enable_key_rotation = true
 
   # Granular key policy implementing least privilege access
@@ -463,7 +463,7 @@ resource "aws_s3_bucket" "audit_logs" {
 }
 ```
 
-This module applies best practices for key management, Zero Trust networking, and audit logging to meet Swedish and wider Europe
+This module applies best practices for key management, Zero Trust networking, and audit logging to meet and wider Europe
 an regulatory expectations. KMS key rotation is automated, security groups enforce a default deny posture, and CloudTrail delive
 rs tamper-evident logging for compliance validation.
 
@@ -492,7 +492,7 @@ personal_data_encryption_required if {
 ### Advanced threat detection platform
 
 ```python
-"""Advanced threat detection for Swedish organisations"""
+"""Advanced threat detection for organizations"""
 import asyncio
 import aiohttp
 import boto3
@@ -533,7 +533,7 @@ class SecurityFinding:
 
 
 class AdvancedThreatDetection:
-    """Comprehensive threat detection following Swedish best practice"""
+    """Comprehensive threat detection following best practice"""
 
     def __init__(self, region: str = "eu-north-1", threat_intel_feeds: Optional[List[str]] = None) -> None:
         self.region = region
@@ -633,7 +633,7 @@ class AdvancedThreatDetection:
                     affected_resources=risk["affected_resources"],
                     indicators_of_compromise=[],
                     remediation_steps=risk["remediation_steps"],
-                    compliance_impact="Potential impact on the Swedish Protective Security Act",
+                    compliance_impact="Potential impact on the Protective Security Act",
                     detection_timestamp=datetime.now(),
                     source_system="Supply Chain Risk Assessment",
                 )
@@ -679,7 +679,7 @@ class AdvancedThreatDetection:
         return report
 
     async def automated_incident_response(self, finding: SecurityFinding) -> Dict[str, List[str]]:
-        """Execute automated incident response aligned with Swedish procedures"""
+        """Execute automated incident response aligned with procedures"""
 
         response_actions: List[str] = []
 
@@ -715,7 +715,7 @@ class AdvancedThreatDetection:
 
 Security maturity assessments provide structured frameworks for measuring current posture and prioritising investment. The Capab
 ility Maturity Model Integration (CMMI) for security supplies a five-level ladder from initial reactive practices to optimised pr
-oactive operations. Swedish organisations can benchmark against industry peers by conducting regular CMMI assessments.
+oactive operations. organizations can benchmark against industry peers by conducting regular CMMI assessments.
 
 The NIST Cybersecurity Framework offers a practical approach built around the functions Identify, Protect, Detect, Respond, and R
 ecover. Embedding the framework into Architecture as Code enables systematic improvements with traceable outcomes.
@@ -727,10 +727,10 @@ ty architecture. Organisations should invest in algorithm agility, machine learn
  stay ahead of emerging threats. Zero-knowledge proofs, confidential computing, and distributed identity solutions will become in
 creasingly relevant as regulatory regimes demand stronger privacy guarantees.
 
-## Strategic security recommendations for Swedish organisations
+## Strategic security recommendations for organizations
 
-Swedish enterprises should align security investments with regulatory duties, the evolving threat landscape, and transformation o
-bjectives. Participation in national collaboration forums—such as the Swedish Civil Contingencies Agency (MSB), the Swedish Inte
+enterprises should align security investments with regulatory duties, the evolving threat landscape, and transformation o
+bjectives. Participation in national collaboration forums—such as the Civil Contingencies Agency (MSB), the Swedish Inte
 rnet Foundation, and sector-specific information sharing groups—strengthens threat intelligence and coordinated response capabil
 ities.
 
@@ -739,7 +739,7 @@ artnerships ensures access to the expertise required to support ambitious digita
 
 ## Summary and future development
 
-Architecture as Code represents the future of infrastructure management for Swedish organisations. Security within this paradigm
+Architecture as Code represents the future of infrastructure management for organizations. Security within this paradigm
  is a transformative shift from reactive, manual approaches to proactive, automated safeguards embedded throughout development. Z
 ero Trust principles, policy automation, and codified security patterns allow teams to version-control, test, and deploy securit
 y decisions with the same rigour applied to functional requirements.
@@ -766,12 +766,12 @@ nd accelerated innovation.
 - ENISA. *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity, 2023.
 - ISO/IEC 27001:2022. *Information Security Management Systems – Requirements.* International Organization for Standardization.
 
-### Swedish authorities and regulatory sources
-- MSB. *General Guidance on Information Security for Essential Services.* Swedish Civil Contingencies Agency, 2023.
-- MSB. *Risk Analysis Guidance for the NIS Directive.* Swedish Civil Contingencies Agency, 2023.
-- Finansinspektionen. *Regulations on Operational Risk (FFFS 2014:1, consolidated 2023).* Swedish Financial Supervisory Authority.
+### authorities and regulatory sources
+- MSB. *General Guidance on Information Security for Essential Services.* Civil Contingencies Agency, 2023.
+- MSB. *Risk Analysis Guidance for the NIS Directive.* Civil Contingencies Agency, 2023.
+- Finansinspektionen. *Regulations on Operational Risk (FFFS 2014:1, consolidated 2023).* Financial Supervisory Authority.
 - Dataskyddslagen (SFS 2018:218). *Supplementary Provisions to the EU General Data Protection Regulation.*
-- Säkerhetsskyddslagen (SFS 2018:585). *Swedish Protective Security Act.*
+- Säkerhetsskyddslagen (SFS 2018:585). *Protective Security Act.*
 
 ### Technical standards and frameworks
 - OWASP. *Application Security Architecture Guide.* Open Web Application Security Project, 2023.
@@ -786,9 +786,9 @@ nd accelerated innovation.
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 
-### Swedish organisations and expertise
-- Swedish Internet Foundation. *Cybersecurity Report 2023.* Internetstiftelsen, 2023.
-- Swedish Incert. *Cybersecurity Threat Landscape Report 2023.* Swedish Computer Emergency Response Team.
+### organizations and expertise
+- Internet Foundation. *Cybersecurity Report 2023.* Internetstiftelsen, 2023.
+- Incert. *Cybersecurity Threat Landscape Report 2023.* Swedish Computer Emergency Response Team.
 - Cybercom Group. *Nordic Cybersecurity Survey 2023.* Cybercom Group AB.
 - KTH Royal Institute of Technology. *Cybersecurity Research Publications.* Network and Systems Engineering.
 

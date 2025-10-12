@@ -6,15 +6,15 @@
 
 ## Introduktion and contextualisering
 
-in a värld where Swedish organizations handles all mer complex digitala infrastructures while regulatory requirements skärps kontinuerligt, has Policy as Code (PaC) framträtt as a oumbärlig disciplin within Architecture as Code (Architecture as Code). Withan [chapter 10 about security](10_sakerhet.md) introducerade Fundamental security principles, tar This chapter A djupt dyk in The advanced implementeringen of policy-drivna security solutions and introduces läsaren to Open Security Controls Assessment Language (OSCAL) - a revolutionerande standard for security management.
+in a värld where organizations handles all mer complex digitala infrastructures while regulatory requirements skärps kontinuerligt, has Policy as Code (PaC) framträtt as a oumbärlig disciplin within Architecture as Code (Architecture as Code). Withan [chapter 10 about security](10_sakerhet.md) introducerade Fundamental security principles, tar This chapter A djupt dyk in The advanced implementeringen of policy-drivna security solutions and introduces läsaren to Open Security Controls Assessment Language (OSCAL) - a revolutionerande standard for security management.
 
-the traditional paradigmet for security- and compliance-handling are characterized of manual processes, static documentation and reactive strategier. This approach creates flaskhalsar in modern utvecklingscykler where infrastructure changes sker multiple gånger dagligen through automated CI/CD-pipelines. Swedish organizations, which traditionally varit foregångare within security and regelefterlevnad, stands nu infor utmaningen to digitalisera and automatisera These processes without to kompromissa with säkerhetsnivån.
+the traditional paradigmet for security- and compliance-handling are characterized of manual processes, static documentation and reactive strategier. This approach creates flaskhalsar in modern utvecklingscykler where infrastructure changes sker multiple gånger dagligen through automated CI/CD-pipelines. organizations, which traditionally varit foregångare within security and regelefterlevnad, stands nu infor utmaningen to digitalisera and automatisera These processes without to kompromissa with säkerhetsnivån.
 
 Policy as Code adresserar This utmaning by transformera security from a extern kontrollmekanism to a integrated part of development process. by uttrycka security requirements, compliance-rules and governance-policies as code is achieved same Benefits that Architecture as Code offers: version control, testbarhet, återanvändbarhet, and konsistent deployment over environments and team.
 
-in The svenska contexten meets organisationer a complex regulatory environment as includes EU:s allmänna dataskyddsforordning (GDPR), Myndigheten for societal protection and beredskaps (MSB) security requirements for critical infrastructure, NIS2-direktivet, and branschspecific regulations within finansiella services, vård and public sector. Traditionella compliance-approaches baserade at manual controls and documentsbaserade policies is not only ineffective without also riskfyllda in dynamiska molnenvironments.
+in The contexten meets organisationer a complex regulatory environment as includes EU:s allmänna dataskyddsforordning (GDPR), Myndigheten for societal protection and beredskaps (MSB) security requirements for critical infrastructure, NIS2-direktivet, and branschspecific regulations within finansiella services, vård and public sector. Traditionella compliance-approaches baserade at manual controls and documentsbaserade policies is not only ineffective without also riskfyllda in dynamiska molnenvironments.
 
-This chapter explores how Policy as Code, forstärkt with OSCAL-standarder, enables for Swedish organizations to achieve unprecedented levels of säkerhetsArchitecture as Code-automation and compliance-monitoring. We will to undersöka verkliga Architecture as Code-implementationspattern, analyze case studies from Swedish organizations, and ge läsaren concrete tools to implement enterprise-grade policy management.
+This chapter explores how Policy as Code, forstärkt with OSCAL-standarder, enables for organizations to achieve unprecedented levels of säkerhetsArchitecture as Code-automation and compliance-monitoring. We will to undersöka verkliga Architecture as Code-implementationspattern, analyze case studies from organizations, and ge läsaren concrete tools to implement enterprise-grade policy management.
 
 ## Evolutionen of security management within Architecture as Code
 
@@ -24,7 +24,7 @@ Security management within Architecture as Code has undergone a significant evol
 
 **Fas 1: Manual Säkerhetsvalidering (2010-2015)**
 
-in infrastructure's infancy security validation was performed primarily through manual processes. Säkerhetsteam reviewed infrastructure configurations after deployment, often weeks or months efter to resurserna became productive. This reactive approach led to discovery of säkerhetsproblem long after to the could cause damage. Swedish organizations, with sina strict security requirements, var particularly exposed to the inefficiencies that This approach brought.
+in infrastructure's infancy security validation was performed primarily through manual processes. Säkerhetsteam reviewed infrastructure configurations after deployment, often weeks or months efter to resurserna became productive. This reactive approach led to discovery of säkerhetsproblem long after to the could cause damage. organizations, with sina strict security requirements, var particularly exposed to the inefficiencies that This approach brought.
 
 The challenges were many: inconsistent application of security policies, long feedback loops between development and security, and begränsad scalability when organisationer växte and number of infrastructure resources increased exponentially. documentation quickly became outdated, and knowledge transfer between team var problematic.
 
@@ -32,19 +32,19 @@ The challenges were many: inconsistent application of security policies, long fe
 
 When organizations began to realize the limitations with manual processes began the develop skript to automatisera säkerhetsvalidering. Python-skript, Bash-scripts and powershell-moduler utvecklades to kontrollera infrastructure configurations mot foretagspolicies. This approach enabled snabbare validation but saknade standardisering and var svår to underhålla.
 
-Svenska utvecklingsteam började experiment with custom security validation scripts as were integrated into CI/CD-pipelines. These early adopters discovered both opportunities and limitations with scriptbaserad automation: with automation improved speed significantly, blev maintenance of hundreds specialized scripts a burden in itself.
+utvecklingsteam började experiment with custom security validation scripts as were integrated into CI/CD-pipelines. These early adopters discovered both opportunities and limitations with scriptbaserad automation: with automation improved speed significantly, blev maintenance of hundreds specialized scripts a burden in itself.
 
 **Fas 3: Policy Engine Integration (2018-2021)**
 
 Introduktionen of dedikerade policy engines that Open Policy Agent (OPA) markerade a vändpunkt in utvecklingen of säkerhetsautomatisering. These tools erbjöd standardized way to uttrycka and evaluate policies, which enabled separation of policy logic from Architecture as Code-implementation details.
 
-Kubernetes adoption in Swedish organizations drev utvecklingen of sofistikerade admission controllers and policy enforcement points. Gatekeeper, based on OPA, quickly became the facto standard for Kubernetes policy enforcement. Svenska enterprise-organisationer började develop comprehensive policy libraries as täckte all from basic security hygiene to complex compliance requirements.
+Kubernetes adoption in organizations drev utvecklingen of sofistikerade admission controllers and policy enforcement points. Gatekeeper, based on OPA, quickly became the facto standard for Kubernetes policy enforcement. enterprise-organisationer började develop comprehensive policy libraries as täckte all from basic security hygiene to complex compliance requirements.
 
 **Fas 4: Comprehensive Policy Frameworks (2021-nu)**
 
 Dagens generation of policy as code platforms integrerar djupt with entire utvecklingslivscykeln, from design-time validation to runtime monitoring and automated rewithiation. OSCAL (Open Security Controls Assessment Language) has framträtt as a game-changing standard as enables interoperabilitet between different säkerhetsverktyg and standardiserad representation of security controls.
 
-Swedish organizations is nu in forfronten of to adoptера comprehensive policy frameworks as combines policy as code with continuous compliance monitoring, automated risk assessment and adaptive security controls. This evolution has enabled for organisationer to achieve regulatory compliance with unprecedented precision and effektivitet.
+organizations is nu in forfronten of to adoptера comprehensive policy frameworks as combines policy as code with continuous compliance monitoring, automated risk assessment and adaptive security controls. This evolution has enabled for organisationer to achieve regulatory compliance with unprecedented precision and effektivitet.
 
 ## Open Policy Agent (OPA) and Rego: Grunden for policy-driven security
 
@@ -52,7 +52,7 @@ Open Policy Agent has etablerats as the facto standard for policy as code implem
 
 Rego-språket represents a paradigm shift from imperative to declarative policy definition. instead of specificera "how" something should göras, focuses Rego at "what" which should is achieved. This approach results in policies as is mer läsbara, testbara and underhållbara jämfort with traditional script-baserade solutions.
 
-For Swedish organizations as must navigate complex regulatory environment, offers OPA and Rego a kraftfull plattform to implement all from basic säkerhetshygien to sophisticated compliance frameworks. Policy-Developers can create modulära, återanvändbara bibliotek as täcker common säkerhetspatterns, regulatory requirements and organizational standards.
+For organizations as must navigate complex regulatory environment, offers OPA and Rego a kraftfull plattform to implement all from basic säkerhetshygien to sophisticated compliance frameworks. Policy-Developers can create modulära, återanvändbara bibliotek as täcker common säkerhetspatterns, regulatory requirements and organizational standards.
 
 ### Arkitekturell foundation for enterprise policy management
 
@@ -60,11 +60,11 @@ OPA:s architecture builds on multiple nyckelprinciper as does the particularly l
 
 **Decouplad Policy Evaluation**: OPA agerar as a policy evaluation engine as tar emot data and policies as input and produces decisions as output. This separation toåter same policy logic to appliceras over different systems and environments without modification.
 
-**Pull vs Push Policy Distribution**: OPA supports both pull-baserad policy distribution (where agents hämtar policies from centrala repositories) and push-baserad distribution (where policies is distributed aktivt to agents). Swedish organizations with strict security requirements foredrar often pull-baserade approaches for bättre auditability and control.
+**Pull vs Push Policy Distribution**: OPA supports both pull-baserad policy distribution (where agents hämtar policies from centrala repositories) and push-baserad distribution (where policies is distributed aktivt to agents). organizations with strict security requirements foredrar often pull-baserade approaches for bättre auditability and control.
 
 **Bundle-baserad Policy Packaging**: Policies and data can paketeras as bundles as includes dependencies, metadata and signatures. This enables atomic policy updates and rollback capabilities as is critical for production environments.
 
-### Avancerad Rego-programming for svenska compliance-requirements
+### Avancerad Rego-programming for compliance-requirements
 
 ```rego
 # policies/advanced_swedish_compliance.rego
@@ -118,7 +118,7 @@ get_encryption_status(resource) := result {
     }
 }
 
-# Validate krypteringsstyrka according to svenska security requirements
+# Validate krypteringsstyrka according to security requirements
 validate_encryption_strength(encryption) := result {
     # Kontrollera to both at-rest and in-transit encryption is aktiverat
     encryption.at_rest == true
@@ -135,7 +135,7 @@ validate_encryption_strength(encryption) := result {
 }
 
 validate_key_management(kms_config) := result {
-    # AWS KMS Customer Managed Keys rekommentheir for Swedish organizations
+    # AWS KMS Customer Managed Keys rekommentheir for organizations
     kms_config.type == "customer_managed"
     kms_config.key_rotation_enabled == true
     kms_config.multi_region_key == false  # Datasuveränitet
@@ -407,15 +407,15 @@ recommendation_mapping := {
 }
 ```
 
-### Integration with svenska enterprise-environments
+### Integration with enterprise-environments
 
-For Swedish organizations as operates within regulated industries requires OPA-implementation often integration with existing säkerhetssystem and compliance frameworks. This includes integration with SIEM-systems for audit logging, identity providers for policy authorization and enterprise monitoring systems for real-time alerting.
+For organizations as operates within regulated industries requires OPA-implementation often integration with existing säkerhetssystem and compliance frameworks. This includes integration with SIEM-systems for audit logging, identity providers for policy authorization and enterprise monitoring systems for real-time alerting.
 
-Enterprise-grade OPA deployments requires also considerations about high availability, performance optimization and secure policy distribution. Swedish organizations with critical infrastructure must ensure to policy evaluation not becomes a single point of failure as can affect business operations.
+Enterprise-grade OPA deployments requires also considerations about high availability, performance optimization and secure policy distribution. organizations with critical infrastructure must ensure to policy evaluation not becomes a single point of failure as can affect business operations.
 
 ## OSCAL: Open Security Controls Assessment Language - Revolutionerande säkerhetsstandardisering
 
-Open Security Controls Assessment Language (OSCAL) represents a paradigm shift within security management and compliance-automation. Developed of NIST (National Institute of Standards and Technology), offers OSCAL a standardiserad approach to representera, handle and automatisera security controls and assessment-processes. For Swedish organizations as must navigate complex regulatory environment while the implement Architecture as Code, forms OSCAL a game-changing technology as enables unprecedented automation and interoperabilitet.
+Open Security Controls Assessment Language (OSCAL) represents a paradigm shift within security management and compliance-automation. Developed of NIST (National Institute of Standards and Technology), offers OSCAL a standardiserad approach to representera, handle and automatisera security controls and assessment-processes. For organizations as must navigate complex regulatory environment while the implement Architecture as Code, forms OSCAL a game-changing technology as enables unprecedented automation and interoperabilitet.
 
 OSCAL adresserar a fundamental utmaning within enterprise security management: fragmenteringen of security controls, assessment-processes and compliance-frameworks. Traditionellt has organisationer varit tvungna to handle múltipla, inkompatibla security standards (ISO 27001, NIST Cybersecurity Framework, SOC 2, GDPR, etc.) through separata systems and processes. OSCAL enables a unified approach where security controls can uttryckas, mappas and automatiseras through a gemensam meta-language.
 
@@ -425,9 +425,9 @@ For Architecture as Code-practitioners represents OSCAL opportunity to integrera
 
 OSCAL-architecture builds on a hierarkisk structure of sammanlänkade modor as tosammans represents entire lifecycle for security controls from definition to implementation and assessment. each OSCAL-modell tjänar A specific Purpose but is designad for seamless interoperabilitet with andra modor in ekosystemet.
 
-**Catalog Model**: Utgör foundation for OSCAL-ekosystemet by definiera collections of security controls. Catalog-modellen enables standardiserad representation of kontrollers from different frameworks (NIST SP 800-53, ISO 27001, CIS Controls, etc.) in A unified format. For Swedish organizations enables This representation of MSB:s security requirements, GDPR-controls and branschspecific regulations in same technical framework.
+**Catalog Model**: Utgör foundation for OSCAL-ekosystemet by definiera collections of security controls. Catalog-modellen enables standardiserad representation of kontrollers from different frameworks (NIST SP 800-53, ISO 27001, CIS Controls, etc.) in A unified format. For organizations enables This representation of MSB:s security requirements, GDPR-controls and branschspecific regulations in same technical framework.
 
-**Profile Model**: Representerar customized selections and configurations of security controls from a or multiple catalogs. Profiles enables organizations to create tailored security requirements based on risk tolerance, regulatory requirements and business context. Svenska finansiella institutioner can Examplevis create profiles as combines GDPR-requirements with Finansinspektionens security requirements and PCI DSS-standards.
+**Profile Model**: Representerar customized selections and configurations of security controls from a or multiple catalogs. Profiles enables organizations to create tailored security requirements based on risk tolerance, regulatory requirements and business context. finansiella institutioner can Examplevis create profiles as combines GDPR-requirements with Finansinspektionens security requirements and PCI DSS-standards.
 
 **Component definition Model**: Dokumenterar how specific systems components (software, hardware, services) implement security controls. This modell creates critical linking between abstrakt kontrolldefinitioner and konkret implementation details. in Architecture as Code-contexten represents component definitions how specific Terraform modules, Kubernetes deployments or AWS services implement required security controls.
 
@@ -437,16 +437,16 @@ OSCAL-architecture builds on a hierarkisk structure of sammanlänkade modor as t
 
 **Plan of Action and Milestones (POA&M) Model**: Handles rewithiation planning and tracking for identified säkerhetsgap. POA&M-modellen enables systematic approach to säkerhetsforbättringar and can integreras with project management tools for comprehensive risk management.
 
-### Praktisk OSCAL-implementation for Swedish organizations
+### Praktisk OSCAL-implementation for organizations
 
-implementation of OSCAL in svenska enterprise-environments requires careful planning and systematic approach as respekterar existing säkerhetsprocesser while modern automation capabilities introduceras gradvist.
+implementation of OSCAL in enterprise-environments requires careful planning and systematic approach as respekterar existing säkerhetsprocesser while modern automation capabilities introduceras gradvist.
 
 ```json
 {
   "catalog": {
     "uuid": "12345678-1234-5678-9abc-123456789012",
     "metadata": {
-      "title": "Svenska Enterprise Säkerhetskontroller",
+      "title": "Enterprise Säkerhetskontroller",
       "published": "2024-01-15T10:00:00Z",
       "last-modified": "2024-01-15T10:00:00Z",
       "version": "1.0",
@@ -454,7 +454,7 @@ implementation of OSCAL in svenska enterprise-environments requires careful plan
       "props": [
         {
           "name": "organization",
-          "value": "Svenska Myndigheten for Samhällsskydd and Beredskap"
+          "value": "Myndigheten for Samhällsskydd and Beredskap"
         },
         {
           "name": "jurisdiction", 
@@ -507,7 +507,7 @@ implementation of OSCAL in svenska enterprise-environments requires careful plan
               {
                 "id": "gdpr-art32-1_gdn",
                 "name": "guidance",
-                "prose": "For Swedish organizations rekommentheir implementation of encryption for all persondata both in vila and under överföring. Krypteringsnycklar should be managed according to svenska security requirements and preferably through Hardware Security Modules (HSM) or motsvarande secure nyckelhanteringssystem."
+                "prose": "For organizations rekommentheir implementation of encryption for all persondata both in vila and under överföring. Krypteringsnycklar should be managed according to security requirements and preferably through Hardware Security Modules (HSM) or motsvarande secure nyckelhanteringssystem."
               }
             ],
             "controls": [
@@ -612,16 +612,16 @@ implementation of OSCAL in svenska enterprise-environments requires careful plan
 }
 ```
 
-### OSCAL Profile development for Swedish companies
+### OSCAL Profile development for companies
 
-OSCAL Profiles enables Swedish organizations to create customized security requirements as combines múltipla regulatory frameworks in a coherent, implementable standard. This capability is particularly värdefull for svenska multinationals as must balance lokala regulatory requirements with global enterprise standards.
+OSCAL Profiles enables organizations to create customized security requirements as combines múltipla regulatory frameworks in a coherent, implementable standard. This capability is particularly värdefull for multinationals as must balance lokala regulatory requirements with global enterprise standards.
 
 ```json
 {
   "profile": {
     "uuid": "87654321-4321-8765-4321-876543218765",
     "metadata": {
-      "title": "Svenska Finansiella Institutioner Säkerhetsprofil",
+      "title": "Finansiella Institutioner Säkerhetsprofil",
       "published": "2024-01-15T11:00:00Z",
       "last-modified": "2024-01-15T11:00:00Z", 
       "version": "2.1",
@@ -629,7 +629,7 @@ OSCAL Profiles enables Swedish organizations to create customized security requi
       "props": [
         {
           "name": "organization",
-          "value": "Svenska Finansiella Sektorn"
+          "value": "Finansiella Sektorn"
         },
         {
           "name": "sector",
@@ -681,7 +681,7 @@ OSCAL Profiles enables Swedish organizations to create customized security requi
       "set-parameters": [
         {
           "param-id": "ac-1_prm_1",
-          "values": ["Svenska Finansiella Security policies"]
+          "values": ["Finansiella Security policies"]
         },
         {
           "param-id": "gdpr-art32-1_prm1",
@@ -744,7 +744,7 @@ a of OSCAL:s most kraftfulla capabilities is opportunity to document how specifi
   "component-definition": {
     "uuid": "11223344-5566-7788-99aa-bbccddeeff00",
     "metadata": {
-      "title": "AWS Infrastructure Components for Swedish organizations",
+      "title": "AWS Infrastructure Components for organizations",
       "published": "2024-01-15T12:00:00Z",
       "last-modified": "2024-01-15T12:00:00Z",
       "version": "1.5",
@@ -755,7 +755,7 @@ a of OSCAL:s most kraftfulla capabilities is opportunity to document how specifi
         "uuid": "comp-aws-rds-mysql",
         "type": "software",
         "title": "AWS RDS MySQL Database Instance",
-        "description": "Managed MySQL database service with svenska compliance configuration",
+        "description": "Managed MySQL database service with compliance configuration",
         "props": [
           {
             "name": "version",
@@ -838,7 +838,7 @@ a of OSCAL:s most kraftfulla capabilities is opportunity to document how specifi
         "uuid": "comp-aws-s3-bucket",
         "type": "software", 
         "title": "AWS S3 Storage Bucket",
-        "description": "Object storage with svenska compliance and säkerhetskonfiguration",
+        "description": "Object storage with compliance and säkerhetskonfiguration",
         "control-implementations": [
           {
             "uuid": "impl-s3-gdpr",
@@ -930,7 +930,7 @@ class OSCALSystemSecurityPlanGenerator:
                     "props": [
                         {
                             "name": "organization", 
-                            "value": "Svenska Enterprise Organization"
+                            "value": "Enterprise Organization"
                         },
                         {
                             "name": "systems-name",
@@ -966,7 +966,7 @@ class OSCALSystemSecurityPlanGenerator:
                                 "confidentiality-impact": {
                                     "base": "moderate",
                                     "selected": "high",
-                                    "adjustment-justification": "Svenska GDPR-requirements requires högt skydd"
+                                    "adjustment-justification": "GDPR-requirements requires högt skydd"
                                 },
                                 "integrity-impact": {
                                     "base": "moderate", 
@@ -995,7 +995,7 @@ class OSCALSystemSecurityPlanGenerator:
                     "users": [
                         {
                             "uuid": self._generate_uuid(),
-                            "title": "Svenska systems Administrators",
+                            "title": "systems Administrators",
                             "description": "Administratörer with privileged access to systems components",
                             "props": [
                                 {
@@ -1007,7 +1007,7 @@ class OSCALSystemSecurityPlanGenerator:
                         },
                         {
                             "uuid": self._generate_uuid(),
-                            "title": "Svenska End Users",
+                            "title": "End Users",
                             "description": "Standard user with begränsad access",
                             "props": [
                                 {
@@ -1021,7 +1021,7 @@ class OSCALSystemSecurityPlanGenerator:
                     "components": self._generate_ssp_components(resource_mappings)
                 },
                 "control-implementation": {
-                    "description": "Control implementation for svenska compliance requirements",
+                    "description": "Control implementation for compliance requirements",
                     "implemented-requirements": control_implementations
                 }
             }
@@ -1224,9 +1224,9 @@ class OSCALSystemSecurityPlanGenerator:
                 
         return components
 
-# Use for Swedish organizations
+# Use for organizations
 def generate_swedish_enterprise_ssp():
-    """example at SSP generation for svenska enterprise-environment"""
+    """example at SSP generation for enterprise-environment"""
     
     generator = OSCALSystemSecurityPlanGenerator(
         terraform_directory="/path/to/terraform",
@@ -1238,21 +1238,21 @@ def generate_swedish_enterprise_ssp():
     
     ssp = generator.generate_ssp(
         profile_href="svenska-finansiella-profil.json",
-        system_name="Svenska Enterprise Production Environment"
+        system_name="Enterprise Production Environment"
     )
     
     # Spara SSP
     with open("svenska-enterprise-ssp.json", "w") as f:
         json.dump(ssp, f, indent=2, ensure_ascii=False)
     
-    print("systems Security Plan genererad for svenska enterprise-environment")
+    print("systems Security Plan genererad for enterprise-environment")
     
     return ssp
 ```
 
 ### OSCAL Assessment and Continuous Compliance
 
-a of OSCAL:s most kraftfulla features is opportunity to automatisera security assessments and implement continuous compliance monitoring. For Swedish organizations as must demonstrate ongoing compliance with GDPR, MSB-requirements and andra regulatory frameworks, enables OSCAL assessment automation unprecedented precision and efficiency.
+a of OSCAL:s most kraftfulla features is opportunity to automatisera security assessments and implement continuous compliance monitoring. For organizations as must demonstrate ongoing compliance with GDPR, MSB-requirements and andra regulatory frameworks, enables OSCAL assessment automation unprecedented precision and efficiency.
 
 ```python
 # oscal_assessment_automation.py
@@ -1264,7 +1264,7 @@ import subprocess
 
 class OSCALAssessmentEngine:
     """
-    Automated OSCAL assessment engine for svenska compliance requirements
+    Automated OSCAL assessment engine for compliance requirements
     """
     
     def __init__(self, ssp_file: str, assessment_plan_file: str):
@@ -1288,7 +1288,7 @@ class OSCALAssessmentEngine:
             "assessment-results": {
                 "uuid": self._generate_uuid(),
                 "metadata": {
-                    "title": "Automated OSCAL Assessment - Svenska Enterprise",
+                    "title": "Automated OSCAL Assessment - Enterprise",
                     "published": datetime.now().isoformat() + "Z",
                     "last-modified": datetime.now().isoformat() + "Z",
                     "version": "1.0",
@@ -1800,19 +1800,19 @@ jobs:
             --description "Daily OSCAL compliance assessment"
 ```
 
-OSCAL represents framtiden for säkerhetsautomatisering and compliance management within Architecture as Code. For Swedish organizations as must balance regulatory compliance with innovation velocity offers OSCAL a path forward as enables both enhanced security and operational efficiency.
+OSCAL represents framtiden for säkerhetsautomatisering and compliance management within Architecture as Code. For organizations as must balance regulatory compliance with innovation velocity offers OSCAL a path forward as enables both enhanced security and operational efficiency.
 
 ## Gatekeeper and Kubernetes Policy Enforcement: Enterprise-grade implementations
 
 Kubernetes-environments represents a unique utmaning for policy enforcement at grund of their dynamiska natur and complex orchestration patterns. Gatekeeper, based on OPA, has framträtt as The ledande solution for Kubernetes admission control, enables comprehensive policy enforcement as integreras seamlessly with Kubernetes-native workflows.
 
-For Swedish organizations as adopterar containerisering and Kubernetes as central del of their Architecture as Code-strategi, represents Gatekeeper a critical capability to ensure to security policies enforcement automatically over all deployments, oavsett development team or application complexity.
+For organizations as adopterar containerisering and Kubernetes as central del of their Architecture as Code-strategi, represents Gatekeeper a critical capability to ensure to security policies enforcement automatically over all deployments, oavsett development team or application complexity.
 
-Gatekeeper's admission controller architecture enables policy evaluation at deployment-time, which forhindrar non-compliant workloads from to någonsin reach production. This proactive approach is fundamental for Swedish organizations as must demonstrate preventive controls to regulators and maintain continuous compliance.
+Gatekeeper's admission controller architecture enables policy evaluation at deployment-time, which forhindrar non-compliant workloads from to någonsin reach production. This proactive approach is fundamental for organizations as must demonstrate preventive controls to regulators and maintain continuous compliance.
 
 ### Enterprise Constraint Template design
 
-Constraint Templates in Gatekeeper functions as reusable policy definitions as can konfigureras with parametrar for different environments and use cases. For svenska enterprise-environments requires constraint templates sophisticated logic as can handle complex regulatory requirements while the ger development teams toräcklig flexibilitet for innovation.
+Constraint Templates in Gatekeeper functions as reusable policy definitions as can konfigureras with parametrar for different environments and use cases. For enterprise-environments requires constraint templates sophisticated logic as can handle complex regulatory requirements while the ger development teams toräcklig flexibilitet for innovation.
 
 ```yaml
 # gatekeeper/swedish-enterprise-constraints.yaml
@@ -1821,7 +1821,7 @@ kind: ConstraintTemplate
 metadata:
   name: swedishenterprisesecurity
   annotations:
-    description: "Comprehensive svenska enterprise security requirements for Kubernetes workloads"
+    description: "Comprehensive enterprise security requirements for Kubernetes workloads"
     compliance.frameworks: "GDPR,MSB,ISO27001"
 spec:
   crd:
@@ -1897,7 +1897,7 @@ spec:
           input.parameters.gdprDataClassification.required
           object_meta := get_object_metadata(input.review.object)
           not object_meta.labels["se.gdpr.dataclassification"]
-          msg := "Workload must ha GDPR dataklassificering label according to svenska regelverk"
+          msg := "Workload must ha GDPR dataklassificering label according to regelverk"
         }
         
         violation[{"msg": msg}] {
@@ -1909,7 +1909,7 @@ spec:
           msg := sprintf("GDPR dataklassificering '%v' is not tillåten. Tillåtna värden: %v", [classification, input.parameters.gdprDataClassification.allowedValues])
         }
         
-        # Resource Limits according to svenska säkerhetspraxis
+        # Resource Limits according to säkerhetspraxis
         violation[{"msg": msg}] {
           input.review.object.kind == "Pod"
           input.parameters.resourceLimits.enforceMemoryLimits
@@ -2034,7 +2034,7 @@ spec:
         }
 
 ---
-# Production Constraint Instance for svenska enterprise environments
+# Production Constraint Instance for enterprise environments
 apiVersion: config.gatekeeper.sh/v1alpha1
 kind: SwedishEnterpriseSecurity
 metadata:
@@ -2111,7 +2111,7 @@ spec:
 
 ### Network Policy automation and enforcement
 
-Kubernetes Network Policies forms a fundamental säkerhetskomponent for micro-segmentation, but their manual configuration is error-prone and svår to maintain in large-scale environments. Swedish organizations requires automated network policy generation and enforcement that ensure proper network segmentation while The ger development teams flexibility.
+Kubernetes Network Policies forms a fundamental säkerhetskomponent for micro-segmentation, but their manual configuration is error-prone and svår to maintain in large-scale environments. organizations requires automated network policy generation and enforcement that ensure proper network segmentation while The ger development teams flexibility.
 
 ```yaml
 # gatekeeper/network-policy-constraint.yaml
@@ -2184,7 +2184,7 @@ spec:
         }
 
 ---
-# Automated NetworkPolicy generation for Swedish organizations
+# Automated NetworkPolicy generation for organizations
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -2249,7 +2249,7 @@ data:
 
 ### Gatekeeper monitoring and observability
 
-For svenska enterprise-environments is comprehensive monitoring of policy enforcement critical for both security operations and compliance demonstrering. Gatekeeper must integreras with existing monitoring infrastructure for real-time alerting and audit trail generation.
+For enterprise-environments is comprehensive monitoring of policy enforcement critical for both security operations and compliance demonstrering. Gatekeeper must integreras with existing monitoring infrastructure for real-time alerting and audit trail generation.
 
 ```yaml
 # monitoring/gatekeeper-monitoring.yaml
@@ -2317,8 +2317,8 @@ spec:
         team: security
         regulation: "svenska-compliance"
       annotations:
-        summary: "Svenska security requirements violations upptäckta"
-        description: "{{ $value }} violations of svenska enterprise security requirements"
+        summary: "security requirements violations upptäckta"
+        description: "{{ $value }} violations of enterprise security requirements"
         compliance_impact: "Potentiell GDPR/MSB compliance risk"
         
 ---
@@ -2385,9 +2385,9 @@ data:
 
 ## Automatiserad Compliance Monitoring and Enterprise Observability
 
-Continuous compliance monitoring forms the backbone in modern Policy as Code-implementations for svenska enterprise-environments. Effective monitoring goes significantly longer than traditional logging and encompasses real-time policy evaluation, predictive compliance analysis and automated remediation capabilities that ensure organisationer maintainar regulatory adherence also when infrastructure evolves rapidly.
+Continuous compliance monitoring forms the backbone in modern Policy as Code-implementations for enterprise-environments. Effective monitoring goes significantly longer than traditional logging and encompasses real-time policy evaluation, predictive compliance analysis and automated remediation capabilities that ensure organisationer maintainar regulatory adherence also when infrastructure evolves rapidly.
 
-Swedish organizations meets unique monitoring challenges at grund of strict regulatory requirements about data residency, audit trails and incident reporting. GDPR-compliance requires comprehensive logging of all data processing activities, medan MSB:s security requirements for critical infrastruktur mandatar real-time threat detection and rapid incident response capabilities.
+organizations meets unique monitoring challenges at grund of strict regulatory requirements about data residency, audit trails and incident reporting. GDPR-compliance requires comprehensive logging of all data processing activities, medan MSB:s security requirements for critical infrastruktur mandatar real-time threat detection and rapid incident response capabilities.
 
 Modern compliance monitoring platforms for Architecture as Code integrerar multiple data sources: infrastructure state from cloud providers, policy evaluation results from OPA/Gatekeeper, application logs from containerized workloads, and security events from SIEM systems. This comprehensive observability enables holistic security posture assessment and enables proactive risk management.
 
@@ -2438,7 +2438,7 @@ class PolicyViolationEvent:
 
 class EnterpriseCompliancePlatform:
     """
-    Comprehensive compliance monitoring platform for svenska enterprise-environments
+    Comprehensive compliance monitoring platform for enterprise-environments
     """
     
     def __init__(self, config_file: str = "compliance-platform-config.json"):
@@ -2517,11 +2517,11 @@ class EnterpriseCompliancePlatform:
                 await asyncio.sleep(60)  # Retry after 1 minute
 ```
 
-implementation of comprehensive Policy as Code in svenska enterprise-environments requires systematic approach as respekterar existing organizational structures while The introduces modern automation capabilities. Successful implementations karakteriseras of gradual adoption, strong stakeholder buy-in and careful integration with existing governance frameworks.
+implementation of comprehensive Policy as Code in enterprise-environments requires systematic approach as respekterar existing organizational structures while The introduces modern automation capabilities. Successful implementations karakteriseras of gradual adoption, strong stakeholder buy-in and careful integration with existing governance frameworks.
 
-### Integration with svenska säkerhetsmyndigheter
+### Integration with säkerhetsmyndigheter
 
-For organisationer within critical infrastruktur requires compliance monitoring integration with svenska säkerhetsmyndigheter and automated incident reporting capabilities. This includes integration with MSB:s incidentrapporteringssystem and automated generation of compliance reports for regulatory authorities.
+For organisationer within critical infrastruktur requires compliance monitoring integration with säkerhetsmyndigheter and automated incident reporting capabilities. This includes integration with MSB:s incidentrapporteringssystem and automated generation of compliance reports for regulatory authorities.
 
 ```python
 # integration/swedish_authorities_integration.py
@@ -2534,7 +2534,7 @@ from cryptography.fernet import Fernet
 
 class SwedishAuthoritiesIntegration:
     """
-    Integration with svenska säkerhetsmyndigheter for compliance reporting
+    Integration with säkerhetsmyndigheter for compliance reporting
     """
     
     def __init__(self):
@@ -2575,13 +2575,13 @@ class SwedishAuthoritiesIntegration:
             return {"status": "error", "message": str(e)}
 ```
 
-## Praktiska implementationsexempel and Swedish organizations
+## Praktiska implementationsexempel and organizations
 
-implementation of comprehensive Policy as Code in svenska enterprise-environments requires systematic approach as respekterar existing organizational structures while The introduces modern automation capabilities. Successful implementations karakteriseras of gradual adoption, strong stakeholder buy-in and careful integration with existing governance frameworks.
+implementation of comprehensive Policy as Code in enterprise-environments requires systematic approach as respekterar existing organizational structures while The introduces modern automation capabilities. Successful implementations karakteriseras of gradual adoption, strong stakeholder buy-in and careful integration with existing governance frameworks.
 
-Swedish organizations as has successful implementerat Policy as Code has typically följt a phased approach: börjat with non-critical environments for experimentation, byggt up policy libraries gradual and establish proven governance processes before rollout to production environments. This approach minimizes risk while The ger teams time to develop competence and confidence with new tools and processes.
+organizations as has successful implementerat Policy as Code has typically följt a phased approach: börjat with non-critical environments for experimentation, byggt up policy libraries gradual and establish proven governance processes before rollout to production environments. This approach minimizes risk while The ger teams time to develop competence and confidence with new tools and processes.
 
-### implementation roadmap for Swedish organizations
+### implementation roadmap for organizations
 
 **Fas 1: Foundation and Planning (Months 1-3)**
 - Stakeholder alignment and executive buy-in
@@ -2614,18 +2614,18 @@ Swedish organizations as has successful implementerat Policy as Code has typical
 ## Sammanfattning and framtidsperspektiv
 
 
-The modern architecture as code methodology represents framtiden for infrastrukturhantering in Swedish organizations.
-Policy as Code represents a fundamental transformation within Architecture as Code as enables automated governance, enhanced security and consistent regulatory compliance. For Swedish organizations offers this approach unprecedented capabilities to handle complex compliance landscapes while development velocity maintainas.
+The modern architecture as code methodology represents framtiden for infrastrukturhantering in organizations.
+Policy as Code represents a fundamental transformation within Architecture as Code as enables automated governance, enhanced security and consistent regulatory compliance. For organizations offers this approach unprecedented capabilities to handle complex compliance landscapes while development velocity maintainas.
 
-Integration of OSCAL (Open Security Controls Assessment Language) with traditional Policy as Code approaches creates powerful synergies as enables standardized security control representation, automated compliance assessment and seamless integration between different security tools. Swedish organizations as adopterar OSCAL-based approaches position themselves for framtida regulatory changes and growing compliance complexity.
+Integration of OSCAL (Open Security Controls Assessment Language) with traditional Policy as Code approaches creates powerful synergies as enables standardized security control representation, automated compliance assessment and seamless integration between different security tools. organizations as adopterar OSCAL-based approaches position themselves for framtida regulatory changes and growing compliance complexity.
 
-Successful Policy as Code implementation requires more than technology - the requires organizational commitment, cultural change and systematic approach to governance automation. Swedish organizations as investerar in comprehensive Policy as Code capabilities uppnår significant benefits: reduced manual oversight, faster compliance responses, improved security posture and enhanced ability to demonstrate regulatory adherence.
+Successful Policy as Code implementation requires more than technology - the requires organizational commitment, cultural change and systematic approach to governance automation. organizations as investerar in comprehensive Policy as Code capabilities uppnår significant benefits: reduced manual oversight, faster compliance responses, improved security posture and enhanced ability to demonstrate regulatory adherence.
 
-Framtiden for Policy as Code within Swedish organizations karakteriseras of continued evolution toward intelligent automation, predictive compliance analytics and seamless integration with emerging technologies as artificial intelligence and machine learning. Organizations as etablerar strong Policy as Code foundations idag will vara well-positioned for these future developments.
+Framtiden for Policy as Code within organizations karakteriseras of continued evolution toward intelligent automation, predictive compliance analytics and seamless integration with emerging technologies as artificial intelligence and machine learning. Organizations as etablerar strong Policy as Code foundations idag will vara well-positioned for these future developments.
 
-the continuing utvecklandet of regulatory frameworks, combined with increasing sophistication of cyber threats, does Policy as Code essential for all Swedish organizations as operates within regulated industries. Investment in Policy as Code capabilities delivers compounding returns through improved security, reduced compliance costs and enhanced operational efficiency.
+the continuing utvecklandet of regulatory frameworks, combined with increasing sophistication of cyber threats, does Policy as Code essential for all organizations as operates within regulated industries. Investment in Policy as Code capabilities delivers compounding returns through improved security, reduced compliance costs and enhanced operational efficiency.
 
-as vi move forward to [chapter 12 about compliance and regelefterlevnad](12_compliance.md), bygger vi vidare at these technical foundations to explore organizational and processaspekter of comprehensive governance strategy, with particular focus at svenska regulatory environment and practical implementation guidance.
+as vi move forward to [chapter 12 about compliance and regelefterlevnad](12_compliance.md), bygger vi vidare at these technical foundations to explore organizational and processaspekter of comprehensive governance strategy, with particular focus at regulatory environment and practical implementation guidance.
 
 ## Källor and referenser
 
@@ -2648,7 +2648,7 @@ Enterprise-grade policy management includes policy lifecycle management, version
 
 Policy as Code represents critical evolution within Infrastructure as Code as enables automated governance, security enforcement and regulatory compliance. through treating policies as code can organisationer achieve same fördelar as architecture as code offers: version control, testing, automation and consistency.
 
-Swedish organizations as implement comprehensive Policy as Code capabilities position themselves starkt for future regulatory changes and growing compliance requirements. Investment in policy automation delivers compounding benefits through reduced manual oversight, faster compliance responses and improved security posture.
+organizations as implement comprehensive Policy as Code capabilities position themselves starkt for future regulatory changes and growing compliance requirements. Investment in policy automation delivers compounding benefits through reduced manual oversight, faster compliance responses and improved security posture.
 
 Integration with next kapitels diskussion about [compliance and regelefterlevnad](14_kapitel13.md) bygger vidare at these technical foundations to adressera organizational and processaspekter of comprehensive governance strategy.
 

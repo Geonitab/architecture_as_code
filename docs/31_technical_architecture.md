@@ -261,7 +261,7 @@ The design system implements Kvadrat’s visual identity:
 
 - **Twenty-six whitepapers**: One per chapter.
 - **Professional HTML design**: Responsive and print-friendly.
-- **Swedish market adjustments**: Tuned for Swedish organisations.
+- **market adjustments**: Tuned for organizations.
 - **Search optimisation**: Accurate metadata and structure.
 - **Distribution ready**: Suitable for email, web, or print.
 
@@ -295,7 +295,7 @@ The system is designed for continuous improvement:
 
 ## Summary
 
-The modern Architecture as Code methodology represents the future of infrastructure management in Swedish organisations. The technical architecture behind "Architecture as Code" demonstrates the practical application of the book’s principles. By codifying the entire publication process the team achieves:
+The modern Architecture as Code methodology represents the future of infrastructure management in organizations. The technical architecture behind "Architecture as Code" demonstrates the practical application of the book’s principles. By codifying the entire publication process the team achieves:
 
 - **Architecture as Code automation**: Complete CI/CD for book production.
 - **Quality**: Consistent formatting and professional presentation.
