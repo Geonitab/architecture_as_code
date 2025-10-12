@@ -2,7 +2,7 @@
 
 The evolution of Architecture as Code (AaC) best practices represents a continuous journey informed by practical experience, community feedback, and an ever-changing technology landscape. As organisations worldwide adopt infrastructure automation, the collective wisdom of early adopters shapes emerging standards and patterns that help others avoid common pitfalls whilst accelerating their transformation initiatives.
 
-![architecture as code best practices evolution](images/diagram_20_kapitel19.png)
+![architecture as code best practices evolution](images/diagram_22_kapitel19.png)
 
 *Figure 24.1: Architecture as Code best practices evolve continuously through practical experience, community feedback, and technological advancement. The diagram illustrates the iterative process from initial Architecture as Code implementation to mature, optimised practices that deliver sustainable value.*
 
