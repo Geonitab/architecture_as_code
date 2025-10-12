@@ -1,201 +1,170 @@
-# About the Authors
+# About the Author
 
-This chapter presenterar the personer and organisationer as bidragit to createndet of "Architecture as Code" - a comprehensive guide for praktisk application of Architecture as Code in Swedish organizations.
+This book represents the culmination of extensive experience in architecture, infrastructure, and system development, bringing together theoretical foundations with practical expertise to create a comprehensive resource for organisations embracing Architecture as Code.
 
-![Författare and bidragsgivare](images/diagram_25_authors.png)
+![Gunnar Nordqvist - Chief Architect](images/diagram_29_author_profile.png)
 
-*a Overview over the experter and organisationer as format Contentset in This bok through sina bidrag within Architecture as Code and Architecture as Code (Architecture as Code).*
+*An overview of the expertise and experience that shaped this comprehensive guide to Architecture as Code and Infrastructure as Code.*
 
-## Huvudforfattare
+## Gunnar Nordqvist
 
-### Kodarkitektur Bokverkstad
+**Gunnar Nordqvist** is a certified Chief Architect and IT Architect at Kvadrat, one of Sweden's leading technology consulting companies. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
 
-**Kodarkitektur Bokverkstad** is The huvudsakliga redaktionella kraften behind This publikation. Organisationen represents a samling of svenska experter within architecture, infrastructure and system development as arbetat tosammans to create a heltäckande resurs for Swedish organizations.
+### Professional Background
 
-**Expertområden:**
-- Architecture as Code metodologi
-- Architecture as Code Architecture as Code-implementation
-- DevOps and CI/CD automation
-- Molnarkitektur and containerisering
-- Security and compliance in svenska context
+Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and IT security projects. His diverse technical background encompasses network solutions, servers, virtualisation, and IT security, among other critical areas of modern technology infrastructure.
 
-**Background:**
-Bokverkstaden grundades with målet to överbrygga klyftan between teoretiska arkitekturprinciper and praktisk Architecture as Code-implementation in Swedish organizations. by kombinera akademisk rigorositet with verklig branschexpertis has teamet created a resurs as talar direkt to svenska IT-organisationers behov.
+**Core Areas of Expertise:**
+- Solution and Enterprise Architecture
+- Infrastructure as Code and Architecture as Code
+- IT Security and Compliance
+- Cloud Architecture and Virtualisation
+- DevOps and CI/CD Automation
+- Network Solutions and Infrastructure Design
 
-## Bidragande experter
+### Architecture as Code Journey
 
-### Infrastrukturspecialister
+Throughout his career, Gunnar has witnessed the evolution from manual, document-based architecture practices to the modern paradigm of codified architecture. This transformation has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software development.
 
-**Svenska DevOps-community** has bidragit with comprehensive praktisk knowledge about implementation of Architecture as Code in svenska environments. This grupp includes:
+His work at Kvadrat has provided him with unique insights into the challenges faced by Swedish organisations as they navigate digital transformation and adopt Architecture as Code practices. These real-world experiences inform every chapter of this book, ensuring that theoretical principles are always grounded in practical application.
 
-- **Molnarkitekter** from ledande svenska teknologiforetag
-- **DevOps Engineers** with specialistkunskap within automation
-- **Säkerhetsexperter** with fokus at svenska compliance-requirements
-- **system architects** from both privata and offentliga organisationer
+## About Kvadrat
 
-### Tekniska granskare
+**Kvadrat** is a Swedish technology consulting company renowned for delivering excellence in IT architecture and infrastructure solutions. The company has been instrumental not only in supporting the creation of this book but also in pioneering Architecture as Code practices within Swedish organisations.
 
-Book content has granskats of:
+### Kvadrat's Contribution
 
-- **Senior molnarkitekter** from svenska storforetag
-- **Tekniska chefer** within svensk finanssektor  
-- **Compliance-specialister** with expertis within svenska regelverk
-- **Open source code-maintainers** of Architecture as Code tool
+**Technical Excellence:**
+- Solution architecture and enterprise architecture consulting
+- Infrastructure as Code implementation and best practices
+- Cloud migration and modernisation programmes
+- Security and compliance advisory
 
-### Contentssspecialister
+**Book Development Support:**
+- Professional design and brand integration
+- Technical infrastructure for automated publishing
+- Quality assurance and technical review
+- CI/CD pipeline development for book production
 
-- **Tekniska skribenter** specialized at svensk IT-documentation
-- **Utbildningsdesigners** with fokus at vuxenutbildning within technology
-- **Språkspecialister** for technical svenska terminologi
+### Design and Brand Integration
 
-## organizational bidrag
+The visual identity of this book reflects Kvadrat's commitment to professional excellence. The design system incorporates:
 
-### Kvadrat AB
+- Modern, professional layout aligned with Kvadrat's brand guidelines
+- Consistent colour palette (Kvadrat Blue: hsl(221, 67%, 32%))
+- Clean typography and readable formatting
+- Professional diagrams and visual elements
 
-**Kvadrat** has bidragit as technical partner and designstöd for This publikation. Which svenskt teknologikonsultforetag has Kvadrat apporterat:
+## The Book's Technical Foundation
 
-**design and varumärke:**
-- Professionell bokdesign and layout
-- Kvadrat-varumärkesintegrering in designsystem
-- HTML/CSS-baserat omslag-designsystem
-- Responsiv and print-vänlig design
+This publication demonstrates Architecture as Code principles not only in its content but in its very creation. The book itself is built using modern DevOps practices and automated workflows.
 
-**technical infrastructure:**
-- GitHub Actions CI/CD-pipeline development
-- Automatiserad Pandoc-configuration
-- Mermaid diagrams integration and styling
-- Multi-format export-funktionalitet
+### Publishing Toolchain
 
-**Kvalitetssäkring:**
-- technical granskning of automation-workflows
-- validation of svenska terminologi and språkbruk
-- testing of build-processes and distribution
+**Content Generation:**
+- **Python 3.12** for content automation and orchestration
+- **Pandoc 3.1.9** for document conversion and multi-format publishing
+- **XeLaTeX** with Eisvogel template for professional PDF production
+- **Mermaid CLI** for diagram-as-code generation
 
-### Swedish organizations
-
-Flera Swedish organizations has bidragit with:
-
-- **Fallstudier** from verkliga Architecture as Code-implementations
-- **Architecture as Code best practices** from svenska molnmigreringar
-- **Compliance-vägledning** for svenska regelverk
-- **Säkerhetsperspektiv** from svenska cybersäkerhetsexperter
-
-## Technical implementation
-
-### Bokproduktions-teamet
-
-the technical teamet behind bokproduktionen includes:
-
-**Content Engineers:**
-- Markdown-specialister for technical documentation
-- Pandoc-experter for multi-format publishing
-- LaTeX-specialister for professionell PDF-layout
-
-**DevOps Engineers:**
-- GitHub Actions workflow-Developers
-- CI/CD automation-specialister
-- Build pipeline optimization-experter
-
-**Quality Assurance:**
-- Tekniska testare for content validation
-- Language validators for svensk terminologi
-- Accessibility specialists for universal design
-
-### Tools and technologies
-
-This bok createdes with hjälp of:
-
-- **Python 3.12** for content generation and automation
-- **Pandoc 3.1.9** for document conversion and formatting
-- **XeLaTeX** with Eisvogel template for PDF-produktion
-- **Mermaid CLI** for diagram generation
+**Automation and Quality:**
 - **GitHub Actions** for CI/CD automation
-- **React + TypeScript** for web dashboard
-- **Vite** for modern web development
-- **Tailwind CSS + shadcn/ui** for konsistent design
+- **Version Control** for all content and diagrams
+- **Automated Testing** for validation and quality assurance
+- **Multi-format Publishing** (PDF, EPUB, DOCX)
 
-## Erkännanden
+### Living Documentation Principles
 
-### Open source code-community
+This book embodies the principles it teaches:
 
-This bok builds on the enastående arbete as utforts of öppen source code-community within:
+- **Version Controlled**: Every change tracked in Git
+- **Automated Building**: CI/CD pipelines ensure consistent quality
+- **Diagram as Code**: All diagrams defined in Mermaid and version controlled
+- **Reproducible**: Anyone can build the book from source
+- **Continuously Improved**: Regular updates based on feedback and evolution
+
+## Acknowledgements
+
+### Open Source Community
+
+This book builds upon the outstanding work of the open source community, particularly:
 
 - **Terraform** - Infrastructure as Code foundation
-- **Ansible** - Configuration management automation  
-- **Docker** - Containerization technology
+- **Ansible** - Configuration management automation
+- **Docker** - Containerisation technology
 - **Kubernetes** - Container orchestration
 - **Pandoc** - Document conversion excellence
-- **Mermaid** - Diagram as Code visualization
+- **Mermaid** - Diagram as Code visualisation
 
-### Svenska technical communities
+### Swedish Technology Community
 
-- **SwedishCoders** - For feedback at technical Contents
-- **DevOps Stockholm** - For praktiska case studies
-- **Svenska molnarkitekter** - For molnspecific bidrag
-- **Säkerhetsspecialister Sverige** - For compliance-vägledning
+Gratitude to the Swedish technology communities that have contributed insights and feedback:
 
-### Akademiska institutioner
+- **SwedishCoders** - For technical content review
+- **DevOps Stockholm** - For practical case studies
+- **Swedish Cloud Architects** - For cloud-specific contributions
+- **Security Specialists Sweden** - For compliance guidance
 
-- **KTH Royal Institute of Technology** - For forskningsperspektiv
-- **Linköpings universitet** - For system architecture-expertis
-- **Malmö universitet** - For användarcentrerad design-principles
+### Academic Institutions
 
-## Framtida development
+- **KTH Royal Institute of Technology** - For research perspectives
+- **Linköping University** - For system architecture expertise
+- **Malmö University** - For user-centred design principles
 
-### Continuous improvement
+## Continuous Improvement
 
-This bok is designad as a levande resurs as is developed with:
+This book is designed as a living resource that evolves with:
 
-- **Community feedback** - Återkoppling from Swedish organizations
-- **technical evolution** - Uppdateringar when new tools and methods is developed
-- **Praktiska lessons** - Integration of new case studies and Architecture as Code best practices
-- **Språkutveckling** - Forfining of svensk technical terminologi
+- **Community Feedback** - Input from organisations implementing Architecture as Code
+- **Technical Evolution** - Updates as new tools and methods emerge
+- **Practical Lessons** - Integration of new case studies and best practices
+- **Language Refinement** - Continuous improvement of clarity and precision
 
-### Bidra to framtida versions
+### Contributing to Future Editions
 
-Vi välkomnar bidrag from svenska technical community:
+Contributions from the technology community are welcomed:
 
-**Contentssbidrag:**
-- Case studies from verkliga implementations
-- Best practices from Swedish organizations
-- new tools and technologies
-- Forbättrad språklig precision
+**Content Contributions:**
+- Case studies from real implementations
+- Best practices from diverse organisations
+- Coverage of new tools and technologies
+- Improvements in clarity and precision
 
-**Tekniska bidrag:**
-- Kodexamples and automationsskript
-- Build pipeline improvements
-- new export-format and distributionskanaler
+**Technical Contributions:**
+- Code examples and automation scripts
+- Build pipeline enhancements
+- New export formats and distribution channels
 - Accessibility and usability improvements
 
-### Kontaktinformation
+### Contact Information
 
-For frågor, feedback or forslag to improvements:
+For questions, feedback, or suggestions for improvements:
 
-- **GitHub Repository**: [https://github.com/Geonitab/kodarkitektur-bokverkstad](https://github.com/Geonitab/kodarkitektur-bokverkstad)
-- **Issues and Pull Requests**: Välkomna for content and technical improvements
-- **Diskussioner**: GitHub Discussions for bredare samtal about Architecture as Code
+- **GitHub Repository**: [https://github.com/Geonitab/architecture_as_code](https://github.com/Geonitab/architecture_as_code)
+- **Issues and Pull Requests**: Welcomed for content and technical improvements
+- **Discussions**: GitHub Discussions for broader conversations about Architecture as Code
 
-## Licens and use
+## Licence and Usage
 
-This bok is distributed under villkor as enables:
+This book is distributed under terms that enable:
 
-- **Fri distribution** for utbildningsändamål
-- **Anpassning** for organisationsspecific behov
-- **Kommersiell use** with korrekt attribution
-- **Översättning** to andra language with bibehållen kvalitet
+- **Free Distribution** for educational purposes
+- **Adaptation** for organisation-specific needs
+- **Commercial Use** with proper attribution
+- **Translation** to other languages whilst maintaining quality
 
-All reuse should erkänna ursprungliga forfattare and bidragsgivare according to etablerade akademiska and technical standarder.
+All reuse should acknowledge the original author and contributors according to established academic and technical standards.
 
-## Summary
+## Closing Reflections
 
+The journey towards Architecture as Code represents more than a technical evolution—it embodies a fundamental shift in how we conceive, design, and operate technology systems. By codifying architecture, we bring the rigour, repeatability, and reliability of software engineering to the entire technology landscape.
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-"Architecture as Code" represents A kollektivt arbete from svenska experter within architecture, infrastructure and system development. by kombinera teoretisk grund with praktisk expertis has This team created a resurs as specific meets svenska organisationers behov within Architecture as Code and Architecture as Code.
+This book aims to accelerate the adoption of Architecture as Code principles and contribute to improved technical outcomes across organisations. The success of these methodologies depends not only on technical implementation but on cultural transformation and organisational commitment to treating architecture as a first-class engineering discipline.
 
-Bokens success will from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig value for svenska technical organisationer. Vi hoppas to This resurs will to accelerera adoptionen of Architecture as Code-principles and bidra to improved technical utfall over entire svenska tech-sektorn.
+As technology continues to evolve, the principles outlined in this book—declarative design, version control, automation, and continuous validation—will remain fundamental to building reliable, scalable, and maintainable systems.
 
 Sources:
-- Kvadrat AB. "Swedish Technology Consulting Excellence." Foretagsprofil, 2024.
-- Svenska DevOps Community. "Architecture as Code Best Practices." Community Guidelines, 2024.
+- Kvadrat AB. "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/
+- Kvadrat AB. "Swedish Technology Consulting Excellence." Company Profile, 2024. Available at: https://www.kvadrat.se/
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
-- Svenska Tekniska Standarder. "Technical Documentation in Swedish." Language Guidelines, 2024.

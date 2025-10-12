@@ -29,7 +29,7 @@ The book explores how to treat architecture and infrastructure work as software 
 
 ### Appendices and Extended Material
 - **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
-- **Chapter 29 – About the Authors:** Contributor biographies and acknowledgements.
+- **Chapter 29 – About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
 - **Chapter 31 – Technical Structure for Book Production:** Tooling overview for the publishing platform.【F:docs/book_structure.md†L97-L139】
 

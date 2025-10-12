@@ -164,7 +164,7 @@ def get_chapter_mapping():
         '25_future_trends_development.md': 'Kapitel 25',
         '27_conclusion.md': 'Kapitel 27',
         '28_glossary.md': 'Ordlista',
-        '29_about_the_authors.md': 'Om författarna',
+        '29_about_the_authors.md': 'Om författaren',
         '30_appendix_code_examples.md': 'Appendix A',
         '31_technical_architecture.md': 'Appendix B'
     }

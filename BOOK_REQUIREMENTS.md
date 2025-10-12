@@ -113,7 +113,7 @@ book:
       area: "Reference"
       required: true
     - filename: "29_about_the_authors.md"
-      title: "About the Authors"
+      title: "About the Author"
       area: "Appendix"
       required: true
     - filename: "30_appendix_code_examples.md"
@@ -256,13 +256,13 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | 26 | 26_future_development.md | Future Development | Future Outlook | Yes |
 | 27 | 27_conclusion.md | Conclusion and the Way Forward | Summary | Yes |
 | 28 | 28_glossary.md | Glossary and Definitions | Reference | Yes |
-| 29 | 29_about_the_authors.md | About the Authors | Appendix | Yes |
+| 29 | 29_about_the_authors.md | About the Author | Appendix | Yes |
 | 30 | 30_appendix_code_examples.md | Appendix A: Code Examples and Technical Implementations | Appendix | Yes |
 | 31 | 31_technical_architecture.md | Technical Architecture Blueprint | Appendix | Yes |
 
 ### Special Chapter Requirements
 - **Glossary (`28_glossary.md`)** – no diagrams or sources required.
-- **About the Authors (`29_about_the_authors.md`)** – no diagrams or sources required.
+- **About the Author (`29_about_the_authors.md`)** – includes a diagram showcasing author expertise; sources cite kvadrat.se.
 - **Conclusion (`27_conclusion.md`)** – does not require diagrams but must cite sources.
 - **Appendix A (`30_appendix_code_examples.md`)** – diagrams are required; sources are optional.
 - **Technical Architecture (`31_technical_architecture.md`)** – diagrams are required; sources are optional.
