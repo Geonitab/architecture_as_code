@@ -1,372 +1,73 @@
-# Architecture as Code in praktiken
+# Architecture as Code in Practice
 
-![Architecture as Code in praktiken](images/diagram_08_kapitel7.png)
+Architecture as Code succeeds when organisational ambitions, engineering discipline, and operating constraints are brought together in a single delivery motion. Practical adoption requires a structured roadmap, supportive tooling, and a culture that treats infrastructure change as a product in its own right.
 
-Praktisk implementation of Architecture as Code requires throughtänkt approach as balanserar technical possibilities with organizational begränsningar. Architecture as Code forms a central komponent, but must integreras with bredare architecture definitions. This chapter focuses on verkliga implementeringsstrategier, vanliga fallgropar, and bepröwhate methods for successful Architecture as Code-adoption in foretagsenvironments.
+Prioritising clarity is crucial. Figure 14.1 highlights the operating model used by many platform teams to combine architecture governance, automation, and stakeholder alignment. It serves as a quick reference for the foundational capabilities that underpin every implementation.
 
-![implementation User Journey](images/diagram_13_user_journey.png)
+![Figure 14.1 – Capability landscape for practical Architecture as Code](images/diagram_08_kapitel7.png)
+*Figure 14.1 – Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over time.*
 
-Diagram above illustrerar The typical användarresan for Architecture as Code-implementation, from initial discovery to complete optimization.
+## Implementation roadmap and strategies
 
-## implementation roadmap and strategier
+Successful Architecture as Code adoption progresses through clearly defined stages: establishing a shared vision, delivering a pilot, hardening operations, and continuously expanding the footprint. Organisations that front-load alignment avoid the most common integration issues later in the journey.
 
-Successful Architecture as Code adoption follows vanligen a phased approach as begins with pilot projects and gradual expanderar to enterprise-wide implementation. Initial phases focuses on non-critical environments and simple use cases to bygga confidence and establish Architecture as Code best practices before production workloads migreras. Architecture as Code (Architecture as Code) forms often startpunkten for This transformation.
+The adoption journey in Figure 14.2 breaks down these stages into the minimum set of activities required to maintain momentum without overwhelming delivery teams. It emphasises measurable outcomes at every step so that leadership can invest with confidence.
 
-Assessment of current state infrastructure is critical for planning effective migration strategies. Legacy systems, technical debt, and organizational constraints must identifieras and addressas through targeted modernization efforts. This includes inventory of existing assets, dependency mapping, and risk assessment for different migration scenarios.
+![Figure 14.2 – Iterative journey for Architecture as Code adoption](images/diagram_13_user_journey.png)
+*Figure 14.2 – A simplified adoption journey that balances architectural guardrails with iterative delivery milestones.*
 
-Stakeholder alignment ensures organizational support for Architecture as Code initiatives. Executive sponsorship, cross-functional collaboration, and clear communication of benefits and challenges is essential for overcoming resistance and securing necessary resources. Change management strategies must address both technical and cultural aspects of transformation.
+### Aligning stakeholders early
+
+A current-state assessment must capture technical baselines, regulatory obligations, and the delivery expectations of product teams. Establishing a cross-functional working group ensures that platform, security, finance, and architecture representatives can decide on priorities together. Early agreement on vocabulary, service level targets, and reporting cadence prevents misunderstandings when the first production workloads migrate.
+
+### Designing the pilot and proving value
+
+The pilot phase should focus on a constrained but representative workload. Success criteria include automated provisioning, observable change histories, and rapid rollback capabilities. Capturing lessons learned from pilot retrospectives informs the playbooks that will later be rolled out enterprise-wide.
+
+### Scaling operations with repeatable patterns
+
+When scaling beyond the pilot, teams formalise reusable modules, standardise tagging, and adopt change management practices such as automated policy checks and progressive rollouts. Investment in knowledge-sharing sessions, office hours, and internal communities of practice accelerates adoption by other product teams without sacrificing governance.
 
 ## Tool selection and ecosystem integration
 
-Technology stack selection balanserar organizational requirements with market maturity and community support. Terraform has emerged as leading multi-cloud solution, with cloud-native tools that CloudFormation, ARM templates, and Google Deployment Manager offers deep integration with specific platforms.
+Selecting the Architecture as Code toolchain is about more than feature parity. Decision frameworks must evaluate community support, managed service availability, licence terms, and the alignment of vendor roadmaps with enterprise objectives. Terraform remains the most common multi-cloud choice, while native cloud templates such as AWS CloudFormation or Azure Resource Manager may complement platform-specific needs.
 
-Integration with existing toolchains requires careful consideration of workflows, security requirements, and operational procedures. Source control systems, CI/CD platforms, monitoring solutions, and security scanning tools must seamlessly integrate for holistic development experience.
-
-Vendor evaluation criteria includes technical capabilities, roadmap alignment, commercial terms, and long-term viability. Open source solutions offers flexibility and community innovation, with commercial platforms provide enterprise support and advanced features. Hybrid approaches combinerar benefits from both models.
+Integration with source control, testing platforms, secrets management, and observability tooling must be designed intentionally. Wherever possible, integration patterns should mirror the workflows that software delivery teams already understand so that infrastructure changes inherit established review and deployment practices.
 
 ## Production readiness and operational excellence
 
-Security-first approach implement comprehensive security controls from design phase. Secrets management, access controls, audit logging, and compliance validation must vara built-in rather than bolt-on features. Automated security scanning and policy enforcement ensures consistent security posture.
+Security-first thinking embeds identity, secrets handling, and audit controls into every artefact. Automated scanning pipelines and clearly defined exception processes ensure that compliance teams receive the evidence they need without slowing down delivery.
 
-High availability design principles appliceras at infrastructure code through redundancy, failover mechanisms, and disaster recovery procedures. Infrastructure definitions must handle various failure scenarios gracefully and provide automatic recovery capabilities where possible.
-
-Monitoring and observability for infrastructure-as-code environments requires specialized approaches as track both code changes and resulting infrastructure state. Drift detection, compliance monitoring, and performance tracking provide essential feedback for continuous improvement.
+High-availability design translates into codified redundancy, automated failover, and disaster recovery testing. Infrastructure definitions must handle dependency failures gracefully and allow rapid restoration of service. Observability practices should track both the execution of pipelines and the health of the resulting environments so that drift and regressions can be corrected quickly.
 
 ## Common challenges and troubleshooting
 
-State management complexity grows significantly as infrastructure scales and involves multiple teams. State file corruption, concurrent modifications, and state drift can cause serious operational problems. Remote state backends, state locking mechanisms, and regular state backups are essential for production environments.
-
-Dependency management between infrastructure components requires careful orchestration for avoid circular dependencies and ensure proper creation/destruction order. Modular design patterns and clear interface definitions help manage complexity as systems grow.
-
-Version compatibility issues between tools, providers, and infrastructure definitions can cause unexpected failures. Comprehensive testing, staged rollouts, and dependency pinning strategies help mitigate these risks in production environments.
+* **State management** – Distributed teams increase the risk of state drift and accidental overwrites. Remote state backends with locking, frequent backups, and reconciliation routines should be mandatory for production environments.
+* **Dependency coordination** – Complex estates often require intricate ordering between networking, identity, and workload modules. Modular designs with well-defined interfaces keep changes understandable and reduce coupling across teams.
+* **Version compatibility** – Provider and module upgrades can break established workflows. Staged rollouts, compatibility matrices, and automated integration tests reduce disruption while still allowing the ecosystem to evolve.
 
 ## Enterprise integration patterns
 
-Multi-account/subscription strategies for cloud environments provide isolation, security boundaries, and cost allocation capabilities. Infrastructure code must handle cross-account dependencies, permission management, and centralized governance requirements.
+Enterprise-scale deployments blend multi-account cloud strategies with on-premises integrations and regulated workload protections. Architecture as Code artefacts must express network isolation, delegated administration, and governance guardrails while remaining consumable by product teams. Embedding compliance-as-code policies and continuous auditing keeps the organisation inspection-ready and avoids costly remediation projects later on.
 
-Hybrid cloud implementations require specialized approaches for networking, identity management, and data synchronization between on-premises and cloud environments. Infrastructure code must abstract underlying platform differences while providing consistent management experience.
+## Practical examples in context
 
-Compliance and governance frameworks must vara embedded in infrastructure code workflows. Automated policy enforcement, audit trails, and compliance reporting capabilities ensure regulatory requirements are met consistently across all environments.
+Extended code listings are maintained in Appendix A for ease of reference and reuse:
 
-## Praktiska example
+* **Terraform service blueprint** – Appendix entry [14_CODE_1](30_appendix_code_examples.md#14_code_1) demonstrates a reusable module for a web application landing zone, including tagging conventions and autoscaling foundations.
+* **Environment configuration and monitoring** – Appendix entry [14_CODE_2](30_appendix_code_examples.md#14_code_2) shows how production-specific configuration, observability dashboards, and retention controls are layered on top of the base module.
+* **Continuous delivery workflow** – Appendix entry [14_CODE_3](30_appendix_code_examples.md#14_code_3) outlines a GitHub Actions pipeline that plans and applies infrastructure changes across environments with explicit manual approval for production.
 
-### Terraform Module structure
-```hcl
-# modules/web-application/main.tf
-variable "environment" {
-  description = "Environment name (dev, staging, prod)"
-  type        = string
-}
-
-variable "application_name" {
-  description = "Name of the application"
-  type        = string
-}
-
-variable "instance_count" {
-  description = "Number of application instances"
-  type        = number
-  default     = 2
-}
-
-# VPC and networking
-resource "aws_vpc" "main" {
-  cidr_block           = "10.0.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-
-  tags = {
-    Name        = "${var.application_name}-${var.environment}-vpc"
-    Environment = var.environment
-    Application = var.application_name
-  }
-}
-
-resource "aws_subnet" "public" {
-  count             = 2
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.0.${count.index + 1}.0/24"
-  availability_zone = data.aws_availability_zones.available.names[count.index]
-
-  map_public_ip_on_launch = true
-
-  tags = {
-    Name = "${var.application_name}-${var.environment}-public-${count.index + 1}"
-    Type = "Public"
-  }
-}
-
-# Application Load Balancer
-resource "aws_lb" "main" {
-  name               = "${var.application_name}-${var.environment}-alb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb.id]
-  subnets            = aws_subnet.public[*].id
-
-  enable_deletion_protection = false
-
-  tags = {
-    Environment = var.environment
-    Application = var.application_name
-  }
-}
-
-# Auto Scaling Group
-resource "aws_autoscaling_group" "main" {
-  name                = "${var.application_name}-${var.environment}-asg"
-  vpc_zone_identifier = aws_subnet.public[*].id
-  target_group_arns   = [aws_lb_target_group.main.arn]
-  health_check_type   = "ELB"
-  health_check_grace_period = 300
-
-  min_size         = 1
-  max_size         = 10
-  desired_capacity = var.instance_count
-
-  launch_template {
-    id      = aws_launch_template.main.id
-    version = "$Latest"
-  }
-
-  tag {
-    key                 = "Name"
-    value               = "${var.application_name}-${var.environment}-instance"
-    propagate_at_launch = true
-  }
-
-  tag {
-    key                 = "Environment"
-    value               = var.environment
-    propagate_at_launch = true
-  }
-}
-
-# Outputs
-output "load_balancer_dns" {
-  description = "DNS name of the load balancer"
-  value       = aws_lb.main.dns_name
-}
-
-output "vpc_id" {
-  description = "ID of the VPC"
-  value       = aws_vpc.main.id
-}
-```
-
-## Terraform configuration and miljöhantering
-
-### Environment-specific Configuration
-```hcl
-# environments/production/main.tf
-terraform {
-  required_version = ">= 1.0"
-  
-  backend "s3" {
-    bucket         = "company-terraform-state-prod"
-    key            = "web-application/terraform.tfstate"
-    region         = "us-west-2"
-    encrypt        = true
-    dynamodb_table = "terraform-state-lock"
-  }
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-west-2"
-  
-  default_tags {
-    tags = {
-      Project     = "web-application"
-      Environment = "production"
-      ManagedBy   = "terraform"
-      Owner       = "platform-team"
-    }
-  }
-}
-
-module "web_application" {
-  source = "../../modules/web-application"
-
-  environment      = "production"
-  application_name = "company-web-app"
-  instance_count   = 6
-
-  # Production-specific overrides
-  enable_monitoring = true
-  backup_retention  = 30
-  multi_az         = true
-}
-
-# Production-specific resources
-resource "aws_cloudwatch_dashboard" "main" {
-  dashboard_name = "WebApplication-Production"
-
-  dashboard_body = jsonencode({
-    widgets = [
-      {
-        type   = "metric"
-        x      = 0
-        y      = 0
-        width  = 12
-        height = 6
-
-        properties = {
-          metrics = [
-            ["AWS/ApplicationELB", "RequestCount", "LoadBalancer", module.web_application.load_balancer_arn_suffix],
-            [".", "TargetResponseTime", ".", "."],
-            [".", "HTTPCode_ELB_5XX_Count", ".", "."]
-          ]
-          view    = "timeSeries"
-          stacked = false
-          region  = "us-west-2"
-          title   = "Application Performance"
-          period  = 300
-        }
-      }
-    ]
-  })
-}
-```
-
-## Automation and DevOps integration
-
-### CI/CD Pipeline Integration
-```yaml
-# .github/workflows/infrastructure.yml
-name: Infrastructure Deployment
-
-on:
-  push:
-    branches: [main]
-    paths: ['infrastructure/**']
-  pull_request:
-    branches: [main]
-    paths: ['infrastructure/**']
-
-env:
-  TF_VERSION: 1.5.0
-  AWS_REGION: us-west-2
-
-jobs:
-  plan:
-    name: Terraform Plan
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        environment: [development, staging, production]
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: ${{ env.TF_VERSION }}
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
-    - name: Terraform Init
-      working-directory: infrastructure/environments/${{ matrix.environment }}
-      run: terraform init
-
-    - name: Terraform Validate
-      working-directory: infrastructure/environments/${{ matrix.environment }}
-      run: terraform validate
-
-    - name: Terraform Plan
-      working-directory: infrastructure/environments/${{ matrix.environment }}
-      run: |
-        terraform plan -out=tfplan-${{ matrix.environment }} \
-          -var-file="terraform.tfvars"
-
-    - name: Upload plan artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: tfplan-${{ matrix.environment }}
-        path: infrastructure/environments/${{ matrix.environment }}/tfplan-${{ matrix.environment }}
-        retention-days: 30
-
-  deploy:
-    name: Terraform Apply
-    runs-on: ubuntu-latest
-    needs: plan
-    if: github.ref == 'refs/heads/main'
-    strategy:
-      matrix:
-        environment: [development, staging]
-        # Production requires manual approval
-    
-    environment: ${{ matrix.environment }}
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: ${{ env.TF_VERSION }}
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
-    - name: Download plan artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: tfplan-${{ matrix.environment }}
-        path: infrastructure/environments/${{ matrix.environment }}
-
-    - name: Terraform Init
-      working-directory: infrastructure/environments/${{ matrix.environment }}
-      run: terraform init
-
-    - name: Terraform Apply
-      working-directory: infrastructure/environments/${{ matrix.environment }}
-      run: terraform apply tfplan-${{ matrix.environment }}
-
-  production-deploy:
-    name: Production Deployment
-    runs-on: ubuntu-latest
-    needs: [plan, deploy]
-    if: github.ref == 'refs/heads/main'
-    environment: 
-      name: production
-      url: ${{ steps.deploy.outputs.application_url }}
-    
-    steps:
-    - name: Manual approval checkpoint
-      run: echo "Production deployment requires manual approval"
-      
-    # Similar steps as deploy job but for production environment
-```
+Each appendix entry includes commentary describing when to apply the pattern, the governance signals it produces, and how it links back to the operational practices outlined in this chapter. Teams should tailor the templates to match their own naming standards, guardrail policies, and deployment cadences.
 
 ## Summary
 
+Architecture as Code in practice requires disciplined planning, collaborative execution, and relentless optimisation. Organisations that invest in a structured roadmap, curate a dependable toolchain, and treat operational excellence as a core deliverable achieve consistent, auditable infrastructure change at scale.
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Practical Architecture as Code implementation balanserar technical excellence with organizational realities. Success requires comprehensive planning, stakeholder alignment, incremental delivery, and continuous improvement. Production readiness must vara prioritized from beginning, with common challenges must anticiperas and mitigated through proven practices and robust tooling.
+## Sources and references
 
-## Sources and referenser
-
-- HashiCorp. "Terraform Architecture as Code best practices." HashiCorp Learn Platform.
-- AWS Well-Architected Framework. "Architecture as Code." Amazon Web Services.
-- Google Cloud. "Architecture as Code design Patterns." Google Cloud Architecture Center.
+- HashiCorp. "Terraform Architecture as Code Best Practices." HashiCorp Learn Platform.
+- AWS Well-Architected Framework. "Infrastructure as Code." Amazon Web Services.
+- Google Cloud. "Infrastructure as Code Design Patterns." Google Cloud Architecture Centre.
 - Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.
-- Puppet Labs. "Infrastructure as Code implementation Guide." Puppet Enterprise Documentation.
+- Puppet. "Infrastructure as Code Implementation Guide." Puppet Enterprise Documentation.
