@@ -2,65 +2,49 @@
 
 ![Compliance automation lifecycle overview](images/diagram_12_compliance.png)
 
-*Figure 12-1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and finally governance feedback loops.*
+*Figure 12-1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.*
 
-Architecture as Code spelar a central roll to meet growing compliance requirements and regulatory expectations. Which vi saw in [chapter 11 about policy as code](11_policy_sakerhet.md), can technical solutions for automatiserad compliance significantly simplify and improve organisationers ability to meet complex regulatory requirements. The diagram anchors dessa aktiviteter genom att visa hur regulatory uppdateringar driver policy mallar och continuous kontroll, och hur feedback från audits förfinar regelverket. This chapter focuses on the organizational and process-related aspekterna of compliance management through Architecture as Code.
+Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12-1 shows how that translation depends on a closed feedback loop: regulatory updates inform policy templates, automated controls execute those policies, monitoring and evidence collection prove adherence, and governance teams reinforce improvements through audit feedback. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
 
-## AI and maskininlärning for infrastrukturarchitecture as code-automation
+## AI and Machine Learning for Infrastructure Automation
 
 ![AI-augmented compliance automation workflow](images/diagram_12_ai_automation.png)
 
 *Figure 12-2 demonstrates the feedback loop between telemetry, the AI compliance engine, automated remediation, and human oversight that keeps regulatory posture current.*
 
-Artificiell intelligens revolutionerar Architecture as Code through intelligent automation, prediktiv skalning and självläkande systems. Maskininlärningsalgoritmer analyzer historiska data to optimera resource allocation, forutsäga fel and automatically adjust infrastructure configurations based on changing efterfrågemönster.
+Artificial intelligence is transforming Architecture as Code with intelligent automation, predictive scaling, and self-healing systems. Machine learning models analyse operational data to optimise resource allocation, forecast failures, and adjust configurations before service levels are breached. Figure 12-2 highlights a practical control flow: telemetry and policy violations feed an AI compliance engine, which scores risk and decides whether automated remediation or human intervention is appropriate. Infrastructure as Code updates then redeploy compliant baselines, ensuring the organisation stays aligned with regulatory expectations.
 
-Intelligent resursoptimering uses AI to kontinuerligt adjust infrastructureinställningar for optimal kostnad, performance and sustainability. Algoritmer can automatically adjust instansstorlekar, lagringskonfigurationer and nätverksinställningar based on realtidsanvändningsmönster and affärsmål.
+## Requirements Traceability and Validation
 
-Automatiserade incident response-systems utnyttjar AI to upptäcka anomalier, diagnostisera problem and implement korrigerande measures without human intervention. Natural language processing enables konversationsgränssnitt for infrastructure management, which does complex operationer available for icke-technical stakeholders.
+![Compliance requirements traceability map](images/diagram_12_requirements_testing.png)
 
-Diagrammet visar hur en AI-driven kontrollmotor kopplar samman datakällor med riskbedömning och beslutsportar. När avvikelser identifieras triggas remediation-workflows som uppdaterar Infrastructure as Code-definitioner, deployar korrigeringar och eskalerar till mänskliga reviewers när manuella beslut krävs. Denna closed-loop automation säkerställer att compliance policyer kontinuerligt förblir synkroniserade med verkliga driftförhållanden.
+*Figure 12-3 links high-level compliance requirements to functional controls, Infrastructure as Code artefacts, and verification activities.*
 
-## Cloud-native and serverless development
+Compliance programmes rely on demonstrable traceability between regulatory statements and the technical controls that satisfy them. Figure 12-3 documents that traceability: business, compliance, performance, and cost requirements flow into specific functional controls such as encryption, network segmentation, audit logging, and automated scaling. Those controls are implemented through Terraform configuration and validated by targeted test suites, compliance scanners, and cost analysis. Maintaining this map ensures that every requirement is implemented, tested, and evidenced before auditors ask for proof.
 
-Serverless computing continues to is developed bortom enkla function-as-a-service mot comprehensive serverless-arkitekturer. Architecture as Code must adapted to handle händelsedrivna arkitekturer, automatic skalning and pay-per-use-prismodor as karakteriserar serverless-plattformar.
+## Cloud-native and Serverless Development
 
-Händelsedriven architecture reagerar automatically at affärshändelser and systemforhållanden. Arkitekturdefinitioner includes händelseutlösare, responsmekanismer and complex workflow-orkestrering as enables reaktiv architecture as anpassar itself to changing requirements in realtid.
+Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures. Architecture as Code must represent triggers, response mechanisms, and orchestrated workflows that adapt to real-time business events. Edge computing introduces latency-sensitive workloads and intermittent connectivity, making coordinated configuration management essential across hybrid edge-cloud environments. Tooling must therefore support declarative policies for distributed deployments, data gravity, and dynamic routing.
 
-Edge computing-integration requires distributed arkitekturhanteringsmöjligheter as handles latenskänsliga arbetsbelastningar, lokal databehandling and intermittent anslutning. Architecture as Code tool must support hybrid edge-cloud-arkitekturer with synkroniserad konfigurationshantering.
-
-## Policydriven infrastruktur and governance
+## Policy-driven Infrastructure and Governance
 
 ![Policy-driven compliance control tower](images/diagram_12_policy_governance.png)
 
-*Figure 12-3 visualises hur governance-strategi översätts till automatiserade kontroller och mätbara resultat.*
+*Figure 12-4 visualises how governance strategy translates into automated controls and measurable outcomes.*
 
-Policy as Code becomes all mer sofistikerat with automatiserad compliance-kontroll, continuous styrningsverkställighet and dynamisk policyanpassning. Policyer is developed from static rules mot intelligenta guidelines as anpassar itself based on context, riskbedömning and affärsmål.
+Policy as Code continues to mature with automated control enforcement, continuous compliance monitoring, and dynamic policy adaptation. Strategy teams map regulatory goals and risk appetite, policy repositories turn those inputs into executable controls, and compliance pipelines provide dashboards, exception handling, and regulator-ready reporting. Figure 12-4 shows how exceptions loop back into the pipeline for remediation and how regulator feedback informs the next iteration of the governance strategy.
 
-Automatiserade compliance-ramverk integrerar regulatory requirements direkt in Architecture as Code-workflows. Continuous compliance-monitoring ensures architecture changes maintains compliance of security standards, branschregleringar and organizational policyer without manuell intervention.
+## Quantum Computing and Next-generation Technologies
 
-Zero-trust-arkitekturprinciper becomes inbäddade in infrastructure definitions as standardpraxis. each komponent, anslutning and åtkomstbegäran requires explicitly verification and auktorisering, which creates a inneboende secure infrastructure for modern hotlandskap.
+Quantum computing will require a rethink of security models, cryptography, and resource management strategies. Post-quantum cryptography standards must be integrated into infrastructure security frameworks, and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation algorithms will help solve complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience.
 
-Den policy-drivna "control tower"-modellen etablerar en tydlig kedja från strategiska regulatoriska mål till operativa dashboards och rapportering. Governance-team mappar regulatoriska krav och riskaptit, policy repositories omsätter dessa i kodade kontroller, och continuous compliance pipelines levererar bevis samt hanterar undantag. Feedback från regulators och incidenthantering förs tillbaka till strategin for att kontinuerligt förbättra styrningen.
+## Sustainability and Green Computing
 
-## Kvantdatorer and next generations technologies
+Environmental sustainability is a core consideration for infrastructure design and operations. Carbon-aware workload placement shifts compute to regions with renewable energy availability, optimises for energy efficiency, and minimises environmental impact. Architecture as Code should capture lifecycle management, recycling strategies, and sustainability metrics so that green objectives are validated alongside functional requirements.
 
-Kvantdatorers impact at Architecture as Code will to kräva a Fundamental omtänkning of säkerhetsmodor, beräkningsarkitekturer and resurshanteringsstrategier. Kvantresistent kryptografi must integreras in infrastructuresäkerhetsramverk.
+## Practical Examples
 
-Post-kvant kryptografi-implementeringar requires uppdaterade säkerhetsprotokoll and krypteringsmekanismer for all infrastructurekommunikation. Architecture as Code tool must support kvantsäkra algoritmer and forbereda for övergången bort from nuvarande kryptografiska standarder.
-
-Kvantforstärkta optimeringsalgoritmer can lösa complex infrastructureplacerings-, routing- and resursallokeringsproblem as is beräkningsintensiva for klassiska datorer. This öppnar possibilities for oöverträffad infrastructureeffektivitet and kapacitet.
-
-## Sustainability and green databehandling
-
-Miljöhållbarhet becomes central övervägande for infrastructuredesign and drift. Kolwithveten infrastructure management skiftar automatically arbetsbelastningar to regioner with togänglighet for fornybar energi, optimerar for energieffektivitet and minimizes miljöpåverkan.
-
-Integration of fornybar energi requires dynamisk infrastructure management as anpassar beräkningsarbetsbelastningar to togången at ren energi. Smart grid-integration and energilagringskoordinering becomes integrerade parts of infrastructureautomation.
-
-Cirkulär ekonomi-principles toämpade at architecture includes automatiserad hårdvarulivscykelhantering, resursåtervinningsoptimering and avfallsreduceringsstrategier. Architecture as Code includes hållbarhetsmetriker and miljöpåverkanshänsyn as forstklassiga bekymmer.
-
-## Praktiska example
-
-### AI-forstärkt infrastrukturoptimering
+### AI-augmented Infrastructure Optimisation
 
 ```python
 # ai_optimizer.py
@@ -69,60 +53,60 @@ import numpy as np
 from datetime import datetime, timedelta
 import boto3
 
-class InfrastrukturOptimizer:
-    def __init__(self, modell_sökväg):
-        self.modell = tf.keras.models.load_model(modell_sökväg)
+class InfrastructureOptimizer:
+    def __init__(self, model_path):
+        self.model = tf.keras.models.load_model(model_path)
         self.cloudwatch = boto3.client('cloudwatch')
         self.autoscaling = boto3.client('autoscaling')
-    
-    def förutsäg_efterfrågan(self, tidshorisont_timmar=24):
-        """Förutsäg infrastrukturbehov for next 24 timmar"""
-        nuvarande_tid = datetime.now()
-        
-        # Samla historiska metriker
-        metriker = self.samla_historiska_metriker(
-            start_tid=nuvarande_tid - timedelta(days=7),
-            slut_tid=nuvarande_tid
+
+    def forecast_demand(self, horizon_hours=24):
+        """Forecast infrastructure demand for the next 24 hours."""
+        current_time = datetime.now()
+
+        # Collect historical metrics
+        metrics = self.collect_historical_metrics(
+            start_time=current_time - timedelta(days=7),
+            end_time=current_time
         )
-        
-        # Förbered funktioner for ML-modell
-        funktioner = self.förbered_funktioner(metriker, nuvarande_tid)
-        
-        # Generera förutsägelser
-        förutsägelser = self.modell.predict(funktioner)
-        
-        return self.formatera_förutsägelser(förutsägelser, tidshorisont_timmar)
-    
-    def optimera_skalningspolicyer(self, förutsägelser):
-        """Justera automatically autoscaling-policyer based on förutsägelser"""
-        for asg_namn, förutsedd_belastning in förutsägelser.items():
-            
-            # Beräkna optimalt instansantal
-            optimala_instanser = self.beräkna_optimala_instanser(
-                förutsedd_belastning, asg_namn
+
+        # Prepare features for the ML model
+        features = self.prepare_features(metrics, current_time)
+
+        # Generate predictions
+        predictions = self.model.predict(features)
+
+        return self.format_predictions(predictions, horizon_hours)
+
+    def optimise_scaling_policies(self, predictions):
+        """Automatically adjust Auto Scaling policies based on predictions."""
+        for asg_name, predicted_load in predictions.items():
+
+            # Calculate the optimal instance count
+            optimal_instances = self.calculate_optimal_instances(
+                predicted_load, asg_name
             )
-            
-            # Uppdatera autoscaling-policy
-            self.uppdatera_autoscaling_policy(asg_namn, optimala_instanser)
-            
-            # Schemalägg proaktiv skalning
-            self.schemalägg_proaktiv_skalning(asg_namn, förutsedd_belastning)
+
+            # Update the Auto Scaling policy
+            self.update_autoscaling_policy(asg_name, optimal_instances)
+
+            # Schedule proactive scaling actions
+            self.schedule_proactive_scaling(asg_name, predicted_load)
 ```
 
-### Serverless infrastrukturdefinition
+### Serverless Infrastructure Definition
 
 ```yaml
-# serverless-infrastruktur.yml
-service: intelligent-infrastruktur
+# serverless-infrastructure.yml
+service: intelligent-infrastructure
 
 provider:
   name: aws
   runtime: python3.9
   region: eu-north-1
-  
+
   environment:
-    OPTIMERINGS_TABELL: ${self:service}-optimering-${self:provider.stage}
-    
+    OPTIMISATION_TABLE: ${self:service}-optimisation-${self:provider.stage}
+
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -132,44 +116,44 @@ provider:
       Resource: "*"
 
 functions:
-  optimeraInfrastruktur:
-    handler: optimizer.optimera
+  optimiseInfrastructure:
+    handler: optimizer.optimise
     events:
       - schedule: rate(15 minutes)
       - cloudwatchEvent:
           event:
             source: ["aws.autoscaling"]
             detail-type: ["EC2 Instance Terminate Successful"]
-    
+
     reservedConcurrency: 1
     timeout: 300
     memory: 1024
-    
-    environment:
-      MODELL_BUCKET: ${self:custom.modellBucket}
 
-  prediktivSkalning:
-    handler: predictor.förutsäg_och_skala
+    environment:
+      MODEL_BUCKET: ${self:custom.modelBucket}
+
+  predictiveScaling:
+    handler: predictor.forecast_and_scale
     events:
       - schedule: rate(5 minutes)
-    
+
     layers:
       - ${self:custom.tensorflowLayer}
-    
+
     memory: 3008
     timeout: 900
 
-  kostnadsOptimizer:
-    handler: kostnad.optimera
+  costOptimiser:
+    handler: cost.optimise
     events:
-      - schedule: cron(0 2 * * ? *)  # Dagligen kl 02:00
-    
-    environment:
-      KOSTNADSGRÄNS: 1000
-      OPTIMERINGSNIVÅ: aggressiv
+      - schedule: cron(0 2 * * ? *)  # Daily at 02:00
 
-  grönDatabehandling:
-    handler: sustainability.optimera_för_kol
+    environment:
+      COST_THRESHOLD: 1000
+      OPTIMISATION_LEVEL: aggressive
+
+  greenComputing:
+    handler: sustainability.optimise_for_carbon
     events:
       - schedule: rate(30 minutes)
       - eventBridge:
@@ -178,10 +162,10 @@ functions:
             detail-type: ["Energy Forecast Update"]
 ```
 
-### Kvantsäker säkerhetsimplementering
+### Quantum-safe Security Implementation
 
 ```hcl
-# kvantsäker-infrastruktur.tf
+# quantum-safe-infrastructure.tf
 terraform {
   required_providers {
     aws = {
@@ -195,67 +179,63 @@ terraform {
   }
 }
 
-# Post-kvant kryptografi for TLS-anslutningar
-resource "tls_private_key" "kvantsäker" {
+# Post-quantum cryptography for TLS connections
+resource "tls_private_key" "quantum_safe" {
   algorithm = "ECDSA"
-  ecdsa_curve = "P384"  # Kvantresistent kurva
+  ecdsa_curve = "P384"  # Quantum-resistant curve
 }
 
-resource "aws_acm_certificate" "kvantsäker" {
-  private_key      = tls_private_key.kvantsäker.private_key_pem
-  certificate_body = tls_self_signed_cert.kvantsäker.cert_pem
-  
+resource "aws_acm_certificate" "quantum_safe" {
+  private_key      = tls_private_key.quantum_safe.private_key_pem
+  certificate_body = tls_self_signed_cert.quantum_safe.cert_pem
+
   lifecycle {
     create_before_destroy = true
   }
-  
+
   tags = {
-    Name = "Kvantsäkert Certifikat"
-    SäkerhetsNivå = "Post-Kvant"
+    Name          = "Quantum-safe Certificate"
+    SecurityLevel = "Post-Quantum"
   }
 }
 
-# KMS-nycklar with kvantresistenta algoritmer
-resource "aws_kms_key" "kvantsäker" {
-  description = "Kvantsäker krypteringsnyckel"
+# KMS keys with quantum-resistant algorithms
+resource "aws_kms_key" "quantum_safe" {
+  description = "Quantum-safe encryption key"
   key_usage   = "ENCRYPT_DECRYPT"
   key_spec    = "SYMMETRIC_DEFAULT"
-  
-  # Use kvantresistent nyckelderivation
+
+  # Enable quantum-resistant key rotation
   key_rotation_enabled = true
-  
+
   tags = {
-    KvantSäker = "true"
-    Algoritm   = "AES-256-GCM"
+    QuantumSafe = "true"
+    Algorithm   = "AES-256-GCM"
   }
 }
 
-# Kvantsäkert VPC with förstärkt security
-resource "aws_vpc" "kvantsäker" {
+# Quantum-safe VPC with enhanced security
+resource "aws_vpc" "quantum_safe" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
-  
-  # Aktivera kvantsäker nätverkshantering
+
+  # Enforce quantum-safe network management
   tags = {
-    Name        = "Kvantsäkert VPC"
-    Kryptering  = "Obligatorisk"
-    Protokoll   = "TLS1.3-PQC"
+    Name       = "Quantum-safe VPC"
+    Encryption = "Mandatory"
+    Protocol   = "TLS1.3-PQC"
   }
 }
 ```
 
 ## Summary
 
+The modern Architecture as Code methodology is essential for infrastructure management in organisations that operate under strict regulatory oversight. Future development will be driven by AI automation, serverless architectures, quantum readiness, and sustainability requirements. Organisations must invest in new technologies, develop quantum-safe security strategies, and embed environmental considerations into infrastructure planning.
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Framtida Architecture as Code-development will to drivas of AI-automation, serverless-arkitekturer, beredskap for kvantdatorer and hållbarhetsrequirements. Organisationer must proaktivt investera in new technologies, develop kvantsäkra security strategies and integrera miljöhänsyn in infrastructureplanering.
+Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles](02_fundamental_principles.md) to [Organisational Change](17_organizational_change.md)—Architecture as Code evolves to meet emerging challenges and opportunities.
 
-success requires kontinuerligt lärande, strategisk teknologiadoption and long-term vision for infrastructure development. Which vi has sett genAbout the Books progression from [Fundamental principles](02_fundamental_principles.md) to These advanced framtida technologies, is developed Architecture as Code kontinuerligt to meet new Challenges and possibilities.
-
-Swedish organizations as investerar in These emerging technologies and maintains krypto-agilitet will to vara välpositionerade for framtida teknologiska disruptions. Integration of These technologies requires both technical expertis and organisatorisk anpassningsformåga as diskuteras in [chapter 16 about organizational change](17_organizational_change.md).
-
-## Sources and referenser
+## Sources and References
 
 - IEEE Computer Society. "Quantum Computing Impact on Infrastructure." IEEE Quantum Computing Standards.
 - Green Software Foundation. "Sustainable Infrastructure Patterns." Green Software Principles.

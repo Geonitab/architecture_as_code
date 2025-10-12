@@ -13,99 +13,99 @@ requirementDiagram
 
     requirement business_req {
         id: 1
-        text: "Säker molninfrastruktur"
+        text: "Secure cloud infrastructure"
         risk: high
         verifymethod: test
     }
-    
+
     requirement compliance_req {
         id: 2
-        text: "GDPR-kompatibilitet"
+        text: "GDPR compliance"
         risk: high
         verifymethod: analysis
     }
-    
+
     requirement performance_req {
         id: 3
-        text: "Skalbar prestanda"
+        text: "Scalable performance"
         risk: medium
         verifymethod: test
     }
-    
+
     requirement cost_req {
         id: 4
-        text: "Kostnadsoptimering"
+        text: "Cost optimization"
         risk: medium
         verifymethod: analysis
     }
 
     functionalRequirement security_config {
         id: 1.1
-        text: "Kryptering aktiverad"
+        text: "Encryption enabled"
         risk: high
         verifymethod: test
     }
-    
+
     functionalRequirement network_security {
         id: 1.2
-        text: "Nätverkssegmentering"
+        text: "Network segmentation"
         risk: high
         verifymethod: test
     }
-    
+
     functionalRequirement data_protection {
         id: 2.1
-        text: "Dataminimering"
+        text: "Data minimization"
         risk: high
         verifymethod: inspection
     }
-    
+
     functionalRequirement audit_logging {
         id: 2.2
-        text: "Revisions-loggning"
+        text: "Audit logging"
         risk: medium
         verifymethod: test
     }
-    
+
     functionalRequirement auto_scaling {
         id: 3.1
-        text: "Automatisk skalning"
+        text: "Automatic scaling"
         risk: medium
         verifymethod: test
     }
-    
+
     functionalRequirement load_balancing {
         id: 3.2
-        text: "Lastbalansering"
+        text: "Load balancing"
         risk: medium
         verifymethod: test
     }
-    
+
     functionalRequirement resource_optimization {
         id: 4.1
-        text: "Resursoptimering"
+        text: "Resource optimization"
         risk: low
         verifymethod: analysis
     }
 
     element terraform_config {
-        type: "Infrastructure Code"
+        type: "Infrastructure code"
     }
-    
+
     element security_tests {
-        type: "Test Suite"
+        type: "Test suite"
     }
-    
+
     element compliance_scanner {
-        type: "Analysis Tool"
+        type: "Analysis tool"
     }
-    
+
     element performance_tests {
-        type: "Test Suite"
+        type: "Test suite"
     }
-    
+
     element cost_analyzer {
-        type: "Analysis Tool"
+        type: "Analysis tool"
     }
 
     business_req - contains -> security_config
@@ -129,6 +129,7 @@ requirementDiagram
     audit_logging - verifies -> security_tests
     auto_scaling - verifies -> performance_tests
     load_balancing - verifies -> performance_tests
-    
+
     data_protection - verifies -> compliance_scanner
     resource_optimization - verifies -> cost_analyzer
+
