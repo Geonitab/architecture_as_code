@@ -1,0 +1,25 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
+---
+graph TB
+    A[Cost Monitoring Stack] --> B[CloudWatch/Azure Monitor]
+    A --> C[Custom Dashboards]
+    A --> D[Alert System]
+    
+    B --> E[Metrics Collection]
+    C --> F[Reporting]
+    D --> G[Anomaly Detection]
+    
+    E --> H[Cost Analysis]
+    F --> H
+    G --> H
+    
+    H --> I[Optimization Actions]
