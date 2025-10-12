@@ -1,21 +1,20 @@
 %% Diagram: Management as Code overview
 flowchart TD
     Vision[Leadership Vision]
-    Guardrails[Policy & Guardrail Definitions]
+    Repo[(Management as Code Repository)]
+    Guardrails[Guardrails & Policies as Code]
     Automation[Automated Workflows]
     Teams[Delivery Teams]
-    Feedback[Operational Feedback]
+    Telemetry[Operational Telemetry]
+    Insights[Feedback Insights]
+    Reviews[Governance Reviews]
 
-    Vision --> Guardrails
+    Vision --> Repo
+    Repo --> Guardrails
     Guardrails --> Automation
     Automation --> Teams
-    Teams --> Feedback
-    Feedback --> Vision
-
-    subgraph Governance Cycle
-        Vision
-        Guardrails
-        Automation
-        Teams
-        Feedback
-    end
+    Teams --> Telemetry
+    Telemetry --> Insights
+    Insights --> Vision
+    Repo --> Reviews
+    Reviews --> Repo
