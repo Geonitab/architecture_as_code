@@ -53,9 +53,8 @@ After automated replacements improved the ratio from 2.81:1 to 18.03:1, strategi
 
 ### Files Modified
 
-**Automated Replacements (20 files)**:
+**Automated Replacements (19 active files; Chapter 6 retired)**:
 - `03_version_control.md` - 4 replacements
-- `06_cloud_architecture.md` - 8 replacements (7 auto + 1 manual)
 - `07_containerization.md` - 1 replacement
 - `08_microservices.md` - 13 replacements
 - `10_policy_and_security.md` - 16 replacements (9 auto + 7 manual)
@@ -75,7 +74,7 @@ After automated replacements improved the ratio from 2.81:1 to 18.03:1, strategi
 - `26_future_development.md` - 8 replacements
 - `30_appendix_code_examples.md` - 2 replacements
 
-**Total**: 163 replacements across 20 chapter files
+**Total**: 163 replacements across 20 chapter files (including the now-retired Chapter 6)
 
 ### Remaining IaC Mentions
 

@@ -91,7 +91,7 @@ These remaining instances are minimal and do not significantly impact readabilit
 - 03_version_control.md
 - 04_adr.md
 - 05_automation_devops_cicd.md
-- 06_cloud_architecture.md
+- ~~06_cloud_architecture.md~~ (retired)
 - 07_containerization.md
 - 08_microservices.md
 - 09_security.md

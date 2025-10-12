@@ -25,7 +25,7 @@ Based on spot-checking, these files likely need the most attention:
 
 ### High Priority (Heavy Swedish Content)
 1. `docs/08_microservices.md` - Contains Swedish paragraphs and sentences
-2. `docs/06_cloud_architecture.md` - Large file with remaining Swedish content
+2. ~~`docs/06_cloud_architecture.md` - Large file with remaining Swedish content~~ (retired and removed)
 3. `docs/09_security.md` - Security content with Swedish terminology
 4. `docs/10_policy_and_security.md` - Policy content with Swedish phrases
 5. `BOOK_REQUIREMENTS.md` - Requirements doc with Swedish sections
