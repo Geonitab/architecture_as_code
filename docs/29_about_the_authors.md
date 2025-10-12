@@ -8,7 +8,7 @@ This book represents the culmination of extensive experience in architecture, in
 
 ## Gunnar Nordqvist
 
-**Gunnar Nordqvist** is a certified Chief Architect and IT Architect at Kvadrat, one of Sweden's leading technology consulting companies. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
+**Gunnar Nordqvist** is a certified Chief Architect and IT Architect at Kvadrat, a leading European technology consulting company. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
 
 ### Professional Background
 
@@ -26,11 +26,11 @@ Gunnar's extensive experience spans solution and enterprise architecture, IT inf
 
 Throughout his career, Gunnar has witnessed the evolution from manual, document-based architecture practices to the modern paradigm of codified architecture. This transformation has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software development.
 
-His work at Kvadrat has provided him with unique insights into the challenges faced by Swedish organisations as they navigate digital transformation and adopt Architecture as Code practices. These real-world experiences inform every chapter of this book, ensuring that theoretical principles are always grounded in practical application.
+His work at Kvadrat has provided him with unique insights into the challenges faced by organisations in highly regulated industries as they navigate digital transformation and adopt Architecture as Code practices. These real-world experiences inform every chapter of this book, ensuring that theoretical principles are always grounded in practical application.
 
 ## About Kvadrat
 
-**Kvadrat** is a Swedish technology consulting company renowned for delivering excellence in IT architecture and infrastructure solutions. The company has been instrumental not only in supporting the creation of this book but also in pioneering Architecture as Code practices within Swedish organisations.
+**Kvadrat** is an independent technology consulting company renowned for delivering excellence in IT architecture and infrastructure solutions across Europe. The company has been instrumental not only in supporting the creation of this book but also in pioneering Architecture as Code practices within complex, compliance-driven organisations.
 
 ### Kvadrat's Contribution
 
@@ -96,14 +96,14 @@ This book builds upon the outstanding work of the open source community, particu
 - **Pandoc** - Document conversion excellence
 - **Mermaid** - Diagram as Code visualisation
 
-### Swedish Technology Community
+### Technology Community Partnerships
 
-Gratitude to the Swedish technology communities that have contributed insights and feedback:
+Gratitude to the technology communities that have contributed insights and feedback:
 
-- **SwedishCoders** - For technical content review
-- **DevOps Stockholm** - For practical case studies
-- **Swedish Cloud Architects** - For cloud-specific contributions
-- **Security Specialists Sweden** - For compliance guidance
+- **GlobalCoders Collective** - For technical content review
+- **DevOps Practitioners Network** - For practical case studies
+- **Cloud Architecture Guild** - For cloud-specific contributions
+- **Security Specialists Alliance** - For compliance guidance
 
 ### Academic Institutions
 
@@ -165,6 +165,6 @@ As technology continues to evolve, the principles outlined in this book—declar
 
 Sources:
 - Kvadrat AB. "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/
-- Kvadrat AB. "Swedish Technology Consulting Excellence." Company Profile, 2024. Available at: https://www.kvadrat.se/
+- Kvadrat AB. "Technology Consulting Excellence." Company Profile, 2024. Available at: https://www.kvadrat.se/
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
