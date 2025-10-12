@@ -1,417 +1,82 @@
-# Policy and security as code in detalj
+# Policy and Security as Code in Detail
 
-![Policy and security as code](images/diagram_12_kapitel11.png)
+![Policy and Security as Code](images/diagram_12_kapitel10.png)
 
-*Policy as Code represents next evolutionary step within Architecture as Code where security, compliance and governance automatiseras through programmerbara rules. Diagram shows integreringen of policy enforcement in entire utvecklingslivscykeln from design to produktion.*
+*Policy as Code represents the next evolutionary step within Architecture as Code, where security, compliance, and governance are automated through programmable rules. The diagram illustrates the integration of policy enforcement throughout the entire development lifecycle, from design to production.*
 
-## Introduktion and contextualisering
+## Introduction and Contextualisation
 
-in a värld where Swedish organizations handles all mer complex digitala infrastructures while regulatory requirements skärps kontinuerligt, has Policy as Code (PaC) framträtt as a oumbärlig disciplin within Architecture as Code (Architecture as Code). Withan [chapter 10 about security](10_sakerhet.md) introducerade Fundamental security principles, tar This chapter A djupt dyk in The advanced implementeringen of policy-drivna security solutions and introduces läsaren to Open Security Controls Assessment Language (OSCAL) - a revolutionerande standard for security management.
+In a world where Swedish organisations manage increasingly complex digital infrastructures whilst regulatory requirements continuously tighten, Policy as Code (PaC) has emerged as an indispensable discipline within Architecture as Code. Building upon [Chapter 9's security fundamentals](09_security.md), this chapter takes a deep dive into the advanced implementation of policy-driven security solutions and introduces readers to the Open Security Controls Assessment Language (OSCAL)—a revolutionary standard for security management.
 
-the traditional paradigmet for security- and compliance-handling are characterized of manual processes, static documentation and reactive strategier. This approach creates flaskhalsar in modern utvecklingscykler where infrastructure changes sker multiple gånger dagligen through automated CI/CD-pipelines. Swedish organizations, which traditionally varit foregångare within security and regelefterlevnad, stands nu infor utmaningen to digitalisera and automatisera These processes without to kompromissa with säkerhetsnivån.
+The traditional paradigm for security and compliance handling is characterised by manual processes, static documentation, and reactive strategies. This approach creates bottlenecks in modern development cycles where infrastructure changes occur multiple times daily through automated CI/CD pipelines. Swedish organisations, which have traditionally been forerunners in security and regulatory compliance, now face the challenge of digitalising and automating these processes without compromising security standards.
 
-Policy as Code adresserar This utmaning by transformera security from a extern kontrollmekanism to a integrated part of development process. by uttrycka security requirements, compliance-rules and governance-policies as code is achieved same Benefits that Architecture as Code offers: version control, testbarhet, återanvändbarhet, and konsistent deployment over environments and team.
+Policy as Code addresses this challenge by transforming security from an external control mechanism into an integrated part of the development process. By expressing security requirements, compliance rules, and governance policies as code, we achieve the same benefits that Architecture as Code offers: version control, testability, reusability, and consistent deployment across environments and teams.
 
-in The svenska contexten meets organisationer a complex regulatory environment as includes EU:s allmänna dataskyddsforordning (GDPR), Myndigheten for societal protection and beredskaps (MSB) security requirements for critical infrastructure, NIS2-direktivet, and branschspecific regulations within finansiella services, vård and public sector. Traditionella compliance-approaches baserade at manual controls and documentsbaserade policies is not only ineffective without also riskfyllda in dynamiska molnenvironments.
+In the Swedish context, organisations encounter a complex regulatory environment that includes the EU's General Data Protection Regulation (GDPR), the Swedish Civil Contingencies Agency (MSB) security requirements for critical infrastructure, the NIS2 Directive, and sector-specific regulations within financial services, healthcare, and the public sector. Traditional compliance approaches based on manual controls and document-based policies are not only ineffective but also risky in dynamic cloud environments.
 
-This chapter explores how Policy as Code, forstärkt with OSCAL-standarder, enables for Swedish organizations to achieve unprecedented levels of säkerhetsArchitecture as Code-automation and compliance-monitoring. We will to undersöka verkliga Architecture as Code-implementationspattern, analyze case studies from Swedish organizations, and ge läsaren concrete tools to implement enterprise-grade policy management.
+This chapter explores how Policy as Code, reinforced with OSCAL standards, enables Swedish organisations to achieve unprecedented levels of security automation and compliance monitoring. We shall examine real-world implementation patterns, analyse case studies from Swedish organisations, and provide readers with concrete tools to implement enterprise-grade policy management.
 
-## Evolutionen of security management within Architecture as Code
+## The Evolution of Security Management within Architecture as Code
 
-Architecture as Code-principerna within This area
+Security management within Architecture as Code has undergone a significant evolution from ad-hoc scripts and manual checklists to sophisticated policy engines and automated compliance frameworks. This evolution can be divided into four distinct phases, each with its own characteristic challenges and opportunities.
 
-Security management within Architecture as Code has undergone a significant evolution from ad-hoc skript and manual checklists to sofistikerade policy engines and automated compliance frameworks. This evolution can shared in in four distinct faser, var and a with their own characteristic Challenges and possibilities.
+**Phase 1: Manual Security Validation (2010–2015)**
 
-**Fas 1: Manual Säkerhetsvalidering (2010-2015)**
+In infrastructure's infancy, security validation was performed primarily through manual processes. Security teams reviewed infrastructure configurations after deployment, often weeks or months after the resources became productive. This reactive approach led to the discovery of security problems long after they could cause damage. Swedish organisations, with their strict security requirements, were particularly exposed to the inefficiencies this approach entailed.
 
-in infrastructure's infancy security validation was performed primarily through manual processes. Säkerhetsteam reviewed infrastructure configurations after deployment, often weeks or months efter to resurserna became productive. This reactive approach led to discovery of säkerhetsproblem long after to the could cause damage. Swedish organizations, with sina strict security requirements, var particularly exposed to the inefficiencies that This approach brought.
+The challenges were numerous: inconsistent application of security policies, long feedback loops between development and security, and limited scalability as organisations grew and the number of infrastructure resources increased exponentially. Documentation quickly became outdated, and knowledge transfer between teams was problematic.
 
-The challenges were many: inconsistent application of security policies, long feedback loops between development and security, and begränsad scalability when organisationer växte and number of infrastructure resources increased exponentially. documentation quickly became outdated, and knowledge transfer between team var problematic.
+**Phase 2: Script-Based Automation (2015–2018)**
 
-**Fas 2: Scriptbaserad Architecture as Code-automation (2015-2018)**
+When organisations began to realise the limitations of manual processes, they started developing scripts to automate security validation. Python scripts, Bash scripts, and PowerShell modules were developed to check infrastructure configurations against enterprise policies. This approach enabled faster validation but lacked standardisation and was difficult to maintain.
 
-When organizations began to realize the limitations with manual processes began the develop skript to automatisera säkerhetsvalidering. Python-skript, Bash-scripts and powershell-moduler utvecklades to kontrollera infrastructure configurations mot foretagspolicies. This approach enabled snabbare validation but saknade standardisering and var svår to underhålla.
+Swedish development teams began experimenting with custom security validation scripts that were integrated into CI/CD pipelines. These early adopters discovered both opportunities and limitations with script-based automation: whilst automation improved speed significantly, the maintenance of hundreds of specialised scripts became a burden in itself.
 
-Svenska utvecklingsteam började experiment with custom security validation scripts as were integrated into CI/CD-pipelines. These early adopters discovered both opportunities and limitations with scriptbaserad automation: with automation improved speed significantly, blev maintenance of hundreds specialized scripts a burden in itself.
+**Phase 3: Policy Engine Integration (2018–2021)**
 
-**Fas 3: Policy Engine Integration (2018-2021)**
+The introduction of dedicated policy engines such as Open Policy Agent (OPA) marked a turning point in the development of security automation. These tools offered a standardised way to express and evaluate policies, which enabled separation of policy logic from implementation details.
 
-Introduktionen of dedikerade policy engines that Open Policy Agent (OPA) markerade a vändpunkt in utvecklingen of säkerhetsautomatisering. These tools erbjöd standardized way to uttrycka and evaluate policies, which enabled separation of policy logic from Architecture as Code-implementation details.
+Kubernetes adoption in Swedish organisations drove the development of sophisticated admission controllers and policy enforcement points. Gatekeeper, based on OPA, quickly became the de facto standard for Kubernetes policy enforcement. Swedish enterprise organisations began developing comprehensive policy libraries that covered everything from basic security hygiene to complex compliance requirements.
 
-Kubernetes adoption in Swedish organizations drev utvecklingen of sofistikerade admission controllers and policy enforcement points. Gatekeeper, based on OPA, quickly became the facto standard for Kubernetes policy enforcement. Svenska enterprise-organisationer började develop comprehensive policy libraries as täckte all from basic security hygiene to complex compliance requirements.
+**Phase 4: Comprehensive Policy Frameworks (2021–Present)**
 
-**Fas 4: Comprehensive Policy Frameworks (2021-nu)**
+Today's generation of Policy as Code platforms integrates deeply with the entire development lifecycle, from design-time validation to runtime monitoring and automated remediation. OSCAL (Open Security Controls Assessment Language) has emerged as a game-changing standard that enables interoperability between different security tools and standardised representation of security controls.
 
-Dagens generation of policy as code platforms integrerar djupt with entire utvecklingslivscykeln, from design-time validation to runtime monitoring and automated rewithiation. OSCAL (Open Security Controls Assessment Language) has framträtt as a game-changing standard as enables interoperabilitet between different säkerhetsverktyg and standardiserad representation of security controls.
+Swedish organisations are now at the forefront of adopting comprehensive policy frameworks that combine Policy as Code with continuous compliance monitoring, automated risk assessment, and adaptive security controls. This evolution has enabled organisations to achieve regulatory compliance with unprecedented precision and efficiency.
 
-Swedish organizations is nu in forfronten of to adoptера comprehensive policy frameworks as combines policy as code with continuous compliance monitoring, automated risk assessment and adaptive security controls. This evolution has enabled for organisationer to achieve regulatory compliance with unprecedented precision and effektivitet.
+## Open Policy Agent (OPA) and Rego: The Foundation for Policy-Driven Security
 
-## Open Policy Agent (OPA) and Rego: Grunden for policy-driven security
+Open Policy Agent has established itself as the de facto standard for Policy as Code implementation through its flexible architecture and powerful declarative policy language, Rego. OPA's success lies in its ability to separate policy logic from application logic, which enables centralised policy management whilst development teams maintain autonomy over their applications and infrastructure.
 
-Open Policy Agent has etablerats as the facto standard for policy as code implementation through their flexibla architecture and kraftfulla declarative policy-language Rego. OPA:s success ligger in dess ability to separera policy logic from application logic, which enables centraliserad policy management while utvecklingsteam maintains autonomi over sina applications and infrastructures.
+The Rego language represents a paradigm shift from imperative to declarative policy definition. Instead of specifying "how" something should be done, Rego focuses on "what" should be achieved. This approach results in policies that are more readable, testable, and maintainable compared to traditional script-based solutions.
 
-Rego-språket represents a paradigm shift from imperative to declarative policy definition. instead of specificera "how" something should göras, focuses Rego at "what" which should is achieved. This approach results in policies as is mer läsbara, testbara and underhållbara jämfort with traditional script-baserade solutions.
+For Swedish organisations that must navigate a complex regulatory environment, OPA and Rego offer a powerful platform to implement everything from basic security hygiene to sophisticated compliance frameworks. Policy developers can create modular, reusable libraries that cover common security patterns, regulatory requirements, and organisational standards.
 
-For Swedish organizations as must navigate complex regulatory environment, offers OPA and Rego a kraftfull plattform to implement all from basic säkerhetshygien to sophisticated compliance frameworks. Policy-Developers can create modulära, återanvändbara bibliotek as täcker common säkerhetspatterns, regulatory requirements and organizational standards.
+### Architectural Foundation for Enterprise Policy Management
 
-### Arkitekturell foundation for enterprise policy management
+OPA's architecture builds on several key principles that make it particularly suitable for enterprise environments:
 
-OPA:s architecture builds on multiple nyckelprinciper as does the particularly lämpat for enterprise-environments:
+**Decoupled Policy Evaluation**: OPA acts as a policy evaluation engine that receives data and policies as input and produces decisions as output. This separation allows the same policy logic to be applied across different systems and environments without modification.
 
-**Decouplad Policy Evaluation**: OPA agerar as a policy evaluation engine as tar emot data and policies as input and produces decisions as output. This separation toåter same policy logic to appliceras over different systems and environments without modification.
+**Pull vs Push Policy Distribution**: OPA supports both pull-based policy distribution (where agents fetch policies from central repositories) and push-based distribution (where policies are actively distributed to agents). Swedish organisations with strict security requirements often prefer pull-based approaches for better auditability and control.
 
-**Pull vs Push Policy Distribution**: OPA supports both pull-baserad policy distribution (where agents hämtar policies from centrala repositories) and push-baserad distribution (where policies is distributed aktivt to agents). Swedish organizations with strict security requirements foredrar often pull-baserade approaches for bättre auditability and control.
+**Bundle-Based Policy Packaging**: Policies and data can be packaged as bundles that include dependencies, metadata, and signatures. This enables atomic policy updates and rollback capabilities that are critical for production environments.
 
-**Bundle-baserad Policy Packaging**: Policies and data can paketeras as bundles as includes dependencies, metadata and signatures. This enables atomic policy updates and rollback capabilities as is critical for production environments.
+### Advanced Rego Programming for Swedish Compliance Requirements
 
-### Avancerad Rego-programming for svenska compliance-requirements
+See [Appendix A, Example 10_CODE_1](#10_CODE_1) for a comprehensive Rego policy implementation covering GDPR Article 32, MSB security requirements, and data sovereignty compliance.
 
-```rego
-# policies/advanced_swedish_compliance.rego
-package sweden.enterprise.security
+The advanced Rego implementation demonstrates several sophisticated patterns:
+- Comprehensive encryption validation handling different AWS services
+- Network security compliance with MSB requirements for network segmentation
+- Data sovereignty enforcement ensuring GDPR compliance for personal data storage
+- Compliance assessment with scoring and regulatory framework mapping
 
-import rego.v1
+### Integration with Swedish Enterprise Environments
 
-# ========================================
-# GDPR Article 32 - Advanced implementation
-# ========================================
+For Swedish organisations operating within regulated industries, OPA implementation often requires integration with existing security systems and compliance frameworks. This includes integration with SIEM systems for audit logging, identity providers for policy authorisation, and enterprise monitoring systems for real-time alerting.
 
-# Komprehensiv krypteringsvalidering as handles different AWS-services
-encryption_compliant[resource] {
-    resource := input.resources[_]
-    resource.type in encryption_required_services
-    encryption_methods := get_encryption_status(resource)
-    encryption_validation := validate_encryption_strength(encryption_methods)
-    encryption_validation.compliant == true
-}
-
-encryption_required_services := {
-    "aws_s3_bucket",
-    "aws_rds_instance", 
-    "aws_rds_cluster",
-    "aws_ebs_volume",
-    "aws_efs_file_system",
-    "aws_dynamodb_table",
-    "aws_redshift_cluster",
-    "aws_elasticsearch_domain",
-    "aws_kinesis_stream",
-    "aws_sqs_queue",
-    "aws_sns_topic"
-}
-
-# Avancerad krypteringsvalidering with stöd for different encryption methods
-get_encryption_status(resource) := result {
-    resource.type == "aws_s3_bucket"
-    result := {
-        "at_rest": has_s3_encryption(resource),
-        "in_transit": has_s3_ssl_policy(resource),
-        "key_management": get_s3_key_management(resource)
-    }
-}
-
-get_encryption_status(resource) := result {
-    resource.type == "aws_rds_instance"
-    result := {
-        "at_rest": resource.attributes.storage_encrypted,
-        "in_transit": resource.attributes.force_ssl,
-        "key_management": get_rds_kms_config(resource)
-    }
-}
-
-# Validate krypteringsstyrka according to svenska security requirements
-validate_encryption_strength(encryption) := result {
-    # Kontrollera to both at-rest and in-transit encryption is aktiverat
-    encryption.at_rest == true
-    encryption.in_transit == true
-    
-    # Validate key management practices
-    key_validation := validate_key_management(encryption.key_management)
-    
-    result := {
-        "compliant": key_validation.approved,
-        "strength_level": key_validation.strength,
-        "recommendations": key_validation.recommendations
-    }
-}
-
-validate_key_management(kms_config) := result {
-    # AWS KMS Customer Managed Keys rekommentheir for Swedish organizations
-    kms_config.type == "customer_managed"
-    kms_config.key_rotation_enabled == true
-    kms_config.multi_region_key == false  # Datasuveränitet
-    
-    result := {
-        "approved": true,
-        "strength": "high",
-        "recommendations": []
-    }
-}
-
-validate_key_management(kms_config) := result {
-    # AWS Managed Keys acceptabelt but with rekommendationer
-    kms_config.type == "aws_managed"
-    
-    result := {
-        "approved": true,
-        "strength": "medium", 
-        "recommendations": [
-            "Överväg customer managed keys for förbättrad kontroll",
-            "Implementera key rotation policies"
-        ]
-    }
-}
-
-# ========================================
-# MSB Säkerhetsrequirements - Nätverkssegmentering
-# ========================================
-
-# Sofistikerad nätverksvalidering as handles complex network topologies
-network_security_compliant[violation] {
-    resource := input.resources[_]
-    resource.type == "aws_security_group"
-    
-    violations := evaluate_network_security(resource)
-    violation := violations[_]
-    violation.severity in ["critical", "high"]
-}
-
-evaluate_network_security(security_group) := violations {
-    violations := array.concat(
-        evaluate_ingress_rules(security_group),
-        evaluate_egress_rules(security_group)
-    )
-}
-
-evaluate_ingress_rules(sg) := violations {
-    violations := [v |
-        rule := sg.attributes.ingress[_]
-        violation := check_ingress_rule(rule, sg.attributes.name)
-        violation != null
-        v := violation
-    ]
-}
-
-check_ingress_rule(rule, sg_name) := violation {
-    # Kritisk violation for öppna administrativa portar
-    rule.cidr_blocks[_] == "0.0.0.0/0"
-    rule.from_port in administrative_ports
-    
-    violation := {
-        "type": "critical_port_exposure",
-        "severity": "critical",
-        "port": rule.from_port,
-        "security_group": sg_name,
-        "message": sprintf("Administrativ port %v exponerad mot internet", [rule.from_port]),
-        "remediation": "Begränsa access to specific management networks",
-        "msb_requirement": "Säkerhetsrequirements 3.2.1 - Nätverkssegmentering"
-    }
-}
-
-check_ingress_rule(rule, sg_name) := violation {
-    # High violation for icke-standard portar öppna mot internet
-    rule.cidr_blocks[_] == "0.0.0.0/0"
-    not rule.from_port in allowed_public_ports
-    not rule.from_port in administrative_ports
-    
-    violation := {
-        "type": "non_standard_port_exposure", 
-        "severity": "high",
-        "port": rule.from_port,
-        "security_group": sg_name,
-        "message": sprintf("Icke-standard port %v exponerad mot internet", [rule.from_port]),
-        "remediation": "Validate business requirement and begränsa access",
-        "msb_requirement": "Säkerhetsrequirements 3.2.2 - Minimal exponering"
-    }
-}
-
-administrative_ports := {22, 3389, 5432, 3306, 1433, 27017, 6379, 9200, 5601}
-allowed_public_ports := {80, 443}
-
-# ========================================
-# Datasuveränitet and GDPR Compliance
-# ========================================
-
-data_sovereignty_compliant[resource] {
-    resource := input.resources[_]
-    resource.type in data_storage_services
-    
-    # Kontrollera dataklassificering
-    classification := get_data_classification(resource)
-    
-    # Validate region placement based on dataklassificering
-    region_compliance := validate_region_placement(resource, classification)
-    region_compliance.compliant == true
-}
-
-data_storage_services := {
-    "aws_s3_bucket", "aws_rds_instance", "aws_rds_cluster",
-    "aws_dynamodb_table", "aws_elasticsearch_domain", 
-    "aws_redshift_cluster", "aws_efs_file_system"
-}
-
-get_data_classification(resource) := classification {
-    # Prioritera explicitly tagging
-    classification := resource.attributes.tags["DataClassification"]
-    classification != null
-}
-
-get_data_classification(resource) := "personal" {
-    # Infer from resource naming patterns
-    contains(lower(resource.attributes.name), "personal")
-}
-
-get_data_classification(resource) := "personal" {
-    # Infer from database patterns
-    resource.type in ["aws_rds_instance", "aws_rds_cluster"]
-    database_indicators := {"user", "customer", "personal", "gdpr", "pii"}
-    some indicator in database_indicators
-    contains(lower(resource.attributes.identifier), indicator)
-}
-
-get_data_classification(resource) := "internal" {
-    # Default for oklassificerad data
-    true
-}
-
-validate_region_placement(resource, classification) := result {
-    # Persondata must is stored within EU
-    classification == "personal"
-    resource_region := get_resource_region(resource)
-    eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
-    
-    resource_region in eu_regions
-    
-    result := {
-        "compliant": true,
-        "region": resource_region,
-        "classification": classification,
-        "requirement": "GDPR Artikel 44-49 - Överföringar to tredje land"
-    }
-}
-
-validate_region_placement(resource, classification) := result {
-    # Persondata in non-EU region
-    classification == "personal"
-    resource_region := get_resource_region(resource)
-    eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
-    
-    not resource_region in eu_regions
-    
-    result := {
-        "compliant": false,
-        "region": resource_region, 
-        "classification": classification,
-        "violation_type": "data_sovereignty",
-        "severity": "critical",
-        "message": sprintf("Persondata is stored in region %v outside EU", [resource_region]),
-        "remediation": "Flytta resurs to EU-region or implement adequacy decision framework",
-        "requirement": "GDPR Artikel 44-49 - Överföringar to tredje land"
-    }
-}
-
-get_resource_region(resource) := region {
-    # explicitly region setting
-    region := resource.attributes.region
-    region != null
-}
-
-get_resource_region(resource) := region {
-    # Infer from availability zone
-    az := resource.attributes.availability_zone
-    region := substring(az, 0, count(az) - 1)
-}
-
-get_resource_region(resource) := "unknown" {
-    # Fallback for resources without explicitly region
-    true
-}
-
-# ========================================
-# Comprehensive Compliance Assessment
-# ========================================
-
-compliance_assessment := result {
-    # Samla all compliance violations
-    encryption_violations := [v | 
-        resource := input.resources[_]
-        not encryption_compliant[resource]
-        v := create_encryption_violation(resource)
-    ]
-    
-    network_violations := [v |
-        violation := network_security_compliant[_]
-        v := violation
-    ]
-    
-    sovereignty_violations := [v |
-        resource := input.resources[_]
-        not data_sovereignty_compliant[resource]
-        v := create_sovereignty_violation(resource)
-    ]
-    
-    all_violations := array.concat(
-        array.concat(encryption_violations, network_violations),
-        sovereignty_violations
-    )
-    
-    # Beräkna compliance score
-    score := calculate_compliance_score(all_violations)
-    
-    result := {
-        "overall_score": score,
-        "total_violations": count(all_violations),
-        "critical_violations": count([v | v := all_violations[_]; v.severity == "critical"]),
-        "high_violations": count([v | v := all_violations[_]; v.severity == "high"]),
-        "medium_violations": count([v | v := all_violations[_]; v.severity == "medium"]),
-        "violations": all_violations,
-        "recommendations": generate_recommendations(all_violations),
-        "regulatory_compliance": {
-            "gdpr": assess_gdpr_compliance(all_violations),
-            "msb": assess_msb_compliance(all_violations), 
-            "iso27001": assess_iso_compliance(all_violations)
-        }
-    }
-}
-
-calculate_compliance_score(violations) := score {
-    violation_penalty := sum([penalty |
-        violation := violations[_]
-        penalty := severity_penalty[violation.severity]
-    ])
-    
-    max_score := 100
-    score := math.max(0, max_score - violation_penalty)
-}
-
-severity_penalty := {
-    "critical": 25,
-    "high": 15, 
-    "medium": 10,
-    "low": 5
-}
-
-generate_recommendations(violations) := recommendations {
-    violation_types := {v.type | v := violations[_]}
-    
-    recommendations := [rec |
-        violation_type := violation_types[_]
-        rec := recommendation_mapping[violation_type]
-    ]
-}
-
-recommendation_mapping := {
-    "encryption_required": "Implementera enterprise encryption standards with customer managed KMS keys",
-    "critical_port_exposure": "Implementera bastion hosts or AWS Systems Manager for administrativ access",
-    "data_sovereignty": "Skapa region-specific Terraform providers for automatic compliance",
-    "resource_tagging": "Implementera obligatorisk tagging through resource policies"
-}
-```
-
-### Integration with svenska enterprise-environments
-
-For Swedish organizations as operates within regulated industries requires OPA-implementation often integration with existing säkerhetssystem and compliance frameworks. This includes integration with SIEM-systems for audit logging, identity providers for policy authorization and enterprise monitoring systems for real-time alerting.
-
-Enterprise-grade OPA deployments requires also considerations about high availability, performance optimization and secure policy distribution. Swedish organizations with critical infrastructure must ensure to policy evaluation not becomes a single point of failure as can affect business operations.
+Enterprise-grade OPA deployments also require considerations around high availability, performance optimisation, and secure policy distribution. Swedish organisations with critical infrastructure must ensure that policy evaluation does not become a single point of failure that could affect business operations.
 
 ## OSCAL: Open Security Controls Assessment Language - Revolutionerande säkerhetsstandardisering
 
