@@ -885,7 +885,7 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-func TestTerraformSwedishInfrastructure(t *testing.T) {
+func TestTerraformInfrastructure(t *testing.T) {
     t.Parallel()
 
     // Sätt upp test environment

@@ -16,7 +16,6 @@ Digitalisering is not only about to introducing new technology, without about a 
 
 ### digitaliseringsutmaningar and possibilities
 
-public sector and wheningsliv stands infor comprehensive digitaliseringsChallenges where traditional IT-Structures often forms flaskhalsar for innovation and effektivitet. according to Digitaliseringsstyrelsens last rapport from 2023 has organizations investerat over 180 miljarder kronor in digitaliseringsinitiativ the last five åren, but many projekt has misslyckats at grund of bristande infrastructurestyrning and technical skuld.
 
 Architecture as Code-baserade solutions offers opportunity to bryta These begränsningar through Architecture as Code-automation, standardisering and scalability as specific adresserar Challenges:
 
@@ -54,7 +53,6 @@ Flera organizations has throughfort exemplariska digitaliseringstransformationer
 
 **Volvo Cars**: Throughforde digital transformation from traditional biltoverkare to mobility service provider through comprehensive IoT- and cloud-plattform baserad at Architecture as Code. This enabled development of autonoma körtjänster and subscription-baserade affärsmodor.
 
-**Skatteverket**: Moderniserade Sveriges skattesystem through cloud-first strategi with Architecture as Code, which resulterade in 99.8% uptime under deklarationsperioden and 50% snabbare handläggningstider for foretagsdeklarationer.
 
 These framgångar shows to organizations can achieve världsledande digitalisering through strategisk use of Architecture as Code kombinerat with styrkor within innovation, design and sustainability.
 
@@ -209,7 +207,7 @@ Cloud-first implementation requires dock noggrann planering of hybrid- and multi
 **AWS Nordic expansion:**
 Amazon Web Services etablerade their forsta nordiska region in Stockholm 2018, specific to meet and nordiska requirements at data residency. AWS Stockholm region offers:
 
-- Fysisk data sovereignty within Sveriges gränser
+- Fysisk data sovereignty within country gränser
 - Sub-5ms latency to entire Norden
 - Compliance certifieringar including C5 (Tyskland) and ISO 27001
 - Dedicated support at språket
@@ -228,7 +226,7 @@ Google etablerade their forsta nordiska region in Finland 2021 but offers organi
 - EU-baserad data processing for GDPR compliance
 - Carbon-neutral operations according to hållbarhetsmål
 - AI/ML capabilities for forskningsorganisationer
-- Integration with öppen source code-ekosystem as is populärt in Sverige
+- Integration with öppen source code-ekosystem as is populärt in the country
 
 ### Hybrid cloud strategier for organizations
 
@@ -254,7 +252,7 @@ terraform {
 provider "vsphere" {
   user                 = var.vsphere_user
   password             = var.vsphere_password
-  vsphere_server       = var.vsphere_server  # Svenskt datacenter
+  vsphere_server       = var.vsphere_server  # Private datacenter
   allow_unverified_ssl = false
 }
 
@@ -343,7 +341,7 @@ from datetime import datetime
 import boto3
 from terraform_python_api import Terraform
 
-class SwedishCustomerOnboarding:
+class CustomerOnboarding:
     """
     Automatiserad kundregistrering for finansiella services
     """
@@ -582,7 +580,7 @@ import boto3
 from datetime import datetime, timedelta
 import tensorflow as tf
 
-class SwedishWorkloadOptimizer:
+class WorkloadOptimizer:
     """
     ML-baserad optimering of infrastruktur for arbetsmönster
     """
@@ -958,7 +956,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 import boto3
 
-class SwedishCloudCostOptimizer:
+class CloudCostOptimizer:
     """
     Machine Learning-baserad kostnadsoptimering
     for molnresurser
@@ -1021,9 +1019,7 @@ Viktiga lessons from digitaliseringsinitiativ shows to technical transformation 
 
 ## Sources and referenser
 
-- Digitaliseringsstyrelsen. "Digitaliseringsstrategi for Sverige." Regeringskansliet, 2022.
 - McKinsey Digital. "Digital Transformation in the Nordics." McKinsey & Company, 2023.
 - AWS. "Cloud Adoption Framework for organizations." Amazon Web Services, 2023.
-- Microsoft. "Azure for svensk public sector." Microsoft Sverige, 2023.
 - SANS Institute. "Cloud Security for nordiska organisationer." SANS Security Research, 2023.
 - Gartner. "Architecture as Code Trends in Europe." Gartner Research, 2023.

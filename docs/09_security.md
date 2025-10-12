@@ -730,7 +730,7 @@ creasingly relevant as regulatory regimes demand stronger privacy guarantees.
 ## Strategic security recommendations for organizations
 
 enterprises should align security investments with regulatory duties, the evolving threat landscape, and transformation o
-bjectives. Participation in national collaboration forums—such as the Civil Contingencies Agency (MSB), the Swedish Inte
+bjectives. Participation in national collaboration forums—such as the Civil Contingencies Agency (MSB), the national security authorities].
 rnet Foundation, and sector-specific information sharing groups—strengthens threat intelligence and coordinated response capabil
 ities.
 
@@ -788,7 +788,7 @@ nd accelerated innovation.
 
 ### organizations and expertise
 - Internet Foundation. *Cybersecurity Report 2023.* Internetstiftelsen, 2023.
-- Incert. *Cybersecurity Threat Landscape Report 2023.* Swedish Computer Emergency Response Team.
+- Incert. *Cybersecurity Threat Landscape Report 2023.* National Computer Emergency Response Team.
 - Cybercom Group. *Nordic Cybersecurity Survey 2023.* Cybercom Group AB.
 - KTH Royal Institute of Technology. *Cybersecurity Research Publications.* Network and Systems Engineering.
 

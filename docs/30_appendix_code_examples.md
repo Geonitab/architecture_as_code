@@ -433,8 +433,8 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// SvenskaVPCTestSuite definierar test suite for VPC implementation
-type SvenskaVPCTestSuite struct {
+// VPCTestSuite definierar test suite for VPC implementation
+type VPCTestSuite struct {
     TerraformOptions *terraform.Options
     AWSSession       *session.Session
     OrganizationName string
@@ -442,12 +442,12 @@ type SvenskaVPCTestSuite struct {
     CostCenter       string
 }
 
-// TestSvenskaVPCGDPRCompliance testar GDPR compliance for VPC implementation
-func TestSvenskaVPCGDPRCompliance(t *testing.T) {
+// TestVPCGDPRCompliance testar GDPR compliance for VPC implementation
+func TestVPCGDPRCompliance(t *testing.T) {
     t.Parallel()
 
-    suite := setupSvenskaVPCTest(t, "development")
-    defer cleanupSvenskaVPCTest(t, suite)
+    suite := setupVPCTest(t, "development")
+    defer cleanupVPCTest(t, suite)
 
     // Deploy infrastructure
     terraform.InitAndApply(t, suite.TerraformOptions)
@@ -462,20 +462,20 @@ func TestSvenskaVPCGDPRCompliance(t *testing.T) {
     })
 
     t.Run("TestDataResidencySweden", func(t *testing.T) {
-        testDataResidencySweden(t, suite)
+        testDataResidency(t, suite)
     })
 
     t.Run("TestAuditLogging", func(t *testing.T) {
         testAuditLogging(t, suite)
     })
 
-    t.Run("TestSvenskaTagging", func(t *testing.T) {
-        testSvenskaTagging(t, suite)
+    t.Run("TestTagging", func(t *testing.T) {
+        testTagging(t, suite)
     })
 }
 
-// setupSvenskaVPCTest förbereder test environment for VPC testing
-func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
+// setupVPCTest förbereder test environment for VPC testing
+func setupVPCTest(t *testing.T, environment string) *VPCTestSuite {
     // Unik test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
     organizationName := fmt.Sprintf("svenska-org-%s", uniqueID)
@@ -510,7 +510,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
         Region: aws.String("eu-north-1"),
     }))
 
-    return &SvenskaVPCTestSuite{
+    return &VPCTestSuite{
         TerraformOptions: terraformOptions,
         AWSSession:       awsSession,
         OrganizationName: organizationName,
@@ -520,7 +520,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
 }
 
 // testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade for GDPR compliance
-func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testVPCFlowLogsEnabled(t *testing.T, suite *VPCTestSuite) {
     // Hämta VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     require.NotEmpty(t, vpcID, "VPC ID should not be empty")
@@ -553,7 +553,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
 }
 
 // testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
-func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testEncryptionAtRest(t *testing.T, suite *VPCTestSuite) {
     // Hämta KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
@@ -564,8 +564,8 @@ func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ Encryption at rest validerat for GDPR compliance")
 }
 
-// testDataResidencySweden validates to all infrastruktur is within gränser
-func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
+// testDataResidency validates to all infrastruktur is within gränser
+func testDataResidency(t *testing.T, suite *VPCTestSuite) {
     // Validate to VPC is in Stockholm region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
@@ -595,7 +595,7 @@ func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
 }
 
 // testAuditLogging validates to audit logging is konfigurerat according to lagrequirements
-func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testAuditLogging(t *testing.T, suite *VPCTestSuite) {
     // Kontrollera CloudTrail configuration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
     
@@ -613,8 +613,8 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validates to all resurser has korrekta tags
-func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
+// testTagging validates to all resurser has korrekta tags
+func testTagging(t *testing.T, suite *VPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
         "Country", "GDPRCompliant", "DataResidency",
@@ -662,8 +662,8 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ tagging validerat for all resurser")
 }
 
-// cleanupSvenskaVPCTest rensar test environment
-func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
+// cleanupVPCTest rensar test environment
+func cleanupVPCTest(t *testing.T, suite *VPCTestSuite) {
     terraform.Destroy(t, suite.TerraformOptions)
     t.Logf("✅ Test environment rensat for %s", suite.OrganizationName)
 }

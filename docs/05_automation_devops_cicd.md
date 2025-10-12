@@ -125,7 +125,7 @@ Legal, procurement, and risk-management teams often maintain their own document-
 
 **efterlevnadsintegration:** GDPR, MSB-security requirements and sektorsspecifik reglering integreras naturligt in arkitekturkoden rather than as externa controls.
 
-**Gemensam arkitekturutveckling:** Svensk konsensuskultur be applied at arkitekturevolution where all stakeholders contributes to arkitekturkodbasen through transparent, demokratiska processes.
+**Gemensam arkitekturutveckling:** Consensus culture be applied at arkitekturevolution where all stakeholders contributes to arkitekturkodbasen through transparent, demokratiska processes.
 
 ## CI/CD-fundamentals for organizations
 
@@ -469,7 +469,7 @@ from dataclasses import dataclass
 from architecture_validators import *
 
 @dataclass
-class SvenskaArchitectureTestConfig:
+class ArchitectureTestConfig:
     """Test configuration for Architecture as Code"""
     organization_name: str
     environment: str
@@ -481,11 +481,11 @@ class SvenskaArchitectureTestConfig:
         if self.compliance_frameworks is None:
             self.compliance_frameworks = ["GDPR", "MSB", "ISO27001"]
 
-class TestSvenskaArchitectureCompliance:
+class TestArchitectureCompliance:
     """Test suite for svensk arkitekturcompliance"""
     
     def setup_method(self):
-        self.config = SvenskaArchitectureTestConfig(
+        self.config = ArchitectureTestConfig(
             organization_name="svenska-tech-ab",
             environment="production"
         )

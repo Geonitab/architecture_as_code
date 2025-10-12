@@ -141,7 +141,7 @@ This structure ensures:
 - **Logical progression**: Each part builds upon knowledge from previous parts
 - **Thematic grouping**: Related topics are covered together for better comprehension
 - **Balance**: Theory and practice are balanced throughout all parts
-- **Adaptability**: Content is adapted for Swedish organizational contexts and regulatory requirements
+- **Adaptability**: Content is adapted for organizational contexts and regulatory requirements
 
 ## Diagrams and Images
 

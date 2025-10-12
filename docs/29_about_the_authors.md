@@ -38,13 +38,13 @@ Bokverkstaden grundades with målet to överbrygga klyftan between teoretiska ar
 Book content has granskats of:
 
 - **Senior molnarkitekter** from storforetag
-- **Tekniska chefer** within svensk finanssektor  
+- **Tekniska chefer** within finanssektor  
 - **Compliance-specialister** with expertis within regelverk
 - **Open source code-maintainers** of Architecture as Code tool
 
 ### Contentssspecialister
 
-- **Tekniska skribenter** specialized at svensk IT-documentation
+- **Tekniska skribenter** specialized at IT-documentation
 - **Utbildningsdesigners** with fokus at vuxenutbildning within technology
 - **Språkspecialister** for technical terminologi
 
@@ -52,7 +52,7 @@ Book content has granskats of:
 
 ### Kvadrat AB
 
-**Kvadrat** has bidragit as technical partner and designstöd for This publikation. Which svenskt teknologikonsultforetag has Kvadrat apporterat:
+**Kvadrat** has bidragit as technical partner and designstöd for This publikation. Which teknologikonsultforetag has Kvadrat apporterat:
 
 **design and varumärke:**
 - Professionell bokdesign and layout
@@ -98,7 +98,7 @@ the technical teamet behind bokproduktionen includes:
 
 **Quality Assurance:**
 - Tekniska testare for content validation
-- Language validators for svensk terminologi
+- Language validators for terminologi
 - Accessibility specialists for universal design
 
 ### Tools and technologies
@@ -129,10 +129,9 @@ This bok builds on the enastående arbete as utforts of öppen source code-commu
 
 ### technical communities
 
-- **SwedishCoders** - For feedback at technical Contents
+- **TechCoders** - For feedback at technical Contents
 - **DevOps Stockholm** - For praktiska case studies
 - **molnarkitekter** - For molnspecific bidrag
-- **Säkerhetsspecialister Sverige** - For compliance-vägledning
 
 ### Akademiska institutioner
 
@@ -149,7 +148,7 @@ This bok is designad as a levande resurs as is developed with:
 - **Community feedback** - Återkoppling from organizations
 - **technical evolution** - Uppdateringar when new tools and methods is developed
 - **Praktiska lessons** - Integration of new case studies and Architecture as Code best practices
-- **Språkutveckling** - Forfining of svensk technical terminologi
+- **Språkutveckling** - Forfining of technical terminologi
 
 ### Bidra to framtida versions
 
@@ -195,7 +194,5 @@ The modern Architecture as Code methodology represents framtiden for infrastruct
 Bokens success will from mångfalden of perspektiv, djupet of praktisk erfarenhet and engagemanget to create verklig value for technical organisationer. Vi hoppas to This resurs will to accelerera adoptionen of Architecture as Code-principles and bidra to improved technical utfall over entire svenska tech-sektorn.
 
 Sources:
-- Kvadrat AB. "Swedish Technology Consulting Excellence." Foretagsprofil, 2024.
 - DevOps Community. "Architecture as Code Best Practices." Community Guidelines, 2024.
 - GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
-- Tekniska Standarder. "Technical Documentation in Swedish." Language Guidelines, 2024.

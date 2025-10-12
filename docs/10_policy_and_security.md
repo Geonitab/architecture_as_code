@@ -1827,7 +1827,7 @@ spec:
   crd:
     spec:
       names:
-        kind: SwedishEnterpriseSecurity
+        kind: EnterpriseSecurity
       validation:
         openAPIV3Schema:
           type: object
@@ -2036,7 +2036,7 @@ spec:
 ---
 # Production Constraint Instance for enterprise environments
 apiVersion: config.gatekeeper.sh/v1alpha1
-kind: SwedishEnterpriseSecurity
+kind: EnterpriseSecurity
 metadata:
   name: production-security-policy
   namespace: gatekeeper-systems
@@ -2076,7 +2076,7 @@ spec:
 ---
 # Development Environment Constraint (smaller strikt)
 apiVersion: config.gatekeeper.sh/v1alpha1
-kind: SwedishEnterpriseSecurity
+kind: EnterpriseSecurity
 metadata:
   name: development-security-policy
   namespace: gatekeeper-systems
@@ -2123,7 +2123,7 @@ spec:
   crd:
     spec:
       names:
-        kind: SwedishNetworkPolicyEnforcement
+        kind: NetworkPolicyEnforcement
       validation:
         openAPIV3Schema:
           type: object
@@ -2309,7 +2309,7 @@ spec:
     - alert: GatekeeperConstraintViolations
       expr: |
         increase(gatekeeper_violations_total{
-          violation_kind="SwedishEnterpriseSecurity"
+          violation_kind="EnterpriseSecurity"
         }[10m]) > 5
       for: 5m
       labels:
@@ -2532,7 +2532,7 @@ from typing import Dict, List
 import requests
 from cryptography.fernet import Fernet
 
-class SwedishAuthoritiesIntegration:
+class AuthoritiesIntegration:
     """
     Integration with säkerhetsmyndigheter for compliance reporting
     """
