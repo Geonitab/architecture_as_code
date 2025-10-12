@@ -1,0 +1,12 @@
+%% Diagram: Compliance Automation Lifecycle
+flowchart TD
+    A[Regulatory Intelligence\nUpdates] --> B[Policy as Code\nTemplates]
+    B --> C[Automated\nControls]
+    C --> D[Continuous\nMonitoring]
+    D --> E[Evidence\nCollection]
+    E --> F[Compliance\nDashboards]
+    F --> G[Executive\nGovernance]
+    G --> H[Audit\nFeedback]
+    H --> B
+    C --> I[Remediation\nPlaybooks]
+    I --> C

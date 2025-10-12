@@ -1,16 +1,24 @@
 # Compliance and Regulatory Adherence
 
-![Compliance and Regulatory Adherence](images/diagram_12_compliance.png)
+![Compliance automation lifecycle overview](images/diagram_12_compliance.png)
 
-Architecture as Code spelar a central roll to meet growing compliance requirements and regulatory expectations. Which vi saw in [chapter 11 about policy as code](11_policy_sakerhet.md), can technical solutions for automatiserad compliance significantly simplify and improve organisationers ability to meet complex regulatory requirements. This chapter focuses on the organizational and process-related aspekterna of compliance management through Architecture as Code.
+*Figure 12-1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and finally governance feedback loops.*
+
+Architecture as Code spelar a central roll to meet growing compliance requirements and regulatory expectations. Which vi saw in [chapter 11 about policy as code](11_policy_sakerhet.md), can technical solutions for automatiserad compliance significantly simplify and improve organisationers ability to meet complex regulatory requirements. The diagram anchors dessa aktiviteter genom att visa hur regulatory uppdateringar driver policy mallar och continuous kontroll, och hur feedback från audits förfinar regelverket. This chapter focuses on the organizational and process-related aspekterna of compliance management through Architecture as Code.
 
 ## AI and maskininlärning for infrastrukturarchitecture as code-automation
+
+![AI-augmented compliance automation workflow](images/diagram_12_ai_automation.png)
+
+*Figure 12-2 demonstrates the feedback loop between telemetry, the AI compliance engine, automated remediation, and human oversight that keeps regulatory posture current.*
 
 Artificiell intelligens revolutionerar Architecture as Code through intelligent automation, prediktiv skalning and självläkande systems. Maskininlärningsalgoritmer analyzer historiska data to optimera resource allocation, forutsäga fel and automatically adjust infrastructure configurations based on changing efterfrågemönster.
 
 Intelligent resursoptimering uses AI to kontinuerligt adjust infrastructureinställningar for optimal kostnad, performance and sustainability. Algoritmer can automatically adjust instansstorlekar, lagringskonfigurationer and nätverksinställningar based on realtidsanvändningsmönster and affärsmål.
 
 Automatiserade incident response-systems utnyttjar AI to upptäcka anomalier, diagnostisera problem and implement korrigerande measures without human intervention. Natural language processing enables konversationsgränssnitt for infrastructure management, which does complex operationer available for icke-technical stakeholders.
+
+Diagrammet visar hur en AI-driven kontrollmotor kopplar samman datakällor med riskbedömning och beslutsportar. När avvikelser identifieras triggas remediation-workflows som uppdaterar Infrastructure as Code-definitioner, deployar korrigeringar och eskalerar till mänskliga reviewers när manuella beslut krävs. Denna closed-loop automation säkerställer att compliance policyer kontinuerligt förblir synkroniserade med verkliga driftförhållanden.
 
 ## Cloud-native and serverless development
 
@@ -22,11 +30,17 @@ Edge computing-integration requires distributed arkitekturhanteringsmöjligheter
 
 ## Policydriven infrastruktur and governance
 
+![Policy-driven compliance control tower](images/diagram_12_policy_governance.png)
+
+*Figure 12-3 visualises hur governance-strategi översätts till automatiserade kontroller och mätbara resultat.*
+
 Policy as Code becomes all mer sofistikerat with automatiserad compliance-kontroll, continuous styrningsverkställighet and dynamisk policyanpassning. Policyer is developed from static rules mot intelligenta guidelines as anpassar itself based on context, riskbedömning and affärsmål.
 
 Automatiserade compliance-ramverk integrerar regulatory requirements direkt in Architecture as Code-workflows. Continuous compliance-monitoring ensures architecture changes maintains compliance of security standards, branschregleringar and organizational policyer without manuell intervention.
 
 Zero-trust-arkitekturprinciper becomes inbäddade in infrastructure definitions as standardpraxis. each komponent, anslutning and åtkomstbegäran requires explicitly verification and auktorisering, which creates a inneboende secure infrastructure for modern hotlandskap.
+
+Den policy-drivna "control tower"-modellen etablerar en tydlig kedja från strategiska regulatoriska mål till operativa dashboards och rapportering. Governance-team mappar regulatoriska krav och riskaptit, policy repositories omsätter dessa i kodade kontroller, och continuous compliance pipelines levererar bevis samt hanterar undantag. Feedback från regulators och incidenthantering förs tillbaka till strategin for att kontinuerligt förbättra styrningen.
 
 ## Kvantdatorer and next generations technologies
 
