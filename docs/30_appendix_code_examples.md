@@ -927,6 +927,243 @@ compliance_monitoring:
     evidence_collection: "automated"
 ```
 
+---
+
+## Chapter 13: Testing Strategies Reference Implementations {#chapter-13-testing}
+
+This section contains comprehensive code examples referenced in Chapter 13: Testing Strategies for Infrastructure as Code.
+
+### 13_CODE_A: Vitest Configuration for Infrastructure as Code Projects {#13_code_a}
+*Listing 13-A.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+This configuration demonstrates how to set up Vitest for testing infrastructure configuration generators and validation scripts.
+
+```typescript
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+import path from 'path';
+
+export default defineConfig({
+  test: {
+    // Use globals to avoid imports in each test file
+    globals: true,
+    
+    // Test environment (node for infrastructure tooling)
+    environment: 'node',
+    
+    // Coverage configuration
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        '**/*.config.ts',
+        '**/types/**',
+      ],
+      // Require at least 80% coverage for infrastructure code
+      lines: 80,
+      functions: 80,
+      branches: 80,
+      statements: 80,
+    },
+    
+    // Test timeout for infrastructure operations
+    testTimeout: 30000,
+    
+    // Include test files
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}'],
+    
+    // Exclude patterns
+    exclude: [
+      'node_modules',
+      'dist',
+      '.terraform',
+      '**/*.d.ts',
+    ],
+  },
+  
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@infra': path.resolve(__dirname, './infrastructure'),
+    },
+  },
+});
+```
+
+### 13_CODE_B: Terraform Configuration Generator {#13_code_b}
+*Listing 13-B.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+This TypeScript module demonstrates programmatic generation of Terraform configurations with built-in compliance validation.
+
+```typescript
+// src/generators/terraform-config.ts
+export interface TerraformConfig {
+  provider: string;
+  region: string;
+  environment: string;
+  resources: ResourceConfig[];
+}
+
+export interface ResourceConfig {
+  type: string;
+  name: string;
+  properties: Record<string, any>;
+}
+
+export class TerraformConfigGenerator {
+  generateVPCConfig(
+    environment: string,
+    region: string = 'eu-north-1'
+  ): TerraformConfig {
+    // Validate EU regions for GDPR compliance
+    const euRegions = ['eu-north-1', 'eu-west-1', 'eu-central-1'];
+    if (!euRegions.includes(region)) {
+      throw new Error('Region must be within EU for GDPR compliance');
+    }
+
+    return {
+      provider: 'aws',
+      region,
+      environment,
+      resources: [
+        {
+          type: 'aws_vpc',
+          name: `vpc-${environment}`,
+          properties: {
+            cidr_block: '10.0.0.0/16',
+            enable_dns_hostnames: true,
+            enable_dns_support: true,
+            tags: {
+              Name: `vpc-${environment}`,
+              Environment: environment,
+              ManagedBy: 'Terraform',
+              GdprCompliant: 'true',
+              DataResidency: 'EU',
+            },
+          },
+        },
+      ],
+    };
+  }
+
+  generateRDSConfig(
+    environment: string,
+    instanceClass: string = 'db.t3.micro',
+    encrypted: boolean = true
+  ): ResourceConfig {
+    // Ensure encryption for production
+    if (environment === 'production' && !encrypted) {
+      throw new Error('Production databases must have encryption enabled');
+    }
+
+    return {
+      type: 'aws_db_instance',
+      name: `rds-${environment}`,
+      properties: {
+        allocated_storage: environment === 'production' ? 100 : 20,
+        engine: 'postgres',
+        engine_version: '14.7',
+        instance_class: instanceClass,
+        storage_encrypted: encrypted,
+        backup_retention_period: environment === 'production' ? 30 : 7,
+        multi_az: environment === 'production',
+        tags: {
+          Environment: environment,
+          GdprCompliant: 'true',
+          EncryptionEnabled: encrypted.toString(),
+        },
+      },
+    };
+  }
+}
+```
+
+### 13_CODE_C: Terraform Configuration Generator Tests {#13_code_c}
+*Listing 13-C.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Comprehensive test suite demonstrating validation of configuration generators with GDPR compliance checks.
+
+(See Chapter 13 for full test implementation covering VPC configuration, GDPR compliance tags, regional restrictions and RDS encryption requirements)
+
+### 13_CODE_D: Infrastructure Validator {#13_code_d}
+*Listing 13-D.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Infrastructure validation module that checks resources against organisational policies and compliance requirements.
+
+(See Chapter 13 for full implementation covering resource tag validation, data classification checks and security group rule verification)
+
+### 13_CODE_E: Infrastructure Validator Tests {#13_code_e}
+*Listing 13-E.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Comprehensive test suite for infrastructure validation covering tags, security groups and compliance policies.
+
+(See Chapter 13 for full test suite demonstrating tag requirement validation, security group port restrictions and GDPR compliance warnings)
+
+### 13_CODE_F: GitHub Actions Vitest Workflow {#13_code_f}
+*Listing 13-F.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+CI/CD workflow demonstrating automated infrastructure code testing with coverage reporting.
+
+(See Chapter 13 for complete GitHub Actions workflow including test execution, coverage generation and PR comment integration)
+
+### 13_CODE_G: Requirements as Code Definition {#13_code_g}
+*Listing 13-G.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+YAML-based requirements definition enabling traceability from business requirements to automated tests with compliance mapping and test specifications.
+
+(See Chapter 13 for YAML schema demonstrating security requirements, performance requirements and associated test specifications)
+
+### 13_CODE_H: Requirements Validation Framework {#13_code_h}
+*Listing 13-H.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Python framework for automated validation of requirements against Infrastructure as Code implementations, including test execution and compliance coverage reporting.
+
+(See Chapter 13 for Python implementation of RequirementValidator class with test execution and compliance coverage calculation)
+
+### 13_CODE_I: Terratest for GDPR-Compliant Infrastructure {#13_code_i}
+*Listing 13-I.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.
+
+(See Chapter 13 for Go implementation demonstrating VPC flow logs validation, encryption verification, data residency checks and audit logging validation)
+
+### 13_CODE_J: Policy-as-Code Testing with OPA {#13_code_j}
+*Listing 13-J.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.
+
+(See Chapter 13 for Rego policy tests covering S3 encryption requirements, EC2 security group configuration and GDPR data classification validation)
+
+### 13_CODE_K: Kubernetes Infrastructure Test Suite {#13_code_k}
+*Listing 13-K.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption using ConfigMap-based test runners and Kubernetes Jobs.
+
+(See Chapter 13 for Kubernetes ConfigMap and Job manifests implementing infrastructure validation tests)
+
+### 13_CODE_L: Infrastructure Testing Pipeline {#13_code_l}
+*Listing 13-L.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+Complete GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis (Terraform fmt, Checkov, OPA), unit testing (Terratest), integration testing with temporary environments, compliance validation (GDPR, encryption, regional restrictions), and performance testing with cost analysis.
+
+(See Chapter 13 for complete GitHub Actions YAML workflow covering all testing stages from static analysis through to production deployment validation)
+
+---
+
 ## Organisational Change and Team Structures {#organisational-change}
 
 ### 17_CODE_1: Infrastructure Platform Team Blueprint
