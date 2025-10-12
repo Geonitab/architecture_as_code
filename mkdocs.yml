@@ -14,7 +14,6 @@ nav:
       - Architecture Decision Records (ADR): 04_adr.md
   - Part 2 – Architecture Platform:
       - Automation, DevOps and CI/CD for Infrastructure as Code: 05_automation_devops_cicd.md
-      - Cloud Architecture as Code: 06_cloud_architecture.md
       - Containerization and Orchestration as Code: 07_containerization.md
       - Microservices Architecture as Code: 08_microservices.md
   - Part 3 – Security & Governance:

@@ -2,7 +2,7 @@
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 31
+  total_chapters: 30  # Chapter 6 retired from the manuscript
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -23,10 +23,6 @@ book:
     - filename: "05_automation_devops_cicd.md"
       title: "Automation, DevOps and CI/CD for Infrastructure as Code"
       area: "System Development"
-      required: true
-    - filename: "06_cloud_architecture.md"
-      title: "Cloud Architecture as Code"
-      area: "Architecture"
       required: true
     - filename: "07_containerization.md"
       title: "Containerization and Orchestration"
@@ -238,7 +234,6 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | 03 | 03_version_control.md | Version Control and Code Structure | System Development | Yes |
 | 04 | 04_adr.md | Architecture Decision Records (ADR) | Basic Concepts | Yes |
 | 05 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Infrastructure as Code | System Development | Yes |
-| 06 | 06_cloud_architecture.md | Cloud Architecture as Code | Architecture | Yes |
 | 07 | 07_containerization.md | Containerization and Orchestration | Architecture | Yes |
 | 08 | 08_microservices.md | Microservices and Distributed Systems | Architecture | Yes |
 | 09 | 09_security.md | Security in Infrastructure as Code | Security | Yes |
