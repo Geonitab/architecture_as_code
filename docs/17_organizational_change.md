@@ -77,4 +77,4 @@ By linking cultural commitments with transparent measurement and clear governanc
 - Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.
 - Team Topologies. "Organizing Business and Technology Teams." IT Revolution Press, 2023.
 - Accelerate. "Building High Performing Technology Organizations." IT Revolution Press, 2023.
-- McKinsey. "Organizational Transformation in Nordic Companies." McKinsey & Company, 2023.
+- McKinsey & Company. "Organizational Transformation Best Practices." McKinsey Digital, 2023.
