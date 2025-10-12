@@ -1850,3 +1850,680 @@ jobs:
 
     # Similar steps as deploy job but for production environment
 ```
+
+---
+
+## Migration and Transformation {#migration-transformation}
+
+This section contains code examples for migrating from traditional infrastructure to Architecture as Code, referenced from Chapter 16.
+
+### 16_CODE_1: Migration Assessment Automation Framework {#16_code_1}
+*Referenced from Chapter 16: [Migration from Traditional Infrastructure](16_migration.md)*
+
+```python
+# migration_assessment/infrastructure_discovery.py
+import boto3
+import json
+from datetime import datetime
+from typing import Dict, List
+
+class InfrastructureMigrationAssessment:
+    """
+    Automated assessment of existing infrastructure for Architecture as Code migration.
+    Discovers unmanaged resources and generates migration plans.
+    """
+    
+    def __init__(self, region='eu-north-1'):
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.elb = boto3.client('elbv2', region_name=region)
+        self.cloudformation = boto3.client('cloudformation', region_name=region)
+        
+    def discover_unmanaged_resources(self) -> Dict:
+        """Discover resources not managed by Infrastructure as Code"""
+        
+        unmanaged_resources = {
+            'ec2_instances': self._find_unmanaged_ec2(),
+            'rds_instances': self._find_unmanaged_rds(),
+            'load_balancers': self._find_unmanaged_load_balancers(),
+            'security_groups': self._find_unmanaged_security_groups(),
+            'summary': {}
+        }
+        
+        # Calculate summary statistics
+        total_resources = sum(
+            len(resources) 
+            for resources in unmanaged_resources.values() 
+            if isinstance(resources, list)
+        )
+        
+        unmanaged_resources['summary'] = {
+            'total_unmanaged_resources': total_resources,
+            'migration_complexity': self._assess_migration_complexity(unmanaged_resources),
+            'estimated_migration_effort': self._estimate_migration_effort(total_resources),
+            'risk_assessment': self._assess_migration_risks(unmanaged_resources)
+        }
+        
+        return unmanaged_resources
+    
+    def _find_unmanaged_ec2(self) -> List[Dict]:
+        """Find EC2 instances not managed by CloudFormation/Terraform"""
+        
+        # Get all EC2 instances
+        response = self.ec2.describe_instances()
+        unmanaged_instances = []
+        
+        for reservation in response['Reservations']:
+            for instance in reservation['Instances']:
+                if instance['State']['Name'] != 'terminated':
+                    # Check if instance is managed by Infrastructure as Code
+                    is_managed = self._is_resource_managed(instance.get('Tags', []))
+                    
+                    if not is_managed:
+                        unmanaged_instances.append({
+                            'instance_id': instance['InstanceId'],
+                            'instance_type': instance['InstanceType'],
+                            'launch_time': instance['LaunchTime'].isoformat(),
+                            'vpc_id': instance.get('VpcId'),
+                            'subnet_id': instance.get('SubnetId'),
+                            'security_groups': [
+                                sg['GroupId'] 
+                                for sg in instance.get('SecurityGroups', [])
+                            ],
+                            'tags': {
+                                tag['Key']: tag['Value'] 
+                                for tag in instance.get('Tags', [])
+                            },
+                            'migration_priority': self._calculate_migration_priority(instance),
+                            'estimated_downtime': self._estimate_downtime(instance)
+                        })
+        
+        return unmanaged_instances
+    
+    def _is_resource_managed(self, tags: List[Dict]) -> bool:
+        """Check if resource is managed by Infrastructure as Code"""
+        
+        iac_indicators = [
+            'aws:cloudformation:stack-name',
+            'terraform:stack',
+            'pulumi:stack',
+            'Created-By-Terraform',
+            'ManagedBy'
+        ]
+        
+        tag_keys = {tag.get('Key', '') for tag in tags}
+        return any(indicator in tag_keys for indicator in iac_indicators)
+    
+    def generate_terraform_migration_plan(self, unmanaged_resources: Dict) -> str:
+        """Generate Terraform code for migrating unmanaged resources"""
+        
+        terraform_code = f"""
+# Automatically generated migration plan
+# Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+# Total resources to migrate: {len(unmanaged_resources.get('ec2_instances', []))}
+
+terraform {{
+  required_providers {{
+    aws = {{
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }}
+  }}
+}}
+
+provider "aws" {{
+  region = "eu-north-1"  # Stockholm region for European organisations
+}}
+
+"""
+        
+        # Generate Terraform for EC2 instances
+        for idx, instance in enumerate(unmanaged_resources.get('ec2_instances', [])):
+            instance_tags = instance.get('tags', {})
+            terraform_code += f"""
+# Migration of existing EC2 instance {instance['instance_id']}
+resource "aws_instance" "migrated_instance_{idx}" {{
+  # NOTE: This configuration must be verified and adapted
+  instance_type = "{instance['instance_type']}"
+  subnet_id     = "{instance['subnet_id']}"
+  
+  vpc_security_group_ids = {json.dumps(instance['security_groups'])}
+  
+  # Preserve existing tags and add migration metadata
+  tags = {{
+    Name          = "{instance_tags.get('Name', f'migrated-instance-{idx}')}"
+    MigratedFrom  = "{instance['instance_id']}"
+    MigrationDate = "{datetime.now().strftime('%Y-%m-%d')}"
+    ManagedBy     = "terraform"
+    Environment   = "{instance_tags.get('Environment', 'production')}"
+    Project       = "{instance_tags.get('Project', 'migration-project')}"
+  }}
+  
+  # IMPORTANT: Import existing resource instead of creating new
+  # terraform import aws_instance.migrated_instance_{idx} {instance['instance_id']}
+}}
+"""
+        
+        terraform_code += """
+# Migration checklist:
+# 1. Review generated configurations carefully
+# 2. Test in development environment first
+# 3. Import existing resources with terraform import
+# 4. Run terraform plan to verify no changes are planned
+# 5. Implement gradually with low-risk resources first
+# 6. Update monitoring and alerting after migration
+"""
+        
+        return terraform_code
+    
+    def create_migration_timeline(self, unmanaged_resources: Dict) -> Dict:
+        """Create realistic migration timeline"""
+        
+        # Categorise resources by complexity
+        low_complexity = []
+        medium_complexity = []
+        high_complexity = []
+        
+        for instance in unmanaged_resources.get('ec2_instances', []):
+            complexity = instance.get('migration_priority', 'medium')
+            
+            if complexity == 'low':
+                low_complexity.append(instance)
+            elif complexity == 'high':
+                high_complexity.append(instance)
+            else:
+                medium_complexity.append(instance)
+        
+        # Calculate time estimates
+        timeline = {
+            'wave_1_low_risk': {
+                'resources': low_complexity,
+                'estimated_duration': f"{len(low_complexity) * 2} days",
+                'start_date': 'Week 1-2',
+                'prerequisites': [
+                    'Architecture as Code training completion',
+                    'Tool setup',
+                    'Backup verification'
+                ]
+            },
+            'wave_2_medium_risk': {
+                'resources': medium_complexity,
+                'estimated_duration': f"{len(medium_complexity) * 4} days",
+                'start_date': 'Week 3-6',
+                'prerequisites': [
+                    'Wave 1 completion',
+                    'Process refinement',
+                    'Team feedback'
+                ]
+            },
+            'wave_3_high_risk': {
+                'resources': high_complexity,
+                'estimated_duration': f"{len(high_complexity) * 8} days",
+                'start_date': 'Week 7-12',
+                'prerequisites': [
+                    'Wave 2 completion',
+                    'Advanced training',
+                    'Stakeholder approval'
+                ]
+            },
+            'total_estimated_duration': (
+                f"{(len(low_complexity) * 2) + "
+                f"(len(medium_complexity) * 4) + "
+                f"(len(high_complexity) * 8)} days"
+            )
+        }
+        
+        return timeline
+
+
+def generate_migration_playbook(assessment_results: Dict) -> str:
+    """Generate comprehensive migration playbook"""
+    
+    org_name = assessment_results.get('organization_name', 'Organisation')
+    summary = assessment_results['summary']
+    
+    playbook = f"""
+# Architecture as Code Migration Playbook for {org_name}
+
+## Executive Summary
+- **Total resources to migrate:** {summary['total_unmanaged_resources']}
+- **Migration complexity:** {summary['migration_complexity']}
+- **Estimated effort:** {summary['estimated_migration_effort']}
+- **Risk assessment:** {summary['risk_assessment']}
+
+## Phase 1: Preparation (Week 1-2)
+
+### Team Training
+- [ ] Architecture as Code foundation training for all team members
+- [ ] Terraform/CloudFormation hands-on workshops
+- [ ] Git workflows for infrastructure management
+- [ ] Compliance requirements (GDPR, data residency)
+
+### Tool Setup
+- [ ] Terraform/CloudFormation development environment
+- [ ] Git repository for infrastructure code
+- [ ] CI/CD pipeline for infrastructure deployment
+- [ ] Monitoring and alerting configuration
+
+### Risk Mitigation
+- [ ] Complete backup of all critical systems
+- [ ] Rollback procedures documented
+- [ ] Emergency contacts and escalation plan
+- [ ] Test environment for migration validation
+
+## Phase 2: Pilot Migration (Week 3-4)
+
+### Low-Risk Resources Migration
+- [ ] Migrate development/test environments first
+- [ ] Validate Architecture as Code templates and processes
+- [ ] Document lessons learnt
+- [ ] Refine migration procedures
+
+### Quality Gates
+- [ ] Automated testing of migrated resources
+- [ ] Performance verification
+- [ ] Security compliance validation
+- [ ] Cost optimisation review
+
+## Phase 3: Production Migration (Week 5-12)
+
+### Gradual Production Migration
+- [ ] Non-critical production systems
+- [ ] Critical systems with planned maintenance windows
+- [ ] Database migration with minimal downtime
+- [ ] Network infrastructure migration
+
+### Continuous Monitoring
+- [ ] Real-time monitoring of migrated systems
+- [ ] Automated alerting for anomalies
+- [ ] Performance benchmarking
+- [ ] Cost tracking and optimisation
+
+## Post-Migration Activities
+
+### Process Optimisation
+- [ ] Infrastructure cost review and optimisation
+- [ ] Team workflow refinement
+- [ ] Documentation and knowledge transfer
+- [ ] Continuous improvement of Architecture as Code implementation
+
+### Long-term Sustainability
+- [ ] Regular Architecture as Code best practices review
+- [ ] Team cross-training programme
+- [ ] Tool evaluation and updates
+- [ ] Compliance monitoring automation
+
+## Compliance Considerations
+
+### GDPR Requirements
+- [ ] Data residency in EU regions
+- [ ] Encryption at rest and in transit
+- [ ] Access logging and audit trails
+- [ ] Data retention policy implementation
+
+### Security Requirements
+- [ ] Network segmentation implementation
+- [ ] Incident response procedures
+- [ ] Backup and disaster recovery
+- [ ] Security monitoring enhancement
+
+## Success Metrics
+
+### Technical Metrics
+- Infrastructure deployment time reduction: Target 80%
+- Configuration drift incidents: Target 0
+- Security compliance score: Target 95%+
+- Infrastructure cost optimisation: Target 20% reduction
+
+### Operational Metrics
+- Mean time to recovery improvement: Target 60%
+- Change failure rate reduction: Target 50%
+- Team satisfaction with new processes: Target 8/10
+- Knowledge transfer completion: Target 100%
+
+## Risk Management
+
+### High-Priority Risks
+1. **Service Downtime:** Mitigated through maintenance windows and rollback plans
+2. **Data Loss:** Mitigated through comprehensive backups and testing
+3. **Security Compliance:** Mitigated through automated compliance validation
+4. **Team Resistance:** Mitigated through training and change management
+
+### Contingency Plans
+- Immediate rollback procedures for critical issues
+- Emergency support contacts and escalation
+- Alternative migration approaches for problem resources
+- Business continuity plans for extended downtime
+"""
+    
+    return playbook
+```
+
+### 16_CODE_2: CloudFormation Legacy Resource Import Template {#16_code_2}
+*Referenced from Chapter 16: [Migration from Traditional Infrastructure](16_migration.md)*
+
+```yaml
+# migration/legacy-import-template.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Template for importing existing resources into CloudFormation management'
+
+Parameters:
+  ExistingVPCId:
+    Type: String
+    Description: 'ID of existing VPC to import'
+    
+  ExistingInstanceId:
+    Type: String  
+    Description: 'ID of existing EC2 instance to import'
+    
+  Environment:
+    Type: String
+    Default: 'production'
+    AllowedValues: ['development', 'staging', 'production']
+    
+  ProjectName:
+    Type: String
+    Description: 'Project name for resource tagging'
+
+Resources:
+  # Import of existing VPC
+  ExistingVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      # These values must match existing VPC configuration exactly
+      CidrBlock: '10.0.0.0/16'  # Update with actual CIDR
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-vpc'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+        - Key: ImportedFrom
+          Value: !Ref ExistingVPCId
+        - Key: ImportDate
+          Value: !Sub '${AWS::StackName}-${AWS::Region}'
+
+  # Import of existing EC2 instance
+  ExistingInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      # These values must match existing instance configuration
+      InstanceType: 't3.medium'  # Update with actual instance type
+      ImageId: 'ami-0c94855bb95b03c2e'  # Update with actual AMI
+      SubnetId: !Ref ExistingSubnet
+      SecurityGroupIds:
+        - !Ref ExistingSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-instance'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+        - Key: ImportedFrom
+          Value: !Ref ExistingInstanceId
+
+  # Security group for imported instance
+  ExistingSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Imported security group for legacy systems'
+      VpcId: !Ref ExistingVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: '10.0.0.0/8'  # Restrict SSH access
+          Description: 'SSH access from internal network'
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: '0.0.0.0/0'
+          Description: 'HTTP access'
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: '0.0.0.0/0'
+          Description: 'HTTPS access'
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-sg'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+
+  # Subnet for organised network management
+  ExistingSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref ExistingVPC
+      CidrBlock: '10.0.1.0/24'  # Update with actual subnet CIDR
+      AvailabilityZone: 'eu-north-1a'  # Stockholm region
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-subnet'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Type
+          Value: 'Private'
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+
+Outputs:
+  ImportedVPCId:
+    Description: 'ID of imported VPC'
+    Value: !Ref ExistingVPC
+    Export:
+      Name: !Sub '${AWS::StackName}-VPC-ID'
+      
+  ImportedInstanceId:
+    Description: 'ID of imported EC2 instance'
+    Value: !Ref ExistingInstance
+    Export:
+      Name: !Sub '${AWS::StackName}-Instance-ID'
+      
+  ImportInstructions:
+    Description: 'Instructions for resource import'
+    Value: !Sub |
+      To import existing resources:
+      1. Create stack: aws cloudformation create-stack --stack-name ${ProjectName}-import --template-body file://legacy-import-template.yaml
+      2. Import resources: aws cloudformation import-resources-to-stack --stack-name ${ProjectName}-import --resources file://import-resources.json
+      3. Verify import: aws cloudformation describe-stacks --stack-name ${ProjectName}-import
+```
+
+### 16_CODE_3: Migration Testing and Validation Framework {#16_code_3}
+*Referenced from Chapter 16: [Migration from Traditional Infrastructure](16_migration.md)*
+
+```bash
+#!/bin/bash
+# migration/test-migration.sh
+# Comprehensive testing script for Architecture as Code migration validation
+
+set -e
+
+PROJECT_NAME=${1:-"migration-test"}
+ENVIRONMENT=${2:-"staging"}
+REGION=${3:-"eu-north-1"}
+
+echo "Starting Architecture as Code migration testing for project: $PROJECT_NAME"
+echo "Environment: $ENVIRONMENT"
+echo "Region: $REGION"
+
+# Pre-migration testing
+echo "=== Pre-Migration Tests ==="
+
+# Test 1: Verify all resources are inventoried
+echo "Testing resource inventory..."
+aws ec2 describe-instances --region $REGION \
+    --query 'Reservations[*].Instances[?State.Name!=`terminated`]' \
+    > /tmp/pre-migration-instances.json
+
+aws rds describe-db-instances --region $REGION \
+    > /tmp/pre-migration-rds.json
+
+INSTANCE_COUNT=$(jq '.[] | length' /tmp/pre-migration-instances.json | jq -s 'add')
+RDS_COUNT=$(jq '.DBInstances | length' /tmp/pre-migration-rds.json)
+
+echo "Discovered $INSTANCE_COUNT EC2 instances and $RDS_COUNT RDS instances"
+
+# Test 2: Backup verification
+echo "Verifying backup status..."
+aws ec2 describe-snapshots --region $REGION --owner-ids self \
+    --query 'Snapshots[?StartTime>=`2023-01-01T00:00:00.000Z`]' \
+    > /tmp/recent-snapshots.json
+
+SNAPSHOT_COUNT=$(jq '. | length' /tmp/recent-snapshots.json)
+
+if [ $SNAPSHOT_COUNT -lt $INSTANCE_COUNT ]; then
+    echo "WARNING: Insufficient recent snapshots. Create backups before migration."
+    exit 1
+fi
+
+# Test 3: Network connectivity baseline
+echo "Establishing network connectivity baseline..."
+for instance_id in $(jq -r '.[] | .[] | .InstanceId' /tmp/pre-migration-instances.json); do
+    if [ "$instance_id" != "null" ]; then
+        echo "Testing connectivity to $instance_id..."
+        # Implement connectivity tests here
+    fi
+done
+
+# Migration execution testing
+echo "=== Migration Execution Tests ==="
+
+# Test 4: Terraform plan validation
+echo "Validating Terraform migration plan..."
+cd terraform/migration
+
+terraform init
+terraform plan \
+    -var="project_name=$PROJECT_NAME" \
+    -var="environment=$ENVIRONMENT" \
+    -out=migration.plan
+
+# Analyse plan for unexpected changes
+terraform show -json migration.plan > /tmp/terraform-plan.json
+
+# Check that no resources are planned for destruction
+DESTROY_COUNT=$(jq '.resource_changes[] | select(.change.actions[] == "delete") | .address' \
+    /tmp/terraform-plan.json | wc -l)
+
+if [ $DESTROY_COUNT -gt 0 ]; then
+    echo "ERROR: Migration plan contains resource destruction. Review before continuing."
+    jq '.resource_changes[] | select(.change.actions[] == "delete") | .address' \
+        /tmp/terraform-plan.json
+    exit 1
+fi
+
+# Test 5: Import validation
+echo "Testing resource import procedures..."
+
+# Create test import for a sample resource
+SAMPLE_INSTANCE_ID=$(jq -r '.[] | .[] | .InstanceId' /tmp/pre-migration-instances.json | head -1)
+
+if [ "$SAMPLE_INSTANCE_ID" != "null" ] && [ "$SAMPLE_INSTANCE_ID" != "" ]; then
+    echo "Testing import for instance: $SAMPLE_INSTANCE_ID"
+    
+    # Dry-run import test
+    terraform import -dry-run aws_instance.test_import $SAMPLE_INSTANCE_ID || {
+        echo "WARNING: Import test failed for $SAMPLE_INSTANCE_ID"
+    }
+fi
+
+# Post-migration testing
+echo "=== Post-Migration Validation Framework ==="
+
+# Test 6: Infrastructure compliance
+echo "Setting up compliance validation..."
+cat > /tmp/compliance-test.py << 'EOF'
+import boto3
+import json
+
+def validate_tagging_compliance(region='eu-north-1'):
+    """Validate that all migrated resources have correct tags"""
+    ec2 = boto3.client('ec2', region_name=region)
+    
+    required_tags = ['ManagedBy', 'Environment', 'Project']
+    non_compliant = []
+    
+    # Check EC2 instances
+    instances = ec2.describe_instances()
+    for reservation in instances['Reservations']:
+        for instance in reservation['Instances']:
+            if instance['State']['Name'] != 'terminated':
+                tags = {tag['Key']: tag['Value'] for tag in instance.get('Tags', [])}
+                missing_tags = [tag for tag in required_tags if tag not in tags]
+                
+                if missing_tags:
+                    non_compliant.append({
+                        'resource_id': instance['InstanceId'],
+                        'resource_type': 'EC2 Instance',
+                        'missing_tags': missing_tags
+                    })
+    
+    return non_compliant
+
+if __name__ == '__main__':
+    compliance_issues = validate_tagging_compliance()
+    if compliance_issues:
+        print(f"Found {len(compliance_issues)} compliance issues:")
+        for issue in compliance_issues:
+            print(f"  {issue['resource_id']}: Missing tags {issue['missing_tags']}")
+    else:
+        print("All resources are compliant with tagging requirements")
+EOF
+
+python3 /tmp/compliance-test.py
+
+# Test 7: Performance baseline comparison
+echo "Setting up performance monitoring..."
+cat > /tmp/performance-monitor.sh << 'EOF'
+#!/bin/bash
+# Monitor key performance metrics after migration
+
+METRICS_FILE="/tmp/post-migration-metrics.json"
+
+echo "Collecting post-migration performance metrics..."
+
+# CPU Utilisation
+aws cloudwatch get-metric-statistics \
+    --namespace AWS/EC2 \
+    --metric-name CPUUtilization \
+    --start-time $(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%S) \
+    --end-time $(date -u +%Y-%m-%dT%H:%M:%S) \
+    --period 300 \
+    --statistics Average \
+    --region eu-north-1 > "$METRICS_FILE"
+
+# Analyse metrics for deviations
+AVERAGE_CPU=$(jq '.Datapoints | map(.Average) | add / length' "$METRICS_FILE")
+echo "Average CPU utilisation: $AVERAGE_CPU%"
+
+if (( $(echo "$AVERAGE_CPU > 80" | bc -l) )); then
+    echo "WARNING: High CPU utilisation detected after migration"
+fi
+EOF
+
+chmod +x /tmp/performance-monitor.sh
+
+echo "=== Migration Testing Complete ==="
+echo "Results:"
+echo "  - Resource inventory: $INSTANCE_COUNT EC2, $RDS_COUNT RDS"
+echo "  - Backup status: $SNAPSHOT_COUNT snapshots verified"
+echo "  - Terraform plan: Validated (no destructive changes)"
+echo "  - Compliance framework: Ready"
+echo "  - Performance monitoring: Configured"
+
+echo ""
+echo "Next steps:"
+echo "1. Review test results and address any warnings"
+echo "2. Execute migration in maintenance window"
+echo "3. Run post-migration validation"
+echo "4. Monitor performance for 24 hours"
+echo "5. Document lessons learnt"
+```

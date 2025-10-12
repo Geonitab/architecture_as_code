@@ -9,8 +9,36 @@ config:
     secondaryColor: '#006100'
     tertiaryColor: '#fff'
 ---
-graph LR
-    A[Unit Tests] --> B[Integration Tests]
-    B --> C[Security Tests]
-    C --> D[Performance Tests]
-    D --> E[Production Deploy]
+graph TB
+    subgraph Assessment["Assessment Phase"]
+        A1[Infrastructure Inventory]
+        A2[Dependency Mapping]
+        A3[Risk Assessment]
+        A4[Cost-Benefit Analysis]
+    end
+    
+    subgraph Planning["Planning Phase"]
+        P1[Migration Strategy]
+        P2[Wave Planning]
+        P3[Team Training]
+        P4[Tooling Setup]
+    end
+    
+    subgraph Execution["Execution Phase"]
+        E1[Pilot Migration]
+        E2[Code Generation]
+        E3[Testing & Validation]
+        E4[Production Migration]
+    end
+    
+    subgraph Optimisation["Optimisation Phase"]
+        O1[Performance Tuning]
+        O2[Cost Optimisation]
+        O3[Process Refinement]
+        O4[Knowledge Transfer]
+    end
+    
+    Assessment --> Planning
+    Planning --> Execution
+    Execution --> Optimisation
+    Optimisation -.Continuous Improvement.-> Assessment

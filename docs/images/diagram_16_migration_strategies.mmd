@@ -1,0 +1,43 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
+---
+graph TB
+    subgraph LiftShift["Lift and Shift"]
+        LS1[Minimal Changes]
+        LS2[Quick Migration]
+        LS3[Limited Benefits]
+        LS4[Follow-up Required]
+    end
+    
+    subgraph Rearchitect["Re-architecture"]
+        RA1[Cloud-Native Design]
+        RA2[Maximum Benefits]
+        RA3[Higher Investment]
+        RA4[Longer Timeline]
+    end
+    
+    subgraph Hybrid["Hybrid Approach"]
+        H1[Selective Modernisation]
+        H2[Balanced Speed/Value]
+        H3[Iterative Improvement]
+        H4[Risk Mitigation]
+    end
+    
+    Start[Legacy Infrastructure] --> Decision{Migration Strategy}
+    Decision -->|Speed Priority| LiftShift
+    Decision -->|Value Priority| Rearchitect
+    Decision -->|Balanced| Hybrid
+    
+    LiftShift --> Review[Post-Migration Review]
+    Rearchitect --> Review
+    Hybrid --> Review
+    
+    Review --> Optimisation[Continuous Optimisation]

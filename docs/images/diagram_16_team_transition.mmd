@@ -1,0 +1,40 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    primaryBorderColor: '#7C0000'
+    lineColor: '#F8B229'
+    secondaryColor: '#006100'
+    tertiaryColor: '#fff'
+---
+graph LR
+    subgraph Traditional["Traditional Teams"]
+        T1[Ops Silos]
+        T2[Dev Silos]
+        T3[Network Silos]
+        T4[Manual Processes]
+    end
+    
+    subgraph Transition["Transition Phase"]
+        TR1[Cross-Training]
+        TR2[Tool Adoption]
+        TR3[Process Evolution]
+        TR4[Cultural Change]
+    end
+    
+    subgraph Modern["Modern Teams"]
+        M1[DevOps Teams]
+        M2[Infrastructure as Code]
+        M3[Automation First]
+        M4[Collaborative Culture]
+    end
+    
+    Traditional --> Transition
+    Transition --> Modern
+    
+    TR1 -.Mentorship.-> M1
+    TR2 -.Tooling.-> M2
+    TR3 -.Best Practices.-> M3
+    TR4 -.Change Management.-> M4
