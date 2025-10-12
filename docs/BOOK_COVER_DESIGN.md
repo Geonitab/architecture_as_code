@@ -3,9 +3,9 @@
 ## Overview
 Professional book cover design for Kvadrat's "Architecture as Code" publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
 
-## design Variations
+## Design Variations
 
-### Primary design (Dark Theme)
+### Primary Design (Dark Theme)
 **File:** `templates/book-cover-final.html`
 - Modern gradient background (Kvadrat Blue to Dark Blue)
 - Advanced code architecture visual elements
@@ -18,7 +18,7 @@ Professional book cover design for Kvadrat's "Architecture as Code" publication.
 - Maintains brand consistency with adjusted contrast
 - Ideal for specific publishing requirements
 
-### Minimal design
+### Minimal Design
 **File:** `templates/book-cover-minimal.html`
 - Simplified layout with clean lines
 - Focus on typography and essential elements

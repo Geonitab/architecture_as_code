@@ -324,7 +324,7 @@ resource "aws_vpn_connection" "hybrid_connection" {
 }
 ```
 
-## automation of business processes
+## Automation of Business Processes
 
 Architecture as Code enables automation as sträcker itself långt bortom traditional IT-drift to to encompass entire business processes with particular consideration to svenska organisationers behov of transparency, compliance and effektivitet. by definiera Architecture as Code can organisationer create självbetjäningslösningar for Developers and affärsanvändare as follows svenska Architecture as Code best practices for governance and risk management.
 

@@ -48,7 +48,7 @@ Book content has granskats of:
 - **Utbildningsdesigners** with fokus at vuxenutbildning within technology
 - **Språkspecialister** for technical svenska terminologi
 
-## organizational bidrag
+## Organizational Contributions
 
 ### Kvadrat AB
 

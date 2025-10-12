@@ -46,7 +46,7 @@ implementation of CI/CD for Architecture as Code affects organisationer at multi
 
 Which vi saw in [chapter 3 about version control](03_version_control.md), forms CI/CD-pipelines a naturlig forlängning of git-baserade workflows for Architecture as Code. This chapter bygger vidare at These concepts and explores how Swedish organizations can implement advanced automatiseringsstrategier as balanserar effektivitet with regulatory requirements. Later will vi to se how These principles be applied in [Cloud Architecture as Code](07_molnarkitektur.md) and integreras with [security aspects](10_sakerhet.md).
 
-## from architecture as code to Architecture as Code development and drift
+## From Architecture as Code to Architecture as Code Development and Drift
 
 Architecture as Code-principerna within This area
 

@@ -12,7 +12,7 @@ Traditional methods for system architecture have often been manual and document-
 
 This includes not only infrastructure components, but also application architecture, data flows, security policies, compliance rules, and organizational structures - all defined as code.
 
-## definition and Scope
+## Definition and Scope
 
 Architecture as Code is defined as the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. This encompasses application components, integration patterns, data architecture, infrastructure, and organizational processes.
 

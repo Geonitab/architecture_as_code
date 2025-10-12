@@ -29,7 +29,7 @@ Official guidelines and templates are available at https://adr.github.io, which 
 
 In the Architecture as Code context means ADR documentation of decisions about technology choices, architecture patterns, security strategies and operational policies that are codified in architecture definitions.
 
-## structure and components of ADR
+## Structure and Components of ADR
 
 ![ADR structure](images/diagram_04_adr_struktur.png)
 

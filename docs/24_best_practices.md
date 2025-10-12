@@ -20,7 +20,7 @@ Lärda läxor from early Architecture as Code adopters reveal common pitfalls an
 
 Modern best practices emphasize sustainability, security-by-design and developer experience optimization alongside traditional concerns as reliability, scalability and cost efficiency. Svenska organizations with strong environmental consciousness and social responsibility values can leverage Architecture as Code for achieving both technical and sustainability goals.
 
-## code organisation and modulstruktur
+## Code Organization and Module Structure
 
 Effective code organization forms foundationen for maintainable and scalable Architecture as Code implementations. Well-structured repositories with clear hierarchies, consistent naming conventions and logical module boundaries enable team collaboration and reduce onboarding time for new contributors.
 
@@ -98,7 +98,7 @@ Runbook automation for Architecture as Code environments codifies emergency proc
 
 Communication automation patterns ensure stakeholders receive timely updates during incidents through automated status pages, notification systems and escalation procedures. Svenska financial services organizations have implemented comprehensive communication workflows as maintain transparency with the protect sensitive information.
 
-## documentation and knowledge management
+## Documentation and Knowledge Management
 
 Comprehensive documentation strategies for Architecture as Code environments must balance technical detail with accessibility for diverse stakeholders. Effective documentation serves as both reference material for daily operations and knowledge transfer mechanism for organizational continuity.
 

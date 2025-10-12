@@ -34,7 +34,7 @@ Hybrid approaches that "lift-and-improve" balancerar speed-to-market with modern
 
 Application portfolio analysis helps determine optimal migration strategy per application based on technical fit, business value and modernization potential. Legacy applications with limited business value can candidate for retirement rather than migration, which reduces overall migration scope.
 
-## gradual kodifiering of infrastruktur
+## Gradual Codification of Infrastructure
 
 Infrastructure inventory automation through tools that Terraform import, CloudFormation drift detection and Azure Resource Manager templates enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations as require refinement but accelerate kodification process.
 

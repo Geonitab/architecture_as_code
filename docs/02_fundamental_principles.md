@@ -18,7 +18,7 @@ Architecture as Code encompasses the entire system ecosystem through a holistic 
 
 A practical example is how a change in an application's API automatically can propagate through the entire architecture - from security configurations to documentation - all of which is defined as code.
 
-## immutable architecture patterns
+## Immutable Architecture Patterns
 
 The principle of immutable architecture means the entire system architecture is managed through immutable components. instead of modifying existing parts, new versions are created that replace old ones at all levels.
 
