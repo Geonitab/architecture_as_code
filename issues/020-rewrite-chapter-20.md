@@ -18,3 +18,6 @@ Revise Chapter 20 to deliver British English prose, cohesive structure, and upda
 
 ## Labels
 - documentation
+
+## Linked Pull Requests
+- [#251 Rewrite Chapter 20 AI agent team narrative](https://github.com/Geonitab/architecture_as_code/pull/251) — merged on 2025-10-12 at 18:31 UTC.

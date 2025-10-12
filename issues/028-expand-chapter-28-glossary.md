@@ -18,3 +18,6 @@ Enhance Chapter 28 by completing the relationships diagram and ensuring terminol
 ## Labels
 - documentation
 - design
+
+## Linked Pull Requests
+- [#257 Update glossary language and expand terminology diagram](https://github.com/Geonitab/architecture_as_code/pull/257) — merged on 2025-10-12 at 18:54 UTC.

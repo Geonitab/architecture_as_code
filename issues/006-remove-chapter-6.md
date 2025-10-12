@@ -15,3 +15,6 @@ Remove Chapter 6 from the manuscript to align with the updated table of contents
 
 ## Labels
 - documentation
+
+## Linked Pull Requests
+- [#254 Retire Chapter 6 from the manuscript](https://github.com/Geonitab/architecture_as_code/pull/254) — merged on 2025-10-12 at 18:32 UTC.

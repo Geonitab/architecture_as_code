@@ -16,3 +16,6 @@ Add the required diagrams to Chapter 12 and integrate them with explanatory text
 ## Labels
 - documentation
 - design
+
+## Linked Pull Requests
+- [#248 Add compliance chapter diagrams](https://github.com/Geonitab/architecture_as_code/pull/248) — merged on 2025-10-12 at 18:35 UTC.

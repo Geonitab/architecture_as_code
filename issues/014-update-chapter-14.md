@@ -18,3 +18,6 @@ Revise Chapter 14 to ensure British English terminology, streamlined visuals, an
 ## Labels
 - documentation
 - design
+
+## Linked Pull Requests
+- [#253 Revise Chapter 14 narrative and relocate code listings](https://github.com/Geonitab/architecture_as_code/pull/253) — merged on 2025-10-12 at 18:29 UTC.
