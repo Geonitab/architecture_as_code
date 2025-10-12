@@ -927,6 +927,163 @@ compliance_monitoring:
     evidence_collection: "automated"
 ```
 
+---
+
+## Chapter 13: Testing Strategies Reference Implementations {#chapter-13-testing}
+
+This section contains comprehensive code examples referenced in Chapter 13: Testing Strategies for Infrastructure as Code.
+
+### 13_CODE_A: Vitest Configuration for Infrastructure as Code Projects {#13_code_a}
+*Listing 13-A.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+This configuration demonstrates how to set up Vitest for testing infrastructure configuration generators and validation scripts.
+
+```typescript
+// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+import path from 'path';
+
+export default defineConfig({
+  test: {
+    // Use globals to avoid imports in each test file
+    globals: true,
+    
+    // Test environment (node for infrastructure tooling)
+    environment: 'node',
+    
+    // Coverage configuration
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        '**/*.config.ts',
+        '**/types/**',
+      ],
+      // Require at least 80% coverage for infrastructure code
+      lines: 80,
+      functions: 80,
+      branches: 80,
+      statements: 80,
+    },
+    
+    // Test timeout for infrastructure operations
+    testTimeout: 30000,
+    
+    // Include test files
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}'],
+    
+    // Exclude patterns
+    exclude: [
+      'node_modules',
+      'dist',
+      '.terraform',
+      '**/*.d.ts',
+    ],
+  },
+  
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@infra': path.resolve(__dirname, './infrastructure'),
+    },
+  },
+});
+```
+
+### 13_CODE_B: Terraform Configuration Generator {#13_code_b}
+*Listing 13-B.*
+*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+
+This TypeScript module demonstrates programmatic generation of Terraform configurations with built-in compliance validation.
+
+```typescript
+// src/generators/terraform-config.ts
+export interface TerraformConfig {
+  provider: string;
+  region: string;
+  environment: string;
+  resources: ResourceConfig[];
+}
+
+export interface ResourceConfig {
+  type: string;
+  name: string;
+  properties: Record<string, any>;
+}
+
+export class TerraformConfigGenerator {
+  generateVPCConfig(
+    environment: string,
+    region: string = 'eu-north-1'
+  ): TerraformConfig {
+    // Validate EU regions for GDPR compliance
+    const euRegions = ['eu-north-1', 'eu-west-1', 'eu-central-1'];
+    if (!euRegions.includes(region)) {
+      throw new Error('Region must be within EU for GDPR compliance');
+    }
+
+    return {
+      provider: 'aws',
+      region,
+      environment,
+      resources: [
+        {
+          type: 'aws_vpc',
+          name: `vpc-${environment}`,
+          properties: {
+            cidr_block: '10.0.0.0/16',
+            enable_dns_hostnames: true,
+            enable_dns_support: true,
+            tags: {
+              Name: `vpc-${environment}`,
+              Environment: environment,
+              ManagedBy: 'Terraform',
+              GdprCompliant: 'true',
+              DataResidency: 'EU',
+            },
+          },
+        },
+      ],
+    };
+  }
+
+  generateRDSConfig(
+    environment: string,
+    instanceClass: string = 'db.t3.micro',
+    encrypted: boolean = true
+  ): ResourceConfig {
+    // Ensure encryption for production
+    if (environment === 'production' && !encrypted) {
+      throw new Error('Production databases must have encryption enabled');
+    }
+
+    return {
+      type: 'aws_db_instance',
+      name: `rds-${environment}`,
+      properties: {
+        allocated_storage: environment === 'production' ? 100 : 20,
+        engine: 'postgres',
+        engine_version: '14.7',
+        instance_class: instanceClass,
+        storage_encrypted: encrypted,
+        backup_retention_period: environment === 'production' ? 30 : 7,
+        multi_az: environment === 'production',
+        tags: {
+          Environment: environment,
+          GdprCompliant: 'true',
+          EncryptionEnabled: encrypted.toString(),
+        },
+      },
+    };
+  }
+}
+```
+
+---
+
 ## Organisational Change and Team Structures {#organisational-change}
 
 ### 17_CODE_1: Infrastructure Platform Team Blueprint

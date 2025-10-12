@@ -1,0 +1,13 @@
+graph TB
+    subgraph "IaC Test Pyramid"
+        E2E["End-to-End Tests<br/>Full Infrastructure Deployment<br/>Fewer, Slower, More Expensive"]
+        INT["Integration Tests<br/>Multi-Component Validation<br/>Environment Parity Testing"]
+        UNIT["Unit Tests<br/>Module & Resource Validation<br/>Many, Fast, Inexpensive"]
+    end
+    
+    UNIT --> INT
+    INT --> E2E
+    
+    style E2E fill:#e74c3c,color:#fff
+    style INT fill:#f39c12,color:#fff
+    style UNIT fill:#27ae60,color:#fff
