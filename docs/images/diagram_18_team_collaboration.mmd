@@ -1,0 +1,23 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#0B6E4F'
+    primaryTextColor: '#ffffff'
+    primaryBorderColor: '#0B6E4F'
+    lineColor: '#1F3C88'
+    secondaryColor: '#F18F01'
+    tertiaryColor: '#ffffff'
+---
+flowchart TB
+    Vision["Architecture Vision"] --> Governance["Platform Governance"]
+    Governance --> PlatformTeam["Platform Team\n(Enablement)"]
+    PlatformTeam --> SharedServices["Shared Services\n(CI/CD, Security, Observability)"]
+    SharedServices --> ProductTeams["Product Teams\n(Cross-functional)"]
+    ProductTeams --> Feedback["Feedback & Metrics"]
+    Feedback --> Governance
+    Communities["Communities of Practice"] --> PlatformTeam
+    Communities --> ProductTeams
+    Communities --> Leadership["Leadership & People Ops"]
+    Leadership --> Governance
+    Leadership --> PlatformTeam

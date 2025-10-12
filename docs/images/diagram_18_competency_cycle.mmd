@@ -1,0 +1,21 @@
+---
+config:
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#1F3C88'
+    primaryTextColor: '#ffffff'
+    primaryBorderColor: '#1F3C88'
+    lineColor: '#0B6E4F'
+    secondaryColor: '#F18F01'
+    tertiaryColor: '#ffffff'
+---
+flowchart LR
+    Assess["Assess Capabilities"] --> Plan["Plan Learning Objectives"]
+    Plan --> Learn["Learn & Practice\n(Training, Labs)"]
+    Learn --> Apply["Apply in Delivery\n(Projects, Automation)"]
+    Apply --> Share["Share Knowledge\n(Reviews, Communities)"]
+    Share --> Measure["Measure Impact\n(Metrics, Outcomes)"]
+    Measure --> Assess
+    Leadership["Leadership Support"] --> Plan
+    Leadership --> Learn
+    Leadership --> Apply
