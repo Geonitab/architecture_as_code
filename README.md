@@ -130,7 +130,7 @@ python3 scripts/verify_links.py --output reports/links  # custom output location
 
 ## 📄 Governance
 
-The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/29_about_the_authors.md` for contributor biographies and ownership details.【F:docs/29_about_the_authors.md†L1-L200】
+The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/29_about_the_authors.md` for author biography and book context.【F:docs/29_about_the_authors.md†L1-L170】
 
 ## 🌍 Language
 

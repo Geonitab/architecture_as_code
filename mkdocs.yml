@@ -42,7 +42,7 @@ nav:
       - Conclusion: 27_conclusion.md
   - Appendices:
       - Glossary: 28_glossary.md
-      - About the Authors: 29_about_the_authors.md
+      - About the Author: 29_about_the_authors.md
       - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
       - Technical Structure for Book Production: 31_technical_architecture.md
 docs_dir: docs
