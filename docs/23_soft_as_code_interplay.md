@@ -6,6 +6,22 @@ For years, the phrase "as code" has been tightly associated with hard, technical
 
 ![Soft as code ecosystem](images/diagram_30_soft_as_code.png)
 
+The following mind map illustrates the key concepts and relationships within the soft "as code" ecosystem. It visualizes how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organizational synergies.
+
+![Soft "as code" interplay mind map](images/mindmap_23_soft_as_code.png)
+
+**Key takeaways from the mind map:**
+
+- **Shared DNA at the core:** All soft "as code" disciplines are unified by structured representation, version control, and automatability—fundamental principles that enable collaboration across domains.
+- **Compliance as Code acts as the quality engine:** By codifying rules and policies, it provides continuous validation and transparency, ensuring that architectural and documentation artifacts remain within approved boundaries.
+- **Architecture as Code serves as the central hub:** It connects technical implementations with policy and documentation layers, providing traceability and enabling real-time synchronization across the ecosystem.
+- **Documentation as Code forms the communication layer:** It translates technical and policy concepts into accessible narratives, enabling self-service knowledge and fostering collective ownership through structured feedback loops.
+- **Knowledge and Culture as Code preserve organizational memory:** Formalizing lessons learned and cultural values ensures consistency, supports onboarding, and enables rapid iteration without losing core principles.
+- **Synergies multiply value:** When these disciplines integrate, they create cross-functional collaboration spaces, unified validation pipelines, and enhanced traceability—accelerating the pace of change while managing risk.
+- **Implementation requires strategy:** Success depends on shared principles, compatible tooling, cross-functional training, iterative building, and clear governance frameworks.
+
+This visualization reinforces the chapter's central message: soft "as code" disciplines are more powerful together than in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
+
 ## A Shared DNA
 
 Even though the disciplines address different problem spaces, they share a common DNA. The goal is to take soft artifacts—policies, architectural principles, design descriptions, documentation, governance models—and convert them into:
