@@ -15,3 +15,6 @@ Clean up Chapter 7 by translating remaining Swedish text and ensuring terminolog
 
 ## Labels
 - documentation
+
+## Linked Pull Requests
+- [#256 Refresh Chapter 7 for British English consistency](https://github.com/Geonitab/architecture_as_code/pull/256) — merged on 2025-10-12 at 18:38 UTC.

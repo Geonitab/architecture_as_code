@@ -19,3 +19,6 @@ Combine Chapters 25 and 26 into a unified chapter with British English prose, co
 ## Labels
 - documentation
 - design
+
+## Linked Pull Requests
+- [#249 Merge chapters 25 and 26 into refreshed future trends narrative](https://github.com/Geonitab/architecture_as_code/pull/249) — merged on 2025-10-12 at 18:32 UTC.

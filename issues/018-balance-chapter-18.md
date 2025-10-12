@@ -19,3 +19,6 @@ Improve Chapter 18 by translating residual Swedish content, ensuring diagrams ar
 ## Labels
 - documentation
 - design
+
+## Linked Pull Requests
+- [#259 Remove generated Chapter 18 PNG outputs](https://github.com/Geonitab/architecture_as_code/pull/259) — merged on 2025-10-12 at 18:50 UTC.

@@ -18,3 +18,6 @@ Update Chapter 27 to ensure accurate terminology, British English prose, and a s
 
 ## Labels
 - documentation
+
+## Linked Pull Requests
+- [#250 Refresh Chapter 27 conclusion](https://github.com/Geonitab/architecture_as_code/pull/250) — merged on 2025-10-12 at 18:43 UTC.

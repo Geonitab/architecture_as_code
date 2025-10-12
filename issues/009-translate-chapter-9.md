@@ -15,3 +15,7 @@ Convert Chapter 9 to British English while maintaining technical precision and c
 
 ## Labels
 - documentation
+
+## Linked Pull Requests
+- [#247 Translate Chapter 9 to British English](https://github.com/Geonitab/architecture_as_code/pull/247) — merged on 2025-10-12 at 18:36 UTC.
+- [#258 Translate Chapter 9 security content to English](https://github.com/Geonitab/architecture_as_code/pull/258) — merged on 2025-10-12 at 18:56 UTC.

@@ -15,3 +15,6 @@ Translate Chapter 31 into British English and clarify the Markdown example forma
 
 ## Labels
 - documentation
+
+## Linked Pull Requests
+- [#252 Translate and clarify Chapter 31 technical architecture](https://github.com/Geonitab/architecture_as_code/pull/252) — merged on 2025-10-12 at 18:39 UTC.
