@@ -4,7 +4,7 @@ This repository powers the publication workflow for the book *Architecture as Co
 
 ## 📚 About the Book
 
-The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-one chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is written with Swedish public-sector and enterprise contexts in mind, combining conceptual guidance, practical templates, and illustrative diagrams.【F:docs/book_structure.md†L1-L139】
+The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-one chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is now framed for a global audience, combining conceptual guidance, practical templates, and illustrative diagrams without relying on region-specific assumptions.【F:docs/book_structure.md†L1-L139】
 
 ### Target Audience
 - System and enterprise architects

@@ -174,7 +174,7 @@ class RequirementsValidator:
         }
 ```
 
-Swedish organizations drar particular nytta of Requirements as Code to automatically validate GDPR-compliance, finansiella regulations and myndighetsrequirements as konstant must uppfyllas.
+Global organisations benefit from Requirements as Code by automatically validating regulatory compliance, financial controls, and statutory obligations that must continually be met.
 
 Sources:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.

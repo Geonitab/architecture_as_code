@@ -1,6 +1,6 @@
-# Architecture as Code - Bokstruktur
+# Architecture as Code - Book Structure
 
-This document describes the logical structure for the book "Architecture as Code" which is organized into seven narrative parts plus appendices. Thirty-one chapters build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for Swedish organizations.
+This document describes the logical structure for the book "Architecture as Code" which is organized into seven narrative parts plus appendices. Thirty-one chapters build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
 
 ## Table of Contents
 
@@ -61,7 +61,7 @@ Reference material, author information, and technical enablers
 | 9 | `09_security.md` | Security in Architecture as Code | Security aspects and best practices |
 | 10 | `10_policy_and_security.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |
 | 11 | `11_governance_as_code.md` | Governance as Code | Codifying governance processes, approval flows, and tooling support |
-| 12 | `12_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance in Swedish organizations |
+| 12 | `12_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance considerations for international organisations |
 
 ### Part 4: Delivery & Operations (Chapters 13-16)
 
@@ -141,7 +141,7 @@ This structure ensures:
 - **Logical progression**: Each part builds upon knowledge from previous parts
 - **Thematic grouping**: Related topics are covered together for better comprehension
 - **Balance**: Theory and practice are balanced throughout all parts
-- **Adaptability**: Content is adapted for Swedish organizational contexts and regulatory requirements
+- **Adaptability**: Guidance is written for international applicability with notes for adapting to local regulatory requirements
 
 ## Diagrams and Images
 
