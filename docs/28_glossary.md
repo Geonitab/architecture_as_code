@@ -2,140 +2,133 @@
 
 ![Architecture as Code Core Concepts Class Diagram](images/diagram_23_ordlista_class.png)
 
-This Glossary contains definitioner of centrala termer as is used genAbout the Book and as forms the foundation for Architecture as Code methodology.
+The glossary gathers the key terminology that shapes the Architecture as Code approach across this book. It embraces inclusive language so that every practitioner—regardless of background, role, or level of experience—can connect their work to the concepts shown in the relationships diagram above.
 
-## Fundamental Concepts and tools
+## How to use this glossary
+- **Start with the diagram:** The class diagram summarises how foundational Architecture as Code elements interact. Trace the relationships before diving into the definitions.
+- **Explore by theme:** Terms are grouped so product teams, platform engineers, security specialists, and organisational leaders can quickly find language relevant to their responsibilities.
+- **Cross-reference chapters:** Each definition reflects the terminology used throughout the book. When you see a highlighted concept in other chapters, return here for a concise explanation.
+- **Keep language inclusive:** Use these definitions when collaborating so every team member hears consistent, people-first language.
 
-**API (Application Programming Interface):** Gränssnitt as enables kommunikation between different mjukvarukomponenter or systems through standardized protokoll and dataformat.
+## Core Architecture as Code foundations
+**Architecture as Code (AaC):** Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines.
 
-**Architecture as Code-automation:** Process where manual uppgifter utfors automatically of datorsystem without human intervention, that ökar effektivitet and reduces felrisk.
+**Infrastructure as Code (IaC):** A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments.
 
-**CI/CD (Continuous Integration/Continuous Deployment):** Utvecklingsmetodik as integrerar kodändringar kontinuerligt and automates driftsättningsprocessen for snabbare and säkrare leveranser.
+**Architecture Decision Record (ADR):** A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together.
 
-**Cloud Computing:** Leverans of IT-services as servers, lagring and applications over internet with åtkomst at begäran and betalning per use.
+**Declarative Programming:** A style of describing desired outcomes rather than procedural steps, enabling automation tools to converge systems on the target state reliably.
 
-**Containers:** Lätt virtualiseringsteknik as paketerar applications with all dependencies for portabel körning across different environments and plattformar.
+**Idempotence:** The property that a command or template can run repeatedly with the same end result, protecting teams from accidental drift or double execution.
 
-**Declarative programming:** Programmeringsparadigm that describes desired end result instead for specific step to achieve the, which enables higher abstraktion.
+**Reusable Module:** A parameterised building block—such as a Terraform module or Helm chart—that encapsulates best practice and is published for teams to compose new solutions quickly.
 
-**DevOps:** cultural and technical approach as combines development (Dev) and drift (Ops) for snabbare leveranser and forbättrat samarbete between team.
+**API (Application Programming Interface):** A contract that allows systems to interact predictably, enabling modular architectures and integrated delivery workflows.
 
-**Git:** Distribuerat versionhanteringssystem to spåra changes in source code under development with support for branching and merging.
+## Automation, tooling, and delivery
+**Continuous Integration / Continuous Delivery (CI/CD):** A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual hand-offs.
 
-**Idempotens:** Egenskap at operationer as produces same resultat oavsett how many gånger the is run, kritiskt for secure Architecture as Code-automation.
+**Delivery Pipeline:** The orchestrated flow of automated checks, approvals, and deployments that transform committed code into resilient production services.
 
-**Architecture as Code (Architecture as Code) (Architecture as Code) (Architecture as Code):** Praktiken to handle infrastructure through Architecture as Code instead for manual processes, which enables version control and automation.
+**Version Control System (VCS):** A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review.
 
-**JSON (JavaScript Object Notation):** Textbaserat dataformat for Structured informationsutbyte between systems with human-readable syntax.
+**GitOps:** Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments.
 
-**Kubernetes:** Open source code containerorkestreringsplattform for automatiserad deployment, skalning and handling of containeriserade applications.
+**Configuration Management:** Tooling such as Ansible or Chef that applies desired system states, often working alongside declarative templates to maintain consistency.
 
-**Microservices:** Arkitekturell approach where applications byggs as stemplate, oberoende services as kommunicerar via väldefinierade APIs.
+**Terraform:** A widely used IaC tool that compiles declarative configurations into API calls, offering modular composition and policy enforcement hooks.
 
-**Övervakning:** Continuous systemövervakning to upptäcka problem, optimera performance and ensure togänglighet.
+**Helm:** The package manager for Kubernetes that bundles manifests, default values, and documentation into shareable charts.
 
-**Orchestration:** Automatiserad koordination and handling of complex workflows and systems to achieve desired state.
+**Kubernetes:** An open-source orchestration platform that schedules containers, scales workloads, and standardises operational tasks.
 
-**Policy as Code:** Tovägagångssätt where security- and efterlevnadsregler are defined as code for automatiserad utvärdering and verkställande.
+**Container:** A lightweight, portable runtime package that combines application code with dependencies for consistent execution across environments.
 
-**Terraform:** Infrastructure as Code (Architecture as Code)-tools as uses declarative syntax to definiera and handle cloud infrastructure resources.
+**Service Mesh:** A dedicated infrastructure layer that manages service-to-service security, routing, and observability without each team writing bespoke logic.
 
-**YAML (YAML Ain't Markup Language):** Människoläsbart dataserialiseringsformat as often is used for konfigurationsfiler and Architecture as Code-definitioner.
+**Runbook Automation:** Automated execution of the procedural knowledge once held in runbooks, shortening incident response while keeping humans in control of critical decisions.
 
-**Zero Trust:** Säkerhetsmodell as aldrig litar at and always verifierar user and units before åtkomst to resurser beviljas.
+**Observability Stack:** The telemetry pipelines, dashboards, and alerting rules that provide actionable insight into system behaviour and guide inclusive on-call collaboration.
 
-## Driftsättning and operational concepts
+## Governance, compliance, and security
+**Policy as Code:** The practice of expressing organisational policies in code so they can be versioned, tested, and enforced automatically across platforms.
 
-**Blå-green deployment:** Driftsättningsstrategi where två identical production environments (blå and green) is used to enable snabb recovery and minimal stoeståndstid.
+**Continuous Compliance:** Automated validation that checks regulatory and internal controls with every change, generating evidence that auditors and teams can trust.
 
-**Canary Release:** gradual utrullningsstrategi where new versions forst deployeras to a liten subset of user for riskminimering and validation.
+**Zero Trust:** A security stance that continuously verifies identities, device health, and context before granting access, reducing implicit trust between services.
 
-**Community of Practice:** Grupp of personer as parts passion for something the does and lär itself to do the bättre through regelbunden interaktion.
+**Security Policy:** A codified set of safeguards—identity, encryption, network, and data-handling—that shapes how architecture components interoperate securely.
 
-**Conway's Law:** Observation to organisationer designar systems as speglar their kommunikationsStructureer.
+**Data Sovereignty:** Ensuring data is handled in accordance with the laws of the jurisdiction where it resides, influencing design choices and deployment regions.
 
-**Tvärfunktionellt team:** Team as includes withlemmar with different skills and roller as arbetar tosammans mot gemensamma goals.
+**Risk Assessment Matrix:** A structured view of likelihood versus impact that helps teams evaluate and prioritise mitigations collaboratively.
 
-**GitOps:** Operational framework as uses Git as enda källa for sanning for declarative infrastructure and applications.
+**Access Federation:** Coordinated identity management across platforms so that people have the least-privileged access they need to perform their roles.
 
-**Helm:** Pakethanterare for Kubernetes as uses charts to definiera, installera and upgradera complex Kubernetes-applications.
+## Reliability and operational excellence
+**Site Reliability Engineering (SRE):** An engineering discipline that applies software practices to operations work, balancing reliability with delivery velocity.
 
-**Service Discovery:** Mekanism as enables automatic detektion and kommunikation between services in distributed systems.
+**Service Level Objective (SLO):** A shared target for reliability, expressed as a measurable goal that teams use to evaluate whether customer expectations are being met.
 
-**Service Mesh:** Dedikerad infrastructurelager as handles service-to-service-kommunikation, security and observability in mikroservicesarkitekturer.
+**Service Level Indicator (SLI):** The quantitative measurement—such as latency or error rate—that shows whether an SLO is being achieved.
 
-**Edge Computing:** Distributerad databehandlingsparadigm as placerar beräkningsresurser whenmare datakällan for minskad latens and improved performance.
+**Error Budget:** The agreed allowance for unreliability that guides deployment pace and prioritisation of improvement work.
 
-**Post-Quantum Cryptography:** Kryptografiska algoritmer as is designade to vara secure mot angrepp from both klassiska and kvantumdatorer.
+**Chaos Engineering:** Intentional experimentation that reveals weaknesses by introducing controlled failure, strengthening resilience and team confidence.
 
-**Carbon-Aware Computing:** Approach to optimera infrastructureanvändning based on kolintensitet and fornybara energiSources for minskad miljöpåverkan.
+**Incident Command:** An inclusive, role-based structure that coordinates response efforts during major events so everyone understands responsibilities and communication paths.
 
-**Oforänderlig infrastructure:** InfraStructureparadigm where components aldrig modifieras efter deployment without is replaced helt when changes is needed.
+**Blameless Post-Incident Review:** A learning-focused conversation after incidents that identifies systemic improvements without placing personal blame.
 
-**State Drift:** Situation where The faktiska infrastructuretoståndet avviker from The definierade desired toståndet in Architecture as Code-definitioner.
+**Runway Health Check:** A periodic review of capacity, tooling, and process debt to ensure teams have the runway to deliver sustainable change.
 
-## Kostnadshantering and optimering
+## Financial stewardship and sustainability
+**FinOps:** A collaborative financial practice that aligns engineering, finance, and product teams on cost efficiency while supporting innovation.
 
-**FinOps:** Disciplin as combines finansiell handling with molnoperationer to maximera affärsvärdet of molninvesteringar through kostnadsoptimering and resource management.
+**Cost Allocation Tag:** Metadata attached to resources that enables transparent reporting by product, team, or initiative.
 
-**Rightsizing:** Process to optimera molnresurser by matcha instance-storlekar and typer with faktiska performancerequirements and usage patterns.
+**Rightsizing:** Optimising resource shapes and reservations based on observed usage to reduce waste without compromising performance.
 
-**Spot Instances:** Molninstanser as uses överskottcreatecitet to kraftigt reducerade priser but can termineras with kort varsel when kapacitet is needed for on-demand use.
+**Reserved and Spot Capacity:** Cloud purchasing models that trade commitment or flexibility for lower cost, requiring automation to manage safely.
 
-**Cost Allocation Tags:** Metadataetiketter as is used to kategorisera and spåra molnresurskostnader per projekt, team, environment or andra organizational dimensioner.
+**Resource Quota:** A constraint that limits how much of a resource can be consumed in a namespace or account, preventing unintended overspend.
 
-**Cost Governance:** Ramverk of policies, processes and tools to styra and kontrollera molnkostnader within a organisation.
+**Carbon-Aware Computing:** Scheduling workloads and scaling strategies to coincide with renewable energy availability, supporting environmental goals.
 
-**Resource Quotas:** Begränsningar as sätts at how very of a viss resurs (CPU, minne, lagring) which can konsumeras within a given scope or namespace.
+## Organisational alignment and culture
+**Platform Team:** A multidisciplinary group that curates reusable services, standards, and documentation so product teams can focus on customer value.
 
-## testing and kvalitetssäkring
+**Community of Practice:** An open forum where people with a shared interest learn together, improving patterns and vocabulary across the organisation.
 
-**Terratest:** Open source Go-bibliotek for automatiserad testing of Infrastructure as Code, particularly designat for Terraform-moduler and cloud infrastructure.
+**Cross-Functional Team:** A team with diverse skills—engineering, security, operations, product, and design—working together from discovery through run-time.
 
-**Policy as Code:** Approach where organizational policies, säkerhetsregler and compliance-requirements are defined as code and can automatically enforced and testade.
+**DevOps Culture:** The mindset that values shared ownership, rapid feedback, and continuous improvement over siloed hand-offs.
 
-**OPA (Open Policy Agent):** Cloud-native policy engine as enables unified policy enforcement across different services and technologies through declarative policy language.
+**Psychological Safety:** An environment where every team member can contribute ideas or raise concerns without fear, enabling inclusive innovation.
 
-**Chaos Engineering:** Disciplin to experimentellt introducera fel in systems to bygga toit to system's ability to motstå turbulenta conditions in produktion.
+**Servant Leadership:** A leadership style that removes obstacles, amplifies team voices, and nurtures growth instead of commanding outcomes.
 
-**Integration Testing:** testing as verifierar to different components or services functions korrekt tosammans when the is integrerade in A systems.
+**Change Management:** A transparent approach to guiding people through change with empathy, communication, and supportive training.
 
-**Compliance Testing:** Automatiserad validation of to systems and configurations follows relevanta regulatory requirements, security standards and organizational policies.
+**Continuous Improvement Loop:** A feedback rhythm—retrospectives, reviews, and experiments—that keeps practices evolving alongside technology.
 
-## Strategiska and organizational concepts
+**Anti-Pattern:** A common but counterproductive practice that appears helpful yet creates long-term issues, signalling an opportunity for shared learning.
 
-**Cloud-First Strategy:** Strategisk approach where organisationer primarily choose cloud-based solutions for new IT-initiativ before on-premises alternatives övervägs.
+## Future-focused and advanced concepts
+**Multi-Cloud Strategy:** Using services from multiple providers to balance capability, resilience, and regulatory needs while avoiding lock-in.
 
-**Digital Transformation:** fundamental change in affärsoperationer and värdeleverans through integration of digital technology in all aspects of verksamheten.
+**Edge Computing:** Placing compute capabilities closer to data sources or users to reduce latency and improve responsiveness.
 
-**Multi-Cloud:** Strategi to use molntjänster from multiple different providers to undvika vendor lock-in and optimera for specific capabilities or kostnader.
+**Post-Quantum Cryptography:** Cryptographic techniques designed to withstand attacks from both classical and quantum computers.
 
-**Data Sovereignty:** Konceptet to digital data is underkastat lagarna and juridiktionen in the land where The is stored or bearbetas.
+**Digital Twin:** A synchronised virtual representation of a system that allows teams to explore changes safely before applying them in production.
 
-**Conway's Law:** Observation to organisationer designar systems as speglar their kommunikationsStructureer, which affects how team should organiseras for optimal systemdesign.
+**AI for IT Operations (AIOps):** Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders.
 
-**Cross-functional Team:** Team as includes withlemmar with different skills and roller as arbetar tosammans mot gemensamma goals, essentiellt for DevOps-success.
+**Sustainability KPI:** A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation.
 
-**DevOps Culture:** cultural transformation from traditional utvecklings- and driftsilos to kollaborativa way of working as emphasizes shared ownership and continuous improvement.
+**Knowledge Graph:** A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery.
 
-**Psychological Safety:** Teammiljö where withlemmar känner itself secure to ta risker, erkänna misstag and experiment without rädsla for bestraffning or forödmjukelse.
+---
 
-**Servant Leadership:** Ledarskapsfilosofi as focuses on to tjäna teamet and främja their success rather than traditional kommando-and-kontroll-ledning.
-
-**Best Practice Evolution:** Continuous development of rekommenderade methods based on praktisk erfarenhet, community feedback and technical framsteg.
-
-**Anti-Pattern:** Vanligt forekommande but kontraproduktivt lösningsforslag as initialt verkar användbart but as leder to negative consequences.
-
-**Policy-as-Code:** Metod where organizational policies, säkerhetsregler and compliance-requirements are defined as code for automatiserad enforcement and testing.
-
-**Infrastructure Governance:** Ramverk of policies, processes and tools to styra and kontrollera infrastructure development and -drift within organisationer.
-
-**Technical Debt:** Ackumulerad kostnad of shortcuts and suboptimala technical decisions as requires framtida refactoring or omarbetning to bibehålla systemkvalitet.
-
-**Blameless Culture:** Organisationskultur as focuses on systemforbättringar efter incidenter rather than individual skuld, which främjar öppenhet and lärande.
-
-**Change Management:** Systematisk approach to handle organizational changes, including stakeholder engagement, kommunikation and motståndhantering.
-
-**DevSecOps:** Utvecklingsmetodik as integrerar säkerhetspraktiker through entire utvecklingslivscykeln rather than as a separat fas in slutet.
-
-**Site Reliability Engineering (SRE):** Disciplin as toämpar mjukvaruingenjörsprinciper at operational problem to create skalbara and very reliable mjukvarusystem.
+Revisit this glossary as new capabilities emerge. Update both the definitions and the diagram when introducing a novel concept so that every reader can see how their contribution fits into the Architecture as Code ecosystem.
