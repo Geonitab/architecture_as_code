@@ -1,16 +1,39 @@
-quadrantChart
-    title IaC Testing Strategy Matrix
-    x-axis Low Implementation Complexity --> High Implementation Complexity
-    y-axis Low Testing Coverage --> High Testing Coverage
-    quadrant-1 Comprehensive Testing
-    quadrant-2 Over-engineered Testing
-    quadrant-3 Basic Testing
-    quadrant-4 Quick Wins
-    Unit Tests (Terratest): [0.3, 0.6]
-    Integration Tests: [0.7, 0.8]
-    End-to-End Tests: [0.9, 0.9]
-    Policy Testing (OPA): [0.4, 0.7]
-    Security Scanning: [0.2, 0.8]
-    Compliance Testing: [0.6, 0.9]
-    Performance Testing: [0.8, 0.6]
-    Smoke Tests: [0.1, 0.3]
+graph TD
+    subgraph Legend["Testing Strategy Quadrant"]
+        direction LR
+        Q1["Comprehensive Testing<br/>High Coverage, High Complexity"]
+        Q2["Quick Wins<br/>High Coverage, Low Complexity"]
+        Q3["Basic Testing<br/>Low Coverage, Low Complexity"]
+        Q4["Over-engineered<br/>Low Coverage, High Complexity"]
+    end
+    
+    subgraph HighCoverage["High Testing Coverage Strategies"]
+        SEC["Security Scanning<br/>Coverage: 80%<br/>Complexity: Low"]
+        POL["Policy Testing OPA<br/>Coverage: 70%<br/>Complexity: Low-Med"]
+        COMP["Compliance Testing<br/>Coverage: 90%<br/>Complexity: Medium"]
+        INT["Integration Tests<br/>Coverage: 80%<br/>Complexity: High"]
+        E2E["End-to-End Tests<br/>Coverage: 90%<br/>Complexity: Very High"]
+    end
+    
+    subgraph MedCoverage["Medium Testing Coverage Strategies"]
+        UNIT["Unit Tests Terratest<br/>Coverage: 60%<br/>Complexity: Low-Med"]
+        PERF["Performance Testing<br/>Coverage: 60%<br/>Complexity: High"]
+    end
+    
+    subgraph LowCoverage["Low Testing Coverage Strategies"]
+        SMOKE["Smoke Tests<br/>Coverage: 30%<br/>Complexity: Very Low"]
+    end
+    
+    style SEC fill:#27ae60,color:#fff
+    style POL fill:#27ae60,color:#fff
+    style COMP fill:#f39c12,color:#fff
+    style INT fill:#e74c3c,color:#fff
+    style E2E fill:#c0392b,color:#fff
+    style UNIT fill:#3498db,color:#fff
+    style PERF fill:#e67e22,color:#fff
+    style SMOKE fill:#95a5a6,color:#fff
+    
+    style Q1 fill:#e74c3c,color:#fff
+    style Q2 fill:#27ae60,color:#fff
+    style Q3 fill:#95a5a6,color:#fff
+    style Q4 fill:#e67e22,color:#fff
