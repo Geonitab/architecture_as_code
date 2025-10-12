@@ -9,7 +9,7 @@
 % Language and encoding
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[swedish]{babel}
+\usepackage[$if(lang)$$babel-lang$$else$english$endif$]{babel}
 
 % Kvadrat color definitions
 \usepackage{xcolor}
@@ -61,7 +61,7 @@
 \fancyhead[RE]{\textcolor{KvadratGray}{\small\nouppercase{\leftmark}}}
 
 % Footer styling
-\fancyfoot[C]{\textcolor{KvadratGray}{\small Arkitektur som kod - Kvadrat Professional Publication}}
+\fancyfoot[C]{\textcolor{KvadratGray}{\small Architecture as Code - Kvadrat Professional Publication}}
 
 % Remove header rule and add custom styling
 \renewcommand{\headrulewidth}{0pt}
@@ -233,10 +233,10 @@
             \node[anchor=center] at ([yshift=2cm]current page.center) {
                 \begin{minipage}{140mm}
                     \centering
-                    \textcolor{white}{\fontsize{72}{80}\selectfont\textbf{Arkitektur}}\\[5mm]
-                    \textcolor{white}{\fontsize{72}{80}\selectfont som \textcolor{KvadratBlueLight}{\textbf{kod}}}\\[15mm]
-                    \textcolor{white}{\fontsize{24}{32}\selectfont En omfattande guide till Infrastructure as Code}\\[5mm]
-                    \textcolor{white}{\fontsize{18}{24}\selectfont från grundläggande principer till avancerad implementation}
+                    \textcolor{white}{\fontsize{72}{80}\selectfont\textbf{Architecture}}\\[5mm]
+                    \textcolor{white}{\fontsize{72}{80}\selectfont as \textcolor{KvadratBlueLight}{\textbf{Code}}}\\[15mm]
+                    \textcolor{white}{\fontsize{24}{32}\selectfont A comprehensive guide to Architecture as Code}\\[5mm]
+                    \textcolor{white}{\fontsize{18}{24}\selectfont from foundational principles to advanced implementation}
                 \end{minipage}
             };
         \end{tikzpicture}
@@ -244,13 +244,13 @@
         % Footer information
         \begin{tikzpicture}[remember picture,overlay]
             \node[anchor=south west] at ([xshift=40mm,yshift=40mm]current page.south west) {
-                \textcolor{white}{\textbf{\Large Kvadrat Expertteam}}
+                \textcolor{white}{\textbf{\Large Kvadrat Expert Team}}
             };
             \node[anchor=south east] at ([xshift=-40mm,yshift=40mm]current page.south east) {
                 \begin{minipage}[b]{40mm}
                     \raggedleft
                     \textcolor{white}{\textbf{\Large 2024}}\\
-                    \textcolor{white}{Första upplagan}
+                    \textcolor{white}{First Edition}
                 \end{minipage}
             };
         \end{tikzpicture}
@@ -274,7 +274,7 @@
             \fill[KvadratBlue] (0,0) rectangle (15mm,15mm);
             \node[white] at (7.5mm,7.5mm) {\fontsize{24}{24}\selectfont\textbf{\thechapter}};
         \end{tikzpicture}
-    }{20pt}{\Huge\chapteropener{Kapitel \thechapter}}
+    }{20pt}{\Huge\chapteropener{Chapter \thechapter}}
     [
         \vspace{5mm}
         \begin{tikzpicture}
@@ -475,8 +475,8 @@
     filecolor=KvadratBlue,
     urlcolor=KvadratBlueLight,
     citecolor=KvadratBlue,
-    pdfauthor={Kvadrat Expertteam},
-    pdftitle={Arkitektur som kod},
+    pdfauthor={Kvadrat Expert Team},
+    pdftitle={Architecture as Code},
     pdfsubject={Infrastructure as Code},
     pdfkeywords={Infrastructure as Code, DevOps, Cloud, Automation}
 }
@@ -508,12 +508,12 @@
         \vspace{10mm}
         
         {\Large\textbf{\textcolor{KvadratBlue}{Kvadrat Professional Services}}}\\[5mm]
-        {\large\textcolor{KvadratGray}{Expert konsulttjänster inom teknik och arkitektur}}\\[10mm]
-        
+        {\large\textcolor{KvadratGray}{Expert consulting services in technology and architecture}}\\[10mm]
+
         \textcolor{KvadratGray}{
-            \textbf{Kontakt:} info@kvadrat.se | +46 8 123 45 67 | www.kvadrat.se\\
-            \textbf{Adress:} Stockholm, Sverige\\[5mm]
-            © 2024 Kvadrat. Alla rättigheter förbehållna.
+            \textbf{Contact:} info@kvadrat.se | +46 8 123 45 67 | www.kvadrat.se\\
+            \textbf{Address:} Stockholm, Sweden\\[5mm]
+            © 2024 Kvadrat. All rights reserved.
         }
     \end{center}
     

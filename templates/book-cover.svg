@@ -187,39 +187,39 @@
             text-anchor="middle" fill="hsl(221, 67%, 32%)">K</text>
       
       <!-- Brand text -->
-      <text x="72" y="36" font-family="Inter, sans-serif" font-size="16" font-weight="600" 
-            fill="white" opacity="0.95" letter-spacing="0.8px">KVADRAT PUBLIKATION</text>
+      <text x="72" y="36" font-family="Inter, sans-serif" font-size="16" font-weight="600"
+            fill="white" opacity="0.95" letter-spacing="0.8px">KVADRAT PUBLICATION</text>
     </g>
     
     <!-- Main title -->
     <g transform="translate(0, 189)">
-      <!-- Title line 1: "Arkitektur" -->
-      <text x="0" y="78" font-family="Inter, sans-serif" font-size="78" font-weight="900" 
-            fill="white" letter-spacing="-3px" filter="url(#textShadow)">Arkitektur</text>
-      
-      <!-- Title line 2: "som kod" with highlight -->
-      <text x="20" y="156" font-family="Inter, sans-serif" font-size="78" font-weight="900" 
-            fill="white" letter-spacing="-3px" filter="url(#textShadow)">som </text>
-      <text x="200" y="156" font-family="Inter, sans-serif" font-size="78" font-weight="900" 
-            fill="url(#accentGradient)" letter-spacing="-3px" filter="url(#textShadow)">kod</text>
+      <!-- Title line 1: "Architecture" -->
+      <text x="0" y="78" font-family="Inter, sans-serif" font-size="78" font-weight="900"
+            fill="white" letter-spacing="-3px" filter="url(#textShadow)">Architecture</text>
+
+      <!-- Title line 2: "as Code" with highlight -->
+      <text x="20" y="156" font-family="Inter, sans-serif" font-size="78" font-weight="900"
+            fill="white" letter-spacing="-3px" filter="url(#textShadow)">as </text>
+      <text x="200" y="156" font-family="Inter, sans-serif" font-size="78" font-weight="900"
+            fill="url(#accentGradient)" letter-spacing="-3px" filter="url(#textShadow)">Code</text>
     </g>
     
     <!-- Subtitle -->
     <g transform="translate(0, 377)">
       <text font-family="Inter, sans-serif" font-size="22" font-weight="400" 
             fill="rgba(255,255,255,0.92)" line-height="1.5">
-        <tspan x="0" y="26">En omfattande guide till Infrastructure as Code -</tspan>
-        <tspan x="0" y="59">från grundläggande principer till avancerad</tspan>
-        <tspan x="0" y="92">implementation i moderna molnmiljöer</tspan>
-        <tspan x="0" y="125" font-size="18" fill="rgba(5,150,105,0.8)">DevOps • CI/CD • Säkerhet • Compliance • Molnarkitektur</tspan>
+        <tspan x="0" y="26">A comprehensive guide to architecture as code—</tspan>
+        <tspan x="0" y="59">from foundational principles to advanced</tspan>
+        <tspan x="0" y="92">implementation in modern cloud environments</tspan>
+        <tspan x="0" y="125" font-size="18" fill="rgba(5,150,105,0.8)">DevOps • CI/CD • Security • Compliance • Cloud Architecture</tspan>
       </text>
     </g>
     
     <!-- Footer -->
     <g transform="translate(0, 783)">
       <!-- Authors -->
-      <text x="0" y="20" font-family="Inter, sans-serif" font-size="20" font-weight="700" 
-            fill="white">Expertteamet på Kvadrat</text>
+      <text x="0" y="20" font-family="Inter, sans-serif" font-size="20" font-weight="700"
+            fill="white">Kvadrat Expert Team</text>
       
       <!-- Edition info -->
       <g transform="translate(450, 0)">
@@ -227,8 +227,8 @@
         <text x="0" y="28" font-family="Inter, sans-serif" font-size="28" font-weight="800" 
               fill="url(#accentGradient)" text-anchor="end">2024</text>
         <!-- Edition text -->
-        <text x="0" y="52" font-family="Inter, sans-serif" font-size="16" 
-              fill="rgba(255,255,255,0.85)" text-anchor="end">Första upplagan</text>
+        <text x="0" y="52" font-family="Inter, sans-serif" font-size="16"
+              fill="rgba(255,255,255,0.85)" text-anchor="end">First Edition</text>
       </g>
     </g>
     
@@ -236,13 +236,13 @@
   
   <!-- Additional metadata for editing -->
   <metadata>
-    <title>Arkitektur som kod - Enhanced Book Cover</title>
+    <title>Architecture as Code - Enhanced Book Cover</title>
     <description>Professional book cover design for Kvadrat's Infrastructure as Code publication featuring DevOps, CI/CD, security, and cloud architecture themes</description>
     <author>Kvadrat Design Team</author>
     <created>2024</created>
     <updated>December 2024</updated>
     <brand-guidelines>Kvadrat Brand Guidelines v1.0</brand-guidelines>
-    <themes>Infrastructure as Code, DevOps, CI/CD, Security, Cloud Architecture, Swedish Context</themes>
+    <themes>Infrastructure as Code, DevOps, CI/CD, Security, Cloud Architecture, Global Context</themes>
     <visual-elements>Pipeline patterns, security shields, cloud nodes, microservices, git repositories, containers</visual-elements>
   </metadata>
   
