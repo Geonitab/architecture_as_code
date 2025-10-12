@@ -21,13 +21,11 @@ docs/
 ├── 01_introduction.md                    # Introduktion and vision
 ├── 02_fundamental_principles.md      # Fundamental Concepts
 ├── 03_version_control.md             # Git and version control
-├── ...                                # Tekniska chapter (04-22)
+├── ...                                # Tekniska chapter (04-21)
 ├── 21_digitalization.md             # Digitaliseringsstrategi
-├── 22_lovable_mockups.md           # Produktupptäckt med Lovable
 ├── 23_soft_as_code_interplay.md    # Samspel mellan mjuka discipliner
 ├── 24_best_practices.md            # Metodval och erfarenheter
-├── 25_future_trends.md             # Framtida trender
-├── 26_future_development.md        # Långsiktig utveckling
+├── 25_future_trends_development.md  # Framtida trender och utveckling
 ├── 27_conclusion.md                # Avslutning
 ├── 28_glossary.md                  # Terminologi
 ├── 29_about_the_authors.md         # Författarinformation

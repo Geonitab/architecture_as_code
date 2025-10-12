@@ -7,7 +7,7 @@ This document describes the logical structure for the book "Architecture as Code
 ### Part 1: Foundations (Chapters 1-4)
 Foundational concepts, principles, and documentation practices
 
-### Part 2: Architecture Platform (Chapters 5-8)
+### Part 2: Architecture Platform (Chapters 5, 7)
 Core technical building blocks for Architecture as Code implementations
 
 ### Part 3: Security & Governance (Chapters 9-12)
@@ -19,10 +19,10 @@ Testing, delivery practices, cost optimization, and migration strategies
 ### Part 5: Organization & Leadership (Chapters 17-21)
 Organizational change, team design, management models, and collaborative delivery
 
-### Part 6: Experience & Best Practices (Chapters 22-24)
-Product discovery, interdisciplinary collaboration, and codified best practices
+### Part 6: Experience & Best Practices (Chapters 23-24)
+Cross-disciplinary collaboration and codified best practices
 
-### Part 7: Future & Wrap-up (Chapters 25-27)
+### Part 7: Future & Wrap-up (Chapters 25, 27)
 Future outlook, long-term development, and closing guidance
 
 ### Appendices (Chapters 28-31)
@@ -43,16 +43,14 @@ Reference material, author information, and technical enablers
 | 3 | `03_version_control.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
 
-### Part 2: Architecture Platform (Chapters 5-8)
+### Part 2: Architecture Platform (Chapters 5, 7)
 
 **Focus:** Core technical building blocks and automation patterns for Architecture as Code
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
-| 6 | `06_cloud_architecture.md` | Cloud Architecture as Code | Cloud-native architecture and IaC in cloud environments |
 | 7 | `07_containerization.md` | Containerization and Orchestration as Code | Container-based Architecture as Code |
-| 8 | `08_microservices.md` | Microservices-Architecture as Code | Microservices patterns implemented through code |
 
 ### Part 3: Security & Governance (Chapters 9-12)
 
@@ -88,24 +86,22 @@ Reference material, author information, and technical enablers
 | 20 | `20_ai_agent_team.md` | AI Agent Team for Architecture as Code Initiatives | Structure, roles, and processes for virtual agent teams |
 | 21 | `21_digitalization.md` | Digitalization through Code-based Infrastructure | Digital transformation through IaC |
 
-### Part 6: Experience & Best Practices (Chapters 22-24)
+### Part 6: Experience & Best Practices (Chapters 23-24)
 
-**Focus:** Product discovery, cross-disciplinary collaboration, and lessons learned
+**Focus:** Cross-disciplinary collaboration and lessons learned
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 22 | `22_lovable_mockups.md` | Using Lovable to Create Mockups for Swedish Organizations | AI-driven development and prototyping |
 | 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft "as code" practices |
 | 24 | `24_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 
-### Part 7: Future & Wrap-up (Chapters 25-27)
+### Part 7: Future & Wrap-up (Chapters 25, 27)
 
 **Focus:** Strategic outlook, long-term development, and concluding guidance
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 25 | `25_future_trends.md` | Future Trends in Architecture as Code | Development trends and technological future |
-| 26 | `26_future_development.md` | Future Development | Extended perspectives on future developments |
+| 25 | `25_future_trends_development.md` | Future Trends and Development in Architecture as Code | Development trends, technological future, and long-term perspectives |
 | 27 | `27_conclusion.md` | Conclusion | Concluding reflections |
 
 ### Appendices (Chapters 28-31)

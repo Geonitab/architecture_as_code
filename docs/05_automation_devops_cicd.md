@@ -653,7 +653,7 @@ Testing strategier for Architecture as Code includes multiple levels from syntax
 
 Monitoring and observability for svenska Architecture as Code pipelines requires comprehensive metrics collection as includes both technical performance indicators and business compliance metrics. Automated alerting ensures rapid response to compliance violations, cost overruns, and technical failures through integration with svenska incident management processes.
 
-Investment in sophisticated CI/CD-pipelines for Architecture as Code betalar itself through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. Which vi will to se in [chapter 6 about molnarkitektur](06_cloud_architecture.md), becomes These capabilities even more critical when Swedish organizations adopterar cloud-native architectures and multi-cloud strategies.
+Investment in sophisticated CI/CD-pipelines for Architecture as Code betalar itself through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. These capabilities become even more critical when Swedish organizations adopterar cloud-native architectures and multi-cloud strategies.
 
 successful implementation of CI/CD for Architecture as Code requires balance between automation and human oversight, particularly for production deployments and compliance-critical changes. Swedish organizations as investerar in mature pipeline automation and comprehensive testing strategies uppnår significant competitive advantages through improved deployment reliability and accelerated innovation cycles.
 
