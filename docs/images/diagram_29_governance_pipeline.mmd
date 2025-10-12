@@ -16,15 +16,21 @@ sequenceDiagram
     participant CI as CI/CD Checks
     participant Review as Governance Reviewers
     participant Deploy as Production Controls
+    participant Audit as Audit Portal
 
     Author->>Repo: Draft governance update
+    Note right of Author: Branch from<br/>draft workspace
     Repo->>CI: Trigger automated policy tests
     CI-->>Repo: Report compliance status
     Repo->>Review: Open pull request for approval
     Review-->>Repo: Provide review comments
+    Note over Author,Review: Collaborative review
     Author->>Repo: Apply requested changes
-    Repo->>CI: Re-run automated tests
-    CI-->>Review: Confirm guardrails satisfied
+    loop Re-validation
+        Repo->>CI: Re-run automated tests
+        CI-->>Review: Confirm guardrails satisfied
+    end
     Review->>Repo: Approve and merge change
     Repo->>Deploy: Promote policy to production
-    Deploy-->>Author: Publish audit trail
+    Deploy-->>Audit: Capture deployment evidence
+    Audit-->>Author: Publish audit trail
