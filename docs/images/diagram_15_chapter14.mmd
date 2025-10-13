@@ -1,0 +1,29 @@
+%% Diagram: Capability landscape for practical Architecture as Code
+flowchart TB
+    subgraph Governance["Architecture Governance"]
+        G1[Policy Framework]:::kv-primary
+        G2[Standards & Patterns]:::kv-primary
+        G3[Compliance Controls]:::kv-primary
+    end
+    
+    subgraph Tooling["Automation Tooling"]
+        T1[Version Control]:::kv-accent
+        T2[CI/CD Pipelines]:::kv-accent
+        T3[Testing Frameworks]:::kv-accent
+        T4[Observability Stack]:::kv-accent
+    end
+    
+    subgraph Enablement["Team Enablement"]
+        E1[Documentation]:::kv-highlight
+        E2[Training Programs]:::kv-highlight
+        E3[Community of Practice]:::kv-highlight
+    end
+    
+    G1 --> T1
+    G2 --> T2
+    G3 --> T3
+    T1 --> E1
+    T2 --> E2
+    T3 --> E3
+    T4 --> E1
+    E3 --> G2
