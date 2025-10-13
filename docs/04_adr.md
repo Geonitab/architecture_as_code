@@ -31,11 +31,11 @@ In the Architecture as Code context, ADRs document decisions about technology ch
 
 ## Structure and Components of ADR
 
-![ADR structure](images/diagram_04_adr_struktur.png)
-
-*Each ADR follows a standardised structure with four main components that ensure consistent and complete documentation of architecture decisions.*
-
 ### Standardised ADR Template
+
+![Figure 4.2 – Standard Architecture Decision Record structure](images/diagram_04_adr_struktur.png)
+
+*Figure 4.2 highlights the four core sections every ADR should capture before the template is populated with project-specific information.*
 
 Each ADR follows a consistent structure that ensures all relevant information is captured systematically:
 
