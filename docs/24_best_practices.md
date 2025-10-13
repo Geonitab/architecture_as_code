@@ -12,7 +12,17 @@ Architecture as Code practices evolve rapidly as teams balance platform stabilit
 
 *Figure 24.2 presents the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements without treating topics in isolation.*
 
-Figure 24.2 introduces the seven practice clusters explored throughout this chapter. The mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities: disciplined code organisation, secure foundations, responsive performance management, robust governance, people enablement, collaborative ecosystems, and continuous improvement. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
+Figure 24.2 introduces the seven practice clusters explored throughout this chapter. The mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
+
+| Practice Cluster | Focus Area | Key Capabilities | Maturity Indicator |
+|-----------------|------------|------------------|-------------------|
+| Code organisation | Disciplined code organisation | Repository structure, module design, versioning, release management | Clear codebase structure, shortened feedback loops, accelerated onboarding |
+| Secure foundations | Security and compliance patterns | Security-by-design, compliance automation, secret management, continuous assurance | Automated security enforcement, regulatory evidence generation |
+| Performance management | Responsive performance management | Adaptive infrastructure, global deployment, observability, feedback loops | Balanced performance with sustainability, latency budgets met |
+| Governance | Robust governance | Policy-as-code, financial management, change management, approval workflows | Empowered delivery teams, automated policy enforcement, fiscal control |
+| People enablement | Talent development and skills | Competency frameworks, immersive learning, mentoring, communities of practice | Multidisciplinary teams, cross-functional collaboration, career development |
+| Collaborative ecosystems | Vendor and tool management | Tool evaluation, multi-vendor approaches, supplier relationship management | Strategic vendor partnerships, reduced lock-in, informed decisions |
+| Continuous improvement | Feedback and iteration | Integrated risk assessment, retrospectives, continuous learning | Data-driven improvements, blameless culture, sustainable pace |
 
 ## Code Organisation and Modularity
 
