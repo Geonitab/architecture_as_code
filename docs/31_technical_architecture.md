@@ -1,4 +1,4 @@
-# Appendix B: Technical Architecture for Book Production
+# Appendix B: Technical Architecture for Book Production {.unnumbered}
 
 This appendix describes the technical infrastructure and workflow that produce, build, and publish "Architecture as Code". The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
 
