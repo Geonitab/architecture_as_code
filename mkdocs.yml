@@ -50,5 +50,9 @@ use_directory_urls: true
 markdown_extensions:
   - toc
   - tables
+  - pymdownx.pathconverter:
+      base_path: docs
+      relative_path: ''
+      absolute: true
 extra_css:
   - stylesheets/code-dark.css
