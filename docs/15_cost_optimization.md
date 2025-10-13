@@ -72,10 +72,12 @@ Hybrid cloud-strategier can optimera kostnader by behålla vissa workloads on-pr
 
 För att implementera kostnadsmedveten infrastruktur med Terraform behövs en strukturerad approach som kombinerar budget management, cost allocation tagging, och intelligent resursurvalsstrategier. En fullständig implementation inkluderar:
 
-- **Cost allocation tags** för alla resurser med metadata om kostnadscenter, projekt, miljö och ägare
-- **AWS Budget alerts** med automatiska notifieringar vid 80% och 100% av budgettrösklar
-- **Spot instance configuration** med blandade instance-typer för optimal kostnadseffektivitet
-- **Auto Scaling groups** med mixed instances policy som balanserar on-demand och spot instances
+| Component | Purpose | Implementation Details |
+|-----------|---------|------------------------|
+| Cost allocation tags | Metadata for cost tracking | Tags for all resources with cost center, project, environment, and owner information |
+| AWS Budget alerts | Proactive cost monitoring | Automatic notifications at 80% and 100% of budget thresholds |
+| Spot instance configuration | Cost-effective compute | Mixed instance types for optimal cost efficiency |
+| Auto Scaling groups | Balanced capacity management | Mixed instances policy balancing on-demand and spot instances |
 
 *För komplett kodexempel med alla konfigurationsdetaljer, se [15_CODE_1: Cost-aware Terraform infrastructure configuration](#15_code_1) i Appendix A.*
 
@@ -83,10 +85,12 @@ För att implementera kostnadsmedveten infrastruktur med Terraform behövs en st
 
 Kubernetes-miljöer kräver noggrann resursstyrning för att undvika överprovisioning och kontrollera kostnader. Viktiga komponenter inkluderar:
 
-- **ResourceQuotas** för att sätta hårda gränser på CPU, minne och antal pods per namespace
-- **LimitRanges** för att definiera standard- och maxvärden för container-resurser
-- **Vertical Pod Autoscaler (VPA)** för automatisk justering av resource requests baserat på faktisk användning
-- **Horizontal Pod Autoscaler (HPA)** för att skala antal replicas baserat på CPU och minnes-utilization
+| Kubernetes Component | Purpose | Cost Optimization Impact |
+|---------------------|---------|--------------------------|
+| ResourceQuotas | Set hard limits on CPU, memory, and pod count per namespace | Prevents resource over-allocation, enforces budget constraints |
+| LimitRanges | Define default and maximum values for container resources | Ensures consistent resource sizing, prevents runaway consumption |
+| Vertical Pod Autoscaler (VPA) | Automatic adjustment of resource requests based on actual usage | Right-sizes containers, eliminates over-provisioning |
+| Horizontal Pod Autoscaler (HPA) | Scale number of replicas based on CPU and memory utilization | Matches capacity to demand, reduces idle resources |
 
 *För fullständiga Kubernetes manifests, se [15_CODE_2: Kubernetes cost optimization manifests](#15_code_2) i Appendix A.*
 

@@ -16,17 +16,11 @@ The adoption journey in Figure 14.2 breaks down these stages into the minimum se
 ![Figure 14.2 – Iterative journey for Architecture as Code adoption](images/diagram_13_user_journey.png)
 *Figure 14.2 – A simplified adoption journey that balances architectural guardrails with iterative delivery milestones.*
 
-### Aligning stakeholders early
-
-A current-state assessment must capture technical baselines, regulatory obligations, and the delivery expectations of product teams. Establishing a cross-functional working group ensures that platform, security, finance, and architecture representatives can decide on priorities together. Early agreement on vocabulary, service level targets, and reporting cadence prevents misunderstandings when the first production workloads migrate.
-
-### Designing the pilot and proving value
-
-The pilot phase should focus on a constrained but representative workload. Success criteria include automated provisioning, observable change histories, and rapid rollback capabilities. Capturing lessons learned from pilot retrospectives informs the playbooks that will later be rolled out enterprise-wide.
-
-### Scaling operations with repeatable patterns
-
-When scaling beyond the pilot, teams formalise reusable modules, standardise tagging, and adopt change management practices such as automated policy checks and progressive rollouts. Investment in knowledge-sharing sessions, office hours, and internal communities of practice accelerates adoption by other product teams without sacrificing governance.
+| Implementation Stage | Key Activities | Success Criteria | Deliverables |
+|---------------------|----------------|------------------|--------------|
+| Aligning stakeholders early | Current-state assessment, cross-functional working group formation, vocabulary and SLO agreement | Platform, security, finance, and architecture alignment on priorities | Technical baseline documentation, regulatory obligations map, shared vocabulary guide |
+| Designing the pilot and proving value | Constrained workload selection, automated provisioning implementation, change history tracking | Automated provisioning, observable change histories, rapid rollback capabilities | Working pilot environment, lessons learned documentation, retrospective findings |
+| Scaling operations with repeatable patterns | Module formalization, tagging standardization, change management adoption | Reusable modules, automated policy checks, progressive rollouts | Enterprise playbooks, knowledge-sharing sessions, internal communities of practice |
 
 ## Tool selection and ecosystem integration
 
@@ -42,9 +36,11 @@ High-availability design translates into codified redundancy, automated failover
 
 ## Common challenges and troubleshooting
 
-* **State management** – Distributed teams increase the risk of state drift and accidental overwrites. Remote state backends with locking, frequent backups, and reconciliation routines should be mandatory for production environments.
-* **Dependency coordination** – Complex estates often require intricate ordering between networking, identity, and workload modules. Modular designs with well-defined interfaces keep changes understandable and reduce coupling across teams.
-* **Version compatibility** – Provider and module upgrades can break established workflows. Staged rollouts, compatibility matrices, and automated integration tests reduce disruption while still allowing the ecosystem to evolve.
+| Challenge | Root Cause | Mitigation Strategy | Best Practices |
+|-----------|-----------|---------------------|----------------|
+| State management | Distributed teams increase risk of state drift and accidental overwrites | Remote state backends with locking, frequent backups, reconciliation routines | Mandatory state locking for production, automated drift detection, regular state backups |
+| Dependency coordination | Complex estates require intricate ordering between networking, identity, and workload modules | Modular designs with well-defined interfaces, explicit dependency declarations | Clear module boundaries, documented dependencies, reduced cross-team coupling |
+| Version compatibility | Provider and module upgrades can break established workflows | Staged rollouts, compatibility matrices, automated integration tests | Version pinning, compatibility testing, gradual ecosystem evolution |
 
 ## Enterprise integration patterns
 
