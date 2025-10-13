@@ -255,7 +255,7 @@ def validate_chapter_diagrams():
             if chapter_name.startswith('part_'):
                 continue
 
-        if chapter_name in ['README.md', 'arkitektur_som_kod.md']:
+        if chapter_name in ['README.md', 'architecture_as_code.md']:
             continue
 
         validation_results['total_chapters'] += 1
@@ -549,7 +549,7 @@ def generate_presentation_outline():
     presentation_data = []
     
     for chapter_file in chapter_files:
-        if Path(chapter_file).name in ['README.md', 'arkitektur_som_kod.md']:
+        if Path(chapter_file).name in ['README.md', 'architecture_as_code.md']:
             continue  # Skip non-chapter files
             
         chapter_data = read_chapter_content(chapter_file)
@@ -698,7 +698,7 @@ def create_presentation():
     script_content += '''
     
     # Save presentation
-    output_path = "arkitektur_som_kod_presentation.pptx"
+    output_path = "architecture_as_code_presentation.pptx"
     prs.save(output_path)
     print(f"✅ Presentation saved to {output_path}")
     print(f"📊 Total slides created: {len(prs.slides)}")
@@ -714,7 +714,7 @@ if __name__ == "__main__":
     
     return script_content
 
-def create_presentation_directly(presentation_data, output_path="arkitektur_som_kod_presentation.pptx"):
+def create_presentation_directly(presentation_data, output_path="architecture_as_code_presentation.pptx"):
     """Create PowerPoint presentation directly without generating a script."""
     try:
         from pptx import Presentation
@@ -827,7 +827,7 @@ def main():
     parser = argparse.ArgumentParser(description="Generate PowerPoint presentation from book chapters")
     parser.add_argument("--create-pptx", action="store_true", 
                        help="Create PowerPoint file directly (requires python-pptx)")
-    parser.add_argument("--output", default="arkitektur_som_kod_presentation.pptx",
+    parser.add_argument("--output", default="architecture_as_code_presentation.pptx",
                        help="Output filename for PowerPoint file")
     parser.add_argument("--validate-diagrams", action="store_true",
                        help="Validate that all chapters have diagrams and check diagram type coverage")

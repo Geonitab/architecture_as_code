@@ -180,14 +180,14 @@ jobs:
           fi
           
           echo "🔍 Checking for PowerPoint presentation file..."
-          if [ -f "presentations/arkitektur_som_kod_presentation.pptx" ]; then
-            file_size=$(ls -lh presentations/arkitektur_som_kod_presentation.pptx | awk '{print $5}')
+          if [ -f "presentations/architecture_as_code_presentation.pptx" ]; then
+            file_size=$(ls -lh presentations/architecture_as_code_presentation.pptx | awk '{print $5}')
             echo "✅ PowerPoint presentation file created successfully"
             echo "   📄 File size: $file_size"
-            echo "   📄 File type: $(file presentations/arkitektur_som_kod_presentation.pptx)"
+            echo "   📄 File type: $(file presentations/architecture_as_code_presentation.pptx)"
           else
-            echo "❌ VALIDATION ERROR: arkitektur_som_kod_presentation.pptx is missing"
-            echo "   Expected location: presentations/arkitektur_som_kod_presentation.pptx"
+            echo "❌ VALIDATION ERROR: architecture_as_code_presentation.pptx is missing"
+            echo "   Expected location: presentations/architecture_as_code_presentation.pptx"
             validation_failed=true
           fi
           
@@ -218,8 +218,8 @@ jobs:
             echo "📝 PowerPoint script lines: $script_lines"
           fi
           
-          if [ -f "presentations/arkitektur_som_kod_presentation.pptx" ]; then
-            pptx_size=$(ls -lh presentations/arkitektur_som_kod_presentation.pptx | awk '{print $5}')
+          if [ -f "presentations/architecture_as_code_presentation.pptx" ]; then
+            pptx_size=$(ls -lh presentations/architecture_as_code_presentation.pptx | awk '{print $5}')
             echo "📊 PowerPoint file size: $pptx_size"
           fi
           
@@ -236,7 +236,7 @@ jobs:
             presentations/presentation_outline.md
             presentations/generate_pptx.py
             presentations/requirements.txt
-            presentations/arkitektur_som_kod_presentation.pptx
+            presentations/architecture_as_code_presentation.pptx
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
       - name: 📝 Create presentation summary (PR only)
@@ -271,8 +271,8 @@ jobs:
             }
             
             try {
-              if (fs.existsSync('presentations/arkitektur_som_kod_presentation.pptx')) {
-                const stats = fs.statSync('presentations/arkitektur_som_kod_presentation.pptx');
+              if (fs.existsSync('presentations/architecture_as_code_presentation.pptx')) {
+                const stats = fs.statSync('presentations/architecture_as_code_presentation.pptx');
                 const fileSize = (stats.size / 1024).toFixed(1); // Size in KB
                 summary += `- ✅ **PowerPoint File**: ${fileSize} KB presentation ready for download\n`;
               }

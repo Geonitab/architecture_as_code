@@ -6,13 +6,13 @@ This folder contains all deliverables generated during the build process, organi
 
 ### `/book/`
 Contains book formats generated from the markdown source:
-- `arkitektur_som_kod.pdf` - Complete book in PDF format
-- `arkitektur_som_kod.epub` - EPUB format for e-readers
-- `arkitektur_som_kod.docx` - Microsoft Word format
+- `architecture_as_code.pdf` - Complete book in PDF format
+- `architecture_as_code.epub` - EPUB format for e-readers
+- `architecture_as_code.docx` - Microsoft Word format
 
 ### `/presentation/`
 Contains presentation materials:
-- `arkitektur_som_kod_presentation.pptx` - PowerPoint presentation
+- `architecture_as_code_presentation.pptx` - PowerPoint presentation
 - `presentation_outline.md` - Presentation content outline
 - `generate_pptx.py` - Script to regenerate presentation
 - `requirements.txt` - Python dependencies for presentation generation

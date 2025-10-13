@@ -42,7 +42,7 @@ The workflow runs when:
 - **`presentation_outline.md`** - Structured outline with key points from each chapter
 - **`generate_pptx.py`** - Python script to create PowerPoint presentations
 - **`requirements.txt`** - Dependencies needed for PowerPoint generation
-- **`arkitektur_which_kod_presentation.pptx`** - Complete PowerPoint presentation file (ready to use)
+- **`architecture_as_code_presentation.pptx`** - Complete PowerPoint presentation file (ready to use)
 
 ### Workflow Steps
 1. **Setup Environment** - Python 3.12 with required dependencies
@@ -56,7 +56,7 @@ The workflow runs when:
 After the workflow completes, the PowerPoint presentation is ready for imwithiate use!
 
 **Download from GitHub Actions artifacts:**
-- `arkitektur_which_kod_presentation.pptx` - Complete presentation (28 slides)
+- `architecture_as_code_presentation.pptx` - Complete presentation (28 slides)
 - `presentation_outline.md` - Structured outline for reference
 - `generate_pptx.py` - Script for local customization
 - `requirements.txt` - Dependencies list
@@ -121,7 +121,7 @@ presentations/                   # Generated presentation materials (ignored in 
 ├── presentation_outline.md      # Chapter outlines and key points
 ├── generate_pptx.py             # PowerPoint generation script
 ├── requirements.txt             # Python dependencies
-└── arkitektur_som_kod_presentation.pptx  # Generated PowerPoint file (ready to use)
+└── architecture_as_code_presentation.pptx  # Generated PowerPoint file (ready to use)
 
 whitepapers/                     # Generated whitepaper documents (ignored in git)
 ├── 01_inledning_whitepaper.html # Introduction whitepaper

@@ -166,10 +166,10 @@ Omit optional fields to fall back on the default guidance defined in the workflo
 **Unified Releases** include:
 ```
 Assets:
-├── arkitektur_som_kod.pdf (PDF book)
-├── arkitektur_som_kod.epub (EPUB book)  
-├── arkitektur_som_kod.docx (Word book)
-├── arkitektur_som_kod_presentation.pptx (PowerPoint)
+├── architecture_as_code.pdf (PDF book)
+├── architecture_as_code.epub (EPUB book)  
+├── architecture_as_code.docx (Word book)
+├── architecture_as_code_presentation.pptx (PowerPoint)
 ├── whitepapers_combined.pdf (All whitepapers)
 └── unified-release-archive.zip (Everything)
 ```

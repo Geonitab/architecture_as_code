@@ -21,12 +21,12 @@ class TestEPUBValidation:
     @pytest.fixture 
     def epub_file(self, docs_directory):
         """Get path to EPUB file."""
-        return docs_directory / "arkitektur_som_kod.epub"
+        return docs_directory / "architecture_as_code.epub"
     
     @pytest.fixture
     def release_epub_file(self):
         """Get path to release EPUB file."""
-        return Path(__file__).parent.parent / "releases" / "book" / "arkitektur_som_kod.epub"
+        return Path(__file__).parent.parent / "releases" / "book" / "architecture_as_code.epub"
     
     def test_epubcheck_available(self):
         """Test that EPUBCheck tool is available."""

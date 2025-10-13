@@ -306,9 +306,9 @@ export default defineConfig({
 
 **Good**: The following are properly ignored:
 ```gitignore
-docs/arkitektur_som_kod.pdf
-docs/arkitektur_som_kod.epub
-docs/arkitektur_som_kod.docx
+docs/architecture_as_code.pdf
+docs/architecture_as_code.epub
+docs/architecture_as_code.docx
 ```
 
 **Issue**: Pandoc .deb package in repository root

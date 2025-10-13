@@ -47,8 +47,8 @@ docs/                     # Manuscript chapters, diagrams, and publishing assets
 └── pandoc.yaml           # Shared Pandoc configuration
 
 releases/                 # Git-ignored distribution bundles populated by build scripts
-├── book/                 # arkitektur_som_kod.{pdf,epub,docx}
-├── presentation/         # arkitektur_som_kod_presentation.pptx and supporting files
+├── book/                 # architecture_as_code.{pdf,epub,docx}
+├── presentation/         # architecture_as_code_presentation.pptx and supporting files
 ├── whitepapers/          # Per-chapter HTML exports
 └── website/              # Static site build output
 
@@ -90,8 +90,8 @@ mkdocs build   # render static site into the site/ directory
 Continuous integration enforces successful builds through the `Build MkDocs Site` workflow, which runs whenever `docs/` sources or the MkDocs configuration change.【F:mkdocs.yml†L1-L53】【F:.github/workflows/build-mkdocs.yml†L1-L35】
 
 ## 📦 Release Deliverables
-- **Book formats:** `arkitektur_som_kod.pdf`, `.epub`, and `.docx` generated via Pandoc with the Eisvogel template.
-- **Presentation materials:** `arkitektur_som_kod_presentation.pptx` containing chapter summaries and speaker notes.
+- **Book formats:** `architecture_as_code.pdf`, `.epub`, and `.docx` generated via Pandoc with the Eisvogel template.
+- **Presentation materials:** `architecture_as_code_presentation.pptx` containing chapter summaries and speaker notes.
 - **Whitepapers:** HTML exports for each chapter designed for responsive reading.
 - **Static website:** Production-ready site mirroring the manuscript for web distribution.【F:releases/README.md†L1-L48】
 

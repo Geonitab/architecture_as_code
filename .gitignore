@@ -56,9 +56,9 @@ link-verification-report.html
 link-verification-report.json
 
 # Generated book files in docs/ (should be in releases/book/)
-docs/arkitektur_som_kod.pdf
-docs/arkitektur_som_kod.epub
-docs/arkitektur_som_kod.docx
+docs/architecture_as_code.pdf
+docs/architecture_as_code.epub
+docs/architecture_as_code.docx
 
 # MkDocs build output
 site/

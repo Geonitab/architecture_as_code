@@ -156,7 +156,7 @@ To verify syntax highlighting works:
 2. **Book Formats**: Generate book and check PDF
    ```bash
    python3 generate_book.py && cd docs && ./build_book.sh --release
-   # Check releases/book/arkitektur_som_kod.pdf for colored code blocks
+   # Check releases/book/architecture_as_code.pdf for colored code blocks
    ```
 
 3. **Presentations**: Generate presentations
