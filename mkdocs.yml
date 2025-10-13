@@ -28,7 +28,6 @@ nav:
       - Migration from Traditional Infrastructure: 16_migration.md
   - Part 5 – Organization & Leadership:
       - Organizational Change and Team Structures: 17_organizational_change.md
-      - Team Structure and Competency Development for IaC: 18_team_structure.md
       - Management as Code: 19_management_as_code.md
       - AI Agent Team for Architecture as Code Initiatives: 20_ai_agent_team.md
       - Digitalization through Code-based Infrastructure: 21_digitalization.md
@@ -40,6 +39,7 @@ nav:
       - Future Trends in Architecture as Code: 25_future_trends.md
       - Future Development: 26_future_development.md
       - Conclusion: 27_conclusion.md
+      - Team Structure and Competency Development for IaC: 18_team_structure.md
   - Appendices:
       - Glossary: 28_glossary.md
       - About the Author: 29_about_the_authors.md
