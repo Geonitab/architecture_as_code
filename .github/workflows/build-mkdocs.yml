@@ -36,6 +36,13 @@ jobs:
       - name: Build MkDocs site
         run: mkdocs build
 
+      - name: Prepare static site artifacts
+        run: |
+          if [ -f CNAME ]; then
+            cp CNAME site/CNAME
+          fi
+          touch site/.nojekyll
+
       - name: Deploy MkDocs site to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,7 +52,12 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
           git fetch
           git switch -C gh-pages
-          cp -r site/* .
+          git rm -rf . || true
+          cp -r site/. .
           git add .
+          if git diff --cached --quiet; then
+            echo "No changes to deploy"
+            exit 0
+          fi
           git commit -m "Deploy MkDocs site"
           git push origin gh-pages --force
