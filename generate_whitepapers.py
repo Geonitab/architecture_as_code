@@ -122,19 +122,21 @@ def read_chapter_content(chapter_file):
 
 def get_book_overview():
     """Return the book overview and purpose description."""
+    chapter_total = len(get_chapter_mapping())
+
     return {
         'title': 'Arkitektur som kod',
         'subtitle': 'Infrastructure as Code för svenska organisationer',
         'description': '''
-Infrastructure as Code representerar en fundamental förändring i hur vi hanterar och utvecklar IT-infrastruktur. 
-Denna bok ger svenska organisationer praktisk vägledning för att implementera IaC-principer samtidigt som de 
+Infrastructure as Code representerar en fundamental förändring i hur vi hanterar och utvecklar IT-infrastruktur.
+Denna bok ger svenska organisationer praktisk vägledning för att implementera IaC-principer samtidigt som de
 uppfyller lokala compliance-krav och optimerar kostnader.
 
-Boken täcker allt från grundläggande principer och verktyg till avancerade implementationsstrategier, 
+Boken täcker allt från grundläggande principer och verktyg till avancerade implementationsstrategier,
 säkerhetsaspekter och organisatoriska förändringar som krävs för framgångsrik IaC-adoption.
         '''.strip(),
         'target_audience': 'IT-arkitekter, DevOps-team, utvecklare och beslutsfattare inom svenska organisationer',
-        'chapters_count': 31
+        'chapters_count': chapter_total
     }
 
 def get_chapter_mapping():

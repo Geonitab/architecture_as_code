@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-EPUB validation tests for "Arkitektur som Kod" book.
+Build artefact validation tests for the Architecture as Code book.
 
-This test module validates that generated EPUB files conform to EPUB standards
-using EPUBCheck.
+This module verifies that generated EPUB files conform to EPUB standards using
+EPUBCheck and asserts that the shell build pipeline is configured to produce
+all expected distribution formats.
 """
 import subprocess
 import pytest
@@ -162,3 +163,39 @@ class TestEPUBValidation:
             pytest.fail("EPUB file is not a valid ZIP archive")
         except Exception as e:
             pytest.fail(f"Error checking EPUB structure: {e}")
+
+
+class TestBuildPipelineConfiguration:
+    """Validate that the build pipeline script targets the correct outputs."""
+
+    @pytest.fixture(scope="class")
+    def build_script_path(self):
+        """Path to the build pipeline shell script."""
+        return Path(__file__).parent.parent / "docs" / "build_book.sh"
+
+    @pytest.fixture(scope="class")
+    def build_script(self, build_script_path):
+        """Read the build pipeline script content."""
+        return build_script_path.read_text(encoding="utf-8")
+
+    def test_build_script_exists(self, build_script_path):
+        """Ensure the build pipeline script exists and is executable."""
+        assert build_script_path.exists(), "docs/build_book.sh must exist"
+        assert build_script_path.stat().st_mode & 0o111, "docs/build_book.sh should be executable"
+
+    def test_build_script_defines_expected_outputs(self, build_script):
+        """Check that the build script defines all expected artefact names."""
+        assert 'OUTPUT_PDF="architecture_as_code.pdf"' in build_script
+        assert 'OUTPUT_EPUB="architecture_as_code.epub"' in build_script
+        assert 'OUTPUT_DOCX="architecture_as_code.docx"' in build_script
+
+    def test_build_script_invokes_pandoc(self, build_script):
+        """Verify that the build script renders PDF and DOCX files with Pandoc."""
+        assert 'pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1' in build_script
+        assert 'pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" -t docx -o "$OUTPUT_DOCX"' in build_script
+
+    def test_build_script_runs_epubcheck(self, build_script):
+        """Ensure the build script validates EPUB output using epubcheck."""
+        assert 'validate_epub() {' in build_script
+        assert 'epubcheck "$epub_file"' in build_script
+
