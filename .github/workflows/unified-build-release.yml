@@ -140,10 +140,16 @@ jobs:
           python-version: '3.12'
 
       - name: 🔧 Set up Node.js
+        if: ${{ hashFiles('package-lock.json') != '' }}
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
+
+      - name: ⚠️ Skip Node.js setup (no lockfile)
+        if: ${{ hashFiles('package-lock.json') == '' }}
+        run: |
+          echo "No package-lock.json detected – skipping Node.js setup and npm install steps."
 
       - name: 📦 Cache dependencies and tools
         uses: actions/cache@v3
@@ -262,10 +268,16 @@ jobs:
           fi
 
       - name: 📦 Install Node.js dependencies
+        if: ${{ hashFiles('package-lock.json') != '' }}
         run: |
           echo "=== Installing Node.js dependencies ==="
           npm ci --legacy-peer-deps
           echo "✅ Node.js dependencies installed"
+
+      - name: ⚠️ Skip Node.js dependency installation (no lockfile)
+        if: ${{ hashFiles('package-lock.json') == '' }}
+        run: |
+          echo "Skipping npm ci because package-lock.json is missing."
 
       - name: 📦 Install Python dependencies
         run: |
@@ -478,10 +490,16 @@ jobs:
           python-version: '3.12'
 
       - name: 🔧 Set up Node.js (for website build)
+        if: ${{ hashFiles('package-lock.json') != '' }}
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
+
+      - name: ⚠️ Skip Node.js setup (no lockfile)
+        if: ${{ hashFiles('package-lock.json') == '' }}
+        run: |
+          echo "No package-lock.json detected – skipping Node.js setup for Docker build."
 
       - name: 📦 Build Docker image with cache
         uses: docker/build-push-action@v5
@@ -495,10 +513,16 @@ jobs:
           platforms: linux/amd64
 
       - name: 📦 Install Node.js dependencies
+        if: ${{ hashFiles('package-lock.json') != '' }}
         run: |
           echo "=== Installing Node.js dependencies ==="
           npm ci --legacy-peer-deps
           echo "✅ Node.js dependencies installed"
+
+      - name: ⚠️ Skip Node.js dependency installation (no lockfile)
+        if: ${{ hashFiles('package-lock.json') == '' }}
+        run: |
+          echo "Skipping npm ci because package-lock.json is missing for Docker build."
 
       - name: 📝 Generate book content
         run: |
