@@ -2,8 +2,6 @@
 
 This appendix contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to do the enkelt to hitta specific implementations.
 
-![Kodexempel appendix](images/diagram_26_appendix.png)
-
 *This appendix functions as a praktisk referenssamling for all technical implementations as demonstreras genAbout the Book. each kodexamples is kategoriserat and märkt with References tobaka to relevanta chapter.*
 
 ## Navigering in appendix
