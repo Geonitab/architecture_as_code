@@ -52,7 +52,9 @@ Enterprise-scale deployments blend multi-account cloud strategies with on-premis
 
 ## Practical examples in context
 
-Extended code listings are maintained in Appendix A for ease of reference and reuse:
+Practical adoption benefits from curated, real-world examples that teams can inspect before tailoring their own automation. Appendix A maintains a set of code listings that highlight the most common landing zone, operations, and delivery scenarios referenced in this chapter.
+
+The following entries are the quickest way to explore those artefacts without leaving the main narrative:
 
 * **Terraform service blueprint** – Appendix entry [14_CODE_1](30_appendix_code_examples.md#14_code_1) demonstrates a reusable module for a web application landing zone, including tagging conventions and autoscaling foundations.
 * **Environment configuration and monitoring** – Appendix entry [14_CODE_2](30_appendix_code_examples.md#14_code_2) shows how production-specific configuration, observability dashboards, and retention controls are layered on top of the base module.
