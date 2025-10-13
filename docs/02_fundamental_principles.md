@@ -1,46 +1,46 @@
 # Fundamental Principles of Architecture as Code
 
-Architecture as Code builds on fundamental principles that ensure successful implementation of codified system architecture. These principles encompass the entire system landscape and create a holistic view of architecture management.
+Architecture as Code is founded on core principles that enable successful implementation of codified system architecture. These principles span the entire system landscape and provide a holistic view of architecture management.
 
 ![Fundamental principles diagram](images/diagram_02_chapter1.png)
 
-Diagram shows the natural flow from declarative code through version control and automation to reproducibility and scalability - the five fundamental pillars within Architecture as Code.
+The diagram illustrates the natural flow from declarative code through version control and automation to reproducibility and scalability – the five foundational pillars of Architecture as Code.
 
 ## Declarative architecture definition
 
-The declarative approach in Architecture as Code means describing the desired system state at all levels - from application components to infrastructure. This differs from imperative programming where each step must be specified explicitly.
+The declarative approach in Architecture as Code describes the desired system state at every level – from application components to infrastructure. This contrasts with imperative programming, where each step must be specified explicitly.
 
-Declarative definition enables describing architecture's desired state, that Architecture as Code extends to encompass application architecture, API-contracts and organizational structures.
+Declarative definitions make it possible to express an architecture's intended state, extending Architecture as Code to cover application architecture, API contracts, and organisational structures.
 
 ## Holistic perspective on codification
 
-Architecture as Code encompasses the entire system ecosystem through a holistic approach. This includes application logic, data flows, security policies, compliance-rules and organizational structures.
+Architecture as Code embraces the full system ecosystem through a holistic lens. It includes application logic, data flows, security policies, compliance rules, and organisational structures.
 
-A practical example is how a change in an application's API automatically can propagate through the entire architecture - from security configurations to documentation - all of which is defined as code.
+A practical example is an application programming interface change automatically propagating through the architecture – from security configurations to documentation – all defined as code.
 
-## immutable architecture patterns
+## Immutable architecture patterns
 
-The principle of immutable architecture means the entire system architecture is managed through immutable components. instead of modifying existing parts, new versions are created that replace old ones at all levels.
+The principle of immutable architecture keeps the entire system architecture under control through immutable components. Rather than modifying existing parts, new versions are created that replace older ones at every level.
 
-This creates predictability and eliminates architectural drift - where systems gradual diverge from their intended design over time.
+This approach fosters predictability and eliminates architectural drift, where systems gradually diverge from their intended design over time.
 
-## Testability at architecture level
+## Testability at the architecture level
 
-Architecture as Code enables testing of entire system architecture, not only individual components. This includes validation of architecture patterns, compliance with design principles and verification of end-to-end flows.
+Architecture as Code enables testing of the entire system architecture, not only individual components. This includes validating architectural patterns, adherence to design principles, and verification of end-to-end flows.
 
-Architecture tests validate design decisions, system complexity and ensures the entire architecture functions as intended.
+Architecture tests confirm design decisions, assess system complexity, and ensure the complete architecture behaves as intended.
 
 ## Documentation as Code
 
-Documentation as Code (DaC) represents the principle of treating documentation as an integrated part of codebase rather than as a separate artifact. This means that documentation is stored together with the code, version-controlled using the same tools and undergoes the same quality assurance processes as the application code.
+Documentation as Code (DaC) treats documentation as an integrated part of the codebase rather than a separate artefact. Documentation is stored alongside the code, version-controlled with the same tools, and subject to the same quality assurance processes as application code.
 
-### Benefits with Documentation as Code
+### Benefits of Documentation as Code
 
-**version control and history**: by storing documentation in Git or other version control systems organizations get automatic traceability of changes, ability to restore previous versions and full history of documentation's development.
+**Version control and history**: Storing documentation in Git or other version control systems grants organisations automatic traceability of changes, the ability to restore previous versions, and a complete history of documentation evolution.
 
-**Collaboration and review**: Pull requests and merge-processes ensures documentation changes are reviewed before being published. This improves quality and reduces the risk of incorrect or outdated information.
+**Collaboration and review**: Pull requests and merge processes ensure documentation updates are reviewed before publication. This improves quality and reduces the risk of inaccurate or outdated information.
 
-**CI/CD integration**: Automated pipelines can generate, validate and publish documentation automatically when code changes. This eliminates manual steps and ensures the documentation is always up-to-date.
+**CI/CD integration**: Automated pipelines can generate, validate, and publish documentation whenever code changes. This removes manual steps and ensures the documentation remains current.
 
 ### Practical implementation
 
@@ -58,20 +58,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          
+
       - name: Install dependencies
         run: npm install
-        
+
       - name: Generate documentation
         run: |
           npm run docs:build
           npm run docs:lint
-          
+
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
@@ -80,63 +80,63 @@ jobs:
           publish_dir: ./docs/dist
 ```
 
-Moderna tools that GitBook, Gitiles and MkDocs enables automatic generering of webbdocumentsation from Markdown-filer lagrade together with the code.
+Modern tools such as GitBook, Gitiles, and MkDocs enable automatic generation of web documentation from Markdown files stored alongside the code.
 
 ## Requirements as Code
 
-Requirements as Code (RaC) transformerar traditional requirementsspecifiction from text documents to machine-readable code as can exekveras, valitheir and automatiseras. This paradigm shift enables continuous verification of to systemet meets sina requirements through entire utvecklingslivscykeln.
+Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and automated. This paradigm shift enables continuous verification that the system meets its requirements throughout the entire development lifecycle.
 
-### automation and traceability
+### Automation and traceability
 
-**Automatiserad validation**: Krav uttryckta as code can exekveras automatically mot systemet to verifiera compliance. This eliminates manuell testing and ensures konsekvent validation.
+**Automated validation**: Requirements expressed as code can run automatically against the system to verify compliance. This removes manual testing and ensures consistent validation.
 
-**Direkt koppling between requirements and code**: each systemkomponent can kopplas tobaka to specific requirements, which creates complete traceability from business needs to Technical implementation.
+**Direct link between requirements and code**: Each system component can be traced back to specific requirements, creating complete traceability from business needs to technical implementation.
 
-**Continuous compliance**: Changes in systemet valitheir automatically mot all definierade requirements, which forhindrar regression and ensures ongoing compliance.
+**Continuous compliance**: System changes are automatically validated against all defined requirements, preventing regressions and ensuring ongoing compliance.
 
-### practical example with Open Policy Agent (OPA)
+### Practical example with Open Policy Agent (OPA)
 
 ```yaml
 # requirements/security-requirements.yaml
 apiVersion: policy/v1
 kind: RequirementSet
 metadata:
-  name: svenska-sakerhetsrequirements
+  name: swedish-security-requirements
   version: "1.2"
 spec:
   requirements:
     - id: SEC-001
       type: security
-      description: "all S3 buckets must ha encryption aktiverad"
+      description: "All S3 buckets must have encryption enabled"
       priority: critical
       compliance: ["GDPR", "ISO27001"]
       policy: |
         package security.s3_encryption
-        
+
         deny[msg] {
           input.resource_type == "aws_s3_bucket"
           not input.server_side_encryption_configuration
-          msg := "S3 bucket must ha server-side encryption"
+          msg := "S3 bucket must have server-side encryption"
         }
-    
+
     - id: GDPR-001
-      type: compliance  
-      description: "Persondata must is stored within EU/EES"
+      type: compliance
+      description: "Personal data must be stored within the EU/EEA"
       priority: critical
       compliance: ["GDPR"]
       policy: |
         package compliance.data_residency
-        
+
         deny[msg] {
           input.resource_type == "aws_rds_instance"
           not contains(input.availability_zone, "eu-")
-          msg := "RDS instans must placeras in EU-region"
+          msg := "RDS instance must be located in an EU region"
         }
 ```
 
-### validation and test-automation
+### Validation and test automation
 
-Requirements as Code integreras naturligt with test-automation by requirements becomes executable specifications:
+Requirements as Code integrates naturally with test automation because requirements become executable specifications:
 
 ```python
 # test/requirements_validation.py
@@ -147,11 +147,11 @@ class RequirementsValidator:
     def __init__(self, requirements_file: str):
         with open(requirements_file, 'r') as f:
             self.requirements = yaml.safe_load(f)
-    
+
     def validate_requirement(self, req_id: str, system_config: dict):
         requirement = self.find_requirement(req_id)
         policy_result = opa.evaluate(
-            requirement['policy'], 
+            requirement['policy'],
             system_config
         )
         return {
@@ -159,13 +159,13 @@ class RequirementsValidator:
             'status': 'passed' if not policy_result else 'failed',
             'violations': policy_result
         }
-    
+
     def validate_all_requirements(self) -> dict:
         results = []
         for req in self.requirements['spec']['requirements']:
             result = self.validate_requirement(req['id'], self.system_config)
             results.append(result)
-        
+
         return {
             'total_requirements': len(self.requirements['spec']['requirements']),
             'passed': len([r for r in results if r['status'] == 'passed']),
@@ -174,13 +174,13 @@ class RequirementsValidator:
         }
 ```
 
-Global organisations benefit from Requirements as Code by automatically validating regulatory compliance, financial controls, and statutory obligations that must continually be met.
+Global organisations benefit from Requirements as Code by automatically validating regulatory compliance, financial controls, and statutory obligations that must be met continuously.
 
 Sources:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
-- Martin, R. "Clean Architecture: A Craftsman's Guide to Software structure." Prentice Hall, 2017.
+- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- GitLab. "Documentation as Code: Best Practices and implementation." GitLab Documentation, 2024.
+- GitLab. "Documentation as Code: Best Practices and Implementation." GitLab Documentation, 2024.
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
 - Atlassian. "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
 - NIST. "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.
