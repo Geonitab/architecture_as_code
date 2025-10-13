@@ -89,6 +89,8 @@ mkdocs build   # render static site into the site/ directory
 
 Continuous integration enforces successful builds through the `Build MkDocs Site` workflow, which runs whenever `docs/` sources or the MkDocs configuration change.【F:mkdocs.yml†L1-L53】【F:.github/workflows/build-mkdocs.yml†L1-L35】
 
+> **Live URL:** The GitHub Pages deployment uses the custom domain `https://aac.geon.se`, and GitHub automatically redirects the default `https://geonitab.github.io/architecture_as_code/` address to that hostname. Requests to `aac.github.com` will appear blank because that domain is not owned by this project and is therefore outside of the configured Pages setup.【F:CNAME†L1-L1】
+
 ## 📦 Release Deliverables
 - **Book formats:** `architecture_as_code.pdf`, `.epub`, and `.docx` generated via Pandoc with the Eisvogel template.
 - **Presentation materials:** `architecture_as_code_presentation.pptx` containing chapter summaries and speaker notes.
