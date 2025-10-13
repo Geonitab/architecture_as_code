@@ -67,8 +67,6 @@ log "🔍 Checking required dependencies..."
 dependencies_ok=true
 
 check_command "python3" "apt-get install python3" || dependencies_ok=false
-check_command "node" "install Node.js from https://nodejs.org/" || dependencies_ok=false
-check_command "npm" "install Node.js from https://nodejs.org/" || dependencies_ok=false
 
 # Optional but recommended dependencies
 if ! check_command "pandoc" "wget pandoc .deb and dpkg -i"; then
