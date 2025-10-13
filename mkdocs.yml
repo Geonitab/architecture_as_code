@@ -50,3 +50,5 @@ use_directory_urls: true
 markdown_extensions:
   - toc
   - tables
+extra_css:
+  - stylesheets/code-dark.css
