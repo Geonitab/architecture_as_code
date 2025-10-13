@@ -130,19 +130,15 @@ project/
 
 **Best Practices for Infrastructure Testing with Vitest:**
 
-1. **Fast unit tests:** Keep unit tests fast (<100ms per test) to enable effective watch mode during development.
-
-2. **Isolated tests:** Each test should be independent and be able to run in any order without side effects.
-
-3. **Descriptive test names:** Use clear test descriptions that document expected behaviour: `'should throw error for non-EU regions'`.
-
-4. **Test fixtures:** Use shared test fixtures for common infrastructure configurations, but be cautious with mutable state.
-
-5. **Coverage goals:** Aim for at least 80% code coverage for infrastructure configuration and validation code, but focus on meaningful tests rather than coverage metrics.
-
-6. **Mock external dependencies:** Use Vitest's mocking capabilities to mock cloud provider SDKs and external APIs.
-
-7. **Snapshot testing:** Use snapshot tests to validate generated configuration files as shown in Appendix A.
+| Practice | Guideline | Rationale |
+|----------|-----------|-----------|
+| Fast unit tests | Keep unit tests fast (<100ms per test) | Enables effective watch mode during development, rapid feedback loops |
+| Isolated tests | Each test should be independent and run in any order without side effects | Prevents flaky tests, enables parallel execution, improves reliability |
+| Descriptive test names | Use clear test descriptions: `'should throw error for non-EU regions'` | Self-documenting tests, easier debugging, better test reports |
+| Test fixtures | Use shared test fixtures for common infrastructure configurations | Reduces duplication, ensures consistency, but be cautious with mutable state |
+| Coverage goals | Aim for at least 80% code coverage for infrastructure code | Focus on meaningful tests rather than coverage metrics, ensure critical paths tested |
+| Mock external dependencies | Use Vitest's mocking capabilities for cloud provider SDKs and external APIs | Faster tests, no cloud costs, deterministic results, enables offline testing |
+| Snapshot testing | Use snapshot tests to validate generated configuration files | Catch unintended configuration changes, document expected output structure |
 
 ### Automation and Watch Mode
 

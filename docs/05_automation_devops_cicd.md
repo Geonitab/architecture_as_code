@@ -26,23 +26,22 @@ For Swedish organisations, these advances coincided with increasingly strict reg
 
 ### Fundamental principles for automating Architecture as Code
 
-**Immutability and version control:** Architecture as Code follows the same principles as modern software development. All configuration is version-controlled and every change is tracked through Git history. Reproducible architectures become possible because the same code version always produces identical environments. Swedish organisations benefit from stronger compliance documentation and the ability to demonstrate controlled change to critical systems.
-
-**Declarative configuration:** Architecture as Code tools such as Terraform and AWS CloudFormation use declarative syntax that describes the desired end state instead of the steps required to reach it. This approach reduces complexity and errors while enabling sophisticated dependency management and parallelisation of infrastructure operations.
-
-**Testability and validation:** Architecture as Code is testable in the same way as application code—through unit tests, integration tests, and full system validation. This enables "shift-left" testing in which defects are discovered early in the development process rather than in production, where remediation costs are far higher.
-
-**Automation over documentation:** Instead of relying on manual checklists and process documents that quickly become outdated, CI/CD pipelines automate every step of infrastructure delivery. Automation ensures consistency, reduces human error, and creates audit trails for every change.
+| Principle | Description | Benefits for Organisations |
+|-----------|-------------|----------------------------|
+| Immutability and version control | All configuration is version-controlled and every change is tracked through Git history | Reproducible architectures, stronger compliance documentation, ability to demonstrate controlled change to critical systems |
+| Declarative configuration | Tools describe the desired end state instead of the steps required to reach it | Reduced complexity and errors, sophisticated dependency management, parallelisation of infrastructure operations |
+| Testability and validation | Architecture as Code is testable through unit tests, integration tests, and full system validation | "Shift-left" testing, early defect discovery, lower remediation costs, reduced production incidents |
+| Automation over documentation | CI/CD pipelines automate every step of infrastructure delivery | Consistency, reduced human error, automatic audit trails, elimination of outdated manual documentation |
 
 ### Organisational implications of CI/CD automation
 
 Implementing CI/CD for Architecture as Code affects the organisation on multiple levels. Technical teams must develop new competencies in programmatic infrastructure management, and business processes must be adapted to benefit from accelerated delivery capacity.
 
-**Cultural transformation:** The shift towards CI/CD-driven infrastructure demands a culture that trusts automation while maintaining the controls required for compliance and security. Swedish organisations—often cautious by design—need change management programmes that build confidence in automated systems and emphasise shared accountability.
-
-**Skills development:** IT professionals must grow software engineering capabilities, understand cloud-provider APIs, and master advanced automation tools. Investments in training and recruitment are essential to secure the right mix of development and operations skills.
-
-**Compliance and governance:** Swedish organisations must ensure automated processes meet regulatory obligations. This includes audit trails, data residency controls, and separation of duties that were previously handled through manual procedures.
+| Organisational Dimension | Challenge | Approach |
+|--------------------------|-----------|----------|
+| Cultural transformation | Building trust in automation while maintaining compliance and security controls | Change management programmes, confidence building in automated systems, shared accountability emphasis |
+| Skills development | Growing software engineering capabilities in traditional IT professionals | Training investments, cloud-provider API education, recruitment for development and operations skills mix |
+| Compliance and governance | Ensuring automated processes meet regulatory obligations | Automated audit trails, data residency controls, programmatic separation of duties |
 
 As discussed in [Chapter 3 on version control](03_version_control.md), CI/CD pipelines are a natural extension of Git-based workflows for Architecture as Code. This chapter builds on those concepts and explores how Swedish organisations can implement advanced automation strategies that balance efficiency with stringent regulatory requirements. Later chapters will demonstrate how these principles apply to [Containerisation and Orchestration as Code](07_containerization.md) and integrate with the practices described in [Security in Architecture as Code](09_security.md).
 
@@ -327,23 +326,22 @@ Effective CI/CD pipelines for Architecture as Code are built on design principle
 
 Fail-fast feedback is the cornerstone of CI/CD. Errors are detected and reported as early as possible in the development lifecycle. For Architecture as Code this means multilayer validation—from syntax checks to comprehensive security scanning—before any infrastructure reaches production.
 
-**Syntax and static analysis:** The first validation layer checks for syntax errors, undefined variables, and configuration mistakes. Tools such as `terraform validate`, `ansible-lint`, and provider-specific validators catch many errors before costly deployment attempts.
-
-**Security and compliance scanning:** Tools such as Checkov, tfsec, and Terrascan analyse Architecture as Code for security misconfigurations and compliance violations. For Swedish organisations, automated GDPR scanning, encryption verification, and data-residency validation are critical components.
-
-**Cost estimation and budget validation:** Infrastructure changes can have significant financial consequences. Tools like Infracost estimate the cost of proposed changes and validate them against organisational budgets before deployment.
-
-**Policy validation:** Open Policy Agent (OPA) and similar engines provide automated checks against organisational policies, covering resource naming, security configuration, and architectural standards.
+| Validation Layer | Purpose | Tools & Technologies | Detection Capabilities |
+|-------------------|---------|---------------------|------------------------|
+| Syntax and static analysis | Check for syntax errors, undefined variables, and configuration mistakes | `terraform validate`, `ansible-lint`, provider-specific validators | Syntax errors, type mismatches, undefined references before deployment |
+| Security and compliance scanning | Analyse for security misconfigurations and compliance violations | Checkov, tfsec, Terrascan | GDPR violations, unencrypted resources, data-residency issues, security misconfigurations |
+| Cost estimation and budget validation | Estimate financial impact of infrastructure changes | Infracost, cloud provider cost calculators | Cost overruns, budget violations, resource inefficiencies before provisioning |
+| Policy validation | Automated checks against organisational policies | Open Policy Agent (OPA), cloud-native policy engines | Naming violations, architectural standard deviations, configuration policy breaches |
 
 ### Progressive deployment strategies
 
 Progressive deployment minimises risk through gradual rollout of infrastructure changes. This is particularly important for Swedish organisations with high availability requirements and regulatory obligations.
 
-**Environment promotion:** Changes flow through a sequence of environments (development → staging → production) with increasing validation rigour and, often, manual approval for production.
-
-**Blue-green deployments:** For critical components, blue-green strategies build a parallel environment that is fully tested before traffic switches to the new version.
-
-**Canary releases:** Gradual rollout of changes to a subset of resources or users enables monitoring of impact before full deployment.
+| Deployment Strategy | Description | Use Cases | Risk Mitigation |
+|---------------------|-------------|-----------|-----------------|
+| Environment promotion | Changes flow through environments (development → staging → production) with increasing validation rigour | Standard deployment path for most changes | Progressive validation, manual approval gates, increasing test coverage at each stage |
+| Blue-green deployments | Build parallel environment fully tested before traffic switches to new version | Critical components, high-availability systems, database migrations | Zero-downtime deployments, instant rollback capability, full environment validation |
+| Canary releases | Gradual rollout to subset of resources or users before full deployment | User-facing services, performance-sensitive changes | Real-world validation, limited blast radius, monitored impact assessment |
 
 ### Automated recovery and disaster readiness
 

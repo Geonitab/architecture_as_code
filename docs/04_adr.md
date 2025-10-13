@@ -20,10 +20,12 @@ Architecture Decision Records are short text documents that capture important ar
 
 The ADR format typically follows a structured template that includes:
 
-**Status**: Current status for the decision (proposed, accepted, deprecated, superseded)  
-**Context**: Background and circumstances that led to the need for the decision  
-**Decision**: The specific decision that was made  
-**Consequences**: Expected positive and negative consequences
+| Section | Purpose | Content Guidelines |
+|---------|---------|-------------------|
+| Status | Current status for the decision | One of: proposed, accepted, deprecated, superseded |
+| Context | Background and circumstances that led to the need for the decision | Problem statement, constraints, driving forces, affected stakeholders |
+| Decision | The specific decision that was made | Clear statement of choice, implementation approach, rationale |
+| Consequences | Expected positive and negative consequences | Benefits, risks, trade-offs, mitigation strategies |
 
 Official guidelines and templates are available at https://adr.github.io, which serves as the primary resource for ADR methodology. This website is maintained by the ADR community and contains standardised templates, tools, and examples.
 
@@ -78,10 +80,12 @@ Versioning is managed through the Git history instead of inline changes. When a 
 
 ADRs typically progress through the following statuses:
 
-**Proposed**: Initial proposal that undergoes review and discussion  
-**Accepted**: Approved decision that should be implemented  
-**Deprecated**: Decision that is no longer recommended but may remain in the system  
-**Superseded**: Replaced by a newer ADR with a reference to the successor
+| Status | Description | Action Required |
+|--------|-------------|-----------------|
+| Proposed | Initial proposal that undergoes review and discussion | Team review, stakeholder consultation, impact assessment |
+| Accepted | Approved decision that should be implemented | Begin implementation, update related documentation, communicate to teams |
+| Deprecated | Decision that is no longer recommended but may remain in the system | Plan migration path, document alternatives, set deprecation timeline |
+| Superseded | Replaced by a newer ADR with a reference to the successor | Reference new ADR, maintain historical context, update implementation |
 
 ## Practical Examples of ADR
 

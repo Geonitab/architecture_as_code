@@ -36,11 +36,11 @@ Documentation as Code (DaC) treats documentation as an integrated part of the co
 
 ### Benefits of Documentation as Code
 
-**Version control and history**: Storing documentation in Git or other version control systems grants organisations automatic traceability of changes, the ability to restore previous versions, and a complete history of documentation evolution.
-
-**Collaboration and review**: Pull requests and merge processes ensure documentation updates are reviewed before publication. This improves quality and reduces the risk of inaccurate or outdated information.
-
-**CI/CD integration**: Automated pipelines can generate, validate, and publish documentation whenever code changes. This removes manual steps and ensures the documentation remains current.
+| Benefit | Description | Key Advantages |
+|---------|-------------|----------------|
+| Version control and history | Storing documentation in Git or other version control systems | Automatic traceability of changes, ability to restore previous versions, complete history of documentation evolution |
+| Collaboration and review | Pull requests and merge processes for documentation updates | Improved quality, reduced risk of inaccurate or outdated information, peer review before publication |
+| CI/CD integration | Automated pipelines for documentation generation and deployment | Removes manual steps, ensures documentation remains current, automatic validation on changes |
 
 ### Practical implementation
 
@@ -88,11 +88,11 @@ Requirements as Code (RaC) transforms traditional requirements specifications fr
 
 ### Automation and traceability
 
-**Automated validation**: Requirements expressed as code can run automatically against the system to verify compliance. This removes manual testing and ensures consistent validation.
-
-**Direct link between requirements and code**: Each system component can be traced back to specific requirements, creating complete traceability from business needs to technical implementation.
-
-**Continuous compliance**: System changes are automatically validated against all defined requirements, preventing regressions and ensuring ongoing compliance.
+| Capability | Description | Business Impact |
+|------------|-------------|-----------------|
+| Automated validation | Requirements expressed as code run automatically against the system to verify compliance | Removes manual testing, ensures consistent validation, reduces human error |
+| Direct link between requirements and code | Each system component can be traced back to specific requirements | Complete traceability from business needs to technical implementation, improved audit capability |
+| Continuous compliance | System changes are automatically validated against all defined requirements | Prevents regressions, ensures ongoing compliance, reduces regulatory risk |
 
 ### Practical example with Open Policy Agent (OPA)
 

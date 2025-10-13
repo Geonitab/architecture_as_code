@@ -22,55 +22,23 @@ Soft skills are equally significant. Practitioners must communicate design inten
 
 ### Skills matrix reference
 
-Teams often need a shared view of expectations at each stage of mastery. The checklist below captures the technical and interpersonal competencies to evaluate during quarterly development conversations.
+Teams often need a shared view of expectations at each stage of mastery. The tables below capture the technical and interpersonal competencies to evaluate during quarterly development conversations.
 
-```markdown
-# Architecture as Code Skills Matrix
+**Technical Skills Progression:**
 
-## Technical Skills
+| Level | Focus Area | Core Competencies |
+|-------|-----------|-------------------|
+| Foundation (Level 1) | Basic operations | Execute basic Git operations (clone, commit, push, pull); Explain core cloud computing concepts; Perform routine Linux or Windows administration tasks; Read and edit YAML or JSON structures; Describe fundamental networking concepts |
+| Practitioner (Level 2) | Infrastructure automation | Build and reuse Terraform or CloudFormation modules; Create and maintain CI/CD pipelines; Apply container fundamentals (Docker); Configure infrastructure monitoring and alerting; Implement security scanning and compliance checks |
+| Advanced (Level 3) | Architecture design | Design multi-cloud architectures; Operate Kubernetes clusters at scale; Develop advanced automation scripts; Optimise infrastructure spend; Design disaster recovery strategies |
+| Expert (Level 4) | Platform leadership | Architect platform-level capabilities; Evaluate and select new tooling; Mentor colleagues and lead knowledge transfer; Shape strategic roadmaps; Facilitate cross-team collaboration |
 
-### Foundation (Level 1)
-- [ ] Execute basic Git operations (clone, commit, push, pull)
-- [ ] Explain core cloud computing concepts
-- [ ] Perform routine Linux or Windows administration tasks
-- [ ] Read and edit YAML or JSON structures
-- [ ] Describe fundamental networking concepts
+**Interpersonal Skills:**
 
-### Practitioner (Level 2)
-- [ ] Build and reuse Terraform or CloudFormation modules
-- [ ] Create and maintain CI/CD pipelines
-- [ ] Apply container fundamentals (Docker)
-- [ ] Configure infrastructure monitoring and alerting
-- [ ] Implement security scanning and compliance checks
-
-### Advanced (Level 3)
-- [ ] Design multi-cloud architectures
-- [ ] Operate Kubernetes clusters at scale
-- [ ] Develop advanced automation scripts
-- [ ] Optimise infrastructure spend
-- [ ] Design disaster recovery strategies
-
-### Expert (Level 4)
-- [ ] Architect platform-level capabilities
-- [ ] Evaluate and select new tooling
-- [ ] Mentor colleagues and lead knowledge transfer
-- [ ] Shape strategic roadmaps
-- [ ] Facilitate cross-team collaboration
-
-## Interpersonal Skills
-
-### Communication
-- [ ] Produce clear technical documentation
-- [ ] Deliver presentations and training sessions
-- [ ] Manage stakeholder expectations
-- [ ] Resolve conflicts constructively
-
-### Leadership
-- [ ] Coach and mentor team members
-- [ ] Plan and execute complex projects
-- [ ] Lead organisational change initiatives
-- [ ] Contribute to long-term strategic thinking
-```
+| Skill Domain | Key Capabilities |
+|--------------|------------------|
+| Communication | Produce clear technical documentation; Deliver presentations and training sessions; Manage stakeholder expectations; Resolve conflicts constructively |
+| Leadership | Coach and mentor team members; Plan and execute complex projects; Lead organisational change initiatives; Contribute to long-term strategic thinking |
 
 Managers revisit the matrix alongside metrics and feedback to tailor coaching plans, ensuring each engineer advances at a sustainable pace.
 

@@ -6,6 +6,13 @@ Organisations rarely adopt Architecture as Code principles overnight. Instead, t
 
 Figure 17.1 summarises the journey from siloed functions towards integrated, product-aligned teams that own outcomes together. The progression emphasises the deliberate shifts in mindset, decision making, and flow of work that underpin a mature Architecture as Code capability.
 
+| Transformation Stage | Team Structure | Decision Making | Automation Maturity | Key Characteristics |
+|---------------------|----------------|-----------------|---------------------|---------------------|
+| Siloed functions | Separate development and operations teams | Handoffs through tickets and change requests | Manual provisioning, script-based | Limited collaboration, slow feedback loops, blame culture |
+| Basic collaboration | Shared goals but separate execution | Regular meetings and shared backlogs | Basic CI/CD, some automated testing | Improved communication, reduced handoff friction |
+| Cross-functional teams | Mixed skillsets in single teams | Collective ownership of outcomes | Infrastructure as Code, automated deployments | Shared responsibility, faster delivery, learning culture |
+| Product-aligned teams | Self-service platforms, product thinking | Autonomous within guardrails | Full automation, self-healing systems | Outcome focus, platform mentality, continuous improvement |
+
 ![Figure 17.1 – Stages of organisational transformation for Architecture as Code](images/diagram_17_transformation_journey.png)
 
 *The transformation journey illustrates how organisations evolve from isolated teams to collaborative, outcome-focused delivery groups once Architecture as Code principles are embedded. Each stage represents measurable progress in automation maturity, team integration, and delivery velocity, allowing leaders to calibrate investments and expectations accordingly.*

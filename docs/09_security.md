@@ -64,9 +64,16 @@ Effective security architecture begins with a deep understanding of the threat l
 lling for Architecture as Code environments differs from traditional application modelling by including the infrastructure layer
 , CI/CD pipelines, and automation tooling as potential attack surfaces.
 
-The STRIDE methodology (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) pro
-vides a structured framework for identifying threats across architectural layers. In Architecture as Code ecosystems, STRIDE must
- be applied to infrastructure definitions, deployment pipelines, secrets management systems, and runtime environments alike.
+The STRIDE methodology provides a structured framework for identifying threats across architectural layers. In Architecture as Code ecosystems, STRIDE must be applied to infrastructure definitions, deployment pipelines, secrets management systems, and runtime environments alike.
+
+| Threat Category | Description | Architecture as Code Concerns |
+|-----------------|-------------|-------------------------------|
+| Spoofing | Impersonating a user, system, or component | Compromised service accounts, stolen IAM credentials, forged infrastructure definitions |
+| Tampering | Unauthorized modification of data or code | Malicious commits to infrastructure code, altered pipeline configurations, modified secrets |
+| Repudiation | Denying actions without proper audit trail | Missing version control history, inadequate logging of infrastructure changes, untracked deployments |
+| Information Disclosure | Exposing sensitive information | Secrets in code repositories, unencrypted data stores, overly permissive access policies |
+| Denial of Service | Making systems unavailable | Resource exhaustion through misconfiguration, deletion of critical infrastructure, deployment failures |
+| Elevation of Privilege | Gaining unauthorized access levels | Exploiting IAM misconfigurations, compromised deployment pipelines, privilege escalation in modules |
 
 Supply chain attacks represent a particularly acute concern for code-based architectures. When infrastructure is defined through
  third-party modules, container images, and external APIs, dependency chains can be compromised. Incidents such as the 2020 Solar

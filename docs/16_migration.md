@@ -26,13 +26,12 @@ Migration wave planning balancerar technical dependencies with business prioriti
 
 ## Lift-and-shift vs re-architecting
 
-Lift-and-shift migration represents The snabbaste the way to cloud adoption but limiterar potential benefits from cloud-native capabilities. This approach is lämplig for applications with tight timelines or limited modernization budget, but requires follow-up optimization for long-term value.
-
-Re-architecting for cloud-native patterns enables maximum value from cloud investment through improved scalability, resilience and cost optimization. Svenska retail companies that Klarna has demonstrerat how re-architecting enables global expansion and innovation acceleration through cloud-native infrastructure.
-
-Hybrid approaches that "lift-and-improve" balancerar speed-to-market with modernization benefits through selective re-architecting of critical components while majority of application forblir unchanged. This approach can deliver imwithiate cloud benefits while the enables iterative modernization.
-
-Application portfolio analysis helps determine optimal migration strategy per application based on technical fit, business value and modernization potential. Legacy applications with limited business value can candidate for retirement rather than migration, which reduces overall migration scope.
+| Migration Strategy | Description | Benefits | Challenges | Best Suited For |
+|-------------------|-------------|----------|------------|-----------------|
+| Lift-and-shift | Direct migration to cloud with minimal changes | Fastest time to cloud, lower initial cost, minimal application changes | Limited cloud-native benefits, may require follow-up optimization, higher long-term operational costs | Applications with tight timelines, limited modernization budget, compliance-driven moves |
+| Re-architecting | Complete redesign for cloud-native patterns | Maximum cloud value, improved scalability and resilience, cost optimization, innovation enablement | Highest initial investment, longest timeline, requires deep cloud expertise | Strategic applications, high business value systems, global expansion needs |
+| Lift-and-improve (Hybrid) | Selective re-architecting of critical components while keeping most unchanged | Balances speed-to-market with modernization, immediate cloud benefits, iterative improvement path | Complexity in managing hybrid architecture, requires careful component selection | Phased modernization, risk-balanced approach, majority of enterprise migrations |
+| Application retirement | Remove legacy applications with limited business value | Reduces migration scope, eliminates maintenance costs, simplifies portfolio | Requires business stakeholder alignment, data archival strategy | Low-value legacy applications, redundant systems, end-of-life software |
 
 ## gradual kodifiering of infrastruktur
 
