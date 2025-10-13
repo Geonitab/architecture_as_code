@@ -90,9 +90,10 @@ variables:
     \newcommand{\setbookpart}[1]{%
       \renewcommand{\currentpartletter}{\thepart}%
       \renewcommand{\currentparttitle}{#1}%
-      \renewcommand{\currentpartformat}{PART~\thepart\space--\space #1}%
+      \renewcommand{\currentpartformat}{PART~\thepart\space-\space #1}%
     }
     \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+    \fancyhead[LO]{\small\bfseries \currentpartformat}
     \fancyhead[LE]{\small\bfseries \currentpartformat}
     \fancyhead[RO]{\small\bfseries \leftmark}
     \fancyfoot[C]{\thepage}
