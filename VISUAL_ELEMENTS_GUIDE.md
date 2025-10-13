@@ -19,13 +19,34 @@ All visual elements use the official Kvadrat color palette:
 ## Enhanced Mermaid Diagrams
 
 ### Theme Configuration
-Location: `docs/mermaid-Kvadrat-theme.json`
+Location: `docs/mermaid-kvadrat-theme.json`
 
-The Mermaid diagrams now use a custom Kvadrat theme that ensure:
+The Mermaid diagrams now use a custom Kvadrat theme that ensures:
 - Consistent brand colors across all diagrams
-- Professional typography using Inter font family
-- Appropriate contrast ratios for readability
-- Unified visual language
+- Professional typography using the Inter font family
+- Accessible contrast ratios that satisfy WCAG AA for text on blue backgrounds
+- Unified visual language for both flowcharts and sequence diagrams
+
+#### Palette Highlights
+- **Primary surfaces** use Kvadrat Blue (`#1E3A8A`) with white text for high contrast.
+- **Accent nodes** leverage Light Blue (`#3B82F6`) to guide the eye across a flow.
+- **Supporting regions** rely on misty blues (`#EFF6FF` / `#DBEAFE`) that keep backgrounds neutral and readable.
+- **Lines and labels** default to Deep Navy (`#0F172A`) so connectors remain visible even in grayscale prints.
+
+#### Predefined Accessibility Classes
+Use the following optional classes in diagrams to combine color and pattern cues for color-blind readers:
+- `classDef kv-accent` – saturated accent blocks with thick borders for primary callouts.
+- `classDef kv-muted` – light backgrounds with dashed borders for secondary information.
+- `classDef kv-pattern` – alternating dash patterns to differentiate parallel paths without relying solely on color.
+Example usage:
+
+```mermaid
+flowchart TD
+    A[Plan]:::kv-accent --> B[Build]:::kv-pattern
+    B --> C[Release]:::kv-muted
+```
+
+These classes are included directly in the Mermaid theme so the styling is available in every build without additional CSS.
 
 ### Diagram Enhancements
 All Mermaid diagrams have been enhanced with:
@@ -190,7 +211,7 @@ All visual elements maintain:
 
 ### Build Process Integration
 The enhanced visual elements are integrated into the build process via:
-- `docs/build_book.sh`: Updated to use Kvadrat Mermaid theme
+- `docs/build_book.sh`: Automatically injects the Kvadrat Mermaid theme during PNG generation and warns if the theme file is missing
 - `docs/pandoc.yaml`: Configured to use enhanced Kvadrat LaTeX template
 - `templates/Kvadrat-book-template.latex`: Contains all visual element definitions
 
@@ -210,7 +231,7 @@ The visual systems is designed to be extensible:
 ## File Locations
 
 - **LaTeX Template**: `templates/Kvadrat-book-template.latex`
-- **Mermaid Theme**: `docs/mermaid-Kvadrat-theme.json`
+- **Mermaid Theme**: `docs/mermaid-kvadrat-theme.json`
 - **Build Script**: `docs/build_book.sh`
 - **Pandoc Config**: `docs/pandoc.yaml`
 - **Example Usage**: `docs/02_fundamental_principles.md`
