@@ -1,9 +1,5 @@
 # Future Trends and Development in Architecture as Code
 
-![Future Trends](images/diagram_19_kapitel18.png)
-
-*The landscape for Architecture as Code is evolving rapidly with new paradigms such as edge computing, quantum-safe cryptography, and AI-driven automation. This diagram illustrates the convergence of emerging technologies that will shape the next generation of infrastructure solutions.*
-
 ## Introduction
 
 Architecture as Code stands at the threshold of comprehensive transformation driven by advances in artificial intelligence, quantum research, distributed infrastructure, and sustainability. The discipline has matured from foundational automation towards a strategic capability that binds technology, governance, and organisational design into a single codified practice. Looking ahead, Architecture as Code will be shaped by systems that learn continuously, platforms that provide seamless developer experiences, and governance models that express policies as executable artefacts.
