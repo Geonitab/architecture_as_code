@@ -79,6 +79,39 @@ ensure_pandoc() {
     return 1
 }
 
+# Render the SVG cover into a PNG that Pandoc can embed
+render_cover_from_svg() {
+    local svg_path="$1"
+    local output_path="$2"
+
+    # Prefer librsvg for consistent rendering (available in Docker build image)
+    if command -v rsvg-convert >/dev/null 2>&1; then
+        if rsvg-convert -w 2480 -h 3508 -o "$output_path" "$svg_path"; then
+            return 0
+        fi
+    fi
+
+    # Fallback to Inkscape if it is available locally
+    if command -v inkscape >/dev/null 2>&1; then
+        if inkscape "$svg_path" \
+            --export-type=png \
+            --export-filename="$output_path" \
+            --export-width=2480 \
+            --export-height=3508 >/dev/null 2>&1; then
+            return 0
+        fi
+    fi
+
+    # As a final fallback, attempt ImageMagick convert if present
+    if command -v convert >/dev/null 2>&1; then
+        if convert "$svg_path" -resize 2480x3508 "$output_path"; then
+            return 0
+        fi
+    fi
+
+    return 1
+}
+
 # Ensure Pandoc is available before continuing
 if ! command -v pandoc >/dev/null 2>&1; then
     if ! ensure_pandoc; then
@@ -150,12 +183,28 @@ fi
 mkdir -p "$RELEASE_DIR"
 
 # Copy book cover to images directory for Pandoc
-echo "Copying book cover..."
-if [ -f "../exports/book-cover/png/book-cover-300dpi.png" ]; then
-    cp "../exports/book-cover/png/book-cover-300dpi.png" "images/book-cover.png"
-    echo "✅ Book cover copied to images/book-cover.png"
+echo "Preparing book cover..."
+COVER_OUTPUT_PATH="images/book-cover.png"
+COVER_SVG_SOURCE="../templates/book-cover.svg"
+COVER_PNG_FALLBACK="../exports/book-cover/png/book-cover-300dpi.png"
+
+if [ -f "$COVER_SVG_SOURCE" ]; then
+    if render_cover_from_svg "$COVER_SVG_SOURCE" "$COVER_OUTPUT_PATH"; then
+        echo "✅ Book cover rendered from templates/book-cover.svg"
+    else
+        echo "⚠️  Warning: Failed to render book cover from SVG."
+        if [ -f "$COVER_PNG_FALLBACK" ]; then
+            cp "$COVER_PNG_FALLBACK" "$COVER_OUTPUT_PATH"
+            echo "✅ Fallback cover copied from exports/book-cover/png/book-cover-300dpi.png"
+        else
+            echo "❌ No fallback PNG cover available at $COVER_PNG_FALLBACK"
+        fi
+    fi
+elif [ -f "$COVER_PNG_FALLBACK" ]; then
+    cp "$COVER_PNG_FALLBACK" "$COVER_OUTPUT_PATH"
+    echo "✅ Fallback cover copied from exports/book-cover/png/book-cover-300dpi.png"
 else
-    echo "⚠️  Warning: Book cover not found at ../exports/book-cover/png/book-cover-300dpi.png"
+    echo "⚠️  Warning: Book cover not found at $COVER_SVG_SOURCE or $COVER_PNG_FALLBACK"
 fi
 
 CHROME_FLAGS="${CHROME_FLAGS:-}"
