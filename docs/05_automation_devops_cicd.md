@@ -121,25 +121,25 @@ Legal, procurement, and risk-management teams often maintain document-centric pr
 
 **Collaborative architectural evolution:** Sweden’s consensus-driven culture can be applied to architecture evolution where all stakeholders contribute to the architecture codebase through transparent, democratic processes.
 
-## CI/CD fundamentals for Swedish organisations
+## CI/CD fundamentals for regulated organisations
 
-Swedish organisations operate in a complex regulatory environment that demands special attention when implementing CI/CD pipelines for Architecture as Code. GDPR, guidance from the Swedish Authority for Privacy Protection, the Swedish Civil Contingencies Agency (MSB), and sector-specific regulations create a unique context where automation must balance efficiency with strict compliance requirements.
+Organisations operating in regulated environments face complex requirements when implementing CI/CD pipelines for Architecture as Code. European data-protection law (including GDPR), directives from national supervisory authorities, and sector-specific regulations create a context where automation must balance efficiency with stringent compliance obligations.
 
 ### Regulatory complexity and automation
 
-The Swedish regulatory landscape influences CI/CD design fundamentally. GDPR’s requirements for "data protection by design and by default" mean that pipelines must include automated validation of data-protection implementations. Article 25 requires technical and organisational measures to ensure that only personal data necessary for specific purposes is processed. For Architecture as Code pipelines this translates into automated scanning for GDPR compliance, data-residency validation, and audit-trail generation.
+The regulatory landscape influences CI/CD design fundamentally. GDPR’s requirements for "data protection by design and by default" mean that pipelines must include automated validation of data-protection implementations. Article 25 requires technical and organisational measures to ensure that only personal data necessary for specific purposes is processed. For Architecture as Code pipelines this translates into automated scanning for GDPR compliance, data-residency validation, and audit-trail generation.
 
-Guidance from the Swedish Authority for Privacy Protection on technical security measures demands systematic implementation of encryption, access controls, and logging. Manual processes are ineffective and error-prone when applied to modern dynamic infrastructure. CI/CD automation offers the opportunity to enforce these requirements consistently through policies as code and automated compliance validation.
+Guidance from data-protection regulators on technical security measures demands systematic implementation of encryption, access controls, and logging. Manual processes are ineffective and error-prone when applied to modern dynamic infrastructure. CI/CD automation offers the opportunity to enforce these requirements consistently through policies as code and automated compliance validation.
 
-MSB regulations for socially critical operations require robust incident management, continuity planning, and systematic risk assessment. Organisations in energy, transport, finance, and other critical sectors must incorporate specialised validations for operational resilience and disaster recovery capabilities into their CI/CD flows.
+National emergency and civil-protection agencies often issue regulations for socially critical operations that require robust incident management, continuity planning, and systematic risk assessment. Organisations in energy, transport, finance, and other critical sectors must incorporate specialised validations for operational resilience and disaster recovery capabilities into their CI/CD flows.
 
-### Economic considerations for Swedish organisations
+### Economic considerations for regulated organisations
 
-Cost optimisation in Swedish kronor requires advanced monitoring and budget controls that traditional CI/CD patterns rarely provide. Swedish companies must manage currency exposure, regional price differences, and compliance costs that affect infrastructure investments.
+Cost optimisation in local currencies requires advanced monitoring and budget controls that traditional CI/CD patterns rarely provide. Regulated enterprises must manage currency exposure, regional price differences, and compliance costs that affect infrastructure investments.
 
-Cloud-provider pricing varies significantly between regions. Organisations with data residency requirements are often restricted to EU regions, which can be more expensive than global options. Pipelines should therefore include cost estimation, budget-threshold validation, and automated resource optimisation aligned with Swedish business economics.
+Cloud-provider pricing varies significantly between regions. Organisations with data residency requirements are often restricted to EU regions, which can be more expensive than global options. Pipelines should therefore include cost estimation, budget-threshold validation, and automated resource optimisation aligned with the organisation’s economic realities.
 
-Quarterly budgeting and Swedish accounting standards require detailed cost allocation and forecasting, which automated pipelines can deliver through integration with financial systems and reports denominated in SEK. This supports proactive cost management instead of reactive oversight.
+Quarterly budgeting and industry accounting standards require detailed cost allocation and forecasting, which automated pipelines can deliver through integration with financial systems and finance-friendly reporting. This supports proactive cost management instead of reactive oversight.
 
 ### GDPR-compliant pipeline design
 
@@ -151,12 +151,12 @@ Pipelines must therefore validate automatically that all architecture released c
 
 **Automated compliance validation:** Policy engines such as Open Policy Agent (OPA) or cloud-provider-specific compliance tools can automatically verify that infrastructure configurations meet GDPR requirements. This includes checking encryption settings, access controls, data-retention policies, and restrictions on cross-border data transfers.
 
-**Audit-trail generation:** Every pipeline execution must produce comprehensive audit logs documenting what was deployed, by whom, when, and why. These logs must themselves follow GDPR principles for personal-data handling and be stored securely in line with Swedish legal retention requirements.
+**Audit-trail generation:** Every pipeline execution must produce comprehensive audit logs documenting what was deployed, by whom, when, and why. These logs must themselves follow GDPR principles for personal-data handling and be stored securely in line with applicable legal retention requirements.
 
-**GDPR-compliant CI/CD pipeline for Swedish organisations**  
+**GDPR-compliant CI/CD pipeline example**
 *[See code example 05_CODE_1 in Appendix A: Code Examples](30_appendix_code_examples.md#05_code_1)*
 
-This pipeline example demonstrates how Swedish organisations can embed GDPR compliance directly into their CI/CD processes, including automatic scanning for personal data and validation of data residency.
+This pipeline example demonstrates how regulated organisations can embed GDPR compliance directly into their CI/CD processes, including automatic scanning for personal data and validation of data residency.
 
 ## CI/CD pipelines for Architecture as Code
 
