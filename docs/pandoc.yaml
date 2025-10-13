@@ -79,9 +79,12 @@ variables:
       \renewcommand{\currentpartformat}{PART~\thepart\space-\space #1}%
     }
     \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
-    \fancyhead[LO]{\small\bfseries \currentpartformat}
-    \fancyhead[LE]{\small\bfseries \currentpartformat}
-    \fancyhead[RO]{\small\bfseries \leftmark}
+    % Show only the current chapter title in the running header to avoid
+    % duplicating the part name alongside the chapter label.
+    \fancyhead[LO]{\small\bfseries \leftmark}
+    \fancyhead[LE]{\small\bfseries \leftmark}
+    \fancyhead[RO]{}
+    \fancyhead[RE]{}
     \fancyfoot[C]{\thepage}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\partname}{Part}
