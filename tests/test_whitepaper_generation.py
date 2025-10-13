@@ -2,8 +2,9 @@
 """
 Test whitepaper generation functionality.
 
-This test validates that the generate_whitepapers.py script correctly processes
-all chapter files and generates the expected number of whitepaper HTML files.
+These tests validate that the ``generate_whitepapers.py`` script correctly
+reflects the current Architecture as Code manuscript and generates the expected
+whitepaper outputs for every numbered chapter in ``docs/``.
 """
 
 import unittest
@@ -37,23 +38,41 @@ class TestWhitepaperGeneration(unittest.TestCase):
         """Clean up test environment."""
         os.chdir(self.original_cwd)
     
+    def _list_numbered_chapters(self):
+        """Return the current set of numbered chapter filenames in docs/."""
+        docs_dir = Path("docs")
+        return sorted(path.name for path in docs_dir.glob("[0-9][0-9]_*.md"))
+
     def test_chapter_mapping_complete(self):
-        """Test that chapter mapping includes all expected files."""
+        """Test that the chapter mapping covers every numbered chapter file."""
         mapping = get_chapter_mapping()
-        
-        # Should have 31 chapters
-        self.assertEqual(len(mapping), 31, f"Expected 31 chapters, got {len(mapping)}")
-        
-        # Check for key chapters
+        numbered_chapters = self._list_numbered_chapters()
+
+        self.assertEqual(
+            len(mapping),
+            len(numbered_chapters),
+            (
+                "Chapter mapping should include all numbered chapters. "
+                f"Expected {len(numbered_chapters)}, got {len(mapping)}"
+            ),
+        )
+
+        missing = sorted(set(numbered_chapters) - set(mapping.keys()))
+        extras = sorted(set(mapping.keys()) - set(numbered_chapters))
+
+        self.assertFalse(missing, f"Mapping missing chapters: {missing}")
+        self.assertFalse(extras, f"Mapping contains unexpected chapters: {extras}")
+
+        # Spot-check a handful of key chapters that should always exist
         expected_files = [
-            '01_introduction.md',
-            '05_automation_devops_cicd.md',
-            '11_governance_as_code.md',
-            '20_ai_agent_team.md',
-            '23_soft_as_code_interplay.md',
-            '31_technical_architecture.md'
+            "01_introduction.md",
+            "05_automation_devops_cicd.md",
+            "11_governance_as_code.md",
+            "20_ai_agent_team.md",
+            "23_soft_as_code_interplay.md",
+            "31_technical_architecture.md",
         ]
-        
+
         for expected_file in expected_files:
             self.assertIn(expected_file, mapping, f"Missing expected file: {expected_file}")
     
@@ -69,8 +88,16 @@ class TestWhitepaperGeneration(unittest.TestCase):
     def test_book_overview_updated(self):
         """Test that book overview has correct chapter count."""
         overview = get_book_overview()
-        
-        self.assertEqual(overview['chapters_count'], 31, "Book overview should reflect 31 chapters")
+        numbered_chapters = self._list_numbered_chapters()
+
+        self.assertEqual(
+            overview['chapters_count'],
+            len(numbered_chapters),
+            (
+                "Book overview chapter count should match the number of "
+                f"numbered chapters (expected {len(numbered_chapters)})"
+            ),
+        )
         self.assertIn('title', overview)
         self.assertIn('subtitle', overview)
         self.assertIn('description', overview)

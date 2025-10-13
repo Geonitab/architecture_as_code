@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Content validation test runner for "Arkitektur som Kod" book.
+Content validation test runner for the "Architecture as Code" book.
 
 This script runs the complete test suite and generates reports.
 """
@@ -128,7 +128,7 @@ def run_tests(test_type="all", verbose=True, generate_report=True):
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        description="Content validation test runner for Arkitektur som Kod book"
+        description="Content validation test runner for the Architecture as Code book"
     )
     parser.add_argument(
         "--type", 
