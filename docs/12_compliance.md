@@ -4,7 +4,15 @@
 
 *Figure 12-1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.*
 
-Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12-1 shows how that translation depends on a closed feedback loop: regulatory updates inform policy templates, automated controls execute those policies, monitoring and evidence collection prove adherence, and governance teams reinforce improvements through audit feedback. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
+Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12-1 shows how that translation depends on a closed feedback loop. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
+
+| Compliance Loop Stage | Activities | Outputs | Feedback Mechanism |
+|----------------------|------------|---------|-------------------|
+| Regulatory intelligence | Monitor legislation updates, interpret regulatory changes, map requirements | Updated compliance requirements, policy mapping documents | Governance teams receive regulator feedback and audit findings |
+| Policy template creation | Codify regulations as policy-as-code templates, define automated controls | Executable policy definitions, control baselines | Policy effectiveness metrics inform template refinements |
+| Automated control execution | Deploy policies through CI/CD, enforce guardrails, validate configurations | Compliant infrastructure states, policy violation alerts | Real-time monitoring detects drift and non-compliance |
+| Monitoring and evidence collection | Continuous compliance scanning, audit log aggregation, metrics gathering | Compliance dashboards, audit trails, evidence packages | Automated evidence for audits, compliance status reports |
+| Governance reinforcement | Audit reviews, risk assessments, improvement initiatives | Updated policies, remediation plans, training programmes | Loop closes as governance informs next regulatory intelligence cycle |
 
 ## AI and Machine Learning for Infrastructure Automation
 

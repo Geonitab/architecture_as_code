@@ -14,21 +14,12 @@ Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy au
 
 Security automation in Swedish enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today.
 
-### Phase 1: Manual validation (2010–2015)
-
-Security teams traditionally reviewed infrastructure after the fact. Auditors compared live environments with policy documents, often weeks after a release. Findings were logged manually and development teams had to retrofit fixes into long-running releases. The feedback loop was slow, knowledge transfer was fragile, and documentation quickly became obsolete.
-
-### Phase 2: Scripted automation (2015–2018)
-
-As continuous delivery pipelines gained traction, teams started scripting validations. Python, Bash, and PowerShell checks were bolted onto CI workflows to detect risky ports, missing encryption, or inconsistent tags. Speed improved, but every squad maintained its own toolkit, leading to duplication, drift, and brittle scripts that were difficult to share across the enterprise.
-
-### Phase 3: Policy engine integration (2018–2021)
-
-The arrival of dedicated policy engines such as Open Policy Agent (OPA) marked a turning point. Declarative policy languages enabled teams to separate enforcement logic from application code. Kubernetes adoption, in particular, drove the use of Gatekeeper admission controllers to enforce Swedish baseline controls before workloads reached production.
-
-### Phase 4: Holistic governance frameworks (2021–present)
-
-Modern PaC programmes integrate design-time reviews, automated approvals, runtime drift detection, and compliance reporting. Standards such as the Open Security Controls Assessment Language (OSCAL) allow organisations to connect Terraform states, CI/CD events, and audit evidence. Policy execution is now an always-on capability rather than an infrequent audit exercise.
+| Phase | Period | Approach | Characteristics | Limitations |
+|-------|--------|----------|-----------------|-------------|
+| Phase 1: Manual validation | 2010–2015 | Security teams reviewed infrastructure after the fact | Auditors compared live environments with policy documents weeks after release, findings logged manually | Slow feedback loop, fragile knowledge transfer, obsolete documentation, reactive fixes |
+| Phase 2: Scripted automation | 2015–2018 | Teams scripted validations in Python, Bash, and PowerShell | CI workflow checks for risky ports, missing encryption, inconsistent tags | Improved speed but duplication, drift, brittle scripts, difficult enterprise sharing |
+| Phase 3: Policy engine integration | 2018–2021 | Dedicated policy engines like Open Policy Agent (OPA) | Declarative policy languages, separation of enforcement logic from application code, Kubernetes Gatekeeper | Baseline controls enforced, but limited integration with broader governance |
+| Phase 4: Holistic governance frameworks | 2021–present | Integrated design-time reviews, automated approvals, runtime drift detection | OSCAL integration, Terraform state connection, CI/CD events, compliance reporting | Policy execution as always-on capability, comprehensive audit evidence |
 
 ## Policy-as-Code operating model
 
@@ -84,10 +75,12 @@ While OPA ensures policies are enforced, OSCAL standardises how controls, eviden
 
 OSCAL is organised into complementary models:
 
-- **Catalogues** capture authoritative control statements from frameworks such as NIST SP 800-53, GDPR, or MSB guidelines.
-- **Profiles** tailor catalogues to organisation-specific needs by selecting, modifying, or adding control language.
-- **Component definitions** describe how technical building blocks (for example, an Amazon RDS instance) satisfy specific controls.
-- **System Security Plans (SSPs)** assemble controls, components, and operational context into a single auditable document.
+| OSCAL Component | Purpose | Examples | Usage in Architecture as Code |
+|-----------------|---------|----------|-------------------------------|
+| Catalogues | Capture authoritative control statements from frameworks | NIST SP 800-53, GDPR articles, MSB guidelines | Foundation for organisational control baselines |
+| Profiles | Tailor catalogues to organisation-specific needs | Selecting, modifying, or adding control language | Harmonise overlapping regulations, create industry-specific subsets |
+| Component definitions | Describe how technical building blocks satisfy specific controls | Amazon RDS instance, AWS Network Firewall configurations | Map infrastructure modules to compliance requirements |
+| System Security Plans (SSPs) | Assemble controls, components, and operational context | Complete audit documentation for a system | Single auditable document connecting requirements to implementation |
 
 ### Crafting organisation-specific profiles
 

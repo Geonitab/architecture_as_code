@@ -8,11 +8,15 @@ Figure 11.1 illustrates how policy authors, reviewers, automation, production co
 
 ## Implementing Approval Processes with Pull Requests
 
-Designing branching strategies for governance artifacts keeps each state explicit. Dedicated draft, review, and production branches mirror software development workflows so stakeholders can follow the journey from proposal to adoption. Every merge request becomes a visible checkpoint that shows why a change exists and which controls have already run.
+Designing branching strategies for governance artifacts keeps each state explicit. Dedicated draft, review, and production branches mirror software development workflows so stakeholders can follow the journey from proposal to adoption.
 
-Pull requests then serve as the formal approval gates. Architecture leads, security officers, and business sponsors review the proposal together, using templates that prompt for risk assessments, policy mappings, and rollout plans. Automated status checks enforce the required reviewers, signed commits, and branch protections that ensure only fully vetted changes reach the protected main branch.
-
-Continuous integration pipelines run policy-as-code validations, schema tests, and guardrail verifications the moment a pull request opens. When those checks pass, maintainers link the request to relevant Architecture Decision Records so the business rationale and audit trail live beside the code. The result is an end-to-end approval experience where human judgment complements automated enforcement.
+| Governance Workflow Stage | Mechanism | Stakeholders | Automated Controls | Outcome |
+|---------------------------|-----------|--------------|-------------------|---------|
+| Draft and proposal | Feature branches | Policy authors, governance owners | Schema validation, syntax checks | Explicit state for work-in-progress changes |
+| Review and approval | Pull requests with templates | Architecture leads, security officers, business sponsors | Policy-as-code validations, required reviewers, signed commits | Formal approval gates with risk assessments and policy mappings |
+| Validation and testing | CI pipeline execution | Automated systems, compliance leads | Policy-as-code validations, schema tests, guardrail verifications | Pre-merge quality assurance |
+| Documentation and traceability | ADR linking | Architecture teams, audit teams | Automated documentation generation, audit trail capture | Business rationale and audit trail beside code |
+| Production deployment | Protected main branch merge | Authorized maintainers | Branch protections, deployment gates | Fully vetted changes reaching production |
 
 ## Navigating Competency Gaps During Transition
 
