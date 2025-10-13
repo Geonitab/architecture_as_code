@@ -1,5 +1,5 @@
 ---
-# Pandoc configuration file for "Arkitektur som kod" book
+# Pandoc configuration file for "Architecture as Code" book
 # Simplified configuration for better compatibility
 
 # General settings
@@ -23,12 +23,12 @@ highlight-style: tango
 
 # Metadata for document
 metadata:
-  title: "Arkitektur som kod"
-  subtitle: "Infrastructure as Code i praktiken"
-  author: "Kodarkitektur Bokverkstad"
+  title: "Architecture as Code"
+  subtitle: "A practical handbook for Infrastructure as Code"
+  author: "Architecture as Code Editorial Team"
   date: "2024"
   language: en
-  lang: en-US
+  lang: en-GB
 
 # Variables for better compatibility
 variables:
@@ -43,13 +43,38 @@ variables:
     - right=2.5cm
   fontsize: 11pt
   linestretch: 1.2
-  lang: en-US
+  lang: en-GB
   cover-image: "images/book-cover.png"
   include-before: |
     \newpage
     \thispagestyle{empty}
     \begin{center}
-    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/book-cover.png}
+    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{images/book-cover.png}
+    \end{center}
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+    \vspace*{0.15\textheight}
+    {\Huge\bfseries Architecture as Code\par}
+    \vspace{1.25cm}
+    {\Large\itshape A practical handbook for Infrastructure as Code\par}
+    \vfill
+    {\large Architecture as Code Editorial Team\par}
+    {\large 2024\par}
+    \vspace*{0.1\textheight}
+    \end{center}
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+    \vspace*{0.2\textheight}
+    {\Large\bfseries Architecture as Code}\par
+    \vspace{1cm}
+    {\normalsize A comprehensive British English guide covering modern Infrastructure as Code practices, organisational governan
+    ce, and architectural automation for cloud-native delivery teams.\par}
+    \vspace{1.5cm}
+    {\normalsize Published by the Architecture as Code Book Workshop\par}
+    {\normalsize London, United Kingdom}\par
+    \vspace*{0.1\textheight}
     \end{center}
     \newpage
   # Simplified header handling

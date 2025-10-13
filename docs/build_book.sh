@@ -192,6 +192,12 @@ if [ -n "$CHROME_FLAGS" ]; then
 fi
 
 # Convert Mermaid files to PNG with Kvadrat styling
+MERMAID_THEME_FILE="mermaid-kvadrat-theme.json"
+
+if [ ! -f "$MERMAID_THEME_FILE" ]; then
+    echo "⚠️  Warning: Mermaid theme file '$MERMAID_THEME_FILE' not found. Falling back to default styling."
+fi
+
 for mmd_file in images/*.mmd; do
     if [ -f "$mmd_file" ]; then
         png_file="${mmd_file%.mmd}.png"
@@ -201,6 +207,7 @@ for mmd_file in images/*.mmd; do
             echo "Converting $mmd_file (Docker/CI mode)..."
             if mmdc -i "$mmd_file" -o "$png_file" \
                 -t default \
+                ${MERMAID_THEME_FILE:+-c "$MERMAID_THEME_FILE"} \
                 -b transparent \
                 --width 1400 \
                 --height 900 \
@@ -212,6 +219,7 @@ for mmd_file in images/*.mmd; do
             echo "Converting $mmd_file (local mode)..."
             if mmdc -i "$mmd_file" -o "$png_file" \
                 -t default \
+                ${MERMAID_THEME_FILE:+-c "$MERMAID_THEME_FILE"} \
                 -b transparent \
                 --width 1400 \
                 --height 900 \

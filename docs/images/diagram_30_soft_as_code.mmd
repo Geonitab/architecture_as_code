@@ -2,28 +2,53 @@
 config:
   theme: 'base'
   themeVariables:
-    primaryColor: '#5b2c6f'
+    primaryColor: '#1e3a8a'
     primaryTextColor: '#ffffff'
-    primaryBorderColor: '#3a1c46'
-    lineColor: '#c39bd3'
-    secondaryColor: '#f8c471'
-    tertiaryColor: '#ffffff'
+    primaryBorderColor: '#1e293b'
+    lineColor: '#3b82f6'
+    secondaryColor: '#059669'
+    tertiaryColor: '#f8f9ff'
+    edgeLabelBackground: '#ffffff'
 ---
-%% Interplay between soft as code disciplines
-mindmap
-  root((Soft "as code" Ecosystem))
-    Compliance as Code
-      Policies codified
-      Automated audits
-    Architecture as Code
-      Reference models
-      Traceable decisions
-    Documentation as Code
-      Versioned narratives
-      Self-service knowledge
-    Knowledge as Code
-      Reusable playbooks
-      Lessons learned
-    Culture as Code
-      Working agreements
-      Shared rituals
+graph LR
+    A((Soft “as code”<br/>Ecosystem))
+
+    A --> C[Compliance as Code]
+    A --> R[Architecture as Code]
+    A --> D[Documentation as Code]
+    A --> K[Knowledge as Code]
+    A --> U[Culture as Code]
+
+    C --> C1[Codified policies]
+    C --> C2[Continuous validation]
+    C --> C3[Transparent audits]
+
+    R --> R1[Traceable decisions]
+    R --> R2[Reference models]
+    R --> R3[Automation guardrails]
+
+    D --> D1[Versioned narratives]
+    D --> D2[Self-service knowledge]
+    D --> D3[Feedback loops]
+
+    K --> K1[Reusable playbooks]
+    K --> K2[Lessons learned]
+
+    U --> U1[Working agreements]
+    U --> U2[Shared rituals]
+
+    C1 -.-> S1[Shared data sets]
+    R2 -.-> S1
+    D2 -.-> S1
+    K1 -.-> S2[Collective memory]
+    U1 -.-> S2
+
+    style A fill:#0f172a,stroke:#1e293b,color:#ffffff
+    style C fill:#1e3a8a,stroke:#1e293b,color:#ffffff
+    style R fill:#2563eb,stroke:#1d4ed8,color:#ffffff
+    style D fill:#059669,stroke:#047857,color:#ffffff
+    style K fill:#7c3aed,stroke:#5b21b6,color:#ffffff
+    style U fill:#be123c,stroke:#9f1239,color:#ffffff
+
+    classDef insight fill:#f8f9ff,stroke:#94a3b8,color:#0f172a
+    class C1,C2,C3,R1,R2,R3,D1,D2,D3,K1,K2,U1,U2,S1,S2 insight
