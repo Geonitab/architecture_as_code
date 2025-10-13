@@ -197,7 +197,7 @@ To fully support English book generation:
 2. **Update `docs/build_book.sh`:**
    - Add English PDF build target
    - Configure Pandoc for English metadata
-   - Generate `arkitektur_which_kod_en.pdf`
+   - Generate `architecture_as_code_en.pdf`
    - Support bilingual builds with single command
 
 3. **Update GitHub Actions:**
@@ -214,7 +214,7 @@ if [ "$LANG" = "a" ]; then
     OUTPUT_PDF="architecture_as_code_en.pdf"
 else
     CHAPTER_FILES=("01_introduction.md" "02_fundamental_principles.md" ...)
-    OUTPUT_PDF="arkitektur_som_kod.pdf"
+    OUTPUT_PDF="architecture_as_code.pdf"
 fi
 ```
 

@@ -299,8 +299,8 @@ jobs:
           echo "🔍 Checking for expected key files:"
           
           # Check for book files
-          if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
-            echo "✅ Book PDF found ($(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}'))"
+          if [ -f "releases/book/architecture_as_code.pdf" ]; then
+            echo "✅ Book PDF found ($(ls -lh releases/book/architecture_as_code.pdf | awk '{print $5}'))"
           else
             echo "❌ Book PDF not found"
           fi
@@ -336,8 +336,8 @@ jobs:
           echo "📚 Book formats:"
           if [ -d "releases/book" ]; then
             ls -la releases/book/ || echo "   No book files found"
-            if [ -f "releases/book/arkitektur_som_kod.pdf" ]; then
-              echo "   📖 PDF size: $(ls -lh releases/book/arkitektur_som_kod.pdf | awk '{print $5}')"
+            if [ -f "releases/book/architecture_as_code.pdf" ]; then
+              echo "   📖 PDF size: $(ls -lh releases/book/architecture_as_code.pdf | awk '{print $5}')"
             fi
           fi
 
@@ -514,12 +514,12 @@ jobs:
             ### 📦 Complete Release Package Contents:
 
             #### 📖 Book Formats
-            - `arkitektur_som_kod.pdf` - Complete PDF book
-            - `arkitektur_som_kod.epub` - EPUB format for e-readers
-            - `arkitektur_som_kod.docx` - Microsoft Word format
+            - `architecture_as_code.pdf` - Complete PDF book
+            - `architecture_as_code.epub` - EPUB format for e-readers
+            - `architecture_as_code.docx` - Microsoft Word format
 
             #### 🎤 Presentation Materials
-            - `arkitektur_som_kod_presentation.pptx` - PowerPoint presentation
+            - `architecture_as_code_presentation.pptx` - PowerPoint presentation
             - Presentation outline and generation scripts
 
             #### 📄 Whitepapers
@@ -540,10 +540,10 @@ jobs:
 
             🎯 **This unified release includes ALL project deliverables with optimized build performance!**
           files: |
-            final-release/book/arkitektur_som_kod.pdf
-            final-release/book/arkitektur_som_kod.epub
-            final-release/book/arkitektur_som_kod.docx
-            final-release/presentation/arkitektur_som_kod_presentation.pptx
+            final-release/book/architecture_as_code.pdf
+            final-release/book/architecture_as_code.epub
+            final-release/book/architecture_as_code.docx
+            final-release/presentation/architecture_as_code_presentation.pptx
             final-release/whitepapers/whitepapers_combined.pdf
             unified-release-archive.zip
           draft: false

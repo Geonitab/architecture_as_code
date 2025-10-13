@@ -122,9 +122,9 @@ if [ -f "docs/build_book.sh" ]; then
         # Return to original directory before verification
         cd "$current_dir"
         # Verify book files were created
-        verify_file "releases/book/arkitektur_som_kod.pdf" "Book PDF"
-        verify_file "releases/book/arkitektur_som_kod.epub" "Book EPUB" || true
-        verify_file "releases/book/arkitektur_som_kod.docx" "Book DOCX" || true
+        verify_file "releases/book/architecture_as_code.pdf" "Book PDF"
+        verify_file "releases/book/architecture_as_code.epub" "Book EPUB" || true
+        verify_file "releases/book/architecture_as_code.docx" "Book DOCX" || true
     else
         log "❌ Failed to build book formats"
         cd "$current_dir"
@@ -207,7 +207,7 @@ fi
 
 # 7. Generate presentation PDF (if PPTX exists)
 log "🎥 Step 7: Attempting to generate presentation PDF..."
-if [ -f "releases/presentation/arkitektur_som_kod_presentation.pptx" ]; then
+if [ -f "releases/presentation/architecture_as_code_presentation.pptx" ]; then
     log "⚠️  PowerPoint to PDF conversion requires additional tools (LibreOffice or similar)"
     log "   Manual conversion recommended for presentation PDF"
 else

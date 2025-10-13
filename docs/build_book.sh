@@ -121,9 +121,9 @@ fi
 
 # Determine the release directory path (relative to docs directory)
 RELEASE_DIR="../releases/book"
-OUTPUT_PDF="arkitektur_som_kod.pdf"
-OUTPUT_EPUB="arkitektur_som_kod.epub"
-OUTPUT_DOCX="arkitektur_som_kod.docx"
+OUTPUT_PDF="architecture_as_code.pdf"
+OUTPUT_EPUB="architecture_as_code.epub"
+OUTPUT_DOCX="architecture_as_code.docx"
 RELEASE_PDF="$RELEASE_DIR/$OUTPUT_PDF"
 RELEASE_EPUB="$RELEASE_DIR/$OUTPUT_EPUB"
 RELEASE_DOCX="$RELEASE_DIR/$OUTPUT_DOCX"

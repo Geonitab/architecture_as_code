@@ -230,7 +230,7 @@ def main() -> int:
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
     
-    epub_path = Path("docs/arkitektur_som_kod.epub")
+    epub_path = Path("docs/architecture_as_code.epub")
     
     if not epub_path.exists():
         logger.info("No EPUB file found to validate")

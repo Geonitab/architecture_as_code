@@ -28,7 +28,7 @@ Instead of modifying the source book content, this solution demonstrates the pro
 - `generate_pptx.py` - PowerPoint generator script
 - `requirements.txt` - Python dependencies for presentation creation
 - `README.md` - Complete documentation for the presentations feature
-- `arkitektur_which_kod_presentation.pptx` - Generated PowerPoint file (excluded from git)
+- `architecture_as_code_presentation.pptx` - Generated PowerPoint file (excluded from git)
 
 #### 3. **Protection Guidelines and Tools**
 
@@ -148,7 +148,7 @@ presentations/
 ├── presentation_outline.md
 ├── generate_pptx.py
 ├── requirements.txt
-└── arkitektur_som_kod_presentation.pptx (generated, git-ignored)
+└── architecture_as_code_presentation.pptx (generated, git-ignored)
 
 scripts/
 └── validate_docs_protection.py

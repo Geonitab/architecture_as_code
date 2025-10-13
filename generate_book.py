@@ -395,7 +395,7 @@ if __name__ == "__main__":
     # generate_iac_book_content()
     
     # EPUB validation is still active
-    epub_path = "docs/arkitektur_som_kod.epub"
+    epub_path = "docs/architecture_as_code.epub"
     if os.path.exists(epub_path):
         print("📖 Checking existing EPUB file...")
         success, log_output = validate_epub_file(epub_path)

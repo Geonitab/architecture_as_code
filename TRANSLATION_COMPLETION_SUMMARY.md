@@ -70,7 +70,7 @@ This document summarizes the completion of the English translation project for t
 4. **releases/README_en.md**
    - Releases folder documentation
    - Translated from Swedish original
-   - Fixed filename references (arkitektur_som_kod)
+   - Fixed filename references (architecture_as_code)
 
 5. **tests/README_en.md**
    - Test suite documentation
@@ -80,7 +80,7 @@ This document summarizes the completion of the English translation project for t
 ### Translation Artifacts Fixed
 
 During automated translation, some errors were introduced and corrected:
-- ❌ "arkitektur_which_kod" → ✅ "arkitektur_som_kod"
+- ❌ "arkitektur_which_kod" → ✅ "architecture_as_code"
 - ❌ "Kwhatrat" → ✅ "Kvadrat"
 - ❌ "Withium-resolution" → ✅ "Medium-resolution"
 - ❌ "social withia" → ✅ "social media"
