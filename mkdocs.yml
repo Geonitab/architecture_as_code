@@ -47,6 +47,9 @@ nav:
       - Appendix B – Technical Architecture for Book Production: 31_technical_architecture.md
 docs_dir: docs
 use_directory_urls: true
+theme:
+  name: bootswatch
+  bootswatch_theme: slate
 markdown_extensions:
   - toc
   - tables
