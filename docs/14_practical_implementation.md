@@ -52,13 +52,13 @@ Enterprise-scale deployments blend multi-account cloud strategies with on-premis
 
 ## Practical examples in context
 
-Extended code listings are maintained in Appendix A for ease of reference and reuse:
+To keep the implementation guidance focused, the extensive Terraform walkthrough that previously appeared in this chapter now lives in Appendix A. The appendix preserves the full listing while these pages concentrate on the strategic practices that make Architecture as Code sustainable.
 
-* **Terraform service blueprint** – Appendix entry [14_CODE_1](30_appendix_code_examples.md#14_code_1) demonstrates a reusable module for a web application landing zone, including tagging conventions and autoscaling foundations.
-* **Environment configuration and monitoring** – Appendix entry [14_CODE_2](30_appendix_code_examples.md#14_code_2) shows how production-specific configuration, observability dashboards, and retention controls are layered on top of the base module.
-* **Continuous delivery workflow** – Appendix entry [14_CODE_3](30_appendix_code_examples.md#14_code_3) outlines a GitHub Actions pipeline that plans and applies infrastructure changes across environments with explicit manual approval for production.
+* **Terraform service blueprint** – Appendix entry [14_CODE_1](30_appendix_code_examples.md#14_code_1) contains the relocated landing zone module, complete with networking, load balancing, tagging standards, and autoscaling defaults that teams can adapt to their own environments.
+* **Environment configuration and monitoring** – Appendix entry [14_CODE_2](30_appendix_code_examples.md#14_code_2) layers production-grade state management, observability dashboards, and retention controls on top of the shared module so that operations teams receive actionable telemetry from day one.
+* **Continuous delivery workflow** – Appendix entry [14_CODE_3](30_appendix_code_examples.md#14_code_3) captures the associated GitHub Actions pipeline that plans and applies infrastructure changes across environments and requires an explicit approval step before production deployments.
 
-Each appendix entry includes commentary describing when to apply the pattern, the governance signals it produces, and how it links back to the operational practices outlined in this chapter. Teams should tailor the templates to match their own naming standards, guardrail policies, and deployment cadences.
+Each appendix entry describes when to use the pattern, the governance indicators it produces, and how the implementation reinforces the operating practices discussed in this chapter. Teams should tailor the templates to match their naming standards, guardrail policies, and release cadences.
 
 ## Summary
 
