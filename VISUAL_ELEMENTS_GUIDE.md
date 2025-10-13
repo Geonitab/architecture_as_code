@@ -29,21 +29,26 @@ The Mermaid diagrams now use a custom Kvadrat theme that ensures:
 
 #### Palette Highlights
 - **Primary surfaces** use Kvadrat Blue (`#1E3A8A`) with white text for high contrast.
-- **Accent nodes** leverage Light Blue (`#3B82F6`) to guide the eye across a flow.
-- **Supporting regions** rely on misty blues (`#EFF6FF` / `#DBEAFE`) that keep backgrounds neutral and readable.
+- **Accent layers** progress through the Kvadrat scale (`#2563EB`, `#3B82F6`, `#60A5FA`) to create a clear light → dark narrative.
+- **Supporting regions** rely on airy blues (`#E0F2FE` / `#F8FAFF`) and subtle drop shadows so secondary nodes remain legible.
 - **Lines and labels** default to Deep Navy (`#0F172A`) so connectors remain visible even in grayscale prints.
 
 #### Predefined Accessibility Classes
-Use the following optional classes in diagrams to combine color and pattern cues for color-blind readers:
-- `classDef kv-accent` – saturated accent blocks with thick borders for primary callouts.
-- `classDef kv-muted` – light backgrounds with dashed borders for secondary information.
-- `classDef kv-pattern` – alternating dash patterns to differentiate parallel paths without relying solely on color.
+Apply these classes with the `:::class-name` shorthand to combine colour, contrast, and pattern cues:
+- `kv-primary` – flagship nodes with deep blue fill and white lettering.
+- `kv-highlight` – bright spotlight blocks for transitional steps.
+- `kv-accent` – saturated action nodes for emphasis.
+- `kv-muted` – low-emphasis states with dashed outlines for secondary context.
+- `kv-pattern` – patterned borders that remain distinguishable for colour-blind readers.
+- `kv-outline` – hollow treatment for decision points and gateways.
+- `kv-elevated` – light surfaces with drop shadows suited to informational callouts.
+
 Example usage:
 
 ```mermaid
 flowchart TD
-    A[Plan]:::kv-accent --> B[Build]:::kv-pattern
-    B --> C[Release]:::kv-muted
+    A[Plan]:::kv-primary --> B[Build]:::kv-highlight
+    B --> C[Release]:::kv-pattern
 ```
 
 These classes are included directly in the Mermaid theme so the styling is available in every build without additional CSS.

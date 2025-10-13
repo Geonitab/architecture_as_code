@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    ADR[ADR Dokument] --> Context[Context]
-    ADR --> Decision[Decision]
-    ADR --> Consequences[Consequences]
-    ADR --> Status[Status]
+    ADR[ADR Dokument]:::kv-primary --> Context[Context]:::kv-highlight
+    ADR --> Decision[Decision]:::kv-accent
+    ADR --> Consequences[Consequences]:::kv-accent
+    ADR --> Status[Status]:::kv-highlight

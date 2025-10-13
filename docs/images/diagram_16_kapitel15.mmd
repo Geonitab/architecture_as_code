@@ -1,24 +1,13 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph TD
-    A[Kostnadsanalys] --> B[Monitoring]
-    B --> C[Optimering]
-    C --> D[Automation]
-    D --> E[Besparingar]
-    E --> F[Kontinuerlig förbättring]
+    A[Kostnadsanalys]:::kv-primary --> B[Monitoring]:::kv-highlight
+    B --> C[Optimering]:::kv-accent
+    C --> D[Automation]:::kv-accent
+    D --> E[Besparingar]:::kv-primary
+    E --> F[Kontinuerlig förbättring]:::kv-highlight
     F --> A
-    
-    B --> G[Budget Alerts]
-    C --> H[Rightsizing]
-    C --> I[Spot Instances]
-    D --> J[Auto Scaling]
-    D --> K[Resource Tagging]
+
+    B --> G[Budget Alerts]:::kv-muted
+    C --> H[Rightsizing]:::kv-pattern
+    C --> I[Spot Instances]:::kv-muted
+    D --> J[Auto Scaling]:::kv-highlight
+    D --> K[Resource Tagging]:::kv-muted

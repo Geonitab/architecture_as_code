@@ -1,54 +1,32 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#1e3a8a'
-    primaryTextColor: '#ffffff'
-    primaryBorderColor: '#1e293b'
-    lineColor: '#3b82f6'
-    secondaryColor: '#059669'
-    tertiaryColor: '#f8f9ff'
-    edgeLabelBackground: '#ffffff'
----
 graph LR
-    A((Soft “as code”<br/>Ecosystem))
+    A((Soft “as code”<br/>Ecosystem)):::kv-outline
 
-    A --> C[Compliance as Code]
-    A --> R[Architecture as Code]
-    A --> D[Documentation as Code]
-    A --> K[Knowledge as Code]
-    A --> U[Culture as Code]
+    A --> C[Compliance as Code]:::kv-primary
+    A --> R[Architecture as Code]:::kv-accent
+    A --> D[Documentation as Code]:::kv-highlight
+    A --> K[Knowledge as Code]:::kv-pattern
+    A --> U[Culture as Code]:::kv-muted
 
-    C --> C1[Codified policies]
-    C --> C2[Continuous validation]
-    C --> C3[Transparent audits]
+    C --> C1[Codified policies]:::kv-elevated
+    C --> C2[Continuous validation]:::kv-elevated
+    C --> C3[Transparent audits]:::kv-elevated
 
-    R --> R1[Traceable decisions]
-    R --> R2[Reference models]
-    R --> R3[Automation guardrails]
+    R --> R1[Traceable decisions]:::kv-elevated
+    R --> R2[Reference models]:::kv-elevated
+    R --> R3[Automation guardrails]:::kv-elevated
 
-    D --> D1[Versioned narratives]
-    D --> D2[Self-service knowledge]
-    D --> D3[Feedback loops]
+    D --> D1[Versioned narratives]:::kv-elevated
+    D --> D2[Self-service knowledge]:::kv-elevated
+    D --> D3[Feedback loops]:::kv-elevated
 
-    K --> K1[Reusable playbooks]
-    K --> K2[Lessons learned]
+    K --> K1[Reusable playbooks]:::kv-elevated
+    K --> K2[Lessons learned]:::kv-elevated
 
-    U --> U1[Working agreements]
-    U --> U2[Shared rituals]
+    U --> U1[Working agreements]:::kv-elevated
+    U --> U2[Shared rituals]:::kv-elevated
 
-    C1 -.-> S1[Shared data sets]
+    C1 -.-> S1[Shared data sets]:::kv-pattern
     R2 -.-> S1
     D2 -.-> S1
-    K1 -.-> S2[Collective memory]
+    K1 -.-> S2[Collective memory]:::kv-pattern
     U1 -.-> S2
-
-    style A fill:#0f172a,stroke:#1e293b,color:#ffffff
-    style C fill:#1e3a8a,stroke:#1e293b,color:#ffffff
-    style R fill:#2563eb,stroke:#1d4ed8,color:#ffffff
-    style D fill:#059669,stroke:#047857,color:#ffffff
-    style K fill:#7c3aed,stroke:#5b21b6,color:#ffffff
-    style U fill:#be123c,stroke:#9f1239,color:#ffffff
-
-    classDef insight fill:#f8f9ff,stroke:#94a3b8,color:#0f172a
-    class C1,C2,C3,R1,R2,R3,D1,D2,D3,K1,K2,U1,U2,S1,S2 insight

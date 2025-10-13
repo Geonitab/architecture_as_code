@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Unit Tests] --> B[Integration Tests]
-    B --> C[Security Tests]
-    C --> D[Performance Tests]
-    D --> E[Production Deploy]
+    A[Unit Tests]:::kv-primary --> B[Integration Tests]:::kv-highlight
+    B --> C[Security Tests]:::kv-accent
+    C --> D[Performance Tests]:::kv-accent
+    D --> E[Production Deploy]:::kv-primary

@@ -1,24 +1,13 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Requirements as Code] --> B[Compliance as Code]
-    B --> C[Documentation as Code]
-    C --> D[Design as Code]
-    D --> E[Coding]
-    E --> F[CI/CD]
-    F --> G[Infrastructure as Code]
-    
-    D -.-> H[Design Tokens]
+    A[Requirements as Code]:::kv-primary --> B[Compliance as Code]:::kv-highlight
+    B --> C[Documentation as Code]:::kv-highlight
+    C --> D[Design as Code]:::kv-accent
+    D --> E[Coding]:::kv-accent
+    E --> F[CI/CD]:::kv-accent
+    F --> G[Infrastructure as Code]:::kv-primary
+
+    D -.-> H[Design Tokens]:::kv-pattern
     H -.-> E
-    
+
     G -.-> A
     F -.-> B

@@ -1,25 +1,14 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph TB
-    A[Cost Monitoring Stack] --> B[CloudWatch/Azure Monitor]
-    A --> C[Custom Dashboards]
-    A --> D[Alert System]
-    
-    B --> E[Metrics Collection]
-    C --> F[Reporting]
-    D --> G[Anomaly Detection]
-    
-    E --> H[Cost Analysis]
+    A[Cost Monitoring Stack]:::kv-primary --> B[CloudWatch/Azure Monitor]:::kv-highlight
+    A --> C[Custom Dashboards]:::kv-accent
+    A --> D[Alert System]:::kv-accent
+
+    B --> E[Metrics Collection]:::kv-highlight
+    C --> F[Reporting]:::kv-muted
+    D --> G[Anomaly Detection]:::kv-pattern
+
+    E --> H[Cost Analysis]:::kv-primary
     F --> H
     G --> H
-    
-    H --> I[Optimization Actions]
+
+    H --> I[Optimization Actions]:::kv-highlight

@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Git repository] --> B[Branching strategy]
-    B --> C[Code review]
-    C --> D[Merge process]
-    D --> E[Deployment]
+    A[Git repository]:::kv-primary --> B[Branching strategy]:::kv-highlight
+    B --> C[Code review]:::kv-accent
+    C --> D[Merge process]:::kv-accent
+    D --> E[Deployment]:::kv-primary

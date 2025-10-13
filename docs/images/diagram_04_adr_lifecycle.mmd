@@ -1,23 +1,12 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[ADR skapas] --> B[Status: Proposed]
-    B --> C{Review process}
-    C -->|Godkänt| D[Status: Accepted]
-    C -->|Ej godkänt| E[Revidering behövs]
+    A[ADR skapas]:::kv-primary --> B[Status: Proposed]:::kv-highlight
+    B --> C{Review process}:::kv-outline
+    C -->|Godkänt| D[Status: Accepted]:::kv-accent
+    C -->|Ej godkänt| E[Revidering behövs]:::kv-muted
     E --> B
-    D --> F[Implementation]
-    F --> G[Monitoring]
-    G --> H{Fungerar?}
-    H -->|Ja| I[Fortsatt användning]
-    H -->|Nej| J[Status: Deprecated]
-    J --> K[Nytt ADR behövs]
+    D --> F[Implementation]:::kv-accent
+    F --> G[Monitoring]:::kv-highlight
+    G --> H{Fungerar?}:::kv-outline
+    H -->|Ja| I[Fortsatt användning]:::kv-accent
+    H -->|Nej| J[Status: Deprecated]:::kv-muted
+    J --> K[Nytt ADR behövs]:::kv-pattern

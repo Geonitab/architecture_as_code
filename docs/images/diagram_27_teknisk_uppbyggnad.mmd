@@ -85,12 +85,8 @@ graph TB
     ART --> DOWN
 
     %% Styling
-    classDef source fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
-    classDef build fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    classDef output fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
-    classDef distribution fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
-
-    class MD,MMD,PY,SH,YAML source
-    class PYTHON,PANDOC,LATEX,CHROME,GEN,CONV,BUILD,VAL build
-    class PDF,EPUB,DOCX,HTML,PPTX output
-    class REL,ART,DOWN distribution
+    class MD,MMD,PY,SH,YAML kv-highlight
+    class REPO,GHA kv-outline
+    class PYTHON,PANDOC,LATEX,CHROME,GEN,CONV,BUILD,VAL kv-accent
+    class PDF,EPUB,DOCX,HTML,PPTX kv-primary
+    class REL,ART,DOWN kv-pattern

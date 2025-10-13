@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Experience] --> B[Analysis]
-    B --> C[Patterns]
-    C --> D[Best Practices]
-    D --> E[Continuous Improvement]
+    A[Experience]:::kv-primary --> B[Analysis]:::kv-highlight
+    B --> C[Patterns]:::kv-accent
+    C --> D[Best Practices]:::kv-accent
+    D --> E[Continuous Improvement]:::kv-primary

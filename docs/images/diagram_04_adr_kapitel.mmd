@@ -1,38 +1,27 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph TD
-    A[Problem Identification] --> B[Context Analysis]
-    B --> C[Alternative Evaluation]
-    C --> D[Decision Formulation]
-    D --> E[ADR Documentation]
-    E --> F[Review Process]
-    F --> G{Approved?}
-    G -->|Yes| H[Status: Accepted]
+    A[Problem Identification]:::kv-primary --> B[Context Analysis]:::kv-highlight
+    B --> C[Alternative Evaluation]:::kv-accent
+    C --> D[Decision Formulation]:::kv-accent
+    D --> E[ADR Documentation]:::kv-primary
+    E --> F[Review Process]:::kv-highlight
+    F --> G{Approved?}:::kv-outline
+    G -->|Yes| H[Status: Accepted]:::kv-accent
     G -->|No| C
-    H --> I[Implementation]
-    I --> J[Monitoring]
-    J --> K{Decision Works?}
-    K -->|Yes| L[Continued Use]
-    K -->|No| M[Status: Deprecated]
-    M --> N[New ADR Needed]
+    H --> I[Implementation]:::kv-primary
+    I --> J[Monitoring]:::kv-highlight
+    J --> K{Decision Works?}:::kv-outline
+    K -->|Yes| L[Continued Use]:::kv-accent
+    K -->|No| M[Status: Deprecated]:::kv-muted
+    M --> N[New ADR Needed]:::kv-pattern
     N --> A
-    
+
     subgraph "ADR Structure"
-        E1[Context]
-        E2[Decision]
-        E3[Consequences]
-        E4[Status]
+        E1[Context]:::kv-muted
+        E2[Decision]:::kv-accent
+        E3[Consequences]:::kv-highlight
+        E4[Status]:::kv-muted
     end
-    
+
     E --> E1
     E --> E2
     E --> E3
