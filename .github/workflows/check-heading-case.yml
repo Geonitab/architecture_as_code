@@ -1,0 +1,32 @@
+name: Check Heading Case
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**/*.md'
+  workflow_dispatch: {}
+
+jobs:
+  check-heading-case:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      
+      - name: 🔍 Check heading case
+        run: |
+          echo "=== Checking that all headings start with uppercase letters ==="
+          python3 scripts/check_heading_case.py
+          echo "✅ All headings follow the uppercase convention"
