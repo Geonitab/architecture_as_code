@@ -1,8 +1,8 @@
-# Appendix A: Kodexempel and technical architecture as code-implementations
+\appendix
 
-This appendix contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to do the enkelt to hitta specific implementations.
+# Code examples and technical architecture as code implementations
 
-![Kodexempel appendix](images/diagram_26_appendix.png)
+Appendix A contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to do the enkelt to hitta specific implementations.
 
 *This appendix functions as a praktisk referenssamling for all technical implementations as demonstreras genAbout the Book. each kodexamples is kategoriserat and märkt with References tobaka to relevanta chapter.*
 
@@ -1772,6 +1772,10 @@ This appendix uppdateras löpande when new kodexamples läggs to in bokens huvud
 ---
 
 ## Chapter 14 Reference Implementations
+
+The extended Terraform implementation that once appeared inline in Chapter 14 is preserved here so that readers can access the full listing without interrupting the main narrative. Cross-references in the chapter point to these appendix entries for quick navigation.
+
+> **Note:** Moving the code to Appendix A keeps Chapter 14 focused on adoption strategy while still providing the complete infrastructure example for practitioners.
 
 ### 14_CODE_1: Terraform service blueprint for a web application landing zone {#14_code_1}
 *Referenced from Chapter 14: [Architecture as Code in Practice](14_practical_implementation.md)*
