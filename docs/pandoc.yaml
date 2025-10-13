@@ -18,7 +18,7 @@ template: eisvogel.latex
 pdf-engine: xelatex
 
 # Syntax highlighting configuration
-highlight-style: tango
+highlight-style: breezedark
 # Alternative highlight styles: pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, tango
 
 # Metadata for document

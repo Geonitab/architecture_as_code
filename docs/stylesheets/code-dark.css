@@ -1,0 +1,25 @@
+/* Dark theme for code elements across the Architecture as Code book */
+
+/* Inline code */
+code {
+  background-color: #1f2933;
+  color: #f5f7fa;
+  padding: 0.1em 0.35em;
+  border-radius: 0.35em;
+  font-size: 0.95em;
+}
+
+/* Code blocks */
+pre,
+pre code {
+  background-color: #1f2933;
+  color: #f5f7fa;
+}
+
+pre {
+  padding: 1.1em;
+  border-radius: 0.5em;
+  overflow: auto;
+  line-height: 1.45;
+}
+
