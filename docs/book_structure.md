@@ -104,14 +104,14 @@ Reference material, author information, and technical enablers
 | 25 | `25_future_trends_development.md` | Future Trends and Development in Architecture as Code | Development trends, technological future, and long-term perspectives |
 | 27 | `27_conclusion.md` | Conclusion | Concluding reflections |
 
-### Appendices (Chapters 28-31)
+### Appendices
 
-| Chapter | File | Title | Description |
-|---------|------|-------|-------------|
+| Chapter / Appendix | File | Title | Description |
+|--------------------|------|-------|-------------|
 | 28 | `28_glossary.md` | Glossary | Glossary and definitions |
 | 29 | `29_about_the_authors.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
 | 30 | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
-| 31 | `31_technical_architecture.md` | Technical Structure for Book Production | Technical book production infrastructure |
+| Appendix B | `31_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
 
 ---
 

@@ -31,7 +31,7 @@ The book explores how to treat architecture and infrastructure work as software 
 - **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
 - **Chapter 29 – About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Chapter 31 – Technical Structure for Book Production:** Tooling overview for the publishing platform.【F:docs/book_structure.md†L97-L139】
+- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.【F:docs/book_structure.md†L97-L139】
 
 ### Archived Drafts
 - **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/book_structure.md†L81-L108】【F:docs/archive/README.md†L1-L9】
