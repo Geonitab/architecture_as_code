@@ -27,8 +27,8 @@ metadata:
   subtitle: "Infrastructure as Code i praktiken"
   author: "Kodarkitektur Bokverkstad"
   date: "2024"
-  language: sv
-  lang: sv-SE
+  language: en
+  lang: en-US
 
 # Variables for better compatibility
 variables:
@@ -43,7 +43,7 @@ variables:
     - right=2.5cm
   fontsize: 11pt
   linestretch: 1.2
-  lang: sv-SE
+  lang: en-US
   cover-image: "images/book-cover.png"
   include-before: |
     \newpage
