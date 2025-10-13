@@ -60,8 +60,7 @@ releases/                 # Git-ignored distribution bundles populated by build 
 
 ### Prerequisites
 - **Pandoc 3.1.9+** and **XeLaTeX** (`texlive-xetex`, `texlive-fonts-recommended`, `texlive-plain-generic`) for PDF output.
-- **Mermaid CLI (`@mermaid-js/mermaid-cli`)** for diagram generation.
-- **Node.js & npm** for running JavaScript-based helper scripts (no front-end assets are currently included).
+- **Mermaid CLI (`@mermaid-js/mermaid-cli`)** for diagram generation (requires a Node.js runtime for installation).
 - **Python 3.12+** for content automation scripts.【F:docs/build_book.sh†L1-L171】【F:build_release.sh†L1-L59】
 
 ### Core Commands
