@@ -48,8 +48,7 @@ nav:
 docs_dir: docs
 use_directory_urls: true
 theme:
-  name: bootswatch
-  bootswatch_theme: slate
+  name: readthedocs
 markdown_extensions:
   - toc
   - tables
