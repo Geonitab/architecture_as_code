@@ -1,6 +1,6 @@
 # Policy and Security as Code in Detail
 
-![Policy-as-Code delivery lifecycle](images/diagram_12_kapitel10.png)
+![Policy-as-Code delivery lifecycle](images/diagram_12_chapter10.png)
 
 *Figure 10.1 – Policy-as-Code guardrails embedded across the delivery lifecycle, from initial design through to production monitoring.*
 
@@ -32,7 +32,7 @@ Modern PaC programmes integrate design-time reviews, automated approvals, runtim
 
 ## Policy-as-Code operating model
 
-![Security automation mind map](images/mindmap_10_sakerhet.png)
+![Security automation mind map](images/mindmap_10_security.png)
 
 *Figure 10.2 – A mind map of the continuous security operating model used throughout Architecture as Code.*
 

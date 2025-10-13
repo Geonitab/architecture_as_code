@@ -2,7 +2,7 @@
 
 Effective version control forms the backbone of Architecture as Code implementations. Applying the same practices as software development to infrastructure definitions delivers traceability, collaboration opportunities, and quality control.
 
-![Version Control and Code structure](images/diagram_03_kapitel2.png)
+![Version Control and Code structure](images/diagram_03_chapter2.png)
 
 The diagram illustrates the typical flow from a Git repository through branching strategy and code review to final deployment, ensuring controlled and traceable infrastructure development.
 

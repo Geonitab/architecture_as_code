@@ -24,7 +24,7 @@ Moving beyond traditional organisational silos requires deliberate structural ch
 
 Effective transformation programmes address multiple dimensions simultaneously rather than treating culture, skills, or governance as independent variables. Figure 17.2 maps the relationships between culture, team composition, skill growth, and change management activities that support those outcomes.
 
-![Figure 17.2 – Key dimensions of organisational change for Architecture as Code](images/mindmap_17_organisation.png)
+![Figure 17.2 – Key dimensions of organisational change for Architecture as Code](images/mindmap_17_organization.png)
 
 *The mind map highlights how cultural foundations, cross-functional team structures, capability development, role evolution, and change management practices reinforce one another. Organisations that invest in all five domains create feedback loops that accelerate adoption and sustain improvement over time.*
 

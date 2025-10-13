@@ -61,9 +61,9 @@ All Mermaid diagrams have been enhanced with:
 - **Professional Styling**: Consistent with Kvadrat brand guidelines
 
 Example diagrams enhanced:
-- `diagram_01_inledning.mmd`: Evolution from traditional to modern architecture
-- `diagram_02_grundlaggande_principer.mmd`: Core principles flow with benefits
-- `diagram_03_versionhantering.mmd`: Version control workflow with quality gates
+- `diagram_01_introduction.mmd`: Evolution from traditional to modern architecture
+- `diagram_02_fundamental_principles.mmd`: Core principles flow with benefits
+- `diagram_03_version_control.mmd`: Version control workflow with quality gates
 - `code_review_sequence.mmd`: Professional sequence diagram with icons
 - `diagram_04_architecture_tools_quadrant.mmd`: Tool selection matrix with clear quadrants
 

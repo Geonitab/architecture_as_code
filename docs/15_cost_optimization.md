@@ -1,10 +1,10 @@
 # Cost Optimization and Resource Management
 
-![Cost optimization workflow](images/diagram_16_kapitel15.png)
+![Cost optimization workflow](images/diagram_16_chapter15.png)
 
 *Kostnadsoptimeringsarbetsflödet visar den systematiska processen från initial kostnadsanalys genom monitoring och optimering till automation och besparingar. Processen är kontinuerlig med feedback-loopar som möjliggör ständig förbättring baserat på faktiska resultat. Nyckelfunktioner inkluderar budget alerts, rightsizing av resurser, användning av spot instances, automatisk skalning och strukturerad resource tagging.*
 
-![Cost monitoring and analysis flow](images/diagram_17_kapitel15.png)
+![Cost monitoring and analysis flow](images/diagram_17_chapter15.png)
 
 *Denna förenklad vy av kostnadsoptimeringsprocessen illustrerar hur olika komponenter arbetar tillsammans: från kostnadsanalys via monitoring och optimering till automation som leder till konkreta besparingar.*
 

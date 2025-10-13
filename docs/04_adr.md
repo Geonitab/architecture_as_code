@@ -33,7 +33,7 @@ In the Architecture as Code context, ADRs document decisions about technology ch
 
 ### Standardised ADR Template
 
-![Figure 4.2 – Standard Architecture Decision Record structure](images/diagram_04_adr_struktur.png)
+![Figure 4.2 – Standard Architecture Decision Record structure](images/diagram_04_adr_structure.png)
 
 *Figure 4.2 highlights the four core sections every ADR should capture before the template is populated with project-specific information.*
 

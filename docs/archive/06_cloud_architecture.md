@@ -2,7 +2,7 @@
 
 Cloud Architecture as Code represents the natural development of Architecture as Code in cloud-based environments. By utilising cloud providers' APIs and services, organisations can create scalable, resilient, and cost-effective architectures entirely through Architecture as Code. As we saw in [chapter 2 about Fundamental principles](02_kapitel1.md), this method is fundamental for modern organisations as they strive for digital transformation and operational excellence.
 
-![Cloud Architecture as Code](images/diagram_05_kapitel4.png)
+![Cloud Architecture as Code](images/diagram_05_chapter4.png)
 
 The diagram illustrates the progression from multi-cloud environments through provider abstraction and resource management to state management and cross-region deployment capabilities. This progression enables the type of scalable Architecture as Code automation that we will delve into in [chapter 4 about CI/CD pipelines](04_kapitel3.md) and the organisational change as discussed in [chapter 10](10_kapitel9.md).
 
