@@ -4,7 +4,7 @@
 
 Continuous integration and continuous deployment (CI/CD) combined with a mature DevOps culture form the backbone of modern software delivery. When Architecture as Code principles are applied, these processes become even more critical. This chapter explores how Swedish organisations can establish robust, secure, and effective CI/CD pipelines that transform infrastructure management from manual, error-prone activities into automated, reliable, and auditable operations while treating the entire system architecture as executable code.
 
-![Architecture as Code implementation timeline](images/diagram_05_gantt_timeline.png)
+![Architecture as Code implementation timeline](images/diagram_05_gantt_timeline.png){ width=100% }
 
 The diagram above illustrates a typical timeline for an Architecture as Code implementation, from initial tool analysis through to a full production rollout.
 
