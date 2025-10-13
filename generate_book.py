@@ -79,7 +79,7 @@ def generate_iac_book_content():
 
 Arkitektur som kod (Architecture as Code) representerar ett paradigmskifte inom systemutveckling där hela systemarkitekturen definieras, versionshanteras och hanteras genom kod. Detta approach möjliggör samma metodiker som traditionell mjukvaruutveckling för hela organisationens tekniska landskap.
 
-![Inledning till arkitektur som kod](images/diagram_01_inledning.png)
+![Inledning till arkitektur som kod](images/diagram_01_introduction.png)
 
 Diagrammet illustrerar evolutionen från manuella processer till den omfattande visionen av Architecture as Code, där hela systemarkitekturen kodifieras.
 
@@ -317,7 +317,7 @@ Källor:
 
 Effektiv versionhantering utgör ryggraden i Infrastructure as Code-implementationer. Genom att tillämpa samma metoder som mjukvaruutveckling på infrastrukturdefinitioner skapas spårbarhet, samarbetsmöjligheter och kvalitetskontroll.
 
-![Versionhantering och kodstruktur](images/diagram_03_kapitel2.png)
+![Versionhantering och kodstruktur](images/diagram_03_chapter2.png)
 
 Diagrammet illustrerar det typiska flödet från Git repository genom branching strategy och code review till slutlig deployment, vilket säkerställer kontrollerad och spårbar infrastrukturutveckling.
 

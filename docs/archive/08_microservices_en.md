@@ -1,6 +1,6 @@
 # Microservices architecture as code
 
-![Microservices Architecture](images/diagram_13_kapitel12.png)
+![Microservices Architecture](images/diagram_13_chapter12.png)
 
 Microservices architecture represents a fundamental paradigm shift in how we design, build, and operate modern applications. This architectural style breaks down traditional monolithic systems into smaller, independent, and specialised services that can be developed, deployed, and scaled independently. When this powerful architecture is combined with Architecture as Code, a synergistic effect is created that enables both technical excellence and organisational agility.
 

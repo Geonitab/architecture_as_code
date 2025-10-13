@@ -4,7 +4,7 @@ Architecture as Code succeeds when organisational ambitions, engineering discipl
 
 Prioritising clarity is crucial. Figure 14.1 highlights the operating model used by many platform teams to combine architecture governance, automation, and stakeholder alignment. It serves as a quick reference for the foundational capabilities that underpin every implementation.
 
-![Figure 14.1 – Capability landscape for practical Architecture as Code](images/diagram_08_kapitel7.png)
+![Figure 14.1 – Capability landscape for practical Architecture as Code](images/diagram_08_chapter7.png)
 *Figure 14.1 – Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over time.*
 
 ## Implementation roadmap and strategies

@@ -1,6 +1,6 @@
 # Security in Architecture as Code
 
-![Security as code workflow](images/diagram_06_kapitel5.png)
+![Security as code workflow](images/diagram_06_chapter5.png)
 
 *Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are
  embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous complian
@@ -9,7 +9,7 @@ owing delivery teams.*
 
 ## Dimensions of security architecture
 
-![Relationships between core security concepts](images/mindmap_10_sakerhet.png)
+![Relationships between core security concepts](images/mindmap_10_security.png)
 
 *The mind map illustrates the complex relationships between security capabilities in an Architecture as Code landscape—from thre
 at modelling and Zero Trust Architecture to Policy as Code and continuous risk assessment. The holistic perspective shows how sec

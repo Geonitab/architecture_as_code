@@ -1,6 +1,6 @@
 # chapter 20: Use Lovable to create mockups for Swedish organizations
 
-![Lovable Workflow Diagram](images/diagram_21_kapitel20.png)
+![Lovable Workflow Diagram](images/diagram_21_chapter20.png)
 
 ## Inledning to Lovable
 

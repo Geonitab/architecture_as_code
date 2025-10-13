@@ -1,6 +1,6 @@
 # Automation, DevOps and CI/CD for Architecture as Code
 
-![Automation and CI/CD pipelines](images/diagram_04_kapitel3.png)
+![Automation and CI/CD pipelines](images/diagram_04_chapter3.png)
 
 Continuous integration and continuous deployment (CI/CD) combined with a mature DevOps culture form the backbone of modern software delivery. When Architecture as Code principles are applied, these processes become even more critical. This chapter explores how Swedish organisations can establish robust, secure, and effective CI/CD pipelines that transform infrastructure management from manual, error-prone activities into automated, reliable, and auditable operations while treating the entire system architecture as executable code.
 

@@ -1,6 +1,6 @@
 # Microservices-architecture as code
 
-![Microservices-architecture](images/diagram_13_kapitel12.png)
+![Microservices-architecture](images/diagram_13_chapter12.png)
 
 Microservices-architecture represents a Fundamental paradigmforändring in how vi utformar, bygger and driver modern applications. This arkitekturstil breaks ner traditional monolitiska systems in smaller, oberoende and specialized services as can is developed, driftsättas and skalas självständigt. When This kraftfulla architecture kombineras with Architecture as Code, are created a samverkande effekt as enables both technical excellence and organisatorisk smidighet.
 

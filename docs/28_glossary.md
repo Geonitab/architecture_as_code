@@ -1,6 +1,6 @@
 # Glossary
 
-![Architecture as Code Core Concepts Class Diagram](images/diagram_23_ordlista_class.png)
+![Architecture as Code Core Concepts Class Diagram](images/diagram_23_glossary_class.png)
 
 The glossary gathers the key terminology that shapes the Architecture as Code approach across this book. It embraces inclusive language so that every practitioner—regardless of background, role, or level of experience—can connect their work to the concepts shown in the relationships diagram above.
 

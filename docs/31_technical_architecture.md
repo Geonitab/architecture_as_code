@@ -2,7 +2,7 @@
 
 This chapter describes the technical infrastructure and workflow that produce, build, and publish "Architecture as Code". The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
 
-![Technical architecture for book production](images/diagram_27_teknisk_uppbyggnad.png)
+![Technical architecture for book production](images/diagram_27_technical_structure.png)
 
 *The diagram illustrates the end-to-end technical system that powers book production, from Markdown sources through automated pipelines to the final publications.*
 
