@@ -1,9 +1,5 @@
 # Modern Best Practices and Lessons Learned
 
-![Figure 24.1 – Maturity journey for Architecture as Code](images/diagram_20_kapitel19.png)
-
-*Figure 24.1 illustrates how Architecture as Code capabilities mature from initial adoption to optimised, data-driven operating models.*
-
 Architecture as Code practices evolve rapidly as teams balance platform stability, compliance expectations, and product agility. The most successful organisations pair disciplined engineering routines with human-centred ways of working, ensuring that automation never removes context or accountability. This chapter distils contemporary lessons learned from teams operating at scale across finance, public services, healthcare, media, and high-growth technology sectors. Every section emphasises globally applicable guidance while using British English terminology.
 
 ## A Holistic Landscape of Practice Areas
