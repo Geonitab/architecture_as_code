@@ -1,20 +1,20 @@
 %% Management contributions embedded in DevOps loop
 flowchart LR
-    A[Plan] --> B[Code]
-    B --> C[Build]
-    C --> D[Test]
-    D --> E[Release]
-    E --> F[Deploy]
-    F --> G[Operate]
-    G --> H[Observe]
+    A[Plan]:::kv-primary --> B[Code]:::kv-accent
+    B --> C[Build]:::kv-accent
+    C --> D[Test]:::kv-highlight
+    D --> E[Release]:::kv-highlight
+    E --> F[Deploy]:::kv-accent
+    F --> G[Operate]:::kv-accent
+    G --> H[Observe]:::kv-highlight
     H --> A
 
     subgraph Management Contributions
-        MA[Strategic Objectives as Code]
-        MB[Policy Automation Scripts]
-        MC[Budget Guardrails]
-        MD[Operational Dashboards]
-        ME[Adaptive Governance Rules]
+        MA[Strategic Objectives as Code]:::kv-elevated
+        MB[Policy Automation Scripts]:::kv-elevated
+        MC[Budget Guardrails]:::kv-elevated
+        MD[Operational Dashboards]:::kv-elevated
+        ME[Adaptive Governance Rules]:::kv-elevated
     end
 
     A -. consumes .-> MA
