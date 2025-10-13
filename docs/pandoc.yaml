@@ -49,31 +49,17 @@ variables:
     \newpage
     \thispagestyle{empty}
     \begin{center}
-    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{images/book-cover.png}
-    \end{center}
-    \newpage
-    \thispagestyle{empty}
-    \begin{center}
-    \vspace*{0.15\textheight}
+    \vspace*{0.05\textheight}
+    \includegraphics[width=\paperwidth,height=0.75\paperheight,keepaspectratio]{images/book-cover.png}
+    \vspace{0.04\textheight}
     {\Huge\bfseries Architecture as Code\par}
-    \vspace{1.25cm}
+    \vspace{0.75cm}
     {\Large\itshape A practical handbook for Infrastructure as Code\par}
-    \vfill
+    \vspace{0.75cm}
     {\large Architecture as Code Editorial Team\par}
     {\large 2024\par}
-    \vspace*{0.1\textheight}
-    \end{center}
-    \newpage
-    \thispagestyle{empty}
-    \begin{center}
-    \vspace*{0.2\textheight}
-    {\Large\bfseries Architecture as Code}\par
-    \vspace{1cm}
-    {\normalsize A comprehensive British English guide covering modern Infrastructure as Code practices, organisational governan
-    ce, and architectural automation for cloud-native delivery teams.\par}
-    \vspace{1.5cm}
-    {\normalsize Published by the Architecture as Code Book Workshop\par}
-    {\normalsize London, United Kingdom}\par
+    \vspace{0.5cm}
+    {\normalsize A comprehensive British English guide covering modern Infrastructure as Code practices, organisational governance, and architectural automation for cloud-native delivery teams.\par}
     \vspace*{0.1\textheight}
     \end{center}
     \newpage
