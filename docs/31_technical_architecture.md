@@ -6,12 +6,6 @@ This appendix describes the technical infrastructure and workflow that produce, 
 
 *The diagram illustrates the end-to-end technical system that powers book production, from Markdown sources through automated pipelines to the final publications.*
 
-![Architecture data model](images/diagram_27_er_architecture.png)
-
-The entity relationship diagram above shows the logical data structure that connects organisations, projects, infrastructure, and deployments in an Architecture as Code implementation.
-
-## Markdown Files: Structure and Purpose
-
 ### File Organisation and Naming Conventions
 
 Book content is organised in 31 Markdown files within the `docs/` directory, where each file represents a chapter:
