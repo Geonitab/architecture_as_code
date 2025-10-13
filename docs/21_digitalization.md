@@ -1,14 +1,14 @@
 # Digital Transformation through Code-Based Infrastructure
 
-![Digital transformation process](images/diagram_21_digitalisation_process.png)
+![Figure 21.1 – Digital transformation journey for Architecture as Code](images/diagram_21_digitalisation_process.png)
 
-*Architecture as Code forms the foundation of modern digital transformation initiatives by enabling rapid, scalable, and cost-effective transformation of IT environments. The diagram illustrates the strategic journey from traditional infrastructure to a fully code-based digital platform, showing how organisations transition from manual processes to automated, declarative infrastructure management.*
+*Figure 21.1 highlights how Architecture as Code supports modern digital transformation initiatives by enabling rapid, scalable, and cost-effective evolution of IT environments from manual processes to automated, declarative infrastructure management.*
 
 ## Digital Transformation Landscape
 
-![Digital transformation dimensions](images/mindmap_21_digitalisation.png)
+![Figure 21.2 – Dimensions of digital transformation enabled by Architecture as Code](images/mindmap_21_digitalisation.png)
 
-*This mindmap illustrates the multidimensional nature of digital transformation through Architecture as Code. It shows how cloud-first strategies, organisational challenges, and proven success patterns interconnect to shape the digital transformation journey. The visualisation highlights key technical, cultural, and business dimensions that organisations must address to achieve successful transformation.*
+*Figure 21.2 illustrates the multidimensional nature of digital transformation through Architecture as Code. It shows how cloud-first strategies, organisational challenges, and proven success patterns interconnect to shape the digital transformation journey, highlighting the technical, cultural, and business dimensions that organisations must address to achieve successful transformation.*
 
 ## Overview
 
