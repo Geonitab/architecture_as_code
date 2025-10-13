@@ -14,139 +14,139 @@ Architecture as Code practices evolve rapidly as teams balance platform stabilit
 
 Figure 24.2 introduces the seven practice clusters explored throughout this chapter. The mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities: disciplined code organisation, secure foundations, responsive performance management, robust governance, people enablement, collaborative ecosystems, and continuous improvement. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
 
-## 24.1 Code Organisation and Modularity
+## Code Organisation and Modularity
 
 Establishing an orderly codebase is the first visible signal of a mature Architecture as Code programme. Clear structure shortens feedback loops, accelerates onboarding, and reduces the probability of accidental change in production environments.
 
-### 24.1.1 Repository Structure Principles
+### Repository Structure Principles
 
 Multi-team estates benefit from a layered repository strategy. Shared modules live in dedicated libraries with strict versioning, while environment-specific overlays capture configuration drift without duplicating logic. Application repositories reference the shared components as dependencies, ensuring that infrastructure and product changes remain synchronised. Monorepositories remain viable when tooling is mature enough to enforce ownership boundaries and automated testing at scale.
 
-### 24.1.2 Module Design Guidelines
+### Module Design Guidelines
 
 Reusable modules declare explicit interfaces, document required inputs, and publish examples that demonstrate expected behaviour. Tests cover typical and failure scenarios, providing confidence when modules are reused by delivery teams on different continents. To support long-lived cloud programmes, modules ship with policy guardrails embedded as defaults, avoiding surprise misconfigurations in downstream environments.
 
-### 24.1.3 Versioning and Release Management
+### Versioning and Release Management
 
 Semantic versioning and immutable artefacts allow platform teams to issue non-breaking updates while maintaining confidence in previous releases. Automation enforces changelog quality, ensuring that infrastructure consumers understand upgrade implications. Dependency scanners monitor module adoption rates and raise alerts when security patches remain unapplied beyond an agreed service level.
 
-## 24.2 Security and Compliance Patterns
+## Security and Compliance Patterns
 
 Security-first thinking remains essential in every jurisdiction. Regulatory expectations increasingly require evidence that infrastructure safeguards are defined as code and enforced automatically.
 
-### 24.2.1 Security-by-Design Foundations
+### Security-by-Design Foundations
 
 Architectural baselines adopt least-privilege policies, network segmentation, and zero-trust controls by default. Platform teams implement guardrails as reusable templates rather than bespoke scripts, combining infrastructure definitions with security policies and validation tests.
 
-### 24.2.2 Compliance Automation
+### Compliance Automation
 
 Codified controls translate regulatory obligations—such as data residency, retention limits, and encryption requirements—into enforceable policies. Automated assessments run during every pipeline execution, supplying auditable evidence and reducing the manual workload associated with external reviews. Mature programmes align these controls with international frameworks including ISO/IEC 27001, NIST 800-series guidance, and regional privacy legislation.
 
-### 24.2.3 Secret and Key Management
+### Secret and Key Management
 
 Modern secret platforms rotate credentials automatically, support hardware-backed key storage, and log every access request. Integration with developer workflows ensures that secrets never leave approved channels, while incident-response runbooks rehearse emergency key revocation.
 
-### 24.2.4 Continuous Assurance
+### Continuous Assurance
 
 Security scanning and policy-as-code engines execute continuously across development, staging, and production environments. Findings are triaged using risk-based workflows so that remediation is prioritised according to business impact, not just discovery date.
 
-## 24.3 Performance and Scalability Strategies
+## Performance and Scalability Strategies
 
 Performance management spans more than compute tuning; it also considers carbon intensity, customer experience, and business continuity.
 
-### 24.3.1 Adaptive Infrastructure Footprints
+### Adaptive Infrastructure Footprints
 
 Autoscaling policies blend predictive analytics with historical demand profiles, limiting waste while safeguarding response times during promotional campaigns or emergency communications. Teams complement scaling automation with runbooks that explain how to pause or extend capacity when automated heuristics are insufficient.
 
-### 24.3.2 Global Deployment Patterns
+### Global Deployment Patterns
 
 Organisations operating across multiple regions design for latency budgets, data sovereignty, and resilience simultaneously. Blueprints specify replication strategies, traffic routing policies, and failover choreography, making it easier to expand into new territories without redesigning the entire platform.
 
-### 24.3.3 Observability and Feedback Loops
+### Observability and Feedback Loops
 
 Infrastructure telemetry, distributed tracing, and synthetic testing offer shared situational awareness. Operations dashboards integrate service-level objectives with sustainability indicators so that teams can balance performance against energy consumption and cost targets.
 
-## 24.4 Governance and Policy Enablement
+## Governance and Policy Enablement
 
 Effective governance empowers delivery teams rather than restricting them. The most resilient organisations automate policy enforcement while preserving clear accountability for decisions.
 
-### 24.4.1 Policy-as-Code Execution
+### Policy-as-Code Execution
 
 Policies live alongside the infrastructure artefacts they protect. Enforcement pipelines evaluate every pull request, block non-compliant changes, and provide human-readable guidance for remediation. Dashboards summarise conformance trends for senior stakeholders, enabling data-informed risk discussions.
 
-### 24.4.2 Financial Management
+### Financial Management
 
 FinOps disciplines incorporate budgets into infrastructure definitions. Tagged resources, automated shutdown rules, and predictive spending alerts maintain fiscal control without requiring manual spreadsheet audits. Shared savings targets encourage teams to reinvest efficiency gains into innovation initiatives.
 
-### 24.4.3 Change Management
+### Change Management
 
 Progressive delivery techniques—such as feature flags, blue-green deployments, and canary releases—allow infrastructure upgrades to roll out gradually. Governance boards define approval thresholds based on blast radius, so that low-risk experiments progress quickly while critical systems receive broader scrutiny.
 
-## 24.5 Talent Development and Skills Evolution
+## Talent Development and Skills Evolution
 
 Architecture as Code success depends on multidisciplinary teams who understand both tooling and the business outcomes it supports.
 
-### 24.5.1 Competency Frameworks
+### Competency Frameworks
 
 Competency matrices describe expectations for engineers, security specialists, product leaders, and operations managers. These matrices guide career development conversations and shape hiring strategies across regions.
 
-### 24.5.2 Immersive Learning Environments
+### Immersive Learning Environments
 
 Hands-on sandboxes replicate production controls, allowing teams to practise deployments, incident recovery, and audit preparation without jeopardising live services. Scenario-based exercises build muscle memory for high-pressure situations.
 
-### 24.5.3 Mentoring and Communities of Practice
+### Mentoring and Communities of Practice
 
 Cross-functional communities of practice meet regularly to exchange patterns, documentation updates, and lessons learned. Mentoring programmes pair experienced platform engineers with colleagues from emerging markets or new business units, accelerating adoption without relying solely on formal training courses.
 
-## 24.6 Tooling and Supplier Strategy
+## Tooling and Supplier Strategy
 
 Tooling choices influence agility, security posture, and total cost of ownership. Modern organisations treat vendor management as a collaborative discipline that spans procurement, engineering, and legal teams.
 
-### 24.6.1 Evaluation and Proof of Concept
+### Evaluation and Proof of Concept
 
 Structured scorecards evaluate functionality, interoperability, security assurances, and sustainability commitments before committing to new tooling. Proof-of-concept experiments validate real-world integration paths and provide evidence for procurement decisions.
 
-### 24.6.2 Multi-Vendor Approaches
+### Multi-Vendor Approaches
 
 Balanced portfolios prevent lock-in and create negotiation leverage. Where a single provider is necessary, contracts include exit clauses, data portability guarantees, and shared roadmaps that highlight co-investment opportunities.
 
-### 24.6.3 Supplier Relationship Management
+### Supplier Relationship Management
 
 Regular service reviews examine performance metrics, support responsiveness, and roadmap alignment. Joint innovation forums allow vendors and platform teams to co-design features that deliver measurable value.
 
-## 24.7 Risk Management and Resilience
+## Risk Management and Resilience
 
 Risk management integrates technical safeguards with business continuity planning so that infrastructure disruption does not cascade into customer harm.
 
-### 24.7.1 Integrated Risk Assessment
+### Integrated Risk Assessment
 
 Risk registers link infrastructure components to critical business services. Automated checks measure control effectiveness, while periodic scenario planning workshops explore complex failure modes that fall outside automated coverage.
 
-### 24.7.2 Business Continuity and Disaster Recovery
+### Business Continuity and Disaster Recovery
 
 Recovery plans include code repository restoration, pipeline rebuilds, and data recovery runbooks. Organisations rehearse disaster simulations at least annually, validating recovery time objectives (RTOs) and recovery point objectives (RPOs) under realistic conditions.
 
-### 24.7.3 Crisis Communication
+### Crisis Communication
 
 Structured communication protocols provide timely updates to executives, regulators, partners, and customers. Templates clarify who speaks, what they share, and how frequently updates occur during major incidents.
 
-## 24.8 Community Collaboration and Open Practice
+## Community Collaboration and Open Practice
 
 Sharing knowledge accelerates improvement across the industry while reinforcing an organisation’s own learning culture.
 
-### 24.8.1 Contribution Strategies
+### Contribution Strategies
 
 Teams define approval processes for contributing to open-source projects, ensuring that licensing, intellectual property, and confidentiality obligations remain intact. Contributions often include reusable modules, policy libraries, and documentation templates.
 
-### 24.8.2 Knowledge Exchange
+### Knowledge Exchange
 
 Internal guilds, external conferences, and public blogs allow practitioners to spread lessons learned. Many organisations host open clinics where community members can discuss design questions and review infrastructure patterns together.
 
-### 24.8.3 Partnership Ecosystems
+### Partnership Ecosystems
 
 Strategic partnerships with academic institutions, industry consortia, and civic technology groups create neutral spaces for experimentation. These collaborations drive shared standards, reduce duplicated effort, and give smaller organisations access to expertise they could not sustain alone.
 
-## 24.9 Continuous Improvement and Innovation
+## Continuous Improvement and Innovation
 
 ![Figure 24.3 – Continuous improvement feedback loops](images/diagram_22_continuous_improvement.png)
 
@@ -154,15 +154,15 @@ Strategic partnerships with academic institutions, industry consortia, and civic
 
 Continuous improvement is the connective tissue that keeps Architecture as Code programmes relevant. Feedback loops capture production telemetry, customer sentiment, regulatory changes, and retrospective findings. Improvement backlogs convert those signals into incremental experiments, each evaluated against hypothesis-driven success criteria. Innovation thrives when metrics balance reliability, speed, sustainability, and equity outcomes.
 
-### 24.9.1 Learning from Incidents
+### Learning from Incidents
 
 Blameless post-incident reviews examine systemic contributors rather than individual mistakes. Action items target tooling upgrades, skill gaps, or process refinements, and progress is tracked visibly so that learning becomes part of the culture.
 
-### 24.9.2 Technology Evolution
+### Technology Evolution
 
 Roadmaps include scheduled reassessments of platform components, encouraging teams to retire ageing tooling, adopt managed services when appropriate, and experiment with emerging capabilities such as AI-assisted operations. Controlled pilots limit blast radius while building evidence for broader adoption.
 
-### 24.9.3 Measuring Outcomes
+### Measuring Outcomes
 
 Balanced scorecards monitor leading and lagging indicators across reliability, cost, sustainability, and customer experience. Data storytelling techniques help stakeholders interpret metrics, ensuring that improvement decisions remain grounded in evidence rather than intuition.
 
