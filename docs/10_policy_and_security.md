@@ -6,21 +6,21 @@
 
 ## Introduction and context
 
-Swedish organisations operate in one of the most demanding regulatory landscapes in Europe. They must balance GDPR, sector guidance from Finansinspektionen, mandates from the Swedish Civil Contingencies Agency (MSB), and fast-moving cloud adoption. Chapter 9 introduced the core security principles that underpin this book. This chapter focuses on how those principles are executed as policy and security automation in Architecture as Code. The aim is to translate written governance into executable guardrails that scale with continuous delivery.
+Swedish organisations operate in one of Europe's most demanding regulatory environments. They must simultaneously honour GDPR, industry directives from Finansinspektionen, obligations from the Swedish Civil Contingencies Agency (MSB), and the relentless pace of cloud adoption. Chapter 9 introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.
 
-Policy as Code (PaC) removes the latency of manual approvals and paper-based audits. By expressing governance requirements as version-controlled code, teams gain the same benefits enjoyed elsewhere in Architecture as Code: traceability, repeatability, peer review, automated testing, and rapid roll-back when something breaks. The narrative and examples in this chapter show how Swedish delivery teams can adopt PaC without sacrificing regulatory confidence.
+Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy audits. Expressing governance requirements as version-controlled code gives teams the same advantages found elsewhere in Architecture as Code: traceability, repeatability, peer review, automated testing, and rapid rollback when something goes wrong. The narrative and examples in this chapter illustrate how Swedish delivery teams can embrace PaC without sacrificing regulatory assurance.
 
 ## Evolution of security management within Architecture as Code
 
-Security automation in Swedish enterprises has matured through four distinct phases. Understanding the history helps stakeholders decide how aggressively to modernise today.
+Security automation in Swedish enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today.
 
 ### Phase 1: Manual validation (2010–2015)
 
-Security teams traditionally reviewed infrastructure after the fact. Auditors compared live environments with policy documents, often weeks after release. Findings were logged manually and development teams had to retrofit fixes into long-running releases. The feedback loop was slow, knowledge transfer was brittle, and documentation quickly went stale.
+Security teams traditionally reviewed infrastructure after the fact. Auditors compared live environments with policy documents, often weeks after a release. Findings were logged manually and development teams had to retrofit fixes into long-running releases. The feedback loop was slow, knowledge transfer was fragile, and documentation quickly became obsolete.
 
 ### Phase 2: Scripted automation (2015–2018)
 
-When continuous delivery pipelines gained traction, teams started scripting validations. Python, Bash, and PowerShell checks were bolted onto CI workflows to look for risky ports, missing encryption, or inconsistent tags. Speed improved but every squad maintained its own toolkit, leading to duplication, drift, and brittle scripts that were difficult to share across the enterprise.
+As continuous delivery pipelines gained traction, teams started scripting validations. Python, Bash, and PowerShell checks were bolted onto CI workflows to detect risky ports, missing encryption, or inconsistent tags. Speed improved, but every squad maintained its own toolkit, leading to duplication, drift, and brittle scripts that were difficult to share across the enterprise.
 
 ### Phase 3: Policy engine integration (2018–2021)
 
@@ -48,7 +48,7 @@ Swedish organisations running mission-critical platforms typically adopt three a
 
 - **Decoupled evaluation:** OPA runs as a sidecar, admission controller, or CLI verifier, keeping policy logic separate from application runtimes.
 - **Flexible distribution:** Agents can pull policies from signed bundles or receive push updates from central services, supporting strict change-control processes.
-- **Bundle packaging:** Teams package policies, data, metadata, and signatures together, enabling atomic roll-outs and roll-backs when requirements change.
+- **Bundle packaging:** Teams package policies, data, metadata, and signatures together, enabling atomic roll-outs and rollbacks when requirements change.
 
 ### Advanced Rego patterns for regulated workloads
 
@@ -95,7 +95,7 @@ Profiles help Swedish enterprises harmonise overlapping regulations. Appendix en
 
 ### Component definitions and reusable evidence
 
-Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry [10_CODE_3](30_appendix_code_examples.md#10_code_3) provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it trivial to prove, for example, that storage encryption and logging are active.
+Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry [10_CODE_3](30_appendix_code_examples.md#10_code_3) provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it straightforward to prove, for example, that storage encryption and logging are active.
 
 ### Automating System Security Plans
 
