@@ -1,12 +1,12 @@
-# Visual Elements Documentation - Kvadrat Book design
+# Visual Elements Documentation
 
 ## Overview
 
-This document explains the enhanced visual elements added to the "Architecture as Code" book to align with Kvadrat's professional graphical profile. All elements are designed to improve readability while maintaining the professional theme defined in `BRAND_GUIDELINES.md`.
+ All elements are designed to improve readability while maintaining the professional theme defined in `BRAND_GUIDELINES.md`.
 
 ## Color Scheme Alignment
 
-All visual elements use the official Kvadrat color palette:
+All visual elements use following color palette:
 
 - **Primary Blue** (`#1e3a8a`): Main headings, borders, primary elements
 - **Light Blue** (`#3b82f6`): Accents, interactive elements, highlights  
