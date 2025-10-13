@@ -1,15 +1,16 @@
 graph TD
-    A[ADR skapas]:::kv-primary --> B[Status: Proposed]:::kv-highlight
-    B --> C{Review process}:::kv-decision
-    C -->|Godkänt| D[Status: Accepted]:::kv-accent
-    C -->|Ej godkänt| E[Revidering behövs]:::kv-muted
+    A[ADR Created]:::kv-primary --> B[Status: Proposed]:::kv-highlight
+    B --> C{Review Process}:::kv-decision
+    C -->|Approved| D[Status: Accepted]:::kv-accent
+    C -->|Not Approved| E[Revision Needed]:::kv-muted
     E --> B
     D --> F[Implementation]:::kv-accent
     F --> G[Monitoring]:::kv-highlight
-    G --> H{Fungerar?}:::kv-decision
-    H -->|Ja| I[Fortsatt användning]:::kv-accent
-    H -->|Nej| J[Status: Deprecated]:::kv-muted
-    J --> K[Nytt ADR behövs]:::kv-pattern
+    G --> H{Is the Decision Working?}:::kv-decision
+    H -->|Yes| I[Continued Use]:::kv-accent
+    H -->|No| J[Status: Deprecated]:::kv-muted
+    J --> K[New ADR Required]:::kv-pattern
 
     classDef kv-decision fill:#1E3A8A,stroke:#0F172A,color:#F8FAFC,stroke-width:3px
     class C,H kv-decision
+
