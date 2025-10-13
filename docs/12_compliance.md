@@ -2,25 +2,25 @@
 
 ![Compliance automation lifecycle overview](images/diagram_12_compliance.png)
 
-*Figure 12-1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.*
+*Figure 12.1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.*
 
-Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12-1 shows how that translation depends on a closed feedback loop: regulatory updates inform policy templates, automated controls execute those policies, monitoring and evidence collection prove adherence, and governance teams reinforce improvements through audit feedback. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
+Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12.1 shows how that translation depends on a closed feedback loop: regulatory updates inform policy templates, automated controls execute those policies, monitoring and evidence collection prove adherence, and governance teams reinforce improvements through audit feedback. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
 
 ## AI and Machine Learning for Infrastructure Automation
 
 ![AI-augmented compliance automation workflow](images/diagram_12_ai_automation.png)
 
-*Figure 12-2 demonstrates the feedback loop between telemetry, the AI compliance engine, automated remediation, and human oversight that keeps regulatory posture current.*
+*Figure 12.2 demonstrates the feedback loop between telemetry, the AI compliance engine, automated remediation, and human oversight that keeps regulatory posture current.*
 
-Artificial intelligence is transforming Architecture as Code with intelligent automation, predictive scaling, and self-healing systems. Machine learning models analyse operational data to optimise resource allocation, forecast failures, and adjust configurations before service levels are breached. Figure 12-2 highlights a practical control flow: telemetry and policy violations feed an AI compliance engine, which scores risk and decides whether automated remediation or human intervention is appropriate. Infrastructure as Code updates then redeploy compliant baselines, ensuring the organisation stays aligned with regulatory expectations.
+Artificial intelligence is transforming Architecture as Code with intelligent automation, predictive scaling, and self-healing systems. Machine learning models analyse operational data to optimise resource allocation, forecast failures, and adjust configurations before service levels are breached. Figure 12.2 highlights a practical control flow: telemetry and policy violations feed an AI compliance engine, which scores risk and decides whether automated remediation or human intervention is appropriate. Infrastructure as Code updates then redeploy compliant baselines, ensuring the organisation stays aligned with regulatory expectations.
 
 ## Requirements Traceability and Validation
 
 ![Compliance requirements traceability map](images/diagram_12_requirements_testing.png)
 
-*Figure 12-3 links high-level compliance requirements to functional controls, Infrastructure as Code artefacts, and verification activities.*
+*Figure 12.3 links high-level compliance requirements to functional controls, Infrastructure as Code artefacts, and verification activities.*
 
-Compliance programmes rely on demonstrable traceability between regulatory statements and the technical controls that satisfy them. Figure 12-3 documents that traceability: business, compliance, performance, and cost requirements flow into specific functional controls such as encryption, network segmentation, audit logging, and automated scaling. Those controls are implemented through Terraform configuration and validated by targeted test suites, compliance scanners, and cost analysis. Maintaining this map ensures that every requirement is implemented, tested, and evidenced before auditors ask for proof.
+Compliance programmes rely on demonstrable traceability between regulatory statements and the technical controls that satisfy them. Figure 12.3 documents that traceability: business, compliance, performance, and cost requirements flow into specific functional controls such as encryption, network segmentation, audit logging, and automated scaling. Those controls are implemented through Terraform configuration and validated by targeted test suites, compliance scanners, and cost analysis. Maintaining this map ensures that every requirement is implemented, tested, and evidenced before auditors ask for proof.
 
 ## Cloud-native and Serverless Development
 
@@ -30,9 +30,9 @@ Serverless computing has moved beyond function-as-a-service into comprehensive e
 
 ![Policy-driven compliance control tower](images/diagram_12_policy_governance.png)
 
-*Figure 12-4 visualises how governance strategy translates into automated controls and measurable outcomes.*
+*Figure 12.4 visualises how governance strategy translates into automated controls and measurable outcomes.*
 
-Policy as Code continues to mature with automated control enforcement, continuous compliance monitoring, and dynamic policy adaptation. Strategy teams map regulatory goals and risk appetite, policy repositories turn those inputs into executable controls, and compliance pipelines provide dashboards, exception handling, and regulator-ready reporting. Figure 12-4 shows how exceptions loop back into the pipeline for remediation and how regulator feedback informs the next iteration of the governance strategy.
+Policy as Code continues to mature with automated control enforcement, continuous compliance monitoring, and dynamic policy adaptation. Strategy teams map regulatory goals and risk appetite, policy repositories turn those inputs into executable controls, and compliance pipelines provide dashboards, exception handling, and regulator-ready reporting. Figure 12.4 shows how exceptions loop back into the pipeline for remediation and how regulator feedback informs the next iteration of the governance strategy.
 
 ## Quantum Computing and Next-generation Technologies
 
