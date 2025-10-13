@@ -1,17 +1,6 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Praktisk erfarenhet] --> B[Lärande från misslyckanden]
-    B --> C[Anpassning av praktiker]
-    C --> D[Mognadsutveckling]
-    D --> E[Förbättrad automation]
+    A[Praktisk erfarenhet]:::kv-primary --> B[Lärande från misslyckanden]:::kv-highlight
+    B --> C[Anpassning av praktiker]:::kv-accent
+    C --> D[Mognadsutveckling]:::kv-accent
+    D --> E[Förbättrad automation]:::kv-primary
     E --> A

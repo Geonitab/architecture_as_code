@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Code commit] --> B[Validate]
-    B --> C[Test]
-    C --> D[Deploy]
-    D --> E[Monitor]
+    A[Code commit]:::kv-primary --> B[Validate]:::kv-highlight
+    B --> C[Test]:::kv-accent
+    C --> D[Deploy]:::kv-accent
+    D --> E[Monitor]:::kv-primary

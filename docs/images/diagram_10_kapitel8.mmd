@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Traditionell IT] --> B[Cloud Migration]
-    B --> C[IaC Implementation]
-    C --> D[Automatisering]
-    D --> E[Digital Transformation]
+    A[Traditionell IT]:::kv-primary --> B[Cloud Migration]:::kv-highlight
+    B --> C[IaC Implementation]:::kv-accent
+    C --> D[Automatisering]:::kv-accent
+    D --> E[Digital Transformation]:::kv-primary

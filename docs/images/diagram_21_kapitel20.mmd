@@ -1,30 +1,19 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph TB
-    A[Lovable Platform] --> B[Experience Mockups]
-    B --> C[GDPR Compliance]
-    B --> D[WCAG 2.1 AA]
-    B --> E[E-authentication]
-    
-    C --> F[Consent Management]
-    C --> G[Data Protection]
-    
-    D --> H[Accessibility]
-    D --> I[Keyboard Navigation]
-    
-    E --> J[Government eID]
-    E --> K[Commercial eID]
-    
-    F --> L[Integrated Experience]
+    A[Lovable Platform]:::kv-primary --> B[Experience Mockups]:::kv-highlight
+    B --> C[GDPR Compliance]:::kv-accent
+    B --> D[WCAG 2.1 AA]:::kv-accent
+    B --> E[E-authentication]:::kv-accent
+
+    C --> F[Consent Management]:::kv-highlight
+    C --> G[Data Protection]:::kv-highlight
+
+    D --> H[Accessibility]:::kv-pattern
+    D --> I[Keyboard Navigation]:::kv-muted
+
+    E --> J[Government eID]:::kv-outline
+    E --> K[Commercial eID]:::kv-muted
+
+    F --> L[Integrated Experience]:::kv-primary
     G --> L
     H --> L
     I --> L

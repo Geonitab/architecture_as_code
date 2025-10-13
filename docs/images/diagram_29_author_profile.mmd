@@ -1,23 +1,19 @@
 graph TB
-    Author[Gunnar Nordqvist<br/>Chief Architect]
+    Author[Gunnar Nordqvist<br/>Chief Architect]:::kv-outline
+
+    Author --> Expertise[Core Expertise Areas]:::kv-highlight
+    Author --> Experience[Professional Experience]:::kv-highlight
+    Author --> Book[Architecture as Code]:::kv-primary
     
-    Author --> Expertise[Core Expertise Areas]
-    Author --> Experience[Professional Experience]
-    Author --> Book[Architecture as Code]
+    Expertise --> SolArch[Solution & Enterprise<br/>Architecture]:::kv-accent
+    Expertise --> IaC[Infrastructure as Code &<br/>Architecture as Code]:::kv-accent
+    Expertise --> Security[IT Security &<br/>Compliance]:::kv-accent
+    Expertise --> Cloud[Cloud Architecture &<br/>Virtualisation]:::kv-accent
+    Expertise --> DevOps[DevOps & CI/CD<br/>Automation]:::kv-accent
     
-    Expertise --> SolArch[Solution & Enterprise<br/>Architecture]
-    Expertise --> IaC[Infrastructure as Code &<br/>Architecture as Code]
-    Expertise --> Security[IT Security &<br/>Compliance]
-    Expertise --> Cloud[Cloud Architecture &<br/>Virtualisation]
-    Expertise --> DevOps[DevOps & CI/CD<br/>Automation]
+    Experience --> Kvadrat[Kvadrat AB<br/>Technology Consulting]:::kv-primary
+    Experience --> Roles[IT Architect<br/>Technical Project Manager<br/>Systems Technician]:::kv-muted
     
-    Experience --> Kvadrat[Kvadrat AB<br/>Technology Consulting]
-    Experience --> Roles[IT Architect<br/>Technical Project Manager<br/>Systems Technician]
-    
-    Book --> Principles[Theoretical Foundations]
-    Book --> Practice[Practical Implementation]
-    Book --> Context[International Organisation<br/>Context]
-    
-    style Author fill:#2563eb,stroke:#1e40af,stroke-width:3px,color:#fff
-    style Book fill:#2563eb,stroke:#1e40af,stroke-width:2px,color:#fff
-    style Kvadrat fill:#1e3a8a,stroke:#1e40af,stroke-width:2px,color:#fff
+    Book --> Principles[Theoretical Foundations]:::kv-highlight
+    Book --> Practice[Practical Implementation]:::kv-highlight
+    Book --> Context[International Organisation<br/>Context]:::kv-highlight

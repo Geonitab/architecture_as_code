@@ -1,18 +1,7 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[FinOps Governance] --> B[Cost Allocation]
-    B --> C[Budget Management]
-    C --> D[Policy Enforcement]
-    D --> E[Chargeback]
-    E --> F[Optimization]
+    A[FinOps Governance]:::kv-primary --> B[Cost Allocation]:::kv-highlight
+    B --> C[Budget Management]:::kv-accent
+    C --> D[Policy Enforcement]:::kv-accent
+    D --> E[Chargeback]:::kv-highlight
+    E --> F[Optimization]:::kv-primary
     F --> A

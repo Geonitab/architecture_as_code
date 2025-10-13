@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Container Images] --> B[Kubernetes Cluster]
-    B --> C[Service Mesh]
-    C --> D[Application Services]
-    D --> E[Monitoring]
+    A[Container Images]:::kv-primary --> B[Kubernetes Cluster]:::kv-highlight
+    B --> C[Service Mesh]:::kv-accent
+    C --> D[Application Services]:::kv-accent
+    D --> E[Monitoring]:::kv-primary

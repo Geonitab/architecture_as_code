@@ -1,25 +1,14 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#004b8d'
-    primaryTextColor: '#ffffff'
-    primaryBorderColor: '#002f5a'
-    lineColor: '#009fda'
-    secondaryColor: '#f5a623'
-    tertiaryColor: '#ffffff'
----
 %% Team collaboration flow for AI agents supporting Architecture as Code initiatives
 flowchart TD
-    PO[Project Owner]
-    PM[Project Manager]
-    ARCH[Architect]
-    RA[Requirements Analyst]
-    DES[Designer]
-    DEV[Developer]
-    QC[Quality Control]
-    ED[Editor]
-    GD[Graphic Designer]
+    PO[Project Owner]:::kv-highlight
+    PM[Project Manager]:::kv-primary
+    ARCH[Architect]:::kv-accent
+    RA[Requirements Analyst]:::kv-accent
+    DES[Designer]:::kv-pattern
+    DEV[Developer]:::kv-accent
+    QC[Quality Control]:::kv-highlight
+    ED[Editor]:::kv-muted
+    GD[Graphic Designer]:::kv-elevated
 
     PO --> PM
     PM --> ARCH

@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[API Gateway] --> B[User Service]
-    A --> C[Order Service]
-    A --> D[Payment Service]
-    B --> E[Service Mesh]
+    A[API Gateway]:::kv-primary --> B[User Service]:::kv-highlight
+    A --> C[Order Service]:::kv-accent
+    A --> D[Payment Service]:::kv-accent
+    B --> E[Service Mesh]:::kv-primary

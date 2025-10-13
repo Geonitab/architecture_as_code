@@ -1,11 +1,5 @@
 flowchart LR
-    A[Assessment] --> B[Planning]
-    B --> C[Migration]
-    C --> D[Validation]
-    D --> E[Optimisation]
-    
-    style A fill:#e5e7eb,stroke:#9ca3af,color:#1f2937
-    style B fill:#d1d5db,stroke:#6b7280,color:#1f2937
-    style C fill:#9ca3af,stroke:#4b5563,color:#1f2937
-    style D fill:#9ca3af,stroke:#4b5563,color:#1f2937
-    style E fill:#6b7280,stroke:#374151,color:#f9fafb
+    A[Assessment]:::kv-muted --> B[Planning]:::kv-highlight
+    B --> C[Migration]:::kv-accent
+    C --> D[Validation]:::kv-accent
+    D --> E[Optimisation]:::kv-primary

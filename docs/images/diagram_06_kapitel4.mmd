@@ -1,16 +1,5 @@
----
-config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    primaryBorderColor: '#7C0000'
-    lineColor: '#F8B229'
-    secondaryColor: '#006100'
-    tertiaryColor: '#fff'
----
 graph LR
-    A[Multi-cloud] --> B[Provider abstraction]
-    B --> C[Resource management]  
-    C --> D[State management]
-    D --> E[Cross-region deployment]
+    A[Multi-cloud]:::kv-primary --> B[Provider abstraction]:::kv-highlight
+    B --> C[Resource management]:::kv-accent
+    C --> D[State management]:::kv-accent
+    D --> E[Cross-region deployment]:::kv-primary
