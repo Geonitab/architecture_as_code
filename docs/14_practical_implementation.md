@@ -52,7 +52,9 @@ Enterprise-scale deployments blend multi-account cloud strategies with on-premis
 
 ## Practical examples in context
 
-To keep the implementation guidance focused, the extensive Terraform walkthrough that previously appeared in this chapter now lives in Appendix A. The appendix preserves the full listing while these pages concentrate on the strategic practices that make Architecture as Code sustainable.
+Practical adoption benefits from curated, real-world examples that teams can inspect before tailoring their own automation. Appendix A maintains a set of code listings that highlight the most common landing zone, operations, and delivery scenarios referenced in this chapter.
+
+The following entries are the quickest way to explore those artefacts without leaving the main narrative:
 
 * **Terraform service blueprint** – Appendix entry [14_CODE_1](30_appendix_code_examples.md#14_code_1) contains the relocated landing zone module, complete with networking, load balancing, tagging standards, and autoscaling defaults that teams can adapt to their own environments.
 * **Environment configuration and monitoring** – Appendix entry [14_CODE_2](30_appendix_code_examples.md#14_code_2) layers production-grade state management, observability dashboards, and retention controls on top of the shared module so that operations teams receive actionable telemetry from day one.
