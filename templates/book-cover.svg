@@ -208,9 +208,9 @@
     <g transform="translate(0, 377)">
       <text font-family="Inter, sans-serif" font-size="22" font-weight="400" 
             fill="rgba(255,255,255,0.92)" line-height="1.5">
-        <tspan x="0" y="26">A comprehensive guide to architecture as code—</tspan>
-        <tspan x="0" y="59">from foundational principles to advanced</tspan>
-        <tspan x="0" y="92">implementation in modern cloud environments</tspan>
+        <tspan x="0" y="26">A guide to how fully code-based architecture works—</tspan>
+        <tspan x="0" y="59">and the effects it has on design, development, governance,</tspan>
+        <tspan x="0" y="92">testing, and requirements management</tspan>
         <tspan x="0" y="125" font-size="18" fill="rgba(5,150,105,0.8)">DevOps • CI/CD • Security • Compliance • Cloud Architecture</tspan>
       </text>
     </g>
@@ -219,16 +219,16 @@
     <g transform="translate(0, 783)">
       <!-- Authors -->
       <text x="0" y="20" font-family="Inter, sans-serif" font-size="20" font-weight="700"
-            fill="white">Kvadrat Expert Team</text>
+            fill="white">Gunnar Nordqvist</text>
       
       <!-- Edition info -->
       <g transform="translate(450, 0)">
         <!-- Year with gradient -->
-        <text x="0" y="28" font-family="Inter, sans-serif" font-size="28" font-weight="800" 
-              fill="url(#accentGradient)" text-anchor="end">2024</text>
+        <text x="0" y="28" font-family="Inter, sans-serif" font-size="28" font-weight="800"
+              fill="url(#accentGradient)" text-anchor="end">2025</text>
         <!-- Edition text -->
         <text x="0" y="52" font-family="Inter, sans-serif" font-size="16"
-              fill="rgba(255,255,255,0.85)" text-anchor="end">First Edition</text>
+              fill="rgba(255,255,255,0.85)" text-anchor="end">Published 2025</text>
       </g>
     </g>
     
@@ -237,12 +237,12 @@
   <!-- Additional metadata for editing -->
   <metadata>
     <title>Architecture as Code - Enhanced Book Cover</title>
-    <description>Professional book cover design for Kvadrat's Infrastructure as Code publication featuring DevOps, CI/CD, security, and cloud architecture themes</description>
-    <author>Kvadrat Design Team</author>
-    <created>2024</created>
-    <updated>December 2024</updated>
+    <description>Professional book cover design for Kvadrat's Architecture as Code publication featuring DevOps, CI/CD, security, and cloud architecture themes</description>
+    <author>Gunnar Nordqvist</author>
+    <created>2025</created>
+    <updated>January 2025</updated>
     <brand-guidelines>Kvadrat Brand Guidelines v1.0</brand-guidelines>
-    <themes>Infrastructure as Code, DevOps, CI/CD, Security, Cloud Architecture, Global Context</themes>
+      <themes>Architecture as Code, Design, Development, Governance, Testing, Requirements</themes>
     <visual-elements>Pipeline patterns, security shields, cloud nodes, microservices, git repositories, containers</visual-elements>
   </metadata>
   
