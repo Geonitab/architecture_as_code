@@ -14,9 +14,7 @@ Platform teams act as internal service providers. They own the common toolchains
 
 ![Competency development loop illustrating assessment, planning, learning, application, knowledge sharing, and measurement](images/diagram_18_competency_cycle.png)
 
-Architecture as Code specialists blend system engineering, software craftsmanship, and cloud fluency.
-Core skills include modern programming languages for automation (such as Python, Go, or PowerShell), multi-cloud familiarity spanning AWS, Azure, and Google Cloud, and disciplined software engineering practices like version control, testing, and peer review.
-The competency development loop depicted above highlights how continuous assessment, learning, and knowledge sharing reinforce professional growth.
+Architecture as Code specialists blend system engineering, software craftsmanship, and cloud fluency. Core skills include modern programming languages for automation (such as Python, Go, or PowerShell), multi-cloud familiarity spanning AWS, Azure, and Google Cloud, and disciplined software engineering practices like version control, testing, and peer review. The competency development loop depicted above highlights how continuous assessment, learning, and knowledge sharing reinforce professional growth.
 
 Soft skills are equally significant. Practitioners must communicate design intent, negotiate trade-offs with stakeholders, and mentor peers adopting new tooling. These interpersonal abilities ensure technical decisions are understood and adopted across the organisation.
 
