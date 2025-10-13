@@ -379,7 +379,8 @@ generate_other_formats() {
         -t epub \
         -o "$OUTPUT_EPUB" \
         --metadata date="$(date +'%Y-%m-%d')" \
-        --metadata language=sv \
+        --metadata language=en \
+        --metadata lang=en-GB \
         --epub-cover-image="images/book-cover.png" \
         2>&1; then
 
