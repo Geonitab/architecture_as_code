@@ -1,14 +1,12 @@
-# Technical Architecture for Book Production
+# Appendix B: Technical Architecture for Book Production {.unnumbered}
 
-This chapter describes the technical infrastructure and workflow that produce, build, and publish "Architecture as Code". The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
+This appendix describes the technical infrastructure and workflow that produce, build, and publish "Architecture as Code". The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
 
 ![Technical architecture for book production](images/diagram_27_technical_structure.png)
 
 *The diagram illustrates the end-to-end technical system that powers book production, from Markdown sources through automated pipelines to the final publications.*
 
-## 31.1 Markdown Files: Structure and Purpose
-
-### 31.1.1 File Organisation and Naming Conventions
+### File Organisation and Naming Conventions
 
 Book content is organised in 31 Markdown files within the `docs/` directory, where each file represents a chapter:
 
@@ -26,10 +24,10 @@ docs/
 ├── 28_glossary.md                  # Terminology
 ├── 29_about_the_authors.md         # Author information
 ├── 30_appendix_code_examples.md    # Technical examples
-└── 31_technical_architecture.md    # This chapter
+└── 31_technical_architecture.md    # This appendix
 ```
 
-### 31.1.2 Markdown Structure and Semantics
+### Markdown Structure and Semantics
 
 Each chapter follows a consistent structure that optimises both readability and automated processing. The template below demonstrates how headings, diagrams, lists, and code samples are arranged.
 
@@ -53,7 +51,7 @@ Introductory text with a short description of the chapter’s contents.
 
 This layout ensures that readers can skim the content quickly, while the build pipeline can reliably transform every chapter into the desired publication formats.
 
-### 31.1.3 Automated Content Generation
+### Automated Content Generation
 
 The system uses `generate_book.py` to generate and update chapter content automatically:
 
@@ -62,9 +60,9 @@ The system uses `generate_book.py` to generate and update chapter content automa
 - **Consistency management**: Keeps structure uniform across all chapters.
 - **Version control**: Tracks every change through Git.
 
-## 31.2 Pandoc: Conversion and Formatting
+## Pandoc: Conversion and Formatting
 
-### 31.2.1 Configuration System
+### Configuration System
 
 Pandoc conversion is governed by `pandoc.yaml`, which defines all format-specific settings:
 
@@ -87,7 +85,7 @@ metadata:
   author: "Code Architecture Book Workshop"
 ```
 
-### 31.2.2 Build Process and Architecture as Code Automation
+### Build Process and Architecture as Code Automation
 
 `build_book.sh` orchestrates the entire build process:
 
@@ -109,16 +107,16 @@ done
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o architecture_as_code.pdf
 ```
 
-### 31.2.3 Quality Assurance and Validation
+### Quality Assurance and Validation
 
 - **Template validation**: Automatically checks the Eisvogel template.
 - **Configuration control**: Verifies Pandoc settings in `pandoc.yaml`.
 - **Image handling**: Ensures every diagram reference resolves correctly.
 - **Output verification**: Confirms the generated files meet expectations.
 
-## 31.3 GitHub Actions: CI/CD Pipeline
+## GitHub Actions: CI/CD Pipeline
 
-### 31.3.1 Primary Workflow for Book Production
+### Primary Workflow for Book Production
 
 `build-book.yml` automates the entire publication process:
 
@@ -140,7 +138,7 @@ jobs:
     timeout-minutes: 90
 ```
 
-### 31.3.2 Workflow Steps and Optimisations
+### Workflow Steps and Optimisations
 
 1. **Environment setup (15 minutes)**:
    - Install Python 3.12.
@@ -163,15 +161,15 @@ jobs:
    - Store build artefacts for 30 days.
    - Distribute the PDF through GitHub Releases.
 
-### 31.3.3 Complementary Workflows
+### Complementary Workflows
 
 - **Content Validation** (`content-validation.yml`): Markdown syntax checks, link validation, and language quality control.
 - **Presentation Generation** (`generate-presentations.yml`): Creates PowerPoint-ready outlines with Kvadrat branding.
 - **Whitepaper Generation** (`generate-whitepapers.yml`): Builds standalone HTML documents optimised for search engines and printing.
 
-## 31.4 Presentation Materials: Preparation and Generation
+## Presentation Materials: Preparation and Generation
 
-### 31.4.1 Automated Outline Generation
+### Automated Outline Generation
 
 `generate_presentation.py` creates presentation materials from the book’s content:
 
@@ -193,7 +191,7 @@ def generate_presentation_outline():
     return presentation_data
 ```
 
-### 31.4.2 PowerPoint Integration
+### PowerPoint Integration
 
 The system delivers:
 
@@ -202,7 +200,7 @@ The system delivers:
 - **Kvadrat branding**: Consistent visual identity.
 - **Content optimisation**: Arranged for confident verbal delivery.
 
-### 31.4.3 Distribution and Use
+### Distribution and Use
 
 ```bash
 # Download artefacts from GitHub Actions
@@ -213,9 +211,9 @@ python generate_pptx.py
 
 The result is a set of professional PowerPoint presentations tailored for conferences, workshops, training sessions, marketing activities, and technical seminars.
 
-## 31.5 Cover and Whitepapers: Design and Integration
+## Cover and Whitepapers: Design and Integration
 
-### 31.5.1 Cover Design System
+### Cover Design System
 
 The book cover is produced through an HTML/CSS design system:
 
@@ -231,7 +229,7 @@ exports/book-cover/
     └── generate_book_cover_exports.py
 ```
 
-### 31.5.2 Kvadrat Brand Integration
+### Kvadrat Brand Integration
 
 The design system implements Kvadrat’s visual identity:
 
@@ -251,7 +249,7 @@ The design system implements Kvadrat’s visual identity:
 }
 ```
 
-### 31.5.3 Whitepaper Generation
+### Whitepaper Generation
 
 `generate_whitepapers.py` creates standalone HTML documents:
 
@@ -261,9 +259,9 @@ The design system implements Kvadrat’s visual identity:
 - **Search optimisation**: Accurate metadata and structure.
 - **Distribution ready**: Suitable for email, web, or print.
 
-## 31.6 Technical Architecture and System Integration
+## Technical Architecture and System Integration
 
-### 31.6.1 Holistic View of the Architecture
+### Holistic View of the Architecture
 
 The system demonstrates Architecture as Code through:
 
@@ -273,14 +271,14 @@ The system demonstrates Architecture as Code through:
 4. **Reproducibility**: Identical builds from the same source code.
 5. **Scalability**: Simple to add new chapters and formats.
 
-### 31.6.2 Quality Assurance and Testing
+### Quality Assurance and Testing
 
 - **Automated validation**: Continuous checks of content and formatting.
 - **Build verification**: Ensures every format is generated correctly.
 - **Performance monitoring**: Tracks build times and resource usage.
 - **Error handling**: Provides clear messages and recovery options.
 
-### 31.6.3 Future Development
+### Future Development
 
 The system is designed for continuous improvement:
 
