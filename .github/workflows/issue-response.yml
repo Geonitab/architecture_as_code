@@ -27,6 +27,6 @@ jobs:
 
       - name: Assign to Copilot
         run: |
-          gh issue edit ${{ github.event.issue.number }} --add-assignee Copilot
+          gh issue edit ${{ github.event.issue.number }} --add-assignee copilot
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Used automatically for authentication
