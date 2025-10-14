@@ -237,8 +237,36 @@ The visual systems is designed to be extensible:
 
 - **LaTeX Template**: `templates/Kvadrat-book-template.latex`
 - **Mermaid Theme**: `docs/mermaid-kvadrat-theme.json`
+- **Diagram Theme Standard**: `DIAGRAM_THEME_STANDARD.md`
 - **Build Script**: `docs/build_book.sh`
 - **Pandoc Config**: `docs/pandoc.yaml`
 - **Example Usage**: `docs/02_fundamental_principles.md`
+
+## Diagram Standardization
+
+As of 2025-10-14, all diagrams in this book follow the Kvadrat theme standard:
+
+- **Total diagrams**: 72
+- **Graph/Flowchart with kv- classes**: 52 (72%) - Using explicit style classes
+- **Auto-themed diagrams**: 20 (28%) - Special diagram types that automatically inherit theme
+
+### Diagram Breakdown by Type
+- **Mindmaps** (12): Auto-themed
+- **Graph/Flowchart** (41): All use kv- classes (either `:::kv-class` or `class` statement syntax)
+- **Sequence diagrams** (1): Auto-themed
+- **Gantt charts** (1): Auto-themed
+- **Quadrant charts** (1): Auto-themed
+- **Class diagrams** (1): Auto-themed
+- **Requirement diagrams** (1): Auto-themed
+- **Journey diagrams** (1): Auto-themed
+- **Git graphs** (1): Auto-themed
+- **Pie charts** (1): Auto-themed
+- **Flowcharts** (11): All use kv- classes
+
+All diagrams now use consistent styling through either:
+1. **Explicit kv- classes** for graph/flowchart diagrams (using `:::kv-primary` inline or `class NodeName kv-primary` statements)
+2. **Automatic theme application** for special diagram types (mindmaps, sequence, gantt, quadrant, class, requirement, journey, gitGraph, pie)
+
+For complete diagram theme specifications and usage guidelines, refer to `DIAGRAM_THEME_STANDARD.md`.
 
 This documentation should be referenced when adding new content to ensure all visual elements align with Kvadrat's professional standards and brand guidelines.
