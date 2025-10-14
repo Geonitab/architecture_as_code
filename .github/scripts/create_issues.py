@@ -2,7 +2,7 @@ import os
 import requests
 
 # Directory containing markdown files to be converted into GitHub Issues
-issues_directory = "issues"
+issues_directory = "Issues"
 
 # Repository and authentication token from environment variables
 repository = os.environ["REPO"]
