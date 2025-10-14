@@ -42,7 +42,8 @@ class TestCompleteness:
     
     def test_chapter_naming_convention(self, chapter_files, requirements_config):
         """Test that chapter files follow naming convention."""
-        expected_pattern = re.compile(r"^\d{2}_.*\.md$")
+        # Updated pattern to allow optional lowercase letter after chapter number (e.g., 09a_, 09b_)
+        expected_pattern = re.compile(r"^\d{2}[a-z]?_.*\.md$")
         
         # Get special chapter filenames that are allowed as exceptions
         special_chapters = requirements_config["book"].get("special_chapters", {})
@@ -59,7 +60,7 @@ class TestCompleteness:
         
         assert not invalid_names, (
             f"Chapter files with invalid naming: {invalid_names}. "
-            f"Expected pattern: 'XX_name.md'"
+            f"Expected pattern: 'XX_name.md' or 'XXa_name.md'"
         )
     
     def test_required_sections_present(self, chapter_files, requirements_config):
@@ -178,9 +179,12 @@ class TestCompleteness:
         language = requirements_config["book"]["language"]
         
         # Get all actual markdown chapter files (numbered files) for the language
+        # Updated pattern to also match files like 09a_, 09b_
         actual_chapters = set()
-        for md_file in docs_directory.glob("[0-9][0-9]_*.md"):
-            actual_chapters.add(md_file.name)
+        for md_file in docs_directory.glob("[0-9][0-9]*_*.md"):
+            # Only include files that match the chapter naming pattern (XX_ or XXa_)
+            if re.match(r"^\d{2}[a-z]?_.*\.md$", md_file.name):
+                actual_chapters.add(md_file.name)
         
         # Get expected chapters from requirements
         expected_chapters = set()
