@@ -13,4 +13,4 @@ jobs:
       - name: Assign to Copilot
         uses: otto-de/assign_issue_toCopilot_action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }} 
