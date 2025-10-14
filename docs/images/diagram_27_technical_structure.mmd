@@ -1,11 +1,11 @@
 graph TB
-    %% Källkodshantering
-    subgraph "Källkod och innehåll"
-        MD[📝 Markdown-filer<br/>27 kapitel i docs/]
-        MMD[🎨 Mermaid-diagram<br/>images/*.mmd]
-        PY[🐍 Python-skript<br/>generate_book.py]
-        SH[⚙️ Build-skript<br/>build_book.sh]
-        YAML[📋 Konfiguration<br/>pandoc.yaml]
+    %% Source Code Management
+    subgraph "Source Code and Content"
+        MD[📝 Markdown Files<br/>27 chapters in docs/]
+        MMD[🎨 Mermaid Diagrams<br/>images/*.mmd]
+        PY[🐍 Python Scripts<br/>generate_book.py]
+        SH[⚙️ Build Scripts<br/>build_book.sh]
+        YAML[📋 Configuration<br/>pandoc.yaml]
     end
 
     %% GitHub Repository
@@ -16,35 +16,35 @@ graph TB
 
     %% Build Pipeline
     subgraph "Build Pipeline"
-        subgraph "Miljöförberedelse"
+        subgraph "Environment Setup"
             PYTHON[🐍 Python 3.12]
             PANDOC[📖 Pandoc 3.1.9]
             LATEX[📄 XeLaTeX + TeXLive]
             CHROME[🌐 Chrome + Mermaid CLI]
         end
         
-        subgraph "Build-process"
-            GEN[🔧 Innehållsgenerering<br/>generate_book.py]
-            CONV[🎨 Diagramkonvertering<br/>*.mmd → *.png]
-            BUILD[📚 PDF-bygge<br/>Pandoc + Eisvogel]
-            VAL[✅ Validering<br/>Kvalitetskontroll]
+        subgraph "Build Process"
+            GEN[🔧 Content Generation<br/>generate_book.py]
+            CONV[🎨 Diagram Conversion<br/>*.mmd → *.png]
+            BUILD[📚 PDF Build<br/>Pandoc + Eisvogel]
+            VAL[✅ Validation<br/>Quality Control]
         end
     end
 
     %% Output Formats
-    subgraph "Utdataformat"
-        PDF[📕 PDF-bok<br/>architecture_as_code.pdf]
-        EPUB[📱 EPUB-format<br/>E-läsare]
-        DOCX[📄 Word-dokument<br/>Redigering]
-        HTML[🌐 HTML-sidor<br/>Whitepapers]
-        PPTX[📊 PowerPoint<br/>Presentationer]
+    subgraph "Output Formats"
+        PDF[📕 PDF Book<br/>architecture_as_code.pdf]
+        EPUB[📱 EPUB Format<br/>E-readers]
+        DOCX[📄 Word Document<br/>Editing]
+        HTML[🌐 HTML Pages<br/>Whitepapers]
+        PPTX[📊 PowerPoint<br/>Presentations]
     end
 
     %% Distribution
     subgraph "Distribution"
-        REL[🚀 GitHub Releases<br/>Automatisk publicering]
-        ART[📦 Build Artifacts<br/>30 dagars lagring]
-        DOWN[⬇️ Nedladdning<br/>PDF och material]
+        REL[🚀 GitHub Releases<br/>Automatic Publishing]
+        ART[📦 Build Artifacts<br/>30-day Storage]
+        DOWN[⬇️ Downloads<br/>PDF and Materials]
     end
 
     %% Data Flow
