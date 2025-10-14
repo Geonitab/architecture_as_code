@@ -176,6 +176,151 @@ class RequirementsValidator:
 
 Global organisations benefit from Requirements as Code by automatically validating regulatory compliance, financial controls, and statutory obligations that must be met continuously.
 
+### Functional vs Non-Functional Requirements as Code
+
+Understanding the distinction between functional and non-functional requirements is fundamental to implementing effective Requirements as Code. This distinction affects how requirements are verified and what methods are used to ensure system compliance.
+
+**Functional Requirements** define what the system should do – the specific behaviours, features, and capabilities that the system must provide. Examples include "users must be able to authenticate using multi-factor authentication" or "the system must encrypt data at rest". Functional requirements describe business logic, user interactions, data processing, and specific system functions.
+
+**Non-Functional Requirements** (NFRs) define how the system should perform – the quality attributes, constraints, and operational characteristics. Examples include performance thresholds ("response time must be under 200ms"), scalability requirements ("system must handle 10,000 concurrent users"), availability targets ("99.9% uptime"), and security standards ("must comply with ISO 27001").
+
+#### The V-Model and Requirements Verification
+
+![V-Model for Requirements Verification](images/diagram_02_v_model.png)
+
+*Figure 2.2: V-Model illustrating the relationship between requirements specification and verification methods*
+
+The V-Model illustrates a critical distinction in how different requirement types are verified in Architecture as Code:
+
+**Non-Functional Requirements → Testing**: NFRs are inherently testable through automated metrics and measurements. Performance can be measured through load tests, security can be verified through automated scanning, and availability can be monitored through uptime metrics. These requirements translate directly into executable tests that provide objective pass/fail results.
+
+**Functional Requirements → Validation**: Functional requirements require validation to confirm they meet business intent and user needs. While individual functions can be tested (unit tests, integration tests), validating that the system solves the correct business problem requires human judgment, user acceptance testing, and stakeholder confirmation.
+
+This distinction is reflected in the V-Model's right side:
+- **Unit Testing** verifies low-level NFRs (code quality, performance of individual components)
+- **Integration Testing** verifies system-level NFRs (component interactions, data flows)
+- **System Testing** verifies complete NFRs (end-to-end performance, security, scalability)
+- **Acceptance Testing** validates functional requirements against business needs
+- **Operational Validation** confirms the system delivers business value in production
+
+#### Practical Implementation Patterns
+
+When implementing Requirements as Code, the testing versus validation distinction manifests in different automation patterns:
+
+**Non-Functional Requirements as Automated Tests:**
+
+```yaml
+# requirements/performance-nfr.yaml
+apiVersion: policy/v1
+kind: NonFunctionalRequirement
+metadata:
+  name: api-performance-requirements
+  category: performance
+spec:
+  requirement:
+    id: NFR-PERF-001
+    description: "API response time under load"
+    metric: response_time_p95
+    threshold: 200
+    unit: milliseconds
+  test:
+    type: load_test
+    tool: k6
+    script: |
+      import http from 'k6/http';
+      import { check } from 'k6';
+      
+      export let options = {
+        stages: [
+          { duration: '2m', target: 100 },
+          { duration: '5m', target: 100 },
+          { duration: '2m', target: 0 },
+        ],
+        thresholds: {
+          'http_req_duration{type:api}': ['p(95)<200'],
+        },
+      };
+      
+      export default function() {
+        let response = http.get('https://api.example.com/health');
+        check(response, {
+          'status is 200': (r) => r.status === 200,
+          'response time OK': (r) => r.timings.duration < 200,
+        });
+      }
+```
+
+**Functional Requirements as Validation Specifications:**
+
+```yaml
+# requirements/authentication-fr.yaml
+apiVersion: policy/v1
+kind: FunctionalRequirement
+metadata:
+  name: mfa-authentication
+  category: security
+spec:
+  requirement:
+    id: FR-AUTH-001
+    description: "Users must authenticate with multi-factor authentication"
+    acceptance_criteria:
+      - "User provides valid username and password"
+      - "System prompts for second factor (TOTP or SMS)"
+      - "User provides valid second factor"
+      - "System grants access only after both factors verified"
+      - "System logs all authentication attempts"
+  validation:
+    type: acceptance_test
+    stakeholders:
+      - security_team
+      - product_owner
+      - end_users
+    validation_method: user_acceptance_testing
+    success_criteria:
+      - "Security team confirms implementation meets security policy"
+      - "Product owner confirms user experience is acceptable"
+      - "End users successfully complete authentication flow"
+      - "Penetration testing confirms no bypass vulnerabilities"
+  implementation_tests:
+    # These test the implementation, not the requirement itself
+    - type: integration_test
+      description: "Verify TOTP generation and validation"
+    - type: integration_test
+      description: "Verify SMS delivery and code validation"
+    - type: security_test
+      description: "Verify no authentication bypass exists"
+```
+
+#### Testability Characteristics
+
+The table below summarises key differences in how functional and non-functional requirements are verified as code:
+
+| Characteristic | Non-Functional Requirements | Functional Requirements |
+|----------------|----------------------------|-------------------------|
+| **Verification Method** | Automated testing with objective metrics | Validation through acceptance criteria and stakeholder confirmation |
+| **Measurability** | Directly measurable (milliseconds, percentages, counts) | Requires human judgment of business value and correctness |
+| **Automation Level** | Fully automated continuous testing | Semi-automated: tests verify implementation, humans validate correctness |
+| **Pass/Fail Criteria** | Quantitative thresholds (< 200ms, > 99.9% uptime) | Qualitative acceptance (meets business need, solves user problem) |
+| **Typical Tools** | Load testing (k6, JMeter), security scanning (OWASP ZAP), monitoring (Prometheus) | User acceptance testing, stakeholder reviews, business validation |
+| **Continuous Verification** | Every deployment through automated pipelines | Major releases, feature delivery, stakeholder review cycles |
+| **Example Requirements** | Performance, scalability, security controls, availability, resource utilisation | Business workflows, user interactions, data processing logic, feature behaviour |
+
+#### Implications for Architecture as Code
+
+This distinction has profound implications for how Architecture as Code is implemented:
+
+1. **NFR Testing in CI/CD**: Non-functional requirements integrate seamlessly into continuous deployment pipelines. Every infrastructure change can be automatically tested for performance impact, security compliance, and operational characteristics.
+
+2. **FR Validation Gates**: Functional requirements require explicit validation gates where stakeholders confirm business value. These gates cannot be fully automated but can be facilitated through Requirements as Code specifications that document acceptance criteria and track validation status.
+
+3. **Traceability Requirements**: Both requirement types need traceability to implementation, but NFRs trace to automated test results while FRs trace to validation decisions and stakeholder approvals.
+
+4. **Policy Enforcement**: NFRs can be enforced through policy-as-code frameworks (like OPA) that automatically block deployments failing to meet thresholds. FR enforcement requires human decision-making about whether implementation satisfies business intent.
+
+5. **Living Documentation**: Requirements as Code creates living documentation where NFR compliance status is always current (reflected by latest test results) while FR validation status requires explicit updates as stakeholders confirm business value delivery.
+
+This dual approach – automated testing for NFRs and structured validation for FRs – enables organisations to achieve both technical excellence and business value alignment through Architecture as Code practices.
+
 Sources:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
@@ -184,3 +329,6 @@ Sources:
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
 - Atlassian. "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
 - NIST. "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.
+- Forsberg, K., Mooz, H. "The Relationship of System Engineering to the Project Cycle." Engineering Management Journal, 1991.
+- IEEE. "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
+- Chung, L., et al. "Non-Functional Requirements in Software Engineering." Springer, 2000.
