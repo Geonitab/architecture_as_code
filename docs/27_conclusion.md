@@ -37,7 +37,7 @@ as Code platform.
 
 Continuous improvement is woven into Architecture as Code. Metrics from [automation and DevOps practices](05_automation_devops_cicd.md)
 and insights from [team structure guidance](18_team_structure.md) help identify areas for refinement. Observability patterns,
-first introduced in [security and resilience chapters](09_security.md), support data-driven decisions and proactive
+first introduced in [security and resilience chapters](09a_security_fundamentals.md), support data-driven decisions and proactive
 optimisation. By regularly reviewing feedback loops, teams maintain momentum and prevent regression.
 
 ## 27.3 European context and opportunities

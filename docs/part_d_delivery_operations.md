@@ -8,7 +8,7 @@ With secure, governed platforms in place, we now focus on the practical delivery
 
 Testing Infrastructure as Code requires a distinct approach from traditional software testing. The [test pyramid](13_testing_strategies.md) for architecture encompasses unit tests for modules, integration tests for deployed resources, and end-to-end validation of complete systems. These testing layers build confidence whilst enabling the rapid iteration promised by automated delivery pipelines.
 
-Practical implementation brings Architecture as Code principles into real-world projects. Organisations must balance ideal patterns with existing constraints, legacy systems, and transitional states. This part provides concrete guidance for navigating these challenges whilst maintaining the [security controls](09_security.md) and [governance frameworks](11_governance_as_code.md) established in earlier sections.
+Practical implementation brings Architecture as Code principles into real-world projects. Organisations must balance ideal patterns with existing constraints, legacy systems, and transitional states. This part provides concrete guidance for navigating these challenges whilst maintaining the [security controls](09a_security_fundamentals.md) and [governance frameworks](11_governance_as_code.md) established in earlier sections.
 
 Financial considerations directly influence architectural decisions. Cost optimisation in cloud environments demands visibility into resource consumption, proactive management of waste, and alignment between technical choices and business value. Architecture as Code enables this through automated cost tracking, policy-based budget enforcement, and resource right-sizing.
 
@@ -22,4 +22,4 @@ Migration from traditional infrastructure to Architecture as Code represents a s
 - Migration approaches that reduce risk whilst accelerating transformation
 - Operational excellence practices for Architecture as Code at scale
 
-These delivery and operational practices depend on the [automation foundations](05_automation_devops_cicd.md) and [security controls](09_security.md) from earlier parts, whilst preparing for the organisational transformation explored in Part V.
+These delivery and operational practices depend on the [automation foundations](05_automation_devops_cicd.md) and [security controls](09a_security_fundamentals.md) from earlier parts, whilst preparing for the organisational transformation explored in Part V.

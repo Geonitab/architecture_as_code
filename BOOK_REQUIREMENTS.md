@@ -32,8 +32,12 @@ book:
       title: "Microservices and Distributed Systems"
       area: "Architecture"
       required: true
-    - filename: "09_security.md"
-      title: "Security in Infrastructure as Code"
+    - filename: "09a_security_fundamentals.md"
+      title: "Security Fundamentals for Architecture as Code"
+      area: "Security"
+      required: true
+    - filename: "09b_security_patterns.md"
+      title: "Advanced Security Patterns and Implementation"
       area: "Security"
       required: true
     - filename: "10_policy_and_security.md"
@@ -244,7 +248,8 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | 05 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Infrastructure as Code | System Development | Yes |
 | 07 | 07_containerization.md | Containerization and Orchestration | Architecture | Yes |
 | 08 | 08_microservices.md | Microservices and Distributed Systems | Architecture | Yes |
-| 09 | 09_security.md | Security in Infrastructure as Code | Security | Yes |
+| 9A | 09a_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security | Yes |
+| 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security | Yes |
 | 10 | 10_policy_and_security.md | Policy as Code and Security Automation | Security | Yes |
 | 11 | 11_governance_as_code.md | Governance as Code | Governance | Yes |
 | 12 | 12_compliance.md | Compliance and Regulatory Alignment | Governance | Yes |

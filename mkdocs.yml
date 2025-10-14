@@ -17,7 +17,8 @@ nav:
       - Containerization and Orchestration as Code: 07_containerization.md
       - Microservices Architecture as Code: 08_microservices.md
   - Part 3 – Security & Governance:
-      - Security in Architecture as Code: 09_security.md
+      - Security Fundamentals for Architecture as Code: 09a_security_fundamentals.md
+      - Advanced Security Patterns and Implementation: 09b_security_patterns.md
       - Policy and Security as Code in Detail: 10_policy_and_security.md
       - Governance as Code: 11_governance_as_code.md
       - Compliance and Regulatory Adherence: 12_compliance.md

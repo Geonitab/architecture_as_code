@@ -58,7 +58,8 @@ Reference material, author information, and technical enablers
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 9 | `09_security.md` | Security in Architecture as Code | Security aspects and best practices |
+| 9A | `09a_security_fundamentals.md` | Security Fundamentals for Architecture as Code | Foundational security principles, policies, and core practices |
+| 9B | `09b_security_patterns.md` | Advanced Security Patterns and Implementation | Advanced patterns, practical implementations, and future trends |
 | 10 | `10_policy_and_security.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |
 | 11 | `11_governance_as_code.md` | Governance as Code | Codifying governance processes, approval flows, and tooling support |
 | 12 | `12_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance considerations for international organisations |
