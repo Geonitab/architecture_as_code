@@ -22,13 +22,13 @@ Files removed:
 **Result**: Only ONE template file remains: `templates/book-cover.svg`
 
 ### 2. Fixed Duplicate Cover in PDF Generation
-**Action**: Removed `cover-image` variable from `docs/pandoc.yaml`
+**Action**: Disabled Eisvogel template's automatic title page in `docs/pandoc.yaml`
 
-**Problem**: The pandoc configuration had TWO cover inclusions:
-1. `cover-image: "images/book-cover.png"` variable (used by Eisvogel template)
+**Problem**: The pandoc configuration resulted in TWO cover pages:
+1. Eisvogel template's automatic title page (generated from `title` and `subtitle` metadata)
 2. Custom title page in `include-before` section with `\includegraphics`
 
-**Solution**: Removed the `cover-image` variable, keeping only the custom title page in `include-before`
+**Solution**: Added `titlepage: false` variable to disable Eisvogel's automatic title page, keeping only the custom title page in `include-before`
 
 **Result**: PDF generation now produces exactly ONE front cover
 
@@ -63,10 +63,10 @@ $ grep -c "includegraphics.*book-cover" docs/pandoc.yaml
 ✅ **PASS**: Exactly one cover inclusion in PDF
 
 ```bash
-$ grep "cover-image:" docs/pandoc.yaml
-(no output)
+$ grep "titlepage:" docs/pandoc.yaml
+  titlepage: false  # Disable Eisvogel's automatic title page (we use custom title in include-before)
 ```
-✅ **PASS**: No duplicate cover-image variable
+✅ **PASS**: Eisvogel's automatic title page disabled
 
 ### EPUB Configuration
 ```bash
