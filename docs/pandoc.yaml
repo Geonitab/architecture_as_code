@@ -44,7 +44,6 @@ variables:
   fontsize: 11pt
   linestretch: 1.2
   lang: en-GB
-  cover-image: "images/book-cover.png"
   include-before: |
     \newpage
     \thispagestyle{empty}
