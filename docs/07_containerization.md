@@ -234,6 +234,12 @@ resource "google_container_node_pool" "primary_nodes" {
 
 Architecture as Code provides a common language for development, operations, and security teams. By expressing container platforms, orchestration logic, networking, and data safeguards as code, organisations can automate delivery, scale confidently, and apply governance consistently. Kubernetes and its surrounding ecosystem offer the building blocks, while GitOps workflows keep every environment aligned with the declared intent. Mastery of these practices delivers resilient platforms that adapt quickly to changing requirements.
 
+## Transition to Security and Governance
+
+The automation capabilities and deployment velocity enabled by containerisation and CI/CD pipelines create new security challenges and governance requirements. As containers move through development, testing, and production environments at increasing speed, security controls must keep pace without becoming bottlenecks.
+
+The next part of this book explores how security, policy enforcement, and governance frameworks integrate into Architecture as Code practices. [Chapter 9 on Security](09_security.md) examines threat modelling, Zero Trust Architecture, and security-by-design principles specifically tailored for containerised, automated environments. [Chapter 10 on Policy and Security as Code](10_policy_and_security.md) demonstrates how tools like Open Policy Agent enforce security requirements automatically, whilst [Chapters 11 and 12](11_governance_as_code.md) show how governance and compliance become executable code rather than static documentation.
+
 ## Sources and references
 
 - Kubernetes Documentation. "Concepts and Architecture." The Kubernetes Project.
@@ -241,4 +247,3 @@ Architecture as Code provides a common language for development, operations, and
 - Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.
 - Helm Community. "Chart Development Guide." Helm Documentation.
 - Istio Project. "Service Mesh Architecture." Istio Service Mesh.
-
