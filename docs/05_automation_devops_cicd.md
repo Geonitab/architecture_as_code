@@ -2,15 +2,15 @@
 
 ![Automation and CI/CD pipelines](images/diagram_04_chapter3.png)
 
-Continuous integration and continuous deployment (CI/CD) combined with a mature DevOps culture form the backbone of modern software delivery. When Architecture as Code principles are applied, these processes become even more critical. This chapter explores how Swedish organisations can establish robust, secure, and effective CI/CD pipelines that transform infrastructure management from manual, error-prone activities into automated, reliable, and auditable operations while treating the entire system architecture as executable code.
+Continuous integration and continuous deployment (CI/CD) combined with a mature DevOps culture form the backbone of modern software delivery. When Architecture as Code principles are applied, these processes become even more critical. This chapter explores how organisations can establish robust, secure, and effective CI/CD pipelines that transform infrastructure management from manual, error-prone activities into automated, reliable, and auditable operations while treating the entire system architecture as executable code.
 
 ![Architecture as Code implementation timeline](images/diagram_05_gantt_timeline.png)
 
 The diagram above illustrates a typical timeline for an Architecture as Code implementation, from initial tool analysis through to a full production rollout.
 
-Understanding CI/CD for Architecture as Code requires a fundamental mindset shift from traditional infrastructure management towards code-centric automation. Traditional methods rely on manual configuration, checklists, and ad-hoc solutions. Modern automation instead delivers consistency, repeatability, and transparency throughout the architecture lifecycle. Architecture as Code represents the next evolutionary step, where DevOps practices and CI/CD processes encapsulate the entire system architecture as a cohesive unit. The paradigm shift is not purely technical. It affects organisational structures, workflows, and legal obligations for Swedish companies that must navigate GDPR, national data-management legislation, and sector-specific regulations.
+Understanding CI/CD for Architecture as Code requires a fundamental mindset shift from traditional infrastructure management towards code-centric automation. Traditional methods rely on manual configuration, checklists, and ad-hoc solutions. Modern automation instead delivers consistency, repeatability, and transparency throughout the architecture lifecycle. Architecture as Code represents the next evolutionary step, where DevOps practices and CI/CD processes encapsulate the entire system architecture as a cohesive unit. The paradigm shift is not purely technical. It affects organisational structures, workflows, and legal obligations for companies that must navigate GDPR, data-management legislation, and sector-specific regulations.
 
-The CI/CD flow depicted earlier runs from code commit through validation, testing, deployment, and monitoring. The flow represents a systematic method in which each stage is designed to surface defects early, assure quality, and minimise production risk. Swedish organisations must include considerations around data residency, compliance validation, and cost optimisation expressed in Swedish kronor.
+The CI/CD flow depicted earlier runs from code commit through validation, testing, deployment, and monitoring. The flow represents a systematic method in which each stage is designed to surface defects early, assure quality, and minimise production risk. Organisations must include considerations around data residency, compliance validation, and cost optimisation.
 
 ## The theoretical foundation for CI/CD automation
 
@@ -22,7 +22,7 @@ The CI/CD concept has roots in Extreme Programming (XP) and the agile movement o
 
 The shift to "infrastructure as cattle"—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and tools such as Terraform and Ansible accelerated this development by offering programmable interfaces for infrastructure management.
 
-For Swedish organisations, these advances coincided with increasingly strict regulatory requirements, particularly GDPR and guidelines from the Swedish Authority for Privacy Protection (Integritetsskyddsmyndigheten). Automation is therefore not only an efficiency improvement but a necessity for compliance and risk management.
+These advances coincided with increasingly strict regulatory requirements, particularly GDPR and guidelines from national data protection authorities. Automation is therefore not only an efficiency improvement but a necessity for compliance and risk management.
 
 ### Fundamental principles for automating Architecture as Code
 
