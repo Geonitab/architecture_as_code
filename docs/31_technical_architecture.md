@@ -222,15 +222,20 @@ The result is a set of professional PowerPoint presentations tailored for confer
 The book cover is produced through an HTML/CSS design system:
 
 ```
+templates/
+└── book-cover.svg                    # Single approved cover template
+
 exports/book-cover/
 ├── source/
-│   ├── book-cover.html              # Primary design
-│   ├── book-cover-light.html        # Light variant
-│   └── book-cover-minimal.html      # Minimalist design
-├── pdf/                             # Print-ready PDF files
-├── png/                             # High-resolution PNG exports
-└── scripts/
-    └── generate_book_cover_exports.py
+│   ├── book-cover-final.html         # HTML/CSS source (for design editing)
+│   ├── book-cover.html               # HTML/CSS source (alternate version)
+│   ├── book-cover.svg                # SVG source (editable)
+│   ├── BRAND_GUIDELINES.md           # Brand compliance guidelines
+│   └── DESIGN_SYSTEM.md              # Design system documentation
+├── pdf/                              # Print-ready PDF files
+├── png/                              # High-resolution PNG exports
+├── jpg/                              # JPEG exports
+└── svg/                              # Vector files
 ```
 
 ### Kvadrat Brand Integration

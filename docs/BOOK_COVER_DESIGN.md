@@ -3,32 +3,40 @@
 ## Overview
 Professional book cover design for Kvadrat's "Architecture as Code" publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.
 
-## design Variations
+## Active Cover Template
 
-### Primary design (Dark Theme)
-**File:** `templates/book-cover-final.html`
+### Primary Design (Vector Format)
+**File:** `templates/book-cover.svg`
+- Infinitely scalable SVG format
 - Modern gradient background (Kvadrat Blue to Dark Blue)
 - Advanced code architecture visual elements
 - Professional typography with highlighted "code" text
-- Suitable for both digital and print formats
-
-### Light Theme Variation
-**File:** `templates/book-cover-light.html`
-- Clean white background with subtle patterns
-- Maintains brand consistency with adjusted contrast
-- Ideal for specific publishing requirements
-
-### Minimal design
-**File:** `templates/book-cover-minimal.html`
-- Simplified layout with clean lines
-- Focus on typography and essential elements
-- Border accent design
-
-### Vector Format
-**File:** `templates/book-cover.svg`
-- Infinitely scalable SVG format
 - Perfect for editing in vector graphics software
+- Suitable for both digital and print formats
 - Includes metadata and structured elements
+
+This is the **single approved front cover** used in the book build process.
+
+## Single Cover Guarantee
+
+The book build process ensures that exactly **one front cover** appears in all output formats:
+
+### PDF Generation
+- The cover is included via the `include-before` section in `docs/pandoc.yaml`
+- The Eisvogel template's default `cover-image` variable is NOT used to avoid duplication
+- Result: Single custom title page with cover image, title, subtitle, and metadata
+
+### EPUB Generation
+- The cover is specified via `--epub-cover-image="images/book-cover.png"` flag
+- Result: Single EPUB cover page
+
+### Build Process
+1. `templates/book-cover.svg` is converted to PNG by `docs/build_book.sh`
+2. The PNG is saved as `docs/images/book-cover.png`
+3. Pandoc includes the cover exactly once in PDF output
+4. EPUB generation uses the same PNG file as its cover
+
+This architecture guarantees no duplicate or redundant cover variants in distribution artifacts.
 
 ## Export Formats
 
@@ -103,40 +111,31 @@ The design strictly follows Kvadrat Brand Guidelines:
 2. **Web modifications**: Edit HTML/CSS files
 3. **Brand compliance**: Follow included brand guidelines
 
-## Generation Scripts
+## Build Integration
 
-### Export Generation
-```bash
-python3 scripts/generate_book_cover_exports.py
-```
-Generates all export formats automatically.
+The book cover is automatically processed during the PDF build:
 
-### design Variations
-```bash
-python3 scripts/generate_cover_variations.py
-```
-Creates light and minimal design variations.
+1. The build script (`docs/build_book.sh`) converts `templates/book-cover.svg` to PNG
+2. The PNG is embedded in the PDF via pandoc configuration (`docs/pandoc.yaml`)
+3. The same cover image is used for EPUB generation
 
 ## File Structure
 ```
 templates/
-├── book-cover-final.html      # Primary design (dark theme)
-├── book-cover-light.html      # Light theme variation
-├── book-cover-minimal.html    # Minimal design
-├── book-cover.svg             # Vector format
-└── book-cover.html            # Original template
+└── book-cover.svg             # Single approved cover template
 
 exports/book-cover/
 ├── pdf/                       # Print-ready PDF files
 ├── png/                       # High-resolution PNG files
 ├── jpg/                       # JPEG exports
 ├── svg/                       # Vector files
-├── source/                    # Source files and documentation
+├── source/                    # Editable source files for designers
+│   ├── book-cover-final.html  # HTML/CSS source (for design editing)
+│   ├── book-cover.html        # HTML/CSS source (alternate version)
+│   ├── book-cover.svg         # SVG source (editable)
+│   ├── BRAND_GUIDELINES.md    # Brand compliance guidelines
+│   └── DESIGN_SYSTEM.md       # Design system documentation
 └── README.md                  # Usage documentation
-
-scripts/
-├── generate_book_cover_exports.py    # Export generation script
-└── generate_cover_variations.py      # design variations script
 ```
 
 ## Quality Assurance
@@ -162,16 +161,17 @@ scripts/
 ## Maintenance
 
 ### Updating the design
-1. Modify source HTML/CSS files in `templates/`
-2. Run export generation script to update all formats
-3. Test print quality and brand compliance
-4. Update documentation if necessary
+1. Modify `templates/book-cover.svg` directly in a vector editor (Inkscape, Adobe Illustrator)
+2. Optionally, edit the HTML/CSS source files in `exports/book-cover/source/` for web-based design work
+3. Test the build process: `cd docs && ./build_book.sh`
+4. Verify the cover appears correctly in the generated PDF and EPUB
 
 ### Brand Updates
 If Kvadrat brand guidelines change:
-1. Update CSS custom properties in source files
-2. Regenerate all exports
-3. Verify compliance with new guidelines
+1. Update the SVG file in `templates/book-cover.svg`
+2. Update source files in `exports/book-cover/source/` if needed
+3. Regenerate the book to verify changes
+4. Update brand documentation if necessary
 
 ## Support
 
