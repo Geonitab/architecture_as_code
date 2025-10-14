@@ -19,7 +19,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "Thanks for opening this issue! We''ll look into it soon."
+              body: "Thanks for opening this issue! Assigning Copilot."
             })
 
       # NEW STEP: Automatic assignment to Copilot
