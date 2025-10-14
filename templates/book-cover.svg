@@ -98,6 +98,69 @@
   <!-- Container visualization pattern -->
   <rect x="550" y="400" width="200" height="200" fill="url(#containerPattern)" opacity="0.6"/>
   
+  <!-- Code Art Overlay - Diffusa Kåda -->
+  <!-- Very light gray code snippets as background art -->
+  
+  <!-- Mermaid Diagram Code Snippet 1 - Top Left -->
+  <text x="50" y="150" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="8" fill="rgba(255,255,255,0.08)" xml:space="preserve">
+    <tspan x="50" dy="0">graph LR</tspan>
+    <tspan x="50" dy="12">    A[Git repository] --&gt; B[Branching]</tspan>
+    <tspan x="50" dy="12">    B --&gt; C[Code review]</tspan>
+    <tspan x="50" dy="12">    C --&gt; D[Merge process]</tspan>
+    <tspan x="50" dy="12">    D --&gt; E[Deployment]</tspan>
+  </text>
+  
+  <!-- ADR Markdown Snippet - Middle Right -->
+  <text x="450" y="320" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" fill="rgba(255,255,255,0.07)" xml:space="preserve">
+    <tspan x="450" dy="0"># ADR-0003: Terraform for AaC</tspan>
+    <tspan x="450" dy="10"></tspan>
+    <tspan x="450" dy="10">## Status</tspan>
+    <tspan x="450" dy="10">Accepted</tspan>
+    <tspan x="450" dy="10"></tspan>
+    <tspan x="450" dy="10">## Context</tspan>
+    <tspan x="450" dy="10">Standardise on Architecture</tspan>
+    <tspan x="450" dy="10">as Code tool to manage AWS</tspan>
+    <tspan x="450" dy="10">and Azure environments.</tspan>
+    <tspan x="450" dy="10"></tspan>
+    <tspan x="450" dy="10">## Decision</tspan>
+    <tspan x="450" dy="10">Use Terraform as primary</tspan>
+    <tspan x="450" dy="10">Architecture as Code tool</tspan>
+  </text>
+  
+  <!-- Mermaid Diagram Code Snippet 2 - Bottom Left -->
+  <text x="60" y="880" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="7" fill="rgba(255,255,255,0.08)" xml:space="preserve">
+    <tspan x="60" dy="0">graph LR</tspan>
+    <tspan x="60" dy="11">  A[Problem] --&gt; B[Context]</tspan>
+    <tspan x="60" dy="11">  B --&gt; C[Alternatives]</tspan>
+    <tspan x="60" dy="11">  C --&gt; D[Decision]</tspan>
+    <tspan x="60" dy="11">  D --&gt; E[ADR Doc]</tspan>
+  </text>
+  
+  <!-- ADR Consequences Snippet - Bottom Right -->
+  <text x="480" y="920" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="6.5" fill="rgba(255,255,255,0.07)" xml:space="preserve">
+    <tspan x="480" dy="0">## Consequences</tspan>
+    <tspan x="480" dy="9"></tspan>
+    <tspan x="480" dy="9">### Positive</tspan>
+    <tspan x="480" dy="9">- Multi-cloud support</tspan>
+    <tspan x="480" dy="9">- Large community</tspan>
+    <tspan x="480" dy="9">- Declarative syntax</tspan>
+    <tspan x="480" dy="9"></tspan>
+    <tspan x="480" dy="9">### Negative</tspan>
+    <tspan x="480" dy="9">- Learning curve</tspan>
+    <tspan x="480" dy="9">- State complexity</tspan>
+  </text>
+  
+  <!-- Architecture as Code Markdown Snippet - Top Right -->
+  <text x="530" y="100" font-family="'JetBrains Mono', 'Courier New', monospace" font-size="6" fill="rgba(255,255,255,0.06)" xml:space="preserve">
+    <tspan x="530" dy="0">```markdown</tspan>
+    <tspan x="530" dy="9">## Deklarativ definition</tspan>
+    <tspan x="530" dy="9"></tspan>
+    <tspan x="530" dy="9">Architecture as Code</tspan>
+    <tspan x="530" dy="9">beskriver önskat</tspan>
+    <tspan x="530" dy="9">systemtillstånd</tspan>
+    <tspan x="530" dy="9">```</tspan>
+  </text>
+  
   <!-- Infrastructure elements representing DevOps concepts -->
   <!-- Git repository icon representation -->
   <g transform="translate(600, 250) rotate(12)">

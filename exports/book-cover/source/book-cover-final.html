@@ -273,6 +273,50 @@
             transform: rotate(-20deg);
         }
 
+        /* Code snippet overlays - Diffusa Kåda art */
+        .code-snippet {
+            position: absolute;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            color: rgba(255, 255, 255, 0.08);
+            white-space: pre;
+            line-height: 1.4;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .code-snippet-1 {
+            top: 12%;
+            left: 5%;
+            font-size: 9px;
+        }
+
+        .code-snippet-2 {
+            top: 28%;
+            right: 8%;
+            font-size: 8px;
+            color: rgba(255, 255, 255, 0.07);
+        }
+
+        .code-snippet-3 {
+            bottom: 22%;
+            left: 6%;
+            font-size: 8px;
+        }
+
+        .code-snippet-4 {
+            bottom: 14%;
+            right: 10%;
+            font-size: 7px;
+            color: rgba(255, 255, 255, 0.07);
+        }
+
+        .code-snippet-5 {
+            top: 8%;
+            right: 5%;
+            font-size: 7px;
+            color: rgba(255, 255, 255, 0.06);
+        }
+
         @media print {
             body {
                 width: 210mm;
@@ -310,6 +354,52 @@
     <div class="code-pattern-3"></div>
     <div class="network-line-1"></div>
     <div class="network-line-2"></div>
+    
+    <!-- Code Art Overlays - Diffusa Kåda -->
+    <div class="code-snippet code-snippet-1">graph LR
+    A[Git repository] --> B[Branching]
+    B --> C[Code review]
+    C --> D[Merge process]
+    D --> E[Deployment]</div>
+
+    <div class="code-snippet code-snippet-2"># ADR-0003: Terraform for AaC
+
+## Status
+Accepted
+
+## Context
+Standardise on Architecture
+as Code tool to manage AWS
+and Azure environments.
+
+## Decision
+Use Terraform as primary
+Architecture as Code tool</div>
+
+    <div class="code-snippet code-snippet-3">graph LR
+  A[Problem] --> B[Context]
+  B --> C[Alternatives]
+  C --> D[Decision]
+  D --> E[ADR Doc]</div>
+
+    <div class="code-snippet code-snippet-4">## Consequences
+
+### Positive
+- Multi-cloud support
+- Large community
+- Declarative syntax
+
+### Negative
+- Learning curve
+- State complexity</div>
+
+    <div class="code-snippet code-snippet-5">```markdown
+## Deklarativ definition
+
+Architecture as Code
+beskriver önskat
+systemtillstånd
+```</div>
     
     <div class="book-cover">
         <header class="header">
