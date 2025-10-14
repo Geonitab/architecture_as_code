@@ -325,6 +325,7 @@ CHAPTER_FILES=(
     "29_about_the_authors.md"
     "30_appendix_code_examples.md"
     "31_technical_architecture.md"
+    "33_references.md"
 )
 
 # Build a sanitized list that excludes LaTeX-only part markers for non-LaTeX formats
