@@ -1,12 +1,21 @@
-flowchart TB
-    Vision["Architecture Vision"]:::kv-primary --> Governance["Platform Governance"]:::kv-accent
-    Governance --> PlatformTeam["Platform Team\n(Enablement)"]:::kv-highlight
-    PlatformTeam --> SharedServices["Shared Services\n(CI/CD, Security, Observability)"]:::kv-accent
-    SharedServices --> ProductTeams["Product Teams\n(Cross-functional)"]:::kv-primary
-    ProductTeams --> Feedback["Feedback & Metrics"]:::kv-muted
-    Feedback --> Governance
-    Communities["Communities of Practice"]:::kv-pattern --> PlatformTeam
-    Communities --> ProductTeams
-    Communities --> Leadership["Leadership & People Ops"]:::kv-outline
+flowchart LR
+    Vision["Architecture Vision"]:::kv-primary
+    Governance["Platform Governance"]:::kv-accent
+    PlatformTeam["Platform Team\n(Enablement)"]:::kv-highlight
+    SharedServices["Shared Services\n(CI/CD, Security, Observability)"]:::kv-accent
+    ProductTeams["Product Teams\n(Cross-functional)"]:::kv-primary
+    Feedback["Feedback & Metrics"]:::kv-muted
+    Communities["Communities of Practice"]:::kv-pattern
+    Leadership["Leadership & People Ops"]:::kv-outline
+    
+    Vision --> Governance
     Leadership --> Governance
+    Governance --> PlatformTeam
     Leadership --> PlatformTeam
+    PlatformTeam --> SharedServices
+    SharedServices --> ProductTeams
+    ProductTeams --> Feedback
+    Feedback --> Governance
+    Communities --> PlatformTeam
+    Communities --> ProductTeams
+    Communities --> Leadership
