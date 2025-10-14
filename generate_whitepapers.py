@@ -101,12 +101,12 @@ def read_chapter_content(chapter_file):
         
         # Provide fallback content if still empty
         if not condensed_content:
-            condensed_content = [f"Detta kapitel behandlar {title.lower()} inom Infrastructure as Code för svenska organisationer."]
+            condensed_content = [f"This chapter covers {title.lower()} within Infrastructure as Code for organisations."]
             print(f"Warning: Using fallback content for {chapter_file}")
         
         # Provide fallback section headers if none found
         if not section_headers:
-            section_headers = ["Introduktion", "Implementering", "Best Practices"]
+            section_headers = ["Introduction", "Implementation", "Best Practises"]
             print(f"Warning: No section headers found in {chapter_file}, using fallback headers")
         
         return {
@@ -125,49 +125,49 @@ def get_book_overview():
     chapter_total = len(get_chapter_mapping())
 
     return {
-        'title': 'Arkitektur som kod',
-        'subtitle': 'Infrastructure as Code för svenska organisationer',
+        'title': 'Architecture as Code',
+        'subtitle': 'Infrastructure as Code for organisations',
         'description': '''
-Infrastructure as Code representerar en fundamental förändring i hur vi hanterar och utvecklar IT-infrastruktur.
-Denna bok ger svenska organisationer praktisk vägledning för att implementera IaC-principer samtidigt som de
-uppfyller lokala compliance-krav och optimerar kostnader.
+Infrastructure as Code represents a fundamental change in how we manage and develop IT infrastructure.
+This book provides organisations with practical guidance for implementing IaC principles whilst
+fulfilling local compliance requirements and optimising costs.
 
-Boken täcker allt från grundläggande principer och verktyg till avancerade implementationsstrategier,
-säkerhetsaspekter och organisatoriska förändringar som krävs för framgångsrik IaC-adoption.
+The book covers everything from fundamental principles and tools to advanced implementation strategies,
+security aspects, and organisational changes required for successful IaC adoption.
         '''.strip(),
-        'target_audience': 'IT-arkitekter, DevOps-team, utvecklare och beslutsfattare inom svenska organisationer',
+        'target_audience': 'IT architects, DevOps teams, developers, and decision-makers within organisations',
         'chapters_count': chapter_total
     }
 
 def get_chapter_mapping():
     """Return mapping of chapter files to readable chapter numbers."""
     return {
-        '01_introduction.md': 'Kapitel 1',
-        '02_fundamental_principles.md': 'Kapitel 2',
-        '03_version_control.md': 'Kapitel 3',
-        '04_adr.md': 'Kapitel 4',
-        '05_automation_devops_cicd.md': 'Kapitel 5',
-        '07_containerization.md': 'Kapitel 7',
-        '09a_security_fundamentals.md': 'Kapitel 9A',
-        '09b_security_patterns.md': 'Kapitel 9B',
-        '10_policy_and_security.md': 'Kapitel 10',
-        '11_governance_as_code.md': 'Kapitel 11',
-        '12_compliance.md': 'Kapitel 12',
-        '13_testing_strategies.md': 'Kapitel 13',
-        '14_practical_implementation.md': 'Kapitel 14',
-        '15_cost_optimization.md': 'Kapitel 15',
-        '16_migration.md': 'Kapitel 16',
-        '17_organizational_change.md': 'Kapitel 17',
-        '18_team_structure.md': 'Kapitel 18',
-        '19_management_as_code.md': 'Kapitel 19',
-        '20_ai_agent_team.md': 'Kapitel 20',
-        '21_digitalization.md': 'Kapitel 21',
-        '23_soft_as_code_interplay.md': 'Kapitel 23',
-        '24_best_practices.md': 'Kapitel 24',
-        '25_future_trends_development.md': 'Kapitel 25',
-        '27_conclusion.md': 'Kapitel 27',
-        '28_glossary.md': 'Ordlista',
-        '29_about_the_authors.md': 'Om författaren',
+        '01_introduction.md': 'Chapter 1',
+        '02_fundamental_principles.md': 'Chapter 2',
+        '03_version_control.md': 'Chapter 3',
+        '04_adr.md': 'Chapter 4',
+        '05_automation_devops_cicd.md': 'Chapter 5',
+        '07_containerization.md': 'Chapter 7',
+        '09a_security_fundamentals.md': 'Chapter 9A',
+        '09b_security_patterns.md': 'Chapter 9B',
+        '10_policy_and_security.md': 'Chapter 10',
+        '11_governance_as_code.md': 'Chapter 11',
+        '12_compliance.md': 'Chapter 12',
+        '13_testing_strategies.md': 'Chapter 13',
+        '14_practical_implementation.md': 'Chapter 14',
+        '15_cost_optimization.md': 'Chapter 15',
+        '16_migration.md': 'Chapter 16',
+        '17_organizational_change.md': 'Chapter 17',
+        '18_team_structure.md': 'Chapter 18',
+        '19_management_as_code.md': 'Chapter 19',
+        '20_ai_agent_team.md': 'Chapter 20',
+        '21_digitalization.md': 'Chapter 21',
+        '23_soft_as_code_interplay.md': 'Chapter 23',
+        '24_best_practices.md': 'Chapter 24',
+        '25_future_trends_development.md': 'Chapter 25',
+        '27_conclusion.md': 'Chapter 27',
+        '28_glossary.md': 'Glossary',
+        '29_about_the_authors.md': 'About the Author',
         '30_appendix_code_examples.md': 'Appendix A',
         '31_technical_architecture.md': 'Appendix B',
         '32_finos_project_blueprint.md': 'Appendix C'
@@ -193,7 +193,7 @@ def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
         diagram_src = f"../docs/{chapter_data['diagram_path']}"
         diagram_html = f'''
             <div style="text-align: center; margin: 30px 0;">
-                <img src="{diagram_src}" alt="Kapiteldiagram för {chapter_data['title']}" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
+                <img src="{diagram_src}" alt="Chapter diagram for {chapter_data['title']}" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
             </div>
         '''
     
@@ -207,7 +207,7 @@ def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
     if chapter_data['section_headers']:
         section_list = "".join([f"                <li>{header}</li>" for header in chapter_data['section_headers']])
         section_overview = f'''
-            <h2>Huvudämnen som behandlas</h2>
+            <h2>Main topics covered</h2>
             <ul>
 {section_list}
             </ul>
@@ -218,33 +218,33 @@ def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
     
     # Replace title
     html_output = html_output.replace(
-        'Modernisering av IT-infrastruktur genom kodbaserade lösningar',
+        'Modernisation of IT infrastructure through code-based solutions',
         chapter_data['title']
     )
     
     # Replace subtitle
     html_output = html_output.replace(
-        'En strategisk guide för organisationer som vill implementera Infrastructure as Code',
-        f'Whitepaper från {chapter_ref} av boken "Arkitektur som kod"'
+        'A strategic guide for organisations implementing Infrastructure as Code',
+        f'Whitepaper from {chapter_ref} of the book "Architecture as Code"'
     )
     
     # Create the new content sections
     new_content = f'''        <!-- Book Overview -->
         <section>
-            <h1>Om boken "Arkitektur som kod"</h1>
+            <h1>About the book "Architecture as Code"</h1>
             <p class="lead"><strong>{book_overview['title']}</strong> - {book_overview['subtitle']}</p>
             
             <p>{book_overview['description']}</p>
             
             <div class="callout callout-info">
-                <div class="callout-title">Målgrupp</div>
+                <div class="callout-title">Target Audience</div>
                 <p>{book_overview['target_audience']}</p>
             </div>
         </section>
 
         <!-- Chapter Content -->
         <section>
-            <h1>Kapitelöversikt: {chapter_data['title']}</h1>
+            <h1>Chapter Overview: {chapter_data['title']}</h1>
 {diagram_html}
             
 {"".join(content_sections)}
@@ -254,15 +254,15 @@ def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
 
         <!-- Call to Action -->
         <section>
-            <h1>Läs mer</h1>
+            <h1>Read More</h1>
             <div class="callout callout-success">
-                <div class="callout-title">Fullständigt innehåll</div>
-                <p><strong>Läs mer i {chapter_ref} av boken "Arkitektur som kod"</strong> för djupgående förklaringar, praktiska exempel och detaljerade implementationsguider.</p>
+                <div class="callout-title">Complete Content</div>
+                <p><strong>Read more in {chapter_ref} of the book "Architecture as Code"</strong> for in-depth explanations, practical examples, and detailed implementation guides.</p>
             </div>
             
-            <p>Boken innehåller totalt {book_overview['chapters_count']} kapitel som täcker alla aspekter av Infrastructure as Code för svenska organisationer, från grundläggande principer till avancerade implementationsstrategier.</p>
+            <p>The book contains a total of {book_overview['chapters_count']} chapters covering all aspects of Infrastructure as Code for organisations, from fundamental principles to advanced implementation strategies.</p>
             
-            <p><strong>Andra relevanta kapitel:</strong> Utforska hela bokens innehåll för en komplett förståelse av Infrastructure as Code-implementationer anpassade för svenska organisationer.</p>
+            <p><strong>Other relevant chapters:</strong> Explore the entire book content for a complete understanding of Infrastructure as Code implementations.</p>
         </section>'''
     
     # Replace the existing content sections

@@ -61,7 +61,7 @@ After the workflow completes, the PowerPoint presentation is ready for imwithiat
 - `generate_pptx.py` - Script for local customization
 - `requirements.txt` - Dependencies list
 
-**For local generation or customization:**
+**For local generation or customisation:**
 ```bash
 # Download artifacts from GitHub Actions or clone repository
 python3 generate_presentation.py --create-pptx
@@ -72,7 +72,7 @@ python3 generate_presentation.py --create-pptx --output my_presentation.pptx
 This creates a professional PowerPoint presentation with:
 - Title slides for each chapter
 - Key bullet points and concepts
-- Swedish-language content optimized for architecture as code topics
+- Content optimised for architecture as code topics
 - Professional Kvadrat branding and styling
 
 ## Whitepaper Generation Workflow
@@ -95,7 +95,7 @@ The workflow runs when:
 1. **Setup Environment** - Python 3.12 environment
 2. **Generate Whitepapers** - Run `generate_whitepapers.py` script
 3. **Validation** - Verify HTML structure and content quality
-4. **Quality Checks** - Validate Swedish content and proper formatting
+4. **Quality Checks** - Validate English content and proper formatting
 5. **Archive Creation** - Create ZIP file containing all whitepapers
 6. **Artifact Upload** - Store individual files and archive
 7. **Performance Metrics** - Track generation efficiency and file sizes
@@ -103,10 +103,10 @@ The workflow runs when:
 ### Features
 Each whitepaper includes:
 - **Professional HTML design** - Modern, responsive layout with Kvadrat branding
-- **Swedish Content** - Optimized for Swedish organizations and compliance requirements
+- **English Content** - Optimised for organisations and compliance requirements
 - **Standalone Format** - Can be shared independently via email, web, or print
-- **SEO Optimized** - Proper meta tags and structured content
-- **Print-Ready** - CSS styling optimized for both screen and print media
+- **SEO Optimised** - Proper meta tags and structured content
+- **Print-Ready** - CSS styling optimised for both screen and print media
 
 ## File Structure
 

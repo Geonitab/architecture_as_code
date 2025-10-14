@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kvadrat Whitepaper Mall</title>
+    <title>Kvadrat Whitepaper Template</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Prism.js for syntax highlighting -->
@@ -319,23 +319,23 @@
             <div class="company-info">
                 <div class="company-name">Kvadrat.se</div>
                 <div>Professional Consulting</div>
-                <div>Stockholm, Sverige</div>
+                <div>Stockholm, Sweden</div>
             </div>
         </header>
 
         <!-- Whitepaper Content -->
         <div class="whitepaper-header">
             <div class="category">Infrastructure as Code</div>
-            <h1 class="title">Modernisering av IT-infrastruktur genom kodbaserade lösningar</h1>
-            <p class="subtitle">En strategisk guide för organisationer som vill implementera Infrastructure as Code</p>
+            <h1 class="title">Modernisation of IT infrastructure through code-based solutions</h1>
+            <p class="subtitle">A strategic guide for organisations implementing Infrastructure as Code</p>
             
             <div class="meta-info">
                 <div class="meta-item">
-                    <div class="meta-label">Författare</div>
-                    <div>Kvadrat Expertteam</div>
+                    <div class="meta-label">Author</div>
+                    <div>Kvadrat Expert Team</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label">Datum</div>
+                    <div class="meta-label">Date</div>
                     <div>December 2024</div>
                 </div>
                 <div class="meta-item">
@@ -343,47 +343,47 @@
                     <div>1.0</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label">Läsestid</div>
-                    <div>15 minuter</div>
+                    <div class="meta-label">Reading Time</div>
+                    <div>15 minutes</div>
                 </div>
             </div>
         </div>
 
         <!-- Executive Summary -->
         <section>
-            <h1>Sammanfattning</h1>
+            <h1>Executive Summary</h1>
             <p class="lead">
-                Infrastructure as Code (IaC) representerar en fundamental förändring i hur organisationer hanterar sin IT-infrastruktur. Denna rapport undersöker fördelarna, utmaningarna och bästa praxis för implementation.
+                Infrastructure as Code (IaC) represents a fundamental change in how organisations manage their IT infrastructure. This report examines the benefits, challenges, and best practises for implementation.
             </p>
             
-            <p>Genom att behandla infrastruktur som kod kan organisationer uppnå högre grad av automatisering, konsistens och skalbarhet i sina IT-miljöer. Detta leder till minskade driftskostnader, förbättrad säkerhet och snabbare time-to-market för nya tjänster.</p>
+            <p>By treating infrastructure as code, organisations can achieve a higher degree of automation, consistency, and scalability in their IT environments. This leads to reduced operational costs, improved security, and faster time-to-market for new services.</p>
         </section>
 
         <!-- Key Benefits -->
         <section>
-            <h1>Huvudfördelar med Infrastructure as Code</h1>
+            <h1>Key Benefits of Infrastructure as Code</h1>
             
-            <h2>Konsistens och Reproducerbarhet</h2>
-            <p>IaC eliminerar manuella konfigurationsfel genom att definiera infrastruktur i kod. Detta säkerställer att samma konfiguration kan reproduceras exakt i olika miljöer.</p>
+            <h2>Consistency and Reproducibility</h2>
+            <p>IaC eliminates manual configuration errors by defining infrastructure in code. This ensures that the same configuration can be reproduced exactly in different environments.</p>
             
             <div class="callout callout-info">
-                <div class="callout-title">Viktigt att komma ihåg</div>
-                <p>Konsistens är nyckeln till framgångsrik infrastructure automation. Utan den riskerar organisationer att skapa nya tekniska skulder.</p>
+                <div class="callout-title">Important to Remember</div>
+                <p>Consistency is the key to successful infrastructure automation. Without it, organisations risk creating new technical debt.</p>
             </div>
 
-            <h2>Snabbare Deployment och Skalning</h2>
-            <p>Automatisering av infrastrukturhantering möjliggör:</p>
+            <h2>Faster Deployment and Scaling</h2>
+            <p>Automation of infrastructure management enables:</p>
             <ul>
-                <li>Snabb provision av nya miljöer</li>
-                <li>Automatisk skalning baserat på behov</li>
-                <li>Minskad time-to-market för nya funktioner</li>
-                <li>Förbättrad disaster recovery</li>
+                <li>Rapid provisioning of new environments</li>
+                <li>Automatic scaling based on demand</li>
+                <li>Reduced time-to-market for new features</li>
+                <li>Improved disaster recovery</li>
             </ul>
 
-            <h2>Förbättrad Säkerhet och Compliance</h2>
-            <p>Genom kodbaserad infrastruktur kan säkerhetspolicies och compliance-krav byggas in från början:</p>
+            <h2>Improved Security and Compliance</h2>
+            <p>Through code-based infrastructure, security policies and compliance requirements can be built in from the start:</p>
             
-            <pre><code># Exempel: Terraform säkerhetskonfiguration
+            <pre><code># Example: Terraform security configuration
 resource "aws_security_group" "web" {
   name = "web-security-group"
   
@@ -394,64 +394,64 @@ resource "aws_security_group" "web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   
-  # Explicit deny för HTTP
-  # Endast HTTPS tillåts
+  # Explicit deny for HTTP
+  # Only HTTPS allowed
 }</code></pre>
         </section>
 
         <!-- Implementation Strategy -->
         <section>
-            <h1>Implementationsstrategi</h1>
+            <h1>Implementation Strategy</h1>
             
-            <h2>Fasad Approach</h2>
-            <p>Vi rekommenderar en fasad implementation för att minimera risker och maximera framgång:</p>
+            <h2>Phased Approach</h2>
+            <p>We recommend a phased implementation to minimise risks and maximise success:</p>
             
             <ol>
-                <li><strong>Fas 1:</strong> Pilotprojekt med icke-kritiska system</li>
-                <li><strong>Fas 2:</strong> Utökad implementation till dev/test-miljöer</li>
-                <li><strong>Fas 3:</strong> Gradvis migration av produktionssystem</li>
-                <li><strong>Fas 4:</strong> Full automation och optimering</li>
+                <li><strong>Phase 1:</strong> Pilot project with non-critical systems</li>
+                <li><strong>Phase 2:</strong> Extended implementation to dev/test environments</li>
+                <li><strong>Phase 3:</strong> Gradual migration of production systems</li>
+                <li><strong>Phase 4:</strong> Full automation and optimisation</li>
             </ol>
 
             <div class="callout callout-success">
-                <div class="callout-title">Framgångsfaktor</div>
-                <p>Organisationer som följer en strukturerad, fasad approach ser 40% högre framgångsgrad i sina IaC-implementationer.</p>
+                <div class="callout-title">Success Factor</div>
+                <p>Organisations that follow a structured, phased approach see 40% higher success rates in their IaC implementations.</p>
             </div>
         </section>
 
         <!-- Challenges and Mitigation -->
         <section>
-            <h1>Utmaningar och Lösningar</h1>
+            <h1>Challenges and Solutions</h1>
             
-            <h2>Kompetensutmaning</h2>
-            <p>Den största utmaningen för många organisationer är att bygga upp rätt kompetens. Kvadrat rekommenderar:</p>
+            <h2>Skills Challenge</h2>
+            <p>The biggest challenge for many organisations is building the right skills. Kvadrat recommends:</p>
             
             <ul>
-                <li>Strukturerade utbildningsprogram</li>
-                <li>Mentorskap mellan erfarna och nya utvecklare</li>
-                <li>Investering i certifieringar</li>
-                <li>Samarbete med externa experter under inledande fas</li>
+                <li>Structured training programmes</li>
+                <li>Mentorship between experienced and new developers</li>
+                <li>Investment in certifications</li>
+                <li>Collaboration with external experts during the initial phase</li>
             </ul>
 
             <div class="callout callout-warning">
-                <div class="callout-title">Varning</div>
-                <p>Undvik att implementera IaC utan tillräcklig kompetens. Detta kan leda till säkerhetsrisker och instabilitet i produktionsmiljöer.</p>
+                <div class="callout-title">Warning</div>
+                <p>Avoid implementing IaC without sufficient expertise. This can lead to security risks and instability in production environments.</p>
             </div>
         </section>
 
         <!-- Conclusion -->
         <section>
-            <h1>Slutsatser och Rekommendationer</h1>
+            <h1>Conclusions and Recommendations</h1>
             
-            <p>Infrastructure as Code representerar framtiden för IT-infrastrukturhantering. Organisationer som investerar i IaC idag kommer att ha betydande konkurrensfördelar imorgon.</p>
+            <p>Infrastructure as Code represents the future of IT infrastructure management. Organisations that invest in IaC today will have significant competitive advantages tomorrow.</p>
             
-            <p><strong>Våra huvudrekommendationer:</strong></p>
+            <p><strong>Our main recommendations:</strong></p>
             <ul>
-                <li>Starta med ett begränsat pilotprojekt</li>
-                <li>Investera kraftigt i kompetensuppbyggnad</li>
-                <li>Etablera tydliga governance-rutiner</li>
-                <li>Prioritera säkerhet från dag ett</li>
-                <li>Mät och optimera kontinuerligt</li>
+                <li>Start with a limited pilot project</li>
+                <li>Invest heavily in skills development</li>
+                <li>Establish clear governance routines</li>
+                <li>Prioritise security from day one</li>
+                <li>Measure and optimise continuously</li>
             </ul>
         </section>
 
@@ -462,7 +462,7 @@ resource "aws_security_group" "web" {
                 <div>+46 8 123 45 67</div>
                 <div>www.kvadrat.se</div>
             </div>
-            <div>© 2024 Kvadrat. Alla rättigheter förbehållna.</div>
+            <div>© 2024 Kvadrat. All rights reserved.</div>
         </footer>
     </div>
     
