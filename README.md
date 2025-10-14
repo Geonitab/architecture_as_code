@@ -129,6 +129,16 @@ python3 scripts/verify_links.py --timeout 20  # custom timeout for slow endpoint
 python3 scripts/verify_links.py --output reports/links  # custom output location
 ```
 
+## 📚 Source Verification
+
+Use `scripts/verify_sources.py` to verify all cited sources throughout the manuscript. The script checks URL accessibility, validates ISBN formats, and identifies sources requiring manual verification. It generates comprehensive Markdown and JSON reports listing verified, broken, and manually-verifiable sources.【F:scripts/verify_sources.py†L1-L200】
+
+```bash
+python3 scripts/verify_sources.py            # default run
+python3 scripts/verify_sources.py --timeout 15  # custom timeout for slow endpoints
+python3 scripts/verify_sources.py --output reports/sources  # custom output location
+```
+
 ## 📄 Governance
 
 The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/29_about_the_authors.md` for author biography and book context.【F:docs/29_about_the_authors.md†L1-L170】

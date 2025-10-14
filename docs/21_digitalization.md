@@ -6,9 +6,17 @@
 
 ## Digital Transformation Landscape
 
-![Figure 21.2 – Dimensions of digital transformation enabled by Architecture as Code](images/mindmap_21_digitalisation.png)
+![Figure 21.2 – Technical foundation for digital transformation](images/mindmap_21a_technical.png)
 
-*Figure 21.2 illustrates the multidimensional nature of digital transformation through Architecture as Code. It shows how cloud-first strategies, organisational challenges, and proven success patterns interconnect to shape the digital transformation journey, highlighting the technical, cultural, and business dimensions that organisations must address to achieve successful transformation.*
+*Figure 21.2 shows the technical dimensions of digital transformation, including cloud migration, infrastructure automation, and modern architecture patterns.*
+
+![Figure 21.3 – Organisational dimensions of transformation](images/mindmap_21b_organisational.png)
+
+*Figure 21.3 illustrates the organisational changes required, including team structures, governance, and change management practices.*
+
+![Figure 21.4 – Business value and innovation](images/mindmap_21c_business.png)
+
+*Figure 21.4 demonstrates how Architecture as Code delivers business value through improved delivery, risk management, and continuous innovation.*
 
 ## Overview
 
@@ -373,6 +381,12 @@ Digital transformation through code-based infrastructure represents a fundamenta
 Success factors include strategic planning of cloud-first initiatives, comprehensive automation of delivery processes, and continuous competence development within organisations. Organisations that embrace these principles position themselves strongly for sustainable growth and competitive advantage.
 
 Key lessons from digital transformation initiatives demonstrate that technical transformation must combine with organisational and cultural change to achieve lasting results. Architecture as Code forms the technical foundation, but success requires a holistic perspective on transformation that engages people, processes, and technology in concert.
+
+## From Implementation to Integration
+
+The organisational transformation explored in this part—from [changing team structures](17_organizational_change.md) to [Management as Code](19_management_as_code.md) and digitalisation—provides the human and process foundations for Architecture as Code success. However, these disciplines achieve their full potential when they work together rather than in isolation.
+
+Part VI explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft As Code Disciplines](23_soft_as_code_interplay.md) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
 
 ## Sources and References
 

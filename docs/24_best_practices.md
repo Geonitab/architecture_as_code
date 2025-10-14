@@ -4,9 +4,27 @@ Architecture as Code practices evolve rapidly as teams balance platform stabilit
 
 ## A Holistic Landscape of Practice Areas
 
-![Figure 24.2 – Vertically oriented mind map of best-practice themes](images/mindmap_22_best_practices.png)
+The following mind maps present the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements without treating topics in isolation.
 
-*Figure 24.2 presents the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements without treating topics in isolation.*
+![Figure 24.2 – Code organization and module design](images/mindmap_22a_code_organization.png)
+
+*Figure 24.2 shows best practices for repository structure, module design, and versioning strategies.*
+
+![Figure 24.3 – Security and compliance patterns](images/mindmap_22b_security_compliance.png)
+
+*Figure 24.3 illustrates security-first design, regulatory compliance, and secret management approaches.*
+
+![Figure 24.4 – Performance and scaling strategies](images/mindmap_22c_performance.png)
+
+*Figure 24.4 demonstrates optimization, multi-region deployment, and observability practices.*
+
+![Figure 24.5 – Governance and policy frameworks](images/mindmap_22d_governance.png)
+
+*Figure 24.5 presents governance frameworks, policy-as-code implementation, and sustainability considerations.*
+
+![Figure 24.6 – Global best practices and continuous improvement](images/mindmap_22e_global_practices.png)
+
+*Figure 24.6 highlights cross-cultural collaboration, open source contributions, and continuous improvement cycles.*
 
 Figure 24.2 introduces the seven practice clusters explored throughout this chapter. The mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
 
@@ -175,6 +193,12 @@ Balanced scorecards monitor leading and lagging indicators across reliability, c
 ## Summary
 
 Modern Architecture as Code practices thrive when technical excellence, empathetic leadership, and responsible governance advance together. Disciplined code organisation, automated security controls, responsive performance management, and proactive risk mitigation form the backbone of resilient delivery. Investing in people, nurturing open communities, and sustaining continuous improvement cycles ensure that the programme adapts gracefully as technology and stakeholder expectations evolve. Teams that treat best practices as living routines—not static checklists—build platforms that are dependable, sustainable, and ready for the next wave of innovation.
+
+## Looking to the Future
+
+The best practices explored in this part reflect current understanding and proven patterns. However, Architecture as Code continues to evolve as new technologies emerge, regulatory requirements shift, and organisational needs change. What works today must adapt for tomorrow whilst maintaining the core principles that make Architecture as Code effective.
+
+Part VII examines emerging trends and concludes our journey through Architecture as Code. [Chapter 25 on Future Trends and Development](25_future_trends_development.md) explores AI-driven architecture generation, sustainability-aware infrastructure, quantum-resistant security patterns, and other developments shaping the future of the field. The [Conclusion](27_conclusion.md) synthesises the journey from [foundational principles](02_fundamental_principles.md) through technical implementation, security, operations, and organisational transformation, providing a roadmap for continued learning and implementation.
 
 ## References
 

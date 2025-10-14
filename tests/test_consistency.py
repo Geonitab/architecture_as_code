@@ -267,6 +267,85 @@ class TestConsistency:
                     UserWarning
                 )
     
+    def test_chapter_length_variance(self, chapter_files, requirements_config):
+        """Test that no chapter exceeds 100% variance (2x) of the average chapter length."""
+        fail_on_consistency = requirements_config.get("testing", {}).get("fail_on_consistency_issues", True)
+        
+        # Special chapters that may have different requirements
+        special_chapters = requirements_config["book"].get("special_chapters", {})
+        special_filenames = [
+            special_chapters.get("ordlista", {}).get("filename", ""),
+            special_chapters.get("authors", {}).get("filename", ""),
+        ]
+        
+        # Collect word counts for all chapters (excluding special chapters)
+        chapter_stats = []
+        total_words = 0
+        
+        for chapter_file in chapter_files:
+            # Skip special chapters
+            if chapter_file.name in special_filenames:
+                continue
+            
+            content = chapter_file.read_text(encoding='utf-8')
+            word_count = self._count_content_words(content)
+            
+            chapter_stats.append({
+                "file": chapter_file.name,
+                "word_count": word_count,
+            })
+            total_words += word_count
+        
+        if not chapter_stats:
+            pytest.skip("No regular chapters found to analyze")
+        
+        # Calculate average
+        avg_words = total_words / len(chapter_stats)
+        max_allowed = avg_words * 2  # 100% variance = 2x the mean
+        
+        # Find chapters that exceed the threshold
+        excessive_chapters = []
+        for stat in chapter_stats:
+            if stat["word_count"] > max_allowed:
+                variance_ratio = stat["word_count"] / avg_words
+                stat["avg_words"] = avg_words
+                stat["max_allowed"] = max_allowed
+                stat["variance_ratio"] = variance_ratio
+                excessive_chapters.append(stat)
+        
+        # Generate detailed message
+        if excessive_chapters:
+            msg_parts = [
+                f"\nChapter length variance check failed:",
+                f"Average chapter length: {avg_words:.0f} words",
+                f"Maximum allowed (2x mean): {max_allowed:.0f} words",
+                f"\nChapters exceeding threshold ({len(excessive_chapters)}):"
+            ]
+            
+            for ch in excessive_chapters:
+                msg_parts.append(
+                    f"  - {ch['file']}: {ch['word_count']} words "
+                    f"({ch['variance_ratio']:.2f}x the mean, "
+                    f"{ch['word_count'] - max_allowed:.0f} words over limit)"
+                )
+            
+            msg_parts.append("\nRecommended actions:")
+            msg_parts.append("  1. Review content for potential split into multiple chapters")
+            msg_parts.append("  2. Consider moving detailed examples to appendices")
+            msg_parts.append("  3. Identify sections that could be condensed")
+            msg_parts.append("  4. See reports/chapter_length_analysis.md for full analysis")
+            
+            error_msg = "\n".join(msg_parts)
+            
+            if fail_on_consistency:
+                assert not excessive_chapters, error_msg
+            else:
+                import warnings
+                warnings.warn(
+                    f"Chapter length variance detected: {len(excessive_chapters)} chapter(s) exceed 2x mean length. {error_msg}",
+                    UserWarning
+                )
+    
     def _count_content_words(self, content):
         """Count actual content words, excluding markdown formatting and code blocks."""
         # Remove code blocks (both fenced and indented)

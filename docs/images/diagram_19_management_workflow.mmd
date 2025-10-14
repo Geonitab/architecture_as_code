@@ -1,11 +1,11 @@
 %% Issue and discussion lifecycle for management topics
 graph LR
-    Topic[Management Topic Raised]
-    Template[Issue Template Applied]
-    Analysis[Cross-Functional Analysis]
-    Decision[Decision Logged in PR]
-    FollowUp[Automated Follow-up Tasks]
-    Archive[Historical Record]
+    Topic[Management Topic Raised]:::kv-primary
+    Template[Issue Template Applied]:::kv-highlight
+    Analysis[Cross-Functional Analysis]:::kv-accent
+    Decision[Decision Logged in PR]:::kv-accent
+    FollowUp[Automated Follow-up Tasks]:::kv-highlight
+    Archive[Historical Record]:::kv-muted
 
     Topic --> Template
     Template --> Analysis

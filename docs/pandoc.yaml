@@ -44,7 +44,6 @@ variables:
   fontsize: 11pt
   linestretch: 1.2
   lang: en-GB
-  cover-image: "images/book-cover.png"
   include-before: |
     \newpage
     \thispagestyle{empty}
@@ -62,6 +61,72 @@ variables:
     {\normalsize A comprehensive British English guide covering modern Infrastructure as Code practices, organisational governance, and architectural automation for cloud-native delivery teams.\par}
     \vspace*{0.1\textheight}
     \end{center}
+    \newpage
+    \thispagestyle{empty}
+    \begin{flushleft}
+    {\Large\bfseries Release Information\par}
+    \vspace{1cm}
+    {\large\bfseries Publication Details\par}
+    \vspace{0.3cm}
+    {\normalsize
+    \textbf{Title:} Architecture as Code\\
+    \textbf{Subtitle:} A practical handbook for Infrastructure as Code\\
+    \textbf{Edition:} First Edition\\
+    \textbf{Publication Date:} 2024\\
+    \textbf{Language:} British English (en-GB)\par}
+    \vspace{0.8cm}
+    {\large\bfseries Publisher Information\par}
+    \vspace{0.3cm}
+    {\normalsize
+    \textbf{Published by:} Architecture as Code Editorial Team\\
+    \textbf{Contact:} \url{https://github.com/Geonitab/architecture_as_code}\par}
+    \vspace{0.8cm}
+    {\large\bfseries Copyright and Licensing\par}
+    \vspace{0.3cm}
+    {\normalsize
+    Copyright \copyright{} 2024 Architecture as Code Editorial Team\par}
+    \vspace{0.3cm}
+    {\normalsize
+    All rights reserved. This book is made available under open-source principles to support the community in adopting Architecture as Code practices.\par}
+    \vspace{0.8cm}
+    {\large\bfseries ISBN and Cataloguing\par}
+    \vspace{0.3cm}
+    {\normalsize
+    \textbf{ISBN:} \textit{To be assigned}\\
+    \textbf{Format:} PDF, EPUB, DOCX\\
+    \textbf{Subject:} Computer Science, Software Architecture, Infrastructure as Code, DevOps\par}
+    \vspace{0.8cm}
+    {\large\bfseries Version and Release Information\par}
+    \vspace{0.3cm}
+    {\normalsize
+    \textbf{Release:} 1.0.0\\
+    \textbf{Build Date:} 2024\\
+    \textbf{Repository:} \url{https://github.com/Geonitab/architecture_as_code}\par}
+    \vspace{0.8cm}
+    {\large\bfseries Technical Production\par}
+    \vspace{0.3cm}
+    {\normalsize
+    This book is produced using a fully automated Architecture as Code workflow:\par}
+    \vspace{0.2cm}
+    {\normalsize
+    \begin{itemize}
+    \item \textbf{Content Format:} Markdown with Mermaid diagrams
+    \item \textbf{Build System:} Pandoc 3.1.9+ with XeLaTeX
+    \item \textbf{Template:} Eisvogel LaTeX template
+    \item \textbf{Automation:} GitHub Actions CI/CD pipeline
+    \item \textbf{Diagram Generation:} Mermaid CLI with Kvadrat theme
+    \end{itemize}\par}
+    \vspace{0.5cm}
+    {\large\bfseries Quality Assurance\par}
+    \vspace{0.3cm}
+    {\normalsize
+    All content is version-controlled, peer-reviewed, and automatically validated through continuous integration pipelines to ensure accuracy and consistency.\par}
+    \vspace{0.5cm}
+    {\large\bfseries Acknowledgements\par}
+    \vspace{0.3cm}
+    {\normalsize
+    This book represents collaborative knowledge sharing within the Architecture as Code community. Special thanks to all contributors who have helped refine the concepts and practices documented herein.\par}
+    \end{flushleft}
     \newpage
   # Simplified header handling
   header-includes: |

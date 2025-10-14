@@ -6,23 +6,17 @@ sequenceDiagram
     participant Prod as 🚀<br/>Production
     
     Dev->>Git: 📝 Push feature branch
-    Git->>CI: ⚡ Trigger automated tests
+    Git->>CI: ⚡ Trigger tests
     
-    Note over CI: 🛠️ Quality Checks
-    CI->>CI: ✅ Terraform validate
-    CI->>CI: 🔒 Security scan
-    CI->>CI: 💰 Cost estimation
-    CI->>CI: 🧪 Integration tests
+    Note over CI: 🛠️ Automated Checks
+    CI->>CI: ✅ Validate & Scan
+    CI->>CI: 💰 Cost estimate
     
     CI->>Git: ✅ Tests completed
     Dev->>Rev: 📋 Create Pull Request
     
-    Note over Rev: 👥 Human Review Process
-    Rev->>Git: 👀 Review code and test results
-    Rev->>Git: ✅ Approve after review
+    Rev->>Git: 👀 Review & approve
     
-    Git->>CI: 🔄 Merge to main branch
-    CI->>Prod: 🚀 Deploy to production
-    Prod->>CI: ✅ Deployment confirmed
-    
-    Note over Dev,Prod: 🎯 Entire process automated and traceable
+    Git->>CI: 🔄 Merge to main
+    CI->>Prod: 🚀 Deploy
+    Prod->>CI: ✅ Confirmed

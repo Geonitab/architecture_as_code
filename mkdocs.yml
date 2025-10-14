@@ -42,9 +42,9 @@ nav:
       - Team Structure and Competency Development for IaC: 18_team_structure.md
   - Appendices:
       - Glossary: 28_glossary.md
-      - About the Author: 29_about_the_authors.md
       - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
       - Appendix B – Technical Architecture for Book Production: 31_technical_architecture.md
+      - About the Author: 29_about_the_authors.md
 docs_dir: docs
 use_directory_urls: true
 theme:

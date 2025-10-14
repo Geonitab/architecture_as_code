@@ -6,9 +6,31 @@ For years, the phrase "as code" has been tightly associated with hard, technical
 
 ![Soft as code ecosystem](images/diagram_30_soft_as_code.png)
 
-The following mind map illustrates the key concepts and relationships within the soft "as code" ecosystem. It visualizes how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organizational synergies.
+The following mind maps illustrate the key concepts and relationships within the soft "as code" ecosystem. They visualize how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organizational synergies.
 
-![Soft "as code" interplay mind map](images/mindmap_23_soft_as_code.png)
+![Shared DNA of "as code" disciplines](images/mindmap_23a_shared_dna.png)
+
+*Figure 23.1 shows the foundational elements shared across all "as code" disciplines: structured representation, version control, and automatability.*
+
+![Compliance as Code](images/mindmap_23b_compliance.png)
+
+*Figure 23.2 illustrates how compliance as code provides quality engines, codified controls, and integration benefits.*
+
+![Architecture as Code as central hub](images/mindmap_23c_architecture.png)
+
+*Figure 23.3 demonstrates architecture as code serving as the central hub connecting technical implementation, policy, and documentation.*
+
+![Documentation as Code](images/mindmap_23d_documentation.png)
+
+*Figure 23.4 shows documentation as code providing communication layers, toolchain integration, and feedback loops.*
+
+![Knowledge and Culture as Code](images/mindmap_23e_knowledge_culture.png)
+
+*Figure 23.5 presents how knowledge and culture can be codified to enable structured onboarding and experience preservation.*
+
+![Synergies and implementation strategy](images/mindmap_23f_synergies.png)
+
+*Figure 23.6 highlights the synergies created through cross-pollination and the implementation strategy for adopting these practices.*
 
 **Key takeaways from the mind map:**
 
@@ -121,5 +143,5 @@ When these disciplines integrate, change ceases to be a threat and becomes a nat
 
 Sources:
 - [Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)
-- [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)
-- [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
+- [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
+- [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)

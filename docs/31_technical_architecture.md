@@ -2,9 +2,13 @@
 
 This appendix describes the technical infrastructure and workflow that produce, build, and publish "Architecture as Code". The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
 
-![Technical architecture for book production](images/diagram_27_technical_structure.png)
+![Source materials and version control](images/diagram_27a_source_materials.png)
 
-*The diagram illustrates the end-to-end technical system that powers book production, from Markdown sources through automated pipelines to the final publications.*
+*The first diagram shows how source materials (Markdown files, diagrams, scripts, and configuration) flow through version control and GitHub Actions.*
+
+![Build pipeline and output formats](images/diagram_27b_build_pipeline.png)
+
+*The second diagram illustrates the build environment, processing steps, and the various output formats produced from the source materials.*
 
 ### File Organisation and Naming Conventions
 
@@ -218,15 +222,20 @@ The result is a set of professional PowerPoint presentations tailored for confer
 The book cover is produced through an HTML/CSS design system:
 
 ```
+templates/
+└── book-cover.svg                    # Single approved cover template
+
 exports/book-cover/
 ├── source/
-│   ├── book-cover.html              # Primary design
-│   ├── book-cover-light.html        # Light variant
-│   └── book-cover-minimal.html      # Minimalist design
-├── pdf/                             # Print-ready PDF files
-├── png/                             # High-resolution PNG exports
-└── scripts/
-    └── generate_book_cover_exports.py
+│   ├── book-cover-final.html         # HTML/CSS source (for design editing)
+│   ├── book-cover.html               # HTML/CSS source (alternate version)
+│   ├── book-cover.svg                # SVG source (editable)
+│   ├── BRAND_GUIDELINES.md           # Brand compliance guidelines
+│   └── DESIGN_SYSTEM.md              # Design system documentation
+├── pdf/                              # Print-ready PDF files
+├── png/                              # High-resolution PNG exports
+├── jpg/                              # JPEG exports
+└── svg/                              # Vector files
 ```
 
 ### Kvadrat Brand Integration

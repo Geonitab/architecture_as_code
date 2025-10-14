@@ -1,12 +1,12 @@
 %% Diagram: Compliance Automation Lifecycle
 flowchart TD
-    A[Regulatory Intelligence\nUpdates] --> B[Policy as Code\nTemplates]
-    B --> C[Automated\nControls]
-    C --> D[Continuous\nMonitoring]
-    D --> E[Evidence\nCollection]
-    E --> F[Compliance\nDashboards]
-    F --> G[Executive\nGovernance]
-    G --> H[Audit\nFeedback]
+    A[Regulatory Intelligence\nUpdates]:::kv-primary --> B[Policy as Code\nTemplates]:::kv-highlight
+    B --> C[Automated\nControls]:::kv-accent
+    C --> D[Continuous\nMonitoring]:::kv-accent
+    D --> E[Evidence\nCollection]:::kv-highlight
+    E --> F[Compliance\nDashboards]:::kv-primary
+    F --> G[Executive\nGovernance]:::kv-outline
+    G --> H[Audit\nFeedback]:::kv-muted
     H --> B
-    C --> I[Remediation\nPlaybooks]
+    C --> I[Remediation\nPlaybooks]:::kv-pattern
     I --> C

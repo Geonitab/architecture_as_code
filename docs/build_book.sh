@@ -310,6 +310,7 @@ CHAPTER_FILES=(
     "16_migration.md"
     "part_e_organization_leadership.md"
     "17_organizational_change.md"
+    "18_team_structure.md"
     "19_management_as_code.md"
     "20_ai_agent_team.md"
     "21_digitalization.md"
@@ -319,13 +320,12 @@ CHAPTER_FILES=(
     "part_g_future_wrap_up.md"
     "25_future_trends_development.md"
     "27_conclusion.md"
-    "18_team_structure.md"
     "part_h_appendices.md"
     "28_glossary.md"
-    "29_about_the_authors.md"
     "30_appendix_code_examples.md"
     "31_technical_architecture.md"
     "33_references.md"
+    "29_about_the_authors.md"
 )
 
 # Build a sanitized list that excludes LaTeX-only part markers for non-LaTeX formats
