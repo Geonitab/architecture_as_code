@@ -324,6 +324,7 @@ CHAPTER_FILES=(
     "28_glossary.md"
     "30_appendix_code_examples.md"
     "31_technical_architecture.md"
+    "33_references.md"
     "29_about_the_authors.md"
 )
 

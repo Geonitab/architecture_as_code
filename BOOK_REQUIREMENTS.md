@@ -124,6 +124,10 @@ book:
       title: "Technical Architecture Blueprint"
       area: "Appendix"
       required: true
+    - filename: "33_references.md"
+      title: "References and Sources"
+      area: "Reference"
+      required: true
   special_chapters:
     glossary:
       filename: "28_glossary.md"
@@ -144,6 +148,10 @@ book:
     technical:
       filename: "31_technical_architecture.md"
       requires_diagram: true
+      requires_sources: false
+    references:
+      filename: "33_references.md"
+      requires_diagram: false
       requires_sources: false
     future:
       filename: "26_future_development.md"
