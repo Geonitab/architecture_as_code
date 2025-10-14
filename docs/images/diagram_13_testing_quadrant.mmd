@@ -1,25 +1,20 @@
 graph TD
     subgraph Legend["Testing Strategy Quadrant"]
         direction LR
-        Q1["Comprehensive Testing<br/>High Coverage, High Complexity"]:::kv-outline
         Q2["Quick Wins<br/>High Coverage, Low Complexity"]:::kv-primary
-        Q3["Basic Testing<br/>Low Coverage, Low Complexity"]:::kv-muted
+        Q1["Comprehensive<br/>High Coverage, High Complexity"]:::kv-outline
         Q4["Over-engineered<br/>Low Coverage, High Complexity"]:::kv-pattern
     end
 
-    subgraph HighCoverage["High Testing Coverage Strategies"]
-        SEC["Security Scanning<br/>Coverage: 80%<br/>Complexity: Low"]:::kv-primary
-        POL["Policy Testing OPA<br/>Coverage: 70%<br/>Complexity: Low-Med"]:::kv-primary
-        COMP["Compliance Testing<br/>Coverage: 90%<br/>Complexity: Medium"]:::kv-accent
-        INT["Integration Tests<br/>Coverage: 80%<br/>Complexity: High"]:::kv-highlight
-        E2E["End-to-End Tests<br/>Coverage: 90%<br/>Complexity: Very High"]:::kv-pattern
+    subgraph HighCoverage["High Coverage Strategies"]
+        SEC["Security Scanning<br/>80% coverage"]:::kv-primary
+        POL["Policy Testing OPA<br/>70% coverage"]:::kv-primary
+        COMP["Compliance Testing<br/>90% coverage"]:::kv-accent
+        INT["Integration Tests<br/>80% coverage"]:::kv-highlight
+        E2E["End-to-End Tests<br/>90% coverage"]:::kv-pattern
     end
 
-    subgraph MedCoverage["Medium Testing Coverage Strategies"]
-        UNIT["Unit Tests Terratest<br/>Coverage: 60%<br/>Complexity: Low-Med"]:::kv-accent
-        PERF["Performance Testing<br/>Coverage: 60%<br/>Complexity: High"]:::kv-highlight
-    end
-
-    subgraph LowCoverage["Low Testing Coverage Strategies"]
-        SMOKE["Smoke Tests<br/>Coverage: 30%<br/>Complexity: Very Low"]:::kv-muted
+    subgraph MedCoverage["Medium Coverage"]
+        UNIT["Unit Tests<br/>60% coverage"]:::kv-accent
+        PERF["Performance Tests<br/>60% coverage"]:::kv-highlight
     end

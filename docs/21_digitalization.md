@@ -6,9 +6,17 @@
 
 ## Digital Transformation Landscape
 
-![Figure 21.2 – Dimensions of digital transformation enabled by Architecture as Code](images/mindmap_21_digitalisation.png)
+![Figure 21.2 – Technical foundation for digital transformation](images/mindmap_21a_technical.png)
 
-*Figure 21.2 illustrates the multidimensional nature of digital transformation through Architecture as Code. It shows how cloud-first strategies, organisational challenges, and proven success patterns interconnect to shape the digital transformation journey, highlighting the technical, cultural, and business dimensions that organisations must address to achieve successful transformation.*
+*Figure 21.2 shows the technical dimensions of digital transformation, including cloud migration, infrastructure automation, and modern architecture patterns.*
+
+![Figure 21.3 – Organisational dimensions of transformation](images/mindmap_21b_organisational.png)
+
+*Figure 21.3 illustrates the organisational changes required, including team structures, governance, and change management practices.*
+
+![Figure 21.4 – Business value and innovation](images/mindmap_21c_business.png)
+
+*Figure 21.4 demonstrates how Architecture as Code delivers business value through improved delivery, risk management, and continuous innovation.*
 
 ## Overview
 

@@ -1,5 +1,5 @@
 graph LR
-    A((Soft “as code”<br/>Ecosystem)):::kv-outline
+    A((Soft "as code"<br/>Ecosystem)):::kv-outline
 
     A --> C[Compliance as Code]:::kv-primary
     A --> R[Architecture as Code]:::kv-accent
@@ -7,26 +7,14 @@ graph LR
     A --> K[Knowledge as Code]:::kv-pattern
     A --> U[Culture as Code]:::kv-muted
 
-    C --> C1[Codified policies]:::kv-elevated
-    C --> C2[Continuous validation]:::kv-elevated
-    C --> C3[Transparent audits]:::kv-elevated
+    C --> C1[Codified policies<br/>& validation]:::kv-elevated
+    R --> R1[Traceable decisions<br/>& models]:::kv-elevated
+    D --> D1[Versioned narratives<br/>& knowledge]:::kv-elevated
+    K --> K1[Reusable playbooks<br/>& lessons]:::kv-elevated
+    U --> U1[Working agreements<br/>& rituals]:::kv-elevated
 
-    R --> R1[Traceable decisions]:::kv-elevated
-    R --> R2[Reference models]:::kv-elevated
-    R --> R3[Automation guardrails]:::kv-elevated
-
-    D --> D1[Versioned narratives]:::kv-elevated
-    D --> D2[Self-service knowledge]:::kv-elevated
-    D --> D3[Feedback loops]:::kv-elevated
-
-    K --> K1[Reusable playbooks]:::kv-elevated
-    K --> K2[Lessons learned]:::kv-elevated
-
-    U --> U1[Working agreements]:::kv-elevated
-    U --> U2[Shared rituals]:::kv-elevated
-
-    C1 -.-> S1[Shared data sets]:::kv-pattern
-    R2 -.-> S1
-    D2 -.-> S1
-    K1 -.-> S2[Collective memory]:::kv-pattern
-    U1 -.-> S2
+    C1 -.-> S1[Shared<br/>foundation]:::kv-pattern
+    R1 -.-> S1
+    D1 -.-> S1
+    K1 -.-> S1
+    U1 -.-> S1

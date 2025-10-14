@@ -29,11 +29,19 @@ Organisations that celebrate experimentation and view failure as tuition invest 
 
 Moving beyond traditional organisational silos requires deliberate structural changes. Teams delivering shared platforms need a balanced mix of product thinking, operational discipline, and security awareness. Without explicit attention to composition, teams risk reverting to narrow functional boundaries that inhibit flow and slow decision making.
 
-Effective transformation programmes address multiple dimensions simultaneously rather than treating culture, skills, or governance as independent variables. Figure 17.2 maps the relationships between culture, team composition, skill growth, and change management activities that support those outcomes.
+Effective transformation programmes address multiple dimensions simultaneously rather than treating culture, skills, or governance as independent variables. Figures 17.2, 17.3, and 17.4 map the relationships between culture, team composition, skill growth, and change management activities that support those outcomes.
 
-![Figure 17.2 – Key dimensions of organisational change for Architecture as Code](images/mindmap_17_organization.png)
+![Figure 17.2 – Culture and cross-functional collaboration](images/mindmap_17a_culture_collaboration.png)
 
-*The mind map highlights how cultural foundations, cross-functional team structures, capability development, role evolution, and change management practices reinforce one another. Organisations that invest in all five domains create feedback loops that accelerate adoption and sustain improvement over time.*
+*The first mind map shows how cultural foundations and cross-functional team structures create the basis for organizational change.*
+
+![Figure 17.3 – Capability development and role evolution](images/mindmap_17b_capability_roles.png)
+
+*The second mind map illustrates learning paths, knowledge enablers, and evolving roles that support continuous improvement.*
+
+![Figure 17.4 – Change management approach](images/mindmap_17c_change_management.png)
+
+*The third mind map demonstrates how stakeholder co-design, narrative communication, and evidence-based iteration drive successful transformation.*
 
 To keep autonomy and alignment in harmony, organisations pair clear decision rights with shared standards. Appendix A, [listing 17-A](30_appendix_code_examples.md#17_code_1-infrastructure-platform-team-blueprint), provides a full Infrastructure Platform Team blueprint that product leaders can tailor to their own context. The blueprint illustrates how responsibilities, skills, and success measures join up in a single operating model.
 
