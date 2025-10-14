@@ -168,7 +168,8 @@ def get_chapter_mapping():
         '28_glossary.md': 'Ordlista',
         '29_about_the_authors.md': 'Om författaren',
         '30_appendix_code_examples.md': 'Appendix A',
-        '31_technical_architecture.md': 'Appendix B'
+        '31_technical_architecture.md': 'Appendix B',
+        '32_finos_project_blueprint.md': 'Appendix C'
     }
 
 def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
