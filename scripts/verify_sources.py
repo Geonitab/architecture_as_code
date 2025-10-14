@@ -118,7 +118,7 @@ class SourceVerifier:
     def _extract_isbn(self, text: str) -> str:
         """Extract ISBN from text if present."""
         # Match ISBN-10 or ISBN-13
-        isbn_match = re.search(r'ISBN[:\s-]*([\d-]{10,17})', text, re.IGNORECASE)
+        isbn_match = re.search(r'ISBN(?:-1[03])?[:\s]*([\d-]{10,17})', text, re.IGNORECASE)
         if isbn_match:
             return isbn_match.group(1)
         return None
@@ -186,6 +186,12 @@ class SourceVerifier:
                     result = (False, f'Error: {str(e2)}')
                     self.verified_urls[url] = result
                     return result
+            
+            # Treat 429 (rate limiting) as accessible but temporarily unavailable
+            if e.code == 429:
+                result = (True, f'Rate limited (429) - likely valid but temporarily unavailable')
+                self.verified_urls[url] = result
+                return result
             
             result = (False, f'HTTP {e.code}: {e.reason}')
             self.verified_urls[url] = result

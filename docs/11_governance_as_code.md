@@ -39,6 +39,6 @@ Governance as Code modernizes policy management by placing guardrails alongside 
 ## Sources
 
 Sources:
-- [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
+- [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)
 - [Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)

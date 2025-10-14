@@ -1,71 +1,13 @@
 # Source Verification Report
 
-**Generated:** 2025-10-14 17:02:18
+**Generated:** 2025-10-14 17:07:55
 
 ## Summary
 
 - **Total sources cited:** 95
-- **✅ Verified and accessible:** 6
-- **❌ Broken or inaccessible:** 6
-- **⚠️ Needs manual verification:** 83
-
-## ❌ Broken or Inaccessible Sources
-
-These sources require updates or replacements:
-
-### 11_governance_as_code.md (Line 42)
-
-**Citation:** [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
-
-**Type:** url
-
-**Details:**
-- ❌ URL broken: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches - HTTP 404: Not Found
-
-### 20_ai_agent_team.md (Line 55)
-
-**Citation:** [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
-
-**Type:** url
-
-**Details:**
-- ❌ URL broken: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches - HTTP 404: Not Found
-
-### 20_ai_agent_team.md (Line 56)
-
-**Citation:** [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)
-
-**Type:** url
-
-**Details:**
-- ❌ URL broken: https://developer.hashicorp.com/terraform/enterprise/policy-as-code - HTTP 429: Too Many Requests
-
-### 20_ai_agent_team.md (Line 57)
-
-**Citation:** [Google Project Management Guide – Working with cross-functional teams](https://www.coursera.org/articles/cross-functional-team)
-
-**Type:** url
-
-**Details:**
-- ❌ URL broken: https://www.coursera.org/articles/cross-functional-team - HTTP 404: Not Found
-
-### 23_soft_as_code_interplay.md (Line 124)
-
-**Citation:** [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)
-
-**Type:** url
-
-**Details:**
-- ❌ URL broken: https://developer.hashicorp.com/terraform/enterprise/policy-as-code - HTTP 429: Too Many Requests
-
-### 23_soft_as_code_interplay.md (Line 125)
-
-**Citation:** [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
-
-**Type:** url
-
-**Details:**
-- ❌ URL broken: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches - HTTP 404: Not Found
+- **✅ Verified and accessible:** 11
+- **❌ Broken or inaccessible:** 0
+- **⚠️ Needs manual verification:** 84
 
 ## ⚠️ Sources Requiring Manual Verification
 
@@ -568,6 +510,13 @@ These sources lack URLs or ISBNs and need manual checking:
 **Type:** other
 
 
+### 20_ai_agent_team.md (Line 57)
+
+**Citation:** Edmondson, A. C. "Teaming: How Organizations Learn, Innovate, and Compete in the Knowledge Economy." Jossey-Bass, 2012.
+
+**Type:** other
+
+
 ### 21_digitalization.md (Line 379)
 
 **Citation:** Gartner. "Cloud Adoption Strategies for Enterprises." Gartner Research, 2023.
@@ -654,7 +603,7 @@ These sources lack URLs or ISBNs and need manual checking:
 
 ## ✅ Verified Sources
 
-Total: 6 sources verified successfully.
+Total: 11 sources verified successfully.
 
 <details>
 <summary>Click to expand verified sources list</summary>
@@ -665,12 +614,20 @@ Total: 6 sources verified successfully.
 
 ### 11_governance_as_code.md
 
+- **Line 42:** [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - **Line 43:** [Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)
 - **Line 44:** [Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)
+
+### 20_ai_agent_team.md
+
+- **Line 55:** [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
+- **Line 56:** [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
 
 ### 23_soft_as_code_interplay.md
 
 - **Line 123:** [Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)
+- **Line 124:** [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
+- **Line 125:** [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 
 ### 29_about_the_authors.md
 
@@ -681,12 +638,7 @@ Total: 6 sources verified successfully.
 
 ## Recommendations
 
-1. **Update or replace 6 broken sources**
-   - Review each broken source listed above
-   - Find alternative sources or updated URLs
-   - Update chapter files accordingly
-
-2. **Manually verify 83 sources without URLs/ISBNs**
+2. **Manually verify 84 sources without URLs/ISBNs**
    - Check if books, standards, and reports are accessible
    - Consider adding URLs or ISBNs for future verification
 

@@ -55,6 +55,10 @@ link-verification-report.md
 link-verification-report.html
 link-verification-report.json
 
+# Source verification reports (can be regenerated)
+source-verification-report.md
+source-verification-report.json
+
 # Generated book files in docs/ (should be in releases/book/)
 docs/architecture_as_code.pdf
 docs/architecture_as_code.epub

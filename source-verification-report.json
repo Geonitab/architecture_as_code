@@ -1,73 +1,12 @@
 {
-  "generated": "2025-10-14T17:02:18.420010",
+  "generated": "2025-10-14T17:07:55.986297",
   "summary": {
     "total": 95,
-    "verified": 6,
-    "broken": 6,
-    "manual_check": 83
+    "verified": 11,
+    "broken": 0,
+    "manual_check": 84
   },
-  "broken_sources": [
-    {
-      "file": "11_governance_as_code.md",
-      "line": 42,
-      "text": "[GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)",
-      "type": "url",
-      "status": "Broken or inaccessible",
-      "details": [
-        "❌ URL broken: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches - HTTP 404: Not Found"
-      ]
-    },
-    {
-      "file": "20_ai_agent_team.md",
-      "line": 55,
-      "text": "[GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)",
-      "type": "url",
-      "status": "Broken or inaccessible",
-      "details": [
-        "❌ URL broken: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches - HTTP 404: Not Found"
-      ]
-    },
-    {
-      "file": "20_ai_agent_team.md",
-      "line": 56,
-      "text": "[HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)",
-      "type": "url",
-      "status": "Broken or inaccessible",
-      "details": [
-        "❌ URL broken: https://developer.hashicorp.com/terraform/enterprise/policy-as-code - HTTP 429: Too Many Requests"
-      ]
-    },
-    {
-      "file": "20_ai_agent_team.md",
-      "line": 57,
-      "text": "[Google Project Management Guide – Working with cross-functional teams](https://www.coursera.org/articles/cross-functional-team)",
-      "type": "url",
-      "status": "Broken or inaccessible",
-      "details": [
-        "❌ URL broken: https://www.coursera.org/articles/cross-functional-team - HTTP 404: Not Found"
-      ]
-    },
-    {
-      "file": "23_soft_as_code_interplay.md",
-      "line": 124,
-      "text": "[HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)",
-      "type": "url",
-      "status": "Broken or inaccessible",
-      "details": [
-        "❌ URL broken: https://developer.hashicorp.com/terraform/enterprise/policy-as-code - HTTP 429: Too Many Requests"
-      ]
-    },
-    {
-      "file": "23_soft_as_code_interplay.md",
-      "line": 125,
-      "text": "[GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)",
-      "type": "url",
-      "status": "Broken or inaccessible",
-      "details": [
-        "❌ URL broken: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches - HTTP 404: Not Found"
-      ]
-    }
-  ],
+  "broken_sources": [],
   "manual_verification_needed": [
     {
       "file": "01_introduction.md",
@@ -496,6 +435,12 @@
       "type": "other"
     },
     {
+      "file": "20_ai_agent_team.md",
+      "line": 57,
+      "text": "Edmondson, A. C. \"Teaming: How Organizations Learn, Innovate, and Compete in the Knowledge Economy.\" Jossey-Bass, 2012.",
+      "type": "other"
+    },
+    {
       "file": "21_digitalization.md",
       "line": 379,
       "text": "Gartner. \"Cloud Adoption Strategies for Enterprises.\" Gartner Research, 2023.",
@@ -577,6 +522,12 @@
     },
     {
       "file": "11_governance_as_code.md",
+      "line": 42,
+      "text": "[GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)",
+      "type": "url"
+    },
+    {
+      "file": "11_governance_as_code.md",
       "line": 43,
       "text": "[Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)",
       "type": "url"
@@ -588,9 +539,33 @@
       "type": "url"
     },
     {
+      "file": "20_ai_agent_team.md",
+      "line": 55,
+      "text": "[GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)",
+      "type": "url"
+    },
+    {
+      "file": "20_ai_agent_team.md",
+      "line": 56,
+      "text": "[HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)",
+      "type": "url"
+    },
+    {
       "file": "23_soft_as_code_interplay.md",
       "line": 123,
       "text": "[Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)",
+      "type": "url"
+    },
+    {
+      "file": "23_soft_as_code_interplay.md",
+      "line": 124,
+      "text": "[HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)",
+      "type": "url"
+    },
+    {
+      "file": "23_soft_as_code_interplay.md",
+      "line": 125,
+      "text": "[GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)",
       "type": "url"
     },
     {
