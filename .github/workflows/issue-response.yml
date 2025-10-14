@@ -1,105 +1,32 @@
-name: Issue Responder AI Agent
+name: Issue Response
 
 on:
   issues:
-    types: [opened, reopened]
-
-permissions:
-  issues: write
+    types: [opened]  # Triggers on new issues
 
 jobs:
-  respond_to_latest_issue:
-    name: Respond to latest issue
+  greet:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write  # Required to assign assignees and comment
+      pull-requests: write
     steps:
-      - name: Assign best-fit bot to latest issue
+      - name: Welcome new issue
         uses: actions/github-script@v7
         with:
           script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            const fs = require('fs');
-            const path = require('path');
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Thanks for opening this issue! We''ll look into it soon.'
+            })
 
-            const { data: issues } = await github.rest.issues.listForRepo({
-              owner,
-              repo,
-              state: 'all',
-              sort: 'created',
-              direction: 'desc',
-              per_page: 1,
-            });
+      # NEW STEP: Automatic assignment to CoPilot
+      - name: Assign to CoPilot
+        run: |
+          gh issue edit ${{ github.event.issue.number }} --add-assignee CoPilot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Used automatically for authentication
 
-            if (!issues.length) {
-              core.info('No issues found to respond to.');
-              return;
-            }
-
-            const latestIssue = issues[0];
-
-            const content = `${latestIssue.title} ${latestIssue.body || ''}`.toLowerCase();
-
-            const botAssignments = [
-              { name: 'Designer', keywords: ['ui', 'ux', 'visual', 'styling', 'layout', 'mockup', 'branding'] },
-              { name: 'Architect', keywords: ['architecture', 'architectural', 'blueprint', 'system layout', 'system map', 'infrastructure'] },
-              { name: 'Quality Assurance', keywords: ['bug', 'issue', 'error', 'test', 'testing', 'qa', 'quality', 'failure'] },
-              { name: 'Developer', keywords: ['develop', 'development', 'implement', 'implementation', 'code', 'coding', 'feature', 'fix'] },
-              { name: 'Editor', keywords: ['documentation', 'document', 'docs', 'guide', 'manual', 'readme', 'edit', 'editing', 'copy', 'proofread', 'language', 'grammar', 'tone'] },
-              { name: 'Requirements Analyst', keywords: ['requirement', 'requirements', 'analysis', 'specification', 'user story', 'acceptance criteria'] },
-            ];
-
-            const assignedBot = botAssignments.find(({ keywords }) =>
-              keywords.some((keyword) => content.includes(keyword))
-            )?.name || 'Requirements Analyst';
-
-            const labelByBot = {
-              Architect: 'architecture',
-              Designer: 'design',
-              Developer: 'dev',
-              'Quality Assurance': 'QA',
-              Editor: 'documentation',
-              'Requirements Analyst': 'Req',
-            };
-
-            const templatesDir = path.join(process.env.GITHUB_WORKSPACE, '.github', 'issue-response');
-            const slugify = (value) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-            const templatePaths = [
-              path.join(templatesDir, `${slugify(assignedBot)}.tml`),
-              path.join(templatesDir, 'issue-response.tml'),
-            ];
-
-            let commentTemplate = `Hello! After reviewing this issue, the ${assignedBot} bot will take the lead. They will follow up with the next steps shortly.`;
-
-            for (const templatePath of templatePaths) {
-              if (fs.existsSync(templatePath)) {
-                commentTemplate = fs.readFileSync(templatePath, 'utf8');
-                break;
-              }
-            }
-
-            const commentBody = commentTemplate
-              .replace(/{{\s*bot_name\s*}}/gi, assignedBot)
-              .replace(/{{\s*issue_title\s*}}/gi, (latestIssue.title || '').trim())
-              .replace(/{{\s*issue_number\s*}}/gi, latestIssue.number);
-
-            await github.rest.issues.createComment({
-              owner,
-              repo,
-              issue_number: latestIssue.number,
-              body: commentBody,
-            });
-
-            const labelToAdd = labelByBot[assignedBot];
-            if (labelToAdd) {
-              const existingLabels = (latestIssue.labels || []).map((label) => label.name?.toLowerCase?.()).filter(Boolean);
-              if (!existingLabels.includes(labelToAdd.toLowerCase())) {
-                await github.rest.issues.addLabels({
-                  owner,
-                  repo,
-                  issue_number: latestIssue.number,
-                  labels: [labelToAdd],
-                });
-              }
-            }
-
-            core.info(`Assigned ${assignedBot} bot to issue #${latestIssue.number}.`);
+      # Optional: Add labels or other actions here
