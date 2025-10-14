@@ -374,6 +374,12 @@ Success factors include strategic planning of cloud-first initiatives, comprehen
 
 Key lessons from digital transformation initiatives demonstrate that technical transformation must combine with organisational and cultural change to achieve lasting results. Architecture as Code forms the technical foundation, but success requires a holistic perspective on transformation that engages people, processes, and technology in concert.
 
+## From Implementation to Integration
+
+The organisational transformation explored in this part—from [changing team structures](17_organizational_change.md) to [Management as Code](19_management_as_code.md) and digitalisation—provides the human and process foundations for Architecture as Code success. However, these disciplines achieve their full potential when they work together rather than in isolation.
+
+Part VI explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft As Code Disciplines](23_soft_as_code_interplay.md) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
+
 ## Sources and References
 
 - Gartner. "Cloud Adoption Strategies for Enterprises." Gartner Research, 2023.

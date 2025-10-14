@@ -688,15 +688,19 @@ echo "5. Document lessons learned"
 
 ## Summary
 
+The modern Architecture as Code methodology represents the future of infrastructure management for global organisations. Migration from traditional infrastructure to Architecture as Code requires systematic planning, gradual implementation, and comprehensive testing. Organisations that successfully execute this migration position themselves for increased agility, improved security, and significant cost benefits.
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Migration from Traditional Infrastructure to Architecture as Code represents a critical transformation as requires systematic planering, gradual implementation and comprehensive testing. Swedish organizations as successfully performs This migration position themselves for increased agility, improved security and significant cost benefits.
+Success factors include comprehensive assessment, realistic timeline planning, extensive team training, and robust testing frameworks. Hybrid migration strategies enable risk minimisation whilst delivering immediate value from Architecture as Code adoption.
 
-Framgångsfaktorer includes comprehensive assessment, realistisk timeline planning, extensive team training and robust testing frameworks. Hybrid migration strategies enables risk minimization while the delivers imwithiate value from Architecture as Code adoption.
+Investment in proper migration planning and execution results in long-term benefits through improved operational efficiency, enhanced security posture, and reduced technical debt. Organisations that follow systematic migration approaches can expect successful transformation to modern, Architecture as Code-based infrastructure management.
 
-Investment in proper migration planning and execution results in långsiktiga Benefits through improved operational efficiency, enhanced security posture and reduced technical debt. Swedish organizations as follows systematic migration approaches can forvänta itself successful transformation to modern, Architecture as Code-baserad infrastructure management.
+## Bridging Technical and Organisational Change
 
-## Sources and referenser
+Technical migration success depends fundamentally on organisational readiness. The most sophisticated automation pipelines, testing frameworks, and migration strategies fail without the cultural foundations, team structures, and leadership practices that enable people to thrive in code-based delivery environments.
+
+Part V examines the organisational transformation that must accompany technical change. [Chapter 17 on Organisational Change](17_organizational_change.md) explores how teams evolve from siloed functions to cross-functional collaboration. [Chapter 18 on Team Structure](18_team_structure.md) provides concrete patterns for organising teams around Architecture as Code practices. The subsequent chapters demonstrate how management practices, AI-enabled collaboration, and digitalisation strategies complete the transformation from traditional to code-centric operating models.
+
+## Sources and References
 
 - AWS. "Large-Scale Migration and Modernization Guide." Amazon Web Services, 2023.
 - Microsoft. "Azure Migration Framework and Architecture as Code best practices." Microsoft Azure Documentation, 2023.
