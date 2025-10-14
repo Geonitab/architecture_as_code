@@ -1,17 +1,17 @@
 %% Diagram: AI-Augmented Compliance Automation
 flowchart LR
     subgraph Data_Sources[Operational Inputs]
-        A1[Cloud Telemetry]
-        A2[Policy Violations]
-        A3[Business Context]
+        A1[Cloud Telemetry]:::kv-muted
+        A2[Policy Violations]:::kv-muted
+        A3[Business Context]:::kv-muted
     end
-    Data_Sources --> B[AI Compliance Engine]
-    B --> C[Risk Scoring]
-    C --> D{Decision Gateway}
-    D -->|Compliant| E[Evidence Vault\n& Reporting]
-    D -->|At Risk| F[Remediation\nWorkflow]
-    F --> G[Infrastructure as Code\nUpdate]
-    G --> H[Automated\nDeployment]
+    Data_Sources --> B[AI Compliance Engine]:::kv-primary
+    B --> C[Risk Scoring]:::kv-highlight
+    C --> D{Decision Gateway}:::kv-outline
+    D -->|Compliant| E[Evidence Vault\n& Reporting]:::kv-accent
+    D -->|At Risk| F[Remediation\nWorkflow]:::kv-pattern
+    F --> G[Infrastructure as Code\nUpdate]:::kv-accent
+    G --> H[Automated\nDeployment]:::kv-primary
     H --> Data_Sources
-    F --> I[Human Review\n& Approval]
+    F --> I[Human Review\n& Approval]:::kv-elevated
     I --> G
