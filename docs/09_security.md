@@ -9,11 +9,31 @@ owing delivery teams.*
 
 ## Dimensions of security architecture
 
-![Relationships between core security concepts](images/mindmap_10_security.png)
+![High-level security architecture overview](images/mindmap_10_security_overview.png)
 
-*The mind map illustrates the complex relationships between security capabilities in an Architecture as Code landscape—from thre
-at modelling and Zero Trust Architecture to Policy as Code and continuous risk assessment. The holistic perspective shows how sec
-urity must be woven through every layer of code-driven architecture.*
+*The overview mind map illustrates the four main dimensions of security in Architecture as Code: Threat Modeling, Zero Trust Architecture, Policy as Code, and Risk Assessment. Each dimension is explored in detail through dedicated mind maps.*
+
+### Detailed security dimensions
+
+#### Threat Modeling
+![Threat Modeling details](images/mindmap_10_security_threat_modeling.png)
+
+*Threat Modeling encompasses understanding the threat landscape and applying methodologies like STRIDE to identify and mitigate security risks systematically.*
+
+#### Zero Trust Architecture
+![Zero Trust Architecture details](images/mindmap_10_security_zero_trust.png)
+
+*Zero Trust Architecture is built on core principles of continuous verification and implemented through network segmentation, service mesh policies, and granular access controls.*
+
+#### Policy as Code
+![Policy as Code details](images/mindmap_10_security_policy.png)
+
+*Policy as Code enables automated governance and compliance automation through tools like OPA/Rego and HashiCorp Sentinel, ensuring regulatory requirements are met programmatically.*
+
+#### Risk Assessment
+![Risk Assessment details](images/mindmap_10_security_risk.png)
+
+*Risk Assessment involves continuous evaluation of blast radius and impact, combined with regulatory compliance measures to maintain data protection and audit trails.*
 
 ## Scope and goals of the chapter
 

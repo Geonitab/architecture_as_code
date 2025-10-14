@@ -23,7 +23,7 @@ Security automation in Swedish enterprises has matured through four distinct pha
 
 ## Policy-as-Code operating model
 
-![Security automation mind map](images/mindmap_10_security.png)
+![Security automation mind map](images/mindmap_10_security_overview.png)
 
 *Figure 10.2 – A mind map of the continuous security operating model used throughout Architecture as Code.*
 
