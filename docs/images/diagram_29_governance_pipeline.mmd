@@ -1,21 +1,16 @@
 %% Governance as Code approval flow across stakeholders
 graph TD
     Start[Policy Author:<br/>Draft governance update]:::kv-primary
-    Start --> Branch[Branch from<br/>draft workspace]:::kv-highlight
-    Branch --> Repo[Commit to<br/>Git Repository]:::kv-accent
-    Repo --> CI[CI/CD Checks:<br/>Trigger automated<br/>policy tests]:::kv-accent
-    CI --> Status[Report compliance<br/>status]:::kv-highlight
-    Status --> PR[Open pull request<br/>for approval]:::kv-accent
-    PR --> Review[Governance Reviewers:<br/>Review changes]:::kv-primary
-    Review --> Comments{Review<br/>comments?}:::kv-decision
-    Comments -->|Yes| Changes[Policy Author:<br/>Apply requested<br/>changes]:::kv-highlight
-    Changes --> Revalidate[Re-run automated<br/>tests]:::kv-accent
-    Revalidate --> Guardrails[Confirm guardrails<br/>satisfied]:::kv-highlight
-    Guardrails --> Review
-    Comments -->|Approved| Merge[Approve and<br/>merge change]:::kv-primary
-    Merge --> Deploy[Production Controls:<br/>Promote policy to<br/>production]:::kv-accent
-    Deploy --> Evidence[Capture deployment<br/>evidence]:::kv-highlight
-    Evidence --> Audit[Audit Portal:<br/>Publish audit trail]:::kv-primary
+    Start --> Branch[Branch & Commit<br/>to Repository]:::kv-highlight
+    Branch --> CI[CI/CD:<br/>Automated tests]:::kv-accent
+    CI --> PR[Open pull request]:::kv-accent
+    PR --> Review[Governance Review]:::kv-primary
+    Review --> Comments{Approved?}:::kv-decision
+    Comments -->|No| Changes[Apply changes<br/>& revalidate]:::kv-highlight
+    Changes --> Review
+    Comments -->|Yes| Merge[Merge to main]:::kv-primary
+    Merge --> Deploy[Deploy to<br/>production]:::kv-accent
+    Deploy --> Audit[Audit trail<br/>published]:::kv-primary
     Audit --> End[Complete]:::kv-accent
     
     classDef kv-decision fill:#1E3A8A,stroke:#0F172A,color:#F8FAFC,stroke-width:3px

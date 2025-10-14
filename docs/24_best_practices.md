@@ -4,9 +4,27 @@ Architecture as Code practices evolve rapidly as teams balance platform stabilit
 
 ## A Holistic Landscape of Practice Areas
 
-![Figure 24.2 – Vertically oriented mind map of best-practice themes](images/mindmap_22_best_practices.png)
+The following mind maps present the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements without treating topics in isolation.
 
-*Figure 24.2 presents the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements without treating topics in isolation.*
+![Figure 24.2 – Code organization and module design](images/mindmap_22a_code_organization.png)
+
+*Figure 24.2 shows best practices for repository structure, module design, and versioning strategies.*
+
+![Figure 24.3 – Security and compliance patterns](images/mindmap_22b_security_compliance.png)
+
+*Figure 24.3 illustrates security-first design, regulatory compliance, and secret management approaches.*
+
+![Figure 24.4 – Performance and scaling strategies](images/mindmap_22c_performance.png)
+
+*Figure 24.4 demonstrates optimization, multi-region deployment, and observability practices.*
+
+![Figure 24.5 – Governance and policy frameworks](images/mindmap_22d_governance.png)
+
+*Figure 24.5 presents governance frameworks, policy-as-code implementation, and sustainability considerations.*
+
+![Figure 24.6 – Global best practices and continuous improvement](images/mindmap_22e_global_practices.png)
+
+*Figure 24.6 highlights cross-cultural collaboration, open source contributions, and continuous improvement cycles.*
 
 Figure 24.2 introduces the seven practice clusters explored throughout this chapter. The mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
 

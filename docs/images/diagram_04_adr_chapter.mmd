@@ -9,20 +9,7 @@ graph TD
     G -->|No| C
     H --> I[Implementation]:::kv-primary
     I --> J[Monitoring]:::kv-highlight
-    J --> K{Decision Works?}:::kv-outline
+    J --> K{Works?}:::kv-outline
     K -->|Yes| L[Continued Use]:::kv-accent
-    K -->|No| M[Status: Deprecated]:::kv-muted
-    M --> N[New ADR Needed]:::kv-pattern
-    N --> A
-
-    subgraph "ADR Structure"
-        E1[Context]:::kv-muted
-        E2[Decision]:::kv-accent
-        E3[Consequences]:::kv-highlight
-        E4[Status]:::kv-muted
-    end
-
-    E --> E1
-    E --> E2
-    E --> E3
-    E --> E4
+    K -->|No| M[New ADR Needed]:::kv-pattern
+    M --> A
