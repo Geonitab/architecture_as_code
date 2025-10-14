@@ -10,7 +10,7 @@ The various "as Code" disciplines—Documentation as Code, Requirements as Code,
 
 Best practices emerge from the collective experience of organisations that have navigated Architecture as Code transformation successfully. These aren't theoretical ideals but pragmatic patterns proven across finance, public services, healthcare, and technology sectors. They reflect the reality that perfection is less important than consistent progress and the discipline to learn from both successes and setbacks.
 
-The practices explored here draw on all previous parts—from the [foundational principles](02_fundamental_principles.md) through [platform capabilities](05_automation_devops_cicd.md), [security controls](09_security.md), [delivery practices](14_practical_implementation.md), and [organisational transformation](17_organizational_change.md). They represent the integration of these distinct threads into cohesive, sustainable approaches.
+The practices explored here draw on all previous parts—from the [foundational principles](02_fundamental_principles.md) through [platform capabilities](05_automation_devops_cicd.md), [security controls](09a_security_fundamentals.md), [delivery practices](14_practical_implementation.md), and [organisational transformation](17_organizational_change.md). They represent the integration of these distinct threads into cohesive, sustainable approaches.
 
 **What you will learn in this part:**
 
