@@ -22,10 +22,10 @@ jobs:
               body: 'Thanks for opening this issue! We''ll look into it soon.'
             })
 
-      # NEW STEP: Automatic assignment to CoPilot
-      - name: Assign to CoPilot
+      # NEW STEP: Automatic assignment to Copilot
+      - name: Assign to Copilot
         run: |
-          gh issue edit ${{ github.event.issue.number }} --add-assignee CoPilot
+          gh issue edit ${{ github.event.issue.number }} --add-assignee Copilot
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Used automatically for authentication
 
