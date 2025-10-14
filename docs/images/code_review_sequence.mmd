@@ -1,5 +1,5 @@
 sequenceDiagram
-    participant Dev as 👩‍💻<br/>Utvecklare
+    participant Dev as 👩‍💻<br/>Developer
     participant Git as 📂<br/>Git Repository
     participant CI as ⚙️<br/>CI/CD Pipeline
     participant Rev as 👀<br/>Code Reviewer
@@ -8,7 +8,7 @@ sequenceDiagram
     Dev->>Git: 📝 Push feature branch
     Git->>CI: ⚡ Trigger automated tests
     
-    Note over CI: 🛠️ Kvalitetskontroller
+    Note over CI: 🛠️ Quality Checks
     CI->>CI: ✅ Terraform validate
     CI->>CI: 🔒 Security scan
     CI->>CI: 💰 Cost estimation
@@ -18,11 +18,11 @@ sequenceDiagram
     Dev->>Rev: 📋 Create Pull Request
     
     Note over Rev: 👥 Human Review Process
-    Rev->>Git: 👀 Review kod och test results
-    Rev->>Git: ✅ Approve efter granskning
+    Rev->>Git: 👀 Review code and test results
+    Rev->>Git: ✅ Approve after review
     
-    Git->>CI: 🔄 Merge till main branch
-    CI->>Prod: 🚀 Deploy till production
-    Prod->>CI: ✅ Deployment bekräftad
+    Git->>CI: 🔄 Merge to main branch
+    CI->>Prod: 🚀 Deploy to production
+    Prod->>CI: ✅ Deployment confirmed
     
-    Note over Dev,Prod: 🎯 Hela processen automatiserad och spårbar
+    Note over Dev,Prod: 🎯 Entire process automated and traceable
