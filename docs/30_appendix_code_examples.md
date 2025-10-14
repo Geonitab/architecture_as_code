@@ -25,16 +25,16 @@ each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]
 
 ## CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}
 
-This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for Swedish organizations.
+This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for organizations.
 
-### 05_CODE_1: GDPR-kompatibel CI/CD Pipeline for Swedish organizations
+### 05_CODE_1: GDPR-compliant CI/CD Pipeline for organizations
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
-# .github/workflows/svenska-architecture as code-pipeline.yml
-# GDPR-compliant CI/CD pipeline for Swedish organizations
+# .github/workflows/a-architecture as code-pipeline.yml
+# GDPR-compliant CI/CD pipeline for organizations
 
-name: Svenska architecture as code Pipeline with GDPR Compliance
+name: architecture as code Pipeline with GDPR Compliance
 
 on:
   push:
@@ -50,7 +50,7 @@ env:
   ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || github.ref_name }}
   COST_CENTER: ${{ whose.COST_CENTER }}
   GDPR_COMPLIANCE_ENABLED: 'true'
-  DATA_RESIDENCY: 'Sweden'
+  DATA_RESIDENCY: 'EU'
   AUDIT_LOGGING: 'enabled'
 
 jobs:
@@ -73,7 +73,7 @@ jobs:
           
           # Sök efter vanliga personal data patterns in architecture as code-code
           PERSONAL_DATA_PATTERNS=(
-            "personnummer"
+            "national ID"
             "social.*security"
             "credit.*card"
             "bank.*account"
@@ -101,12 +101,12 @@ jobs:
           echo "✅ GDPR compliance check genomförd"
 ```
 
-### 05_CODE_2: Jenkins Pipeline for Swedish organizations with GDPR compliance
+### 05_CODE_2: Jenkins Pipeline for organizations with GDPR compliance
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
-# jenkins/svenska-architecture as code-pipeline.groovy
-// Jenkins pipeline for Swedish organizations with GDPR compliance
+# jenkins/a-architecture as code-pipeline.groovy
+// Jenkins pipeline for organizations with GDPR compliance
 
 pipeline {
     agent any
@@ -125,22 +125,22 @@ pipeline {
         string(
             name: 'COST_CENTER',
             defaultValue: 'CC-IT-001',
-            description: 'Kostnadscenter for svenska bokföring'
+            description: 'Kostnadscenter for bokföring'
         )
     }
     
     environment {
-        ORGANIZATION_NAME = 'svenska-org'
-        AWS_DEFAULT_REGION = 'eu-north-1'  // Stockholm region
+        ORGANIZATION_NAME = 'a-org'
+        AWS_DEFAULT_REGION = 'eu-west-1'
         GDPR_COMPLIANCE = 'enabled'
-        DATA_RESIDENCY = 'Sweden'
+        DATA_RESIDENCY = 'EU'
         TERRAFORM_VERSION = '1.6.0'
-        COST_CURRENCY = 'SEK'
-        AUDIT_RETENTION_YEARS = '7'  // Svenska lagrequirements
+        COST_CURRENCY = 'EUR'
+        AUDIT_RETENTION_YEARS = '7'  // lagrequirements
     }
     
     stages {
-        stage('🇸🇪 Svenska Compliance Check') {
+        stage('Compliance Check') {
             parallel {
                 stage('GDPR Data Scan') {
                     steps {
@@ -148,7 +148,7 @@ pipeline {
                             echo "🔍 Scanning for personal data patterns in architecture as code code..."
                             
                             def personalDataPatterns = [
-                                'personnummer', 'social.*security', 'credit.*card',
+                                'national ID', 'social.*security', 'credit.*card',
                                 'bank.*account', 'email.*address', 'phone.*number'
                             ]
                             
@@ -177,7 +177,7 @@ pipeline {
                 stage('Data Residency Validation') {
                     steps {
                         script {
-                            echo "🏔️ Validates svenska data residency requirements..."
+                            echo "🏔️ Validates data residency requirements..."
                             
                             def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1']
                             
@@ -201,7 +201,7 @@ pipeline {
                 stage('Cost Center Validation') {
                     steps {
                         script {
-                            echo "💰 Validates kostnadscenter for svenska bokföring..."
+                            echo "💰 Validates kostnadscenter for bokföring..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
                                 error("Ogiltigt kostnadscenter format. Use: CC-XX-nnn")
@@ -282,14 +282,14 @@ pipeline {
                     }
                 }
                 
-                stage('Svenska Policy Validation') {
+                stage('Policy Validation') {
                     steps {
                         script {
-                            echo "📋 Validates svenska organisationspolicies..."
+                            echo "📋 Validates organisationspolicies..."
                             
-                            // Skapa svenska OPA policies
-                            writeFile file: 'policies/svenska-tagging.rego', text: """
-                                package svenska.tagging
+                            // Skapa OPA policies
+                            writeFile file: 'policies/a-tagging.rego', text: """
+                                package a.tagging
                                 
                                 required_tags := [
                                     "Environment", "CostCenter", "Organization", 
@@ -318,19 +318,19 @@ pipeline {
                                 find infrastructure/ -name "*.tf" -exec conftest verify --policy policies/ {} \\;
                             """
                             
-                            echo "✅ Svenska policy validation slutförd"
+                            echo "✅ policy validation slutförd"
                         }
                     }
                 }
             }
         }
         
-        stage('💰 Svenska Kostnadskontroll') {
+        stage('💰 Kostnadskontroll') {
             steps {
                 script {
-                    echo "📊 Beräknar infrastrukturkostnader in svenska kronor..."
+                    echo "📊 Beräknar infrastrukturkostnader in kronor..."
                     
-                    // Setup Infracost for svenska valuta
+                    // Setup Infracost for valuta
                     sh """
                         curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
                         export PATH=\$PATH:\$HOME/.local/bin
@@ -340,7 +340,7 @@ pipeline {
                         
                         infracost breakdown \\
                             --path . \\
-                            --currency SEK \\
+                            --currency EUR \\
                             --format json \\
                             --out-file ../../../cost-estimate.json
                         
@@ -350,9 +350,9 @@ pipeline {
                             --out-file ../../../cost-summary.txt
                     """
                     
-                    // Validate kostnader mot svenska budgetgränser
+                    // Validate kostnader mot budgetgränser
                     def costData = readJSON file: 'cost-estimate.json'
-                    def monthlyCostSEK = costData.totalMonthlyCost as Double
+                    def monthlyCostEUR = costData.totalMonthlyCost as Double
                     
                     def budgetLimits = [
                         'development': 5000,
@@ -362,30 +362,30 @@ pipeline {
                     
                     def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
                     
-                    echo "Beräknad månadskostnad: ${monthlyCostSEK} SEK"
-                    echo "Budget for ${params.ENVIRONMENT}: ${maxBudget} SEK"
+                    echo "Beräknad månadskostnad: ${monthlyCostEUR} EUR"
+                    echo "Budget for ${params.ENVIRONMENT}: ${maxBudget} EUR"
                     
-                    if (monthlyCostSEK > maxBudget) {
-                        def overBudget = monthlyCostSEK - maxBudget
-                        echo "⚠️ BUDGET ÖVERSKRIDEN with ${overBudget} SEK!"
+                    if (monthlyCostEUR > maxBudget) {
+                        def overBudget = monthlyCostEUR - maxBudget
+                        echo "⚠️ BUDGET ÖVERSKRIDEN with ${overBudget} EUR!"
                         
                         if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
                             error("Budget överskridning not tillåten for production without CFO godkännande")
                         }
                     }
                     
-                    // Generera svenskt kostnadsrapport
+                    // Generera t kostnadsrapport
                     def costReport = """
                     # Kostnadsrapport - ${env.ORGANIZATION_NAME}
                     
                     **Miljö:** ${params.ENVIRONMENT}
-                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} (svensk time)
+                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} ( time)
                     **Kostnadscenter:** ${params.COST_CENTER}
                     
                     ## Månadskostnad
-                    - **Total:** ${monthlyCostSEK} SEK
-                    - **Budget:** ${maxBudget} SEK
-                    - **Status:** ${monthlyCostSEK <= maxBudget ? '✅ Within budget' : '❌ over budget'}
+                    - **Total:** ${monthlyCostEUR} EUR
+                    - **Budget:** ${maxBudget} EUR
+                    - **Status:** ${monthlyCostEUR <= maxBudget ? '✅ Within budget' : '❌ over budget'}
                     
                     ## Kostnadsnedbrytning
                     ${readFile('cost-summary.txt')}
@@ -396,8 +396,8 @@ pipeline {
                     - Implementera scheduled shutdown for icke-critical systems
                     """
                     
-                    writeFile file: 'cost-report-svenska.md', text: costReport
-                    archiveArtifacts artifacts: 'cost-report-svenska.md', fingerprint: true
+                    writeFile file: 'cost-report-a.md', text: costReport
+                    archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
                     
                     echo "✅ Kostnadskontroll slutförd"
                 }
@@ -407,12 +407,12 @@ pipeline {
 }
 ```
 
-### 05_CODE_3: Terratest for svenska VPC implementation
+### 05_CODE_3: Terratest for VPC implementation
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```go
-// test/svenska_vpc_test.go
-// Terratest suite for svenska VPC implementation with GDPR compliance
+// test/a_vpc_test.go
+// Terratest suite for VPC implementation with GDPR compliance
 
 package test
 
@@ -433,7 +433,7 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// SvenskaVPCTestSuite definierar test suite for svenska VPC implementation
+// SvenskaVPCTestSuite definierar test suite for VPC implementation
 type SvenskaVPCTestSuite struct {
     TerraformOptions *terraform.Options
     AWSSession       *session.Session
@@ -461,8 +461,8 @@ func TestSvenskaVPCGDPRCompliance(t *testing.T) {
         testEncryptionAtRest(t, suite)
     })
 
-    t.Run("TestDataResidencySweden", func(t *testing.T) {
-        testDataResidencySweden(t, suite)
+    t.Run("TestDataResidencyEU", func(t *testing.T) {
+        testDataResidencyEU(t, suite)
     })
 
     t.Run("TestAuditLogging", func(t *testing.T) {
@@ -474,11 +474,11 @@ func TestSvenskaVPCGDPRCompliance(t *testing.T) {
     })
 }
 
-// setupSvenskaVPCTest förbereder test environment for svenska VPC testing
+// setupSvenskaVPCTest förbereder test environment for VPC testing
 func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
     // Unik test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
-    organizationName := fmt.Sprintf("svenska-org-%s", uniqueID)
+    organizationName := fmt.Sprintf("a-org-%s", uniqueID)
 
     // Terraform configuration
     terraformOptions := &terraform.Options{
@@ -488,13 +488,13 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
             "environment":          environment,
             "cost_center":          "CC-TEST-001",
             "gdpr_compliance":      true,
-            "data_residency":       "Sweden",
+            "data_residency":       "EU",
             "enable_flow_logs":     true,
             "enable_encryption":    true,
             "audit_logging":        true,
         },
         BackendConfig: map[string]interface{}{
-            "bucket": "svenska-org-terraform-test-state",
+            "bucket": "a-org-terraform-test-state",
             "key":    fmt.Sprintf("test/%s/terraform.tfstate", uniqueID),
             "region": "eu-north-1",
         },
@@ -564,8 +564,8 @@ func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ Encryption at rest validerat for GDPR compliance")
 }
 
-// testDataResidencySweden validates to all infrastruktur is within svenska gränser
-func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
+// testDataResidencyEU validates to all infrastruktur is within gränser
+func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Validate to VPC is in Stockholm region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
@@ -589,12 +589,12 @@ func testDataResidencySweden(t *testing.T, suite *SvenskaVPCTestSuite) {
         }
     }
     
-    assert.True(t, regionAllowed, "VPC must be in EU region for Swedish data residency. Found: %s", region)
+    assert.True(t, regionAllowed, "VPC must be in EU region for  data residency. Found: %s", region)
 
     t.Logf("✅ Data residency validerat - all infrastruktur in EU region: %s", region)
 }
 
-// testAuditLogging validates to audit logging is konfigurerat according to svenska lagrequirements
+// testAuditLogging validates to audit logging is konfigurerat according to lagrequirements
 func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     // Kontrollera CloudTrail configuration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
@@ -613,7 +613,7 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validates to all resurser has korrekta svenska tags
+// testSvenskaTagging validates to all resurser has korrekta tags
 func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
@@ -624,9 +624,9 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
         "Environment":     suite.Environment,
         "Organization":    suite.OrganizationName,
         "CostCenter":      suite.CostCenter,
-        "Country":         "Sweden",
+        "Country":         "EU",
         "GDPRCompliant":   "true",
-        "DataResidency":   "Sweden",
+        "DataResidency":   "EU",
     }
 
     // Test VPC tags
@@ -659,7 +659,7 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
         }
     }
 
-    t.Logf("✅ Svenska tagging validerat for all resurser")
+    t.Logf("✅ tagging validerat for all resurser")
 }
 
 // cleanupSvenskaVPCTest rensar test environment
@@ -675,15 +675,15 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 Architecture as Code-principerna within This area#cloudformation-Architecture as Code}
 
-This sektion contains CloudFormation templates for AWS-infrastructure adapted for Swedish organizations.
+This sektion contains CloudFormation templates for AWS-infrastructure adapted for organizations.
 
-### 07_CODE_1: VPC Setup for Swedish organizations with GDPR compliance
+### 07_CODE_1: VPC Setup for organizations with GDPR compliance
 *Refereras from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
-# cloudformation/svenska-org-vpc.yaml
+# cloudformation/a-org-vpc.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'VPC setup for Swedish organizations with GDPR compliance'
+Description: 'VPC setup for organizations with GDPR compliance'
 
 Parameters:
   EnvironmentType:
@@ -696,7 +696,7 @@ Parameters:
     Type: String
     Default: internal
     AllowedValues: [public, internal, confidential, restricted]
-    Description: 'Dataklassificering according to svenska security standards'
+    Description: 'Dataklassificering according to security standards'
   
   ComplianceRequirements:
     Type: CommaDelimitedList
@@ -727,7 +727,7 @@ Resources:
         - Key: ISO27001Compliant
           Value: !If [RequiresISO27001, 'true', 'false']
         - Key: Country
-          Value: 'Sweden'
+          Value: 'EU'
         - Key: Region
           Value: 'eu-north-1'
 ```
@@ -767,7 +767,7 @@ class TestCase:
 class ComprehensiveIaCTesting:
     """
     Comprehensive testing framework for Infrastructure as Code
-    Based at svenska architecture as code best practices and international standards
+    Based at architecture as code best practices and international standards
     """
     
     def __init__(self, region='eu-north-1'):
@@ -837,15 +837,15 @@ class ComprehensiveIaCTesting:
 
 This sektion contains konfigurationsfiler for different tools and services.
 
-### 22_CODE_2: Governance policy configuration for Swedish organizations
+### 22_CODE_2: Governance policy configuration for organizations
 *Refereras from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```yaml
-# governance/svenska-governance-policy.yaml
+# governance/a-governance-policy.yaml
 governance_framework:
-  organization: "Svenska Organization AB"
+  organization: "Organization AB"
   compliance_standards: ["GDPR", "ISO27001", "SOC2"]
-  data_residency: "Sweden"
+  data_residency: "EU"
   regulatory_authority: "Integritetsskyddsmyndigheten (IMY)"
 
 policy_enforcement:
@@ -879,17 +879,17 @@ policy_enforcement:
 cost_governance:
   budget_controls:
     development: 
-      monthly_limit: "10000 SEK"
+      monthly_limit: "10000 EUR"
       alert_threshold: "80%"
       auto_shutdown: "enabled"
     
     staging:
-      monthly_limit: "25000 SEK"
+      monthly_limit: "25000 EUR"
       alert_threshold: "85%"
       auto_shutdown: "disabled"
     
     production:
-      monthly_limit: "100000 SEK"
+      monthly_limit: "100000 EUR"
       alert_threshold: "90%"
       auto_shutdown: "disabled"
       escalation: "immediate"
@@ -1757,10 +1757,10 @@ each kodexamples in This appendix can refereras from huvudtexten with dess uniqu
 
 ### Konventioner for kodexempel
 
-- **Kommentarer**: all kodexamples contains svenska kommentarer for klarhet
+- **Kommentarer**: all kodexamples contains kommentarer for klarhet
 - **Security**: Security aspects is markerade with 🔒
 - **GDPR-compliance**: GDPR-relaterade configurations is markerade with 🇪🇺
-- **Svenska anpassningar**: Lokala anpassningar is markerade with 🇸🇪
+- **anpassningar**: Lokala anpassningar is markerade with 🇸🇪
 
 ### Uppdateringar and underhåll
 
@@ -2535,7 +2535,7 @@ resource "aws_launch_template" "spot_optimized" {
 
 ## Security and compliance {#security-compliance}
 
-### 10_CODE_1: Advanced Policy-as-Code module for Swedish compliance {#10_code_1}
+### 10_CODE_1: Advanced Policy-as-Code module for  compliance {#10_code_1}
 *Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
 
 ```rego
@@ -2777,7 +2777,7 @@ assess_regulator(name, violations) := {
 }
 ```
 
-### 10_CODE_2: OSCAL profile for regulated Swedish financial services {#10_code_2}
+### 10_CODE_2: OSCAL profile for regulated  financial services {#10_code_2}
 *Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
 
 ```json
@@ -2785,14 +2785,14 @@ assess_regulator(name, violations) := {
   "profile": {
     "uuid": "87654321-4321-8765-4321-876543218765",
     "metadata": {
-      "title": "Swedish Financial Institutions Security Profile",
+      "title": " Financial Institutions Security Profile",
       "published": "2024-01-15T11:00:00Z",
       "last-modified": "2024-01-15T11:00:00Z",
       "version": "2.1",
       "oscal-version": "1.1.2",
       "props": [
-        { "name": "organization", "value": "Swedish Financial Sector" },
-        { "name": "jurisdiction", "value": "Sweden" }
+        { "name": "organization", "value": " Financial Sector" },
+        { "name": "jurisdiction", "value": "EU" }
       ]
     },
     "imports": [
@@ -2803,7 +2803,7 @@ assess_regulator(name, violations) := {
         ]
       },
       {
-        "href": "swedish-regional-catalog.json",
+        "href": "regional-catalog.json",
         "include-controls": [
           { "matching": [ { "pattern": "gdpr-.*" }, { "pattern": "msb-.*" } ] }
         ]
@@ -2869,14 +2869,14 @@ assess_regulator(name, violations) := {
 ```
 
 ### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
-*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the Swedish financial profile.
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the  financial profile.
 
 ```json
 {
   "component-definition": {
     "uuid": "11223344-5566-7788-99aa-bbccddeeff00",
     "metadata": {
-      "title": "AWS Components for Swedish Regulated Workloads",
+      "title": "AWS Components for  Regulated Workloads",
       "published": "2024-01-15T12:00:00Z",
       "last-modified": "2024-01-15T12:00:00Z",
       "version": "1.5",
@@ -2890,7 +2890,7 @@ assess_regulator(name, violations) := {
         "description": "Managed relational database configured for GDPR Article 32 compliance.",
         "control-implementations": [
           {
-            "source": "swedish-regional-catalog.json",
+            "source": "regional-catalog.json",
             "implemented-requirements": [
               {
                 "control-id": "gdpr-art32-1.1",
@@ -2929,7 +2929,7 @@ assess_regulator(name, violations) := {
         "description": "Object storage with automatic encryption and access logging.",
         "control-implementations": [
           {
-            "source": "swedish-regional-catalog.json",
+            "source": "regional-catalog.json",
             "implemented-requirements": [
               {
                 "control-id": "gdpr-art32-1.2",
@@ -2964,7 +2964,7 @@ assess_regulator(name, violations) := {
         "description": "Edge inspection enforcing MSB segmentation and logging requirements.",
         "control-implementations": [
           {
-            "source": "swedish-regional-catalog.json",
+            "source": "regional-catalog.json",
             "implemented-requirements": [
               {
                 "control-id": "msb-3.2.1",
@@ -3036,7 +3036,7 @@ class OSCALSSPGenerator:
                     "version": "1.0",
                     "oscal-version": "1.1.2",
                     "props": [
-                        {"name": "organization", "value": "Swedish Enterprise"},
+                        {"name": "organization", "value": " Enterprise"},
                         {"name": "system-name", "value": system_name}
                     ]
                 },
@@ -3118,7 +3118,7 @@ if __name__ == "__main__":
     components_dir = Path("oscal/components")
     generator = OSCALSSPGenerator(tf_dir, load_component_paths(components_dir))
     plan = generator.generate(
-        profile_href="profiles/swedish-financial-profile.json",
+        profile_href="profiles/financial-profile.json",
         system_name="Payments Platform"
     )
     save_ssp(Path("artifacts/system-security-plan.json"), plan)
