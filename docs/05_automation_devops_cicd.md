@@ -43,7 +43,7 @@ Implementing CI/CD for Architecture as Code affects the organisation on multiple
 | Skills development | Growing software engineering capabilities in traditional IT professionals | Training investments, cloud-provider API education, recruitment for development and operations skills mix |
 | Compliance and governance | Ensuring automated processes meet regulatory obligations | Automated audit trails, data residency controls, programmatic separation of duties |
 
-As discussed in [Chapter 3 on version control](03_version_control.md), CI/CD pipelines are a natural extension of Git-based workflows for Architecture as Code. This chapter builds on those concepts and explores how Swedish organisations can implement advanced automation strategies that balance efficiency with stringent regulatory requirements. Later chapters will demonstrate how these principles apply to [Containerisation and Orchestration as Code](07_containerization.md) and integrate with the practices described in [Security in Architecture as Code](09_security.md).
+As discussed in [Chapter 3 on version control](03_version_control.md), CI/CD pipelines are a natural extension of Git-based workflows for Architecture as Code. This chapter builds on those concepts and explores how organisations can implement advanced automation strategies that balance efficiency with stringent regulatory requirements. Later chapters will demonstrate how these principles apply to [Containerisation and Orchestration as Code](07_containerization.md) and integrate with the practices described in [Security in Architecture as Code](09_security.md).
 
 ## From Architecture as Code to holistic development and operations
 
@@ -57,21 +57,21 @@ Architecture as Code extends DevOps practices beyond application delivery and in
 
 This holistic approach requires DevOps practices that can manage the complexity of interconnected architectural components while sustaining delivery speed and quality.
 
-### Critical success factors for Swedish Architecture as Code DevOps
+### Critical success factors for Architecture as Code DevOps
 
-**Cultural transformation with a holistic perspective:** Swedish organisations must develop a shared understanding of architecture as a unified whole, enabling cross-disciplinary collaboration between developers, architects, operations, and business analysts.
+**Cultural transformation with a holistic perspective:** organisations must develop a shared understanding of architecture as a unified whole, enabling cross-disciplinary collaboration between developers, architects, operations, and business analysts.
 
 **Governance as Code:** Architecture governance, design principles, and decisions are codified and version-controlled. Architecture Decision Records (ADR), design guidelines, and compliance requirements become part of the executable architecture.
 
 **Full traceability:** Every change—from business requirement to deployed architecture—must be traceable across applications, data, infrastructure, and organisational processes.
 
-### Deep dive: Governance as Code in practice
+### Governance as Code integration
 
-Governance as Code goes beyond writing policy statements in a declarative syntax; it relocates the entire governance model for architecture and technology into executable source code. When principles, target architectures, standards, and decision processes are handled as code, organisations gain a powerful way to coordinate control, risk management, and innovation. For Swedish organisations operating under strict regulation—from GDPR and NIS2 to sector guidance from Finansinspektionen or the National Board of Health and Welfare—this enables automated audits and consistent compliance.
+Governance as Code extends Infrastructure as Code principles to policies, approval flows, and organisational guardrails. When architecture governance is codified and version-controlled, teams gain transparency, traceability, and automation opportunities while meeting compliance and risk requirements.
 
 A practical starting point is a shared repository for architectural guidance in which policy definitions, decisions, and exceptions are captured in machine-readable form. Architecture principles can be expressed as YAML or JSON structures that describe the patterns allowed in different domains—from security levels for APIs to data-classification requirements. These artefacts are consumed by validation tools in the CI/CD pipeline to approve or block changes automatically. By mapping each policy to a unique identifier and linking it to control points such as test cases or Open Policy Agent (OPA) rules, teams clarify what is being verified and why.
 
-Keeping governance alive requires the policy lifecycle to follow the same change-management flow as any other code: proposals via pull requests, technical and legal review, automated testing, and traceable releases into production. Version history provides auditors with visibility into when a control was introduced, the discussion that preceded it, and the environments it affects. Swedish organisations can link these commits to archived decisions or risk assessments to connect business governance with technical execution.
+Keeping governance alive requires the policy lifecycle to follow the same change-management flow as any other code: proposals via pull requests, technical and legal review, automated testing, and traceable releases into production. Version history provides auditors with visibility into when a control was introduced, the discussion that preceded it, and the environments it affects. organisations can link these commits to archived decisions or risk assessments to connect business governance with technical execution.
 
 A recurring obstacle is that governance functions and engineering teams work in separate toolchains. Governance as Code forces those worlds to converge. Modelling languages such as C4, ArchiMate, or internal taxonomies can be translated into code representations that feed pipeline steps analysing whether proposed architecture changes violate dependency principles or structural guardrails. If a solution introduces a new data flow that crosses national borders, the policy can automatically flag the need for a Data Protection Impact Assessment (DPIA) before deployment proceeds.
 
@@ -81,7 +81,7 @@ Exception management is another critical pillar. Every rule has legitimate devia
 
 Large organisations benefit from an explicit ownership structure. Each policy needs a steward responsible for keeping the rule current and relevant. A federated model works well: central teams define shared control frameworks, while product or domain teams augment them with detailed rules. Using inheritance or module composition in the policy code lets local variations coexist with global requirements, balancing autonomy with control.
 
-Integration with external sources strengthens governance. Financial institutions can ingest updated regulations from Finansinspektionen and automatically generate new pipeline control points, while public-sector entities can connect to Kammarkollegiet framework agreements to validate procurement constraints. Machine-readable compliance formats such as OSCAL make it possible to align technical policies with formal assurance frameworks, simplifying audits and reporting.
+Integration with external sources strengthens governance. Financial institutions can ingest updated regulations from financial regulators and automatically generate new pipeline control points, while public-sector entities can connect to government procurement agencies framework agreements to validate procurement constraints. Machine-readable compliance formats such as OSCAL make it possible to align technical policies with formal assurance frameworks, simplifying audits and reporting.
 
 Finally, treat Governance as Code as a product. It deserves a roadmap, backlog, service levels, and feedback loops with its users—architects, developers, security specialists, and business representatives. Applying product management practices ensures the governance framework continues to deliver value, evolves with new needs, and avoids becoming a static obstacle course. Managing governance with the same modern engineering techniques as the rest of the software landscape creates a resilient platform for sustainable digitalisation where innovation and compliance advance together.
 
@@ -89,7 +89,7 @@ Finally, treat Governance as Code as a product. It deserves a roadmap, backlog, 
 
 Codifying the policy lifecycle introduces repeatable stages that can be automated end-to-end. A policy proposal begins as a pull request containing the policy definition, metadata about regulatory drivers, and references to impacted domains. Static analysis checks validate syntax, mandatory metadata fields, and link integrity. Automated reviewers—implemented through GitHub Apps or GitLab bots—enforce segregation of duties by ensuring that the policy author cannot approve their own change. Once merged, release pipelines publish the policy to a central registry, update documentation sites, and trigger downstream validations so dependent teams are alerted before the new requirement becomes enforceable.
 
-Continuous assurance extends this lifecycle beyond approval. Scheduled pipeline runs revalidate production environments against the policy catalogue and compare runtime telemetry with declared guardrails. Drift detection scripts flag any infrastructure or application component that falls out of compliance, generating issues directly in the owning team’s backlog. For Swedish organisations subject to supervisory reporting, these automated checks supply evidence packs—timestamped logs, compliance dashboards, and remediation tickets—that can be shared with regulators without manual collation.
+Continuous assurance extends this lifecycle beyond approval. Scheduled pipeline runs revalidate production environments against the policy catalogue and compare runtime telemetry with declared guardrails. Drift detection scripts flag any infrastructure or application component that falls out of compliance, generating issues directly in the owning team’s backlog. For organisations subject to supervisory reporting, these automated checks supply evidence packs—timestamped logs, compliance dashboards, and remediation tickets—that can be shared with regulators without manual collation.
 
 ### Measuring and iterating on governance value
 
@@ -116,9 +116,9 @@ Governance controls should appear inside the developer workflow rather than as a
 
 Legal, procurement, and risk-management teams often maintain document-centric processes. Bridging these disciplines requires translation layers between code and contracts. Structured policy metadata—such as regulation references, clause numbers, or procurement thresholds—enables automated generation of legal briefs and supplier questionnaires. When regulators publish updates, notification pipelines create issues for relevant policy stewards, attach the official documents, and propose baseline changes. Embedding governance code into procurement workflows ensures that new vendors, cloud services, or software licences trigger compliance checks before contracts are signed, avoiding late-stage surprises.
 
-**Swedish compliance integration:** GDPR, MSB security requirements, and sector-specific regulation are embedded in the architecture code rather than managed as external controls.
+**compliance integration:** GDPR, security requirements, and sector-specific regulation are embedded in the architecture code rather than managed as external controls.
 
-**Collaborative architectural evolution:** Sweden’s consensus-driven culture can be applied to architecture evolution where all stakeholders contribute to the architecture codebase through transparent, democratic processes.
+**Collaborative architectural evolution:** the region’s consensus-driven culture can be applied to architecture evolution where all stakeholders contribute to the architecture codebase through transparent, democratic processes.
 
 ## CI/CD fundamentals for regulated organisations
 
@@ -169,13 +169,13 @@ An Architecture as Code pipeline is organised into multiple parallel tracks that
 - **Data architecture track:** checks data-model changes, data-lineage compatibility, and data integrity.
 - **Infrastructure architecture track:** manages infrastructure changes with an emphasis on supporting application and data needs.
 - **Security architecture track:** enforces security policies across all architecture domains.
-- **Governance track:** validates compliance with architectural principles and Swedish regulatory requirements.
+- **Governance track:** validates compliance with architectural principles and regulatory requirements.
 
 ```yaml
-# .github/workflows/swedish-architecture-as-code-pipeline.yml
-# Comprehensive Architecture as Code pipeline for Swedish organisations
+# .github/workflows/architecture-as-code-pipeline.yml
+# Comprehensive Architecture as Code pipeline for organisations
 
-name: Swedish Architecture as Code CI/CD
+name: Architecture as Code CI/CD
 
 on:
   push:
@@ -190,12 +190,12 @@ on:
     branches: [main, develop, staging]
 
 env:
-  ORGANISATION_NAME: 'swedish-org'
-  AWS_DEFAULT_REGION: 'eu-north-1'  # Stockholm region
+  ORGANISATION_NAME: 'example-org'
+  AWS_DEFAULT_REGION: 'eu-west-1'
   GDPR_COMPLIANCE: 'enabled'
-  DATA_RESIDENCY: 'Sweden'
+  DATA_RESIDENCY: 'EU'
   ARCHITECTURE_VERSION: '2.0'
-  COST_CURRENCY: 'SEK'
+  COST_CURRENCY: 'EUR'
   AUDIT_RETENTION_YEARS: '7'
 
 jobs:
@@ -221,9 +221,9 @@ jobs:
           curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
           sudo mv conftest /usr/local/bin
 
-      - name: 🇸🇪 Swedish architecture compliance check
+      - name: Architecture compliance check
         run: |
-          echo "🔍 Validating ${{ matrix.domain }} architecture for a Swedish organisation..."
+          echo "🔍 Validating ${{ matrix.domain }} architecture..."
 
           case "${{ matrix.domain }}" in
             "application")
@@ -232,7 +232,7 @@ jobs:
               find architecture/applications -name "*.asyncapi.yml" -exec asyncapi validate {} \;
 
               # Check for GDPR-compliant service design
-              conftest verify --policy policies/swedish/gdpr-service-policies.rego architecture/applications/
+              conftest verify --policy policies/gdpr-service-policies.rego architecture/applications/
               ;;
 
             "data")
@@ -240,7 +240,7 @@ jobs:
               python scripts/validate-data-architecture.py
 
               # Check data-privacy compliance
-              conftest verify --policy policies/swedish/data-privacy-policies.rego architecture/data/
+              conftest verify --policy policies/data-privacy-policies.rego architecture/data/
               ;;
 
             "infrastructure")
@@ -254,7 +254,7 @@ jobs:
 
             "security")
               # Cross-domain security validation
-              conftest verify --policy policies/swedish/security-policies.rego architecture/
+              conftest verify --policy policies/security-policies.rego architecture/
 
               # GDPR impact assessment
               python scripts/gdpr-impact-assessment.py
@@ -264,8 +264,8 @@ jobs:
               # Validate Architecture Decision Records
               find architecture/decisions -name "*.md" -exec architectural-lint {} \;
 
-              # Swedish compliance requirements
-              conftest verify --policy policies/swedish/governance-policies.rego architecture/
+              # compliance requirements
+              conftest verify --policy policies/governance-policies.rego architecture/
               ;;
           esac
 
@@ -287,7 +287,7 @@ jobs:
           python scripts/architecture-dependency-analyser.py \
             --input architecture/ \
             --output reports/dependency-analysis.json \
-            --format swedish
+            --format json
 
           # Validate the absence of circular dependencies
           if python scripts/check-circular-dependencies.py reports/dependency-analysis.json; then
@@ -309,7 +309,7 @@ jobs:
 
           # Run architectural integration tests
           python test/integration/test-architectural-flows.py \
-            --config test/swedish-architecture-config.yml \
+            --config test/architecture-config.yml \
             --compliance-mode gdpr
 
           # Clean up simulation environment
@@ -320,7 +320,7 @@ jobs:
 
 ## Pipeline design principles
 
-Effective CI/CD pipelines for Architecture as Code are built on design principles that optimise speed, safety, and observability. These principles must be tailored to Swedish organisations’ unique compliance, cost-optimisation, and reporting requirements.
+Effective CI/CD pipelines for Architecture as Code are built on design principles that optimise speed, safety, and observability. These principles must be tailored to organisations’ unique compliance, cost-optimisation, and reporting requirements.
 
 ### Fail-fast feedback and progressive validation
 
@@ -335,7 +335,7 @@ Fail-fast feedback is the cornerstone of CI/CD. Errors are detected and reported
 
 ### Progressive deployment strategies
 
-Progressive deployment minimises risk through gradual rollout of infrastructure changes. This is particularly important for Swedish organisations with high availability requirements and regulatory obligations.
+Progressive deployment minimises risk through gradual rollout of infrastructure changes. This is particularly important for organisations with high availability requirements and regulatory obligations.
 
 | Deployment Strategy | Description | Use Cases | Risk Mitigation |
 |---------------------|-------------|-----------|-----------------|
@@ -345,7 +345,7 @@ Progressive deployment minimises risk through gradual rollout of infrastructure 
 
 ### Automated recovery and disaster readiness
 
-Robust recovery capabilities are essential to maintain system reliability and meet Swedish continuity requirements.
+Robust recovery capabilities are essential to maintain system reliability and meet continuity requirements.
 
 **State management:** Infrastructure state must be managed in a way that enables reliable rollbacks to previously known working configurations. This includes automated backups of Terraform state files and database snapshots.
 
@@ -359,24 +359,24 @@ Multi-level testing strategies for Architecture as Code comprise syntax validati
 
 Static analysis tools such as tflint, Checkov, or Terrascan identify security risks, policy violations, and deviations from best practice. Dynamic testing in sandbox environments validates functionality and performance under realistic conditions.
 
-### Terratest for Swedish organisations
+### Terratest for organisations
 
-Terratest provides a mature solution for automated testing of Terraform code through Go-based test suites that validate infrastructure behaviour. For Swedish organisations, Terratest should focus on GDPR compliance testing and cost validation.
+Terratest provides a mature solution for automated testing of Terraform code through Go-based test suites that validate infrastructure behaviour. For organisations, Terratest should focus on GDPR compliance testing and cost validation.
 
-For a full Terratest implementation that validates a Swedish VPC configuration with GDPR compliance, see [05_CODE_3: Terratest for Swedish VPC implementation](30_appendix_code_examples.md#05_code_3) in Appendix A.
+For a full Terratest implementation that validates VPC configurations with GDPR compliance, see [05_CODE_3: Terratest for VPC implementation](30_appendix_code_examples.md#05_code_3) in Appendix A.
 
-### Container-based testing with Swedish compliance
+### Container-based testing with compliance
 
 Container-based infrastructure testing using Docker and Kubernetes enables production-like conditions while maintaining isolation and reproducibility:
 
 ```dockerfile
-# test/Dockerfile.swedish-compliance-test
-# Container for Swedish Architecture as Code compliance testing
+# test/Dockerfile.compliance-test
+# Container for Architecture as Code compliance testing
 
 FROM ubuntu:22.04
 
-LABEL maintainer="swedish-it-team@organisation.se"
-LABEL description="Compliance-testing container for Swedish Architecture as Code implementations"
+LABEL maintainer="it-team@organisation.example"
+LABEL description="Compliance-testing container for Architecture as Code implementations"
 
 # Install essential tools
 RUN apt-get update && apt-get install -y \
@@ -397,7 +397,7 @@ RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
     && mv terraform /usr/local/bin/ \
     && rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-# Install Swedish compliance tools
+# Install compliance tools
 RUN pip3 install \
     checkov \
     terrascan \
@@ -409,27 +409,27 @@ RUN pip3 install \
 RUN curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz \
     && mv conftest /usr/local/bin/
 
-# Install Infracost for Swedish cost control
+# Install Infracost for cost control
 RUN curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh \
     && mv /root/.local/bin/infracost /usr/local/bin/
 
-# Copy Swedish compliance test scripts
-COPY test-scripts/ /opt/swedish-compliance/
+# Copy compliance test scripts
+COPY test-scripts/ /opt/compliance/
 
-# Configure Swedish locale
+# Configure locale
 RUN apt-get update && apt-get install -y locales \
-    && locale-gen sv_SE.UTF-8 \
+    && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
 
-ENV LANG=sv_SE.UTF-8
-ENV LANGUAGE=sv_SE:sv
-ENV LC_ALL=sv_SE.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US:en
+ENV LC_ALL=en_US.UTF-8
 
 # Create test workspace
 WORKDIR /workspace
 
 # Entry point for compliance testing
-ENTRYPOINT ["/opt/swedish-compliance/run-compliance-tests.sh"]
+ENTRYPOINT ["/opt/compliance/run-compliance-tests.sh"]
 ```
 
 ## Architecture as Code testing strategies
@@ -445,115 +445,13 @@ Architecture as Code testing is organised into multiple levels:
 - **Architecture system tests:** verify end-to-end architectural quality and performance.
 - **Architecture acceptance tests:** confirm that the architecture meets business and compliance requirements.
 
-### Swedish Architecture testing framework
 
-Swedish organisations need to pay particular attention to GDPR compliance, data residency, and architectural governance. The following example demonstrates a comprehensive Python-based test suite:
 
-```python
-# test/swedish_architecture_tests.py
-# Comprehensive Architecture as Code testing for Swedish organisations
+## Cost optimisation integration
 
-import pytest
-import yaml
-import json
-from typing import Dict, List, Any
-from dataclasses import dataclass
-from architecture_validators import *
+CI/CD pipelines can integrate with cost estimation tools like Infracost to provide visibility into infrastructure spending before deployment. Cost thresholds can trigger approval gates, and automated alerts can notify teams of budget overruns.
 
-@dataclass
-class SwedishArchitectureTestConfig:
-    """Test configuration for Swedish Architecture as Code"""
-    organisation_name: str
-    environment: str
-    gdpr_compliance: bool = True
-    data_residency: str = "Sweden"
-    compliance_frameworks: List[str] = None
-
-    def __post_init__(self):
-        if self.compliance_frameworks is None:
-            self.compliance_frameworks = ["GDPR", "MSB", "ISO27001"]
-
-class TestSwedishArchitectureCompliance:
-    """Test suite for Swedish architectural compliance"""
-
-    def setup_method(self):
-        self.config = SwedishArchitectureTestConfig(
-            organisation_name="swedish-tech-ab",
-            environment="production"
-        )
-        self.architecture = load_architecture_definition("architecture/")
-
-    def test_gdpr_compliance_across_architecture(self):
-        """Test GDPR compliance across all architecture domains"""
-        # Application-layer GDPR compliance
-        app_compliance = validate_application_gdpr_compliance(
-            self.architecture.applications,
-            self.config
-        )
-        assert app_compliance.compliant, f"Application GDPR issues: {app_compliance.violations}"
-
-        # Data-layer GDPR compliance
-        data_compliance = validate_data_gdpr_compliance(
-            self.architecture.data_models,
-            self.config
-        )
-        assert data_compliance.compliant, f"Data GDPR issues: {data_compliance.violations}"
-
-        # Infrastructure-layer GDPR compliance
-        infra_compliance = validate_infrastructure_gdpr_compliance(
-            self.architecture.infrastructure,
-            self.config
-        )
-        assert infra_compliance.compliant, f"Infrastructure GDPR issues: {infra_compliance.violations}"
-
-    def test_data_residency_enforcement(self):
-        """Ensure all data remains within Swedish borders"""
-        residency_violations = check_data_residency_violations(
-            self.architecture,
-            required_region=self.config.data_residency
-        )
-        assert len(residency_violations) == 0, f"Data residency violations: {residency_violations}"
-
-    def test_architecture_consistency(self):
-        """Verify architectural consistency across domains"""
-        consistency_report = validate_architecture_consistency(self.architecture)
-
-        # Application–data consistency
-        assert consistency_report.application_data_consistent, \
-            f"Application–data inconsistencies: {consistency_report.app_data_issues}"
-
-        # Infrastructure–application alignment
-        assert consistency_report.infrastructure_app_aligned, \
-            f"Infrastructure–application misalignment: {consistency_report.infra_app_issues}"
-
-        # Security-policy coverage
-        assert consistency_report.security_coverage_complete, \
-            f"Security policy gaps: {consistency_report.security_gaps}"
-```
-
-## Cost optimisation and budget control
-
-Swedish organisations must manage infrastructure costs with care, accounting for currency fluctuations, regional pricing variations, and compliance-related expenditure. CI/CD pipelines therefore require sophisticated cost management that goes beyond basic budget alerts.
-
-### Predictive cost modelling
-
-Modern cost optimisation leverages predictive models that can forecast infrastructure costs based on usage patterns, seasonal variations, and planned business growth. Machine-learning models analyse historical data to predict future costs with high accuracy.
-
-**Usage-based forecasting:** Analysis of historical resource utilisation can predict future capacity requirements and associated costs. This is particularly valuable for auto-scaling environments where resource consumption varies dynamically.
-
-**Scenario modelling:** "What-if" analysis for different deployment options enables informed infrastructure investment decisions. Organisations can compare costs across providers, regions, and service tiers.
-
-**Seasonal adjustment:** Swedish companies with seasonal business patterns (retail, tourism, education) can optimise infrastructure costs through automated scaling based on predicted demand.
-
-### Swedish-specific cost considerations
-
-Swedish organisations face cost considerations that influence infrastructure-spending patterns and optimisation strategies.
-
-**Currency hedging:** Infrastructure costs priced in USD expose Swedish companies to currency risk. Cost strategies must consider fluctuations in exchange rates and potential hedging requirements.
-
-**Sustainability reporting:** Growing sustainability expectations drive interest in energy-efficient infrastructure. Cost optimisation must balance financial efficiency with environmental impact.
-
-**Tax implications:** Swedish tax regulations for infrastructure investments, depreciation, and operating expenses affect optimal spending patterns and require integration with financial planning systems.
+For comprehensive coverage of cost optimisation, FinOps practices, predictive cost modelling, and budget control strategies, see [Chapter 15: Cost Optimization and Resource Management](15_cost_optimization.md).
 
 ## Monitoring and observability
 
@@ -561,23 +459,23 @@ Pipeline observability encompasses both execution metrics and business-impact me
 
 Alerting strategies ensure rapid response to pipeline failures and infrastructure anomalies. Integration with incident-management systems enables automatic escalation and notification of relevant teams based on severity and impact.
 
-### Swedish monitoring and alerting
+### monitoring and alerting
 
-For Swedish organisations, monitoring requires special attention to GDPR compliance, cost tracking in SEK, and alignment with local incident-management processes:
+For organisations, monitoring requires special attention to GDPR compliance, cost tracking in SEK, and alignment with local incident-management processes:
 
 ```yaml
-# monitoring/swedish-pipeline-monitoring.yaml
-# Comprehensive monitoring for Swedish Architecture as Code pipelines
+# monitoring/pipeline-monitoring.yaml
+# Comprehensive monitoring for Architecture as Code pipelines
 
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: swedish-pipeline-monitoring
+  name: pipeline-monitoring
   namespace: monitoring
   labels:
     app: pipeline-monitoring
-    sweden.se/organisation: ${ORGANISATION_NAME}
-    sweden.se/gdpr-compliant: "true"
+    organisation: ${ORGANISATION_NAME}
+    gdpr-compliant: "true"
 data:
   prometheus.yml: |
     global:
@@ -586,11 +484,11 @@ data:
       external_labels:
         organisation: "${ORGANISATION_NAME}"
         region: "eu-north-1"
-        country: "Sweden"
+        country: "EU"
         gdpr_zone: "compliant"
 
     rule_files:
-      - "swedish_pipeline_rules.yml"
+      - "pipeline_rules.yml"
       - "gdpr_compliance_rules.yml"
       - "cost_monitoring_rules.yml"
 
@@ -605,47 +503,47 @@ data:
           organisations: ['${ORGANISATION_NAME}']
           repos: ['infrastructure', 'applications']
 
-      # Jenkins metrics for Swedish pipelines
-      - job_name: 'jenkins-swedish'
+      # Jenkins metrics for pipelines
+      - job_name: 'jenkins'
         static_configs:
           - targets: ['jenkins:8080']
         metrics_path: /prometheus
         params:
           match[]:
-            - 'jenkins_builds_duration_milliseconds_summary{job=~"swedish-.*"}'
-            - 'jenkins_builds_success_build_count{job=~"swedish-.*"}'
-            - 'jenkins_builds_failed_build_count{job=~"swedish-.*"}'
+            - 'jenkins_builds_duration_milliseconds_summary{job=~".*"}'
+            - 'jenkins_builds_success_build_count{job=~".*"}'
+            - 'jenkins_builds_failed_build_count{job=~".*"}'
 ```
 
 ## DevOps culture for Architecture as Code
 
-Architecture as Code requires a mature DevOps culture capable of managing holistic system thinking while sustaining agility and innovation. For Swedish organisations this means adapting DevOps principles to national values of consensus, transparency, and responsible risk management.
+Architecture as Code requires a mature DevOps culture capable of managing holistic system thinking while sustaining agility and innovation. For organisations this means adapting DevOps principles to national values of consensus, transparency, and responsible risk management.
 
-### Swedish Architecture as Code cultural practices
+### Architecture as Code cultural practices
 
 - **Transparent architecture governance:** all architecture decisions are documented and shared openly across the organisation.
 - **Consensus-driven architectural evolution:** architecture changes move through democratic decision processes that involve all stakeholders.
-- **Risk-aware innovation:** innovation is balanced with disciplined risk management aligned with Swedish organisational culture.
+- **Risk-aware innovation:** innovation is balanced with disciplined risk management aligned with organisational risk appetite.
 - **Continuous architectural learning:** ongoing competence development across the entire architectural landscape.
 - **Collaborative cross-domain teams:** cross-functional teams own the full architecture stack from applications to infrastructure.
 
 ## Summary
 
-Architecture as Code represents the future of infrastructure management for Swedish organisations. Automation, DevOps, and CI/CD pipelines tailored for Architecture as Code form a critical component for organisations striving for digital excellence and regulatory compliance. By implementing robust, automated pipelines, teams accelerate architectural delivery while maintaining high standards for security, quality, and compliance.
+Architecture as Code represents the future of infrastructure management for organisations. Automation, DevOps, and CI/CD pipelines tailored for Architecture as Code form a critical component for organisations striving for digital excellence and regulatory compliance. By implementing robust, automated pipelines, teams accelerate architectural delivery while maintaining high standards for security, quality, and compliance.
 
-Architecture as Code is the next evolutionary step where DevOps culture and CI/CD processes cover the entire system architecture as a cohesive unit. This holistic approach requires sophisticated pipelines that orchestrate applications, data, infrastructure, and policies as an integrated whole while satisfying Swedish compliance requirements.
+Architecture as Code is the next evolutionary step where DevOps culture and CI/CD processes cover the entire system architecture as a cohesive unit. This holistic approach requires sophisticated pipelines that orchestrate applications, data, infrastructure, and policies as an integrated whole while satisfying compliance requirements.
 
-Swedish organisations face specific demands that influence pipeline design, including GDPR validation, data-residency enforcement, cost optimisation in Swedish kronor, and integration with local business processes. Meeting these demands requires specialised pipeline stages for automated compliance checking, cost-threshold validation, and comprehensive audit logging that satisfies national legislation.
+organisations face specific demands that influence pipeline design, including GDPR validation, data-residency enforcement, cost optimisation , and integration with local business processes. Meeting these demands requires specialised pipeline stages for automated compliance checking, cost-threshold validation, and comprehensive audit logging that satisfies national legislation.
 
-Modern CI/CD approaches such as GitOps, progressive delivery, and infrastructure testing enable deployment strategies that minimise risk while maximising velocity. For Swedish organisations this includes blue-green deployments for production systems, canary releases for gradual rollouts, and automated rollback capabilities for rapid recovery.
+Modern CI/CD approaches such as GitOps, progressive delivery, and infrastructure testing enable deployment strategies that minimise risk while maximising velocity. For organisations this includes blue-green deployments for production systems, canary releases for gradual rollouts, and automated rollback capabilities for rapid recovery.
 
 Testing strategies for Architecture as Code span multiple levels from syntax validation to comprehensive integration testing. Terratest and container-based frameworks enable automated validation of GDPR compliance, cost thresholds, and security requirements as part of the deployment pipeline.
 
-Monitoring and observability for Swedish Architecture as Code pipelines require comprehensive metrics that capture both technical performance and business compliance indicators. Automated alerting ensures rapid responses to compliance breaches, cost overruns, and technical failures through integration with Swedish incident-management processes.
+Monitoring and observability for Architecture as Code pipelines require comprehensive metrics that capture both technical performance and business compliance indicators. Automated alerting ensures rapid responses to compliance breaches, cost overruns, and technical failures through integration with incident-management processes.
 
-Investing in sophisticated CI/CD pipelines for Architecture as Code pays dividends through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. These capabilities become even more critical as Swedish organisations adopt cloud-native architectures and multi-cloud strategies.
+Investing in sophisticated CI/CD pipelines for Architecture as Code pays dividends through reduced deployment risk, improved compliance posture, faster feedback cycles, and enhanced operational reliability. These capabilities become even more critical as organisations adopt cloud-native architectures and multi-cloud strategies.
 
-Successful implementation of CI/CD for Architecture as Code requires balancing automation with human oversight, particularly for production deployments and compliance-critical changes. Swedish organisations that invest in mature pipeline automation and comprehensive testing strategies gain significant competitive advantages through improved reliability and accelerated innovation.
+Successful implementation of CI/CD for Architecture as Code requires balancing automation with human oversight, particularly for production deployments and compliance-critical changes. organisations that invest in mature pipeline automation and comprehensive testing strategies gain significant competitive advantages through improved reliability and accelerated innovation.
 
 ### References
 
@@ -656,8 +554,7 @@ Successful implementation of CI/CD for Architecture as Code requires balancing a
 - Terraform. "Automated Testing for Terraform." HashiCorp Learn Platform.
 - Kubernetes. "GitOps Principles and Practices." Cloud Native Computing Foundation.
 - GDPR.eu. "Infrastructure Compliance Requirements." GDPR Guidelines.
-- Swedish Authority for Privacy Protection. "Technical and Organisational Measures." IMY Guidance.
+- Data Protection Authorities. "Technical and Organisational Measures." GDPR Guidance.
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - DevOps Institute. "Architecture-Driven DevOps Practices." DevOps Research and Assessment.
-- Swedish Authority for Privacy Protection. "GDPR for Swedish organisations." Guidance on personal-data processing.
-- Swedish Civil Contingencies Agency (MSB). "Security Protection for Information Systems." MSBFS 2020:6.
+- Data Protection Authorities. "GDPR for organisations." Guidance on personal-data processing.
