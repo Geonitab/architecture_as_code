@@ -28,7 +28,7 @@ Architecture as Code is not a linear process but an interconnected ecosystem whe
 
 **Documentation as Code** maintains living documentation that evolves with the codebase, while **Design as Code** (including design tokens for consistent styling and branding) defines the visual and structural patterns. This flows naturally into the **Coding** phase, followed by **CI/CD** pipelines that automate testing, validation, and deployment.
 
-Finally, **Infrastructure as Code** provisions and manages the runtime environment. The feedback loops show how infrastructure changes can trigger compliance checks, and how CI/CD results inform requirements validation, creating a continuous improvement cycle.
+Finally, **Infrastructure as Code** provisions and manages the runtime environment. **Management as Code** integrates leadership practices, governance routines, and strategic decision-making into the same version-controlled ecosystem, ensuring that organisational policies and management intent are codified alongside technical implementations. The feedback loops show how infrastructure changes can trigger compliance checks, how management policies inform requirements and compliance, and how CI/CD results inform requirements validation, creating a continuous improvement cycle that spans both technical and organisational domains.
 
 ## Purpose and Target Audience of the Book
 
