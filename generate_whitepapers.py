@@ -147,6 +147,7 @@ def get_chapter_mapping():
         '03_version_control.md': 'Kapitel 3',
         '04_adr.md': 'Kapitel 4',
         '05_automation_devops_cicd.md': 'Kapitel 5',
+        '06_structurizr.md': 'Kapitel 6',
         '07_containerization.md': 'Kapitel 7',
         '09a_security_fundamentals.md': 'Kapitel 9A',
         '09b_security_patterns.md': 'Kapitel 9B',
