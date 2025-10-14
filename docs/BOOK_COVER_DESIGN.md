@@ -17,6 +17,27 @@ Professional book cover design for Kvadrat's "Architecture as Code" publication.
 
 This is the **single approved front cover** used in the book build process.
 
+## Single Cover Guarantee
+
+The book build process ensures that exactly **one front cover** appears in all output formats:
+
+### PDF Generation
+- The cover is included via the `include-before` section in `docs/pandoc.yaml`
+- The Eisvogel template's default `cover-image` variable is NOT used to avoid duplication
+- Result: Single custom title page with cover image, title, subtitle, and metadata
+
+### EPUB Generation
+- The cover is specified via `--epub-cover-image="images/book-cover.png"` flag
+- Result: Single EPUB cover page
+
+### Build Process
+1. `templates/book-cover.svg` is converted to PNG by `docs/build_book.sh`
+2. The PNG is saved as `docs/images/book-cover.png`
+3. Pandoc includes the cover exactly once in PDF output
+4. EPUB generation uses the same PNG file as its cover
+
+This architecture guarantees no duplicate or redundant cover variants in distribution artifacts.
+
 ## Export Formats
 
 The design is available in multiple high-resolution formats:
