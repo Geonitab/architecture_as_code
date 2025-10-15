@@ -30,9 +30,172 @@ Fifth-generation (5G) networks reinforce this trend by enabling near-real-time o
 
 ### Environmental Sustainability and Green Computing
 
-Sustainability is becoming a pivotal design factor. Carbon-aware scheduling shifts compute-intensive workloads to time periods and regions with cleaner energy mixes, while adaptive cooling policies respond to weather and grid signals. Architecture as Code enables these strategies by encoding energy profiles, emissions budgets, and compliance thresholds directly into infrastructure definitions.
+Environmental sustainability is becoming a pivotal design factor, driven by policy frameworks such as the European Union's Green Deal. The EU Green Deal establishes ambitious targets for carbon neutrality by 2050 and provides a comprehensive regulatory foundation for sustainable infrastructure practices. Architecture as Code enables organisations to align technical decisions with these commitments by encoding energy profiles, emissions budgets, and compliance thresholds directly into infrastructure definitions.
 
-Circular economy principles extend the lifecycle of hardware and software components. Automated asset registries track utilisation, maintenance, and retirement criteria; orchestration pipelines rebalance workloads to maximise efficiency; and observability platforms provide the data foundation required to demonstrate progress towards sustainability pledges.
+Carbon-aware scheduling shifts compute-intensive workloads to time periods and regions with cleaner energy mixes, while adaptive cooling policies respond to weather and grid signals. By integrating real-time carbon intensity data from EU electricity grids, infrastructure can automatically migrate non-critical workloads to zones with higher renewable energy availability. This approach supports both environmental responsibility and regulatory compliance across EU member states.
+
+Circular economy principles extend the lifecycle of hardware and software components. Automated asset registries track utilisation, maintenance, and retirement criteria; orchestration pipelines rebalance workloads to maximise efficiency; and observability platforms provide the data foundation required to demonstrate progress towards sustainability pledges. These capabilities align with the EU's Circular Economy Action Plan, ensuring that infrastructure investments contribute to resource efficiency and waste reduction targets.
+
+#### Carbon-Aware Infrastructure Implementation
+
+The following example demonstrates a carbon-aware scheduling system that selects optimal EU regions based on real-time carbon intensity data. This implementation uses generic EU zone identifiers and integrates with publicly available electricity grid data:
+
+```python
+# sustainability/carbon_aware_scheduling.py
+import requests
+from datetime import datetime
+from typing import Dict, List, Optional
+
+class CarbonAwareScheduler:
+    """
+    Carbon-aware infrastructure scheduling for EU organisations
+    Implements EU Green Deal aligned workload placement
+    """
+    
+    def __init__(self):
+        self.electricity_maps_api = "https://api.electricitymap.org/v3"
+        # Generic EU regions with indicative renewable ratios
+        self.eu_regions = {
+            'eu-north-1': {'location': 'Northern EU', 'typical_renewable_ratio': 0.70},
+            'eu-west-1': {'location': 'Western EU', 'typical_renewable_ratio': 0.45},
+            'eu-central-1': {'location': 'Central EU', 'typical_renewable_ratio': 0.40},
+            'eu-south-1': {'location': 'Southern EU', 'typical_renewable_ratio': 0.50}
+        }
+        
+    def get_carbon_intensity(self, region: str) -> Dict:
+        """Fetch real-time carbon intensity for EU region"""
+        
+        # Map cloud regions to electricity grid zones
+        # Uses ISO country codes as fallback for demonstration
+        zone_mapping = {
+            'eu-north-1': 'EU',  # Generic EU zone
+            'eu-west-1': 'EU',
+            'eu-central-1': 'EU',
+            'eu-south-1': 'EU'
+        }
+        
+        zone = zone_mapping.get(region, 'EU')
+        
+        try:
+            response = requests.get(
+                f"{self.electricity_maps_api}/carbon-intensity/latest",
+                params={'zone': zone},
+                headers={'auth-token': 'your-api-key'}
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                return {
+                    'carbon_intensity': data.get('carbonIntensity', 350),
+                    'renewable_ratio': data.get('renewablePercentage', 40) / 100,
+                    'timestamp': data.get('datetime'),
+                    'zone': zone
+                }
+        except Exception:
+            pass
+        
+        # Fallback to typical values for EU regions
+        return {
+            'carbon_intensity': 300,
+            'renewable_ratio': self.eu_regions[region]['typical_renewable_ratio'],
+            'timestamp': datetime.now().isoformat(),
+            'zone': zone
+        }
+    
+    def schedule_carbon_aware_workload(self, workload_config: Dict) -> Dict:
+        """Schedule workload based on carbon intensity across EU regions"""
+        
+        region_analysis = {}
+        for region in self.eu_regions.keys():
+            carbon_data = self.get_carbon_intensity(region)
+            
+            # Calculate carbon score (lower is better)
+            carbon_score = (
+                carbon_data['carbon_intensity'] * 0.7 +
+                (1 - carbon_data['renewable_ratio']) * 100 * 0.3
+            )
+            
+            region_analysis[region] = {
+                'carbon_intensity': carbon_data['carbon_intensity'],
+                'renewable_ratio': carbon_data['renewable_ratio'],
+                'carbon_score': carbon_score,
+                'location': self.eu_regions[region]['location']
+            }
+        
+        # Select most sustainable region
+        best_region = min(region_analysis.items(), 
+                         key=lambda x: x[1]['carbon_score'])
+        
+        return {
+            'recommended_region': best_region[0],
+            'carbon_intensity': best_region[1]['carbon_intensity'],
+            'renewable_ratio': best_region[1]['renewable_ratio'],
+            'location': best_region[1]['location'],
+            'terraform_config': self._generate_terraform_config(
+                best_region[0], workload_config
+            )
+        }
+    
+    def _generate_terraform_config(self, region: str, 
+                                   workload_config: Dict) -> str:
+        """Generate Terraform configuration for carbon-optimised deployment"""
+        
+        return f'''
+# Carbon-aware infrastructure deployment aligned with EU Green Deal
+terraform {{
+  required_providers {{
+    aws = {{
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }}
+  }}
+}}
+
+provider "aws" {{
+  region = "{region}"
+  
+  default_tags {{
+    tags = {{
+      CarbonOptimised        = "true"
+      SustainabilityPolicy   = "eu-green-deal-aligned"
+      RegionSelection        = "renewable-energy-optimised"
+      ComplianceFramework    = "EU-Green-Deal"
+    }}
+  }}
+}}
+
+# EC2 instances optimised for energy efficiency
+resource "aws_instance" "carbon_optimised" {{
+  count         = {workload_config.get('instance_count', 2)}
+  ami           = data.aws_ami.eu_optimised.id
+  instance_type = "{workload_config.get('instance_type', 't3.medium')}"
+  
+  # Use spot instances for cost and sustainability
+  instance_market_options {{
+    market_type = "spot"
+  }}
+  
+  tags = {{
+    Name                = "carbon-optimised-worker-${{count.index + 1}}"
+    EUGreenDealAligned = "true"
+  }}
+}}
+
+# Auto-scaling based on carbon intensity
+resource "aws_autoscaling_schedule" "scale_down_high_carbon" {{
+  scheduled_action_name  = "scale-down-high-carbon-periods"
+  min_size              = 1
+  max_size              = 3
+  desired_capacity      = 1
+  autoscaling_group_name = aws_autoscaling_group.carbon_aware.name
+  
+  # Schedule can be adjusted based on regional carbon intensity patterns
+  recurrence = "0 18 * * *"  # Example: scale down during high-carbon periods
+}}
+'''
+```
+
+This implementation demonstrates how organisations can integrate EU-wide carbon intensity data into infrastructure provisioning decisions. The code is designed to work across any EU region without country-specific dependencies, supporting the portability and compliance requirements established by the EU Green Deal framework.
 
 ## Platform Engineering and Developer Experience
 
