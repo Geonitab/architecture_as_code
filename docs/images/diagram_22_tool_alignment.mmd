@@ -1,0 +1,20 @@
+flowchart LR
+    subgraph Documentation_as_Code[Documentation as Code]
+        Docs[Markdown Source<br/>Repositories]:::kv-primary --> Reviews[Pull Request Reviews<br/>and Style Checks]:::kv-highlight
+        Reviews --> Publish[Static Site & PDF<br/>Publication]:::kv-accent
+        Publish --> Feedback[Reader Feedback<br/>and Issue Tracking]:::kv-muted
+    end
+
+    subgraph Architecture_as_Code[Architecture as Code]
+        Models[Executable Architecture<br/>Models (CALM/DSL)]:::kv-primary --> Policies[Automated Policy Checks]:::kv-highlight
+        Policies --> Provision[Provisioning & Governance<br/>Automation]:::kv-accent
+        Provision --> Telemetry[Runtime Telemetry<br/>and Drift Detection]:::kv-muted
+    end
+
+    Feedback -.Context Updates.-> Models
+    Telemetry -.Implementation Evidence.-> Docs
+    Docs -.Guidance & Intent.-> Models
+    Publish -.Stakeholder Visibility.-> Telemetry
+
+    classDef kv-connector stroke-dasharray:4 2,stroke:#1E3A8A,color:#0F172A,font-weight:bold;
+    class Feedback,Telemetry kv-connector;
