@@ -11,6 +11,6 @@ jobs:
       issues: write
     steps:
       - name: Assign to Copilot
-        uses: otto-de/assign_issue_toCopilot_action@v1
+        uses: otto-de/assign_issue_toCopilot_action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} 
