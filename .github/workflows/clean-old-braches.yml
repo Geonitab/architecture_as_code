@@ -1,42 +1,138 @@
-name: Cleanup Old Branches
+name: Clean up old branches
 
 on:
   schedule:
-    - cron: "0 3 * * *"  # Runs every day at 03:00 UTC
-  workflow_dispatch:      # Allow manual run
+    # Run daily at 03:00 UTC
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List candidates without deleting"
+        type: boolean
+        default: false
+      min_age_days:
+        description: "Minimum age (days)"
+        type: number
+        default: 2
+      extra_excludes:
+        description: "Comma-separated branch names to exclude"
+        type: string
+        default: ""
+
+permissions:
+  contents: write   # Required to delete refs
+  pull-requests: read
 
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write    # Needed to delete branches via GitHub API
-
+    env:
+      MIN_AGE_DAYS: "2"
+      EXTRA_EXCLUDES: ""
+      DRY_RUN: "false"
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout (shallow)
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
 
-      - name: Delete branches older than 2 days (except main & gh-pages)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "Fetching all remote branches..."
-          git fetch --prune
+      - name: Delete remote branches older than N days (excluding main/gh-pages)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const core = require('@actions/core');
+            const github = require('@actions/github');
 
-          # Get all branches except main and gh-pages
-          for branch in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin/ | grep -vE '^(main|gh-pages)$'); do
-            branch_name=$(echo $branch | sed 's|origin/||')
+            const { context } = github;
 
-            # Get last commit date (ISO format)
-            last_commit_date=$(git log -1 --format=%ci origin/$branch_name)
-            last_commit_epoch=$(date -d "$last_commit_date" +%s)
-            now_epoch=$(date +%s)
-            age_days=$(( (now_epoch - last_commit_epoch) / 86400 ))
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
 
-            if [ $age_days -ge 2 ]; then
-              echo "🗑️ Deleting branch '$branch_name' (last commit $age_days days ago)..."
-              git push origin --delete "$branch_name"
-            else
-              echo "✅ Keeping branch '$branch_name' (last commit $age_days days ago)"
-            fi
-          done
+            // Inputs (with fallback for scheduled runs)
+            const dryRun = (core.getInput('dry_run') || process.env.DRY_RUN || 'false') === 'true';
+            const minAgeDays = parseInt(core.getInput('min_age_days') || process.env.MIN_AGE_DAYS || '2', 10);
+            const extraExcludesInput = (core.getInput('extra_excludes') || process.env.EXTRA_EXCLUDES || '').trim();
+
+            const cutoffMs = minAgeDays * 24 * 60 * 60 * 1000;
+            const now = new Date();
+
+            // Base exclusions
+            const exclude = new Set(['main', 'gh-pages']);
+
+            // Add repository default branch (if it is not named 'main')
+            const { data: repoData } = await github.rest.repos.get({ owner, repo });
+            exclude.add(repoData.default_branch);
+
+            // Extra exclusions from input
+            if (extraExcludesInput) {
+              for (const name of extraExcludesInput.split(',').map(s => s.trim()).filter(Boolean)) {
+                exclude.add(name);
+              }
+            }
+
+            // Fetch all branches (excluding protected=false to avoid unnecessary failures, but handling errors anyway)
+            const branches = await github.paginate(
+              github.rest.repos.listBranches,
+              { owner, repo, per_page: 100 }
+            );
+
+            const deleted = [];
+            const skipped = [];
+
+            for (const b of branches) {
+              const name = b.name;
+
+              // Skip exclusions
+              if (exclude.has(name)) {
+                skipped.push({ name, reason: 'excluded' });
+                continue;
+              }
+
+              // Latest commit (sha + date)
+              const sha = b.commit?.sha;
+              if (!sha) {
+                skipped.push({ name, reason: 'no-sha' });
+                continue;
+              }
+
+              const { data: commit } = await github.rest.repos.getCommit({ owner, repo, ref: sha });
+              const dateStr =
+                commit.commit.author?.date ||
+                commit.commit.committer?.date;
+
+              if (!dateStr) {
+                skipped.push({ name, reason: 'no-date' });
+                continue;
+              }
+
+              const ageMs = now - new Date(dateStr);
+
+              if (ageMs > cutoffMs) {
+                if (dryRun) {
+                  skipped.push({ name, reason: `dry-run (age ${Math.floor(ageMs/86400000)}d)` });
+                  continue;
+                }
+                try {
+                  await github.rest.git.deleteRef({ owner, repo, ref: `heads/${name}` });
+                  deleted.push({ name, ageDays: Math.floor(ageMs / 86400000) });
+                } catch (e) {
+                  skipped.push({ name, reason: `delete-failed: ${e.status || ''} ${e.message}` });
+                }
+              } else {
+                skipped.push({ name, reason: 'recent' });
+              }
+            }
+
+            // Write a summary in the job summary
+            await core.summary
+              .addHeading('Clean up old branches')
+              .addRaw(`Minimum age: **${minAgeDays} days**  \nDry-run: **${dryRun ? 'yes' : 'no'}**`)
+              .addHeading('Deleted', 2)
+              .addTable([['Branch', 'Age (days)'], ...deleted.map(d => [d.name, String(d.ageDays)])])
+              .addHeading('Skipped', 2)
+              .addTable([['Branch', 'Reason'], ...skipped.map(s => [s.name, s.reason])])
+              .write();
+
+            core.setOutput('deleted_count', deleted.length);
+            console.log('Deleted:', deleted);
+            console.log('Skipped:', skipped);
