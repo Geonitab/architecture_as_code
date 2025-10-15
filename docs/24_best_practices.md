@@ -6,7 +6,7 @@ Architecture as Code practices evolve rapidly as teams balance platform stabilit
 
 The following mind maps present the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements without treating topics in isolation.
 
-![Figure 24.2 – Code organization and module design](images/mindmap_22a_code_organization.png)
+![Figure 24.2 – Code organisation and module design](images/mindmap_22a_code_organization.png)
 
 *Figure 24.2 shows best practices for repository structure, module design, and versioning strategies.*
 
@@ -16,7 +16,7 @@ The following mind maps present the interconnected practice areas that underpin 
 
 ![Figure 24.4 – Performance and scaling strategies](images/mindmap_22c_performance.png)
 
-*Figure 24.4 demonstrates optimization, multi-region deployment, and observability practices.*
+*Figure 24.4 demonstrates optimisation, multi-region deployment, and observability practices.*
 
 ![Figure 24.5 – Governance and policy frameworks](images/mindmap_22d_governance.png)
 

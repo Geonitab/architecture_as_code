@@ -25,9 +25,9 @@ each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]
 
 ## CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}
 
-This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for organizations.
+This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for organisations.
 
-### 05_CODE_1: GDPR-compliant CI/CD Pipeline for organizations
+### 05_CODE_1: GDPR-compliant CI/CD Pipeline for organisations
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
@@ -101,7 +101,7 @@ jobs:
           echo "✅ GDPR compliance check genomförd"
 ```
 
-### 05_CODE_2: Jenkins Pipeline for organizations with GDPR compliance
+### 05_CODE_2: Jenkins Pipeline for organisations with GDPR compliance
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
@@ -675,9 +675,9 @@ func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
 
 Architecture as Code-principerna within This area#cloudformation-Architecture as Code}
 
-This sektion contains CloudFormation templates for AWS-infrastructure adapted for organizations.
+This sektion contains CloudFormation templates for AWS-infrastructure adapted for organisations.
 
-### 07_CODE_1: VPC Setup for organizations with GDPR compliance
+### 07_CODE_1: VPC Setup for organisations with GDPR compliance
 *Refereras from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
@@ -837,7 +837,7 @@ class ComprehensiveIaCTesting:
 
 This sektion contains konfigurationsfiler for different tools and services.
 
-### 22_CODE_2: Governance policy configuration for organizations
+### 22_CODE_2: Governance policy configuration for organisations
 *Refereras from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```yaml
@@ -2097,9 +2097,9 @@ jobs:
 ## Chapter 15 Reference Implementations
 
 ### 15_CODE_1: Cost-aware Terraform infrastructure configuration {#15_code_1}
-*Referenced from Chapter 15: [Cost Optimization and Resource Management](15_cost_optimization.md)*
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
 
-This Terraform configuration demonstrates comprehensive cost optimization strategies including budget management, cost allocation tagging, and intelligent instance type selection using spot instances and mixed instance policies.
+This Terraform configuration demonstrates comprehensive cost optimisation strategies including budget management, cost allocation tagging, and intelligent instance type selection using spot instances and mixed instance policies.
 
 ```hcl
 # cost_optimized_infrastructure.tf
@@ -2228,8 +2228,8 @@ resource "aws_autoscaling_group" "cost_aware" {
 }
 ```
 
-### 15_CODE_2: Kubernetes cost optimization manifests {#15_code_2}
-*Referenced from Chapter 15: [Cost Optimization and Resource Management](15_cost_optimization.md)*
+### 15_CODE_2: Kubernetes cost optimisation manifests {#15_code_2}
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
 
 These Kubernetes manifests demonstrate resource quotas, limit ranges, and autoscaling configurations for cost-effective workload management.
 
@@ -2336,8 +2336,8 @@ spec:
         periodSeconds: 60
 ```
 
-### 15_CODE_3: AWS cost monitoring and optimization automation {#15_code_3}
-*Referenced from Chapter 15: [Cost Optimization and Resource Management](15_cost_optimization.md)*
+### 15_CODE_3: AWS cost monitoring and optimisation automation {#15_code_3}
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
 
 This Python script provides automated cost analysis, rightsizing recommendations, and identification of unused resources for AWS environments.
 

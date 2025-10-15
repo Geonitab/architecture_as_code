@@ -24,7 +24,7 @@ Before diving into Structurizr itself, understanding the C4 model is essential a
 
 ### Four Levels of Abstraction
 
-The C4 model provides a hierarchical approach to software architecture diagrams, organized across four levels:
+The C4 model provides a hierarchical approach to software architecture diagrams, organised across four levels:
 
 | Level | Purpose | Audience | Abstraction |
 |-------|---------|----------|-------------|
@@ -287,9 +287,9 @@ docker run -it --rm -p 8080:8080 \
 
 This launches a local web server where you can view diagrams generated from your DSL files.
 
-### File Organization
+### File Organisation
 
-Organize Structurizr files alongside your codebase:
+Organise Structurizr files alongside your codebase:
 
 ```
 project/
@@ -1012,13 +1012,13 @@ views {
     styles {
         element "Person" {
             shape person
-            background #FF6B35  # Brand color
+            background #FF6B35  # Brand colour
             color #FFFFFF
             fontSize 24
         }
         
         element "Container" {
-            background #004E89  # Brand color
+            background #004E89  # Brand colour
             color #FFFFFF
             fontSize 18
             shape roundedbox
@@ -1026,7 +1026,7 @@ views {
         
         element "Database" {
             shape cylinder
-            background #1A1A2E  # Brand color
+            background #1A1A2E  # Brand colour
         }
         
         relationship "Relationship" {
@@ -1472,11 +1472,11 @@ The C4 model provides the conceptual framework, while Structurizr DSL offers the
 
 While there's a learning curve to master the DSL syntax and modeling concepts, the investment pays dividends through improved architecture consistency, team collaboration, and documentation quality. Combined with the practices covered in earlier chapters (ADRs, version control, automation), Structurizr enables a comprehensive Architecture as Code workflow.
 
-The next chapters explore how to extend these foundations into containerization and orchestration, where architecture definitions can directly inform deployment and operational patterns.
+The next chapters explore how to extend these foundations into containerisation and orchestration, where architecture definitions can directly inform deployment and operational patterns.
 
 ## Sources
 
-- Brown, S. "The C4 model for visualizing software architecture." https://c4model.com
+- Brown, S. "The C4 model for visualising software architecture." https://c4model.com
 - Structurizr. "Structurizr DSL documentation." https://github.com/structurizr/dsl
 - Structurizr. "Structurizr Lite." https://structurizr.com/help/lite
 - Brown, S. "Software Architecture for Developers." Leanpub, 2024.

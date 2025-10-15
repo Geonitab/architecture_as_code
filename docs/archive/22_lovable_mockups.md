@@ -1,18 +1,18 @@
-# chapter 20: Use Lovable to create mockups for Swedish organizations
+# chapter 20: Use Lovable to create mockups for Swedish organisations
 
 ![Lovable Workflow Diagram](images/diagram_21_chapter20.png)
 
 ## Inledning to Lovable
 
-Lovable is a AI-driven utvecklingsplattform as revolutionerar how Swedish organizations can create interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb development of användargränssnitt as is anpassade for svenska compliance requirements and användarforväntningar.
+Lovable is a AI-driven utvecklingsplattform as revolutionerar how Swedish organisations can create interaktiva mockups and prototyper. by kombinera naturlig språkbehandling with kodgenerering enables Lovable snabb development of användargränssnitt as is anpassade for svenska compliance requirements and användarforväntningar.
 
-For Swedish organizations means This a unique possibility to:
+For Swedish organisations means This a unique possibility to:
 - Accelerera prototyputveckling with fokus at svenska språket and cultural context
 - Ensure compliance from beginning of designprocessen
 - Integrera with svenska e-legitimationstjänster redan in mockup-fasen
 - Skapa användargränssnitt as follows svenska togänglighetsstandarder
 
-## step-for-step guide for implementation in Swedish organizations
+## step-for-step guide for implementation in Swedish organisations
 
 ### Fas 1: Förberedelse and uppsättning
 
@@ -230,7 +230,7 @@ financial_service:
       retention_period: "5_years"
 ```
 
-## Compliance-fokus for Swedish organizations
+## Compliance-fokus for Swedish organisations
 
 ### GDPR-implementation in Lovable mockups
 
@@ -386,7 +386,7 @@ jobs:
           npm run check:data-protection
 ```
 
-### Performance optimization for svenska user
+### Performance optimisation for svenska user
 
 ```typescript
 // performance-optimization.ts
@@ -421,8 +421,8 @@ export class SwedishPerformanceOptimizer {
 ## Summary and next step
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Lovable offers Swedish organizations a kraftfull plattform to create compliance-withvetna mockups and prototyper. by integrera svenska e-legitimationstjänster, implement WCAG 2.1 AA-standarder and follow GDPR-guidelines from beginning, can organisationer:
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organisations.
+Lovable offers Swedish organisations a kraftfull plattform to create compliance-withvetna mockups and prototyper. by integrera svenska e-legitimationstjänster, implement WCAG 2.1 AA-standarder and follow GDPR-guidelines from beginning, can organisationer:
 
 1. **Accelerera development process** with AI-driven kodgenerering
 2. **Ensure compliance** redan in mockup-fasen
@@ -442,4 +442,4 @@ Lovable offers Swedish organizations a kraftfull plattform to create compliance-
 - [E-legitimationsnämnden](https://www.elegnamnden.se/)
 - [WCAG 2.1 AA Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 
-by follow This guide can Swedish organizations effektivt use Lovable to create mockups as not only is funktionella and användarvänliga, without also meets all relevanta svenska and europeiska compliance-requirements.
+by follow This guide can Swedish organisations effektivt use Lovable to create mockups as not only is funktionella and användarvänliga, without also meets all relevanta svenska and europeiska compliance-requirements.

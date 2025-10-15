@@ -52,7 +52,7 @@ This book follows a deliberate progression that mirrors the typical Architecture
 
 **Part IV: Delivery and Operations** bridges technical capabilities with business outcomes through testing strategies, practical implementation patterns, cost optimisation, and migration approaches.
 
-**Part V: Organization and Leadership** examines the organisational transformation, team structures, cultural shifts, and leadership practices that enable sustainable Architecture as Code adoption.
+**Part V: Organisation and Leadership** examines the organisational transformation, team structures, cultural shifts, and leadership practices that enable sustainable Architecture as Code adoption.
 
 **Part VI: Experience and Best Practices** synthesises lessons learned from real-world implementations, exploring how different "as Code" disciplines work together and distilling proven patterns across diverse contexts.
 

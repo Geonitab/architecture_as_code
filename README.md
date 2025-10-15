@@ -23,7 +23,7 @@ The book explores how to treat architecture and infrastructure work as software 
 | Part 2 – Architecture Platform | 5-8 | Automation tooling, cloud environments, containerisation, and microservices foundations |
 | Part 3 – Security & Governance | 9-12 | Security automation, policy enforcement, governance models, and compliance obligations |
 | Part 4 – Delivery & Operations | 13-16 | Testing strategies, delivery pipelines, cost management, and migration playbooks |
-| Part 5 – Organization & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
+| Part 5 – Organisation & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
 | Part 6 – Experience & Best Practices | 22-24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
 | Part 7 – Future & Wrap-up | 25-27 | Strategic outlook, forward-looking development plans, and closing guidance |【F:docs/book_structure.md†L7-L120】
 
@@ -110,14 +110,15 @@ Key workflows include:
 
 ## 📝 Contributing
 
-1. Update the relevant markdown chapter(s) under `docs/` or supporting automation scripts.
-2. Regenerate content and verify outputs:
+1. Review `docs/STYLE_GUIDE.md` to confirm spelling, grammar, and tone expectations.
+2. Update the relevant markdown chapter(s) under `docs/` or supporting automation scripts.
+3. Regenerate content and verify outputs:
    ```bash
    python3 generate_book.py
    cd docs && ./build_book.sh
    ```
-3. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
-4. Commit changes with clear messages and submit a pull request following repository guidelines.
+4. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
+5. Commit changes with clear messages and submit a pull request following repository guidelines.
 
 ## 🔍 Link Verification
 
@@ -146,4 +147,3 @@ The Architecture as Code book workshop maintains the repository, coordinates rel
 ## 🌍 Language
 
 Manuscript chapters and automation output are maintained in English to streamline translation workflows and international collaboration.【F:docs/book_structure.md†L1-L159】【F:AGENTS.md†L115-L123】
-
