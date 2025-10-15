@@ -16,6 +16,8 @@ Artificial intelligence transforms reactive infrastructure into proactive ecosys
 
 Advanced AI services extend optimisation across performance, cost, resilience, and environmental impact. These services ingest observability data, apply reinforcement learning or optimisation heuristics, and propose or execute configuration changes. The result is infrastructure that adjusts to business cycles, regulatory obligations, and sustainability targets without sacrificing stability or transparency.
 
+European organisations operate within a structured regulatory environment shaped by the EU AI Act, which establishes a risk-based framework for artificial intelligence systems. Architecture as Code implementations must account for transparency requirements, human oversight mechanisms, and documentation obligations prescribed by the regulation. Organisations participating in EU-funded programmes such as Horizon Europe and the Digital Europe Programme gain access to collaborative research initiatives, shared datasets, and interoperable AI platforms that accelerate responsible innovation whilst maintaining compliance with European ethical standards.
+
 ### Quantum Computing and Security Evolution
 
 The emergence of quantum capabilities necessitates a re-evaluation of cryptographic choices and automation practices. Post-quantum algorithms must become standard components of infrastructure definitions to ensure long-term resilience. During the transition, hybrid patterns that combine classical and quantum-safe methods will allow organisations to protect sensitive workloads while migration plans mature.
@@ -98,6 +100,10 @@ By combining proven practices with emerging innovations, Architecture as Code ev
 
 ## References
 
+- European Commission. "The EU Artificial Intelligence Act." European Union Law, 2024.
+- European Commission. "Horizon Europe: The EU Framework Programme for Research and Innovation." EU Publications, 2024.
+- European Commission. "Digital Europe Programme: Shaping Europe's Digital Future." EU Digital Strategy, 2024.
+- GAIA-X. "A Federated Secure Data Infrastructure for Europe." GAIA-X European Association for Data and Cloud, 2024.
 - McKinsey Global Institute. "The Future of Infrastructure." McKinsey & Company.
 - MIT Technology Review. "Quantum Computing and Cryptography." MIT Press.
 - IEEE Computer Society. "Edge Computing and 5G Integration." IEEE Publications.
