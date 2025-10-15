@@ -8,11 +8,11 @@
 
 Migration from traditional, manuellt konfigurerad infrastructure to Architecture as Code represents a of the most critical transformationerna for modern IT-organisationer. This process requires not endast technical omStructureering without also organisatorisk change and cultural anpassning to code-based way of working.
 
-Swedish organisations face unique migreringsChallenges through legacy-systems as developed over decennier, regulatory requirements as begränsar forändringstakt, and need of to balance innovation with operational stability. Successful migration requires comprehensive planning as minimizes risker while The enables snabb value realization.
+European organisations face unique migreringsChallenges through legacy-systems as developed over decennier, regulatory requirements as begränsar forändringstakt, and need of to balance innovation with operational stability. Successful migration requires comprehensive planning as minimizes risker while The enables snabb value realization.
 
 Modern migrationsstrategier must accommodera hybrid scenarios where legacy infrastructure coexisterar with Architecture as Code-managed resources under extended transition periods. This hybrid approach enables gradual migration as reduces business risk while the enables imwithiate benefits from Architecture as Code adoption.
 
-Cloud-native migration pathways offers opportuniteter to modernisera architecture while infrastructure management are codified. Svenska companies can leverage This transformation to implement sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
+Cloud-native migration pathways offers opportuniteter to modernisera architecture while infrastructure management are codified. European companies can leverage This transformation to implement sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
 
 ## Assessment and planning faser
 
@@ -20,7 +20,7 @@ Comprehensive infrastructure assessment forms foundationen for successful Archit
 
 Discovery automation tools that AWS Application Discovery Service, Azure Migrate and Google Cloud migration tools can accelerate assessment processen through automated resource inventory and dependency detection. These tools genererar data as can inform Architecture as Code template generation and migration prioritization.
 
-Risk assessment must identify critical systems, single points of failure and compliance dependencies as affects migration approach. Svenska financial institutions and healthcare organisations must particularly consider regulatory implications and downtime restrictions as affects migration windows.
+Risk assessment must identify critical systems, single points of failure and compliance dependencies as affects migration approach. European financial institutions and healthcare organisations must particularly consider regulatory implications and downtime restrictions as affects migration windows.
 
 Migration wave planning balancerar technical dependencies with business priorities to minimize risk and maximize value realization. Pilot projects with non-critical systems enables team learning and process refinement before critical systems migration påbörjas.
 
@@ -37,7 +37,7 @@ Migration wave planning balancerar technical dependencies with business prioriti
 
 Infrastructure inventory automation through tools that Terraform import, CloudFormation drift detection and Azure Resource Manager templates enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations as require refinement but accelerate kodification process.
 
-Template standardisation through reusable modules and organisational patterns ensures consistency across migrated infrastructure while the reduces future maintenance overhead. Swedish government agencies has successfully implemented standardized Architecture as Code templates for common infrastructure patterns across different departments.
+Template standardisation through reusable modules and organisational patterns ensures consistency across migrated infrastructure while the reduces future maintenance overhead. European government agencies have successfully implemented standardized Architecture as Code templates for common infrastructure patterns across different departments.
 
 Configuration drift elimination through Architecture as Code adoption requires systematic reconciliation between existing resource configurations and desired Architecture as Code state. Gradual enforcement of Architecture as Code-managed configuration ensures infrastructure stability while the eliminates manual configuration inconsistencies.
 
@@ -47,7 +47,7 @@ Version control integration for infrastructure changes enables systematic tracki
 
 Skills development programs must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows. Training curricula should encompass Infrastructure as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.
 
-Organisational structure evolution from traditional silos to cross-functional teams enables effective Architecture as Code adoption. Svenska telecommunications companies that Telia has successfully transitioned from separate development and operations teams to integrated DevOps teams as manage architecture as code.
+Organisational structure evolution from traditional silos to cross-functional teams enables effective Architecture as Code adoption. European telecommunications companies have successfully transitioned from separate development and operations teams to integrated DevOps teams as manage architecture as code.
 
 Cultural transformation from manual processes to automated workflows requires change management programs as address resistance and promotes automation adoption. Success stories from early adopters can motivate broader organisational acceptance of Architecture as Code practices.
 
@@ -69,7 +69,7 @@ class InfrastructureMigrationAssessment:
     Automatiserad bedömning of existing infrastruktur for architecture as code-migration
     """
     
-    def __init__(self, region='eu-north-1'):
+    def __init__(self, region='eu-west-1'):
         self.ec2 = boto3.client('ec2', region_name=region)
         self.rds = boto3.client('rds', region_name=region)
         self.elb = boto3.client('elbv2', region_name=region)
@@ -157,7 +157,7 @@ terraform {{
 }}
 
 provider "aws" {{
-  region = "eu-north-1"  # Stockholm for Swedish organizations
+  region = "eu-west-1"  # Configurable for any EU region
 }}
 
 """.format(
@@ -247,7 +247,7 @@ resource "aws_instance" "migrated_instance_{in}" {{
         return timeline
 
 def generate_migration_playbook(assessment_results: Dict) -> str:
-    """Generera comprehensive migration playbook for Swedish organizations"""
+    """Generera comprehensive migration playbook for European organizations"""
     
     playbook = f"""
 # architecture as code Migration Playbook for {assessment_results.get('organization_name', 'Organization')}
@@ -264,7 +264,7 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] architecture as code grundutbildning for all teammedlemmar
 - [ ] Terraform/CloudFormation hands-on workshops
 - [ ] Git workflows for infrastructure management
-- [ ] Svenska compliance-requirements (GDPR, MSB)
+- [ ] EU compliance-requirements (GDPR, data sovereignty)
 
 ### Tool Setup
 - [ ] Terraform/CloudFormation development environment
@@ -320,15 +320,15 @@ def generate_migration_playbook(assessment_results: Dict) -> str:
 - [ ] Tool evaluation and updates
 - [ ] Compliance monitoring automation
 
-## Svenska Compliance Considerations
+## EU Compliance Considerations
 
 ### GDPR Requirements
-- [ ] Data residency in svenska/EU regioner
+- [ ] Data residency in EU regioner
 - [ ] Encryption at rest and in transit
 - [ ] Access logging and audit trails
 - [ ] Data retention policy implementation
 
-### MSB Security Requirements
+### EU Security Requirements
 - [ ] Network segmentation implementation
 - [ ] Incident response procedures
 - [ ] Backup and disaster recovery
@@ -469,7 +469,7 @@ Resources:
     Properties:
       VpcId: !Ref ExistingVPC
       CidrBlock: '10.0.1.0/24'  # Uppdatera with faktiskt subnet CIDR
-      AvailabilityZone: 'eu-north-1a'  # Stockholm region
+      AvailabilityZone: !Select [0, !GetAZs '']  # First available AZ in selected region
       MapPublicIpOnLaunch: false
       Tags:
         - Key: Name
@@ -513,7 +513,7 @@ set -e
 
 PROJECT_NAME=${1:-"migration-test"}
 ENVIRONMENT=${2:-"staging"}
-REGION=${3:-"eu-north-1"}
+REGION=${3:-"eu-west-1"}
 
 echo "Starting architecture as code migration testing for projekt: $PROJECT_NAME"
 echo "Environment: $ENVIRONMENT"
@@ -597,7 +597,7 @@ cat > /tmp/compliance-test.py << 'EOF'
 import boto3
 import json
 
-def validate_tagging_compliance(region='eu-north-1'):
+def validate_tagging_compliance(region='eu-west-1'):
     """Validate to all migrerade resurser has korrekta tags"""
     ec2 = boto3.client('ec2', region_name=region)
     
@@ -656,7 +656,7 @@ aws cloudwatch get-metric-statistics \
     --end-time $(date -u +%Y-%m-%dT%H:%M:%S) \
     --period 300 \
     --statistics Average \
-    --region eu-north-1 > "$METRICS_FILE"
+    --region $REGION > "$METRICS_FILE"
 
 # Analysera metrics for avvikelser
 AVERAGE_CPU=$(jq '.Datapoints | map(.Average) | add / length' "$METRICS_FILE")
@@ -705,6 +705,6 @@ Part V examines the organisational transformation that must accompany technical 
 - AWS. "Large-Scale Migration and Modernisation Guide." Amazon Web Services, 2023.
 - Microsoft. "Azure Migration Framework and Architecture as Code best practices." Microsoft Azure Documentation, 2023.
 - Google Cloud. "Infrastructure Migration Strategies." Google Cloud Architecture Centre, 2023.
-- Gartner. "Infrastructure Migration Trends in Nordic Countries." Gartner Research, 2023.
+- Gartner. "Infrastructure Migration Trends in European Markets." Gartner Research, 2023.
 - ITIL Foundation. "IT Service Management for Cloud Migration." AXELOS, 2023.
-- Swedish Government. "Digital Transformation Guidelines for Public Sector." Digitaliseringsstyrelsen, 2023.
+- European Commission. "Digital Transformation Guidelines for Public Sector." EU Digital Strategy, 2023.
