@@ -18,7 +18,7 @@ Resolve the temporal mismatch between 2024-dated citations and the book's implie
 - references
 
 ## Assignees
-- @editor-team
+- @copilot
 
 ## Milestone
 - v1.1
