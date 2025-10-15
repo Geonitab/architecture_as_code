@@ -93,7 +93,7 @@ jobs:
           fi
 
       - name: Create architecture response pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         if: ${{ always() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
