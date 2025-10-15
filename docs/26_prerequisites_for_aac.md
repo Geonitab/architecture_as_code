@@ -4,7 +4,7 @@ Successful Architecture as Code (AaC) programmes are never accidents. They emerg
 
 ## Why Readiness Matters
 
-The caution from [Chapter 14](14_practical_implementation.md) still stands: automation without alignment amplifies chaos. A readiness review slows the rush to tool selection so leaders can prove, rather than assume, that the organisation can absorb executable architecture. It prevents brittle deployments that clash with the operational expectations described in [Chapter 05](05_automation_devops_cicd.md), protects the psychological safety emphasised in [Chapter 17](17_organizational_change.md), and keeps investment decisions honest in line with [Chapter 15](15_cost_optimization.md). Readiness is therefore a contract—when the prerequisites are visible, teams earn the right to automate architectural intent.
+The caution from [Chapter 14](14_practical_implementation.md) still stands: automation without alignment amplifies chaos. A readiness review slows the rush to tool selection. Leaders can then prove, rather than assume, that the organisation can absorb executable architecture. This review prevents brittle deployments that clash with the operational expectations described in [Chapter 05](05_automation_devops_cicd.md). It also protects the psychological safety emphasised in [Chapter 17](17_organizational_change.md), and keeps investment decisions honest in line with [Chapter 15](15_cost_optimization.md). Readiness is therefore a contract—when the prerequisites are visible, teams earn the right to automate architectural intent.
 
 ## Cultural Foundations
 
