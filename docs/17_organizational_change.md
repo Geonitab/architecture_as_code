@@ -33,7 +33,7 @@ Effective transformation programmes address multiple dimensions simultaneously r
 
 ![Figure 17.2 – Culture and cross-functional collaboration](images/mindmap_17a_culture_collaboration.png)
 
-*The first mind map shows how cultural foundations and cross-functional team structures create the basis for organizational change.*
+*The first mind map shows how cultural foundations and cross-functional team structures create the basis for organisational change.*
 
 ![Figure 17.3 – Capability development and role evolution](images/mindmap_17b_capability_roles.png)
 
@@ -90,6 +90,6 @@ By linking cultural commitments with transparent measurement and clear governanc
 - Puppet. "State of DevOps Report." Puppet Labs, 2023.
 - Google. "DORA State of DevOps Research." Google Cloud, 2023.
 - Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.
-- Team Topologies. "Organizing Business and Technology Teams." IT Revolution Press, 2023.
-- Accelerate. "Building High Performing Technology Organizations." IT Revolution Press, 2023.
-- McKinsey & Company. "Organizational Transformation Best Practices." McKinsey Digital, 2023.
+- Team Topologies. "Organising Business and Technology Teams." IT Revolution Press, 2023.
+- Accelerate. "Building High Performing Technology Organisations." IT Revolution Press, 2023.
+- McKinsey & Company. "Organisational Transformation Best Practices." McKinsey Digital, 2023.

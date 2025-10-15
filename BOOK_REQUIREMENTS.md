@@ -25,7 +25,7 @@ book:
       area: "System Development"
       required: true
     - filename: "07_containerization.md"
-      title: "Containerization and Orchestration"
+      title: "Containerisation and Orchestration"
       area: "Architecture"
       required: true
     - filename: "08_microservices.md"
@@ -246,7 +246,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | 03 | 03_version_control.md | Version Control and Code Structure | System Development | Yes |
 | 04 | 04_adr.md | Architecture Decision Records (ADR) | Basic Concepts | Yes |
 | 05 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Infrastructure as Code | System Development | Yes |
-| 07 | 07_containerization.md | Containerization and Orchestration | Architecture | Yes |
+| 07 | 07_containerization.md | Containerisation and Orchestration | Architecture | Yes |
 | 08 | 08_microservices.md | Microservices and Distributed Systems | Architecture | Yes |
 | 9A | 09a_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security | Yes |
 | 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security | Yes |

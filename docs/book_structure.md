@@ -1,6 +1,6 @@
 # Architecture as Code - Book Structure
 
-This document describes the logical structure for the book "Architecture as Code" which is organized into seven narrative parts plus appendices. Thirty-one chapters build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
+This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus appendices. Thirty-one chapters build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
 
 ## Table of Contents
 
@@ -14,10 +14,10 @@ Core technical building blocks for Architecture as Code implementations
 Security, policy automation, governance, and compliance as code
 
 ### Part 4: Delivery & Operations (Chapters 13-16)
-Testing, delivery practices, cost optimization, and migration strategies
+Testing, delivery practices, cost optimisation, and migration strategies
 
-### Part 5: Organization & Leadership (Chapters 17-21)
-Organizational change, team design, management models, and collaborative delivery
+### Part 5: Organisation & Leadership (Chapters 17-21)
+Organisational change, team design, management models, and collaborative delivery
 
 ### Part 6: Experience & Best Practices (Chapters 22-24)
 Cross-disciplinary collaboration and codified best practices
@@ -50,8 +50,8 @@ Reference material, author information, and technical enablers
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
-| 6 | `06_structurizr.md` | Structurizr: Architecture Modeling as Code | Using Structurizr DSL and C4 model for architecture visualization and documentation |
-| 7 | `07_containerization.md` | Containerization and Orchestration as Code | Container-based Architecture as Code |
+| 6 | `06_structurizr.md` | Structurizr: Architecture Modeling as Code | Using Structurizr DSL and C4 model for architecture visualisation and documentation |
+| 7 | `07_containerization.md` | Containerisation and Orchestration as Code | Container-based Architecture as Code |
 
 ### Part 3: Security & Governance (Chapters 9-12)
 
@@ -67,26 +67,26 @@ Reference material, author information, and technical enablers
 
 ### Part 4: Delivery & Operations (Chapters 13-16)
 
-**Focus:** Testing strategies, delivery patterns, financial optimization, and migration approaches
+**Focus:** Testing strategies, delivery patterns, financial optimisation, and migration approaches
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 13 | `13_testing_strategies.md` | Testing Strategies for Infrastructure Code | Testing of IaC and architecture code |
 | 14 | `14_practical_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
-| 15 | `15_cost_optimization.md` | Cost Optimization and Resource Management | Economic optimization of resources |
+| 15 | `15_cost_optimization.md` | Cost Optimisation and Resource Management | Economic optimisation of resources |
 | 16 | `16_migration.md` | Migration from Traditional Infrastructure | Migration strategies and best practices |
 
-### Part 5: Organization & Leadership (Chapters 17-21)
+### Part 5: Organisation & Leadership (Chapters 17-21)
 
-**Focus:** Organizational transformation, leadership models, and digitally enabled collaboration
+**Focus:** Organisational transformation, leadership models, and digitally enabled collaboration
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 17 | `17_organizational_change.md` | Organizational Change and Team Structures | Organizational development for IaC |
-| 18 | `18_team_structure.md` | Team Structure and Competency Development for IaC | Team organization and competency development |
+| 17 | `17_organizational_change.md` | Organisational Change and Team Structures | Organisational development for IaC |
+| 18 | `18_team_structure.md` | Team Structure and Competency Development for IaC | Team organisation and competency development |
 | 19 | `19_management_as_code.md` | Management as Code | Leadership practices encoded in collaborative tooling |
 | 20 | `20_ai_agent_team.md` | AI Agent Team for Architecture as Code Initiatives | Structure, roles, and processes for virtual agent teams |
-| 21 | `21_digitalization.md` | Digitalization through Code-based Infrastructure | Digital transformation through IaC |
+| 21 | `21_digitalization.md` | Digitalisation through Code-based Infrastructure | Digital transformation through IaC |
 
 ### Part 6: Experience & Best Practices (Chapters 22-24)
 
@@ -129,7 +129,7 @@ The `archive/` folder stores markdown chapters that have been retired from the a
 
 ---
 
-## Book Organization Principles
+## Book Organisation Principles
 
 The book's seven-part structure follows a logical progression:
 
@@ -137,7 +137,7 @@ The book's seven-part structure follows a logical progression:
 2. **Part 2: Architecture Platform** – Builds the technical capabilities required for codified architecture
 3. **Part 3: Security & Governance** – Ensures safety, control, and regulatory alignment
 4. **Part 4: Delivery & Operations** – Provides the practices needed to deliver and operate architecture as code
-5. **Part 5: Organization & Leadership** – Aligns teams, leadership, and collaboration models with the new operating model
+5. **Part 5: Organisation & Leadership** – Aligns teams, leadership, and collaboration models with the new operating model
 6. **Part 6: Experience & Best Practices** – Shares cross-disciplinary experiences and lessons learned
 7. **Part 7: Future & Wrap-up** – Explores the future direction and concludes the narrative, supported by appendices
 
@@ -182,7 +182,7 @@ This book is intended for:
 - DevOps engineers and infrastructure specialists
 - Developers working with cloud technologies
 - Technology leaders and decision makers
-- Project managers for digitalization initiatives
+- Project managers for digitalisation initiatives
 
 ## Authors and Contributors
 

@@ -4,9 +4,9 @@
 
  All elements are designed to improve readability while maintaining the professional theme defined in `BRAND_GUIDELINES.md`.
 
-## Color Scheme Alignment
+## Colour Scheme Alignment
 
-All visual elements use following color palette:
+All visual elements use following colour palette:
 
 - **Primary Blue** (`#1e3a8a`): Main headings, borders, primary elements
 - **Light Blue** (`#3b82f6`): Accents, interactive elements, highlights  
@@ -22,7 +22,7 @@ All visual elements use following color palette:
 Location: `docs/mermaid-kvadrat-theme.json`
 
 The Mermaid diagrams now use a custom Kvadrat theme that ensures:
-- Consistent brand colors across all diagrams
+- Consistent brand colours across all diagrams
 - Professional typography using the Inter font family
 - Accessible contrast ratios that satisfy WCAG AA for text on blue backgrounds
 - Unified visual language for both flowcharts and sequence diagrams
@@ -56,8 +56,8 @@ These classes are included directly in the Mermaid theme so the styling is avail
 ### Diagram Enhancements
 All Mermaid diagrams have been enhanced with:
 - **Icons and Emojis**: Visual indicators for different types of elements (👩‍💻 for developers, 🚀 for deployment, etc.)
-- **Subgraph Organization**: Logical grouping of related elements
-- **Color Coding**: Different colors for different types of processes or states
+- **Subgraph Organisation**: Logical grouping of related elements
+- **Colour Coding**: Different colours for different types of processes or states
 - **Professional Styling**: Consistent with Kvadrat brand guidelines
 
 Example diagrams enhanced:
@@ -81,7 +81,7 @@ Enhanced chapter headers with:
 
 Creates elegant section separators with:
 - Horizontal blue lines
-- Graduated dots in Kvadrat colors
+- Graduated dots in Kvadrat colours
 - Consistent spacing
 
 ### Enhanced Callout Boxes
@@ -129,7 +129,7 @@ Professional sidebar boxes for:
 Enhanced with:
 - Blue left border (3pt thickness)
 - Light gray background
-- Syntax highlighting in Kvadrat colors
+- Syntax highlighting in Kvadrat colours
 - Professional spacing and margins
 
 #### Terminal Blocks
@@ -145,8 +145,8 @@ Enhanced with:
 
 Features:
 - Blue table headers with white text
-- Alternating row colors for readability
-- Professional borders using Kvadrat colors
+- Alternating row colours for readability
+- Professional borders using Kvadrat colours
 - Consistent spacing and typography
 
 #### Table Styling Commands
@@ -166,7 +166,7 @@ All icons are created using TikZ for consistent quality:
 
 ### Icon design Principles
 - Consistent 12pt circle diameter
-- High contrast colors for accessibility
+- High contrast colours for accessibility
 - Simple, recognizable symbols
 - Professional appearance suitable for print and digital
 
@@ -223,7 +223,7 @@ The enhanced visual elements are integrated into the build process via:
 ### Maintaining Consistency
 To ensure consistent application:
 1. Always use predefined commands rather than custom styling
-2. Follow the color scheme strictly - no custom colors
+2. Follow the colour scheme strictly - no custom colours
 3. Test visual elements in both digital and print formats
 4. Maintain proper spacing using the provided separators
 
@@ -242,7 +242,7 @@ The visual systems is designed to be extensible:
 - **Pandoc Config**: `docs/pandoc.yaml`
 - **Example Usage**: `docs/02_fundamental_principles.md`
 
-## Diagram Standardization
+## Diagram Standardisation
 
 As of 2025-10-14, all diagrams in this book follow the Kvadrat theme standard:
 

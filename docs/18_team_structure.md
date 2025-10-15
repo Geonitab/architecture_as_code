@@ -265,8 +265,7 @@ Architecture as Code succeeds when teams evolve their operating model alongside 
 ## Sources and references
 
 - Gene Kim, Jez Humble, Patrick Debois, John Willis. *The DevOps Handbook.* IT Revolution Press.
-- Matthew Skelton, Manuel Pais. *Team Topologies: Organizing Business and Technology Teams.* IT Revolution Press.
+- Matthew Skelton, Manuel Pais. *Team Topologies: Organising Business and Technology Teams.* IT Revolution Press.
 - Google Cloud. "DevOps Research and Assessment (DORA) Reports." Google Cloud Platform.
 - Atlassian. "DevOps Team Structure and Best Practices." Atlassian Documentation.
 - HashiCorp. "Infrastructure as Code Maturity Model." HashiCorp Learn Platform.
-

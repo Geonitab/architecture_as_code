@@ -1,8 +1,8 @@
 \cleardoublepage
-\part{Organization and Leadership}
-\setbookpart{Organization and Leadership}
+\part{Organisation and Leadership}
+\setbookpart{Organisation and Leadership}
 
-# Part V: Organization and Leadership
+# Part V: Organisation and Leadership
 
 Technical excellence alone cannot sustain Architecture as Code transformation. This part examines the organisational structures, cultural shifts, and leadership practices that enable teams to thrive in code-based delivery environments.
 

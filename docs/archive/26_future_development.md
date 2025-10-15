@@ -1,6 +1,6 @@
 # Framtida development and trender
 
-This chapter explores framtida utvecklingstrender within Architecture as Code and Architecture as Code, with particularly fokus at how Swedish organizations can forbereda itself for kommande teknologiska changes and possibilities.
+This chapter explores framtida utvecklingstrender within Architecture as Code and Architecture as Code, with particularly fokus at how Swedish organisations can forbereda itself for kommande teknologiska changes and possibilities.
 
 ![Framtida development and trender](images/diagram_25_future_trends.png)
 
@@ -72,7 +72,7 @@ FinOps-praxis becomes central for Architecture as Code:
 - **Real-time cost tracking**: Continuous monitoring of molnkostnader
 - **Resource right-sizing**: AI-driven optimering of resource allocation
 - **Carbon accounting**: Miljöpåverkan as del of kostnadsoptimering
-- **Swedish cost optimization**: Anpassning to svenska energipriser and miljömål
+- **Swedish cost optimisation**: Anpassning to svenska energipriser and miljömål
 
 ### GitOps Evolution
 
@@ -99,7 +99,7 @@ Zero Trust becomes standard for Architecture as Code:
 ### Privacy by design
 
 **Integritet from foundation**
-Privacy by design becomes obligatoriskt for Swedish organizations:
+Privacy by design becomes obligatoriskt for Swedish organisations:
 
 - **GDPR automation**: Automatiserad compliance of dataskyddsforordningen
 - **Data minimization**: Automatisk begränsning of datainsamling
@@ -116,7 +116,7 @@ RegTech integreras in Architecture as Code:
 - **Risk assessment**: AI-driven riskbedömning of infrastructure changes
 - **Swedish regulatory focus**: Specialisering at svenska and EU-regelverk
 
-## organizational changes
+## organisational changes
 
 ### Remote-first infrastructure
 
@@ -218,10 +218,10 @@ Sverige as världsledare within sustainable teknologi:
 
 ## Förberedelser for framtiden
 
-### organizational forberedelser
+### organisational forberedelser
 
 **Strategisk planering**
-Swedish organizations can forbereda itself through:
+Swedish organisations can forbereda itself through:
 
 - **Future skills mapping**: Kartläggning of framtida kompetensbehov
 - **Technology scouting**: Systematisk bevakning of new teknologi
@@ -251,12 +251,12 @@ Development of framtidsorienterade kompetenser:
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Framtiden for Architecture as Code and Architecture as Code präglas of konvergens between AI, kvantdatorer, edge computing and sustainability. Swedish organizations has unique possibilities to leda utvecklingen through sina styrkor within technical innovation, sustainability and kvalitet.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organisations.
+Framtiden for Architecture as Code and Architecture as Code präglas of konvergens between AI, kvantdatorer, edge computing and sustainability. Swedish organisations has unique possibilities to leda utvecklingen through sina styrkor within technical innovation, sustainability and kvalitet.
 
 Nyckeln to success ligger in proaktiv forberedelse, continuous competence development and strategiska partnerskap. Organisationer as investerar in framtidskompatibla technologies and kompetenser idag will to vara bäst positionerade to dra nytta of morgondagens possibilities.
 
-Sverige has potential to become a global leader within sustainable Architecture as Code, which would create significant economic and environmental benefits for Swedish organizations and society at large.
+Sverige has potential to become a global leader within sustainable Architecture as Code, which would create significant economic and environmental benefits for Swedish organisations and society at large.
 
 Sources:
 - Gartner. "Top Strategic Technology Trends 2024." Gartner Research, 2024.

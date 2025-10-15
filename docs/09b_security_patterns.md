@@ -559,7 +559,7 @@ nd accelerated innovation.
 - NIST. *Special Publication 800-207: Zero Trust Architecture.* National Institute of Standards and Technology, 2020.
 - NIST. *Post-Quantum Cryptography Standardisation.* National Institute of Standards and Technology, 2023.
 - ENISA. *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity, 2023.
-- ISO/IEC 27001:2022. *Information Security Management Systems – Requirements.* International Organization for Standardization.
+- ISO/IEC 27001:2022. *Information Security Management Systems – Requirements.* International Organisation for Standardisation.
 
 ### Swedish authorities and regulatory sources
 - MSB. *General Guidance on Information Security for Essential Services.* Swedish Civil Contingencies Agency, 2023.
@@ -571,7 +571,7 @@ nd accelerated innovation.
 ### Technical standards and frameworks
 - OWASP. *Application Security Architecture Guide.* Open Web Application Security Project, 2023.
 - Cloud Security Alliance. *Security Guidance v4.0.* Cloud Security Alliance, 2023.
-- CIS Controls v8. *Critical Security Controls for Effective Cyber Defence.* Center for Internet Security, 2023.
+- CIS Controls v8. *Critical Security Controls for Effective Cyber Defence.* Centre for Internet Security, 2023.
 - MITRE ATT&CK Framework. *Enterprise Matrix.* MITRE Corporation, 2023.
 
 ### Industry references

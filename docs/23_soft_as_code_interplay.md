@@ -2,11 +2,11 @@
 
 ## Introduction
 
-For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organization. When we speak about compliance as code, architecture as code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organizations can benefit from their combined strength.
+For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, architecture as code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.
 
 ![Soft as code ecosystem](images/diagram_30_soft_as_code.png)
 
-The following mind maps illustrate the key concepts and relationships within the soft "as code" ecosystem. They visualize how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organizational synergies.
+The following mind maps illustrate the key concepts and relationships within the soft "as code" ecosystem. They visualise how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organisational synergies.
 
 ![Shared DNA of "as code" disciplines](images/mindmap_23a_shared_dna.png)
 
@@ -38,11 +38,11 @@ The following mind maps illustrate the key concepts and relationships within the
 - **Compliance as Code acts as the quality engine:** By codifying rules and policies, it provides continuous validation and transparency, ensuring that architectural and documentation artifacts remain within approved boundaries.
 - **Architecture as Code serves as the central hub:** It connects technical implementations with policy and documentation layers, providing traceability and enabling real-time synchronization across the ecosystem.
 - **Documentation as Code forms the communication layer:** It translates technical and policy concepts into accessible narratives, enabling self-service knowledge and fostering collective ownership through structured feedback loops.
-- **Knowledge and Culture as Code preserve organizational memory:** Formalizing lessons learned and cultural values ensures consistency, supports onboarding, and enables rapid iteration without losing core principles.
+- **Knowledge and Culture as Code preserve organisational memory:** Formalizing lessons learned and cultural values ensures consistency, supports onboarding, and enables rapid iteration without losing core principles.
 - **Synergies multiply value:** When these disciplines integrate, they create cross-functional collaboration spaces, unified validation pipelines, and enhanced traceability—accelerating the pace of change while managing risk.
 - **Implementation requires strategy:** Success depends on shared principles, compatible tooling, cross-functional training, iterative building, and clear governance frameworks.
 
-This visualization reinforces the chapter's central message: soft "as code" disciplines are more powerful together than in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
+This visualisation reinforces the chapter's central message: soft "as code" disciplines are more powerful together than in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
 
 ## A Shared DNA
 
@@ -52,7 +52,7 @@ Even though the disciplines address different problem spaces, they share a commo
 2. **Version control.** Git or similar systems provide history, traceability, and the ability to collaborate through pull requests, code reviews, and release processes.
 3. **Automatability.** When soft artifacts are expressed as code they can feed tools that generate reports, verify compliance, update dashboards, or trigger workflows.
 
-This combination opens the door to a shared way of working across disciplines. Once an organization has established a culture of version control, code review, and automated testing, it becomes natural to let compliance rules, architectural guidelines, and documentation structures live in the same ecosystem.
+This combination opens the door to a shared way of working across disciplines. Once an organisation has established a culture of version control, code review, and automated testing, it becomes natural to let compliance rules, architectural guidelines, and documentation structures live in the same ecosystem.
 
 ## Compliance as Code as the Quality Engine
 
@@ -82,11 +82,11 @@ Documentation as code is about writing, storing, and publishing documentation wi
 - **Self-service.** When documentation is easily accessible and up to date, teams can find answers themselves. That reduces the need for manual handovers and accelerates onboarding.
 - **Feedback loops.** Pull requests on documentation create space for review, discussion, and improvement. Knowledge no longer gets stuck with a single individual; it becomes collectively owned.
 
-Documentation as code also acts as a layer of visibility. Architectural principles, compliance rules, and process descriptions become transparent and can be discussed in a structured way. Learning and improvement are therefore strengthened across the organization.
+Documentation as code also acts as a layer of visibility. Architectural principles, compliance rules, and process descriptions become transparent and can be discussed in a structured way. Learning and improvement are therefore strengthened across the organisation.
 
 ## Knowledge as Code and Culture as Code
 
-To capture the full spectrum of soft artifacts we can also include knowledge as code and culture as code. Knowledge as code formalizes knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organization can iterate quickly while still preserving its experience and values.
+To capture the full spectrum of soft artifacts we can also include knowledge as code and culture as code. Knowledge as code formalizes knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organisation can iterate quickly while still preserving its experience and values.
 
 ## Synergies and Cross-Pollination
 
@@ -101,7 +101,7 @@ The interplay between soft "as code" disciplines is powerful but also demanding.
 - **Automation debt.** Codified rules do not capture every interpretation, so manual controls and clear governance remain necessary.
 - **Information overload.** When everything is versioned and logged, metadata and structure are required to keep information navigable.
 
-By addressing these challenges openly, investing in joint training initiatives, and establishing clear roles, organizations can maximize the value of the interplay.
+By addressing these challenges openly, investing in joint training initiatives, and establishing clear roles, organisations can maximize the value of the interplay.
 
 ## Practical Applications
 
@@ -119,7 +119,7 @@ These scenarios illustrate how the interplay creates a dynamic chain in which ea
 
 ## Strategies for Adoption
 
-Organizations seeking to establish a cohesive ecosystem of soft "as code" disciplines can follow these strategies:
+Organisations seeking to establish a cohesive ecosystem of soft "as code" disciplines can follow these strategies:
 
 1. **Start with shared principles.** Clarify the objectives of the initiative and the outcomes it should deliver.
 2. **Choose compatible tools.** Ensure that compliance, architecture, and documentation tooling can integrate and share version control.
@@ -129,15 +129,15 @@ Organizations seeking to establish a cohesive ecosystem of soft "as code" discip
 
 ## Future Perspectives
 
-Technologies such as AI and semantic search engines expand the potential of soft "as code" disciplines. By combining codified regulations with language models, organizations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.
+Technologies such as AI and semantic search engines expand the potential of soft "as code" disciplines. By combining codified regulations with language models, organisations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.
 
-At the same time, data governance, security, and ethics become even more important. The more of an organization’s soft fabric that is codified, the greater the demands on access control, privacy protection, and accountability.
+At the same time, data governance, security, and ethics become even more important. The more of an organisation’s soft fabric that is codified, the greater the demands on access control, privacy protection, and accountability.
 
 ## Conclusion
 
-The interplay between soft "as code" disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organizations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, architecture as code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.
+The interplay between soft "as code" disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organisations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, architecture as code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.
 
-When these disciplines integrate, change ceases to be a threat and becomes a natural part of daily work. Teams can adapt rapidly to new requirements, experiment with new ideas, and still maintain a stable core of shared principles. The result is an organization that dares to combine softness and structure—where human creativity is supported by the precision of code.
+When these disciplines integrate, change ceases to be a threat and becomes a natural part of daily work. Teams can adapt rapidly to new requirements, experiment with new ideas, and still maintain a stable core of shared principles. The result is an organisation that dares to combine softness and structure—where human creativity is supported by the precision of code.
 
 ## Sources
 

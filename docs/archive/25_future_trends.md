@@ -10,19 +10,19 @@ Architecture as Code stands infor comprehensive transformation driven of teknolo
 
 Framtiden for Architecture as Code will to präglas of intelligent automation as can fatta complex decisions based on historiska data, real-time metrics and prediktiv analys. Machine learning-algoritmer will to optimera resurstodelning, forutsäga systemfel and automatically implement säkerhetsforbättringar without human intervention.
 
-Swedish organizations must forbereda itself for These teknologiska changes by develop flexibla arkitekturer and investera in competence development. Which diskuterat in [chapter 10 about organisatorisk change](10_kapitel9.md), requires teknologisk evolution also organizational anpassningar and new way of working.
+Swedish organisations must forbereda itself for These teknologiska changes by develop flexibla arkitekturer and investera in competence development. Which diskuterat in [chapter 10 about organisatorisk change](10_kapitel9.md), requires teknologisk evolution also organisational anpassningar and new way of working.
 
-Sustainability and miljöwithvetenhet becomes all importantre drivkrafter within infrastructure development. Carbon-aware computing, renewable energy optimization and circular economy principles will to integreras in Architecture as Code to meet klimatmål and regulatory requirements within EU and Sverige.
+Sustainability and miljöwithvetenhet becomes all importantre drivkrafter within infrastructure development. Carbon-aware computing, renewable energy optimisation and circular economy principles will to integreras in Architecture as Code to meet klimatmål and regulatory requirements within EU and Sverige.
 
 ## Artificiell intelligens and maskininlärning integration
 
-AI and ML-integration in Architecture as Code transformerar from reactive to prediktiva systems as can anticipera and forebygga problem before the arises. Intelligent automation extends beyond simple rule-based systems to complex decision-making capabilities as can optimize for multiple objectives simultaneously.
+AI and ML-integration in Architecture as Code transformerar from reactive to prediktiva systems as can anticipera and forebygga problem before the arises. Intelligent automation extends beyond simple rule-based systems to complex decision-making capabilities as can optimise for multiple objectives simultaneously.
 
 Predictive scaling uses historiska data and machine learning models to forutsäga kapacitetsbehov and automatically skala infrastructure before demand spikes inträffar. This results in improved performance and kostnadseffektivitet through elimination of both over-provisioning and under-provisioning scenarios.
 
-Anomaly detection systems powered of unsupervised learning can identify unusual patterns in infrastructure behavior as can indicate security threats, performance degradation or configuration drift. Automated response systems can then implement corrective actions based at predefined policies and learned behaviors.
+Anomaly detection systems powered of unsupervised learning can identify unusual patterns in infrastructure behaviour as can indicate security threats, performance degradation or configuration drift. Automated response systems can then implement corrective actions based at predefined policies and learned behaviours.
 
-### AI-Driven Infrastructure Optimization
+### AI-Driven Infrastructure Optimisation
 
 Architecture as Code-principerna within This area
 
@@ -476,11 +476,11 @@ spec:
 
 ## Sustainability and green computing
 
-Environmental sustainability becomes all importantre within Architecture as Code with fokus at carbon footprint reduction, renewable energy usage and resource efficiency optimization. EU:s Green Deal and Sveriges klimatneutralitetsmål 2045 driver organisationer to implement carbon-aware computing strategies.
+Environmental sustainability becomes all importantre within Architecture as Code with fokus at carbon footprint reduction, renewable energy usage and resource efficiency optimisation. EU:s Green Deal and Sveriges klimatneutralitetsmål 2045 driver organisationer to implement carbon-aware computing strategies.
 
 Carbon-aware scheduling optimerar workload placement based on electricity grid carbon intensity, which enables automatic migration of non-critical workloads to regions with renewable energy sources. Svenska organisations can leverera at sustainability commitments through intelligent workload orchestration.
 
-Circular economy principles appliceras at infrastructure through extended hardware lifecycles, improved resource utilization and sustainable disposal practices. Architecture as Code enables fine-grained resource tracking and optimization as minimizes waste and maximizar resource efficiency.
+Circular economy principles appliceras at infrastructure through extended hardware lifecycles, improved resource utilisation and sustainable disposal practices. Architecture as Code enables fine-grained resource tracking and optimisation as minimizes waste and maximizar resource efficiency.
 
 ### Carbon-Aware Infrastructure
 
@@ -1014,25 +1014,25 @@ async def get_platform_metrics():
 
 Quantum computing development hotar current cryptographic standards and requires proactive preparation for post-quantum cryptography transition. Architecture as Code must evolve to support quantum-safe algorithms and crypto-agility principles as enables snabb migration between cryptographic systems.
 
-NIST post-quantum cryptography standards provides guidance for selecting quantum-resistant algorithms, but implementation in cloud infrastructure requires careful planning and phased migration strategies. Swedish organizations with critical security requirements must börja planera for quantum-safe transitions nu.
+NIST post-quantum cryptography standards provides guidance for selecting quantum-resistant algorithms, but implementation in cloud infrastructure requires careful planning and phased migration strategies. Swedish organisations with critical security requirements must börja planera for quantum-safe transitions nu.
 
-Hybrid classical-quantum systems will to emerge where quantum computers is used for specific optimization problems with classical systems handles general computing workloads. Infrastructure orchestration must support both paradigms seamlessly.
+Hybrid classical-quantum systems will to emerge where quantum computers is used for specific optimisation problems with classical systems handles general computing workloads. Infrastructure orchestration must support both paradigms seamlessly.
 
 ## Summary
 
 
-The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organizations.
-Framtiden for Architecture as Code karakteriseras of intelligent automation, environmental sustainability and enhanced security capabilities. Swedish organizations as investerar in emerging technologies and maintains crypto-agility will to vara well-positioned for future technological disruptions.
+The modern Architecture as Code methodology represents framtiden for infrastructure management in Swedish organisations.
+Framtiden for Architecture as Code karakteriseras of intelligent automation, environmental sustainability and enhanced security capabilities. Swedish organisations as investerar in emerging technologies and maintains crypto-agility will to vara well-positioned for future technological disruptions.
 
-AI-driven infrastructure optimization, carbon-aware computing and post-quantum cryptography readiness represents essential capabilities for competitive advantage. Integration of these technologies requires both technical expertise and organizational adaptability as diskuteras in previous chapter.
+AI-driven infrastructure optimisation, carbon-aware computing and post-quantum cryptography readiness represents essential capabilities for competitive advantage. Integration of these technologies requires both technical expertise and organisational adaptability as diskuteras in previous chapter.
 
 Success in future Architecture as Code landscape requires continuous learning, experimentation and willingness to adopt new paradigms. Which demonstrerat genAbout the Books progression from [Fundamental Concepts](01_introduction.md) to advanced future technologies, evolution within Architecture as Code is constant and accelerating.
 
 ## Sources and referenser
 
 - NIST. "Post-Quantum Cryptography Standards." National Institute of Standards and Technology, 2024.
-- IEA. "Digitalization and Energy Efficiency." International Energy Agency, 2023.
+- IEA. "Digitalisation and Energy Efficiency." International Energy Agency, 2023.
 - European Commission. "Green Deal Industrial Plan." European Union Publications, 2024.
 - CNCF. "Cloud Native Computing Foundation Annual Survey." Cloud Native Computing Foundation, 2024.
 - McKinsey. "The Future of Architecture as Code." McKinsey Technology Report, 2024.
-- AWS. "Sustainability and Carbon Footprint Optimization." Amazon Web Services, 2024.
+- AWS. "Sustainability and Carbon Footprint Optimisation." Amazon Web Services, 2024.

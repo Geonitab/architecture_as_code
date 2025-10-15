@@ -72,7 +72,7 @@ paths:
   - 'docs/**/*.md'
 ```
 
-This ensures validations run only when documentation files change, optimizing CI/CD resources.
+This ensures validations run only when documentation files change, optimising CI/CD resources.
 
 ## Style Guide Compliance
 

@@ -49,7 +49,7 @@ The design is available in multiple high-resolution formats:
 
 ### Digital Formats
 - **PNG**: Medium resolution for web use (150 DPI)
-- **JPEG**: Optimized for social media and email
+- **JPEG**: Optimised for social media and email
 - **SVG**: Vector format for infinite scalability
 
 ## Technical Specifications
@@ -62,9 +62,9 @@ The design is available in multiple high-resolution formats:
 ### Brand Compliance
 The design strictly follows Kvadrat Brand Guidelines:
 
-#### Color Palette
+#### Colour Palette
 ```css
---kvadrat-blue: hsl(221, 67%, 32%)        /* Primary brand color */
+--kvadrat-blue: hsl(221, 67%, 32%)        /* Primary brand colour */
 --kvadrat-blue-light: hsl(217, 91%, 60%)  /* Accent and highlights */
 --kvadrat-blue-dark: hsl(214, 32%, 18%)   /* Text and contrast */
 --success: hsl(160, 84%, 30%)             /* Gradient accent */
@@ -98,7 +98,7 @@ The design strictly follows Kvadrat Brand Guidelines:
 
 ### For Print Production
 1. Use `exports/book-cover/pdf/book-cover-print.pdf`
-2. Ensure printer supports RGB color space (convert to CMYK if needed)
+2. Ensure printer supports RGB colour space (convert to CMYK if needed)
 3. Recommended paper: High-quality matte or glossy finish
 
 ### For Digital Distribution
@@ -141,7 +141,7 @@ exports/book-cover/
 ## Quality Assurance
 
 ### Brand Guidelines Compliance
-- ✅ Kvadrat color palette strictly followed
+- ✅ Kvadrat colour palette strictly followed
 - ✅ Typography hierarchy maintained
 - ✅ Logo placement and sizing correct
 - ✅ Professional aesthetic aligned with brand
@@ -153,7 +153,7 @@ exports/book-cover/
 - ✅ Cross-browser compatibility
 
 ### Accessibility
-- ✅ Sufficient color contrast ratios
+- ✅ Sufficient colour contrast ratios
 - ✅ Readable typography at all sizes
 - ✅ Clean, professional design
 - ✅ Semantic HTML structure
@@ -178,7 +178,7 @@ If Kvadrat brand guidelines change:
 For questions about the design or technical implementation:
 - Review brand guidelines in `exports/book-cover/source/`
 - Check design systems documentation
-- Follow established color and typography standards
+- Follow established colour and typography standards
 
 ---
 

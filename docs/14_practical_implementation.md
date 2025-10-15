@@ -25,7 +25,7 @@ Figure 14.4 captures the enablement flywheel that keeps Architecture as Code pro
 |---------------------|----------------|------------------|--------------|
 | Aligning stakeholders early | Current-state assessment, cross-functional working group formation, vocabulary and SLO agreement | Platform, security, finance, and architecture alignment on priorities | Technical baseline documentation, regulatory obligations map, shared vocabulary guide |
 | Designing the pilot and proving value | Constrained workload selection, automated provisioning implementation, change history tracking | Automated provisioning, observable change histories, rapid rollback capabilities | Working pilot environment, lessons learned documentation, retrospective findings |
-| Scaling operations with repeatable patterns | Module formalization, tagging standardization, change management adoption | Reusable modules, automated policy checks, progressive rollouts | Enterprise playbooks, knowledge-sharing sessions, internal communities of practice |
+| Scaling operations with repeatable patterns | Module formalisation, tagging standardisation, change management adoption | Reusable modules, automated policy checks, progressive rollouts | Enterprise playbooks, knowledge-sharing sessions, internal communities of practice |
 
 ## Tool selection and ecosystem integration
 

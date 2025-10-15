@@ -54,7 +54,6 @@ Onboarding for new agents blends orientation with practical delivery. The Projec
 
 - [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
-- Edmondson, A. C. "Teaming: How Organizations Learn, Innovate, and Compete in the Knowledge Economy." Jossey-Bass, 2012.
+- Edmondson, A. C. "Teaming: How Organisations Learn, Innovate, and Compete in the Knowledge Economy." Jossey-Bass, 2012.
 
 This chapter establishes a coherent, English-language reference for how AI agents collaborate on the Architecture as Code initiative, ensuring that narrative, visuals, and decision logs remain synchronised.
-
