@@ -6,13 +6,13 @@
 
 ## Introduction and context
 
-Swedish organisations operate in one of Europe's most demanding regulatory environments. They must simultaneously honour GDPR, industry directives from Finansinspektionen, obligations from the Swedish Civil Contingencies Agency (MSB), and the relentless pace of cloud adoption. Chapter 9 introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.
+European organisations operate in some of the world's most demanding regulatory environments. They must simultaneously honour GDPR, NIS2, sector-specific obligations from bodies such as the European Banking Authority and the UK's Financial Conduct Authority, and the relentless pace of cloud adoption. Chapter 9 introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.
 
-Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy audits. Expressing governance requirements as version-controlled code gives teams the same advantages found elsewhere in Architecture as Code: traceability, repeatability, peer review, automated testing, and rapid rollback when something goes wrong. The narrative and examples in this chapter illustrate how Swedish delivery teams can embrace PaC without sacrificing regulatory assurance.
+Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy audits. Expressing governance requirements as version-controlled code gives teams the same advantages found elsewhere in Architecture as Code: traceability, repeatability, peer review, automated testing, and rapid rollback when something goes wrong. The narrative and examples in this chapter illustrate how European delivery teams can embrace PaC without sacrificing regulatory assurance.
 
 ## Evolution of security management within Architecture as Code
 
-Security automation in Swedish enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today.
+Security automation in modern enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today.
 
 | Phase | Period | Approach | Characteristics | Limitations |
 |-------|--------|----------|-----------------|-------------|
@@ -35,7 +35,7 @@ OPA has become the de facto standard for policy automation thanks to its lightwe
 
 ### Architectural foundations for enterprise policy management
 
-Swedish organisations running mission-critical platforms typically adopt three architectural patterns:
+Organisations running mission-critical platforms typically adopt three architectural patterns:
 
 - **Decoupled evaluation:** OPA runs as a sidecar, admission controller, or CLI verifier, keeping policy logic separate from application runtimes.
 - **Flexible distribution:** Agents can pull policies from signed bundles or receive push updates from central services, supporting strict change-control processes.
@@ -43,10 +43,10 @@ Swedish organisations running mission-critical platforms typically adopt three a
 
 ### Advanced Rego patterns for regulated workloads
 
-Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for Swedish regulators. A trimmed excerpt below illustrates the structure:
+Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:
 
 ```rego
-package se.enterprise.security
+package eu.enterprise.security
 
 import rego.v1
 
@@ -63,7 +63,7 @@ encryption_compliant[resource] {
 
 The complete module covers encryption strength, privileged port exposure, EU residency checks, and an aggregated compliance score. The findings feed directly into CI pipelines and risk dashboards.
 
-### Integrating policy automation into Swedish enterprises
+### Integrating policy automation into European enterprises
 
 Enterprises connect OPA to their existing tooling so that decisions are auditable end to end. Policy evaluation logs stream to SIEM platforms such as Splunk or Azure Sentinel for immutable evidence. Identity-aware proxies verify that every policy change is authorised through enterprise single sign-on. Monitoring systems trigger alerts when violations cross risk thresholds so operations teams can react before incidents escalate. These integrations make PaC feel like a first-class participant in the delivery lifecycle rather than an afterthought.
 
@@ -77,14 +77,14 @@ OSCAL is organised into complementary models:
 
 | OSCAL Component | Purpose | Examples | Usage in Architecture as Code |
 |-----------------|---------|----------|-------------------------------|
-| Catalogues | Capture authoritative control statements from frameworks | NIST SP 800-53, GDPR articles, MSB guidelines | Foundation for organisational control baselines |
+| Catalogues | Capture authoritative control statements from frameworks | NIST SP 800-53, GDPR articles, NIS2 directives | Foundation for organisational control baselines |
 | Profiles | Tailor catalogues to organisation-specific needs | Selecting, modifying, or adding control language | Harmonise overlapping regulations, create industry-specific subsets |
 | Component definitions | Describe how technical building blocks satisfy specific controls | Amazon RDS instance, AWS Network Firewall configurations | Map infrastructure modules to compliance requirements |
 | System Security Plans (SSPs) | Assemble controls, components, and operational context | Complete audit documentation for a system | Single auditable document connecting requirements to implementation |
 
 ### Crafting organisation-specific profiles
 
-Profiles help Swedish enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate MSB network guidance in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
+Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate FCA guidance in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
 
 ### Component definitions and reusable evidence
 
@@ -94,7 +94,7 @@ Component definitions turn infrastructure modules into reusable compliance build
 
 Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry [10_CODE_4](30_appendix_code_examples.md#10_code_4) includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.
 
-## Implementation roadmap for Swedish delivery teams
+## Implementation roadmap for European delivery teams
 
 Successful PaC programmes blend technology with process change. A staged roadmap typically includes:
 
@@ -107,7 +107,7 @@ Successful PaC programmes blend technology with process change. A staged roadmap
 ## Key takeaways
 
 - PaC transforms governance from a periodic activity into a continuous safety net that keeps pace with daily releases.
-- OPA and Rego provide a portable, testable way to encode complex Swedish regulatory requirements.
+- OPA and Rego provide a portable, testable way to encode complex EU and UK regulatory requirements.
 - OSCAL links policy enforcement with audit evidence, reducing the overhead of external assessments.
 - Diagrams in Figures 10.1 and 10.2 illustrate how policy guardrails span the delivery lifecycle and how capability building blocks interrelate.
 - Detailed Rego, OSCAL, and automation listings live in Appendix entries [10_CODE_1](30_appendix_code_examples.md#10_code_1) to [10_CODE_4](30_appendix_code_examples.md#10_code_4) for engineers who need implementation guidance.
