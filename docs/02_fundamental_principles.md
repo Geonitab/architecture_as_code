@@ -24,6 +24,74 @@ The principle of immutable architecture keeps the entire system architecture und
 
 This approach fosters predictability and eliminates architectural drift, where systems gradually diverge from their intended design over time.
 
+### Understanding architectural drift
+
+Architectural drift is a gradual, often unintentional deviation of a system's actual implementation from its intended architectural design. This phenomenon occurs when incremental changes, workarounds, emergency fixes, and undocumented modifications accumulate over time, causing the running system to diverge from its documented architecture and original design principles.
+
+#### Causes of architectural drift
+
+Several factors contribute to architectural drift in traditional systems:
+
+| Cause | Description | Impact |
+|-------|-------------|--------|
+| **Manual configuration changes** | Direct modifications to production systems without updating architecture definitions | Discrepancies between documented and actual system state |
+| **Emergency patches** | Urgent fixes applied under pressure without following standard processes | Bypassed architectural guardrails and undocumented changes |
+| **Knowledge loss** | Team member turnover and inadequate documentation transfer | Loss of architectural context and rationale for design decisions |
+| **Tool and process fragmentation** | Multiple teams using different tools and approaches | Inconsistent implementations across the system landscape |
+| **Lack of validation** | Absence of automated checks comparing desired versus actual state | Undetected deviations accumulating over extended periods |
+
+#### Consequences of architectural drift
+
+Uncontrolled architectural drift creates significant technical and business risks:
+
+- **Increased complexity**: Systems become harder to understand, maintain, and modify as actual implementation diverges from documentation
+- **Security vulnerabilities**: Undocumented changes may introduce security weaknesses that bypass established controls
+- **Compliance violations**: Drift can cause systems to fall out of compliance with regulatory requirements and industry standards
+- **Reduced reliability**: Inconsistent configurations and undocumented dependencies increase the likelihood of failures and outages
+- **Higher operational costs**: Time spent troubleshooting, reconciling, and recovering from drift-related incidents escalates operational expenses
+- **Impeded innovation**: Technical debt from drift makes it difficult to implement new features or modernise systems
+
+#### How Architecture as Code prevents drift
+
+Architecture as Code addresses architectural drift through several mechanisms:
+
+**Declarative definitions**: Systems are defined in code that explicitly states the desired architecture, making deviations immediately visible through comparison tools and automated validation.
+
+**Version control**: All architectural changes are tracked in Git or similar systems, creating an immutable audit trail that documents every modification and the rationale behind it.
+
+**Automated enforcement**: Policy-as-code frameworks and continuous validation pipelines prevent unauthorised changes from being deployed and detect drift in running systems.
+
+**Immutable infrastructure**: Rather than modifying running systems, new versions are created and deployed, eliminating the possibility of undocumented manual changes.
+
+**Continuous reconciliation**: Automated tools regularly compare the actual system state against the codified architecture, identifying and reporting any discrepancies for immediate remediation.
+
+**Infrastructure state management**: Tools such as Terraform, Pulumi, and CloudFormation maintain explicit state representations, enabling automatic detection when actual infrastructure diverges from the declared configuration.
+
+#### Drift detection and remediation
+
+Modern Architecture as Code toolchains provide built-in drift detection capabilities:
+
+```bash
+# Terraform detects configuration drift
+terraform plan
+# Output shows resources that have been modified outside Terraform
+
+# CloudFormation drift detection
+aws cloudformation detect-stack-drift --stack-name production-stack
+aws cloudformation describe-stack-drift-detection-status
+
+# Azure Resource Manager drift detection
+az deployment group what-if --resource-group production-rg \
+  --template-file infrastructure.bicep
+```
+
+When drift is detected, teams can choose to either:
+1. **Remediate automatically**: Reapply the codified architecture to restore the system to its intended state
+2. **Update the code**: If the drift represents an intentional change, update the architecture definition to reflect the new desired state
+3. **Investigate and resolve**: Determine the root cause of drift, fix the underlying process gap, and prevent recurrence
+
+By treating architecture as code and automating drift detection and remediation, organisations maintain architectural integrity throughout the entire system lifecycle, ensuring that reality consistently matches design intent.
+
 ## Testability at the architecture level
 
 Architecture as Code enables testing of the entire system architecture, not only individual components. This includes validating architectural patterns, adherence to design principles, and verification of end-to-end flows.
