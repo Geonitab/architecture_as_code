@@ -317,6 +317,7 @@ CHAPTER_FILES=(
     "20_ai_agent_team.md"
     "21_digitalization.md"
     "part_f_experience_best_practices.md"
+    "22_documentation_vs_architecture.md"
     "23_soft_as_code_interplay.md"
     "24_best_practices.md"
     "part_g_future_wrap_up.md"

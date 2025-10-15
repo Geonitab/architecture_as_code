@@ -88,12 +88,13 @@ Reference material, author information, and technical enablers
 | 20 | `20_ai_agent_team.md` | AI Agent Team for Architecture as Code Initiatives | Structure, roles, and processes for virtual agent teams |
 | 21 | `21_digitalization.md` | Digitalization through Code-based Infrastructure | Digital transformation through IaC |
 
-### Part 6: Experience & Best Practices (Chapters 23-24)
+### Part 6: Experience & Best Practices (Chapters 22-24)
 
 **Focus:** Cross-disciplinary collaboration and lessons learned
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
+| 22 | `22_documentation_vs_architecture.md` | Documentation as Code vs Architecture as Code | Distinction between documentation and architecture disciplines, modelling vs diagram tools |
 | 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft "as code" practices |
 | 24 | `24_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 
