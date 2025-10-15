@@ -1,138 +1,52 @@
-name: Clean up old branches
+name: Cleanup Old Branches
 
 on:
   schedule:
-    # Run daily at 03:00 UTC
-    - cron: "0 3 * * *"
-  workflow_dispatch:
-    inputs:
-      dry_run:
-        description: "List candidates without deleting"
-        type: boolean
-        default: false
-      min_age_days:
-        description: "Minimum age (days)"
-        type: number
-        default: 2
-      extra_excludes:
-        description: "Comma-separated branch names to exclude"
-        type: string
-        default: ""
-
-permissions:
-  contents: write   # Required to delete refs
-  pull-requests: read
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
 
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-    env:
-      MIN_AGE_DAYS: "2"
-      EXTRA_EXCLUDES: ""
-      DRY_RUN: "false"
+    permissions:
+      contents: write  # Required to delete branches
+
     steps:
-      - name: Checkout (shallow)
-        uses: actions/checkout@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          ref: main  # Checkout main branch
+          fetch-depth: 0  # Fetch full history
 
-      - name: Delete remote branches older than N days (excluding main/gh-pages)
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const core = require('@actions/core');
-            const github = require('@actions/github');
+      - name: Fetch all branches
+        run: git fetch origin +refs/heads/*:refs/remotes/origin/*
 
-            const { context } = github;
-
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-
-            // Inputs (with fallback for scheduled runs)
-            const dryRun = (core.getInput('dry_run') || process.env.DRY_RUN || 'false') === 'true';
-            const minAgeDays = parseInt(core.getInput('min_age_days') || process.env.MIN_AGE_DAYS || '2', 10);
-            const extraExcludesInput = (core.getInput('extra_excludes') || process.env.EXTRA_EXCLUDES || '').trim();
-
-            const cutoffMs = minAgeDays * 24 * 60 * 60 * 1000;
-            const now = new Date();
-
-            // Base exclusions
-            const exclude = new Set(['main', 'gh-pages']);
-
-            // Add repository default branch (if it is not named 'main')
-            const { data: repoData } = await github.rest.repos.get({ owner, repo });
-            exclude.add(repoData.default_branch);
-
-            // Extra exclusions from input
-            if (extraExcludesInput) {
-              for (const name of extraExcludesInput.split(',').map(s => s.trim()).filter(Boolean)) {
-                exclude.add(name);
-              }
-            }
-
-            // Fetch all branches (excluding protected=false to avoid unnecessary failures, but handling errors anyway)
-            const branches = await github.paginate(
-              github.rest.repos.listBranches,
-              { owner, repo, per_page: 100 }
-            );
-
-            const deleted = [];
-            const skipped = [];
-
-            for (const b of branches) {
-              const name = b.name;
-
-              // Skip exclusions
-              if (exclude.has(name)) {
-                skipped.push({ name, reason: 'excluded' });
-                continue;
-              }
-
-              // Latest commit (sha + date)
-              const sha = b.commit?.sha;
-              if (!sha) {
-                skipped.push({ name, reason: 'no-sha' });
-                continue;
-              }
-
-              const { data: commit } = await github.rest.repos.getCommit({ owner, repo, ref: sha });
-              const dateStr =
-                commit.commit.author?.date ||
-                commit.commit.committer?.date;
-
-              if (!dateStr) {
-                skipped.push({ name, reason: 'no-date' });
-                continue;
-              }
-
-              const ageMs = now - new Date(dateStr);
-
-              if (ageMs > cutoffMs) {
-                if (dryRun) {
-                  skipped.push({ name, reason: `dry-run (age ${Math.floor(ageMs/86400000)}d)` });
-                  continue;
-                }
-                try {
-                  await github.rest.git.deleteRef({ owner, repo, ref: `heads/${name}` });
-                  deleted.push({ name, ageDays: Math.floor(ageMs / 86400000) });
-                } catch (e) {
-                  skipped.push({ name, reason: `delete-failed: ${e.status || ''} ${e.message}` });
-                }
-              } else {
-                skipped.push({ name, reason: 'recent' });
-              }
-            }
-
-            // Write a summary in the job summary
-            await core.summary
-              .addHeading('Clean up old branches')
-              .addRaw(`Minimum age: **${minAgeDays} days**  \nDry-run: **${dryRun ? 'yes' : 'no'}**`)
-              .addHeading('Deleted', 2)
-              .addTable([['Branch', 'Age (days)'], ...deleted.map(d => [d.name, String(d.ageDays)])])
-              .addHeading('Skipped', 2)
-              .addTable([['Branch', 'Reason'], ...skipped.map(s => [s.name, s.reason])])
-              .write();
-
-            core.setOutput('deleted_count', deleted.length);
-            console.log('Deleted:', deleted);
-            console.log('Skipped:', skipped);
+      - name: Delete old branches
+        run: |
+          #!/bin/bash
+          set -e
+          
+          # Get current time in Unix timestamp
+          current_time=$(date +%s)
+          two_days_ago=$((current_time - 2 * 24 * 3600))
+          
+          # List all remote branches except main and gh-pages
+          branches=$(git branch -r | grep 'origin/' | sed 's/origin\///' | grep -v '^main$' | grep -v '^gh-pages$' | sed 's/^[[:space:]]*//')
+          
+          for branch in $branches; do
+            # Skip if branch doesn't exist locally or remotely
+            if ! git rev-parse --verify "origin/$branch" >/dev/null 2>&1; then
+              echo "Skipping $branch: does not exist"
+              continue
+            fi
+            
+            # Get last commit timestamp for the branch
+            commit_time=$(git log -1 --format=%ct "origin/$branch" 2>/dev/null || echo "0")
+            
+            if [ "$commit_time" -lt "$two_days_ago" ]; then
+              echo "Deleting branch $branch (last commit: $(date -d "@$commit_time"))"
+              git push origin --delete "$branch"
+            else
+              echo "Keeping branch $branch (last commit: $(date -d "@$commit_time"))"
+            fi
+          done
