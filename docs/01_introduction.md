@@ -37,7 +37,7 @@ This book is aimed at system architects, developers, project managers, and IT de
 Readers will gain comprehensive knowledge of how the entire system architecture can be codified, from foundational principles to advanced architectural patterns that encompass an organisation’s entire digital ecosystem.
 
 Sources:
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2025.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
 
 ## How This Book Is Organised
