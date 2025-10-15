@@ -31,3 +31,39 @@
 .md-typeset a code {
   color: #b5c6ff;
 }
+
+/* Responsive table styles */
+.md-typeset table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.md-typeset table th,
+.md-typeset table td {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure table doesn't exceed container width */
+.md-typeset__table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-friendly table adjustments */
+@media screen and (max-width: 768px) {
+  .md-typeset table {
+    font-size: 0.9rem;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    padding: 0.5rem;
+    min-width: 100px;
+  }
+}
