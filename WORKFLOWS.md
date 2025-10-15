@@ -45,10 +45,13 @@ This repository uses a unified GitHub Actions workflow to handle all aspects of 
 
 **GitHub Release**: Creates comprehensive release with all files attached (tag: `v{run_number}-unified`)
 
-**Duration**: 
+**Duration**:
 - Traditional only: ~90 minutes
-- Docker only: ~60 minutes  
+- Docker only: ~60 minutes
 - Both strategies: ~90 minutes (runs in parallel)
+
+> [!IMPORTANT]
+> The workflow currently uses `actions/checkout@v5` in both the Docker build and finalize jobs. This release of the checkout action runs on the Node.js 24 runtime and therefore requires Actions runners version 2.327.1 or newer. Older runners fail before any of the build steps run, so keep environments on v4 until runners are updated.
 
 ---
 
