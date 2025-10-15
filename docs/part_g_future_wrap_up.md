@@ -8,6 +8,8 @@ Architecture as Code continues to evolve as new technologies emerge and organisa
 
 The landscape of Architecture as Code is not static. [Future trends](25_future_trends_development.md) encompass everything from AI-driven architecture generation to sustainability-aware workload placement, quantum-resistant security patterns, and regulatory frameworks that explicitly recognise code-based governance. Understanding these trajectories helps organisations make decisions today that remain valid tomorrow.
 
+Yet foresight must be balanced with vigilance. [Anti-patterns in Architecture as Code programmes](26_aac_anti_patterns.md) catalogue the cultural, governance, and delivery pitfalls that erode trust in codified architecture estates. By pairing early-warning indicators with remediation playbooks, teams can navigate the future without repeating yesterday’s mistakes.
+
 Beyond specific technologies, broader shifts in organisational thinking continue to reshape how Architecture as Code manifests in practice. The convergence of platform engineering, developer experience, and business value delivery creates new opportunities for organisations that position themselves at this intersection.
 
 The [conclusion](27_conclusion.md) ties together threads from across this book—from the [fundamental principles](02_fundamental_principles.md) established in Part I through the technical, security, operational, and organisational practices explored in subsequent parts. More importantly, it provides a step-by-step adoption strategy that organisations can adapt to their specific contexts, constraints, and ambitions.
@@ -17,6 +19,7 @@ The [conclusion](27_conclusion.md) ties together threads from across this book�
 - Emerging trends in Architecture as Code including AI integration and sustainability
 - Long-term development trajectories for tools, practices, and organisational models
 - Strategic recommendations for organisations at different stages of maturity
+- Common anti-patterns to avoid and recovery techniques that sustain healthy programmes
 - A consolidated view of how all elements of Architecture as Code work together
 - Practical next steps for continued learning and implementation
 
