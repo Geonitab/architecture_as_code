@@ -27,12 +27,12 @@ each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]
 
 This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for organisations.
 
-### 05_CODE_1: GDPR-compliant CI/CD Pipeline for organisations
+### 05_CODE_1: GDPR-compliant CI/CD Pipeline for European organisations
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
-# .github/workflows/a-architecture as code-pipeline.yml
-# GDPR-compliant CI/CD pipeline for organizations
+# .github/workflows/aac-pipeline.yml
+# GDPR-compliant CI/CD pipeline for European organizations
 
 name: architecture as code Pipeline with GDPR Compliance
 
@@ -101,12 +101,12 @@ jobs:
           echo "✅ GDPR compliance check genomförd"
 ```
 
-### 05_CODE_2: Jenkins Pipeline for organisations with GDPR compliance
+### 05_CODE_2: Jenkins Pipeline for European organisations with GDPR compliance
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
-# jenkins/a-architecture as code-pipeline.groovy
-// Jenkins pipeline for organizations with GDPR compliance
+# jenkins/aac-pipeline.groovy
+// Jenkins pipeline for European organizations with GDPR compliance
 
 pipeline {
     agent any
@@ -130,7 +130,7 @@ pipeline {
     }
     
     environment {
-        ORGANIZATION_NAME = 'a-org'
+        ORGANIZATION_NAME = 'eu-org'
         AWS_DEFAULT_REGION = 'eu-west-1'
         GDPR_COMPLIANCE = 'enabled'
         DATA_RESIDENCY = 'EU'
@@ -288,8 +288,8 @@ pipeline {
                             echo "📋 Validates organisationspolicies..."
                             
                             // Skapa OPA policies
-                            writeFile file: 'policies/a-tagging.rego', text: """
-                                package a.tagging
+                            writeFile file: 'policies/eu-tagging.rego', text: """
+                                package eu.tagging
                                 
                                 required_tags := [
                                     "Environment", "CostCenter", "Organization", 
@@ -396,8 +396,8 @@ pipeline {
                     - Implementera scheduled shutdown for icke-critical systems
                     """
                     
-                    writeFile file: 'cost-report-a.md', text: costReport
-                    archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
+                    writeFile file: 'cost-report-eu.md', text: costReport
+                    archiveArtifacts artifacts: 'cost-report-eu.md', fingerprint: true
                     
                     echo "✅ Kostnadskontroll slutförd"
                 }
@@ -411,7 +411,7 @@ pipeline {
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```go
-// test/a_vpc_test.go
+// test/eu_vpc_test.go
 // Terratest suite for VPC implementation with GDPR compliance
 
 package test
@@ -433,8 +433,8 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// SvenskaVPCTestSuite definierar test suite for VPC implementation
-type SvenskaVPCTestSuite struct {
+// EuropeanVPCTestSuite definierar test suite for VPC implementation
+type EuropeanVPCTestSuite struct {
     TerraformOptions *terraform.Options
     AWSSession       *session.Session
     OrganizationName string
@@ -442,12 +442,12 @@ type SvenskaVPCTestSuite struct {
     CostCenter       string
 }
 
-// TestSvenskaVPCGDPRCompliance testar GDPR compliance for VPC implementation
-func TestSvenskaVPCGDPRCompliance(t *testing.T) {
+// TestEuropeanVPCGDPRCompliance testar GDPR compliance for VPC implementation
+func TestEuropeanVPCGDPRCompliance(t *testing.T) {
     t.Parallel()
 
-    suite := setupSvenskaVPCTest(t, "development")
-    defer cleanupSvenskaVPCTest(t, suite)
+    suite := setupEuropeanVPCTest(t, "development")
+    defer cleanupEuropeanVPCTest(t, suite)
 
     // Deploy infrastructure
     terraform.InitAndApply(t, suite.TerraformOptions)
@@ -469,16 +469,16 @@ func TestSvenskaVPCGDPRCompliance(t *testing.T) {
         testAuditLogging(t, suite)
     })
 
-    t.Run("TestSvenskaTagging", func(t *testing.T) {
-        testSvenskaTagging(t, suite)
+    t.Run("TestEuropeanTagging", func(t *testing.T) {
+        testEuropeanTagging(t, suite)
     })
 }
 
-// setupSvenskaVPCTest förbereder test environment for VPC testing
-func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
+// setupEuropeanVPCTest förbereder test environment for VPC testing
+func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuite {
     // Unik test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
-    organizationName := fmt.Sprintf("a-org-%s", uniqueID)
+    organizationName := fmt.Sprintf("eu-org-%s", uniqueID)
 
     // Terraform configuration
     terraformOptions := &terraform.Options{
@@ -494,7 +494,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
             "audit_logging":        true,
         },
         BackendConfig: map[string]interface{}{
-            "bucket": "a-org-terraform-test-state",
+            "bucket": "eu-org-terraform-test-state",
             "key":    fmt.Sprintf("test/%s/terraform.tfstate", uniqueID),
             "region": "eu-north-1",
         },
@@ -505,12 +505,12 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
         TimeBetweenRetries: 5 * time.Second,
     }
 
-    // AWS session for Stockholm region
+    // AWS session for EU region
     awsSession := session.Must(session.NewSession(&aws.Config{
         Region: aws.String("eu-north-1"),
     }))
 
-    return &SvenskaVPCTestSuite{
+    return &EuropeanVPCTestSuite{
         TerraformOptions: terraformOptions,
         AWSSession:       awsSession,
         OrganizationName: organizationName,
@@ -520,7 +520,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
 }
 
 // testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade for GDPR compliance
-func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Hämta VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     require.NotEmpty(t, vpcID, "VPC ID should not be empty")
@@ -553,20 +553,20 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
 }
 
 // testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
-func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Hämta KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
 
-    // Validate to KMS key is from Sverige region
-    assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
+    // Validate to KMS key is from EU region
+    assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in EU region for data residency")
 
     t.Logf("✅ Encryption at rest validerat for GDPR compliance")
 }
 
 // testDataResidencyEU validates to all infrastruktur is within gränser
-func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Validate to VPC is in Stockholm region
+func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
+    // Validate to VPC is in EU region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
     ec2Client := ec2.New(suite.AWSSession)
@@ -595,7 +595,7 @@ func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
 }
 
 // testAuditLogging validates to audit logging is konfigurerat according to lagrequirements
-func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Kontrollera CloudTrail configuration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
     
@@ -613,8 +613,8 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validates to all resurser has korrekta tags
-func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
+// testEuropeanTagging validates to all resurser has korrekta tags
+func testEuropeanTagging(t *testing.T, suite *EuropeanVPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
         "Country", "GDPRCompliant", "DataResidency",
@@ -662,8 +662,8 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     t.Logf("✅ tagging validerat for all resurser")
 }
 
-// cleanupSvenskaVPCTest rensar test environment
-func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
+// cleanupEuropeanVPCTest rensar test environment
+func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
     terraform.Destroy(t, suite.TerraformOptions)
     t.Logf("✅ Test environment rensat for %s", suite.OrganizationName)
 }
@@ -677,13 +677,13 @@ Architecture as Code-principerna within This area#cloudformation-Architecture as
 
 This sektion contains CloudFormation templates for AWS-infrastructure adapted for organisations.
 
-### 07_CODE_1: VPC Setup for organisations with GDPR compliance
+### 07_CODE_1: VPC Setup for European organisations with GDPR compliance
 *Refereras from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
-# cloudformation/a-org-vpc.yaml
+# cloudformation/eu-org-vpc.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'VPC setup for organizations with GDPR compliance'
+Description: 'VPC setup for European organizations with GDPR compliance'
 
 Parameters:
   EnvironmentType:
@@ -837,16 +837,16 @@ class ComprehensiveIaCTesting:
 
 This sektion contains konfigurationsfiler for different tools and services.
 
-### 22_CODE_2: Governance policy configuration for organisations
+### 22_CODE_2: Governance policy configuration for European organisations
 *Refereras from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```yaml
-# governance/a-governance-policy.yaml
+# governance/eu-governance-policy.yaml
 governance_framework:
-  organization: "Organization AB"
+  organization: "European Organization AB"
   compliance_standards: ["GDPR", "ISO27001", "SOC2"]
   data_residency: "EU"
-  regulatory_authority: "Integritetsskyddsmyndigheten (IMY)"
+  regulatory_authority: "Data Protection Authority"
 
 policy_enforcement:
   automated_checks:
@@ -2539,7 +2539,7 @@ resource "aws_launch_template" "spot_optimized" {
 *Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
 
 ```rego
-package se.enterprise.security
+package eu.enterprise.security
 
 import rego.v1
 
@@ -2777,7 +2777,7 @@ assess_regulator(name, violations) := {
 }
 ```
 
-### 10_CODE_2: OSCAL profile for regulated  financial services {#10_code_2}
+### 10_CODE_2: OSCAL profile for regulated EU financial services {#10_code_2}
 *Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
 
 ```json
@@ -2785,13 +2785,13 @@ assess_regulator(name, violations) := {
   "profile": {
     "uuid": "87654321-4321-8765-4321-876543218765",
     "metadata": {
-      "title": " Financial Institutions Security Profile",
+      "title": "EU Financial Institutions Security Profile",
       "published": "2024-01-15T11:00:00Z",
       "last-modified": "2024-01-15T11:00:00Z",
       "version": "2.1",
       "oscal-version": "1.1.2",
       "props": [
-        { "name": "organization", "value": " Financial Sector" },
+        { "name": "organization", "value": "EU Financial Sector" },
         { "name": "jurisdiction", "value": "EU" }
       ]
     },
@@ -2869,14 +2869,14 @@ assess_regulator(name, violations) := {
 ```
 
 ### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
-*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the  financial profile.
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the EU financial profile.
 
 ```json
 {
   "component-definition": {
     "uuid": "11223344-5566-7788-99aa-bbccddeeff00",
     "metadata": {
-      "title": "AWS Components for  Regulated Workloads",
+      "title": "AWS Components for EU Regulated Workloads",
       "published": "2024-01-15T12:00:00Z",
       "last-modified": "2024-01-15T12:00:00Z",
       "version": "1.5",
@@ -3036,7 +3036,7 @@ class OSCALSSPGenerator:
                     "version": "1.0",
                     "oscal-version": "1.1.2",
                     "props": [
-                        {"name": "organization", "value": " Enterprise"},
+                        {"name": "organization", "value": "EU Enterprise"},
                         {"name": "system-name", "value": system_name}
                     ]
                 },
