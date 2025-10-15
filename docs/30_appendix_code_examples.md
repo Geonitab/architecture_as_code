@@ -2112,23 +2112,24 @@ terraform {
   }
 }
 
-# Cost allocation tags for all infrastruktur
+# Cost allocation tags for all infrastructure
 locals {
   cost_tags = {
-    CostCenter     = var.cost_center
+    CostCentre     = var.cost_centre
     Project        = var.project_name
     Environment    = var.environment
     Owner          = var.team_email
     BudgetAlert    = var.budget_threshold
     ReviewDate     = formatdate("YYYY-MM-DD", timeadd(timestamp(), "30*24h"))
+    Region         = var.aws_region
   }
 }
 
-# Budget with automatiska alerts
+# Budget with automatic alerts (EUR equivalent tracked separately for EU reporting)
 resource "aws_budgets_budget" "project_budget" {
   name         = "${var.project_name}-budget"
   budget_type  = "COST"
-  limit_amount = var.monthly_budget_limit
+  limit_amount = var.monthly_budget_limit_usd  # AWS bills in USD
   limit_unit   = "USD"
   time_unit    = "MONTHLY"
   
@@ -2136,6 +2137,7 @@ resource "aws_budgets_budget" "project_budget" {
     Tag = {
       Project = [var.project_name]
     }
+    Region = [var.aws_region]  # Filter by EU region
   }
 
   notification {
@@ -2155,12 +2157,12 @@ resource "aws_budgets_budget" "project_budget" {
   }
 }
 
-# Cost-optimerad EC2 with Spot instances
+# Cost-optimised EC2 with Spot instances
 resource "aws_launch_template" "cost_optimized" {
   name_prefix   = "${var.project_name}-cost-opt-"
   image_id      = data.aws_ami.amazon_linux.id
   
-  # Mischade instance types for cost optimization
+  # Mixed instance types for cost optimisation
   instance_requirements {
     memory_mib {
       min = 2048
@@ -2173,7 +2175,7 @@ resource "aws_launch_template" "cost_optimized" {
     instance_generations = ["current"]
   }
 
-  # Spot instance preference for kostnadsoptimering
+  # Spot instance preference for cost optimisation
   instance_market_options {
     market_type = "spot"
     spot_options {
@@ -2187,7 +2189,7 @@ resource "aws_launch_template" "cost_optimized" {
   }
 }
 
-# Auto Scaling with kostnadshänsyn
+# Auto Scaling with cost considerations
 resource "aws_autoscaling_group" "cost_aware" {
   name                = "${var.project_name}-cost-aware-asg"
   vpc_zone_identifier = var.private_subnet_ids
@@ -2195,7 +2197,7 @@ resource "aws_autoscaling_group" "cost_aware" {
   max_size            = var.max_instances
   desired_capacity    = var.desired_instances
 
-  # Blandad instanstyp-strategi for kostnadsoptimering
+  # Mixed instance type strategy for cost optimisation
   mixed_instances_policy {
     instances_distribution {
       on_demand_base_capacity                  = 1
@@ -2351,17 +2353,30 @@ import pandas as pd
 
 class AWSCostOptimizer:
     """
-    Automatiserad kostnadsoptimering for AWS-resurser
+    Automated cost optimisation for AWS resources across EU regions
     """
     
-    def __init__(self, region='eu-north-1'):
+    def __init__(self, region='eu-west-1', eu_regions=None):
+        """
+        Initialise cost optimiser for EU regions.
+        
+        Args:
+            region: Primary AWS region (defaults to eu-west-1, Ireland)
+            eu_regions: List of EU regions to analyse (defaults to major EU regions)
+        """
+        if eu_regions is None:
+            # Default EU regions for multi-region cost analysis
+            eu_regions = ['eu-west-1', 'eu-central-1', 'eu-west-2', 'eu-west-3', 'eu-south-1', 'eu-north-1']
+        
+        self.region = region
+        self.eu_regions = eu_regions
         self.cost_explorer = boto3.client('ce', region_name=region)
         self.ec2 = boto3.client('ec2', region_name=region)
         self.rds = boto3.client('rds', region_name=region)
         self.cloudwatch = boto3.client('cloudwatch', region_name=region)
         
     def analyze_cost_trends(self, days_back=30) -> Dict:
-        """Analysera kostnadstrender for last perioden"""
+        """Analyse cost trends for the last period across EU regions"""
         
         end_date = datetime.now().date()
         start_date = end_date - timedelta(days=days_back)
@@ -2375,20 +2390,33 @@ class AWSCostOptimizer:
             Metrics=['BlendedCost'],
             GroupBy=[
                 {'Type': 'DIMENSION', 'Key': 'SERVICE'},
-                {'Type': 'TAG', 'Key': 'Project'}
-            ]
+                {'Type': 'TAG', 'Key': 'Project'},
+                {'Type': 'DIMENSION', 'Key': 'REGION'}
+            ],
+            Filter={
+                'Dimensions': {
+                    'Key': 'REGION',
+                    'Values': self.eu_regions
+                }
+            }
         )
         
         return self._process_cost_data(response)
     
     def identify_rightsizing_opportunities(self) -> List[Dict]:
-        """Identifiera EC2-instanser as can rightsizas"""
+        """Identify EC2 instances that can be rightsized across EU regions"""
         
         rightsizing_response = self.cost_explorer.get_rightsizing_recommendation(
             Service='AmazonEC2',
             Configuration={
                 'BenefitsConsidered': True,
                 'RecommendationTarget': 'SAME_INSTANCE_FAMILY'
+            },
+            Filter={
+                'Dimensions': {
+                    'Key': 'REGION',
+                    'Values': self.eu_regions
+                }
             }
         )
         
@@ -2400,14 +2428,15 @@ class AWSCostOptimizer:
                     'instance_id': recommendation['CurrentInstance']['ResourceId'],
                     'current_type': recommendation['CurrentInstance']['InstanceName'],
                     'recommended_type': recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['InstanceName'],
-                    'estimated_monthly_savings': float(recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['EstimatedMonthlySavings']),
-                    'utilization': recommendation['CurrentInstance']['UtilizationMetrics']
+                    'estimated_monthly_savings_usd': float(recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['EstimatedMonthlySavings']),
+                    'utilisation': recommendation['CurrentInstance']['UtilizationMetrics'],
+                    'region': recommendation['CurrentInstance'].get('Region', 'unknown')
                 })
         
         return opportunities
     
     def get_unused_resources(self) -> Dict:
-        """Identifiera oanvända resurser as can termineras"""
+        """Identify unused resources that can be terminated across EU regions"""
         
         unused_resources = {
             'unattached_volumes': self._find_unattached_ebs_volumes(),
@@ -2419,92 +2448,114 @@ class AWSCostOptimizer:
         return unused_resources
     
     def generate_cost_optimization_plan(self, project_tag: str) -> Dict:
-        """Generera comprehensive kostnadsoptimeringsplan"""
+        """Generate comprehensive cost optimisation plan for EU regions"""
         
         plan = {
             'project': project_tag,
             'analysis_date': datetime.now().isoformat(),
-            'current_monthly_cost': self._get_current_monthly_cost(project_tag),
+            'eu_regions_analysed': self.eu_regions,
+            'current_monthly_cost_usd': self._get_current_monthly_cost(project_tag),
             'recommendations': {
                 'rightsizing': self.identify_rightsizing_opportunities(),
                 'unused_resources': self.get_unused_resources(),
                 'reserved_instances': self._analyze_reserved_instance_opportunities(),
                 'spot_instances': self._analyze_spot_instance_opportunities()
             },
-            'potential_monthly_savings': 0
+            'potential_monthly_savings_usd': 0,
+            'notes': 'Costs are in USD (AWS billing currency). Convert to EUR using current exchange rate for EU financial reporting.'
         }
         
-        # Beräkna total potentiell besparing
+        # Calculate total potential savings
         total_savings = 0
         for rec_type, recommendations in plan['recommendations'].items():
             if isinstance(recommendations, list):
-                total_savings += sum(rec.get('estimated_monthly_savings', 0) for rec in recommendations)
+                total_savings += sum(rec.get('estimated_monthly_savings_usd', 0) for rec in recommendations)
             elif isinstance(recommendations, dict):
-                total_savings += recommendations.get('estimated_monthly_savings', 0)
+                total_savings += recommendations.get('estimated_monthly_savings_usd', 0)
         
-        plan['potential_monthly_savings'] = total_savings
-        plan['savings_percentage'] = (total_savings / plan['current_monthly_cost']) * 100 if plan['current_monthly_cost'] > 0 else 0
+        plan['potential_monthly_savings_usd'] = total_savings
+        plan['savings_percentage'] = (total_savings / plan['current_monthly_cost_usd']) * 100 if plan['current_monthly_cost_usd'] > 0 else 0
         
         return plan
     
     def _find_unattached_ebs_volumes(self) -> List[Dict]:
-        """Hitta icke-anslutna EBS-volymer"""
-        
-        response = self.ec2.describe_volumes(
-            Filters=[{'Name': 'status', 'Values': ['available']}]
-        )
+        """Find unattached EBS volumes across EU regions"""
         
         unattached_volumes = []
-        for volume in response['Volumes']:
-            # Beräkna månadskostnad based on volymstorlek and typ
-            monthly_cost = self._calculate_ebs_monthly_cost(volume)
+        
+        for region in self.eu_regions:
+            ec2_regional = boto3.client('ec2', region_name=region)
+            response = ec2_regional.describe_volumes(
+                Filters=[{'Name': 'status', 'Values': ['available']}]
+            )
             
-            unattached_volumes.append({
-                'volume_id': volume['VolumeId'],
-                'size_gb': volume['Size'],
-                'volume_type': volume['VolumeType'],
-                'estimated_monthly_savings': monthly_cost,
-                'creation_date': volume['CreateTime'].isoformat()
-            })
+            for volume in response['Volumes']:
+                # Calculate monthly cost based on volume size and type
+                monthly_cost = self._calculate_ebs_monthly_cost(volume, region)
+                
+                unattached_volumes.append({
+                    'volume_id': volume['VolumeId'],
+                    'size_gb': volume['Size'],
+                    'volume_type': volume['VolumeType'],
+                    'region': region,
+                    'estimated_monthly_savings_usd': monthly_cost,
+                    'creation_date': volume['CreateTime'].isoformat()
+                })
         
         return unattached_volumes
     
-    def _calculate_ebs_monthly_cost(self, volume: Dict) -> float:
-        """Beräkna månadskostnad for EBS-volym"""
+    def _calculate_ebs_monthly_cost(self, volume: Dict, region: str) -> float:
+        """Calculate monthly cost for EBS volume in specific EU region"""
         
-        # Prisexempel for eu-north-1 (Stockholm)
-        pricing = {
-            'gp3': 0.096,  # USD per GB/månad
-            'gp2': 0.114,
-            'io1': 0.142,
-            'io2': 0.142,
-            'st1': 0.050,
-            'sc1': 0.028
+        # Example pricing for EU regions (USD per GB/month)
+        # Prices vary slightly by region - these are representative values
+        regional_pricing = {
+            'eu-west-1': {  # Ireland
+                'gp3': 0.088,
+                'gp2': 0.110,
+                'io1': 0.138,
+                'io2': 0.138,
+                'st1': 0.048,
+                'sc1': 0.026
+            },
+            'eu-central-1': {  # Frankfurt
+                'gp3': 0.095,
+                'gp2': 0.119,
+                'io1': 0.149,
+                'io2': 0.149,
+                'st1': 0.052,
+                'sc1': 0.028
+            }
         }
         
-        cost_per_gb = pricing.get(volume['VolumeType'], 0.114)  # Default to gp2
+        # Default to eu-west-1 pricing if region not found
+        pricing = regional_pricing.get(region, regional_pricing['eu-west-1'])
+        cost_per_gb = pricing.get(volume['VolumeType'], 0.110)  # Default to gp2
         return volume['Size'] * cost_per_gb
 
 def generate_terraform_cost_optimizations(cost_plan: Dict) -> str:
-    """Generera Terraform-code to implement kostnadsoptimeringar"""
+    """Generate Terraform code to implement cost optimisations"""
     
     terraform_code = """
-# automatically genererade kostnadsoptimeringar
-# Genererat: {date}
-# Projekt: {project}
-# Potentiell månadsbesparing: ${savings:.2f}
+# Automatically generated cost optimisations
+# Generated: {date}
+# Project: {project}
+# EU Regions: {regions}
+# Potential monthly savings: ${savings:.2f} USD
+# Note: Convert to EUR using current exchange rate for financial reporting
 
 """.format(
         date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         project=cost_plan['project'],
-        savings=cost_plan['potential_monthly_savings']
+        regions=', '.join(cost_plan.get('eu_regions_analysed', [])),
+        savings=cost_plan['potential_monthly_savings_usd']
     )
     
-    # Generera spot instance configurations
+    # Generate spot instance configurations
     if cost_plan['recommendations']['spot_instances']:
         terraform_code += """
-# Spot Instance Configuration for kostnadsoptimering
-resource "aws_launch_template" "spot_optimized" {
+# Spot Instance Configuration for cost optimisation
+resource "aws_launch_template" "spot_optimized" {{
   name_prefix   = "{project}-spot-"
   
   instance_market_options {{
@@ -2519,7 +2570,7 @@ resource "aws_launch_template" "spot_optimized" {
     resource_type = "instance"
     tags = {{
       Project = "{project}"
-      CostOptimization = "spot-instance"
+      CostOptimisation = "spot-instance"
       EstimatedSavings = "${estimated_savings}"
     }}
   }}
@@ -2527,7 +2578,7 @@ resource "aws_launch_template" "spot_optimized" {
 """.format(
             project=cost_plan['project'],
             max_spot_price=cost_plan['recommendations']['spot_instances'].get('recommended_max_price', '0.10'),
-            estimated_savings=cost_plan['recommendations']['spot_instances'].get('estimated_monthly_savings', 0)
+            estimated_savings=cost_plan['recommendations']['spot_instances'].get('estimated_monthly_savings_usd', 0)
         )
     
     return terraform_code
