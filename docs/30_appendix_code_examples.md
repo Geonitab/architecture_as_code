@@ -433,8 +433,8 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// SvenskaVPCTestSuite definierar test suite for VPC implementation
-type SvenskaVPCTestSuite struct {
+// EUVPCTestSuite defines test suite for VPC implementation
+type EUVPCTestSuite struct {
     TerraformOptions *terraform.Options
     AWSSession       *session.Session
     OrganizationName string
@@ -442,12 +442,12 @@ type SvenskaVPCTestSuite struct {
     CostCenter       string
 }
 
-// TestSvenskaVPCGDPRCompliance testar GDPR compliance for VPC implementation
-func TestSvenskaVPCGDPRCompliance(t *testing.T) {
+// TestEUVPCGDPRCompliance tests GDPR compliance for VPC implementation
+func TestEUVPCGDPRCompliance(t *testing.T) {
     t.Parallel()
 
-    suite := setupSvenskaVPCTest(t, "development")
-    defer cleanupSvenskaVPCTest(t, suite)
+    suite := setupEUVPCTest(t, "development")
+    defer cleanupEUVPCTest(t, suite)
 
     // Deploy infrastructure
     terraform.InitAndApply(t, suite.TerraformOptions)
@@ -469,14 +469,14 @@ func TestSvenskaVPCGDPRCompliance(t *testing.T) {
         testAuditLogging(t, suite)
     })
 
-    t.Run("TestSvenskaTagging", func(t *testing.T) {
-        testSvenskaTagging(t, suite)
+    t.Run("TestEUTagging", func(t *testing.T) {
+        testEUTagging(t, suite)
     })
 }
 
-// setupSvenskaVPCTest förbereder test environment for VPC testing
-func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
-    // Unik test identifier
+// setupEUVPCTest prepares test environment for VPC testing
+func setupEUVPCTest(t *testing.T, environment string) *EUVPCTestSuite {
+    // Unique test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
     organizationName := fmt.Sprintf("a-org-%s", uniqueID)
 
@@ -496,7 +496,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
         BackendConfig: map[string]interface{}{
             "bucket": "a-org-terraform-test-state",
             "key":    fmt.Sprintf("test/%s/terraform.tfstate", uniqueID),
-            "region": "eu-north-1",
+            "region": "eu-central-1",
         },
         RetryableTerraformErrors: map[string]string{
             ".*": "Transient error - retrying...",
@@ -505,12 +505,12 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
         TimeBetweenRetries: 5 * time.Second,
     }
 
-    // AWS session for Stockholm region
+    // AWS session for EU region
     awsSession := session.Must(session.NewSession(&aws.Config{
-        Region: aws.String("eu-north-1"),
+        Region: aws.String("eu-central-1"),
     }))
 
-    return &SvenskaVPCTestSuite{
+    return &EUVPCTestSuite{
         TerraformOptions: terraformOptions,
         AWSSession:       awsSession,
         OrganizationName: organizationName,
@@ -519,16 +519,16 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
     }
 }
 
-// testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade for GDPR compliance
-func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Hämta VPC ID from Terraform output
+// testVPCFlowLogsEnabled validates that VPC Flow Logs are enabled for GDPR compliance
+func testVPCFlowLogsEnabled(t *testing.T, suite *EUVPCTestSuite) {
+    // Retrieve VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     require.NotEmpty(t, vpcID, "VPC ID should not be empty")
 
     // AWS EC2 client
     ec2Client := ec2.New(suite.AWSSession)
 
-    // Kontrollera Flow Logs
+    // Check Flow Logs
     flowLogsInput := &ec2.DescribeFlowLogsInput{
         Filters: []*ec2.Filter{
             {
@@ -541,7 +541,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
     flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
     require.NoError(t, err, "Failed to describe VPC flow logs")
 
-    // Validate to Flow Logs is aktiverade
+    // Validate that Flow Logs are enabled
     assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, "VPC Flow Logs should be enabled for GDPR compliance")
 
     for _, flowLog := range flowLogsOutput.FlowLogs {
@@ -549,24 +549,24 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
         assert.Equal(t, "ALL", *flowLog.TrafficType, "Flow log should capture all traffic for compliance")
     }
 
-    t.Logf("✅ VPC Flow Logs aktiverade for GDPR compliance: %s", vpcID)
+    t.Logf("✅ VPC Flow Logs enabled for GDPR compliance: %s", vpcID)
 }
 
-// testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
-func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Hämta KMS key from Terraform output
+// testEncryptionAtRest validates that all storage is encrypted according to GDPR requirements
+func testEncryptionAtRest(t *testing.T, suite *EUVPCTestSuite) {
+    // Retrieve KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
 
-    // Validate to KMS key is from Sverige region
-    assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
+    // Validate that KMS key is from EU region
+    assert.Contains(t, kmsKeyArn, "eu-central-1", "KMS key should be in EU region for data residency")
 
-    t.Logf("✅ Encryption at rest validerat for GDPR compliance")
+    t.Logf("✅ Encryption at rest validated for GDPR compliance")
 }
 
-// testDataResidencyEU validates to all infrastruktur is within gränser
-func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Validate to VPC is in Stockholm region
+// testDataResidencyEU validates that all infrastructure is within EU boundaries
+func testDataResidencyEU(t *testing.T, suite *EUVPCTestSuite) {
+    // Validate that VPC is in EU region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
     ec2Client := ec2.New(suite.AWSSession)
@@ -577,7 +577,7 @@ func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
     require.NoError(t, err, "Failed to describe VPC")
     require.Len(t, vpcOutput.Vpcs, 1, "Should find exactly one VPC")
 
-    // Kontrollera region from session config
+    // Check region from session config
     region := *suite.AWSSession.Config.Region
     allowedRegions := []string{"eu-north-1", "eu-central-1", "eu-west-1"}
     
@@ -589,14 +589,14 @@ func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
         }
     }
     
-    assert.True(t, regionAllowed, "VPC must be in EU region for  data residency. Found: %s", region)
+    assert.True(t, regionAllowed, "VPC must be in EU region for data residency. Found: %s", region)
 
-    t.Logf("✅ Data residency validerat - all infrastruktur in EU region: %s", region)
+    t.Logf("✅ Data residency validated - all infrastructure in EU region: %s", region)
 }
 
-// testAuditLogging validates to audit logging is konfigurerat according to lagrequirements
-func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Kontrollera CloudTrail configuration
+// testAuditLogging validates that audit logging is configured according to legal requirements
+func testAuditLogging(t *testing.T, suite *EUVPCTestSuite) {
+    // Check CloudTrail configuration
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
     
     trails, err := cloudtrailClient.DescribeTrails(&cloudtrail.DescribeTrailsInput{})
@@ -606,15 +606,15 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     for _, trail := range trails.TrailList {
         if strings.Contains(*trail.Name, suite.OrganizationName) {
             foundOrgTrail = true
-            t.Logf("✅ CloudTrail audit logging konfigurerat: %s", *trail.Name)
+            t.Logf("✅ CloudTrail audit logging configured: %s", *trail.Name)
         }
     }
 
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validates to all resurser has korrekta tags
-func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
+// testEUTagging validates that all resources have correct tags
+func testEUTagging(t *testing.T, suite *EUVPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
         "Country", "GDPRCompliant", "DataResidency",
@@ -643,13 +643,13 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     })
     require.NoError(t, err, "Failed to describe VPC tags")
 
-    // Konvertera tags to map for enklare validation
+    // Convert tags to map for easier validation
     vpcTagMap := make(map[string]string)
     for _, tag := range vpcTags.Tags {
         vpcTagMap[*tag.Key] = *tag.Value
     }
 
-    // Validate obligatoriska tags
+    // Validate mandatory tags
     for _, requiredTag := range requiredTags {
         assert.Contains(t, vpcTagMap, requiredTag, "VPC should have required tag: %s", requiredTag)
         
@@ -659,13 +659,13 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
         }
     }
 
-    t.Logf("✅ tagging validerat for all resurser")
+    t.Logf("✅ Tagging validated for all resources")
 }
 
-// cleanupSvenskaVPCTest rensar test environment
-func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
+// cleanupEUVPCTest cleans up test environment
+func cleanupEUVPCTest(t *testing.T, suite *EUVPCTestSuite) {
     terraform.Destroy(t, suite.TerraformOptions)
-    t.Logf("✅ Test environment rensat for %s", suite.OrganizationName)
+    t.Logf("✅ Test environment cleaned up for %s", suite.OrganizationName)
 }
 ```
 
@@ -770,7 +770,7 @@ class ComprehensiveIaCTesting:
     Based at architecture as code best practices and international standards
     """
     
-    def __init__(self, region='eu-north-1'):
+    def __init__(self, region='eu-central-1'):
         self.region = region
         self.ec2 = boto3.client('ec2', region_name=region)
         self.rds = boto3.client('rds', region_name=region)
@@ -1017,7 +1017,7 @@ export interface ResourceConfig {
 export class TerraformConfigGenerator {
   generateVPCConfig(
     environment: string,
-    region: string = 'eu-north-1'
+    region: string = 'eu-central-1'
   ): TerraformConfig {
     // Validate EU regions for GDPR compliance
     const euRegions = ['eu-north-1', 'eu-west-1', 'eu-central-1'];
@@ -2351,17 +2351,17 @@ import pandas as pd
 
 class AWSCostOptimizer:
     """
-    Automatiserad kostnadsoptimering for AWS-resurser
+    Automated cost optimisation for AWS resources
     """
     
-    def __init__(self, region='eu-north-1'):
+    def __init__(self, region='eu-central-1'):
         self.cost_explorer = boto3.client('ce', region_name=region)
         self.ec2 = boto3.client('ec2', region_name=region)
         self.rds = boto3.client('rds', region_name=region)
         self.cloudwatch = boto3.client('cloudwatch', region_name=region)
         
     def analyze_cost_trends(self, days_back=30) -> Dict:
-        """Analysera kostnadstrender for last perioden"""
+        """Analyse cost trends for the recent period"""
         
         end_date = datetime.now().date()
         start_date = end_date - timedelta(days=days_back)
@@ -2434,7 +2434,7 @@ class AWSCostOptimizer:
             'potential_monthly_savings': 0
         }
         
-        # Beräkna total potentiell besparing
+        # Calculate total potential savings
         total_savings = 0
         for rec_type, recommendations in plan['recommendations'].items():
             if isinstance(recommendations, list):
@@ -2448,7 +2448,7 @@ class AWSCostOptimizer:
         return plan
     
     def _find_unattached_ebs_volumes(self) -> List[Dict]:
-        """Hitta icke-anslutna EBS-volymer"""
+        """Find unattached EBS volumes"""
         
         response = self.ec2.describe_volumes(
             Filters=[{'Name': 'status', 'Values': ['available']}]
@@ -2456,7 +2456,7 @@ class AWSCostOptimizer:
         
         unattached_volumes = []
         for volume in response['Volumes']:
-            # Beräkna månadskostnad based on volymstorlek and typ
+            # Calculate monthly cost based on volume size and type
             monthly_cost = self._calculate_ebs_monthly_cost(volume)
             
             unattached_volumes.append({
@@ -2470,11 +2470,11 @@ class AWSCostOptimizer:
         return unattached_volumes
     
     def _calculate_ebs_monthly_cost(self, volume: Dict) -> float:
-        """Beräkna månadskostnad for EBS-volym"""
+        """Calculate monthly cost for EBS volume"""
         
-        # Prisexempel for eu-north-1 (Stockholm)
+        # Pricing example for EU region
         pricing = {
-            'gp3': 0.096,  # USD per GB/månad
+            'gp3': 0.096,  # USD per GB/month
             'gp2': 0.114,
             'io1': 0.142,
             'io2': 0.142,
@@ -2489,10 +2489,10 @@ def generate_terraform_cost_optimizations(cost_plan: Dict) -> str:
     """Generera Terraform-code to implement kostnadsoptimeringar"""
     
     terraform_code = """
-# automatically genererade kostnadsoptimeringar
-# Genererat: {date}
-# Projekt: {project}
-# Potentiell månadsbesparing: ${savings:.2f}
+# Automatically generated cost optimisations
+# Generated: {date}
+# Project: {project}
+# Potential monthly savings: ${savings:.2f}
 
 """.format(
         date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
