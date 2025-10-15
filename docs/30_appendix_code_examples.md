@@ -2535,11 +2535,11 @@ resource "aws_launch_template" "spot_optimized" {
 
 ## Security and compliance {#security-compliance}
 
-### 10_CODE_1: Advanced Policy-as-Code module for  compliance {#10_code_1}
-*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
+### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
+*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by ENISA guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
 
 ```rego
-package se.enterprise.security
+package eu.enterprise.security
 
 import rego.v1
 
@@ -2636,7 +2636,7 @@ check_ingress_rules(sg) := violation {
         "security_group": sg.attributes.name,
         "message": sprintf("Administrative port %v is exposed to the internet", [rule.from_port]),
         "remediation": "Restrict access to dedicated management networks",
-        "reference": "MSB 3.2.1 Network Segmentation"
+        "reference": "ENISA Network Segmentation Best Practices"
     }
 }
 
@@ -2652,7 +2652,7 @@ check_ingress_rules(sg) := violation {
         "security_group": sg.attributes.name,
         "message": sprintf("Non-standard port %v is exposed to the internet", [rule.from_port]),
         "remediation": "Validate the business requirement and narrow the CIDR range",
-        "reference": "MSB 3.2.2 Minimal Exposure"
+        "reference": "ENISA Minimal Exposure Guidelines"
     }
 }
 
@@ -2732,7 +2732,7 @@ compliance_assessment := result {
         "violations": violations,
         "regulators": {
             "gdpr": assess_regulator("GDPR", violations),
-            "msb": assess_regulator("MSB", violations),
+            "enisa": assess_regulator("ENISA", violations),
             "iso27001": assess_regulator("ISO 27001", violations)
         }
     }
@@ -2777,8 +2777,8 @@ assess_regulator(name, violations) := {
 }
 ```
 
-### 10_CODE_2: OSCAL profile for regulated  financial services {#10_code_2}
-*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
+### 10_CODE_2: OSCAL profile for regulated EU financial services {#10_code_2}
+*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and ENISA network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
 
 ```json
 {
@@ -2791,7 +2791,7 @@ assess_regulator(name, violations) := {
       "version": "2.1",
       "oscal-version": "1.1.2",
       "props": [
-        { "name": "organization", "value": " Financial Sector" },
+        { "name": "organization", "value": "EU Financial Sector" },
         { "name": "jurisdiction", "value": "EU" }
       ]
     },
@@ -2805,7 +2805,7 @@ assess_regulator(name, violations) := {
       {
         "href": "regional-catalog.json",
         "include-controls": [
-          { "matching": [ { "pattern": "gdpr-.*" }, { "pattern": "msb-.*" } ] }
+          { "matching": [ { "pattern": "gdpr-.*" }, { "pattern": "enisa-.*" } ] }
         ]
       }
     ],
@@ -2823,7 +2823,7 @@ assess_regulator(name, violations) := {
           "values": ["AWS KMS customer managed keys backed by HSM"]
         },
         {
-          "param-id": "msb-3.2.1_prm1",
+          "param-id": "enisa-ns-1_prm1",
           "values": ["Zero Trust segmentation enforced via AWS Network Firewall"]
         }
       ],
@@ -2836,9 +2836,9 @@ assess_regulator(name, violations) := {
               "by-id": "gdpr-art32-1_gdn",
               "parts": [
                 {
-                  "id": "gdpr-art32-1_fin-guidance",
+                  "id": "gdpr-art32-1_eba-guidance",
                   "name": "guidance",
-                  "title": "Finansinspektionen Supplement",
+                  "title": "EBA Supplement",
                   "prose": "Payment service providers must use FIPS 140-2 validated encryption modules and review key material every 90 days."
                 }
               ]
@@ -2846,14 +2846,14 @@ assess_regulator(name, violations) := {
           ]
         },
         {
-          "control-id": "msb-3.2.1",
+          "control-id": "enisa-ns-1",
           "adds": [
             {
               "position": "after",
-              "by-id": "msb-3.2.1_gdn",
+              "by-id": "enisa-ns-1_gdn",
               "parts": [
                 {
-                  "id": "msb-3.2.1_fin-requirement",
+                  "id": "enisa-ns-1_fin-requirement",
                   "name": "requirement",
                   "title": "Financial Sector Isolation",
                   "prose": "Critical payment workloads must be isolated in dedicated network segments with inspection by AWS Network Firewall and VPC Traffic Mirroring."
@@ -2869,14 +2869,14 @@ assess_regulator(name, violations) := {
 ```
 
 ### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
-*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the  financial profile.
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the EU financial profile.
 
 ```json
 {
   "component-definition": {
     "uuid": "11223344-5566-7788-99aa-bbccddeeff00",
     "metadata": {
-      "title": "AWS Components for  Regulated Workloads",
+      "title": "AWS Components for EU Regulated Workloads",
       "published": "2024-01-15T12:00:00Z",
       "last-modified": "2024-01-15T12:00:00Z",
       "version": "1.5",
@@ -2908,11 +2908,11 @@ assess_regulator(name, violations) := {
                 ]
               },
               {
-                "control-id": "msb-3.2.1.1",
+                "control-id": "enisa-ns-1.1",
                 "description": "Database subnet groups isolated from public subnets.",
                 "statements": [
                   {
-                    "statement-id": "msb-3.2.1.1_smt",
+                    "statement-id": "enisa-ns-1.1_smt",
                     "description": "Only application load balancers within the VPC may initiate connections.",
                     "implementation-status": { "state": "implemented" }
                   }
@@ -2943,11 +2943,11 @@ assess_regulator(name, violations) := {
                 ]
               },
               {
-                "control-id": "msb-3.2.1.2",
+                "control-id": "enisa-ns-1.2",
                 "description": "Zero Trust verification for access using IAM conditions.",
                 "statements": [
                   {
-                    "statement-id": "msb-3.2.1.2_smt",
+                    "statement-id": "enisa-ns-1.2_smt",
                     "description": "IAM policies require device posture attributes for privileged access.",
                     "implementation-status": { "state": "planned" }
                   }
@@ -2961,17 +2961,17 @@ assess_regulator(name, violations) := {
         "uuid": "comp-aws-network-firewall",
         "type": "software",
         "title": "AWS Network Firewall",
-        "description": "Edge inspection enforcing MSB segmentation and logging requirements.",
+        "description": "Edge inspection enforcing ENISA segmentation and logging requirements.",
         "control-implementations": [
           {
             "source": "regional-catalog.json",
             "implemented-requirements": [
               {
-                "control-id": "msb-3.2.1",
+                "control-id": "enisa-ns-1",
                 "description": "Micro-segmentation between payment and support zones.",
                 "statements": [
                   {
-                    "statement-id": "msb-3.2.1_smt",
+                    "statement-id": "enisa-ns-1_smt",
                     "description": "Stateful rules restrict lateral movement and mirror traffic to a central collector.",
                     "implementation-status": { "state": "implemented" }
                   }
@@ -3036,7 +3036,7 @@ class OSCALSSPGenerator:
                     "version": "1.0",
                     "oscal-version": "1.1.2",
                     "props": [
-                        {"name": "organization", "value": " Enterprise"},
+                        {"name": "organization", "value": "EU Enterprise"},
                         {"name": "system-name", "value": system_name}
                     ]
                 },
