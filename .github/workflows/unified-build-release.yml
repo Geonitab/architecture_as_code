@@ -419,10 +419,11 @@ PY
       - name: 📥 Checkout repository
         uses: actions/checkout@v5
 
-      - name: 📦 Download artifacts
+      - name: 📦 Download build artifacts
         uses: actions/download-artifact@v5
         with:
-          path: artifacts/
+          name: unified-docker-build
+          path: artifacts/unified-docker-build
 
       - name: 🔄 Merge build results
         run: |
