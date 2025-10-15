@@ -28,13 +28,13 @@ Public and private sector organisations worldwide face significant digital trans
 
 Architecture as Code-based solutions offer opportunities to break these limitations through automation, standardisation, and scalability that specifically address common transformation challenges:
 
-**Regulatory Compliance**: Organisations must navigate complex legislation including GDPR, sector-specific regulations, and regional data sovereignty requirements. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed environments.
+**Regulatory Compliance**: Organisations must navigate complex legislation including GDPR (enforced by the European Data Protection Board - EDPB), NIS2 Directive for critical infrastructure cybersecurity, sector-specific regulations, and data sovereignty requirements across EU member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed environments whilst meeting the expectations of European regulatory authorities.
 
 **Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Studies demonstrate that Infrastructure as Code reduces manual effort by up to 70%, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
 
 **Skills Challenges**: The IT industry experiences persistent shortages of specialist talent, making it critical to standardise and automate infrastructure management. Architecture as Code enables smaller, specialised teams to manage complex environments through reusable templates, proven patterns, and community best practices.
 
-**Security and Data Governance**: Organisations prioritise security and data control in an increasingly regulated landscape. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement that builds trust with customers, regulators, and stakeholders.
+**Security and Data Governance**: Organisations operating within the European Union prioritise security and data control in an increasingly regulated landscape, guided by the EDPB's enforcement of GDPR and the NIS2 Directive for critical infrastructure protection. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement that builds trust with customers, regulators, and stakeholders across all EU member states.
 
 Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets whilst maintaining compliance with diverse regional regulations and security requirements.
 
@@ -98,9 +98,9 @@ terraform {
   backend "s3" {
     bucket         = "enterprise-terraform-state"
     key            = "production/terraform.tfstate"
-    region         = "eu-west-1"  # European data residency
+    region         = var.aws_region  # Configurable EU region for data residency
     encrypt        = true
-    kms_key_id     = "arn:aws:kms:eu-west-1:ACCOUNT:key/example-key-id"
+    kms_key_id     = var.kms_key_arn
     dynamodb_table = "terraform-locks"
     
     # Audit logging for compliance
@@ -204,28 +204,28 @@ As a licensed bank, Capital One must follow strict regulatory requirements whils
 Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers whilst ensuring data sovereignty and regulatory compliance.
 
 **AWS Global Infrastructure:**
-Amazon Web Services operates regions globally with specific features to meet data residency requirements:
+Amazon Web Services operates multiple regions across Europe with specific features to meet data residency requirements for EU member states:
 
-- Physical data sovereignty within regional boundaries
-- Low-latency connectivity across geographic zones
+- Physical data sovereignty within European regional boundaries
+- Low-latency connectivity across EU availability zones
 - Comprehensive compliance certifications including ISO 27001, SOC 2, and PCI-DSS
-- Dedicated support with regional expertise
+- Dedicated support for European organisations with regional expertise
 
 **Microsoft Azure:**
-Microsoft has invested significantly in cloud infrastructure with global reach:
+Microsoft has invested significantly in cloud infrastructure with extensive EU coverage:
 
-- Azure Government Cloud for public sector organisations
-- Integration with enterprise identity providers
-- Compliance with industry governance standards
-- Partnership ecosystem with system integrators
+- Azure Government Cloud options for public sector organisations across Europe
+- Integration with enterprise identity providers common in EU organisations
+- Compliance with EU governance standards and EDPB guidelines
+- Partnership ecosystem with European system integrators
 
 **Google Cloud Platform:**
-Google operates global cloud regions emphasising:
+Google operates multiple cloud regions across Europe emphasising:
 
-- EU-based data processing for GDPR compliance
-- Carbon-neutral operations aligned with sustainability goals
-- Advanced AI/ML capabilities for research and innovation
-- Integration with open-source ecosystems
+- EU-based data processing facilities for GDPR compliance under EDPB supervision
+- Carbon-neutral operations aligned with EU sustainability goals
+- Advanced AI/ML capabilities for European research and innovation
+- Integration with open-source ecosystems popular in European development communities
 
 ## Digital Transformation in Enterprises
 
@@ -242,7 +242,7 @@ Challenges within digital transformation include skills shortages, cultural resi
 
 ### Multi-Cloud Enterprise Strategy
 ```yaml
-# terraform/main.tf - Multi-cloud setup for global enterprise
+# terraform/main.tf - Multi-cloud setup for European enterprise
 terraform {
   required_providers {
     aws = {
@@ -256,21 +256,21 @@ terraform {
   }
 }
 
-# AWS for global services
+# AWS for global services with EU data residency
 provider "aws" {
-  region = "eu-west-1"  # European region for data sovereignty
+  region = var.aws_region  # Configurable European region (e.g., eu-west-1, eu-central-1, eu-north-1)
 }
 
 # Azure for Microsoft integrations
 provider "azurerm" {
   features {}
-  location = "West Europe"
+  location = var.azure_location  # Configurable European location (e.g., "West Europe", "North Europe")
 }
 
 # Common resource tagging for cost management
 locals {
   common_tags = {
-    Organisation = "Global Enterprise Ltd"
+    Organisation = "European Enterprise Ltd"
     Environment  = var.environment
     Project      = var.project_name
     CostCentre   = var.cost_centre
