@@ -169,7 +169,7 @@ Requirements as Code (RaC) transforms traditional requirements specifications fr
 apiVersion: policy/v1
 kind: RequirementSet
 metadata:
-  name: swedish-security-requirements
+  name: eu-security-requirements
   version: "1.2"
 spec:
   requirements:
