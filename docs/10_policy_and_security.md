@@ -84,7 +84,7 @@ OSCAL is organised into complementary models:
 
 ### Crafting organisation-specific profiles
 
-Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate FCA guidance in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
+Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate PSD2 requirements in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
 
 ### Component definitions and reusable evidence
 

@@ -2535,8 +2535,8 @@ resource "aws_launch_template" "spot_optimized" {
 
 ## Security and compliance {#security-compliance}
 
-### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
-*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by ENISA guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
+### 10_CODE_1: Advanced Policy-as-Code module for  compliance {#10_code_1}
+*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks aligned with NIS2 requirements, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
 
 ```rego
 package eu.enterprise.security
@@ -2636,7 +2636,7 @@ check_ingress_rules(sg) := violation {
         "security_group": sg.attributes.name,
         "message": sprintf("Administrative port %v is exposed to the internet", [rule.from_port]),
         "remediation": "Restrict access to dedicated management networks",
-        "reference": "ENISA Network Segmentation Best Practices"
+        "reference": "NIS2 Article 21 Network Segmentation"
     }
 }
 
@@ -2652,7 +2652,7 @@ check_ingress_rules(sg) := violation {
         "security_group": sg.attributes.name,
         "message": sprintf("Non-standard port %v is exposed to the internet", [rule.from_port]),
         "remediation": "Validate the business requirement and narrow the CIDR range",
-        "reference": "ENISA Minimal Exposure Guidelines"
+        "reference": "NIS2 Article 21 Minimal Exposure"
     }
 }
 
@@ -2732,7 +2732,7 @@ compliance_assessment := result {
         "violations": violations,
         "regulators": {
             "gdpr": assess_regulator("GDPR", violations),
-            "enisa": assess_regulator("ENISA", violations),
+            "nis2": assess_regulator("NIS2", violations),
             "iso27001": assess_regulator("ISO 27001", violations)
         }
     }
@@ -2777,8 +2777,8 @@ assess_regulator(name, violations) := {
 }
 ```
 
-### 10_CODE_2: OSCAL profile for regulated EU financial services {#10_code_2}
-*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and ENISA network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
+### 10_CODE_2: OSCAL profile for regulated  financial services {#10_code_2}
+*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and NIS2 network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
 
 ```json
 {
@@ -2805,7 +2805,7 @@ assess_regulator(name, violations) := {
       {
         "href": "regional-catalog.json",
         "include-controls": [
-          { "matching": [ { "pattern": "gdpr-.*" }, { "pattern": "enisa-.*" } ] }
+          { "matching": [ { "pattern": "gdpr-.*" }, { "pattern": "nis2-.*" } ] }
         ]
       }
     ],
@@ -2823,7 +2823,7 @@ assess_regulator(name, violations) := {
           "values": ["AWS KMS customer managed keys backed by HSM"]
         },
         {
-          "param-id": "enisa-ns-1_prm1",
+          "param-id": "nis2-art21-1_prm1",
           "values": ["Zero Trust segmentation enforced via AWS Network Firewall"]
         }
       ],
@@ -2836,9 +2836,9 @@ assess_regulator(name, violations) := {
               "by-id": "gdpr-art32-1_gdn",
               "parts": [
                 {
-                  "id": "gdpr-art32-1_eba-guidance",
+                  "id": "gdpr-art32-1_psd2-guidance",
                   "name": "guidance",
-                  "title": "EBA Supplement",
+                  "title": "PSD2 Supplement",
                   "prose": "Payment service providers must use FIPS 140-2 validated encryption modules and review key material every 90 days."
                 }
               ]
@@ -2846,14 +2846,14 @@ assess_regulator(name, violations) := {
           ]
         },
         {
-          "control-id": "enisa-ns-1",
+          "control-id": "nis2-art21-1",
           "adds": [
             {
               "position": "after",
-              "by-id": "enisa-ns-1_gdn",
+              "by-id": "nis2-art21-1_gdn",
               "parts": [
                 {
-                  "id": "enisa-ns-1_fin-requirement",
+                  "id": "nis2-art21-1_fin-requirement",
                   "name": "requirement",
                   "title": "Financial Sector Isolation",
                   "prose": "Critical payment workloads must be isolated in dedicated network segments with inspection by AWS Network Firewall and VPC Traffic Mirroring."
@@ -2908,11 +2908,11 @@ assess_regulator(name, violations) := {
                 ]
               },
               {
-                "control-id": "enisa-ns-1.1",
+                "control-id": "nis2-art21-1.1",
                 "description": "Database subnet groups isolated from public subnets.",
                 "statements": [
                   {
-                    "statement-id": "enisa-ns-1.1_smt",
+                    "statement-id": "nis2-art21-1.1_smt",
                     "description": "Only application load balancers within the VPC may initiate connections.",
                     "implementation-status": { "state": "implemented" }
                   }
@@ -2943,11 +2943,11 @@ assess_regulator(name, violations) := {
                 ]
               },
               {
-                "control-id": "enisa-ns-1.2",
+                "control-id": "nis2-art21-1.2",
                 "description": "Zero Trust verification for access using IAM conditions.",
                 "statements": [
                   {
-                    "statement-id": "enisa-ns-1.2_smt",
+                    "statement-id": "nis2-art21-1.2_smt",
                     "description": "IAM policies require device posture attributes for privileged access.",
                     "implementation-status": { "state": "planned" }
                   }
@@ -2961,17 +2961,17 @@ assess_regulator(name, violations) := {
         "uuid": "comp-aws-network-firewall",
         "type": "software",
         "title": "AWS Network Firewall",
-        "description": "Edge inspection enforcing ENISA segmentation and logging requirements.",
+        "description": "Edge inspection enforcing NIS2 segmentation and logging requirements.",
         "control-implementations": [
           {
             "source": "regional-catalog.json",
             "implemented-requirements": [
               {
-                "control-id": "enisa-ns-1",
+                "control-id": "nis2-art21-1",
                 "description": "Micro-segmentation between payment and support zones.",
                 "statements": [
                   {
-                    "statement-id": "enisa-ns-1_smt",
+                    "statement-id": "nis2-art21-1_smt",
                     "description": "Stateful rules restrict lateral movement and mirror traffic to a central collector.",
                     "implementation-status": { "state": "implemented" }
                   }
