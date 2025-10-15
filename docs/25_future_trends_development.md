@@ -30,7 +30,131 @@ Fifth-generation (5G) networks reinforce this trend by enabling near-real-time o
 
 ### Environmental Sustainability and Green Computing
 
-Sustainability is becoming a pivotal design factor. Carbon-aware scheduling shifts compute-intensive workloads to time periods and regions with cleaner energy mixes, while adaptive cooling policies respond to weather and grid signals. Architecture as Code enables these strategies by encoding energy profiles, emissions budgets, and compliance thresholds directly into infrastructure definitions.
+Sustainability is becoming a pivotal design factor, driven by regulatory frameworks such as the European Union's Green Deal, which commits the bloc to climate neutrality by 2050. Carbon-aware scheduling shifts compute-intensive workloads to time periods and regions with cleaner energy mixes, while adaptive cooling policies respond to weather and grid signals. Architecture as Code enables these strategies by encoding energy profiles, emissions budgets, and compliance thresholds directly into infrastructure definitions.
+
+Modern carbon-aware infrastructure leverages EU-wide electricity grid datasets to make intelligent scheduling decisions. By querying carbon intensity APIs that track renewable energy availability across European regions, workloads can be dynamically routed to zones with lower emissions. For instance, a batch processing job scheduled during daylight hours in Southern Europe may benefit from solar generation, whilst overnight processing in Northern Europe can capitalise on wind and hydroelectric resources.
+
+```python
+from datetime import datetime, timezone
+from typing import Dict, List, Optional
+import requests
+
+class EUCarbonAwareScheduler:
+    """
+    Carbon-aware workload scheduler for EU regions using electricity grid data.
+    Optimises compute placement based on real-time carbon intensity metrics.
+    """
+    
+    def __init__(self, carbon_api_endpoint: str):
+        self.carbon_api_endpoint = carbon_api_endpoint
+        self.eu_regions = [
+            'eu-west-1',     # Western Europe
+            'eu-central-1',  # Central Europe
+            'eu-north-1',    # Northern Europe
+            'eu-south-1'     # Southern Europe
+        ]
+    
+    def get_carbon_intensity(self, region: str) -> Optional[float]:
+        """
+        Retrieve current carbon intensity (gCO2/kWh) for a given EU region.
+        
+        Args:
+            region: EU region identifier
+            
+        Returns:
+            Carbon intensity in grams CO2 per kilowatt-hour, or None if unavailable
+        """
+        try:
+            response = requests.get(
+                f"{self.carbon_api_endpoint}/intensity/{region}",
+                timeout=5
+            )
+            response.raise_for_status()
+            data = response.json()
+            return data.get('carbon_intensity_gco2_kwh')
+        except requests.RequestException:
+            return None
+    
+    def select_optimal_region(
+        self,
+        workload_type: str,
+        permitted_regions: Optional[List[str]] = None
+    ) -> Dict[str, any]:
+        """
+        Select the EU region with lowest carbon intensity for workload execution.
+        
+        Args:
+            workload_type: Classification of workload (batch, streaming, interactive)
+            permitted_regions: Optional list of allowed regions for compliance
+            
+        Returns:
+            Dictionary containing selected region and carbon metrics
+        """
+        regions_to_check = permitted_regions if permitted_regions else self.eu_regions
+        carbon_metrics = []
+        
+        for region in regions_to_check:
+            intensity = self.get_carbon_intensity(region)
+            if intensity is not None:
+                carbon_metrics.append({
+                    'region': region,
+                    'carbon_intensity': intensity,
+                    'timestamp': datetime.now(timezone.utc).isoformat()
+                })
+        
+        if not carbon_metrics:
+            return {
+                'selected_region': regions_to_check[0],
+                'carbon_intensity': None,
+                'selection_reason': 'fallback_default',
+                'timestamp': datetime.now(timezone.utc).isoformat()
+            }
+        
+        # Select region with minimum carbon intensity
+        optimal = min(carbon_metrics, key=lambda x: x['carbon_intensity'])
+        
+        return {
+            'selected_region': optimal['region'],
+            'carbon_intensity': optimal['carbon_intensity'],
+            'selection_reason': 'carbon_optimised',
+            'timestamp': optimal['timestamp'],
+            'alternatives_evaluated': len(carbon_metrics)
+        }
+    
+    def schedule_workload(
+        self,
+        workload_id: str,
+        workload_type: str,
+        permitted_regions: Optional[List[str]] = None,
+        carbon_budget_gco2: Optional[float] = None
+    ) -> Dict[str, any]:
+        """
+        Schedule a workload to the most carbon-efficient EU region.
+        
+        Args:
+            workload_id: Unique identifier for the workload
+            workload_type: Classification of workload
+            permitted_regions: Optional list of compliant regions
+            carbon_budget_gco2: Optional maximum carbon emissions threshold
+            
+        Returns:
+            Scheduling decision with region assignment and carbon metrics
+        """
+        decision = self.select_optimal_region(workload_type, permitted_regions)
+        
+        # Validate against carbon budget if specified
+        if carbon_budget_gco2 and decision['carbon_intensity']:
+            if decision['carbon_intensity'] > carbon_budget_gco2:
+                decision['budget_exceeded'] = True
+                decision['recommendation'] = 'defer_to_lower_carbon_window'
+        
+        decision['workload_id'] = workload_id
+        decision['workload_type'] = workload_type
+        
+        return decision
+```
+
+This approach aligns with the EU Green Deal's emphasis on renewable energy adoption and demonstrates how Architecture as Code can operationalise climate commitments. Infrastructure automation integrates carbon metrics alongside traditional performance and cost considerations, enabling organisations to meet regulatory obligations whilst maintaining operational efficiency.
 
 Circular economy principles extend the lifecycle of hardware and software components. Automated asset registries track utilisation, maintenance, and retirement criteria; orchestration pipelines rebalance workloads to maximise efficiency; and observability platforms provide the data foundation required to demonstrate progress towards sustainability pledges.
 
@@ -80,6 +204,118 @@ Digital sovereignty is gaining prominence as organisations seek control over dat
 
 Preparing for the future requires investment in adaptive capabilities rather than a reliance on individual technologies. Flexible architectures, modular codebases, and automated testing create a foundation that can absorb new paradigms with minimal disruption. Rich observability data and telemetry pipelines underpin experimentation, enabling teams to iterate confidently.
 
+Declarative infrastructure definitions can embed sustainability constraints directly into deployment policies. The following Terraform example demonstrates how to configure multi-region deployments that respect carbon budgets and EU data residency requirements:
+
+```hcl
+# EU Carbon-Aware Infrastructure Configuration
+# Demonstrates multi-region deployment with sustainability policies
+
+terraform {
+  required_version = ">= 1.0"
+}
+
+variable "eu_regions" {
+  description = "List of EU regions with carbon intensity thresholds"
+  type = map(object({
+    location              = string
+    max_carbon_gco2_kwh   = number
+    renewable_energy_pct  = number
+    data_residency_compliant = bool
+  }))
+  default = {
+    eu_west = {
+      location              = "westeurope"
+      max_carbon_gco2_kwh   = 250
+      renewable_energy_pct  = 65
+      data_residency_compliant = true
+    }
+    eu_north = {
+      location              = "northeurope"
+      max_carbon_gco2_kwh   = 180
+      renewable_energy_pct  = 85
+      data_residency_compliant = true
+    }
+    eu_central = {
+      location              = "germanywestcentral"
+      max_carbon_gco2_kwh   = 220
+      renewable_energy_pct  = 70
+      data_residency_compliant = true
+    }
+  }
+}
+
+variable "workload_carbon_budget_gco2" {
+  description = "Maximum carbon emissions budget for workload (gCO2/kWh)"
+  type        = number
+  default     = 200
+}
+
+locals {
+  # Filter regions that meet carbon budget requirements
+  compliant_regions = {
+    for region_key, region in var.eu_regions :
+    region_key => region
+    if region.max_carbon_gco2_kwh <= var.workload_carbon_budget_gco2 &&
+       region.data_residency_compliant == true
+  }
+  
+  # Select optimal region based on renewable energy percentage
+  optimal_region = (
+    length(local.compliant_regions) > 0 ?
+    keys(local.compliant_regions)[
+      index(
+        values(local.compliant_regions)[*].renewable_energy_pct,
+        max(values(local.compliant_regions)[*].renewable_energy_pct...)
+      )
+    ] : "eu_west"  # Fallback to default
+  )
+}
+
+resource "cloud_compute_instance" "carbon_aware_workload" {
+  name     = "sustainability-optimised-instance"
+  region   = var.eu_regions[local.optimal_region].location
+  
+  # Tag resources with carbon metrics for observability
+  tags = {
+    carbon_budget_gco2_kwh    = var.workload_carbon_budget_gco2
+    selected_region           = local.optimal_region
+    renewable_energy_pct      = var.eu_regions[local.optimal_region].renewable_energy_pct
+    max_carbon_intensity      = var.eu_regions[local.optimal_region].max_carbon_gco2_kwh
+    data_residency_compliant  = var.eu_regions[local.optimal_region].data_residency_compliant
+    sustainability_policy     = "eu-green-deal-aligned"
+  }
+  
+  # Instance configuration optimised for efficiency
+  instance_type = "compute-optimised-efficient"
+  
+  lifecycle {
+    # Prevent deployment if no compliant regions available
+    precondition {
+      condition     = length(local.compliant_regions) > 0
+      error_message = "No EU regions meet the specified carbon budget threshold."
+    }
+  }
+}
+
+output "deployment_sustainability_report" {
+  description = "Carbon metrics for deployed infrastructure"
+  value = {
+    deployed_region          = local.optimal_region
+    region_location          = var.eu_regions[local.optimal_region].location
+    carbon_intensity_gco2    = var.eu_regions[local.optimal_region].max_carbon_gco2_kwh
+    renewable_energy_pct     = var.eu_regions[local.optimal_region].renewable_energy_pct
+    workload_carbon_budget   = var.workload_carbon_budget_gco2
+    budget_utilisation_pct   = (
+      var.eu_regions[local.optimal_region].max_carbon_gco2_kwh / 
+      var.workload_carbon_budget_gco2 * 100
+    )
+    eu_green_deal_compliant  = true
+  }
+}
+```
+
+This configuration demonstrates several sustainability principles aligned with the EU Green Deal: declarative carbon budgets enforce organisational climate commitments; region selection logic prioritises renewable energy availability; and infrastructure tags provide transparency for carbon accounting and regulatory reporting. By embedding these concerns into infrastructure definitions, teams ensure that sustainability objectives are validated automatically during deployment rather than relying on manual review processes.
+
 ### Skills Development and Organisational Adaptation
 
 Technical excellence must be matched by cultural evolution. Organisations should foster cross-functional teams that blend architecture, security, finance, and sustainability expertise. Governance frameworks need to accommodate higher levels of automation while preserving accountability. By treating leadership playbooks, communication cadences, and ethical guidelines as code, organisations maintain alignment as the pace of change accelerates.
@@ -92,6 +328,7 @@ By combining proven practices with emerging innovations, Architecture as Code ev
 
 ## References
 
+- European Commission. "European Green Deal." European Union Policy Framework, 2019.
 - McKinsey Global Institute. "The Future of Infrastructure." McKinsey & Company.
 - MIT Technology Review. "Quantum Computing and Cryptography." MIT Press.
 - IEEE Computer Society. "Edge Computing and 5G Integration." IEEE Publications.
