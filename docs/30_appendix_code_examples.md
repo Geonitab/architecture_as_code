@@ -2791,7 +2791,7 @@ assess_regulator(name, violations) := {
       "version": "2.1",
       "oscal-version": "1.1.2",
       "props": [
-        { "name": "organization", "value": " Financial Sector" },
+        { "name": "organization", "value": "EU Financial Sector" },
         { "name": "jurisdiction", "value": "EU" }
       ]
     },

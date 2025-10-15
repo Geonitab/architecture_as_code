@@ -2,7 +2,7 @@
 
 ![Security as code workflow](images/diagram_06_chapter5.png)
 
-*Building upon the security fundamentals established in the previous chapter, this chapter explores advanced security architecture patterns, practical implementations for Swedish environments, and emerging trends that will shape the future of security in Architecture as Code.*
+*Building upon the security fundamentals established in the previous chapter, this chapter explores advanced security architecture patterns, practical implementations for European environments, and emerging trends that will shape the future of security in Architecture as Code.*
 
 ## Advanced security architecture patterns
 
@@ -56,13 +56,11 @@ g authentication and authorisation, which can be integrated via code-driven appr
  solutions reduce reliance on central providers, while confidential computing and trusted execution environments (TEEs) protect d
 ata during processing—even from cloud operators.
 
-## Practical implementation: security architecture in Swedish environments
+## Practical implementation: security architecture in European environments
 
 ### Comprehensive security foundation module
 
-The following Terraform module demonstrates a foundational enterprise security pattern tailored for Swedish organisations. It ap
-plies defence-in-depth principles through automated controls for encryption, access management, audit logging, and threat detect
-ion.
+The following Terraform module demonstrates a foundational enterprise security pattern tailored for European organisations. It applies defence-in-depth principles through automated controls for encryption, access management, audit logging, and threat detection.
 
 ```hcl
 # modules/security-foundation/main.tf
@@ -72,26 +70,26 @@ terraform {
   }
 }
 
-# Security baseline for Swedish organisations
-# Aligns with MSB guidance for critical infrastructure and enforces GDPR compliance
+# Security baseline for European organisations
+# Aligns with ENISA guidance for critical infrastructure and enforces GDPR compliance
 locals {
   security_tags = {
-    SecurityBaseline   = "swedish-gov-baseline"
+    SecurityBaseline    = "eu-baseline"
     ComplianceFramework = "iso27001-gdpr"
-    DataClassification = var.data_classification
-    ThreatModel        = "updated"
-    SecurityContact    = var.security_team_email
-    Organization       = var.organization_name
-    Environment        = var.environment
+    DataClassification  = var.data_classification
+    ThreatModel         = "updated"
+    SecurityContact     = var.security_team_email
+    Organization        = var.organization_name
+    Environment         = var.environment
   }
 
-  # National security requirements based on MSB guidance
+  # European security requirements based on ENISA and EDPB guidance
   required_encryption        = true
   audit_logging_required     = true
   gdpr_compliance            = var.data_classification != "public"
   backup_encryption_required = var.data_classification in ["internal", "confidential", "restricted"]
 
-  # Approved EU regions for Swedish data protection programmes
+  # Approved EU regions for European data protection programmes
   approved_regions = ["eu-north-1", "eu-west-1", "eu-central-1"]
 }
 
@@ -267,9 +265,7 @@ resource "aws_s3_bucket" "audit_logs" {
 }
 ```
 
-This module applies best practices for key management, Zero Trust networking, and audit logging to meet Swedish and wider Europe
-an regulatory expectations. KMS key rotation is automated, security groups enforce a default deny posture, and CloudTrail delive
-rs tamper-evident logging for compliance validation.
+This module applies best practices for key management, Zero Trust networking, and audit logging to meet European regulatory expectations. KMS key rotation is automated, security groups enforce a default deny posture, and CloudTrail delivers tamper-evident logging for compliance validation.
 
 ### Advanced GDPR compliance implementation
 
@@ -278,7 +274,7 @@ n be translated into automated checks.
 
 ```rego
 # policies/gdpr_compliance.rego
-package sweden.gdpr
+package european.gdpr
 
 import rego.v1
 
@@ -312,7 +308,7 @@ from typing import Dict, List, Optional
 
 
 class ThreatSeverity(Enum):
-    """Threat severity levels aligned with MSB guidance"""
+    """Threat severity levels aligned with ENISA guidance"""
 
     LOW = "low"
     MEDIUM = "medium"
@@ -337,7 +333,7 @@ class SecurityFinding:
 
 
 class AdvancedThreatDetection:
-    """Comprehensive threat detection following Swedish best practice"""
+    """Comprehensive threat detection following European best practice"""
 
     def __init__(self, region: str = "eu-north-1", threat_intel_feeds: Optional[List[str]] = None) -> None:
         self.region = region
@@ -437,7 +433,7 @@ class AdvancedThreatDetection:
                     affected_resources=risk["affected_resources"],
                     indicators_of_compromise=[],
                     remediation_steps=risk["remediation_steps"],
-                    compliance_impact="Potential impact on the Swedish Protective Security Act",
+                    compliance_impact="Potential impact on EU data protection regulations",
                     detection_timestamp=datetime.now(),
                     source_system="Supply Chain Risk Assessment",
                 )
@@ -468,7 +464,7 @@ class AdvancedThreatDetection:
             },
             "regulatory_compliance": {
                 "gdpr_compliance_score": self._calculate_gdpr_compliance_score(findings),
-                "msb_compliance_score": self._calculate_msb_compliance_score(findings),
+                "enisa_compliance_score": self._calculate_enisa_compliance_score(findings),
                 "required_notifications": self._generate_notification_recommendations(findings),
             },
             "threat_landscape": {
@@ -483,7 +479,7 @@ class AdvancedThreatDetection:
         return report
 
     async def automated_incident_response(self, finding: SecurityFinding) -> Dict[str, List[str]]:
-        """Execute automated incident response aligned with Swedish procedures"""
+        """Execute automated incident response aligned with European procedures"""
 
         response_actions: List[str] = []
 
@@ -522,26 +518,17 @@ ty architecture. Organisations should invest in algorithm agility, machine learn
  stay ahead of emerging threats. Zero-knowledge proofs, confidential computing, and distributed identity solutions will become in
 creasingly relevant as regulatory regimes demand stronger privacy guarantees.
 
-## Strategic security recommendations for Swedish organisations
+## Strategic security recommendations for European organisations
 
-Swedish enterprises should align security investments with regulatory duties, the evolving threat landscape, and transformation o
-bjectives. Participation in national collaboration forums—such as the Swedish Civil Contingencies Agency (MSB), the Swedish Inte
-rnet Foundation, and sector-specific information sharing groups—strengthens threat intelligence and coordinated response capabil
-ities.
+European enterprises should align security investments with regulatory duties, the evolving threat landscape, and transformation objectives. Participation in European collaboration forums—such as the European Union Agency for Cybersecurity (ENISA), CERT-EU, and sector-specific information sharing groups—strengthens threat intelligence and coordinated response capabilities.
 
-Closing the cybersecurity skills gap is essential. Investment in training programmes, professional certifications, and academic p
-artnerships ensures access to the expertise required to support ambitious digital initiatives.
+Closing the cybersecurity skills gap is essential. Investment in training programmes, professional certifications, and academic partnerships ensures access to the expertise required to support ambitious digital initiatives.
 
 ## Summary and future development
 
-Architecture as Code represents the future of infrastructure management for Swedish organisations. Security within this paradigm
- is a transformative shift from reactive, manual approaches to proactive, automated safeguards embedded throughout development. Z
-ero Trust principles, policy automation, and codified security patterns allow teams to version-control, test, and deploy securit
-y decisions with the same rigour applied to functional requirements.
+Architecture as Code represents the future of infrastructure management for European organisations. Security within this paradigm is a transformative shift from reactive, manual approaches to proactive, automated safeguards embedded throughout development. Zero Trust principles, policy automation, and codified security patterns allow teams to version-control, test, and deploy security decisions with the same rigour applied to functional requirements.
 
-Automated compliance streamlines complex regulatory obligations spanning GDPR, MSB guidance, and industry-specific mandates. Adv
-anced patterns—particularly those highlighted in Section 10.6—illustrate how orchestration, AI-assisted detection, and multi-clo
-ud strategies can scale security for large enterprises.
+Automated compliance streamlines complex regulatory obligations spanning GDPR, NIS2 Directive, and industry-specific mandates. Advanced patterns—particularly those highlighted in Section 10.6—illustrate how orchestration, AI-assisted detection, and multi-cloud strategies can scale security for large enterprises.
 
 Organisations that embrace Architecture as Code security practices position themselves for successful digital transformation whi
 le maintaining a strong security posture. Investments in security automation reduce incident rates, accelerate compliance valida
@@ -561,12 +548,12 @@ nd accelerated innovation.
 - ENISA. *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity, 2023.
 - ISO/IEC 27001:2022. *Information Security Management Systems – Requirements.* International Organisation for Standardisation.
 
-### Swedish authorities and regulatory sources
-- MSB. *General Guidance on Information Security for Essential Services.* Swedish Civil Contingencies Agency, 2023.
-- MSB. *Risk Analysis Guidance for the NIS Directive.* Swedish Civil Contingencies Agency, 2023.
-- Finansinspektionen. *Regulations on Operational Risk (FFFS 2014:1, consolidated 2023).* Swedish Financial Supervisory Authority.
-- Dataskyddslagen (SFS 2018:218). *Supplementary Provisions to the EU General Data Protection Regulation.*
-- Säkerhetsskyddslagen (SFS 2018:585). *Swedish Protective Security Act.*
+### European authorities and regulatory sources
+- EDPB. *Guidelines on Data Protection by Design and by Default.* European Data Protection Board, 2023.
+- ENISA. *NIS2 Directive Implementation Guidance.* European Union Agency for Cybersecurity, 2023.
+- European Commission. *Regulation (EU) 2022/2554 on Digital Operational Resilience (DORA).* Official Journal of the European Union, 2022.
+- EBA. *Guidelines on ICT and Security Risk Management.* European Banking Authority, 2023.
+- Directive (EU) 2016/679. *General Data Protection Regulation.* Official Journal of the European Union.
 
 ### Technical standards and frameworks
 - OWASP. *Application Security Architecture Guide.* Open Web Application Security Project, 2023.
@@ -581,11 +568,11 @@ nd accelerated innovation.
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 
-### Swedish organisations and expertise
-- Swedish Internet Foundation. *Cybersecurity Report 2023.* Internetstiftelsen, 2023.
-- Swedish Incert. *Cybersecurity Threat Landscape Report 2023.* Swedish Computer Emergency Response Team.
-- Cybercom Group. *Nordic Cybersecurity Survey 2023.* Cybercom Group AB.
-- KTH Royal Institute of Technology. *Cybersecurity Research Publications.* Network and Systems Engineering.
+### European organisations and expertise
+- ENISA. *Threat Landscape Report 2023.* European Union Agency for Cybersecurity, 2023.
+- CERT-EU. *Cybersecurity Threat Landscape Report 2023.* Computer Emergency Response Team for the EU Institutions.
+- European Cyber Security Organisation. *European Cybersecurity Survey 2023.* ECSO.
+- EU Agency for Cybersecurity. *Cybersecurity Research Publications.* ENISA Technical Reports.
 
 ### International security organisations
 - SANS Institute. *Security Architecture Design Principles.* SANS Institute, 2023.

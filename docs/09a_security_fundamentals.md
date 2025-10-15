@@ -46,11 +46,7 @@ Perimeter-based defences designed for static environments become ineffective in 
 . Security can no longer be treated as a separate afterthought. Modern organisations must embrace security-as-code principles wh
 ere critical decisions are codified, version-controlled, and automated alongside the rest of the architecture estate.
 
-Swedish organisations in particular operate within a dense mesh of regulatory obligations. GDPR, the Swedish Civil Contingencies
- Agency (MSB) guidance for critical infrastructure, sectoral regulations, and financial supervision requirements create a multid
-imensional compliance landscape. At the same time, ongoing digital transformation programmes demand faster innovation and shorte
-r time-to-market. Architecture as Code addresses both pressures by automating compliance controls and embedding "secure by defau
-lt" patterns into every delivery pipeline.
+European organisations operate within a dense mesh of regulatory obligations. GDPR enforced by the European Data Protection Board (EDPB), NIS2 Directive requirements for critical infrastructure, sectoral regulations, and financial supervision requirements create a multidimensional compliance landscape. At the same time, ongoing digital transformation programmes demand faster innovation and shorter time-to-market. Architecture as Code addresses both pressures by automating compliance controls and embedding "secure by default" patterns into every delivery pipeline.
 
 This chapter explores security from an integrated perspective that joins technical implementation, organisational processes, and
  regulatory requirements. Readers gain a deep understanding of threat modelling, risk assessment, policy automation, and inciden
@@ -230,9 +226,7 @@ cies can be adjusted dynamically based on threat intelligence or service health.
 
 ## Security maturity models for continuous improvement
 
-Security maturity assessments provide structured frameworks for measuring current posture and prioritising investment. The Capab
-ility Maturity Model Integration (CMMI) for security supplies a five-level ladder from initial reactive practices to optimised pr
-oactive operations. Swedish organisations can benchmark against industry peers by conducting regular CMMI assessments.
+Security maturity assessments provide structured frameworks for measuring current posture and prioritising investment. The Capability Maturity Model Integration (CMMI) for security supplies a five-level ladder from initial reactive practices to optimised proactive operations. European organisations can benchmark against industry peers by conducting regular CMMI assessments aligned with ENISA guidelines.
 
 The NIST Cybersecurity Framework offers a practical approach built around the functions Identify, Protect, Detect, Respond, and R
 ecover. Embedding the framework into Architecture as Code enables systematic improvements with traceable outcomes.
@@ -249,12 +243,12 @@ This chapter has established the fundamental security principles and practices f
 - ENISA. *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity, 2023.
 - ISO/IEC 27001:2022. *Information Security Management Systems – Requirements.* International Organisation for Standardisation.
 
-### Swedish authorities and regulatory sources
-- MSB. *General Guidance on Information Security for Essential Services.* Swedish Civil Contingencies Agency, 2023.
-- MSB. *Risk Analysis Guidance for the NIS Directive.* Swedish Civil Contingencies Agency, 2023.
-- Finansinspektionen. *Regulations on Operational Risk (FFFS 2014:1, consolidated 2023).* Swedish Financial Supervisory Authority.
-- Dataskyddslagen (SFS 2018:218). *Supplementary Provisions to the EU General Data Protection Regulation.*
-- Säkerhetsskyddslagen (SFS 2018:585). *Swedish Protective Security Act.*
+### European authorities and regulatory sources
+- EDPB. *Guidelines on Data Protection by Design and by Default.* European Data Protection Board, 2023.
+- ENISA. *NIS2 Directive Implementation Guidance.* European Union Agency for Cybersecurity, 2023.
+- European Commission. *Regulation (EU) 2022/2554 on Digital Operational Resilience (DORA).* Official Journal of the European Union, 2022.
+- EBA. *Guidelines on ICT and Security Risk Management.* European Banking Authority, 2023.
+- Directive (EU) 2016/679. *General Data Protection Regulation.* Official Journal of the European Union.
 
 ### Technical standards and frameworks
 - OWASP. *Application Security Architecture Guide.* Open Web Application Security Project, 2023.
@@ -269,11 +263,11 @@ This chapter has established the fundamental security principles and practices f
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 
-### Swedish organisations and expertise
-- Swedish Internet Foundation. *Cybersecurity Report 2023.* Internetstiftelsen, 2023.
-- Swedish Incert. *Cybersecurity Threat Landscape Report 2023.* Swedish Computer Emergency Response Team.
-- Cybercom Group. *Nordic Cybersecurity Survey 2023.* Cybercom Group AB.
-- KTH Royal Institute of Technology. *Cybersecurity Research Publications.* Network and Systems Engineering.
+### European organisations and expertise
+- ENISA. *Threat Landscape Report 2023.* European Union Agency for Cybersecurity, 2023.
+- CERT-EU. *Cybersecurity Threat Landscape Report 2023.* Computer Emergency Response Team for the EU Institutions.
+- European Cyber Security Organisation. *European Cybersecurity Survey 2023.* ECSO.
+- EU Agency for Cybersecurity. *Cybersecurity Research Publications.* ENISA Technical Reports.
 
 ### International security organisations
 - SANS Institute. *Security Architecture Design Principles.* SANS Institute, 2023.
