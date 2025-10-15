@@ -4,9 +4,9 @@
 Shift Chapter 25 sustainability discussions to EU-wide initiatives and neutral regional terminology.
 
 ## Tasks
-- [ ] Update sustainability narratives to reference the EU Green Deal instead of Sweden's 2045 climate goals.
-- [ ] Revise carbon-aware infrastructure examples to describe EU electricity datasets and neutral regional labelling.
-- [ ] Ensure code references generic EU regions and operates without country-specific assumptions.
+- [x] Update sustainability narratives to reference the EU Green Deal instead of Sweden's 2045 climate goals.
+- [x] Revise carbon-aware infrastructure examples to describe EU electricity datasets and neutral regional labelling.
+- [x] Ensure code references generic EU regions and operates without country-specific assumptions.
 
 ## Acceptance Criteria
 - Sustainability guidance emphasises EU policies and goals only.
