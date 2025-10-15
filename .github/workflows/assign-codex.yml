@@ -1,0 +1,16 @@
+name: Assign codex
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment using bot token
+        env:
+          GH_TOKEN: ${{ secrets.BOT_ISSUE }}
+        run: |
+          gh api \
+            repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
+            -f body='@codex - Fix this issue'
