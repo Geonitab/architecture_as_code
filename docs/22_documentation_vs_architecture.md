@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Although Documentation as Code (DaC) and Architecture as Code (AaC) share similar principles—version control, automation, and treating artefacts as code—they serve fundamentally different purposes within the software development lifecycle. Understanding these differences is essential for organisations seeking to implement both practices effectively and avoid conflating their distinct roles.
+Documentation as Code (DaC) and Architecture as Code (AaC) are complementary disciplines that work together within the software development ecosystem. Whilst they share similar principles—version control, automation, and treating artefacts as code—they serve fundamentally different purposes. Understanding these differences is essential for organisations seeking to implement both practices effectively and leverage their respective strengths.
 
-Documentation as Code focuses on capturing and communicating knowledge about systems in a maintainable, version-controlled format. Architecture as Code, by contrast, defines the actual structure, relationships, and constraints of systems in executable or enforceable formats that can drive automation and validation. This chapter explores the key distinctions between these two disciplines and examines how the choice of tooling reflects their different objectives.
+Documentation as Code focuses on capturing and communicating knowledge about systems in a maintainable, version-controlled format, serving primarily human audiences. Architecture as Code, by contrast, defines the actual structure, relationships, and constraints of systems in executable or enforceable formats that can drive automation and validation, serving both humans and machines. This chapter explores the key distinctions between these complementary disciplines and examines how the choice of tooling reflects their different objectives.
 
 ![Documentation vs Architecture as Code](images/diagram_22_doc_vs_arch.png)
 
