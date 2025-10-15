@@ -495,7 +495,7 @@ jobs:
 
       - name: 🚀 Create comprehensive GitHub Release
         if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && github.event.inputs.create_release == 'true')
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}-unified
           name: "Arkitektur som kod v${{ github.run_number }} - Unified Release"
