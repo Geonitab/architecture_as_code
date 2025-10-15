@@ -145,4 +145,49 @@ def _format_risks(risks: Iterable[Any]) -> SectionContent:
     return lines
 
 
-# Additional functions and the main() function can be explored further in the provided link.
+def main() -> None:
+    """Generate architecture response document."""
+    context = load_issue_context()
+
+    sections = [
+        ("Issue Overview", [blockquote((context.body or "").strip())]),
+        (
+            "Proposed Architecture Solution",
+            [
+                "_Note: Please use British English spelling (e.g., 'optimisation', 'colour', 'organisation') when completing this document._",
+                "",
+                "1. Confirm the current baseline architecture that the change will impact.",
+                "2. Design the target state, highlighting integration points and data flows.",
+                "3. Document non-functional requirements and architecture guardrails that must be preserved.",
+            ],
+        ),
+        (
+            "Implementation Outline",
+            [
+                "- [ ] Validate the proposal with stakeholders and capture sign-offs.",
+                "- [ ] Update architecture diagrams and supporting documentation.",
+                "- [ ] Identify required code or infrastructure changes and owners.",
+                "- [ ] Coordinate testing and rollout strategy with the broader team.",
+            ],
+        ),
+        (
+            "Risks & Mitigations",
+            ["- _Add risks discovered during analysis along with mitigation owners._"],
+        ),
+        (
+            "Follow-up Questions",
+            ["- _List any clarifications needed before implementation proceeds._"],
+        ),
+    ]
+
+    file_path = write_document(
+        context,
+        document_type="Architecture Response",
+        output_directory=Path("docs/architecture"),
+        sections=sections,
+    )
+    print(f"Generated architecture response at {file_path}")
+
+
+if __name__ == "__main__":
+    main()

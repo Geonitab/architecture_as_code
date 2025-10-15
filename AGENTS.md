@@ -120,6 +120,6 @@ Critical Notes
 	•	NEVER CANCEL builds or long-running commands - Dependency installs can take 15+ minutes
 	•	Always use proper timeouts: 60+ minutes for installs, 5+ minutes for builds
 	•	Chrome dependency required: Mermaid CLI needs Chrome browser for PNG generation
-	•	English content: All manuscript text and automation outputs are maintained in English
+	•	British English content: All manuscript text and automation outputs are maintained in British English (e.g., "optimisation" not "optimization", "colour" not "color")
 	•	PDF generation works: Even if Mermaid fails, Pandoc will generate PDF with text placeholders
 

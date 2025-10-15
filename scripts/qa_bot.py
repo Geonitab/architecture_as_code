@@ -14,6 +14,8 @@ def main() -> None:
         (
             "Quality Objectives",
             [
+                "_Note: Please use British English spelling (e.g., 'optimisation', 'colour', 'organisation') when completing this document._",
+                "",
                 "- Enumerate the quality attributes that must be validated (reliability, usability, performance, etc.).",
                 "- Note compliance, regulatory, or documentation requirements tied to the change.",
                 "- Capture entry and exit criteria for each testing phase.",

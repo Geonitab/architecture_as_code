@@ -14,8 +14,10 @@ def main() -> None:
         (
             "Design Objectives",
             [
+                "_Note: Please use British English spelling (e.g., 'optimisation', 'colour', 'organisation') when completing this document._",
+                "",
                 "- Capture the user goals, brand considerations, and success metrics for the design work.",
-                "- Note accessibility requirements, responsive breakpoints, and localization constraints.",
+                "- Note accessibility requirements, responsive breakpoints, and localisation constraints.",
                 "- Identify technical limitations or design tokens that must be reused.",
             ],
         ),

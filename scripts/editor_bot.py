@@ -14,6 +14,8 @@ def main() -> None:
         (
             "Documentation Scope",
             [
+                "_Note: Please use British English spelling (e.g., 'optimisation', 'colour', 'organisation') when completing this document._",
+                "",
                 "- Identify impacted manuals, READMEs, API references, and inline docs.",
                 "- Confirm the target audience and expected depth of explanation.",
                 "- Capture assumptions, prerequisites, and terminology that must be defined.",

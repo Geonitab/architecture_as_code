@@ -14,6 +14,8 @@ def main() -> None:
         (
             "Functional Goals",
             [
+                "_Note: Please use British English spelling (e.g., 'optimisation', 'colour', 'organisation') when completing this document._",
+                "",
                 "- Describe the user stories or system capabilities that must be delivered.",
                 "- Capture constraints related to performance, security, or compatibility.",
                 "- List cross-team dependencies or integrations that must be coordinated.",
