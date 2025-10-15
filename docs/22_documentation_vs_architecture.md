@@ -161,7 +161,11 @@ While diagram tools are excellent for Documentation as Code, they have significa
 
 4. **Manual synchronisation**: When using diagram tools, keeping diagrams synchronised with actual implementation requires manual effort. There is no automatic bidirectional synchronisation between the diagram and the running system.
 
-This book uses Mermaid for creating illustrative diagrams because its primary purpose is **documentation**—communicating concepts to readers. The diagrams are not intended to be executable architectural models but rather visual aids that support the narrative.
+This book uses Mermaid for creating illustrative diagrams because its primary purpose is **documentation**—communicating concepts to readers. The diagrams are not intended to be executable architectural models but rather visual aids that support the narrative. Figure 22.3 summarises how documentation insights and architectural automation stay aligned through reciprocal feedback loops.
+
+![Feedback loop between Documentation as Code and Architecture as Code workflows](images/diagram_22_tool_alignment.png)
+
+*Figure 22.3 shows how Documentation as Code outputs and Architecture as Code automation reinforce one another through shared feedback loops. The Mermaid source is maintained in `docs/images/diagram_22_tool_alignment.mmd` to keep the definition version-controlled alongside the manuscript.*
 
 ## Key Differences: A Comparative Framework
 
