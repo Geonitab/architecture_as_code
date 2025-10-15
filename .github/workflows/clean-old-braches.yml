@@ -1,26 +1,26 @@
-name: Clean old branches
+name: Clean up old branches
 
 on:
   schedule:
-    # Kör dagligen 03:00 UTC (≈ 04:00–05:00 i Sverige beroende på sommartid)
+    # Run daily at 03:00 UTC
     - cron: "0 3 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Lista kandidater utan att radera"
+        description: "List candidates without deleting"
         type: boolean
         default: false
       min_age_days:
-        description: "Minsta ålder (dagar)"
+        description: "Minimum age (days)"
         type: number
         default: 2
       extra_excludes:
-        description: "Komma-separerade branch-namn att undanta"
+        description: "Comma-separated branch names to exclude"
         type: string
         default: ""
 
 permissions:
-  contents: write   # krävs för att kunna radera refs
+  contents: write   # Required to delete refs
   pull-requests: read
 
 jobs:
@@ -40,15 +40,15 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const core = require('@actions/core');
             const github = require('@actions/github');
+            const core = require('@actions/core');
 
             const { context } = github;
 
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            // Inputs (med fallback för schemalagd körning)
+            // Inputs (with fallback for scheduled runs)
             const dryRun = (core.getInput('dry_run') || process.env.DRY_RUN || 'false') === 'true';
             const minAgeDays = parseInt(core.getInput('min_age_days') || process.env.MIN_AGE_DAYS || '2', 10);
             const extraExcludesInput = (core.getInput('extra_excludes') || process.env.EXTRA_EXCLUDES || '').trim();
@@ -56,21 +56,21 @@ jobs:
             const cutoffMs = minAgeDays * 24 * 60 * 60 * 1000;
             const now = new Date();
 
-            // Bas-undantag
+            // Base exclusions
             const exclude = new Set(['main', 'gh-pages']);
 
-            // Lägg till repo-default branch (om den inte råkar heta main)
+            // Add repository default branch (if it is not named 'main')
             const { data: repoData } = await github.rest.repos.get({ owner, repo });
             exclude.add(repoData.default_branch);
 
-            // Extra undantag från input
+            // Extra exclusions from input
             if (extraExcludesInput) {
               for (const name of extraExcludesInput.split(',').map(s => s.trim()).filter(Boolean)) {
                 exclude.add(name);
               }
             }
 
-            // Hämta alla branches
+            // Fetch all branches (excluding protected=false to avoid unnecessary failures, but handling errors anyway)
             const branches = await github.paginate(
               github.rest.repos.listBranches,
               { owner, repo, per_page: 100 }
@@ -82,13 +82,13 @@ jobs:
             for (const b of branches) {
               const name = b.name;
 
-              // Hoppa över undantag
+              // Skip exclusions
               if (exclude.has(name)) {
                 skipped.push({ name, reason: 'excluded' });
                 continue;
               }
 
-              // Senaste commit (sha + datum)
+              // Latest commit (sha + date)
               const sha = b.commit?.sha;
               if (!sha) {
                 skipped.push({ name, reason: 'no-sha' });
@@ -123,14 +123,14 @@ jobs:
               }
             }
 
-            // Skriv en sammanfattning i job summary
+            // Write a summary in the job summary
             await core.summary
-              .addHeading('Cleanup old branches')
-              .addRaw(`Min ålder: **${minAgeDays} dagar**  \nDry-run: **${dryRun ? 'ja' : 'nej'}**`)
-              .addHeading('Raderade', 2)
-              .addTable([['Branch', 'Ålder (dagar)'], ...deleted.map(d => [d.name, String(d.ageDays)])])
-              .addHeading('Hoppade över', 2)
-              .addTable([['Branch', 'Orsak'], ...skipped.map(s => [s.name, s.reason])])
+              .addHeading('Clean up old branches')
+              .addRaw(`Minimum age: **${minAgeDays} days**  \nDry-run: **${dryRun ? 'yes' : 'no'}**`)
+              .addHeading('Deleted', 2)
+              .addTable([['Branch', 'Age (days)'], ...deleted.map(d => [d.name, String(d.ageDays)])])
+              .addHeading('Skipped', 2)
+              .addTable([['Branch', 'Reason'], ...skipped.map(s => [s.name, s.reason])])
               .write();
 
             core.setOutput('deleted_count', deleted.length);
