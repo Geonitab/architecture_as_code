@@ -151,7 +151,7 @@ jobs:
           echo "No package-lock.json detected – skipping Node.js setup for Docker build."
 
       - name: 📦 Build Docker image with cache
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile.book-builder
