@@ -34,7 +34,9 @@ Fifth-generation (5G) networks reinforce this trend by enabling near-real-time o
 
 Sustainability is becoming a pivotal design factor. Carbon-aware scheduling shifts compute-intensive workloads to time periods and regions with cleaner energy mixes, while adaptive cooling policies respond to weather and grid signals. Architecture as Code enables these strategies by encoding energy profiles, emissions budgets, and compliance thresholds directly into infrastructure definitions.
 
-Circular economy principles extend the lifecycle of hardware and software components. Automated asset registries track utilisation, maintenance, and retirement criteria; orchestration pipelines rebalance workloads to maximise efficiency; and observability platforms provide the data foundation required to demonstrate progress towards sustainability pledges.
+European leadership in sustainable computing is exemplified by the European Green Deal and the Climate Neutral Data Centre Pact, where leading operators commit to net-zero emissions by 2030. European datacentres increasingly leverage renewable energy sources, advanced cooling technologies including free cooling and liquid immersion, and heat reuse strategies that channel waste heat into district heating networks. The EU Code of Conduct for Energy Efficiency in Data Centres provides benchmarking frameworks that organisations can reference when selecting hosting providers and designing infrastructure policies.
+
+Circular economy principles extend the lifecycle of hardware and software components. Automated asset registries track utilisation, maintenance, and retirement criteria; orchestration pipelines rebalance workloads to maximise efficiency; and observability platforms provide the data foundation required to demonstrate progress towards sustainability pledges and EU Taxonomy alignment.
 
 ## Platform Engineering and Developer Experience
 
@@ -72,11 +74,13 @@ Serverless computing is expanding beyond stateless functions into container-base
 
 Infrastructure mesh concepts apply service-mesh thinking to the infrastructure layer, providing consistent policy enforcement, observability, and connectivity across clouds and on-premises estates. Immutable infrastructure principles extend from images and deployment artefacts to networking, policy definitions, and even data pipelines, ensuring that every change is implemented through version-controlled updates rather than mutable configuration.
 
-## Digital Sovereignty and International Collaboration
+## Digital Sovereignty and European Collaboration
 
-Digital sovereignty is gaining prominence as organisations seek control over data residency, privacy, and supply-chain risk. Architecture as Code enables transparent choices about hosting locations, encryption standards, and vendor dependencies. European initiatives such as GAIA-X establish federated data infrastructure frameworks that balance sovereignty concerns with the benefits of interconnected digital ecosystems, providing organisations with trusted collaboration mechanisms whilst preserving regulatory compliance and data protection requirements.
+Digital sovereignty is gaining prominence as organisations seek control over data residency, privacy, and supply-chain risk. European initiatives such as GAIA-X provide federated infrastructure frameworks that enable organisations to maintain sovereignty whilst benefiting from cloud scalability. GAIA-X's data space model supports interoperability between European cloud providers, reducing vendor lock-in and ensuring compliance with EU regulations including GDPR and the Data Governance Act.
 
-At the same time, international collaboration—across industry consortia, open-source communities, and regulatory alliances—drives interoperability and shared innovation. European research networks and cross-border partnerships facilitate knowledge exchange, enable shared investment in emerging technologies, and create standards that promote ethical and transparent AI deployment. Codified architectures provide the lingua franca for these partnerships, allowing patterns to be exchanged, audited, and improved collectively.
+Architecture as Code enables transparent choices about hosting locations, encryption standards, and vendor dependencies. European organisations can leverage multiple cloud providers—ranging from global hyperscalers with EU regions to European-native providers such as OVHcloud, Scaleway, and Open Telekom Cloud—whilst codifying residency and compliance requirements directly in infrastructure definitions.
+
+International collaboration across industry consortia, open-source communities, and regulatory alliances drives interoperability and shared innovation. Programmes such as the European Cloud Initiative, Digital Europe Programme, and Horizon Europe funding streams support collaborative research and development in cloud-native architectures. Codified architectures provide the lingua franca for these partnerships, allowing patterns to be exchanged, audited, and improved collectively across European and global organisations.
 
 ## Implementation Strategies for Future Readiness
 
@@ -106,3 +110,7 @@ By combining proven practices with emerging innovations, Architecture as Code ev
 - FinOps Foundation. "State of FinOps." FinOps Foundation Reports.
 - Green Software Foundation. "Carbon-Aware Computing Guidelines." GSF Documentation.
 - Cloud Native Computing Foundation. "Platforms for Cloud Native Applications." CNCF Whitepaper.
+- GAIA-X. "GAIA-X Framework." GAIA-X European Association for Data and Cloud AISBL.
+- European Commission. "European Green Deal." EU Climate Action.
+- Climate Neutral Data Centre Pact. "Self-Regulatory Initiative." European Data Centre Association.
+- European Commission. "EU Code of Conduct for Energy Efficiency in Data Centres." Joint Research Centre.
