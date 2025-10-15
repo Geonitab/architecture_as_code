@@ -1348,7 +1348,7 @@ class IaCCompetencyFramework:
             },
             "security_compliance": {
                 "security": ["Identity management", "Network security", "Encryption"],
-                "compliance": ["GDPR", "ISO27001", "SOC2", "Data residency"],
+                "compliance": ["GDPR (EU-wide)", "ISO27001", "SOC2", "EU data residency", "NIS2 Directive"],
                 "policy": ["Policy as Code", "Automated compliance", "Audit trails"]
             },
             "operations_monitoring": {
@@ -1400,15 +1400,15 @@ class IaCCompetencyFramework:
                 "prerequisites": ["Basic Linux", "Cloud fundamentals"],
                 "learning_objectives": [
                     "Build foundational Terraform configurations",
-                    "Manage remote state securely",
-                    "Design compliance-aligned infrastructure patterns",
-                    "Integrate controls with platform tooling"
+                    "Manage remote state securely within EU regions",
+                    "Design compliance-aligned infrastructure patterns for EU data residency",
+                    "Integrate GDPR controls with platform tooling"
                 ],
                 "practical_exercises": [
-                    "Deploy a data-protection compliant object storage bucket",
-                    "Create a VPC with network guardrails",
-                    "Implement IAM policies aligned to least privilege",
-                    "Configure monitoring aligned with regulatory obligations"
+                    "Deploy a GDPR-compliant object storage bucket in EU regions",
+                    "Create a VPC with network guardrails for EU data sovereignty",
+                    "Implement IAM policies aligned to least privilege principles",
+                    "Configure monitoring aligned with EU regulatory obligations"
                 ],
                 "assessment": {
                     "type": "practical_project",
@@ -1419,25 +1419,25 @@ class IaCCompetencyFramework:
         # Cloud Security Module
         if domain == "security_compliance":
             modules.append({
-                "name": "Cloud Security for Regulated Environments",
+                "name": "Cloud Security for EU Regulated Environments",
                 "duration_hours": 12,
                 "type": "blended_learning",
                 "prerequisites": ["Cloud fundamentals", "Security basics"],
                 "learning_objectives": [
-                    "Implement privacy-aware infrastructure baselines",
-                    "Apply regulatory control frameworks in code",
-                    "Create automated compliance checks",
-                    "Design secure network topologies"
+                    "Implement GDPR-compliant infrastructure baselines",
+                    "Apply EU regulatory control frameworks in code",
+                    "Create automated compliance checks for EU data residency",
+                    "Design secure network topologies within EU regions"
                 ],
                 "practical_exercises": [
-                    "Create a compliance-aligned data pipeline",
-                    "Implement policy-as-code guardrails",
-                    "Set up automated compliance monitoring",
-                    "Design an incident response workflow"
+                    "Create a GDPR-compliant data pipeline with EU regional constraints",
+                    "Implement policy-as-code guardrails for EU data sovereignty",
+                    "Set up automated compliance monitoring for GDPR requirements",
+                    "Design an incident response workflow aligned with GDPR breach notification"
                 ],
                 "assessment": {
                     "type": "compliance_audit",
-                    "description": "Demonstrate infrastructure meets regulatory security requirements"
+                    "description": "Demonstrate infrastructure meets EU GDPR and data residency requirements"
                 }
             })
 
