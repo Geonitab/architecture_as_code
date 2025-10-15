@@ -843,10 +843,10 @@ This sektion contains konfigurationsfiler for different tools and services.
 ```yaml
 # governance/a-governance-policy.yaml
 governance_framework:
-  organization: "Organization AB"
+  organization: "Example Organisation"
   compliance_standards: ["GDPR", "ISO27001", "SOC2"]
   data_residency: "EU"
-  regulatory_authority: "Integritetsskyddsmyndigheten (IMY)"
+  regulatory_authority: "European Data Protection Board (EDPB)"
 
 policy_enforcement:
   automated_checks:
