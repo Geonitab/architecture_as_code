@@ -72,10 +72,12 @@ terraform {
 
 # Security baseline for European organisations
 # Aligns with ENISA guidance for critical infrastructure and enforces GDPR compliance
+# Swedish organisations should adapt this baseline to incorporate MSB guidance and
+# Säkerhetsskyddslagen requirements for protective security
 locals {
   security_tags = {
-    SecurityBaseline    = "eu-baseline"
-    ComplianceFramework = "iso27001-gdpr"
+    SecurityBaseline    = "swedish-gov-baseline"
+    ComplianceFramework = "iso27001-gdpr-msb"
     DataClassification  = var.data_classification
     ThreatModel         = "updated"
     SecurityContact     = var.security_team_email
@@ -83,13 +85,14 @@ locals {
     Environment         = var.environment
   }
 
-  # European security requirements based on ENISA and EDPB guidance
+  # European and Swedish security requirements based on ENISA, EDPB, and MSB guidance
   required_encryption        = true
   audit_logging_required     = true
   gdpr_compliance            = var.data_classification != "public"
   backup_encryption_required = var.data_classification in ["internal", "confidential", "restricted"]
 
-  # Approved EU regions for European data protection programmes
+  # Approved EU regions for Swedish data protection programmes
+  # eu-north-1 (Stockholm) is preferred for Swedish organisations
   approved_regions = ["eu-north-1", "eu-west-1", "eu-central-1"]
 }
 

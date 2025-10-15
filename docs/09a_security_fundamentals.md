@@ -269,6 +269,19 @@ This chapter has established the fundamental security principles and practices f
 - European Cyber Security Organisation. *European Cybersecurity Survey 2023.* ECSO.
 - EU Agency for Cybersecurity. *Cybersecurity Research Publications.* ENISA Technical Reports.
 
+### Swedish authorities and regulatory sources
+- MSB. *General Guidance on Information Security for Essential Services.* Myndigheten för samhällsskydd och beredskap (Swedish Civil Contingencies Agency), 2023.
+- Finansinspektionen. *Regulations on Operational Risk (FFFS 2014:1, consolidated 2023).* Swedish Financial Supervisory Authority, 2023.
+- Dataskyddslagen (SFS 2018:218). *Supplementary Provisions to the EU General Data Protection Regulation.* Swedish Government, 2018.
+- Säkerhetsskyddslagen (SFS 2018:585). *Swedish Protective Security Act.* Swedish Government, 2018.
+- Finansinspektionen. *Guidelines on Information and Communication Technology (ICT) Risk Management.* Swedish Financial Supervisory Authority, 2023.
+
+### Swedish organisations and expertise
+- Internetstiftelsen. *Cybersecurity Report 2023.* Swedish Internet Foundation, 2023.
+- Swedish Incert. *Cybersecurity Threat Landscape Report 2023.* Swedish Computer Emergency Response Team, 2023.
+- Cybercom Group AB. *Nordic Cybersecurity Survey 2023.* Cybercom Group, 2023.
+- KTH Royal Institute of Technology. *Cybersecurity Research Publications.* Kungliga Tekniska Högskolan, 2023.
+
 ### International security organisations
 - SANS Institute. *Security Architecture Design Principles.* SANS Institute, 2023.
 - ISACA. *COBIT 2019 Framework for Governance and Management of Enterprise IT.* ISACA, 2019.
