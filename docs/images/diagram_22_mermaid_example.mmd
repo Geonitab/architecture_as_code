@@ -1,0 +1,5 @@
+%% Example Mermaid diagram referenced in Chapter 22
+graph LR
+    User[Customer]:::kv-primary --> API[Payment API]:::kv-accent
+    API --> DB[(Payment Database)]:::kv-highlight
+    API --> Queue[Message Queue]:::kv-highlight
