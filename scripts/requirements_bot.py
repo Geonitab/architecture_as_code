@@ -14,7 +14,9 @@ def main() -> None:
         (
             "Requirement Inventory",
             [
-                "- Catalog functional requirements derived from the issue statement and stakeholders.",
+                "_Note: Please use British English spelling (e.g., 'optimisation', 'colour', 'organisation') when completing this document._",
+                "",
+                "- Catalogue functional requirements derived from the issue statement and stakeholders.",
                 "- Capture non-functional constraints such as scalability, security, and compliance.",
                 "- Note assumptions, dependencies, and out-of-scope elements for clarity.",
             ],
