@@ -95,36 +95,36 @@ jobs:
           echo "=== Determining Build Strategy ==="
 
           # Extract workflow_dispatch inputs when available, otherwise fall back to defaults
-          BUILD_TYPE=$(python3 - <<'PY'
-import json
-import os
+          BUILD_TYPE=$(python3 - <<'EOF'
+          import json
+          import os
 
-event_path = os.environ.get('GITHUB_EVENT_PATH')
-default = 'both'
+          event_path = os.environ.get('GITHUB_EVENT_PATH')
+          default = 'both'
 
-try:
-    with open(event_path, 'r', encoding='utf-8') as handle:
-        payload = json.load(handle)
-    print(payload.get('inputs', {}).get('build_type') or default)
-except Exception:
-    print(default)
-PY
+          try:
+              with open(event_path, 'r', encoding='utf-8') as handle:
+                  payload = json.load(handle)
+              print(payload.get('inputs', {}).get('build_type') or default)
+          except Exception:
+              print(default)
+          EOF
           )
 
-          DELIVERABLES=$(python3 - <<'PY'
-import json
-import os
+          DELIVERABLES=$(python3 - <<'EOF'
+          import json
+          import os
 
-event_path = os.environ.get('GITHUB_EVENT_PATH')
-default = 'all'
+          event_path = os.environ.get('GITHUB_EVENT_PATH')
+          default = 'all'
 
-try:
-    with open(event_path, 'r', encoding='utf-8') as handle:
-        payload = json.load(handle)
-    print(payload.get('inputs', {}).get('deliverables') or default)
-except Exception:
-    print(default)
-PY
+          try:
+              with open(event_path, 'r', encoding='utf-8') as handle:
+                  payload = json.load(handle)
+              print(payload.get('inputs', {}).get('deliverables') or default)
+          except Exception:
+              print(default)
+          EOF
           )
 
           case $BUILD_TYPE in
