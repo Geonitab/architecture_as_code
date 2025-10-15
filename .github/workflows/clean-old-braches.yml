@@ -1,0 +1,135 @@
+name: Cleanup old branches
+
+on:
+  schedule:
+    # Kör dagligen 03:00 UTC (≈ 04:00–05:00 i Sverige beroende på sommartid)
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Lista kandidater utan att radera"
+        type: boolean
+        default: false
+      min_age_days:
+        description: "Minsta ålder (dagar)"
+        type: number
+        default: 2
+      extra_excludes:
+        description: "Komma-separerade branch-namn att undanta"
+        type: string
+        default: ""
+
+permissions:
+  contents: write   # krävs för att kunna radera refs
+  pull-requests: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    env:
+      MIN_AGE_DAYS: "2"
+      EXTRA_EXCLUDES: ""
+      DRY_RUN: "false"
+    steps:
+      - name: Checkout (shallow)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Delete remote branches older than N days (excluding main/gh-pages)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { context, core, github } = require('@actions/github');
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Inputs (med fallback för schemalagd körning)
+            const dryRun = (core.getInput('dry_run') || process.env.DRY_RUN || 'false') === 'true';
+            const minAgeDays = parseInt(core.getInput('min_age_days') || process.env.MIN_AGE_DAYS || '2', 10);
+            const extraExcludesInput = (core.getInput('extra_excludes') || process.env.EXTRA_EXCLUDES || '').trim();
+
+            const cutoffMs = minAgeDays * 24 * 60 * 60 * 1000;
+            const now = new Date();
+
+            // Bas-undantag
+            const exclude = new Set(['main', 'gh-pages']);
+
+            // Lägg till repo-default branch (om den inte råkar heta main)
+            const { data: repoData } = await github.rest.repos.get({ owner, repo });
+            exclude.add(repoData.default_branch);
+
+            // Extra undantag från input
+            if (extraExcludesInput) {
+              for (const name of extraExcludesInput.split(',').map(s => s.trim()).filter(Boolean)) {
+                exclude.add(name);
+              }
+            }
+
+            // Hämta alla branches (exkl. protected=false för att undvika onödiga fel, men vi hanterar ändå fel)
+            const branches = await github.paginate(
+              github.rest.repos.listBranches,
+              { owner, repo, per_page: 100 }
+            );
+
+            const deleted = [];
+            const skipped = [];
+
+            for (const b of branches) {
+              const name = b.name;
+
+              // Hoppa över undantag
+              if (exclude.has(name)) {
+                skipped.push({ name, reason: 'excluded' });
+                continue;
+              }
+
+              // Senaste commit (sha + datum)
+              const sha = b.commit?.sha;
+              if (!sha) {
+                skipped.push({ name, reason: 'no-sha' });
+                continue;
+              }
+
+              const { data: commit } = await github.rest.repos.getCommit({ owner, repo, ref: sha });
+              const dateStr =
+                commit.commit.author?.date ||
+                commit.commit.committer?.date;
+
+              if (!dateStr) {
+                skipped.push({ name, reason: 'no-date' });
+                continue;
+              }
+
+              const ageMs = now - new Date(dateStr);
+
+              if (ageMs > cutoffMs) {
+                if (dryRun) {
+                  skipped.push({ name, reason: `dry-run (age ${Math.floor(ageMs/86400000)}d)` });
+                  continue;
+                }
+                try {
+                  await github.rest.git.deleteRef({ owner, repo, ref: `heads/${name}` });
+                  deleted.push({ name, ageDays: Math.floor(ageMs / 86400000) });
+                } catch (e) {
+                  skipped.push({ name, reason: `delete-failed: ${e.status || ''} ${e.message}` });
+                }
+              } else {
+                skipped.push({ name, reason: 'recent' });
+              }
+            }
+
+            // Skriv en sammanfattning i job summary
+            await core.summary
+              .addHeading('Cleanup old branches')
+              .addRaw(`Min ålder: **${minAgeDays} dagar**  \nDry-run: **${dryRun ? 'ja' : 'nej'}**`)
+              .addHeading('Raderade', 2)
+              .addTable([['Branch', 'Ålder (dagar)'], ...deleted.map(d => [d.name, String(d.ageDays)])])
+              .addHeading('Hoppade över', 2)
+              .addTable([['Branch', 'Orsak'], ...skipped.map(s => [s.name, s.reason])])
+              .write();
+
+            core.setOutput('deleted_count', deleted.length);
+            console.log('Deleted:', deleted);
+            console.log('Skipped:', skipped);
