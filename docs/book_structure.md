@@ -7,7 +7,7 @@ This document describes the logical structure for the book "Architecture as Code
 ### Part 1: Foundations (Chapters 1-4)
 Foundational concepts, principles, and documentation practices
 
-### Part 2: Architecture Platform (Chapters 5, 7)
+### Part 2: Architecture Platform (Chapters 5-7)
 Core technical building blocks for Architecture as Code implementations
 
 ### Part 3: Security & Governance (Chapters 9-12)
@@ -43,13 +43,14 @@ Reference material, author information, and technical enablers
 | 3 | `03_version_control.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
 
-### Part 2: Architecture Platform (Chapters 5, 7)
+### Part 2: Architecture Platform (Chapters 5-7)
 
 **Focus:** Core technical building blocks and automation patterns for Architecture as Code
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
+| 6 | `06_structurizr.md` | Structurizr: Architecture Modeling as Code | Using Structurizr DSL and C4 model for architecture visualization and documentation |
 | 7 | `07_containerization.md` | Containerization and Orchestration as Code | Container-based Architecture as Code |
 
 ### Part 3: Security & Governance (Chapters 9-12)

@@ -297,6 +297,7 @@ CHAPTER_FILES=(
     "04_adr.md"
     "part_b_architecture_platform.md"
     "05_automation_devops_cicd.md"
+    "06_structurizr.md"
     "07_containerization.md"
     "part_c_security_governance.md"
     "09a_security_fundamentals.md"
