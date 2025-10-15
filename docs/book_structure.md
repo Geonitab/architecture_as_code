@@ -19,11 +19,11 @@ Testing, delivery practices, cost optimization, and migration strategies
 ### Part 5: Organization & Leadership (Chapters 17-21)
 Organizational change, team design, management models, and collaborative delivery
 
-### Part 6: Experience & Best Practices (Chapters 23-24)
+### Part 6: Experience & Best Practices (Chapters 22-24)
 Cross-disciplinary collaboration and codified best practices
 
-### Part 7: Future & Wrap-up (Chapters 25, 27)
-Future outlook, long-term development, and closing guidance
+### Part 7: Future & Wrap-up (Chapters 25-27)
+Future outlook, risk avoidance, and closing guidance
 
 ### Appendices (Chapters 28-31)
 Reference material, author information, and technical enablers
@@ -98,13 +98,14 @@ Reference material, author information, and technical enablers
 | 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft "as code" practices |
 | 24 | `24_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 
-### Part 7: Future & Wrap-up (Chapters 25, 27)
+### Part 7: Future & Wrap-up (Chapters 25-27)
 
-**Focus:** Strategic outlook, long-term development, and concluding guidance
+**Focus:** Strategic outlook, risk avoidance, and concluding guidance
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 25 | `25_future_trends_development.md` | Future Trends and Development in Architecture as Code | Development trends, technological future, and long-term perspectives |
+| 26 | `26_aac_anti_patterns.md` | Anti-Patterns in Architecture as Code Programmes | Common pitfalls, early warning indicators, and recovery playbooks |
 | 27 | `27_conclusion.md` | Conclusion | Concluding reflections |
 
 ### Appendices
