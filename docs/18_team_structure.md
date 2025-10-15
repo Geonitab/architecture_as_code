@@ -24,6 +24,7 @@ Teams often need a shared view of expectations at each stage of mastery. The tab
 
 **Technical Skills Progression:**
 
+Table: Technical competency levels for Architecture as Code teams
 | Level | Focus Area | Core Competencies |
 |-------|-----------|-------------------|
 | Foundation (Level 1) | Basic operations | Execute basic Git operations (clone, commit, push, pull); Explain core cloud computing concepts; Perform routine Linux or Windows administration tasks; Read and edit YAML or JSON structures; Describe fundamental networking concepts |
@@ -33,6 +34,7 @@ Teams often need a shared view of expectations at each stage of mastery. The tab
 
 **Interpersonal Skills:**
 
+Table: Interpersonal capabilities supporting Architecture as Code collaboration
 | Skill Domain | Key Capabilities |
 |--------------|------------------|
 | Communication | Produce clear technical documentation; Deliver presentations and training sessions; Manage stakeholder expectations; Resolve conflicts constructively |

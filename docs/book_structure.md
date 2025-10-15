@@ -36,6 +36,7 @@ Reference material, author information, and technical enablers
 
 **Focus:** Foundational concepts, principles, and documentation practices for Architecture as Code
 
+Table: Core chapters introducing Architecture as Code foundations
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 1 | `01_introduction.md` | Introduction to Architecture as Code | Introduction to the concept Architecture as Code and its relation to Infrastructure as Code |
@@ -47,6 +48,7 @@ Reference material, author information, and technical enablers
 
 **Focus:** Core technical building blocks and automation patterns for Architecture as Code
 
+Table: Chapters detailing execution practices and technology focus areas
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
@@ -56,6 +58,7 @@ Reference material, author information, and technical enablers
 
 **Focus:** Security automation, policy enforcement, governance, and compliance requirements
 
+Table: Chapters examining assurance, compliance, and operational resilience
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 9 | `09_security.md` | Security in Architecture as Code | Security aspects and best practices |
@@ -67,6 +70,7 @@ Reference material, author information, and technical enablers
 
 **Focus:** Testing strategies, delivery patterns, financial optimization, and migration approaches
 
+Table: Chapters covering organisational evolution and leadership perspectives
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 13 | `13_testing_strategies.md` | Testing Strategies for Infrastructure Code | Testing of IaC and architecture code |
@@ -78,6 +82,7 @@ Reference material, author information, and technical enablers
 
 **Focus:** Organizational transformation, leadership models, and digitally enabled collaboration
 
+Table: Chapters summarising cross-disciplinary insights and concluding themes
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 17 | `17_organizational_change.md` | Organizational Change and Team Structures | Organizational development for IaC |
@@ -106,6 +111,7 @@ Reference material, author information, and technical enablers
 
 ### Appendices
 
+Table: Appendices and archival materials supporting the main narrative
 | Chapter / Appendix | File | Title | Description |
 |--------------------|------|-------|-------------|
 | 28 | `28_glossary.md` | Glossary | Glossary and definitions |
@@ -119,6 +125,7 @@ Reference material, author information, and technical enablers
 
 The `archive/` folder stores markdown chapters that have been retired from the active manuscript. These files are excluded from the automated build sequence in `build_book.sh` but remain available for reference and future revisions.
 
+Table: Archived chapters retained for reference
 | File | Original Chapter | Notes |
 |------|------------------|-------|
 | `archive/32_code_oriented_organisations.md` | Chapter 32 | Explores cultural dynamics in code-centric organisations; overlaps with existing organisational guidance and is currently treated as background material. |

@@ -66,6 +66,7 @@ lling for Architecture as Code environments differs from traditional application
 
 The STRIDE methodology provides a structured framework for identifying threats across architectural layers. In Architecture as Code ecosystems, STRIDE must be applied to infrastructure definitions, deployment pipelines, secrets management systems, and runtime environments alike.
 
+Table: STRIDE threat categories applied to Architecture as Code environments
 | Threat Category | Description | Architecture as Code Concerns |
 |-----------------|-------------|-------------------------------|
 | Spoofing | Impersonating a user, system, or component | Compromised service accounts, stolen IAM credentials, forged infrastructure definitions |

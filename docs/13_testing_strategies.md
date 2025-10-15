@@ -130,6 +130,7 @@ project/
 
 **Best Practices for Infrastructure Testing with Vitest:**
 
+Table: Vitest testing practices that safeguard Infrastructure as Code quality
 | Practice | Guideline | Rationale |
 |----------|-----------|-----------|
 | Fast unit tests | Keep unit tests fast (<100ms per test) | Enables effective watch mode during development, rapid feedback loops |

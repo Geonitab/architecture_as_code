@@ -10,6 +10,7 @@ Architecture as Code practices evolve rapidly as teams balance platform stabilit
 
 Figure 24.2 introduces the seven practice clusters explored throughout this chapter. The mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
 
+Table: Practice clusters that sustain mature Architecture as Code programmes
 | Practice Cluster | Focus Area | Key Capabilities | Maturity Indicator |
 |-----------------|------------|------------------|-------------------|
 | Code organisation | Disciplined code organisation | Repository structure, module design, versioning, release management | Clear codebase structure, shortened feedback loops, accelerated onboarding |

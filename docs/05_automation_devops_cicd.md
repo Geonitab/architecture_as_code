@@ -26,6 +26,7 @@ For Swedish organisations, these advances coincided with increasingly strict reg
 
 ### Fundamental principles for automating Architecture as Code
 
+Table: Foundational principles guiding Architecture as Code automation efforts
 | Principle | Description | Benefits for Organisations |
 |-----------|-------------|----------------------------|
 | Immutability and version control | All configuration is version-controlled and every change is tracked through Git history | Reproducible architectures, stronger compliance documentation, ability to demonstrate controlled change to critical systems |
@@ -37,6 +38,7 @@ For Swedish organisations, these advances coincided with increasingly strict reg
 
 Implementing CI/CD for Architecture as Code affects the organisation on multiple levels. Technical teams must develop new competencies in programmatic infrastructure management, and business processes must be adapted to benefit from accelerated delivery capacity.
 
+Table: Organisational challenges addressed by Architecture as Code automation
 | Organisational Dimension | Challenge | Approach |
 |--------------------------|-----------|----------|
 | Cultural transformation | Building trust in automation while maintaining compliance and security controls | Change management programmes, confidence building in automated systems, shared accountability emphasis |
@@ -326,6 +328,7 @@ Effective CI/CD pipelines for Architecture as Code are built on design principle
 
 Fail-fast feedback is the cornerstone of CI/CD. Errors are detected and reported as early as possible in the development lifecycle. For Architecture as Code this means multilayer validation—from syntax checks to comprehensive security scanning—before any infrastructure reaches production.
 
+Table: Validation layers that protect Architecture as Code delivery pipelines
 | Validation Layer | Purpose | Tools & Technologies | Detection Capabilities |
 |-------------------|---------|---------------------|------------------------|
 | Syntax and static analysis | Check for syntax errors, undefined variables, and configuration mistakes | `terraform validate`, `ansible-lint`, provider-specific validators | Syntax errors, type mismatches, undefined references before deployment |
@@ -337,6 +340,7 @@ Fail-fast feedback is the cornerstone of CI/CD. Errors are detected and reported
 
 Progressive deployment minimises risk through gradual rollout of infrastructure changes. This is particularly important for Swedish organisations with high availability requirements and regulatory obligations.
 
+Table: Deployment strategies applied to Architecture as Code changes
 | Deployment Strategy | Description | Use Cases | Risk Mitigation |
 |---------------------|-------------|-----------|-----------------|
 | Environment promotion | Changes flow through environments (development → staging → production) with increasing validation rigour | Standard deployment path for most changes | Progressive validation, manual approval gates, increasing test coverage at each stage |

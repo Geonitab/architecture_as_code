@@ -10,6 +10,7 @@ Figure 11.1 illustrates how policy authors, reviewers, automation, production co
 
 Designing branching strategies for governance artifacts keeps each state explicit. Dedicated draft, review, and production branches mirror software development workflows so stakeholders can follow the journey from proposal to adoption.
 
+Table: Governance workflow stages aligned with automation mechanisms
 | Governance Workflow Stage | Mechanism | Stakeholders | Automated Controls | Outcome |
 |---------------------------|-----------|--------------|-------------------|---------|
 | Draft and proposal | Feature branches | Policy authors, governance owners | Schema validation, syntax checks | Explicit state for work-in-progress changes |

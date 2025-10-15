@@ -14,6 +14,7 @@ Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy au
 
 Security automation in Swedish enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today.
 
+Table: Evolution of security automation maturity within Architecture as Code programmes
 | Phase | Period | Approach | Characteristics | Limitations |
 |-------|--------|----------|-----------------|-------------|
 | Phase 1: Manual validation | 2010–2015 | Security teams reviewed infrastructure after the fact | Auditors compared live environments with policy documents weeks after release, findings logged manually | Slow feedback loop, fragile knowledge transfer, obsolete documentation, reactive fixes |
@@ -75,6 +76,7 @@ While OPA ensures policies are enforced, OSCAL standardises how controls, eviden
 
 OSCAL is organised into complementary models:
 
+Table: Core OSCAL components supporting Architecture as Code compliance
 | OSCAL Component | Purpose | Examples | Usage in Architecture as Code |
 |-----------------|---------|----------|-------------------------------|
 | Catalogues | Capture authoritative control statements from frameworks | NIST SP 800-53, GDPR articles, MSB guidelines | Foundation for organisational control baselines |

@@ -20,6 +20,7 @@ Architecture Decision Records are short text documents that capture important ar
 
 The ADR format typically follows a structured template that includes:
 
+Table: Core sections included in a standard Architecture Decision Record
 | Section | Purpose | Content Guidelines |
 |---------|---------|-------------------|
 | Status | Current status for the decision | One of: proposed, accepted, deprecated, superseded |
@@ -80,6 +81,7 @@ Versioning is managed through the Git history instead of inline changes. When a 
 
 ADRs typically progress through the following statuses:
 
+Table: Lifecycle statuses that Architecture Decision Records move through
 | Status | Description | Action Required |
 |--------|-------------|-----------------|
 | Proposed | Initial proposal that undergoes review and discussion | Team review, stakeholder consultation, impact assessment |

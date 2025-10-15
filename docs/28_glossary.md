@@ -12,6 +12,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 ## Core Architecture as Code foundations
 
+Table: Glossary of Architecture as Code foundational terminology
 | Term | Definition |
 |------|------------|
 | Architecture as Code (AaC) | Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. |
@@ -24,6 +25,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 ## Automation, tooling, and delivery
 
+Table: Glossary of delivery workflow terminology
 | Term | Definition |
 |------|------------|
 | Continuous Integration / Continuous Delivery (CI/CD) | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual hand-offs. |
@@ -41,6 +43,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 ## Governance, compliance, and security
 
+Table: Glossary of security and governance terminology
 | Term | Definition |
 |------|------------|
 | Policy as Code | The practice of expressing organisational policies in code so they can be versioned, tested, and enforced automatically across platforms. |
@@ -53,6 +56,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 ## Reliability and operational excellence
 
+Table: Glossary of reliability and operational excellence terminology
 | Term | Definition |
 |------|------------|
 | Site Reliability Engineering (SRE) | An engineering discipline that applies software practices to operations work, balancing reliability with delivery velocity. |
@@ -66,6 +70,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 ## Financial stewardship and sustainability
 
+Table: Glossary of financial and sustainability terminology
 | Term | Definition |
 |------|------------|
 | FinOps | A collaborative financial practice that aligns engineering, finance, and product teams on cost efficiency while supporting innovation. |
@@ -77,6 +82,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 ## Organisational alignment and culture
 
+Table: Glossary of organisational culture terminology
 | Term | Definition |
 |------|------------|
 | Platform Team | A multidisciplinary group that curates reusable services, standards, and documentation so product teams can focus on customer value. |

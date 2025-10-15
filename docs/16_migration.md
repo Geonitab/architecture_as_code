@@ -26,6 +26,7 @@ Migration wave planning balancerar technical dependencies with business prioriti
 
 ## Lift-and-shift vs re-architecting
 
+Table: Comparative migration strategies for transitioning to Architecture as Code
 | Migration Strategy | Description | Benefits | Challenges | Best Suited For |
 |-------------------|-------------|----------|------------|-----------------|
 | Lift-and-shift | Direct migration to cloud with minimal changes | Fastest time to cloud, lower initial cost, minimal application changes | Limited cloud-native benefits, may require follow-up optimization, higher long-term operational costs | Applications with tight timelines, limited modernization budget, compliance-driven moves |

@@ -72,6 +72,7 @@ Hybrid cloud-strategier can optimera kostnader by behålla vissa workloads on-pr
 
 För att implementera kostnadsmedveten infrastruktur med Terraform behövs en strukturerad approach som kombinerar budget management, cost allocation tagging, och intelligent resursurvalsstrategier. En fullständig implementation inkluderar:
 
+Table: Centrala Terraform-komponenter för kostnadsoptimerad infrastruktur
 | Component | Purpose | Implementation Details |
 |-----------|---------|------------------------|
 | Cost allocation tags | Metadata for cost tracking | Tags for all resources with cost center, project, environment, and owner information |
@@ -85,6 +86,7 @@ För att implementera kostnadsmedveten infrastruktur med Terraform behövs en st
 
 Kubernetes-miljöer kräver noggrann resursstyrning för att undvika överprovisioning och kontrollera kostnader. Viktiga komponenter inkluderar:
 
+Table: Kubernetes-styrningar som driver kostnadsoptimering
 | Kubernetes Component | Purpose | Cost Optimization Impact |
 |---------------------|---------|--------------------------|
 | ResourceQuotas | Set hard limits on CPU, memory, and pod count per namespace | Prevents resource over-allocation, enforces budget constraints |

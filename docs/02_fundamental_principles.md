@@ -36,6 +36,7 @@ Documentation as Code (DaC) treats documentation as an integrated part of the co
 
 ### Benefits of Documentation as Code
 
+Table: Documentation as Code advantages across collaboration and automation
 | Benefit | Description | Key Advantages |
 |---------|-------------|----------------|
 | Version control and history | Storing documentation in Git or other version control systems | Automatic traceability of changes, ability to restore previous versions, complete history of documentation evolution |
@@ -88,6 +89,7 @@ Requirements as Code (RaC) transforms traditional requirements specifications fr
 
 ### Automation and traceability
 
+Table: Core capabilities that Requirements as Code unlocks
 | Capability | Description | Business Impact |
 |------------|-------------|-----------------|
 | Automated validation | Requirements expressed as code run automatically against the system to verify compliance | Removes manual testing, ensures consistent validation, reduces human error |

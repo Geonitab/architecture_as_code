@@ -16,6 +16,7 @@ The adoption journey in Figure 14.2 breaks down these stages into the minimum se
 ![Figure 14.2 – Iterative journey for Architecture as Code adoption](images/diagram_13_user_journey.png)
 *Figure 14.2 – A simplified adoption journey that balances architectural guardrails with iterative delivery milestones.*
 
+Table: Implementation stages that guide Architecture as Code adoption
 | Implementation Stage | Key Activities | Success Criteria | Deliverables |
 |---------------------|----------------|------------------|--------------|
 | Aligning stakeholders early | Current-state assessment, cross-functional working group formation, vocabulary and SLO agreement | Platform, security, finance, and architecture alignment on priorities | Technical baseline documentation, regulatory obligations map, shared vocabulary guide |
@@ -36,6 +37,7 @@ High-availability design translates into codified redundancy, automated failover
 
 ## Common challenges and troubleshooting
 
+Table: Common implementation challenges and corresponding mitigation strategies
 | Challenge | Root Cause | Mitigation Strategy | Best Practices |
 |-----------|-----------|---------------------|----------------|
 | State management | Distributed teams increase risk of state drift and accidental overwrites | Remote state backends with locking, frequent backups, reconciliation routines | Mandatory state locking for production, automated drift detection, regular state backups |

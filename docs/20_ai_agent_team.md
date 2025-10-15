@@ -30,6 +30,7 @@ The Graphic Designer produces the visual narratives—Mermaid diagrams, illustra
 
 The agent collective maintains living cases that accumulate insights whenever two or more specialists exchange information. Rather than tracking activities against a rigid timetable, the focus lies on how communications revise shared artefacts and decisions.
 
+Table: Cross-functional communication threads managed by the AI agent team
 | Communication Thread | Primary Participants | Case Update Applied |
 |----------------------|----------------------|---------------------|
 | Backlog refinement for a new feature proposal | Project Manager, Requirements Analyst, Architect | User story expanded with architectural guardrails and acceptance tests linked to repository cases. |

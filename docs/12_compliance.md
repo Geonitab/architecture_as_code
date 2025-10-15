@@ -6,6 +6,7 @@
 
 Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12-1 shows how that translation depends on a closed feedback loop. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
 
+Table: Continuous compliance loop that keeps regulatory controls current
 | Compliance Loop Stage | Activities | Outputs | Feedback Mechanism |
 |----------------------|------------|---------|-------------------|
 | Regulatory intelligence | Monitor legislation updates, interpret regulatory changes, map requirements | Updated compliance requirements, policy mapping documents | Governance teams receive regulator feedback and audit findings |
