@@ -17,8 +17,15 @@ Cultural readiness also involves aligning reward systems and career frameworks w
 Practitioners should already experience leaders acting as coaches, echoing the behavioural commitments in [Chapter 17](17_organizational_change.md), so that AaC feels like a natural extension of existing norms rather than an abrupt revolution.
 ## Technical Maturity Baselines
 
-AaC assumes mastery of core delivery disciplines. The continuous pipelines in [Chapter 05](05_automation_devops_cicd.md), the testing depth in [Chapter 13](13_testing_strategies.md), and the Structurizr patterns in [Chapter 06](06_structurizr.md) must already be routine. Otherwise architecture models drift from runtime reality. Security and compliance practices from [Chapters 09a, 09b, and 10](09a_security_fundamentals.md) also need to be embedded so that codified architecture does not introduce blind spots. Governance automation, as described in [Chapter 11](11_governance_as_code.md), provides the scaffolding that lets architectural code flow through the same delivery channels as application code. Technical readiness further demands disciplined environment strategies—golden paths, reference stacks, and service catalogues—that make reuse effortless and align with the platform guidance in [Chapter 24](24_best_practices.md). Data quality expectations must be explicit so that telemetry, cost analytics, and resilience signals inform architectural decisions in the spirit of [Chapter 20](20_ai_agent_team.md).
+AaC assumes mastery of core delivery disciplines. The continuous pipelines in [Chapter 05](05_automation_devops_cicd.md), the testing depth in [Chapter 13](13_testing_strategies.md), and the Structurizr patterns in [Chapter 06](06_structurizr.md) must already be routine. Otherwise, architecture models drift from runtime reality.
 
+Security and compliance practices from [Chapters 09a, 09b, and 10](09a_security_fundamentals.md) also need to be embedded so that codified architecture does not introduce blind spots.
+
+Governance automation, as described in [Chapter 11](11_governance_as_code.md), provides the scaffolding that lets architectural code flow through the same delivery channels as application code.
+
+Technical readiness further demands disciplined environment strategies—golden paths, reference stacks, and service catalogues—that make reuse effortless and align with the platform guidance in [Chapter 24](24_best_practices.md).
+
+Data quality expectations must be explicit so that telemetry, cost analytics, and resilience signals inform architectural decisions in the spirit of [Chapter 20](20_ai_agent_team.md).
 ## Knowledge and Information Management
 
 Readiness depends on how knowledge is curated. The distinction between documentation and architecture in [Chapter 22](22_documentation_vs_architecture.md) only holds when both are discoverable. Teams need version-controlled architecture decision records, reusable component catalogues, and glossaries such as [Chapter 28](28_glossary.md). These artefacts shorten onboarding time and anchor architectural intent in narrative context, echoing the measurement guidance from [Chapter 17](17_organizational_change.md). Telemetry and feedback channels—highlighted in [Chapters 20 and 24](20_ai_agent_team.md)—must already feed insights into design discussions; otherwise AaC becomes detached from operational reality.
