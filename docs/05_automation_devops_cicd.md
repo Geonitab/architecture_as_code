@@ -446,7 +446,7 @@ data:
       evaluation_interval: 15s
       external_labels:
         organisation: "${ORGANISATION_NAME}"
-        region: "eu-north-1"
+        region: "eu-west-1"
         country: "EU"
         gdpr_zone: "compliant"
 
