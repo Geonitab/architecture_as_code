@@ -27,12 +27,12 @@ each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]
 
 This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for organisations.
 
-### 05_CODE_1: GDPR-compliant CI/CD Pipeline for organisations
+### 05_CODE_1: GDPR-compliant CI/CD Pipeline for European organisations
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
-# .github/workflows/a-architecture as code-pipeline.yml
-# GDPR-compliant CI/CD pipeline for organizations
+# .github/workflows/aac-pipeline.yml
+# GDPR-compliant CI/CD pipeline for European organizations
 
 name: architecture as code Pipeline with GDPR Compliance
 
@@ -101,12 +101,12 @@ jobs:
           echo "✅ GDPR compliance check genomförd"
 ```
 
-### 05_CODE_2: Jenkins Pipeline for organisations with GDPR compliance
+### 05_CODE_2: Jenkins Pipeline for European organisations with GDPR compliance
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```yaml
-# jenkins/a-architecture as code-pipeline.groovy
-// Jenkins pipeline for organizations with GDPR compliance
+# jenkins/aac-pipeline.groovy
+// Jenkins pipeline for European organizations with GDPR compliance
 
 pipeline {
     agent any
@@ -130,7 +130,7 @@ pipeline {
     }
     
     environment {
-        ORGANIZATION_NAME = 'a-org'
+        ORGANIZATION_NAME = 'eu-org'
         AWS_DEFAULT_REGION = 'eu-west-1'
         GDPR_COMPLIANCE = 'enabled'
         DATA_RESIDENCY = 'EU'
@@ -288,8 +288,8 @@ pipeline {
                             echo "📋 Validates organisationspolicies..."
                             
                             // Skapa OPA policies
-                            writeFile file: 'policies/a-tagging.rego', text: """
-                                package a.tagging
+                            writeFile file: 'policies/eu-tagging.rego', text: """
+                                package eu.tagging
                                 
                                 required_tags := [
                                     "Environment", "CostCenter", "Organization", 
@@ -396,8 +396,8 @@ pipeline {
                     - Implementera scheduled shutdown for icke-critical systems
                     """
                     
-                    writeFile file: 'cost-report-a.md', text: costReport
-                    archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
+                    writeFile file: 'cost-report-eu.md', text: costReport
+                    archiveArtifacts artifacts: 'cost-report-eu.md', fingerprint: true
                     
                     echo "✅ Kostnadskontroll slutförd"
                 }
@@ -411,7 +411,7 @@ pipeline {
 *Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
 
 ```go
-// test/a_vpc_test.go
+// test/eu_vpc_test.go
 // Terratest suite for VPC implementation with GDPR compliance
 
 package test
@@ -478,7 +478,7 @@ func TestEUVPCGDPRCompliance(t *testing.T) {
 func setupEUVPCTest(t *testing.T, environment string) *EUVPCTestSuite {
     // Unique test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
-    organizationName := fmt.Sprintf("a-org-%s", uniqueID)
+    organizationName := fmt.Sprintf("eu-org-%s", uniqueID)
 
     // Terraform configuration
     terraformOptions := &terraform.Options{
@@ -494,7 +494,7 @@ func setupEUVPCTest(t *testing.T, environment string) *EUVPCTestSuite {
             "audit_logging":        true,
         },
         BackendConfig: map[string]interface{}{
-            "bucket": "a-org-terraform-test-state",
+            "bucket": "eu-org-terraform-test-state",
             "key":    fmt.Sprintf("test/%s/terraform.tfstate", uniqueID),
             "region": "eu-central-1",
         },
@@ -677,13 +677,13 @@ Architecture as Code-principerna within This area#cloudformation-Architecture as
 
 This sektion contains CloudFormation templates for AWS-infrastructure adapted for organisations.
 
-### 07_CODE_1: VPC Setup for organisations with GDPR compliance
+### 07_CODE_1: VPC Setup for European organisations with GDPR compliance
 *Refereras from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
-# cloudformation/a-org-vpc.yaml
+# cloudformation/eu-org-vpc.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'VPC setup for organizations with GDPR compliance'
+Description: 'VPC setup for European organizations with GDPR compliance'
 
 Parameters:
   EnvironmentType:
