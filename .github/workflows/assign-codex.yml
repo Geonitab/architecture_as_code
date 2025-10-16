@@ -22,5 +22,5 @@ jobs:
           gh api \
             repos/${{ github.repository }}/issues/${{ github.event.issue.number }} \
             -X PATCH \
-            -f assignees='["copilot-swe-agent"]'
+            -f assignees[]=copilot-swe-agent
           echo "::debug::Assignee updated"
