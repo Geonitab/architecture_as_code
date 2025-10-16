@@ -7,7 +7,7 @@ on:
       - synchronize
       - reopened
       - ready_for_review
-  workflow_dispatch: # Lägg till denna rad för att möjliggöra manuell start av workflowet.
+  workflow_dispatch: # Möjliggör manuell start av workflow.
 
 permissions:
   contents: read
@@ -16,7 +16,6 @@ permissions:
 
 jobs:
   close-conflicts:
-    if: github.event.pull_request.state == 'open'
     runs-on: ubuntu-latest
     steps:
       - name: Set up Node.js
@@ -51,9 +50,12 @@ jobs:
               }
 
               const hasConflicts = pr.mergeable === false && pr.mergeable_state === 'dirty';
+              const noChanges = !pr.changed_files;
+
               core.setOutput('mergeable', pr.mergeable === null ? 'unknown' : String(pr.mergeable));
               core.setOutput('mergeable_state', pr.mergeable_state ?? 'unknown');
               core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
+              core.setOutput('no_changes', noChanges ? 'true' : 'false');
             }
 
       - name: Raise merge conflict issue
@@ -83,34 +85,27 @@ jobs:
 
             return { issue_number: issue.number, issue_url: issue.html_url };
 
-      - name: Close pull request with merge conflicts
-        if: steps.mergeability.outputs.has_conflicts == 'true'
+      - name: Close pull request with merge conflicts or no changes
+        if: steps.mergeability.outputs.has_conflicts == 'true' || steps.mergeability.outputs.no_changes == 'true'
         uses: actions/github-script@v7
-        env:
-          ISSUE_URL: ${{ steps.issue.outputs.issue_url }}
-          ISSUE_NUMBER: ${{ steps.issue.outputs.issue_number }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const issueReference = process.env.ISSUE_NUMBER
-              ? `issue #${process.env.ISSUE_NUMBER}`
-              : 'the linked issue';
+            const pr = context.payload.pull_request;
+            const reason = steps.mergeability.outputs.has_conflicts == 'true'
+              ? 'merge conflicts'
+              : 'no changes in the files';
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-              body: [
-                'This pull request has been closed automatically because it contains merge conflicts.',
-                process.env.ISSUE_URL
-                  ? `Further updates will be tracked in ${issueReference}: ${process.env.ISSUE_URL}.`
-                  : 'Further updates will be tracked in the follow-up issue.',
-              ].join('\n\n'),
+              issue_number: pr.number,
+              body: `This pull request has been closed automatically because it contains ${reason}.`,
             });
 
             await github.rest.pulls.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
+              pull_number: pr.number,
               state: 'closed',
             });
