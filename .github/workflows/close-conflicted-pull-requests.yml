@@ -56,4 +56,28 @@ jobs:
               core.setOutput('mergeable', pr.mergeable === null ? 'unknown' : String(pr.mergeable));
               core.setOutput('mergeable_state', pr.mergeable_state ?? 'unknown');
               core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
+
+              if (hasConflicts) {
+                // Create an issue to report the conflict
+                const issueTitle = `Conflicted Pull Request #${prNumber}`;
+                const issueBody = `Pull request #${prNumber} has merge conflicts and cannot be merged. Please resolve the conflicts.\n\nPull Request Link: ${pr.html_url}`;
+                const { data: issue } = await github.rest.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: issueTitle,
+                  body: issueBody,
+                });
+
+                core.info(`Created issue #${issue.number} to report merge conflicts.`);
+
+                // Close the pull request
+                await github.rest.pulls.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                  state: 'closed',
+                });
+
+                core.info(`Closed pull request #${prNumber} due to merge conflicts.`);
+              }
             }
