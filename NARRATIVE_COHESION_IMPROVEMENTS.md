@@ -38,7 +38,7 @@ Enhanced all eight part divider files with comprehensive narrative introductions
    - Connects secure platforms to practical delivery
    - References security controls and governance from Part C
 
-5. **Part E: Organization and Leadership** (`part_e_organization_leadership.md`)
+5. **Part E: Organisation and Leadership** (`part_e_organisation_leadership.md`)
    - Transitions from technical to organizational transformation
    - References migration and delivery practices from Part D
 
@@ -166,7 +166,7 @@ Content difficulty scales appropriately:
 2. `docs/part_b_architecture_platform.md` - Added comprehensive introduction
 3. `docs/part_c_security_governance.md` - Added comprehensive introduction
 4. `docs/part_d_delivery_operations.md` - Added comprehensive introduction
-5. `docs/part_e_organization_leadership.md` - Added comprehensive introduction
+5. `docs/part_e_organisation_leadership.md` - Added comprehensive introduction
 6. `docs/part_f_experience_best_practices.md` - Added comprehensive introduction
 7. `docs/part_g_future_wrap_up.md` - Added comprehensive introduction
 8. `docs/part_h_appendices.md` - Added comprehensive introduction

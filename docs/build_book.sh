@@ -310,7 +310,7 @@ CHAPTER_FILES=(
     "14_practical_implementation.md"
     "15_cost_optimization.md"
     "16_migration.md"
-    "part_e_organization_leadership.md"
+    "part_e_organisation_leadership.md"
     "17_organizational_change.md"
     "18_team_structure.md"
     "19_management_as_code.md"
