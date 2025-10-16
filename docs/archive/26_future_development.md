@@ -116,7 +116,7 @@ RegTech integreras in Architecture as Code:
 - **Risk assessment**: AI-driven riskbedömning of infrastructure changes
 - **Swedish regulatory focus**: Specialisering at svenska and EU-regelverk
 
-## organisational changes
+## Organisational Changes
 
 ### Remote-first infrastructure
 
@@ -174,7 +174,7 @@ Infrastructure Mesh etableras as nytt paradigm:
 - **Infrastructure observability**: deep insikt in infrastructurebeteende
 - **Cross-cloud networking**: Smidig networking over cloud providers
 
-### immutable everything
+### Immutable Everything
 
 **Oforänderlig infrastructure**
 Immutability utvidgas to all infrastructurelagre:
@@ -218,7 +218,7 @@ Sverige as världsledare within sustainable teknologi:
 
 ## Förberedelser for framtiden
 
-### organisational forberedelser
+### Organisational Forberedelser
 
 **Strategisk planering**
 Swedish organisations can forbereda itself through:
@@ -238,7 +238,7 @@ Tekniska forberedelser for framtida development:
 - **Cloud-native principles**: implementation of cloud-native principles
 - **Observability platforms**: Etablering of comprehensive observability
 
-### competence development
+### Competence Development
 
 **Continuous lärande**
 Development of framtidsorienterade kompetenser:
