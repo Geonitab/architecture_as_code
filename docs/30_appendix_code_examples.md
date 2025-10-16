@@ -2558,7 +2558,7 @@ def generate_terraform_cost_optimizations(cost_plan: Dict) -> str:
 resource "aws_launch_template" "spot_optimized" {{
   name_prefix   = "{project}-spot-"
   
-  instance_market_options {{
+  instance_market_options {
     market_type = "spot"
     spot_options {{
       max_price = "{max_spot_price}"
