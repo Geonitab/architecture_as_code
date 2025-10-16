@@ -227,27 +227,27 @@ views {
         element "Person" {
             shape person
             background #08427b
-            color #ffffff
+            colour #ffffff
         }
         
         element "Software System" {
             background #1168bd
-            color #ffffff
+            colour #ffffff
         }
         
         element "External System" {
             background #999999
-            color #ffffff
+            colour #ffffff
         }
         
         element "Container" {
             background #438dd5
-            color #ffffff
+            colour #ffffff
         }
         
         element "Component" {
             background #85bbf0
-            color #000000
+            colour #000000
         }
         
         element "Database" {
@@ -1013,13 +1013,13 @@ views {
         element "Person" {
             shape person
             background #FF6B35  # Brand colour
-            color #FFFFFF
+            colour #FFFFFF
             fontSize 24
         }
         
         element "Container" {
             background #004E89  # Brand colour
-            color #FFFFFF
+            colour #FFFFFF
             fontSize 18
             shape roundedbox
         }
@@ -1031,7 +1031,7 @@ views {
         
         relationship "Relationship" {
             thickness 3
-            color #004E89
+            colour #004E89
             routing curved  # or: orthogonal, direct
             fontSize 14
         }
@@ -1360,30 +1360,30 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
             element "Person" {
                 shape person
                 background #08427b
-                color #ffffff
+                colour #ffffff
                 fontSize 22
             }
             
             element "Software System" {
                 background #1168bd
-                color #ffffff
+                colour #ffffff
                 shape roundedbox
             }
             
             element "External System" {
                 background #999999
-                color #ffffff
+                colour #ffffff
             }
             
             element "Container" {
                 background #438dd5
-                color #ffffff
+                colour #ffffff
                 shape roundedbox
             }
             
             element "Component" {
                 background #85bbf0
-                color #000000
+                colour #000000
                 shape component
             }
             
@@ -1411,7 +1411,7 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
             
             relationship "Relationship" {
                 thickness 2
-                color #707070
+                colour #707070
                 routing orthogonal
                 fontSize 12
             }
