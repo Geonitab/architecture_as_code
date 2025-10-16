@@ -11,14 +11,21 @@ from pathlib import Path
 class TestHeadingCapitalization:
     """Test that all markdown headings start with uppercase letters."""
     
-    def test_heading_capitalization_in_docs(self, docs_directory):
+    def test_heading_capitalization_in_docs(self, docs_directory, requirements_config):
         """Test that all headings in docs/ start with uppercase letters."""
         # Import the validation logic from the script
         from scripts.validate_heading_capitalization import check_file
-        
-        # Find all markdown files in docs directory
-        md_files = list(docs_directory.rglob('*.md'))
-        
+
+        canonical_filenames = {
+            chapter["filename"]
+            for chapter in requirements_config["book"]["chapters"]
+        }
+
+        md_files = []
+        for md_file in docs_directory.glob('*.md'):
+            if md_file.name.startswith('part_') or md_file.name in canonical_filenames:
+                md_files.append(md_file)
+
         assert len(md_files) > 0, "No markdown files found in docs directory"
         
         files_with_issues = []

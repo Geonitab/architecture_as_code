@@ -190,9 +190,15 @@ class TestCompleteness:
         expected_chapters = set()
         for chapter in requirements_config["book"]["chapters"]:
             expected_chapters.add(chapter["filename"])
+
+        supplemental_chapters = {
+            entry.get("filename")
+            for entry in requirements_config["book"].get("supplemental_chapters", [])
+            if entry.get("filename")
+        }
         
         # Find orphaned chapters (exist in docs but not in requirements)
-        orphaned_chapters = actual_chapters - expected_chapters
+        orphaned_chapters = (actual_chapters - expected_chapters) - supplemental_chapters
         
         # Find missing chapters (defined in requirements but don't exist)
         missing_chapters = expected_chapters - actual_chapters

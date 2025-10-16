@@ -16,7 +16,10 @@ import os
 import sys
 import glob
 import re
+from collections import OrderedDict
 from pathlib import Path
+
+import yaml
 
 def read_chapter_content(chapter_file):
     """Read and parse a chapter markdown file."""
@@ -139,39 +142,42 @@ security aspects, and organisational changes required for successful IaC adoptio
         'chapters_count': chapter_total
     }
 
+def _load_requirements_metadata(requirements_path: Path = Path("BOOK_REQUIREMENTS.md")) -> dict:
+    """Load requirements front matter from the markdown specification."""
+    if not requirements_path.exists():
+        return {}
+
+    lines = requirements_path.read_text(encoding="utf-8").splitlines()
+    if not lines or lines[0].strip() != "---":
+        return {}
+
+    front_matter = []
+    for line in lines[1:]:
+        if line.strip() == "---":
+            break
+        front_matter.append(line)
+
+    return yaml.safe_load("\n".join(front_matter)) or {}
+
+
 def get_chapter_mapping():
-    """Return mapping of chapter files to readable chapter numbers."""
-    return {
-        '01_introduction.md': 'Chapter 1',
-        '02_fundamental_principles.md': 'Chapter 2',
-        '03_version_control.md': 'Chapter 3',
-        '04_adr.md': 'Chapter 4',
-        '05_automation_devops_cicd.md': 'Chapter 5',
-        '07_containerization.md': 'Chapter 7',
-        '09a_security_fundamentals.md': 'Chapter 9A',
-        '09b_security_patterns.md': 'Chapter 9B',
-        '10_policy_and_security.md': 'Chapter 10',
-        '11_governance_as_code.md': 'Chapter 11',
-        '12_compliance.md': 'Chapter 12',
-        '13_testing_strategies.md': 'Chapter 13',
-        '14_practical_implementation.md': 'Chapter 14',
-        '15_cost_optimization.md': 'Chapter 15',
-        '16_migration.md': 'Chapter 16',
-        '17_organizational_change.md': 'Chapter 17',
-        '18_team_structure.md': 'Chapter 18',
-        '19_management_as_code.md': 'Chapter 19',
-        '20_ai_agent_team.md': 'Chapter 20',
-        '21_digitalization.md': 'Chapter 21',
-        '23_soft_as_code_interplay.md': 'Chapter 23',
-        '24_best_practices.md': 'Chapter 24',
-        '25_future_trends_development.md': 'Chapter 25',
-        '27_conclusion.md': 'Chapter 27',
-        '28_glossary.md': 'Glossary',
-        '29_about_the_authors.md': 'About the Author',
-        '30_appendix_code_examples.md': 'Appendix A',
-        '31_technical_architecture.md': 'Appendix B',
-        '32_finos_project_blueprint.md': 'Appendix C'
-    }
+    """Return mapping of chapter files to readable chapter identifiers."""
+    metadata = _load_requirements_metadata()
+    chapters = metadata.get("book", {}).get("chapters", [])
+
+    mapping = OrderedDict()
+    for index, chapter in enumerate(chapters, start=1):
+        filename = chapter.get("filename")
+        if not filename:
+            continue
+
+        label = chapter.get("label") or chapter.get("title")
+        if not label:
+            label = f"Chapter {index}"
+
+        mapping[filename] = label
+
+    return mapping
 
 def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
     """Create HTML content for a whitepaper."""

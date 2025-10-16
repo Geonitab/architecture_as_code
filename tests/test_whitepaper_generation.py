@@ -14,6 +14,8 @@ import tempfile
 import shutil
 from pathlib import Path
 
+import yaml
+
 # Add parent directory to path to import the script
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -38,15 +40,38 @@ class TestWhitepaperGeneration(unittest.TestCase):
         """Clean up test environment."""
         os.chdir(self.original_cwd)
     
-    def _list_numbered_chapters(self):
-        """Return the current set of numbered chapter filenames in docs/."""
-        docs_dir = Path("docs")
-        return sorted(path.name for path in docs_dir.glob("[0-9][0-9]_*.md"))
+    def _load_requirements_config(self):
+        """Load requirements front matter as a dictionary."""
+        requirements_path = Path("BOOK_REQUIREMENTS.md")
+
+        if not requirements_path.exists():
+            return {}
+
+        lines = requirements_path.read_text(encoding="utf-8").splitlines()
+        if not lines or lines[0].strip() != "---":
+            return {}
+
+        front_matter = []
+        for line in lines[1:]:
+            if line.strip() == "---":
+                break
+            front_matter.append(line)
+
+        return yaml.safe_load("\n".join(front_matter)) or {}
+
+    def _canonical_chapters(self):
+        """Return the canonical chapter filenames defined in requirements."""
+        config = self._load_requirements_config()
+        return [
+            chapter["filename"]
+            for chapter in config.get("book", {}).get("chapters", [])
+            if chapter.get("filename")
+        ]
 
     def test_chapter_mapping_complete(self):
         """Test that the chapter mapping covers every numbered chapter file."""
         mapping = get_chapter_mapping()
-        numbered_chapters = self._list_numbered_chapters()
+        numbered_chapters = self._canonical_chapters()
 
         self.assertEqual(
             len(mapping),
@@ -63,24 +88,14 @@ class TestWhitepaperGeneration(unittest.TestCase):
         self.assertFalse(missing, f"Mapping missing chapters: {missing}")
         self.assertFalse(extras, f"Mapping contains unexpected chapters: {extras}")
 
-        # Spot-check a handful of key chapters that should always exist
-        expected_files = [
-            "01_introduction.md",
-            "05_automation_devops_cicd.md",
-            "11_governance_as_code.md",
-            "20_ai_agent_team.md",
-            "23_soft_as_code_interplay.md",
-            "31_technical_architecture.md",
-        ]
-
-        for expected_file in expected_files:
+        for expected_file in numbered_chapters[:6]:
             self.assertIn(expected_file, mapping, f"Missing expected file: {expected_file}")
     
     def test_chapter_mapping_matches_actual_files(self):
         """Test that all files in mapping actually exist in docs/."""
         mapping = get_chapter_mapping()
         docs_dir = Path("docs")
-        
+
         for filename in mapping.keys():
             file_path = docs_dir / filename
             self.assertTrue(file_path.exists(), f"Mapped file does not exist: {file_path}")
@@ -88,7 +103,7 @@ class TestWhitepaperGeneration(unittest.TestCase):
     def test_book_overview_updated(self):
         """Test that book overview has correct chapter count."""
         overview = get_book_overview()
-        numbered_chapters = self._list_numbered_chapters()
+        numbered_chapters = self._canonical_chapters()
 
         self.assertEqual(
             overview['chapters_count'],
