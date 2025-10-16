@@ -424,7 +424,7 @@ Alerting strategies ensure rapid response to pipeline failures and infrastructur
 
 ### Monitoring and Alerting
 
-For organisations, monitoring requires special attention to GDPR compliance, cost tracking, and alignment with local incident-management processes:
+For organisations, monitoring requires special attention to GDPR compliance, cost tracking in EUR, and alignment with local incident-management processes:
 
 ```yaml
 # monitoring/pipeline-monitoring.yaml
@@ -446,7 +446,7 @@ data:
       evaluation_interval: 15s
       external_labels:
         organisation: "${ORGANISATION_NAME}"
-        region: "eu-north-1"
+        region: "eu-west-1"
         country: "EU"
         gdpr_zone: "compliant"
 
