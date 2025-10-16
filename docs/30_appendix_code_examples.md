@@ -1755,28 +1755,28 @@ performance_measurement_framework:
 
 ---
 
-## References and navigering
+## References and Navigation
 
-each kodexamples in This appendix can refereras from huvudtexten with dess unique identifierare. to hitta specific implementations:
+Each code example in this appendix can be referenced from the main text using its unique identifier. To find specific implementations:
 
-1. **Use sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
-2. **Följ kategorierna** - Navigera to relevant sektion based on användningwhichråde
-3. **Use korshänvisningar** - Följ länkar tobaka to huvudkapitlen for context
+1. **Use search function** - Search for code type or technology (e.g., "Terraform", "CloudFormation", "Python")
+2. **Follow the categories** - Navigate to the relevant section based on use case
+3. **Use cross-references** - Follow links back to the main chapters for context
 
-### Konventioner for kodexempel
+### Conventions for Code Examples
 
-- **Kommentarer**: all kodexamples contains kommentarer for klarhet
-- **Security**: Security aspects is markerade with 🔒
-- **GDPR-compliance**: GDPR-relaterade configurations is markerade with 🇪🇺
-- **anpassningar**: Lokala anpassningar is markerade with 🇸🇪
+- **Comments**: All code examples contain comments for clarity
+- **Security**: Security aspects are marked with 🔒
+- **GDPR compliance**: GDPR-related configurations are marked with 🇪🇺
+- **Customisations**: Local customisations are marked with 🇸🇪
 
-### Uppdateringar and underhåll
+### Updates and Maintenance
 
-This appendix uppdateras löpande when new kodexamples läggs to in bokens huvudkapitel. For last versionen of kodexamples, se bokens GitHub-repository.
+This appendix is updated regularly when new code examples are added to the book's main chapters. For the latest version of code examples, see the book's GitHub repository.
 
 ---
 
-*For mer information about specific implementations, se respektive huvudkapitel where kodexemplen introduceras and forklaras in sitt context.*
+*For more information about specific implementations, see the respective main chapters where the code examples are introduced and explained in their context.*
 ---
 
 ## Chapter 14 Reference Implementations

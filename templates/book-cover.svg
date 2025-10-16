@@ -240,18 +240,8 @@
   <!-- Main content area -->
   <g transform="translate(94, 151)">
     
-    <!-- Header with logo -->
+    <!-- Header area (previously had logo, now removed) -->
     <g>
-      <!-- Logo background -->
-      <rect x="0" y="0" width="56" height="56" rx="14" fill="white" filter="url(#logoShadow)"/>
-      
-      <!-- Logo letter K -->
-      <text x="28" y="40" font-family="Inter, sans-serif" font-size="28" font-weight="800" 
-            text-anchor="middle" fill="hsl(221, 67%, 32%)">K</text>
-      
-      <!-- Brand text -->
-      <text x="72" y="36" font-family="Inter, sans-serif" font-size="16" font-weight="600"
-            fill="white" opacity="0.95" letter-spacing="0.8px">KVADRAT PUBLICATION</text>
     </g>
     
     <!-- Main title -->
@@ -289,9 +279,6 @@
         <!-- Year with gradient -->
         <text x="0" y="28" font-family="Inter, sans-serif" font-size="28" font-weight="800"
               fill="url(#accentGradient)" text-anchor="end">2025</text>
-        <!-- Edition text -->
-        <text x="0" y="52" font-family="Inter, sans-serif" font-size="16"
-              fill="rgba(255,255,255,0.85)" text-anchor="end">Published 2025</text>
       </g>
     </g>
     
