@@ -1,7 +1,7 @@
 name: Assign copilot
 on:
   issues:
-    types: [opened]
+    types: [opened, reopened]
 
 jobs:
   comment_and_assign:
