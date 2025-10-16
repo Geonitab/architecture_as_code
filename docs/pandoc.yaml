@@ -49,17 +49,8 @@ variables:
     \newpage
     \thispagestyle{empty}
     \begin{center}
-    \vspace*{0.05\textheight}
-    \includegraphics[width=\paperwidth,height=0.75\paperheight,keepaspectratio]{images/book-cover.png}
-    \vspace{0.04\textheight}
-    {\Huge\bfseries Architecture as Code\par}
-    \vspace{0.75cm}
-    {\Large\itshape A practical handbook for Infrastructure as Code\par}
-    \vspace{0.75cm}
-    {\large Architecture as Code Editorial Team\par}
-    {\large 2024\par}
-    \vspace{0.5cm}
-    {\normalsize A comprehensive British English guide covering modern Infrastructure as Code practices, organisational governance, and architectural automation for cloud-native delivery teams.\par}
+    \vspace*{0.1\textheight}
+    \includegraphics[width=0.9\paperwidth,height=0.8\paperheight,keepaspectratio]{images/book-cover.png}
     \vspace*{0.1\textheight}
     \end{center}
     \newpage
@@ -163,6 +154,9 @@ variables:
     \titlespacing*{\part}{0pt}{0pt}{0pt}
     \usepackage{graphicx}
     \usepackage{pdfpages}
+    % Suppress automatic title page generation from metadata
+    \let\oldmaketitle\maketitle
+    \renewcommand{\maketitle}{}
 
 # For EPUB output
 epub-chapter-level: 1
