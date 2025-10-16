@@ -5,9 +5,9 @@ on:
     types: [opened, reopened]
 
 permissions:
-  contents: write        # create branch + commit + push
-  pull-requests: write   # create PR
-  issues: write          # post comments
+  contents: write
+  pull-requests: write
+  issues: write
 
 jobs:
   create_or_reuse_draft_pr:
@@ -40,15 +40,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          # Try to find an existing branch for this issue
           EXISTING=$(git ls-remote --heads "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" \
-            "refs/heads/codex/issue-${ISSUE_NUMBER}-*{,}" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
+            "refs/heads/codex/issue-${ISSUE_NUMBER}-*" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
 
           if [ -n "$EXISTING" ]; then
             BRANCH="$EXISTING"
             echo "::debug::Reusing existing branch: $BRANCH"
           else
-            # Create a new branch slug from title
             SLUG=$(printf '%s' "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
             BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
             echo "::debug::Creating new branch: $BRANCH"
@@ -94,20 +92,22 @@ jobs:
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
 
+      # 🗨️ Comment on PR (as you)
       - name: Comment on PR (ping @codex)
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.BOT_ISSUE }}   # Your personal token – posts as you
         run: |
           set -euo pipefail
           gh api repos/$REPO/issues/$PR_NUMBER/comments \
             -f body='@codex - Please address this draft PR.'
-          echo "::debug::Comment added to PR #$PR_NUMBER"
+          echo "::debug::Comment added to PR #$PR_NUMBER (as personal user)"
 
+      # 🗨️ Comment on issue (as you)
       - name: Comment in the original issue (link to PR and ping @codex)
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.BOT_ISSUE }}   # Your personal token – posts as you
         run: |
           set -euo pipefail
           gh api repos/$REPO/issues/$ISSUE_NUMBER/comments \
             -f body="A draft PR has been created or reused for this issue: ${PR_URL}\n\n@codex - please take a look."
-          echo "::debug::Comment added to Issue #$ISSUE_NUMBER"
+          echo "::debug::Comment added to Issue #$ISSUE_NUMBER (as personal user)"
