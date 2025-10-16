@@ -1,0 +1,17 @@
+name: Editor Bot
+
+on:
+  issues:
+    types: [opened, reopened, labeled]
+
+jobs:
+  editor-response:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'documentation') || contains(github.event.issue.labels.*.name, 'Documentation')
+    permissions:
+      issues: write
+    steps:
+      - name: Assign to Copilot
+        uses: otto-de/assign_issue_toCopilot_action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
