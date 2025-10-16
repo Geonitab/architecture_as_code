@@ -28,13 +28,13 @@ Public and private sector organisations worldwide face significant digital trans
 
 Architecture as Code-based solutions offer opportunities to break these limitations through automation, standardisation, and scalability that specifically address common transformation challenges:
 
-**Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including GDPR under guidance from the European Data Protection Board (EDPB), sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments.
+**Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including GDPR under guidance from the European Data Protection Board (EDPB), the NIS2 Directive for critical infrastructure cybersecurity, sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments whilst meeting the expectations of European regulatory authorities.
 
 **Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Studies demonstrate that Infrastructure as Code reduces manual effort by up to 70%, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
 
 **Skills Challenges**: The IT industry experiences persistent shortages of specialist talent, making it critical to standardise and automate infrastructure management. Architecture as Code enables smaller, specialised teams to manage complex environments through reusable templates, proven patterns, and community best practices.
 
-**Security and Data Governance**: Organisations across the EU prioritise security and data control in an increasingly regulated landscape. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement aligned with EDPB guidelines that builds trust with customers, regulators, and stakeholders throughout the European Union.
+**Security and Data Governance**: Organisations across the EU prioritise security and data control in an increasingly regulated landscape, guided by the EDPB's enforcement of GDPR and the NIS2 Directive for critical infrastructure protection. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement aligned with EDPB guidelines that builds trust with customers, regulators, and stakeholders throughout the European Union.
 
 Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets whilst maintaining compliance with diverse EU member state regulations and harmonised European security requirements.
 
