@@ -1,16 +1,20 @@
-name: Assign codex
+name: Assign copilot
 on:
   issues:
     types: [opened]
 
 jobs:
-  comment:
+  comment_and_assign:
     runs-on: ubuntu-latest
     steps:
-      - name: Comment using bot token
+      - name: Comment and assign using bot token
         env:
           GH_TOKEN: ${{ secrets.BOT_ISSUE }}
         run: |
           gh api \
             repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
-            -f body='@codex - Fix this issue'
+            -f body='@copilot - Please address this issue.'
+          gh api \
+            repos/${{ github.repository }}/issues/${{ github.event.issue.number }} \
+            -X PATCH \
+            -f assignees='["copilot"]'
