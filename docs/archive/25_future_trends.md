@@ -39,7 +39,7 @@ import json
 
 class AIInfrastructureOptimizer:
     """
-    AI-driven infrastructure optimization for svenska molnenvironments
+    AI-driven infrastructure optimization for EU cloud environments
     """
     
     def __init__(self, region='eu-north-1'):
@@ -52,9 +52,9 @@ class AIInfrastructureOptimizer:
         self.cost_optimizer = self._initialize_cost_model()
         self.anomaly_detector = self._initialize_anomaly_model()
         
-        # Svenska arbetstider and helger
-        self.swedish_business_hours = (7, 18)  # 07:00 - 18:00 CET
-        self.swedish_holidays = self._load_swedish_holidays()
+        # EU standard business hours and holidays
+        self.eu_business_hours = (7, 18)  # 07:00 - 18:00 CET
+        self.eu_holidays = self._load_eu_holidays()
     
     def predict_infrastructure_demand(self, forecast_hours=24) -> dict:
         """Förutsäg infrastrukturbehov for next 24 timmar"""
@@ -62,8 +62,8 @@ class AIInfrastructureOptimizer:
         # Hämta historisk data
         historical_metrics = self._get_historical_metrics(days=30)
         
-        # Feature engineering for svenska usage patterns
-        features = self._engineer_swedish_features(historical_metrics)
+        # Feature engineering for EU usage patterns
+        features = self._engineer_eu_features(historical_metrics)
         
         # Förutsäg CPU and minnesanvändning
         cpu_predictions = self.demand_predictor.predict(features)
@@ -84,7 +84,7 @@ class AIInfrastructureOptimizer:
             'scaling_recommendations': scaling_recommendations,
             'cost_impact': cost_impact,
             'confidence_score': self._calculate_prediction_confidence(features),
-            'swedish_business_factors': self._analyze_business_impact()
+            'eu_business_factors': self._analyze_business_impact()
         }
     
     def optimize_costs_intelligently(self) -> dict:
@@ -104,8 +104,8 @@ class AIInfrastructureOptimizer:
         ri_recommendations = self._optimize_reserved_instances()
         optimization_opportunities.extend(ri_recommendations)
         
-        # Swedish business hours optimization
-        business_hours_optimization = self._optimize_for_swedish_hours()
+        # EU business hours optimization
+        business_hours_optimization = self._optimize_for_eu_hours()
         optimization_opportunities.extend(business_hours_optimization)
         
         # Rightsizing recommendations
@@ -118,7 +118,7 @@ class AIInfrastructureOptimizer:
         )
         
         return {
-            'total_potential_savings_sek': sum(r['annual_savings_sek'] for r in prioritized_recommendations),
+            'total_potential_savings_eur': sum(r['annual_savings_eur'] for r in prioritized_recommendations),
             'recommendations': prioritized_recommendations,
             'architecture as code-implementation_roadmap': self._create_implementation_roadmap(prioritized_recommendations),
             'risk_assessment': self._assess_optimization_risks(prioritized_recommendations)
@@ -152,7 +152,7 @@ class AIInfrastructureOptimizer:
                 'severity': severity,
                 'description': self._generate_anomaly_description(anomaly, classification),
                 'recommended_actions': recommended_actions,
-                'swedish_impact_assessment': self._assess_swedish_business_impact(anomaly)
+                'eu_impact_assessment': self._assess_eu_business_impact(anomaly)
             })
         
         return {
@@ -196,28 +196,28 @@ class AIInfrastructureOptimizer:
         optimized_terraform = self._generate_optimized_terraform(optimizations)
         
         return {
-            'current_monthly_cost_sek': resource_analysis['estimated_monthly_cost_sek'],
-            'optimized_monthly_cost_sek': sum(o.get('cost_impact_sek', 0) for o in optimizations),
-            'potential_monthly_savings_sek': resource_analysis['estimated_monthly_cost_sek'] - sum(o.get('cost_impact_sek', 0) for o in optimizations),
+            'current_monthly_cost_eur': resource_analysis['estimated_monthly_cost_eur'],
+            'optimized_monthly_cost_eur': sum(o.get('cost_impact_eur', 0) for o in optimizations),
+            'potential_monthly_savings_eur': resource_analysis['estimated_monthly_cost_eur'] - sum(o.get('cost_impact_eur', 0) for o in optimizations),
             'optimizations': optimizations,
             'optimized_terraform_code': optimized_terraform,
             'migration_plan': self._create_migration_plan(optimizations),
             'validation_tests': self._generate_validation_tests(optimizations)
         }
     
-    def _analyze_swedish_business_impact(self, anomaly: dict) -> dict:
-        """Analysera impact at svensk operations"""
+    def _assess_eu_business_impact(self, anomaly: dict) -> dict:
+        """Analyse impact on EU operations"""
         
         current_time = datetime.now()
         is_business_hours = (
-            self.swedish_business_hours[0] <= current_time.hour < self.swedish_business_hours[1] and
-            current_time.weekday() < 5 and  # Måndag-Fredag
-            current_time.date() not in self.swedish_holidays
+            self.eu_business_hours[0] <= current_time.hour < self.eu_business_hours[1] and
+            current_time.weekday() < 5 and  # Monday-Friday
+            current_time.date() not in self.eu_holidays
         )
         
         impact_assessment = {
             'during_business_hours': is_business_hours,
-            'affected_swedish_users': self._estimate_affected_users(anomaly, is_business_hours),
+            'affected_eu_users': self._estimate_affected_users(anomaly, is_business_hours),
             'business_process_impact': self._assess_process_impact(anomaly),
             'sla_risk': self._assess_sla_risk(anomaly),
             'compliance_implications': self._assess_compliance_impact(anomaly)
@@ -225,37 +225,37 @@ class AIInfrastructureOptimizer:
         
         return impact_assessment
     
-    def _optimize_for_swedish_hours(self) -> list:
-        """Optimera for svenska arbetstider and usage patterns"""
+    def _optimize_for_eu_hours(self) -> list:
+        """Optimise for EU business hours and usage patterns"""
         
         optimizations = []
         
-        # Auto-scaling based on svenska arbetstider
+        # Auto-scaling based on EU business hours
         optimizations.append({
             'type': 'business_hours_scaling',
-            'description': 'Implementera auto-scaling based on svenska arbetstider',
+            'description': 'Implement auto-scaling based on EU business hours',
             'terraform_changes': '''
             resource "aws_autoscaling_schedule" "scale_up_business_hours" {
-              scheduled_action_name  = "scale_up_swedish_business_hours"
+              scheduled_action_name  = "scale_up_eu_business_hours"
               min_size              = var.business_hours_min_capacity
               max_size              = var.business_hours_max_capacity
               desired_capacity      = var.business_hours_desired_capacity
-              recurrence           = "0 7 * * MON-FRI"  # 07:00 måndag-fredag
-              time_zone           = "Europe/Stockholm"
+              recurrence           = "0 7 * * MON-FRI"  # 07:00 Monday-Friday
+              time_zone           = "Europe/Brussels"
               autoscaling_group_name = aws_autoscaling_group.main.name
             }
             
             resource "aws_autoscaling_schedule" "scale_down_after_hours" {
-              scheduled_action_name  = "scale_down_after_swedish_hours"
+              scheduled_action_name  = "scale_down_after_eu_hours"
               min_size              = var.after_hours_min_capacity
               max_size              = var.after_hours_max_capacity
               desired_capacity      = var.after_hours_desired_capacity
-              recurrence           = "0 18 * * MON-FRI"  # 18:00 måndag-fredag
-              time_zone           = "Europe/Stockholm"
+              recurrence           = "0 18 * * MON-FRI"  # 18:00 Monday-Friday
+              time_zone           = "Europe/Brussels"
               autoscaling_group_name = aws_autoscaling_group.main.name
             }
             ''',
-            'annual_savings_sek': 245000,
+            'annual_savings_eur': 245000,
             'implementation_effort': 'low',
             'risk_level': 'low'
         })
@@ -263,36 +263,30 @@ class AIInfrastructureOptimizer:
         # Lambda scheduling for batch jobs
         optimizations.append({
             'type': 'batch_job_optimization',
-            'description': 'Schemalägg batch jobs under svenska natten for lägre kostnader',
+            'description': 'Schedule batch jobs during EU off-hours for lower costs',
             'terraform_changes': '''
             resource "aws_cloudwatch_event_rule" "batch_schedule" {
-              name                = "swedish_batch_schedule"
-              description         = "Trigger batch jobs during Swedish off-hours"
-              schedule_expression = "cron(0 2 * * ? *)"  # 02:00 each dag
+              name                = "eu_batch_schedule"
+              description         = "Trigger batch jobs during EU off-hours"
+              schedule_expression = "cron(0 2 * * ? *)"  # 02:00 each day
             }
             ''',
-            'annual_savings_sek': 89000,
+            'annual_savings_eur': 89000,
             'implementation_effort': 'medium',
             'risk_level': 'low'
         })
         
         return optimizations
     
-    def _load_swedish_holidays(self) -> set:
-        """Ladda svenska helger for 2024-2025"""
+    def _load_eu_holidays(self) -> set:
+        """Load common EU holidays for 2024-2025"""
         return {
-            datetime(2024, 1, 1).date(),   # Nyårsdagen
-            datetime(2024, 1, 6).date(),   # Trettondedag jul
-            datetime(2024, 3, 29).date(),  # Långfredag
-            datetime(2024, 4, 1).date(),   # Påskdagen
-            datetime(2024, 5, 1).date(),   # Första maj
-            datetime(2024, 5, 9).date(),   # Kristi himmelsfärd
-            datetime(2024, 6, 6).date(),   # Nationaldagen
-            datetime(2024, 6, 21).date(),  # Midsommarafton
-            datetime(2024, 12, 24).date(), # Julafton
-            datetime(2024, 12, 25).date(), # Juldagen
-            datetime(2024, 12, 26).date(), # Annandag jul
-            datetime(2024, 12, 31).date(), # Nyårsafton
+            datetime(2024, 1, 1).date(),   # New Year's Day
+            datetime(2024, 3, 29).date(),  # Good Friday
+            datetime(2024, 4, 1).date(),   # Easter Monday
+            datetime(2024, 5, 1).date(),   # Labour Day
+            datetime(2024, 12, 25).date(), # Christmas Day
+            datetime(2024, 12, 26).date(), # Boxing Day
         }
 
 class QuantumSafeInfrastructure:
@@ -396,10 +390,10 @@ Architecture as Code-principerna within This area
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: swedish-edge-production
+  name: eu-edge-production
   labels:
-    edge-location: "stockholm-south"
-    regulatory-zone: "sweden"
+    edge-location: "eu-region-south"
+    regulatory-zone: "eu"
     
 ---
 # Edge-optimized application deployment
@@ -407,7 +401,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: edge-analytics-processor
-  namespace: swedish-edge-production
+  namespace: eu-edge-production
 spec:
   replicas: 2
   selector:
@@ -421,12 +415,12 @@ spec:
     spec:
       nodeSelector:
         edge-compute: "true"
-        location: "stockholm"
+        location: "eu-region"
       
       # Resource constraints for edge environments
       containers:
       - name: processor
-        image: registry.swedish-company.se/edge-analytics:v2.1.0
+        image: registry.eu-company.com/edge-analytics:v2.1.0
         resources:
           requests:
             memory: "128Mi"
@@ -438,9 +432,9 @@ spec:
         # Edge-specific configuration
         env:
         - name: EDGE_LOCATION
-          value: "stockholm-south"
+          value: "eu-region-south"
         - name: DATA_SOVEREIGNTY
-          value: "sweden"
+          value: "eu"
         - name: GDPR_MODE
           value: "strict"
         
@@ -462,8 +456,8 @@ kind: Service
 metadata:
   name: edge-gateway
   annotations:
-    edge-computing.swedish.se/location: "stockholm"
-    edge-computing.swedish.se/latency-requirements: "< 10ms"
+    edge-computing.eu/location: "eu-region"
+    edge-computing.eu/latency-requirements: "< 10ms"
 spec:
   type: LoadBalancer
   selector:
@@ -493,15 +487,15 @@ import json
 
 class CarbonAwareScheduler:
     """
-    Carbon-aware infrastructure scheduling for Swedish organizations
+    Carbon-aware infrastructure scheduling for EU organisations
     """
     
     def __init__(self):
         self.electricity_maps_api = "https://api.electricitymap.org/v3"
         self.aws_regions = {
-            'eu-north-1': {'name': 'Stockholm', 'renewable_ratio': 0.85},
-            'eu-west-1': {'name': 'Ireland', 'renewable_ratio': 0.42},
-            'eu-central-1': {'name': 'Frankfurt', 'renewable_ratio': 0.35}
+            'eu-north-1': {'name': 'Northern EU', 'renewable_ratio': 0.85},
+            'eu-west-1': {'name': 'Western EU', 'renewable_ratio': 0.42},
+            'eu-central-1': {'name': 'Central EU', 'renewable_ratio': 0.35}
         }
         self.ec2 = boto3.client('ec2')
         
@@ -510,9 +504,9 @@ class CarbonAwareScheduler:
         
         # Map AWS regions to electricity map zones
         zone_mapping = {
-            'eu-north-1': 'SE',  # Sweden
-            'eu-west-1': 'IE',   # Ireland  
-            'eu-central-1': 'the' # Germany
+            'eu-north-1': 'EU',  # Northern EU
+            'eu-west-1': 'EU',   # Western EU  
+            'eu-central-1': 'EU' # Central EU
         }
         
         zone = zone_mapping.get(region)
@@ -607,7 +601,7 @@ class CarbonAwareScheduler:
           default_tags {{
             tags = {{
               CarbonOptimized    = "true"
-              SustainabilityGoal = "sweden-carbon-neutral-2045"
+              SustainabilityGoal = "eu-carbon-neutral-2050"
               RegionChoice       = "renewable-energy-optimized"
               CarbonIntensity    = "{self.get_carbon_intensity(region)['carbon_intensity']}"
             }}
@@ -753,7 +747,7 @@ class GreenIaCMetrics:
         return {
             'overall_sustainability_score': overall_score,
             'individual_metrics': metrics,
-            'sweden_climate_goal_alignment': self._assess_climate_goal_alignment(overall_score),
+            'eu_climate_goal_alignment': self._assess_climate_goal_alignment(overall_score),
             'improvement_recommendations': self._generate_improvement_recommendations(metrics)
         }
 ```
@@ -777,7 +771,7 @@ import kubernetes.client as k8s
 import terraform_runner
 import uuid
 
-app = FastAPI(title="Svenska IDP - Internal Developer Platform")
+app = FastAPI(title="EU IDP - Internal Developer Platform")
 
 class ApplicationRequest(BaseModel):
     """Request for new application provisioning"""
@@ -830,7 +824,7 @@ class PlatformService:
             'ci_cd_pipeline': cicd_config['pipeline_url'],
             'documentation_url': documentation['url'],
             'getting_started_guide': documentation['getting_started'],
-            'swedish_compliance_status': self._validate_swedish_compliance(request)
+            'eu_compliance_status': self._validate_eu_compliance(request)
         }
     
     def _generate_terraform_config(self, request: ApplicationRequest, app_id: str) -> str:
@@ -860,14 +854,14 @@ class PlatformService:
             Application = "{request.application_name}"
             Team = "{request.team_name}"
             Environment = "{request.environment}"
-            ManagedBy = "svenska-idp"
+            ManagedBy = "eu-idp"
             ComplianceLevel = "{request.compliance_level}"
           }}
         }}
         
         # Application Load Balancer
         module "application_load_balancer" {{
-          source = "../modules/swedish-alb"
+          source = "../modules/eu-alb"
           
           app_id = local.app_id
           team = local.team
@@ -1005,7 +999,7 @@ async def get_platform_metrics():
         'active_teams': 23,
         'average_provisioning_time_minutes': 8,
         'platform_uptime_percentage': 99.8,
-        'cost_savings_vs_manual_sek_monthly': 245000,
+        'cost_savings_vs_manual_eur_monthly': 245000,
         'developer_satisfaction_score': 4.6
     }
 ```
