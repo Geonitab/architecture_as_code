@@ -207,6 +207,40 @@ All workflows upload artifacts with 30-day retention:
 - **Individual components**: Use unified workflow with specific deliverable selection
 - **Standalone testing**: Use `generate-presentations.yml` or `generate-whitepapers.yml`
 
+## Quality Control Workflows
+
+### 🔍 **Close Conflicted Pull Requests (`close-conflicted-pull-requests.yml`)**
+
+**Purpose**: Automatically closes pull requests with merge conflicts or no file changes to maintain repository quality.
+
+**Triggers**:
+- Pull request opened, synchronised, reopened, or marked ready for review
+- Manual workflow dispatch
+
+**Functionality**:
+- Checks all open pull requests for:
+  - **Merge conflicts**: PRs with conflicts against the base branch
+  - **No file changes**: PRs with zero changed files
+- Creates an issue documenting the reason for closure
+- Automatically closes problematic PRs
+
+**Permissions Required**:
+- `contents: read` - To access repository content
+- `pull-requests: write` - To close pull requests
+- `issues: write` - To create documentation issues
+
+**Issue Creation**: 
+When a PR is closed, an issue is automatically created with:
+- Title: `Pull Request #{number} closed: {reason}`
+- Body: Includes PR link and closure reason
+- Reason: Either "merge conflicts" or "no files being changed"
+
+**Duration**: ~30 seconds per PR check (includes retry logic for mergeable state)
+
+**Note**: This workflow helps maintain repository health by preventing PRs without meaningful changes from remaining open. If your PR was closed due to "no files being changed", ensure you've made and committed actual file modifications before creating a new PR.
+
+---
+
 ## Troubleshooting
 
 ### Common Issues
@@ -216,6 +250,7 @@ All workflows upload artifacts with 30-day retention:
 3. **Docker build failure**: Verify Dockerfile.book-builder syntax and dependencies  
 4. **Release creation failure**: Check GITHUB_TOKEN permissions
 5. **Build strategy conflicts**: Use workflow_dispatch to specify build type manually
+6. **PR closed automatically**: Check the created issue for the reason (conflicts or no changes). Fix the issue and create a new PR with actual file changes
 
 ### Debugging
 
