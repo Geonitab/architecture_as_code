@@ -103,9 +103,15 @@ GDPR compliance in Architecture as Code pipelines requires a holistic approach t
 
 Pipelines must therefore validate automatically that all architecture released complies with GDPR principles such as data minimisation, purpose limitation, and storage limitation. Personal data must never be hard-coded in architecture configuration, encryption must be enforced by default, and audit trails must be generated for every architecture change that could affect personal data.
 
-**Data discovery and classification:** Automated scanning for personal data patterns in infrastructure code forms the first line of defence. CI/CD flows should implement sophisticated scanning able to identify both direct identifiers (such as national identity numbers) and indirect identifiers that can identify individuals when combined.
+**Data discovery and classification:** Automated scanning for personal data patterns in infrastructure code forms the first line of defence. CI/CD flows should implement sophisticated scanning able to identify both direct identifiers (such as national identity numbers) and indirect identifiers that can identify individuals when combined. Practical implementations need to avoid hard-coded, country-specific assumptions and instead lean on reusable pattern libraries that represent the broader European regulatory landscape. Typical data classes to capture include:
 
-**Automated compliance validation:** Policy engines such as Open Policy Agent (OPA) or cloud-provider-specific compliance tools can automatically verify that infrastructure configurations meet GDPR requirements. This includes checking encryption settings, access controls, data-retention policies, and restrictions on cross-border data transfers.
+- **Financial identifiers:** International Bank Account Numbers (IBAN), Business Identifier Codes (BIC), and EU VAT numbers that are frequently embedded in configuration files for billing automation.
+- **Identity credentials:** European passport numbers, national identity cards, eIDs, and biometric templates stored for authentication workflows.
+- **Logistics and trade identifiers:** Economic Operators Registration and Identification (EORI) values, licence plate numbers, and shipment references that can become personal data in supply-chain scenarios.
+
+Scanners should also ingest custom dictionaries that capture organisation-specific identifiers—such as membership numbers or student IDs—so that the pipeline provides consistent protection for every EU jurisdiction where the architecture is deployed.
+
+**Automated compliance validation:** Policy engines such as Open Policy Agent (OPA) or cloud-provider-specific compliance tools can automatically verify that infrastructure configurations meet GDPR requirements. This includes checking encryption settings, access controls, data-retention policies, restrictions on cross-border data transfers, and verification that cloud regions remain within the approved EU footprint (for example `eu-west-1`, `eu-central-1`, or `eu-south-1`).
 
 **Audit-trail generation:** Every pipeline execution must produce comprehensive audit logs documenting what was deployed, by whom, when, and why. These logs must themselves follow GDPR principles for personal-data handling and be stored securely in line with applicable legal retention requirements.
 
