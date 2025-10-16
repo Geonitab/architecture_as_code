@@ -23,19 +23,19 @@ AI will to revolutionera how vi designar, implement and handles Architecture as 
 - Development of AI-kompetens within infrastructureteam
 - Partnerskap with svenska forskningsinstitutioner
 
-### Quantum Computing and kryptografi
+### Quantum Computing and Cryptography
 
 **Quantum-secure infrastructure**
-Kvantdatorer will to kräva fundamental omtänkning of security architecture:
+Quantum computing requires a fundamental re-evaluation of security architecture:
 
-- **Post-quantum kryptografi**: Migration to kvant-resistenta krypteringsalgoritmer
-- **Quantum Key Distribution**: Säker nyckelhantering with kvantmekaniska principles
-- **Hybrid cloud-quantum**: Integration of kvantresurser in traditional molnarkitekturer
+- **Post-quantum cryptography**: Migration to quantum-resistant encryption algorithms
+- **Quantum Key Distribution**: Secure key management based on quantum mechanical principles
+- **Hybrid cloud-quantum**: Integration of quantum resources into traditional cloud architectures
 
-**Svenska perspektiv:**
-- Samarbete with Wallenberg Centre for Quantum Technology
-- Integration with svenska cybersäkerhetsinitiativ
-- Forberedelser for EU:s kvantdatorstrategi
+**Pan-European priorities:**
+- Collaboration with EU-wide programmes such as the **EU Quantum Flagship** and the **EuroQCI initiative** to pilot secure communication capabilities
+- Coordination with **EuroHPC Joint Undertaking** testbeds to explore hybrid classical-quantum workload orchestration within shared European infrastructure
+- Adoption of guidance from **ENISA** and the **European Commission's post-quantum cryptography transition roadmap** to ensure cryptographic agility across the Union
 
 ### Edge Computing and distribuerad infrastruktur
 
