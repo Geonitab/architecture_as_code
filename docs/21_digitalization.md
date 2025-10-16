@@ -24,13 +24,13 @@ Digital transformation represents more than the introduction of new technology�
 
 ### Digital Transformation Challenges and Opportunities
 
-Public and private sector organisations worldwide face significant digital transformation challenges where legacy IT structures often form bottlenecks for innovation and efficiency. According to recent industry reports, organisations globally have invested over £500 billion in digital transformation initiatives in the past five years, yet many projects fail due to inadequate infrastructure governance and accumulating technical debt.
+Public and private sector organisations worldwide face significant digital transformation challenges where legacy IT structures often form bottlenecks for innovation and efficiency. Research and Markets projects that the global digital transformation market will grow from USD 1.42 trillion in 2025 to USD 13.26 trillion by 2035, underlining the scale of sustained investment in modernisation programmes.[^research_markets_2025] Academic studies on digital change caution that communication, leadership commitment, and employee readiness remain recurring barriers, demonstrating that failures usually emerge from socio-technical gaps rather than infrastructure governance alone.[^gupta_2018]
 
 Architecture as Code-based solutions offer opportunities to break these limitations through automation, standardisation, and scalability that specifically address common transformation challenges:
 
 **Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including GDPR under guidance from the European Data Protection Board (EDPB), the NIS2 Directive for critical infrastructure cybersecurity, sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments whilst meeting the expectations of European regulatory authorities.
 
-**Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Studies demonstrate that Infrastructure as Code reduces manual effort by up to 70%, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
+**Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. AWS Well-Architected guidance emphasises automating repetitive, high-value operational tasks to eliminate manual toil, reduce error rates, and free skilled personnel for higher-value activities—outcomes that Infrastructure as Code teams can achieve by codifying infrastructure lifecycle work.[^aws_well_architected_automation]
 
 **Skills Challenges**: The IT industry experiences persistent shortages of specialist talent, making it critical to standardise and automate infrastructure management. Architecture as Code enables smaller, specialised teams to manage complex environments through reusable templates, proven patterns, and community best practices.
 
@@ -62,7 +62,17 @@ Several global organisations have executed exemplary digital transformations tha
 
 **Netflix**: Executed comprehensive digital transformation from traditional content distributor to global streaming platform through an extensive cloud platform based on Infrastructure as Code. This enabled development of personalised recommendation systems and content delivery networks that serve hundreds of millions of subscribers across diverse geographic regions.
 
-**Capital One**: Pioneered cloud adoption in the financial services sector through a cloud-first strategy with Infrastructure as Code, achieving 99.99% uptime for critical banking systems whilst reducing infrastructure costs by 40% and accelerating feature deployment by 70%.
+**Capital One**: Pioneered cloud adoption in the financial services sector through a cloud-first strategy with Infrastructure as Code, using AWS Step Functions Distributed Map to cut check-processing workflows by up to 80% and scale concurrent workloads 25-fold, which materially improved analyst productivity.[^capital_one_step_functions] The organisation’s 2019 data breach affecting 106 million people and the subsequent regulatory penalties highlight that operational excellence must be paired with uncompromising security and governance.[^capital_one_breach]
+
+[^research_markets_2025]: Research and Markets. "Digital Transformation Market Industry Trend and Future Forecast to 2035: Distribution by Type of Technology, Type of Offering, Type of Deployment, Type of Application, Company Size, Business Model, End User and Geographical Region." GlobeNewswire, 17 June 2025. https://www.globenewswire.com/news-release/2025/06/17/3100379/0/en/Digital-Transformation-Market-Forecast-Report-2025-2035-AI-Anticipated-to-Outpace-Growth-as-Cloud-Solutions-Dominate-the-Digital-Transformation-Landscape.html
+
+[^gupta_2018]: Shikha Gupta. *Organizational Barriers to Digital Transformation*. KTH Royal Institute of Technology, 2018. https://www.diva-portal.org/smash/get/diva2:1218220/FULLTEXT01.pdf
+
+[^aws_well_architected_automation]: AWS Well-Architected Framework. "COST11-BP01 Perform automation for operations." Amazon Web Services Documentation, accessed 2025. https://docs.aws.amazon.com/wellarchitected/latest/framework/cost_evaluate_cost_effort_automations_operations.html
+
+[^capital_one_step_functions]: Amazon Web Services. "Capital One Uses AWS Step Functions to Expedite Check Processing." AWS Case Study, 2024. https://aws.amazon.com/solutions/case-studies/capital-one-distributed-map/
+
+[^capital_one_breach]: "Capital One." *Wikipedia*, last modified 2025. https://en.wikipedia.org/wiki/Capital_One
 
 These success stories demonstrate that organisations can achieve world-leading digital transformation through strategic use of Architecture as Code combined with organisational strengths in innovation, design thinking, and sustainable business practices.
 
@@ -410,3 +420,8 @@ Part VI explores the interplay between different "as Code" practices and distils
 - Microsoft. "Azure for Enterprise Digital Transformation." Microsoft Azure, 2023.
 - HashiCorp. "Infrastructure as Code Best Practices." HashiCorp Learn, 2023.
 - SANS Institute. "Cloud Security for Enterprise Organisations." SANS Security Research, 2023.
+- Research and Markets. "Digital Transformation Market Industry Trend and Future Forecast to 2035." GlobeNewswire, 2025. https://www.globenewswire.com/news-release/2025/06/17/3100379/0/en/Digital-Transformation-Market-Forecast-Report-2025-2035-AI-Anticipated-to-Outpace-Growth-as-Cloud-Solutions-Dominate-the-Digital-Transformation-Landscape.html
+- Gupta, Shikha. "Organizational Barriers to Digital Transformation." KTH Royal Institute of Technology, 2018. https://www.diva-portal.org/smash/get/diva2:1218220/FULLTEXT01.pdf
+- AWS Well-Architected Framework. "COST11-BP01 Perform automation for operations." Amazon Web Services Documentation, accessed 2025. https://docs.aws.amazon.com/wellarchitected/latest/framework/cost_evaluate_cost_effort_automations_operations.html
+- Amazon Web Services. "Capital One Uses AWS Step Functions to Expedite Check Processing." AWS Case Study, 2024. https://aws.amazon.com/solutions/case-studies/capital-one-distributed-map/
+- Wikipedia contributors. "Capital One." *Wikipedia, The Free Encyclopedia*, accessed 2025. https://en.wikipedia.org/wiki/Capital_One

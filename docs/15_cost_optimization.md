@@ -111,7 +111,9 @@ The modern Architecture as Code methodology represents the future for infrastruc
 
 Key success factors include proactive monitoring, automated rightsizing, intelligent use of spot instances and reserved capacity, and continuous optimisation based on actual usage patterns. FinOps practices ensure cost considerations are naturally integrated into the development process.
 
-EU organisations that implement these strategies can achieve 20-40% cost reduction in their cloud operations whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
+McKinsey’s FinOps research across more than $3 billion of cloud spend identified additional cost-saving opportunities of 10–20% for organisations that codify cost governance, reinforcing the value of Architecture as Code approaches to budgeting.[^mckinsey_finops] Realising those savings depends on disciplined execution: without embedded FinOps practices, teams often leave waste unaddressed even when optimisation levers are known. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
+
+[^mckinsey_finops]: McKinsey Digital. "Everything is better as code: Using FinOps to manage cloud costs." McKinsey & Company, 3 February 2025. https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/everything-is-better-as-code-using-finops-to-manage-cloud-costs
 
 ## Sources and References
 
@@ -121,3 +123,4 @@ EU organisations that implement these strategies can achieve 20-40% cost reducti
 - Cloud Security Alliance. "Cloud Cost Optimisation Security Guidelines." CSA Research, 2023.
 - Gartner. "Cloud Cost Optimisation Strategies for European Organisations." Gartner Research, 2023.
 - Microsoft. "Azure Cost Management Architecture as Code Best Practices." Microsoft Azure Documentation, 2023.
+- McKinsey Digital. "Everything is better as code: Using FinOps to manage cloud costs." McKinsey & Company, 2025. https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/everything-is-better-as-code-using-finops-to-manage-cloud-costs
