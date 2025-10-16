@@ -187,12 +187,12 @@ pipeline {
                         script {
                             echo "🏔️ Validating data residency requirements for approved EU regions..."
 
-                            def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1', 'eu-south-1']
+                            def allowedRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2']
 
                             def regionCheck = sh(
                                 script: """
                                     grep -R 'region\\s*=' infrastructure/ modules/ | \
-                                    grep -v -E '(eu-north-1|eu-central-1|eu-west-1|eu-south-1)' || true
+                                    grep -v -E '(eu-west-1|eu-central-1|eu-west-2)' || true
                                 """,
                                 returnStdout: true
                             ).trim()
@@ -504,7 +504,7 @@ func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuit
         BackendConfig: map[string]interface{}{
             "bucket": "a-org-terraform-test-state",
             "key":    fmt.Sprintf("test/%s/terraform.tfstate", uniqueID),
-            "region": "eu-north-1",
+            "region": "eu-west-1",
         },
         RetryableTerraformErrors: map[string]string{
             ".*": "Transient error - retrying...",
@@ -513,9 +513,9 @@ func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuit
         TimeBetweenRetries: 5 * time.Second,
     }
 
-    // AWS session for Stockholm region
+    // AWS session for EU West region
     awsSession := session.Must(session.NewSession(&aws.Config{
-        Region: aws.String("eu-north-1"),
+        Region: aws.String("eu-west-1"),
     }))
 
     return &EuropeanVPCTestSuite{
@@ -566,15 +566,15 @@ func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
 
-    // Validate to KMS key is from Sverige region
-    assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
+    // Validate that KMS key is from EU region
+    assert.Contains(t, kmsKeyArn, "eu-west-1", "KMS key should be in EU West region for data residency")
 
     t.Logf("✅ Encryption at rest validerat for GDPR compliance")
 }
 
 // testDataResidencyEU validates to all infrastruktur is within gränser
 func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
-    // Validate to VPC is in Stockholm region
+    // Validate that VPC is in EU region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
     ec2Client := ec2.New(suite.AWSSession)
@@ -587,7 +587,7 @@ func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
 
     // Kontrollera region from session config
     region := *suite.AWSSession.Config.Region
-    allowedRegions := []string{"eu-north-1", "eu-central-1", "eu-west-1"}
+    allowedRegions := []string{"eu-west-1", "eu-central-1", "eu-west-2"}
     
     regionAllowed := false
     for _, allowedRegion := range allowedRegions {
@@ -1755,28 +1755,28 @@ performance_measurement_framework:
 
 ---
 
-## References and navigering
+## References and Navigation
 
-each kodexamples in This appendix can refereras from huvudtexten with dess unique identifierare. to hitta specific implementations:
+Each code example in this appendix can be referenced from the main text using its unique identifier. To find specific implementations:
 
-1. **Use sökfunktion** - Sök efter kodtyp or teknologi (t.ex. "Terraform", "CloudFormation", "Python")
-2. **Följ kategorierna** - Navigera to relevant sektion based on användningwhichråde
-3. **Use korshänvisningar** - Följ länkar tobaka to huvudkapitlen for context
+1. **Use search function** - Search for code type or technology (e.g., "Terraform", "CloudFormation", "Python")
+2. **Follow the categories** - Navigate to the relevant section based on use case
+3. **Use cross-references** - Follow links back to the main chapters for context
 
-### Konventioner for kodexempel
+### Conventions for Code Examples
 
-- **Kommentarer**: all kodexamples contains kommentarer for klarhet
-- **Security**: Security aspects is markerade with 🔒
-- **GDPR-compliance**: GDPR-relaterade configurations is markerade with 🇪🇺
-- **anpassningar**: Lokala anpassningar is markerade with 🇸🇪
+- **Comments**: All code examples contain comments for clarity
+- **Security**: Security aspects are marked with 🔒
+- **GDPR compliance**: GDPR-related configurations are marked with 🇪🇺
+- **Customisations**: Local customisations are marked with 🇸🇪
 
-### Uppdateringar and underhåll
+### Updates and Maintenance
 
-This appendix uppdateras löpande when new kodexamples läggs to in bokens huvudkapitel. For last versionen of kodexamples, se bokens GitHub-repository.
+This appendix is updated regularly when new code examples are added to the book's main chapters. For the latest version of code examples, see the book's GitHub repository.
 
 ---
 
-*For mer information about specific implementations, se respektive huvudkapitel where kodexemplen introduceras and forklaras in sitt context.*
+*For more information about specific implementations, see the respective main chapters where the code examples are introduced and explained in their context.*
 ---
 
 ## Chapter 14 Reference Implementations
