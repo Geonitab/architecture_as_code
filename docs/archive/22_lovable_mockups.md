@@ -1,4 +1,4 @@
-# chapter 20: Use Lovable to create mockups for Swedish organisations
+# Chapter 20: Use Lovable to Create Mockups for Swedish Organisations
 
 ![Lovable Workflow Diagram](images/diagram_21_chapter20.png)
 
@@ -12,7 +12,7 @@ For Swedish organisations means This a unique possibility to:
 - Integrera with svenska e-legitimationstjänster redan in mockup-fasen
 - Skapa användargränssnitt as follows svenska togänglighetsstandarder
 
-## step-for-step guide for implementation in Swedish organisations
+## Step-for-Step Guide for Implementation in Swedish Organisations
 
 ### Fas 1: Förberedelse and uppsättning
 
@@ -171,7 +171,7 @@ class SwedishAccessibilityManager {
 
 ## Praktiska example for svenska sektorer
 
-### examples 1: E-forvaltningsportal for kommun
+### Examples 1: E-forvaltningsportal for Kommun
 
 ```typescript
 // kommun-portal-mockup.ts
@@ -202,7 +202,7 @@ const kommunPortalMockup = {
 };
 ```
 
-### examples 2: Finansiell compliance-service
+### Examples 2: Finansiell Compliance-service
 
 ```yaml
 # financial-compliance-mockup.yml
@@ -353,7 +353,7 @@ export class SwedishELegitimationService {
 }
 ```
 
-## technical integration and architecture as code best practices
+## Technical Integration and Architecture as Code Best Practices
 
 ### Workflow-integration with svenska utvecklingsenvironments
 

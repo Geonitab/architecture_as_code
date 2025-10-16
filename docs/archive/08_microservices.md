@@ -1550,7 +1550,7 @@ Event-driven architectures leverage asynchronous communication patterns for loos
 
 Service mesh technology represents a paradigm shift in how microservices kommunicerar and handles cross-cutting concerns. instead of implement communication logic within each service, abstraheras This to a dedicated infrastructure layer as handles all service-to-service communication transparent.
 
-### understanding of service mesh architecture
+### Understanding of Service Mesh Architecture
 
 **Infrastructure layer separation**
 Service mesh creates a clear separation between business logic and infrastructure concerns. Developers can focus at business functionality with service mesh handles:
@@ -2013,7 +2013,7 @@ Swedish organisations operational in a environment of high expectations at secur
 **Compliance automation**
 Regulatory requirements that GDPR, PCI-DSS, and svenska financial regulations can automatiseras through Architecture as Code, which reduces both compliance risk and operational overhead.
 
-### organisational transformation insights
+### Organisational Transformation Insights
 
 **Team autonomy with architectural alignment**
 The most successful svenska implementation of microservices balanserar team autonomy with architectural consistency. Team can fatta independent decisions within well-defined boundaries while contributing to coherent overall system architecture.
