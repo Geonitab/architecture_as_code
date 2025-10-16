@@ -63,6 +63,12 @@ Fully codified environments rely on automated change management, and MaC keeps l
 
 Transparency is a cornerstone principle of Architecture as Code and Management as Code practices. When architecture decisions, infrastructure changes, and management directives occur behind closed doors—buried in email threads, private meetings, or undocumented conversations—organisations lose the institutional memory, auditability, and collaborative potential that code-based practices promise. GitHub Issues and Discussions transform transparency from an aspirational value into an operational reality by creating structured, searchable, and accessible forums for all stakeholders.
 
+![Transparency workflow showing how issues and discussions enable transparent decision-making through structured processes](images/diagram_19_transparency_flow.png)
+
+*Figure: Transparency workflow illustrating how problems flow through discussions, issues, reviews, and decisions into searchable archives.*
+
+The transparency workflow diagram demonstrates the complete lifecycle from problem identification through strategic discussion, structured issue tracking, collaborative review, and final implementation. Each stage creates permanent records that build institutional knowledge whilst maintaining accountability and enabling asynchronous participation across distributed teams.
+
 ### Issues as Transparent Decision Records
 
 GitHub Issues provide a structured interface for capturing management work whilst establishing a permanent, searchable record of how decisions evolved. Custom templates ensure that leadership topics include expected data—financial impact, staffing needs, compliance considerations, risk assessments, and dependencies on other initiatives. This structured approach prevents critical context from being lost and ensures that future team members can understand not just what was decided, but why.
@@ -76,6 +82,34 @@ Transparency through Issues manifests in several ways:
 **Accountability**: Assigning Issues to specific owners, setting milestones, and tracking progress creates clear accountability. Teams know who is responsible for each initiative, reducing ambiguity and preventing work from falling through organisational cracks. Labels reflect strategic pillars, enabling filtering and reporting across different dimensions of the architecture portfolio.
 
 **Collaborative Resolution**: Issues encourage participation from diverse perspectives. Engineers can flag technical constraints, security specialists can highlight risks, and product managers can clarify business context—all within a single, coherent thread. This collaborative approach surfaces potential problems earlier and leads to more robust solutions.
+
+### Practical Examples of Transparent Issue Usage
+
+**Example 1: Infrastructure Migration Decision**
+
+An organisation planning to migrate from on-premises infrastructure to cloud services creates an Issue titled "Cloud Migration Strategy for Payment Processing System". The Issue includes:
+- **Context**: Current infrastructure costs, performance bottlenecks, and compliance requirements
+- **Stakeholder Input**: Security team highlights PCI-DSS requirements, finance team provides budget constraints, engineering team identifies technical dependencies
+- **Options Analysis**: Documented comparisons of AWS, Azure, and GCP with pros/cons
+- **Decision Rationale**: Final selection justified with references to compliance needs and cost projections
+- **Implementation Link**: References to pull requests implementing the migration in phases
+
+This transparent approach ensures that three years later, when reviewing the decision, new team members understand not just what was chosen, but why alternatives were rejected and what constraints influenced the decision.
+
+**Example 2: Architecture Decision Record Integration**
+
+When introducing a new microservices communication pattern, teams create both an Issue and an ADR. The Issue captures stakeholder discussions, concerns about latency, and debate over event-driven versus request-response patterns. Once consensus emerges, an ADR formalises the decision whilst referencing the Issue for complete context. Future developers reviewing the ADR can follow the link to understand the full deliberation, including rejected alternatives and edge cases that influenced the final choice.
+
+**Example 3: Security Vulnerability Response**
+
+A security scanning tool identifies a critical vulnerability in a production dependency. The team creates a private Issue (maintaining appropriate confidentiality) that:
+- Documents the vulnerability details and potential impact
+- Assigns clear ownership to the security team lead
+- Tracks remediation steps with checkboxes
+- Links to pull requests applying patches
+- Records post-incident learnings
+
+Even though the Issue remains private for security reasons, the transparency within the authorised team ensures coordinated response, prevents duplicate work, and creates an audit trail for compliance reviews.
 
 ### Discussions for Strategic Deliberation
 
@@ -91,6 +125,40 @@ Discussions enhance transparency through:
 
 **Knowledge Sharing**: Discussions become learning resources. Best practices emerge through community conversation, lessons learned are documented publicly, and expertise becomes accessible to the entire organisation rather than locked in individual minds.
 
+### Practical Examples of Strategic Discussions
+
+**Example 1: Annual Technology Strategy**
+
+Leadership teams use GitHub Discussions to deliberate annual technology strategy rather than relying solely on closed-door meetings. A Discussion thread titled "2024 Technology Strategy: Cloud-Native Adoption" enables:
+- **Asynchronous Participation**: Contributors from different time zones add perspectives over two weeks
+- **Structured Input**: Engineers share technical feasibility assessments, finance provides budget implications, product teams outline business requirements
+- **Iterative Refinement**: The strategy evolves through multiple rounds of feedback rather than being presented as a fait accompli
+- **Transparent Documentation**: The entire deliberation process remains searchable, showing how concerns were addressed and decisions evolved
+
+Once consensus emerges, specific initiatives spawn dedicated Issues with concrete implementation tasks, all referencing the originating Discussion for strategic context.
+
+**Example 2: Post-Incident Learning**
+
+Following a significant production incident, teams host a Discussion for blameless retrospective rather than confining learnings to a private meeting. The Discussion:
+- Documents timeline and technical details transparently
+- Encourages honest assessment of contributing factors
+- Surfaces systemic issues that individual Issues might not capture
+- Generates follow-up Issues for specific remediation actions
+- Becomes training material for new team members learning about system resilience
+
+The transparency creates psychological safety—when leadership participates constructively in public retrospectives, it signals that learning trumps blame.
+
+**Example 3: Architecture Pattern Evaluation**
+
+When evaluating whether to adopt a new architecture pattern (such as event sourcing or CQRS), teams launch a Discussion to gather perspectives before committing to implementation. The Discussion includes:
+- References to external articles and case studies from other organisations
+- Code snippets demonstrating proof-of-concept implementations
+- Performance benchmarks and scalability analysis
+- Concerns about operational complexity and team skills gaps
+- Gradual emergence of consensus around where the pattern adds value versus where simpler approaches suffice
+
+This exploratory phase prevents premature standardisation whilst building shared understanding. When teams eventually create Issues to implement the pattern in specific services, the Discussion provides the "why" context that justifies the "what".
+
 ### Linking Transparency to Architecture Evolution
 
 The true power of Issues and Discussions emerges when they integrate seamlessly with code-based architecture practices. Every significant architecture change should originate from or reference an Issue or Discussion, creating bidirectional traceability between strategic intent and technical implementation.
@@ -98,6 +166,61 @@ The true power of Issues and Discussions emerges when they integrate seamlessly 
 When a team proposes infrastructure changes via pull request, reviewers can follow references back to the originating Issue to understand business justification. Conversely, stakeholders tracking high-level strategy in Issues can drill down into the actual code changes that implement their decisions. This linkage ensures alignment between what organisations say they value and what they actually build.
 
 Automated processes further enhance transparency. GitHub Actions can comment on Issues when related code deploys to production, closing the feedback loop between decision and outcome. Dashboards generated from Issue metadata provide leadership visibility into architectural health, technical debt, and delivery velocity without requiring manual status reports.
+
+### Implementing Transparent Workflows: Practical Steps
+
+Organisations transitioning to transparent, issue-based workflows benefit from structured implementation:
+
+**1. Establish Issue and Discussion Templates**
+
+Create templates that prompt for essential context:
+- **Problem Statement**: What challenge motivates this Issue or Discussion?
+- **Business Impact**: How does this affect users, revenue, or compliance?
+- **Technical Context**: What systems, dependencies, or constraints are involved?
+- **Stakeholder Input**: Which teams or individuals should contribute perspectives?
+- **Success Criteria**: How will we know when this Issue is successfully resolved?
+
+Templates ensure consistency whilst preventing critical information from being omitted.
+
+**2. Define Labelling Taxonomy**
+
+Implement a clear labelling system that enables filtering and reporting:
+- **Strategic Themes**: `security`, `performance`, `cost-optimization`, `compliance`
+- **Affected Systems**: `payment-service`, `user-management`, `data-pipeline`
+- **Priority Levels**: `critical`, `high`, `medium`, `low`
+- **Workflow States**: `needs-discussion`, `approved`, `in-progress`, `blocked`
+
+Consistent labels transform Issues into queryable data that leadership dashboards can aggregate.
+
+**3. Link Issues to Code Changes**
+
+Enforce conventions through automation:
+- Pull request templates require Issue references
+- GitHub Actions validate that PRs link to approved Issues
+- Commit messages follow conventional formats that enable automated changelog generation
+- Merge commits automatically update linked Issues with deployment status
+
+These integrations ensure transparency flows in both directions—from strategy to implementation and from deployment back to strategic tracking.
+
+**4. Schedule Regular Discussion Reviews**
+
+Prevent Discussions from becoming stale archives:
+- Leadership conducts monthly reviews of active Discussions
+- Teams identify Discussions ready to convert into actionable Issues
+- Automation flags Discussions with no activity for 90 days, prompting closure or renewal
+- Quarterly retrospectives assess whether Discussion outcomes materialised into code changes
+
+Active curation keeps Discussions valuable whilst respecting participants' time.
+
+**5. Measure and Communicate Impact**
+
+Demonstrate the value of transparent workflows through metrics:
+- Track reduction in decision lead time (comparing pre- and post-adoption periods)
+- Measure stakeholder participation breadth (how many different contributors engage?)
+- Monitor onboarding velocity (how quickly new team members contribute meaningfully?)
+- Survey psychological safety (do team members feel comfortable raising concerns openly?)
+
+Sharing these metrics reinforces the cultural shift towards transparency.
 
 ### Cultural Implications of Transparent Workflows
 
