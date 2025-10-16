@@ -99,7 +99,7 @@ jobs:
         run: |
           set -euo pipefail
           gh api repos/$REPO/issues/$PR_NUMBER/comments \
-            -f body='@codex - Please address this draft PR.'
+            -f body='@codex - Fix the issue using this draft PR.'
           echo "::debug::Comment added to PR #$PR_NUMBER (as personal user)"
 
       # 🗨️ Comment on issue (as you)
