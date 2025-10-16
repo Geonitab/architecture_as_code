@@ -60,7 +60,7 @@ jobs:
                 }
 
                 const hasConflicts = prDetails.mergeable === false && prDetails.mergeable_state === 'dirty';
-                const noFilesChanged = prDetails.changed_files === 0;
+                const noFilesChanged = prDetails.changed_files === 0 && !prDetails.draft;
 
                 if (hasConflicts || noFilesChanged) {
                   const reason = hasConflicts
