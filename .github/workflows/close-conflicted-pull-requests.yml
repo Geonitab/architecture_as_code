@@ -24,29 +24,31 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const core = require('@actions/core');
-            const prNumber = context.payload.pull_request.number;
-            let pr;
+            {
+              const core = require('@actions/core');
+              const prNumber = context.payload.pull_request.number;
+              let pr;
 
-            for (let attempt = 0; attempt < 6; attempt += 1) {
-              ({ data: pr } = await github.rest.pulls.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: prNumber,
-              }));
+              for (let attempt = 0; attempt < 6; attempt += 1) {
+                ({ data: pr } = await github.rest.pulls.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: prNumber,
+                }));
 
-              if (pr.mergeable !== null) {
-                break;
+                if (pr.mergeable !== null) {
+                  break;
+                }
+
+                core.info('Mergeability is currently unknown, waiting before retrying.');
+                await new Promise((resolve) => setTimeout(resolve, 5000));
               }
 
-              core.info('Mergeability is currently unknown, waiting before retrying.');
-              await new Promise((resolve) => setTimeout(resolve, 5000));
+              const hasConflicts = pr.mergeable === false && pr.mergeable_state === 'dirty';
+              core.setOutput('mergeable', pr.mergeable === null ? 'unknown' : String(pr.mergeable));
+              core.setOutput('mergeable_state', pr.mergeable_state ?? 'unknown');
+              core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
             }
-
-            const hasConflicts = pr.mergeable === false && pr.mergeable_state === 'dirty';
-            core.setOutput('mergeable', pr.mergeable === null ? 'unknown' : String(pr.mergeable));
-            core.setOutput('mergeable_state', pr.mergeable_state ?? 'unknown');
-            core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
 
       - name: Raise merge conflict issue
         id: issue
