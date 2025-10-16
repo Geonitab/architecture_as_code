@@ -219,7 +219,7 @@ views {
 
 ### Styling and Themes
 
-Structurizr allows customization of diagram appearance:
+Structurizr allows customisation of diagram appearance:
 
 ```structurizr
 views {
@@ -867,7 +867,7 @@ def verify_architecture_coverage():
 | Large-scale system architecture | **Structurizr** | Model consistency, C4 hierarchy, architecture focus |
 | Quick diagrams in README | **Mermaid** | GitHub native support, simple syntax |
 | Detailed sequence diagrams | **PlantUML** | Rich sequence diagram features |
-| Non-technical stakeholder presentations | **Lucidchart/Draw.io** | Familiar interface, easy customization |
+| Non-technical stakeholder presentations | **Lucidchart/Draw.io** | Familiar interface, easy customisation |
 | Architecture as Code practice | **Structurizr** | Native version control, automation support |
 
 ## Common Challenges and Solutions
