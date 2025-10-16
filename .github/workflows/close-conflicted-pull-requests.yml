@@ -26,63 +26,68 @@ jobs:
       - name: Install Missing Dependency
         run: npm install @actions/core
 
-      - name: Check PR Status
-        id: pr-status
+      - name: Process Pull Requests
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             {
               const core = require('@actions/core');
-              const prNumber = context.payload.pull_request.number;
-              let pr;
+              const { data: pullRequests } = await github.rest.pulls.list({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'open',
+              });
 
-              for (let attempt = 0; attempt < 6; attempt += 1) {
-                ({ data: pr } = await github.rest.pulls.get({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: prNumber,
-                }));
+              for (const pr of pullRequests) {
+                const prNumber = pr.number;
 
-                if (pr.mergeable !== null) {
-                  break;
+                // Check the mergeable state of the pull request
+                let prDetails;
+                for (let attempt = 0; attempt < 6; attempt += 1) {
+                  ({ data: prDetails } = await github.rest.pulls.get({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: prNumber,
+                  }));
+
+                  if (prDetails.mergeable !== null) {
+                    break;
+                  }
+
+                  core.info(`Mergeability for PR #${prNumber} is unknown, waiting before retrying.`);
+                  await new Promise((resolve) => setTimeout(resolve, 5000));
                 }
 
-                core.info('Mergeability is currently unknown, waiting before retrying.');
-                await new Promise((resolve) => setTimeout(resolve, 5000));
-              }
+                const hasConflicts = prDetails.mergeable === false && prDetails.mergeable_state === 'dirty';
+                const noFilesChanged = prDetails.changed_files === 0;
 
-              const hasConflicts = pr.mergeable === false && pr.mergeable_state === 'dirty';
-              const noFilesChanged = pr.changed_files === 0;
+                if (hasConflicts || noFilesChanged) {
+                  const reason = hasConflicts
+                    ? 'merge conflicts'
+                    : 'no files being changed';
+                  
+                  // Create an issue to report the reason for closure
+                  const issueTitle = `Pull Request #${prNumber} closed: ${reason}`;
+                  const issueBody = `Pull request #${prNumber} was closed due to ${reason}.\n\nPull Request Link: ${prDetails.html_url}`;
+                  const { data: issue } = await github.rest.issues.create({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    title: issueTitle,
+                    body: issueBody,
+                  });
 
-              core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
-              core.setOutput('no_files_changed', noFilesChanged ? 'true' : 'false');
+                  core.info(`Created issue #${issue.number} for pull request #${prNumber} due to ${reason}.`);
 
-              if (hasConflicts || noFilesChanged) {
-                const reason = hasConflicts
-                  ? 'merge conflicts'
-                  : 'no files being changed';
-                const issueTitle = `Pull Request #${prNumber} closed: ${reason}`;
-                const issueBody = `Pull request #${prNumber} was closed due to ${reason}.\n\nPull Request Link: ${pr.html_url}`;
+                  // Close the pull request
+                  await github.rest.pulls.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: prNumber,
+                    state: 'closed',
+                  });
 
-                // Create an issue to report the reason for closure
-                const { data: issue } = await github.rest.issues.create({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  title: issueTitle,
-                  body: issueBody,
-                });
-
-                core.info(`Created issue #${issue.number} to report pull request closure reason.`);
-
-                // Close the pull request
-                await github.rest.pulls.update({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: prNumber,
-                  state: 'closed',
-                });
-
-                core.info(`Closed pull request #${prNumber} due to ${reason}.`);
+                  core.info(`Closed pull request #${prNumber} due to ${reason}.`);
+                }
               }
             }
