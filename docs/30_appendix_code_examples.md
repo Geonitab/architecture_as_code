@@ -2,26 +2,25 @@
 
 # Code examples and technical architecture as code implementations
 
-Appendix A contains all kodexamples, konfigurationsfiler and technical implementeringar as refereras to in bokens huvudkapitel. Kodexemplen is organiserade efter typ and användningwhichråde to do the enkelt to hitta specific implementations.
+Appendix A collects every code example, configuration file, and technical implementation referenced throughout the book. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.
 
-*This appendix functions as a praktisk referenssamling for all technical implementations as demonstreras genAbout the Book. each kodexamples is kategoriserat and märkt with References tobaka to relevanta chapter.*
+*This appendix acts as a practical reference library for all technical demonstrations in the book. Each code listing is
+categorised and labelled with backlinks to the relevant chapter so the narrative and executable artefacts stay in sync.*
 
-## Navigering in appendix
+## Navigating the appendix
 
-Kodexemplen is organiserade in following kategorier:
+The code examples are grouped into the following categories:
 
-1. **[CI/CD Pipelines and Architecture as Code-automation](#cicd-pipelines)**
-2. **[Infrastructure as Code (Architecture as Code) - Terraform](#terraform-iac)**
-3. **[Infrastructure as Code (Architecture as Code) - CloudFormation](#cloudformation-Architecture as Code)**
-4. **[Automationsskript and tools](#automation-scripts)**
+1. **[CI/CD pipelines and Architecture as Code automation](#cicd-pipelines)**
+2. **[Infrastructure as Code (Architecture as Code) – Terraform](#terraform-iac)**
+3. **[Infrastructure as Code (Architecture as Code) – CloudFormation](#cloudformation-Architecture as Code)**
+4. **[Automation scripts and tooling](#automation-scripts)**
 5. **[Security and compliance](#security-compliance)**
-6. **[testing and validation](#testing-validation)**
-7. **[Konfigurationsfiler](#configuration)**
-8. **[Shell-skript and tools](#shell-scripts)**
+6. **[Testing and validation](#testing-validation)**
+7. **[Configuration files](#configuration)**
+8. **[Shell scripts and utilities](#shell-scripts)**
 
-each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]` for enkel referens from huvudtexten.
-
----
+Each example has a unique identifier in the format `[chapter]_CODE_[NUMBER]` for easy cross-reference with the main text.
 
 ## CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}
 
@@ -433,8 +432,8 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// SvenskaVPCTestSuite definierar test suite for VPC implementation
-type SvenskaVPCTestSuite struct {
+// EuropeanVPCTestSuite defines the reusable Terratest suite for the VPC implementation
+type EuropeanVPCTestSuite struct {
     TerraformOptions *terraform.Options
     AWSSession       *session.Session
     OrganizationName string
@@ -442,12 +441,12 @@ type SvenskaVPCTestSuite struct {
     CostCenter       string
 }
 
-// TestSvenskaVPCGDPRCompliance testar GDPR compliance for VPC implementation
-func TestSvenskaVPCGDPRCompliance(t *testing.T) {
+// TestEuropeanVPCGDPRCompliance validates GDPR compliance expectations for the VPC implementation
+func TestEuropeanVPCGDPRCompliance(t *testing.T) {
     t.Parallel()
 
-    suite := setupSvenskaVPCTest(t, "development")
-    defer cleanupSvenskaVPCTest(t, suite)
+    suite := setupEuropeanVPCTest(t, "development")
+    defer cleanupEuropeanVPCTest(t, suite)
 
     // Deploy infrastructure
     terraform.InitAndApply(t, suite.TerraformOptions)
@@ -469,14 +468,14 @@ func TestSvenskaVPCGDPRCompliance(t *testing.T) {
         testAuditLogging(t, suite)
     })
 
-    t.Run("TestSvenskaTagging", func(t *testing.T) {
-        testSvenskaTagging(t, suite)
+    t.Run("TestEuropeanTagging", func(t *testing.T) {
+        testEuropeanTagging(t, suite)
     })
 }
 
-// setupSvenskaVPCTest förbereder test environment for VPC testing
-func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite {
-    // Unik test identifier
+// setupEuropeanVPCTest prepares the temporary test environment for VPC validation
+func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuite {
+    // Unique test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
     organizationName := fmt.Sprintf("a-org-%s", uniqueID)
 
@@ -510,7 +509,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
         Region: aws.String("eu-north-1"),
     }))
 
-    return &SvenskaVPCTestSuite{
+    return &EuropeanVPCTestSuite{
         TerraformOptions: terraformOptions,
         AWSSession:       awsSession,
         OrganizationName: organizationName,
@@ -520,7 +519,7 @@ func setupSvenskaVPCTest(t *testing.T, environment string) *SvenskaVPCTestSuite 
 }
 
 // testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade for GDPR compliance
-func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Hämta VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     require.NotEmpty(t, vpcID, "VPC ID should not be empty")
@@ -553,7 +552,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *SvenskaVPCTestSuite) {
 }
 
 // testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
-func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Hämta KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
@@ -565,7 +564,7 @@ func testEncryptionAtRest(t *testing.T, suite *SvenskaVPCTestSuite) {
 }
 
 // testDataResidencyEU validates to all infrastruktur is within gränser
-func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
+func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Validate to VPC is in Stockholm region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     
@@ -595,8 +594,8 @@ func testDataResidencyEU(t *testing.T, suite *SvenskaVPCTestSuite) {
 }
 
 // testAuditLogging validates to audit logging is konfigurerat according to lagrequirements
-func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
-    // Kontrollera CloudTrail configuration
+func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
+    // Check the CloudTrail configuration matches organisational expectations
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
     
     trails, err := cloudtrailClient.DescribeTrails(&cloudtrail.DescribeTrailsInput{})
@@ -613,8 +612,8 @@ func testAuditLogging(t *testing.T, suite *SvenskaVPCTestSuite) {
     assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
 }
 
-// testSvenskaTagging validates to all resurser has korrekta tags
-func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
+// testEuropeanTagging confirms that all resources expose the expected governance tags
+func testEuropeanTagging(t *testing.T, suite *EuropeanVPCTestSuite) {
     requiredTags := []string{
         "Environment", "Organization", "CostCenter", 
         "Country", "GDPRCompliant", "DataResidency",
@@ -643,13 +642,13 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
     })
     require.NoError(t, err, "Failed to describe VPC tags")
 
-    // Konvertera tags to map for enklare validation
+    // Convert the returned tags into a map for simpler validation
     vpcTagMap := make(map[string]string)
     for _, tag := range vpcTags.Tags {
         vpcTagMap[*tag.Key] = *tag.Value
     }
 
-    // Validate obligatoriska tags
+    // Validate mandatory governance tags
     for _, requiredTag := range requiredTags {
         assert.Contains(t, vpcTagMap, requiredTag, "VPC should have required tag: %s", requiredTag)
         
@@ -659,13 +658,13 @@ func testSvenskaTagging(t *testing.T, suite *SvenskaVPCTestSuite) {
         }
     }
 
-    t.Logf("✅ tagging validerat for all resurser")
+    t.Logf("✅ Tagging validated for all resources")
 }
 
-// cleanupSvenskaVPCTest rensar test environment
-func cleanupSvenskaVPCTest(t *testing.T, suite *SvenskaVPCTestSuite) {
+// cleanupEuropeanVPCTest removes the Terraform deployment after the tests complete
+func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
     terraform.Destroy(t, suite.TerraformOptions)
-    t.Logf("✅ Test environment rensat for %s", suite.OrganizationName)
+    t.Logf("✅ Test environment removed for %s", suite.OrganizationName)
 }
 ```
 
