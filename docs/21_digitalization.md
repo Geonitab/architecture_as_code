@@ -28,21 +28,21 @@ Public and private sector organisations worldwide face significant digital trans
 
 Architecture as Code-based solutions offer opportunities to break these limitations through automation, standardisation, and scalability that specifically address common transformation challenges:
 
-**Regulatory Compliance**: Organisations must navigate complex legislation including GDPR, sector-specific regulations, and regional data sovereignty requirements. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed environments.
+**Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including GDPR under guidance from the European Data Protection Board (EDPB), sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments.
 
 **Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Studies demonstrate that Infrastructure as Code reduces manual effort by up to 70%, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
 
 **Skills Challenges**: The IT industry experiences persistent shortages of specialist talent, making it critical to standardise and automate infrastructure management. Architecture as Code enables smaller, specialised teams to manage complex environments through reusable templates, proven patterns, and community best practices.
 
-**Security and Data Governance**: Organisations prioritise security and data control in an increasingly regulated landscape. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement that builds trust with customers, regulators, and stakeholders.
+**Security and Data Governance**: Organisations across the EU prioritise security and data control in an increasingly regulated landscape. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement aligned with EDPB guidelines that builds trust with customers, regulators, and stakeholders throughout the European Union.
 
-Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets whilst maintaining compliance with diverse regional regulations and security requirements.
+Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets whilst maintaining compliance with diverse EU member state regulations and harmonised European security requirements.
 
 ### Digital Transformation Dimensions
 
 The digital transformation process through Architecture as Code encompasses multiple dimensions that organisations must address holistically:
 
-**Technical Transformation**: Migration from on-premise data centres to hybrid and multi-cloud architectures that respect data residency requirements. This includes implementing microservices, containerisation, and API-first architectures that enable rapid innovation whilst maintaining operational resilience.
+**Technical Transformation**: Migration from on-premise data centres to hybrid and multi-cloud architectures that respect EU data residency requirements. This includes implementing microservices, containerisation, and API-first architectures that enable rapid innovation whilst maintaining operational resilience across member states.
 
 **Organisational Change**: Introduction of cross-functional teams aligned with agile principles, balancing autonomous delivery with necessary oversight. Organisations must adapt hierarchical structures whilst preserving essential governance, risk management, and compliance frameworks.
 
@@ -68,18 +68,18 @@ These success stories demonstrate that organisations can achieve world-leading d
 
 ## Cloud-First Strategies for Digital Transformation
 
-Organisations worldwide have developed strong positions within cloud technology, driven by ambitious digitalisation goals across public and private sectors. Cloud-first strategies mean that organisations primarily choose cloud-based solutions for new initiatives, requiring comprehensive Architecture as Code competence adapted to regulatory, security, and operational requirements.
+Organisations across the European Union have developed strong positions within cloud technology, driven by ambitious digitalisation goals across public and private sectors. Cloud-first strategies mean that organisations primarily choose cloud-based solutions for new initiatives, requiring comprehensive Architecture as Code competence adapted to EU regulatory frameworks, security requirements, and operational standards.
 
 ### Enterprise Digital Strategy and Architecture as Code
 
-Modern digital strategies emphasise cloud technology's role in achieving goals for integrated, efficient service delivery. Leading organisations specify that teams should:
+Modern digital strategies across the EU emphasise cloud technology's role in achieving goals for integrated, efficient service delivery. Leading organisations specify that teams should:
 
-- Prioritise cloud-first solutions complying with data sovereignty regulations
-- Implement automated architecture enabling shared IT services across departments
+- Prioritise cloud-first solutions complying with EU data sovereignty regulations
+- Implement automated architecture enabling shared IT services across organisational units
 - Develop common platforms for user services based on open-source technologies
-- Ensure cybersecurity and resilience through Infrastructure as Code-based controls
+- Ensure cybersecurity and resilience through Infrastructure as Code-based controls aligned with EDPB guidance and NIS2 directive requirements
 
-This creates demand for Architecture as Code solutions that handle sensitive data according to GDPR and sector-specific regulations whilst enabling innovation and efficiency. Practically, this means:
+This creates demand for Architecture as Code solutions that handle sensitive data according to GDPR and sector-specific EU regulations whilst enabling innovation and efficiency. Practically, this means:
 
 
 ```hcl
@@ -98,9 +98,9 @@ terraform {
   backend "s3" {
     bucket         = "enterprise-terraform-state"
     key            = "production/terraform.tfstate"
-    region         = "eu-west-1"  # European data residency
+    region         = var.eu_region  # Parameterized EU region selection
     encrypt        = true
-    kms_key_id     = "arn:aws:kms:eu-west-1:ACCOUNT:key/example-key-id"
+    kms_key_id     = var.kms_key_id
     dynamodb_table = "terraform-locks"
     
     # Audit logging for compliance
@@ -116,6 +116,7 @@ locals {
     CostCentre        = var.cost_centre
     DataClassification = var.data_classification
     ComplianceLevel   = var.compliance_level
+    EUCompliance      = "GDPR"
     CreatedDate       = formatdate("YYYY-MM-DD", timestamp())
   }
 }
@@ -192,38 +193,38 @@ Spotify developed their own Infrastructure as Code platform called "Backstage" w
 - Developer self-service portals that reduce time-to-market from weeks to hours
 
 **Capital One's Regulated Financial Infrastructure as Code:**
-As a licensed bank, Capital One must follow strict regulatory requirements whilst innovating rapidly. Their Infrastructure as Code strategy includes:
+As a licensed financial institution, Capital One must follow strict regulatory requirements whilst innovating rapidly. Their Infrastructure as Code strategy includes:
 
 - Automated audit trails for all infrastructure changes
-- Real-time compliance monitoring according to PCI-DSS and regulatory guidelines
+- Real-time compliance monitoring according to PCI-DSS and financial regulatory guidelines
 - Immutable infrastructure enabling point-in-time recovery
 - Multi-region deployment for business continuity according to industry standards
 
 ### Cloud Provider Ecosystem
 
-Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers whilst ensuring data sovereignty and regulatory compliance.
+Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers whilst ensuring data sovereignty and regulatory compliance across EU member states.
 
 **AWS Global Infrastructure:**
-Amazon Web Services operates regions globally with specific features to meet data residency requirements:
+Amazon Web Services operates multiple regions within the EU to meet data residency requirements:
 
-- Physical data sovereignty within regional boundaries
-- Low-latency connectivity across geographic zones
+- Physical data sovereignty within EU regional boundaries
+- Low-latency connectivity across EU availability zones
 - Comprehensive compliance certifications including ISO 27001, SOC 2, and PCI-DSS
-- Dedicated support with regional expertise
+- Dedicated support with European expertise and GDPR compliance guidance
 
 **Microsoft Azure:**
-Microsoft has invested significantly in cloud infrastructure with global reach:
+Microsoft has invested significantly in cloud infrastructure with extensive European coverage:
 
-- Azure Government Cloud for public sector organisations
+- Azure regions across multiple EU member states for data residency
 - Integration with enterprise identity providers
-- Compliance with industry governance standards
-- Partnership ecosystem with system integrators
+- Compliance with EU governance standards and EDPB guidelines
+- Partnership ecosystem with European system integrators
 
 **Google Cloud Platform:**
-Google operates global cloud regions emphasising:
+Google operates multiple cloud regions within the EU emphasising:
 
-- EU-based data processing for GDPR compliance
-- Carbon-neutral operations aligned with sustainability goals
+- EU-based data processing for GDPR compliance across all member states
+- Carbon-neutral operations aligned with EU sustainability goals
 - Advanced AI/ML capabilities for research and innovation
 - Integration with open-source ecosystems
 
@@ -256,18 +257,18 @@ terraform {
   }
 }
 
-# AWS for global services
+# AWS for global services with EU data residency
 provider "aws" {
-  region = "eu-west-1"  # European region for data sovereignty
+  region = var.aws_eu_region  # Configurable EU region (e.g., eu-west-1, eu-central-1, eu-north-1)
 }
 
-# Azure for Microsoft integrations
+# Azure for Microsoft integrations with EU compliance
 provider "azurerm" {
   features {}
-  location = "West Europe"
+  location = var.azure_eu_region  # Configurable EU region (e.g., West Europe, North Europe)
 }
 
-# Common resource tagging for cost management
+# Common resource tagging for cost management and EU compliance
 locals {
   common_tags = {
     Organisation = "Global Enterprise Ltd"
@@ -275,6 +276,8 @@ locals {
     Project      = var.project_name
     CostCentre   = var.cost_centre
     DataClass    = var.data_classification
+    EUCompliance = "GDPR"
+    Regulator    = "EDPB"
   }
 }
 
@@ -292,7 +295,7 @@ module "azure_infrastructure" {
 ### Automated Compliance Pipeline
 ```yaml
 # .github/workflows/compliance-check.yml
-name: Compliance and Security Check
+name: EU Compliance and Security Check
 
 on:
   pull_request:
@@ -304,10 +307,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: GDPR Data Mapping
+      - name: GDPR Data Mapping (EDPB Guidelines)
         run: |
-          # Verify all databases have encryption enabled
+          # Verify all databases have encryption enabled per EDPB requirements
           terraform plan | grep -E "(encrypt|encryption)" || exit 1
+          
+      - name: NIS2 Directive Compliance
+        if: contains(github.event.pull_request.title, 'critical-infrastructure')
+        run: |
+          # Validate NIS2 requirements for essential and important entities
+          ./scripts/nis2-compliance-check.sh
           
       - name: PCI-DSS Checks
         if: contains(github.event.pull_request.title, 'payment')
@@ -315,10 +324,10 @@ jobs:
           # Validate PCI-DSS requirements for payment infrastructure
           ./scripts/pci-compliance-check.sh
           
-      - name: Security Requirements Validation
+      - name: EU Security Requirements Validation
         run: |
-          # Industry security requirements for critical infrastructure
-          ./scripts/security-validation.sh
+          # EU-wide security requirements for critical infrastructure
+          ./scripts/eu-security-validation.sh
 ```
 
 ### Self-Service Developer Portal
@@ -334,23 +343,26 @@ app = Flask(__name__)
 def provision_development_environment():
     """
     Automatic provisioning of development environment
-    for enterprise development teams
+    for enterprise development teams with EU compliance
     """
     team_name = request.json.get('team_name')
     project_type = request.json.get('project_type')
     compliance_level = request.json.get('compliance_level', 'standard')
+    eu_region = request.json.get('eu_region', 'eu-central-1')  # Parameterized EU region
     
     # Validate organisational structure
     if not validate_team_structure(team_name):
         return jsonify({'error': 'Invalid team structure'}), 400
     
-    # Configure environment based on regulatory requirements
+    # Configure environment based on EU regulatory requirements
     config = {
         'team': team_name,
-        'region': 'eu-west-1',  # European data residency
+        'region': eu_region,  # User-selected EU region for data residency
         'encryption': True,
         'audit_logging': True,
         'gdpr_compliance': True,
+        'edpb_guidelines': True,
+        'nis2_compliance': compliance_level in ['critical', 'essential'],
         'retention_policy': '7_years' if compliance_level == 'financial' else '3_years'
     }
     
@@ -364,7 +376,9 @@ def provision_development_environment():
     return jsonify({
         'environment_id': result['environment_id'],
         'endpoints': result['endpoints'],
-        'compliance_report': result['compliance_status']
+        'compliance_report': result['compliance_status'],
+        'eu_region': eu_region,
+        'edpb_compliant': True
     })
 
 def validate_team_structure(team_name):
