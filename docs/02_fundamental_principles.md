@@ -164,6 +164,12 @@ Requirements as Code (RaC) transforms traditional requirements specifications fr
 
 ### Practical example with Open Policy Agent (OPA)
 
+The following requirements set reflects a pan-European perspective. Metadata values
+use EU-wide terminology, and individual controls reference guidance from the
+European Data Protection Board (EDPB) alongside ENISA security baselines. This
+alignment keeps Architecture as Code artefacts consistent with the regulatory
+language used across the European Union rather than country-specific phrasing.
+
 ```yaml
 # requirements/security-requirements.yaml
 apiVersion: policy/v1
@@ -211,10 +217,22 @@ Requirements as Code integrates naturally with test automation because requireme
 import yaml
 import opa
 
+EU_VALIDATION_AUTHORITIES = {
+    "GDPR": {
+        "authority": "European Data Protection Board",
+        "reference": "EDPB Guidelines 07/2020",
+    },
+    "ISO27001": {
+        "authority": "European Union Agency for Cybersecurity (ENISA)",
+        "reference": "ENISA Information Security Baseline, 2024",
+    },
+}
+
 class RequirementsValidator:
-    def __init__(self, requirements_file: str):
+    def __init__(self, requirements_file: str, system_config: dict):
         with open(requirements_file, 'r') as f:
             self.requirements = yaml.safe_load(f)
+        self.system_config = system_config
 
     def validate_requirement(self, req_id: str, system_config: dict):
         requirement = self.find_requirement(req_id)
@@ -225,7 +243,10 @@ class RequirementsValidator:
         return {
             'requirement_id': req_id,
             'status': 'passed' if not policy_result else 'failed',
-            'violations': policy_result
+            'violations': policy_result,
+            'validation_reference': EU_VALIDATION_AUTHORITIES.get(
+                requirement.get('compliance', [None])[0]
+            ),
         }
 
     def validate_all_requirements(self) -> dict:
@@ -243,6 +264,11 @@ class RequirementsValidator:
 ```
 
 Global organisations benefit from Requirements as Code by automatically validating regulatory compliance, financial controls, and statutory obligations that must be met continuously.
+
+In this European-centric example the validator enriches every result with the
+appropriate supervisory authority. Teams can therefore map each automated
+decision directly to EDPB guidance or ENISA security baselines, ensuring the
+language reported to auditors mirrors the terminology mandated across the EU.
 
 ### Functional vs Non-Functional Requirements as Code
 
