@@ -18,6 +18,11 @@ jobs:
     if: github.event.pull_request.state == 'open'
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
       - name: Await mergeability assessment
         id: mergeability
         uses: actions/github-script@v7
@@ -108,4 +113,3 @@ jobs:
               pull_number: context.payload.pull_request.number,
               state: 'closed',
             });
-
