@@ -24,16 +24,22 @@ class TestConsistency:
             h1_title = None
             for line in lines:
                 line = line.strip()
-                if line:
-                    if line.startswith('# '):
-                        h1_title = line[2:].strip()
-                        break
-                    else:
-                        title_issues.append({
-                            "file": chapter_file.name,
-                            "issue": "First content line is not H1 title"
-                        })
-                        break
+                if not line:
+                    continue
+
+                if line.startswith('\\') or line.startswith('<!--'):
+                    # Allow LaTeX directives or HTML comments before the H1 title
+                    continue
+
+                if line.startswith('# '):
+                    h1_title = line[2:].strip()
+                    break
+
+                title_issues.append({
+                    "file": chapter_file.name,
+                    "issue": "First content line is not H1 title"
+                })
+                break
             
             if h1_title:
                 # Check title length
@@ -94,7 +100,7 @@ class TestConsistency:
     def test_diagram_reference_consistency(self, chapter_files):
         """Test that diagram references follow consistent format."""
         diagram_issues = []
-        expected_pattern = re.compile(r'!\[.*?\]\(images/diagram_\d{2}_.*?\.png\)')
+        expected_pattern = re.compile(r'!\[.*?\]\(images/diagram_\d{2}[a-z]?_.*?\.png\)')
         
         for chapter_file in chapter_files:
             content = chapter_file.read_text(encoding='utf-8')

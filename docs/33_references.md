@@ -7,20 +7,29 @@ This section provides a comprehensive list of all sources and references cited t
 **Architecture Decision Records Community.** "ADR Guidelines and Templates." https://adr.github.io  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
 
-**Atlassian.** "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.  
+**Atlassian.** "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**Atlassian.** "Git Workflows for Architecture as Code." Atlassian Git Documentation.  
+**Atlassian.** "Git Workflows for Architecture as Code." Atlassian Git Documentation.
 *Referenced in: [Chapter 3: Version Control](03_version_control.md)*
+
+**Chung, L., et al.** "Non-Functional Requirements in Software Engineering." Springer, 2000.
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
+
+**Forsberg, K., Mooz, H.** "The Relationship of System Engineering to the Project Cycle." Engineering Management Journal, 1991.
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
 **GitLab.** "Documentation as Code: Best Practices and Implementation." GitLab Documentation, 2024.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**GitHub Docs.** "About protected branches." https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches  
+**GitHub Docs.** "About protected branches." https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches
 *Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
-**GitHub Open Source Community.** "Collaborative Software Development." Platform Documentation, 2024.  
+**GitHub Open Source Community.** "Collaborative Software Development." Platform Documentation, 2024.
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
+
+**IEEE.** "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
 **HashiCorp.** "Policy as Code Overview." https://developer.hashicorp.com/terraform/enterprise/policy-as-code  
 *Referenced in: [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*

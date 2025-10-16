@@ -2,136 +2,163 @@
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 30  # Chapter 6 retired from the manuscript
+  total_chapters: 31  # Current canonical manuscript count
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
-      area: "Basic Concepts"
+      area: "Foundations"
       required: true
+      label: "Chapter 1"
     - filename: "02_fundamental_principles.md"
       title: "Fundamental Principles of Architecture as Code"
-      area: "Basic Concepts"
+      area: "Foundations"
       required: true
+      label: "Chapter 2"
     - filename: "03_version_control.md"
       title: "Version Control and Code Structure"
-      area: "System Development"
+      area: "Foundations"
       required: true
+      label: "Chapter 3"
     - filename: "04_adr.md"
       title: "Architecture Decision Records (ADR)"
-      area: "Basic Concepts"
+      area: "Foundations"
       required: true
+      label: "Chapter 4"
     - filename: "05_automation_devops_cicd.md"
       title: "Automation, DevOps and CI/CD for Infrastructure as Code"
-      area: "System Development"
+      area: "Architecture Platform"
       required: true
+      label: "Chapter 5"
+    - filename: "06_structurizr.md"
+      title: "Structurizr: Architecture Modelling as Code"
+      area: "Architecture Platform"
+      required: true
+      label: "Chapter 6"
     - filename: "07_containerization.md"
-      title: "Containerisation and Orchestration"
-      area: "Architecture"
+      title: "Containerisation and Orchestration as Code"
+      area: "Architecture Platform"
       required: true
-    - filename: "08_microservices.md"
-      title: "Microservices and Distributed Systems"
-      area: "Architecture"
-      required: true
+      label: "Chapter 7"
     - filename: "09a_security_fundamentals.md"
       title: "Security Fundamentals for Architecture as Code"
-      area: "Security"
+      area: "Security and Governance"
       required: true
+      label: "Chapter 9A"
     - filename: "09b_security_patterns.md"
       title: "Advanced Security Patterns and Implementation"
-      area: "Security"
+      area: "Security and Governance"
       required: true
+      label: "Chapter 9B"
     - filename: "10_policy_and_security.md"
-      title: "Policy as Code and Security Automation"
-      area: "Security"
+      title: "Policy and Security as Code in Detail"
+      area: "Security and Governance"
       required: true
+      label: "Chapter 10"
     - filename: "11_governance_as_code.md"
       title: "Governance as Code"
-      area: "Governance"
+      area: "Security and Governance"
       required: true
+      label: "Chapter 11"
     - filename: "12_compliance.md"
-      title: "Compliance and Regulatory Alignment"
-      area: "Governance"
+      title: "Compliance and Regulatory Adherence"
+      area: "Security and Governance"
       required: true
+      label: "Chapter 12"
     - filename: "13_testing_strategies.md"
       title: "Testing Strategies for Infrastructure Code"
-      area: "Quality Assurance"
+      area: "Delivery and Operations"
       required: true
+      label: "Chapter 13"
     - filename: "14_practical_implementation.md"
-      title: "Practical Implementation of Architecture as Code"
-      area: "Practical Application"
+      title: "Architecture as Code in Practice"
+      area: "Delivery and Operations"
       required: true
+      label: "Chapter 14"
     - filename: "15_cost_optimization.md"
       title: "Cost Optimisation and Resource Management"
-      area: "Economic Optimisation"
+      area: "Delivery and Operations"
       required: true
+      label: "Chapter 15"
     - filename: "16_migration.md"
       title: "Migration from Traditional Infrastructure"
-      area: "Migration"
+      area: "Delivery and Operations"
       required: true
+      label: "Chapter 16"
     - filename: "17_organizational_change.md"
       title: "Organisational Change and Team Structures"
-      area: "Organisational Development"
+      area: "Organisation and Leadership"
       required: true
+      label: "Chapter 17"
     - filename: "18_team_structure.md"
-      title: "Team Structure for Scalable IaC"
-      area: "Organisational Development"
+      title: "Team Structure and Competency Development for IaC"
+      area: "Organisation and Leadership"
       required: true
+      label: "Chapter 18"
     - filename: "19_management_as_code.md"
       title: "Management as Code"
-      area: "Leadership"
+      area: "Organisation and Leadership"
       required: true
+      label: "Chapter 19"
     - filename: "20_ai_agent_team.md"
       title: "AI Agent Team for Architecture as Code Initiatives"
-      area: "Collaboration"
+      area: "Organisation and Leadership"
       required: true
+      label: "Chapter 20"
     - filename: "21_digitalization.md"
       title: "Digitalisation through Code-Based Infrastructure"
-      area: "Strategic Development"
+      area: "Organisation and Leadership"
       required: true
-    - filename: "22_lovable_mockups.md"
-      title: "Lovable Mockups and Prototyping"
-      area: "Product Development"
+      label: "Chapter 21"
+    - filename: "22_documentation_vs_architecture.md"
+      title: "Documentation as Code versus Architecture as Code"
+      area: "Experience and Best Practices"
       required: true
+      label: "Chapter 22"
     - filename: "23_soft_as_code_interplay.md"
       title: "The Interplay Between Soft As Code Disciplines"
-      area: "Strategic Development"
+      area: "Experience and Best Practices"
       required: true
+      label: "Chapter 23"
     - filename: "24_best_practices.md"
-      title: "Method Selection and Lessons Learned"
-      area: "Best Practices"
+      title: "Best Practices and Lessons Learned"
+      area: "Experience and Best Practices"
       required: true
-    - filename: "25_future_trends.md"
-      title: "Future Trends in Infrastructure as Code"
-      area: "Future Outlook"
+      label: "Chapter 24"
+    - filename: "25_future_trends_development.md"
+      title: "Future Trends and Development in Architecture as Code"
+      area: "Future and Wrap-up"
       required: true
-    - filename: "26_future_development.md"
-      title: "Future Development"
-      area: "Future Outlook"
-      required: true
+      label: "Chapter 25"
     - filename: "27_conclusion.md"
       title: "Conclusion and the Way Forward"
-      area: "Summary"
+      area: "Future and Wrap-up"
       required: true
+      label: "Chapter 27"
     - filename: "28_glossary.md"
-      title: "Glossary and Definitions"
-      area: "Reference"
+      title: "Glossary"
+      area: "Appendices"
       required: true
+      label: "Glossary"
     - filename: "29_about_the_authors.md"
       title: "About the Author"
-      area: "Appendix"
+      area: "Appendices"
       required: true
+      label: "About the Author"
     - filename: "30_appendix_code_examples.md"
       title: "Appendix A: Code Examples and Technical Implementations"
-      area: "Appendix"
+      area: "Appendices"
       required: true
+      label: "Appendix A"
     - filename: "31_technical_architecture.md"
-      title: "Technical Architecture Blueprint"
-      area: "Appendix"
+      title: "Appendix B: Technical Architecture for Book Production"
+      area: "Appendices"
       required: true
+      label: "Appendix B"
     - filename: "33_references.md"
       title: "References and Sources"
       area: "Reference"
       required: true
+      label: "References"
   special_chapters:
     glossary:
       filename: "28_glossary.md"
@@ -145,11 +172,11 @@ book:
       filename: "27_conclusion.md"
       requires_diagram: false
       requires_sources: true
-    appendix:
+    appendix_code_examples:
       filename: "30_appendix_code_examples.md"
-      requires_diagram: true
+      requires_diagram: false
       requires_sources: false
-    technical:
+    technical_architecture:
       filename: "31_technical_architecture.md"
       requires_diagram: true
       requires_sources: false
@@ -157,10 +184,6 @@ book:
       filename: "33_references.md"
       requires_diagram: false
       requires_sources: false
-    future:
-      filename: "26_future_development.md"
-      requires_diagram: false
-      requires_sources: true
     book_cover:
       filename: "BOOK_COVER_DESIGN.md"
       requires_diagram: false
@@ -169,6 +192,13 @@ book:
       filename: "EPUB_VALIDATION.md"
       requires_diagram: false
       requires_sources: false
+  supplemental_chapters:
+    - filename: "26_aac_anti_patterns.md"
+      description: "Supplementary anti-pattern guidance retained for reference."
+    - filename: "26_prerequisites_for_aac.md"
+      description: "Adoption prerequisites guide referenced by delivery teams."
+    - filename: "32_finos_project_blueprint.md"
+      description: "FINOS Project Blueprint case study used as extended material."
 structure:
   required_sections:
     - name: "title"

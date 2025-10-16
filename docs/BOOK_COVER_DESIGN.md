@@ -80,7 +80,7 @@ The design strictly follows Kvadrat Brand Guidelines:
 - Proper spacing and brand text
 - Consistent placement and sizing
 
-### design Elements
+### Design Elements
 
 #### Code Architecture Theme
 - Geometric patterns suggesting network connectivity
