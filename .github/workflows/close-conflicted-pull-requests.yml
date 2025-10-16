@@ -60,12 +60,9 @@ jobs:
                 }
 
                 const hasConflicts = prDetails.mergeable === false && prDetails.mergeable_state === 'dirty';
-                const noFilesChanged = prDetails.changed_files === 0;
 
-                if (hasConflicts || noFilesChanged) {
-                  const reason = hasConflicts
-                    ? 'merge conflicts'
-                    : 'no files being changed';
+                if (hasConflicts) {
+                  const reason = 'merge conflicts';
                   
                   // Create an issue to report the reason for closure
                   const issueTitle = `Pull Request #${prNumber} closed: ${reason}`;
