@@ -39,8 +39,18 @@ jobs:
                 state: 'open',
               });
 
+              const now = new Date();
+
               for (const pr of pullRequests) {
                 const prNumber = pr.number;
+
+                // Check if the pull request is at least 30 minutes old
+                const createdAt = new Date(pr.created_at);
+                const ageInMinutes = (now - createdAt) / (1000 * 60);
+                if (ageInMinutes < 30) {
+                  core.info(`Skipping PR #${prNumber} as it is only ${ageInMinutes.toFixed(1)} minutes old.`);
+                  continue;
+                }
 
                 // Check the mergeable state of the pull request
                 let prDetails;
