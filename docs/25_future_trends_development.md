@@ -22,7 +22,13 @@ European organisations operate within a structured regulatory environment shaped
 
 The emergence of quantum capabilities necessitates a re-evaluation of cryptographic choices and automation practices. Post-quantum algorithms must become standard components of infrastructure definitions to ensure long-term resilience. During the transition, hybrid patterns that combine classical and quantum-safe methods will allow organisations to protect sensitive workloads while migration plans mature.
 
-Quantum-enhanced infrastructure will also offer novel optimisation strategies. Quantum algorithms can tackle complex scheduling, routing, and resource allocation problems that are challenging for classical systems. Architecture as Code workflows will orchestrate interactions between quantum accelerators and traditional compute, abstracting specialised resources behind automated pipelines and reusable modules.
+European organisations benefit from coordinated quantum computing initiatives that provide access to cutting-edge research and practical testbeds. The **EU Quantum Flagship** programme represents one of the largest quantum technology initiatives globally, fostering collaboration across member states to accelerate quantum computing, communication, and sensing capabilities. Through this programme, organisations gain access to shared research infrastructure, standardised security protocols, and collaborative development frameworks that reduce individual investment risk whilst advancing collective capability.
+
+The **European Quantum Communication Infrastructure (EuroQCI)** initiative establishes secure communication networks across the Union, providing quantum-safe channels for sensitive data transmission. Architecture as Code implementations can integrate EuroQCI endpoints, enabling cryptographic agility and future-proof security architectures. As quantum computing resources become available through **EuroHPC Joint Undertaking** testbeds, organisations will orchestrate hybrid classical-quantum workloads using declarative infrastructure definitions, abstracting complex quantum resource management behind familiar automation patterns.
+
+Security guidance from the **European Union Agency for Cybersecurity (ENISA)** and the **European Commission's post-quantum cryptography transition roadmap** provides organisations with clear pathways for migrating to quantum-resistant algorithms. These frameworks emphasise cryptographic agility—the ability to rapidly switch cryptographic algorithms in response to emerging threats—which aligns naturally with Infrastructure as Code practices where cryptographic configurations are versioned, tested, and deployed through automated pipelines. By adopting ENISA's recommendations and implementing post-quantum cryptography standards from the **National Institute of Standards and Technology (NIST)**, organisations ensure their infrastructure remains secure throughout the quantum transition period.
+
+Quantum-enhanced infrastructure will also offer novel optimisation strategies. Quantum algorithms can tackle complex scheduling, routing, and resource allocation problems that are challenging for classical systems. Architecture as Code workflows will orchestrate interactions between quantum accelerators and traditional compute, abstracting specialised resources behind automated pipelines and reusable modules. Pan-European collaboration through research programmes, shared testbeds, and standardised security frameworks enables organisations to prepare for quantum computing whilst maintaining interoperability and compliance across member states.
 
 ### Edge Computing and Distributed Infrastructure
 
@@ -266,9 +272,13 @@ By combining proven practices with emerging innovations, Architecture as Code ev
 - European Commission. "The EU Artificial Intelligence Act." European Union Law, 2024.
 - European Commission. "Horizon Europe: The EU Framework Programme for Research and Innovation." EU Publications, 2024.
 - European Commission. "Digital Europe Programme: Shaping Europe's Digital Future." EU Digital Strategy, 2024.
+- European Commission. "Quantum Flagship: Europe's Quantum Technology Initiative." EU Quantum Flagship Programme, 2024.
+- European Commission. "European Quantum Communication Infrastructure (EuroQCI)." EU Digital Strategy, 2024.
+- EuroHPC Joint Undertaking. "European High Performance Computing Joint Undertaking." EuroHPC JU, 2024.
+- ENISA. "Post-Quantum Cryptography: Current State and Quantum Mitigation." European Union Agency for Cybersecurity, 2024.
+- NIST. "Post-Quantum Cryptography Standardization." National Institute of Standards and Technology, 2024.
 - GAIA-X. "A Federated Secure Data Infrastructure for Europe." GAIA-X European Association for Data and Cloud, 2024.
 - McKinsey Global Institute. "The Future of Infrastructure." McKinsey & Company.
-- MIT Technology Review. "Quantum Computing and Cryptography." MIT Press.
 - IEEE Computer Society. "Edge Computing and 5G Integration." IEEE Publications.
 - FinOps Foundation. "State of FinOps." FinOps Foundation Reports.
 - Green Software Foundation. "Carbon-Aware Computing Guidelines." GSF Documentation.
