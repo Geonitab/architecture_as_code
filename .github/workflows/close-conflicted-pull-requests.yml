@@ -26,8 +26,8 @@ jobs:
       - name: Install Missing Dependency
         run: npm install @actions/core
 
-      - name: Await mergeability assessment
-        id: mergeability
+      - name: Check PR Status
+        id: pr-status
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -53,14 +53,19 @@ jobs:
               }
 
               const hasConflicts = pr.mergeable === false && pr.mergeable_state === 'dirty';
-              core.setOutput('mergeable', pr.mergeable === null ? 'unknown' : String(pr.mergeable));
-              core.setOutput('mergeable_state', pr.mergeable_state ?? 'unknown');
-              core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
+              const noFilesChanged = pr.changed_files === 0;
 
-              if (hasConflicts) {
-                // Create an issue to report the conflict
-                const issueTitle = `Conflicted Pull Request #${prNumber}`;
-                const issueBody = `Pull request #${prNumber} has merge conflicts and cannot be merged. Please resolve the conflicts.\n\nPull Request Link: ${pr.html_url}`;
+              core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
+              core.setOutput('no_files_changed', noFilesChanged ? 'true' : 'false');
+
+              if (hasConflicts || noFilesChanged) {
+                const reason = hasConflicts
+                  ? 'merge conflicts'
+                  : 'no files being changed';
+                const issueTitle = `Pull Request #${prNumber} closed: ${reason}`;
+                const issueBody = `Pull request #${prNumber} was closed due to ${reason}.\n\nPull Request Link: ${pr.html_url}`;
+
+                // Create an issue to report the reason for closure
                 const { data: issue } = await github.rest.issues.create({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -68,7 +73,7 @@ jobs:
                   body: issueBody,
                 });
 
-                core.info(`Created issue #${issue.number} to report merge conflicts.`);
+                core.info(`Created issue #${issue.number} to report pull request closure reason.`);
 
                 // Close the pull request
                 await github.rest.pulls.update({
@@ -78,6 +83,6 @@ jobs:
                   state: 'closed',
                 });
 
-                core.info(`Closed pull request #${prNumber} due to merge conflicts.`);
+                core.info(`Closed pull request #${prNumber} due to ${reason}.`);
               }
             }
