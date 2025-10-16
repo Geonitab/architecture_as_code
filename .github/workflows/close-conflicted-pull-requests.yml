@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: '16' # Ensure compatibility with @actions/core and github-script.
 
+      - name: Install Missing Dependency
+        run: npm install @actions/core
+
       - name: Await mergeability assessment
         id: mergeability
         uses: actions/github-script@v7
