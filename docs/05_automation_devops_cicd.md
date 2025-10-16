@@ -418,7 +418,7 @@ Alerting strategies ensure rapid response to pipeline failures and infrastructur
 
 ### monitoring and alerting
 
-For organisations, monitoring requires special attention to GDPR compliance, cost tracking in SEK, and alignment with local incident-management processes:
+For organisations, monitoring requires special attention to GDPR compliance, cost tracking, and alignment with local incident-management processes:
 
 ```yaml
 # monitoring/pipeline-monitoring.yaml
