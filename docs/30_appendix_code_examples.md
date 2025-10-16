@@ -185,7 +185,7 @@ pipeline {
                 stage('Data Residency Validation') {
                     steps {
                         script {
-                            echo "🏔️ Validating data residency requirements for approved EU regions..."
+                            echo "🏔️ Validating data residency requirements..."
 
                             def allowedRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2']
 
@@ -562,17 +562,17 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
 
 // testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
 func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
-    // Hämta KMS key from Terraform output
+    // Get KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
 
-    // Validate that KMS key is from EU region
+    // Validate that KMS key is from EU West region
     assert.Contains(t, kmsKeyArn, "eu-west-1", "KMS key should be in EU West region for data residency")
 
-    t.Logf("✅ Encryption at rest validerat for GDPR compliance")
+    t.Logf("✅ Encryption at rest validated for GDPR compliance")
 }
 
-// testDataResidencyEU validates to all infrastruktur is within gränser
+// testDataResidencyEU validates that all infrastructure is within EU borders
 func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Validate that VPC is in EU region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
@@ -585,7 +585,7 @@ func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
     require.NoError(t, err, "Failed to describe VPC")
     require.Len(t, vpcOutput.Vpcs, 1, "Should find exactly one VPC")
 
-    // Kontrollera region from session config
+    // Check region from session config
     region := *suite.AWSSession.Config.Region
     allowedRegions := []string{"eu-west-1", "eu-central-1", "eu-west-2"}
     
@@ -597,12 +597,12 @@ func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
         }
     }
     
-    assert.True(t, regionAllowed, "VPC must be in EU region for  data residency. Found: %s", region)
+    assert.True(t, regionAllowed, "VPC must be in EU region for data residency. Found: %s", region)
 
-    t.Logf("✅ Data residency validerat - all infrastruktur in EU region: %s", region)
+    t.Logf("✅ Data residency validated - all infrastructure in EU region: %s", region)
 }
 
-// testAuditLogging validates to audit logging is konfigurerat according to lagrequirements
+// testAuditLogging validates that audit logging is configured according to legal requirements
 func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Check the CloudTrail configuration matches organisational expectations
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
@@ -614,7 +614,7 @@ func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
     for _, trail := range trails.TrailList {
         if strings.Contains(*trail.Name, suite.OrganizationName) {
             foundOrgTrail = true
-            t.Logf("✅ CloudTrail audit logging konfigurerat: %s", *trail.Name)
+            t.Logf("✅ CloudTrail audit logging configured: %s", *trail.Name)
         }
     }
 
@@ -737,7 +737,7 @@ Resources:
         - Key: Country
           Value: 'EU'
         - Key: Region
-          Value: 'eu-north-1'
+          Value: 'eu-west-1'
 ```
 
 ---
@@ -778,7 +778,7 @@ class ComprehensiveIaCTesting:
     Based at architecture as code best practices and international standards
     """
     
-    def __init__(self, region='eu-north-1'):
+    def __init__(self, region='eu-west-1'):
         self.region = region
         self.ec2 = boto3.client('ec2', region_name=region)
         self.rds = boto3.client('rds', region_name=region)
@@ -1025,10 +1025,10 @@ export interface ResourceConfig {
 export class TerraformConfigGenerator {
   generateVPCConfig(
     environment: string,
-    region: string = 'eu-north-1'
+    region: string = 'eu-west-1'
   ): TerraformConfig {
     // Validate EU regions for GDPR compliance
-    const euRegions = ['eu-north-1', 'eu-west-1', 'eu-central-1'];
+    const euRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2'];
     if (!euRegions.includes(region)) {
       throw new Error('Region must be within EU for GDPR compliance');
     }
