@@ -42,12 +42,18 @@ optimisation. By regularly reviewing feedback loops, teams maintain momentum and
 
 ## 27.3 European context and opportunities
 
-Many organisations operate within regulatory and sustainability frameworks that shape their Architecture as Code ambitions. The
-[policy and security guidance](10_policy_and_security.md) and [compliance practices](12_compliance.md) demonstrate how European
-legislation such as GDPR influences data residency, encryption, and audit requirements. National sustainability goals, explored
-in [future trends](25_future_trends_development.md), encourage the use of carbon-aware workloads and responsible procurement. The
-wider digital transformation agenda in [chapter 21 on digitalisation](21_digitalization.md) highlights how Architecture as Code
-supports coordinated change across public and private sectors.
+Operating across the European Union demands a consistent commitment to lawful handling of information, resilient supply chains,
+and ethical automation. The [policy and security guidance](10_policy_and_security.md) and [compliance practices](12_compliance.md)
+show how GDPR, the NIS2 directive, and emerging AI governance proposals influence design choices from the earliest architectural
+blueprints. Treating data residency as a first-class requirement keeps infrastructure definitions aligned with EU data boundary
+commitments and sector-specific controls such as DORA for financial services.
+
+The region's sustainability and digital priorities require Architecture as Code teams to consider environmental impact alongside
+operational efficiency. [Future trends](25_future_trends_development.md) emphasise carbon-aware workloads, energy-efficient
+automation, and transparent procurement that supports the European Green Deal. The wider transformation agenda explored in
+[chapter 21 on digitalisation](21_digitalization.md) illustrates how coordinated change across member states, public institutions,
+and private enterprises benefits from codified architectural knowledge that can be shared, audited, and re-used without
+reinventing country-specific artefacts.
 
 ## 27.4 Recommendations for organisations
 
