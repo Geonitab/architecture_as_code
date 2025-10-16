@@ -209,22 +209,22 @@ pipeline {
                 stage('Cost Center Validation') {
                     steps {
                         script {
-                            echo "💰 Validates kostnadscenter for bokföring..."
+                            echo "💰 Validating cost centre for financial reporting..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
-                                error("Ogiltigt kostnadscenter format. Use: CC-XX-nnn")
+                                error("Invalid cost centre format. Use: CC-XX-nnn")
                             }
                             
-                            // Validate to kostnadscenter existerar in företagets systems
+                            // Validate that cost centre exists in organisation's systems
                             def validCostCenters = [
                                 'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
                             ]
                             
                             if (!validCostCenters.contains(params.COST_CENTER)) {
-                                error("Okänt kostnadscenter: ${params.COST_CENTER}")
+                                error("Unknown cost centre: ${params.COST_CENTER}")
                             }
                             
-                            echo "✅ Kostnadscenter validerat: ${params.COST_CENTER}"
+                            echo "✅ Cost centre validated: ${params.COST_CENTER}"
                         }
                     }
                 }
@@ -236,7 +236,7 @@ pipeline {
                 stage('Terraform Validation') {
                     steps {
                         script {
-                            echo "🔧 Terraform syntax and formatering..."
+                            echo "🔧 Terraform syntax and formatting..."
                             
                             // Format check
                             sh "terraform fmt -check -recursive infrastructure/"
@@ -249,7 +249,7 @@ pipeline {
                                 """
                             }
                             
-                            echo "✅ Terraform validation slutförd"
+                            echo "✅ Terraform validation completed"
                         }
                     }
                 }
@@ -257,7 +257,7 @@ pipeline {
                 stage('Security Scanning') {
                     steps {
                         script {
-                            echo "🔒 Säkerhetsskanning with Checkov..."
+                            echo "🔒 Security scanning with Checkov..."
                             
                             sh """
                                 pip install checkov
@@ -268,24 +268,24 @@ pipeline {
                                     --soft-fail
                             """
                             
-                            // Analysera critical säkerhetsproblem
+                            // Analyse critical security issues
                             def results = readJSON file: 'checkov-results.json'
                             def criticalIssues = results.results.failed_checks.findAll { 
                                 it.severity == 'CRITICAL' 
                             }
                             
                             if (criticalIssues.size() > 0) {
-                                echo "⚠️ KRITISKA säkerhetsproblem funna:"
+                                echo "⚠️ CRITICAL security issues found:"
                                 criticalIssues.each { issue ->
                                     echo "- ${issue.check_name}: ${issue.file_path}"
                                 }
                                 
                                 if (params.ENVIRONMENT == 'production') {
-                                    error("Kritiska säkerhetsproblem must åtgärdas före production deployment")
+                                    error("Critical security issues must be addressed before production deployment")
                                 }
                             }
                             
-                            echo "✅ Säkerhetsskanning slutförd"
+                            echo "✅ Security scanning completed"
                         }
                     }
                 }
@@ -293,11 +293,11 @@ pipeline {
                 stage('Policy Validation') {
                     steps {
                         script {
-                            echo "📋 Validates organisationspolicies..."
+                            echo "📋 Validating organisation policies..."
                             
-                            // Skapa OPA policies
-                            writeFile file: 'policies/a-tagging.rego', text: """
-                                package a.tagging
+                            // Create OPA policies
+                            writeFile file: 'policies/eu-tagging.rego', text: """
+                                package eu.tagging
                                 
                                 required_tags := [
                                     "Environment", "CostCenter", "Organization", 
@@ -308,14 +308,14 @@ pipeline {
                                     input.resource[resource_type][name]
                                     resource_type != "data"
                                     not input.resource[resource_type][name].tags
-                                    msg := sprintf("Resource %s.%s saknar tags", [resource_type, name])
+                                    msg := sprintf("Resource %s.%s lacks tags", [resource_type, name])
                                 }
                                 
                                 deny[msg] {
                                     input.resource[resource_type][name].tags
                                     required_tag := required_tags[_]
                                     not input.resource[resource_type][name].tags[required_tag]
-                                    msg := sprintf("Resource %s.%s saknar obligatorisk tag: %s", [resource_type, name, required_tag])
+                                    msg := sprintf("Resource %s.%s lacks required tag: %s", [resource_type, name, required_tag])
                                 }
                             """
                             
@@ -326,19 +326,19 @@ pipeline {
                                 find infrastructure/ -name "*.tf" -exec conftest verify --policy policies/ {} \\;
                             """
                             
-                            echo "✅ policy validation slutförd"
+                            echo "✅ Policy validation completed"
                         }
                     }
                 }
             }
         }
         
-        stage('💰 Kostnadskontroll') {
+        stage('💰 Cost Control') {
             steps {
                 script {
-                    echo "📊 Beräknar infrastrukturkostnader in kronor..."
+                    echo "📊 Calculating infrastructure costs in euros..."
                     
-                    // Setup Infracost for valuta
+                    // Setup Infracost for currency
                     sh """
                         curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
                         export PATH=\$PATH:\$HOME/.local/bin
@@ -358,7 +358,7 @@ pipeline {
                             --out-file ../../../cost-summary.txt
                     """
                     
-                    // Validate kostnader mot budgetgränser
+                    // Validate costs against budget limits
                     def costData = readJSON file: 'cost-estimate.json'
                     def monthlyCostEUR = costData.totalMonthlyCost as Double
                     
@@ -370,44 +370,44 @@ pipeline {
                     
                     def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
                     
-                    echo "Beräknad månadskostnad: ${monthlyCostEUR} EUR"
+                    echo "Estimated monthly cost: ${monthlyCostEUR} EUR"
                     echo "Budget for ${params.ENVIRONMENT}: ${maxBudget} EUR"
                     
                     if (monthlyCostEUR > maxBudget) {
                         def overBudget = monthlyCostEUR - maxBudget
-                        echo "⚠️ BUDGET ÖVERSKRIDEN with ${overBudget} EUR!"
+                        echo "⚠️ BUDGET EXCEEDED by ${overBudget} EUR!"
                         
                         if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
-                            error("Budget överskridning not tillåten for production without CFO godkännande")
+                            error("Budget overrun not permitted for production without CFO approval")
                         }
                     }
                     
-                    // Generera t kostnadsrapport
+                    // Generate cost report
                     def costReport = """
-                    # Kostnadsrapport - ${env.ORGANIZATION_NAME}
+                    # Cost Report - ${env.ORGANIZATION_NAME}
                     
-                    **Miljö:** ${params.ENVIRONMENT}
-                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} ( time)
-                    **Kostnadscenter:** ${params.COST_CENTER}
+                    **Environment:** ${params.ENVIRONMENT}
+                    **Date:** ${new Date().format('yyyy-MM-dd HH:mm')} (EU time)
+                    **Cost Centre:** ${params.COST_CENTER}
                     
-                    ## Månadskostnad
+                    ## Monthly Cost
                     - **Total:** ${monthlyCostEUR} EUR
                     - **Budget:** ${maxBudget} EUR
-                    - **Status:** ${monthlyCostEUR <= maxBudget ? '✅ Within budget' : '❌ over budget'}
+                    - **Status:** ${monthlyCostEUR <= maxBudget ? '✅ Within budget' : '❌ Over budget'}
                     
-                    ## Kostnadsnedbrytning
+                    ## Cost Breakdown
                     ${readFile('cost-summary.txt')}
                     
-                    ## Rekommendationer
+                    ## Recommendations
                     - Use Reserved Instances for production workloads
-                    - Aktivera auto-scaling for development environments
-                    - Implementera scheduled shutdown for icke-critical systems
+                    - Enable auto-scaling for development environments
+                    - Implement scheduled shutdown for non-critical systems
                     """
                     
-                    writeFile file: 'cost-report-a.md', text: costReport
-                    archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
+                    writeFile file: 'cost-report-eu.md', text: costReport
+                    archiveArtifacts artifacts: 'cost-report-eu.md', fingerprint: true
                     
-                    echo "✅ Kostnadskontroll slutförd"
+                    echo "✅ Cost control completed"
                 }
             }
         }
@@ -569,10 +569,10 @@ func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Validate to KMS key is from Sverige region
     assert.Contains(t, kmsKeyArn, "eu-north-1", "KMS key should be in Stockholm region for data residency")
 
-    t.Logf("✅ Encryption at rest validerat for GDPR compliance")
+    t.Logf("✅ Encryption at rest validated for GDPR compliance")
 }
 
-// testDataResidencyEU validates to all infrastruktur is within gränser
+// testDataResidencyEU validates that all infrastructure is within EU boundaries
 func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Validate to VPC is in Stockholm region
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
@@ -597,12 +597,12 @@ func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
         }
     }
     
-    assert.True(t, regionAllowed, "VPC must be in EU region for  data residency. Found: %s", region)
+    assert.True(t, regionAllowed, "VPC must be in EU region for GDPR data residency. Found: %s", region)
 
-    t.Logf("✅ Data residency validerat - all infrastruktur in EU region: %s", region)
+    t.Logf("✅ Data residency validated - all infrastructure in EU region: %s", region)
 }
 
-// testAuditLogging validates to audit logging is konfigurerat according to lagrequirements
+// testAuditLogging validates that audit logging is configured according to legal requirements
 func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Check the CloudTrail configuration matches organisational expectations
     cloudtrailClient := cloudtrail.New(suite.AWSSession)
