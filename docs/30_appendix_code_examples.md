@@ -27,90 +27,97 @@ each kodexamples has a unique identifierare in formatet `[chapter]_CODE_[NUMMER]
 
 This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for organisations.
 
-### 05_CODE_1: GDPR-compliant CI/CD Pipeline for organisations
-*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
+### 05_CODE_1: GDPR-compliant CI/CD pipeline for organisations
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
 
 ```yaml
-# .github/workflows/a-architecture as code-pipeline.yml
-# GDPR-compliant CI/CD pipeline for organizations
+# .github/workflows/architecture-as-code-pipeline.yml
+# GDPR-compliant CI/CD pipeline for organisations
 
-name: architecture as code Pipeline with GDPR Compliance
+name: Architecture as Code Pipeline with GDPR Compliance
 
 on:
   push:
     branches: [main, staging, development]
-    paths: ['infrastructure/**', 'modules/**']
+    paths:
+      - 'infrastructure/**'
+      - 'modules/**'
   pull_request:
     branches: [main, staging]
-    paths: ['infrastructure/**', 'modules/**']
+    paths:
+      - 'infrastructure/**'
+      - 'modules/**'
 
 env:
   TF_VERSION: '1.6.0'
-  ORGANIZATION_NAME: ${{ whose.ORGANIZATION_NAME }}
+  ORGANISATION_NAME: ${{ vars.ORGANISATION_NAME }}
   ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || github.ref_name }}
-  COST_CENTER: ${{ whose.COST_CENTER }}
+  COST_CENTRE: ${{ vars.COST_CENTRE }}
   GDPR_COMPLIANCE_ENABLED: 'true'
   DATA_RESIDENCY: 'EU'
   AUDIT_LOGGING: 'enabled'
 
 jobs:
-  # GDPR and security controls
   gdpr-compliance-check:
     name: GDPR Compliance Validation
     runs-on: ubuntu-latest
     if: contains(github.event.head_commit.message, 'personal-data') || contains(github.event.head_commit.message, 'gdpr')
-    
+
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-      
-      - name: GDPR Data Discovery Scan
+
+      - name: GDPR data discovery scan
         run: |
-          echo "🔍 Scanning for personal data patterns..."
-          
-          # Sök efter vanliga personal data patterns in architecture as code-code
+          echo "🔍 Scanning for personal data indicators across EU jurisdictions..."
+
           PERSONAL_DATA_PATTERNS=(
-            "national ID"
+            "national\\s+identity"
+            "passport\\s+number"
             "social.*security"
-            "credit.*card"
-            "bank.*account"
+            "tax\\s+identification"
+            "vat\\s+number"
+            "iban"
+            "bic"
+            "eori"
+            "driver'?s\\s+licence"
+            "health\\s+insurance\\s+number"
             "email.*address"
             "phone.*number"
             "date.*of.*birth"
-            "passport.*number"
           )
-          
+
           VIOLATIONS_FOUND=false
-          
+
           for pattern in "${PERSONAL_DATA_PATTERNS[@]}"; do
-            if grep -ri "$pattern" infrastructure/ modules/ 2>/dev/null; then
-              echo "⚠️ GDPR VARNING: Potentiell personal data hittad: $pattern"
+            if grep -R -i -E "$pattern" infrastructure/ modules/ 2>/dev/null; then
+              echo "⚠️ GDPR WARNING: Potential personal data reference detected for pattern: $pattern"
               VIOLATIONS_FOUND=true
             fi
           done
-          
+
           if [ "$VIOLATIONS_FOUND" = true ]; then
-            echo "❌ GDPR compliance check misslyckades"
-            echo "Personal data may not hardkodas in architecture as code-code"
+            echo "❌ GDPR compliance check failed"
+            echo "Personal data must not be hard coded in Architecture as Code assets."
             exit 1
           fi
-          
-          echo "✅ GDPR compliance check genomförd"
+
+          echo "✅ GDPR compliance check completed successfully"
 ```
 
-### 05_CODE_2: Jenkins Pipeline for organisations with GDPR compliance
-*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
+### 05_CODE_2: Jenkins pipeline for organisations with GDPR compliance
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
 
 ```yaml
-# jenkins/a-architecture as code-pipeline.groovy
-// Jenkins pipeline for organizations with GDPR compliance
+# jenkins/architecture-as-code-pipeline.groovy
+// Jenkins pipeline for organisations with GDPR compliance
 
 pipeline {
     agent any
-    
+
     parameters {
         choice(
             name: 'ENVIRONMENT',
@@ -120,80 +127,82 @@ pipeline {
         booleanParam(
             name: 'FORCE_DEPLOYMENT',
             defaultValue: false,
-            description: 'Forcera deployment also at varningar (endast development)'
+            description: 'Force deployment even when warnings are raised (development only)'
         )
         string(
             name: 'COST_CENTER',
             defaultValue: 'CC-IT-001',
-            description: 'Kostnadscenter for bokföring'
+            description: 'Cost centre used for financial reporting'
         )
     }
-    
+
     environment {
-        ORGANIZATION_NAME = 'a-org'
+        ORGANISATION_NAME = 'example-org'
         AWS_DEFAULT_REGION = 'eu-west-1'
         GDPR_COMPLIANCE = 'enabled'
         DATA_RESIDENCY = 'EU'
         TERRAFORM_VERSION = '1.6.0'
         COST_CURRENCY = 'EUR'
-        AUDIT_RETENTION_YEARS = '7'  // lagrequirements
+        AUDIT_RETENTION_YEARS = '7'  // Legal requirement for audit retention
     }
-    
+
     stages {
         stage('Compliance Check') {
             parallel {
                 stage('GDPR Data Scan') {
                     steps {
                         script {
-                            echo "🔍 Scanning for personal data patterns in architecture as code code..."
-                            
+                            echo "🔍 Scanning for personal data indicators across EU member states..."
+
                             def personalDataPatterns = [
-                                'national ID', 'social.*security', 'credit.*card',
-                                'bank.*account', 'email.*address', 'phone.*number'
+                                'national\\s+identity', 'passport\\s+number', 'social.*security',
+                                'tax\\s+identification', 'vat\\s+number', 'iban', 'bic',
+                                'eori', "driver'?s\\s+licence", 'health\\s+insurance\\s+number',
+                                'email.*address', 'phone.*number', 'date.*of.*birth'
                             ]
-                            
+
                             def violations = []
-                            
+
                             personalDataPatterns.each { pattern ->
                                 def result = sh(
-                                    script: "grep -ri '${pattern}' infrastructure/ modules/ || true",
+                                    script: "grep -R -i -E '${pattern}' infrastructure/ modules/ || true",
                                     returnStdout: true
                                 ).trim()
-                                
+
                                 if (result) {
-                                    violations.add("Personal data pattern found: ${pattern}")
+                                    violations.add("Personal data pattern found for expression: ${pattern}")
                                 }
                             }
-                            
+
                             if (violations) {
-                                error("GDPR VIOLATION: Personal data found in architecture as code code:\n${violations.join('\n')}")
+                                error("GDPR VIOLATION: Potential personal data detected in Architecture as Code assets:\n${violations.join('\n')}")
                             }
-                            
-                            echo "✅ GDPR data scan genomförd - inga violations"
+
+                            echo "✅ GDPR data scan completed successfully"
                         }
                     }
                 }
-                
+
                 stage('Data Residency Validation') {
                     steps {
                         script {
-                            echo "🏔️ Validates data residency requirements..."
-                            
-                            def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1']
-                            
+                            echo "🏔️ Validating data residency requirements for approved EU regions..."
+
+                            def allowedRegions = ['eu-north-1', 'eu-central-1', 'eu-west-1', 'eu-south-1']
+
                             def regionCheck = sh(
                                 script: """
-                                    grep -r 'region\\s*=' infrastructure/ modules/ | \
-                                    grep -v -E '(eu-north-1|eu-central-1|eu-west-1)' || true
+                                    grep -R 'region\\s*=' infrastructure/ modules/ | \
+                                    grep -v -E '(eu-north-1|eu-central-1|eu-west-1|eu-south-1)' || true
                                 """,
                                 returnStdout: true
                             ).trim()
-                            
+
                             if (regionCheck) {
-                                error("DATA RESIDENCY VIOLATION: Non-EU regions found:\n${regionCheck}")
+                                error("DATA RESIDENCY VIOLATION: Non-approved regions detected:\n${regionCheck}")
                             }
-                            
-                            echo "✅ Data residency requirements uppfyllda"
+
+                            echo "✅ Data residency requirements satisfied"
                         }
                     }
                 }
