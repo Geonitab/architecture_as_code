@@ -7,7 +7,7 @@ on:
       - synchronize
       - reopened
       - ready_for_review
-  workflow_dispatch: # Möjliggör manuell start av workflow.
+  workflow_dispatch: # Allow manual triggering of the workflow.
 
 permissions:
   contents: read
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '16' # Ensure compatibility with @actions/core and github-script.
 
       - name: Await mergeability assessment
         id: mergeability
@@ -50,62 +50,7 @@ jobs:
               }
 
               const hasConflicts = pr.mergeable === false && pr.mergeable_state === 'dirty';
-              const noChanges = !pr.changed_files;
-
               core.setOutput('mergeable', pr.mergeable === null ? 'unknown' : String(pr.mergeable));
               core.setOutput('mergeable_state', pr.mergeable_state ?? 'unknown');
               core.setOutput('has_conflicts', hasConflicts ? 'true' : 'false');
-              core.setOutput('no_changes', noChanges ? 'true' : 'false');
             }
-
-      - name: Raise merge conflict issue
-        id: issue
-        if: steps.mergeability.outputs.has_conflicts == 'true'
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.BOT_ISSUE }}
-          script: |
-            const pr = context.payload.pull_request;
-            const title = `Resolve merge conflicts for PR #${pr.number}`;
-            const body = [
-              `This issue was created automatically because pull request #${pr.number} has merge conflicts and was closed.`,
-              '',
-              `Conflicted pull request: ${pr.html_url}`,
-              '',
-              'Please resolve the conflicts locally and submit a fresh pull request once the branch is up to date.'
-            ].join('\n');
-
-            const { data: issue } = await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title,
-              body,
-              assignees: ['copilot'],
-            });
-
-            return { issue_number: issue.number, issue_url: issue.html_url };
-
-      - name: Close pull request with merge conflicts or no changes
-        if: steps.mergeability.outputs.has_conflicts == 'true' || steps.mergeability.outputs.no_changes == 'true'
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const pr = context.payload.pull_request;
-            const reason = steps.mergeability.outputs.has_conflicts == 'true'
-              ? 'merge conflicts'
-              : 'no changes in the files';
-
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: pr.number,
-              body: `This pull request has been closed automatically because it contains ${reason}.`,
-            });
-
-            await github.rest.pulls.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: pr.number,
-              state: 'closed',
-            });
