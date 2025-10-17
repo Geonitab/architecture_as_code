@@ -1,4 +1,4 @@
-name: Auto draft PR from issue + Codex auto-fix for PRs linked to issues
+name: Auto Codex for Issues + PRs (create PR if missing)
 
 on:
   issues:
@@ -11,24 +11,30 @@ permissions:
   pull-requests: write
   issues: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.issue.number || github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  # ------------------------------------------------------------
-  # Job A – When an issue is opened/reopened:
-  #   Create or reuse a draft PR, then run Codex to make changes
-  # ------------------------------------------------------------
-  create_or_reuse_draft_pr:
+  # ============================================================
+  # JOB 0 – Issue: create or reuse branch and ensure draft PR
+  # ============================================================
+  issue_create_draft_pr:
     if: github.event_name == 'issues'
     runs-on: ubuntu-latest
+    outputs:
+      branch: ${{ steps.setvars.outputs.branch }}
+      pr_number: ${{ steps.setvars.outputs.pr_number }}
+      pr_url: ${{ steps.setvars.outputs.pr_url }}
     env:
       REPO: ${{ github.repository }}
       ISSUE_NUMBER: ${{ github.event.issue.number }}
       ISSUE_TITLE: ${{ github.event.issue.title }}
-
     steps:
       - name: Enable debug logging
         run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
 
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v4
         with:
           persist-credentials: true
@@ -53,7 +59,7 @@ jobs:
 
           if [[ -n "${EXISTING:-}" ]]; then
             BRANCH="$EXISTING"
-            echo "::debug::Reusing branch: $BRANCH"
+            echo "::debug::Reusing existing branch: $BRANCH"
             git fetch origin "$BRANCH" --depth=1
             git switch -C "$BRANCH" "origin/$BRANCH"
           else
@@ -63,10 +69,9 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git fetch origin "$DEFAULT_BRANCH" --depth=1
             git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
-            git commit --allow-empty -m "Init draft for issue #${ISSUE_NUMBER}"
+            git commit --allow-empty -m "Initial draft for issue #${ISSUE_NUMBER}"
             git push --set-upstream origin "$BRANCH"
           fi
-
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
       - name: Ensure draft PR exists (create if missing)
@@ -86,7 +91,7 @@ jobs:
               --base "$DEFAULT_BRANCH" \
               --head "$BRANCH" \
               --title "Draft: Issue #$ISSUE_NUMBER – $ISSUE_TITLE" \
-              --body "This draft PR was automatically created for this issue.
+              --body "This draft pull request was automatically created for this issue.
 
               Closes #$ISSUE_NUMBER" \
               --draft \
@@ -96,21 +101,40 @@ jobs:
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
 
-      # --- Run Codex immediately on the created PR ---
+      - name: Set job outputs
+        id: setvars
+        run: |
+          echo "branch=${BRANCH}" >> $GITHUB_OUTPUT
+          echo "pr_number=${PR_NUMBER}" >> $GITHUB_OUTPUT
+          echo "pr_url=${PR_URL}" >> $GITHUB_OUTPUT
+          echo "::notice::Draft PR ensured: ${PR_URL} (#${PR_NUMBER}) on branch ${BRANCH}"
 
-      - name: Checkout PR head branch (writes allowed)
+  # ============================================================
+  # JOB 1 – Issue: run Codex on the draft PR created above
+  # ============================================================
+  issue_codex:
+    if: github.event_name == 'issues'
+    needs: issue_create_draft_pr
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: ${{ needs.issue_create_draft_pr.outputs.branch }}
+      PR_NUMBER: ${{ needs.issue_create_draft_pr.outputs.pr_number }}
+      REPO: ${{ github.repository }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+    steps:
+      - name: Check out PR branch
         uses: actions/checkout@v4
         with:
           ref: ${{ env.BRANCH }}
           persist-credentials: true
 
-      - name: Get PR SHAs and metadata
+      - name: Retrieve PR metadata
         id: prsha
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          pr=$(gh pr view "$PR_NUMBER" --json headRefOid,baseRefOid,title,body,number)
+          pr=$(gh pr view "$PR_NUMBER" --json headRefOid,baseRefOid,title,body)
           echo "base_sha=$(echo "$pr" | jq -r .baseRefOid)" >> "$GITHUB_OUTPUT"
           echo "head_sha=$(echo "$pr" | jq -r .headRefOid)" >> "$GITHUB_OUTPUT"
           echo "pr_title=$(echo "$pr" | jq -r .title)" >> "$GITHUB_OUTPUT"
@@ -120,15 +144,15 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Detect linked issues (with fallback)
-        id: linked_issue_in_job_a
+      - name: Detect linked issues (fallback to current issue)
+        id: linked_issue
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           OWNER: ${{ github.repository_owner }}
-          REPO: ${{ github.event.repository.name }}
-          ISSUE_NUMBER: ${{ env.ISSUE_NUMBER }}
+          REPO_NAME: ${{ github.event.repository.name }}
           PR_NUMBER: ${{ env.PR_NUMBER }}
+          ISSUE_NUMBER: ${{ env.ISSUE_NUMBER }}
         run: |
           set -euo pipefail
           q='query($owner:String!,$repo:String!,$number:Int!){
@@ -140,49 +164,27 @@ jobs:
           }'
           nums=""
           for i in 1 2 3; do
-            data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO" -F number="$PR_NUMBER" || true)
+            data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO_NAME" -F number="$PR_NUMBER" || true)
             nums=$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes|map(.number)|join(",")' 2>/dev/null || true)
             [[ -n "$nums" ]] && break || sleep 2
           done
           [[ -z "$nums" ]] && nums="$ISSUE_NUMBER"
-          echo "has=true" >> "$GITHUB_OUTPUT"
-          echo "numbers=$nums" >> "$GITHUB_OUTPUT"
+          echo "numbers=$nums" >> $GITHUB_OUTPUT
 
-      - name: Fetch first linked issue
-        if: steps.linked_issue_in_job_a.outputs.has == 'true'
-        id: issue_a
-        env:
-          GH_TOKEN: ${{ github.token }}
-          OWNER: ${{ github.repository_owner }}
-          REPO: ${{ github.event.repository.name }}
-        run: |
-          first=$(echo "${{ steps.linked_issue_in_job_a.outputs.numbers }}" | awk -F',' '{print $1}')
-          issue_json=$(gh api repos/$OWNER/$REPO/issues/$first)
-          echo "num=$first" >> $GITHUB_OUTPUT
-          echo "title=$(echo "$issue_json" | jq -r .title)" >> $GITHUB_OUTPUT
-          {
-            echo "body<<EOF"
-            echo "$(echo "$issue_json" | jq -r .body)"
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
-
-      - name: Run Codex task (writes enabled)
-        if: steps.linked_issue_in_job_a.outputs.has == 'true'
-        id: run_codex_a
+      - name: Run Codex on PR branch (with write permissions)
+        id: run_codex_issue
         uses: openai/codex-action@v1
         timeout-minutes: 10
         continue-on-error: true
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          # Default sandbox is workspace-write (so Codex can modify files)
           prompt: |
             You are Codex working on branch "${{ env.BRANCH }}" for PR #${{ env.PR_NUMBER }}.
-            The PR is linked to issue(s) #${{ steps.linked_issue_in_job_a.outputs.numbers }}.
+            The PR is linked to issue(s) #${{ steps.linked_issue.outputs.numbers }}.
 
-            Goal:
-            - Make the necessary code edits directly in the workspace to resolve the linked issue(s).
-            - Prefer minimal, targeted edits. Update tests or docs if relevant.
-            - After edits, print a short summary of what changed.
+            Make minimal and targeted code changes to resolve the linked issue(s).
+            Update any related tests or documentation where appropriate.
+            At the end, print a concise summary of what was changed.
 
             Context:
             - Base SHA: ${{ steps.prsha.outputs.base_sha }}
@@ -191,8 +193,7 @@ jobs:
             - PR body:
             ${{ steps.prsha.outputs.pr_body }}
 
-      - name: Commit & push Codex changes
-        if: steps.linked_issue_in_job_a.outputs.has == 'true'
+      - name: Commit and push Codex changes
         shell: bash
         run: |
           set -euo pipefail
@@ -200,32 +201,25 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
-            git commit -m "Codex auto-fix for issue(s) #${{ steps.linked_issue_in_job_a.outputs.numbers }}"
+            git commit -m "Codex auto-fix for issue(s) #${{ steps.linked_issue.outputs.numbers }}"
             git push origin "${BRANCH}"
             echo "::notice::Committed and pushed Codex changes to ${BRANCH}"
           else
             echo "::notice::No file changes to commit."
           fi
 
-  # ------------------------------------------------------------
-  # Job B – On PR events: run Codex on updates or synchronisations
-  # ------------------------------------------------------------
-  assign_and_codex:
+  # ============================================================
+  # JOB 2 – PR: run Codex when PR events occur
+  # ============================================================
+  pr_codex:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout PR head branch (writes allowed)
+      - name: Check out PR head branch
         uses: actions/checkout@v4
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/head
           persist-credentials: true
-
-      - name: Prefetch base & head refs
-        run: |
-          git fetch --no-tags origin \
-            ${{ github.event.pull_request.base.ref }} \
-            +refs/pull/${{ github.event.pull_request.number }}/head
 
       - name: Detect linked issues
         id: linked
@@ -255,43 +249,26 @@ jobs:
         if: steps.linked.outputs.has != 'true'
         run: echo "No linked issues → skipping Codex run."
 
-      - name: Fetch first linked issue
+      - name: Run Codex on PR branch
         if: steps.linked.outputs.has == 'true'
-        id: issue
-        env:
-          GH_TOKEN: ${{ github.token }}
-          OWNER: ${{ github.repository_owner }}
-          REPO: ${{ github.event.repository.name }}
-        run: |
-          first=$(echo "${{ steps.linked.outputs.numbers }}" | awk -F',' '{print $1}')
-          issue_json=$(gh api repos/$OWNER/$REPO/issues/$first)
-          echo "num=$first" >> $GITHUB_OUTPUT
-          echo "title=$(echo "$issue_json" | jq -r .title)" >> $GITHUB_OUTPUT
-          {
-            echo "body<<EOF"
-            echo "$(echo "$issue_json" | jq -r .body)"
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
-
-      - name: Run Codex task on PR head (writes enabled)
-        if: steps.linked.outputs.has == 'true'
-        id: run_codex
+        id: run_codex_pr
         uses: openai/codex-action@v1
         timeout-minutes: 10
         continue-on-error: true
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           prompt: |
-            You are Codex working directly on the PR's head branch (#${{ github.event.pull_request.number }}).
+            You are Codex working directly on the pull request head branch (#${{ github.event.pull_request.number }}).
             The PR is linked to issue(s) #${{ steps.linked.outputs.numbers }}.
+
             Make the necessary code edits directly in the workspace to resolve those issues.
-            Update tests/docs if needed, then print a concise summary.
+            Update tests and documentation if required, then print a concise summary.
 
             Context:
             - Base SHA: ${{ github.event.pull_request.base.sha }}
             - Head SHA: ${{ github.event.pull_request.head.sha }}
 
-      - name: Commit & push Codex changes
+      - name: Commit and push Codex changes
         if: steps.linked.outputs.has == 'true'
         shell: bash
         run: |
