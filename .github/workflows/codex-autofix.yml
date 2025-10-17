@@ -1,7 +1,7 @@
 name: Codex auto-fix on PR updates
 
 on:
-  workflow_dispatch;
+  workflow_dispatch:
 permissions:
   contents: write
   pull-requests: write
