@@ -1,0 +1,183 @@
+name: Manual text → multiple GitHub Issues (British English)
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_text:
+        description: "Paste your backlog text here (free-form; headings, bullets, or paragraphs)."
+        required: true
+        default: "- Bug: users cannot reset password\n- Feature: add dark mode\n- Docs: clarify SSO steps"
+      dry_run:
+        description: "Preview only (do not create GitHub issues)"
+        required: true
+        default: "true"
+        type: boolean
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure tools
+        run: |
+          set -euo pipefail
+          sudo apt-get update && sudo apt-get install -y jq
+
+      # 1) Save pasted text
+      - name: Save pasted text
+        env:
+          SOURCE_TEXT: ${{ github.event.inputs.source_text }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$SOURCE_TEXT" > /tmp/source.txt
+          echo "=== Preview of first lines ==="
+          head -n 20 /tmp/source.txt || true
+
+      # 2) Ask OpenAI to split & rewrite to British English
+      - name: Transform to British English via OpenAI
+        id: openai
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          set -euo pipefail
+
+          INSTRUCT=$(jq -Rs '.' <<'TXT'
+You are an expert product editor who creates concise GitHub issues in British English.
+
+INPUT: A single free-form text that may contain headings, bullet points, numbered lists, or paragraphs describing multiple work items.
+
+SPLITTING RULES:
+- Split into distinct issues whenever a new item is indicated (headings, bullets, numbered points, blank lines, or prefixes like "Bug:", "Fix:", "Feature:", "Docs:").
+- If one chunk clearly contains multiple tasks, split further.
+- Remove duplicates; keep the clearest version.
+
+FOR EACH ISSUE, PRODUCE:
+- title_british: A concise, actionable title in British English (no emojis).
+- body_british (Markdown): 
+  * **Summary** (1–3 sentences)
+  * **Acceptance criteria** (bullet list if possible)
+  * **Context/Notes** (optional)
+  * **Priority** (if mentioned)
+- labels: Normalise label hints (max 1–2 per issue) from {bug, enhancement, documentation, chore}.
+- assignees: Include if the text contains GitHub usernames (@alice etc.).
+
+OUTPUT:
+Return ONLY strict JSON in this exact schema (UTF-8, no trailing commas):
+
+{
+  "issues": [
+    {
+      "title_british": "string",
+      "body_british": "string",
+      "labels": ["string", "..."],
+      "assignees": ["string", "..."]
+    }
+  ]
+}
+
+No explanations outside the JSON.
+TXT
+)
+
+          REQUEST=$(jq -n --arg instruct "$INSTRUCT" --arg content "$(cat /tmp/source.txt)" '{
+            model: "gpt-4o-mini",
+            input: [
+              {role:"system", content:"Return JSON only. No explanations."},
+              {role:"user", content:$instruct},
+              {role:"user", content:("TEXT:\n" + $content)}
+            ]
+          }')
+
+          RESPONSE=$(curl -sS https://api.openai.com/v1/responses \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "$REQUEST")
+
+          RAW=$(echo "$RESPONSE" | jq -r '.output_text // .output[0].content[0].text // empty')
+          if [ -z "$RAW" ]; then
+            echo "Model returned empty output:"
+            echo "$RESPONSE"
+            exit 1
+          fi
+
+          echo "$RAW" | jq -e '.issues and (.issues|type=="array")' >/tmp/issues.json
+
+          COUNT=$(jq '.issues|length' /tmp/issues.json)
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+          echo "Proposed issues: $COUNT"
+
+      # 3) Preview or create issues depending on dry_run
+      - name: Handle issues (dry run or create)
+        uses: actions/github-script@v7
+        env:
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        with:
+          script: |
+            const fs = require('fs');
+            const dryRun = process.env.DRY_RUN === 'true';
+            const data = JSON.parse(fs.readFileSync('/tmp/issues.json', 'utf8'));
+            const items = data.issues || [];
+
+            // Summarise proposed issues
+            let summary = `### Proposed Issues (${items.length})\n`;
+            for (const [i, it] of items.entries()) {
+              summary += `\n#### ${i + 1}. ${it.title_british}\n`;
+              summary += `${it.body_british?.slice(0, 300) || ''}`;
+              summary += `\n**Labels:** ${(it.labels || []).join(', ') || '(none)'}\n`;
+              summary += `**Assignees:** ${(it.assignees || []).join(', ') || '(none)'}\n`;
+            }
+
+            if (dryRun) {
+              core.info("Dry run mode — no issues will be created.");
+              core.summary
+                .addHeading('Dry Run Summary')
+                .addRaw(summary)
+                .write();
+              return;
+            }
+
+            // Fetch open issues to deduplicate
+            const existing = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              per_page: 100
+            });
+            const existingTitles = new Set(existing.map(i => i.title.trim().toLowerCase()));
+
+            let created = 0;
+            for (const it of items) {
+              const title = (it.title_british || '').trim();
+              const body = (it.body_british || '').trim();
+              const labels = Array.isArray(it.labels) ? it.labels : [];
+              const assignees = Array.isArray(it.assignees) ? it.assignees : [];
+
+              if (!title) continue;
+              if (existingTitles.has(title.toLowerCase())) {
+                core.info(`Skip duplicate: ${title}`);
+                continue;
+              }
+
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels,
+                assignees
+              });
+              created++;
+            }
+
+            core.summary
+              .addHeading('Issue creation summary')
+              .addRaw(`Created: ${created} issue(s).\n`)
+              .addRaw(summary)
+              .write();
