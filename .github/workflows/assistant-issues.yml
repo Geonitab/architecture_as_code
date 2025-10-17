@@ -10,8 +10,8 @@ on:
       dry_run:
         description: "Preview only (do not create GitHub issues)"
         required: true
-        default: "true"
         type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -28,9 +28,9 @@ jobs:
       - name: Ensure tools
         run: |
           set -euo pipefail
-          sudo apt-get update && sudo apt-get install -y jq
+          sudo apt-get update -y
+          sudo apt-get install -y jq
 
-      # 1) Save pasted text
       - name: Save pasted text
         env:
           SOURCE_TEXT: ${{ github.event.inputs.source_text }}
@@ -40,7 +40,6 @@ jobs:
           echo "=== Preview of first lines ==="
           head -n 20 /tmp/source.txt || true
 
-      # 2) Ask OpenAI to split & rewrite to British English
       - name: Transform to British English via OpenAI
         id: openai
         env:
@@ -60,7 +59,7 @@ SPLITTING RULES:
 
 FOR EACH ISSUE, PRODUCE:
 - title_british: A concise, actionable title in British English (no emojis).
-- body_british (Markdown): 
+- body_british (Markdown):
   * **Summary** (1–3 sentences)
   * **Acceptance criteria** (bullet list if possible)
   * **Context/Notes** (optional)
@@ -69,19 +68,8 @@ FOR EACH ISSUE, PRODUCE:
 - assignees: Include if the text contains GitHub usernames (@alice etc.).
 
 OUTPUT:
-Return ONLY strict JSON in this exact schema (UTF-8, no trailing commas):
-
-{
-  "issues": [
-    {
-      "title_british": "string",
-      "body_british": "string",
-      "labels": ["string", "..."],
-      "assignees": ["string", "..."]
-    }
-  ]
-}
-
+Return ONLY strict JSON in this schema (UTF-8, no trailing commas):
+{"issues":[{"title_british":"string","body_british":"string","labels":["string"],"assignees":["string"]}]}
 No explanations outside the JSON.
 TXT
 )
@@ -107,43 +95,39 @@ TXT
             exit 1
           fi
 
-          echo "$RAW" | jq -e '.issues and (.issues|type=="array")' >/tmp/issues.json
-
+          echo "$RAW" | jq -e '.issues and (.issues|type=="array")' > /tmp/issues.json
           COUNT=$(jq '.issues|length' /tmp/issues.json)
-          echo "count=$COUNT" >> $GITHUB_OUTPUT
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
           echo "Proposed issues: $COUNT"
 
-      # 3) Preview or create issues depending on dry_run
       - name: Handle issues (dry run or create)
+        if: ${{ steps.openai.outputs.count != '0' }}
         uses: actions/github-script@v7
         env:
           DRY_RUN: ${{ github.event.inputs.dry_run }}
         with:
           script: |
             const fs = require('fs');
-            const dryRun = process.env.DRY_RUN === 'true';
+            const core = require('@actions/core');
+            const dryRun = (process.env.DRY_RUN || 'true') === 'true';
             const data = JSON.parse(fs.readFileSync('/tmp/issues.json', 'utf8'));
             const items = data.issues || [];
 
-            // Summarise proposed issues
-            let summary = `### Proposed Issues (${items.length})\n`;
+            let summary = `### Proposed Issues (${items.length})\\n`;
             for (const [i, it] of items.entries()) {
-              summary += `\n#### ${i + 1}. ${it.title_british}\n`;
-              summary += `${it.body_british?.slice(0, 300) || ''}`;
-              summary += `\n**Labels:** ${(it.labels || []).join(', ') || '(none)'}\n`;
-              summary += `**Assignees:** ${(it.assignees || []).join(', ') || '(none)'}\n`;
+              summary += `\\n#### ${i + 1}. ${it.title_british}\\n`;
+              summary += `${(it.body_british || '').slice(0, 500)}\\n`;
+              summary += `**Labels:** ${(it.labels || []).join(', ') || '(none)'}\\n`;
+              summary += `**Assignees:** ${(it.assignees || []).join(', ') || '(none)'}\\n`;
             }
 
             if (dryRun) {
-              core.info("Dry run mode — no issues will be created.");
-              core.summary
-                .addHeading('Dry Run Summary')
-                .addRaw(summary)
-                .write();
+              core.info('Dry run mode — no issues will be created.');
+              await core.summary.addHeading('Dry Run Summary').addRaw(summary).write();
               return;
             }
 
-            // Fetch open issues to deduplicate
+            // Get existing open issues to avoid duplicates
             const existing = await github.paginate(github.rest.issues.listForRepo, {
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -176,8 +160,8 @@ TXT
               created++;
             }
 
-            core.summary
-              .addHeading('Issue creation summary')
-              .addRaw(`Created: ${created} issue(s).\n`)
+            await core.summary
+              .addHeading('Issue Creation Summary')
+              .addRaw(`Created: ${created} issue(s).\\n`)
               .addRaw(summary)
               .write();
