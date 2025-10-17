@@ -1,19 +1,23 @@
 name: Dependabot auto-merge
+
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
-
-permissions:
-  contents: write
-  pull-requests: write
+    types: [opened, synchronize, reopened]
 
 jobs:
-  automerge:
+  auto-merge:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+
     steps:
-      - name: Enable auto-merge for Dependabot PRs
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          merge-method: squash
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Install dependencies
+      run: |
+        echo "Install dependencies here"
+      
+    - name: Run auto-merge
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Run your auto-merge command here"
