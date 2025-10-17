@@ -18,6 +18,12 @@ Architecture as Code embraces the full system ecosystem through a holistic lens.
 
 A practical example is an application programming interface change automatically propagating through the architecture – from security configurations to documentation – all defined as code.
 
+### Historical lessons from model-driven development
+
+Model-Driven Development (MDD) in the early 2000s promised that platform-neutral models could generate complete systems, yet experience showed persistent gaps between models and running software. Selic (2003) documents how brittle round-trip engineering, tool lock-in, and ambiguous semantics caused MDD artefacts to fall out of sync as soon as teams customised generated code or adopted new frameworks. Architecture as Code internalises those lessons by favouring lightweight textual models, explicit version control, and continuous validation so that the architecture specification evolves alongside implementation rather than trying to replace it.
+
+Modern MBSE-aligned tooling such as Structurizr focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that avoids the historical pitfalls identified by Selic (2003).
+
 ## Implementation timeline for Architecture as Code
 
 The foundational principles manifest through a staged adoption journey. Establishing declarative definitions, codifying guardrails in version control, and automating validation require coordinated investment across architecture, platform, and governance teams.
