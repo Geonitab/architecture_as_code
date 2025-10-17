@@ -6,14 +6,11 @@ on:
       source_text:
         description: "Paste your backlog text here (free-form)."
         required: true
-        default: |
-          - Bug: users cannot reset password
-          - Feature: add dark mode
-          - Docs: clarify SSO steps
+        default: ""
       dry_run:
         description: "Preview only (true/false). Default: true"
         required: true
-        default: "true"
+        default: ""
 
 permissions:
   contents: read
@@ -42,15 +39,15 @@ jobs:
           echo "Preview of first lines:"
           head -n 20 /tmp/source.txt || true
 
-      - name: Transform to British English via OpenAI
+      - name: Transform to British English via OpenAI (robust)
         id: openai
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
 
-          # 1) Write instruction text to file with 10-space indentation
-          cat > /tmp/instruct.txt <<'EOF'
+          # 1) Write instruction text to file with 10-space indentation (including EOF)
+          cat > /tmp/instruct.txt << '          EOF'
           You are an expert product editor who creates concise GitHub issues in British English.
 
           INPUT: One free-form text that may contain headings, bullet points, numbered lists, or paragraphs describing multiple work items.
@@ -78,11 +75,9 @@ jobs:
 
           # 2) Convert instruction file to safe JSON string
           INSTRUCT=$(jq -Rs '.' /tmp/instruct.txt)
-
-          # 3) Read the user-provided text
           CONTENT=$(cat /tmp/source.txt)
 
-          # 4) Build JSON request safely with jq
+          # 3) Build request JSON safely
           REQUEST=$(jq -n --arg instruct "$INSTRUCT" --arg content "$CONTENT" '
             {
               model: "gpt-4o-mini",
@@ -93,16 +88,56 @@ jobs:
               ]
             }')
 
-          # 5) Call the OpenAI Responses API
-          RESPONSE=$(curl -sS https://api.openai.com/v1/responses \
+          echo "::group::OpenAI API Request"
+          echo "$REQUEST" | jq .
+          echo "::endgroup::"
+
+          # 4) Call the API and capture HTTP status
+          HTTP_CODE=$(mktemp)
+          curl -sS https://api.openai.com/v1/responses \
             -H "Authorization: Bearer $OPENAI_API_KEY" \
             -H "Content-Type: application/json" \
-            -d "$REQUEST")
+            -o /tmp/response.json \
+            -w "%{http_code}" \
+            -d "$REQUEST" > "$HTTP_CODE" || true
 
-          RAW=$(echo "$RESPONSE" | jq -r '.output_text // .output[0].content[0].text // empty')
+          STATUS=$(cat "$HTTP_CODE" || echo "000")
+          echo "::group::OpenAI API Response"
+          cat /tmp/response.json || true
+          echo
+          echo "HTTP status: $STATUS"
+          echo "::endgroup::"
+
+          if [ "$STATUS" != "200" ]; then
+            echo "Non-200 from OpenAI: $STATUS"
+            if jq -e . >/dev/null 2>&1 < /tmp/response.json; then
+              jq . /tmp/response.json
+            else
+              cat /tmp/response.json
+            fi
+            exit 1
+          fi
+
+          jq -e . >/dev/null < /tmp/response.json || { echo "Response not valid JSON"; exit 1; }
+
+          if jq -e '.error' >/dev/null < /tmp/response.json; then
+            echo "OpenAI returned an error object:"
+            jq .error /tmp/response.json
+            exit 1
+          fi
+
+          RAW=$(
+            jq -r '
+              .output_text //
+              (.output[]?.content[]? | select(.text != null) | .text) //
+              (.content[]? | select(.text != null) | .text) //
+              empty
+            ' /tmp/response.json
+          )
+
           if [ -z "$RAW" ]; then
-            echo "Model returned empty output"
-            echo "$RESPONSE"
+            echo "Model returned empty output_text/content."
+            jq . /tmp/response.json || true
             exit 1
           fi
 
@@ -139,7 +174,6 @@ jobs:
               return;
             }
 
-            // Fetch open issues to avoid duplicates
             const existing = await github.paginate(github.rest.issues.listForRepo, {
               owner: context.repo.owner,
               repo: context.repo.repo,
