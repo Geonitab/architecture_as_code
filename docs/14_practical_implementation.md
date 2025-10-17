@@ -1,6 +1,6 @@
 # Architecture as Code in Practice
 
-Architecture as Code succeeds when organisational ambitions, engineering discipline, and operating constraints are brought together in a single delivery motion. Practical adoption requires a structured roadmap, supportive tooling, and a culture that treats infrastructure change as a product in its own right.
+Architecture as Code succeeds when teams bring organisational ambitions, engineering discipline, and operating constraints together in a single delivery motion. Practical adoption requires a structured roadmap, supportive tooling, and a culture that treats infrastructure change as a product in its own right.
 
 Prioritising clarity is crucial. Figure 14.1 highlights the operating model used by many platform teams to combine architecture governance, automation, and stakeholder alignment. It serves as a quick reference for the foundational capabilities that underpin every implementation.
 
@@ -31,13 +31,13 @@ Figure 14.4 captures the enablement flywheel that keeps Architecture as Code pro
 
 Selecting the Architecture as Code toolchain is about more than feature parity. Decision frameworks must evaluate community support, managed service availability, licence terms, and the alignment of vendor roadmaps with enterprise objectives. Terraform remains the most common multi-cloud choice, while native cloud templates such as AWS CloudFormation or Azure Resource Manager may complement platform-specific needs.
 
-Integration with source control, testing platforms, secrets management, and observability tooling must be designed intentionally. Wherever possible, integration patterns should mirror the workflows that software delivery teams already understand so that infrastructure changes inherit established review and deployment practices.
+Teams must intentionally design integration with source control, testing platforms, secrets management, and observability tooling. Wherever possible, integration patterns should mirror the workflows that software delivery teams already understand so that infrastructure changes inherit established review and deployment practices.
 
 ## Production readiness and operational excellence
 
 Security-first thinking embeds identity, secrets handling, and audit controls into every artefact. Automated scanning pipelines and clearly defined exception processes ensure that compliance teams receive the evidence they need without slowing down delivery.
 
-High-availability design translates into codified redundancy, automated failover, and disaster recovery testing. Infrastructure definitions must handle dependency failures gracefully and allow rapid restoration of service. Observability practices should track both the execution of pipelines and the health of the resulting environments so that drift and regressions can be corrected quickly.
+High-availability design translates into codified redundancy, automated failover, and disaster recovery testing. Infrastructure definitions must handle dependency failures gracefully and allow rapid restoration of service. Observability practices should track both the execution of pipelines and the health of the resulting environments so that teams can correct drift and regressions quickly.
 
 ## Common challenges and troubleshooting
 
