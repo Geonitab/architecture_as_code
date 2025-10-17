@@ -58,6 +58,26 @@ These issues capture verification work to ensure the manuscript accurately repre
     - Labels: `documentation`, `security`
     - Focus: IaC state management security guidance verification
 
+11. **[issue_11_remove_redundant_qualifiers_and_hedging_language.md](./issue_11_remove_redundant_qualifiers_and_hedging_language.md)**
+    - Labels: `documentation`
+    - Focus: Remove redundant qualifiers and hedging language throughout the documentation
+
+12. **[issue_12_replace_nominalisations_with_active_verbs.md](./issue_12_replace_nominalisations_with_active_verbs.md)**
+    - Labels: `documentation`
+    - Focus: Replace nominalisations with active verbs to improve clarity and ownership
+
+13. **[issue_13_reduce_prepositional_phrase_stacking.md](./issue_13_reduce_prepositional_phrase_stacking.md)**
+    - Labels: `documentation`
+    - Focus: Reduce stacked prepositional phrases to streamline sentence structure
+
+14. **[issue_14_shift_passive_voice_to_active_construction.md](./issue_14_shift_passive_voice_to_active_construction.md)**
+    - Labels: `documentation`
+    - Focus: Convert passive voice constructions into active statements with clear actors
+
+15. **[issue_15_split_long_compound_sentences.md](./issue_15_split_long_compound_sentences.md)**
+    - Labels: `documentation`
+    - Focus: Split long compound sentences to improve readability and pacing
+
 ## Structure
 
 Each issue file follows a consistent format:
