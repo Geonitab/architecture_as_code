@@ -3,6 +3,7 @@ name: Dependabot auto-merge
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  workflow_dispatch:
 
 jobs:
   auto-merge:
