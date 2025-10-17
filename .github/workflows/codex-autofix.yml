@@ -1,0 +1,108 @@
+name: Codex auto-fix on PR updates
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  assign_and_codex:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout PR head branch (writes allowed)
+        uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number }}/head
+          persist-credentials: true
+
+      - name: Prefetch base & head refs
+        run: |
+          git fetch --no-tags origin \
+            ${{ github.event.pull_request.base.ref }} \
+            +refs/pull/${{ github.event.pull_request.number }}/head
+
+      - name: Detect linked issues
+        id: linked
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          q='query($owner:String!,$repo:String!,$number:Int!){
+            repository(owner:$owner,name:$repo){
+              pullRequest(number:$number){
+                closingIssuesReferences(first:10){nodes{number title}}
+              }
+            }
+          }'
+          data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO" -F number="$PR_NUMBER")
+          nums=$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes|map(.number)|join(",")')
+          if [[ -n "$nums" ]]; then
+            echo "has=true" >> $GITHUB_OUTPUT
+            echo "numbers=$nums" >> $GITHUB_OUTPUT
+          else
+            echo "has=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Skip if PR has no linked issues
+        if: steps.linked.outputs.has != 'true'
+        run: echo "No linked issues → skipping Codex run."
+
+      - name: Fetch first linked issue
+        if: steps.linked.outputs.has == 'true'
+        id: issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          first=$(echo "${{ steps.linked.outputs.numbers }}" | awk -F',' '{print $1}')
+          issue_json=$(gh api repos/$OWNER/$REPO/issues/$first)
+          echo "num=$first" >> $GITHUB_OUTPUT
+          echo "title=$(echo "$issue_json" | jq -r .title)" >> $GITHUB_OUTPUT
+          {
+            echo "body<<EOF"
+            echo "$(echo "$issue_json" | jq -r .body)"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Run Codex task on PR head (writes enabled)
+        if: steps.linked.outputs.has == 'true'
+        id: run_codex
+        uses: openai/codex-action@v1
+        timeout-minutes: 10
+        continue-on-error: true
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt: |
+            You are Codex working directly on the PR's head branch (#${{ github.event.pull_request.number }}).
+            The PR is linked to issue(s) #${{ steps.linked.outputs.numbers }}.
+            Make the necessary code edits directly in the workspace to resolve those issues.
+            Update tests/docs if needed, then print a concise summary.
+
+            Context:
+            - Base SHA: ${{ github.event.pull_request.base.sha }}
+            - Head SHA: ${{ github.event.pull_request.head.sha }}
+
+      - name: Commit & push Codex changes
+        if: steps.linked.outputs.has == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Codex auto-fix for issue(s) #${{ steps.linked.outputs.numbers }}"
+            HEAD_REF="${{ github.head_ref }}"
+            [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
+            git push origin "$HEAD_REF"
+            echo "::notice::Committed and pushed Codex changes to ${HEAD_REF}"
+          else
+            echo "::notice::No file changes to commit."
+          fi
