@@ -18,6 +18,22 @@ Architecture as Code embraces the full system ecosystem through a holistic lens.
 
 A practical example is an application programming interface change automatically propagating through the architecture – from security configurations to documentation – all defined as code.
 
+## Implementation timeline for Architecture as Code
+
+The foundational principles manifest through a staged adoption journey. Establishing declarative definitions, codifying guardrails in version control, and automating validation require coordinated investment across architecture, platform, and governance teams.
+
+![Architecture as Code implementation timeline](images/diagram_05_gantt_timeline.png)
+
+The implementation roadmap introduces the foundations long before automation is rolled out across the estate. Discovery, codification, and enablement run in parallel so that by the time Architecture as Code reaches production, every pillar in this chapter is already embedded in day-to-day delivery.
+
+| Phase | Duration | Primary focus | Principles reinforced |
+|-------|----------|---------------|-----------------------|
+| **Foundation** | Weeks 1–8 | Evaluate tools, train the core team, structure repositories, and codify the baseline architecture | Declarative architecture definition, holistic codification |
+| **Development** | Weeks 6–20 | Develop reusable templates, implement testing frameworks, stand up CI/CD pipelines, and validate security controls | Immutable architecture patterns, testability at the architecture level, automation guardrails |
+| **Production** | Weeks 18–32 | Pilot immutable deployments, refine based on feedback, expand monitoring, and complete knowledge transfer | Documentation as code, continuous reconciliation, organisation-wide adoption |
+
+Organisations can adjust exact timing to match their scale and regulatory obligations, but maintaining this sequencing prevents downstream teams from adopting automation without a provable architectural baseline. The timeline also clarifies ownership: architecture leaders deliver the canonical models, platform teams build the automation layers, and governance teams monitor adherence once production rollout begins.
+
 ## Immutable architecture patterns
 
 The principle of immutable architecture keeps the entire system architecture under control through immutable components. Rather than modifying existing parts, new versions are created that replace older ones at every level.
