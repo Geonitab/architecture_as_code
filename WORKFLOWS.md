@@ -4,6 +4,23 @@
 
 This repository uses a unified GitHub Actions workflow to handle all aspects of the book publication and release process. The unified workflow replaces multiple separate workflows with a single, optimized solution that supports both traditional and Docker-based builds.
 
+### Workflow catalogue at a glance
+
+| Workflow | File | Purpose | Typical triggers | Key outputs / actions |
+|----------|------|---------|------------------|------------------------|
+| Unified Build & Release | `.github/workflows/unified-build-release.yml` | Builds every deliverable (book formats, presentations, whitepapers, website) in one pass | Push or pull request touching book sources, scripts, or workflow; manual dispatch | Publishes multi-format artefacts, optional GitHub release |
+| Build MkDocs Site | `.github/workflows/build-mkdocs.yml` | Builds and deploys the MkDocs site to `gh-pages` | Push or pull request affecting `docs/**` or `mkdocs.yml`; manual dispatch | Updates the documentation site via GitHub Pages |
+| Generate Presentations | `.github/workflows/generate-presentations.yml` | Regenerates presentation materials from the manuscript | Push or pull request touching chapter markdown or the generator script; manual dispatch | Uploads PPTX deck, outline, and helper scripts as artefacts |
+| Generate Whitepapers | `.github/workflows/generate-whitepapers.yml` | Produces standalone HTML whitepapers per chapter | Push or pull request touching chapter markdown or the generator script; manual dispatch | Uploads individual HTML files and a combined archive |
+| Content Validation Tests | `.github/workflows/content-validation.yml` | Runs quality checks over generated content | Push or pull request touching docs, tests, or `generate_book.py`; manual dispatch | Pytest reports and a PR summary comment |
+| Validate Heading Capitalisation | `.github/workflows/validate-heading-capitalization.yml` | Guard-rail to keep headings in sentence case | Push or pull request touching `docs/**/*.md`; manual dispatch | Fails fast if headings break the style guide |
+| Validate Figure Captions | `.github/workflows/validate-figure-captions.yml` | Ensures figure captions follow the house style | Push or pull request touching `docs/**/*.md`; manual dispatch | Fails fast if captions fall outside the expected pattern |
+| Auto draft PR from issue + Codex auto-fix | `.github/workflows/assign-codex.yml` | Seeds a draft PR for new issues and re-runs Codex on active PRs | Issue opened/reopened; pull request opened, reopened, synchronised, or marked ready | Keeps the `codex/issue-*` branches in sync and comments with Codex results |
+| Cleanup Old Branches | `.github/workflows/clean-old-braches.yml` | Prunes remote branches that have gone stale | Scheduled daily run; manual dispatch | Deletes remote branches (excluding `main`/`gh-pages`) older than two days |
+| Close conflicted pull requests | `.github/workflows/close-conflicted-pull-requests.yml` | Helps triage conflicted or empty PRs | Manual dispatch | Closes conflicted/empty PRs and opens explanatory issues |
+| Create GitHub Issues from Markdown | `.github/workflows/create-issues.yml` | Raises issues from templates under `.github/scripts` | Manual dispatch | Uses `.github/scripts/create_issues.py` to file issues against the repo |
+| Dependabot auto-merge | `.github/workflows/dependabot-automerge.yml` | Scaffold for automated Dependabot merges | Dependabot pull requests; manual dispatch | Placeholder step printing instructions for running the merge logic |
+
 ## Workflow Files
 
 ### 🎯 **Unified Build & Release (`unified-build-release.yml`) - RECOMMENDED**
@@ -127,34 +144,15 @@ All functionality from these workflows is now available in the unified workflow 
 | **Selective Building** | ✅ | ❌ | ❌ | ❌ |
 | **Duration** | 60-90min | ~15min | ~15min | ~5min |
 
-### 🤖 AI Agent Playbook Workflows
+### 🔧 Supporting automation and maintenance workflows
 
-To operationalize the virtual team defined in `docs/20_ai_agent_team.md`, dedicated reusable workflows are available for each agent role. They can be triggered manually (`workflow_dispatch`) or invoked from other workflows (`workflow_call`) to generate role-specific action plans that are published to the step summary and returned as workflow outputs.
+The repository also relies on a handful of operational workflows that keep day-to-day housekeeping on track:
 
-| Workflow | Role focus | Primary responsibilities captured |
-|----------|------------|-----------------------------------|
-| `agent-project-manager.yml` | Project Manager | Sprintmål, koordination och rapportering |
-| `agent-architect.yml` | Architect | Arkitekturprinciper, diagram och riskgranskning |
-| `agent-requirements-analyst.yml` | Requirements Analyst | Kravinsamling, backloggstruktur och spårbarhet |
-| `agent-designer.yml` | Designer | UX/UI-iterationer, prototyper och designbeslut |
-| `agent-developer.yml` | Developer | Implementation, tester och tekniska risker |
-| `agent-quality-control.yml` | Quality Control | Teststrategi, kvalitetsmått och rapportering |
-| `agent-editor.yml` | Editor | Dokumentationsuppdateringar och publicering |
-| `agent-graphic-designer.yml` | Graphic Designer | Visuella resurser, format och brand-efterlevnad |
-| `architect-bot.yml` | Architect bot PR creator | Skapar automatiskt ett arkitektur-svar i en pull request när en issue märks `architecture` |
-
-Each workflow accepts three text-based inputs (`objective` plus two optional context fields tailored to the role) and renders a structured checklist aligned with the responsibilities and ceremonies described in the AI agent team playbook. This makes it easy to orchestrate or audit agent contributions directly from GitHub Actions.
-
-To launch an agent manually from the repository root, supply the inputs when invoking the workflow with the GitHub CLI:
-
-```bash
-gh workflow run agent-architect.yml \
-  -f objective="Kartlägg integrationsmönster" \
-  -f architecture_context="Fokus på säkerhet och dataflöden" \
-  -f collaboration_notes="Synka med Developer om latency" 
-```
-
-Omit optional fields to fall back on the default guidance defined in the workflow.
+- **`assign-codex.yml`** – When an issue is opened or reopened the workflow spins up (or reuses) a `codex/issue-*` branch, opens a draft PR, and immediately runs the Codex assistant so that every issue starts life with a working draft. It also re-invokes Codex whenever a linked PR is updated, keeping the generated fixes fresh.
+- **`clean-old-braches.yml`** – Runs nightly to prune remote branches whose last commit is older than forty-eight hours, excluding `main` and `gh-pages`. Use the manual dispatch if you need an ad-hoc sweep.
+- **`close-conflicted-pull-requests.yml`** – A manual triage tool that inspects open PRs, closes those that are conflicted or contain no file changes, and raises an explanatory issue for each closure so context is not lost.
+- **`create-issues.yml`** – Exposes a manual button that executes `.github/scripts/create_issues.py`, allowing bulk issue creation from curated markdown catalogues under source control.
+- **`dependabot-automerge.yml`** – A starter workflow intended for automating Dependabot PR merges. It currently installs dependencies and echoes placeholders, ready for a future command that performs the actual merge step.
 
 ## Release Types
 
