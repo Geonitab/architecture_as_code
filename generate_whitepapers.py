@@ -15,8 +15,11 @@ It should never modify any files in the docs/ directory.
 import os
 import sys
 import glob
+import math
 import re
+import textwrap
 from collections import OrderedDict
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -31,6 +34,8 @@ def read_chapter_content(chapter_file):
         if len(content.strip()) < 10:
             print(f"Warning: {chapter_file} appears to be empty or too short")
             return None
+        
+        word_count = len(re.findall(r'\w+', content))
         
         # Extract chapter title (first h1)
         lines = content.split('\n')
@@ -116,7 +121,8 @@ def read_chapter_content(chapter_file):
             'title': title,
             'diagram_path': diagram_path,
             'condensed_content': condensed_content,
-            'section_headers': section_headers[:6]  # Limit to 6 main sections
+            'section_headers': section_headers[:6],  # Limit to 6 main sections
+            'word_count': word_count
         }
     
     except Exception as e:
@@ -175,11 +181,15 @@ def get_chapter_mapping():
         if not label:
             label = f"Chapter {index}"
 
-        mapping[filename] = label
+        mapping[filename] = {
+            "label": label,
+            "title": chapter.get("title") or label,
+            "area": chapter.get("area") or "Architecture as Code"
+        }
 
     return mapping
 
-def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
+def create_whitepaper_html(chapter_data, chapter_meta, book_overview):
     """Create HTML content for a whitepaper."""
     
     # Read the template
@@ -191,54 +201,80 @@ def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
     except FileNotFoundError:
         print(f"Template not found at {template_path}")
         return None
+
+    if isinstance(chapter_meta, dict):
+        chapter_label = chapter_meta.get("label") or "Chapter"
+        chapter_area = chapter_meta.get("area") or "Architecture as Code"
+        mapped_title = chapter_meta.get("title") or chapter_data['title']
+    else:
+        chapter_label = str(chapter_meta)
+        chapter_area = "Architecture as Code"
+        mapped_title = chapter_data['title']
+    
+    page_title = f"{chapter_label} – {chapter_data['title']}"
+    subtitle_text = f'Key insights from {chapter_label} of "{book_overview["title"]}"'
+    author_text = "Architecture as Code Editorial Team"
+    published_date = datetime.now().strftime("%d %B %Y")
+    if published_date.startswith("0"):
+        published_date = published_date[1:]
+    reading_minutes = chapter_data.get('word_count') or 0
+    if reading_minutes:
+        reading_minutes = max(3, math.ceil(reading_minutes / 220))
+    else:
+        reading_minutes = 3
+    reading_label = f"{reading_minutes} minute{'s' if reading_minutes != 1 else ''}"
+    version_text = "1.0"
     
     # Prepare content sections
     diagram_html = ""
     if chapter_data['diagram_path']:
         # Adjust path for whitepaper directory
         diagram_src = f"../docs/{chapter_data['diagram_path']}"
-        diagram_html = f'''
-            <div style="text-align: center; margin: 30px 0;">
-                <img src="{diagram_src}" alt="Chapter diagram for {chapter_data['title']}" style="max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;">
-            </div>
-        '''
+        diagram_html = (
+            "            <div style=\"text-align: center; margin: 30px 0;\">\n"
+            f"                <img src=\"{diagram_src}\" alt=\"Chapter diagram for {chapter_data['title']}\" style=\"max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;\">\n"
+            "            </div>"
+        )
     
     # Create condensed content sections
-    content_sections = []
-    for paragraph in chapter_data['condensed_content']:
-        content_sections.append(f"            <p>{paragraph}</p>")
+    content_sections = "\n".join(
+        f"            <p>{paragraph}</p>"
+        for paragraph in chapter_data['condensed_content']
+    )
     
     # Create section overview
     section_overview = ""
     if chapter_data['section_headers']:
-        section_list = "".join([f"                <li>{header}</li>" for header in chapter_data['section_headers']])
-        section_overview = f'''
-            <h2>Main topics covered</h2>
-            <ul>
-{section_list}
-            </ul>
-        '''
+        section_list = "\n".join(
+            f"                <li>{header}</li>"
+            for header in chapter_data['section_headers']
+        )
+        section_overview = (
+            "            <h2>Primary topics explored</h2>\n"
+            "            <ul>\n"
+            f"{section_list}\n"
+            "            </ul>"
+        )
     
     # Replace the title and content in template
     html_output = template
-    
-    # Replace title
-    html_output = html_output.replace(
-        'Modernisation of IT infrastructure through code-based solutions',
-        chapter_data['title']
-    )
-    
-    # Replace subtitle
-    html_output = html_output.replace(
-        'A strategic guide for organisations implementing Infrastructure as Code',
-        f'Whitepaper from {chapter_ref} of the book "Architecture as Code"'
-    )
+
+    html_output = html_output.replace('{{PAGE_TITLE}}', page_title)
+    html_output = html_output.replace('{{TITLE}}', chapter_data['title'])
+    html_output = html_output.replace('{{SUBTITLE}}', subtitle_text)
+    html_output = html_output.replace('{{CATEGORY}}', chapter_area)
+    html_output = html_output.replace('{{AUTHOR}}', author_text)
+    html_output = html_output.replace('{{DATE}}', published_date)
+    html_output = html_output.replace('{{VERSION}}', version_text)
+    html_output = html_output.replace('{{READING_TIME}}', reading_label)
+    html_output = html_output.replace('{{MAPPED_TITLE}}', mapped_title)
+    html_output = html_output.replace('{{CHAPTER_LABEL}}', chapter_label)
     
     # Create the new content sections
     new_content = f'''        <!-- Book Overview -->
         <section>
-            <h1>About the book "Architecture as Code"</h1>
-            <p class="lead"><strong>{book_overview['title']}</strong> - {book_overview['subtitle']}</p>
+            <h1>About the book "{book_overview['title']}"</h1>
+            <p class="lead"><strong>{book_overview['title']}</strong> – {book_overview['subtitle']}</p>
             
             <p>{book_overview['description']}</p>
             
@@ -250,30 +286,28 @@ def create_whitepaper_html(chapter_data, chapter_ref, book_overview):
 
         <!-- Chapter Content -->
         <section>
-            <h1>Chapter Overview: {chapter_data['title']}</h1>
-{diagram_html}
+            <h1>{chapter_label}: {chapter_data['title']}</h1>
+{diagram_html if diagram_html else ""}
             
-{"".join(content_sections)}
+{content_sections}
             
 {section_overview}
         </section>
 
         <!-- Call to Action -->
         <section>
-            <h1>Read More</h1>
+            <h1>Continue Your Journey</h1>
             <div class="callout callout-success">
-                <div class="callout-title">Complete Content</div>
-                <p><strong>Read more in {chapter_ref} of the book "Architecture as Code"</strong> for in-depth explanations, practical examples, and detailed implementation guides.</p>
+                <div class="callout-title">Complete Chapter</div>
+                <p><strong>Read {chapter_label} – "{chapter_data['title']}" in "{book_overview['title']}"</strong> for detailed explanations, practical examples, and implementation patterns.</p>
             </div>
             
-            <p>The book contains a total of {book_overview['chapters_count']} chapters covering all aspects of Infrastructure as Code for organisations, from fundamental principles to advanced implementation strategies.</p>
+            <p>The full manuscript explores {book_overview['chapters_count']} chapters, positioning this whitepaper within the {chapter_area.lower()} focus of the programme.</p>
             
-            <p><strong>Other relevant chapters:</strong> Explore the entire book content for a complete understanding of Infrastructure as Code implementations.</p>
+            <p><strong>Explore adjacent chapters:</strong> The surrounding sections expand upon the themes introduced here and provide complementary techniques.</p>
         </section>'''
     
     # Replace the existing content sections
-    import re
-    
     # Find and replace everything from "Executive Summary" to just before "Footer"
     pattern = r'(<!-- Executive Summary -->.*?)(<!-- Footer -->)'
     match = re.search(pattern, html_output, re.DOTALL)
@@ -344,11 +378,11 @@ def generate_whitepapers(release_mode=False):
             error_files.append((filename, "Failed to read chapter content"))
             continue
         
-        # Get chapter reference
-        chapter_ref = chapter_mapping[filename]
+        # Get chapter metadata
+        chapter_meta = chapter_mapping[filename]
         
         # Generate whitepaper HTML
-        html_content = create_whitepaper_html(chapter_data, chapter_ref, book_overview)
+        html_content = create_whitepaper_html(chapter_data, chapter_meta, book_overview)
         if not html_content:
             print(f"Failed to generate HTML for {filename}, skipping...")
             error_files.append((filename, "Failed to generate HTML"))
