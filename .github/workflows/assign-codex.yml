@@ -1,8 +1,9 @@
-name: Auto create draft PR from new or reopened issue
+name: Auto create draft PRs for issues without PRs
 
 on:
   issues:
     types: [opened, reopened]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,12 +14,9 @@ jobs:
   create_or_reuse_draft_pr:
     runs-on: ubuntu-latest
 
-    # Sätt GH_TOKEN på jobbnivå = färre uttryck inuti stegen
     env:
       GH_REPO: ${{ github.repository }}
       GH_TOKEN: ${{ secrets.BOT_ISSUE }}
-      ISSUE_NUMBER: ${{ github.event.issue.number }}
-      ISSUE_TITLE: ${{ github.event.issue.title }}
 
     steps:
       - name: Checkout (no Actions bot creds)
@@ -27,76 +25,83 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: Configure git as PAT owner
+      - name: Configure git as BOT_ISSUE user
         run: |
           set -euo pipefail
-          # Hämta namn/e-post för PAT-ägaren (kräver user:email scope för e-post)
           NAME=$(gh api user --jq .name)
           EMAIL=$(gh api user/emails --jq 'map(select(.primary==true))[0].email' || true)
           git config user.name "${NAME:-codex-bot}"
           git config user.email "${EMAIL:-codex-bot@example.invalid}"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git"
 
       - name: Determine default branch
-        id: def
         run: |
           set -euo pipefail
           DEFAULT_BRANCH=$(gh repo view "$GH_REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
           echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> "$GITHUB_ENV"
 
-      - name: Prepare remote with PAT
+      - name: Build issue list (single issue or all open)
+        id: issues
         run: |
           set -euo pipefail
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git"
-
-      - name: Find or create branch
-        id: branch
-        run: |
-          set -euo pipefail
-          EXISTING=$(git ls-remote --heads origin "refs/heads/codex/issue-${ISSUE_NUMBER}-*" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
-          if [ -n "$EXISTING" ]; then
-            BRANCH="$EXISTING"
-            git fetch origin "$BRANCH" --depth=1
-            git switch "$BRANCH"
+          # Om detta triggas via issue-event
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            echo "${{ github.event.issue.number }}" > issues.txt
           else
-            SLUG=$(printf '%s' "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
-            BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
-            git fetch origin "$DEFAULT_BRANCH" --depth=1
-            git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
-            git commit --allow-empty -m "Init draft for issue #${ISSUE_NUMBER}"
-            git push --set-upstream origin "$BRANCH"
+            # Vid manuell körning – hämta alla öppna issues
+            gh issue list --repo "$GH_REPO" --state open --json number --jq '.[].number' > issues.txt
           fi
-          echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
+          echo "Issues to process:"
+          cat issues.txt
 
-      - name: Create or reuse draft PR (as BOT_ISSUE)
-        id: pr
+      - name: Process issues (create PRs where missing)
         run: |
           set -euo pipefail
-          if gh pr view "$BRANCH" --repo "$GH_REPO" >/dev/null 2>&1; then
-            PR_JSON=$(gh pr view "$BRANCH" --json number,url --repo "$GH_REPO")
-          else
-            # Obs: --body får radbrytningar via \n
-            gh pr create \
+
+          while read -r ISSUE_NUMBER; do
+            echo "::group::Processing issue #$ISSUE_NUMBER"
+
+            TITLE=$(gh issue view "$ISSUE_NUMBER" --repo "$GH_REPO" --json title --jq .title)
+            BODY=$(gh issue view "$ISSUE_NUMBER" --repo "$GH_REPO" --json body --jq .body)
+
+            # Kontrollera om PR redan finns kopplad till detta issue
+            LINKED_PR=$(gh pr list --repo "$GH_REPO" --state all --search "Closes #${ISSUE_NUMBER}" --json number --jq '.[].number' || true)
+            if [ -n "$LINKED_PR" ]; then
+              echo "PR already exists for issue #$ISSUE_NUMBER (#$LINKED_PR) — skipping."
+              echo "::endgroup::"
+              continue
+            fi
+
+            # Annars skapa eller återanvänd branch
+            EXISTING=$(git ls-remote --heads origin "refs/heads/codex/issue-${ISSUE_NUMBER}-*" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
+            if [ -n "$EXISTING" ]; then
+              BRANCH="$EXISTING"
+              git fetch origin "$BRANCH" --depth=1
+              git switch "$BRANCH"
+            else
+              SLUG=$(printf '%s' "$TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
+              BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
+              git fetch origin "$DEFAULT_BRANCH" --depth=1
+              git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
+              git commit --allow-empty -m "Init draft for issue #${ISSUE_NUMBER}"
+              git push --set-upstream origin "$BRANCH"
+            fi
+
+            # Skapa PR (om inte redan finns)
+            PR_URL=$(gh pr create \
               --base "$DEFAULT_BRANCH" \
               --head "$BRANCH" \
-              --title "Draft: Issue #$ISSUE_NUMBER – $ISSUE_TITLE" \
-              --body "This draft PR was auto-created for Issue #$ISSUE_NUMBER.\n\nCloses #$ISSUE_NUMBER" \
+              --title "Draft: Issue #$ISSUE_NUMBER – $TITLE" \
+              --body "This draft PR was auto-created for Issue #$ISSUE_NUMBER.
+
+Closes #$ISSUE_NUMBER" \
               --draft \
-              --repo "$GH_REPO"
-            PR_JSON=$(gh pr view "$BRANCH" --json number,url --repo "$GH_REPO")
-          fi
-          echo "$PR_JSON" | jq -r '.number' > pr_number.txt
-          echo "$PR_JSON" | jq -r '.url' > pr_url.txt
-          echo "PR_NUMBER=$(cat pr_number.txt)" >> "$GITHUB_ENV"
-          echo "PR_URL=$(cat pr_url.txt)" >> "$GITHUB_ENV"
+              --repo "$GH_REPO" || true)
 
-      - name: Comment on PR
-        run: |
-          set -euo pipefail
-          gh api repos/$GH_REPO/issues/$PR_NUMBER/comments \
-            -f body='@codex - Fix the issue using this draft PR.'
+            if [ -n "$PR_URL" ]; then
+              echo "Created draft PR for issue #$ISSUE_NUMBER → $PR_URL"
+              gh issue comment "$ISSUE_NUMBER" --repo "$GH_REPO" --body "Draft PR created for this issue: $PR_URL"
+            fi
 
-      - name: Comment in original issue
-        run: |
-          set -euo pipefail
-          gh api repos/$GH_REPO/issues/$ISSUE_NUMBER/comments \
-            -f body="A draft PR has been created or reused for this issue: ${PR_URL}\n\n@codex - please take a look."
+            echo "::endgroup::"
+          done < issues.txt
