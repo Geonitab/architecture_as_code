@@ -5,18 +5,16 @@ on:
     types: [opened, reopened]
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
-  workflow_dispatch:
 
-# Superset of permissions needed by both jobs
 permissions:
-  contents: write        # create branch/commit/push (issue job) + read for PR job
-  pull-requests: write   # create PR + comment
-  issues: write          # comment on issues and read linked issues
+  contents: write
+  pull-requests: write
+  issues: write
 
 jobs:
-  # -------------------------------
-  # Job A: From new/reopened issue → create or reuse a draft PR
-  # -------------------------------
+  # ------------------------------------------------------------
+  # Job A – From new or reopened issue → create or reuse draft PR
+  # ------------------------------------------------------------
   create_or_reuse_draft_pr:
     if: github.event_name == 'issues'
     runs-on: ubuntu-latest
@@ -43,21 +41,34 @@ jobs:
           echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
           echo "::debug::Default branch is $DEFAULT_BRANCH"
 
+      # ✅ Fixed and hardened branch creation logic
       - name: Find or create branch with empty commit
+        shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          # Try to find an existing branch for this issue
-          EXISTING=$(git ls-remote --heads "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" \
-            "refs/heads/codex/issue-${ISSUE_NUMBER}-*{,}" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
 
-          if [ -n "$EXISTING" ]; then
+          PREFIX="refs/heads/codex/issue-${ISSUE_NUMBER}-*"
+          EXISTING=$(git ls-remote --heads origin "$PREFIX" \
+            | awk '{print $2}' | sed 's#refs/heads/##' | head -n1 || true)
+
+          if [[ -n "${EXISTING:-}" ]]; then
             BRANCH="$EXISTING"
-            echo "::debug::Reusing existing branch: $BRANCH"
+            echo "::debug::Reusing existing remote branch: $BRANCH"
+            git fetch origin "$BRANCH" --depth=1
+            if ! git rev-parse --verify "$BRANCH" >/dev/null 2>&1; then
+              git switch -c "$BRANCH" --track "origin/$BRANCH"
+            else
+              git switch "$BRANCH"
+              git reset --hard "origin/$BRANCH"
+            fi
           else
-            # Create a new branch slug from title
-            SLUG=$(printf '%s' "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
+            SLUG=$(printf '%s' "$ISSUE_TITLE" \
+              | tr '[:upper:]' '[:lower:]' \
+              | tr -cs 'a-z0-9' '-' \
+              | sed 's/^-//;s/-$//' \
+              | cut -c1-40)
             BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
             echo "::debug::Creating new branch: $BRANCH"
 
@@ -106,7 +117,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -euo pipefail
           gh api repos/$REPO/issues/$PR_NUMBER/comments \
             -f body='@codex - Please address this draft PR.'
           echo "::debug::Comment added to PR #$PR_NUMBER"
@@ -115,20 +125,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -euo pipefail
           gh api repos/$REPO/issues/$ISSUE_NUMBER/comments \
-            -f body="A draft PR has been created or reused for this issue: ${PR_URL}\n"
+            -f body="A draft PR has been created or reused for this issue: ${PR_URL}\n\n@codex - please take a look."
           echo "::debug::Comment added to Issue #$ISSUE_NUMBER"
 
-  # -------------------------------
-  # Job B: On PR events → run Codex if PR is linked to an issue
-  # -------------------------------
+  # ------------------------------------------------------------
+  # Job B – On PR events → run Codex if PR is linked to an issue
+  # ------------------------------------------------------------
   assign_and_codex:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Check out the PR’s merge ref so Codex can see the full diff
       - name: Check out PR (merge ref)
         uses: actions/checkout@v4
         with:
@@ -140,10 +148,6 @@ jobs:
             ${{ github.event.pull_request.base.ref }} \
             +refs/pull/${{ github.event.pull_request.number }}/head
 
-      # 2) (Keep any existing "assign" logic here if your workflow
-      #     already auto-assigns reviewers or labels.)
-
-      # 3) Detect issues linked to the PR via GraphQL (closingIssuesReferences)
       - name: Detect linked issues
         id: linked
         env:
@@ -172,7 +176,6 @@ jobs:
         if: steps.linked.outputs.has != 'true'
         run: echo "No linked issues → skipping Codex run."
 
-      # 4) Retrieve the first linked issue for additional context in the prompt
       - name: Fetch first linked issue
         if: steps.linked.outputs.has == 'true'
         id: issue
@@ -191,14 +194,13 @@ jobs:
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
-      # 5) Run Codex as an “autonomous task” for this PR + issue combination
       - name: Run Codex task for PR + linked issue
         if: steps.linked.outputs.has == 'true'
         id: run_codex
         uses: openai/codex-action@v1
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
-          safety-strategy: read-only   # read the repo, do not write locally
+          safety-strategy: read-only
           prompt: |
             You are Codex running as an automated task for PR #${{ github.event.pull_request.number }}
             in ${{ github.repository }}. The PR is linked to issue(s) #${{ steps.linked.outputs.numbers }}.
@@ -228,7 +230,6 @@ jobs:
             2) Checklist of actionable items.
             3) If proposing changes, include unified diff hunks ready to apply.
 
-      # 6) Post the Codex result as a comment on the PR
       - name: Post Codex result as PR comment
         if: steps.linked.outputs.has == 'true' && steps.run_codex.outputs.final-message != ''
         uses: actions/github-script@v7
