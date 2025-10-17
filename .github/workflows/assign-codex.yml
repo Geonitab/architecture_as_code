@@ -5,6 +5,7 @@ on:
     types: [opened, reopened]
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
+  workflow_dispatch:
 
 # Superset of permissions needed by both jobs
 permissions:
