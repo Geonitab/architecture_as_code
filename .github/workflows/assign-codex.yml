@@ -21,7 +21,7 @@ jobs:
   # JOB 0 – Issue: create or reuse branch and ensure draft PR
   # ============================================================
   issue_create_draft_pr:
-    if: github.event_name == 'issues'
+    # if: github.event_name == 'issues'
     runs-on: ubuntu-latest
     outputs:
       branch: ${{ steps.setvars.outputs.branch }}
