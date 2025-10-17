@@ -77,6 +77,17 @@ To create GitHub issues from these files:
 4. Apply the recommended labels
 5. Submit the issue
 
+## Source Catalogue
+
+The canonical list of verified sources lives in [`source_catalogue.json`](./source_catalogue.json).  
+This catalogue maps each Source ID (1–16) to its bibliographic entry, citation URL, and the
+manuscript chapters it supports. Automated validation uses this file to ensure:
+- issues only reference published sources
+- each source is tracked at least once
+- cross-references to `docs/33_references.md` remain consistent
+
+Update both the catalogue and the references chapter if new sources are introduced.
+
 ## Source Document
 
 These issues were extracted from:

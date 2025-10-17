@@ -1,0 +1,196 @@
+{
+  "sources": [
+    {
+      "id": 1,
+      "title": "ThoughtWorks – Architecture as Code: The Next Evolution",
+      "type": "industry-report",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/architecture-as-code",
+      "summary": "Defines Architecture as Code as executable specifications and critiques traditional architecture practices such as slideware-heavy governance.",
+      "supports_chapters": [
+        "docs/01_introduction.md",
+        "docs/02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Red Hat – Architecture as Code Principles and Best Practices",
+      "type": "article",
+      "year": 2023,
+      "url": "https://developers.redhat.com/articles/architecture-as-code-principles",
+      "summary": "Explains the core principles of codified architecture and prescribes governance for single sources of truth.",
+      "supports_chapters": [
+        "docs/02_fundamental_principles.md",
+        "docs/05_automation_devops_cicd.md"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "AaC Open Source Project – Architecture-as-Code Repository",
+      "type": "repository",
+      "year": 2024,
+      "url": "https://github.com/aacplatform/aac",
+      "summary": "Demonstrates the AaC plugin ecosystem and self-describing model definitions used throughout Architecture as Code tooling.",
+      "supports_chapters": [
+        "docs/06_structurizr.md",
+        "docs/31_technical_architecture.md"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Thoughtworks Technology Radar – Governance as Code",
+      "type": "analysis",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/governance-as-code",
+      "summary": "Describes opinionated governance patterns required when architecture intent is enforced as code.",
+      "supports_chapters": [
+        "docs/11_governance_as_code.md",
+        "docs/22_documentation_vs_architecture.md"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Brown, Simon – C4 Model Overview",
+      "type": "technique",
+      "year": 2023,
+      "url": "https://c4model.com/",
+      "summary": "Defines the Context, Container, Component, and Code levels for consistent architectural diagramming.",
+      "supports_chapters": [
+        "docs/06_structurizr.md",
+        "docs/24_best_practices.md"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Brown, Simon – Documenting Software Architecture with Structurizr",
+      "type": "article",
+      "year": 2022,
+      "url": "https://blog.structurizr.com/diagrams-as-code-automation/",
+      "summary": "Introduces automation techniques to prevent diagram decay and align audiences with appropriate C4 model views.",
+      "supports_chapters": [
+        "docs/06_structurizr.md",
+        "docs/24_best_practices.md"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "CNCF – State of Cloud Native Development, 2024",
+      "type": "industry-survey",
+      "year": 2024,
+      "url": "https://www.cncf.io/reports/state-of-cloud-native-development-2024/",
+      "summary": "Reports adoption data for microservices, containers, and platform engineering used to motivate Architecture as Code.",
+      "supports_chapters": [
+        "docs/01_introduction.md",
+        "docs/07_containerization.md"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Selic, Bran – The Pragmatics of Model-Driven Development",
+      "type": "academic",
+      "year": 2003,
+      "url": "https://ieeexplore.ieee.org/document/1183532",
+      "summary": "Provides historical context and critiques of model-driven development practices that inform modern AaC narratives.",
+      "supports_chapters": [
+        "docs/06_structurizr.md",
+        "docs/23_soft_as_code_interplay.md"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "GitLab – Building a Single Source of Truth with APIs and CLI",
+      "type": "guide",
+      "year": 2024,
+      "url": "https://about.gitlab.com/topics/single-source-of-truth/",
+      "summary": "Details CLI and API mechanisms that underpin SSOT delivery mechanisms for Architecture as Code platforms.",
+      "supports_chapters": [
+        "docs/02_fundamental_principles.md",
+        "docs/11_governance_as_code.md"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "MarketsandMarkets – Infrastructure as Code Market Report",
+      "type": "market-research",
+      "year": 2023,
+      "url": "https://www.marketsandmarkets.com/Market-Reports/infrastructure-as-code-market-253330124.html",
+      "summary": "Quantifies the Infrastructure as Code market size and projected growth used to justify investment narratives.",
+      "supports_chapters": [
+        "docs/15_cost_optimization.md",
+        "docs/25_future_trends_development.md"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Gartner – Forecast Analysis: Public Cloud Services Worldwide",
+      "type": "market-research",
+      "year": 2024,
+      "url": "https://www.gartner.com/en/research/methodologies/market-forecast",
+      "summary": "Provides economic rationale for cloud-native governance and Architecture as Code adoption.",
+      "supports_chapters": [
+        "docs/15_cost_optimization.md",
+        "docs/17_organizational_change.md"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "IDC – Worldwide DevOps Software Tools Forecast, 2023–2027",
+      "type": "market-research",
+      "year": 2023,
+      "url": "https://www.idc.com/getdoc.jsp?containerId=US50837223",
+      "summary": "Frames the economic benefits and tooling investments tied to Infrastructure and Architecture as Code.",
+      "supports_chapters": [
+        "docs/05_automation_devops_cicd.md",
+        "docs/21_digitalization.md"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "HashiCorp – State of Cloud Strategy Survey 2024",
+      "type": "industry-survey",
+      "year": 2024,
+      "url": "https://www.hashicorp.com/state-of-cloud-strategy",
+      "summary": "Highlights organisational drivers for codified governance and platform engineering investments.",
+      "supports_chapters": [
+        "docs/17_organizational_change.md",
+        "docs/27_conclusion.md"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "AWS – Cloud Development Kit (CDK) Developer Guide",
+      "type": "product-documentation",
+      "year": 2024,
+      "url": "https://docs.aws.amazon.com/cdk/latest/guide/home.html",
+      "summary": "Demonstrates higher-level abstractions that bridge Infrastructure as Code and Architecture as Code.",
+      "supports_chapters": [
+        "docs/05_automation_devops_cicd.md",
+        "docs/14_practical_implementation.md"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Pulumi – Testing Infrastructure as Code Programs",
+      "type": "guide",
+      "year": 2024,
+      "url": "https://www.pulumi.com/blog/testing-infrastructure-as-code/",
+      "summary": "Describes unit and integration testing patterns that distinguish Pulumi from declarative-only tools.",
+      "supports_chapters": [
+        "docs/13_testing_strategies.md",
+        "docs/14_practical_implementation.md"
+      ]
+    },
+    {
+      "id": 16,
+      "title": "HashiCorp – Securing Terraform State",
+      "type": "guide",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/cloud-docs/state/securing",
+      "summary": "Provides guidance for encrypting, storing, and controlling access to Infrastructure as Code state files.",
+      "supports_chapters": [
+        "docs/09a_security_fundamentals.md",
+        "docs/09b_security_patterns.md"
+      ]
+    }
+  ]
+}
