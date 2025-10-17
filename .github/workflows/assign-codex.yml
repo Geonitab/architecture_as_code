@@ -49,7 +49,7 @@ jobs:
           echo "Issues to process:"
           cat issues.txt || true
 
-      - name: Create draft PRs where missing
+      - name: Create draft PRs where missing and comment on the PR
         run: |
           set -euo pipefail
 
@@ -61,43 +61,56 @@ jobs:
 
             # Check if a PR already references this issue
             LINKED_PR=$(gh pr list --repo "$GH_REPO" --state all --search "Closes #${ISSUE_NUMBER}" --json number --jq '.[].number' || true)
+            PR_NUMBER=""
+            PR_URL=""
+
             if [ -n "$LINKED_PR" ]; then
-              echo "PR already exists for issue #$ISSUE_NUMBER (#$LINKED_PR). Skipping."
-              echo "::endgroup::"
-              continue
+              PR_NUMBER="$LINKED_PR"
+              PR_URL=$(gh pr view "$PR_NUMBER" --repo "$GH_REPO" --json url --jq .url || echo "")
+              echo "PR already exists for issue #$ISSUE_NUMBER (#$PR_NUMBER)."
+            else
+              # Reuse or create a branch
+              EXISTING=$(git ls-remote --heads origin "refs/heads/codex/issue-${ISSUE_NUMBER}-*" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
+              if [ -n "$EXISTING" ]; then
+                BRANCH="$EXISTING"
+                git fetch origin "$BRANCH" --depth=1
+                git switch "$BRANCH"
+              else
+                SLUG=$(printf '%s' "$TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
+                BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
+                git fetch origin "$DEFAULT_BRANCH" --depth=1
+                git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
+                git commit --allow-empty -m "Initial draft for issue #${ISSUE_NUMBER}"
+                git push --set-upstream origin "$BRANCH"
+              fi
+
+              # Create draft PR
+              BODY_TEXT="This draft PR was automatically created for this issue.\n\nCloses #${ISSUE_NUMBER}"
+              PR_URL=$(gh pr create \
+                --base "$DEFAULT_BRANCH" \
+                --head "$BRANCH" \
+                --title "Draft: Issue #${ISSUE_NUMBER} - ${TITLE}" \
+                --body "$BODY_TEXT" \
+                --draft \
+                --repo "$GH_REPO" 2>/dev/null || echo "")
+
+              # Resolve PR number from branch (or URL) so we can comment
+              if [ -z "$PR_URL" ]; then
+                PR_NUMBER=$(gh pr view "$BRANCH" --repo "$GH_REPO" --json number --jq .number 2>/dev/null || echo "")
+                PR_URL=$(gh pr view "$BRANCH" --repo "$GH_REPO" --json url --jq .url 2>/dev/null || echo "")
+              else
+                PR_NUMBER=$(gh pr view "$BRANCH" --repo "$GH_REPO" --json number --jq .number 2>/dev/null || echo "")
+              fi
             fi
 
-            # Reuse or create a branch
-            EXISTING=$(git ls-remote --heads origin "refs/heads/codex/issue-${ISSUE_NUMBER}-*" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
-            if [ -n "$EXISTING" ]; then
-              BRANCH="$EXISTING"
-              git fetch origin "$BRANCH" --depth=1
-              git switch "$BRANCH"
+            # Comment on the PR (only if we resolved a PR number)
+            if [ -n "$PR_NUMBER" ]; then
+              gh pr comment "$PR_NUMBER" \
+                --repo "$GH_REPO" \
+                --body "@codex - Fix the issue using this draft PR."
+              echo "Commented on PR #$PR_NUMBER"
             else
-              # Make a short, safe slug from the title
-              SLUG=$(printf '%s' "$TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
-              BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
-              git fetch origin "$DEFAULT_BRANCH" --depth=1
-              git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
-              git commit --allow-empty -m "Initial draft for issue #${ISSUE_NUMBER}"
-              git push --set-upstream origin "$BRANCH"
-            fi
-
-            # Create draft PR (idempotent: if it already exists for this head/base, gh will error and we ignore)
-            BODY_TEXT="This draft PR was automatically created for this issue.\n\nCloses #${ISSUE_NUMBER}"
-            PR_URL=$(gh pr create \
-              --base "$DEFAULT_BRANCH" \
-              --head "$BRANCH" \
-              --title "Draft: Issue #${ISSUE_NUMBER} - ${TITLE}" \
-              --body "$BODY_TEXT" \
-              --draft \
-              --repo "$GH_REPO" 2>/dev/null || true)
-
-            if [ -n "$PR_URL" ]; then
-              echo "Created draft PR for issue #$ISSUE_NUMBER -> $PR_URL"
-              gh issue comment "$ISSUE_NUMBER" --repo "$GH_REPO" --body "A draft PR has been created for this issue: $PR_URL"
-            else
-              echo "No PR URL returned (it may already exist)."
+              echo "No PR number resolved; skipping PR comment."
             fi
 
             echo "::endgroup::"
