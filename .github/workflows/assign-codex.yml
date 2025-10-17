@@ -13,8 +13,8 @@ permissions:
 
 jobs:
   # ------------------------------------------------------------
-  # Job A – From new or reopened issue → create/reuse draft PR
-  # and run Codex immediately on that PR if it's linked.
+  # Job A – When issue opened/reopened → create/reuse draft PR
+  # then run Codex immediately (fallback if linking not yet visible)
   # ------------------------------------------------------------
   create_or_reuse_draft_pr:
     if: github.event_name == 'issues'
@@ -114,10 +114,7 @@ jobs:
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
 
-      # (Removed the two @codex comment steps as requested)
-
-      # ---------------- Run Codex immediately on the newly created/reused PR ----------------
-
+      # ---------------- Run Codex immediately ----------------
       - name: Check out PR (merge ref) for Codex context
         uses: actions/checkout@v4
         with:
@@ -130,27 +127,24 @@ jobs:
         run: |
           set -euo pipefail
           pr=$(gh pr view "$PR_NUMBER" --json headRefOid,baseRefOid,title,body,number)
-
-          base_sha=$(echo "$pr" | jq -r .baseRefOid)
-          head_sha=$(echo "$pr" | jq -r .headRefOid)
-          pr_title=$(echo "$pr" | jq -r .title)
-          pr_body=$(echo "$pr" | jq -r .body)
-
-          echo "base_sha=$base_sha" >> "$GITHUB_OUTPUT"
-          echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
-          echo "pr_title=$pr_title" >> "$GITHUB_OUTPUT"
+          echo "base_sha=$(echo "$pr" | jq -r .baseRefOid)" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$(echo "$pr" | jq -r .headRefOid)" >> "$GITHUB_OUTPUT"
+          echo "pr_title=$(echo "$pr" | jq -r .title)" >> "$GITHUB_OUTPUT"
           {
             echo "pr_body<<EOF"
-            echo "$pr_body"
+            echo "$(echo "$pr" | jq -r .body)"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Detect linked issues for this PR
+      - name: Detect linked issues for this PR (with fallback)
         id: linked_issue_in_job_a
+        shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ env.ISSUE_NUMBER }}
+          PR_NUMBER: ${{ env.PR_NUMBER }}
         run: |
           set -euo pipefail
           q='query($owner:String!,$repo:String!,$number:Int!){
@@ -160,14 +154,27 @@ jobs:
               }
             }
           }'
-          data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO" -F number="${PR_NUMBER}")
-          nums=$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes | map(.number) | join(",")')
-          if [[ -n "$nums" ]]; then
-            echo "has=true" >> $GITHUB_OUTPUT
-            echo "numbers=$nums" >> $GITHUB_OUTPUT
-          else
-            echo "has=false" >> $GITHUB_OUTPUT
+
+          nums=""
+          for i in 1 2 3; do
+            data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO" -F number="$PR_NUMBER" || true)
+            nums=$(echo "${data:-}" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes | map(.number) | join(",")' 2>/dev/null || true)
+            if [[ -n "${nums:-}" ]]; then
+              echo "::debug::Found linked issues via GraphQL: $nums"
+              break
+            fi
+            echo "::debug::No linked issues yet (attempt $i) – retrying..."
+            sleep 2
+          done
+
+          # Fallback to triggering issue if none found
+          if [[ -z "${nums:-}" ]]; then
+            nums="$ISSUE_NUMBER"
+            echo "::debug::Falling back to triggering issue #$ISSUE_NUMBER"
           fi
+
+          echo "has=true" >> "$GITHUB_OUTPUT"
+          echo "numbers=$nums" >> "$GITHUB_OUTPUT"
 
       - name: Fetch first linked issue (for Codex prompt)
         if: steps.linked_issue_in_job_a.outputs.has == 'true'
