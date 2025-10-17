@@ -11,20 +11,15 @@ Two new automation workflows have been added to the repository:
 
 Both workflows automatically trigger when relevant content changes and generate high-quality, professionally formatted output files.
 
-## Issue Response Bots
+## Issue Automation
 
-The automation suite also includes specialized GitHub issue bots that produce
-structured response outlines whenever a matching label is applied:
+To minimise manual triage, the repository uses `assign-codex.yml` to initialise draft pull requests for every issue. When an issue is opened (or reopened) the workflow:
 
-- **Architect Bot** (`architect-bot.yml`) – Generates architecture solution plans in `docs/architecture/`.
-- **Editor Bot** (`editor-bot.yml`) – Produces documentation outlines in `docs/documentation/` for the `documentation` label.
-- **Designer Bot** (`designer-bot.yml`) – Captures design considerations in `docs/design/` for the `design` label.
-- **Developer Bot** (`developer-bot.yml`) – Builds implementation plans in `docs/development/` for the `dev` label.
-- **QA Bot** (`qa-bot.yml`) – Provides quality assurance strategies in `docs/quality/` for the `QA` label.
-- **Requirements Bot** (`requirements-bot.yml`) – Records requirement inventories in `docs/requirements/` for the `Req` label.
+1. Creates or reuses a `codex/issue-*` branch based on the default branch.
+2. Opens a draft pull request that references the originating issue.
+3. Runs the Codex assistant against the branch so that an initial fix or documentation change is available immediately.
 
-Each workflow checks out the repository, runs a dedicated Python helper under
-`scripts/`, and opens a pull request containing the generated markdown file.
+The same workflow also re-runs Codex when the draft pull request reopens, synchronises, or is marked ready for review, keeping the generated changes aligned with the latest feedback.
 
 ## Presentation Generation Workflow
 
@@ -112,10 +107,11 @@ Each whitepaper includes:
 
 ```
 .github/workflows/
-├── generate-presentations.yml    # Presentation automation workflow
-├── generate-whitepapers.yml     # Whitepaper automation workflow
-├── build-book.yml               # Existing book PDF generation
-└── content-validation.yml       # Existing content validation
+├── generate-presentations.yml     # Presentation automation workflow
+├── generate-whitepapers.yml       # Whitepaper automation workflow
+├── content-validation.yml         # Automated content quality checks
+├── unified-build-release.yml      # Full publication pipeline
+└── build-mkdocs.yml               # MkDocs static site deployment
 
 presentations/                   # Generated presentation materials (ignored in git)
 ├── presentation_outline.md      # Chapter outlines and key points
@@ -152,10 +148,11 @@ Both workflows are optimized to run only when necessary:
 ## Integration with Existing Workflows
 
 ### Book Building Pipeline
-The new workflows complement the existing `build-book.yml`:
-- **Book PDF**: Complete book as single PDF document
+The generation workflows complement the unified publication pipeline (`unified-build-release.yml`):
+- **Book formats**: Full PDF/EPUB/DOCX set produced by the unified workflow
 - **Presentations**: Chapter content as PowerPoint materials
 - **Whitepapers**: Individual chapters as standalone HTML documents
+- **Website**: MkDocs build and deployment handled by `build-mkdocs.yml`
 
 ### Content Validation
 All workflows include docs protection validation using `scripts/validate_docs_protection.py` to ensure:
@@ -212,24 +209,6 @@ ls -la whitepapers/
 - Workflows never modify source content in `docs/` directory
 - Generated files are stored outside the docs directory
 - Validation scripts ensure content integrity
-
-## AI Agent Playbook Workflows
-
-Complementing the generation pipelines, eight lightweight GitHub Actions workflows translate the responsibilities in `docs/20_ai_agent_team.md` into actionable checklists for each virtual agent role:
-
-| Workflow | Fokus |
-|----------|-------|
-| `agent-project-manager.yml` | Planering, koordination och rapportering |
-| `agent-architect.yml` | Arkitekturprinciper, beslut och diagram |
-| `agent-requirements-analyst.yml` | Kravinsamling, spårbarhet och prioritering |
-| `agent-designer.yml` | Designiterationer, prototyper och UX-samordning |
-| `agent-developer.yml` | Implementation, kodstandarder och tekniska risker |
-| `agent-quality-control.yml` | Teststrategi, kvalitetsmätning och rapporter |
-| `agent-editor.yml` | Dokumentationsuppdateringar och publicering |
-| `agent-graphic-designer.yml` | Visuella resurser och brandefterlevnad |
-| `architect-bot.yml` | Automatisk arkitektbot | Genererar en arkitektur-respons och pull request när en issue får etiketten `architecture` |
-
-Each workflow exposes the same pattern of inputs (`objective` + two optional context strings) and produces a markdown action plan through `$GITHUB_STEP_SUMMARY` and workflow outputs. Use them to bootstrap discussions, enforce consistency, or integrate structured prompts into higher-level orchestration.
 
 ### Access Control
 - Workflows run with standard GitHub Actions permissions
