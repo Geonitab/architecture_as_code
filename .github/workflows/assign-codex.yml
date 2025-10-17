@@ -118,7 +118,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh api repos/$REPO/issues/$PR_NUMBER/comments \
-            -f body='@codex - Please address this draft PR.'
+            -f body='New task for Codex'
           echo "::debug::Comment added to PR #$PR_NUMBER"
 
       - name: Comment in the original issue (link to PR and ping @codex)
@@ -126,7 +126,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh api repos/$REPO/issues/$ISSUE_NUMBER/comments \
-            -f body="A draft PR has been created or reused for this issue: ${PR_URL}\n\n@codex - please take a look."
+            -f body="A draft PR has been created or reused for this issue: ${PR_URL} ."
           echo "::debug::Comment added to Issue #$ISSUE_NUMBER"
 
   # ------------------------------------------------------------
