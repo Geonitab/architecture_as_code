@@ -47,7 +47,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Continuous Compliance | Automated validation that checks regulatory and internal controls with every change, generating evidence that auditors and teams can trust. |
 | Zero Trust | A security stance that continuously verifies identities, device health, and context before granting access, reducing implicit trust between services. |
 | Security Policy | A codified set of safeguards—identity, encryption, network, and data-handling—that shapes how architecture components interoperate securely. |
-| Data Sovereignty | Ensuring data is handled in accordance with the laws of the jurisdiction where it resides, influencing design choices and deployment regions. |
+| Data Sovereignty | Ensuring data is handled in accordance with applicable legal and regulatory requirements, influencing design choices and deployment regions. |
 | Risk Assessment Matrix | A structured view of likelihood versus impact that helps teams evaluate and prioritise mitigations collaboratively. |
 | Access Federation | Coordinated identity management across platforms so that people have the least-privileged access they need to perform their roles. |
 
