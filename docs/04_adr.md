@@ -39,32 +39,7 @@ In the Architecture as Code context, ADRs document decisions about technology ch
 
 *Figure 4.2 highlights the four core sections every ADR should capture before the template is populated with project-specific information.*
 
-Each ADR follows a consistent structure that ensures all relevant information is captured systematically:
-
-```markdown
-# ADR-XXXX: [Short Description of the Decision]
-
-## Status
-[Proposed | Accepted | Deprecated | Superseded]
-
-## Context
-Description of the problem that needs to be solved and the circumstances
-that led to the need for this decision.
-
-## Decision
-The specific decision that was made, including technical details
-and the Architecture as Code implementation approach.
-
-## Consequences
-### Positive Consequences
-- Expected benefits and improvements
-
-### Negative Consequences
-- Identified risks and limitations
-
-### Mitigation
-- Measures to handle negative consequences
-```
+Each ADR follows a consistent structure that ensures all relevant information is captured systematically. The repository template stored under `templates/adr-template.md` mirrors the format advocated by the ADR community and avoids repeating the full Markdown skeleton throughout the book. Teams copy the template when drafting a new record and focus on the substance of the decision rather than the layout.
 
 ### Numbering and Versioning
 
@@ -91,79 +66,17 @@ ADRs typically progress through the following statuses:
 
 ### Example 1: Choice of Architecture as Code Tool
 
-Architecture as Code principles within this domain:
-
-```markdown
-# ADR-0003: Selection of Terraform for Architecture as Code
-
-## Status
-Accepted
-
-## Context
-The organisation needs to standardise on an Architecture as Code tool
-to manage AWS and Azure environments. Current manual processes
-create inconsistencies and operational risks.
-
-## Decision
-We will use Terraform as the primary Architecture as Code tool for all
-cloud environments, with HashiCorp Configuration Language (HCL) as
-the standard syntax.
-
-## Consequences
-
-### Positive Consequences
-- Multi-cloud support for AWS and Azure
-- Large community and comprehensive provider ecosystem
-- Declarative syntax that matches our policy requirements
-- State management for traceability
-
-### Negative Consequences
-- Learning curve for teams accustomed to imperative scripting
-- Complexity in state file management
-- Cost for Terraform Cloud or Enterprise features
-
-### Mitigation
-- Training programmes for development teams
-- Implementation of Terraform remote state with Azure Storage
-- Pilot projects before full rollout
-```
+- **ADR ID and status:** ADR-0003 – Accepted.
+- **Context:** The organisation needed to standardise tooling across AWS and Azure because manual processes created inconsistent policy enforcement and recovery risk.
+- **Decision:** Terraform was selected as the primary provisioning engine with HashiCorp Configuration Language (HCL) as the shared syntax.
+- **Consequences to monitor:** Multi-cloud support and an extensive provider ecosystem outweighed the learning curve. Mitigations include funded enablement programmes, remote state back-ends with enterprise-grade access control, and pilot projects to refine operating procedures.
 
 ### Example 2: Database Technology Selection
 
-```markdown
-# ADR-0007: Selection of PostgreSQL for Primary Database
-
-## Status
-Accepted
-
-## Context
-The application requires a robust relational database with support for
-complex queries, ACID compliance, and horizontal scaling capabilities.
-Current MySQL infrastructure is reaching performance limits.
-
-## Decision
-Migrate primary database to PostgreSQL with automated failover using
-Patroni and connection pooling via PgBouncer, managed through
-Architecture as Code.
-
-## Consequences
-
-### Positive Consequences
-- Advanced indexing capabilities and query optimisation
-- Strong ACID compliance and data integrity guarantees
-- Extensive extension ecosystem (PostGIS, pg_trgm)
-- Active community and comprehensive documentation
-
-### Negative Consequences
-- Migration effort and potential downtime during transition
-- Team training required for PostgreSQL-specific features
-- Increased infrastructure complexity with clustering
-
-### Mitigation
-- Phased migration with parallel running period
-- Comprehensive training programme for development teams
-- Automated testing of migration scripts and rollback procedures
-```
+- **ADR ID and status:** ADR-0007 – Accepted.
+- **Context:** Performance ceilings on the existing MySQL deployment limited advanced analytics and regulatory reporting.
+- **Decision:** Migrate the primary database estate to PostgreSQL with Patroni-managed failover and PgBouncer connection pooling, all expressed through AaC pipelines.
+- **Consequences to monitor:** PostgreSQL unlocks extension support (PostGIS, `pg_trgm`) and stronger ACID guarantees, while introducing migration risk and additional clustering complexity. The ADR records mitigations such as dual-running phases, automated migration test suites, and dedicated enablement for operations teams.
 
 ## Tools and Best Practices for ADR within Architecture as Code
 
@@ -226,7 +139,7 @@ This integration enables transparent governance and compliance where architectur
 
 The ADR methodology supports compliance requirements through structured documentation that enables:
 
-**Regulatory Compliance**: Systematic documentation for GDPR, PCI-DSS, and industry-specific regulations  
+**Regulatory compliance**: Systematic documentation linked to the compliance matrix in [Chapter 12](12_compliance.md), avoiding repeated lists of regulations in each ADR
 **Audit Readiness**: Complete trace of architecture decisions and their rationale  
 **Risk Management**: Documented risk assessments and mitigation strategies  
 **Knowledge Management**: Structured knowledge transfer between teams and over time

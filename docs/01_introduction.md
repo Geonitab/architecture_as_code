@@ -1,6 +1,6 @@
 # Introduction to Architecture as Code
 
-Architecture as Code represents a paradigm shift in system development where the entire system architecture is defined, version-controlled, and managed through code. This approach enables organisations to apply the same methodologies as traditional software development across their whole technical landscape.
+Architecture as Code represents a paradigm shift in system development where the entire system architecture is defined, version-controlled, and managed through code. This approach enables organisations to apply the same methodologies as traditional software development across their whole technical landscape. The description in this section is the canonical definition used throughout the book; later chapters reference it rather than restating the wording, keeping the narrative concise.
 
 ![Introduction to Architecture as Code](images/diagram_01_introduction.png)
 
@@ -10,7 +10,7 @@ The diagram illustrates the evolution from manual processes to the comprehensive
 
 Traditional methods for system architecture have often been manual and document-based. Architecture as Code builds on established principles from software development and applies them to the complete system landscape.
 
-This includes not only infrastructure components, but also application architecture, data flows, security policies, compliance rules, and organisational structures – all expressed as code.
+This includes not only infrastructure components, but also application architecture, data flows, security policies, compliance rules, and organisational structures – all expressed as code. Subsequent chapters will refer back to this definition when they describe how specific practices extend Architecture as Code within their respective domains.
 
 ## Definition and Scope
 

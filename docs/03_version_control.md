@@ -8,7 +8,7 @@ The diagram illustrates the typical flow from a Git repository through branching
 
 ## Git-based workflow for infrastructure
 
-Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members. Each change is documented with commit messages that describe what was modified and why, creating a complete history of infrastructure evolution.
+Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members. Rather than reiterating the general benefits of commit history already outlined in [Chapter 1](01_introduction.md), this section highlights workflow practices that make the repository actionable for AaC teams: enforce descriptive branches, require pull requests for architectural changes, and link commits to ADR identifiers so that technical decisions stay connected to their provenance.
 
 ## Code organisation and module structure
 
@@ -16,15 +16,13 @@ A well-organised code structure is crucial for maintainability and collaboration
 
 ## Transparency through version control
 
-Version control systems, particularly Git integrated with platforms like GitHub, provide fundamental transparency mechanisms for Architecture as Code initiatives. Every change to infrastructure definitions is documented with clear commit messages, creating an auditable trail that answers critical questions: what changed, when did it change, who changed it, and most importantly, why was the change necessary?
-
-This transparency extends beyond code commits to encompass the entire collaborative workflow:
+Version control systems, particularly Git integrated with platforms like GitHub, provide fundamental transparency mechanisms for Architecture as Code initiatives. The emphasis here is on extending transparency beyond the commit itself into the conversations and artefacts surrounding a change.
 
 **Pull Requests and Code Review**: Every infrastructure change undergoes peer review through pull requests, making technical decisions visible to the entire team. Review comments become permanent documentation that future maintainers can reference when understanding architectural evolution.
 
 **Issues and Discussions**: Platforms like GitHub provide Issues for tracking specific work items and Discussions for strategic deliberation. When architecture changes reference related Issues, stakeholders gain complete context—from initial problem identification through solution design to implementation and deployment. Issues create transparent decision records with clear ownership, whilst Discussions enable asynchronous strategic deliberation across distributed teams. Chapter 19 provides comprehensive guidance on implementing transparent workflows using Issues and Discussions as core communication channels for Architecture as Code initiatives.
 
-**Commit History**: Git's complete history provides transparency into how architectures evolved over time. Teams can identify when specific patterns were introduced, understand the context that motivated particular decisions, and track how infrastructure responded to changing business requirements.
+**Commit History**: Git's complete history provides visibility into how architectures evolved over time. Instead of repeating that commits answer "what" and "why", use tags, signed commits, and structured messages to surface risk levels, compliance impact, and cross-team dependencies.
 
 **Branch Strategies**: Transparent branching strategies (such as GitFlow or trunk-based development) make development workflows visible and predictable. Team members understand where to find in-progress work, how changes flow from development to production, and what quality gates each change must satisfy.
 

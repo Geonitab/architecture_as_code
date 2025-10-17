@@ -1,28 +1,34 @@
 # Fundamental Principles of Architecture as Code
 
-Architecture as Code is founded on core principles that enable successful implementation of codified system architecture. These principles span the entire system landscape and provide a holistic view of architecture management.
+Architecture as Code (AaC) builds on the definition established in [Chapter 1](01_introduction.md), translating it into actionable principles that guide implementation. Rather than repeating the full description, this chapter explains how each foundational pillar turns the concept into day-to-day practice across an organisation's technology estate.
 
 ![Fundamental principles diagram](images/diagram_02_chapter1.png)
 
-The diagram illustrates the natural flow from declarative code through version control and automation to reproducibility and scalability – the five foundational pillars of Architecture as Code.
+The diagram illustrates the natural flow through the five foundational pillars used consistently across this book:
+
+1. **Declarative system definitions**
+2. **Version-controlled traceability**
+3. **Automated enforcement and orchestration**
+4. **Testable architecture at every layer**
+5. **Living documentation**
+
+The remainder of the chapter explores each pillar in turn and links out to chapters where the practice is expanded further.
 
 ## Declarative architecture definition
 
 The declarative approach in Architecture as Code describes the desired system state at every level – from application components to infrastructure. This contrasts with imperative programming, where each step must be specified explicitly.
 
-Declarative definitions make it possible to express an architecture's intended state, extending Architecture as Code to cover application architecture, API contracts, and organisational structures.
+Declarative definitions make it possible to express an architecture's intended state, extending the practice to cover application architecture, API contracts, and organisational structures without repeating the broader definition from Chapter 1.
 
-## Holistic perspective on codification
+## Version-controlled traceability
 
-Architecture as Code embraces the full system ecosystem through a holistic lens. It includes application logic, data flows, security policies, compliance rules, and organisational structures.
+Architecture as Code keeps every architectural element—applications, data flows, security policies, compliance rules, and organisational structures—within version control. Instead of re-listing the full scope from Chapter 1, the focus here is on what traceability delivers: every change carries author, intent, and impact metadata.
 
-A practical example is an application programming interface change automatically propagating through the architecture – from security configurations to documentation – all defined as code.
+A practical illustration is an application programming interface change that automatically propagates through the architecture. Traceable commits link the update to downstream security configurations, data contracts, and documentation so that reviewers can understand why the wider architecture evolves.
 
-## Immutable architecture patterns
+## Automated enforcement and orchestration
 
-The principle of immutable architecture keeps the entire system architecture under control through immutable components. Rather than modifying existing parts, new versions are created that replace older ones at every level.
-
-This approach fosters predictability and eliminates architectural drift, where systems gradually diverge from their intended design over time.
+Automated enforcement turns version-controlled intent into running systems. Immutable architecture patterns keep the entire system under control through replaceable components: rather than modifying existing parts, new versions are created that replace older ones at every level. This approach fosters predictability and eliminates architectural drift, where systems gradually diverge from their intended design over time.
 
 ### Understanding architectural drift
 
@@ -53,7 +59,7 @@ Uncontrolled architectural drift creates significant technical and business risk
 
 #### How Architecture as Code prevents drift
 
-Architecture as Code addresses architectural drift through several mechanisms:
+This pillar addresses architectural drift through several mechanisms:
 
 **Declarative definitions**: Systems are defined in code that explicitly states the desired architecture, making deviations immediately visible through comparison tools and automated validation.
 
@@ -65,7 +71,7 @@ Architecture as Code addresses architectural drift through several mechanisms:
 
 **Continuous reconciliation**: Automated tools regularly compare the actual system state against the codified architecture, identifying and reporting any discrepancies for immediate remediation.
 
-**Infrastructure state management**: Tools such as Terraform, Pulumi, and CloudFormation maintain explicit state representations, enabling automatic detection when actual infrastructure diverges from the declared configuration.
+**Infrastructure state management**: Dedicated platforms maintain explicit state representations, enabling automatic detection when actual infrastructure diverges from the declared configuration. See [Appendix: Infrastructure as Code Tooling](34_infrastructure_as_code_tooling.md) for a comparison of the primary options and their distinctive capabilities.
 
 #### Drift detection and remediation
 
@@ -92,11 +98,11 @@ When drift is detected, teams can choose to either:
 
 By treating architecture as code and automating drift detection and remediation, organisations maintain architectural integrity throughout the entire system lifecycle, ensuring that reality consistently matches design intent.
 
-## Testability at the architecture level
+## Testable architecture at every layer
 
-Architecture as Code enables testing of the entire system architecture, not only individual components. This includes validating architectural patterns, adherence to design principles, and verification of end-to-end flows.
+AaC enables testing of the entire system architecture, not only individual components. This includes validating architectural patterns, adherence to design principles, and verification of end-to-end flows.
 
-Architecture tests confirm design decisions, assess system complexity, and ensure the complete architecture behaves as intended.
+Architecture tests confirm design decisions, assess system complexity, and ensure the complete architecture behaves as intended. [Chapter 13](13_testing_strategies.md) provides concrete tooling examples for each test level so this section focuses on why testability is a pillar rather than re-describing the catalogue of test stages.
 
 ## Documentation as Code
 
@@ -417,8 +423,6 @@ This dual approach – automated testing for NFRs and structured validation for 
 
 Sources:
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
-- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - GitLab. "Documentation as Code: Best Practices and Implementation." GitLab Documentation, 2024.
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
 - Atlassian. "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
@@ -426,3 +430,5 @@ Sources:
 - Forsberg, K., Mooz, H. "The Relationship of System Engineering to the Project Cycle." Engineering Management Journal, 1991.
 - IEEE. "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
 - Chung, L., et al. "Non-Functional Requirements in Software Engineering." Springer, 2000.
+- Smart, J., et al. "BDD in Action." Manning, 2021.
+- European Union Agency for Cybersecurity (ENISA). "Good Practices for Secure Software Development Lifecycle." ENISA Report, 2023.

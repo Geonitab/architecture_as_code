@@ -14,11 +14,14 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 [Appendix B: Technical Architecture for Book Production](31_technical_architecture.md) documents the infrastructure and automation used to produce this book itself. This meta-example demonstrates Architecture as Code principles applied to documentation delivery, showing how the same practices scale from infrastructure to content pipelines.
 
+[Appendix C: Infrastructure as Code Tooling](34_infrastructure_as_code_tooling.md) consolidates platform comparisons so that tool descriptions remain centralised rather than repeated in every chapter. Practitioners can consult it when evaluating provisioning, configuration, or control-plane options.
+
 **What you will find in this section:**
 
 - Comprehensive glossary of Architecture as Code terminology
 - Author background and expertise context
 - Complete code examples and technical implementations
 - Book production infrastructure as a working Architecture as Code example
+- Centralised Infrastructure as Code tooling comparisons with cross-references to relevant chapters
 
 These references serve as quick-access resources to support the concepts explored in Parts I through VII, ensuring that theoretical understanding translates into practical implementation.

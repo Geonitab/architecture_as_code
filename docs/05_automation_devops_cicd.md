@@ -20,7 +20,7 @@ Continuous integration and continuous deployment are more than technical process
 
 The CI/CD concept has roots in Extreme Programming (XP) and the agile movement of the early 2000s. Its application to infrastructure expanded alongside the emergence of cloud technologies. Early infrastructure administrators relied on manual processes, configuration scripts, and the "infrastructure as pets" mindset—each server was unique and required individual care. That approach worked for small environments but could not scale to modern distributed systems containing hundreds or thousands of components.
 
-The shift to "infrastructure as cattle"—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and tools such as Terraform and Ansible accelerated this development by offering programmable interfaces for infrastructure management.
+The shift to "infrastructure as cattle"—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and the tooling catalogue summarised in the [Infrastructure as Code appendix](34_infrastructure_as_code_tooling.md) accelerated this development by offering programmable interfaces for infrastructure management.
 
 These advances coincided with increasingly strict regulatory requirements, particularly GDPR and guidelines from national data protection authorities. Automation is therefore not only an efficiency improvement but a necessity for compliance and risk management.
 
@@ -39,7 +39,7 @@ Implementing CI/CD for Architecture as Code affects the organisation on multiple
 
 | Organisational Dimension | Challenge | Approach |
 |--------------------------|-----------|----------|
-| Cultural transformation | Building trust in automation while maintaining compliance and security controls | Change management programmes, confidence building in automated systems, shared accountability emphasis |
+| Demonstrable collaborative practices | Build trust in automation by running joint architecture reviews, rotating on-call responsibilities, and pairing on compliance stories | Change management programmes focused on shared accountability and measurable behaviours |
 | Skills development | Growing software engineering capabilities in traditional IT professionals | Training investments, cloud-provider API education, recruitment for development and operations skills mix |
 | Compliance and governance | Ensuring automated processes meet regulatory obligations | Automated audit trails, data residency controls, programmatic separation of duties |
 
@@ -47,19 +47,11 @@ As discussed in [Chapter 3 on version control](03_version_control.md), CI/CD pip
 
 ## From Architecture as Code to holistic development and operations
 
-Architecture as Code extends DevOps practices beyond application delivery and into the management of entire architectures. The paradigm treats every architectural element as code:
-
-- **Application architecture:** API contracts, service boundaries, and integration patterns
-- **Data architecture:** Data models, data flows, and data-integrity rules
-- **Infrastructure architecture:** Servers, networks, and cloud resources
-- **Security architecture:** Security policies, access controls, and compliance rules
-- **Organisational architecture:** Team structures, processes, and accountability models
-
-This holistic approach requires DevOps practices that can manage the complexity of interconnected architectural components while sustaining delivery speed and quality.
+Architecture as Code extends DevOps practices beyond application delivery and into the management of entire architectures. Rather than reprinting the full scope listed in Chapter 1, this section concentrates on how the domains interact inside CI/CD pipelines: application contracts drive data-interface validation, infrastructure definitions expose deployment topology, security policies govern runtime posture, and organisational processes coordinate ownership. This interconnected view requires DevOps practices that can manage complexity whilst sustaining delivery speed and quality.
 
 ### Critical success factors for Architecture as Code DevOps
 
-**Cultural transformation with a holistic perspective:** organisations must develop a shared understanding of architecture as a unified whole, enabling cross-disciplinary collaboration between developers, architects, operations, and business analysts.
+**Cross-functional operating rituals:** organisations foster shared understanding by running joint architecture reviews, shared backlog refinement, and combined post-incident reviews that include developers, architects, operations specialists, and business analysts.
 
 **Governance as Code:** Architecture governance, design principles, and decisions are codified and version-controlled. Architecture Decision Records (ADR), design guidelines, and compliance requirements become part of the executable architecture.
 
@@ -79,46 +71,16 @@ For comprehensive coverage of governance automation—including policy lifecycle
 
 ## CI/CD fundamentals for regulated organisations
 
-Organisations operating in regulated environments face complex requirements when implementing CI/CD pipelines for Architecture as Code. European data-protection law (including GDPR), directives from national supervisory authorities, and sector-specific regulations create a context where automation must balance efficiency with stringent compliance obligations.
+Organisations operating in regulated environments face complex requirements when implementing CI/CD pipelines for Architecture as Code. European data-protection law (including GDPR), the NIS2 security directive, and the financial sector's Digital Operational Resilience Act (DORA) demand automation that balances delivery speed with provable controls.
 
-### Regulatory complexity and automation
+### Regulatory automation patterns
 
-The regulatory landscape influences CI/CD design fundamentally. GDPR’s requirements for "data protection by design and by default" mean that pipelines must include automated validation of data-protection implementations. Article 25 requires technical and organisational measures to ensure that only personal data necessary for specific purposes is processed. For Architecture as Code pipelines this translates into automated scanning for GDPR compliance, data-residency validation, and audit-trail generation.
+- **Data-protection controls (GDPR Article 25):** Integrate static and dynamic scanning that confirms personal data is stored only in approved regions, encryption defaults are enforced, and change logs capture purpose, actor, and retention metadata. The detailed pipeline in [Appendix A](30_appendix_code_examples.md#05_code_1) demonstrates the implementation without repeating the full specification here.
+- **Operational resilience (DORA):** Expand pipeline stages to include chaos-testing artefacts, recovery-plan validation, and machine-readable evidence packs for supervisory reporting.
+- **Critical infrastructure security (NIS2):** Run policy-as-code checks for network segmentation, incident-notification thresholds, and supplier assurance every time a change is promoted between environments.
+- **Industry-specific overlays:** Add modular validation suites (for example PCI DSS tokenisation rules or healthcare data-classification policies) only where the business operates, avoiding lengthy global lists that dilute relevance.
 
-Guidance from data-protection regulators on technical security measures demands systematic implementation of encryption, access controls, and logging. Manual processes are ineffective and error-prone when applied to modern dynamic infrastructure. CI/CD automation offers the opportunity to enforce these requirements consistently through policies as code and automated compliance validation.
-
-National emergency and civil-protection agencies often issue regulations for socially critical operations that require robust incident management, continuity planning, and systematic risk assessment. Organisations in energy, transport, finance, and other critical sectors must incorporate specialised validations for operational resilience and disaster recovery capabilities into their CI/CD flows.
-
-### Economic considerations for regulated organisations
-
-Cost optimisation in local currencies requires advanced monitoring and budget controls that traditional CI/CD patterns rarely provide. Regulated enterprises must manage currency exposure, regional price differences, and compliance costs that affect infrastructure investments.
-
-Cloud-provider pricing varies significantly between regions. Organisations with data residency requirements are often restricted to EU regions, which can be more expensive than global options. Pipelines should therefore include cost estimation, budget-threshold validation, and automated resource optimisation aligned with the organisation’s economic realities.
-
-Quarterly budgeting and industry accounting standards require detailed cost allocation and forecasting, which automated pipelines can deliver through integration with financial systems and finance-friendly reporting. This supports proactive cost management instead of reactive oversight.
-
-### GDPR-compliant pipeline design
-
-GDPR compliance in Architecture as Code pipelines requires a holistic approach that integrates data-protection principles into every automation step. Article 25 mandates "data protection by design and by default", meaning that technical and organisational measures must be implemented from the earliest design stages of systems and processes.
-
-Pipelines must therefore validate automatically that all architecture released complies with GDPR principles such as data minimisation, purpose limitation, and storage limitation. Personal data must never be hard-coded in architecture configuration, encryption must be enforced by default, and audit trails must be generated for every architecture change that could affect personal data.
-
-**Data discovery and classification:** Automated scanning for personal data patterns in infrastructure code forms the first line of defence. CI/CD flows should implement sophisticated scanning able to identify both direct identifiers (such as national identity numbers) and indirect identifiers that can identify individuals when combined. Practical implementations need to avoid hard-coded, country-specific assumptions and instead lean on reusable pattern libraries that represent the broader European regulatory landscape. Typical data classes to capture include:
-
-- **Financial identifiers:** International Bank Account Numbers (IBAN), Business Identifier Codes (BIC), and EU VAT numbers that are frequently embedded in configuration files for billing automation.
-- **Identity credentials:** European passport numbers, national identity cards, eIDs, and biometric templates stored for authentication workflows.
-- **Logistics and trade identifiers:** Economic Operators Registration and Identification (EORI) values, licence plate numbers, and shipment references that can become personal data in supply-chain scenarios.
-
-Scanners should also ingest custom dictionaries that capture organisation-specific identifiers—such as membership numbers or student IDs—so that the pipeline provides consistent protection for every EU jurisdiction where the architecture is deployed.
-
-**Automated compliance validation:** Policy engines such as Open Policy Agent (OPA) or cloud-provider-specific compliance tools can automatically verify that infrastructure configurations meet GDPR requirements. This includes checking encryption settings, access controls, data-retention policies, restrictions on cross-border data transfers, and verification that cloud regions remain within the approved EU footprint (for example `eu-west-1`, `eu-central-1`, or `eu-south-1`).
-
-**Audit-trail generation:** Every pipeline execution must produce comprehensive audit logs documenting what was deployed, by whom, when, and why. These logs must themselves follow GDPR principles for personal-data handling and be stored securely in line with applicable legal retention requirements.
-
-**GDPR-compliant CI/CD pipeline example**
-*[See code example 05_CODE_1 in Appendix A: Code Examples](30_appendix_code_examples.md#05_code_1)*
-
-This pipeline example demonstrates how regulated organisations can embed GDPR compliance directly into their CI/CD processes, including automatic scanning for personal data and validation of data residency.
+Centralising these patterns prevents the same compliance narrative from appearing in multiple chapters whilst reinforcing that CI/CD automation must produce verifiable evidence bundles for audit teams.
 
 ## CI/CD pipelines for Architecture as Code
 
@@ -287,12 +249,12 @@ Effective CI/CD pipelines for Architecture as Code are built on design principle
 
 ### Fail-fast feedback and progressive validation
 
-Fail-fast feedback is the cornerstone of CI/CD. Errors are detected and reported as early as possible in the development lifecycle. For Architecture as Code this means multilayer validation—from syntax checks to comprehensive security scanning—before any infrastructure reaches production.
+Fail-fast feedback is the cornerstone of CI/CD because it protects architectural integrity and delivery cadence. Instead of re-describing each validation stage, the table below concentrates on why each layer matters and which signals it contributes to the shared telemetry dashboard.
 
 | Validation Layer | Purpose | Tools & Technologies | Detection Capabilities |
 |-------------------|---------|---------------------|------------------------|
 | Syntax and static analysis | Check for syntax errors, undefined variables, and configuration mistakes | `terraform validate`, `ansible-lint`, provider-specific validators | Syntax errors, type mismatches, undefined references before deployment |
-| Security and compliance scanning | Analyse for security misconfigurations and compliance violations | Checkov, tfsec, Terrascan | GDPR violations, unencrypted resources, data-residency issues, security misconfigurations |
+| Security and compliance scanning | Analyse for security misconfigurations and compliance violations | Checkov, tfsec, Terrascan | Regulatory breaches (GDPR, NIS2 controls), unencrypted resources, data-residency issues, security misconfigurations |
 | Cost estimation and budget validation | Estimate financial impact of infrastructure changes | Infracost, cloud provider cost calculators | Cost overruns, budget violations, resource inefficiencies before provisioning |
 | Policy validation | Automated checks against organisational policies | Open Policy Agent (OPA), cloud-native policy engines | Naming violations, architectural standard deviations, configuration policy breaches |
 
@@ -408,6 +370,8 @@ Architecture as Code testing is organised into multiple levels:
 - **Architecture system tests:** verify end-to-end architectural quality and performance.
 - **Architecture acceptance tests:** confirm that the architecture meets business and compliance requirements.
 
+To avoid abstract repetition, each level is illustrated in the chapters dedicated to its execution: Chapter 13 shows how Terratest and Vitest assert module behaviour, Chapter 15 uses cost-optimisation tests as integration gates, and Chapter 12 demonstrates acceptance criteria that evidence regulatory compliance. This chapter therefore focuses on where the tests run inside the pipeline and how their results feed automated approval workflows.
+
 
 
 ## Cost optimisation integration
@@ -480,7 +444,7 @@ data:
 
 ## DevOps culture for Architecture as Code
 
-Architecture as Code requires a mature DevOps culture capable of managing holistic system thinking while sustaining agility and innovation. For organisations this means adapting DevOps principles to national values of consensus, transparency, and responsible risk management.
+AaC depends on observable DevOps behaviours that demonstrate holistic system thinking whilst sustaining agility and innovation. For organisations this means adapting DevOps principles to national values of consensus, transparency, and responsible risk management.
 
 ### Architecture as Code cultural practices
 
@@ -492,11 +456,11 @@ Architecture as Code requires a mature DevOps culture capable of managing holist
 
 ## Summary
 
-Architecture as Code represents the future of infrastructure management for organisations. Automation, DevOps, and CI/CD pipelines tailored for Architecture as Code form a critical component for organisations striving for digital excellence and regulatory compliance. By implementing robust, automated pipelines, teams accelerate architectural delivery while maintaining high standards for security, quality, and compliance.
+Architecture as Code represents the future of infrastructure management for organisations. Automation, DevOps, and CI/CD pipelines tailored for AaC form a critical component for organisations striving for digital excellence and regulatory compliance. By implementing robust, automated pipelines, teams accelerate architectural delivery while maintaining high standards for security, quality, and compliance.
 
-Architecture as Code is the next evolutionary step where DevOps culture and CI/CD processes cover the entire system architecture as a cohesive unit. This holistic approach requires sophisticated pipelines that orchestrate applications, data, infrastructure, and policies as an integrated whole while satisfying compliance requirements.
+This evolution places DevOps practices and CI/CD processes at the centre of the entire system architecture, orchestrating applications, data, infrastructure, and policies as an integrated whole whilst satisfying compliance requirements.
 
-organisations face specific demands that influence pipeline design, including GDPR validation, data-residency enforcement, cost optimisation , and integration with local business processes. Meeting these demands requires specialised pipeline stages for automated compliance checking, cost-threshold validation, and comprehensive audit logging that satisfies national legislation.
+Organisations face specific demands that influence pipeline design, including GDPR validation, data-residency enforcement, cost optimisation, and integration with local business processes. Meeting these demands requires specialised pipeline stages for automated compliance checking, cost-threshold validation, and comprehensive audit logging that satisfies national legislation.
 
 Modern CI/CD approaches such as GitOps, progressive delivery, and infrastructure testing enable deployment strategies that minimise risk while maximising velocity. For organisations this includes blue-green deployments for production systems, canary releases for gradual rollouts, and automated rollback capabilities for rapid recovery.
 
