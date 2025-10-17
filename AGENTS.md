@@ -47,21 +47,29 @@ Book Building Validation
 python3 generate_book.py && docs/build_book.sh
 
 # Verify outputs
-ls -la docs/architecture_as_code.pdf  # Should be ~95KB
-ls -la docs/images/*.png              # Should show 12 PNG files
-file docs/architecture_as_code.pdf    # Should confirm valid PDF
+ls -la releases/book/architecture_as_code.pdf   # Primary PDF output
+ls -la releases/book/architecture_as_code.epub  # EPUB export
+ls -la releases/book/architecture_as_code.docx  # DOCX export
+find docs/images -name '*.png' | wc -l          # Should match the Mermaid diagram count (~100)
+file releases/book/architecture_as_code.pdf     # Should confirm valid PDF
 Expected outputs:
-	•	PDF file: docs/architecture_as_code.pdf (~95KB)
-	•	12 Mermaid diagrams converted to PNG in docs/images/
+	•	PDF/EPUB/DOCX files generated in `releases/book/`
+	•	All Mermaid `.mmd` diagrams converted to PNG (currently ~100 images)
 	•	No errors during Pandoc PDF generation
 Key Technical Details
 Repository Structure
 docs/                     # Book content
-├── *.md                 # 15 markdown chapter files
-├── images/*.mmd         # 12 Mermaid diagram source files
-├── images/*.png         # Generated PNG diagrams
-├── build_book.sh        # Local PDF build script
-└── architecture_as_code.pdf # Generated book (95KB with images)
+├── [0-9]*.md            # 34 numbered chapters and appendices (01_…33_)
+├── part_*.md            # Part introductions
+├── images/*.mmd         # Mermaid diagram source files (≈100)
+├── images/*.png         # Generated PNG diagrams (kept under version control)
+├── build_book.sh        # Local PDF/EPUB/DOCX build script
+└── pandoc.yaml          # Shared Pandoc configuration
+
+releases/book/           # Generated book formats (git-ignored, created by builds)
+├── architecture_as_code.pdf
+├── architecture_as_code.epub
+└── architecture_as_code.docx
 
 .github/workflows/       # CI/CD automation
 └── build-book.yml      # Automated PDF publishing on push
@@ -122,4 +130,3 @@ Critical Notes
 	•	Chrome dependency required: Mermaid CLI needs Chrome browser for PNG generation
 	•	British English content: All manuscript text and automation outputs are maintained in British English (e.g., "optimisation" not "optimization", "colour" not "color")
 	•	PDF generation works: Even if Mermaid fails, Pandoc will generate PDF with text placeholders
-
