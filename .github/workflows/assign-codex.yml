@@ -1,117 +1,132 @@
-name: Automatically create draft PRs for issues without PRs
+name: Assign Codex & run task for PRs linked to issues
 
 on:
-  issues:
-    types: [opened, reopened]
-  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
-  issues: write
+  issues: read
 
 jobs:
-  create_prs:
+  assign-and-codex:
     runs-on: ubuntu-latest
-    env:
-      GH_REPO: ${{ github.repository }}
-      GH_TOKEN: ${{ secrets.BOT_ISSUE }}
+
     steps:
-      - name: Checkout (without Actions bot credentials)
-        uses: actions/checkout@v5
+      # 1) Check out the PR’s merge reference so Codex can inspect the full diff
+      - name: Check out PR (merge ref)
+        uses: actions/checkout@v4
         with:
-          persist-credentials: false
-          fetch-depth: 0
+          ref: refs/pull/${{ github.event.pull_request.number }}/merge
 
-      - name: Configure git as BOT_ISSUE user and set remote
+      - name: Prefetch base & head refs
         run: |
-          set -euo pipefail
-          NAME=$(gh api user --jq .name || echo "")
-          EMAIL=$(gh api user/emails --jq 'map(select(.primary==true))[0].email' || echo "")
-          git config user.name "${NAME:-codex-bot}"
-          git config user.email "${EMAIL:-codex-bot@example.invalid}"
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git"
+          git fetch --no-tags origin \
+            ${{ github.event.pull_request.base.ref }} \
+            +refs/pull/${{ github.event.pull_request.number }}/head
 
-      - name: Determine default branch
-        run: |
-          set -euo pipefail
-          DEFAULT_BRANCH=$(gh repo view "$GH_REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
-          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> "$GITHUB_ENV"
+      # 2) (Keep any existing "assign" logic here if your workflow
+      #     already auto-assigns reviewers or labels – leave those steps
+      #     above or below this section as needed.)
 
-      - name: Build issue list (current issue or all open)
+      # 3) Detect issues linked to the PR via GraphQL (closingIssuesReferences)
+      - name: Detect linked issues
+        id: linked
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          set -euo pipefail
-          if [ "${GITHUB_EVENT_NAME}" = "issues" ]; then
-            jq -r '.issue.number' < "$GITHUB_EVENT_PATH" > issues.txt
+          q='query($owner:String!,$repo:String!,$number:Int!){
+            repository(owner:$owner,name:$repo){
+              pullRequest(number:$number){
+                closingIssuesReferences(first: 10){ nodes { number title } }
+              }
+            }
+          }'
+          data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO" -F number="$PR_NUMBER")
+          nums=$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes | map(.number) | join(",")')
+          if [[ -n "$nums" ]]; then
+            echo "has=true" >> $GITHUB_OUTPUT
+            echo "numbers=$nums" >> $GITHUB_OUTPUT
           else
-            gh issue list --repo "$GH_REPO" --state open --json number --jq '.[].number' > issues.txt
+            echo "has=false" >> $GITHUB_OUTPUT
           fi
-          echo "Issues to process:"
-          cat issues.txt || true
 
-      - name: Create draft PRs where missing and comment on the PR
+      - name: Skip if PR has no linked issues
+        if: steps.linked.outputs.has != 'true'
+        run: echo "No linked issues → skipping Codex run."
+
+      # 4) Retrieve the first linked issue for additional context in the prompt
+      - name: Fetch first linked issue
+        if: steps.linked.outputs.has == 'true'
+        id: issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
         run: |
-          set -euo pipefail
+          first=$(echo "${{ steps.linked.outputs.numbers }}" | awk -F',' '{print $1}')
+          issue_json=$(gh api repos/$OWNER/$REPO/issues/$first)
+          echo "num=$first" >> $GITHUB_OUTPUT
+          echo "title=$(echo "$issue_json" | jq -r .title)" >> $GITHUB_OUTPUT
+          {
+            echo "body<<'EOF'"
+            echo "$issue_json" | jq -r .body
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
-          while read -r ISSUE_NUMBER; do
-            [ -n "$ISSUE_NUMBER" ] || continue
-            echo "::group::Processing issue #$ISSUE_NUMBER"
+      # 5) Run Codex as an “autonomous task” for this PR + issue combination
+      - name: Run Codex task for PR + linked issue
+        if: steps.linked.outputs.has == 'true'
+        id: run_codex
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          safety-strategy: read-only   # read the repo, do not write locally
+          prompt: |
+            You are Codex running as an automated task for PR #${{ github.event.pull_request.number }}
+            in ${{ github.repository }}. The PR is linked to issue(s) #${{ steps.linked.outputs.numbers }}.
 
-            TITLE=$(gh issue view "$ISSUE_NUMBER" --repo "$GH_REPO" --json title --jq .title)
+            Objectives:
+            - Read the linked issue details and the PR diff.
+            - If the PR already resolves the issue, write a concise verification note.
+            - Otherwise, propose precise follow-ups (edits, tests, documentation) and include concrete unified diff hunks.
 
-            # Check if a PR already references this issue
-            LINKED_PR=$(gh pr list --repo "$GH_REPO" --state all --search "Closes #${ISSUE_NUMBER}" --json number --jq '.[].number' || true)
-            PR_NUMBER=""
-            PR_URL=""
+            Repository context:
+            - Base SHA: ${{ github.event.pull_request.base.sha }}
+            - Head SHA: ${{ github.event.pull_request.head.sha }}
 
-            if [ -n "$LINKED_PR" ]; then
-              PR_NUMBER="$LINKED_PR"
-              PR_URL=$(gh pr view "$PR_NUMBER" --repo "$GH_REPO" --json url --jq .url || echo "")
-              echo "PR already exists for issue #$ISSUE_NUMBER (#$PR_NUMBER)."
-            else
-              # Reuse or create a branch
-              EXISTING=$(git ls-remote --heads origin "refs/heads/codex/issue-${ISSUE_NUMBER}-*" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
-              if [ -n "$EXISTING" ]; then
-                BRANCH="$EXISTING"
-                git fetch origin "$BRANCH" --depth=1
-                git switch "$BRANCH"
-              else
-                SLUG=$(printf '%s' "$TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
-                BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
-                git fetch origin "$DEFAULT_BRANCH" --depth=1
-                git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
-                git commit --allow-empty -m "Initial draft for issue #${ISSUE_NUMBER}"
-                git push --set-upstream origin "$BRANCH"
-              fi
+            Linked issue (number, title, then body):
+            #${{ steps.issue.outputs.num }} — ${{ steps.issue.outputs.title }}
+            ---
+            ${{ steps.issue.outputs.body }}
 
-              # Create draft PR
-              BODY_TEXT="This draft PR was automatically created for this issue.\n\nCloses #${ISSUE_NUMBER}"
-              PR_URL=$(gh pr create \
-                --base "$DEFAULT_BRANCH" \
-                --head "$BRANCH" \
-                --title "Draft: Issue #${ISSUE_NUMBER} - ${TITLE}" \
-                --body "$BODY_TEXT" \
-                --draft \
-                --repo "$GH_REPO" 2>/dev/null || echo "")
+            Pull request title and body:
+            ---
+            ${{ github.event.pull_request.title }}
 
-              # Resolve PR number from branch (or URL) so we can comment
-              if [ -z "$PR_URL" ]; then
-                PR_NUMBER=$(gh pr view "$BRANCH" --repo "$GH_REPO" --json number --jq .number 2>/dev/null || echo "")
-                PR_URL=$(gh pr view "$BRANCH" --repo "$GH_REPO" --json url --jq .url 2>/dev/null || echo "")
-              else
-                PR_NUMBER=$(gh pr view "$BRANCH" --repo "$GH_REPO" --json number --jq .number 2>/dev/null || echo "")
-              fi
-            fi
+            ${{ github.event.pull_request.body }}
 
-            # Comment on the PR (only if we resolved a PR number)
-            if [ -n "$PR_NUMBER" ]; then
-              gh pr comment "$PR_NUMBER" \
-                --repo "$GH_REPO" \
-                --body "@codex - Fix the issue using this draft PR."
-              echo "Commented on PR #$PR_NUMBER"
-            else
-              echo "No PR number resolved; skipping PR comment."
-            fi
+            Output format:
+            1) One-paragraph summary.
+            2) Checklist of actionable items.
+            3) If proposing changes, include unified diff hunks ready to apply.
 
-            echo "::endgroup::"
-          done < issues.txt
+      # 6) Post the Codex result as a comment on the PR
+      - name: Post Codex result as PR comment
+        if: steps.linked.outputs.has == 'true' && steps.run_codex.outputs.final-message != ''
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body:
+                "🤖 **Codex task result (linked to issue(s) #${{ steps.linked.outputs.numbers }})**\n\n" +
+                ${{ toJSON(steps.run_codex.outputs['final-message']) }}
+            })
