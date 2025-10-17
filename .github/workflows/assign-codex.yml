@@ -14,7 +14,7 @@ permissions:
 jobs:
   # ------------------------------------------------------------
   # Job A – From new or reopened issue → create/reuse draft PR
-  # and (NEW) run Codex immediately on that PR if it's linked.
+  # and run Codex immediately on that PR if it's linked.
   # ------------------------------------------------------------
   create_or_reuse_draft_pr:
     if: github.event_name == 'issues'
@@ -114,23 +114,9 @@ jobs:
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
 
-      - name: Comment on PR (ping @codex)
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api repos/$REPO/issues/$PR_NUMBER/comments \
-            -f body='@codex - Please address this draft PR.'
-          echo "::debug::Comment added to PR #$PR_NUMBER"
+      # (Removed the two @codex comment steps as requested)
 
-      - name: Comment in the original issue (link to PR and ping @codex)
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api repos/$REPO/issues/$ISSUE_NUMBER/comments \
-            -f body="A draft PR has been created or reused for this issue: ${PR_URL}\n\n@codex - please take a look."
-          echo "::debug::Comment added to Issue #$ISSUE_NUMBER"
-
-      # ---------------- NEW: Run Codex immediately on the newly created/reused PR ----------------
+      # ---------------- Run Codex immediately on the newly created/reused PR ----------------
 
       - name: Check out PR (merge ref) for Codex context
         uses: actions/checkout@v4
@@ -144,14 +130,20 @@ jobs:
         run: |
           set -euo pipefail
           pr=$(gh pr view "$PR_NUMBER" --json headRefOid,baseRefOid,title,body,number)
-          echo "base_sha=$(echo "$pr" | jq -r .baseRefOid)" >> $GITHUB_OUTPUT
-          echo "head_sha=$(echo "$pr" | jq -r .headRefOid)" >> $GITHUB_OUTPUT
-          echo "pr_title<<'EOF'" >> $GITHUB_OUTPUT
-          echo "$pr" | jq -r .title >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "pr_body<<'EOF'" >> $GITHUB_OUTPUT
-          echo "$pr" | jq -r .body >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+
+          base_sha=$(echo "$pr" | jq -r .baseRefOid)
+          head_sha=$(echo "$pr" | jq -r .headRefOid)
+          pr_title=$(echo "$pr" | jq -r .title)
+          pr_body=$(echo "$pr" | jq -r .body)
+
+          echo "base_sha=$base_sha" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$head_sha" >> "$GITHUB_OUTPUT"
+          echo "pr_title=$pr_title" >> "$GITHUB_OUTPUT"
+          {
+            echo "pr_body<<EOF"
+            echo "$pr_body"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Detect linked issues for this PR
         id: linked_issue_in_job_a
@@ -191,8 +183,8 @@ jobs:
           echo "num=$first" >> $GITHUB_OUTPUT
           echo "title=$(echo "$issue_json" | jq -r .title)" >> $GITHUB_OUTPUT
           {
-            echo "body<<'EOF'"
-            echo "$issue_json" | jq -r .body
+            echo "body<<EOF"
+            echo "$(echo "$issue_json" | jq -r .body)"
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
@@ -307,8 +299,8 @@ jobs:
           echo "num=$first" >> $GITHUB_OUTPUT
           echo "title=$(echo "$issue_json" | jq -r .title)" >> $GITHUB_OUTPUT
           {
-            echo "body<<'EOF'"
-            echo "$issue_json" | jq -r .body
+            echo "body<<EOF"
+            echo "$(echo "$issue_json" | jq -r .body)"
             echo "EOF"
           } >> $GITHUB_OUTPUT
 
