@@ -74,7 +74,7 @@ jobs:
           Return ONLY strict JSON in this schema (UTF-8, no trailing commas):
           {"issues":[{"title_british":"string","body_british":"string","labels":["string"],"assignees":["string"]}]}
           No explanations outside the JSON.
-EOF
+          EOF
 
           # 2) Convert instruction file to safe JSON string
           INSTRUCT=$(jq -Rs '.' /tmp/instruct.txt)
