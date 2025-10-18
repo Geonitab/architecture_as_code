@@ -88,6 +88,9 @@ This section provides a comprehensive list of all sources and references cited t
 **Open Policy Agent.** "Policy as Code Overview." https://www.openpolicyagent.org/docs/latest/  
 *Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
+**OMG.** "Model Driven Architecture (MDA)." Object Management Group White Paper, 2001.  
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
+
 **PlantUML.** "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. https://plantuml.com/  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
@@ -97,8 +100,11 @@ This section provides a comprehensive list of all sources and references cited t
 **Richardson, C.** "Microservices Patterns: With Examples in Java." Manning Publications, 2018.  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
+**Schmidt, D. C.** "Model-Driven Engineering." IEEE Computer, 2006.  
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
+
 **Selic, B.** "The Pragmatics of Model-Driven Development." IEEE Software, 2003.  
-*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **Structurizr.** "Structurizr DSL Language Reference." Structurizr Documentation, 2024. https://github.com/structurizr/dsl  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
