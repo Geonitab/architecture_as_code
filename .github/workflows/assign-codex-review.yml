@@ -1,8 +1,8 @@
 name: Assign Codex Review
 
 on:
-  # pull_request:
-   # types: [ready_for_review]
+  pull_request:
+  types: [ready_for_review]
   workflow_dispatch:
     inputs:
       pr_number:
@@ -50,7 +50,7 @@ jobs:
                 issue_number: prNumber,
                 body: marker
               });
-              core.info(`💬 PR #${prNumber}: added Copilot verification comment.`);
+              core.info(`💬 PR #${prNumber}: added Codex verification comment.`);
             };
 
             if (context.eventName === "workflow_dispatch") {
