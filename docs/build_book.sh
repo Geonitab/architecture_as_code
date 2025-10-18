@@ -340,6 +340,10 @@ for chapter_file in "${CHAPTER_FILES[@]}"; do
     NON_LATEX_CHAPTER_FILES+=("$chapter_file")
 done
 
+# Include a dedicated cover page for non-LaTeX formats so they do not inherit
+# the LaTeX-specific cover injected via include-before.
+NON_LATEX_CHAPTER_FILES=("00_cover_page.md" "${NON_LATEX_CHAPTER_FILES[@]}")
+
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
 
 # Check if PDF was actually generated
@@ -428,7 +432,9 @@ generate_other_formats() {
     echo "Generating EPUB format..."
 
     # Generate EPUB with improved metadata
-    if pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" \
+    if pandoc --defaults=pandoc.yaml \
+        --variable=include-before= \
+        "${NON_LATEX_CHAPTER_FILES[@]}" \
         -t epub \
         -o "$OUTPUT_EPUB" \
         --metadata date="$(date +'%Y-%m-%d')" \
@@ -465,7 +471,11 @@ generate_other_formats() {
     fi
 
     echo "Generating DOCX format..."
-    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" -t docx -o "$OUTPUT_DOCX"
+    pandoc --defaults=pandoc.yaml \
+        --variable=include-before= \
+        "${NON_LATEX_CHAPTER_FILES[@]}" \
+        -t docx \
+        -o "$OUTPUT_DOCX"
     echo "DOCX generated: $OUTPUT_DOCX"
     cp "$OUTPUT_DOCX" "$RELEASE_DOCX"
     echo "DOCX copied to release directory: $RELEASE_DOCX"
