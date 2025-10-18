@@ -24,6 +24,9 @@ jobs:
   # - Single issue when event == 'issues'
   # - Loop all open issues when schedule/dispatch
   # - Skips on pull_request events (handled by pr_codex)
+  # - Skips issues that:
+  #     * have a merged linked PR (via CrossReferencedEvent → PullRequest.mergedAt)
+  #     * have any label in EXCLUDE_LABELS (comma-separated)
   # Exposes: outputs.matrix (JSON array of {branch, pr_number})
   # ============================================================
   prepare_targets:
@@ -33,6 +36,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     env:
       REPO: ${{ github.repository }}
+      EXCLUDE_LABELS: discussion  # comma-separated list; e.g. "discussion,question,needs-design"
     steps:
       - name: Enable debug logging
         run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
@@ -50,22 +54,67 @@ jobs:
           DEFAULT_BRANCH=$(gh repo view "$REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
           echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
 
-      - name: Ensure draft PRs and collect targets
+      - name: Ensure draft PRs and collect targets (with filters)
         id: ensure-and-collect
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ env.REPO }}
           DEFAULT_BRANCH: ${{ env.DEFAULT_BRANCH }}
+          EXCLUDE_LABELS: ${{ env.EXCLUDE_LABELS }}
         run: |
           set -euo pipefail
           echo "[]" > targets.json
+
+          has_merged_linked_pr () {
+            # returns 0 (true) if there is at least one merged PR cross-referenced to the issue
+            local ISSUE_NUMBER="$1"
+            local OWNER REPO_NAME
+            OWNER="${REPO%%/*}"
+            REPO_NAME="${REPO##*/}"
+            local q='query($owner:String!,$repo:String!,$number:Int!){
+              repository(owner:$owner,name:$repo){
+                issue(number:$number){
+                  timelineItems(itemTypes: CROSS_REFERENCED_EVENT, first: 50){
+                    nodes{
+                      __typename
+                      ... on CrossReferencedEvent{
+                        source{
+                          __typename
+                          ... on PullRequest{
+                            number
+                            state
+                            mergedAt
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }'
+            local data
+            data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO_NAME" -F number="$ISSUE_NUMBER" 2>/dev/null || true)
+            # True if any CrossReferencedEvent.source is PullRequest and mergedAt != null
+            echo "$data" | jq -e '
+              (.data.repository.issue.timelineItems.nodes // []) 
+              | map(select(.source.__typename=="PullRequest" and (.source.mergedAt != null))) 
+              | length > 0
+            ' >/dev/null
+          }
 
           create_or_reuse_for_issue () {
             local ISSUE_NUMBER="$1"
             local ISSUE_TITLE="$2"
 
             echo "::group::Processing issue #$ISSUE_NUMBER – $ISSUE_TITLE"
+
+            # Skip if merged linked PR already exists
+            if has_merged_linked_pr "$ISSUE_NUMBER"; then
+              echo "::notice::Skipping issue #$ISSUE_NUMBER – already has a merged linked PR."
+              echo "::endgroup::"
+              return 0
+            fi
 
             # Find existing branch or create a new one
             PREFIX="refs/heads/codex/issue-${ISSUE_NUMBER}-*"
@@ -115,16 +164,26 @@ jobs:
             echo "::endgroup::"
           }
 
-          if [ "${{ github.event_name }}" = "issues" ]; then
-            create_or_reuse_for_issue "${{ github.event.issue.number }}" "${{ github.event.issue.title }}"
-          else
-            # Loop all open issues on schedule/dispatch
-            gh issue list --repo "$REPO" --state open --json number,title \
-              | jq -r '.[] | "\(.number)|\(.title)"' \
-              | while IFS='|' read -r num title; do
-                  create_or_reuse_for_issue "$num" "$title"
+          # Build candidate list and filter by labels before processing
+          gh issue list --repo "$REPO" --state open --json number,title,labels \
+            | jq -r '.[] | "\(.number)|\(.title)|\([.labels[].name] | join(","))"' \
+            | while IFS='|' read -r num title labelcsv; do
+                # Label filter: skip if any label is in EXCLUDE_LABELS (case-insensitive, word match)
+                skip=0
+                IFS=',' read -ra labels <<< "${labelcsv}"
+                for l in "${labels[@]}"; do
+                  lname="$(echo "$l" | tr '[:upper:]' '[:lower:]' | xargs)"
+                  if [[ ",$(echo "$EXCLUDE_LABELS" | tr '[:upper:]' '[:lower:]' | tr -d ' ')," == *",$lname,"* ]]; then
+                    echo "::notice::Skipping issue #$num – excluded label: $l"
+                    skip=1
+                    break
+                  fi
                 done
-          fi
+                [[ $skip -eq 1 ]] && continue
+
+                # Process the issue (creates/reuses branch + ensures PR unless already satisfied)
+                create_or_reuse_for_issue "$num" "$title"
+              done
 
           echo "Targets collected:"
           cat targets.json
@@ -132,9 +191,9 @@ jobs:
       - name: Set matrix output
         id: set-matrix
         run: |
-          MATRIX=$(cat targets.json)
-          # When triggered by schedule/dispatch, MATRIX may have many entries; for issues, just one.
-          echo "matrix=${MATRIX}" >> $GITHUB_OUTPUT
+          # Compact (single-line) JSON is required for $GITHUB_OUTPUT
+          MATRIX=$(jq -c . targets.json)
+          echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
 
   # ============================================================
   # JOB 1 – Run Codex for each target from matrix (issues/schedule/dispatch)
