@@ -6,8 +6,8 @@ on:
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
   workflow_dispatch:
-  # schedule:
-    # - cron: '*/30 * * * *'
+  schedule:
+    - cron: '*/30 * * * *'
 
 permissions:
   contents: write
@@ -21,13 +21,6 @@ concurrency:
 jobs:
   # ============================================================
   # JOB 0 – Prepare targets (ensure draft PRs, build matrix)
-  # - Single issue when event == 'issues'
-  # - Loop all open issues when schedule/dispatch
-  # - Skips on pull_request events (handled by pr_codex)
-  # - Skips issues that:
-  #     * have a merged linked PR (via CrossReferencedEvent → PullRequest.mergedAt)
-  #     * have any label in EXCLUDE_LABELS (comma-separated)
-  # Exposes: outputs.matrix (JSON array of {branch, pr_number})
   # ============================================================
   prepare_targets:
     if: github.event_name != 'pull_request'
@@ -36,7 +29,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     env:
       REPO: ${{ github.repository }}
-      EXCLUDE_LABELS: discussion  # comma-separated list; e.g. "discussion,question,needs-design"
+      EXCLUDE_LABELS: discussion
     steps:
       - name: Enable debug logging
         run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
@@ -67,7 +60,6 @@ jobs:
           echo "[]" > targets.json
 
           has_merged_linked_pr () {
-            # returns 0 (true) if there is at least one merged PR cross-referenced to the issue
             local ISSUE_NUMBER="$1"
             local OWNER REPO_NAME
             OWNER="${REPO%%/*}"
@@ -95,10 +87,9 @@ jobs:
             }'
             local data
             data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO_NAME" -F number="$ISSUE_NUMBER" 2>/dev/null || true)
-            # True if any CrossReferencedEvent.source is PullRequest and mergedAt != null
             echo "$data" | jq -e '
-              (.data.repository.issue.timelineItems.nodes // []) 
-              | map(select(.source.__typename=="PullRequest" and (.source.mergedAt != null))) 
+              (.data.repository.issue.timelineItems.nodes // [])
+              | map(select(.source.__typename=="PullRequest" and (.source.mergedAt != null)))
               | length > 0
             ' >/dev/null
           }
@@ -168,7 +159,7 @@ jobs:
           gh issue list --repo "$REPO" --state open --json number,title,labels \
             | jq -r '.[] | "\(.number)|\(.title)|\([.labels[].name] | join(","))"' \
             | while IFS='|' read -r num title labelcsv; do
-                # Label filter: skip if any label is in EXCLUDE_LABELS (case-insensitive, word match)
+                # Label filter: skip if any label is in EXCLUDE_LABELS (case-insensitive)
                 skip=0
                 IFS=',' read -ra labels <<< "${labelcsv}"
                 for l in "${labels[@]}"; do
@@ -181,7 +172,6 @@ jobs:
                 done
                 [[ $skip -eq 1 ]] && continue
 
-                # Process the issue (creates/reuses branch + ensures PR unless already satisfied)
                 create_or_reuse_for_issue "$num" "$title"
               done
 
@@ -191,7 +181,6 @@ jobs:
       - name: Set matrix output
         id: set-matrix
         run: |
-          # Compact (single-line) JSON is required for $GITHUB_OUTPUT
           MATRIX=$(jq -c . targets.json)
           echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
 
@@ -202,8 +191,12 @@ jobs:
     needs: prepare_targets
     if: needs.prepare_targets.outputs.matrix != '[]' && needs.prepare_targets.outputs.matrix != ''
     runs-on: ubuntu-latest
+    concurrency:
+      group: codex-global
+      cancel-in-progress: false
     strategy:
       fail-fast: false
+      max-parallel: 1   # <— Serialize Codex calls to avoid rate limiting
       matrix:
         target: ${{ fromJSON(needs.prepare_targets.outputs.matrix) }}
     env:
@@ -258,7 +251,6 @@ jobs:
             [[ -n "$nums" ]] && break || sleep 2
           done
           if [[ -z "$nums" ]]; then
-            # fallback: parse first number from branch like codex/issue-123-...
             nums=$(echo "$BRANCH" | sed -n 's#.*issue-\([0-9]\+\).*#\1#p')
           fi
           echo "numbers=$nums" >> $GITHUB_OUTPUT
@@ -306,6 +298,9 @@ jobs:
   pr_codex:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    concurrency:
+      group: codex-global   # <— Do not overlap with matrix Codex runs
+      cancel-in-progress: false
     env:
       REPO: ${{ github.repository }}
     steps:
