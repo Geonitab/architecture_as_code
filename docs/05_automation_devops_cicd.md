@@ -35,6 +35,11 @@ In delivery pipelines this abstraction boundary becomes explicit. Architecture a
 - **Infrastructure pipeline consumption:** Terraform, Pulumi, or Kubernetes jobs load the architecture release, enforce those policies during plan/apply stages, and attach attestation evidence to change records.
 - **Feedback loop:** Monitoring and drift-detection tooling surface deviations and reliability telemetry back to the architecture repository so architects can tighten or relax guardrails based on production behaviour.
 
+> **Responsibility handshake**
+> - Architecture as Code curates the opinionated guardrails, quality models, and reusable pattern libraries that every delivery squad must consume before proposing infrastructure changes, keeping architectural intent auditable and repeatable (ThoughtWorks Technology Radar, Vol. 28, 2024).
+> - Infrastructure as Code assembles runtime workloads within those boundaries, embedding the latest architecture release into Terraform, Pulumi, or Helm pipelines so each execution demonstrates compliance evidence rather than reinventing standards (AWS Cloud Development Kit Developer Guide, 2023).
+> - When new runtime needs emerge, platform teams raise change requests through the Architecture as Code repository; the architecture layer evolves first, and Infrastructure as Code follows, preventing undocumented divergence.
+
 Together they form a contract: Architecture as Code provides the standards and approval logic, while Infrastructure as Code operationalises workloads and feeds telemetry back into architectural decision-making.
 
 **Sources:**
