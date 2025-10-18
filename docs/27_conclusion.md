@@ -79,6 +79,8 @@ Centres of excellence or platform teams can accelerate adoption by curating reus
 implementations, and providing hands-on support. Governance structures maintain security and compliance without constraining
 innovation, enabling teams to deliver change with confidence.
 
+HashiCorp's *State of Cloud Strategy Survey 2024* found that 89 per cent of organisations operate across multiple clouds and over half cite cost optimisation and faster delivery as the primary returns on Infrastructure as Code programmes. These findings reinforce that Architecture as Code investments must be coupled with measurable business outcomes and transparent value reporting if they are to maintain executive sponsorship.
+
 ## 27.5 Closing reflection
 
 Architecture as Code is more than a technical milestone; it represents a fundamental shift in how we design and manage digital
@@ -98,3 +100,4 @@ Sources:
 - Expert interviews and case studies
 - Research on emerging technologies
 - Best practice documentation from leading organisations
+- HashiCorp. "State of Cloud Strategy Survey 2024." HashiCorp, 2024.

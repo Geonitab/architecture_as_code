@@ -17,6 +17,10 @@ Figure 17.1 summarises the journey from siloed functions towards integrated, pro
 
 *The transformation journey illustrates how organisations evolve from isolated teams to collaborative, outcome-focused delivery groups once Architecture as Code principles are embedded. Each stage represents measurable progress in automation maturity, team integration, and delivery velocity, allowing leaders to calibrate investments and expectations accordingly.*
 
+## Economic signals for transformation
+
+Economic indicators reinforce the organisational imperative. Gartner's *Forecast Analysis: Public Cloud Services Worldwide* (2024) shows sustained double-digit growth in IaaS and PaaS expenditure through 2027, meaning leadership teams must establish cost-governed operating models before cloud usage overtakes traditional capital projects. HashiCorp's *State of Cloud Strategy Survey 2024* echoes this pressure: 89 per cent of surveyed enterprises now operate multi-cloud estates and 56 per cent cite cost optimisation as a top Infrastructure as Code benefit. These data points highlight why Architecture as Code adoption is as much a management agenda as it is a technical undertaking—the financial stakes increase alongside automation maturity.
+
 ## Building a DevOps Culture
 
 DevOps practices create the social contract that allows infrastructure and application specialists to move at the same tempo. When teams share responsibilities rather than hand off tasks, they develop mutual respect for each other's constraints and opportunities. This foundation becomes especially important once automated infrastructure changes flow through production multiple times per day.
@@ -92,4 +96,6 @@ By linking cultural commitments with transparent measurement and clear governanc
 - Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.
 - Team Topologies. "Organising Business and Technology Teams." IT Revolution Press, 2023.
 - Accelerate. "Building High Performing Technology Organisations." IT Revolution Press, 2023.
+- Gartner. "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.
+- HashiCorp. "State of Cloud Strategy Survey 2024." HashiCorp, 2024.
 - McKinsey & Company. "Organisational Transformation Best Practices." McKinsey Digital, 2023.

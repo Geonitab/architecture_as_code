@@ -18,6 +18,12 @@ EU organisations face unique challenges when applying cloud costs, including cur
 
 Successful cost optimisation requires a combination of technical tools, organisational processes, and cultural changes that promote cost-awareness amongst development and operations teams. This includes Architecture as Code implementation of FinOps practices that integrate financial accountability throughout the entire development lifecycle.
 
+## Market outlook for Infrastructure as Code
+
+MarketsandMarkets' 2023 *Infrastructure as Code Market Report* places the global IaC market at USD 0.8 billion in 2022 with growth to USD 3.75 billion forecast by 2028, equating to a 24.0% compound annual growth rate. The projection underscores why Architecture as Code initiatives must pair automation with disciplined cost controls—the addressable market is expanding rapidly, drawing increased investment and scrutiny from finance functions. Establishing traceability between IaC investments and measurable savings becomes essential when the spend profile is scaling at this pace.
+
+Gartner's *Forecast Analysis: Public Cloud Services Worldwide* (2024) anticipates continued double-digit expansion in public cloud revenue across infrastructure and platform services through 2027. Rising consumption budgets mean procurement, finance, and platform teams require near real-time insight into how IaC changes affect operating expenditure. Architecture as Code programmes therefore weave FinOps telemetry, automated tagging, and budget guardrails into every pipeline stage so predicted savings from rightsizing or reserved capacity programmes can be demonstrated to stakeholders.
+
 ## FinOps and Cost Governance
 
 ![FinOps governance cycle](images/diagram_16_finops_cycle.png)
@@ -119,5 +125,6 @@ EU organisations that implement these strategies can achieve 20-40% cost reducti
 - FinOps Foundation. "FinOps Framework and Architecture as Code Best Practices." The Linux Foundation, 2023.
 - Kubecost. "Kubernetes Cost Optimisation Guide." Kubecost Documentation, 2023.
 - Cloud Security Alliance. "Cloud Cost Optimisation Security Guidelines." CSA Research, 2023.
-- Gartner. "Cloud Cost Optimisation Strategies for European Organisations." Gartner Research, 2023.
+- Gartner. "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.
 - Microsoft. "Azure Cost Management Architecture as Code Best Practices." Microsoft Azure Documentation, 2023.
+- MarketsandMarkets. "Infrastructure as Code Market Report." MarketsandMarkets, 2023.

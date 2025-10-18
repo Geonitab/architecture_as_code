@@ -12,6 +12,8 @@ Understanding CI/CD for Architecture as Code requires a fundamental mindset shif
 
 The CI/CD flow depicted earlier runs from code commit through validation, testing, deployment, and monitoring. The flow represents a systematic method in which each stage is designed to surface defects early, assure quality, and minimise production risk. Organisations must include considerations around data residency, compliance validation, and cost optimisation.
 
+IDC's *Worldwide DevOps Software Tools Forecast, 2023–2027* estimates that enterprise spending on DevOps enablement will grow at a compound annual rate above 20 per cent through 2027, with automation tooling accounting for the majority of new investment. The forecast links automation maturity directly to revenue expansion and operating cost reduction, reinforcing that Architecture as Code pipelines are not discretionary projects—they are now core to achieving the productivity and resilience outcomes that boards expect from digital programmes.
+
 ## The theoretical foundation for CI/CD automation
 
 Continuous integration and continuous deployment are more than technical processes. They describe a philosophy for software development that prioritises rapid feedback, incremental improvement, and risk reduction through automation. When these principles are applied to Architecture as Code they open unique opportunities and challenges that demand deep understanding of both technical and organisational dimensions.
@@ -521,3 +523,4 @@ Successful implementation of CI/CD for Architecture as Code requires balancing a
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - DevOps Institute. "Architecture-Driven DevOps Practices." DevOps Research and Assessment.
 - Data Protection Authorities. "GDPR for organisations." Guidance on personal-data processing.
+- IDC. "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.

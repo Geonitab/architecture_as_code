@@ -394,6 +394,8 @@ Digital transformation through code-based infrastructure represents a fundamenta
 
 Success factors include strategic planning of cloud-first initiatives, comprehensive automation of delivery processes, and continuous competence development within organisations. Organisations that embrace these principles position themselves strongly for sustainable growth and competitive advantage.
 
+Market evidence backs up the shift. IDC's *Worldwide DevOps Software Tools Forecast, 2023–2027* links sustained double-digit spend growth to executive expectations of faster release cycles and measurable efficiency gains. HashiCorp's *State of Cloud Strategy Survey 2024* reports that 89 per cent of enterprises now operate multi-cloud estates and 56 per cent cite cost reduction as a primary benefit of Infrastructure as Code, highlighting the economic rationale for treating architecture, operations, and governance as code-managed capabilities.
+
 Key lessons from digital transformation initiatives demonstrate that technical transformation must combine with organisational and cultural change to achieve lasting results. Architecture as Code forms the technical foundation, but success requires a holistic perspective on transformation that engages people, processes, and technology in concert.
 
 ## From Implementation to Integration
@@ -408,5 +410,6 @@ Part VI explores the interplay between different "as Code" practices and distils
 - McKinsey Digital. "Digital Transformation: A Global Perspective." McKinsey & Company, 2023.
 - AWS. "Cloud Adoption Framework for Enterprises." Amazon Web Services, 2023.
 - Microsoft. "Azure for Enterprise Digital Transformation." Microsoft Azure, 2023.
-- HashiCorp. "Infrastructure as Code Best Practices." HashiCorp Learn, 2023.
+- HashiCorp. "State of Cloud Strategy Survey 2024." HashiCorp, 2024.
 - SANS Institute. "Cloud Security for Enterprise Organisations." SANS Security Research, 2023.
+- IDC. "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.

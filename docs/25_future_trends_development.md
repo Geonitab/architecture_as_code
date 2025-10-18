@@ -8,6 +8,8 @@ The future will be characterised by intelligent automation capable of making com
 
 Sustainability and ethical stewardship are equally pressing drivers. Carbon-aware computing, renewable energy optimisation, and circular economy principles are moving from optional considerations to core design requirements. Architecture as Code provides the tooling and repeatable processes necessary to embed these commitments into everyday operations, ensuring that future infrastructure is not only efficient but also responsible.
 
+Market dynamics reinforce the urgency of this transition. MarketsandMarkets' 2023 *Infrastructure as Code Market Report* forecasts IaC spending to reach USD 3.75 billion by 2028 from a 2022 baseline of USD 0.8 billion, evidencing sustained double-digit growth in automation tooling. Gartner's 2024 *Forecast Analysis: Public Cloud Services Worldwide* likewise projects accelerating cloud consumption across infrastructure and platform services, signalling that organisations which fail to industrialise Architecture as Code will struggle to control spend and justify further investment. Economic signals therefore align with the technical drivers: scaling Architecture as Code is both a competitive necessity and a financial imperative.
+
 ## Emerging Technology Drivers
 
 ### Artificial Intelligence and Machine Learning Integration
@@ -288,3 +290,5 @@ By combining proven practices with emerging innovations, Architecture as Code ev
 - European Commission. "European Green Deal." EU Climate Action.
 - Climate Neutral Data Centre Pact. "Self-Regulatory Initiative." European Data Centre Association.
 - European Commission. "EU Code of Conduct for Energy Efficiency in Data Centres." Joint Research Centre.
+- Gartner. "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.
+- MarketsandMarkets. "Infrastructure as Code Market Report." MarketsandMarkets, 2023.
