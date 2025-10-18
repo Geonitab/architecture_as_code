@@ -15,7 +15,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Term | Definition |
 |------|------------|
 | Architecture as Code (AaC) | Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. |
-| Infrastructure as Code (IaC) | A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments. |
+| Infrastructure as Code (IaC) | A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments, matching the scope described in MarketsandMarkets' 2023 *Infrastructure as Code Market Report*. |
 | Architecture Decision Record (ADR) | A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together. |
 | Declarative Programming | A style of describing desired outcomes rather than procedural steps, enabling automation tools to converge systems on the target state reliably. |
 | Idempotence | The property that a command or template can run repeatedly with the same end result, protecting teams from accidental drift or double execution. |

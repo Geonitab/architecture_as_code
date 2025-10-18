@@ -24,6 +24,8 @@ MarketsandMarkets' 2023 *Infrastructure as Code Market Report* places the global
 
 Gartner's *Forecast Analysis: Public Cloud Services Worldwide* (2024) anticipates continued double-digit expansion in public cloud revenue across infrastructure and platform services through 2027. Rising consumption budgets mean procurement, finance, and platform teams require near real-time insight into how IaC changes affect operating expenditure. Architecture as Code programmes therefore weave FinOps telemetry, automated tagging, and budget guardrails into every pipeline stage so predicted savings from rightsizing or reserved capacity programmes can be demonstrated to stakeholders.
 
+The same Gartner forecast quantifies the pressure: worldwide IaaS revenue is projected to rise by 26.6 per cent in 2024, with PaaS growing 21.8 per cent and total public cloud end-user spending reaching USD 679 billion. Those figures reinforce why Architecture as Code disciplines must expose clear cost guardrails around IaC estates before expansion outpaces governance capacity. Because the dataset aggregates global spending, future editions of this book should pair it with EU-specific FinOps benchmarks to evidence regional Architecture as Code investment cases.
+
 ## FinOps and Cost Governance
 
 ![FinOps governance cycle](images/diagram_16_finops_cycle.png)
