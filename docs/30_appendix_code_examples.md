@@ -13,7 +13,7 @@ The code examples are grouped into the following categories:
 
 1. **[CI/CD pipelines and Architecture as Code automation](#cicd-pipelines)**
 2. **[Infrastructure as Code (Architecture as Code) – Terraform](#terraform-iac)**
-3. **[Infrastructure as Code (Architecture as Code) – CloudFormation](#cloudformation-Architecture as Code)**
+3. **[Infrastructure as Code (Architecture as Code) – CloudFormation](#cloudformation-architecture-as-code)**
 4. **[Automation scripts and tooling](#automation-scripts)**
 5. **[Security and compliance](#security-compliance)**
 6. **[Testing and validation](#testing-validation)**
@@ -22,9 +22,9 @@ The code examples are grouped into the following categories:
 
 Each example has a unique identifier in the format `[chapter]_CODE_[NUMBER]` for easy cross-reference with the main text.
 
-## CI/CD Pipelines and architecture as code-automation {#cicd-pipelines}
+## CI/CD Pipelines and Architecture as Code Automation {#cicd-pipelines}
 
-This sektion contains all examples at CI/CD-pipelines, GitHub Actions workflows and automationsprocesser for organisations.
+This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations.
 
 ### 05_CODE_1: GDPR-compliant CI/CD pipeline for organisations
 *Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
@@ -209,22 +209,22 @@ pipeline {
                 stage('Cost Center Validation') {
                     steps {
                         script {
-                            echo "💰 Validates kostnadscenter for bokföring..."
+                            echo "💰 Validating cost centre for accounting..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
-                                error("Ogiltigt kostnadscenter format. Use: CC-XX-nnn")
+                                error("Invalid cost centre format. Use: CC-XX-nnn")
                             }
                             
-                            // Validate to kostnadscenter existerar in företagets systems
+                            // Validate the cost centre exists in the organisation's systems
                             def validCostCenters = [
                                 'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
                             ]
                             
                             if (!validCostCenters.contains(params.COST_CENTER)) {
-                                error("Okänt kostnadscenter: ${params.COST_CENTER}")
+                                error("Unknown cost centre: ${params.COST_CENTER}")
                             }
                             
-                            echo "✅ Kostnadscenter validerat: ${params.COST_CENTER}"
+                            echo "✅ Cost centre validated: ${params.COST_CENTER}"
                         }
                     }
                 }
@@ -236,7 +236,7 @@ pipeline {
                 stage('Terraform Validation') {
                     steps {
                         script {
-                            echo "🔧 Terraform syntax and formatering..."
+                            echo "🔧 Terraform syntax and formatting..."
                             
                             // Format check
                             sh "terraform fmt -check -recursive infrastructure/"
@@ -249,7 +249,7 @@ pipeline {
                                 """
                             }
                             
-                            echo "✅ Terraform validation slutförd"
+                            echo "✅ Terraform validation completed"
                         }
                     }
                 }
@@ -257,7 +257,7 @@ pipeline {
                 stage('Security Scanning') {
                     steps {
                         script {
-                            echo "🔒 Säkerhetsskanning with Checkov..."
+                            echo "🔒 Security scan with Checkov..."
                             
                             sh """
                                 pip install checkov
@@ -268,24 +268,24 @@ pipeline {
                                     --soft-fail
                             """
                             
-                            // Analysera critical säkerhetsproblem
+                            // Analyse critical security issues
                             def results = readJSON file: 'checkov-results.json'
                             def criticalIssues = results.results.failed_checks.findAll { 
                                 it.severity == 'CRITICAL' 
                             }
                             
                             if (criticalIssues.size() > 0) {
-                                echo "⚠️ KRITISKA säkerhetsproblem funna:"
+                                echo "⚠️ Critical security issues found:"
                                 criticalIssues.each { issue ->
                                     echo "- ${issue.check_name}: ${issue.file_path}"
                                 }
                                 
                                 if (params.ENVIRONMENT == 'production') {
-                                    error("Kritiska säkerhetsproblem must åtgärdas före production deployment")
+                                    error("Critical security issues must be resolved before production deployment")
                                 }
                             }
                             
-                            echo "✅ Säkerhetsskanning slutförd"
+                            echo "✅ Security scan completed"
                         }
                     }
                 }
@@ -293,9 +293,9 @@ pipeline {
                 stage('Policy Validation') {
                     steps {
                         script {
-                            echo "📋 Validates organisationspolicies..."
+                            echo "📋 Validating organisational policies..."
                             
-                            // Skapa OPA policies
+                            // Create OPA policies
                             writeFile file: 'policies/a-tagging.rego', text: """
                                 package a.tagging
                                 
@@ -308,14 +308,14 @@ pipeline {
                                     input.resource[resource_type][name]
                                     resource_type != "data"
                                     not input.resource[resource_type][name].tags
-                                    msg := sprintf("Resource %s.%s saknar tags", [resource_type, name])
+                                    msg := sprintf("Resource %s.%s is missing tags", [resource_type, name])
                                 }
                                 
                                 deny[msg] {
                                     input.resource[resource_type][name].tags
                                     required_tag := required_tags[_]
                                     not input.resource[resource_type][name].tags[required_tag]
-                                    msg := sprintf("Resource %s.%s saknar obligatorisk tag: %s", [resource_type, name, required_tag])
+                                    msg := sprintf("Resource %s.%s is missing required tag: %s", [resource_type, name, required_tag])
                                 }
                             """
                             
@@ -326,19 +326,19 @@ pipeline {
                                 find infrastructure/ -name "*.tf" -exec conftest verify --policy policies/ {} \\;
                             """
                             
-                            echo "✅ policy validation slutförd"
+                            echo "✅ Policy validation completed"
                         }
                     }
                 }
             }
         }
         
-        stage('💰 Kostnadskontroll') {
+        stage('💰 Cost Control') {
             steps {
                 script {
-                    echo "📊 Beräknar infrastrukturkostnader in kronor..."
+                    echo "📊 Calculating infrastructure costs in euros..."
                     
-                    // Setup Infracost for valuta
+                    // Set up Infracost with currency support
                     sh """
                         curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
                         export PATH=\$PATH:\$HOME/.local/bin
@@ -358,7 +358,7 @@ pipeline {
                             --out-file ../../../cost-summary.txt
                     """
                     
-                    // Validate kostnader mot budgetgränser
+                    // Validate costs against budget thresholds
                     def costData = readJSON file: 'cost-estimate.json'
                     def monthlyCostEUR = costData.totalMonthlyCost as Double
                     
@@ -370,44 +370,44 @@ pipeline {
                     
                     def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
                     
-                    echo "Beräknad månadskostnad: ${monthlyCostEUR} EUR"
+                    echo "Calculated monthly cost: ${monthlyCostEUR} EUR"
                     echo "Budget for ${params.ENVIRONMENT}: ${maxBudget} EUR"
                     
                     if (monthlyCostEUR > maxBudget) {
                         def overBudget = monthlyCostEUR - maxBudget
-                        echo "⚠️ BUDGET ÖVERSKRIDEN with ${overBudget} EUR!"
+                        echo "⚠️ Budget exceeded by ${overBudget} EUR!"
                         
                         if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
-                            error("Budget överskridning not tillåten for production without CFO godkännande")
+                            error("Budget overrun not permitted for production without CFO approval")
                         }
                     }
                     
-                    // Generera t kostnadsrapport
+                    // Generate the cost report
                     def costReport = """
-                    # Kostnadsrapport - ${env.ORGANIZATION_NAME}
+                    # Cost Report - ${env.ORGANIZATION_NAME}
                     
-                    **Miljö:** ${params.ENVIRONMENT}
-                    **Datum:** ${new Date().format('yyyy-MM-dd HH:mm')} ( time)
-                    **Kostnadscenter:** ${params.COST_CENTER}
+                    **Environment:** ${params.ENVIRONMENT}
+                    **Date:** ${new Date().format('yyyy-MM-dd HH:mm')} (local time)
+                    **Cost centre:** ${params.COST_CENTER}
                     
-                    ## Månadskostnad
+                    ## Monthly cost
                     - **Total:** ${monthlyCostEUR} EUR
                     - **Budget:** ${maxBudget} EUR
                     - **Status:** ${monthlyCostEUR <= maxBudget ? '✅ Within budget' : '❌ over budget'}
                     
-                    ## Kostnadsnedbrytning
+                    ## Cost breakdown
                     ${readFile('cost-summary.txt')}
                     
-                    ## Rekommendationer
+                    ## Recommendations
                     - Use Reserved Instances for production workloads
-                    - Aktivera auto-scaling for development environments
-                    - Implementera scheduled shutdown for icke-critical systems
+                    - Enable auto-scaling for development environments
+                    - Implement scheduled shutdowns for non-critical systems
                     """
                     
                     writeFile file: 'cost-report-a.md', text: costReport
                     archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
                     
-                    echo "✅ Kostnadskontroll slutförd"
+                    echo "✅ Cost control completed"
                 }
             }
         }
@@ -416,7 +416,7 @@ pipeline {
 ```
 
 ### 05_CODE_3: Terratest for VPC implementation
-*Refereras from chapter 5: [automation and CI/CD-pipelines](05_automation_devops_cicd.md)*
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
 
 ```go
 // test/a_vpc_test.go
@@ -527,16 +527,16 @@ func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuit
     }
 }
 
-// testVPCFlowLogsEnabled validates to VPC Flow Logs is aktiverade for GDPR compliance
+// testVPCFlowLogsEnabled validates that VPC Flow Logs are enabled for GDPR compliance
 func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
-    // Hämta VPC ID from Terraform output
+    // Fetch the VPC ID from Terraform output
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     require.NotEmpty(t, vpcID, "VPC ID should not be empty")
 
     // AWS EC2 client
     ec2Client := ec2.New(suite.AWSSession)
 
-    // Kontrollera Flow Logs
+    // Check Flow Logs configuration
     flowLogsInput := &ec2.DescribeFlowLogsInput{
         Filters: []*ec2.Filter{
             {
@@ -549,7 +549,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
     flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
     require.NoError(t, err, "Failed to describe VPC flow logs")
 
-    // Validate to Flow Logs is aktiverade
+    // Validate that VPC Flow Logs are enabled
     assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, "VPC Flow Logs should be enabled for GDPR compliance")
 
     for _, flowLog := range flowLogsOutput.FlowLogs {
@@ -557,10 +557,10 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
         assert.Equal(t, "ALL", *flowLog.TrafficType, "Flow log should capture all traffic for compliance")
     }
 
-    t.Logf("✅ VPC Flow Logs aktiverade for GDPR compliance: %s", vpcID)
+    t.Logf("✅ VPC Flow Logs enabled for GDPR compliance: %s", vpcID)
 }
 
-// testEncryptionAtRest validates to all lagring is krypterad according to GDPR-requirements
+// testEncryptionAtRest validates that all storage is encrypted according to GDPR requirements
 func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Get KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
@@ -679,37 +679,37 @@ func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
 
 ---
 
-## Infrastructure as Code - CloudFormation {
+## Infrastructure as Code – CloudFormation {#cloudformation-architecture-as-code}
 
-Architecture as Code-principerna within This area#cloudformation-Architecture as Code}
+Architecture as Code principles in this area emphasise resilient AWS foundations and strong governance.
 
-This sektion contains CloudFormation templates for AWS-infrastructure adapted for organisations.
+This section contains CloudFormation templates for AWS infrastructure adapted for organisations.
 
 ### 07_CODE_1: VPC Setup for organisations with GDPR compliance
-*Refereras from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
+*Referenced from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
 # cloudformation/a-org-vpc.yaml
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'VPC setup for organizations with GDPR compliance'
+Description: 'VPC setup for organisations with GDPR compliance'
 
 Parameters:
   EnvironmentType:
     Type: String
     Default: development
     AllowedValues: [development, staging, production]
-    Description: 'Miljötyp for deployment'
+    Description: 'Environment type for deployment'
   
   DataClassification:
     Type: String
     Default: internal
     AllowedValues: [public, internal, confidential, restricted]
-    Description: 'Dataklassificering according to security standards'
+    Description: 'Data classification according to security standards'
   
   ComplianceRequirements:
     Type: CommaDelimitedList
     Default: "gdpr,iso27001"
-    Description: 'Lista over compliance-requirements as must uppfyllas'
+    Description: 'List of compliance requirements that must be met'
 
 Conditions:
   IsProduction: !Equals [!Ref EnvironmentType, production]
@@ -744,12 +744,12 @@ Resources:
 
 ## Automation Scripts {#automation-scripts}
 
-This sektion contains Python-skript and andra automationsverktyg for Architecture as Code-handling.
+This section contains Python scripts and other automation tooling for Architecture as Code operations.
 
-### 22_CODE_1: comprehensive testramverk for Architecture as Code
+### 22_CODE_1: Comprehensive test framework for Architecture as Code
 
-Architecture as Code-principerna within This area
-*Refereras from chapter 24: [Architecture as Code Best Practices and Lessons Learned](24_best_practices.md)*
+Architecture as Code principles within this area emphasise automated validation and transparent feedback.
+*Referenced from chapter 24: [Architecture as Code Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```python
 # testing/comprehensive_iac_testing.py
@@ -774,8 +774,8 @@ class TestCase:
 
 class ComprehensiveIaCTesting:
     """
-    Comprehensive testing framework for Infrastructure as Code
-    Based at architecture as code best practices and international standards
+    Comprehensive testing framework for Infrastructure as Code.
+    Based on Architecture as Code best practices and international standards.
     """
     
     def __init__(self, region='eu-west-1'):
@@ -843,10 +843,10 @@ class ComprehensiveIaCTesting:
 
 ## Configuration Files {#configuration}
 
-This sektion contains konfigurationsfiler for different tools and services.
+This section contains configuration files for different tools and services.
 
 ### 22_CODE_2: Governance policy configuration for organisations
-*Refereras from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
+*Referenced from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```yaml
 # governance/a-governance-policy.yaml
