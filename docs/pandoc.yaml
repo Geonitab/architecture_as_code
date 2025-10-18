@@ -75,6 +75,7 @@ variables:
     \textbf{Repository:} \url{https://github.com/Geonitab/architecture_as_code}\par}
     \end{flushleft}
     \newpage
+    \setcounter{page}{1}
   # Simplified header handling
   header-includes: |
     \usepackage{fancyhdr}
