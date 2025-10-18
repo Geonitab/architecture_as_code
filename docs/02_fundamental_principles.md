@@ -18,6 +18,18 @@ Architecture as Code embraces the full system ecosystem through a holistic lens.
 
 A practical example is an application programming interface change automatically propagating through the architecture – from security configurations to documentation – all defined as code.
 
+### Adoptability-first enablement
+
+Red Hat (2023) frames adoptability as the entry point for Architecture as Code: the language, repository layout, and review rituals must be simple enough that architects, engineers, and governance specialists can contribute without specialist tooling. Pattern libraries, sample pull requests, and role-based contribution guides help teams join the workflow gradually while still building confidence that architectural intent is preserved.
+
+### Extensibility by design
+
+Extensibility keeps the practice resilient as new platforms and compliance regimes emerge. Red Hat recommends treating architecture models as modular building blocks, exposing clear extension points for automation, security scanning, and reporting. Declarative schemas, reusable validation libraries, and plug-in interfaces let teams add new capability without rewriting the foundational architecture definitions.
+
+### Productivity through automation
+
+Productivity is the payoff for codifying architecture. With architecture changes expressed as pull requests, automation can lint models, execute policy checks, regenerate diagrams, and publish documentation autonomously. Red Hat notes that this automation-first mindset removes approval bottlenecks and gives architects rapid feedback, allowing them to focus on higher-order decision-making instead of status tracking.
+
 ### Historical lessons from model-driven development
 
 Model-Driven Development (MDD) in the early 2000s promised that platform-neutral models could generate complete systems, yet experience showed persistent gaps between models and running software. Selic (2003) documents how brittle round-trip engineering, tool lock-in, and ambiguous semantics caused MDD artefacts to fall out of sync as soon as teams customised generated code or adopted new frameworks. Architecture as Code internalises those lessons by favouring lightweight textual models, explicit version control, and continuous validation so that the architecture specification evolves alongside implementation rather than trying to replace it.
@@ -39,6 +51,10 @@ The implementation roadmap introduces the foundations long before automation is 
 | **Production** | Weeks 18–32 | Pilot immutable deployments, refine based on feedback, expand monitoring, and complete knowledge transfer | Documentation as code, continuous reconciliation, organisation-wide adoption |
 
 Organisations can adjust exact timing to match their scale and regulatory obligations, but maintaining this sequencing prevents downstream teams from adopting automation without a provable architectural baseline. The timeline also clarifies ownership: architecture leaders deliver the canonical models, platform teams build the automation layers, and governance teams monitor adherence once production rollout begins.
+
+## Architecture as a single source of truth
+
+Delivering Architecture as Code as a single source of truth (SSOT) demands shared responsibilities across interfaces. GitLab (2024) documents how platform teams expose a hardened command-line interface for everyday contributors, coupling familiar Git flows with guardrail scripts that validate models before merge. The same SSOT repository publishes an API that downstream systems use to synchronise diagrams, catalogues, and service metadata; governance and reporting platforms consume those endpoints to guarantee they always reflect the approved architecture. By curating both CLI and API experiences, maintainers keep architectural knowledge authoritative, while product teams gain self-service access to the latest canon without bypassing change control.
 
 ## Immutable architecture patterns
 

@@ -18,6 +18,18 @@ Architecture as Code is the practice of describing, version-controlling, and aut
 
 This holistic approach enables end-to-end automation, where changes in requirements automatically propagate throughout the architecture – from application logic to deployment and monitoring.
 
+### Adoptability
+
+Red Hat (2023) stresses that Architecture as Code succeeds only when teams can adopt it without wholesale tooling upheaval. Expressing architectural intent as YAML, JSON, or domain-specific languages keeps specifications approachable so enterprise architects, platform engineers, and governance specialists can all work in the same repository from day one. Lightweight guardrails, documented contribution paths, and iterative enablement make the practice consumable for organisations that are still shifting away from slideware-heavy governance.
+
+### Extensibility
+
+The same guidance highlights extensibility as the safeguard against future bottlenecks. Modular model definitions, reusable policy templates, and integration points for build, security, and observability tooling allow an Architecture as Code platform to evolve alongside the wider landscape. Extensible artefacts give teams freedom to plug in new delivery pipelines, compliance checks, or visualisation tools without rewriting the architectural source of truth.
+
+### Productivity
+
+Red Hat also frames productivity as a direct outcome of codifying architecture. Once architectural definitions, policies, and documentation live in version control, automation can validate changes, orchestrate reviews, and publish documentation without manual intervention. The result is faster feedback for architects and delivery teams, fewer approval bottlenecks, and a measurable uplift in how quickly organisations can make safe architectural decisions.
+
 ## The Interconnected Flow of Architecture as Code
 
 ![Architecture as Code Flow](images/diagram_01_aac_flow.png)
@@ -39,6 +51,7 @@ Readers will gain comprehensive knowledge of how the entire system architecture 
 Sources:
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
+- Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer, 2023.
 
 ## How This Book Is Organised
 
