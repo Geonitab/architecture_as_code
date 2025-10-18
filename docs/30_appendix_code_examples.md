@@ -2595,10 +2595,10 @@ resource "aws_launch_template" "spot_optimized" {{
 ## Security and compliance {#security-compliance}
 
 ### 10_CODE_1: Advanced Policy-as-Code module for  compliance {#10_code_1}
-*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
+*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation aligned to UK GDPR Article 32 and FCA operational resilience expectations, network segmentation checks guided by NCSC advice, and UK GDPR Article 44 residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
 
 ```rego
-package se.enterprise.security
+package uk.enterprise.security
 
 import rego.v1
 
@@ -2614,7 +2614,7 @@ encryption_required_services := {
 
 administrative_ports := {22, 3389, 5432, 3306, 1433, 27017, 6379, 9200, 5601}
 allowed_public_ports := {80, 443}
-eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
+uk_eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
 
 encryption_compliant[resource] {
     resource := input.resources[_]
@@ -2694,8 +2694,8 @@ check_ingress_rules(sg) := violation {
         "port": rule.from_port,
         "security_group": sg.attributes.name,
         "message": sprintf("Administrative port %v is exposed to the internet", [rule.from_port]),
-        "remediation": "Restrict access to dedicated management networks",
-        "reference": "MSB 3.2.1 Network Segmentation"
+        "remediation": "Restrict access to dedicated management networks and document the control in the operational resilience register",
+        "reference": "NCSC Network Segmentation Guidance"
     }
 }
 
@@ -2710,8 +2710,8 @@ check_ingress_rules(sg) := violation {
         "port": rule.from_port,
         "security_group": sg.attributes.name,
         "message": sprintf("Non-standard port %v is exposed to the internet", [rule.from_port]),
-        "remediation": "Validate the business requirement and narrow the CIDR range",
-        "reference": "MSB 3.2.2 Minimal Exposure"
+        "remediation": "Validate the business requirement and narrow the CIDR range in line with the NCSC Zero Trust design set",
+        "reference": "NCSC Zero Trust Architecture Design Principles"
     }
 }
 
@@ -2746,13 +2746,13 @@ determine_classification(resource) := "personal" {
 determine_classification(_) := "internal"
 
 validate_region(resource, "personal") := {
-    "compliant": get_resource_region(resource) in eu_regions,
-    "requirement": "GDPR Articles 44–49"
+    "compliant": get_resource_region(resource) in uk_eu_regions,
+    "requirement": "UK GDPR Articles 44–49"
 }
 
 validate_region(resource, _) := {
     "compliant": true,
-    "requirement": "Internal data — EU residency not mandatory"
+    "requirement": "Internal data — UK/EU residency not mandatory"
 }
 
 get_resource_region(resource) := region {
@@ -2790,9 +2790,9 @@ compliance_assessment := result {
         "overall_score": calculate_score(violations),
         "violations": violations,
         "regulators": {
-            "gdpr": assess_regulator("GDPR", violations),
-            "msb": assess_regulator("MSB", violations),
-            "iso27001": assess_regulator("ISO 27001", violations)
+            "uk_gdpr": assess_regulator("UK GDPR", violations),
+            "ncsc": assess_regulator("NCSC", violations),
+            "fca": assess_regulator("FCA", violations)
         }
     }
 }
@@ -2803,16 +2803,16 @@ create_encryption_violation(resource) := {
     "resource": resource.type,
     "message": "Mandatory encryption is disabled",
     "remediation": "Enable encryption at rest and enforce TLS in transit",
-    "reference": "GDPR Article 32"
+    "reference": "UK GDPR Article 32 & FCA SYSC 8.1.1R"
 }
 
 create_sovereignty_violation(resource) := {
     "type": "data_sovereignty",
     "severity": "critical",
     "resource": resource.type,
-    "message": sprintf("Personal data stored outside approved EU regions (%v)", [get_resource_region(resource)]),
-    "remediation": "Move the workload to an EU region or document an adequacy decision",
-    "reference": "GDPR Articles 44–49"
+    "message": sprintf("Personal data stored outside approved UK/EU regions (%v)", [get_resource_region(resource)]),
+    "remediation": "Move the workload to a UK or EU region or document an adequacy decision recognised by the ICO",
+    "reference": "UK GDPR Articles 44–49"
 }
 
 calculate_score(violations) := score {

@@ -43,10 +43,10 @@ Organisations running mission-critical platforms typically adopt three architect
 
 ### Advanced Rego patterns for regulated workloads
 
-Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:
+Rego shines when encoding complex regulatory expectations. UK delivery teams typically model encryption rules aligned to the NCSC Cloud Security Principles, network segmentation obligations drawn from FCA outsourcing guidance, and UK GDPR residency commitments in the same policy module so that breaches surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for regulators such as the Information Commissioner's Office (ICO) and the Financial Conduct Authority (FCA) whilst continuing to respect wider EU adequacy requirements. A trimmed excerpt below illustrates the structure:
 
 ```rego
-package eu.enterprise.security
+package uk.enterprise.security
 
 import rego.v1
 
@@ -57,11 +57,13 @@ encryption_required_services := {
 encryption_compliant[resource] {
     resource := input.resources[_]
     resource.type in encryption_required_services
-    validate_encryption(resource)
+    encryption := get_encryption_status(resource)
+    validation := validate_encryption_strength(encryption)
+    validation.compliant
 }
 ```
 
-The complete module covers encryption strength, privileged port exposure, EU residency checks, and an aggregated compliance score. The findings feed directly into CI pipelines and risk dashboards.
+The complete module covers encryption strength, privileged port exposure, combined UK and EU residency checks, and an aggregated compliance score that highlights regulator-specific findings. The findings feed directly into CI pipelines and risk dashboards used by governance forums.
 
 ### Integrating policy automation into European enterprises
 
