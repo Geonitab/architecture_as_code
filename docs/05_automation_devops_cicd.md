@@ -42,6 +42,8 @@ In delivery pipelines this abstraction boundary becomes explicit. Architecture a
 > - Infrastructure as Code assembles runtime workloads within those boundaries, embedding the latest architecture release into Terraform, Pulumi, or Helm pipelines so each execution demonstrates compliance evidence rather than reinventing standards (AWS Cloud Development Kit Developer Guide, 2023).
 > - When new runtime needs emerge, platform teams raise change requests through the Architecture as Code repository; the architecture layer evolves first, and Infrastructure as Code follows, preventing undocumented divergence.
 
+Architecture and infrastructure teams should therefore treat the architecture release as a signed dependency. IaC pipelines import the packaged release—complete with checksum and provenance metadata—before every `plan` or `apply`, aborting if the artefact fails integrity checks or if required guardrail tests (for example, Open Policy Agent, Regula, or bespoke policy suites) do not pass. This pattern keeps governance and standardisation anchored in the Architecture as Code layer while letting Infrastructure as Code iterate at runtime velocity.
+
 Together they form a contract: Architecture as Code provides the standards and approval logic, while Infrastructure as Code operationalises workloads and feeds telemetry back into architectural decision-making.
 
 **Sources:**
