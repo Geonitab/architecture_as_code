@@ -32,7 +32,7 @@
   color: #b5c6ff;
 }
 
-/* Responsive table styles */
+/* Responsive table styles (Material for MkDocs) */
 .md-typeset table {
   display: block;
   width: 100%;
@@ -63,6 +63,54 @@
   
   .md-typeset table th,
   .md-typeset table td {
+    padding: 0.5rem;
+    min-width: 100px;
+  }
+}
+
+/* Responsive table styles (Read the Docs theme) */
+.rst-content table.docutils,
+.rst-content table.field-list,
+.wy-table-responsive table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+}
+
+.rst-content table.docutils th,
+.rst-content table.docutils td,
+.rst-content table.field-list th,
+.rst-content table.field-list td,
+.wy-table-responsive table th,
+.wy-table-responsive table td {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.wy-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width: 768px) {
+  .rst-content table.docutils,
+  .rst-content table.field-list,
+  .wy-table-responsive table {
+    font-size: 0.9rem;
+  }
+
+  .rst-content table.docutils th,
+  .rst-content table.docutils td,
+  .rst-content table.field-list th,
+  .rst-content table.field-list td,
+  .wy-table-responsive table th,
+  .wy-table-responsive table td {
     padding: 0.5rem;
     min-width: 100px;
   }
