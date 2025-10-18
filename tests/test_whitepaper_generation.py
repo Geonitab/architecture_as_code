@@ -23,7 +23,8 @@ from generate_whitepapers import (
     get_chapter_mapping, 
     get_book_overview, 
     read_chapter_content,
-    generate_whitepapers
+    generate_whitepapers,
+    resolve_diagram_src
 )
 
 class TestWhitepaperGeneration(unittest.TestCase):
@@ -116,6 +117,15 @@ class TestWhitepaperGeneration(unittest.TestCase):
         self.assertIn('title', overview)
         self.assertIn('subtitle', overview)
         self.assertIn('description', overview)
+
+    def test_resolve_diagram_src_respects_output_directory(self):
+        """Diagram paths should be relative to the output location."""
+        release_path = resolve_diagram_src("images/example.png", Path("releases/whitepapers"))
+        standard_path = resolve_diagram_src("images/example.png", Path("whitepapers"))
+
+        self.assertEqual(release_path, "../../docs/images/example.png")
+        self.assertEqual(standard_path, "../docs/images/example.png")
+        self.assertIsNone(resolve_diagram_src(None, Path("whitepapers")))
     
     def test_read_chapter_content_handles_missing_title(self):
         """Test that read_chapter_content handles files without H1 titles."""
