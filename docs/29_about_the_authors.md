@@ -1,6 +1,6 @@
 # About the Author {.unnumbered}
 
-This book represents the culmination of extensive experience in architecture, infrastructure, and system development, bringing together theoretical foundations with practical expertise to create a comprehensive resource for organisations embracing Architecture as Code.
+This book represents the culmination of extensive experience in architecture, infrastructure, and systems development, bringing together theoretical foundations with practical expertise to create a comprehensive resource for organisations embracing Architecture as Code.
 
 ![Gunnar Nordqvist - Chief Architect](images/diagram_29_author_profile.png)
 
@@ -8,11 +8,11 @@ This book represents the culmination of extensive experience in architecture, in
 
 ## Gunnar Nordqvist
 
-**Gunnar Nordqvist** is a certified Chief Architect and IT Architect at Kvadrat, a leading European technology consulting company. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
+**Gunnar Nordqvist** is a certified Chief Architect and IT Architect at Kvadrat, a leading European technology consultancy. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
 
 ### Professional Background
 
-Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and IT security projects. His diverse technical background encompasses network solutions, servers, virtualisation, and IT security, among other critical areas of modern technology infrastructure.
+Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and specialised IT security projects. His diverse technical background encompasses network solutions, servers, virtualisation, and IT security, among other critical areas of modern technology infrastructure.
 
 **Core Areas of Expertise:**
 - Solution and Enterprise Architecture
@@ -30,7 +30,7 @@ His work at Kvadrat has provided him with unique insights into the challenges fa
 
 ## About Kvadrat
 
-**Kvadrat** is an independent technology consulting company renowned for delivering excellence in IT architecture and infrastructure solutions across Europe. The company has been instrumental not only in supporting the creation of this book but also in pioneering Architecture as Code practices within complex, compliance-driven organisations.
+**Kvadrat** is an independent technology consultancy renowned for delivering excellence in IT architecture and infrastructure solutions across Europe. The company has been instrumental not only in supporting the creation of this book but also in pioneering Architecture as Code practices within complex, compliance-driven organisations.
 
 ### Kvadrat's Contribution
 
@@ -164,7 +164,7 @@ This book aims to accelerate the adoption of Architecture as Code principles and
 As technology continues to evolve, the principles outlined in this book—declarative design, version control, automation, and continuous validation—will remain fundamental to building reliable, scalable, and maintainable systems.
 
 Sources:
-- Kvadrat AB. "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/
-- Kvadrat AB. "Technology Consulting Excellence." Company Profile, 2024. Available at: https://www.kvadrat.se/
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- GitHub Open Source Community. "Collaborative Software Development." Platform Documentation, 2024.
+- Kvadrat AB. 'Gunnar Nordqvist - Chief Architect Profile.' Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/
+- Kvadrat AB. 'Technology Consulting Excellence.' Company Profile, 2024. Available at: https://www.kvadrat.se/
+- ThoughtWorks. 'Architecture as Code: The Next Evolution.' Technology Radar, 2024.
+- GitHub Open Source Community. 'Collaborative Software Development.' Platform Documentation, 2024.
