@@ -18,7 +18,7 @@ The CI/CD flow depicted earlier runs from code commit through validation, testin
 
 > **Architecture as Code defines intent; Infrastructure as Code executes implementation.**
 
-Architecture as Code expresses the architectural contract for the organisation, codifying principles, guardrails, and quality models that span multiple domains. It captures structures such as policies as code, data contracts, and reference blueprints so teams share an agreed target state before any infrastructure is provisioned. This is the opinionated abstraction emphasised by Finding #4 – Abstraction and Opinionation from the analysis research backlog, which highlighted the risk of leaving governance to downstream tools.
+Architecture as Code expresses the architectural contract for the organisation, codifying principles, guardrails, and quality models that span multiple domains. It captures structures such as policies as code, data contracts, and reference blueprints so teams share an agreed target state before any infrastructure is provisioned.
 
 Infrastructure as Code consumes those blueprints to assemble concrete environments. It translates canonical definitions into Terraform modules, Pulumi programmes, Helm charts, or cloud-native stacks that can be applied repeatedly. IaC should only vary within the constraints set by the architecture-level definitions, ensuring runtime changes remain auditable.
 
