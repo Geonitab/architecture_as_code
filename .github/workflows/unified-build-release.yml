@@ -11,7 +11,7 @@ name: Unified Build & Release
 # - PDF/EPUB/DOCX deliverables use Pandoc's built-in Skylighting engine for syntax highlighting
 # - Prism.js CSS and JavaScript are loaded from CDN in HTML templates (no installation needed)
 # - Pandoc syntax highlighting is configured via docs/pandoc.yaml (highlight-style: tango)
-
+ 
 on:
   push:
     branches: [main]
