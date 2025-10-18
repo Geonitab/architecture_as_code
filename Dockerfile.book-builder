@@ -1,5 +1,5 @@
 # Multi-stage Docker image for complete release building
-FROM node:25-bullseye AS release-builder
+FROM node:25-bookworm AS release-builder
 
 # Install basic dependencies first
 RUN apt-get update && apt-get install -y \
