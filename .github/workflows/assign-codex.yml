@@ -6,8 +6,8 @@ on:
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
   workflow_dispatch:
-  schedule:
-    - cron: '*/30 * * * *'
+  # schedule:
+   #  - cron: '*/30 * * * *'
 
 permissions:
   contents: write
