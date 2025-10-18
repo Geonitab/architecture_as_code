@@ -24,6 +24,12 @@ Programmatic Infrastructure as Code platforms such as Pulumi and the AWS Cloud D
 
 Terraform testing tools such as Terratest, terraform-compliance and Checkov enable automated validation of HCL code against predefined policies and Infrastructure as Code best practices. These tools can integrate into IDEs for real-time feedback during development and into CI/CD pipelines for automated quality gates.
 
+### Comparing Pulumi and Terraform Testability
+
+Pulumi's *Testing Infrastructure as Code Programs* guidance (2024, Source [15]) emphasises that defining infrastructure through general-purpose languages lets engineers reuse familiar unit-testing frameworks, wire in Pulumi's provider mocks, and execute assertions locally without touching the cloud. The article demonstrates IaC checks running alongside application suites—`npm test`, `pytest`, or similar—so developers iterate through short feedback loops that encourage test-first habits and reduce the cost of validation.
+
+The same guidance contrasts Pulumi's approach with declarative tools such as Terraform, highlighting that HCL lacks first-class unit-testing hooks and therefore leans on `terraform plan`, Terratest, `terraform test`, and policy-as-code engines to approximate the same assurance. Those options remain valuable, yet they routinely execute against rendered plans or ephemeral infrastructure, so feedback loops tend to stretch towards integration-time cadences rather than the in-IDE iterations Pulumi showcases in Source [15]. In both ecosystems, unit-level checks complement rather than replace integration and end-to-end tests that validate real infrastructure behaviour.
+
 Unit tests for Infrastructure as Code should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly important for reusable modules that are used across multiple projects, where changes can have wide-ranging impact on dependent resources.
 
 Mock testing strategies for cloud resources enable testing without actual cloud costs, which is essential for frequent testing cycles. Tools such as LocalStack and cloud provider simulators can simulate cloud services locally for comprehensive testing without infrastructure provisioning costs.
