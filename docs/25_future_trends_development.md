@@ -219,6 +219,8 @@ FinOps practices are maturing in parallel with technical automation. Instead of 
 
 This financial observability extends to sustainability metrics, turning carbon accounting into an operational concern rather than an annual report. Teams make informed trade-offs between cost, performance, and environmental impact, guided by dashboards and automated insights that are derived from the same declarative definitions used to provision infrastructure.
 
+Market signals reinforce the need for this financial discipline. MarketsandMarkets (2023) projects that the Infrastructure as Code market will grow from USD 0.8 billion in 2022 to USD 2.3 billion by 2027—equating to roughly 24 per cent compound annual growth. Gartner's 2024 forecast for public cloud services anticipates worldwide spend of USD 679 billion during 2024, while IDC's DevOps Software Tools outlook highlights sustained expansion of automation and platform engineering investment through 2027. Together these analyses confirm that executive teams expect Architecture as Code programmes to convert rising automation budgets into measurable efficiency, regulatory resilience, and sustainability outcomes.
+
 ## Advanced GitOps and Automation Patterns
 
 GitOps principles continue to expand beyond continuous delivery. Multi-cluster orchestration coordinates deployments across distributed estates, ensuring that security patches and configuration updates propagate reliably. Data platforms increasingly adopt GitOps practices to manage pipelines, schemas, and governance policies, aligning analytics operations with infrastructure automation.
@@ -284,6 +286,9 @@ By combining proven practices with emerging innovations, Architecture as Code ev
 - MIT Technology Review. "Quantum Computing and Cryptography." MIT Press.
 - IEEE Computer Society. "Edge Computing and 5G Integration." IEEE Publications.
 - FinOps Foundation. "State of FinOps." FinOps Foundation Reports.
+- MarketsandMarkets. "Infrastructure as Code Market Report." MarketsandMarkets, 2023.
+- Gartner. "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.
+- IDC. "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.
 - Green Software Foundation. "Carbon-Aware Computing Guidelines." GSF Documentation.
 - Cloud Native Computing Foundation. "Platforms for Cloud Native Applications." CNCF Whitepaper.
 - GAIA-X. "GAIA-X Framework." GAIA-X European Association for Data and Cloud AISBL.
