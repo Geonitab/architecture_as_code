@@ -12,7 +12,7 @@ This book represents the culmination of extensive experience in architecture, in
 
 ### Professional Background
 
-Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and IT security projects. His diverse technical background encompasses network solutions, servers, virtualisation, and IT security, among other critical areas of modern technology infrastructure.
+Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and IT security programmes. His diverse technical background encompasses network solutions, servers, virtualisation, and IT security, alongside specialised support for regulated organisations and complex delivery environments.
 
 **Core Areas of Expertise:**
 - Solution and Enterprise Architecture
