@@ -2,7 +2,7 @@ name: Add Review Label
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  workspace_dispach:
+  workflow_dispatch:
 jobs:
   add-label:
     runs-on: ubuntu-latest
