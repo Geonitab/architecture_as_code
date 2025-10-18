@@ -71,7 +71,7 @@ Reference material, author information, and technical enablers
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 13 | `13_testing_strategies.md` | Testing Strategies for Infrastructure Code | Testing of IaC and architecture code |
+| 13 | `13_testing_strategies.md` | Testing Strategies for Infrastructure as Code | Testing of IaC and architecture code |
 | 14 | `14_practical_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
 | 15 | `15_cost_optimization.md` | Cost Optimisation and Resource Management | Economic optimisation of resources |
 | 16 | `16_migration.md` | Migration from Traditional Infrastructure | Migration strategies and best practices |

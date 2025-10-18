@@ -23,7 +23,7 @@ nav:
       - Governance as Code: 11_governance_as_code.md
       - Compliance and Regulatory Adherence: 12_compliance.md
   - Part 4 – Delivery & Operations:
-      - Testing Strategies for Infrastructure Code: 13_testing_strategies.md
+      - Testing Strategies for Infrastructure as Code: 13_testing_strategies.md
       - Architecture as Code in Practice: 14_practical_implementation.md
       - Cost Optimization and Resource Management: 15_cost_optimization.md
       - Migration from Traditional Infrastructure: 16_migration.md
