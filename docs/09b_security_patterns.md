@@ -277,7 +277,7 @@ Key controls drawn from Source [16] include:
 - **Least-privilege access control.** Restrict read/write access to specific CI/CD service identities, enforce multi-factor authentication for manual unlocks, and log every state operation into the central SIEM for continuous monitoring.
 - **Secure distribution patterns.** Provide read-only state views to downstream consumers via signed URLs or API proxies so that platform teams and auditors can inspect deployments without inheriting full write privileges.
 
-Embedding these measures into the platform baseline ensures IaC state services comply with European expectations for safeguarding operational data while maintaining the agility demanded by Architecture as Code programmes.
+Embedding these measures into the platform baseline ensures IaC state services comply with European expectations for safeguarding operational data while maintaining the agility demanded by Architecture as Code programmes, as reinforced by Source [16].
 
 ### Advanced GDPR compliance implementation
 
