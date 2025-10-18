@@ -1,0 +1,22 @@
+graph TB
+    subgraph "Architecture as Code"
+        Intent[Architecture Intent & Principles]:::kv-primary
+        Guardrails[Governance Guardrails<br/>Policies as Code]:::kv-accent
+        Blueprints[Reference Blueprints<br/>Domain patterns]:::kv-highlight
+    end
+
+    subgraph "Abstraction Handover"
+        Contracts[Executable Contracts<br/>APIs, data models, compliance checks]:::kv-accent
+    end
+
+    subgraph "Infrastructure as Code"
+        Modules[IaC Modules & Stacks]:::kv-highlight
+        Runtime[Provisioned Runtime<br/>Cloud & platform services]:::kv-primary
+    end
+
+    Intent --> Guardrails --> Blueprints --> Contracts --> Modules --> Runtime
+    Runtime -.Operational telemetry.-> Intent
+
+    classDef kv-primary fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#fff
+    classDef kv-accent fill:#7c3aed,stroke:#a78bfa,stroke-width:2px,color:#fff
+    classDef kv-highlight fill:#059669,stroke:#10b981,stroke-width:2px,color:#fff

@@ -12,6 +12,30 @@ Understanding CI/CD for Architecture as Code requires a fundamental mindset shif
 
 The CI/CD flow depicted earlier runs from code commit through validation, testing, deployment, and monitoring. The flow represents a systematic method in which each stage is designed to surface defects early, assure quality, and minimise production risk. Organisations must include considerations around data residency, compliance validation, and cost optimisation.
 
+## Clarifying AaC and IaC abstraction responsibilities
+
+![AaC and IaC abstraction layers](images/diagram_05_aac_iac_layers.png)
+
+> **Architecture as Code defines intent; Infrastructure as Code executes implementation.**
+
+Architecture as Code expresses the architectural contract for the organisation, codifying principles, guardrails, and quality models that span multiple domains. It captures structures such as policies as code, data contracts, and reference blueprints so teams share an agreed target state before any infrastructure is provisioned. This is the opinionated abstraction emphasised by Finding #4 – Abstraction and Opinionation from the analysis research backlog, which highlighted the risk of leaving governance to downstream tools.
+
+Infrastructure as Code consumes those blueprints to assemble concrete environments. It translates canonical definitions into Terraform modules, Pulumi programmes, Helm charts, or cloud-native stacks that can be applied repeatedly. IaC should only vary within the constraints set by the architecture-level definitions, ensuring runtime changes remain auditable.
+
+| Aspect | Architecture as Code | Infrastructure as Code |
+|--------|----------------------|------------------------|
+| Primary concern | Architectural intent, guardrails, and non-functional requirements | Provisioning of compute, network, storage, and platform services |
+| Owners | Enterprise and domain architects with governance leads | Platform engineers and site reliability teams |
+| Typical artefacts | Architecture decision records, policy as code, domain blueprints, model contracts | Terraform modules, AWS CDK constructs, Kubernetes manifests, configuration-management playbooks |
+| Change cadence | Strategic releases aligned to organisational control points | High-frequency deployments and drift-correction routines |
+
+Together they form a contract: Architecture as Code provides the standards and approval logic, while Infrastructure as Code operationalises workloads and feeds telemetry back into architectural decision-making.
+
+**Sources:**
+- Finding #4 – Abstraction and Opinionation (analysis research backlog).
+- ThoughtWorks Technology Radar, Vol. 28 (2024) — advocates codifying architectural guardrails ahead of infrastructure automation.
+- AWS Cloud Development Kit (CDK) Developer Guide (2023) — documents how higher-level constructs sit above Terraform-compatible provisioners to enforce architectural patterns.
+
 ## The theoretical foundation for CI/CD automation
 
 Continuous integration and continuous deployment are more than technical processes. They describe a philosophy for software development that prioritises rapid feedback, incremental improvement, and risk reduction through automation. When these principles are applied to Architecture as Code they open unique opportunities and challenges that demand deep understanding of both technical and organisational dimensions.
