@@ -3,6 +3,7 @@ name: Assign Copilot Review
 on:
   pull_request:
     types: [ready_for_review]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,8 +23,21 @@ jobs:
           script: |
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const prNumber = context.payload.pull_request.number;
             const marker = "@copilot - verify this PR";
+            let prNumber;
+
+            // If triggered manually, attempt to detect the PR from context or inputs
+            if (context.eventName === "workflow_dispatch") {
+              core.info("🔄 Manual trigger detected.");
+              // You can optionally pass PR number as input when running manually
+              prNumber = core.getInput("pr_number") || null;
+              if (!prNumber) {
+                core.setFailed("No pull request number provided. Please specify 'pr_number' when running manually.");
+                return;
+              }
+            } else {
+              prNumber = context.payload.pull_request.number;
+            }
 
             // Fetch all comments on the pull request (with pagination)
             const comments = await github.paginate(
