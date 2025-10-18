@@ -243,9 +243,11 @@ Serverless computing is expanding beyond stateless functions into container-base
 
 Infrastructure mesh concepts apply service-mesh thinking to the infrastructure layer, providing consistent policy enforcement, observability, and connectivity across clouds and on-premises estates. Immutable infrastructure principles extend from images and deployment artefacts to networking, policy definitions, and even data pipelines, ensuring that every change is implemented through version-controlled updates rather than mutable configuration.
 
-## Digital Sovereignty and European Collaboration
+## Cloud and Digital Sovereignty in Europe
 
 Digital sovereignty is gaining prominence as organisations seek control over data residency, privacy, and supply-chain risk. European initiatives such as GAIA-X provide federated infrastructure frameworks that enable organisations to maintain sovereignty whilst benefiting from cloud scalability. GAIA-X's data space model supports interoperability between European cloud providers, reducing vendor lock-in and ensuring compliance with EU regulations including GDPR and the Data Governance Act.
+
+Chapter 15 outlines how multi-region design, egress budgeting, and FinOps automation keep sovereignty-aligned estates financially sustainable. Future-ready teams should unite those practices with sovereignty guardrails by codifying residency rules, approved EU providers, and cross-border data exchange limits directly in policy modules. This harmonised approach keeps cost optimisation, compliance, and sovereignty obligations synchronised across Architecture as Code pipelines.
 
 Architecture as Code enables transparent choices about hosting locations, encryption standards, and vendor dependencies. European organisations can leverage multiple cloud providers—ranging from global hyperscalers with EU regions to European-native providers such as OVHcloud, Scaleway, and Open Telekom Cloud—whilst codifying residency and compliance requirements directly in infrastructure definitions.
 
