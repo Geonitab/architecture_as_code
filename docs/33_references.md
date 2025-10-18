@@ -64,6 +64,9 @@ This section provides a comprehensive list of all sources and references cited t
 **IASA Global.** "IT Architecture Body of Knowledge (ITABOK)." IASA Global, 2024. https://itabok.iasaglobal.org/  
 *Referenced in: [Chapter 18: Team Structure and Competency Development for Architecture as Code](18_team_structure.md)*
 
+**IASA Global.** "Certified IT Architect (CITA) Programme." IASA Global, 2024. https://iasaglobal.org/certification/  
+*Referenced in: [Chapter 18: Team Structure and Competency Development for Architecture as Code](18_team_structure.md)*
+
 **Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/  
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 

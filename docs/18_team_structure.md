@@ -272,3 +272,4 @@ Architecture as Code succeeds when teams evolve their operating model alongside 
 - Atlassian. "DevOps Team Structure and Best Practices." Atlassian Documentation.
 - HashiCorp. "Infrastructure as Code Maturity Model." HashiCorp Learn Platform.
 - IASA Global. "IT Architecture Body of Knowledge (ITABOK)." IASA Global.
+- IASA Global. "Certified IT Architect (CITA) Programme." IASA Global.
