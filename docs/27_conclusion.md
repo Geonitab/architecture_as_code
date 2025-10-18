@@ -44,16 +44,22 @@ optimisation. By regularly reviewing feedback loops, teams maintain momentum and
 
 Operating across the European Union demands a consistent commitment to lawful handling of information, resilient supply chains,
 and ethical automation. The [policy and security guidance](10_policy_and_security.md) and [compliance practices](12_compliance.md)
-show how GDPR, the NIS2 directive, and emerging AI governance proposals influence design choices from the earliest architectural
+show how GDPR, the NIS2 Directive, and emerging AI governance proposals influence design choices from the earliest architectural
 blueprints. Treating data residency as a first-class requirement keeps infrastructure definitions aligned with EU data boundary
-commitments and sector-specific controls such as DORA for financial services.
+commitments and sector-specific controls such as DORA for financial services and the European Data Governance Act for cross-border
+data sharing.
 
-The region's sustainability and digital priorities require Architecture as Code teams to consider environmental impact alongside
-operational efficiency. [Future trends](25_future_trends_development.md) emphasise carbon-aware workloads, energy-efficient
-automation, and transparent procurement that supports the European Green Deal. The wider transformation agenda explored in
-[chapter 21 on digitalisation](21_digitalization.md) illustrates how coordinated change across member states, public institutions,
-and private enterprises benefits from codified architectural knowledge that can be shared, audited, and re-used without
-reinventing country-specific artefacts.
+European initiatives create space for Architecture as Code teams to collaborate beyond national boundaries whilst still respecting
+local obligations. Programmes such as Digital Europe, GAIA-X, and the European Alliance for Industrial Data, Edge and Cloud
+encourage interoperable platforms, shared reference architectures, and sector-specific data spaces that can be codified as reusable
+modules. Access to EU-funded sandboxes and regulatory support, including the AI Act's conformity assessment regime, helps
+organisations prove compliance earlier in delivery cycles and accelerate acceptance by supervisory authorities.
+
+Sustainability remains a parallel obligation. [Future trends](25_future_trends_development.md) emphasise carbon-aware workloads,
+energy-efficient automation, and transparent procurement aligned with the European Green Deal and the Corporate Sustainability
+Reporting Directive. The wider transformation agenda explored in [chapter 21 on digitalisation](21_digitalization.md) shows how
+coordinated change across member states, public institutions, and private enterprises benefits from codified architectural
+knowledge that can be shared, audited, and re-used without reinventing country-specific artefacts.
 
 ## 27.4 Recommendations for organisations
 
