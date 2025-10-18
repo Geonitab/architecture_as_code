@@ -3,22 +3,31 @@ FROM node:25-bookworm AS release-builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Basic tools + CA certs
+# ---- Base utilities ----
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     gnupg \
     ca-certificates \
  && rm -rf /var/lib/apt/lists/*
 
-# ---- Google Chrome (modern keyring method) ----
-RUN install -m 0755 -d /etc/apt/keyrings \
- && wget -q -O /etc/apt/keyrings/google-chrome.gpg https://dl.google.com/linux/linux_signing_key.pub \
- && chmod a+r /etc/apt/keyrings/google-chrome.gpg \
- && echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
-    > /etc/apt/sources.list.d/google-chrome.list \
- && apt-get update \
- && apt-get install -y --no-install-recommends google-chrome-stable \
- && rm -rf /var/lib/apt/lists/*
+# ---- Google Chrome (Bookworm-safe, with retry & Chromium fallback) ----
+RUN set -eux; \
+  install -m 0755 -d /usr/share/keyrings; \
+  wget -qO- https://dl.google.com/linux/linux_signing_key.pub \
+    | gpg --dearmor > /usr/share/keyrings/google-chrome.gpg; \
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" \
+    > /etc/apt/sources.list.d/google-chrome.list; \
+  for i in 1 2 3; do \
+    if apt-get update; then break; else echo "apt-get update failed, retry $i/3"; sleep 5; fi; \
+  done; \
+  if apt-get install -y --no-install-recommends google-chrome-stable; then \
+    echo "✅ Installed Google Chrome"; \
+  else \
+    echo "⚠️ Chrome install failed; falling back to Chromium"; \
+    apt-get install -y --no-install-recommends chromium; \
+    ln -sf /usr/bin/chromium /usr/local/bin/google-chrome-stable; \
+  fi; \
+  rm -rf /var/lib/apt/lists/*
 
 # ---- System deps incl. TeX Live ----
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -28,11 +37,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-extra \
     texlive-luatex \
     texlive-fonts-extra \
-    texlive-lang-european \ 
+    texlive-lang-european \
     librsvg2-bin \
     fonts-liberation \
     fonts-dejavu \
-    # Python (3.11 on Bookworm) + pip
+    # Python (3.11 on Bookworm) + pip + 'python' shim
     python3 \
     python3-pip \
     python-is-python3 \
@@ -72,10 +81,9 @@ ENV CHROME_FLAGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage 
 
 # ---- Pandoc template setup ----
 RUN mkdir -p /root/.local/share/pandoc/templates \
- && pandoc --print-default-template=latex > /root/.local/share/pandoc/templates/eisvogel.latex \
- || true
+ && (pandoc --print-default-template=latex > /root/.local/share/pandoc/templates/eisvogel.latex || true)
 
-# Try to fetch real Eisvogel; fall back to default if not found
+# Try to fetch Eisvogel; fall back to default on failure
 RUN wget -qO- https://github.com/Wandmalfarbe/pandoc-latex-template/releases/latest/download/Eisvogel.tar.gz \
  | tar -xz -C /tmp/ 2>/dev/null \
  && find /tmp -name "eisvogel.latex" -exec cp {} /root/.local/share/pandoc/templates/ \; 2>/dev/null \
@@ -88,10 +96,12 @@ RUN set -e; \
     echo "Node:  " && node --version; \
     echo "Java:  " && java -version; \
     echo "Pandoc:" && pandoc --version | head -n 2; \
-    echo "Chrome:" && google-chrome --version
+    echo "Chrome:" && command -v google-chrome-stable >/dev/null && google-chrome-stable --version || chromium --version
 
 # ---- Workspace & scripts ----
 WORKDIR /workspace
+
+# Copy build scripts
 COPY build_release.sh /usr/local/bin/build_release.sh
 COPY docs/build_book.sh /usr/local/bin/build_book.sh
 COPY generate_book.py /usr/local/bin/generate_book.py
@@ -101,4 +111,5 @@ COPY generate_presentation.py /usr/local/bin/generate_presentation.py
 RUN chmod +x /usr/local/bin/build_release.sh \
  && chmod +x /usr/local/bin/build_book.sh
 
+# Default to running the complete release build
 ENTRYPOINT ["/usr/local/bin/build_release.sh"]
