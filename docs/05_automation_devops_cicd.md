@@ -32,7 +32,6 @@ Infrastructure as Code consumes those blueprints to assemble concrete environmen
 Together they form a contract: Architecture as Code provides the standards and approval logic, while Infrastructure as Code operationalises workloads and feeds telemetry back into architectural decision-making.
 
 **Sources:**
-- Finding #4 – Abstraction and Opinionation (analysis research backlog).
 - ThoughtWorks Technology Radar, Vol. 28 (2024) — advocates codifying architectural guardrails ahead of infrastructure automation.
 - AWS Cloud Development Kit (CDK) Developer Guide (2023) — documents how higher-level constructs sit above Terraform-compatible provisioners to enforce architectural patterns.
 
