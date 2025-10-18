@@ -267,6 +267,18 @@ resource "aws_s3_bucket" "audit_logs" {
 
 This module applies best practices for key management, Zero Trust networking, and audit logging to meet European regulatory expectations. KMS key rotation is automated, security groups enforce a default deny posture, and CloudTrail delivers tamper-evident logging for compliance validation.
 
+### Secure remote state management
+
+Terraform state backends record every provisioned resource, provider credential, and computed attribute. Source [16] underscores that these files are effectively an audit trail for production infrastructure and must therefore be protected as sensitive assets. HashiCorp's broader Terraform security guidance reinforces the need to move teams away from local state and into centrally managed, encrypted backends that provide versioning and access auditing.
+
+Key controls drawn from Source [16] include:
+- **Encrypted remote storage.** Use managed object storage with server-side encryption backed by customer-managed keys, or Terraform Cloud workspaces with integrated key management, so that state data at rest remains unreadable outside authorised channels.
+- **State locking and integrity protection.** Pair S3 backends with DynamoDB locking (or the equivalent on other platforms) to prevent concurrent updates from corrupting state, and enable object versioning to create verifiable recovery points for incident response.
+- **Least-privilege access control.** Restrict read/write access to specific CI/CD service identities, enforce multi-factor authentication for manual unlocks, and log every state operation into the central SIEM for continuous monitoring.
+- **Secure distribution patterns.** Provide read-only state views to downstream consumers via signed URLs or API proxies so that platform teams and auditors can inspect deployments without inheriting full write privileges.
+
+Embedding these measures into the platform baseline ensures IaC state services comply with European expectations for safeguarding operational data while maintaining the agility demanded by Architecture as Code programmes.
+
 ### Advanced GDPR compliance implementation
 
 Policy as Code can express GDPR requirements in executable form. The following Open Policy Agent example shows how Article 32 ca
@@ -565,6 +577,7 @@ nd accelerated innovation.
 - Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
 - Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
 - HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023.
+- HashiCorp. *Securing Terraform State.* HashiCorp Documentation, 2024.
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 

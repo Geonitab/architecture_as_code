@@ -186,6 +186,12 @@ Emerging techniques such as homomorphic encryption and secure multi-party comput
 e adoption is still limited, Architecture as Code practices can prepare organisations for future integration through abstracted
  interfaces.
 
+### Protecting Infrastructure as Code state
+
+Infrastructure as Code platforms rely on state files that catalogue every managed resource, derived attribute, and often sensitive secret material. Source [16] stresses that Terraform state must therefore be treated as highly confidential data rather than routine configuration output. Organisations should avoid local storage entirely and instead mandate remote backends with enforced encryption such as S3 with customer-managed KMS keys, Azure Storage Accounts with service-side encryption, or Terraform Cloud workspaces with integrated key management. Source [16] also highlights that state access must follow least-privilege controls backed by IAM policies, with explicit separation between delivery teams that read state and platform administrators authorised to modify or unlock it.
+
+Operational safeguards complement the storage controls. Enabling state locking (for example via DynamoDB when using S3) prevents concurrent updates from corrupting the state file, while versioning and object lifecycle rules provide auditable recovery points for incident response. Integrating backend audit logs into the central security information and event management (SIEM) platform ensures every read, write, and lock operation is monitored alongside other critical infrastructure events. These practices align with broader European regulatory expectations for protecting operational data artefacts that influence production systems and should be embedded as baseline controls within Architecture as Code programmes.
+
 ### Data classification and handling procedures
 
 Effective protection begins with clear data classification. Automated discovery tools can assist through content analysis and pa
@@ -260,6 +266,7 @@ This chapter has established the fundamental security principles and practices f
 - Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
 - Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
 - HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023.
+- HashiCorp. *Securing Terraform State.* HashiCorp Documentation, 2024.
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 
