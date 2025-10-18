@@ -12,6 +12,12 @@ Docker popularised this model and remains the industry reference point, while pr
 
 Once images are produced they are stored in container registries, which act as central repositories for distribution and version control. Private registries support enterprise governance by enforcing access control, image signing, and vulnerability scanning before any workload reaches production. Registry policies can be expressed as code to guarantee compliance across teams.
 
+## Architecture as Code for Microservice Container Estates
+
+The archived microservices analysis shows how decomposing Swedish digital platforms from monoliths into microservices replaces in-process calls with hundreds of network hops. Each service owns its own pipeline, data contract, and compliance posture, and container platforms become the execution fabric that must reconcile those concerns. Without codified definitions, network reliability, latency, and hybrid cloud service discovery quickly overwhelm teams that need to uphold Swedish expectations for availability and regulatory adherence.
+
+Architecture as Code brings that estate back under control by expressing deployment pipelines, service mesh policies, residency-aware routing, and sustainability metrics in version-controlled artefacts. Swedish organisations can automate blue/green strategies, distributed tracing, and GDPR logging across every cluster instead of relying on manual runbooks. ThoughtWorks' 2024 Technology Radar positions these practices as the pragmatic response to microservice sprawl, while the CNCF State of Cloud Native Development 2024 report highlights how European enterprises now operate multi-cloud container estates that demand GitOps-style automation to remain coherent.
+
 ## Kubernetes as an orchestration platform
 
 Kubernetes has become the canonical orchestration layer thanks to its declarative design and expansive ecosystem. YAML manifests capture the desired state for workloads, services, and platform components, meaning the entire runtime can be documented alongside the application source. The Kubernetes control plane continuously reconciles the actual state with those declarations, enforcing Architecture as Code in real time.
@@ -247,3 +253,5 @@ The next part of this book explores how security, policy enforcement, and govern
 - Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.
 - Helm Community. "Chart Development Guide." Helm Documentation.
 - Istio Project. "Service Mesh Architecture." Istio Service Mesh.
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
+- Cloud Native Computing Foundation. "State of Cloud Native Development 2024."

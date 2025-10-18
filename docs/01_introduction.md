@@ -6,6 +6,12 @@ Architecture as Code represents a paradigm shift in system development where the
 
 The diagram illustrates the evolution from manual processes to the comprehensive vision of Architecture as Code, where every aspect of the system architecture is codified.
 
+## Microservices Complexity Drives Architecture as Code
+
+Swedish digital leaders such as Spotify, Klarna, and King pioneered microservices architectures to keep pace with global demand, only to discover that agility brought sprawling estates of independently deployable services. What once lived as in-process logic became hundreds of networked APIs, each with its own deployment pipeline, data contract, and regulatory obligations. The archived microservices analysis highlights the day-to-day friction this introduces—network reliability, latency, hybrid cloud service discovery, and geographically aware routing all need to be orchestrated for every service whilst maintaining Swedish standards for quality and compliance.
+
+Architecture as Code is the mechanism that turns that sprawl back into a coherent whole. Version-controlled definitions describe service boundaries, communication policies, infrastructure topologies, and the audit trails that prove compliance. Swedish organisations can codify sustainability metrics, release gates, and governance logic alongside the microservices they belong to, ensuring that autonomy never sacrifices accountability. ThoughtWorks' 2024 Technology Radar identifies Architecture as Code as the antidote to microservice sprawl, and the CNCF State of Cloud Native Development 2024 report documents how European enterprises now operate multi-cloud estates where consistent automation is the only reliable option. Together, these forces make microservice complexity the primary driver for adopting Architecture as Code.
+
 ## Evolution towards Architecture as Code
 
 Traditional methods for system architecture have often been manual and document-based. Architecture as Code builds on established principles from software development and applies them to the complete system landscape.
@@ -39,6 +45,7 @@ Readers will gain comprehensive knowledge of how the entire system architecture 
 Sources:
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
+- Cloud Native Computing Foundation. "State of Cloud Native Development 2024."
 
 ## How This Book Is Organised
 
