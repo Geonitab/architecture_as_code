@@ -1,7 +1,7 @@
 # Chapter 27 – Conclusion
 
 Architecture as Code has transformed how organisations design, deliver, and evolve their technology estates. By managing
-architectural artefacts as executable code we gain the same precision, repeatability, and governance controls that software
+architectural artefacts as executable code we realise the same precision, repeatability, and governance controls that software
 engineering teams have relied on for decades. This book has traced that transformation from the
 [fundamental concepts](01_introduction.md) to [forward-looking developments](25_future_trends_development.md), showing how the
 practice underpins modern digital capabilities.
@@ -11,7 +11,7 @@ practice underpins modern digital capabilities.
 Sustained success with Architecture as Code depends on the interplay between technical craft and organisational intent. The
 most effective transformations are led by committed sponsors, supported by clear communication, and reinforced through
 structured learning programmes. The change practices explored in [chapter 17 on organisational change](17_organizational_change.md)
-show how leadership, coaching, and incremental adoption reduce disruption while building confidence across teams.
+show how leadership, coaching, and incremental adoption reduce disruption whilst building confidence across teams.
 
 Architecture as Code stretches beyond infrastructure automation by codifying decision logic, policies, and integration
 patterns that articulate the enterprise blueprint. Maintaining this emphasis ensures that architectural outcomes remain the
@@ -66,7 +66,7 @@ communication, coaching, and community building.
 
 1. **Foundational education**: Establish a common understanding of [Architecture as Code principles](02_fundamental_principles.md)
    and disciplined [version control practices](03_version_control.md).
-2. **Pilot projects**: Use [automation pipelines](05_automation_devops_cicd.md) to modernise a contained, low-risk service while
+2. **Pilot projects**: Use [automation pipelines](05_automation_devops_cicd.md) to modernise a contained, low-risk service whilst
    collecting feedback and metrics.
 3. **Security integration**: Embed [policy and security](10_policy_and_security.md) controls and [compliance processes](12_compliance.md)
    into every delivery workflow.
