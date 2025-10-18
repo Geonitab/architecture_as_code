@@ -28,10 +28,12 @@ The C4 model provides a hierarchical approach to software architecture diagrams,
 
 | Level | Purpose | Audience | Abstraction |
 |-------|---------|----------|-------------|
-| **System Context** | Shows how the system fits in the world | Everyone | Highest - shows people and systems |
-| **Container** | Shows the high-level technology choices | Technical people | High - shows applications and data stores |
-| **Component** | Shows how a container is made up of components | Architects and developers | Medium - shows major structural building blocks |
-| **Code** | Shows how a component is implemented | Developers | Lowest - shows classes and methods |
+| **System Context** | Illustrates how the software system in scope fits into its environment, highlighting users and neighbouring systems | Technical and non-technical stakeholders | People and software systems |
+| **Container** | Zooms into the software system to show the high-level technology building blocks and how they collaborate | Architects, developers, and operations teams | Containers, data stores, and their responsibilities |
+| **Component** | Decomposes a container to explain the components that fulfil its responsibilities and how they interact | Architects and developers | Components within a container |
+| **Code** | Provides an optional view of how a component is implemented in code, such as classes, interfaces, or functions | Developers | Source code structures |
+
+Brown's C4 Model guidance stresses that each successive level narrows the audience and scope so stakeholders can reason about the system using diagrams tailored to the detail they need, keeping the hierarchy consistent across teams.
 
 ### Why C4 Works with Architecture as Code
 
@@ -41,6 +43,10 @@ The C4 model aligns naturally with Architecture as Code principles because:
 2. **Technology agnostic** - The model works regardless of programming languages or platforms
 3. **Lightweight** - Simple notation reduces cognitive overhead
 4. **Composable** - Views can be generated programmatically from a single model
+
+### Preventing diagram decay with automation
+
+Brown (2022) describes "diagram decay" as the gradual divergence between architecture diagrams and the systems they represent when updates rely on manual effort. Structurizr's automated generation of C4 diagrams from a single, version-controlled model eliminates that manual gap: every change to the model regenerates the diagrams for the appropriate audience, whether leadership needs the System Context view or developers need Component detail. Embedding Structurizr rendering in CI pipelines, alongside Architecture as Code validation, ensures diagrams are rebuilt with each merge so teams catch drift early rather than allowing stale visuals to persist.
 
 ## Structurizr DSL: Core Concepts
 
@@ -1479,5 +1485,6 @@ The next chapters explore how to extend these foundations into containerisation 
 - Brown, S. "The C4 model for visualising software architecture." https://c4model.com
 - Structurizr. "Structurizr DSL documentation." https://github.com/structurizr/dsl
 - Structurizr. "Structurizr Lite." https://structurizr.com/help/lite
+- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.
 - Brown, S. "Software Architecture for Developers." Leanpub, 2024.
 - ThoughtWorks Technology Radar. "Diagrams as code." https://www.thoughtworks.com/radar/techniques/diagrams-as-code
