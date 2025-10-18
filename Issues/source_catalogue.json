@@ -1,0 +1,148 @@
+{
+  "sources": [
+    {
+      "id": 1,
+      "title": "AaC Open Source Project. – Architecture-as-Code Repository",
+      "type": "repository",
+      "year": 2024,
+      "url": "https://github.com/aacplatform/aac",
+      "summary": "Open source repository showcasing the Architecture as Code reference implementation and tooling patterns used throughout the manuscript.",
+      "supports_chapters": ["06_structurizr.md", "31_technical_architecture.md"]
+    },
+    {
+      "id": 2,
+      "title": "Architecture Decision Records Community. – ADR Guidelines and Templates",
+      "type": "guidance",
+      "year": 2024,
+      "url": "https://adr.github.io",
+      "summary": "Community-maintained catalogue of ADR practices that underpins the book's discussion on decision records and traceability.",
+      "supports_chapters": ["04_adr.md"]
+    },
+    {
+      "id": 3,
+      "title": "Atlassian. – Documentation as Code: Treating Docs as a First-Class Citizen",
+      "type": "article",
+      "year": 2023,
+      "url": "https://developer.atlassian.com/platform/documentation-as-code",
+      "summary": "Explains how treating documentation like source code improves collaboration and auditability, reinforcing foundational Architecture as Code practices.",
+      "supports_chapters": ["02_fundamental_principles.md"]
+    },
+    {
+      "id": 4,
+      "title": "Atlassian. – Git Workflows for Architecture as Code",
+      "type": "article",
+      "year": 2024,
+      "url": "https://www.atlassian.com/git/tutorials/comparing-workflows",
+      "summary": "Outlines collaborative Git workflows that the manuscript recommends for evolving architectural assets safely and transparently.",
+      "supports_chapters": ["03_version_control.md"]
+    },
+    {
+      "id": 5,
+      "title": "Brown, S. – C4 Model Overview",
+      "type": "article",
+      "year": 2024,
+      "url": "https://c4model.com",
+      "summary": "Introduces the C4 visualisation model that informs the manuscript's approach to automated diagramming and architectural communication.",
+      "supports_chapters": ["06_structurizr.md", "24_best_practices.md"]
+    },
+    {
+      "id": 6,
+      "title": "Brown, S. – Documenting Software Architecture with Structurizr",
+      "type": "article",
+      "year": 2022,
+      "url": "https://blog.structurizr.com/documenting-software-architecture",
+      "summary": "Details practical guidance for documenting architecture with Structurizr, directly informing the book's diagram automation guidance.",
+      "supports_chapters": ["06_structurizr.md", "24_best_practices.md"]
+    },
+    {
+      "id": 7,
+      "title": "CNCF. – State of Cloud Native Development 2024",
+      "type": "industry-report",
+      "year": 2024,
+      "url": "https://www.cncf.io/reports/state-of-cloud-native-development-2024",
+      "summary": "Quantifies cloud-native adoption trends that establish the urgency for Architecture as Code capabilities highlighted in the manuscript.",
+      "supports_chapters": ["01_introduction.md", "07_containerization.md"]
+    },
+    {
+      "id": 8,
+      "title": "GitLab. – Documentation as Code: Best Practices and Implementation",
+      "type": "article",
+      "year": 2024,
+      "url": "https://docs.gitlab.com/ee/user/project/documentation",
+      "summary": "Captures documentation-as-code techniques the manuscript reuses when establishing architecture repositories and contribution workflows.",
+      "supports_chapters": ["02_fundamental_principles.md"]
+    },
+    {
+      "id": 9,
+      "title": "GitLab. – Building a Single Source of Truth with APIs and CLI",
+      "type": "article",
+      "year": 2024,
+      "url": "https://about.gitlab.com/topics/single-source-of-truth",
+      "summary": "Explains how integrated tooling forms a single source of truth, supporting the governance automation described in the book.",
+      "supports_chapters": ["02_fundamental_principles.md", "11_governance_as_code.md"]
+    },
+    {
+      "id": 10,
+      "title": "GitHub Docs. – About protected branches",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches",
+      "summary": "Official guidance on branch protection rules referenced when defining governance controls for architecture repositories.",
+      "supports_chapters": ["11_governance_as_code.md", "23_soft_as_code_interplay.md"]
+    },
+    {
+      "id": 11,
+      "title": "HashiCorp. – Policy as Code Overview",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/enterprise/policy-as-code",
+      "summary": "Describes Terraform's policy-as-code capabilities that the manuscript uses to demonstrate automated compliance checks.",
+      "supports_chapters": ["23_soft_as_code_interplay.md"]
+    },
+    {
+      "id": 12,
+      "title": "HashiCorp. – Securing Terraform State",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/cloud-docs/state/securing",
+      "summary": "Highlights security practices for Terraform state management aligned with the book's Infrastructure as Code security coverage.",
+      "supports_chapters": ["09a_security_fundamentals.md", "09b_security_patterns.md"]
+    },
+    {
+      "id": 13,
+      "title": "Martin, R. – Clean Architecture",
+      "type": "book",
+      "year": 2017,
+      "url": "https://www.oreilly.com/library/view/clean-architecture/9780134494272/",
+      "summary": "Foundational text on architectural principles cited when grounding Architecture as Code in established software design practices.",
+      "supports_chapters": ["01_introduction.md", "02_fundamental_principles.md"]
+    },
+    {
+      "id": 14,
+      "title": "Ford, Neal, et al. – Building Evolutionary Architectures",
+      "type": "book",
+      "year": 2017,
+      "url": "https://www.oreilly.com/library/view/building-evolutionary-architectures/9781491986355/",
+      "summary": "Explores evolutionary architecture techniques that underpin the book's emphasis on continual architectural refinement.",
+      "supports_chapters": ["22_documentation_vs_architecture.md"]
+    },
+    {
+      "id": 15,
+      "title": "Pulumi. – Testing Infrastructure as Code Programs",
+      "type": "article",
+      "year": 2024,
+      "url": "https://www.pulumi.com/blog/testing-infrastructure-as-code-programs",
+      "summary": "Demonstrates IaC testing practices the manuscript uses to advocate for inclusive architecture and infrastructure validation.",
+      "supports_chapters": ["13_testing_strategies.md", "14_practical_implementation.md"]
+    },
+    {
+      "id": 16,
+      "title": "FINOS. – CALM: Common Architecture Language Model",
+      "type": "programme",
+      "year": 2024,
+      "url": "https://calm.finos.org/",
+      "summary": "Provides the community-led architecture language model that informs the manuscript's guidance on narrative consistency.",
+      "supports_chapters": ["22_documentation_vs_architecture.md"]
+    }
+  ]
+}
