@@ -189,6 +189,52 @@ def get_chapter_mapping():
 
     return mapping
 
+def get_supplemental_chapters():
+    """Return supplemental chapter metadata defined in requirements."""
+    metadata = _load_requirements_metadata()
+    supplemental_chapters = (
+        metadata.get("book", {}).get("supplemental_chapters")
+        or metadata.get("supplemental_chapters")
+        or []
+    )
+
+    mapping = OrderedDict()
+    for chapter in supplemental_chapters:
+        filename = chapter.get("filename")
+        if not filename:
+            continue
+
+        description = chapter.get("description", "").strip()
+        area = chapter.get("area") or "Supplemental Material"
+
+        mapping[filename] = {
+            "label": chapter.get("label") or "Supplemental Chapter",
+            "title": chapter.get("title"),
+            "area": area,
+            "description": description,
+            "supplemental": True
+        }
+
+    return mapping
+
+def get_all_chapter_mapping():
+    """Return ordered mapping of canonical and supplemental chapters."""
+    combined_mapping = OrderedDict()
+
+    for filename, meta in get_chapter_mapping().items():
+        meta_copy = dict(meta)
+        meta_copy.setdefault("supplemental", False)
+        combined_mapping[filename] = meta_copy
+
+    for filename, meta in get_supplemental_chapters().items():
+        if filename in combined_mapping:
+            continue
+        meta_copy = dict(meta)
+        meta_copy.setdefault("supplemental", True)
+        combined_mapping[filename] = meta_copy
+
+    return combined_mapping
+
 def create_whitepaper_html(chapter_data, chapter_meta, book_overview):
     """Create HTML content for a whitepaper."""
     
@@ -342,6 +388,8 @@ def generate_whitepapers(release_mode=False):
     
     # Get chapter mapping and book overview
     chapter_mapping = get_chapter_mapping()
+    supplemental_mapping = get_supplemental_chapters()
+    all_chapter_mapping = get_all_chapter_mapping()
     book_overview = get_book_overview()
     
     # Find all chapter markdown files
@@ -349,26 +397,35 @@ def generate_whitepapers(release_mode=False):
     chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
     
     print(f"Found {len(chapter_files)} markdown files in docs/ directory")
-    print(f"Chapter mapping contains {len(chapter_mapping)} entries")
+    print(f"Chapter mapping contains {len(chapter_mapping)} canonical entries")
+    if supplemental_mapping:
+        print(f"Supplemental chapter mapping contains {len(supplemental_mapping)} entries")
     
     generated_count = 0
+    canonical_generated = 0
+    supplemental_generated = 0
     skipped_files = []
     error_files = []
+    processed_files = set()
     
     for chapter_file in chapter_files:
         filename = os.path.basename(chapter_file)
         
         # Skip files that aren't in our mapping (like build artifacts)
-        if filename not in chapter_mapping:
+        if filename not in all_chapter_mapping:
             # Log the reason for skipping
-            if filename.startswith('README') or filename.isupper() or filename.startswith('BOOK_') or filename.startswith('EPUB_') or filename.startswith('TERMINOLOGI_'):
+            chapter_name_no_ext = filename.rsplit('.', 1)[0]
+            if (filename.startswith('README') or chapter_name_no_ext.isupper() or filename.startswith('BOOK_') 
+                or filename.startswith('EPUB_') or filename.startswith('TERMINOLOGI_') 
+                or filename.startswith('part_') or filename in ("book_structure.md", "index.md")):
                 print(f"Skipping non-chapter file: {filename}")
-                skipped_files.append((filename, "Non-chapter file (README, metadata, etc.)"))
+                skipped_files.append((filename, "Non-chapter file (README, metadata, part introduction, etc.)"))
             else:
                 print(f"WARNING: Chapter file {filename} not found in mapping - this chapter will not have a whitepaper!")
                 skipped_files.append((filename, "Missing from chapter mapping"))
             continue
             
+        processed_files.add(filename)
         print(f"Processing {filename}...")
         
         # Read chapter content
@@ -379,7 +436,7 @@ def generate_whitepapers(release_mode=False):
             continue
         
         # Get chapter metadata
-        chapter_meta = chapter_mapping[filename]
+        chapter_meta = all_chapter_mapping[filename]
         
         # Generate whitepaper HTML
         html_content = create_whitepaper_html(chapter_data, chapter_meta, book_overview)
@@ -397,10 +454,25 @@ def generate_whitepapers(release_mode=False):
                 f.write(html_content)
             print(f"Generated: {output_path}")
             generated_count += 1
+            if chapter_meta.get("supplemental"):
+                supplemental_generated += 1
+            else:
+                canonical_generated += 1
         except Exception as e:
             print(f"Error writing {output_path}: {e}")
             error_files.append((filename, f"Write error: {e}"))
     
+    # Check for any mapped files missing from docs directory
+    missing_mapped = [fname for fname in all_chapter_mapping.keys() if fname not in processed_files]
+    for missing_file in missing_mapped:
+        chapter_meta = all_chapter_mapping[missing_file]
+        if chapter_meta.get("supplemental"):
+            print(f"WARNING: Supplemental chapter file {missing_file} missing from docs/ directory.")
+            skipped_files.append((missing_file, "Supplemental chapter missing from docs/ directory"))
+        else:
+            print(f"ERROR: Required chapter file {missing_file} missing from docs/ directory!")
+            error_files.append((missing_file, "Required chapter file missing"))
+
     # Copy to standard location if in release mode to maintain backward compatibility
     if release_mode:
         standard_dir = Path("whitepapers")
@@ -416,6 +488,9 @@ def generate_whitepapers(release_mode=False):
     print(f"Total files processed: {len(chapter_files)}")
     print(f"Files skipped: {len(skipped_files)}")
     print(f"Files with errors: {len(error_files)}")
+    print(f"Canonical chapters generated: {canonical_generated}/{len(chapter_mapping)}")
+    if supplemental_mapping:
+        print(f"Supplemental chapters generated: {supplemental_generated}/{len(supplemental_mapping)}")
     
     if skipped_files:
         print(f"\nSkipped files:")
@@ -427,14 +502,15 @@ def generate_whitepapers(release_mode=False):
         for filename, reason in error_files:
             print(f"  - {filename}: {reason}")
     
-    print(f"\nExpected chapter files based on mapping: {len(chapter_mapping)}")
-    if generated_count != len(chapter_mapping):
-        missing_count = len(chapter_mapping) - generated_count
-        print(f"WARNING: {missing_count} chapters did not generate whitepapers!")
+    print(f"\nExpected chapter files based on mapping: {len(all_chapter_mapping)}")
+    missing_total = len(all_chapter_mapping) - generated_count
+    if missing_total > 0:
+        print(f"WARNING: {missing_total} chapters did not generate whitepapers!")
     else:
         print("SUCCESS: All chapters have whitepapers!")
     
-    return generated_count > 0
+    success = canonical_generated == len(chapter_mapping) and generated_count > 0 and not error_files
+    return success
 
 def main():
     """Main function."""

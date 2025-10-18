@@ -23,7 +23,9 @@ from generate_whitepapers import (
     get_chapter_mapping, 
     get_book_overview, 
     read_chapter_content,
-    generate_whitepapers
+    generate_whitepapers,
+    get_all_chapter_mapping,
+    get_supplemental_chapters
 )
 
 class TestWhitepaperGeneration(unittest.TestCase):
@@ -99,6 +101,19 @@ class TestWhitepaperGeneration(unittest.TestCase):
         for filename in mapping.keys():
             file_path = docs_dir / filename
             self.assertTrue(file_path.exists(), f"Mapped file does not exist: {file_path}")
+
+    def test_supplemental_chapters_present(self):
+        """Test that supplemental chapters are tracked separately."""
+        supplemental = get_supplemental_chapters()
+        self.assertTrue(supplemental, "Supplemental chapters should be defined in BOOK_REQUIREMENTS.md")
+
+        expected_supplementals = {"26_aac_anti_patterns.md", "26_prerequisites_for_aac.md", "32_finos_project_blueprint.md"}
+        self.assertTrue(
+            expected_supplementals.issubset(set(supplemental.keys())),
+            f"Supplemental mapping missing entries: {sorted(expected_supplementals - set(supplemental.keys()))}"
+        )
+        for filename, meta in supplemental.items():
+            self.assertTrue(meta.get("supplemental"), f"Supplemental flag should be set for {filename}")
     
     def test_book_overview_updated(self):
         """Test that book overview has correct chapter count."""
@@ -180,7 +195,7 @@ class TestWhitepaperGeneration(unittest.TestCase):
                 
                 # Count generated files
                 generated_files = list(original_whitepapers_dir.glob("*.html"))
-                mapping = get_chapter_mapping()
+                mapping = get_all_chapter_mapping()
                 
                 self.assertEqual(len(generated_files), len(mapping), 
                                f"Should generate {len(mapping)} whitepapers, got {len(generated_files)}")
