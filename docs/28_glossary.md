@@ -26,7 +26,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 | Term | Definition |
 |------|------------|
-| Continuous Integration / Continuous Delivery (CI/CD) | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual hand-offs. |
+| Continuous Integration / Continuous Delivery (CI/CD) | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. |
 | Delivery Pipeline | The orchestrated flow of automated checks, approvals, and deployments that transform committed code into resilient production services. |
 | Version Control System (VCS) | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. |
 | GitOps | Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments. |
@@ -82,7 +82,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Platform Team | A multidisciplinary group that curates reusable services, standards, and documentation so product teams can focus on customer value. |
 | Community of Practice | An open forum where people with a shared interest learn together, improving patterns and vocabulary across the organisation. |
 | Cross-Functional Team | A team with diverse skills—engineering, security, operations, product, and design—working together from discovery through run-time. |
-| DevOps Culture | The mindset that values shared ownership, rapid feedback, and continuous improvement over siloed hand-offs. |
+| DevOps Culture | The mindset that values shared ownership, rapid feedback, and continuous improvement over siloed handovers. |
 | Psychological Safety | An environment where every team member can contribute ideas or raise concerns without fear, enabling inclusive innovation. |
 | Servant Leadership | A leadership style that removes obstacles, amplifies team voices, and nurtures growth instead of commanding outcomes. |
 | Change Management | A transparent approach to guiding people through change with empathy, communication, and supportive training. |
