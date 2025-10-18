@@ -1,0 +1,43 @@
+graph TB
+    subgraph "Requirements & Design"
+        BR[Business Requirements]:::kv-primary
+        FR[Functional Requirements]:::kv-accent
+        NFR[Non-Functional Requirements]:::kv-highlight
+        SD[System Design]:::kv-accent
+        DD[Detailed Design]:::kv-primary
+    end
+    
+    subgraph "Implementation"
+        CODE[Implementation as Code]:::kv-highlight
+    end
+    
+    subgraph "Verification & Validation"
+        UT[Unit Testing<br/>NFR Verification]:::kv-highlight
+        IT[Integration Testing<br/>NFR Verification]:::kv-accent
+        ST[System Testing<br/>NFR Verification]:::kv-accent
+        AT[Acceptance Testing<br/>FR Validation]:::kv-primary
+        OT[Operational Validation<br/>FR Validation]:::kv-primary
+    end
+    
+    BR --> FR
+    BR --> NFR
+    FR --> SD
+    NFR --> SD
+    SD --> DD
+    DD --> CODE
+    
+    CODE --> UT
+    UT --> IT
+    IT --> ST
+    ST --> AT
+    AT --> OT
+    
+    DD -.Testing.-> UT
+    SD -.Testing.-> IT
+    NFR -.Testing.-> ST
+    FR -.Validation.-> AT
+    BR -.Validation.-> OT
+    
+    classDef kv-primary fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#fff
+    classDef kv-accent fill:#7c3aed,stroke:#a78bfa,stroke-width:2px,color:#fff
+    classDef kv-highlight fill:#059669,stroke:#10b981,stroke-width:2px,color:#fff

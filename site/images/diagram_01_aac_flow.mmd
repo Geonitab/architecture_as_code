@@ -1,0 +1,17 @@
+graph TD
+    A[Requirements as Code]:::kv-primary --> B[Compliance as Code]:::kv-highlight
+    B --> C[Documentation as Code]:::kv-highlight
+    C --> D[Design as Code]:::kv-accent
+    D --> E[Coding]:::kv-accent
+    E --> F[CI/CD]:::kv-accent
+    F --> G[Infrastructure as Code]:::kv-primary
+
+    D -.-> H[Design Tokens]:::kv-pattern
+    H -.-> E
+
+    G -.-> A
+    F -.-> B
+    
+    M[Management as Code]:::kv-highlight -.-> A
+    M -.-> B
+    G -.-> M

@@ -1,0 +1,5 @@
+graph LR
+    A[API Gateway]:::kv-primary --> B[User Service]:::kv-highlight
+    A --> C[Order Service]:::kv-accent
+    A --> D[Payment Service]:::kv-accent
+    B --> E[Service Mesh]:::kv-primary

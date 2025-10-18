@@ -1,0 +1,30 @@
+graph TB
+    subgraph "Structurizr Workflow"
+        DSL[Structurizr DSL<br/>workspace.dsl]
+        Model[Architecture Model]
+        Views[Generated Views]
+        Diagrams[Diagram Outputs]
+    end
+    
+    subgraph "Integration"
+        VCS[Version Control<br/>Git]
+        CI[CI/CD Pipeline]
+        Docs[Documentation Site]
+    end
+    
+    DSL -->|Parse| Model
+    Model -->|Generate| Views
+    Views -->|Export| Diagrams
+    
+    DSL -->|Commit| VCS
+    VCS -->|Trigger| CI
+    CI -->|Build & Deploy| Docs
+    Diagrams -->|Embed| Docs
+    
+    style DSL fill:#438dd5,color:#fff
+    style Model fill:#85bbf0,color:#000
+    style Views fill:#51cf66,color:#000
+    style Diagrams fill:#ff6b6b,color:#fff
+    style VCS fill:#1168bd,color:#fff
+    style CI fill:#08427b,color:#fff
+    style Docs fill:#999,color:#fff
