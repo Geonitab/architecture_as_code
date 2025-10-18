@@ -4,6 +4,10 @@
 
 Architecture as Code underpins modern container platforms by turning deployment practices into repeatable definitions. When infrastructure and runtime configuration are described in version-controlled files, teams gain portable, scalable, and reproducible delivery pipelines that function reliably across data centres and cloud providers.
 
+## Industry trend data driving Architecture as Code adoption
+
+The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report (Source [7]) confirms that distributed architectures are now the norm: 67% of surveyed organisations run microservices in production and 58% operate event-driven workloads alongside them. The same research notes that 52% are investing in internal developer platforms to tame the resulting estate. Together these figures highlight why Architecture as Code is essential. When the majority of teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that the report identifies as critical for scaling cloud-native delivery.
+
 ## The role of container technology within Architecture as Code
 
 Containers package an application together with its libraries and runtime dependencies inside isolated units. Within an Architecture as Code approach, those units are described declaratively so that the same package can be built, tested, and promoted through each stage without configuration drift. The result is predictable application behaviour and simpler collaboration between development, operations, and security teams.
@@ -244,6 +248,7 @@ The next part of this book explores how security, policy enforcement, and govern
 
 - Kubernetes Documentation. "Concepts and Architecture." The Kubernetes Project.
 - Docker Inc. "Docker Architecture as Code best practices." Docker Documentation.
+- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF Research.
 - Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.
 - Helm Community. "Chart Development Guide." Helm Documentation.
 - Istio Project. "Service Mesh Architecture." Istio Service Mesh.
