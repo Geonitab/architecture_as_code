@@ -68,6 +68,14 @@ Cloud sovereignty frameworks, such as the GAIA-X data space model referenced in 
 
 Hybrid cloud strategies can optimise costs by retaining certain workloads on-premises whilst cloud-native workloads are moved to the cloud. Architecture as Code enables coordinated management of both environments with unified cost tracking and optimisation. This is especially relevant for EU financial services organisations that must balance regulatory requirements with cost efficiency.
 
+### Market Outlook and Economic Rationale
+
+Independent market research confirms that Infrastructure as Code investment is accelerating as organisations industrialise automation. MarketsandMarkets (2023) forecasts that the global Infrastructure as Code market will expand from USD 0.8 billion in 2022 to USD 2.3 billion by 2027, representing a compound annual growth rate of about 24 per cent. The shift from exploratory pilots to enterprise-scale programmes reflects the need for verifiable guardrails and reusable automation patterns in regulated industries.
+
+Gartner's *Forecast Analysis: Public Cloud Services Worldwide* (2024) anticipates worldwide public cloud spending reaching USD 679 billion in 2024—a year-on-year increase of 20.4 per cent. Finance leaders therefore expect Architecture as Code and FinOps disciplines to provide measurable returns on escalating cloud commitments by codifying reservation strategies, budget thresholds, and sustainability metrics alongside delivery pipelines.
+
+IDC's *Worldwide DevOps Software Tools Forecast, 2023–2027* highlights that platform engineering, automation, and configuration management account for more than a third of DevOps investment through 2027. Treating Architecture as Code artefacts as governed, reusable assets ensures those expenditures translate into durable capabilities, providing the economic rationale executives require when prioritising IaC-led transformation.
+
 ## Practical Examples
 
 ### Cost-Aware Terraform Configuration
@@ -121,5 +129,7 @@ EU organisations that implement these strategies can achieve 20-40% cost reducti
 - FinOps Foundation. "FinOps Framework and Architecture as Code Best Practices." The Linux Foundation, 2023.
 - Kubecost. "Kubernetes Cost Optimisation Guide." Kubecost Documentation, 2023.
 - Cloud Security Alliance. "Cloud Cost Optimisation Security Guidelines." CSA Research, 2023.
-- Gartner. "Cloud Cost Optimisation Strategies for European Organisations." Gartner Research, 2023.
+- MarketsandMarkets. "Infrastructure as Code Market Report." MarketsandMarkets, 2023.
+- Gartner. "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.
+- IDC. "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.
 - Microsoft. "Azure Cost Management Architecture as Code Best Practices." Microsoft Azure Documentation, 2023.
