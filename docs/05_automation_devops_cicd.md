@@ -12,6 +12,21 @@ Understanding CI/CD for Architecture as Code requires a fundamental mindset shif
 
 The CI/CD flow depicted earlier runs from code commit through validation, testing, deployment, and monitoring. The flow represents a systematic method in which each stage is designed to surface defects early, assure quality, and minimise production risk. Organisations must include considerations around data residency, compliance validation, and cost optimisation.
 
+## Differentiating Architecture as Code and Infrastructure as Code in automation
+
+Architecture as Code defines the opinionated standards, architectural policies, and lifecycle guardrails that automation must enforce, while Infrastructure as Code executes concrete resource changes in alignment with those guardrails. Thoughtworks frames Governance as Code as an architectural responsibility that encodes policy decisions directly into automation, ensuring teams adopt approved patterns without manual gatekeeping ([Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)). Higher-order IaC frameworks such as AWS Cloud Development Kit (CDK) demonstrate how architectural blueprints are compiled into deployable infrastructure, shrinking the translation gap between AaC intent and IaC implementation ([AWS – Cloud Development Kit (CDK) Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html)).
+
+> **AaC vs IaC automation responsibilities**
+>
+> | Dimension | Architecture as Code | Infrastructure as Code |
+> |-----------|----------------------|------------------------|
+> | Abstraction focus | Codifies target-state patterns, governance controls, and compliance obligations before runtime execution | Materialises the approved patterns as cloud, platform, and network resources |
+> | Automation role | Embeds policy checks, architectural validations, and opinionated workflows into CI/CD gates | Applies resource changes, surfaces drift, and reports runtime telemetry back to architectural review loops |
+> | Source of truth | Maintains the authoritative architectural models, reference implementations, and reusable guardrails | Inherits those models as templates, stacks, or modules that can be executed repeatedly |
+> | Evolution feedback | Adjusts standards as organisational needs, regulations, and risk appetites evolve | Provides operational insight (plan/apply results, monitoring) that informs AaC refinements |
+
+The division of responsibilities keeps automation pipelines coherent: AaC establishes the binding constraints and desired outcomes, and IaC tooling operationalises them without diluting governance signals. Teams that treat the two disciplines as complementary layers can scale delivery velocity whilst preserving compliance, auditability, and architectural consistency.
+
 ## The theoretical foundation for CI/CD automation
 
 Continuous integration and continuous deployment are more than technical processes. They describe a philosophy for software development that prioritises rapid feedback, incremental improvement, and risk reduction through automation. When these principles are applied to Architecture as Code they open unique opportunities and challenges that demand deep understanding of both technical and organisational dimensions.
