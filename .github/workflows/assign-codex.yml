@@ -6,6 +6,11 @@ on:
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
   workflow_dispatch:
+    inputs:
+      parallel_limit:
+        description: 'Number of pull requests to process concurrently when dispatching manually'
+        required: false
+        default: '3'
   # schedule:
     # - cron: '*/30 * * * *'
 
@@ -27,9 +32,12 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
+      parallel-limit: ${{ steps.determine-limit.outputs.limit }}
     env:
       REPO: ${{ github.repository }}
       EXCLUDE_LABELS: discussion
+      DISPATCH_PARALLEL_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.parallel_limit || '' }}
+      PROCESS_ALL_PRS: ${{ github.event_name == 'workflow_dispatch' && 'true' || 'false' }}
     steps:
       - name: Enable debug logging
         run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
@@ -38,6 +46,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+
+      - name: Determine parallel limit
+        id: determine-limit
+        run: |
+          set -euo pipefail
+          LIMIT="${DISPATCH_PARALLEL_LIMIT:-}"
+          if [[ -z "${LIMIT// }" ]]; then
+            LIMIT=3
+          fi
+          if ! [[ "$LIMIT" =~ ^[0-9]+$ ]] || [[ "$LIMIT" -lt 1 ]]; then
+            echo "::warning::Invalid parallel limit '$LIMIT'. Falling back to 3."
+            LIMIT=3
+          fi
+          echo "limit=$LIMIT" >> "$GITHUB_OUTPUT"
+          echo "PARALLEL_LIMIT=$LIMIT" >> "$GITHUB_ENV"
 
       - name: Determine default branch
         env:
@@ -55,6 +78,7 @@ jobs:
           REPO: ${{ env.REPO }}
           DEFAULT_BRANCH: ${{ env.DEFAULT_BRANCH }}
           EXCLUDE_LABELS: ${{ env.EXCLUDE_LABELS }}
+          PROCESS_ALL_PRS: ${{ env.PROCESS_ALL_PRS }}
         run: |
           set -euo pipefail
           echo "[]" > targets.json
@@ -175,6 +199,24 @@ jobs:
                 create_or_reuse_for_issue "$num" "$title"
               done
 
+          if [[ "${PROCESS_ALL_PRS}" == "true" ]]; then
+            echo "::group::Collecting open pull requests"
+            gh pr list --repo "$REPO" --state open --json number,headRefName \
+              | jq -r '.[] | "\(.number)|\(.headRefName)"' \
+              | while IFS='|' read -r pr_number head_ref; do
+                  if [[ -z "${head_ref}" || "${head_ref}" == "null" ]]; then
+                    echo "::warning::Skipping PR #${pr_number} – unable to determine head branch."
+                    continue
+                  fi
+                  exists=$(jq --argjson p "$pr_number" 'map(select(.pr_number == $p)) | length' targets.json)
+                  if [[ "$exists" -gt 0 ]]; then
+                    continue
+                  fi
+                  jq --arg b "$head_ref" --argjson p "$pr_number" '. + [{branch:$b, pr_number:$p}]' targets.json > tmp.json && mv tmp.json targets.json
+                done
+            echo "::endgroup::"
+          fi
+
           echo "Targets collected:"
           cat targets.json
 
@@ -196,7 +238,7 @@ jobs:
       cancel-in-progress: false
     strategy:
       fail-fast: false
-      max-parallel: 3   # serialize Codex calls
+      max-parallel: ${{ fromJSON(needs.prepare_targets.outputs.parallel-limit || '3') }}
       matrix:
         target: ${{ fromJSON(needs.prepare_targets.outputs.matrix) }}
     env:
