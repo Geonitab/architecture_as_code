@@ -1,7 +1,7 @@
 <div class="cover-page" style="text-align: center; margin-top: 10%;">
   <img src="images/book-cover.png" alt="Architecture as Code cover" style="max-width: 100%; height: auto;" />
   <p style="font-size: 2.5em; font-weight: 700; margin: 1.5rem 0 0 0;">Architecture as Code</p>
-  <p style="font-size: 1.5em; margin: 0.25rem 0 1.5rem 0;">A practical handbook for Infrastructure as Code</p>
+  <p style="font-size: 1.5em; margin: 0.25rem 0 1.5rem 0;">A practical handbook for Architecture as Code</p>
   <p style="font-size: 1.1em; margin: 0.25rem 0;"><strong>Author:</strong> Gunnar Nordqvist</p>
   <p style="font-size: 1.1em; margin: 0.25rem 0;"><strong>Edition:</strong> First edition</p>
   <p style="font-size: 1.1em; margin: 0.25rem 0;"><strong>Year:</strong> 2025</p>

@@ -24,7 +24,7 @@ highlight-style: tango
 # Metadata for document
 metadata:
   title: "Architecture as Code"
-  subtitle: "A practical handbook for Infrastructure as Code"
+  subtitle: "A practical handbook for Architecture as Code"
   author: "Gunnar Nordqvist"
   date: "2025"
   language: en-GB
