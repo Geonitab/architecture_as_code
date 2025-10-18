@@ -1483,7 +1483,8 @@ The next chapters explore how to extend these foundations into containerisation 
 ## Sources
 
 - Brown, S. "The C4 model for visualising software architecture." https://c4model.com
-- Structurizr. "Structurizr DSL documentation." https://github.com/structurizr/dsl
+- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. https://blog.structurizr.com/diagrams-as-code-automation/
+- Structurizr. "Structurizr DSL Language Reference." https://github.com/structurizr/dsl
 - Structurizr. "Structurizr Lite." https://structurizr.com/help/lite
 - Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.
 - Brown, S. "Software Architecture for Developers." Leanpub, 2024.

@@ -256,7 +256,7 @@ By integrating both disciplines—using Architecture as Code to define the syste
 
 - FINOS. "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. https://calm.finos.org/
 - Brown, Simon. "The C4 Model for Visualising Software Architecture." C4 Model Documentation, 2024. https://c4model.com/
-- Structurizr. "Structurizr DSL Language Reference." Structurizr Documentation, 2024. https://structurizr.com/
+- Structurizr. "Structurizr DSL Language Reference." Structurizr Documentation, 2024. https://github.com/structurizr/dsl
 - Mermaid. "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. https://mermaid.js.org/
 - PlantUML. "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. https://plantuml.com/
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.

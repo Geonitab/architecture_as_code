@@ -22,11 +22,20 @@ This section provides a comprehensive list of all sources and references cited t
 **Brown, S.** "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 24: Best Practices](24_best_practices.md)*
 
+**Brown, S.** "Software Architecture for Developers." Leanpub, 2024.  
+*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
+
 **Chung, L., et al.** "Non-Functional Requirements in Software Engineering." Springer, 2000.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
 **CNCF.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
+
+**FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. https://calm.finos.org/  
+*Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
+
+**Ford, Neal, et al.** "Building Evolutionary Architectures." O'Reilly Media, 2017.  
+*Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
 **Forsberg, K., Mooz, H.** "The Relationship of System Engineering to the Project Cycle." Engineering Management Journal, 1991.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
@@ -64,6 +73,9 @@ This section provides a comprehensive list of all sources and references cited t
 **Martin, R.** "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
+**Mermaid.** "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. https://mermaid.js.org/  
+*Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
+
 **NIST.** "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
@@ -76,11 +88,26 @@ This section provides a comprehensive list of all sources and references cited t
 **Open Policy Agent.** "Policy as Code Overview." https://www.openpolicyagent.org/docs/latest/  
 *Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
+**PlantUML.** "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. https://plantuml.com/  
+*Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
+
 **Red Hat.** "Architecture as Code Principles and Best Practices." Red Hat Developer.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
+**Richardson, C.** "Microservices Patterns: With Examples in Java." Manning Publications, 2018.  
+*Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
+
 **Selic, B.** "The Pragmatics of Model-Driven Development." IEEE Software, 2003.  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
+
+**Structurizr.** "Structurizr DSL Language Reference." Structurizr Documentation, 2024. https://github.com/structurizr/dsl  
+*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
+
+**Structurizr.** "Structurizr Lite." Structurizr Documentation, 2024. https://structurizr.com/help/lite  
+*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
+
+**ThoughtWorks Technology Radar.** "Diagrams as Code." https://www.thoughtworks.com/radar/techniques/diagrams-as-code  
+*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
 **ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 29: About the Authors](29_about_the_authors.md)*
