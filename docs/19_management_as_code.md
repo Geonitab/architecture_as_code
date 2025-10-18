@@ -5,13 +5,13 @@ Management as Code (MaC) extends the well-established principles of Infrastructu
 
 ![Management as Code operating model highlighting intent, guardrails, automation, empowered teams, codified culture, and feedback](images/diagram_19_mac_operating_model.png)
 
-*Figure: Management as Code operating model linking leadership intent, codified guardrails, automation, empowered teams, culture, and feedback loops.*
+*Figure 19.1 illustrates how leadership intent flows into codified guardrails, automation, empowered teams, culture, and feedback loops within the Management as Code operating model.*
 
 The opening operating-model diagram frames the chapter by showing leadership intent flowing into codified guardrails and automated governance. Empowered teams and codified cultural practices amplify those guardrails, while continuous feedback loops return insight to leadership so that intent can evolve. It establishes the idea that MaC is a living system rather than a static document.
 
 ![Management as Code feedback loop showing leadership vision, guardrails, automation, teams, and operational feedback](images/diagram_19_management_overview.png)
 
-*Figure: Management as Code feedback loop connecting leadership vision, guardrails, automation, empowered teams, and operational feedback.*
+*Figure 19.2 depicts the Management as Code feedback loop that connects leadership vision, guardrails, automation, empowered teams, and operational feedback.*
 
 The overview diagram reinforces Management as Code as a self-reinforcing loop where leadership vision flows into codified guardrails, automation, and delivery teams while operational feedback continuously informs future strategic intent. It emphasises that MaC is not a one-off documentation exercise but an active governance system that evolves with every iteration of the software delivery lifecycle.
 
@@ -30,7 +30,7 @@ A DevOps loop is often depicted as a continuous cycle: plan, code, build, test, 
 
 ![DevOps loop extended with management contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance](images/diagram_19_devops_management_loop.png)
 
-*Figure: DevOps loop extended with Management as Code contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance.*
+*Figure 19.3 extends the classic DevOps loop with Management as Code contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance.*
 
 The diagram illustrates how management artefacts intersect with each loop phase. Instead of management being an external approval layer, MaC ensures that leadership intent is encoded at the same points where DevOps teams act. Planning repositories can provide strategic intents expressed in YAML files, while automation transforms these definitions into backlog templates or alerts when proposals deviate from strategic goals. During operation, monitoring dashboards generated from configuration code link service-level indicators to financial KPIs. As teams observe anomalies, adaptive governance rules encoded in policy files trigger scenario playbooks or review cadences.
 
@@ -41,7 +41,7 @@ Automated compliance tests run alongside software unit tests. For instance, a pu
 
 ![Governance pipeline showing repositories feeding automated checks, workflows, and access control](images/diagram_19_governance_pipeline.png)
 
-*Figure: Governance pipeline where management repositories feed automated checks, workflows, and access control enforcement.*
+*Figure 19.4 presents the governance pipeline where management repositories feed automated checks, workflows, and access control enforcement.*
 
 This governance diagram emphasises how management repositories integrate with CI pipelines, incident workflows, and identity platforms. By codifying playbooks and roles, leadership actions become auditable and repeatable. Every update to these artefacts follows the same review process as software code, enabling cross-functional transparency.
 
@@ -52,7 +52,7 @@ GitHub Actions automate the validation and deployment of management artefacts. A
 
 ![GitHub workflow illustrating repositories, discussions, issues, pull requests, actions, portals, and alerts](images/diagram_19_github_management_flow.png)
 
-*Figure: GitHub workflow illustrating repositories, discussions, issues, pull requests, actions, portals, and alerts in a Management as Code context.*
+*Figure 19.5 details a GitHub workflow illustrating repositories, discussions, issues, pull requests, actions, portals, and alerts in a Management as Code context.*
 
 The GitHub integration diagram shows how ideas move from Discussions to Issues, through PRs, and into automated publishing. This approach embeds management into the same cadence as engineering work while adding the visibility executives need for governance.
 
@@ -65,7 +65,7 @@ Transparency is a cornerstone principle of Architecture as Code and Management a
 
 ![Transparency workflow showing how issues and discussions enable transparent decision-making through structured processes](images/diagram_19_transparency_flow.png)
 
-*Figure: Transparency workflow illustrating how problems flow through discussions, issues, reviews, and decisions into searchable archives.*
+*Figure 19.6 highlights the transparency workflow where problems flow through discussions, issues, reviews, and decisions into searchable archives.*
 
 The transparency workflow diagram demonstrates the complete lifecycle from problem identification through strategic discussion, structured issue tracking, collaborative review, and final implementation. Each stage creates permanent records that build institutional knowledge whilst maintaining accountability and enabling asynchronous participation across distributed teams.
 
@@ -236,7 +236,7 @@ The goal is not absolute transparency in all matters, but rather deliberate and 
 
 ![Management workflow showing topics progressing through templates, analysis, decisions, follow-up, and archival](images/diagram_19_management_workflow.png)
 
-*Figure: Management workflow showing topics progressing through templates, analysis, decisions, follow-up, and archival.*
+*Figure 19.7 shows the management workflow where topics progress through templates, analysis, decisions, follow-up, and archival.*
 
 The workflow diagram demonstrates how Issues and Discussions guide management work from inception to archival, ensuring nothing gets lost and every action is traceable.
 
@@ -257,7 +257,7 @@ For teams of teams, MaC includes meta-structures that map dependencies, shared s
 
 ![Team-of-teams view linking squad blueprints to governance, shared services, dependencies, and automation](images/diagram_19_team_of_teams.png)
 
-*Figure: Team-of-teams view linking squad blueprints to governance, shared services, dependencies, and automation.*
+*Figure 19.8 provides a team-of-teams view linking squad blueprints to governance, shared services, dependencies, and automation.*
 
 This team topology diagram demonstrates how squad-level definitions inform team-of-teams governance, with automation producing visibility and support structures.
 
