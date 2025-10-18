@@ -12,6 +12,12 @@ Traditional methods for system architecture have often been manual and document-
 
 This includes not only infrastructure components, but also application architecture, data flows, security policies, compliance rules, and organisational structures – all expressed as code.
 
+## Microservice complexity as the primary driver
+
+The tipping point for most organisations adopting Architecture as Code is the complexity created by large-scale microservice estates. The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report notes that two thirds of modern organisations already run microservices in production while simultaneously coordinating event-driven workloads. Each additional service introduces new APIs, contracts, and deployment topologies that quickly outpace what static diagrams or isolated configuration repositories can keep synchronised.
+
+Architecture as Code counters that systemic complexity by capturing service boundaries, operational dependencies, security policies, and resilience patterns as executable artefacts. When those definitions travel through the same pipelines as application code, teams can guarantee that mesh rules, policy guardrails, and interoperability tests evolve in lockstep with every service. In practice this makes Architecture as Code the governing layer that keeps sprawling microservice portfolios coherent, observable, and compliant.
+
 ## Definition and Scope
 
 Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. ThoughtWorks (2024) characterises this discipline as producing *live, executable specifications* that stay synchronised with the running estate rather than lingering as aspirational design artefacts. This encompasses application components, integration patterns, data architecture, infrastructure, and organisational processes.
@@ -58,6 +64,7 @@ Sources:
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer, 2023.
+- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF, 2024.
 
 ## How This Book Is Organised
 
