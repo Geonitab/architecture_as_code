@@ -33,8 +33,9 @@ The book build process ensures that exactly **one front cover** appears in all o
 ### Build Process
 1. `templates/book-cover.svg` is converted to PNG by `docs/build_book.sh`
 2. The PNG is saved as `docs/images/book-cover.png`
-3. Pandoc includes the cover exactly once in PDF output
-4. EPUB generation uses the same PNG file as its cover
+3. Pandoc includes the cover and release information page in PDF output
+4. EPUB and DOCX builds insert a markdown cover page so non-PDF formats ship with the same metadata
+5. EPUB generation uses the same PNG file as its cover
 
 This architecture guarantees no duplicate or redundant cover variants in distribution artifacts.
 

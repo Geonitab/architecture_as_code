@@ -332,6 +332,7 @@ CHAPTER_FILES=(
 )
 
 # Build a sanitized list that excludes LaTeX-only part markers for non-LaTeX formats
+COVER_PAGE_MARKDOWN="00_front_cover.md"
 NON_LATEX_CHAPTER_FILES=()
 for chapter_file in "${CHAPTER_FILES[@]}"; do
     if [[ $chapter_file == part_*.md ]]; then
@@ -339,6 +340,12 @@ for chapter_file in "${CHAPTER_FILES[@]}"; do
     fi
     NON_LATEX_CHAPTER_FILES+=("$chapter_file")
 done
+
+if [ -f "$COVER_PAGE_MARKDOWN" ]; then
+    NON_LATEX_CHAPTER_FILES=("$COVER_PAGE_MARKDOWN" "${NON_LATEX_CHAPTER_FILES[@]}")
+else
+    echo "⚠️  Warning: Non-LaTeX formats missing cover page markdown ($COVER_PAGE_MARKDOWN not found)"
+fi
 
 pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
 
@@ -434,6 +441,8 @@ generate_other_formats() {
         --metadata date="$(date +'%Y-%m-%d')" \
         --metadata language=en \
         --metadata lang=en-GB \
+        --metadata=include-before= \
+        --metadata=header-includes= \
         --epub-cover-image="images/book-cover.png" \
         2>&1; then
 
@@ -465,7 +474,11 @@ generate_other_formats() {
     fi
 
     echo "Generating DOCX format..."
-    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" -t docx -o "$OUTPUT_DOCX"
+    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" \
+        -t docx \
+        --metadata=include-before= \
+        --metadata=header-includes= \
+        -o "$OUTPUT_DOCX"
     echo "DOCX generated: $OUTPUT_DOCX"
     cp "$OUTPUT_DOCX" "$RELEASE_DOCX"
     echo "DOCX copied to release directory: $RELEASE_DOCX"
