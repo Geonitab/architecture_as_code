@@ -196,7 +196,7 @@ jobs:
       cancel-in-progress: false
     strategy:
       fail-fast: false
-      max-parallel: 1   # serialize Codex calls
+      max-parallel: 3   # serialize Codex calls
       matrix:
         target: ${{ fromJSON(needs.prepare_targets.outputs.matrix) }}
     env:
