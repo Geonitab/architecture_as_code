@@ -44,6 +44,8 @@ Managers revisit the matrix alongside metrics and feedback to tailor coaching pl
 
 Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms (A Cloud Guru, Pluralsight, Linux Academy) provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer Expert, and HashiCorp Certified Terraform Associate validate proficiency and guide progression through increasingly advanced competencies.
 
+Professional bodies such as [IASA Global](https://iasaglobal.org/) extend this structure. Their IT Architecture Body of Knowledge (ITABOK) and Certified IT Architect (CITA) career pathways codify behavioural, business, and technical competencies that employers expect from practising architects. Mapping internal ladders to these global standards anchors competency models in proven industry guidance and provides clear progression targets for Architecture as Code specialists. Organisations can integrate the ITABOK capability definitions into performance systems, mentoring programmes, and knowledge-sharing curricula to ensure practitioners develop balanced architectural skills.
+
 To turn knowledge into practice, organisations invest in sandbox environments, lab challenges, and pair programming. Managers should track completion, but also emphasise practical demonstrations of new capabilities applied to real delivery scenarios.
 
 ### Training programme blueprint
@@ -269,3 +271,4 @@ Architecture as Code succeeds when teams evolve their operating model alongside 
 - Google Cloud. "DevOps Research and Assessment (DORA) Reports." Google Cloud Platform.
 - Atlassian. "DevOps Team Structure and Best Practices." Atlassian Documentation.
 - HashiCorp. "Infrastructure as Code Maturity Model." HashiCorp Learn Platform.
+- IASA Global. "IT Architecture Body of Knowledge (ITABOK)." IASA Global.
