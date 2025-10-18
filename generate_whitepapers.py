@@ -166,6 +166,23 @@ def _load_requirements_metadata(requirements_path: Path = Path("BOOK_REQUIREMENT
     return yaml.safe_load("\n".join(front_matter)) or {}
 
 
+def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str | None:
+    """Resolve diagram path relative to the generated whitepaper location."""
+    if not diagram_path:
+        return None
+
+    # Diagrams are stored under docs/, ensure we reference that root
+    diagram_file = Path("docs") / diagram_path
+
+    try:
+        relative_path = os.path.relpath(diagram_file, output_directory)
+    except ValueError:
+        # Fallback to absolute path if relative calculation fails
+        relative_path = str(diagram_file)
+
+    return Path(relative_path).as_posix()
+
+
 def get_chapter_mapping():
     """Return mapping of chapter files to readable chapter identifiers."""
     metadata = _load_requirements_metadata()
@@ -189,7 +206,7 @@ def get_chapter_mapping():
 
     return mapping
 
-def create_whitepaper_html(chapter_data, chapter_meta, book_overview):
+def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_directory):
     """Create HTML content for a whitepaper."""
     
     # Read the template
@@ -227,9 +244,13 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview):
     
     # Prepare content sections
     diagram_html = ""
-    if chapter_data['diagram_path']:
-        # Adjust path for whitepaper directory
+    diagram_src = resolve_diagram_src(chapter_data.get('diagram_path'), output_directory)
+
+    if not diagram_src and chapter_data.get('diagram_path'):
+        # Fallback for unexpected path handling issues
         diagram_src = f"../docs/{chapter_data['diagram_path']}"
+
+    if diagram_src:
         diagram_html = (
             "            <div style=\"text-align: center; margin: 30px 0;\">\n"
             f"                <img src=\"{diagram_src}\" alt=\"Chapter diagram for {chapter_data['title']}\" style=\"max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;\">\n"
@@ -334,11 +355,15 @@ def generate_whitepapers(release_mode=False):
     if release_mode:
         whitepapers_dir = Path("releases/whitepapers")
         print("Release mode: Generating whitepapers to releases/whitepapers/")
+        secondary_dir = Path("whitepapers")
     else:
         whitepapers_dir = Path("whitepapers")
+        secondary_dir = None
     
     # Ensure whitepapers directory exists
     whitepapers_dir.mkdir(exist_ok=True, parents=True)
+    if secondary_dir:
+        secondary_dir.mkdir(exist_ok=True, parents=True)
     
     # Get chapter mapping and book overview
     chapter_mapping = get_chapter_mapping()
@@ -381,16 +406,16 @@ def generate_whitepapers(release_mode=False):
         # Get chapter metadata
         chapter_meta = chapter_mapping[filename]
         
+        # Write whitepaper file
+        output_filename = filename.replace('.md', '_whitepaper.html')
+        output_path = whitepapers_dir / output_filename
+        
         # Generate whitepaper HTML
-        html_content = create_whitepaper_html(chapter_data, chapter_meta, book_overview)
+        html_content = create_whitepaper_html(chapter_data, chapter_meta, book_overview, whitepapers_dir)
         if not html_content:
             print(f"Failed to generate HTML for {filename}, skipping...")
             error_files.append((filename, "Failed to generate HTML"))
             continue
-        
-        # Write whitepaper file
-        output_filename = filename.replace('.md', '_whitepaper.html')
-        output_path = whitepapers_dir / output_filename
         
         try:
             with open(output_path, 'w', encoding='utf-8') as f:
@@ -400,16 +425,25 @@ def generate_whitepapers(release_mode=False):
         except Exception as e:
             print(f"Error writing {output_path}: {e}")
             error_files.append((filename, f"Write error: {e}"))
+
+        if secondary_dir:
+            secondary_output_path = secondary_dir / output_filename
+            secondary_html = create_whitepaper_html(chapter_data, chapter_meta, book_overview, secondary_dir)
+            if not secondary_html:
+                print(f"Warning: Failed to generate HTML for standard location: {filename}")
+                error_files.append((filename, "Failed to generate HTML for standard location"))
+            else:
+                try:
+                    with open(secondary_output_path, 'w', encoding='utf-8') as f:
+                        f.write(secondary_html)
+                    print(f"Generated: {secondary_output_path} (standard location)")
+                except Exception as e:
+                    print(f"Error writing {secondary_output_path}: {e}")
+                    error_files.append((filename, f"Standard write error: {e}"))
     
-    # Copy to standard location if in release mode to maintain backward compatibility
     if release_mode:
-        standard_dir = Path("whitepapers")
-        standard_dir.mkdir(exist_ok=True)
-        import shutil
-        for html_file in whitepapers_dir.glob("*.html"):
-            shutil.copy2(html_file, standard_dir / html_file.name)
-        print(f"Whitepapers also copied to standard location: {standard_dir}/")
-    
+        print("Standard whitepapers also generated in whitepapers/")
+
     # Print summary
     print(f"\n=== WHITEPAPER GENERATION SUMMARY ===")
     print(f"Generated {generated_count} whitepapers in {whitepapers_dir}/")
