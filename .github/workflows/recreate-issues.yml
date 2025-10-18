@@ -1,0 +1,81 @@
+name: Recreate all issues (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type 'All' to proceed."
+        required: true
+        default: ""
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  guard:
+    name: Check confirmation
+    runs-on: ubuntu-latest
+    outputs:
+      ok: ${{ steps.check.outputs.ok }}
+    steps:
+      - id: check
+        run: |
+          if [ "${{ github.event.inputs.confirm }}" = "All" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+            echo "Confirmation accepted: proceeding."
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "Confirmation missing or incorrect. Type 'All' to proceed."
+          fi
+
+  recreate:
+    name: Recreate issues
+    needs: guard
+    if: ${{ needs.guard.outputs.ok == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recreate every open issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Get all OPEN issues (GitHub's /issues also returns PRs; we filter those out)
+            const issues = await github.paginate(
+              github.rest.issues.listForRepo,
+              { owner, repo, state: 'open', per_page: 100 }
+            );
+
+            for (const issue of issues) {
+              if (issue.pull_request) continue; // skip PRs
+
+              // Prepare fields for the new issue
+              const title = issue.title;
+              const bodyOriginal = issue.body || '';
+              const marker = `\n\n---\n_Recreated by workflow on ${new Date().toISOString()} from #${issue.number}_`;
+              const body = bodyOriginal + marker;
+
+              const labels = (issue.labels || []).map(l => typeof l === 'string' ? l : l.name).filter(Boolean);
+              const assignees = (issue.assignees || []).map(a => a.login);
+              const milestone = issue.milestone ? issue.milestone.number : undefined;
+
+              // Create the new issue
+              const { data: newIssue } = await github.rest.issues.create({
+                owner, repo, title, body, labels, assignees, milestone
+              });
+
+              // Comment on the old issue with a pointer to the new one
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: issue.number,
+                body: `This issue has been recreated as #${newIssue.number}.`
+              });
+
+              // Close the old issue
+              await github.rest.issues.update({
+                owner, repo, issue_number: issue.number, state: 'closed'
+              });
+            }
+
+            core.info(`Processed ${issues.filter(i => !i.pull_request).length} open issues.`);
