@@ -43,6 +43,7 @@ jobs:
         run: |
           echo "=== Installing Python dependencies ==="
           python3 -m pip install --upgrade pip
+          python3 -m pip install pyyaml
           # The whitepaper script uses only standard library modules
           echo "✅ Python dependencies installed"
 
