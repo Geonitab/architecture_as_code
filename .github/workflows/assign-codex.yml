@@ -11,8 +11,8 @@ on:
         description: 'Number of pull requests to process concurrently when dispatching manually'
         required: false
         default: '3'
-  # schedule:
-    # - cron: '*/30 * * * *'
+  schedule:
+    - cron: '*/15 * * * *'
 
 permissions:
   contents: write
