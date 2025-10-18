@@ -12,7 +12,7 @@ This book represents the culmination of extensive experience in architecture, in
 
 ### Professional Background
 
-Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and specialised IT security projects. His diverse technical background encompasses network solutions, servers, virtualisation, and IT security, among other critical areas of modern technology infrastructure.
+Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and specialised information security engagements. His varied technical background encompasses network solutions, servers, virtualisation, and IT security, amongst other critical facets of contemporary technology estates.
 
 **Core Areas of Expertise:**
 - Solution and Enterprise Architecture
@@ -24,9 +24,9 @@ Gunnar's extensive experience spans solution and enterprise architecture, IT inf
 
 ### Architecture as Code Journey
 
-Throughout his career, Gunnar has witnessed the evolution from manual, document-based architecture practices to the modern paradigm of codified architecture. This transformation has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software development.
+Throughout his career, Gunnar has witnessed the evolution from manual, document-led architecture practice to the modern paradigm of codified architecture. This shift has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software engineering.
 
-His work at Kvadrat has provided him with unique insights into the challenges faced by organisations in highly regulated industries as they navigate digital transformation and adopt Architecture as Code practices. These real-world experiences inform every chapter of this book, ensuring that theoretical principles are always grounded in practical application.
+His work at Kvadrat has provided him with unique insights into the challenges faced by organisations in highly regulated industries whilst they navigate digital transformation and adopt Architecture as Code practice. These real-world experiences inform every chapter of this book, ensuring that theoretical principles are always grounded in practical application.
 
 ## About Kvadrat
 
