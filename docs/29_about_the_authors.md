@@ -55,6 +55,16 @@ The visual identity of this book reflects Kvadrat's commitment to professional e
 - Clean typography and readable formatting
 - Professional diagrams and visual elements
 
+### Swedish Terminology Reference
+
+> **Terminology Note:** The Swedish organisations and institutions referenced here keep their native names to preserve accuracy. The translations below clarify the meaning for readers unfamiliar with Swedish terminology.
+
+- **Kvadrat AB** – `AB` stands for *aktiebolag*, Sweden’s equivalent of a limited company. The firm’s name translates literally to “square” but is always written as Kvadrat in branding.
+- **KTH Royal Institute of Technology** – Commonly referred to as KTH, the Swedish name is *Kungliga Tekniska högskolan* (“Royal Institute of Technology”).
+- **Linköping University** – In Swedish, *Linköpings universitet*; the apostrophe-free form follows Swedish grammar rules.
+- **Malmö University** – *Malmö universitet* retains the letter `ö`, pronounced roughly like the vowel sound in “blur”.
+- **Nordqvist** – A Swedish family name combining *nord* (“north”) and *qvist* (“twig”), reflecting traditional Swedish surname construction.
+
 ## The Book's Technical Foundation
 
 This publication demonstrates Architecture as Code principles not only in its content but in its very creation. The book itself is built using modern DevOps practices and automated workflows.
