@@ -29,6 +29,8 @@ Infrastructure as Code consumes those blueprints to assemble concrete environmen
 | Typical artefacts | Architecture decision records, policy as code, domain blueprints, model contracts | Terraform modules, AWS CDK constructs, Kubernetes manifests, configuration-management playbooks |
 | Change cadence | Strategic releases aligned to organisational control points | High-frequency deployments and drift-correction routines |
 
+> **Linked finding — Abstraction and opinionation (#4):** ThoughtWorks' *Governance as Code* radar entry (2024) stresses that architecture teams must publish opinionated guardrails before infrastructure changes proceed, while the AWS Cloud Development Kit Developer Guide (2023) illustrates how IaC frameworks consume those guardrails as higher-level constructs. Together they reinforce that Architecture as Code sets the non-negotiable policy envelope and Infrastructure as Code implements within that envelope.
+
 In delivery pipelines this abstraction boundary becomes explicit. Architecture as Code pipelines publish versioned architecture releases—typically a bundle of domain blueprints, guardrail policies, and compliance contracts—that downstream teams consume. Infrastructure as Code pipelines pick up that artefact and must prove at each run that planned changes respect the declared architecture intent.
 
 - **Architecture pipeline outputs:** Versioned catalogues of policies, approved component patterns, dependency diagrams, and domain-specific policy packs that describe *what* must be true.
