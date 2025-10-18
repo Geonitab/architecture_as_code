@@ -10,6 +10,11 @@ jobs:
       pull-requests: write
       contents: read
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Behövs för att jämföra ändringar
+      
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v41
