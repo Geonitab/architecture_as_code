@@ -16,6 +16,8 @@ In the Architecture as Code ecosystem, Structurizr serves as a practical impleme
 - Automate architecture documentation in CI/CD pipelines
 - Maintain consistency across different architectural views
 
+The open-source Architecture-as-Code (AaC) project offers a complementary example: its maintainers describe the toolkit as an open-source platform for modelling architecture definitions in YAML and automating validation and generation steps, with every capability delivered through discoverable plugins so teams can extend the CLI without modifying the core distribution (AaC Open Source Project). The plugin model demonstrates how DSL-driven approaches like Structurizr stay adaptable—domain teams can add generators, schema validators, or documentation exporters in the same fashion, keeping the architecture source of truth central whilst tailoring outputs to their needs.
+
 This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artifact.
 
 ## The C4 Model Foundation
@@ -1489,3 +1491,4 @@ The next chapters explore how to extend these foundations into containerisation 
 - Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.
 - Brown, S. "Software Architecture for Developers." Leanpub, 2024.
 - ThoughtWorks Technology Radar. "Diagrams as code." https://www.thoughtworks.com/radar/techniques/diagrams-as-code
+- AaC Open Source Project. "Architecture-as-Code Repository." https://github.com/aacplatform/aac

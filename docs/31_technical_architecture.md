@@ -64,6 +64,14 @@ The system uses `generate_book.py` to generate and update chapter content automa
 - **Consistency management**: Keeps structure uniform across all chapters.
 - **Version control**: Tracks every change through Git.
 
+## Alignment with the Architecture-as-Code project
+
+The official Architecture-as-Code (AaC) repository describes the initiative as an open-source toolkit for capturing architecture definitions as YAML and turning them into validated, executable assets through a command-line interface that keeps architectural intent close to delivery workflows (AaC Open Source Project). This self-definition mirrors the book production platform: Markdown specifications, diagram sources, and automation scripts sit together in version control so that architecture knowledge is expressed and evolved through code.
+
+### Plugin-driven extensibility
+
+AaC emphasises that every capability is delivered through discoverable plugins so teams can add generators, schema extensions, or policy checks without altering the core runtime (AaC Open Source Project). The book publishing stack applies the same principle—diagram renderers, validation routines, and export scripts are modular components that can be composed or replaced as requirements change—ensuring the base workflow remains stable whilst allowing teams to layer in domain-specific automation.
+
 ## Pandoc: Conversion and Formatting
 
 ### Configuration System
@@ -295,6 +303,10 @@ The system is designed for continuous improvement:
 - **API opportunities**: Potential integrations with external systems.
 - **Scaling**: Support for additional formats and distribution channels.
 - **Internationalisation**: Prepared for multilingual publishing.
+
+## Sources
+
+- AaC Open Source Project. "Architecture-as-Code Repository." https://github.com/aacplatform/aac
 
 ## Summary
 
