@@ -32,6 +32,7 @@
       "url": "https://github.com/aacplatform/aac",
       "summary": "Demonstrates the AaC plugin ecosystem and self-describing model definitions used throughout Architecture as Code tooling.",
       "supports_chapters": [
+        "docs/01_introduction.md",
         "docs/06_structurizr.md",
         "docs/31_technical_architecture.md"
       ]

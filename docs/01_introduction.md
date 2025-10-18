@@ -18,6 +18,14 @@ Architecture as Code is the practice of describing, version-controlling, and aut
 
 This holistic approach enables end-to-end automation, where changes in requirements automatically propagate throughout the architecture – from application logic to deployment and monitoring.
 
+### Self-defining language core
+
+The open-source AaC project demonstrates that Architecture as Code platforms can describe themselves using the very modelling language they expose. Its `aac-spec/` package holds YAML definitions for core constructs such as `model`, `component`, and `scenario`, and the CLI parses those schema files at runtime rather than relying on hard-coded types. This self-referential design means a change to the specification—adding a new field, renaming an attribute, or deprecating a concept—flows through the command-line interface, validators, and generated documentation without touching application code. Teams adopting AaC inherit a living reference implementation of self-definition that keeps tooling and architectural intent aligned.
+
+### Extensibility through plugins
+
+AaC treats every capability beyond the base specification as a plugin. Packages in `src/aac/plugins/` register code generators, validators, and pipeline steps that the CLI auto-discovers when it loads. The repository ships examples ranging from OpenAPI exporters to test-harness generators, proving that extensions can inject new commands, enrich the DSL, and wire themselves into build pipelines without forking the core. By codifying integration points, metadata, and dependency hooks as data within each plugin, the platform encourages organisations to tailor Architecture as Code to their delivery ecosystem while still benefiting from an upgradeable core.
+
 ## The Interconnected Flow of Architecture as Code
 
 ![Architecture as Code Flow](images/diagram_01_aac_flow.png)
@@ -39,6 +47,7 @@ Readers will gain comprehensive knowledge of how the entire system architecture 
 Sources:
 - ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
+- AaC Open Source Project. "Architecture-as-Code Repository." https://github.com/aacplatform/aac
 
 ## How This Book Is Organised
 

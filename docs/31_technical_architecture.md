@@ -280,6 +280,9 @@ The system demonstrates Architecture as Code through:
 4. **Reproducibility**: Identical builds from the same source code.
 5. **Scalability**: Simple to add new chapters and formats.
 
+### Alignment with the AaC reference implementation
+
+The AaC open-source project offers a blueprint for self-defining platforms. Its `aac-spec/` catalogue of YAML files describes the modelling language, while plugins in `src/aac/plugins/` register CLI commands, exporters, and validators without modifying the core runtime. The book production stack mirrors that philosophy: `pandoc.yaml` and the Markdown front matter act as declarative specifications, and helper scripts such as `build_book.sh` and `generate_whitepapers.py` behave like plugins that the pipeline can swap in or extend. By anchoring automation in data-driven configuration rather than bespoke scripts, the publishing workflow remains inspectable, testable, and easy to evolve—precisely the traits AaC promotes for architecture platforms.
 ### Quality Assurance and Testing
 
 - **Automated validation**: Continuous checks of content and formatting.
@@ -307,3 +310,7 @@ The modern Architecture as Code methodology represents the future of infrastruct
 - **Transparency**: Open-source code and a fully documented process.
 
 This technical system serves as a concrete illustration of how Architecture as Code principles can be applied beyond traditional IT systems, delivering value through automation, reproducibility, and continuous improvement.
+
+## Sources
+
+- AaC Open Source Project. "Architecture-as-Code Repository." https://github.com/aacplatform/aac
