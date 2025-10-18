@@ -25,7 +25,7 @@ jobs:
             const prNumber = context.payload.pull_request.number;
             const marker = "@copilot - verify this PR";
 
-            // Hämta alla kommentarer (paginering inkluderad)
+            // Fetch all comments on the pull request (with pagination)
             const comments = await github.paginate(
               github.rest.issues.listComments,
               { owner, repo, issue_number: prNumber, per_page: 100 }
@@ -34,7 +34,7 @@ jobs:
             const alreadyExists = comments.some(c => (c.body || "").trim() === marker);
 
             if (alreadyExists) {
-              core.info("✅ Copilot-kommentaren finns redan – hoppar över.");
+              core.info("✅ Copilot verification comment already exists – skipping.");
             } else {
               await github.rest.issues.createComment({
                 owner,
@@ -42,5 +42,5 @@ jobs:
                 issue_number: prNumber,
                 body: marker
               });
-              core.info("💬 La till Copilot-verifikationskommentaren.");
+              core.info("💬 Added Copilot verification comment.");
             }
