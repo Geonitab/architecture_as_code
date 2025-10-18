@@ -33,6 +33,14 @@ Selecting the Architecture as Code toolchain is about more than feature parity. 
 
 Teams must intentionally design integration with source control, testing platforms, secrets management, and observability tooling. Wherever possible, integration patterns should mirror the workflows that software delivery teams already understand so that infrastructure changes inherit established review and deployment practices.
 
+## Prioritising testable Infrastructure as Code platforms
+
+Architecture as Code’s quality promise depends on the infrastructure layer being as testable as the application stack. Chapter 13 outlines the test pyramid that underpins this expectation; practical implementation demands toolchains that integrate with it rather than sitting adjacent to it. Platforms such as Pulumi and the AWS Cloud Development Kit (CDK) support TypeScript, Python, and other general-purpose languages, letting engineers combine infrastructure definitions with familiar unit testing frameworks and mocking libraries. Teams can exercise architectural guardrails without provisioning resources by using Pulumi’s `@pulumi/pulumi/testing` harness to assert resource properties, or by applying the AWS CDK assertions library to synthesised stacks to confirm that security groups, tagging standards, and policy attachments match governance requirements.
+
+These programming-language-native tools also simplify continuous integration workflows. They enable developers to execute infrastructure unit tests alongside application suites, provide richer failure messaging for code review, and make use of IDE tooling for refactoring and static analysis. This alignment reduces the feedback loop between architectural intent and executable validation, directly supporting the “shift left” guidance described in Chapter 13.
+
+Declarative-first tools such as Terraform continue to play a vital role, especially where multi-cloud coverage and established ecosystems are essential. However, their testing story often centres on plan evaluation, module contract tests, and policy-as-code gatekeeping rather than true unit-level execution. When rapid, repeatable assertions over architectural logic are required, investing in Pulumi- or CDK-based layers on top of existing Terraform estates can deliver the necessary testability without sacrificing proven workflows.
+
 ## Production readiness and operational excellence
 
 Security-first thinking embeds identity, secrets handling, and audit controls into every artefact. Automated scanning pipelines and clearly defined exception processes ensure that compliance teams receive the evidence they need without slowing down delivery.
@@ -74,3 +82,5 @@ Architecture as Code in practice requires disciplined planning, collaborative ex
 - Google Cloud. "Infrastructure as Code Design Patterns." Google Cloud Architecture Centre.
 - Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.
 - Puppet. "Infrastructure as Code Implementation Guide." Puppet Enterprise Documentation.
+- AWS. "AWS Cloud Development Kit (CDK) Developer Guide." Amazon Web Services.
+- Pulumi. "Testing Infrastructure as Code Programs." Pulumi Blog, 2024.

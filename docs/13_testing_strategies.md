@@ -20,6 +20,8 @@ Test automation for Infrastructure as Code enables continuous integration and co
 
 Unit testing for Infrastructure as Code focuses on validating individual modules and resources without actually deploying infrastructure. This enables rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.
 
+Programmatic Infrastructure as Code platforms such as Pulumi and the AWS Cloud Development Kit (CDK) make this style of testing first-class by allowing infrastructure definitions to live alongside TypeScript, Python, or C# unit tests. Pulumi’s testing framework enables assertions on resource properties and policy attachments before a deployment occurs, while AWS CDK’s assertions library validates synthesised templates to ensure networking rules, tagging strategies, and compliance controls honour architectural guardrails. Embedding these checks directly within developer workflows aligns with Architecture as Code’s emphasis on executable governance.
+
 Terraform testing tools such as Terratest, terraform-compliance and Checkov enable automated validation of HCL code against predefined policies and Infrastructure as Code best practices. These tools can integrate into IDEs for real-time feedback during development and into CI/CD pipelines for automated quality gates.
 
 Unit tests for Infrastructure as Code should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly important for reusable modules that are used across multiple projects, where changes can have wide-ranging impact on dependent resources.
