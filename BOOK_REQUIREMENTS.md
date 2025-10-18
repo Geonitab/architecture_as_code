@@ -65,7 +65,7 @@ book:
       required: true
       label: "Chapter 12"
     - filename: "13_testing_strategies.md"
-      title: "Testing Strategies for Infrastructure Code"
+      title: "Testing Strategies for Infrastructure as Code"
       area: "Delivery and Operations"
       required: true
       label: "Chapter 13"
@@ -283,7 +283,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | 10 | 10_policy_and_security.md | Policy as Code and Security Automation | Security | Yes |
 | 11 | 11_governance_as_code.md | Governance as Code | Governance | Yes |
 | 12 | 12_compliance.md | Compliance and Regulatory Alignment | Governance | Yes |
-| 13 | 13_testing_strategies.md | Testing Strategies for Infrastructure Code | Quality Assurance | Yes |
+| 13 | 13_testing_strategies.md | Testing Strategies for Infrastructure as Code | Quality Assurance | Yes |
 | 14 | 14_practical_implementation.md | Practical Implementation of Architecture as Code | Practical Application | Yes |
 | 15 | 15_cost_optimization.md | Cost Optimisation and Resource Management | Economic Optimisation | Yes |
 | 16 | 16_migration.md | Migration from Traditional Infrastructure | Migration | Yes |

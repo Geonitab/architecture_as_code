@@ -107,7 +107,7 @@ Add test scripts to `package.json`:
 
 ### Recommendations for Test Organisation
 
-**File Structure for Infrastructure Code Tests:**
+**File Structure for Infrastructure as Code Tests:**
 
 ```
 project/
