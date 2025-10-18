@@ -290,9 +290,9 @@ jobs:
                   # Generate presentations
                   echo '🎤 Step 3: Generating presentations...' &&
                   python3 generate_presentation.py --release &&
-                  python --version
-                   python3 --version
-                   echo '📝 Verifying presentation files...' &&
+                  python --version &&
+                  python3 --version &&
+                  echo '📝 Verifying presentation files...' &&
                   ls -la releases/presentation/ || echo '⚠️ No presentation files found'
                   ;;
               esac &&
