@@ -8,8 +8,6 @@ The diagram illustrates the typical flow from a Git repository through branching
 
 ## Git-based workflow for infrastructure
 
-### Transparent collaboration through Git
-
 Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members. Each change is documented with commit messages that describe what was modified and why, creating a complete history of infrastructure evolution.
 
 ### Abstraction and governance responsibilities across AaC and IaC
