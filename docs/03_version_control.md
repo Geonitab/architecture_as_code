@@ -8,7 +8,22 @@ The diagram illustrates the typical flow from a Git repository through branching
 
 ## Git-based workflow for infrastructure
 
+### Transparent collaboration through Git
+
 Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members. Each change is documented with commit messages that describe what was modified and why, creating a complete history of infrastructure evolution.
+
+### Abstraction and governance responsibilities across AaC and IaC
+
+Architecture as Code defines the opinionated guardrails that keep architectural intent enforceable, whilst Infrastructure as Code implements the concrete runtime changes that honour those decisions. Thoughtworks highlights how Governance as Code requires opinionated policy checks and review automation at the architecture layer so that teams consistently adopt approved patterns ([Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)). Modern Infrastructure as Code frameworks such as AWS CDK introduce higher-level constructs that compile architectural blueprints into deployable resources, shrinking the translation gap between AaC models and executable infrastructure ([AWS – Cloud Development Kit (CDK) Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html)).
+
+| Dimension | Architecture as Code | Infrastructure as Code |
+|-----------|----------------------|------------------------|
+| Primary artefact | Codified guardrails, architectural policies, and structural models that describe intended system behaviour | Environment templates, resource modules, and orchestration logic that realise those intentions |
+| Abstraction level | Works at the architectural decision layer, defining target-state patterns before implementation begins | Operates at the resource layer, materialising compute, network, and platform services—often generated from higher-level libraries such as AWS CDK |
+| Governance posture | Opinionated controls embedded in pipelines to enforce approved patterns and audit evidence, as emphasised by Governance as Code guidance from Thoughtworks | Executes changes within the guardrails defined by AaC, surfacing drift or policy violations back to architectural review workflows |
+| Feedback loop | Architectural validation feeds pull-request checks, design reviews, and policy updates | Plan, apply, and monitoring stages report on compliance and runtime state, providing telemetry that informs AaC refinements |
+
+Bringing these responsibilities together ensures that architectural decisions stay actionable. AaC establishes the standards and verification required for compliant delivery, while IaC tooling—especially higher-level frameworks like AWS CDK—translates those structures into reproducible deployments without diluting the governance signals.
 
 ## Code organisation and module structure
 
@@ -32,3 +47,5 @@ This transparency builds trust within teams and with stakeholders. Leadership ga
 
 Sources:
 - Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation.
+- Thoughtworks Technology Radar. "Governance as Code." Thoughtworks, 2024.
+- AWS. "AWS Cloud Development Kit (CDK) Developer Guide." https://docs.aws.amazon.com/cdk/latest/guide/home.html.
