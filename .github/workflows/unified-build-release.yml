@@ -1,4 +1,4 @@
-(---
+---
 name: Unified Build & Release
 
 # This unified workflow consolidates complete-release.yml, build-book-fast.yml,
