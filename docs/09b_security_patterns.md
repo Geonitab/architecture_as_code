@@ -58,6 +58,14 @@ ata during processing—even from cloud operators.
 
 ## Practical implementation: security architecture in European environments
 
+### Secure Infrastructure as Code state management pattern
+
+State backends hold the canonical inventory for every deployed component and therefore require layered protection. HashiCorp’s *Securing Terraform State* reference [16] mandates remote storage with locking to prevent concurrent writes and to avoid sensitive data being synchronised to developer laptops. Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends with server-side encryption configured for customer-managed keys and object versioning to support forensic recovery.
+
+Key management policies must define custodianship, rotation cadence, and break-glass processes for decrypting state artefacts. Backends should enforce least-privilege policies so only automation roles can read state while human operators rely on Terraform Cloud or approved pipelines for access. Cataloguing these controls within the Architecture as Code governance layer links state protection to wider compliance commitments; policy-as-code checks can assert that every workspace declares an approved backend, encryption flag, and locking store before plans are applied.
+
+Operational telemetry from backend access logs, Terraform Cloud audit trails, and key management systems should be forwarded into the central governance dashboard. This provides evidence for auditors that state files remain encrypted, access attempts are monitored, and remediation actions—such as key rotation or state re-keying—are triggered automatically when drift is detected.
+
 ### Comprehensive security foundation module
 
 The following Terraform module demonstrates a foundational enterprise security pattern tailored for European organisations. It applies defence-in-depth principles through automated controls for encryption, access management, audit logging, and threat detection.
@@ -564,6 +572,7 @@ nd accelerated innovation.
 ### Industry references
 - Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
 - Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
+- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024.
 - HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023.
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.

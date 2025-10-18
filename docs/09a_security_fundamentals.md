@@ -197,6 +197,14 @@ olicy-as-code frameworks can enforce handling rules automatically, including ret
 s. Privacy by design requirements from GDPR Article 25 demand data minimisation, purpose limitation, and automated deletion when
  retention periods expire.
 
+### Protecting Infrastructure as Code state
+
+Infrastructure state files capture live inventories, secrets, and the policy decisions enforced across environments. They must therefore be handled as sensitive artefacts rather than operational by-products. HashiCorp’s *Securing Terraform State* guidance [16] recommends remote backends with enforced locking so that teams cannot download or edit state locally, reducing exposure from unmanaged workstations and eliminating race conditions during deployment.
+
+Centrally managed storage such as AWS S3 with DynamoDB locking, Azure Storage with Cosmos DB, or Google Cloud Storage should be configured with encryption at rest using customer-managed keys. Key rotation schedules, hardware-backed storage, and explicit grants for break-glass access keep custody of Terraform state aligned with enterprise key management policies. Integrating state access with secrets-management tooling ensures cryptographic material is recorded, rotated, and revoked under the same governance as application secrets [16].
+
+Architecture as Code governance pipelines must verify that every workspace declares an approved remote backend and that encryption, locking, and access policy parameters match organisational standards. Audit trails from Terraform Cloud, S3 access logs, or Azure Monitor should be harvested automatically into governance dashboards so compliance teams can demonstrate adherence to supervisory requirements while monitoring for drift in state management controls.
+
 ## Network security and micro-segmentation
 
 ### Modern network architecture for Zero Trust environments
@@ -259,6 +267,7 @@ This chapter has established the fundamental security principles and practices f
 ### Industry references
 - Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
 - Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
+- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024.
 - HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023.
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
