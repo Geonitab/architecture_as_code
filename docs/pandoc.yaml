@@ -52,28 +52,9 @@ variables:
     \end{center}
     \newpage
     \thispagestyle{empty}
-    \vspace*{2cm}
-    \begin{flushleft}
-    {\Large\bfseries Release Information\par}
-    \vspace{0.8cm}
-    {\normalsize
-    \textbf{Title:} Architecture as Code\\
-    \textbf{Subtitle:} A practical handbook for Infrastructure as Code\\
-    \textbf{Edition:} First Edition\\
-    \textbf{Year:} 2025\\
-    \textbf{Language:} British English (en-GB)\par}
-    \vspace{0.8cm}
-    {\normalsize
-    Copyright \copyright{} 2025 Gunnar Nordqvist\par}
-    \vspace{0.3cm}
-    {\normalsize
-    All rights reserved. This book is made available under open-source principles to support the community in adopting Architecture as Code practices.\par}
-    \vspace{0.8cm}
-    {\normalsize
-    \textbf{ISBN:} \textit{To be assigned}\\
-    \textbf{Format:} PDF, EPUB, DOCX\\
-    \textbf{Repository:} \url{https://github.com/Geonitab/architecture_as_code}\par}
-    \end{flushleft}
+    \begin{center}
+    \includegraphics[width=\paperwidth]{images/release_information_page.png}
+    \end{center}
     \newpage
   # Simplified header handling
   header-includes: |

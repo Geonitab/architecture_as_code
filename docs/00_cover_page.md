@@ -17,20 +17,12 @@
 
 <div style="page-break-after: always;"></div>
 
-<div class="release-information" style="margin: 4rem 0; font-size: 1.05em; line-height: 1.65;">
-  <p style="font-size: 1.4em; font-weight: 600; margin-bottom: 1.5rem;">Release information</p>
-  <p><strong>Title:</strong> Architecture as Code</p>
-  <p><strong>Subtitle:</strong> A practical handbook for Infrastructure as Code</p>
-  <p><strong>Edition:</strong> First edition</p>
-  <p><strong>Release year:</strong> 2025</p>
-  <p><strong>Language:</strong> British English (en-GB)</p>
-  <p><strong>ISBN:</strong> To be assigned</p>
-  <p><strong>Format availability:</strong> PDF, EPUB, DOCX</p>
-  <p><strong>Repository:</strong> https://github.com/Geonitab/architecture_as_code</p>
-  <p style="margin-top: 1.5rem;">
-    This publication is licenced for community use to enable rapid adoption of Architecture as Code practices across
-    engineering and operations teams. Redistribution is encouraged with attribution.
-  </p>
+<div class="release-information" style="text-align: center; margin: 4rem 0;">
+  <img
+    src="images/release_information_page.png"
+    alt="Architecture as Code release information summary"
+    style="max-width: 92%; height: auto;"
+  />
 </div>
 
 <div style="page-break-after: always;"></div>
