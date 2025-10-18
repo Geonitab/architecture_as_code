@@ -43,10 +43,10 @@ class TestIssueSourceCatalogue:
     """Verify the integrity of the source catalogue."""
 
     def test_catalogue_contains_all_source_ids(self, source_catalogue):
-        """Ensure Source IDs 1–16 are present exactly once."""
-        expected_ids = set(range(1, 17))
+        """Ensure Source IDs 1–18 are present exactly once."""
+        expected_ids = set(range(1, 19))
         assert set(source_catalogue.keys()) == expected_ids, (
-            "Source catalogue must define Source IDs 1–16 exactly once"
+            "Source catalogue must define Source IDs 1–18 exactly once"
         )
 
     def test_catalogue_entries_have_required_fields(self, source_catalogue):
@@ -116,7 +116,7 @@ class TestIssueTemplates:
 
         expected_ids = set(source_catalogue.keys())
         assert seen_ids == expected_ids, (
-            "Combined issue templates must reference Source IDs 1–16\n"
+            "Combined issue templates must reference Source IDs 1–18\n"
             f"Missing: {sorted(expected_ids - seen_ids)}\n"
             f"Unexpected: {sorted(seen_ids - expected_ids)}"
         )
@@ -141,4 +141,3 @@ class TestIssueTemplates:
         match = re.search(pattern, text, re.DOTALL)
         assert match, f"Could not parse section '{heading}'"
         return match.group(1)
-

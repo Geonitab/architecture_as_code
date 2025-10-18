@@ -191,6 +191,28 @@
         "docs/09a_security_fundamentals.md",
         "docs/09b_security_patterns.md"
       ]
+    },
+    {
+      "id": 17,
+      "title": "IASA Global – IT Architecture Body of Knowledge (ITABOK)",
+      "type": "professional-framework",
+      "year": 2024,
+      "url": "https://itabok.iasaglobal.org/",
+      "summary": "Defines the competency framework that Architecture as Code teams use to align role expectations and capability development.",
+      "supports_chapters": [
+        "docs/18_team_structure.md"
+      ]
+    },
+    {
+      "id": 18,
+      "title": "IASA Global – Certified IT Architect (CITA) Programme",
+      "type": "professional-certification",
+      "year": 2024,
+      "url": "https://iasaglobal.org/certification/",
+      "summary": "Outlines the certification pathways and assessment criteria that inform Architecture as Code career progression plans.",
+      "supports_chapters": [
+        "docs/18_team_structure.md"
+      ]
     }
   ]
 }
