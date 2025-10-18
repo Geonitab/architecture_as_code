@@ -1,6 +1,6 @@
 # Architecture as Code - Book Structure
 
-This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus appendices. Thirty-one chapters build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
+This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus appendices. Thirty-one chapters build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts. The narrative is anchored in the reality that microservice complexity remains the primary catalyst for embracing Architecture as Code, so each part reinforces how codified practices restore coherence across sprawling service estates.
 
 ## Table of Contents
 

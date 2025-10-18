@@ -1,5 +1,7 @@
 # Architecture as Code Documentation
 
+Architecture as Code exists to rein in microservice complexity—the primary driver pushing Swedish digital leaders towards codified architecture practices. This portal anchors that story by making the full manuscript available for quick reference.
+
 Welcome to the Architecture as Code documentation portal. This site publishes the complete manuscript of the Architecture as Code book in a web-friendly format so you can explore the chapters, diagrams, and appendices directly in your browser.
 
 ## How to Use This Site

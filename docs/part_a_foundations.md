@@ -10,6 +10,8 @@ This opening part introduces the core concepts and principles that underpin all 
 
 Version control and structured decision-making form the bedrock of successful implementation. Through systematic documentation of architectural choices using Architecture Decision Records, organisations gain transparency, traceability, and the knowledge continuity needed to sustain Architecture as Code practices over time.
 
+The chapters repeatedly return to microservice complexity as the dominant driver for adopting Architecture as Code, grounding the foundational practices in the challenges faced by Swedish digital leaders.
+
 **What you will learn in this part:**
 
 - The evolution from manual, document-based architecture to Architecture as Code
