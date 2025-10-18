@@ -55,6 +55,9 @@ This section provides a comprehensive list of all sources and references cited t
 **IEEE.** "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
+**IASA Global.** "Certified IT Architect (CITA) Programme Overview." https://iasaglobal.org/certification  
+*Referenced in: [Chapter 18: Team Structure and Competency Development for Architecture as Code](18_team_structure.md)*
+
 **HashiCorp.** "Policy as Code Overview." https://developer.hashicorp.com/terraform/enterprise/policy-as-code  
 *Referenced in: [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 

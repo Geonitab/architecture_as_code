@@ -42,7 +42,7 @@ Managers revisit the matrix alongside metrics and feedback to tailor coaching pl
 
 ## Learning strategies and certifications
 
-Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms (A Cloud Guru, Pluralsight, Linux Academy) provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer Expert, and HashiCorp Certified Terraform Associate validate proficiency and guide progression through increasingly advanced competencies.
+Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms (A Cloud Guru, Pluralsight, Linux Academy) provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer Expert, and HashiCorp Certified Terraform Associate validate proficiency and guide progression through increasingly advanced competencies. Professional bodies like **IASA Global** extend that pathway with architecture-specific certifications (including the Certified IT Architect track) and peer communities that reinforce ethical practice, stakeholder communication, and strategic design leadership.
 
 To turn knowledge into practice, organisations invest in sandbox environments, lab challenges, and pair programming. Managers should track completion, but also emphasise practical demonstrations of new capabilities applied to real delivery scenarios.
 
@@ -268,4 +268,5 @@ Architecture as Code succeeds when teams evolve their operating model alongside 
 - Matthew Skelton, Manuel Pais. *Team Topologies: Organising Business and Technology Teams.* IT Revolution Press.
 - Google Cloud. "DevOps Research and Assessment (DORA) Reports." Google Cloud Platform.
 - Atlassian. "DevOps Team Structure and Best Practices." Atlassian Documentation.
+- IASA Global. "Certified IT Architect (CITA) Programme Overview." IASA Global.
 - HashiCorp. "Infrastructure as Code Maturity Model." HashiCorp Learn Platform.
