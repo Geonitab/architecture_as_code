@@ -171,13 +171,13 @@ Chaos engineering principles can be applied to infrastructure testing by systema
 
 ## Security and Compliance Testing
 
-Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, validation of encryption settings and verification of network security policies.
+Security testing for Infrastructure as Code within UK organisations must validate both hardened infrastructure configurations and alignment with National Cyber Security Centre (NCSC) guidance. This includes scanning for common configuration weaknesses, validating encryption controls mandated by the NCSC cloud security principles and verifying that network policies enforce zero-trust access patterns.
 
-Compliance testing automation ensures infrastructure configurations meet regulatory requirements continuously. Organisations must validate GDPR compliance, financial regulations and government security standards through automated testing that can provide audit trails for compliance reporting.
+Compliance testing automation ensures infrastructure configurations meet statutory and sector-specific requirements continuously. Organisations must evidence UK GDPR adherence, Financial Conduct Authority (FCA) and Prudential Regulation Authority (PRA) control objectives for financial services, and NHS Data Security and Protection Toolkit (DSPT) obligations for health workloads through automated testing that produces auditable trails for regulators.
 
-Policy-as-code frameworks such as Open Policy Agent (OPA) and AWS Config Rules enable declarative definition of compliance policies that can be enforced automatically during infrastructure deployment. This preventative approach is more effective than reactive compliance monitoring.
+Policy-as-code frameworks such as Open Policy Agent (OPA), HashiCorp Sentinel and Azure Policy enable declarative definition of compliance requirements that map directly to UK regulatory catalogues. Embedding these controls in delivery pipelines provides preventative enforcement rather than reactive monitoring and supports Cabinet Office Technology Code of Practice assessments.
 
-Vulnerability scanning for infrastructure dependencies must include container images, operating system configurations and third-party software components. Integration with security scanning tools in CI/CD pipelines ensures security vulnerabilities are identified before deployment to production.
+Vulnerability scanning for infrastructure dependencies must include container images, operating system configurations and third-party software components. Integrating scanners aligned with Cyber Essentials Plus assurance into CI/CD pipelines ensures vulnerabilities are remediated before change authority approvals for production releases.
 
 ## Performance and Scalability Testing
 
