@@ -43,6 +43,9 @@ This section provides a comprehensive list of all sources and references cited t
 **GitHub Open Source Community.** "Collaborative Software Development." Platform Documentation, 2024.
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 
+**Hailpern, T., Tarr, P.** "Model-Driven Development: The Good, the Bad, and the Ugly." IBM Systems Journal, 45(3), 2006.  
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
+
 **IEEE.** "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
@@ -76,11 +79,14 @@ This section provides a comprehensive list of all sources and references cited t
 **Open Policy Agent.** "Policy as Code Overview." https://www.openpolicyagent.org/docs/latest/  
 *Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
+**Object Management Group.** "Model Driven Architecture (MDA) Guide Version 1.0.1." OMG Document omg/2003-06-01, 2003.  
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
+
 **Red Hat.** "Architecture as Code Principles and Best Practices." Red Hat Developer.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
 **Selic, B.** "The Pragmatics of Model-Driven Development." IEEE Software, 2003.  
-*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
+*Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 29: About the Authors](29_about_the_authors.md)*

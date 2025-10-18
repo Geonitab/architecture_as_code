@@ -20,9 +20,11 @@ A practical example is an application programming interface change automatically
 
 ### Historical lessons from model-driven development
 
-Model-Driven Development (MDD) in the early 2000s promised that platform-neutral models could generate complete systems, yet experience showed persistent gaps between models and running software. Selic (2003) documents how brittle round-trip engineering, tool lock-in, and ambiguous semantics caused MDD artefacts to fall out of sync as soon as teams customised generated code or adopted new frameworks. Architecture as Code internalises those lessons by favouring lightweight textual models, explicit version control, and continuous validation so that the architecture specification evolves alongside implementation rather than trying to replace it.
+Architecture as Code emerges after decades of attempts to encode architecture models directly into generation pipelines. The Object Management Group's Model Driven Architecture vision (OMG, 2003) proposed deriving platform-specific artefacts from platform-independent models, reviving earlier CASE-tool ambitions from the 1990s.
 
-Modern MBSE-aligned tooling such as Structurizr focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that avoids the historical pitfalls identified by Selic (2003).
+Large-scale programmes quickly learned that full-code generation created unsustainable feedback loops. Selic (2003) and Hailpern and Tarr (2006) describe how brittle round-trip engineering, tool lock-in, and ambiguous semantics caused models to diverge as soon as teams customised generated code or adopted new frameworks. The clean separation between models and implementation rarely survived the first production incident.
+
+Architecture as Code internalises those lessons by favouring lightweight textual models, explicit version control, and continuous validation so that the architecture specification evolves alongside implementation rather than trying to replace it. Modern MBSE-aligned tooling such as Structurizr focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that avoids the historical pitfalls identified in the early 2000s.
 
 ## Implementation timeline for Architecture as Code
 
