@@ -48,26 +48,26 @@ jobs:
       - name: Ensure output folders exist
         run: |
           mkdir -p presentations
-          mkdir -p releases/presentation
-          mkdir -p releases/presentation/presentations/
-
+          mkdir -p presentations/presentations
+          mkdir -p releases/presentation/presentations
 
       - name: Run generator
         shell: bash
         run: |
           set -euo pipefail
-          # Kör rätt script (ligger i repo-roten)
+          # Pass only the filename so the script's standard output dir
+          # doesn't duplicate the path.
           python ./generate_presentation.py \
             --create-pptx \
             --release \
-            --output presentations/architecture_as_code_presentation.pptx
+            --output architecture_as_code_presentation.pptx
 
       - name: Show generated files (debug)
         run: |
           echo "=== presentations/ ==="
-          find presentations -maxdepth 2 -type f -print || true
+          find presentations -maxdepth 3 -type f -print || true
           echo "=== releases/presentation/ ==="
-          find releases/presentation -maxdepth 2 -type f -print || true
+          find releases/presentation -maxdepth 3 -type f -print || true
 
       - name: Upload artefact
         uses: actions/upload-artifact@v4
