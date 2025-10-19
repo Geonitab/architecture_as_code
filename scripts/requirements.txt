@@ -1,3 +1,6 @@
+# Core components
+pyyml>=6.0
+
 # Core build tools
 pip>=24.0
 setuptools>=70.0
