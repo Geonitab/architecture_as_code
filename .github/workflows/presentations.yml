@@ -48,7 +48,7 @@ jobs:
       - name: Ensure output folders exist
         run: |
           mkdir -p presentations
-          mkdir -p releases/presentations 
+          mkdir -p releases/presentation
           mkdir -p releases/presentation/presentations/
 
 
