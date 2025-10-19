@@ -42,12 +42,16 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install Pandoc & TeX toolchain
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            pandoc \
-            texlive-xetex texlive-fonts-recommended texlive-latex-extra \
-            librsvg2-bin graphviz
+          run: |
+            sudo apt-get update
+            sudo apt-get install -y --no-install-recommends \
+            pandoc pandoc-crossref \
+            texlive texlive-xetex texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended texlive-fonts-extra lmodern \
+            texlive-lang-european \
+            latexmk \
+            fonts-dejavu fonts-noto fonts-noto-extra \
+            librsvg2-bin graphviz inkscape
 
       - name: Generate book content
         run: python3 generate_book.py
