@@ -22,19 +22,31 @@ jobs:
       - name: Gather context
         id: ctx
         run: |
-          echo "Gathering repository context..."
+          set -eu
           echo "Issue title: ${{ github.event.issue.title }}"
-          echo "Issue body length: $(echo "${{ github.event.issue.body }}" | wc -c)"
+          printf "Issue body length: %s\n" "$(printf %s "${{ github.event.issue.body }}" | wc -c)"
 
       - name: Validate secrets
         id: validate
         run: |
+          set -eu
           if [ -z "${{ secrets.OPENAI_API_KEY }}" ]; then
             echo "Error: Missing required secret OPENAI_API_KEY."
-            echo "Please add it under Settings → Secrets and variables → Actions."
+            echo "Add it in Settings -> Secrets and variables -> Actions."
             exit 1
           fi
           echo "Secrets validation passed."
+
+      - name: Prepare context
+        id: context
+        run: |
+          set -eu
+          git ls-files > files.txt
+          {
+            printf '<<FILE_LIST>>\n'
+            sed -e 's/^/ - /' files.txt
+          } > prompt_context.txt
+          echo "Prepared repository file list for model context."
 
       - name: Call OpenAI to propose a patch
         id: openai
@@ -43,26 +55,31 @@ jobs:
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://api.openai.com' }}
           MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
           PROMPT: |
-            You are a careful software maintainer.
-            The repository has just received a GitHub Issue requesting a change.
-            Your task: propose a minimal patch as a unified diff that applies cleanly to the current HEAD.
-            Respond only with the diff — no explanations or commentary.
-            Keep the patch safe, small, and directly related to the issue.
+            You are a meticulous software maintainer.
+            Return a minimal, safe patch as a unified diff that applies cleanly to the current HEAD.
+            Output only the diff — no code fences, no explanations, no backticks.
+            The first two lines must be file headers like:
+            --- path/to/file.ext
+            +++ path/to/file.ext
 
-            Context (issue title):
-            "${{ github.event.issue.title }}"
+            Context:
+            - Issue title: "${{ github.event.issue.title }}"
+            - Issue body (may be empty): |
+              ${{ github.event.issue.body }}
 
-            Context (issue body):
-            ${{ github.event.issue.body }}
+            Repository snapshot (filenames only):
+            <<FILE_LIST>>
         run: |
-          echo "Preparing API request..."
-          body=$(jq -n --arg model "$MODEL" --arg prompt "$PROMPT" '{
+          set -eu
+          PROMPT_FULL="$(printf '%s\n\n%s' "$PROMPT" "$(cat prompt_context.txt)")"
+
+          body=$(jq -n --arg model "$MODEL" --arg prompt "$PROMPT_FULL" '{
             model: $model,
             messages: [{ "role": "user", "content": $prompt }]
           }')
 
           echo "Sending request to OpenAI..."
-          response=$(curl -s -X POST "$OPENAI_BASE_URL/v1/chat/completions" \
+          response=$(curl -sS -X POST "$OPENAI_BASE_URL/v1/chat/completions" \
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer $OPENAI_API_KEY" \
             -d "$body")
@@ -73,46 +90,54 @@ jobs:
             exit 1
           fi
 
-          echo "$response" | jq -r '.choices[0].message.content' > patch.diff
+          jq -r '.choices[0].message.content' <<<"$response" > raw.patch.txt
 
-          if [ ! -s patch.diff ]; then
-            echo "No diff returned by model."
+          echo "Raw model output (first 40 lines):"
+          head -n 40 raw.patch.txt || true
+
+      - name: Sanitise generated patch
+        id: clean
+        run: |
+          set -eu
+          # 1) Remove surrounding code fences if present
+          awk 'NR==1 && /^```/ {next} /^```$/ {next} {print}' raw.patch.txt > step1.txt
+
+          # 2) Drop any leading prose until the first unified diff header line
+          awk '/^--- /{s=1} s{print}' step1.txt > step2.txt || true
+
+          # 3) Normalise CRLF to LF
+          tr -d '\r' < step2.txt > patch.diff || true
+
+          echo "Sanitised patch preview (first 60 lines):"
+          head -n 60 patch.diff || true
+
+          if ! grep -qE '^(--- |\+\+\+ )' patch.diff; then
+            echo "No unified diff headers detected after sanitisation."
+            echo "Model output was (first 80 lines):"
+            sed -n '1,80p' raw.patch.txt || true
             exit 1
           fi
 
-          echo "Patch generated successfully."
-
       - name: Apply proposed patch
-        if: success()
         run: |
-          echo "Validating and applying patch..."
-          if [ -s patch.diff ]; then
-            git apply --check patch.diff || {
-              echo "Patch does not apply cleanly."
-              exit 1
-            }
-            git apply patch.diff
-            echo "Patch applied successfully."
-          else
-            echo "No patch to apply."
-          fi
+          set -eu
+          echo "Validating patch applies cleanly..."
+          git apply --check patch.diff
+          git apply patch.diff
+          echo "Patch applied."
 
       - name: Commit and push changes
-        if: success()
         id: push
         run: |
-          if [ -s patch.diff ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            branch="issue-${{ github.event.issue.number }}"
-            git checkout -b "$branch"
-            git add .
-            git commit -m "Proposed fix for issue #${{ github.event.issue.number }}"
-            git push origin "$branch"
-            echo "branch=$branch" >> "$GITHUB_OUTPUT"
-          else
-            echo "branch=" >> "$GITHUB_OUTPUT"
-          fi
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          branch="issue-${{ github.event.issue.number }}"
+          git checkout -b "$branch"
+          git add -A
+          git commit -m "Proposed fix for issue #${{ github.event.issue.number }}"
+          git push origin "$branch"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
 
       - name: Create pull request
         if: ${{ steps.push.outputs.branch != '' }}
