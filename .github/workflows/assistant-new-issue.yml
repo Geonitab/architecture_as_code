@@ -1,4 +1,4 @@
-name: Assistant New Issue
+name: "Assistant - New Issue"
 
 on:
   issues:
