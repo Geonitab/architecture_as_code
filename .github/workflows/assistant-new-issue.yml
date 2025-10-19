@@ -39,17 +39,22 @@ jobs:
           REPO_MAP="$( (git ls-files | head -n 400) | sed 's/^/ - /' )"
           REPO_MAP_10="$(printf "%s\n" "$REPO_MAP" | sed 's/^/          /')"
 
+          # Scalar output
+          echo "ISSUE_NUMBER=$ISSUE_NUMBER" >> "$GITHUB_OUTPUT"
+
+          # Multiline outputs: delimiter must be UNQUOTED and match exactly
           {
-            echo "ISSUE_NUMBER=$ISSUE_NUMBER"
-            echo "ISSUE_TITLE<<'EOF'"
-            echo "$ISSUE_TITLE"
-            echo "EOF"
-            echo "ISSUE_BODY<<'EOF'"
-            echo "$TRIMMED_BODY"
-            echo "EOF"
-            echo "REPO_MAP_10<<'EOF'"
-            echo "$REPO_MAP_10"
-            echo "EOF"
+            echo "ISSUE_TITLE<<TITLE_EOF"
+            printf "%s\n" "$ISSUE_TITLE"
+            echo "TITLE_EOF"
+
+            echo "ISSUE_BODY<<BODY_EOF"
+            printf "%s\n" "$TRIMMED_BODY"
+            echo "BODY_EOF"
+
+            echo "REPO_MAP_10<<MAP_EOF"
+            printf "%s\n" "$REPO_MAP_10"
+            echo "MAP_EOF"
           } >> "$GITHUB_OUTPUT"
 
       - name: Call OpenAI to propose a patch
