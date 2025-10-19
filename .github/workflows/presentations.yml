@@ -49,6 +49,8 @@ jobs:
         run: |
           mkdir -p presentations
           mkdir -p releases/presentations 
+          mkdir -p releases/presentation/presentations/
+
 
       - name: Run generator
         shell: bash
