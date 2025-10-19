@@ -1,27 +1,36 @@
-name: Build Presentations (native)
+name: Build – Presentations
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'scripts/generate_presentation.py'
-      - 'presentations/**/*'
-      - 'templates/**/*'
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch: {}
-  workflow_call: {}
+  workflow_call:
+    inputs:
+      python-version:
+        description: Python version
+        required: false
+        type: string
+        default: "3.11"
+      src_dir:
+        description: Directory to scan for slide inputs
+        required: false
+        type: string
+        default: "docs"
+      template_path:
+        description: PPTX template path
+        required: false
+        type: string
+        default: "templates/presentation-template.pptx"
+      out_dir:
+        description: Output directory for generated decks
+        required: false
+        type: string
+        default: "exports/presentations"
 
 permissions:
   contents: read
 
-env:
-  ARTIFACT_RETENTION_DAYS: 30
-
 jobs:
-  presentations:
+  generate:
+    name: Generate presentations
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,24 +38,37 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-          cache: 'pip'
+          python-version: ${{ inputs.python-version }}
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r scripts/requirements.txt
-          python -c "import yaml; print('✅ PyYAML version:', yaml.__version__)"
-      
-      - name: Generate presentations
-        run: |
-          mkdir -p releases/presentation
-          python3 scripts/generate_presentation.py --release || python3 scripts/generate_presentation.py
+          # Keep this lightweight; include the libs generate_presentation.py typically needs
+          pip install python-pptx jinja2 pyyaml markdown
 
-      - name: Upload presentation artefacts
+      - name: Prepare output directory
+        run: |
+          mkdir -p "${{ inputs.out_dir }}"
+
+      - name: Run generator
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Graceful help/arg check to avoid exit code 2 from argparse
+          python ./generate_presentation.py \
+            --input "${{ inputs.src_dir }}" \
+            --template "${{ inputs.template_path }}" \
+            --output "${{ inputs.out_dir }}"
+
+      - name: Show generated files (debug)
+        run: |
+          echo "=== Files ==="
+          find "${{ inputs.out_dir }}" -type f | sort || true
+
+      - name: Upload artefact
         uses: actions/upload-artifact@v4
         with:
           name: presentations
-          path: releases/presentation/
-          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
-          if-no-files-found: warn
+          path: ${{ inputs.out_dir }}/
+          if-no-files-found: error
+          retention-days: 30
