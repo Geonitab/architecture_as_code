@@ -56,11 +56,19 @@ jobs:
           MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
           PROMPT: |
             You are a meticulous software maintainer.
-            Return a minimal, safe patch as a unified diff that applies cleanly to the current HEAD.
-            Output only the diff — no code fences, no explanations, no backticks.
-            The first two lines must be file headers like:
-            --- path/to/file.ext
-            +++ path/to/file.ext
+            Return a minimal, safe patch that applies cleanly to the current HEAD.
+            Output only a diff — no code fences, no explanations, no backticks.
+            Acceptable formats:
+            - Unified diff starting with:
+              --- path/to/file
+              +++ path/to/file
+            - Git-style patch blocks starting with:
+              diff --git a/path/to/file b/path/to/file
+
+            Rules:
+            - Target real paths in the repo (see snapshot).
+            - For new files, use /dev/null in unified format or a proper diff --git header with new file mode.
+            - Keep the patch small and directly related to the issue.
 
             Context:
             - Issue title: "${{ github.event.issue.title }}"
@@ -92,39 +100,68 @@ jobs:
 
           jq -r '.choices[0].message.content' <<<"$response" > raw.patch.txt
 
-          echo "Raw model output (first 40 lines):"
-          head -n 40 raw.patch.txt || true
+          echo "Raw model output (first 60 lines):"
+          sed -n '1,60p' raw.patch.txt || true
 
       - name: Sanitise generated patch
         id: clean
         run: |
           set -eu
-          # 1) Remove surrounding code fences if present
+          # Remove surrounding code fences/backticks if present
           awk 'NR==1 && /^```/ {next} /^```$/ {next} {print}' raw.patch.txt > step1.txt
 
-          # 2) Drop any leading prose until the first unified diff header line
-          awk '/^--- /{s=1} s{print}' step1.txt > step2.txt || true
+          # If the model added prose, drop everything before the first meaningful diff header
+          awk '/^(diff --git |--- |\+\+\+ )/{s=1} s{print}' step1.txt > step2.txt || true
 
-          # 3) Normalise CRLF to LF
+          # Normalise CRLF to LF
           tr -d '\r' < step2.txt > patch.diff || true
 
-          echo "Sanitised patch preview (first 60 lines):"
-          head -n 60 patch.diff || true
+          echo "Sanitised patch preview (first 80 lines):"
+          sed -n '1,80p' patch.diff || true
 
-          if ! grep -qE '^(--- |\+\+\+ )' patch.diff; then
-            echo "No unified diff headers detected after sanitisation."
-            echo "Model output was (first 80 lines):"
-            sed -n '1,80p' raw.patch.txt || true
+          # Simple sanity check: contain either unified headers or diff --git
+          if ! grep -qE '^(diff --git |--- |\+\+\+ )' patch.diff; then
+            echo "No diff headers detected after sanitisation."
+            echo "Original model output (first 120 lines) for debugging:"
+            sed -n '1,120p' raw.patch.txt || true
             exit 1
           fi
 
       - name: Apply proposed patch
         run: |
           set -eu
-          echo "Validating patch applies cleanly..."
-          git apply --check patch.diff
-          git apply patch.diff
-          echo "Patch applied."
+          echo "Validating patch applies cleanly (attempt 1)…"
+          if git apply --check patch.diff 2>check1.err; then
+            git apply patch.diff
+            echo "Patch applied using default path strip."
+          else
+            echo "git apply --check failed (attempt 1). Diagnostics:"
+            cat check1.err || true
+
+            # If diff looks like 'a/ b/' style, retry with -p1
+            if grep -qE '^(diff --git a/|--- a/|\+\+\+ b/)' patch.diff; then
+              echo "Retrying with -p1 (attempt 2)…"
+              if git apply -p1 --check patch.diff 2>check2.err; then
+                git apply -p1 patch.diff
+                echo "Patch applied with -p1."
+              else
+                echo "git apply --check failed again. Diagnostics:"
+                cat check2.err || true
+                echo "Repository tree (top level) for reference:"
+                ls -la
+                echo "First 120 lines of patch for debugging:"
+                sed -n '1,120p' patch.diff || true
+                exit 1
+              fi
+            else
+              echo "Patch is not using a/ b/ prefixes; cannot auto-retry with -p1."
+              echo "Repository tree (top level) for reference:"
+              ls -la
+              echo "First 120 lines of patch for debugging:"
+              sed -n '1,120p' patch.diff || true
+              exit 1
+            fi
+          fi
 
       - name: Commit and push changes
         id: push
