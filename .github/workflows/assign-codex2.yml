@@ -1,0 +1,104 @@
+name: Automatically create draft PRs for issues without PRs
+
+on:
+  issues:
+    types: [opened, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create_prs:
+    runs-on: ubuntu-latest
+    env:
+      GH_REPO: ${{ github.repository }}
+      GH_TOKEN: ${{ secrets.BOT_ISSUE }}
+    steps:
+      - name: Checkout (without Actions bot credentials)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Configure git as BOT_ISSUE user and set remote
+        run: |
+          set -euo pipefail
+          NAME=$(gh api user --jq .name || echo "")
+          EMAIL=$(gh api user/emails --jq 'map(select(.primary==true))[0].email' || echo "")
+          git config user.name "${NAME:-codex-bot}"
+          git config user.email "${EMAIL:-codex-bot@example.invalid}"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO}.git"
+
+      - name: Determine default branch
+        run: |
+          set -euo pipefail
+          DEFAULT_BRANCH=$(gh repo view "$GH_REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
+          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> "$GITHUB_ENV"
+
+      - name: Build issue list (current issue or all open)
+        run: |
+          set -euo pipefail
+          if [ "${GITHUB_EVENT_NAME}" = "issues" ]; then
+            jq -r '.issue.number' < "$GITHUB_EVENT_PATH" > issues.txt
+          else
+            gh issue list --repo "$GH_REPO" --state open --json number --jq '.[].number' > issues.txt
+          fi
+          echo "Issues to process:"
+          cat issues.txt || true
+
+      - name: Create draft PRs where missing
+        run: |
+          set -euo pipefail
+
+          while read -r ISSUE_NUMBER; do
+            [ -n "$ISSUE_NUMBER" ] || continue
+            echo "::group::Processing issue #$ISSUE_NUMBER"
+
+            TITLE=$(gh issue view "$ISSUE_NUMBER" --repo "$GH_REPO" --json title --jq .title)
+
+            # Check if a PR already references this issue
+            LINKED_PR=$(gh pr list --repo "$GH_REPO" --state all --search "Closes #${ISSUE_NUMBER}" --json number --jq '.[].number' || true)
+            if [ -n "$LINKED_PR" ]; then
+              echo "PR already exists for issue #$ISSUE_NUMBER (#$LINKED_PR). Skipping."
+              echo "::endgroup::"
+              continue
+            fi
+
+            # Reuse or create a branch
+            EXISTING=$(git ls-remote --heads origin "refs/heads/codex/issue-${ISSUE_NUMBER}-*" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1)
+            if [ -n "$EXISTING" ]; then
+              BRANCH="$EXISTING"
+              git fetch origin "$BRANCH" --depth=1
+              git switch "$BRANCH"
+            else
+              # Make a short, safe slug from the title
+              SLUG=$(printf '%s' "$TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
+              BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
+              git fetch origin "$DEFAULT_BRANCH" --depth=1
+              git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
+              git commit --allow-empty -m "Initial draft for issue #${ISSUE_NUMBER}"
+              git push --set-upstream origin "$BRANCH"
+            fi
+
+            # Create draft PR (idempotent: if it already exists for this head/base, gh will error and we ignore)
+            BODY_TEXT="This draft PR was automatically created for this issue.\n\nCloses #${ISSUE_NUMBER}"
+            PR_URL=$(gh pr create \
+              --base "$DEFAULT_BRANCH" \
+              --head "$BRANCH" \
+              --title "Draft: Issue #${ISSUE_NUMBER} - ${TITLE}" \
+              --body "$BODY_TEXT" \
+              --draft \
+              --repo "$GH_REPO" 2>/dev/null || true)
+
+            if [ -n "$PR_URL" ]; then
+              echo "Created draft PR for issue #$ISSUE_NUMBER -> $PR_URL"
+              gh issue comment "$ISSUE_NUMBER" --repo "$GH_REPO" --body "A draft PR has been created for this issue: $PR_URL"
+            else
+              echo "No PR URL returned (it may already exist)."
+            fi
+
+            echo "::endgroup::"
+          done < issues.txt
