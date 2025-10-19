@@ -71,7 +71,7 @@ jobs:
             cp -r site/* releases/website/
           elif [ -f "package.json" ]; then
             echo "=== Building Node-based site ==="
-            npm run build || npm run build:prod || true
+            npm run build || npm run build:prod
             for d in dist build out .next; do
               [ -d "$d" ] && cp -r "$d" releases/website/ || true
             done
