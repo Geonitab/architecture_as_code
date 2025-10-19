@@ -45,13 +45,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-          pandoc pandoc-crossref \
+          pandoc \
           texlive texlive-xetex texlive-latex-recommended texlive-latex-extra \
           texlive-fonts-recommended texlive-fonts-extra lmodern \
           texlive-lang-european \
           latexmk \
           fonts-dejavu fonts-noto fonts-noto-extra \
           librsvg2-bin graphviz inkscape
+
+      - name: Install pandoc-crossref
+        run: |
+          CROSSREF_VERSION=0.3.17.1b
+          curl -L -o pandoc-crossref.tar.xz \
+          "https://github.com/lierdakil/pandoc-crossref/releases/download/v${CROSSREF_VERSION}/pandoc-crossref-Linux.tar.xz"
+          tar -xJf pandoc-crossref.tar.xz
+          sudo mv pandoc-crossref /usr/local/bin/
 
       - name: Generate book content
         run: python3 generate_book.py
