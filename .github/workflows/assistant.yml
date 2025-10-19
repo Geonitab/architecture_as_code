@@ -36,29 +36,15 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           set -euo pipefail
-          sudo apt-get update && sudo apt-get install -y jq
-
-          # Build JSON with jq to avoid quoting/escaping issues
-          REQUEST=$(jq -n --arg prompt "$PROMPT" '{
-            model: "gpt-4o-mini",
-            input: [{role:"user", content: $prompt}]
-          }')
-
-          RESPONSE=$(curl -sS https://api.openai.com/v1/responses \
-            -H "Authorization: Bearer $OPENAI_API_KEY" \
-            -H "Content-Type: application/json" \
-            -d "$REQUEST")
-
-          # Prefer the convenience field if present; fall back to nested structure
-          TEXT=$(echo "$RESPONSE" | jq -r '.output_text // .output[0].content[0].text // empty')
+          TEXT="$(.github/scripts/openai_responses.sh text)"
 
           echo "Assistant said:"
-          echo "$TEXT"
+          printf '%s\n' "$TEXT"
 
           # Expose TEXT for later steps
           {
             echo "ASSISTANT_TEXT<<EOF"
-            echo "${TEXT:-}"
+            printf '%s\n' "${TEXT:-}"
             echo "EOF"
           } >> "$GITHUB_ENV"
 

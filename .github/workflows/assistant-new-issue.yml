@@ -86,31 +86,16 @@ jobs:
                       {"pr_title":"Fix: X","pr_body":"Why + what changed","patch":"diff --git a/file b/file\n--- a/file\n+++ b/file\n@@ ..."}
         run: |
           set -euo pipefail
-          sudo apt-get update >/dev/null && sudo apt-get install -y jq >/dev/null
-
-          REQUEST=$(jq -n --arg prompt "$PROMPT" '{
-            model: "gpt-4o-mini",
-            input: [{role:"user", content: $prompt}]
-          }')
-
-          RAW=$(curl -sS https://api.openai.com/v1/responses \
-            -H "Authorization: Bearer '"$OPENAI_API_KEY"'" \
-            -H "Content-Type: application/json" \
-            -d "$REQUEST")
-
-          TEXT=$(echo "$RAW" | jq -r '.output_text // .output[0].content[0].text // empty')
-          [ -z "$TEXT" ] && { echo "No text in OpenAI response."; exit 1; }
-
-          # Extract JSON even if any stray prose was returned
-          JSON=$(printf "%s" "$TEXT" | awk 'BEGIN{p=0}{if(index($0,"{"))p=1;if(p)print}')
-          echo "$JSON" | jq . >/dev/null
+          JSON="$(.github/scripts/openai_responses.sh json)"
 
           PR_TITLE=$(echo "$JSON" | jq -r '.pr_title // "Proposed changes from OpenAI"')
           PR_BODY=$(echo "$JSON" | jq -r '.pr_body // ""')
           PATCH=$(echo "$JSON" | jq -r '.patch // ""')
 
           if [ -z "$PATCH" ] || ! printf "%s" "$PATCH" | grep -q '^diff --git '; then
-            echo "Model did not return a valid unified diff."; echo "$TEXT"; exit 1
+            echo "Model did not return a valid unified diff.";
+            echo "$JSON";
+            exit 1
           fi
 
           printf "%s" "$PATCH" > patch.diff
