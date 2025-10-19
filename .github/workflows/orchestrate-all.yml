@@ -39,19 +39,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download artefacts from all jobs
+      - name: Download artefacts
         uses: actions/download-artifact@v4
         with:
+          pattern: '*'
           path: final-release
+          merge-multiple: true
 
       - name: Show structure
         run: |
-          echo "=== Directories ==="
-          find final-release -type d | sort || true
-          echo "=== Files ==="
-          find final-release -type f | sort || true
+          echo "=== Directories ==="; find final-release -type d | sort || true
+          echo "=== Files ===";      find final-release -type f | sort || true
 
-      - name: Create combined archive
+      - name: Build combined zip
         run: |
           cd final-release
           zip -r ../non-docker-release.zip .
@@ -65,14 +65,21 @@ jobs:
           path: non-docker-release.zip
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
 
-      - name: Create GitHub Release (optional)
+      - name: Create GitHub Release
         if: ${{ (github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && inputs.create_release) }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ github.run_number }}
-          name: "Architecture as Code v${{ github.run_number }}"
+          tag_name: v${{ github.run_number }}-native
+          name: "Architecture as Code v${{ github.run_number }} – Native Release"
           body: |
             Combined outputs from Book, Whitepapers, Presentations, and Site.
             Commit: ${{ github.sha }}
+          files: |
+            final-release/**/*.pdf
+            final-release/**/*.epub
+            final-release/**/*.docx
+            final-release/**/*.pptx
+            non-docker-release.zip
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
