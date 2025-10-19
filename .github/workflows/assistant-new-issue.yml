@@ -1,4 +1,4 @@
-name: Call OpenAI Assistant (Issues → PR)
+name: Assistant: New Issue
 
 on:
   issues:
@@ -6,105 +6,144 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   issues: write
+  pull-requests: write
 
 jobs:
   propose-changes:
+    name: Propose patch for issue
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Gather context
         id: ctx
         run: |
-          printf '%s' "${{ github.event.issue.title }}" > .gh-issue-title
-          printf '%s' "${{ github.event.issue.body }}"  > .gh-issue-body
+          echo "Gathering repository context..."
+          echo "Issue title: ${{ github.event.issue.title }}"
+          echo "Issue body length: $(echo "${{ github.event.issue.body }}" | wc -c)"
+
+      - name: Validate secrets
+        id: validate
+        run: |
+          if [ -z "${{ secrets.OPENAI_API_KEY }}" ]; then
+            echo "Error: Missing required secret OPENAI_API_KEY."
+            echo "Please add it under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          echo "Secrets validation passed."
 
       - name: Call OpenAI to propose a patch
         id: openai
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ vars.OPENAI_BASE_URL || 'https://api.openai.com' }}
-          # MODEL: gpt-4o-mini
+          MODEL: ${{ vars.OPENAI_MODEL || 'gpt-4o-mini' }}
           PROMPT: |
             You are a careful software maintainer.
-            The repository has just received a GitHub Issue with a request.
-            Task: propose a minimal patch as a unified diff that applies cleanly to the current HEAD.
-            Constraints:
-            - Only output a unified diff starting with 'diff --git'.
-            - Do not include explanations or code fences.
-            - Keep changes small and safe.
+            The repository has just received a GitHub Issue requesting a change.
+            Your task: propose a minimal patch as a unified diff that applies cleanly to the current HEAD.
+            Respond only with the diff — no explanations or commentary.
+            Keep the patch safe, small, and directly related to the issue.
+
             Context (issue title):
-            "${{ steps.ctx.outputs.none || '' }}"
+            "${{ github.event.issue.title }}"
+
             Context (issue body):
-            <<ISSUE_BODY>>
+            ${{ github.event.issue.body }}
         run: |
-          set -euo pipefail
-          issue_body="$(cat .gh-issue-body)"
-          prompt="${PROMPT/<<ISSUE_BODY>>/${issue_body//$'\n'/\\n}}"
+          echo "Preparing API request..."
+          body=$(jq -n --arg model "$MODEL" --arg prompt "$PROMPT" '{
+            model: $model,
+            messages: [{ "role": "user", "content": $prompt }]
+          }')
 
-          # Make request with basic retry/backoff for transient 429/5xx
-          attempt=0
-          max_attempts=3
-          sleep_secs=2
-          while :; do
-            attempt=$((attempt+1))
-            http_code=$(curl -sS -o reply.json -w '%{http_code}' \
-              -X POST "${OPENAI_BASE_URL}/v1/chat/completions" \
-              -H "Authorization: Bearer ${OPENAI_API_KEY}" \
-              -H "Content-Type: application/json" \
-              -d "$(jq -n --arg m "$MODEL" --arg p "$prompt" \
-                    '{model:$m, temperature:0.2, messages:[{role:"user", content:$p}], max_tokens: 2000}')")
-            if [ "$http_code" -ge 200 ] && [ "$http_code" -lt 300 ]; then
-              break
-            fi
-            echo "OpenAI HTTP $http_code (attempt $attempt)" >&2
-            if [ "$http_code" = "401" ]; then
-              echo "Probably a missing/invalid OPENAI_API_KEY." >&2
-              exit 1
-            fi
-            if [ "$attempt" -ge "$max_attempts" ]; then
-              cat reply.json >&2 || true
-              exit 1
-            fi
-            sleep "$sleep_secs"
-            sleep_secs=$((sleep_secs*2))
-          done
+          echo "Sending request to OpenAI..."
+          response=$(curl -s -X POST "$OPENAI_BASE_URL/v1/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d "$body")
 
-          jq -r '.choices[0].message.content' reply.json > patch.diff
-          # sanity: ensure we really got a diff and not prose
-          if ! head -n1 patch.diff | grep -q '^diff --git '; then
-            echo "Model did not return a unified diff. Content follows:" >&2
-            sed -n '1,120p' patch.diff >&2
+          if echo "$response" | jq -e '.error' >/dev/null; then
+            echo "OpenAI API returned an error:"
+            echo "$response" | jq '.error'
             exit 1
           fi
 
-      - name: Validate and apply patch
-        if: ${{ success() }}
-        run: |
-          set -euo pipefail
-          git apply --check patch.diff
-          git apply patch.diff
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-          git config user.name "actions-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git commit -m "Proposed fix from issue #${{ github.event.issue.number }}"
+          echo "Response received."
+          echo "$response" | jq '.choices[0].message.content' -r > patch.diff
 
-      - name: Create pull request (if patch applied)
-        if: ${{ success() && !cancelled() }}
+          echo "Generated patch (first 200 lines shown if long):"
+          head -n 200 patch.diff || true
+
+      - name: Apply proposed patch
+        if: success()
+        run: |
+          if [ -s patch.diff ]; then
+            echo "Validating patch applies cleanly..."
+            git apply --check patch.diff || {
+              echo "Patch does not apply cleanly."
+              exit 1
+            }
+            git apply patch.diff
+            echo "Patch applied successfully."
+          else
+            echo "No patch generated; skipping apply."
+          fi
+
+      - name: Commit and push changes
+        if: success()
+        run: |
+          if [ -s patch.diff ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            branch="issue-${{ github.event.issue.number }}"
+            git checkout -b "$branch"
+            git add .
+            git commit -m "Proposed fix for issue #${{ github.event.issue.number }}"
+            git push origin "$branch"
+            echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          else
+            echo "No changes to commit."
+          fi
+        id: push
+
+      - name: Create pull request
+        if: success() && steps.push.outputs.branch
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
-          title: "Proposed fix for issue #${{ github.event.issue.number }}"
-          body: "Automated patch proposed by OpenAI based on the issue."
-          branch: "auto/issue-${{ github.event.issue.number }}"
-          base: ${{ github.event.repository.default_branch }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.push.outputs.branch }}
+          title: "Proposed fix for issue #${{ github.event.issue.number }} – ${{ github.event.issue.title }}"
+          body: |
+            This PR was automatically generated by the assistant workflow
+            in response to issue #${{ github.event.issue.number }}.
+            Please review the proposed patch below.
+          labels: |
+            automated
+            assistant
+
+      - name: Comment on issue with PR link
+        if: success() && steps.cpr.outputs.pull-request-url
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prUrl = "${{ steps.cpr.outputs.pull-request-url }}";
+            const issueNumber = ${{ github.event.issue.number }};
+            const body = [
+              "Hello! I have created a pull request with a proposed fix:",
+              prUrl,
+              "",
+              "Please review it when you have a moment."
+            ].join("\n");
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body
+            })
