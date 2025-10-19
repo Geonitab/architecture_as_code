@@ -8,7 +8,6 @@ on:
         required: false
         type: string
         default: "3.12"
-      # legacy, lämnas för bakåtkompatibilitet
       src_dir:
         description: (Unused) Kept for compatibility.
         required: false
@@ -49,7 +48,7 @@ jobs:
       - name: Ensure output folders exist
         run: |
           mkdir -p presentations
-          mkdir -p releases/presentation
+          mkdir -p releases/presentations 
 
       - name: Run generator
         shell: bash
