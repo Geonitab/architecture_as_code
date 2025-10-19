@@ -1,8 +1,6 @@
 name: Build All – Orchestrator
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
     inputs:
       create_release:
@@ -71,8 +69,8 @@ jobs:
         if: ${{ (github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && inputs.create_release) }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ github.run_number }}-native
-          name: "Architecture as Code v${{ github.run_number }} – Native Release"
+          tag_name: v${{ github.run_number }}
+          name: "Architecture as Code v${{ github.run_number }}"
           body: |
             Combined outputs from Book, Whitepapers, Presentations, and Site.
             Commit: ${{ github.sha }}
