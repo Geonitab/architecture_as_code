@@ -7,19 +7,21 @@ on:
         description: Python version
         required: false
         type: string
-        default: "3.11"
+        default: "3.12"   # script runs fine on 3.12
+      # The inputs below are legacy and not used by the generator;
+      # kept for compatibility so callers don't break.
       src_dir:
-        description: Directory to scan for slide inputs
+        description: (Unused) Kept for compatibility.
         required: false
         type: string
         default: "docs"
       template_path:
-        description: PPTX template path
+        description: (Unused) Kept for compatibility.
         required: false
         type: string
         default: "templates/presentation-template.pptx"
       out_dir:
-        description: Output directory for generated decks
+        description: (Unused) Kept for compatibility.
         required: false
         type: string
         default: "exports/presentations"
@@ -43,32 +45,36 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          # Keep this lightweight; include the libs generate_presentation.py typically needs
-          pip install python-pptx jinja2 pyyaml markdown
+          pip install PyYAML python-pptx
 
-      - name: Prepare output directory
+      - name: Ensure output folders exist
         run: |
-          mkdir -p "${{ inputs.out_dir }}"
+          mkdir -p presentations
+          mkdir -p releases/presentation
 
       - name: Run generator
         shell: bash
         run: |
           set -euo pipefail
-          # Graceful help/arg check to avoid exit code 2 from argparse
+          # The generator reads from docs/ internally; no --input/--template flags exist.
           python ./generate_presentation.py \
-            --input "${{ inputs.src_dir }}" \
-            --template "${{ inputs.template_path }}" \
-            --output "${{ inputs.out_dir }}"
+            --create-pptx \
+            --release \
+            --output presentations/architecture_as_code_presentation.pptx
 
       - name: Show generated files (debug)
         run: |
-          echo "=== Files ==="
-          find "${{ inputs.out_dir }}" -type f | sort || true
+          echo "=== presentations/ ==="
+          find presentations -maxdepth 2 -type f -print || true
+          echo "=== releases/presentation/ ==="
+          find releases/presentation -maxdepth 2 -type f -print || true
 
       - name: Upload artefact
         uses: actions/upload-artifact@v4
         with:
           name: presentations
-          path: ${{ inputs.out_dir }}/
+          path: |
+            presentations/
+            releases/presentation/
           if-no-files-found: error
           retention-days: 30
