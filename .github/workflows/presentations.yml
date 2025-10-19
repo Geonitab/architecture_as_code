@@ -7,9 +7,8 @@ on:
         description: Python version
         required: false
         type: string
-        default: "3.12"   # script runs fine on 3.12
-      # The inputs below are legacy and not used by the generator;
-      # kept for compatibility so callers don't break.
+        default: "3.12"
+      # legacy, lämnas för bakåtkompatibilitet
       src_dir:
         description: (Unused) Kept for compatibility.
         required: false
@@ -56,7 +55,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # The generator reads from docs/ internally; no --input/--template flags exist.
+          # Kör rätt script (ligger i repo-roten)
           python ./generate_presentation.py \
             --create-pptx \
             --release \
