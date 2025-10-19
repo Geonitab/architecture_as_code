@@ -1,0 +1,80 @@
+name: Build All – Orchestrator
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create GitHub Release from combined artefacts'
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+env:
+  ARTIFACT_RETENTION_DAYS: 30
+
+jobs:
+  book:
+    name: Book
+    uses: ./.github/workflows/book.yml
+
+  whitepapers:
+    name: Whitepapers
+    uses: ./.github/workflows/whitepapers.yml
+
+  presentations:
+    name: Presentations
+    uses: ./.github/workflows/presentations.yml
+
+  site:
+    name: Site
+    uses: ./.github/workflows/site.yml
+
+  finalise:
+    name: Finalise & (optional) Release
+    runs-on: ubuntu-latest
+    needs: [book, whitepapers, presentations, site]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artefacts from all jobs
+        uses: actions/download-artifact@v4
+        with:
+          path: final-release
+
+      - name: Show structure
+        run: |
+          echo "=== Directories ==="
+          find final-release -type d | sort || true
+          echo "=== Files ==="
+          find final-release -type f | sort || true
+
+      - name: Create combined archive
+        run: |
+          cd final-release
+          zip -r ../non-docker-release.zip .
+          cd ..
+          ls -lh non-docker-release.zip
+
+      - name: Upload combined archive artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: non-docker-release-archive
+          path: non-docker-release.zip
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+
+      - name: Create GitHub Release (optional)
+        if: ${{ (github.event_name == 'push') || (github.event_name == 'workflow_dispatch' && inputs.create_release) }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}-native
+          name: "Architecture as Code v${{ github.run_number }} – Native Release"
+          body: |
+            Combined outputs from Book, Whitepapers, Presentations, and Site.
+            Commit: ${{ github.sha }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

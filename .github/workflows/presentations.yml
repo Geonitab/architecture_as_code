@@ -1,0 +1,52 @@
+name: Build Presentations (native)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/generate_presentation.py'
+      - 'presentations/**/*'
+      - 'templates/**/*'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: {}
+  workflow_call: {}
+
+permissions:
+  contents: read
+
+env:
+  ARTIFACT_RETENTION_DAYS: 30
+
+jobs:
+  presentations:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+          python -c "import yaml; print('✅ PyYAML version:', yaml.__version__)"
+      
+      - name: Generate presentations
+        run: |
+          mkdir -p releases/presentation
+          python3 scripts/generate_presentation.py --release || python3 scripts/generate_presentation.py
+
+      - name: Upload presentation artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: presentations
+          path: releases/presentation/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
