@@ -23,34 +23,49 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      # Checkout repository
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Set up Python 3.12
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
           cache: 'pip'
 
-      - name: Install Python deps (if any)
-        if: ${{ hashFiles('requirements.txt') != '' }}
+      # Install Python dependencies (guaranteed to run)
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          # Ensure PyYAML is always available, even if missing from requirements.txt
+          pip install --upgrade PyYAML
 
-      - name: Install Pandoc & TeX toolchain
+      # Install Pandoc, LaTeX, Graphviz, and other rendering dependencies
+      - name: Install Pandoc, TeX & rendering toolchain
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             pandoc \
             texlive-xetex texlive-fonts-recommended texlive-latex-extra \
-            librsvg2-bin graphviz
+            librsvg2-bin graphviz \
+            wkhtmltopdf \
+            libcairo2 \
+            libpango-1.0-0 \
+            libpangocairo-1.0-0 \
+            libpangoft2-1.0-0 \
+            libgdk-pixbuf-2.0-0 \
+            shared-mime-info \
+            fonts-dejavu fonts-liberation
 
+      # Generate whitepapers (build artefacts)
       - name: Generate whitepapers
         run: |
           mkdir -p releases/whitepapers
           python3 generate_whitepapers.py --release || python3 generate_whitepapers.py
 
+      # Upload artefacts to GitHub Actions for download
       - name: Upload whitepaper artefacts
         uses: actions/upload-artifact@v4
         with:
