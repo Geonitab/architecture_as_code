@@ -1,5 +1,5 @@
 # Core components
-pyyml>=6.0
+pyyaml>=6.0.2
 
 # Core build tools
 pip>=24.0
