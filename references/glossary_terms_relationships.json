@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "terms": [
+    {
+      "id": "architecture_as_code",
+      "name": "Architecture as Code",
+      "category": "foundation",
+      "summary": "Codifies architectural intent, constraints, and automation as executable artefacts.",
+      "related": [
+        {
+          "term": "knowledge_graph",
+          "relationship": "documents",
+          "reason": "Knowledge graph inventories codified architecture components and their associations."
+        },
+        {
+          "term": "policy_as_code",
+          "relationship": "enforces",
+          "reason": "Policies are executed against Architecture as Code models to guarantee guardrails."
+        },
+        {
+          "term": "architecture_decision_record",
+          "relationship": "explained_by",
+          "reason": "ADRs provide context for Architecture as Code changes and integrations."
+        }
+      ]
+    },
+    {
+      "id": "infrastructure_as_code",
+      "name": "Infrastructure as Code",
+      "category": "platform",
+      "summary": "Automates provisioning of infrastructure resources through declarative definitions.",
+      "related": [
+        {
+          "term": "architecture_as_code",
+          "relationship": "implements",
+          "reason": "Infrastructure templates implement the platform layer of Architecture as Code models."
+        },
+        {
+          "term": "compliance_automation",
+          "relationship": "validated_by",
+          "reason": "Compliance automation assesses IaC changes against mandated controls."
+        },
+        {
+          "term": "gitops",
+          "relationship": "operated_with",
+          "reason": "GitOps reconciles IaC declarations with live environments."
+        }
+      ]
+    },
+    {
+      "id": "architecture_decision_record",
+      "name": "Architecture Decision Record",
+      "category": "governance",
+      "summary": "Concise record of architectural choices including context, decision, and consequences.",
+      "related": [
+        {
+          "term": "architecture_as_code",
+          "relationship": "context_for",
+          "reason": "ADRs explain why Architecture as Code artefacts exist and how they should evolve."
+        },
+        {
+          "term": "knowledge_graph",
+          "relationship": "indexed_in",
+          "reason": "Knowledge graph entries reference ADRs to make decisions discoverable."
+        },
+        {
+          "term": "continuous_compliance",
+          "relationship": "evidenced_by",
+          "reason": "Compliance narratives cite ADRs to demonstrate design intent and approvals."
+        }
+      ]
+    },
+    {
+      "id": "knowledge_graph",
+      "name": "Knowledge Graph",
+      "category": "insight",
+      "summary": "Connected dataset that maps architectural artefacts, policies, and ownership.",
+      "related": [
+        {
+          "term": "architecture_as_code",
+          "relationship": "captures",
+          "reason": "Knowledge graphs catalogue the structural elements described by Architecture as Code."
+        },
+        {
+          "term": "compliance_automation",
+          "relationship": "feeds",
+          "reason": "Compliance automation queries the graph to locate obligated components and metadata."
+        },
+        {
+          "term": "team_topology",
+          "relationship": "supports",
+          "reason": "Team topology records leverage graph links to understand responsibilities."
+        }
+      ]
+    },
+    {
+      "id": "compliance_automation",
+      "name": "Compliance Automation",
+      "category": "assurance",
+      "summary": "Automated controls that continuously validate architectural and operational adherence.",
+      "related": [
+        {
+          "term": "policy_as_code",
+          "relationship": "enforced_by",
+          "reason": "Policies defined as code are executed within compliance automation pipelines."
+        },
+        {
+          "term": "infrastructure_as_code",
+          "relationship": "evaluates",
+          "reason": "Compliance jobs analyse IaC artefacts before promotion."
+        },
+        {
+          "term": "knowledge_graph",
+          "relationship": "informed_by",
+          "reason": "Control execution is prioritised using ownership and impact data from the knowledge graph."
+        }
+      ]
+    },
+    {
+      "id": "policy_as_code",
+      "name": "Policy as Code",
+      "category": "governance",
+      "summary": "Machine-readable rules that encode organisational guardrails and compliance obligations.",
+      "related": [
+        {
+          "term": "architecture_as_code",
+          "relationship": "protects",
+          "reason": "Policies constrain Architecture as Code deployments to safe, approved patterns."
+        },
+        {
+          "term": "compliance_automation",
+          "relationship": "executed_by",
+          "reason": "Compliance automation runs policy checks as part of every change."
+        },
+        {
+          "term": "architecture_decision_record",
+          "relationship": "referenced_by",
+          "reason": "Policy updates are captured in ADRs to preserve organisational memory."
+        }
+      ]
+    }
+  ]
+}
