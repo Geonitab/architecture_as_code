@@ -1,0 +1,27 @@
+name: Close and Reopen Issues Sequentially
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  close-and-reopen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close and reopen issues one by one
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          open_issues=$(gh issue list --state open --json number --jq '.[].number')
+          for issue in $open_issues; do
+            echo "Closing issue #$issue"
+            gh issue close $issue
+
+            echo "Waiting 3 minutes before reopening issue #$issue"
+            sleep 180
+
+            echo "Reopening issue #$issue"
+            gh issue reopen $issue
+          done
