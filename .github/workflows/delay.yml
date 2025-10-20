@@ -1,0 +1,10 @@
+jobs:
+  random-wait-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Random delay before execution
+        run: |
+          DELAY=$((RANDOM % 601))
+          echo "Sleeping for $DELAY seconds..."
+          sleep "$DELAY"
+          echo "Done waiting, continuing."
