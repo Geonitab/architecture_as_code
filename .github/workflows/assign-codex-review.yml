@@ -22,7 +22,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Add Codex verification comment if missing (BOT_ISSUE)
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.BOT_ISSUE }}
           script: |
