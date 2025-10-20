@@ -162,22 +162,26 @@ jobs:
               echo "Creating branch $branch from $DB"
               git checkout -b "$branch" "origin/$DB"
               git commit --allow-empty -m "chore(codex): initial draft for issue #$num"
+              git push --set-upstream origin "$branch"
             fi
 
-            # Find existing open PR for this head branch
+            # Look for an existing open PR for this head branch
             pr_json="$(gh api repos/${{ github.repository }}/pulls \
               -f state=open -f head='${{ github.repository_owner }}:'"$branch" )"
             pr_number="$(jq -r '.[0].number // empty' <<<"$pr_json")"
 
             if [[ -z "$pr_number" ]]; then
               echo "Creating draft PR for $branch (base=$DB)"
-              pr_number="$(gh api --method POST repos/${{ github.repository }}/pulls \
-                -f head="$branch" \
-                -f base="$DB" \
-                -f draft=true \
-                -f title="WIP: $title (#$num)" \
-                -f body="Closes #$num" \
-                -q .number)"
+              # Use gh pr create (stable flags) then resolve PR number via REST
+              gh pr create \
+                --head "$branch" \
+                --base "$DB" \
+                --draft \
+                --title "WIP: $title (#$num)" \
+                --body "Closes #$num"
+
+              pr_number="$(gh api repos/${{ github.repository }}/pulls \
+                -f state=open -f head='${{ github.repository_owner }}:'"$branch" -q '.[0].number')"
             fi
 
             tmp_targets="$(mktemp)"
