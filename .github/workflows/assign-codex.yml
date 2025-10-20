@@ -84,13 +84,16 @@ jobs:
           gh api graphql -f query='
           query($owner:String!, $repo:String!, $cursor:String) {
             repository(owner:$owner, name:$repo) {
-              issues(first:100, states:OPEN, after:$cursor, orderBy:{field:CREATED_AT, direction:ASC})
-              { pageInfo { hasNextPage endCursor } nodes { number title labels(first:50){ nodes { name } } } }
+              issues(first:100, states:OPEN, after:$cursor, orderBy:{field:CREATED_AT, direction:ASC}) {
+                pageInfo { hasNextPage endCursor }
+                nodes { number title labels(first:50){ nodes { name } } }
+              }
             }
           }' -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" --paginate \
           | jq -r '
             [ .data.repository.issues.nodes[]
-              | select( [(.labels.nodes[]?.name // "") | ascii_downcase] | index("'"${SKIP_LABEL,,}"'") | not )
+              | select( [(.labels.nodes[]?.name // "") | ascii_downcase]
+                        | index("'"${SKIP_LABEL,,}"'") | not )
             ]' > issues.json
         env:
           GH_TOKEN: ${{ github.token }}
@@ -111,7 +114,10 @@ jobs:
                   timelineItems(itemTypes:[CROSS_REFERENCED_EVENT], first:100) {
                     nodes {
                       ... on CrossReferencedEvent {
-                        source { __typename ... on PullRequest { number merged state isCrossRepository } }
+                        source {
+                          __typename
+                          ... on PullRequest { number merged state isCrossRepository }
+                        }
                       }
                     }
                   }
@@ -158,12 +164,22 @@ jobs:
             pr_json="$(gh pr list --head "$branch" --json number,isDraft -q '.[0] // empty' || true)"
             if [[ -z "$pr_json" ]]; then
               echo "Creating draft PR for $branch"
-              pr_number="$(gh pr create --head "$branch" --base "$DB" --draft --title "WIP: $title (#$num)" --body "Closes #$num" --json number -q .number)"
+              pr_number="$(gh pr create \
+                --head "$branch" \
+                --base "$DB" \
+                --draft \
+                --title "WIP: $title (#$num)" \
+                --body "Closes #$num" \
+                --json number -q .number)"
             else
               pr_number="$(jq -r .number <<<"$pr_json")"
               echo "Draft PR already exists: #$pr_number"
             fi
-            jq --arg b "$branch" --argjson n "$pr_number" '. + [{branch:$b, pr_number:$n}]' targets.json | sponge targets.json
+            # append to targets.json without sponge
+            tmp_targets="$(mktemp)"
+            jq --arg b "$branch" --argjson n "$pr_number" \
+              '. + [{branch:$b, pr_number:$n}]' targets.json > "$tmp_targets"
+            mv "$tmp_targets" targets.json
           done
         env:
           GH_TOKEN: ${{ github.token }}
@@ -174,8 +190,12 @@ jobs:
         run: |
           set -euo pipefail
           jq -n '[]' > open_prs.json
-          gh pr list --state open --json number,headRefName | jq '[ .[] | {branch:.headRefName, pr_number:.number} ]' > open_prs.json
-          jq -s 'def uniq_by_branch: unique_by(.branch); (.[0] + .[1]) | uniq_by_branch' targets.json open_prs.json > merged.json
+          gh pr list --state open --json number,headRefName \
+          | jq '[ .[] | {branch:.headRefName, pr_number:.number} ]' > open_prs.json
+          jq -s '
+            def uniq_by_branch: unique_by(.branch);
+            (.[0] + .[1]) | uniq_by_branch
+          ' targets.json open_prs.json > merged.json
           mv merged.json targets.json
         env:
           GH_TOKEN: ${{ github.token }}
