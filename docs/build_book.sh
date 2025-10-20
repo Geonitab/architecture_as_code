@@ -112,6 +112,17 @@ render_cover_from_svg() {
     return 1
 }
 
+# Cleanup helper to remove temporary files created during the build
+cleanup_temp_artifacts() {
+    if [ -n "$PUPPETEER_CONFIG_FILE" ] && [ -f "$PUPPETEER_CONFIG_FILE" ]; then
+        rm -f "$PUPPETEER_CONFIG_FILE"
+    fi
+
+    if [ -n "$SANITIZED_PART_DIR" ] && [ -d "$SANITIZED_PART_DIR" ]; then
+        rm -rf "$SANITIZED_PART_DIR"
+    fi
+}
+
 # Ensure Pandoc is available before continuing
 if ! command -v pandoc >/dev/null 2>&1; then
     if ! ensure_pandoc; then
@@ -210,6 +221,8 @@ fi
 CHROME_FLAGS="${CHROME_FLAGS:-}"
 CHROME_EXECUTABLE=""
 PUPPETEER_CONFIG_FILE=""
+SANITIZED_PART_DIR=""
+trap cleanup_temp_artifacts EXIT
 
 if CHROME_EXECUTABLE=$(find_chrome_executable); then
     export PUPPETEER_EXECUTABLE_PATH="$CHROME_EXECUTABLE"
@@ -236,7 +249,6 @@ if [ -n "$CHROME_FLAGS" ]; then
             echo '  ]'
             echo '}'
         } > "$PUPPETEER_CONFIG_FILE"
-        trap 'if [ -n "$PUPPETEER_CONFIG_FILE" ]; then rm -f "$PUPPETEER_CONFIG_FILE"; fi' EXIT
     fi
 fi
 
@@ -334,10 +346,39 @@ CHAPTER_FILES=(
 # Build a sanitized list that excludes LaTeX-only part markers for non-LaTeX formats
 COVER_PAGE_MARKDOWN="00_front_cover.md"
 NON_LATEX_CHAPTER_FILES=()
+
+SANITIZED_PART_DIR=$(mktemp -d 2>/dev/null)
+if [ ! -d "$SANITIZED_PART_DIR" ]; then
+    echo "❌ Error: Failed to create temporary directory for part introductions"
+    exit 1
+fi
+
 for chapter_file in "${CHAPTER_FILES[@]}"; do
     if [[ $chapter_file == part_*.md ]]; then
+        source_file="$chapter_file"
+        sanitized_file="$SANITIZED_PART_DIR/$chapter_file"
+        awk '
+            BEGIN { printed = 0 }
+            /^\\cleardoublepage/ { next }
+            /^\\part\{/ { next }
+            /^\\setbookpart/ { next }
+            {
+                if (!printed) {
+                    if ($0 ~ /^[[:space:]]*$/) next
+                    printed = 1
+                }
+                print
+            }
+        ' "$source_file" > "$sanitized_file"
+
+        if [ -s "$sanitized_file" ]; then
+            NON_LATEX_CHAPTER_FILES+=("$sanitized_file")
+        else
+            echo "⚠️  Warning: Skipping empty part introduction for non-LaTeX output ($chapter_file)"
+        fi
         continue
     fi
+
     NON_LATEX_CHAPTER_FILES+=("$chapter_file")
 done
 
