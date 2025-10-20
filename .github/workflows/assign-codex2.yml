@@ -11,7 +11,8 @@ permissions:
   pull-requests: write
   issues: write
 
-    # ------------------------------------------------------------
+jobs:
+  # ------------------------------------------------------------
   # Job A – When an issue is opened/reopened:
   #   Create or reuse a draft PR, then run Codex to make changes
   # ------------------------------------------------------------
@@ -24,7 +25,6 @@ permissions:
       ISSUE_TITLE: ${{ github.event.issue.title }}
 
     steps:
-
       - name: Enable debug logging
         run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
 
@@ -32,11 +32,6 @@ permissions:
         uses: actions/checkout@v5
         with:
           persist-credentials: true
-
-      - name: Random delay
-        uses: ./.github/actions/delay
-        with:
-          max_seconds: 600
 
       - name: Determine default branch
         env:
