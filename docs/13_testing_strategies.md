@@ -177,6 +177,20 @@ Environment parity testing ensures infrastructure behaves consistently across de
 
 Chaos engineering principles can be applied to infrastructure testing by systematically introducing failures in test environments to validate resilience and recovery mechanisms. This is particularly valuable for mission-critical systems that require high availability guarantees.
 
+### Chaos Monkey Experiments
+
+Chaos Monkey popularised the idea of terminating running services deliberately to test that distributed systems heal without human intervention. When the failure scenarios are described alongside Infrastructure as Code definitions, teams can rehearse instance loss, network blackouts, or degraded dependencies as codified experiments rather than ad-hoc drills.
+
+Applying Chaos Monkey style experiments through AaC pipelines keeps the blast radius controlled. The failure injection policies, scheduling rules, and opt-in environments live in version control, making every change reviewable and auditable. Observability dashboards and incident runbooks should be linked directly from the experiment definition so responders have immediate context.
+
+Effective guardrails include:
+- Running experiments in lower environments first and promoting only after exit criteria are met.
+- Limiting concurrent fault injection to avoid cascading outages and to preserve customer trust.
+- Broadcasting experiment windows and expected signals so on-call staff know which alerts to treat as part of the exercise.
+- Capturing learnings as Architecture Decision Records when resilience gaps trigger new platform capabilities.
+
+By treating Chaos Monkey activity as a repeatable test, organisations build confidence that automated recovery paths are reliable and that human responders can focus on the genuinely unexpected.
+
 ## Security and Compliance Testing
 
 Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, validation of encryption settings and verification of network security policies.
