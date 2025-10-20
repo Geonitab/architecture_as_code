@@ -44,7 +44,7 @@ jobs:
 
       - name: Set up Node (if package-lock.json exists)
         if: ${{ hashFiles('package-lock.json') != '' || hashFiles('pnpm-lock.yaml') != '' || hashFiles('yarn.lock') != '' }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: ${{ (hashFiles('pnpm-lock.yaml') != '' && 'pnpm') || (hashFiles('yarn.lock') != '' && 'yarn') || 'npm' }}
