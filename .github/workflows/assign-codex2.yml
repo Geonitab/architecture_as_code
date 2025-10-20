@@ -11,13 +11,7 @@ permissions:
   pull-requests: write
   issues: write
 
-
-  jobs:
-    wait:
-      uses: ./.github/workflows/delay.yml
-      with:
-        max_seconds: 600
-  # ------------------------------------------------------------
+    # ------------------------------------------------------------
   # Job A – When an issue is opened/reopened:
   #   Create or reuse a draft PR, then run Codex to make changes
   # ------------------------------------------------------------
@@ -38,6 +32,11 @@ permissions:
         uses: actions/checkout@v5
         with:
           persist-credentials: true
+
+      - name: Random delay
+        uses: ./.github/actions/delay
+        with:
+          max_seconds: 600
 
       - name: Determine default branch
         env:
