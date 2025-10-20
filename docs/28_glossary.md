@@ -107,6 +107,17 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 **Knowledge Graph:** A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery.
 
+## Terms and relationship database
+Keeping the glossary actionable requires more than prose. A structured dataset now lives at `references/glossary_terms_relationships.json` so automation can reason about how concepts reinforce one another. Pipelines use it to surface dependencies in pull requests, populate architecture decision templates, and keep presentation material aligned with the book’s vocabulary.
+
+| Term | Related Concept | Relationship | Why it matters |
+|------|-----------------|--------------|----------------|
+| Architecture as Code | Knowledge Graph | documents | The graph holds the nodes and metadata that describe codified architectural intent. |
+| Architecture Decision Record | Knowledge Graph | indexed_in | ADR identifiers anchor the knowledge graph so every decision is discoverable. |
+| Policy as Code | Architecture as Code | protects | Guardrails encoded as code keep Architecture as Code deployments compliant. |
+| Infrastructure as Code | Compliance Automation | validated_by | Control jobs analyse infrastructure definitions before they reach production. |
+| Compliance Automation | Knowledge Graph | informed_by | Ownership and impact data from the graph determine which controls to run. |
+
 ---
 
 Revisit this glossary as new capabilities emerge. Update both the definitions and the diagram when introducing a novel concept so that every reader can see how their contribution fits into the Architecture as Code ecosystem.
