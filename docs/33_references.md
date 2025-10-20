@@ -58,9 +58,6 @@ This section provides a comprehensive list of all sources and references cited t
 **HashiCorp.** "Policy as Code Overview." https://developer.hashicorp.com/terraform/enterprise/policy-as-code  
 *Referenced in: [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
-**HashiCorp.** "Securing Terraform State." https://developer.hashicorp.com/terraform/cloud-docs/state/securing  
-*Referenced in: [Chapter 9a: Security Fundamentals](09a_security_fundamentals.md), [Chapter 9b: Security Patterns](09b_security_patterns.md)*
-
 **Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/  
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 
@@ -147,8 +144,23 @@ This section provides a comprehensive list of all sources and references cited t
 **Research on emerging technologies.**  
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
+**Google Cloud.** "Store Terraform state in Cloud Storage." Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state  
+*Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
+
+**HashiCorp.** "Backend Type: s3." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/language/settings/backends/s3  
+*Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
+
+**HashiCorp.** "Securing Terraform State." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/cloud-docs/state/securing  
+*Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
+
 **HashiCorp.** "State of Cloud Strategy Survey 2024." HashiCorp, 2024.  
 *Referenced in: [Chapter 17: Organisational Change](17_organizational_change.md), [Chapter 27: Conclusion](27_conclusion.md)*
+
+**HashiCorp.** "Terraform Security Best Practices." HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security  
+*Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
+
+**Microsoft Learn.** "Store Terraform state in Azure Storage." Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage  
+*Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
 **Pulumi.** "Testing Infrastructure as Code Programs." Pulumi Blog, 2024.  
 *Referenced in: [Chapter 13: Testing Strategies](13_testing_strategies.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*

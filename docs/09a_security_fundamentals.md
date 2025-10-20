@@ -199,9 +199,15 @@ s. Privacy by design requirements from GDPR Article 25 demand data minimisation,
 
 ### Protecting Infrastructure as Code state
 
-Infrastructure state files capture live inventories, secrets, and the policy decisions enforced across environments. They must therefore be handled as sensitive artefacts rather than operational by-products. HashiCorp’s *Securing Terraform State* guidance [16] recommends remote backends with enforced locking so that teams cannot download or edit state locally, reducing exposure from unmanaged workstations and eliminating race conditions during deployment.
+Infrastructure state files capture live inventories, secrets, and the policy decisions enforced across environments. They must therefore be treated as sensitive artefacts rather than operational by-products. Authoritative vendor guidance spells out the baseline controls:
 
-Centrally managed storage such as AWS S3 with DynamoDB locking, Azure Storage with Cosmos DB, or Google Cloud Storage should be configured with encryption at rest using customer-managed keys. Key rotation schedules, hardware-backed storage, and explicit grants for break-glass access keep custody of Terraform state aligned with enterprise key management policies. Integrating state access with secrets-management tooling ensures cryptographic material is recorded, rotated, and revoked under the same governance as application secrets [16].
+- **[HashiCorp – “Securing Terraform State” (2024)](https://developer.hashicorp.com/terraform/cloud-docs/state/securing):** instructs teams to store state in remote backends, enable state locking, and avoid local copies to eliminate workstation exposure and race conditions during deployment.
+- **[HashiCorp – “Backend Type: s3” (2024)](https://developer.hashicorp.com/terraform/language/settings/backends/s3):** documents the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that enforce DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state backends.
+- **[HashiCorp – “Terraform Security Best Practices” (2023)](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security):** details the policy guardrails, key management requirements, and secret-handling approaches HashiCorp recommends for enterprise Terraform programmes.
+- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** requires Azure Storage accounts with encryption at rest, Azure AD or SAS-based access control, and blob leases so Terraform operations are serialised and auditable.
+- **[Google Cloud – “Store Terraform state in Cloud Storage” (2024)](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state):** recommends uniform bucket-level access, object versioning, and customer-managed encryption keys to govern Terraform state across Google Cloud estates.
+
+Centrally managed storage such as AWS S3 with DynamoDB locking, Azure Storage with container leases, or Google Cloud Storage with object versioning should therefore be configured with customer-managed encryption keys and monitored for drift. Applying the verified practices above keeps Terraform state aligned with enterprise key management policies, with key rotation schedules, hardware-backed storage, and explicit break-glass procedures captured alongside the associated documentation. Integrating state access with secrets-management tooling ensures cryptographic material is recorded, rotated, and revoked under the same governance as application secrets.
 
 Architecture as Code governance pipelines must verify that every workspace declares an approved remote backend and that encryption, locking, and access policy parameters match organisational standards. Audit trails from Terraform Cloud, S3 access logs, or Azure Monitor should be harvested automatically into governance dashboards so compliance teams can demonstrate adherence to supervisory requirements while monitoring for drift in state management controls.
 
@@ -267,8 +273,11 @@ This chapter has established the fundamental security principles and practices f
 ### Industry references
 - Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
 - Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
-- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024.
-- HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023.
+- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/cloud-docs/state/securing
+- HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security
+- HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/language/settings/backends/s3
+- Microsoft Learn. *Store Terraform state in Azure Storage.* Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage
+- Google Cloud. *Store Terraform state in Cloud Storage.* Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 

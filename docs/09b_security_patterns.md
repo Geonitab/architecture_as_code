@@ -60,7 +60,15 @@ ata during processing—even from cloud operators.
 
 ### Secure Infrastructure as Code state management pattern
 
-State backends hold the canonical inventory for every deployed component and therefore require layered protection. HashiCorp’s *Securing Terraform State* reference [16] mandates remote storage with locking to prevent concurrent writes and to avoid sensitive data being synchronised to developer laptops. Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends with server-side encryption configured for customer-managed keys and object versioning to support forensic recovery.
+State backends hold the canonical inventory for every deployed component and therefore demand layered protection. Authoritative vendor documentation defines the required controls for production programmes:
+
+- **[HashiCorp – “Securing Terraform State” (2024)](https://developer.hashicorp.com/terraform/cloud-docs/state/securing):** mandates remote backends with state locking so sensitive data is never synchronised to developer laptops and concurrent writes are prevented.
+- **[HashiCorp – “Backend Type: s3” (2024)](https://developer.hashicorp.com/terraform/language/settings/backends/s3):** details the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that provide DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state.
+- **[HashiCorp – “Terraform Security Best Practices” (2023)](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security):** codifies HashiCorp's overarching enterprise guidance on secrets management, encryption, and policy guardrails for Terraform estates.
+- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** highlights Azure Storage accounts with encryption at rest, Azure AD or SAS access controls, and blob leases to serialise Terraform operations.
+- **[Google Cloud – “Store Terraform state in Cloud Storage” (2024)](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state):** directs teams to enable uniform bucket-level access, object versioning, and customer-managed encryption keys for Terraform state buckets.
+
+Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends, applying customer-managed encryption keys, DynamoDB or blob lease locking, and object versioning to support forensic recovery. Codifying these controls in Terraform modules and policy-as-code checks ensures every workspace inherits the verified practices rather than bespoke conventions.
 
 Key management policies must define custodianship, rotation cadence, and break-glass processes for decrypting state artefacts. Backends should enforce least-privilege policies so only automation roles can read state while human operators rely on Terraform Cloud or approved pipelines for access. Cataloguing these controls within the Architecture as Code governance layer links state protection to wider compliance commitments; policy-as-code checks can assert that every workspace declares an approved backend, encryption flag, and locking store before plans are applied.
 
@@ -572,8 +580,11 @@ nd accelerated innovation.
 ### Industry references
 - Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
 - Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
-- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024.
-- HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023.
+- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/cloud-docs/state/securing
+- HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security
+- HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/language/settings/backends/s3
+- Microsoft Learn. *Store Terraform state in Azure Storage.* Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage
+- Google Cloud. *Store Terraform state in Cloud Storage.* Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 
