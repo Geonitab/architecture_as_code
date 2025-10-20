@@ -1,10 +1,10 @@
-name: Auto draft PR from issue + Codex auto-fix for PRs linked to issues
+name: Old - Auto draft PR from issue + Codex auto-fix for PRs linked to issues
 
 on:
-  issues:
-    types: [opened, reopened]
-  pull_request:
-    types: [opened, reopened, ready_for_review, synchronize]
+  #issues:
+    #types: [opened, reopened]
+  #pull_request:
+    #types: [opened, reopened, ready_for_review, synchronize]
 
 permissions:
   contents: write
