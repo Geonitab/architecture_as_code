@@ -17,8 +17,8 @@ on:
         default: 3
 
   # Optional schedule (disabled)
-  # schedule:
-  #   - cron: "0 * * * *"
+    schedule:
+       - cron: "0 * * * *"
 
 permissions:
   contents: write
