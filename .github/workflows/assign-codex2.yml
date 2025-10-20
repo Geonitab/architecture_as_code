@@ -11,11 +11,6 @@ permissions:
   pull-requests: write
   issues: write
 
-jobs:
-
-  delay:
-    name: delay
-    uses: ./.github/workflows/delay.yml
   # ------------------------------------------------------------
   # Job A – When an issue is opened/reopened:
   #   Create or reuse a draft PR, then run Codex to make changes
@@ -29,6 +24,10 @@ jobs:
       ISSUE_TITLE: ${{ github.event.issue.title }}
 
     steps:
+
+      - name: delay
+        uses: ./.github/workflows/delay.yml
+
       - name: Enable debug logging
         run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
 
