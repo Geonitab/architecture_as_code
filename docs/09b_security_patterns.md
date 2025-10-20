@@ -62,10 +62,11 @@ ata during processing—even from cloud operators.
 
 State backends hold the canonical inventory for every deployed component and therefore demand layered protection. Authoritative vendor documentation defines the required controls for production programmes:
 
-- **HashiCorp – “Securing Terraform State” (2024):** mandates remote backends with state locking so sensitive data is never synchronised to developer laptops and concurrent writes are prevented.
-- **HashiCorp – “Backend Type: s3” (2024):** details the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that provide DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state.
-- **Microsoft Learn – “Store Terraform state in Azure Storage” (2024):** highlights Azure Storage accounts with encryption at rest, Azure AD or SAS access controls, and blob leases to serialise Terraform operations.
-- **Google Cloud – “Store Terraform state in Cloud Storage” (2024):** directs teams to enable uniform bucket-level access, object versioning, and customer-managed encryption keys for Terraform state buckets.
+- **[HashiCorp – “Securing Terraform State” (2024)](https://developer.hashicorp.com/terraform/cloud-docs/state/securing):** mandates remote backends with state locking so sensitive data is never synchronised to developer laptops and concurrent writes are prevented.
+- **[HashiCorp – “Backend Type: s3” (2024)](https://developer.hashicorp.com/terraform/language/settings/backends/s3):** details the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that provide DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state.
+- **[HashiCorp – “Terraform Security Best Practices” (2023)](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security):** codifies HashiCorp's overarching enterprise guidance on secrets management, encryption, and policy guardrails for Terraform estates.
+- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** highlights Azure Storage accounts with encryption at rest, Azure AD or SAS access controls, and blob leases to serialise Terraform operations.
+- **[Google Cloud – “Store Terraform state in Cloud Storage” (2024)](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state):** directs teams to enable uniform bucket-level access, object versioning, and customer-managed encryption keys for Terraform state buckets.
 
 Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends, applying customer-managed encryption keys, DynamoDB or blob lease locking, and object versioning to support forensic recovery. Codifying these controls in Terraform modules and policy-as-code checks ensures every workspace inherits the verified practices rather than bespoke conventions.
 
