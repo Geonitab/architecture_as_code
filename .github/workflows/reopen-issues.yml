@@ -1,4 +1,4 @@
-name: Close and Reopen Issues Sequentially
+name: Reopen Issues Sequentially
 
 on:
   workflow_dispatch:
@@ -10,6 +10,9 @@ jobs:
   close-and-reopen:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repository
+        uses: actions/checkout@v3
+
       - name: Close and reopen issues one by one
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
