@@ -146,13 +146,16 @@ jobs:
           set -euo pipefail
           DB="${{ steps.default-branch.outputs.name }}"
           git fetch origin "$DB"
-          git checkout "$DB"
+          # ensure a local branch tracking the remote
+          git checkout -B "$DB" "origin/$DB"
           jq -n '[]' > targets.json
+
           jq -c '.[]' remaining.json | while read -r issue; do
             num="$(jq -r .number <<<"$issue")"
             title="$(jq -r .title <<<"$issue")"
             slug="$(tr -cd '[:alnum:]- ' <<<"$title" | tr '[:upper:] ' '[:lower:]-' | sed -E 's/-+/-/g;s/^-+//;s/-+$//' | cut -c1-40)"
             branch="${CODEX_PREFIX}${num}-${slug}"
+
             if git ls-remote --exit-code --heads origin "refs/heads/$branch" >/dev/null 2>&1; then
               echo "Reusing branch $branch"
               git fetch origin "$branch"
@@ -161,21 +164,23 @@ jobs:
               git checkout -b "$branch" "origin/$DB"
               git commit --allow-empty -m "chore(codex): initial draft for issue #$num"
             fi
-            pr_json="$(gh pr list --head "$branch" --json number,isDraft -q '.[0] // empty' || true)"
-            if [[ -z "$pr_json" ]]; then
+
+            # Find existing open PR for this head branch (REST)
+            pr_json="$(gh api repos/${{ github.repository }}/pulls \
+              -f state=open -f head='${{ github.repository_owner }}:'"$branch" )"
+            pr_number="$(jq -r '.[0].number // empty' <<<"$pr_json")"
+
+            if [[ -z "$pr_number" ]]; then
               echo "Creating draft PR for $branch"
-              pr_number="$(gh pr create \
-                --head "$branch" \
-                --base "$DB" \
-                --draft \
-                --title "WIP: $title (#$num)" \
-                --body "Closes #$num" \
-                --json number -q .number)"
-            else
-              pr_number="$(jq -r .number <<<"$pr_json")"
-              echo "Draft PR already exists: #$pr_number"
+              pr_number="$(gh api --method POST repos/${{ github.repository }}/pulls \
+                -f head="$branch" \
+                -f base="$DB" \
+                -f draft=true \
+                -f title="WIP: $title (#$num)" \
+                -f body="Closes #$num" \
+                -q .number)"
             fi
-            # append to targets.json without sponge
+
             tmp_targets="$(mktemp)"
             jq --arg b "$branch" --argjson n "$pr_number" \
               '. + [{branch:$b, pr_number:$n}]' targets.json > "$tmp_targets"
@@ -190,8 +195,8 @@ jobs:
         run: |
           set -euo pipefail
           jq -n '[]' > open_prs.json
-          gh pr list --state open --json number,headRefName \
-          | jq '[ .[] | {branch:.headRefName, pr_number:.number} ]' > open_prs.json
+          gh api repos/${{ github.repository }}/pulls -f state=open \
+            | jq '[ .[] | {branch:.head.ref, pr_number:.number} ]' > open_prs.json
           jq -s '
             def uniq_by_branch: unique_by(.branch);
             (.[0] + .[1]) | uniq_by_branch
@@ -236,15 +241,15 @@ jobs:
         run: |
           set -euo pipefail
           NUM="${{ matrix.target.pr_number }}"
-          DATA="$(gh pr view "$NUM" --json number,title,body,headRefName,baseRefName,baseRefOid,headRefOid)"
+          DATA="$(gh api repos/${{ github.repository }}/pulls/$NUM)"
           echo "title=$(jq -r .title <<<"$DATA")" >> "$GITHUB_OUTPUT"
           echo "body<<EOF" >> "$GITHUB_OUTPUT"
           jq -r .body <<<"$DATA" >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"
-          echo "base=$(jq -r .baseRefName <<<"$DATA")" >> "$GITHUB_OUTPUT"
-          echo "head=$(jq -r .headRefName <<<"$DATA")" >> "$GITHUB_OUTPUT"
-          echo "base_sha=$(jq -r .baseRefOid <<<"$DATA")" >> "$GITHUB_OUTPUT"
-          echo "head_sha=$(jq -r .headRefOid <<<"$DATA")" >> "$GITHUB_OUTPUT"
+          echo "base=$(jq -r .base.ref <<<"$DATA")" >> "$GITHUB_OUTPUT"
+          echo "head=$(jq -r .head.ref <<<"$DATA")" >> "$GITHUB_OUTPUT"
+          echo "base_sha=$(jq -r .base.sha <<<"$DATA")" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$(jq -r .head.sha <<<"$DATA")" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -313,7 +318,7 @@ jobs:
           NUM="${{ matrix.target.pr_number }}"
           gh api --method GET repos/${{ github.repository }}/labels/${CODEX_LABEL} >/dev/null 2>&1 || \
           gh api --method POST repos/${{ github.repository }}/labels -f name="${CODEX_LABEL}" -f description='Changes produced by Codex automation'
-          gh pr edit "$NUM" --add-label "${CODEX_LABEL}"
+          gh api --method PATCH repos/${{ github.repository }}/issues/$NUM -f labels='["'${CODEX_LABEL}'"]' >/dev/null
           gh pr ready "$NUM"
         env:
           GH_TOKEN: ${{ github.token }}
@@ -338,7 +343,7 @@ jobs:
         run: |
           set -euo pipefail
           NUM="${{ github.event.pull_request.number }}"
-          DATA="$(gh pr view "$NUM" --json number,title,body,headRefName,baseRefName)"
+          DATA="$(gh api repos/${{ github.repository }}/pulls/$NUM)"
           echo "title=$(jq -r .title <<<"$DATA")" >> "$GITHUB_OUTPUT"
           echo "body<<EOF" >> "$GITHUB_OUTPUT"
           jq -r .body <<<"$DATA" >> "$GITHUB_OUTPUT"
@@ -406,7 +411,7 @@ jobs:
           NUM="${{ github.event.pull_request.number }}"
           gh api --method GET repos/${{ github.repository }}/labels/${CODEX_LABEL} >/dev/null 2>&1 || \
           gh api --method POST repos/${{ github.repository }}/labels -f name="${CODEX_LABEL}" -f description='Changes produced by Codex automation'
-          gh pr edit "$NUM" --add-label "${CODEX_LABEL}"
+          gh api --method PATCH repos/${{ github.repository }}/issues/$NUM -f labels='["'${CODEX_LABEL}'"]' >/dev/null
           gh pr ready "$NUM"
         env:
           GH_TOKEN: ${{ github.token }}
