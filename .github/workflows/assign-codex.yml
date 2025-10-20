@@ -29,7 +29,7 @@ jobs:
         run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: true
 
@@ -97,7 +97,7 @@ jobs:
       # --- Run Codex immediately on the created PR ---
 
       - name: Checkout PR head branch (writes allowed)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ env.BRANCH }}
           persist-credentials: true
@@ -214,7 +214,7 @@ jobs:
 
     steps:
       - name: Checkout PR head branch (writes allowed)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/head
           persist-credentials: true

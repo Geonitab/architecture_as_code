@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout PR head branch (writes allowed)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/head
           persist-credentials: true
