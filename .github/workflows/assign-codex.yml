@@ -144,9 +144,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          DB="${{ steps.default-branch.outputs.name }}"
+          export DB="${{ steps.default-branch.outputs.name }}"
           git fetch origin "$DB"
-          # ensure a local branch tracking the remote
           git checkout -B "$DB" "origin/$DB"
           jq -n '[]' > targets.json
 
@@ -165,13 +164,13 @@ jobs:
               git commit --allow-empty -m "chore(codex): initial draft for issue #$num"
             fi
 
-            # Find existing open PR for this head branch (REST)
+            # Find existing open PR for this head branch
             pr_json="$(gh api repos/${{ github.repository }}/pulls \
               -f state=open -f head='${{ github.repository_owner }}:'"$branch" )"
             pr_number="$(jq -r '.[0].number // empty' <<<"$pr_json")"
 
             if [[ -z "$pr_number" ]]; then
-              echo "Creating draft PR for $branch"
+              echo "Creating draft PR for $branch (base=$DB)"
               pr_number="$(gh api --method POST repos/${{ github.repository }}/pulls \
                 -f head="$branch" \
                 -f base="$DB" \
