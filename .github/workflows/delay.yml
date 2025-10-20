@@ -1,3 +1,5 @@
+name: delay
+
 jobs:
   random-wait-job:
     runs-on: ubuntu-latest
