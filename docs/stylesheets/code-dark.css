@@ -45,6 +45,7 @@
   word-wrap: break-word;
   word-break: break-word;
   overflow-wrap: break-word;
+  white-space: normal;
   hyphens: auto;
 }
 
@@ -89,6 +90,7 @@
   word-wrap: break-word;
   word-break: break-word;
   overflow-wrap: break-word;
+  white-space: normal;
   hyphens: auto;
 }
 
