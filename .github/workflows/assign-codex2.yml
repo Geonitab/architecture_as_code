@@ -168,7 +168,7 @@ jobs:
         if: steps.linked_issue_in_job_a.outputs.has == 'true'
         id: run_codex_a
         uses: openai/codex-action@v1
-        timeout-minutes: 10
+        timeout-minutes: 20
         continue-on-error: true
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -275,7 +275,7 @@ jobs:
         if: steps.linked.outputs.has == 'true'
         id: run_codex
         uses: openai/codex-action@v1
-        timeout-minutes: 10
+        timeout-minutes: 20
         continue-on-error: true
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
