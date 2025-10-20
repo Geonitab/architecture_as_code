@@ -1,13 +1,10 @@
 name: Codex Auto PRs
 
 on:
-  # Issue/PR events
   issues:
     types: [opened, reopened]
   pull_request:
     types: [opened, reopened, ready_for_review, synchronize]
-
-  # Manual trigger
   workflow_dispatch:
     inputs:
       parallel_limit:
@@ -15,52 +12,35 @@ on:
         type: number
         required: false
         default: 3
-
-  # Optional schedule (disabled)
-    schedule:
-       - cron: "0 * * * *"
+  # schedule:
+  #   - cron: "0 * * * *"
 
 permissions:
   contents: write
   pull-requests: write
   issues: write
 
-# Global concurrency to prevent overlapping Codex waves from *different* runs
-# while still allowing matrix parallelism within a single run.
 concurrency:
   group: codex-global
   cancel-in-progress: false
 
 env:
-  # The label we apply when Codex made real changes
   CODEX_LABEL: codex
-  # Branch naming prefix
   CODEX_PREFIX: codex/issue-
-  # Skip issues that carry this label (case-insensitive)
   SKIP_LABEL: discussion
-  # Default max parallel jobs (fallback)
   DEFAULT_PARALLEL: 3
 
 jobs:
-  # ────────────────────────────────────────────────────────────────────────────
-  # Job 0 — Build the work list (only for non-PR events)
-  # ────────────────────────────────────────────────────────────────────────────
   prepare_targets:
     if: github.event_name != 'pull_request'
-    name: Prepare targets
     runs-on: ubuntu-latest
-
-    # Per-item concurrency so two prepare phases for the same item never clash
     concurrency:
       group: >-
-        prepare-${{ github.event_name }}-${
-          { github.event.issue.number || github.run_id }}
+        prepare-${{ github.event_name }}-${{ github.event.issue.number || github.run_id }}
       cancel-in-progress: false
-
     outputs:
       targets: ${{ steps.set-matrix.outputs.targets }}
       parallel: ${{ steps.compute-parallel.outputs.parallel }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -88,7 +68,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          # Prefer event payload; fall back to API
           DB="${{ github.event.repository.default_branch }}"
           if [[ -z "${DB:-}" ]]; then
             DB="$(gh api repos/${{ github.repository }} -q .default_branch)"
@@ -101,29 +80,18 @@ jobs:
         id: collect-issues
         shell: bash
         run: |
-          set -euo pipefail
           jq -n '[]' > issues.json
-          # Pull all open issues (not PRs) and filter out 'discussion' (case-insensitive)
           gh api graphql -f query='
-            query($owner:String!, $repo:String!, $cursor:String) {
-              repository(owner:$owner, name:$repo) {
-                issues(first:100, states:OPEN, after:$cursor, orderBy:{field:CREATED_AT, direction:ASC}) {
-                  pageInfo { hasNextPage endCursor }
-                  nodes {
-                    number
-                    title
-                    labels(first:50){ nodes { name } }
-                  }
-                }
-              }
-            }' -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" --paginate \
+          query($owner:String!, $repo:String!, $cursor:String) {
+            repository(owner:$owner, name:$repo) {
+              issues(first:100, states:OPEN, after:$cursor, orderBy:{field:CREATED_AT, direction:ASC})
+              { pageInfo { hasNextPage endCursor } nodes { number title labels(first:50){ nodes { name } } } }
+            }
+          }' -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" --paginate \
           | jq -r '
-              [ .data.repository.issues.nodes[]
-                | select(
-                    [(.labels.nodes[]?.name // "") | ascii_downcase] 
-                    | index("'"${SKIP_LABEL,,}"'") | not
-                  )
-              ]' > issues.json
+            [ .data.repository.issues.nodes[]
+              | select( [(.labels.nodes[]?.name // "") | ascii_downcase] | index("'"${SKIP_LABEL,,}"'") | not )
+            ]' > issues.json
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -136,46 +104,32 @@ jobs:
           tmp="$(mktemp)"
           jq -c '.[]' remaining.json | while read -r issue; do
             num="$(jq -r .number <<<"$issue")"
-            # Look for closing cross-references that are merged PRs
             q='
-              query($owner:String!, $repo:String!, $num:Int!) {
-                repository(owner:$owner, name:$repo) {
-                  issue(number:$num) {
-                    timelineItems(itemTypes:[CROSS_REFERENCED_EVENT], first:100) {
-                      nodes {
-                        ... on CrossReferencedEvent {
-                          source {
-                            __typename
-                            ... on PullRequest {
-                              number
-                              merged
-                              state
-                              isCrossRepository
-                            }
-                          }
-                        }
+            query($owner:String!, $repo:String!, $num:Int!) {
+              repository(owner:$owner, name:$repo) {
+                issue(number:$num) {
+                  timelineItems(itemTypes:[CROSS_REFERENCED_EVENT], first:100) {
+                    nodes {
+                      ... on CrossReferencedEvent {
+                        source { __typename ... on PullRequest { number merged state isCrossRepository } }
                       }
                     }
                   }
                 }
-              }'
+              }
+            }'
             data="$(gh api graphql -f query="$q" -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" -F num="$num")"
             hasMerged="$(jq '[.data.repository.issue.timelineItems.nodes[]
-                                | select(.source.__typename=="PullRequest")
-                                | .source
-                                | select(.merged==true or .state=="MERGED")] | length > 0' <<<"$data")"
+              | select(.source.__typename=="PullRequest")
+              | .source
+              | select(.merged==true or .state=="MERGED")] | length > 0' <<<"$data")"
             if [[ "$hasMerged" == "true" ]]; then
               echo "Issue #$num already has a merged PR; skipping."
               continue
             fi
             echo "$issue" >> "$tmp"
           done
-          # Rebuild JSON array
-          if [[ -s "$tmp" ]]; then
-            jq -s '.' "$tmp" > remaining.json
-          else
-            jq -n '[]' > remaining.json
-          fi
+          if [[ -s "$tmp" ]]; then jq -s '.' "$tmp" > remaining.json; else jq -n '[]' > remaining.json; fi
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -187,17 +141,12 @@ jobs:
           DB="${{ steps.default-branch.outputs.name }}"
           git fetch origin "$DB"
           git checkout "$DB"
-
           jq -n '[]' > targets.json
-
           jq -c '.[]' remaining.json | while read -r issue; do
             num="$(jq -r .number <<<"$issue")"
             title="$(jq -r .title <<<"$issue")"
-            # safe slug from title
             slug="$(tr -cd '[:alnum:]- ' <<<"$title" | tr '[:upper:] ' '[:lower:]-' | sed -E 's/-+/-/g;s/^-+//;s/-+$//' | cut -c1-40)"
             branch="${CODEX_PREFIX}${num}-${slug}"
-
-            # Reuse branch if exists, else create from default with empty commit
             if git ls-remote --exit-code --heads origin "refs/heads/$branch" >/dev/null 2>&1; then
               echo "Reusing branch $branch"
               git fetch origin "$branch"
@@ -205,28 +154,16 @@ jobs:
               echo "Creating branch $branch from $DB"
               git checkout -b "$branch" "origin/$DB"
               git commit --allow-empty -m "chore(codex): initial draft for issue #$num"
-              git push -u origin "$branch"
             fi
-
-            # Ensure a draft PR exists for this branch
             pr_json="$(gh pr list --head "$branch" --json number,isDraft -q '.[0] // empty' || true)"
             if [[ -z "$pr_json" ]]; then
               echo "Creating draft PR for $branch"
-              pr_number="$(gh pr create \
-                --head "$branch" \
-                --base "$DB" \
-                --draft \
-                --title "WIP: $title (#$num)" \
-                --body "Closes #$num" \
-                --json number -q .number)"
+              pr_number="$(gh pr create --head "$branch" --base "$DB" --draft --title "WIP: $title (#$num)" --body "Closes #$num" --json number -q .number)"
             else
               pr_number="$(jq -r .number <<<"$pr_json")"
               echo "Draft PR already exists: #$pr_number"
             fi
-
-            # Add to targets
-            jq --arg b "$branch" --argjson n "$pr_number" \
-               '. + [{branch:$b, pr_number:$n}]' targets.json | sponge targets.json
+            jq --arg b "$branch" --argjson n "$pr_number" '. + [{branch:$b, pr_number:$n}]' targets.json | sponge targets.json
           done
         env:
           GH_TOKEN: ${{ github.token }}
@@ -237,14 +174,8 @@ jobs:
         run: |
           set -euo pipefail
           jq -n '[]' > open_prs.json
-          gh pr list --state open --json number,headRefName \
-            | jq '[ .[] | {branch:.headRefName, pr_number:.number} ]' > open_prs.json
-          # Merge with existing targets, de-duplicating by branch
-          jq -s '
-            def uniq_by_branch:
-              unique_by(.branch);
-            (.[0] + .[1]) | uniq_by_branch
-          ' targets.json open_prs.json > merged.json
+          gh pr list --state open --json number,headRefName | jq '[ .[] | {branch:.headRefName, pr_number:.number} ]' > open_prs.json
+          jq -s 'def uniq_by_branch: unique_by(.branch); (.[0] + .[1]) | uniq_by_branch' targets.json open_prs.json > merged.json
           mv merged.json targets.json
         env:
           GH_TOKEN: ${{ github.token }}
@@ -259,26 +190,19 @@ jobs:
           echo "Prepared targets:"
           echo "$T" | jq -r '.[] | "- \(.branch) (PR #\(.pr_number))"'
 
-  # ────────────────────────────────────────────────────────────────────────────
-  # Job 1 — Run Codex for each target produced by Job 0
-  # ────────────────────────────────────────────────────────────────────────────
   codex_on_targets:
     name: Codex on targets
     needs: [prepare_targets]
     if: needs.prepare_targets.outputs.targets != '[]' && needs.prepare_targets.outputs.targets != ''
     runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false
-      max-parallel: ${{ fromJSON(needs.prepare_targets.outputs.parallel) }}
       matrix:
+        max-parallel: ${{ fromJSON(needs.prepare_targets.outputs.parallel) }}
         target: ${{ fromJSON(needs.prepare_targets.outputs.targets) }}
-
-    # Per-item concurrency (branch-based), *in addition* to the global guard above.
     concurrency:
       group: codex-${{ matrix.target.branch }}
       cancel-in-progress: false
-
     steps:
       - name: Checkout PR branch
         uses: actions/checkout@v4
@@ -308,28 +232,21 @@ jobs:
         id: linked
         shell: bash
         run: |
-          set -euo pipefail
           NUM="${{ matrix.target.pr_number }}"
           q='
-            query($owner:String!, $repo:String!, $num:Int!){
-              repository(owner:$owner, name:$repo){
-                pullRequest(number:$num){
-                  closingIssuesReferences(first:10){
-                    nodes { number title }
-                  }
-                }
+          query($owner:String!, $repo:String!, $num:Int!){
+            repository(owner:$owner, name:$repo){
+              pullRequest(number:$num){
+                closingIssuesReferences(first:10){ nodes { number title } }
               }
             }
-          '
+          }'
           data="$(gh api graphql -f query="$q" -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" -F num="$NUM")"
           list="$(jq '[.data.repository.pullRequest.closingIssuesReferences.nodes[]?.number] // []' <<<"$data")"
           if [[ "$(jq 'length' <<<"$list")" -eq 0 ]]; then
-            # fallback: parse branch '.../issue-123-...'
             b="${{ matrix.target.branch }}"
             issue_num="$(grep -Eo 'issue-([0-9]+)' <<<"$b" | head -1 | cut -d- -f2 || true)"
-            if [[ -n "${issue_num:-}" ]]; then
-              list="[$issue_num]"
-            fi
+            if [[ -n "${issue_num:-}" ]]; then list="[$issue_num]"; fi
           fi
           echo "issues=$list" >> "$GITHUB_OUTPUT"
           echo "Linked issues: $list"
@@ -337,19 +254,19 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Run Codex to apply minimal, targeted changes
-        uses: openai/codex-action@v1
         id: codex
+        uses: openai/codex-action@v1
         with:
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
-          # The action should modify files in-place according to this prompt
-          prompt: |
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt: ${{ env.CODEX_PROMPT }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CODEX_PROMPT: |
             You are an automated contributor on a GitHub Pull Request.
             Make the smallest, targeted changes necessary to resolve the linked issue(s): ${{ steps.linked.outputs.issues }}.
             Keep scope tight; update tests and docs as needed.
             Do not introduce unrelated refactors.
             After applying changes, print a concise "Change summary:" list of what you touched.
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Commit & push if changed
         id: commit
@@ -366,6 +283,7 @@ jobs:
           else
             echo "No changes from Codex."
             echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Ensure label exists & mark ready if changed
         if: steps.commit.outputs.changed == 'true'
@@ -373,36 +291,20 @@ jobs:
         run: |
           set -euo pipefail
           NUM="${{ matrix.target.pr_number }}"
-          # Ensure label exists
-          gh api \
-            --method GET \
-            repos/${{ github.repository }}/labels/${CODEX_LABEL} \
-            >/dev/null 2>&1 || \
-          gh api \
-            --method POST \
-            repos/${{ github.repository }}/labels \
-            -f name="${CODEX_LABEL}" \
-            -f description='Changes produced by Codex automation'
-
-          # Apply label and mark ready
+          gh api --method GET repos/${{ github.repository }}/labels/${CODEX_LABEL} >/dev/null 2>&1 || \
+          gh api --method POST repos/${{ github.repository }}/labels -f name="${CODEX_LABEL}" -f description='Changes produced by Codex automation'
           gh pr edit "$NUM" --add-label "${CODEX_LABEL}"
           gh pr ready "$NUM"
         env:
           GH_TOKEN: ${{ github.token }}
 
-  # ────────────────────────────────────────────────────────────────────────────
-  # Job 2 — React directly to PR events with a Codex pass
-  # ────────────────────────────────────────────────────────────────────────────
   pr_codex:
     if: github.event_name == 'pull_request'
     name: Codex on PR event
     runs-on: ubuntu-latest
-
-    # Per-PR concurrency
     concurrency:
       group: codex-pr-${{ github.event.pull_request.number }}
       cancel-in-progress: false
-
     steps:
       - name: Checkout PR branch
         uses: actions/checkout@v4
@@ -431,16 +333,13 @@ jobs:
           set -euo pipefail
           NUM="${{ github.event.pull_request.number }}"
           q='
-            query($owner:String!, $repo:String!, $num:Int!){
-              repository(owner:$owner, name:$repo){
-                pullRequest(number:$num){
-                  closingIssuesReferences(first:10){
-                    nodes { number title }
-                  }
-                }
+          query($owner:String!, $repo:String!, $num:Int!){
+            repository(owner:$owner, name:$repo){
+              pullRequest(number:$num){
+                closingIssuesReferences(first:10){ nodes { number title } }
               }
             }
-          '
+          }'
           data="$(gh api graphql -f query="$q" -F owner="${{ github.repository_owner }}" -F repo="${{ github.event.repository.name }}" -F num="$NUM")"
           list="$(jq '[.data.repository.pullRequest.closingIssuesReferences.nodes[]?.number] // []' <<<"$data")"
           echo "issues=$list" >> "$GITHUB_OUTPUT"
@@ -449,17 +348,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Run Codex to refine or complete the PR
-        uses: openai/codex-action@v1
         id: codex
+        uses: openai/codex-action@v1
         with:
-          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
-          prompt: |
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt: ${{ env.CODEX_PROMPT }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CODEX_PROMPT: |
             This PR should address issues: ${{ steps.linked.outputs.issues }}.
             Improve or complete the implementation with minimal, targeted edits.
             Keep changes scoped; update tests/docs as needed.
             Output a concise "Change summary:" of modifications.
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Commit & push if changed
         id: commit
@@ -476,6 +376,7 @@ jobs:
           else
             echo "No changes from Codex."
             echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Ensure label exists & mark ready if changed
         if: steps.commit.outputs.changed == 'true'
@@ -483,15 +384,8 @@ jobs:
         run: |
           set -euo pipefail
           NUM="${{ github.event.pull_request.number }}"
-          gh api \
-            --method GET \
-            repos/${{ github.repository }}/labels/${CODEX_LABEL} \
-            >/dev/null 2>&1 || \
-          gh api \
-            --method POST \
-            repos/${{ github.repository }}/labels \
-            -f name="${CODEX_LABEL}" \
-            -f description='Changes produced by Codex automation'
+          gh api --method GET repos/${{ github.repository }}/labels/${CODEX_LABEL} >/dev/null 2>&1 || \
+          gh api --method POST repos/${{ github.repository }}/labels -f name="${CODEX_LABEL}" -f description='Changes produced by Codex automation'
           gh pr edit "$NUM" --add-label "${CODEX_LABEL}"
           gh pr ready "$NUM"
         env:
