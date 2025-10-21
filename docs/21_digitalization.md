@@ -204,29 +204,40 @@ As a licensed financial institution, Capital One must follow strict regulatory r
 
 Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers whilst ensuring data sovereignty and regulatory compliance across EU member states.
 
+Sovereignty guardrails described in Chapter 15 and the Future Trends chapter demand explicit provider selection policies. Platform teams should codify which services qualify as "EU-trusted"—covering both EU-headquartered providers and EU-specific offerings from global hyperscalers—and enforce those decisions through policy-as-code. This keeps residency, lawful access controls, and the GAIA-X or EU Cloud Code of Conduct commitments consistent across delivery teams.
+
 **AWS Global Infrastructure:**
-Amazon Web Services operates multiple regions within the EU to meet data residency requirements:
+Amazon Web Services operates multiple regions within the EU to meet data residency requirements and has announced the AWS European Sovereign Cloud to provide EU-only operations with local staff oversight:
 
 - Physical data sovereignty within EU regional boundaries
-- Low-latency connectivity across EU availability zones
+- Low-latency connectivity across EU availability zones and Local Zones
 - Comprehensive compliance certifications including ISO 27001, SOC 2, and PCI-DSS
-- Dedicated support with European expertise and GDPR compliance guidance
+- Dedicated support with European expertise, GDPR compliance guidance, and the upcoming sovereign controls programme
 
 **Microsoft Azure:**
-Microsoft has invested significantly in cloud infrastructure with extensive European coverage:
+Microsoft has invested significantly in cloud infrastructure with extensive European coverage and the Azure EU Data Boundary programme:
 
 - Azure regions across multiple EU member states for data residency
 - Integration with enterprise identity providers
-- Compliance with EU governance standards and EDPB guidelines
+- Compliance with EU governance standards, EDPB guidelines, and Azure confidential computing controls
 - Partnership ecosystem with European system integrators
 
 **Google Cloud Platform:**
-Google operates multiple cloud regions within the EU emphasising:
+Google operates multiple cloud regions within the EU, backed by the Sovereign Controls programme delivered with partners such as T-Systems and Thales:
 
 - EU-based data processing for GDPR compliance across all member states
 - Carbon-neutral operations aligned with EU sustainability goals
 - Advanced AI/ML capabilities for research and innovation
 - Integration with open-source ecosystems
+
+**European Sovereign Cloud Providers:**
+European-native providers deliver offerings that satisfy strict localisation requirements and public sector procurement rules:
+
+- **OVHcloud** provides GAIA-X aligned services with full EU legal jurisdiction and SecNumCloud certification for French public sector workloads.
+- **Scaleway** delivers sovereign cloud regions, Bare Metal, and Kubernetes platforms operated entirely within the EU with transparent supply-chain disclosure.
+- **Open Telekom Cloud** combines Deutsche Telekom operations with T-Systems sovereign controls, ensuring German and broader EU data residency for regulated industries.
+
+Architecture as Code pipelines should allow these providers to be selected as first-class modules. Policy-as-code guardrails can then ensure that workloads default to an EU-native provider when contractual or regulatory obligations prohibit the use of global hyperscalers, or verify that hyperscaler services are constrained to their EU sovereign offerings.
 
 ## Digital Transformation in Enterprises
 
@@ -290,6 +301,8 @@ module "azure_infrastructure" {
   source = "./modules/azure"
   tags   = local.common_tags
 }
+
+# Optional: add EU-native providers (e.g., OVHcloud, Scaleway) via additional modules
 ```
 
 ### Automated Compliance Pipeline
