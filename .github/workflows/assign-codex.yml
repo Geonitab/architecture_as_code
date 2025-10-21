@@ -1,6 +1,5 @@
-# .github/workflows/example-producer.yml
+# .github/workflows/add-to-queue.yml
 name: Example Producer
-
 on:
   workflow_dispatch:
 
@@ -9,5 +8,5 @@ jobs:
     uses: Geonitab/Actions-que/.github/workflows/enqueue-task.yml@main
     with:
       queue_issue_number: 1
-      task: ""
+      task: "Generate glossary relations for term: 'Terraform state' (limit 20)"
       correlation_id: "archbook-TERMS-001"
