@@ -925,6 +925,78 @@
           "reason": "Compliance automation queries the graph to locate obligated components and metadata."
         }
       ]
+    },
+    {
+      "id": "post_quantum_cryptography",
+      "related": [
+        {
+          "term": "zero_trust",
+          "relationship": "reinforces",
+          "reason": "Post-Quantum Cryptography reinforces Zero Trust controls by raising the cryptographic baseline against emerging threats."
+        },
+        {
+          "term": "continuous_compliance",
+          "relationship": "relies_on",
+          "reason": "Post-Quantum Cryptography relies on Continuous Compliance to evidence algorithm upgrades and key rotation."
+        }
+      ],
+      "name": "Post-Quantum Cryptography",
+      "category": "governance",
+      "summary": "Cryptographic techniques designed to withstand attacks from both classical and quantum computers."
+    },
+    {
+      "id": "digital_twin",
+      "related": [
+        {
+          "term": "architecture_as_code",
+          "relationship": "models",
+          "reason": "Digital Twin models Architecture as Code blueprints so teams can trial design options without touching production."
+        },
+        {
+          "term": "knowledge_graph",
+          "relationship": "draws_from",
+          "reason": "Digital Twin draws from the knowledge graph to keep simulations aligned with canonical metadata."
+        }
+      ],
+      "name": "Digital Twin",
+      "category": "insight",
+      "summary": "A synchronised virtual representation of a system that allows teams to explore changes safely before applying them in production."
+    },
+    {
+      "id": "ai_for_it_operations",
+      "related": [
+        {
+          "term": "observability_stack",
+          "relationship": "enhances",
+          "reason": "AI for IT Operations enhances the observability stack by surfacing signals that humans might otherwise miss."
+        },
+        {
+          "term": "service_level_objective",
+          "relationship": "supports",
+          "reason": "AI for IT Operations supports service level objectives by predicting breaches early and recommending corrective action."
+        }
+      ],
+      "name": "AI for IT Operations",
+      "category": "operations",
+      "summary": "Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders."
+    },
+    {
+      "id": "sustainability_kpi",
+      "related": [
+        {
+          "term": "carbon_aware_computing",
+          "relationship": "tracks",
+          "reason": "Sustainability KPI tracks the outcomes of carbon-aware computing strategies so teams can prove environmental impact."
+        },
+        {
+          "term": "finops",
+          "relationship": "guides",
+          "reason": "Sustainability KPI guides FinOps reviews by keeping ecological considerations visible alongside financial metrics."
+        }
+      ],
+      "name": "Sustainability KPI",
+      "category": "finance",
+      "summary": "A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation."
     }
   ]
 }

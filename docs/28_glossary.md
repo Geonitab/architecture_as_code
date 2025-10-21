@@ -14,21 +14,21 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 | Term | Definition |
 |------|------------|
-| Architecture as Code (AaC) | Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. |
-| Infrastructure as Code (IaC) | A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments. |
-| Architecture Decision Record (ADR) | A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together. |
+| Architecture as Code | Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. Often abbreviated as AaC. |
+| Infrastructure as Code | A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments. Frequently shortened to IaC. |
+| Architecture Decision Record | A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together. Commonly known as an ADR. |
 | Declarative Programming | A style of describing desired outcomes rather than procedural steps, enabling automation tools to converge systems on the target state reliably. |
 | Idempotence | The property that a command or template can run repeatedly with the same end result, protecting teams from accidental drift or double execution. |
 | Reusable Module | A parameterised building block—such as a Terraform module or Helm chart—that encapsulates best practice and is published for teams to compose new solutions quickly. |
-| API (Application Programming Interface) | A contract that allows systems to interact predictably, enabling modular architectures and integrated delivery workflows. |
+| API | An application programming interface (API) is a contract that allows systems to interact predictably, enabling modular architectures and integrated delivery workflows. |
 
 ## Automation, tooling, and delivery
 
 | Term | Definition |
 |------|------------|
-| Continuous Integration / Continuous Delivery (CI/CD) | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. |
+| Continuous Integration / Continuous Delivery | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. Teams usually refer to this as CI/CD. |
 | Delivery Pipeline | The orchestrated flow of automated checks, approvals, and deployments that transform committed code into resilient production services. |
-| Version Control System (VCS) | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. |
+| Version Control System | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. Often shortened to VCS. |
 | GitOps | Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments. |
 | Configuration Management | Tooling such as Ansible or Chef that applies desired system states, often working alongside declarative templates to maintain consistency. |
 | Terraform | A widely used IaC tool that compiles declarative configurations into API calls, offering modular composition and policy enforcement hooks. |
@@ -55,9 +55,9 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 | Term | Definition |
 |------|------------|
-| Site Reliability Engineering (SRE) | An engineering discipline that applies software practices to operations work, balancing reliability with delivery velocity. |
-| Service Level Objective (SLO) | A shared target for reliability, expressed as a measurable goal that teams use to evaluate whether customer expectations are being met. |
-| Service Level Indicator (SLI) | The quantitative measurement—such as latency or error rate—that shows whether an SLO is being achieved. |
+| Site Reliability Engineering | An engineering discipline that applies software practices to operations work, balancing reliability with delivery velocity. Practitioners often shorten it to SRE. |
+| Service Level Objective | A shared target for reliability, expressed as a measurable goal that teams use to evaluate whether customer expectations are being met. Commonly called an SLO. |
+| Service Level Indicator | The quantitative measurement—such as latency or error rate—that shows whether an SLO is being achieved. Frequently described as an SLI. |
 | Error Budget | The agreed allowance for unreliability that guides deployment pace and prioritisation of improvement work. |
 | Chaos Engineering | Intentional experimentation that reveals weaknesses by introducing controlled failure, strengthening resilience and team confidence. |
 | Chaos Monkey | A resilience experiment that deliberately terminates running resources to verify automated recovery, typically orchestrated through codified AaC workflows. |
@@ -97,15 +97,15 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 **Edge Computing:** Placing compute capabilities closer to data sources or users to reduce latency and improve responsiveness.
 
-**Post-Quantum Cryptography:** Cryptographic techniques designed to withstand attacks from both classical and quantum computers.
+**Post-Quantum Cryptography**: Cryptographic techniques designed to withstand attacks from both classical and quantum computers.
 
-**Digital Twin:** A synchronised virtual representation of a system that allows teams to explore changes safely before applying them in production.
+**Digital Twin**: A synchronised virtual representation of a system that allows teams to explore changes safely before applying them in production.
 
-**AI for IT Operations (AIOps):** Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders.
+**AI for IT Operations**: Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders. Often called AIOps in industry discussions.
 
-**Sustainability KPI:** A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation.
+**Sustainability KPI**: A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation.
 
-**Knowledge Graph:** A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery.
+**Knowledge Graph**: A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery.
 
 ## Terms and relationship database
 Keeping the glossary actionable requires more than prose. A structured dataset now lives at `references/glossary_terms_relationships.json` so automation can reason about how concepts reinforce one another. Pipelines use it to surface dependencies in pull requests, populate architecture decision templates, and keep presentation material aligned with the book’s vocabulary.
