@@ -206,24 +206,26 @@ Cloud-first implementation requires careful planning of hybrid and multi-cloud s
 
 Sovereignty guardrails described in Chapter 15 and the Future Trends chapter demand explicit provider selection policies. Platform teams should codify which services qualify as "EU-trusted"—covering both EU-headquartered providers and EU-specific offerings from global hyperscalers—and enforce those decisions through policy-as-code. This keeps residency, lawful access controls, and the GAIA-X or EU Cloud Code of Conduct commitments consistent across delivery teams.
 
-**AWS Global Infrastructure:**
-Amazon Web Services operates multiple regions within the EU to meet data residency requirements and has announced the AWS European Sovereign Cloud to provide EU-only operations with local staff oversight:
+Policy catalogues should therefore differentiate between providers that are inherently sovereign and those that become acceptable only when their EU-only controls are in force. EU-headquartered platforms form the default choice for workloads bound by strict sovereignty clauses. Global hyperscalers remain viable when their EU sovereign programmes (such as AWS European Sovereign Cloud, Azure EU Data Boundary, or Google Cloud Sovereign Controls) deliver European legal entities, locally staffed operations, and independent encryption key custody. Standard global services that fall outside those safeguards should fail policy-as-code checks so that teams avoid contradictory guidance.
+
+**AWS European Sovereign Cloud and EU Regions:**
+When AWS is approved through the European Sovereign Cloud roadmap or EU regional deployments, Architecture as Code guardrails must confirm the following conditions:
 
 - Physical data sovereignty within EU regional boundaries
 - Low-latency connectivity across EU availability zones and Local Zones
 - Comprehensive compliance certifications including ISO 27001, SOC 2, and PCI-DSS
 - Dedicated support with European expertise, GDPR compliance guidance, and the upcoming sovereign controls programme
 
-**Microsoft Azure:**
-Microsoft has invested significantly in cloud infrastructure with extensive European coverage and the Azure EU Data Boundary programme:
+**Microsoft Azure EU Data Boundary:**
+Azure's EU Data Boundary commitments provide a compliant route when policies verify that workloads remain inside the boundary and sovereign controls programme:
 
 - Azure regions across multiple EU member states for data residency
 - Integration with enterprise identity providers
 - Compliance with EU governance standards, EDPB guidelines, and Azure confidential computing controls
 - Partnership ecosystem with European system integrators
 
-**Google Cloud Platform:**
-Google operates multiple cloud regions within the EU, backed by the Sovereign Controls programme delivered with partners such as T-Systems and Thales:
+**Google Cloud Sovereign Controls:**
+Google Cloud's sovereign controls, implemented with partners such as T-Systems and Thales, qualify when technical and organisational safeguards are enforced:
 
 - EU-based data processing for GDPR compliance across all member states
 - Carbon-neutral operations aligned with EU sustainability goals
