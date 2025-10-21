@@ -17,9 +17,9 @@ import sys
 import glob
 import math
 import re
-import textwrap
 from collections import OrderedDict
 from datetime import datetime
+from html import escape
 from pathlib import Path
 
 import yaml
@@ -228,7 +228,7 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
         chapter_area = "Architecture as Code"
         mapped_title = chapter_data['title']
     
-    page_title = f"{chapter_label} – {chapter_data['title']}"
+    page_title = f"{chapter_label} – {mapped_title}"
     subtitle_text = f'Key insights from {chapter_label} of "{book_overview["title"]}"'
     author_text = "Architecture as Code Editorial Team"
     published_date = datetime.now().strftime("%d %B %Y")
@@ -241,6 +241,17 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
         reading_minutes = 3
     reading_label = f"{reading_minutes} minute{'s' if reading_minutes != 1 else ''}"
     version_text = "1.0"
+
+    escaped_page_title = escape(page_title)
+    escaped_chapter_area = escape(chapter_area)
+    escaped_chapter_title = escape(chapter_data['title'])
+    escaped_mapped_title = escape(mapped_title)
+    escaped_subtitle_text = escape(subtitle_text)
+    escaped_author_text = escape(author_text)
+    escaped_published_date = escape(published_date)
+    escaped_version_text = escape(version_text)
+    escaped_reading_label = escape(reading_label)
+    escaped_chapter_label = escape(chapter_label)
     
     # Prepare content sections
     diagram_html = ""
@@ -253,13 +264,13 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
     if diagram_src:
         diagram_html = (
             "            <div style=\"text-align: center; margin: 30px 0;\">\n"
-            f"                <img src=\"{diagram_src}\" alt=\"Chapter diagram for {chapter_data['title']}\" style=\"max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;\">\n"
+            f"                <img src=\"{escape(diagram_src)}\" alt=\"Chapter diagram for {escaped_chapter_title}\" style=\"max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;\">\n"
             "            </div>"
         )
     
     # Create condensed content sections
     content_sections = "\n".join(
-        f"            <p>{paragraph}</p>"
+        f"            <p>{escape(paragraph)}</p>"
         for paragraph in chapter_data['condensed_content']
     )
     
@@ -267,7 +278,7 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
     section_overview = ""
     if chapter_data['section_headers']:
         section_list = "\n".join(
-            f"                <li>{header}</li>"
+            f"                <li>{escape(header)}</li>"
             for header in chapter_data['section_headers']
         )
         section_overview = (
@@ -280,34 +291,50 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
     # Replace the title and content in template
     html_output = template
 
-    html_output = html_output.replace('{{PAGE_TITLE}}', page_title)
-    html_output = html_output.replace('{{TITLE}}', chapter_data['title'])
-    html_output = html_output.replace('{{SUBTITLE}}', subtitle_text)
-    html_output = html_output.replace('{{CATEGORY}}', chapter_area)
-    html_output = html_output.replace('{{AUTHOR}}', author_text)
-    html_output = html_output.replace('{{DATE}}', published_date)
-    html_output = html_output.replace('{{VERSION}}', version_text)
-    html_output = html_output.replace('{{READING_TIME}}', reading_label)
-    html_output = html_output.replace('{{MAPPED_TITLE}}', mapped_title)
-    html_output = html_output.replace('{{CHAPTER_LABEL}}', chapter_label)
+    header_replacements = [
+        ("<title>Kvadrat Whitepaper Template</title>", f"<title>{escaped_page_title}</title>"),
+        ('<div class="category">Infrastructure as Code</div>', f'<div class="category">{escaped_chapter_area}</div>'),
+        (
+            '<h1 class="title">Modernisation of IT infrastructure through code-based solutions</h1>',
+            f'<h1 class="title">{escaped_mapped_title}</h1>',
+        ),
+        (
+            '<p class="subtitle">A strategic guide for organisations implementing Infrastructure as Code</p>',
+            f'<p class="subtitle">{escaped_subtitle_text}</p>',
+        ),
+        ('<div>Kvadrat Expert Team</div>', f'<div>{escaped_author_text}</div>'),
+        ('<div>December 2024</div>', f'<div>{escaped_published_date}</div>'),
+        ('<div>1.0</div>', f'<div>{escaped_version_text}</div>'),
+        ('<div>15 minutes</div>', f'<div>{escaped_reading_label}</div>'),
+    ]
+
+    for source, target in header_replacements:
+        if source in html_output:
+            html_output = html_output.replace(source, target, 1)
     
+    escaped_book_title = escape(book_overview['title'])
+    escaped_book_subtitle = escape(book_overview['subtitle'])
+    escaped_book_description = escape(book_overview['description'])
+    escaped_target_audience = escape(book_overview['target_audience'])
+    escaped_area_lower = escape(chapter_area.lower())
+
     # Create the new content sections
     new_content = f'''        <!-- Book Overview -->
         <section>
-            <h1>About the book "{book_overview['title']}"</h1>
-            <p class="lead"><strong>{book_overview['title']}</strong> – {book_overview['subtitle']}</p>
+            <h1>About the book "{escaped_book_title}"</h1>
+            <p class="lead"><strong>{escaped_book_title}</strong> – {escaped_book_subtitle}</p>
             
-            <p>{book_overview['description']}</p>
+            <p>{escaped_book_description}</p>
             
             <div class="callout callout-info">
                 <div class="callout-title">Target Audience</div>
-                <p>{book_overview['target_audience']}</p>
+                <p>{escaped_target_audience}</p>
             </div>
         </section>
 
         <!-- Chapter Content -->
         <section>
-            <h1>{chapter_label}: {chapter_data['title']}</h1>
+            <h1>{escaped_chapter_label}: {escaped_chapter_title}</h1>
 {diagram_html if diagram_html else ""}
             
 {content_sections}
@@ -320,10 +347,10 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
             <h1>Continue Your Journey</h1>
             <div class="callout callout-success">
                 <div class="callout-title">Complete Chapter</div>
-                <p><strong>Read {chapter_label} – "{chapter_data['title']}" in "{book_overview['title']}"</strong> for detailed explanations, practical examples, and implementation patterns.</p>
+                <p><strong>Read {escaped_chapter_label} – "{escaped_chapter_title}" in "{escaped_book_title}"</strong> for detailed explanations, practical examples, and implementation patterns.</p>
             </div>
             
-            <p>The full manuscript explores {book_overview['chapters_count']} chapters, positioning this whitepaper within the {chapter_area.lower()} focus of the programme.</p>
+            <p>The full manuscript explores {book_overview['chapters_count']} chapters, positioning this whitepaper within the {escaped_area_lower} focus of the programme.</p>
             
             <p><strong>Explore adjacent chapters:</strong> The surrounding sections expand upon the themes introduced here and provide complementary techniques.</p>
         </section>'''
