@@ -71,6 +71,9 @@ python3 generate_book.py
 # Build PDF, EPUB, and DOCX (runs diagram export, copies cover art, and writes to releases/book/)
 cd docs && ./build_book.sh
 
+# Orchestrate every deliverable and create an optional release archive
+python3 build_all_orchestrator.py --zip
+
 # Create the full distribution bundle (book formats, presentation, whitepapers, website)
 ./build_release.sh
 
