@@ -1,4 +1,4 @@
-# About the Author {.unnumbered}
+# About the Author
 
 This book represents the culmination of extensive experience in architecture, infrastructure, and systems development, bringing together theoretical foundations with practical expertise to create a comprehensive resource for organisations embracing Architecture as Code.
 
@@ -8,7 +8,7 @@ This book represents the culmination of extensive experience in architecture, in
 
 ## Gunnar Nordqvist
 
-**Gunnar Nordqvist** is a certified Chief Architect and IT Architect at Kvadrat, a leading European technology consultancy. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
+**Gunnar Nordqvist** is a self employed certified Chief Architect and IT Architect consultant associated with Kvadrat, a leading Swedish technology consultancy. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
 
 ### Professional Background
 
@@ -26,34 +26,9 @@ Gunnar's extensive experience spans solution and enterprise architecture, IT inf
 
 Throughout his career, Gunnar has witnessed the evolution from manual, document-led architecture practice to the modern paradigm of codified architecture. This shift has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software engineering.
 
-His work at Kvadrat has provided him with unique insights into the challenges faced by organisations in highly regulated industries whilst they navigate digital transformation and adopt Architecture as Code practice. These real-world experiences inform every chapter of this book, ensuring that theoretical principles are always grounded in practical application.
-
 ## About Kvadrat
 
-**Kvadrat** is an independent technology consultancy renowned for delivering excellence in IT architecture and infrastructure solutions across Europe. The company has been instrumental not only in supporting the creation of this book but also in pioneering Architecture as Code practices within complex, compliance-driven organisations.
-
-### Kvadrat's Contribution
-
-**Technical Excellence:**
-- Solution architecture and enterprise architecture consulting
-- Infrastructure as Code implementation and best practices
-- Cloud migration and modernisation programmes
-- Security and compliance advisory
-
-**Book Development Support:**
-- Professional design and brand integration
-- Technical infrastructure for automated publishing
-- Quality assurance and technical review
-- CI/CD pipeline development for book production
-
-### Design and Brand Integration
-
-The visual identity of this book reflects Kvadrat's commitment to professional excellence. The design system incorporates:
-
-- Modern, professional layout aligned with Kvadrat's brand guidelines
-- Consistent colour palette (Kvadrat Blue: hsl(221, 67%, 32%))
-- Clean typography and readable formatting
-- Professional diagrams and visual elements
+**Kvadrat** is an independent technology consultancy renowned for delivering excellence in IT. 
 
 ### Swedish Terminology Reference
 
@@ -105,21 +80,6 @@ This book builds upon the outstanding work of the open source community, particu
 - **Kubernetes** - Container orchestration
 - **Pandoc** - Document conversion excellence
 - **Mermaid** - Diagram as Code visualisation
-
-### Technology Community Partnerships
-
-Gratitude to the technology communities that have contributed insights and feedback:
-
-- **GlobalCoders Collective** - For technical content review
-- **DevOps Practitioners Network** - For practical case studies
-- **Cloud Architecture Guild** - For cloud-specific contributions
-- **Security Specialists Alliance** - For compliance guidance
-
-### Academic Institutions
-
-- **KTH Royal Institute of Technology** - For research perspectives
-- **Linköping University** - For system architecture expertise
-- **Malmö University** - For user-centred design principles
 
 ## Continuous Improvement
 
