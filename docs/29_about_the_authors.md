@@ -34,6 +34,7 @@ Kvadrat's mission is to provide "Sweden's sharpest consultants" to help companie
 
 ### Services and Expertise
 Kvadrat offers top-tier consulting services across several key areas:
+
 - **System Development**: Building and optimizing software and IT systems.
 - **Digitalization**: Guiding digital transformation initiatives.
 - **Information Management**: Strategies for data handling, storage, and utilization.
