@@ -27,10 +27,28 @@ Gunnar's extensive experience spans solution and enterprise architecture, IT inf
 Throughout his career, Gunnar has witnessed the evolution from manual, document-led architecture practice to the modern paradigm of codified architecture. This shift has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software engineering.
 
 ## About Kvadrat
+**Kvadrat** is Sweden's largest network of independent consultants (often referred to as "egenföretagare" or sole proprietors) dedicated to driving organizational change. Founded as a community-driven platform, it connects highly skilled, motivated specialists who operate with autonomy while benefiting from the support of a larger collective. The company's core strength lies in its model of empowering individual experts to deliver high-impact solutions, fostering innovation and problem-solving for clients.
 
-**Kvadrat** is an independent technology consultancy renowned for delivering excellence in IT. 
+### Mission and Approach
+Kvadrat's mission is to provide "Sweden's sharpest consultants" to help companies and organizations navigate transformation. It emphasizes freedom, self-determination, and expertise, appealing not only to clients seeking specialized help but also to professionals craving independence or those considering joining a supportive network. The tagline "Sveriges vassaste konsulter" (Sweden's sharpest consultants) underscores its focus on elite, driven talent that uncovers and resolves hidden challenges.
 
-### Swedish Terminology Reference
+### Services and Expertise
+Kvadrat offers top-tier consulting services across several key areas:
+- **System Development**: Building and optimizing software and IT systems.
+- **Digitalization**: Guiding digital transformation initiatives.
+- **Information Management**: Strategies for data handling, storage, and utilization.
+- **Leadership and Organizational Development**: Support for management, structure, and process improvements.
+- **Business Development**: Enhancing operations and fostering growth.
+
+These services are delivered through a flexible network model, allowing clients to engage individual specialists or teams as needed. More details on hiring consultants are available on their site.
+
+### Target Markets
+Kvadrat primarily serves businesses and organizations in Sweden undergoing change, from startups to large enterprises. It targets entities needing experienced hands for complex projects, as well as individual consultants looking to "become more Kvadrat-like" by joining the network for collaboration, resources, and community.
+
+### Additional Notes
+While specific details on company history, sustainability initiatives, or notable partnerships are not prominently featured on the site, Kvadrat positions itself as a leader in the Swedish consulting landscape through its scale and specialist focus. For those interested in joining, the platform highlights the benefits of community without sacrificing independence.
+
+## Swedish Terminology Reference
 
 > **Terminology Note:** The Swedish organisations and institutions referenced here keep their native names to preserve accuracy. The translations below clarify the meaning for readers unfamiliar with Swedish terminology.
 
