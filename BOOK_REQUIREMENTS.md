@@ -2,7 +2,7 @@
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 31  # Current canonical manuscript count
+  total_chapters: 34  # Updated canonical manuscript count (including appendices)
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -129,6 +129,16 @@ book:
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 25"
+    - filename: "26_prerequisites_for_aac.md"
+      title: "Prerequisites for Architecture as Code Adoption"
+      area: "Future and Wrap-up"
+      required: true
+      label: "Chapter 26A"
+    - filename: "26_aac_anti_patterns.md"
+      title: "Anti-Patterns in Architecture as Code Programmes"
+      area: "Future and Wrap-up"
+      required: true
+      label: "Chapter 26B"
     - filename: "27_conclusion.md"
       title: "Conclusion and the Way Forward"
       area: "Future and Wrap-up"
@@ -154,6 +164,11 @@ book:
       area: "Appendices"
       required: true
       label: "Appendix B"
+    - filename: "32_finos_project_blueprint.md"
+      title: "Appendix C: FINOS Project Blueprint Case Study"
+      area: "Appendices"
+      required: true
+      label: "Appendix C"
     - filename: "33_references.md"
       title: "References and Sources"
       area: "Reference"
@@ -192,13 +207,7 @@ book:
       filename: "EPUB_VALIDATION.md"
       requires_diagram: false
       requires_sources: false
-  supplemental_chapters:
-    - filename: "26_aac_anti_patterns.md"
-      description: "Supplementary anti-pattern guidance retained for reference."
-    - filename: "26_prerequisites_for_aac.md"
-      description: "Adoption prerequisites guide referenced by delivery teams."
-    - filename: "32_finos_project_blueprint.md"
-      description: "FINOS Project Blueprint case study used as extended material."
+  supplemental_chapters: []
 structure:
   required_sections:
     - name: "title"
