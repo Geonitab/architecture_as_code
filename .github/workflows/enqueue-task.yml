@@ -1,0 +1,54 @@
+name: Enqueue Task (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      queue_issue_number:
+        description: "Issue number to act as the queue"
+        required: false
+        default: 1
+        type: number
+      task:
+        description: "Task payload to enqueue"
+        required: true
+        type: string
+      correlation_id:
+        description: "Optional correlation id"
+        required: false
+        type: string
+    secrets:
+      # not required for enqueue; kept for future extensibility
+      OPENAI_API_KEY:
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  enqueue:
+    name: Append task to queue issue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post TASK comment to queue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = ${{ inputs.queue_issue_number }};
+            const repo = context.repo;
+            const callerRepo = process.env.GITHUB_REPOSITORY;
+            const runId = process.env.GITHUB_RUN_ID;
+            const corr = `${{ inputs.correlation_id || '' }}`.trim();
+            const header = "TASK:";
+            const bodyLines = [
+              `${header} ${${{ toJSON(inputs.task) }}}`,
+              "",
+              `origin: ${callerRepo}@run/${runId}`,
+              corr ? `correlation_id: ${corr}` : null
+            ].filter(Boolean);
+            await github.rest.issues.createComment({
+              owner: repo.owner,
+              repo: repo.repo,
+              issue_number,
+              body: bodyLines.join("\n")
+            });
