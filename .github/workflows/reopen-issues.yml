@@ -15,7 +15,7 @@ jobs:
 
       - name: Close and reopen issues one by one
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOT_ISSUE }}
         run: |
           open_issues=$(gh issue list --state open --json number --jq '.[].number')
           for issue in $open_issues; do
