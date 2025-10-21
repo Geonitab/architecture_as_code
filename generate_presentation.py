@@ -319,7 +319,7 @@ def extract_diagram_metadata(diagram_path, chapter_content):
     mmd_path = os.path.join("docs/images", mmd_filename)
     
     # Set source information
-    diagram_info['source'] = f"Källa: {mmd_filename}"
+    diagram_info['source'] = f"Source: {mmd_filename}"
     
     # Try to read the mermaid source file to determine type and content
     if os.path.exists(mmd_path):
@@ -333,54 +333,54 @@ def extract_diagram_metadata(diagram_path, chapter_content):
             
             for line in content_lines:
                 if line.startswith('graph ') or line.startswith('flowchart '):
-                    diagram_info['type'] = 'Flödesschema'
-                    diagram_info['purpose'] = 'Visualiserar processflöde och systemarbetsflöde'
+                    diagram_info['type'] = 'Flowchart'
+                    diagram_info['purpose'] = 'Visualises process flow and system workflows'
                     diagram_type_found = True
                     break
                 elif line.startswith('sequencediagram'):
-                    diagram_info['type'] = 'Sekvensdiagram'
-                    diagram_info['purpose'] = 'Visar interaktionssekvenser och meddelandeflöden'
+                    diagram_info['type'] = 'Sequence diagram'
+                    diagram_info['purpose'] = 'Illustrates interaction sequences and message flows'
                     diagram_type_found = True
                     break
                 elif line.startswith('classdiagram'):
-                    diagram_info['type'] = 'Klassdiagram'
-                    diagram_info['purpose'] = 'Beskriver objektrelationer och systemstruktur'
+                    diagram_info['type'] = 'Class diagram'
+                    diagram_info['purpose'] = 'Describes object relationships and system structure'
                     diagram_type_found = True
                     break
                 elif line.startswith('erdiagram'):
-                    diagram_info['type'] = 'ER-diagram'
-                    diagram_info['purpose'] = 'Visualiserar datamodellrelationer och entiteter'
+                    diagram_info['type'] = 'Entity relationship diagram'
+                    diagram_info['purpose'] = 'Visualises data model relationships and entities'
                     diagram_type_found = True
                     break
                 elif line.startswith('journey'):
-                    diagram_info['type'] = 'Användarresa'
-                    diagram_info['purpose'] = 'Kartlägger användarupplevelse och kontaktpunkter'
+                    diagram_info['type'] = 'User journey'
+                    diagram_info['purpose'] = 'Maps user experience flows and touchpoints'
                     diagram_type_found = True
                     break
                 elif line.startswith('gantt'):
-                    diagram_info['type'] = 'Gantt-schema'
-                    diagram_info['purpose'] = 'Presenterar projekttidslinjer och schemaläggning'
+                    diagram_info['type'] = 'Gantt chart'
+                    diagram_info['purpose'] = 'Presents project timelines and scheduling'
                     diagram_type_found = True
                     break
                 elif line.startswith('pie'):
-                    diagram_info['type'] = 'Cirkeldiagram'
-                    diagram_info['purpose'] = 'Visar fördelning och procentuella uppdelningar'
+                    diagram_info['type'] = 'Pie chart'
+                    diagram_info['purpose'] = 'Shows distribution and percentage breakdowns'
                     diagram_type_found = True
                     break
                 elif line.startswith('quadrantchart'):
-                    diagram_info['type'] = 'Kvadrantdiagram'
-                    diagram_info['purpose'] = 'Illustrerar beslutsmatriser och positionering'
+                    diagram_info['type'] = 'Quadrant chart'
+                    diagram_info['purpose'] = 'Illustrates decision matrices and positioning'
                     diagram_type_found = True
                     break
                 elif line.startswith('mindmap'):
-                    diagram_info['type'] = 'Mindmap'
-                    diagram_info['purpose'] = 'Strukturerar konceptuella relationer och kunskapskartor'
+                    diagram_info['type'] = 'Mind map'
+                    diagram_info['purpose'] = 'Structures conceptual relationships and knowledge mapping'
                     diagram_type_found = True
                     break
             
             if not diagram_type_found:
-                diagram_info['type'] = 'Arkitekturdiagram'
-                diagram_info['purpose'] = 'Visualiserar systemarkitektur och komponenter'
+                diagram_info['type'] = 'Architecture diagram'
+                diagram_info['purpose'] = 'Visualises system architecture and components'
         except Exception as e:
             print(f"Warning: Could not read diagram source {mmd_path}: {e}")
     
@@ -406,10 +406,17 @@ def extract_diagram_metadata(diagram_path, chapter_content):
     
     # If no specific explanation found, create one based on diagram type and context
     if not diagram_info['explanation']:
-        if 'kapitel' in png_filename.lower():
-            chapter_num = re.search(r'kapitel(\d+)', png_filename.lower())
+        filename_lower = png_filename.lower()
+        if 'chapter' in filename_lower:
+            chapter_num = re.search(r'chapter(\d+)', filename_lower)
             if chapter_num:
-                diagram_info['explanation'] = f"Diagram: Kapitel {chapter_num.group(1)} - {diagram_info['purpose']}"
+                diagram_info['explanation'] = f"Diagram: Chapter {chapter_num.group(1)} - {diagram_info['purpose']}"
+            else:
+                diagram_info['explanation'] = f"Diagram: {diagram_info['purpose']}"
+        elif 'kapitel' in filename_lower:
+            chapter_num = re.search(r'kapitel(\d+)', filename_lower)
+            if chapter_num:
+                diagram_info['explanation'] = f"Diagram: Chapter {chapter_num.group(1)} - {diagram_info['purpose']}"
             else:
                 diagram_info['explanation'] = f"Diagram: {diagram_info['purpose']}"
         else:
@@ -517,13 +524,13 @@ def read_chapter_content(chapter_file):
         while len(key_points) < 5 and len(key_points) > 0:
             # Add some general points if we don't have enough, all limited to 20 words
             if len(key_points) == 1:
-                key_points.append(limit_words(f"Praktisk implementation av {title.lower()} i svenska organisationer", 20))
+                key_points.append(limit_words(f"Practical implementation of {title.lower()} in modern organisations", 20))
             elif len(key_points) == 2:
-                key_points.append(limit_words(f"Säkerhetsaspekter och best practices inom {title.lower()}", 20))
+                key_points.append(limit_words(f"Security considerations and best practices for {title.lower()}", 20))
             elif len(key_points) == 3:
-                key_points.append(limit_words(f"Automatisering och CI/CD för {title.lower()}", 20))
+                key_points.append(limit_words(f"Automation and CI/CD integration for {title.lower()}", 20))
             elif len(key_points) == 4:
-                key_points.append(limit_words(f"Kostnadsoptimering och skalbarhet för {title.lower()}", 20))
+                key_points.append(limit_words(f"Cost optimisation and scalability for {title.lower()}", 20))
         
         return {
             'title': title,
@@ -565,9 +572,9 @@ def create_presentation_script(presentation_data):
     """Create a script that would generate the PowerPoint presentation."""
     script_content = '''#!/usr/bin/env python3
 """
-PowerPoint Presentation Generator for Arkitektur som kod
+PowerPoint Presentation Generator for Architecture as Code
 Generated automatically from book content.
-Complies with Swedish standards and book theme.
+Aligns with Kvadrat brand guidelines and book theme.
 All key points limited to 20 words maximum per slide.
 """
 
@@ -598,8 +605,7 @@ def create_presentation():
     """Create PowerPoint presentation with book content."""
     prs = Presentation()
     
-    # Set up Swedish theme colors (inspired by Swedish flag and professional standards)
-    # Blue: #006AA7 (Swedish blue), Yellow: #FECC00 (Swedish yellow), Gray: #333333
+    # Set up Kvadrat brand colours (primary #1E3A8A, accent #3B82F6, neutral grey #333333)
     
     # Title slide
     title_slide_layout = prs.slide_layouts[0]
@@ -607,13 +613,13 @@ def create_presentation():
     title = slide.shapes.title
     subtitle = slide.placeholders[1]
     
-    title.text = "Arkitektur som kod"
-    subtitle.text = "En omfattande guide för svenska organisationer"
+    title.text = "Architecture as Code"
+    subtitle.text = "A comprehensive guide for modern organisations"
     
     # Style the title slide
     title.text_frame.paragraphs[0].font.size = Pt(44)
     title.text_frame.paragraphs[0].font.bold = True
-    title.text_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    title.text_frame.paragraphs[0].font.color.rgb = RGBColor(30, 58, 138)  # Kvadrat primary blue
     
     subtitle.text_frame.paragraphs[0].font.size = Pt(24)
     subtitle.text_frame.paragraphs[0].font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
@@ -639,13 +645,13 @@ def create_presentation():
     title_frame.text = "{clean_title}"
     title_frame.paragraphs[0].font.size = Pt(32)
     title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    title_frame.paragraphs[0].font.color.rgb = RGBColor(30, 58, 138)  # Kvadrat primary blue
     
 '''
         
         # Add diagram if available
         if diagram_path:
-            diagram_source = diagram_metadata.get('source', 'Källa: diagram').replace('"', '\\"').replace("'", "\\'")
+            diagram_source = diagram_metadata.get('source', 'Source: diagram').replace('"', '\\"').replace("'", "\\'")
             diagram_explanation = diagram_metadata.get('explanation', '').replace('"', '\\"').replace("'", "\\'")
             
             script_content += f'''
@@ -677,10 +683,10 @@ def create_presentation():
     # Add key points
     points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
     points_frame = points_box.text_frame
-    points_frame.text = "Viktiga punkter:"
+    points_frame.text = "Key points:"
     points_frame.paragraphs[0].font.size = Pt(16)
     points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+    points_frame.paragraphs[0].font.color.rgb = RGBColor(30, 58, 138)  # Kvadrat primary blue
     
 '''
         
@@ -702,7 +708,7 @@ def create_presentation():
     prs.save(output_path)
     print(f"✅ Presentation saved to {output_path}")
     print(f"📊 Total slides created: {len(prs.slides)}")
-    print("🎨 Styled with Swedish theme colors")
+    print("🎨 Styled with Kvadrat brand colours")
     print("📋 Each slide includes chapter title, diagram (when available), and key points")
     print("📏 All key points limited to 20 words maximum for optimal readability")
     print("🔗 All diagrams include source references and explanatory captions")
@@ -729,8 +735,7 @@ def create_presentation_directly(presentation_data, output_path="architecture_as
     try:
         prs = Presentation()
         
-        # Set up Swedish theme colors (inspired by Swedish flag and professional standards)
-        # Blue: #006AA7 (Swedish blue), Yellow: #FECC00 (Swedish yellow), Gray: #333333
+        # Set up Kvadrat brand colours (primary #1E3A8A, accent #3B82F6, neutral grey #333333)
         
         # Title slide
         title_slide_layout = prs.slide_layouts[0]
@@ -738,13 +743,13 @@ def create_presentation_directly(presentation_data, output_path="architecture_as
         title = slide.shapes.title
         subtitle = slide.placeholders[1]
         
-        title.text = "Arkitektur som kod"
-        subtitle.text = "En omfattande guide för svenska organisationer"
+        title.text = "Architecture as Code"
+        subtitle.text = "A comprehensive guide for modern organisations"
         
         # Style the title slide
         title.text_frame.paragraphs[0].font.size = Pt(44)
         title.text_frame.paragraphs[0].font.bold = True
-        title.text_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+        title.text_frame.paragraphs[0].font.color.rgb = RGBColor(30, 58, 138)  # Kvadrat primary blue
         
         subtitle.text_frame.paragraphs[0].font.size = Pt(24)
         subtitle.text_frame.paragraphs[0].font.color.rgb = RGBColor(51, 51, 51)  # Dark gray
@@ -765,7 +770,7 @@ def create_presentation_directly(presentation_data, output_path="architecture_as
             title_frame.text = chapter['title']
             title_frame.paragraphs[0].font.size = Pt(32)
             title_frame.paragraphs[0].font.bold = True
-            title_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+            title_frame.paragraphs[0].font.color.rgb = RGBColor(30, 58, 138)  # Kvadrat primary blue
             
             # Add diagram if available
             if diagram_path and os.path.exists(diagram_path):
@@ -775,7 +780,7 @@ def create_presentation_directly(presentation_data, output_path="architecture_as
                     # Add diagram reference and explanation
                     diagram_ref_box = slide.shapes.add_textbox(Inches(0.5), Inches(4.4), Inches(4), Inches(0.8))
                     diagram_ref_frame = diagram_ref_box.text_frame
-                    diagram_ref_frame.text = diagram_metadata.get('source', 'Källa: diagram')
+                    diagram_ref_frame.text = diagram_metadata.get('source', 'Source: diagram')
                     diagram_ref_frame.paragraphs[0].font.size = Pt(10)
                     diagram_ref_frame.paragraphs[0].font.color.rgb = RGBColor(102, 102, 102)  # Gray
                     
@@ -792,10 +797,10 @@ def create_presentation_directly(presentation_data, output_path="architecture_as
             # Add key points
             points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
             points_frame = points_box.text_frame
-            points_frame.text = "Viktiga punkter:"
+            points_frame.text = "Key points:"
             points_frame.paragraphs[0].font.size = Pt(16)
             points_frame.paragraphs[0].font.bold = True
-            points_frame.paragraphs[0].font.color.rgb = RGBColor(0, 106, 167)  # Swedish blue
+            points_frame.paragraphs[0].font.color.rgb = RGBColor(30, 58, 138)  # Kvadrat primary blue
             
             for point in chapter['key_points']:
                 p = points_frame.add_paragraph()
@@ -809,7 +814,7 @@ def create_presentation_directly(presentation_data, output_path="architecture_as
         prs.save(output_path)
         print(f"✅ Presentation saved to {output_path}")
         print(f"📊 Total slides created: {len(prs.slides)}")
-        print("🎨 Styled with Swedish theme colors")
+        print("🎨 Styled with Kvadrat brand colours")
         print("📋 Each slide includes chapter title, diagram (when available), and key points")
         print("📏 All key points limited to 20 words maximum for optimal readability")
         print("🔗 All diagrams include source references and explanatory captions")
