@@ -5,15 +5,15 @@ Management as Code (MaC) extends the well-established principles of Infrastructu
 
 ![Management as Code operating model highlighting intent, guardrails, automation, empowered teams, codified culture, and feedback](images/diagram_19_mac_operating_model.png)
 
-*Figure: Management as Code operating model linking leadership intent, codified guardrails, automation, empowered teams, culture, and feedback loops.*
+*Figure 19.1 – Management as Code operating model linking leadership intent, codified guardrails, automation, empowered teams, culture, and feedback loops.*
 
-The opening operating-model diagram frames the chapter by showing leadership intent flowing into codified guardrails and automated governance. Empowered teams and codified cultural practices amplify those guardrails, while continuous feedback loops return insight to leadership so that intent can evolve. It establishes the idea that MaC is a living system rather than a static document.
+Figure 19.1 frames the chapter by showing leadership intent flowing into codified guardrails and automated governance. Empowered teams and codified cultural practices amplify those guardrails, while continuous feedback loops return insight to leadership so that intent can evolve. It establishes the idea that MaC is a living system rather than a static document.
 
 ![Management as Code feedback loop showing leadership vision, guardrails, automation, teams, and operational feedback](images/diagram_19_management_overview.png)
 
-*Figure: Management as Code feedback loop connecting leadership vision, guardrails, automation, empowered teams, and operational feedback.*
+*Figure 19.2 – Management as Code feedback loop connecting leadership vision, guardrails, automation, empowered teams, and operational feedback.*
 
-The overview diagram reinforces Management as Code as a self-reinforcing loop where leadership vision flows into codified guardrails, automation, and delivery teams while operational feedback continuously informs future strategic intent. It emphasises that MaC is not a one-off documentation exercise but an active governance system that evolves with every iteration of the software delivery lifecycle.
+Figure 19.2 reinforces Management as Code as a self-reinforcing loop where leadership vision flows into codified guardrails, automation, and delivery teams while operational feedback continuously informs future strategic intent. It emphasises that MaC is not a one-off documentation exercise but an active governance system that evolves with every iteration of the software delivery lifecycle.
 
 ## Defining Management as Code
 At its core, MaC is the systematic translation of management artefacts into reproducible code. Policies, playbooks, delegation models, role definitions, and decision guardrails are captured as declarative specifications that tooling can enforce. Rather than issuing static policy documents, leadership teams create repositories that contain structured definitions for escalation thresholds, strategic objectives and key results (OKRs), and the criteria for portfolio prioritisation. Automation hooks process these definitions to trigger workflows, generate dashboards, or enforce access controls. By storing these assets in Git repositories, management directives acquire the same benefits as other code: auditability, peer review, continuous integration, and rollback.
@@ -30,9 +30,9 @@ A DevOps loop is often depicted as a continuous cycle: plan, code, build, test, 
 
 ![DevOps loop extended with management contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance](images/diagram_19_devops_management_loop.png)
 
-*Figure: DevOps loop extended with Management as Code contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance.*
+*Figure 19.3 – DevOps loop extended with Management as Code contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance.*
 
-The diagram illustrates how management artefacts intersect with each loop phase. Instead of management being an external approval layer, MaC ensures that leadership intent is encoded at the same points where DevOps teams act. Planning repositories can provide strategic intents expressed in YAML files, while automation transforms these definitions into backlog templates or alerts when proposals deviate from strategic goals. During operation, monitoring dashboards generated from configuration code link service-level indicators to financial KPIs. As teams observe anomalies, adaptive governance rules encoded in policy files trigger scenario playbooks or review cadences.
+Figure 19.3 illustrates how management artefacts intersect with each loop phase. Instead of management being an external approval layer, MaC ensures that leadership intent is encoded at the same points where DevOps teams act. Planning repositories can provide strategic intents expressed in YAML files, while automation transforms these definitions into backlog templates or alerts when proposals deviate from strategic goals. During operation, monitoring dashboards generated from configuration code link service-level indicators to financial KPIs. As teams observe anomalies, adaptive governance rules encoded in policy files trigger scenario playbooks or review cadences.
 
 ## Governance and Policy Automation
 MaC provides a robust foundation for governance-as-code, where leadership rules are implemented as automated checks. Access control policies become parameterised configurations that pipeline tools consume, ensuring only authorised roles can approve specific changes. Risk tolerance levels appear as threshold values in configuration files, automatically cross-referenced against deployment metrics. Governance repositories can also contain escalation playbooks, specifying decision-makers, communication channels, and response time objectives.
@@ -41,9 +41,9 @@ Automated compliance tests run alongside software unit tests. For instance, a pu
 
 ![Governance pipeline showing repositories feeding automated checks, workflows, and access control](images/diagram_19_governance_pipeline.png)
 
-*Figure: Governance pipeline where management repositories feed automated checks, workflows, and access control enforcement.*
+*Figure 19.4 – Governance pipeline where management repositories feed automated checks, workflows, and access control enforcement.*
 
-This governance diagram emphasises how management repositories integrate with CI pipelines, incident workflows, and identity platforms. By codifying playbooks and roles, leadership actions become auditable and repeatable. Every update to these artefacts follows the same review process as software code, enabling cross-functional transparency.
+Figure 19.4 emphasises how management repositories integrate with CI pipelines, incident workflows, and identity platforms. By codifying playbooks and roles, leadership actions become auditable and repeatable. Every update to these artefacts follows the same review process as software code, enabling cross-functional transparency.
 
 ## GitHub Configuration for MaC
 GitHub is a natural home for MaC artefacts due to its robust collaboration features. Organisations can create dedicated repositories for management policies, or integrate management directories into existing architecture-as-code projects. Protected branches and CODEOWNERS files map leadership responsibilities to directories—budget rules might require approval from finance leaders, while team competency matrices might need sign-off from HR directors.
@@ -52,9 +52,9 @@ GitHub Actions automate the validation and deployment of management artefacts. A
 
 ![GitHub workflow illustrating repositories, discussions, issues, pull requests, actions, portals, and alerts](images/diagram_19_github_management_flow.png)
 
-*Figure: GitHub workflow illustrating repositories, discussions, issues, pull requests, actions, portals, and alerts in a Management as Code context.*
+*Figure 19.5 – GitHub workflow illustrating repositories, discussions, issues, pull requests, actions, portals, and alerts in a Management as Code context.*
 
-The GitHub integration diagram shows how ideas move from Discussions to Issues, through PRs, and into automated publishing. This approach embeds management into the same cadence as engineering work while adding the visibility executives need for governance.
+Figure 19.5 shows how ideas move from Discussions to Issues, through PRs, and into automated publishing. This approach embeds management into the same cadence as engineering work while adding the visibility executives need for governance.
 
 ## Management in Change Management Pipelines
 Fully codified environments rely on automated change management, and MaC keeps leadership in the loop without reintroducing bottlenecks. Change requests can reference management policies stored as code, enabling automated approval for low-risk changes while routing higher-risk items to the appropriate leaders. Because the criteria are codified, the pipeline logs every decision for audit purposes. Continuous delivery dashboards track change velocity, lead time for approvals, and adherence to strategic themes so leaders can adjust resources or guardrails proactively rather than reactively.
@@ -65,9 +65,9 @@ Transparency is a cornerstone principle of Architecture as Code and Management a
 
 ![Transparency workflow showing how issues and discussions enable transparent decision-making through structured processes](images/diagram_19_transparency_flow.png)
 
-*Figure: Transparency workflow illustrating how problems flow through discussions, issues, reviews, and decisions into searchable archives.*
+*Figure 19.6 – Transparency workflow illustrating how problems flow through discussions, issues, reviews, and decisions into searchable archives.*
 
-The transparency workflow diagram demonstrates the complete lifecycle from problem identification through strategic discussion, structured issue tracking, collaborative review, and final implementation. Each stage creates permanent records that build institutional knowledge whilst maintaining accountability and enabling asynchronous participation across distributed teams.
+Figure 19.6 demonstrates the complete lifecycle from problem identification through strategic discussion, structured issue tracking, collaborative review, and final implementation. Each stage creates permanent records that build institutional knowledge whilst maintaining accountability and enabling asynchronous participation across distributed teams.
 
 ### Issues as Transparent Decision Records
 
@@ -236,9 +236,9 @@ The goal is not absolute transparency in all matters, but rather deliberate and 
 
 ![Management workflow showing topics progressing through templates, analysis, decisions, follow-up, and archival](images/diagram_19_management_workflow.png)
 
-*Figure: Management workflow showing topics progressing through templates, analysis, decisions, follow-up, and archival.*
+*Figure 19.7 – Management workflow showing topics progressing through templates, analysis, decisions, follow-up, and archival.*
 
-The workflow diagram demonstrates how Issues and Discussions guide management work from inception to archival, ensuring nothing gets lost and every action is traceable.
+Figure 19.7 demonstrates how Issues and Discussions guide management work from inception to archival, ensuring nothing gets lost and every action is traceable.
 
 ## Budgeting as Code
 Budgeting as Code (BaC) is a crucial subset of MaC. Finance policies, spending limits, cost allocation rules, and investment hypotheses are encoded into version-controlled artefacts. YAML or JSON files define budget envelopes per product, platform, or team, and automated tests validate that proposed expenditures remain within budget. GitHub Actions integrate with financial systems to update actuals, enabling near real-time visibility of spending versus plan.
@@ -257,9 +257,9 @@ For teams of teams, MaC includes meta-structures that map dependencies, shared s
 
 ![Team-of-teams view linking squad blueprints to governance, shared services, dependencies, and automation](images/diagram_19_team_of_teams.png)
 
-*Figure: Team-of-teams view linking squad blueprints to governance, shared services, dependencies, and automation.*
+*Figure 19.8 – Team-of-teams view linking squad blueprints to governance, shared services, dependencies, and automation.*
 
-This team topology diagram demonstrates how squad-level definitions inform team-of-teams governance, with automation producing visibility and support structures.
+Figure 19.8 demonstrates how squad-level definitions inform team-of-teams governance, with automation producing visibility and support structures.
 
 ## Leading Multiple Teams Through Code
 When leaders oversee several teams or teams-of-teams, MaC provides the scaffolding to maintain coherence. Objectives cascade as code modules so portfolio-level OKRs break down into team objectives linked to backlog items and metrics. Leadership dashboards aggregate signals across squads, highlighting where intervention is needed, while automated alerts flag deviations from strategic priorities or capacity constraints. Playbooks codify coaching strategies, escalation patterns, and decision rights, and leaders can invoke these modules by triggering automation—such as launching a mediation workflow or scheduling a post-incident review—without manually coordinating every step.
