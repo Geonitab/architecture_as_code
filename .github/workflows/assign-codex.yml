@@ -9,5 +9,5 @@ jobs:
     uses: Geonitab/Actions-que/.github/workflows/enqueue-task.yml@main
     with:
       queue_issue_number: 1
-      task: "Generate glossary relations for term: 'Terraform state' (limit 20)"
+      task: ""
       correlation_id: "archbook-TERMS-001"
