@@ -37,6 +37,7 @@ import os
 import sys
 import glob
 import re
+import unicodedata
 from pathlib import Path
 import json
 
@@ -81,17 +82,97 @@ def limit_words(text, max_words=20):
     """Limit text to maximum number of words while preserving meaning."""
     if not text:
         return text
-    
+
     words = text.split()
     if len(words) <= max_words:
         return text
-    
+
     # Take the first max_words and add ellipsis if needed
     limited = ' '.join(words[:max_words])
     if len(words) > max_words:
         limited += "..."
-    
+
     return limited
+
+
+def _slugify_heading(text):
+    """Convert a heading into an anchor-friendly slug similar to MkDocs."""
+    if not text:
+        return ""
+
+    normalised = unicodedata.normalize("NFKD", text).strip().lower()
+    # Remove combining characters and unsupported punctuation
+    without_diacritics = "".join(ch for ch in normalised if not unicodedata.combining(ch))
+    cleaned = re.sub(r"[^0-9a-z\s-]", "", without_diacritics)
+    slug = re.sub(r"[\s-]+", "-", cleaned).strip("-")
+    return slug
+
+
+def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
+    """Generate slides.json for the Prezi-style presentation."""
+    docs_dir = Path("docs")
+    if not docs_dir.exists():
+        return output_path, 0
+
+    prezi_dir = output_path.parent
+    prezi_dir.mkdir(parents=True, exist_ok=True)
+
+    md_files = sorted(
+        [
+            path for path in docs_dir.glob("*.md")
+            if path.name.lower() not in {"index.md"}
+        ]
+    )
+
+    slides = []
+    x = y = 0
+    col_w, row_h, cols = 620, 460, 6
+
+    h1_re = re.compile(r"^\#\s+(.+)$", re.MULTILINE)
+    h2_re = re.compile(r"^\#\#\s+(.+)$", re.MULTILINE)
+
+    for md_file in md_files:
+        text = md_file.read_text(encoding="utf-8")
+        h1_match = h1_re.search(text)
+        if not h1_match:
+            continue
+
+        title = h1_match.group(1).strip()
+        slide_id = md_file.stem
+
+        slides.append(
+            {
+                "id": slide_id,
+                "title": title,
+                "mdPath": f"/{slide_id}/",
+                "x": x,
+                "y": y,
+                "zoom": 1,
+            }
+        )
+
+        for index, match in enumerate(h2_re.finditer(text), start=1):
+            section_title = match.group(1).strip()
+            slug = _slugify_heading(section_title) or f"section-{index}"
+            slides.append(
+                {
+                    "id": f"{slide_id}--{index}",
+                    "title": section_title,
+                    "mdPath": f"/{slide_id}/#{slug}",
+                    "x": x + 220 + ((index - 1) % 2) * 160,
+                    "y": y + 140 + ((index - 1) // 2) * 120,
+                    "zoom": 1,
+                    "parentId": slide_id,
+                }
+            )
+
+        x += col_w
+        if x > col_w * (cols - 1):
+            x = 0
+            y += row_h
+
+    output_path.write_text(json.dumps(slides, ensure_ascii=False, indent=2), encoding="utf-8")
+    return output_path, len(slides)
 
 def analyze_mermaid_diagram_types():
     """Analyze available Mermaid diagram types in the images directory."""
@@ -881,12 +962,18 @@ def main():
     
     # Read all chapters WITHOUT modifying them
     presentation_data = generate_presentation_outline()
-    
+
     if not presentation_data:
         print("Error: Could not read chapter data")
         return 1
-    
+
     print(f"Found {len(presentation_data)} chapters to include in presentation")
+
+    slides_path, slide_count = generate_prezi_slides()
+    if slide_count:
+        print(f"✅ Prezi slides generated at {slides_path} ({slide_count} slides)")
+    else:
+        print("⚠️ Prezi slides were not generated because no markdown chapters were found")
     
     # Create presentation outline
     outline_content = "# Presentation Outline\n\n"
@@ -951,7 +1038,8 @@ def main():
         print("   python generate_pptx.py")
         print("\n💡 Or use: python generate_presentation.py --create-pptx")
     
-    print("\n🚫 No files in docs/ directory were modified.")
+    print("\n📁 Prezi slide data stored in docs/prezi/slides.json.")
+    print("🚫 No other files in docs/ directory were modified.")
     
     return 0
 
