@@ -11,15 +11,16 @@ permissions:
   pull-requests: write
   issues: write
 
+# Minska krockar mellan parallella körningar för samma issue/PR
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.run_id }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.issue.number }}-${{ github.event.pull_request.number }}
   cancel-in-progress: false
 
 jobs:
   # ------------------------------------------------------------
   # Job A – When an issue is opened/reopened:
-  # Create or reuse a draft PR, then run Codex. If no diffs,
-  # still commit an OpenAI.md update to prove the flow.
+  # Create or reuse a draft PR, then run Codex. Om inga diffs:
+  # uppdatera OpenAI.md så att flödet alltid producerar en ändring.
   # ------------------------------------------------------------
   create_or_reuse_draft_pr:
     if: github.event_name == 'issues'
@@ -48,17 +49,22 @@ jobs:
 
       - name: Find or create branch with empty commit
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+
           PREFIX="refs/heads/codex/issue-${ISSUE_NUMBER}-*"
           EXISTING=$(git ls-remote --heads origin "$PREFIX" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1 || true)
 
           if [[ -n "${EXISTING:-}" ]]; then
+            # Remote-branch finns redan -> återanvänd den
             BRANCH="$EXISTING"
             echo "::debug::Reusing branch: $BRANCH"
             git fetch origin "$BRANCH" --depth=1
             git switch -C "$BRANCH" "origin/$BRANCH"
           else
+            # Skapa ny branch från default
             SLUG=$(printf '%s' "$ISSUE_TITLE" \
               | tr '[:upper:]' '[:lower:]' \
               | tr -cs 'a-z0-9' '-' \
@@ -71,7 +77,13 @@ jobs:
             git fetch origin "$DEFAULT_BRANCH" --depth=1
             git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
             git commit --allow-empty -m "Init draft for issue #${ISSUE_NUMBER}"
-            git push --set-upstream origin "$BRANCH"
+
+            # Försök pusha. Om någon annan hann skapa samma ref: återanvänd remote.
+            if ! git push --set-upstream origin "$BRANCH"; then
+              echo "::warning::Push failed (likely ref already exists). Reusing remote branch."
+              git fetch origin "$BRANCH" --depth=1
+              git switch -C "$BRANCH" "origin/$BRANCH"
+            fi
           fi
 
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
@@ -81,7 +93,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Try view by head branch
           if gh pr view "$BRANCH" --json number,url --repo "$REPO" >/tmp/pr.json 2>/dev/null; then
             PR_NUMBER=$(jq -r .number </tmp/pr.json)
             PR_URL=$(jq -r .url </tmp/pr.json)
@@ -172,7 +183,7 @@ jobs:
             - PR body:
             ${{ steps.prsha.outputs.pr_body }}
 
-      - name: Commit & push Codex changes (or OpenAI.md fallback)
+      - name: Commit & push Codex changes (or OpenAI.md fallback, with retry)
         shell: bash
         env:
           TZ: Europe/Stockholm
@@ -182,13 +193,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           if [[ -n "$(git status --porcelain)" ]]; then
-            # Codex produced file changes
+            # Codex producerade ändringar
             git add -A
             git commit -m "Codex auto-fix for issue(s) #${{ steps.linked_issue_in_job_a.outputs.numbers }}"
-            git push origin "${BRANCH}"
-            echo "::notice::Committed and pushed Codex changes to ${BRANCH}"
           else
-            # No file changes -> ensure OpenAI.md gets an entry so the flow always completes
+            # Inga ändringar -> uppdatera OpenAI.md som bevis
             TS=$(date '+%Y-%m-%d %H:%M:%S %Z')
             {
               echo "## No changes suggested"
@@ -200,16 +209,21 @@ jobs:
               echo "OpenAI/Codex did not propose any code edits for this issue. This entry ensures the automation flow remains verifiable end-to-end."
               echo ""
             } >> OpenAI.md
-
             git add OpenAI.md
             git commit -m "Record: No Codex changes suggested for issue #${ISSUE_NUMBER}"
+          fi
+
+          # Push med retry om ref kolliderar/låses
+          if ! git push origin "${BRANCH}"; then
+            echo "::warning::Push failed. Fetch + retry."
+            git fetch origin "${BRANCH}" --depth=1 || true
+            # Enkel retry (rebase brukar ej behövas för små commits)
             git push origin "${BRANCH}"
-            echo "::notice::No code changes from Codex — updated OpenAI.md instead."
           fi
 
   # ------------------------------------------------------------
-  # Job B – On PR events: run Codex on updates/sync and push.
-  # If no changes, still update OpenAI.md to make flow observable.
+  # Job B – On PR events: kör Codex på uppdateringar/sync.
+  # Om inga ändringar -> uppdatera OpenAI.md. Push med retry.
   # ------------------------------------------------------------
   assign_and_codex:
     if: github.event_name == 'pull_request'
@@ -277,7 +291,7 @@ jobs:
             - Base SHA: ${{ github.event.pull_request.base.sha }}
             - Head SHA: ${{ github.event.pull_request.head.sha }}
 
-      - name: Commit & push Codex changes (or OpenAI.md fallback)
+      - name: Commit & push Codex changes (or OpenAI.md fallback, with retry)
         if: steps.linked.outputs.has == 'true'
         shell: bash
         env:
@@ -288,15 +302,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           HEAD_REF="${{ github.head_ref }}"
-          if [[ -z "$HEAD_REF" ]]; then
+          if [[ -z "$HEAD_REF" || "$HEAD_REF" == "null" ]]; then
             HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
           fi
 
           if [[ -n "$(git status --porcelain)" ]]; then
             git add -A
             git commit -m "Codex auto-fix for issue(s) #${{ steps.linked.outputs.numbers }}"
-            git push origin "$HEAD_REF"
-            echo "::notice::Committed and pushed Codex changes to ${HEAD_REF}"
           else
             TS=$(date '+%Y-%m-%d %H:%M:%S %Z')
             {
@@ -311,6 +323,11 @@ jobs:
             } >> OpenAI.md
             git add OpenAI.md
             git commit -m "Record: No Codex changes suggested on PR #${{ github.event.pull_request.number }}"
+          fi
+
+          # Push med retry om ref kolliderar/låses
+          if ! git push origin "$HEAD_REF"; then
+            echo "::warning::Push failed. Fetch + retry."
+            git fetch origin "$HEAD_REF" --depth=1 || true
             git push origin "$HEAD_REF"
-            echo "::notice::No code changes from Codex — updated OpenAI.md instead."
           fi
