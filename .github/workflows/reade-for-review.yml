@@ -1,0 +1,27 @@
+name: Auto Ready for Review
+
+on:
+  pull_request:
+    types:
+      - synchronize  # triggered when new commits are pushed to an open PR
+      - opened       # triggered when a PR is first created
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  mark-ready:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == true
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Mark PR as ready for review
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          echo "Marking PR #${PR_NUMBER} as ready for review..."
+          gh pr ready $PR_NUMBER
