@@ -69,6 +69,36 @@ The following entries are the quickest way to explore those artefacts without le
 * **Environment configuration and monitoring** – Appendix entry [14_CODE_2](30_appendix_code_examples.md#14_code_2) layers production-grade state management, observability dashboards, and retention controls on top of the shared module so that operations teams receive actionable telemetry from day one.
 * **Continuous delivery workflow** – Appendix entry [14_CODE_3](30_appendix_code_examples.md#14_code_3) captures the associated GitHub Actions pipeline that plans and applies infrastructure changes across environments and requires an explicit approval step before production deployments.
 
+### Example: Regulated public sector landing zone
+
+UK central-government platform teams often begin with a constrained scope so that Cabinet Office assessors can observe tangible progress without risking service degradation. A typical first slice combines six-week discovery and foundation sprints:
+
+- **Weeks 1–2 – Discovery and risk framing**: Service owners catalogue in-scope systems, data classifications, and regulatory controls. Architecture, security, and operations representatives run a joint threat-modelling workshop and record mandatory guardrails as executable policies (refer back to [Chapter 10](10_policy_and_security.md)).
+- **Weeks 3–4 – Baseline landing zone**: The core team provisions the Appendix [14_CODE_1](30_appendix_code_examples.md#14_code_1) Terraform module into a non-production account, wiring it to an enterprise Secrets Manager instance, Slack-based incident channels, and an approved identity provider. Every merge request runs the [14_CODE_3](30_appendix_code_examples.md#14_code_3) pipeline to satisfy change-advisory evidence requirements without paperwork.
+- **Weeks 5–6 – Accreditation simulation**: The team executes automated compliance scans alongside manual tabletop exercises, then exports the resulting evidence pack to the GDS assessors. The exercise validates that the repository now acts as the authoritative runbook for operations, finance, and governance staff.
+
+The outcome is a minimum viable landing zone that satisfies the Technology Code of Practice, proves operational readiness for public-sector workloads, and shortens subsequent accreditations because repeatable policy code now answers the majority of security questionnaires.
+
+### Example: Global retailer consolidating regional cloud estates
+
+An international retailer frequently inherits divergent automation practices across subsidiaries. Their Architecture as Code adoption starts by aligning commercial and security incentives across regions:
+
+1. **Finance-backed capability scorecard**: Regional engineering leads self-assess maturity against the capability landscape in Figure 14.1. Finance overlays cost-to-serve data, highlighting duplication and manual handoffs that inflate the total cost of ownership (reinforcing [Chapter 15](15_cost_optimization.md)).
+2. **Adoption playbook**: A cross-regional guild writes a playbook that prescribes environment naming standards, tagging taxonomies, and automated guardrails. The playbook references [14_CODE_2](30_appendix_code_examples.md#14_code_2) so local teams can bootstrap observability and retention defaults in hours rather than weeks.
+3. **Thin vertical delivery**: Each region selects one product line to migrate using the shared pipeline. Joint architecture boards review weekly pull requests, comparing telemetry from the new environments with legacy change tickets to demonstrate faster cycle times, lower cost variance, and higher deployment confidence.
+
+Within three quarters the retailer decommissions eight inconsistent toolchains, reuses the same landing zone blueprints across EMEA and APAC, and negotiates better cloud pricing because infrastructure changes are logged, peer-reviewed, and cost-tracked through a single pipeline.
+
+### Example: SaaS scale-up preparing for enterprise customers
+
+Scale-ups often chase enterprise contracts that demand stronger auditability and self-service onboarding. A growth-stage SaaS provider can use Architecture as Code to satisfy those expectations without sacrificing engineering velocity:
+
+- **Customer-aligned environments**: Product squads fork the baseline blueprint to create per-tenant sandboxes that inherit shared networking and logging policies. Service owners add feature toggles and rate limits as code artefacts, reducing reliance on manual support changes.
+- **Runbooks encoded as pipelines**: Incident-response runbooks are rewritten as pipeline stages so that rotational responders receive the same automated remediation steps, dashboards, and rollback controls. This aligns with the enablement flywheel in Figure 14.4 by pairing learning pathways with codified operations.
+- **Buyer confidence metrics**: Security questionnaires draw evidence directly from repository histories, pipeline artefacts, and tested policies. Sales and compliance teams can prove segregation, encryption, and monitoring guarantees without scheduling bespoke demonstrations.
+
+The result is a repeatable onboarding journey: new enterprise customers move from contract signature to production traffic in under two weeks because every operational dependency—identity, networking, cost controls, and telemetry—is provisioned automatically from the same codified templates.
+
 Each appendix entry describes when to use the pattern, the governance indicators it produces, and how the implementation reinforces the operating practices discussed in this chapter. Teams should tailor the templates to match their naming standards, guardrail policies, and release cadences.
 
 ## Summary
