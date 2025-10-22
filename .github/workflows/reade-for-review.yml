@@ -5,6 +5,7 @@ on:
     types:
       - synchronize  # triggered when new commits are pushed to an open PR
       - opened       # triggered when a PR is first created
+  workflow_dispatch:
 
 permissions:
   contents: read
