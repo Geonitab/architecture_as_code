@@ -1,0 +1,42 @@
+name: Ready all draft PRs
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  ready-all-drafts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark all open draft PRs as Ready for review
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          echo "Scanning open draft PRs in $REPO ..."
+          # Fetch all open PRs and filter those in draft
+          mapfile -t DRAFT_PRS < <(gh pr list --repo "$REPO" --state open --json number,isDraft,title --jq '.[] | select(.isDraft==true) | [.number, .title] | @tsv')
+
+          if [ ${#DRAFT_PRS[@]} -eq 0 ]; then
+            echo "No open draft PRs found."
+            echo "No open draft PRs found." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          echo "Found ${#DRAFT_PRS[@]} draft PR(s)."
+          echo "## Marked PRs" >> "$GITHUB_STEP_SUMMARY"
+
+          for row in "${DRAFT_PRS[@]}"; do
+            pr_number="$(cut -f1 <<< "$row")"
+            pr_title="$(cut -f2- <<< "$row")"
+
+            echo "→ Marking #$pr_number \"$pr_title\" as ready..."
+            if gh pr ready "$pr_number" --repo "$REPO"; then
+              echo "- ✅ #$pr_number $pr_title" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "- ❌ #$pr_number $pr_title (failed)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
