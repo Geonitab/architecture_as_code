@@ -25,12 +25,12 @@ book:
       required: true
       label: "Chapter 4"
     - filename: "05_automation_devops_cicd.md"
-      title: "Automation, DevOps and CI/CD for Infrastructure as Code"
+      title: "Automation, DevOps and CI/CD for Architecture as Code"
       area: "Architecture Platform"
       required: true
       label: "Chapter 5"
     - filename: "06_structurizr.md"
-      title: "Structurizr: Architecture Modelling as Code"
+      title: "Structurizr: Architecture Modeling as Code"
       area: "Architecture Platform"
       required: true
       label: "Chapter 6"
@@ -90,7 +90,7 @@ book:
       required: true
       label: "Chapter 17"
     - filename: "18_team_structure.md"
-      title: "Team Structure and Competency Development for IaC"
+      title: "Team Structure and Competency Development for Architecture as Code"
       area: "Organisation and Leadership"
       required: true
       label: "Chapter 18"
@@ -100,27 +100,27 @@ book:
       required: true
       label: "Chapter 19"
     - filename: "20_ai_agent_team.md"
-      title: "AI Agent Team for Architecture as Code Initiatives"
+      title: "AI Agent Team for the Architecture as Code Initiative"
       area: "Organisation and Leadership"
       required: true
       label: "Chapter 20"
     - filename: "21_digitalization.md"
-      title: "Digitalisation through Code-Based Infrastructure"
+      title: "Digital Transformation through Code-Based Infrastructure"
       area: "Organisation and Leadership"
       required: true
       label: "Chapter 21"
     - filename: "22_documentation_vs_architecture.md"
-      title: "Documentation as Code versus Architecture as Code"
+      title: "Documentation as Code vs Architecture as Code"
       area: "Experience and Best Practices"
       required: true
       label: "Chapter 22"
     - filename: "23_soft_as_code_interplay.md"
-      title: "The Interplay Between Soft As Code Disciplines"
+      title: 'The Interplay Between Soft "as code" Disciplines'
       area: "Experience and Best Practices"
       required: true
       label: "Chapter 23"
     - filename: "24_best_practices.md"
-      title: "Best Practices and Lessons Learned"
+      title: "Modern Best Practices and Lessons Learned"
       area: "Experience and Best Practices"
       required: true
       label: "Chapter 24"
@@ -140,7 +140,7 @@ book:
       required: true
       label: "Chapter 26B"
     - filename: "27_conclusion.md"
-      title: "Conclusion and the Way Forward"
+      title: "Chapter 27 – Conclusion"
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 27"
@@ -155,7 +155,7 @@ book:
       required: true
       label: "About the Author"
     - filename: "30_appendix_code_examples.md"
-      title: "Appendix A: Code Examples and Technical Implementations"
+      title: "Code examples and technical architecture as code implementations"
       area: "Appendices"
       required: true
       label: "Appendix A"
@@ -165,7 +165,7 @@ book:
       required: true
       label: "Appendix B"
     - filename: "32_finos_project_blueprint.md"
-      title: "Appendix C: FINOS Project Blueprint Case Study"
+      title: "FINOS Project Blueprint: Operationalising Architecture as Code"
       area: "Appendices"
       required: true
       label: "Appendix C"
@@ -278,47 +278,50 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 **Architecture as Code** – the practice of describing, versioning and automating complete system architecture through machine-readable artefacts that cover infrastructure, applications, data flows, security policies and organisational processes.
 
 ### Chapter Breakdown
-| # | Filename | Title | Focus Area | Required |
-|---|----------|-------|------------|----------|
-| 01 | 01_introduction.md | Introduction to Architecture as Code | Basic Concepts | Yes |
-| 02 | 02_fundamental_principles.md | Fundamental Principles of Architecture as Code | Basic Concepts | Yes |
-| 03 | 03_version_control.md | Version Control and Code Structure | System Development | Yes |
-| 04 | 04_adr.md | Architecture Decision Records (ADR) | Basic Concepts | Yes |
-| 05 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Infrastructure as Code | System Development | Yes |
-| 07 | 07_containerization.md | Containerisation and Orchestration | Architecture | Yes |
-| 08 | 08_microservices.md | Microservices and Distributed Systems | Architecture | Yes |
-| 9A | 09a_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security | Yes |
-| 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security | Yes |
-| 10 | 10_policy_and_security.md | Policy as Code and Security Automation | Security | Yes |
-| 11 | 11_governance_as_code.md | Governance as Code | Governance | Yes |
-| 12 | 12_compliance.md | Compliance and Regulatory Alignment | Governance | Yes |
-| 13 | 13_testing_strategies.md | Testing Strategies for Infrastructure as Code | Quality Assurance | Yes |
-| 14 | 14_practical_implementation.md | Practical Implementation of Architecture as Code | Practical Application | Yes |
-| 15 | 15_cost_optimization.md | Cost Optimisation and Resource Management | Economic Optimisation | Yes |
-| 16 | 16_migration.md | Migration from Traditional Infrastructure | Migration | Yes |
-| 17 | 17_organizational_change.md | Organisational Change and Team Structures | Organisational Development | Yes |
-| 18 | 18_team_structure.md | Team Structure for Scalable IaC | Organisational Development | Yes |
-| 19 | 19_management_as_code.md | Management as Code | Leadership | Yes |
-| 20 | 20_ai_agent_team.md | AI Agent Team for Architecture as Code Initiatives | Collaboration | Yes |
-| 21 | 21_digitalization.md | Digitalisation through Code-Based Infrastructure | Strategic Development | Yes |
-| 22 | 22_lovable_mockups.md | Lovable Mockups and Prototyping | Product Development | Yes |
-| 23 | 23_soft_as_code_interplay.md | The Interplay Between Soft As Code Disciplines | Strategic Development | Yes |
-| 24 | 24_best_practices.md | Method Selection and Lessons Learned | Best Practices | Yes |
-| 25 | 25_future_trends.md | Future Trends in Infrastructure as Code | Future Outlook | Yes |
-| 26 | 26_future_development.md | Future Development | Future Outlook | Yes |
-| 27 | 27_conclusion.md | Conclusion and the Way Forward | Summary | Yes |
-| 28 | 28_glossary.md | Glossary and Definitions | Reference | Yes |
-| 29 | 29_about_the_authors.md | About the Author | Appendix | Yes |
-| 30 | 30_appendix_code_examples.md | Appendix A: Code Examples and Technical Implementations | Appendix | Yes |
-| 31 | 31_technical_architecture.md | Technical Architecture Blueprint | Appendix | Yes |
+| Label | Filename | Title | Focus Area | Required |
+|---|---|---|---|---|
+| Chapter 1 | 01_introduction.md | Introduction to Architecture as Code | Foundations | Yes |
+| Chapter 2 | 02_fundamental_principles.md | Fundamental Principles of Architecture as Code | Foundations | Yes |
+| Chapter 3 | 03_version_control.md | Version Control and Code Structure | Foundations | Yes |
+| Chapter 4 | 04_adr.md | Architecture Decision Records (ADR) | Foundations | Yes |
+| Chapter 5 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Architecture as Code | Architecture Platform | Yes |
+| Chapter 6 | 06_structurizr.md | Structurizr: Architecture Modeling as Code | Architecture Platform | Yes |
+| Chapter 7 | 07_containerization.md | Containerisation and Orchestration as Code | Architecture Platform | Yes |
+| Chapter 9A | 09a_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security and Governance | Yes |
+| Chapter 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security and Governance | Yes |
+| Chapter 10 | 10_policy_and_security.md | Policy and Security as Code in Detail | Security and Governance | Yes |
+| Chapter 11 | 11_governance_as_code.md | Governance as Code | Security and Governance | Yes |
+| Chapter 12 | 12_compliance.md | Compliance and Regulatory Adherence | Security and Governance | Yes |
+| Chapter 13 | 13_testing_strategies.md | Testing Strategies for Infrastructure as Code | Delivery and Operations | Yes |
+| Chapter 14 | 14_practical_implementation.md | Architecture as Code in Practice | Delivery and Operations | Yes |
+| Chapter 15 | 15_cost_optimization.md | Cost Optimisation and Resource Management | Delivery and Operations | Yes |
+| Chapter 16 | 16_migration.md | Migration from Traditional Infrastructure | Delivery and Operations | Yes |
+| Chapter 17 | 17_organizational_change.md | Organisational Change and Team Structures | Organisation and Leadership | Yes |
+| Chapter 18 | 18_team_structure.md | Team Structure and Competency Development for Architecture as Code | Organisation and Leadership | Yes |
+| Chapter 19 | 19_management_as_code.md | Management as Code | Organisation and Leadership | Yes |
+| Chapter 20 | 20_ai_agent_team.md | AI Agent Team for the Architecture as Code Initiative | Organisation and Leadership | Yes |
+| Chapter 21 | 21_digitalization.md | Digital Transformation through Code-Based Infrastructure | Organisation and Leadership | Yes |
+| Chapter 22 | 22_documentation_vs_architecture.md | Documentation as Code vs Architecture as Code | Experience and Best Practices | Yes |
+| Chapter 23 | 23_soft_as_code_interplay.md | The Interplay Between Soft "as code" Disciplines | Experience and Best Practices | Yes |
+| Chapter 24 | 24_best_practices.md | Modern Best Practices and Lessons Learned | Experience and Best Practices | Yes |
+| Chapter 25 | 25_future_trends_development.md | Future Trends and Development in Architecture as Code | Future and Wrap-up | Yes |
+| Chapter 26A | 26_prerequisites_for_aac.md | Prerequisites for Architecture as Code Adoption | Future and Wrap-up | Yes |
+| Chapter 26B | 26_aac_anti_patterns.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
+| Chapter 27 | 27_conclusion.md | Chapter 27 – Conclusion | Future and Wrap-up | Yes |
+| Glossary | 28_glossary.md | Glossary | Appendices | Yes |
+| About the Author | 29_about_the_authors.md | About the Author | Appendices | Yes |
+| Appendix A | 30_appendix_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
+| Appendix B | 31_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
+| Appendix C | 32_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
+| References | 33_references.md | References and Sources | Reference | Yes |
 
 ### Special Chapter Requirements
 - **Glossary (`28_glossary.md`)** – no diagrams or sources required.
-- **About the Author (`29_about_the_authors.md`)** – includes a diagram showcasing author expertise; sources cite kvadrat.se.
+- **About the Author (`29_about_the_authors.md`)** – no diagrams or sources required.
 - **Conclusion (`27_conclusion.md`)** – does not require diagrams but must cite sources.
-- **Appendix A (`30_appendix_code_examples.md`)** – diagrams are required; sources are optional.
+- **Appendix A (`30_appendix_code_examples.md`)** – diagrams and sources are optional.
 - **Technical Architecture (`31_technical_architecture.md`)** – diagrams are required; sources are optional.
-- **Future Development (`26_future_development.md`)** – sources are required; diagrams are optional.
+- **References (`33_references.md`)** – provide consolidated citations for the entire manuscript.
 - **Book Cover (`BOOK_COVER_DESIGN.md`)** – no diagrams or sources required.
 - **EPUB Validation (`EPUB_VALIDATION.md`)** – no diagrams or sources required.
 
