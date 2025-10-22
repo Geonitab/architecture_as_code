@@ -1,4 +1,4 @@
-name: Ready all draft PRs
+name: Ready eligible draft PRs
 
 on:
   workflow_dispatch:
@@ -8,35 +8,44 @@ permissions:
   pull-requests: write
 
 jobs:
-  ready-all-drafts:
+  ready-eligible-drafts:
     runs-on: ubuntu-latest
     steps:
-      - name: Mark all open draft PRs as Ready for review
+      - name: Mark only draft PRs that have file changes as Ready for review
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
           echo "Scanning open draft PRs in $REPO ..."
-          # Fetch all open PRs and filter those in draft
-          mapfile -t DRAFT_PRS < <(gh pr list --repo "$REPO" --state open --json number,isDraft,title --jq '.[] | select(.isDraft==true) | [.number, .title] | @tsv')
+          # Get all open draft PR numbers
+          mapfile -t PRS < <(gh pr list --repo "$REPO" --state open --json number,isDraft --jq '.[] | select(.isDraft==true) | .number')
 
-          if [ ${#DRAFT_PRS[@]} -eq 0 ]; then
+          if [ ${#PRS[@]} -eq 0 ]; then
             echo "No open draft PRs found."
             echo "No open draft PRs found." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
 
-          echo "Found ${#DRAFT_PRS[@]} draft PR(s)."
-          echo "## Marked PRs" >> "$GITHUB_STEP_SUMMARY"
+          echo "## Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| PR | Title | Changed files | Commits | Action |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|---:|-------|---------------:|--------:|--------|" >> "$GITHUB_STEP_SUMMARY"
 
-          for row in "${DRAFT_PRS[@]}"; do
-            pr_number="$(cut -f1 <<< "$row")"
-            pr_title="$(cut -f2- <<< "$row")"
+          for pr in "${PRS[@]}"; do
+            info="$(gh pr view "$pr" --repo "$REPO" --json number,title,changedFiles,commits,isDraft)"
+            title="$(jq -r '.title' <<< "$info")"
+            changed_files="$(jq -r '.changedFiles' <<< "$info")"
+            commit_count="$(jq -r '.commits' <<< "$info")"
 
-            echo "→ Marking #$pr_number \"$pr_title\" as ready..."
-            if gh pr ready "$pr_number" --repo "$REPO"; then
-              echo "- ✅ #$pr_number $pr_title" >> "$GITHUB_STEP_SUMMARY"
+            if [ "$changed_files" -gt 0 ] && [ "$commit_count" -gt 0 ]; then
+              if gh pr ready "$pr" --repo "$REPO"; then
+                action="✅ Marked ready"
+              else
+                action="❌ Failed to mark"
+              fi
             else
-              echo "- ❌ #$pr_number $pr_title (failed)" >> "$GITHUB_STEP_SUMMARY"
+              action="⏭️ Skipped (no files/commits)"
             fi
+
+            echo "| #$pr | ${title//|/-} | $changed_files | $commit_count | $action |" >> "$GITHUB_STEP_SUMMARY"
           done
