@@ -26,7 +26,7 @@ Each example has a unique identifier in the format `[chapter]_CODE_[NUMBER]` for
 
 This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations.
 
-### 05_CODE_1: GDPR-compliant CI/CD pipeline for organisations
+### 05_CODE_1: GDPR-compliant CI/CD pipeline for organisations {#05_code_1}
 *Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
 
 ```yaml
@@ -107,7 +107,7 @@ jobs:
           echo "✅ GDPR compliance check completed successfully"
 ```
 
-### 05_CODE_2: Jenkins pipeline for organisations with GDPR compliance
+### 05_CODE_2: Jenkins pipeline for organisations with GDPR compliance {#05_code_2}
 *Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
 
 ```yaml
@@ -415,7 +415,7 @@ pipeline {
 }
 ```
 
-### 05_CODE_3: Terratest for VPC implementation
+### 05_CODE_3: Terratest for VPC implementation {#05_code_3}
 *Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
 
 ```go
@@ -685,7 +685,7 @@ Architecture as Code principles in this area emphasise resilient AWS foundations
 
 This section contains CloudFormation templates for AWS infrastructure adapted for organisations.
 
-### 07_CODE_1: VPC Setup for organisations with GDPR compliance
+### 07_CODE_1: VPC Setup for organisations with GDPR compliance {#07_code_1}
 *Referenced from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
 
 ```yaml
@@ -746,7 +746,7 @@ Resources:
 
 This section contains Python scripts and other automation tooling for Architecture as Code operations.
 
-### 22_CODE_1: Comprehensive test framework for Architecture as Code
+### 22_CODE_1: Comprehensive test framework for Architecture as Code {#22_code_1}
 
 Architecture as Code principles within this area emphasise automated validation and transparent feedback.
 *Referenced from chapter 24: [Architecture as Code Best Practices and Lessons Learned](24_best_practices.md)*
@@ -845,7 +845,7 @@ class ComprehensiveIaCTesting:
 
 This section contains configuration files for different tools and services.
 
-### 22_CODE_2: Governance policy configuration for organisations
+### 22_CODE_2: Governance policy configuration for organisations {#22_code_2}
 *Referenced from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```yaml
@@ -1174,7 +1174,7 @@ Complete GitHub Actions workflow demonstrating infrastructure testing pipeline w
 
 ## Organisational Change and Team Structures {#organisational-change}
 
-### 17_CODE_1: Infrastructure Platform Team Blueprint
+### 17_CODE_1: Infrastructure Platform Team Blueprint {#17_code_1}
 *Listing 17-A.*
 *Referenced from chapter 17: [Organisational Change and Team Structures](17_organizational_change.md)*
 
@@ -1288,7 +1288,7 @@ team_structure:
     knowledge_sharing: "Monthly internal tech talks"
 ```
 
-### 17_CODE_2: IaC Competency Framework Utilities
+### 17_CODE_2: IaC Competency Framework Utilities {#17_code_2}
 *Listing 17-B.*
 *Referenced from chapter 17: [Organisational Change and Team Structures](17_organizational_change.md)*
 
@@ -1611,7 +1611,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
     return change_plan
 ```
 
-### 17_CODE_3: DevOps Performance Measurement Framework
+### 17_CODE_3: DevOps Performance Measurement Framework {#17_code_3}
 *Listing 17-C.*
 *Referenced from chapter 17: [Organisational Change and Team Structures](17_organizational_change.md)*
 
