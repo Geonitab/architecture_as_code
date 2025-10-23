@@ -14,7 +14,7 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 [Appendix B: Technical Architecture for Book Production](31_technical_architecture.md) documents the infrastructure and automation used to produce this book itself. This meta-example demonstrates Architecture as Code principles applied to documentation delivery, showing how the same practices scale from infrastructure to content pipelines.
 
-**What you will find in this section:**
+**What you will learn in this part:**
 
 - Comprehensive glossary of Architecture as Code terminology
 - Author background and expertise context
