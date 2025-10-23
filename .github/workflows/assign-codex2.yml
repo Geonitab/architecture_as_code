@@ -110,13 +110,14 @@ jobs:
             for f in "${WF_FILES[@]}"; do
               echo "Processing workflow: $f"
               git diff -- "$f" > diff.patch
-              gh pr comment "${PR_NUMBER}" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`" "$f" "$(cat diff.patch)")"
+              gh pr comment "${PR_NUMBER}" --repo "$REPO" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`" "$f" "$(cat diff.patch)")"
               rm -f diff.patch
+              # Revert workflow file so we don't push it
               git checkout -- "$f"
             done
           fi
 
-      - name: Commit & push non-workflow Codex changes
+      - name: Commit & push non-workflow Codex changes (then mark PR ready)
         run: |
           set -euo pipefail
           if [[ -n "$(git status --porcelain)" ]]; then
@@ -124,6 +125,13 @@ jobs:
             git commit -m "Codex auto-fix for issue #${ISSUE_NUMBER}"
             git push origin "${BRANCH}"
             echo "::notice::Committed and pushed non-workflow changes to ${BRANCH}"
+
+            # If the PR is still draft, mark it ready for review
+            IS_DRAFT=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json isDraft --jq .isDraft || echo true)
+            if [[ "$IS_DRAFT" == "true" ]]; then
+              gh pr ready "$PR_NUMBER" --repo "$REPO"
+              echo "::notice::Marked PR #$PR_NUMBER ready for review."
+            fi
           else
             echo "::notice::No non-workflow changes to commit."
           fi
@@ -170,7 +178,7 @@ jobs:
             done
           fi
 
-      - name: Commit & push non-workflow Codex changes
+      - name: Commit & push non-workflow Codex changes (then mark PR ready)
         run: |
           set -euo pipefail
           if [[ -n "$(git status --porcelain)" ]]; then
@@ -182,6 +190,13 @@ jobs:
             [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
             git push origin "$HEAD_REF"
             echo "::notice::Committed and pushed non-workflow Codex changes."
+
+            # If the PR is still draft, mark it ready for review
+            IS_DRAFT=$(gh pr view "${{ github.event.pull_request.number }}" --json isDraft --jq .isDraft || echo true)
+            if [[ "$IS_DRAFT" == "true" ]]; then
+              gh pr ready "${{ github.event.pull_request.number }}"
+              echo "::notice::Marked PR ready for review."
+            fi
           else
             echo "::notice::No non-workflow Codex changes to commit."
           fi
