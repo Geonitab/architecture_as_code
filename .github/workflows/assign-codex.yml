@@ -10,10 +10,9 @@ permissions:
   contents: write
   pull-requests: write
   issues: write
-  # NOTE: we do NOT request "workflows" permission; workflow edits go via a proposal PR.
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.issue.number }}-${{ github.event.pull_request.number }}
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.issue.number || github.event.pull_request.number }}
   cancel-in-progress: false
 
 jobs:
@@ -31,10 +30,9 @@ jobs:
       ISSUE_TITLE: ${{ github.event.issue.title }}
       GH_TOKEN: ${{ github.token }}
       TZ: Europe/Stockholm
-
     steps:
       - name: Enable debug logging
-        run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+        run: echo "ACTIONS_STEP_DEBUG=true" >> "$GITHUB_ENV"
 
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -45,68 +43,68 @@ jobs:
       - name: Determine default branch
         run: |
           set -euo pipefail
-          DEFAULT_BRANCH=$(gh repo view "$REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
-          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
+          DEFAULT_BRANCH="$(gh repo view "$REPO" --json defaultBranchRef --jq .defaultBranchRef.name)"
+          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> "$GITHUB_ENV"
 
       - name: Find or create branch with empty commit
-        shell: bash
         run: |
           set -euo pipefail
-
           PREFIX="refs/heads/codex/issue-${ISSUE_NUMBER}-*"
-          EXISTING=$(git ls-remote --heads origin "$PREFIX" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1 || true)
-
+          EXISTING="$(git ls-remote --heads origin "$PREFIX" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1 || true)"
           if [[ -n "${EXISTING:-}" ]]; then
             BRANCH="$EXISTING"
             echo "::debug::Reusing branch: $BRANCH"
             git fetch origin "$BRANCH" --depth=1
             git switch -C "$BRANCH" "origin/$BRANCH"
           else
-            SLUG=$(printf '%s' "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
+            # slugify issue title (lowercase, keep a–z0–9, collapse to '-')
+            SLUG="$(printf '%s' "$ISSUE_TITLE" \
+              | tr '[:upper:]' '[:lower:]' \
+              | tr -cs 'a-z0-9' '-' \
+              | sed 's/^-//; s/-$//; s/--*/-/g' \
+              | cut -c1-40)"
             BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
-
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git fetch origin "$DEFAULT_BRANCH" --depth=1
             git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
             git commit --allow-empty -m "Init draft for issue #${ISSUE_NUMBER}"
-
             if ! git push --set-upstream origin "$BRANCH"; then
               echo "::warning::Push failed (likely ref already exists). Reusing remote branch."
               git fetch origin "$BRANCH" --depth=1
               git switch -C "$BRANCH" "origin/$BRANCH"
             fi
           fi
-
-          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
 
       - name: Ensure draft PR exists (create if missing)
         id: ensure_draft
         run: |
           set -euo pipefail
           if gh pr view "$BRANCH" --json number,url --repo "$REPO" >/tmp/pr.json 2>/dev/null; then
-            PR_NUMBER=$(jq -r .number </tmp/pr.json)
-            PR_URL=$(jq -r .url </tmp/pr.json)
+            PR_NUMBER="$(jq -r .number </tmp/pr.json)"
+            PR_URL="$(jq -r .url </tmp/pr.json)"
           else
-            PR_URL=$(gh pr create \
+            PR_URL="$(gh pr create \
               --base "$DEFAULT_BRANCH" \
               --head "$BRANCH" \
               --title "Draft: Issue #$ISSUE_NUMBER – $ISSUE_TITLE" \
               --body "This draft PR was auto-created for Issue #$ISSUE_NUMBER.\n\nCloses #$ISSUE_NUMBER" \
               --draft \
-              --repo "$REPO")
-            PR_NUMBER=$(gh pr view "$BRANCH" --json number --jq .number --repo "$REPO")
+              --repo "$REPO")"
+            PR_NUMBER="$(gh pr view "$BRANCH" --json number --jq .number --repo "$REPO")"
           fi
-          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
-          echo "PR_URL=$PR_URL" >> $GITHUB_ENV
+          {
+            echo "PR_NUMBER=$PR_NUMBER"
+            echo "PR_URL=$PR_URL"
+          } >> "$GITHUB_ENV"
           echo "pr_number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
-          echo "pr_url=$PR_URL" >> "$GITHUB_OUTPUT"
 
       - name: Read PR metadata
         id: prsha
         run: |
           set -euo pipefail
-          pr=$(gh pr view "$PR_NUMBER" --json headRefOid,baseRefOid,title,number)
+          pr="$(gh pr view "$PR_NUMBER" --json headRefOid,baseRefOid,title,number)"
           echo "base_sha=$(echo "$pr" | jq -r .baseRefOid)" >> "$GITHUB_OUTPUT"
           echo "head_sha=$(echo "$pr" | jq -r .headRefOid)" >> "$GITHUB_OUTPUT"
           echo "pr_title=$(echo "$pr" | jq -r .title)" >> "$GITHUB_OUTPUT"
@@ -127,12 +125,12 @@ jobs:
           }'
           nums=""
           for i in 1 2 3; do
-            data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO_NAME" -F number="$PR_NUMBER" || true)
-            nums=$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes|map(.number)|join(",")' 2>/dev/null || true)
+            data="$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO_NAME" -F number="$PR_NUMBER" || true)"
+            nums="$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes|map(.number)|join(",")' 2>/dev/null || true)"
             [[ -n "$nums" ]] && break || sleep 2
           done
           if [[ -z "$nums" ]]; then nums="${ISSUE_NUMBER}"; fi
-          echo "has=true"   >> "$GITHUB_OUTPUT"
+          echo "has=true" >> "$GITHUB_OUTPUT"
           echo "numbers=$nums" >> "$GITHUB_OUTPUT"
 
       - name: Build Codex prompt (env block)
@@ -147,12 +145,10 @@ jobs:
           CODEX_PROMPT: |
             You are Codex working on branch "${BRANCH_NAME}" for PR #${PR_NUM}.
             The PR is linked to issue(s) #${ISSUE_NUMBERS}.
-
             Goal:
             - Make minimal, targeted code edits in the workspace to resolve the linked issue(s).
             - Update tests and docs when relevant.
             - Print a concise summary of what changed.
-
             Context:
             - Base SHA: ${BASE_SHA}
             - Head SHA: ${HEAD_SHA}
@@ -179,11 +175,9 @@ jobs:
         env:
           PROPOSAL_README: |
             # Workflow change proposal (manual apply required)
-
             This repository's automation token lacks the `workflows` permission.
             The attached patch and `.proposed` copies show the intended changes under `.github/workflows/`.
             A maintainer with the proper permission must apply these changes.
-
             How to apply:
             1. Review `workflows-*.patch` and the `*.proposed` files.
             2. Apply the patch locally, or copy the proposed content into the respective files under `.github/workflows/`.
@@ -192,14 +186,12 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          CHANGED=$(git status --porcelain | awk '{print $2}')
-          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
-
+          CHANGED="$(git status --porcelain | awk '{print $2}')"
+          echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
           mapfile -t WF_FILES < <(printf '%s\n' $CHANGED | grep -E '^\.github/workflows/' || true)
           if (( ${#WF_FILES[@]} )); then
-            echo "has_wf_changes=true" >> $GITHUB_OUTPUT
-            TS=$(date '+%Y%m%d-%H%M%S')
+            echo "has_wf_changes=true" >> "$GITHUB_OUTPUT"
+            TS="$(date '+%Y%m%d-%H%M%S')"
             mkdir -p proposals/workflows
             git diff -- ${WF_FILES[@]} > "proposals/workflows/workflows-${TS}.patch" || true
             for f in "${WF_FILES[@]}"; do
@@ -209,7 +201,7 @@ jobs:
             git checkout -- ${WF_FILES[@]} || true
             git add proposals/workflows || true
           else
-            echo "has_wf_changes=false" >> $GITHUB_OUTPUT
+            echo "has_wf_changes=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Commit & push main PR changes (retry) or OpenAI.md fallback
@@ -217,12 +209,11 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           if [[ -n "$(git status --porcelain)" ]]; then
             git add -A
             git commit -m "Codex auto-fix for issue(s) #${{ steps.linked_issue_in_job_a.outputs.numbers }}"
           else
-            TS=$(date '+%Y-%m-%d %H:%M:%S %Z')
+            TS="$(date '+%Y-%m-%d %H:%M:%S %Z')"
             {
               echo "## No changes suggested"
               echo ""
@@ -236,7 +227,6 @@ jobs:
             git add OpenAI.md
             git commit -m "Record: No Codex changes suggested for issue #${ISSUE_NUMBER}"
           fi
-
           if ! git push origin "${BRANCH}"; then
             echo "::warning::Push failed. Fetch + retry."
             git fetch origin "${BRANCH}" --depth=1 || true
@@ -249,21 +239,17 @@ jobs:
           PROPOSAL_PR_BODY: |
             This PR contains **proposals** for workflow file changes detected while working on the linked issue.
             Because the automation token lacks `workflows` permission, the actual `.github/workflows/*` files were **not** changed.
-
             **How to apply**
             - Review `proposals/workflows/README.md` and the included patch/`.proposed` files.
             - Apply locally and commit from an account with `workflows` permission.
         run: |
           set -euo pipefail
-          TS=$(date '+%Y%m%d-%H%M%S')
+          TS="$(date '+%Y%m%d-%H%M%S')"
           WF_BRANCH="proposal/workflows/issue-${ISSUE_NUMBER}-${TS}"
-
           git fetch origin "$DEFAULT_BRANCH" --depth=1
           git switch -c "$WF_BRANCH" "origin/$DEFAULT_BRANCH"
-
           git fetch origin "${BRANCH}" --depth=1
           git checkout "origin/${BRANCH}" -- proposals/workflows || true
-
           if [[ -d proposals/workflows ]]; then
             git add proposals/workflows
             git commit -m "Propose workflow changes for issue #${ISSUE_NUMBER} (manual apply required)"
@@ -286,8 +272,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      OWNER: ${{ github.repository_owner }}
+      REPO_NAME: ${{ github.event.repository.name }}
       TZ: Europe/Stockholm
-
     steps:
       - name: Checkout PR head (write access)
         uses: actions/checkout@v5
@@ -304,10 +291,6 @@ jobs:
 
       - name: Detect linked issues
         id: linked
-        env:
-          OWNER: ${{ github.repository_owner }}
-          REPO_NAME: ${{ github.event.repository.name }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
           q='query($owner:String!,$repo:String!,$number:Int!){
@@ -317,13 +300,13 @@ jobs:
               }
             }
           }'
-          data=$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO_NAME" -F number="$PR_NUMBER")
-          nums=$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes|map(.number)|join(",")')
+          data="$(gh api graphql -f query="$q" -F owner="$OWNER" -F repo="$REPO_NAME" -F number="${{ github.event.pull_request.number }}")"
+          nums="$(echo "$data" | jq -r '.data.repository.pullRequest.closingIssuesReferences.nodes|map(.number)|join(",")')"
           if [[ -n "$nums" ]]; then
-            echo "has=true" >> $GITHUB_OUTPUT
-            echo "numbers=$nums" >> $GITHUB_OUTPUT
+            echo "has=true" >> "$GITHUB_OUTPUT"
+            echo "numbers=$nums" >> "$GITHUB_OUTPUT"
           else
-            echo "has=false" >> $GITHUB_OUTPUT
+            echo "has=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Skip if PR has no linked issues
@@ -341,12 +324,10 @@ jobs:
           CODEX_PROMPT: |
             You are Codex working directly on the PR head for PR #${PR_NUM}.
             The PR is linked to issue(s) #${ISSUE_NUMBERS}.
-
             Goal:
             - Make minimal, targeted code edits in the workspace to resolve the linked issue(s).
             - Update tests and docs when relevant.
             - Print a concise summary of what changed.
-
             Context:
             - Base SHA: ${BASE_SHA}
             - Head SHA: ${HEAD_SHA}
@@ -367,20 +348,17 @@ jobs:
         env:
           PROPOSAL_README: |
             # Workflow change proposal (manual apply required)
-
             Token lacks `workflows` permission. Use the patch and `.proposed` files to apply changes under `.github/workflows/`.
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          CHANGED=$(git status --porcelain | awk '{print $2}')
-          echo "changed=$CHANGED" >> $GITHUB_OUTPUT
-
+          CHANGED="$(git status --porcelain | awk '{print $2}')"
+          echo "changed=$CHANGED" >> "$GITHUB_OUTPUT"
           mapfile -t WF_FILES < <(printf '%s\n' $CHANGED | grep -E '^\.github/workflows/' || true)
           if (( ${#WF_FILES[@]} )); then
-            echo "has_wf_changes=true" >> $GITHUB_OUTPUT
-            TS=$(date '+%Y%m%d-%H%M%S')
+            echo "has_wf_changes=true" >> "$GITHUB_OUTPUT"
+            TS="$(date '+%Y%m%d-%H%M%S')"
             mkdir -p proposals/workflows
             git diff -- ${WF_FILES[@]} > "proposals/workflows/workflows-${TS}.patch" || true
             for f in "${WF_FILES[@]}"; do
@@ -390,7 +368,7 @@ jobs:
             git checkout -- ${WF_FILES[@]} || true
             git add proposals/workflows || true
           else
-            echo "has_wf_changes=false" >> $GITHUB_OUTPUT
+            echo "has_wf_changes=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Commit & push PR head (retry) or OpenAI.md fallback
@@ -399,19 +377,16 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           HEAD_REF="${{ github.head_ref }}"
           if [[ -z "$HEAD_REF" || "$HEAD_REF" == "null" ]]; then
-            HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
+            HEAD_REF="$(git rev-parse --abbrev-ref HEAD)"
           fi
-
           if [[ -n "$(git status --porcelain)" ]]; then
             git add -A
             git commit -m "Codex auto-fix for issue(s) #${{ steps.linked.outputs.numbers }}"
           else
-            TS=$(date '+%Y-%m-%d %H:%M:%S %Z')
+            TS="$(date '+%Y-%m-%d %H:%M:%S %Z')"
             {
-              echo "## No changes suggested (PR sync)"
               echo ""
               echo "- PR: #${{ github.event.pull_request.number }}"
               echo "- Linked issues: #${{ steps.linked.outputs.numbers }}"
@@ -423,7 +398,6 @@ jobs:
             git add OpenAI.md
             git commit -m "Record: No Codex changes suggested on PR #${{ github.event.pull_request.number }}"
           fi
-
           if ! git push origin "$HEAD_REF"; then
             echo "::warning::Push failed. Fetch + retry."
             git fetch origin "$HEAD_REF" --depth=1 || true
@@ -438,21 +412,17 @@ jobs:
           PROPOSAL_PR_BODY: |
             This PR contains **proposals** for workflow file changes detected on this PR.
             The actual `.github/workflows/*` files were **not** changed due to missing `workflows` permission.
-
             **How to apply**
             - Review `proposals/workflows/README.md` and the included patch/`.proposed` files.
             - Apply locally and commit from an account with `workflows` permission.
         run: |
           set -euo pipefail
-          TS=$(date '+%Y%m%d-%H%M%S')
+          TS="$(date '+%Y%m%d-%H%M%S')"
           WF_BRANCH="proposal/workflows/pr-${{ github.event.pull_request.number }}-${TS}"
-
           git fetch origin "$DEFAULT_BRANCH" --depth=1
           git switch -c "$WF_BRANCH" "origin/$DEFAULT_BRANCH"
-
           git fetch origin "${{ github.head_ref }}" --depth=1 || true
           git checkout "origin/${{ github.head_ref }}" -- proposals/workflows || true
-
           if [[ -d proposals/workflows ]]; then
             git add proposals/workflows
             git commit -m "Propose workflow changes for PR #${{ github.event.pull_request.number }} (manual apply required)"
