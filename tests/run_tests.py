@@ -70,6 +70,8 @@ def run_tests(test_type="all", verbose=True, generate_report=True):
         cmd.append("tests/test_clarity.py")
     elif test_type == "technical":
         cmd.append("tests/test_technical_accuracy.py")
+    elif test_type == "code-examples":
+        cmd.append("tests/test_code_examples.py")
     else:
         cmd.append("tests/")
     
@@ -132,7 +134,7 @@ def main():
     )
     parser.add_argument(
         "--type", 
-        choices=["all", "completeness", "consistency", "clarity", "technical"],
+        choices=["all", "completeness", "consistency", "clarity", "technical", "code-examples"],
         default="all",
         help="Type of tests to run (default: all)"
     )

@@ -38,6 +38,11 @@ def run_demo():
             "name": "⚙️ Technical Accuracy Tests",
             "description": "Validates code examples and technical content",
             "command": ["python3", "tests/run_tests.py", "--type", "technical", "--quiet"]
+        },
+        {
+            "name": "🧩 Code Example Tests",
+            "description": "Checks appendix anchors and cross references",
+            "command": ["python3", "tests/run_tests.py", "--type", "code-examples", "--quiet"]
         }
     ]
     
