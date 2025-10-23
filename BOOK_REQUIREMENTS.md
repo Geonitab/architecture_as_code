@@ -1,4 +1,12 @@
 ---
+release:
+  version: "2025.10"
+  codename: "Alpha"
+  release_date: "2025-10-23"
+  feature_tags:
+    - "diagram-refresh"
+    - "governance-automation"
+    - "ai-collaboration"
 book:
   title: "Architecture as Code"
   language: "english"

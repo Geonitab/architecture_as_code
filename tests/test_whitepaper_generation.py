@@ -24,7 +24,8 @@ from generate_whitepapers import (
     get_book_overview, 
     read_chapter_content,
     generate_whitepapers,
-    resolve_diagram_src
+    resolve_diagram_src,
+    create_whitepaper_html,
 )
 
 class TestWhitepaperGeneration(unittest.TestCase):
@@ -164,6 +165,48 @@ class TestWhitepaperGeneration(unittest.TestCase):
             self.assertTrue(len(result['section_headers']) > 0)
         finally:
             os.unlink(temp_file)
+
+    def test_create_whitepaper_includes_release_metadata(self):
+        """Whitepaper HTML should reflect configured release metadata."""
+        chapter_data = {
+            'title': 'Test Chapter Title',
+            'diagram_path': None,
+            'condensed_content': ['Paragraph one for testing.', 'Paragraph two for testing.'],
+            'section_headers': ['Section A', 'Section B'],
+            'word_count': 4400,
+        }
+        chapter_meta = {
+            'label': 'Chapter 99',
+            'area': 'Foundations',
+            'title': 'Test Chapter Title',
+        }
+        book_overview = {
+            'title': 'Architecture as Code',
+            'subtitle': 'Infrastructure as Code for organisations',
+            'description': 'Test description.',
+            'target_audience': 'Test audience',
+            'chapters_count': 34,
+        }
+        release_metadata = {
+            'version': '2025.04',
+            'codename': 'Blueprint Foundations',
+            'release_date': '2025-04-15',
+            'feature_tags': ['diagram refresh', 'governance automation'],
+        }
+
+        html = create_whitepaper_html(
+            chapter_data,
+            chapter_meta,
+            book_overview,
+            release_metadata,
+            Path("whitepapers"),
+        )
+
+        self.assertIn('data-release-version="2025.04"', html)
+        self.assertIn('data-release-codename="Blueprint Foundations"', html)
+        self.assertIn('15 April 2025', html)
+        self.assertIn('diagram refresh', html)
+        self.assertIn('governance automation', html)
     
     def test_whitepaper_generation_creates_all_files(self):
         """Test that whitepaper generation creates files for all mapped chapters."""
