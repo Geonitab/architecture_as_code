@@ -69,7 +69,7 @@ releases/                 # Git-ignored distribution bundles populated by build 
 python3 generate_book.py
 
 # Build PDF, EPUB, and DOCX (runs diagram export, copies cover art, and writes to releases/book/)
-cd docs && ./build_book.sh
+docs/build_book.sh
 
 # Orchestrate every deliverable and create an optional release archive
 python3 build_all_orchestrator.py --zip
@@ -118,7 +118,7 @@ Key workflows include:
 3. Regenerate content and verify outputs:
    ```bash
    python3 generate_book.py
-   cd docs && ./build_book.sh
+   docs/build_book.sh
    ```
 4. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
 5. Commit changes with clear messages and submit a pull request following repository guidelines.
