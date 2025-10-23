@@ -1,4 +1,4 @@
-name: Auto draft PR + Codex auto-fix
+name: Auto draft PR + Codex auto-fix it
 
 on:
   issues:
