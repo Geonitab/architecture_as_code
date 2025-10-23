@@ -352,63 +352,6 @@ class TestTechnicalAccuracy:
                 UserWarning
             )
 
-    def test_code_example_anchor_consistency(self, docs_directory):
-        """Test that code example listings expose stable anchors for cross references."""
-        appendix_path = docs_directory / "30_appendix_code_examples.md"
-
-        if not appendix_path.exists():
-            pytest.skip("Appendix A not available")
-
-        content = appendix_path.read_text(encoding='utf-8')
-        heading_pattern = re.compile(r'^###\s+(?P<identifier>\d{2}_CODE_[A-Z0-9]+):.*$', re.MULTILINE)
-
-        anchors = set()
-        missing_anchors = []
-
-        for match in heading_pattern.finditer(content):
-            identifier = match.group('identifier')
-            line = match.group(0)
-            anchor_match = re.search(r'\{#([^\}]+)\}', line)
-
-            if not anchor_match:
-                missing_anchors.append(identifier)
-                continue
-
-            anchor_id = anchor_match.group(1).lower()
-            canonical_id = identifier.lower()
-
-            if not anchor_id.startswith(canonical_id):
-                missing_anchors.append(identifier)
-
-            anchors.add(anchor_id)
-            anchors.add(canonical_id)
-
-        assert not missing_anchors, (
-            "Code example headings missing canonical anchors: "
-            f"{missing_anchors}"
-        )
-
-        link_pattern = re.compile(r'30_appendix_code_examples\.md#([^\s\)]+)')
-        invalid_links = []
-
-        for path in docs_directory.rglob("*.md"):
-            if path.name == "30_appendix_code_examples.md":
-                continue
-
-            text = path.read_text(encoding='utf-8')
-            for anchor in link_pattern.findall(text):
-                anchor_lower = anchor.lower()
-                if anchor_lower not in anchors:
-                    invalid_links.append({
-                        "file": path.relative_to(docs_directory).as_posix(),
-                        "anchor": anchor
-                    })
-
-        assert not invalid_links, (
-            "Broken code example cross references found: "
-            f"{invalid_links}"
-        )
-
     def test_technical_term_definitions(self, chapter_files):
         """Test that technical terms are properly introduced/defined."""
         # Common technical terms that should be defined on first use

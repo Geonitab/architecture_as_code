@@ -33,6 +33,9 @@ This directory contains a comprehensive test suite for validating the "Architect
    - Bash script safety analysis
    - Diagram reference validation
    - URL format compliance
+5. **`test_code_examples.py`** - Validates code example appendix integrity
+   - Ensures appendix anchors follow canonical identifiers
+   - Confirms cross references resolve to defined listings
 
 ## 📋 Requirements Configuration
 
@@ -91,6 +94,7 @@ python3 tests/run_tests.py --type completeness
 python3 tests/run_tests.py --type consistency
 python3 tests/run_tests.py --type clarity
 python3 tests/run_tests.py --type technical
+python3 tests/run_tests.py --type code-examples
 
 # Skip HTML report generation
 python3 tests/run_tests.py --no-report
@@ -109,6 +113,7 @@ python3 -m pytest tests/ -v --html=test-reports/report.html --self-contained-htm
 
 # Run specific test file
 python3 -m pytest tests/test_completeness.py -v
+python3 -m pytest tests/test_code_examples.py -v
 ```
 
 ### Manual mobile responsiveness testing:
