@@ -81,7 +81,7 @@ variables:
     \fancyfoot[C]{\thepage}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\partname}{Part}
-    \renewcommand{\thepart}{\Alph{part}}
+    \renewcommand{\thepart}{\Roman{part}}
     \titleformat{\part}[display]
       {\bfseries\centering\Huge}
       {PART \thepart}
