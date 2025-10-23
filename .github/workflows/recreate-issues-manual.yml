@@ -1,10 +1,10 @@
-name: Recreate issues manually (title+body only, 3-minute delay)
+name: Recreate open issues (title+body only, closes originals, 3-minute delay, supports "All")
 
 on:
   workflow_dispatch:
     inputs:
       issue_numbers:
-        description: 'Comma-separated list of closed issue numbers to recreate'
+        description: 'Comma-separated list of OPEN issue numbers to recreate, or "All" to recreate all open issues'
         required: true
         type: string
 
@@ -16,50 +16,104 @@ jobs:
   recreate:
     runs-on: ubuntu-latest
     steps:
-      - name: Parse inputs and recreate issues
+      - name: Close originals and recreate issues
         uses: actions/github-script@v7
         with:
           script: |
             const { owner, repo } = context.repo;
-            const input = core.getInput('issue_numbers');
-            const issueNumbers = input.split(',').map(n => parseInt(n.trim(), 10)).filter(Boolean);
+            const input = core.getInput('issue_numbers').trim();
 
-            for (const issue_number of issueNumbers) {
+            // Collect the target OPEN issue numbers (exclude PRs)
+            let issueNumbers = [];
+
+            if (input.toLowerCase() === 'all') {
+              core.info('Fetching all open issues (excluding pull requests)...');
+              let page = 1;
+              while (true) {
+                const { data: issues } = await github.rest.issues.listForRepo({
+                  owner,
+                  repo,
+                  state: 'open',
+                  per_page: 100,
+                  page
+                });
+                if (issues.length === 0) break;
+
+                // Filter out PRs (they have the pull_request field)
+                issueNumbers.push(
+                  ...issues.filter(i => !i.pull_request).map(i => i.number)
+                );
+                page++;
+              }
+              core.info(`Found ${issueNumbers.length} open issues (excluding PRs).`);
+            } else {
+              issueNumbers = input
+                .split(',')
+                .map(n => parseInt(n.trim(), 10))
+                .filter(Boolean);
+            }
+
+            if (issueNumbers.length === 0) {
+              core.setFailed('No valid open issue numbers found.');
+              return;
+            }
+
+            for (let i = 0; i < issueNumbers.length; i++) {
+              const issue_number = issueNumbers[i];
               core.info(`Processing issue #${issue_number}...`);
 
-              const { data: original } = await github.rest.issues.get({
-                owner,
-                repo,
-                issue_number
-              });
+              try {
+                const { data: original } = await github.rest.issues.get({
+                  owner,
+                  repo,
+                  issue_number
+                });
 
-              if (original.state !== 'closed') {
-                core.warning(`Issue #${issue_number} is not closed. Skipping.`);
-                continue;
-              }
+                // Skip pull requests
+                if (original.pull_request) {
+                  core.warning(`Item #${issue_number} is a pull request. Skipping.`);
+                  continue;
+                }
 
-              const title = original.title || 'Untitled';
-              let body = original.body || '';
+                if (original.state !== 'open') {
+                  core.warning(`Issue #${issue_number} is not open. Skipping.`);
+                  continue;
+                }
 
-              // Remove references to the old issue number to avoid accidental links
-              const issueRefPattern = new RegExp(`(^|[^\\w/])#${issue_number}(?!\\w)`, 'g');
-              body = body.replace(issueRefPattern, '$1');
+                const title = original.title || 'Untitled';
+                let body = original.body || '';
 
-              // Create new issue (no labels, no assignees, no links)
-              const { data: newIssue } = await github.rest.issues.create({
-                owner,
-                repo,
-                title,
-                body
-              });
+                // Remove obvious self-references like "#<old-number>" to avoid accidental backlinks
+                const issueRefPattern = new RegExp(`(^|[^\\w/])#${issue_number}(?!\\w)`, 'g');
+                body = body.replace(issueRefPattern, '$1');
 
-              core.info(`✅ Created new issue #${newIssue.number} from closed #${issue_number} (title+body only).`);
+                // 1) Close the original issue (no comments, no links)
+                await github.rest.issues.update({
+                  owner,
+                  repo,
+                  issue_number,
+                  state: 'closed',
+                  state_reason: 'completed' // or 'not_planned' if you prefer
+                });
+                core.info(`Closed original issue #${issue_number}.`);
 
-              // Wait 3 minutes before processing the next issue
-              if (issue_number !== issueNumbers[issueNumbers.length - 1]) {
-                core.info('⏳ Waiting 3 minutes before next issue...');
-                await new Promise(resolve => setTimeout(resolve, 3 * 60 * 1000));
+                // 2) Create the new clean issue (title + body only)
+                const { data: newIssue } = await github.rest.issues.create({
+                  owner,
+                  repo,
+                  title,
+                  body
+                });
+                core.info(`✅ Created new issue #${newIssue.number} from original #${issue_number}.`);
+
+                // 3) Wait 3 minutes before processing the next issue
+                if (i < issueNumbers.length - 1) {
+                  core.info('⏳ Waiting 3 minutes before next issue...');
+                  await new Promise(resolve => setTimeout(resolve, 3 * 60 * 1000));
+                }
+              } catch (err) {
+                core.warning(`Failed to process issue #${issue_number}: ${err.message}`);
               }
             }
 
-            core.info('All requested issues processed.');
+            core.info('🎉 All requested issues processed.');
