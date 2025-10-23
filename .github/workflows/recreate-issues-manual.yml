@@ -4,9 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       issue_numbers:
-        description: 'Comma-separated list of OPEN issue numbers to recreate, or "All" to recreate all open issues'
-        required: true
+        description: 'Comma-separated list of OPEN issue numbers to recreate, or "All" to recreate all open issues (blank = All)'
+        required: false
         type: string
+        default: All
 
 permissions:
   issues: write
@@ -21,12 +22,16 @@ jobs:
         with:
           script: |
             const { owner, repo } = context.repo;
-            const input = core.getInput('issue_numbers').trim();
+            const rawInput = (core.getInput('issue_numbers') || '').trim();
 
-            // Collect the target OPEN issue numbers (exclude PRs)
+            // Helper: extract numeric issue refs from any messy string (e.g. "#12, issue 34; 56")
+            const extractNumbers = (s) => {
+              return (s.match(/\d+/g) || []).map(n => parseInt(n, 10)).filter(Boolean);
+            };
+
             let issueNumbers = [];
 
-            if (input.toLowerCase() === 'all') {
+            if (rawInput === '' || rawInput.toLowerCase() === 'all') {
               core.info('Fetching all open issues (excluding pull requests)...');
               let page = 1;
               while (true) {
@@ -47,16 +52,19 @@ jobs:
               }
               core.info(`Found ${issueNumbers.length} open issues (excluding PRs).`);
             } else {
-              issueNumbers = input
-                .split(',')
-                .map(n => parseInt(n.trim(), 10))
-                .filter(Boolean);
+              // Be lenient with input formatting
+              issueNumbers = extractNumbers(rawInput);
             }
+
+            // De-duplicate and sort to get a stable order
+            issueNumbers = Array.from(new Set(issueNumbers)).sort((a, b) => a - b);
 
             if (issueNumbers.length === 0) {
               core.setFailed('No valid open issue numbers found.');
               return;
             }
+
+            core.notice(`Will process issues: ${issueNumbers.join(', ')}`);
 
             for (let i = 0; i < issueNumbers.length; i++) {
               const issue_number = issueNumbers[i];
@@ -87,13 +95,13 @@ jobs:
                 const issueRefPattern = new RegExp(`(^|[^\\w/])#${issue_number}(?!\\w)`, 'g');
                 body = body.replace(issueRefPattern, '$1');
 
-                // 1) Close the original issue (no comments, no links)
+                // 1) Close the original issue silently
                 await github.rest.issues.update({
                   owner,
                   repo,
                   issue_number,
                   state: 'closed',
-                  state_reason: 'completed' // or 'not_planned' if you prefer
+                  state_reason: 'completed' // or 'not_planned' if preferred
                 });
                 core.info(`Closed original issue #${issue_number}.`);
 
