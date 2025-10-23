@@ -1,0 +1,47 @@
+name: Delete All Branches Except main and gh-pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type 'All' to confirm deletion of all branches except main and gh-pages"
+        required: true
+        default: "no"
+
+jobs:
+  delete_branches:
+    if: ${{ github.event.inputs.confirm == 'All' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Delete all branches except main and gh-pages
+        run: |
+          echo "Fetching all branches..."
+          git fetch --all
+
+          echo "Finding branches to delete..."
+          branches=$(git branch -r | grep origin/ | grep -vE "origin/(main|gh-pages)" | sed 's/origin\///')
+
+          if [ -z "$branches" ]; then
+            echo "✅ No branches to delete."
+            exit 0
+          fi
+
+          echo "The following branches will be deleted:"
+          echo "$branches"
+
+          for branch in $branches; do
+            echo "Deleting branch: $branch"
+            git push origin --delete "$branch" || echo "Failed to delete $branch"
+          done
+
+          echo "✅ Done. Remaining branches: main, gh-pages"
+
+  confirm_check:
+    if: ${{ github.event.inputs.confirm != 'All' }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "⚠️ Confirmation missing. Type 'All' to execute branch deletion."
