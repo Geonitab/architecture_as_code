@@ -1,4 +1,12 @@
 ---
+release:
+  version: "2025.04"
+  codename: "Blueprint Foundations"
+  release_date: "2025-04-15"
+  feature_tags:
+    - "diagram-refresh"
+    - "governance-automation"
+    - "ai-collaboration"
 book:
   title: "Architecture as Code"
   language: "english"

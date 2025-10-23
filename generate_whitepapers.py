@@ -166,6 +166,38 @@ def _load_requirements_metadata(requirements_path: Path = Path("BOOK_REQUIREMENT
     return yaml.safe_load("\n".join(front_matter)) or {}
 
 
+def get_release_metadata(requirements_path: Path = Path("BOOK_REQUIREMENTS.md")) -> dict:
+    """Return structured release metadata for versioned collateral."""
+    metadata = _load_requirements_metadata(requirements_path)
+    release = metadata.get("release") or {}
+
+    version = str(release.get("version") or "1.0").strip()
+    codename = str(release.get("codename") or "").strip()
+
+    release_date = release.get("release_date") or release.get("date")
+    if isinstance(release_date, datetime):
+        release_date = release_date.isoformat()
+    elif release_date:
+        release_date = str(release_date).strip()
+
+    feature_tags = release.get("feature_tags") or []
+    if isinstance(feature_tags, str):
+        feature_tags = [feature_tags]
+
+    feature_tags = [
+        str(tag).strip()
+        for tag in feature_tags
+        if str(tag).strip()
+    ]
+
+    return {
+        "version": version or "1.0",
+        "codename": codename,
+        "release_date": release_date,
+        "feature_tags": feature_tags,
+    }
+
+
 def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str | None:
     """Resolve diagram path relative to the generated whitepaper location."""
     if not diagram_path:
@@ -206,7 +238,7 @@ def get_chapter_mapping():
 
     return mapping
 
-def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_directory):
+def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_info, output_directory):
     """Create HTML content for a whitepaper."""
     
     # Read the template
@@ -231,16 +263,41 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
     page_title = f"{chapter_label} – {mapped_title}"
     subtitle_text = f'Key insights from {chapter_label} of "{book_overview["title"]}"'
     author_text = "Architecture as Code Editorial Team"
-    published_date = datetime.now().strftime("%d %B %Y")
+
+    release_info = release_info or {}
+    version_text = str(release_info.get("version") or "1.0")
+    codename_text = str(release_info.get("codename") or "").strip()
+    raw_release_date = release_info.get("release_date") or release_info.get("date")
+
+    published_date = None
+    if raw_release_date:
+        try:
+            published_date = datetime.fromisoformat(str(raw_release_date)).strftime("%d %B %Y")
+        except ValueError:
+            # Accept already formatted dates
+            published_date = str(raw_release_date)
+
+    if not published_date:
+        published_date = datetime.now().strftime("%d %B %Y")
+
     if published_date.startswith("0"):
         published_date = published_date[1:]
+
+    raw_feature_tags = release_info.get("feature_tags") or []
+    if isinstance(raw_feature_tags, str):
+        raw_feature_tags = [raw_feature_tags]
+    feature_tags = [
+        str(tag).strip()
+        for tag in raw_feature_tags
+        if str(tag).strip()
+    ]
+
     reading_minutes = chapter_data.get('word_count') or 0
     if reading_minutes:
         reading_minutes = max(3, math.ceil(reading_minutes / 220))
     else:
         reading_minutes = 3
     reading_label = f"{reading_minutes} minute{'s' if reading_minutes != 1 else ''}"
-    version_text = "1.0"
 
     escaped_page_title = escape(page_title)
     escaped_chapter_area = escape(chapter_area)
@@ -252,6 +309,7 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
     escaped_version_text = escape(version_text)
     escaped_reading_label = escape(reading_label)
     escaped_chapter_label = escape(chapter_label)
+    escaped_codename = escape(codename_text) if codename_text else ""
     
     # Prepare content sections
     diagram_html = ""
@@ -318,6 +376,30 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, output_dir
     escaped_target_audience = escape(book_overview['target_audience'])
     escaped_area_lower = escape(chapter_area.lower())
 
+    feature_tags_html = ""
+    if feature_tags:
+        tag_markup = "\n".join(
+            f'            <span class="feature-tag" role="listitem">{escape(tag)}</span>'
+            for tag in feature_tags
+        )
+        feature_tags_html = (
+            '            <div class="feature-tags" role="list" aria-label="Release feature tags">\n'
+            f'{tag_markup}\n'
+            '            </div>'
+        )
+    html_output = html_output.replace("            <!-- FEATURE_TAGS -->", feature_tags_html, 1)
+
+    data_attributes = [f'data-release-version="{escaped_version_text}"']
+    if feature_tags:
+        joined_tags = ", ".join(feature_tags)
+        escaped_joined_tags = escape(joined_tags)
+        data_attributes.append(f'data-feature-tags="{escaped_joined_tags}"')
+    if codename_text:
+        data_attributes.append(f'data-release-codename="{escaped_codename}"')
+
+    attribute_string = " ".join(data_attributes)
+    html_output = html_output.replace('<div class="page">', f'<div class="page" {attribute_string}>', 1)
+    
     # Create the new content sections
     new_content = f'''        <!-- Book Overview -->
         <section>
@@ -395,6 +477,11 @@ def generate_whitepapers(release_mode=False):
     # Get chapter mapping and book overview
     chapter_mapping = get_chapter_mapping()
     book_overview = get_book_overview()
+    release_metadata = get_release_metadata()
+
+    print(f"Release version: {release_metadata.get('version', '1.0')}")
+    if release_metadata.get("feature_tags"):
+        print("Feature tags: " + ", ".join(release_metadata["feature_tags"]))
     
     # Find all chapter markdown files
     docs_dir = Path("docs")
@@ -438,7 +525,13 @@ def generate_whitepapers(release_mode=False):
         output_path = whitepapers_dir / output_filename
         
         # Generate whitepaper HTML
-        html_content = create_whitepaper_html(chapter_data, chapter_meta, book_overview, whitepapers_dir)
+        html_content = create_whitepaper_html(
+            chapter_data,
+            chapter_meta,
+            book_overview,
+            release_metadata,
+            whitepapers_dir
+        )
         if not html_content:
             print(f"Failed to generate HTML for {filename}, skipping...")
             error_files.append((filename, "Failed to generate HTML"))
@@ -455,7 +548,13 @@ def generate_whitepapers(release_mode=False):
 
         if secondary_dir:
             secondary_output_path = secondary_dir / output_filename
-            secondary_html = create_whitepaper_html(chapter_data, chapter_meta, book_overview, secondary_dir)
+            secondary_html = create_whitepaper_html(
+                chapter_data,
+                chapter_meta,
+                book_overview,
+                release_metadata,
+                secondary_dir
+            )
             if not secondary_html:
                 print(f"Warning: Failed to generate HTML for standard location: {filename}")
                 error_files.append((filename, "Failed to generate HTML for standard location"))
