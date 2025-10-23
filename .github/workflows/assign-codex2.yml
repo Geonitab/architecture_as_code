@@ -1,4 +1,4 @@
-name: Auto draft PR + Codex safe workflow proposals (no direct workflow commits)
+name: Auto draft PR + Codex (always publish code in PRs; conflict-safe)
 
 on:
   issues:
@@ -23,6 +23,8 @@ jobs:
       ISSUE_NUMBER: ${{ github.event.issue.number }}
       ISSUE_TITLE: ${{ github.event.issue.title }}
       GH_TOKEN: ${{ github.token }}
+      # Om du lägger till en PAT med "workflows" rättighet, namnge den WORKFLOWS_PAT i repo-secrets
+      WORKFLOWS_PAT: ${{ secrets.WORKFLOWS_PAT }}
 
     steps:
       - name: Checkout repository
@@ -37,7 +39,7 @@ jobs:
           DEFAULT_BRANCH=$(gh repo view "$REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
           echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
 
-      - name: Find or create branch
+      - name: Find or create issue branch
         run: |
           set -euo pipefail
           PREFIX="refs/heads/codex/issue-${ISSUE_NUMBER}-*"
@@ -60,7 +62,7 @@ jobs:
           echo "BRANCH=$BRANCH" >> $GITHUB_ENV
 
       - name: Ensure draft PR exists
-        id: pr
+        id: pr_meta
         run: |
           set -euo pipefail
           if gh pr view "$BRANCH" --repo "$REPO" --json number,url >/tmp/pr.json 2>/dev/null; then
@@ -78,62 +80,127 @@ jobs:
           fi
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
+          echo "number=$PR_NUMBER" >> $GITHUB_OUTPUT
+
+      - name: Get base/head SHAs
+        id: prsha
+        run: |
+          set -euo pipefail
+          pr=$(gh pr view "${{ steps.pr_meta.outputs.number }}" --repo "$REPO" --json headRefOid,baseRefOid,title,body,number)
+          echo "base_sha=$(echo "$pr" | jq -r .baseRefOid)" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$(echo "$pr" | jq -r .headRefOid)" >> "$GITHUB_OUTPUT"
+          echo "pr_title=$(echo "$pr" | jq -r .title)" >> "$GITHUB_OUTPUT"
 
       - name: Run Codex
         uses: openai/codex-action@v1
-        timeout-minutes: 20
         continue-on-error: true
+        timeout-minutes: 20
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           prompt: |
             You are Codex working on branch "${{ env.BRANCH }}" for PR #${{ env.PR_NUMBER }}.
-            The PR is linked to issue #${{ env.ISSUE_NUMBER }}.
-
             Goal:
-            - Apply minimal, targeted edits to resolve the issue.
-            - If you modify any `.github/workflows/*.yml` files, include the new YAML directly.
-            - Do not commit workflow files; they will be shown as a PR diff comment instead.
-            - Update docs/tests if relevant.
-            - Summarise what changed.
+            - Make minimal edits to resolve Issue #${{ env.ISSUE_NUMBER }}.
+            - If changing `.github/workflows/*.yml`, include the final YAML and write it to those files.
+            - Other files may be committed normally.
 
-      - name: Handle workflow changes safely
+      - name: Split changed files into workflow / non-workflow sets
+        id: detect_changes
+        run: |
+          set -euo pipefail
+          CHANGED=$(git status --porcelain | awk '{print $2}')
+          printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true > /tmp/wf.txt
+          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$'  || true > /tmp/nonwf.txt
+          echo "wf_count=$(grep -c . /tmp/wf.txt || true)" >> $GITHUB_OUTPUT
+          echo "nonwf_count=$(grep -c . /tmp/nonwf.txt || true)" >> $GITHUB_OUTPUT
+
+      - name: Commit & push non-workflow changes (conflict-safe)
+        if: steps.detect_changes.outputs.nonwf_count != '0'
+        id: push_nonwf
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          CHANGED=$(git status --porcelain | awk '{print $2}')
-          mapfile -t WF_FILES < <(printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.yml$' || true)
-
-          if (( ${#WF_FILES[@]} )); then
-            echo "::notice::Workflow edits detected — adding diff comment to PR #${PR_NUMBER}"
-            for f in "${WF_FILES[@]}"; do
-              echo "Processing workflow: $f"
-              git diff -- "$f" > diff.patch
-              gh pr comment "${PR_NUMBER}" --repo "$REPO" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`" "$f" "$(cat diff.patch)")"
-              rm -f diff.patch
-              # Revert workflow file so we don't push it
-              git checkout -- "$f"
-            done
+          git add $(cat /tmp/nonwf.txt)
+          git commit -m "Codex auto-fix for issue #${ISSUE_NUMBER} (non-workflow changes)" || echo "no nonwf commit"
+          if ! git push origin "${BRANCH}"; then
+            echo "::warning::Non-fast-forward on ${BRANCH} → creating conflict-resolve branch."
+            TS=$(date +%Y%m%d-%H%M%S)
+            NEW_BRANCH="${BRANCH}-autofix-${TS}"
+            git switch -c "$NEW_BRANCH"
+            git push -u origin "$NEW_BRANCH"
+            NEW_URL=$(gh pr create --base "$DEFAULT_BRANCH" --head "$NEW_BRANCH" \
+              --title "Codex auto-fix (conflict-safe) for issue #${ISSUE_NUMBER}" \
+              --body "Created due to push conflict on ${BRANCH}. Supersedes: ${PR_URL}" \
+              --repo "$REPO")
+            echo "created_new_pr=true" >> $GITHUB_OUTPUT
+            echo "new_pr_url=$NEW_URL" >> $GITHUB_OUTPUT
+          else
+            echo "created_new_pr=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit & push non-workflow Codex changes (then mark PR ready)
+      - name: Handle workflow file changes
+        id: push_wf
+        if: steps.detect_changes.outputs.wf_count != '0'
+        env:
+          ACTOR: ${{ github.actor }}
         run: |
           set -euo pipefail
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git add -A
-            git commit -m "Codex auto-fix for issue #${ISSUE_NUMBER}"
-            git push origin "${BRANCH}"
-            echo "::notice::Committed and pushed non-workflow changes to ${BRANCH}"
+          # Försök med PAT om den finns (krävs för .github/workflows/*)
+          if [[ -n "${WORKFLOWS_PAT:-}" ]]; then
+            echo "::notice::WORKFLOWS_PAT present – pushing workflow file changes via PAT."
+            git config user.name "${ACTOR}"
+            git config user.email "${ACTOR}@users.noreply.github.com"
+            # Byt remote URL till PAT
+            URL="https://${ACTOR}:${WORKFLOWS_PAT}@github.com/${REPO}.git"
+            git remote set-url origin "$URL"
 
-            # If the PR is still draft, mark it ready for review
-            IS_DRAFT=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json isDraft --jq .isDraft || echo true)
-            if [[ "$IS_DRAFT" == "true" ]]; then
-              gh pr ready "$PR_NUMBER" --repo "$REPO"
-              echo "::notice::Marked PR #$PR_NUMBER ready for review."
+            git add $(cat /tmp/wf.txt)
+            git commit -m "Codex proposal: workflow updates for issue #${ISSUE_NUMBER}" || echo "no wf commit"
+
+            if ! git push origin "${BRANCH}"; then
+              echo "::warning::Conflict when pushing workflow changes → creating separate workflow PR."
+              TS=$(date +%Y%m%d-%H%M%S)
+              WFB="${BRANCH}-workflow-${TS}"
+              git switch -c "$WFB" || git checkout -b "$WFB"
+              if ! git push -u origin "$WFB"; then
+                echo "::error::Failed to push workflow branch even with PAT."
+                exit 1
+              fi
+              WF_PR_URL=$(gh pr create --base "$DEFAULT_BRANCH" --head "$WFB" \
+                --title "Workflow updates (Codex) for issue #${ISSUE_NUMBER}" \
+                --body "Automated proposal of workflow changes. Review carefully.\n\nRelates to ${PR_URL}" \
+                --repo "$REPO" --draft)
+              echo "wf_pr_created=true" >> $GITHUB_OUTPUT
+              echo "wf_pr_url=$WF_PR_URL" >> $GITHUB_OUTPUT
+            else
+              echo "wf_pr_created=false" >> $GITHUB_OUTPUT
             fi
           else
-            echo "::notice::No non-workflow changes to commit."
+            echo "::warning::No WORKFLOWS_PAT provided – cannot push workflow files. Posting diffs as PR comments instead."
+            while read -r f; do
+              [[ -z "$f" ]] && continue
+              git diff -- "$f" > diff.patch || true
+              gh pr comment "${PR_NUMBER}" --repo "$REPO" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`\n\n> To publish as a real PR update, add a repo secret named **WORKFLOWS_PAT** with workflows permission." "$f" "$(cat diff.patch)")"
+              git checkout -- "$f" || true
+            done < /tmp/wf.txt
+            echo "wf_pr_created=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Mark PR ready for review (only if open + draft and we pushed something)
+        if: |
+          (steps.detect_changes.outputs.nonwf_count != '0' && steps.push_nonwf.outcomes != 'failure' && steps.push_nonwf.outputs.created_new_pr == 'false')
+          || (steps.detect_changes.outputs.wf_count != '0' && steps.push_wf.outputs.wf_pr_created == 'false' && env.WORKFLOWS_PAT != '')
+        run: |
+          set -euo pipefail
+          info=$(gh pr view "$PR_NUMBER" --repo "$REPO" --json state,isDraft)
+          state=$(echo "$info" | jq -r .state)
+          is_draft=$(echo "$info" | jq -r .isDraft)
+          if [[ "$state" == "OPEN" && "$is_draft" == "true" ]]; then
+            gh pr ready "$PR_NUMBER" --repo "$REPO"
+            echo "::notice::Marked PR #$PR_NUMBER ready for review."
+          else
+            echo "::notice::PR #$PR_NUMBER is $state / draft=$is_draft – skip."
           fi
 
   codex_on_pr:
@@ -141,6 +208,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      WORKFLOWS_PAT: ${{ secrets.WORKFLOWS_PAT }}
 
     steps:
       - name: Checkout PR head
@@ -150,53 +218,92 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Run Codex safely on PR
+      - name: Run Codex on PR head
         uses: openai/codex-action@v1
-        timeout-minutes: 20
         continue-on-error: true
+        timeout-minutes: 20
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           prompt: |
             You are Codex working on PR #${{ github.event.pull_request.number }}.
-            Apply minimal, targeted edits to resolve linked issues.
-            If you need to modify `.github/workflows/*.yml`, include the YAML directly but do not commit it.
-            Instead, the diff will be posted as a PR comment.
+            Apply minimal edits. If you modify `.github/workflows/*.yml`, write the files normally.
 
-      - name: Handle workflow changes safely (PR event)
+      - name: Split changes
+        id: detect
         run: |
           set -euo pipefail
           CHANGED=$(git status --porcelain | awk '{print $2}')
-          mapfile -t WF_FILES < <(printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.yml$' || true)
+          printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true > /tmp/wf.txt
+          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$'  || true > /tmp/nonwf.txt
+          echo "wf_count=$(grep -c . /tmp/wf.txt || true)" >> $GITHUB_OUTPUT
+          echo "nonwf_count=$(grep -c . /tmp/nonwf.txt || true)" >> $GITHUB_OUTPUT
 
-          if (( ${#WF_FILES[@]} )); then
-            echo "::notice::Workflow edits detected — adding diff comment to PR"
-            for f in "${WF_FILES[@]}"; do
-              git diff -- "$f" > diff.patch
-              gh pr comment "${{ github.event.pull_request.number }}" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`" "$f" "$(cat diff.patch)")"
-              rm -f diff.patch
-              git checkout -- "$f"
-            done
-          fi
-
-      - name: Commit & push non-workflow Codex changes (then mark PR ready)
+      - name: Commit & push non-workflow (conflict-safe)
+        if: steps.detect.outputs.nonwf_count != '0'
+        id: push_nonwf_pr
         run: |
           set -euo pipefail
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add -A
-            git commit -m "Codex auto-fix for PR #${{ github.event.pull_request.number }}"
-            HEAD_REF="${{ github.head_ref }}"
-            [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
-            git push origin "$HEAD_REF"
-            echo "::notice::Committed and pushed non-workflow Codex changes."
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add $(cat /tmp/nonwf.txt)
+          git commit -m "Codex auto-fix for PR #${{ github.event.pull_request.number }} (non-workflow)" || echo "no commit"
+          HEAD_REF="${{ github.head_ref }}"
+          [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
+          if ! git push origin "$HEAD_REF"; then
+            echo "::warning::Conflict on ${HEAD_REF} – creating conflict-safe branch."
+            TS=$(date +%Y%m%d-%H%M%S)
+            NEW_BRANCH="${HEAD_REF}-autofix-${TS}"
+            git switch -c "$NEW_BRANCH"
+            git push -u origin "$NEW_BRANCH"
+            gh pr create --base "${{ github.event.pull_request.base.ref }}" --head "$NEW_BRANCH" \
+              --title "Codex auto-fix (conflict-safe) for PR #${{ github.event.pull_request.number }}" \
+              --body "Created due to push conflict on ${HEAD_REF}."
+          fi
 
-            # If the PR is still draft, mark it ready for review
-            IS_DRAFT=$(gh pr view "${{ github.event.pull_request.number }}" --json isDraft --jq .isDraft || echo true)
-            if [[ "$IS_DRAFT" == "true" ]]; then
-              gh pr ready "${{ github.event.pull_request.number }}"
-              echo "::notice::Marked PR ready for review."
+      - name: Push workflow file changes (needs PAT) or comment diffs
+        if: steps.detect.outputs.wf_count != '0'
+        run: |
+          set -euo pipefail
+          HEAD_REF="${{ github.head_ref }}"
+          [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
+
+          if [[ -n "${WORKFLOWS_PAT:-}" ]]; then
+            echo "::notice::WORKFLOWS_PAT present – pushing workflow changes."
+            ACTOR="${{ github.actor }}"
+            git config user.name "$ACTOR"
+            git config user.email "$ACTOR@users.noreply.github.com"
+            URL="https://${ACTOR}:${WORKFLOWS_PAT}@github.com/${{ github.repository }}.git"
+            git remote set-url origin "$URL"
+            git add $(cat /tmp/wf.txt)
+            git commit -m "Codex workflow updates for PR #${{ github.event.pull_request.number }}" || echo "no wf commit"
+            if ! git push origin "$HEAD_REF"; then
+              TS=$(date +%Y%m%d-%H%M%S)
+              WFB="${HEAD_REF}-workflow-${TS}"
+              git switch -c "$WFB"
+              git push -u origin "$WFB"
+              gh pr create --base "${{ github.event.pull_request.base.ref }}" --head "$WFB" \
+                --title "Workflow updates (Codex) for PR #${{ github.event.pull_request.number }}" \
+                --body "Separate PR for workflow files." --draft
             fi
           else
-            echo "::notice::No non-workflow Codex changes to commit."
+            echo "::warning::No WORKFLOWS_PAT – posting diffs as PR comments."
+            while read -r f; do
+              [[ -z "$f" ]] && continue
+              git diff -- "$f" > diff.patch || true
+              gh pr comment "${{ github.event.pull_request.number }}" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`\n\n> Add **WORKFLOWS_PAT** secret to publish as real PR changes." "$f" "$(cat diff.patch)")"
+              git checkout -- "$f" || true
+            done < /tmp/wf.txt
+          fi
+
+      - name: Mark PR ready for review if draft and we pushed
+        run: |
+          set -euo pipefail
+          info=$(gh pr view "${{ github.event.pull_request.number }}" --json state,isDraft)
+          state=$(echo "$info" | jq -r .state)
+          is_draft=$(echo "$info" | jq -r .isDraft)
+          if [[ "$state" == "OPEN" && "$is_draft" == "true" ]]; then
+            gh pr ready "${{ github.event.pull_request.number }}"
+            echo "::notice::Marked PR ready for review."
+          else
+            echo "::notice::PR is $state / draft=$is_draft – skip."
           fi
