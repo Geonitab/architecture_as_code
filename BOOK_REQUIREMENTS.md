@@ -174,6 +174,52 @@ book:
       area: "Reference"
       required: true
       label: "References"
+  front_matter:
+    - filename: "00_front_cover.md"
+      title: "Architecture as Code"
+      required: true
+      label: "Front Cover"
+  part_introductions:
+    - filename: "part_a_foundations.md"
+      title: "Part I: Foundations"
+      label: "Part I"
+      required: true
+      description: "Introduces the core principles, terminology and documentation conventions used throughout the book."
+    - filename: "part_b_architecture_platform.md"
+      title: "Part II: Architecture Platform"
+      label: "Part II"
+      required: true
+      description: "Frames the technical building blocks and automation capabilities that underpin Architecture as Code delivery."
+    - filename: "part_c_security_governance.md"
+      title: "Part III: Security and Governance"
+      label: "Part III"
+      required: true
+      description: "Highlights the security, policy and governance priorities carried across the subsequent chapters."
+    - filename: "part_d_delivery_operations.md"
+      title: "Part IV: Delivery and Operations"
+      label: "Part IV"
+      required: true
+      description: "Defines the delivery, testing and operational expectations for executing Architecture as Code."
+    - filename: "part_e_organisation_leadership.md"
+      title: "Part V: Organisation and Leadership"
+      label: "Part V"
+      required: true
+      description: "Positions the organisational, leadership and cultural mindset necessary for sustained adoption."
+    - filename: "part_f_experience_best_practices.md"
+      title: "Part VI: Experience and Best Practices"
+      label: "Part VI"
+      required: true
+      description: "Sets the context for experience reports and cross-disciplinary lessons that follow."
+    - filename: "part_g_future_wrap_up.md"
+      title: "Part VII: Future and Wrap-up"
+      label: "Part VII"
+      required: true
+      description: "Prepares readers for the forward-looking guidance, anti-patterns and concluding themes."
+    - filename: "part_h_appendices.md"
+      title: "Part VIII: Appendices and Reference"
+      label: "Part VIII"
+      required: true
+      description: "Introduces the appendices, technical reference architecture and citation material."
   special_chapters:
     glossary:
       filename: "28_glossary.md"
@@ -254,7 +300,7 @@ testing:
 # Requirements Specification for "Architecture as Code"
 
 ## Overview
-This document defines the content, quality and delivery requirements for the book "Architecture as Code". The goal is to produce a comprehensive, production-ready manuscript that explains how to document and automate modern software architecture using code. The specification covers the intended audience, chapter plan, writing standards, file system expectations and supporting automation so that contributors can deliver consistent results.
+This document defines the content, quality and delivery requirements for the book "Architecture as Code". The goal is to produce a comprehensive, production-ready manuscript that explains how to document and automate modern software architecture using code. The canonical manuscript now includes a dedicated front cover and eight narrative part introductions that frame the 34 core chapters and appendices. The specification covers the intended audience, chapter plan, writing standards, file system expectations and supporting automation so that contributors can deliver consistent results.
 
 ## Target Audience
 ### Primary Readers
@@ -276,6 +322,23 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 ## Core Themes
 ### Primary Theme
 **Architecture as Code** – the practice of describing, versioning and automating complete system architecture through machine-readable artefacts that cover infrastructure, applications, data flows, security policies and organisational processes.
+
+### Front Matter
+| Element | Filename | Title | Purpose | Required |
+|---|---|---|---|---|
+| Front Cover | 00_front_cover.md | Architecture as Code | Presents the cover artwork, release metadata and publication details that open the manuscript. | Yes |
+
+### Part Introductions
+| Part | Filename | Title | Purpose | Required |
+|---|---|---|---|---|
+| Part I | part_a_foundations.md | Part I: Foundations | Establishes terminology and the editorial framing for the foundational chapters. | Yes |
+| Part II | part_b_architecture_platform.md | Part II: Architecture Platform | Introduces the platform capabilities explored in Chapters 5–7. | Yes |
+| Part III | part_c_security_governance.md | Part III: Security and Governance | Signals the security, policy and governance priorities covered in Chapters 9–12. | Yes |
+| Part IV | part_d_delivery_operations.md | Part IV: Delivery and Operations | Sets expectations for delivery discipline, testing and operational excellence in Chapters 13–16. | Yes |
+| Part V | part_e_organisation_leadership.md | Part V: Organisation and Leadership | Aligns readers on cultural, leadership and organisational change ahead of Chapters 17–21. | Yes |
+| Part VI | part_f_experience_best_practices.md | Part VI: Experience and Best Practices | Provides context for the experience reports and lessons in Chapters 22–24. | Yes |
+| Part VII | part_g_future_wrap_up.md | Part VII: Future and Wrap-up | Frames the forward-looking narrative and anti-pattern coverage in Chapters 25–27. | Yes |
+| Part VIII | part_h_appendices.md | Part VIII: Appendices and Reference | Bridges the main narrative with the reference appendices and technical architecture. | Yes |
 
 ### Chapter Breakdown
 | Label | Filename | Title | Focus Area | Required |
@@ -327,6 +390,8 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 
 ## Content Structure Requirements
 - Every chapter must begin with an H1 heading (`# Title`).
+- Part introduction files must declare the LaTeX part metadata (`\part{...}` and `\setbookpart{...}`) followed by an H1 heading for the part name.
+- The front cover (`00_front_cover.md`) must retain the cover artwork and release information tables to ensure publishing completeness.
 - Include at least one diagram reference using the pattern `![...](images/diagram_<chapter>_<name>.png)`.
 - Provide a clearly labelled "Sources" or "References" section.
 - Minimum body length: 500 characters excluding whitespace.
