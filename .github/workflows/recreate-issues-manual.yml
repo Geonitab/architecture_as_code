@@ -1,0 +1,65 @@
+name: Recreate issues manually (title+body only, 3-minute delay)
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_numbers:
+        description: 'Comma-separated list of closed issue numbers to recreate'
+        required: true
+        type: string
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  recreate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Parse inputs and recreate issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const input = core.getInput('issue_numbers');
+            const issueNumbers = input.split(',').map(n => parseInt(n.trim(), 10)).filter(Boolean);
+
+            for (const issue_number of issueNumbers) {
+              core.info(`Processing issue #${issue_number}...`);
+
+              const { data: original } = await github.rest.issues.get({
+                owner,
+                repo,
+                issue_number
+              });
+
+              if (original.state !== 'closed') {
+                core.warning(`Issue #${issue_number} is not closed. Skipping.`);
+                continue;
+              }
+
+              const title = original.title || 'Untitled';
+              let body = original.body || '';
+
+              // Remove references to the old issue number to avoid accidental links
+              const issueRefPattern = new RegExp(`(^|[^\\w/])#${issue_number}(?!\\w)`, 'g');
+              body = body.replace(issueRefPattern, '$1');
+
+              // Create new issue (no labels, no assignees, no links)
+              const { data: newIssue } = await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body
+              });
+
+              core.info(`✅ Created new issue #${newIssue.number} from closed #${issue_number} (title+body only).`);
+
+              // Wait 3 minutes before processing the next issue
+              if (issue_number !== issueNumbers[issueNumbers.length - 1]) {
+                core.info('⏳ Waiting 3 minutes before next issue...');
+                await new Promise(resolve => setTimeout(resolve, 3 * 60 * 1000));
+              }
+            }
+
+            core.info('All requested issues processed.');
