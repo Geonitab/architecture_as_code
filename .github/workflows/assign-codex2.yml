@@ -1,4 +1,4 @@
-name: Auto draft PR + Codex auto-fix it
+name: Auto draft PR + Codex safe workflow proposals (no direct workflow commits)
 
 on:
   issues:
@@ -15,37 +15,36 @@ env:
   TZ: Europe/Stockholm
 
 jobs:
-  issue_to_pr:
-    name: Create or reuse draft PR from issue
+  create_draft_from_issue:
     if: github.event_name == 'issues'
     runs-on: ubuntu-latest
     env:
       REPO: ${{ github.repository }}
       ISSUE_NUMBER: ${{ github.event.issue.number }}
       ISSUE_TITLE: ${{ github.event.issue.title }}
+      GH_TOKEN: ${{ github.token }}
 
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout repository
+        uses: actions/checkout@v5
         with:
-          persist-credentials: true
           fetch-depth: 0
+          persist-credentials: true
 
       - name: Determine default branch
-        id: default
         run: |
           set -euo pipefail
           DEFAULT_BRANCH=$(gh repo view "$REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
           echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
 
       - name: Find or create branch
-        id: branch
         run: |
           set -euo pipefail
           PREFIX="refs/heads/codex/issue-${ISSUE_NUMBER}-*"
           EXISTING=$(git ls-remote --heads origin "$PREFIX" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1 || true)
+
           if [[ -n "$EXISTING" ]]; then
             BRANCH="$EXISTING"
-            echo "Reusing branch $BRANCH"
             git fetch origin "$BRANCH" --depth=1
             git switch -C "$BRANCH" "origin/$BRANCH"
           else
@@ -72,7 +71,7 @@ jobs:
               --base "$DEFAULT_BRANCH" \
               --head "$BRANCH" \
               --title "Draft: Issue #${ISSUE_NUMBER} – ${ISSUE_TITLE}" \
-              --body "Auto-created draft PR for Issue #${ISSUE_NUMBER}\n\nCloses #${ISSUE_NUMBER}" \
+              --body "Auto-created draft PR for issue #${ISSUE_NUMBER}\n\nCloses #${ISSUE_NUMBER}" \
               --draft \
               --repo "$REPO")
             PR_NUMBER=$(gh pr view "$BRANCH" --repo "$REPO" --json number --jq .number)
@@ -80,7 +79,7 @@ jobs:
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "PR_URL=$PR_URL" >> $GITHUB_ENV
 
-      - name: Run Codex on draft PR
+      - name: Run Codex
         uses: openai/codex-action@v1
         timeout-minutes: 20
         continue-on-error: true
@@ -89,55 +88,100 @@ jobs:
           prompt: |
             You are Codex working on branch "${{ env.BRANCH }}" for PR #${{ env.PR_NUMBER }}.
             The PR is linked to issue #${{ env.ISSUE_NUMBER }}.
-            Goal:
-            - Make minimal, targeted code edits to fix the issue.
-            - Update docs/tests if needed.
-            - Print a concise summary of what changed.
 
-      - name: Commit and push Codex changes
+            Goal:
+            - Apply minimal, targeted edits to resolve the issue.
+            - If you modify any `.github/workflows/*.yml` files, include the new YAML directly.
+            - Do not commit workflow files; they will be shown as a PR diff comment instead.
+            - Update docs/tests if relevant.
+            - Summarise what changed.
+
+      - name: Handle workflow changes safely
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          CHANGED=$(git status --porcelain | awk '{print $2}')
+          mapfile -t WF_FILES < <(printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.yml$' || true)
+
+          if (( ${#WF_FILES[@]} )); then
+            echo "::notice::Workflow edits detected — adding diff comment to PR #${PR_NUMBER}"
+            for f in "${WF_FILES[@]}"; do
+              echo "Processing workflow: $f"
+              git diff -- "$f" > diff.patch
+              gh pr comment "${PR_NUMBER}" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`" "$f" "$(cat diff.patch)")"
+              rm -f diff.patch
+              git checkout -- "$f"
+            done
+          fi
+
+      - name: Commit & push non-workflow Codex changes
+        run: |
+          set -euo pipefail
           if [[ -n "$(git status --porcelain)" ]]; then
             git add -A
             git commit -m "Codex auto-fix for issue #${ISSUE_NUMBER}"
             git push origin "${BRANCH}"
+            echo "::notice::Committed and pushed non-workflow changes to ${BRANCH}"
           else
-            echo "::notice::No changes from Codex."
+            echo "::notice::No non-workflow changes to commit."
           fi
 
   codex_on_pr:
-    name: Run Codex on PR updates
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout PR head
+        uses: actions/checkout@v5
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/head
-          persist-credentials: true
           fetch-depth: 0
+          persist-credentials: true
 
-      - name: Run Codex for PR
+      - name: Run Codex safely on PR
         uses: openai/codex-action@v1
         timeout-minutes: 20
         continue-on-error: true
         with:
           openai-api-key: ${{ secrets.OPENAI_API_KEY }}
           prompt: |
-            You are Codex working directly on PR #${{ github.event.pull_request.number }}.
-            This PR is linked to issue(s) via “Closes #ID” references.
-            Apply any necessary edits to resolve them, update docs/tests if needed, and summarise changes.
+            You are Codex working on PR #${{ github.event.pull_request.number }}.
+            Apply minimal, targeted edits to resolve linked issues.
+            If you need to modify `.github/workflows/*.yml`, include the YAML directly but do not commit it.
+            Instead, the diff will be posted as a PR comment.
 
-      - name: Commit and push Codex updates
+      - name: Handle workflow changes safely (PR event)
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          set -euo pipefail
+          CHANGED=$(git status --porcelain | awk '{print $2}')
+          mapfile -t WF_FILES < <(printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.yml$' || true)
+
+          if (( ${#WF_FILES[@]} )); then
+            echo "::notice::Workflow edits detected — adding diff comment to PR"
+            for f in "${WF_FILES[@]}"; do
+              git diff -- "$f" > diff.patch
+              gh pr comment "${{ github.event.pull_request.number }}" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`" "$f" "$(cat diff.patch)")"
+              rm -f diff.patch
+              git checkout -- "$f"
+            done
+          fi
+
+      - name: Commit & push non-workflow Codex changes
+        run: |
+          set -euo pipefail
           if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
             git commit -m "Codex auto-fix for PR #${{ github.event.pull_request.number }}"
             HEAD_REF="${{ github.head_ref }}"
             [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
             git push origin "$HEAD_REF"
+            echo "::notice::Committed and pushed non-workflow Codex changes."
           else
-            echo "::notice::No changes from Codex."
+            echo "::notice::No non-workflow Codex changes to commit."
           fi
