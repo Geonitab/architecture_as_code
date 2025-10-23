@@ -25,6 +25,8 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       # Om du lägger till en PAT med "workflows" rättighet, namnge den WORKFLOWS_PAT i repo-secrets
       WORKFLOWS_PAT: ${{ secrets.WORKFLOWS_PAT }}
+      # Primär källa: event-payloaden. Fallback sker i nästa steg.
+      DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
 
     steps:
       - name: Checkout repository
@@ -33,33 +35,47 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Determine default branch
+      - name: Determine default branch (with fallback)
         run: |
           set -euo pipefail
-          DEFAULT_BRANCH=$(gh repo view "$REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
-          echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> $GITHUB_ENV
+          if [[ -z "${DEFAULT_BRANCH:-}" || "${DEFAULT_BRANCH:-}" == "null" ]]; then
+            echo "DEFAULT_BRANCH from event empty → resolving via gh"
+            DB=$(gh repo view "$REPO" --json defaultBranchRef --jq .defaultBranchRef.name)
+            if [[ -z "${DB:-}" || "${DB:-}" == "null" ]]; then
+              echo "::error::Could not determine default branch"
+              exit 1
+            fi
+            echo "DEFAULT_BRANCH=$DB" >> "$GITHUB_ENV"
+          else
+            echo "DEFAULT_BRANCH=$DEFAULT_BRANCH" >> "$GITHUB_ENV"
+          fi
+
+      - name: Debug remotes and branches
+        run: |
+          set -euo pipefail
+          git remote -v || true
+          git branch -a || true
 
       - name: Find or create issue branch
         run: |
           set -euo pipefail
           PREFIX="refs/heads/codex/issue-${ISSUE_NUMBER}-*"
           EXISTING=$(git ls-remote --heads origin "$PREFIX" | awk '{print $2}' | sed 's#refs/heads/##' | head -n1 || true)
-
+          # Always ensure we have up-to-date refs before switching
+          git fetch --all --prune --depth=1
           if [[ -n "$EXISTING" ]]; then
             BRANCH="$EXISTING"
-            git fetch origin "$BRANCH" --depth=1
             git switch -C "$BRANCH" "origin/$BRANCH"
           else
             SLUG=$(echo "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-40)
             BRANCH="codex/issue-${ISSUE_NUMBER}${SLUG:+-$SLUG}"
-            git fetch origin "$DEFAULT_BRANCH" --depth=1
-            git switch -c "$BRANCH" "origin/$DEFAULT_BRANCH"
+            git switch -c "$BRANCH" "origin/${DEFAULT_BRANCH}"
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit --allow-empty -m "Init draft for issue #${ISSUE_NUMBER}"
             git push --set-upstream origin "$BRANCH"
           fi
-          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+          echo "BRANCH=$BRANCH" >> "$GITHUB_ENV"
 
       - name: Ensure draft PR exists
         id: pr_meta
@@ -110,7 +126,7 @@ jobs:
           set -euo pipefail
           CHANGED=$(git status --porcelain | awk '{print $2}')
           printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true > /tmp/wf.txt
-          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$'  || true > /tmp/nonwf.txt
+          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$' || true > /tmp/nonwf.txt
           echo "wf_count=$(grep -c . /tmp/wf.txt || true)" >> $GITHUB_OUTPUT
           echo "nonwf_count=$(grep -c . /tmp/nonwf.txt || true)" >> $GITHUB_OUTPUT
 
@@ -154,10 +170,8 @@ jobs:
             # Byt remote URL till PAT
             URL="https://${ACTOR}:${WORKFLOWS_PAT}@github.com/${REPO}.git"
             git remote set-url origin "$URL"
-
             git add $(cat /tmp/wf.txt)
             git commit -m "Codex proposal: workflow updates for issue #${ISSUE_NUMBER}" || echo "no wf commit"
-
             if ! git push origin "${BRANCH}"; then
               echo "::warning::Conflict when pushing workflow changes → creating separate workflow PR."
               TS=$(date +%Y%m%d-%H%M%S)
@@ -234,7 +248,7 @@ jobs:
           set -euo pipefail
           CHANGED=$(git status --porcelain | awk '{print $2}')
           printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true > /tmp/wf.txt
-          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$'  || true > /tmp/nonwf.txt
+          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$' || true > /tmp/nonwf.txt
           echo "wf_count=$(grep -c . /tmp/wf.txt || true)" >> $GITHUB_OUTPUT
           echo "nonwf_count=$(grep -c . /tmp/nonwf.txt || true)" >> $GITHUB_OUTPUT
 
@@ -266,7 +280,6 @@ jobs:
           set -euo pipefail
           HEAD_REF="${{ github.head_ref }}"
           [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
-
           if [[ -n "${WORKFLOWS_PAT:-}" ]]; then
             echo "::notice::WORKFLOWS_PAT present – pushing workflow changes."
             ACTOR="${{ github.actor }}"
@@ -290,20 +303,7 @@ jobs:
             while read -r f; do
               [[ -z "$f" ]] && continue
               git diff -- "$f" > diff.patch || true
-              gh pr comment "${{ github.event.pull_request.number }}" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`\n\n> Add **WORKFLOWS_PAT** secret to publish as real PR changes." "$f" "$(cat diff.patch)")"
+              gh pr comment "${{ github.event.pull_request.number }}" --repo "${{ github.repository }}" --body "$(printf "### ⚙️ Proposed workflow change\n**File:** %s\n\n\`\`\`diff\n%s\n\`\`\`\n" "$f" "$(cat diff.patch)")"
               git checkout -- "$f" || true
             done < /tmp/wf.txt
-          fi
-
-      - name: Mark PR ready for review if draft and we pushed
-        run: |
-          set -euo pipefail
-          info=$(gh pr view "${{ github.event.pull_request.number }}" --json state,isDraft)
-          state=$(echo "$info" | jq -r .state)
-          is_draft=$(echo "$info" | jq -r .isDraft)
-          if [[ "$state" == "OPEN" && "$is_draft" == "true" ]]; then
-            gh pr ready "${{ github.event.pull_request.number }}"
-            echo "::notice::Marked PR ready for review."
-          else
-            echo "::notice::PR is $state / draft=$is_draft – skip."
           fi
