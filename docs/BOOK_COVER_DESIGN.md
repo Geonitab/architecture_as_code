@@ -164,7 +164,7 @@ exports/book-cover/
 ### Updating the design
 1. Modify `templates/book-cover.svg` directly in a vector editor (Inkscape, Adobe Illustrator)
 2. Optionally, edit the HTML/CSS source files in `exports/book-cover/source/` for web-based design work
-3. Test the build process: `cd docs && ./build_book.sh`
+3. Test the build process: `docs/build_book.sh`
 4. Verify the cover appears correctly in the generated PDF and EPUB
 
 ### Brand Updates
