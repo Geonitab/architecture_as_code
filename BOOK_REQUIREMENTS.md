@@ -1,8 +1,8 @@
 ---
 release:
-  version: "2025.04"
-  codename: "Blueprint Foundations"
-  release_date: "2025-04-15"
+  version: "2025.10"
+  codename: "Alpha"
+  release_date: "2025-10-23"
   feature_tags:
     - "diagram-refresh"
     - "governance-automation"
