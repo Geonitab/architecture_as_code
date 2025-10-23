@@ -168,13 +168,18 @@ def create_archive(output_path: Path) -> None:
     if not RELEASE_ROOT.exists():
         raise FileNotFoundError("Releases directory not found; nothing to archive.")
 
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    if output_path.exists():
+        output_path.unlink()
+
     files = [path for path in RELEASE_ROOT.rglob("*") if path.is_file()]
     if not files:
         raise FileNotFoundError("No release files found to archive.")
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    if output_path.exists():
-        output_path.unlink()
+    # Ensure we never include the archive itself in the payload
+    files = [path for path in files if path != output_path]
+    if not files:
+        raise FileNotFoundError("No release files found to archive.")
 
     log(f"📦 Creating archive at {output_path} …")
     with zipfile.ZipFile(output_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
