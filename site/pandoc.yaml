@@ -1,0 +1,107 @@
+---
+# Pandoc configuration file for "Architecture as Code" book
+# Simplified configuration for better compatibility
+
+# General settings
+standalone: true
+toc: true
+toc-depth: 3
+number-sections: true
+
+# Chapter page break configuration
+top-level-division: chapter
+
+# Template and styling - Try Eisvogel first, fallback to default
+template: eisvogel.latex
+
+# PDF-specific settings
+pdf-engine: xelatex
+
+# Syntax highlighting configuration
+highlight-style: tango
+# Alternative highlight styles: pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, tango
+
+# Metadata for document
+metadata:
+  title: "Architecture as Code"
+  subtitle: "A practical handbook for Infrastructure as Code"
+  author: "Gunnar Nordqvist"
+  date: "2025"
+  language: en-GB
+  lang: en-GB
+
+# Variables for better compatibility
+variables:
+  documentclass: book
+  classoption:
+    - twoside
+    - openany
+  geometry:
+    - top=2.5cm
+    - bottom=2.5cm
+    - left=2.5cm
+    - right=2.5cm
+  fontsize: 11pt
+  linestretch: 1.2
+  lang: en-GB
+  titlepage: false  # Disable Eisvogel's automatic title page (we use custom title in include-before)
+  include-before: |
+    % Full-bleed cover and release pages without cropping their content.
+    \clearpage
+    \begingroup
+    \thispagestyle{empty}
+    \newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
+    \noindent\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{images/book-cover.png}
+    \restoregeometry
+    \endgroup
+    \clearpage
+    \begingroup
+    \thispagestyle{empty}
+    \newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
+    \noindent\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{images/release_information_page.png}
+    \restoregeometry
+    \endgroup
+    \clearpage
+  # Simplified header handling
+  header-includes: |
+    \usepackage{fancyhdr}
+    \usepackage{titlesec}
+    \setlength{\headheight}{14pt}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \newcommand{\currentpartletter}{}
+    \newcommand{\currentparttitle}{}
+    \newcommand{\currentpartformat}{}
+    \newcommand{\setbookpart}[1]{%
+      \renewcommand{\currentpartletter}{\thepart}%
+      \renewcommand{\currentparttitle}{#1}%
+      \renewcommand{\currentpartformat}{PART~\thepart\space-\space #1}%
+    }
+    \renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+    % Show only the current chapter title in the running header to avoid
+    % duplicating the part name alongside the chapter label.
+    \fancyhead[LO]{\small\bfseries \leftmark}
+    \fancyhead[LE]{\small\bfseries \leftmark}
+    \fancyhead[RO]{}
+    \fancyhead[RE]{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\partname}{Part}
+    \renewcommand{\thepart}{\Alph{part}}
+    \titleformat{\part}[display]
+      {\bfseries\centering\Huge}
+      {PART \thepart}
+      {0pt}
+      {\thispagestyle{empty}\vspace*{0.5\textheight}}
+    \titlespacing*{\part}{0pt}{0pt}{0pt}
+    \usepackage{graphicx}
+    \usepackage{pdfpages}
+    % Suppress automatic title page generation from metadata
+    \let\oldmaketitle\maketitle
+    \renewcommand{\maketitle}{}
+
+# For EPUB output
+epub-chapter-level: 1
+
+# Additional filters for better output
+filters: []

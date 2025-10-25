@@ -1,0 +1,14 @@
+graph TB
+    A[Cost Monitoring Stack]:::kv-primary --> B[CloudWatch/Azure Monitor]:::kv-highlight
+    A --> C[Custom Dashboards]:::kv-accent
+    A --> D[Alert System]:::kv-accent
+
+    B --> E[Metrics Collection]:::kv-highlight
+    C --> F[Reporting]:::kv-muted
+    D --> G[Anomaly Detection]:::kv-pattern
+
+    E --> H[Cost Analysis]:::kv-primary
+    F --> H
+    G --> H
+
+    H --> I[Optimisation Actions]:::kv-highlight

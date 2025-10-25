@@ -1,0 +1,20 @@
+graph LR
+    A((Soft "as code"<br/>Ecosystem)):::kv-outline
+
+    A --> C[Compliance as Code]:::kv-primary
+    A --> R[Architecture as Code]:::kv-accent
+    A --> D[Documentation as Code]:::kv-highlight
+    A --> K[Knowledge as Code]:::kv-pattern
+    A --> U[Culture as Code]:::kv-muted
+
+    C --> C1[Codified policies<br/>& validation]:::kv-elevated
+    R --> R1[Traceable decisions<br/>& models]:::kv-elevated
+    D --> D1[Versioned narratives<br/>& knowledge]:::kv-elevated
+    K --> K1[Reusable playbooks<br/>& lessons]:::kv-elevated
+    U --> U1[Working agreements<br/>& rituals]:::kv-elevated
+
+    C1 -.-> S1[Shared<br/>foundation]:::kv-pattern
+    R1 -.-> S1
+    D1 -.-> S1
+    K1 -.-> S1
+    U1 -.-> S1
