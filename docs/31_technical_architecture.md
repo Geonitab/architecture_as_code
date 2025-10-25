@@ -23,7 +23,7 @@ docs/
 ├── 21_digitalization.md            # Digitalisation strategy
 ├── 23_soft_as_code_interplay.md    # Interplay between soft disciplines
 ├── 24_best_practices.md            # Methods and lessons learned
-├── 25_future_trends_development.md # Future trends and development
+├── 25_future_trends.md # Future trends and development
 ├── 27_conclusion.md                # Conclusion
 ├── 28_glossary.md                  # Terminology
 ├── 29_about_the_authors.md         # Author information

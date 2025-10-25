@@ -15,10 +15,10 @@ It should never modify any files in the docs/ directory.
 import os
 import sys
 import glob
-import math
 import re
+import shutil
 from collections import OrderedDict
-from datetime import datetime
+from datetime import datetime, timezone
 from html import escape
 from pathlib import Path
 
@@ -174,6 +174,14 @@ def get_release_metadata(requirements_path: Path = Path("BOOK_REQUIREMENTS.md"))
     version = str(release.get("version") or "1.0").strip()
     codename = str(release.get("codename") or "").strip()
 
+    build_number = (
+        release.get("build_number")
+        or os.environ.get("BUILD_NUMBER")
+        or os.environ.get("GITHUB_RUN_NUMBER")
+        or ""
+    )
+    build_number = str(build_number).strip()
+
     release_date = release.get("release_date") or release.get("date")
     if isinstance(release_date, datetime):
         release_date = release_date.isoformat()
@@ -193,6 +201,7 @@ def get_release_metadata(requirements_path: Path = Path("BOOK_REQUIREMENTS.md"))
     return {
         "version": version or "1.0",
         "codename": codename,
+        "build_number": build_number,
         "release_date": release_date,
         "feature_tags": feature_tags,
     }
@@ -203,14 +212,17 @@ def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str
     if not diagram_path:
         return None
 
-    # Diagrams are stored under docs/, ensure we reference that root
-    diagram_file = Path("docs") / diagram_path
+    source_path = Path(diagram_path)
+    if not source_path.is_absolute():
+        source_path = Path("docs") / source_path
+
+    if not source_path.exists():
+        print(f"Warning: Diagram {diagram_path} not found at {source_path}")
 
     try:
-        relative_path = os.path.relpath(diagram_file, output_directory)
+        relative_path = os.path.relpath(source_path, output_directory)
     except ValueError:
-        # Fallback to absolute path if relative calculation fails
-        relative_path = str(diagram_file)
+        relative_path = source_path.as_posix()
 
     return Path(relative_path).as_posix()
 
@@ -262,10 +274,11 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
     
     page_title = f"{chapter_label} – {mapped_title}"
     subtitle_text = f'Key insights from {chapter_label} of "{book_overview["title"]}"'
-    author_text = "Architecture as Code Editorial Team"
+    author_text = "Gunnar Nordqvist"
 
     release_info = release_info or {}
-    version_text = str(release_info.get("version") or "1.0")
+    build_number = str(release_info.get("build_number") or "").strip()
+    version_text = build_number or str(release_info.get("version") or "1.0")
     codename_text = str(release_info.get("codename") or "").strip()
     raw_release_date = release_info.get("release_date") or release_info.get("date")
 
@@ -278,7 +291,7 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
             published_date = str(raw_release_date)
 
     if not published_date:
-        published_date = datetime.now().strftime("%d %B %Y")
+        published_date = datetime.now(timezone.utc).strftime("%d %B %Y")
 
     if published_date.startswith("0"):
         published_date = published_date[1:]
@@ -292,13 +305,6 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
         if str(tag).strip()
     ]
 
-    reading_minutes = chapter_data.get('word_count') or 0
-    if reading_minutes:
-        reading_minutes = max(3, math.ceil(reading_minutes / 220))
-    else:
-        reading_minutes = 3
-    reading_label = f"{reading_minutes} minute{'s' if reading_minutes != 1 else ''}"
-
     escaped_page_title = escape(page_title)
     escaped_chapter_area = escape(chapter_area)
     escaped_chapter_title = escape(chapter_data['title'])
@@ -307,10 +313,9 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
     escaped_author_text = escape(author_text)
     escaped_published_date = escape(published_date)
     escaped_version_text = escape(version_text)
-    escaped_reading_label = escape(reading_label)
     escaped_chapter_label = escape(chapter_label)
     escaped_codename = escape(codename_text) if codename_text else ""
-    
+
     # Prepare content sections
     diagram_html = ""
     diagram_src = resolve_diagram_src(chapter_data.get('diagram_path'), output_directory)
@@ -321,9 +326,9 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
 
     if diagram_src:
         diagram_html = (
-            "            <div style=\"text-align: center; margin: 30px 0;\">\n"
-            f"                <img src=\"{escape(diagram_src)}\" alt=\"Chapter diagram for {escaped_chapter_title}\" style=\"max-width: 100%; height: auto; border: 1px solid var(--kvadrat-gray-light); border-radius: 8px;\">\n"
-            "            </div>"
+            "            <figure class=\"chapter-figure\">\n"
+            f"                <img src=\"{escape(diagram_src)}\" alt=\"Chapter diagram for {escaped_chapter_title}\">\n"
+            "            </figure>"
         )
     
     # Create condensed content sections
@@ -349,30 +354,21 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
     # Replace the title and content in template
     html_output = template
 
-    header_replacements = [
-        ("<title>Kvadrat Whitepaper Template</title>", f"<title>{escaped_page_title}</title>"),
-        ('<div class="category">Infrastructure as Code</div>', f'<div class="category">{escaped_chapter_area}</div>'),
-        (
-            '<h1 class="title">Modernisation of IT infrastructure through code-based solutions</h1>',
-            f'<h1 class="title">{escaped_mapped_title}</h1>',
-        ),
-        (
-            '<p class="subtitle">A strategic guide for organisations implementing Infrastructure as Code</p>',
-            f'<p class="subtitle">{escaped_subtitle_text}</p>',
-        ),
-        ('<div>Kvadrat Expert Team</div>', f'<div>{escaped_author_text}</div>'),
-        ('<div>December 2024</div>', f'<div>{escaped_published_date}</div>'),
-        ('<div>1.0</div>', f'<div>{escaped_version_text}</div>'),
-        ('<div>15 minutes</div>', f'<div>{escaped_reading_label}</div>'),
-    ]
+    replacements = {
+        "[[PAGE_TITLE]]": escaped_page_title,
+        "[[CATEGORY]]": escaped_chapter_area,
+        "[[TITLE]]": escaped_mapped_title,
+        "[[SUBTITLE]]": escaped_subtitle_text,
+        "[[AUTHOR]]": escaped_author_text,
+        "[[DATE]]": escaped_published_date,
+        "[[VERSION]]": escaped_version_text,
+    }
 
-    for source, target in header_replacements:
-        if source in html_output:
-            html_output = html_output.replace(source, target, 1)
-    
+    for placeholder, value in replacements.items():
+        html_output = html_output.replace(placeholder, value)
+
     escaped_book_title = escape(book_overview['title'])
-    escaped_book_subtitle = escape(book_overview['subtitle'])
-    escaped_book_description = escape(book_overview['description'])
+    escaped_book_description = escape(book_overview['description']).replace('\n', '<br>')
     escaped_target_audience = escape(book_overview['target_audience'])
     escaped_area_lower = escape(chapter_area.lower())
 
@@ -402,58 +398,43 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
     
     # Create the new content sections
     new_content = f'''        <!-- Book Overview -->
-        <section>
-            <h1>About the book "{escaped_book_title}"</h1>
-            <p class="lead"><strong>{escaped_book_title}</strong> – {escaped_book_subtitle}</p>
-            
-            <p>{escaped_book_description}</p>
-            
+        <section class="book-overview">
+            <h1>About "{escaped_book_title}"</h1>
+            <p class="lead">{escaped_book_description}</p>
+
             <div class="callout callout-info">
-                <div class="callout-title">Target Audience</div>
+                <div class="callout-title">Who should read this</div>
                 <p>{escaped_target_audience}</p>
             </div>
         </section>
 
         <!-- Chapter Content -->
-        <section>
+        <section class="chapter-highlight">
             <h1>{escaped_chapter_label}: {escaped_chapter_title}</h1>
 {diagram_html if diagram_html else ""}
-            
+
 {content_sections}
-            
+
 {section_overview}
         </section>
 
         <!-- Call to Action -->
-        <section>
-            <h1>Continue Your Journey</h1>
+        <section class="call-to-action">
+            <h1>Continue your journey</h1>
             <div class="callout callout-success">
-                <div class="callout-title">Complete Chapter</div>
-                <p><strong>Read {escaped_chapter_label} – "{escaped_chapter_title}" in "{escaped_book_title}"</strong> for detailed explanations, practical examples, and implementation patterns.</p>
+                <div class="callout-title">Read the full chapter</div>
+                <p><strong>Discover {escaped_chapter_label} – "{escaped_chapter_title}" in "{escaped_book_title}"</strong> for detailed explanations, practical examples, and implementation patterns.</p>
             </div>
-            
-            <p>The full manuscript explores {book_overview['chapters_count']} chapters, positioning this whitepaper within the {escaped_area_lower} focus of the programme.</p>
-            
+
+            <p>The complete manuscript spans {book_overview['chapters_count']} chapters, positioning this whitepaper within the {escaped_area_lower} focus of the programme.</p>
+
             <p><strong>Explore adjacent chapters:</strong> The surrounding sections expand upon the themes introduced here and provide complementary techniques.</p>
         </section>'''
-    
-    # Replace the existing content sections
-    # Find and replace everything from "Executive Summary" to just before "Footer"
-    pattern = r'(<!-- Executive Summary -->.*?)(<!-- Footer -->)'
-    match = re.search(pattern, html_output, re.DOTALL)
-    
-    if match:
-        html_output = html_output.replace(match.group(1), new_content + '\n\n        ')
-    else:
-        # Fallback: replace all sections
-        section_pattern = r'(<!-- Whitepaper Content -->.*?)<section>(.*?)</section>(.*?)<footer'
-        section_match = re.search(section_pattern, html_output, re.DOTALL)
-        if section_match:
-            html_output = html_output.replace(
-                section_match.group(0),
-                f'{section_match.group(1)}{new_content}\n\n        <footer'
-            )
-    
+
+    content_placeholder = "        <!-- WHITEPAPER_CONTENT -->"
+    if content_placeholder in html_output:
+        html_output = html_output.replace(content_placeholder, new_content)
+
     return html_output
 
 def generate_whitepapers(release_mode=False):

@@ -140,7 +140,7 @@ class TestEPUBValidation:
         """Test basic EPUB structure integrity."""
         if not epub_file.exists():
             pytest.skip(f"EPUB file not found at {epub_file}")
-        
+
         # Test that it's a valid ZIP file (EPUB is based on ZIP)
         import zipfile
         try:
@@ -163,6 +163,19 @@ class TestEPUBValidation:
             pytest.fail("EPUB file is not a valid ZIP archive")
         except Exception as e:
             pytest.fail(f"Error checking EPUB structure: {e}")
+
+    def test_default_chapter_selection_uses_full_book(self):
+        """Ensure generate_book defaults to building the full manuscript."""
+        import generate_book
+
+        full_list = generate_book.load_full_chapter_filenames()
+        default_selection = generate_book.determine_chapter_list(
+            build_all=False,
+            sample=False,
+            chapters=None,
+        )
+
+        assert default_selection == full_list
 
 
 class TestBuildPipelineConfiguration:
@@ -201,4 +214,19 @@ class TestBuildPipelineConfiguration:
         """Ensure the build script validates EPUB output using epubcheck."""
         assert 'validate_epub() {' in build_script
         assert 'epubcheck "$epub_file"' in build_script
+
+    def test_unified_workflow_builds_full_epub(self):
+        """Verify the release workflow builds and asserts the full EPUB output."""
+        workflow_path = (
+            Path(__file__).parent.parent / ".github" / "workflows" / "unified-build-release.yml"
+        )
+        workflow_text = workflow_path.read_text(encoding="utf-8")
+
+        assert (
+            "python3 generate_book.py --format epub --output dist/book.epub --all"
+            in workflow_text
+        ), "Workflow must build the complete EPUB"
+        assert "test -s dist/book.epub" in workflow_text, (
+            "Workflow must verify that the EPUB artefact exists and is non-empty"
+        )
 

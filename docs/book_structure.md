@@ -104,7 +104,7 @@ Reference material, author information, and technical enablers
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 25 | `25_future_trends_development.md` | Future Trends and Development in Architecture as Code | Development trends, technological future, and long-term perspectives |
+| 25 | `25_future_trends.md` | Future Trends and Development in Architecture as Code | Development trends, technological future, and long-term perspectives |
 | 26 | `26_aac_anti_patterns.md` | Anti-Patterns in Architecture as Code Programmes | Common pitfalls, early warning indicators, and recovery playbooks |
 | 27 | `27_conclusion.md` | Conclusion | Concluding reflections |
 
