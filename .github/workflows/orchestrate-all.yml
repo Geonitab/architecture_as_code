@@ -58,6 +58,43 @@ jobs:
           cd ..
           ls -lh non-docker-release.zip
 
+      - name: Summarise release artefacts
+        id: artefact_summary
+        run: |
+          set -euo pipefail
+          shopt -s nullglob globstar
+
+          declare -a patterns=(
+            "final-release/**/*.pdf"
+            "final-release/**/*.epub"
+            "final-release/**/*.docx"
+            "final-release/**/*.pptx"
+            "non-docker-release.zip"
+          )
+
+          summary=""
+
+          for pattern in "${patterns[@]}"; do
+            matches=($pattern)
+            count=${#matches[@]}
+
+            if [[ $count -eq 0 ]]; then
+              echo "Pattern '${pattern}' matched no files."
+              summary+="- ${pattern}: not present\n"
+            else
+              echo "Pattern '${pattern}' matched ${count} file(s):"
+              printf '  %s\n' "${matches[@]}"
+              summary+="- ${pattern}: ${count} file(s)\n"
+            fi
+          done
+
+          {
+            echo "summary<<'EOF'"
+            printf "%s" "$summary"
+            echo
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Upload combined archive artefact
         uses: actions/upload-artifact@v4
         with:
@@ -74,6 +111,8 @@ jobs:
           body: |
             Combined outputs from Book, Whitepapers, Presentations, and Site.
             Commit: ${{ github.sha }}
+            Artefact availability:
+            ${{ steps.artefact_summary.outputs.summary }}
           files: |
             final-release/**/*.pdf
             final-release/**/*.epub
