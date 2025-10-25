@@ -49,22 +49,49 @@ except ImportError as exc:  # pragma: no cover - dependency check
     print("   Install with: pip install PyYAML>=6.0")
     sys.exit(1)
 
-from pptx import Presentation
-from pptx.util import Inches, Pt
-from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN
-from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+try:  # pragma: no cover - optional dependency for slide rendering
+    from pptx import Presentation
+    from pptx.util import Inches, Pt
+    from pptx.dml.color import RGBColor
+    from pptx.enum.text import PP_ALIGN
+    from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+    PPTX_AVAILABLE = True
+except ModuleNotFoundError:  # pragma: no cover - handled gracefully for testing
+    Presentation = None
+    PPTX_AVAILABLE = False
+    Inches = Pt = None  # type: ignore[assignment]
+    RGBColor = PP_ALIGN = MSO_AUTO_SHAPE_TYPE = None  # type: ignore[assignment]
 
-THEME_BLUE = RGBColor(8, 58, 122)
-THEME_ACCENT = RGBColor(225, 173, 1)
-THEME_TEXT = RGBColor(51, 51, 51)
-THEME_MUTED = RGBColor(102, 102, 102)
-SLIDE_WIDTH = Inches(13.3333333333)
-SLIDE_HEIGHT = Inches(7.5)
+if PPTX_AVAILABLE:
+    THEME_BLUE = RGBColor(8, 58, 122)
+    THEME_ACCENT = RGBColor(225, 173, 1)
+    THEME_TEXT = RGBColor(51, 51, 51)
+    THEME_MUTED = RGBColor(102, 102, 102)
+    SLIDE_WIDTH = Inches(13.3333333333)
+    SLIDE_HEIGHT = Inches(7.5)
+else:
+    # Provide placeholder values so analytical helpers can be imported without python-pptx
+    THEME_BLUE = (8, 58, 122)
+    THEME_ACCENT = (225, 173, 1)
+    THEME_TEXT = (51, 51, 51)
+    THEME_MUTED = (102, 102, 102)
+    SLIDE_WIDTH = 13.3333333333
+    SLIDE_HEIGHT = 7.5
+
+
+def _ensure_pptx_available():
+    """Raise a helpful error if python-pptx is not installed."""
+
+    if not PPTX_AVAILABLE:
+        raise ModuleNotFoundError(
+            "python-pptx is required to generate presentation slides. "
+            "Install it with 'pip install python-pptx>=0.6.21'."
+        )
 
 
 def configure_presentation_document(prs):
     """Apply shared configuration and metadata to the presentation document."""
+    _ensure_pptx_available()
     prs.slide_width = SLIDE_WIDTH
     prs.slide_height = SLIDE_HEIGHT
 
@@ -95,10 +122,15 @@ def _add_notes(slide, notes_text):
     notes_frame.text = notes_text or ""
 
 
-def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inches(0.5)):
+def _add_keyword_banner(slide, keyword, left, top, width=None, height=None):
     """Add an accent banner to highlight the focus keyword."""
     if not keyword:
         return None
+
+    if width is None:
+        width = Inches(3.5) if PPTX_AVAILABLE else 3.5
+    if height is None:
+        height = Inches(0.5) if PPTX_AVAILABLE else 0.5
 
     banner = slide.shapes.add_shape(
         MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE,
@@ -160,6 +192,7 @@ def _add_highlighted_bullet(text_frame, text):
 
 def build_presentation_document(prs, presentation_data):
     """Construct the Architecture as Code presentation from structured data."""
+    _ensure_pptx_available()
     configure_presentation_document(prs)
 
     today_label = datetime.now().strftime("%d %B %Y")
@@ -403,6 +436,13 @@ PART_AREA_MAP = {
     "Part VI: Experience and Best Practices": {"Experience and Best Practices"},
     "Part VII: Future and Wrap-up": {"Future and Wrap-up"},
     "Part VIII: Appendices and Reference": {"Appendices", "Reference"},
+}
+
+
+DIAGRAM_OPTIONAL_CHAPTERS = {
+    # Narrative-heavy chapters that intentionally omit diagrams but should not impact coverage metrics
+    "26_prerequisites_for_aac.md",
+    "32_finos_project_blueprint.md",
 }
 
 
@@ -705,7 +745,8 @@ def validate_chapter_diagrams():
         'chapters_with_diagrams': [],
         'chapters_without_diagrams': [],
         'total_chapters': 0,
-        'chapters_with_diagram_count': 0
+        'chapters_with_diagram_count': 0,
+        'diagram_optional_chapters': sorted(DIAGRAM_OPTIONAL_CHAPTERS),
     }
     
     for chapter_file in chapter_files:
@@ -721,6 +762,9 @@ def validate_chapter_diagrams():
                 continue
 
         if chapter_name in ['README.md', 'architecture_as_code.md']:
+            continue
+
+        if chapter_name in DIAGRAM_OPTIONAL_CHAPTERS:
             continue
 
         validation_results['total_chapters'] += 1
@@ -1251,6 +1295,7 @@ if __name__ == "__main__":
 def create_presentation_directly(presentation_data, output_path="architecture_as_code_presentation.pptx"):
     """Create PowerPoint presentation directly without generating a script."""
     try:
+        _ensure_pptx_available()
         prs = Presentation()
         build_presentation_document(prs, presentation_data)
         prs.save(output_path)
