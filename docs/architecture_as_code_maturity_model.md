@@ -1,4 +1,4 @@
-# Architecture as Code Model
+# Architecture as Code Maturity Model
 
 ## Maturity model for implementing architecture as code
 
