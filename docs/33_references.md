@@ -2,6 +2,16 @@
 
 This section provides a comprehensive list of all sources and references cited throughout the book, compiled in alphabetical order for ease of reference. Each entry includes information about which chapters reference the source.
 
+## Numbered source index
+
+- <a id="source-7"></a>**Source [7]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerization.md).
+- <a id="source-15"></a>**Source [15]:** Pulumi. *Testing Infrastructure as Code Programs.* Pulumi Blog, 2024. Referenced in: [Chapter 13: Testing Strategies for Infrastructure as Code](13_testing_strategies.md).
+- <a id="source-16"></a>**Source [16]:** HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
+- <a id="source-17"></a>**Source [17]:** HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
+- <a id="source-18"></a>**Source [18]:** Microsoft Learn. *Store Terraform state in Azure Storage.* Microsoft Learn Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
+- <a id="source-19"></a>**Source [19]:** Google Cloud. *Store Terraform state in Cloud Storage.* Google Cloud Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
+- <a id="source-20"></a>**Source [20]:** HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
+
 ## Academic and Industry Publications
 
 **AaC Open Source Project.** "Architecture-as-Code Repository." https://github.com/aacplatform/aac  
@@ -28,7 +38,7 @@ This section provides a comprehensive list of all sources and references cited t
 **Chung, L., et al.** "Non-Functional Requirements in Software Engineering." Springer, 2000.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**CNCF.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024.  
+**CNCF.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [7])
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
 
 **FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. https://calm.finos.org/  
@@ -144,25 +154,25 @@ This section provides a comprehensive list of all sources and references cited t
 **Research on emerging technologies.**  
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
-**Google Cloud.** "Store Terraform state in Cloud Storage." Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state  
+**Google Cloud.** "Store Terraform state in Cloud Storage." Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state (Source [19])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**HashiCorp.** "Backend Type: s3." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/language/settings/backends/s3  
+**HashiCorp.** "Backend Type: s3." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/language/settings/backends/s3 (Source [17])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**HashiCorp.** "Securing Terraform State." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/cloud-docs/state/securing  
+**HashiCorp.** "Securing Terraform State." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/cloud-docs/state/securing (Source [16])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
 **HashiCorp.** "State of Cloud Strategy Survey 2024." HashiCorp, 2024.  
 *Referenced in: [Chapter 17: Organisational Change](17_organizational_change.md), [Chapter 27: Conclusion](27_conclusion.md)*
 
-**HashiCorp.** "Terraform Security Best Practices." HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security  
+**HashiCorp.** "Terraform Security Best Practices." HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security (Source [20])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**Microsoft Learn.** "Store Terraform state in Azure Storage." Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage  
+**Microsoft Learn.** "Store Terraform state in Azure Storage." Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage (Source [18])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**Pulumi.** "Testing Infrastructure as Code Programs." Pulumi Blog, 2024.  
+**Pulumi.** "Testing Infrastructure as Code Programs." Pulumi Blog, 2024. (Source [15])
 *Referenced in: [Chapter 13: Testing Strategies](13_testing_strategies.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*
 
 ## Using This References Section
