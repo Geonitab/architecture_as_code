@@ -1,0 +1,193 @@
+{
+  "sources": [
+    {
+      "id": 1,
+      "title": "CNCF \u2013 State of Cloud Native Development 2024.",
+      "type": "industry_report",
+      "year": 2024,
+      "url": "https://www.cncf.io/reports/state-of-cloud-native-development-2024/",
+      "summary": "Highlights the accelerating adoption of cloud native delivery models and the implications for Architecture as Code operating models.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "07_containerization.md"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "ThoughtWorks \u2013 Architecture as Code: The Next Evolution.",
+      "type": "industry_analysis",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/architecture-as-code",
+      "summary": "Explores how Architecture as Code practices mature across enterprises and outlines guardrails for sustainable adoption.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "02_fundamental_principles.md",
+        "29_about_the_authors.md"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Martin, R. \u2013 Clean Architecture: A Craftsman's Guide to Software Structure.",
+      "type": "book",
+      "year": 2017,
+      "url": "https://www.pearson.com/en-gb/subject-catalog/p/clean-architecture/P200000003394",
+      "summary": "Provides foundational architectural disciplines that underpin the Architecture as Code mindset.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Gartner \u2013 Forecast Analysis: Public Cloud Services Worldwide.",
+      "type": "industry_research",
+      "year": 2024,
+      "url": "https://www.gartner.com/en/documents/forecast-analysis-public-cloud-services-worldwide",
+      "summary": "Quantifies demand for managed cloud services and provides benchmarks for platform governance sections.",
+      "supports_chapters": [
+        "15_cost_optimization.md",
+        "17_organizational_change.md"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "HashiCorp \u2013 State of Cloud Strategy Survey 2024.",
+      "type": "industry_research",
+      "year": 2024,
+      "url": "https://www.hashicorp.com/state-of-cloud-strategy",
+      "summary": "Captures executive perspectives on multi-cloud operating models relevant to organisational change guidance.",
+      "supports_chapters": [
+        "17_organizational_change.md",
+        "27_conclusion.md"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "AWS \u2013 AWS Cloud Development Kit (CDK) Developer Guide.",
+      "type": "technical_documentation",
+      "year": 2024,
+      "url": "https://docs.aws.amazon.com/cdk/latest/guide/home.html",
+      "summary": "Documents infrastructure as code patterns that are extended in Automation and Practical Implementation chapters.",
+      "supports_chapters": [
+        "05_automation_devops_cicd.md",
+        "14_practical_implementation.md"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Brown, S. \u2013 C4 Model Overview.",
+      "type": "technical_documentation",
+      "year": 2024,
+      "url": "https://c4model.com/",
+      "summary": "Defines the C4 diagramming approach referenced when introducing visual conventions for Architecture as Code.",
+      "supports_chapters": [
+        "06_structurizr.md",
+        "24_best_practices.md"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Mermaid \u2013 Mermaid: Diagramming and Charting Tool.",
+      "type": "technical_documentation",
+      "year": 2024,
+      "url": "https://mermaid.js.org/",
+      "summary": "Explains declarative diagramming techniques that underpin the book's diagram automation workflows.",
+      "supports_chapters": [
+        "22_documentation_vs_architecture.md"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "GitHub Docs \u2013 About protected branches.",
+      "type": "technical_documentation",
+      "year": 2024,
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches",
+      "summary": "Describes governance controls that inform the policy automation blueprints.",
+      "supports_chapters": [
+        "11_governance_as_code.md",
+        "23_soft_as_code_interplay.md"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "HashiCorp \u2013 Policy as Code Overview.",
+      "type": "technical_documentation",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/enterprise/policy-as-code",
+      "summary": "Introduces policy as code guardrails referenced throughout governance patterns.",
+      "supports_chapters": [
+        "23_soft_as_code_interplay.md"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "GitLab \u2013 Building a Single Source of Truth with APIs and CLI.",
+      "type": "technical_documentation",
+      "year": 2024,
+      "url": "https://about.gitlab.com/topics/devops/api-cli-single-source-of-truth/",
+      "summary": "Highlights integration and automation practices that reinforce Architecture as Code workflows.",
+      "supports_chapters": [
+        "02_fundamental_principles.md",
+        "11_governance_as_code.md"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "FINOS \u2013 CALM: Common Architecture Language Model.",
+      "type": "industry_initiative",
+      "year": 2024,
+      "url": "https://calm.finos.org/",
+      "summary": "Outlines an industry-backed meta-model that complements the book's modelling recommendations.",
+      "supports_chapters": [
+        "22_documentation_vs_architecture.md"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Thoughtworks Technology Radar \u2013 Governance as Code.",
+      "type": "industry_analysis",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/governance-as-code",
+      "summary": "Positions governance automation as a mainstream technique and supports the governance-focused chapters.",
+      "supports_chapters": [
+        "11_governance_as_code.md"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "MarketsandMarkets \u2013 Infrastructure as Code Market Report.",
+      "type": "industry_research",
+      "year": 2023,
+      "url": "https://www.marketsandmarkets.com/PressReleases/infrastructure-as-code.asp",
+      "summary": "Quantifies Infrastructure as Code market growth, underpinning economic arguments in cost optimisation.",
+      "supports_chapters": [
+        "15_cost_optimization.md",
+        "25_future_trends_development.md"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "IDC \u2013 Worldwide DevOps Software Tools Forecast, 2023\u20132027.",
+      "type": "industry_research",
+      "year": 2023,
+      "url": "https://www.idc.com/getdoc.jsp?containerId=US50951123",
+      "summary": "Examines toolchain investment trends that influence automation strategy guidance.",
+      "supports_chapters": [
+        "05_automation_devops_cicd.md",
+        "21_digitalization.md"
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Google Cloud \u2013 Store Terraform state in Cloud Storage.",
+      "type": "technical_documentation",
+      "year": 2024,
+      "url": "https://cloud.google.com/docs/terraform/resource-management/store-terraform-state",
+      "summary": "Details secure state management controls referenced in the security-focused chapters.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    }
+  ]
+}
