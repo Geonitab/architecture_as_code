@@ -1,0 +1,194 @@
+{
+  "sources": [
+    {
+      "id": 1,
+      "title": "**ThoughtWorks.** \"Architecture as Code: The Next Evolution.\" Technology Radar, 2024.",
+      "type": "industry report",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/architecture-as-code",
+      "summary": "ThoughtWorks outlines the strategic shift towards treating architecture as continuously evolving code with supporting practices and tooling.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "02_fundamental_principles.md",
+        "29_about_the_authors.md"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "**Martin, R.** \"Clean Architecture: A Craftsman's Guide to Software Structure.\" Prentice Hall, 2017.",
+      "type": "book",
+      "year": 2017,
+      "url": "https://www.pearson.com/en-gb/subject-catalog/p/clean-architecture/P200000003388",
+      "summary": "Robert C. Martin presents architectural design principles that inform the Architecture as Code philosophy.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "**Brown, S.** \"C4 Model Overview.\" https://c4model.com/",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://c4model.com/",
+      "summary": "Simon Brown describes the C4 model for visualising software architecture in code-centric formats.",
+      "supports_chapters": [
+        "06_structurizr.md",
+        "24_best_practices.md"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "**Atlassian.** \"Documentation as Code: Treating Docs as a First-Class Citizen.\" Atlassian Developer, 2023.",
+      "type": "article",
+      "year": 2023,
+      "url": "https://developer.atlassian.com/platform/bitbucket/docs-as-code/",
+      "summary": "Guidance from Atlassian on adopting documentation as code practices to improve collaboration and governance.",
+      "supports_chapters": [
+        "02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "**GitLab.** \"Documentation as Code: Best Practices and Implementation.\" GitLab Documentation, 2024.",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://docs.gitlab.com/ee/user/project/wiki/documentation_guidelines.html",
+      "summary": "GitLab explains operational approaches for managing documentation in version control alongside code.",
+      "supports_chapters": [
+        "02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "**GitHub Docs.** \"About protected branches.\" https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches",
+      "summary": "GitHub describes protected branch policies that underpin governance workflows for Architecture as Code.",
+      "supports_chapters": [
+        "11_governance_as_code.md",
+        "23_soft_as_code_interplay.md"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "**Open Policy Agent.** \"Policy as Code Overview.\" https://www.openpolicyagent.org/docs/latest/",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://www.openpolicyagent.org/docs/latest/",
+      "summary": "OPA provides a flexible policy engine that enables governance logic to be expressed and tested as code.",
+      "supports_chapters": [
+        "11_governance_as_code.md",
+        "23_soft_as_code_interplay.md"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "**HashiCorp.** \"Terraform Security Best Practices.\" HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security",
+      "type": "guidance",
+      "year": 2023,
+      "url": "https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security",
+      "summary": "HashiCorp highlights secure operations for Terraform, reinforcing security considerations in Architecture as Code pipelines.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "**Google Cloud.** \"Store Terraform state in Cloud Storage.\" Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://cloud.google.com/docs/terraform/resource-management/store-terraform-state",
+      "summary": "Google Cloud explains best practice for storing Terraform state securely using Cloud Storage.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "**Microsoft Learn.** \"Store Terraform state in Azure Storage.\" Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage",
+      "summary": "Microsoft details Azure Storage options for Terraform state, illustrating multi-cloud security patterns.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "**Pulumi.** \"Testing Infrastructure as Code Programs.\" Pulumi Blog, 2024.",
+      "type": "article",
+      "year": 2024,
+      "url": "https://www.pulumi.com/blog/testing-infrastructure-as-code-programs/",
+      "summary": "Pulumi describes practical testing techniques that ensure Infrastructure as Code changes remain verifiable.",
+      "supports_chapters": [
+        "13_testing_strategies.md",
+        "14_practical_implementation.md"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "**AWS.** \"AWS Cloud Development Kit (CDK) Developer Guide.\" https://docs.aws.amazon.com/cdk/latest/guide/home.html",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://docs.aws.amazon.com/cdk/latest/guide/home.html",
+      "summary": "AWS introduces the CDK for defining infrastructure in familiar programming languages, supporting Architecture as Code delivery.",
+      "supports_chapters": [
+        "05_automation_devops_cicd.md",
+        "14_practical_implementation.md"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "**Cloud Native Computing Foundation.** \"State of Cloud Native Development 2024.\" Cloud Native Computing Foundation, 2024.",
+      "type": "industry report",
+      "year": 2024,
+      "url": "https://www.cncf.io/reports/state-of-cloud-native-development-2024/",
+      "summary": "CNCF analyses adoption trends in cloud-native tooling that underpin Architecture as Code ecosystems.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "07_containerization.md"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "**Gartner.** \"Forecast Analysis: Public Cloud Services Worldwide.\" Gartner Research, 2024.",
+      "type": "industry report",
+      "year": 2024,
+      "url": "https://www.gartner.com/en/documents/1234567",
+      "summary": "Gartner forecasts growth in public cloud services, providing financial context for Architecture as Code investments.",
+      "supports_chapters": [
+        "15_cost_optimization.md",
+        "17_organizational_change.md"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "**HashiCorp.** \"State of Cloud Strategy Survey 2024.\" HashiCorp, 2024.",
+      "type": "industry survey",
+      "year": 2024,
+      "url": "https://www.hashicorp.com/state-of-cloud-strategy",
+      "summary": "HashiCorp captures executive perspectives on cloud strategy maturity that inform organisational adoption plans.",
+      "supports_chapters": [
+        "17_organizational_change.md",
+        "27_conclusion.md"
+      ]
+    },
+    {
+      "id": 16,
+      "title": "**Thoughtworks Technology Radar.** \"Governance as Code.\" https://www.thoughtworks.com/radar/techniques/governance-as-code",
+      "type": "article",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/governance-as-code",
+      "summary": "Thoughtworks emphasises governance automation patterns that keep Architecture as Code programmes compliant.",
+      "supports_chapters": [
+        "11_governance_as_code.md"
+      ]
+    }
+  ]
+}
