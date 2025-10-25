@@ -28,7 +28,7 @@ This section provides a comprehensive list of all sources and references cited t
 **Chung, L., et al.** "Non-Functional Requirements in Software Engineering." Springer, 2000.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**CNCF.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024.  
+**Cloud Native Computing Foundation.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024.
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
 
 **FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. https://calm.finos.org/  

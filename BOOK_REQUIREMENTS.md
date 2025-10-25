@@ -261,7 +261,11 @@ book:
       filename: "EPUB_VALIDATION.md"
       requires_diagram: false
       requires_sources: false
-  supplemental_chapters: []
+  supplemental_chapters:
+    - filename: "00_front_cover.md"
+      title: "Architecture as Code Front Cover"
+      label: "Front Cover"
+      description: "Cover artwork file distributed alongside the canonical chapters."
 structure:
   required_sections:
     - name: "title"
