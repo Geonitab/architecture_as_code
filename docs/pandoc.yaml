@@ -46,16 +46,22 @@ variables:
   lang: en-GB
   titlepage: false  # Disable Eisvogel's automatic title page (we use custom title in include-before)
   include-before: |
+    % Full-bleed cover and release pages without cropping their content.
+    \clearpage
+    \begingroup
     \thispagestyle{empty}
-    \begin{center}
-    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{images/book-cover.png}
-    \end{center}
-    \newpage
+    \newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
+    \noindent\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{images/book-cover.png}
+    \restoregeometry
+    \endgroup
+    \clearpage
+    \begingroup
     \thispagestyle{empty}
-    \begin{center}
-    \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{images/release_information_page.png}
-    \end{center}
-    \newpage
+    \newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
+    \noindent\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{images/release_information_page.png}
+    \restoregeometry
+    \endgroup
+    \clearpage
   # Simplified header handling
   header-includes: |
     \usepackage{fancyhdr}
