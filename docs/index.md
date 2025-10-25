@@ -9,3 +9,5 @@ Welcome to the Architecture as Code documentation portal. This site publishes th
 - Visit the appendices for glossary terms, author biographies, and technical reference material that supports book production.
 
 For an overview of the structure and rationale behind the book, read the [Book Structure](book_structure.md) page. When you are ready to dive into the content, continue to the first chapter: [Introduction to Architecture as Code](01_introduction.md).
+
+Any suggestions can be posted in the [discussion suggestions](https://github.com/Geonitab/architecture_as_code/discussions/1314#discussion-9071292).
