@@ -46,6 +46,34 @@ jobs:
           path: final-release
           merge-multiple: true
 
+      - name: Normalise book deliverables
+        run: |
+          echo "=== Collecting book artefacts ==="
+          mkdir -p final-release/book
+          for ext in pdf epub docx; do
+            match=$(find final-release -maxdepth 3 \( -path final-release/book -prune -o -name "architecture_as_code.${ext}" -print \) | head -n 1)
+            if [ -z "$match" ]; then
+              echo "::error::Missing architecture_as_code.${ext} in build artefacts"
+              exit 1
+            fi
+            echo "Found $match"
+            cp "$match" "final-release/book/architecture_as_code.${ext}"
+            ls -lh "final-release/book/architecture_as_code.${ext}"
+          done
+
+      - name: Normalise presentation deliverable
+        run: |
+          echo "=== Collecting presentation artefact ==="
+          mkdir -p final-release/presentation
+          match=$(find final-release -maxdepth 5 \( -path final-release/presentation -prune -o -name "architecture_as_code_presentation.pptx" -print \) | head -n 1)
+          if [ -z "$match" ]; then
+            echo "::error::Missing architecture_as_code_presentation.pptx in build artefacts"
+            exit 1
+          fi
+          echo "Found $match"
+          cp "$match" final-release/presentation/architecture_as_code_presentation.pptx
+          ls -lh final-release/presentation/architecture_as_code_presentation.pptx
+
       - name: Show structure
         run: |
           echo "=== Directories ==="; find final-release -type d | sort || true
@@ -75,11 +103,11 @@ jobs:
             Combined outputs from Book, Whitepapers, Presentations, and Site.
             Commit: ${{ github.sha }}
           files: |
-            final-release/**/*.pdf
-            final-release/**/*.epub
-            final-release/**/*.docx
-            final-release/**/*.pptx
+            final-release/book/architecture_as_code.pdf
+            final-release/book/architecture_as_code.epub
+            final-release/book/architecture_as_code.docx
+            final-release/presentation/architecture_as_code_presentation.pptx
             non-docker-release.zip
-          fail_on_unmatched_files: false
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
