@@ -49,22 +49,50 @@ except ImportError as exc:  # pragma: no cover - dependency check
     print("   Install with: pip install PyYAML>=6.0")
     sys.exit(1)
 
-from pptx import Presentation
-from pptx.util import Inches, Pt
-from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN
-from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+try:  # pragma: no cover - runtime dependency check
+    from pptx import Presentation
+    from pptx.util import Inches, Pt
+    from pptx.dml.color import RGBColor
+    from pptx.enum.text import PP_ALIGN
+    from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+except ModuleNotFoundError as exc:  # pragma: no cover - optional dependency
+    Presentation = None
+    Inches = Pt = None
+    RGBColor = None
+    PP_ALIGN = None
+    MSO_AUTO_SHAPE_TYPE = None
+    PPTX_IMPORT_ERROR = exc
+else:
+    PPTX_IMPORT_ERROR = None
 
-THEME_BLUE = RGBColor(8, 58, 122)
-THEME_ACCENT = RGBColor(225, 173, 1)
-THEME_TEXT = RGBColor(51, 51, 51)
-THEME_MUTED = RGBColor(102, 102, 102)
-SLIDE_WIDTH = Inches(13.3333333333)
-SLIDE_HEIGHT = Inches(7.5)
+
+def ensure_pptx_available():
+    """Ensure python-pptx is available before attempting PowerPoint generation."""
+
+    if Presentation is None:
+        raise ModuleNotFoundError(
+            "python-pptx is required for PowerPoint generation. "
+            "Install it with 'pip install python-pptx>=0.6.21'."
+        ) from PPTX_IMPORT_ERROR
+
+if RGBColor is not None:
+    THEME_BLUE = RGBColor(8, 58, 122)
+    THEME_ACCENT = RGBColor(225, 173, 1)
+    THEME_TEXT = RGBColor(51, 51, 51)
+    THEME_MUTED = RGBColor(102, 102, 102)
+else:  # pragma: no cover - evaluated only when dependency missing
+    THEME_BLUE = THEME_ACCENT = THEME_TEXT = THEME_MUTED = None
+
+if Inches is not None:  # pragma: no branch - simple guard for optional dependency
+    SLIDE_WIDTH = Inches(13.3333333333)
+    SLIDE_HEIGHT = Inches(7.5)
+else:  # pragma: no cover - evaluated only when dependency missing
+    SLIDE_WIDTH = SLIDE_HEIGHT = None
 
 
 def configure_presentation_document(prs):
     """Apply shared configuration and metadata to the presentation document."""
+    ensure_pptx_available()
     prs.slide_width = SLIDE_WIDTH
     prs.slide_height = SLIDE_HEIGHT
 
@@ -90,15 +118,20 @@ def configure_presentation_document(prs):
 
 def _add_notes(slide, notes_text):
     """Populate the speaker notes section with the supplied text."""
+    ensure_pptx_available()
     notes_frame = slide.notes_slide.notes_text_frame
     notes_frame.clear()
     notes_frame.text = notes_text or ""
 
 
-def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inches(0.5)):
+def _add_keyword_banner(slide, keyword, left, top, width=None, height=None):
     """Add an accent banner to highlight the focus keyword."""
+    ensure_pptx_available()
     if not keyword:
         return None
+
+    width = width or Inches(3.5)
+    height = height or Inches(0.5)
 
     banner = slide.shapes.add_shape(
         MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE,
@@ -125,6 +158,7 @@ def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inc
 
 def _add_highlighted_bullet(text_frame, text):
     """Add a bullet point with the leading keyword highlighted."""
+    ensure_pptx_available()
     if not text:
         return
 
@@ -160,6 +194,7 @@ def _add_highlighted_bullet(text_frame, text):
 
 def build_presentation_document(prs, presentation_data):
     """Construct the Architecture as Code presentation from structured data."""
+    ensure_pptx_available()
     configure_presentation_document(prs)
 
     today_label = datetime.now().strftime("%d %B %Y")
@@ -1250,6 +1285,13 @@ if __name__ == "__main__":
 
 def create_presentation_directly(presentation_data, output_path="architecture_as_code_presentation.pptx"):
     """Create PowerPoint presentation directly without generating a script."""
+    try:
+        ensure_pptx_available()
+    except ModuleNotFoundError as exc:
+        print("❌ python-pptx dependency missing; unable to create PowerPoint output.")
+        print(f"   {exc}")
+        return False
+
     try:
         prs = Presentation()
         build_presentation_document(prs, presentation_data)
