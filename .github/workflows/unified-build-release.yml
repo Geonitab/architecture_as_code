@@ -247,6 +247,8 @@ jobs:
                   echo '📖 Building book formats only...' &&
                   echo '📝 Step 1: Generating book content...' &&
                   python3 generate_book.py &&
+                  python3 generate_book.py --format epub --output dist/book.epub --all &&
+                  test -s dist/book.epub &&
                   echo '📝 Step 2: Building book formats...' &&
                   cd docs &&
                   ./build_book.sh --release &&
@@ -275,6 +277,8 @@ jobs:
                   echo '📖 Step 1: Building book formats...' &&
                   echo '📝 Generating book content...' &&
                   python3 generate_book.py &&
+                  python3 generate_book.py --format epub --output dist/book.epub --all &&
+                  test -s dist/book.epub &&
                   cd docs &&
                   ./build_book.sh --release &&
                   cd .. &&

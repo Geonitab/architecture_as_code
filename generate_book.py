@@ -1,6 +1,291 @@
+from __future__ import annotations
+
+import argparse
+import datetime
 import os
+import re
 import subprocess
 import sys
+import tempfile
+from pathlib import Path
+from typing import Sequence
+
+REPO_ROOT = Path(__file__).resolve().parent
+DOCS_DIR = REPO_ROOT / "docs"
+BUILD_SCRIPT_PATH = DOCS_DIR / "build_book.sh"
+PANDOC_NON_LATEX_DEFAULTS = DOCS_DIR / "pandoc-nonlatex.yaml"
+DEFAULT_DIST_DIR = REPO_ROOT / "dist"
+DEFAULT_EPUB_OUTPUT = DEFAULT_DIST_DIR / "book.epub"
+DEFAULT_SAMPLE_CHAPTERS: Sequence[str] = (
+    "part_a_foundations.md",
+    "01_introduction.md",
+    "02_fundamental_principles.md",
+    "03_version_control.md",
+)
+PART_FILE_PREFIX = "part_"
+NON_LATEX_COVER_PAGE = "00_front_cover.md"
+BOOK_COVER_IMAGE = DOCS_DIR / "images" / "book-cover.png"
+
+_CHAPTER_LIST_CACHE: Sequence[str] | None = None
+
+
+def _parse_chapter_block(block: str) -> list[str]:
+    """Parse a shell array block into a list of filenames."""
+
+    items: list[str] = []
+    for raw_line in block.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("\"") and line.endswith("\""):
+            line = line[1:-1]
+        items.append(line)
+    return items
+
+
+def load_full_chapter_filenames() -> list[str]:
+    """Return the ordered list of chapter files defined in the build script."""
+
+    global _CHAPTER_LIST_CACHE
+
+    if _CHAPTER_LIST_CACHE is not None:
+        return list(_CHAPTER_LIST_CACHE)
+
+    if not BUILD_SCRIPT_PATH.exists():
+        raise FileNotFoundError(
+            "docs/build_book.sh is missing – cannot determine chapter ordering."
+        )
+
+    script_text = BUILD_SCRIPT_PATH.read_text(encoding="utf-8")
+    match = re.search(r"CHAPTER_FILES=\(\s*(?P<body>.*?)\s*\)", script_text, re.DOTALL)
+    if not match:
+        raise RuntimeError(
+            "Unable to parse CHAPTER_FILES array from docs/build_book.sh."
+        )
+
+    chapter_files = _parse_chapter_block(match.group("body"))
+    if not chapter_files:
+        raise RuntimeError("No chapter files discovered in docs/build_book.sh.")
+
+    _CHAPTER_LIST_CACHE = tuple(chapter_files)
+    return list(_CHAPTER_LIST_CACHE)
+
+
+def determine_chapter_list(
+    *,
+    build_all: bool,
+    sample: bool,
+    chapters: Sequence[str] | None,
+) -> list[str]:
+    """Resolve which chapter files should be included for a build."""
+
+    if sum(bool(option) for option in (build_all, sample, bool(chapters))) > 1:
+        raise ValueError("Choose only one of --all, --sample, or --chapters.")
+
+    if chapters:
+        return [chapter.strip() for chapter in chapters if chapter.strip()]
+
+    if sample:
+        return list(DEFAULT_SAMPLE_CHAPTERS)
+
+    # When no explicit selection is provided we build the full book.
+    _ = build_all  # Flag retained for clarity/intention.
+    return load_full_chapter_filenames()
+
+
+def resolve_chapter_paths(chapter_names: Sequence[str]) -> list[Path]:
+    """Convert chapter names into absolute paths under docs/."""
+
+    paths: list[Path] = []
+    for name in chapter_names:
+        candidate = DOCS_DIR / name
+        if not candidate.exists():
+            raise FileNotFoundError(
+                f"Chapter '{name}' not found in {DOCS_DIR.relative_to(REPO_ROOT)}."
+            )
+        paths.append(candidate)
+    return paths
+
+
+def sanitise_part_markdown(content: str) -> str:
+    """Remove LaTeX-only helpers from part introduction files."""
+
+    skip_prefixes = ("\\cleardoublepage", "\\part{", "\\setbookpart")
+    cleaned_lines: list[str] = []
+
+    for line in content.splitlines():
+        if any(line.startswith(prefix) for prefix in skip_prefixes):
+            continue
+        cleaned_lines.append(line)
+
+    while cleaned_lines and not cleaned_lines[0].strip():
+        cleaned_lines.pop(0)
+
+    while cleaned_lines and not cleaned_lines[-1].strip():
+        cleaned_lines.pop()
+
+    return "\n".join(cleaned_lines)
+
+
+def prepare_non_latex_chapter_paths(
+    chapter_paths: Sequence[Path],
+) -> tuple[list[Path], tempfile.TemporaryDirectory[str]]:
+    """Prepare chapter paths for non-LaTeX formats such as EPUB."""
+
+    temp_dir = tempfile.TemporaryDirectory()
+    prepared: list[Path] = []
+
+    for chapter_path in chapter_paths:
+        if chapter_path.name.startswith(PART_FILE_PREFIX):
+            sanitised = sanitise_part_markdown(
+                chapter_path.read_text(encoding="utf-8")
+            )
+            if sanitised.strip():
+                destination = Path(temp_dir.name) / chapter_path.name
+                destination.write_text(sanitised + "\n", encoding="utf-8")
+                prepared.append(destination)
+        else:
+            prepared.append(chapter_path)
+
+    cover_path = DOCS_DIR / NON_LATEX_COVER_PAGE
+    if cover_path.exists() and cover_path not in prepared:
+        prepared.insert(0, cover_path)
+
+    return prepared, temp_dir
+
+
+def build_epub_from_chapters(chapter_paths: Sequence[Path], output_path: Path) -> None:
+    """Combine the provided chapters into an EPUB using Pandoc."""
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    prepared_paths, temp_dir = prepare_non_latex_chapter_paths(chapter_paths)
+
+    try:
+        command: list[str] = ["pandoc"]
+        if PANDOC_NON_LATEX_DEFAULTS.exists():
+            command.extend(["--defaults", str(PANDOC_NON_LATEX_DEFAULTS)])
+
+        command.extend(str(path) for path in prepared_paths)
+        command.extend(
+            [
+                "-t",
+                "epub",
+                "-o",
+                str(output_path),
+                "--metadata",
+                f"date={datetime.date.today():%Y-%m-%d}",
+                "--metadata",
+                "language=en-GB",
+                "--metadata",
+                "lang=en-GB",
+                "--metadata=include-before=",
+                "--metadata=header-includes=",
+            ]
+        )
+
+        if BOOK_COVER_IMAGE.exists():
+            command.extend(["--epub-cover-image", str(BOOK_COVER_IMAGE)])
+
+        subprocess.run(command, check=True)
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(
+            "Pandoc is required to build EPUB output but was not found in PATH."
+        ) from exc
+    finally:
+        temp_dir.cleanup()
+
+    if not output_path.exists() or output_path.stat().st_size == 0:
+        raise RuntimeError(
+            f"Expected EPUB output at {output_path} was not created or is empty."
+        )
+
+
+def create_argument_parser() -> argparse.ArgumentParser:
+    """Build the command-line interface for the script."""
+
+    parser = argparse.ArgumentParser(
+        description="Generate Architecture as Code book artefacts.",
+    )
+    parser.add_argument(
+        "--format",
+        choices=["epub"],
+        required=True,
+        help="Output format to build.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=DEFAULT_EPUB_OUTPUT,
+        help=(
+            "Destination file for the generated output. Paths are relative to "
+            "the repository root unless absolute."
+        ),
+    )
+
+    selection_group = parser.add_mutually_exclusive_group()
+    selection_group.add_argument(
+        "--all",
+        action="store_true",
+        help="Build the full manuscript (default).",
+    )
+    selection_group.add_argument(
+        "--sample",
+        action="store_true",
+        help="Build the curated sample chapter set.",
+    )
+    selection_group.add_argument(
+        "--chapters",
+        nargs="+",
+        metavar="CHAPTER",
+        help="Explicit chapter filenames relative to docs/.",
+    )
+
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Run EPUBCheck after building the EPUB output.",
+    )
+
+    return parser
+
+
+def run_cli(arguments: Sequence[str]) -> int:
+    """Entry point for command-line execution."""
+
+    parser = create_argument_parser()
+    args = parser.parse_args(arguments)
+
+    build_all = args.all or not (args.sample or args.chapters)
+    chapter_names = determine_chapter_list(
+        build_all=build_all,
+        sample=args.sample,
+        chapters=args.chapters,
+    )
+    chapter_paths = resolve_chapter_paths(chapter_names)
+
+    output_path = args.output
+    if not output_path.is_absolute():
+        output_path = (REPO_ROOT / output_path).resolve()
+
+    if args.format == "epub":
+        try:
+            display_path: Path | str = output_path.relative_to(REPO_ROOT)
+        except ValueError:
+            display_path = output_path
+
+        print(
+            f"📚 Building EPUB with {len(chapter_paths)} chapters → {display_path}"
+        )
+        build_epub_from_chapters(chapter_paths, output_path)
+
+        if args.validate:
+            success, log_output = validate_epub_file(str(output_path))
+            if not success:
+                print(log_output)
+                return 1
+        return 0
+
+    raise NotImplementedError(f"Unsupported format requested: {args.format}")
 
 def validate_epub_file(epub_path):
     """
@@ -370,50 +655,53 @@ Källor:
     print(f"Totalt {len(mermaid_files)} mermaid-diagram skapade") 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        sys.exit(run_cli(sys.argv[1:]))
+
     print("=" * 80)
-    print("📚 GENERATE_BOOK.PY - ENGLISH MIGRATION NOTICE")
-    print("=" * 80)
-    print()
-    print("⚠️  CONTENT GENERATION DISABLED")
-    print()
-    print("This script previously generated Swedish content.")
-    print("The repository now uses English markdown files exclusively.")
-    print()
-    print("English content is maintained manually in the docs/ directory.")
-    print("The generate_iac_book_content() function has been disabled to prevent")
-    print("overwriting the English files with Swedish content.")
-    print()
-    print("If you need to regenerate content, please:")
-    print("  1. Update the book_structure in generate_iac_book_content() to use English")
-    print("  2. Uncomment the function call below")
-    print("  3. Run this script")
-    print()
+    print("📚 generate_book.py – manual content notice")
     print("=" * 80)
     print()
-    
+    print(
+        "Automated chapter generation remains disabled to safeguard the British English "
+        "manuscript stored in docs/."
+    )
+    print(
+        "Use the CLI to build distribution formats, for example:\n"
+        "  python generate_book.py --format epub --output dist/book.epub --all"
+    )
+    print()
+    print(
+        "To regenerate markdown automatically, update generate_iac_book_content() with "
+        "British English prose and uncomment the function call below."
+    )
+    print()
+    print("=" * 80)
+    print()
+
     # Content generation disabled - uncomment to regenerate
     # generate_iac_book_content()
-    
-    # EPUB validation is still active
-    epub_path = "docs/architecture_as_code.epub"
-    if os.path.exists(epub_path):
-        print("📖 Checking existing EPUB file...")
-        success, log_output = validate_epub_file(epub_path)
-        
-        # Save validation log
-        log_path = "docs/epub-validation.log"
+
+    epub_path = DOCS_DIR / "architecture_as_code.epub"
+    if epub_path.exists():
+        print("📖 Checking existing EPUB file…")
+        success, log_output = validate_epub_file(str(epub_path))
+
+        log_path = DOCS_DIR / "epub-validation.log"
         try:
-            with open(log_path, 'w', encoding='utf-8') as f:
-                f.write(f"EPUB validation log for: {epub_path}\n")
-                f.write(f"Date: {subprocess.run(['date'], capture_output=True, text=True).stdout}")
-                f.write(f"Status: {'APPROVED' if success else 'ERRORS FOUND'}\n")
-                f.write("=" * 50 + "\n")
-                f.write(log_output)
+            with open(log_path, "w", encoding="utf-8") as handle:
+                handle.write(f"EPUB validation log for: {epub_path}\n")
+                handle.write(
+                    f"Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+                )
+                handle.write(f"Status: {'APPROVED' if success else 'ERRORS FOUND'}\n")
+                handle.write("=" * 50 + "\n")
+                handle.write(log_output)
             print(f"📄 Validation log saved: {log_path}")
-        except Exception as e:
-            print(f"⚠️  Could not save validation log: {e}")
+        except Exception as exc:  # pragma: no cover - defensive logging only
+            print(f"⚠️  Could not save validation log: {exc}")
     else:
         print("ℹ️  No EPUB file found to validate")
-    
+
     print()
     print("✅ Script completed")
