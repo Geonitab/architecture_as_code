@@ -19,6 +19,10 @@ on:
       - '.github/workflows/generate-presentations.yml'
   workflow_dispatch: {}  # Allow manual triggering
 
+concurrency:
+  group: presentations-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   ARTIFACT_RETENTION_DAYS: 30
 
