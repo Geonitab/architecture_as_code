@@ -1,0 +1,97 @@
+name: Repository maintenance — ready-for-review sweep
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write          # needed for branch pushes (if used)
+  pull-requests: write     # needed for marking PRs ready & merging
+  actions: read
+
+jobs:
+  ready_and_merge:
+    name: Mark drafts ready and merge verified PRs
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show gh version (sanity check)
+        run: |
+          gh --version
+          gh auth status || true
+
+      - name: 1) Mark draft PRs as ready for review
+        run: |
+          set -euo pipefail
+
+          echo "Marking draft PRs as ready (idempotent)…"
+          for pr in 1253 1245; do
+            if gh pr view "$pr" --json isDraft --jq '.isDraft' | grep -qi true; then
+              echo "→ gh pr ready $pr"
+              gh pr ready "$pr"
+            else
+              echo "→ PR #$pr is already ready."
+            fi
+          done
+
+      - name: 2) Attempt to mark zero-change PRs as ready (will no-op if not implementable yet)
+        run: |
+          set -euo pipefail
+          echo "Trying to set PRs with 0 changed files as ready (only succeeds if commits exist)…"
+          for pr in 1215 1191 1157 1221 1219; do
+            changed=$(gh pr view "$pr" --json changedFiles --jq '.changedFiles' || echo "0")
+            if [ "${changed}" -gt 0 ]; then
+              echo "→ PR #$pr has ${changed} changed files; marking ready."
+              gh pr ready "$pr" || echo "   (Could not mark PR #$pr ready.)"
+            else
+              echo "→ PR #$pr still has 0 changed files; needs implementation before review."
+            fi
+          done
+
+      - name: 3) Review & merge automation PRs (squash, auto-merge if checks pass)
+        run: |
+          set -euo pipefail
+
+          echo "Evaluating auto-fix PRs for merge…"
+          for pr in 1254 1246 1235 1234 1223; do
+            state=$(gh pr view "$pr" --json state --jq '.state' || echo "UNKNOWN")
+            draft=$(gh pr view "$pr" --json isDraft --jq '.isDraft' || echo "false")
+            if [ "${state}" = "OPEN" ] && [ "${draft}" = "false" ]; then
+              echo "→ Attempting squash auto-merge for PR #$pr"
+              gh pr merge "$pr" --squash --auto || echo "   (Could not auto-merge PR #$pr; please review manually.)"
+            else
+              echo "→ PR #$pr not open or is draft; skipping."
+            fi
+          done
+
+      - name: 4) Summarise results
+        run: |
+          set -euo pipefail
+
+          {
+            echo "## Ready-for-review sweep summary"
+            echo ""
+            echo "### Draft PRs now ready (expected: #1253, #1245)"
+            for pr in 1253 1245; do
+              echo "- PR #$pr — isDraft: $(gh pr view "$pr" --json isDraft --jq '.isDraft' || echo "unknown")"
+            done
+            echo ""
+            echo "### Zero-change PRs still requiring implementation"
+            for pr in 1215 1191 1157 1221 1219; do
+              changed=$(gh pr view "$pr" --json changedFiles --jq '.changedFiles' || echo "0")
+              if [ "${changed}" -eq 0 ]; then
+                echo "- PR #$pr — changed files: 0 (needs commits)"
+              fi
+            done
+            echo ""
+            echo "### Auto-fix PRs (merge attempts made)"
+            for pr in 1254 1246 1235 1234 1223; do
+              echo "- PR #$pr — state: $(gh pr view "$pr" --json state --jq '.state' || echo "unknown")"
+            done
+            echo ""
+            echo "> Note: For issues without any PRs (e.g., #1252, #1251, #1250, #1249, #1248), create feature branches, implement the requested changes, and open non-draft PRs."
+          } >> "$GITHUB_STEP_SUMMARY"
