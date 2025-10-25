@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kvadrat Whitepaper Template</title>
+    <title>[[PAGE_TITLE]]</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- Prism.js for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
-    
+
     <style>
         :root {
-            --kvadrat-blue: hsl(221, 67%, 32%);
-            --kvadrat-blue-light: hsl(217, 91%, 60%);
-            --kvadrat-blue-dark: hsl(214, 32%, 18%);
-            --kvadrat-gray: hsl(215, 20%, 46%);
-            --kvadrat-gray-light: hsl(214, 32%, 97%);
-            --success: hsl(160, 84%, 30%);
-            --warning: hsl(32, 95%, 44%);
+            --aac-primary: hsl(221, 67%, 32%);
+            --aac-primary-light: hsl(217, 91%, 60%);
+            --aac-primary-dark: hsl(214, 32%, 18%);
+            --aac-muted: hsl(215, 20%, 46%);
+            --surface-soft: hsl(214, 32%, 97%);
+            --surface-border: rgba(23, 37, 84, 0.15);
             --white: hsl(0, 0%, 100%);
             --black: hsl(0, 0%, 0%);
+            --success: hsl(160, 84%, 30%);
+            --warning: hsl(32, 95%, 44%);
         }
 
         * {
@@ -31,8 +32,8 @@
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--white);
-            color: var(--kvadrat-blue-dark);
+            background: var(--surface-soft);
+            color: var(--aac-primary-dark);
             line-height: 1.6;
             font-size: 16px;
         }
@@ -42,109 +43,76 @@
             min-height: 297mm;
             margin: 0 auto;
             padding: 25mm;
-            position: relative;
+            background: var(--white);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
         }
 
-        /* Header */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--kvadrat-blue);
-            margin-bottom: 40px;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo {
-            width: 40px;
-            height: 40px;
-            background: var(--kvadrat-blue);
-            color: var(--white);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 20px;
-        }
-
-        .company-info {
-            font-size: 14px;
-            color: var(--kvadrat-gray);
-            text-align: right;
-        }
-
-        .company-name {
-            font-weight: 600;
-            color: var(--kvadrat-blue);
-            margin-bottom: 2px;
-        }
-
-        /* Content */
         .whitepaper-header {
             margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .category {
+        .series-badge {
             display: inline-block;
-            background: var(--kvadrat-blue-light);
+            background: var(--aac-primary);
             color: var(--white);
             padding: 6px 16px;
-            border-radius: 20px;
+            border-radius: 999px;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 16px;
+            letter-spacing: 0.4px;
+            align-self: flex-start;
         }
 
         .title {
             font-size: 36px;
             font-weight: 800;
-            color: var(--kvadrat-blue-dark);
+            color: var(--aac-primary-dark);
             line-height: 1.2;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
             font-size: 20px;
-            color: var(--kvadrat-gray);
-            margin-bottom: 24px;
+            color: var(--aac-muted);
             font-weight: 400;
+            max-width: 85%;
+        }
+
+        .subtitle:empty {
+            display: none;
         }
 
         .meta-info {
             display: flex;
+            flex-wrap: wrap;
             gap: 32px;
-            color: var(--kvadrat-gray);
+            color: var(--aac-muted);
             font-size: 14px;
-            margin-bottom: 40px;
         }
 
         .meta-item {
             display: flex;
             flex-direction: column;
+            gap: 4px;
         }
 
         .meta-label {
             font-weight: 600;
-            color: var(--kvadrat-blue);
-            margin-bottom: 4px;
+            color: var(--aac-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            font-size: 12px;
         }
 
         .feature-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: -16px;
-            margin-bottom: 32px;
+            margin-top: 8px;
         }
 
         .feature-tag {
@@ -152,27 +120,30 @@
             align-items: center;
             padding: 6px 12px;
             border-radius: 999px;
-            background: var(--kvadrat-gray-light);
-            color: var(--kvadrat-blue);
+            background: var(--surface-soft);
+            color: var(--aac-primary);
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.3px;
             text-transform: uppercase;
         }
 
-        /* Content sections */
+        section {
+            margin-bottom: 48px;
+        }
+
         h1 {
             font-size: 28px;
             font-weight: 700;
-            color: var(--kvadrat-blue-dark);
-            margin: 40px 0 20px 0;
+            color: var(--aac-primary-dark);
+            margin-bottom: 20px;
             line-height: 1.3;
         }
 
         h2 {
             font-size: 24px;
             font-weight: 600;
-            color: var(--kvadrat-blue);
+            color: var(--aac-primary);
             margin: 32px 0 16px 0;
             line-height: 1.3;
         }
@@ -180,26 +151,25 @@
         h3 {
             font-size: 20px;
             font-weight: 600;
-            color: var(--kvadrat-blue-dark);
+            color: var(--aac-primary-dark);
             margin: 24px 0 12px 0;
             line-height: 1.4;
         }
 
         p {
             margin-bottom: 16px;
-            color: var(--kvadrat-blue-dark);
+            color: var(--aac-primary-dark);
         }
 
         .lead {
             font-size: 18px;
             font-weight: 400;
-            color: var(--kvadrat-gray);
+            color: var(--aac-muted);
             margin-bottom: 24px;
-            border-left: 4px solid var(--kvadrat-blue);
+            border-left: 4px solid var(--aac-primary);
             padding-left: 16px;
         }
 
-        /* Lists */
         ul, ol {
             margin: 16px 0;
             padding-left: 24px;
@@ -207,292 +177,149 @@
 
         li {
             margin-bottom: 8px;
-            color: var(--kvadrat-blue-dark);
+            color: var(--aac-primary-dark);
         }
 
-        /* Code blocks - Enhanced for Prism.js syntax highlighting */
         code {
             font-family: 'JetBrains Mono', Consolas, monospace;
-            background: var(--kvadrat-gray-light);
+            background: var(--surface-soft);
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 14px;
         }
 
         pre {
-            background: #2d2d2d !important; /* Dark background for code blocks */
+            background: #2d2d2d !important;
             padding: 16px;
             border-radius: 8px;
             margin: 16px 0;
             overflow-x: auto;
-            border-left: 4px solid var(--kvadrat-blue);
+            border-left: 4px solid var(--aac-primary);
         }
 
         pre code {
             background: none;
             padding: 0;
-            color: #ccc; /* Light text for dark background */
+            color: #d1d5db;
         }
-        
-        /* Prism.js overrides for better integration */
+
         pre[class*="language-"] {
             margin: 16px 0;
             border-radius: 8px;
-            border-left: 4px solid var(--kvadrat-blue);
+            border-left: 4px solid var(--aac-primary);
         }
-        
+
         code[class*="language-"] {
             font-size: 14px;
             line-height: 1.5;
         }
-        
-        /* Line numbers styling */
+
         .line-numbers .line-numbers-rows {
             border-right: 1px solid #555;
         }
 
-        /* Call-out boxes */
         .callout {
             margin: 24px 0;
             padding: 20px;
             border-radius: 8px;
             border-left: 4px solid;
+            background: var(--surface-soft);
         }
 
         .callout-info {
-            background: rgba(59, 130, 246, 0.05);
-            border-color: var(--kvadrat-blue-light);
+            border-color: var(--aac-primary-light);
         }
 
         .callout-success {
-            background: rgba(5, 150, 105, 0.05);
             border-color: var(--success);
         }
 
         .callout-warning {
-            background: rgba(217, 119, 6, 0.05);
             border-color: var(--warning);
         }
 
         .callout-title {
             font-weight: 600;
             margin-bottom: 8px;
-            color: var(--kvadrat-blue-dark);
+            color: var(--aac-primary-dark);
         }
 
-        /* Footer */
-        .footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(30, 58, 138, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: var(--kvadrat-gray);
+        .chapter-figure {
+            text-align: center;
+            margin: 30px 0;
         }
 
-        .contact-info {
-            display: flex;
-            gap: 24px;
+        .chapter-figure img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--surface-border);
+            border-radius: 8px;
         }
 
-        /* Page breaks for print */
         @media print {
+            body {
+                background: var(--white);
+            }
+
+            .page {
+                padding: 20mm;
+                box-shadow: none;
+            }
+
             .page-break {
                 page-break-before: always;
             }
-            
-            body {
-                margin: 0;
-            }
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .page {
                 padding: 20px;
                 width: 100%;
             }
-            
+
             .title {
-                font-size: 28px;
+                font-size: 30px;
             }
-            
+
             .meta-info {
-                flex-direction: column;
                 gap: 16px;
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-section">
-                <div class="logo">K</div>
-                <div>
-                    <div style="font-weight: 600; color: var(--kvadrat-blue);">Kvadrat</div>
-                    <div style="font-size: 12px; color: var(--kvadrat-gray);">Whitepaper</div>
-                </div>
-            </div>
-            <div class="company-info">
-                <div class="company-name">Kvadrat.se</div>
-                <div>Professional Consulting</div>
-                <div>Stockholm, Sweden</div>
-            </div>
-        </header>
+        <section class="whitepaper-header">
+            <div class="series-badge">[[CATEGORY]]</div>
+            <h1 class="title">[[TITLE]]</h1>
+            <p class="subtitle">[[SUBTITLE]]</p>
 
-        <!-- Whitepaper Content -->
-        <div class="whitepaper-header">
-            <div class="category">Infrastructure as Code</div>
-            <h1 class="title">Modernisation of IT infrastructure through code-based solutions</h1>
-            <p class="subtitle">A strategic guide for organisations implementing Infrastructure as Code</p>
-            
             <div class="meta-info">
                 <div class="meta-item">
-                    <div class="meta-label">Author</div>
-                    <div>Kvadrat Expert Team</div>
+                    <span class="meta-label">Author</span>
+                    <span>[[AUTHOR]]</span>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label">Date</div>
-                    <div>December 2024</div>
+                    <span class="meta-label">Published</span>
+                    <span>[[DATE]]</span>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-label">Version</div>
-                    <div>1.0</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">Reading Time</div>
-                    <div>15 minutes</div>
+                    <span class="meta-label">Build number</span>
+                    <span>[[VERSION]]</span>
                 </div>
             </div>
             <!-- FEATURE_TAGS -->
-        </div>
-
-        <!-- Executive Summary -->
-        <section>
-            <h1>Executive Summary</h1>
-            <p class="lead">
-                Infrastructure as Code (IaC) represents a fundamental change in how organisations manage their IT infrastructure. This report examines the benefits, challenges, and best practises for implementation.
-            </p>
-            
-            <p>By treating infrastructure as code, organisations can achieve a higher degree of automation, consistency, and scalability in their IT environments. This leads to reduced operational costs, improved security, and faster time-to-market for new services.</p>
         </section>
 
-        <!-- Key Benefits -->
-        <section>
-            <h1>Key Benefits of Infrastructure as Code</h1>
-            
-            <h2>Consistency and Reproducibility</h2>
-            <p>IaC eliminates manual configuration errors by defining infrastructure in code. This ensures that the same configuration can be reproduced exactly in different environments.</p>
-            
-            <div class="callout callout-info">
-                <div class="callout-title">Important to Remember</div>
-                <p>Consistency is the key to successful infrastructure automation. Without it, organisations risk creating new technical debt.</p>
-            </div>
-
-            <h2>Faster Deployment and Scaling</h2>
-            <p>Automation of infrastructure management enables:</p>
-            <ul>
-                <li>Rapid provisioning of new environments</li>
-                <li>Automatic scaling based on demand</li>
-                <li>Reduced time-to-market for new features</li>
-                <li>Improved disaster recovery</li>
-            </ul>
-
-            <h2>Improved Security and Compliance</h2>
-            <p>Through code-based infrastructure, security policies and compliance requirements can be built in from the start:</p>
-            
-            <pre><code># Example: Terraform security configuration
-resource "aws_security_group" "web" {
-  name = "web-security-group"
-  
-  ingress {
-    from_port   = 443
-    to_port     = 443
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  
-  # Explicit deny for HTTP
-  # Only HTTPS allowed
-}</code></pre>
-        </section>
-
-        <!-- Implementation Strategy -->
-        <section>
-            <h1>Implementation Strategy</h1>
-            
-            <h2>Phased Approach</h2>
-            <p>We recommend a phased implementation to minimise risks and maximise success:</p>
-            
-            <ol>
-                <li><strong>Phase 1:</strong> Pilot project with non-critical systems</li>
-                <li><strong>Phase 2:</strong> Extended implementation to dev/test environments</li>
-                <li><strong>Phase 3:</strong> Gradual migration of production systems</li>
-                <li><strong>Phase 4:</strong> Full automation and optimisation</li>
-            </ol>
-
-            <div class="callout callout-success">
-                <div class="callout-title">Success Factor</div>
-                <p>Organisations that follow a structured, phased approach see 40% higher success rates in their IaC implementations.</p>
-            </div>
-        </section>
-
-        <!-- Challenges and Mitigation -->
-        <section>
-            <h1>Challenges and Solutions</h1>
-            
-            <h2>Skills Challenge</h2>
-            <p>The biggest challenge for many organisations is building the right skills. Kvadrat recommends:</p>
-            
-            <ul>
-                <li>Structured training programmes</li>
-                <li>Mentorship between experienced and new developers</li>
-                <li>Investment in certifications</li>
-                <li>Collaboration with external experts during the initial phase</li>
-            </ul>
-
-            <div class="callout callout-warning">
-                <div class="callout-title">Warning</div>
-                <p>Avoid implementing IaC without sufficient expertise. This can lead to security risks and instability in production environments.</p>
-            </div>
-        </section>
-
-        <!-- Conclusion -->
-        <section>
-            <h1>Conclusions and Recommendations</h1>
-            
-            <p>Infrastructure as Code represents the future of IT infrastructure management. Organisations that invest in IaC today will have significant competitive advantages tomorrow.</p>
-            
-            <p><strong>Our main recommendations:</strong></p>
-            <ul>
-                <li>Start with a limited pilot project</li>
-                <li>Invest heavily in skills development</li>
-                <li>Establish clear governance routines</li>
-                <li>Prioritise security from day one</li>
-                <li>Measure and optimise continuously</li>
-            </ul>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="contact-info">
-                <div>info@kvadrat.se</div>
-                <div>+46 8 123 45 67</div>
-                <div>www.kvadrat.se</div>
-            </div>
-            <div>© 2024 Kvadrat. All rights reserved.</div>
-        </footer>
+        <!-- WHITEPAPER_CONTENT -->
     </div>
-    
+
     <!-- Prism.js core and plugins for syntax highlighting -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-    
+
     <!-- Language support for common languages in the book -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
