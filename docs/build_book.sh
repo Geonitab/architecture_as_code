@@ -352,14 +352,17 @@ CHAPTER_FILES=(
     "24_best_practices.md"
     "part_g_future_wrap_up.md"
     "25_future_trends.md"
+    "26_prerequisites_for_aac.md"
     "26_aac_anti_patterns.md"
     "27_conclusion.md"
     "part_h_appendices.md"
     "28_glossary.md"
+    "29_about_the_authors.md"
     "30_appendix_code_examples.md"
     "31_technical_architecture.md"
+    "32_finos_project_blueprint.md"
+    "architecture_as_code_model.md"
     "33_references.md"
-    "29_about_the_authors.md"
 )
 
 # Build a sanitized list that excludes LaTeX-only part markers for non-LaTeX formats

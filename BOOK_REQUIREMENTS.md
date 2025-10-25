@@ -10,7 +10,7 @@ release:
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 35  # Updated canonical manuscript count (including appendices)
+  total_chapters: 36  # Updated canonical manuscript count (including appendices)
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -182,6 +182,11 @@ book:
       area: "Appendices"
       required: true
       label: "Appendix C"
+    - filename: "architecture_as_code_model.md"
+      title: "Architecture as Code Maturity Model"
+      area: "Reference"
+      required: true
+      label: "Appendix D"
     - filename: "33_references.md"
       title: "References and Sources"
       area: "Reference"
@@ -395,6 +400,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Appendix A | 30_appendix_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
 | Appendix B | 31_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
 | Appendix C | 32_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
+| Appendix D | architecture_as_code_model.md | Architecture as Code Maturity Model | Reference | Yes |
 | References | 33_references.md | References and Sources | Reference | Yes |
 
 ### Special Chapter Requirements

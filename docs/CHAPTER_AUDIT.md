@@ -4,7 +4,7 @@ This audit summarises the current structure of the `docs/` directory, highlights
 
 ## Canonical Chapter Set
 
-The PDF/EPUB build script enumerates the 31 markdown chapters that make up the active manuscript. Only files listed in `CHAPTER_FILES` are rendered into book outputs, which keeps the production pipeline aligned with the official table of contents.【F:docs/build_book.sh†L189-L222】
+The PDF/EPUB build script enumerates the 36 markdown chapters and appendices that make up the active manuscript. Only files listed in `CHAPTER_FILES` are rendered into book outputs, which keeps the production pipeline aligned with the official table of contents.【F:docs/build_book.sh†L189-L222】
 
 ## Archived Material
 

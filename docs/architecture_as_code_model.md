@@ -6,8 +6,14 @@ Modern organisations are increasingly turning to **architecture as code (AaC)** 
 The *Architecture as Code* book describes how codified representations of architecture, policy, governance and even cultural knowledge share common traits:  
 they use machine-readable formats, live in version control and are automatically validated.  
 
-This maturity model synthesises those insights into staged levels of adoption.  
+This maturity model synthesises those insights into staged levels of adoption.
 It recognises that organisations progress from ad-hoc scripting and isolated diagrams to integrated, self-optimising systems that manage compliance, governance and knowledge via code.
+
+## Staircase overview of maturity progression
+
+![Architecture as Code maturity staircase highlighting Levels 0 to 5](images/diagram_32_maturity_model.png)
+
+The staircase presents the progression from manually curated architecture artefacts to adaptive, AI-supported operating models. Each step emphasises the primary enabler that unlocks the next maturity level.
 
 ---
 
