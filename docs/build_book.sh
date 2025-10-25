@@ -193,6 +193,15 @@ fi
 
 mkdir -p "$RELEASE_DIR"
 
+# Configure optional print stylesheet for HTML-to-PDF workflows
+PRINT_STYLESHEET="pdf-print.css"
+PANDOC_PRINT_CSS_ARGS=()
+if [ -f "$PRINT_STYLESHEET" ]; then
+    PANDOC_PRINT_CSS_ARGS=("--css=$PRINT_STYLESHEET")
+else
+    echo "⚠️  Warning: Print stylesheet '$PRINT_STYLESHEET' not found."
+fi
+
 # Verify that the non-LaTeX defaults file is available for EPUB/DOCX builds
 NON_LATEX_DEFAULTS_ARGS=()
 if [ -f "$NON_LATEX_DEFAULTS_FILE" ]; then
@@ -396,7 +405,7 @@ else
     echo "⚠️  Warning: Non-LaTeX formats missing cover page markdown ($COVER_PAGE_MARKDOWN not found)"
 fi
 
-pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
+pandoc --defaults=pandoc.yaml "${PANDOC_PRINT_CSS_ARGS[@]}" "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
 
 # Check if PDF was actually generated
 if [ -f "$OUTPUT_PDF" ] && [ -s "$OUTPUT_PDF" ]; then
@@ -415,6 +424,7 @@ else
     # Try with default LaTeX template
     # Reuse the shared pandoc defaults so LaTeX helpers like \setbookpart stay defined
     if pandoc --defaults=pandoc.yaml \
+        "${PANDOC_PRINT_CSS_ARGS[@]}" \
         --template=default \
         "${CHAPTER_FILES[@]}" \
         -o "$OUTPUT_PDF" \
