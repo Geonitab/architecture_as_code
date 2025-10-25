@@ -38,13 +38,13 @@ This section provides a comprehensive list of all sources and references cited t
 **Chung, L., et al.** "Non-Functional Requirements in Software Engineering." Springer, 2000.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**CNCF.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [7])
+**Cloud Native Computing Foundation.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [7])
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
 
 **FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. https://calm.finos.org/  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
-**Ford, Neal, et al.** "Building Evolutionary Architectures." O'Reilly Media, 2017.  
+**Ford, Neal et al.** "Building Evolutionary Architectures." O'Reilly Media, 2017.  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
 **Forsberg, K., Mooz, H.** "The Relationship of System Engineering to the Project Cycle." Engineering Management Journal, 1991.
@@ -75,7 +75,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 
 **MarketsandMarkets.** "Infrastructure as Code Market Report." MarketsandMarkets, 2023.  
-*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends_development/index.md)*
+*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends.md)*
 
 **Martin, R.** "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*

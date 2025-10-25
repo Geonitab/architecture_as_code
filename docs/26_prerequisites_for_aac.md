@@ -61,7 +61,7 @@ A structured readiness assessment keeps preparation honest. Borrowing from the m
 3. **Cultural and Economic Diagnostics** – Measure psychological safety, leadership engagement, and funding flexibility, drawing on [Chapters 17 and 15](17_organizational_change.md).
 4. **Remediation Roadmap** – Sequence improvements with explicit links to the chapters above so that cultural, technical, and financial gaps close together.
 
-Treating readiness as an iterative loop mirrors the delivery cadence promoted in [Chapter 14](14_practical_implementation.md) and the adaptive mindset in [Chapter 25](25_future_trends_development/index.md).
+Treating readiness as an iterative loop mirrors the delivery cadence promoted in [Chapter 14](14_practical_implementation.md) and the adaptive mindset in [Chapter 25](25_future_trends.md).
 
 ## Case Study: Preparing a Global Enterprise
 
@@ -87,8 +87,8 @@ Perfection is unnecessary, but sequencing matters. Following the migration minds
 
 ## Measuring Ongoing Readiness
 
-Readiness is not a one-off audit. Dashboards should blend DORA indicators from [Chapter 05](05_automation_devops_cicd.md) with cultural metrics from [Chapter 17](17_organizational_change.md) and cost signals from [Chapter 15](15_cost_optimization.md). Governance measures—policy drift, exception frequency, audit findings—confirm whether the codified controls in [Chapter 11](11_governance_as_code.md) still operate. Quarterly reviews keep AaC aligned with reality and feed continuous improvement loops described in [Chapter 24](24_best_practices.md) and [Chapter 25](25_future_trends_development/index.md).
+Readiness is not a one-off audit. Dashboards should blend DORA indicators from [Chapter 05](05_automation_devops_cicd.md) with cultural metrics from [Chapter 17](17_organizational_change.md) and cost signals from [Chapter 15](15_cost_optimization.md). Governance measures—policy drift, exception frequency, audit findings—confirm whether the codified controls in [Chapter 11](11_governance_as_code.md) still operate. Quarterly reviews keep AaC aligned with reality and feed continuous improvement loops described in [Chapter 24](24_best_practices.md) and [Chapter 25](25_future_trends.md).
 
 ## Conclusion
 
-AaC readiness is a deliberate synthesis of culture, technology, and economics. Organisations that honour these prerequisites extend the craftsmanship of [Chapter 02](02_fundamental_principles.md), the resilience of [Chapter 17](17_organizational_change.md), and the stewardship of [Chapter 15](15_cost_optimization.md). Those that skip the groundwork rediscover the failure modes catalogued throughout the book. By grounding adoption in readiness, teams respect the complexity of their sociotechnical systems and position themselves to explore the opportunities envisioned in [Chapter 25](25_future_trends_development/index.md) with confidence.
+AaC readiness is a deliberate synthesis of culture, technology, and economics. Organisations that honour these prerequisites extend the craftsmanship of [Chapter 02](02_fundamental_principles.md), the resilience of [Chapter 17](17_organizational_change.md), and the stewardship of [Chapter 15](15_cost_optimization.md). Those that skip the groundwork rediscover the failure modes catalogued throughout the book. By grounding adoption in readiness, teams respect the complexity of their sociotechnical systems and position themselves to explore the opportunities envisioned in [Chapter 25](25_future_trends.md) with confidence.

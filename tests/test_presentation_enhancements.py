@@ -30,7 +30,7 @@ class TestPresentationEnhancements:
         chapters_with_diagrams = validation['chapters_with_diagram_count']
 
         expected_missing = {
-            '25_future_trends_development/index.md',
+            '25_future_trends.md',
             '27_conclusion.md',
             '30_appendix_code_examples.md',
             '33_references.md',

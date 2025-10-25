@@ -8,21 +8,21 @@ A comprehensive testing strategy for Architecture as Code requires multiple test
 
 ## Overview
 
-Testing Infrastructure as Code differs fundamentally from traditional software testing by focusing on architectural configuration, resource compatibility and environmental consistency rather than business logic. Effective Infrastructure as Code testing ensures configurations produce expected results consistently across different environments whilst maintaining security, compliance and cost efficiency.
+Testing codified infrastructure differs fundamentally from traditional software testing by focusing on architectural configuration, resource compatibility and environmental consistency rather than business logic. Effective Architecture as Code testing ensures configurations produce expected results consistently across different environments whilst maintaining security, compliance and cost efficiency.
 
-Modern Infrastructure as Code testing encompasses multiple dimensions: syntactic validation of code, policy compliance checking, cost forecasting, security vulnerability analysis and functional testing of deployed infrastructure. This multilayered approach identifies problems early in the development cycle when they are cheaper and simpler to fix, preventing costly production incidents.
+Modern codified infrastructure testing encompasses multiple dimensions: syntactic validation of code, policy compliance checking, cost forecasting, security vulnerability analysis and functional testing of deployed infrastructure. This multilayered approach identifies problems early in the development cycle when they are cheaper and simpler to fix, preventing costly production incidents.
 
 Organisations with strict compliance requirements must implement comprehensive testing that validates both technical functionality and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards that must be verified automatically through policy-as-code frameworks.
 
-Test automation for Infrastructure as Code enables continuous integration and continuous deployment patterns that accelerate delivery whilst reducing the risk of production disruptions. Infrastructure testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack.
+Test automation for codified infrastructure enables continuous integration and continuous deployment patterns that accelerate delivery whilst reducing the risk of production disruptions. These testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack.
 
-## Unit Testing for Infrastructure as Code
+## Unit Testing for Codified Infrastructure
 
-Unit testing for Infrastructure as Code focuses on validating individual modules and resources without actually deploying infrastructure. This enables rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.
+Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure. This enables rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.
 
-Programmatic Infrastructure as Code platforms such as Pulumi and the AWS Cloud Development Kit (CDK) make this style of testing first-class by allowing infrastructure definitions to live alongside TypeScript, Python, or C# unit tests. Pulumi’s testing framework enables assertions on resource properties and policy attachments before a deployment occurs, while AWS CDK’s assertions library validates synthesised templates to ensure networking rules, tagging strategies, and compliance controls honour architectural guardrails. Embedding these checks directly within developer workflows aligns with Architecture as Code’s emphasis on executable governance.
+Programmatic Architecture as Code platforms such as Pulumi and the AWS Cloud Development Kit (CDK) make this style of testing first-class by allowing infrastructure definitions to live alongside TypeScript, Python, or C# unit tests. Pulumi’s testing framework enables assertions on resource properties and policy attachments before a deployment occurs, while AWS CDK’s assertions library validates synthesised templates to ensure networking rules, tagging strategies, and compliance controls honour architectural guardrails. Embedding these checks directly within developer workflows aligns with Architecture as Code’s emphasis on executable governance.
 
-Terraform testing tools such as Terratest, terraform-compliance and Checkov enable automated validation of HCL code against predefined policies and Infrastructure as Code best practices. These tools can integrate into IDEs for real-time feedback during development and into CI/CD pipelines for automated quality gates.
+Terraform testing tools such as Terratest, terraform-compliance and Checkov enable automated validation of HCL code against predefined policies and codified infrastructure best practices. These tools can integrate into IDEs for real-time feedback during development and into CI/CD pipelines for automated quality gates.
 
 ### Comparing Pulumi and Terraform Testability
 
@@ -30,25 +30,25 @@ Pulumi's *Testing Infrastructure as Code Programs* guidance (2024, Source [15]) 
 
 The same guidance contrasts Pulumi's approach with declarative tools such as Terraform, highlighting that HCL lacks first-class unit-testing hooks and therefore leans on `terraform plan`, Terratest, `terraform test`, and policy-as-code engines to approximate the same assurance. Those options remain valuable, yet they routinely execute against rendered plans or ephemeral infrastructure, so feedback loops tend to stretch towards integration-time cadences rather than the in-IDE iterations Pulumi showcases in Source [15]. In both ecosystems, unit-level checks complement rather than replace integration and end-to-end tests that validate real infrastructure behaviour.
 
-Unit tests for Infrastructure as Code should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly important for reusable modules that are used across multiple projects, where changes can have wide-ranging impact on dependent resources.
+Unit tests for codified infrastructure should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly important for reusable modules that are used across multiple projects, where changes can have wide-ranging impact on dependent resources.
 
 Mock testing strategies for cloud resources enable testing without actual cloud costs, which is essential for frequent testing cycles. Tools such as LocalStack and cloud provider simulators can simulate cloud services locally for comprehensive testing without infrastructure provisioning costs.
 
-## Test Management with Vitest for Infrastructure as Code
+## Test Management with Vitest for Architecture as Code
 
-Vitest is a modern testing framework built for the Vite ecosystem that offers fast and effective testing of JavaScript/TypeScript code. For Infrastructure as Code projects that use modern tooling, Vitest is particularly relevant for testing configuration generators, validation scripts and automation tools that are often written in TypeScript or JavaScript.
+Vitest is a modern testing framework built for the Vite ecosystem that offers fast and effective testing of JavaScript/TypeScript code. For Architecture as Code initiatives that use modern tooling, Vitest is particularly relevant for testing configuration generators, validation scripts and automation tools that are often written in TypeScript or JavaScript.
 
-### Why Vitest is Relevant for Infrastructure as Code
+### Why Vitest is Relevant for Architecture as Code
 
-Many modern Infrastructure as Code workflows include TypeScript/JavaScript components to generate, validate or transform infrastructure configurations. Vitest enables rapid unit testing of these components with first-class TypeScript support, which is critical to ensure correct configuration generation before deployment.
+Many modern Architecture as Code workflows include TypeScript/JavaScript components to generate, validate or transform infrastructure configurations. Vitest enables rapid unit testing of these components with first-class TypeScript support, which is critical to ensure correct configuration generation before deployment.
 
-Vitest's fast execution and watch mode enable tight development feedback loops when developing infrastructure configuration generators or policy validation scripts. This is particularly valuable for Infrastructure as Code projects where configuration errors can lead to costly infrastructure mistakes.
+Vitest's fast execution and watch mode enable tight development feedback loops when developing infrastructure configuration generators or policy validation scripts. This is particularly valuable for Architecture as Code initiatives where configuration errors can lead to costly infrastructure mistakes.
 
 Integration with Vite build tooling means that the same development environment can be used for both application code and infrastructure-related code, which reduces context switching and improves developer experience for teams that work with both application and infrastructure code.
 
-### Configuration of Vitest for Infrastructure as Code Projects
+### Configuration of Vitest for Architecture as Code Projects
 
-*See Appendix A, Listing 13-A for the complete Vitest configuration example demonstrating test environment setup, coverage requirements and path resolution for Infrastructure as Code projects.*
+*See Appendix A, Listing 13-A for the complete Vitest configuration example demonstrating test environment setup, coverage requirements and path resolution for Architecture as Code initiatives.*
 
 The configuration should include:
 
@@ -58,11 +58,11 @@ The configuration should include:
 - Exclusion of Terraform directories and build artefacts
 - Path aliases for cleaner imports
 
-### Practical Examples for Infrastructure as Code Testing
+### Practical Examples for Architecture as Code Testing
 
 ![Testing Strategy Quadrant](images/diagram_13_testing_quadrant.png)
 
-*Figure 13.2: Infrastructure as Code Testing Strategy Quadrant*
+*Figure 13.2: Architecture as Code Testing Strategy Quadrant*
 
 The testing quadrant above illustrates the balance between implementation complexity and testing coverage. Different testing strategies occupy distinct positions, with security scanning and policy testing offering high coverage with moderate complexity, whilst end-to-end tests provide comprehensive coverage at the cost of higher implementation complexity.
 
@@ -113,7 +113,7 @@ Add test scripts to `package.json`:
 
 ### Recommendations for Test Organisation
 
-**File Structure for Infrastructure as Code Tests:**
+**File Structure for Architecture as Code Tests:**
 
 ```
 project/
@@ -328,7 +328,7 @@ Each stage should provide clear feedback and block deployment on critical failur
 
 Comprehensive testing strategies for Infrastructure as Code are essential to ensure reliable, secure and cost-effective infrastructure deployments. A well-designed test pyramid with unit tests, integration tests and end-to-end validation can dramatically reduce production issues and improve developer confidence.
 
-Modern Infrastructure as Code testing encompasses multiple layers:
+Modern codified infrastructure testing encompasses multiple layers:
 
 - **Unit testing** with tools like Terratest and Vitest provides rapid feedback on configuration correctness
 - **Integration testing** validates that components work together in realistic environments
