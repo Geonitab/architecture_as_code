@@ -328,7 +328,7 @@ CHAPTER_FILES=(
     "05_automation_devops_cicd.md"
     "06_structurizr.md"
     "07_containerization.md"
-    "08_microservices/index.md"
+    "08_microservices.md"
     "part_c_security_governance.md"
     "09a_security_fundamentals.md"
     "09b_security_patterns.md"
@@ -351,8 +351,8 @@ CHAPTER_FILES=(
     "23_soft_as_code_interplay.md"
     "24_best_practices.md"
     "part_g_future_wrap_up.md"
-    "25_future_trends_development/index.md"
-    "26_aac_anti_patterns/index.md"
+    "25_future_trends.md"
+    "26_aac_anti_patterns.md"
     "27_conclusion.md"
     "part_h_appendices.md"
     "28_glossary.md"
@@ -407,7 +407,11 @@ else
     echo "⚠️  Warning: Non-LaTeX formats missing cover page markdown ($COVER_PAGE_MARKDOWN not found)"
 fi
 
-pandoc --defaults=pandoc.yaml "${PANDOC_PRINT_CSS_ARGS[@]}" "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
+if [ ${#PANDOC_PRINT_CSS_ARGS[@]} -gt 0 ]; then
+    pandoc --defaults=pandoc.yaml "${PANDOC_PRINT_CSS_ARGS[@]}" "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
+else
+    pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1
+fi
 
 # Check if PDF was actually generated
 if [ -f "$OUTPUT_PDF" ] && [ -s "$OUTPUT_PDF" ]; then
@@ -496,7 +500,7 @@ generate_other_formats() {
     echo "Generating EPUB format..."
 
     # Generate EPUB with improved metadata
-    if pandoc "${NON_LATEX_DEFAULTS_ARGS[@]}" "${NON_LATEX_CHAPTER_FILES[@]}" \
+    if pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
         -t epub \
         -o "$OUTPUT_EPUB" \
         --metadata date="$(date +'%Y-%m-%d')" \
@@ -535,7 +539,7 @@ generate_other_formats() {
     fi
 
     echo "Generating DOCX format..."
-    pandoc "${NON_LATEX_DEFAULTS_ARGS[@]}" "${NON_LATEX_CHAPTER_FILES[@]}" \
+    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
         -t docx \
         --metadata=include-before= \
         --metadata=header-includes= \

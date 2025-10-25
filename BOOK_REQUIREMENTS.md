@@ -10,7 +10,7 @@ release:
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 34  # Updated canonical manuscript count (including appendices)
+  total_chapters: 35  # Updated canonical manuscript count (including appendices)
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -47,7 +47,7 @@ book:
       area: "Architecture Platform"
       required: true
       label: "Chapter 7"
-    - filename: "08_microservices/index.md"
+    - filename: "08_microservices.md"
       title: "Microservices Architecture as Code"
       area: "Architecture Platform"
       required: true
@@ -137,7 +137,7 @@ book:
       area: "Experience and Best Practices"
       required: true
       label: "Chapter 24"
-    - filename: "25_future_trends_development/index.md"
+    - filename: "25_future_trends.md"
       title: "Future Trends and Development in Architecture as Code"
       area: "Future and Wrap-up"
       required: true
@@ -147,7 +147,7 @@ book:
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 26A"
-    - filename: "26_aac_anti_patterns/index.md"
+    - filename: "26_aac_anti_patterns.md"
       title: "Anti-Patterns in Architecture as Code Programmes"
       area: "Future and Wrap-up"
       required: true
@@ -266,7 +266,12 @@ book:
       filename: "EPUB_VALIDATION.md"
       requires_diagram: false
       requires_sources: false
-  supplemental_chapters: []
+  supplemental_chapters:
+    - filename: "00_front_cover.md"
+      title: "Front Cover"
+      description: "Cover artwork and release metadata maintained outside the numbered manuscript."
+      required: true
+
 structure:
   required_sections:
     - name: "title"
@@ -363,7 +368,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 5 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Architecture as Code | Architecture Platform | Yes |
 | Chapter 6 | 06_structurizr.md | Structurizr: Architecture Modeling as Code | Architecture Platform | Yes |
 | Chapter 7 | 07_containerization.md | Containerisation and Orchestration as Code | Architecture Platform | Yes |
-| Chapter 8 | 08_microservices/index.md | Microservices Architecture as Code | Architecture Platform | Yes |
+| Chapter 8 | 08_microservices.md | Microservices Architecture as Code | Architecture Platform | Yes |
 | Chapter 9A | 09a_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security and Governance | Yes |
 | Chapter 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security and Governance | Yes |
 | Chapter 10 | 10_policy_and_security.md | Policy and Security as Code in Detail | Security and Governance | Yes |
@@ -381,9 +386,9 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 22 | 22_documentation_vs_architecture.md | Documentation as Code vs Architecture as Code | Experience and Best Practices | Yes |
 | Chapter 23 | 23_soft_as_code_interplay.md | The Interplay Between Soft "as code" Disciplines | Experience and Best Practices | Yes |
 | Chapter 24 | 24_best_practices.md | Modern Best Practices and Lessons Learned | Experience and Best Practices | Yes |
-| Chapter 25 | 25_future_trends_development/index.md | Future Trends and Development in Architecture as Code | Future and Wrap-up | Yes |
+| Chapter 25 | 25_future_trends.md | Future Trends and Development in Architecture as Code | Future and Wrap-up | Yes |
 | Chapter 26A | 26_prerequisites_for_aac.md | Prerequisites for Architecture as Code Adoption | Future and Wrap-up | Yes |
-| Chapter 26B | 26_aac_anti_patterns/index.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
+| Chapter 26B | 26_aac_anti_patterns.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
 | Chapter 27 | 27_conclusion.md | Chapter 27 – Conclusion | Future and Wrap-up | Yes |
 | Glossary | 28_glossary.md | Glossary | Appendices | Yes |
 | About the Author | 29_about_the_authors.md | About the Author | Appendices | Yes |

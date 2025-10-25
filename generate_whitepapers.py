@@ -212,28 +212,19 @@ def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str
     if not diagram_path:
         return None
 
-    # Diagrams are stored under docs/, ensure we reference that root
     source_path = Path(diagram_path)
     if not source_path.is_absolute():
         source_path = Path("docs") / source_path
 
     if not source_path.exists():
         print(f"Warning: Diagram {diagram_path} not found at {source_path}")
-        return None
-
-    relative_diagram_path = Path(diagram_path)
-    if relative_diagram_path.is_absolute():
-        relative_diagram_path = Path(relative_diagram_path.name)
-
-    target_path = output_directory / relative_diagram_path
-    target_path.parent.mkdir(parents=True, exist_ok=True)
 
     try:
-        shutil.copy2(source_path, target_path)
-    except shutil.SameFileError:
-        pass
+        relative_path = os.path.relpath(source_path, output_directory)
+    except ValueError:
+        relative_path = source_path.as_posix()
 
-    return relative_diagram_path.as_posix()
+    return Path(relative_path).as_posix()
 
 
 def get_chapter_mapping():

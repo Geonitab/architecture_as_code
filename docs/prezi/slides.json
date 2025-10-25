@@ -2387,120 +2387,120 @@
     "parentId": "24_best_practices"
   },
   {
-    "id": "25_future_trends_development",
+    "id": "25_future_trends",
     "title": "Future Trends and Development in Architecture as Code",
-    "mdPath": "/25_future_trends_development/",
+    "mdPath": "/25_future_trends/",
     "x": 620,
     "y": 1840,
     "zoom": 1
   },
   {
-    "id": "25_future_trends_development--1",
+    "id": "25_future_trends--1",
     "title": "Introduction",
-    "mdPath": "/25_future_trends_development/#introduction",
+    "mdPath": "/25_future_trends/#introduction",
     "x": 840,
     "y": 1980,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--2",
+    "id": "25_future_trends--2",
     "title": "Emerging Technology Drivers",
-    "mdPath": "/25_future_trends_development/#emerging-technology-drivers",
+    "mdPath": "/25_future_trends/#emerging-technology-drivers",
     "x": 1000,
     "y": 1980,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--3",
+    "id": "25_future_trends--3",
     "title": "Platform Engineering and Developer Experience",
-    "mdPath": "/25_future_trends_development/#platform-engineering-and-developer-experience",
+    "mdPath": "/25_future_trends/#platform-engineering-and-developer-experience",
     "x": 840,
     "y": 2100,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--4",
+    "id": "25_future_trends--4",
     "title": "Financial Stewardship and FinOps Evolution",
-    "mdPath": "/25_future_trends_development/#financial-stewardship-and-finops-evolution",
+    "mdPath": "/25_future_trends/#financial-stewardship-and-finops-evolution",
     "x": 1000,
     "y": 2100,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--5",
+    "id": "25_future_trends--5",
     "title": "Advanced GitOps and Automation Patterns",
-    "mdPath": "/25_future_trends_development/#advanced-gitops-and-automation-patterns",
+    "mdPath": "/25_future_trends/#advanced-gitops-and-automation-patterns",
     "x": 840,
     "y": 2220,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--6",
+    "id": "25_future_trends--6",
     "title": "Security, Privacy, and Regulatory Evolution",
-    "mdPath": "/25_future_trends_development/#security-privacy-and-regulatory-evolution",
+    "mdPath": "/25_future_trends/#security-privacy-and-regulatory-evolution",
     "x": 1000,
     "y": 2220,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--7",
+    "id": "25_future_trends--7",
     "title": "Organisation and Workforce Transformation",
-    "mdPath": "/25_future_trends_development/#organisation-and-workforce-transformation",
+    "mdPath": "/25_future_trends/#organisation-and-workforce-transformation",
     "x": 840,
     "y": 2340,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--8",
+    "id": "25_future_trends--8",
     "title": "Architectural Innovation Horizons",
-    "mdPath": "/25_future_trends_development/#architectural-innovation-horizons",
+    "mdPath": "/25_future_trends/#architectural-innovation-horizons",
     "x": 1000,
     "y": 2340,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--9",
+    "id": "25_future_trends--9",
     "title": "Cloud and Digital Sovereignty in Europe",
-    "mdPath": "/25_future_trends_development/#cloud-and-digital-sovereignty-in-europe",
+    "mdPath": "/25_future_trends/#cloud-and-digital-sovereignty-in-europe",
     "x": 840,
     "y": 2460,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--10",
+    "id": "25_future_trends--10",
     "title": "Implementation Strategies for Future Readiness",
-    "mdPath": "/25_future_trends_development/#implementation-strategies-for-future-readiness",
+    "mdPath": "/25_future_trends/#implementation-strategies-for-future-readiness",
     "x": 1000,
     "y": 2460,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--11",
+    "id": "25_future_trends--11",
     "title": "Conclusion",
-    "mdPath": "/25_future_trends_development/#conclusion",
+    "mdPath": "/25_future_trends/#conclusion",
     "x": 840,
     "y": 2580,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
-    "id": "25_future_trends_development--12",
+    "id": "25_future_trends--12",
     "title": "References",
-    "mdPath": "/25_future_trends_development/#references",
+    "mdPath": "/25_future_trends/#references",
     "x": 1000,
     "y": 2580,
     "zoom": 1,
-    "parentId": "25_future_trends_development"
+    "parentId": "25_future_trends"
   },
   {
     "id": "26_aac_anti_patterns",
