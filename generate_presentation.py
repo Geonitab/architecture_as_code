@@ -38,6 +38,7 @@ import sys
 import glob
 import re
 import unicodedata
+from datetime import datetime
 from pathlib import Path
 import json
 
@@ -47,6 +48,298 @@ except ImportError as exc:  # pragma: no cover - dependency check
     print("❌ Error: PyYAML library not installed")
     print("   Install with: pip install PyYAML>=6.0")
     sys.exit(1)
+
+from pptx import Presentation
+from pptx.util import Inches, Pt
+from pptx.dml.color import RGBColor
+from pptx.enum.text import PP_ALIGN
+from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+
+THEME_BLUE = RGBColor(8, 58, 122)
+THEME_ACCENT = RGBColor(225, 173, 1)
+THEME_TEXT = RGBColor(51, 51, 51)
+THEME_MUTED = RGBColor(102, 102, 102)
+SLIDE_WIDTH = Inches(13.3333333333)
+SLIDE_HEIGHT = Inches(7.5)
+
+
+def configure_presentation_document(prs):
+    """Apply shared configuration and metadata to the presentation document."""
+    prs.slide_width = SLIDE_WIDTH
+    prs.slide_height = SLIDE_HEIGHT
+
+    now = datetime.utcnow()
+    props = prs.core_properties
+    props.author = "Gunnar Nordqvist"
+    props.title = "Architecture as Code"
+    props.subject = "Architecture as Code"
+    props.category = "Architecture"
+    props.keywords = "Architecture as Code; presentation"
+    props.last_modified_by = "Gunnar Nordqvist"
+    props.language = "en-GB"
+    props.modified = now
+    props.last_printed = now
+    if not props.created:
+        props.created = now
+
+    try:
+        props.revision = str(max(int(props.revision or "1"), 1) + 1)
+    except ValueError:
+        props.revision = "2"
+
+
+def _add_notes(slide, notes_text):
+    """Populate the speaker notes section with the supplied text."""
+    notes_frame = slide.notes_slide.notes_text_frame
+    notes_frame.clear()
+    notes_frame.text = notes_text or ""
+
+
+def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inches(0.5)):
+    """Add an accent banner to highlight the focus keyword."""
+    if not keyword:
+        return None
+
+    banner = slide.shapes.add_shape(
+        MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE,
+        left,
+        top,
+        width,
+        height,
+    )
+    banner.fill.solid()
+    banner.fill.fore_color.rgb = THEME_ACCENT
+    banner.line.color.rgb = THEME_BLUE
+
+    text_frame = banner.text_frame
+    text_frame.text = keyword
+    paragraph = text_frame.paragraphs[0]
+    paragraph.font.size = Pt(16)
+    paragraph.font.bold = True
+    paragraph.font.color.rgb = THEME_BLUE
+    paragraph.alignment = PP_ALIGN.CENTER
+    text_frame.margin_left = Pt(6)
+    text_frame.margin_right = Pt(6)
+    return banner
+
+
+def _add_highlighted_bullet(text_frame, text):
+    """Add a bullet point with the leading keyword highlighted."""
+    if not text:
+        return
+
+    paragraph = text_frame.add_paragraph()
+    paragraph.level = 0
+    paragraph.space_after = Pt(6)
+    paragraph.line_spacing = 1.2
+
+    bullet_run = paragraph.add_run()
+    bullet_run.text = "• "
+    bullet_run.font.size = Pt(18)
+    bullet_run.font.color.rgb = THEME_TEXT
+
+    words = text.split()
+    if not words:
+        return
+
+    keyword = words[0]
+    remainder = " ".join(words[1:])
+
+    keyword_run = paragraph.add_run()
+    keyword_run.text = keyword
+    keyword_run.font.bold = True
+    keyword_run.font.color.rgb = THEME_BLUE
+    keyword_run.font.size = Pt(18)
+
+    if remainder:
+        remainder_run = paragraph.add_run()
+        remainder_run.text = f" {remainder}"
+        remainder_run.font.size = Pt(18)
+        remainder_run.font.color.rgb = THEME_TEXT
+
+
+def build_presentation_document(prs, presentation_data):
+    """Construct the Architecture as Code presentation from structured data."""
+    configure_presentation_document(prs)
+
+    today_label = datetime.now().strftime("%d %B %Y")
+
+    # Title slide
+    title_slide = prs.slides.add_slide(prs.slide_layouts[0])
+    title = title_slide.shapes.title
+    subtitle = title_slide.placeholders[1]
+
+    title.text = "Architecture as Code"
+    title_frame = title.text_frame
+    title_paragraph = title_frame.paragraphs[0]
+    title_paragraph.font.size = Pt(56)
+    title_paragraph.font.bold = True
+    title_paragraph.font.color.rgb = THEME_BLUE
+
+    subtitle_frame = subtitle.text_frame
+    subtitle_frame.clear()
+    author_paragraph = subtitle_frame.paragraphs[0]
+    author_paragraph.text = "Author: Gunnar Nordqvist"
+    author_paragraph.font.size = Pt(24)
+    author_paragraph.font.color.rgb = THEME_TEXT
+
+    date_paragraph = subtitle_frame.add_paragraph()
+    date_paragraph.text = f"Last updated: {today_label}"
+    date_paragraph.font.size = Pt(20)
+    date_paragraph.font.color.rgb = THEME_TEXT
+
+    editor_paragraph = subtitle_frame.add_paragraph()
+    editor_paragraph.text = "Latest change by: Gunnar Nordqvist"
+    editor_paragraph.font.size = Pt(20)
+    editor_paragraph.font.color.rgb = THEME_TEXT
+
+    _add_notes(
+        title_slide,
+        f"Architecture as Code presentation generated on {today_label} by Gunnar Nordqvist.",
+    )
+
+    chapter_index = 0
+
+    for entry in presentation_data:
+        entry_type = entry.get('type')
+
+        if entry_type == 'front_matter':
+            front = entry.get('front_matter', {})
+            slide = prs.slides.add_slide(prs.slide_layouts[1])
+            slide_title = slide.shapes.title
+            body = slide.shapes.placeholders[1]
+
+            slide_title.text = front.get('title', 'Architecture as Code')
+            slide_title.text_frame.paragraphs[0].font.size = Pt(44)
+            slide_title.text_frame.paragraphs[0].font.color.rgb = THEME_BLUE
+
+            _add_keyword_banner(slide, front.get('focus_keyword'), Inches(0.6), Inches(0.6))
+
+            body_frame = body.text_frame
+            body_frame.clear()
+
+            subtitle_text = front.get('subtitle')
+            if subtitle_text:
+                subtitle_paragraph = body_frame.paragraphs[0]
+                subtitle_paragraph.text = subtitle_text
+                subtitle_paragraph.font.size = Pt(22)
+                subtitle_paragraph.font.bold = True
+                subtitle_paragraph.font.color.rgb = THEME_TEXT
+            else:
+                body_frame.paragraphs[0].text = ""
+
+            for point in front.get('key_points', [])[:6]:
+                _add_highlighted_bullet(body_frame, point)
+
+            _add_notes(slide, front.get('notes', ''))
+            continue
+
+        if entry_type == 'part':
+            part = entry.get('part', {})
+            slide = prs.slides.add_slide(prs.slide_layouts[5])
+            slide_title = slide.shapes.title
+            slide_title.text = part.get('title', 'Part overview')
+            slide_title.text_frame.paragraphs[0].font.size = Pt(48)
+            slide_title.text_frame.paragraphs[0].font.color.rgb = THEME_BLUE
+
+            _add_keyword_banner(slide, part.get('focus_keyword'), Inches(0.6), Inches(0.6))
+
+            description = part.get('description')
+            description_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.8), Inches(12), Inches(1.2))
+            description_frame = description_box.text_frame
+            description_frame.clear()
+            description_frame.text = description or ""
+            description_frame.paragraphs[0].font.size = Pt(22)
+            description_frame.paragraphs[0].font.color.rgb = THEME_TEXT
+
+            points_box = slide.shapes.add_textbox(Inches(0.8), Inches(3.0), Inches(12), Inches(4.5))
+            points_frame = points_box.text_frame
+            points_frame.clear()
+            heading_paragraph = points_frame.paragraphs[0]
+            heading_paragraph.text = "Key themes"
+            heading_paragraph.font.size = Pt(24)
+            heading_paragraph.font.bold = True
+            heading_paragraph.font.color.rgb = THEME_BLUE
+
+            for point in part.get('key_points', [])[:6]:
+                _add_highlighted_bullet(points_frame, point)
+
+            _add_notes(slide, part.get('notes', ''))
+            continue
+
+        if entry_type == 'chapter':
+            chapter_index += 1
+            chapter = entry.get('chapter', {})
+            slide = prs.slides.add_slide(prs.slide_layouts[6])
+
+            title_box = slide.shapes.add_textbox(Inches(0.6), Inches(0.4), Inches(12.2), Inches(0.9))
+            title_frame = title_box.text_frame
+            title_frame.text = chapter.get('title', 'Chapter overview')
+            title_paragraph = title_frame.paragraphs[0]
+            title_paragraph.font.size = Pt(36)
+            title_paragraph.font.bold = True
+            title_paragraph.font.color.rgb = THEME_BLUE
+
+            _add_keyword_banner(slide, chapter.get('focus_keyword'), Inches(0.6), Inches(1.1))
+
+            image_on_left = chapter_index % 2 == 1
+            image_left = Inches(0.6) if image_on_left else Inches(7.0)
+            text_left = Inches(7.0) if image_on_left else Inches(0.6)
+            image_top = Inches(1.6)
+            text_top = Inches(1.6)
+            image_width = Inches(5.8)
+            text_width = Inches(5.6)
+
+            diagram_path = chapter.get('diagram_path')
+            diagram_metadata = chapter.get('diagram_metadata') or {}
+
+            if diagram_path and Path(diagram_path).exists():
+                picture = slide.shapes.add_picture(diagram_path, image_left, image_top, width=image_width)
+                caption_top = picture.top + picture.height + Inches(0.2)
+                caption_box = slide.shapes.add_textbox(image_left, caption_top, image_width, Inches(0.9))
+                caption_frame = caption_box.text_frame
+                caption_frame.clear()
+                caption_frame.text = diagram_metadata.get('source', 'Architecture as Code diagram')
+                caption_frame.paragraphs[0].font.size = Pt(12)
+                caption_frame.paragraphs[0].font.color.rgb = THEME_MUTED
+
+                explanation = diagram_metadata.get('explanation')
+                if explanation:
+                    explanation_paragraph = caption_frame.add_paragraph()
+                    explanation_paragraph.text = explanation
+                    explanation_paragraph.font.size = Pt(12)
+                    explanation_paragraph.font.color.rgb = THEME_TEXT
+            else:
+                placeholder = slide.shapes.add_shape(
+                    MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE,
+                    image_left,
+                    image_top,
+                    image_width,
+                    Inches(3.8),
+                )
+                placeholder.fill.solid()
+                placeholder.fill.fore_color.rgb = RGBColor(230, 235, 242)
+                placeholder.line.color.rgb = THEME_BLUE
+                placeholder.text_frame.text = "Diagram pending"
+                placeholder.text_frame.paragraphs[0].font.size = Pt(16)
+                placeholder.text_frame.paragraphs[0].font.bold = True
+                placeholder.text_frame.paragraphs[0].font.color.rgb = THEME_BLUE
+
+            points_box = slide.shapes.add_textbox(text_left, text_top, text_width, Inches(5.2))
+            points_frame = points_box.text_frame
+            points_frame.clear()
+            heading = points_frame.paragraphs[0]
+            heading.text = "Key highlights"
+            heading.font.size = Pt(26)
+            heading.font.bold = True
+            heading.font.color.rgb = THEME_BLUE
+
+            for point in chapter.get('key_points', [])[:8]:
+                _add_highlighted_bullet(points_frame, point)
+
+            _add_notes(slide, chapter.get('notes', ''))
+
+    return prs
 
 
 def _load_canonical_chapter_filenames(requirements_path=Path("BOOK_REQUIREMENTS.md")):
@@ -78,6 +371,41 @@ def _load_canonical_chapter_filenames(requirements_path=Path("BOOK_REQUIREMENTS.
 
     return canonical
 
+
+def load_book_requirements(requirements_path=Path("BOOK_REQUIREMENTS.md")):
+    """Load the structured book requirements from the specification front matter."""
+    if not requirements_path.exists():
+        return {}
+
+    content = requirements_path.read_text(encoding="utf-8").splitlines()
+    if not content or content[0].strip() != "---":
+        return {}
+
+    front_matter_lines = []
+    for line in content[1:]:
+        if line.strip() == "---":
+            break
+        front_matter_lines.append(line)
+
+    if not front_matter_lines:
+        return {}
+
+    data = yaml.safe_load("\n".join(front_matter_lines)) or {}
+    return data
+
+
+PART_AREA_MAP = {
+    "Part I: Foundations": {"Foundations"},
+    "Part II: Architecture Platform": {"Architecture Platform"},
+    "Part III: Security and Governance": {"Security and Governance"},
+    "Part IV: Delivery and Operations": {"Delivery and Operations"},
+    "Part V: Organisation and Leadership": {"Organisation and Leadership"},
+    "Part VI: Experience and Best Practices": {"Experience and Best Practices"},
+    "Part VII: Future and Wrap-up": {"Future and Wrap-up"},
+    "Part VIII: Appendices and Reference": {"Appendices", "Reference"},
+}
+
+
 def limit_words(text, max_words=20):
     """Limit text to maximum number of words while preserving meaning."""
     if not text:
@@ -106,6 +434,62 @@ def _slugify_heading(text):
     cleaned = re.sub(r"[^0-9a-z\s-]", "", without_diacritics)
     slug = re.sub(r"[\s-]+", "-", cleaned).strip("-")
     return slug
+
+
+def _collect_highlights_from_lines(lines, minimum_length=20):
+    """Extract highlight sentences from markdown lines using section structure."""
+    key_points = []
+    current_section = None
+    section_content = []
+    in_code_block = False
+
+    for raw_line in lines:
+        line = raw_line.strip()
+
+        if line.startswith('```'):
+            in_code_block = not in_code_block
+            continue
+
+        if in_code_block:
+            continue
+
+        if line.startswith('## '):
+            if current_section and section_content:
+                meaningful = [
+                    candidate.strip()
+                    for candidate in section_content
+                    if candidate
+                    and not candidate.startswith('#')
+                    and not candidate.startswith('![')
+                    and not candidate.startswith('```')
+                    and len(candidate.strip()) > minimum_length
+                ]
+
+                if meaningful:
+                    first_sentence = meaningful[0].split('.')[0].strip() or meaningful[0][:150]
+                    key_points.append(limit_words(first_sentence, 20))
+
+            current_section = line[3:].strip()
+            section_content = []
+        elif line and current_section:
+            section_content.append(line)
+
+    if current_section and section_content:
+        meaningful = [
+            candidate.strip()
+            for candidate in section_content
+            if candidate
+            and not candidate.startswith('#')
+            and not candidate.startswith('![')
+            and not candidate.startswith('```')
+            and len(candidate.strip()) > minimum_length
+        ]
+
+        if meaningful:
+            first_sentence = meaningful[0].split('.')[0].strip() or meaningful[0][:150]
+            key_points.append(limit_words(first_sentence, 20))
+
+    return key_points
 
 
 def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
@@ -500,12 +884,101 @@ def extract_diagram_metadata(diagram_path, chapter_content):
     
     return diagram_info
 
+def read_part_content(part_file, metadata=None):
+    """Read part introduction content and extract highlights."""
+    metadata = metadata or {}
+    try:
+        content = Path(part_file).read_text(encoding="utf-8")
+    except FileNotFoundError:
+        print(f"Warning: Part introduction not found: {part_file}")
+        return None
+
+    lines = content.split('\n')
+    title = metadata.get('title')
+    for line in lines:
+        if line.startswith('# '):
+            title = line[2:].strip()
+            break
+
+    title = title or Path(part_file).stem.replace('_', ' ').title()
+    key_points = _collect_highlights_from_lines(lines, minimum_length=10)
+
+    if not key_points and metadata.get('description'):
+        description_sentences = [
+            sentence.strip()
+            for sentence in re.split(r'[.!?]', metadata['description'])
+            if sentence.strip()
+        ]
+        key_points = [limit_words(sentence, 20) for sentence in description_sentences[:3]]
+
+    notes_lines = [title]
+    description = metadata.get('description', '')
+    if description:
+        notes_lines.append('')
+        notes_lines.append(limit_words(description, 40))
+
+    if key_points:
+        notes_lines.append('')
+        notes_lines.append('Highlights:')
+        for point in key_points:
+            notes_lines.append(f"- {point}")
+
+    return {
+        'title': title,
+        'label': metadata.get('label'),
+        'description': description,
+        'key_points': key_points,
+        'notes': '\n'.join(notes_lines).strip(),
+        'focus_keyword': metadata.get('label') or metadata.get('title') or title,
+    }
+
+
+def read_front_matter_content(front_file, metadata=None):
+    """Read front matter content for introductory slides."""
+    metadata = metadata or {}
+    try:
+        content = Path(front_file).read_text(encoding="utf-8")
+    except FileNotFoundError:
+        print(f"Warning: Front matter not found: {front_file}")
+        return None
+
+    lines = content.split('\n')
+    title = metadata.get('title')
+    subtitle = ''
+    for line in lines:
+        if line.startswith('# '):
+            title = line[2:].strip()
+            continue
+        if line.startswith('## '):
+            subtitle = line[3:].strip()
+            break
+
+    highlights = _collect_highlights_from_lines(lines, minimum_length=5)
+    notes_lines = [title or Path(front_file).stem]
+    if subtitle:
+        notes_lines.append(subtitle)
+
+    if highlights:
+        notes_lines.append('')
+        notes_lines.append('Highlights:')
+        for point in highlights:
+            notes_lines.append(f"- {point}")
+
+    return {
+        'title': title or metadata.get('title') or 'Architecture as Code',
+        'subtitle': subtitle or metadata.get('label', ''),
+        'key_points': highlights,
+        'notes': '\n'.join(notes_lines).strip(),
+        'focus_keyword': metadata.get('label') or (title or 'Architecture as Code'),
+    }
+
+
 def read_chapter_content(chapter_file):
     """Read and parse a chapter markdown file."""
     try:
         with open(chapter_file, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         # Extract chapter title (first h1)
         lines = content.split('\n')
         title = "Untitled Chapter"
@@ -514,85 +987,37 @@ def read_chapter_content(chapter_file):
                 title = line[2:].strip()
                 break
         
-        # Extract diagram path - support multiple images, pick the first one
+        # Extract diagram paths - prefer flowchart representations
         diagram_path = None
         diagram_metadata = None
+        selected_reference = None
+        diagram_candidates = []
         for line in lines:
             if line.startswith('![') and 'images/' in line:
-                # Extract diagram path from markdown image syntax
                 match = re.search(r'!\[.*?\]\((.*?)\)', line)
                 if match:
                     relative_path = match.group(1)
-                    # Convert to absolute path from script location
                     if relative_path.endswith('.png'):
-                        diagram_path = os.path.join("docs", relative_path)
-                        # Extract metadata for this diagram
-                        diagram_metadata = extract_diagram_metadata(diagram_path, content)
-                        # Take the first diagram found
-                        break
-        
+                        full_path = os.path.join("docs", relative_path)
+                        metadata = extract_diagram_metadata(full_path, content)
+                        diagram_candidates.append((full_path, metadata, relative_path))
+
+        for candidate in diagram_candidates:
+            candidate_metadata = candidate[1] or {}
+            diagram_type = (candidate_metadata.get('type') or '').lower()
+            if 'flowchart' in diagram_type:
+                diagram_path, diagram_metadata, selected_reference = candidate
+                break
+
+        if diagram_path is None and diagram_candidates:
+            diagram_path, diagram_metadata, selected_reference = diagram_candidates[0]
+
         # Extract key points with 20-word limit for presentation slides
-        key_points = []
-        current_section = None
-        section_content = []
-        in_code_block = False
-        
-        for line in lines:
-            line = line.strip()
-            
-            # Handle code blocks
-            if line.startswith('```'):
-                in_code_block = not in_code_block
-                continue
-            if in_code_block:
-                continue
-                
-            if line.startswith('## '):
-                # Process previous section
-                if current_section and section_content:
-                    # Get the first meaningful sentence and limit to 20 words
-                    meaningful_content = []
-                    for content_line in section_content:
-                        if (content_line and 
-                            not content_line.startswith('#') and 
-                            not content_line.startswith('![') and
-                            not content_line.startswith('```') and
-                            len(content_line.strip()) > 20):
-                            meaningful_content.append(content_line)
-                    
-                    if meaningful_content:
-                        # Take first sentence or meaningful phrase, limit to 20 words
-                        first_sentence = meaningful_content[0].split('.')[0].strip()
-                        if not first_sentence:
-                            first_sentence = meaningful_content[0][:150]  # Fallback to character limit
-                        
-                        limited_point = limit_words(first_sentence, 20)
-                        key_points.append(limited_point)
-                
-                current_section = line[3:].strip()
-                section_content = []
-            elif line and current_section:
-                section_content.append(line)
-        
-        # Add last section
-        if current_section and section_content:
-            meaningful_content = []
-            for content_line in section_content:
-                if (content_line and 
-                    not content_line.startswith('#') and 
-                    not content_line.startswith('![') and
-                    not content_line.startswith('```') and
-                    len(content_line.strip()) > 20):
-                    meaningful_content.append(content_line)
-            
-            if meaningful_content:
-                first_sentence = meaningful_content[0].split('.')[0].strip()
-                if not first_sentence:
-                    first_sentence = meaningful_content[0][:150]
-                
-                limited_point = limit_words(first_sentence, 20)
-                key_points.append(limited_point)
-        
+        key_points = _collect_highlights_from_lines(lines)
+        if not key_points:
+            fallback_sentence = limit_words(f"Core ideas from {title.lower()} for modern organisations", 20)
+            key_points = [fallback_sentence]
+
         # Ensure we have at least 5 key points but no more than 10, all with 20-word limit
         while len(key_points) < 5 and len(key_points) > 0:
             # Add some general points if we don't have enough, all limited to 20 words
@@ -605,13 +1030,65 @@ def read_chapter_content(chapter_file):
             elif len(key_points) == 4:
                 key_points.append(limit_words(f"Cost optimisation and scalability guidance for {title.lower()}", 20))
         
+        selected_filename = os.path.basename(selected_reference) if selected_reference else None
+
+        if diagram_metadata is None:
+            diagram_metadata = {
+                'type': 'Architecture diagram',
+                'purpose': 'Highlights a key architecture concept',
+                'source': 'Architecture as Code diagrams',
+                'explanation': '',
+            }
+
+        # Extract contextual explanation from chapter content around diagram reference
+        if content and diagram_path and selected_filename:
+            lines = content.split('\n')
+            for i, line in enumerate(lines):
+                if selected_filename.replace('.png', '') in line and 'images/' in line:
+                    if i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        if next_line and not next_line.startswith('#') and not next_line.startswith('!['):
+                            diagram_metadata['explanation'] = limit_words(next_line, 18)
+                            break
+
+                    if i > 0:
+                        prev_line = lines[i - 1].strip()
+                        if prev_line and not prev_line.startswith('#') and not prev_line.startswith('!['):
+                            diagram_metadata['explanation'] = limit_words(prev_line, 18)
+                            break
+
+        if not diagram_metadata.get('explanation'):
+            filename_lower = (selected_filename or '').lower()
+            purpose_text = diagram_metadata.get('purpose') or 'Highlights a key architecture concept'
+            chapter_match = re.search(r'(chapter|kapitel)(\d+)', filename_lower)
+            if chapter_match:
+                diagram_metadata['explanation'] = limit_words(
+                    f"Diagram: Chapter {chapter_match.group(2)} - {purpose_text}", 18
+                )
+            else:
+                diagram_metadata['explanation'] = limit_words(f"Diagram: {purpose_text}", 18)
+
+        notes_lines = [title]
+        notes_lines.append('')
+        notes_lines.append('Highlights:')
+        for point in key_points[:10]:
+            notes_lines.append(f"- {point}")
+
+        if diagram_path:
+            notes_lines.append('')
+            diagram_type = diagram_metadata.get('type') or 'Diagram'
+            notes_lines.append(f"Diagram type: {diagram_type}")
+            if diagram_metadata.get('explanation'):
+                notes_lines.append(diagram_metadata['explanation'])
+
         return {
             'title': title,
-            'key_points': key_points[:10],  # Limit to 10 key points max, each with 20-word limit
+            'key_points': key_points[:10],
             'diagram_path': diagram_path,
-            'diagram_metadata': diagram_metadata
+            'diagram_metadata': diagram_metadata,
+            'notes': '\n'.join(notes_lines).strip(),
         }
-    
+
     except Exception as e:
         print(f"Error reading {chapter_file}: {e}")
         return None
@@ -621,285 +1098,171 @@ def generate_presentation_outline():
     docs_dir = Path("docs")
     if not docs_dir.exists():
         print("Error: docs/ directory not found")
-        return False
-    
-    # Find all chapter markdown files
-    chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
-    
+        return []
+
+    requirements = load_book_requirements()
+    book_config = requirements.get('book', {})
     presentation_data = []
-    
-    for chapter_file in chapter_files:
-        if Path(chapter_file).name in ['README.md', 'architecture_as_code.md']:
-            continue  # Skip non-chapter files
-            
-        chapter_data = read_chapter_content(chapter_file)
-        if chapter_data:
+
+    if not book_config:
+        # Fallback to alphabetical ordering when requirements are missing
+        chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
+        for chapter_file in chapter_files:
+            name = Path(chapter_file).name
+            if name in ['README.md', 'architecture_as_code.md']:
+                continue
+            chapter_data = read_chapter_content(chapter_file)
+            if chapter_data:
+                presentation_data.append({
+                    'type': 'chapter',
+                    'file': name,
+                    'chapter': chapter_data,
+                })
+        return presentation_data
+
+    front_matter_meta = book_config.get('front_matter', [])
+    part_introductions = book_config.get('part_introductions', [])
+    chapter_meta = book_config.get('chapters', [])
+
+    for front in front_matter_meta:
+        filename = front.get('filename')
+        if not filename:
+            continue
+        front_path = docs_dir / filename
+        front_content = read_front_matter_content(front_path, front) if front_path.exists() else None
+        if front_content:
             presentation_data.append({
-                'file': Path(chapter_file).name,
-                'chapter': chapter_data
+                'type': 'front_matter',
+                'file': filename,
+                'front_matter': front_content,
             })
-    
+
+    chapters_by_part = {part['title']: [] for part in part_introductions if part.get('title')}
+    unassigned_chapters = []
+
+    for chapter in chapter_meta:
+        filename = chapter.get('filename')
+        area = chapter.get('area')
+        if not filename:
+            continue
+
+        matched = False
+        for part_title, areas in PART_AREA_MAP.items():
+            if area in areas:
+                if part_title in chapters_by_part:
+                    chapters_by_part[part_title].append(chapter)
+                else:
+                    chapters_by_part.setdefault(part_title, []).append(chapter)
+                matched = True
+                break
+
+        if not matched:
+            unassigned_chapters.append(chapter)
+
+    for part in part_introductions:
+        filename = part.get('filename')
+        title = part.get('title')
+        if not filename or not title:
+            continue
+
+        part_path = docs_dir / filename
+        part_content = read_part_content(part_path, part) if part_path.exists() else None
+        if part_content:
+            presentation_data.append({
+                'type': 'part',
+                'file': filename,
+                'part': part_content,
+            })
+
+        for chapter in chapters_by_part.get(title, []):
+            chapter_file = docs_dir / chapter['filename']
+            chapter_content = read_chapter_content(chapter_file)
+            if chapter_content:
+                chapter_content['label'] = chapter.get('label')
+                chapter_content['area'] = chapter.get('area')
+                chapter_content['focus_keyword'] = chapter.get('area') or chapter.get('label')
+                chapter_content['identifier'] = chapter.get('filename')
+                presentation_data.append({
+                    'type': 'chapter',
+                    'file': chapter.get('filename'),
+                    'chapter': chapter_content,
+                })
+
+    for chapter in unassigned_chapters:
+        chapter_file = docs_dir / chapter['filename']
+        chapter_content = read_chapter_content(chapter_file)
+        if chapter_content:
+            chapter_content['label'] = chapter.get('label')
+            chapter_content['area'] = chapter.get('area')
+            chapter_content['focus_keyword'] = chapter.get('area') or chapter.get('label')
+            chapter_content['identifier'] = chapter.get('filename')
+            presentation_data.append({
+                'type': 'chapter',
+                'file': chapter.get('filename'),
+                'chapter': chapter_content,
+            })
+
     return presentation_data
 
 def create_presentation_script(presentation_data):
-    """Create a script that would generate the PowerPoint presentation."""
+    """Create a standalone script that renders the presentation using shared helpers."""
     script_content = '''#!/usr/bin/env python3
-"""
-PowerPoint Presentation Generator for Architecture as Code
-Generated automatically from book content.
-Aligned with Architecture as Code presentation standards and theme colours.
-All key points limited to 20 words maximum per slide.
-"""
+"""Generate the Architecture as Code presentation from cached data."""
 
-import os
+import json
+import sys
 from pathlib import Path
+
 from pptx import Presentation
-from pptx.util import Inches, Pt
-from pptx.dml.color import RGBColor
-from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE
 
-def limit_words(text, max_words=20):
-    """Limit text to maximum number of words while preserving meaning."""
-    if not text:
-        return text
-    
-    words = text.split()
-    if len(words) <= max_words:
-        return text
-    
-    # Take the first max_words and add ellipsis if needed
-    limited = ' '.join(words[:max_words])
-    if len(words) > max_words:
-        limited += "..."
-    
-    return limited
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
-def create_presentation():
-    """Create PowerPoint presentation with book content."""
+from generate_presentation import build_presentation_document
+
+DATA_FILE = Path(__file__).with_name("presentation_data.json")
+
+
+def load_presentation_data():
+    if not DATA_FILE.exists():
+        raise FileNotFoundError(f"Presentation data not found: {DATA_FILE}")
+    with DATA_FILE.open("r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def main(output_path: Path) -> None:
+    presentation_data = load_presentation_data()
     prs = Presentation()
-    
-    # Set up presentation theme colours (Architecture as Code palette)
-    # Blue: #083a7a, Accent: #e1ad01, Neutral: #333333
-    
-    # Title slide
-    title_slide_layout = prs.slide_layouts[0]
-    slide = prs.slides.add_slide(title_slide_layout)
-    title = slide.shapes.title
-    subtitle = slide.placeholders[1]
-    
-    title.text = "Architecture as Code"
-    subtitle.text = "A comprehensive guide for modern organisations"
-    
-    # Style the title slide
-    title.text_frame.paragraphs[0].font.size = Pt(44)
-    title.text_frame.paragraphs[0].font.bold = True
-    title.text_frame.paragraphs[0].font.color.rgb = RGBColor(8, 58, 122)  # Signature blue
-    
-    subtitle.text_frame.paragraphs[0].font.size = Pt(24)
-    subtitle.text_frame.paragraphs[0].font.color.rgb = RGBColor(51, 51, 51)  # Dark grey
-
-'''
-    
-    for item in presentation_data:
-        chapter = item['chapter']
-        diagram_path = chapter.get('diagram_path', '')
-        diagram_metadata = chapter.get('diagram_metadata', {})
-        
-        # Escape quotes and clean text for Python string generation
-        clean_title = chapter['title'].replace('"', '\\"').replace("'", "\\'")
-        
-        script_content += f'''
-    # Chapter: {clean_title}
-    slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-    slide = prs.slides.add_slide(slide_layout)
-    
-    # Add title
-    title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-    title_frame = title_box.text_frame
-    title_frame.text = "{clean_title}"
-    title_frame.paragraphs[0].font.size = Pt(32)
-    title_frame.paragraphs[0].font.bold = True
-    title_frame.paragraphs[0].font.color.rgb = RGBColor(8, 58, 122)  # Signature blue
-    
-'''
-        
-        # Add diagram if available
-        if diagram_path:
-            diagram_source = diagram_metadata.get('source', 'Source: diagram').replace('"', '\\"').replace("'", "\\'")
-            diagram_explanation = diagram_metadata.get('explanation', '').replace('"', '\\"').replace("'", "\\'")
-            
-            script_content += f'''
-    # Add diagram with reference and explanation
-    diagram_path = "{diagram_path}"
-    if os.path.exists(diagram_path):
-        try:
-            slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-            
-            # Add diagram reference and explanation
-            diagram_ref_box = slide.shapes.add_textbox(Inches(0.5), Inches(4.4), Inches(4), Inches(0.8))
-            diagram_ref_frame = diagram_ref_box.text_frame
-            diagram_ref_frame.text = "{diagram_source}"
-            diagram_ref_frame.paragraphs[0].font.size = Pt(10)
-            diagram_ref_frame.paragraphs[0].font.color.rgb = RGBColor(102, 102, 102)  # Grey
-            
-            # Add diagram explanation
-            if "{diagram_explanation}":
-                p = diagram_ref_frame.add_paragraph()
-                p.text = "{diagram_explanation}"
-                p.font.size = Pt(10)
-                p.font.color.rgb = RGBColor(51, 51, 51)  # Dark grey
-        except Exception as e:
-            print(f"Warning: Could not add diagram {{diagram_path}}: {{e}}")
-    
-'''
-        
-        script_content += '''
-    # Add key points
-    points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-    points_frame = points_box.text_frame
-    points_frame.text = "Key points:"
-    points_frame.paragraphs[0].font.size = Pt(16)
-    points_frame.paragraphs[0].font.bold = True
-    points_frame.paragraphs[0].font.color.rgb = RGBColor(8, 58, 122)  # Signature blue
-    
-'''
-        
-        for i, point in enumerate(chapter['key_points']):
-            # Ensure each point is limited to 20 words and clean for code generation
-            clean_point = limit_words(point, 20).replace('"', '\\"').replace("'", "\\'").replace('\n', ' ')
-            
-            script_content += f'''
-    p = points_frame.add_paragraph()
-    p.text = "• {clean_point}"
-    p.font.size = Pt(12)
-    p.font.color.rgb = RGBColor(51, 51, 51)  # Dark grey
-'''
-    
-    script_content += '''
-    
-    # Save presentation
-    output_path = "architecture_as_code_presentation.pptx"
+    build_presentation_document(prs, presentation_data)
     prs.save(output_path)
     print(f"✅ Presentation saved to {output_path}")
     print(f"📊 Total slides created: {len(prs.slides)}")
-    print("🎨 Styled with Architecture as Code presentation colours")
-    print("📋 Each slide includes chapter title, diagram (when available), and key points")
-    print("📏 All key points limited to 20 words maximum for optimal readability")
-    print("🔗 All diagrams include source references and explanatory captions")
-    print("📖 Diagram explanations provide context and purpose within 20-word limit")
+
 
 if __name__ == "__main__":
-    create_presentation()
+    target_path = Path(sys.argv[1]) if len(sys.argv) > 1 else DATA_FILE.with_name("architecture_as_code_presentation.pptx")
+    main(target_path)
 '''
-    
+
     return script_content
+
 
 def create_presentation_directly(presentation_data, output_path="architecture_as_code_presentation.pptx"):
     """Create PowerPoint presentation directly without generating a script."""
     try:
-        from pptx import Presentation
-        from pptx.util import Inches, Pt
-        from pptx.dml.color import RGBColor
-        from pptx.enum.text import MSO_ANCHOR, MSO_AUTO_SIZE
-    except ImportError:
-        print("❌ Error: python-pptx library not installed")
-        print("   Install with: pip install python-pptx>=0.6.21")
-        return False
-    
-    try:
         prs = Presentation()
-        
-        # Set up presentation theme colours (Architecture as Code palette)
-        # Blue: #083a7a, Accent: #e1ad01, Neutral: #333333
-        
-        # Title slide
-        title_slide_layout = prs.slide_layouts[0]
-        slide = prs.slides.add_slide(title_slide_layout)
-        title = slide.shapes.title
-        subtitle = slide.placeholders[1]
-        
-        title.text = "Architecture as Code"
-        subtitle.text = "A comprehensive guide for modern organisations"
-        
-        # Style the title slide
-        title.text_frame.paragraphs[0].font.size = Pt(44)
-        title.text_frame.paragraphs[0].font.bold = True
-        title_text_colour = RGBColor(8, 58, 122)  # Signature blue
-        title.text_frame.paragraphs[0].font.color.rgb = title_text_colour
-        
-        subtitle.text_frame.paragraphs[0].font.size = Pt(24)
-        subtitle.text_frame.paragraphs[0].font.color.rgb = RGBColor(51, 51, 51)  # Dark grey
-        
-        # Create slides for each chapter
-        for item in presentation_data:
-            chapter = item['chapter']
-            diagram_path = chapter.get('diagram_path', '')
-            diagram_metadata = chapter.get('diagram_metadata', {})
-            
-            # Chapter slide
-            slide_layout = prs.slide_layouts[6]  # Blank layout for custom positioning
-            slide = prs.slides.add_slide(slide_layout)
-            
-            # Add title
-            title_box = slide.shapes.add_textbox(Inches(0.5), Inches(0.3), Inches(9), Inches(0.8))
-            title_frame = title_box.text_frame
-            title_frame.text = chapter['title']
-            title_frame.paragraphs[0].font.size = Pt(32)
-            title_frame.paragraphs[0].font.bold = True
-            title_frame.paragraphs[0].font.color.rgb = title_text_colour  # Signature blue
-            
-            # Add diagram if available
-            if diagram_path and os.path.exists(diagram_path):
-                try:
-                    slide.shapes.add_picture(diagram_path, Inches(0.5), Inches(1.2), Inches(4), Inches(3))
-                    
-                    # Add diagram reference and explanation
-                    diagram_ref_box = slide.shapes.add_textbox(Inches(0.5), Inches(4.4), Inches(4), Inches(0.8))
-                    diagram_ref_frame = diagram_ref_box.text_frame
-                    diagram_ref_frame.text = diagram_metadata.get('source', 'Source: diagram')
-                    diagram_ref_frame.paragraphs[0].font.size = Pt(10)
-                    diagram_ref_frame.paragraphs[0].font.color.rgb = RGBColor(102, 102, 102)  # Grey
-                    
-                    # Add diagram explanation
-                    if diagram_metadata.get('explanation'):
-                        p = diagram_ref_frame.add_paragraph()
-                        p.text = diagram_metadata.get('explanation')
-                        p.font.size = Pt(10)
-                        p.font.color.rgb = RGBColor(51, 51, 51)  # Dark grey
-                        
-                except Exception as e:
-                    print(f"Warning: Could not add diagram {diagram_path}: {e}")
-            
-            # Add key points
-            points_box = slide.shapes.add_textbox(Inches(5), Inches(1.2), Inches(4.5), Inches(6))
-            points_frame = points_box.text_frame
-            points_frame.text = "Key points:"
-            points_frame.paragraphs[0].font.size = Pt(16)
-            points_frame.paragraphs[0].font.bold = True
-            points_frame.paragraphs[0].font.color.rgb = title_text_colour  # Signature blue
-            
-            for point in chapter['key_points']:
-                p = points_frame.add_paragraph()
-                # Ensure each point is limited to 20 words
-                limited_point = limit_words(point, 20)
-                p.text = f"• {limited_point}"
-                p.font.size = Pt(12)
-                p.font.color.rgb = RGBColor(51, 51, 51)  # Dark grey
-        
-        # Save presentation
+        build_presentation_document(prs, presentation_data)
         prs.save(output_path)
-        print(f"✅ Presentation saved to {output_path}")
-        print(f"📊 Total slides created: {len(prs.slides)}")
-        print("🎨 Styled with Architecture as Code presentation colours")
-        print("📋 Each slide includes chapter title, diagram (when available), and key points")
-        print("📏 All key points limited to 20 words maximum for optimal readability")
-        print("🔗 All diagrams include source references and explanatory captions")
-        print("📖 Diagram explanations provide context and purpose within 20-word limit")
-        return True
-        
-    except Exception as e:
-        print(f"❌ Error creating PowerPoint presentation: {e}")
+    except Exception as exc:  # pragma: no cover - runtime safety
+        print(f"❌ Failed to create PowerPoint file: {exc}")
         return False
+
+    print(f"✅ PowerPoint file created: {output_path}")
+    print(f"📊 Total slides created: {len(prs.slides)}")
+    print("🎨 Slides follow the Architecture as Code theme and 16:9 layout.")
+    return True
+
 
 def main():
     """Main function to generate presentation materials."""
@@ -989,7 +1352,10 @@ def main():
     # Write outline (outside docs directory)
     with open(presentations_dir / "presentation_outline.md", 'w', encoding='utf-8') as f:
         f.write(outline_content)
-    
+
+    data_file = presentations_dir / "presentation_data.json"
+    data_file.write_text(json.dumps(presentation_data, ensure_ascii=False, indent=2), encoding='utf-8')
+
     # Create PowerPoint generator script
     pptx_script = create_presentation_script(presentation_data)
     with open(presentations_dir / "generate_pptx.py", 'w', encoding='utf-8') as f:
@@ -1007,6 +1373,7 @@ def main():
     
     print("✅ Presentation materials generated in presentations/ directory:")
     print("   - presentation_outline.md")
+    print("   - presentation_data.json")
     print("   - generate_pptx.py")
     print("   - requirements.txt")
     
