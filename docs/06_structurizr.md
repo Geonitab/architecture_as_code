@@ -830,6 +830,38 @@ def verify_architecture_coverage():
         raise Exception(f"Undocumented services: {missing}")
 ```
 
+### 11. Encode canonical compliance guardrails
+
+Regulatory controls should be modelled once and reused everywhere. Define global
+data policies in the Structurizr workspace so every container or data store can
+reference the same baseline: active datasets retained for 90 days and archived
+records preserved for seven years. This mirrors the compliance blueprint
+described in Chapter&nbsp;6 and makes it explicit that the default applies across
+the whole estate unless a centrally governed exception is recorded. Embedding
+that metadata in the model keeps automated governance tools honest when they
+generate deployment manifests or review pipeline outputs.
+
+```structurizr
+configuration {
+    properties {
+        "data.retention.active" "90 days"
+        "data.retention.archive" "7 years"
+        "data.retention.owner" "Data Governance Council"
+    }
+}
+
+orderDb = container "Order Database" {
+    perspectives {
+        "Compliance" "Uses canonical retention policy (Chapter 8 may extend by classification, never shorten without approval)"
+    }
+}
+```
+
+Document any permitted variation as an explicit override referencing the
+relevant classification decision. Cross-referencing the microservices guidance
+in Chapter&nbsp;8 ensures domain teams know when tighter controls apply whilst
+preserving the common enforcement point for audits and automation.
+
 ## Comparison with Other Tools
 
 ### Structurizr vs. Traditional Diagramming Tools

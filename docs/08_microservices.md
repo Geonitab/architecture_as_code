@@ -91,6 +91,36 @@ Architecture as Code enables platform teams to encode networking standards once 
 
 Avoid accidental monoliths by defining data ownership and access rules programmatically. Each microservice should publish read models or event streams that others consume through documented interfaces. Architecture as Code repositories can generate data lineage diagrams showing where authoritative data resides, who can access it, and how retention rules are enforced. Automated tests verify that only sanctioned services connect to sensitive datasets.
 
+Establish the Structurizr-defined retention baseline as the shared starting
+point: 90 days for active operational data and seven years for archived records.
+Chapter&nbsp;6 codifies those values so that platform tooling, policy engines, and
+service teams speak the same language. Domain teams may extend the retention
+window when classifications such as "financial" or "health" demand stricter
+handling, yet they must never reduce it without a formal exception reviewed by
+the data governance council. Recording that decision within the service
+repository keeps the automation story coherent.
+
+```hcl
+locals {
+  retention_by_classification = {
+    "baseline"   = { active_days = 90, archive_years = 7 }
+    "financial"  = { active_days = 90, archive_years = 7 } # aligns with baseline, audit ready
+    "confidential" = { active_days = 120, archive_years = 7 } # stricter due to classification
+  }
+}
+
+module "order_storage" {
+  source                 = "../modules/storage"
+  classification         = var.data_classification
+  default_retention      = local.retention_by_classification["baseline"]
+  classification_override = lookup(local.retention_by_classification, var.data_classification, null)
+}
+```
+
+Linking the local overrides back to the shared Structurizr configuration keeps
+compliance automation consistent across the landscape and ensures auditors can
+trace every microservice back to the canonical policy.
+
 ### Compliance by default
 
 Regulatory expectations such as GDPR, PCI DSS, or sector-specific rules are easier to satisfy when encoded as reusable policies. Combine static analysis (for example, checking that logging excludes personal data) with dynamic controls (service mesh policies enforcing encryption in transit). Architecture guardrails should produce compliance reports automatically so stakeholders can evidence adherence without manual document assembly.
