@@ -34,8 +34,94 @@ The maturity model includes the key “as code” disciplines discussed in the b
 | **Knowledge & culture as code** | Capturing organisational knowledge and cultural practices in structured repositories to preserve institutional memory and support onboarding. | Ch. 23 Soft as Code Interplay [3] |
 | **Management as code** | Encoding leadership practices, team structures and decision processes into templates and bots (e.g. GitHub issues, pull-request workflows) to support repeatable governance. | Ch. 19 Management as Code [9] |
 
-Each discipline contributes to the overall maturity.  
+Each discipline contributes to the overall maturity.
 Organisations rarely adopt all aspects at once; instead, they progressively expand the scope of codification.
+
+---
+
+## Assessment checklist for radar visualisation
+
+Use the following yes/no questions to evaluate each discipline before plotting the results on a radar diagram. A "yes" response indicates that the preferred maturity-aligned practice is in place.
+
+### Infrastructure as code (IaC)
+
+- [ ] Are all infrastructure definitions stored in version control with peer review required prior to merge?
+- [ ] Is automated validation or linting run on every infrastructure code change before deployment?
+- [ ] Do environment deployments rely solely on declarative templates rather than manual changes?
+- [ ] Are infrastructure modules reusable and parameterised to promote consistency across environments?
+- [ ] Is drift detection automated and reviewed regularly to ensure infrastructure matches the declared state?
+
+### Architecture as code (AaC)
+
+- [ ] Are architecture models generated from source-controlled code or domain-specific language definitions?
+- [ ] Do teams update architecture models as part of the same change when system behaviour evolves?
+- [ ] Is traceability maintained between architecture components and the owning teams or repositories?
+- [ ] Are architecture decisions captured as code-backed records that undergo pull-request review?
+- [ ] Is automated validation applied to architecture models to detect inconsistencies or missing relationships?
+
+### Containerisation & orchestration as code
+
+- [ ] Are container images and orchestration manifests generated from version-controlled definitions reviewed by the owning team?
+- [ ] Do pipelines automatically build, scan and publish container images before release?
+- [ ] Is cluster configuration managed declaratively with automated reconciliation to enforce desired state?
+- [ ] Are rollout strategies (such as blue-green or canary) codified and repeatedly tested in non-production environments?
+- [ ] Is runtime configuration (including secrets and policies) delivered through code rather than manual console changes?
+
+### Policy as code (PaC) & Security as code
+
+- [ ] Are governance and security requirements expressed in machine-readable policies stored in version control?
+- [ ] Do automated checks enforce policy compliance in CI/CD pipelines before promotion to higher environments?
+- [ ] Is policy code peer reviewed alongside the application or infrastructure change it governs?
+- [ ] Are policy violations surfaced through automated alerts with actionable remediation guidance?
+- [ ] Is there a feedback loop that updates policies based on new threats, incidents or regulatory changes?
+
+### Governance as code
+
+- [ ] Are approval workflows, branch protections and role definitions codified and version controlled?
+- [ ] Do governance automations capture decision history and rationale as part of the workflow output?
+- [ ] Is governance code tested in lower environments before it is applied to production repositories?
+- [ ] Are exceptions to governance policies time-bound, tracked and reviewed automatically?
+- [ ] Is governance tooling accessible to non-developers through templates or guided interfaces sourced from the same codebase?
+
+### Compliance as code
+
+- [ ] Are regulatory controls translated into executable checks that run continuously against live environments?
+- [ ] Does the organisation maintain reusable compliance baselines or templates for common regulations?
+- [ ] Is evidence collection automated and stored alongside compliance code for audit readiness?
+- [ ] Are compliance findings integrated with issue tracking to ensure timely remediation and verification?
+- [ ] Do compliance automations generate dashboards or reports that stakeholders review on a scheduled cadence?
+
+### Testing as code
+
+- [ ] Are automated tests defined for every codified artefact, including infrastructure, policies and architecture models?
+- [ ] Do pipelines execute the full testing suite on every merge or release candidate?
+- [ ] Is test coverage monitored and improved through targeted backlog items when gaps emerge?
+- [ ] Are failure scenarios rehearsed with automated chaos or resilience tests to validate recovery procedures?
+- [ ] Is test data managed as code with repeatable seeding and sanitisation routines?
+
+### Documentation as code
+
+- [ ] Is documentation authored in version-controlled markup languages with enforced review workflows?
+- [ ] Do automated builds publish documentation outputs (web, PDF, diagrams) from the same source repository?
+- [ ] Are documentation updates included in the definition of done for relevant product or platform changes?
+- [ ] Is diagram generation automated from code or structured data to eliminate manual drawing efforts?
+- [ ] Are documentation quality checks (such as link validation and style linting) automated in CI/CD pipelines?
+
+### Knowledge & culture as code
+
+- [ ] Is organisational knowledge captured in structured repositories with clear ownership and contribution guidelines?
+- [ ] Do onboarding and learning journeys exist as code-based playbooks or scripts executed during induction?
+- [ ] Are retrospectives and continuous improvement actions tracked in version-controlled artefacts with follow-up automation?
+- [ ] Is cultural guidance (values, rituals, ceremonies) embedded into tooling such as bots, templates or workflow prompts?
+- [ ] Are knowledge repositories regularly reviewed through automated reminders to ensure relevance and accuracy?
+
+### Management as code
+
+- [ ] Are operating models, team topologies and responsibilities documented through code-driven templates?
+- [ ] Do leadership ceremonies (such as portfolio reviews) run from standardised agendas or dashboards generated from code?
+- [ ] Are performance and delivery metrics collected automatically and surfaced through shared management dashboards?
+- [ ] Is resource allocation or staffing managed through codified workflows with automated approvals and audit trails?
+- [ ] Are management playbooks iterated through pull requests with participation from the leadership community?
 
 ---
 
