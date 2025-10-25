@@ -188,6 +188,7 @@ class TestBuildPipelineConfiguration:
         assert 'OUTPUT_PDF="architecture_as_code.pdf"' in build_script
         assert 'OUTPUT_EPUB="architecture_as_code.epub"' in build_script
         assert 'OUTPUT_DOCX="architecture_as_code.docx"' in build_script
+        assert 'NON_LATEX_DEFAULTS_FILE="pandoc-nonlatex.yaml"' in build_script
 
     def test_build_script_invokes_pandoc(self, build_script):
         """Verify that the build script renders PDF and DOCX files with Pandoc."""

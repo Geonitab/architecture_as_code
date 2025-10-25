@@ -140,6 +140,7 @@ RELEASE_EPUB="$RELEASE_DIR/$OUTPUT_EPUB"
 RELEASE_DOCX="$RELEASE_DIR/$OUTPUT_DOCX"
 PANDOC_TEMPLATES_DIR="$HOME/.local/share/pandoc/templates"
 EISVOGEL_TEMPLATE="$PANDOC_TEMPLATES_DIR/eisvogel.latex"
+NON_LATEX_DEFAULTS_FILE="pandoc-nonlatex.yaml"
 
 # Ensure Eisvogel template exists (install automatically if missing)
 if [ ! -f "$EISVOGEL_TEMPLATE" ]; then
@@ -190,8 +191,15 @@ if [ ! -f "pandoc.yaml" ]; then
     exit 1
 fi
 
-# Ensure release directory exists
 mkdir -p "$RELEASE_DIR"
+
+# Verify that the non-LaTeX defaults file is available for EPUB/DOCX builds
+NON_LATEX_DEFAULTS_ARGS=()
+if [ -f "$NON_LATEX_DEFAULTS_FILE" ]; then
+    NON_LATEX_DEFAULTS_ARGS=("--defaults=$NON_LATEX_DEFAULTS_FILE")
+else
+    echo "⚠️  Warning: Non-LaTeX defaults file '$NON_LATEX_DEFAULTS_FILE' not found. Using Pandoc defaults for EPUB/DOCX."
+fi
 
 # Copy book cover to images directory for Pandoc
 echo "Preparing book cover..."
@@ -476,7 +484,7 @@ generate_other_formats() {
     echo "Generating EPUB format..."
 
     # Generate EPUB with improved metadata
-    if pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" \
+    if pandoc "${NON_LATEX_DEFAULTS_ARGS[@]}" "${NON_LATEX_CHAPTER_FILES[@]}" \
         -t epub \
         -o "$OUTPUT_EPUB" \
         --metadata date="$(date +'%Y-%m-%d')" \
@@ -515,7 +523,7 @@ generate_other_formats() {
     fi
 
     echo "Generating DOCX format..."
-    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" \
+    pandoc "${NON_LATEX_DEFAULTS_ARGS[@]}" "${NON_LATEX_CHAPTER_FILES[@]}" \
         -t docx \
         --metadata=include-before= \
         --metadata=header-includes= \
