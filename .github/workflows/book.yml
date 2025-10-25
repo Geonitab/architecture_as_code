@@ -69,7 +69,8 @@ jobs:
           mkdir -p releases/book
           cd docs
           chmod +x ./build_book.sh
-          ./build_book.sh --release || ./build_book.sh
+          # Fall back to the full format build if release mode fails to ensure DOCX remains available.
+          ./build_book.sh --release || ./build_book.sh --all-formats
           cd ..
 
       - name: Upload book artefacts
