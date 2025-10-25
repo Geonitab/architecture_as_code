@@ -60,6 +60,7 @@ if PPTX_AVAILABLE:
     from pptx.dml.color import RGBColor
     from pptx.enum.text import PP_ALIGN
     from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+    from pptx.util import Emu
 else:  # pragma: no cover - optional dependency shim
     Presentation = None
 
@@ -78,6 +79,7 @@ else:  # pragma: no cover - optional dependency shim
     RGBColor = _RGBColourStub
     PP_ALIGN = SimpleNamespace(CENTER="CENTER")
     MSO_AUTO_SHAPE_TYPE = SimpleNamespace(ROUNDED_RECTANGLE="ROUNDED_RECTANGLE")
+    Emu = float
 
 
 def ensure_pptx_available():
@@ -156,6 +158,75 @@ def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inc
     text_frame.margin_left = Pt(6)
     text_frame.margin_right = Pt(6)
     return banner
+
+
+def _scale_picture_within_bounds(picture, left, top, max_width, max_height, horizontal="left"):
+    """Scale and position a picture inside a bounding box while preserving its ratio."""
+    if not PPTX_AVAILABLE:
+        return picture
+
+    if max_width is not None and not isinstance(max_width, int):
+        max_width = Emu(max_width)
+    if max_height is not None and not isinstance(max_height, int):
+        max_height = Emu(max_height)
+
+    original_width = picture.width
+    original_height = picture.height
+
+    if original_width == 0 or original_height == 0:
+        return picture
+
+    scale = 1.0
+
+    if max_width:
+        scale = min(scale, max_width / original_width)
+    if max_height:
+        scale = min(scale, max_height / original_height)
+
+    if scale != 1.0:
+        picture.width = int(original_width * scale)
+        picture.height = int(original_height * scale)
+
+    if max_width:
+        if horizontal == "centre":
+            picture.left = left + max(0, (max_width - picture.width) // 2)
+        elif horizontal == "right":
+            picture.left = left + max(0, max_width - picture.width)
+        else:
+            picture.left = left
+    else:
+        picture.left = left
+
+    if max_height:
+        picture.top = top + max(0, (max_height - picture.height) // 2)
+    else:
+        picture.top = top
+
+    return picture
+
+
+def _add_diagram_placeholder(slide, left, top, width, height):
+    """Insert a placeholder shape when no diagram is available."""
+    placeholder = slide.shapes.add_shape(
+        MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE,
+        left,
+        top,
+        width,
+        height,
+    )
+    placeholder.fill.solid()
+    placeholder.fill.fore_color.rgb = RGBColor(230, 235, 242)
+    placeholder.line.color.rgb = THEME_BLUE
+
+    text_frame = placeholder.text_frame
+    text_frame.clear()
+    text_frame.text = "Flowchart pending"
+    first_paragraph = text_frame.paragraphs[0]
+    first_paragraph.font.size = Pt(16)
+    first_paragraph.font.bold = True
+    first_paragraph.font.color.rgb = THEME_BLUE
+    first_paragraph.alignment = PP_ALIGN.CENTER
+    return placeholder
 
 
 def _add_highlighted_bullet(text_frame, text):
@@ -308,7 +379,7 @@ def build_presentation_document(prs, presentation_data):
             chapter = entry.get('chapter', {})
             slide = prs.slides.add_slide(prs.slide_layouts[6])
 
-            title_box = slide.shapes.add_textbox(Inches(0.6), Inches(0.4), Inches(12.2), Inches(0.9))
+            title_box = slide.shapes.add_textbox(Inches(0.6), Inches(0.35), Inches(12.2), Inches(1.0))
             title_frame = title_box.text_frame
             title_frame.text = chapter.get('title', 'Chapter overview')
             title_paragraph = title_frame.paragraphs[0]
@@ -316,28 +387,74 @@ def build_presentation_document(prs, presentation_data):
             title_paragraph.font.bold = True
             title_paragraph.font.color.rgb = THEME_BLUE
 
-            _add_keyword_banner(slide, chapter.get('focus_keyword'), Inches(0.6), Inches(1.1))
-
-            image_on_left = chapter_index % 2 == 1
-            image_left = Inches(0.6) if image_on_left else Inches(7.0)
-            text_left = Inches(7.0) if image_on_left else Inches(0.6)
-            image_top = Inches(1.6)
-            text_top = Inches(1.6)
-            image_width = Inches(5.8)
-            text_width = Inches(5.6)
+            focus_keyword = chapter.get('focus_keyword')
+            _add_keyword_banner(slide, focus_keyword, Inches(0.6), Inches(1.15))
 
             diagram_path = chapter.get('diagram_path')
             diagram_metadata = chapter.get('diagram_metadata') or {}
+            diagram_type = diagram_metadata.get('type', 'Diagram')
+            diagram_exists = bool(diagram_path and Path(diagram_path).exists())
 
-            if diagram_path and Path(diagram_path).exists():
-                picture = slide.shapes.add_picture(diagram_path, image_left, image_top, width=image_width)
-                caption_top = picture.top + picture.height + Inches(0.2)
-                caption_box = slide.shapes.add_textbox(image_left, caption_top, image_width, Inches(0.9))
+            layout_style = 'hero' if chapter_index % 2 == 1 else 'side'
+
+            if layout_style == 'hero':
+                image_left = Inches(0.6)
+                image_top = Inches(1.6)
+                image_width = Inches(12.2)
+                image_height = Inches(3.6)
+                text_left = Inches(0.6)
+                text_top = image_top + image_height + Inches(0.35)
+                text_width = Inches(12.2)
+                text_height = Inches(2.4)
+                caption_width = image_width
+                caption_left = image_left
+                caption_alignment = "centre"
+            else:
+                image_on_left = chapter_index % 4 == 0
+                image_left = Inches(0.6) if image_on_left else Inches(6.9)
+                image_top = Inches(1.6)
+                image_width = Inches(5.8)
+                image_height = Inches(4.2)
+                text_left = Inches(6.9) if image_on_left else Inches(0.6)
+                text_top = Inches(1.6)
+                text_width = Inches(5.8)
+                text_height = Inches(5.0)
+                caption_width = image_width
+                caption_left = image_left
+                caption_alignment = "centre"
+
+            if diagram_exists:
+                picture = slide.shapes.add_picture(diagram_path, image_left, image_top)
+                _scale_picture_within_bounds(picture, image_left, image_top, image_width, image_height, horizontal=caption_alignment)
+
+                if layout_style == 'hero':
+                    text_top = picture.top + picture.height + Inches(0.4)
+                    text_height = max(Inches(1.4), SLIDE_HEIGHT - text_top - Inches(0.6))
+
+                label_top = picture.top - Inches(0.35)
+                if label_top < Inches(1.25):
+                    label_top = Inches(1.25)
+                label_width = min(picture.width, Inches(4.2))
+                label_left = picture.left + max(0, (picture.width - label_width) // 2)
+                _add_keyword_banner(slide, diagram_type, label_left, label_top, width=label_width, height=Inches(0.4))
+
+                caption_top = picture.top + picture.height + Inches(0.1)
+                caption_box = slide.shapes.add_textbox(caption_left, caption_top, caption_width, Inches(0.8))
                 caption_frame = caption_box.text_frame
                 caption_frame.clear()
-                caption_frame.text = diagram_metadata.get('source', 'Architecture as Code diagram')
-                caption_frame.paragraphs[0].font.size = Pt(12)
-                caption_frame.paragraphs[0].font.color.rgb = THEME_MUTED
+
+                type_paragraph = caption_frame.paragraphs[0]
+                type_paragraph.text = diagram_type
+                type_paragraph.font.size = Pt(12)
+                type_paragraph.font.bold = True
+                type_paragraph.font.color.rgb = THEME_BLUE
+
+                diagram_source = diagram_metadata.get('source')
+                if diagram_source:
+                    source_paragraph = caption_frame.add_paragraph()
+                    source_paragraph.text = diagram_source
+                    source_paragraph.font.size = Pt(11)
+                    source_paragraph.font.color.rgb = THEME_MUTED
 
                 explanation = diagram_metadata.get('explanation')
                 if explanation:
@@ -345,32 +462,29 @@ def build_presentation_document(prs, presentation_data):
                     explanation_paragraph.text = explanation
                     explanation_paragraph.font.size = Pt(12)
                     explanation_paragraph.font.color.rgb = THEME_TEXT
-            else:
-                placeholder = slide.shapes.add_shape(
-                    MSO_AUTO_SHAPE_TYPE.ROUNDED_RECTANGLE,
-                    image_left,
-                    image_top,
-                    image_width,
-                    Inches(3.8),
-                )
-                placeholder.fill.solid()
-                placeholder.fill.fore_color.rgb = RGBColor(230, 235, 242)
-                placeholder.line.color.rgb = THEME_BLUE
-                placeholder.text_frame.text = "Diagram pending"
-                placeholder.text_frame.paragraphs[0].font.size = Pt(16)
-                placeholder.text_frame.paragraphs[0].font.bold = True
-                placeholder.text_frame.paragraphs[0].font.color.rgb = THEME_BLUE
 
-            points_box = slide.shapes.add_textbox(text_left, text_top, text_width, Inches(5.2))
+                if layout_style == 'hero':
+                    caption_bottom = caption_box.top + caption_box.height
+                    text_top = max(text_top, caption_bottom + Inches(0.2))
+                    text_height = max(Inches(1.4), SLIDE_HEIGHT - text_top - Inches(0.6))
+            else:
+                placeholder = _add_diagram_placeholder(slide, image_left, image_top, image_width, image_height)
+                if layout_style == 'hero':
+                    text_top = placeholder.top + placeholder.height + Inches(0.4)
+                    text_height = max(Inches(1.4), SLIDE_HEIGHT - text_top - Inches(0.6))
+
+            points_box = slide.shapes.add_textbox(text_left, text_top, text_width, text_height)
             points_frame = points_box.text_frame
             points_frame.clear()
             heading = points_frame.paragraphs[0]
-            heading.text = "Key highlights"
+            heading_text = f"{diagram_type} highlights" if diagram_exists else "Key highlights"
+            heading.text = heading_text
             heading.font.size = Pt(26)
             heading.font.bold = True
             heading.font.color.rgb = THEME_BLUE
 
-            for point in chapter.get('key_points', [])[:8]:
+            max_points = 4 if layout_style == 'hero' else 8
+            for point in chapter.get('key_points', [])[:max_points]:
                 _add_highlighted_bullet(points_frame, point)
 
             _add_notes(slide, chapter.get('notes', ''))
