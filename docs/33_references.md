@@ -75,7 +75,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 
 **MarketsandMarkets.** "Infrastructure as Code Market Report." MarketsandMarkets, 2023.  
-*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends_development.md)*
+*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends_development/index.md)*
 
 **Martin, R.** "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
