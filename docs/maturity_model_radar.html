@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture as Code Maturity Radar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 2rem;
+      background-color: #f9fafb;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .intro {
+      max-width: 60rem;
+    }
+
+    fieldset {
+      border: 1px solid #d2d6dc;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1.5rem;
+      background-color: #ffffff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+
+    legend {
+      font-weight: 600;
+      padding: 0 0.5rem;
+    }
+
+    .question {
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .question:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .question label {
+      display: block;
+      font-weight: 500;
+    }
+
+    .question .options {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    button {
+      margin-right: 0.75rem;
+    }
+
+    #radarDiagram {
+      margin-top: 2rem;
+      border: 1px solid #d2d6dc;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+    }
+
+    #jsonOutput {
+      width: 100%;
+      height: 16rem;
+      font-family: "Fira Code", "Courier New", Courier, monospace;
+      margin-top: 1rem;
+    }
+
+    .actions {
+      margin-top: 1rem;
+    }
+
+    .result-summary {
+      margin-top: 2rem;
+    }
+
+    .result-summary table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .result-summary th,
+    .result-summary td {
+      border: 1px solid #d2d6dc;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .result-summary th {
+      background-color: #f1f5f9;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        margin: 1rem;
+      }
+
+      fieldset {
+        padding: 1rem;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false });
+
+    const aspects = [
+      {
+        key: "iac",
+        name: "Infrastructure as code (IaC)",
+        questions: [
+          "Are all infrastructure definitions stored in version control with peer review required prior to merge?",
+          "Is automated validation or linting run on every infrastructure code change before deployment?",
+          "Do environment deployments rely solely on declarative templates rather than manual changes?",
+          "Are infrastructure modules reusable and parameterised to promote consistency across environments?",
+          "Is drift detection automated and reviewed regularly to ensure infrastructure matches the declared state?"
+        ]
+      },
+      {
+        key: "aac",
+        name: "Architecture as code (AaC)",
+        questions: [
+          "Are architecture models generated from source-controlled code or domain-specific language definitions?",
+          "Do teams update architecture models as part of the same change when system behaviour evolves?",
+          "Is traceability maintained between architecture components and the owning teams or repositories?",
+          "Are architecture decisions captured as code-backed records that undergo pull-request review?",
+          "Is automated validation applied to architecture models to detect inconsistencies or missing relationships?"
+        ]
+      },
+      {
+        key: "containers",
+        name: "Containerisation & orchestration as code",
+        questions: [
+          "Are container images and orchestration manifests generated from version-controlled definitions reviewed by the owning team?",
+          "Do pipelines automatically build, scan and publish container images before release?",
+          "Is cluster configuration managed declaratively with automated reconciliation to enforce desired state?",
+          "Are rollout strategies (such as blue-green or canary) codified and repeatedly tested in non-production environments?",
+          "Is runtime configuration (including secrets and policies) delivered through code rather than manual console changes?"
+        ]
+      },
+      {
+        key: "policy",
+        name: "Policy as code (PaC) & Security as code",
+        questions: [
+          "Are governance and security requirements expressed in machine-readable policies stored in version control?",
+          "Do automated checks enforce policy compliance in CI/CD pipelines before promotion to higher environments?",
+          "Is policy code peer reviewed alongside the application or infrastructure change it governs?",
+          "Are policy violations surfaced through automated alerts with actionable remediation guidance?",
+          "Is there a feedback loop that updates policies based on new threats, incidents or regulatory changes?"
+        ]
+      },
+      {
+        key: "governance",
+        name: "Governance as code",
+        questions: [
+          "Are approval workflows, branch protections and role definitions codified and version controlled?",
+          "Do governance automations capture decision history and rationale as part of the workflow output?",
+          "Is governance code tested in lower environments before it is applied to production repositories?",
+          "Are exceptions to governance policies time-bound, tracked and reviewed automatically?",
+          "Is governance tooling accessible to non-developers through templates or guided interfaces sourced from the same codebase?"
+        ]
+      },
+      {
+        key: "compliance",
+        name: "Compliance as code",
+        questions: [
+          "Are regulatory controls translated into executable checks that run continuously against live environments?",
+          "Does the organisation maintain reusable compliance baselines or templates for common regulations?",
+          "Is evidence collection automated and stored alongside compliance code for audit readiness?",
+          "Are compliance findings integrated with issue tracking to ensure timely remediation and verification?",
+          "Do compliance automations generate dashboards or reports that stakeholders review on a scheduled cadence?"
+        ]
+      },
+      {
+        key: "testing",
+        name: "Testing as code",
+        questions: [
+          "Are automated tests defined for every codified artefact, including infrastructure, policies and architecture models?",
+          "Do pipelines execute the full testing suite on every merge or release candidate?",
+          "Is test coverage monitored and improved through targeted backlog items when gaps emerge?",
+          "Are failure scenarios rehearsed with automated chaos or resilience tests to validate recovery procedures?",
+          "Is test data managed as code with repeatable seeding and sanitisation routines?"
+        ]
+      },
+      {
+        key: "documentation",
+        name: "Documentation as code",
+        questions: [
+          "Is documentation authored in version-controlled markup languages with enforced review workflows?",
+          "Do automated builds publish documentation outputs (web, PDF, diagrams) from the same source repository?",
+          "Are documentation updates included in the definition of done for relevant product or platform changes?",
+          "Is diagram generation automated from code or structured data to eliminate manual drawing efforts?",
+          "Are documentation quality checks (such as link validation and style linting) automated in CI/CD pipelines?"
+        ]
+      },
+      {
+        key: "knowledge",
+        name: "Knowledge & culture as code",
+        questions: [
+          "Is organisational knowledge captured in structured repositories with clear ownership and contribution guidelines?",
+          "Do onboarding and learning journeys exist as code-based playbooks or scripts executed during induction?",
+          "Are retrospectives and continuous improvement actions tracked in version-controlled artefacts with follow-up automation?",
+          "Is cultural guidance (values, rituals, ceremonies) embedded into tooling such as bots, templates or workflow prompts?",
+          "Are knowledge repositories regularly reviewed through automated reminders to ensure relevance and accuracy?"
+        ]
+      },
+      {
+        key: "management",
+        name: "Management as code",
+        questions: [
+          "Are operating models, team topologies and responsibilities documented through code-driven templates?",
+          "Do leadership ceremonies (such as portfolio reviews) run from standardised agendas or dashboards generated from code?",
+          "Are performance and delivery metrics collected automatically and surfaced through shared management dashboards?",
+          "Is resource allocation or staffing managed through codified workflows with automated approvals and audit trails?",
+          "Are management playbooks iterated through pull requests with participation from the leadership community?"
+        ]
+      }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      buildForm();
+      document
+        .getElementById("assessmentForm")
+        .addEventListener("submit", handleAssessment);
+      document
+        .getElementById("copyJson")
+        .addEventListener("click", copyJsonToClipboard);
+      document
+        .getElementById("downloadJson")
+        .addEventListener("click", downloadJsonFile);
+    });
+
+    function buildForm() {
+      const container = document.getElementById("questionContainer");
+      const fragment = document.createDocumentFragment();
+
+      aspects.forEach((aspect) => {
+        const fieldset = document.createElement("fieldset");
+        const legend = document.createElement("legend");
+        legend.textContent = aspect.name;
+        fieldset.appendChild(legend);
+
+        aspect.questions.forEach((question, index) => {
+          const questionId = `${aspect.key}_${index}`;
+          const wrapper = document.createElement("div");
+          wrapper.className = "question";
+
+          const label = document.createElement("label");
+          label.setAttribute("for", questionId);
+          label.textContent = question;
+          wrapper.appendChild(label);
+
+          const options = document.createElement("div");
+          options.className = "options";
+
+          const yesOption = createOption(questionId, "yes", "Yes");
+          const noOption = createOption(questionId, "no", "No");
+
+          options.appendChild(yesOption);
+          options.appendChild(noOption);
+          wrapper.appendChild(options);
+
+          fieldset.appendChild(wrapper);
+        });
+
+        fragment.appendChild(fieldset);
+      });
+
+      container.appendChild(fragment);
+    }
+
+    function createOption(name, value, labelText) {
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = name;
+      input.value = value;
+      input.required = true;
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(` ${labelText}`));
+      return label;
+    }
+
+    function handleAssessment(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      const detailedResults = aspects.map((aspect) => {
+        const answers = aspect.questions.map((question, index) => {
+          const fieldName = `${aspect.key}_${index}`;
+          const response = formData.get(fieldName);
+          return {
+            question,
+            response,
+            score: response === "yes" ? 1 : 0
+          };
+        });
+
+        const yesCount = answers.reduce((acc, item) => acc + item.score, 0);
+        const totalQuestions = answers.length;
+        const percentage = totalQuestions ? Math.round((yesCount / totalQuestions) * 100) : 0;
+
+        return {
+          aspectKey: aspect.key,
+          aspectName: aspect.name,
+          yesCount,
+          totalQuestions,
+          percentage,
+          answers
+        };
+      });
+
+      const maxQuestions = Math.max(
+        ...detailedResults.map((result) => result.totalQuestions)
+      );
+
+      const radarDefinition = buildRadarDefinition(detailedResults, maxQuestions);
+      renderRadar(radarDefinition);
+      renderSummaryTable(detailedResults);
+
+      const resultPayload = {
+        generatedAt: new Date().toISOString(),
+        scaleMaximum: maxQuestions,
+        totals: {
+          overallYes: detailedResults.reduce((acc, item) => acc + item.yesCount, 0),
+          overallQuestions: detailedResults.reduce(
+            (acc, item) => acc + item.totalQuestions,
+            0
+          ),
+          averagePercentage:
+            detailedResults.reduce((acc, item) => acc + item.percentage, 0) /
+            detailedResults.length
+        },
+        aspects: detailedResults
+      };
+
+      const jsonOutput = document.getElementById("jsonOutput");
+      jsonOutput.value = JSON.stringify(resultPayload, null, 2);
+    }
+
+    function buildRadarDefinition(results, maxQuestions) {
+      const labels = results.map((result) => result.aspectName);
+      const dataPoints = results.map((result) => result.yesCount);
+      const maxScale = Math.max(maxQuestions, 5);
+
+      return `radar\n  title Architecture as Code Maturity Snapshot\n  x-axis ${JSON.stringify(
+        labels
+      )}\n  y-axis 0 --> ${maxScale}\n  dataset\n    label: Current assessment\n    data: ${JSON.stringify(dataPoints)}`;
+    }
+
+    function renderRadar(definition) {
+      const container = document.getElementById("radarDiagram");
+      const targetId = `radar_${Date.now()}`;
+      mermaid.render(targetId, definition).then(({ svg }) => {
+        container.innerHTML = svg;
+      });
+    }
+
+    function renderSummaryTable(results) {
+      const summaryContainer = document.getElementById("resultSummary");
+      const table = document.createElement("table");
+
+      const headerRow = document.createElement("tr");
+      [
+        "Aspect",
+        "Affirmative responses",
+        "Total questions",
+        "Percentage"
+      ].forEach((heading) => {
+        const th = document.createElement("th");
+        th.textContent = heading;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+
+      results.forEach((result) => {
+        const row = document.createElement("tr");
+
+        const aspectCell = document.createElement("td");
+        aspectCell.textContent = result.aspectName;
+        row.appendChild(aspectCell);
+
+        const yesCell = document.createElement("td");
+        yesCell.textContent = result.yesCount;
+        row.appendChild(yesCell);
+
+        const totalCell = document.createElement("td");
+        totalCell.textContent = result.totalQuestions;
+        row.appendChild(totalCell);
+
+        const percentageCell = document.createElement("td");
+        percentageCell.textContent = `${result.percentage}%`;
+        row.appendChild(percentageCell);
+
+        table.appendChild(row);
+      });
+
+      summaryContainer.innerHTML = "";
+      summaryContainer.appendChild(table);
+    }
+
+    async function copyJsonToClipboard() {
+      const jsonOutput = document.getElementById("jsonOutput");
+      if (!jsonOutput.value) {
+        return;
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(jsonOutput.value);
+      } else {
+        jsonOutput.select();
+        document.execCommand("copy");
+        jsonOutput.setSelectionRange(0, 0);
+      }
+    }
+
+    function downloadJsonFile() {
+      const jsonOutput = document.getElementById("jsonOutput").value;
+      if (!jsonOutput) {
+        return;
+      }
+      const blob = new Blob([jsonOutput], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "aac_maturity_assessment.json";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Architecture as Code Maturity Radar</h1>
+    <p class="intro">
+      Answer each question to reflect how far your organisation has progressed with Architecture as Code practices.
+      Submit the assessment to generate a radar diagram and exportable JSON summary capturing every response.
+    </p>
+  </header>
+
+  <main>
+    <form id="assessmentForm">
+      <div id="questionContainer"></div>
+      <div class="actions">
+        <button type="submit" class="primary">Generate radar and summary</button>
+        <button type="reset" class="warning">Clear responses</button>
+      </div>
+    </form>
+
+    <section id="radarDiagram" aria-live="polite">
+      <p>The radar diagram will appear here once you submit the assessment.</p>
+    </section>
+
+    <section class="result-summary">
+      <h2>Summary by discipline</h2>
+      <div id="resultSummary">
+        <p>Submit your answers to view a breakdown of the results.</p>
+      </div>
+    </section>
+
+    <section class="result-summary">
+      <h2>JSON export</h2>
+      <p>The JSON payload includes the radar data and individual answers so you can archive or process the assessment.</p>
+      <textarea id="jsonOutput" readonly aria-label="Assessment results in JSON format"></textarea>
+      <div class="actions">
+        <button type="button" id="copyJson">Copy JSON to clipboard</button>
+        <button type="button" id="downloadJson">Download JSON file</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
