@@ -1,0 +1,193 @@
+{
+  "sources": [
+    {
+      "id": 1,
+      "title": "**ThoughtWorks.** \"Architecture as Code: The Next Evolution.\" Technology Radar, 2024.",
+      "type": "Industry report",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/architecture-as-code",
+      "summary": "ThoughtWorks highlights architecture as code as a maturing discipline and outlines the organisational enablers required for adoption.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "02_fundamental_principles.md",
+        "29_about_the_authors.md"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "**Cloud Native Computing Foundation.** \"State of Cloud Native Development 2024.\" Cloud Native Computing Foundation, 2024.",
+      "type": "Industry report",
+      "year": 2024,
+      "url": "https://www.cncf.io/reports/state-of-cloud-native-development-2024/",
+      "summary": "Annual assessment of cloud native trends, including infrastructure automation and platform engineering capabilities.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "07_containerization.md"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "**Martin, R.** \"Clean Architecture: A Craftsman's Guide to Software Structure.\" Prentice Hall, 2017.",
+      "type": "Book",
+      "year": 2017,
+      "url": "https://www.pearson.com/en-gb/subject-catalog/p/clean-architecture/P200000003792/9780134494272",
+      "summary": "Foundational text describing component cohesion, coupling, and architectural boundaries for resilient systems.",
+      "supports_chapters": [
+        "01_introduction.md",
+        "02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "**Atlassian.** \"Documentation as Code: Treating Docs as a First-Class Citizen.\" Atlassian Developer, 2023.",
+      "type": "Article",
+      "year": 2023,
+      "url": "https://developer.atlassian.com/platform/marketplace/documentation-as-code/",
+      "summary": "Explores how treating documentation as code improves traceability, review quality, and collaboration workflows.",
+      "supports_chapters": [
+        "02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "**GitLab.** \"Documentation as Code: Best Practices and Implementation.\" GitLab Documentation, 2024.",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://docs.gitlab.com/ee/user/project/repository/documentation/",
+      "summary": "Guidance on building documentation pipelines that align with code review and continuous delivery practices.",
+      "supports_chapters": [
+        "02_fundamental_principles.md"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "**HashiCorp.** \"Terraform Security Best Practices.\" HashiCorp Learning Resources, 2023.",
+      "type": "Documentation",
+      "year": 2023,
+      "url": "https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security",
+      "summary": "Recommends patterns for protecting Terraform state, credentials, and execution environments in regulated settings.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "**Pulumi.** \"Testing Infrastructure as Code Programs.\" Pulumi Blog, 2024.",
+      "type": "Article",
+      "year": 2024,
+      "url": "https://www.pulumi.com/blog/testing-infrastructure-as-code/",
+      "summary": "Outlines automated testing strategies for infrastructure as code programmes, spanning unit and integration coverage.",
+      "supports_chapters": [
+        "13_testing_strategies.md",
+        "14_practical_implementation.md"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "**AWS.** \"AWS Cloud Development Kit (CDK) Developer Guide.\" https://docs.aws.amazon.com/cdk/latest/guide/home.html",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://docs.aws.amazon.com/cdk/latest/guide/home.html",
+      "summary": "Comprehensive reference for modelling cloud infrastructure in code using the AWS CDK framework.",
+      "supports_chapters": [
+        "05_automation_devops_cicd.md",
+        "14_practical_implementation.md"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "**Google Cloud.** \"Store Terraform state in Cloud Storage.\" Google Cloud Documentation, 2024.",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://cloud.google.com/docs/terraform/resource-management/store-terraform-state",
+      "summary": "Describes Google Cloud storage backends for Terraform state management with security controls and automation hooks.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "**Microsoft Learn.** \"Store Terraform state in Azure Storage.\" Microsoft Learn Documentation, 2024.",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage",
+      "summary": "Provides guidance for storing Terraform state securely in Azure storage accounts and integrating with pipelines.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "**HashiCorp.** \"Securing Terraform State.\" HashiCorp Developer Documentation, 2024.",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/cloud-docs/state/securing",
+      "summary": "Details encryption, role separation, and policy guardrails for Terraform state stored in Terraform Cloud.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "**HashiCorp.** \"Backend Type: s3.\" HashiCorp Developer Documentation, 2024.",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/language/settings/backends/s3",
+      "summary": "Explains how to configure and harden the S3 backend for Terraform state in multi-team deployments.",
+      "supports_chapters": [
+        "09a_security_fundamentals.md",
+        "09b_security_patterns.md"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "**Open Policy Agent.** \"Policy as Code Overview.\" https://www.openpolicyagent.org/docs/latest/",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://www.openpolicyagent.org/docs/latest/",
+      "summary": "Summarises how to codify governance controls using OPA and integrate Rego policies into delivery pipelines.",
+      "supports_chapters": [
+        "11_governance_as_code.md",
+        "23_soft_as_code_interplay.md"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "**Thoughtworks Technology Radar.** \"Governance as Code.\" https://www.thoughtworks.com/radar/techniques/governance-as-code",
+      "type": "Article",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/governance-as-code",
+      "summary": "Discusses how governance as code accelerates compliance whilst maintaining developer autonomy.",
+      "supports_chapters": [
+        "11_governance_as_code.md"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "**Structurizr.** \"Structurizr DSL Language Reference.\" Structurizr Documentation, 2024.",
+      "type": "Documentation",
+      "year": 2024,
+      "url": "https://github.com/structurizr/dsl",
+      "summary": "Reference for modelling systems using the Structurizr DSL and automating diagram generation.",
+      "supports_chapters": [
+        "06_structurizr.md",
+        "22_documentation_vs_architecture.md"
+      ]
+    },
+    {
+      "id": 16,
+      "title": "**Architecture Decision Records Community.** \"ADR Guidelines and Templates.\" https://adr.github.io",
+      "type": "Guidelines",
+      "year": 2024,
+      "url": "https://adr.github.io",
+      "summary": "Provides standardised templates and best practice advice for capturing architecture decision records.",
+      "supports_chapters": [
+        "04_adr.md"
+      ]
+    }
+  ]
+}
