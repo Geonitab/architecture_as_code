@@ -14,11 +14,14 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 [Appendix B: Technical Architecture for Book Production](31_technical_architecture.md) documents the infrastructure and automation used to produce this book itself. This meta-example demonstrates Architecture as Code principles applied to documentation delivery, showing how the same practices scale from infrastructure to content pipelines.
 
+The [Architecture as Code Maturity Model](architecture_as_code_model.md) consolidates insights from across the manuscript into a staircase-style progression model. It summarises how infrastructure, governance, policy, testing, and cultural practices evolve together when organisations embrace Architecture as Code.
+
 **What you will find in this section:**
 
 - Comprehensive glossary of Architecture as Code terminology
 - Author background and expertise context
 - Complete code examples and technical implementations
 - Book production infrastructure as a working Architecture as Code example
+- A maturity model that ties the “as code” disciplines together with practical adoption guidance
 
 These references serve as quick-access resources to support the concepts explored in Parts I through VII, ensuring that theoretical understanding translates into practical implementation.

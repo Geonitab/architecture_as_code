@@ -1,6 +1,6 @@
 # Architecture as Code - Book Structure
 
-This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus appendices. Thirty-one chapters build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
+This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus extended appendices. More than thirty-five chapters and reference appendices build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
 
 ## Table of Contents
 
@@ -25,8 +25,8 @@ Cross-disciplinary collaboration and codified best practices
 ### Part 7: Future & Wrap-up (Chapters 25-27)
 Future outlook, risk avoidance, and closing guidance
 
-### Appendices (Chapters 28-31)
-Reference material, author information, and technical enablers
+### Appendices and Reference Material (Chapters 28-33 plus maturity model)
+Reference material, author information, technical enablers, and the Architecture as Code maturity model
 
 ---
 
@@ -116,6 +116,9 @@ Reference material, author information, and technical enablers
 | 29 | `29_about_the_authors.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
 | 30 | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
 | Appendix B | `31_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
+| Appendix C | `32_finos_project_blueprint.md` | Appendix C: FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
+| Appendix D | `architecture_as_code_model.md` | Architecture as Code Maturity Model | Progressive maturity staircase linking “as code” disciplines |
+| References | `33_references.md` | References and Sources | Citations supporting the manuscript |
 
 ---
 
