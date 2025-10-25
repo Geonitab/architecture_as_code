@@ -6,9 +6,9 @@
 
 Architecture as Code continues to evolve as new technologies emerge and organisational practices mature. This concluding part explores emerging trends, long-term developments, and synthesises the journey through this book into actionable guidance for the path ahead.
 
-The landscape of Architecture as Code is not static. [Future trends](25_future_trends_development.md) encompass everything from AI-driven architecture generation to sustainability-aware workload placement, quantum-resistant security patterns, and regulatory frameworks that explicitly recognise code-based governance. Understanding these trajectories helps organisations make decisions today that remain valid tomorrow.
+The landscape of Architecture as Code is not static. [Future trends](25_future_trends_development/index.md) encompass everything from AI-driven architecture generation to sustainability-aware workload placement, quantum-resistant security patterns, and regulatory frameworks that explicitly recognise code-based governance. Understanding these trajectories helps organisations make decisions today that remain valid tomorrow.
 
-Yet foresight must be balanced with vigilance. [Anti-patterns in Architecture as Code programmes](26_aac_anti_patterns.md) catalogue the cultural, governance, and delivery pitfalls that erode trust in codified architecture estates. By pairing early-warning indicators with remediation playbooks, teams can navigate the future without repeating yesterday’s mistakes.
+Yet foresight must be balanced with vigilance. [Anti-patterns in Architecture as Code programmes](26_aac_anti_patterns/index.md) catalogue the cultural, governance, and delivery pitfalls that erode trust in codified architecture estates. By pairing early-warning indicators with remediation playbooks, teams can navigate the future without repeating yesterday’s mistakes.
 
 Beyond specific technologies, broader shifts in organisational thinking continue to reshape how Architecture as Code manifests in practice. The convergence of platform engineering, developer experience, and business value delivery creates new opportunities for organisations that position themselves at this intersection.
 

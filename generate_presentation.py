@@ -537,12 +537,7 @@ def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
     prezi_dir = output_path.parent
     prezi_dir.mkdir(parents=True, exist_ok=True)
 
-    md_files = sorted(
-        [
-            path for path in docs_dir.glob("*.md")
-            if path.name.lower() not in {"index.md"}
-        ]
-    )
+    md_files = _iter_primary_markdown_files(docs_dir)
 
     slides = []
     x = y = 0
@@ -553,12 +548,20 @@ def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
 
     for md_file in md_files:
         text = md_file.read_text(encoding="utf-8")
+        if 'http-equiv="refresh"' in text.lower():
+            continue
+
+        relative_path = md_file.relative_to(docs_dir)
+        if md_file.name.lower() == "index.md":
+            slide_id = relative_path.parent.name
+        else:
+            slide_id = md_file.stem
+
         h1_match = h1_re.search(text)
         if not h1_match:
             continue
 
         title = h1_match.group(1).strip()
-        slide_id = md_file.stem
 
         slides.append(
             {
@@ -729,13 +732,30 @@ def get_missing_diagram_types():
         'analysis': diagram_analysis
     }
 
+def _iter_primary_markdown_files(docs_dir: Path):
+    """Return top-level markdown files and one-level nested index.md pages."""
+    files = list(docs_dir.glob("*.md"))
+    files.extend(docs_dir.glob("*/index.md"))
+
+    seen = set()
+    ordered = []
+    for path in files:
+        key = str(path.relative_to(docs_dir))
+        if key in seen:
+            continue
+        seen.add(key)
+        ordered.append(path)
+
+    ordered.sort(key=lambda p: str(p.relative_to(docs_dir)))
+    return ordered
+
 def validate_chapter_diagrams():
     """Validate that each chapter has at least one diagram."""
     docs_dir = Path("docs")
     if not docs_dir.exists():
         return {}
-    
-    chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
+
+    chapter_files = _iter_primary_markdown_files(docs_dir)
     canonical_filenames = _load_canonical_chapter_filenames()
     validation_results = {
         'chapters_with_diagrams': [],
@@ -745,7 +765,8 @@ def validate_chapter_diagrams():
     }
     
     for chapter_file in chapter_files:
-        chapter_name = Path(chapter_file).name
+        chapter_rel = chapter_file.relative_to(docs_dir)
+        chapter_name = str(chapter_rel)
 
         # Skip files that are not part of the canonical manuscript
         if canonical_filenames:
@@ -1142,16 +1163,16 @@ def generate_presentation_outline():
 
     if not book_config:
         # Fallback to alphabetical ordering when requirements are missing
-        chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
+        chapter_files = _iter_primary_markdown_files(docs_dir)
         for chapter_file in chapter_files:
-            name = Path(chapter_file).name
-            if name in ['README.md', 'architecture_as_code.md']:
+            relative_name = str(chapter_file.relative_to(docs_dir))
+            if relative_name in ['README.md', 'architecture_as_code.md']:
                 continue
             chapter_data = read_chapter_content(chapter_file)
             if chapter_data:
                 presentation_data.append({
                     'type': 'chapter',
-                    'file': name,
+                    'file': relative_name,
                     'chapter': chapter_data,
                 })
         return presentation_data

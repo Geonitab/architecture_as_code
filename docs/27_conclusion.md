@@ -3,7 +3,7 @@
 Architecture as Code has transformed how organisations design, deliver, and evolve their technology estates. By managing
 architectural artefacts as executable code we realise the same precision, repeatability, and governance controls that software
 engineering teams have relied on for decades. This book has traced that transformation from the
-[fundamental concepts](01_introduction.md) to [forward-looking developments](25_future_trends_development.md), showing how the
+[fundamental concepts](01_introduction.md) to [forward-looking developments](25_future_trends_development/index.md), showing how the
 practice underpins modern digital capabilities.
 
 ## 27.1 Consolidating the Architecture as Code mindset
@@ -28,7 +28,7 @@ matched by organisational investment in skills, culture, and operating models so
 
 The journey through this book charts a deliberate increase in sophistication: from declarative blueprints and idempotent
 configuration in [chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerization.md), to
-[future-facing automation patterns](25_future_trends_development.md). Security is treated as an architectural concern from the
+[future-facing automation patterns](25_future_trends_development/index.md). Security is treated as an architectural concern from the
 outset, evolving from [policy and security](10_policy_and_security.md) through [governance as code](11_governance_as_code.md)
 and [compliance operations](12_compliance.md). Each capability builds on the previous layer to create a resilient Architecture
 as Code platform.
@@ -55,7 +55,7 @@ and Cloud encourage interoperable platforms, harmonised reference architectures,
 codified as re-usable modules. Access to EU-funded sandboxes and regulatory support, including the AI Act's conformity assessment
 regime, helps organisations evidence compliance earlier in delivery cycles and accelerate acceptance by supervisory authorities.
 
-Sustainability remains a parallel obligation. [Future trends](25_future_trends_development.md) emphasise carbon-aware workloads,
+Sustainability remains a parallel obligation. [Future trends](25_future_trends_development/index.md) emphasise carbon-aware workloads,
 energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and the
 Corporate Sustainability Reporting Directive. The wider transformation agenda explored in [chapter 21 on digitalisation](21_digitalization.md)
 shows how coordinated change across Member States, public institutions, and private enterprises benefits from codified architectural
@@ -78,7 +78,7 @@ communication, coaching, and community building.
    into every delivery workflow.
 4. **Scaling and automation**: Expand towards [container orchestration](07_containerization.md) and platform capabilities described in
    [management as code](19_management_as_code.md).
-5. **Future readiness**: Track [emerging trends](25_future_trends_development.md) and sustainability expectations so that the
+5. **Future readiness**: Track [emerging trends](25_future_trends_development/index.md) and sustainability expectations so that the
    Architecture as Code platform remains adaptable.
 
 Centres of excellence or platform teams can accelerate adoption by curating reusable modules, publishing reference
@@ -89,7 +89,7 @@ innovation, enabling teams to deliver change with confidence.
 
 Architecture as Code is more than a technical milestone; it represents a fundamental shift in how we design and manage digital
 platforms. The journey from [introduction](01_introduction.md) through [technical implementation](14_practical_implementation.md),
-[security strategy](10_policy_and_security.md), and [future-oriented innovation](25_future_trends_development.md) shows that
+[security strategy](10_policy_and_security.md), and [future-oriented innovation](25_future_trends_development/index.md) shows that
 Architecture as Code thrives when engineering discipline and organisational stewardship progress together.
 
 ### 27.5.1 The way forward

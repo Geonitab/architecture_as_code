@@ -15,7 +15,7 @@ nav:
   - Part 2 – Architecture Platform:
       - Automation, DevOps and CI/CD for Infrastructure as Code: 05_automation_devops_cicd.md
       - Containerization and Orchestration as Code: 07_containerization.md
-      - Microservices Architecture as Code: 08_microservices.md
+      - Microservices Architecture as Code: 08_microservices/index.md
   - Part 3 – Security & Governance:
       - Security Fundamentals for Architecture as Code: 09a_security_fundamentals.md
       - Advanced Security Patterns and Implementation: 09b_security_patterns.md
@@ -37,8 +37,8 @@ nav:
       - Interplay Between Soft-As-Code Disciplines: 23_soft_as_code_interplay.md
       - Best Practices and Lessons Learned: 24_best_practices.md
   - Part 7 – Future & Wrap-up:
-      - Future Trends in Architecture as Code: 25_future_trends.md
-      - Future Development: 26_future_development.md
+      - Future Trends in Architecture as Code: 25_future_trends_development/index.md
+      - Future Development: 26_aac_anti_patterns/index.md
       - Conclusion: 27_conclusion.md
       - Team Structure and Competency Development for IaC: 18_team_structure.md
   - Appendices:
