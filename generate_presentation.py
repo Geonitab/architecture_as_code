@@ -41,6 +41,8 @@ import unicodedata
 from datetime import datetime
 from pathlib import Path
 import json
+import importlib.util
+from types import SimpleNamespace
 
 try:
     import yaml
@@ -49,11 +51,43 @@ except ImportError as exc:  # pragma: no cover - dependency check
     print("   Install with: pip install PyYAML>=6.0")
     sys.exit(1)
 
-from pptx import Presentation
-from pptx.util import Inches, Pt
-from pptx.dml.color import RGBColor
-from pptx.enum.text import PP_ALIGN
-from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+_PPTX_SPEC = importlib.util.find_spec("pptx")
+PPTX_AVAILABLE = _PPTX_SPEC is not None
+
+if PPTX_AVAILABLE:
+    from pptx import Presentation
+    from pptx.util import Inches, Pt
+    from pptx.dml.color import RGBColor
+    from pptx.enum.text import PP_ALIGN
+    from pptx.enum.shapes import MSO_AUTO_SHAPE_TYPE
+else:  # pragma: no cover - optional dependency shim
+    Presentation = None
+
+    class _RGBColourStub:  # pylint: disable=too-few-public-methods
+        """Minimal stand-in for pptx.dml.color.RGBColor."""
+
+        def __init__(self, red, green, blue):
+            self.rgb = (red, green, blue)
+
+    def Inches(value):  # noqa: N802 - keep helper signature for compatibility
+        return float(value)
+
+    def Pt(value):  # noqa: N802 - keep helper signature for compatibility
+        return float(value)
+
+    RGBColor = _RGBColourStub
+    PP_ALIGN = SimpleNamespace(CENTER="CENTER")
+    MSO_AUTO_SHAPE_TYPE = SimpleNamespace(ROUNDED_RECTANGLE="ROUNDED_RECTANGLE")
+
+
+def ensure_pptx_available():
+    """Raise a helpful error when python-pptx is required but missing."""
+
+    if not PPTX_AVAILABLE:
+        raise RuntimeError(
+            "python-pptx is required for PowerPoint generation. "
+            "Install it with 'pip install python-pptx>=0.6.21'."
+        )
 
 THEME_BLUE = RGBColor(8, 58, 122)
 THEME_ACCENT = RGBColor(225, 173, 1)
@@ -65,6 +99,7 @@ SLIDE_HEIGHT = Inches(7.5)
 
 def configure_presentation_document(prs):
     """Apply shared configuration and metadata to the presentation document."""
+    ensure_pptx_available()
     prs.slide_width = SLIDE_WIDTH
     prs.slide_height = SLIDE_HEIGHT
 
@@ -160,6 +195,7 @@ def _add_highlighted_bullet(text_frame, text):
 
 def build_presentation_document(prs, presentation_data):
     """Construct the Architecture as Code presentation from structured data."""
+    ensure_pptx_available()
     configure_presentation_document(prs)
 
     today_label = datetime.now().strftime("%d %B %Y")
@@ -1250,6 +1286,11 @@ if __name__ == "__main__":
 
 def create_presentation_directly(presentation_data, output_path="architecture_as_code_presentation.pptx"):
     """Create PowerPoint presentation directly without generating a script."""
+    if not PPTX_AVAILABLE:
+        print("❌ python-pptx is not installed. Install it with 'pip install python-pptx>=0.6.21'.")
+        print("   The script and supporting materials are still generated.")
+        return False
+
     try:
         prs = Presentation()
         build_presentation_document(prs, presentation_data)
