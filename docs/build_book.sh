@@ -123,6 +123,11 @@ cleanup_temp_artifacts() {
     fi
 }
 
+# Wrapper to ensure non-LaTeX formats always honour the shared defaults configuration
+run_non_latex_pandoc() {
+    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" "$@"
+}
+
 # Ensure Pandoc is available before continuing
 if ! command -v pandoc >/dev/null 2>&1; then
     if ! ensure_pandoc; then
@@ -429,8 +434,14 @@ else
 
     # Try with default LaTeX template
     # Reuse the shared pandoc defaults so LaTeX helpers like \setbookpart stay defined
+    if [ ${#PANDOC_PRINT_CSS_ARGS[@]} -gt 0 ]; then
+        FALLBACK_ARGS=("${PANDOC_PRINT_CSS_ARGS[@]}")
+    else
+        FALLBACK_ARGS=()
+    fi
+
     if pandoc --defaults=pandoc.yaml \
-        "${PANDOC_PRINT_CSS_ARGS[@]}" \
+        "${FALLBACK_ARGS[@]}" \
         --template=default \
         "${CHAPTER_FILES[@]}" \
         -o "$OUTPUT_PDF" \
@@ -500,7 +511,7 @@ generate_other_formats() {
     echo "Generating EPUB format..."
 
     # Generate EPUB with improved metadata
-    if pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
+    if run_non_latex_pandoc "${NON_LATEX_DEFAULTS_ARGS[@]}" \
         -t epub \
         -o "$OUTPUT_EPUB" \
         --metadata date="$(date +'%Y-%m-%d')" \
@@ -539,7 +550,7 @@ generate_other_formats() {
     fi
 
     echo "Generating DOCX format..."
-    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
+    run_non_latex_pandoc "${NON_LATEX_DEFAULTS_ARGS[@]}" \
         -t docx \
         --metadata=include-before= \
         --metadata=header-includes= \
