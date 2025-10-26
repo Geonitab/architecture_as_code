@@ -938,9 +938,10 @@
       const escapedLabels = labels.map((label) =>
         `"${label.replace(/"/g, '\\"')}"`
       );
+      const axisValues = escapedLabels.join(", ");
       const dataSeries = dataPoints.join(", ");
 
-      return `radar\n  title Architecture as Code Maturity Snapshot\n  x-axis ${escapedLabels.join(", ")}\n  y-axis 0 --> ${maxScale}\n  dataset\n    label: Current assessment\n    data: ${dataSeries}`;
+      return `radar\n  title Architecture as Code Maturity Snapshot\n  x-axis [${axisValues}]\n  y-axis [0, ${maxScale}]\n  dataset\n    title: Current assessment\n    data: [${dataSeries}]`;
     }
 
     async function renderRadar(definition) {
