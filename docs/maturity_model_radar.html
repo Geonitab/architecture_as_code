@@ -173,6 +173,12 @@
       margin-bottom: 0.25rem;
     }
 
+    .improvement-suggestions .risk {
+      margin: 0.25rem 0;
+      color: #991b1b;
+      font-weight: 500;
+    }
+
     .improvement-suggestions .reference-link {
       display: inline-block;
       margin-top: 0.25rem;
@@ -315,6 +321,8 @@
         {
           recommendation:
             "Adopt Git-based workflows for infrastructure modules and enforce peer review gates to keep definitions auditable and collaborative.",
+          risk:
+            "Risk: Infrastructure updates remain unreviewed, increasing configuration errors and leaving the organisation without a dependable audit trail.",
           reference: {
             title:
               "Chapter 03 – Version Control · Git-based workflow for infrastructure",
@@ -324,6 +332,8 @@
         {
           recommendation:
             "Embed linting and validation stages in CI pipelines so every infrastructure change benefits from automated quality gates.",
+          risk:
+            "Risk: Defective infrastructure code will progress undetected, introducing outages and compliance gaps once deployed.",
           reference: {
             title:
               "Chapter 05 – Automation, DevOps, and CI/CD · Fail-fast feedback and progressive validation",
@@ -333,6 +343,8 @@
         {
           recommendation:
             "Transition environment provisioning to declarative templates and treat them as the single source of truth for deployments.",
+          risk:
+            "Risk: Manual environment changes will diverge across estates, making recovery slow and increasing the likelihood of service disruption.",
           reference: {
             title:
               "Chapter 02 – Fundamental Principles · The declarative approach in Architecture as Code",
@@ -342,6 +354,8 @@
         {
           recommendation:
             "Structure infrastructure libraries as reusable modules with versioned interfaces to drive consistency across teams.",
+          risk:
+            "Risk: Teams will duplicate fragile scripts, leading to inconsistent security controls and slower delivery.",
           reference: {
             title:
               "Chapter 24 – Modern Best Practices · Module design guidelines",
@@ -351,6 +365,8 @@
         {
           recommendation:
             "Automate drift detection and schedule reviews that reconcile live environments with the declared state.",
+          risk:
+            "Risk: Runtime infrastructure will silently drift from design intent, increasing incident frequency and audit findings.",
           reference: {
             title:
               "Chapter 02 – Fundamental Principles · Understanding architectural drift",
@@ -362,6 +378,8 @@
         {
           recommendation:
             "Generate architecture models from code-first tooling so diagrams and definitions share a common source of truth.",
+          risk:
+            "Risk: Architecture views will drift from the live system, confusing stakeholders and undermining governance decisions.",
           reference: {
             title:
               "Chapter 06 – Structurizr · Structurizr: Architecture Modeling as Code",
@@ -371,6 +389,8 @@
         {
           recommendation:
             "Update architecture models alongside behavioural changes by running Structurizr automation in every pull request.",
+          risk:
+            "Risk: Teams will rely on stale diagrams, heightening integration failures and generating avoidable rework.",
           reference: {
             title:
               "Chapter 06 – Structurizr · Integration with CI/CD pipelines",
@@ -380,6 +400,8 @@
         {
           recommendation:
             "Link components to accountable teams through governance workflows so traceability stays transparent.",
+          risk:
+            "Risk: Ownership of critical architecture elements becomes opaque, slowing incident response and decision-making.",
           reference: {
             title:
               "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
@@ -389,6 +411,8 @@
         {
           recommendation:
             "Capture architectural reasoning in reviewed Architecture Decision Records that live with the codebase.",
+          risk:
+            "Risk: Architectural intent will be lost, causing the organisation to repeat poor choices and dilute alignment.",
           reference: {
             title:
               "Chapter 04 – Architecture Decision Records · What are Architecture Decision Records?",
@@ -398,6 +422,8 @@
         {
           recommendation:
             "Add automated validation of architecture models to surface missing relationships before release.",
+          risk:
+            "Risk: Structural gaps and conflicting dependencies remain hidden until production, threatening reliability and compliance.",
           reference: {
             title:
               "Chapter 06 – Structurizr · Integration with CI/CD pipelines",
@@ -409,6 +435,8 @@
         {
           recommendation:
             "Store Dockerfiles and orchestration manifests in Git so container behaviour remains reproducible.",
+          risk:
+            "Risk: Container definitions will fragment across devices, enlarging supply-chain exposure and making recovery unreliable.",
           reference: {
             title:
               "Chapter 07 – Containerisation and Orchestration · The role of container technology within Architecture as Code",
@@ -418,6 +446,8 @@
         {
           recommendation:
             "Automate image builds, scanning, and publishing through CI so every release meets the platform's guardrails.",
+          risk:
+            "Risk: Vulnerable or unverified images will ship to production, increasing the chance of compromise and instability.",
           reference: {
             title:
               "Chapter 07 – Containerisation and Orchestration · The role of container technology within Architecture as Code",
@@ -427,6 +457,8 @@
         {
           recommendation:
             "Manage cluster configuration declaratively and let controllers reconcile the desired state continuously.",
+          risk:
+            "Risk: Clusters will drift into inconsistent configurations, causing unpredictable runtime behaviour and outages.",
           reference: {
             title:
               "Chapter 07 – Containerisation and Orchestration · Kubernetes as an orchestration platform",
@@ -436,6 +468,8 @@
         {
           recommendation:
             "Codify blue-green and canary roll-outs inside delivery pipelines to practise safe progressive delivery.",
+          risk:
+            "Risk: Releases will rely on manual judgement, leaving no rehearsed rollback paths and increasing incident severity when changes fail.",
           reference: {
             title:
               "Chapter 05 – Automation, DevOps, and CI/CD · Progressive deployment strategies",
@@ -445,6 +479,8 @@
         {
           recommendation:
             "Deliver runtime configuration, secrets, and policies from code-defined sources instead of manual consoles.",
+          risk:
+            "Risk: Hand-tuned runtime settings will introduce human error and expose sensitive data, undermining platform trust.",
           reference: {
             title:
               "Chapter 07 – Containerisation and Orchestration · Kubernetes as an orchestration platform",
@@ -456,6 +492,8 @@
         {
           recommendation:
             "Express governance and security requirements as machine-readable policies kept under version control.",
+          risk:
+            "Risk: Policies will fragment into manual documents, creating inconsistent enforcement and weak audit evidence.",
           reference: {
             title:
               "Chapter 10 – Policy and Security as Code · Introduction and context",
@@ -465,6 +503,8 @@
         {
           recommendation:
             "Enforce automated compliance checks in CI/CD so policy breaches are caught before promotion.",
+          risk:
+            "Risk: Non-compliant changes will progress unchecked, exposing the organisation to regulatory penalties.",
           reference: {
             title:
               "Chapter 10 – Policy and Security as Code · Policy-as-Code operating model",
@@ -474,6 +514,8 @@
         {
           recommendation:
             "Peer review policy code alongside the infrastructure or application change it governs to keep accountability shared.",
+          risk:
+            "Risk: Weak or conflicting controls will be merged, leaving critical gaps in the security posture.",
           reference: {
             title:
               "Chapter 10 – Policy and Security as Code · Policy-as-Code operating model",
@@ -483,6 +525,8 @@
         {
           recommendation:
             "Stream policy violations into actionable alerts with contextual remediation guidance from the automation stack.",
+          risk:
+            "Risk: Breaches of policy will linger unnoticed, allowing issues to escalate into reportable incidents.",
           reference: {
             title:
               "Chapter 10 – Policy and Security as Code · Integrating policy automation into European enterprises",
@@ -492,6 +536,8 @@
         {
           recommendation:
             "Continuously refine policy libraries using threat intelligence and incident feedback following the implementation roadmap.",
+          risk:
+            "Risk: Controls will become outdated, leaving emerging threats unmanaged and compliance obligations unmet.",
           reference: {
             title:
               "Chapter 10 – Policy and Security as Code · Implementation roadmap for European delivery teams",
@@ -503,6 +549,8 @@
         {
           recommendation:
             "Codify approval workflows, branch protections, and roles via pull-request driven governance repositories.",
+          risk:
+            "Risk: Informal approvals will proliferate, eroding guardrails and allowing ungoverned changes into production.",
           reference: {
             title:
               "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
@@ -512,6 +560,8 @@
         {
           recommendation:
             "Capture decision history and rationale automatically within governance pipelines to maintain a complete audit trail.",
+          risk:
+            "Risk: Governance decisions will lack provenance, complicating audits and forcing teams to revisit past debates.",
           reference: {
             title:
               "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
@@ -521,6 +571,8 @@
         {
           recommendation:
             "Test governance code in lower environments with automated validations before promoting changes to production.",
+          risk:
+            "Risk: Governance updates will fail in production, removing protections or blocking delivery unexpectedly.",
           reference: {
             title:
               "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
@@ -530,6 +582,8 @@
         {
           recommendation:
             "Track policy exceptions as time-boxed code artefacts so drift is visible and remediation is enforced.",
+          risk:
+            "Risk: Temporary exceptions will become permanent blind spots, weakening compliance and operational discipline.",
           reference: {
             title:
               "Chapter 26 – Anti-Patterns · Policy drift through manual exceptions",
@@ -539,6 +593,8 @@
         {
           recommendation:
             "Provide accessible tooling, templates, and chat integrations so non-developers can contribute safely.",
+          risk:
+            "Risk: Stakeholders will circumvent governance altogether, recreating manual silos and fragmenting controls.",
           reference: {
             title:
               "Chapter 11 – Governance as Code · Tooling to enable non-developers",
@@ -550,6 +606,8 @@
         {
           recommendation:
             "Translate regulatory controls into executable checks that run continuously across live environments.",
+          risk:
+            "Risk: Regulatory breaches will remain hidden until audits, driving emergency remediation and potential fines.",
           reference: {
             title:
               "Chapter 12 – Compliance and Regulatory Adherence",
@@ -559,6 +617,8 @@
         {
           recommendation:
             "Maintain reusable compliance baselines and templates to accelerate regulatory onboarding.",
+          risk:
+            "Risk: Teams will re-interpret controls independently, creating inconsistent coverage and delaying certifications.",
           reference: {
             title:
               "Chapter 12 – Compliance and Regulatory Adherence",
@@ -568,6 +628,8 @@
         {
           recommendation:
             "Automate evidence collection and store artefacts alongside compliance code for audit readiness.",
+          risk:
+            "Risk: Audit preparation will devolve into manual scrambles, increasing the likelihood of missed proof and fines.",
           reference: {
             title:
               "Chapter 12 – Compliance and Regulatory Adherence",
@@ -577,6 +639,8 @@
         {
           recommendation:
             "Feed compliance findings into dashboards and remediation workflows so follow-up happens in the open.",
+          risk:
+            "Risk: Remediation tasks will stall in private spreadsheets, allowing repeat findings and reputational damage.",
           reference: {
             title:
               "Chapter 12 – Compliance and Regulatory Adherence · Policy-driven infrastructure and governance",
@@ -586,6 +650,8 @@
         {
           recommendation:
             "Schedule stakeholder reviews of compliance dashboards generated from automation to sustain cadence.",
+          risk:
+            "Risk: Stakeholders will lose sight of compliance drift, allowing obligations to be missed until external audits intervene.",
           reference: {
             title:
               "Chapter 12 – Compliance and Regulatory Adherence · Policy-driven infrastructure and governance",
@@ -597,6 +663,8 @@
         {
           recommendation:
             "Define automated tests for every codified artefact so infrastructure, policies, and models gain the same assurance as software.",
+          risk:
+            "Risk: Infrastructure and policy regressions will reach production unnoticed, eroding trust in automation.",
           reference: {
             title:
               "Chapter 13 – Testing Strategies · Testing strategies for Infrastructure as Code",
@@ -606,6 +674,8 @@
         {
           recommendation:
             "Run the full test suite on each merge or release candidate to keep quality gates reliable.",
+          risk:
+            "Risk: Regressions will bypass pipelines and surface only in production, increasing remediation cost.",
           reference: {
             title:
               "Chapter 13 – Testing Strategies · Automation and watch mode",
@@ -615,6 +685,8 @@
         {
           recommendation:
             "Monitor coverage with shared fixtures and metrics so gaps trigger backlog improvements.",
+          risk:
+            "Risk: Test blind spots will persist unnoticed, allowing critical behaviours to remain unverified.",
           reference: {
             title:
               "Chapter 13 – Testing Strategies · Best practices for infrastructure testing with Vitest",
@@ -624,6 +696,8 @@
         {
           recommendation:
             "Rehearse failure scenarios with codified chaos experiments to validate resilience and recovery paths.",
+          risk:
+            "Risk: Recovery procedures will remain theoretical, prolonging outages when incidents occur.",
           reference: {
             title:
               "Chapter 13 – Testing Strategies · Chaos Monkey experiments",
@@ -633,6 +707,8 @@
         {
           recommendation:
             "Manage test data, fixtures, and sanitisation routines as code to keep environments repeatable.",
+          risk:
+            "Risk: Tests will behave inconsistently and may expose personal data, undermining confidence in automation.",
           reference: {
             title:
               "Chapter 13 – Testing Strategies · Best practices for infrastructure testing with Vitest",
@@ -644,6 +720,8 @@
         {
           recommendation:
             "Author documentation in version-controlled markup with review workflows so knowledge stays accurate.",
+          risk:
+            "Risk: Guidance will age in shared drives, leading to contradictory instructions and rework.",
           reference: {
             title:
               "Chapter 22 – Documentation vs Architecture as Code · Documentation as Code: communication and knowledge transfer",
@@ -653,6 +731,8 @@
         {
           recommendation:
             "Automate publishing pipelines so every change regenerates web, PDF, and diagram outputs from the same sources.",
+          risk:
+            "Risk: Published documentation will drift between formats, confusing stakeholders and wasting effort.",
           reference: {
             title:
               "Chapter 22 – Documentation vs Architecture as Code · Architecture as Code feeds Documentation as Code",
@@ -662,6 +742,8 @@
         {
           recommendation:
             "Bake documentation updates into the definition of done so product and platform changes always ship with revised guidance.",
+          risk:
+            "Risk: Releases will land without supporting documentation, increasing support load and slowing adoption.",
           reference: {
             title:
               "Chapter 22 – Documentation vs Architecture as Code · The relationship between Documentation as Code and Architecture as Code",
@@ -671,6 +753,8 @@
         {
           recommendation:
             "Generate diagrams from structured models to eliminate manual drawing effort.",
+          risk:
+            "Risk: Hand-crafted diagrams will fall out of date quickly, misleading design and governance conversations.",
           reference: {
             title:
               "Chapter 22 – Documentation vs Architecture as Code · Architecture as Code feeds Documentation as Code",
@@ -680,6 +764,8 @@
         {
           recommendation:
             "Automate link, style, and quality checks in CI to uphold documentation standards.",
+          risk:
+            "Risk: Broken links and inconsistent style will accumulate, reducing confidence in the documentation estate.",
           reference: {
             title:
               "Chapter 22 – Documentation vs Architecture as Code · Key differences: a comparative framework",
@@ -691,6 +777,8 @@
         {
           recommendation:
             "Capture organisational knowledge in structured, versioned repositories with clear ownership to reduce onboarding friction.",
+          risk:
+            "Risk: Critical knowledge will remain trapped with individuals, slowing delivery and amplifying turnover impact.",
           reference: {
             title:
               "Chapter 18 – Team Structure · Knowledge sharing and communities of practice",
@@ -700,6 +788,8 @@
         {
           recommendation:
             "Provide onboarding journeys as code-based playbooks or scripts so induction follows a consistent, automated path.",
+          risk:
+            "Risk: New colleagues will receive inconsistent induction, lengthening time-to-value and harming morale.",
           reference: {
             title:
               "Chapter 23 – Soft as Code Interplay · Knowledge and culture as code",
@@ -709,6 +799,8 @@
         {
           recommendation:
             "Track retrospectives and improvement actions in version-controlled artefacts with automated follow-up tasks.",
+          risk:
+            "Risk: Improvement commitments will be forgotten, allowing recurring problems to persist.",
           reference: {
             title:
               "Chapter 19 – Management as Code · Practical examples of strategic discussions",
@@ -718,6 +810,8 @@
         {
           recommendation:
             "Embed cultural guidance into tooling—bots, templates, and prompts—so behaviours are reinforced where work happens.",
+          risk:
+            "Risk: Desired behaviours will rely on memory alone, leading to inconsistent culture across teams.",
           reference: {
             title:
               "Chapter 19 – Management as Code · Cultural and behavioural codification",
@@ -727,6 +821,8 @@
         {
           recommendation:
             "Schedule automated reminders to review knowledge bases and cultural commitments to keep guidance current.",
+          risk:
+            "Risk: Knowledge bases will stagnate, eroding trust in the material and encouraging shadow documentation.",
           reference: {
             title:
               "Chapter 19 – Management as Code · Cultural and behavioural codification",
@@ -738,6 +834,8 @@
         {
           recommendation:
             "Document operating models, team topologies, and responsibilities through codified templates that live in Git.",
+          risk:
+            "Risk: Roles and responsibilities will become ambiguous, fuelling duplication and conflicting decisions.",
           reference: {
             title:
               "Chapter 19 – Management as Code · Defining Management as Code",
@@ -747,6 +845,8 @@
         {
           recommendation:
             "Run leadership ceremonies from dashboards and scripts generated by management code so rituals stay repeatable.",
+          risk:
+            "Risk: Leadership cadence will depend on manual effort, reducing transparency and follow-through.",
           reference: {
             title:
               "Chapter 19 – Management as Code · Embedding management in the DevOps loop",
@@ -756,6 +856,8 @@
         {
           recommendation:
             "Collect performance and delivery metrics automatically and surface them through shared management dashboards.",
+          risk:
+            "Risk: Leadership decisions will hinge on anecdotes, weakening prioritisation and accountability.",
           reference: {
             title:
               "Chapter 19 – Management as Code · Measuring management effectiveness",
@@ -765,6 +867,8 @@
         {
           recommendation:
             "Manage resource allocation and staffing through codified workflows with automated approvals and audit trails.",
+          risk:
+            "Risk: Staffing decisions will lack traceability, creating bottlenecks and increasing operational risk.",
           reference: {
             title:
               "Chapter 19 – Management as Code · Governance and policy automation",
@@ -774,6 +878,8 @@
         {
           recommendation:
             "Iterate management playbooks via pull requests so the leadership community can review and evolve guidance together.",
+          risk:
+            "Risk: Management guidance will stagnate, reducing engagement and limiting responsiveness to change.",
           reference: {
             title:
               "Chapter 19 – Management as Code · GitHub configuration for MaC",
@@ -1118,6 +1224,7 @@
           suggestions.push({
             aspectName: result.aspectName,
             question: answer.question,
+            risk: suggestionDefinition.risk,
             recommendation: suggestionDefinition.recommendation,
             reference: suggestionDefinition.reference
           });
@@ -1157,6 +1264,13 @@
         questionLabel.className = "question-label";
         questionLabel.textContent = `${suggestion.aspectName} – ${suggestion.question}`;
         item.appendChild(questionLabel);
+
+        if (suggestion.risk) {
+          const risk = document.createElement("p");
+          risk.className = "risk";
+          risk.textContent = suggestion.risk;
+          item.appendChild(risk);
+        }
 
         const recommendation = document.createElement("p");
         recommendation.textContent = suggestion.recommendation;
