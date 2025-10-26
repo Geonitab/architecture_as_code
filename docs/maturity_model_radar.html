@@ -188,26 +188,31 @@
       }
     }
   </style>
-  <script>
-    (async () => {
-      let mermaid;
-      try {
-        if (window.mermaidReady && typeof window.mermaidReady.then === "function") {
-          mermaid = await window.mermaidReady;
-        } else if (window.mermaid) {
-          mermaid = window.mermaid;
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.esm.min.mjs";
+
+    const radarDiagramModuleUrl =
+      "https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/diagrams/radarDiagram-definition.esm.min.mjs";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      diagramLoader: async (type) => {
+        if (type === "radar") {
+          return import(radarDiagramModuleUrl);
         }
-      } catch (error) {
-        console.error("Unable to prepare Mermaid for the radar visualisation", error);
-        return;
-      }
 
-      if (!mermaid) {
-        console.error("Mermaid is unavailable, so the radar visualisation cannot be rendered.");
-        return;
-      }
+        if (type === "radar-beta") {
+          // Allow Mermaid to fall back to the built-in legacy loader.
+          return undefined;
+        }
 
-      const aspects = [
+        throw new Error(`Diagram type ${type} is not supported by this loader.`);
+      }
+    });
+
+    window.mermaid = mermaid;
+
+    const aspects = [
       {
         key: "iac",
         name: "Infrastructure as code (IaC)",
@@ -1325,7 +1330,6 @@
       const { detailedResults, resultPayload } = calculateResults(form);
       updateOutputs(detailedResults, resultPayload);
     }
-    })();
   </script>
 </head>
 <body>
