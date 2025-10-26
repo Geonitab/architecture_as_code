@@ -196,6 +196,7 @@
   </style>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.esm.min.mjs";
+    import { jsPDF } from "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
 
     mermaid.initialize({
       startOnLoad: false
@@ -207,6 +208,7 @@
     let initialRadarContent = "";
     let initialSummaryContent = "";
     let initialSuggestionsContent = "";
+    let suggestionsExportButton = null;
 
     const aspects = [
       {
@@ -930,6 +932,18 @@
       document
         .getElementById("importJsonInput")
         .addEventListener("change", handleJsonImport);
+
+      suggestionsExportButton = document.getElementById(
+        "downloadSuggestionsPdf"
+      );
+
+      if (suggestionsExportButton) {
+        suggestionsExportButton.addEventListener(
+          "click",
+          handleSuggestionsPdfDownload
+        );
+        updateSuggestionsExportState([]);
+      }
     });
 
     function buildForm() {
@@ -1053,9 +1067,7 @@
     function updateOutputs(detailedResults, resultPayload) {
       const radarDefinition = buildRadarDefinition(detailedResults);
       renderRadar(radarDefinition);
-      renderSummaryTable(detailedResults);
       const suggestions = collectImprovementSuggestions(detailedResults);
-      renderSuggestions(suggestions);
 
       const jsonOutput = document.getElementById("jsonOutput");
       jsonOutput.value = JSON.stringify(resultPayload, null, 2);
@@ -1065,6 +1077,9 @@
         suggestions,
         resultPayload
       };
+
+      renderSummaryTable(detailedResults);
+      renderSuggestions(suggestions);
     }
 
     function buildRadarDefinition(results) {
@@ -1258,6 +1273,8 @@
 
       container.innerHTML = "";
 
+      updateSuggestionsExportState(suggestions);
+
       if (!suggestions.length) {
         const placeholder = document.createElement("p");
         placeholder.textContent =
@@ -1330,6 +1347,8 @@
       if (jsonOutput) {
         jsonOutput.value = "";
       }
+
+      updateSuggestionsExportState([]);
 
     }
 
@@ -1439,6 +1458,134 @@
       updateOutputs(detailedResults, resultPayload);
     }
 
+    function updateSuggestionsExportState(suggestions) {
+      if (!suggestionsExportButton) {
+        return;
+      }
+
+      const hasSuggestions = Array.isArray(suggestions) && suggestions.length > 0;
+      suggestionsExportButton.disabled = !hasSuggestions;
+
+      if (hasSuggestions) {
+        suggestionsExportButton.removeAttribute("aria-disabled");
+      } else {
+        suggestionsExportButton.setAttribute("aria-disabled", "true");
+      }
+    }
+
+    function handleSuggestionsPdfDownload() {
+      if (
+        !latestAssessment ||
+        !Array.isArray(latestAssessment.suggestions) ||
+        latestAssessment.suggestions.length === 0
+      ) {
+        alert("Generate improvement suggestions before exporting them to PDF.");
+        return;
+      }
+
+      exportSuggestionsToPdf(
+        latestAssessment.suggestions,
+        latestAssessment.resultPayload?.generatedAt
+      );
+    }
+
+    function exportSuggestionsToPdf(suggestions, generatedAt) {
+      const doc = new jsPDF({ unit: "pt", format: "a4" });
+      const marginX = 48;
+      const marginY = 64;
+      const contentWidth = doc.internal.pageSize.getWidth() - marginX * 2;
+      const lineHeight = 16;
+      const pageHeight = doc.internal.pageSize.getHeight();
+      let cursorY = marginY;
+
+      const ensureSpace = (lineCount) => {
+        const spaceNeeded = lineCount * lineHeight;
+        if (cursorY + spaceNeeded > pageHeight - marginY) {
+          doc.addPage();
+          cursorY = marginY;
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(11);
+        }
+      };
+
+      const writeLines = (textLines, options = {}) => {
+        const { font = "helvetica", style = "normal", size = 11 } = options;
+        const lines = Array.isArray(textLines) ? textLines : [textLines];
+        ensureSpace(lines.length);
+        doc.setFont(font, style);
+        doc.setFontSize(size);
+        lines.forEach((line) => {
+          doc.text(line, marginX, cursorY);
+          cursorY += lineHeight;
+        });
+      };
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("Architecture as Code Maturity Radar", marginX, cursorY);
+      cursorY += lineHeight * 1.5;
+
+      doc.setFontSize(14);
+      doc.text("Improvement suggestions", marginX, cursorY);
+      cursorY += lineHeight;
+
+      if (generatedAt) {
+        const generatedDate = new Date(generatedAt);
+        const dateIsValid = !Number.isNaN(generatedDate.valueOf());
+        const formatted = dateIsValid
+          ? generatedDate.toLocaleString("en-GB", {
+              dateStyle: "medium",
+              timeStyle: "short"
+            })
+          : generatedAt;
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(11);
+        doc.text(`Generated: ${formatted}`, marginX, cursorY);
+        cursorY += lineHeight * 1.5;
+      }
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+
+      suggestions.forEach((suggestion, index) => {
+        const heading = `${index + 1}. ${suggestion.aspectName}`;
+        writeLines([heading], { style: "bold", size: 12 });
+
+        const questionLines = doc.splitTextToSize(
+          `Focus: ${suggestion.question}`,
+          contentWidth
+        );
+        writeLines(questionLines, { style: "italic" });
+
+        if (suggestion.risk) {
+          const riskLines = doc.splitTextToSize(suggestion.risk, contentWidth);
+          writeLines(riskLines, { style: "bold" });
+        }
+
+        const recommendationLines = doc.splitTextToSize(
+          suggestion.recommendation,
+          contentWidth
+        );
+        writeLines(recommendationLines);
+
+        if (suggestion.reference) {
+          const referenceLines = doc.splitTextToSize(
+            `Reference: ${suggestion.reference.title} – ${suggestion.reference.url}`,
+            contentWidth
+          );
+          writeLines(referenceLines);
+        }
+
+        const startingPosition = cursorY;
+        ensureSpace(1);
+        if (cursorY === startingPosition) {
+          cursorY += lineHeight;
+        }
+      });
+
+      doc.save("aac_maturity_suggestions.pdf");
+    }
+
   </script>
 </head>
 <body>
@@ -1474,6 +1621,11 @@
       <h2>Improvement suggestions</h2>
       <div id="improvementSuggestions">
         <p>Complete the assessment to receive targeted recommendations for boosting your maturity.</p>
+      </div>
+      <div class="actions">
+        <button type="button" id="downloadSuggestionsPdf" aria-disabled="true" disabled>
+          Download suggestions as PDF
+        </button>
       </div>
     </section>
 
