@@ -861,10 +861,10 @@
     function handleAssessment(event) {
       event.preventDefault();
       const form = event.target;
-      const { detailedResults, resultPayload, maxQuestions } = calculateResults(
+      const { detailedResults, resultPayload } = calculateResults(
         form
       );
-      updateOutputs(detailedResults, resultPayload, maxQuestions);
+      updateOutputs(detailedResults, resultPayload);
     }
 
     function calculateResults(form) {
@@ -897,13 +897,9 @@
         };
       });
 
-      const maxQuestions = Math.max(
-        ...detailedResults.map((result) => result.totalQuestions)
-      );
-
       const resultPayload = {
         generatedAt: new Date().toISOString(),
-        scaleMaximum: maxQuestions,
+        scaleMaximum: 5,
         totals: {
           overallYes: detailedResults.reduce((acc, item) => acc + item.yesCount, 0),
           overallQuestions: detailedResults.reduce(
@@ -917,11 +913,11 @@
         aspects: detailedResults
       };
 
-      return { detailedResults, resultPayload, maxQuestions };
+      return { detailedResults, resultPayload };
     }
 
-    function updateOutputs(detailedResults, resultPayload, maxQuestions) {
-      const radarDefinition = buildRadarDefinition(detailedResults, maxQuestions);
+    function updateOutputs(detailedResults, resultPayload) {
+      const radarDefinition = buildRadarDefinition(detailedResults);
       renderRadar(radarDefinition);
       renderSummaryTable(detailedResults);
       renderSuggestions(collectImprovementSuggestions(detailedResults));
@@ -930,18 +926,40 @@
       jsonOutput.value = JSON.stringify(resultPayload, null, 2);
     }
 
-    function buildRadarDefinition(results, maxQuestions) {
-      const labels = results.map((result) => result.aspectName);
-      const dataPoints = results.map((result) => result.yesCount ?? 0);
-      const maxScale = Math.max(maxQuestions, 5);
+    function buildRadarDefinition(results) {
+      const axes = [
+        { key: "iac", label: "Infrastructure as code (IaC)" },
+        { key: "aac", label: "Architecture as code (AaC)" },
+        { key: "cont", label: "Containerisation & orchestration as code" },
+        {
+          key: "pacsec",
+          label: "Policy as code (PaC) & Security as code"
+        },
+        { key: "gov", label: "Governance as code" },
+        { key: "comp", label: "Compliance as code" },
+        { key: "test", label: "Testing as code" },
+        { key: "doc", label: "Documentation as code" },
+        { key: "culture", label: "Knowledge & culture as code" },
+        { key: "mgmt", label: "Management as code" }
+      ];
 
-      const escapedLabels = labels.map((label) =>
-        `"${label.replace(/"/g, '\\"')}"`
-      );
-      const axisValues = escapedLabels.join(", ");
-      const dataSeries = dataPoints.join(", ");
+      const axisLine = axes
+        .map(({ key, label }) => `${key}["${label.replace(/"/g, '\\"')}"]`)
+        .join(", ");
 
-      return `radar\n  title Architecture as Code Maturity Snapshot\n  x-axis [${axisValues}]\n  y-axis [0, ${maxScale}]\n  dataset\n    title: Current assessment\n    data: [${dataSeries}]`;
+      const dataSeries = axes
+        .map(({ key }) => {
+          const match = results.find((result) => result.aspectKey === key);
+          if (!match || !match.totalQuestions) {
+            return 0;
+          }
+
+          const normalisedScore = (match.yesCount / match.totalQuestions) * 5;
+          return Number(normalisedScore.toFixed(2));
+        })
+        .join(", ");
+
+      return `radar-beta\n  title Architecture as Code Maturity Snapshot\n  axis ${axisLine}\n  curve current["Current assessment"]{${dataSeries}}\n  min 0\n  max 5\n  ticks 5\n  showLegend true`;
     }
 
     async function renderRadar(definition) {
@@ -1229,8 +1247,8 @@
         });
       });
 
-      const { detailedResults, resultPayload, maxQuestions } = calculateResults(form);
-      updateOutputs(detailedResults, resultPayload, maxQuestions);
+      const { detailedResults, resultPayload } = calculateResults(form);
+      updateOutputs(detailedResults, resultPayload);
     }
   </script>
 </head>
