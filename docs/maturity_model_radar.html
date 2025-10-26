@@ -200,10 +200,13 @@
     }
 
     .pdf-report {
+      width: 180mm;
+      max-width: 100%;
+      padding: 20mm 18mm;
+      box-sizing: border-box;
+      margin: 0 auto;
       background-color: #ffffff;
       color: #1f2933;
-      padding: 2rem;
-      max-width: 210mm;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -224,25 +227,38 @@
       margin-top: 1.5rem;
     }
 
+    .pdf-report h2 + p,
+    .pdf-report section + section {
+      margin-top: 1.25rem;
+    }
+
     .pdf-report table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 0.75rem;
     }
 
-    .pdf-report th,
-    .pdf-report td {
+    .pdf-report table th,
+    .pdf-report table td {
       border: 1px solid #d2d6dc;
-      padding: 0.5rem;
+      padding: 0.65rem;
       text-align: left;
     }
 
-    .pdf-report th {
+    .pdf-report table th {
       background-color: #f1f5f9;
     }
 
     .pdf-report .meta {
       margin-bottom: 1rem;
+    }
+
+    .pdf-report img,
+    .pdf-report svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     .pdf-report .answers-list {
@@ -294,6 +310,7 @@
     let initialRadarContent = "";
     let initialSummaryContent = "";
     let initialSuggestionsContent = "";
+    let fallbackPdfObjectUrl = null;
 
     const aspects = [
       {
@@ -1405,6 +1422,140 @@
       container.appendChild(list);
     }
 
+    function clearFallbackPdfLink() {
+      const fallbackLink = document.getElementById("downloadPdfFallback");
+      if (fallbackLink) {
+        fallbackLink.hidden = true;
+        fallbackLink.removeAttribute("href");
+        fallbackLink.removeAttribute("download");
+      }
+
+      if (fallbackPdfObjectUrl) {
+        URL.revokeObjectURL(fallbackPdfObjectUrl);
+        fallbackPdfObjectUrl = null;
+      }
+    }
+
+    function updateFallbackPdfLink(blob) {
+      const fallbackLink = document.getElementById("downloadPdfFallback");
+      if (!fallbackLink) {
+        return null;
+      }
+
+      if (fallbackPdfObjectUrl) {
+        URL.revokeObjectURL(fallbackPdfObjectUrl);
+      }
+
+      fallbackPdfObjectUrl = URL.createObjectURL(blob);
+      fallbackLink.href = fallbackPdfObjectUrl;
+      fallbackLink.download = "aac_maturity_assessment.pdf";
+      fallbackLink.hidden = false;
+
+      return fallbackPdfObjectUrl;
+    }
+
+    function triggerDownload(url, filename) {
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = filename;
+      anchor.rel = "noopener";
+      anchor.style.display = "none";
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+    }
+
+    function createInlineImageFromSvg(svgElement) {
+      if (!svgElement) {
+        return null;
+      }
+
+      try {
+        const clonedSvg = svgElement.cloneNode(true);
+        const boundingBox = svgElement.getBoundingClientRect();
+
+        if (!clonedSvg.getAttribute("viewBox") && boundingBox.width && boundingBox.height) {
+          clonedSvg.setAttribute("viewBox", `0 0 ${boundingBox.width} ${boundingBox.height}`);
+        }
+
+        if (!clonedSvg.getAttribute("width") && boundingBox.width) {
+          clonedSvg.setAttribute("width", String(boundingBox.width));
+        }
+
+        if (!clonedSvg.getAttribute("height") && boundingBox.height) {
+          clonedSvg.setAttribute("height", String(boundingBox.height));
+        }
+
+        const serialisedSvg = new XMLSerializer().serializeToString(clonedSvg);
+        const svgBlob = new Blob([serialisedSvg], {
+          type: "image/svg+xml;charset=utf-8"
+        });
+        const objectUrl = URL.createObjectURL(svgBlob);
+
+        const image = new Image();
+        image.decoding = "async";
+        image.loading = "eager";
+        image.crossOrigin = "anonymous";
+        image.alt = "Radar snapshot";
+        image.src = objectUrl;
+        image.style.maxWidth = "100%";
+        image.style.height = "auto";
+
+        image.addEventListener(
+          "load",
+          () => {
+            URL.revokeObjectURL(objectUrl);
+          },
+          { once: true }
+        );
+
+        image.addEventListener(
+          "error",
+          () => {
+            URL.revokeObjectURL(objectUrl);
+          },
+          { once: true }
+        );
+
+        return image;
+      } catch (error) {
+        console.error("Failed to convert SVG to inline image", error);
+        return null;
+      }
+    }
+
+    async function waitForImagesToLoad(scope) {
+      const images = Array.from(scope.querySelectorAll("img"));
+      if (!images.length) {
+        return;
+      }
+
+      await Promise.all(
+        images.map((image) => {
+          if (image.complete && image.naturalWidth !== 0) {
+            return Promise.resolve();
+          }
+
+          return new Promise((resolve) => {
+            const settle = () => {
+              image.removeEventListener("load", settle);
+              image.removeEventListener("error", settle);
+              resolve();
+            };
+
+            image.addEventListener("load", settle, { once: true });
+            image.addEventListener("error", settle, { once: true });
+          });
+        })
+      );
+    }
+
+    async function prepareReportForExport(report) {
+      await waitForImagesToLoad(report);
+      await new Promise((resolve) => setTimeout(resolve, 75));
+      await new Promise((resolve) => window.requestAnimationFrame(resolve));
+    }
+
     function togglePdfButton(isEnabled) {
       const button = document.getElementById("downloadPdf");
       if (!button) {
@@ -1461,18 +1612,40 @@
       applyExportStyles(report);
 
       try {
-        await new Promise((resolve) => window.requestAnimationFrame(resolve));
+        clearFallbackPdfLink();
+        await prepareReportForExport(report);
 
-        await window
+        const worker = window
           .html2pdf()
           .set({
             margin: [0.5, 0.5, 0.5, 0.5],
             filename: "aac_maturity_assessment.pdf",
-            html2canvas: { scale: 2, useCORS: true },
+            html2canvas: {
+              scale: 2,
+              useCORS: true,
+              allowTaint: true,
+              backgroundColor: "#ffffff",
+              logging: false
+            },
             jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
           })
           .from(report)
-          .save();
+          .toPdf();
+
+        const pdfInstance = await worker.get("pdf");
+        const pdfBlob = pdfInstance.output("blob");
+        const downloadUrl = updateFallbackPdfLink(pdfBlob);
+
+        if (downloadUrl) {
+          triggerDownload(downloadUrl, "aac_maturity_assessment.pdf");
+        } else {
+          const temporaryUrl = URL.createObjectURL(pdfBlob);
+          try {
+            triggerDownload(temporaryUrl, "aac_maturity_assessment.pdf");
+          } finally {
+            URL.revokeObjectURL(temporaryUrl);
+          }
+        }
       } catch (error) {
         console.error("Failed to generate PDF report", error);
         alert("The PDF could not be generated. Please try again.");
@@ -1490,6 +1663,7 @@
         return;
       }
 
+      clearFallbackPdfLink();
       container.innerHTML = "";
       container.className = "pdf-report";
       container.setAttribute("data-prepared", "true");
@@ -1536,7 +1710,13 @@
         radarSection.appendChild(radarHeading);
 
         const figureWrapper = document.createElement("div");
-        figureWrapper.innerHTML = radarFigure.outerHTML;
+        const inlineRadarImage = createInlineImageFromSvg(radarFigure);
+
+        if (inlineRadarImage) {
+          figureWrapper.appendChild(inlineRadarImage);
+        } else {
+          figureWrapper.innerHTML = radarFigure.outerHTML;
+        }
         radarSection.appendChild(figureWrapper);
 
         container.appendChild(radarSection);
@@ -1675,6 +1855,7 @@
 
     function handleReset() {
       latestAssessment = null;
+      clearFallbackPdfLink();
 
       const radarContainer = document.getElementById("radarDiagram");
       if (radarContainer) {
@@ -1844,6 +2025,13 @@
       element.style.opacity = "1";
       element.style.zIndex = "";
     }
+
+    window.addEventListener("beforeunload", () => {
+      if (fallbackPdfObjectUrl) {
+        URL.revokeObjectURL(fallbackPdfObjectUrl);
+        fallbackPdfObjectUrl = null;
+      }
+    });
   </script>
 </head>
 <body>
@@ -1890,6 +2078,16 @@
       </p>
       <div class="actions">
         <button type="button" id="downloadPdf" disabled aria-disabled="true">Download PDF report</button>
+        <a
+          id="downloadPdfFallback"
+          class="secondary"
+          href=""
+          hidden
+          rel="noopener"
+          target="_blank"
+        >
+          Open the PDF in a new tab if your browser blocks automatic downloads.
+        </a>
       </div>
     </section>
 
