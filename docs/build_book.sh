@@ -140,9 +140,51 @@ RELEASE_EPUB="$RELEASE_DIR/$OUTPUT_EPUB"
 RELEASE_DOCX="$RELEASE_DIR/$OUTPUT_DOCX"
 PANDOC_TEMPLATES_DIR="$HOME/.local/share/pandoc/templates"
 EISVOGEL_TEMPLATE="$PANDOC_TEMPLATES_DIR/eisvogel.latex"
+PASSOPTIONS_TEMPLATE="$PANDOC_TEMPLATES_DIR/passoptions.latex"
+PASSOPTIONS_SOURCE="../templates/passoptions.latex"
+FONTS_TEMPLATE="$PANDOC_TEMPLATES_DIR/fonts.latex"
+FONTS_SOURCE="../templates/fonts.latex"
+FONT_SETTINGS_TEMPLATE="$PANDOC_TEMPLATES_DIR/font-settings.latex"
+FONT_SETTINGS_SOURCE="../templates/font-settings.latex"
+COMMON_TEMPLATE="$PANDOC_TEMPLATES_DIR/common.latex"
+COMMON_SOURCE="../templates/common.latex"
+AFTER_HEADER_TEMPLATE="$PANDOC_TEMPLATES_DIR/after-header-includes.latex"
+AFTER_HEADER_SOURCE="../templates/after-header-includes.latex"
+HYPERSETUP_TEMPLATE="$PANDOC_TEMPLATES_DIR/hypersetup.latex"
+HYPERSETUP_SOURCE="../templates/hypersetup.latex"
+EISVOGEL_ADDED_TEMPLATE="$PANDOC_TEMPLATES_DIR/eisvogel-added.latex"
+EISVOGEL_ADDED_SOURCE="../templates/eisvogel-added.latex"
+EISVOGEL_TITLE_TEMPLATE="$PANDOC_TEMPLATES_DIR/eisvogel-title-page.latex"
+EISVOGEL_TITLE_SOURCE="../templates/eisvogel-title-page.latex"
 NON_LATEX_DEFAULTS_FILE="pandoc-nonlatex.yaml"
 
 # Ensure Eisvogel template exists (install automatically if missing)
+install_template_file() {
+    local target_file="$1"
+    local data_name="$2"
+    local bundled_source="$3"
+    local friendly_name="$4"
+
+    if [ -f "$target_file" ]; then
+        return 0
+    fi
+
+    mkdir -p "$PANDOC_TEMPLATES_DIR"
+
+    if [ -n "$data_name" ] && command -v pandoc >/dev/null 2>&1 && pandoc --print-default-data-file "$data_name" > "$target_file" 2>/dev/null; then
+        echo "✅ Installed $friendly_name from Pandoc data files"
+        return 0
+    fi
+
+    if [ -n "$bundled_source" ] && [ -f "$bundled_source" ] && cp "$bundled_source" "$target_file"; then
+        echo "✅ Copied bundled $friendly_name to $target_file"
+        return 0
+    fi
+
+    echo "❌ Unable to install $friendly_name"
+    return 1
+}
+
 if [ ! -f "$EISVOGEL_TEMPLATE" ]; then
     echo "⚠️  Eisvogel template missing – attempting automatic installation..."
     mkdir -p "$PANDOC_TEMPLATES_DIR"
@@ -183,6 +225,46 @@ if [ ! -f "$EISVOGEL_TEMPLATE" ]; then
 
         rm -rf "$TEMP_DIR"
     fi
+fi
+
+if ! install_template_file "$PASSOPTIONS_TEMPLATE" "passoptions.latex" "$PASSOPTIONS_SOURCE" "passoptions.latex template"; then
+    echo "❌ Required passoptions.latex template is missing"
+    exit 1
+fi
+
+if ! install_template_file "$FONTS_TEMPLATE" "fonts.latex" "$FONTS_SOURCE" "fonts.latex template"; then
+    echo "❌ Required fonts.latex template is missing"
+    exit 1
+fi
+
+if ! install_template_file "$FONT_SETTINGS_TEMPLATE" "font-settings.latex" "$FONT_SETTINGS_SOURCE" "font-settings.latex template"; then
+    echo "❌ Required font-settings.latex template is missing"
+    exit 1
+fi
+
+if ! install_template_file "$COMMON_TEMPLATE" "common.latex" "$COMMON_SOURCE" "common.latex template"; then
+    echo "❌ Required common.latex template is missing"
+    exit 1
+fi
+
+if ! install_template_file "$AFTER_HEADER_TEMPLATE" "after-header-includes.latex" "$AFTER_HEADER_SOURCE" "after-header-includes.latex template"; then
+    echo "❌ Required after-header-includes.latex template is missing"
+    exit 1
+fi
+
+if ! install_template_file "$HYPERSETUP_TEMPLATE" "hypersetup.latex" "$HYPERSETUP_SOURCE" "hypersetup.latex template"; then
+    echo "❌ Required hypersetup.latex template is missing"
+    exit 1
+fi
+
+if ! install_template_file "$EISVOGEL_ADDED_TEMPLATE" "eisvogel-added.latex" "$EISVOGEL_ADDED_SOURCE" "eisvogel-added.latex template"; then
+    echo "❌ Required eisvogel-added.latex template is missing"
+    exit 1
+fi
+
+if ! install_template_file "$EISVOGEL_TITLE_TEMPLATE" "eisvogel-title-page.latex" "$EISVOGEL_TITLE_SOURCE" "eisvogel-title-page.latex template"; then
+    echo "❌ Required eisvogel-title-page.latex template is missing"
+    exit 1
 fi
 
 # Check if pandoc.yaml config exists
@@ -362,7 +444,7 @@ CHAPTER_FILES=(
     "30_appendix_code_examples.md"
     "31_technical_architecture.md"
     "32_finos_project_blueprint.md"
-    "architecture_as_code_model.md"
+    "architecture_as_code_maturity_model.md"
     "33_references.md"
 )
 
