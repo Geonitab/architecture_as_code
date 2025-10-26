@@ -398,12 +398,15 @@
 
     function buildRadarDefinition(results, maxQuestions) {
       const labels = results.map((result) => result.aspectName);
-      const dataPoints = results.map((result) => result.yesCount);
+      const dataPoints = results.map((result) => result.yesCount ?? 0);
       const maxScale = Math.max(maxQuestions, 5);
 
-      return `radar\n  title Architecture as Code Maturity Snapshot\n  x-axis ${JSON.stringify(
-        labels
-      )}\n  y-axis 0 --> ${maxScale}\n  dataset\n    label: Current assessment\n    data: ${JSON.stringify(dataPoints)}`;
+      const escapedLabels = labels.map((label) =>
+        `"${label.replace(/"/g, '\\"')}"`
+      );
+      const dataSeries = dataPoints.join(", ");
+
+      return `radar\n  title Architecture as Code Maturity Snapshot\n  x-axis ${escapedLabels.join(", ")}\n  y-axis 0 --> ${maxScale}\n  dataset\n    label: Current assessment\n    data: ${dataSeries}`;
     }
 
     function renderRadar(definition) {
