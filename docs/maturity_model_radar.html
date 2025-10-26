@@ -87,6 +87,40 @@
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
     }
 
+    .diagram-error {
+      border: 1px solid #ef4444;
+      background-color: #fef2f2;
+      color: #991b1b;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+    }
+
+    .diagram-error .error-message {
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+
+    .diagram-error details {
+      margin-top: 1rem;
+    }
+
+    .diagram-error textarea {
+      width: 100%;
+      margin-top: 0.75rem;
+      font-family: "Fira Code", "Courier New", Courier, monospace;
+      font-size: 0.9rem;
+      background-color: #ffffff;
+      color: #111827;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      resize: vertical;
+    }
+
+    .diagram-error button {
+      margin-top: 0.75rem;
+    }
+
     #jsonOutput {
       width: 100%;
       height: 16rem;
@@ -909,12 +943,65 @@
       return `radar\n  title Architecture as Code Maturity Snapshot\n  x-axis ${escapedLabels.join(", ")}\n  y-axis 0 --> ${maxScale}\n  dataset\n    label: Current assessment\n    data: ${dataSeries}`;
     }
 
-    function renderRadar(definition) {
+    async function renderRadar(definition) {
       const container = document.getElementById("radarDiagram");
       const targetId = `radar_${Date.now()}`;
-      mermaid.render(targetId, definition).then(({ svg }) => {
+      try {
+        const { svg } = await mermaid.render(targetId, definition);
         container.innerHTML = svg;
-      });
+      } catch (error) {
+        console.error("Failed to render Mermaid diagram", error);
+        container.innerHTML = "";
+
+        const errorWrapper = document.createElement("div");
+        errorWrapper.className = "diagram-error";
+        errorWrapper.setAttribute("role", "alert");
+
+        const intro = document.createElement("p");
+        intro.textContent =
+          "Mermaid reported a syntax error while generating the radar diagram. Review the definition below to troubleshoot the issue.";
+        errorWrapper.appendChild(intro);
+
+        const message = document.createElement("p");
+        message.className = "error-message";
+        message.textContent = error?.message
+          ? `Mermaid error: ${error.message}`
+          : "Mermaid returned an unknown error.";
+        errorWrapper.appendChild(message);
+
+        const details = document.createElement("details");
+        details.open = true;
+
+        const summary = document.createElement("summary");
+        summary.textContent = "View Mermaid definition";
+        details.appendChild(summary);
+
+        const textarea = document.createElement("textarea");
+        textarea.readOnly = true;
+        textarea.value = definition;
+        textarea.rows = Math.min(12, definition.split("\n").length + 2);
+        textarea.setAttribute(
+          "aria-label",
+          "Mermaid definition for the radar diagram"
+        );
+        details.appendChild(textarea);
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.textContent = "Copy Mermaid definition";
+        copyButton.addEventListener("click", async () => {
+          await copyTextToClipboard(definition);
+          const original = copyButton.textContent;
+          copyButton.textContent = "Definition copied";
+          setTimeout(() => {
+            copyButton.textContent = original;
+          }, 2000);
+        });
+        details.appendChild(copyButton);
+
+        errorWrapper.appendChild(details);
+        container.appendChild(errorWrapper);
+      }
     }
 
     function renderSummaryTable(results) {
@@ -1039,18 +1126,34 @@
       container.appendChild(list);
     }
 
+    async function copyTextToClipboard(text) {
+      if (!text) {
+        return;
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const helper = document.createElement("textarea");
+      helper.value = text;
+      helper.setAttribute("readonly", "");
+      helper.style.position = "absolute";
+      helper.style.left = "-9999px";
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand("copy");
+      document.body.removeChild(helper);
+    }
+
     async function copyJsonToClipboard() {
       const jsonOutput = document.getElementById("jsonOutput");
       if (!jsonOutput.value) {
         return;
       }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(jsonOutput.value);
-      } else {
-        jsonOutput.select();
-        document.execCommand("copy");
-        jsonOutput.setSelectionRange(0, 0);
-      }
+
+      await copyTextToClipboard(jsonOutput.value);
     }
 
     function downloadJsonFile() {
