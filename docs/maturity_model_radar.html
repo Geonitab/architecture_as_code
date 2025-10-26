@@ -51,7 +51,7 @@
       padding-bottom: 0;
     }
 
-    .question label {
+    .question .question-text {
       display: block;
       font-weight: 500;
     }
@@ -60,6 +60,16 @@
       margin-top: 0.5rem;
       display: flex;
       gap: 1rem;
+    }
+
+    .question .options label {
+      display: inline-flex;
+      align-items: center;
+      font-weight: 400;
+    }
+
+    .question .options input {
+      margin-right: 0.375rem;
     }
 
     button {
@@ -235,15 +245,22 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       buildForm();
-      document
-        .getElementById("assessmentForm")
-        .addEventListener("submit", handleAssessment);
+      const form = document.getElementById("assessmentForm");
+      form.addEventListener("submit", handleAssessment);
       document
         .getElementById("copyJson")
         .addEventListener("click", copyJsonToClipboard);
       document
         .getElementById("downloadJson")
         .addEventListener("click", downloadJsonFile);
+      document
+        .getElementById("triggerImportJson")
+        .addEventListener("click", () =>
+          document.getElementById("importJsonInput").click()
+        );
+      document
+        .getElementById("importJsonInput")
+        .addEventListener("change", handleJsonImport);
     });
 
     function buildForm() {
@@ -262,7 +279,7 @@
           wrapper.className = "question";
 
           const label = document.createElement("label");
-          label.setAttribute("for", questionId);
+          label.className = "question-text";
           label.textContent = question;
           wrapper.appendChild(label);
 
@@ -287,11 +304,14 @@
 
     function createOption(name, value, labelText) {
       const label = document.createElement("label");
+      const id = `${name}_${value}`;
       const input = document.createElement("input");
       input.type = "radio";
       input.name = name;
       input.value = value;
+      input.id = id;
       input.required = true;
+      label.setAttribute("for", id);
       label.appendChild(input);
       label.appendChild(document.createTextNode(` ${labelText}`));
       return label;
@@ -300,6 +320,13 @@
     function handleAssessment(event) {
       event.preventDefault();
       const form = event.target;
+      const { detailedResults, resultPayload, maxQuestions } = calculateResults(
+        form
+      );
+      updateOutputs(detailedResults, resultPayload, maxQuestions);
+    }
+
+    function calculateResults(form) {
       const formData = new FormData(form);
 
       const detailedResults = aspects.map((aspect) => {
@@ -315,7 +342,9 @@
 
         const yesCount = answers.reduce((acc, item) => acc + item.score, 0);
         const totalQuestions = answers.length;
-        const percentage = totalQuestions ? Math.round((yesCount / totalQuestions) * 100) : 0;
+        const percentage = totalQuestions
+          ? Math.round((yesCount / totalQuestions) * 100)
+          : 0;
 
         return {
           aspectKey: aspect.key,
@@ -330,10 +359,6 @@
       const maxQuestions = Math.max(
         ...detailedResults.map((result) => result.totalQuestions)
       );
-
-      const radarDefinition = buildRadarDefinition(detailedResults, maxQuestions);
-      renderRadar(radarDefinition);
-      renderSummaryTable(detailedResults);
 
       const resultPayload = {
         generatedAt: new Date().toISOString(),
@@ -350,6 +375,14 @@
         },
         aspects: detailedResults
       };
+
+      return { detailedResults, resultPayload, maxQuestions };
+    }
+
+    function updateOutputs(detailedResults, resultPayload, maxQuestions) {
+      const radarDefinition = buildRadarDefinition(detailedResults, maxQuestions);
+      renderRadar(radarDefinition);
+      renderSummaryTable(detailedResults);
 
       const jsonOutput = document.getElementById("jsonOutput");
       jsonOutput.value = JSON.stringify(resultPayload, null, 2);
@@ -445,6 +478,66 @@
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
     }
+
+    function handleJsonImport(event) {
+      const [file] = event.target.files;
+      if (!file) {
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          applyImportedAssessment(data);
+        } catch (error) {
+          console.error("Failed to parse assessment JSON", error);
+          alert(
+            "The selected file could not be parsed. Please ensure it is a valid assessment export."
+          );
+        }
+      };
+      reader.readAsText(file);
+
+      event.target.value = "";
+    }
+
+    function applyImportedAssessment(data) {
+      if (!data || !Array.isArray(data.aspects)) {
+        alert("The imported data is missing the expected structure.");
+        return;
+      }
+
+      const form = document.getElementById("assessmentForm");
+      form.reset();
+
+      data.aspects.forEach((aspectResult) => {
+        const aspectDefinition = aspects.find(
+          (definition) => definition.key === aspectResult.aspectKey
+        );
+
+        if (!aspectDefinition || !Array.isArray(aspectResult.answers)) {
+          return;
+        }
+
+        aspectResult.answers.forEach((answer, index) => {
+          if (!answer || !answer.response) {
+            return;
+          }
+
+          const fieldName = `${aspectDefinition.key}_${index}`;
+          const radio = document.querySelector(
+            `input[name="${fieldName}"][value="${answer.response}"]`
+          );
+          if (radio) {
+            radio.checked = true;
+          }
+        });
+      });
+
+      const { detailedResults, resultPayload, maxQuestions } = calculateResults(form);
+      updateOutputs(detailedResults, resultPayload, maxQuestions);
+    }
   </script>
 </head>
 <body>
@@ -483,6 +576,14 @@
       <div class="actions">
         <button type="button" id="copyJson">Copy JSON to clipboard</button>
         <button type="button" id="downloadJson">Download JSON file</button>
+        <button type="button" id="triggerImportJson">Import JSON file</button>
+        <input
+          type="file"
+          id="importJsonInput"
+          accept="application/json"
+          hidden
+          aria-hidden="true"
+        />
       </div>
     </section>
   </main>
