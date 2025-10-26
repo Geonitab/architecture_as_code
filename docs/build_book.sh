@@ -332,6 +332,7 @@ CHAPTER_FILES=(
     "part_c_security_governance.md"
     "09a_security_fundamentals.md"
     "09b_security_patterns.md"
+    "09c_risk_and_threat_as_code.md"
     "10_policy_and_security.md"
     "11_governance_as_code.md"
     "12_compliance.md"
