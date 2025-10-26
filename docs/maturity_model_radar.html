@@ -65,11 +65,13 @@
     .question .options label {
       display: inline-flex;
       align-items: center;
+      gap: 0.5rem;
       font-weight: 400;
+      cursor: pointer;
     }
 
-    .question .options input {
-      margin-right: 0.375rem;
+    .question .options label .checkable {
+      margin: 0;
     }
 
     button {
@@ -311,9 +313,15 @@
       input.value = value;
       input.id = id;
       input.required = true;
+
+      const indicator = document.createElement("span");
+      indicator.className = "checkable";
+      indicator.textContent = labelText;
+
       label.setAttribute("for", id);
       label.appendChild(input);
-      label.appendChild(document.createTextNode(` ${labelText}`));
+      label.appendChild(indicator);
+
       return label;
     }
 
