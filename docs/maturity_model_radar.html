@@ -189,7 +189,14 @@
     }
 
     #pdfReport {
-      display: none;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      z-index: -1;
     }
 
     .pdf-report {
@@ -198,13 +205,6 @@
       padding: 2rem;
       max-width: 210mm;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .pdf-report--export {
-      position: absolute;
-      left: -10000px;
-      top: 0;
-      pointer-events: none;
     }
 
     .pdf-report h1 {
@@ -1446,12 +1446,19 @@
       button.setAttribute("aria-disabled", "true");
       button.textContent = "Preparing PDF…";
 
-      const tempReport = report.cloneNode(true);
-      tempReport.removeAttribute("id");
-      tempReport.style.display = "block";
-      tempReport.setAttribute("aria-hidden", "false");
-      tempReport.classList.add("pdf-report--export");
-      document.body.appendChild(tempReport);
+      const previousStyles = snapshotInlineStyles(report, [
+        "display",
+        "position",
+        "top",
+        "left",
+        "transform",
+        "opacity",
+        "visibility",
+        "pointerEvents",
+        "zIndex"
+      ]);
+
+      applyExportStyles(report);
 
       try {
         await new Promise((resolve) => window.requestAnimationFrame(resolve));
@@ -1464,13 +1471,13 @@
             html2canvas: { scale: 2, useCORS: true },
             jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
           })
-          .from(tempReport)
+          .from(report)
           .save();
       } catch (error) {
         console.error("Failed to generate PDF report", error);
         alert("The PDF could not be generated. Please try again.");
       } finally {
-        tempReport.remove();
+        restoreInlineStyles(report, previousStyles);
         button.textContent = originalLabel;
         button.disabled = false;
         button.setAttribute("aria-disabled", "false");
@@ -1486,6 +1493,15 @@
       container.innerHTML = "";
       container.className = "pdf-report";
       container.setAttribute("data-prepared", "true");
+      container.style.display = "block";
+      container.style.position = "fixed";
+      container.style.top = "0";
+      container.style.left = "50%";
+      container.style.transform = "translateX(-50%)";
+      container.style.pointerEvents = "none";
+      container.style.visibility = "hidden";
+      container.style.opacity = "0";
+      container.style.zIndex = "-1";
 
       const title = document.createElement("h1");
       title.textContent = "Architecture as Code Maturity Assessment";
@@ -1683,7 +1699,15 @@
       const pdfContainer = document.getElementById("pdfReport");
       if (pdfContainer) {
         pdfContainer.innerHTML = "";
-        pdfContainer.style.display = "none";
+        pdfContainer.style.display = "block";
+        pdfContainer.style.position = "fixed";
+        pdfContainer.style.top = "0";
+        pdfContainer.style.left = "50%";
+        pdfContainer.style.transform = "translateX(-50%)";
+        pdfContainer.style.pointerEvents = "none";
+        pdfContainer.style.visibility = "hidden";
+        pdfContainer.style.opacity = "0";
+        pdfContainer.style.zIndex = "-1";
         pdfContainer.removeAttribute("data-prepared");
       }
 
@@ -1794,6 +1818,31 @@
 
       const { detailedResults, resultPayload } = calculateResults(form);
       updateOutputs(detailedResults, resultPayload);
+    }
+
+    function snapshotInlineStyles(element, properties) {
+      return properties.reduce((snapshot, property) => {
+        snapshot[property] = element.style[property] ?? "";
+        return snapshot;
+      }, {});
+    }
+
+    function restoreInlineStyles(element, snapshot) {
+      Object.entries(snapshot).forEach(([property, value]) => {
+        element.style[property] = value;
+      });
+    }
+
+    function applyExportStyles(element) {
+      element.style.display = "block";
+      element.style.position = "static";
+      element.style.top = "";
+      element.style.left = "";
+      element.style.transform = "";
+      element.style.pointerEvents = "none";
+      element.style.visibility = "visible";
+      element.style.opacity = "1";
+      element.style.zIndex = "";
     }
   </script>
 </head>
