@@ -9,6 +9,10 @@ they use machine-readable formats, live in version control and are automatically
 This maturity model synthesises those insights into staged levels of adoption.
 It recognises that organisations progress from ad-hoc scripting and isolated diagrams to integrated, self-optimising systems that manage compliance, governance and knowledge via code.
 
+## Interactive radar assessment
+
+For an interactive experience that mirrors the full questionnaire and generates a downloadable radar chart, use the [Architecture as Code maturity radar tool](maturity_model_radar.html). The tool captures every checklist question from this appendix, visualises the current capabilities and produces prioritised improvement guidance that can be shared across teams.
+
 ## Staircase overview of maturity progression
 
 ![Architecture as Code maturity staircase highlighting Levels 0 to 5](images/diagram_32_maturity_model.png)
