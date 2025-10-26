@@ -200,6 +200,13 @@
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    .pdf-report--export {
+      position: absolute;
+      left: -10000px;
+      top: 0;
+      pointer-events: none;
+    }
+
     .pdf-report h1 {
       margin-top: 0;
     }
@@ -1421,20 +1428,34 @@
         return;
       }
 
+      if (!report.childElementCount) {
+        alert(
+          "The PDF report content is not available yet. Please regenerate the assessment and try again."
+        );
+        return;
+      }
+
       if (typeof window.html2pdf !== "function") {
         alert("PDF generation is currently unavailable. Please try again shortly.");
         return;
       }
 
       const originalLabel = button.textContent;
-      const previousDisplay = report.style.display;
 
       button.disabled = true;
       button.setAttribute("aria-disabled", "true");
       button.textContent = "Preparing PDF…";
-      report.style.display = "block";
+
+      const tempReport = report.cloneNode(true);
+      tempReport.removeAttribute("id");
+      tempReport.style.display = "block";
+      tempReport.setAttribute("aria-hidden", "false");
+      tempReport.classList.add("pdf-report--export");
+      document.body.appendChild(tempReport);
 
       try {
+        await new Promise((resolve) => window.requestAnimationFrame(resolve));
+
         await window
           .html2pdf()
           .set({
@@ -1443,13 +1464,13 @@
             html2canvas: { scale: 2, useCORS: true },
             jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
           })
-          .from(report)
+          .from(tempReport)
           .save();
       } catch (error) {
         console.error("Failed to generate PDF report", error);
         alert("The PDF could not be generated. Please try again.");
       } finally {
-        report.style.display = previousDisplay || "none";
+        tempReport.remove();
         button.textContent = originalLabel;
         button.disabled = false;
         button.setAttribute("aria-disabled", "false");
@@ -1464,6 +1485,7 @@
 
       container.innerHTML = "";
       container.className = "pdf-report";
+      container.setAttribute("data-prepared", "true");
 
       const title = document.createElement("h1");
       title.textContent = "Architecture as Code Maturity Assessment";
@@ -1662,6 +1684,7 @@
       if (pdfContainer) {
         pdfContainer.innerHTML = "";
         pdfContainer.style.display = "none";
+        pdfContainer.removeAttribute("data-prepared");
       }
 
       togglePdfButton(false);
