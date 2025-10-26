@@ -201,6 +201,11 @@
           return import(radarDiagramModuleUrl);
         }
 
+        if (type === "radar-beta") {
+          // Allow Mermaid to fall back to the built-in legacy loader.
+          return undefined;
+        }
+
         throw new Error(`Diagram type ${type} is not supported by this loader.`);
       }
     });
@@ -932,8 +937,8 @@
     }
 
     function updateOutputs(detailedResults, resultPayload) {
-      const radarDefinition = buildRadarDefinition(detailedResults);
-      renderRadar(radarDefinition);
+      const radarDefinitions = buildRadarDefinitions(detailedResults);
+      renderRadar(radarDefinitions);
       renderSummaryTable(detailedResults);
       renderSuggestions(collectImprovementSuggestions(detailedResults));
 
@@ -941,7 +946,7 @@
       jsonOutput.value = JSON.stringify(resultPayload, null, 2);
     }
 
-    function buildRadarDefinition(results) {
+    function buildRadarDefinitions(results) {
       const axes = [
         { key: "iac", label: "Infrastructure as code (IaC)" },
         { key: "aac", label: "Architecture as code (AaC)" },
@@ -958,14 +963,13 @@
         { key: "mgmt", label: "Management as code" }
       ];
 
+      const escapedLabel = (label) => label.replace(/"/g, '\"');
+
       const axisLines = axes
-        .map(
-          ({ key, label }) =>
-            `    ${key}: "${label.replace(/"/g, '\\"')}"`
-        )
+        .map(({ key, label }) => `    ${key}: "${escapedLabel(label)}"`)
         .join("\n");
 
-      const dataSeries = axes
+      const dataPoints = axes
         .map(({ key }) => {
           const match = results.find((result) => result.aspectKey === key);
           if (!match || !match.totalQuestions) {
@@ -975,30 +979,52 @@
           const normalisedScore = (match.yesCount / match.totalQuestions) * 5;
           return Number(normalisedScore.toFixed(2));
         })
-        .join(", ");
+        .map((value) => value.toString());
 
-      return [
+      const dataSeriesModern = dataPoints.join(", ");
+      const dataSeriesLegacy = dataPoints.join(",");
+
+      const modernDefinition = [
         "radar",
         "  title: Architecture as Code Maturity Snapshot",
         "  axis:",
         axisLines,
         "  datasets:",
         "    - title: Current assessment",
-        `      data: [${dataSeries}]`,
+        `      data: [${dataSeriesModern}]`,
         "  min: 0",
         "  max: 5",
         "  ticks: 5",
         "  showLegend: true"
       ].join("\n");
+
+      const legacyAxis = axes
+        .map(({ key, label }) => `${key}["${escapedLabel(label)}"]`)
+        .join(", ");
+
+      const legacyDefinition = [
+        "radar-beta",
+        "  title Architecture as Code Maturity Snapshot",
+        `  axis ${legacyAxis}`,
+        `  curve current["Current assessment"]{${dataSeriesLegacy}}`,
+        "  min 0",
+        "  max 5",
+        "  ticks 5",
+        "  showLegend true"
+      ].join("\n");
+
+      return { modern: modernDefinition, legacy: legacyDefinition };
     }
 
-    async function renderRadar(definition) {
+    async function renderRadar(definitions) {
       const container = document.getElementById("radarDiagram");
       const targetId = `radar_${Date.now()}`;
-      try {
+      const attemptRender = async (definition) => {
         const { svg } = await mermaid.render(targetId, definition);
         container.innerHTML = svg;
-      } catch (error) {
+      };
+
+      const showRenderError = (error, definition, attemptedFallback) => {
         console.error("Failed to render Mermaid diagram", error);
         container.innerHTML = "";
 
@@ -1007,8 +1033,9 @@
         errorWrapper.setAttribute("role", "alert");
 
         const intro = document.createElement("p");
-        intro.textContent =
-          "Mermaid reported a syntax error while generating the radar diagram. Review the definition below to troubleshoot the issue.";
+        intro.textContent = attemptedFallback
+          ? "Mermaid could not render the radar diagram with either syntax. Review the definition below to troubleshoot the issue."
+          : "Mermaid reported a syntax error while generating the radar diagram. Review the definition below to troubleshoot the issue.";
         errorWrapper.appendChild(intro);
 
         const message = document.createElement("p");
@@ -1039,9 +1066,14 @@
         copyButton.type = "button";
         copyButton.textContent = "Copy Mermaid definition";
         copyButton.addEventListener("click", async () => {
-          await copyTextToClipboard(definition);
           const original = copyButton.textContent;
-          copyButton.textContent = "Definition copied";
+          try {
+            await copyTextToClipboard(definition);
+            copyButton.textContent = "Definition copied";
+          } catch (clipboardError) {
+            console.error("Failed to copy definition", clipboardError);
+            copyButton.textContent = "Copy failed";
+          }
           setTimeout(() => {
             copyButton.textContent = original;
           }, 2000);
@@ -1050,6 +1082,24 @@
 
         errorWrapper.appendChild(details);
         container.appendChild(errorWrapper);
+      };
+
+      try {
+        await attemptRender(definitions.modern);
+      } catch (modernError) {
+        console.warn(
+          "Modern Mermaid radar syntax failed, attempting radar-beta fallback",
+          modernError
+        );
+        if (definitions?.legacy) {
+          try {
+            await attemptRender(definitions.legacy);
+          } catch (legacyError) {
+            showRenderError(legacyError, definitions.legacy, true);
+          }
+        } else {
+          showRenderError(modernError, definitions.modern, false);
+        }
       }
     }
 
