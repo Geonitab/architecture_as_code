@@ -196,13 +196,15 @@
   </style>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.esm.min.mjs";
-    import { jsPDF } from "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
+    import "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
 
     mermaid.initialize({
       startOnLoad: false
     });
 
     window.mermaid = mermaid;
+
+    const jsPDFConstructor = window.jspdf?.jsPDF ?? window.jsPDF ?? null;
 
     let latestAssessment = null;
     let initialRadarContent = "";
@@ -1464,16 +1466,33 @@
       }
 
       const hasSuggestions = Array.isArray(suggestions) && suggestions.length > 0;
-      suggestionsExportButton.disabled = !hasSuggestions;
+      const canExport = Boolean(jsPDFConstructor);
+      const enableButton = hasSuggestions && canExport;
 
-      if (hasSuggestions) {
+      suggestionsExportButton.disabled = !enableButton;
+
+      if (enableButton) {
         suggestionsExportButton.removeAttribute("aria-disabled");
       } else {
         suggestionsExportButton.setAttribute("aria-disabled", "true");
       }
+
+      if (!canExport) {
+        suggestionsExportButton.title =
+          "PDF export is unavailable because the jsPDF library could not be loaded.";
+      } else {
+        suggestionsExportButton.removeAttribute("title");
+      }
     }
 
     function handleSuggestionsPdfDownload() {
+      if (!jsPDFConstructor) {
+        alert(
+          "PDF export is currently unavailable. Check your connection and reload the page to try again."
+        );
+        return;
+      }
+
       if (
         !latestAssessment ||
         !Array.isArray(latestAssessment.suggestions) ||
@@ -1490,7 +1509,12 @@
     }
 
     function exportSuggestionsToPdf(suggestions, generatedAt) {
-      const doc = new jsPDF({ unit: "pt", format: "a4" });
+      if (!jsPDFConstructor) {
+        console.error("jsPDF is unavailable; unable to generate the suggestions PDF.");
+        return;
+      }
+
+      const doc = new jsPDFConstructor({ unit: "pt", format: "a4" });
       const marginX = 48;
       const marginY = 64;
       const contentWidth = doc.internal.pageSize.getWidth() - marginX * 2;
