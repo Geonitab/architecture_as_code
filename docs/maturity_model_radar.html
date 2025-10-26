@@ -188,9 +188,24 @@
       }
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({ startOnLoad: false });
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.esm.min.mjs";
+
+    const radarDiagramModuleUrl =
+      "https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/diagrams/radarDiagram-definition.esm.min.mjs";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      diagramLoader: async (type) => {
+        if (type === "radar") {
+          return import(radarDiagramModuleUrl);
+        }
+
+        throw new Error(`Diagram type ${type} is not supported by this loader.`);
+      }
+    });
+
+    window.mermaid = mermaid;
 
     const aspects = [
       {
