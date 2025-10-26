@@ -184,6 +184,43 @@
       margin-top: 0.25rem;
     }
 
+    .assessment-report {
+      margin-top: 2rem;
+    }
+
+    .assessment-report article {
+      background-color: #ffffff;
+      border: 1px solid #d2d6dc;
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .assessment-report article:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .assessment-report h3 {
+      margin-top: 0;
+    }
+
+    .assessment-report ul {
+      padding-left: 1.25rem;
+    }
+
+    .assessment-report li {
+      margin-bottom: 1rem;
+    }
+
+    .assessment-report li:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .assessment-report .report-reference {
+      margin-top: 0.5rem;
+    }
+
     @media (max-width: 768px) {
       body {
         margin: 1rem;
@@ -210,6 +247,7 @@
     let initialRadarContent = "";
     let initialSummaryContent = "";
     let initialSuggestionsContent = "";
+    let initialReportContent = "";
     let suggestionsExportButton = null;
 
     const aspects = [
@@ -907,6 +945,7 @@
       const radarContainer = document.getElementById("radarDiagram");
       const summaryContainer = document.getElementById("resultSummary");
       const suggestionsContainer = document.getElementById("improvementSuggestions");
+      const reportContainer = document.getElementById("assessmentReport");
 
       if (radarContainer) {
         initialRadarContent = radarContainer.innerHTML;
@@ -918,6 +957,10 @@
 
       if (suggestionsContainer) {
         initialSuggestionsContent = suggestionsContainer.innerHTML;
+      }
+
+      if (reportContainer) {
+        initialReportContent = reportContainer.innerHTML;
       }
 
       document
@@ -1082,6 +1125,7 @@
 
       renderSummaryTable(detailedResults);
       renderSuggestions(suggestions);
+      renderAssessmentReport(detailedResults, suggestions);
     }
 
     function buildRadarDefinition(results) {
@@ -1327,6 +1371,121 @@
       container.appendChild(list);
     }
 
+    function renderAssessmentReport(results, suggestions) {
+      const container = document.getElementById("assessmentReport");
+      if (!container) {
+        return;
+      }
+
+      container.innerHTML = "";
+
+      if (!Array.isArray(results) || !results.length) {
+        const placeholder = document.createElement("p");
+        placeholder.textContent =
+          "Complete the assessment to generate a narrative report with linked references.";
+        container.appendChild(placeholder);
+        return;
+      }
+
+      const overallYes = results.reduce((acc, item) => acc + item.yesCount, 0);
+      const overallQuestions = results.reduce(
+        (acc, item) => acc + item.totalQuestions,
+        0
+      );
+      const overallPercentage = overallQuestions
+        ? Math.round((overallYes / overallQuestions) * 100)
+        : 0;
+
+      const overview = document.createElement("p");
+      overview.textContent = `Your organisation confirmed ${overallYes} of ${overallQuestions} practices (${overallPercentage}% adoption).`;
+      container.appendChild(overview);
+
+      const referenceAccumulator = new Map();
+
+      results.forEach((result) => {
+        const section = document.createElement("article");
+
+        const heading = document.createElement("h3");
+        heading.textContent = result.aspectName;
+        section.appendChild(heading);
+
+        const aspectSummary = document.createElement("p");
+        aspectSummary.textContent = `Affirmative responses: ${result.yesCount} of ${result.totalQuestions} (${result.percentage}%).`;
+        section.appendChild(aspectSummary);
+
+        const aspectSuggestions = suggestions.filter(
+          (item) => item.aspectName === result.aspectName
+        );
+
+        if (aspectSuggestions.length === 0) {
+          const complete = document.createElement("p");
+          complete.textContent =
+            "All recommended practices are in place for this discipline.";
+          section.appendChild(complete);
+        } else {
+          const intro = document.createElement("p");
+          intro.textContent = "Prioritise the following next steps:";
+          section.appendChild(intro);
+
+          const list = document.createElement("ul");
+
+          aspectSuggestions.forEach((suggestion) => {
+            const item = document.createElement("li");
+
+            const recommendation = document.createElement("p");
+            recommendation.textContent = suggestion.recommendation;
+            item.appendChild(recommendation);
+
+            if (suggestion.reference) {
+              const referenceParagraph = document.createElement("p");
+              referenceParagraph.className = "report-reference";
+              referenceParagraph.textContent = "Reference: ";
+
+              const referenceLink = document.createElement("a");
+              referenceLink.href = suggestion.reference.url;
+              referenceLink.target = "_blank";
+              referenceLink.rel = "noopener noreferrer";
+              referenceLink.textContent = suggestion.reference.title;
+              referenceParagraph.appendChild(referenceLink);
+              item.appendChild(referenceParagraph);
+
+              const referenceKey = `${suggestion.reference.title}|${suggestion.reference.url}`;
+              if (!referenceAccumulator.has(referenceKey)) {
+                referenceAccumulator.set(referenceKey, suggestion.reference);
+              }
+            }
+
+            list.appendChild(item);
+          });
+
+          section.appendChild(list);
+        }
+
+        container.appendChild(section);
+      });
+
+      if (referenceAccumulator.size > 0) {
+        const referencesHeading = document.createElement("h3");
+        referencesHeading.textContent = "Referenced guidance";
+        container.appendChild(referencesHeading);
+
+        const referencesList = document.createElement("ol");
+
+        referenceAccumulator.forEach((reference) => {
+          const item = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = reference.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = reference.title;
+          item.appendChild(link);
+          referencesList.appendChild(item);
+        });
+
+        container.appendChild(referencesList);
+      }
+    }
+
     function handleReset() {
       latestAssessment = null;
 
@@ -1343,6 +1502,11 @@
       const suggestionsContainer = document.getElementById("improvementSuggestions");
       if (suggestionsContainer) {
         suggestionsContainer.innerHTML = initialSuggestionsContent;
+      }
+
+      const reportContainer = document.getElementById("assessmentReport");
+      if (reportContainer) {
+        reportContainer.innerHTML = initialReportContent;
       }
 
       const jsonOutput = document.getElementById("jsonOutput");
@@ -1650,6 +1814,13 @@
         <button type="button" id="downloadSuggestionsPdf" aria-disabled="true" disabled>
           Download suggestions as PDF
         </button>
+      </div>
+    </section>
+
+    <section class="assessment-report">
+      <h2>Assessment report</h2>
+      <div id="assessmentReport">
+        <p>Complete the assessment to generate a narrative report with linked references.</p>
       </div>
     </section>
 
