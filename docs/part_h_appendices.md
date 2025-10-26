@@ -2,7 +2,7 @@
 \part{Appendices and Reference}
 \setbookpart{Appendices and Reference}
 
-# Part VIII: Appendices and Reference
+# Part H: Appendices and Reference
 
 The appendices provide essential reference material, technical implementations, and background context that complement the main narrative. These resources support practitioners as they apply Architecture as Code principles in their own environments.
 
@@ -24,4 +24,4 @@ The [Architecture as Code Maturity Model](architecture_as_code_model.md) consoli
 - Book production infrastructure as a working Architecture as Code example
 - A maturity model that ties the “as code” disciplines together with practical adoption guidance
 
-These references serve as quick-access resources to support the concepts explored in Parts I through VII, ensuring that theoretical understanding translates into practical implementation.
+These references serve as quick-access resources to support the concepts explored in Parts A through G, ensuring that theoretical understanding translates into practical implementation.

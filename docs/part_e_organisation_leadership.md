@@ -2,7 +2,7 @@
 \part{Organisation and Leadership}
 \setbookpart{Organisation and Leadership}
 
-# Part V: Organisation and Leadership
+# Part E: Organisation and Leadership
 
 Technical excellence alone cannot sustain Architecture as Code transformation. This part examines the organisational structures, cultural shifts, and leadership practices that enable teams to thrive in code-based delivery environments.
 
@@ -25,4 +25,4 @@ Digitalisation through code-based infrastructure enables organisations to transf
 - AI agent team models for Architecture as Code initiatives
 - Digitalisation strategies enabled by code-based infrastructure
 
-This part builds on the [testing](13_testing_strategies.md) and [delivery practices](14_practical_implementation.md) from Part IV, showing how organisational capabilities must evolve alongside technical maturity. The experiences and best practices in Part VI demonstrate these principles in action.
+This part builds on the [testing](13_testing_strategies.md) and [delivery practices](14_practical_implementation.md) from Part D, showing how organisational capabilities must evolve alongside technical maturity. The experiences and best practices in Part F demonstrate these principles in action.

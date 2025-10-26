@@ -2,7 +2,7 @@
 \part{Future and Wrap-up}
 \setbookpart{Future and Wrap-up}
 
-# Part VII: Future and Wrap-up
+# Part G: Future and Wrap-up
 
 Architecture as Code continues to evolve as new technologies emerge and organisational practices mature. This concluding part explores emerging trends, long-term developments, and synthesises the journey through this book into actionable guidance for the path ahead.
 
@@ -12,7 +12,7 @@ Yet foresight must be balanced with vigilance. [Anti-patterns in Architecture as
 
 Beyond specific technologies, broader shifts in organisational thinking continue to reshape how Architecture as Code manifests in practice. The convergence of platform engineering, developer experience, and business value delivery creates new opportunities for organisations that position themselves at this intersection.
 
-The [conclusion](27_conclusion.md) ties together threads from across this book—from the [fundamental principles](02_fundamental_principles.md) established in Part I through the technical, security, operational, and organisational practices explored in subsequent parts. More importantly, it provides a step-by-step adoption strategy that organisations can adapt to their specific contexts, constraints, and ambitions.
+The [conclusion](27_conclusion.md) ties together threads from across this book—from the [fundamental principles](02_fundamental_principles.md) established in Part A through the technical, security, operational, and organisational practices explored in subsequent parts. More importantly, it provides a step-by-step adoption strategy that organisations can adapt to their specific contexts, constraints, and ambitions.
 
 **What you will learn in this part:**
 

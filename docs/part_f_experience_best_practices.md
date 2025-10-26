@@ -2,7 +2,7 @@
 \part{Experience and Best Practices}
 \setbookpart{Experience and Best Practices}
 
-# Part VI: Experience and Best Practices
+# Part F: Experience and Best Practices
 
 Theory and practice intersect when organisations apply Architecture as Code principles across diverse contexts. This part synthesises lessons learned from real-world implementations, cross-disciplinary collaboration, and mature practices that span multiple domains.
 
@@ -26,4 +26,4 @@ The practices explored here draw on all previous parts—from the [foundational 
 - Vendor and tool management strategies that reduce lock-in
 - Continuous improvement practices that sustain long-term success
 
-These experiences and patterns prepare organisations to anticipate future developments whilst maintaining effective practices today, setting the stage for the forward-looking perspectives in Part VII.
+These experiences and patterns prepare organisations to anticipate future developments whilst maintaining effective practices today, setting the stage for the forward-looking perspectives in Part G.

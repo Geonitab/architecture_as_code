@@ -199,43 +199,43 @@ book:
       label: "Front Cover"
   part_introductions:
     - filename: "part_a_foundations.md"
-      title: "Part I: Foundations"
-      label: "Part I"
+      title: "Part A: Foundations"
+      label: "Part A"
       required: true
       description: "Introduces the core principles, terminology and documentation conventions used throughout the book."
     - filename: "part_b_architecture_platform.md"
-      title: "Part II: Architecture Platform"
-      label: "Part II"
+      title: "Part B: Architecture Platform"
+      label: "Part B"
       required: true
       description: "Frames the technical building blocks and automation capabilities that underpin Architecture as Code delivery."
     - filename: "part_c_security_governance.md"
-      title: "Part III: Security and Governance"
-      label: "Part III"
+      title: "Part C: Security and Governance"
+      label: "Part C"
       required: true
       description: "Highlights the security, policy and governance priorities carried across the subsequent chapters."
     - filename: "part_d_delivery_operations.md"
-      title: "Part IV: Delivery and Operations"
-      label: "Part IV"
+      title: "Part D: Delivery and Operations"
+      label: "Part D"
       required: true
       description: "Defines the delivery, testing and operational expectations for executing Architecture as Code."
     - filename: "part_e_organisation_leadership.md"
-      title: "Part V: Organisation and Leadership"
-      label: "Part V"
+      title: "Part E: Organisation and Leadership"
+      label: "Part E"
       required: true
       description: "Positions the organisational, leadership and cultural mindset necessary for sustained adoption."
     - filename: "part_f_experience_best_practices.md"
-      title: "Part VI: Experience and Best Practices"
-      label: "Part VI"
+      title: "Part F: Experience and Best Practices"
+      label: "Part F"
       required: true
       description: "Sets the context for experience reports and cross-disciplinary lessons that follow."
     - filename: "part_g_future_wrap_up.md"
-      title: "Part VII: Future and Wrap-up"
-      label: "Part VII"
+      title: "Part G: Future and Wrap-up"
+      label: "Part G"
       required: true
       description: "Prepares readers for the forward-looking guidance, anti-patterns and concluding themes."
     - filename: "part_h_appendices.md"
-      title: "Part VIII: Appendices and Reference"
-      label: "Part VIII"
+      title: "Part H: Appendices and Reference"
+      label: "Part H"
       required: true
       description: "Introduces the appendices, technical reference architecture and citation material."
   special_chapters:
@@ -354,14 +354,14 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 ### Part Introductions
 | Part | Filename | Title | Purpose | Required |
 |---|---|---|---|---|
-| Part I | part_a_foundations.md | Part I: Foundations | Establishes terminology and the editorial framing for the foundational chapters. | Yes |
-| Part II | part_b_architecture_platform.md | Part II: Architecture Platform | Introduces the platform capabilities explored in Chapters 5–7. | Yes |
-| Part III | part_c_security_governance.md | Part III: Security and Governance | Signals the security, policy and governance priorities covered in Chapters 9–12. | Yes |
-| Part IV | part_d_delivery_operations.md | Part IV: Delivery and Operations | Sets expectations for delivery discipline, testing and operational excellence in Chapters 13–16. | Yes |
-| Part V | part_e_organisation_leadership.md | Part V: Organisation and Leadership | Aligns readers on cultural, leadership and organisational change ahead of Chapters 17–21. | Yes |
-| Part VI | part_f_experience_best_practices.md | Part VI: Experience and Best Practices | Provides context for the experience reports and lessons in Chapters 22–24. | Yes |
-| Part VII | part_g_future_wrap_up.md | Part VII: Future and Wrap-up | Frames the forward-looking narrative and anti-pattern coverage in Chapters 25–27. | Yes |
-| Part VIII | part_h_appendices.md | Part VIII: Appendices and Reference | Bridges the main narrative with the reference appendices and technical architecture. | Yes |
+| Part A | part_a_foundations.md | Part A: Foundations | Establishes terminology and the editorial framing for the foundational chapters. | Yes |
+| Part B | part_b_architecture_platform.md | Part B: Architecture Platform | Introduces the platform capabilities explored in Chapters 5–7. | Yes |
+| Part C | part_c_security_governance.md | Part C: Security and Governance | Signals the security, policy and governance priorities covered in Chapters 9–12. | Yes |
+| Part D | part_d_delivery_operations.md | Part D: Delivery and Operations | Sets expectations for delivery discipline, testing and operational excellence in Chapters 13–16. | Yes |
+| Part E | part_e_organisation_leadership.md | Part E: Organisation and Leadership | Aligns readers on cultural, leadership and organisational change ahead of Chapters 17–21. | Yes |
+| Part F | part_f_experience_best_practices.md | Part F: Experience and Best Practices | Provides context for the experience reports and lessons in Chapters 22–24. | Yes |
+| Part G | part_g_future_wrap_up.md | Part G: Future and Wrap-up | Frames the forward-looking narrative and anti-pattern coverage in Chapters 25–27. | Yes |
+| Part H | part_h_appendices.md | Part H: Appendices and Reference | Bridges the main narrative with the reference appendices and technical architecture. | Yes |
 
 ### Chapter Breakdown
 | Label | Filename | Title | Focus Area | Required |

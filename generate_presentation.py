@@ -545,14 +545,14 @@ def load_book_requirements(requirements_path=Path("BOOK_REQUIREMENTS.md")):
 
 
 PART_AREA_MAP = {
-    "Part I: Foundations": {"Foundations"},
-    "Part II: Architecture Platform": {"Architecture Platform"},
-    "Part III: Security and Governance": {"Security and Governance"},
-    "Part IV: Delivery and Operations": {"Delivery and Operations"},
-    "Part V: Organisation and Leadership": {"Organisation and Leadership"},
-    "Part VI: Experience and Best Practices": {"Experience and Best Practices"},
-    "Part VII: Future and Wrap-up": {"Future and Wrap-up"},
-    "Part VIII: Appendices and Reference": {"Appendices", "Reference"},
+    "Part A: Foundations": {"Foundations"},
+    "Part B: Architecture Platform": {"Architecture Platform"},
+    "Part C: Security and Governance": {"Security and Governance"},
+    "Part D: Delivery and Operations": {"Delivery and Operations"},
+    "Part E: Organisation and Leadership": {"Organisation and Leadership"},
+    "Part F: Experience and Best Practices": {"Experience and Best Practices"},
+    "Part G: Future and Wrap-up": {"Future and Wrap-up"},
+    "Part H: Appendices and Reference": {"Appendices", "Reference"},
 }
 
 
