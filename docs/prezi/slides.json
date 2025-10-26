@@ -3696,7 +3696,7 @@
   },
   {
     "id": "part_a_foundations",
-    "title": "Part I: Foundations",
+    "title": "Part A: Foundations",
     "mdPath": "/part_a_foundations/",
     "x": 2480,
     "y": 2760,
@@ -3704,7 +3704,7 @@
   },
   {
     "id": "part_b_architecture_platform",
-    "title": "Part II: Architecture Platform",
+    "title": "Part B: Architecture Platform",
     "mdPath": "/part_b_architecture_platform/",
     "x": 3100,
     "y": 2760,
@@ -3712,7 +3712,7 @@
   },
   {
     "id": "part_c_security_governance",
-    "title": "Part III: Security and Governance",
+    "title": "Part C: Security and Governance",
     "mdPath": "/part_c_security_governance/",
     "x": 0,
     "y": 3220,
@@ -3720,7 +3720,7 @@
   },
   {
     "id": "part_d_delivery_operations",
-    "title": "Part IV: Delivery and Operations",
+    "title": "Part D: Delivery and Operations",
     "mdPath": "/part_d_delivery_operations/",
     "x": 620,
     "y": 3220,
@@ -3728,7 +3728,7 @@
   },
   {
     "id": "part_e_organisation_leadership",
-    "title": "Part V: Organisation and Leadership",
+    "title": "Part E: Organisation and Leadership",
     "mdPath": "/part_e_organisation_leadership/",
     "x": 1240,
     "y": 3220,
@@ -3736,7 +3736,7 @@
   },
   {
     "id": "part_f_experience_best_practices",
-    "title": "Part VI: Experience and Best Practices",
+    "title": "Part F: Experience and Best Practices",
     "mdPath": "/part_f_experience_best_practices/",
     "x": 1860,
     "y": 3220,
@@ -3744,7 +3744,7 @@
   },
   {
     "id": "part_g_future_wrap_up",
-    "title": "Part VII: Future and Wrap-up",
+    "title": "Part G: Future and Wrap-up",
     "mdPath": "/part_g_future_wrap_up/",
     "x": 2480,
     "y": 3220,
@@ -3752,7 +3752,7 @@
   },
   {
     "id": "part_h_appendices",
-    "title": "Part VIII: Appendices and Reference",
+    "title": "Part H: Appendices and Reference",
     "mdPath": "/part_h_appendices/",
     "x": 3100,
     "y": 3220,

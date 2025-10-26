@@ -2,9 +2,9 @@
 \part{Security and Governance}
 \setbookpart{Security and Governance}
 
-# Part III: Security and Governance
+# Part C: Security and Governance
 
-Building on the technical platform capabilities from Part II, we now address the critical concerns that protect organisations and ensure Architecture as Code practices align with regulatory expectations and internal policies.
+Building on the technical platform capabilities from Part B, we now address the critical concerns that protect organisations and ensure Architecture as Code practices align with regulatory expectations and internal policies.
 
 Security cannot be an afterthought in Architecture as Code. The automation and velocity enabled by [CI/CD pipelines](05_automation_devops_cicd.md) and [containerised deployments](07_containerization.md) demand security controls that are equally automated and integrated into every stage of the delivery lifecycle. This part explores how security principles, policy enforcement, and governance structures become executable code rather than static documents.
 

@@ -70,18 +70,18 @@ Sources:
 
 This book follows a deliberate progression that mirrors the typical Architecture as Code transformation journey:
 
-**Part I: Foundations** establishes the conceptual groundwork, covering core principles, version control practices, and Architecture Decision Records that form the bedrock of successful implementation.
+**Part A: Foundations** establishes the conceptual groundwork, covering core principles, version control practices, and Architecture Decision Records that form the bedrock of successful implementation.
 
-**Part II: Architecture Platform** explores the technical building blocks—automation, DevOps, CI/CD pipelines, and containerisation—that transform architectural intent into operational reality.
+**Part B: Architecture Platform** explores the technical building blocks—automation, DevOps, CI/CD pipelines, and containerisation—that transform architectural intent into operational reality.
 
-**Part III: Security and Governance** addresses the critical controls and compliance frameworks that ensure Architecture as Code practices align with regulatory requirements and organisational policies.
+**Part C: Security and Governance** addresses the critical controls and compliance frameworks that ensure Architecture as Code practices align with regulatory requirements and organisational policies.
 
-**Part IV: Delivery and Operations** bridges technical capabilities with business outcomes through testing strategies, practical implementation patterns, cost optimisation, and migration approaches.
+**Part D: Delivery and Operations** bridges technical capabilities with business outcomes through testing strategies, practical implementation patterns, cost optimisation, and migration approaches.
 
-**Part V: Organisation and Leadership** examines the organisational transformation, team structures, cultural shifts, and leadership practices that enable sustainable Architecture as Code adoption.
+**Part E: Organisation and Leadership** examines the organisational transformation, team structures, cultural shifts, and leadership practices that enable sustainable Architecture as Code adoption.
 
-**Part VI: Experience and Best Practices** synthesises lessons learned from real-world implementations, exploring how different "as Code" disciplines work together and distilling proven patterns across diverse contexts.
+**Part F: Experience and Best Practices** synthesises lessons learned from real-world implementations, exploring how different "as Code" disciplines work together and distilling proven patterns across diverse contexts.
 
-**Part VII: Future and Wrap-up** looks ahead to emerging trends whilst providing a comprehensive conclusion that ties together all elements of the Architecture as Code journey.
+**Part G: Future and Wrap-up** looks ahead to emerging trends whilst providing a comprehensive conclusion that ties together all elements of the Architecture as Code journey.
 
 Each part builds upon previous foundations whilst setting the stage for what follows, creating a cohesive narrative that guides readers from first principles through to advanced practice.
