@@ -118,6 +118,32 @@
       background-color: #f1f5f9;
     }
 
+    .improvement-suggestions {
+      margin-top: 2rem;
+    }
+
+    .improvement-suggestions ol {
+      padding-left: 1.25rem;
+    }
+
+    .improvement-suggestions li {
+      margin-bottom: 1rem;
+    }
+
+    .improvement-suggestions li:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .improvement-suggestions .question-label {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .improvement-suggestions .reference-link {
+      display: inline-block;
+      margin-top: 0.25rem;
+    }
+
     @media (max-width: 768px) {
       body {
         margin: 1rem;
@@ -244,6 +270,479 @@
         ]
       }
     ];
+
+    const suggestionIndex = {
+      iac: [
+        {
+          recommendation:
+            "Adopt Git-based workflows for infrastructure modules and enforce peer review gates to keep definitions auditable and collaborative.",
+          reference: {
+            title:
+              "Chapter 03 – Version Control · Git-based workflow for infrastructure",
+            url: "03_version_control.html#git-based-workflow-for-infrastructure"
+          }
+        },
+        {
+          recommendation:
+            "Embed linting and validation stages in CI pipelines so every infrastructure change benefits from automated quality gates.",
+          reference: {
+            title:
+              "Chapter 05 – Automation, DevOps, and CI/CD · Fail-fast feedback and progressive validation",
+            url: "05_automation_devops_cicd.html#fail-fast-feedback-and-progressive-validation"
+          }
+        },
+        {
+          recommendation:
+            "Transition environment provisioning to declarative templates and treat them as the single source of truth for deployments.",
+          reference: {
+            title:
+              "Chapter 02 – Fundamental Principles · The declarative approach in Architecture as Code",
+            url: "02_fundamental_principles.html#the-declarative-approach-in-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Structure infrastructure libraries as reusable modules with versioned interfaces to drive consistency across teams.",
+          reference: {
+            title:
+              "Chapter 24 – Modern Best Practices · Module design guidelines",
+            url: "24_best_practices.html#module-design-guidelines"
+          }
+        },
+        {
+          recommendation:
+            "Automate drift detection and schedule reviews that reconcile live environments with the declared state.",
+          reference: {
+            title:
+              "Chapter 02 – Fundamental Principles · Understanding architectural drift",
+            url: "02_fundamental_principles.html#understanding-architectural-drift"
+          }
+        }
+      ],
+      aac: [
+        {
+          recommendation:
+            "Generate architecture models from code-first tooling so diagrams and definitions share a common source of truth.",
+          reference: {
+            title:
+              "Chapter 06 – Structurizr · Structurizr: Architecture Modeling as Code",
+            url: "06_structurizr.html#structurizr-architecture-modeling-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Update architecture models alongside behavioural changes by running Structurizr automation in every pull request.",
+          reference: {
+            title:
+              "Chapter 06 – Structurizr · Integration with CI/CD pipelines",
+            url: "06_structurizr.html#integration-with-ci-cd-pipelines"
+          }
+        },
+        {
+          recommendation:
+            "Link components to accountable teams through governance workflows so traceability stays transparent.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code.html#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Capture architectural reasoning in reviewed Architecture Decision Records that live with the codebase.",
+          reference: {
+            title:
+              "Chapter 04 – Architecture Decision Records · What are Architecture Decision Records?",
+            url: "04_adr.html#what-are-architecture-decision-records"
+          }
+        },
+        {
+          recommendation:
+            "Add automated validation of architecture models to surface missing relationships before release.",
+          reference: {
+            title:
+              "Chapter 06 – Structurizr · Integration with CI/CD pipelines",
+            url: "06_structurizr.html#integration-with-ci-cd-pipelines"
+          }
+        }
+      ],
+      containers: [
+        {
+          recommendation:
+            "Store Dockerfiles and orchestration manifests in Git so container behaviour remains reproducible.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · The role of container technology within Architecture as Code",
+            url: "07_containerization.html#the-role-of-container-technology-within-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Automate image builds, scanning, and publishing through CI so every release meets the platform's guardrails.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · The role of container technology within Architecture as Code",
+            url: "07_containerization.html#the-role-of-container-technology-within-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Manage cluster configuration declaratively and let controllers reconcile the desired state continuously.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · Kubernetes as an orchestration platform",
+            url: "07_containerization.html#kubernetes-as-an-orchestration-platform"
+          }
+        },
+        {
+          recommendation:
+            "Codify blue-green and canary roll-outs inside delivery pipelines to practise safe progressive delivery.",
+          reference: {
+            title:
+              "Chapter 05 – Automation, DevOps, and CI/CD · Progressive deployment strategies",
+            url: "05_automation_devops_cicd.html#progressive-deployment-strategies"
+          }
+        },
+        {
+          recommendation:
+            "Deliver runtime configuration, secrets, and policies from code-defined sources instead of manual consoles.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · Kubernetes as an orchestration platform",
+            url: "07_containerization.html#kubernetes-as-an-orchestration-platform"
+          }
+        }
+      ],
+      policy: [
+        {
+          recommendation:
+            "Express governance and security requirements as machine-readable policies kept under version control.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Introduction and context",
+            url: "10_policy_and_security.html#introduction-and-context"
+          }
+        },
+        {
+          recommendation:
+            "Enforce automated compliance checks in CI/CD so policy breaches are caught before promotion.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Policy-as-Code operating model",
+            url: "10_policy_and_security.html#policy-as-code-operating-model"
+          }
+        },
+        {
+          recommendation:
+            "Peer review policy code alongside the infrastructure or application change it governs to keep accountability shared.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Policy-as-Code operating model",
+            url: "10_policy_and_security.html#policy-as-code-operating-model"
+          }
+        },
+        {
+          recommendation:
+            "Stream policy violations into actionable alerts with contextual remediation guidance from the automation stack.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Integrating policy automation into European enterprises",
+            url: "10_policy_and_security.html#integrating-policy-automation-into-european-enterprises"
+          }
+        },
+        {
+          recommendation:
+            "Continuously refine policy libraries using threat intelligence and incident feedback following the implementation roadmap.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Implementation roadmap for European delivery teams",
+            url: "10_policy_and_security.html#implementation-roadmap-for-european-delivery-teams"
+          }
+        }
+      ],
+      governance: [
+        {
+          recommendation:
+            "Codify approval workflows, branch protections, and roles via pull-request driven governance repositories.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code.html#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Capture decision history and rationale automatically within governance pipelines to maintain a complete audit trail.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code.html#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Test governance code in lower environments with automated validations before promoting changes to production.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code.html#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Track policy exceptions as time-boxed code artefacts so drift is visible and remediation is enforced.",
+          reference: {
+            title:
+              "Chapter 26 – Anti-Patterns · Policy drift through manual exceptions",
+            url: "26_aac_anti_patterns.html#policy-drift-through-manual-exceptions"
+          }
+        },
+        {
+          recommendation:
+            "Provide accessible tooling, templates, and chat integrations so non-developers can contribute safely.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Tooling to enable non-developers",
+            url: "11_governance_as_code.html#tooling-to-enable-non-developers"
+          }
+        }
+      ],
+      compliance: [
+        {
+          recommendation:
+            "Translate regulatory controls into executable checks that run continuously across live environments.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence",
+            url: "12_compliance.html#compliance-and-regulatory-adherence"
+          }
+        },
+        {
+          recommendation:
+            "Maintain reusable compliance baselines and templates to accelerate regulatory onboarding.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence",
+            url: "12_compliance.html#compliance-and-regulatory-adherence"
+          }
+        },
+        {
+          recommendation:
+            "Automate evidence collection and store artefacts alongside compliance code for audit readiness.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence",
+            url: "12_compliance.html#compliance-and-regulatory-adherence"
+          }
+        },
+        {
+          recommendation:
+            "Feed compliance findings into dashboards and remediation workflows so follow-up happens in the open.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence · Policy-driven infrastructure and governance",
+            url: "12_compliance.html#policy-driven-infrastructure-and-governance"
+          }
+        },
+        {
+          recommendation:
+            "Schedule stakeholder reviews of compliance dashboards generated from automation to sustain cadence.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence · Policy-driven infrastructure and governance",
+            url: "12_compliance.html#policy-driven-infrastructure-and-governance"
+          }
+        }
+      ],
+      testing: [
+        {
+          recommendation:
+            "Define automated tests for every codified artefact so infrastructure, policies, and models gain the same assurance as software.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Testing strategies for Infrastructure as Code",
+            url: "13_testing_strategies.html#testing-strategies-for-infrastructure-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Run the full test suite on each merge or release candidate to keep quality gates reliable.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Automation and watch mode",
+            url: "13_testing_strategies.html#automation-and-watch-mode"
+          }
+        },
+        {
+          recommendation:
+            "Monitor coverage with shared fixtures and metrics so gaps trigger backlog improvements.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Best practices for infrastructure testing with Vitest",
+            url: "13_testing_strategies.html#best-practices-for-infrastructure-testing-with-vitest"
+          }
+        },
+        {
+          recommendation:
+            "Rehearse failure scenarios with codified chaos experiments to validate resilience and recovery paths.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Chaos Monkey experiments",
+            url: "13_testing_strategies.html#chaos-monkey-experiments"
+          }
+        },
+        {
+          recommendation:
+            "Manage test data, fixtures, and sanitisation routines as code to keep environments repeatable.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Best practices for infrastructure testing with Vitest",
+            url: "13_testing_strategies.html#best-practices-for-infrastructure-testing-with-vitest"
+          }
+        }
+      ],
+      documentation: [
+        {
+          recommendation:
+            "Author documentation in version-controlled markup with review workflows so knowledge stays accurate.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Documentation as Code: communication and knowledge transfer",
+            url: "22_documentation_vs_architecture.html#documentation-as-code-communication-and-knowledge-transfer"
+          }
+        },
+        {
+          recommendation:
+            "Automate publishing pipelines so every change regenerates web, PDF, and diagram outputs from the same sources.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Architecture as Code feeds Documentation as Code",
+            url: "22_documentation_vs_architecture.html#architecture-as-code-feeds-documentation-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Bake documentation updates into the definition of done so product and platform changes always ship with revised guidance.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · The relationship between Documentation as Code and Architecture as Code",
+            url: "22_documentation_vs_architecture.html#the-relationship-between-documentation-as-code-and-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Generate diagrams from structured models to eliminate manual drawing effort.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Architecture as Code feeds Documentation as Code",
+            url: "22_documentation_vs_architecture.html#architecture-as-code-feeds-documentation-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Automate link, style, and quality checks in CI to uphold documentation standards.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Key differences: a comparative framework",
+            url: "22_documentation_vs_architecture.html#key-differences-a-comparative-framework"
+          }
+        }
+      ],
+      knowledge: [
+        {
+          recommendation:
+            "Capture organisational knowledge in structured, versioned repositories with clear ownership to reduce onboarding friction.",
+          reference: {
+            title:
+              "Chapter 18 – Team Structure · Knowledge sharing and communities of practice",
+            url: "18_team_structure.html#knowledge-sharing-and-communities-of-practice"
+          }
+        },
+        {
+          recommendation:
+            "Provide onboarding journeys as code-based playbooks or scripts so induction follows a consistent, automated path.",
+          reference: {
+            title:
+              "Chapter 23 – Soft as Code Interplay · Knowledge and culture as code",
+            url: "23_soft_as_code_interplay.html#knowledge-and-culture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Track retrospectives and improvement actions in version-controlled artefacts with automated follow-up tasks.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Practical examples of strategic discussions",
+            url: "19_management_as_code.html#practical-examples-of-strategic-discussions"
+          }
+        },
+        {
+          recommendation:
+            "Embed cultural guidance into tooling—bots, templates, and prompts—so behaviours are reinforced where work happens.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Cultural and behavioural codification",
+            url: "19_management_as_code.html#cultural-and-behavioural-codification"
+          }
+        },
+        {
+          recommendation:
+            "Schedule automated reminders to review knowledge bases and cultural commitments to keep guidance current.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Cultural and behavioural codification",
+            url: "19_management_as_code.html#cultural-and-behavioural-codification"
+          }
+        }
+      ],
+      management: [
+        {
+          recommendation:
+            "Document operating models, team topologies, and responsibilities through codified templates that live in Git.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Defining Management as Code",
+            url: "19_management_as_code.html#defining-management-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Run leadership ceremonies from dashboards and scripts generated by management code so rituals stay repeatable.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Embedding management in the DevOps loop",
+            url: "19_management_as_code.html#embedding-management-in-the-devops-loop"
+          }
+        },
+        {
+          recommendation:
+            "Collect performance and delivery metrics automatically and surface them through shared management dashboards.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Measuring management effectiveness",
+            url: "19_management_as_code.html#measuring-management-effectiveness"
+          }
+        },
+        {
+          recommendation:
+            "Manage resource allocation and staffing through codified workflows with automated approvals and audit trails.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Governance and policy automation",
+            url: "19_management_as_code.html#governance-and-policy-automation"
+          }
+        },
+        {
+          recommendation:
+            "Iterate management playbooks via pull requests so the leadership community can review and evolve guidance together.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · GitHub configuration for MaC",
+            url: "19_management_as_code.html#github-configuration-for-mac"
+          }
+        }
+      ]
+    };
 
     document.addEventListener("DOMContentLoaded", () => {
       buildForm();
@@ -391,6 +890,7 @@
       const radarDefinition = buildRadarDefinition(detailedResults, maxQuestions);
       renderRadar(radarDefinition);
       renderSummaryTable(detailedResults);
+      renderSuggestions(collectImprovementSuggestions(detailedResults));
 
       const jsonOutput = document.getElementById("jsonOutput");
       jsonOutput.value = JSON.stringify(resultPayload, null, 2);
@@ -458,6 +958,85 @@
 
       summaryContainer.innerHTML = "";
       summaryContainer.appendChild(table);
+    }
+
+    function collectImprovementSuggestions(results) {
+      const suggestions = [];
+
+      results.forEach((result) => {
+        result.answers.forEach((answer, index) => {
+          if (answer.response !== "no") {
+            return;
+          }
+
+          const aspectSuggestions = suggestionIndex[result.aspectKey] ?? [];
+          const suggestionDefinition = aspectSuggestions[index];
+
+          if (!suggestionDefinition) {
+            return;
+          }
+
+          suggestions.push({
+            aspectName: result.aspectName,
+            question: answer.question,
+            recommendation: suggestionDefinition.recommendation,
+            reference: suggestionDefinition.reference
+          });
+        });
+      });
+
+      return suggestions;
+    }
+
+    function renderSuggestions(suggestions) {
+      const container = document.getElementById("improvementSuggestions");
+      if (!container) {
+        return;
+      }
+
+      container.innerHTML = "";
+
+      if (!suggestions.length) {
+        const placeholder = document.createElement("p");
+        placeholder.textContent =
+          "Complete the assessment to receive targeted recommendations for boosting your maturity.";
+        container.appendChild(placeholder);
+        return;
+      }
+
+      const intro = document.createElement("p");
+      intro.textContent =
+        "Focus on the following actions to raise your maturity across disciplines:";
+      container.appendChild(intro);
+
+      const list = document.createElement("ol");
+
+      suggestions.forEach((suggestion) => {
+        const item = document.createElement("li");
+
+        const questionLabel = document.createElement("p");
+        questionLabel.className = "question-label";
+        questionLabel.textContent = `${suggestion.aspectName} – ${suggestion.question}`;
+        item.appendChild(questionLabel);
+
+        const recommendation = document.createElement("p");
+        recommendation.textContent = suggestion.recommendation;
+        item.appendChild(recommendation);
+
+        if (suggestion.reference) {
+          const referenceLink = document.createElement("a");
+          referenceLink.className = "reference-link";
+          referenceLink.href = suggestion.reference.url;
+          referenceLink.target = "_blank";
+          referenceLink.rel = "noopener noreferrer";
+          referenceLink.textContent = suggestion.reference.title;
+          item.appendChild(referenceLink);
+        }
+
+        list.appendChild(item);
+      });
+
+      container.appendChild(list);
     }
 
     async function copyJsonToClipboard() {
@@ -577,6 +1156,13 @@
       <h2>Summary by discipline</h2>
       <div id="resultSummary">
         <p>Submit your answers to view a breakdown of the results.</p>
+      </div>
+    </section>
+
+    <section class="improvement-suggestions">
+      <h2>Improvement suggestions</h2>
+      <div id="improvementSuggestions">
+        <p>Complete the assessment to receive targeted recommendations for boosting your maturity.</p>
       </div>
     </section>
 
