@@ -184,108 +184,6 @@
       margin-top: 0.25rem;
     }
 
-    .report-export p {
-      max-width: 60rem;
-    }
-
-    #pdfReport {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      opacity: 0;
-      visibility: hidden;
-      z-index: -1;
-    }
-
-    .pdf-report {
-      width: 180mm;
-      max-width: 100%;
-      padding: 20mm 18mm;
-      box-sizing: border-box;
-      margin: 0 auto;
-      background-color: #ffffff;
-      color: #1f2933;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .pdf-report h1 {
-      margin-top: 0;
-    }
-
-    .pdf-report h2 {
-      margin-bottom: 0.5rem;
-    }
-
-    .pdf-report h3 {
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pdf-report section {
-      margin-top: 1.5rem;
-    }
-
-    .pdf-report h2 + p,
-    .pdf-report section + section {
-      margin-top: 1.25rem;
-    }
-
-    .pdf-report table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.75rem;
-    }
-
-    .pdf-report table th,
-    .pdf-report table td {
-      border: 1px solid #d2d6dc;
-      padding: 0.65rem;
-      text-align: left;
-    }
-
-    .pdf-report table th {
-      background-color: #f1f5f9;
-    }
-
-    .pdf-report .meta {
-      margin-bottom: 1rem;
-    }
-
-    .pdf-report img,
-    .pdf-report svg {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .pdf-report .answers-list {
-      margin-top: 0.5rem;
-      padding-left: 1.25rem;
-    }
-
-    .pdf-report .answer-entry {
-      margin-bottom: 0.5rem;
-    }
-
-    .pdf-report .question-label {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .pdf-report .risk {
-      color: #991b1b;
-      font-weight: 500;
-      margin: 0.25rem 0;
-    }
-
-    .pdf-report .reference-link {
-      display: inline-block;
-      margin-top: 0.25rem;
-    }
-
     @media (max-width: 768px) {
       body {
         margin: 1rem;
@@ -296,7 +194,6 @@
       }
     }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.esm.min.mjs";
 
@@ -310,7 +207,6 @@
     let initialRadarContent = "";
     let initialSummaryContent = "";
     let initialSuggestionsContent = "";
-    let fallbackPdfObjectUrl = null;
 
     const aspects = [
       {
@@ -1020,13 +916,6 @@
         initialSuggestionsContent = suggestionsContainer.innerHTML;
       }
 
-      togglePdfButton(false);
-
-      const downloadPdfButton = document.getElementById("downloadPdf");
-      if (downloadPdfButton) {
-        downloadPdfButton.addEventListener("click", handleDownloadPdf);
-      }
-
       document
         .getElementById("copyJson")
         .addEventListener("click", copyJsonToClipboard);
@@ -1176,9 +1065,6 @@
         suggestions,
         resultPayload
       };
-
-      updatePdfReport(detailedResults, suggestions, resultPayload);
-      togglePdfButton(true);
     }
 
     function buildRadarDefinition(results) {
@@ -1422,440 +1308,8 @@
       container.appendChild(list);
     }
 
-    function clearFallbackPdfLink() {
-      const fallbackLink = document.getElementById("downloadPdfFallback");
-      if (fallbackLink) {
-        fallbackLink.hidden = true;
-        fallbackLink.removeAttribute("href");
-        fallbackLink.removeAttribute("download");
-      }
-
-      if (fallbackPdfObjectUrl) {
-        URL.revokeObjectURL(fallbackPdfObjectUrl);
-        fallbackPdfObjectUrl = null;
-      }
-    }
-
-    function updateFallbackPdfLink(blob) {
-      const fallbackLink = document.getElementById("downloadPdfFallback");
-      if (!fallbackLink) {
-        return null;
-      }
-
-      if (fallbackPdfObjectUrl) {
-        URL.revokeObjectURL(fallbackPdfObjectUrl);
-      }
-
-      fallbackPdfObjectUrl = URL.createObjectURL(blob);
-      fallbackLink.href = fallbackPdfObjectUrl;
-      fallbackLink.download = "aac_maturity_assessment.pdf";
-      fallbackLink.hidden = false;
-
-      return fallbackPdfObjectUrl;
-    }
-
-    function triggerDownload(url, filename) {
-      const anchor = document.createElement("a");
-      anchor.href = url;
-      anchor.download = filename;
-      anchor.rel = "noopener";
-      anchor.style.display = "none";
-      document.body.appendChild(anchor);
-      anchor.click();
-      document.body.removeChild(anchor);
-    }
-
-    function createInlineImageFromSvg(svgElement) {
-      if (!svgElement) {
-        return null;
-      }
-
-      try {
-        const clonedSvg = svgElement.cloneNode(true);
-        const boundingBox = svgElement.getBoundingClientRect();
-
-        if (!clonedSvg.getAttribute("viewBox") && boundingBox.width && boundingBox.height) {
-          clonedSvg.setAttribute("viewBox", `0 0 ${boundingBox.width} ${boundingBox.height}`);
-        }
-
-        if (!clonedSvg.getAttribute("width") && boundingBox.width) {
-          clonedSvg.setAttribute("width", String(boundingBox.width));
-        }
-
-        if (!clonedSvg.getAttribute("height") && boundingBox.height) {
-          clonedSvg.setAttribute("height", String(boundingBox.height));
-        }
-
-        const serialisedSvg = new XMLSerializer().serializeToString(clonedSvg);
-        const svgBlob = new Blob([serialisedSvg], {
-          type: "image/svg+xml;charset=utf-8"
-        });
-        const objectUrl = URL.createObjectURL(svgBlob);
-
-        const image = new Image();
-        image.decoding = "async";
-        image.loading = "eager";
-        image.crossOrigin = "anonymous";
-        image.alt = "Radar snapshot";
-        image.src = objectUrl;
-        image.style.maxWidth = "100%";
-        image.style.height = "auto";
-
-        image.addEventListener(
-          "load",
-          () => {
-            URL.revokeObjectURL(objectUrl);
-          },
-          { once: true }
-        );
-
-        image.addEventListener(
-          "error",
-          () => {
-            URL.revokeObjectURL(objectUrl);
-          },
-          { once: true }
-        );
-
-        return image;
-      } catch (error) {
-        console.error("Failed to convert SVG to inline image", error);
-        return null;
-      }
-    }
-
-    async function waitForImagesToLoad(scope) {
-      const images = Array.from(scope.querySelectorAll("img"));
-      if (!images.length) {
-        return;
-      }
-
-      await Promise.all(
-        images.map((image) => {
-          if (image.complete && image.naturalWidth !== 0) {
-            return Promise.resolve();
-          }
-
-          return new Promise((resolve) => {
-            const settle = () => {
-              image.removeEventListener("load", settle);
-              image.removeEventListener("error", settle);
-              resolve();
-            };
-
-            image.addEventListener("load", settle, { once: true });
-            image.addEventListener("error", settle, { once: true });
-          });
-        })
-      );
-    }
-
-    async function prepareReportForExport(report) {
-      await waitForImagesToLoad(report);
-      await new Promise((resolve) => setTimeout(resolve, 75));
-      await new Promise((resolve) => window.requestAnimationFrame(resolve));
-    }
-
-    function togglePdfButton(isEnabled) {
-      const button = document.getElementById("downloadPdf");
-      if (!button) {
-        return;
-      }
-
-      button.disabled = !isEnabled;
-      button.setAttribute("aria-disabled", String(!isEnabled));
-    }
-
-    async function handleDownloadPdf() {
-      const report = document.getElementById("pdfReport");
-      const button = document.getElementById("downloadPdf");
-
-      if (!report || !button) {
-        return;
-      }
-
-      if (!latestAssessment) {
-        alert("Please complete the assessment before downloading the PDF report.");
-        return;
-      }
-
-      if (!report.childElementCount) {
-        alert(
-          "The PDF report content is not available yet. Please regenerate the assessment and try again."
-        );
-        return;
-      }
-
-      if (typeof window.html2pdf !== "function") {
-        alert("PDF generation is currently unavailable. Please try again shortly.");
-        return;
-      }
-
-      const originalLabel = button.textContent;
-
-      button.disabled = true;
-      button.setAttribute("aria-disabled", "true");
-      button.textContent = "Preparing PDF…";
-
-      const previousStyles = snapshotInlineStyles(report, [
-        "display",
-        "position",
-        "top",
-        "left",
-        "transform",
-        "opacity",
-        "visibility",
-        "pointerEvents",
-        "zIndex"
-      ]);
-
-      applyExportStyles(report);
-
-      try {
-        clearFallbackPdfLink();
-        await prepareReportForExport(report);
-
-        const worker = window
-          .html2pdf()
-          .set({
-            margin: [0.5, 0.5, 0.5, 0.5],
-            filename: "aac_maturity_assessment.pdf",
-            html2canvas: {
-              scale: 2,
-              useCORS: true,
-              allowTaint: true,
-              backgroundColor: "#ffffff",
-              logging: false
-            },
-            jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
-          })
-          .from(report)
-          .toPdf();
-
-        const pdfInstance = await worker.get("pdf");
-        const pdfBlob = pdfInstance.output("blob");
-        const downloadUrl = updateFallbackPdfLink(pdfBlob);
-
-        if (downloadUrl) {
-          triggerDownload(downloadUrl, "aac_maturity_assessment.pdf");
-        } else {
-          const temporaryUrl = URL.createObjectURL(pdfBlob);
-          try {
-            triggerDownload(temporaryUrl, "aac_maturity_assessment.pdf");
-          } finally {
-            URL.revokeObjectURL(temporaryUrl);
-          }
-        }
-      } catch (error) {
-        console.error("Failed to generate PDF report", error);
-        alert("The PDF could not be generated. Please try again.");
-      } finally {
-        restoreInlineStyles(report, previousStyles);
-        button.textContent = originalLabel;
-        button.disabled = false;
-        button.setAttribute("aria-disabled", "false");
-      }
-    }
-
-    function updatePdfReport(results, suggestions, payload) {
-      const container = document.getElementById("pdfReport");
-      if (!container) {
-        return;
-      }
-
-      clearFallbackPdfLink();
-      container.innerHTML = "";
-      container.className = "pdf-report";
-      container.setAttribute("data-prepared", "true");
-      container.style.display = "block";
-      container.style.position = "fixed";
-      container.style.top = "0";
-      container.style.left = "50%";
-      container.style.transform = "translateX(-50%)";
-      container.style.pointerEvents = "none";
-      container.style.visibility = "hidden";
-      container.style.opacity = "0";
-      container.style.zIndex = "-1";
-
-      const title = document.createElement("h1");
-      title.textContent = "Architecture as Code Maturity Assessment";
-      container.appendChild(title);
-
-      const meta = document.createElement("p");
-      meta.className = "meta";
-      const generatedOn = payload?.generatedAt
-        ? new Date(payload.generatedAt)
-        : new Date();
-      meta.textContent = `Generated on ${generatedOn.toLocaleString("en-GB", {
-        dateStyle: "long",
-        timeStyle: "short"
-      })}`;
-      container.appendChild(meta);
-
-      if (payload?.totals) {
-        const overview = document.createElement("p");
-        const roundedAverage = Number.parseFloat(payload.totals.averagePercentage);
-        const formattedAverage = Number.isFinite(roundedAverage)
-          ? `${Math.round(roundedAverage)}%`
-          : "0%";
-        overview.textContent = `Affirmative responses: ${payload.totals.overallYes} of ${payload.totals.overallQuestions} (${formattedAverage} average across disciplines).`;
-        container.appendChild(overview);
-      }
-
-      const radarFigure = document.querySelector("#radarDiagram svg");
-      if (radarFigure) {
-        const radarSection = document.createElement("section");
-        const radarHeading = document.createElement("h2");
-        radarHeading.textContent = "Radar snapshot";
-        radarSection.appendChild(radarHeading);
-
-        const figureWrapper = document.createElement("div");
-        const inlineRadarImage = createInlineImageFromSvg(radarFigure);
-
-        if (inlineRadarImage) {
-          figureWrapper.appendChild(inlineRadarImage);
-        } else {
-          figureWrapper.innerHTML = radarFigure.outerHTML;
-        }
-        radarSection.appendChild(figureWrapper);
-
-        container.appendChild(radarSection);
-      }
-
-      const summarySection = document.createElement("section");
-      const summaryHeading = document.createElement("h2");
-      summaryHeading.textContent = "Summary by discipline";
-      summarySection.appendChild(summaryHeading);
-
-      const summaryTable = document.createElement("table");
-      const headerRow = document.createElement("tr");
-      [
-        "Discipline",
-        "Affirmative responses",
-        "Total questions",
-        "Percentage"
-      ].forEach((heading) => {
-        const cell = document.createElement("th");
-        cell.textContent = heading;
-        headerRow.appendChild(cell);
-      });
-      summaryTable.appendChild(headerRow);
-
-      results.forEach((result) => {
-        const row = document.createElement("tr");
-
-        const aspectCell = document.createElement("td");
-        aspectCell.textContent = result.aspectName;
-        row.appendChild(aspectCell);
-
-        const yesCell = document.createElement("td");
-        yesCell.textContent = result.yesCount;
-        row.appendChild(yesCell);
-
-        const totalCell = document.createElement("td");
-        totalCell.textContent = result.totalQuestions;
-        row.appendChild(totalCell);
-
-        const percentageCell = document.createElement("td");
-        percentageCell.textContent = `${result.percentage}%`;
-        row.appendChild(percentageCell);
-
-        summaryTable.appendChild(row);
-      });
-
-      summarySection.appendChild(summaryTable);
-      container.appendChild(summarySection);
-
-      const suggestionsSection = document.createElement("section");
-      const suggestionsHeading = document.createElement("h2");
-      suggestionsHeading.textContent = "Recommendations";
-      suggestionsSection.appendChild(suggestionsHeading);
-
-      if (!suggestions.length) {
-        const placeholder = document.createElement("p");
-        placeholder.textContent = "All disciplines met every criterion, so no immediate recommendations were generated.";
-        suggestionsSection.appendChild(placeholder);
-      } else {
-        const list = document.createElement("ol");
-
-        suggestions.forEach((suggestion) => {
-          const item = document.createElement("li");
-
-          const label = document.createElement("p");
-          label.className = "question-label";
-          label.textContent = `${suggestion.aspectName} – ${suggestion.question}`;
-          item.appendChild(label);
-
-          if (suggestion.risk) {
-            const risk = document.createElement("p");
-            risk.className = "risk";
-            risk.textContent = suggestion.risk;
-            item.appendChild(risk);
-          }
-
-          const recommendation = document.createElement("p");
-          recommendation.textContent = suggestion.recommendation;
-          item.appendChild(recommendation);
-
-          if (suggestion.reference) {
-            const referenceLink = document.createElement("a");
-            referenceLink.className = "reference-link";
-            referenceLink.href = suggestion.reference.url;
-            referenceLink.textContent = suggestion.reference.title;
-            referenceLink.target = "_blank";
-            referenceLink.rel = "noopener noreferrer";
-            item.appendChild(referenceLink);
-          }
-
-          list.appendChild(item);
-        });
-
-        suggestionsSection.appendChild(list);
-      }
-
-      container.appendChild(suggestionsSection);
-
-      const responsesSection = document.createElement("section");
-      const responsesHeading = document.createElement("h2");
-      responsesHeading.textContent = "Responses by discipline";
-      responsesSection.appendChild(responsesHeading);
-
-      results.forEach((result) => {
-        const aspectWrapper = document.createElement("div");
-
-        const aspectHeading = document.createElement("h3");
-        aspectHeading.textContent = `${result.aspectName} (${result.yesCount} of ${result.totalQuestions})`;
-        aspectWrapper.appendChild(aspectHeading);
-
-        const answersList = document.createElement("ol");
-        answersList.className = "answers-list";
-
-        result.answers.forEach((answer) => {
-          const entry = document.createElement("li");
-          entry.className = "answer-entry";
-
-          const outcome = document.createElement("strong");
-          outcome.textContent = answer.response === "yes" ? "Yes" : "No";
-          entry.appendChild(outcome);
-          entry.appendChild(document.createTextNode(` – ${answer.question}`));
-
-          answersList.appendChild(entry);
-        });
-
-        aspectWrapper.appendChild(answersList);
-        responsesSection.appendChild(aspectWrapper);
-      });
-
-      container.appendChild(responsesSection);
-
-      const closing = document.createElement("p");
-      closing.textContent = "Share this PDF to communicate your Architecture as Code maturity baseline and track progress over time.";
-      container.appendChild(closing);
-    }
-
     function handleReset() {
       latestAssessment = null;
-      clearFallbackPdfLink();
 
       const radarContainer = document.getElementById("radarDiagram");
       if (radarContainer) {
@@ -1877,22 +1331,6 @@
         jsonOutput.value = "";
       }
 
-      const pdfContainer = document.getElementById("pdfReport");
-      if (pdfContainer) {
-        pdfContainer.innerHTML = "";
-        pdfContainer.style.display = "block";
-        pdfContainer.style.position = "fixed";
-        pdfContainer.style.top = "0";
-        pdfContainer.style.left = "50%";
-        pdfContainer.style.transform = "translateX(-50%)";
-        pdfContainer.style.pointerEvents = "none";
-        pdfContainer.style.visibility = "hidden";
-        pdfContainer.style.opacity = "0";
-        pdfContainer.style.zIndex = "-1";
-        pdfContainer.removeAttribute("data-prepared");
-      }
-
-      togglePdfButton(false);
     }
 
     async function copyTextToClipboard(text) {
@@ -2001,37 +1439,6 @@
       updateOutputs(detailedResults, resultPayload);
     }
 
-    function snapshotInlineStyles(element, properties) {
-      return properties.reduce((snapshot, property) => {
-        snapshot[property] = element.style[property] ?? "";
-        return snapshot;
-      }, {});
-    }
-
-    function restoreInlineStyles(element, snapshot) {
-      Object.entries(snapshot).forEach(([property, value]) => {
-        element.style[property] = value;
-      });
-    }
-
-    function applyExportStyles(element) {
-      element.style.display = "block";
-      element.style.position = "static";
-      element.style.top = "";
-      element.style.left = "";
-      element.style.transform = "";
-      element.style.pointerEvents = "none";
-      element.style.visibility = "visible";
-      element.style.opacity = "1";
-      element.style.zIndex = "";
-    }
-
-    window.addEventListener("beforeunload", () => {
-      if (fallbackPdfObjectUrl) {
-        URL.revokeObjectURL(fallbackPdfObjectUrl);
-        fallbackPdfObjectUrl = null;
-      }
-    });
   </script>
 </head>
 <body>
@@ -2070,27 +1477,6 @@
       </div>
     </section>
 
-    <section class="result-summary report-export">
-      <h2>PDF report</h2>
-      <p>
-        Save a shareable PDF that captures the radar snapshot, summary table, recommendations and a full breakdown of your
-        responses.
-      </p>
-      <div class="actions">
-        <button type="button" id="downloadPdf" disabled aria-disabled="true">Download PDF report</button>
-        <a
-          id="downloadPdfFallback"
-          class="secondary"
-          href=""
-          hidden
-          rel="noopener"
-          target="_blank"
-        >
-          Open the PDF in a new tab if your browser blocks automatic downloads.
-        </a>
-      </div>
-    </section>
-
     <section class="result-summary">
       <h2>JSON export</h2>
       <p>The JSON payload includes the radar data and individual answers so you can archive or process the assessment.</p>
@@ -2109,6 +1495,5 @@
       </div>
     </section>
   </main>
-  <div id="pdfReport" aria-hidden="true"></div>
 </body>
 </html>
