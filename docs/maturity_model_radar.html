@@ -943,9 +943,12 @@
         { key: "mgmt", label: "Management as code" }
       ];
 
-      const axisLine = axes
-        .map(({ key, label }) => `${key}["${label.replace(/"/g, '\\"')}"]`)
-        .join(", ");
+      const axisLines = axes
+        .map(
+          ({ key, label }) =>
+            `    ${key}: "${label.replace(/"/g, '\\"')}"`
+        )
+        .join("\n");
 
       const dataSeries = axes
         .map(({ key }) => {
@@ -959,7 +962,19 @@
         })
         .join(", ");
 
-      return `radar-beta\n  title Architecture as Code Maturity Snapshot\n  axis ${axisLine}\n  curve current["Current assessment"]{${dataSeries}}\n  min 0\n  max 5\n  ticks 5\n  showLegend true`;
+      return [
+        "radar",
+        "  title: Architecture as Code Maturity Snapshot",
+        "  axis:",
+        axisLines,
+        "  dataset:",
+        "    title: Current assessment",
+        `    data: [${dataSeries}]`,
+        "  min: 0",
+        "  max: 5",
+        "  ticks: 5",
+        "  showLegend: true"
+      ].join("\n");
     }
 
     async function renderRadar(definition) {
