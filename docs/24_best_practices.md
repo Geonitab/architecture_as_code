@@ -138,6 +138,17 @@ Balanced portfolios prevent lock-in and create negotiation leverage. Where a sin
 
 Regular service reviews examine performance metrics, support responsiveness, and roadmap alignment. Joint innovation forums allow vendors and platform teams to co-design features that deliver measurable value.
 
+## Structurizr Enablement Patterns
+
+Architecture teams thrive when diagrams and narrative assets share the same governance standards as application code. To that end, maintain a living Structurizr workspace and reinforce shared practices:
+
+- **Start from the curated workspace** – `docs/examples/structurizr/aac_reference_workspace.dsl` reflects the C4 hierarchy described in Chapter 06. Encourage new teams to clone this definition so that terminology, styles, and relationship semantics remain consistent.
+- **Automate every validation** – Embed `structurizr.sh validate` and `structurizr.sh export` in local pre-commit hooks or repository CI workflows. Automation ensures that diagram assets regenerate on demand and prevents last-minute surprises during release reviews.
+- **Treat diagram reviews as code reviews** – Pull requests should highlight the change intent, link to any relevant Architecture Decision Records, and include before/after renders. Reviewers confirm that tags, layout, and element descriptions align with repository conventions and that the change maps to an approved initiative.
+- **Close the feedback loop** – When changes land, run `python3 generate_book.py && docs/build_book.sh` to refresh downstream artefacts. Sharing the resulting PNGs or Structurizr workspace exports during showcases helps teams internalise the latest architecture story.
+
+These routines eliminate duplicated diagramming effort across programmes, allowing architects to focus on structural decisions rather than cosmetic fixes.
+
 ## Risk Management and Resilience
 
 Risk management integrates technical safeguards with business continuity planning so that infrastructure disruption does not cascade into customer harm.
