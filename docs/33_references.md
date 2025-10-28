@@ -14,10 +14,10 @@ This section provides a comprehensive list of all sources and references cited t
 
 ## Academic and Industry Publications
 
-**AaC Open Source Project.** "Architecture-as-Code Repository." https://github.com/aacplatform/aac  
+**AaC Open Source Project.** "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 31: Technical Architecture](31_technical_architecture.md)*
 
-**Architecture Decision Records Community.** "ADR Guidelines and Templates." https://adr.github.io  
+**Architecture Decision Records Community.** "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
 
 **Atlassian.** "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
@@ -26,7 +26,7 @@ This section provides a comprehensive list of all sources and references cited t
 **Atlassian.** "Git Workflows for Architecture as Code." Atlassian Git Documentation.
 *Referenced in: [Chapter 3: Version Control](03_version_control.md)*
 
-**Brown, S.** "C4 Model Overview." https://c4model.com/  
+**Brown, S.** "C4 Model Overview." [https://c4model.com/](https://c4model.com/)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 24: Best Practices](24_best_practices.md)*
 
 **Brown, S.** "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.  
@@ -41,7 +41,7 @@ This section provides a comprehensive list of all sources and references cited t
 **Cloud Native Computing Foundation.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [7])
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
 
-**FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. https://calm.finos.org/  
+**FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. [https://calm.finos.org/](https://calm.finos.org/)  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
 **Ford, Neal et al.** "Building Evolutionary Architectures." O'Reilly Media, 2017.  
@@ -56,7 +56,7 @@ This section provides a comprehensive list of all sources and references cited t
 **GitLab.** "Building a Single Source of Truth with APIs and CLI." GitLab Topics, 2024.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 11: Governance as Code](11_governance_as_code.md)*
 
-**GitHub Docs.** "About protected branches." https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches
+**GitHub Docs.** "About protected branches." [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
 *Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **GitHub Open Source Community.** "Collaborative Software Development." Platform Documentation, 2024.
@@ -65,13 +65,13 @@ This section provides a comprehensive list of all sources and references cited t
 **IEEE.** "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**HashiCorp.** "Policy as Code Overview." https://developer.hashicorp.com/terraform/enterprise/policy-as-code  
+**HashiCorp.** "Policy as Code Overview." [https://developer.hashicorp.com/terraform/enterprise/policy-as-code](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)  
 *Referenced in: [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
-**Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/  
+**Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)  
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 
-**Kvadrat AB.** "Technology Consulting Excellence." Company Profile, 2024. Available at: https://www.kvadrat.se/  
+**Kvadrat AB.** "Technology Consulting Excellence." Company Profile, 2024. Available at: [https://www.kvadrat.se/](https://www.kvadrat.se/)  
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 
 **MarketsandMarkets.** "Infrastructure as Code Market Report." MarketsandMarkets, 2023.  
@@ -80,7 +80,7 @@ This section provides a comprehensive list of all sources and references cited t
 **Martin, R.** "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**Mermaid.** "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. https://mermaid.js.org/  
+**Mermaid.** "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. [https://mermaid.js.org/](https://mermaid.js.org/)  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
 **NIST.** "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.  
@@ -92,13 +92,13 @@ This section provides a comprehensive list of all sources and references cited t
 **Open Policy Agent.** "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**Open Policy Agent.** "Policy as Code Overview." https://www.openpolicyagent.org/docs/latest/  
+**Open Policy Agent.** "Policy as Code Overview." [https://www.openpolicyagent.org/docs/latest/](https://www.openpolicyagent.org/docs/latest/)  
 *Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **OMG.** "Model Driven Architecture (MDA)." Object Management Group White Paper, 2001.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**PlantUML.** "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. https://plantuml.com/  
+**PlantUML.** "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. [https://plantuml.com/](https://plantuml.com/)  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
 **Red Hat.** "Architecture as Code Principles and Best Practices." Red Hat Developer.  
@@ -113,13 +113,13 @@ This section provides a comprehensive list of all sources and references cited t
 **Selic, B.** "The Pragmatics of Model-Driven Development." IEEE Software, 2003.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
-**Structurizr.** "Structurizr DSL Language Reference." Structurizr Documentation, 2024. https://github.com/structurizr/dsl  
+**Structurizr.** "Structurizr DSL Language Reference." Structurizr Documentation, 2024. [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
-**Structurizr.** "Structurizr Lite." Structurizr Documentation, 2024. https://structurizr.com/help/lite  
+**Structurizr.** "Structurizr Lite." Structurizr Documentation, 2024. [https://structurizr.com/help/lite](https://structurizr.com/help/lite)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
-**ThoughtWorks Technology Radar.** "Diagrams as Code." https://www.thoughtworks.com/radar/techniques/diagrams-as-code  
+**ThoughtWorks Technology Radar.** "Diagrams as Code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
 **ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.  
@@ -128,12 +128,12 @@ This section provides a comprehensive list of all sources and references cited t
 **ThoughtWorks.** "Architecture Decision Records." Technology Radar, 2023.  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
 
-**Thoughtworks Technology Radar.** "Governance as Code." https://www.thoughtworks.com/radar/techniques/governance-as-code  
+**Thoughtworks Technology Radar.** "Governance as Code." [https://www.thoughtworks.com/radar/techniques/governance-as-code](https://www.thoughtworks.com/radar/techniques/governance-as-code)  
 *Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md)*
 
 ## Industry Research and Reports
 
-**AWS.** "AWS Cloud Development Kit (CDK) Developer Guide." https://docs.aws.amazon.com/cdk/latest/guide/home.html  
+**AWS.** "AWS Cloud Development Kit (CDK) Developer Guide." [https://docs.aws.amazon.com/cdk/latest/guide/home.html](https://docs.aws.amazon.com/cdk/latest/guide/home.html)  
 *Referenced in: [Chapter 5: Automation, DevOps, and CI/CD](05_automation_devops_cicd.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*
 
 **Best practice documentation from leading organisations.**  
@@ -154,22 +154,22 @@ This section provides a comprehensive list of all sources and references cited t
 **Research on emerging technologies.**  
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
-**Google Cloud.** "Store Terraform state in Cloud Storage." Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state (Source [19])
+**Google Cloud.** "Store Terraform state in Cloud Storage." Google Cloud Documentation, 2024. [https://cloud.google.com/docs/terraform/resource-management/store-terraform-state](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state) (Source [19])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**HashiCorp.** "Backend Type: s3." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/language/settings/backends/s3 (Source [17])
+**HashiCorp.** "Backend Type: s3." HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/language/settings/backends/s3](https://developer.hashicorp.com/terraform/language/settings/backends/s3) (Source [17])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**HashiCorp.** "Securing Terraform State." HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/cloud-docs/state/securing (Source [16])
+**HashiCorp.** "Securing Terraform State." HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/cloud-docs/state/securing](https://developer.hashicorp.com/terraform/cloud-docs/state/securing) (Source [16])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
 **HashiCorp.** "State of Cloud Strategy Survey 2024." HashiCorp, 2024.  
 *Referenced in: [Chapter 17: Organisational Change](17_organizational_change.md), [Chapter 27: Conclusion](27_conclusion.md)*
 
-**HashiCorp.** "Terraform Security Best Practices." HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security (Source [20])
+**HashiCorp.** "Terraform Security Best Practices." HashiCorp Learning Resources, 2023. [https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security) (Source [20])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**Microsoft Learn.** "Store Terraform state in Azure Storage." Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage (Source [18])
+**Microsoft Learn.** "Store Terraform state in Azure Storage." Microsoft Learn Documentation, 2024. [https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage) (Source [18])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
 **Pulumi.** "Testing Infrastructure as Code Programs." Pulumi Blog, 2024. (Source [15])

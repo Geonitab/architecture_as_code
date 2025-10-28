@@ -153,7 +153,7 @@ This book aims to accelerate the adoption of Architecture as Code principles and
 As technology continues to evolve, the principles outlined in this book—declarative design, version control, automation, and continuous validation—will remain fundamental to building reliable, scalable, and maintainable systems.
 
 Sources:
-- Kvadrat AB. 'Gunnar Nordqvist - Chief Architect Profile.' Konsultprofil, 2024. Available at: https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/
-- Kvadrat AB. 'Technology Consulting Excellence.' Company Profile, 2024. Available at: https://www.kvadrat.se/
+- Kvadrat AB. 'Gunnar Nordqvist - Chief Architect Profile.' Konsultprofil, 2024. Available at: [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)
+- Kvadrat AB. 'Technology Consulting Excellence.' Company Profile, 2024. Available at: [https://www.kvadrat.se/](https://www.kvadrat.se/)
 - ThoughtWorks. 'Architecture as Code: The Next Evolution.' Technology Radar, 2024.
 - GitHub Open Source Community. 'Collaborative Software Development.' Platform Documentation, 2024.

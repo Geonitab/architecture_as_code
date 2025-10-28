@@ -271,14 +271,20 @@ class TestTechnicalAccuracy:
         """Test that URL references follow proper markdown format."""
         url_issues = []
         
+        code_fence_pattern = re.compile(r'```.*?```', re.DOTALL)
+        inline_code_pattern = re.compile(r'`[^`]+`')
+
         for chapter_file in chapter_files:
             content = chapter_file.read_text(encoding='utf-8')
-            
+
+            # Strip fenced and inline code to avoid false positives in examples
+            content_no_code = code_fence_pattern.sub('', content)
+            content_no_code = inline_code_pattern.sub('', content_no_code)
+
             # Find potential URLs not in proper markdown format
-            # Look for http/https URLs not in markdown link format
             loose_urls = re.findall(
-                r'(?<!\]\()https?://[^\s\)]+(?!\))', 
-                content
+                r'(?<!\]\()(?<!\[)https?://[^\s\)]+(?!\))',
+                content_no_code
             )
             
             if loose_urls:
@@ -289,13 +295,11 @@ class TestTechnicalAccuracy:
                     "suggestion": "Use [link text](URL) format"
                 })
         
-        # This is a style warning
-        if url_issues:
-            import warnings
-            warnings.warn(
-                f"URL formatting issues: {len(url_issues)} files",
-                UserWarning
-            )
+        # Enforce agreed markdown link format conventions
+        assert not url_issues, (
+            "Markdown link formatting issues detected: "
+            f"{url_issues}. Ensure every URL is wrapped in [text](URL) syntax."
+        )
     
     def test_code_block_length(self, chapter_files):
         """Monitor code block length for readability (informational only)."""

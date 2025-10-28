@@ -190,6 +190,13 @@ jobs:
 
 Modern tools such as GitBook, Gitiles, and MkDocs enable automatic generation of web documentation from Markdown files stored alongside the code.
 
+The Architecture as Code repository demonstrates this principle by coupling
+[`docs/documentation_workflow.md`](documentation_workflow.md) with automated tests
+that enforce heading and link conventions during every pull request. Contributors
+cannot merge narrative or architectural updates until the shared Git-based workflow
+and validation pipeline succeed, ensuring documentation remains authoritative without
+falling back on disconnected wikis or manual approvals.
+
 ## Requirements as Code
 
 Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and automated. This paradigm shift enables continuous verification that the system meets its requirements throughout the entire development lifecycle.

@@ -1484,11 +1484,11 @@ The next chapters explore how to extend these foundations into containerisation 
 
 ## Sources
 
-- Brown, S. "The C4 model for visualising software architecture." https://c4model.com
-- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. https://blog.structurizr.com/diagrams-as-code-automation/
-- Structurizr. "Structurizr DSL Language Reference." https://github.com/structurizr/dsl
-- Structurizr. "Structurizr Lite." https://structurizr.com/help/lite
+- Brown, S. "The C4 model for visualising software architecture." [https://c4model.com](https://c4model.com)
+- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. [https://blog.structurizr.com/diagrams-as-code-automation/](https://blog.structurizr.com/diagrams-as-code-automation/)
+- Structurizr. "Structurizr DSL Language Reference." [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
+- Structurizr. "Structurizr Lite." [https://structurizr.com/help/lite](https://structurizr.com/help/lite)
 - Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.
 - Brown, S. "Software Architecture for Developers." Leanpub, 2024.
-- ThoughtWorks Technology Radar. "Diagrams as code." https://www.thoughtworks.com/radar/techniques/diagrams-as-code
-- AaC Open Source Project. "Architecture-as-Code Repository." https://github.com/aacplatform/aac
+- ThoughtWorks Technology Radar. "Diagrams as code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)
+- AaC Open Source Project. "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)

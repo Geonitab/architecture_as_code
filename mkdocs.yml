@@ -7,6 +7,7 @@ nav:
   - Overview:
       - Welcome: index.md
       - Book Structure: book_structure.md
+      - Documentation and Architecture Contribution Workflow: documentation_workflow.md
   - Part A – Foundations:
       - index: part_a_foundations.md
       - Introduction to Architecture as Code: 01_introduction.md

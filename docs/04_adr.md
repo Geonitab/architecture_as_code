@@ -27,9 +27,20 @@ The ADR format typically follows a structured template that includes:
 | Decision | The specific decision that was made | Clear statement of choice, implementation approach, rationale |
 | Consequences | Expected positive and negative consequences | Benefits, risks, trade-offs, mitigation strategies |
 
-Official guidelines and templates are available at https://adr.github.io, which serves as the primary resource for ADR methodology. This website is maintained by the ADR community and contains standardised templates, tools, and examples.
+Official guidelines and templates are available at [https://adr.github.io](https://adr.github.io), which serves as the primary resource for ADR methodology. This website is maintained by the ADR community and contains standardised templates, tools, and examples.
 
 In the Architecture as Code context, ADRs document decisions about technology choices, architecture patterns, security strategies, and operational policies that are codified in architecture definitions.
+
+### Linking ADRs to the documentation workflow
+
+Every ADR must explicitly reference the shared Git-based workflow defined in
+[`docs/documentation_workflow.md`](documentation_workflow.md). Capturing the pull
+request, review approvals, and automated validation outcomes alongside the
+decision gives future contributors a complete audit trail. The additional
+**Review and Documentation Workflow** section in the template formalises this
+expectation by recording where the decision was discussed, which automation
+results were captured, and how the change aligned with the repository-wide
+documentation practice.
 
 ## Structure and Components of ADR
 
@@ -64,6 +75,11 @@ and the Architecture as Code implementation approach.
 
 ### Mitigation
 - Measures to handle negative consequences
+
+## Review and Documentation Workflow
+- Link to the pull request or merge request where the ADR was discussed.
+- Reference the shared workflow in [docs/documentation_workflow.md](documentation_workflow.md)
+  so future readers understand how the decision was reviewed and validated.
 ```
 
 ### Numbering and Versioning
@@ -258,6 +274,6 @@ Organisations that adopt ADR methodology position themselves for successful Arch
 With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation](07_containerization.md) shows how these principles extend to application deployment and orchestration.
 
 Sources:
-- Architecture Decision Records Community. "ADR Guidelines and Templates." https://adr.github.io  
+- Architecture Decision Records Community. "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)
 - Nygard, M. "Documenting Architecture Decisions." 2011.  
 - ThoughtWorks. "Architecture Decision Records." Technology Radar, 2023.

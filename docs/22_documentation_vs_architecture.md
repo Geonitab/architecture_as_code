@@ -200,6 +200,13 @@ This approach ensures that architectural documentation stays synchronised with t
 
 Documentation provides the narrative context that architectural models alone cannot convey:
 
+The repository's [`docs/documentation_workflow.md`](documentation_workflow.md) guide
+turns that narrative responsibility into a repeatable practice. It translates the
+Git-based review discipline into concrete steps so that every ADR, CALM schema
+update, or Structurizr change links back to a documented pull request. Reviewers can
+trace how architectural automation triggered the Content Validation pipeline, and
+writers can point to the same workflow when explaining system behaviour.
+
 - **Decision rationale**: Architecture Decision Records (ADRs) explain why certain architectural choices were made, providing context that models do not capture.
 - **Usage guides**: Documentation explains how to work with the architecture—how to deploy services, how to add new components, how to troubleshoot issues.
 - **Conceptual overviews**: High-level explanations help stakeholders understand the system's purpose and design philosophy, complementing the precise technical details in architectural models.
@@ -254,11 +261,11 @@ By integrating both disciplines—using Architecture as Code to define the syste
 
 ## Sources
 
-- FINOS. "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. https://calm.finos.org/
-- Brown, Simon. "The C4 Model for Visualising Software Architecture." C4 Model Documentation, 2024. https://c4model.com/
-- Structurizr. "Structurizr DSL Language Reference." Structurizr Documentation, 2024. https://github.com/structurizr/dsl
-- Mermaid. "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. https://mermaid.js.org/
-- PlantUML. "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. https://plantuml.com/
+- FINOS. "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. [https://calm.finos.org/](https://calm.finos.org/)
+- Brown, Simon. "The C4 Model for Visualising Software Architecture." C4 Model Documentation, 2024. [https://c4model.com/](https://c4model.com/)
+- Structurizr. "Structurizr DSL Language Reference." Structurizr Documentation, 2024. [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
+- Mermaid. "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. [https://mermaid.js.org/](https://mermaid.js.org/)
+- PlantUML. "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. [https://plantuml.com/](https://plantuml.com/)
 - Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
 - Richardson, Chris. "Microservices Patterns: With Examples in Java." Manning Publications, 2018.
 - Ford, Neal, et al. "Building Evolutionary Architectures." O'Reilly Media, 2017.
