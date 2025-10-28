@@ -34,6 +34,71 @@ Unit tests for codified infrastructure should validate resource configurations, 
 
 Mock testing strategies for cloud resources enable testing without actual cloud costs, which is essential for frequent testing cycles. Tools such as LocalStack and cloud provider simulators can simulate cloud services locally for comprehensive testing without infrastructure provisioning costs.
 
+### Automated pipeline scaffolding for Terraform and Pulumi
+
+Source [15] sets clear expectations that Infrastructure as Code repositories must treat testing as a first-class pipeline citizen rather than an optional local practice. To operationalise that guidance the continuous integration scaffolding should codify complementary stages for Pulumi- and Terraform-based stacks so that parity is maintained across mixed estates. The representative pipeline below layers static checks, unit-style execution, security scanning and integration rehearsals into one repeatable workflow:
+
+| Stage | Pulumi focus | Terraform focus | Objective |
+|-------|--------------|-----------------|-----------|
+| Lint and format | `npm run lint`, `pulumi stack ls --json` to verify workspace metadata | `terraform fmt -check`, `terraform validate` | Catch syntax issues before artefacts are generated |
+| Contract and unit tests | `pulumi test` with local provider mocks and standard test frameworks | `go test ./...` for Terratest suites and `terraform test` for module assertions | Execute fast feedback checks over resource definitions and policy attachments |
+| Policy enforcement | `pulumi up --policy-pack policies/` in preview mode | `checkov -d .`, `terraform-compliance` bundles enforcing regulatory guardrails | Ensure security and compliance expectations are upheld before deployment |
+| Integration rehearsal | `pulumi preview` with targeted stacks in ephemeral environments | `terraform plan` against temporary workspaces and drift-detection jobs | Validate orchestration logic, detect state drift, and rehearse rollback paths |
+
+A minimal GitHub Actions job illustrating the shared scaffold is shown below. Equivalent concepts apply to Azure DevOps, GitLab, or Jenkins; the crucial element is that the Terraform and Pulumi paths implement the same assurance gates so that platform parity is maintained.
+
+```yaml
+name: infrastructure-ci
+
+on:
+  pull_request:
+    paths:
+      - "iac/**"
+
+jobs:
+  pulumi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run lint
+      - run: pulumi login --cloud-url ${PULUMI_BACKEND}
+      - run: pulumi stack select ${PULUMI_STACK}
+      - run: npm test
+      - run: pulumi test --stack ${PULUMI_STACK}
+      - run: pulumi up --stack ${PULUMI_STACK} --policy-pack policies --yes --refresh --preview
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: terraform fmt -check
+      - run: terraform init -backend=false
+      - run: terraform validate
+      - run: checkov -d .
+      - run: terraform test
+      - run: go test ./test
+      - name: Plan against ephemeral state
+        env:
+          TF_WORKSPACE: ci-${{ github.run_id }}
+        run: |
+          terraform init \
+            -backend-config="bucket=${TF_BACKEND_BUCKET}" \
+            -backend-config="dynamodb_table=${TF_LOCK_TABLE}" \
+            -backend-config="kms_key_id=${TF_KMS_KEY}"
+          terraform plan -out=tfplan
+      - name: Upload plan for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraform-plan
+          path: tfplan
+```
+
+Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and `pulumi test` results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
+
 ## Test Management with Vitest for Architecture as Code
 
 Vitest is a modern testing framework built for the Vite ecosystem that offers fast and effective testing of JavaScript/TypeScript code. For Architecture as Code initiatives that use modern tooling, Vitest is particularly relevant for testing configuration generators, validation scripts and automation tools that are often written in TypeScript or JavaScript.

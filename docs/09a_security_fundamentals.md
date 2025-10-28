@@ -211,6 +211,14 @@ Centrally managed storage such as AWS S3 with DynamoDB locking, Azure Storage wi
 
 Architecture as Code governance pipelines must verify that every workspace declares an approved remote backend and that encryption, locking, and access policy parameters match organisational standards. Automated checks should enforce the controls codified in the authoritative guidance (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), [19](33_references.md#source-19), and [20](33_references.md#source-20)), while audit trails from Terraform Cloud, S3 access logs, or Azure Monitor are harvested into governance dashboards so compliance teams can demonstrate adherence to supervisory requirements and monitor for drift in state management controls.
 
+Operational monitoring must extend beyond static configuration analysis. Remote state stores should stream access logs into a central SIEM, with correlation rules that raise alerts for:
+
+- Repeated state initialisation attempts without a corresponding change request, indicating potential credential abuse.
+- Manual state downloads or unlock operations executed outside approved pipeline identities.
+- Versioning churn or bucket/object deletions that occur outside scheduled maintenance windows.
+
+Alert destinations should include on-call rotas and service management tooling so that incidents can be triaged rapidly. Pairing those alerts with automated remediation—such as temporary access revocation via Terraform Cloud run tasks or AWS IAM quarantine policies—ensures that anomalous state activity is contained before it cascades into deployment failures.
+
 ## Network security and micro-segmentation
 
 ### Modern network architecture for Zero Trust environments
