@@ -184,6 +184,6 @@ For questions about the design or technical implementation:
 ---
 
 **design Version**: 1.0  
-**Created**: December 2024  
+**Created**: oktober 2025
 **Brand Guidelines**: Kvadrat v1.0  
 **Formats**: HTML/CSS, SVG, PDF, PNG, JPEG
