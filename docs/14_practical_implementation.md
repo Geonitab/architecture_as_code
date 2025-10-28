@@ -47,6 +47,19 @@ Security-first thinking embeds identity, secrets handling, and audit controls in
 
 High-availability design translates into codified redundancy, automated failover, and disaster recovery testing. Infrastructure definitions must handle dependency failures gracefully and allow rapid restoration of service. Observability practices should track both the execution of pipelines and the health of the resulting environments so that teams can correct drift and regressions quickly.
 
+### Resilience checklist for infrastructure changes
+
+The operational reality described in Sources [15](33_references.md#source-15) and [16](33_references.md#source-16) demands that every change request demonstrates how it will stay testable, recoverable, and reversible. The checklist below provides a reusable review aide for change advisory boards and platform teams. Each row is expected to have automated evidence attached—screenshots, pipeline logs, or generated reports—before promotion to production environments.
+
+| Area | Checklist prompts | Expected artefacts |
+|------|-------------------|--------------------|
+| Pre-change validation | Have unit, integration, security, and policy tests passed for the exact commit being promoted? Has a human reviewed the Terraform plan or Pulumi preview output? | CI pipeline run IDs, signed-off pull request reviews, stored plan/previews |
+| State resilience | Is the remote backend configured with encryption, locking, versioning, and automated backups? Are state access alerts wired into the incident rota and tested quarterly? | Backend configuration snippets, backup job logs, SIEM alert transcripts |
+| Recovery drills | Has the team rehearsed state restoration from the most recent backup and documented timings? Are runbooks updated with clean-up steps for partial applies? | Runbook revisions, tabletop exercise notes, recovery timing metrics |
+| Rollback readiness | Is there a tested rollback script or inverse plan that can be executed without manual edits? Are feature flags or traffic controls aligned with the infrastructure release? | Stored rollback plans, canary deployment records, change freeze approvals |
+
+Teams should embed the checklist into merge templates or change management tooling so that gaps become visible early. Automating the evidence collection—for example by attaching Terratest reports, Pulumi test results, and state-backup verification logs to pull requests—keeps the process lightweight whilst ensuring resilience obligations remain measurable.
+
 ## Common challenges and troubleshooting
 
 | Challenge | Root Cause | Mitigation Strategy | Best Practices |
