@@ -1422,9 +1422,9 @@ if __name__ == "__main__":
 def create_presentation_directly(presentation_data, output_path="architecture_as_code_presentation.pptx"):
     """Create PowerPoint presentation directly without generating a script."""
     if not PPTX_AVAILABLE:
-        print("❌ python-pptx is not installed. Install it with 'pip install python-pptx>=0.6.21'.")
+        print("⚠️  python-pptx is not installed. Install it with 'pip install python-pptx>=0.6.21'.")
         print("   The script and supporting materials are still generated.")
-        return False
+        return "missing_dependency"
 
     try:
         prs = Presentation()
@@ -1432,12 +1432,12 @@ def create_presentation_directly(presentation_data, output_path="architecture_as
         prs.save(output_path)
     except Exception as exc:  # pragma: no cover - runtime safety
         print(f"❌ Failed to create PowerPoint file: {exc}")
-        return False
+        return "error"
 
     print(f"✅ PowerPoint file created: {output_path}")
     print(f"📊 Total slides created: {len(prs.slides)}")
     print("🎨 Slides follow the Architecture as Code theme and 16:9 layout.")
-    return True
+    return "success"
 
 
 def main():
@@ -1519,11 +1519,33 @@ def main():
     outline_content += "This presentation is generated from the book chapters in docs/\n\n"
     
     for item in presentation_data:
-        chapter = item['chapter']
-        outline_content += f"## {chapter['title']}\n\n"
-        for point in chapter['key_points']:
-            outline_content += f"- {point}\n"
-        outline_content += "\n"
+        item_type = item.get('type')
+
+        if item_type == 'chapter':
+            chapter = item.get('chapter') or {}
+            title = chapter.get('title') or item.get('file', 'Chapter')
+            outline_content += f"## {title}\n\n"
+            for point in chapter.get('key_points') or []:
+                outline_content += f"- {point}\n"
+            outline_content += "\n"
+            continue
+
+        if item_type == 'part':
+            part = item.get('part') or {}
+            title = part.get('title') or item.get('file', 'Part Introduction')
+            outline_content += f"## {title} (Part Introduction)\n\n"
+            for point in part.get('key_points') or []:
+                outline_content += f"- {point}\n"
+            outline_content += "\n"
+            continue
+
+        if item_type == 'front_matter':
+            front = item.get('front_matter') or {}
+            title = front.get('title') or item.get('file', 'Front Matter')
+            outline_content += f"## {title}\n\n"
+            for point in front.get('key_points') or []:
+                outline_content += f"- {point}\n"
+            outline_content += "\n"
     
     # Write outline (outside docs directory)
     with open(presentations_dir / "presentation_outline.md", 'w', encoding='utf-8') as f:
@@ -1557,9 +1579,11 @@ def main():
     if args.create_pptx:
         print("\n📊 Creating PowerPoint file directly...")
         output_path = presentations_dir / args.output
-        if create_presentation_directly(presentation_data, output_path):
+        creation_result = create_presentation_directly(presentation_data, output_path)
+
+        if creation_result == "success":
             print(f"✅ PowerPoint file created: {output_path}")
-            
+
             # In release mode, also copy to standard location for backward compatibility
             if args.release:
                 import shutil
@@ -1567,6 +1591,13 @@ def main():
                 standard_dir.mkdir(exist_ok=True)
                 shutil.copy2(output_path, standard_dir / args.output)
                 print(f"Presentation also copied to standard location: {standard_dir / args.output}")
+        elif creation_result == "missing_dependency":
+            print("⚠️  PowerPoint file not created because python-pptx is unavailable.")
+            print("   Install the optional dependency to enable direct generation.")
+            print("📝 You can still use the generated script:")
+            print(f"   cd {presentations_dir}")
+            print("   pip install -r requirements.txt")
+            print("   python generate_pptx.py")
         else:
             print("❌ Failed to create PowerPoint file")
             print("📝 You can still use the generated script:")
