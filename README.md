@@ -113,15 +113,18 @@ Key workflows include:
 
 ## 📝 Contributing
 
-1. Review `docs/STYLE_GUIDE.md` to confirm spelling, grammar, and tone expectations.
-2. Update the relevant markdown chapter(s) under `docs/` or supporting automation scripts.
+1. Review `docs/STYLE_GUIDE.md` alongside the unified Git workflow in
+   `docs/documentation_workflow.md` to confirm spelling, tone, and review expectations.
+2. Update the relevant markdown chapter(s) under `docs/`, ADR templates, or supporting
+   automation scripts in line with the shared workflow.
 3. Regenerate content and verify outputs:
    ```bash
    python3 generate_book.py
    docs/build_book.sh
    ```
 4. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
-5. Commit changes with clear messages and submit a pull request following repository guidelines.
+5. Commit changes with clear messages and submit a pull request following the shared
+   Git-based review workflow so automation validates heading and link conventions.
 
 ## 🔍 Link Verification
 

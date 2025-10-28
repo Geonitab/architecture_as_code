@@ -10,6 +10,17 @@ The diagram illustrates the typical flow from a Git repository through branching
 
 Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members. Each change is documented with commit messages that describe what was modified and why, creating a complete history of infrastructure evolution.
 
+### Documentation-as-code worked example
+
+This repository applies the guidance from Chapter 22 by storing documentation,
+diagrams, and ADRs beside the automation that builds the book. The
+[`docs/documentation_workflow.md`](documentation_workflow.md) playbook codifies the
+pull-request workflow for narrative updates, while `docs/images/*.mmd` keeps every
+diagram version-controlled so reviewers can inspect both the rendered PNG and its
+textual definition. Contributors experience the same Git review cycle regardless of
+whether they are proposing a new policy module or refining prose, demonstrating the
+Documentation as Code pattern in practice.
+
 ### Abstraction and governance responsibilities across AaC and IaC
 
 Architecture as Code sits one abstraction layer above Infrastructure as Code. It defines the opinionated guardrails that keep architectural intent enforceable, whilst Infrastructure as Code implements the concrete runtime changes that honour those decisions. Thoughtworks highlights how Governance as Code requires opinionated policy checks and review automation at the architecture layer so that teams consistently adopt approved patterns ([Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)). Modern Infrastructure as Code frameworks such as AWS CDK introduce higher-level constructs that compile architectural blueprints into deployable resources, shrinking the translation gap between AaC models and executable infrastructure ([AWS – Cloud Development Kit (CDK) Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html)). Treating the two as a layered abstraction forces version-control practices to keep the architectural source of truth distinct from the execution artefacts that consume it.
@@ -47,4 +58,4 @@ This transparency builds trust within teams and with stakeholders. Leadership ga
 Sources:
 - Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation.
 - Thoughtworks Technology Radar. "Governance as Code." Thoughtworks, 2024.
-- AWS. "AWS Cloud Development Kit (CDK) Developer Guide." https://docs.aws.amazon.com/cdk/latest/guide/home.html.
+- AWS. "AWS Cloud Development Kit (CDK) Developer Guide." [https://docs.aws.amazon.com/cdk/latest/guide/home.html](https://docs.aws.amazon.com/cdk/latest/guide/home.html).

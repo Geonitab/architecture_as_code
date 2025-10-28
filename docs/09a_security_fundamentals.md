@@ -281,11 +281,11 @@ This chapter has established the fundamental security principles and practices f
 ### Industry references
 - Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
 - Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
-- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/cloud-docs/state/securing
-- HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023. https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security
-- HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. https://developer.hashicorp.com/terraform/language/settings/backends/s3
-- Microsoft Learn. *Store Terraform state in Azure Storage.* Microsoft Learn Documentation, 2024. https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage
-- Google Cloud. *Store Terraform state in Cloud Storage.* Google Cloud Documentation, 2024. https://cloud.google.com/docs/terraform/resource-management/store-terraform-state
+- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/cloud-docs/state/securing](https://developer.hashicorp.com/terraform/cloud-docs/state/securing)
+- HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023. [https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security)
+- HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/language/settings/backends/s3](https://developer.hashicorp.com/terraform/language/settings/backends/s3)
+- Microsoft Learn. *Store Terraform state in Azure Storage.* Microsoft Learn Documentation, 2024. [https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage)
+- Google Cloud. *Store Terraform state in Cloud Storage.* Google Cloud Documentation, 2024. [https://cloud.google.com/docs/terraform/resource-management/store-terraform-state](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state)
 - Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
 - Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
 
