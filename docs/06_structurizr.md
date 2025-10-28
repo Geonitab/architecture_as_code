@@ -358,6 +358,58 @@ externalPayment = softwareSystem "Payment Provider" {
 }
 ```
 
+## Reference Workspace for Architecture Teams
+
+To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions descri
+bed throughout this chapter. You can find the canonical definition in `docs/examples/structurizr/aac_reference_workspace.dsl`, w
+ith supporting guidance in `docs/examples/structurizr/README.md`.
+
+### Repository artefacts
+
+- **Workspace DSL** – Implements System Context, Container, Component, Dynamic, and Deployment views for the Architecture as Co
+de platform, providing a ready-made baseline for teams to copy or extend.
+- **Styling conventions** – Applies consistent British English tagging and a colour palette that emphasises governance, automat
+ion, and telemetry pathways referenced in the book.
+- **Configuration metadata** – Pins a minimum Structurizr CLI version so that exports remain reproducible across developer machi
+nes and the CI pipeline.
+
+### Exploring the reference workspace
+
+Follow these steps to render the workspace locally:
+
+1. Install the Structurizr CLI (version `2024.03.01` or later).
+2. From the repository root, run:
+   ```bash
+   structurizr.sh export \
+     -workspace docs/examples/structurizr/aac_reference_workspace.dsl \
+     -format plantuml,mermaid,structurizr
+   ```
+3. Open the exported diagrams or load the generated Structurizr Lite workspace to explore the interactive views.
+
+These commands align with the automation demonstrated earlier in this chapter, ensuring that developers, architects, and editor
+s can iterate confidently without bespoke tooling.
+
+### Contribution workflow for diagram updates
+
+A consistent contribution workflow prevents diagram drift and preserves traceability across programmes:
+
+1. **Create a feature branch** – Prefix it with `structurizr/` to signal architecture-oriented work.
+2. **Amend the DSL** – Update `aac_reference_workspace.dsl` or add modular `!include` files in the same directory. Each change s
+hould retain the C4 hierarchy and respect agreed tags.
+3. **Validate locally** – Execute `structurizr.sh validate -workspace docs/examples/structurizr/aac_reference_workspace.dsl` fol
+lowed by the export command above. Address any reported warnings before requesting review.
+4. **Document intent** – Capture the architectural rationale in the pull request description and, where relevant, reference rela
+ted Architecture Decision Records.
+5. **Run the book build** – `python3 generate_book.py && docs/build_book.sh` ensures that downstream artefacts (including PNG di
+agrams referenced in the manuscript) remain in sync.
+6. **Request dual review** – Tag at least one platform engineer and one product architect so that automation and domain perspect
+ives both evaluate the change.
+7. **Check automation outcomes** – Confirm that GitHub Actions architecture checks and the main book build succeed before mergin
+g.
+
+By following these steps, teams maintain a shared, version-controlled architecture narrative that evolves alongside the software
+delivery platform.
+
 ## Integration with CI/CD Pipelines
 
 Automating architecture documentation ensures diagrams stay synchronized with code changes.

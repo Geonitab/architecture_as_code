@@ -126,6 +126,27 @@ pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o architecture_as_code.pdf
 - **Image handling**: Ensures every diagram reference resolves correctly.
 - **Output verification**: Confirms the generated files meet expectations.
 
+## Evolutionary Architecture Fitness Functions
+
+Architecture as Code encourages continuous evaluation of structural decisions. To stop Structurizr diagrams drifting away from r
+eality, embed evolutionary architecture fitness functions in the publication pipeline:
+
+- **Workspace validity** – Run `structurizr.sh validate` against `docs/examples/structurizr/aac_reference_workspace.dsl` on eve
+ry pull request. The command verifies element definitions, relationships, and view completeness before reviewers examine the nar
+rative.
+- **Structural coverage thresholds** – Extend the validation job with custom scripts that assert minimum coverage for people, c
+ontainers, and critical data stores. Failing the check prompts architects to capture missing perspectives before merging.
+- **Tag conformance** – Compare element tags against an approved list (for example, `Core System`, `Operations`, or `External P
+erson`). Non-conforming tags indicate inconsistent language and trigger follow-up conversations during review.
+- **Fitness score export** – Use the policy evaluator component described in the reference workspace to calculate scores for la
+tency, operability, and compliance rules. Surface these scores in the Observability Hub dashboards so that teams track trends o
+ver time.
+- **Change intelligence** – Record before/after diffs of the Structurizr DSL and correlate them with production incidents. This
+ evidence helps determine whether architecture shifts improved resilience or introduced regressions.
+
+By codifying these checks, the programme maintains a living architecture model whose quality improves with each iteration instea
+d of eroding through manual drift.
+
 ## GitHub Actions: CI/CD Pipeline
 
 ### Primary Workflow for Book Production
