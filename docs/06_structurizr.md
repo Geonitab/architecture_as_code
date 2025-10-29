@@ -358,6 +358,95 @@ externalPayment = softwareSystem "Payment Provider" {
 }
 ```
 
+### Governance Patterns for Enterprise Workspaces
+
+Sustaining expansive workspaces demands routine guardrails so that dozens of contributors can evolve diagrams without introduci
+ng drift. The following sequence keeps Structurizr DSL repositories predictable and reviewable:
+
+1. **Define a domain folder structure** – Create `model/domains/<domain>.dsl` files for each major capability (for example, `pa
+yments.dsl`, `catalogue.dsl`, `governance.dsl`). These files declare people, software systems, and containers that belong to th
+e same functional area.
+2. **Aggregate with intent-revealing include files** – Introduce thin aggregators such as `model/core.dsl` or `model/external.d
+sl` that simply list `!include` statements. The main workspace file then references the aggregators, keeping the top-level `mod
+el {}` block short and navigable, as demonstrated in the [Structurizr DSL Language Reference](https://github.com/structurizr/dsl
+).
+3. **Enforce naming conventions centrally** – Store canonical tags and naming prefixes in `configuration { properties { ... } }` a
+nd shared include files. For instance, prefix container identifiers with their bounded context (e.g. `payments_api`) and suffix view k
+eys with the chapter number (`PaymentsContainers06`). Reviewers can spot deviations instantly because every file uses the same
+include.
+4. **Document relationship expectations** – Maintain a `docs/STRUCTURIZR_GUIDELINES.md` (or similar) that states how to phrase rel
+ationship descriptions (“uses”, “publishes events to”, “reads from”). Link the document from pull request templates so contribu
+tors confirm adherence before review.
+5. **Leverage Structurizr Lite for validation** – Encourage contributors to load the workspace in [Structurizr Lite](https://str
+ucturizr.com/help/lite) during development. Lite persists layout updates alongside the DSL, enabling contributors to visualise c
+onvention breaches before they reach code review.
+
+These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or s
+ervices when multiple programmes collaborate.
+
+### Automated Layout Templates, Quality Gates, and Versioning
+
+Automation protects diagram fidelity and keeps layout choices consistent as models expand. Combine DSL includes with Structuriz
+r CLI scripts to enforce standards:
+
+- **Reusable layout templates** – Extract shared layout instructions into dedicated files and include them in every view. For ex
+ample:
+
+  ```structurizr
+  # views/layouts/standard-container-layout.dsl
+  autoLayout lr rankSeparation 450 columnSeparation 350
+  paperSize A3_Landscape
+  ```
+
+  ```structurizr
+  container ecommerce "Containers" {
+      include *
+      !include views/layouts/standard-container-layout.dsl
+  }
+  ```
+
+  Every view inherits the same orientation and spacing without relying on manual dragging in the editor.
+
+- **Quality gates in CI/CD** – Add a lightweight shell script to fail builds when conventions slip:
+
+  ```bash
+  #!/usr/bin/env bash
+  set -euo pipefail
+
+  workspace="docs/architecture/workspace.dsl"
+  output_dir="build/structurizr"
+
+  structurizr.sh validate -workspace "$workspace"
+  structurizr.sh export -workspace "$workspace" -format structurizr -output "$output_dir"
+
+  jq -e 'all(.workspace.model.containers[]?.name; test("^[A-Z][A-Za-z]+(\u0020[A-Z][A-Za-z]+)* API$"))' \
+    "$output_dir/workspace.json"
+  ```
+
+  The example checks that container names end with “API” and start with capitalised words; adapt the regular expression to your
+ organisation. Additional `jq` queries can assert that required tags or documentation URLs are present before the pipeline mark
+s the change as ready.
+
+- **Diagram versioning** – Commit exported Structurizr JSON alongside the DSL to preserve layout history. Because `structurizr.s
+h export` writes deterministic coordinates, `git diff` highlights when layout templates change or when an element moves. Tying
+ the JSON revision to release tags gives architecture reviewers a linear history of diagram evolution that complements the DSL b
+lend of automation and narrative.
+
+These automation techniques build upon the enablement practices described later in Chapter 24, letting platform engineers execu
+te Chapter 06 guidance through reproducible tooling.
+
+### Team Enablement and Adoption Playbook
+
+Scaling Structurizr beyond a single maintainer requires deliberate enablement so that architecture automation becomes a shared capability rather than a heroic effort. Combine the following rhythms with the people-development patterns in Chapter 24 to spread ownership:
+
+1. **Foundational bootcamps** – Run a recurring two-hour workshop that walks through the reference workspace, highlights the module structure described above, and demonstrates how Structurizr Lite and the CLI complement one another. Recording each session helps global teams revisit the material asynchronously.
+2. **Pair-modelling rotations** – Assign monthly pairs that include one experienced maintainer and one new contributor. Each pair triages backlog items, applies naming policies, and raises any missing automation hooks. Rotations prevent tacit knowledge from concentrating in a single geography or department.
+3. **Checklists in pull request templates** – Extend pull request templates with explicit Structurizr checks ("Ran `structurizr.sh validate`, updated layout template includes, attached before/after screenshots from Lite"). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.
+4. **Capability metrics** – Track lead time for diagram updates, the number of contributors editing the workspace each quarter, and the percentage of views using the shared layout templates. Publish these metrics alongside the broader enablement dashboards introduced in Chapter 24 to spotlight where additional coaching is required.
+5. **Community of practice** – Host a monthly forum where teams share lessons, propose adjustments to the naming conventions, and experiment with new Structurizr DSL features referenced in the official documentation. Capture agreed changes in the guidelines repository so the knowledge persists beyond the meeting.
+
+This cadence keeps Structurizr maintainers embedded within a wider community, reducing the risk of bottlenecks and reinforcing the book’s emphasis on collaborative architecture stewardship.
+
 ## Reference Workspace for Architecture Teams
 
 To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions descri
