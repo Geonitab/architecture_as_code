@@ -39,6 +39,16 @@ Bringing these responsibilities together ensures that architectural decisions st
 
 A well-organised code structure is crucial for maintainability and collaboration in larger Architecture as Code projects. Modular design enables the reuse of infrastructure components across different projects and environments.
 
+Architecture teams should curate repository layouts that expose shared building blocks immediately. A conventional approach places architectural guardrails, reusable modules, and documentation playbooks in clearly labelled top-level directories (for example `architecture/`, `modules/`, and `docs/`). Each directory must contain a README that summarises ownership, usage patterns, and change controls so contributors can discover the correct entry point without relying on tribal knowledge ([Source [4]](33_references.md#source-4)). Aligning naming conventions across repositories prevents duplicated modules and allows tooling such as dependency scanners and documentation generators to infer relationships automatically.
+
+### Branch protections and automated checks for architectural repositories
+
+Repository hygiene is enforced through mandatory branch protection rules. Architecture as Code maintainers should enable required status checks that run the documentation build, diagram generation, and infrastructure linting pipelines before merges. Protected branches must also require pull-request reviews, signed commits, and linear history so that architectural artefacts cannot bypass agreed quality gates ([Source [4]](33_references.md#source-4)). When a reviewer approves a change, the associated automation provides immutable evidence that diagrams have been regenerated, Markdown has passed prose linters, and infrastructure modules satisfy policy-as-code scanners.
+
+### Infrastructure testing harnesses preserve architectural intent
+
+Automated checks need to extend beyond formatting to verify that infrastructure definitions still reflect the intended architecture. Teams adopting higher-level frameworks such as the AWS Cloud Development Kit can codify architectural assertions—covering security groups, tagging baselines, and resource relationships—and execute them during pull-request validation ([Source [9]](33_references.md#source-9)). CDK assertions evaluate synthesised templates without creating resources, allowing reviewers to catch breaking changes while feedback is inexpensive. Combining these harnesses with branch protections means a pull request only merges once the architectural contract, documentation build, and infrastructure unit tests all report success.
+
 ## Transparency through version control
 
 Version control systems, particularly Git integrated with platforms like GitHub, provide fundamental transparency mechanisms for Architecture as Code initiatives. Every change to infrastructure definitions is documented with clear commit messages, creating an auditable trail that answers critical questions: what changed, when did it change, who changed it, and most importantly, why was the change necessary?
@@ -56,6 +66,7 @@ This transparency extends beyond code commits to encompass the entire collaborat
 This transparency builds trust within teams and with stakeholders. Leadership gains visibility into infrastructure changes without requiring manual status reports. Auditors can verify compliance through repository history rather than requesting bespoke documentation. New team members onboard faster by reading through the documented history of decisions and implementations.
 
 Sources:
+- GitHub Docs. "About protected branches." GitHub Documentation.
 - Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation.
 - Thoughtworks Technology Radar. "Governance as Code." Thoughtworks, 2024.
 - AWS. "AWS Cloud Development Kit (CDK) Developer Guide." [https://docs.aws.amazon.com/cdk/latest/guide/home.html](https://docs.aws.amazon.com/cdk/latest/guide/home.html).
