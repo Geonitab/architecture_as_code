@@ -332,6 +332,45 @@ Robust recovery capabilities are essential to maintain system reliability and me
 
 **Documentation and communication:** Recovery procedures must be well documented and readily available to incident-response teams. Automated notification systems should inform stakeholders about infrastructure changes and restoration events.
 
+## Maintainability safeguards in CI/CD
+
+Maintaining Architecture as Code assets demands continuous assurance that automation remains trustworthy. Pipelines therefore need codified quality gates, disciplined environment promotion, and observability patterns that expose maintainability regressions before they accumulate.
+
+### Automated test categories embedded in workflows
+
+Architecture repositories require three complementary automated test categories that are executed at different pipeline stages to keep IaC changes predictable and maintainable:
+
+| Test category | Purpose | Typical tooling | CI/CD integration |
+|---------------|---------|-----------------|-------------------|
+| **Unit tests** | Assert module-level logic such as CDK constructs, policy libraries, or Terraform modules before plans are generated. | AWS CDK assertions, Terratest module mocks, Pulumi unit harnesses | Run on every pull request to protect shared building blocks; failures block merges until maintainers update fixtures or adjust standards ([Source [9]](33_references.md#source-9)). |
+| **Integration tests** | Exercise composed stacks in ephemeral environments to confirm that service contracts, data pipelines, and networking policies still interoperate. | Terratest end-to-end suites, LocalStack or Testcontainers environments | Executed after unit checks succeed so that promotion candidates prove real-world interoperability before changes leave the staging branch. |
+| **Compliance and resilience tests** | Continuously validate regulatory controls, platform guardrails, and rollback rehearsals across environments. | Open Policy Agent rules, terraform-compliance scenarios, resilience simulations documented in Chapter 13 | Wired into nightly or environment-promotion jobs to surface deviations such as failing rollback scripts or missing encryption defaults. |
+
+Chapter 13 expands on how those categories are authored and maintained, but Chapter 05 makes their execution non-negotiable: every pipeline stage publishes artefacts (logs, policy reports, CDK assertion results) into shared storage so that architectural stewards can trace regressions and demonstrate audit readiness ([Source [8]](33_references.md#source-8)).
+
+### Environment promotion policies that preserve architectural parity
+
+Promotion through development, integration, pre-production, and production environments should be deterministic. Multi-stage release definitions codify the required checks, approvals, and evidence collection so that each environment mirrors the architectural baseline defined in Git.
+
+- **Template-driven parity:** Promotion workflows rehydrate infrastructure using the same Terraform modules or CDK stacks, refusing manual hotfixes that would create drift. Deployment manifests include hash comparisons of rendered templates, and any difference outside approved parameters fails the promotion.
+- **Policy-controlled approvals:** Promotion rules embed policy-as-code checks (for example, Conftest bundles for GDPR) and insist that compliance suites and resilience drills complete before sign-off. Azure DevOps, GitLab, and GitHub environment protections allow these checks and approvals to be codified, ensuring architectural stewards have documented sign-off before production releases ([Source [12]](33_references.md#source-12)).
+- **Evidence bundles:** Each promotion attaches the change set, policy reports, and integration-test telemetry so that reviewers can confirm architectural parity without reconstructing the run from scratch. These bundles are archived to satisfy internal audit requirements and support retrospectives when defects slip through.
+
+This disciplined promotion ladder keeps regional deployments synchronised. When a new EU region is activated the automation replays the same promotion workflow, guaranteeing that data-classification controls, tagging baselines, and architectural diagrams remain consistent with existing locations.
+
+### Maintainability telemetry and dashboards
+
+Maintainability suffers when teams cannot see failure trends or compliance fatigue. Pipelines therefore stream telemetry into shared observability stacks so that platform engineers, architects, and compliance officers share a single view of system health.
+
+| Signal | Calculation | Dashboard usage |
+|--------|-------------|-----------------|
+| **Pipeline stability index** | Rolling proportion of successful runs per environment, weighted to highlight flaky stages. | Highlights brittle integration suites or unreliable infrastructure mocks before they erode confidence. |
+| **Mean time to recovery for IaC rollbacks (MTTR-IaC)** | Average time between a failed deployment and the successful rollback or hotfix release. | SRE dashboards compare MTTR across teams to target investment in automation where recovery lags ([Source [8]](33_references.md#source-8)). |
+| **Policy breach density** | Number of failing policy checks divided by total runs in each environment. | Compliance teams trend breach density to spot policy packs that need refactoring or training gaps ahead of audits ([Source [12]](33_references.md#source-12)). |
+| **Architecture drift diff count** | Count of manual overrides detected by drift-detection jobs or GitOps reconcilers. | Signals where environment parity is threatened so promotion policies can be tightened or automation extended. |
+
+Dashboards combine these signals with DORA-inspired throughput metrics so that teams can correlate deployment velocity with maintainability. Publishing the telemetry alongside promotion evidence enables quick root-cause analysis when defects or regulatory findings arise.
+
 ## Automated testing strategies
 
 Multi-level testing strategies for Architecture as Code comprise syntax validation, unit testing of modules, integration testing of components, and system testing of complete environments. Each test layer addresses specific risks and quality attributes at increasing complexity and execution cost.
