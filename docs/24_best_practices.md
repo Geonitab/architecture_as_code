@@ -147,6 +147,15 @@ Architecture teams thrive when diagrams and narrative assets share the same gove
 - **Treat diagram reviews as code reviews** – Pull requests should highlight the change intent, link to any relevant Architecture Decision Records, and include before/after renders. Reviewers confirm that tags, layout, and element descriptions align with repository conventions and that the change maps to an approved initiative.
 - **Close the feedback loop** – When changes land, run `python3 generate_book.py && docs/build_book.sh` to refresh downstream artefacts. Sharing the resulting PNGs or Structurizr workspace exports during showcases helps teams internalise the latest architecture story.
 
+### Adoption and Capability-Building Routines
+
+Avoiding a single Structurizr maintainer depends on deliberate knowledge transfer. Blend the following practices with the playbook in Chapter 06 to grow confident contributors:
+
+- **Rotating pairing circuits** – Schedule monthly pairing sessions between experienced workspace curators and new joiners. Each pairing reviews open issues, applies naming conventions, and rehearses the automation scripts so skills diffuse across teams.
+- **Structured learning paths** – Catalogue on-demand recordings of Structurizr bootcamps, quick-reference sheets for DSL includes, and troubleshooting guides for Structurizr Lite and the CLI. Associate each asset with the competency framework in this chapter so managers can target coaching.
+- **Visible adoption metrics** – Track the number of contributors updating the workspace, the proportion of views reusing layout templates, and the cycle time for approved diagram changes. Publish the metrics on the enablement dashboards used for other practice clusters to highlight when additional support is required.
+- **Community decision logs** – Maintain a changelog that records updates to naming conventions, layout templates, or automation scripts. Link the log from pull request templates so reviewers can confirm that discussions and outcomes are transparent.
+
 These routines eliminate duplicated diagramming effort across programmes, allowing architects to focus on structural decisions rather than cosmetic fixes.
 
 ## Risk Management and Resilience
