@@ -4,7 +4,9 @@ This section provides a comprehensive list of all sources and references cited t
 
 ## Numbered source index
 
+- <a id="source-4"></a>**Source [4]:** GitHub Docs. *About protected branches.* GitHub Documentation, 2024. Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 14: Practical Implementation](14_practical_implementation.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md).
 - <a id="source-7"></a>**Source [7]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerization.md).
+- <a id="source-9"></a>**Source [9]:** AWS. *AWS Cloud Development Kit (CDK) Developer Guide.* Amazon Web Services, 2024. Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md), [Chapter 14: Practical Implementation](14_practical_implementation.md).
 - <a id="source-15"></a>**Source [15]:** Pulumi. *Testing Infrastructure as Code Programs.* Pulumi Blog, 2024. Referenced in: [Chapter 13: Testing Strategies for Infrastructure as Code](13_testing_strategies.md).
 - <a id="source-16"></a>**Source [16]:** HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
 - <a id="source-17"></a>**Source [17]:** HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
@@ -57,7 +59,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 11: Governance as Code](11_governance_as_code.md)*
 
 **GitHub Docs.** "About protected branches." [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/about-protected-branches)
-*Referenced in: [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
+*Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 14: Practical Implementation](14_practical_implementation.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **GitHub Open Source Community.** "Collaborative Software Development." Platform Documentation, 2024.
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
@@ -133,8 +135,8 @@ This section provides a comprehensive list of all sources and references cited t
 
 ## Industry Research and Reports
 
-**AWS.** "AWS Cloud Development Kit (CDK) Developer Guide." [https://docs.aws.amazon.com/cdk/latest/guide/home.html](https://docs.aws.amazon.com/cdk/latest/guide/home.html)  
-*Referenced in: [Chapter 5: Automation, DevOps, and CI/CD](05_automation_devops_cicd.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*
+**AWS.** "AWS Cloud Development Kit (CDK) Developer Guide." [https://docs.aws.amazon.com/cdk/latest/guide/home.html](https://docs.aws.amazon.com/cdk/latest/guide/home.html)
+*Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 5: Automation, DevOps, and CI/CD](05_automation_devops_cicd.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*
 
 **Best practice documentation from leading organisations.**  
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*

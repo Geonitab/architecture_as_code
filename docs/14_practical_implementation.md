@@ -41,6 +41,12 @@ These programming-language-native tools also simplify continuous integration wor
 
 Declarative-first tools such as Terraform continue to play a vital role, especially where multi-cloud coverage and established ecosystems are essential. However, their testing story often centres on plan evaluation, module contract tests, and policy-as-code gatekeeping rather than true unit-level execution. When rapid, repeatable assertions over architectural logic are required, investing in Pulumi- or CDK-based layers on top of existing Terraform estates can deliver the necessary testability without sacrificing proven workflows.
 
+## Protected delivery workflows for architecture modules
+
+Curating a maintainable Architecture as Code practice requires governance controls that make quality gates non-negotiable. Teams should configure protected branches so production-aligned infrastructure repositories demand successful status checks, review approvals, and signed commits before merge. Mandatory checks need to cover book generation, diagram refreshes, module linting, and static analysis so that architectural artefacts cannot drift from the documented source of truth ([Source [4]](33_references.md#source-4)). Where contributors propose refactors, the branch policies guarantee that reviewers evaluate rendered diagrams, generated PDFs, and policy-as-code results before approving the change.
+
+Infrastructure unit tests must feature prominently in those gates. Assertions supplied by the AWS Cloud Development Kit can confirm that synthesised stacks still include encryption defaults, network segmentation, and tagging strategies that other chapters depend upon ([Source [9]](33_references.md#source-9)). By running CDK assertions—or equivalent Pulumi and Terratest suites—alongside documentation builds, the pipeline produces a single artefact bundle that documents which architectural intents were validated. Publishing this evidence with pull requests keeps change advisory boards and platform councils confident that every merge protects shared modules rather than eroding them.
+
 ## Production readiness and operational excellence
 
 Security-first thinking embeds identity, secrets handling, and audit controls into every artefact. Automated scanning pipelines and clearly defined exception processes ensure that compliance teams receive the evidence they need without slowing down delivery.
@@ -95,5 +101,6 @@ Architecture as Code in practice requires disciplined planning, collaborative ex
 - Google Cloud. "Infrastructure as Code Design Patterns." Google Cloud Architecture Centre.
 - Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.
 - Puppet. "Infrastructure as Code Implementation Guide." Puppet Enterprise Documentation.
+- GitHub Docs. "About protected branches." GitHub Documentation.
 - AWS. "AWS Cloud Development Kit (CDK) Developer Guide." Amazon Web Services.
 - Pulumi. "Testing Infrastructure as Code Programs." Pulumi Blog, 2024.
