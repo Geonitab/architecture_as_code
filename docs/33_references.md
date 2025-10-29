@@ -124,7 +124,7 @@ This section provides a comprehensive list of all sources and references cited t
 **ThoughtWorks Technology Radar.** "Diagrams as Code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
-**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.  
+<a id="thoughtworks-architecture-as-code-the-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 29: About the Authors](29_about_the_authors.md)*
 
 **ThoughtWorks.** "Architecture Decision Records." Technology Radar, 2023.  
@@ -162,7 +162,7 @@ This section provides a comprehensive list of all sources and references cited t
 **HashiCorp.** "Backend Type: s3." HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/language/settings/backends/s3](https://developer.hashicorp.com/terraform/language/settings/backends/s3) (Source [17])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
-**HashiCorp.** "Securing Terraform State." HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/cloud-docs/state/securing](https://developer.hashicorp.com/terraform/cloud-docs/state/securing) (Source [16])
+<a id="hashicorp-securing-terraform-state"></a>**HashiCorp.** "Securing Terraform State." HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/cloud-docs/state/securing](https://developer.hashicorp.com/terraform/cloud-docs/state/securing) (Source [16])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
 **HashiCorp.** "State of Cloud Strategy Survey 2024." HashiCorp, 2024.  
