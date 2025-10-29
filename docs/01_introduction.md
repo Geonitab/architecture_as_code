@@ -2,6 +2,8 @@
 
 Architecture as Code represents a paradigm shift in system development where the entire system architecture is defined, version-controlled, and managed through code. This approach enables organisations to apply the same methodologies as traditional software development across their whole technical landscape.
 
+ThoughtWorks' 2024 Technology Radar describes Architecture as Code as a discipline for "live, executable specifications" that stay aligned with the running estate instead of congealing into presentation decks (Source [1]). By codifying architectural intent, operating boundaries, and decision history alongside the software they guide, organisations create a maintainable source of truth that evolves with every merge. Those version-controlled specifications invite peer review, automated testing, and telemetry in exactly the same manner as application code, ensuring that architectural knowledge never drifts into undocumented tribal memory.
+
 ![Introduction to Architecture as Code](images/diagram_01_introduction.png)
 
 The diagram illustrates the evolution from manual processes to the comprehensive vision of Architecture as Code, where every aspect of the system architecture is codified.
@@ -14,13 +16,21 @@ This includes not only infrastructure components, but also application architect
 
 ## Microservice complexity as the primary driver
 
-The tipping point for most organisations adopting Architecture as Code is the complexity created by large-scale microservice estates. The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report notes that two thirds of modern organisations already run microservices in production while simultaneously coordinating event-driven workloads. Each additional service introduces new APIs, contracts, and deployment topologies that quickly outpace what static diagrams or isolated configuration repositories can keep synchronised.
+The tipping point for most organisations adopting Architecture as Code is the complexity created by large-scale microservice estates. The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report (Source [2]) notes that two thirds of modern organisations already run microservices in production while simultaneously coordinating event-driven workloads. Each additional service introduces new APIs, contracts, and deployment topologies that quickly outpace what static diagrams or isolated configuration repositories can keep synchronised.
 
 Architecture as Code counters that systemic complexity by capturing service boundaries, operational dependencies, security policies, and resilience patterns as executable artefacts. When those definitions travel through the same pipelines as application code, teams can guarantee that mesh rules, policy guardrails, and interoperability tests evolve in lockstep with every service. In practice this makes Architecture as Code the governing layer that keeps sprawling microservice portfolios coherent, observable, and compliant.
 
+Maintainability hinges on more than documentation; it relies on modular safety nets that detect divergence before it becomes service-impacting. Architecture as Code therefore treats boundaries, contracts, and refactoring roadmaps as curated modules that can be evolved incrementally. Automated drift detection highlights when a microservice steps outside its agreed capabilities, while codified refactoring tasks provide safe sequencing for decomposing shared databases, rotating interfaces, or retiring legacy adaptors. ThoughtWorks emphasises that these living guardrails are what prevent "architecture theatre" and keep distributed estates malleable enough to adapt to product change (Source [1]), while the CNCF data demonstrates why boundary enforcement and incremental refactoring must become routine engineering work rather than occasional clean-up (Source [2]).
+
+## Continuous synchronisation and measurable feedback loops
+
+Continuous synchronisation is achieved when architectural definitions, test suites, and operational dashboards all originate from the same version-controlled artefacts. Every pull request merges executable models, decision records, and governance rules alongside the code they constrain, enabling automated feedback loops that surface integration impacts before deployment. Pipelines validate that the declared architecture matches telemetry from running systems, highlighting configuration drift, dependency sprawl, or missed resiliency patterns so teams can course-correct during development instead of waiting for periodic reviews.
+
+Because Architecture as Code consolidates architectural knowledge in repositories, teams can instrument quality metrics such as mean time to restore, blast-radius containment, or compliance coverage directly from the same automation harnesses. Those measurements prove whether boundaries remain intact and whether incremental refactoring tasks are reducing operational toil. The combined insight from ThoughtWorks' guidance on executable specifications (Source [1]) and the CNCF's adoption data (Source [2]) illustrates how measurable feedback loops convert architecture from ceremonial checkpoints into an auditable, continuously improving practice.
+
 ## Definition and Scope
 
-Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. ThoughtWorks (2024) characterises this discipline as producing *live, executable specifications* that stay synchronised with the running estate rather than lingering as aspirational design artefacts. This encompasses application components, integration patterns, data architecture, infrastructure, and organisational processes.
+Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. ThoughtWorks (2024) characterises this discipline as producing *live, executable specifications* that stay synchronised with the running estate rather than lingering as aspirational design artefacts (Source [1]). This encompasses application components, integration patterns, data architecture, infrastructure, and organisational processes.
 
 This holistic approach enables end-to-end automation, where changes in requirements automatically propagate throughout the architecture – from application logic to deployment and monitoring. Because the specifications remain executable, governance controls, quality gates, and audit evidence can be embedded directly into the same pipelines that deliver software, keeping architecture intent verifiable at the pace that continuous delivery demands.
 
@@ -61,10 +71,10 @@ This book is aimed at system architects, developers, project managers, and IT de
 Readers will gain comprehensive knowledge of how the entire system architecture can be codified, from foundational principles to advanced architectural patterns that encompass an organisation’s entire digital ecosystem.
 
 Sources:
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024. (Source [1])
 - Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
 - Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer, 2023.
-- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF, 2024.
+- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF, 2024. (Source [2])
 
 ## How This Book Is Organised
 

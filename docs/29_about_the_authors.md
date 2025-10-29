@@ -26,6 +26,8 @@ Gunnar's extensive experience spans solution and enterprise architecture, IT inf
 
 Throughout his career, Gunnar has witnessed the evolution from manual, document-led architecture practice to the modern paradigm of codified architecture. This shift has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software engineering.
 
+Gunnar actively promotes the maintainability benefits that Architecture as Code enables. He references the ThoughtWorks Technology Radar guidance on executable specifications (Source [1]) when coaching teams on how to replace committee-driven sign-off with living, version-controlled decisions. He also brings data from the Cloud Native Computing Foundation's 2024 adoption study (Source [2]) into stakeholder workshops to illustrate why codified boundaries, automated drift detection, and incremental refactoring pipelines are necessary to keep microservice portfolios coherent over time. That blend of narrative and evidence underpins his insistence on measurable feedback loops rather than slideware-based reassurance.
+
 ## About Kvadrat
 **Kvadrat** is Sweden's largest network of independent consultants (often referred to as "egenföretagare" or sole proprietors) dedicated to driving organizational change. Founded as a community-driven platform, it connects highly skilled, motivated specialists who operate with autonomy while benefiting from the support of a larger collective. The company's core strength lies in its model of empowering individual experts to deliver high-impact solutions, fostering innovation and problem-solving for clients.
 
@@ -155,5 +157,6 @@ As technology continues to evolve, the principles outlined in this book—declar
 Sources:
 - Kvadrat AB. 'Gunnar Nordqvist - Chief Architect Profile.' Konsultprofil, 2024. Available at: [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)
 - Kvadrat AB. 'Technology Consulting Excellence.' Company Profile, 2024. Available at: [https://www.kvadrat.se/](https://www.kvadrat.se/)
-- ThoughtWorks. 'Architecture as Code: The Next Evolution.' Technology Radar, 2024.
+- ThoughtWorks. 'Architecture as Code: The Next Evolution.' Technology Radar, 2024. (Source [1])
+- Cloud Native Computing Foundation. 'State of Cloud Native Development 2024.' CNCF, 2024. (Source [2])
 - GitHub Open Source Community. 'Collaborative Software Development.' Platform Documentation, 2024.
