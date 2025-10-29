@@ -94,6 +94,38 @@ Component definitions turn infrastructure modules into reusable compliance build
 
 Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry [10_CODE_4](30_appendix_code_examples.md#10_code_4) includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.
 
+## Assure once, comply many in policy design
+
+Policy-as-code catalogues embody the **assure once, comply many** mindset introduced in [Governance as Code](11_governance_as_code.md). Controls are written once, versioned, and then tagged with metadata that links each policy primitive to the external and internal obligations it satisfies. A single IAM policy module can therefore be evaluated across multiple frameworks without re-implementing business logic.
+
+```rego
+package enterprise.identity.mfa
+
+control_id := "SEC-ID-001"
+title := "Enforce MFA for all human identities in production"
+
+violation[identity] {
+    identity := input.identities[_]
+    identity.type == "human"
+    not identity.mfa_enabled
+}
+
+framework_mappings := {
+    "iso_27001": ["A.5", "A.8"],
+    "soc_2": ["CC6.1", "CC6.6"],
+    "nist_800_53": ["IA-2(1)", "AC-2"],
+    "gdpr": ["Article 32"],
+    "internal": ["SEC-ID-001"]
+}
+
+evidence_sources := [
+    "ci/policy-report.json",
+    "evidence/mfa-snapshot-YYYYMM.json"
+]
+```
+
+The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected **once**, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Service Criteria can rely on the same artefacts without triggering duplicate reviews. The [Evidence as Code chapter](15_evidence_as_code.md) expands on how pipelines package and publish those artefacts, while [Compliance and Regulatory Adherence](12_compliance.md) shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.
+
 ## Implementation roadmap for European delivery teams
 
 Successful PaC programmes blend technology with process change. A staged roadmap typically includes:

@@ -155,6 +155,10 @@ tive and negative scenarios to validate correct behaviour under different condit
 t implementations that behave predictably in edge cases. Gradual rollout strategies—including blue/green policy deployments, pol
 icy versioning, and structured rollback procedures—reduce disruption from policy changes.
 
+### Control objectives that prove compliance repeatedly
+
+Security teams often begin with high-level objectives—"enforce multi-factor authentication for privileged users" or "encrypt customer data at rest"—without a clear route to automated evidence. Architecture as Code breaks each objective into declarative assertions that can be executed inside pipelines and runtime monitors. Tests are written **once**, then reused wherever the same control objective appears, whether that is ISO 27001 Annex A, SOC 2 CC6, NIST 800-53 IA-2, or an internal policy. The [policy design example](10_policy_and_security.md#assure-once-comply-many-in-policy-design) shows how a single Rego module evaluates MFA consistently. Its outputs flow into [Evidence as Code](15_evidence_as_code.md) to create machine-readable artefacts that auditors can consume without rebuilding bespoke test suites for every framework.
+
 ## Secrets management and data protection
 
 ### Comprehensive secrets lifecycle management

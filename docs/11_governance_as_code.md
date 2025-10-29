@@ -6,6 +6,10 @@
 
 Figure 11.1 illustrates how policy authors, reviewers, automation, production controls, and the audit portal coordinate through a single repository to evolve governance. Governance as Code extends the principles of Infrastructure as Code to the policies, approval flows, and organisational guardrails that keep architecture and delivery aligned with strategic intent. By expressing governance artefacts in version-controlled repositories, teams gain transparency, traceability, and automation opportunities while still respecting compliance and risk requirements. The shared workflow also keeps an audit trail that shows exactly which checks ran, who approved each change, and when compliance evidence was published.
 
+### Assure once, comply many
+
+Architecture as Code relies on a single, authoritative set of controls that can be mapped repeatedly to different external duties. This **assure once, comply many** principle states that governance guardrails are expressed, tested, and evidenced once, then re-used across frameworks such as ISO 27001, SOC 2, NIST 800-53, GDPR, and internal control catalogues. By codifying approval policies, data residency rules, and risk mitigations in the same repository, organisations avoid duplicating assessments for every regulator. Instead, they capture a dependable stream of artefacts that downstream teams can reference in [policy automation](10_policy_and_security.md), [security fundamentals](09a_security_fundamentals.md), and [compliance reporting](12_compliance.md). The result is consistent decision-making, reduced audit fatigue, and a shared language for evaluating governance debt.
+
 ## Implementing Approval Processes with Pull Requests
 
 Designing branching strategies for governance artefacts keeps each state explicit. Dedicated draft, review, and production branches mirror software development workflows so stakeholders can follow the journey from proposal to adoption.

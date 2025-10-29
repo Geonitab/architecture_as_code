@@ -30,6 +30,16 @@ Artificial intelligence is transforming Architecture as Code with intelligent au
 
 Compliance programmes rely on demonstrable traceability between regulatory statements and the technical controls that satisfy them. Figure 12.3 documents that traceability: business, compliance, performance, and cost requirements flow into specific functional controls such as encryption, network segmentation, audit logging, and automated scaling. Those controls are implemented through Terraform configuration and validated by targeted test suites, compliance scanners, and cost analysis. Maintaining this map ensures that every requirement is implemented, tested, and evidenced before auditors ask for proof.
 
+### Control Mapping Matrix and "assure once, comply many"
+
+Architecture as Code operationalises the **assure once, comply many** principle by cataloguing evidence and control mappings in a reusable format. The Control Mapping Matrix links each control identifier to the assurance artefacts captured in CI and to the external frameworks they satisfy. Rather than producing bespoke spreadsheets for ISO 27001, SOC 2, NIST 800-53, GDPR, and internal policies, teams maintain one matrix that references authoritative artefacts from source control.
+
+| Control ID | Control Title | Assurance Artefact(s) | ISO 27001 | SOC 2 | NIST 800-53 | GDPR | Internal |
+|------------|---------------|-----------------------|-----------|-------|--------------|------|----------|
+| SEC-ID-001 | Enforce MFA for human identities | `ci/policy-report.json`, `evidence/mfa-snapshot-YYYYMM.json` | A.5 / A.8 | CC6.1 / CC6.6 | IA-2(1), AC-2 | Article 32 | IAM-01 |
+
+In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](34_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
+
 ## Cloud-native and Serverless Development
 
 Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures. Architecture as Code must represent triggers, response mechanisms, and orchestrated workflows that adapt to real-time business events. Edge computing introduces latency-sensitive workloads and intermittent connectivity, making coordinated configuration management essential across hybrid edge-cloud environments. Tooling must therefore support declarative policies for distributed deployments, data gravity, and dynamic routing.
