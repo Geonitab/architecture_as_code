@@ -223,10 +223,42 @@ To meet compliance requirements, ADRs should follow specific quality standards:
 
 Effective ADR implementation requires established review processes:
 
-**Stakeholder Engagement**: Involve relevant teams and architects in the review  
-**Timeline**: Define timeframes for feedback and decisions  
-**Escalation**: Clear escalation paths for disputed decisions  
+**Stakeholder Engagement**: Involve relevant teams and architects in the review
+**Timeline**: Define timeframes for feedback and decisions
+**Escalation**: Clear escalation paths for disputed decisions
 **Approval Authority**: Documented roles for different types of architecture decisions
+
+### Code-Managed Discovery, Review, and Supersession
+
+Treating ADRs as code artefacts keeps the decision log maintainable and auditable, aligning with ThoughtWorks' recommendation that architectural governance should be enforced through automated tooling rather than ad-hoc processes ([ThoughtWorks, 2024](33_references.md#thoughtworks-architecture-as-code-the-next-evolution)).
+
+**Discovery**: Automation hooks can raise draft ADRs whenever a change request touches regulated components. A lightweight bot monitors backlog labels such as `architecture-impact` and scaffolds a new ADR file with templated metadata, prompting authors to capture context early. This ensures design gaps are surfaced before implementation begins and eliminates the scramble to document decisions retrospectively.
+
+**Review**: Pull request templates should require reviewers to confirm that the ADR references associated code changes, test evidence, and governance controls. Continuous integration jobs lint front matter fields (`status`, `last_reviewed`, `next_review_due`, `linked_components`) and fail the build if required metadata is missing. Mandatory reviewers defined in `CODEOWNERS` provide cross-functional oversight whilst keeping the workflow fully traceable in Git.
+
+**Supersession**: When a decision evolves, a CLI task generates a successor ADR that automatically references the prior record and updates the status of the deprecated entry. A scheduled pipeline then posts reminders when the `next_review_due` date passes so teams cannot forget to revisit ageing decisions. The resulting Git history links proposals, discussion threads, approvals, and supersessions without manual spreadsheet tracking.
+
+### Operationalising ADR Metadata
+
+ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on protecting Terraform state demonstrates how surfacing operational controls in dashboards prevents regressions; ADR metadata can mirror this practice by flagging decisions that enforce secure remote backends, rotation schedules, or access monitoring ([HashiCorp, 2024](33_references.md#hashicorp-securing-terraform-state)).
+
+Teams can emit a structured JSON index during CI that feeds architectural observability boards. Typical widgets include:
+
+- **Lifecycle timeline** – a chronological view generated via `adr log` that shows proposals, acceptances, and supersessions, doubling as an automated change log.
+- **Policy coverage heat map** – cross-references ADR tags against policy-as-code checks to reveal services that are missing mandated controls.
+- **Review debt tracker** – flags ADRs whose `next_review_due` date has passed, enabling leadership to prioritise refresh work in sprint planning.
+
+Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls ([ThoughtWorks, 2024](33_references.md#thoughtworks-architecture-as-code-the-next-evolution)).
+
+### Preventing Knowledge Loss Through ADRs
+
+ADRs preserve organisational memory when staff transitions occur. During onboarding, new engineers can query the ADR index for the services they inherit and follow links to the relevant implementation repositories, monitoring dashboards, and runbooks. A typical handover checklist includes:
+
+1. Review the most recent ADRs affecting the service to understand architectural intent and compliance boundaries.
+2. Inspect the automation evidence (pipeline runs, policy reports, state snapshots) referenced in the ADR to verify the decision is still active.
+3. Capture any deviations in a "drift" section and schedule a follow-up review if the ADR's `next_review_due` date has lapsed.
+
+This workflow prevented significant disruption during a recent platform rotation: when the outgoing lead departed, the incoming engineer replayed the ADR change log to rebuild the rationale for Terraform state hardening, reusing the monitoring queries and remediation playbooks recorded alongside the decision. By curating these artefacts in code, teams avoid losing critical context to private notes or unstructured chat history, fulfilling the maintainability objective of keeping architecture knowledge evergreen ([HashiCorp, 2024](33_references.md#hashicorp-securing-terraform-state)).
 
 ## Integration with Architecture as Code
 
@@ -275,5 +307,7 @@ With foundational principles, version control practices, and decision documentat
 
 Sources:
 - Architecture Decision Records Community. "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)
-- Nygard, M. "Documenting Architecture Decisions." 2011.  
+- Nygard, M. "Documenting Architecture Decisions." 2011.
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
+- HashiCorp. "Securing Terraform State." HashiCorp Developer Documentation, 2024.
 - ThoughtWorks. "Architecture Decision Records." Technology Radar, 2023.
