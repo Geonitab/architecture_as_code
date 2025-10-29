@@ -4,8 +4,9 @@ This section provides a comprehensive list of all sources and references cited t
 
 ## Numbered source index
 
+- <a id="source-1"></a>**Source [1]:** ThoughtWorks. *Architecture as Code: The Next Evolution.* ThoughtWorks Technology Radar, 2024. Referenced in: [Chapter 01: Introduction to Architecture as Code](01_introduction.md), [Chapter 02: Fundamental Principles](02_fundamental_principles.md), [Chapter 29: About the Authors](29_about_the_authors.md).
+- <a id="source-2"></a>**Source [2]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 01: Introduction to Architecture as Code](01_introduction.md), [Chapter 07: Containerisation and Orchestration as Code](07_containerization.md), [Chapter 29: About the Authors](29_about_the_authors.md).
 - <a id="source-4"></a>**Source [4]:** GitHub Docs. *About protected branches.* GitHub Documentation, 2024. Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 14: Practical Implementation](14_practical_implementation.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md).
-- <a id="source-7"></a>**Source [7]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerization.md).
 - <a id="source-9"></a>**Source [9]:** AWS. *AWS Cloud Development Kit (CDK) Developer Guide.* Amazon Web Services, 2024. Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md), [Chapter 14: Practical Implementation](14_practical_implementation.md).
 - <a id="source-15"></a>**Source [15]:** Pulumi. *Testing Infrastructure as Code Programs.* Pulumi Blog, 2024. Referenced in: [Chapter 13: Testing Strategies for Infrastructure as Code](13_testing_strategies.md).
 - <a id="source-16"></a>**Source [16]:** HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
@@ -40,8 +41,8 @@ This section provides a comprehensive list of all sources and references cited t
 **Chung, L., et al.** "Non-Functional Requirements in Software Engineering." Springer, 2000.  
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**Cloud Native Computing Foundation.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [7])
-*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
+**Cloud Native Computing Foundation.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [2])
+*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md), [Chapter 29: About the Authors](29_about_the_authors.md)*
 
 **FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. [https://calm.finos.org/](https://calm.finos.org/)  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
@@ -124,7 +125,7 @@ This section provides a comprehensive list of all sources and references cited t
 **ThoughtWorks Technology Radar.** "Diagrams as Code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
-<a id="thoughtworks-architecture-as-code-the-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.
+<a id="thoughtworks-architecture-as-code-the-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024. (Source [1])
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 29: About the Authors](29_about_the_authors.md)*
 
 **ThoughtWorks.** "Architecture Decision Records." Technology Radar, 2023.  
