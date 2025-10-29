@@ -32,6 +32,12 @@ Empowering non-developers starts with approachable policy editors that generate 
 
 Documentation-as-code portals and ChatOps integrations keep contributors in their preferred environments. Rendered documentation provides a friendly view of pending changes, while Microsoft Teams or Slack integrations surface review notifications, allow approvals, and trigger governance checks without forcing users into the terminal. Automated policy explainers complete the toolkit by translating code into natural language summaries, giving decision makers clarity without diluting the precision of code-based guardrails.
 
+## Maintaining catalogues and escalation playbooks
+
+Governance repositories should act as the clearing house for service contract metadata, coupling telemetry, and the escalation rules that accompany automated checks. By ingesting the catalogues curated by microservice teams, governance owners can cross-reference consumer counts, schema versions, and deprecation timelines to spot where policy updates or additional enablement is required ([Source [2]](33_references.md#source-2)). Dashboards layered over the repository data highlight bounded contexts that flirt with dependency sprawl or breach agreed cadence limits, allowing governance forums to focus on proactive architecture stewardship rather than retrospective firefighting.
+
+Policy-as-code platforms also need explicit incident playbooks so non-compliance is handled consistently. Each rule should define the responsible owner, compensating controls, and the window for remediation, with ChatOps actions and ticket templates bundled into the repository for rapid execution when a check fails ([Source [10]](33_references.md#source-10)). Scheduled reviews of closed incidents confirm that escalations were resolved within the expected time frame and feed continuous improvements into both the policy set and the supporting enablement materials.
+
 ## Key Takeaways
 
 Governance as Code modernises policy management by placing guardrails alongside the systems they protect. Using pull requests to orchestrate approvals strengthens auditability and responsiveness, while deliberate enablement, training, and supportive tooling ensure that governance professionals can thrive in a code-based ecosystem.
@@ -39,6 +45,8 @@ Governance as Code modernises policy management by placing guardrails alongside 
 ## Sources
 
 Sources:
+- [Cloud Native Computing Foundation – Policy as Code Whitepaper (2021)](https://github.com/cncf/tag-app-delivery/blob/main/policy-as-code-whitepaper.md) ([Source [10]](33_references.md#source-10))
 - [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)
 - [Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)
+- [Sam Newman – *Building Microservices*, 2nd Edition (2021)](https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/) ([Source [2]](33_references.md#source-2))

@@ -4,7 +4,9 @@ This section provides a comprehensive list of all sources and references cited t
 
 ## Numbered source index
 
+- <a id="source-2"></a>**Source [2]:** Newman, Sam. *Building Microservices* (2nd ed.). O'Reilly Media, 2021. Referenced in: [Chapter 08: Microservices Architecture as Code](08_microservices.md), [Chapter 11: Governance as Code](11_governance_as_code.md).
 - <a id="source-7"></a>**Source [7]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerization.md).
+- <a id="source-10"></a>**Source [10]:** Cloud Native Computing Foundation. *Policy as Code Whitepaper.* TAG App Delivery, 2021. Referenced in: [Chapter 08: Microservices Architecture as Code](08_microservices.md), [Chapter 11: Governance as Code](11_governance_as_code.md).
 - <a id="source-15"></a>**Source [15]:** Pulumi. *Testing Infrastructure as Code Programs.* Pulumi Blog, 2024. Referenced in: [Chapter 13: Testing Strategies for Infrastructure as Code](13_testing_strategies.md).
 - <a id="source-16"></a>**Source [16]:** HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
 - <a id="source-17"></a>**Source [17]:** HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
@@ -41,7 +43,10 @@ This section provides a comprehensive list of all sources and references cited t
 **Cloud Native Computing Foundation.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [7])
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
 
-**FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. [https://calm.finos.org/](https://calm.finos.org/)  
+**Cloud Native Computing Foundation.** "Policy as Code Whitepaper." TAG App Delivery, 2021. (Source [10])
+*Referenced in: [Chapter 8: Microservices Architecture as Code](08_microservices.md), [Chapter 11: Governance as Code](11_governance_as_code.md)*
+
+**FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. [https://calm.finos.org/](https://calm.finos.org/)
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
 **Ford, Neal et al.** "Building Evolutionary Architectures." O'Reilly Media, 2017.  
@@ -83,10 +88,13 @@ This section provides a comprehensive list of all sources and references cited t
 **Mermaid.** "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. [https://mermaid.js.org/](https://mermaid.js.org/)  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
 
-**NIST.** "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.  
+**NIST.** "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
-**Nygard, M.** "Documenting Architecture Decisions." 2011.  
+**Newman, S.** "Building Microservices." O'Reilly Media, 2021. (Source [2])
+*Referenced in: [Chapter 8: Microservices Architecture as Code](08_microservices.md), [Chapter 11: Governance as Code](11_governance_as_code.md)*
+
+**Nygard, M.** "Documenting Architecture Decisions." 2011.
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
 
 **Open Policy Agent.** "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.  

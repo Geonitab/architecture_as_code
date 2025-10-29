@@ -77,9 +77,21 @@ jobs:
 
 Such pipelines capture the architectural intent, flag drift immediately, and keep every service aligned with centrally defined guardrails.
 
+### Policy-as-code guardrails for maintainability
+
+Declarative policies keep microservice estates maintainable by enforcing approved integration patterns and blocking unauthorised dependencies before they entrench. Encode cross-service dependency limits, schema versioning rules, and data classification controls in engines such as Open Policy Agent or HashiCorp Sentinel so that every pull request executes the same objective assessment ([Source [10]](33_references.md#source-10)). Guardrail repositories should expose reusable policy modules—one for inbound contracts, another for outbound data sharing, and a third for infrastructure entitlements—so teams can adopt the right set through configuration rather than copying logic. Publishing those modules through package registries or Git submodules ensures each service can pin to a tested release whilst the platform team can distribute updates rapidly when regulations or architectural standards evolve.
+
+Complement policy execution with attestation artefacts. Delivery pipelines ought to publish signed evidence that contract checks, dependency allow-list validation, and cost guardrails all passed. Store the attestations alongside build artefacts and surface them in dashboards used by architecture review boards so that maintainability conversations reference recent, machine-verifiable data instead of tribal memory. The same attestations become the gating mechanism for progressive delivery: without a current policy pass, staging and production promotions automatically halt, focusing attention on defects before they propagate.
+
 ### Runtime observability as code
 
 Codify dashboards, alerting policies, and runbooks so that operability remains consistent across the fleet. Use tools such as Grafana configuration as code or Prometheus recording rules stored in Git. Tie alert routing to the ownership data held in each service repository so incidents reach the responsible team.
+
+### Service contract catalogues and coupling telemetry
+
+Treat service contracts as long-lived assets that require their own catalogue. A lightweight metadata schema—covering owning team, lifecycle stage, change cadence, consumer roster, and deprecation policy—lets automation assemble a searchable inventory and keeps discovery costs low for new teams ([Source [2]](33_references.md#source-2)). Repository templates should prompt engineers to update the catalogue entry whenever schemas change, with pull-request bots comparing the declared version to the OpenAPI or AsyncAPI documents committed in the same branch. When discrepancies arise, reviewers receive targeted comments explaining which metadata fields need revision.
+
+Maintainability improves further when coupling signals are harvested automatically. Parse event subscriptions, REST dependencies, and shared library imports to populate a dependency graph that surfaces fan-in and fan-out metrics. Highlight services whose consumer counts spike unexpectedly or whose API change frequency exceeds the agreed envelope so that architecture leads can intervene early. Feed these metrics into team dashboards and quarterly architecture reviews to decide when to invest in domain resegmentation, consumer education, or contract hardening.
 
 ## Coordinating shared capabilities
 
@@ -109,6 +121,12 @@ Define failure injection experiments alongside service definitions. Tools such a
 
 Automate reporting on resource consumption, carbon intensity, and idle workloads. When services codify budgets and scaling thresholds, platform automation can alert owners when utilisation deviates from expected norms. Embedding sustainability objectives into Architecture as Code keeps environmental considerations visible during design and runtime.
 
+### Escalation playbooks for failed guardrails
+
+Automated checks occasionally surface non-compliance that cannot be remediated immediately. Codify escalation playbooks within each service repository so that governance breaches trigger predictable responses rather than ad-hoc firefighting. The playbook should identify the accountable owner, the supporting platform or governance contacts, and the time-bound actions required to restore compliance—whether that is rolling back a release, applying a compensating policy, or executing a hotfix ([Source [10]](33_references.md#source-10)). Integrate ChatOps commands that allow responders to acknowledge an incident, apply temporary waivers, or request expedited reviews while ensuring every step is logged.
+
+Policy tooling can emit enriched alerts that include the affected service contract, recent change history, and coupling metrics drawn from the catalogue so responders understand the blast radius before taking action ([Source [2]](33_references.md#source-2)). Escalations that breach agreed response windows should automatically notify architecture leadership and post-mortem facilitators, feeding lessons learned back into the guardrail backlog. Publishing the closed-loop results keeps the maintainability programme transparent and reassures stakeholders that automated controls drive genuine behavioural change.
+
 ## Migration considerations
 
 Many organisations evolve from monoliths or service-oriented architectures. Architecture as Code accelerates this journey by:
@@ -123,3 +141,9 @@ By treating migration playbooks as code, teams can rehearse transitions safely a
 ## Summary
 
 Microservices amplify organisational agility when paired with disciplined automation. Architecture as Code gives leaders a shared source of truth for service contracts, platform guardrails, and operational posture. Investing in reusable templates, policy automation, and comprehensive observability enables teams to innovate quickly whilst preserving the resilience, compliance, and sustainability that modern enterprises demand.
+
+## Sources
+
+Sources:
+- [Cloud Native Computing Foundation – Policy as Code Whitepaper (2021)](https://github.com/cncf/tag-app-delivery/blob/main/policy-as-code-whitepaper.md) ([Source [10]](33_references.md#source-10))
+- [Sam Newman – *Building Microservices*, 2nd Edition (2021)](https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/) ([Source [2]](33_references.md#source-2))
