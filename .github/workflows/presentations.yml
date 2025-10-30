@@ -1,80 +1,111 @@
-name: Build – Presentations
+name: Presentations
 
 on:
   workflow_call:
     inputs:
-      python-version:
-        description: Python version
+      model_provider:
+        description: "Which provider to use for generation (openai|anthropic)"
         required: false
         type: string
-        default: "3.12"
-      src_dir:
-        description: (Unused) Kept for compatibility.
-        required: false
-        type: string
-        default: "docs"
-      template_path:
-        description: (Unused) Kept for compatibility.
-        required: false
-        type: string
-        default: "templates/presentation-template.pptx"
-      out_dir:
-        description: (Unused) Kept for compatibility.
-        required: false
-        type: string
-        default: "exports/presentations"
+        default: openai
 
 permissions:
-  contents: read
+  contents: write
+
+env:
+  PYTHONUNBUFFERED: "1"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  # Orchestrator expects this file name later:
+  PRESENTATION_OUT: build/architecture_as_code_presentation.pptx
+  ARTIFACT_RETENTION_DAYS: 30
 
 jobs:
   generate:
     name: Generate presentations
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python-version }}
+          python-version: "3.11"
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install PyYAML python-pptx
+          if [ -f presentations/requirements.txt ]; then
+            pip install -r presentations/requirements.txt
+          elif [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+          # Ensure core libs for PPTX generation are present
+          python - <<'PY'
+          import pkgutil, sys
+          need = ["python-pptx","jinja2","pydantic"]
+          missing = [p for p in need if pkgutil.find_loader(p) is None]
+          if missing:
+            import subprocess
+            subprocess.check_call([sys.executable,"-m","pip","install",*missing])
+          PY
 
-      - name: Ensure output folders exist
+      - name: Fail early if model secrets missing
         run: |
-          mkdir -p presentations
-          mkdir -p presentations/presentations
-          mkdir -p releases/presentation/presentations
+          missing=0
+          case "${{ inputs.model_provider }}" in
+            "openai")
+              [ -n "${OPENAI_API_KEY:-}" ] || { echo "::error::OPENAI_API_KEY is not set"; missing=1; }
+              ;;
+            "anthropic")
+              [ -n "${ANTHROPIC_API_KEY:-}" ] || { echo "::error::ANTHROPIC_API_KEY is not set"; missing=1; }
+              ;;
+            *)
+              echo "::warning::Unknown model_provider: ${{ inputs.model_provider }} (expected openai|anthropic)"
+              ;;
+          esac
+          if [ $missing -ne 0 ]; then
+            echo "Environment (redacted) for debugging:" 
+            env | sed -E 's/(API_KEY|TOKEN|SECRET)=.*/\1=***REDACTED***/' | sort
+            exit 1
+          fi
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Run generator
-        shell: bash
+        id: run_generator
         run: |
           set -euo pipefail
-          # Pass only the filename so the script's standard output dir
-          # doesn't duplicate the path.
-          python ./generate_presentation.py \
-            --create-pptx \
-            --release \
-            --output architecture_as_code_presentation.pptx
+          mkdir -p "$(dirname "$PRESENTATION_OUT")"
+          # Adjust the script path/arguments to your repo layout:
+          # Example:
+          #   python tools/presentations/generate.py --out "$PRESENTATION_OUT"
+          #
+          # Fallback sample that fails clearly if the script isn’t found:
+          if [ -f tools/presentations/generate.py ]; then
+            python tools/presentations/generate.py --out "$PRESENTATION_OUT"
+          elif [ -f scripts/generate_presentation.py ]; then
+            python scripts/generate_presentation.py --out "$PRESENTATION_OUT"
+          else
+            echo "::error::No generator script found (looked for tools/presentations/generate.py and scripts/generate_presentation.py)."
+            exit 1
+          fi
+          ls -lh "$PRESENTATION_OUT"
 
-      - name: Show generated files (debug)
-        run: |
-          echo "=== presentations/ ==="
-          find presentations -maxdepth 3 -type f -print || true
-          echo "=== releases/presentation/ ==="
-          find releases/presentation -maxdepth 3 -type f -print || true
-
-      - name: Upload artefact
+      - name: Upload presentation artefact
         uses: actions/upload-artifact@v4
         with:
-          name: presentations
-          path: |
-            presentations/
-            releases/presentation/
-          if-no-files-found: error
-          retention-days: 30
+          name: architecture_as_code_presentation
+          path: ${{ env.PRESENTATION_OUT }}
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
