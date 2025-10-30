@@ -4,7 +4,7 @@ This repository powers the publication workflow for the book *Architecture as Co
 
 ## 📚 About the Book
 
-The book explores how to treat architecture and infrastructure work as software artifacts. Thirty-one chapters are organised into a seven-part narrative with extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is now framed for a global audience, combining conceptual guidance, practical templates, and illustrative diagrams without relying on region-specific assumptions.【F:docs/book_structure.md†L1-L139】
+The book explores how to treat architecture and infrastructure work as software artefacts. More than thirty-five chapters are organised into Parts A–G with Part H delivering extended appendices that cover the entire lifecycle—from foundational principles and automation practices to organisational change and future outlooks. Each chapter is now framed for a global audience, combining conceptual guidance, practical templates, and illustrative diagrams without relying on region-specific assumptions.【F:docs/book_structure.md†L1-L146】【F:docs/part_a_foundations.md†L5-L21】【F:docs/part_h_appendices.md†L5-L29】
 
 ### Target Audience
 - System and enterprise architects
@@ -15,23 +15,27 @@ The book explores how to treat architecture and infrastructure work as software 
 
 ## 📖 Narrative Structure
 
-### Seven Core Parts
+### Seven Core Parts (Parts A–G)
 
 | Part | Chapters | Focus |
 | --- | --- | --- |
-| Part 1 – Foundations | 1-4 | Core concepts, guiding principles, and documentation practices for Architecture as Code |
-| Part 2 – Architecture Platform | 5-8 | Automation tooling, cloud environments, containerisation, and microservices foundations |
-| Part 3 – Security & Governance | 9-12 | Security automation, policy enforcement, governance models, and compliance obligations |
-| Part 4 – Delivery & Operations | 13-16 | Testing strategies, delivery pipelines, cost management, and migration playbooks |
-| Part 5 – Organisation & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
-| Part 6 – Experience & Best Practices | 22-24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
-| Part 7 – Future & Wrap-up | 25-27 | Strategic outlook, forward-looking development plans, and closing guidance |【F:docs/book_structure.md†L7-L120】
+| Part A – Foundations | 1-4 | Core concepts, guiding principles, and documentation practices for Architecture as Code |
+| Part B – Architecture Platform | 5-7 | Automation tooling, cloud environments, containerisation, and modelling foundations |
+| Part C – Security & Governance | 9A-12 | Security automation, policy enforcement, governance models, and compliance obligations |
+| Part D – Delivery & Operations | 13-16 | Testing strategies, delivery pipelines, cost management, and migration playbooks |
+| Part E – Organisation & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
+| Part F – Experience & Best Practices | 22-24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
+| Part G – Future & Wrap-up | 25-27 | Strategic outlook, forward-looking development plans, and closing guidance |【F:docs/book_structure.md†L7-L110】【F:docs/part_a_foundations.md†L5-L21】
+
+Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`) that frames the narrative for the chapters that follow.【F:docs/part_a_foundations.md†L5-L21】
 
 ### Appendices and Extended Material
+- **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.
 - **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
 - **Chapter 29 – About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.【F:docs/book_structure.md†L97-L139】
+- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.
+- **Architecture as Code Maturity Model and Control Mapping Template:** Adoption guidance and compliance tooling that extend the main chapters.【F:docs/book_structure.md†L28-L122】【F:docs/part_h_appendices.md†L5-L29】【F:docs/34_control_mapping_matrix_template.md†L1-L17】
 
 ### Archived Drafts
 - **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/book_structure.md†L81-L108】【F:docs/archive/README.md†L1-L9】
