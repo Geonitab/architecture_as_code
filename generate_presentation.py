@@ -642,62 +642,63 @@ def _collect_highlights_from_lines(lines, minimum_length=20):
     return key_points
 
 
+def _load_maturity_aspects(html_path: Path):
+    """Extract maturity radar aspects from the standalone HTML tool."""
+    if not html_path.exists():
+        return []
+
+    text = html_path.read_text(encoding="utf-8")
+    match = re.search(r"const\s+aspects\s*=\s*(\[[\s\S]*?\]);", text)
+    if not match:
+        return []
+
+    aspects_block = match.group(1)
+    aspects_block = re.sub(r"(?m)(\s*)([A-Za-z_][A-Za-z0-9_]*):", r'\1"\2":', aspects_block)
+
+    try:
+        return json.loads(aspects_block)
+    except json.JSONDecodeError as exc:  # pragma: no cover - defensive guardrail
+        print("⚠️  Unable to parse maturity radar configuration:", exc)
+        return []
+
+
 def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
     """Generate slides.json for the Prezi-style presentation."""
-    docs_dir = Path("docs")
-    if not docs_dir.exists():
-        return output_path, 0
-
     prezi_dir = output_path.parent
     prezi_dir.mkdir(parents=True, exist_ok=True)
 
-    md_files = _iter_primary_markdown_files(docs_dir)
+    aspects = _load_maturity_aspects(Path("docs/maturity_model_radar.html"))
+    if not aspects:
+        output_path.write_text("[]", encoding="utf-8")
+        return output_path, 0
 
     slides = []
     x = y = 0
-    col_w, row_h, cols = 620, 460, 6
+    col_w, row_h, cols = 620, 460, 4
 
-    h1_re = re.compile(r"^\#\s+(.+)$", re.MULTILINE)
-    h2_re = re.compile(r"^\#\#\s+(.+)$", re.MULTILINE)
-
-    for md_file in md_files:
-        text = md_file.read_text(encoding="utf-8")
-        if 'http-equiv="refresh"' in text.lower():
-            continue
-
-        relative_path = md_file.relative_to(docs_dir)
-        if md_file.name.lower() == "index.md":
-            slide_id = relative_path.parent.name
-        else:
-            slide_id = md_file.stem
-
-        h1_match = h1_re.search(text)
-        if not h1_match:
-            continue
-
-        title = h1_match.group(1).strip()
-
+    for aspect in aspects:
+        aspect_key = aspect.get("key") or "aspect"
+        slide_id = f"maturity-{aspect_key}"
         slides.append(
             {
                 "id": slide_id,
-                "title": title,
-                "mdPath": f"/{slide_id}/",
+                "title": aspect.get("name", "Maturity aspect"),
+                "mdPath": f"/maturity_model_radar.html#{aspect_key}",
                 "x": x,
                 "y": y,
                 "zoom": 1,
             }
         )
 
-        for index, match in enumerate(h2_re.finditer(text), start=1):
-            section_title = match.group(1).strip()
-            slug = _slugify_heading(section_title) or f"section-{index}"
+        for question_index, question in enumerate(aspect.get("questions", []), start=1):
+            zero_based = question_index - 1
             slides.append(
                 {
-                    "id": f"{slide_id}--{index}",
-                    "title": section_title,
-                    "mdPath": f"/{slide_id}/#{slug}",
-                    "x": x + 220 + ((index - 1) % 2) * 160,
-                    "y": y + 140 + ((index - 1) // 2) * 120,
+                    "id": f"{slide_id}--{question_index}",
+                    "title": question,
+                    "mdPath": f"/maturity_model_radar.html#{aspect_key}_{zero_based}",
+                    "x": x + 220 + ((question_index - 1) % 2) * 160,
+                    "y": y + 140 + ((question_index - 1) // 2) * 120,
                     "zoom": 1,
                     "parentId": slide_id,
                 }
@@ -1512,7 +1513,9 @@ def main():
     if slide_count:
         print(f"✅ Prezi slides generated at {slides_path} ({slide_count} slides)")
     else:
-        print("⚠️ Prezi slides were not generated because no markdown chapters were found")
+        print(
+            "⚠️ Prezi slides were not generated because the maturity radar configuration was unavailable"
+        )
     
     # Create presentation outline
     outline_content = "# Presentation Outline\n\n"
