@@ -1129,13 +1129,34 @@
       renderRadar(radarDefinition);
       const suggestions = collectImprovementSuggestions(detailedResults);
 
+      const exportPayload = {
+        ...resultPayload,
+        suggestions: suggestions.map(
+          ({
+            aspectKey,
+            aspectName,
+            question,
+            risk,
+            recommendation,
+            reference
+          }) => ({
+            aspectKey,
+            aspectName,
+            question,
+            risk,
+            mitigation: recommendation,
+            reference
+          })
+        )
+      };
+
       const jsonOutput = document.getElementById("jsonOutput");
-      jsonOutput.value = JSON.stringify(resultPayload, null, 2);
+      jsonOutput.value = JSON.stringify(exportPayload, null, 2);
 
       latestAssessment = {
         detailedResults,
         suggestions,
-        resultPayload
+        resultPayload: exportPayload
       };
 
       renderSummaryTable(detailedResults);
@@ -1341,6 +1362,7 @@
           }
 
           suggestions.push({
+            aspectKey: result.aspectKey,
             aspectName: result.aspectName,
             question: answer.question,
             risk: suggestionDefinition.risk,
