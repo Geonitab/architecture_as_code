@@ -1012,6 +1012,9 @@
 
       aspects.forEach((aspect) => {
         const fieldset = document.createElement("fieldset");
+        if (aspect.key) {
+          fieldset.id = aspect.key;
+        }
         const legend = document.createElement("legend");
         legend.textContent = aspect.name;
         fieldset.appendChild(legend);
@@ -1020,6 +1023,7 @@
           const questionId = `${aspect.key}_${index}`;
           const wrapper = document.createElement("div");
           wrapper.className = "question";
+          wrapper.id = questionId;
 
           const label = document.createElement("label");
           label.className = "question-text";

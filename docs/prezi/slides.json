@@ -1,3761 +1,532 @@
 [
   {
-    "id": "00_front_cover",
-    "title": "Architecture as Code",
-    "mdPath": "/00_front_cover/",
+    "id": "maturity-iac",
+    "title": "Infrastructure as code (IaC)",
+    "mdPath": "/maturity_model_radar.html#iac",
     "x": 0,
     "y": 0,
     "zoom": 1
   },
   {
-    "id": "00_front_cover--1",
-    "title": "Release Information",
-    "mdPath": "/00_front_cover/#release-information",
+    "id": "maturity-iac--1",
+    "title": "Are all infrastructure definitions stored in version control with peer review required prior to merge?",
+    "mdPath": "/maturity_model_radar.html#iac_0",
     "x": 220,
     "y": 140,
     "zoom": 1,
-    "parentId": "00_front_cover"
+    "parentId": "maturity-iac"
   },
   {
-    "id": "01_introduction",
-    "title": "Introduction to Architecture as Code",
-    "mdPath": "/01_introduction/",
+    "id": "maturity-iac--2",
+    "title": "Is automated validation or linting run on every infrastructure code change before deployment?",
+    "mdPath": "/maturity_model_radar.html#iac_1",
+    "x": 380,
+    "y": 140,
+    "zoom": 1,
+    "parentId": "maturity-iac"
+  },
+  {
+    "id": "maturity-iac--3",
+    "title": "Do environment deployments rely solely on declarative templates rather than manual changes?",
+    "mdPath": "/maturity_model_radar.html#iac_2",
+    "x": 220,
+    "y": 260,
+    "zoom": 1,
+    "parentId": "maturity-iac"
+  },
+  {
+    "id": "maturity-iac--4",
+    "title": "Are infrastructure modules reusable and parameterised to promote consistency across environments?",
+    "mdPath": "/maturity_model_radar.html#iac_3",
+    "x": 380,
+    "y": 260,
+    "zoom": 1,
+    "parentId": "maturity-iac"
+  },
+  {
+    "id": "maturity-iac--5",
+    "title": "Is drift detection automated and reviewed regularly to ensure infrastructure matches the declared state?",
+    "mdPath": "/maturity_model_radar.html#iac_4",
+    "x": 220,
+    "y": 380,
+    "zoom": 1,
+    "parentId": "maturity-iac"
+  },
+  {
+    "id": "maturity-aac",
+    "title": "Architecture as code (AaC)",
+    "mdPath": "/maturity_model_radar.html#aac",
     "x": 620,
     "y": 0,
     "zoom": 1
   },
   {
-    "id": "01_introduction--1",
-    "title": "Evolution towards Architecture as Code",
-    "mdPath": "/01_introduction/#evolution-towards-architecture-as-code",
+    "id": "maturity-aac--1",
+    "title": "Are architecture models generated from source-controlled code or domain-specific language definitions?",
+    "mdPath": "/maturity_model_radar.html#aac_0",
     "x": 840,
     "y": 140,
     "zoom": 1,
-    "parentId": "01_introduction"
+    "parentId": "maturity-aac"
   },
   {
-    "id": "01_introduction--2",
-    "title": "Microservice complexity as the primary driver",
-    "mdPath": "/01_introduction/#microservice-complexity-as-the-primary-driver",
+    "id": "maturity-aac--2",
+    "title": "Do teams update architecture models as part of the same change when system behaviour evolves?",
+    "mdPath": "/maturity_model_radar.html#aac_1",
     "x": 1000,
     "y": 140,
     "zoom": 1,
-    "parentId": "01_introduction"
+    "parentId": "maturity-aac"
   },
   {
-    "id": "01_introduction--3",
-    "title": "Definition and Scope",
-    "mdPath": "/01_introduction/#definition-and-scope",
+    "id": "maturity-aac--3",
+    "title": "Is traceability maintained between architecture components and the owning teams or repositories?",
+    "mdPath": "/maturity_model_radar.html#aac_2",
     "x": 840,
     "y": 260,
     "zoom": 1,
-    "parentId": "01_introduction"
+    "parentId": "maturity-aac"
   },
   {
-    "id": "01_introduction--4",
-    "title": "Critique of Traditional Architecture",
-    "mdPath": "/01_introduction/#critique-of-traditional-architecture",
+    "id": "maturity-aac--4",
+    "title": "Are architecture decisions captured as code-backed records that undergo pull-request review?",
+    "mdPath": "/maturity_model_radar.html#aac_3",
     "x": 1000,
     "y": 260,
     "zoom": 1,
-    "parentId": "01_introduction"
+    "parentId": "maturity-aac"
   },
   {
-    "id": "01_introduction--5",
-    "title": "The Interconnected Flow of Architecture as Code",
-    "mdPath": "/01_introduction/#the-interconnected-flow-of-architecture-as-code",
+    "id": "maturity-aac--5",
+    "title": "Is automated validation applied to architecture models to detect inconsistencies or missing relationships?",
+    "mdPath": "/maturity_model_radar.html#aac_4",
     "x": 840,
     "y": 380,
     "zoom": 1,
-    "parentId": "01_introduction"
+    "parentId": "maturity-aac"
   },
   {
-    "id": "01_introduction--6",
-    "title": "Purpose and Target Audience of the Book",
-    "mdPath": "/01_introduction/#purpose-and-target-audience-of-the-book",
-    "x": 1000,
-    "y": 380,
-    "zoom": 1,
-    "parentId": "01_introduction"
-  },
-  {
-    "id": "01_introduction--7",
-    "title": "How This Book Is Organised",
-    "mdPath": "/01_introduction/#how-this-book-is-organised",
-    "x": 840,
-    "y": 500,
-    "zoom": 1,
-    "parentId": "01_introduction"
-  },
-  {
-    "id": "02_fundamental_principles",
-    "title": "Fundamental Principles of Architecture as Code",
-    "mdPath": "/02_fundamental_principles/",
+    "id": "maturity-containers",
+    "title": "Containerisation & orchestration as code",
+    "mdPath": "/maturity_model_radar.html#containers",
     "x": 1240,
     "y": 0,
     "zoom": 1
   },
   {
-    "id": "02_fundamental_principles--1",
-    "title": "Declarative architecture definition",
-    "mdPath": "/02_fundamental_principles/#declarative-architecture-definition",
+    "id": "maturity-containers--1",
+    "title": "Are container images and orchestration manifests generated from version-controlled definitions reviewed by the owning team?",
+    "mdPath": "/maturity_model_radar.html#containers_0",
     "x": 1460,
     "y": 140,
     "zoom": 1,
-    "parentId": "02_fundamental_principles"
+    "parentId": "maturity-containers"
   },
   {
-    "id": "02_fundamental_principles--2",
-    "title": "Holistic perspective on codification",
-    "mdPath": "/02_fundamental_principles/#holistic-perspective-on-codification",
+    "id": "maturity-containers--2",
+    "title": "Do pipelines automatically build, scan and publish container images before release?",
+    "mdPath": "/maturity_model_radar.html#containers_1",
     "x": 1620,
     "y": 140,
     "zoom": 1,
-    "parentId": "02_fundamental_principles"
+    "parentId": "maturity-containers"
   },
   {
-    "id": "02_fundamental_principles--3",
-    "title": "Implementation timeline for Architecture as Code",
-    "mdPath": "/02_fundamental_principles/#implementation-timeline-for-architecture-as-code",
+    "id": "maturity-containers--3",
+    "title": "Is cluster configuration managed declaratively with automated reconciliation to enforce desired state?",
+    "mdPath": "/maturity_model_radar.html#containers_2",
     "x": 1460,
     "y": 260,
     "zoom": 1,
-    "parentId": "02_fundamental_principles"
+    "parentId": "maturity-containers"
   },
   {
-    "id": "02_fundamental_principles--4",
-    "title": "Architecture as a single source of truth",
-    "mdPath": "/02_fundamental_principles/#architecture-as-a-single-source-of-truth",
+    "id": "maturity-containers--4",
+    "title": "Are rollout strategies (such as blue-green or canary) codified and repeatedly tested in non-production environments?",
+    "mdPath": "/maturity_model_radar.html#containers_3",
     "x": 1620,
     "y": 260,
     "zoom": 1,
-    "parentId": "02_fundamental_principles"
+    "parentId": "maturity-containers"
   },
   {
-    "id": "02_fundamental_principles--5",
-    "title": "Immutable architecture patterns",
-    "mdPath": "/02_fundamental_principles/#immutable-architecture-patterns",
+    "id": "maturity-containers--5",
+    "title": "Is runtime configuration (including secrets and policies) delivered through code rather than manual console changes?",
+    "mdPath": "/maturity_model_radar.html#containers_4",
     "x": 1460,
     "y": 380,
     "zoom": 1,
-    "parentId": "02_fundamental_principles"
+    "parentId": "maturity-containers"
   },
   {
-    "id": "02_fundamental_principles--6",
-    "title": "Testability at the architecture level",
-    "mdPath": "/02_fundamental_principles/#testability-at-the-architecture-level",
-    "x": 1620,
-    "y": 380,
-    "zoom": 1,
-    "parentId": "02_fundamental_principles"
-  },
-  {
-    "id": "02_fundamental_principles--7",
-    "title": "Documentation as Code",
-    "mdPath": "/02_fundamental_principles/#documentation-as-code",
-    "x": 1460,
-    "y": 500,
-    "zoom": 1,
-    "parentId": "02_fundamental_principles"
-  },
-  {
-    "id": "02_fundamental_principles--8",
-    "title": "Requirements as Code",
-    "mdPath": "/02_fundamental_principles/#requirements-as-code",
-    "x": 1620,
-    "y": 500,
-    "zoom": 1,
-    "parentId": "02_fundamental_principles"
-  },
-  {
-    "id": "03_version_control",
-    "title": "Version Control and Code Structure",
-    "mdPath": "/03_version_control/",
+    "id": "maturity-policy",
+    "title": "Policy as code (PaC) & Security as code",
+    "mdPath": "/maturity_model_radar.html#policy",
     "x": 1860,
     "y": 0,
     "zoom": 1
   },
   {
-    "id": "03_version_control--1",
-    "title": "Git-based workflow for infrastructure",
-    "mdPath": "/03_version_control/#git-based-workflow-for-infrastructure",
+    "id": "maturity-policy--1",
+    "title": "Are governance and security requirements expressed in machine-readable policies stored in version control?",
+    "mdPath": "/maturity_model_radar.html#policy_0",
     "x": 2080,
     "y": 140,
     "zoom": 1,
-    "parentId": "03_version_control"
+    "parentId": "maturity-policy"
   },
   {
-    "id": "03_version_control--2",
-    "title": "Code organisation and module structure",
-    "mdPath": "/03_version_control/#code-organisation-and-module-structure",
+    "id": "maturity-policy--2",
+    "title": "Do automated checks enforce policy compliance in CI/CD pipelines before promotion to higher environments?",
+    "mdPath": "/maturity_model_radar.html#policy_1",
     "x": 2240,
     "y": 140,
     "zoom": 1,
-    "parentId": "03_version_control"
+    "parentId": "maturity-policy"
   },
   {
-    "id": "03_version_control--3",
-    "title": "Transparency through version control",
-    "mdPath": "/03_version_control/#transparency-through-version-control",
+    "id": "maturity-policy--3",
+    "title": "Is policy code peer reviewed alongside the application or infrastructure change it governs?",
+    "mdPath": "/maturity_model_radar.html#policy_2",
     "x": 2080,
     "y": 260,
     "zoom": 1,
-    "parentId": "03_version_control"
+    "parentId": "maturity-policy"
   },
   {
-    "id": "04_adr",
-    "title": "Architecture Decision Records (ADR)",
-    "mdPath": "/04_adr/",
-    "x": 2480,
-    "y": 0,
-    "zoom": 1
-  },
-  {
-    "id": "04_adr--1",
-    "title": "Overall Description",
-    "mdPath": "/04_adr/#overall-description",
-    "x": 2700,
-    "y": 140,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--2",
-    "title": "What Are Architecture Decision Records?",
-    "mdPath": "/04_adr/#what-are-architecture-decision-records",
-    "x": 2860,
-    "y": 140,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--3",
-    "title": "Structure and Components of ADR",
-    "mdPath": "/04_adr/#structure-and-components-of-adr",
-    "x": 2700,
+    "id": "maturity-policy--4",
+    "title": "Are policy violations surfaced through automated alerts with actionable remediation guidance?",
+    "mdPath": "/maturity_model_radar.html#policy_3",
+    "x": 2240,
     "y": 260,
     "zoom": 1,
-    "parentId": "04_adr"
+    "parentId": "maturity-policy"
   },
   {
-    "id": "04_adr--4",
-    "title": "Status",
-    "mdPath": "/04_adr/#status",
-    "x": 2860,
-    "y": 260,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--5",
-    "title": "Context",
-    "mdPath": "/04_adr/#context",
-    "x": 2700,
+    "id": "maturity-policy--5",
+    "title": "Is there a feedback loop that updates policies based on new threats, incidents or regulatory changes?",
+    "mdPath": "/maturity_model_radar.html#policy_4",
+    "x": 2080,
     "y": 380,
     "zoom": 1,
-    "parentId": "04_adr"
+    "parentId": "maturity-policy"
   },
   {
-    "id": "04_adr--6",
-    "title": "Decision",
-    "mdPath": "/04_adr/#decision",
-    "x": 2860,
-    "y": 380,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--7",
-    "title": "Consequences",
-    "mdPath": "/04_adr/#consequences",
-    "x": 2700,
-    "y": 500,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--8",
-    "title": "Practical Examples of ADR",
-    "mdPath": "/04_adr/#practical-examples-of-adr",
-    "x": 2860,
-    "y": 500,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--9",
-    "title": "Status",
-    "mdPath": "/04_adr/#status",
-    "x": 2700,
-    "y": 620,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--10",
-    "title": "Context",
-    "mdPath": "/04_adr/#context",
-    "x": 2860,
-    "y": 620,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--11",
-    "title": "Decision",
-    "mdPath": "/04_adr/#decision",
-    "x": 2700,
-    "y": 740,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--12",
-    "title": "Consequences",
-    "mdPath": "/04_adr/#consequences",
-    "x": 2860,
-    "y": 740,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--13",
-    "title": "Status",
-    "mdPath": "/04_adr/#status",
-    "x": 2700,
-    "y": 860,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--14",
-    "title": "Context",
-    "mdPath": "/04_adr/#context",
-    "x": 2860,
-    "y": 860,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--15",
-    "title": "Decision",
-    "mdPath": "/04_adr/#decision",
-    "x": 2700,
-    "y": 980,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--16",
-    "title": "Consequences",
-    "mdPath": "/04_adr/#consequences",
-    "x": 2860,
-    "y": 980,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--17",
-    "title": "Tools and Best Practices for ADR within Architecture as Code",
-    "mdPath": "/04_adr/#tools-and-best-practices-for-adr-within-architecture-as-code",
-    "x": 2700,
-    "y": 1100,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--18",
-    "title": "Integration with Architecture as Code",
-    "mdPath": "/04_adr/#integration-with-architecture-as-code",
-    "x": 2860,
-    "y": 1100,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--19",
-    "title": "Compliance and Quality Standards",
-    "mdPath": "/04_adr/#compliance-and-quality-standards",
-    "x": 2700,
-    "y": 1220,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--20",
-    "title": "Future Development and Trends",
-    "mdPath": "/04_adr/#future-development-and-trends",
-    "x": 2860,
-    "y": 1220,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--21",
-    "title": "Summary",
-    "mdPath": "/04_adr/#summary",
-    "x": 2700,
-    "y": 1340,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "04_adr--22",
-    "title": "Looking Ahead",
-    "mdPath": "/04_adr/#looking-ahead",
-    "x": 2860,
-    "y": 1340,
-    "zoom": 1,
-    "parentId": "04_adr"
-  },
-  {
-    "id": "05_automation_devops_cicd",
-    "title": "Automation, DevOps and CI/CD for Architecture as Code",
-    "mdPath": "/05_automation_devops_cicd/",
-    "x": 3100,
-    "y": 0,
-    "zoom": 1
-  },
-  {
-    "id": "05_automation_devops_cicd--1",
-    "title": "Differentiating Architecture as Code and Infrastructure as Code in automation",
-    "mdPath": "/05_automation_devops_cicd/#differentiating-architecture-as-code-and-infrastructure-as-code-in-automation",
-    "x": 3320,
-    "y": 140,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--2",
-    "title": "The theoretical foundation for CI/CD automation",
-    "mdPath": "/05_automation_devops_cicd/#the-theoretical-foundation-for-cicd-automation",
-    "x": 3480,
-    "y": 140,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--3",
-    "title": "From Architecture as Code to holistic development and operations",
-    "mdPath": "/05_automation_devops_cicd/#from-architecture-as-code-to-holistic-development-and-operations",
-    "x": 3320,
-    "y": 260,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--4",
-    "title": "CI/CD fundamentals for regulated organisations",
-    "mdPath": "/05_automation_devops_cicd/#cicd-fundamentals-for-regulated-organisations",
-    "x": 3480,
-    "y": 260,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--5",
-    "title": "CI/CD pipelines for Architecture as Code",
-    "mdPath": "/05_automation_devops_cicd/#cicd-pipelines-for-architecture-as-code",
-    "x": 3320,
-    "y": 380,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--6",
-    "title": "Pipeline design principles",
-    "mdPath": "/05_automation_devops_cicd/#pipeline-design-principles",
-    "x": 3480,
-    "y": 380,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--7",
-    "title": "Automated testing strategies",
-    "mdPath": "/05_automation_devops_cicd/#automated-testing-strategies",
-    "x": 3320,
-    "y": 500,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--8",
-    "title": "Architecture as Code testing strategies",
-    "mdPath": "/05_automation_devops_cicd/#architecture-as-code-testing-strategies",
-    "x": 3480,
-    "y": 500,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--9",
-    "title": "Cost optimisation integration",
-    "mdPath": "/05_automation_devops_cicd/#cost-optimisation-integration",
-    "x": 3320,
-    "y": 620,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--10",
-    "title": "Monitoring and observability",
-    "mdPath": "/05_automation_devops_cicd/#monitoring-and-observability",
-    "x": 3480,
-    "y": 620,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--11",
-    "title": "DevOps culture for Architecture as Code",
-    "mdPath": "/05_automation_devops_cicd/#devops-culture-for-architecture-as-code",
-    "x": 3320,
-    "y": 740,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "05_automation_devops_cicd--12",
-    "title": "Summary",
-    "mdPath": "/05_automation_devops_cicd/#summary",
-    "x": 3480,
-    "y": 740,
-    "zoom": 1,
-    "parentId": "05_automation_devops_cicd"
-  },
-  {
-    "id": "06_structurizr",
-    "title": "Structurizr: Architecture Modeling as Code",
-    "mdPath": "/06_structurizr/",
+    "id": "maturity-governance",
+    "title": "Governance as code",
+    "mdPath": "/maturity_model_radar.html#governance",
     "x": 0,
     "y": 460,
     "zoom": 1
   },
   {
-    "id": "06_structurizr--1",
-    "title": "Introduction",
-    "mdPath": "/06_structurizr/#introduction",
+    "id": "maturity-governance--1",
+    "title": "Are approval workflows, branch protections and role definitions codified and version controlled?",
+    "mdPath": "/maturity_model_radar.html#governance_0",
     "x": 220,
     "y": 600,
     "zoom": 1,
-    "parentId": "06_structurizr"
+    "parentId": "maturity-governance"
   },
   {
-    "id": "06_structurizr--2",
-    "title": "The C4 Model Foundation",
-    "mdPath": "/06_structurizr/#the-c4-model-foundation",
+    "id": "maturity-governance--2",
+    "title": "Do governance automations capture decision history and rationale as part of the workflow output?",
+    "mdPath": "/maturity_model_radar.html#governance_1",
     "x": 380,
     "y": 600,
     "zoom": 1,
-    "parentId": "06_structurizr"
+    "parentId": "maturity-governance"
   },
   {
-    "id": "06_structurizr--3",
-    "title": "Structurizr DSL: Core Concepts",
-    "mdPath": "/06_structurizr/#structurizr-dsl-core-concepts",
+    "id": "maturity-governance--3",
+    "title": "Is governance code tested in lower environments before it is applied to production repositories?",
+    "mdPath": "/maturity_model_radar.html#governance_2",
     "x": 220,
     "y": 720,
     "zoom": 1,
-    "parentId": "06_structurizr"
+    "parentId": "maturity-governance"
   },
   {
-    "id": "06_structurizr--4",
-    "title": "Workspace Configuration and Management",
-    "mdPath": "/06_structurizr/#workspace-configuration-and-management",
+    "id": "maturity-governance--4",
+    "title": "Are exceptions to governance policies time-bound, tracked and reviewed automatically?",
+    "mdPath": "/maturity_model_radar.html#governance_3",
     "x": 380,
     "y": 720,
     "zoom": 1,
-    "parentId": "06_structurizr"
+    "parentId": "maturity-governance"
   },
   {
-    "id": "06_structurizr--5",
-    "title": "Integration with CI/CD Pipelines",
-    "mdPath": "/06_structurizr/#integration-with-cicd-pipelines",
+    "id": "maturity-governance--5",
+    "title": "Is governance tooling accessible to non-developers through templates or guided interfaces sourced from the same codebase?",
+    "mdPath": "/maturity_model_radar.html#governance_4",
     "x": 220,
     "y": 840,
     "zoom": 1,
-    "parentId": "06_structurizr"
+    "parentId": "maturity-governance"
   },
   {
-    "id": "06_structurizr--6",
-    "title": "Practical Implementation Patterns",
-    "mdPath": "/06_structurizr/#practical-implementation-patterns",
-    "x": 380,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--7",
-    "title": "Advanced Features",
-    "mdPath": "/06_structurizr/#advanced-features",
-    "x": 220,
-    "y": 960,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--8",
-    "title": "Best Practices",
-    "mdPath": "/06_structurizr/#best-practices",
-    "x": 380,
-    "y": 960,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--9",
-    "title": "Comparison with Other Tools",
-    "mdPath": "/06_structurizr/#comparison-with-other-tools",
-    "x": 220,
-    "y": 1080,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--10",
-    "title": "Common Challenges and Solutions",
-    "mdPath": "/06_structurizr/#common-challenges-and-solutions",
-    "x": 380,
-    "y": 1080,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--11",
-    "title": "Real-World Example: Complete E-Commerce Platform",
-    "mdPath": "/06_structurizr/#real-world-example-complete-e-commerce-platform",
-    "x": 220,
-    "y": 1200,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--12",
-    "title": "Integration with Architecture Decision Records",
-    "mdPath": "/06_structurizr/#integration-with-architecture-decision-records",
-    "x": 380,
-    "y": 1200,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--13",
-    "title": "Conclusion",
-    "mdPath": "/06_structurizr/#conclusion",
-    "x": 220,
-    "y": 1320,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "06_structurizr--14",
-    "title": "Sources",
-    "mdPath": "/06_structurizr/#sources",
-    "x": 380,
-    "y": 1320,
-    "zoom": 1,
-    "parentId": "06_structurizr"
-  },
-  {
-    "id": "07_containerization",
-    "title": "Containerisation and Orchestration as Code",
-    "mdPath": "/07_containerization/",
+    "id": "maturity-compliance",
+    "title": "Compliance as code",
+    "mdPath": "/maturity_model_radar.html#compliance",
     "x": 620,
     "y": 460,
     "zoom": 1
   },
   {
-    "id": "07_containerization--1",
-    "title": "Industry trend data driving Architecture as Code adoption",
-    "mdPath": "/07_containerization/#industry-trend-data-driving-architecture-as-code-adoption",
+    "id": "maturity-compliance--1",
+    "title": "Are regulatory controls translated into executable checks that run continuously against live environments?",
+    "mdPath": "/maturity_model_radar.html#compliance_0",
     "x": 840,
     "y": 600,
     "zoom": 1,
-    "parentId": "07_containerization"
+    "parentId": "maturity-compliance"
   },
   {
-    "id": "07_containerization--2",
-    "title": "The role of container technology within Architecture as Code",
-    "mdPath": "/07_containerization/#the-role-of-container-technology-within-architecture-as-code",
+    "id": "maturity-compliance--2",
+    "title": "Does the organisation maintain reusable compliance baselines or templates for common regulations?",
+    "mdPath": "/maturity_model_radar.html#compliance_1",
     "x": 1000,
     "y": 600,
     "zoom": 1,
-    "parentId": "07_containerization"
+    "parentId": "maturity-compliance"
   },
   {
-    "id": "07_containerization--3",
-    "title": "Kubernetes as an orchestration platform",
-    "mdPath": "/07_containerization/#kubernetes-as-an-orchestration-platform",
+    "id": "maturity-compliance--3",
+    "title": "Is evidence collection automated and stored alongside compliance code for audit readiness?",
+    "mdPath": "/maturity_model_radar.html#compliance_2",
     "x": 840,
     "y": 720,
     "zoom": 1,
-    "parentId": "07_containerization"
+    "parentId": "maturity-compliance"
   },
   {
-    "id": "07_containerization--4",
-    "title": "Service mesh and advanced networking",
-    "mdPath": "/07_containerization/#service-mesh-and-advanced-networking",
+    "id": "maturity-compliance--4",
+    "title": "Are compliance findings integrated with issue tracking to ensure timely remediation and verification?",
+    "mdPath": "/maturity_model_radar.html#compliance_3",
     "x": 1000,
     "y": 720,
     "zoom": 1,
-    "parentId": "07_containerization"
+    "parentId": "maturity-compliance"
   },
   {
-    "id": "07_containerization--5",
-    "title": "Infrastructure automation with container platforms",
-    "mdPath": "/07_containerization/#infrastructure-automation-with-container-platforms",
+    "id": "maturity-compliance--5",
+    "title": "Do compliance automations generate dashboards or reports that stakeholders review on a scheduled cadence?",
+    "mdPath": "/maturity_model_radar.html#compliance_4",
     "x": 840,
     "y": 840,
     "zoom": 1,
-    "parentId": "07_containerization"
+    "parentId": "maturity-compliance"
   },
   {
-    "id": "07_containerization--6",
-    "title": "Persistent storage and data management",
-    "mdPath": "/07_containerization/#persistent-storage-and-data-management",
-    "x": 1000,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "07_containerization"
-  },
-  {
-    "id": "07_containerization--7",
-    "title": "Practical examples",
-    "mdPath": "/07_containerization/#practical-examples",
-    "x": 840,
-    "y": 960,
-    "zoom": 1,
-    "parentId": "07_containerization"
-  },
-  {
-    "id": "07_containerization--8",
-    "title": "Summary",
-    "mdPath": "/07_containerization/#summary",
-    "x": 1000,
-    "y": 960,
-    "zoom": 1,
-    "parentId": "07_containerization"
-  },
-  {
-    "id": "07_containerization--9",
-    "title": "Transition to Security and Governance",
-    "mdPath": "/07_containerization/#transition-to-security-and-governance",
-    "x": 840,
-    "y": 1080,
-    "zoom": 1,
-    "parentId": "07_containerization"
-  },
-  {
-    "id": "07_containerization--10",
-    "title": "Sources and references",
-    "mdPath": "/07_containerization/#sources-and-references",
-    "x": 1000,
-    "y": 1080,
-    "zoom": 1,
-    "parentId": "07_containerization"
-  },
-  {
-    "id": "09a_security_fundamentals",
-    "title": "Security Fundamentals for Architecture as Code",
-    "mdPath": "/09a_security_fundamentals/",
+    "id": "maturity-testing",
+    "title": "Testing as code",
+    "mdPath": "/maturity_model_radar.html#testing",
     "x": 1240,
     "y": 460,
     "zoom": 1
   },
   {
-    "id": "09a_security_fundamentals--1",
-    "title": "Dimensions of security architecture",
-    "mdPath": "/09a_security_fundamentals/#dimensions-of-security-architecture",
+    "id": "maturity-testing--1",
+    "title": "Are automated tests defined for every codified artefact, including infrastructure, policies and architecture models?",
+    "mdPath": "/maturity_model_radar.html#testing_0",
     "x": 1460,
     "y": 600,
     "zoom": 1,
-    "parentId": "09a_security_fundamentals"
+    "parentId": "maturity-testing"
   },
   {
-    "id": "09a_security_fundamentals--2",
-    "title": "Scope and goals of the chapter",
-    "mdPath": "/09a_security_fundamentals/#scope-and-goals-of-the-chapter",
+    "id": "maturity-testing--2",
+    "title": "Do pipelines execute the full testing suite on every merge or release candidate?",
+    "mdPath": "/maturity_model_radar.html#testing_1",
     "x": 1620,
     "y": 600,
     "zoom": 1,
-    "parentId": "09a_security_fundamentals"
+    "parentId": "maturity-testing"
   },
   {
-    "id": "09a_security_fundamentals--3",
-    "title": "Theoretical foundation: security architecture in the digital era",
-    "mdPath": "/09a_security_fundamentals/#theoretical-foundation-security-architecture-in-the-digital-era",
+    "id": "maturity-testing--3",
+    "title": "Is test coverage monitored and improved through targeted backlog items when gaps emerge?",
+    "mdPath": "/maturity_model_radar.html#testing_2",
     "x": 1460,
     "y": 720,
     "zoom": 1,
-    "parentId": "09a_security_fundamentals"
+    "parentId": "maturity-testing"
   },
   {
-    "id": "09a_security_fundamentals--4",
-    "title": "Policy as Code: automated security governance",
-    "mdPath": "/09a_security_fundamentals/#policy-as-code-automated-security-governance",
+    "id": "maturity-testing--4",
+    "title": "Are failure scenarios rehearsed with automated chaos or resilience tests to validate recovery procedures?",
+    "mdPath": "/maturity_model_radar.html#testing_3",
     "x": 1620,
     "y": 720,
     "zoom": 1,
-    "parentId": "09a_security_fundamentals"
+    "parentId": "maturity-testing"
   },
   {
-    "id": "09a_security_fundamentals--5",
-    "title": "Secrets management and data protection",
-    "mdPath": "/09a_security_fundamentals/#secrets-management-and-data-protection",
+    "id": "maturity-testing--5",
+    "title": "Is test data managed as code with repeatable seeding and sanitisation routines?",
+    "mdPath": "/maturity_model_radar.html#testing_4",
     "x": 1460,
     "y": 840,
     "zoom": 1,
-    "parentId": "09a_security_fundamentals"
+    "parentId": "maturity-testing"
   },
   {
-    "id": "09a_security_fundamentals--6",
-    "title": "Network security and micro-segmentation",
-    "mdPath": "/09a_security_fundamentals/#network-security-and-micro-segmentation",
-    "x": 1620,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "09a_security_fundamentals"
-  },
-  {
-    "id": "09a_security_fundamentals--7",
-    "title": "Security maturity models for continuous improvement",
-    "mdPath": "/09a_security_fundamentals/#security-maturity-models-for-continuous-improvement",
-    "x": 1460,
-    "y": 960,
-    "zoom": 1,
-    "parentId": "09a_security_fundamentals"
-  },
-  {
-    "id": "09a_security_fundamentals--8",
-    "title": "Sources and references",
-    "mdPath": "/09a_security_fundamentals/#sources-and-references",
-    "x": 1620,
-    "y": 960,
-    "zoom": 1,
-    "parentId": "09a_security_fundamentals"
-  },
-  {
-    "id": "09b_security_patterns",
-    "title": "Advanced Security Patterns and Implementation",
-    "mdPath": "/09b_security_patterns/",
+    "id": "maturity-documentation",
+    "title": "Documentation as code",
+    "mdPath": "/maturity_model_radar.html#documentation",
     "x": 1860,
     "y": 460,
     "zoom": 1
   },
   {
-    "id": "09b_security_patterns--1",
-    "title": "Advanced security architecture patterns",
-    "mdPath": "/09b_security_patterns/#advanced-security-architecture-patterns",
+    "id": "maturity-documentation--1",
+    "title": "Is documentation authored in version-controlled markup languages with enforced review workflows?",
+    "mdPath": "/maturity_model_radar.html#documentation_0",
     "x": 2080,
     "y": 600,
     "zoom": 1,
-    "parentId": "09b_security_patterns"
+    "parentId": "maturity-documentation"
   },
   {
-    "id": "09b_security_patterns--2",
-    "title": "Practical implementation: security architecture in European environments",
-    "mdPath": "/09b_security_patterns/#practical-implementation-security-architecture-in-european-environments",
+    "id": "maturity-documentation--2",
+    "title": "Do automated builds publish documentation outputs (web, PDF, diagrams) from the same source repository?",
+    "mdPath": "/maturity_model_radar.html#documentation_1",
     "x": 2240,
     "y": 600,
     "zoom": 1,
-    "parentId": "09b_security_patterns"
+    "parentId": "maturity-documentation"
   },
   {
-    "id": "09b_security_patterns--3",
-    "title": "Future security trends and technical evolution",
-    "mdPath": "/09b_security_patterns/#future-security-trends-and-technical-evolution",
+    "id": "maturity-documentation--3",
+    "title": "Are documentation updates included in the definition of done for relevant product or platform changes?",
+    "mdPath": "/maturity_model_radar.html#documentation_2",
     "x": 2080,
     "y": 720,
     "zoom": 1,
-    "parentId": "09b_security_patterns"
+    "parentId": "maturity-documentation"
   },
   {
-    "id": "09b_security_patterns--4",
-    "title": "Strategic security recommendations for European organisations",
-    "mdPath": "/09b_security_patterns/#strategic-security-recommendations-for-european-organisations",
+    "id": "maturity-documentation--4",
+    "title": "Is diagram generation automated from code or structured data to eliminate manual drawing efforts?",
+    "mdPath": "/maturity_model_radar.html#documentation_3",
     "x": 2240,
     "y": 720,
     "zoom": 1,
-    "parentId": "09b_security_patterns"
+    "parentId": "maturity-documentation"
   },
   {
-    "id": "09b_security_patterns--5",
-    "title": "Summary and future development",
-    "mdPath": "/09b_security_patterns/#summary-and-future-development",
+    "id": "maturity-documentation--5",
+    "title": "Are documentation quality checks (such as link validation and style linting) automated in CI/CD pipelines?",
+    "mdPath": "/maturity_model_radar.html#documentation_4",
     "x": 2080,
     "y": 840,
     "zoom": 1,
-    "parentId": "09b_security_patterns"
+    "parentId": "maturity-documentation"
   },
   {
-    "id": "09b_security_patterns--6",
-    "title": "Sources and references",
-    "mdPath": "/09b_security_patterns/#sources-and-references",
-    "x": 2240,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "09b_security_patterns"
-  },
-  {
-    "id": "10_policy_and_security",
-    "title": "Policy and Security as Code in Detail",
-    "mdPath": "/10_policy_and_security/",
-    "x": 2480,
-    "y": 460,
-    "zoom": 1
-  },
-  {
-    "id": "10_policy_and_security--1",
-    "title": "Introduction and context",
-    "mdPath": "/10_policy_and_security/#introduction-and-context",
-    "x": 2700,
-    "y": 600,
-    "zoom": 1,
-    "parentId": "10_policy_and_security"
-  },
-  {
-    "id": "10_policy_and_security--2",
-    "title": "Evolution of security management within Architecture as Code",
-    "mdPath": "/10_policy_and_security/#evolution-of-security-management-within-architecture-as-code",
-    "x": 2860,
-    "y": 600,
-    "zoom": 1,
-    "parentId": "10_policy_and_security"
-  },
-  {
-    "id": "10_policy_and_security--3",
-    "title": "Policy-as-Code operating model",
-    "mdPath": "/10_policy_and_security/#policy-as-code-operating-model",
-    "x": 2700,
-    "y": 720,
-    "zoom": 1,
-    "parentId": "10_policy_and_security"
-  },
-  {
-    "id": "10_policy_and_security--4",
-    "title": "Open Policy Agent (OPA) and Rego: foundation for policy-driven security",
-    "mdPath": "/10_policy_and_security/#open-policy-agent-opa-and-rego-foundation-for-policy-driven-security",
-    "x": 2860,
-    "y": 720,
-    "zoom": 1,
-    "parentId": "10_policy_and_security"
-  },
-  {
-    "id": "10_policy_and_security--5",
-    "title": "OSCAL: Open Security Controls Assessment Language",
-    "mdPath": "/10_policy_and_security/#oscal-open-security-controls-assessment-language",
-    "x": 2700,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "10_policy_and_security"
-  },
-  {
-    "id": "10_policy_and_security--6",
-    "title": "Implementation roadmap for European delivery teams",
-    "mdPath": "/10_policy_and_security/#implementation-roadmap-for-european-delivery-teams",
-    "x": 2860,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "10_policy_and_security"
-  },
-  {
-    "id": "10_policy_and_security--7",
-    "title": "Key takeaways",
-    "mdPath": "/10_policy_and_security/#key-takeaways",
-    "x": 2700,
-    "y": 960,
-    "zoom": 1,
-    "parentId": "10_policy_and_security"
-  },
-  {
-    "id": "11_governance_as_code",
-    "title": "Governance as Code",
-    "mdPath": "/11_governance_as_code/",
-    "x": 3100,
-    "y": 460,
-    "zoom": 1
-  },
-  {
-    "id": "11_governance_as_code--1",
-    "title": "Overview",
-    "mdPath": "/11_governance_as_code/#overview",
-    "x": 3320,
-    "y": 600,
-    "zoom": 1,
-    "parentId": "11_governance_as_code"
-  },
-  {
-    "id": "11_governance_as_code--2",
-    "title": "Implementing Approval Processes with Pull Requests",
-    "mdPath": "/11_governance_as_code/#implementing-approval-processes-with-pull-requests",
-    "x": 3480,
-    "y": 600,
-    "zoom": 1,
-    "parentId": "11_governance_as_code"
-  },
-  {
-    "id": "11_governance_as_code--3",
-    "title": "Navigating Competency Gaps During Transition",
-    "mdPath": "/11_governance_as_code/#navigating-competency-gaps-during-transition",
-    "x": 3320,
-    "y": 720,
-    "zoom": 1,
-    "parentId": "11_governance_as_code"
-  },
-  {
-    "id": "11_governance_as_code--4",
-    "title": "Tooling to Enable Non-Developers",
-    "mdPath": "/11_governance_as_code/#tooling-to-enable-non-developers",
-    "x": 3480,
-    "y": 720,
-    "zoom": 1,
-    "parentId": "11_governance_as_code"
-  },
-  {
-    "id": "11_governance_as_code--5",
-    "title": "Key Takeaways",
-    "mdPath": "/11_governance_as_code/#key-takeaways",
-    "x": 3320,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "11_governance_as_code"
-  },
-  {
-    "id": "11_governance_as_code--6",
-    "title": "Sources",
-    "mdPath": "/11_governance_as_code/#sources",
-    "x": 3480,
-    "y": 840,
-    "zoom": 1,
-    "parentId": "11_governance_as_code"
-  },
-  {
-    "id": "12_compliance",
-    "title": "Compliance and Regulatory Adherence",
-    "mdPath": "/12_compliance/",
+    "id": "maturity-knowledge",
+    "title": "Knowledge & culture as code",
+    "mdPath": "/maturity_model_radar.html#knowledge",
     "x": 0,
     "y": 920,
     "zoom": 1
   },
   {
-    "id": "12_compliance--1",
-    "title": "AI and Machine Learning for Infrastructure Automation",
-    "mdPath": "/12_compliance/#ai-and-machine-learning-for-infrastructure-automation",
+    "id": "maturity-knowledge--1",
+    "title": "Is organisational knowledge captured in structured repositories with clear ownership and contribution guidelines?",
+    "mdPath": "/maturity_model_radar.html#knowledge_0",
     "x": 220,
     "y": 1060,
     "zoom": 1,
-    "parentId": "12_compliance"
+    "parentId": "maturity-knowledge"
   },
   {
-    "id": "12_compliance--2",
-    "title": "Requirements Traceability and Validation",
-    "mdPath": "/12_compliance/#requirements-traceability-and-validation",
+    "id": "maturity-knowledge--2",
+    "title": "Do onboarding and learning journeys exist as code-based playbooks or scripts executed during induction?",
+    "mdPath": "/maturity_model_radar.html#knowledge_1",
     "x": 380,
     "y": 1060,
     "zoom": 1,
-    "parentId": "12_compliance"
+    "parentId": "maturity-knowledge"
   },
   {
-    "id": "12_compliance--3",
-    "title": "Cloud-native and Serverless Development",
-    "mdPath": "/12_compliance/#cloud-native-and-serverless-development",
+    "id": "maturity-knowledge--3",
+    "title": "Are retrospectives and continuous improvement actions tracked in version-controlled artefacts with follow-up automation?",
+    "mdPath": "/maturity_model_radar.html#knowledge_2",
     "x": 220,
     "y": 1180,
     "zoom": 1,
-    "parentId": "12_compliance"
+    "parentId": "maturity-knowledge"
   },
   {
-    "id": "12_compliance--4",
-    "title": "Policy-driven Infrastructure and Governance",
-    "mdPath": "/12_compliance/#policy-driven-infrastructure-and-governance",
+    "id": "maturity-knowledge--4",
+    "title": "Is cultural guidance (values, rituals, ceremonies) embedded into tooling such as bots, templates or workflow prompts?",
+    "mdPath": "/maturity_model_radar.html#knowledge_3",
     "x": 380,
     "y": 1180,
     "zoom": 1,
-    "parentId": "12_compliance"
+    "parentId": "maturity-knowledge"
   },
   {
-    "id": "12_compliance--5",
-    "title": "Quantum Computing and Next-generation Technologies",
-    "mdPath": "/12_compliance/#quantum-computing-and-next-generation-technologies",
+    "id": "maturity-knowledge--5",
+    "title": "Are knowledge repositories regularly reviewed through automated reminders to ensure relevance and accuracy?",
+    "mdPath": "/maturity_model_radar.html#knowledge_4",
     "x": 220,
     "y": 1300,
     "zoom": 1,
-    "parentId": "12_compliance"
+    "parentId": "maturity-knowledge"
   },
   {
-    "id": "12_compliance--6",
-    "title": "Sustainability and Green Computing",
-    "mdPath": "/12_compliance/#sustainability-and-green-computing",
-    "x": 380,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "12_compliance"
-  },
-  {
-    "id": "12_compliance--7",
-    "title": "Practical Examples",
-    "mdPath": "/12_compliance/#practical-examples",
-    "x": 220,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "12_compliance"
-  },
-  {
-    "id": "12_compliance--8",
-    "title": "Summary",
-    "mdPath": "/12_compliance/#summary",
-    "x": 380,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "12_compliance"
-  },
-  {
-    "id": "12_compliance--9",
-    "title": "Moving from Governance to Delivery",
-    "mdPath": "/12_compliance/#moving-from-governance-to-delivery",
-    "x": 220,
-    "y": 1540,
-    "zoom": 1,
-    "parentId": "12_compliance"
-  },
-  {
-    "id": "12_compliance--10",
-    "title": "Sources and References",
-    "mdPath": "/12_compliance/#sources-and-references",
-    "x": 380,
-    "y": 1540,
-    "zoom": 1,
-    "parentId": "12_compliance"
-  },
-  {
-    "id": "13_testing_strategies",
-    "title": "Testing Strategies for Infrastructure as Code",
-    "mdPath": "/13_testing_strategies/",
+    "id": "maturity-management",
+    "title": "Management as code",
+    "mdPath": "/maturity_model_radar.html#management",
     "x": 620,
     "y": 920,
     "zoom": 1
   },
   {
-    "id": "13_testing_strategies--1",
-    "title": "Overview",
-    "mdPath": "/13_testing_strategies/#overview",
+    "id": "maturity-management--1",
+    "title": "Are operating models, team topologies and responsibilities documented through code-driven templates?",
+    "mdPath": "/maturity_model_radar.html#management_0",
     "x": 840,
     "y": 1060,
     "zoom": 1,
-    "parentId": "13_testing_strategies"
+    "parentId": "maturity-management"
   },
   {
-    "id": "13_testing_strategies--2",
-    "title": "Unit Testing for Infrastructure as Code",
-    "mdPath": "/13_testing_strategies/#unit-testing-for-infrastructure-as-code",
+    "id": "maturity-management--2",
+    "title": "Do leadership ceremonies (such as portfolio reviews) run from standardised agendas or dashboards generated from code?",
+    "mdPath": "/maturity_model_radar.html#management_1",
     "x": 1000,
     "y": 1060,
     "zoom": 1,
-    "parentId": "13_testing_strategies"
+    "parentId": "maturity-management"
   },
   {
-    "id": "13_testing_strategies--3",
-    "title": "Test Management with Vitest for Infrastructure as Code",
-    "mdPath": "/13_testing_strategies/#test-management-with-vitest-for-infrastructure-as-code",
+    "id": "maturity-management--3",
+    "title": "Are performance and delivery metrics collected automatically and surfaced through shared management dashboards?",
+    "mdPath": "/maturity_model_radar.html#management_2",
     "x": 840,
     "y": 1180,
     "zoom": 1,
-    "parentId": "13_testing_strategies"
+    "parentId": "maturity-management"
   },
   {
-    "id": "13_testing_strategies--4",
-    "title": "Integration Testing and Environment Validation",
-    "mdPath": "/13_testing_strategies/#integration-testing-and-environment-validation",
+    "id": "maturity-management--4",
+    "title": "Is resource allocation or staffing managed through codified workflows with automated approvals and audit trails?",
+    "mdPath": "/maturity_model_radar.html#management_3",
     "x": 1000,
     "y": 1180,
     "zoom": 1,
-    "parentId": "13_testing_strategies"
+    "parentId": "maturity-management"
   },
   {
-    "id": "13_testing_strategies--5",
-    "title": "Security and Compliance Testing",
-    "mdPath": "/13_testing_strategies/#security-and-compliance-testing",
+    "id": "maturity-management--5",
+    "title": "Are management playbooks iterated through pull requests with participation from the leadership community?",
+    "mdPath": "/maturity_model_radar.html#management_4",
     "x": 840,
     "y": 1300,
     "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "13_testing_strategies--6",
-    "title": "Performance and Scalability Testing",
-    "mdPath": "/13_testing_strategies/#performance-and-scalability-testing",
-    "x": 1000,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "13_testing_strategies--7",
-    "title": "Requirements as Code and Testability",
-    "mdPath": "/13_testing_strategies/#requirements-as-code-and-testability",
-    "x": 840,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "13_testing_strategies--8",
-    "title": "Practical Examples",
-    "mdPath": "/13_testing_strategies/#practical-examples",
-    "x": 1000,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "13_testing_strategies--9",
-    "title": "Kubernetes Integration Testing",
-    "mdPath": "/13_testing_strategies/#kubernetes-integration-testing",
-    "x": 840,
-    "y": 1540,
-    "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "13_testing_strategies--10",
-    "title": "Pipeline Automation for Infrastructure Testing",
-    "mdPath": "/13_testing_strategies/#pipeline-automation-for-infrastructure-testing",
-    "x": 1000,
-    "y": 1540,
-    "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "13_testing_strategies--11",
-    "title": "Summary",
-    "mdPath": "/13_testing_strategies/#summary",
-    "x": 840,
-    "y": 1660,
-    "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "13_testing_strategies--12",
-    "title": "Sources and References",
-    "mdPath": "/13_testing_strategies/#sources-and-references",
-    "x": 1000,
-    "y": 1660,
-    "zoom": 1,
-    "parentId": "13_testing_strategies"
-  },
-  {
-    "id": "14_practical_implementation",
-    "title": "Architecture as Code in Practice",
-    "mdPath": "/14_practical_implementation/",
-    "x": 1240,
-    "y": 920,
-    "zoom": 1
-  },
-  {
-    "id": "14_practical_implementation--1",
-    "title": "Implementation roadmap and strategies",
-    "mdPath": "/14_practical_implementation/#implementation-roadmap-and-strategies",
-    "x": 1460,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--2",
-    "title": "Tool selection and ecosystem integration",
-    "mdPath": "/14_practical_implementation/#tool-selection-and-ecosystem-integration",
-    "x": 1620,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--3",
-    "title": "Prioritising testable Infrastructure as Code platforms",
-    "mdPath": "/14_practical_implementation/#prioritising-testable-infrastructure-as-code-platforms",
-    "x": 1460,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--4",
-    "title": "Production readiness and operational excellence",
-    "mdPath": "/14_practical_implementation/#production-readiness-and-operational-excellence",
-    "x": 1620,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--5",
-    "title": "Common challenges and troubleshooting",
-    "mdPath": "/14_practical_implementation/#common-challenges-and-troubleshooting",
-    "x": 1460,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--6",
-    "title": "Enterprise integration patterns",
-    "mdPath": "/14_practical_implementation/#enterprise-integration-patterns",
-    "x": 1620,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--7",
-    "title": "Practical examples in context",
-    "mdPath": "/14_practical_implementation/#practical-examples-in-context",
-    "x": 1460,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--8",
-    "title": "Summary",
-    "mdPath": "/14_practical_implementation/#summary",
-    "x": 1620,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "14_practical_implementation--9",
-    "title": "Sources and references",
-    "mdPath": "/14_practical_implementation/#sources-and-references",
-    "x": 1460,
-    "y": 1540,
-    "zoom": 1,
-    "parentId": "14_practical_implementation"
-  },
-  {
-    "id": "15_cost_optimization",
-    "title": "Cost Optimisation and Resource Management",
-    "mdPath": "/15_cost_optimization/",
-    "x": 1860,
-    "y": 920,
-    "zoom": 1
-  },
-  {
-    "id": "15_cost_optimization--1",
-    "title": "Overall Description",
-    "mdPath": "/15_cost_optimization/#overall-description",
-    "x": 2080,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "15_cost_optimization--2",
-    "title": "FinOps and Cost Governance",
-    "mdPath": "/15_cost_optimization/#finops-and-cost-governance",
-    "x": 2240,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "15_cost_optimization--3",
-    "title": "Automatic Resource Scaling and Rightsizing",
-    "mdPath": "/15_cost_optimization/#automatic-resource-scaling-and-rightsizing",
-    "x": 2080,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "15_cost_optimization--4",
-    "title": "Cost Monitoring and Alerting",
-    "mdPath": "/15_cost_optimization/#cost-monitoring-and-alerting",
-    "x": 2240,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "15_cost_optimization--5",
-    "title": "Multi-Cloud Cost Optimisation",
-    "mdPath": "/15_cost_optimization/#multi-cloud-cost-optimisation",
-    "x": 2080,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "15_cost_optimization--6",
-    "title": "Practical Examples",
-    "mdPath": "/15_cost_optimization/#practical-examples",
-    "x": 2240,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "15_cost_optimization--7",
-    "title": "Summary",
-    "mdPath": "/15_cost_optimization/#summary",
-    "x": 2080,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "15_cost_optimization--8",
-    "title": "Sources and References",
-    "mdPath": "/15_cost_optimization/#sources-and-references",
-    "x": 2240,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "15_cost_optimization"
-  },
-  {
-    "id": "16_migration",
-    "title": "Migration from Traditional Infrastructure",
-    "mdPath": "/16_migration/",
-    "x": 2480,
-    "y": 920,
-    "zoom": 1
-  },
-  {
-    "id": "16_migration--1",
-    "title": "Overall Description",
-    "mdPath": "/16_migration/#overall-description",
-    "x": 2700,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--2",
-    "title": "Assessment and planning faser",
-    "mdPath": "/16_migration/#assessment-and-planning-faser",
-    "x": 2860,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--3",
-    "title": "Lift-and-shift vs re-architecting",
-    "mdPath": "/16_migration/#lift-and-shift-vs-re-architecting",
-    "x": 2700,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--4",
-    "title": "Gradual kodifiering of infrastruktur",
-    "mdPath": "/16_migration/#gradual-kodifiering-of-infrastruktur",
-    "x": 2860,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--5",
-    "title": "Team transition and competence development",
-    "mdPath": "/16_migration/#team-transition-and-competence-development",
-    "x": 2700,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--6",
-    "title": "Praktiska example",
-    "mdPath": "/16_migration/#praktiska-example",
-    "x": 2860,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--7",
-    "title": "Executive Summary",
-    "mdPath": "/16_migration/#executive-summary",
-    "x": 2700,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--8",
-    "title": "Fas 1: Förberedelse (Vecka 1-2)",
-    "mdPath": "/16_migration/#fas-1-forberedelse-vecka-1-2",
-    "x": 2860,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--9",
-    "title": "Fas 2: Pilot Migration (Vecka 3-4)",
-    "mdPath": "/16_migration/#fas-2-pilot-migration-vecka-3-4",
-    "x": 2700,
-    "y": 1540,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--10",
-    "title": "Fas 3: Production Migration (Vecka 5-12)",
-    "mdPath": "/16_migration/#fas-3-production-migration-vecka-5-12",
-    "x": 2860,
-    "y": 1540,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--11",
-    "title": "Post-Migration Activities",
-    "mdPath": "/16_migration/#post-migration-activities",
-    "x": 2700,
-    "y": 1660,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--12",
-    "title": "EU Compliance Considerations",
-    "mdPath": "/16_migration/#eu-compliance-considerations",
-    "x": 2860,
-    "y": 1660,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--13",
-    "title": "Success Metrics",
-    "mdPath": "/16_migration/#success-metrics",
-    "x": 2700,
-    "y": 1780,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--14",
-    "title": "Risk Management",
-    "mdPath": "/16_migration/#risk-management",
-    "x": 2860,
-    "y": 1780,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--15",
-    "title": "Summary",
-    "mdPath": "/16_migration/#summary",
-    "x": 2700,
-    "y": 1900,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--16",
-    "title": "Bridging Technical and Organisational Change",
-    "mdPath": "/16_migration/#bridging-technical-and-organisational-change",
-    "x": 2860,
-    "y": 1900,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "16_migration--17",
-    "title": "Sources and References",
-    "mdPath": "/16_migration/#sources-and-references",
-    "x": 2700,
-    "y": 2020,
-    "zoom": 1,
-    "parentId": "16_migration"
-  },
-  {
-    "id": "17_organizational_change",
-    "title": "Organisational Change and Team Structures",
-    "mdPath": "/17_organizational_change/",
-    "x": 3100,
-    "y": 920,
-    "zoom": 1
-  },
-  {
-    "id": "17_organizational_change--1",
-    "title": "Building a DevOps Culture",
-    "mdPath": "/17_organizational_change/#building-a-devops-culture",
-    "x": 3320,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "17_organizational_change--2",
-    "title": "Designing Cross-functional Teams",
-    "mdPath": "/17_organizational_change/#designing-cross-functional-teams",
-    "x": 3480,
-    "y": 1060,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "17_organizational_change--3",
-    "title": "Developing Capability and Confidence",
-    "mdPath": "/17_organizational_change/#developing-capability-and-confidence",
-    "x": 3320,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "17_organizational_change--4",
-    "title": "Evolving Roles and Career Paths",
-    "mdPath": "/17_organizational_change/#evolving-roles-and-career-paths",
-    "x": 3480,
-    "y": 1180,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "17_organizational_change--5",
-    "title": "Change Management in Practice",
-    "mdPath": "/17_organizational_change/#change-management-in-practice",
-    "x": 3320,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "17_organizational_change--6",
-    "title": "Measuring Sustainable Progress",
-    "mdPath": "/17_organizational_change/#measuring-sustainable-progress",
-    "x": 3480,
-    "y": 1300,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "17_organizational_change--7",
-    "title": "Summary",
-    "mdPath": "/17_organizational_change/#summary",
-    "x": 3320,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "17_organizational_change--8",
-    "title": "Sources and References",
-    "mdPath": "/17_organizational_change/#sources-and-references",
-    "x": 3480,
-    "y": 1420,
-    "zoom": 1,
-    "parentId": "17_organizational_change"
-  },
-  {
-    "id": "18_team_structure",
-    "title": "Team Structure and Competency Development for Architecture as Code",
-    "mdPath": "/18_team_structure/",
-    "x": 0,
-    "y": 1380,
-    "zoom": 1
-  },
-  {
-    "id": "18_team_structure--1",
-    "title": "Organisational transformation for Architecture as Code",
-    "mdPath": "/18_team_structure/#organisational-transformation-for-architecture-as-code",
-    "x": 220,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--2",
-    "title": "Competency domains for Architecture as Code specialists",
-    "mdPath": "/18_team_structure/#competency-domains-for-architecture-as-code-specialists",
-    "x": 380,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--3",
-    "title": "Learning strategies and certifications",
-    "mdPath": "/18_team_structure/#learning-strategies-and-certifications",
-    "x": 220,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--4",
-    "title": "Agile team models for infrastructure",
-    "mdPath": "/18_team_structure/#agile-team-models-for-infrastructure",
-    "x": 380,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--5",
-    "title": "Knowledge sharing and communities of practice",
-    "mdPath": "/18_team_structure/#knowledge-sharing-and-communities-of-practice",
-    "x": 220,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--6",
-    "title": "Purpose",
-    "mdPath": "/18_team_structure/#purpose",
-    "x": 380,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--7",
-    "title": "Structure",
-    "mdPath": "/18_team_structure/#structure",
-    "x": 220,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--8",
-    "title": "Performance management and career progression",
-    "mdPath": "/18_team_structure/#performance-management-and-career-progression",
-    "x": 380,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--9",
-    "title": "Summary",
-    "mdPath": "/18_team_structure/#summary",
-    "x": 220,
-    "y": 2000,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "18_team_structure--10",
-    "title": "Sources and references",
-    "mdPath": "/18_team_structure/#sources-and-references",
-    "x": 380,
-    "y": 2000,
-    "zoom": 1,
-    "parentId": "18_team_structure"
-  },
-  {
-    "id": "19_management_as_code",
-    "title": "Management as Code",
-    "mdPath": "/19_management_as_code/",
-    "x": 620,
-    "y": 1380,
-    "zoom": 1
-  },
-  {
-    "id": "19_management_as_code--1",
-    "title": "Introduction",
-    "mdPath": "/19_management_as_code/#introduction",
-    "x": 840,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--2",
-    "title": "Defining Management as Code",
-    "mdPath": "/19_management_as_code/#defining-management-as-code",
-    "x": 1000,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--3",
-    "title": "Principles of MaC in Code-First Organisations",
-    "mdPath": "/19_management_as_code/#principles-of-mac-in-code-first-organisations",
-    "x": 840,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--4",
-    "title": "Embedding Management in the DevOps Loop",
-    "mdPath": "/19_management_as_code/#embedding-management-in-the-devops-loop",
-    "x": 1000,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--5",
-    "title": "Governance and Policy Automation",
-    "mdPath": "/19_management_as_code/#governance-and-policy-automation",
-    "x": 840,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--6",
-    "title": "GitHub Configuration for MaC",
-    "mdPath": "/19_management_as_code/#github-configuration-for-mac",
-    "x": 1000,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--7",
-    "title": "Management in Change Management Pipelines",
-    "mdPath": "/19_management_as_code/#management-in-change-management-pipelines",
-    "x": 840,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--8",
-    "title": "Achieving Transparency Through Issues and Discussions",
-    "mdPath": "/19_management_as_code/#achieving-transparency-through-issues-and-discussions",
-    "x": 1000,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--9",
-    "title": "Budgeting as Code",
-    "mdPath": "/19_management_as_code/#budgeting-as-code",
-    "x": 840,
-    "y": 2000,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--10",
-    "title": "Competence Management as Code",
-    "mdPath": "/19_management_as_code/#competence-management-as-code",
-    "x": 1000,
-    "y": 2000,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--11",
-    "title": "Team Composition and Team-of-Teams Leadership",
-    "mdPath": "/19_management_as_code/#team-composition-and-team-of-teams-leadership",
-    "x": 840,
-    "y": 2120,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--12",
-    "title": "Leading Multiple Teams Through Code",
-    "mdPath": "/19_management_as_code/#leading-multiple-teams-through-code",
-    "x": 1000,
-    "y": 2120,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--13",
-    "title": "Cultural and Behavioural Codification",
-    "mdPath": "/19_management_as_code/#cultural-and-behavioural-codification",
-    "x": 840,
-    "y": 2240,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--14",
-    "title": "Measuring Management Effectiveness",
-    "mdPath": "/19_management_as_code/#measuring-management-effectiveness",
-    "x": 1000,
-    "y": 2240,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--15",
-    "title": "Challenges and Mitigation Strategies",
-    "mdPath": "/19_management_as_code/#challenges-and-mitigation-strategies",
-    "x": 840,
-    "y": 2360,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--16",
-    "title": "Case Study: Scaling Leadership with MaC",
-    "mdPath": "/19_management_as_code/#case-study-scaling-leadership-with-mac",
-    "x": 1000,
-    "y": 2360,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--17",
-    "title": "Future Directions for MaC",
-    "mdPath": "/19_management_as_code/#future-directions-for-mac",
-    "x": 840,
-    "y": 2480,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "19_management_as_code--18",
-    "title": "Conclusion",
-    "mdPath": "/19_management_as_code/#conclusion",
-    "x": 1000,
-    "y": 2480,
-    "zoom": 1,
-    "parentId": "19_management_as_code"
-  },
-  {
-    "id": "20_ai_agent_team",
-    "title": "AI Agent Team for the Architecture as Code Initiative",
-    "mdPath": "/20_ai_agent_team/",
-    "x": 1240,
-    "y": 1380,
-    "zoom": 1
-  },
-  {
-    "id": "20_ai_agent_team--1",
-    "title": "Multi-Agent Operating Model",
-    "mdPath": "/20_ai_agent_team/#multi-agent-operating-model",
-    "x": 1460,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "20_ai_agent_team"
-  },
-  {
-    "id": "20_ai_agent_team--2",
-    "title": "Role Narratives and Responsibilities",
-    "mdPath": "/20_ai_agent_team/#role-narratives-and-responsibilities",
-    "x": 1620,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "20_ai_agent_team"
-  },
-  {
-    "id": "20_ai_agent_team--3",
-    "title": "Collaboration Patterns Without Temporal Gating",
-    "mdPath": "/20_ai_agent_team/#collaboration-patterns-without-temporal-gating",
-    "x": 1460,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "20_ai_agent_team"
-  },
-  {
-    "id": "20_ai_agent_team--4",
-    "title": "Governance, Reporting, and Onboarding",
-    "mdPath": "/20_ai_agent_team/#governance-reporting-and-onboarding",
-    "x": 1620,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "20_ai_agent_team"
-  },
-  {
-    "id": "20_ai_agent_team--5",
-    "title": "Sources",
-    "mdPath": "/20_ai_agent_team/#sources",
-    "x": 1460,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "20_ai_agent_team"
-  },
-  {
-    "id": "21_digitalization",
-    "title": "Digital Transformation through Code-Based Infrastructure",
-    "mdPath": "/21_digitalization/",
-    "x": 1860,
-    "y": 1380,
-    "zoom": 1
-  },
-  {
-    "id": "21_digitalization--1",
-    "title": "Digital Transformation Landscape",
-    "mdPath": "/21_digitalization/#digital-transformation-landscape",
-    "x": 2080,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "21_digitalization--2",
-    "title": "Overview",
-    "mdPath": "/21_digitalization/#overview",
-    "x": 2240,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "21_digitalization--3",
-    "title": "Cloud-First Strategies for Digital Transformation",
-    "mdPath": "/21_digitalization/#cloud-first-strategies-for-digital-transformation",
-    "x": 2080,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "21_digitalization--4",
-    "title": "Digital Transformation in Enterprises",
-    "mdPath": "/21_digitalization/#digital-transformation-in-enterprises",
-    "x": 2240,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "21_digitalization--5",
-    "title": "Practical Examples",
-    "mdPath": "/21_digitalization/#practical-examples",
-    "x": 2080,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "21_digitalization--6",
-    "title": "Summary",
-    "mdPath": "/21_digitalization/#summary",
-    "x": 2240,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "21_digitalization--7",
-    "title": "From Implementation to Integration",
-    "mdPath": "/21_digitalization/#from-implementation-to-integration",
-    "x": 2080,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "21_digitalization--8",
-    "title": "Sources and References",
-    "mdPath": "/21_digitalization/#sources-and-references",
-    "x": 2240,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "21_digitalization"
-  },
-  {
-    "id": "22_documentation_vs_architecture",
-    "title": "Documentation as Code vs Architecture as Code",
-    "mdPath": "/22_documentation_vs_architecture/",
-    "x": 2480,
-    "y": 1380,
-    "zoom": 1
-  },
-  {
-    "id": "22_documentation_vs_architecture--1",
-    "title": "Introduction",
-    "mdPath": "/22_documentation_vs_architecture/#introduction",
-    "x": 2700,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "22_documentation_vs_architecture--2",
-    "title": "Purpose and Scope",
-    "mdPath": "/22_documentation_vs_architecture/#purpose-and-scope",
-    "x": 2860,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "22_documentation_vs_architecture--3",
-    "title": "Tooling Paradigms: Modelling Tools vs Diagram Tools",
-    "mdPath": "/22_documentation_vs_architecture/#tooling-paradigms-modelling-tools-vs-diagram-tools",
-    "x": 2700,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "22_documentation_vs_architecture--4",
-    "title": "Key Differences: A Comparative Framework",
-    "mdPath": "/22_documentation_vs_architecture/#key-differences-a-comparative-framework",
-    "x": 2860,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "22_documentation_vs_architecture--5",
-    "title": "The Relationship Between Documentation as Code and Architecture as Code",
-    "mdPath": "/22_documentation_vs_architecture/#the-relationship-between-documentation-as-code-and-architecture-as-code",
-    "x": 2700,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "22_documentation_vs_architecture--6",
-    "title": "Practical Recommendations",
-    "mdPath": "/22_documentation_vs_architecture/#practical-recommendations",
-    "x": 2860,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "22_documentation_vs_architecture--7",
-    "title": "Conclusion",
-    "mdPath": "/22_documentation_vs_architecture/#conclusion",
-    "x": 2700,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "22_documentation_vs_architecture--8",
-    "title": "Sources",
-    "mdPath": "/22_documentation_vs_architecture/#sources",
-    "x": 2860,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "22_documentation_vs_architecture"
-  },
-  {
-    "id": "23_soft_as_code_interplay",
-    "title": "The Interplay Between Soft \"as code\" Disciplines",
-    "mdPath": "/23_soft_as_code_interplay/",
-    "x": 3100,
-    "y": 1380,
-    "zoom": 1
-  },
-  {
-    "id": "23_soft_as_code_interplay--1",
-    "title": "Introduction",
-    "mdPath": "/23_soft_as_code_interplay/#introduction",
-    "x": 3320,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--2",
-    "title": "A Shared DNA",
-    "mdPath": "/23_soft_as_code_interplay/#a-shared-dna",
-    "x": 3480,
-    "y": 1520,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--3",
-    "title": "Compliance as Code as the Quality Engine",
-    "mdPath": "/23_soft_as_code_interplay/#compliance-as-code-as-the-quality-engine",
-    "x": 3320,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--4",
-    "title": "Architecture as Code as the Hub",
-    "mdPath": "/23_soft_as_code_interplay/#architecture-as-code-as-the-hub",
-    "x": 3480,
-    "y": 1640,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--5",
-    "title": "Documentation as Code as the Communication Layer",
-    "mdPath": "/23_soft_as_code_interplay/#documentation-as-code-as-the-communication-layer",
-    "x": 3320,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--6",
-    "title": "Knowledge as Code and Culture as Code",
-    "mdPath": "/23_soft_as_code_interplay/#knowledge-as-code-and-culture-as-code",
-    "x": 3480,
-    "y": 1760,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--7",
-    "title": "Synergies and Cross-Pollination",
-    "mdPath": "/23_soft_as_code_interplay/#synergies-and-cross-pollination",
-    "x": 3320,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--8",
-    "title": "Challenges and Counterforces",
-    "mdPath": "/23_soft_as_code_interplay/#challenges-and-counterforces",
-    "x": 3480,
-    "y": 1880,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--9",
-    "title": "Practical Applications",
-    "mdPath": "/23_soft_as_code_interplay/#practical-applications",
-    "x": 3320,
-    "y": 2000,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--10",
-    "title": "Strategies for Adoption",
-    "mdPath": "/23_soft_as_code_interplay/#strategies-for-adoption",
-    "x": 3480,
-    "y": 2000,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--11",
-    "title": "Future Perspectives",
-    "mdPath": "/23_soft_as_code_interplay/#future-perspectives",
-    "x": 3320,
-    "y": 2120,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--12",
-    "title": "Conclusion",
-    "mdPath": "/23_soft_as_code_interplay/#conclusion",
-    "x": 3480,
-    "y": 2120,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "23_soft_as_code_interplay--13",
-    "title": "Sources",
-    "mdPath": "/23_soft_as_code_interplay/#sources",
-    "x": 3320,
-    "y": 2240,
-    "zoom": 1,
-    "parentId": "23_soft_as_code_interplay"
-  },
-  {
-    "id": "24_best_practices",
-    "title": "Modern Best Practices and Lessons Learned",
-    "mdPath": "/24_best_practices/",
-    "x": 0,
-    "y": 1840,
-    "zoom": 1
-  },
-  {
-    "id": "24_best_practices--1",
-    "title": "A Holistic Landscape of Practice Areas",
-    "mdPath": "/24_best_practices/#a-holistic-landscape-of-practice-areas",
-    "x": 220,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--2",
-    "title": "Code Organisation and Modularity",
-    "mdPath": "/24_best_practices/#code-organisation-and-modularity",
-    "x": 380,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--3",
-    "title": "Security and Compliance Patterns",
-    "mdPath": "/24_best_practices/#security-and-compliance-patterns",
-    "x": 220,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--4",
-    "title": "Performance and Scalability Strategies",
-    "mdPath": "/24_best_practices/#performance-and-scalability-strategies",
-    "x": 380,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--5",
-    "title": "Governance and Policy Enablement",
-    "mdPath": "/24_best_practices/#governance-and-policy-enablement",
-    "x": 220,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--6",
-    "title": "Talent Development and Skills Evolution",
-    "mdPath": "/24_best_practices/#talent-development-and-skills-evolution",
-    "x": 380,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--7",
-    "title": "Tooling and Supplier Strategy",
-    "mdPath": "/24_best_practices/#tooling-and-supplier-strategy",
-    "x": 220,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--8",
-    "title": "Risk Management and Resilience",
-    "mdPath": "/24_best_practices/#risk-management-and-resilience",
-    "x": 380,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--9",
-    "title": "Community Collaboration and Open Practice",
-    "mdPath": "/24_best_practices/#community-collaboration-and-open-practice",
-    "x": 220,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--10",
-    "title": "Continuous Improvement and Innovation",
-    "mdPath": "/24_best_practices/#continuous-improvement-and-innovation",
-    "x": 380,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--11",
-    "title": "Summary",
-    "mdPath": "/24_best_practices/#summary",
-    "x": 220,
-    "y": 2580,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--12",
-    "title": "Looking to the Future",
-    "mdPath": "/24_best_practices/#looking-to-the-future",
-    "x": 380,
-    "y": 2580,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "24_best_practices--13",
-    "title": "References",
-    "mdPath": "/24_best_practices/#references",
-    "x": 220,
-    "y": 2700,
-    "zoom": 1,
-    "parentId": "24_best_practices"
-  },
-  {
-    "id": "25_future_trends",
-    "title": "Future Trends and Development in Architecture as Code",
-    "mdPath": "/25_future_trends/",
-    "x": 620,
-    "y": 1840,
-    "zoom": 1
-  },
-  {
-    "id": "25_future_trends--1",
-    "title": "Introduction",
-    "mdPath": "/25_future_trends/#introduction",
-    "x": 840,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--2",
-    "title": "Emerging Technology Drivers",
-    "mdPath": "/25_future_trends/#emerging-technology-drivers",
-    "x": 1000,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--3",
-    "title": "Platform Engineering and Developer Experience",
-    "mdPath": "/25_future_trends/#platform-engineering-and-developer-experience",
-    "x": 840,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--4",
-    "title": "Financial Stewardship and FinOps Evolution",
-    "mdPath": "/25_future_trends/#financial-stewardship-and-finops-evolution",
-    "x": 1000,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--5",
-    "title": "Advanced GitOps and Automation Patterns",
-    "mdPath": "/25_future_trends/#advanced-gitops-and-automation-patterns",
-    "x": 840,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--6",
-    "title": "Security, Privacy, and Regulatory Evolution",
-    "mdPath": "/25_future_trends/#security-privacy-and-regulatory-evolution",
-    "x": 1000,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--7",
-    "title": "Organisation and Workforce Transformation",
-    "mdPath": "/25_future_trends/#organisation-and-workforce-transformation",
-    "x": 840,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--8",
-    "title": "Architectural Innovation Horizons",
-    "mdPath": "/25_future_trends/#architectural-innovation-horizons",
-    "x": 1000,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--9",
-    "title": "Cloud and Digital Sovereignty in Europe",
-    "mdPath": "/25_future_trends/#cloud-and-digital-sovereignty-in-europe",
-    "x": 840,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--10",
-    "title": "Implementation Strategies for Future Readiness",
-    "mdPath": "/25_future_trends/#implementation-strategies-for-future-readiness",
-    "x": 1000,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--11",
-    "title": "Conclusion",
-    "mdPath": "/25_future_trends/#conclusion",
-    "x": 840,
-    "y": 2580,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "25_future_trends--12",
-    "title": "References",
-    "mdPath": "/25_future_trends/#references",
-    "x": 1000,
-    "y": 2580,
-    "zoom": 1,
-    "parentId": "25_future_trends"
-  },
-  {
-    "id": "26_aac_anti_patterns",
-    "title": "Anti-Patterns in Architecture as Code Programmes",
-    "mdPath": "/26_aac_anti_patterns/",
-    "x": 1240,
-    "y": 1840,
-    "zoom": 1
-  },
-  {
-    "id": "26_aac_anti_patterns--1",
-    "title": "Strategic Anti-Patterns",
-    "mdPath": "/26_aac_anti_patterns/#strategic-anti-patterns",
-    "x": 1460,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--2",
-    "title": "Governance and Compliance Anti-Patterns",
-    "mdPath": "/26_aac_anti_patterns/#governance-and-compliance-anti-patterns",
-    "x": 1620,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--3",
-    "title": "Delivery Lifecycle Anti-Patterns",
-    "mdPath": "/26_aac_anti_patterns/#delivery-lifecycle-anti-patterns",
-    "x": 1460,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--4",
-    "title": "Tooling Anti-Patterns",
-    "mdPath": "/26_aac_anti_patterns/#tooling-anti-patterns",
-    "x": 1620,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--5",
-    "title": "Cultural and People Anti-Patterns",
-    "mdPath": "/26_aac_anti_patterns/#cultural-and-people-anti-patterns",
-    "x": 1460,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--6",
-    "title": "Scaling and Sustainability Anti-Patterns",
-    "mdPath": "/26_aac_anti_patterns/#scaling-and-sustainability-anti-patterns",
-    "x": 1620,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--7",
-    "title": "Detection and Early Warning Techniques",
-    "mdPath": "/26_aac_anti_patterns/#detection-and-early-warning-techniques",
-    "x": 1460,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--8",
-    "title": "Remediation Playbook",
-    "mdPath": "/26_aac_anti_patterns/#remediation-playbook",
-    "x": 1620,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--9",
-    "title": "Summary",
-    "mdPath": "/26_aac_anti_patterns/#summary",
-    "x": 1460,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_aac_anti_patterns--10",
-    "title": "Sources",
-    "mdPath": "/26_aac_anti_patterns/#sources",
-    "x": 1620,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "26_aac_anti_patterns"
-  },
-  {
-    "id": "26_prerequisites_for_aac",
-    "title": "Prerequisites for Architecture as Code Adoption",
-    "mdPath": "/26_prerequisites_for_aac/",
-    "x": 1860,
-    "y": 1840,
-    "zoom": 1
-  },
-  {
-    "id": "26_prerequisites_for_aac--1",
-    "title": "Why Readiness Matters",
-    "mdPath": "/26_prerequisites_for_aac/#why-readiness-matters",
-    "x": 2080,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--2",
-    "title": "Cultural Foundations",
-    "mdPath": "/26_prerequisites_for_aac/#cultural-foundations",
-    "x": 2240,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--3",
-    "title": "Technical Maturity Baselines",
-    "mdPath": "/26_prerequisites_for_aac/#technical-maturity-baselines",
-    "x": 2080,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--4",
-    "title": "Knowledge and Information Management",
-    "mdPath": "/26_prerequisites_for_aac/#knowledge-and-information-management",
-    "x": 2240,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--5",
-    "title": "Economic Preconditions",
-    "mdPath": "/26_prerequisites_for_aac/#economic-preconditions",
-    "x": 2080,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--6",
-    "title": "Skills, Roles, and Capacity",
-    "mdPath": "/26_prerequisites_for_aac/#skills-roles-and-capacity",
-    "x": 2240,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--7",
-    "title": "Platform and Toolchain Alignment",
-    "mdPath": "/26_prerequisites_for_aac/#platform-and-toolchain-alignment",
-    "x": 2080,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--8",
-    "title": "Governance and Compliance Preparedness",
-    "mdPath": "/26_prerequisites_for_aac/#governance-and-compliance-preparedness",
-    "x": 2240,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--9",
-    "title": "Change Management Infrastructure",
-    "mdPath": "/26_prerequisites_for_aac/#change-management-infrastructure",
-    "x": 2080,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--10",
-    "title": "Readiness Assessment Framework",
-    "mdPath": "/26_prerequisites_for_aac/#readiness-assessment-framework",
-    "x": 2240,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--11",
-    "title": "Case Study: Preparing a Global Enterprise",
-    "mdPath": "/26_prerequisites_for_aac/#case-study-preparing-a-global-enterprise",
-    "x": 2080,
-    "y": 2580,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--12",
-    "title": "Common Readiness Anti-patterns",
-    "mdPath": "/26_prerequisites_for_aac/#common-readiness-anti-patterns",
-    "x": 2240,
-    "y": 2580,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--13",
-    "title": "Sequencing Readiness Investments",
-    "mdPath": "/26_prerequisites_for_aac/#sequencing-readiness-investments",
-    "x": 2080,
-    "y": 2700,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--14",
-    "title": "Measuring Ongoing Readiness",
-    "mdPath": "/26_prerequisites_for_aac/#measuring-ongoing-readiness",
-    "x": 2240,
-    "y": 2700,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "26_prerequisites_for_aac--15",
-    "title": "Conclusion",
-    "mdPath": "/26_prerequisites_for_aac/#conclusion",
-    "x": 2080,
-    "y": 2820,
-    "zoom": 1,
-    "parentId": "26_prerequisites_for_aac"
-  },
-  {
-    "id": "27_conclusion",
-    "title": "Chapter 27 – Conclusion",
-    "mdPath": "/27_conclusion/",
-    "x": 2480,
-    "y": 1840,
-    "zoom": 1
-  },
-  {
-    "id": "27_conclusion--1",
-    "title": "27.1 Consolidating the Architecture as Code mindset",
-    "mdPath": "/27_conclusion/#271-consolidating-the-architecture-as-code-mindset",
-    "x": 2700,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "27_conclusion"
-  },
-  {
-    "id": "27_conclusion--2",
-    "title": "27.2 Embedding continuous improvement",
-    "mdPath": "/27_conclusion/#272-embedding-continuous-improvement",
-    "x": 2860,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "27_conclusion"
-  },
-  {
-    "id": "27_conclusion--3",
-    "title": "27.3 European context and opportunities",
-    "mdPath": "/27_conclusion/#273-european-context-and-opportunities",
-    "x": 2700,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "27_conclusion"
-  },
-  {
-    "id": "27_conclusion--4",
-    "title": "27.4 Recommendations for organisations",
-    "mdPath": "/27_conclusion/#274-recommendations-for-organisations",
-    "x": 2860,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "27_conclusion"
-  },
-  {
-    "id": "27_conclusion--5",
-    "title": "27.5 Closing reflection",
-    "mdPath": "/27_conclusion/#275-closing-reflection",
-    "x": 2700,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "27_conclusion"
-  },
-  {
-    "id": "28_glossary",
-    "title": "Glossary {.unnumbered}",
-    "mdPath": "/28_glossary/",
-    "x": 3100,
-    "y": 1840,
-    "zoom": 1
-  },
-  {
-    "id": "28_glossary--1",
-    "title": "How to use this glossary",
-    "mdPath": "/28_glossary/#how-to-use-this-glossary",
-    "x": 3320,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--2",
-    "title": "Core Architecture as Code foundations",
-    "mdPath": "/28_glossary/#core-architecture-as-code-foundations",
-    "x": 3480,
-    "y": 1980,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--3",
-    "title": "Automation, tooling, and delivery",
-    "mdPath": "/28_glossary/#automation-tooling-and-delivery",
-    "x": 3320,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--4",
-    "title": "Governance, compliance, and security",
-    "mdPath": "/28_glossary/#governance-compliance-and-security",
-    "x": 3480,
-    "y": 2100,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--5",
-    "title": "Reliability and operational excellence",
-    "mdPath": "/28_glossary/#reliability-and-operational-excellence",
-    "x": 3320,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--6",
-    "title": "Financial stewardship and sustainability",
-    "mdPath": "/28_glossary/#financial-stewardship-and-sustainability",
-    "x": 3480,
-    "y": 2220,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--7",
-    "title": "Organisational alignment and culture",
-    "mdPath": "/28_glossary/#organisational-alignment-and-culture",
-    "x": 3320,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--8",
-    "title": "Future-focused and advanced concepts",
-    "mdPath": "/28_glossary/#future-focused-and-advanced-concepts",
-    "x": 3480,
-    "y": 2340,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "28_glossary--9",
-    "title": "Terms and relationship database",
-    "mdPath": "/28_glossary/#terms-and-relationship-database",
-    "x": 3320,
-    "y": 2460,
-    "zoom": 1,
-    "parentId": "28_glossary"
-  },
-  {
-    "id": "29_about_the_authors",
-    "title": "About the Author",
-    "mdPath": "/29_about_the_authors/",
-    "x": 0,
-    "y": 2300,
-    "zoom": 1
-  },
-  {
-    "id": "29_about_the_authors--1",
-    "title": "Gunnar Nordqvist",
-    "mdPath": "/29_about_the_authors/#gunnar-nordqvist",
-    "x": 220,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "29_about_the_authors--2",
-    "title": "About Kvadrat",
-    "mdPath": "/29_about_the_authors/#about-kvadrat",
-    "x": 380,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "29_about_the_authors--3",
-    "title": "Swedish Terminology Reference",
-    "mdPath": "/29_about_the_authors/#swedish-terminology-reference",
-    "x": 220,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "29_about_the_authors--4",
-    "title": "The Book's Technical Foundation",
-    "mdPath": "/29_about_the_authors/#the-books-technical-foundation",
-    "x": 380,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "29_about_the_authors--5",
-    "title": "Acknowledgements",
-    "mdPath": "/29_about_the_authors/#acknowledgements",
-    "x": 220,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "29_about_the_authors--6",
-    "title": "Continuous Improvement",
-    "mdPath": "/29_about_the_authors/#continuous-improvement",
-    "x": 380,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "29_about_the_authors--7",
-    "title": "Licence and Usage",
-    "mdPath": "/29_about_the_authors/#licence-and-usage",
-    "x": 220,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "29_about_the_authors--8",
-    "title": "Closing Reflections",
-    "mdPath": "/29_about_the_authors/#closing-reflections",
-    "x": 380,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "29_about_the_authors"
-  },
-  {
-    "id": "30_appendix_code_examples",
-    "title": "Code examples and technical architecture as code implementations",
-    "mdPath": "/30_appendix_code_examples/",
-    "x": 620,
-    "y": 2300,
-    "zoom": 1
-  },
-  {
-    "id": "30_appendix_code_examples--1",
-    "title": "Navigating the appendix",
-    "mdPath": "/30_appendix_code_examples/#navigating-the-appendix",
-    "x": 840,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--2",
-    "title": "CI/CD Pipelines and Architecture as Code Automation {#cicd-pipelines}",
-    "mdPath": "/30_appendix_code_examples/#cicd-pipelines-and-architecture-as-code-automation-cicd-pipelines",
-    "x": 1000,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--3",
-    "title": "Infrastructure as Code – CloudFormation {#cloudformation-architecture-as-code}",
-    "mdPath": "/30_appendix_code_examples/#infrastructure-as-code-cloudformation-cloudformation-architecture-as-code",
-    "x": 840,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--4",
-    "title": "Automation Scripts {#automation-scripts}",
-    "mdPath": "/30_appendix_code_examples/#automation-scripts-automation-scripts",
-    "x": 1000,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--5",
-    "title": "Configuration Files {#configuration}",
-    "mdPath": "/30_appendix_code_examples/#configuration-files-configuration",
-    "x": 840,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--6",
-    "title": "Chapter 13: Testing Strategies Reference Implementations {#chapter-13-testing}",
-    "mdPath": "/30_appendix_code_examples/#chapter-13-testing-strategies-reference-implementations-chapter-13-testing",
-    "x": 1000,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--7",
-    "title": "Organisational Change and Team Structures {#organisational-change}",
-    "mdPath": "/30_appendix_code_examples/#organisational-change-and-team-structures-organisational-change",
-    "x": 840,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--8",
-    "title": "References and Navigation",
-    "mdPath": "/30_appendix_code_examples/#references-and-navigation",
-    "x": 1000,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--9",
-    "title": "Chapter 14 Reference Implementations",
-    "mdPath": "/30_appendix_code_examples/#chapter-14-reference-implementations",
-    "x": 840,
-    "y": 2920,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--10",
-    "title": "Chapter 15 Reference Implementations",
-    "mdPath": "/30_appendix_code_examples/#chapter-15-reference-implementations",
-    "x": 1000,
-    "y": 2920,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "30_appendix_code_examples--11",
-    "title": "Security and compliance {#security-compliance}",
-    "mdPath": "/30_appendix_code_examples/#security-and-compliance-security-compliance",
-    "x": 840,
-    "y": 3040,
-    "zoom": 1,
-    "parentId": "30_appendix_code_examples"
-  },
-  {
-    "id": "31_technical_architecture",
-    "title": "Appendix B: Technical Architecture for Book Production {.unnumbered}",
-    "mdPath": "/31_technical_architecture/",
-    "x": 1240,
-    "y": 2300,
-    "zoom": 1
-  },
-  {
-    "id": "31_technical_architecture--1",
-    "title": "Main section (H2)",
-    "mdPath": "/31_technical_architecture/#main-section-h2",
-    "x": 1460,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--2",
-    "title": "Alignment with the Architecture-as-Code project",
-    "mdPath": "/31_technical_architecture/#alignment-with-the-architecture-as-code-project",
-    "x": 1620,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--3",
-    "title": "Pandoc: Conversion and Formatting",
-    "mdPath": "/31_technical_architecture/#pandoc-conversion-and-formatting",
-    "x": 1460,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--4",
-    "title": "GitHub Actions: CI/CD Pipeline",
-    "mdPath": "/31_technical_architecture/#github-actions-cicd-pipeline",
-    "x": 1620,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--5",
-    "title": "Presentation Materials: Preparation and Generation",
-    "mdPath": "/31_technical_architecture/#presentation-materials-preparation-and-generation",
-    "x": 1460,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--6",
-    "title": "Cover and Whitepapers: Design and Integration",
-    "mdPath": "/31_technical_architecture/#cover-and-whitepapers-design-and-integration",
-    "x": 1620,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--7",
-    "title": "Technical Architecture and System Integration",
-    "mdPath": "/31_technical_architecture/#technical-architecture-and-system-integration",
-    "x": 1460,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--8",
-    "title": "Sources",
-    "mdPath": "/31_technical_architecture/#sources",
-    "x": 1620,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "31_technical_architecture--9",
-    "title": "Summary",
-    "mdPath": "/31_technical_architecture/#summary",
-    "x": 1460,
-    "y": 2920,
-    "zoom": 1,
-    "parentId": "31_technical_architecture"
-  },
-  {
-    "id": "32_finos_project_blueprint",
-    "title": "FINOS Project Blueprint: Operationalising Architecture as Code",
-    "mdPath": "/32_finos_project_blueprint/",
-    "x": 1860,
-    "y": 2300,
-    "zoom": 1
-  },
-  {
-    "id": "32_finos_project_blueprint--1",
-    "title": "Blueprint Objectives and Context",
-    "mdPath": "/32_finos_project_blueprint/#blueprint-objectives-and-context",
-    "x": 2080,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--2",
-    "title": "Principles Anchored in CALM",
-    "mdPath": "/32_finos_project_blueprint/#principles-anchored-in-calm",
-    "x": 2240,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--3",
-    "title": "Operating Model and Team Design",
-    "mdPath": "/32_finos_project_blueprint/#operating-model-and-team-design",
-    "x": 2080,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--4",
-    "title": "Automation Spine and Delivery Mechanics",
-    "mdPath": "/32_finos_project_blueprint/#automation-spine-and-delivery-mechanics",
-    "x": 2240,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--5",
-    "title": "Governance, Risk, and Financial Stewardship",
-    "mdPath": "/32_finos_project_blueprint/#governance-risk-and-financial-stewardship",
-    "x": 2080,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--6",
-    "title": "Observability and Resilience Patterns",
-    "mdPath": "/32_finos_project_blueprint/#observability-and-resilience-patterns",
-    "x": 2240,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--7",
-    "title": "Integrating with the Architecture as Code Toolchain",
-    "mdPath": "/32_finos_project_blueprint/#integrating-with-the-architecture-as-code-toolchain",
-    "x": 2080,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--8",
-    "title": "Implementation Roadmap and Adoption Strategy",
-    "mdPath": "/32_finos_project_blueprint/#implementation-roadmap-and-adoption-strategy",
-    "x": 2240,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--9",
-    "title": "Collaboration and Community Stewardship",
-    "mdPath": "/32_finos_project_blueprint/#collaboration-and-community-stewardship",
-    "x": 2080,
-    "y": 2920,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "32_finos_project_blueprint--10",
-    "title": "Outcome Vision",
-    "mdPath": "/32_finos_project_blueprint/#outcome-vision",
-    "x": 2240,
-    "y": 2920,
-    "zoom": 1,
-    "parentId": "32_finos_project_blueprint"
-  },
-  {
-    "id": "33_references",
-    "title": "References and Sources",
-    "mdPath": "/33_references/",
-    "x": 2480,
-    "y": 2300,
-    "zoom": 1
-  },
-  {
-    "id": "33_references--1",
-    "title": "Academic and Industry Publications",
-    "mdPath": "/33_references/#academic-and-industry-publications",
-    "x": 2700,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "33_references"
-  },
-  {
-    "id": "33_references--2",
-    "title": "Industry Research and Reports",
-    "mdPath": "/33_references/#industry-research-and-reports",
-    "x": 2860,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "33_references"
-  },
-  {
-    "id": "33_references--3",
-    "title": "Using This References Section",
-    "mdPath": "/33_references/#using-this-references-section",
-    "x": 2700,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "33_references"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN",
-    "title": "Book Cover design - \"Architecture as Code\"",
-    "mdPath": "/BOOK_COVER_DESIGN/",
-    "x": 3100,
-    "y": 2300,
-    "zoom": 1
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--1",
-    "title": "Overview",
-    "mdPath": "/BOOK_COVER_DESIGN/#overview",
-    "x": 3320,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--2",
-    "title": "Active Cover Template",
-    "mdPath": "/BOOK_COVER_DESIGN/#active-cover-template",
-    "x": 3480,
-    "y": 2440,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--3",
-    "title": "Single Cover Guarantee",
-    "mdPath": "/BOOK_COVER_DESIGN/#single-cover-guarantee",
-    "x": 3320,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--4",
-    "title": "Export Formats",
-    "mdPath": "/BOOK_COVER_DESIGN/#export-formats",
-    "x": 3480,
-    "y": 2560,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--5",
-    "title": "Technical Specifications",
-    "mdPath": "/BOOK_COVER_DESIGN/#technical-specifications",
-    "x": 3320,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--6",
-    "title": "Usage Instructions",
-    "mdPath": "/BOOK_COVER_DESIGN/#usage-instructions",
-    "x": 3480,
-    "y": 2680,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--7",
-    "title": "Build Integration",
-    "mdPath": "/BOOK_COVER_DESIGN/#build-integration",
-    "x": 3320,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--8",
-    "title": "File Structure",
-    "mdPath": "/BOOK_COVER_DESIGN/#file-structure",
-    "x": 3480,
-    "y": 2800,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--9",
-    "title": "Quality Assurance",
-    "mdPath": "/BOOK_COVER_DESIGN/#quality-assurance",
-    "x": 3320,
-    "y": 2920,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--10",
-    "title": "Maintenance",
-    "mdPath": "/BOOK_COVER_DESIGN/#maintenance",
-    "x": 3480,
-    "y": 2920,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "BOOK_COVER_DESIGN--11",
-    "title": "Support",
-    "mdPath": "/BOOK_COVER_DESIGN/#support",
-    "x": 3320,
-    "y": 3040,
-    "zoom": 1,
-    "parentId": "BOOK_COVER_DESIGN"
-  },
-  {
-    "id": "CHAPTER_AUDIT",
-    "title": "Docs Folder Audit",
-    "mdPath": "/CHAPTER_AUDIT/",
-    "x": 0,
-    "y": 2760,
-    "zoom": 1
-  },
-  {
-    "id": "CHAPTER_AUDIT--1",
-    "title": "Canonical Chapter Set",
-    "mdPath": "/CHAPTER_AUDIT/#canonical-chapter-set",
-    "x": 220,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "CHAPTER_AUDIT"
-  },
-  {
-    "id": "CHAPTER_AUDIT--2",
-    "title": "Archived Material",
-    "mdPath": "/CHAPTER_AUDIT/#archived-material",
-    "x": 380,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "CHAPTER_AUDIT"
-  },
-  {
-    "id": "CHAPTER_AUDIT--3",
-    "title": "Supporting Directories",
-    "mdPath": "/CHAPTER_AUDIT/#supporting-directories",
-    "x": 220,
-    "y": 3020,
-    "zoom": 1,
-    "parentId": "CHAPTER_AUDIT"
-  },
-  {
-    "id": "STYLE_GUIDE",
-    "title": "Architecture as Code Editorial Style Guide",
-    "mdPath": "/STYLE_GUIDE/",
-    "x": 620,
-    "y": 2760,
-    "zoom": 1
-  },
-  {
-    "id": "STYLE_GUIDE--1",
-    "title": "Purpose",
-    "mdPath": "/STYLE_GUIDE/#purpose",
-    "x": 840,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "STYLE_GUIDE--2",
-    "title": "Language Standard",
-    "mdPath": "/STYLE_GUIDE/#language-standard",
-    "x": 1000,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "STYLE_GUIDE--3",
-    "title": "Preferred Spellings",
-    "mdPath": "/STYLE_GUIDE/#preferred-spellings",
-    "x": 840,
-    "y": 3020,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "STYLE_GUIDE--4",
-    "title": "Grammar and Punctuation",
-    "mdPath": "/STYLE_GUIDE/#grammar-and-punctuation",
-    "x": 1000,
-    "y": 3020,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "STYLE_GUIDE--5",
-    "title": "Terminology and Tone",
-    "mdPath": "/STYLE_GUIDE/#terminology-and-tone",
-    "x": 840,
-    "y": 3140,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "STYLE_GUIDE--6",
-    "title": "Diagram and Asset Text",
-    "mdPath": "/STYLE_GUIDE/#diagram-and-asset-text",
-    "x": 1000,
-    "y": 3140,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "STYLE_GUIDE--7",
-    "title": "Review Checklist",
-    "mdPath": "/STYLE_GUIDE/#review-checklist",
-    "x": 840,
-    "y": 3260,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "STYLE_GUIDE--8",
-    "title": "Further Reading",
-    "mdPath": "/STYLE_GUIDE/#further-reading",
-    "x": 1000,
-    "y": 3260,
-    "zoom": 1,
-    "parentId": "STYLE_GUIDE"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS",
-    "title": "Content Validation Scripts",
-    "mdPath": "/VALIDATION_SCRIPTS/",
-    "x": 1240,
-    "y": 2760,
-    "zoom": 1
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--1",
-    "title": "Overview",
-    "mdPath": "/VALIDATION_SCRIPTS/#overview",
-    "x": 1460,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--2",
-    "title": "Validation Scripts",
-    "mdPath": "/VALIDATION_SCRIPTS/#validation-scripts",
-    "x": 1620,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--3",
-    "title": "CI/CD Integration",
-    "mdPath": "/VALIDATION_SCRIPTS/#cicd-integration",
-    "x": 1460,
-    "y": 3020,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--4",
-    "title": "Style Guide Compliance",
-    "mdPath": "/VALIDATION_SCRIPTS/#style-guide-compliance",
-    "x": 1620,
-    "y": 3020,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--5",
-    "title": "Implementation roadmap and strategies",
-    "mdPath": "/VALIDATION_SCRIPTS/#implementation-roadmap-and-strategies",
-    "x": 1460,
-    "y": 3140,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--6",
-    "title": "implementation roadmap and strategies",
-    "mdPath": "/VALIDATION_SCRIPTS/#implementation-roadmap-and-strategies",
-    "x": 1620,
-    "y": 3140,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--7",
-    "title": "Development Workflow",
-    "mdPath": "/VALIDATION_SCRIPTS/#development-workflow",
-    "x": 1460,
-    "y": 3260,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--8",
-    "title": "Adding New Validations",
-    "mdPath": "/VALIDATION_SCRIPTS/#adding-new-validations",
-    "x": 1620,
-    "y": 3260,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--9",
-    "title": "Troubleshooting",
-    "mdPath": "/VALIDATION_SCRIPTS/#troubleshooting",
-    "x": 1460,
-    "y": 3380,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--10",
-    "title": "Maintenance",
-    "mdPath": "/VALIDATION_SCRIPTS/#maintenance",
-    "x": 1620,
-    "y": 3380,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "VALIDATION_SCRIPTS--11",
-    "title": "References",
-    "mdPath": "/VALIDATION_SCRIPTS/#references",
-    "x": 1460,
-    "y": 3500,
-    "zoom": 1,
-    "parentId": "VALIDATION_SCRIPTS"
-  },
-  {
-    "id": "book_structure",
-    "title": "Architecture as Code - Book Structure",
-    "mdPath": "/book_structure/",
-    "x": 1860,
-    "y": 2760,
-    "zoom": 1
-  },
-  {
-    "id": "book_structure--1",
-    "title": "Table of Contents",
-    "mdPath": "/book_structure/#table-of-contents",
-    "x": 2080,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "book_structure"
-  },
-  {
-    "id": "book_structure--2",
-    "title": "Chapter Structure",
-    "mdPath": "/book_structure/#chapter-structure",
-    "x": 2240,
-    "y": 2900,
-    "zoom": 1,
-    "parentId": "book_structure"
-  },
-  {
-    "id": "book_structure--3",
-    "title": "Book Organisation Principles",
-    "mdPath": "/book_structure/#book-organisation-principles",
-    "x": 2080,
-    "y": 3020,
-    "zoom": 1,
-    "parentId": "book_structure"
-  },
-  {
-    "id": "book_structure--4",
-    "title": "Diagrams and Images",
-    "mdPath": "/book_structure/#diagrams-and-images",
-    "x": 2240,
-    "y": 3020,
-    "zoom": 1,
-    "parentId": "book_structure"
-  },
-  {
-    "id": "book_structure--5",
-    "title": "Build Process",
-    "mdPath": "/book_structure/#build-process",
-    "x": 2080,
-    "y": 3140,
-    "zoom": 1,
-    "parentId": "book_structure"
-  },
-  {
-    "id": "book_structure--6",
-    "title": "Target Audience",
-    "mdPath": "/book_structure/#target-audience",
-    "x": 2240,
-    "y": 3140,
-    "zoom": 1,
-    "parentId": "book_structure"
-  },
-  {
-    "id": "book_structure--7",
-    "title": "Authors and Contributors",
-    "mdPath": "/book_structure/#authors-and-contributors",
-    "x": 2080,
-    "y": 3260,
-    "zoom": 1,
-    "parentId": "book_structure"
-  },
-  {
-    "id": "part_a_foundations",
-    "title": "Part A: Foundations",
-    "mdPath": "/part_a_foundations/",
-    "x": 2480,
-    "y": 2760,
-    "zoom": 1
-  },
-  {
-    "id": "part_b_architecture_platform",
-    "title": "Part B: Architecture Platform",
-    "mdPath": "/part_b_architecture_platform/",
-    "x": 3100,
-    "y": 2760,
-    "zoom": 1
-  },
-  {
-    "id": "part_c_security_governance",
-    "title": "Part C: Security and Governance",
-    "mdPath": "/part_c_security_governance/",
-    "x": 0,
-    "y": 3220,
-    "zoom": 1
-  },
-  {
-    "id": "part_d_delivery_operations",
-    "title": "Part D: Delivery and Operations",
-    "mdPath": "/part_d_delivery_operations/",
-    "x": 620,
-    "y": 3220,
-    "zoom": 1
-  },
-  {
-    "id": "part_e_organisation_leadership",
-    "title": "Part E: Organisation and Leadership",
-    "mdPath": "/part_e_organisation_leadership/",
-    "x": 1240,
-    "y": 3220,
-    "zoom": 1
-  },
-  {
-    "id": "part_f_experience_best_practices",
-    "title": "Part F: Experience and Best Practices",
-    "mdPath": "/part_f_experience_best_practices/",
-    "x": 1860,
-    "y": 3220,
-    "zoom": 1
-  },
-  {
-    "id": "part_g_future_wrap_up",
-    "title": "Part G: Future and Wrap-up",
-    "mdPath": "/part_g_future_wrap_up/",
-    "x": 2480,
-    "y": 3220,
-    "zoom": 1
-  },
-  {
-    "id": "part_h_appendices",
-    "title": "Part H: Appendices and Reference",
-    "mdPath": "/part_h_appendices/",
-    "x": 3100,
-    "y": 3220,
-    "zoom": 1
+    "parentId": "maturity-management"
   }
 ]
