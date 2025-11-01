@@ -1,0 +1,2 @@
+# Treat generated diagram assets as binary to avoid noisy diffs
+/docs/images/*.png binary

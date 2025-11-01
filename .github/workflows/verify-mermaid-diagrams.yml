@@ -1,0 +1,48 @@
+name: Verify Mermaid Diagrams
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/images/**/*.mmd'
+      - 'docs/images/**/*.png'
+      - 'docs/mermaid-kvadrat-theme.json'
+      - 'scripts/check_mermaid_diagrams.py'
+      - '.github/workflows/verify-mermaid-diagrams.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/images/**/*.mmd'
+      - 'docs/images/**/*.png'
+      - 'docs/mermaid-kvadrat-theme.json'
+      - 'scripts/check_mermaid_diagrams.py'
+      - '.github/workflows/verify-mermaid-diagrams.yml'
+  workflow_dispatch: {}
+
+jobs:
+  diagram-consistency:
+    name: Ensure Mermaid diagrams are up to date
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.11.1'
+
+      - name: 📦 Install Node.js dependencies
+        run: npm ci
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: 🔍 Verify Mermaid diagrams
+        run: python3 scripts/check_mermaid_diagrams.py
