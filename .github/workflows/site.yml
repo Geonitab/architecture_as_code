@@ -69,24 +69,39 @@ jobs:
           python -V
           python -m pip install --upgrade pip setuptools wheel
 
-      - name: Install MkDocs + plugins
+      - name: Install dependencies (requirements + ensure MkDocs plugins)
         run: |
           set -euxo pipefail
+          # 1) If a requirements.txt exists, install it first
           if [[ -f requirements.txt ]]; then
             python -m pip install -r requirements.txt
-          else
-            # Broad but safe defaults including redirects
-            python -m pip install \
-              mkdocs \
-              mkdocs-material \
-              mkdocs-material-extensions \
-              mkdocs-mermaid2-plugin \
-              mkdocs-awesome-pages-plugin \
-              mkdocs-redirects
           fi
+
+          # 2) Ensure core MkDocs + plugins are present regardless of requirements.txt contents
+          #    (idempotent; will upgrade/skip as needed)
+          python -m pip install --upgrade \
+            mkdocs \
+            mkdocs-material \
+            mkdocs-material-extensions \
+            mkdocs-mermaid2-plugin \
+            mkdocs-awesome-pages-plugin \
+            mkdocs-redirects
+
+          # 3) Verify installation
           python - <<'PY'
-          import mkdocs, sys
-          print("MkDocs version:", mkdocs.__version__)
+          import sys, importlib
+          pkgs = ["mkdocs",
+                  "mkdocs_material",
+                  "mkdocs_mermaid2_plugin",
+                  "mkdocs_awesome_pages_plugin",
+                  "mkdocs_redirects"]
+          for p in pkgs:
+            try:
+              m = importlib.import_module(p)
+              print("OK:", p, getattr(m, "__version__", "(no __version__)"))
+            except Exception as e:
+              print("MISSING:", p, e)
+              sys.exit(1)
           PY
 
       - name: Print MkDocs config & docs index
