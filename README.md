@@ -141,6 +141,11 @@ Key workflows include:
 5. Commit changes with clear messages and submit a pull request following the shared
    Git-based review workflow so automation validates heading and link conventions.
 
+## ✍️ Editorial Style
+
+- Use the official casing **Architecture as Code** in all narrative copy, diagrams, navigation labels, and commit messages unless quoting external material with different styling.
+- Follow the full editorial rules in `docs/STYLE_GUIDE.md`, including British English spelling, tone guidance, and terminology guardrails.
+
 ## 🔍 Link Verification
 
 Use `scripts/verify_links.py` to validate internal and external references across the manuscript and supporting docs. The script emits Markdown, HTML, and JSON reports to aid review and CI integration.【F:scripts/verify_links.py】【F:LINK_VERIFICATION.md】

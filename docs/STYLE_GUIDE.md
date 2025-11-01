@@ -33,6 +33,7 @@ The following table lists common conversions that must be applied during reviews
 - Hyphenate compound adjectives where it improves readability (e.g., “code-first mindset”).
 
 ## Terminology and Tone
+- Always refer to the discipline and book title as **Architecture as Code**, keeping “as” in lower case and capitalising “Architecture” and “Code”. Avoid variations such as “Architecture As Code” or “architecture as code” unless quoting another source.
 - Refer to audiences collectively as “teams”, “practitioners”, or “organisations” rather than region-specific labels unless the chapter explicitly targets a geography.
 - Use “programme” for initiatives and “programme owners” in keeping with British usage.
 - Maintain formal, instructional tone that suits professional and academic readers.
