@@ -1,4 +1,4 @@
-# Documentation as Code vs Architecture as Code
+# Documentation as Code vs Architecture as Code {#documentation-vs-architecture}
 
 ## Introduction
 

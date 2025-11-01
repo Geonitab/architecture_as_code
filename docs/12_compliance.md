@@ -1,4 +1,4 @@
-# Compliance and Regulatory Adherence
+# Compliance and Regulatory Adherence {#compliance}
 
 ![Compliance automation lifecycle overview](images/diagram_12_compliance.png)
 

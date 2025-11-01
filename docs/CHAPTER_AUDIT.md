@@ -1,4 +1,4 @@
-# Docs Folder Audit
+# Docs Folder Audit {#chapter-audit}
 
 This audit summarises the current structure of the `docs/` directory, highlights which markdown files participate in the automated build, and identifies content that has been archived for later review.
 

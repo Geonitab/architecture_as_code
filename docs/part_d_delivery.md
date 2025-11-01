@@ -2,7 +2,7 @@
 \part{Delivery and Operations}
 \setbookpart{Delivery and Operations}
 
-# Part D: Delivery and Operations
+# Part D: Delivery and Operations {#part-d-delivery}
 
 With secure, governed platforms in place, we now focus on the practical delivery and operational excellence that transforms Architecture as Code from concept into sustainable practice. This part bridges technical capabilities with business outcomes through disciplined testing, pragmatic implementation patterns, financial optimisation, and migration strategies.
 

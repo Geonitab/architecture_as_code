@@ -1,4 +1,4 @@
-# Organisational Change and Team Structures
+# Organisational Change and Team Structures {#organisational-change}
 
 Architecture as Code changes far more than tooling. It demands new habits, shared language, and organisational structures that keep pace with automated delivery. Sustainable transformation happens when leadership connects strategy, culture, and day-to-day practices so teams can deliver infrastructure with the same confidence and cadence as software.
 

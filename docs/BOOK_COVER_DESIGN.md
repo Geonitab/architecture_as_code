@@ -1,4 +1,4 @@
-# Book Cover design - "Architecture as Code"
+# Book Cover design - "Architecture as Code" {#book-cover-design}
 
 ## Overview
 Professional book cover design for Kvadrat's "Architecture as Code" publication. The design follows Kvadrat's brand guidelines and incorporates modern visual elements that reflect the theme of code architecture.

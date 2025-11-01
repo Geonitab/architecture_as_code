@@ -2,7 +2,7 @@
 \part{Architecture Platform}
 \setbookpart{Architecture Platform}
 
-# Part B: Architecture Platform
+# Part B: Architecture Platform {#part-b-platform}
 
 With the foundational principles established, we now turn to the technical building blocks that enable Architecture as Code in practice. This part explores the automation, tooling, and platform capabilities that transform architectural intent into executable reality.
 

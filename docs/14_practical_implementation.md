@@ -1,4 +1,4 @@
-# Architecture as Code in Practice
+# Architecture as Code in Practice {#practical-implementation}
 
 Architecture as Code succeeds when teams bring organisational ambitions, engineering discipline, and operating constraints together in a single delivery motion. Practical adoption requires a structured roadmap, supportive tooling, and a culture that treats infrastructure change as a product in its own right.
 

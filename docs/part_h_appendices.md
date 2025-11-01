@@ -2,7 +2,7 @@
 \part{Appendices and Reference}
 \setbookpart{Appendices and Reference}
 
-# Part H: Appendices and Reference
+# Part H: Appendices and Reference {#part-h-appendices}
 
 The appendices provide essential reference material, technical implementations, and background context that complement the main narrative. These resources support practitioners as they apply Architecture as Code principles in their own environments.
 

@@ -1,4 +1,4 @@
-# Architecture as Code Editorial Style Guide
+# Architecture as Code Editorial Style Guide {#style-guide}
 
 ## Purpose
 This guide defines the editorial standards for all reader-facing content in the Architecture as Code repository. It ensures that every manuscript chapter, supporting document, and diagram text is written in consistent British English while respecting technical terminology and brand language.

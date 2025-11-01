@@ -2,7 +2,7 @@
 \part{Future and Wrap-up}
 \setbookpart{Future and Wrap-up}
 
-# Part G: Future and Wrap-up
+# Part G: Future and Wrap-up {#part-g-future}
 
 Architecture as Code continues to evolve as new technologies emerge and organisational practices mature. This concluding part explores emerging trends, long-term developments, and synthesises the journey through this book into actionable guidance for the path ahead.
 
