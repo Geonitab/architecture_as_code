@@ -1,18 +1,17 @@
 name: Build All – Orchestrator
 
-concurrency:
-  group: orchestrate-all-${{ github.ref }}
-  cancel-in-progress: true
-
 on:
   workflow_dispatch:
     inputs:
       create_release:
-        description: 'Create GitHub Release from combined artefacts'
+        description: Create GitHub Release from combined artefacts
         type: boolean
         default: true
 
-# Default token perms for most jobs
+concurrency:
+  group: "orchestrate-all-${{ github.ref }}"
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -23,23 +22,26 @@ jobs:
   book:
     name: Book
     uses: ./.github/workflows/book.yml
+    secrets: inherit
 
   whitepapers:
     name: Whitepapers
     uses: ./.github/workflows/whitepapers.yml
+    secrets: inherit
 
   presentations:
     name: Presentations
     uses: ./.github/workflows/presentations.yml
+    secrets: inherit
 
   site:
     name: Site
     uses: ./.github/workflows/site.yml
-    # 🔐 Allow the called Pages workflow to deploy (inherits these perms)
     permissions:
       contents: read
       pages: write
       id-token: write
+    secrets: inherit
 
   finalise:
     name: Finalise & (optional) Release
@@ -54,12 +56,13 @@ jobs:
       - name: Download artefacts
         uses: actions/download-artifact@v4
         with:
-          pattern: '*'
+          pattern: "*"
           path: final-release
           merge-multiple: true
 
       - name: Normalise book deliverables
         run: |
+          set -euo pipefail
           echo "=== Collecting book artefacts ==="
           mkdir -p final-release/book
           for ext in pdf epub docx; do
@@ -75,6 +78,7 @@ jobs:
 
       - name: Normalise presentation deliverable
         run: |
+          set -euo pipefail
           echo "=== Collecting presentation artefact ==="
           mkdir -p final-release/presentation
           match=$(find final-release -maxdepth 5 \( -path final-release/presentation -prune -o -name "architecture_as_code_presentation.pptx" -print \) | head -n 1)
@@ -93,12 +97,13 @@ jobs:
 
       - name: Build combined zip
         run: |
+          set -euo pipefail
           cd final-release
           zip -r ../non-docker-release.zip .
           cd ..
           ls -lh non-docker-release.zip
 
-      - name: Summarise release artefacts (no heredoc)
+      - name: Summarise release artefacts
         id: artefact_summary
         shell: bash
         run: |
@@ -126,7 +131,7 @@ jobs:
             fi
           done
 
-          # Encode newlines for GITHUB_OUTPUT without heredocs
+          # Escape newlines for GITHUB_OUTPUT safely
           summary_escaped="${summary//$'\n'/%0A}"
           echo "summary=${summary_escaped}" >> "$GITHUB_OUTPUT"
 
