@@ -4,7 +4,7 @@
 
 *Figure 12.1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.*
 
-Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12-1 shows how that translation depends on a closed feedback loop. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
+Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12.1 shows how that translation depends on a closed feedback loop. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
 
 | Compliance Loop Stage | Activities | Outputs | Feedback Mechanism |
 |----------------------|------------|---------|-------------------|
