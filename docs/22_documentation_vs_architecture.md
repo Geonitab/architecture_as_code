@@ -128,7 +128,7 @@ Example Mermaid diagram:
 
 ![Mermaid example highlighting the flow between a customer, payment API, database, and queue](images/diagram_22_mermaid_example.png)
 
-*Figure 22.2 shows a simple customer-to-payment flow using the Mermaid syntax. The source definition is maintained in `docs/images/diagram_22_mermaid_example.mmd` to keep the diagram version-controlled alongside the manuscript.*
+*Figure 22.2 shows a simple customer-to-payment flow using the Mermaid syntax. Both the rendered PNG and the Mermaid source file are kept under version control in this repository.*
 
 Mermaid excels at quickly creating visual explanations within documentation. Its lightweight syntax makes it accessible to non-technical contributors, and its widespread integration means diagrams can be embedded directly in Markdown files without external tools.
 
