@@ -42,7 +42,7 @@ book:
       area: "Architecture Platform"
       required: true
       label: "Chapter 6"
-    - filename: "07_containerization.md"
+    - filename: "07_containerisation.md"
       title: "Containerisation and Orchestration as Code"
       area: "Architecture Platform"
       required: true
@@ -97,7 +97,7 @@ book:
       area: "Delivery and Operations"
       required: true
       label: "Chapter 16"
-    - filename: "17_organizational_change.md"
+    - filename: "17_organisational_change.md"
       title: "Organisational Change and Team Structures"
       area: "Organisation and Leadership"
       required: true
@@ -117,7 +117,7 @@ book:
       area: "Organisation and Leadership"
       required: true
       label: "Chapter 20"
-    - filename: "21_digitalization.md"
+    - filename: "21_digitalisation.md"
       title: "Digital Transformation through Code-Based Infrastructure"
       area: "Organisation and Leadership"
       required: true
@@ -372,7 +372,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 4 | 04_adr.md | Architecture Decision Records (ADR) | Foundations | Yes |
 | Chapter 5 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Architecture as Code | Architecture Platform | Yes |
 | Chapter 6 | 06_structurizr.md | Structurizr: Architecture Modeling as Code | Architecture Platform | Yes |
-| Chapter 7 | 07_containerization.md | Containerisation and Orchestration as Code | Architecture Platform | Yes |
+| Chapter 7 | 07_containerisation.md | Containerisation and Orchestration as Code | Architecture Platform | Yes |
 | Chapter 8 | 08_microservices.md | Microservices Architecture as Code | Architecture Platform | Yes |
 | Chapter 9A | 09a_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security and Governance | Yes |
 | Chapter 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security and Governance | Yes |
@@ -383,11 +383,11 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 14 | 14_practical_implementation.md | Architecture as Code in Practice | Delivery and Operations | Yes |
 | Chapter 15 | 15_cost_optimization.md | Cost Optimisation and Resource Management | Delivery and Operations | Yes |
 | Chapter 16 | 16_migration.md | Migration from Traditional Infrastructure | Delivery and Operations | Yes |
-| Chapter 17 | 17_organizational_change.md | Organisational Change and Team Structures | Organisation and Leadership | Yes |
+| Chapter 17 | 17_organisational_change.md | Organisational Change and Team Structures | Organisation and Leadership | Yes |
 | Chapter 18 | 18_team_structure.md | Team Structure and Competency Development for Architecture as Code | Organisation and Leadership | Yes |
 | Chapter 19 | 19_management_as_code.md | Management as Code | Organisation and Leadership | Yes |
 | Chapter 20 | 20_ai_agent_team.md | AI Agent Team for the Architecture as Code Initiative | Organisation and Leadership | Yes |
-| Chapter 21 | 21_digitalization.md | Digital Transformation through Code-Based Infrastructure | Organisation and Leadership | Yes |
+| Chapter 21 | 21_digitalisation.md | Digital Transformation through Code-Based Infrastructure | Organisation and Leadership | Yes |
 | Chapter 22 | 22_documentation_vs_architecture.md | Documentation as Code vs Architecture as Code | Experience and Best Practices | Yes |
 | Chapter 23 | 23_soft_as_code_interplay.md | The Interplay Between Soft "as code" Disciplines | Experience and Best Practices | Yes |
 | Chapter 24 | 24_best_practices.md | Modern Best Practices and Lessons Learned | Experience and Best Practices | Yes |

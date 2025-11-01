@@ -1176,7 +1176,7 @@ Complete GitHub Actions workflow demonstrating infrastructure testing pipeline w
 
 ### 17_CODE_1: Infrastructure Platform Team Blueprint {#17_code_1}
 *Listing 17-A.*
-*Referenced from chapter 17: [Organisational Change and Team Structures](17_organizational_change.md)*
+*Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
 
 ```yaml
 # organisational_design/devops_team_structure.yaml
@@ -1290,7 +1290,7 @@ team_structure:
 
 ### 17_CODE_2: IaC Competency Framework Utilities {#17_code_2}
 *Listing 17-B.*
-*Referenced from chapter 17: [Organisational Change and Team Structures](17_organizational_change.md)*
+*Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
 
 ```python
 # training/iac_competency_framework.py
@@ -1613,7 +1613,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
 
 ### 17_CODE_3: DevOps Performance Measurement Framework {#17_code_3}
 *Listing 17-C.*
-*Referenced from chapter 17: [Organisational Change and Team Structures](17_organizational_change.md)*
+*Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
 
 ```yaml
 # metrics/devops_performance_metrics.yaml

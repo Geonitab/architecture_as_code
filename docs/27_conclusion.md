@@ -10,7 +10,7 @@ practice underpins modern digital capabilities.
 
 Sustained success with Architecture as Code depends on the interplay between technical craft and organisational intent. The
 most effective transformations are led by committed sponsors, supported by clear communication, and reinforced through
-structured learning programmes. The change practices explored in [chapter 17 on organisational change](17_organizational_change.md)
+structured learning programmes. The change practices explored in [chapter 17 on organisational change](17_organisational_change.md)
 show how leadership, coaching, and incremental adoption reduce disruption whilst building confidence across teams.
 
 Architecture as Code stretches beyond infrastructure automation by codifying decision logic, policies, and integration
@@ -27,7 +27,7 @@ matched by organisational investment in skills, culture, and operating models so
 ## 27.2 Embedding continuous improvement
 
 The journey through this book charts a deliberate increase in sophistication: from declarative blueprints and idempotent
-configuration in [chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerization.md), to
+configuration in [chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerisation.md), to
 [future-facing automation patterns](25_future_trends.md). Security is treated as an architectural concern from the
 outset, evolving from [policy and security](10_policy_and_security.md) through [governance as code](11_governance_as_code.md)
 and [compliance operations](12_compliance.md). Each capability builds on the previous layer to create a resilient Architecture
@@ -57,7 +57,7 @@ regime, helps organisations evidence compliance earlier in delivery cycles and a
 
 Sustainability remains a parallel obligation. [Future trends](25_future_trends.md) emphasise carbon-aware workloads,
 energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and the
-Corporate Sustainability Reporting Directive. The wider transformation agenda explored in [chapter 21 on digitalisation](21_digitalization.md)
+Corporate Sustainability Reporting Directive. The wider transformation agenda explored in [chapter 21 on digitalisation](21_digitalisation.md)
 shows how coordinated change across Member States, public institutions, and private enterprises benefits from codified architectural
 knowledge that can be shared, audited, and re-used without reinventing country-specific artefacts.
 
@@ -65,7 +65,7 @@ knowledge that can be shared, audited, and re-used without reinventing country-s
 
 Organisations embarking on Architecture as Code initiatives should focus on pilot programmes that demonstrate tangible value
 without jeopardising critical services. Education, shared tooling, and clear ownership models build confidence and set
-expectations. The leadership guidance in [organisational change](17_organizational_change.md) reinforces the importance of
+expectations. The leadership guidance in [organisational change](17_organisational_change.md) reinforces the importance of
 communication, coaching, and community building.
 
 ### 27.4.1 Step-by-step adoption strategy
@@ -76,7 +76,7 @@ communication, coaching, and community building.
    collecting feedback and metrics.
 3. **Security integration**: Embed [policy and security](10_policy_and_security.md) controls and [compliance processes](12_compliance.md)
    into every delivery workflow.
-4. **Scaling and automation**: Expand towards [container orchestration](07_containerization.md) and platform capabilities described in
+4. **Scaling and automation**: Expand towards [container orchestration](07_containerisation.md) and platform capabilities described in
    [management as code](19_management_as_code.md).
 5. **Future readiness**: Track [emerging trends](25_future_trends.md) and sustainability expectations so that the
    Architecture as Code platform remains adaptable.

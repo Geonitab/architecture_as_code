@@ -251,7 +251,7 @@ resource "aws_vpc" "quantum_safe" {
 
 The modern Architecture as Code methodology is essential for infrastructure management in organisations that operate under strict regulatory oversight. Future development will be driven by AI automation, serverless architectures, quantum readiness, and sustainability requirements. Organisations must invest in new technologies, develop quantum-safe security strategies, and embed environmental considerations into infrastructure planning.
 
-Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles](02_fundamental_principles.md) to [Organisational Change](17_organizational_change.md)—Architecture as Code evolves to meet emerging challenges and opportunities.
+Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles](02_fundamental_principles.md) to [Organisational Change](17_organisational_change.md)—Architecture as Code evolves to meet emerging challenges and opportunities.
 
 ## Moving from Governance to Delivery
 

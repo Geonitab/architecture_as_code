@@ -303,7 +303,7 @@ Organisations that adopt ADR methodology position themselves for successful Arch
 
 ## Looking Ahead
 
-With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation](07_containerization.md) shows how these principles extend to application deployment and orchestration.
+With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation](07_containerisation.md) shows how these principles extend to application deployment and orchestration.
 
 Sources:
 - Architecture Decision Records Community. "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)

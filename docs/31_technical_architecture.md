@@ -20,7 +20,7 @@ docs/
 ├── 02_fundamental_principles.md    # Fundamental concepts
 ├── 03_version_control.md           # Git and version control
 ├── ...                             # Technical chapters (04–21)
-├── 21_digitalization.md            # Digitalisation strategy
+├── 21_digitalisation.md            # Digitalisation strategy
 ├── 23_soft_as_code_interplay.md    # Interplay between soft disciplines
 ├── 24_best_practices.md            # Methods and lessons learned
 ├── 25_future_trends.md # Future trends and development
