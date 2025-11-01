@@ -172,7 +172,7 @@ book:
       area: "Appendices"
       required: true
       label: "Appendix A"
-    - filename: "31_technical_architecture.md"
+    - filename: "appendix_b_technical_architecture.md"
       title: "Appendix B: Technical Architecture for Book Production"
       area: "Appendices"
       required: true
@@ -256,7 +256,7 @@ book:
       requires_diagram: false
       requires_sources: false
     technical_architecture:
-      filename: "31_technical_architecture.md"
+      filename: "appendix_b_technical_architecture.md"
       requires_diagram: true
       requires_sources: false
     references:
@@ -399,7 +399,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Glossary | 28_glossary.md | Glossary | Appendices | Yes |
 | About the Author | 29_about_the_authors.md | About the Author | Appendices | Yes |
 | Appendix A | 30_appendix_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
-| Appendix B | 31_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
+| Appendix B | appendix_b_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
 | Appendix C | 32_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
 | Appendix D | architecture_as_code_model.md | Architecture as Code Maturity Model | Reference | Yes |
 | References | 33_references.md | References and Sources | Reference | Yes |
@@ -409,7 +409,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 - **About the Author (`29_about_the_authors.md`)** – no diagrams or sources required.
 - **Conclusion (`27_conclusion.md`)** – does not require diagrams but must cite sources.
 - **Appendix A (`30_appendix_code_examples.md`)** – diagrams and sources are optional.
-- **Technical Architecture (`31_technical_architecture.md`)** – diagrams are required; sources are optional.
+- **Technical Architecture (`appendix_b_technical_architecture.md`)** – diagrams are required; sources are optional.
 - **References (`33_references.md`)** – provide consolidated citations for the entire manuscript.
 - **Book Cover (`BOOK_COVER_DESIGN.md`)** – no diagrams or sources required.
 - **EPUB Validation (`EPUB_VALIDATION.md`)** – no diagrams or sources required.

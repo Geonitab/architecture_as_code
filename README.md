@@ -44,7 +44,7 @@ Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`)
 
 ```
 docs/                     # Manuscript chapters, diagrams, and publishing assets
-├── *.md                  # Numbered chapters and appendices (01_introduction.md … 31_technical_architecture.md)
+├── *.md                  # Numbered chapters and appendices (01_introduction.md … appendix_b_technical_architecture.md)
 ├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
 ├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation

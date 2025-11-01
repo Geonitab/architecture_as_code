@@ -54,7 +54,7 @@ nav:
   - Appendices:
       - Glossary: 28_glossary.md
       - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
-      - Appendix B – Technical Architecture for Book Production: 31_technical_architecture.md
+      - Appendix B – Technical Architecture for Book Production: appendix_b_technical_architecture.md
       - Appendix C – FINOS Project Blueprint: 32_finos_project_blueprint.md
       - Appendix D – Architecture as Code Maturity Model: architecture_as_code_maturity_model.md
       - Appendix E – Architecture as Code Maturity Radar Tool: maturity_model_radar.html
