@@ -31,17 +31,21 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Python dependencies
+      - name: Install Python dependencies (always include MkDocs)
         env:
           REQUIREMENTS_FILE: requirements.txt
         run: |
           set -euo pipefail
           python -m pip install -U pip
+          # Always ensure mkdocs CLI is present
+          python -m pip install "mkdocs>=1.5" "mkdocs-material>=9.5"
+          # If you have extra plugins/deps, install them too
           if [ -f "${REQUIREMENTS_FILE}" ]; then
-            pip install -r "${REQUIREMENTS_FILE}"
-          else
-            pip install mkdocs mkdocs-material
+            python -m pip install -r "${REQUIREMENTS_FILE}"
           fi
+          # Show what’s installed (helps debugging PATH/versions)
+          python -m pip show mkdocs || true
+          python -m pip show mkdocs-material || true
 
       - name: Build MkDocs site (no LLM)
         env:
