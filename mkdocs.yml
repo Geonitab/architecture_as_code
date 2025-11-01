@@ -46,7 +46,8 @@ nav:
   - Part G – Future & Wrap-up:
       - index: part_g_future_wrap_up.md
       - Future Trends in Architecture as Code: 25_future_trends.md
-      - Future Development: 26_aac_anti_patterns.md
+      - Prerequisites for Architecture as Code Adoption: 26a_prerequisites_for_aac.md
+      - Anti-Patterns in Architecture as Code Programmes: 26b_aac_anti_patterns.md
       - Conclusion: 27_conclusion.md
       - Team Structure and Competency Development for IaC: 18_team_structure.md
   - Appendices:
