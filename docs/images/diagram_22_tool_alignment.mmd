@@ -1,3 +1,15 @@
+%% Documentation and architecture alignment feedback loop
+%% Maintains the textual source for Figure 22.3.
+
+%% Shared styling definitions used across the workshop diagrams
+classDef kv-primary fill:#1e3a8a,stroke:#0f172a,stroke-width:2px,color:#f8fafc;
+classDef kv-accent fill:#6366f1,stroke:#312e81,stroke-width:2px,color:#f8fafc;
+classDef kv-highlight fill:#fbbf24,stroke:#92400e,stroke-width:2px,color:#1f2937;
+classDef kv-muted fill:#e2e8f0,stroke:#475569,stroke-width:1px,color:#0f172a;
+classDef kv-connector stroke-dasharray:4 2,stroke:#1e3a8a,color:#0f172a,font-weight:bold;
+
+linkStyle default stroke:#0f172a,stroke-width:2px;
+
 flowchart LR
     subgraph Documentation_as_Code[Documentation as Code]
         Docs[Markdown Source<br/>Repositories]:::kv-primary --> Reviews[Pull Request Reviews<br/>and Style Checks]:::kv-highlight
@@ -11,10 +23,9 @@ flowchart LR
         Provision --> Telemetry[Runtime Telemetry<br/>and Drift Detection]:::kv-muted
     end
 
-    Feedback -.Context Updates.-> Models
-    Telemetry -.Implementation Evidence.-> Docs
-    Docs -.Guidance & Intent.-> Models
-    Publish -.Stakeholder Visibility.-> Telemetry
+    Feedback -.Context updates.-> Models
+    Telemetry -.Implementation evidence.-> Docs
+    Docs -.Guidance & intent.-> Models
+    Publish -.Stakeholder visibility.-> Telemetry
 
-    classDef kv-connector stroke-dasharray:4 2,stroke:#1E3A8A,color:#0F172A,font-weight:bold;
     class Feedback,Telemetry kv-connector;
