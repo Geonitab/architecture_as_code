@@ -32,10 +32,13 @@ Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`)
 ### Appendices and Extended Material
 - **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.
 - **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
-- **Chapter 29 – About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.
+- **Chapter 29 – About the Authors:** Profile of Gunnar Nordqvist and the expertise behind the book.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.
-- **Architecture as Code Maturity Model and Control Mapping Template:** Adoption guidance and compliance tooling that extend the main chapters.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/34_control_mapping_matrix_template.md】
+- **Chapter 31 – Appendix B: Technical Architecture for Book Production:** Tooling overview for the publishing platform.
+- **Chapter 32 – Appendix C: FINOS Project Blueprint:** Governance alignment blueprint for regulated collaboration.
+- **Chapter 33 – References and Sources:** Consolidated citations for the manuscript.
+- **Chapter 34 – Control Mapping Matrix Template:** Reusable compliance mapping workbook.
+- **Architecture as Code Maturity Model and Radar Tool:** Adoption guidance and diagnostic visualisation that extend the main chapters.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/architecture_as_code_maturity_model.md】【F:docs/maturity_model_radar.html】
 
 ### Archived Drafts
 - **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/book_structure.md】【F:docs/archive/README.md】
@@ -44,7 +47,7 @@ Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`)
 
 ```
 docs/                     # Manuscript chapters, diagrams, and publishing assets
-├── *.md                  # Numbered chapters and appendices (01_introduction.md … 31_technical_architecture.md)
+├── *.md                  # Numbered chapters and appendices (01_introduction.md … 34_control_mapping_matrix_template.md)
 ├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
 ├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation
