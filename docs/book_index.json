@@ -1,0 +1,91 @@
+{
+  "total_units": 38,
+  "parts": [
+    {
+      "id": "part_a",
+      "title": "Foundations",
+      "chapters": [
+        {"identifier": "1", "file": "docs/01_introduction.md", "title": "Introduction to Architecture as Code"},
+        {"identifier": "2", "file": "docs/02_fundamental_principles.md", "title": "Fundamental Principles of Architecture as Code"},
+        {"identifier": "3", "file": "docs/03_version_control.md", "title": "Version Control and Code Structure"},
+        {"identifier": "4", "file": "docs/04_adr.md", "title": "Architecture Decision Records (ADR)"}
+      ]
+    },
+    {
+      "id": "part_b",
+      "title": "Architecture Platform",
+      "chapters": [
+        {"identifier": "5", "file": "docs/05_automation_devops_cicd.md", "title": "Automation, DevOps and CI/CD for Infrastructure as Code"},
+        {"identifier": "6", "file": "docs/06_structurizr.md", "title": "Structurizr: Architecture Modeling as Code"},
+        {"identifier": "7", "file": "docs/07_containerisation.md", "title": "Containerisation and Orchestration as Code"},
+        {"identifier": "8", "file": "docs/08_microservices.md", "title": "Microservices Architecture as Code"}
+      ]
+    },
+    {
+      "id": "part_c",
+      "title": "Security & Governance",
+      "chapters": [
+        {"identifier": "9", "file": "docs/09_security_fundamentals.md", "title": "Security Fundamentals for Architecture as Code"},
+        {"identifier": "9B", "file": "docs/09b_security_patterns.md", "title": "Advanced Security Patterns and Implementation"},
+        {"identifier": "9C", "file": "docs/09c_risk_and_threat_as_code.md", "title": "Risk as Code and Threat Handling as Code"},
+        {"identifier": "10", "file": "docs/10_policy_and_security.md", "title": "Policy and Security as Code in Detail"},
+        {"identifier": "11", "file": "docs/11_governance_as_code.md", "title": "Governance as Code"},
+        {"identifier": "12", "file": "docs/12_compliance.md", "title": "Compliance and Regulatory Adherence"}
+      ]
+    },
+    {
+      "id": "part_d",
+      "title": "Delivery & Operations",
+      "chapters": [
+        {"identifier": "13", "file": "docs/13_testing_strategies.md", "title": "Testing Strategies for Infrastructure as Code"},
+        {"identifier": "14", "file": "docs/14_practical_implementation.md", "title": "Architecture as Code in Practice"},
+        {"identifier": "15A", "file": "docs/15_evidence_as_code.md", "title": "Evidence as Code and Continuous Assurance"},
+        {"identifier": "15B", "file": "docs/15_cost_optimization.md", "title": "Cost Optimisation and Resource Management"},
+        {"identifier": "16", "file": "docs/16_migration.md", "title": "Migration from Traditional Infrastructure"}
+      ]
+    },
+    {
+      "id": "part_e",
+      "title": "Organisation & Leadership",
+      "chapters": [
+        {"identifier": "17", "file": "docs/17_organisational_change.md", "title": "Organisational Change and Team Structures"},
+        {"identifier": "18", "file": "docs/18_team_structure.md", "title": "Team Structure and Competency Development for IaC"},
+        {"identifier": "19", "file": "docs/19_management_as_code.md", "title": "Management as Code"},
+        {"identifier": "20", "file": "docs/20_ai_agent_team.md", "title": "AI Agent Team for Architecture as Code Initiatives"},
+        {"identifier": "21", "file": "docs/21_digitalisation.md", "title": "Digitalisation through Code-based Infrastructure"}
+      ]
+    },
+    {
+      "id": "part_f",
+      "title": "Experience & Best Practices",
+      "chapters": [
+        {"identifier": "22", "file": "docs/22_documentation_vs_architecture.md", "title": "Documentation as Code vs Architecture as Code"},
+        {"identifier": "23", "file": "docs/23_soft_as_code_interplay.md", "title": "The Interplay Between Soft As Code Disciplines"},
+        {"identifier": "24", "file": "docs/24_best_practices.md", "title": "Best Practices and Lessons Learned"}
+      ]
+    },
+    {
+      "id": "part_g",
+      "title": "Future & Wrap-up",
+      "chapters": [
+        {"identifier": "25", "file": "docs/25_future_trends.md", "title": "Future Trends in Architecture as Code"},
+        {"identifier": "26A", "file": "docs/26a_prerequisites_for_aac.md", "title": "Prerequisites for Architecture as Code Adoption"},
+        {"identifier": "26B", "file": "docs/26b_aac_anti_patterns.md", "title": "Anti-Patterns in Architecture as Code Programmes"},
+        {"identifier": "27", "file": "docs/27_conclusion.md", "title": "Conclusion"}
+      ]
+    }
+  ],
+  "appendices": [
+    {"identifier": "28", "file": "docs/28_glossary.md", "title": "Glossary"},
+    {"identifier": "29", "file": "docs/29_about_the_authors.md", "title": "About the Author"},
+    {"identifier": "30", "file": "docs/30_appendix_code_examples.md", "title": "Appendix A: Code Examples and Technical Implementations"},
+    {"identifier": "31", "file": "docs/31_technical_architecture.md", "title": "Appendix B: Technical Architecture for Book Production"},
+    {"identifier": "32", "file": "docs/32_finos_project_blueprint.md", "title": "Appendix C: FINOS Project Blueprint"},
+    {"identifier": "33", "file": "docs/33_references.md", "title": "References and Sources"},
+    {"identifier": "34", "file": "docs/34_control_mapping_matrix_template.md", "title": "Appendix D: Control Mapping Matrix Template"}
+  ],
+  "supplements": [
+    {"identifier": "maturity_model", "file": "docs/architecture_as_code_maturity_model.md", "title": "Architecture as Code Maturity Model"},
+    {"identifier": "maturity_radar", "file": "docs/maturity_model_radar.html", "title": "Architecture as Code Maturity Radar Tool"}
+  ]
+}

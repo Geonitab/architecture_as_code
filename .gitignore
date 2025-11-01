@@ -40,6 +40,10 @@ releases/whitepapers/*
 releases/website/*
 !releases/README.md
 
+# Prevent legacy export directories from returning
+exports/
+exports_old/
+
 # Test artifacts and reports  
 test-reports/
 .pytest_cache/

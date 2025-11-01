@@ -36,7 +36,7 @@ This pack equips facilitators and participants with structured agendas, artefact
 - **Playground extension:** Provide an optional sandbox challenge to implement infrastructure testing using Terratest or Checkov with success criteria listed in the workbook.
 - **Self-study challenge:** Extend the lab pipeline with automated module testing and submit evidence links plus a retrospective entry via the lab checklist. Update the reflection log with observed maturity shifts.
 
-### Module 2 – Architecture as code modelling
+### Module 2 – Architecture as Code modelling
 - **Workshop focus:** Create and validate a Structurizr DSL workspace representing a shared platform.
   - Activities: model the system context, container, and component diagrams; set up automated diagram export in CI; link decision records to model elements.
   - Quality bar: linting pipeline passes, diagrams refresh automatically, ADR references resolve. Document evidence and outstanding actions inside the workbook quality checklist.

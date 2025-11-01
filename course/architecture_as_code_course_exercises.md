@@ -39,7 +39,7 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ---
 
-## Module 2 – Architecture as code modelling
+## Module 2 – Architecture as Code modelling
 
 **Book alignment:** Chapters 06 *Structurizr: Architecture Modeling as Code*, 23 *Soft as Code Interplay*, and Appendix B *Technical Architecture for Book Production*. Use workbook notes to demonstrate how the referenced chapters influence modelling decisions and traceability.
 
