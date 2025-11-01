@@ -1094,9 +1094,50 @@ export class TerraformConfigGenerator {
 *Listing 13-C.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
-Comprehensive test suite demonstrating validation of configuration generators with GDPR compliance checks.
+Comprehensive Vitest suite validating the Terraform configuration generator with GDPR compliance checks and regional restrictions.
 
-(See Chapter 13 for full test implementation covering VPC configuration, GDPR compliance tags, regional restrictions and RDS encryption requirements)
+```typescript
+// src/generators/terraform-config.test.ts
+import { describe, expect, it } from 'vitest';
+import { TerraformConfigGenerator } from './terraform-config';
+
+describe('TerraformConfigGenerator', () => {
+  const generator = new TerraformConfigGenerator();
+
+  it('creates a GDPR-compliant VPC for production in the EU', () => {
+    const config = generator.generateVPCConfig('production', 'eu-west-2');
+
+    expect(config.region).toBe('eu-west-2');
+    expect(config.resources[0].properties.tags.GdprCompliant).toBe('true');
+    expect(config.resources[0].properties.tags.DataResidency).toBe('EU');
+  });
+
+  it('refuses to generate VPCs outside approved EU regions', () => {
+    expect(() => generator.generateVPCConfig('production', 'us-east-1')).toThrowError(
+      'Region must be within EU for GDPR compliance'
+    );
+  });
+
+  it('enforces encryption for production databases', () => {
+    expect(() => generator.generateRDSConfig('production', 'db.r6g.large', false)).toThrowError(
+      'Production databases must have encryption enabled'
+    );
+
+    const resource = generator.generateRDSConfig('production', 'db.r6g.large', true);
+    expect(resource.properties.storage_encrypted).toBe(true);
+    expect(resource.properties.multi_az).toBe(true);
+    expect(resource.properties.tags.EncryptionEnabled).toBe('true');
+  });
+
+  it('creates leaner development databases whilst retaining encryption', () => {
+    const resource = generator.generateRDSConfig('development');
+
+    expect(resource.properties.allocated_storage).toBe(20);
+    expect(resource.properties.multi_az).toBe(false);
+    expect(resource.properties.storage_encrypted).toBe(true);
+  });
+});
+```
 
 ### 13_CODE_D: Infrastructure Validator {#13_code_d}
 *Listing 13-D.*
@@ -1104,15 +1145,190 @@ Comprehensive test suite demonstrating validation of configuration generators wi
 
 Infrastructure validation module that checks resources against organisational policies and compliance requirements.
 
-(See Chapter 13 for full implementation covering resource tag validation, data classification checks and security group rule verification)
+```typescript
+// src/validators/infrastructure-validator.ts
+export interface ResourceTag {
+  key: string;
+  value: string;
+}
+
+export interface SecurityRule {
+  protocol: 'tcp' | 'udp' | 'icmp';
+  port: number;
+  cidr: string;
+}
+
+export interface ClassifiedResource {
+  id: string;
+  classification: 'public' | 'internal' | 'confidential';
+  encrypted: boolean;
+}
+
+export interface ResourceDefinition {
+  id: string;
+  type: string;
+  tags: ResourceTag[];
+  securityRules?: SecurityRule[];
+  data?: ClassifiedResource;
+}
+
+export interface ValidationResult {
+  id: string;
+  errors: string[];
+  warnings: string[];
+}
+
+export class InfrastructureValidator {
+  constructor(private readonly mandatoryTags: string[]) {}
+
+  validate(resources: ResourceDefinition[]): ValidationResult[] {
+    return resources.map((resource) => ({
+      id: resource.id,
+      errors: [
+        ...this.validateMandatoryTags(resource),
+        ...this.validateSecurityRules(resource),
+        ...this.validateDataClassification(resource),
+      ],
+      warnings: this.collectWarnings(resource),
+    }));
+  }
+
+  private validateMandatoryTags(resource: ResourceDefinition): string[] {
+    const presentKeys = resource.tags.map((tag) => tag.key);
+    return this.mandatoryTags
+      .filter((tag) => !presentKeys.includes(tag))
+      .map((tag) => `Missing mandatory tag: ${tag}`);
+  }
+
+  private validateSecurityRules(resource: ResourceDefinition): string[] {
+    if (!resource.securityRules?.length) {
+      return [];
+    }
+
+    return resource.securityRules
+      .filter((rule) => rule.protocol === 'tcp' && rule.port === 22 && rule.cidr === '0.0.0.0/0')
+      .map(() => 'SSH must not be open to the internet');
+  }
+
+  private validateDataClassification(resource: ResourceDefinition): string[] {
+    if (!resource.data) {
+      return [];
+    }
+
+    if (resource.data.classification === 'confidential' && !resource.data.encrypted) {
+      return ['Confidential resources must be encrypted'];
+    }
+
+    return [];
+  }
+
+  private collectWarnings(resource: ResourceDefinition): string[] {
+    if (!resource.securityRules?.length) {
+      return ['No security rules defined; ensure defence-in-depth controls exist'];
+    }
+
+    const usesWildcard = resource.securityRules.some((rule) => rule.cidr === '0.0.0.0/0');
+    return usesWildcard ? ['Wildcard CIDR detected; confirm zero-trust posture'] : [];
+  }
+}
+```
 
 ### 13_CODE_E: Infrastructure Validator Tests {#13_code_e}
 *Listing 13-E.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
-Comprehensive test suite for infrastructure validation covering tags, security groups and compliance policies.
+Comprehensive Vitest suite covering mandatory tags, security groups and compliance policies.
 
-(See Chapter 13 for full test suite demonstrating tag requirement validation, security group port restrictions and GDPR compliance warnings)
+```typescript
+// src/validators/infrastructure-validator.test.ts
+import { describe, expect, it } from 'vitest';
+import { InfrastructureValidator } from './infrastructure-validator';
+
+const validator = new InfrastructureValidator(['Environment', 'CostCentre', 'Owner']);
+
+describe('InfrastructureValidator', () => {
+  it('flags resources missing mandatory tags', () => {
+    const [result] = validator.validate([
+      {
+        id: 'vpc-001',
+        type: 'aws_vpc',
+        tags: [
+          { key: 'Environment', value: 'production' },
+          { key: 'Owner', value: 'platform-team' },
+        ],
+      },
+    ]);
+
+    expect(result.errors).toContain('Missing mandatory tag: CostCentre');
+  });
+
+  it('detects internet-facing SSH rules', () => {
+    const [result] = validator.validate([
+      {
+        id: 'sg-123',
+        type: 'aws_security_group',
+        tags: [
+          { key: 'Environment', value: 'staging' },
+          { key: 'CostCentre', value: 'IT-042' },
+          { key: 'Owner', value: 'security-team' },
+        ],
+        securityRules: [
+          { protocol: 'tcp', port: 22, cidr: '0.0.0.0/0' },
+        ],
+      },
+    ]);
+
+    expect(result.errors).toContain('SSH must not be open to the internet');
+    expect(result.warnings).toContain('Wildcard CIDR detected; confirm zero-trust posture');
+  });
+
+  it('enforces encryption for confidential data sets', () => {
+    const [result] = validator.validate([
+      {
+        id: 's3-logs',
+        type: 'aws_s3_bucket',
+        tags: [
+          { key: 'Environment', value: 'production' },
+          { key: 'CostCentre', value: 'FIN-001' },
+          { key: 'Owner', value: 'risk-office' },
+        ],
+        data: {
+          id: 'audit-logs',
+          classification: 'confidential',
+          encrypted: false,
+        },
+      },
+    ]);
+
+    expect(result.errors).toContain('Confidential resources must be encrypted');
+  });
+
+  it('passes compliant resources without errors', () => {
+    const [result] = validator.validate([
+      {
+        id: 'db-analytics',
+        type: 'aws_rds_instance',
+        tags: [
+          { key: 'Environment', value: 'production' },
+          { key: 'CostCentre', value: 'DATA-007' },
+          { key: 'Owner', value: 'data-platform' },
+        ],
+        securityRules: [
+          { protocol: 'tcp', port: 5432, cidr: '10.0.0.0/16' },
+        ],
+        data: {
+          id: 'analytics',
+          classification: 'internal',
+          encrypted: true,
+        },
+      },
+    ]);
+
+    expect(result.errors).toHaveLength(0);
+    expect(result.warnings).toHaveLength(0);
+  });
+});
+```
 
 ### 13_CODE_F: GitHub Actions Vitest Workflow {#13_code_f}
 *Listing 13-F.*
@@ -1120,7 +1336,55 @@ Comprehensive test suite for infrastructure validation covering tags, security g
 
 CI/CD workflow demonstrating automated infrastructure code testing with coverage reporting.
 
-(See Chapter 13 for complete GitHub Actions workflow including test execution, coverage generation and PR comment integration)
+```yaml
+# .github/workflows/infrastructure-vitest.yml
+name: Infrastructure Code Tests
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'vitest.config.ts'
+
+jobs:
+  vitest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
+      - name: Run Vitest with coverage
+        run: pnpm vitest run --coverage
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-coverage
+          path: coverage/
+
+      - name: Summarise test results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Vitest
+          path: coverage/coverage-final.json
+          reporter: vitest
+```
 
 ### 13_CODE_G: Requirements as Code Definition {#13_code_g}
 *Listing 13-G.*
@@ -1128,7 +1392,50 @@ CI/CD workflow demonstrating automated infrastructure code testing with coverage
 
 YAML-based requirements definition enabling traceability from business requirements to automated tests with compliance mapping and test specifications.
 
-(See Chapter 13 for YAML schema demonstrating security requirements, performance requirements and associated test specifications)
+```yaml
+# requirements/catalogue.yaml
+metadata:
+  version: 1
+  generated: 2024-04-15
+  owner: platform-risk-office
+
+requirements:
+  - id: SEC-001
+    title: Encrypt customer data at rest
+    priority: high
+    classification: gdpr
+    rationale: Protect personally identifiable information across EU jurisdictions.
+    tests:
+      - id: test-encryption-s3
+        description: Validate that S3 buckets containing GDPR data enable default encryption.
+        tooling: opa
+      - id: test-encryption-rds
+        description: Confirm RDS instances with GDPR tags have storage encryption enabled.
+        tooling: terratest
+
+  - id: PERF-003
+    title: Maintain API latency under 250ms at p95
+    priority: medium
+    classification: service-level
+    rationale: Preserve customer experience during peak trading windows.
+    tests:
+      - id: test-load-run
+        description: Execute Locust load test to validate latency thresholds.
+        tooling: k6
+      - id: test-auto-scaling
+        description: Verify auto-scaling triggers at 70% CPU utilisation.
+        tooling: terraform
+
+  - id: GOV-010
+    title: Ensure ownership metadata is present for every resource
+    priority: high
+    classification: governance
+    rationale: Support cost allocation and on-call routing.
+    tests:
+      - id: test-tag-enforcement
+        description: Confirm mandatory tags (Environment, CostCentre, Owner) exist on provisioned resources.
+        tooling: policy-as-code
+```
 
 ### 13_CODE_H: Requirements Validation Framework {#13_code_h}
 *Listing 13-H.*
@@ -1136,7 +1443,63 @@ YAML-based requirements definition enabling traceability from business requireme
 
 Python framework for automated validation of requirements against Infrastructure as Code implementations, including test execution and compliance coverage reporting.
 
-(See Chapter 13 for Python implementation of RequirementValidator class with test execution and compliance coverage calculation)
+```python
+# requirements/validator.py
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, Iterable, List
+
+import yaml
+
+
+@dataclass
+class Requirement:
+    id: str
+    title: str
+    classification: str
+    priority: str
+    tests: List[Dict[str, str]]
+
+
+class RequirementValidator:
+    def __init__(self, catalogue: Iterable[Requirement]):
+        self.catalogue = list(catalogue)
+
+    @classmethod
+    def from_file(cls, path: Path) -> 'RequirementValidator':
+        data = yaml.safe_load(path.read_text())
+        requirements = [Requirement(**item) for item in data['requirements']]
+        return cls(requirements)
+
+    def coverage_summary(self, executed_tests: Iterable[str]) -> Dict[str, float]:
+        executed = set(executed_tests)
+        total = len(self.catalogue)
+        covered = sum(1 for requirement in self.catalogue if self._is_covered(requirement, executed))
+        return {
+            'total_requirements': total,
+            'covered_requirements': covered,
+            'coverage_percentage': round((covered / total) * 100, 2) if total else 100.0,
+        }
+
+    def missing_tests(self, executed_tests: Iterable[str]) -> Dict[str, List[str]]:
+        executed = set(executed_tests)
+        missing: Dict[str, List[str]] = {}
+        for requirement in self.catalogue:
+            outstanding = [test['id'] for test in requirement.tests if test['id'] not in executed]
+            if outstanding:
+                missing[requirement.id] = outstanding
+        return missing
+
+    @staticmethod
+    def _is_covered(requirement: Requirement, executed: set[str]) -> bool:
+        return all(test['id'] in executed for test in requirement.tests)
+
+
+def load_validator(catalogue_path: str) -> RequirementValidator:
+    return RequirementValidator.from_file(Path(catalogue_path))
+```
 
 ### 13_CODE_I: Terratest for GDPR-Compliant Infrastructure {#13_code_i}
 *Listing 13-I.*
@@ -1144,7 +1507,47 @@ Python framework for automated validation of requirements against Infrastructure
 
 Comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.
 
-(See Chapter 13 for Go implementation demonstrating VPC flow logs validation, encryption verification, data residency checks and audit logging validation)
+```go
+// test/terraform_gdpr_test.go
+package test
+
+import (
+    "testing"
+
+    "github.com/gruntwork-io/terratest/modules/aws"
+    "github.com/gruntwork-io/terratest/modules/terraform"
+    "github.com/stretchr/testify/require"
+)
+
+func TestPlatformStackGDPRCompliance(t *testing.T) {
+    t.Parallel()
+
+    terraformOptions := &terraform.Options{
+        TerraformDir: "../infrastructure",
+        Vars: map[string]interface{}{
+            "environment": "staging",
+            "region":       "eu-west-1",
+        },
+    }
+
+    defer terraform.Destroy(t, terraformOptions)
+    terraform.InitAndApply(t, terraformOptions)
+
+    vpcID := terraform.Output(t, terraformOptions, "vpc_id")
+    require.NotEmpty(t, vpcID)
+
+    flowLogsEnabled := terraform.Output(t, terraformOptions, "vpc_flow_logs_enabled")
+    require.Equal(t, "true", flowLogsEnabled, "VPC flow logs must be enabled for GDPR auditing")
+
+    bucketID := terraform.Output(t, terraformOptions, "logging_bucket_id")
+    encryption := aws.GetS3BucketEncryption(t, "eu-west-1", bucketID)
+    require.Equal(t, "AES256", *encryption.ServerSideEncryptionConfiguration.Rules[0].ApplyServerSideEncryptionByDefault.SSEAlgorithm)
+
+    tags := aws.GetTagsForVpc(t, "eu-west-1", vpcID)
+    require.Equal(t, "true", tags["GdprCompliant"])
+    require.Equal(t, "EU", tags["DataResidency"])
+}
+```
 
 ### 13_CODE_J: Policy-as-Code Testing with OPA {#13_code_j}
 *Listing 13-J.*
@@ -1152,7 +1555,75 @@ Comprehensive Terratest example demonstrating testing of Terraform infrastructur
 
 Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.
 
-(See Chapter 13 for Rego policy tests covering S3 encryption requirements, EC2 security group configuration and GDPR data classification validation)
+```rego
+# policies/infrastructure/security.rego
+package infrastructure.security
+
+default allow = true
+
+deny[msg] {
+  input.resource.type == "aws_s3_bucket"
+  not input.resource.encryption.enabled
+  msg := sprintf("Bucket %s must enable server-side encryption", [input.resource.id])
+}
+
+deny[msg] {
+  input.resource.type == "aws_security_group_rule"
+  input.resource.protocol == "tcp"
+  input.resource.port == 22
+  input.resource.cidr == "0.0.0.0/0"
+  msg := sprintf("SSH rule %s exposes port 22 to the internet", [input.resource.id])
+}
+
+deny[msg] {
+  input.resource.type == "aws_rds_instance"
+  input.resource.tags["Classification"] == "confidential"
+  not input.resource.encryption.enabled
+  msg := sprintf("RDS instance %s storing confidential data must be encrypted", [input.resource.id])
+}
+
+# policies/infrastructure/security_test.rego
+package infrastructure
+
+test_enforces_bucket_encryption {
+  results := data.infrastructure.security.deny with input as {
+    "resource": {
+      "id": "audit-logs",
+      "type": "aws_s3_bucket",
+      "encryption": {"enabled": false}
+    }
+  }
+
+  results[0] == "Bucket audit-logs must enable server-side encryption"
+}
+
+test_blocks_internet_ssh {
+  results := data.infrastructure.security.deny with input as {
+    "resource": {
+      "id": "sg-rule-1",
+      "type": "aws_security_group_rule",
+      "protocol": "tcp",
+      "port": 22,
+      "cidr": "0.0.0.0/0"
+    }
+  }
+
+  results[0] == "SSH rule sg-rule-1 exposes port 22 to the internet"
+}
+
+test_requires_encrypted_confidential_databases {
+  results := data.infrastructure.security.deny with input as {
+    "resource": {
+      "id": "rds-analytics",
+      "type": "aws_rds_instance",
+      "tags": {"Classification": "confidential"},
+      "encryption": {"enabled": false}
+    }
+  }
+
+  results[0] == "RDS instance rds-analytics storing confidential data must be encrypted"
+}
+```
 
 ### 13_CODE_K: Kubernetes Infrastructure Test Suite {#13_code_k}
 *Listing 13-K.*
@@ -1160,7 +1631,58 @@ Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encr
 
 Comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption using ConfigMap-based test runners and Kubernetes Jobs.
 
-(See Chapter 13 for Kubernetes ConfigMap and Job manifests implementing infrastructure validation tests)
+```yaml
+# k8s/tests/infrastructure-validation.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: infrastructure-test-runner
+data:
+  tests.sh: |
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    echo "Validating namespace resource quotas..."
+    kubectl get resourcequota -A || {
+      echo "❌ Resource quotas missing"; exit 1;
+    }
+
+    echo "Validating pod security admission levels..."
+    kubectl get pods -A -o json | jq '.items[].metadata.labels["pod-security.kubernetes.io/enforce"]' |
+      grep -q "baseline" || {
+      echo "❌ Pods missing baseline security enforcement"; exit 1;
+    }
+
+    echo "Validating encrypted persistent volumes..."
+    kubectl get pv -o json | jq '.items[].metadata.annotations["encryption.alpha.kubernetes.io/encrypted"]' |
+      grep -q "true" || {
+      echo "❌ Persistent volumes must enable encryption"; exit 1;
+    }
+
+    echo "✅ Infrastructure validation passed"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: infrastructure-validation
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      serviceAccountName: platform-auditor
+      containers:
+        - name: validator
+          image: bitnami/kubectl:1.29
+          command: ["/bin/bash", "/scripts/tests.sh"]
+          volumeMounts:
+            - name: test-scripts
+              mountPath: /scripts
+      volumes:
+        - name: test-scripts
+          configMap:
+            name: infrastructure-test-runner
+            defaultMode: 0555
+```
 
 ### 13_CODE_L: Infrastructure Testing Pipeline {#13_code_l}
 *Listing 13-L.*
@@ -1168,7 +1690,104 @@ Comprehensive Kubernetes infrastructure test suite demonstrating validation of r
 
 Complete GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis (Terraform fmt, Checkov, OPA), unit testing (Terratest), integration testing with temporary environments, compliance validation (GDPR, encryption, regional restrictions), and performance testing with cost analysis.
 
-(See Chapter 13 for complete GitHub Actions YAML workflow covering all testing stages from static analysis through to production deployment validation)
+```yaml
+# .github/workflows/infrastructure-pipeline.yml
+name: Infrastructure Quality Gate
+
+on:
+  pull_request:
+    paths:
+      - 'infrastructure/**'
+      - 'modules/**'
+      - 'policies/**'
+      - 'test/**'
+
+jobs:
+  static-analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Terraform fmt
+        run: terraform fmt -check -recursive
+      - name: Terraform validate
+        run: terraform validate
+      - name: Checkov security scan
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: infrastructure
+
+  policy:
+    name: Policy-as-Code
+    runs-on: ubuntu-latest
+    needs: static-analysis
+    steps:
+      - uses: actions/checkout@v4
+      - name: Evaluate OPA policies
+        run: |
+          opa test policies/infrastructure -v
+
+  unit-tests:
+    name: Terratest Suite
+    runs-on: ubuntu-latest
+    needs: policy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Execute Terratest
+        run: go test ./test -timeout 45m
+
+  integration:
+    name: Ephemeral Environment Validation
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    env:
+      TF_IN_AUTOMATION: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Create workspace
+        run: terraform workspace new pr-${{ github.event.number }} || terraform workspace select pr-${{ github.event.number }}
+      - name: Terraform plan (ephemeral)
+        run: terraform plan -out=tfplan
+      - name: Terraform apply (ephemeral)
+        run: terraform apply -auto-approve tfplan
+      - name: Execute integration scripts
+        run: ./scripts/validate-integration.sh
+      - name: Terraform destroy
+        if: always()
+        run: terraform destroy -auto-approve
+
+  compliance:
+    name: Compliance Checks
+    runs-on: ubuntu-latest
+    needs: integration
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run requirements coverage
+        run: |
+          python3 -m pip install -r requirements.txt
+          python3 requirements/report.py --catalogue requirements/catalogue.yaml --results reports/test-results.json
+
+  performance:
+    name: Performance and Cost Review
+    runs-on: ubuntu-latest
+    needs: compliance
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute k6 performance tests
+        run: k6 run tests/performance/k6-load-test.js
+      - name: Analyse cost impact
+        run: python3 scripts/cost_analysis.py --plan outputs/terraform-plan.json
+
+  summary:
+    name: Quality Summary
+    runs-on: ubuntu-latest
+    needs: [performance]
+    steps:
+      - name: Collate results
+        run: ./scripts/summarise-quality-gates.sh
+```
 
 ---
 
