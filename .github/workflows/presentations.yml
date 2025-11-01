@@ -36,7 +36,6 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install -U pip
-          # Allow workflow to proceed even if requirements are empty/missing
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt || true
           fi
@@ -55,7 +54,6 @@ jobs:
           mkdir -p "${OUTPUT_DIR}"
 
           files=()
-          # Collect markdown while skipping archived material and images
           while IFS= read -r pattern; do
             for f in $pattern; do
               case "$f" in
@@ -73,10 +71,87 @@ jobs:
 
           printf '%s\n' "${files[@]}" > slide_sources.txt
           echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
-          echo "First 10 sources:"
-          head -n 10 slide_sources.txt || true
+          head -n 20 slide_sources.txt || true
 
-      - name: Build PPTX with Pandoc (no LLM)
+      - name: Validate defaults/template and common assets
+        id: validate
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          # Assume OK unless we detect a problem
+          echo "use_defaults=true" >> "$GITHUB_OUTPUT"
+          echo "use_template=true" >> "$GITHUB_OUTPUT"
+
+          # Check defaults file exists
+          if [ ! -f "${PANDOC_DEFAULTS}" ]; then
+            echo "::notice::No ${PANDOC_DEFAULTS}; will build without --defaults"
+            echo "use_defaults=false" >> "$GITHUB_OUTPUT"
+          else
+            # If defaults references a reference-doc, make sure it exists too
+            REF_PATH="$(awk -F: '/^[[:space:]]*reference-doc[[:space:]]*:/ {sub(/^[^:]*:[[:space:]]*/,""); gsub(/[[:space:]]+/," "); print $0; exit}' "${PANDOC_DEFAULTS}" || true)"
+            if [ -n "${REF_PATH}" ]; then
+              # Trim quotes
+              REF_PATH="${REF_PATH%\"}"; REF_PATH="${REF_PATH#\"}"
+              REF_PATH="${REF_PATH%\'}"; REF_PATH="${REF_PATH#\'}"
+              if [ ! -f "${REF_PATH}" ]; then
+                echo "::warning title=Missing reference-doc::${REF_PATH} referenced from ${PANDOC_DEFAULTS} does not exist."
+                echo "use_template=false" >> "$GITHUB_OUTPUT"
+              fi
+            fi
+          fi
+
+          # Sanity: list first 50 files in docs/images if present
+          if [ -d docs/images ]; then
+            find docs/images -maxdepth 1 -type f | head -n 50 || true
+          fi
+
+      - name: Build PPTX with Pandoc (no LLM) — primary attempt
+        id: build1
+        shell: bash
+        env:
+          PANDOC_ARGS: |
+            --from gfm
+            --to pptx
+            --resource-path=.:docs:docs/images
+            --embed-resources
+        run: |
+          set +e  # we will handle exit codes manually
+          mapfile -t src < slide_sources.txt
+
+          DEFAULTS_ARG=""
+          REF_ARG=""
+
+          if [ "${{ steps.validate.outputs.use_defaults }}" = "true" ]; then
+            DEFAULTS_ARG="--defaults=${PANDOC_DEFAULTS}"
+          fi
+          if [ "${{ steps.validate.outputs.use_template }}" = "true" ] && grep -q '^[[:space:]]*reference-doc:' "${PANDOC_DEFAULTS}" 2>/dev/null; then
+            # reference-doc is already in defaults; nothing to add
+            :
+          else
+            # Optional standalone template alongside repo if present
+            if [ -f templates/presentation_reference.pptx ]; then
+              REF_ARG="--reference-doc=templates/presentation_reference.pptx"
+            fi
+          fi
+
+          mkdir -p "${OUTPUT_DIR}"
+          pandoc ${DEFAULTS_ARG} ${PANDOC_ARGS} ${REF_ARG} \
+            --output "${OUTPUT_DIR}/${OUTPUT_FILE}" \
+            "${src[@]}"
+          rc=$?
+
+          echo "rc=${rc}" >> "$GITHUB_OUTPUT"
+          if [ $rc -eq 0 ]; then
+            echo "Primary pandoc conversion succeeded."
+            exit 0
+          else
+            echo "::warning title=Pandoc failed::Exit code ${rc} on primary attempt."
+            exit $rc
+          fi
+
+      - name: Build PPTX with Pandoc — fallback (no defaults/template)
+        if: ${{ failure() && steps.build1.outputs.rc == '97' }}
         shell: bash
         env:
           PANDOC_ARGS: |
@@ -87,29 +162,15 @@ jobs:
         run: |
           set -euo pipefail
           mapfile -t src < slide_sources.txt
-
-          # Use reference template if present
-          if [ -f templates/presentation_reference.pptx ]; then
-            REF="--reference-doc=templates/presentation_reference.pptx"
-          else
-            REF=""
-          fi
-
-          # Use shared Pandoc defaults if available
-          if [ -f "${PANDOC_DEFAULTS}" ]; then
-            DEFAULTS="--defaults=${PANDOC_DEFAULTS}"
-          else
-            DEFAULTS=""
-          fi
-
           mkdir -p "${OUTPUT_DIR}"
-          pandoc ${DEFAULTS} ${PANDOC_ARGS} ${REF} \
+          echo "::notice::Retrying without --defaults or --reference-doc (avoids Pandoc 97: missing data file)."
+          pandoc ${PANDOC_ARGS} \
             --output "${OUTPUT_DIR}/${OUTPUT_FILE}" \
             "${src[@]}"
-
           ls -lh "${OUTPUT_DIR}/${OUTPUT_FILE}"
 
       - name: Upload presentation artefact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: presentation
