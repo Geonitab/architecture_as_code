@@ -1,4 +1,4 @@
-# Testing Strategies for Infrastructure as Code
+# Testing Strategies for Infrastructure as Code {#testing-strategies}
 
 ![Test pyramid for architecture as code](images/diagram_13_test_pyramid.png)
 

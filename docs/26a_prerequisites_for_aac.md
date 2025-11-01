@@ -1,4 +1,4 @@
-# Prerequisites for Architecture as Code Adoption
+# Prerequisites for Architecture as Code Adoption {#prerequisites-for-aac}
 
 Successful Architecture as Code (AaC) programmes are never accidents. They emerge when an organisation’s cultural habits, technical capabilities, and economic discipline align with the philosophy set out in the [introduction](01_introduction.md) and the [fundamental principles](02_fundamental_principles.md). This chapter distils the readiness signals hinted at across earlier chapters—from the organisational narratives in [Chapters 17 to 20](17_organisational_change.md) to the delivery mechanics in [Chapters 5, 14, and 23](05_automation_devops_cicd.md) and the financial guardrails in [Chapter 15](15_cost_optimization.md). Readiness is not a gate to appease governance; it is evidence that the organisation can wield AaC responsibly.
 

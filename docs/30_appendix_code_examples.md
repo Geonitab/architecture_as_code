@@ -1,6 +1,6 @@
 \appendix
 
-# Code examples and technical architecture as code implementations
+# Code examples and technical architecture as code implementations {#appendix-code-examples}
 
 Appendix A collects every code example, configuration file, and technical implementation referenced throughout the book. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.
 

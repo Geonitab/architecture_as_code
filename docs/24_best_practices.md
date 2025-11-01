@@ -1,4 +1,4 @@
-# Modern Best Practices and Lessons Learned
+# Modern Best Practices and Lessons Learned {#best-practices}
 
 Architecture as Code practices evolve rapidly as teams balance platform stability, compliance expectations, and product agility. The most successful organisations pair disciplined engineering routines with human-centred ways of working, ensuring that automation never removes context or accountability. This chapter distils contemporary lessons learned from teams operating at scale across finance, public services, healthcare, media, and high-growth technology sectors. Every section emphasises globally applicable guidance while using British English terminology.
 

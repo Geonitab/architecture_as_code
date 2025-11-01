@@ -1,4 +1,4 @@
-# Version Control and Code Structure
+# Version Control and Code Structure {#version-control}
 
 Effective version control forms the backbone of Architecture as Code implementations. Applying the same practices as software development to infrastructure definitions delivers traceability, collaboration opportunities, and quality control.
 

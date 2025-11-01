@@ -1,4 +1,4 @@
-# References and Sources
+# References and Sources {#references}
 
 This section provides a comprehensive list of all sources and references cited throughout the book, compiled in alphabetical order for ease of reference. Each entry includes information about which chapters reference the source.
 

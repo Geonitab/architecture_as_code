@@ -2,7 +2,7 @@
 \part{Security and Governance}
 \setbookpart{Security and Governance}
 
-# Part C: Security and Governance
+# Part C: Security and Governance {#part-c-security}
 
 Building on the technical platform capabilities from Part B, we now address the critical concerns that protect organisations and ensure Architecture as Code practices align with regulatory expectations and internal policies.
 

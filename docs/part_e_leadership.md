@@ -2,7 +2,7 @@
 \part{Organisation and Leadership}
 \setbookpart{Organisation and Leadership}
 
-# Part E: Organisation and Leadership
+# Part E: Organisation and Leadership {#part-e-leadership}
 
 Technical excellence alone cannot sustain Architecture as Code transformation. This part examines the organisational structures, cultural shifts, and leadership practices that enable teams to thrive in code-based delivery environments.
 

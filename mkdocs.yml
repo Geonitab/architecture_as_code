@@ -72,6 +72,15 @@ theme:
 markdown_extensions:
   - toc
   - tables
+plugins:
+  - search
+  - redirects:
+      redirect_maps:
+        28_glossary.md: glossary.md
+        29_about_the_author.md: about_the_author.md
+        31_appendix_b_technical_architecture.md: appendix_b_technical_architecture.md
+        32_architecture_as_code_maturity_model.md: architecture_as_code_maturity_model.md
+        33_maturity_model_radar_tool.md: maturity_model_radar.html
 extra_css:
   - stylesheets/code-dark.css
 extra_javascript:

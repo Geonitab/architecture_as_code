@@ -1,4 +1,4 @@
-# Glossary {.unnumbered}
+# Glossary {.unnumbered} {#glossary}
 
 ![Architecture as Code Core Concepts Class Diagram](images/diagram_23_glossary_class.png)
 

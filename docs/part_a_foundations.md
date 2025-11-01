@@ -2,7 +2,7 @@
 \part{Foundations}
 \setbookpart{Foundations}
 
-# Part A: Foundations
+# Part A: Foundations {#part-a-foundations}
 
 Architecture as Code represents a fundamental shift in how organisations manage their technical landscapes. Before diving into specific practices and technologies, it is essential to establish a solid conceptual foundation that will guide the journey through this book.
 

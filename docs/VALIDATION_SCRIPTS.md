@@ -1,4 +1,4 @@
-# Content Validation Scripts
+# Content Validation Scripts {#validation-scripts}
 
 This document describes the automated validation scripts used to maintain content quality and consistency throughout the Architecture as Code book.
 

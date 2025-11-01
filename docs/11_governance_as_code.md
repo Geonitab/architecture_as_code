@@ -1,4 +1,4 @@
-# Governance as Code
+# Governance as Code {#governance-as-code}
 
 ## Overview
 
