@@ -19,7 +19,7 @@ This section provides a comprehensive list of all sources and references cited t
 ## Academic and Industry Publications
 
 **AaC Open Source Project.** "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)  
-*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 31: Technical Architecture](31_technical_architecture.md)*
+*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 31: Technical Architecture](appendix_d_technical_architecture.md)*
 
 **Architecture Decision Records Community.** "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
@@ -64,7 +64,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 14: Practical Implementation](14_practical_implementation.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **GitHub Open Source Community.** "Collaborative Software Development." Platform Documentation, 2024.
-*Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
+*Referenced in: [Appendix B: About the Author](appendix_b_about_the_authors.md)*
 
 **IEEE.** "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
@@ -73,10 +73,10 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)  
-*Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
+*Referenced in: [Appendix B: About the Author](appendix_b_about_the_authors.md)*
 
 **Kvadrat AB.** "Technology Consulting Excellence." Company Profile, 2024. Available at: [https://www.kvadrat.se/](https://www.kvadrat.se/)  
-*Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
+*Referenced in: [Appendix B: About the Author](appendix_b_about_the_authors.md)*
 
 **MarketsandMarkets.** "Infrastructure as Code Market Report." MarketsandMarkets, 2023.  
 *Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends.md)*
@@ -127,7 +127,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
 <a id="thoughtworks-architecture-as-code-the-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 29: About the Authors](29_about_the_authors.md)*
+*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Appendix B: About the Author](appendix_b_about_the_authors.md)*
 
 **ThoughtWorks.** "Architecture Decision Records." Technology Radar, 2023.  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*

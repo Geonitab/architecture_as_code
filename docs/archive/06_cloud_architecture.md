@@ -16,7 +16,7 @@ AWS dominates the global cloud market and has established a strong presence in S
 
 **AWS CloudFormation** is AWS's native Infrastructure as Code service and enables declarative definition of AWS resources through JSON or YAML templates. CloudFormation handles resource dependencies automatically and ensures infrastructure deployments are reproducible and recoverable:
 
-For a detailed CloudFormation template to implement VPC configuration for Swedish organisations with GDPR compliance, see [07_CODE_1: VPC Configuration for Swedish organisations](#07_CODE_1) in Appendix A.
+For a detailed CloudFormation template to implement VPC configuration for Swedish organisations with GDPR compliance, see [07_CODE_1: VPC Configuration for Swedish organisations](#07_CODE_1) in Appendix C.
 
 **AWS CDK (Cloud Development Kit)** revolutionizes Architecture as Code by enabling the definition of cloud resources with programming languages such as TypeScript, Python, Java, and C#. For Swedish development teams who already master these languages, it reduces the CDK learning curve and enables reuse of existing programming skills:
 

@@ -17,7 +17,7 @@ import pytest
 
 ISSUES_DIR = Path("Issues")
 CATALOGUE_FILE = ISSUES_DIR / "source_catalogue.json"
-REFERENCES_FILE = Path("docs/33_references.md")
+REFERENCES_FILE = Path("docs/appendix_f_references.md")
 
 
 @pytest.fixture(scope="module")
@@ -64,7 +64,7 @@ class TestIssueSourceCatalogue:
 
     def test_catalogue_titles_exist_in_references_chapter(self, source_catalogue):
         """Ensure every catalogue title is captured in the references chapter."""
-        assert REFERENCES_FILE.exists(), "Missing references file docs/33_references.md"
+        assert REFERENCES_FILE.exists(), "Missing references file docs/appendix_f_references.md"
         references_text = REFERENCES_FILE.read_text(encoding="utf-8")
 
         for source_id, entry in source_catalogue.items():

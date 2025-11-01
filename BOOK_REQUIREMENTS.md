@@ -10,7 +10,7 @@ release:
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 36  # Updated canonical manuscript count (including appendices)
+  total_chapters: 38  # Updated canonical manuscript count (including appendices)
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -157,41 +157,51 @@ book:
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 27"
-    - filename: "28_glossary.md"
-      title: "Glossary"
-      area: "Appendices"
-      required: true
-      label: "Glossary"
-    - filename: "29_about_the_authors.md"
-      title: "About the Author"
-      area: "Appendices"
-      required: true
-      label: "About the Author"
-    - filename: "30_appendix_code_examples.md"
-      title: "Code examples and technical architecture as code implementations"
+    - filename: "appendix_a_glossary.md"
+      title: "Appendix A: Glossary"
       area: "Appendices"
       required: true
       label: "Appendix A"
-    - filename: "31_technical_architecture.md"
-      title: "Appendix B: Technical Architecture for Book Production"
+    - filename: "appendix_b_about_the_authors.md"
+      title: "Appendix B: About the Author"
       area: "Appendices"
       required: true
       label: "Appendix B"
-    - filename: "32_finos_project_blueprint.md"
-      title: "FINOS Project Blueprint: Operationalising Architecture as Code"
+    - filename: "appendix_c_code_examples.md"
+      title: "Appendix C: Code examples and technical architecture as code implementations"
       area: "Appendices"
       required: true
       label: "Appendix C"
-    - filename: "architecture_as_code_model.md"
-      title: "Architecture as Code Maturity Model"
-      area: "Reference"
+    - filename: "appendix_d_technical_architecture.md"
+      title: "Appendix D: Technical Architecture for Book Production"
+      area: "Appendices"
       required: true
       label: "Appendix D"
-    - filename: "33_references.md"
-      title: "References and Sources"
+    - filename: "appendix_e_finos_project_blueprint.md"
+      title: "Appendix E: FINOS Project Blueprint – Operationalising Architecture as Code"
+      area: "Appendices"
+      required: true
+      label: "Appendix E"
+    - filename: "appendix_f_references.md"
+      title: "Appendix F: References and Sources"
       area: "Reference"
       required: true
-      label: "References"
+      label: "Appendix F"
+    - filename: "appendix_g_architecture_as_code_maturity_model.md"
+      title: "Appendix G: Architecture as Code Maturity Model"
+      area: "Reference"
+      required: true
+      label: "Appendix G"
+    - filename: "appendix_h_maturity_model_radar.md"
+      title: "Appendix H: Architecture as Code Maturity Radar Tool"
+      area: "Reference"
+      required: true
+      label: "Appendix H"
+    - filename: "appendix_i_control_mapping_matrix_template.md"
+      title: "Appendix I: Control Mapping Matrix Template"
+      area: "Reference"
+      required: true
+      label: "Appendix I"
   front_matter:
     - filename: "00_front_cover.md"
       title: "Architecture as Code"
@@ -240,11 +250,11 @@ book:
       description: "Introduces the appendices, technical reference architecture and citation material."
   special_chapters:
     glossary:
-      filename: "28_glossary.md"
+      filename: "appendix_a_glossary.md"
       requires_diagram: false
       requires_sources: false
     authors:
-      filename: "29_about_the_authors.md"
+      filename: "appendix_b_about_the_authors.md"
       requires_diagram: false
       requires_sources: false
     conclusion:
@@ -252,15 +262,31 @@ book:
       requires_diagram: false
       requires_sources: true
     appendix_code_examples:
-      filename: "30_appendix_code_examples.md"
+      filename: "appendix_c_code_examples.md"
       requires_diagram: false
       requires_sources: false
     technical_architecture:
-      filename: "31_technical_architecture.md"
+      filename: "appendix_d_technical_architecture.md"
       requires_diagram: true
       requires_sources: false
+    finos_blueprint:
+      filename: "appendix_e_finos_project_blueprint.md"
+      requires_diagram: false
+      requires_sources: true
     references:
-      filename: "33_references.md"
+      filename: "appendix_f_references.md"
+      requires_diagram: false
+      requires_sources: false
+    maturity_model:
+      filename: "appendix_g_architecture_as_code_maturity_model.md"
+      requires_diagram: false
+      requires_sources: true
+    maturity_radar:
+      filename: "appendix_h_maturity_model_radar.md"
+      requires_diagram: false
+      requires_sources: false
+    control_matrix:
+      filename: "appendix_i_control_mapping_matrix_template.md"
       requires_diagram: false
       requires_sources: false
     book_cover:
@@ -396,21 +422,23 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 26A | 26a_prerequisites_for_aac.md | Prerequisites for Architecture as Code Adoption | Future and Wrap-up | Yes |
 | Chapter 26B | 26b_aac_anti_patterns.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
 | Chapter 27 | 27_conclusion.md | Chapter 27 – Conclusion | Future and Wrap-up | Yes |
-| Glossary | 28_glossary.md | Glossary | Appendices | Yes |
-| About the Author | 29_about_the_authors.md | About the Author | Appendices | Yes |
-| Appendix A | 30_appendix_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
-| Appendix B | 31_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
-| Appendix C | 32_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
-| Appendix D | architecture_as_code_model.md | Architecture as Code Maturity Model | Reference | Yes |
-| References | 33_references.md | References and Sources | Reference | Yes |
+| Appendix A | appendix_a_glossary.md | Glossary | Appendices | Yes |
+| Appendix B | appendix_b_about_the_authors.md | About the Author | Appendices | Yes |
+| Appendix C | appendix_c_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
+| Appendix D | appendix_d_technical_architecture.md | Technical Architecture for Book Production | Appendices | Yes |
+| Appendix E | appendix_e_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
+| Appendix F | appendix_f_references.md | References and Sources | Reference | Yes |
+| Appendix G | appendix_g_architecture_as_code_maturity_model.md | Architecture as Code Maturity Model | Reference | Yes |
+| Appendix H | appendix_h_maturity_model_radar.md | Architecture as Code Maturity Radar Tool | Reference | Yes |
+| Appendix I | appendix_i_control_mapping_matrix_template.md | Control Mapping Matrix Template | Reference | Yes |
 
 ### Special Chapter Requirements
-- **Glossary (`28_glossary.md`)** – no diagrams or sources required.
-- **About the Author (`29_about_the_authors.md`)** – no diagrams or sources required.
+- **Glossary (`appendix_a_glossary.md`)** – no diagrams or sources required.
+- **About the Author (`appendix_b_about_the_authors.md`)** – no diagrams or sources required.
 - **Conclusion (`27_conclusion.md`)** – does not require diagrams but must cite sources.
-- **Appendix A (`30_appendix_code_examples.md`)** – diagrams and sources are optional.
-- **Technical Architecture (`31_technical_architecture.md`)** – diagrams are required; sources are optional.
-- **References (`33_references.md`)** – provide consolidated citations for the entire manuscript.
+- **Appendix C (`appendix_c_code_examples.md`)** – diagrams and sources are optional.
+- **Technical Architecture (`appendix_d_technical_architecture.md`)** – diagrams are required; sources are optional.
+- **References (`appendix_f_references.md`)** – provide consolidated citations for the entire manuscript.
 - **Book Cover (`BOOK_COVER_DESIGN.md`)** – no diagrams or sources required.
 - **EPUB Validation (`EPUB_VALIDATION.md`)** – no diagrams or sources required.
 

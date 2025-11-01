@@ -440,13 +440,15 @@ CHAPTER_FILES=(
     "26b_aac_anti_patterns.md"
     "27_conclusion.md"
     "part_h_appendices.md"
-    "28_glossary.md"
-    "29_about_the_authors.md"
-    "30_appendix_code_examples.md"
-    "31_technical_architecture.md"
-    "32_finos_project_blueprint.md"
-    "architecture_as_code_maturity_model.md"
-    "33_references.md"
+    "appendix_a_glossary.md"
+    "appendix_b_about_the_authors.md"
+    "appendix_c_code_examples.md"
+    "appendix_d_technical_architecture.md"
+    "appendix_e_finos_project_blueprint.md"
+    "appendix_f_references.md"
+    "appendix_g_architecture_as_code_maturity_model.md"
+    "appendix_h_maturity_model_radar.md"
+    "appendix_i_control_mapping_matrix_template.md"
 )
 
 # Build a sanitized list that excludes LaTeX-only part markers for non-LaTeX formats

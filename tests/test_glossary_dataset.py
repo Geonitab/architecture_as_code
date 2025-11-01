@@ -11,7 +11,7 @@ import re
 
 def _extract_glossary_terms():
     """Collect all glossary terms defined in the markdown chapter."""
-    doc_path = Path("docs/28_glossary.md")
+    doc_path = Path("docs/appendix_a_glossary.md")
     content = doc_path.read_text(encoding="utf-8")
 
     terms = set()
@@ -54,14 +54,14 @@ def test_glossary_terms_match_dataset():
     message_lines = []
     if missing_in_dataset:
         message_lines.append(
-            "Terms present in docs/28_glossary.md but missing from "
+            "Terms present in docs/appendix_a_glossary.md but missing from "
             "references/glossary_terms_relationships.json: "
             f"{missing_in_dataset}"
         )
     if missing_in_doc:
         message_lines.append(
             "Terms present in references/glossary_terms_relationships.json but "
-            "missing from docs/28_glossary.md: "
+            "missing from docs/appendix_a_glossary.md: "
             f"{missing_in_doc}"
         )
 

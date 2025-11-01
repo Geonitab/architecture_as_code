@@ -6,6 +6,14 @@ The Control Mapping Matrix provides a reusable structure for cataloguing how eac
 |------------|---------------|-----------------------|-----------|-------|--------------|------|-----------------------------|
 |            |               |                       |           |       |              |      |                             |
 
+## Template structure
+
+- **Control ID:** The canonical identifier used across policy repositories and automation scripts. Keep this stable so evidence pipelines can link to the correct row automatically.
+- **Control Title:** A concise description that makes the intent of the control obvious to risk partners and engineers alike.
+- **Assurance Artefact(s):** Links to generated evidence such as CI reports, IaC plan outputs, policy evaluation logs, or architecture diagrams.
+- **Framework Columns:** Populate each framework column with the specific clause, requirement, or control reference that the assurance artefact satisfies. Use consistent prefixes (for example `ISO-A.12.4`, `SOC-CC6.1`) so filtering and automation remain reliable.
+- **Other Frameworks / Internal:** Capture jurisdiction-specific regulations, contractual obligations, or organisation-defined standards to prevent parallel spreadsheets from emerging.
+
 ## How to use the template
 
 1. **Identify the control:** Reference the control identifier used in source control and policy repositories (for example `SEC-ID-001`).

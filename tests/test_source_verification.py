@@ -237,10 +237,10 @@ class TestSourceVerification:
         """Test that all chapters have sources or are explicitly exempted."""
         # Chapters that don't require sources
         exempt_chapters = {
-            '28_glossary.md',
-            '29_about_the_authors.md',
-            '30_appendix_code_examples.md',
-            '31_technical_architecture.md'
+            'appendix_a_glossary.md',
+            'appendix_b_about_the_authors.md',
+            'appendix_c_code_examples.md',
+            'appendix_d_technical_architecture.md'
         }
         
         verifier = SourceVerifier()

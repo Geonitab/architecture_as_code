@@ -13,15 +13,15 @@ class TestReferences:
     
     def test_references_file_exists(self):
         """Test that the references file exists."""
-        references_file = Path("docs/33_references.md")
-        assert references_file.exists(), "References file docs/33_references.md must exist"
+        references_file = Path("docs/appendix_f_references.md")
+        assert references_file.exists(), "References file docs/appendix_f_references.md must exist"
     
     def test_all_chapter_sources_in_references(self):
         """Test that all sources cited in chapters are in the references section."""
         # Read all chapter sources
         chapters_dir = Path("docs")
         chapter_files = sorted([f for f in chapters_dir.glob('[0-9]*.md') 
-                               if f.name not in ['33_references.md', '32_finos_project_blueprint.md']])
+                               if f.name not in ['appendix_f_references.md', 'appendix_e_finos_project_blueprint.md']])
         
         # Extract all sources from chapters
         all_chapter_sources = set()
@@ -53,7 +53,7 @@ class TestReferences:
                     sources_by_chapter[chapter_file.name] = sources
         
         # Read references file
-        references_file = Path("docs/33_references.md")
+        references_file = Path("docs/appendix_f_references.md")
         references_content = references_file.read_text(encoding='utf-8')
         
         # Extract all references from the references section
@@ -107,7 +107,7 @@ class TestReferences:
     
     def test_references_format_consistency(self):
         """Test that references follow a consistent format."""
-        references_file = Path("docs/33_references.md")
+        references_file = Path("docs/appendix_f_references.md")
         content = references_file.read_text(encoding='utf-8')
         
         # Check that references have proper structure

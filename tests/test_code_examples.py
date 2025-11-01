@@ -11,10 +11,10 @@ import pytest
 
 def test_code_example_anchor_consistency(docs_directory):
     """Verify that appendix code example headings expose stable anchors."""
-    appendix_path = docs_directory / "30_appendix_code_examples.md"
+    appendix_path = docs_directory / "appendix_c_code_examples.md"
 
     if not appendix_path.exists():
-        pytest.skip("Appendix A not available")
+        pytest.skip("Code Examples appendix not available")
 
     content = appendix_path.read_text(encoding="utf-8")
     heading_pattern = re.compile(r"^###\s+(?P<identifier>\d{2}_CODE_[A-Z0-9]+):.*$", re.MULTILINE)
@@ -57,11 +57,11 @@ def test_code_example_anchor_consistency(docs_directory):
         f"{missing_anchors}"
     )
 
-    link_pattern = re.compile(r"30_appendix_code_examples\.md#([^\s\)]+)")
+    link_pattern = re.compile(r"appendix_c_code_examples\.md#([^\s\)]+)")
     invalid_links = []
 
     for path in docs_directory.rglob("*.md"):
-        if path.name == "30_appendix_code_examples.md":
+        if path.name == "appendix_c_code_examples.md":
             continue
 
         text = path.read_text(encoding="utf-8")

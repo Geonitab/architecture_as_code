@@ -38,7 +38,7 @@ Architecture as Code operationalises the **assure once, comply many** principle 
 |------------|---------------|-----------------------|-----------|-------|--------------|------|----------|
 | SEC-ID-001 | Enforce MFA for human identities | `ci/policy-report.json`, `evidence/mfa-snapshot-YYYYMM.json` | A.5 / A.8 | CC6.1 / CC6.6 | IA-2(1), AC-2 | Article 32 | IAM-01 |
 
-In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](34_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
+In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](appendix_i_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
 
 ## Cloud-native and Serverless Compliance Controls
 

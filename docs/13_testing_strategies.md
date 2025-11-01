@@ -113,7 +113,7 @@ Integration with Vite build tooling means that the same development environment 
 
 ### Configuration of Vitest for Architecture as Code Projects
 
-*See Appendix A, Listing 13-A for the complete Vitest configuration example demonstrating test environment setup, coverage requirements and path resolution for Architecture as Code initiatives.*
+*See Appendix C, Listing 13-A for the complete Vitest configuration example demonstrating test environment setup, coverage requirements and path resolution for Architecture as Code initiatives.*
 
 The configuration should include:
 
@@ -135,7 +135,7 @@ The testing quadrant above illustrates the balance between implementation comple
 
 Configuration generators are TypeScript/JavaScript modules that programmatically create Terraform configurations with built-in validation and compliance rules. Testing these generators ensures they produce correct, compliant configurations consistently.
 
-*See Appendix A, Listing 13-B for the complete Terraform configuration generator implementation and Listing 13-C for the corresponding test suite demonstrating GDPR compliance validation, regional restrictions and required tagging policies.*
+*See Appendix C, Listing 13-B for the complete Terraform configuration generator implementation and Listing 13-C for the corresponding test suite demonstrating GDPR compliance validation, regional restrictions and required tagging policies.*
 
 Key testing patterns for configuration generators include:
 
@@ -148,7 +148,7 @@ Key testing patterns for configuration generators include:
 
 Infrastructure validators are utilities that check existing or planned infrastructure against organisational policies, security standards and compliance requirements before deployment.
 
-*See Appendix A, Listing 13-D for the infrastructure validator implementation and Listing 13-E for the comprehensive test suite covering tag validation, security group rules and data classification policies.*
+*See Appendix C, Listing 13-D for the infrastructure validator implementation and Listing 13-E for the comprehensive test suite covering tag validation, security group rules and data classification policies.*
 
 Critical validation test patterns include:
 
@@ -161,7 +161,7 @@ Critical validation test patterns include:
 
 Vitest integrates seamlessly into CI/CD pipelines for automated testing of infrastructure code. A typical GitHub Actions workflow runs tests on pull requests and pushes, generates coverage reports and provides feedback through automated comments.
 
-*See Appendix A, Listing 13-F for a complete GitHub Actions workflow demonstrating Vitest integration with coverage reporting and PR comments.*
+*See Appendix C, Listing 13-F for a complete GitHub Actions workflow demonstrating Vitest integration with coverage reporting and PR comments.*
 
 Add test scripts to `package.json`:
 
@@ -298,7 +298,7 @@ Requirement validation testing ensures infrastructure is not only technically co
 
 ### Automated Requirements Verification
 
-*See Appendix A, Listing 13-G for a complete requirements verification framework demonstrating how to define requirements in YAML format with associated test specifications, compliance mappings and priority levels.*
+*See Appendix C, Listing 13-G for a complete requirements verification framework demonstrating how to define requirements in YAML format with associated test specifications, compliance mappings and priority levels.*
 
 The requirements framework should include:
 
@@ -308,13 +308,13 @@ The requirements framework should include:
 - Compliance coverage reporting
 - Audit trail generation
 
-*See Appendix A, Listing 13-H for the Python implementation of the requirements validator that executes tests and generates compliance reports.*
+*See Appendix C, Listing 13-H for the Python implementation of the requirements validator that executes tests and generates compliance reports.*
 
 ## Practical Examples
 
 ### Terraform Unit Testing with Terratest
 
-*See Appendix A, Listing 13-I for a comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.*
+*See Appendix C, Listing 13-I for a comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.*
 
 The Terratest framework enables:
 
@@ -326,7 +326,7 @@ The Terratest framework enables:
 
 ### Policy-as-Code Testing with OPA
 
-*See Appendix A, Listing 13-J for Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.*
+*See Appendix C, Listing 13-J for Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.*
 
 OPA testing patterns include:
 
@@ -339,7 +339,7 @@ OPA testing patterns include:
 
 ### Kubernetes Infrastructure Testing
 
-*See Appendix A, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption.*
+*See Appendix C, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption.*
 
 Kubernetes infrastructure testing patterns include:
 
@@ -356,7 +356,7 @@ The test suite should run as a Kubernetes Job that validates cluster configurati
 
 ### CI/CD Pipeline for Infrastructure Testing
 
-*See Appendix A, Listing 13-L for a comprehensive GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis, unit testing, integration testing, compliance validation and performance testing stages.*
+*See Appendix C, Listing 13-L for a comprehensive GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis, unit testing, integration testing, compliance validation and performance testing stages.*
 
 A complete infrastructure testing pipeline should include:
 

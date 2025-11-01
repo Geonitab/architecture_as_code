@@ -32,8 +32,8 @@ class TestPresentationEnhancements:
         expected_missing = {
             '25_future_trends.md',
             '27_conclusion.md',
-            '30_appendix_code_examples.md',
-            '33_references.md',
+            'appendix_c_code_examples.md',
+            'appendix_f_references.md',
         }
 
         assert set(missing_chapters) == expected_missing, \

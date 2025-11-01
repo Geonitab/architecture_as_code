@@ -89,7 +89,7 @@ To implement cost-aware infrastructure with Terraform, a structured approach is 
 | Spot instance configuration | Cost-effective compute | Mixed instance types for optimal cost efficiency |
 | Auto Scaling groups | Balanced capacity management | Mixed instances policy balancing on-demand and spot instances |
 
-*For complete code examples with all configuration details, see [15_CODE_1: Cost-aware Terraform infrastructure configuration](#15_code_1) in Appendix A.*
+*For complete code examples with all configuration details, see [15_CODE_1: Cost-aware Terraform infrastructure configuration](#15_code_1) in Appendix C.*
 
 ### Kubernetes Cost Optimisation
 
@@ -102,7 +102,7 @@ Kubernetes environments require careful resource governance to avoid over-provis
 | Vertical Pod Autoscaler (VPA) | Automatic adjustment of resource requests based on actual usage | Right-sizes containers, eliminates over-provisioning |
 | Horizontal Pod Autoscaler (HPA) | Scale number of replicas based on CPU and memory utilisation | Matches capacity to demand, reduces idle resources |
 
-*For complete Kubernetes manifests, see [15_CODE_2: Kubernetes cost optimisation manifests](#15_code_2) in Appendix A.*
+*For complete Kubernetes manifests, see [15_CODE_2: Kubernetes cost optimisation manifests](#15_code_2) in Appendix C.*
 
 ### Cost Monitoring Automation
 
@@ -113,7 +113,7 @@ Automated cost monitoring and optimisation requires integration with cloud provi
 - Detect unused resources such as unattached EBS volumes, unused elastic IPs, and idle load balancers
 - Generate comprehensive cost optimisation plans with potential savings
 
-*For complete Python implementation of AWS cost optimiser, see [15_CODE_3: AWS cost monitoring and optimisation automation](#15_code_3) in Appendix A.*
+*For complete Python implementation of AWS cost optimiser, see [15_CODE_3: AWS cost monitoring and optimisation automation](#15_code_3) in Appendix C.*
 
 ## Summary
 

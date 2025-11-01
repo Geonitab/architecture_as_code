@@ -2,7 +2,7 @@
   {
     "id": "maturity-iac",
     "title": "Infrastructure as code (IaC)",
-    "mdPath": "/maturity_model_radar.html#iac",
+    "mdPath": "/appendix_h_maturity_model_radar.html#iac",
     "x": 0,
     "y": 0,
     "zoom": 1
@@ -10,7 +10,7 @@
   {
     "id": "maturity-iac--1",
     "title": "Are all infrastructure definitions stored in version control with peer review required prior to merge?",
-    "mdPath": "/maturity_model_radar.html#iac_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#iac_0",
     "x": 220,
     "y": 140,
     "zoom": 1,
@@ -19,7 +19,7 @@
   {
     "id": "maturity-iac--2",
     "title": "Is automated validation or linting run on every infrastructure code change before deployment?",
-    "mdPath": "/maturity_model_radar.html#iac_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#iac_1",
     "x": 380,
     "y": 140,
     "zoom": 1,
@@ -28,7 +28,7 @@
   {
     "id": "maturity-iac--3",
     "title": "Do environment deployments rely solely on declarative templates rather than manual changes?",
-    "mdPath": "/maturity_model_radar.html#iac_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#iac_2",
     "x": 220,
     "y": 260,
     "zoom": 1,
@@ -37,7 +37,7 @@
   {
     "id": "maturity-iac--4",
     "title": "Are infrastructure modules reusable and parameterised to promote consistency across environments?",
-    "mdPath": "/maturity_model_radar.html#iac_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#iac_3",
     "x": 380,
     "y": 260,
     "zoom": 1,
@@ -46,7 +46,7 @@
   {
     "id": "maturity-iac--5",
     "title": "Is drift detection automated and reviewed regularly to ensure infrastructure matches the declared state?",
-    "mdPath": "/maturity_model_radar.html#iac_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#iac_4",
     "x": 220,
     "y": 380,
     "zoom": 1,
@@ -55,7 +55,7 @@
   {
     "id": "maturity-aac",
     "title": "Architecture as code (AaC)",
-    "mdPath": "/maturity_model_radar.html#aac",
+    "mdPath": "/appendix_h_maturity_model_radar.html#aac",
     "x": 620,
     "y": 0,
     "zoom": 1
@@ -63,7 +63,7 @@
   {
     "id": "maturity-aac--1",
     "title": "Are architecture models generated from source-controlled code or domain-specific language definitions?",
-    "mdPath": "/maturity_model_radar.html#aac_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#aac_0",
     "x": 840,
     "y": 140,
     "zoom": 1,
@@ -72,7 +72,7 @@
   {
     "id": "maturity-aac--2",
     "title": "Do teams update architecture models as part of the same change when system behaviour evolves?",
-    "mdPath": "/maturity_model_radar.html#aac_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#aac_1",
     "x": 1000,
     "y": 140,
     "zoom": 1,
@@ -81,7 +81,7 @@
   {
     "id": "maturity-aac--3",
     "title": "Is traceability maintained between architecture components and the owning teams or repositories?",
-    "mdPath": "/maturity_model_radar.html#aac_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#aac_2",
     "x": 840,
     "y": 260,
     "zoom": 1,
@@ -90,7 +90,7 @@
   {
     "id": "maturity-aac--4",
     "title": "Are architecture decisions captured as code-backed records that undergo pull-request review?",
-    "mdPath": "/maturity_model_radar.html#aac_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#aac_3",
     "x": 1000,
     "y": 260,
     "zoom": 1,
@@ -99,7 +99,7 @@
   {
     "id": "maturity-aac--5",
     "title": "Is automated validation applied to architecture models to detect inconsistencies or missing relationships?",
-    "mdPath": "/maturity_model_radar.html#aac_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#aac_4",
     "x": 840,
     "y": 380,
     "zoom": 1,
@@ -108,7 +108,7 @@
   {
     "id": "maturity-containers",
     "title": "Containerisation & orchestration as code",
-    "mdPath": "/maturity_model_radar.html#containers",
+    "mdPath": "/appendix_h_maturity_model_radar.html#containers",
     "x": 1240,
     "y": 0,
     "zoom": 1
@@ -116,7 +116,7 @@
   {
     "id": "maturity-containers--1",
     "title": "Are container images and orchestration manifests generated from version-controlled definitions reviewed by the owning team?",
-    "mdPath": "/maturity_model_radar.html#containers_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#containers_0",
     "x": 1460,
     "y": 140,
     "zoom": 1,
@@ -125,7 +125,7 @@
   {
     "id": "maturity-containers--2",
     "title": "Do pipelines automatically build, scan and publish container images before release?",
-    "mdPath": "/maturity_model_radar.html#containers_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#containers_1",
     "x": 1620,
     "y": 140,
     "zoom": 1,
@@ -134,7 +134,7 @@
   {
     "id": "maturity-containers--3",
     "title": "Is cluster configuration managed declaratively with automated reconciliation to enforce desired state?",
-    "mdPath": "/maturity_model_radar.html#containers_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#containers_2",
     "x": 1460,
     "y": 260,
     "zoom": 1,
@@ -143,7 +143,7 @@
   {
     "id": "maturity-containers--4",
     "title": "Are rollout strategies (such as blue-green or canary) codified and repeatedly tested in non-production environments?",
-    "mdPath": "/maturity_model_radar.html#containers_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#containers_3",
     "x": 1620,
     "y": 260,
     "zoom": 1,
@@ -152,7 +152,7 @@
   {
     "id": "maturity-containers--5",
     "title": "Is runtime configuration (including secrets and policies) delivered through code rather than manual console changes?",
-    "mdPath": "/maturity_model_radar.html#containers_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#containers_4",
     "x": 1460,
     "y": 380,
     "zoom": 1,
@@ -161,7 +161,7 @@
   {
     "id": "maturity-policy",
     "title": "Policy as code (PaC) & Security as code",
-    "mdPath": "/maturity_model_radar.html#policy",
+    "mdPath": "/appendix_h_maturity_model_radar.html#policy",
     "x": 1860,
     "y": 0,
     "zoom": 1
@@ -169,7 +169,7 @@
   {
     "id": "maturity-policy--1",
     "title": "Are governance and security requirements expressed in machine-readable policies stored in version control?",
-    "mdPath": "/maturity_model_radar.html#policy_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#policy_0",
     "x": 2080,
     "y": 140,
     "zoom": 1,
@@ -178,7 +178,7 @@
   {
     "id": "maturity-policy--2",
     "title": "Do automated checks enforce policy compliance in CI/CD pipelines before promotion to higher environments?",
-    "mdPath": "/maturity_model_radar.html#policy_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#policy_1",
     "x": 2240,
     "y": 140,
     "zoom": 1,
@@ -187,7 +187,7 @@
   {
     "id": "maturity-policy--3",
     "title": "Is policy code peer reviewed alongside the application or infrastructure change it governs?",
-    "mdPath": "/maturity_model_radar.html#policy_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#policy_2",
     "x": 2080,
     "y": 260,
     "zoom": 1,
@@ -196,7 +196,7 @@
   {
     "id": "maturity-policy--4",
     "title": "Are policy violations surfaced through automated alerts with actionable remediation guidance?",
-    "mdPath": "/maturity_model_radar.html#policy_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#policy_3",
     "x": 2240,
     "y": 260,
     "zoom": 1,
@@ -205,7 +205,7 @@
   {
     "id": "maturity-policy--5",
     "title": "Is there a feedback loop that updates policies based on new threats, incidents or regulatory changes?",
-    "mdPath": "/maturity_model_radar.html#policy_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#policy_4",
     "x": 2080,
     "y": 380,
     "zoom": 1,
@@ -214,7 +214,7 @@
   {
     "id": "maturity-governance",
     "title": "Governance as code",
-    "mdPath": "/maturity_model_radar.html#governance",
+    "mdPath": "/appendix_h_maturity_model_radar.html#governance",
     "x": 0,
     "y": 460,
     "zoom": 1
@@ -222,7 +222,7 @@
   {
     "id": "maturity-governance--1",
     "title": "Are approval workflows, branch protections and role definitions codified and version controlled?",
-    "mdPath": "/maturity_model_radar.html#governance_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#governance_0",
     "x": 220,
     "y": 600,
     "zoom": 1,
@@ -231,7 +231,7 @@
   {
     "id": "maturity-governance--2",
     "title": "Do governance automations capture decision history and rationale as part of the workflow output?",
-    "mdPath": "/maturity_model_radar.html#governance_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#governance_1",
     "x": 380,
     "y": 600,
     "zoom": 1,
@@ -240,7 +240,7 @@
   {
     "id": "maturity-governance--3",
     "title": "Is governance code tested in lower environments before it is applied to production repositories?",
-    "mdPath": "/maturity_model_radar.html#governance_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#governance_2",
     "x": 220,
     "y": 720,
     "zoom": 1,
@@ -249,7 +249,7 @@
   {
     "id": "maturity-governance--4",
     "title": "Are exceptions to governance policies time-bound, tracked and reviewed automatically?",
-    "mdPath": "/maturity_model_radar.html#governance_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#governance_3",
     "x": 380,
     "y": 720,
     "zoom": 1,
@@ -258,7 +258,7 @@
   {
     "id": "maturity-governance--5",
     "title": "Is governance tooling accessible to non-developers through templates or guided interfaces sourced from the same codebase?",
-    "mdPath": "/maturity_model_radar.html#governance_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#governance_4",
     "x": 220,
     "y": 840,
     "zoom": 1,
@@ -267,7 +267,7 @@
   {
     "id": "maturity-compliance",
     "title": "Compliance as code",
-    "mdPath": "/maturity_model_radar.html#compliance",
+    "mdPath": "/appendix_h_maturity_model_radar.html#compliance",
     "x": 620,
     "y": 460,
     "zoom": 1
@@ -275,7 +275,7 @@
   {
     "id": "maturity-compliance--1",
     "title": "Are regulatory controls translated into executable checks that run continuously against live environments?",
-    "mdPath": "/maturity_model_radar.html#compliance_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#compliance_0",
     "x": 840,
     "y": 600,
     "zoom": 1,
@@ -284,7 +284,7 @@
   {
     "id": "maturity-compliance--2",
     "title": "Does the organisation maintain reusable compliance baselines or templates for common regulations?",
-    "mdPath": "/maturity_model_radar.html#compliance_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#compliance_1",
     "x": 1000,
     "y": 600,
     "zoom": 1,
@@ -293,7 +293,7 @@
   {
     "id": "maturity-compliance--3",
     "title": "Is evidence collection automated and stored alongside compliance code for audit readiness?",
-    "mdPath": "/maturity_model_radar.html#compliance_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#compliance_2",
     "x": 840,
     "y": 720,
     "zoom": 1,
@@ -302,7 +302,7 @@
   {
     "id": "maturity-compliance--4",
     "title": "Are compliance findings integrated with issue tracking to ensure timely remediation and verification?",
-    "mdPath": "/maturity_model_radar.html#compliance_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#compliance_3",
     "x": 1000,
     "y": 720,
     "zoom": 1,
@@ -311,7 +311,7 @@
   {
     "id": "maturity-compliance--5",
     "title": "Do compliance automations generate dashboards or reports that stakeholders review on a scheduled cadence?",
-    "mdPath": "/maturity_model_radar.html#compliance_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#compliance_4",
     "x": 840,
     "y": 840,
     "zoom": 1,
@@ -320,7 +320,7 @@
   {
     "id": "maturity-testing",
     "title": "Testing as code",
-    "mdPath": "/maturity_model_radar.html#testing",
+    "mdPath": "/appendix_h_maturity_model_radar.html#testing",
     "x": 1240,
     "y": 460,
     "zoom": 1
@@ -328,7 +328,7 @@
   {
     "id": "maturity-testing--1",
     "title": "Are automated tests defined for every codified artefact, including infrastructure, policies and architecture models?",
-    "mdPath": "/maturity_model_radar.html#testing_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#testing_0",
     "x": 1460,
     "y": 600,
     "zoom": 1,
@@ -337,7 +337,7 @@
   {
     "id": "maturity-testing--2",
     "title": "Do pipelines execute the full testing suite on every merge or release candidate?",
-    "mdPath": "/maturity_model_radar.html#testing_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#testing_1",
     "x": 1620,
     "y": 600,
     "zoom": 1,
@@ -346,7 +346,7 @@
   {
     "id": "maturity-testing--3",
     "title": "Is test coverage monitored and improved through targeted backlog items when gaps emerge?",
-    "mdPath": "/maturity_model_radar.html#testing_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#testing_2",
     "x": 1460,
     "y": 720,
     "zoom": 1,
@@ -355,7 +355,7 @@
   {
     "id": "maturity-testing--4",
     "title": "Are failure scenarios rehearsed with automated chaos or resilience tests to validate recovery procedures?",
-    "mdPath": "/maturity_model_radar.html#testing_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#testing_3",
     "x": 1620,
     "y": 720,
     "zoom": 1,
@@ -364,7 +364,7 @@
   {
     "id": "maturity-testing--5",
     "title": "Is test data managed as code with repeatable seeding and sanitisation routines?",
-    "mdPath": "/maturity_model_radar.html#testing_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#testing_4",
     "x": 1460,
     "y": 840,
     "zoom": 1,
@@ -373,7 +373,7 @@
   {
     "id": "maturity-documentation",
     "title": "Documentation as code",
-    "mdPath": "/maturity_model_radar.html#documentation",
+    "mdPath": "/appendix_h_maturity_model_radar.html#documentation",
     "x": 1860,
     "y": 460,
     "zoom": 1
@@ -381,7 +381,7 @@
   {
     "id": "maturity-documentation--1",
     "title": "Is documentation authored in version-controlled markup languages with enforced review workflows?",
-    "mdPath": "/maturity_model_radar.html#documentation_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#documentation_0",
     "x": 2080,
     "y": 600,
     "zoom": 1,
@@ -390,7 +390,7 @@
   {
     "id": "maturity-documentation--2",
     "title": "Do automated builds publish documentation outputs (web, PDF, diagrams) from the same source repository?",
-    "mdPath": "/maturity_model_radar.html#documentation_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#documentation_1",
     "x": 2240,
     "y": 600,
     "zoom": 1,
@@ -399,7 +399,7 @@
   {
     "id": "maturity-documentation--3",
     "title": "Are documentation updates included in the definition of done for relevant product or platform changes?",
-    "mdPath": "/maturity_model_radar.html#documentation_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#documentation_2",
     "x": 2080,
     "y": 720,
     "zoom": 1,
@@ -408,7 +408,7 @@
   {
     "id": "maturity-documentation--4",
     "title": "Is diagram generation automated from code or structured data to eliminate manual drawing efforts?",
-    "mdPath": "/maturity_model_radar.html#documentation_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#documentation_3",
     "x": 2240,
     "y": 720,
     "zoom": 1,
@@ -417,7 +417,7 @@
   {
     "id": "maturity-documentation--5",
     "title": "Are documentation quality checks (such as link validation and style linting) automated in CI/CD pipelines?",
-    "mdPath": "/maturity_model_radar.html#documentation_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#documentation_4",
     "x": 2080,
     "y": 840,
     "zoom": 1,
@@ -426,7 +426,7 @@
   {
     "id": "maturity-knowledge",
     "title": "Knowledge & culture as code",
-    "mdPath": "/maturity_model_radar.html#knowledge",
+    "mdPath": "/appendix_h_maturity_model_radar.html#knowledge",
     "x": 0,
     "y": 920,
     "zoom": 1
@@ -434,7 +434,7 @@
   {
     "id": "maturity-knowledge--1",
     "title": "Is organisational knowledge captured in structured repositories with clear ownership and contribution guidelines?",
-    "mdPath": "/maturity_model_radar.html#knowledge_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#knowledge_0",
     "x": 220,
     "y": 1060,
     "zoom": 1,
@@ -443,7 +443,7 @@
   {
     "id": "maturity-knowledge--2",
     "title": "Do onboarding and learning journeys exist as code-based playbooks or scripts executed during induction?",
-    "mdPath": "/maturity_model_radar.html#knowledge_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#knowledge_1",
     "x": 380,
     "y": 1060,
     "zoom": 1,
@@ -452,7 +452,7 @@
   {
     "id": "maturity-knowledge--3",
     "title": "Are retrospectives and continuous improvement actions tracked in version-controlled artefacts with follow-up automation?",
-    "mdPath": "/maturity_model_radar.html#knowledge_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#knowledge_2",
     "x": 220,
     "y": 1180,
     "zoom": 1,
@@ -461,7 +461,7 @@
   {
     "id": "maturity-knowledge--4",
     "title": "Is cultural guidance (values, rituals, ceremonies) embedded into tooling such as bots, templates or workflow prompts?",
-    "mdPath": "/maturity_model_radar.html#knowledge_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#knowledge_3",
     "x": 380,
     "y": 1180,
     "zoom": 1,
@@ -470,7 +470,7 @@
   {
     "id": "maturity-knowledge--5",
     "title": "Are knowledge repositories regularly reviewed through automated reminders to ensure relevance and accuracy?",
-    "mdPath": "/maturity_model_radar.html#knowledge_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#knowledge_4",
     "x": 220,
     "y": 1300,
     "zoom": 1,
@@ -479,7 +479,7 @@
   {
     "id": "maturity-management",
     "title": "Management as code",
-    "mdPath": "/maturity_model_radar.html#management",
+    "mdPath": "/appendix_h_maturity_model_radar.html#management",
     "x": 620,
     "y": 920,
     "zoom": 1
@@ -487,7 +487,7 @@
   {
     "id": "maturity-management--1",
     "title": "Are operating models, team topologies and responsibilities documented through code-driven templates?",
-    "mdPath": "/maturity_model_radar.html#management_0",
+    "mdPath": "/appendix_h_maturity_model_radar.html#management_0",
     "x": 840,
     "y": 1060,
     "zoom": 1,
@@ -496,7 +496,7 @@
   {
     "id": "maturity-management--2",
     "title": "Do leadership ceremonies (such as portfolio reviews) run from standardised agendas or dashboards generated from code?",
-    "mdPath": "/maturity_model_radar.html#management_1",
+    "mdPath": "/appendix_h_maturity_model_radar.html#management_1",
     "x": 1000,
     "y": 1060,
     "zoom": 1,
@@ -505,7 +505,7 @@
   {
     "id": "maturity-management--3",
     "title": "Are performance and delivery metrics collected automatically and surfaced through shared management dashboards?",
-    "mdPath": "/maturity_model_radar.html#management_2",
+    "mdPath": "/appendix_h_maturity_model_radar.html#management_2",
     "x": 840,
     "y": 1180,
     "zoom": 1,
@@ -514,7 +514,7 @@
   {
     "id": "maturity-management--4",
     "title": "Is resource allocation or staffing managed through codified workflows with automated approvals and audit trails?",
-    "mdPath": "/maturity_model_radar.html#management_3",
+    "mdPath": "/appendix_h_maturity_model_radar.html#management_3",
     "x": 1000,
     "y": 1180,
     "zoom": 1,
@@ -523,7 +523,7 @@
   {
     "id": "maturity-management--5",
     "title": "Are management playbooks iterated through pull requests with participation from the leadership community?",
-    "mdPath": "/maturity_model_radar.html#management_4",
+    "mdPath": "/appendix_h_maturity_model_radar.html#management_4",
     "x": 840,
     "y": 1300,
     "zoom": 1,

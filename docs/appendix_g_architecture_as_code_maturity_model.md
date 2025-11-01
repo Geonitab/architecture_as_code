@@ -11,7 +11,7 @@ It recognises that organisations progress from ad-hoc scripting and isolated dia
 
 ## Interactive radar assessment
 
-For an interactive experience that mirrors the full questionnaire and generates a downloadable radar chart, use the [Architecture as Code maturity radar tool](maturity_model_radar.html). The tool captures every checklist question from this appendix, visualises the current capabilities and produces prioritised improvement guidance that can be shared across teams.
+For an interactive experience that mirrors the full questionnaire and generates a downloadable radar chart, use the [Architecture as Code maturity radar tool](appendix_h_maturity_model_radar.html). The tool captures every checklist question from this appendix, visualises the current capabilities and produces prioritised improvement guidance that can be shared across teams.
 
 ## Staircase overview of maturity progression
 

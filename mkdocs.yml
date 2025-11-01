@@ -52,14 +52,15 @@ nav:
       - Conclusion: 27_conclusion.md
       - Team Structure and Competency Development for IaC: 18_team_structure.md
   - Appendices:
-      - Glossary: 28_glossary.md
-      - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
-      - Appendix B – Technical Architecture for Book Production: 31_technical_architecture.md
-      - Appendix C – FINOS Project Blueprint: 32_finos_project_blueprint.md
-      - Appendix D – Architecture as Code Maturity Model: architecture_as_code_maturity_model.md
-      - Appendix E – Architecture as Code Maturity Radar Tool: maturity_model_radar.html
-      - About the Author: 29_about_the_authors.md
-      - References and Sources: 33_references.md
+      - Appendix A – Glossary: appendix_a_glossary.md
+      - Appendix B – About the Author: appendix_b_about_the_authors.md
+      - Appendix C – Code Examples and Technical Implementations: appendix_c_code_examples.md
+      - Appendix D – Technical Architecture for Book Production: appendix_d_technical_architecture.md
+      - Appendix E – FINOS Project Blueprint: appendix_e_finos_project_blueprint.md
+      - Appendix F – References and Sources: appendix_f_references.md
+      - Appendix G – Architecture as Code Maturity Model: appendix_g_architecture_as_code_maturity_model.md
+      - Appendix H – Architecture as Code Maturity Radar Tool: appendix_h_maturity_model_radar.md
+      - Appendix I – Control Mapping Matrix Template: appendix_i_control_mapping_matrix_template.md
   - Prezi Deck: prezi/index.html
 docs_dir: docs
 use_directory_urls: true

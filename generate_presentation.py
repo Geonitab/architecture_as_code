@@ -667,7 +667,7 @@ def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
     prezi_dir = output_path.parent
     prezi_dir.mkdir(parents=True, exist_ok=True)
 
-    aspects = _load_maturity_aspects(Path("docs/maturity_model_radar.html"))
+    aspects = _load_maturity_aspects(Path("docs/appendix_h_maturity_model_radar.html"))
     if not aspects:
         output_path.write_text("[]", encoding="utf-8")
         return output_path, 0
@@ -683,7 +683,7 @@ def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
             {
                 "id": slide_id,
                 "title": aspect.get("name", "Maturity aspect"),
-                "mdPath": f"/maturity_model_radar.html#{aspect_key}",
+                "mdPath": f"/appendix_h_maturity_model_radar.html#{aspect_key}",
                 "x": x,
                 "y": y,
                 "zoom": 1,
@@ -696,7 +696,7 @@ def generate_prezi_slides(output_path=Path("docs/prezi/slides.json")):
                 {
                     "id": f"{slide_id}--{question_index}",
                     "title": question,
-                    "mdPath": f"/maturity_model_radar.html#{aspect_key}_{zero_based}",
+                    "mdPath": f"/appendix_h_maturity_model_radar.html#{aspect_key}_{zero_based}",
                     "x": x + 220 + ((question_index - 1) % 2) * 160,
                     "y": y + 140 + ((question_index - 1) // 2) * 120,
                     "zoom": 1,

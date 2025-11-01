@@ -43,7 +43,7 @@ Organisations running mission-critical platforms typically adopt three architect
 
 ### Advanced Rego patterns for regulated workloads
 
-Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:
+Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](appendix_c_code_examples.md#10_code_1) contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:
 
 ```rego
 package eu.enterprise.security
@@ -84,15 +84,15 @@ OSCAL is organised into complementary models:
 
 ### Crafting organisation-specific profiles
 
-Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate PSD2 requirements in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
+Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](appendix_c_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate PSD2 requirements in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
 
 ### Component definitions and reusable evidence
 
-Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry [10_CODE_3](30_appendix_code_examples.md#10_code_3) provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it straightforward to prove, for example, that storage encryption and logging are active.
+Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry [10_CODE_3](appendix_c_code_examples.md#10_code_3) provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it straightforward to prove, for example, that storage encryption and logging are active.
 
 ### Automating System Security Plans
 
-Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry [10_CODE_4](30_appendix_code_examples.md#10_code_4) includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.
+Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry [10_CODE_4](appendix_c_code_examples.md#10_code_4) includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.
 
 ## Assure once, comply many in policy design
 
@@ -142,4 +142,4 @@ Successful PaC programmes blend technology with process change. A staged roadmap
 - OPA and Rego provide a portable, testable way to encode complex EU and UK regulatory requirements.
 - OSCAL links policy enforcement with audit evidence, reducing the overhead of external assessments.
 - Diagrams in Figures 10.1 and 10.2 illustrate how policy guardrails span the delivery lifecycle and how capability building blocks interrelate.
-- Detailed Rego, OSCAL, and automation listings live in Appendix entries [10_CODE_1](30_appendix_code_examples.md#10_code_1) to [10_CODE_4](30_appendix_code_examples.md#10_code_4) for engineers who need implementation guidance.
+- Detailed Rego, OSCAL, and automation listings live in Appendix entries [10_CODE_1](appendix_c_code_examples.md#10_code_1) to [10_CODE_4](appendix_c_code_examples.md#10_code_4) for engineers who need implementation guidance.

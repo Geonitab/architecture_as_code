@@ -2,7 +2,7 @@
 
 # Code examples and technical architecture as code implementations
 
-Appendix A collects every code example, configuration file, and technical implementation referenced throughout the book. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.
+Appendix C collects every code example, configuration file, and technical implementation referenced throughout the book. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.
 
 *This appendix acts as a practical reference library for all technical demonstrations in the book. Each code listing is
 categorised and labelled with backlinks to the relevant chapter so the narrative and executable artefacts stay in sync.*
@@ -2402,7 +2402,7 @@ This appendix is updated regularly when new code examples are added to the book'
 
 The extended Terraform implementation that once appeared inline in Chapter 14 is preserved here so that readers can access the full listing without interrupting the main narrative. Cross-references in the chapter point to these appendix entries for quick navigation.
 
-> **Note:** Moving the code to Appendix A keeps Chapter 14 focused on adoption strategy while still providing the complete infrastructure example for practitioners.
+> **Note:** Moving the code to Appendix C keeps Chapter 14 focused on adoption strategy while still providing the complete infrastructure example for practitioners.
 
 ### 14_CODE_1: Terraform service blueprint for a web application landing zone {#14_code_1}
 *Referenced from Chapter 14: [Architecture as Code in Practice](14_practical_implementation.md)*

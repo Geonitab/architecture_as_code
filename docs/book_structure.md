@@ -115,13 +115,15 @@ Reference material, author information, technical enablers, and the Architecture
 
 | Chapter / Appendix | File | Title | Description |
 |--------------------|------|-------|-------------|
-| 28 | `28_glossary.md` | Glossary | Glossary and definitions |
-| 29 | `29_about_the_authors.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
-| 30 | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
-| Appendix B | `31_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
-| Appendix C | `32_finos_project_blueprint.md` | Appendix C: FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
-| Appendix D | `architecture_as_code_model.md` | Architecture as Code Maturity Model | Progressive maturity staircase linking “as code” disciplines |
-| References | `33_references.md` | References and Sources | Citations supporting the manuscript |
+| Appendix A | `appendix_a_glossary.md` | Glossary | Glossary and definitions |
+| Appendix B | `appendix_b_about_the_authors.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
+| Appendix C | `appendix_c_code_examples.md` | Code Examples and Technical Implementations | Technical architecture code implementations |
+| Appendix D | `appendix_d_technical_architecture.md` | Technical Architecture for Book Production | Technical book production infrastructure |
+| Appendix E | `appendix_e_finos_project_blueprint.md` | FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
+| Appendix F | `appendix_f_references.md` | References and Sources | Citations supporting the manuscript |
+| Appendix G | `appendix_g_architecture_as_code_maturity_model.md` | Architecture as Code Maturity Model | Progressive maturity staircase linking “as code” disciplines |
+| Appendix H | `appendix_h_maturity_model_radar.md` | Architecture as Code Maturity Radar Tool | Interactive assessment and radar visualisation |
+| Appendix I | `appendix_i_control_mapping_matrix_template.md` | Control Mapping Matrix Template | Evidence mapping for compliance and assurance |
 
 ---
 
@@ -192,7 +194,7 @@ This book is intended for:
 
 ## Authors and Contributors
 
-See `29_about_the_authors.md` for detailed information about the book's author and the expertise behind this comprehensive guide.
+See `appendix_b_about_the_authors.md` for detailed information about the book's author and the expertise behind this comprehensive guide.
 
 ---
 
