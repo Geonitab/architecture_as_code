@@ -1,29 +1,21 @@
-name: Presentations
+name: Presentations (no-LLM)
 
 on:
   workflow_call:
-    inputs:
-      model_provider:
-        description: "Which provider to use for generation (openai|anthropic)"
-        required: false
-        type: string
-        default: openai
 
 permissions:
-  contents: write
+  contents: read
 
 env:
-  PYTHONUNBUFFERED: "1"
-  PIP_DISABLE_PIP_VERSION_CHECK: "1"
-  # Orchestrator expects this file name later:
-  PRESENTATION_OUT: build/architecture_as_code_presentation.pptx
-  ARTIFACT_RETENTION_DAYS: 30
+  OUTPUT_DIR: releases/presentation
+  OUTPUT_FILE: architecture_as_code_presentation.pptx
+  PANDOC_DEFAULTS: docs/pandoc.yaml
 
 jobs:
-  generate:
+  build-presentation:
     name: Generate presentations
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -32,80 +24,94 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
-      - name: Cache pip
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f presentations/requirements.txt ]; then
-            pip install -r presentations/requirements.txt
-          elif [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          fi
-          # Ensure core libs for PPTX generation are present
-          python - <<'PY'
-          import pkgutil, sys
-          need = ["python-pptx","jinja2","pydantic"]
-          missing = [p for p in need if pkgutil.find_loader(p) is None]
-          if missing:
-            import subprocess
-            subprocess.check_call([sys.executable,"-m","pip","install",*missing])
-          PY
-
-      - name: Fail early if model secrets missing
-        run: |
-          missing=0
-          case "${{ inputs.model_provider }}" in
-            "openai")
-              [ -n "${OPENAI_API_KEY:-}" ] || { echo "::error::OPENAI_API_KEY is not set"; missing=1; }
-              ;;
-            "anthropic")
-              [ -n "${ANTHROPIC_API_KEY:-}" ] || { echo "::error::ANTHROPIC_API_KEY is not set"; missing=1; }
-              ;;
-            *)
-              echo "::warning::Unknown model_provider: ${{ inputs.model_provider }} (expected openai|anthropic)"
-              ;;
-          esac
-          if [ $missing -ne 0 ]; then
-            echo "Environment (redacted) for debugging:" 
-            env | sed -E 's/(API_KEY|TOKEN|SECRET)=.*/\1=***REDACTED***/' | sort
-            exit 1
-          fi
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-
-      - name: Run generator
-        id: run_generator
+      - name: Install system dependencies (Pandoc)
         run: |
           set -euo pipefail
-          mkdir -p "$(dirname "$PRESENTATION_OUT")"
-          # Adjust the script path/arguments to your repo layout:
-          # Example:
-          #   python tools/presentations/generate.py --out "$PRESENTATION_OUT"
-          #
-          # Fallback sample that fails clearly if the script isn’t found:
-          if [ -f tools/presentations/generate.py ]; then
-            python tools/presentations/generate.py --out "$PRESENTATION_OUT"
-          elif [ -f scripts/generate_presentation.py ]; then
-            python scripts/generate_presentation.py --out "$PRESENTATION_OUT"
-          else
-            echo "::error::No generator script found (looked for tools/presentations/generate.py and scripts/generate_presentation.py)."
-            exit 1
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Install Python dependencies (optional)
+        run: |
+          set -euo pipefail
+          python -m pip install -U pip
+          # Allow workflow to proceed even if requirements are empty/missing
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt || true
           fi
-          ls -lh "$PRESENTATION_OUT"
+
+      - name: Gather slide sources
+        id: gather
+        shell: bash
+        env:
+          FIND_PATTERNS: |
+            docs/*.md
+            docs/part_*.md
+            docs/*_*.md
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          mkdir -p "${OUTPUT_DIR}"
+
+          files=()
+          # Collect markdown while skipping archived material and images
+          while IFS= read -r pattern; do
+            for f in $pattern; do
+              case "$f" in
+                docs/archive/*) continue ;;
+                docs/images/*) continue ;;
+                *) files+=("$f") ;;
+              esac
+            done
+          done <<< "${FIND_PATTERNS}"
+
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "::warning::No markdown sources found – falling back to README.md"
+            files=("README.md")
+          fi
+
+          printf '%s\n' "${files[@]}" > slide_sources.txt
+          echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
+          echo "First 10 sources:"
+          head -n 10 slide_sources.txt || true
+
+      - name: Build PPTX with Pandoc (no LLM)
+        shell: bash
+        env:
+          PANDOC_ARGS: |
+            --from gfm
+            --to pptx
+            --resource-path=.:docs:docs/images
+            --embed-resources
+        run: |
+          set -euo pipefail
+          mapfile -t src < slide_sources.txt
+
+          # Use reference template if present
+          if [ -f templates/presentation_reference.pptx ]; then
+            REF="--reference-doc=templates/presentation_reference.pptx"
+          else
+            REF=""
+          fi
+
+          # Use shared Pandoc defaults if available
+          if [ -f "${PANDOC_DEFAULTS}" ]; then
+            DEFAULTS="--defaults=${PANDOC_DEFAULTS}"
+          else
+            DEFAULTS=""
+          fi
+
+          mkdir -p "${OUTPUT_DIR}"
+          pandoc ${DEFAULTS} ${PANDOC_ARGS} ${REF} \
+            --output "${OUTPUT_DIR}/${OUTPUT_FILE}" \
+            "${src[@]}"
+
+          ls -lh "${OUTPUT_DIR}/${OUTPUT_FILE}"
 
       - name: Upload presentation artefact
         uses: actions/upload-artifact@v4
         with:
-          name: architecture_as_code_presentation
-          path: ${{ env.PRESENTATION_OUT }}
-          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          name: presentation
+          path: ${{ env.OUTPUT_DIR }}/${{ env.OUTPUT_FILE }}
+          retention-days: 30
