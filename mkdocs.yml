@@ -55,8 +55,8 @@ nav:
       - Conclusion: 27_conclusion.md
   - Appendices:
       - Part H – Appendices and Reference Overview: part_h_appendices.md
-      - Glossary: 28_glossary.md
-      - About the Author: 29_about_the_authors.md
+      - Glossary: glossary.md
+      - About the Author: about_the_author.md
       - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
       - Appendix B – Technical Architecture for Book Production: appendix_b_technical_architecture.md
       - Appendix C – FINOS Project Blueprint: 32_finos_project_blueprint.md

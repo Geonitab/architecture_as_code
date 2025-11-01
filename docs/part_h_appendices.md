@@ -6,9 +6,9 @@
 
 The appendices provide essential reference material, technical implementations, and background context that complement the main narrative. These resources support practitioners as they apply Architecture as Code principles in their own environments.
 
-The [glossary](28_glossary.md) defines key terms and concepts used throughout this book, providing clarity on terminology that may have different interpretations across contexts. Understanding this shared vocabulary ensures clear communication when teams discuss Architecture as Code practices.
+The [glossary](glossary.md) defines key terms and concepts used throughout this book, providing clarity on terminology that may have different interpretations across contexts. Understanding this shared vocabulary ensures clear communication when teams discuss Architecture as Code practices.
 
-[About the Authors](29_about_the_authors.md) provides context for the expertise and perspectives that shaped this book, helping readers understand the experiences and principles that inform the guidance offered.
+[About the Author](about_the_author.md) provides context for the expertise and perspectives that shaped this book, helping readers understand the experiences and principles that inform the guidance offered.
 
 [Appendix A: Code Examples and Technical Implementations](30_appendix_code_examples.md) contains complete, working code samples referenced throughout the chapters. These implementations demonstrate the concepts in practical, executable form—from Infrastructure Platform Team blueprints to competency frameworks, configuration templates, and automation scripts.
 

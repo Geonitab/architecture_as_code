@@ -237,8 +237,8 @@ class TestSourceVerification:
         """Test that all chapters have sources or are explicitly exempted."""
         # Chapters that don't require sources
         exempt_chapters = {
-            '28_glossary.md',
-            '29_about_the_authors.md',
+            'glossary.md',
+            'about_the_author.md',
             '30_appendix_code_examples.md',
             'appendix_b_technical_architecture.md'
         }

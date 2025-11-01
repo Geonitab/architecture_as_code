@@ -30,7 +30,7 @@ Technical readiness further demands disciplined environment strategies—golden 
 Data quality expectations must be explicit so that telemetry, cost analytics, and resilience signals inform architectural decisions in the spirit of [Chapter 20](20_ai_agent_team.md).
 ## Knowledge and Information Management
 
-Readiness depends on how knowledge is curated. The distinction between documentation and architecture in [Chapter 22](22_documentation_vs_architecture.md) only holds when both are discoverable. Teams need version-controlled architecture decision records, reusable component catalogues, and glossaries such as [Chapter 28](28_glossary.md). These artefacts shorten onboarding time and anchor architectural intent in narrative context, echoing the measurement guidance from [Chapter 17](17_organisational_change.md). Telemetry and feedback channels—highlighted in [Chapters 20 and 24](20_ai_agent_team.md)—must already feed insights into design discussions; otherwise AaC becomes detached from operational reality.
+Readiness depends on how knowledge is curated. The distinction between documentation and architecture in [Chapter 22](22_documentation_vs_architecture.md) only holds when both are discoverable. Teams need version-controlled architecture decision records, reusable component catalogues, and glossaries such as the [Glossary](glossary.md). These artefacts shorten onboarding time and anchor architectural intent in narrative context, echoing the measurement guidance from [Chapter 17](17_organisational_change.md). Telemetry and feedback channels—highlighted in [Chapters 20 and 24](20_ai_agent_team.md)—must already feed insights into design discussions; otherwise AaC becomes detached from operational reality.
 
 ## Economic Preconditions
 

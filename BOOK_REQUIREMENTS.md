@@ -180,12 +180,12 @@ book:
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 27"
-    - filename: "28_glossary.md"
+    - filename: "glossary.md"
       title: "Glossary"
       area: "Appendices"
       required: true
       label: "Glossary"
-    - filename: "29_about_the_authors.md"
+    - filename: "about_the_author.md"
       title: "About the Author"
       area: "Appendices"
       required: true
@@ -263,11 +263,11 @@ book:
       description: "Introduces the appendices, technical reference architecture and citation material."
   special_chapters:
     glossary:
-      filename: "28_glossary.md"
+      filename: "glossary.md"
       requires_diagram: false
       requires_sources: false
     authors:
-      filename: "29_about_the_authors.md"
+      filename: "about_the_author.md"
       requires_diagram: false
       requires_sources: false
     conclusion:
@@ -428,8 +428,8 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 26A | 26a_prerequisites_for_aac.md | Prerequisites for Architecture as Code Adoption | Future and Wrap-up | Yes |
 | Chapter 26B | 26b_aac_anti_patterns.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
 | Chapter 27 | 27_conclusion.md | Chapter 27 – Conclusion | Future and Wrap-up | Yes |
-| Glossary | 28_glossary.md | Glossary | Appendices | Yes |
-| About the Author | 29_about_the_authors.md | About the Author | Appendices | Yes |
+| Glossary | glossary.md | Glossary | Appendices | Yes |
+| About the Author | about_the_author.md | About the Author | Appendices | Yes |
 | Appendix A | 30_appendix_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
 | Appendix B | appendix_b_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
 | Appendix C | 32_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
@@ -437,8 +437,8 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | References | 33_references.md | References and Sources | Reference | Yes |
 
 ### Special Chapter Requirements
-- **Glossary (`28_glossary.md`)** – no diagrams or sources required.
-- **About the Author (`29_about_the_authors.md`)** – no diagrams or sources required.
+- **Glossary (`glossary.md`)** – no diagrams or sources required.
+- **About the Author (`about_the_author.md`)** – no diagrams or sources required.
 - **Conclusion (`27_conclusion.md`)** – does not require diagrams but must cite sources.
 - **Appendix A (`30_appendix_code_examples.md`)** – diagrams and sources are optional.
 - **Technical Architecture (`appendix_b_technical_architecture.md`)** – diagrams are required; sources are optional.
