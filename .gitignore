@@ -74,8 +74,6 @@ docs/images/diagram_18_team_collaboration.png
 # Node.js package files (optional dependencies for diagram generation)
 package.json
 package-lock.json
-!presentations/prezi/package.json
-!presentations/prezi/package-lock.json
 
 # Puppeteer configuration (build-time only)
 puppeteer-config.json

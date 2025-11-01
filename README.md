@@ -75,6 +75,9 @@ python3 generate_book.py
 # Build PDF, EPUB, and DOCX (runs diagram export, copies cover art, and writes to releases/book/)
 docs/build_book.sh
 
+# Generate the PowerPoint deck (writes to releases/presentation/ by default with --release)
+python3 generate_presentation.py --release --create-pptx
+
 # Orchestrate every deliverable and create an optional release archive
 python3 build_all_orchestrator.py --zip
 
@@ -100,7 +103,7 @@ Continuous integration enforces successful builds through the `Build MkDocs Site
 
 ## 📦 Release Deliverables
 - **Book formats:** `architecture_as_code.pdf`, `.epub`, and `.docx` generated via Pandoc with the Eisvogel template.
-- **Presentation materials:** `architecture_as_code_presentation.pptx` containing chapter summaries and speaker notes.
+- **Presentation materials:** `architecture_as_code_presentation.pptx` containing chapter summaries and speaker notes. The Python automation is the canonical source for the slide deck, and the retired Prezi prototype has been archived to avoid divergence.
 - **Whitepapers:** HTML exports for each chapter designed for responsive reading.
 - **Static website:** Production-ready site mirroring the manuscript for web distribution.【F:releases/README.md】
 
