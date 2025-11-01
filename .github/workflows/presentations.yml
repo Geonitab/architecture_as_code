@@ -104,6 +104,7 @@ jobs:
 
           tmp_list="$(mktemp)"
           for f in "${src[@]}"; do
+            # Extract local image targets; ignore http(s)/data: URIs
             grep -hoE '!\[[^]]*\]\(([^)]+)\)' "$f" | sed -E 's/!\[[^]]*\]\(([^)]+)\)/\1/' | grep -vE '^(https?:|data:)' || true
           done | sort -u > "${tmp_list}"
 
@@ -115,16 +116,15 @@ jobs:
               missing=$((missing+1))
               mkdir -p "$(dirname "$p")"
               case "$p" in
-                *.png|*.PNG)
-                  printf '%s' 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==' | base64 -d > "$p"
+                *.svg|*.SVG)
+                  printf '%s\n' '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > "$p"
                   ;;
                 *.jpg|*.jpeg|*.JPG|*.JPEG)
-                  printf '%s' '/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAIBAQEBAQEBAQEBAQICAgICAgQDAgICAQM...AAAD/2Q==' | base64 -d > "$p"
-                  ;;
-                *.svg|*.SVG)
-                  printf '%s' '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > "$p"
+                  # 1x1 minimal JPEG (valid base64)
+                  printf '%s' '/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wCEAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCABQAFADASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgP/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCjQAAAAAAAAAAAAAAAAAAAAAAf/9k=' | base64 -d > "$p"
                   ;;
                 *)
+                  # Default: 1x1 transparent PNG (works for .png and other extensions)
                   printf '%s' 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==' | base64 -d > "$p"
                   ;;
               esac
@@ -153,7 +153,6 @@ jobs:
           if [ "${{ steps.validate.outputs.use_defaults }}" = "true" ]; then
             DEFAULTS_ARG="--defaults=${PANDOC_DEFAULTS}"
           fi
-
           if [ "${{ steps.validate.outputs.use_template }}" != "true" ]; then
             if [ -f templates/presentation_reference.pptx ]; then
               REF_ARG="--reference-doc=templates/presentation_reference.pptx"
