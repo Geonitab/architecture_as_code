@@ -7,6 +7,19 @@ release:
     - "diagram-refresh"
     - "governance-automation"
     - "ai-collaboration"
+toolchain:
+  python: "3.12.3"
+  pandoc: "3.1.9"
+  node: "20.11.1"
+  mermaid_cli: "10.7.0"
+python_dependencies:
+  PyYAML: "6.0.1"
+  packaging: "24.1"
+  python-pptx: "0.6.21"
+  translators: "6.0.1"
+  pytest: "8.2.1"
+node_dependencies:
+  "@mermaid-js/mermaid-cli": "10.7.0"
 book:
   title: "Architecture as Code"
   language: "english"

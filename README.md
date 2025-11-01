@@ -71,9 +71,13 @@ The canonical ordering of these chapters is published in `docs/book_index.json`,
 ## 🚀 Build and Automation Workflow
 
 ### Prerequisites
-- **Pandoc 3.1.9+** and **XeLaTeX** (`texlive-xetex`, `texlive-fonts-recommended`, `texlive-plain-generic`) for PDF output.
-- **Mermaid CLI (`@mermaid-js/mermaid-cli`)** for diagram generation (requires a Node.js runtime for installation).
-- **Python 3.12+** for content automation scripts.【F:docs/build_book.sh】【F:build_release.sh】
+Canonical version pins live in the YAML front matter of `BOOK_REQUIREMENTS.md`. Install the accompanying manifests before running any build scripts:
+
+- **Python 3.12.3** with the pip packages defined in `requirements.txt` (install via `python -m pip install -r requirements.txt`).
+- **Pandoc 3.1.9** and **XeLaTeX** (`texlive-xetex`, `texlive-fonts-recommended`, `texlive-plain-generic`).
+- **Node.js 20.11.1** with the pinned Mermaid CLI (`npm ci` installs `@mermaid-js/mermaid-cli@10.7.0` from `package-lock.json`).
+
+Use `make verify-env` to confirm the local toolchain matches the locked versions and manifests. The check ensures `BOOK_REQUIREMENTS.md`, `requirements.txt`, `package.json`, and `package-lock.json` remain in sync.【F:BOOK_REQUIREMENTS.md†L1-L16】【F:requirements.txt†L1-L5】【F:package.json†L1-L12】【F:scripts/verify_environment.py†L1-L204】
 
 ### Core Commands
 ```bash
