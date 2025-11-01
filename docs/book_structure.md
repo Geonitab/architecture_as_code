@@ -51,7 +51,7 @@ Reference material, author information, technical enablers, and the Architecture
 |---------|------|-------|-------------|
 | 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
 | 6 | `06_structurizr.md` | Structurizr: Architecture Modeling as Code | Using Structurizr DSL and C4 model for architecture visualisation and documentation |
-| 7 | `07_containerization.md` | Containerisation and Orchestration as Code | Container-based Architecture as Code |
+| 7 | `07_containerisation.md` | Containerisation and Orchestration as Code | Container-based Architecture as Code |
 
 ### Part 3: Security & Governance (Chapters 9-12)
 
@@ -83,11 +83,11 @@ Reference material, author information, technical enablers, and the Architecture
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 17 | `17_organizational_change.md` | Organisational Change and Team Structures | Organisational development for IaC |
+| 17 | `17_organisational_change.md` | Organisational Change and Team Structures | Organisational development for IaC |
 | 18 | `18_team_structure.md` | Team Structure and Competency Development for IaC | Team organisation and competency development |
 | 19 | `19_management_as_code.md` | Management as Code | Leadership practices encoded in collaborative tooling |
 | 20 | `20_ai_agent_team.md` | AI Agent Team for Architecture as Code Initiatives | Structure, roles, and processes for virtual agent teams |
-| 21 | `21_digitalization.md` | Digitalisation through Code-based Infrastructure | Digital transformation through IaC |
+| 21 | `21_digitalisation.md` | Digitalisation through Code-based Infrastructure | Digital transformation through IaC |
 
 ### Part 6: Experience & Best Practices (Chapters 22-24)
 
