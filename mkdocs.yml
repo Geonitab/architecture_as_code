@@ -21,8 +21,8 @@ nav:
       - Microservices Architecture as Code: 08_microservices.md
   - Part C – Security & Governance:
       - index: part_c_security_governance.md
-      - Security Fundamentals for Architecture as Code: 09a_security_fundamentals.md
-      - Advanced Security Patterns and Implementation: 09b_security_patterns.md
+      - Security Fundamentals for Architecture as Code: 09_security_fundamentals.md
+      - Advanced Security Patterns and Implementation: 09_security_patterns.md
       - Policy and Security as Code in Detail: 10_policy_and_security.md
       - Governance as Code: 11_governance_as_code.md
       - Compliance and Regulatory Adherence: 12_compliance.md
