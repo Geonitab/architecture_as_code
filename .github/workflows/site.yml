@@ -1,85 +1,89 @@
-name: Build & Deploy MkDocs Site
+name: Build Site (native)
 
 on:
-  workflow_call:
-    inputs:
-      mkdocs_config:
-        description: Path to mkdocs.yml
-        required: false
-        type: string
-        default: mkdocs.yml
-      python_version:
-        description: Python version to use
-        required: false
-        type: string
-        default: "3.12"
-    secrets: {} # inherited by caller
+  push:
+    branches: [ main ]
+    paths:
+      - "mkdocs.yml"
+      - "docs/**/*"
+      - "site/**/*"
+      - "package*.json"
+      - "pnpm-lock.yaml"
+      - "yarn.lock"
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: {}
+  workflow_call: {}
 
-# These are required for the Pages deployment when used as a called workflow
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "site-${{ github.ref }}"
-  cancel-in-progress: true
 
 env:
-  SITE_DIR: site
+  ARTIFACT_RETENTION_DAYS: 30
 
 jobs:
-  build-and-deploy:
-    name: Site / Build site
+  site:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python (for MkDocs)
+        if: ${{ hashFiles('mkdocs.yml') != '' }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python_version }}
+          python-version: "3.12"
+          cache: pip
 
-      - name: Install MkDocs (or repo requirements)
-        shell: bash
+      - name: Install MkDocs deps (if mkdocs.yml exists)
+        if: ${{ hashFiles('mkdocs.yml') != '' }}
         run: |
-          set -euo pipefail
-          if [[ -f requirements.txt ]]; then
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material mkdocs-material-extensions
+
+      - name: Set up Node (if package-lock/pnpm/yarn lock exists)
+        if: ${{ hashFiles('package-lock.json') != '' || hashFiles('pnpm-lock.yaml') != '' || hashFiles('yarn.lock') != '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: ${{ (hashFiles('pnpm-lock.yaml') != '' && 'pnpm') || (hashFiles('yarn.lock') != '' && 'yarn') || 'npm' }}
+
+      - name: Install Node deps (npm/pnpm/yarn)
+        if: ${{ hashFiles('package.json') != '' }}
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            npm i -g pnpm && pnpm i --frozen-lockfile
+          elif [ -f yarn.lock ]; then
+            npm i -g yarn && yarn install --frozen-lockfile
+          elif [ -f package-lock.json ]; then
+            npm ci --legacy-peer-deps
           else
-            python -m pip install --upgrade pip
-            # Common plugins – adjust if your mkdocs.yml requires others
-            pip install \
-              mkdocs \
-              mkdocs-material \
-              mkdocs-mermaid2-plugin \
-              mkdocs-awesome-pages-plugin
+            npm install
           fi
-          mkdocs --version
 
       - name: Build site
-        shell: bash
         run: |
-          set -euo pipefail
-          echo "Using config: ${{ inputs.mkdocs_config }}"
-          mkdocs build --clean --config-file "${{ inputs.mkdocs_config }}" --site-dir "${SITE_DIR}"
+          mkdir -p releases/website
+          if [ -f "mkdocs.yml" ]; then
+            echo "=== Building MkDocs site ==="
+            mkdocs build -d site
+            cp -r site/* releases/website/
+          elif [ -f "package.json" ]; then
+            echo "=== Building Node-based site ==="
+            npm run build || npm run build:prod
+            for d in dist build out .next; do
+              [ -d "$d" ] && cp -r "$d" releases/website/ || true
+            done
+          else
+            echo "No site tooling detected – skipping."
+          fi
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload site artefacts
+        uses: actions/upload-artifact@v4
         with:
-          path: ${{ env.SITE_DIR }}
-
-      - name: Deploy to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
-        # No inputs needed; deploys the uploaded artifact
-        # Requires pages:write and id-token:write permissions
-
-      - name: Publish URL
-        if: always()
-        run: |
-          echo "Deployed to: ${{ steps.deploy.outputs.page_url }}"
+          name: site
+          path: releases/website/
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
