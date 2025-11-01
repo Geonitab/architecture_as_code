@@ -16,7 +16,9 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) consolidates insights from across the manuscript into a staircase-style progression model. It summarises how infrastructure, governance, policy, testing, and cultural practices evolve together when organisations embrace Architecture as Code.
 
-The [Control Mapping Matrix Template](34_control_mapping_matrix_template.md) offers a reusable table structure that underpins the "assure once, comply many" approach. It documents how evidence artefacts map to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues so that teams maintain a single source of truth for compliance coverage.
+The [Templates and Tools appendix](appendix_templates_and_tools.md) aggregates reusable artefacts—such as the maturity model, governance accelerators, and automation starters—so that teams can adopt proven scaffolding rather than beginning from scratch.
+
+The [Control Mapping Matrix Template](appendix_c_control_mapping_matrix_template.md) offers a reusable table structure that underpins the "assure once, comply many" approach. It documents how evidence artefacts map to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues so that teams maintain a single source of truth for compliance coverage.
 
 **What you will find in this section:**
 
@@ -24,6 +26,7 @@ The [Control Mapping Matrix Template](34_control_mapping_matrix_template.md) off
 - Author background and expertise context
 - Complete code examples and technical implementations
 - Book production infrastructure as a working Architecture as Code example
+- Templates and tools that accelerate adoption and compliance workflows
 - A maturity model that ties the “as code” disciplines together with practical adoption guidance
 
 These references serve as quick-access resources to support the concepts explored in Parts A through G, ensuring that theoretical understanding translates into practical implementation.

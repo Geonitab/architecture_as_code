@@ -30,12 +30,15 @@ The book explores how to treat architecture and infrastructure work as software 
 Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`) that frames the narrative for the chapters that follow.【F:docs/part_a_foundations.md】
 
 ### Appendices and Extended Material
-- **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.
-- **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
-- **Chapter 29 – About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.
-- **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.
-- **Architecture as Code Maturity Model and Control Mapping Template:** Adoption guidance and compliance tooling that extend the main chapters.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/34_control_mapping_matrix_template.md】
+- **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.【F:docs/part_h_appendices.md】
+- **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.【F:docs/28_glossary.md】
+- **Chapter 29 – About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.【F:docs/29_about_the_authors.md】
+- **Appendix A – Code Examples and Technical Implementations:** Reference implementations and automation templates.【F:docs/30_appendix_code_examples.md】
+- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.【F:docs/31_technical_architecture.md】
+- **Appendix C – Templates and Tools Catalogue:** Curated set of maturity, governance, and automation artefacts, including the Control Mapping Matrix Template.【F:docs/appendix_templates_and_tools.md】
+- **Appendix D – FINOS Project Blueprint:** Operational blueprint demonstrating governance as code alignment.【F:docs/32_finos_project_blueprint.md】
+- **Appendix E – Architecture as Code Maturity Model:** Adoption guidance and progress measurement for “as code” disciplines.【F:docs/architecture_as_code_maturity_model.md】
+- **Control Mapping Matrix Template:** Reusable compliance tooling referenced throughout the appendices.【F:docs/appendix_c_control_mapping_matrix_template.md】
 
 ### Archived Drafts
 - **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/book_structure.md】【F:docs/archive/README.md】
