@@ -94,6 +94,8 @@ python3 build_all_orchestrator.py --zip
 
 ```
 
+> **Where is the build script?** The helper referenced above lives at `docs/build_book.sh`, is checked into source control, and ships with executable permissions so it can be invoked directly from the repository root (`./docs/build_book.sh`). The high-level orchestrator (`build_all_orchestrator.py`) calls the same entry point internally, keeping the README instructions and the automated workflow in lockstep.
+
 The GitHub Actions pipeline (`.github/workflows/unified-build-release.yml`) mirrors these commands to produce release artifacts whenever book content or automation scripts change.【F:build_release.sh】
 
 ### MkDocs Documentation Site
