@@ -1,5 +1,5 @@
 {
-  "total_units": 38,
+  "total_units": 41,
   "parts": [
     {
       "id": "part_a",
@@ -77,15 +77,14 @@
   ],
   "appendices": [
     {"identifier": "28", "file": "docs/28_glossary.md", "title": "Glossary"},
-    {"identifier": "29", "file": "docs/29_about_the_authors.md", "title": "About the Author"},
-    {"identifier": "30", "file": "docs/30_appendix_code_examples.md", "title": "Appendix A: Code Examples and Technical Implementations"},
-    {"identifier": "31", "file": "docs/31_technical_architecture.md", "title": "Appendix B: Technical Architecture for Book Production"},
-    {"identifier": "32", "file": "docs/32_finos_project_blueprint.md", "title": "Appendix C: FINOS Project Blueprint"},
-    {"identifier": "33", "file": "docs/33_references.md", "title": "References and Sources"},
-    {"identifier": "34", "file": "docs/34_control_mapping_matrix_template.md", "title": "Appendix D: Control Mapping Matrix Template"}
-  ],
-  "supplements": [
-    {"identifier": "maturity_model", "file": "docs/architecture_as_code_maturity_model.md", "title": "Architecture as Code Maturity Model"},
-    {"identifier": "maturity_radar", "file": "docs/maturity_model_radar.html", "title": "Architecture as Code Maturity Radar Tool"}
+    {"identifier": "29", "file": "docs/29_about_the_authors.md", "title": "About the Authors"},
+    {"identifier": "Appendix A", "file": "docs/30_appendix_code_examples.md", "title": "Appendix A: Code Examples and Technical Implementations"},
+    {"identifier": "Appendix B", "file": "docs/appendix_b_technical_architecture.md", "title": "Appendix B: Technical Architecture for Book Production"},
+    {"identifier": "Templates", "file": "docs/appendix_templates_and_tools.md", "title": "Templates and Tools Appendix"},
+    {"identifier": "Appendix C", "file": "docs/32_finos_project_blueprint.md", "title": "Appendix C: FINOS Project Blueprint"},
+    {"identifier": "Appendix D", "file": "docs/architecture_as_code_maturity_model.md", "title": "Appendix D: Architecture as Code Maturity Model"},
+    {"identifier": "Appendix E", "file": "docs/maturity_model_radar.html", "title": "Appendix E: Architecture as Code Maturity Radar Tool"},
+    {"identifier": "Appendix F", "file": "docs/appendix_f_control_mapping_matrix_template.md", "title": "Appendix F: Control Mapping Matrix Template"},
+    {"identifier": "References", "file": "docs/33_references.md", "title": "References and Sources"}
   ]
 }

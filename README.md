@@ -32,16 +32,17 @@ Each lettered part is introduced by a dedicated preface—`docs/part_a_foundatio
 Lettered companion chapters (9B, 9C, 15A, 15B, 26A, and 26B) provide deeper dives into security, assurance, and adoption topics without breaking the overall numbering scheme.【F:docs/book_structure.md】
 
 ### Appendices and Extended Material
-- **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.
-- **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
-- **Chapter 29 – About the Authors:** Profile of Gunnar Nordqvist and the expertise behind the book.
-- **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Appendix B – Technical Architecture for Book Production (Chapter 31):** Tooling overview for the publishing platform.
-- **Appendix C – FINOS Project Blueprint (Chapter 32):** Demonstration of governance-as-code alignment.
-- **Supplement – Architecture as Code Maturity Model:** Progressive adoption guidance and assessment structure.
-- **Supplement – Maturity Radar Tool:** Visual companion for the maturity model.
-- **Chapter 33 – References and Sources:** Comprehensive bibliography and citations.
-- **Chapter 34 – Control Mapping Matrix Template:** Compliance acceleration template that complements the maturity guidance.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/34_control_mapping_matrix_template.md】
+- **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.【F:docs/part_h_appendices.md】
+- **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.【F:docs/28_glossary.md】
+- **Chapter 29 – About the Authors:** Profile of Gunnar Nordqvist and the expertise behind the book.【F:docs/29_about_the_authors.md】
+- **Appendix A – Code Examples:** Reference implementations and automation templates.【F:docs/30_appendix_code_examples.md】
+- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.【F:docs/appendix_b_technical_architecture.md】
+- **Templates and Tools Appendix:** Launch pad for reusable models, radars, and governance templates.【F:docs/appendix_templates_and_tools.md】
+- **Appendix C – FINOS Project Blueprint:** Demonstration of governance-as-code alignment.【F:docs/32_finos_project_blueprint.md】
+- **Appendix D – Architecture as Code Maturity Model:** Progressive adoption guidance and assessment structure.【F:docs/architecture_as_code_maturity_model.md】
+- **Appendix E – Maturity Radar Tool:** Visual companion for the maturity model.【F:docs/maturity_model_radar.html】
+- **Appendix F – Control Mapping Matrix Template:** Compliance acceleration template that complements the maturity guidance.【F:docs/appendix_f_control_mapping_matrix_template.md】
+- **References and Sources:** Comprehensive bibliography and citations.【F:docs/33_references.md】
 
 ### Archived Drafts
 - Retired drafts, translations, and case studies are catalogued in `docs/archive/README.md`, which records when and why each manuscript left the live build. Current entries cover Swedish-language drafts of Chapters 6, 8, 20, 25, and 26, along with guidance for handling the former Chapter 32 on code-oriented organisations.【F:docs/book_structure.md】【F:docs/archive/README.md】
@@ -50,7 +51,7 @@ Lettered companion chapters (9B, 9C, 15A, 15B, 26A, and 26B) provide deeper dive
 
 ```
 docs/                     # Manuscript chapters, diagrams, and publishing assets
-├── *.md                  # Numbered chapters and appendices (01_introduction.md … 34_control_mapping_matrix_template.md)
+├── *.md                  # Numbered chapters and appendices (01_introduction.md … appendix_f_control_mapping_matrix_template.md)
 ├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
 ├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation

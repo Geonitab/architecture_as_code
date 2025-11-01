@@ -303,7 +303,7 @@ book:
       title: "Front Cover"
       description: "Cover artwork and release metadata maintained outside the numbered manuscript."
       required: true
-    - filename: "34_control_mapping_matrix_template.md"
+    - filename: "appendix_f_control_mapping_matrix_template.md"
       title: "Control Mapping Matrix Template"
       description: "Template reference maintained alongside the appendices for governance programmes."
       required: false
