@@ -35,22 +35,20 @@ jobs:
         run: |
           set -euo pipefail
           python -m pip install -U pip
-          # Ensure mkdocs CLI is present regardless of repo requirements
           python -m pip install "mkdocs>=1.5" "mkdocs-material>=9.5"
           mkdocs --version || true
 
+      # Avoid hashFiles(env.MKDOCS_CONFIG). Use a literal path instead.
       - name: Detect and install MkDocs plugins from mkdocs.yml
-        if: ${{ hashFiles(env.MKDOCS_CONFIG) != '' }}
+        if: ${{ hashFiles('mkdocs.yml') != '' }}
         run: |
           set -euo pipefail
           echo "Reading plugins from ${MKDOCS_CONFIG}…"
-          # Extract plugin identifiers from mkdocs.yml; tolerate both list and keyed forms.
           plugins=$(awk '
             BEGIN{inplugins=0}
             /^[[:space:]]*plugins:[[:space:]]*$/ {inplugins=1; next}
             inplugins==1 && /^[[:space:]]*[^[:space:]-]/ {inplugins=0}
             inplugins==1 {
-              # lines like "- search" or "- mermaid2" or "- git-revision-date-localized: {}"
               gsub(/^- /,""); gsub(/:.*/,"");
               if (length($0)>0) print $0
             }
@@ -64,12 +62,11 @@ jobs:
           echo "Plugins detected:"
           printf ' - %s\n' ${plugins}
 
-          # Map common plugin names to PyPI packages
           to_install=()
           for p in ${plugins}; do
             case "$p" in
-              search) ;; # built-in
-              material) ;; # theme already installed
+              search) ;;  # built-in
+              material) ;;  # theme already installed
               awesome-pages) to_install+=("mkdocs-awesome-pages-plugin");;
               git-revision-date) to_install+=("mkdocs-git-revision-date-plugin");;
               git-revision-date-localized) to_install+=("mkdocs-git-revision-date-localized-plugin");;
@@ -80,15 +77,10 @@ jobs:
               i18n|static-i18n) to_install+=("mkdocs-static-i18n");;
               rss) to_install+=("mkdocs-rss-plugin");;
               encryptcontent) to_install+=("mkdocs-encryptcontent-plugin");;
-              # Fallback: try "mkdocs-<name>-plugin"
-              *)
-                guess="mkdocs-${p}-plugin"
-                to_install+=("${guess}")
-                ;;
+              *) to_install+=("mkdocs-${p}-plugin");;
             esac
           done
 
-          # Install, but don’t fail the whole job if a guessed package doesn’t exist
           if [ ${#to_install[@]} -gt 0 ]; then
             echo "Installing plugin packages:"
             printf ' - %s\n' "${to_install[@]}"
@@ -101,7 +93,6 @@ jobs:
         run: |
           set -euo pipefail
           if [ -f "${REQUIREMENTS_FILE}" ]; then
-            echo "Installing ${REQUIREMENTS_FILE}…"
             python -m pip install -r "${REQUIREMENTS_FILE}"
           else
             echo "No ${REQUIREMENTS_FILE}; skipping."
@@ -112,13 +103,8 @@ jobs:
           set -euo pipefail
           echo "mkdocs version:"
           mkdocs --version || true
-          echo "Installed mkdocs* packages:"
-          python - << 'PY'
-import pkgutil, sys
-mods = sorted(m for m in pkgutil.iter_modules() if m.name.startswith('mkdocs'))
-for m in mods:
-    print(m.name)
-PY
+          echo "Installed mkdocs* packages (pip list | grep):"
+          python -m pip list | grep -E '^mkdocs' || true
 
       - name: Build MkDocs site (strict)
         env:
