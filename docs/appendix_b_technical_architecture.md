@@ -12,7 +12,7 @@ This appendix describes the technical infrastructure and workflow that produce, 
 
 ### File Organisation and Naming Conventions
 
-Book content is organised in 31 Markdown files within the `docs/` directory, where each file represents a chapter:
+Book content is organised in 31 Markdown files within the `docs/` directory, where each file represents a chapter or appendix:
 
 ```
 docs/
@@ -23,12 +23,12 @@ docs/
 ├── 21_digitalisation.md            # Digitalisation strategy
 ├── 23_soft_as_code_interplay.md    # Interplay between soft disciplines
 ├── 24_best_practices.md            # Methods and lessons learned
-├── 25_future_trends.md # Future trends and development
+├── 25_future_trends.md            # Future trends and development
 ├── 27_conclusion.md                # Conclusion
 ├── 28_glossary.md                  # Terminology
 ├── 29_about_the_authors.md         # Author information
-├── 30_appendix_code_examples.md    # Technical examples
-└── 31_technical_architecture.md    # This appendix
+├── 30_appendix_code_examples.md   # Technical examples
+└── appendix_b_technical_architecture.md  # This appendix
 ```
 
 ### Markdown Structure and Semantics

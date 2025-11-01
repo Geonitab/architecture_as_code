@@ -170,7 +170,7 @@ No additional Python packages are required - all scripts use only standard libra
 ## References
 
 - **Style Guide**: See book style guide for complete formatting rules
-- **CI/CD Documentation**: `docs/31_technical_architecture.md` - Appendix B
+- **CI/CD Documentation**: `docs/appendix_b_technical_architecture.md` - Appendix B
 - **Workflows**: `.github/workflows/` directory for all automation
 
 ---
