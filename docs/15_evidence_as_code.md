@@ -1,4 +1,4 @@
-# Evidence as Code
+# Evidence as Code {#chapter-evidence-as-code}
 
 Evidence is the currency that allows Architecture as Code to demonstrate trustworthiness at scale. Treating evidence as code means the artefacts that prove compliance are generated automatically, stored alongside the controls they verify, and versioned so that their provenance is unquestionable. Combined with the **assure once, comply many** principle, evidence captured for a single control objective can be replayed across multiple regulatory frameworks without repeating manual audits.
 
@@ -13,7 +13,7 @@ Key characteristics include:
 - **Reusability:** Metadata enumerates which frameworks and obligations each artefact supports, avoiding duplicate test runs.
 - **Version control:** Evidence follows the same branching strategy as code so historic attestations remain discoverable.
 
-## Pipeline example: exporting MFA evidence
+## Pipeline example: exporting MFA evidence {#pipeline-example-exporting-mfa-evidence}
 
 The following pseudo-CI configuration shows how one control—the enforcement of multi-factor authentication for human identities—produces artefacts that downstream reporting systems can reuse.
 
@@ -53,8 +53,8 @@ jobs:
           path: artefacts/
 ```
 
-The job produces a manifest and two evidence files. Governance and compliance teams consume the manifest to update the [Control Mapping Matrix](34_control_mapping_matrix_template.md) and to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues. Because the artefacts live alongside the policy, they can be retrieved for regulator-specific attestations without re-running the control unless configuration changes occur.
+The job produces a manifest and two evidence files. Governance and compliance teams consume the manifest to update the [Control Mapping Matrix][appendix-control-mapping-template] and to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues. Because the artefacts live alongside the policy, they can be retrieved for regulator-specific attestations without re-running the control unless configuration changes occur.
 
 ## Integrating with governance and blueprints
 
-[Governance as Code](11_governance_as_code.md) defines the approval guardrails that keep evidence pipelines authoritative. [Policy and Security as Code](10_policy_and_security.md) contributes reusable policy modules enriched with metadata for framework mapping. [Security Fundamentals](09_security_fundamentals.md) explains how control objectives become executable assertions, while [Compliance and Regulatory Adherence](12_compliance.md) uses the Control Mapping Matrix to translate artefacts into regulator-friendly language. Platform teams embed these patterns into their blueprints, as described in [FINOS Project Blueprint](32_finos_project_blueprint.md), so that every environment exports evidence in a predictable manner. Together these chapters show how evidence captured once can sustain multiple obligations throughout the delivery lifecycle.
+[Governance as Code][chapter-governance-as-code] defines the approval guardrails that keep evidence pipelines authoritative. [Policy and Security as Code][chapter-policy-and-security] contributes reusable policy modules enriched with metadata for framework mapping. [Security Fundamentals][chapter-security-fundamentals] explains how control objectives become executable assertions, while [Compliance and Regulatory Adherence][chapter-compliance] uses the Control Mapping Matrix to translate artefacts into regulator-friendly language. Platform teams embed these patterns into their blueprints, as described in [FINOS Project Blueprint][appendix-finos-blueprint], so that every environment exports evidence in a predictable manner. Together these chapters show how evidence captured once can sustain multiple obligations throughout the delivery lifecycle.

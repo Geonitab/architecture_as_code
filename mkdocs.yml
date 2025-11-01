@@ -69,6 +69,19 @@ docs_dir: docs
 use_directory_urls: true
 theme:
   name: readthedocs
+plugins:
+  - search
+  - autorefs
+  - redirects:
+      redirect_maps:
+        09_security_patterns.md: 09b_security_patterns.md
+        26_prerequisites_for_aac.md: 26a_prerequisites_for_aac.md
+        26_aac_anti_patterns.md: 26b_aac_anti_patterns.md
+        29_about_the_author.md: 29_about_the_authors.md
+        31_architecture_as_code_maturity_model.md: architecture_as_code_maturity_model.md
+        appendix_a_code_examples.md: 30_appendix_code_examples.md
+        appendix_b_technical_architecture.md: appendix_b_technical_architecture.md
+        finos_project_blueprint.md: 32_finos_project_blueprint.md
 markdown_extensions:
   - toc
   - tables

@@ -1,4 +1,4 @@
-# Architecture Decision Records (ADR)
+# Architecture Decision Records (ADR) {#chapter-architecture-decision-records}
 
 ![ADR Process Flow](images/diagram_04_adr_process.png)
 
@@ -230,7 +230,7 @@ Effective ADR implementation requires established review processes:
 
 ### Code-Managed Discovery, Review, and Supersession
 
-Treating ADRs as code artefacts keeps the decision log maintainable and auditable, aligning with ThoughtWorks' recommendation that architectural governance should be enforced through automated tooling rather than ad-hoc processes ([ThoughtWorks, 2024](33_references.md#thoughtworks-architecture-as-code-the-next-evolution)).
+Treating ADRs as code artefacts keeps the decision log maintainable and auditable, aligning with ThoughtWorks' recommendation that architectural governance should be enforced through automated tooling rather than ad-hoc processes ([ThoughtWorks, 2024][thoughtworks-architecture-as-code-the-next-evolution]).
 
 **Discovery**: Automation hooks can raise draft ADRs whenever a change request touches regulated components. A lightweight bot monitors backlog labels such as `architecture-impact` and scaffolds a new ADR file with templated metadata, prompting authors to capture context early. This ensures design gaps are surfaced before implementation begins and eliminates the scramble to document decisions retrospectively.
 
@@ -240,7 +240,7 @@ Treating ADRs as code artefacts keeps the decision log maintainable and auditabl
 
 ### Operationalising ADR Metadata
 
-ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on protecting Terraform state demonstrates how surfacing operational controls in dashboards prevents regressions; ADR metadata can mirror this practice by flagging decisions that enforce secure remote backends, rotation schedules, or access monitoring ([HashiCorp, 2024](33_references.md#hashicorp-securing-terraform-state)).
+ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on protecting Terraform state demonstrates how surfacing operational controls in dashboards prevents regressions; ADR metadata can mirror this practice by flagging decisions that enforce secure remote backends, rotation schedules, or access monitoring ([HashiCorp, 2024][hashicorp-securing-terraform-state]).
 
 Teams can emit a structured JSON index during CI that feeds architectural observability boards. Typical widgets include:
 
@@ -248,7 +248,7 @@ Teams can emit a structured JSON index during CI that feeds architectural observ
 - **Policy coverage heat map** – cross-references ADR tags against policy-as-code checks to reveal services that are missing mandated controls.
 - **Review debt tracker** – flags ADRs whose `next_review_due` date has passed, enabling leadership to prioritise refresh work in sprint planning.
 
-Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls ([ThoughtWorks, 2024](33_references.md#thoughtworks-architecture-as-code-the-next-evolution)).
+Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls ([ThoughtWorks, 2024][thoughtworks-architecture-as-code-the-next-evolution]).
 
 ### Preventing Knowledge Loss Through ADRs
 
@@ -258,7 +258,7 @@ ADRs preserve organisational memory when staff transitions occur. During onboard
 2. Inspect the automation evidence (pipeline runs, policy reports, state snapshots) referenced in the ADR to verify the decision is still active.
 3. Capture any deviations in a "drift" section and schedule a follow-up review if the ADR's `next_review_due` date has lapsed.
 
-This workflow prevented significant disruption during a recent platform rotation: when the outgoing lead departed, the incoming engineer replayed the ADR change log to rebuild the rationale for Terraform state hardening, reusing the monitoring queries and remediation playbooks recorded alongside the decision. By curating these artefacts in code, teams avoid losing critical context to private notes or unstructured chat history, fulfilling the maintainability objective of keeping architecture knowledge evergreen ([HashiCorp, 2024](33_references.md#hashicorp-securing-terraform-state)).
+This workflow prevented significant disruption during a recent platform rotation: when the outgoing lead departed, the incoming engineer replayed the ADR change log to rebuild the rationale for Terraform state hardening, reusing the monitoring queries and remediation playbooks recorded alongside the decision. By curating these artefacts in code, teams avoid losing critical context to private notes or unstructured chat history, fulfilling the maintainability objective of keeping architecture knowledge evergreen ([HashiCorp, 2024][hashicorp-securing-terraform-state]).
 
 ## Integration with Architecture as Code
 
@@ -303,7 +303,7 @@ Organisations that adopt ADR methodology position themselves for successful Arch
 
 ## Looking Ahead
 
-With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation](07_containerisation.md) shows how these principles extend to application deployment and orchestration.
+With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD][chapter-automation-devops-cicd] demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation][chapter-containerisation] shows how these principles extend to application deployment and orchestration.
 
 Sources:
 - Architecture Decision Records Community. "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)

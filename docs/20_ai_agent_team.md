@@ -1,4 +1,4 @@
-# AI Agent Team for the Architecture as Code Initiative
+# AI Agent Team for the Architecture as Code Initiative {#chapter-ai-agent-team}
 
 The Architecture as Code initiative relies on a cohesive ensemble of AI agents that operate as a digital delivery team. Each agent contributes specialised expertise while adhering to a single backlog, common documentation practices, and shared quality thresholds. This chapter reframes the agent ecosystem in British English, translating previous checklists into narrative guidance that emphasises collaboration, accountability, and the continual refinement of project artefacts.
 

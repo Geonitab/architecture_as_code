@@ -3,3 +3,6 @@ packaging==24.1
 python-pptx==0.6.21
 translators==6.0.1
 pytest==8.2.1
+mkdocs==1.5.3
+mkdocs-autorefs==0.5.0
+mkdocs-redirects==1.2.1

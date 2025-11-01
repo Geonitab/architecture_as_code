@@ -1,10 +1,10 @@
-# Compliance and Regulatory Adherence
+# Compliance and Regulatory Adherence {#chapter-compliance}
 
 ![Compliance automation lifecycle overview](images/diagram_12_compliance.png)
 
 *Figure 12.1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.*
 
-Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security](10_policy_and_security.md), codified policies allow teams to translate legislation into repeatable controls. Figure 12.1 shows how that translation depends on a closed feedback loop. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
+Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in [Chapter 10 on policy and security][chapter-policy-and-security], codified policies allow teams to translate legislation into repeatable controls. Figure 12.1 shows how that translation depends on a closed feedback loop. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.
 
 | Compliance Loop Stage | Activities | Outputs | Feedback Mechanism |
 |----------------------|------------|---------|-------------------|
@@ -38,7 +38,7 @@ Architecture as Code operationalises the **assure once, comply many** principle 
 |------------|---------------|-----------------------|-----------|-------|--------------|------|----------|
 | SEC-ID-001 | Enforce MFA for human identities | `ci/policy-report.json`, `evidence/mfa-snapshot-YYYYMM.json` | A.5 / A.8 | CC6.1 / CC6.6 | IA-2(1), AC-2 | Article 32 | IAM-01 |
 
-In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](34_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
+In this worked example, the [policy module][assure-once-comply-many-in-policy-design] and [evidence pipeline][pipeline-example-exporting-mfa-evidence] each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix][appendix-control-mapping-template] so organisations can adapt it to their own environments.
 
 ## Cloud-native and Serverless Compliance Controls
 
@@ -255,13 +255,13 @@ resource "aws_vpc" "quantum_safe" {
 
 Modern Architecture as Code practices provide the repeatability, transparency, and evidence management demanded by regulators. By codifying policies, enforcing controls through pipelines, and maintaining auditable feedback loops, organisations can demonstrate compliance without sacrificing delivery speed. AI-enabled tooling, serverless platforms, and rigorous traceability matrices ensure that every control remains testable and observable.
 
-Looking forward, teams should monitor speculative developments such as quantum resilience and sustainability reporting so that compliance strategies evolve alongside the regulatory landscape. Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles of Architecture as Code](02_fundamental_principles.md) to [Organisational Change and Team Structures](17_organisational_change.md)—Architecture as Code adapts to meet emerging challenges and opportunities while keeping compliance at the forefront.
+Looking forward, teams should monitor speculative developments such as quantum resilience and sustainability reporting so that compliance strategies evolve alongside the regulatory landscape. Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles of Architecture as Code][chapter-fundamental-principles] to [Organisational Change and Team Structures][chapter-organisational-change]—Architecture as Code adapts to meet emerging challenges and opportunities while keeping compliance at the forefront.
 
 ## Moving from Governance to Delivery
 
 With security controls, policy frameworks, and compliance mechanisms established, we now shift focus to the practical delivery and operational excellence that sustain Architecture as Code implementations. Having established the "what" and "why" of governance, the next part explores the "how" of reliable, repeatable delivery.
 
-Part D examines the testing strategies, implementation patterns, cost optimisation techniques, and migration approaches that organisations need to deliver Architecture as Code successfully. [Chapter 13 on Testing Strategies](13_testing_strategies.md) builds on the security and compliance frameworks we've established, showing how to validate that infrastructure meets both functional and regulatory requirements. The subsequent chapters demonstrate practical implementation, financial optimisation, and migration strategies that bring together all the elements covered so far.
+Part D examines the testing strategies, implementation patterns, cost optimisation techniques, and migration approaches that organisations need to deliver Architecture as Code successfully. [Chapter 13 on Testing Strategies][chapter-testing-strategies] builds on the security and compliance frameworks we've established, showing how to validate that infrastructure meets both functional and regulatory requirements. The subsequent chapters demonstrate practical implementation, financial optimisation, and migration strategies that bring together all the elements covered so far.
 
 ## Sources and References
 

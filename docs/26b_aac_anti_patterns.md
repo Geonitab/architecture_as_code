@@ -1,4 +1,4 @@
-# Anti-Patterns in Architecture as Code Programmes
+# Anti-Patterns in Architecture as Code Programmes {#chapter-anti-patterns}
 
 Architecture as Code (AaC) brings architectural thinking into the same disciplined delivery processes that teams already apply to software and infrastructure. Yet programmes stumble when they copy technical mechanisms without reshaping culture, governance, and operational rhythms. This chapter examines recurring anti-patterns that undermine AaC initiatives across diverse industries. Understanding these pitfalls helps organisations design early safeguards, establish healthier feedback loops, and sustain momentum beyond the initial transformation campaign.
 

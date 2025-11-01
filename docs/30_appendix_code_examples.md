@@ -1,6 +1,6 @@
 \appendix
 
-# Code examples and technical architecture as code implementations
+# Code examples and technical architecture as code implementations {#appendix-code-examples}
 
 Appendix A collects every code example, configuration file, and technical implementation referenced throughout the book. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.
 
@@ -27,7 +27,7 @@ Each example has a unique identifier in the format `[chapter]_CODE_[NUMBER]` for
 This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations.
 
 ### 05_CODE_1: GDPR-compliant CI/CD pipeline for organisations {#05_code_1}
-*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code][chapter-automation-devops-cicd]*
 
 ```yaml
 # .github/workflows/architecture-as-code-pipeline.yml
@@ -108,7 +108,7 @@ jobs:
 ```
 
 ### 05_CODE_2: Jenkins pipeline for organisations with GDPR compliance {#05_code_2}
-*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code][chapter-automation-devops-cicd]*
 
 ```yaml
 # jenkins/architecture-as-code-pipeline.groovy
@@ -416,7 +416,7 @@ pipeline {
 ```
 
 ### 05_CODE_3: Terratest for VPC implementation {#05_code_3}
-*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code][chapter-automation-devops-cicd]*
 
 ```go
 // test/a_vpc_test.go
@@ -686,7 +686,7 @@ Architecture as Code principles in this area emphasise resilient AWS foundations
 This section contains CloudFormation templates for AWS infrastructure adapted for organisations.
 
 ### 07_CODE_1: VPC Setup for organisations with GDPR compliance {#07_code_1}
-*Referenced from Chapter 7: [Containerisation and Orchestration as Code](07_containerisation.md)*
+*Referenced from Chapter 7: [Containerisation and Orchestration as Code][chapter-containerisation]*
 
 ```yaml
 # cloudformation/a-org-vpc.yaml
@@ -749,7 +749,7 @@ This section contains Python scripts and other automation tooling for Architectu
 ### 22_CODE_1: Comprehensive test framework for Architecture as Code {#22_code_1}
 
 Architecture as Code principles within this area emphasise automated validation and transparent feedback.
-*Referenced from chapter 24: [Architecture as Code Best Practices and Lessons Learned](24_best_practices.md)*
+*Referenced from chapter 24: [Architecture as Code Best Practices and Lessons Learned][chapter-best-practices]*
 
 ```python
 # testing/comprehensive_iac_testing.py
@@ -846,7 +846,7 @@ class ComprehensiveIaCTesting:
 This section contains configuration files for different tools and services.
 
 ### 22_CODE_2: Governance policy configuration for organisations {#22_code_2}
-*Referenced from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
+*Referenced from chapter 24: [Best Practices and Lessons Learned][chapter-best-practices]*
 
 ```yaml
 # governance/a-governance-policy.yaml
@@ -943,7 +943,7 @@ This section contains comprehensive code examples referenced in Chapter 13: Test
 
 ### 13_CODE_A: Vitest Configuration for Infrastructure as Code Projects {#13_code_a}
 *Listing 13-A.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 This configuration demonstrates how to set up Vitest for testing infrastructure configuration generators and validation scripts.
 
@@ -1003,7 +1003,7 @@ export default defineConfig({
 
 ### 13_CODE_B: Terraform Configuration Generator {#13_code_b}
 *Listing 13-B.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 This TypeScript module demonstrates programmatic generation of Terraform configurations with built-in compliance validation.
 
@@ -1092,7 +1092,7 @@ export class TerraformConfigGenerator {
 
 ### 13_CODE_C: Terraform Configuration Generator Tests {#13_code_c}
 *Listing 13-C.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Comprehensive Vitest suite validating the Terraform configuration generator with GDPR compliance checks and regional restrictions.
 
@@ -1141,7 +1141,7 @@ describe('TerraformConfigGenerator', () => {
 
 ### 13_CODE_D: Infrastructure Validator {#13_code_d}
 *Listing 13-D.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Infrastructure validation module that checks resources against organisational policies and compliance requirements.
 
@@ -1235,7 +1235,7 @@ export class InfrastructureValidator {
 
 ### 13_CODE_E: Infrastructure Validator Tests {#13_code_e}
 *Listing 13-E.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Comprehensive Vitest suite covering mandatory tags, security groups and compliance policies.
 
@@ -1332,7 +1332,7 @@ describe('InfrastructureValidator', () => {
 
 ### 13_CODE_F: GitHub Actions Vitest Workflow {#13_code_f}
 *Listing 13-F.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 CI/CD workflow demonstrating automated infrastructure code testing with coverage reporting.
 
@@ -1388,7 +1388,7 @@ jobs:
 
 ### 13_CODE_G: Requirements as Code Definition {#13_code_g}
 *Listing 13-G.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 YAML-based requirements definition enabling traceability from business requirements to automated tests with compliance mapping and test specifications.
 
@@ -1439,7 +1439,7 @@ requirements:
 
 ### 13_CODE_H: Requirements Validation Framework {#13_code_h}
 *Listing 13-H.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Python framework for automated validation of requirements against Infrastructure as Code implementations, including test execution and compliance coverage reporting.
 
@@ -1503,7 +1503,7 @@ def load_validator(catalogue_path: str) -> RequirementValidator:
 
 ### 13_CODE_I: Terratest for GDPR-Compliant Infrastructure {#13_code_i}
 *Listing 13-I.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.
 
@@ -1551,7 +1551,7 @@ func TestPlatformStackGDPRCompliance(t *testing.T) {
 
 ### 13_CODE_J: Policy-as-Code Testing with OPA {#13_code_j}
 *Listing 13-J.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.
 
@@ -1627,7 +1627,7 @@ test_requires_encrypted_confidential_databases {
 
 ### 13_CODE_K: Kubernetes Infrastructure Test Suite {#13_code_k}
 *Listing 13-K.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption using ConfigMap-based test runners and Kubernetes Jobs.
 
@@ -1686,7 +1686,7 @@ spec:
 
 ### 13_CODE_L: Infrastructure Testing Pipeline {#13_code_l}
 *Listing 13-L.*
-*Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
+*Referenced from Chapter 13: [Testing Strategies][chapter-testing-strategies]*
 
 Complete GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis (Terraform fmt, Checkov, OPA), unit testing (Terratest), integration testing with temporary environments, compliance validation (GDPR, encryption, regional restrictions), and performance testing with cost analysis.
 
@@ -1795,7 +1795,7 @@ jobs:
 
 ### 17_CODE_1: Infrastructure Platform Team Blueprint {#17_code_1}
 *Listing 17-A.*
-*Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
+*Referenced from chapter 17: [Organisational Change and Team Structures][chapter-organisational-change]*
 
 ```yaml
 # organisational_design/devops_team_structure.yaml
@@ -1909,7 +1909,7 @@ team_structure:
 
 ### 17_CODE_2: IaC Competency Framework Utilities {#17_code_2}
 *Listing 17-B.*
-*Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
+*Referenced from chapter 17: [Organisational Change and Team Structures][chapter-organisational-change]*
 
 ```python
 # training/iac_competency_framework.py
@@ -2232,7 +2232,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
 
 ### 17_CODE_3: DevOps Performance Measurement Framework {#17_code_3}
 *Listing 17-C.*
-*Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
+*Referenced from chapter 17: [Organisational Change and Team Structures][chapter-organisational-change]*
 
 ```yaml
 # metrics/devops_performance_metrics.yaml
@@ -2405,7 +2405,7 @@ The extended Terraform implementation that once appeared inline in Chapter 14 is
 > **Note:** Moving the code to Appendix A keeps Chapter 14 focused on adoption strategy while still providing the complete infrastructure example for practitioners.
 
 ### 14_CODE_1: Terraform service blueprint for a web application landing zone {#14_code_1}
-*Referenced from Chapter 14: [Architecture as Code in Practice](14_practical_implementation.md)*
+*Referenced from Chapter 14: [Architecture as Code in Practice][chapter-practical-implementation]*
 
 This module demonstrates how to package core networking, load balancing, and tagging conventions into a reusable Terraform component that platform teams can roll out across environments.
 
@@ -2513,7 +2513,7 @@ output "vpc_id" {
 ```
 
 ### 14_CODE_2: Environment configuration and observability controls {#14_code_2}
-*Referenced from Chapter 14: [Architecture as Code in Practice](14_practical_implementation.md)*
+*Referenced from Chapter 14: [Architecture as Code in Practice][chapter-practical-implementation]*
 
 This configuration layers production-specific settings on top of the shared module, including state management, default tags, and a CloudWatch dashboard for operational oversight.
 
@@ -2596,7 +2596,7 @@ resource "aws_cloudwatch_dashboard" "main" {
 ```
 
 ### 14_CODE_3: Continuous delivery workflow for infrastructure changes {#14_code_3}
-*Referenced from Chapter 14: [Architecture as Code in Practice](14_practical_implementation.md)*
+*Referenced from Chapter 14: [Architecture as Code in Practice][chapter-practical-implementation]*
 
 The workflow below demonstrates how to plan and apply Terraform changes across development, staging, and production with explicit separation between planning and deployment stages.
 
@@ -2724,7 +2724,7 @@ jobs:
 ## Chapter 15 Reference Implementations
 
 ### 15_CODE_1: Cost-aware Terraform infrastructure configuration {#15_code_1}
-*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management][chapter-cost-optimisation]*
 
 This Terraform configuration demonstrates comprehensive cost optimisation strategies including budget management, cost allocation tagging, and intelligent instance type selection using spot instances and mixed instance policies.
 
@@ -2858,7 +2858,7 @@ resource "aws_autoscaling_group" "cost_aware" {
 ```
 
 ### 15_CODE_2: Kubernetes cost optimisation manifests {#15_code_2}
-*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management][chapter-cost-optimisation]*
 
 These Kubernetes manifests demonstrate resource quotas, limit ranges, and autoscaling configurations for cost-effective workload management.
 
@@ -2966,7 +2966,7 @@ spec:
 ```
 
 ### 15_CODE_3: AWS cost monitoring and optimisation automation {#15_code_3}
-*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management][chapter-cost-optimisation]*
 
 This Python script provides automated cost analysis, rightsizing recommendations, and identification of unused resources for AWS environments.
 
@@ -3214,7 +3214,7 @@ resource "aws_launch_template" "spot_optimized" {{
 ## Security and compliance {#security-compliance}
 
 ### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
-*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
+*Referenced from Chapter 10: [Policy and Security as Code in Detail][chapter-policy-and-security].* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
 
 ```rego
 package se.enterprise.security

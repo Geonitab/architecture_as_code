@@ -1,4 +1,4 @@
-# Cost Optimisation and Resource Management
+# Cost Optimisation and Resource Management {#chapter-cost-optimisation}
 
 ![Cost optimisation workflow](images/diagram_16_chapter15.png)
 

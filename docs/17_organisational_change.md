@@ -1,4 +1,4 @@
-# Organisational Change and Team Structures
+# Organisational Change and Team Structures {#chapter-organisational-change}
 
 Architecture as Code changes far more than tooling. It demands new habits, shared language, and organisational structures that keep pace with automated delivery. Sustainable transformation happens when leadership connects strategy, culture, and day-to-day practices so teams can deliver infrastructure with the same confidence and cadence as software.
 
@@ -43,7 +43,7 @@ Effective transformation programmes address multiple dimensions simultaneously r
 
 *The third mind map demonstrates how stakeholder co-design, narrative communication, and evidence-based iteration drive successful transformation.*
 
-To keep autonomy and alignment in harmony, organisations pair clear decision rights with shared standards. Appendix A, [listing 17-A](30_appendix_code_examples.md#17_code_1), provides a full Infrastructure Platform Team blueprint that product leaders can tailor to their own context. The blueprint illustrates how responsibilities, skills, and success measures join up in a single operating model.
+To keep autonomy and alignment in harmony, organisations pair clear decision rights with shared standards. Appendix A, [listing 17-A][17_code_1], provides a full Infrastructure Platform Team blueprint that product leaders can tailor to their own context. The blueprint illustrates how responsibilities, skills, and success measures join up in a single operating model.
 
 ## Developing Capability and Confidence
 
@@ -51,7 +51,7 @@ Initial enthusiasm for Architecture as Code often fades once teams confront the 
 
 Micro-learning sessions, role-based mentoring, and internal communities give practitioners the confidence to automate sensitive workloads responsibly. Rather than relying solely on formal training courses, leading organisations embed learning into daily workflows through pair programming, code reviews, and lunch-and-learn sessions that lower the barrier to knowledge sharing.
 
-Appendix A, [listing 17-B](30_appendix_code_examples.md#17_code_2), outlines a reusable competency framework and tracking utilities that help teams personalise development journeys and monitor progress over time. The framework recognises that engineers advance at different rates and through different paths, providing structure without forcing everyone through identical curricula.
+Appendix A, [listing 17-B][17_code_2], outlines a reusable competency framework and tracking utilities that help teams personalise development journeys and monitor progress over time. The framework recognises that engineers advance at different rates and through different paths, providing structure without forcing everyone through identical curricula.
 
 ## Evolving Roles and Career Paths
 
@@ -75,7 +75,7 @@ Transformation programmes that lack clear success criteria drift aimlessly or cl
 
 The most effective measurement frameworks balance technical, business, and cultural dimensions rather than focusing narrowly on infrastructure metrics. DORA metrics (deployment frequency, lead time, change failure rate, and recovery time) provide baseline technical health indicators, whilst developer satisfaction surveys and onboarding time reveal whether the organisation is building sustainable capabilities or burning out its people.
 
-Appendix A, [listing 17-C](30_appendix_code_examples.md#17_code_3), presents a neutral, globally relevant performance measurement framework that can be automated through standard DevOps toolchains. The framework emphasises leading indicators that teams can influence directly rather than lagging indicators that only confirm success or failure after opportunities for course correction have passed.
+Appendix A, [listing 17-C][17_code_3], presents a neutral, globally relevant performance measurement framework that can be automated through standard DevOps toolchains. The framework emphasises leading indicators that teams can influence directly rather than lagging indicators that only confirm success or failure after opportunities for course correction have passed.
 
 ## Summary
 

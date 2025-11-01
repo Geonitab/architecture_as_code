@@ -1,4 +1,4 @@
-# Containerisation and Orchestration as Code
+# Containerisation and Orchestration as Code {#chapter-containerisation}
 
 ![Containerisation and Orchestration](images/diagram_11_chapter10.png)
 
@@ -242,7 +242,7 @@ Architecture as Code provides a common language for development, operations, and
 
 The automation capabilities and deployment velocity enabled by containerisation and CI/CD pipelines create new security challenges and governance requirements. As containers move through development, testing, and production environments at increasing speed, security controls must keep pace without becoming bottlenecks.
 
-The next part of this book explores how security, policy enforcement, and governance frameworks integrate into Architecture as Code practices. [Chapter 9 on Security Fundamentals](09_security_fundamentals.md) and [Chapter 9B on Advanced Security Patterns](09b_security_patterns.md) examine threat modelling, Zero Trust Architecture, and security-by-design principles specifically tailored for containerised, automated environments. [Chapter 10 on Policy and Security as Code](10_policy_and_security.md) demonstrates how tools like Open Policy Agent enforce security requirements automatically, whilst [Chapters 11 and 12](11_governance_as_code.md) show how governance and compliance become executable code rather than static documentation.
+The next part of this book explores how security, policy enforcement, and governance frameworks integrate into Architecture as Code practices. [Chapter 9 on Security Fundamentals][chapter-security-fundamentals] and [Chapter 9B on Advanced Security Patterns][chapter-advanced-security-patterns] examine threat modelling, Zero Trust Architecture, and security-by-design principles specifically tailored for containerised, automated environments. [Chapter 10 on Policy and Security as Code][chapter-policy-and-security] demonstrates how tools like Open Policy Agent enforce security requirements automatically, whilst [Chapters 11 and 12][chapter-governance-as-code] show how governance and compliance become executable code rather than static documentation.
 
 ## Sources and references
 

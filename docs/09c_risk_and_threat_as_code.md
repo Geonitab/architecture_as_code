@@ -1,4 +1,4 @@
-# Risk as Code and Threat Handling as Code
+# Risk as Code and Threat Handling as Code {#chapter-risk-and-threat-modelling}
 
 *Risk management is often treated as a paperwork exercise. When executed as code it becomes measurable, testable, and continuously enforceable across every environment.*
 

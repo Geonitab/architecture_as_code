@@ -1,4 +1,4 @@
-# Architecture as Code in Practice
+# Architecture as Code in Practice {#chapter-practical-implementation}
 
 Architecture as Code succeeds when teams bring organisational ambitions, engineering discipline, and operating constraints together in a single delivery motion. Practical adoption requires a structured roadmap, supportive tooling, and a culture that treats infrastructure change as a product in its own right.
 
@@ -43,9 +43,9 @@ Declarative-first tools such as Terraform continue to play a vital role, especia
 
 ## Protected delivery workflows for architecture modules
 
-Curating a maintainable Architecture as Code practice requires governance controls that make quality gates non-negotiable. Teams should configure protected branches so production-aligned infrastructure repositories demand successful status checks, review approvals, and signed commits before merge. Mandatory checks need to cover book generation, diagram refreshes, module linting, and static analysis so that architectural artefacts cannot drift from the documented source of truth ([Source [4]](33_references.md#source-4)). Where contributors propose refactors, the branch policies guarantee that reviewers evaluate rendered diagrams, generated PDFs, and policy-as-code results before approving the change.
+Curating a maintainable Architecture as Code practice requires governance controls that make quality gates non-negotiable. Teams should configure protected branches so production-aligned infrastructure repositories demand successful status checks, review approvals, and signed commits before merge. Mandatory checks need to cover book generation, diagram refreshes, module linting, and static analysis so that architectural artefacts cannot drift from the documented source of truth ([Source [4]][source-4]). Where contributors propose refactors, the branch policies guarantee that reviewers evaluate rendered diagrams, generated PDFs, and policy-as-code results before approving the change.
 
-Infrastructure unit tests must feature prominently in those gates. Assertions supplied by the AWS Cloud Development Kit can confirm that synthesised stacks still include encryption defaults, network segmentation, and tagging strategies that other chapters depend upon ([Source [9]](33_references.md#source-9)). By running CDK assertions—or equivalent Pulumi and Terratest suites—alongside documentation builds, the pipeline produces a single artefact bundle that documents which architectural intents were validated. Publishing this evidence with pull requests keeps change advisory boards and platform councils confident that every merge protects shared modules rather than eroding them.
+Infrastructure unit tests must feature prominently in those gates. Assertions supplied by the AWS Cloud Development Kit can confirm that synthesised stacks still include encryption defaults, network segmentation, and tagging strategies that other chapters depend upon ([Source [9]][source-9]). By running CDK assertions—or equivalent Pulumi and Terratest suites—alongside documentation builds, the pipeline produces a single artefact bundle that documents which architectural intents were validated. Publishing this evidence with pull requests keeps change advisory boards and platform councils confident that every merge protects shared modules rather than eroding them.
 
 ## Production readiness and operational excellence
 
@@ -55,7 +55,7 @@ High-availability design translates into codified redundancy, automated failover
 
 ### Resilience checklist for infrastructure changes
 
-The operational reality described in Sources [15](33_references.md#source-15) and [16](33_references.md#source-16) demands that every change request demonstrates how it will stay testable, recoverable, and reversible. The checklist below provides a reusable review aide for change advisory boards and platform teams. Each row is expected to have automated evidence attached—screenshots, pipeline logs, or generated reports—before promotion to production environments.
+The operational reality described in Sources [15][source-15] and [16][source-16] demands that every change request demonstrates how it will stay testable, recoverable, and reversible. The checklist below provides a reusable review aide for change advisory boards and platform teams. Each row is expected to have automated evidence attached—screenshots, pipeline logs, or generated reports—before promotion to production environments.
 
 | Area | Checklist prompts | Expected artefacts |
 |------|-------------------|--------------------|
@@ -84,9 +84,9 @@ Practical adoption benefits from curated, real-world examples that teams can ins
 
 The following entries are the quickest way to explore those artefacts without leaving the main narrative:
 
-* **Terraform service blueprint** – Appendix entry [14_CODE_1](30_appendix_code_examples.md#14_code_1) contains the relocated landing zone module, complete with networking, load balancing, tagging standards, and autoscaling defaults that teams can adapt to their own environments.
-* **Environment configuration and monitoring** – Appendix entry [14_CODE_2](30_appendix_code_examples.md#14_code_2) layers production-grade state management, observability dashboards, and retention controls on top of the shared module so that operations teams receive actionable telemetry from day one.
-* **Continuous delivery workflow** – Appendix entry [14_CODE_3](30_appendix_code_examples.md#14_code_3) captures the associated GitHub Actions pipeline that plans and applies infrastructure changes across environments and requires an explicit approval step before production deployments.
+* **Terraform service blueprint** – Appendix entry [14_CODE_1][14_code_1] contains the relocated landing zone module, complete with networking, load balancing, tagging standards, and autoscaling defaults that teams can adapt to their own environments.
+* **Environment configuration and monitoring** – Appendix entry [14_CODE_2][14_code_2] layers production-grade state management, observability dashboards, and retention controls on top of the shared module so that operations teams receive actionable telemetry from day one.
+* **Continuous delivery workflow** – Appendix entry [14_CODE_3][14_code_3] captures the associated GitHub Actions pipeline that plans and applies infrastructure changes across environments and requires an explicit approval step before production deployments.
 
 Each appendix entry describes when to use the pattern, the governance indicators it produces, and how the implementation reinforces the operating practices discussed in this chapter. Teams should tailor the templates to match their naming standards, guardrail policies, and release cadences.
 

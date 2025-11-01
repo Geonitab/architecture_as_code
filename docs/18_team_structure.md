@@ -1,4 +1,4 @@
-# Team Structure and Competency Development for Architecture as Code
+# Team Structure and Competency Development for Architecture as Code {#chapter-team-structure}
 
 ![Team collaboration ecosystem showing leadership, platform enablement, shared services, and feedback loops](images/diagram_18_team_collaboration.png)
 

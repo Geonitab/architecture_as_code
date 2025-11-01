@@ -1,4 +1,4 @@
-# FINOS Project Blueprint: Operationalising Architecture as Code
+# FINOS Project Blueprint: Operationalising Architecture as Code {#appendix-finos-blueprint}
 
 The FINOS Project Blueprint initiative exists to prove that open collaboration can harden architectural practice without adding bureaucracy. It inherits the "Architecture as Code" ethos that this repository documents in depth, treating every artefact—from design rationale to production telemetry—as code subject to automated governance. By combining the automation foundations described in the book's technical chapters with the Common Architecture Language Model (CALM), the blueprint offers a reusable playbook for regulated financial organisations that want to modernise safely and transparently.【F:docs/05_automation_devops_cicd.md】【F:references/calm_what_is_excerpt.txt】
 
@@ -44,7 +44,7 @@ Automation extends beyond code correctness. The blueprint prescribes cost-monito
 
 ### Evidence export for reuse
 
-Project Blueprint repositories include opinionated evidence pipelines that align with the **assure once, comply many** principle. Every change triggers automated policy evaluations, configuration snapshots, and CALM metadata diffs. Artefacts are stamped with control identifiers and linked to framework mappings so that downstream consumers—risk teams, auditors, or regulator portals—can re-use the same evidence package instead of requesting bespoke exports. Evidence manifests follow the conventions described in [Evidence as Code](15_evidence_as_code.md) and feed the [Control Mapping Matrix](34_control_mapping_matrix_template.md), allowing platform teams to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues without duplicating work.
+Project Blueprint repositories include opinionated evidence pipelines that align with the **assure once, comply many** principle. Every change triggers automated policy evaluations, configuration snapshots, and CALM metadata diffs. Artefacts are stamped with control identifiers and linked to framework mappings so that downstream consumers—risk teams, auditors, or regulator portals—can re-use the same evidence package instead of requesting bespoke exports. Evidence manifests follow the conventions described in [Evidence as Code][chapter-evidence-as-code] and feed the [Control Mapping Matrix][appendix-control-mapping-template], allowing platform teams to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues without duplicating work.
 
 ## Governance, Risk, and Financial Stewardship
 
