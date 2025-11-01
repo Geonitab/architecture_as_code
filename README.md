@@ -45,7 +45,7 @@ Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`)
 ```
 docs/                     # Manuscript chapters, diagrams, and publishing assets
 ├── *.md                  # Numbered chapters and appendices (01_introduction.md … 31_technical_architecture.md)
-├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
+├── archive/              # Retired chapter drafts and legacy assets (e.g., former Chapter 32, historical cover exports)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
 ├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation
 └── pandoc.yaml           # Shared Pandoc configuration
@@ -59,6 +59,12 @@ releases/                 # Git-ignored distribution bundles populated by build 
 .github/workflows/        # Automation for builds, bot responses, and content validation
 └── *.yml                 # Includes unified-build-release.yml, generate-presentations.yml, generate-whitepapers.yml, and specialised bot workflows
 ```
+
+### Housekeeping for Generated Assets
+
+- **Do not commit build artefacts.** The `releases/` directory is intentionally git-ignored and populated only by automation or the release scripts documented below.
+- **Historic exports live in `docs/archive/`.** The former `exports_old/` contents have moved to `docs/archive/book-cover/` so contributors can reference legacy cover design files without cluttering the repository root.
+- **Regenerate locally when needed.** Use `python3 generate_book.py` and `docs/build_book.sh` (or `./build_release.sh` for the full bundle) to create fresh assets before publishing.
 
 ## 🚀 Build and Automation Workflow
 
