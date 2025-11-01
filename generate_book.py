@@ -3,16 +3,16 @@ from __future__ import annotations
 import argparse
 import datetime
 import os
-import re
 import subprocess
 import sys
 import tempfile
 from pathlib import Path
 from typing import Sequence
 
+from scripts.navigation import get_book_build_files
+
 REPO_ROOT = Path(__file__).resolve().parent
 DOCS_DIR = REPO_ROOT / "docs"
-BUILD_SCRIPT_PATH = DOCS_DIR / "build_book.sh"
 PANDOC_NON_LATEX_DEFAULTS = DOCS_DIR / "pandoc-nonlatex.yaml"
 DEFAULT_DIST_DIR = REPO_ROOT / "dist"
 DEFAULT_EPUB_OUTPUT = DEFAULT_DIST_DIR / "book.epub"
@@ -29,45 +29,14 @@ BOOK_COVER_IMAGE = DOCS_DIR / "images" / "book-cover.png"
 _CHAPTER_LIST_CACHE: Sequence[str] | None = None
 
 
-def _parse_chapter_block(block: str) -> list[str]:
-    """Parse a shell array block into a list of filenames."""
-
-    items: list[str] = []
-    for raw_line in block.splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#"):
-            continue
-        if line.startswith("\"") and line.endswith("\""):
-            line = line[1:-1]
-        items.append(line)
-    return items
-
-
 def load_full_chapter_filenames() -> list[str]:
-    """Return the ordered list of chapter files defined in the build script."""
+    """Return the ordered list of chapter files defined in mkdocs.yml."""
 
     global _CHAPTER_LIST_CACHE
 
-    if _CHAPTER_LIST_CACHE is not None:
-        return list(_CHAPTER_LIST_CACHE)
+    if _CHAPTER_LIST_CACHE is None:
+        _CHAPTER_LIST_CACHE = tuple(get_book_build_files())
 
-    if not BUILD_SCRIPT_PATH.exists():
-        raise FileNotFoundError(
-            "docs/build_book.sh is missing – cannot determine chapter ordering."
-        )
-
-    script_text = BUILD_SCRIPT_PATH.read_text(encoding="utf-8")
-    match = re.search(r"CHAPTER_FILES=\(\s*(?P<body>.*?)\s*\)", script_text, re.DOTALL)
-    if not match:
-        raise RuntimeError(
-            "Unable to parse CHAPTER_FILES array from docs/build_book.sh."
-        )
-
-    chapter_files = _parse_chapter_block(match.group("body"))
-    if not chapter_files:
-        raise RuntimeError("No chapter files discovered in docs/build_book.sh.")
-
-    _CHAPTER_LIST_CACHE = tuple(chapter_files)
     return list(_CHAPTER_LIST_CACHE)
 
 
