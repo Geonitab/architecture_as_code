@@ -1,4 +1,4 @@
-# Migration from Traditional Infrastructure
+# Migration from Traditional Infrastructure {#chapter-migration}
 
 ![Migrationsprocess](images/diagram_18_kapitel17.png)
 
@@ -698,7 +698,7 @@ Investment in proper migration planning and execution results in long-term benef
 
 Technical migration success depends fundamentally on organisational readiness. The most sophisticated automation pipelines, testing frameworks, and migration strategies fail without the cultural foundations, team structures, and leadership practices that enable people to thrive in code-based delivery environments.
 
-Part E examines the organisational transformation that must accompany technical change. [Chapter 17 on Organisational Change](17_organisational_change.md) explores how teams evolve from siloed functions to cross-functional collaboration. [Chapter 18 on Team Structure](18_team_structure.md) provides concrete patterns for organising teams around Architecture as Code practices. The subsequent chapters demonstrate how management practices, AI-enabled collaboration, and digitalisation strategies complete the transformation from traditional to code-centric operating models.
+Part E examines the organisational transformation that must accompany technical change. [Chapter 17 on Organisational Change](#chapter-organisational-change) explores how teams evolve from siloed functions to cross-functional collaboration. [Chapter 18 on Team Structure](#chapter-team-structure) provides concrete patterns for organising teams around Architecture as Code practices. The subsequent chapters demonstrate how management practices, AI-enabled collaboration, and digitalisation strategies complete the transformation from traditional to code-centric operating models.
 
 ## Sources and References
 

@@ -1,4 +1,4 @@
-# Automation, DevOps and CI/CD for Architecture as Code
+# Automation, DevOps and CI/CD for Architecture as Code {#chapter-automation-devops-cicd}
 
 ![Automation and CI/CD pipelines](images/diagram_04_chapter3.png)
 
@@ -59,7 +59,7 @@ Implementing CI/CD for Architecture as Code affects the organisation on multiple
 | Skills development | Growing software engineering capabilities in traditional IT professionals | Training investments, cloud-provider API education, recruitment for development and operations skills mix |
 | Compliance and governance | Ensuring automated processes meet regulatory obligations | Automated audit trails, data residency controls, programmatic separation of duties |
 
-As discussed in [Chapter 3 on version control](03_version_control.md), CI/CD pipelines are a natural extension of Git-based workflows for Architecture as Code. This chapter builds on those concepts and explores how organisations can implement advanced automation strategies that balance efficiency with stringent regulatory requirements. Later chapters will demonstrate how these principles apply to [Containerisation and Orchestration as Code](07_containerisation.md) and integrate with the practices described in [Security Fundamentals for Architecture as Code](09_security_fundamentals.md) and [Advanced Security Patterns](09b_security_patterns.md).
+As discussed in [Chapter 3 on version control](#chapter-version-control), CI/CD pipelines are a natural extension of Git-based workflows for Architecture as Code. This chapter builds on those concepts and explores how organisations can implement advanced automation strategies that balance efficiency with stringent regulatory requirements. Later chapters will demonstrate how these principles apply to [Containerisation and Orchestration as Code](#chapter-containerisation) and integrate with the practices described in [Security Fundamentals for Architecture as Code](#chapter-security-fundamentals) and [Advanced Security Patterns](#chapter-security-patterns).
 
 ## From Architecture as Code to holistic development and operations
 
@@ -87,9 +87,9 @@ Governance as Code extends Infrastructure as Code principles to policies, approv
 
 Policy definitions, decisions, and exceptions are captured in machine-readable YAML or JSON formats consumed by validation tools in the CI/CD pipeline through policy engines like Open Policy Agent (OPA). The policy lifecycle follows standard code change-management flows: pull requests, technical review, automated testing, and traceable releases.
 
-For comprehensive coverage of governance automation—including policy lifecycle management, federated operating models, exception handling, governance metrics, developer experience integration, and regulatory ecosystem alignment—see [Chapter 11: Governance as Code](11_governance_as_code.md).
+For comprehensive coverage of governance automation—including policy lifecycle management, federated operating models, exception handling, governance metrics, developer experience integration, and regulatory ecosystem alignment—see [Chapter 11: Governance as Code](#chapter-governance-as-code).
 
-**Compliance integration:** GDPR, security requirements, and sector-specific regulations are embedded in the architecture code rather than managed as external controls. For detailed coverage of regulatory automation and compliance frameworks, see [Chapter 12: Compliance and Regulatory Adherence](12_compliance.md).
+**Compliance integration:** GDPR, security requirements, and sector-specific regulations are embedded in the architecture code rather than managed as external controls. For detailed coverage of regulatory automation and compliance frameworks, see [Chapter 12: Compliance and Regulatory Adherence](#chapter-compliance).
 
 **Collaborative architectural evolution:** Transparent, democratic processes where all stakeholders contribute to the architecture codebase through inclusive workflows.
 
@@ -132,7 +132,7 @@ Scanners should also ingest custom dictionaries that capture organisation-specif
 **Audit-trail generation:** Every pipeline execution must produce comprehensive audit logs documenting what was deployed, by whom, when, and why. These logs must themselves follow GDPR principles for personal-data handling and be stored securely in line with applicable legal retention requirements.
 
 **GDPR-compliant CI/CD pipeline example**
-*[See code example 05_CODE_1 in Appendix A: Code Examples](30_appendix_code_examples.md#05_code_1)*
+*[See code example 05_CODE_1 in Appendix A: Code Examples](05_code_1)*
 
 This pipeline example demonstrates how regulated organisations can embed GDPR compliance directly into their CI/CD processes, including automatic scanning for personal data and validation of data residency.
 
@@ -342,18 +342,18 @@ Architecture repositories require three complementary automated test categories 
 
 | Test category | Purpose | Typical tooling | CI/CD integration |
 |---------------|---------|-----------------|-------------------|
-| **Unit tests** | Assert module-level logic such as CDK constructs, policy libraries, or Terraform modules before plans are generated. | AWS CDK assertions, Terratest module mocks, Pulumi unit harnesses | Run on every pull request to protect shared building blocks; failures block merges until maintainers update fixtures or adjust standards ([Source [9]](33_references.md#source-9)). |
+| **Unit tests** | Assert module-level logic such as CDK constructs, policy libraries, or Terraform modules before plans are generated. | AWS CDK assertions, Terratest module mocks, Pulumi unit harnesses | Run on every pull request to protect shared building blocks; failures block merges until maintainers update fixtures or adjust standards ([Source [9]](source-9)). |
 | **Integration tests** | Exercise composed stacks in ephemeral environments to confirm that service contracts, data pipelines, and networking policies still interoperate. | Terratest end-to-end suites, LocalStack or Testcontainers environments | Executed after unit checks succeed so that promotion candidates prove real-world interoperability before changes leave the staging branch. |
 | **Compliance and resilience tests** | Continuously validate regulatory controls, platform guardrails, and rollback rehearsals across environments. | Open Policy Agent rules, terraform-compliance scenarios, resilience simulations documented in Chapter 13 | Wired into nightly or environment-promotion jobs to surface deviations such as failing rollback scripts or missing encryption defaults. |
 
-Chapter 13 expands on how those categories are authored and maintained, but Chapter 05 makes their execution non-negotiable: every pipeline stage publishes artefacts (logs, policy reports, CDK assertion results) into shared storage so that architectural stewards can trace regressions and demonstrate audit readiness ([Source [8]](33_references.md#source-8)).
+Chapter 13 expands on how those categories are authored and maintained, but Chapter 05 makes their execution non-negotiable: every pipeline stage publishes artefacts (logs, policy reports, CDK assertion results) into shared storage so that architectural stewards can trace regressions and demonstrate audit readiness ([Source [8]](source-8)).
 
 ### Environment promotion policies that preserve architectural parity
 
 Promotion through development, integration, pre-production, and production environments should be deterministic. Multi-stage release definitions codify the required checks, approvals, and evidence collection so that each environment mirrors the architectural baseline defined in Git.
 
 - **Template-driven parity:** Promotion workflows rehydrate infrastructure using the same Terraform modules or CDK stacks, refusing manual hotfixes that would create drift. Deployment manifests include hash comparisons of rendered templates, and any difference outside approved parameters fails the promotion.
-- **Policy-controlled approvals:** Promotion rules embed policy-as-code checks (for example, Conftest bundles for GDPR) and insist that compliance suites and resilience drills complete before sign-off. Azure DevOps, GitLab, and GitHub environment protections allow these checks and approvals to be codified, ensuring architectural stewards have documented sign-off before production releases ([Source [12]](33_references.md#source-12)).
+- **Policy-controlled approvals:** Promotion rules embed policy-as-code checks (for example, Conftest bundles for GDPR) and insist that compliance suites and resilience drills complete before sign-off. Azure DevOps, GitLab, and GitHub environment protections allow these checks and approvals to be codified, ensuring architectural stewards have documented sign-off before production releases ([Source [12]](source-12)).
 - **Evidence bundles:** Each promotion attaches the change set, policy reports, and integration-test telemetry so that reviewers can confirm architectural parity without reconstructing the run from scratch. These bundles are archived to satisfy internal audit requirements and support retrospectives when defects slip through.
 
 This disciplined promotion ladder keeps regional deployments synchronised. When a new EU region is activated the automation replays the same promotion workflow, guaranteeing that data-classification controls, tagging baselines, and architectural diagrams remain consistent with existing locations.
@@ -365,8 +365,8 @@ Maintainability suffers when teams cannot see failure trends or compliance fatig
 | Signal | Calculation | Dashboard usage |
 |--------|-------------|-----------------|
 | **Pipeline stability index** | Rolling proportion of successful runs per environment, weighted to highlight flaky stages. | Highlights brittle integration suites or unreliable infrastructure mocks before they erode confidence. |
-| **Mean time to recovery for IaC rollbacks (MTTR-IaC)** | Average time between a failed deployment and the successful rollback or hotfix release. | SRE dashboards compare MTTR across teams to target investment in automation where recovery lags ([Source [8]](33_references.md#source-8)). |
-| **Policy breach density** | Number of failing policy checks divided by total runs in each environment. | Compliance teams trend breach density to spot policy packs that need refactoring or training gaps ahead of audits ([Source [12]](33_references.md#source-12)). |
+| **Mean time to recovery for IaC rollbacks (MTTR-IaC)** | Average time between a failed deployment and the successful rollback or hotfix release. | SRE dashboards compare MTTR across teams to target investment in automation where recovery lags ([Source [8]](source-8)). |
+| **Policy breach density** | Number of failing policy checks divided by total runs in each environment. | Compliance teams trend breach density to spot policy packs that need refactoring or training gaps ahead of audits ([Source [12]](source-12)). |
 | **Architecture drift diff count** | Count of manual overrides detected by drift-detection jobs or GitOps reconcilers. | Signals where environment parity is threatened so promotion policies can be tightened or automation extended. |
 
 Dashboards combine these signals with DORA-inspired throughput metrics so that teams can correlate deployment velocity with maintainability. Publishing the telemetry alongside promotion evidence enables quick root-cause analysis when defects or regulatory findings arise.
@@ -381,7 +381,7 @@ Static analysis tools such as tflint, Checkov, or Terrascan identify security ri
 
 Terratest provides a mature solution for automated testing of Terraform code through Go-based test suites that validate infrastructure behaviour. For organisations, Terratest should focus on GDPR compliance testing and cost validation.
 
-For a full Terratest implementation that validates VPC configurations with GDPR compliance, see [05_CODE_3: Terratest for VPC implementation](30_appendix_code_examples.md#05_code_3) in Appendix A.
+For a full Terratest implementation that validates VPC configurations with GDPR compliance, see [05_CODE_3: Terratest for VPC implementation](05_code_3) in Appendix A.
 
 ### Container-based testing with compliance
 
@@ -469,7 +469,7 @@ Architecture as Code testing is organised into multiple levels:
 
 CI/CD pipelines can integrate with cost estimation tools like Infracost to provide visibility into infrastructure spending before deployment. Cost thresholds can trigger approval gates, and automated alerts can notify teams of budget overruns.
 
-For comprehensive coverage of cost optimisation, FinOps practices, predictive cost modelling, and budget control strategies, see [Chapter 15: Cost Optimisation and Resource Management](15_cost_optimization.md).
+For comprehensive coverage of cost optimisation, FinOps practices, predictive cost modelling, and budget control strategies, see [Chapter 15: Cost Optimisation and Resource Management](#chapter-cost-optimisation).
 
 ## Monitoring and observability
 

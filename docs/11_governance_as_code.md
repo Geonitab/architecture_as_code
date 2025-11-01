@@ -1,4 +1,4 @@
-# Governance as Code
+# Governance as Code {#chapter-governance-as-code}
 
 ## Overview
 
@@ -8,7 +8,7 @@ Figure 11.1 illustrates how policy authors, reviewers, automation, production co
 
 ### Assure once, comply many
 
-Architecture as Code relies on a single, authoritative set of controls that can be mapped repeatedly to different external duties. This **assure once, comply many** principle states that governance guardrails are expressed, tested, and evidenced once, then re-used across frameworks such as ISO 27001, SOC 2, NIST 800-53, GDPR, and internal control catalogues. By codifying approval policies, data residency rules, and risk mitigations in the same repository, organisations avoid duplicating assessments for every regulator. Instead, they capture a dependable stream of artefacts that downstream teams can reference in [Policy and Security as Code in Detail](10_policy_and_security.md), [Security Fundamentals for Architecture as Code](09_security_fundamentals.md), and [Compliance and Regulatory Adherence](12_compliance.md). The result is consistent decision-making, reduced audit fatigue, and a shared language for evaluating governance debt.
+Architecture as Code relies on a single, authoritative set of controls that can be mapped repeatedly to different external duties. This **assure once, comply many** principle states that governance guardrails are expressed, tested, and evidenced once, then re-used across frameworks such as ISO 27001, SOC 2, NIST 800-53, GDPR, and internal control catalogues. By codifying approval policies, data residency rules, and risk mitigations in the same repository, organisations avoid duplicating assessments for every regulator. Instead, they capture a dependable stream of artefacts that downstream teams can reference in [Policy and Security as Code in Detail](#chapter-policy-and-security), [Security Fundamentals for Architecture as Code](#chapter-security-fundamentals), and [Compliance and Regulatory Adherence](#chapter-compliance). The result is consistent decision-making, reduced audit fatigue, and a shared language for evaluating governance debt.
 
 ## Implementing Approval Processes with Pull Requests
 

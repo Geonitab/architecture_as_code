@@ -1,4 +1,4 @@
-# Structurizr: Architecture Modeling as Code
+# Structurizr: Architecture Modeling as Code {#chapter-structurizr}
 
 ![Structurizr Overview](images/diagram_06_structurizr_overview.png)
 

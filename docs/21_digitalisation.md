@@ -1,4 +1,4 @@
-# Digital Transformation through Code-Based Infrastructure
+# Digital Transformation through Code-Based Infrastructure {#chapter-digitalisation}
 
 ![Figure 21.1 – Digital transformation journey for Architecture as Code](images/diagram_21_digitalisation_process.png)
 
@@ -413,9 +413,9 @@ Key lessons from digital transformation initiatives demonstrate that technical t
 
 ## From Implementation to Integration
 
-The organisational transformation explored in this part—from [changing team structures](17_organisational_change.md) to [Management as Code](19_management_as_code.md) and digitalisation—provides the human and process foundations for Architecture as Code success. However, these disciplines achieve their full potential when they work together rather than in isolation.
+The organisational transformation explored in this part—from [changing team structures](#chapter-organisational-change) to [Management as Code](#chapter-management-as-code) and digitalisation—provides the human and process foundations for Architecture as Code success. However, these disciplines achieve their full potential when they work together rather than in isolation.
 
-Part F explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft As Code Disciplines](23_soft_as_code_interplay.md) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
+Part F explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft As Code Disciplines](#chapter-soft-as-code-interplay) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](#chapter-best-practices) synthesises lessons learned from diverse contexts into practical, actionable guidance.
 
 ## Sources and References
 

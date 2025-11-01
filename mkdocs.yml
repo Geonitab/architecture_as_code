@@ -63,6 +63,13 @@ nav:
   - Prezi Deck: prezi/index.html
 docs_dir: docs
 use_directory_urls: true
+plugins:
+  - search
+  - autorefs
+  - redirects:
+      redirect_maps:
+        # Preserve legacy chapter URLs when files are renamed.
+        '15_cost_optimisation.md': '15_cost_optimization.md'
 theme:
   name: readthedocs
 markdown_extensions:

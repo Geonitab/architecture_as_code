@@ -1020,7 +1020,7 @@ Framtiden for Architecture as Code karakteriseras of intelligent automation, env
 
 AI-driven infrastructure optimisation, carbon-aware computing and post-quantum cryptography readiness represents essential capabilities for competitive advantage. Integration of these technologies requires both technical expertise and organisational adaptability as diskuteras in previous chapter.
 
-Success in future Architecture as Code landscape requires continuous learning, experimentation and willingness to adopt new paradigms. Which demonstrerat genAbout the Books progression from [Fundamental Concepts](01_introduction.md) to advanced future technologies, evolution within Architecture as Code is constant and accelerating.
+Success in future Architecture as Code landscape requires continuous learning, experimentation and willingness to adopt new paradigms. Which demonstrerat genAbout the Books progression from [Fundamental Concepts](#chapter-introduction) to advanced future technologies, evolution within Architecture as Code is constant and accelerating.
 
 ## Sources and referenser
 

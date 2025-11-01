@@ -2,11 +2,11 @@
 \part{Organisation and Leadership}
 \setbookpart{Organisation and Leadership}
 
-# Part E: Organisation and Leadership
+# Part E: Organisation and Leadership {#part-organisation-leadership}
 
 Technical excellence alone cannot sustain Architecture as Code transformation. This part examines the organisational structures, cultural shifts, and leadership practices that enable teams to thrive in code-based delivery environments.
 
-The transition from [traditional infrastructure management](16_migration.md) to Architecture as Code demands more than new tools—it requires fundamental changes to team composition, decision-making authority, and collaboration patterns. Organisations must evolve from siloed functions towards cross-functional teams with shared ownership and collective accountability.
+The transition from [traditional infrastructure management](#chapter-migration) to Architecture as Code demands more than new tools—it requires fundamental changes to team composition, decision-making authority, and collaboration patterns. Organisations must evolve from siloed functions towards cross-functional teams with shared ownership and collective accountability.
 
 Successful transformation depends on deliberate culture building. The DevOps philosophy that underpins Architecture as Code emphasises psychological safety, transparent communication, and learning from failure. Leadership behaviours set the tone: when senior leaders model vulnerability and celebrate experimentation, teams feel empowered to innovate rather than play it safe.
 
@@ -25,4 +25,4 @@ Digitalisation through code-based infrastructure enables organisations to transf
 - AI agent team models for Architecture as Code initiatives
 - Digitalisation strategies enabled by code-based infrastructure
 
-This part builds on the [testing](13_testing_strategies.md) and [delivery practices](14_practical_implementation.md) from Part D, showing how organisational capabilities must evolve alongside technical maturity. The experiences and best practices in Part F demonstrate these principles in action.
+This part builds on the [testing](#chapter-testing-strategies) and [delivery practices](#chapter-practical-implementation) from Part D, showing how organisational capabilities must evolve alongside technical maturity. The experiences and best practices in Part F demonstrate these principles in action.

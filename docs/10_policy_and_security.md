@@ -1,4 +1,4 @@
-# Policy and Security as Code in Detail
+# Policy and Security as Code in Detail {#chapter-policy-and-security}
 
 ![Policy-as-Code delivery lifecycle](images/diagram_10_policy_lifecycle.png)
 
@@ -6,7 +6,7 @@
 
 ## Introduction and context
 
-European organisations operate in some of the world's most demanding regulatory environments. They must simultaneously honour GDPR, NIS2, sector-specific obligations from bodies such as the European Banking Authority and the UK's Financial Conduct Authority, and the relentless pace of cloud adoption. [Security Fundamentals for Architecture as Code](09_security_fundamentals.md) introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.
+European organisations operate in some of the world's most demanding regulatory environments. They must simultaneously honour GDPR, NIS2, sector-specific obligations from bodies such as the European Banking Authority and the UK's Financial Conduct Authority, and the relentless pace of cloud adoption. [Security Fundamentals for Architecture as Code](#chapter-security-fundamentals) introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.
 
 Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy audits. Expressing governance requirements as version-controlled code gives teams the same advantages found elsewhere in Architecture as Code: traceability, repeatability, peer review, automated testing, and rapid rollback when something goes wrong. The narrative and examples in this chapter illustrate how European delivery teams can embrace PaC without sacrificing regulatory assurance.
 
@@ -43,7 +43,7 @@ Organisations running mission-critical platforms typically adopt three architect
 
 ### Advanced Rego patterns for regulated workloads
 
-Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:
+Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](10_code_1) contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:
 
 ```rego
 package eu.enterprise.security
@@ -84,19 +84,19 @@ OSCAL is organised into complementary models:
 
 ### Crafting organisation-specific profiles
 
-Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate PSD2 requirements in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
+Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate PSD2 requirements in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
 
 ### Component definitions and reusable evidence
 
-Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry [10_CODE_3](30_appendix_code_examples.md#10_code_3) provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it straightforward to prove, for example, that storage encryption and logging are active.
+Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry [10_CODE_3](10_code_3) provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it straightforward to prove, for example, that storage encryption and logging are active.
 
 ### Automating System Security Plans
 
-Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry [10_CODE_4](30_appendix_code_examples.md#10_code_4) includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.
+Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry [10_CODE_4](10_code_4) includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.
 
 ## Assure once, comply many in policy design
 
-Policy-as-code catalogues embody the **assure once, comply many** mindset introduced in [Governance as Code](11_governance_as_code.md). Controls are written once, versioned, and then tagged with metadata that links each policy primitive to the external and internal obligations it satisfies. A single IAM policy module can therefore be evaluated across multiple frameworks without re-implementing business logic.
+Policy-as-code catalogues embody the **assure once, comply many** mindset introduced in [Governance as Code](#chapter-governance-as-code). Controls are written once, versioned, and then tagged with metadata that links each policy primitive to the external and internal obligations it satisfies. A single IAM policy module can therefore be evaluated across multiple frameworks without re-implementing business logic.
 
 ```rego
 package enterprise.identity.mfa
@@ -124,7 +124,7 @@ evidence_sources := [
 ]
 ```
 
-The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected **once**, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Service Criteria can rely on the same artefacts without triggering duplicate reviews. The [Evidence as Code chapter](15_evidence_as_code.md) expands on how pipelines package and publish those artefacts, while [Compliance and Regulatory Adherence](12_compliance.md) shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.
+The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected **once**, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Service Criteria can rely on the same artefacts without triggering duplicate reviews. The [Evidence as Code chapter](#chapter-evidence-as-code) expands on how pipelines package and publish those artefacts, while [Compliance and Regulatory Adherence](#chapter-compliance) shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.
 
 ## Implementation roadmap for European delivery teams
 
@@ -142,4 +142,4 @@ Successful PaC programmes blend technology with process change. A staged roadmap
 - OPA and Rego provide a portable, testable way to encode complex EU and UK regulatory requirements.
 - OSCAL links policy enforcement with audit evidence, reducing the overhead of external assessments.
 - Diagrams in Figures 10.1 and 10.2 illustrate how policy guardrails span the delivery lifecycle and how capability building blocks interrelate.
-- Detailed Rego, OSCAL, and automation listings live in Appendix entries [10_CODE_1](30_appendix_code_examples.md#10_code_1) to [10_CODE_4](30_appendix_code_examples.md#10_code_4) for engineers who need implementation guidance.
+- Detailed Rego, OSCAL, and automation listings live in Appendix entries [10_CODE_1](10_code_1) to [10_CODE_4](10_code_4) for engineers who need implementation guidance.
