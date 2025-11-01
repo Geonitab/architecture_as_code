@@ -686,7 +686,7 @@ Architecture as Code principles in this area emphasise resilient AWS foundations
 This section contains CloudFormation templates for AWS infrastructure adapted for organisations.
 
 ### 07_CODE_1: VPC Setup for organisations with GDPR compliance {#07_code_1}
-*Referenced from chapter 7: [Cloud Architecture as Code](07_molnarkitektur.md)*
+*Referenced from Chapter 7: [Containerisation and Orchestration as Code](07_containerisation.md)*
 
 ```yaml
 # cloudformation/a-org-vpc.yaml

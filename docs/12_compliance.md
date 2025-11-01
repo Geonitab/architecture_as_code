@@ -255,7 +255,7 @@ resource "aws_vpc" "quantum_safe" {
 
 Modern Architecture as Code practices provide the repeatability, transparency, and evidence management demanded by regulators. By codifying policies, enforcing controls through pipelines, and maintaining auditable feedback loops, organisations can demonstrate compliance without sacrificing delivery speed. AI-enabled tooling, serverless platforms, and rigorous traceability matrices ensure that every control remains testable and observable.
 
-Looking forward, teams should monitor speculative developments such as quantum resilience and sustainability reporting so that compliance strategies evolve alongside the regulatory landscape. Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles](02_fundamental_principles.md) to [Organisational Change](17_organisational_change.md)—Architecture as Code adapts to meet emerging challenges and opportunities while keeping compliance at the forefront.
+Looking forward, teams should monitor speculative developments such as quantum resilience and sustainability reporting so that compliance strategies evolve alongside the regulatory landscape. Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles of Architecture as Code](02_fundamental_principles.md) to [Organisational Change and Team Structures](17_organisational_change.md)—Architecture as Code adapts to meet emerging challenges and opportunities while keeping compliance at the forefront.
 
 ## Moving from Governance to Delivery
 
