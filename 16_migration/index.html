@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/16_migration/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Migration from Traditional Infrastructure - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Migration from Traditional Infrastructure";
+        var mkdocs_page_input_path = "16_migration.md";
+        var mkdocs_page_url = "/16_migration/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Migration from Traditional Infrastructure</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overall-description">Overall Description</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assessment-and-planning-faser">Assessment and planning faser</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#lift-and-shift-vs-re-architecting">Lift-and-shift vs re-architecting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#gradual-kodifiering-of-infrastruktur">Gradual kodifiering of infrastruktur</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#team-transition-and-competence-development">Team transition and competence development</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#praktiska-example">Praktiska example</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#migration-assessment-automation">Migration Assessment Automation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cloudformation-legacy-import">CloudFormation Legacy Import</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#migration-testing-framework">Migration Testing Framework</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bridging-technical-and-organisational-change">Bridging Technical and Organisational Change</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-and-references">Sources and References</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part D – Delivery & Operations</li>
+      <li class="breadcrumb-item active">Migration from Traditional Infrastructure</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/16_migration.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="migration-from-traditional-infrastructure">Migration from Traditional Infrastructure</h1>
+<p><img alt="Migrationsprocess" src="images/diagram_18_kapitel17.png" /></p>
+<p><em>Migration from Traditional Infrastructure to Architecture as Code (Architecture as Code) requires systematic planering, stegvis Architecture as Code-implementation and continuous validation. Diagram shows The Structureerade processen from assessment to complete Architecture as Code-adoption.</em></p>
+<h2 id="overall-description">Overall Description</h2>
+<p>Migration from traditional, manuellt konfigurerad infrastructure to Architecture as Code represents a of the most critical transformationerna for modern IT-organisationer. This process requires not endast technical omStructureering without also organisatorisk change and cultural anpassning to code-based way of working.</p>
+<p>European organisations face unique migreringsChallenges through legacy-systems as developed over decennier, regulatory requirements as begränsar forändringstakt, and need of to balance innovation with operational stability. Successful migration requires comprehensive planning as minimizes risker while The enables snabb value realization.</p>
+<p>Modern migrationsstrategier must accommodera hybrid scenarios where legacy infrastructure coexisterar with Architecture as Code-managed resources under extended transition periods. This hybrid approach enables gradual migration as reduces business risk while the enables imwithiate benefits from Architecture as Code adoption.</p>
+<p>Cloud-native migration pathways offers opportuniteter to modernisera architecture while infrastructure management are codified. European companies can leverage This transformation to implement sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.</p>
+<h2 id="assessment-and-planning-faser">Assessment and planning faser</h2>
+<p>Comprehensive infrastructure assessment forms foundationen for successful Architecture as Code migration. This includes inventory of existing resources, dependency mapping, risk assessment and cost-benefit analysis as informerar migration strategy and timeline planning.</p>
+<p>Discovery automation tools that AWS Application Discovery Service, Azure Migrate and Google Cloud migration tools can accelerate assessment processen through automated resource inventory and dependency detection. These tools genererar data as can inform Architecture as Code template generation and migration prioritization.</p>
+<p>Risk assessment must identify critical systems, single points of failure and compliance dependencies as affects migration approach. European financial institutions and healthcare organisations must particularly consider regulatory implications and downtime restrictions as affects migration windows.</p>
+<p>Migration wave planning balancerar technical dependencies with business priorities to minimize risk and maximize value realization. Pilot projects with non-critical systems enables team learning and process refinement before critical systems migration påbörjas.</p>
+<h2 id="lift-and-shift-vs-re-architecting">Lift-and-shift vs re-architecting</h2>
+<table>
+<thead>
+<tr>
+<th>Migration Strategy</th>
+<th>Description</th>
+<th>Benefits</th>
+<th>Challenges</th>
+<th>Best Suited For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lift-and-shift</td>
+<td>Direct migration to cloud with minimal changes</td>
+<td>Fastest time to cloud, lower initial cost, minimal application changes</td>
+<td>Limited cloud-native benefits, may require follow-up optimisation, higher long-term operational costs</td>
+<td>Applications with tight timelines, limited modernisation budget, compliance-driven moves</td>
+</tr>
+<tr>
+<td>Re-architecting</td>
+<td>Complete redesign for cloud-native patterns</td>
+<td>Maximum cloud value, improved scalability and resilience, cost optimisation, innovation enablement</td>
+<td>Highest initial investment, longest timeline, requires deep cloud expertise</td>
+<td>Strategic applications, high business value systems, global expansion needs</td>
+</tr>
+<tr>
+<td>Lift-and-improve (Hybrid)</td>
+<td>Selective re-architecting of critical components while keeping most unchanged</td>
+<td>Balances speed-to-market with modernisation, immediate cloud benefits, iterative improvement path</td>
+<td>Complexity in managing hybrid architecture, requires careful component selection</td>
+<td>Phased modernisation, risk-balanced approach, majority of enterprise migrations</td>
+</tr>
+<tr>
+<td>Application retirement</td>
+<td>Remove legacy applications with limited business value</td>
+<td>Reduces migration scope, eliminates maintenance costs, simplifies portfolio</td>
+<td>Requires business stakeholder alignment, data archival strategy</td>
+<td>Low-value legacy applications, redundant systems, end-of-life software</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gradual-kodifiering-of-infrastruktur">Gradual kodifiering of infrastruktur</h2>
+<p>Infrastructure inventory automation through tools that Terraform import, CloudFormation drift detection and Azure Resource Manager templates enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations as require refinement but accelerate kodification process.</p>
+<p>Template standardisation through reusable modules and organisational patterns ensures consistency across migrated infrastructure while the reduces future maintenance overhead. European government agencies have successfully implemented standardized Architecture as Code templates for common infrastructure patterns across different departments.</p>
+<p>Configuration drift elimination through Architecture as Code adoption requires systematic reconciliation between existing resource configurations and desired Architecture as Code state. Gradual enforcement of Architecture as Code-managed configuration ensures infrastructure stability while the eliminates manual configuration inconsistencies.</p>
+<p>Version control integration for infrastructure changes enables systematic tracking of migration progress samt provides rollback capabilities for problematic changes. Git-based workflows for infrastructure management etablishes foundation for collaborative infrastructure development and operational transparency.</p>
+<h2 id="team-transition-and-competence-development">Team transition and competence development</h2>
+<p>Skills development programs must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows. Training curricula should encompass Infrastructure as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.</p>
+<p>Organisational structure evolution from traditional silos to cross-functional teams enables effective Architecture as Code adoption. European telecommunications companies have successfully transitioned from separate development and operations teams to integrated DevOps teams as manage architecture as code.</p>
+<p>Cultural transformation from manual processes to automated workflows requires change management programs as address resistance and promotes automation adoption. Success stories from early adopters can motivate broader organisational acceptance of Architecture as Code practices.</p>
+<p>Mentorship programs pairing experienced cloud engineers with traditional infrastructure teams accelerates knowledge transfer and reduces adoption friction. External consulting support can supplement internal capabilities during initial migration phases for complex enterprise environments.</p>
+<h2 id="praktiska-example">Praktiska example</h2>
+<h3 id="migration-assessment-automation">Migration Assessment Automation</h3>
+<pre><code class="language-python"># migration_assessment/infrastructure_discovery.py
+import boto3
+import json
+from datetime import datetime
+from typing import Dict, List
+import pandas as pd
+
+class InfrastructureMigrationAssessment:
+    &quot;&quot;&quot;
+    Automatiserad bedömning of existing infrastruktur for architecture as code-migration
+    &quot;&quot;&quot;
+
+    def __init__(self, region='eu-west-1'):
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.elb = boto3.client('elbv2', region_name=region)
+        self.cloudformation = boto3.client('cloudformation', region_name=region)
+
+    def discover_unmanaged_resources(self) -&gt; Dict:
+        &quot;&quot;&quot;Upptäck resurser as not is managed of architecture as code&quot;&quot;&quot;
+
+        unmanaged_resources = {
+            'ec2_instances': self._find_unmanaged_ec2(),
+            'rds_instances': self._find_unmanaged_rds(),
+            'load_balancers': self._find_unmanaged_load_balancers(),
+            'security_groups': self._find_unmanaged_security_groups(),
+            'summary': {}
+        }
+
+        # Beräkna summary statistics
+        total_resources = sum(len(resources) for resources in unmanaged_resources.values() if isinstance(resources, list))
+        unmanaged_resources['summary'] = {
+            'total_unmanaged_resources': total_resources,
+            'migration_complexity': self._assess_migration_complexity(unmanaged_resources),
+            'estimated_migration_effort': self._estimate_migration_effort(total_resources),
+            'risk_assessment': self._assess_migration_risks(unmanaged_resources)
+        }
+
+        return unmanaged_resources
+
+    def _find_unmanaged_ec2(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Hitta EC2-instanser as not is managed of CloudFormation/Terraform&quot;&quot;&quot;
+
+        # Hämta all EC2-instanser
+        response = self.ec2.describe_instances()
+        unmanaged_instances = []
+
+        for reservation in response['Reservations']:
+            for instance in reservation['Instances']:
+                if instance['State']['Name'] != 'terminated':
+                    # Kontrollera about instansen is managed of architecture as code
+                    is_managed = self._is_resource_managed(instance.get('Tags', []))
+
+                    if not is_managed:
+                        unmanaged_instances.append({
+                            'instance_id': instance['InstanceId'],
+                            'instance_type': instance['InstanceType'],
+                            'launch_time': instance['LaunchTime'].isoformat(),
+                            'vpc_id': instance.get('VpcId'),
+                            'subnet_id': instance.get('SubnetId'),
+                            'security_groups': [sg['GroupId'] for sg in instance.get('SecurityGroups', [])],
+                            'tags': {tag['Key']: tag['Value'] for tag in instance.get('Tags', [])},
+                            'migration_priority': self._calculate_migration_priority(instance),
+                            'estimated_downtime': self._estimate_downtime(instance)
+                        })
+
+        return unmanaged_instances
+
+    def _is_resource_managed(self, tags: List[Dict]) -&gt; bool:
+        &quot;&quot;&quot;Kontrollera about resurs is managed of architecture as code&quot;&quot;&quot;
+
+        iac_indicators = [
+            'aws:cloudformation:stack-name',
+            'terraform:stack',
+            'pulumi:stack',
+            'Created-By-Terraform',
+            'ManagedBy'
+        ]
+
+        tag_keys = {tag.get('Key', '') for tag in tags}
+        return any(indicator in tag_keys for indicator in iac_indicators)
+
+    def generate_terraform_migration_plan(self, unmanaged_resources: Dict) -&gt; str:
+        &quot;&quot;&quot;Generera Terraform-code for migration of unmanaged resources&quot;&quot;&quot;
+
+        terraform_code = &quot;&quot;&quot;
+# automatically genererad migration plan
+# Genererat: {date}
+# Totalt antal resurser to migrera: {total_resources}
+
+terraform {{
+  required_providers {{
+    aws = {{
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 5.0&quot;
+    }}
+  }}
+}}
+
+provider &quot;aws&quot; {{
+  region = &quot;eu-west-1&quot;  # Configurable for any EU region
+}}
+
+&quot;&quot;&quot;.format(
+            date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            total_resources=len(unmanaged_resources.get('ec2_instances', []))
+        )
+
+        # Generera Terraform for EC2-instanser
+        for in, instance in enumerate(unmanaged_resources.get('ec2_instances', [])):
+            terraform_code += f&quot;&quot;&quot;
+# Migration of existing EC2-instans {instance['instance_id']}
+resource &quot;aws_instance&quot; &quot;migrated_instance_{in}&quot; {{
+  # OBSERVERA: This configuration must verifieras and adapted
+  instance_type = &quot;{instance['instance_type']}&quot;
+  subnet_id     = &quot;{instance['subnet_id']}&quot;
+
+  vpc_security_group_ids = {json.dumps(instance['security_groups'])}
+
+  # Behåll existing tags and lägg to migration-info
+  tags = {{
+    Name = &quot;{instance.get('tags', {}).get('Name', f'migrated-instance-{in}')}&quot;
+    MigratedFrom = &quot;{instance['instance_id']}&quot;
+    MigrationDate = &quot;{datetime.now().strftime('%Y-%m-%d')}&quot;
+    ManagedBy = &quot;terraform&quot;
+    Environment = &quot;{instance.get('tags', {}).get('Environment', 'production')}&quot;
+    Project = &quot;{instance.get('tags', {}).get('Project', 'migration-project')}&quot;
+  }}
+
+  # VIKTIGT: Importera existing resurs instead of create new
+  # terraform import aws_instance.migrated_instance_{in} {instance['instance_id']}
+}}
+&quot;&quot;&quot;
+
+        terraform_code += &quot;&quot;&quot;
+# Migration checklist:
+# 1. Granska genererade configurations noggrant
+# 2. Testa in development-environment first  
+# 3. Importera existing resurser with terraform import
+# 4. Kör terraform plan to verifiera to inga changes planeras
+# 5. Implementera gradual with låg-risk resurser first
+# 6. Uppdatera monitoring and alerting efter migration
+&quot;&quot;&quot;
+
+        return terraform_code
+
+    def create_migration_timeline(self, unmanaged_resources: Dict) -&gt; Dict:
+        &quot;&quot;&quot;Skapa realistisk migrationstidplan&quot;&quot;&quot;
+
+        # Kategorisera resurser efter komplexitet
+        low_complexity = []
+        medium_complexity = []
+        high_complexity = []
+
+        for instance in unmanaged_resources.get('ec2_instances', []):
+            complexity = instance.get('migration_priority', 'medium')
+
+            if complexity == 'low':
+                low_complexity.append(instance)
+            elif complexity == 'high':
+                high_complexity.append(instance)
+            else:
+                medium_complexity.append(instance)
+
+        # Beräkna tidsestimater
+        timeline = {
+            'wave_1_low_risk': {
+                'resources': low_complexity,
+                'estimated_duration': f&quot;{len(low_complexity) * 2} dagar&quot;,
+                'start_date': 'Vecka 1-2',
+                'prerequisites': ['architecture as code training completion', 'Tool setup', 'Backup verification']
+            },
+            'wave_2_medium_risk': {
+                'resources': medium_complexity,
+                'estimated_duration': f&quot;{len(medium_complexity) * 4} dagar&quot;, 
+                'start_date': 'Vecka 3-6',
+                'prerequisites': ['Wave 1 completion', 'Process refinement', 'Team feedback']
+            },
+            'wave_3_high_risk': {
+                'resources': high_complexity,
+                'estimated_duration': f&quot;{len(high_complexity) * 8} dagar&quot;,
+                'start_date': 'Vecka 7-12',
+                'prerequisites': ['Wave 2 completion', 'Advanced training', 'Stakeholder approval']
+            },
+            'total_estimated_duration': f&quot;{(len(low_complexity) * 2) + (len(medium_complexity) * 4) + (len(high_complexity) * 8)} dagar&quot;
+        }
+
+        return timeline
+
+def generate_migration_playbook(assessment_results: Dict) -&gt; str:
+    &quot;&quot;&quot;Generera comprehensive migration playbook for European organizations&quot;&quot;&quot;
+
+    playbook = f&quot;&quot;&quot;
+# architecture as code Migration Playbook for {assessment_results.get('organization_name', 'Organization')}
+
+## Executive Summary
+- **Totalt antal resurser to migrera:** {assessment_results['summary']['total_unmanaged_resources']}
+- **Migrations-komplexitet:** {assessment_results['summary']['migration_complexity']}
+- **Estimerad effort:** {assessment_results['summary']['estimated_migration_effort']}
+- **Risk-bedömning:** {assessment_results['summary']['risk_assessment']}
+
+## Fas 1: Förberedelse (Vecka 1-2)
+
+### Team Training
+- [ ] architecture as code grundutbildning for all teammedlemmar
+- [ ] Terraform/CloudFormation hands-on workshops
+- [ ] Git workflows for infrastructure management
+- [ ] EU compliance-requirements (GDPR, data sovereignty)
+
+### Tool Setup
+- [ ] Terraform/CloudFormation development environment
+- [ ] Git repository for infrastructure code
+- [ ] CI/CD pipeline for infrastructure deployment
+- [ ] Monitoring and alerting configuration
+
+### Risk Mitigation
+- [ ] Fullständig backup of all critical systems
+- [ ] Rollback procedures documentserade
+- [ ] Emergency contacts and eskalationsplan
+- [ ] Test environment for migration validation
+
+## Fas 2: Pilot Migration (Vecka 3-4)
+
+### Low-Risk Resources Migration
+- [ ] Migrera development/test environments first
+- [ ] Validate architecture as code templates and processes
+- [ ] Dokumentera lessons learned
+- [ ] Refinera migration procedures
+
+### Quality Gates
+- [ ] Automated testing of migrerade resurser
+- [ ] Performance verification
+- [ ] Security compliance validation
+- [ ] Cost optimization review
+
+## Fas 3: Production Migration (Vecka 5-12)
+
+### Gradual Production Migration
+- [ ] Non-critical production systems
+- [ ] Critical systems with planerade maintenance windows
+- [ ] Database migration with minimal downtime
+- [ ] Network infrastructure migration
+
+### Continuous Monitoring
+- [ ] Real-time monitoring of migrerade systems
+- [ ] Automated alerting for anomalier
+- [ ] Performance benchmarking
+- [ ] Cost tracking and optimization
+
+## Post-Migration Activities
+
+### Process Optimization
+- [ ] Infrastructure cost review and optimization
+- [ ] Team workflow refinement
+- [ ] Documentation and knowledge transfer
+- [ ] Continuous improvement architecture as code-implementation
+
+### Long-term Sustainability
+- [ ] Regular architecture as code architecture as code best practices review
+- [ ] Team cross-training program
+- [ ] Tool evaluation and updates
+- [ ] Compliance monitoring automation
+
+## EU Compliance Considerations
+
+### GDPR Requirements
+- [ ] Data residency in EU regioner
+- [ ] Encryption at rest and in transit
+- [ ] Access logging and audit trails
+- [ ] Data retention policy implementation
+
+### EU Security Requirements
+- [ ] Network segmentation implementation
+- [ ] Incident response procedures
+- [ ] Backup and disaster recovery
+- [ ] Security monitoring enhancement
+
+## Success Metrics
+
+### Technical Metrics
+- Infrastructure deployment time reduction: Target 80%
+- Configuration drift incidents: Target 0
+- Security compliance score: Target 95%+
+- Infrastructure cost optimization: Target 20% reduction
+
+### Operational Metrics
+- Mean time to recovery improvement: Target 60%
+- Change failure rate reduction: Target 50%
+- Team satisfaction with new processes: Target 8/10
+- Knowledge transfer completion: Target 100%
+
+## Risk Management
+
+### High-Priority Risks
+1. **Service Downtime:** Mitigated through maintenance windows and rollback plans
+2. **Data Loss:** Mitigated through comprehensive backups and testing
+3. **Security Compliance:** Mitigated through automated compliance validation
+4. **Team Resistance:** Mitigated through training and change management
+
+### Contingency Plans
+- Immediate rollback procedures for critical issues
+- Emergency support contacts and escalation
+- Alternative migration approaches for problem resources
+- Business continuity plans for extended downtime
+&quot;&quot;&quot;
+
+    return playbook
+</code></pre>
+<h3 id="cloudformation-legacy-import">CloudFormation Legacy Import</h3>
+<pre><code class="language-yaml"># migration/legacy-import-template.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Template for import of existing resurser to CloudFormation management'
+
+Parameters:
+  ExistingVPCId:
+    Type: String
+    Description: 'ID for existing VPC as should importeras'
+
+  ExistingInstanceId:
+    Type: String  
+    Description: 'ID for existing EC2-instans as should importeras'
+
+  Environment:
+    Type: String
+    Default: 'production'
+    AllowedValues: ['development', 'staging', 'production']
+
+  ProjectName:
+    Type: String
+    Description: 'Namn at projektet for resource tagging'
+
+Resources:
+  # Import of existing VPC
+  ExistingVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      # These värden must matcha existing VPC-configuration exakt
+      CidrBlock: '10.0.0.0/16'  # Uppdatera with faktiskt CIDR
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-vpc'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+        - Key: ImportedFrom
+          Value: !Ref ExistingVPCId
+        - Key: ImportDate
+          Value: !Sub '${AWS::Timestamp}'
+
+  # Import of existing EC2-instans
+  ExistingInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      # These värden must matcha existing instans-configuration
+      InstanceType: 't3.medium'  # Uppdatera with actual instance type
+      ImageId: 'ami-0c94855bb95b03c2e'  # Uppdatera with actual AMI
+      SubnetId: !Ref ExistingSubnet
+      SecurityGroupIds:
+        - !Ref ExistingSecurityGroup
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-instance'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+        - Key: ImportedFrom
+          Value: !Ref ExistingInstanceId
+        - Key: ImportDate
+          Value: !Sub '${AWS::Timestamp}'
+
+  # Security group for importerad instans
+  ExistingSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Imported security group for legacy systems'
+      VpcId: !Ref ExistingVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: '10.0.0.0/8'  # Begränsa SSH access
+          Description: 'SSH access from internal network'
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: '0.0.0.0/0'
+          Description: 'HTTP access'
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: '0.0.0.0/0'
+          Description: 'HTTPS access'
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-sg'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+
+  # Subnet for organiserad nätverkshantering
+  ExistingSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref ExistingVPC
+      CidrBlock: '10.0.1.0/24'  # Uppdatera with faktiskt subnet CIDR
+      AvailabilityZone: !Select [0, !GetAZs '']  # First available AZ in selected region
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub '${ProjectName}-imported-subnet'
+        - Key: Environment
+          Value: !Ref Environment
+        - Key: Type
+          Value: 'Private'
+        - Key: ManagedBy
+          Value: 'CloudFormation'
+
+Outputs:
+  ImportedVPCId:
+    Description: 'ID for importerad VPC'
+    Value: !Ref ExistingVPC
+    Export:
+      Name: !Sub '${AWS::StackName}-VPC-ID'
+
+  ImportedInstanceId:
+    Description: 'ID for importerad EC2-instans'
+    Value: !Ref ExistingInstance
+    Export:
+      Name: !Sub '${AWS::StackName}-Instance-ID'
+
+  ImportInstructions:
+    Description: 'Instruktioner for resource import'
+    Value: !Sub |
+      to importera existing resurser:
+      1. aws cloudformation create-stack --stack-name ${ProjectName}-import --template-body file://legacy-import-template.yaml
+      2. aws cloudformation import-resources-to-stack --stack-name ${ProjectName}-import --resources file://import-resources.json
+      3. Verifiera to import var successful with: aws cloudformation describe-stacks --stack-name ${ProjectName}-import
+</code></pre>
+<h3 id="migration-testing-framework">Migration Testing Framework</h3>
+<pre><code class="language-bash">#!/bin/bash
+# migration/test-migration.sh
+# Comprehensive testing script for architecture as code migration validation
+
+set -e
+
+PROJECT_NAME=${1:-&quot;migration-test&quot;}
+ENVIRONMENT=${2:-&quot;staging&quot;}
+REGION=${3:-&quot;eu-west-1&quot;}
+
+echo &quot;Starting architecture as code migration testing for projekt: $PROJECT_NAME&quot;
+echo &quot;Environment: $ENVIRONMENT&quot;
+echo &quot;Region: $REGION&quot;
+
+# Pre-migration testing
+echo &quot;=== Pre-Migration Tests ===&quot;
+
+# Test 1: Verifiera to all resurser is inventerade
+echo &quot;Testing resource inventory...&quot;
+aws ec2 describe-instances --region $REGION --query 'Reservations[*].Instances[?State.Name!=`terminated`]' &gt; /tmp/pre-migration-instances.json
+aws rds describe-db-instances --region $REGION &gt; /tmp/pre-migration-rds.json
+
+INSTANCE_COUNT=$(jq '.[] | length' /tmp/pre-migration-instances.json | jq -s 'add')
+RDS_COUNT=$(jq '.DBInstances | length' /tmp/pre-migration-rds.json)
+
+echo &quot;Upptäckte $INSTANCE_COUNT EC2-instanser and $RDS_COUNT RDS-instanser&quot;
+
+# Test 2: Backup verification
+echo &quot;Verifying backup status...&quot;
+aws ec2 describe-snapshots --region $REGION --owner-ids self --query 'Snapshots[?StartTime&gt;=`2023-01-01T00:00:00.000Z`]' &gt; /tmp/recent-snapshots.json
+SNAPSHOT_COUNT=$(jq '. | length' /tmp/recent-snapshots.json)
+
+if [ $SNAPSHOT_COUNT -lt $INSTANCE_COUNT ]; then
+    echo &quot;WARNING: Insufficient recent snapshots. Skapa backups före migration.&quot;
+    exit 1
+fi
+
+# Test 3: Network connectivity baseline
+echo &quot;Establishing network connectivity baseline...&quot;
+for instance_id in $(jq -r '.[] | .[] | .InstanceId' /tmp/pre-migration-instances.json); do
+    if [ &quot;$instance_id&quot; != &quot;null&quot; ]; then
+        echo &quot;Testing connectivity to $instance_id...&quot;
+        # Implementera connectivity tests here
+    fi
+done
+
+# Migration execution testing
+echo &quot;=== Migration Execution Tests ===&quot;
+
+# Test 4: Terraform plan validation
+echo &quot;Validating Terraform migration plan...&quot;
+cd terraform/migration
+
+terraform init
+terraform plan -var=&quot;project_name=$PROJECT_NAME&quot; -var=&quot;environment=$ENVIRONMENT&quot; -out=migration.plan
+
+# Analysera plan for oväntade changes
+terraform show -json migration.plan &gt; /tmp/terraform-plan.json
+
+# Kontrollera to inga resurser planeras for destruction
+DESTROY_COUNT=$(jq '.resource_changes[] | select(.change.actions[] == &quot;delete&quot;) | .address' /tmp/terraform-plan.json | wc -l)
+
+if [ $DESTROY_COUNT -gt 0 ]; then
+    echo &quot;ERROR: Migration plan contains resource destruction. Granska before fortsättning.&quot;
+    jq '.resource_changes[] | select(.change.actions[] == &quot;delete&quot;) | .address' /tmp/terraform-plan.json
+    exit 1
+fi
+
+# Test 5: Import validation
+echo &quot;Testing resource import procedures...&quot;
+
+# Skapa test import for a sample resource
+SAMPLE_INSTANCE_ID=$(jq -r '.[] | .[] | .InstanceId' /tmp/pre-migration-instances.json | head -1)
+
+if [ &quot;$SAMPLE_INSTANCE_ID&quot; != &quot;null&quot; ] &amp;&amp; [ &quot;$SAMPLE_INSTANCE_ID&quot; != &quot;&quot; ]; then
+    echo &quot;Testing import for instance: $SAMPLE_INSTANCE_ID&quot;
+
+    # Dry-run import test
+    terraform import -dry-run aws_instance.test_import $SAMPLE_INSTANCE_ID || {
+        echo &quot;WARNING: Import test failed for $SAMPLE_INSTANCE_ID&quot;
+    }
+fi
+
+# Post-migration testing
+echo &quot;=== Post-Migration Validation Framework ===&quot;
+
+# Test 6: Infrastructure compliance
+echo &quot;Setting up compliance validation...&quot;
+cat &gt; /tmp/compliance-test.py &lt;&lt; 'EOF'
+import boto3
+import json
+
+def validate_tagging_compliance(region='eu-west-1'):
+    &quot;&quot;&quot;Validate to all migrerade resurser has korrekta tags&quot;&quot;&quot;
+    ec2 = boto3.client('ec2', region_name=region)
+
+    required_tags = ['ManagedBy', 'Environment', 'Project']
+    non_compliant = []
+
+    # Kontrollera EC2 instances
+    instances = ec2.describe_instances()
+    for reservation in instances['Reservations']:
+        for instance in reservation['Instances']:
+            if instance['State']['Name'] != 'terminated':
+                tags = {tag['Key']: tag['Value'] for tag in instance.get('Tags', [])}
+                missing_tags = [tag for tag in required_tags if tag not in tags]
+
+                if missing_tags:
+                    non_compliant.append({
+                        'resource_id': instance['InstanceId'],
+                        'resource_type': 'EC2 Instance',
+                        'missing_tags': missing_tags
+                    })
+
+    return non_compliant
+
+def validate_security_compliance():
+    &quot;&quot;&quot;Validate säkerhetskonfiguration efter migration&quot;&quot;&quot;
+    # implementation for security controls
+    pass
+
+if __name__ == '__main__':
+    compliance_issues = validate_tagging_compliance()
+    if compliance_issues:
+        print(f&quot;Found {len(compliance_issues)} compliance issues:&quot;)
+        for issue in compliance_issues:
+            print(f&quot;  {issue['resource_id']}: Missing tags {issue['missing_tags']}&quot;)
+    else:
+        print(&quot;All resources are compliant with tagging requirements&quot;)
+EOF
+
+python3 /tmp/compliance-test.py
+
+# Test 7: Performance baseline comparison
+echo &quot;Setting up performance monitoring...&quot;
+cat &gt; /tmp/performance-monitor.sh &lt;&lt; 'EOF'
+#!/bin/bash
+# Monitor key performance metrics efter migration
+
+METRICS_FILE=&quot;/tmp/post-migration-metrics.json&quot;
+
+echo &quot;Collecting post-migration performance metrics...&quot;
+
+# CPU Utilization
+aws cloudwatch get-metric-statistics \
+    --namespace AWS/EC2 \
+    --metric-name CPUUtilization \
+    --start-time $(date -u -d '1 hour ago' +%Y-%m-%dT%H:%M:%S) \
+    --end-time $(date -u +%Y-%m-%dT%H:%M:%S) \
+    --period 300 \
+    --statistics Average \
+    --region $REGION &gt; &quot;$METRICS_FILE&quot;
+
+# Analysera metrics for avvikelser
+AVERAGE_CPU=$(jq '.Datapoints | map(.Average) | add / length' &quot;$METRICS_FILE&quot;)
+echo &quot;Average CPU utilization: $AVERAGE_CPU%&quot;
+
+if (( $(echo &quot;$AVERAGE_CPU &gt; 80&quot; | bc -l) )); then
+    echo &quot;WARNING: High CPU utilization detected after migration&quot;
+fi
+EOF
+
+chmod +x /tmp/performance-monitor.sh
+
+echo &quot;=== Migration Testing Complete ===&quot;
+echo &quot;Results:&quot;
+echo &quot;  - Resource inventory: $INSTANCE_COUNT EC2, $RDS_COUNT RDS&quot;
+echo &quot;  - Backup status: $SNAPSHOT_COUNT snapshots verified&quot;
+echo &quot;  - Terraform plan: Validated (no destructive changes)&quot;
+echo &quot;  - Compliance framework: Ready&quot;
+echo &quot;  - Performance monitoring: Configured&quot;
+
+echo &quot;&quot;
+echo &quot;Next steps:&quot;
+echo &quot;1. Review test results and address any warnings&quot;
+echo &quot;2. Execute migration in maintenance window&quot;
+echo &quot;3. Run post-migration validation&quot;
+echo &quot;4. Monitor performance for 24 hours&quot;
+echo &quot;5. Document lessons learned&quot;
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents the future of infrastructure management for global organisations. Migration from traditional infrastructure to Architecture as Code requires systematic planning, gradual implementation, and comprehensive testing. Organisations that successfully execute this migration position themselves for increased agility, improved security, and significant cost benefits.</p>
+<p>Success factors include comprehensive assessment, realistic timeline planning, extensive team training, and robust testing frameworks. Hybrid migration strategies enable risk minimisation whilst delivering immediate value from Architecture as Code adoption.</p>
+<p>Investment in proper migration planning and execution results in long-term benefits through improved operational efficiency, enhanced security posture, and reduced technical debt. Organisations that follow systematic migration approaches can expect successful transformation to modern, Architecture as Code-based infrastructure management.</p>
+<h2 id="bridging-technical-and-organisational-change">Bridging Technical and Organisational Change</h2>
+<p>Technical migration success depends fundamentally on organisational readiness. The most sophisticated automation pipelines, testing frameworks, and migration strategies fail without the cultural foundations, team structures, and leadership practices that enable people to thrive in code-based delivery environments.</p>
+<p>Part E examines the organisational transformation that must accompany technical change. <a href="../17_organisational_change/">Chapter 17 on Organisational Change</a> explores how teams evolve from siloed functions to cross-functional collaboration. <a href="../18_team_structure/">Chapter 18 on Team Structure</a> provides concrete patterns for organising teams around Architecture as Code practices. The subsequent chapters demonstrate how management practices, AI-enabled collaboration, and digitalisation strategies complete the transformation from traditional to code-centric operating models.</p>
+<h2 id="sources-and-references">Sources and References</h2>
+<ul>
+<li>AWS. "Large-Scale Migration and Modernisation Guide." Amazon Web Services, 2023.</li>
+<li>Microsoft. "Azure Migration Framework and Architecture as Code best practices." Microsoft Azure Documentation, 2023.</li>
+<li>Google Cloud. "Infrastructure Migration Strategies." Google Cloud Architecture Centre, 2023.</li>
+<li>Gartner. "Infrastructure Migration Trends in European Markets." Gartner Research, 2023.</li>
+<li>ITIL Foundation. "IT Service Management for Cloud Migration." AXELOS, 2023.</li>
+<li>European Commission. "Digital Transformation Guidelines for Public Sector." EU Digital Strategy, 2023.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../15_cost_optimization/" class="btn btn-neutral float-left" title="Cost Optimisation and Resource Management"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../part_e_leadership/" class="btn btn-neutral float-right" title="index">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../15_cost_optimization/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../part_e_leadership/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/architecture_as_code_maturity_model/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix E – Architecture as Code Maturity Model - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix E \u2013 Architecture as Code Maturity Model";
+        var mkdocs_page_input_path = "architecture_as_code_maturity_model.md";
+        var mkdocs_page_url = "/architecture_as_code_maturity_model/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix E – Architecture as Code Maturity Model</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#maturity-model-for-implementing-architecture-as-code">Maturity model for implementing architecture as code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interactive-radar-assessment">Interactive radar assessment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#staircase-overview-of-maturity-progression">Staircase overview of maturity progression</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dimensions-and-as-code-aspects">Dimensions and “as code” aspects</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assessment-checklist-for-radar-visualisation">Assessment checklist for radar visualisation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#infrastructure-as-code-iac">Infrastructure as code (IaC)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#architecture-as-code-aac">Architecture as Code (AaC)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#containerisation-orchestration-as-code">Containerisation &amp; orchestration as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#policy-as-code-pac-security-as-code">Policy as code (PaC) &amp; Security as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#governance-as-code">Governance as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compliance-as-code">Compliance as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-as-code">Testing as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation-as-code">Documentation as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#knowledge-culture-as-code">Knowledge &amp; culture as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#management-as-code">Management as code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#maturity-levels">Maturity levels</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#level-0-initial-ad-hoc">Level 0 – Initial / ad hoc</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#level-1-repeatable-and-version-controlled">Level 1 – Repeatable and version-controlled</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#level-2-defined-and-automated">Level 2 – Defined and automated</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#level-3-managed-and-integrated">Level 3 – Managed and integrated</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#level-4-optimised-and-ai-assisted">Level 4 – Optimised and AI-assisted</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#level-5-innovative-next-generation">Level 5 – Innovative / next-generation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-the-maturity-model">Using the maturity model</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references">References</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendices</li>
+      <li class="breadcrumb-item active">Appendix E – Architecture as Code Maturity Model</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/architecture_as_code_maturity_model.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="architecture-as-code-maturity-model">Architecture as Code Maturity Model</h1>
+<h2 id="maturity-model-for-implementing-architecture-as-code">Maturity model for implementing architecture as code</h2>
+<p>Modern organisations are increasingly turning to <strong>architecture as code (AaC)</strong> to keep systems design, security and governance aligned with rapid delivery.<br />
+The <em>Architecture as Code</em> book describes how codified representations of architecture, policy, governance and even cultural knowledge share common traits:<br />
+they use machine-readable formats, live in version control and are automatically validated.  </p>
+<p>This maturity model synthesises those insights into staged levels of adoption.
+It recognises that organisations progress from ad-hoc scripting and isolated diagrams to integrated, self-optimising systems that manage compliance, governance and knowledge via code.</p>
+<h2 id="interactive-radar-assessment">Interactive radar assessment</h2>
+<p>For an interactive experience that mirrors the full questionnaire and generates a downloadable radar chart, use the <a href="../maturity_model_radar.html">Architecture as Code maturity radar tool</a>. The tool captures every checklist question from this appendix, visualises the current capabilities and produces prioritised improvement guidance that can be shared across teams.</p>
+<h2 id="staircase-overview-of-maturity-progression">Staircase overview of maturity progression</h2>
+<p><img alt="Architecture as Code maturity staircase highlighting Levels 0 to 5" src="images/diagram_32_maturity_model.png" /></p>
+<p>The staircase presents the progression from manually curated architecture artefacts to adaptive, AI-supported operating models. Each step emphasises the primary enabler that unlocks the next maturity level.</p>
+<hr />
+<h2 id="dimensions-and-as-code-aspects">Dimensions and “as code” aspects</h2>
+<p>The maturity model includes the key “as code” disciplines discussed in the book:</p>
+<table>
+<thead>
+<tr>
+<th>Aspect (discipline)</th>
+<th>Description</th>
+<th>References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Infrastructure as code (IaC)</strong></td>
+<td>Declarative templates and programmatic frameworks (e.g. Terraform, Pulumi, AWS CDK) used to define, provision and manage infrastructure; test strategies include unit, integration and compliance tests.</td>
+<td>Ch. 5 Automation &amp; CI/CD [13], Ch. 13 Testing Strategies <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/13_testing_strategies.md" title="Testing Strategies Chapter">2</a></td>
+</tr>
+<tr>
+<td><strong>Architecture as Code (AaC)</strong></td>
+<td>Models such as the C4 model or Structurizr DSL used to encode architecture. AaC becomes the hub that links policies, compliance rules and documentation.</td>
+<td>Ch. 6 Structurizr <a href="https://github.com/dwmkerr/architecture-as-code" title="Architecture as Code GitHub Repository">1</a>, Ch. 23 Soft as Code Interplay <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/23_soft_as_code_interplay.md" title="Soft as Code Interplay Chapter">3</a></td>
+</tr>
+<tr>
+<td><strong>Containerisation &amp; orchestration as code</strong></td>
+<td>Definition of container images, Kubernetes manifests, Compose files and Helm charts; supports repeatable, portable deployments.</td>
+<td>Ch. 7 Containerisation &amp; Orchestration as Code <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/07_containerisation_and_orchestration.md" title="Containerisation and Orchestration Chapter">4</a></td>
+</tr>
+<tr>
+<td><strong>Policy as code (PaC) &amp; Security as code</strong></td>
+<td>Translation of governance and security requirements into executable rules using tools such as Open Policy Agent; reduces manual approvals, provides continuous validation and integrates with CI/CD pipelines.</td>
+<td>Ch. 10 Policy &amp; Security <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/10_policy_and_security.md" title="Policy and Security Chapter">5</a></td>
+</tr>
+<tr>
+<td><strong>Governance as code</strong></td>
+<td>Codifying approval flows, branch protection rules and decision policies so that governance artefacts live in repositories with transparent review workflows.</td>
+<td>Ch. 11 Governance as Code <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/11_governance_as_code.md" title="Governance as Code Chapter">6</a></td>
+</tr>
+<tr>
+<td><strong>Compliance as code</strong></td>
+<td>Automating regulatory adherence through policy templates, continuous scanning, evidence collection and feedback loops.</td>
+<td>Ch. 12 Compliance <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/12_compliance.md" title="Compliance Chapter">7</a></td>
+</tr>
+<tr>
+<td><strong>Testing as code</strong></td>
+<td>Multi-layered testing for codified architecture, including unit tests, policy compliance checks, cost forecasting and end-to-end validation.</td>
+<td>Ch. 13 Testing Strategies <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/13_testing_strategies.md" title="Testing Strategies Chapter">2</a></td>
+</tr>
+<tr>
+<td><strong>Documentation as code</strong></td>
+<td>Using Markdown or AsciiDoc with version control to generate living documentation and diagrams; ensures architecture descriptions stay current and accessible.</td>
+<td>Ch. 22 Documentation vs Architecture <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/22_documentation_vs_architecture.md" title="Documentation vs Architecture Chapter">8</a></td>
+</tr>
+<tr>
+<td><strong>Knowledge &amp; culture as code</strong></td>
+<td>Capturing organisational knowledge and cultural practices in structured repositories to preserve institutional memory and support onboarding.</td>
+<td>Ch. 23 Soft as Code Interplay <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/23_soft_as_code_interplay.md" title="Soft as Code Interplay Chapter">3</a></td>
+</tr>
+<tr>
+<td><strong>Management as code</strong></td>
+<td>Encoding leadership practices, team structures and decision processes into templates and bots (e.g. GitHub issues, pull-request workflows) to support repeatable governance.</td>
+<td>Ch. 19 Management as Code <a href="https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/19_management_as_code.md" title="Management as Code Chapter">9</a></td>
+</tr>
+</tbody>
+</table>
+<p>Each discipline contributes to the overall maturity.
+Organisations rarely adopt all aspects at once; instead, they progressively expand the scope of codification.</p>
+<hr />
+<h2 id="assessment-checklist-for-radar-visualisation">Assessment checklist for radar visualisation</h2>
+<p>Use the following yes/no questions to evaluate each discipline before plotting the results on a radar diagram. A "yes" response indicates that the preferred maturity-aligned practice is in place.</p>
+<h3 id="infrastructure-as-code-iac">Infrastructure as code (IaC)</h3>
+<ul>
+<li>[ ] Are all infrastructure definitions stored in version control with peer review required prior to merge?</li>
+<li>[ ] Is automated validation or linting run on every infrastructure code change before deployment?</li>
+<li>[ ] Do environment deployments rely solely on declarative templates rather than manual changes?</li>
+<li>[ ] Are infrastructure modules reusable and parameterised to promote consistency across environments?</li>
+<li>[ ] Is drift detection automated and reviewed regularly to ensure infrastructure matches the declared state?</li>
+</ul>
+<h3 id="architecture-as-code-aac">Architecture as Code (AaC)</h3>
+<ul>
+<li>[ ] Are architecture models generated from source-controlled code or domain-specific language definitions?</li>
+<li>[ ] Do teams update architecture models as part of the same change when system behaviour evolves?</li>
+<li>[ ] Is traceability maintained between architecture components and the owning teams or repositories?</li>
+<li>[ ] Are architecture decisions captured as code-backed records that undergo pull-request review?</li>
+<li>[ ] Is automated validation applied to architecture models to detect inconsistencies or missing relationships?</li>
+</ul>
+<h3 id="containerisation-orchestration-as-code">Containerisation &amp; orchestration as code</h3>
+<ul>
+<li>[ ] Are container images and orchestration manifests generated from version-controlled definitions reviewed by the owning team?</li>
+<li>[ ] Do pipelines automatically build, scan and publish container images before release?</li>
+<li>[ ] Is cluster configuration managed declaratively with automated reconciliation to enforce desired state?</li>
+<li>[ ] Are rollout strategies (such as blue-green or canary) codified and repeatedly tested in non-production environments?</li>
+<li>[ ] Is runtime configuration (including secrets and policies) delivered through code rather than manual console changes?</li>
+</ul>
+<h3 id="policy-as-code-pac-security-as-code">Policy as code (PaC) &amp; Security as code</h3>
+<ul>
+<li>[ ] Are governance and security requirements expressed in machine-readable policies stored in version control?</li>
+<li>[ ] Do automated checks enforce policy compliance in CI/CD pipelines before promotion to higher environments?</li>
+<li>[ ] Is policy code peer reviewed alongside the application or infrastructure change it governs?</li>
+<li>[ ] Are policy violations surfaced through automated alerts with actionable remediation guidance?</li>
+<li>[ ] Is there a feedback loop that updates policies based on new threats, incidents or regulatory changes?</li>
+</ul>
+<h3 id="governance-as-code">Governance as code</h3>
+<ul>
+<li>[ ] Are approval workflows, branch protections and role definitions codified and version controlled?</li>
+<li>[ ] Do governance automations capture decision history and rationale as part of the workflow output?</li>
+<li>[ ] Is governance code tested in lower environments before it is applied to production repositories?</li>
+<li>[ ] Are exceptions to governance policies time-bound, tracked and reviewed automatically?</li>
+<li>[ ] Is governance tooling accessible to non-developers through templates or guided interfaces sourced from the same codebase?</li>
+</ul>
+<h3 id="compliance-as-code">Compliance as code</h3>
+<ul>
+<li>[ ] Are regulatory controls translated into executable checks that run continuously against live environments?</li>
+<li>[ ] Does the organisation maintain reusable compliance baselines or templates for common regulations?</li>
+<li>[ ] Is evidence collection automated and stored alongside compliance code for audit readiness?</li>
+<li>[ ] Are compliance findings integrated with issue tracking to ensure timely remediation and verification?</li>
+<li>[ ] Do compliance automations generate dashboards or reports that stakeholders review on a scheduled cadence?</li>
+</ul>
+<h3 id="testing-as-code">Testing as code</h3>
+<ul>
+<li>[ ] Are automated tests defined for every codified artefact, including infrastructure, policies and architecture models?</li>
+<li>[ ] Do pipelines execute the full testing suite on every merge or release candidate?</li>
+<li>[ ] Is test coverage monitored and improved through targeted backlog items when gaps emerge?</li>
+<li>[ ] Are failure scenarios rehearsed with automated chaos or resilience tests to validate recovery procedures?</li>
+<li>[ ] Is test data managed as code with repeatable seeding and sanitisation routines?</li>
+</ul>
+<h3 id="documentation-as-code">Documentation as code</h3>
+<ul>
+<li>[ ] Is documentation authored in version-controlled markup languages with enforced review workflows?</li>
+<li>[ ] Do automated builds publish documentation outputs (web, PDF, diagrams) from the same source repository?</li>
+<li>[ ] Are documentation updates included in the definition of done for relevant product or platform changes?</li>
+<li>[ ] Is diagram generation automated from code or structured data to eliminate manual drawing efforts?</li>
+<li>[ ] Are documentation quality checks (such as link validation and style linting) automated in CI/CD pipelines?</li>
+</ul>
+<h3 id="knowledge-culture-as-code">Knowledge &amp; culture as code</h3>
+<ul>
+<li>[ ] Is organisational knowledge captured in structured repositories with clear ownership and contribution guidelines?</li>
+<li>[ ] Do onboarding and learning journeys exist as code-based playbooks or scripts executed during induction?</li>
+<li>[ ] Are retrospectives and continuous improvement actions tracked in version-controlled artefacts with follow-up automation?</li>
+<li>[ ] Is cultural guidance (values, rituals, ceremonies) embedded into tooling such as bots, templates or workflow prompts?</li>
+<li>[ ] Are knowledge repositories regularly reviewed through automated reminders to ensure relevance and accuracy?</li>
+</ul>
+<h3 id="management-as-code">Management as code</h3>
+<ul>
+<li>[ ] Are operating models, team topologies and responsibilities documented through code-driven templates?</li>
+<li>[ ] Do leadership ceremonies (such as portfolio reviews) run from standardised agendas or dashboards generated from code?</li>
+<li>[ ] Are performance and delivery metrics collected automatically and surfaced through shared management dashboards?</li>
+<li>[ ] Is resource allocation or staffing managed through codified workflows with automated approvals and audit trails?</li>
+<li>[ ] Are management playbooks iterated through pull requests with participation from the leadership community?</li>
+</ul>
+<hr />
+<h2 id="maturity-levels">Maturity levels</h2>
+<h3 id="level-0-initial-ad-hoc">Level 0 – Initial / ad hoc</h3>
+<p>Architecture is documented in slide decks or static diagrams; infrastructure is provisioned manually.<br />
+Policies and governance documents are written as PDFs or intranet pages.<br />
+Compliance is enforced through periodic audits.<br />
+Testing is limited to manual checks.  </p>
+<hr />
+<h3 id="level-1-repeatable-and-version-controlled">Level 1 – Repeatable and version-controlled</h3>
+<ul>
+<li>Teams start using declarative IaC templates (e.g. Terraform) to provision environments stored in Git.  </li>
+<li>Architectural diagrams are maintained in version control.  </li>
+<li>Security checks are performed through ad-hoc scripts; manual approvals predominate.  </li>
+<li>Basic syntax validation for IaC introduced.  </li>
+<li>Markdown begins to replace Word documents.</li>
+</ul>
+<hr />
+<h3 id="level-2-defined-and-automated">Level 2 – Defined and automated</h3>
+<ul>
+<li>Declarative IaC and container definitions become standard. CI/CD pipelines build and deploy infrastructure; integration tests and policy checks run automatically.  </li>
+<li>Organisations adopt DSLs like Structurizr to model systems and generate diagrams.  </li>
+<li>Governance requirements are expressed in policy languages like Rego.  </li>
+<li>Pull-request templates and branch rules codify approvals.  </li>
+<li>Tools such as Terratest and Checkov enforce compliance.  </li>
+<li>Documentation generated from code and published automatically.</li>
+</ul>
+<hr />
+<h3 id="level-3-managed-and-integrated">Level 3 – Managed and integrated</h3>
+<ul>
+<li>AaC links policies, compliance controls and documentation; traceability between design and rules.  </li>
+<li>Policy engines enforce guardrails; zero-trust and threat modelling embedded.  </li>
+<li>Governance workflows are fully codified; non-developers use low-code policy editors.  </li>
+<li>Compliance requirements translated into templates with automated control execution.  </li>
+<li>Continuous compliance scanning integrated into operations.  </li>
+<li>Testing covers unit, integration, security and compliance.  </li>
+<li>Documentation remains in sync; knowledge and culture version-controlled.  </li>
+<li>Leadership practices encoded into templates and bots.</li>
+</ul>
+<hr />
+<h3 id="level-4-optimised-and-ai-assisted">Level 4 – Optimised and AI-assisted</h3>
+<ul>
+<li>Architecture as Code becomes dynamic and adaptive with telemetry feedback.</li>
+<li>Machine learning predicts risks and remediates drift automatically.  </li>
+<li>Self-healing infrastructure scales proactively.  </li>
+<li>Governance as code spans enterprise portfolios with automated audit trails.  </li>
+<li>Carbon-aware deployment practices codified; AI optimises resource use.  </li>
+<li>Conversational agents automate knowledge discovery and onboarding.</li>
+</ul>
+<hr />
+<h3 id="level-5-innovative-next-generation">Level 5 – Innovative / next-generation</h3>
+<ul>
+<li>Architecture integrates generative AI to explore alternatives; digital twins simulate systems.  </li>
+<li>Policies expressed in intent languages; AI agents synthesise granular rules.  </li>
+<li>Models incorporate quantum-safe cryptography and quantum-assisted optimisation.  </li>
+<li>Cultural values codified to guide AI behaviour and collaboration.  </li>
+<li>Organisation-wide management-as-code practices enable transparent, merit-based governance.</li>
+</ul>
+<hr />
+<h2 id="using-the-maturity-model">Using the maturity model</h2>
+<ol>
+<li><strong>Assess current position</strong> – Evaluate practices across each discipline; take the lowest common level as baseline.  </li>
+<li><strong>Identify gaps and priorities</strong> – Determine which disciplines need advancement.  </li>
+<li><strong>Plan incremental improvements</strong> – Move up one level at a time.  </li>
+<li><strong>Invest in people and culture</strong> – Prioritise training and collaboration.  </li>
+<li><strong>Leverage automation</strong> – Automate validation, testing and evidence collection early.  </li>
+<li><strong>Prepare for AI augmentation</strong> – Build telemetry pipelines and AI skills.</li>
+</ol>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>Architecture as Code is more than diagrams — it is a holistic approach that unifies infrastructure, policy, governance, documentation and culture through codified representations.<br />
+By progressing through this maturity model, organisations can evolve from manual, error‑prone processes to adaptive systems that embed governance and leverage AI for continuous improvement.  </p>
+<p>“As code” disciplines must reinforce one another rather than exist in silos.</p>
+<hr />
+<h2 id="references">References</h2>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../appendix_templates_and_tools/" class="btn btn-neutral float-left" title="Appendix D – Templates and Tools"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../maturity_model_radar.html" class="btn btn-neutral float-right" title="Appendix F – Architecture as Code Maturity Radar Tool">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../appendix_templates_and_tools/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../maturity_model_radar.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

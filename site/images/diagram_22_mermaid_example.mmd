@@ -1,0 +1,15 @@
+%% Example Mermaid diagram referenced in Chapter 22
+%% Maintains the textual source for the rendered image.
+
+%% Shared styling to mirror the book's visual language
+classDef kv-primary fill:#1e3a8a,stroke:#0f172a,stroke-width:2px,color:#f8fafc;
+classDef kv-accent fill:#6366f1,stroke:#312e81,stroke-width:2px,color:#f8fafc;
+classDef kv-highlight fill:#fbbf24,stroke:#92400e,stroke-width:2px,color:#1f2937;
+classDef kv-muted fill:#e2e8f0,stroke:#475569,stroke-width:1px,color:#0f172a;
+
+linkStyle default stroke:#0f172a,stroke-width:2px;
+
+graph LR
+    User[Customer]:::kv-primary -->|Initiates payment| API[Payment API]:::kv-accent
+    API -->|Validates & stores| DB[(Payment Database)]:::kv-highlight
+    API -->|Publishes event| Queue[Message Queue]:::kv-muted

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/04_adr/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Architecture Decision Records (ADR) - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Architecture Decision Records (ADR)";
+        var mkdocs_page_input_path = "04_adr.md";
+        var mkdocs_page_url = "/04_adr/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture Decision Records (ADR)</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overall-description">Overall Description</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-are-architecture-decision-records">What Are Architecture Decision Records?</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#linking-adrs-to-the-documentation-workflow">Linking ADRs to the documentation workflow</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structure-and-components-of-adr">Structure and Components of ADR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#standardised-adr-template">Standardised ADR Template</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#numbering-and-versioning">Numbering and Versioning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#status-lifecycle">Status Lifecycle</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-examples-of-adr">Practical Examples of ADR</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-1-choice-of-architecture-as-code-tool">Example 1: Choice of Architecture as Code Tool</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-2-database-technology-selection">Example 2: Database Technology Selection</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tools-and-best-practices-for-adr-within-architecture-as-code">Tools and Best Practices for ADR within Architecture as Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#adr-tools-and-integration">ADR Tools and Integration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#git-integration-and-workflow">Git Integration and Workflow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quality-standards">Quality Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#review-and-governance-process">Review and Governance Process</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#code-managed-discovery-review-and-supersession">Code-Managed Discovery, Review, and Supersession</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#operationalising-adr-metadata">Operationalising ADR Metadata</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#preventing-knowledge-loss-through-adrs">Preventing Knowledge Loss Through ADRs</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integration-with-architecture-as-code">Integration with Architecture as Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compliance-and-quality-standards">Compliance and Quality Standards</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#future-development-and-trends">Future Development and Trends</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#looking-ahead">Looking Ahead</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part A – Foundations</li>
+      <li class="breadcrumb-item active">Architecture Decision Records (ADR)</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/04_adr.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="architecture-decision-records-adr">Architecture Decision Records (ADR)</h1>
+<p><img alt="ADR Process Flow" src="../images/diagram_04_adr_process.png" /></p>
+<p><em>Architecture Decision Records represent a structured method for documenting important architecture decisions within code-based systems. The process begins with identifying the problem and follows a systematic approach to analyse the context, evaluate alternatives, and formulate well-founded decisions.</em></p>
+<h2 id="overall-description">Overall Description</h2>
+<p>The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting important architecture decisions that affect system structure, performance, security, and maintainability. The ADR method was introduced by Michael Nygard and has become an established best practice in modern system development.</p>
+<p>For organisations implementing Architecture as Code, ADRs are particularly valuable because they ensure architecture decisions are documented in a structured manner that meets compliance requirements and facilitates knowledge transfer between teams and over time.</p>
+<p>ADRs function as architecture's "commit messages"—short, focused documents that capture the context, the problem, the chosen alternative, and the consequences of important architecture decisions. This enables traceability and an understanding of why specific technical choices were made.</p>
+<p>Modern software development emphasises the importance of transparent and traceable decisions. The ADR method supports these requirements by creating an audit trail of architecture decisions that can be reviewed and evaluated over time.</p>
+<h2 id="what-are-architecture-decision-records">What Are Architecture Decision Records?</h2>
+<p>Architecture Decision Records are short text documents that capture important architecture decisions together with their context and consequences. Each ADR describes a specific decision, the problem it solves, the alternatives that were considered, and the rationale behind the chosen alternative.</p>
+<p>The ADR format typically follows a structured template that includes:</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Purpose</th>
+<th>Content Guidelines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>Current status for the decision</td>
+<td>One of: proposed, accepted, deprecated, superseded</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Background and circumstances that led to the need for the decision</td>
+<td>Problem statement, constraints, driving forces, affected stakeholders</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>The specific decision that was made</td>
+<td>Clear statement of choice, implementation approach, rationale</td>
+</tr>
+<tr>
+<td>Consequences</td>
+<td>Expected positive and negative consequences</td>
+<td>Benefits, risks, trade-offs, mitigation strategies</td>
+</tr>
+</tbody>
+</table>
+<p>Official guidelines and templates are available at <a href="https://adr.github.io">https://adr.github.io</a>, which serves as the primary resource for ADR methodology. This website is maintained by the ADR community and contains standardised templates, tools, and examples.</p>
+<p>In the Architecture as Code context, ADRs document decisions about technology choices, architecture patterns, security strategies, and operational policies that are codified in architecture definitions.</p>
+<h3 id="linking-adrs-to-the-documentation-workflow">Linking ADRs to the documentation workflow</h3>
+<p>Every ADR must explicitly reference the shared Git-based workflow defined in
+<a href="../documentation_workflow/"><code>docs/documentation_workflow.md</code></a>. Capturing the pull
+request, review approvals, and automated validation outcomes alongside the
+decision gives future contributors a complete audit trail. The additional
+<strong>Review and Documentation Workflow</strong> section in the template formalises this
+expectation by recording where the decision was discussed, which automation
+results were captured, and how the change aligned with the repository-wide
+documentation practice.</p>
+<h2 id="structure-and-components-of-adr">Structure and Components of ADR</h2>
+<h3 id="standardised-adr-template">Standardised ADR Template</h3>
+<p><img alt="Figure 4.2 – Standard Architecture Decision Record structure" src="../images/diagram_04_adr_structure.png" /></p>
+<p><em>Figure 4.2 highlights the four core sections every ADR should capture before the template is populated with project-specific information.</em></p>
+<p>Each ADR follows a consistent structure that ensures all relevant information is captured systematically:</p>
+<pre><code class="language-markdown"># ADR-XXXX: [Short Description of the Decision]
+
+## Status
+[Proposed | Accepted | Deprecated | Superseded]
+
+## Context
+Description of the problem that needs to be solved and the circumstances
+that led to the need for this decision.
+
+## Decision
+The specific decision that was made, including technical details
+and the Architecture as Code implementation approach.
+
+## Consequences
+### Positive Consequences
+- Expected benefits and improvements
+
+### Negative Consequences
+- Identified risks and limitations
+
+### Mitigation
+- Measures to handle negative consequences
+
+## Review and Documentation Workflow
+- Link to the pull request or merge request where the ADR was discussed.
+- Reference the shared workflow in [docs/documentation_workflow.md](documentation_workflow.md)
+  so future readers understand how the decision was reviewed and validated.
+</code></pre>
+<h3 id="numbering-and-versioning">Numbering and Versioning</h3>
+<p>ADRs are numbered sequentially (ADR-0001, ADR-0002, etc.) to create a chronological order and simple reference. The numbering is permanent—even if an ADR is deprecated or replaced, the original number is retained.</p>
+<p>Versioning is managed through the Git history instead of inline changes. When a decision changes, a new ADR is created to supersede the original, preserving the historical context.</p>
+<h3 id="status-lifecycle">Status Lifecycle</h3>
+<p><img alt="ADR Lifecycle" src="../images/diagram_04_adr_lifecycle.png" /></p>
+<p><em>The ADR lifecycle illustrates how decisions evolve from an initial proposal through the review process to Architecture as Code implementation, monitoring, and eventual retirement when new solutions are required.</em></p>
+<p>ADRs typically progress through the following statuses:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+<th>Action Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proposed</td>
+<td>Initial proposal that undergoes review and discussion</td>
+<td>Team review, stakeholder consultation, impact assessment</td>
+</tr>
+<tr>
+<td>Accepted</td>
+<td>Approved decision that should be implemented</td>
+<td>Begin implementation, update related documentation, communicate to teams</td>
+</tr>
+<tr>
+<td>Deprecated</td>
+<td>Decision that is no longer recommended but may remain in the system</td>
+<td>Plan migration path, document alternatives, set deprecation timeline</td>
+</tr>
+<tr>
+<td>Superseded</td>
+<td>Replaced by a newer ADR with a reference to the successor</td>
+<td>Reference new ADR, maintain historical context, update implementation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="practical-examples-of-adr">Practical Examples of ADR</h2>
+<h3 id="example-1-choice-of-architecture-as-code-tool">Example 1: Choice of Architecture as Code Tool</h3>
+<p>Architecture as Code principles within this domain:</p>
+<pre><code class="language-markdown"># ADR-0003: Selection of Terraform for Architecture as Code
+
+## Status
+Accepted
+
+## Context
+The organisation needs to standardise on an Architecture as Code tool
+to manage AWS and Azure environments. Current manual processes
+create inconsistencies and operational risks.
+
+## Decision
+We will use Terraform as the primary Architecture as Code tool for all
+cloud environments, with HashiCorp Configuration Language (HCL) as
+the standard syntax.
+
+## Consequences
+
+### Positive Consequences
+- Multi-cloud support for AWS and Azure
+- Large community and comprehensive provider ecosystem
+- Declarative syntax that matches our policy requirements
+- State management for traceability
+
+### Negative Consequences
+- Learning curve for teams accustomed to imperative scripting
+- Complexity in state file management
+- Cost for Terraform Cloud or Enterprise features
+
+### Mitigation
+- Training programmes for development teams
+- Implementation of Terraform remote state with Azure Storage
+- Pilot projects before full rollout
+</code></pre>
+<h3 id="example-2-database-technology-selection">Example 2: Database Technology Selection</h3>
+<pre><code class="language-markdown"># ADR-0007: Selection of PostgreSQL for Primary Database
+
+## Status
+Accepted
+
+## Context
+The application requires a robust relational database with support for
+complex queries, ACID compliance, and horizontal scaling capabilities.
+Current MySQL infrastructure is reaching performance limits.
+
+## Decision
+Migrate primary database to PostgreSQL with automated failover using
+Patroni and connection pooling via PgBouncer, managed through
+Architecture as Code.
+
+## Consequences
+
+### Positive Consequences
+- Advanced indexing capabilities and query optimisation
+- Strong ACID compliance and data integrity guarantees
+- Extensive extension ecosystem (PostGIS, pg_trgm)
+- Active community and comprehensive documentation
+
+### Negative Consequences
+- Migration effort and potential downtime during transition
+- Team training required for PostgreSQL-specific features
+- Increased infrastructure complexity with clustering
+
+### Mitigation
+- Phased migration with parallel running period
+- Comprehensive training programme for development teams
+- Automated testing of migration scripts and rollback procedures
+</code></pre>
+<h2 id="tools-and-best-practices-for-adr-within-architecture-as-code">Tools and Best Practices for ADR within Architecture as Code</h2>
+<h3 id="adr-tools-and-integration">ADR Tools and Integration</h3>
+<p>Several tools facilitate the creation and management of ADRs:</p>
+<p><strong>adr-tools</strong>: Command-line tool to create and manage ADR files<br />
+<strong>adr-log</strong>: Automatic generation of an ADR index and timeline<br />
+<strong>Architecture Decision Record plugins</strong>: Integration with IDEs such as VS Code</p>
+<p>For Architecture as Code projects, integrate ADRs into the Git repository structure:</p>
+<pre><code>docs/
+├── adr/
+│   ├── 0001-record-architecture-decisions.md
+│   ├── 0002-use-terraform-for-architecture-as-code.md
+│   └── 0003-implement-zero-trust.md
+└── README.md
+</code></pre>
+<h3 id="git-integration-and-workflow">Git Integration and Workflow</h3>
+<p>ADRs function optimally when integrated into Git-based development workflows:</p>
+<p><strong>Code Reviews</strong>: Include ADRs in the code review process for architecture changes<br />
+<strong>Branch Protection</strong>: Require ADRs for major architectural changes<br />
+<strong>Automation</strong>: CI/CD pipelines can validate that relevant ADRs exist for significant changes</p>
+<h3 id="quality-standards">Quality Standards</h3>
+<p>To meet compliance requirements, ADRs should follow specific quality standards:</p>
+<p><strong>Language</strong>: ADRs should use clear, consistent language appropriate for the team and stakeholders<br />
+<strong>Traceability</strong>: Clear linking between ADRs and implemented code<br />
+<strong>Access</strong>: Transparent access for auditors and compliance officers<br />
+<strong>Retention</strong>: Long-term archiving according to organisational policies</p>
+<h3 id="review-and-governance-process">Review and Governance Process</h3>
+<p>Effective ADR implementation requires established review processes:</p>
+<p><strong>Stakeholder Engagement</strong>: Involve relevant teams and architects in the review
+<strong>Timeline</strong>: Define timeframes for feedback and decisions
+<strong>Escalation</strong>: Clear escalation paths for disputed decisions
+<strong>Approval Authority</strong>: Documented roles for different types of architecture decisions</p>
+<h3 id="code-managed-discovery-review-and-supersession">Code-Managed Discovery, Review, and Supersession</h3>
+<p>Treating ADRs as code artefacts keeps the decision log maintainable and auditable, aligning with ThoughtWorks' recommendation that architectural governance should be enforced through automated tooling rather than ad-hoc processes (<a href="../33_references/#thoughtworks-architecture-as-code-the-next-evolution">ThoughtWorks, 2024</a>).</p>
+<p><strong>Discovery</strong>: Automation hooks can raise draft ADRs whenever a change request touches regulated components. A lightweight bot monitors backlog labels such as <code>architecture-impact</code> and scaffolds a new ADR file with templated metadata, prompting authors to capture context early. This ensures design gaps are surfaced before implementation begins and eliminates the scramble to document decisions retrospectively.</p>
+<p><strong>Review</strong>: Pull request templates should require reviewers to confirm that the ADR references associated code changes, test evidence, and governance controls. Continuous integration jobs lint front matter fields (<code>status</code>, <code>last_reviewed</code>, <code>next_review_due</code>, <code>linked_components</code>) and fail the build if required metadata is missing. Mandatory reviewers defined in <code>CODEOWNERS</code> provide cross-functional oversight whilst keeping the workflow fully traceable in Git.</p>
+<p><strong>Supersession</strong>: When a decision evolves, a CLI task generates a successor ADR that automatically references the prior record and updates the status of the deprecated entry. A scheduled pipeline then posts reminders when the <code>next_review_due</code> date passes so teams cannot forget to revisit ageing decisions. The resulting Git history links proposals, discussion threads, approvals, and supersessions without manual spreadsheet tracking.</p>
+<h3 id="operationalising-adr-metadata">Operationalising ADR Metadata</h3>
+<p>ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on protecting Terraform state demonstrates how surfacing operational controls in dashboards prevents regressions; ADR metadata can mirror this practice by flagging decisions that enforce secure remote backends, rotation schedules, or access monitoring (<a href="../33_references/#hashicorp-securing-terraform-state">HashiCorp, 2024</a>).</p>
+<p>Teams can emit a structured JSON index during CI that feeds architectural observability boards. Typical widgets include:</p>
+<ul>
+<li><strong>Lifecycle timeline</strong> – a chronological view generated via <code>adr log</code> that shows proposals, acceptances, and supersessions, doubling as an automated change log.</li>
+<li><strong>Policy coverage heat map</strong> – cross-references ADR tags against policy-as-code checks to reveal services that are missing mandated controls.</li>
+<li><strong>Review debt tracker</strong> – flags ADRs whose <code>next_review_due</code> date has passed, enabling leadership to prioritise refresh work in sprint planning.</li>
+</ul>
+<p>Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls (<a href="../33_references/#thoughtworks-architecture-as-code-the-next-evolution">ThoughtWorks, 2024</a>).</p>
+<h3 id="preventing-knowledge-loss-through-adrs">Preventing Knowledge Loss Through ADRs</h3>
+<p>ADRs preserve organisational memory when staff transitions occur. During onboarding, new engineers can query the ADR index for the services they inherit and follow links to the relevant implementation repositories, monitoring dashboards, and runbooks. A typical handover checklist includes:</p>
+<ol>
+<li>Review the most recent ADRs affecting the service to understand architectural intent and compliance boundaries.</li>
+<li>Inspect the automation evidence (pipeline runs, policy reports, state snapshots) referenced in the ADR to verify the decision is still active.</li>
+<li>Capture any deviations in a "drift" section and schedule a follow-up review if the ADR's <code>next_review_due</code> date has lapsed.</li>
+</ol>
+<p>This workflow prevented significant disruption during a recent platform rotation: when the outgoing lead departed, the incoming engineer replayed the ADR change log to rebuild the rationale for Terraform state hardening, reusing the monitoring queries and remediation playbooks recorded alongside the decision. By curating these artefacts in code, teams avoid losing critical context to private notes or unstructured chat history, fulfilling the maintainability objective of keeping architecture knowledge evergreen (<a href="../33_references/#hashicorp-securing-terraform-state">HashiCorp, 2024</a>).</p>
+<h2 id="integration-with-architecture-as-code">Integration with Architecture as Code</h2>
+<p>ADRs play a central role in the Architecture as Code methodology by documenting design decisions that are then implemented as code. This integration creates a clear link between intentions and implementation.</p>
+<p>Architecture as Code templates can refer to relevant ADRs to explain design decisions and implementation choices. This creates self-documenting infrastructure where the code is complemented by architectural rationale.</p>
+<p>Automated validation can be implemented to ensure infrastructure code follows established ADRs. Policy as Code tools such as Open Policy Agent can enforce architectural guidelines based on documented decisions in ADRs.</p>
+<p>This integration enables transparent governance and compliance where architecture decisions can be tracked from initial documentation through implementation to operational deployment.</p>
+<h2 id="compliance-and-quality-standards">Compliance and Quality Standards</h2>
+<p>The ADR methodology supports compliance requirements through structured documentation that enables:</p>
+<p><strong>Regulatory Compliance</strong>: Systematic documentation for GDPR, PCI-DSS, and industry-specific regulations<br />
+<strong>Audit Readiness</strong>: Complete trace of architecture decisions and their rationale<br />
+<strong>Risk Management</strong>: Documented risk assessments and mitigation strategies<br />
+<strong>Knowledge Management</strong>: Structured knowledge transfer between teams and over time</p>
+<p>Organisations can use ADRs to meet transparency requirements and provide insight into technical decisions that affect services and data management.</p>
+<h2 id="future-development-and-trends">Future Development and Trends</h2>
+<p>The ADR methodology is continuously evolving with the integration of new tools and processes:</p>
+<p><strong>AI-Assisted ADR</strong>: Machine learning to identify when new ADRs are needed based on code changes<br />
+<strong>Automated Decision Tracking</strong>: Integration with architectural analysis tools<br />
+<strong>Organisation-Wide ADR Sharing</strong>: Standardised formats for sharing anonymised architecture patterns</p>
+<p>In the Architecture as Code context, tools are being developed for automatic correlation between ADRs and deployed infrastructure, enabling real-time validation of architectural compliance.</p>
+<p>Organisations can benefit from industry initiatives for the standardisation of digital documentation practices that build on the ADR methodology for increased interoperability and compliance.</p>
+<h2 id="summary">Summary</h2>
+<p>The modern Architecture as Code methodology represents the future of infrastructure management. Architecture Decision Records are a fundamental component of modern Architecture as Code practice. Through structured documentation of architecture decisions, organisations gain transparency, traceability, and knowledge transfer that are critical for successful digital transformation initiatives.</p>
+<p>Effective ADR implementation requires organisational support, standardised processes, and integration with existing development workflows. For Architecture as Code projects, ADRs create the link between design intentions and code implementation that improves maintainability and compliance.</p>
+<p>Organisations that adopt ADR methodology position themselves for successful Architecture as Code transformation with robust governance processes and transparent decision documentation that supports both internal requirements and external compliance expectations.</p>
+<h2 id="looking-ahead">Looking Ahead</h2>
+<p>With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. <a href="../05_automation_devops_cicd/">Chapter 5 on Automation, DevOps and CI/CD</a> demonstrates how the decisions we document through ADRs become executable infrastructure, whilst <a href="../07_containerisation/">Chapter 7 on Containerisation</a> shows how these principles extend to application deployment and orchestration.</p>
+<p>Sources:
+- Architecture Decision Records Community. "ADR Guidelines and Templates." <a href="https://adr.github.io">https://adr.github.io</a>
+- Nygard, M. "Documenting Architecture Decisions." 2011.
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
+- HashiCorp. "Securing Terraform State." HashiCorp Developer Documentation, 2024.
+- ThoughtWorks. "Architecture Decision Records." Technology Radar, 2023.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../03_version_control/" class="btn btn-neutral float-left" title="Version Control and Code Structure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../part_b_platform/" class="btn btn-neutral float-right" title="index">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../03_version_control/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../part_b_platform/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

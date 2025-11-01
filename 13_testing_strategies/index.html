@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/13_testing_strategies/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Testing Strategies for Infrastructure as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Testing Strategies for Infrastructure as Code";
+        var mkdocs_page_input_path = "13_testing_strategies.md";
+        var mkdocs_page_url = "/13_testing_strategies/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Testing Strategies for Infrastructure as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unit-testing-for-codified-infrastructure">Unit Testing for Codified Infrastructure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#comparing-pulumi-and-terraform-testability">Comparing Pulumi and Terraform Testability</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automated-pipeline-scaffolding-for-terraform-and-pulumi">Automated pipeline scaffolding for Terraform and Pulumi</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test-management-with-vitest-for-architecture-as-code">Test Management with Vitest for Architecture as Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#why-vitest-is-relevant-for-architecture-as-code">Why Vitest is Relevant for Architecture as Code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configuration-of-vitest-for-architecture-as-code-projects">Configuration of Vitest for Architecture as Code Projects</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#practical-examples-for-architecture-as-code-testing">Practical Examples for Architecture as Code Testing</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example-1-testing-terraform-configuration-generators">Example 1: Testing Terraform Configuration Generators</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-2-testing-infrastructure-validation-scripts">Example 2: Testing Infrastructure Validation Scripts</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#integration-in-cicd-pipeline">Integration in CI/CD Pipeline</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recommendations-for-test-organisation">Recommendations for Test Organisation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automation-and-watch-mode">Automation and Watch Mode</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integration-testing-and-environment-validation">Integration Testing and Environment Validation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#chaos-monkey-experiments">Chaos Monkey Experiments</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security-and-compliance-testing">Security and Compliance Testing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#performance-and-scalability-testing">Performance and Scalability Testing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements-as-code-and-testability">Requirements as Code and Testability</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#requirement-traceability-in-practice">Requirement Traceability in Practice</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automated-requirements-verification">Automated Requirements Verification</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-examples">Practical Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#terraform-unit-testing-with-terratest">Terraform Unit Testing with Terratest</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#policy-as-code-testing-with-opa">Policy-as-Code Testing with OPA</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kubernetes-integration-testing">Kubernetes Integration Testing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-infrastructure-testing">Kubernetes Infrastructure Testing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pipeline-automation-for-infrastructure-testing">Pipeline Automation for Infrastructure Testing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cicd-pipeline-for-infrastructure-testing">CI/CD Pipeline for Infrastructure Testing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-and-references">Sources and References</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part D – Delivery & Operations</li>
+      <li class="breadcrumb-item active">Testing Strategies for Infrastructure as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/13_testing_strategies.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="testing-strategies-for-infrastructure-as-code">Testing Strategies for Infrastructure as Code</h1>
+<p><img alt="Test pyramid for architecture as code" src="../images/diagram_13_test_pyramid.png" /></p>
+<p><em>Figure 13.1: Architecture as Code Test Pyramid</em></p>
+<p>A comprehensive testing strategy for Architecture as Code requires multiple testing levels, from unit tests to end-to-end validation. The test pyramid illustrates the structured progression from rapid developer tests to comprehensive integration validation, with each layer serving distinct quality assurance purposes.</p>
+<h2 id="overview">Overview</h2>
+<p>Testing codified infrastructure differs fundamentally from traditional software testing by focusing on architectural configuration, resource compatibility and environmental consistency rather than business logic. Effective Architecture as Code testing ensures configurations produce expected results consistently across different environments whilst maintaining security, compliance and cost efficiency.</p>
+<p>Modern codified infrastructure testing encompasses multiple dimensions: syntactic validation of code, policy compliance checking, cost forecasting, security vulnerability analysis and functional testing of deployed infrastructure. This multilayered approach identifies problems early in the development cycle when they are cheaper and simpler to fix, preventing costly production incidents.</p>
+<p>Organisations with strict compliance requirements must implement comprehensive testing that validates both technical functionality and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards that must be verified automatically through policy-as-code frameworks.</p>
+<p>Test automation for codified infrastructure enables continuous integration and continuous deployment patterns that accelerate delivery whilst reducing the risk of production disruptions. These testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack.</p>
+<h2 id="unit-testing-for-codified-infrastructure">Unit Testing for Codified Infrastructure</h2>
+<p>Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure. This enables rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.</p>
+<p>Programmatic Architecture as Code platforms such as Pulumi and the AWS Cloud Development Kit (CDK) make this style of testing first-class by allowing infrastructure definitions to live alongside TypeScript, Python, or C# unit tests. Pulumi’s testing framework enables assertions on resource properties and policy attachments before a deployment occurs, while AWS CDK’s assertions library validates synthesised templates to ensure networking rules, tagging strategies, and compliance controls honour architectural guardrails. Embedding these checks directly within developer workflows aligns with Architecture as Code’s emphasis on executable governance.</p>
+<p>Terraform testing tools such as Terratest, terraform-compliance and Checkov enable automated validation of HCL code against predefined policies and codified infrastructure best practices. These tools can integrate into IDEs for real-time feedback during development and into CI/CD pipelines for automated quality gates.</p>
+<h3 id="comparing-pulumi-and-terraform-testability">Comparing Pulumi and Terraform Testability</h3>
+<p>Pulumi's <em>Testing Infrastructure as Code Programs</em> guidance (2024, Source [15]) emphasises that defining infrastructure through general-purpose languages lets engineers reuse familiar unit-testing frameworks, wire in Pulumi's provider mocks, and execute assertions locally without touching the cloud. The article demonstrates IaC checks running alongside application suites—<code>npm test</code>, <code>pytest</code>, or similar—so developers iterate through short feedback loops that encourage test-first habits and reduce the cost of validation.</p>
+<p>The same guidance contrasts Pulumi's approach with declarative tools such as Terraform, highlighting that HCL lacks first-class unit-testing hooks and therefore leans on <code>terraform plan</code>, Terratest, <code>terraform test</code>, and policy-as-code engines to approximate the same assurance. Those options remain valuable, yet they routinely execute against rendered plans or ephemeral infrastructure, so feedback loops tend to stretch towards integration-time cadences rather than the in-IDE iterations Pulumi showcases in Source [15]. In both ecosystems, unit-level checks complement rather than replace integration and end-to-end tests that validate real infrastructure behaviour.</p>
+<p>Unit tests for codified infrastructure should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly important for reusable modules that are used across multiple projects, where changes can have wide-ranging impact on dependent resources.</p>
+<p>Mock testing strategies for cloud resources enable testing without actual cloud costs, which is essential for frequent testing cycles. Tools such as LocalStack and cloud provider simulators can simulate cloud services locally for comprehensive testing without infrastructure provisioning costs.</p>
+<h3 id="automated-pipeline-scaffolding-for-terraform-and-pulumi">Automated pipeline scaffolding for Terraform and Pulumi</h3>
+<p>Source [15] sets clear expectations that Infrastructure as Code repositories must treat testing as a first-class pipeline citizen rather than an optional local practice. To operationalise that guidance the continuous integration scaffolding should codify complementary stages for Pulumi- and Terraform-based stacks so that parity is maintained across mixed estates. The representative pipeline below layers static checks, unit-style execution, security scanning and integration rehearsals into one repeatable workflow:</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Pulumi focus</th>
+<th>Terraform focus</th>
+<th>Objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lint and format</td>
+<td><code>npm run lint</code>, <code>pulumi stack ls --json</code> to verify workspace metadata</td>
+<td><code>terraform fmt -check</code>, <code>terraform validate</code></td>
+<td>Catch syntax issues before artefacts are generated</td>
+</tr>
+<tr>
+<td>Contract and unit tests</td>
+<td><code>pulumi test</code> with local provider mocks and standard test frameworks</td>
+<td><code>go test ./...</code> for Terratest suites and <code>terraform test</code> for module assertions</td>
+<td>Execute fast feedback checks over resource definitions and policy attachments</td>
+</tr>
+<tr>
+<td>Policy enforcement</td>
+<td><code>pulumi up --policy-pack policies/</code> in preview mode</td>
+<td><code>checkov -d .</code>, <code>terraform-compliance</code> bundles enforcing regulatory guardrails</td>
+<td>Ensure security and compliance expectations are upheld before deployment</td>
+</tr>
+<tr>
+<td>Integration rehearsal</td>
+<td><code>pulumi preview</code> with targeted stacks in ephemeral environments</td>
+<td><code>terraform plan</code> against temporary workspaces and drift-detection jobs</td>
+<td>Validate orchestration logic, detect state drift, and rehearse rollback paths</td>
+</tr>
+</tbody>
+</table>
+<p>A minimal GitHub Actions job illustrating the shared scaffold is shown below. Equivalent concepts apply to Azure DevOps, GitLab, or Jenkins; the crucial element is that the Terraform and Pulumi paths implement the same assurance gates so that platform parity is maintained.</p>
+<pre><code class="language-yaml">name: infrastructure-ci
+
+on:
+  pull_request:
+    paths:
+      - &quot;iac/**&quot;
+
+jobs:
+  pulumi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run lint
+      - run: pulumi login --cloud-url ${PULUMI_BACKEND}
+      - run: pulumi stack select ${PULUMI_STACK}
+      - run: npm test
+      - run: pulumi test --stack ${PULUMI_STACK}
+      - run: pulumi up --stack ${PULUMI_STACK} --policy-pack policies --yes --refresh --preview
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: terraform fmt -check
+      - run: terraform init -backend=false
+      - run: terraform validate
+      - run: checkov -d .
+      - run: terraform test
+      - run: go test ./test
+      - name: Plan against ephemeral state
+        env:
+          TF_WORKSPACE: ci-${{ github.run_id }}
+        run: |
+          terraform init \
+            -backend-config=&quot;bucket=${TF_BACKEND_BUCKET}&quot; \
+            -backend-config=&quot;dynamodb_table=${TF_LOCK_TABLE}&quot; \
+            -backend-config=&quot;kms_key_id=${TF_KMS_KEY}&quot;
+          terraform plan -out=tfplan
+      - name: Upload plan for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraform-plan
+          path: tfplan
+</code></pre>
+<p>Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and <code>pulumi test</code> results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.</p>
+<h2 id="test-management-with-vitest-for-architecture-as-code">Test Management with Vitest for Architecture as Code</h2>
+<p>Vitest is a modern testing framework built for the Vite ecosystem that offers fast and effective testing of JavaScript/TypeScript code. For Architecture as Code initiatives that use modern tooling, Vitest is particularly relevant for testing configuration generators, validation scripts and automation tools that are often written in TypeScript or JavaScript.</p>
+<h3 id="why-vitest-is-relevant-for-architecture-as-code">Why Vitest is Relevant for Architecture as Code</h3>
+<p>Many modern Architecture as Code workflows include TypeScript/JavaScript components to generate, validate or transform infrastructure configurations. Vitest enables rapid unit testing of these components with first-class TypeScript support, which is critical to ensure correct configuration generation before deployment.</p>
+<p>Vitest's fast execution and watch mode enable tight development feedback loops when developing infrastructure configuration generators or policy validation scripts. This is particularly valuable for Architecture as Code initiatives where configuration errors can lead to costly infrastructure mistakes.</p>
+<p>Integration with Vite build tooling means that the same development environment can be used for both application code and infrastructure-related code, which reduces context switching and improves developer experience for teams that work with both application and infrastructure code.</p>
+<h3 id="configuration-of-vitest-for-architecture-as-code-projects">Configuration of Vitest for Architecture as Code Projects</h3>
+<p><em>See Appendix A, Listing 13-A for the complete Vitest configuration example demonstrating test environment setup, coverage requirements and path resolution for Architecture as Code initiatives.</em></p>
+<p>The configuration should include:</p>
+<ul>
+<li>Node environment for infrastructure tooling</li>
+<li>Coverage requirements (minimum 80% for infrastructure code)</li>
+<li>Extended test timeout for infrastructure operations (30 seconds)</li>
+<li>Exclusion of Terraform directories and build artefacts</li>
+<li>Path aliases for cleaner imports</li>
+</ul>
+<h3 id="practical-examples-for-architecture-as-code-testing">Practical Examples for Architecture as Code Testing</h3>
+<p><img alt="Testing Strategy Quadrant" src="../images/diagram_13_testing_quadrant.png" /></p>
+<p><em>Figure 13.2: Architecture as Code Testing Strategy Quadrant</em></p>
+<p>The testing quadrant above illustrates the balance between implementation complexity and testing coverage. Different testing strategies occupy distinct positions, with security scanning and policy testing offering high coverage with moderate complexity, whilst end-to-end tests provide comprehensive coverage at the cost of higher implementation complexity.</p>
+<h4 id="example-1-testing-terraform-configuration-generators">Example 1: Testing Terraform Configuration Generators</h4>
+<p>Configuration generators are TypeScript/JavaScript modules that programmatically create Terraform configurations with built-in validation and compliance rules. Testing these generators ensures they produce correct, compliant configurations consistently.</p>
+<p><em>See Appendix A, Listing 13-B for the complete Terraform configuration generator implementation and Listing 13-C for the corresponding test suite demonstrating GDPR compliance validation, regional restrictions and required tagging policies.</em></p>
+<p>Key testing patterns for configuration generators include:</p>
+<ul>
+<li><strong>Compliance validation</strong>: Ensure generated configurations meet regulatory requirements (e.g., EU-only regions for GDPR compliance)</li>
+<li><strong>Resource configuration</strong>: Validate that generated resources have correct properties and tags</li>
+<li><strong>Environment-specific logic</strong>: Test that production environments receive enhanced security and redundancy</li>
+<li><strong>Error conditions</strong>: Verify that invalid inputs trigger appropriate errors</li>
+</ul>
+<h4 id="example-2-testing-infrastructure-validation-scripts">Example 2: Testing Infrastructure Validation Scripts</h4>
+<p>Infrastructure validators are utilities that check existing or planned infrastructure against organisational policies, security standards and compliance requirements before deployment.</p>
+<p><em>See Appendix A, Listing 13-D for the infrastructure validator implementation and Listing 13-E for the comprehensive test suite covering tag validation, security group rules and data classification policies.</em></p>
+<p>Critical validation test patterns include:</p>
+<ul>
+<li><strong>Required tag enforcement</strong>: Ensure all resources have mandatory tags</li>
+<li><strong>Data classification validation</strong>: Verify correct classification levels and GDPR compliance tags</li>
+<li><strong>Security group rules</strong>: Block dangerous port configurations open to the internet</li>
+<li><strong>Warning vs error conditions</strong>: Differentiate between hard failures and advisory warnings</li>
+</ul>
+<h3 id="integration-in-cicd-pipeline">Integration in CI/CD Pipeline</h3>
+<p>Vitest integrates seamlessly into CI/CD pipelines for automated testing of infrastructure code. A typical GitHub Actions workflow runs tests on pull requests and pushes, generates coverage reports and provides feedback through automated comments.</p>
+<p><em>See Appendix A, Listing 13-F for a complete GitHub Actions workflow demonstrating Vitest integration with coverage reporting and PR comments.</em></p>
+<p>Add test scripts to <code>package.json</code>:</p>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;test:vitest&quot;: &quot;vitest run&quot;,
+    &quot;test:watch&quot;: &quot;vitest watch&quot;,
+    &quot;test:coverage&quot;: &quot;vitest run --coverage&quot;,
+    &quot;test:ui&quot;: &quot;vitest --ui&quot;
+  }
+}
+</code></pre>
+<h3 id="recommendations-for-test-organisation">Recommendations for Test Organisation</h3>
+<p><strong>File Structure for Architecture as Code Tests:</strong></p>
+<pre><code>project/
+├── src/
+│   ├── generators/
+│   │   ├── terraform-config.ts
+│   │   └── terraform-config.test.ts
+│   ├── validators/
+│   │   ├── infrastructure-validator.ts
+│   │   └── infrastructure-validator.test.ts
+│   └── utils/
+│       ├── compliance-checker.ts
+│       └── compliance-checker.test.ts
+├── tests/
+│   ├── integration/
+│   │   └── end-to-end.test.ts
+│   └── fixtures/
+│       └── sample-configs.ts
+├── vitest.config.ts
+└── package.json
+</code></pre>
+<p><strong>Best Practices for Infrastructure Testing with Vitest:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Guideline</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fast unit tests</td>
+<td>Keep unit tests fast (&lt;100ms per test)</td>
+<td>Enables effective watch mode during development, rapid feedback loops</td>
+</tr>
+<tr>
+<td>Isolated tests</td>
+<td>Each test should be independent and run in any order without side effects</td>
+<td>Prevents flaky tests, enables parallel execution, improves reliability</td>
+</tr>
+<tr>
+<td>Descriptive test names</td>
+<td>Use clear test descriptions: <code>'should throw error for non-EU regions'</code></td>
+<td>Self-documenting tests, easier debugging, better test reports</td>
+</tr>
+<tr>
+<td>Test fixtures</td>
+<td>Use shared test fixtures for common infrastructure configurations</td>
+<td>Reduces duplication, ensures consistency, but be cautious with mutable state</td>
+</tr>
+<tr>
+<td>Coverage goals</td>
+<td>Aim for at least 80% code coverage for infrastructure code</td>
+<td>Focus on meaningful tests rather than coverage metrics, ensure critical paths tested</td>
+</tr>
+<tr>
+<td>Mock external dependencies</td>
+<td>Use Vitest's mocking capabilities for cloud provider SDKs and external APIs</td>
+<td>Faster tests, no cloud costs, deterministic results, enables offline testing</td>
+</tr>
+<tr>
+<td>Snapshot testing</td>
+<td>Use snapshot tests to validate generated configuration files</td>
+<td>Catch unintended configuration changes, document expected output structure</td>
+</tr>
+</tbody>
+</table>
+<h3 id="automation-and-watch-mode">Automation and Watch Mode</h3>
+<p>One of Vitest's biggest benefits is watch mode that enables continuous testing during development:</p>
+<pre><code class="language-bash"># Start watch mode for automated re-testing
+npm run test:watch
+
+# Run only related tests when files change
+npm run test:watch -- --changed
+
+# Run tests with UI for interactive debugging
+npm run test:ui
+</code></pre>
+<p>This enables tight feedback loops where infrastructure code changes are immediately validated, reducing the time between code change and feedback from seconds to milliseconds.</p>
+<p>For organisations with strict compliance requirements, automated testing with Vitest can ensure that infrastructure configurations consistently meet GDPR requirements, security policies and organisational standards before deployment.</p>
+<h2 id="integration-testing-and-environment-validation">Integration Testing and Environment Validation</h2>
+<p>Integration testing for Infrastructure as Code verifies that different infrastructure components function together correctly and that deployed infrastructure meets performance and security requirements. This requires temporary test environments that closely mirror production configurations.</p>
+<p>End-to-end testing workflows must validate entire deployment pipelines from source code changes to functional infrastructure. This includes testing CI/CD pipeline configurations, secret management, monitoring setup and rollback procedures that are critical for production stability.</p>
+<p>Environment parity testing ensures infrastructure behaves consistently across development, staging and production environments. This testing identifies environment-specific issues that can cause deployment failures or performance discrepancies between environments.</p>
+<p>Chaos engineering principles can be applied to infrastructure testing by systematically introducing failures in test environments to validate resilience and recovery mechanisms. This is particularly valuable for mission-critical systems that require high availability guarantees.</p>
+<h3 id="chaos-monkey-experiments">Chaos Monkey Experiments</h3>
+<p>Chaos Monkey popularised the idea of terminating running services deliberately to test that distributed systems heal without human intervention. When the failure scenarios are described alongside Infrastructure as Code definitions, teams can rehearse instance loss, network blackouts, or degraded dependencies as codified experiments rather than ad-hoc drills.</p>
+<p>Applying Chaos Monkey style experiments through AaC pipelines keeps the blast radius controlled. The failure injection policies, scheduling rules, and opt-in environments live in version control, making every change reviewable and auditable. Observability dashboards and incident runbooks should be linked directly from the experiment definition so responders have immediate context.</p>
+<p>Effective guardrails include:
+- Running experiments in lower environments first and promoting only after exit criteria are met.
+- Limiting concurrent fault injection to avoid cascading outages and to preserve customer trust.
+- Broadcasting experiment windows and expected signals so on-call staff know which alerts to treat as part of the exercise.
+- Capturing learnings as Architecture Decision Records when resilience gaps trigger new platform capabilities.</p>
+<p>By treating Chaos Monkey activity as a repeatable test, organisations build confidence that automated recovery paths are reliable and that human responders can focus on the genuinely unexpected.</p>
+<h2 id="security-and-compliance-testing">Security and Compliance Testing</h2>
+<p>Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, validation of encryption settings and verification of network security policies.</p>
+<p>Compliance testing automation ensures infrastructure configurations meet regulatory requirements continuously. Organisations must validate GDPR compliance, financial regulations and government security standards through automated testing that can provide audit trails for compliance reporting.</p>
+<p>Policy-as-code frameworks such as Open Policy Agent (OPA) and AWS Config Rules enable declarative definition of compliance policies that can be enforced automatically during infrastructure deployment. This preventative approach is more effective than reactive compliance monitoring.</p>
+<p>Vulnerability scanning for infrastructure dependencies must include container images, operating system configurations and third-party software components. Integration with security scanning tools in CI/CD pipelines ensures security vulnerabilities are identified before deployment to production.</p>
+<h2 id="performance-and-scalability-testing">Performance and Scalability Testing</h2>
+<p>Performance testing for Infrastructure as Code focuses on validation of infrastructure capacity, response times and resource utilisation under various load conditions. This is critical for applications that require predictable performance characteristics under varying traffic patterns.</p>
+<p>Load testing strategies must validate auto-scaling configurations, resource limits and failover mechanisms under realistic traffic scenarios. Infrastructure performance testing can include database performance under load, network throughput validation and storage I/O capacity verification.</p>
+<p>Scalability testing verifies that infrastructure can handle projected growth efficiently through automated scaling mechanisms. This includes testing horizontal scaling for stateless services and validation of data partitioning strategies for stateful systems.</p>
+<p>Capacity planning validation through performance testing helps optimise resource configurations for cost-effectiveness whilst performance requirements are met. This is particularly important for organisations that balance cost optimisation with service level requirements.</p>
+<h2 id="requirements-as-code-and-testability">Requirements as Code and Testability</h2>
+<p><img alt="Requirements and testing relation" src="../images/diagram_12_requirements_testing.png" /></p>
+<p><em>Figure 13.3: Requirements as Code - Traceability from Business Requirements to Infrastructure Tests</em></p>
+<p>The diagram above illustrates the relationship between business requirements, functional requirements and verification methods. This demonstrates how Architecture as Code enables traceable testing from higher abstraction levels down to concrete Infrastructure as Code implementations, creating a direct link between business objectives and technical validation.</p>
+<p>Requirements as Code represents a paradigm shift where business requirements and compliance requirements are codified in machine-readable form alongside infrastructure code. This enables automated validation that infrastructure genuinely meets specified requirements throughout the entire development lifecycle.</p>
+<p>By defining Requirements as Code, a direct connection is created between business requirements, functional requirements and the automated tests that verify Infrastructure as Code implementations. This traceability is critical for organisations that must demonstrate compliance and for development teams that need to understand business consequences of technical decisions.</p>
+<h3 id="requirement-traceability-in-practice">Requirement Traceability in Practice</h3>
+<p>Requirements traceability for Infrastructure as Code means that each infrastructure component can be linked back to specific business requirements or compliance requirements. This is particularly important for organisations that must meet GDPR, financial regulations or government requirements.</p>
+<p>Tools such as Open Policy Agent (OPA) enable expression of compliance requirements as policies that can be evaluated automatically against infrastructure configurations. These policies become testable requirements that can run continuously to ensure ongoing compliance.</p>
+<p>Requirement validation testing ensures infrastructure is not only technically correct but also meets business intent. This includes validation of security requirements, performance requirements, accessibility requirements and cost constraints as defined by business stakeholders.</p>
+<h3 id="automated-requirements-verification">Automated Requirements Verification</h3>
+<p><em>See Appendix A, Listing 13-G for a complete requirements verification framework demonstrating how to define requirements in YAML format with associated test specifications, compliance mappings and priority levels.</em></p>
+<p>The requirements framework should include:</p>
+<ul>
+<li>Requirement metadata (ID, description, priority, compliance standards)</li>
+<li>Test specifications for each requirement</li>
+<li>Automated validation logic</li>
+<li>Compliance coverage reporting</li>
+<li>Audit trail generation</li>
+</ul>
+<p><em>See Appendix A, Listing 13-H for the Python implementation of the requirements validator that executes tests and generates compliance reports.</em></p>
+<h2 id="practical-examples">Practical Examples</h2>
+<h3 id="terraform-unit-testing-with-terratest">Terraform Unit Testing with Terratest</h3>
+<p><em>See Appendix A, Listing 13-I for a comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.</em></p>
+<p>The Terratest framework enables:</p>
+<ul>
+<li>Parallel test execution for faster feedback</li>
+<li>Real infrastructure deployment and validation</li>
+<li>Comprehensive validation of deployed resources</li>
+<li>Automated cleanup after test completion</li>
+<li>Integration with cloud provider SDKs for validation</li>
+</ul>
+<h3 id="policy-as-code-testing-with-opa">Policy-as-Code Testing with OPA</h3>
+<p><em>See Appendix A, Listing 13-J for Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.</em></p>
+<p>OPA testing patterns include:</p>
+<ul>
+<li>Declarative policy definitions in Rego language</li>
+<li>Unit tests for individual policy rules</li>
+<li>Integration with Terraform plan outputs</li>
+<li>Automated policy enforcement in CI/CD pipelines</li>
+</ul>
+<h2 id="kubernetes-integration-testing">Kubernetes Integration Testing</h2>
+<h3 id="kubernetes-infrastructure-testing">Kubernetes Infrastructure Testing</h3>
+<p><em>See Appendix A, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption.</em></p>
+<p>Kubernetes infrastructure testing patterns include:</p>
+<ul>
+<li>Resource quota and limit validation</li>
+<li>Pod Security Policy enforcement verification</li>
+<li>Network policy isolation testing</li>
+<li>Persistent volume encryption validation</li>
+<li>RBAC permission testing</li>
+<li>Compliance requirement validation</li>
+</ul>
+<p>The test suite should run as a Kubernetes Job that validates cluster configuration against organisational policies and regulatory requirements, ensuring that all deployed resources meet security and compliance standards.</p>
+<h2 id="pipeline-automation-for-infrastructure-testing">Pipeline Automation for Infrastructure Testing</h2>
+<h3 id="cicd-pipeline-for-infrastructure-testing">CI/CD Pipeline for Infrastructure Testing</h3>
+<p><em>See Appendix A, Listing 13-L for a comprehensive GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis, unit testing, integration testing, compliance validation and performance testing stages.</em></p>
+<p>A complete infrastructure testing pipeline should include:</p>
+<p><strong>Static Analysis Stage:</strong>
+- Terraform format checking
+- Terraform validation
+- Security scanning with Checkov
+- Policy testing with OPA</p>
+<p><strong>Unit Testing Stage:</strong>
+- Terratest unit tests
+- Mock provider testing
+- Configuration validation</p>
+<p><strong>Integration Testing Stage:</strong>
+- Temporary environment deployment
+- End-to-end infrastructure validation
+- Automated cleanup</p>
+<p><strong>Compliance Validation Stage:</strong>
+- GDPR compliance checking
+- Data encryption verification
+- Regional compliance validation
+- Security standards verification</p>
+<p><strong>Performance Testing Stage:</strong>
+- Load testing of auto-scaling configurations
+- Cost analysis and budget validation
+- Resource utilisation verification</p>
+<p>Each stage should provide clear feedback and block deployment on critical failures whilst allowing warnings to proceed with appropriate notifications.</p>
+<h2 id="summary">Summary</h2>
+<p>Comprehensive testing strategies for Infrastructure as Code are essential to ensure reliable, secure and cost-effective infrastructure deployments. A well-designed test pyramid with unit tests, integration tests and end-to-end validation can dramatically reduce production issues and improve developer confidence.</p>
+<p>Modern codified infrastructure testing encompasses multiple layers:</p>
+<ul>
+<li><strong>Unit testing</strong> with tools like Terratest and Vitest provides rapid feedback on configuration correctness</li>
+<li><strong>Integration testing</strong> validates that components work together in realistic environments</li>
+<li><strong>Security and compliance testing</strong> ensures regulatory requirements are met automatically</li>
+<li><strong>Performance testing</strong> validates infrastructure can handle expected loads efficiently</li>
+<li><strong>Requirements as Code</strong> provides traceability from business needs to technical implementation</li>
+</ul>
+<p>Organisations must particularly focus on compliance testing that validates GDPR requirements, financial regulations and government security standards. Automated policy testing with tools such as OPA enables continuous compliance verification without manual overhead.</p>
+<p>Investment in robust Infrastructure as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies enable comprehensive validation without prohibitive costs or complexity.</p>
+<p>The testing quadrant diagram (Figure 13.2) illustrates how different testing strategies balance implementation complexity against testing coverage, helping teams prioritise their testing investments. Security scanning and policy testing offer high coverage with moderate implementation effort, making them ideal early investments, whilst end-to-end testing provides comprehensive validation at higher implementation cost.</p>
+<h2 id="sources-and-references">Sources and References</h2>
+<ul>
+<li>Terratest Documentation. "Infrastructure Testing for Terraform." Gruntwork, 2024.</li>
+<li>Open Policy Agent. "Policy Testing Best Practices for Infrastructure as Code." CNCF OPA Project, 2024.</li>
+<li>AWS. "Infrastructure Testing Strategy Guide." Amazon Web Services, 2024.</li>
+<li>Kubernetes. "Testing Infrastructure and Applications." Kubernetes Documentation, 2024.</li>
+<li>NIST. "Security Testing for Cloud Infrastructure." NIST Cybersecurity Framework, 2024.</li>
+<li>CSA. "Cloud Security Testing Guidelines." Cloud Security Alliance, 2024.</li>
+<li>Vitest. "Next Generation Testing Framework." Vitest Documentation, 2024.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../part_d_delivery/" class="btn btn-neutral float-left" title="index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../14_practical_implementation/" class="btn btn-neutral float-right" title="Architecture as Code in Practice">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../part_d_delivery/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../14_practical_implementation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/03_version_control/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Version Control and Code Structure - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Version Control and Code Structure";
+        var mkdocs_page_input_path = "03_version_control.md";
+        var mkdocs_page_url = "/03_version_control/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Version Control and Code Structure</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#git-based-workflow-for-infrastructure">Git-based workflow for infrastructure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation-as-code-worked-example">Documentation-as-code worked example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#abstraction-and-governance-responsibilities-across-aac-and-iac">Abstraction and governance responsibilities across AaC and IaC</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#code-organisation-and-module-structure">Code organisation and module structure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#branch-protections-and-automated-checks-for-architectural-repositories">Branch protections and automated checks for architectural repositories</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#infrastructure-testing-harnesses-preserve-architectural-intent">Infrastructure testing harnesses preserve architectural intent</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transparency-through-version-control">Transparency through version control</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part A – Foundations</li>
+      <li class="breadcrumb-item active">Version Control and Code Structure</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/03_version_control.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="version-control-and-code-structure">Version Control and Code Structure</h1>
+<p>Effective version control forms the backbone of Architecture as Code implementations. Applying the same practices as software development to infrastructure definitions delivers traceability, collaboration opportunities, and quality control.</p>
+<p><img alt="Version Control and Code structure" src="../images/diagram_03_chapter2.png" /></p>
+<p>The diagram illustrates the typical flow from a Git repository through branching strategy and code review to final deployment, ensuring controlled and traceable infrastructure development.</p>
+<h2 id="git-based-workflow-for-infrastructure">Git-based workflow for infrastructure</h2>
+<p>Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members. Each change is documented with commit messages that describe what was modified and why, creating a complete history of infrastructure evolution.</p>
+<h3 id="documentation-as-code-worked-example">Documentation-as-code worked example</h3>
+<p>This repository applies the guidance from Chapter 22 by storing documentation,
+diagrams, and ADRs beside the automation that builds the book. The
+<a href="../documentation_workflow/"><code>docs/documentation_workflow.md</code></a> playbook codifies the
+pull-request workflow for narrative updates, while <code>docs/images/*.mmd</code> keeps every
+diagram version-controlled so reviewers can inspect both the rendered PNG and its
+textual definition. Contributors experience the same Git review cycle regardless of
+whether they are proposing a new policy module or refining prose, demonstrating the
+Documentation as Code pattern in practice.</p>
+<h3 id="abstraction-and-governance-responsibilities-across-aac-and-iac">Abstraction and governance responsibilities across AaC and IaC</h3>
+<p>Architecture as Code sits one abstraction layer above Infrastructure as Code. It defines the opinionated guardrails that keep architectural intent enforceable, whilst Infrastructure as Code implements the concrete runtime changes that honour those decisions. Thoughtworks highlights how Governance as Code requires opinionated policy checks and review automation at the architecture layer so that teams consistently adopt approved patterns (<a href="https://www.thoughtworks.com/radar/techniques/governance-as-code">Thoughtworks Technology Radar – Governance as Code</a>). Modern Infrastructure as Code frameworks such as AWS CDK introduce higher-level constructs that compile architectural blueprints into deployable resources, shrinking the translation gap between AaC models and executable infrastructure (<a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html">AWS – Cloud Development Kit (CDK) Developer Guide</a>). Treating the two as a layered abstraction forces version-control practices to keep the architectural source of truth distinct from the execution artefacts that consume it.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Architecture as Code</th>
+<th>Infrastructure as Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary artefact</td>
+<td>Codified guardrails, architectural policies, and structural models that describe intended system behaviour</td>
+<td>Environment templates, resource modules, and orchestration logic that realise those intentions</td>
+</tr>
+<tr>
+<td>Abstraction level</td>
+<td>Works at the architectural decision layer, defining target-state patterns before implementation begins</td>
+<td>Operates at the resource layer, materialising compute, network, and platform services—often generated from higher-level libraries such as AWS CDK</td>
+</tr>
+<tr>
+<td>Repository scope</td>
+<td>Architectural models, decision records, and governance policies maintained as a dedicated source of truth</td>
+<td>Execution repositories that pull in approved patterns as modules, stacks, or blueprints ready for deployment</td>
+</tr>
+<tr>
+<td>Governance posture</td>
+<td>Opinionated controls embedded in pipelines to enforce approved patterns and audit evidence, as emphasised by Governance as Code guidance from Thoughtworks</td>
+<td>Executes changes within the guardrails defined by AaC, surfacing drift or policy violations back to architectural review workflows</td>
+</tr>
+<tr>
+<td>Feedback loop</td>
+<td>Architectural validation feeds pull-request checks, design reviews, and policy updates</td>
+<td>Plan, apply, and monitoring stages report on compliance and runtime state, providing telemetry that informs AaC refinements</td>
+</tr>
+</tbody>
+</table>
+<p>Bringing these responsibilities together ensures that architectural decisions stay actionable. AaC establishes the standards and verification required for compliant delivery, while IaC tooling—especially higher-level frameworks like AWS CDK—translates those structures into reproducible deployments without diluting the governance signals. Version control acts as the contract between layers: AaC repositories publish immutable guardrails, and IaC repositories consume them whilst keeping operational history visible for architectural review.</p>
+<h2 id="code-organisation-and-module-structure">Code organisation and module structure</h2>
+<p>A well-organised code structure is crucial for maintainability and collaboration in larger Architecture as Code projects. Modular design enables the reuse of infrastructure components across different projects and environments.</p>
+<p>Architecture teams should curate repository layouts that expose shared building blocks immediately. A conventional approach places architectural guardrails, reusable modules, and documentation playbooks in clearly labelled top-level directories (for example <code>architecture/</code>, <code>modules/</code>, and <code>docs/</code>). Each directory must contain a README that summarises ownership, usage patterns, and change controls so contributors can discover the correct entry point without relying on tribal knowledge (<a href="../33_references/#source-4">Source [4]</a>). Aligning naming conventions across repositories prevents duplicated modules and allows tooling such as dependency scanners and documentation generators to infer relationships automatically.</p>
+<h3 id="branch-protections-and-automated-checks-for-architectural-repositories">Branch protections and automated checks for architectural repositories</h3>
+<p>Repository hygiene is enforced through mandatory branch protection rules. Architecture as Code maintainers should enable required status checks that run the documentation build, diagram generation, and infrastructure linting pipelines before merges. Protected branches must also require pull-request reviews, signed commits, and linear history so that architectural artefacts cannot bypass agreed quality gates (<a href="../33_references/#source-4">Source [4]</a>). When a reviewer approves a change, the associated automation provides immutable evidence that diagrams have been regenerated, Markdown has passed prose linters, and infrastructure modules satisfy policy-as-code scanners.</p>
+<h3 id="infrastructure-testing-harnesses-preserve-architectural-intent">Infrastructure testing harnesses preserve architectural intent</h3>
+<p>Automated checks need to extend beyond formatting to verify that infrastructure definitions still reflect the intended architecture. Teams adopting higher-level frameworks such as the AWS Cloud Development Kit can codify architectural assertions—covering security groups, tagging baselines, and resource relationships—and execute them during pull-request validation (<a href="../33_references/#source-9">Source [9]</a>). CDK assertions evaluate synthesised templates without creating resources, allowing reviewers to catch breaking changes while feedback is inexpensive. Combining these harnesses with branch protections means a pull request only merges once the architectural contract, documentation build, and infrastructure unit tests all report success.</p>
+<h2 id="transparency-through-version-control">Transparency through version control</h2>
+<p>Version control systems, particularly Git integrated with platforms like GitHub, provide fundamental transparency mechanisms for Architecture as Code initiatives. Every change to infrastructure definitions is documented with clear commit messages, creating an auditable trail that answers critical questions: what changed, when did it change, who changed it, and most importantly, why was the change necessary?</p>
+<p>This transparency extends beyond code commits to encompass the entire collaborative workflow:</p>
+<p><strong>Pull Requests and Code Review</strong>: Every infrastructure change undergoes peer review through pull requests, making technical decisions visible to the entire team. Review comments become permanent documentation that future maintainers can reference when understanding architectural evolution.</p>
+<p><strong>Issues and Discussions</strong>: Platforms like GitHub provide Issues for tracking specific work items and Discussions for strategic deliberation. When architecture changes reference related Issues, stakeholders gain complete context—from initial problem identification through solution design to implementation and deployment. Issues create transparent decision records with clear ownership, whilst Discussions enable asynchronous strategic deliberation across distributed teams. Chapter 19 provides comprehensive guidance on implementing transparent workflows using Issues and Discussions as core communication channels for Architecture as Code initiatives.</p>
+<p><strong>Commit History</strong>: Git's complete history provides transparency into how architectures evolved over time. Teams can identify when specific patterns were introduced, understand the context that motivated particular decisions, and track how infrastructure responded to changing business requirements.</p>
+<p><strong>Branch Strategies</strong>: Transparent branching strategies (such as GitFlow or trunk-based development) make development workflows visible and predictable. Team members understand where to find in-progress work, how changes flow from development to production, and what quality gates each change must satisfy.</p>
+<p>This transparency builds trust within teams and with stakeholders. Leadership gains visibility into infrastructure changes without requiring manual status reports. Auditors can verify compliance through repository history rather than requesting bespoke documentation. New team members onboard faster by reading through the documented history of decisions and implementations.</p>
+<p>Sources:
+- GitHub Docs. "About protected branches." GitHub Documentation.
+- Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation.
+- Thoughtworks Technology Radar. "Governance as Code." Thoughtworks, 2024.
+- AWS. "AWS Cloud Development Kit (CDK) Developer Guide." <a href="https://docs.aws.amazon.com/cdk/latest/guide/home.html">https://docs.aws.amazon.com/cdk/latest/guide/home.html</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02_fundamental_principles/" class="btn btn-neutral float-left" title="Fundamental Principles of Architecture as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04_adr/" class="btn btn-neutral float-right" title="Architecture Decision Records (ADR)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../02_fundamental_principles/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../04_adr/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/26b_aac_anti_patterns/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Anti-Patterns in Architecture as Code Programmes - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Anti-Patterns in Architecture as Code Programmes";
+        var mkdocs_page_input_path = "26b_aac_anti_patterns.md";
+        var mkdocs_page_url = "/26b_aac_anti_patterns/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Anti-Patterns in Architecture as Code Programmes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#strategic-anti-patterns">Strategic Anti-Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#treating-aac-as-a-tool-purchase">Treating AaC as a Tool Purchase</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#running-without-an-architectural-north-star">Running Without an Architectural North Star</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ignoring-organisational-boundaries">Ignoring Organisational Boundaries</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#governance-and-compliance-anti-patterns">Governance and Compliance Anti-Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#policy-drift-through-manual-exceptions">Policy Drift Through Manual Exceptions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#audit-theatre-instead-of-continuous-evidence">Audit Theatre Instead of Continuous Evidence</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conflating-governance-with-bureaucracy">Conflating Governance with Bureaucracy</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#delivery-lifecycle-anti-patterns">Delivery Lifecycle Anti-Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fork-first-module-evolution">Fork-First Module Evolution</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pipeline-sprawl-without-ownership">Pipeline Sprawl Without Ownership</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#blind-automation-and-rollout-fatigue">Blind Automation and Rollout Fatigue</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tooling-anti-patterns">Tooling Anti-Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#over-engineering-early-stages">Over-Engineering Early Stages</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vendor-lock-in-disguised-as-best-practice">Vendor Lock-In Disguised as Best Practice</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#monitoring-as-a-secondary-concern">Monitoring as a Secondary Concern</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cultural-and-people-anti-patterns">Cultural and People Anti-Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#hero-culture-and-gatekeeping">Hero Culture and Gatekeeping</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#treating-aac-as-a-platform-team-hobby">Treating AaC as a Platform Team Hobby</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#neglecting-learning-and-career-pathways">Neglecting Learning and Career Pathways</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scaling-and-sustainability-anti-patterns">Scaling and Sustainability Anti-Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#expanding-without-maturity-gates">Expanding Without Maturity Gates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sustainability-as-a-postscript">Sustainability as a Postscript</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detection-and-early-warning-techniques">Detection and Early Warning Techniques</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#leading-indicators">Leading Indicators</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#feedback-channels">Feedback Channels</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualising-risk">Visualising Risk</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#remediation-playbook">Remediation Playbook</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part G – Future & Wrap-up</li>
+      <li class="breadcrumb-item active">Anti-Patterns in Architecture as Code Programmes</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/26b_aac_anti_patterns.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="anti-patterns-in-architecture-as-code-programmes">Anti-Patterns in Architecture as Code Programmes</h1>
+<p>Architecture as Code (AaC) brings architectural thinking into the same disciplined delivery processes that teams already apply to software and infrastructure. Yet programmes stumble when they copy technical mechanisms without reshaping culture, governance, and operational rhythms. This chapter examines recurring anti-patterns that undermine AaC initiatives across diverse industries. Understanding these pitfalls helps organisations design early safeguards, establish healthier feedback loops, and sustain momentum beyond the initial transformation campaign.</p>
+<p><img alt="Figure 26.1 – Architecture as Code anti-pattern radar" src="../images/diagram_26_anti_patterns.png" /></p>
+<p><em>Figure 26.1 maps common anti-pattern clusters across governance, tooling, teams, and delivery lifecycles, showing how blind spots propagate risk.</em></p>
+<h2 id="strategic-anti-patterns">Strategic Anti-Patterns</h2>
+<h3 id="treating-aac-as-a-tool-purchase">Treating AaC as a Tool Purchase</h3>
+<p>Executives sometimes assume that acquiring a single modelling or provisioning platform unlocks Architecture as Code. The anti-pattern manifests when budgets focus on licences and consultants whilst neglecting change management, governance design, and internal capability building. Teams inherit sophisticated tooling without a shared architectural vocabulary or decision-making forum. Models remain stale, infrastructure definitions diverge from reality, and senior leaders declare the experiment a failure.</p>
+<p><strong>How to recover:</strong> treat AaC as a product with its own roadmap, budget for coaching, and a guild that curates shared models in Git.</p>
+<h3 id="running-without-an-architectural-north-star">Running Without an Architectural North Star</h3>
+<p>Another strategic pitfall arises when programmes rush into codifying components without articulating architectural principles. Each team builds their own stack, enforcing local conventions that conflict with neighbouring services. The repository fragments into dozens of divergent patterns. When compliance auditors inspect the estate, they find no traceability between high-level intents and actual deployments.</p>
+<p><strong>How to recover:</strong> express architectural principles as executable templates, reference them in ADRs, and review the catalogue quarterly.</p>
+<h3 id="ignoring-organisational-boundaries">Ignoring Organisational Boundaries</h3>
+<p>AaC is often introduced by a central platform group. The anti-pattern appears when the platform team dictates patterns without understanding delivery contexts in retail branches, public sector agencies, or regional subsidiaries. Field teams bypass the central codebase, fork modules, and configure shadow pipelines. The central team responds with more rigid controls, accelerating fragmentation.</p>
+<p><strong>How to recover:</strong> form federated governance forums where platform architects and business units co-author patterns and track adoption quality.</p>
+<h2 id="governance-and-compliance-anti-patterns">Governance and Compliance Anti-Patterns</h2>
+<h3 id="policy-drift-through-manual-exceptions">Policy Drift Through Manual Exceptions</h3>
+<p>Organisations frequently maintain a growing list of manual policy exceptions stored in spreadsheets or email threads. Each exception bypasses automated enforcement, leading to drift between declared and actual controls. When auditors ask for evidence, the team spends weeks reconciling mismatched records.</p>
+<p><strong>How to recover:</strong> store time-boxed exceptions as code, surfaced automatically in pipelines until the owning team resolves them.</p>
+<h3 id="audit-theatre-instead-of-continuous-evidence">Audit Theatre Instead of Continuous Evidence</h3>
+<p>Some programmes focus on staging elaborate compliance demonstrations just before regulatory reviews. Dashboards are hand-crafted, scripts are executed manually, and once the auditors leave, the process disintegrates. This fosters a culture where compliance is a performance, not an everyday practice.</p>
+<p><strong>How to recover:</strong> generate policy evidence automatically in pipelines so auditors can review the repository instead of staged dashboards.</p>
+<h3 id="conflating-governance-with-bureaucracy">Conflating Governance with Bureaucracy</h3>
+<p>When governance boards replicate traditional change advisory boards, they become blockers rather than enablers. Requiring sign-off from multiple committees for routine adjustments encourages teams to circumvent the process altogether, undermining governance intent.</p>
+<p><strong>How to recover:</strong> replace blanket approvals with guardrails that link risk tiers to automated checks and collaborative reviews.</p>
+<h2 id="delivery-lifecycle-anti-patterns">Delivery Lifecycle Anti-Patterns</h2>
+<h3 id="fork-first-module-evolution">Fork-First Module Evolution</h3>
+<p>Teams sometimes copy shared modules instead of contributing improvements upstream. Within months, the organisation maintains dozens of subtly different security groups, network baselines, and data storage templates. Upgrades become impossible because every fork requires a bespoke patch.</p>
+<p><strong>How to recover:</strong> enforce contribution agreements, surface module drift automatically, and mentor teams through upstream pull requests.</p>
+<h3 id="pipeline-sprawl-without-ownership">Pipeline Sprawl Without Ownership</h3>
+<p>AaC depends on consistent pipelines for plan, review, and apply stages. The anti-pattern arises when each squad assembles its own toolchain. Some pipelines lack security scans, others skip unit tests, and documentation for incident recovery is missing entirely.</p>
+<p><strong>How to recover:</strong> publish managed pipeline templates with mandatory stages and monitor their availability, drift, and recovery time.</p>
+<h3 id="blind-automation-and-rollout-fatigue">Blind Automation and Rollout Fatigue</h3>
+<p>Automation is celebrated, but when teams ship sweeping architecture changes without progressive delivery techniques, outages multiply. Blind automation also manifests when pipelines continue deploying known-bad configurations because no one inserted automated safeties.</p>
+<p><strong>How to recover:</strong> pair canary releases with policy guards that halt risky rollouts and capture lessons through post-change retrospectives.</p>
+<h2 id="tooling-anti-patterns">Tooling Anti-Patterns</h2>
+<h3 id="over-engineering-early-stages">Over-Engineering Early Stages</h3>
+<p>Teams sometimes assemble elaborate custom frameworks during the pilot phase. They invest weeks building bespoke module loaders, DSL interpreters, and orchestrators before delivering tangible value. Stakeholders lose patience and revert to manual methods.</p>
+<p><strong>How to recover:</strong> begin with standard tooling, measure time-to-first-value, and defer custom frameworks until production usage demands them.</p>
+<h3 id="vendor-lock-in-disguised-as-best-practice">Vendor Lock-In Disguised as Best Practice</h3>
+<p>Many vendors market their proprietary workflows as the gold standard for AaC. Adopting them wholesale without abstraction layers can trap organisations. When strategic direction changes—such as migrating clouds or supporting sovereign deployments—the stack becomes an immovable object.</p>
+<p><strong>How to recover:</strong> add adaptor layers around proprietary services and run regular portability drills against alternative platforms.</p>
+<h3 id="monitoring-as-a-secondary-concern">Monitoring as a Secondary Concern</h3>
+<p>AaC without comprehensive observability is a risky proposition. Some teams treat monitoring instrumentation as an afterthought, assuming they can retrofit metrics once the system stabilises. By then, outages are difficult to diagnose because no baseline exists.</p>
+<p><strong>How to recover:</strong> bake metrics, logs, traces, and dashboards into every module template so observability evolves with the code.</p>
+<h2 id="cultural-and-people-anti-patterns">Cultural and People Anti-Patterns</h2>
+<h3 id="hero-culture-and-gatekeeping">Hero Culture and Gatekeeping</h3>
+<p>Programmes collapse when a handful of experts hoard knowledge about the architecture repository, pipeline configuration, or approval process. Progress slows whenever those experts are unavailable, and other teams feel excluded.</p>
+<p><strong>How to recover:</strong> rotate maintainers and host open clinics so knowledge flows across teams and gatekeeping dissolves.</p>
+<h3 id="treating-aac-as-a-platform-team-hobby">Treating AaC as a Platform Team Hobby</h3>
+<p>When the wider organisation perceives AaC as a pet project belonging solely to the platform team, participation dwindles. Product teams continue using legacy processes, claiming that the new approach does not reflect their reality.</p>
+<p><strong>How to recover:</strong> embed AaC coaches into squads, align sprints around shared automation goals, and celebrate cross-team contributions.</p>
+<h3 id="neglecting-learning-and-career-pathways">Neglecting Learning and Career Pathways</h3>
+<p>Engineers may view AaC roles as career cul-de-sacs if progression frameworks emphasise only coding ability or infrastructure certifications. Without deliberate investment in skill development, the programme struggles to attract and retain talent.</p>
+<p><strong>How to recover:</strong> include AaC competencies in career paths and fund training so practitioners see clear progression.</p>
+<h2 id="scaling-and-sustainability-anti-patterns">Scaling and Sustainability Anti-Patterns</h2>
+<h3 id="expanding-without-maturity-gates">Expanding Without Maturity Gates</h3>
+<p>Some organisations scale AaC across dozens of teams before stabilising foundational practices. The anti-pattern manifests as inconsistent module quality, missing tests, and overwhelmed support channels.</p>
+<p><strong>How to recover:</strong> require maturity gates—tests, observability, and runbooks—before teams join the shared platform.</p>
+<h3 id="sustainability-as-a-postscript">Sustainability as a Postscript</h3>
+<p>Sustainability commitments are often bolted on after architecture choices harden. Teams retrofit energy dashboards or carbon budgets once stakeholders demand ESG reporting, discovering that the underlying platform cannot expose the required metrics.</p>
+<p><strong>How to recover:</strong> version-control sustainability KPIs, carbon budgets, and scheduling policies alongside the architecture code.</p>
+<h2 id="detection-and-early-warning-techniques">Detection and Early Warning Techniques</h2>
+<p>Anti-patterns rarely appear overnight; they emerge gradually. Organisations that track the right signals catch problems early.</p>
+<h3 id="leading-indicators">Leading Indicators</h3>
+<ul>
+<li><strong>Repository contribution imbalance:</strong> a small minority of contributors performing the majority of merges suggests gatekeeping or insufficient coaching.</li>
+<li><strong>Exception backlog growth:</strong> increasing numbers of unresolved policy waivers indicate governance drift.</li>
+<li><strong>Pipeline failure clustering:</strong> repeated failures in the same stage hint at automation fatigue or missing safeguards.</li>
+<li><strong>Shadow tooling proliferation:</strong> discovery of undocumented scripts or alternative pipelines signals trust gaps.</li>
+</ul>
+<h3 id="feedback-channels">Feedback Channels</h3>
+<p>Combine quarterly health checks with short surveys so teams can flag where the AaC vision, support, or guardrails need reinforcement. Catalogue lessons from incidents and launches in a shared knowledge base tagged by anti-pattern.</p>
+<h3 id="visualising-risk">Visualising Risk</h3>
+<p>Use the radar in Figure 26.1 as a live dashboard, plotting risk across governance, delivery, tooling, culture, and sustainability to trigger interventions before drift escalates.</p>
+<h2 id="remediation-playbook">Remediation Playbook</h2>
+<p>When anti-patterns surface, structured responses prevent recurrence.</p>
+<ol>
+<li><strong>Diagnose the root cause</strong> by reviewing artefacts and interviewing stakeholders without blame.</li>
+<li><strong>Run a corrective experiment</strong> with clear success metrics and safeguards that lock in the improved behaviour.</li>
+<li><strong>Share the learning and watch for regression</strong> through updates to playbooks, coaching sessions, and lightweight monitoring.</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>Recognising Architecture as Code anti-patterns requires equal attention to technology, governance, culture, and sustainability. Programmes falter when they treat AaC as a tool purchase, neglect architectural principles, or rely on heroic individuals. Persistent success depends on codifying governance, nurturing cross-functional ownership, investing in observability, and embedding sustainability from the outset. By using early-warning indicators, federated decision-making, and structured remediation playbooks, organisations convert missteps into durable improvements and maintain trust in their codified architecture estate.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>FinOps Foundation. <em>Cloud Cost Management for Sustainable Delivery</em>. FinOps Foundation, 2024.</li>
+<li>International Organisation for Standardisation. <em>ISO/IEC 42010:2011 Systems and Software Engineering — Architecture Description</em>. ISO, 2011.</li>
+<li>National Cyber Security Centre. <em>Principles for Secure Design</em>. NCSC, 2023.</li>
+<li>Open Policy Agent Project. <em>Policy as Code Cookbook</em>. OPA Community, 2024.</li>
+<li>Thoughtworks Technology Advisory Board. <em>Technology Radar — Volume 30</em>. Thoughtworks, 2024.</li>
+<li>United Kingdom Government Digital Service. <em>Service Manual: Technology and Architecture</em>. GDS, 2024.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../26a_prerequisites_for_aac/" class="btn btn-neutral float-left" title="Prerequisites for Architecture as Code Adoption"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../27_conclusion/" class="btn btn-neutral float-right" title="Conclusion">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../26a_prerequisites_for_aac/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../27_conclusion/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

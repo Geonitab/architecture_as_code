@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/07_containerisation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Containerisation and Orchestration as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Containerisation and Orchestration as Code";
+        var mkdocs_page_input_path = "07_containerisation.md";
+        var mkdocs_page_url = "/07_containerisation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Containerisation and Orchestration as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#industry-trend-data-driving-architecture-as-code-adoption">Industry trend data driving Architecture as Code adoption</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-role-of-container-technology-within-architecture-as-code">The role of container technology within Architecture as Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kubernetes-as-an-orchestration-platform">Kubernetes as an orchestration platform</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#service-mesh-and-advanced-networking">Service mesh and advanced networking</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#infrastructure-automation-with-container-platforms">Infrastructure automation with container platforms</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#persistent-storage-and-data-management">Persistent storage and data management</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-examples">Practical examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#kubernetes-deployment-configuration">Kubernetes Deployment Configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#helm-chart-for-application-stack">Helm Chart for Application Stack</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#docker-compose-for-development-environment">Docker Compose for Development Environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#terraform-for-kubernetes-cluster">Terraform for Kubernetes Cluster</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#transition-to-security-and-governance">Transition to Security and Governance</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-and-references">Sources and references</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part B – Architecture Platform</li>
+      <li class="breadcrumb-item active">Containerisation and Orchestration as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/07_containerisation.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="containerisation-and-orchestration-as-code">Containerisation and Orchestration as Code</h1>
+<p><img alt="Containerisation and Orchestration" src="../images/diagram_11_chapter10.png" /></p>
+<p>Architecture as Code underpins modern container platforms by turning deployment practices into repeatable definitions. When infrastructure and runtime configuration are described in version-controlled files, teams gain portable, scalable, and reproducible delivery pipelines that function reliably across data centres and cloud providers.</p>
+<h2 id="industry-trend-data-driving-architecture-as-code-adoption">Industry trend data driving Architecture as Code adoption</h2>
+<p>The Cloud Native Computing Foundation's <em>State of Cloud Native Development 2024</em> report (Source [7]) confirms that distributed architectures are now the norm: 67% of surveyed organisations run microservices in production and 58% operate event-driven workloads alongside them. The same research notes that 52% are investing in internal developer platforms to tame the resulting estate. Together these figures highlight why Architecture as Code is essential. When the majority of teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that the report identifies as critical for scaling cloud-native delivery.</p>
+<h2 id="the-role-of-container-technology-within-architecture-as-code">The role of container technology within Architecture as Code</h2>
+<p>Containers package an application together with its libraries and runtime dependencies inside isolated units. Within an Architecture as Code approach, those units are described declaratively so that the same package can be built, tested, and promoted through each stage without configuration drift. The result is predictable application behaviour and simpler collaboration between development, operations, and security teams.</p>
+<p>Docker popularised this model and remains the industry reference point, while projects such as Podman provide daemon-less alternatives that suit security-conscious environments. Image definitions are written in Dockerfiles (or equivalent build instructions) so that they can be stored in Git, reviewed, and rebuilt automatically as part of the CI/CD process. Linters and automated tests can validate these artefacts in the same way that application code is reviewed.</p>
+<p>Once images are produced they are stored in container registries, which act as central repositories for distribution and version control. Private registries support enterprise governance by enforcing access control, image signing, and vulnerability scanning before any workload reaches production. Registry policies can be expressed as code to guarantee compliance across teams.</p>
+<h2 id="kubernetes-as-an-orchestration-platform">Kubernetes as an orchestration platform</h2>
+<p>Kubernetes has become the canonical orchestration layer thanks to its declarative design and expansive ecosystem. YAML manifests capture the desired state for workloads, services, and platform components, meaning the entire runtime can be documented alongside the application source. The Kubernetes control plane continuously reconciles the actual state with those declarations, enforcing Architecture as Code in real time.</p>
+<p>Native Kubernetes objects—Deployments, StatefulSets, Services, ConfigMaps, Secrets, and many others—cover the full application lifecycle. Teams describe pod specifications, resource requests, network segmentation, and persistent storage needs directly in code. Version control and peer review help prevent configuration drift while providing a complete audit history for compliance purposes.</p>
+<p>Helm augments Kubernetes with templating and release management features, enabling reusable deployment patterns for complex stacks. Chart repositories encapsulate organisational standards so that teams can provision consistent environments quickly, whether the target is development, staging, or production.</p>
+<h2 id="service-mesh-and-advanced-networking">Service mesh and advanced networking</h2>
+<p>Service meshes such as Istio and Linkerd introduce a programmable data plane that handles inter-service communication, observability, and security concerns. Policy definitions, routing rules, and cryptographic requirements are written as configuration files, allowing networking specialists to iterate safely without touching application code.</p>
+<p>Traffic shaping features—including circuit breaking, retries, fault injection, and canary roll-outs—are specified as code and stored alongside the services they protect. Mutual TLS, zero-trust access rules, and identity management policies follow the same pattern, making it straightforward to extend security best practice across microservice estates.</p>
+<p>Observability is likewise driven by declaration. Distributed tracing, metrics scraping, and log aggregation are enabled through manifests that describe collectors, exporters, and retention policies. This consistency simplifies root-cause analysis because every cluster exposes telemetry in a standardised format.</p>
+<h2 id="infrastructure-automation-with-container-platforms">Infrastructure automation with container platforms</h2>
+<p>Kubernetes-native automation frameworks extend the platform to cover underlying infrastructure. Crossplane, the Operator Framework, and similar projects expose cloud resources as custom resource definitions (CRDs), meaning databases, message queues, or networking components can be provisioned through the same API surface as application workloads.</p>
+<p>GitOps practices complement this model by treating Git repositories as the source of truth. Continuous delivery tools such as Argo CD and Flux reconcile the declared state with the running clusters, applying changes automatically when a pull request is merged. Rollbacks become a matter of reverting commits, and audit trails are preserved for every environment.</p>
+<p>Large organisations often operate multiple clusters across regions. Multi-cluster management suites provide centralised policy enforcement, workload placement, and governance. Federation APIs and the Cluster API specification capture cluster lifecycle operations in code, standardising creation, upgrades, and decommissioning.</p>
+<h2 id="persistent-storage-and-data-management">Persistent storage and data management</h2>
+<p>Stateful workloads still rely on robust storage. Kubernetes addresses this with persistent volumes, storage classes, and dynamic provisioners, all of which are defined declaratively. Performance, redundancy, and backup requirements can be embedded into these definitions so that new workloads inherit compliant defaults automatically.</p>
+<p>Database operators—for PostgreSQL, MongoDB, MySQL, and many others—take the concept further by managing clustering, backups, failover, and version upgrades. These controllers watch for configuration changes and adjust the database fleet accordingly, providing database-as-code capabilities without extensive manual intervention.</p>
+<p>Data protection remains critical. Backup schedules, retention policies, and disaster recovery runbooks can be codified through operators or infrastructure-as-code tooling. Automated tests and scheduled recovery drills verify that restorations meet business continuity objectives.</p>
+<h2 id="practical-examples">Practical examples</h2>
+<h3 id="kubernetes-deployment-configuration">Kubernetes Deployment Configuration</h3>
+<pre><code class="language-yaml"># app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-application
+  namespace: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-application
+  template:
+    metadata:
+      labels:
+        app: web-application
+    spec:
+      containers:
+      - name: app
+        image: registry.company.com/web-app:v1.2.3
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: &quot;256Mi&quot;
+            cpu: &quot;250m&quot;
+          limits:
+            memory: &quot;512Mi&quot;
+            cpu: &quot;500m&quot;
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-application-service
+spec:
+  selector:
+    app: web-application
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
+</code></pre>
+<h3 id="helm-chart-for-application-stack">Helm Chart for Application Stack</h3>
+<pre><code class="language-yaml"># values.yaml
+application:
+  name: web-application
+  image:
+    repository: registry.company.com/web-app
+    tag: &quot;v1.2.3&quot;
+    pullPolicy: IfNotPresent
+
+  replicas: 3
+
+  resources:
+    requests:
+      memory: &quot;256Mi&quot;
+      cpu: &quot;250m&quot;
+    limits:
+      memory: &quot;512Mi&quot;
+      cpu: &quot;500m&quot;
+
+database:
+  enabled: true
+  type: postgresql
+  version: &quot;14&quot;
+  persistence:
+    size: 10Gi
+    storageClass: &quot;fast-ssd&quot;
+
+monitoring:
+  enabled: true
+  prometheus:
+    scrapeInterval: 30s
+  grafana:
+    dashboards: true
+</code></pre>
+<h3 id="docker-compose-for-development-environment">Docker Compose for Development Environment</h3>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - &quot;8080:8080&quot;
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/appdb
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: appdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - &quot;5432:5432&quot;
+
+  redis:
+    image: redis:alpine
+    ports:
+      - &quot;6379:6379&quot;
+
+volumes:
+  postgres_data:
+</code></pre>
+<h3 id="terraform-for-kubernetes-cluster">Terraform for Kubernetes Cluster</h3>
+<pre><code class="language-hcl"># kubernetes-cluster.tf
+resource &quot;google_container_cluster&quot; &quot;primary&quot; {
+  name     = &quot;production-cluster&quot;
+  location = &quot;us-central1&quot;
+
+  remove_default_node_pool = true
+  initial_node_count       = 1
+
+  network    = google_compute_network.vpc.name
+  subnetwork = google_compute_subnetwork.subnet.name
+
+  release_channel {
+    channel = &quot;STABLE&quot;
+  }
+
+  workload_identity_config {
+    workload_pool = &quot;${var.project_id}.svc.id.goog&quot;
+  }
+
+  addons_config {
+    horizontal_pod_autoscaling {
+      disabled = false
+    }
+    network_policy_config {
+      disabled = false
+    }
+  }
+}
+
+resource &quot;google_container_node_pool&quot; &quot;primary_nodes&quot; {
+  name       = &quot;primary-node-pool&quot;
+  location   = &quot;us-central1&quot;
+  cluster    = google_container_cluster.primary.name
+  node_count = 3
+
+  node_config {
+    preemptible  = false
+    machine_type = &quot;e2-medium&quot;
+
+    service_account = google_service_account.kubernetes.email
+    oauth_scopes = [
+      &quot;https://www.googleapis.com/auth/cloud-platform&quot;
+    ]
+  }
+
+  autoscaling {
+    min_node_count = 1
+    max_node_count = 10
+  }
+
+  management {
+    auto_repair  = true
+    auto_upgrade = true
+  }
+}
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>Architecture as Code provides a common language for development, operations, and security teams. By expressing container platforms, orchestration logic, networking, and data safeguards as code, organisations can automate delivery, scale confidently, and apply governance consistently. Kubernetes and its surrounding ecosystem offer the building blocks, while GitOps workflows keep every environment aligned with the declared intent. Mastery of these practices delivers resilient platforms that adapt quickly to changing requirements.</p>
+<h2 id="transition-to-security-and-governance">Transition to Security and Governance</h2>
+<p>The automation capabilities and deployment velocity enabled by containerisation and CI/CD pipelines create new security challenges and governance requirements. As containers move through development, testing, and production environments at increasing speed, security controls must keep pace without becoming bottlenecks.</p>
+<p>The next part of this book explores how security, policy enforcement, and governance frameworks integrate into Architecture as Code practices. <a href="../09_security_fundamentals/">Chapter 9 on Security Fundamentals</a> and <a href="../09b_security_patterns/">Chapter 9B on Advanced Security Patterns</a> examine threat modelling, Zero Trust Architecture, and security-by-design principles specifically tailored for containerised, automated environments. <a href="../10_policy_and_security/">Chapter 10 on Policy and Security as Code</a> demonstrates how tools like Open Policy Agent enforce security requirements automatically, whilst <a href="../11_governance_as_code/">Chapters 11 and 12</a> show how governance and compliance become executable code rather than static documentation.</p>
+<h2 id="sources-and-references">Sources and references</h2>
+<ul>
+<li>Kubernetes Documentation. "Concepts and Architecture." The Kubernetes Project.</li>
+<li>Docker Inc. "Docker Architecture as Code best practices." Docker Documentation.</li>
+<li>Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF Research.</li>
+<li>Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.</li>
+<li>Helm Community. "Chart Development Guide." Helm Documentation.</li>
+<li>Istio Project. "Service Mesh Architecture." Istio Service Mesh.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../06_structurizr/" class="btn btn-neutral float-left" title="Structurizr: Architecture Modelling as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../08_microservices/" class="btn btn-neutral float-right" title="Microservices Architecture as Code">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../06_structurizr/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../08_microservices/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

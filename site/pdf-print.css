@@ -1,0 +1,37 @@
+@page {
+  size: A4;
+  margin: 18mm;
+}
+
+/* Reset full-bleed or hero layouts for print */
+@media print {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container,
+  .md-content,
+  .page,
+  .hero,
+  .fullbleed {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+
+  img,
+  svg,
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Avoid content spilling outside the printable area */
+  * {
+    box-sizing: border-box;
+    overflow: visible !important;
+  }
+}

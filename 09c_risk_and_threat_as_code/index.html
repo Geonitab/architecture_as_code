@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/09c_risk_and_threat_as_code/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Risk and Threat Modelling as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Risk and Threat Modelling as Code";
+        var mkdocs_page_input_path = "09c_risk_and_threat_as_code.md";
+        var mkdocs_page_url = "/09c_risk_and_threat_as_code/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Risk and Threat Modelling as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-risk-and-threat-handling-belong-in-the-codebase">Why risk and threat handling belong in the codebase</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#engineering-a-risk-as-code-model">Engineering a risk-as-code model</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domain-driven-risk-definitions">Domain-driven risk definitions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quantifying-controls-with-metrics-as-code">Quantifying controls with metrics as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automating-approvals-and-exceptions">Automating approvals and exceptions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#threat-handling-as-code">Threat handling as code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#codified-threat-intelligence-ingestion">Codified threat intelligence ingestion</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automated-threat-modelling">Automated threat modelling</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#response-playbooks-expressed-as-state-machines">Response playbooks expressed as state machines</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exercising-playbooks-continuously">Exercising playbooks continuously</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integrating-with-the-delivery-pipeline">Integrating with the delivery pipeline</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operating-model-considerations">Operating model considerations</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part C – Security & Governance</li>
+      <li class="breadcrumb-item active">Risk and Threat Modelling as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/09c_risk_and_threat_as_code.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="risk-as-code-and-threat-handling-as-code">Risk as Code and Threat Handling as Code</h1>
+<p><em>Risk management is often treated as a paperwork exercise. When executed as code it becomes measurable, testable, and continuously enforceable across every environment.</em></p>
+<h2 id="why-risk-and-threat-handling-belong-in-the-codebase">Why risk and threat handling belong in the codebase</h2>
+<p>Architecture as Code programmes already encode infrastructure, policy, and security controls. Extending the repository to cover risk registers and threat playbooks makes the entire resilience posture transparent and repeatable.</p>
+<ul>
+<li><strong>Traceability:</strong> Risk statements, controls, and compensating actions live alongside the architecture components they cover, enabling precise linkage during audits.</li>
+<li><strong>Consistency:</strong> Automated pipelines evaluate risk criteria in the same way every time, removing subjective scoring and ensuring all platforms meet minimum thresholds.</li>
+<li><strong>Speed:</strong> Codified playbooks trigger as soon as telemetry indicates a hazard, delivering sub-minute responses instead of waiting for manual coordination.</li>
+<li><strong>Learning loops:</strong> Post-incident reviews generate pull requests that refine controls or playbooks, creating a living body of knowledge.</li>
+</ul>
+<h2 id="engineering-a-risk-as-code-model">Engineering a risk-as-code model</h2>
+<h3 id="domain-driven-risk-definitions">Domain-driven risk definitions</h3>
+<p>Structure risk definitions as declarative YAML or JSON documents that capture context, probability, impact, and ownership. Version control provides historical records of changing assumptions and facilitates independent review. Treat the schema as a contract that automated tooling validates during pull requests.</p>
+<pre><code class="language-yaml">id: RISK-0047
+category: platform-resilience
+statement: &quot;Loss of regional database cluster availability disrupts customer journeys&quot;
+likelihood: high
+impact: critical
+control_refs:
+  - terraform://modules/database/ha_cluster
+  - policy://runbooks/failover
+risk_owner: payments-site-reliability
+review_cadence: quarterly
+</code></pre>
+<p>Store the schema definition in the repository and validate each risk document through CI checks. Rejections for missing data, outdated review dates, or invalid owners prevent stale artefacts entering the main branch.</p>
+<h3 id="quantifying-controls-with-metrics-as-code">Quantifying controls with metrics as code</h3>
+<p>Link each risk to observable metrics managed as code. Prometheus alerts, Azure Monitor queries, or AWS CloudWatch alarms can be generated from the same repository, providing consistent evidence of control health. A failing metric should fail the pipeline, forcing remediation before release.</p>
+<h3 id="automating-approvals-and-exceptions">Automating approvals and exceptions</h3>
+<p>Embed governance logic within policy-as-code engines such as Open Policy Agent or HashiCorp Sentinel. For example, deployments may only proceed when every high or critical risk is either mitigated by automated controls or accompanied by a time-bound exception. Exceptions themselves become code artefacts with explicit expiry dates and approval chains, ensuring ongoing scrutiny.</p>
+<h2 id="threat-handling-as-code">Threat handling as code</h2>
+<h3 id="codified-threat-intelligence-ingestion">Codified threat intelligence ingestion</h3>
+<p>Threat handling begins by ingesting intelligence feeds in structured formats like STIX/TAXII. Use scheduled pipelines to fetch indicators of compromise, normalise them, and publish curated sets to security tooling. Encoding this workflow ensures provenance is auditable and sanitisation routines are consistent.</p>
+<h3 id="automated-threat-modelling">Automated threat modelling</h3>
+<p>Model systems with tools such as the Threat Modelling Manifesto or Microsoft Threat Modelling Tool, but generate the models directly from the codebase. Diagrams and attack trees stored as Mermaid or Structurizr files can be regenerated whenever architecture code changes. Automated validation checks for missing trust boundaries, unclassified data stores, or unmitigated STRIDE categories.</p>
+<h3 id="response-playbooks-expressed-as-state-machines">Response playbooks expressed as state machines</h3>
+<p>Represent incident response actions as state machines or workflow definitions (for example AWS Step Functions, Azure Logic Apps, or Temporal workflows). Each state corresponds to a containment or eradication step, complete with guard conditions, rollback logic, and evidence capture. Playbooks should:</p>
+<ol>
+<li><strong>Subscribe</strong> to signals from SIEM platforms or anomaly detection pipelines.</li>
+<li><strong>Assess</strong> risk ratings automatically by referencing the risk-as-code repository.</li>
+<li><strong>Act</strong> by triggering infrastructure changes, such as revoking credentials, isolating workloads, or rotating keys.</li>
+<li><strong>Document</strong> activities by writing to immutable logs and creating collaboration tickets.</li>
+</ol>
+<h3 id="exercising-playbooks-continuously">Exercising playbooks continuously</h3>
+<p>Adopt security chaos engineering techniques—automated scenarios that inject simulated breaches or infrastructure failures. These drills run on schedules or in response to configuration changes, validating that playbooks execute correctly and risk tolerances remain aligned. Findings become new backlog items captured as code changes, closing the loop between detection and improvement.</p>
+<h2 id="integrating-with-the-delivery-pipeline">Integrating with the delivery pipeline</h2>
+<ul>
+<li><strong>Pull request templates</strong> require authors to link risk IDs and threat model references for each change, ensuring architectural adjustments consider their resilience impact.</li>
+<li><strong>Continuous integration</strong> stages lint risk definitions, execute policy-as-code checks, and run synthetic attack simulations against ephemeral environments.</li>
+<li><strong>Continuous delivery</strong> gates verify that all mitigations and response automations passed their most recent chaos drill, preventing regressions from reaching production.</li>
+<li><strong>Observability dashboards</strong> pull directly from the code-defined risk catalogue, highlighting coverage gaps and upcoming review cadences.</li>
+</ul>
+<h2 id="operating-model-considerations">Operating model considerations</h2>
+<ul>
+<li><strong>Ownership:</strong> Assign product-aligned risk stewards who approve updates via code reviews, ensuring accountability remains close to the delivery teams.</li>
+<li><strong>Skills:</strong> Upskill engineers in threat modelling, security automation, and regulatory expectations so they can interpret results and iterate safely.</li>
+<li><strong>Tooling alignment:</strong> Integrate security platforms through APIs and infrastructure-as-code modules, avoiding manual portal configurations that drift from the source of truth.</li>
+<li><strong>Culture:</strong> Celebrate the remediation pull request—not just the discovery. Treat risk and threat artefacts as first-class code assets subject to the same engineering rigour as application releases.</li>
+</ul>
+<p>By encoding risk assessments and threat handling in the repository, organisations attain a defensible, adaptive security posture. Evidence of control effectiveness is generated continuously, response actions are reliable, and every change builds upon an auditable foundation of codified resilience.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../09b_security_patterns/" class="btn btn-neutral float-left" title="Advanced Security Patterns and Implementation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../10_policy_and_security/" class="btn btn-neutral float-right" title="Policy and Security as Code in Detail">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../09b_security_patterns/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../10_policy_and_security/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/glossary/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Glossary - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Glossary";
+        var mkdocs_page_input_path = "glossary.md";
+        var mkdocs_page_url = "/glossary/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Glossary</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-use-this-glossary">How to use this glossary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#core-architecture-as-code-foundations">Core Architecture as Code foundations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#automation-tooling-and-delivery">Automation, tooling, and delivery</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#governance-compliance-and-security">Governance, compliance, and security</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reliability-and-operational-excellence">Reliability and operational excellence</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#financial-stewardship-and-sustainability">Financial stewardship and sustainability</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#organisational-alignment-and-culture">Organisational alignment and culture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#future-focused-and-advanced-concepts">Future-focused and advanced concepts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#terms-and-relationship-database">Terms and relationship database</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendices</li>
+      <li class="breadcrumb-item active">Glossary</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/glossary.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="glossary-unnumbered">Glossary {.unnumbered}</h1>
+<p><img alt="Architecture as Code Core Concepts Class Diagram" src="../images/diagram_23_glossary_class.png" /></p>
+<p>The glossary gathers the key terminology that shapes the Architecture as Code approach across this book. It embraces inclusive language so that every practitioner—regardless of background, role, or level of experience—can connect their work to the concepts shown in the relationships diagram above.</p>
+<h2 id="how-to-use-this-glossary">How to use this glossary</h2>
+<ul>
+<li><strong>Start with the diagram:</strong> The class diagram summarises how foundational Architecture as Code elements interact. Trace the relationships before diving into the definitions.</li>
+<li><strong>Explore by theme:</strong> Terms are grouped so product teams, platform engineers, security specialists, and organisational leaders can quickly find language relevant to their responsibilities.</li>
+<li><strong>Cross-reference chapters:</strong> Each definition reflects the terminology used throughout the book. When you see a highlighted concept in other chapters, return here for a concise explanation.</li>
+<li><strong>Keep language inclusive:</strong> Use these definitions when collaborating so every team member hears consistent, people-first language.</li>
+</ul>
+<h2 id="core-architecture-as-code-foundations">Core Architecture as Code foundations</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture as Code</td>
+<td>Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. Often abbreviated as AaC.</td>
+</tr>
+<tr>
+<td>Infrastructure as Code</td>
+<td>A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments. Frequently shortened to IaC.</td>
+</tr>
+<tr>
+<td>Architecture Decision Record</td>
+<td>A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together. Commonly known as an ADR.</td>
+</tr>
+<tr>
+<td>Declarative Programming</td>
+<td>A style of describing desired outcomes rather than procedural steps, enabling automation tools to converge systems on the target state reliably.</td>
+</tr>
+<tr>
+<td>Idempotence</td>
+<td>The property that a command or template can run repeatedly with the same end result, protecting teams from accidental drift or double execution.</td>
+</tr>
+<tr>
+<td>Reusable Module</td>
+<td>A parameterised building block—such as a Terraform module or Helm chart—that encapsulates best practice and is published for teams to compose new solutions quickly.</td>
+</tr>
+<tr>
+<td>API</td>
+<td>An application programming interface (API) is a contract that allows systems to interact predictably, enabling modular architectures and integrated delivery workflows.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="automation-tooling-and-delivery">Automation, tooling, and delivery</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Continuous Integration / Continuous Delivery</td>
+<td>A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. Teams usually refer to this as CI/CD.</td>
+</tr>
+<tr>
+<td>Delivery Pipeline</td>
+<td>The orchestrated flow of automated checks, approvals, and deployments that transform committed code into resilient production services.</td>
+</tr>
+<tr>
+<td>Version Control System</td>
+<td>A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. Often shortened to VCS.</td>
+</tr>
+<tr>
+<td>GitOps</td>
+<td>Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments.</td>
+</tr>
+<tr>
+<td>Configuration Management</td>
+<td>Tooling such as Ansible or Chef that applies desired system states, often working alongside declarative templates to maintain consistency.</td>
+</tr>
+<tr>
+<td>Terraform</td>
+<td>A widely used IaC tool that compiles declarative configurations into API calls, offering modular composition and policy enforcement hooks.</td>
+</tr>
+<tr>
+<td>Helm</td>
+<td>The package manager for Kubernetes that bundles manifests, default values, and documentation into shareable charts.</td>
+</tr>
+<tr>
+<td>Kubernetes</td>
+<td>An open-source orchestration platform that schedules containers, scales workloads, and standardises operational tasks.</td>
+</tr>
+<tr>
+<td>Container</td>
+<td>A lightweight, portable runtime package that combines application code with dependencies for consistent execution across environments.</td>
+</tr>
+<tr>
+<td>Service Mesh</td>
+<td>A dedicated infrastructure layer that manages service-to-service security, routing, and observability without each team writing bespoke logic.</td>
+</tr>
+<tr>
+<td>Runbook Automation</td>
+<td>Automated execution of the procedural knowledge once held in runbooks, shortening incident response while keeping humans in control of critical decisions.</td>
+</tr>
+<tr>
+<td>Observability Stack</td>
+<td>The telemetry pipelines, dashboards, and alerting rules that provide actionable insight into system behaviour and guide inclusive on-call collaboration.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="governance-compliance-and-security">Governance, compliance, and security</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Policy as Code</td>
+<td>The practice of expressing organisational policies in code so they can be versioned, tested, and enforced automatically across platforms.</td>
+</tr>
+<tr>
+<td>Continuous Compliance</td>
+<td>Automated validation that checks regulatory and internal controls with every change, generating evidence that auditors and teams can trust.</td>
+</tr>
+<tr>
+<td>Zero Trust</td>
+<td>A security stance that continuously verifies identities, device health, and context before granting access, reducing implicit trust between services.</td>
+</tr>
+<tr>
+<td>Security Policy</td>
+<td>A codified set of safeguards—identity, encryption, network, and data-handling—that shapes how architecture components interoperate securely.</td>
+</tr>
+<tr>
+<td>Data Sovereignty</td>
+<td>Ensuring data is handled in accordance with applicable legal and regulatory requirements, influencing design choices and deployment regions.</td>
+</tr>
+<tr>
+<td>Risk Assessment Matrix</td>
+<td>A structured view of likelihood versus impact that helps teams evaluate and prioritise mitigations collaboratively.</td>
+</tr>
+<tr>
+<td>Access Federation</td>
+<td>Coordinated identity management across platforms so that people have the least-privileged access they need to perform their roles.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reliability-and-operational-excellence">Reliability and operational excellence</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Site Reliability Engineering</td>
+<td>An engineering discipline that applies software practices to operations work, balancing reliability with delivery velocity. Practitioners often shorten it to SRE.</td>
+</tr>
+<tr>
+<td>Service Level Objective</td>
+<td>A shared target for reliability, expressed as a measurable goal that teams use to evaluate whether customer expectations are being met. Commonly called an SLO.</td>
+</tr>
+<tr>
+<td>Service Level Indicator</td>
+<td>The quantitative measurement—such as latency or error rate—that shows whether an SLO is being achieved. Frequently described as an SLI.</td>
+</tr>
+<tr>
+<td>Error Budget</td>
+<td>The agreed allowance for unreliability that guides deployment pace and prioritisation of improvement work.</td>
+</tr>
+<tr>
+<td>Chaos Engineering</td>
+<td>Intentional experimentation that reveals weaknesses by introducing controlled failure, strengthening resilience and team confidence.</td>
+</tr>
+<tr>
+<td>Chaos Monkey</td>
+<td>A resilience experiment that deliberately terminates running resources to verify automated recovery, typically orchestrated through codified AaC workflows.</td>
+</tr>
+<tr>
+<td>Incident Command</td>
+<td>An inclusive, role-based structure that coordinates response efforts during major events so everyone understands responsibilities and communication paths.</td>
+</tr>
+<tr>
+<td>Blameless Post-Incident Review</td>
+<td>A learning-focused conversation after incidents that identifies systemic improvements without placing personal blame.</td>
+</tr>
+<tr>
+<td>Runway Health Check</td>
+<td>A periodic review of capacity, tooling, and process debt to ensure teams have the runway to deliver sustainable change.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="financial-stewardship-and-sustainability">Financial stewardship and sustainability</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FinOps</td>
+<td>A collaborative financial practice that aligns engineering, finance, and product teams on cost efficiency while supporting innovation.</td>
+</tr>
+<tr>
+<td>Cost Allocation Tag</td>
+<td>Metadata attached to resources that enables transparent reporting by product, team, or initiative.</td>
+</tr>
+<tr>
+<td>Rightsizing</td>
+<td>Optimising resource shapes and reservations based on observed usage to reduce waste without compromising performance.</td>
+</tr>
+<tr>
+<td>Reserved and Spot Capacity</td>
+<td>Cloud purchasing models that trade commitment or flexibility for lower cost, requiring automation to manage safely.</td>
+</tr>
+<tr>
+<td>Resource Quota</td>
+<td>A constraint that limits how much of a resource can be consumed in a namespace or account, preventing unintended overspend.</td>
+</tr>
+<tr>
+<td>Carbon-Aware Computing</td>
+<td>Scheduling workloads and scaling strategies to coincide with renewable energy availability, supporting environmental goals.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="organisational-alignment-and-culture">Organisational alignment and culture</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform Team</td>
+<td>A multidisciplinary group that curates reusable services, standards, and documentation so product teams can focus on customer value.</td>
+</tr>
+<tr>
+<td>Community of Practice</td>
+<td>An open forum where people with a shared interest learn together, improving patterns and vocabulary across the organisation.</td>
+</tr>
+<tr>
+<td>Cross-Functional Team</td>
+<td>A team with diverse skills—engineering, security, operations, product, and design—working together from discovery through run-time.</td>
+</tr>
+<tr>
+<td>DevOps Culture</td>
+<td>The mindset that values shared ownership, rapid feedback, and continuous improvement over siloed handovers.</td>
+</tr>
+<tr>
+<td>Psychological Safety</td>
+<td>An environment where every team member can contribute ideas or raise concerns without fear, enabling inclusive innovation.</td>
+</tr>
+<tr>
+<td>Servant Leadership</td>
+<td>A leadership style that removes obstacles, amplifies team voices, and nurtures growth instead of commanding outcomes.</td>
+</tr>
+<tr>
+<td>Change Management</td>
+<td>A transparent approach to guiding people through change with empathy, communication, and supportive training.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Continuous Improvement Loop:</strong> A feedback rhythm—retrospectives, reviews, and experiments—that keeps practices evolving alongside technology.</p>
+<p><strong>Anti-Pattern:</strong> A common but counterproductive practice that appears helpful yet creates long-term issues, signalling an opportunity for shared learning.</p>
+<h2 id="future-focused-and-advanced-concepts">Future-focused and advanced concepts</h2>
+<p><strong>Multi-Cloud Strategy:</strong> Using services from multiple providers to balance capability, resilience, and regulatory needs while avoiding lock-in.</p>
+<p><strong>Edge Computing:</strong> Placing compute capabilities closer to data sources or users to reduce latency and improve responsiveness.</p>
+<p><strong>Post-Quantum Cryptography</strong>: Cryptographic techniques designed to withstand attacks from both classical and quantum computers.</p>
+<p><strong>Digital Twin</strong>: A synchronised virtual representation of a system that allows teams to explore changes safely before applying them in production.</p>
+<p><strong>AI for IT Operations</strong>: Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders. Often called AIOps in industry discussions.</p>
+<p><strong>Sustainability KPI</strong>: A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation.</p>
+<p><strong>Knowledge Graph</strong>: A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery.</p>
+<h2 id="terms-and-relationship-database">Terms and relationship database</h2>
+<p>Keeping the glossary actionable requires more than prose. A structured dataset now lives at <code>references/glossary_terms_relationships.json</code> so automation can reason about how concepts reinforce one another. Pipelines use it to surface dependencies in pull requests, populate architecture decision templates, and keep presentation material aligned with the book’s vocabulary.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Related Concept</th>
+<th>Relationship</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture as Code</td>
+<td>Knowledge Graph</td>
+<td>documents</td>
+<td>The graph holds the nodes and metadata that describe codified architectural intent.</td>
+</tr>
+<tr>
+<td>Architecture Decision Record</td>
+<td>Knowledge Graph</td>
+<td>indexed_in</td>
+<td>ADR identifiers anchor the knowledge graph so every decision is discoverable.</td>
+</tr>
+<tr>
+<td>Policy as Code</td>
+<td>Architecture as Code</td>
+<td>protects</td>
+<td>Guardrails encoded as code keep Architecture as Code deployments compliant.</td>
+</tr>
+<tr>
+<td>Infrastructure as Code</td>
+<td>Compliance Automation</td>
+<td>validated_by</td>
+<td>Control jobs analyse infrastructure definitions before they reach production.</td>
+</tr>
+<tr>
+<td>Compliance Automation</td>
+<td>Knowledge Graph</td>
+<td>informed_by</td>
+<td>Ownership and impact data from the graph determine which controls to run.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Revisit this glossary as new capabilities emerge. Update both the definitions and the diagram when introducing a novel concept so that every reader can see how their contribution fits into the Architecture as Code ecosystem.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../part_h_appendices/" class="btn btn-neutral float-left" title="Part H – Appendices and Reference Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../about_the_author/" class="btn btn-neutral float-right" title="About the Author">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../part_h_appendices/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../about_the_author/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

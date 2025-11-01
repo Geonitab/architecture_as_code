@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/12_compliance/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Compliance and Regulatory Adherence - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Compliance and Regulatory Adherence";
+        var mkdocs_page_input_path = "12_compliance.md";
+        var mkdocs_page_url = "/12_compliance/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Compliance and Regulatory Adherence</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ai-and-machine-learning-for-compliance-automation">AI and Machine Learning for Compliance Automation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements-traceability-and-validation">Requirements Traceability and Validation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#control-mapping-matrix-and-assure-once-comply-many">Control Mapping Matrix and "assure once, comply many"</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cloud-native-and-serverless-compliance-controls">Cloud-native and Serverless Compliance Controls</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#policy-driven-infrastructure-and-governance">Policy-driven Infrastructure and Governance</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#future-facing-considerations-speculative">Future-facing Considerations (Speculative)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#quantum-computing-readiness">Quantum Computing Readiness</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sustainability-and-green-computing">Sustainability and Green Computing</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-examples">Practical Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ai-augmented-infrastructure-optimisation">AI-augmented Infrastructure Optimisation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#serverless-infrastructure-definition">Serverless Infrastructure Definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quantum-safe-security-implementation">Quantum-safe Security Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moving-from-governance-to-delivery">Moving from Governance to Delivery</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-and-references">Sources and References</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part C – Security & Governance</li>
+      <li class="breadcrumb-item active">Compliance and Regulatory Adherence</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/12_compliance.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="compliance-and-regulatory-adherence">Compliance and Regulatory Adherence</h1>
+<p><img alt="Compliance automation lifecycle overview" src="../images/diagram_12_compliance.png" /></p>
+<p><em>Figure 12.1 illustrates how regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.</em></p>
+<p>Architecture as Code is central to meeting the expanding scope of compliance requirements and regulatory expectations. As introduced in <a href="../10_policy_and_security/">Chapter 10 on policy and security</a>, codified policies allow teams to translate legislation into repeatable controls. Figure 12.1 shows how that translation depends on a closed feedback loop. This chapter focuses on the organisational and process-oriented aspects that keep this loop healthy in large-scale environments.</p>
+<table>
+<thead>
+<tr>
+<th>Compliance Loop Stage</th>
+<th>Activities</th>
+<th>Outputs</th>
+<th>Feedback Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regulatory intelligence</td>
+<td>Monitor legislation updates, interpret regulatory changes, map requirements</td>
+<td>Updated compliance requirements, policy mapping documents</td>
+<td>Governance teams receive regulator feedback and audit findings</td>
+</tr>
+<tr>
+<td>Policy template creation</td>
+<td>Codify regulations as policy-as-code templates, define automated controls</td>
+<td>Executable policy definitions, control baselines</td>
+<td>Policy effectiveness metrics inform template refinements</td>
+</tr>
+<tr>
+<td>Automated control execution</td>
+<td>Deploy policies through CI/CD, enforce guardrails, validate configurations</td>
+<td>Compliant infrastructure states, policy violation alerts</td>
+<td>Real-time monitoring detects drift and non-compliance</td>
+</tr>
+<tr>
+<td>Monitoring and evidence collection</td>
+<td>Continuous compliance scanning, audit log aggregation, metrics gathering</td>
+<td>Compliance dashboards, audit trails, evidence packages</td>
+<td>Automated evidence for audits, compliance status reports</td>
+</tr>
+<tr>
+<td>Governance reinforcement</td>
+<td>Audit reviews, risk assessments, improvement initiatives</td>
+<td>Updated policies, remediation plans, training programmes</td>
+<td>Loop closes as governance informs next regulatory intelligence cycle</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ai-and-machine-learning-for-compliance-automation">AI and Machine Learning for Compliance Automation</h2>
+<p><img alt="AI-augmented compliance automation workflow" src="../images/diagram_12_ai_automation.png" /></p>
+<p><em>Figure 12.2 demonstrates the feedback loop between telemetry, the AI compliance engine, automated remediation, and human oversight that keeps regulatory posture current.</em></p>
+<p>Artificial intelligence extends the compliance loop by ingesting telemetry, policy breaches, and regulator feedback to flag emerging risks before they become audit issues. Rather than repeating the continuous monitoring workflows described earlier in this chapter, the AI layer focuses on triage: classifying incidents, enriching them with contextual evidence, and recommending automation or escalation paths. Figure 12.2 highlights this control flow. Telemetry and policy violations feed an AI compliance engine that scores risk, orchestrates remediation through Infrastructure as Code updates, and curates evidence packs for review. Human oversight remains central, validating the automated decisions and refining model prompts so that the organisation stays aligned with regulatory expectations.</p>
+<h2 id="requirements-traceability-and-validation">Requirements Traceability and Validation</h2>
+<p><img alt="Compliance requirements traceability map" src="../images/diagram_12_requirements_testing.png" /></p>
+<p><em>Figure 12.3 links high-level compliance requirements to functional controls, Infrastructure as Code artefacts, and verification activities.</em></p>
+<p>Compliance programmes rely on demonstrable traceability between regulatory statements and the technical controls that satisfy them. Figure 12.3 documents that traceability: business, compliance, performance, and cost requirements flow into specific functional controls such as encryption, network segmentation, audit logging, and automated scaling. Those controls are implemented through Terraform configuration and validated by targeted test suites, compliance scanners, and cost analysis. Maintaining this map ensures that every requirement is implemented, tested, and evidenced before auditors ask for proof.</p>
+<h3 id="control-mapping-matrix-and-assure-once-comply-many">Control Mapping Matrix and "assure once, comply many"</h3>
+<p>Architecture as Code operationalises the <strong>assure once, comply many</strong> principle by cataloguing evidence and control mappings in a reusable format. The Control Mapping Matrix links each control identifier to the assurance artefacts captured in CI and to the external frameworks they satisfy. Rather than producing bespoke spreadsheets for ISO 27001, SOC 2, NIST 800-53, GDPR, and internal policies, teams maintain one matrix that references authoritative artefacts from source control.</p>
+<table>
+<thead>
+<tr>
+<th>Control ID</th>
+<th>Control Title</th>
+<th>Assurance Artefact(s)</th>
+<th>ISO 27001</th>
+<th>SOC 2</th>
+<th>NIST 800-53</th>
+<th>GDPR</th>
+<th>Internal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEC-ID-001</td>
+<td>Enforce MFA for human identities</td>
+<td><code>ci/policy-report.json</code>, <code>evidence/mfa-snapshot-YYYYMM.json</code></td>
+<td>A.5 / A.8</td>
+<td>CC6.1 / CC6.6</td>
+<td>IA-2(1), AC-2</td>
+<td>Article 32</td>
+<td>IAM-01</td>
+</tr>
+</tbody>
+</table>
+<p>In this worked example, the <a href="../10_policy_and_security/#assure-once-comply-many-in-policy-design">policy module</a> and <a href="../15_evidence_as_code/#pipeline-example-exporting-mfa-evidence">evidence pipeline</a> each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the <a href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix appendix</a> so organisations can adapt it to their own environments.</p>
+<h2 id="cloud-native-and-serverless-compliance-controls">Cloud-native and Serverless Compliance Controls</h2>
+<p>Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures. Architecture as Code must represent triggers, response mechanisms, and orchestrated workflows that adapt to real-time business events without compromising regulatory obligations. Edge computing introduces latency-sensitive workloads and intermittent connectivity, making coordinated configuration management essential across hybrid edge-cloud environments. Tooling must therefore support declarative policies for distributed deployments, data gravity, dynamic routing, and compliance guardrails that operate consistently regardless of where workloads execute.</p>
+<h2 id="policy-driven-infrastructure-and-governance">Policy-driven Infrastructure and Governance</h2>
+<p><img alt="Policy-driven compliance control tower" src="../images/diagram_12_policy_governance.png" /></p>
+<p><em>Figure 12.4 visualises how governance strategy translates into automated controls and measurable outcomes.</em></p>
+<p>Policy as Code continues to mature with automated control enforcement, continuous compliance monitoring, and dynamic policy adaptation. Strategy teams map regulatory goals and risk appetite, policy repositories turn those inputs into executable controls, and compliance pipelines provide dashboards, exception handling, and regulator-ready reporting. Figure 12.4 shows how exceptions loop back into the pipeline for remediation and how regulator feedback informs the next iteration of the governance strategy.</p>
+<h2 id="future-facing-considerations-speculative">Future-facing Considerations (Speculative)</h2>
+<p>The following topics outline emerging areas that influence long-term compliance strategy. They are exploratory and should be treated as forward-looking guidance rather than current-state requirements.</p>
+<h3 id="quantum-computing-readiness">Quantum Computing Readiness</h3>
+<p>Quantum computing will require a rethink of security models, cryptography, and resource management strategies. Post-quantum cryptography standards must be integrated into infrastructure security frameworks, and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.</p>
+<h3 id="sustainability-and-green-computing">Sustainability and Green Computing</h3>
+<p>Environmental sustainability is a core consideration for infrastructure design and operations. Carbon-aware workload placement shifts compute to regions with renewable energy availability, optimises for energy efficiency, and minimises environmental impact. Architecture as Code should capture lifecycle management, recycling strategies, and sustainability metrics so that green objectives are validated alongside functional requirements and compliance commitments.</p>
+<h2 id="practical-examples">Practical Examples</h2>
+<h3 id="ai-augmented-infrastructure-optimisation">AI-augmented Infrastructure Optimisation</h3>
+<pre><code class="language-python"># ai_optimiser.py
+import tensorflow as tf
+import numpy as np
+from datetime import datetime, timedelta
+import boto3
+
+class InfrastructureOptimiser:
+    def __init__(self, model_path):
+        self.model = tf.keras.models.load_model(model_path)
+        self.cloudwatch = boto3.client('cloudwatch')
+        self.autoscaling = boto3.client('autoscaling')
+
+    def forecast_demand(self, horizon_hours=24):
+        &quot;&quot;&quot;Forecast infrastructure demand for the next 24 hours.&quot;&quot;&quot;
+        current_time = datetime.now()
+
+        # Collect historical metrics
+        metrics = self.collect_historical_metrics(
+            start_time=current_time - timedelta(days=7),
+            end_time=current_time
+        )
+
+        # Prepare features for the ML model
+        features = self.prepare_features(metrics, current_time)
+
+        # Generate predictions
+        predictions = self.model.predict(features)
+
+        return self.format_predictions(predictions, horizon_hours)
+
+    def optimise_scaling_policies(self, predictions):
+        &quot;&quot;&quot;Automatically adjust Auto Scaling policies based on predictions.&quot;&quot;&quot;
+        for asg_name, predicted_load in predictions.items():
+
+            # Calculate the optimal instance count
+            optimal_instances = self.calculate_optimal_instances(
+                predicted_load, asg_name
+            )
+
+            # Update the Auto Scaling policy
+            self.update_autoscaling_policy(asg_name, optimal_instances)
+
+            # Schedule proactive scaling actions
+            self.schedule_proactive_scaling(asg_name, predicted_load)
+</code></pre>
+<h3 id="serverless-infrastructure-definition">Serverless Infrastructure Definition</h3>
+<pre><code class="language-yaml"># serverless-infrastructure.yml
+service: intelligent-infrastructure
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: eu-north-1
+
+  environment:
+    OPTIMISATION_TABLE: ${self:service}-optimisation-${self:provider.stage}
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - autoscaling:*
+        - cloudwatch:*
+        - ec2:*
+      Resource: &quot;*&quot;
+
+functions:
+  optimiseInfrastructure:
+    handler: optimiser.optimise
+    events:
+      - schedule: rate(15 minutes)
+      - cloudwatchEvent:
+          event:
+            source: [&quot;aws.autoscaling&quot;]
+            detail-type: [&quot;EC2 Instance Terminate Successful&quot;]
+
+    reservedConcurrency: 1
+    timeout: 300
+    memory: 1024
+
+    environment:
+      MODEL_BUCKET: ${self:custom.modelBucket}
+
+  predictiveScaling:
+    handler: predictor.forecast_and_scale
+    events:
+      - schedule: rate(5 minutes)
+
+    layers:
+      - ${self:custom.tensorflowLayer}
+
+    memory: 3008
+    timeout: 900
+
+  costOptimiser:
+    handler: cost.optimise
+    events:
+      - schedule: cron(0 2 * * ? *)  # Daily at 02:00
+
+    environment:
+      COST_THRESHOLD: 1000
+      OPTIMISATION_LEVEL: aggressive
+
+  greenComputing:
+    handler: sustainability.optimise_for_carbon
+    events:
+      - schedule: rate(30 minutes)
+      - eventBridge:
+          pattern:
+            source: [&quot;renewable-energy-api&quot;]
+            detail-type: [&quot;Energy Forecast Update&quot;]
+</code></pre>
+<h3 id="quantum-safe-security-implementation">Quantum-safe Security Implementation</h3>
+<pre><code class="language-hcl"># quantum-safe-infrastructure.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 5.0&quot;
+    }
+    tls = {
+      source  = &quot;hashicorp/tls&quot;
+      version = &quot;~&gt; 4.0&quot;
+    }
+  }
+}
+
+# Post-quantum cryptography for TLS connections
+resource &quot;tls_private_key&quot; &quot;quantum_safe&quot; {
+  algorithm = &quot;ECDSA&quot;
+  ecdsa_curve = &quot;P384&quot;  # Quantum-resistant curve
+}
+
+resource &quot;aws_acm_certificate&quot; &quot;quantum_safe&quot; {
+  private_key      = tls_private_key.quantum_safe.private_key_pem
+  certificate_body = tls_self_signed_cert.quantum_safe.cert_pem
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+    Name          = &quot;Quantum-safe Certificate&quot;
+    SecurityLevel = &quot;Post-Quantum&quot;
+  }
+}
+
+# KMS keys with quantum-resistant algorithms
+resource &quot;aws_kms_key&quot; &quot;quantum_safe&quot; {
+  description = &quot;Quantum-safe encryption key&quot;
+  key_usage   = &quot;ENCRYPT_DECRYPT&quot;
+  key_spec    = &quot;SYMMETRIC_DEFAULT&quot;
+
+  # Enable quantum-resistant key rotation
+  key_rotation_enabled = true
+
+  tags = {
+    QuantumSafe = &quot;true&quot;
+    Algorithm   = &quot;AES-256-GCM&quot;
+  }
+}
+
+# Quantum-safe VPC with enhanced security
+resource &quot;aws_vpc&quot; &quot;quantum_safe&quot; {
+  cidr_block           = &quot;10.0.0.0/16&quot;
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  # Enforce quantum-safe network management
+  tags = {
+    Name       = &quot;Quantum-safe VPC&quot;
+    Encryption = &quot;Mandatory&quot;
+    Protocol   = &quot;TLS1.3-PQC&quot;
+  }
+}
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>Modern Architecture as Code practices provide the repeatability, transparency, and evidence management demanded by regulators. By codifying policies, enforcing controls through pipelines, and maintaining auditable feedback loops, organisations can demonstrate compliance without sacrificing delivery speed. AI-enabled tooling, serverless platforms, and rigorous traceability matrices ensure that every control remains testable and observable.</p>
+<p>Looking forward, teams should monitor speculative developments such as quantum resilience and sustainability reporting so that compliance strategies evolve alongside the regulatory landscape. Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from <a href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a> to <a href="../17_organisational_change/">Organisational Change and Team Structures</a>—Architecture as Code adapts to meet emerging challenges and opportunities while keeping compliance at the forefront.</p>
+<h2 id="moving-from-governance-to-delivery">Moving from Governance to Delivery</h2>
+<p>With security controls, policy frameworks, and compliance mechanisms established, we now shift focus to the practical delivery and operational excellence that sustain Architecture as Code implementations. Having established the "what" and "why" of governance, the next part explores the "how" of reliable, repeatable delivery.</p>
+<p>Part D examines the testing strategies, implementation patterns, cost optimisation techniques, and migration approaches that organisations need to deliver Architecture as Code successfully. <a href="../13_testing_strategies/">Chapter 13 on Testing Strategies</a> builds on the security and compliance frameworks we've established, showing how to validate that infrastructure meets both functional and regulatory requirements. The subsequent chapters demonstrate practical implementation, financial optimisation, and migration strategies that bring together all the elements covered so far.</p>
+<h2 id="sources-and-references">Sources and References</h2>
+<ul>
+<li>IEEE Computer Society. "Quantum Computing Impact on Infrastructure." IEEE Quantum Computing Standards.</li>
+<li>Green Software Foundation. "Sustainable Infrastructure Patterns." Green Software Principles.</li>
+<li>NIST. "Post-Quantum Cryptography Standards." National Institute of Standards and Technology.</li>
+<li>Cloud Native Computing Foundation. "Future of Cloud Native Infrastructure." CNCF Research.</li>
+<li>Gartner Research. "Infrastructure and Operations Technology Trends 2024." Gartner IT Infrastructure Reports.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../11_governance_as_code/" class="btn btn-neutral float-left" title="Governance as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../part_d_delivery/" class="btn btn-neutral float-right" title="index">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../11_governance_as_code/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../part_d_delivery/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

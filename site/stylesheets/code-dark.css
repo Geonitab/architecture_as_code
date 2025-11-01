@@ -1,0 +1,119 @@
+/* Custom styling for code elements to ensure dark backgrounds */
+.md-typeset code,
+.md-typeset tt {
+  background-color: #1f1f24;
+  color: #f8f8f2;
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.3rem;
+}
+
+.md-typeset pre {
+  background-color: #1f1f24;
+  color: #f8f8f2;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.md-typeset pre > code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* Ensure syntax-highlighted code blocks inherit the dark theme */
+.md-typeset .highlight pre,
+.md-typeset .highlight code {
+  background-color: #1f1f24;
+  color: #f8f8f2;
+}
+
+/* Improve readability of inline code links */
+.md-typeset a code {
+  color: #b5c6ff;
+}
+
+/* Responsive table styles (Material for MkDocs) */
+.md-typeset table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.md-typeset table th,
+.md-typeset table td {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  hyphens: auto;
+}
+
+/* Ensure table doesn't exceed container width */
+.md-typeset__table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-friendly table adjustments */
+@media screen and (max-width: 768px) {
+  .md-typeset table {
+    font-size: 0.9rem;
+  }
+  
+  .md-typeset table th,
+  .md-typeset table td {
+    padding: 0.5rem;
+    min-width: 100px;
+  }
+}
+
+/* Responsive table styles (Read the Docs theme) */
+.rst-content table.docutils,
+.rst-content table.field-list,
+.wy-table-responsive table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+}
+
+.rst-content table.docutils th,
+.rst-content table.docutils td,
+.rst-content table.field-list th,
+.rst-content table.field-list td,
+.wy-table-responsive table th,
+.wy-table-responsive table td {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  hyphens: auto;
+}
+
+.wy-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media screen and (max-width: 768px) {
+  .rst-content table.docutils,
+  .rst-content table.field-list,
+  .wy-table-responsive table {
+    font-size: 0.9rem;
+  }
+
+  .rst-content table.docutils th,
+  .rst-content table.docutils td,
+  .rst-content table.field-list th,
+  .rst-content table.field-list td,
+  .wy-table-responsive table th,
+  .wy-table-responsive table td {
+    padding: 0.5rem;
+    min-width: 100px;
+  }
+}

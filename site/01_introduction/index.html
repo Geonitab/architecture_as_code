@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/01_introduction/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Introduction to Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction to Architecture as Code";
+        var mkdocs_page_input_path = "01_introduction.md";
+        var mkdocs_page_url = "/01_introduction/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Introduction to Architecture as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#evolution-towards-architecture-as-code">Evolution towards Architecture as Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#microservice-complexity-as-the-primary-driver">Microservice complexity as the primary driver</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definition-and-scope">Definition and Scope</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#critique-of-traditional-architecture">Critique of Traditional Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#adoptability">Adoptability</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#extensibility">Extensibility</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#productivity">Productivity</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-interconnected-flow-of-architecture-as-code">The Interconnected Flow of Architecture as Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#purpose-and-target-audience-of-the-book">Purpose and Target Audience of the Book</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-this-book-is-organised">How This Book Is Organised</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#companion-workbook-and-course-alignment">Companion workbook and course alignment</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part A – Foundations</li>
+      <li class="breadcrumb-item active">Introduction to Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/01_introduction.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introduction-to-architecture-as-code">Introduction to Architecture as Code</h1>
+<p>Architecture as Code represents a paradigm shift in system development where the entire system architecture is defined, version-controlled, and managed through code. This approach enables organisations to apply the same methodologies as traditional software development across their whole technical landscape.</p>
+<p><img alt="Introduction to Architecture as Code" src="../images/diagram_01_introduction.png" /></p>
+<p>The diagram illustrates the evolution from manual processes to the comprehensive vision of Architecture as Code, where every aspect of the system architecture is codified.</p>
+<h2 id="evolution-towards-architecture-as-code">Evolution towards Architecture as Code</h2>
+<p>Traditional methods for system architecture have often been manual and document-based. Architecture as Code builds on established principles from software development and applies them to the complete system landscape.</p>
+<p>This includes not only infrastructure components, but also application architecture, data flows, security policies, compliance rules, and organisational structures – all expressed as code.</p>
+<h2 id="microservice-complexity-as-the-primary-driver">Microservice complexity as the primary driver</h2>
+<p>The tipping point for most organisations adopting Architecture as Code is the complexity created by large-scale microservice estates. The Cloud Native Computing Foundation's <em>State of Cloud Native Development 2024</em> report notes that two thirds of modern organisations already run microservices in production while simultaneously coordinating event-driven workloads. Each additional service introduces new APIs, contracts, and deployment topologies that quickly outpace what static diagrams or isolated configuration repositories can keep synchronised.</p>
+<p>Architecture as Code counters that systemic complexity by capturing service boundaries, operational dependencies, security policies, and resilience patterns as executable artefacts. When those definitions travel through the same pipelines as application code, teams can guarantee that mesh rules, policy guardrails, and interoperability tests evolve in lockstep with every service. In practice this makes Architecture as Code the governing layer that keeps sprawling microservice portfolios coherent, observable, and compliant.</p>
+<h2 id="definition-and-scope">Definition and Scope</h2>
+<p>Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. ThoughtWorks (2024) characterises this discipline as producing <em>live, executable specifications</em> that stay synchronised with the running estate rather than lingering as aspirational design artefacts. This encompasses application components, integration patterns, data architecture, infrastructure, and organisational processes.</p>
+<p>This holistic approach enables end-to-end automation, where changes in requirements automatically propagate throughout the architecture – from application logic to deployment and monitoring. Because the specifications remain executable, governance controls, quality gates, and audit evidence can be embedded directly into the same pipelines that deliver software, keeping architecture intent verifiable at the pace that continuous delivery demands.</p>
+<h2 id="critique-of-traditional-architecture">Critique of Traditional Architecture</h2>
+<p>Traditional architecture practices have struggled with "slideware syndrome"—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational reality. As environments evolve, these unchecked artefacts accumulate architectural entropy: the gradual loss of coherence between documented intent and implemented systems. ThoughtWorks (2024) warns that this entropy erodes trust, leaving teams to improvise workarounds that bypass architectural guardrails altogether.</p>
+<p>DevOps-driven change velocity amplifies these failure modes. Release pipelines ship features and infrastructure updates in hours rather than quarters, and manual governance checkpoints become bottlenecks that teams either circumvent or replicate inconsistently. Architecture as Code responds by embedding governance policies, compliance checks, and architectural decision records inside the same automated workflows, ensuring that fast-moving delivery remains accountable to shared standards without reverting to bureaucratic overhead.</p>
+<h3 id="adoptability">Adoptability</h3>
+<p>Red Hat (2023) stresses that Architecture as Code succeeds only when teams can adopt it without wholesale tooling upheaval. Expressing architectural intent as YAML, JSON, or domain-specific languages keeps specifications approachable so enterprise architects, platform engineers, and governance specialists can all work in the same repository from day one. Lightweight guardrails, documented contribution paths, and iterative enablement make the practice consumable for organisations that are still shifting away from slideware-heavy governance.</p>
+<h3 id="extensibility">Extensibility</h3>
+<p>The same guidance highlights extensibility as the safeguard against future bottlenecks. Modular model definitions, reusable policy templates, and integration points for build, security, and observability tooling allow an Architecture as Code platform to evolve alongside the wider landscape. Extensible artefacts give teams freedom to plug in new delivery pipelines, compliance checks, or visualisation tools without rewriting the architectural source of truth.</p>
+<h3 id="productivity">Productivity</h3>
+<p>Red Hat also frames productivity as a direct outcome of codifying architecture. Once architectural definitions, policies, and documentation live in version control, automation can validate changes, orchestrate reviews, and publish documentation without manual intervention. The result is faster feedback for architects and delivery teams, fewer approval bottlenecks, and a measurable uplift in how quickly organisations can make safe architectural decisions.</p>
+<h2 id="the-interconnected-flow-of-architecture-as-code">The Interconnected Flow of Architecture as Code</h2>
+<p><img alt="Architecture as Code Flow" src="../images/diagram_01_aac_flow.png" /></p>
+<p>Architecture as Code is not a linear process but an interconnected ecosystem where different aspects reinforce and validate each other. The diagram illustrates how various “as Code” practices form a cohesive development cycle:</p>
+<p><strong>Requirements as Code</strong> forms the foundation, with business and functional requirements codified in machine-readable formats. These requirements feed into <strong>Compliance as Code</strong>, ensuring that regulatory and security policies are automatically validated throughout the development process.</p>
+<p><strong>Documentation as Code</strong> maintains living documentation that evolves with the codebase, while <strong>Design as Code</strong> (including design tokens for consistent styling and branding) defines the visual and structural patterns. This flows naturally into the <strong>Coding</strong> phase, followed by <strong>CI/CD</strong> pipelines that automate testing, validation, and deployment.</p>
+<p>Finally, <strong>Infrastructure as Code</strong> provisions and manages the runtime environment. <strong>Management as Code</strong> integrates leadership practices, governance routines, and strategic decision-making into the same version-controlled ecosystem, ensuring that organisational policies and management intent are codified alongside technical implementations. The feedback loops show how infrastructure changes can trigger compliance checks, how management policies inform requirements and compliance, and how CI/CD results inform requirements validation, creating a continuous improvement cycle that spans both technical and organisational domains.</p>
+<h2 id="purpose-and-target-audience-of-the-book">Purpose and Target Audience of the Book</h2>
+<p>This book is aimed at system architects, developers, project managers, and IT decision-makers who want to understand and implement Architecture as Code within their organisations.</p>
+<p>Readers will gain comprehensive knowledge of how the entire system architecture can be codified, from foundational principles to advanced architectural patterns that encompass an organisation’s entire digital ecosystem.</p>
+<p>Sources:
+- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
+- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
+- Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer, 2023.
+- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF, 2024.</p>
+<h2 id="how-this-book-is-organised">How This Book Is Organised</h2>
+<p>This book follows a deliberate progression that mirrors the typical Architecture as Code transformation journey:</p>
+<p><strong>Part A: Foundations</strong> establishes the conceptual groundwork, covering core principles, version control practices, and Architecture Decision Records that form the bedrock of successful implementation.</p>
+<p><strong>Part B: Architecture Platform</strong> explores the technical building blocks—automation, DevOps, CI/CD pipelines, and containerisation—that transform architectural intent into operational reality.</p>
+<p><strong>Part C: Security and Governance</strong> addresses the critical controls and compliance frameworks that ensure Architecture as Code practices align with regulatory requirements and organisational policies.</p>
+<p><strong>Part D: Delivery and Operations</strong> bridges technical capabilities with business outcomes through testing strategies, practical implementation patterns, cost optimisation, and migration approaches.</p>
+<p><strong>Part E: Organisation and Leadership</strong> examines the organisational transformation, team structures, cultural shifts, and leadership practices that enable sustainable Architecture as Code adoption.</p>
+<p><strong>Part F: Experience and Best Practices</strong> synthesises lessons learned from real-world implementations, exploring how different "as Code" disciplines work together and distilling proven patterns across diverse contexts.</p>
+<p><strong>Part G: Future and Wrap-up</strong> looks ahead to emerging trends whilst providing a comprehensive conclusion that ties together all elements of the Architecture as Code journey.</p>
+<p>Each part builds upon previous foundations whilst setting the stage for what follows, creating a cohesive narrative that guides readers from first principles through to advanced practice.</p>
+<h2 id="companion-workbook-and-course-alignment">Companion workbook and course alignment</h2>
+<p>The <em>Architecture as Code</em> course workbook, exercise guide, and facilitator materials in <code>course/</code> extend this book into a practised learning journey. Each module maps directly to the chapters referenced throughout this introduction, ensuring that participants reinforce the concepts, controls, and cultural shifts described in the text. Workbook templates prompt teams to cite the relevant chapters, appendices, and evidence patterns so that classroom outputs remain consistent with the canonical guidance presented here. Facilitators should encourage learners to keep the workbook and this book side by side: every experiment, radar update, and artefact submission ought to reference the sections that informed the work, maintaining a verifiable audit trail between theory and practice.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../part_a_foundations/" class="btn btn-neutral float-left" title="index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../02_fundamental_principles/" class="btn btn-neutral float-right" title="Fundamental Principles of Architecture as Code">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../part_a_foundations/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../02_fundamental_principles/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

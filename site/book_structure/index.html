@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/book_structure/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Book Structure - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Book Structure";
+        var mkdocs_page_input_path = "book_structure.md";
+        var mkdocs_page_url = "/book_structure/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Book Structure</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#part-1-foundations-chapters-1-4">Part 1: Foundations (Chapters 1-4)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-2-architecture-platform-chapters-5-8">Part 2: Architecture Platform (Chapters 5-8)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-3-security-governance-chapters-9-12-including-9b-and-9c">Part 3: Security &amp; Governance (Chapters 9-12, including 9B and 9C)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-4-delivery-operations-chapters-13-16-including-15a-and-15b">Part 4: Delivery &amp; Operations (Chapters 13-16, including 15A and 15B)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-5-organisation-leadership-chapters-17-21">Part 5: Organisation &amp; Leadership (Chapters 17-21)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-6-experience-best-practices-chapters-22-24">Part 6: Experience &amp; Best Practices (Chapters 22-24)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-7-future-wrap-up-chapters-25-27-including-26a-and-26b">Part 7: Future &amp; Wrap-up (Chapters 25-27, including 26A and 26B)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appendices-and-reference-material-chapters-28-34-plus-maturity-resources">Appendices and Reference Material (Chapters 28-34 plus maturity resources)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-structure">Chapter Structure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#part-1-foundations-chapters-1-4_1">Part 1: Foundations (Chapters 1-4)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-2-architecture-platform-chapters-5-8_1">Part 2: Architecture Platform (Chapters 5-8)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-3-security-governance-chapters-9-12-including-9b-and-9c_1">Part 3: Security &amp; Governance (Chapters 9-12, including 9B and 9C)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-4-delivery-operations-chapters-13-16-including-15a-and-15b_1">Part 4: Delivery &amp; Operations (Chapters 13-16, including 15A and 15B)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-5-organisation-leadership-chapters-17-21_1">Part 5: Organisation &amp; Leadership (Chapters 17-21)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-6-experience-best-practices-chapters-22-24_1">Part 6: Experience &amp; Best Practices (Chapters 22-24)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#part-7-future-wrap-up-chapters-25-27-including-26a-and-26b_1">Part 7: Future &amp; Wrap-up (Chapters 25-27, including 26A and 26B)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#appendices">Appendices</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#archived-drafts">Archived Drafts</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#book-organisation-principles">Book Organisation Principles</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#diagrams-and-images">Diagrams and Images</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#build-process">Build Process</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#local-building">Local Building</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cicd">CI/CD</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#target-audience">Target Audience</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#authors-and-contributors">Authors and Contributors</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Overview</li>
+      <li class="breadcrumb-item active">Book Structure</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/book_structure.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="architecture-as-code-book-structure">Architecture as Code - Book Structure</h1>
+<p>This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus extended appendices. Thirty-eight chapters, appendices, and structured templates build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<h3 id="part-1-foundations-chapters-1-4">Part 1: Foundations (Chapters 1-4)</h3>
+<p>Foundational concepts, principles, and documentation practices</p>
+<h3 id="part-2-architecture-platform-chapters-5-8">Part 2: Architecture Platform (Chapters 5-8)</h3>
+<p>Core technical building blocks for Architecture as Code implementations</p>
+<h3 id="part-3-security-governance-chapters-9-12-including-9b-and-9c">Part 3: Security &amp; Governance (Chapters 9-12, including 9B and 9C)</h3>
+<p>Security, policy automation, governance, and compliance as code</p>
+<h3 id="part-4-delivery-operations-chapters-13-16-including-15a-and-15b">Part 4: Delivery &amp; Operations (Chapters 13-16, including 15A and 15B)</h3>
+<p>Testing, delivery practices, cost optimisation, and migration strategies</p>
+<h3 id="part-5-organisation-leadership-chapters-17-21">Part 5: Organisation &amp; Leadership (Chapters 17-21)</h3>
+<p>Organisational change, team design, management models, and collaborative delivery</p>
+<h3 id="part-6-experience-best-practices-chapters-22-24">Part 6: Experience &amp; Best Practices (Chapters 22-24)</h3>
+<p>Cross-disciplinary collaboration and codified best practices</p>
+<h3 id="part-7-future-wrap-up-chapters-25-27-including-26a-and-26b">Part 7: Future &amp; Wrap-up (Chapters 25-27, including 26A and 26B)</h3>
+<p>Future outlook, risk avoidance, and closing guidance</p>
+<h3 id="appendices-and-reference-material-chapters-28-34-plus-maturity-resources">Appendices and Reference Material (Chapters 28-34 plus maturity resources)</h3>
+<p>Reference material, author information, technical enablers, and the Architecture as Code maturity model</p>
+<hr />
+<h2 id="chapter-structure">Chapter Structure</h2>
+<h3 id="part-1-foundations-chapters-1-4_1">Part 1: Foundations (Chapters 1-4)</h3>
+<p><strong>Focus:</strong> Foundational concepts, principles, and documentation practices for Architecture as Code</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>01_introduction.md</code></td>
+<td>Introduction to Architecture as Code</td>
+<td>Introduction to the concept Architecture as Code and its relation to Infrastructure as Code</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>02_fundamental_principles.md</code></td>
+<td>Fundamental Principles of Architecture as Code</td>
+<td>Fundamental principles including declarative architecture definition and holistic perspective</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>03_version_control.md</code></td>
+<td>Version Control and Code Structure</td>
+<td>Best practices for version control of architecture code</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>04_adr.md</code></td>
+<td>Architecture Decision Records (ADR)</td>
+<td>Structured documentation of architecture decisions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-2-architecture-platform-chapters-5-8_1">Part 2: Architecture Platform (Chapters 5-8)</h3>
+<p><strong>Focus:</strong> Core technical building blocks and automation patterns for Architecture as Code</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><code>05_automation_devops_cicd.md</code></td>
+<td>Automation, DevOps and CI/CD for Infrastructure as Code</td>
+<td>Holistic approach to CI/CD, DevOps practices and automation for IaC</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>06_structurizr.md</code></td>
+<td>Structurizr: Architecture Modeling as Code</td>
+<td>Using Structurizr DSL and C4 model for architecture visualisation and documentation</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>07_containerisation.md</code></td>
+<td>Containerisation and Orchestration as Code</td>
+<td>Container-based Architecture as Code</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>08_microservices.md</code></td>
+<td>Microservices Architecture as Code</td>
+<td>Applying Architecture as Code disciplines across microservices estates</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-3-security-governance-chapters-9-12-including-9b-and-9c_1">Part 3: Security &amp; Governance (Chapters 9-12, including 9B and 9C)</h3>
+<p><strong>Focus:</strong> Security automation, policy enforcement, governance, and compliance requirements</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+<td><code>09_security_fundamentals.md</code></td>
+<td>Security Fundamentals for Architecture as Code</td>
+<td>Foundational security principles, policies, and core practices</td>
+</tr>
+<tr>
+<td>9B</td>
+<td><code>09b_security_patterns.md</code></td>
+<td>Advanced Security Patterns and Implementation</td>
+<td>Advanced patterns, practical implementations, and future trends</td>
+</tr>
+<tr>
+<td>9C</td>
+<td><code>09c_risk_and_threat_as_code.md</code></td>
+<td>Risk as Code and Threat Handling as Code</td>
+<td>Codifying risk catalogues, automation, and incident playbooks</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>10_policy_and_security.md</code></td>
+<td>Policy and Security as Code in Detail</td>
+<td>Detailed review of policy-as-code</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>11_governance_as_code.md</code></td>
+<td>Governance as Code</td>
+<td>Codifying governance processes, approval flows, and tooling support</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>12_compliance.md</code></td>
+<td>Compliance and Regulatory Adherence</td>
+<td>Regulatory compliance considerations for international organisations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-4-delivery-operations-chapters-13-16-including-15a-and-15b_1">Part 4: Delivery &amp; Operations (Chapters 13-16, including 15A and 15B)</h3>
+<p><strong>Focus:</strong> Testing strategies, delivery patterns, evidence automation, financial optimisation, and migration approaches</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td><code>13_testing_strategies.md</code></td>
+<td>Testing Strategies for Infrastructure as Code</td>
+<td>Testing of IaC and architecture code</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>14_practical_implementation.md</code></td>
+<td>Architecture as Code in Practice</td>
+<td>Practical implementation examples</td>
+</tr>
+<tr>
+<td>15A</td>
+<td><code>15_evidence_as_code.md</code></td>
+<td>Evidence as Code and Continuous Assurance</td>
+<td>Automated evidence pipelines that connect policy automation to operational reporting</td>
+</tr>
+<tr>
+<td>15B</td>
+<td><code>15_cost_optimization.md</code></td>
+<td>Cost Optimisation and Resource Management</td>
+<td>Economic optimisation of resources</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>16_migration.md</code></td>
+<td>Migration from Traditional Infrastructure</td>
+<td>Migration strategies and best practices</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-5-organisation-leadership-chapters-17-21_1">Part 5: Organisation &amp; Leadership (Chapters 17-21)</h3>
+<p><strong>Focus:</strong> Organisational transformation, leadership models, and digitally enabled collaboration</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>17</td>
+<td><code>17_organisational_change.md</code></td>
+<td>Organisational Change and Team Structures</td>
+<td>Organisational development for IaC</td>
+</tr>
+<tr>
+<td>18</td>
+<td><code>18_team_structure.md</code></td>
+<td>Team Structure and Competency Development for IaC</td>
+<td>Team organisation and competency development</td>
+</tr>
+<tr>
+<td>19</td>
+<td><code>19_management_as_code.md</code></td>
+<td>Management as Code</td>
+<td>Leadership practices encoded in collaborative tooling</td>
+</tr>
+<tr>
+<td>20</td>
+<td><code>20_ai_agent_team.md</code></td>
+<td>AI Agent Team for Architecture as Code Initiatives</td>
+<td>Structure, roles, and processes for virtual agent teams</td>
+</tr>
+<tr>
+<td>21</td>
+<td><code>21_digitalisation.md</code></td>
+<td>Digitalisation through Code-based Infrastructure</td>
+<td>Digital transformation through IaC</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-6-experience-best-practices-chapters-22-24_1">Part 6: Experience &amp; Best Practices (Chapters 22-24)</h3>
+<p><strong>Focus:</strong> Cross-disciplinary collaboration and lessons learned</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td><code>22_documentation_vs_architecture.md</code></td>
+<td>Documentation as Code vs Architecture as Code</td>
+<td>Distinction between documentation and architecture disciplines, modelling vs diagram tools</td>
+</tr>
+<tr>
+<td>23</td>
+<td><code>23_soft_as_code_interplay.md</code></td>
+<td>The Interplay Between Soft As Code Disciplines</td>
+<td>Cross-disciplinary synergies between soft "as code" practices</td>
+</tr>
+<tr>
+<td>24</td>
+<td><code>24_best_practices.md</code></td>
+<td>Best Practices and Lessons Learned</td>
+<td>Summary of best practices</td>
+</tr>
+</tbody>
+</table>
+<h3 id="part-7-future-wrap-up-chapters-25-27-including-26a-and-26b_1">Part 7: Future &amp; Wrap-up (Chapters 25-27, including 26A and 26B)</h3>
+<p><strong>Focus:</strong> Strategic outlook, risk avoidance, and concluding guidance</p>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td><code>25_future_trends.md</code></td>
+<td>Future Trends and Development in Architecture as Code</td>
+<td>Development trends, technological future, and long-term perspectives</td>
+</tr>
+<tr>
+<td>26A</td>
+<td><code>26a_prerequisites_for_aac.md</code></td>
+<td>Prerequisites for Architecture as Code Adoption</td>
+<td>Organisational, technical, and economic readiness signals</td>
+</tr>
+<tr>
+<td>26B</td>
+<td><code>26b_aac_anti_patterns.md</code></td>
+<td>Anti-Patterns in Architecture as Code Programmes</td>
+<td>Common pitfalls, early warning indicators, and recovery playbooks</td>
+</tr>
+<tr>
+<td>27</td>
+<td><code>27_conclusion.md</code></td>
+<td>Conclusion</td>
+<td>Concluding reflections</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appendices">Appendices</h3>
+<table>
+<thead>
+<tr>
+<th>Chapter / Appendix</th>
+<th>File</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glossary</td>
+<td><code>glossary.md</code></td>
+<td>Glossary</td>
+<td>Glossary and definitions</td>
+</tr>
+<tr>
+<td>About the Author</td>
+<td><code>about_the_author.md</code></td>
+<td>About the Author</td>
+<td>Profile of Gunnar Nordqvist and context for the book's expertise</td>
+</tr>
+<tr>
+<td>Appendix A</td>
+<td><code>30_appendix_code_examples.md</code></td>
+<td>Appendix A: Code Examples and Technical Implementations</td>
+<td>Technical architecture code implementations</td>
+</tr>
+<tr>
+<td>Appendix B</td>
+<td><code>appendix_b_technical_architecture.md</code></td>
+<td>Appendix B: Technical Architecture for Book Production</td>
+<td>Technical book production infrastructure</td>
+</tr>
+<tr>
+<td>32</td>
+<td><code>32_finos_project_blueprint.md</code></td>
+<td>Appendix C: FINOS Project Blueprint</td>
+<td>Operational blueprint demonstrating governance as code alignment</td>
+</tr>
+<tr>
+<td>33</td>
+<td><code>33_references.md</code></td>
+<td>References and Sources</td>
+<td>Citations supporting the manuscript</td>
+</tr>
+<tr>
+<td>34</td>
+<td><code>appendix_templates_and_tools.md</code></td>
+<td>Appendix D: Templates and Tools</td>
+<td>Directory of reusable maturity and compliance artefacts</td>
+</tr>
+<tr>
+<td>Appendix – Maturity Model</td>
+<td><code>architecture_as_code_maturity_model.md</code></td>
+<td>Architecture as Code Maturity Model</td>
+<td>Progressive maturity staircase linking “as code” disciplines</td>
+</tr>
+<tr>
+<td>Appendix – Maturity Radar</td>
+<td><code>maturity_model_radar.html</code></td>
+<td>Architecture as Code Maturity Radar Tool</td>
+<td>Interactive radar visualisation accompanying the maturity model</td>
+</tr>
+<tr>
+<td>Appendix – Control Mapping Matrix</td>
+<td><code>appendix_d_control_mapping_matrix_template.md</code></td>
+<td>Control Mapping Matrix Template</td>
+<td>Compliance acceleration template that complements the maturity model</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="archived-drafts">Archived Drafts</h3>
+<p>The <code>archive/</code> folder stores markdown chapters that have been retired from the active manuscript. These files are excluded from the automated build sequence in <code>build_book.sh</code> but remain available for reference and future revisions.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Original Chapter</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>archive/cloud_architecture.md</code></td>
+<td>Chapter 6 (Swedish draft)</td>
+<td>Superseded by the current English material covering cloud-native execution.</td>
+</tr>
+<tr>
+<td><code>archive/microservices_architecture_en.md</code></td>
+<td>Chapter 8 translation</td>
+<td>Retained as a translation reference after the live chapter was rewritten.</td>
+</tr>
+<tr>
+<td><code>archive/lovable_mockups_sv.md</code></td>
+<td>Chapter 20 workshop</td>
+<td>Vendor-specific Swedish workshop material preserved for future localisation work.</td>
+</tr>
+<tr>
+<td><code>archive/future_trends_sv.md</code></td>
+<td>Chapter 25 draft</td>
+<td>Swedish-language narrative replaced by the live Chapter 25.</td>
+</tr>
+<tr>
+<td><code>archive/future_development_sv.md</code></td>
+<td>Chapter 26 companion</td>
+<td>Swedish continuation of future-planning material folded into later revisions.</td>
+</tr>
+</tbody>
+</table>
+<p>Archive filenames intentionally avoid numeric prefixes so that tooling can distinguish archived content from active chapters.</p>
+<hr />
+<h2 id="book-organisation-principles">Book Organisation Principles</h2>
+<p>The book's seven-part structure follows a logical progression:</p>
+<ol>
+<li><strong>Part 1: Foundations</strong> – Establishes core concepts and principles that underpin Architecture as Code work</li>
+<li><strong>Part 2: Architecture Platform</strong> – Builds the technical capabilities required for codified architecture</li>
+<li><strong>Part 3: Security &amp; Governance</strong> – Ensures safety, control, and regulatory alignment</li>
+<li><strong>Part 4: Delivery &amp; Operations</strong> – Provides the practices needed to deliver and operate architecture as code</li>
+<li><strong>Part 5: Organisation &amp; Leadership</strong> – Aligns teams, leadership, and collaboration models with the new operating model</li>
+<li><strong>Part 6: Experience &amp; Best Practices</strong> – Shares cross-disciplinary experiences and lessons learned</li>
+<li><strong>Part 7: Future &amp; Wrap-up</strong> – Explores the future direction and concludes the narrative, supported by appendices</li>
+</ol>
+<p>This structure ensures:
+- <strong>Logical progression</strong>: Each part builds upon knowledge from previous parts
+- <strong>Thematic grouping</strong>: Related topics are covered together for better comprehension
+- <strong>Balance</strong>: Theory and practice are balanced throughout all parts
+- <strong>Adaptability</strong>: Guidance is written for international applicability with notes for adapting to local regulatory requirements</p>
+<h2 id="diagrams-and-images">Diagrams and Images</h2>
+<p>The <code>images/</code> directory contains:
+- <strong>Mermaid files</strong> (<code>.mmd</code>): Source code for diagrams that are automatically converted to PNG
+- <strong>PNG files</strong> (<code>.png</code>): Generated diagram images used in the book</p>
+<p>Each chapter has associated diagrams that illustrate key concepts and processes.</p>
+<h2 id="build-process">Build Process</h2>
+<p>The book is built automatically through:</p>
+<ol>
+<li><strong>Diagram generation</strong>: Mermaid diagrams are converted to PNG images</li>
+<li><strong>PDF generation</strong>: All chapters are combined into a complete PDF using Pandoc</li>
+<li><strong>Version control</strong>: The entire process is version controlled via Git</li>
+</ol>
+<h3 id="local-building">Local Building</h3>
+<pre><code class="language-bash"># Build the complete book
+cd docs
+./build_book.sh
+</code></pre>
+<h3 id="cicd">CI/CD</h3>
+<p>The book is built automatically when changes are made to the <code>docs/</code> directory through GitHub Actions.</p>
+<h2 id="target-audience">Target Audience</h2>
+<p>This book is intended for:
+- IT architects and system designers
+- DevOps engineers and infrastructure specialists
+- Developers working with cloud technologies
+- Technology leaders and decision makers
+- Project managers for digitalisation initiatives</p>
+<h2 id="authors-and-contributors">Authors and Contributors</h2>
+<p>See <code>about_the_author.md</code> for detailed information about the book's author and the expertise behind this comprehensive guide.</p>
+<hr />
+<p><em>Last updated: 2024-12-03</em></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Welcome"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../documentation_workflow/" class="btn btn-neutral float-right" title="Documentation and Architecture Contribution Workflow">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../documentation_workflow/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

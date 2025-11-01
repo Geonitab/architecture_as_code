@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/14_practical_implementation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Architecture as Code in Practice - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Architecture as Code in Practice";
+        var mkdocs_page_input_path = "14_practical_implementation.md";
+        var mkdocs_page_url = "/14_practical_implementation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture as Code in Practice</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#implementation-roadmap-and-strategies">Implementation roadmap and strategies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tool-selection-and-ecosystem-integration">Tool selection and ecosystem integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prioritising-testable-infrastructure-as-code-platforms">Prioritising testable Infrastructure as Code platforms</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#protected-delivery-workflows-for-architecture-modules">Protected delivery workflows for architecture modules</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#production-readiness-and-operational-excellence">Production readiness and operational excellence</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#resilience-checklist-for-infrastructure-changes">Resilience checklist for infrastructure changes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#common-challenges-and-troubleshooting">Common challenges and troubleshooting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enterprise-integration-patterns">Enterprise integration patterns</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-examples-in-context">Practical examples in context</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-and-references">Sources and references</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part D – Delivery & Operations</li>
+      <li class="breadcrumb-item active">Architecture as Code in Practice</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/14_practical_implementation.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="architecture-as-code-in-practice">Architecture as Code in Practice</h1>
+<p>Architecture as Code succeeds when teams bring organisational ambitions, engineering discipline, and operating constraints together in a single delivery motion. Practical adoption requires a structured roadmap, supportive tooling, and a culture that treats infrastructure change as a product in its own right.</p>
+<p>Prioritising clarity is crucial. Figure 14.1 highlights the operating model used by many platform teams to combine architecture governance, automation, and stakeholder alignment. It serves as a quick reference for the foundational capabilities that underpin every implementation.</p>
+<p><img alt="Figure 14.1 – Capability landscape for practical Architecture as Code" src="../images/diagram_15_chapter14.png" />
+<em>Figure 14.1 – Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over time.</em></p>
+<h2 id="implementation-roadmap-and-strategies">Implementation roadmap and strategies</h2>
+<p>Successful Architecture as Code adoption progresses through clearly defined stages: establishing a shared vision, delivering a pilot, hardening operations, and continuously expanding the footprint. Organisations that front-load alignment avoid the most common integration issues later in the journey.</p>
+<p>The adoption journey in Figure 14.2 breaks down these stages into the minimum set of activities required to maintain momentum without overwhelming delivery teams. It emphasises measurable outcomes at every step so that leadership can invest with confidence.</p>
+<p><img alt="Figure 14.2 – Iterative journey for Architecture as Code adoption" src="../images/diagram_13_user_journey.png" />
+<em>Figure 14.2 – A simplified adoption journey that balances architectural guardrails with iterative delivery milestones.</em></p>
+<p>Figure 14.4 captures the enablement flywheel that keeps Architecture as Code programmes sustainable by moving teams from shared delivery into lasting communities of practice.</p>
+<p><img alt="Figure 14.4 – Enablement flywheel for sustained Architecture as Code capabilities" src="../images/diagram_16_chapter14.png" />
+<em>Figure 14.4 – Enablement flywheel connecting cross-functional teams, skill development, knowledge sharing, communities of practice, and career progression.</em></p>
+<table>
+<thead>
+<tr>
+<th>Implementation Stage</th>
+<th>Key Activities</th>
+<th>Success Criteria</th>
+<th>Deliverables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aligning stakeholders early</td>
+<td>Current-state assessment, cross-functional working group formation, vocabulary and SLO agreement</td>
+<td>Platform, security, finance, and architecture alignment on priorities</td>
+<td>Technical baseline documentation, regulatory obligations map, shared vocabulary guide</td>
+</tr>
+<tr>
+<td>Designing the pilot and proving value</td>
+<td>Constrained workload selection, automated provisioning implementation, change history tracking</td>
+<td>Automated provisioning, observable change histories, rapid rollback capabilities</td>
+<td>Working pilot environment, lessons learned documentation, retrospective findings</td>
+</tr>
+<tr>
+<td>Scaling operations with repeatable patterns</td>
+<td>Module formalisation, tagging standardisation, change management adoption</td>
+<td>Reusable modules, automated policy checks, progressive rollouts</td>
+<td>Enterprise playbooks, knowledge-sharing sessions, internal communities of practice</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tool-selection-and-ecosystem-integration">Tool selection and ecosystem integration</h2>
+<p>Selecting the Architecture as Code toolchain is about more than feature parity. Decision frameworks must evaluate community support, managed service availability, licence terms, and the alignment of vendor roadmaps with enterprise objectives. Terraform remains the most common multi-cloud choice, while native cloud templates such as AWS CloudFormation or Azure Resource Manager may complement platform-specific needs.</p>
+<p>Teams must intentionally design integration with source control, testing platforms, secrets management, and observability tooling. Wherever possible, integration patterns should mirror the workflows that software delivery teams already understand so that infrastructure changes inherit established review and deployment practices.</p>
+<h2 id="prioritising-testable-infrastructure-as-code-platforms">Prioritising testable Infrastructure as Code platforms</h2>
+<p>Architecture as Code’s quality promise depends on the infrastructure layer being as testable as the application stack. Chapter 13 outlines the test pyramid that underpins this expectation; practical implementation demands toolchains that integrate with it rather than sitting adjacent to it. Platforms such as Pulumi and the AWS Cloud Development Kit (CDK) support TypeScript, Python, and other general-purpose languages, letting engineers combine infrastructure definitions with familiar unit testing frameworks and mocking libraries. Teams can exercise architectural guardrails without provisioning resources by using Pulumi’s <code>@pulumi/pulumi/testing</code> harness to assert resource properties, or by applying the AWS CDK assertions library to synthesised stacks to confirm that security groups, tagging standards, and policy attachments match governance requirements.</p>
+<p>These programming-language-native tools also simplify continuous integration workflows. They enable developers to execute infrastructure unit tests alongside application suites, provide richer failure messaging for code review, and make use of IDE tooling for refactoring and static analysis. This alignment reduces the feedback loop between architectural intent and executable validation, directly supporting the “shift left” guidance described in Chapter 13.</p>
+<p>Declarative-first tools such as Terraform continue to play a vital role, especially where multi-cloud coverage and established ecosystems are essential. However, their testing story often centres on plan evaluation, module contract tests, and policy-as-code gatekeeping rather than true unit-level execution. When rapid, repeatable assertions over architectural logic are required, investing in Pulumi- or CDK-based layers on top of existing Terraform estates can deliver the necessary testability without sacrificing proven workflows.</p>
+<h2 id="protected-delivery-workflows-for-architecture-modules">Protected delivery workflows for architecture modules</h2>
+<p>Curating a maintainable Architecture as Code practice requires governance controls that make quality gates non-negotiable. Teams should configure protected branches so production-aligned infrastructure repositories demand successful status checks, review approvals, and signed commits before merge. Mandatory checks need to cover book generation, diagram refreshes, module linting, and static analysis so that architectural artefacts cannot drift from the documented source of truth (<a href="../33_references/#source-4">Source [4]</a>). Where contributors propose refactors, the branch policies guarantee that reviewers evaluate rendered diagrams, generated PDFs, and policy-as-code results before approving the change.</p>
+<p>Infrastructure unit tests must feature prominently in those gates. Assertions supplied by the AWS Cloud Development Kit can confirm that synthesised stacks still include encryption defaults, network segmentation, and tagging strategies that other chapters depend upon (<a href="../33_references/#source-9">Source [9]</a>). By running CDK assertions—or equivalent Pulumi and Terratest suites—alongside documentation builds, the pipeline produces a single artefact bundle that documents which architectural intents were validated. Publishing this evidence with pull requests keeps change advisory boards and platform councils confident that every merge protects shared modules rather than eroding them.</p>
+<h2 id="production-readiness-and-operational-excellence">Production readiness and operational excellence</h2>
+<p>Security-first thinking embeds identity, secrets handling, and audit controls into every artefact. Automated scanning pipelines and clearly defined exception processes ensure that compliance teams receive the evidence they need without slowing down delivery.</p>
+<p>High-availability design translates into codified redundancy, automated failover, and disaster recovery testing. Infrastructure definitions must handle dependency failures gracefully and allow rapid restoration of service. Observability practices should track both the execution of pipelines and the health of the resulting environments so that teams can correct drift and regressions quickly.</p>
+<h3 id="resilience-checklist-for-infrastructure-changes">Resilience checklist for infrastructure changes</h3>
+<p>The operational reality described in Sources <a href="../33_references/#source-15">15</a> and <a href="../33_references/#source-16">16</a> demands that every change request demonstrates how it will stay testable, recoverable, and reversible. The checklist below provides a reusable review aide for change advisory boards and platform teams. Each row is expected to have automated evidence attached—screenshots, pipeline logs, or generated reports—before promotion to production environments.</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Checklist prompts</th>
+<th>Expected artefacts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pre-change validation</td>
+<td>Have unit, integration, security, and policy tests passed for the exact commit being promoted? Has a human reviewed the Terraform plan or Pulumi preview output?</td>
+<td>CI pipeline run IDs, signed-off pull request reviews, stored plan/previews</td>
+</tr>
+<tr>
+<td>State resilience</td>
+<td>Is the remote backend configured with encryption, locking, versioning, and automated backups? Are state access alerts wired into the incident rota and tested quarterly?</td>
+<td>Backend configuration snippets, backup job logs, SIEM alert transcripts</td>
+</tr>
+<tr>
+<td>Recovery drills</td>
+<td>Has the team rehearsed state restoration from the most recent backup and documented timings? Are runbooks updated with clean-up steps for partial applies?</td>
+<td>Runbook revisions, tabletop exercise notes, recovery timing metrics</td>
+</tr>
+<tr>
+<td>Rollback readiness</td>
+<td>Is there a tested rollback script or inverse plan that can be executed without manual edits? Are feature flags or traffic controls aligned with the infrastructure release?</td>
+<td>Stored rollback plans, canary deployment records, change freeze approvals</td>
+</tr>
+</tbody>
+</table>
+<p>Teams should embed the checklist into merge templates or change management tooling so that gaps become visible early. Automating the evidence collection—for example by attaching Terratest reports, Pulumi test results, and state-backup verification logs to pull requests—keeps the process lightweight whilst ensuring resilience obligations remain measurable.</p>
+<h2 id="common-challenges-and-troubleshooting">Common challenges and troubleshooting</h2>
+<table>
+<thead>
+<tr>
+<th>Challenge</th>
+<th>Root Cause</th>
+<th>Mitigation Strategy</th>
+<th>Best Practices</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State management</td>
+<td>Distributed teams increase risk of state drift and accidental overwrites</td>
+<td>Remote state backends with locking, frequent backups, reconciliation routines</td>
+<td>Mandatory state locking for production, automated drift detection, regular state backups</td>
+</tr>
+<tr>
+<td>Dependency coordination</td>
+<td>Complex estates require intricate ordering between networking, identity, and workload modules</td>
+<td>Modular designs with well-defined interfaces, explicit dependency declarations</td>
+<td>Clear module boundaries, documented dependencies, reduced cross-team coupling</td>
+</tr>
+<tr>
+<td>Version compatibility</td>
+<td>Provider and module upgrades can break established workflows</td>
+<td>Staged rollouts, compatibility matrices, automated integration tests</td>
+<td>Version pinning, compatibility testing, gradual ecosystem evolution</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enterprise-integration-patterns">Enterprise integration patterns</h2>
+<p>Enterprise-scale deployments blend multi-account cloud strategies with on-premises integrations and regulated workload protections. Architecture as Code artefacts must express network isolation, delegated administration, and governance guardrails while remaining consumable by product teams. Embedding compliance-as-code policies and continuous auditing keeps the organisation inspection-ready and avoids costly remediation projects later on.</p>
+<h2 id="practical-examples-in-context">Practical examples in context</h2>
+<p>Practical adoption benefits from curated, real-world examples that teams can inspect before tailoring their own automation. Appendix A maintains a set of code listings that highlight the most common landing zone, operations, and delivery scenarios referenced in this chapter.</p>
+<p>The following entries are the quickest way to explore those artefacts without leaving the main narrative:</p>
+<ul>
+<li><strong>Terraform service blueprint</strong> – Appendix entry <a href="../30_appendix_code_examples/#14_code_1">14_CODE_1</a> contains the relocated landing zone module, complete with networking, load balancing, tagging standards, and autoscaling defaults that teams can adapt to their own environments.</li>
+<li><strong>Environment configuration and monitoring</strong> – Appendix entry <a href="../30_appendix_code_examples/#14_code_2">14_CODE_2</a> layers production-grade state management, observability dashboards, and retention controls on top of the shared module so that operations teams receive actionable telemetry from day one.</li>
+<li><strong>Continuous delivery workflow</strong> – Appendix entry <a href="../30_appendix_code_examples/#14_code_3">14_CODE_3</a> captures the associated GitHub Actions pipeline that plans and applies infrastructure changes across environments and requires an explicit approval step before production deployments.</li>
+</ul>
+<p>Each appendix entry describes when to use the pattern, the governance indicators it produces, and how the implementation reinforces the operating practices discussed in this chapter. Teams should tailor the templates to match their naming standards, guardrail policies, and release cadences.</p>
+<h2 id="summary">Summary</h2>
+<p>Architecture as Code in practice requires disciplined planning, collaborative execution, and relentless optimisation. Organisations that invest in a structured roadmap, curate a dependable toolchain, and treat operational excellence as a core deliverable achieve consistent, auditable infrastructure change at scale.</p>
+<h2 id="sources-and-references">Sources and references</h2>
+<ul>
+<li>HashiCorp. "Terraform Architecture as Code Best Practices." HashiCorp Learn Platform.</li>
+<li>AWS Well-Architected Framework. "Infrastructure as Code." Amazon Web Services.</li>
+<li>Google Cloud. "Infrastructure as Code Design Patterns." Google Cloud Architecture Centre.</li>
+<li>Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.</li>
+<li>Puppet. "Infrastructure as Code Implementation Guide." Puppet Enterprise Documentation.</li>
+<li>GitHub Docs. "About protected branches." GitHub Documentation.</li>
+<li>AWS. "AWS Cloud Development Kit (CDK) Developer Guide." Amazon Web Services.</li>
+<li>Pulumi. "Testing Infrastructure as Code Programs." Pulumi Blog, 2024.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../13_testing_strategies/" class="btn btn-neutral float-left" title="Testing Strategies for Infrastructure as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../15_evidence_as_code/" class="btn btn-neutral float-right" title="Evidence as Code and Continuous Assurance">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../13_testing_strategies/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../15_evidence_as_code/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

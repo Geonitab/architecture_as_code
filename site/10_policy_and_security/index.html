@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/10_policy_and_security/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Policy and Security as Code in Detail - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Policy and Security as Code in Detail";
+        var mkdocs_page_input_path = "10_policy_and_security.md";
+        var mkdocs_page_url = "/10_policy_and_security/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Policy and Security as Code in Detail</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction-and-context">Introduction and context</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#evolution-of-security-management-within-architecture-as-code">Evolution of security management within Architecture as Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#policy-as-code-operating-model">Policy-as-Code operating model</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#open-policy-agent-opa-and-rego-foundation-for-policy-driven-security">Open Policy Agent (OPA) and Rego: foundation for policy-driven security</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#architectural-foundations-for-enterprise-policy-management">Architectural foundations for enterprise policy management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#advanced-rego-patterns-for-regulated-workloads">Advanced Rego patterns for regulated workloads</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#integrating-policy-automation-into-european-enterprises">Integrating policy automation into European enterprises</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#oscal-open-security-controls-assessment-language">OSCAL: Open Security Controls Assessment Language</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#oscal-architecture-and-components">OSCAL architecture and components</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#crafting-organisation-specific-profiles">Crafting organisation-specific profiles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#component-definitions-and-reusable-evidence">Component definitions and reusable evidence</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automating-system-security-plans">Automating System Security Plans</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assure-once-comply-many-in-policy-design">Assure once, comply many in policy design</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation-roadmap-for-european-delivery-teams">Implementation roadmap for European delivery teams</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-takeaways">Key takeaways</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part C – Security & Governance</li>
+      <li class="breadcrumb-item active">Policy and Security as Code in Detail</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/10_policy_and_security.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="policy-and-security-as-code-in-detail">Policy and Security as Code in Detail</h1>
+<p><img alt="Policy-as-Code delivery lifecycle" src="../images/diagram_10_policy_lifecycle.png" /></p>
+<p><em>Figure 10.1 – Policy-as-Code guardrails embedded across the delivery lifecycle, from initial design through to production monitoring.</em></p>
+<h2 id="introduction-and-context">Introduction and context</h2>
+<p>European organisations operate in some of the world's most demanding regulatory environments. They must simultaneously honour GDPR, NIS2, sector-specific obligations from bodies such as the European Banking Authority and the UK's Financial Conduct Authority, and the relentless pace of cloud adoption. <a href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a> introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.</p>
+<p>Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy audits. Expressing governance requirements as version-controlled code gives teams the same advantages found elsewhere in Architecture as Code: traceability, repeatability, peer review, automated testing, and rapid rollback when something goes wrong. The narrative and examples in this chapter illustrate how European delivery teams can embrace PaC without sacrificing regulatory assurance.</p>
+<h2 id="evolution-of-security-management-within-architecture-as-code">Evolution of security management within Architecture as Code</h2>
+<p>Security automation in modern enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today.</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Period</th>
+<th>Approach</th>
+<th>Characteristics</th>
+<th>Limitations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 1: Manual validation</td>
+<td>2010–2015</td>
+<td>Security teams reviewed infrastructure after the fact</td>
+<td>Auditors compared live environments with policy documents weeks after release, findings logged manually</td>
+<td>Slow feedback loop, fragile knowledge transfer, obsolete documentation, reactive fixes</td>
+</tr>
+<tr>
+<td>Phase 2: Scripted automation</td>
+<td>2015–2018</td>
+<td>Teams scripted validations in Python, Bash, and PowerShell</td>
+<td>CI workflow checks for risky ports, missing encryption, inconsistent tags</td>
+<td>Improved speed but duplication, drift, brittle scripts, difficult enterprise sharing</td>
+</tr>
+<tr>
+<td>Phase 3: Policy engine integration</td>
+<td>2018–2021</td>
+<td>Dedicated policy engines like Open Policy Agent (OPA)</td>
+<td>Declarative policy languages, separation of enforcement logic from application code, Kubernetes Gatekeeper</td>
+<td>Baseline controls enforced, but limited integration with broader governance</td>
+</tr>
+<tr>
+<td>Phase 4: Holistic governance frameworks</td>
+<td>2021–present</td>
+<td>Integrated design-time reviews, automated approvals, runtime drift detection</td>
+<td>OSCAL integration, Terraform state connection, CI/CD events, compliance reporting</td>
+<td>Policy execution as always-on capability, comprehensive audit evidence</td>
+</tr>
+</tbody>
+</table>
+<h2 id="policy-as-code-operating-model">Policy-as-Code operating model</h2>
+<p><img alt="Security automation mind map" src="../images/mindmap_10_security_overview.png" /></p>
+<p><em>Figure 10.2 – A mind map of the continuous security operating model used throughout Architecture as Code.</em></p>
+<p>Figure 10.2 summarises the mindset required to run PaC successfully. Threat modelling stays current by incorporating new attack vectors such as supply-chain compromise. Zero Trust architecture principles underpin access control and segmentation. Policy engines, risk assessment, and compliance automation all share the same data sets, allowing teams to reason about blast radius, regulatory coverage, and change velocity in one place.</p>
+<h2 id="open-policy-agent-opa-and-rego-foundation-for-policy-driven-security">Open Policy Agent (OPA) and Rego: foundation for policy-driven security</h2>
+<p>OPA has become the de facto standard for policy automation thanks to its lightweight deployment model and expressive Rego language. The engine evaluates decisions locally, so developers can run policies during unit tests while the same rules enforce guardrails inside Kubernetes, Terraform pipelines, or API gateways.</p>
+<h3 id="architectural-foundations-for-enterprise-policy-management">Architectural foundations for enterprise policy management</h3>
+<p>Organisations running mission-critical platforms typically adopt three architectural patterns:</p>
+<ul>
+<li><strong>Decoupled evaluation:</strong> OPA runs as a sidecar, admission controller, or CLI verifier, keeping policy logic separate from application runtimes.</li>
+<li><strong>Flexible distribution:</strong> Agents can pull policies from signed bundles or receive push updates from central services, supporting strict change-control processes.</li>
+<li><strong>Bundle packaging:</strong> Teams package policies, data, metadata, and signatures together, enabling atomic roll-outs and rollbacks when requirements change.</li>
+</ul>
+<h3 id="advanced-rego-patterns-for-regulated-workloads">Advanced Rego patterns for regulated workloads</h3>
+<p>Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry <a href="../30_appendix_code_examples/#10_code_1">10_CODE_1</a> contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:</p>
+<pre><code class="language-rego">package eu.enterprise.security
+
+import rego.v1
+
+encryption_required_services := {
+    &quot;aws_s3_bucket&quot;, &quot;aws_rds_instance&quot;, &quot;aws_efs_file_system&quot;
+}
+
+encryption_compliant[resource] {
+    resource := input.resources[_]
+    resource.type in encryption_required_services
+    validate_encryption(resource)
+}
+</code></pre>
+<p>The complete module covers encryption strength, privileged port exposure, EU residency checks, and an aggregated compliance score. The findings feed directly into CI pipelines and risk dashboards.</p>
+<h3 id="integrating-policy-automation-into-european-enterprises">Integrating policy automation into European enterprises</h3>
+<p>Enterprises connect OPA to their existing tooling so that decisions are auditable end to end. Policy evaluation logs stream to SIEM platforms such as Splunk or Azure Sentinel for immutable evidence. Identity-aware proxies verify that every policy change is authorised through enterprise single sign-on. Monitoring systems trigger alerts when violations cross risk thresholds so operations teams can react before incidents escalate. These integrations make PaC feel like a first-class participant in the delivery lifecycle rather than an afterthought.</p>
+<h2 id="oscal-open-security-controls-assessment-language">OSCAL: Open Security Controls Assessment Language</h2>
+<p>While OPA ensures policies are enforced, OSCAL standardises how controls, evidence, and assessment data are described. Developed by NIST, OSCAL offers machine-readable formats (JSON, XML, YAML) that map requirements to actual implementations. For Architecture as Code teams, OSCAL becomes the translation layer between Terraform states, CI/CD runs, and external auditors.</p>
+<h3 id="oscal-architecture-and-components">OSCAL architecture and components</h3>
+<p>OSCAL is organised into complementary models:</p>
+<table>
+<thead>
+<tr>
+<th>OSCAL Component</th>
+<th>Purpose</th>
+<th>Examples</th>
+<th>Usage in Architecture as Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Catalogues</td>
+<td>Capture authoritative control statements from frameworks</td>
+<td>NIST SP 800-53, GDPR articles, NIS2 directives</td>
+<td>Foundation for organisational control baselines</td>
+</tr>
+<tr>
+<td>Profiles</td>
+<td>Tailor catalogues to organisation-specific needs</td>
+<td>Selecting, modifying, or adding control language</td>
+<td>Harmonise overlapping regulations, create industry-specific subsets</td>
+</tr>
+<tr>
+<td>Component definitions</td>
+<td>Describe how technical building blocks satisfy specific controls</td>
+<td>Amazon RDS instance, AWS Network Firewall configurations</td>
+<td>Map infrastructure modules to compliance requirements</td>
+</tr>
+<tr>
+<td>System Security Plans (SSPs)</td>
+<td>Assemble controls, components, and operational context</td>
+<td>Complete audit documentation for a system</td>
+<td>Single auditable document connecting requirements to implementation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="crafting-organisation-specific-profiles">Crafting organisation-specific profiles</h3>
+<p>Profiles help European enterprises harmonise overlapping regulations. Appendix entry <a href="../30_appendix_code_examples/#10_code_2">10_CODE_2</a> shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate PSD2 requirements in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.</p>
+<h3 id="component-definitions-and-reusable-evidence">Component definitions and reusable evidence</h3>
+<p>Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry <a href="../30_appendix_code_examples/#10_code_3">10_CODE_3</a> provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it straightforward to prove, for example, that storage encryption and logging are active.</p>
+<h3 id="automating-system-security-plans">Automating System Security Plans</h3>
+<p>Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry <a href="../30_appendix_code_examples/#10_code_4">10_CODE_4</a> includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.</p>
+<h2 id="assure-once-comply-many-in-policy-design">Assure once, comply many in policy design</h2>
+<p>Policy-as-code catalogues embody the <strong>assure once, comply many</strong> mindset introduced in <a href="../11_governance_as_code/">Governance as Code</a>. Controls are written once, versioned, and then tagged with metadata that links each policy primitive to the external and internal obligations it satisfies. A single IAM policy module can therefore be evaluated across multiple frameworks without re-implementing business logic.</p>
+<pre><code class="language-rego">package enterprise.identity.mfa
+
+control_id := &quot;SEC-ID-001&quot;
+title := &quot;Enforce MFA for all human identities in production&quot;
+
+violation[identity] {
+    identity := input.identities[_]
+    identity.type == &quot;human&quot;
+    not identity.mfa_enabled
+}
+
+framework_mappings := {
+    &quot;iso_27001&quot;: [&quot;A.5&quot;, &quot;A.8&quot;],
+    &quot;soc_2&quot;: [&quot;CC6.1&quot;, &quot;CC6.6&quot;],
+    &quot;nist_800_53&quot;: [&quot;IA-2(1)&quot;, &quot;AC-2&quot;],
+    &quot;gdpr&quot;: [&quot;Article 32&quot;],
+    &quot;internal&quot;: [&quot;SEC-ID-001&quot;]
+}
+
+evidence_sources := [
+    &quot;ci/policy-report.json&quot;,
+    &quot;evidence/mfa-snapshot-YYYYMM.json&quot;
+]
+</code></pre>
+<p>The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected <strong>once</strong>, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Service Criteria can rely on the same artefacts without triggering duplicate reviews. The <a href="../15_evidence_as_code/">Evidence as Code chapter</a> expands on how pipelines package and publish those artefacts, while <a href="../12_compliance/">Compliance and Regulatory Adherence</a> shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.</p>
+<h2 id="implementation-roadmap-for-european-delivery-teams">Implementation roadmap for European delivery teams</h2>
+<p>Successful PaC programmes blend technology with process change. A staged roadmap typically includes:</p>
+<ol>
+<li><strong>Policy inventory:</strong> Catalogue existing manual controls, identify overlaps, and prioritise high-risk scenarios such as public exposure of administrative ports.</li>
+<li><strong>Pilot automation:</strong> Implement a thin slice of OPA policies in a non-production CI pipeline, capturing metrics on prevented misconfigurations.</li>
+<li><strong>Evidence harmonisation:</strong> Map policies to OSCAL catalogues and create the first organisation-specific profile so that governance teams can trace coverage.</li>
+<li><strong>Operational integration:</strong> Stream evaluation logs to security operations, define escalation workflows, and update service-level objectives to include policy violations.</li>
+<li><strong>Continuous improvement:</strong> Expand policy libraries, refactor shared modules, and review KPIs with stakeholders to ensure automation keeps pace with regulatory change.</li>
+</ol>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>PaC transforms governance from a periodic activity into a continuous safety net that keeps pace with daily releases.</li>
+<li>OPA and Rego provide a portable, testable way to encode complex EU and UK regulatory requirements.</li>
+<li>OSCAL links policy enforcement with audit evidence, reducing the overhead of external assessments.</li>
+<li>Diagrams in Figures 10.1 and 10.2 illustrate how policy guardrails span the delivery lifecycle and how capability building blocks interrelate.</li>
+<li>Detailed Rego, OSCAL, and automation listings live in Appendix entries <a href="../30_appendix_code_examples/#10_code_1">10_CODE_1</a> to <a href="../30_appendix_code_examples/#10_code_4">10_CODE_4</a> for engineers who need implementation guidance.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../09c_risk_and_threat_as_code/" class="btn btn-neutral float-left" title="Risk and Threat Modelling as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../11_governance_as_code/" class="btn btn-neutral float-right" title="Governance as Code">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../09c_risk_and_threat_as_code/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../11_governance_as_code/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

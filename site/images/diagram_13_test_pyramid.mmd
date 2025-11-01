@@ -1,0 +1,9 @@
+graph TB
+    subgraph "IaC Test Pyramid"
+        E2E["End-to-End Tests<br/>Full Infrastructure Deployment<br/>Fewer, Slower, More Expensive"]:::kv-highlight
+        INT["Integration Tests<br/>Multi-Component Validation<br/>Environment Parity Testing"]:::kv-accent
+        UNIT["Unit Tests<br/>Module & Resource Validation<br/>Many, Fast, Inexpensive"]:::kv-primary
+    end
+
+    UNIT --> INT
+    INT --> E2E

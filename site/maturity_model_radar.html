@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture as Code Maturity Radar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" />
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 2rem;
+      background-color: #f9fafb;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .intro {
+      max-width: 60rem;
+    }
+
+    fieldset {
+      border: 1px solid #d2d6dc;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1.5rem;
+      background-color: #ffffff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+
+    legend {
+      font-weight: 600;
+      padding: 0 0.5rem;
+    }
+
+    .question {
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .question:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .question .question-text {
+      display: block;
+      font-weight: 500;
+    }
+
+    .question .options {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .question .options label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    .question .options label .checkable {
+      margin: 0;
+    }
+
+    button {
+      margin-right: 0.75rem;
+    }
+
+    #radarDiagram {
+      margin-top: 2rem;
+      border: 1px solid #d2d6dc;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      background-color: #ffffff;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+      overflow-x: auto;
+    }
+
+    #radarDiagram svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    #radarDiagram text {
+      font-size: 0.85rem;
+    }
+
+    .diagram-error {
+      border: 1px solid #ef4444;
+      background-color: #fef2f2;
+      color: #991b1b;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+    }
+
+    .diagram-error .error-message {
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+
+    .diagram-error details {
+      margin-top: 1rem;
+    }
+
+    .diagram-error textarea {
+      width: 100%;
+      margin-top: 0.75rem;
+      font-family: "Fira Code", "Courier New", Courier, monospace;
+      font-size: 0.9rem;
+      background-color: #ffffff;
+      color: #111827;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      resize: vertical;
+    }
+
+    .diagram-error button {
+      margin-top: 0.75rem;
+    }
+
+    #jsonOutput {
+      width: 100%;
+      height: 16rem;
+      font-family: "Fira Code", "Courier New", Courier, monospace;
+      margin-top: 1rem;
+    }
+
+    .actions {
+      margin-top: 1rem;
+    }
+
+    .result-summary {
+      margin-top: 2rem;
+    }
+
+    .result-summary table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .result-summary th,
+    .result-summary td {
+      border: 1px solid #d2d6dc;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    .result-summary th {
+      background-color: #f1f5f9;
+    }
+
+    .improvement-suggestions {
+      margin-top: 2rem;
+    }
+
+    .improvement-suggestions table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .improvement-suggestions th,
+    .improvement-suggestions td {
+      border: 1px solid #d2d6dc;
+      padding: 0.75rem;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .improvement-suggestions th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    .improvement-suggestions .question-label {
+      font-weight: 600;
+    }
+
+    .improvement-suggestions .risk {
+      color: #991b1b;
+      font-weight: 500;
+    }
+
+    .improvement-suggestions .reference-link {
+      display: inline-block;
+      margin-top: 0.25rem;
+    }
+
+    .assessment-report {
+      margin-top: 2rem;
+    }
+
+    .assessment-report article {
+      background-color: #ffffff;
+      border: 1px solid #d2d6dc;
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .assessment-report article:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .assessment-report h3 {
+      margin-top: 0;
+    }
+
+    .assessment-report ul {
+      padding-left: 1.25rem;
+    }
+
+    .assessment-report li {
+      margin-bottom: 1rem;
+    }
+
+    .assessment-report li:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .assessment-report .report-reference {
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        margin: 1rem;
+      }
+
+      fieldset {
+        padding: 1rem;
+      }
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.0/dist/mermaid.esm.min.mjs";
+    import "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
+
+    mermaid.initialize({
+      startOnLoad: false
+    });
+
+    window.mermaid = mermaid;
+
+    const jsPDFConstructor = window.jspdf?.jsPDF ?? window.jsPDF ?? null;
+
+    let latestAssessment = null;
+    let initialRadarContent = "";
+    let initialSummaryContent = "";
+    let initialSuggestionsContent = "";
+    let initialReportContent = "";
+    let suggestionsExportButton = null;
+
+    const aspects = [
+      {
+        key: "iac",
+        name: "Infrastructure as code (IaC)",
+        questions: [
+          "Are all infrastructure definitions stored in version control with peer review required prior to merge?",
+          "Is automated validation or linting run on every infrastructure code change before deployment?",
+          "Do environment deployments rely solely on declarative templates rather than manual changes?",
+          "Are infrastructure modules reusable and parameterised to promote consistency across environments?",
+          "Is drift detection automated and reviewed regularly to ensure infrastructure matches the declared state?"
+        ]
+      },
+      {
+        key: "aac",
+        name: "Architecture as Code (AaC)",
+        questions: [
+          "Are architecture models generated from source-controlled code or domain-specific language definitions?",
+          "Do teams update architecture models as part of the same change when system behaviour evolves?",
+          "Is traceability maintained between architecture components and the owning teams or repositories?",
+          "Are architecture decisions captured as code-backed records that undergo pull-request review?",
+          "Is automated validation applied to architecture models to detect inconsistencies or missing relationships?"
+        ]
+      },
+      {
+        key: "containers",
+        name: "Containerisation & orchestration as code",
+        questions: [
+          "Are container images and orchestration manifests generated from version-controlled definitions reviewed by the owning team?",
+          "Do pipelines automatically build, scan and publish container images before release?",
+          "Is cluster configuration managed declaratively with automated reconciliation to enforce desired state?",
+          "Are rollout strategies (such as blue-green or canary) codified and repeatedly tested in non-production environments?",
+          "Is runtime configuration (including secrets and policies) delivered through code rather than manual console changes?"
+        ]
+      },
+      {
+        key: "policy",
+        name: "Policy as code (PaC) & Security as code",
+        questions: [
+          "Are governance and security requirements expressed in machine-readable policies stored in version control?",
+          "Do automated checks enforce policy compliance in CI/CD pipelines before promotion to higher environments?",
+          "Is policy code peer reviewed alongside the application or infrastructure change it governs?",
+          "Are policy violations surfaced through automated alerts with actionable remediation guidance?",
+          "Is there a feedback loop that updates policies based on new threats, incidents or regulatory changes?"
+        ]
+      },
+      {
+        key: "governance",
+        name: "Governance as code",
+        questions: [
+          "Are approval workflows, branch protections and role definitions codified and version controlled?",
+          "Do governance automations capture decision history and rationale as part of the workflow output?",
+          "Is governance code tested in lower environments before it is applied to production repositories?",
+          "Are exceptions to governance policies time-bound, tracked and reviewed automatically?",
+          "Is governance tooling accessible to non-developers through templates or guided interfaces sourced from the same codebase?"
+        ]
+      },
+      {
+        key: "compliance",
+        name: "Compliance as code",
+        questions: [
+          "Are regulatory controls translated into executable checks that run continuously against live environments?",
+          "Does the organisation maintain reusable compliance baselines or templates for common regulations?",
+          "Is evidence collection automated and stored alongside compliance code for audit readiness?",
+          "Are compliance findings integrated with issue tracking to ensure timely remediation and verification?",
+          "Do compliance automations generate dashboards or reports that stakeholders review on a scheduled cadence?"
+        ]
+      },
+      {
+        key: "testing",
+        name: "Testing as code",
+        questions: [
+          "Are automated tests defined for every codified artefact, including infrastructure, policies and architecture models?",
+          "Do pipelines execute the full testing suite on every merge or release candidate?",
+          "Is test coverage monitored and improved through targeted backlog items when gaps emerge?",
+          "Are failure scenarios rehearsed with automated chaos or resilience tests to validate recovery procedures?",
+          "Is test data managed as code with repeatable seeding and sanitisation routines?"
+        ]
+      },
+      {
+        key: "documentation",
+        name: "Documentation as code",
+        questions: [
+          "Is documentation authored in version-controlled markup languages with enforced review workflows?",
+          "Do automated builds publish documentation outputs (web, PDF, diagrams) from the same source repository?",
+          "Are documentation updates included in the definition of done for relevant product or platform changes?",
+          "Is diagram generation automated from code or structured data to eliminate manual drawing efforts?",
+          "Are documentation quality checks (such as link validation and style linting) automated in CI/CD pipelines?"
+        ]
+      },
+      {
+        key: "knowledge",
+        name: "Knowledge & culture as code",
+        questions: [
+          "Is organisational knowledge captured in structured repositories with clear ownership and contribution guidelines?",
+          "Do onboarding and learning journeys exist as code-based playbooks or scripts executed during induction?",
+          "Are retrospectives and continuous improvement actions tracked in version-controlled artefacts with follow-up automation?",
+          "Is cultural guidance (values, rituals, ceremonies) embedded into tooling such as bots, templates or workflow prompts?",
+          "Are knowledge repositories regularly reviewed through automated reminders to ensure relevance and accuracy?"
+        ]
+      },
+      {
+        key: "management",
+        name: "Management as code",
+        questions: [
+          "Are operating models, team topologies and responsibilities documented through code-driven templates?",
+          "Do leadership ceremonies (such as portfolio reviews) run from standardised agendas or dashboards generated from code?",
+          "Are performance and delivery metrics collected automatically and surfaced through shared management dashboards?",
+          "Is resource allocation or staffing managed through codified workflows with automated approvals and audit trails?",
+          "Are management playbooks iterated through pull requests with participation from the leadership community?"
+        ]
+      }
+    ];
+
+    const suggestionIndex = {
+      iac: [
+        {
+          recommendation:
+            "Adopt Git-based workflows for infrastructure modules and enforce peer review gates to keep definitions auditable and collaborative.",
+          risk:
+            "Risk: Infrastructure updates remain unreviewed, increasing configuration errors and leaving the organisation without a dependable audit trail.",
+          reference: {
+            title:
+              "Chapter 03 – Version Control · Git-based workflow for infrastructure",
+            url: "03_version_control/#git-based-workflow-for-infrastructure"
+          }
+        },
+        {
+          recommendation:
+            "Embed linting and validation stages in CI pipelines so every infrastructure change benefits from automated quality gates.",
+          risk:
+            "Risk: Defective infrastructure code will progress undetected, introducing outages and compliance gaps once deployed.",
+          reference: {
+            title:
+              "Chapter 05 – Automation, DevOps, and CI/CD · Fail-fast feedback and progressive validation",
+            url: "05_automation_devops_cicd/#fail-fast-feedback-and-progressive-validation"
+          }
+        },
+        {
+          recommendation:
+            "Transition environment provisioning to declarative templates and treat them as the single source of truth for deployments.",
+          risk:
+            "Risk: Manual environment changes will diverge across estates, making recovery slow and increasing the likelihood of service disruption.",
+          reference: {
+            title:
+              "Chapter 02 – Fundamental Principles · The declarative approach in Architecture as Code",
+            url: "02_fundamental_principles/#the-declarative-approach-in-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Structure infrastructure libraries as reusable modules with versioned interfaces to drive consistency across teams.",
+          risk:
+            "Risk: Teams will duplicate fragile scripts, leading to inconsistent security controls and slower delivery.",
+          reference: {
+            title:
+              "Chapter 24 – Modern Best Practices · Module design guidelines",
+            url: "24_best_practices/#module-design-guidelines"
+          }
+        },
+        {
+          recommendation:
+            "Automate drift detection and schedule reviews that reconcile live environments with the declared state.",
+          risk:
+            "Risk: Runtime infrastructure will silently drift from design intent, increasing incident frequency and audit findings.",
+          reference: {
+            title:
+              "Chapter 02 – Fundamental Principles · Understanding architectural drift",
+            url: "02_fundamental_principles/#understanding-architectural-drift"
+          }
+        }
+      ],
+      aac: [
+        {
+          recommendation:
+            "Generate architecture models from code-first tooling so diagrams and definitions share a common source of truth.",
+          risk:
+            "Risk: Architecture views will drift from the live system, confusing stakeholders and undermining governance decisions.",
+          reference: {
+            title:
+              "Chapter 06 – Structurizr · Structurizr: Architecture Modeling as Code",
+            url: "06_structurizr/#structurizr-architecture-modeling-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Update architecture models alongside behavioural changes by running Structurizr automation in every pull request.",
+          risk:
+            "Risk: Teams will rely on stale diagrams, heightening integration failures and generating avoidable rework.",
+          reference: {
+            title:
+              "Chapter 06 – Structurizr · Integration with CI/CD pipelines",
+            url: "06_structurizr/#integration-with-ci-cd-pipelines"
+          }
+        },
+        {
+          recommendation:
+            "Link components to accountable teams through governance workflows so traceability stays transparent.",
+          risk:
+            "Risk: Ownership of critical architecture elements becomes opaque, slowing incident response and decision-making.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code/#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Capture architectural reasoning in reviewed Architecture Decision Records that live with the codebase.",
+          risk:
+            "Risk: Architectural intent will be lost, causing the organisation to repeat poor choices and dilute alignment.",
+          reference: {
+            title:
+              "Chapter 04 – Architecture Decision Records · What are Architecture Decision Records?",
+            url: "04_adr/#what-are-architecture-decision-records"
+          }
+        },
+        {
+          recommendation:
+            "Add automated validation of architecture models to surface missing relationships before release.",
+          risk:
+            "Risk: Structural gaps and conflicting dependencies remain hidden until production, threatening reliability and compliance.",
+          reference: {
+            title:
+              "Chapter 06 – Structurizr · Integration with CI/CD pipelines",
+            url: "06_structurizr/#integration-with-ci-cd-pipelines"
+          }
+        }
+      ],
+      containers: [
+        {
+          recommendation:
+            "Store Dockerfiles and orchestration manifests in Git so container behaviour remains reproducible.",
+          risk:
+            "Risk: Container definitions will fragment across devices, enlarging supply-chain exposure and making recovery unreliable.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · The role of container technology within Architecture as Code",
+            url: "07_containerisation/#the-role-of-container-technology-within-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Automate image builds, scanning, and publishing through CI so every release meets the platform's guardrails.",
+          risk:
+            "Risk: Vulnerable or unverified images will ship to production, increasing the chance of compromise and instability.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · The role of container technology within Architecture as Code",
+            url: "07_containerisation/#the-role-of-container-technology-within-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Manage cluster configuration declaratively and let controllers reconcile the desired state continuously.",
+          risk:
+            "Risk: Clusters will drift into inconsistent configurations, causing unpredictable runtime behaviour and outages.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · Kubernetes as an orchestration platform",
+            url: "07_containerisation/#kubernetes-as-an-orchestration-platform"
+          }
+        },
+        {
+          recommendation:
+            "Codify blue-green and canary roll-outs inside delivery pipelines to practise safe progressive delivery.",
+          risk:
+            "Risk: Releases will rely on manual judgement, leaving no rehearsed rollback paths and increasing incident severity when changes fail.",
+          reference: {
+            title:
+              "Chapter 05 – Automation, DevOps, and CI/CD · Progressive deployment strategies",
+            url: "05_automation_devops_cicd/#progressive-deployment-strategies"
+          }
+        },
+        {
+          recommendation:
+            "Deliver runtime configuration, secrets, and policies from code-defined sources instead of manual consoles.",
+          risk:
+            "Risk: Hand-tuned runtime settings will introduce human error and expose sensitive data, undermining platform trust.",
+          reference: {
+            title:
+              "Chapter 07 – Containerisation and Orchestration · Kubernetes as an orchestration platform",
+            url: "07_containerisation/#kubernetes-as-an-orchestration-platform"
+          }
+        }
+      ],
+      policy: [
+        {
+          recommendation:
+            "Express governance and security requirements as machine-readable policies kept under version control.",
+          risk:
+            "Risk: Policies will fragment into manual documents, creating inconsistent enforcement and weak audit evidence.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Introduction and context",
+            url: "10_policy_and_security/#introduction-and-context"
+          }
+        },
+        {
+          recommendation:
+            "Enforce automated compliance checks in CI/CD so policy breaches are caught before promotion.",
+          risk:
+            "Risk: Non-compliant changes will progress unchecked, exposing the organisation to regulatory penalties.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Policy-as-Code operating model",
+            url: "10_policy_and_security/#policy-as-code-operating-model"
+          }
+        },
+        {
+          recommendation:
+            "Peer review policy code alongside the infrastructure or application change it governs to keep accountability shared.",
+          risk:
+            "Risk: Weak or conflicting controls will be merged, leaving critical gaps in the security posture.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Policy-as-Code operating model",
+            url: "10_policy_and_security/#policy-as-code-operating-model"
+          }
+        },
+        {
+          recommendation:
+            "Stream policy violations into actionable alerts with contextual remediation guidance from the automation stack.",
+          risk:
+            "Risk: Breaches of policy will linger unnoticed, allowing issues to escalate into reportable incidents.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Integrating policy automation into European enterprises",
+            url: "10_policy_and_security/#integrating-policy-automation-into-european-enterprises"
+          }
+        },
+        {
+          recommendation:
+            "Continuously refine policy libraries using threat intelligence and incident feedback following the implementation roadmap.",
+          risk:
+            "Risk: Controls will become outdated, leaving emerging threats unmanaged and compliance obligations unmet.",
+          reference: {
+            title:
+              "Chapter 10 – Policy and Security as Code · Implementation roadmap for European delivery teams",
+            url: "10_policy_and_security/#implementation-roadmap-for-european-delivery-teams"
+          }
+        }
+      ],
+      governance: [
+        {
+          recommendation:
+            "Codify approval workflows, branch protections, and roles via pull-request driven governance repositories.",
+          risk:
+            "Risk: Informal approvals will proliferate, eroding guardrails and allowing ungoverned changes into production.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code/#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Capture decision history and rationale automatically within governance pipelines to maintain a complete audit trail.",
+          risk:
+            "Risk: Governance decisions will lack provenance, complicating audits and forcing teams to revisit past debates.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code/#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Test governance code in lower environments with automated validations before promoting changes to production.",
+          risk:
+            "Risk: Governance updates will fail in production, removing protections or blocking delivery unexpectedly.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Implementing approval processes with pull requests",
+            url: "11_governance_as_code/#implementing-approval-processes-with-pull-requests"
+          }
+        },
+        {
+          recommendation:
+            "Track policy exceptions as time-boxed code artefacts so drift is visible and remediation is enforced.",
+          risk:
+            "Risk: Temporary exceptions will become permanent blind spots, weakening compliance and operational discipline.",
+          reference: {
+            title:
+              "Chapter 26 – Anti-Patterns · Policy drift through manual exceptions",
+            url: "26b_aac_anti_patterns/#policy-drift-through-manual-exceptions"
+          }
+        },
+        {
+          recommendation:
+            "Provide accessible tooling, templates, and chat integrations so non-developers can contribute safely.",
+          risk:
+            "Risk: Stakeholders will circumvent governance altogether, recreating manual silos and fragmenting controls.",
+          reference: {
+            title:
+              "Chapter 11 – Governance as Code · Tooling to enable non-developers",
+            url: "11_governance_as_code/#tooling-to-enable-non-developers"
+          }
+        }
+      ],
+      compliance: [
+        {
+          recommendation:
+            "Translate regulatory controls into executable checks that run continuously across live environments.",
+          risk:
+            "Risk: Regulatory breaches will remain hidden until audits, driving emergency remediation and potential fines.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence",
+            url: "12_compliance/#compliance-and-regulatory-adherence"
+          }
+        },
+        {
+          recommendation:
+            "Maintain reusable compliance baselines and templates to accelerate regulatory onboarding.",
+          risk:
+            "Risk: Teams will re-interpret controls independently, creating inconsistent coverage and delaying certifications.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence",
+            url: "12_compliance/#compliance-and-regulatory-adherence"
+          }
+        },
+        {
+          recommendation:
+            "Automate evidence collection and store artefacts alongside compliance code for audit readiness.",
+          risk:
+            "Risk: Audit preparation will devolve into manual scrambles, increasing the likelihood of missed proof and fines.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence",
+            url: "12_compliance/#compliance-and-regulatory-adherence"
+          }
+        },
+        {
+          recommendation:
+            "Feed compliance findings into dashboards and remediation workflows so follow-up happens in the open.",
+          risk:
+            "Risk: Remediation tasks will stall in private spreadsheets, allowing repeat findings and reputational damage.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence · Policy-driven infrastructure and governance",
+            url: "12_compliance/#policy-driven-infrastructure-and-governance"
+          }
+        },
+        {
+          recommendation:
+            "Schedule stakeholder reviews of compliance dashboards generated from automation to sustain cadence.",
+          risk:
+            "Risk: Stakeholders will lose sight of compliance drift, allowing obligations to be missed until external audits intervene.",
+          reference: {
+            title:
+              "Chapter 12 – Compliance and Regulatory Adherence · Policy-driven infrastructure and governance",
+            url: "12_compliance/#policy-driven-infrastructure-and-governance"
+          }
+        }
+      ],
+      testing: [
+        {
+          recommendation:
+            "Define automated tests for every codified artefact so infrastructure, policies, and models gain the same assurance as software.",
+          risk:
+            "Risk: Infrastructure and policy regressions will reach production unnoticed, eroding trust in automation.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Testing strategies for Infrastructure as Code",
+            url: "13_testing_strategies/#testing-strategies-for-infrastructure-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Run the full test suite on each merge or release candidate to keep quality gates reliable.",
+          risk:
+            "Risk: Regressions will bypass pipelines and surface only in production, increasing remediation cost.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Automation and watch mode",
+            url: "13_testing_strategies/#automation-and-watch-mode"
+          }
+        },
+        {
+          recommendation:
+            "Monitor coverage with shared fixtures and metrics so gaps trigger backlog improvements.",
+          risk:
+            "Risk: Test blind spots will persist unnoticed, allowing critical behaviours to remain unverified.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Best practices for infrastructure testing with Vitest",
+            url: "13_testing_strategies/#best-practices-for-infrastructure-testing-with-vitest"
+          }
+        },
+        {
+          recommendation:
+            "Rehearse failure scenarios with codified chaos experiments to validate resilience and recovery paths.",
+          risk:
+            "Risk: Recovery procedures will remain theoretical, prolonging outages when incidents occur.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Chaos Monkey experiments",
+            url: "13_testing_strategies/#chaos-monkey-experiments"
+          }
+        },
+        {
+          recommendation:
+            "Manage test data, fixtures, and sanitisation routines as code to keep environments repeatable.",
+          risk:
+            "Risk: Tests will behave inconsistently and may expose personal data, undermining confidence in automation.",
+          reference: {
+            title:
+              "Chapter 13 – Testing Strategies · Best practices for infrastructure testing with Vitest",
+            url: "13_testing_strategies/#best-practices-for-infrastructure-testing-with-vitest"
+          }
+        }
+      ],
+      documentation: [
+        {
+          recommendation:
+            "Author documentation in version-controlled markup with review workflows so knowledge stays accurate.",
+          risk:
+            "Risk: Guidance will age in shared drives, leading to contradictory instructions and rework.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Documentation as Code: communication and knowledge transfer",
+            url: "22_documentation_vs_architecture/#documentation-as-code-communication-and-knowledge-transfer"
+          }
+        },
+        {
+          recommendation:
+            "Automate publishing pipelines so every change regenerates web, PDF, and diagram outputs from the same sources.",
+          risk:
+            "Risk: Published documentation will drift between formats, confusing stakeholders and wasting effort.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Architecture as Code feeds Documentation as Code",
+            url: "22_documentation_vs_architecture/#architecture-as-code-feeds-documentation-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Bake documentation updates into the definition of done so product and platform changes always ship with revised guidance.",
+          risk:
+            "Risk: Releases will land without supporting documentation, increasing support load and slowing adoption.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · The relationship between Documentation as Code and Architecture as Code",
+            url: "22_documentation_vs_architecture/#the-relationship-between-documentation-as-code-and-architecture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Generate diagrams from structured models to eliminate manual drawing effort.",
+          risk:
+            "Risk: Hand-crafted diagrams will fall out of date quickly, misleading design and governance conversations.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Architecture as Code feeds Documentation as Code",
+            url: "22_documentation_vs_architecture/#architecture-as-code-feeds-documentation-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Automate link, style, and quality checks in CI to uphold documentation standards.",
+          risk:
+            "Risk: Broken links and inconsistent style will accumulate, reducing confidence in the documentation estate.",
+          reference: {
+            title:
+              "Chapter 22 – Documentation vs Architecture as Code · Key differences: a comparative framework",
+            url: "22_documentation_vs_architecture/#key-differences-a-comparative-framework"
+          }
+        }
+      ],
+      knowledge: [
+        {
+          recommendation:
+            "Capture organisational knowledge in structured, versioned repositories with clear ownership to reduce onboarding friction.",
+          risk:
+            "Risk: Critical knowledge will remain trapped with individuals, slowing delivery and amplifying turnover impact.",
+          reference: {
+            title:
+              "Chapter 18 – Team Structure · Knowledge sharing and communities of practice",
+            url: "18_team_structure/#knowledge-sharing-and-communities-of-practice"
+          }
+        },
+        {
+          recommendation:
+            "Provide onboarding journeys as code-based playbooks or scripts so induction follows a consistent, automated path.",
+          risk:
+            "Risk: New colleagues will receive inconsistent induction, lengthening time-to-value and harming morale.",
+          reference: {
+            title:
+              "Chapter 23 – Soft as Code Interplay · Knowledge and culture as code",
+            url: "23_soft_as_code_interplay/#knowledge-and-culture-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Track retrospectives and improvement actions in version-controlled artefacts with automated follow-up tasks.",
+          risk:
+            "Risk: Improvement commitments will be forgotten, allowing recurring problems to persist.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Practical examples of strategic discussions",
+            url: "19_management_as_code/#practical-examples-of-strategic-discussions"
+          }
+        },
+        {
+          recommendation:
+            "Embed cultural guidance into tooling—bots, templates, and prompts—so behaviours are reinforced where work happens.",
+          risk:
+            "Risk: Desired behaviours will rely on memory alone, leading to inconsistent culture across teams.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Cultural and behavioural codification",
+            url: "19_management_as_code/#cultural-and-behavioural-codification"
+          }
+        },
+        {
+          recommendation:
+            "Schedule automated reminders to review knowledge bases and cultural commitments to keep guidance current.",
+          risk:
+            "Risk: Knowledge bases will stagnate, eroding trust in the material and encouraging shadow documentation.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Cultural and behavioural codification",
+            url: "19_management_as_code/#cultural-and-behavioural-codification"
+          }
+        }
+      ],
+      management: [
+        {
+          recommendation:
+            "Document operating models, team topologies, and responsibilities through codified templates that live in Git.",
+          risk:
+            "Risk: Roles and responsibilities will become ambiguous, fuelling duplication and conflicting decisions.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Defining Management as Code",
+            url: "19_management_as_code/#defining-management-as-code"
+          }
+        },
+        {
+          recommendation:
+            "Run leadership ceremonies from dashboards and scripts generated by management code so rituals stay repeatable.",
+          risk:
+            "Risk: Leadership cadence will depend on manual effort, reducing transparency and follow-through.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Embedding management in the DevOps loop",
+            url: "19_management_as_code/#embedding-management-in-the-devops-loop"
+          }
+        },
+        {
+          recommendation:
+            "Collect performance and delivery metrics automatically and surface them through shared management dashboards.",
+          risk:
+            "Risk: Leadership decisions will hinge on anecdotes, weakening prioritisation and accountability.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Measuring management effectiveness",
+            url: "19_management_as_code/#measuring-management-effectiveness"
+          }
+        },
+        {
+          recommendation:
+            "Manage resource allocation and staffing through codified workflows with automated approvals and audit trails.",
+          risk:
+            "Risk: Staffing decisions will lack traceability, creating bottlenecks and increasing operational risk.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · Governance and policy automation",
+            url: "19_management_as_code/#governance-and-policy-automation"
+          }
+        },
+        {
+          recommendation:
+            "Iterate management playbooks via pull requests so the leadership community can review and evolve guidance together.",
+          risk:
+            "Risk: Management guidance will stagnate, reducing engagement and limiting responsiveness to change.",
+          reference: {
+            title:
+              "Chapter 19 – Management as Code · GitHub configuration for MaC",
+            url: "19_management_as_code/#github-configuration-for-mac"
+          }
+        }
+      ]
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      buildForm();
+      const form = document.getElementById("assessmentForm");
+      form.addEventListener("submit", handleAssessment);
+      form.addEventListener("reset", handleReset);
+
+      const radarContainer = document.getElementById("radarDiagram");
+      const summaryContainer = document.getElementById("resultSummary");
+      const suggestionsContainer = document.getElementById("improvementSuggestions");
+      const reportContainer = document.getElementById("assessmentReport");
+
+      if (radarContainer) {
+        initialRadarContent = radarContainer.innerHTML;
+      }
+
+      if (summaryContainer) {
+        initialSummaryContent = summaryContainer.innerHTML;
+      }
+
+      if (suggestionsContainer) {
+        initialSuggestionsContent = suggestionsContainer.innerHTML;
+      }
+
+      if (reportContainer) {
+        initialReportContent = reportContainer.innerHTML;
+      }
+
+      document
+        .getElementById("copyJson")
+        .addEventListener("click", copyJsonToClipboard);
+      document
+        .getElementById("downloadJson")
+        .addEventListener("click", downloadJsonFile);
+      document
+        .getElementById("triggerImportJson")
+        .addEventListener("click", () =>
+          document.getElementById("importJsonInput").click()
+        );
+      document
+        .getElementById("importJsonInput")
+        .addEventListener("change", handleJsonImport);
+
+      suggestionsExportButton = document.getElementById(
+        "downloadSuggestionsPdf"
+      );
+
+      if (suggestionsExportButton) {
+        suggestionsExportButton.addEventListener(
+          "click",
+          handleSuggestionsPdfDownload
+        );
+        updateSuggestionsExportState([]);
+      }
+    });
+
+    function buildForm() {
+      const container = document.getElementById("questionContainer");
+      const fragment = document.createDocumentFragment();
+
+      aspects.forEach((aspect) => {
+        const fieldset = document.createElement("fieldset");
+        if (aspect.key) {
+          fieldset.id = aspect.key;
+        }
+        const legend = document.createElement("legend");
+        legend.textContent = aspect.name;
+        fieldset.appendChild(legend);
+
+        aspect.questions.forEach((question, index) => {
+          const questionId = `${aspect.key}_${index}`;
+          const wrapper = document.createElement("div");
+          wrapper.className = "question";
+          wrapper.id = questionId;
+
+          const label = document.createElement("label");
+          label.className = "question-text";
+          label.textContent = question;
+          wrapper.appendChild(label);
+
+          const options = document.createElement("div");
+          options.className = "options";
+
+          const yesOption = createOption(questionId, "yes", "Yes");
+          const noOption = createOption(questionId, "no", "No");
+
+          options.appendChild(yesOption);
+          options.appendChild(noOption);
+          wrapper.appendChild(options);
+
+          fieldset.appendChild(wrapper);
+        });
+
+        fragment.appendChild(fieldset);
+      });
+
+      container.appendChild(fragment);
+    }
+
+    function createOption(name, value, labelText) {
+      const label = document.createElement("label");
+      const id = `${name}_${value}`;
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = name;
+      input.value = value;
+      input.id = id;
+      input.required = true;
+
+      const indicator = document.createElement("span");
+      indicator.className = "checkable";
+      indicator.textContent = labelText;
+
+      label.setAttribute("for", id);
+      label.appendChild(input);
+      label.appendChild(indicator);
+
+      return label;
+    }
+
+    function handleAssessment(event) {
+      event.preventDefault();
+      const form = event.target;
+      const { detailedResults, resultPayload } = calculateResults(
+        form
+      );
+      updateOutputs(detailedResults, resultPayload);
+    }
+
+    function calculateResults(form) {
+      const formData = new FormData(form);
+
+      const detailedResults = aspects.map((aspect) => {
+        const answers = aspect.questions.map((question, index) => {
+          const fieldName = `${aspect.key}_${index}`;
+          const response = formData.get(fieldName);
+          return {
+            question,
+            response,
+            score: response === "yes" ? 1 : 0
+          };
+        });
+
+        const yesCount = answers.reduce((acc, item) => acc + item.score, 0);
+        const totalQuestions = answers.length;
+        const percentage = totalQuestions
+          ? Math.round((yesCount / totalQuestions) * 100)
+          : 0;
+
+        return {
+          aspectKey: aspect.key,
+          aspectName: aspect.name,
+          yesCount,
+          totalQuestions,
+          percentage,
+          answers
+        };
+      });
+
+      const resultPayload = {
+        generatedAt: new Date().toISOString(),
+        scaleMaximum: 5,
+        totals: {
+          overallYes: detailedResults.reduce((acc, item) => acc + item.yesCount, 0),
+          overallQuestions: detailedResults.reduce(
+            (acc, item) => acc + item.totalQuestions,
+            0
+          ),
+          averagePercentage:
+            detailedResults.reduce((acc, item) => acc + item.percentage, 0) /
+            detailedResults.length
+        },
+        aspects: detailedResults
+      };
+
+      return { detailedResults, resultPayload };
+    }
+
+    function updateOutputs(detailedResults, resultPayload) {
+      const radarDefinition = buildRadarDefinition(detailedResults);
+      renderRadar(radarDefinition);
+      const suggestions = collectImprovementSuggestions(detailedResults);
+
+      const exportPayload = {
+        ...resultPayload,
+        suggestions: suggestions.map(
+          ({
+            aspectKey,
+            aspectName,
+            question,
+            risk,
+            recommendation,
+            reference
+          }) => ({
+            aspectKey,
+            aspectName,
+            question,
+            risk,
+            mitigation: recommendation,
+            reference
+          })
+        )
+      };
+
+      const jsonOutput = document.getElementById("jsonOutput");
+      jsonOutput.value = JSON.stringify(exportPayload, null, 2);
+
+      latestAssessment = {
+        detailedResults,
+        suggestions,
+        resultPayload: exportPayload
+      };
+
+      renderSummaryTable(detailedResults);
+      renderSuggestions(suggestions);
+      renderAssessmentReport(detailedResults, suggestions);
+    }
+
+    function buildRadarDefinition(results) {
+      if (!Array.isArray(results) || !results.length) {
+        return "";
+      }
+
+      const escapedLabel = (label) => label.replace(/"/g, '\"');
+
+      const wrapLabel = (label, maxLineLength = 24) => {
+        if (typeof label !== "string" || !label.trim()) {
+          return label;
+        }
+
+        const words = label.trim().split(/\s+/);
+        const lines = [];
+        let currentLine = [];
+
+        words.forEach((word) => {
+          const prospectiveLine = [...currentLine, word].join(" ");
+
+          if (prospectiveLine.length > maxLineLength && currentLine.length) {
+            lines.push(currentLine.join(" "));
+            currentLine = [word];
+          } else {
+            currentLine.push(word);
+          }
+        });
+
+        if (currentLine.length) {
+          lines.push(currentLine.join(" "));
+        }
+
+        return lines.join("<br/>");
+      };
+
+      const axes = results.map((result) => {
+        const normalisedScore = result.totalQuestions
+          ? (result.yesCount / result.totalQuestions) * 5
+          : 0;
+
+        return {
+          key: result.aspectKey,
+          label: wrapLabel(result.aspectName),
+          value: Number(normalisedScore.toFixed(2))
+        };
+      });
+
+      const axisDefinitions = axes
+        .map(({ key, label }) => `${key}["${escapedLabel(label)}"]`)
+        .join(", ");
+
+      const dataSeries = axes.map(({ value }) => value.toString()).join(",");
+
+      return [
+        "radar-beta",
+        "  title Architecture as Code Maturity Snapshot",
+        `  axis ${axisDefinitions}`,
+        `  curve current["Current assessment"]{${dataSeries}}`,
+        "  min 0",
+        "  max 5",
+        "  ticks 5",
+        "  showLegend true"
+      ].join("\n");
+    }
+
+    async function renderRadar(definition) {
+      const container = document.getElementById("radarDiagram");
+      const targetId = `radar_${Date.now()}`;
+      const attemptRender = async (definitionText) => {
+        const { svg } = await mermaid.render(targetId, definitionText);
+        container.innerHTML = svg;
+      };
+
+      const showRenderError = (error, definitionText) => {
+        console.error("Failed to render Mermaid diagram", error);
+        container.innerHTML = "";
+
+        const errorWrapper = document.createElement("div");
+        errorWrapper.className = "diagram-error";
+        errorWrapper.setAttribute("role", "alert");
+
+        const intro = document.createElement("p");
+        intro.textContent =
+          "Mermaid reported a syntax error while generating the radar diagram. Review the definition below to troubleshoot the issue.";
+        errorWrapper.appendChild(intro);
+
+        const message = document.createElement("p");
+        message.className = "error-message";
+        message.textContent = error?.message
+          ? `Mermaid error: ${error.message}`
+          : "Mermaid returned an unknown error.";
+        errorWrapper.appendChild(message);
+
+        const details = document.createElement("details");
+        details.open = true;
+
+        const summary = document.createElement("summary");
+        summary.textContent = "View Mermaid definition";
+        details.appendChild(summary);
+
+        const textarea = document.createElement("textarea");
+        textarea.readOnly = true;
+        textarea.value = definitionText;
+        textarea.rows = Math.min(12, definitionText.split("\n").length + 2);
+        textarea.setAttribute(
+          "aria-label",
+          "Mermaid definition for the radar diagram"
+        );
+        details.appendChild(textarea);
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.textContent = "Copy Mermaid definition";
+        copyButton.addEventListener("click", async () => {
+          const original = copyButton.textContent;
+          try {
+            await copyTextToClipboard(definitionText);
+            copyButton.textContent = "Definition copied";
+          } catch (clipboardError) {
+            console.error("Failed to copy definition", clipboardError);
+            copyButton.textContent = "Copy failed";
+          }
+          setTimeout(() => {
+            copyButton.textContent = original;
+          }, 2000);
+        });
+        details.appendChild(copyButton);
+
+        errorWrapper.appendChild(details);
+        container.appendChild(errorWrapper);
+      };
+
+      try {
+        await attemptRender(definition);
+      } catch (error) {
+        showRenderError(error, definition);
+      }
+    }
+
+    function renderSummaryTable(results) {
+      const summaryContainer = document.getElementById("resultSummary");
+      const table = document.createElement("table");
+
+      const headerRow = document.createElement("tr");
+      [
+        "Aspect",
+        "Affirmative responses",
+        "Total questions",
+        "Percentage"
+      ].forEach((heading) => {
+        const th = document.createElement("th");
+        th.textContent = heading;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+
+      results.forEach((result) => {
+        const row = document.createElement("tr");
+
+        const aspectCell = document.createElement("td");
+        aspectCell.textContent = result.aspectName;
+        row.appendChild(aspectCell);
+
+        const yesCell = document.createElement("td");
+        yesCell.textContent = result.yesCount;
+        row.appendChild(yesCell);
+
+        const totalCell = document.createElement("td");
+        totalCell.textContent = result.totalQuestions;
+        row.appendChild(totalCell);
+
+        const percentageCell = document.createElement("td");
+        percentageCell.textContent = `${result.percentage}%`;
+        row.appendChild(percentageCell);
+
+        table.appendChild(row);
+      });
+
+      summaryContainer.innerHTML = "";
+      summaryContainer.appendChild(table);
+    }
+
+    function collectImprovementSuggestions(results) {
+      const suggestions = [];
+
+      results.forEach((result) => {
+        result.answers.forEach((answer, index) => {
+          if (answer.response !== "no") {
+            return;
+          }
+
+          const aspectSuggestions = suggestionIndex[result.aspectKey] ?? [];
+          const suggestionDefinition = aspectSuggestions[index];
+
+          if (!suggestionDefinition) {
+            return;
+          }
+
+          suggestions.push({
+            aspectKey: result.aspectKey,
+            aspectName: result.aspectName,
+            question: answer.question,
+            risk: suggestionDefinition.risk,
+            recommendation: suggestionDefinition.recommendation,
+            reference: suggestionDefinition.reference
+          });
+        });
+      });
+
+      return suggestions;
+    }
+
+    function renderSuggestions(suggestions) {
+      const container = document.getElementById("improvementSuggestions");
+      if (!container) {
+        return;
+      }
+
+      container.innerHTML = "";
+
+      updateSuggestionsExportState(suggestions);
+
+      if (!suggestions.length) {
+        const placeholder = document.createElement("p");
+        placeholder.textContent =
+          "Complete the assessment to receive targeted recommendations for boosting your maturity.";
+        container.appendChild(placeholder);
+        return;
+      }
+
+      const intro = document.createElement("p");
+      intro.textContent =
+        "Focus on the following actions to raise your maturity across disciplines:";
+      container.appendChild(intro);
+
+      const table = document.createElement("table");
+
+      const headerRow = document.createElement("tr");
+      [
+        "Discipline and question",
+        "Recommended action",
+        "Risk if ignored",
+        "Reference"
+      ].forEach((heading) => {
+        const th = document.createElement("th");
+        th.textContent = heading;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+
+      suggestions.forEach((suggestion) => {
+        const row = document.createElement("tr");
+
+        const questionCell = document.createElement("td");
+        const questionLabel = document.createElement("span");
+        questionLabel.className = "question-label";
+        questionLabel.textContent = `${suggestion.aspectName} – ${suggestion.question}`;
+        questionCell.appendChild(questionLabel);
+        row.appendChild(questionCell);
+
+        const recommendationCell = document.createElement("td");
+        recommendationCell.textContent = suggestion.recommendation;
+        row.appendChild(recommendationCell);
+
+        const riskCell = document.createElement("td");
+        riskCell.className = "risk";
+        riskCell.textContent = suggestion.risk ?? "";
+        row.appendChild(riskCell);
+
+        const referenceCell = document.createElement("td");
+        if (suggestion.reference) {
+          const referenceLink = document.createElement("a");
+          referenceLink.className = "reference-link";
+          referenceLink.href = suggestion.reference.url;
+          referenceLink.target = "_blank";
+          referenceLink.rel = "noopener noreferrer";
+          referenceLink.textContent = suggestion.reference.title;
+          referenceCell.appendChild(referenceLink);
+        }
+        row.appendChild(referenceCell);
+
+        table.appendChild(row);
+      });
+
+      container.appendChild(table);
+    }
+
+    function renderAssessmentReport(results, suggestions) {
+      const container = document.getElementById("assessmentReport");
+      if (!container) {
+        return;
+      }
+
+      container.innerHTML = "";
+
+      if (!Array.isArray(results) || !results.length) {
+        const placeholder = document.createElement("p");
+        placeholder.textContent =
+          "Complete the assessment to generate a narrative report with linked references.";
+        container.appendChild(placeholder);
+        return;
+      }
+
+      const overallYes = results.reduce((acc, item) => acc + item.yesCount, 0);
+      const overallQuestions = results.reduce(
+        (acc, item) => acc + item.totalQuestions,
+        0
+      );
+      const overallPercentage = overallQuestions
+        ? Math.round((overallYes / overallQuestions) * 100)
+        : 0;
+
+      const overview = document.createElement("p");
+      overview.textContent = `Your organisation confirmed ${overallYes} of ${overallQuestions} practices (${overallPercentage}% adoption).`;
+      container.appendChild(overview);
+
+      const referenceAccumulator = new Map();
+
+      results.forEach((result) => {
+        const section = document.createElement("article");
+
+        const heading = document.createElement("h3");
+        heading.textContent = result.aspectName;
+        section.appendChild(heading);
+
+        const aspectSummary = document.createElement("p");
+        aspectSummary.textContent = `Affirmative responses: ${result.yesCount} of ${result.totalQuestions} (${result.percentage}%).`;
+        section.appendChild(aspectSummary);
+
+        const aspectSuggestions = suggestions.filter(
+          (item) => item.aspectName === result.aspectName
+        );
+
+        if (aspectSuggestions.length === 0) {
+          const complete = document.createElement("p");
+          complete.textContent =
+            "All recommended practices are in place for this discipline.";
+          section.appendChild(complete);
+        } else {
+          const intro = document.createElement("p");
+          intro.textContent = "Prioritise the following next steps:";
+          section.appendChild(intro);
+
+          const list = document.createElement("ul");
+
+          aspectSuggestions.forEach((suggestion) => {
+            const item = document.createElement("li");
+
+            const recommendation = document.createElement("p");
+            recommendation.textContent = suggestion.recommendation;
+            item.appendChild(recommendation);
+
+            if (suggestion.reference) {
+              const referenceParagraph = document.createElement("p");
+              referenceParagraph.className = "report-reference";
+              referenceParagraph.textContent = "Reference: ";
+
+              const referenceLink = document.createElement("a");
+              referenceLink.href = suggestion.reference.url;
+              referenceLink.target = "_blank";
+              referenceLink.rel = "noopener noreferrer";
+              referenceLink.textContent = suggestion.reference.title;
+              referenceParagraph.appendChild(referenceLink);
+              item.appendChild(referenceParagraph);
+
+              const referenceKey = `${suggestion.reference.title}|${suggestion.reference.url}`;
+              if (!referenceAccumulator.has(referenceKey)) {
+                referenceAccumulator.set(referenceKey, suggestion.reference);
+              }
+            }
+
+            list.appendChild(item);
+          });
+
+          section.appendChild(list);
+        }
+
+        container.appendChild(section);
+      });
+
+      if (referenceAccumulator.size > 0) {
+        const referencesHeading = document.createElement("h3");
+        referencesHeading.textContent = "Referenced guidance";
+        container.appendChild(referencesHeading);
+
+        const referencesList = document.createElement("ol");
+
+        referenceAccumulator.forEach((reference) => {
+          const item = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = reference.url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = reference.title;
+          item.appendChild(link);
+          referencesList.appendChild(item);
+        });
+
+        container.appendChild(referencesList);
+      }
+    }
+
+    function handleReset() {
+      latestAssessment = null;
+
+      const radarContainer = document.getElementById("radarDiagram");
+      if (radarContainer) {
+        radarContainer.innerHTML = initialRadarContent;
+      }
+
+      const summaryContainer = document.getElementById("resultSummary");
+      if (summaryContainer) {
+        summaryContainer.innerHTML = initialSummaryContent;
+      }
+
+      const suggestionsContainer = document.getElementById("improvementSuggestions");
+      if (suggestionsContainer) {
+        suggestionsContainer.innerHTML = initialSuggestionsContent;
+      }
+
+      const reportContainer = document.getElementById("assessmentReport");
+      if (reportContainer) {
+        reportContainer.innerHTML = initialReportContent;
+      }
+
+      const jsonOutput = document.getElementById("jsonOutput");
+      if (jsonOutput) {
+        jsonOutput.value = "";
+      }
+
+      updateSuggestionsExportState([]);
+
+    }
+
+    async function copyTextToClipboard(text) {
+      if (!text) {
+        return;
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      const helper = document.createElement("textarea");
+      helper.value = text;
+      helper.setAttribute("readonly", "");
+      helper.style.position = "absolute";
+      helper.style.left = "-9999px";
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand("copy");
+      document.body.removeChild(helper);
+    }
+
+    async function copyJsonToClipboard() {
+      const jsonOutput = document.getElementById("jsonOutput");
+      if (!jsonOutput.value) {
+        return;
+      }
+
+      await copyTextToClipboard(jsonOutput.value);
+    }
+
+    function downloadJsonFile() {
+      const jsonOutput = document.getElementById("jsonOutput").value;
+      if (!jsonOutput) {
+        return;
+      }
+      const blob = new Blob([jsonOutput], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "aac_maturity_assessment.json";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    function handleJsonImport(event) {
+      const [file] = event.target.files;
+      if (!file) {
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const data = JSON.parse(reader.result);
+          applyImportedAssessment(data);
+        } catch (error) {
+          console.error("Failed to parse assessment JSON", error);
+          alert(
+            "The selected file could not be parsed. Please ensure it is a valid assessment export."
+          );
+        }
+      };
+      reader.readAsText(file);
+
+      event.target.value = "";
+    }
+
+    function applyImportedAssessment(data) {
+      if (!data || !Array.isArray(data.aspects)) {
+        alert("The imported data is missing the expected structure.");
+        return;
+      }
+
+      const form = document.getElementById("assessmentForm");
+      form.reset();
+
+      data.aspects.forEach((aspectResult) => {
+        const aspectDefinition = aspects.find(
+          (definition) => definition.key === aspectResult.aspectKey
+        );
+
+        if (!aspectDefinition || !Array.isArray(aspectResult.answers)) {
+          return;
+        }
+
+        aspectResult.answers.forEach((answer, index) => {
+          if (!answer || !answer.response) {
+            return;
+          }
+
+          const fieldName = `${aspectDefinition.key}_${index}`;
+          const radio = document.querySelector(
+            `input[name="${fieldName}"][value="${answer.response}"]`
+          );
+          if (radio) {
+            radio.checked = true;
+          }
+        });
+      });
+
+      const { detailedResults, resultPayload } = calculateResults(form);
+      updateOutputs(detailedResults, resultPayload);
+    }
+
+    function updateSuggestionsExportState(suggestions) {
+      if (!suggestionsExportButton) {
+        return;
+      }
+
+      const hasSuggestions = Array.isArray(suggestions) && suggestions.length > 0;
+      const canExport = Boolean(jsPDFConstructor);
+      const enableButton = hasSuggestions && canExport;
+
+      suggestionsExportButton.disabled = !enableButton;
+
+      if (enableButton) {
+        suggestionsExportButton.removeAttribute("aria-disabled");
+      } else {
+        suggestionsExportButton.setAttribute("aria-disabled", "true");
+      }
+
+      if (!canExport) {
+        suggestionsExportButton.title =
+          "PDF export is unavailable because the jsPDF library could not be loaded.";
+      } else {
+        suggestionsExportButton.removeAttribute("title");
+      }
+    }
+
+    function handleSuggestionsPdfDownload() {
+      if (!jsPDFConstructor) {
+        alert(
+          "PDF export is currently unavailable. Check your connection and reload the page to try again."
+        );
+        return;
+      }
+
+      if (
+        !latestAssessment ||
+        !Array.isArray(latestAssessment.suggestions) ||
+        latestAssessment.suggestions.length === 0
+      ) {
+        alert("Generate improvement suggestions before exporting them to PDF.");
+        return;
+      }
+
+      exportSuggestionsToPdf(
+        latestAssessment.suggestions,
+        latestAssessment.resultPayload?.generatedAt
+      );
+    }
+
+    function exportSuggestionsToPdf(suggestions, generatedAt) {
+      if (!jsPDFConstructor) {
+        console.error("jsPDF is unavailable; unable to generate the suggestions PDF.");
+        return;
+      }
+
+      const doc = new jsPDFConstructor({ unit: "pt", format: "a4" });
+      const marginX = 48;
+      const marginY = 64;
+      const contentWidth = doc.internal.pageSize.getWidth() - marginX * 2;
+      const lineHeight = 16;
+      const pageHeight = doc.internal.pageSize.getHeight();
+      let cursorY = marginY;
+
+      const ensureSpace = (lineCount) => {
+        const spaceNeeded = lineCount * lineHeight;
+        if (cursorY + spaceNeeded > pageHeight - marginY) {
+          doc.addPage();
+          cursorY = marginY;
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(11);
+        }
+      };
+
+      const writeLines = (textLines, options = {}) => {
+        const { font = "helvetica", style = "normal", size = 11 } = options;
+        const lines = Array.isArray(textLines) ? textLines : [textLines];
+        ensureSpace(lines.length);
+        doc.setFont(font, style);
+        doc.setFontSize(size);
+        lines.forEach((line) => {
+          doc.text(line, marginX, cursorY);
+          cursorY += lineHeight;
+        });
+      };
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("Architecture as Code Maturity Radar", marginX, cursorY);
+      cursorY += lineHeight * 1.5;
+
+      doc.setFontSize(14);
+      doc.text("Improvement suggestions", marginX, cursorY);
+      cursorY += lineHeight;
+
+      if (generatedAt) {
+        const generatedDate = new Date(generatedAt);
+        const dateIsValid = !Number.isNaN(generatedDate.valueOf());
+        const formatted = dateIsValid
+          ? generatedDate.toLocaleString("en-GB", {
+              dateStyle: "medium",
+              timeStyle: "short"
+            })
+          : generatedAt;
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(11);
+        doc.text(`Generated: ${formatted}`, marginX, cursorY);
+        cursorY += lineHeight * 1.5;
+      }
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+
+      suggestions.forEach((suggestion, index) => {
+        const heading = `${index + 1}. ${suggestion.aspectName}`;
+        writeLines([heading], { style: "bold", size: 12 });
+
+        const questionLines = doc.splitTextToSize(
+          `Focus: ${suggestion.question}`,
+          contentWidth
+        );
+        writeLines(questionLines, { style: "italic" });
+
+        if (suggestion.risk) {
+          const riskLines = doc.splitTextToSize(suggestion.risk, contentWidth);
+          writeLines(riskLines, { style: "bold" });
+        }
+
+        const recommendationLines = doc.splitTextToSize(
+          suggestion.recommendation,
+          contentWidth
+        );
+        writeLines(recommendationLines);
+
+        if (suggestion.reference) {
+          const referenceLines = doc.splitTextToSize(
+            `Reference: ${suggestion.reference.title} – ${suggestion.reference.url}`,
+            contentWidth
+          );
+          writeLines(referenceLines);
+        }
+
+        const startingPosition = cursorY;
+        ensureSpace(1);
+        if (cursorY === startingPosition) {
+          cursorY += lineHeight;
+        }
+      });
+
+      doc.save("aac_maturity_suggestions.pdf");
+    }
+
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Architecture as Code Maturity Radar</h1>
+    <p class="intro">
+      Answer each question to reflect how far your organisation has progressed with Architecture as Code practices.
+      Submit the assessment to generate a radar diagram and exportable JSON summary capturing every response.
+    </p>
+  </header>
+
+  <main>
+    <form id="assessmentForm">
+      <div id="questionContainer"></div>
+      <div class="actions">
+        <button type="submit" class="primary">Generate radar and summary</button>
+        <button type="reset" class="warning">Clear responses</button>
+      </div>
+    </form>
+
+    <section id="radarDiagram" aria-live="polite">
+      <p>The radar diagram will appear here once you submit the assessment.</p>
+    </section>
+
+    <section class="result-summary">
+      <h2>Summary by discipline</h2>
+      <div id="resultSummary">
+        <p>Submit your answers to view a breakdown of the results.</p>
+      </div>
+    </section>
+
+    <section class="improvement-suggestions">
+      <h2>Improvement suggestions</h2>
+      <div id="improvementSuggestions">
+        <p>Complete the assessment to receive targeted recommendations for boosting your maturity.</p>
+      </div>
+      <div class="actions">
+        <button type="button" id="downloadSuggestionsPdf" aria-disabled="true" disabled>
+          Download suggestions as PDF
+        </button>
+      </div>
+    </section>
+
+    <section class="assessment-report">
+      <h2>Assessment report</h2>
+      <div id="assessmentReport">
+        <p>Complete the assessment to generate a narrative report with linked references.</p>
+      </div>
+    </section>
+
+    <section class="result-summary">
+      <h2>JSON export</h2>
+      <p>The JSON payload includes the radar data and individual answers so you can archive or process the assessment.</p>
+      <textarea id="jsonOutput" readonly aria-label="Assessment results in JSON format"></textarea>
+      <div class="actions">
+        <button type="button" id="copyJson">Copy JSON to clipboard</button>
+        <button type="button" id="downloadJson">Download JSON file</button>
+        <button type="button" id="triggerImportJson">Import JSON file</button>
+        <input
+          type="file"
+          id="importJsonInput"
+          accept="application/json"
+          hidden
+          aria-hidden="true"
+        />
+      </div>
+    </section>
+  </main>
+</body>
+</html>

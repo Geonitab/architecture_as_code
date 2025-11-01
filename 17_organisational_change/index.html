@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/17_organisational_change/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Organisational Change and Team Structures - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Organisational Change and Team Structures";
+        var mkdocs_page_input_path = "17_organisational_change.md";
+        var mkdocs_page_url = "/17_organisational_change/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Organisational Change and Team Structures</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#building-a-devops-culture">Building a DevOps Culture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#designing-cross-functional-teams">Designing Cross-functional Teams</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#developing-capability-and-confidence">Developing Capability and Confidence</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#evolving-roles-and-career-paths">Evolving Roles and Career Paths</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#change-management-in-practice">Change Management in Practice</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#measuring-sustainable-progress">Measuring Sustainable Progress</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources-and-references">Sources and References</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part E – Organisation & Leadership</li>
+      <li class="breadcrumb-item active">Organisational Change and Team Structures</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/17_organisational_change.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="organisational-change-and-team-structures">Organisational Change and Team Structures</h1>
+<p>Architecture as Code changes far more than tooling. It demands new habits, shared language, and organisational structures that keep pace with automated delivery. Sustainable transformation happens when leadership connects strategy, culture, and day-to-day practices so teams can deliver infrastructure with the same confidence and cadence as software.</p>
+<p>Organisations rarely adopt Architecture as Code principles overnight. Instead, they move through progressive stages, each building on earlier capabilities whilst introducing new collaboration patterns and decision-making structures. Understanding this evolution helps leadership anticipate challenges, allocate resources, and maintain momentum through periods of rapid change.</p>
+<p>Figure 17.1 summarises the journey from siloed functions towards integrated, product-aligned teams that own outcomes together. The progression emphasises the deliberate shifts in mindset, decision making, and flow of work that underpin a mature Architecture as Code capability.</p>
+<table>
+<thead>
+<tr>
+<th>Transformation Stage</th>
+<th>Team Structure</th>
+<th>Decision Making</th>
+<th>Automation Maturity</th>
+<th>Key Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Siloed functions</td>
+<td>Separate development and operations teams</td>
+<td>Handoffs through tickets and change requests</td>
+<td>Manual provisioning, script-based</td>
+<td>Limited collaboration, slow feedback loops, blame culture</td>
+</tr>
+<tr>
+<td>Basic collaboration</td>
+<td>Shared goals but separate execution</td>
+<td>Regular meetings and shared backlogs</td>
+<td>Basic CI/CD, some automated testing</td>
+<td>Improved communication, reduced handoff friction</td>
+</tr>
+<tr>
+<td>Cross-functional teams</td>
+<td>Mixed skillsets in single teams</td>
+<td>Collective ownership of outcomes</td>
+<td>Infrastructure as Code, automated deployments</td>
+<td>Shared responsibility, faster delivery, learning culture</td>
+</tr>
+<tr>
+<td>Product-aligned teams</td>
+<td>Self-service platforms, product thinking</td>
+<td>Autonomous within guardrails</td>
+<td>Full automation, self-healing systems</td>
+<td>Outcome focus, platform mentality, continuous improvement</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Figure 17.1 – Stages of organisational transformation for Architecture as Code" src="../images/diagram_17_transformation_journey.png" /></p>
+<p><em>The transformation journey illustrates how organisations evolve from isolated teams to collaborative, outcome-focused delivery groups once Architecture as Code principles are embedded. Each stage represents measurable progress in automation maturity, team integration, and delivery velocity, allowing leaders to calibrate investments and expectations accordingly.</em></p>
+<h2 id="building-a-devops-culture">Building a DevOps Culture</h2>
+<p>DevOps practices create the social contract that allows infrastructure and application specialists to move at the same tempo. When teams share responsibilities rather than hand off tasks, they develop mutual respect for each other's constraints and opportunities. This foundation becomes especially important once automated infrastructure changes flow through production multiple times per day.</p>
+<p>Psychological safety, transparent communication, and inclusive retrospectives help teams learn from incidents without blame. Rather than penalising honest mistakes, high-performing organisations treat failures as tuition fees for valuable lessons. This mindset shift prevents defensive behaviours that slow experimentation and drive knowledge underground.</p>
+<p>Organisations that celebrate experimentation and view failure as tuition invest in coaching, community practice, and leadership behaviours that make cross-functional collaboration the default. Senior leaders model vulnerability by sharing their own learning journeys, creating permission structures that encourage junior staff to ask questions and propose improvements without fear of criticism.</p>
+<h2 id="designing-cross-functional-teams">Designing Cross-functional Teams</h2>
+<p>Moving beyond traditional organisational silos requires deliberate structural changes. Teams delivering shared platforms need a balanced mix of product thinking, operational discipline, and security awareness. Without explicit attention to composition, teams risk reverting to narrow functional boundaries that inhibit flow and slow decision making.</p>
+<p>Effective transformation programmes address multiple dimensions simultaneously rather than treating culture, skills, or governance as independent variables. Figures 17.2, 17.3, and 17.4 map the relationships between culture, team composition, skill growth, and change management activities that support those outcomes.</p>
+<p><img alt="Figure 17.2 – Culture and cross-functional collaboration" src="../images/mindmap_17a_culture_collaboration.png" /></p>
+<p><em>The first mind map shows how cultural foundations and cross-functional team structures create the basis for organisational change.</em></p>
+<p><img alt="Figure 17.3 – Capability development and role evolution" src="../images/mindmap_17b_capability_roles.png" /></p>
+<p><em>The second mind map illustrates learning paths, knowledge enablers, and evolving roles that support continuous improvement.</em></p>
+<p><img alt="Figure 17.4 – Change management approach" src="../images/mindmap_17c_change_management.png" /></p>
+<p><em>The third mind map demonstrates how stakeholder co-design, narrative communication, and evidence-based iteration drive successful transformation.</em></p>
+<p>To keep autonomy and alignment in harmony, organisations pair clear decision rights with shared standards. Appendix A, <a href="../30_appendix_code_examples/#17_code_1">listing 17-A</a>, provides a full Infrastructure Platform Team blueprint that product leaders can tailor to their own context. The blueprint illustrates how responsibilities, skills, and success measures join up in a single operating model.</p>
+<h2 id="developing-capability-and-confidence">Developing Capability and Confidence</h2>
+<p>Initial enthusiasm for Architecture as Code often fades once teams confront the practical challenges of managing state, debugging drift, and maintaining complex module dependencies. Structured learning pathways sustain momentum once foundational changes take hold. Without ongoing skill development, organisations risk creating isolated pockets of expertise that become bottlenecks and single points of failure.</p>
+<p>Micro-learning sessions, role-based mentoring, and internal communities give practitioners the confidence to automate sensitive workloads responsibly. Rather than relying solely on formal training courses, leading organisations embed learning into daily workflows through pair programming, code reviews, and lunch-and-learn sessions that lower the barrier to knowledge sharing.</p>
+<p>Appendix A, <a href="../30_appendix_code_examples/#17_code_2">listing 17-B</a>, outlines a reusable competency framework and tracking utilities that help teams personalise development journeys and monitor progress over time. The framework recognises that engineers advance at different rates and through different paths, providing structure without forcing everyone through identical curricula.</p>
+<h2 id="evolving-roles-and-career-paths">Evolving Roles and Career Paths</h2>
+<p>Architecture as Code blurs traditional boundaries between development, operations, and infrastructure management. Modern infrastructure roles blend software engineering, governance, and customer advocacy in ways that existing job descriptions often fail to capture. Organisations that cling to outdated role definitions struggle to attract talent and risk losing skilled practitioners to employers who recognise and reward these hybrid capabilities.</p>
+<p>Site reliability engineers, platform product owners, and security partners work from shared roadmaps and adopt servant leadership behaviours to unlock their colleagues' potential. These roles require both deep technical expertise and the interpersonal skills to influence without direct authority, a combination that few training programmes explicitly develop.</p>
+<p>Career development frameworks must recognise deep expertise and cross-disciplinary breadth so people can advance without leaving technical tracks. Dual-ladder career structures, technical leadership programmes, and rotation opportunities prevent the common pattern where the best engineers are promoted into management roles they neither want nor excel in, depleting technical capability whilst creating unhappy managers.</p>
+<h2 id="change-management-in-practice">Change Management in Practice</h2>
+<p>Transformation initiatives that focus solely on technology adoption whilst ignoring human factors consistently underdeliver. Successful change programmes treat stakeholders as partners rather than passive recipients of mandates from above. Early engagement with finance, security, procurement, and operations ensures that policy and compliance guardrails evolve alongside automation.</p>
+<p>Resistance to change often signals legitimate concerns about job security, skill gaps, or process disruption rather than simple obstinacy. Leaders who take time to understand these concerns and address them directly build trust that accelerates adoption. Structured communications plans, lightweight pilot initiatives, and visible sponsorship help teams internalise why the organisation is changing, not only what is changing.</p>
+<p>Pilot projects serve dual purposes: they prove technical feasibility whilst creating reference stories that persuade sceptical stakeholders. Starting with low-risk, high-visibility use cases generates early wins that build momentum without risking business-critical systems. These successes create advocates who speak from experience rather than theory, a far more persuasive force than executive mandates.</p>
+<h2 id="measuring-sustainable-progress">Measuring Sustainable Progress</h2>
+<p>Transformation programmes that lack clear success criteria drift aimlessly or claim victory prematurely based on activity metrics rather than outcomes. Insightful metrics keep transformation honest by connecting technical improvements to business value. Leading indicators such as deployment frequency, recovery time, developer satisfaction, and onboarding effort demonstrate whether cultural shifts translate into measurable delivery improvements.</p>
+<p>The most effective measurement frameworks balance technical, business, and cultural dimensions rather than focusing narrowly on infrastructure metrics. DORA metrics (deployment frequency, lead time, change failure rate, and recovery time) provide baseline technical health indicators, whilst developer satisfaction surveys and onboarding time reveal whether the organisation is building sustainable capabilities or burning out its people.</p>
+<p>Appendix A, <a href="../30_appendix_code_examples/#17_code_3">listing 17-C</a>, presents a neutral, globally relevant performance measurement framework that can be automated through standard DevOps toolchains. The framework emphasises leading indicators that teams can influence directly rather than lagging indicators that only confirm success or failure after opportunities for course correction have passed.</p>
+<h2 id="summary">Summary</h2>
+<p>Architecture as Code succeeds when organisations invest equally in people, process, and technology. Tools and platforms create possibilities, but sustained transformation requires deliberate attention to culture, capability development, and organisational structures that reward collaboration over individual heroics.</p>
+<p>Cross-functional teams, purposeful learning, and adaptive leadership turn automation into enduring capability rather than fragile scripts maintained by isolated specialists. These teams combine deep technical expertise with product thinking and operational discipline, creating feedback loops that continuously improve both the platform and the teams that build it.</p>
+<p>By linking cultural commitments with transparent measurement and clear governance, enterprises create an environment where resilient infrastructure becomes a shared responsibility. The practices outlined in this chapter—from psychological safety to competency frameworks to DevOps metrics—provide concrete starting points for organisations at any stage of their transformation journey.</p>
+<h2 id="sources-and-references">Sources and References</h2>
+<ul>
+<li>Puppet. "State of DevOps Report." Puppet Labs, 2023.</li>
+<li>Google. "DORA State of DevOps Research." Google Cloud, 2023.</li>
+<li>Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.</li>
+<li>Team Topologies. "Organising Business and Technology Teams." IT Revolution Press, 2023.</li>
+<li>Accelerate. "Building High Performing Technology Organisations." IT Revolution Press, 2023.</li>
+<li>McKinsey &amp; Company. "Organisational Transformation Best Practices." McKinsey Digital, 2023.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../part_e_leadership/" class="btn btn-neutral float-left" title="index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../18_team_structure/" class="btn btn-neutral float-right" title="Team Structure and Competency Development for IaC">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../part_e_leadership/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../18_team_structure/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

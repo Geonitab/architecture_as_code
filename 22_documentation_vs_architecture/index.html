@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/22_documentation_vs_architecture/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Documentation as Code vs Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Documentation as Code vs Architecture as Code";
+        var mkdocs_page_input_path = "22_documentation_vs_architecture.md";
+        var mkdocs_page_url = "/22_documentation_vs_architecture/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Documentation as Code vs Architecture as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#purpose-and-scope">Purpose and Scope</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation-as-code-communication-and-knowledge-transfer">Documentation as Code: Communication and Knowledge Transfer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#architecture-as-code-structure-and-enforcement">Architecture as Code: Structure and Enforcement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tooling-paradigms-modelling-tools-vs-diagram-tools">Tooling Paradigms: Modelling Tools vs Diagram Tools</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modelling-tools-calm-and-structurizr">Modelling Tools: CALM and Structurizr</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#calm-standardised-architecture-language">CALM: Standardised Architecture Language</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#structurizr-c4-model-implementation">Structurizr: C4 Model Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#diagram-tools-mermaid-and-plantuml">Diagram Tools: Mermaid and PlantUML</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#mermaid-lightweight-diagram-as-code">Mermaid: Lightweight Diagram as Code</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#plantuml-comprehensive-uml-diagramming">PlantUML: Comprehensive UML Diagramming</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#limitations-of-diagram-tools-for-architecture-as-code">Limitations of Diagram Tools for Architecture as Code</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-differences-a-comparative-framework">Key Differences: A Comparative Framework</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-relationship-between-documentation-as-code-and-architecture-as-code">The Relationship Between Documentation as Code and Architecture as Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#architecture-as-code-feeds-documentation-as-code">Architecture as Code Feeds Documentation as Code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation-as-code-explains-architecture-as-code">Documentation as Code Explains Architecture as Code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-recommendations">Practical Recommendations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#when-to-use-documentation-as-code">When to Use Documentation as Code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#when-to-use-architecture-as-code">When to Use Architecture as Code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#integrating-both-disciplines">Integrating Both Disciplines</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part F – Experience & Best Practices</li>
+      <li class="breadcrumb-item active">Documentation as Code vs Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/22_documentation_vs_architecture.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="documentation-as-code-vs-architecture-as-code">Documentation as Code vs Architecture as Code</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Although Documentation as Code (DaC) and Architecture as Code (AaC) share similar principles—version control, automation, and treating artefacts as code—they serve fundamentally different purposes within the software development lifecycle. Understanding these differences is essential for organisations seeking to implement both practices effectively and avoid conflating their distinct roles.</p>
+<p>Documentation as Code focuses on capturing and communicating knowledge about systems in a maintainable, version-controlled format. Architecture as Code, by contrast, defines the actual structure, relationships, and constraints of systems in executable or enforceable formats that can drive automation and validation. This chapter explores the key distinctions between these two disciplines and examines how the choice of tooling reflects their different objectives.</p>
+<p><img alt="Documentation vs Architecture as Code" src="../images/diagram_22_doc_vs_arch.png" /></p>
+<p><em>Figure 22.1 illustrates the fundamental differences between Documentation as Code and Architecture as Code, showing how each discipline serves distinct purposes in the software development ecosystem.</em></p>
+<h2 id="purpose-and-scope">Purpose and Scope</h2>
+<h3 id="documentation-as-code-communication-and-knowledge-transfer">Documentation as Code: Communication and Knowledge Transfer</h3>
+<p>Documentation as Code treats documentation as a first-class artefact within the codebase. Its primary goal is to communicate how systems work, why certain decisions were made, and how teams should interact with the technology. Documentation answers questions such as:</p>
+<ul>
+<li>How do I configure this service?</li>
+<li>What are the deployment procedures?</li>
+<li>Why was this architectural decision made?</li>
+<li>How do I troubleshoot common issues?</li>
+</ul>
+<p>Documentation as Code emphasises readability, accessibility, and maintainability. It targets human audiences—developers, operators, stakeholders—and focuses on narrative explanations, guides, tutorials, and reference material. The success of Documentation as Code is measured by how well it reduces onboarding time, prevents misunderstandings, and keeps information current.</p>
+<h3 id="architecture-as-code-structure-and-enforcement">Architecture as Code: Structure and Enforcement</h3>
+<p>Architecture as Code defines the system's structure in a machine-readable format that can be validated, tested, and automated. Its primary goal is to ensure that the actual implementation matches the intended design and that architectural constraints are enforced programmatically. Architecture as Code answers questions such as:</p>
+<ul>
+<li>What components make up this system?</li>
+<li>How do services communicate with each other?</li>
+<li>Are all data flows compliant with security policies?</li>
+<li>Does the current infrastructure match the approved architecture?</li>
+</ul>
+<p>Architecture as Code emphasises precision, executability, and verification. It targets both humans and machines, focusing on models, schemas, and definitions that can be processed by tools to generate diagrams, validate compliance, and drive infrastructure provisioning. The success of Architecture as Code is measured by how well it prevents architectural drift, enables automation, and ensures consistency between design and implementation.</p>
+<h2 id="tooling-paradigms-modelling-tools-vs-diagram-tools">Tooling Paradigms: Modelling Tools vs Diagram Tools</h2>
+<p>The distinction between Documentation as Code and Architecture as Code becomes particularly clear when examining the tools each discipline employs.</p>
+<h3 id="modelling-tools-calm-and-structurizr">Modelling Tools: CALM and Structurizr</h3>
+<p><strong>CALM (Common Architecture Language Model)</strong> and <strong>Structurizr</strong> represent the modelling tool paradigm central to Architecture as Code. These tools enable architects to define system structures in standardised, machine-readable formats.</p>
+<h4 id="calm-standardised-architecture-language">CALM: Standardised Architecture Language</h4>
+<p>CALM is an open-source specification developed by the Architecture as Code community under FINOS. It provides a standardised, machine-readable format for defining software architectures through three primary components:</p>
+<ul>
+<li><strong>Nodes</strong>: Individual elements such as services, databases, networks, and people</li>
+<li><strong>Relationships</strong>: Connections, data flows, and dependencies between nodes</li>
+<li><strong>Metadata</strong>: Compliance tags, operational data, and custom attributes</li>
+</ul>
+<p>CALM's JSON-based schema makes it compatible with existing tools and enables integration into CI/CD workflows. Architecture defined in CALM can be:</p>
+<ul>
+<li><strong>Validated automatically</strong>: Compliance checks run against the model to verify policy conformance</li>
+<li><strong>Visualised dynamically</strong>: Diagrams are generated from the model, ensuring they always reflect the current architecture</li>
+<li><strong>Traced historically</strong>: Changes to the architecture are version-controlled alongside code, providing a complete audit trail</li>
+</ul>
+<p>Example CALM definition:</p>
+<pre><code class="language-json">{
+  &quot;nodes&quot;: [
+    {
+      &quot;unique-id&quot;: &quot;payment-service&quot;,
+      &quot;node-type&quot;: &quot;service&quot;,
+      &quot;name&quot;: &quot;Payment Service&quot;,
+      &quot;description&quot;: &quot;Processes payment transactions&quot;
+    },
+    {
+      &quot;unique-id&quot;: &quot;payment-db&quot;,
+      &quot;node-type&quot;: &quot;database&quot;,
+      &quot;name&quot;: &quot;Payment Database&quot;,
+      &quot;description&quot;: &quot;Stores payment records&quot;
+    }
+  ],
+  &quot;relationships&quot;: [
+    {
+      &quot;unique-id&quot;: &quot;payment-service-db-connection&quot;,
+      &quot;relationship-type&quot;: &quot;connects&quot;,
+      &quot;parties&quot;: [&quot;payment-service&quot;, &quot;payment-db&quot;],
+      &quot;protocol&quot;: &quot;PostgreSQL&quot;,
+      &quot;description&quot;: &quot;Payment service connects to database&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="structurizr-c4-model-implementation">Structurizr: C4 Model Implementation</h4>
+<p>Structurizr provides a domain-specific language (DSL) for creating C4 models—Context, Container, Component, and Code diagrams—that describe system architecture at multiple levels of abstraction. Unlike static diagramming tools, Structurizr models are code-based definitions from which diagrams are generated automatically.</p>
+<p>Example Structurizr DSL:</p>
+<pre><code>workspace {
+    model {
+        user = person &quot;Customer&quot;
+        paymentSystem = softwareSystem &quot;Payment System&quot; {
+            api = container &quot;API&quot; &quot;REST API&quot;
+            database = container &quot;Database&quot; &quot;PostgreSQL&quot;
+        }
+
+        user -&gt; api &quot;Makes payments&quot;
+        api -&gt; database &quot;Reads/writes&quot;
+    }
+
+    views {
+        systemContext paymentSystem {
+            include *
+            autolayout
+        }
+    }
+}
+</code></pre>
+<p>The key advantage of modelling tools like CALM and Structurizr is that the <strong>model is the source of truth</strong>. Diagrams, documentation, and compliance reports are all derived from the same underlying model, ensuring consistency and enabling automated validation.</p>
+<h3 id="diagram-tools-mermaid-and-plantuml">Diagram Tools: Mermaid and PlantUML</h3>
+<p><strong>Mermaid</strong> and <strong>PlantUML</strong> represent the diagram tool paradigm often used in Documentation as Code. These tools enable the creation of diagrams through textual syntax, making diagrams version-controllable and reviewable through pull requests.</p>
+<h4 id="mermaid-lightweight-diagram-as-code">Mermaid: Lightweight Diagram as Code</h4>
+<p>Mermaid is a JavaScript-based diagramming tool that uses simple text syntax to create various diagram types. It is widely supported in documentation platforms, including GitHub, GitLab, and many static site generators.</p>
+<p>Example Mermaid diagram:</p>
+<p><img alt="Mermaid example highlighting the flow between a customer, payment API, database, and queue" src="../images/diagram_22_mermaid_example.png" /></p>
+<p><em>Figure 22.2 shows a simple customer-to-payment flow using the Mermaid syntax. Both the rendered PNG and the Mermaid source file are kept under version control in this repository.</em></p>
+<p>Mermaid excels at quickly creating visual explanations within documentation. Its lightweight syntax makes it accessible to non-technical contributors, and its widespread integration means diagrams can be embedded directly in Markdown files without external tools.</p>
+<h4 id="plantuml-comprehensive-uml-diagramming">PlantUML: Comprehensive UML Diagramming</h4>
+<p>PlantUML provides extensive support for UML diagrams and other technical diagrams. It uses a text-based syntax to define diagrams that are then rendered into images.</p>
+<p>Example PlantUML sequence diagram:</p>
+<pre><code class="language-plantuml">@startuml
+Customer -&gt; PaymentAPI: Submit payment
+PaymentAPI -&gt; Database: Store transaction
+PaymentAPI -&gt; Queue: Publish event
+PaymentAPI -&gt; Customer: Confirmation
+@enduml
+</code></pre>
+<p>PlantUML is particularly strong for detailed technical diagrams such as sequence diagrams, class diagrams, and deployment diagrams. Its comprehensive UML support makes it suitable for complex technical documentation.</p>
+<h4 id="limitations-of-diagram-tools-for-architecture-as-code">Limitations of Diagram Tools for Architecture as Code</h4>
+<p>While diagram tools are excellent for Documentation as Code, they have significant limitations when used for Architecture as Code:</p>
+<ol>
+<li>
+<p><strong>Diagrams as the source of truth</strong>: The diagram itself is the primary artefact. There is no underlying model that can be queried, validated, or used to drive automation.</p>
+</li>
+<li>
+<p><strong>Limited metadata</strong>: Diagram tools typically capture only visual relationships. They cannot easily express compliance requirements, operational constraints, or complex metadata that architectural models require.</p>
+</li>
+<li>
+<p><strong>No automated validation</strong>: Because diagrams lack the structured metadata of architectural models, they cannot be validated against policies or used to enforce architectural constraints automatically.</p>
+</li>
+<li>
+<p><strong>Manual synchronisation</strong>: When using diagram tools, keeping diagrams synchronised with actual implementation requires manual effort. There is no automatic bidirectional synchronisation between the diagram and the running system.</p>
+</li>
+</ol>
+<p>This book uses Mermaid for creating illustrative diagrams because its primary purpose is <strong>documentation</strong>—communicating concepts to readers. The diagrams are not intended to be executable architectural models but rather visual aids that support the narrative. Figure 22.3 summarises how documentation insights and architectural automation stay aligned through reciprocal feedback loops.</p>
+<p><img alt="Feedback loop between Documentation as Code and Architecture as Code workflows" src="images/diagram_22_tool_alignment.png" /></p>
+<p><em>Figure 22.3 shows how Documentation as Code outputs and Architecture as Code automation reinforce one another through shared feedback loops. The Mermaid source is maintained in <code>docs/images/diagram_22_tool_alignment.mmd</code> to keep the definition version-controlled alongside the manuscript.</em></p>
+<h2 id="key-differences-a-comparative-framework">Key Differences: A Comparative Framework</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Documentation as Code</th>
+<th>Architecture as Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Purpose</strong></td>
+<td>Communicate knowledge and explain systems</td>
+<td>Define structure and enforce constraints</td>
+</tr>
+<tr>
+<td><strong>Target Audience</strong></td>
+<td>Primarily humans (developers, operators, stakeholders)</td>
+<td>Both humans and machines (tools, validators, generators)</td>
+</tr>
+<tr>
+<td><strong>Artefact Type</strong></td>
+<td>Narratives, guides, tutorials, reference material</td>
+<td>Models, schemas, definitions, constraints</td>
+</tr>
+<tr>
+<td><strong>Source of Truth</strong></td>
+<td>Documentation files (Markdown, reStructuredText)</td>
+<td>Architectural models (CALM, Structurizr DSL)</td>
+</tr>
+<tr>
+<td><strong>Tool Examples</strong></td>
+<td>MkDocs, GitBook, Sphinx, Jekyll</td>
+<td>CALM, Structurizr, Terraform modules, OPA policies</td>
+</tr>
+<tr>
+<td><strong>Diagram Tools</strong></td>
+<td>Mermaid, PlantUML (for illustration)</td>
+<td>CALM visualisers, Structurizr (generated from model)</td>
+</tr>
+<tr>
+<td><strong>Validation Focus</strong></td>
+<td>Link checking, spelling, grammar, consistency</td>
+<td>Compliance verification, policy enforcement, drift detection</td>
+</tr>
+<tr>
+<td><strong>Automation Outputs</strong></td>
+<td>Published documentation sites, PDFs, guides</td>
+<td>Infrastructure provisioning, compliance reports, architecture diagrams</td>
+</tr>
+<tr>
+<td><strong>Update Frequency</strong></td>
+<td>When knowledge changes or gaps are identified</td>
+<td>When architectural decisions change or systems evolve</td>
+</tr>
+<tr>
+<td><strong>Success Metrics</strong></td>
+<td>Reduced onboarding time, fewer support questions, current information</td>
+<td>Prevented architectural drift, automated compliance, consistency</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-relationship-between-documentation-as-code-and-architecture-as-code">The Relationship Between Documentation as Code and Architecture as Code</h2>
+<p>While distinct, Documentation as Code and Architecture as Code are complementary disciplines that reinforce each other:</p>
+<h3 id="architecture-as-code-feeds-documentation-as-code">Architecture as Code Feeds Documentation as Code</h3>
+<p>Architectural models serve as a rich source of content for documentation. When architecture is defined in code, documentation can be generated automatically:</p>
+<ul>
+<li><strong>Automatically generated diagrams</strong>: C4 diagrams, dependency graphs, and data flow diagrams can be produced from architectural models and embedded in documentation.</li>
+<li><strong>Component catalogues</strong>: Lists of services, databases, and infrastructure components can be extracted from models and published as reference documentation.</li>
+<li><strong>Compliance statements</strong>: Policy validation results from Architecture as Code can be published in documentation to demonstrate adherence to standards.</li>
+</ul>
+<p>This approach ensures that architectural documentation stays synchronised with the actual architecture, reducing the risk of outdated or incorrect information.</p>
+<h3 id="documentation-as-code-explains-architecture-as-code">Documentation as Code Explains Architecture as Code</h3>
+<p>Documentation provides the narrative context that architectural models alone cannot convey:</p>
+<p>The repository's <a href="../documentation_workflow/"><code>docs/documentation_workflow.md</code></a> guide
+turns that narrative responsibility into a repeatable practice. It translates the
+Git-based review discipline into concrete steps so that every ADR, CALM schema
+update, or Structurizr change links back to a documented pull request. Reviewers can
+trace how architectural automation triggered the Content Validation pipeline, and
+writers can point to the same workflow when explaining system behaviour.</p>
+<ul>
+<li><strong>Decision rationale</strong>: Architecture Decision Records (ADRs) explain why certain architectural choices were made, providing context that models do not capture.</li>
+<li><strong>Usage guides</strong>: Documentation explains how to work with the architecture—how to deploy services, how to add new components, how to troubleshoot issues.</li>
+<li><strong>Conceptual overviews</strong>: High-level explanations help stakeholders understand the system's purpose and design philosophy, complementing the precise technical details in architectural models.</li>
+</ul>
+<p>This narrative layer makes architectural models accessible to broader audiences and facilitates knowledge transfer across teams.</p>
+<h2 id="practical-recommendations">Practical Recommendations</h2>
+<h3 id="when-to-use-documentation-as-code">When to Use Documentation as Code</h3>
+<p>Use Documentation as Code when the goal is to:</p>
+<ul>
+<li><strong>Explain how to use systems</strong>: User guides, API documentation, deployment procedures</li>
+<li><strong>Capture decision context</strong>: Architecture Decision Records, design rationale, trade-off analysis</li>
+<li><strong>Support onboarding</strong>: Tutorials, getting-started guides, conceptual overviews</li>
+<li><strong>Maintain operational knowledge</strong>: Runbooks, troubleshooting guides, incident response procedures</li>
+</ul>
+<p><strong>Recommended tools</strong>: MkDocs, Docusaurus, GitBook, Sphinx, Jekyll with Mermaid or PlantUML for illustrative diagrams.</p>
+<h3 id="when-to-use-architecture-as-code">When to Use Architecture as Code</h3>
+<p>Use Architecture as Code when the goal is to:</p>
+<ul>
+<li><strong>Define system structure</strong>: Components, services, infrastructure, and their relationships</li>
+<li><strong>Enforce architectural constraints</strong>: Security policies, compliance rules, design principles</li>
+<li><strong>Prevent architectural drift</strong>: Automated validation of actual implementation against intended design</li>
+<li><strong>Drive infrastructure automation</strong>: Generate infrastructure definitions, deployment configurations, and compliance reports</li>
+</ul>
+<p><strong>Recommended tools</strong>: CALM for standardised architectural models, Structurizr for C4 models, Terraform/CloudFormation modules for infrastructure patterns, Open Policy Agent for policy enforcement.</p>
+<h3 id="integrating-both-disciplines">Integrating Both Disciplines</h3>
+<p>Organisations benefit most when they integrate Documentation as Code and Architecture as Code into a cohesive ecosystem:</p>
+<ol>
+<li>
+<p><strong>Store both in version control</strong>: Keep architectural models and documentation in the same repository to facilitate cross-referencing and coordinated updates.</p>
+</li>
+<li>
+<p><strong>Automate diagram generation</strong>: Use architectural models to generate diagrams that are embedded in documentation, ensuring visual representations always match the model.</p>
+</li>
+<li>
+<p><strong>Link documentation to models</strong>: Reference specific architectural components in documentation, creating traceability between narrative explanations and formal definitions.</p>
+</li>
+<li>
+<p><strong>Establish review processes</strong>: Use pull requests to review both documentation updates and architectural changes, ensuring quality and consistency across both disciplines.</p>
+</li>
+<li>
+<p><strong>Measure both outcomes</strong>: Track documentation quality (readability, accuracy, usage) and architectural integrity (compliance, drift, consistency) as distinct but related metrics.</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Documentation as Code and Architecture as Code are complementary disciplines that serve different but equally important purposes. Documentation as Code focuses on communicating knowledge to human audiences, using tools like Mermaid and PlantUML to create illustrative diagrams embedded in narrative content. Architecture as Code focuses on defining and enforcing system structure, using modelling tools like CALM and Structurizr to create executable models that drive automation and validation.</p>
+<p>Understanding the distinction between these disciplines enables organisations to choose the right tools for the right purposes. Diagram tools excel at creating visual explanations within documentation but lack the structured metadata and validation capabilities required for architectural enforcement. Modelling tools provide the precision and executability needed for Architecture as Code but require more investment in tooling and expertise.</p>
+<p>By integrating both disciplines—using Architecture as Code to define the system and Documentation as Code to explain it—organisations create a comprehensive knowledge ecosystem where automated validation ensures consistency and narrative context enables understanding. The result is a system where architectural integrity is maintained programmatically while human knowledge is preserved and communicated effectively.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>FINOS. "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. <a href="https://calm.finos.org/">https://calm.finos.org/</a></li>
+<li>Brown, Simon. "The C4 Model for Visualising Software Architecture." C4 Model Documentation, 2024. <a href="https://c4model.com/">https://c4model.com/</a></li>
+<li>Structurizr. "Structurizr DSL Language Reference." Structurizr Documentation, 2024. <a href="https://github.com/structurizr/dsl">https://github.com/structurizr/dsl</a></li>
+<li>Mermaid. "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. <a href="https://mermaid.js.org/">https://mermaid.js.org/</a></li>
+<li>PlantUML. "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. <a href="https://plantuml.com/">https://plantuml.com/</a></li>
+<li>Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.</li>
+<li>Richardson, Chris. "Microservices Patterns: With Examples in Java." Manning Publications, 2018.</li>
+<li>Ford, Neal, et al. "Building Evolutionary Architectures." O'Reilly Media, 2017.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../part_f_practices/" class="btn btn-neutral float-left" title="index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../23_soft_as_code_interplay/" class="btn btn-neutral float-right" title="Interplay Between Soft-As-Code Disciplines">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../part_f_practices/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../23_soft_as_code_interplay/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

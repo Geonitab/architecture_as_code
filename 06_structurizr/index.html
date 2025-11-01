@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/06_structurizr/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Structurizr: Architecture Modelling as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Structurizr: Architecture Modelling as Code";
+        var mkdocs_page_input_path = "06_structurizr.md";
+        var mkdocs_page_url = "/06_structurizr/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Structurizr: Architecture Modelling as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-c4-model-foundation">The C4 Model Foundation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#four-levels-of-abstraction">Four Levels of Abstraction</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#why-c4-works-with-architecture-as-code">Why C4 Works with Architecture as Code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#preventing-diagram-decay-with-automation">Preventing diagram decay with automation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#structurizr-dsl-core-concepts">Structurizr DSL: Core Concepts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basic-workspace-structure">Basic Workspace Structure</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defining-model-elements">Defining Model Elements</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#people-and-software-systems">People and Software Systems</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#containers">Containers</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#components">Components</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-views">Creating Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#styling-and-themes">Styling and Themes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#workspace-configuration-and-management">Workspace Configuration and Management</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#workspace-types">Workspace Types</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-structurizr-lite-for-development">Using Structurizr Lite for Development</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file-organisation">File Organisation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#multi-file-workspaces">Multi-File Workspaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#governance-patterns-for-enterprise-workspaces">Governance Patterns for Enterprise Workspaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#automated-layout-templates-quality-gates-and-versioning">Automated Layout Templates, Quality Gates, and Versioning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#team-enablement-and-adoption-playbook">Team Enablement and Adoption Playbook</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reference-workspace-for-architecture-teams">Reference Workspace for Architecture Teams</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#repository-artefacts">Repository artefacts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exploring-the-reference-workspace">Exploring the reference workspace</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contribution-workflow-for-diagram-updates">Contribution workflow for diagram updates</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integration-with-cicd-pipelines">Integration with CI/CD Pipelines</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#github-actions-example">GitHub Actions Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#gitlab-ci-example">GitLab CI Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#validation-in-pull-requests">Validation in Pull Requests</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-implementation-patterns">Practical Implementation Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pattern-1-microservices-architecture">Pattern 1: Microservices Architecture</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pattern-2-event-driven-architecture">Pattern 2: Event-Driven Architecture</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pattern-3-multi-tenant-saas">Pattern 3: Multi-Tenant SaaS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#advanced-features">Advanced Features</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#filtered-views">Filtered Views</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#model-perspectives">Model Perspectives</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation-sections">Documentation Sections</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#architecture-decision-records-adr-integration">Architecture Decision Records (ADR) Integration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-single-source-of-truth">1. Single Source of Truth</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-automate-diagram-generation">2. Automate Diagram Generation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-use-meaningful-identifiers">3. Use Meaningful Identifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-tag-strategically">4. Tag Strategically</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-keep-views-focused">5. Keep Views Focused</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-document-relationships">6. Document Relationships</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7-use-implied-relationships">7. Use Implied Relationships</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#8-version-control-everything">8. Version Control Everything</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#9-review-architecture-changes-like-code">9. Review Architecture Changes Like Code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#10-keep-models-synchronized">10. Keep Models Synchronized</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comparison-with-other-tools">Comparison with Other Tools</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#structurizr-vs-traditional-diagramming-tools">Structurizr vs. Traditional Diagramming Tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#structurizr-vs-plantuml">Structurizr vs. PlantUML</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#structurizr-vs-mermaid">Structurizr vs. Mermaid</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recommendation-matrix">Recommendation Matrix</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#common-challenges-and-solutions">Common Challenges and Solutions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#challenge-1-layout-control">Challenge 1: Layout Control</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#challenge-2-large-models-become-complex">Challenge 2: Large Models Become Complex</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#challenge-3-keeping-model-synchronized-with-reality">Challenge 3: Keeping Model Synchronized with Reality</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#challenge-4-team-adoption">Challenge 4: Team Adoption</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#challenge-5-diagram-aesthetics">Challenge 5: Diagram Aesthetics</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#real-world-example-complete-e-commerce-platform">Real-World Example: Complete E-Commerce Platform</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#integration-with-architecture-decision-records">Integration with Architecture Decision Records</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part B – Architecture Platform</li>
+      <li class="breadcrumb-item active">Structurizr: Architecture Modelling as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/06_structurizr.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="structurizr-architecture-modeling-as-code">Structurizr: Architecture Modeling as Code</h1>
+<p><img alt="Structurizr Overview" src="../images/diagram_06_structurizr_overview.png" /></p>
+<p><em>Structurizr enables architects to express system architecture through code using the C4 model, creating maintainable, version-controlled architecture diagrams that evolve alongside the systems they describe.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Structurizr is a collection of tooling that enables software architecture to be defined as code using the C4 model (Context, Containers, Components, and Code). Created by Simon Brown, Structurizr addresses the fundamental challenge of keeping architecture documentation synchronized with reality by treating diagrams and models as artifacts generated from a single source of truth.</p>
+<p>In the Architecture as Code ecosystem, Structurizr serves as a practical implementation tool that allows teams to:</p>
+<ul>
+<li>Define architecture models programmatically using a domain-specific language (DSL)</li>
+<li>Generate multiple diagram views from a single model</li>
+<li>Version control architecture definitions alongside application code</li>
+<li>Automate architecture documentation in CI/CD pipelines</li>
+<li>Maintain consistency across different architectural views</li>
+</ul>
+<p>The open-source Architecture-as-Code (AaC) project offers a complementary example: its maintainers describe the toolkit as an open-source platform for modelling architecture definitions in YAML and automating validation and generation steps, with every capability delivered through discoverable plugins so teams can extend the CLI without modifying the core distribution (AaC Open Source Project). The plugin model demonstrates how DSL-driven approaches like Structurizr stay adaptable—domain teams can add generators, schema validators, or documentation exporters in the same fashion, keeping the architecture source of truth central whilst tailoring outputs to their needs.</p>
+<p>This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artifact.</p>
+<h2 id="the-c4-model-foundation">The C4 Model Foundation</h2>
+<p>Before diving into Structurizr itself, understanding the C4 model is essential as it forms the conceptual foundation for all Structurizr work.</p>
+<h3 id="four-levels-of-abstraction">Four Levels of Abstraction</h3>
+<p>The C4 model provides a hierarchical approach to software architecture diagrams, organised across four levels:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Purpose</th>
+<th>Audience</th>
+<th>Abstraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>System Context</strong></td>
+<td>Illustrates how the software system in scope fits into its environment, highlighting users and neighbouring systems</td>
+<td>Technical and non-technical stakeholders</td>
+<td>People and software systems</td>
+</tr>
+<tr>
+<td><strong>Container</strong></td>
+<td>Zooms into the software system to show the high-level technology building blocks and how they collaborate</td>
+<td>Architects, developers, and operations teams</td>
+<td>Containers, data stores, and their responsibilities</td>
+</tr>
+<tr>
+<td><strong>Component</strong></td>
+<td>Decomposes a container to explain the components that fulfil its responsibilities and how they interact</td>
+<td>Architects and developers</td>
+<td>Components within a container</td>
+</tr>
+<tr>
+<td><strong>Code</strong></td>
+<td>Provides an optional view of how a component is implemented in code, such as classes, interfaces, or functions</td>
+<td>Developers</td>
+<td>Source code structures</td>
+</tr>
+</tbody>
+</table>
+<p>Brown's C4 Model guidance stresses that each successive level narrows the audience and scope so stakeholders can reason about the system using diagrams tailored to the detail they need, keeping the hierarchy consistent across teams.</p>
+<h3 id="why-c4-works-with-architecture-as-code">Why C4 Works with Architecture as Code</h3>
+<p>The C4 model aligns naturally with Architecture as Code principles because:</p>
+<ol>
+<li><strong>Hierarchical decomposition</strong> - Different stakeholders can view the architecture at appropriate levels of detail</li>
+<li><strong>Technology agnostic</strong> - The model works regardless of programming languages or platforms</li>
+<li><strong>Lightweight</strong> - Simple notation reduces cognitive overhead</li>
+<li><strong>Composable</strong> - Views can be generated programmatically from a single model</li>
+</ol>
+<h3 id="preventing-diagram-decay-with-automation">Preventing diagram decay with automation</h3>
+<p>Brown (2022) describes "diagram decay" as the gradual divergence between architecture diagrams and the systems they represent when updates rely on manual effort. Structurizr's automated generation of C4 diagrams from a single, version-controlled model eliminates that manual gap: every change to the model regenerates the diagrams for the appropriate audience, whether leadership needs the System Context view or developers need Component detail. Embedding Structurizr rendering in CI pipelines, alongside Architecture as Code validation, ensures diagrams are rebuilt with each merge so teams catch drift early rather than allowing stale visuals to persist.</p>
+<h2 id="structurizr-dsl-core-concepts">Structurizr DSL: Core Concepts</h2>
+<p>The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models. Unlike graphical tools, the DSL approach enables version control, code review, and automation.</p>
+<h3 id="basic-workspace-structure">Basic Workspace Structure</h3>
+<p>Every Structurizr model begins with a workspace definition:</p>
+<pre><code class="language-structurizr">workspace &quot;Architecture as Code Example&quot; &quot;Example architecture for demonstrating Structurizr&quot; {
+
+    model {
+        # Define people, software systems, containers, and components here
+    }
+
+    views {
+        # Define which diagrams to generate from the model
+    }
+
+    configuration {
+        # Optional styling and rendering settings
+    }
+}
+</code></pre>
+<h3 id="defining-model-elements">Defining Model Elements</h3>
+<h4 id="people-and-software-systems">People and Software Systems</h4>
+<pre><code class="language-structurizr">workspace &quot;E-Commerce Platform&quot; {
+
+    model {
+        # People (actors)
+        customer = person &quot;Customer&quot; &quot;A person who purchases products from the platform&quot;
+        admin = person &quot;Administrator&quot; &quot;Internal staff managing the platform&quot;
+
+        # Software Systems
+        ecommerce = softwareSystem &quot;E-Commerce Platform&quot; &quot;Enables customers to browse and purchase products&quot; {
+            # This is the system we're building
+        }
+
+        paymentGateway = softwareSystem &quot;Payment Gateway&quot; &quot;Third-party payment processing&quot; {
+            tags &quot;External System&quot;
+        }
+
+        # Relationships
+        customer -&gt; ecommerce &quot;Browses products, places orders&quot;
+        ecommerce -&gt; paymentGateway &quot;Processes payments using&quot;
+        admin -&gt; ecommerce &quot;Manages products and orders using&quot;
+    }
+
+    views {
+        systemContext ecommerce &quot;SystemContext&quot; {
+            include *
+            autoLayout
+        }
+    }
+}
+</code></pre>
+<p>This simple example creates a System Context diagram showing how users and external systems interact with the e-commerce platform.</p>
+<h4 id="containers">Containers</h4>
+<p>Containers represent deployable units like web applications, mobile apps, databases, or microservices:</p>
+<pre><code class="language-structurizr">ecommerce = softwareSystem &quot;E-Commerce Platform&quot; {
+
+    webApp = container &quot;Web Application&quot; &quot;Delivers content to customer browsers&quot; &quot;React&quot; {
+        tags &quot;Web&quot;
+    }
+
+    apiGateway = container &quot;API Gateway&quot; &quot;Provides API to web and mobile clients&quot; &quot;Node.js, Express&quot; {
+        tags &quot;API&quot;
+    }
+
+    orderService = container &quot;Order Service&quot; &quot;Manages order lifecycle&quot; &quot;Java, Spring Boot&quot; {
+        tags &quot;Microservice&quot;
+    }
+
+    productService = container &quot;Product Service&quot; &quot;Manages product catalog&quot; &quot;Python, FastAPI&quot; {
+        tags &quot;Microservice&quot;
+    }
+
+    database = container &quot;Database&quot; &quot;Stores product and order data&quot; &quot;PostgreSQL&quot; {
+        tags &quot;Database&quot;
+    }
+
+    # Container relationships
+    webApp -&gt; apiGateway &quot;Makes API calls to&quot; &quot;HTTPS/JSON&quot;
+    apiGateway -&gt; orderService &quot;Routes requests to&quot; &quot;gRPC&quot;
+    apiGateway -&gt; productService &quot;Routes requests to&quot; &quot;REST/JSON&quot;
+    orderService -&gt; database &quot;Reads from and writes to&quot; &quot;JDBC&quot;
+    productService -&gt; database &quot;Reads from and writes to&quot; &quot;SQLAlchemy&quot;
+}
+</code></pre>
+<h4 id="components">Components</h4>
+<p>Components represent logical building blocks within containers:</p>
+<pre><code class="language-structurizr">orderService = container &quot;Order Service&quot; {
+
+    orderController = component &quot;Order Controller&quot; &quot;Handles HTTP requests for orders&quot; &quot;Spring MVC Controller&quot;
+    orderRepository = component &quot;Order Repository&quot; &quot;Provides access to order data&quot; &quot;Spring Data JPA&quot;
+    paymentClient = component &quot;Payment Client&quot; &quot;Integrates with payment gateway&quot; &quot;REST Client&quot;
+    emailService = component &quot;Email Service&quot; &quot;Sends order confirmation emails&quot; &quot;Spring Mail&quot;
+
+    # Component relationships
+    orderController -&gt; orderRepository &quot;Uses&quot;
+    orderController -&gt; paymentClient &quot;Uses&quot;
+    orderController -&gt; emailService &quot;Uses&quot;
+    orderRepository -&gt; database &quot;Reads/writes data&quot; &quot;JDBC&quot;
+}
+</code></pre>
+<h3 id="creating-views">Creating Views</h3>
+<p>Views define which diagrams Structurizr should generate from the model:</p>
+<pre><code class="language-structurizr">views {
+    # System Context diagram
+    systemContext ecommerce &quot;SystemContext&quot; {
+        include *
+        autoLayout lr
+    }
+
+    # Container diagram
+    container ecommerce &quot;Containers&quot; {
+        include *
+        autoLayout
+    }
+
+    # Component diagram for specific container
+    component orderService &quot;OrderServiceComponents&quot; {
+        include *
+        autoLayout
+    }
+
+    # Dynamic diagram showing interaction sequence
+    dynamic ecommerce &quot;OrderPlacement&quot; &quot;Order placement flow&quot; {
+        customer -&gt; webApp &quot;Places order&quot;
+        webApp -&gt; apiGateway &quot;POST /api/orders&quot;
+        apiGateway -&gt; orderService &quot;CreateOrder()&quot;
+        orderService -&gt; paymentGateway &quot;ProcessPayment()&quot;
+        orderService -&gt; database &quot;SaveOrder()&quot;
+        orderService -&gt; emailService &quot;SendConfirmation()&quot;
+        autoLayout
+    }
+
+    # Deployment diagram
+    deployment ecommerce &quot;Production&quot; &quot;DeploymentProduction&quot; {
+        deploymentNode &quot;Customer Device&quot; {
+            containerInstance webApp
+        }
+
+        deploymentNode &quot;AWS Cloud&quot; {
+            deploymentNode &quot;ECS Cluster&quot; {
+                containerInstance apiGateway
+                containerInstance orderService
+                containerInstance productService
+            }
+
+            deploymentNode &quot;RDS&quot; {
+                containerInstance database
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="styling-and-themes">Styling and Themes</h3>
+<p>Structurizr allows customisation of diagram appearance:</p>
+<pre><code class="language-structurizr">views {
+    styles {
+        element &quot;Person&quot; {
+            shape person
+            background #08427b
+            colour #ffffff
+        }
+
+        element &quot;Software System&quot; {
+            background #1168bd
+            colour #ffffff
+        }
+
+        element &quot;External System&quot; {
+            background #999999
+            colour #ffffff
+        }
+
+        element &quot;Container&quot; {
+            background #438dd5
+            colour #ffffff
+        }
+
+        element &quot;Component&quot; {
+            background #85bbf0
+            colour #000000
+        }
+
+        element &quot;Database&quot; {
+            shape cylinder
+        }
+
+        relationship &quot;Relationship&quot; {
+            routing orthogonal
+            thickness 2
+        }
+    }
+
+    themes https://static.structurizr.com/themes/default/theme.json
+}
+</code></pre>
+<h2 id="workspace-configuration-and-management">Workspace Configuration and Management</h2>
+<h3 id="workspace-types">Workspace Types</h3>
+<p>Structurizr supports different deployment models:</p>
+<ol>
+<li><strong>Structurizr Cloud</strong> - SaaS offering with hosted workspace</li>
+<li><strong>Structurizr On-Premises</strong> - Self-hosted installation</li>
+<li><strong>Structurizr Lite</strong> - Local viewer for DSL files (free, no server required)</li>
+</ol>
+<h3 id="using-structurizr-lite-for-development">Using Structurizr Lite for Development</h3>
+<p>Structurizr Lite is ideal for development and CI/CD integration:</p>
+<pre><code class="language-bash"># Run Structurizr Lite using Docker
+docker run -it --rm -p 8080:8080 \
+  -v $(pwd)/workspace:/usr/local/structurizr \
+  structurizr/lite
+</code></pre>
+<p>This launches a local web server where you can view diagrams generated from your DSL files.</p>
+<h3 id="file-organisation">File Organisation</h3>
+<p>Organise Structurizr files alongside your codebase:</p>
+<pre><code>project/
+├── docs/
+│   └── architecture/
+│       ├── workspace.dsl          # Main architecture definition
+│       ├── views/                 # Exported diagrams (PNG, SVG)
+│       └── README.md              # Architecture documentation
+├── src/                           # Application source code
+└── .github/
+    └── workflows/
+        └── architecture-docs.yml  # CI/CD for architecture
+</code></pre>
+<h3 id="multi-file-workspaces">Multi-File Workspaces</h3>
+<p>For large projects, split the model across multiple files:</p>
+<pre><code class="language-structurizr"># workspace.dsl
+workspace &quot;Large System&quot; {
+    !docs docs
+    !adrs adrs
+
+    model {
+        !include model/people.dsl
+        !include model/systems.dsl
+        !include model/containers.dsl
+    }
+
+    views {
+        !include views/system-context.dsl
+        !include views/containers.dsl
+        !include views/deployment.dsl
+
+        !include views/styles.dsl
+    }
+}
+</code></pre>
+<pre><code class="language-structurizr"># model/people.dsl
+customer = person &quot;Customer&quot;
+admin = person &quot;Administrator&quot;
+support = person &quot;Support Agent&quot;
+</code></pre>
+<pre><code class="language-structurizr"># model/systems.dsl
+mainSystem = softwareSystem &quot;Main System&quot; {
+    !include containers/web-app.dsl
+    !include containers/api-gateway.dsl
+    !include containers/services.dsl
+}
+
+externalPayment = softwareSystem &quot;Payment Provider&quot; {
+    tags &quot;External&quot;
+}
+</code></pre>
+<h3 id="governance-patterns-for-enterprise-workspaces">Governance Patterns for Enterprise Workspaces</h3>
+<p>Sustaining expansive workspaces demands routine guardrails so that dozens of contributors can evolve diagrams without introduci
+ng drift. The following sequence keeps Structurizr DSL repositories predictable and reviewable:</p>
+<ol>
+<li><strong>Define a domain folder structure</strong> – Create <code>model/domains/&lt;domain&gt;.dsl</code> files for each major capability (for example, <code>pa
+yments.dsl</code>, <code>catalogue.dsl</code>, <code>governance.dsl</code>). These files declare people, software systems, and containers that belong to th
+e same functional area.</li>
+<li><strong>Aggregate with intent-revealing include files</strong> – Introduce thin aggregators such as <code>model/core.dsl</code> or <code>model/external.d
+sl</code> that simply list <code>!include</code> statements. The main workspace file then references the aggregators, keeping the top-level <code>mod
+el {}</code> block short and navigable, as demonstrated in the <a href="https://github.com/structurizr/dsl">Structurizr DSL Language Reference</a>.</li>
+<li><strong>Enforce naming conventions centrally</strong> – Store canonical tags and naming prefixes in <code>configuration { properties { ... } }</code> a
+nd shared include files. For instance, prefix container identifiers with their bounded context (e.g. <code>payments_api</code>) and suffix view k
+eys with the chapter number (<code>PaymentsContainers06</code>). Reviewers can spot deviations instantly because every file uses the same
+include.</li>
+<li><strong>Document relationship expectations</strong> – Maintain a <code>docs/STRUCTURIZR_GUIDELINES.md</code> (or similar) that states how to phrase rel
+ationship descriptions (“uses”, “publishes events to”, “reads from”). Link the document from pull request templates so contribu
+tors confirm adherence before review.</li>
+<li><strong>Leverage Structurizr Lite for validation</strong> – Encourage contributors to load the workspace in <a href="https://str
+ucturizr.com/help/lite">Structurizr Lite</a> during development. Lite persists layout updates alongside the DSL, enabling contributors to visualise c
+onvention breaches before they reach code review.</li>
+</ol>
+<p>These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or s
+ervices when multiple programmes collaborate.</p>
+<h3 id="automated-layout-templates-quality-gates-and-versioning">Automated Layout Templates, Quality Gates, and Versioning</h3>
+<p>Automation protects diagram fidelity and keeps layout choices consistent as models expand. Combine DSL includes with Structuriz
+r CLI scripts to enforce standards:</p>
+<ul>
+<li><strong>Reusable layout templates</strong> – Extract shared layout instructions into dedicated files and include them in every view. For ex
+ample:</li>
+</ul>
+<p><code>structurizr
+  # views/layouts/standard-container-layout.dsl
+  autoLayout lr rankSeparation 450 columnSeparation 350
+  paperSize A3_Landscape</code></p>
+<p><code>structurizr
+  container ecommerce "Containers" {
+      include *
+      !include views/layouts/standard-container-layout.dsl
+  }</code></p>
+<p>Every view inherits the same orientation and spacing without relying on manual dragging in the editor.</p>
+<ul>
+<li><strong>Quality gates in CI/CD</strong> – Add a lightweight shell script to fail builds when conventions slip:</li>
+</ul>
+<p>```bash
+  #!/usr/bin/env bash
+  set -euo pipefail</p>
+<p>workspace="docs/architecture/workspace.dsl"
+  output_dir="build/structurizr"</p>
+<p>structurizr.sh validate -workspace "$workspace"
+  structurizr.sh export -workspace "$workspace" -format structurizr -output "$output_dir"</p>
+<p>jq -e 'all(.workspace.model.containers[]?.name; test("^[A-Z][A-Za-z]+(\u0020[A-Z][A-Za-z]+)* API$"))' \
+    "$output_dir/workspace.json"
+  ```</p>
+<p>The example checks that container names end with “API” and start with capitalised words; adapt the regular expression to your
+ organisation. Additional <code>jq</code> queries can assert that required tags or documentation URLs are present before the pipeline mark
+s the change as ready.</p>
+<ul>
+<li><strong>Diagram versioning</strong> – Commit exported Structurizr JSON alongside the DSL to preserve layout history. Because <code>structurizr.s
+h export</code> writes deterministic coordinates, <code>git diff</code> highlights when layout templates change or when an element moves. Tying
+ the JSON revision to release tags gives architecture reviewers a linear history of diagram evolution that complements the DSL b
+lend of automation and narrative.</li>
+</ul>
+<p>These automation techniques build upon the enablement practices described later in Chapter 24, letting platform engineers execu
+te Chapter 06 guidance through reproducible tooling.</p>
+<h3 id="team-enablement-and-adoption-playbook">Team Enablement and Adoption Playbook</h3>
+<p>Scaling Structurizr beyond a single maintainer requires deliberate enablement so that architecture automation becomes a shared capability rather than a heroic effort. Combine the following rhythms with the people-development patterns in Chapter 24 to spread ownership:</p>
+<ol>
+<li><strong>Foundational bootcamps</strong> – Run a recurring two-hour workshop that walks through the reference workspace, highlights the module structure described above, and demonstrates how Structurizr Lite and the CLI complement one another. Recording each session helps global teams revisit the material asynchronously.</li>
+<li><strong>Pair-modelling rotations</strong> – Assign monthly pairs that include one experienced maintainer and one new contributor. Each pair triages backlog items, applies naming policies, and raises any missing automation hooks. Rotations prevent tacit knowledge from concentrating in a single geography or department.</li>
+<li><strong>Checklists in pull request templates</strong> – Extend pull request templates with explicit Structurizr checks ("Ran <code>structurizr.sh validate</code>, updated layout template includes, attached before/after screenshots from Lite"). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.</li>
+<li><strong>Capability metrics</strong> – Track lead time for diagram updates, the number of contributors editing the workspace each quarter, and the percentage of views using the shared layout templates. Publish these metrics alongside the broader enablement dashboards introduced in Chapter 24 to spotlight where additional coaching is required.</li>
+<li><strong>Community of practice</strong> – Host a monthly forum where teams share lessons, propose adjustments to the naming conventions, and experiment with new Structurizr DSL features referenced in the official documentation. Capture agreed changes in the guidelines repository so the knowledge persists beyond the meeting.</li>
+</ol>
+<p>This cadence keeps Structurizr maintainers embedded within a wider community, reducing the risk of bottlenecks and reinforcing the book’s emphasis on collaborative architecture stewardship.</p>
+<h2 id="reference-workspace-for-architecture-teams">Reference Workspace for Architecture Teams</h2>
+<p>To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions descri
+bed throughout this chapter. You can find the canonical definition in <code>docs/examples/structurizr/aac_reference_workspace.dsl</code>, w
+ith supporting guidance in <code>docs/examples/structurizr/README.md</code>.</p>
+<h3 id="repository-artefacts">Repository artefacts</h3>
+<ul>
+<li><strong>Workspace DSL</strong> – Implements System Context, Container, Component, Dynamic, and Deployment views for the Architecture as Co
+de platform, providing a ready-made baseline for teams to copy or extend.</li>
+<li><strong>Styling conventions</strong> – Applies consistent British English tagging and a colour palette that emphasises governance, automat
+ion, and telemetry pathways referenced in the book.</li>
+<li><strong>Configuration metadata</strong> – Pins a minimum Structurizr CLI version so that exports remain reproducible across developer machi
+nes and the CI pipeline.</li>
+</ul>
+<h3 id="exploring-the-reference-workspace">Exploring the reference workspace</h3>
+<p>Follow these steps to render the workspace locally:</p>
+<ol>
+<li>Install the Structurizr CLI (version <code>2024.03.01</code> or later).</li>
+<li>From the repository root, run:
+   <code>bash
+   structurizr.sh export \
+     -workspace docs/examples/structurizr/aac_reference_workspace.dsl \
+     -format plantuml,mermaid,structurizr</code></li>
+<li>Open the exported diagrams or load the generated Structurizr Lite workspace to explore the interactive views.</li>
+</ol>
+<p>These commands align with the automation demonstrated earlier in this chapter, ensuring that developers, architects, and editor
+s can iterate confidently without bespoke tooling.</p>
+<h3 id="contribution-workflow-for-diagram-updates">Contribution workflow for diagram updates</h3>
+<p>A consistent contribution workflow prevents diagram drift and preserves traceability across programmes:</p>
+<ol>
+<li><strong>Create a feature branch</strong> – Prefix it with <code>structurizr/</code> to signal architecture-oriented work.</li>
+<li><strong>Amend the DSL</strong> – Update <code>aac_reference_workspace.dsl</code> or add modular <code>!include</code> files in the same directory. Each change s
+hould retain the C4 hierarchy and respect agreed tags.</li>
+<li><strong>Validate locally</strong> – Execute <code>structurizr.sh validate -workspace docs/examples/structurizr/aac_reference_workspace.dsl</code> fol
+lowed by the export command above. Address any reported warnings before requesting review.</li>
+<li><strong>Document intent</strong> – Capture the architectural rationale in the pull request description and, where relevant, reference rela
+ted Architecture Decision Records.</li>
+<li><strong>Run the book build</strong> – <code>python3 generate_book.py &amp;&amp; docs/build_book.sh</code> ensures that downstream artefacts (including PNG di
+agrams referenced in the manuscript) remain in sync.</li>
+<li><strong>Request dual review</strong> – Tag at least one platform engineer and one product architect so that automation and domain perspect
+ives both evaluate the change.</li>
+<li><strong>Check automation outcomes</strong> – Confirm that GitHub Actions architecture checks and the main book build succeed before mergin
+g.</li>
+</ol>
+<p>By following these steps, teams maintain a shared, version-controlled architecture narrative that evolves alongside the software
+delivery platform.</p>
+<h2 id="integration-with-cicd-pipelines">Integration with CI/CD Pipelines</h2>
+<p>Automating architecture documentation ensures diagrams stay synchronized with code changes.</p>
+<h3 id="github-actions-example">GitHub Actions Example</h3>
+<pre><code class="language-yaml">name: Architecture Documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/architecture/**'
+      - 'src/**'
+  pull_request:
+    paths:
+      - 'docs/architecture/**'
+
+jobs:
+  generate-diagrams:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Structurizr DSL
+        uses: docker://structurizr/cli:latest
+        with:
+          args: validate -w docs/architecture/workspace.dsl
+
+      - name: Export Diagrams
+        uses: docker://structurizr/cli:latest
+        with:
+          args: export -w docs/architecture/workspace.dsl -f plantuml -o docs/architecture/views
+
+      - name: Generate PNG from PlantUML
+        uses: docker://plantuml/plantuml:latest
+        with:
+          args: -tpng -o $(pwd)/docs/architecture/views docs/architecture/views/*.puml
+
+      - name: Commit Updated Diagrams
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name &quot;Architecture Bot&quot;
+          git config user.email &quot;architecture@example.com&quot;
+          git add docs/architecture/views/*.png
+          git diff --quiet &amp;&amp; git diff --staged --quiet || \
+            git commit -m &quot;Update architecture diagrams [skip ci]&quot;
+          git push
+</code></pre>
+<h3 id="gitlab-ci-example">GitLab CI Example</h3>
+<pre><code class="language-yaml">architecture-documentation:
+  image: structurizr/cli:latest
+  stage: documentation
+  script:
+    - structurizr validate -w docs/architecture/workspace.dsl
+    - structurizr export -w docs/architecture/workspace.dsl -f plantuml -o output/
+  artifacts:
+    paths:
+      - output/
+  only:
+    changes:
+      - docs/architecture/**
+      - src/**
+</code></pre>
+<h3 id="validation-in-pull-requests">Validation in Pull Requests</h3>
+<p>Prevent architecture drift by validating changes:</p>
+<pre><code class="language-yaml">name: Architecture Validation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/architecture/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate DSL Syntax
+        run: |
+          docker run --rm -v $(pwd):/workspace \
+            structurizr/cli validate -w /workspace/docs/architecture/workspace.dsl
+
+      - name: Check for Undocumented Components
+        run: |
+          # Custom script to verify all services have architecture representation
+          python scripts/validate-architecture-coverage.py
+
+      - name: Generate Diff Preview
+        run: |
+          # Generate diagrams from base and head branches for comparison
+          docker run --rm -v $(pwd):/workspace \
+            structurizr/cli export -w /workspace/docs/architecture/workspace.dsl \
+            -f png -o /workspace/preview/
+</code></pre>
+<h2 id="practical-implementation-patterns">Practical Implementation Patterns</h2>
+<h3 id="pattern-1-microservices-architecture">Pattern 1: Microservices Architecture</h3>
+<pre><code class="language-structurizr">workspace &quot;Microservices Platform&quot; {
+    model {
+        user = person &quot;User&quot;
+
+        platform = softwareSystem &quot;Microservices Platform&quot; {
+
+            gateway = container &quot;API Gateway&quot; &quot;Routes and authenticates requests&quot; &quot;Kong&quot; {
+                tags &quot;Infrastructure&quot;
+            }
+
+            group &quot;Core Services&quot; {
+                userService = container &quot;User Service&quot; &quot;Manages user accounts&quot; &quot;Node.js&quot;
+                authService = container &quot;Auth Service&quot; &quot;Handles authentication&quot; &quot;Node.js&quot;
+                notificationService = container &quot;Notification Service&quot; &quot;Sends notifications&quot; &quot;Python&quot;
+            }
+
+            group &quot;Business Services&quot; {
+                orderService = container &quot;Order Service&quot; &quot;Processes orders&quot; &quot;Java&quot;
+                inventoryService = container &quot;Inventory Service&quot; &quot;Manages inventory&quot; &quot;Go&quot;
+                paymentService = container &quot;Payment Service&quot; &quot;Processes payments&quot; &quot;Java&quot;
+            }
+
+            group &quot;Data Layer&quot; {
+                userDb = container &quot;User Database&quot; &quot;User data&quot; &quot;PostgreSQL&quot;
+                orderDb = container &quot;Order Database&quot; &quot;Order data&quot; &quot;PostgreSQL&quot;
+                inventoryDb = container &quot;Inventory Database&quot; &quot;Inventory data&quot; &quot;MongoDB&quot;
+            }
+
+            messageBus = container &quot;Message Bus&quot; &quot;Async communication&quot; &quot;RabbitMQ&quot; {
+                tags &quot;Infrastructure&quot;
+            }
+        }
+
+        # Relationships
+        user -&gt; gateway &quot;Makes requests&quot;
+        gateway -&gt; userService &quot;Routes /users/*&quot;
+        gateway -&gt; orderService &quot;Routes /orders/*&quot;
+        gateway -&gt; authService &quot;Validates tokens&quot;
+
+        userService -&gt; userDb &quot;Reads/writes&quot;
+        orderService -&gt; orderDb &quot;Reads/writes&quot;
+        inventoryService -&gt; inventoryDb &quot;Reads/writes&quot;
+
+        orderService -&gt; messageBus &quot;Publishes OrderCreated&quot;
+        inventoryService -&gt; messageBus &quot;Subscribes to OrderCreated&quot;
+        notificationService -&gt; messageBus &quot;Subscribes to events&quot;
+    }
+
+    views {
+        container platform &quot;MicroservicesContainer&quot; {
+            include *
+            autoLayout
+        }
+
+        dynamic platform &quot;OrderFlow&quot; {
+            user -&gt; gateway &quot;POST /orders&quot;
+            gateway -&gt; authService &quot;ValidateToken&quot;
+            gateway -&gt; orderService &quot;CreateOrder&quot;
+            orderService -&gt; orderDb &quot;SaveOrder&quot;
+            orderService -&gt; messageBus &quot;Publish OrderCreated&quot;
+            messageBus -&gt; inventoryService &quot;OrderCreated event&quot;
+            inventoryService -&gt; inventoryDb &quot;ReserveItems&quot;
+            messageBus -&gt; notificationService &quot;OrderCreated event&quot;
+            notificationService -&gt; user &quot;Send confirmation&quot;
+            autoLayout
+        }
+    }
+}
+</code></pre>
+<h3 id="pattern-2-event-driven-architecture">Pattern 2: Event-Driven Architecture</h3>
+<pre><code class="language-structurizr">workspace &quot;Event-Driven System&quot; {
+    model {
+        producer = softwareSystem &quot;Event Producer&quot; &quot;Generates domain events&quot;
+        eventStore = softwareSystem &quot;Event Store&quot; &quot;Stores event stream&quot; {
+            tags &quot;Database&quot;
+        }
+
+        consumer1 = softwareSystem &quot;Read Model Service&quot; &quot;Builds read models&quot;
+        consumer2 = softwareSystem &quot;Analytics Service&quot; &quot;Analyzes events&quot;
+        consumer3 = softwareSystem &quot;Notification Service&quot; &quot;Sends notifications&quot;
+
+        producer -&gt; eventStore &quot;Appends events to&quot;
+        eventStore -&gt; consumer1 &quot;Streams events to&quot;
+        eventStore -&gt; consumer2 &quot;Streams events to&quot;
+        eventStore -&gt; consumer3 &quot;Streams events to&quot;
+    }
+
+    views {
+        systemContext eventStore &quot;EventDrivenContext&quot; {
+            include *
+            autoLayout
+        }
+    }
+}
+</code></pre>
+<h3 id="pattern-3-multi-tenant-saas">Pattern 3: Multi-Tenant SaaS</h3>
+<pre><code class="language-structurizr">workspace &quot;Multi-Tenant SaaS&quot; {
+    model {
+        tenant1 = person &quot;Tenant 1 Users&quot;
+        tenant2 = person &quot;Tenant 2 Users&quot;
+
+        saas = softwareSystem &quot;SaaS Platform&quot; {
+            frontend = container &quot;Web App&quot; &quot;Customer interface&quot; &quot;React&quot;
+
+            api = container &quot;API Layer&quot; &quot;Multi-tenant API&quot; &quot;Node.js&quot; {
+                tenantMiddleware = component &quot;Tenant Middleware&quot; &quot;Identifies tenant from request&quot;
+                tenantResolver = component &quot;Tenant Resolver&quot; &quot;Resolves tenant configuration&quot;
+            }
+
+            # Separate schemas per tenant
+            tenant1Db = container &quot;Tenant 1 Database&quot; &quot;Isolated tenant data&quot; &quot;PostgreSQL&quot;
+            tenant2Db = container &quot;Tenant 2 Database&quot; &quot;Isolated tenant data&quot; &quot;PostgreSQL&quot;
+
+            sharedDb = container &quot;Shared Database&quot; &quot;Tenant configuration&quot; &quot;PostgreSQL&quot;
+        }
+
+        tenant1 -&gt; frontend &quot;Uses&quot;
+        tenant2 -&gt; frontend &quot;Uses&quot;
+        frontend -&gt; api &quot;API calls with tenant ID&quot;
+        api -&gt; sharedDb &quot;Reads tenant config&quot;
+        api -&gt; tenant1Db &quot;Reads/writes (Tenant 1)&quot;
+        api -&gt; tenant2Db &quot;Reads/writes (Tenant 2)&quot;
+    }
+
+    views {
+        container saas &quot;MultiTenantArchitecture&quot; {
+            include *
+            autoLayout
+        }
+
+        component api &quot;TenantIsolation&quot; {
+            include *
+            autoLayout
+        }
+    }
+}
+</code></pre>
+<h2 id="advanced-features">Advanced Features</h2>
+<h3 id="filtered-views">Filtered Views</h3>
+<p>Show different perspectives of the same model:</p>
+<pre><code class="language-structurizr">views {
+    # Show only external dependencies
+    container platform &quot;ExternalDependencies&quot; {
+        include platform
+        include -&gt;platform-&gt;
+        include platform-&gt;
+        exclude &quot;element.tag==Internal&quot;
+        autoLayout
+    }
+
+    # Security-focused view
+    container platform &quot;SecurityView&quot; {
+        include &quot;element.tag==Security&quot;
+        include &quot;element.type==Person&quot;
+        include -&gt;element.tag==Security-&gt;
+        autoLayout
+    }
+}
+</code></pre>
+<h3 id="model-perspectives">Model Perspectives</h3>
+<p>Add supplementary information without cluttering diagrams:</p>
+<pre><code class="language-structurizr">orderService = container &quot;Order Service&quot; {
+    perspectives {
+        &quot;Security&quot; &quot;Requires JWT authentication, RBAC for order access&quot;
+        &quot;Performance&quot; &quot;Target: 100ms p95 latency, 1000 req/s throughput&quot;
+        &quot;Cost&quot; &quot;~$500/month in AWS (2 ECS tasks + RDS instance)&quot;
+        &quot;Compliance&quot; &quot;Stores PII, requires GDPR compliance&quot;
+    }
+}
+</code></pre>
+<h3 id="documentation-sections">Documentation Sections</h3>
+<p>Embed markdown documentation within the workspace:</p>
+<pre><code class="language-structurizr">workspace {
+    !docs docs
+
+    model {
+        # ... model definition
+    }
+}
+</code></pre>
+<p>Then create <code>docs/</code> folder with markdown files:</p>
+<pre><code>docs/
+├── 01-overview.md
+├── 02-architecture-decisions.md
+├── 03-deployment.md
+└── 04-operations.md
+</code></pre>
+<h3 id="architecture-decision-records-adr-integration">Architecture Decision Records (ADR) Integration</h3>
+<pre><code class="language-structurizr">workspace {
+    !adrs adrs
+
+    model {
+        # Model elements can reference ADRs
+    }
+}
+</code></pre>
+<p>Structure:</p>
+<pre><code>adrs/
+├── 0001-use-microservices.md
+├── 0002-event-sourcing-for-orders.md
+└── 0003-postgresql-for-primary-storage.md
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-single-source-of-truth">1. Single Source of Truth</h3>
+<p>Store the DSL file in version control alongside code:</p>
+<pre><code>✅ Good:
+repository/
+├── src/
+├── docs/architecture/workspace.dsl
+└── README.md
+
+❌ Bad:
+- DSL in one repository, code in another
+- Diagrams manually created and stored as images
+</code></pre>
+<h3 id="2-automate-diagram-generation">2. Automate Diagram Generation</h3>
+<p>Never manually edit generated diagrams:</p>
+<pre><code class="language-yaml"># Automated
+on:
+  push:
+    paths: ['docs/architecture/**']
+jobs:
+  generate:
+    steps:
+      - run: structurizr export ...
+</code></pre>
+<h3 id="3-use-meaningful-identifiers">3. Use Meaningful Identifiers</h3>
+<pre><code class="language-structurizr"># Good - clear, readable identifiers
+userService = container &quot;User Service&quot;
+orderService = container &quot;Order Service&quot;
+
+# Bad - cryptic identifiers  
+us = container &quot;User Service&quot;
+os = container &quot;Order Service&quot;
+</code></pre>
+<h3 id="4-tag-strategically">4. Tag Strategically</h3>
+<p>Tags enable filtering and styling:</p>
+<pre><code class="language-structurizr">container &quot;API&quot; {
+    tags &quot;Backend&quot; &quot;REST API&quot; &quot;Critical Path&quot;
+}
+
+container &quot;Legacy System&quot; {
+    tags &quot;Legacy&quot; &quot;Deprecated&quot; &quot;Scheduled for Retirement&quot;
+}
+</code></pre>
+<h3 id="5-keep-views-focused">5. Keep Views Focused</h3>
+<pre><code class="language-structurizr"># Good - focused view
+container platform &quot;CoreServices&quot; {
+    include &quot;element.tag==Core&quot;
+    autoLayout
+}
+
+# Bad - everything in one view
+container platform &quot;Everything&quot; {
+    include *
+    # Too cluttered to be useful
+}
+</code></pre>
+<h3 id="6-document-relationships">6. Document Relationships</h3>
+<pre><code class="language-structurizr">orderService -&gt; paymentGateway &quot;Processes payments using&quot; &quot;HTTPS/REST&quot; {
+    tags &quot;External Integration&quot; &quot;PCI-DSS Scope&quot;
+}
+</code></pre>
+<h3 id="7-use-implied-relationships">7. Use Implied Relationships</h3>
+<p>Structurizr automatically creates implied relationships:</p>
+<pre><code class="language-structurizr"># When component A -&gt; container B, and container B belongs to system C,
+# Structurizr implies: component A -&gt; system C (at higher abstraction levels)
+
+# This keeps models DRY while generating appropriate diagrams at each level
+</code></pre>
+<h3 id="8-version-control-everything">8. Version Control Everything</h3>
+<pre><code class="language-bash"># Track all architecture artifacts
+git add docs/architecture/workspace.dsl
+git add docs/architecture/views/*.png
+git commit -m &quot;Add payment service to architecture model&quot;
+</code></pre>
+<h3 id="9-review-architecture-changes-like-code">9. Review Architecture Changes Like Code</h3>
+<p>Require pull request reviews for architecture changes:</p>
+<pre><code class="language-yaml"># .github/CODEOWNERS
+docs/architecture/** @architecture-team
+</code></pre>
+<h3 id="10-keep-models-synchronized">10. Keep Models Synchronized</h3>
+<pre><code class="language-python"># Script to verify architecture coverage
+def verify_architecture_coverage():
+    &quot;&quot;&quot;Ensure all microservices are documented in Structurizr&quot;&quot;&quot;
+
+    # Parse services from code
+    actual_services = discover_services_from_code()
+
+    # Parse services from Structurizr DSL
+    documented_services = parse_structurizr_model()
+
+    missing = actual_services - documented_services
+    if missing:
+        raise Exception(f&quot;Undocumented services: {missing}&quot;)
+</code></pre>
+<h2 id="comparison-with-other-tools">Comparison with Other Tools</h2>
+<h3 id="structurizr-vs-traditional-diagramming-tools">Structurizr vs. Traditional Diagramming Tools</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Structurizr</th>
+<th>Draw.io / Visio</th>
+<th>Lucidchart</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Version Control</strong></td>
+<td>✅ Native (text files)</td>
+<td>⚠️ Binary files</td>
+<td>⚠️ Cloud-based versioning</td>
+</tr>
+<tr>
+<td><strong>Code Review</strong></td>
+<td>✅ Standard Git workflows</td>
+<td>❌ Difficult</td>
+<td>❌ Not supported</td>
+</tr>
+<tr>
+<td><strong>Automation</strong></td>
+<td>✅ CLI and API</td>
+<td>❌ Manual</td>
+<td>⚠️ Limited API</td>
+</tr>
+<tr>
+<td><strong>Single Source of Truth</strong></td>
+<td>✅ Model generates views</td>
+<td>❌ Each diagram separate</td>
+<td>❌ Each diagram separate</td>
+</tr>
+<tr>
+<td><strong>Learning Curve</strong></td>
+<td>⚠️ Moderate (DSL syntax)</td>
+<td>✅ Low (drag-drop)</td>
+<td>✅ Low (drag-drop)</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>✅ Enforced by model</td>
+<td>❌ Manual effort</td>
+<td>❌ Manual effort</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>✅ Free (Lite) or subscription</td>
+<td>✅ Free or one-time purchase</td>
+<td>💰 Subscription</td>
+</tr>
+</tbody>
+</table>
+<h3 id="structurizr-vs-plantuml">Structurizr vs. PlantUML</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Structurizr</th>
+<th>PlantUML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Software architecture (C4)</td>
+<td>Various diagram types</td>
+</tr>
+<tr>
+<td><strong>Abstraction Levels</strong></td>
+<td>✅ Built-in (C4 hierarchy)</td>
+<td>⚠️ Manual management</td>
+</tr>
+<tr>
+<td><strong>Layout Control</strong></td>
+<td>⚠️ Limited (auto-layout)</td>
+<td>✅ More granular</td>
+</tr>
+<tr>
+<td><strong>Model Reuse</strong></td>
+<td>✅ Single model, multiple views</td>
+<td>❌ Each diagram separate</td>
+</tr>
+<tr>
+<td><strong>Syntax</strong></td>
+<td>✅ Architecture-specific DSL</td>
+<td>⚠️ Generic diagramming</td>
+</tr>
+<tr>
+<td><strong>Tooling</strong></td>
+<td>✅ Dedicated tools (Lite, Cloud)</td>
+<td>✅ Wide tool support</td>
+</tr>
+<tr>
+<td><strong>Learning Curve</strong></td>
+<td>✅ Lower for C4</td>
+<td>⚠️ Steeper syntax</td>
+</tr>
+</tbody>
+</table>
+<h3 id="structurizr-vs-mermaid">Structurizr vs. Mermaid</h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Structurizr</th>
+<th>Mermaid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C4 Model Support</strong></td>
+<td>✅ Native, comprehensive</td>
+<td>⚠️ Basic C4 support</td>
+</tr>
+<tr>
+<td><strong>Diagram Types</strong></td>
+<td>Architecture-focused</td>
+<td>Wide variety (flowcharts, etc.)</td>
+</tr>
+<tr>
+<td><strong>GitHub Integration</strong></td>
+<td>⚠️ Requires export</td>
+<td>✅ Native rendering</td>
+</tr>
+<tr>
+<td><strong>Model Consistency</strong></td>
+<td>✅ Single model enforces</td>
+<td>❌ Separate diagrams</td>
+</tr>
+<tr>
+<td><strong>Interactive Viewers</strong></td>
+<td>✅ Structurizr Lite/Cloud</td>
+<td>⚠️ Limited</td>
+</tr>
+<tr>
+<td><strong>Documentation</strong></td>
+<td>✅ Integrated docs/ADRs</td>
+<td>❌ Separate</td>
+</tr>
+<tr>
+<td><strong>Best Use Case</strong></td>
+<td>Complex architecture models</td>
+<td>Quick, simple diagrams</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recommendation-matrix">Recommendation Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Recommended Tool</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large-scale system architecture</td>
+<td><strong>Structurizr</strong></td>
+<td>Model consistency, C4 hierarchy, architecture focus</td>
+</tr>
+<tr>
+<td>Quick diagrams in README</td>
+<td><strong>Mermaid</strong></td>
+<td>GitHub native support, simple syntax</td>
+</tr>
+<tr>
+<td>Detailed sequence diagrams</td>
+<td><strong>PlantUML</strong></td>
+<td>Rich sequence diagram features</td>
+</tr>
+<tr>
+<td>Non-technical stakeholder presentations</td>
+<td><strong>Lucidchart/Draw.io</strong></td>
+<td>Familiar interface, easy customisation</td>
+</tr>
+<tr>
+<td>Architecture as Code practice</td>
+<td><strong>Structurizr</strong></td>
+<td>Native version control, automation support</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-challenges-and-solutions">Common Challenges and Solutions</h2>
+<h3 id="challenge-1-layout-control">Challenge 1: Layout Control</h3>
+<p><strong>Problem</strong>: Auto-layout doesn't always produce ideal diagrams.</p>
+<p><strong>Solutions</strong>:</p>
+<pre><code class="language-structurizr"># 1. Specify layout direction
+views {
+    container platform {
+        autoLayout lr  # left-to-right
+        # or: tb (top-bottom), bt (bottom-top), rl (right-left)
+    }
+}
+
+# 2. Use manual positioning (when needed)
+views {
+    container platform {
+        include *
+
+        # Manual coordinates (x, y)
+        element webApp 100 100
+        element apiGateway 300 100
+        element database 500 100
+    }
+}
+
+# 3. Export to PlantUML for fine-tuning
+$ structurizr export -w workspace.dsl -f plantuml
+# Then adjust PlantUML layout directives
+</code></pre>
+<h3 id="challenge-2-large-models-become-complex">Challenge 2: Large Models Become Complex</h3>
+<p><strong>Problem</strong>: Single workspace file becomes unwieldy.</p>
+<p><strong>Solution</strong>: Split into multiple files</p>
+<pre><code class="language-structurizr">workspace {
+    model {
+        !include model/people.dsl
+        !include model/external-systems.dsl
+        !include model/platform/api-layer.dsl
+        !include model/platform/services.dsl
+        !include model/platform/data-layer.dsl
+    }
+
+    views {
+        !include views/context.dsl
+        !include views/containers.dsl
+        !include views/components/*.dsl
+        !include views/deployment.dsl
+    }
+}
+</code></pre>
+<h3 id="challenge-3-keeping-model-synchronized-with-reality">Challenge 3: Keeping Model Synchronized with Reality</h3>
+<p><strong>Problem</strong>: Code evolves but architecture model becomes stale.</p>
+<p><strong>Solution</strong>: Automated validation</p>
+<pre><code class="language-python"># ci/validate-architecture.py
+import requests
+import yaml
+
+def get_running_services():
+    &quot;&quot;&quot;Query service registry for deployed services&quot;&quot;&quot;
+    registry = requests.get(&quot;http://service-registry/api/services&quot;)
+    return {s[&quot;name&quot;] for s in registry.json()}
+
+def parse_structurizr_containers():
+    &quot;&quot;&quot;Extract container names from DSL&quot;&quot;&quot;
+    with open(&quot;docs/architecture/workspace.dsl&quot;) as f:
+        content = f.read()
+    # Parse DSL (simplified)
+    containers = set()
+    for line in content.split(&quot;\n&quot;):
+        if &quot;container&quot; in line.lower():
+            # Extract container name
+            containers.add(extract_name(line))
+    return containers
+
+def validate():
+    running = get_running_services()
+    documented = parse_structurizr_containers()
+
+    undocumented = running - documented
+    if undocumented:
+        raise Exception(f&quot;Services missing from architecture: {undocumented}&quot;)
+
+    deprecated = documented - running
+    if deprecated:
+        print(f&quot;Warning: Documented but not running: {deprecated}&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    validate()
+</code></pre>
+<h3 id="challenge-4-team-adoption">Challenge 4: Team Adoption</h3>
+<p><strong>Problem</strong>: Developers unfamiliar with DSL syntax.</p>
+<p><strong>Solutions</strong>:
+1. <strong>Provide templates</strong></p>
+<pre><code class="language-structurizr"># templates/new-service.dsl
+newService = container &quot;SERVICE_NAME&quot; &quot;DESCRIPTION&quot; &quot;TECHNOLOGY&quot; {
+    tags &quot;Microservice&quot; &quot;Backend&quot;
+
+    # Add components here
+}
+
+# Relationships
+apiGateway -&gt; newService &quot;Routes requests&quot;
+newService -&gt; database &quot;Reads/writes&quot;
+</code></pre>
+<ol>
+<li><strong>Create documentation</strong></li>
+</ol>
+<pre><code class="language-markdown"># Adding a New Service to Architecture
+
+1. Copy `templates/new-service.dsl`
+2. Replace placeholders (SERVICE_NAME, DESCRIPTION, TECHNOLOGY)
+3. Add to main workspace: `!include model/services/your-service.dsl`
+4. Run validation: `make validate-architecture`
+5. Commit and create PR
+</code></pre>
+<ol>
+<li><strong>Provide VS Code extension</strong> - Use Structurizr DSL extension for syntax highlighting and validation</li>
+</ol>
+<h3 id="challenge-5-diagram-aesthetics">Challenge 5: Diagram Aesthetics</h3>
+<p><strong>Problem</strong>: Generated diagrams don't match brand guidelines.</p>
+<p><strong>Solution</strong>: Custom themes</p>
+<pre><code class="language-structurizr">views {
+    styles {
+        element &quot;Person&quot; {
+            shape person
+            background #FF6B35  # Brand colour
+            colour #FFFFFF
+            fontSize 24
+        }
+
+        element &quot;Container&quot; {
+            background #004E89  # Brand colour
+            colour #FFFFFF
+            fontSize 18
+            shape roundedbox
+        }
+
+        element &quot;Database&quot; {
+            shape cylinder
+            background #1A1A2E  # Brand colour
+        }
+
+        relationship &quot;Relationship&quot; {
+            thickness 3
+            colour #004E89
+            routing curved  # or: orthogonal, direct
+            fontSize 14
+        }
+    }
+
+    # Or use external theme
+    themes https://example.com/company-theme.json
+}
+</code></pre>
+<h2 id="real-world-example-complete-e-commerce-platform">Real-World Example: Complete E-Commerce Platform</h2>
+<p>Here's a comprehensive example bringing together all the concepts:</p>
+<pre><code class="language-structurizr">workspace &quot;E-Commerce Platform&quot; &quot;Complete architecture for online retail&quot; {
+
+    !docs docs
+    !adrs adrs
+
+    model {
+        # People
+        customer = person &quot;Customer&quot; &quot;Online shopper&quot;
+        merchant = person &quot;Merchant&quot; &quot;Seller managing products&quot;
+        admin = person &quot;Administrator&quot; &quot;Platform operator&quot;
+
+        # External Systems
+        paymentProvider = softwareSystem &quot;Payment Provider&quot; &quot;Stripe/PayPal&quot; {
+            tags &quot;External System&quot;
+        }
+
+        emailService = softwareSystem &quot;Email Service&quot; &quot;SendGrid&quot; {
+            tags &quot;External System&quot;
+        }
+
+        shippingCarrier = softwareSystem &quot;Shipping Carrier&quot; &quot;FedEx/UPS API&quot; {
+            tags &quot;External System&quot;
+        }
+
+        # Main Platform
+        ecommercePlatform = softwareSystem &quot;E-Commerce Platform&quot; {
+
+            # Frontend Layer
+            webApp = container &quot;Web Application&quot; &quot;Customer-facing storefront&quot; &quot;React, Next.js&quot; {
+                tags &quot;Frontend&quot; &quot;Critical Path&quot;
+
+                productCatalog = component &quot;Product Catalog&quot; &quot;Browse and search products&quot;
+                shoppingCart = component &quot;Shopping Cart&quot; &quot;Manage cart items&quot;
+                checkout = component &quot;Checkout&quot; &quot;Order placement flow&quot;
+            }
+
+            mobileApp = container &quot;Mobile App&quot; &quot;iOS and Android apps&quot; &quot;React Native&quot; {
+                tags &quot;Frontend&quot; &quot;Mobile&quot;
+            }
+
+            adminPanel = container &quot;Admin Panel&quot; &quot;Merchant and admin interface&quot; &quot;Vue.js&quot; {
+                tags &quot;Frontend&quot; &quot;Internal&quot;
+            }
+
+            # API Layer
+            apiGateway = container &quot;API Gateway&quot; &quot;Authenticates and routes requests&quot; &quot;Kong, Node.js&quot; {
+                tags &quot;Infrastructure&quot; &quot;Critical Path&quot;
+
+                authMiddleware = component &quot;Auth Middleware&quot; &quot;JWT validation&quot;
+                rateLimiter = component &quot;Rate Limiter&quot; &quot;Throttles requests&quot;
+                router = component &quot;Router&quot; &quot;Routes to services&quot;
+            }
+
+            # Core Services
+            group &quot;Core Domain Services&quot; {
+                productService = container &quot;Product Service&quot; &quot;Product catalog management&quot; &quot;Java, Spring Boot&quot; {
+                    tags &quot;Microservice&quot; &quot;Core&quot;
+
+                    productController = component &quot;Product Controller&quot; &quot;REST API&quot;
+                    productRepository = component &quot;Product Repository&quot; &quot;Data access&quot;
+                    searchService = component &quot;Search Service&quot; &quot;Elasticsearch integration&quot;
+                }
+
+                orderService = container &quot;Order Service&quot; &quot;Order lifecycle management&quot; &quot;Java, Spring Boot&quot; {
+                    tags &quot;Microservice&quot; &quot;Core&quot; &quot;Critical Path&quot;
+
+                    orderController = component &quot;Order Controller&quot; &quot;REST API&quot;
+                    orderRepository = component &quot;Order Repository&quot; &quot;Data access&quot;
+                    orderStateMachine = component &quot;Order State Machine&quot; &quot;Manages order states&quot;
+                    perspectives {
+                        &quot;Security&quot; &quot;PII data, requires encryption at rest&quot;
+                        &quot;Compliance&quot; &quot;GDPR compliance, 30-day data retention&quot;
+                    }
+                }
+
+                inventoryService = container &quot;Inventory Service&quot; &quot;Stock management&quot; &quot;Go&quot; {
+                    tags &quot;Microservice&quot; &quot;Core&quot;
+                }
+
+                userService = container &quot;User Service&quot; &quot;User account management&quot; &quot;Node.js&quot; {
+                    tags &quot;Microservice&quot; &quot;Core&quot;
+                }
+            }
+
+            # Supporting Services
+            group &quot;Supporting Services&quot; {
+                paymentService = container &quot;Payment Service&quot; &quot;Payment processing&quot; &quot;Python, FastAPI&quot; {
+                    tags &quot;Microservice&quot; &quot;PCI-DSS&quot;
+                    perspectives {
+                        &quot;Security&quot; &quot;PCI-DSS scope, no card data storage&quot;
+                        &quot;Compliance&quot; &quot;PCI-DSS Level 1 certified&quot;
+                    }
+                }
+
+                notificationService = container &quot;Notification Service&quot; &quot;Email and SMS notifications&quot; &quot;Python&quot; {
+                    tags &quot;Microservice&quot;
+                }
+
+                recommendationService = container &quot;Recommendation Service&quot; &quot;Product recommendations&quot; &quot;Python, TensorFlow&quot; {
+                    tags &quot;Microservice&quot; &quot;ML&quot;
+                }
+            }
+
+            # Data Layer
+            group &quot;Data Stores&quot; {
+                productDb = container &quot;Product Database&quot; &quot;Product catalog data&quot; &quot;PostgreSQL&quot; {
+                    tags &quot;Database&quot; &quot;Primary Storage&quot;
+                }
+
+                orderDb = container &quot;Order Database&quot; &quot;Order data&quot; &quot;PostgreSQL&quot; {
+                    tags &quot;Database&quot; &quot;Primary Storage&quot;
+                }
+
+                userDb = container &quot;User Database&quot; &quot;User profiles and auth&quot; &quot;PostgreSQL&quot; {
+                    tags &quot;Database&quot; &quot;Primary Storage&quot;
+                }
+
+                searchIndex = container &quot;Search Index&quot; &quot;Product search&quot; &quot;Elasticsearch&quot; {
+                    tags &quot;Database&quot; &quot;Search&quot;
+                }
+
+                cache = container &quot;Cache&quot; &quot;Session and data cache&quot; &quot;Redis&quot; {
+                    tags &quot;Database&quot; &quot;Cache&quot;
+                }
+            }
+
+            # Infrastructure
+            messageBus = container &quot;Message Bus&quot; &quot;Event-driven communication&quot; &quot;RabbitMQ&quot; {
+                tags &quot;Infrastructure&quot; &quot;Messaging&quot;
+            }
+
+            # Relationships - Frontend to Gateway
+            webApp -&gt; apiGateway &quot;API calls&quot; &quot;HTTPS/JSON&quot;
+            mobileApp -&gt; apiGateway &quot;API calls&quot; &quot;HTTPS/JSON&quot;
+            adminPanel -&gt; apiGateway &quot;API calls&quot; &quot;HTTPS/JSON&quot;
+
+            # Relationships - Gateway to Services
+            apiGateway -&gt; productService &quot;Routes /products/*&quot; &quot;HTTP/REST&quot;
+            apiGateway -&gt; orderService &quot;Routes /orders/*&quot; &quot;HTTP/REST&quot;
+            apiGateway -&gt; userService &quot;Routes /users/*&quot; &quot;HTTP/REST&quot;
+
+            # Relationships - Services to Databases
+            productService -&gt; productDb &quot;Reads/writes&quot; &quot;JDBC&quot;
+            productService -&gt; searchIndex &quot;Indexes products&quot; &quot;HTTP&quot;
+            orderService -&gt; orderDb &quot;Reads/writes&quot; &quot;JDBC&quot;
+            userService -&gt; userDb &quot;Reads/writes&quot; &quot;JDBC&quot;
+            inventoryService -&gt; productDb &quot;Updates stock&quot; &quot;JDBC&quot;
+
+            # Relationships - Services to Cache
+            productService -&gt; cache &quot;Caches products&quot; &quot;Redis Protocol&quot;
+            userService -&gt; cache &quot;Caches sessions&quot; &quot;Redis Protocol&quot;
+
+            # Relationships - Async via Message Bus
+            orderService -&gt; messageBus &quot;Publishes OrderCreated&quot; &quot;AMQP&quot;
+            messageBus -&gt; inventoryService &quot;OrderCreated event&quot; &quot;AMQP&quot;
+            messageBus -&gt; notificationService &quot;OrderCreated event&quot; &quot;AMQP&quot;
+            paymentService -&gt; messageBus &quot;Publishes PaymentCompleted&quot; &quot;AMQP&quot;
+        }
+
+        # External Integrations
+        ecommercePlatform -&gt; paymentProvider &quot;Processes payments&quot; &quot;HTTPS/REST&quot;
+        ecommercePlatform -&gt; emailService &quot;Sends emails&quot; &quot;HTTPS/REST&quot;
+        ecommercePlatform -&gt; shippingCarrier &quot;Creates shipments&quot; &quot;HTTPS/REST&quot;
+
+        # User Interactions
+        customer -&gt; webApp &quot;Browses and purchases&quot;
+        customer -&gt; mobileApp &quot;Browses and purchases&quot;
+        merchant -&gt; adminPanel &quot;Manages products&quot;
+        admin -&gt; adminPanel &quot;Platform administration&quot;
+
+        # Production Deployment
+        deploymentEnvironment &quot;Production&quot; {
+            deploymentNode &quot;AWS Cloud&quot; {
+                tags &quot;AWS&quot;
+
+                deploymentNode &quot;CloudFront CDN&quot; {
+                    containerInstance webApp
+                }
+
+                deploymentNode &quot;ECS Cluster&quot; {
+                    tags &quot;Container Orchestration&quot;
+
+                    deploymentNode &quot;API Gateway Tasks&quot; {
+                        containerInstance apiGateway
+                    }
+
+                    deploymentNode &quot;Service Tasks&quot; {
+                        instances 3
+                        containerInstance productService
+                        containerInstance orderService
+                        containerInstance userService
+                        containerInstance inventoryService
+                        containerInstance paymentService
+                        containerInstance notificationService
+                    }
+                }
+
+                deploymentNode &quot;RDS&quot; {
+                    tags &quot;Managed Database&quot;
+
+                    deploymentNode &quot;Primary&quot; {
+                        containerInstance productDb
+                        containerInstance orderDb
+                        containerInstance userDb
+                    }
+
+                    deploymentNode &quot;Read Replicas&quot; {
+                        instances 2
+                    }
+                }
+
+                deploymentNode &quot;ElastiCache&quot; {
+                    containerInstance cache
+                }
+
+                deploymentNode &quot;Elasticsearch Service&quot; {
+                    containerInstance searchIndex
+                }
+
+                deploymentNode &quot;Amazon MQ&quot; {
+                    containerInstance messageBus
+                }
+            }
+        }
+    }
+
+    views {
+        # System Context
+        systemContext ecommercePlatform &quot;SystemContext&quot; {
+            include *
+            autoLayout lr
+            description &quot;High-level view showing how the e-commerce platform fits in the ecosystem&quot;
+        }
+
+        # Container View
+        container ecommercePlatform &quot;Containers&quot; {
+            include *
+            autoLayout tb
+            description &quot;Container-level architecture showing major applications and data stores&quot;
+        }
+
+        # Core Services Focus
+        container ecommercePlatform &quot;CoreServices&quot; {
+            include element.tag==Core
+            include element.tag==Database
+            include element.tag==Infrastructure
+            autoLayout
+            description &quot;Focus on core domain services&quot;
+        }
+
+        # Component View - Product Service
+        component productService &quot;ProductServiceComponents&quot; {
+            include *
+            autoLayout
+            description &quot;Internal structure of Product Service&quot;
+        }
+
+        # Component View - Order Service  
+        component orderService &quot;OrderServiceComponents&quot; {
+            include *
+            autoLayout
+            description &quot;Internal structure of Order Service&quot;
+        }
+
+        # Dynamic View - Order Flow
+        dynamic ecommercePlatform &quot;OrderPlacementFlow&quot; {
+            title &quot;Customer Order Placement&quot;
+
+            customer -&gt; webApp &quot;1. Submits order&quot;
+            webApp -&gt; apiGateway &quot;2. POST /api/orders&quot;
+            apiGateway -&gt; orderService &quot;3. CreateOrder()&quot;
+            orderService -&gt; orderDb &quot;4. SaveOrder()&quot;
+            orderService -&gt; messageBus &quot;5. Publish OrderCreated&quot;
+            messageBus -&gt; inventoryService &quot;6. OrderCreated event&quot;
+            inventoryService -&gt; productDb &quot;7. Reserve items&quot;
+            messageBus -&gt; paymentService &quot;8. OrderCreated event&quot;
+            paymentService -&gt; paymentProvider &quot;9. Charge customer&quot;
+            paymentService -&gt; messageBus &quot;10. Publish PaymentCompleted&quot;
+            messageBus -&gt; notificationService &quot;11. PaymentCompleted event&quot;
+            notificationService -&gt; emailService &quot;12. Send confirmation&quot;
+            emailService -&gt; customer &quot;13. Confirmation email&quot;
+
+            autoLayout
+            description &quot;Sequence of events when customer places order&quot;
+        }
+
+        # Deployment View
+        deployment ecommercePlatform &quot;Production&quot; &quot;ProductionDeployment&quot; {
+            include *
+            autoLayout
+            description &quot;Production deployment on AWS&quot;
+        }
+
+        # Filtered Views
+        container ecommercePlatform &quot;ExternalIntegrations&quot; {
+            include element.tag==External*
+            include -&gt;element.tag==External*-&gt;
+            autoLayout
+            description &quot;External system dependencies&quot;
+        }
+
+        container ecommercePlatform &quot;DataLayer&quot; {
+            include element.tag==Database
+            include -&gt;element.tag==Database-&gt;
+            autoLayout
+            description &quot;Data storage architecture&quot;
+        }
+
+        # Styling
+        styles {
+            element &quot;Person&quot; {
+                shape person
+                background #08427b
+                colour #ffffff
+                fontSize 22
+            }
+
+            element &quot;Software System&quot; {
+                background #1168bd
+                colour #ffffff
+                shape roundedbox
+            }
+
+            element &quot;External System&quot; {
+                background #999999
+                colour #ffffff
+            }
+
+            element &quot;Container&quot; {
+                background #438dd5
+                colour #ffffff
+                shape roundedbox
+            }
+
+            element &quot;Component&quot; {
+                background #85bbf0
+                colour #000000
+                shape component
+            }
+
+            element &quot;Database&quot; {
+                shape cylinder
+                background #438dd5
+            }
+
+            element &quot;Infrastructure&quot; {
+                shape hexagon
+            }
+
+            element &quot;Frontend&quot; {
+                background #ff6b6b
+            }
+
+            element &quot;Core&quot; {
+                background #51cf66
+            }
+
+            element &quot;Critical Path&quot; {
+                border solid
+                thickness 4
+            }
+
+            relationship &quot;Relationship&quot; {
+                thickness 2
+                colour #707070
+                routing orthogonal
+                fontSize 12
+            }
+        }
+
+        themes https://static.structurizr.com/themes/default/theme.json
+    }
+
+    configuration {
+        scope softwaresystem
+    }
+}
+</code></pre>
+<h2 id="integration-with-architecture-decision-records">Integration with Architecture Decision Records</h2>
+<p>Structurizr integrates naturally with ADRs documented in Chapter 4:</p>
+<pre><code class="language-bash"># Project structure
+docs/
+├── architecture/
+│   ├── workspace.dsl
+│   └── adrs/
+│       ├── 0001-use-microservices.md
+│       ├── 0002-event-driven-integration.md
+│       ├── 0003-postgresql-for-services.md
+│       └── 0004-kong-api-gateway.md
+</code></pre>
+<p>Reference ADRs in the workspace:</p>
+<pre><code class="language-structurizr">workspace {
+    !adrs docs/architecture/adrs
+
+    model {
+        apiGateway = container &quot;API Gateway&quot; {
+            url https://github.com/org/repo/blob/main/docs/architecture/adrs/0004-kong-api-gateway.md
+        }
+    }
+}
+</code></pre>
+<p>This creates traceability from architecture elements to the decisions that shaped them.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Structurizr represents a powerful implementation of Architecture as Code principles, enabling teams to:</p>
+<ol>
+<li><strong>Define architecture models programmatically</strong> using a clear, version-controlled DSL</li>
+<li><strong>Generate consistent diagrams</strong> from a single source of truth</li>
+<li><strong>Integrate architecture documentation</strong> into standard development workflows</li>
+<li><strong>Automate validation</strong> that architecture matches reality</li>
+<li><strong>Maintain living documentation</strong> that evolves with the system</li>
+</ol>
+<p>The C4 model provides the conceptual framework, while Structurizr DSL offers the practical tooling to implement it. By treating architecture as code, teams can apply the same rigorous practices—version control, code review, automated testing, CI/CD—to their architectural work as they do to application development.</p>
+<p>While there's a learning curve to master the DSL syntax and modeling concepts, the investment pays dividends through improved architecture consistency, team collaboration, and documentation quality. Combined with the practices covered in earlier chapters (ADRs, version control, automation), Structurizr enables a comprehensive Architecture as Code workflow.</p>
+<p>The next chapters explore how to extend these foundations into containerisation and orchestration, where architecture definitions can directly inform deployment and operational patterns.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>Brown, S. "The C4 model for visualising software architecture." <a href="https://c4model.com">https://c4model.com</a></li>
+<li>Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. <a href="https://blog.structurizr.com/diagrams-as-code-automation/">https://blog.structurizr.com/diagrams-as-code-automation/</a></li>
+<li>Structurizr. "Structurizr DSL Language Reference." <a href="https://github.com/structurizr/dsl">https://github.com/structurizr/dsl</a></li>
+<li>Structurizr. "Structurizr Lite." <a href="https://structurizr.com/help/lite">https://structurizr.com/help/lite</a></li>
+<li>Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.</li>
+<li>Brown, S. "Software Architecture for Developers." Leanpub, 2024.</li>
+<li>ThoughtWorks Technology Radar. "Diagrams as code." <a href="https://www.thoughtworks.com/radar/techniques/diagrams-as-code">https://www.thoughtworks.com/radar/techniques/diagrams-as-code</a></li>
+<li>AaC Open Source Project. "Architecture-as-Code Repository." <a href="https://github.com/aacplatform/aac">https://github.com/aacplatform/aac</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../05_automation_devops_cicd/" class="btn btn-neutral float-left" title="Automation, DevOps and CI/CD for Infrastructure as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../07_containerisation/" class="btn btn-neutral float-right" title="Containerisation and Orchestration as Code">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../05_automation_devops_cicd/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../07_containerisation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

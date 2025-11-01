@@ -1,0 +1,4024 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/30_appendix_code_examples/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix A – Code Examples and Technical Implementations - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix A \u2013 Code Examples and Technical Implementations";
+        var mkdocs_page_input_path = "30_appendix_code_examples.md";
+        var mkdocs_page_url = "/30_appendix_code_examples/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix A – Code Examples and Technical Implementations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#navigating-the-appendix">Navigating the appendix</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cicd-pipelines-and-architecture-as-code-automation-cicd-pipelines">CI/CD Pipelines and Architecture as Code Automation {#cicd-pipelines}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#05_code_1-gdpr-compliant-cicd-pipeline-for-organisations-05_code_1">05_CODE_1: GDPR-compliant CI/CD pipeline for organisations {#05_code_1}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#05_code_2-jenkins-pipeline-for-organisations-with-gdpr-compliance-05_code_2">05_CODE_2: Jenkins pipeline for organisations with GDPR compliance {#05_code_2}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#05_code_3-terratest-for-vpc-implementation-05_code_3">05_CODE_3: Terratest for VPC implementation {#05_code_3}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#infrastructure-as-code-cloudformation-cloudformation-architecture-as-code">Infrastructure as Code – CloudFormation {#cloudformation-architecture-as-code}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#07_code_1-vpc-setup-for-organisations-with-gdpr-compliance-07_code_1">07_CODE_1: VPC Setup for organisations with GDPR compliance {#07_code_1}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#automation-scripts-automation-scripts">Automation Scripts {#automation-scripts}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#22_code_1-comprehensive-test-framework-for-architecture-as-code-22_code_1">22_CODE_1: Comprehensive test framework for Architecture as Code {#22_code_1}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-files-configuration">Configuration Files {#configuration}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#22_code_2-governance-policy-configuration-for-organisations-22_code_2">22_CODE_2: Governance policy configuration for organisations {#22_code_2}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-13-testing-strategies-reference-implementations-chapter-13-testing">Chapter 13: Testing Strategies Reference Implementations {#chapter-13-testing}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_a-vitest-configuration-for-infrastructure-as-code-projects-13_code_a">13_CODE_A: Vitest Configuration for Infrastructure as Code Projects {#13_code_a}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_b-terraform-configuration-generator-13_code_b">13_CODE_B: Terraform Configuration Generator {#13_code_b}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_c-terraform-configuration-generator-tests-13_code_c">13_CODE_C: Terraform Configuration Generator Tests {#13_code_c}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_d-infrastructure-validator-13_code_d">13_CODE_D: Infrastructure Validator {#13_code_d}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_e-infrastructure-validator-tests-13_code_e">13_CODE_E: Infrastructure Validator Tests {#13_code_e}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_f-github-actions-vitest-workflow-13_code_f">13_CODE_F: GitHub Actions Vitest Workflow {#13_code_f}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_g-requirements-as-code-definition-13_code_g">13_CODE_G: Requirements as Code Definition {#13_code_g}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_h-requirements-validation-framework-13_code_h">13_CODE_H: Requirements Validation Framework {#13_code_h}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_i-terratest-for-gdpr-compliant-infrastructure-13_code_i">13_CODE_I: Terratest for GDPR-Compliant Infrastructure {#13_code_i}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_j-policy-as-code-testing-with-opa-13_code_j">13_CODE_J: Policy-as-Code Testing with OPA {#13_code_j}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_k-kubernetes-infrastructure-test-suite-13_code_k">13_CODE_K: Kubernetes Infrastructure Test Suite {#13_code_k}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13_code_l-infrastructure-testing-pipeline-13_code_l">13_CODE_L: Infrastructure Testing Pipeline {#13_code_l}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#organisational-change-and-team-structures-organisational-change">Organisational Change and Team Structures {#organisational-change}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#17_code_1-infrastructure-platform-team-blueprint-17_code_1">17_CODE_1: Infrastructure Platform Team Blueprint {#17_code_1}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#17_code_2-iac-competency-framework-utilities-17_code_2">17_CODE_2: IaC Competency Framework Utilities {#17_code_2}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#17_code_3-devops-performance-measurement-framework-17_code_3">17_CODE_3: DevOps Performance Measurement Framework {#17_code_3}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#references-and-navigation">References and Navigation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#conventions-for-code-examples">Conventions for Code Examples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updates-and-maintenance">Updates and Maintenance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#for-more-information-about-specific-implementations-see-the-respective-main-chapters-where-the-code-examples-are-introduced-and-explained-in-their-context">For more information about specific implementations, see the respective main chapters where the code examples are introduced and explained in their context.</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-14-reference-implementations">Chapter 14 Reference Implementations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#14_code_1-terraform-service-blueprint-for-a-web-application-landing-zone-14_code_1">14_CODE_1: Terraform service blueprint for a web application landing zone {#14_code_1}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#14_code_2-environment-configuration-and-observability-controls-14_code_2">14_CODE_2: Environment configuration and observability controls {#14_code_2}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#14_code_3-continuous-delivery-workflow-for-infrastructure-changes-14_code_3">14_CODE_3: Continuous delivery workflow for infrastructure changes {#14_code_3}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chapter-15-reference-implementations">Chapter 15 Reference Implementations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#15_code_1-cost-aware-terraform-infrastructure-configuration-15_code_1">15_CODE_1: Cost-aware Terraform infrastructure configuration {#15_code_1}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#15_code_2-kubernetes-cost-optimisation-manifests-15_code_2">15_CODE_2: Kubernetes cost optimisation manifests {#15_code_2}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#15_code_3-aws-cost-monitoring-and-optimisation-automation-15_code_3">15_CODE_3: AWS cost monitoring and optimisation automation {#15_code_3}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security-and-compliance-security-compliance">Security and compliance {#security-compliance}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#10_code_1-advanced-policy-as-code-module-for-eu-compliance-10_code_1">10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#10_code_2-oscal-profile-for-regulated-financial-services-10_code_2">10_CODE_2: OSCAL profile for regulated financial services {#10_code_2}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#10_code_3-oscal-component-definitions-for-reusable-cloud-modules-10_code_3">10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#10_code_4-automated-oscal-system-security-plan-generator-10_code_4">10_CODE_4: Automated OSCAL System Security Plan generator {#10_code_4}</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendices</li>
+      <li class="breadcrumb-item active">Appendix A – Code Examples and Technical Implementations</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/30_appendix_code_examples.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p>\appendix</p>
+<h1 id="code-examples-and-technical-architecture-as-code-implementations">Code examples and technical architecture as code implementations</h1>
+<p>Appendix A collects every code example, configuration file, and technical implementation referenced throughout the book. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.</p>
+<p><em>This appendix acts as a practical reference library for all technical demonstrations in the book. Each code listing is
+categorised and labelled with backlinks to the relevant chapter so the narrative and executable artefacts stay in sync.</em></p>
+<h2 id="navigating-the-appendix">Navigating the appendix</h2>
+<p>The code examples are grouped into the following categories:</p>
+<ol>
+<li><strong><a href="#cicd-pipelines">CI/CD pipelines and Architecture as Code automation</a></strong></li>
+<li><strong><a href="#terraform-iac">Infrastructure as Code (Architecture as Code) – Terraform</a></strong></li>
+<li><strong><a href="#cloudformation-architecture-as-code">Infrastructure as Code (Architecture as Code) – CloudFormation</a></strong></li>
+<li><strong><a href="#automation-scripts">Automation scripts and tooling</a></strong></li>
+<li><strong><a href="#security-compliance">Security and compliance</a></strong></li>
+<li><strong><a href="#testing-validation">Testing and validation</a></strong></li>
+<li><strong><a href="#configuration">Configuration files</a></strong></li>
+<li><strong><a href="#shell-scripts">Shell scripts and utilities</a></strong></li>
+</ol>
+<p>Each example has a unique identifier in the format <code>[chapter]_CODE_[NUMBER]</code> for easy cross-reference with the main text.</p>
+<h2 id="cicd-pipelines-and-architecture-as-code-automation-cicd-pipelines">CI/CD Pipelines and Architecture as Code Automation {#cicd-pipelines}</h2>
+<p>This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations.</p>
+<h3 id="05_code_1-gdpr-compliant-cicd-pipeline-for-organisations-05_code_1">05_CODE_1: GDPR-compliant CI/CD pipeline for organisations {#05_code_1}</h3>
+<p><em>Referenced from chapter 5: <a href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Architecture as Code</a></em></p>
+<pre><code class="language-yaml"># .github/workflows/architecture-as-code-pipeline.yml
+# GDPR-compliant CI/CD pipeline for organisations
+
+name: Architecture as Code Pipeline with GDPR Compliance
+
+on:
+  push:
+    branches: [main, staging, development]
+    paths:
+      - 'infrastructure/**'
+      - 'modules/**'
+  pull_request:
+    branches: [main, staging]
+    paths:
+      - 'infrastructure/**'
+      - 'modules/**'
+
+env:
+  TF_VERSION: '1.6.0'
+  ORGANISATION_NAME: ${{ vars.ORGANISATION_NAME }}
+  ENVIRONMENT: ${{ github.ref_name == 'main' &amp;&amp; 'production' || github.ref_name }}
+  COST_CENTRE: ${{ vars.COST_CENTRE }}
+  GDPR_COMPLIANCE_ENABLED: 'true'
+  DATA_RESIDENCY: 'EU'
+  AUDIT_LOGGING: 'enabled'
+
+jobs:
+  gdpr-compliance-check:
+    name: GDPR Compliance Validation
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, 'personal-data') || contains(github.event.head_commit.message, 'gdpr')
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: GDPR data discovery scan
+        run: |
+          echo &quot;🔍 Scanning for personal data indicators across EU jurisdictions...&quot;
+
+          PERSONAL_DATA_PATTERNS=(
+            &quot;national\\s+identity&quot;
+            &quot;passport\\s+number&quot;
+            &quot;social.*security&quot;
+            &quot;tax\\s+identification&quot;
+            &quot;vat\\s+number&quot;
+            &quot;iban&quot;
+            &quot;bic&quot;
+            &quot;eori&quot;
+            &quot;driver'?s\\s+licence&quot;
+            &quot;health\\s+insurance\\s+number&quot;
+            &quot;email.*address&quot;
+            &quot;phone.*number&quot;
+            &quot;date.*of.*birth&quot;
+          )
+
+          VIOLATIONS_FOUND=false
+
+          for pattern in &quot;${PERSONAL_DATA_PATTERNS[@]}&quot;; do
+            if grep -R -i -E &quot;$pattern&quot; infrastructure/ modules/ 2&gt;/dev/null; then
+              echo &quot;⚠️ GDPR WARNING: Potential personal data reference detected for pattern: $pattern&quot;
+              VIOLATIONS_FOUND=true
+            fi
+          done
+
+          if [ &quot;$VIOLATIONS_FOUND&quot; = true ]; then
+            echo &quot;❌ GDPR compliance check failed&quot;
+            echo &quot;Personal data must not be hard coded in Architecture as Code assets.&quot;
+            exit 1
+          fi
+
+          echo &quot;✅ GDPR compliance check completed successfully&quot;
+</code></pre>
+<h3 id="05_code_2-jenkins-pipeline-for-organisations-with-gdpr-compliance-05_code_2">05_CODE_2: Jenkins pipeline for organisations with GDPR compliance {#05_code_2}</h3>
+<p><em>Referenced from chapter 5: <a href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Architecture as Code</a></em></p>
+<pre><code class="language-yaml"># jenkins/architecture-as-code-pipeline.groovy
+// Jenkins pipeline for organisations with GDPR compliance
+
+pipeline {
+    agent any
+
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['development', 'staging', 'production'],
+            description: 'Target environment for deployment'
+        )
+        booleanParam(
+            name: 'FORCE_DEPLOYMENT',
+            defaultValue: false,
+            description: 'Force deployment even when warnings are raised (development only)'
+        )
+        string(
+            name: 'COST_CENTER',
+            defaultValue: 'CC-IT-001',
+            description: 'Cost centre used for financial reporting'
+        )
+    }
+
+    environment {
+        ORGANISATION_NAME = 'example-org'
+        AWS_DEFAULT_REGION = 'eu-west-1'
+        GDPR_COMPLIANCE = 'enabled'
+        DATA_RESIDENCY = 'EU'
+        TERRAFORM_VERSION = '1.6.0'
+        COST_CURRENCY = 'EUR'
+        AUDIT_RETENTION_YEARS = '7'  // Legal requirement for audit retention
+    }
+
+    stages {
+        stage('Compliance Check') {
+            parallel {
+                stage('GDPR Data Scan') {
+                    steps {
+                        script {
+                            echo &quot;🔍 Scanning for personal data indicators across EU member states...&quot;
+
+                            def personalDataPatterns = [
+                                'national\\s+identity', 'passport\\s+number', 'social.*security',
+                                'tax\\s+identification', 'vat\\s+number', 'iban', 'bic',
+                                'eori', &quot;driver'?s\\s+licence&quot;, 'health\\s+insurance\\s+number',
+                                'email.*address', 'phone.*number', 'date.*of.*birth'
+                            ]
+
+                            def violations = []
+
+                            personalDataPatterns.each { pattern -&gt;
+                                def result = sh(
+                                    script: &quot;grep -R -i -E '${pattern}' infrastructure/ modules/ || true&quot;,
+                                    returnStdout: true
+                                ).trim()
+
+                                if (result) {
+                                    violations.add(&quot;Personal data pattern found for expression: ${pattern}&quot;)
+                                }
+                            }
+
+                            if (violations) {
+                                error(&quot;GDPR VIOLATION: Potential personal data detected in Architecture as Code assets:\n${violations.join('\n')}&quot;)
+                            }
+
+                            echo &quot;✅ GDPR data scan completed successfully&quot;
+                        }
+                    }
+                }
+
+                stage('Data Residency Validation') {
+                    steps {
+                        script {
+                            echo &quot;🏔️ Validating data residency requirements...&quot;
+
+                            def allowedRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2']
+
+                            def regionCheck = sh(
+                                script: &quot;&quot;&quot;
+                                    grep -R 'region\\s*=' infrastructure/ modules/ | \
+                                    grep -v -E '(eu-west-1|eu-central-1|eu-west-2)' || true
+                                &quot;&quot;&quot;,
+                                returnStdout: true
+                            ).trim()
+
+                            if (regionCheck) {
+                                error(&quot;DATA RESIDENCY VIOLATION: Non-approved regions detected:\n${regionCheck}&quot;)
+                            }
+
+                            echo &quot;✅ Data residency requirements satisfied&quot;
+                        }
+                    }
+                }
+
+                stage('Cost Center Validation') {
+                    steps {
+                        script {
+                            echo &quot;💰 Validating cost centre for accounting...&quot;
+
+                            if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
+                                error(&quot;Invalid cost centre format. Use: CC-XX-nnn&quot;)
+                            }
+
+                            // Validate the cost centre exists in the organisation's systems
+                            def validCostCenters = [
+                                'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
+                            ]
+
+                            if (!validCostCenters.contains(params.COST_CENTER)) {
+                                error(&quot;Unknown cost centre: ${params.COST_CENTER}&quot;)
+                            }
+
+                            echo &quot;✅ Cost centre validated: ${params.COST_CENTER}&quot;
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('📝 Code Quality Analysis') {
+            parallel {
+                stage('Terraform Validation') {
+                    steps {
+                        script {
+                            echo &quot;🔧 Terraform syntax and formatting...&quot;
+
+                            // Format check
+                            sh &quot;terraform fmt -check -recursive infrastructure/&quot;
+
+                            // Syntax validation
+                            dir('infrastructure/environments/${params.ENVIRONMENT}') {
+                                sh &quot;&quot;&quot;
+                                    terraform init -backend=false
+                                    terraform validate
+                                &quot;&quot;&quot;
+                            }
+
+                            echo &quot;✅ Terraform validation completed&quot;
+                        }
+                    }
+                }
+
+                stage('Security Scanning') {
+                    steps {
+                        script {
+                            echo &quot;🔒 Security scan with Checkov...&quot;
+
+                            sh &quot;&quot;&quot;
+                                pip install checkov
+                                checkov -d infrastructure/ \
+                                    --framework terraform \
+                                    --output json \
+                                    --output-file checkov-results.json \
+                                    --soft-fail
+                            &quot;&quot;&quot;
+
+                            // Analyse critical security issues
+                            def results = readJSON file: 'checkov-results.json'
+                            def criticalIssues = results.results.failed_checks.findAll { 
+                                it.severity == 'CRITICAL' 
+                            }
+
+                            if (criticalIssues.size() &gt; 0) {
+                                echo &quot;⚠️ Critical security issues found:&quot;
+                                criticalIssues.each { issue -&gt;
+                                    echo &quot;- ${issue.check_name}: ${issue.file_path}&quot;
+                                }
+
+                                if (params.ENVIRONMENT == 'production') {
+                                    error(&quot;Critical security issues must be resolved before production deployment&quot;)
+                                }
+                            }
+
+                            echo &quot;✅ Security scan completed&quot;
+                        }
+                    }
+                }
+
+                stage('Policy Validation') {
+                    steps {
+                        script {
+                            echo &quot;📋 Validating organisational policies...&quot;
+
+                            // Create OPA policies
+                            writeFile file: 'policies/a-tagging.rego', text: &quot;&quot;&quot;
+                                package a.tagging
+
+                                required_tags := [
+                                    &quot;Environment&quot;, &quot;CostCenter&quot;, &quot;Organization&quot;, 
+                                    &quot;Country&quot;, &quot;GDPRCompliant&quot;, &quot;DataResidency&quot;
+                                ]
+
+                                deny[msg] {
+                                    input.resource[resource_type][name]
+                                    resource_type != &quot;data&quot;
+                                    not input.resource[resource_type][name].tags
+                                    msg := sprintf(&quot;Resource %s.%s is missing tags&quot;, [resource_type, name])
+                                }
+
+                                deny[msg] {
+                                    input.resource[resource_type][name].tags
+                                    required_tag := required_tags[_]
+                                    not input.resource[resource_type][name].tags[required_tag]
+                                    msg := sprintf(&quot;Resource %s.%s is missing required tag: %s&quot;, [resource_type, name, required_tag])
+                                }
+                            &quot;&quot;&quot;
+
+                            sh &quot;&quot;&quot;
+                                curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
+                                sudo mv conftest /usr/local/bin
+
+                                find infrastructure/ -name &quot;*.tf&quot; -exec conftest verify --policy policies/ {} \\;
+                            &quot;&quot;&quot;
+
+                            echo &quot;✅ Policy validation completed&quot;
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('💰 Cost Control') {
+            steps {
+                script {
+                    echo &quot;📊 Calculating infrastructure costs in euros...&quot;
+
+                    // Set up Infracost with currency support
+                    sh &quot;&quot;&quot;
+                        curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
+                        export PATH=\$PATH:\$HOME/.local/bin
+
+                        cd infrastructure/environments/${params.ENVIRONMENT}
+                        terraform init -backend=false
+
+                        infracost breakdown \\
+                            --path . \\
+                            --currency EUR \\
+                            --format json \\
+                            --out-file ../../../cost-estimate.json
+
+                        infracost output \\
+                            --path ../../../cost-estimate.json \\
+                            --format table \\
+                            --out-file ../../../cost-summary.txt
+                    &quot;&quot;&quot;
+
+                    // Validate costs against budget thresholds
+                    def costData = readJSON file: 'cost-estimate.json'
+                    def monthlyCostEUR = costData.totalMonthlyCost as Double
+
+                    def budgetLimits = [
+                        'development': 5000,
+                        'staging': 15000,
+                        'production': 50000
+                    ]
+
+                    def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
+
+                    echo &quot;Calculated monthly cost: ${monthlyCostEUR} EUR&quot;
+                    echo &quot;Budget for ${params.ENVIRONMENT}: ${maxBudget} EUR&quot;
+
+                    if (monthlyCostEUR &gt; maxBudget) {
+                        def overBudget = monthlyCostEUR - maxBudget
+                        echo &quot;⚠️ Budget exceeded by ${overBudget} EUR!&quot;
+
+                        if (params.ENVIRONMENT == 'production' &amp;&amp; !params.FORCE_DEPLOYMENT) {
+                            error(&quot;Budget overrun not permitted for production without CFO approval&quot;)
+                        }
+                    }
+
+                    // Generate the cost report
+                    def costReport = &quot;&quot;&quot;
+                    # Cost Report - ${env.ORGANIZATION_NAME}
+
+                    **Environment:** ${params.ENVIRONMENT}
+                    **Date:** ${new Date().format('yyyy-MM-dd HH:mm')} (local time)
+                    **Cost centre:** ${params.COST_CENTER}
+
+                    ## Monthly cost
+                    - **Total:** ${monthlyCostEUR} EUR
+                    - **Budget:** ${maxBudget} EUR
+                    - **Status:** ${monthlyCostEUR &lt;= maxBudget ? '✅ Within budget' : '❌ over budget'}
+
+                    ## Cost breakdown
+                    ${readFile('cost-summary.txt')}
+
+                    ## Recommendations
+                    - Use Reserved Instances for production workloads
+                    - Enable auto-scaling for development environments
+                    - Implement scheduled shutdowns for non-critical systems
+                    &quot;&quot;&quot;
+
+                    writeFile file: 'cost-report-a.md', text: costReport
+                    archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
+
+                    echo &quot;✅ Cost control completed&quot;
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<h3 id="05_code_3-terratest-for-vpc-implementation-05_code_3">05_CODE_3: Terratest for VPC implementation {#05_code_3}</h3>
+<p><em>Referenced from chapter 5: <a href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Architecture as Code</a></em></p>
+<pre><code class="language-go">// test/a_vpc_test.go
+// Terratest suite for VPC implementation with GDPR compliance
+
+package test
+
+import (
+    &quot;encoding/json&quot;
+    &quot;fmt&quot;
+    &quot;strings&quot;
+    &quot;testing&quot;
+    &quot;time&quot;
+
+    &quot;github.com/aws/aws-sdk-go/aws&quot;
+    &quot;github.com/aws/aws-sdk-go/aws/session&quot;
+    &quot;github.com/aws/aws-sdk-go/service/ec2&quot;
+    &quot;github.com/aws/aws-sdk-go/service/cloudtrail&quot;
+    &quot;github.com/gruntwork-io/terratest/modules/terraform&quot;
+    &quot;github.com/gruntwork-io/terratest/modules/test-structure&quot;
+    &quot;github.com/stretchr/testify/assert&quot;
+    &quot;github.com/stretchr/testify/require&quot;
+)
+
+// EuropeanVPCTestSuite defines the reusable Terratest suite for the VPC implementation
+type EuropeanVPCTestSuite struct {
+    TerraformOptions *terraform.Options
+    AWSSession       *session.Session
+    OrganizationName string
+    Environment      string
+    CostCenter       string
+}
+
+// TestEuropeanVPCGDPRCompliance validates GDPR compliance expectations for the VPC implementation
+func TestEuropeanVPCGDPRCompliance(t *testing.T) {
+    t.Parallel()
+
+    suite := setupEuropeanVPCTest(t, &quot;development&quot;)
+    defer cleanupEuropeanVPCTest(t, suite)
+
+    // Deploy infrastructure
+    terraform.InitAndApply(t, suite.TerraformOptions)
+
+    // Test GDPR compliance requirements
+    t.Run(&quot;TestVPCFlowLogsEnabled&quot;, func(t *testing.T) {
+        testVPCFlowLogsEnabled(t, suite)
+    })
+
+    t.Run(&quot;TestEncryptionAtRest&quot;, func(t *testing.T) {
+        testEncryptionAtRest(t, suite)
+    })
+
+    t.Run(&quot;TestDataResidencyEU&quot;, func(t *testing.T) {
+        testDataResidencyEU(t, suite)
+    })
+
+    t.Run(&quot;TestAuditLogging&quot;, func(t *testing.T) {
+        testAuditLogging(t, suite)
+    })
+
+    t.Run(&quot;TestEuropeanTagging&quot;, func(t *testing.T) {
+        testEuropeanTagging(t, suite)
+    })
+}
+
+// setupEuropeanVPCTest prepares the temporary test environment for VPC validation
+func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuite {
+    // Unique test identifier
+    uniqueID := strings.ToLower(fmt.Sprintf(&quot;test-%d&quot;, time.Now().Unix()))
+    organizationName := fmt.Sprintf(&quot;a-org-%s&quot;, uniqueID)
+
+    // Terraform configuration
+    terraformOptions := &amp;terraform.Options{
+        TerraformDir: &quot;../infrastructure/modules/vpc&quot;,
+        Whose: map[string]interface{}{
+            &quot;organization_name&quot;:     organizationName,
+            &quot;environment&quot;:          environment,
+            &quot;cost_center&quot;:          &quot;CC-TEST-001&quot;,
+            &quot;gdpr_compliance&quot;:      true,
+            &quot;data_residency&quot;:       &quot;EU&quot;,
+            &quot;enable_flow_logs&quot;:     true,
+            &quot;enable_encryption&quot;:    true,
+            &quot;audit_logging&quot;:        true,
+        },
+        BackendConfig: map[string]interface{}{
+            &quot;bucket&quot;: &quot;a-org-terraform-test-state&quot;,
+            &quot;key&quot;:    fmt.Sprintf(&quot;test/%s/terraform.tfstate&quot;, uniqueID),
+            &quot;region&quot;: &quot;eu-west-1&quot;,
+        },
+        RetryableTerraformErrors: map[string]string{
+            &quot;.*&quot;: &quot;Transient error - retrying...&quot;,
+        },
+        MaxRetries:         3,
+        TimeBetweenRetries: 5 * time.Second,
+    }
+
+    // AWS session for EU West region
+    awsSession := session.Must(session.NewSession(&amp;aws.Config{
+        Region: aws.String(&quot;eu-west-1&quot;),
+    }))
+
+    return &amp;EuropeanVPCTestSuite{
+        TerraformOptions: terraformOptions,
+        AWSSession:       awsSession,
+        OrganizationName: organizationName,
+        Environment:      environment,
+        CostCenter:       &quot;CC-TEST-001&quot;,
+    }
+}
+
+// testVPCFlowLogsEnabled validates that VPC Flow Logs are enabled for GDPR compliance
+func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
+    // Fetch the VPC ID from Terraform output
+    vpcID := terraform.Output(t, suite.TerraformOptions, &quot;vpc_id&quot;)
+    require.NotEmpty(t, vpcID, &quot;VPC ID should not be empty&quot;)
+
+    // AWS EC2 client
+    ec2Client := ec2.New(suite.AWSSession)
+
+    // Check Flow Logs configuration
+    flowLogsInput := &amp;ec2.DescribeFlowLogsInput{
+        Filters: []*ec2.Filter{
+            {
+                Name:   aws.String(&quot;resource-id&quot;),
+                Values: []*string{aws.String(vpcID)},
+            },
+        },
+    }
+
+    flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
+    require.NoError(t, err, &quot;Failed to describe VPC flow logs&quot;)
+
+    // Validate that VPC Flow Logs are enabled
+    assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, &quot;VPC Flow Logs should be enabled for GDPR compliance&quot;)
+
+    for _, flowLog := range flowLogsOutput.FlowLogs {
+        assert.Equal(t, &quot;Active&quot;, *flowLog.FlowLogStatus, &quot;Flow log should be active&quot;)
+        assert.Equal(t, &quot;ALL&quot;, *flowLog.TrafficType, &quot;Flow log should capture all traffic for compliance&quot;)
+    }
+
+    t.Logf(&quot;✅ VPC Flow Logs enabled for GDPR compliance: %s&quot;, vpcID)
+}
+
+// testEncryptionAtRest validates that all storage is encrypted according to GDPR requirements
+func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
+    // Get KMS key from Terraform output
+    kmsKeyArn := terraform.Output(t, suite.TerraformOptions, &quot;kms_key_arn&quot;)
+    require.NotEmpty(t, kmsKeyArn, &quot;KMS key ARN should not be empty&quot;)
+
+    // Validate that KMS key is from EU West region
+    assert.Contains(t, kmsKeyArn, &quot;eu-west-1&quot;, &quot;KMS key should be in EU West region for data residency&quot;)
+
+    t.Logf(&quot;✅ Encryption at rest validated for GDPR compliance&quot;)
+}
+
+// testDataResidencyEU validates that all infrastructure is within EU borders
+func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
+    // Validate that VPC is in EU region
+    vpcID := terraform.Output(t, suite.TerraformOptions, &quot;vpc_id&quot;)
+
+    ec2Client := ec2.New(suite.AWSSession)
+
+    vpcOutput, err := ec2Client.DescribeVpcs(&amp;ec2.DescribeVpcsInput{
+        VpcIds: []*string{aws.String(vpcID)},
+    })
+    require.NoError(t, err, &quot;Failed to describe VPC&quot;)
+    require.Len(t, vpcOutput.Vpcs, 1, &quot;Should find exactly one VPC&quot;)
+
+    // Check region from session config
+    region := *suite.AWSSession.Config.Region
+    allowedRegions := []string{&quot;eu-west-1&quot;, &quot;eu-central-1&quot;, &quot;eu-west-2&quot;}
+
+    regionAllowed := false
+    for _, allowedRegion := range allowedRegions {
+        if region == allowedRegion {
+            regionAllowed = true
+            break
+        }
+    }
+
+    assert.True(t, regionAllowed, &quot;VPC must be in EU region for data residency. Found: %s&quot;, region)
+
+    t.Logf(&quot;✅ Data residency validated - all infrastructure in EU region: %s&quot;, region)
+}
+
+// testAuditLogging validates that audit logging is configured according to legal requirements
+func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
+    // Check the CloudTrail configuration matches organisational expectations
+    cloudtrailClient := cloudtrail.New(suite.AWSSession)
+
+    trails, err := cloudtrailClient.DescribeTrails(&amp;cloudtrail.DescribeTrailsInput{})
+    require.NoError(t, err, &quot;Failed to list CloudTrail trails&quot;)
+
+    foundOrgTrail := false
+    for _, trail := range trails.TrailList {
+        if strings.Contains(*trail.Name, suite.OrganizationName) {
+            foundOrgTrail = true
+            t.Logf(&quot;✅ CloudTrail audit logging configured: %s&quot;, *trail.Name)
+        }
+    }
+
+    assert.True(t, foundOrgTrail, &quot;Organization CloudTrail should exist for audit logging&quot;)
+}
+
+// testEuropeanTagging confirms that all resources expose the expected governance tags
+func testEuropeanTagging(t *testing.T, suite *EuropeanVPCTestSuite) {
+    requiredTags := []string{
+        &quot;Environment&quot;, &quot;Organization&quot;, &quot;CostCenter&quot;, 
+        &quot;Country&quot;, &quot;GDPRCompliant&quot;, &quot;DataResidency&quot;,
+    }
+
+    expectedTagValues := map[string]string{
+        &quot;Environment&quot;:     suite.Environment,
+        &quot;Organization&quot;:    suite.OrganizationName,
+        &quot;CostCenter&quot;:      suite.CostCenter,
+        &quot;Country&quot;:         &quot;EU&quot;,
+        &quot;GDPRCompliant&quot;:   &quot;true&quot;,
+        &quot;DataResidency&quot;:   &quot;EU&quot;,
+    }
+
+    // Test VPC tags
+    vpcID := terraform.Output(t, suite.TerraformOptions, &quot;vpc_id&quot;)
+    ec2Client := ec2.New(suite.AWSSession)
+
+    vpcTags, err := ec2Client.DescribeTags(&amp;ec2.DescribeTagsInput{
+        Filters: []*ec2.Filter{
+            {
+                Name:   aws.String(&quot;resource-id&quot;),
+                Values: []*string{aws.String(vpcID)},
+            },
+        },
+    })
+    require.NoError(t, err, &quot;Failed to describe VPC tags&quot;)
+
+    // Convert the returned tags into a map for simpler validation
+    vpcTagMap := make(map[string]string)
+    for _, tag := range vpcTags.Tags {
+        vpcTagMap[*tag.Key] = *tag.Value
+    }
+
+    // Validate mandatory governance tags
+    for _, requiredTag := range requiredTags {
+        assert.Contains(t, vpcTagMap, requiredTag, &quot;VPC should have required tag: %s&quot;, requiredTag)
+
+        if expectedValue, exists := expectedTagValues[requiredTag]; exists {
+            assert.Equal(t, expectedValue, vpcTagMap[requiredTag], 
+                &quot;Tag %s should have correct value&quot;, requiredTag)
+        }
+    }
+
+    t.Logf(&quot;✅ Tagging validated for all resources&quot;)
+}
+
+// cleanupEuropeanVPCTest removes the Terraform deployment after the tests complete
+func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
+    terraform.Destroy(t, suite.TerraformOptions)
+    t.Logf(&quot;✅ Test environment removed for %s&quot;, suite.OrganizationName)
+}
+</code></pre>
+<hr />
+<h2 id="infrastructure-as-code-cloudformation-cloudformation-architecture-as-code">Infrastructure as Code – CloudFormation {#cloudformation-architecture-as-code}</h2>
+<p>Architecture as Code principles in this area emphasise resilient AWS foundations and strong governance.</p>
+<p>This section contains CloudFormation templates for AWS infrastructure adapted for organisations.</p>
+<h3 id="07_code_1-vpc-setup-for-organisations-with-gdpr-compliance-07_code_1">07_CODE_1: VPC Setup for organisations with GDPR compliance {#07_code_1}</h3>
+<p><em>Referenced from Chapter 7: <a href="../07_containerisation/">Containerisation and Orchestration as Code</a></em></p>
+<pre><code class="language-yaml"># cloudformation/a-org-vpc.yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'VPC setup for organisations with GDPR compliance'
+
+Parameters:
+  EnvironmentType:
+    Type: String
+    Default: development
+    AllowedValues: [development, staging, production]
+    Description: 'Environment type for deployment'
+
+  DataClassification:
+    Type: String
+    Default: internal
+    AllowedValues: [public, internal, confidential, restricted]
+    Description: 'Data classification according to security standards'
+
+  ComplianceRequirements:
+    Type: CommaDelimitedList
+    Default: &quot;gdpr,iso27001&quot;
+    Description: 'List of compliance requirements that must be met'
+
+Conditions:
+  IsProduction: !Equals [!Ref EnvironmentType, production]
+  RequiresGDPR: !Contains [!Ref ComplianceRequirements, gdpr]
+  RequiresISO27001: !Contains [!Ref ComplianceRequirements, iso27001]
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !If [IsProduction, '10.0.0.0/16', '10.1.0.0/16']
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: !Sub '${AWS::StackName}-vpc'
+        - Key: Environment
+          Value: !Ref EnvironmentType
+        - Key: DataClassification
+          Value: !Ref DataClassification
+        - Key: GDPRCompliant
+          Value: !If [RequiresGDPR, 'true', 'false']
+        - Key: ISO27001Compliant
+          Value: !If [RequiresISO27001, 'true', 'false']
+        - Key: Country
+          Value: 'EU'
+        - Key: Region
+          Value: 'eu-west-1'
+</code></pre>
+<hr />
+<h2 id="automation-scripts-automation-scripts">Automation Scripts {#automation-scripts}</h2>
+<p>This section contains Python scripts and other automation tooling for Architecture as Code operations.</p>
+<h3 id="22_code_1-comprehensive-test-framework-for-architecture-as-code-22_code_1">22_CODE_1: Comprehensive test framework for Architecture as Code {#22_code_1}</h3>
+<p>Architecture as Code principles within this area emphasise automated validation and transparent feedback.
+<em>Referenced from chapter 24: <a href="../24_best_practices/">Architecture as Code Best Practices and Lessons Learned</a></em></p>
+<pre><code class="language-python"># testing/comprehensive_iac_testing.py
+import pytest
+import boto3
+import json
+import yaml
+from typing import Dict, List, Any
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+
+@dataclass
+class TestCase:
+    name: str
+    description: str
+    test_type: str
+    severity: str
+    expected_result: Any
+    actual_result: Any = None
+    status: str = &quot;pending&quot;
+    execution_time: float = 0.0
+
+class ComprehensiveIaCTesting:
+    &quot;&quot;&quot;
+    Comprehensive testing framework for Infrastructure as Code.
+    Based on Architecture as Code best practices and international standards.
+    &quot;&quot;&quot;
+
+    def __init__(self, region='eu-west-1'):
+        self.region = region
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.s3 = boto3.client('s3', region_name=region)
+        self.iam = boto3.client('iam', region_name=region)
+        self.test_results = []
+
+    def test_infrastructure_security(self, stack_name: str) -&gt; List[TestCase]:
+        &quot;&quot;&quot;Test comprehensive security configuration&quot;&quot;&quot;
+
+        security_tests = [
+            self._test_encryption_at_rest(),
+            self._test_encryption_in_transit(),
+            self._test_vpc_flow_logs(),
+            self._test_security_groups(),
+            self._test_iam_policies(),
+            self._test_s3_bucket_policies(),
+            self._test_rds_security()
+        ]
+
+        return security_tests
+
+    def _test_encryption_at_rest(self) -&gt; TestCase:
+        &quot;&quot;&quot;Verify all storage resources use encryption at rest&quot;&quot;&quot;
+        test = TestCase(
+            name=&quot;Encryption at Rest Validation&quot;,
+            description=&quot;Verify all storage uses encryption&quot;,
+            test_type=&quot;security&quot;,
+            severity=&quot;high&quot;,
+            expected_result=&quot;All storage encrypted&quot;
+        )
+
+        try:
+            # Test S3 bucket encryption
+            buckets = self.s3.list_buckets()['Buckets']
+            unencrypted_buckets = []
+
+            for bucket in buckets:
+                bucket_name = bucket['Name']
+                try:
+                    encryption = self.s3.get_bucket_encryption(Bucket=bucket_name)
+                    if not encryption.get('ServerSideEncryptionConfiguration'):
+                        unencrypted_buckets.append(bucket_name)
+                except self.s3.exceptions.ClientError:
+                    unencrypted_buckets.append(bucket_name)
+
+            if unencrypted_buckets:
+                test.status = &quot;failed&quot;
+                test.actual_result = f&quot;Unencrypted buckets: {unencrypted_buckets}&quot;
+            else:
+                test.status = &quot;passed&quot;
+                test.actual_result = &quot;All S3 buckets encrypted&quot;
+
+        except Exception as e:
+            test.status = &quot;error&quot;
+            test.actual_result = f&quot;Test error: {str(e)}&quot;
+
+        return test
+</code></pre>
+<hr />
+<h2 id="configuration-files-configuration">Configuration Files {#configuration}</h2>
+<p>This section contains configuration files for different tools and services.</p>
+<h3 id="22_code_2-governance-policy-configuration-for-organisations-22_code_2">22_CODE_2: Governance policy configuration for organisations {#22_code_2}</h3>
+<p><em>Referenced from chapter 24: <a href="../24_best_practices/">Best Practices and Lessons Learned</a></em></p>
+<pre><code class="language-yaml"># governance/a-governance-policy.yaml
+governance_framework:
+  organization: &quot;Organization AB&quot;
+  compliance_standards: [&quot;GDPR&quot;, &quot;ISO27001&quot;, &quot;SOC2&quot;]
+  data_residency: &quot;EU&quot;
+  regulatory_authority: &quot;Integritetsskyddsmyndigheten (IMY)&quot;
+
+policy_enforcement:
+  automated_checks:
+    pre_deployment:
+      - &quot;cost_estimation&quot;
+      - &quot;security_scanning&quot;
+      - &quot;compliance_validation&quot;
+      - &quot;resource_tagging&quot;
+
+    post_deployment:
+      - &quot;security_monitoring&quot;
+      - &quot;cost_monitoring&quot;
+      - &quot;performance_monitoring&quot;
+      - &quot;compliance_auditing&quot;
+
+  manual_approvals:
+    production_deployments:
+      approvers: [&quot;Tech Lead&quot;, &quot;Security Team&quot;, &quot;Compliance Officer&quot;]
+      criteria:
+        - &quot;Security review completed&quot;
+        - &quot;Cost impact assessed&quot;
+        - &quot;GDPR compliance verified&quot;
+        - &quot;Business stakeholder approval&quot;
+
+    emergency_changes:
+      approvers: [&quot;Incident Commander&quot;, &quot;Security Lead&quot;]
+      max_approval_time: &quot;30 minutes&quot;
+      post_incident_review: &quot;required&quot;
+
+cost_governance:
+  budget_controls:
+    development: 
+      monthly_limit: &quot;10000 EUR&quot;
+      alert_threshold: &quot;80%&quot;
+      auto_shutdown: &quot;enabled&quot;
+
+    staging:
+      monthly_limit: &quot;25000 EUR&quot;
+      alert_threshold: &quot;85%&quot;
+      auto_shutdown: &quot;disabled&quot;
+
+    production:
+      monthly_limit: &quot;100000 EUR&quot;
+      alert_threshold: &quot;90%&quot;
+      auto_shutdown: &quot;disabled&quot;
+      escalation: &quot;immediate&quot;
+
+security_policies:
+  data_protection:
+    encryption:
+      at_rest: &quot;mandatory&quot;
+      in_transit: &quot;mandatory&quot;
+      key_management: &quot;AWS KMS with customer managed keys&quot;
+
+    access_control:
+      principle: &quot;least_privilege&quot;
+      mfa_required: true
+      session_timeout: &quot;8 hours&quot;
+      privileged_access_review: &quot;quarterly&quot;
+
+    monitoring:
+      security_events: &quot;all_logged&quot;
+      anomaly_detection: &quot;enabled&quot;
+      incident_response: &quot;24/7&quot;
+      retention_period: &quot;7 years&quot;
+
+compliance_monitoring:
+  gdpr_requirements:
+    data_mapping: &quot;automated&quot;
+    consent_management: &quot;integrated&quot;
+    right_to_erasure: &quot;implemented&quot;
+    data_breach_notification: &quot;automated&quot;
+
+  audit_requirements:
+    frequency: &quot;quarterly&quot;
+    scope: &quot;all_infrastructure&quot;
+    external_auditor: &quot;required_annually&quot;
+    evidence_collection: &quot;automated&quot;
+</code></pre>
+<hr />
+<h2 id="chapter-13-testing-strategies-reference-implementations-chapter-13-testing">Chapter 13: Testing Strategies Reference Implementations {#chapter-13-testing}</h2>
+<p>This section contains comprehensive code examples referenced in Chapter 13: Testing Strategies for Infrastructure as Code.</p>
+<h3 id="13_code_a-vitest-configuration-for-infrastructure-as-code-projects-13_code_a">13_CODE_A: Vitest Configuration for Infrastructure as Code Projects {#13_code_a}</h3>
+<p><em>Listing 13-A.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>This configuration demonstrates how to set up Vitest for testing infrastructure configuration generators and validation scripts.</p>
+<pre><code class="language-typescript">// vitest.config.ts
+import { defineConfig } from 'vitest/config';
+import path from 'path';
+
+export default defineConfig({
+  test: {
+    // Use globals to avoid imports in each test file
+    globals: true,
+
+    // Test environment (node for infrastructure tooling)
+    environment: 'node',
+
+    // Coverage configuration
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/',
+        'dist/',
+        '**/*.config.ts',
+        '**/types/**',
+      ],
+      // Require at least 80% coverage for infrastructure code
+      lines: 80,
+      functions: 80,
+      branches: 80,
+      statements: 80,
+    },
+
+    // Test timeout for infrastructure operations
+    testTimeout: 30000,
+
+    // Include test files
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts}'],
+
+    // Exclude patterns
+    exclude: [
+      'node_modules',
+      'dist',
+      '.terraform',
+      '**/*.d.ts',
+    ],
+  },
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@infra': path.resolve(__dirname, './infrastructure'),
+    },
+  },
+});
+</code></pre>
+<h3 id="13_code_b-terraform-configuration-generator-13_code_b">13_CODE_B: Terraform Configuration Generator {#13_code_b}</h3>
+<p><em>Listing 13-B.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>This TypeScript module demonstrates programmatic generation of Terraform configurations with built-in compliance validation.</p>
+<pre><code class="language-typescript">// src/generators/terraform-config.ts
+export interface TerraformConfig {
+  provider: string;
+  region: string;
+  environment: string;
+  resources: ResourceConfig[];
+}
+
+export interface ResourceConfig {
+  type: string;
+  name: string;
+  properties: Record&lt;string, any&gt;;
+}
+
+export class TerraformConfigGenerator {
+  generateVPCConfig(
+    environment: string,
+    region: string = 'eu-west-1'
+  ): TerraformConfig {
+    // Validate EU regions for GDPR compliance
+    const euRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2'];
+    if (!euRegions.includes(region)) {
+      throw new Error('Region must be within EU for GDPR compliance');
+    }
+
+    return {
+      provider: 'aws',
+      region,
+      environment,
+      resources: [
+        {
+          type: 'aws_vpc',
+          name: `vpc-${environment}`,
+          properties: {
+            cidr_block: '10.0.0.0/16',
+            enable_dns_hostnames: true,
+            enable_dns_support: true,
+            tags: {
+              Name: `vpc-${environment}`,
+              Environment: environment,
+              ManagedBy: 'Terraform',
+              GdprCompliant: 'true',
+              DataResidency: 'EU',
+            },
+          },
+        },
+      ],
+    };
+  }
+
+  generateRDSConfig(
+    environment: string,
+    instanceClass: string = 'db.t3.micro',
+    encrypted: boolean = true
+  ): ResourceConfig {
+    // Ensure encryption for production
+    if (environment === 'production' &amp;&amp; !encrypted) {
+      throw new Error('Production databases must have encryption enabled');
+    }
+
+    return {
+      type: 'aws_db_instance',
+      name: `rds-${environment}`,
+      properties: {
+        allocated_storage: environment === 'production' ? 100 : 20,
+        engine: 'postgres',
+        engine_version: '14.7',
+        instance_class: instanceClass,
+        storage_encrypted: encrypted,
+        backup_retention_period: environment === 'production' ? 30 : 7,
+        multi_az: environment === 'production',
+        tags: {
+          Environment: environment,
+          GdprCompliant: 'true',
+          EncryptionEnabled: encrypted.toString(),
+        },
+      },
+    };
+  }
+}
+</code></pre>
+<h3 id="13_code_c-terraform-configuration-generator-tests-13_code_c">13_CODE_C: Terraform Configuration Generator Tests {#13_code_c}</h3>
+<p><em>Listing 13-C.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Comprehensive Vitest suite validating the Terraform configuration generator with GDPR compliance checks and regional restrictions.</p>
+<pre><code class="language-typescript">// src/generators/terraform-config.test.ts
+import { describe, expect, it } from 'vitest';
+import { TerraformConfigGenerator } from './terraform-config';
+
+describe('TerraformConfigGenerator', () =&gt; {
+  const generator = new TerraformConfigGenerator();
+
+  it('creates a GDPR-compliant VPC for production in the EU', () =&gt; {
+    const config = generator.generateVPCConfig('production', 'eu-west-2');
+
+    expect(config.region).toBe('eu-west-2');
+    expect(config.resources[0].properties.tags.GdprCompliant).toBe('true');
+    expect(config.resources[0].properties.tags.DataResidency).toBe('EU');
+  });
+
+  it('refuses to generate VPCs outside approved EU regions', () =&gt; {
+    expect(() =&gt; generator.generateVPCConfig('production', 'us-east-1')).toThrowError(
+      'Region must be within EU for GDPR compliance'
+    );
+  });
+
+  it('enforces encryption for production databases', () =&gt; {
+    expect(() =&gt; generator.generateRDSConfig('production', 'db.r6g.large', false)).toThrowError(
+      'Production databases must have encryption enabled'
+    );
+
+    const resource = generator.generateRDSConfig('production', 'db.r6g.large', true);
+    expect(resource.properties.storage_encrypted).toBe(true);
+    expect(resource.properties.multi_az).toBe(true);
+    expect(resource.properties.tags.EncryptionEnabled).toBe('true');
+  });
+
+  it('creates leaner development databases whilst retaining encryption', () =&gt; {
+    const resource = generator.generateRDSConfig('development');
+
+    expect(resource.properties.allocated_storage).toBe(20);
+    expect(resource.properties.multi_az).toBe(false);
+    expect(resource.properties.storage_encrypted).toBe(true);
+  });
+});
+</code></pre>
+<h3 id="13_code_d-infrastructure-validator-13_code_d">13_CODE_D: Infrastructure Validator {#13_code_d}</h3>
+<p><em>Listing 13-D.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Infrastructure validation module that checks resources against organisational policies and compliance requirements.</p>
+<pre><code class="language-typescript">// src/validators/infrastructure-validator.ts
+export interface ResourceTag {
+  key: string;
+  value: string;
+}
+
+export interface SecurityRule {
+  protocol: 'tcp' | 'udp' | 'icmp';
+  port: number;
+  cidr: string;
+}
+
+export interface ClassifiedResource {
+  id: string;
+  classification: 'public' | 'internal' | 'confidential';
+  encrypted: boolean;
+}
+
+export interface ResourceDefinition {
+  id: string;
+  type: string;
+  tags: ResourceTag[];
+  securityRules?: SecurityRule[];
+  data?: ClassifiedResource;
+}
+
+export interface ValidationResult {
+  id: string;
+  errors: string[];
+  warnings: string[];
+}
+
+export class InfrastructureValidator {
+  constructor(private readonly mandatoryTags: string[]) {}
+
+  validate(resources: ResourceDefinition[]): ValidationResult[] {
+    return resources.map((resource) =&gt; ({
+      id: resource.id,
+      errors: [
+        ...this.validateMandatoryTags(resource),
+        ...this.validateSecurityRules(resource),
+        ...this.validateDataClassification(resource),
+      ],
+      warnings: this.collectWarnings(resource),
+    }));
+  }
+
+  private validateMandatoryTags(resource: ResourceDefinition): string[] {
+    const presentKeys = resource.tags.map((tag) =&gt; tag.key);
+    return this.mandatoryTags
+      .filter((tag) =&gt; !presentKeys.includes(tag))
+      .map((tag) =&gt; `Missing mandatory tag: ${tag}`);
+  }
+
+  private validateSecurityRules(resource: ResourceDefinition): string[] {
+    if (!resource.securityRules?.length) {
+      return [];
+    }
+
+    return resource.securityRules
+      .filter((rule) =&gt; rule.protocol === 'tcp' &amp;&amp; rule.port === 22 &amp;&amp; rule.cidr === '0.0.0.0/0')
+      .map(() =&gt; 'SSH must not be open to the internet');
+  }
+
+  private validateDataClassification(resource: ResourceDefinition): string[] {
+    if (!resource.data) {
+      return [];
+    }
+
+    if (resource.data.classification === 'confidential' &amp;&amp; !resource.data.encrypted) {
+      return ['Confidential resources must be encrypted'];
+    }
+
+    return [];
+  }
+
+  private collectWarnings(resource: ResourceDefinition): string[] {
+    if (!resource.securityRules?.length) {
+      return ['No security rules defined; ensure defence-in-depth controls exist'];
+    }
+
+    const usesWildcard = resource.securityRules.some((rule) =&gt; rule.cidr === '0.0.0.0/0');
+    return usesWildcard ? ['Wildcard CIDR detected; confirm zero-trust posture'] : [];
+  }
+}
+</code></pre>
+<h3 id="13_code_e-infrastructure-validator-tests-13_code_e">13_CODE_E: Infrastructure Validator Tests {#13_code_e}</h3>
+<p><em>Listing 13-E.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Comprehensive Vitest suite covering mandatory tags, security groups and compliance policies.</p>
+<pre><code class="language-typescript">// src/validators/infrastructure-validator.test.ts
+import { describe, expect, it } from 'vitest';
+import { InfrastructureValidator } from './infrastructure-validator';
+
+const validator = new InfrastructureValidator(['Environment', 'CostCentre', 'Owner']);
+
+describe('InfrastructureValidator', () =&gt; {
+  it('flags resources missing mandatory tags', () =&gt; {
+    const [result] = validator.validate([
+      {
+        id: 'vpc-001',
+        type: 'aws_vpc',
+        tags: [
+          { key: 'Environment', value: 'production' },
+          { key: 'Owner', value: 'platform-team' },
+        ],
+      },
+    ]);
+
+    expect(result.errors).toContain('Missing mandatory tag: CostCentre');
+  });
+
+  it('detects internet-facing SSH rules', () =&gt; {
+    const [result] = validator.validate([
+      {
+        id: 'sg-123',
+        type: 'aws_security_group',
+        tags: [
+          { key: 'Environment', value: 'staging' },
+          { key: 'CostCentre', value: 'IT-042' },
+          { key: 'Owner', value: 'security-team' },
+        ],
+        securityRules: [
+          { protocol: 'tcp', port: 22, cidr: '0.0.0.0/0' },
+        ],
+      },
+    ]);
+
+    expect(result.errors).toContain('SSH must not be open to the internet');
+    expect(result.warnings).toContain('Wildcard CIDR detected; confirm zero-trust posture');
+  });
+
+  it('enforces encryption for confidential data sets', () =&gt; {
+    const [result] = validator.validate([
+      {
+        id: 's3-logs',
+        type: 'aws_s3_bucket',
+        tags: [
+          { key: 'Environment', value: 'production' },
+          { key: 'CostCentre', value: 'FIN-001' },
+          { key: 'Owner', value: 'risk-office' },
+        ],
+        data: {
+          id: 'audit-logs',
+          classification: 'confidential',
+          encrypted: false,
+        },
+      },
+    ]);
+
+    expect(result.errors).toContain('Confidential resources must be encrypted');
+  });
+
+  it('passes compliant resources without errors', () =&gt; {
+    const [result] = validator.validate([
+      {
+        id: 'db-analytics',
+        type: 'aws_rds_instance',
+        tags: [
+          { key: 'Environment', value: 'production' },
+          { key: 'CostCentre', value: 'DATA-007' },
+          { key: 'Owner', value: 'data-platform' },
+        ],
+        securityRules: [
+          { protocol: 'tcp', port: 5432, cidr: '10.0.0.0/16' },
+        ],
+        data: {
+          id: 'analytics',
+          classification: 'internal',
+          encrypted: true,
+        },
+      },
+    ]);
+
+    expect(result.errors).toHaveLength(0);
+    expect(result.warnings).toHaveLength(0);
+  });
+});
+</code></pre>
+<h3 id="13_code_f-github-actions-vitest-workflow-13_code_f">13_CODE_F: GitHub Actions Vitest Workflow {#13_code_f}</h3>
+<p><em>Listing 13-F.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>CI/CD workflow demonstrating automated infrastructure code testing with coverage reporting.</p>
+<pre><code class="language-yaml"># .github/workflows/infrastructure-vitest.yml
+name: Infrastructure Code Tests
+
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'vitest.config.ts'
+
+jobs:
+  vitest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
+      - name: Run Vitest with coverage
+        run: pnpm vitest run --coverage
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitest-coverage
+          path: coverage/
+
+      - name: Summarise test results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Vitest
+          path: coverage/coverage-final.json
+          reporter: vitest
+</code></pre>
+<h3 id="13_code_g-requirements-as-code-definition-13_code_g">13_CODE_G: Requirements as Code Definition {#13_code_g}</h3>
+<p><em>Listing 13-G.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>YAML-based requirements definition enabling traceability from business requirements to automated tests with compliance mapping and test specifications.</p>
+<pre><code class="language-yaml"># requirements/catalogue.yaml
+metadata:
+  version: 1
+  generated: 2024-04-15
+  owner: platform-risk-office
+
+requirements:
+  - id: SEC-001
+    title: Encrypt customer data at rest
+    priority: high
+    classification: gdpr
+    rationale: Protect personally identifiable information across EU jurisdictions.
+    tests:
+      - id: test-encryption-s3
+        description: Validate that S3 buckets containing GDPR data enable default encryption.
+        tooling: opa
+      - id: test-encryption-rds
+        description: Confirm RDS instances with GDPR tags have storage encryption enabled.
+        tooling: terratest
+
+  - id: PERF-003
+    title: Maintain API latency under 250ms at p95
+    priority: medium
+    classification: service-level
+    rationale: Preserve customer experience during peak trading windows.
+    tests:
+      - id: test-load-run
+        description: Execute Locust load test to validate latency thresholds.
+        tooling: k6
+      - id: test-auto-scaling
+        description: Verify auto-scaling triggers at 70% CPU utilisation.
+        tooling: terraform
+
+  - id: GOV-010
+    title: Ensure ownership metadata is present for every resource
+    priority: high
+    classification: governance
+    rationale: Support cost allocation and on-call routing.
+    tests:
+      - id: test-tag-enforcement
+        description: Confirm mandatory tags (Environment, CostCentre, Owner) exist on provisioned resources.
+        tooling: policy-as-code
+</code></pre>
+<h3 id="13_code_h-requirements-validation-framework-13_code_h">13_CODE_H: Requirements Validation Framework {#13_code_h}</h3>
+<p><em>Listing 13-H.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Python framework for automated validation of requirements against Infrastructure as Code implementations, including test execution and compliance coverage reporting.</p>
+<pre><code class="language-python"># requirements/validator.py
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, Iterable, List
+
+import yaml
+
+
+@dataclass
+class Requirement:
+    id: str
+    title: str
+    classification: str
+    priority: str
+    tests: List[Dict[str, str]]
+
+
+class RequirementValidator:
+    def __init__(self, catalogue: Iterable[Requirement]):
+        self.catalogue = list(catalogue)
+
+    @classmethod
+    def from_file(cls, path: Path) -&gt; 'RequirementValidator':
+        data = yaml.safe_load(path.read_text())
+        requirements = [Requirement(**item) for item in data['requirements']]
+        return cls(requirements)
+
+    def coverage_summary(self, executed_tests: Iterable[str]) -&gt; Dict[str, float]:
+        executed = set(executed_tests)
+        total = len(self.catalogue)
+        covered = sum(1 for requirement in self.catalogue if self._is_covered(requirement, executed))
+        return {
+            'total_requirements': total,
+            'covered_requirements': covered,
+            'coverage_percentage': round((covered / total) * 100, 2) if total else 100.0,
+        }
+
+    def missing_tests(self, executed_tests: Iterable[str]) -&gt; Dict[str, List[str]]:
+        executed = set(executed_tests)
+        missing: Dict[str, List[str]] = {}
+        for requirement in self.catalogue:
+            outstanding = [test['id'] for test in requirement.tests if test['id'] not in executed]
+            if outstanding:
+                missing[requirement.id] = outstanding
+        return missing
+
+    @staticmethod
+    def _is_covered(requirement: Requirement, executed: set[str]) -&gt; bool:
+        return all(test['id'] in executed for test in requirement.tests)
+
+
+def load_validator(catalogue_path: str) -&gt; RequirementValidator:
+    return RequirementValidator.from_file(Path(catalogue_path))
+</code></pre>
+<h3 id="13_code_i-terratest-for-gdpr-compliant-infrastructure-13_code_i">13_CODE_I: Terratest for GDPR-Compliant Infrastructure {#13_code_i}</h3>
+<p><em>Listing 13-I.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.</p>
+<pre><code class="language-go">// test/terraform_gdpr_test.go
+package test
+
+import (
+    &quot;testing&quot;
+
+    &quot;github.com/gruntwork-io/terratest/modules/aws&quot;
+    &quot;github.com/gruntwork-io/terratest/modules/terraform&quot;
+    &quot;github.com/stretchr/testify/require&quot;
+)
+
+func TestPlatformStackGDPRCompliance(t *testing.T) {
+    t.Parallel()
+
+    terraformOptions := &amp;terraform.Options{
+        TerraformDir: &quot;../infrastructure&quot;,
+        Vars: map[string]interface{}{
+            &quot;environment&quot;: &quot;staging&quot;,
+            &quot;region&quot;:       &quot;eu-west-1&quot;,
+        },
+    }
+
+    defer terraform.Destroy(t, terraformOptions)
+    terraform.InitAndApply(t, terraformOptions)
+
+    vpcID := terraform.Output(t, terraformOptions, &quot;vpc_id&quot;)
+    require.NotEmpty(t, vpcID)
+
+    flowLogsEnabled := terraform.Output(t, terraformOptions, &quot;vpc_flow_logs_enabled&quot;)
+    require.Equal(t, &quot;true&quot;, flowLogsEnabled, &quot;VPC flow logs must be enabled for GDPR auditing&quot;)
+
+    bucketID := terraform.Output(t, terraformOptions, &quot;logging_bucket_id&quot;)
+    encryption := aws.GetS3BucketEncryption(t, &quot;eu-west-1&quot;, bucketID)
+    require.Equal(t, &quot;AES256&quot;, *encryption.ServerSideEncryptionConfiguration.Rules[0].ApplyServerSideEncryptionByDefault.SSEAlgorithm)
+
+    tags := aws.GetTagsForVpc(t, &quot;eu-west-1&quot;, vpcID)
+    require.Equal(t, &quot;true&quot;, tags[&quot;GdprCompliant&quot;])
+    require.Equal(t, &quot;EU&quot;, tags[&quot;DataResidency&quot;])
+}
+</code></pre>
+<h3 id="13_code_j-policy-as-code-testing-with-opa-13_code_j">13_CODE_J: Policy-as-Code Testing with OPA {#13_code_j}</h3>
+<p><em>Listing 13-J.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.</p>
+<pre><code class="language-rego"># policies/infrastructure/security.rego
+package infrastructure.security
+
+default allow = true
+
+deny[msg] {
+  input.resource.type == &quot;aws_s3_bucket&quot;
+  not input.resource.encryption.enabled
+  msg := sprintf(&quot;Bucket %s must enable server-side encryption&quot;, [input.resource.id])
+}
+
+deny[msg] {
+  input.resource.type == &quot;aws_security_group_rule&quot;
+  input.resource.protocol == &quot;tcp&quot;
+  input.resource.port == 22
+  input.resource.cidr == &quot;0.0.0.0/0&quot;
+  msg := sprintf(&quot;SSH rule %s exposes port 22 to the internet&quot;, [input.resource.id])
+}
+
+deny[msg] {
+  input.resource.type == &quot;aws_rds_instance&quot;
+  input.resource.tags[&quot;Classification&quot;] == &quot;confidential&quot;
+  not input.resource.encryption.enabled
+  msg := sprintf(&quot;RDS instance %s storing confidential data must be encrypted&quot;, [input.resource.id])
+}
+
+# policies/infrastructure/security_test.rego
+package infrastructure
+
+test_enforces_bucket_encryption {
+  results := data.infrastructure.security.deny with input as {
+    &quot;resource&quot;: {
+      &quot;id&quot;: &quot;audit-logs&quot;,
+      &quot;type&quot;: &quot;aws_s3_bucket&quot;,
+      &quot;encryption&quot;: {&quot;enabled&quot;: false}
+    }
+  }
+
+  results[0] == &quot;Bucket audit-logs must enable server-side encryption&quot;
+}
+
+test_blocks_internet_ssh {
+  results := data.infrastructure.security.deny with input as {
+    &quot;resource&quot;: {
+      &quot;id&quot;: &quot;sg-rule-1&quot;,
+      &quot;type&quot;: &quot;aws_security_group_rule&quot;,
+      &quot;protocol&quot;: &quot;tcp&quot;,
+      &quot;port&quot;: 22,
+      &quot;cidr&quot;: &quot;0.0.0.0/0&quot;
+    }
+  }
+
+  results[0] == &quot;SSH rule sg-rule-1 exposes port 22 to the internet&quot;
+}
+
+test_requires_encrypted_confidential_databases {
+  results := data.infrastructure.security.deny with input as {
+    &quot;resource&quot;: {
+      &quot;id&quot;: &quot;rds-analytics&quot;,
+      &quot;type&quot;: &quot;aws_rds_instance&quot;,
+      &quot;tags&quot;: {&quot;Classification&quot;: &quot;confidential&quot;},
+      &quot;encryption&quot;: {&quot;enabled&quot;: false}
+    }
+  }
+
+  results[0] == &quot;RDS instance rds-analytics storing confidential data must be encrypted&quot;
+}
+</code></pre>
+<h3 id="13_code_k-kubernetes-infrastructure-test-suite-13_code_k">13_CODE_K: Kubernetes Infrastructure Test Suite {#13_code_k}</h3>
+<p><em>Listing 13-K.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption using ConfigMap-based test runners and Kubernetes Jobs.</p>
+<pre><code class="language-yaml"># k8s/tests/infrastructure-validation.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: infrastructure-test-runner
+data:
+  tests.sh: |
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    echo &quot;Validating namespace resource quotas...&quot;
+    kubectl get resourcequota -A || {
+      echo &quot;❌ Resource quotas missing&quot;; exit 1;
+    }
+
+    echo &quot;Validating pod security admission levels...&quot;
+    kubectl get pods -A -o json | jq '.items[].metadata.labels[&quot;pod-security.kubernetes.io/enforce&quot;]' |
+      grep -q &quot;baseline&quot; || {
+      echo &quot;❌ Pods missing baseline security enforcement&quot;; exit 1;
+    }
+
+    echo &quot;Validating encrypted persistent volumes...&quot;
+    kubectl get pv -o json | jq '.items[].metadata.annotations[&quot;encryption.alpha.kubernetes.io/encrypted&quot;]' |
+      grep -q &quot;true&quot; || {
+      echo &quot;❌ Persistent volumes must enable encryption&quot;; exit 1;
+    }
+
+    echo &quot;✅ Infrastructure validation passed&quot;
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: infrastructure-validation
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      serviceAccountName: platform-auditor
+      containers:
+        - name: validator
+          image: bitnami/kubectl:1.29
+          command: [&quot;/bin/bash&quot;, &quot;/scripts/tests.sh&quot;]
+          volumeMounts:
+            - name: test-scripts
+              mountPath: /scripts
+      volumes:
+        - name: test-scripts
+          configMap:
+            name: infrastructure-test-runner
+            defaultMode: 0555
+</code></pre>
+<h3 id="13_code_l-infrastructure-testing-pipeline-13_code_l">13_CODE_L: Infrastructure Testing Pipeline {#13_code_l}</h3>
+<p><em>Listing 13-L.</em>
+<em>Referenced from Chapter 13: <a href="../13_testing_strategies/">Testing Strategies</a></em></p>
+<p>Complete GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis (Terraform fmt, Checkov, OPA), unit testing (Terratest), integration testing with temporary environments, compliance validation (GDPR, encryption, regional restrictions), and performance testing with cost analysis.</p>
+<pre><code class="language-yaml"># .github/workflows/infrastructure-pipeline.yml
+name: Infrastructure Quality Gate
+
+on:
+  pull_request:
+    paths:
+      - 'infrastructure/**'
+      - 'modules/**'
+      - 'policies/**'
+      - 'test/**'
+
+jobs:
+  static-analysis:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Terraform fmt
+        run: terraform fmt -check -recursive
+      - name: Terraform validate
+        run: terraform validate
+      - name: Checkov security scan
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: infrastructure
+
+  policy:
+    name: Policy-as-Code
+    runs-on: ubuntu-latest
+    needs: static-analysis
+    steps:
+      - uses: actions/checkout@v4
+      - name: Evaluate OPA policies
+        run: |
+          opa test policies/infrastructure -v
+
+  unit-tests:
+    name: Terratest Suite
+    runs-on: ubuntu-latest
+    needs: policy
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Execute Terratest
+        run: go test ./test -timeout 45m
+
+  integration:
+    name: Ephemeral Environment Validation
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    env:
+      TF_IN_AUTOMATION: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: Create workspace
+        run: terraform workspace new pr-${{ github.event.number }} || terraform workspace select pr-${{ github.event.number }}
+      - name: Terraform plan (ephemeral)
+        run: terraform plan -out=tfplan
+      - name: Terraform apply (ephemeral)
+        run: terraform apply -auto-approve tfplan
+      - name: Execute integration scripts
+        run: ./scripts/validate-integration.sh
+      - name: Terraform destroy
+        if: always()
+        run: terraform destroy -auto-approve
+
+  compliance:
+    name: Compliance Checks
+    runs-on: ubuntu-latest
+    needs: integration
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run requirements coverage
+        run: |
+          python3 -m pip install -r requirements.txt
+          python3 requirements/report.py --catalogue requirements/catalogue.yaml --results reports/test-results.json
+
+  performance:
+    name: Performance and Cost Review
+    runs-on: ubuntu-latest
+    needs: compliance
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute k6 performance tests
+        run: k6 run tests/performance/k6-load-test.js
+      - name: Analyse cost impact
+        run: python3 scripts/cost_analysis.py --plan outputs/terraform-plan.json
+
+  summary:
+    name: Quality Summary
+    runs-on: ubuntu-latest
+    needs: [performance]
+    steps:
+      - name: Collate results
+        run: ./scripts/summarise-quality-gates.sh
+</code></pre>
+<hr />
+<h2 id="organisational-change-and-team-structures-organisational-change">Organisational Change and Team Structures {#organisational-change}</h2>
+<h3 id="17_code_1-infrastructure-platform-team-blueprint-17_code_1">17_CODE_1: Infrastructure Platform Team Blueprint {#17_code_1}</h3>
+<p><em>Listing 17-A.</em>
+<em>Referenced from chapter 17: <a href="../17_organisational_change/">Organisational Change and Team Structures</a></em></p>
+<pre><code class="language-yaml"># organisational_design/devops_team_structure.yaml
+team_structure:
+  name: &quot;Infrastructure Platform Team&quot;
+  size: 7
+  mission: &quot;Enable autonomous product teams through self-service infrastructure&quot;
+
+  roles:
+    - role: &quot;Team Lead / Product Owner&quot;
+      responsibilities:
+        - &quot;Strategic direction and product roadmap&quot;
+        - &quot;Stakeholder communication&quot;
+        - &quot;Resource allocation and prioritisation&quot;
+        - &quot;Team development and performance management&quot;
+      skills_required:
+        - &quot;Product management&quot;
+        - &quot;Technical leadership&quot;
+        - &quot;Agile methodologies&quot;
+        - &quot;Stakeholder management&quot;
+
+    - role: &quot;Senior Infrastructure Engineer&quot;
+      count: 2
+      responsibilities:
+        - &quot;Infrastructure as Code development&quot;
+        - &quot;Cloud architecture design&quot;
+        - &quot;Platform automation&quot;
+        - &quot;Technical mentoring&quot;
+      skills_required:
+        - &quot;Terraform/CloudFormation expert&quot;
+        - &quot;Multi-cloud platforms (AWS/Azure/GCP)&quot;
+        - &quot;Containerisation (Docker/Kubernetes)&quot;
+        - &quot;CI/CD pipelines&quot;
+        - &quot;Programming (Python/Go/Bash)&quot;
+
+    - role: &quot;Cloud Security Engineer&quot;
+      responsibilities:
+        - &quot;Security policy as code&quot;
+        - &quot;Compliance automation&quot;
+        - &quot;Threat modelling for cloud infrastructure&quot;
+        - &quot;Security scanning integration&quot;
+      skills_required:
+        - &quot;Cloud security architecture best practices&quot;
+        - &quot;Policy engines (OPA/AWS Config)&quot;
+        - &quot;Security scanning tools&quot;
+        - &quot;Compliance frameworks (ISO27001/SOC2)&quot;
+
+    - role: &quot;Platform Automation Engineer&quot;
+      count: 2
+      responsibilities:
+        - &quot;CI/CD pipeline development&quot;
+        - &quot;Monitoring and observability&quot;
+        - &quot;Self-service tool development&quot;
+        - &quot;Developer experience improvement&quot;
+      skills_required:
+        - &quot;GitOps workflows&quot;
+        - &quot;Monitoring stack (Prometheus/Grafana)&quot;
+        - &quot;API development&quot;
+        - &quot;Developer tooling&quot;
+
+    - role: &quot;Site Reliability Engineer&quot;
+      responsibilities:
+        - &quot;Production operations&quot;
+        - &quot;Incident response&quot;
+        - &quot;Capacity planning&quot;
+        - &quot;Performance optimisation&quot;
+      skills_required:
+        - &quot;Production operations&quot;
+        - &quot;Incident management&quot;
+        - &quot;Performance analysis&quot;
+        - &quot;Automation scripting&quot;
+
+  working_agreements:
+    daily_standup: &quot;09:00 local time each weekday&quot;
+    sprint_length: &quot;2 weeks&quot;
+    retrospective: &quot;End of each sprint&quot;
+    on_call_rotation: &quot;1 week rotation shared by SREs and Infrastructure Engineers&quot;
+
+  success_metrics:
+    infrastructure_deployment_time: &quot;&lt; 15 minutes from commit to production&quot;
+    incident_resolution_time: &quot;&lt; 30 minutes for P1 incidents&quot;
+    developer_satisfaction: &quot;&gt; 4.5/5 in quarterly surveys&quot;
+    infrastructure_cost_efficiency: &quot;10% yearly improvement&quot;
+    security_compliance_score: &quot;&gt; 95%&quot;
+
+  communication_patterns:
+    internal_team:
+      - &quot;Daily stand-ups for coordination&quot;
+      - &quot;Weekly technical deep dives&quot;
+      - &quot;Monthly team retrospectives&quot;
+      - &quot;Quarterly goal-setting sessions&quot;
+
+    external_stakeholders:
+      - &quot;Bi-weekly demos for product teams&quot;
+      - &quot;Monthly steering committee updates&quot;
+      - &quot;Quarterly business review presentations&quot;
+      - &quot;Ad-hoc consultation for complex integrations&quot;
+
+  decision_making:
+    technical_decisions: &quot;Consensus among technical team members&quot;
+    architectural_decisions: &quot;Technical lead with team input&quot;
+    strategic_decisions: &quot;Product owner with business stakeholder input&quot;
+    operational_decisions: &quot;On-call engineer authority with escalation path&quot;
+
+  continuous_improvement:
+    learning_budget: &quot;40 hours per person per quarter&quot;
+    conference_attendance: &quot;2 team members per year at major conferences&quot;
+    experimentation_time: &quot;20% time for innovation projects&quot;
+    knowledge_sharing: &quot;Monthly internal tech talks&quot;
+</code></pre>
+<h3 id="17_code_2-iac-competency-framework-utilities-17_code_2">17_CODE_2: IaC Competency Framework Utilities {#17_code_2}</h3>
+<p><em>Listing 17-B.</em>
+<em>Referenced from chapter 17: <a href="../17_organisational_change/">Organisational Change and Team Structures</a></em></p>
+<pre><code class="language-python"># training/iac_competency_framework.py
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional
+import json
+
+
+class IaCCompetencyFramework:
+    &quot;&quot;&quot;Comprehensive competency framework for Infrastructure as Code skills.&quot;&quot;&quot;
+
+    def __init__(self):
+        self.competency_levels = {
+            &quot;novice&quot;: {
+                &quot;description&quot;: &quot;Basic understanding, requires guidance&quot;,
+                &quot;hours_required&quot;: 40,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can execute predefined Architecture as Code templates&quot;,
+                    &quot;Understands foundational cloud concepts&quot;,
+                    &quot;Can follow established procedures&quot;
+                ]
+            },
+            &quot;intermediate&quot;: {
+                &quot;description&quot;: &quot;Can work independently on common tasks&quot;,
+                &quot;hours_required&quot;: 120,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can create simple Architecture as Code modules&quot;,
+                    &quot;Understands infrastructure dependencies&quot;,
+                    &quot;Can troubleshoot common issues&quot;
+                ]
+            },
+            &quot;advanced&quot;: {
+                &quot;description&quot;: &quot;Can design and lead complex implementations&quot;,
+                &quot;hours_required&quot;: 200,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can architect multi-environment solutions&quot;,
+                    &quot;Can mentor others effectively&quot;,
+                    &quot;Can design reusable patterns&quot;
+                ]
+            },
+            &quot;expert&quot;: {
+                &quot;description&quot;: &quot;Thought leader, can drive organisational standards&quot;,
+                &quot;hours_required&quot;: 300,
+                &quot;assessment_criteria&quot;: [
+                    &quot;Can drive organisational Architecture as Code strategy&quot;,
+                    &quot;Can design complex multi-cloud solutions&quot;,
+                    &quot;Can lead transformation initiatives&quot;
+                ]
+            }
+        }
+
+        self.skill_domains = {
+            &quot;infrastructure_as_code&quot;: {
+                &quot;tools&quot;: [&quot;Terraform&quot;, &quot;CloudFormation&quot;, &quot;Pulumi&quot;, &quot;Ansible&quot;],
+                &quot;concepts&quot;: [&quot;Declarative syntax&quot;, &quot;State management&quot;, &quot;Module design&quot;],
+                &quot;practices&quot;: [&quot;Code organisation&quot;, &quot;Testing strategies&quot;, &quot;CI/CD integration&quot;]
+            },
+            &quot;cloud_platforms&quot;: {
+                &quot;aws&quot;: [&quot;EC2&quot;, &quot;VPC&quot;, &quot;RDS&quot;, &quot;Lambda&quot;, &quot;S3&quot;, &quot;IAM&quot;],
+                &quot;azure&quot;: [&quot;Virtual Machines&quot;, &quot;Resource Groups&quot;, &quot;Storage&quot;, &quot;Functions&quot;],
+                &quot;gcp&quot;: [&quot;Compute Engine&quot;, &quot;VPC&quot;, &quot;Cloud Storage&quot;, &quot;Cloud Functions&quot;],
+                &quot;multi_cloud&quot;: [&quot;Provider abstraction&quot;, &quot;Cost optimisation&quot;, &quot;Governance&quot;]
+            },
+            &quot;security_compliance&quot;: {
+                &quot;security&quot;: [&quot;Identity management&quot;, &quot;Network security&quot;, &quot;Encryption&quot;],
+                &quot;compliance&quot;: [&quot;GDPR&quot;, &quot;ISO27001&quot;, &quot;SOC2&quot;, &quot;Data residency&quot;],
+                &quot;policy&quot;: [&quot;Policy as Code&quot;, &quot;Automated compliance&quot;, &quot;Audit trails&quot;]
+            },
+            &quot;operations_monitoring&quot;: {
+                &quot;monitoring&quot;: [&quot;Metrics collection&quot;, &quot;Alerting&quot;, &quot;Dashboards&quot;],
+                &quot;logging&quot;: [&quot;Log aggregation&quot;, &quot;Analysis&quot;, &quot;Retention&quot;],
+                &quot;incident_response&quot;: [&quot;Runbooks&quot;, &quot;Post-mortems&quot;, &quot;Automation&quot;]
+            }
+        }
+
+    def create_learning_path(self, current_level: str, target_level: str,
+                             focus_domains: List[str]) -&gt; Dict:
+        &quot;&quot;&quot;Create a personalised learning path for an individual.&quot;&quot;&quot;
+
+        current_hours = self.competency_levels[current_level][&quot;hours_required&quot;]
+        target_hours = self.competency_levels[target_level][&quot;hours_required&quot;]
+        required_hours = target_hours - current_hours
+
+        learning_path = {
+            &quot;individual_id&quot;: f&quot;learner_{datetime.now().strftime('%Y%m%d_%H%M%S')}&quot;,
+            &quot;current_level&quot;: current_level,
+            &quot;target_level&quot;: target_level,
+            &quot;estimated_duration_hours&quot;: required_hours,
+            &quot;estimated_timeline_weeks&quot;: required_hours // 10,  # 10 hours per week
+            &quot;focus_domains&quot;: focus_domains,
+            &quot;learning_modules&quot;: []
+        }
+
+        # Generate learning modules based on focus domains
+        for domain in focus_domains:
+            if domain in self.skill_domains:
+                modules = self._generate_domain_modules(domain, current_level, target_level)
+                learning_path[&quot;learning_modules&quot;].extend(modules)
+
+        return learning_path
+
+    def _generate_domain_modules(self, domain: str, current_level: str,
+                                 target_level: str) -&gt; List[Dict]:
+        &quot;&quot;&quot;Generate learning modules for a specific domain.&quot;&quot;&quot;
+
+        modules = []
+        domain_skills = self.skill_domains[domain]
+
+        # Terraform Fundamentals Module
+        if domain == &quot;infrastructure_as_code&quot;:
+            modules.append({
+                &quot;name&quot;: &quot;Terraform Fundamentals for Regulated Enterprises&quot;,
+                &quot;duration_hours&quot;: 16,
+                &quot;type&quot;: &quot;hands_on_workshop&quot;,
+                &quot;prerequisites&quot;: [&quot;Basic Linux&quot;, &quot;Cloud fundamentals&quot;],
+                &quot;learning_objectives&quot;: [
+                    &quot;Build foundational Terraform configurations&quot;,
+                    &quot;Manage remote state securely&quot;,
+                    &quot;Design compliance-aligned infrastructure patterns&quot;,
+                    &quot;Integrate controls with platform tooling&quot;
+                ],
+                &quot;practical_exercises&quot;: [
+                    &quot;Deploy a data-protection compliant object storage bucket&quot;,
+                    &quot;Create a VPC with network guardrails&quot;,
+                    &quot;Implement IAM policies aligned to least privilege&quot;,
+                    &quot;Configure monitoring aligned with regulatory obligations&quot;
+                ],
+                &quot;assessment&quot;: {
+                    &quot;type&quot;: &quot;practical_project&quot;,
+                    &quot;description&quot;: &quot;Deploy a complete web application stack with automated governance controls&quot;
+                }
+            })
+
+        # Cloud Security Module
+        if domain == &quot;security_compliance&quot;:
+            modules.append({
+                &quot;name&quot;: &quot;Cloud Security for Regulated Environments&quot;,
+                &quot;duration_hours&quot;: 12,
+                &quot;type&quot;: &quot;blended_learning&quot;,
+                &quot;prerequisites&quot;: [&quot;Cloud fundamentals&quot;, &quot;Security basics&quot;],
+                &quot;learning_objectives&quot;: [
+                    &quot;Implement privacy-aware infrastructure baselines&quot;,
+                    &quot;Apply regulatory control frameworks in code&quot;,
+                    &quot;Create automated compliance checks&quot;,
+                    &quot;Design secure network topologies&quot;
+                ],
+                &quot;practical_exercises&quot;: [
+                    &quot;Create a compliance-aligned data pipeline&quot;,
+                    &quot;Implement policy-as-code guardrails&quot;,
+                    &quot;Set up automated compliance monitoring&quot;,
+                    &quot;Design an incident response workflow&quot;
+                ],
+                &quot;assessment&quot;: {
+                    &quot;type&quot;: &quot;compliance_audit&quot;,
+                    &quot;description&quot;: &quot;Demonstrate infrastructure meets regulatory security requirements&quot;
+                }
+            })
+
+        return modules
+
+    def track_progress(self, individual_id: str, completed_module: str,
+                       assessment_score: float) -&gt; Dict:
+        &quot;&quot;&quot;Track learning progress for an individual.&quot;&quot;&quot;
+
+        progress_record = {
+            &quot;individual_id&quot;: individual_id,
+            &quot;module_completed&quot;: completed_module,
+            &quot;completion_date&quot;: datetime.now().isoformat(),
+            &quot;assessment_score&quot;: assessment_score,
+            &quot;certification_earned&quot;: assessment_score &gt;= 0.8,
+            &quot;next_recommended_module&quot;: self._recommend_next_module(individual_id)
+        }
+
+        return progress_record
+
+    def generate_team_competency_matrix(self, team_members: List[Dict]) -&gt; Dict:
+        &quot;&quot;&quot;Generate a team competency matrix for skills gap analysis.&quot;&quot;&quot;
+
+        competency_matrix = {
+            &quot;team_id&quot;: f&quot;team_{datetime.now().strftime('%Y%m%d')}&quot;,
+            &quot;assessment_date&quot;: datetime.now().isoformat(),
+            &quot;team_size&quot;: len(team_members),
+            &quot;overall_readiness&quot;: 0,
+            &quot;skill_gaps&quot;: [],
+            &quot;training_recommendations&quot;: [],
+            &quot;members&quot;: []
+        }
+
+        total_competency = 0
+
+        for member in team_members:
+            member_assessment = {
+                &quot;name&quot;: member[&quot;name&quot;],
+                &quot;role&quot;: member[&quot;role&quot;],
+                &quot;current_skills&quot;: member.get(&quot;skills&quot;, {}),
+                &quot;competency_score&quot;: self._calculate_competency_score(member),
+                &quot;development_needs&quot;: self._identify_development_needs(member),
+                &quot;certification_status&quot;: member.get(&quot;certifications&quot;, [])
+            }
+
+            competency_matrix[&quot;members&quot;].append(member_assessment)
+            total_competency += member_assessment[&quot;competency_score&quot;]
+
+        competency_matrix[&quot;overall_readiness&quot;] = total_competency / len(team_members)
+        competency_matrix[&quot;skill_gaps&quot;] = self._identify_team_skill_gaps(team_members)
+        competency_matrix[&quot;training_recommendations&quot;] = self._recommend_team_training(competency_matrix)
+
+        return competency_matrix
+
+
+def create_organizational_change_plan(organization_assessment: Dict) -&gt; Dict:
+    &quot;&quot;&quot;Create a comprehensive organisational change plan for Architecture as Code adoption.&quot;&quot;&quot;
+
+    change_plan = {
+        &quot;organization&quot;: organization_assessment[&quot;name&quot;],
+        &quot;current_state&quot;: organization_assessment[&quot;current_maturity&quot;],
+        &quot;target_state&quot;: &quot;advanced_devops&quot;,
+        &quot;timeline_months&quot;: 18,
+        &quot;phases&quot;: [
+            {
+                &quot;name&quot;: &quot;Foundation Building&quot;,
+                &quot;duration_months&quot;: 6,
+                &quot;objectives&quot;: [
+                    &quot;Establish DevOps culture basics&quot;,
+                    &quot;Implement foundational Architecture as Code practices&quot;,
+                    &quot;Create cross-functional teams&quot;,
+                    &quot;Set up the initial toolchain&quot;
+                ],
+                &quot;activities&quot;: [
+                    &quot;DevOps culture workshops&quot;,
+                    &quot;Tool selection and setup&quot;,
+                    &quot;Team restructuring&quot;,
+                    &quot;Initial training programme&quot;,
+                    &quot;Pilot project implementation&quot;
+                ],
+                &quot;success_criteria&quot;: [
+                    &quot;All teams trained on DevOps fundamentals&quot;,
+                    &quot;Initial Architecture as Code deployment pipeline operational&quot;,
+                    &quot;Cross-functional teams established&quot;,
+                    &quot;Core toolchain adopted&quot;
+                ]
+            },
+            {
+                &quot;name&quot;: &quot;Capability Development&quot;,
+                &quot;duration_months&quot;: 8,
+                &quot;objectives&quot;: [
+                    &quot;Scale Architecture as Code practices across the organisation&quot;,
+                    &quot;Implement advanced automation&quot;,
+                    &quot;Establish monitoring and observability&quot;,
+                    &quot;Mature incident response processes&quot;
+                ],
+                &quot;activities&quot;: [
+                    &quot;Advanced Architecture as Code training rollout&quot;,
+                    &quot;Multi-environment deployment automation&quot;,
+                    &quot;Comprehensive monitoring implementation&quot;,
+                    &quot;Incident response process development&quot;,
+                    &quot;Security integration (DevSecOps)&quot;
+                ],
+                &quot;success_criteria&quot;: [
+                    &quot;Architecture as Code practices adopted by all product teams&quot;,
+                    &quot;Automated deployment across all environments&quot;,
+                    &quot;Comprehensive observability implemented&quot;,
+                    &quot;Incident response processes matured&quot;
+                ]
+            },
+            {
+                &quot;name&quot;: &quot;Optimisation and Innovation&quot;,
+                &quot;duration_months&quot;: 4,
+                &quot;objectives&quot;: [
+                    &quot;Optimise existing processes&quot;,
+                    &quot;Implement advanced practices&quot;,
+                    &quot;Foster continuous innovation&quot;,
+                    &quot;Measure and improve business outcomes&quot;
+                ],
+                &quot;activities&quot;: [
+                    &quot;Process optimisation based on metrics&quot;,
+                    &quot;Advanced practice implementation&quot;,
+                    &quot;Innovation time allocation&quot;,
+                    &quot;Business value measurement&quot;,
+                    &quot;Knowledge sharing programme&quot;
+                ],
+                &quot;success_criteria&quot;: [
+                    &quot;Optimised processes delivering measurable value&quot;,
+                    &quot;Innovation culture established&quot;,
+                    &quot;Improved business outcomes&quot;,
+                    &quot;Self-sustaining improvement culture&quot;
+                ]
+            }
+        ],
+        &quot;change_management&quot;: {
+            &quot;communication_strategy&quot;: [
+                &quot;Monthly all-hands updates&quot;,
+                &quot;Quarterly progress reviews&quot;,
+                &quot;Success story sharing&quot;,
+                &quot;Feedback collection mechanisms&quot;
+            ],
+            &quot;resistance_management&quot;: [
+                &quot;Early stakeholder engagement&quot;,
+                &quot;Addressing skill development concerns&quot;,
+                &quot;Providing clear career progression paths&quot;,
+                &quot;Celebrating early wins&quot;
+            ],
+            &quot;success_measurement&quot;: [
+                &quot;Employee satisfaction surveys&quot;,
+                &quot;Technical capability assessments&quot;,
+                &quot;Business value metrics&quot;,
+                &quot;Cultural transformation indicators&quot;
+            ]
+        },
+        &quot;risk_mitigation&quot;: [
+            &quot;Gradual rollout to minimise disruption&quot;,
+            &quot;Comprehensive training to address skill gaps&quot;,
+            &quot;Clear communication to manage expectations&quot;,
+            &quot;Strong support structure for teams&quot;
+        ]
+    }
+
+    return change_plan
+</code></pre>
+<h3 id="17_code_3-devops-performance-measurement-framework-17_code_3">17_CODE_3: DevOps Performance Measurement Framework {#17_code_3}</h3>
+<p><em>Listing 17-C.</em>
+<em>Referenced from chapter 17: <a href="../17_organisational_change/">Organisational Change and Team Structures</a></em></p>
+<pre><code class="language-yaml"># metrics/devops_performance_metrics.yaml
+performance_measurement_framework:
+  name: &quot;DevOps Team Performance Metrics&quot;
+
+  technical_metrics:
+    deployment_frequency:
+      description: &quot;How often the team deploys to production&quot;
+      measurement: &quot;Deployments per day/week&quot;
+      target_values:
+        elite: &quot;&gt; 1 per day&quot;
+        high: &quot;1 per week - 1 per day&quot;
+        medium: &quot;1 per month - 1 per week&quot;
+        low: &quot;&lt; 1 per month&quot;
+      collection_method: &quot;Automated from CI/CD pipeline&quot;
+
+    lead_time_for_changes:
+      description: &quot;Time from code commit to production deployment&quot;
+      measurement: &quot;Hours/days&quot;
+      target_values:
+        elite: &quot;&lt; 1 hour&quot;
+        high: &quot;1 day - 1 week&quot;
+        medium: &quot;1 week - 1 month&quot;
+        low: &quot;&gt; 1 month&quot;
+      collection_method: &quot;Git and deployment tool integration&quot;
+
+    mean_time_to_recovery:
+      description: &quot;Time to recover from production incidents&quot;
+      measurement: &quot;Hours&quot;
+      target_values:
+        elite: &quot;&lt; 1 hour&quot;
+        high: &quot;&lt; 1 day&quot;
+        medium: &quot;1 day - 1 week&quot;
+        low: &quot;&gt; 1 week&quot;
+      collection_method: &quot;Incident management systems&quot;
+
+    change_failure_rate:
+      description: &quot;Percentage of deployments causing production issues&quot;
+      measurement: &quot;Percentage&quot;
+      target_values:
+        elite: &quot;0-15%&quot;
+        high: &quot;16-30%&quot;
+        medium: &quot;31-45%&quot;
+        low: &quot;&gt; 45%&quot;
+      collection_method: &quot;Incident correlation with deployments&quot;
+
+  business_metrics:
+
+    infrastructure_cost_efficiency:
+      description: &quot;Cost per unit of business value delivered&quot;
+      measurement: &quot;Local currency per transaction/user/feature&quot;
+      target: &quot;10% yearly improvement&quot;
+      collection_method: &quot;Cloud billing API integration&quot;
+
+    developer_productivity:
+      description: &quot;Developer self-service capability&quot;
+      measurement: &quot;Hours spent on infrastructure tasks per sprint&quot;
+      target: &quot;&lt; 20% of development time&quot;
+      collection_method: &quot;Time tracking and developer surveys&quot;
+
+    compliance_adherence:
+      description: &quot;Adherence to regulatory requirements&quot;
+      measurement: &quot;Compliance score (0-100%)&quot;
+      target: &quot;&gt; 95%&quot;
+      collection_method: &quot;Automated compliance scanning&quot;
+
+    customer_satisfaction:
+      description: &quot;Internal customer (developer) satisfaction&quot;
+      measurement: &quot;Net Promoter Score&quot;
+      target: &quot;&gt; 50&quot;
+      collection_method: &quot;Quarterly developer surveys&quot;
+
+  cultural_metrics:
+
+    psychological_safety:
+      description: &quot;Team member comfort with taking risks and admitting mistakes&quot;
+      measurement: &quot;Survey score (1-5)&quot;
+      target: &quot;&gt; 4.0&quot;
+      collection_method: &quot;Quarterly team health surveys&quot;
+
+    learning_culture:
+      description: &quot;Investment in learning and experimentation&quot;
+      measurement: &quot;Hours per person per quarter&quot;
+      target: &quot;&gt; 40 hours&quot;
+      collection_method: &quot;Learning management systems&quot;
+
+    collaboration_effectiveness:
+      description: &quot;Cross-functional team collaboration quality&quot;
+      measurement: &quot;Survey score (1-5)&quot;
+      target: &quot;&gt; 4.0&quot;
+      collection_method: &quot;360-degree feedback&quot;
+
+    innovation_rate:
+      description: &quot;Number of new ideas/experiments per quarter&quot;
+      measurement: &quot;Count per team member&quot;
+      target: &quot;&gt; 2 per quarter&quot;
+      collection_method: &quot;Innovation tracking systems&quot;
+
+  collection_automation:
+
+    data_sources:
+      - &quot;GitHub/GitLab API for code metrics&quot;
+      - &quot;Jenkins/GitLab CI for deployment metrics&quot;
+      - &quot;PagerDuty/OpsGenie for incident metrics&quot;
+      - &quot;AWS/Azure billing API for cost metrics&quot;
+      - &quot;Survey tools for cultural metrics&quot;
+
+    dashboard_tools:
+      - &quot;Grafana for technical metrics visualisation&quot;
+      - &quot;Tableau for business metrics analysis&quot;
+      - &quot;Internal dashboards for team metrics&quot;
+
+    reporting_schedule:
+      daily: [&quot;Deployment frequency&quot;, &quot;Incident count&quot;]
+      weekly: [&quot;Lead time trends&quot;, &quot;Cost analysis&quot;]
+      monthly: [&quot;Team performance review&quot;, &quot;Business value assessment&quot;]
+      quarterly: [&quot;Cultural metrics&quot;, &quot;Strategic review&quot;]
+
+  improvement_process:
+
+    metric_review:
+      frequency: &quot;Monthly team retrospectives&quot;
+      participants: [&quot;Team members&quot;, &quot;Product owner&quot;, &quot;Engineering manager&quot;]
+      outcome: &quot;Improvement actions with owners and timelines&quot;
+
+    benchmarking:
+      internal: &quot;Compare teams within the organisation&quot;
+      industry: &quot;Compare with DevOps industry standards&quot;
+      regional: &quot;Compare with peer organisations&quot;
+
+    action_planning:
+      identification: &quot;Identify lowest-performing metrics&quot;
+      root_cause: &quot;Analyse underlying causes&quot;
+      solutions: &quot;Develop targeted improvement initiatives&quot;
+      tracking: &quot;Monitor improvement progress monthly&quot;
+</code></pre>
+<hr />
+<h2 id="references-and-navigation">References and Navigation</h2>
+<p>Each code example in this appendix can be referenced from the main text using its unique identifier. To find specific implementations:</p>
+<ol>
+<li><strong>Use search function</strong> - Search for code type or technology (e.g., "Terraform", "CloudFormation", "Python")</li>
+<li><strong>Follow the categories</strong> - Navigate to the relevant section based on use case</li>
+<li><strong>Use cross-references</strong> - Follow links back to the main chapters for context</li>
+</ol>
+<h3 id="conventions-for-code-examples">Conventions for Code Examples</h3>
+<ul>
+<li><strong>Comments</strong>: All code examples contain comments for clarity</li>
+<li><strong>Security</strong>: Security aspects are marked with 🔒</li>
+<li><strong>GDPR compliance</strong>: GDPR-related configurations are marked with 🇪🇺</li>
+<li><strong>Customisations</strong>: Local customisations are marked with 🇸🇪</li>
+</ul>
+<h3 id="updates-and-maintenance">Updates and Maintenance</h3>
+<p>This appendix is updated regularly when new code examples are added to the book's main chapters. For the latest version of code examples, see the book's GitHub repository.</p>
+<hr />
+<h2 id="for-more-information-about-specific-implementations-see-the-respective-main-chapters-where-the-code-examples-are-introduced-and-explained-in-their-context"><em>For more information about specific implementations, see the respective main chapters where the code examples are introduced and explained in their context.</em></h2>
+<h2 id="chapter-14-reference-implementations">Chapter 14 Reference Implementations</h2>
+<p>The extended Terraform implementation that once appeared inline in Chapter 14 is preserved here so that readers can access the full listing without interrupting the main narrative. Cross-references in the chapter point to these appendix entries for quick navigation.</p>
+<blockquote>
+<p><strong>Note:</strong> Moving the code to Appendix A keeps Chapter 14 focused on adoption strategy while still providing the complete infrastructure example for practitioners.</p>
+</blockquote>
+<h3 id="14_code_1-terraform-service-blueprint-for-a-web-application-landing-zone-14_code_1">14_CODE_1: Terraform service blueprint for a web application landing zone {#14_code_1}</h3>
+<p><em>Referenced from Chapter 14: <a href="../14_practical_implementation/">Architecture as Code in Practice</a></em></p>
+<p>This module demonstrates how to package core networking, load balancing, and tagging conventions into a reusable Terraform component that platform teams can roll out across environments.</p>
+<pre><code class="language-hcl"># modules/web-application/main.tf
+variable &quot;environment&quot; {
+  description = &quot;Environment name (dev, staging, prod)&quot;
+  type        = string
+}
+
+variable &quot;application_name&quot; {
+  description = &quot;Name of the application&quot;
+  type        = string
+}
+
+variable &quot;instance_count&quot; {
+  description = &quot;Number of application instances&quot;
+  type        = number
+  default     = 2
+}
+
+# VPC and networking
+resource &quot;aws_vpc&quot; &quot;main&quot; {
+  cidr_block           = &quot;10.0.0.0/16&quot;
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = {
+    Name        = &quot;${var.application_name}-${var.environment}-vpc&quot;
+    Environment = var.environment
+    Application = var.application_name
+  }
+}
+
+resource &quot;aws_subnet&quot; &quot;public&quot; {
+  count             = 2
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = &quot;10.0.${count.index + 1}.0/24&quot;
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = &quot;${var.application_name}-${var.environment}-public-${count.index + 1}&quot;
+    Type = &quot;Public&quot;
+  }
+}
+
+# Application Load Balancer
+resource &quot;aws_lb&quot; &quot;main&quot; {
+  name               = &quot;${var.application_name}-${var.environment}-alb&quot;
+  internal           = false
+  load_balancer_type = &quot;application&quot;
+  security_groups    = [aws_security_group.alb.id]
+  subnets            = aws_subnet.public[*].id
+
+  enable_deletion_protection = false
+
+  tags = {
+    Environment = var.environment
+    Application = var.application_name
+  }
+}
+
+# Auto Scaling Group
+resource &quot;aws_autoscaling_group&quot; &quot;main&quot; {
+  name                = &quot;${var.application_name}-${var.environment}-asg&quot;
+  vpc_zone_identifier = aws_subnet.public[*].id
+  target_group_arns   = [aws_lb_target_group.main.arn]
+  health_check_type   = &quot;ELB&quot;
+  health_check_grace_period = 300
+
+  min_size         = 1
+  max_size         = 10
+  desired_capacity = var.instance_count
+
+  launch_template {
+    id      = aws_launch_template.main.id
+    version = &quot;$Latest&quot;
+  }
+
+  tag {
+    key                 = &quot;Name&quot;
+    value               = &quot;${var.application_name}-${var.environment}-instance&quot;
+    propagate_at_launch = true
+  }
+
+  tag {
+    key                 = &quot;Environment&quot;
+    value               = var.environment
+    propagate_at_launch = true
+  }
+}
+
+# Outputs
+output &quot;load_balancer_dns&quot; {
+  description = &quot;DNS name of the load balancer&quot;
+  value       = aws_lb.main.dns_name
+}
+
+output &quot;vpc_id&quot; {
+  description = &quot;ID of the VPC&quot;
+  value       = aws_vpc.main.id
+}
+</code></pre>
+<h3 id="14_code_2-environment-configuration-and-observability-controls-14_code_2">14_CODE_2: Environment configuration and observability controls {#14_code_2}</h3>
+<p><em>Referenced from Chapter 14: <a href="../14_practical_implementation/">Architecture as Code in Practice</a></em></p>
+<p>This configuration layers production-specific settings on top of the shared module, including state management, default tags, and a CloudWatch dashboard for operational oversight.</p>
+<pre><code class="language-hcl"># environments/production/main.tf
+terraform {
+  required_version = &quot;&gt;= 1.0&quot;
+
+  backend &quot;s3&quot; {
+    bucket         = &quot;company-terraform-state-prod&quot;
+    key            = &quot;web-application/terraform.tfstate&quot;
+    region         = &quot;us-west-2&quot;
+    encrypt        = true
+    dynamodb_table = &quot;terraform-state-lock&quot;
+  }
+
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 5.0&quot;
+    }
+  }
+}
+
+provider &quot;aws&quot; {
+  region = &quot;us-west-2&quot;
+
+  default_tags {
+    tags = {
+      Project     = &quot;web-application&quot;
+      Environment = &quot;production&quot;
+      ManagedBy   = &quot;terraform&quot;
+      Owner       = &quot;platform-team&quot;
+    }
+  }
+}
+
+module &quot;web_application&quot; {
+  source = &quot;../../modules/web-application&quot;
+
+  environment      = &quot;production&quot;
+  application_name = &quot;company-web-app&quot;
+  instance_count   = 6
+
+  # Production-specific overrides
+  enable_monitoring = true
+  backup_retention  = 30
+  multi_az          = true
+}
+
+# Production-specific resources
+resource &quot;aws_cloudwatch_dashboard&quot; &quot;main&quot; {
+  dashboard_name = &quot;WebApplication-Production&quot;
+
+  dashboard_body = jsonencode({
+    widgets = [
+      {
+        type   = &quot;metric&quot;
+        x      = 0
+        y      = 0
+        width  = 12
+        height = 6
+
+        properties = {
+          metrics = [
+            [&quot;AWS/ApplicationELB&quot;, &quot;RequestCount&quot;, &quot;LoadBalancer&quot;, module.web_application.load_balancer_arn_suffix],
+            [&quot;.&quot;, &quot;TargetResponseTime&quot;, &quot;.&quot;, &quot;.&quot;],
+            [&quot;.&quot;, &quot;HTTPCode_ELB_5XX_Count&quot;, &quot;.&quot;, &quot;.&quot;]
+          ]
+          view    = &quot;timeSeries&quot;
+          stacked = false
+          region  = &quot;us-west-2&quot;
+          title   = &quot;Application Performance&quot;
+          period  = 300
+        }
+      }
+    ]
+  })
+}
+</code></pre>
+<h3 id="14_code_3-continuous-delivery-workflow-for-infrastructure-changes-14_code_3">14_CODE_3: Continuous delivery workflow for infrastructure changes {#14_code_3}</h3>
+<p><em>Referenced from Chapter 14: <a href="../14_practical_implementation/">Architecture as Code in Practice</a></em></p>
+<p>The workflow below demonstrates how to plan and apply Terraform changes across development, staging, and production with explicit separation between planning and deployment stages.</p>
+<pre><code class="language-yaml"># .github/workflows/infrastructure.yml
+name: Infrastructure Deployment
+
+on:
+  push:
+    branches: [main]
+    paths: ['infrastructure/**']
+  pull_request:
+    branches: [main]
+    paths: ['infrastructure/**']
+
+env:
+  TF_VERSION: 1.5.0
+  AWS_REGION: us-west-2
+
+jobs:
+  plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [development, staging, production]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Terraform Init
+      working-directory: infrastructure/environments/${{ matrix.environment }}
+      run: terraform init
+
+    - name: Terraform Validate
+      working-directory: infrastructure/environments/${{ matrix.environment }}
+      run: terraform validate
+
+    - name: Terraform Plan
+      working-directory: infrastructure/environments/${{ matrix.environment }}
+      run: |
+        terraform plan -out=tfplan-${{ matrix.environment }} \
+          -var-file=&quot;terraform.tfvars&quot;
+
+    - name: Upload plan artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: tfplan-${{ matrix.environment }}
+        path: infrastructure/environments/${{ matrix.environment }}/tfplan-${{ matrix.environment }}
+        retention-days: 30
+
+  deploy:
+    name: Terraform Apply
+    runs-on: ubuntu-latest
+    needs: plan
+    if: github.ref == 'refs/heads/main'
+    strategy:
+      matrix:
+        environment: [development, staging]
+        # Production requires manual approval
+
+    environment: ${{ matrix.environment }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Download plan artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: tfplan-${{ matrix.environment }}
+        path: infrastructure/environments/${{ matrix.environment }}
+
+    - name: Terraform Init
+      working-directory: infrastructure/environments/${{ matrix.environment }}
+      run: terraform init
+
+    - name: Terraform Apply
+      working-directory: infrastructure/environments/${{ matrix.environment }}
+      run: terraform apply tfplan-${{ matrix.environment }}
+
+  production-deploy:
+    name: Production Deployment
+    runs-on: ubuntu-latest
+    needs: [plan, deploy]
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.application_url }}
+
+    steps:
+    - name: Manual approval checkpoint
+      run: echo &quot;Production deployment requires manual approval&quot;
+
+    # Similar steps as deploy job but for production environment
+</code></pre>
+<hr />
+<h2 id="chapter-15-reference-implementations">Chapter 15 Reference Implementations</h2>
+<h3 id="15_code_1-cost-aware-terraform-infrastructure-configuration-15_code_1">15_CODE_1: Cost-aware Terraform infrastructure configuration {#15_code_1}</h3>
+<p><em>Referenced from Chapter 15: <a href="../15_cost_optimization/">Cost Optimisation and Resource Management</a></em></p>
+<p>This Terraform configuration demonstrates comprehensive cost optimisation strategies including budget management, cost allocation tagging, and intelligent instance type selection using spot instances and mixed instance policies.</p>
+<pre><code class="language-hcl"># cost_optimized_infrastructure.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 5.0&quot;
+    }
+  }
+}
+
+# Cost allocation tags for all infrastructure
+locals {
+  cost_tags = {
+    CostCentre     = var.cost_centre
+    Project        = var.project_name
+    Environment    = var.environment
+    Owner          = var.team_email
+    BudgetAlert    = var.budget_threshold
+    ReviewDate     = formatdate(&quot;YYYY-MM-DD&quot;, timeadd(timestamp(), &quot;30*24h&quot;))
+    Region         = var.aws_region
+  }
+}
+
+# Budget with automatic alerts (EUR equivalent tracked separately for EU reporting)
+resource &quot;aws_budgets_budget&quot; &quot;project_budget&quot; {
+  name         = &quot;${var.project_name}-budget&quot;
+  budget_type  = &quot;COST&quot;
+  limit_amount = var.monthly_budget_limit_usd  # AWS bills in USD
+  limit_unit   = &quot;USD&quot;
+  time_unit    = &quot;MONTHLY&quot;
+
+  cost_filters = {
+    Tag = {
+      Project = [var.project_name]
+    }
+    Region = [var.aws_region]  # Filter by EU region
+  }
+
+  notification {
+    comparison_operator        = &quot;GREATER_THAN&quot;
+    threshold                 = 80
+    threshold_type            = &quot;PERCENTAGE&quot;
+    notification_type         = &quot;ACTUAL&quot;
+    subscriber_email_addresses = [var.team_email, var.finance_email]
+  }
+
+  notification {
+    comparison_operator        = &quot;GREATER_THAN&quot;  
+    threshold                 = 100
+    threshold_type            = &quot;PERCENTAGE&quot;
+    notification_type          = &quot;FORECASTED&quot;
+    subscriber_email_addresses = [var.team_email, var.finance_email]
+  }
+}
+
+# Cost-optimised EC2 with Spot instances
+resource &quot;aws_launch_template&quot; &quot;cost_optimized&quot; {
+  name_prefix   = &quot;${var.project_name}-cost-opt-&quot;
+  image_id      = data.aws_ami.amazon_linux.id
+
+  # Mixed instance types for cost optimisation
+  instance_requirements {
+    memory_mib {
+      min = 2048
+      max = 8192
+    }
+    vcpu_count {
+      min = 1
+      max = 4
+    }
+    instance_generations = [&quot;current&quot;]
+  }
+
+  # Spot instance preference for cost optimisation
+  instance_market_options {
+    market_type = &quot;spot&quot;
+    spot_options {
+      max_price = var.max_spot_price
+    }
+  }
+
+  tag_specifications {
+    resource_type = &quot;instance&quot;
+    tags = local.cost_tags
+  }
+}
+
+# Auto Scaling with cost considerations
+resource &quot;aws_autoscaling_group&quot; &quot;cost_aware&quot; {
+  name                = &quot;${var.project_name}-cost-aware-asg&quot;
+  vpc_zone_identifier = var.private_subnet_ids
+  min_size            = var.min_instances
+  max_size            = var.max_instances
+  desired_capacity    = var.desired_instances
+
+  # Mixed instance type strategy for cost optimisation
+  mixed_instances_policy {
+    instances_distribution {
+      on_demand_base_capacity                  = 1
+      on_demand_percentage_above_base_capacity = 20
+      spot_allocation_strategy                 = &quot;diversified&quot;
+    }
+
+    launch_template {
+      launch_template_specification {
+        launch_template_id = aws_launch_template.cost_optimized.id
+        version            = &quot;$Latest&quot;
+      }
+    }
+  }
+
+  tag {
+    key                 = &quot;Name&quot;
+    value               = &quot;${var.project_name}-cost-optimized&quot;
+    propagate_at_launch = true
+  }
+
+  dynamic &quot;tag&quot; {
+    for_each = local.cost_tags
+    content {
+      key                 = tag.key
+      value               = tag.value
+      propagate_at_launch = true
+    }
+  }
+}
+</code></pre>
+<h3 id="15_code_2-kubernetes-cost-optimisation-manifests-15_code_2">15_CODE_2: Kubernetes cost optimisation manifests {#15_code_2}</h3>
+<p><em>Referenced from Chapter 15: <a href="../15_cost_optimization/">Cost Optimisation and Resource Management</a></em></p>
+<p>These Kubernetes manifests demonstrate resource quotas, limit ranges, and autoscaling configurations for cost-effective workload management.</p>
+<pre><code class="language-yaml"># kubernetes/cost-optimization-quota.yaml
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: cost-control-quota
+  namespace: production
+spec:
+  hard:
+    requests.cpu: &quot;20&quot;
+    requests.memory: 40Gi
+    limits.cpu: &quot;40&quot;
+    limits.memory: 80Gi
+    persistentvolumeclaims: &quot;10&quot;
+    count/pods: &quot;50&quot;
+    count/services: &quot;10&quot;
+---
+# kubernetes/cost-optimization-limits.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cost-control-limits
+  namespace: production
+spec:
+  limits:
+  - default:
+      cpu: &quot;500m&quot;
+      memory: &quot;1Gi&quot;
+    defaultRequest:
+      cpu: &quot;100m&quot;
+      memory: &quot;256Mi&quot;
+    max:
+      cpu: &quot;2&quot;
+      memory: &quot;4Gi&quot;
+    min:
+      cpu: &quot;50m&quot;
+      memory: &quot;128Mi&quot;
+    type: Container
+---
+# kubernetes/vertical-pod-autoscaler.yaml
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: cost-optimized-vpa
+  namespace: production
+spec:
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-application
+  updatePolicy:
+    updateMode: &quot;Auto&quot;
+  resourcePolicy:
+    containerPolicies:
+    - containerName: app
+      maxAllowed:
+        cpu: &quot;1&quot;
+        memory: &quot;2Gi&quot;
+      minAllowed:
+        cpu: &quot;100m&quot;
+        memory: &quot;256Mi&quot;
+---
+# kubernetes/horizontal-pod-autoscaler.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cost-aware-hpa
+  namespace: production
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-application
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Percent
+        value: 100
+        periodSeconds: 60
+</code></pre>
+<h3 id="15_code_3-aws-cost-monitoring-and-optimisation-automation-15_code_3">15_CODE_3: AWS cost monitoring and optimisation automation {#15_code_3}</h3>
+<p><em>Referenced from Chapter 15: <a href="../15_cost_optimization/">Cost Optimisation and Resource Management</a></em></p>
+<p>This Python script provides automated cost analysis, rightsizing recommendations, and identification of unused resources for AWS environments.</p>
+<pre><code class="language-python"># cost_monitoring/cost_optimizer.py
+import boto3
+import json
+from datetime import datetime, timedelta
+from typing import Dict, List
+import pandas as pd
+
+class AWSCostOptimizer:
+    &quot;&quot;&quot;
+    Automated cost optimisation for AWS resources across EU regions
+    &quot;&quot;&quot;
+
+    def __init__(self, region='eu-west-1', eu_regions=None):
+        &quot;&quot;&quot;
+        Initialise cost optimiser for EU regions.
+
+        Args:
+            region: Primary AWS region (defaults to eu-west-1, Ireland)
+            eu_regions: List of EU regions to analyse (defaults to major EU regions)
+        &quot;&quot;&quot;
+        if eu_regions is None:
+            # Default EU regions for multi-region cost analysis
+            eu_regions = ['eu-west-1', 'eu-central-1', 'eu-west-2', 'eu-west-3', 'eu-south-1', 'eu-north-1']
+
+        self.region = region
+        self.eu_regions = eu_regions
+        self.cost_explorer = boto3.client('ce', region_name=region)
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.cloudwatch = boto3.client('cloudwatch', region_name=region)
+
+    def analyze_cost_trends(self, days_back=30) -&gt; Dict:
+        &quot;&quot;&quot;Analyse cost trends for the last period across EU regions&quot;&quot;&quot;
+
+        end_date = datetime.now().date()
+        start_date = end_date - timedelta(days=days_back)
+
+        response = self.cost_explorer.get_cost_and_usage(
+            TimePeriod={
+                'Start': start_date.strftime('%Y-%m-%d'),
+                'End': end_date.strftime('%Y-%m-%d')
+            },
+            Granularity='DAILY',
+            Metrics=['BlendedCost'],
+            GroupBy=[
+                {'Type': 'DIMENSION', 'Key': 'SERVICE'},
+                {'Type': 'TAG', 'Key': 'Project'},
+                {'Type': 'DIMENSION', 'Key': 'REGION'}
+            ],
+            Filter={
+                'Dimensions': {
+                    'Key': 'REGION',
+                    'Values': self.eu_regions
+                }
+            }
+        )
+
+        return self._process_cost_data(response)
+
+    def identify_rightsizing_opportunities(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Identify EC2 instances that can be rightsized across EU regions&quot;&quot;&quot;
+
+        rightsizing_response = self.cost_explorer.get_rightsizing_recommendation(
+            Service='AmazonEC2',
+            Configuration={
+                'BenefitsConsidered': True,
+                'RecommendationTarget': 'SAME_INSTANCE_FAMILY'
+            },
+            Filter={
+                'Dimensions': {
+                    'Key': 'REGION',
+                    'Values': self.eu_regions
+                }
+            }
+        )
+
+        opportunities = []
+
+        for recommendation in rightsizing_response.get('RightsizingRecommendations', []):
+            if recommendation['RightsizingType'] == 'Modify':
+                opportunities.append({
+                    'instance_id': recommendation['CurrentInstance']['ResourceId'],
+                    'current_type': recommendation['CurrentInstance']['InstanceName'],
+                    'recommended_type': recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['InstanceName'],
+                    'estimated_monthly_savings_usd': float(recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['EstimatedMonthlySavings']),
+                    'utilisation': recommendation['CurrentInstance']['UtilizationMetrics'],
+                    'region': recommendation['CurrentInstance'].get('Region', 'unknown')
+                })
+
+        return opportunities
+
+    def get_unused_resources(self) -&gt; Dict:
+        &quot;&quot;&quot;Identify unused resources that can be terminated across EU regions&quot;&quot;&quot;
+
+        unused_resources = {
+            'unattached_volumes': self._find_unattached_ebs_volumes(),
+            'unused_elastic_ips': self._find_unused_elastic_ips(),
+            'idle_load_balancers': self._find_idle_load_balancers(),
+            'stopped_instances': self._find_stopped_instances()
+        }
+
+        return unused_resources
+
+    def generate_cost_optimization_plan(self, project_tag: str) -&gt; Dict:
+        &quot;&quot;&quot;Generate comprehensive cost optimisation plan for EU regions&quot;&quot;&quot;
+
+        plan = {
+            'project': project_tag,
+            'analysis_date': datetime.now().isoformat(),
+            'eu_regions_analysed': self.eu_regions,
+            'current_monthly_cost_usd': self._get_current_monthly_cost(project_tag),
+            'recommendations': {
+                'rightsizing': self.identify_rightsizing_opportunities(),
+                'unused_resources': self.get_unused_resources(),
+                'reserved_instances': self._analyze_reserved_instance_opportunities(),
+                'spot_instances': self._analyze_spot_instance_opportunities()
+            },
+            'potential_monthly_savings_usd': 0,
+            'notes': 'Costs are in USD (AWS billing currency). Convert to EUR using current exchange rate for EU financial reporting.'
+        }
+
+        # Calculate total potential savings
+        total_savings = 0
+        for rec_type, recommendations in plan['recommendations'].items():
+            if isinstance(recommendations, list):
+                total_savings += sum(rec.get('estimated_monthly_savings_usd', 0) for rec in recommendations)
+            elif isinstance(recommendations, dict):
+                total_savings += recommendations.get('estimated_monthly_savings_usd', 0)
+
+        plan['potential_monthly_savings_usd'] = total_savings
+        plan['savings_percentage'] = (total_savings / plan['current_monthly_cost_usd']) * 100 if plan['current_monthly_cost_usd'] &gt; 0 else 0
+
+        return plan
+
+    def _find_unattached_ebs_volumes(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Find unattached EBS volumes across EU regions&quot;&quot;&quot;
+
+        unattached_volumes = []
+
+        for region in self.eu_regions:
+            ec2_regional = boto3.client('ec2', region_name=region)
+            response = ec2_regional.describe_volumes(
+                Filters=[{'Name': 'status', 'Values': ['available']}]
+            )
+
+            for volume in response['Volumes']:
+                # Calculate monthly cost based on volume size and type
+                monthly_cost = self._calculate_ebs_monthly_cost(volume, region)
+
+                unattached_volumes.append({
+                    'volume_id': volume['VolumeId'],
+                    'size_gb': volume['Size'],
+                    'volume_type': volume['VolumeType'],
+                    'region': region,
+                    'estimated_monthly_savings_usd': monthly_cost,
+                    'creation_date': volume['CreateTime'].isoformat()
+                })
+
+        return unattached_volumes
+
+    def _calculate_ebs_monthly_cost(self, volume: Dict, region: str) -&gt; float:
+        &quot;&quot;&quot;Calculate monthly cost for EBS volume in specific EU region&quot;&quot;&quot;
+
+        # Example pricing for EU regions (USD per GB/month)
+        # Prices vary slightly by region - these are representative values
+        regional_pricing = {
+            'eu-west-1': {  # Ireland
+                'gp3': 0.088,
+                'gp2': 0.110,
+                'io1': 0.138,
+                'io2': 0.138,
+                'st1': 0.048,
+                'sc1': 0.026
+            },
+            'eu-central-1': {  # Frankfurt
+                'gp3': 0.095,
+                'gp2': 0.119,
+                'io1': 0.149,
+                'io2': 0.149,
+                'st1': 0.052,
+                'sc1': 0.028
+            }
+        }
+
+        # Default to eu-west-1 pricing if region not found
+        pricing = regional_pricing.get(region, regional_pricing['eu-west-1'])
+        cost_per_gb = pricing.get(volume['VolumeType'], 0.110)  # Default to gp2
+        return volume['Size'] * cost_per_gb
+
+def generate_terraform_cost_optimizations(cost_plan: Dict) -&gt; str:
+    &quot;&quot;&quot;Generate Terraform code to implement cost optimisations&quot;&quot;&quot;
+
+    terraform_code = &quot;&quot;&quot;
+# Automatically generated cost optimisations
+# Generated: {date}
+# Project: {project}
+# EU Regions: {regions}
+# Potential monthly savings: ${savings:.2f} USD
+# Note: Convert to EUR using current exchange rate for financial reporting
+
+&quot;&quot;&quot;.format(
+        date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        project=cost_plan['project'],
+        regions=', '.join(cost_plan.get('eu_regions_analysed', [])),
+        savings=cost_plan['potential_monthly_savings_usd']
+    )
+
+    # Generate spot instance configurations
+    if cost_plan['recommendations']['spot_instances']:
+        terraform_code += &quot;&quot;&quot;
+# Spot Instance Configuration for cost optimisation
+resource &quot;aws_launch_template&quot; &quot;spot_optimized&quot; {{
+  name_prefix   = &quot;{project}-spot-&quot;
+
+  instance_market_options {
+    market_type = &quot;spot&quot;
+    spot_options {{
+      max_price = &quot;{max_spot_price}&quot;
+    }}
+  }}
+
+  # Cost allocation tags
+  tag_specifications {{
+    resource_type = &quot;instance&quot;
+    tags = {{
+      Project = &quot;{project}&quot;
+      CostOptimisation = &quot;spot-instance&quot;
+      EstimatedSavings = &quot;${estimated_savings}&quot;
+    }}
+  }}
+}}
+&quot;&quot;&quot;.format(
+            project=cost_plan['project'],
+            max_spot_price=cost_plan['recommendations']['spot_instances'].get('recommended_max_price', '0.10'),
+            estimated_savings=cost_plan['recommendations']['spot_instances'].get('estimated_monthly_savings_usd', 0)
+        )
+
+    return terraform_code
+</code></pre>
+<h2 id="security-and-compliance-security-compliance">Security and compliance {#security-compliance}</h2>
+<h3 id="10_code_1-advanced-policy-as-code-module-for-eu-compliance-10_code_1">10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}</h3>
+<p><em>Referenced from Chapter 10: <a href="../10_policy_and_security/">Policy and Security as Code in Detail</a>.</em> This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.</p>
+<pre><code class="language-rego">package se.enterprise.security
+
+import rego.v1
+
+encryption_required_services := {
+    &quot;aws_s3_bucket&quot;,
+    &quot;aws_rds_instance&quot;,
+    &quot;aws_rds_cluster&quot;,
+    &quot;aws_efs_file_system&quot;,
+    &quot;aws_dynamodb_table&quot;,
+    &quot;aws_redshift_cluster&quot;,
+    &quot;aws_elasticsearch_domain&quot;
+}
+
+administrative_ports := {22, 3389, 5432, 3306, 1433, 27017, 6379, 9200, 5601}
+allowed_public_ports := {80, 443}
+eu_regions := {&quot;eu-north-1&quot;, &quot;eu-west-1&quot;, &quot;eu-west-2&quot;, &quot;eu-west-3&quot;, &quot;eu-central-1&quot;, &quot;eu-south-1&quot;}
+
+encryption_compliant[resource] {
+    resource := input.resources[_]
+    resource.type in encryption_required_services
+    encryption := get_encryption_status(resource)
+    validation := validate_encryption_strength(encryption)
+    validation.compliant
+}
+
+get_encryption_status(resource) := result {
+    resource.type == &quot;aws_s3_bucket&quot;
+    result := {
+        &quot;at_rest&quot;: has_s3_encryption(resource),
+        &quot;in_transit&quot;: has_s3_ssl_policy(resource),
+        &quot;key_management&quot;: resource.attributes.kms_key_type
+    }
+}
+
+get_encryption_status(resource) := result {
+    resource.type == &quot;aws_rds_instance&quot;
+    result := {
+        &quot;at_rest&quot;: resource.attributes.storage_encrypted,
+        &quot;in_transit&quot;: resource.attributes.force_ssl,
+        &quot;key_management&quot;: resource.attributes.kms_key_type
+    }
+}
+
+validate_encryption_strength(encryption) := result {
+    encryption.at_rest
+    encryption.in_transit
+    key_validation := validate_key_management(encryption.key_management)
+    result := {
+        &quot;compliant&quot;: key_validation.approved,
+        &quot;strength&quot;: key_validation.strength,
+        &quot;recommendations&quot;: key_validation.recommendations
+    }
+}
+
+validate_key_management(&quot;customer_managed&quot;) := {
+    &quot;approved&quot;: true,
+    &quot;strength&quot;: &quot;high&quot;,
+    &quot;recommendations&quot;: []
+}
+
+validate_key_management(&quot;aws_managed&quot;) := {
+    &quot;approved&quot;: true,
+    &quot;strength&quot;: &quot;medium&quot;,
+    &quot;recommendations&quot;: [
+        &quot;Consider migrating to customer managed keys for greater control&quot;,
+        &quot;Enable automatic key rotation&quot;
+    ]
+}
+
+validate_key_management(_) := {
+    &quot;approved&quot;: false,
+    &quot;strength&quot;: &quot;low&quot;,
+    &quot;recommendations&quot;: [
+        &quot;Configure an approved KMS key&quot;,
+        &quot;Document ownership within the OSCAL profile&quot;
+    ]
+}
+
+network_security_violations[violation] {
+    resource := input.resources[_]
+    resource.type == &quot;aws_security_group&quot;
+    violation := check_ingress_rules(resource)
+    violation.severity in [&quot;critical&quot;, &quot;high&quot;]
+}
+
+check_ingress_rules(sg) := violation {
+    rule := sg.attributes.ingress[_]
+    rule.cidr_blocks[_] == &quot;0.0.0.0/0&quot;
+    rule.from_port in administrative_ports
+    violation := {
+        &quot;type&quot;: &quot;critical_port_exposure&quot;,
+        &quot;severity&quot;: &quot;critical&quot;,
+        &quot;port&quot;: rule.from_port,
+        &quot;security_group&quot;: sg.attributes.name,
+        &quot;message&quot;: sprintf(&quot;Administrative port %v is exposed to the internet&quot;, [rule.from_port]),
+        &quot;remediation&quot;: &quot;Restrict access to dedicated management networks&quot;,
+        &quot;reference&quot;: &quot;MSB 3.2.1 Network Segmentation&quot;
+    }
+}
+
+check_ingress_rules(sg) := violation {
+    rule := sg.attributes.ingress[_]
+    rule.cidr_blocks[_] == &quot;0.0.0.0/0&quot;
+    not rule.from_port in allowed_public_ports
+    not rule.from_port in administrative_ports
+    violation := {
+        &quot;type&quot;: &quot;non_standard_port_exposure&quot;,
+        &quot;severity&quot;: &quot;high&quot;,
+        &quot;port&quot;: rule.from_port,
+        &quot;security_group&quot;: sg.attributes.name,
+        &quot;message&quot;: sprintf(&quot;Non-standard port %v is exposed to the internet&quot;, [rule.from_port]),
+        &quot;remediation&quot;: &quot;Validate the business requirement and narrow the CIDR range&quot;,
+        &quot;reference&quot;: &quot;MSB 3.2.2 Minimal Exposure&quot;
+    }
+}
+
+data_sovereignty_compliant[resource] {
+    resource := input.resources[_]
+    resource.type in {
+        &quot;aws_s3_bucket&quot;, &quot;aws_rds_instance&quot;, &quot;aws_rds_cluster&quot;,
+        &quot;aws_dynamodb_table&quot;, &quot;aws_elasticsearch_domain&quot;,
+        &quot;aws_redshift_cluster&quot;, &quot;aws_efs_file_system&quot;
+    }
+    classification := determine_classification(resource)
+    result := validate_region(resource, classification)
+    result.compliant
+}
+
+determine_classification(resource) := classification {
+    classification := resource.attributes.tags[&quot;DataClassification&quot;]
+    classification != &quot;&quot;
+}
+
+determine_classification(resource) := &quot;personal&quot; {
+    contains(lower(resource.attributes.name), &quot;personal&quot;)
+}
+
+determine_classification(resource) := &quot;personal&quot; {
+    resource.type in [&quot;aws_rds_instance&quot;, &quot;aws_rds_cluster&quot;]
+    indicators := {&quot;user&quot;, &quot;customer&quot;, &quot;gdpr&quot;, &quot;pii&quot;}
+    some indicator in indicators
+    contains(lower(resource.attributes.identifier), indicator)
+}
+
+determine_classification(_) := &quot;internal&quot;
+
+validate_region(resource, &quot;personal&quot;) := {
+    &quot;compliant&quot;: get_resource_region(resource) in eu_regions,
+    &quot;requirement&quot;: &quot;GDPR Articles 44–49&quot;
+}
+
+validate_region(resource, _) := {
+    &quot;compliant&quot;: true,
+    &quot;requirement&quot;: &quot;Internal data — EU residency not mandatory&quot;
+}
+
+get_resource_region(resource) := region {
+    region := resource.attributes.region
+    region != &quot;&quot;
+}
+
+get_resource_region(resource) := region {
+    az := resource.attributes.availability_zone
+    region := substring(az, 0, count(az) - 1)
+}
+
+get_resource_region(_) := &quot;unknown&quot;
+
+compliance_assessment := result {
+    encryption_violations := [
+        create_encryption_violation(resource) |
+        resource := input.resources[_];
+        resource.type in encryption_required_services;
+        not encryption_compliant[resource]
+    ]
+
+    network_violations := [v | v := network_security_violations[_]]
+
+    sovereignty_violations := [
+        create_sovereignty_violation(resource) |
+        resource := input.resources[_];
+        resource.type in encryption_required_services;
+        not data_sovereignty_compliant[resource]
+    ]
+
+    violations := array.concat(array.concat(encryption_violations, network_violations), sovereignty_violations)
+
+    result := {
+        &quot;overall_score&quot;: calculate_score(violations),
+        &quot;violations&quot;: violations,
+        &quot;regulators&quot;: {
+            &quot;gdpr&quot;: assess_regulator(&quot;GDPR&quot;, violations),
+            &quot;msb&quot;: assess_regulator(&quot;MSB&quot;, violations),
+            &quot;iso27001&quot;: assess_regulator(&quot;ISO 27001&quot;, violations)
+        }
+    }
+}
+
+create_encryption_violation(resource) := {
+    &quot;type&quot;: &quot;encryption_required&quot;,
+    &quot;severity&quot;: &quot;critical&quot;,
+    &quot;resource&quot;: resource.type,
+    &quot;message&quot;: &quot;Mandatory encryption is disabled&quot;,
+    &quot;remediation&quot;: &quot;Enable encryption at rest and enforce TLS in transit&quot;,
+    &quot;reference&quot;: &quot;GDPR Article 32&quot;
+}
+
+create_sovereignty_violation(resource) := {
+    &quot;type&quot;: &quot;data_sovereignty&quot;,
+    &quot;severity&quot;: &quot;critical&quot;,
+    &quot;resource&quot;: resource.type,
+    &quot;message&quot;: sprintf(&quot;Personal data stored outside approved EU regions (%v)&quot;, [get_resource_region(resource)]),
+    &quot;remediation&quot;: &quot;Move the workload to an EU region or document an adequacy decision&quot;,
+    &quot;reference&quot;: &quot;GDPR Articles 44–49&quot;
+}
+
+calculate_score(violations) := score {
+    penalties := [penalty |
+        violation := violations[_];
+        penalty := severity_penalties[violation.severity]
+    ]
+    score := math.max(0, 100 - sum(penalties))
+}
+
+severity_penalties := {
+    &quot;critical&quot;: 25,
+    &quot;high&quot;: 15,
+    &quot;medium&quot;: 10,
+    &quot;low&quot;: 5
+}
+
+assess_regulator(name, violations) := {
+    &quot;name&quot;: name,
+    &quot;open_findings&quot;: count([v | v := violations[_]; contains(lower(v.reference), lower(name))])
+}
+</code></pre>
+<h3 id="10_code_2-oscal-profile-for-regulated-financial-services-10_code_2">10_CODE_2: OSCAL profile for regulated financial services {#10_code_2}</h3>
+<p><em>Referenced from Chapter 10.</em> This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.</p>
+<pre><code class="language-json">{
+  &quot;profile&quot;: {
+    &quot;uuid&quot;: &quot;87654321-4321-8765-4321-876543218765&quot;,
+    &quot;metadata&quot;: {
+      &quot;title&quot;: &quot;Financial Institutions Security Profile&quot;,
+      &quot;published&quot;: &quot;2024-01-15T11:00:00Z&quot;,
+      &quot;last-modified&quot;: &quot;2024-01-15T11:00:00Z&quot;,
+      &quot;version&quot;: &quot;2.1&quot;,
+      &quot;oscal-version&quot;: &quot;1.1.2&quot;,
+      &quot;props&quot;: [
+        { &quot;name&quot;: &quot;organization&quot;, &quot;value&quot;: &quot;Financial Sector&quot; },
+        { &quot;name&quot;: &quot;jurisdiction&quot;, &quot;value&quot;: &quot;EU&quot; }
+      ]
+    },
+    &quot;imports&quot;: [
+      {
+        &quot;href&quot;: &quot;https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json&quot;,
+        &quot;include-controls&quot;: [
+          { &quot;matching&quot;: [ { &quot;pattern&quot;: &quot;ac-.*&quot; }, { &quot;pattern&quot;: &quot;au-.*&quot; }, { &quot;pattern&quot;: &quot;sc-.*&quot; } ] }
+        ]
+      },
+      {
+        &quot;href&quot;: &quot;regional-catalog.json&quot;,
+        &quot;include-controls&quot;: [
+          { &quot;matching&quot;: [ { &quot;pattern&quot;: &quot;gdpr-.*&quot; }, { &quot;pattern&quot;: &quot;msb-.*&quot; } ] }
+        ]
+      }
+    ],
+    &quot;merge&quot;: {
+      &quot;combine&quot;: { &quot;method&quot;: &quot;merge&quot; }
+    },
+    &quot;modify&quot;: {
+      &quot;set-parameters&quot;: [
+        {
+          &quot;param-id&quot;: &quot;gdpr-art32-1_prm1&quot;,
+          &quot;values&quot;: [&quot;AES-256-GCM&quot;]
+        },
+        {
+          &quot;param-id&quot;: &quot;gdpr-art32-1_prm2&quot;,
+          &quot;values&quot;: [&quot;AWS KMS customer managed keys backed by HSM&quot;]
+        },
+        {
+          &quot;param-id&quot;: &quot;msb-3.2.1_prm1&quot;,
+          &quot;values&quot;: [&quot;Zero Trust segmentation enforced via AWS Network Firewall&quot;]
+        }
+      ],
+      &quot;alters&quot;: [
+        {
+          &quot;control-id&quot;: &quot;gdpr-art32-1&quot;,
+          &quot;adds&quot;: [
+            {
+              &quot;position&quot;: &quot;after&quot;,
+              &quot;by-id&quot;: &quot;gdpr-art32-1_gdn&quot;,
+              &quot;parts&quot;: [
+                {
+                  &quot;id&quot;: &quot;gdpr-art32-1_fin-guidance&quot;,
+                  &quot;name&quot;: &quot;guidance&quot;,
+                  &quot;title&quot;: &quot;Finansinspektionen Supplement&quot;,
+                  &quot;prose&quot;: &quot;Payment service providers must use FIPS 140-2 validated encryption modules and review key material every 90 days.&quot;
+                }
+              ]
+            }
+          ]
+        },
+        {
+          &quot;control-id&quot;: &quot;msb-3.2.1&quot;,
+          &quot;adds&quot;: [
+            {
+              &quot;position&quot;: &quot;after&quot;,
+              &quot;by-id&quot;: &quot;msb-3.2.1_gdn&quot;,
+              &quot;parts&quot;: [
+                {
+                  &quot;id&quot;: &quot;msb-3.2.1_fin-requirement&quot;,
+                  &quot;name&quot;: &quot;requirement&quot;,
+                  &quot;title&quot;: &quot;Financial Sector Isolation&quot;,
+                  &quot;prose&quot;: &quot;Critical payment workloads must be isolated in dedicated network segments with inspection by AWS Network Firewall and VPC Traffic Mirroring.&quot;
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<h3 id="10_code_3-oscal-component-definitions-for-reusable-cloud-modules-10_code_3">10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}</h3>
+<p><em>Referenced from Chapter 10.</em> Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile.</p>
+<pre><code class="language-json">{
+  &quot;component-definition&quot;: {
+    &quot;uuid&quot;: &quot;11223344-5566-7788-99aa-bbccddeeff00&quot;,
+    &quot;metadata&quot;: {
+      &quot;title&quot;: &quot;AWS Components for Regulated Workloads&quot;,
+      &quot;published&quot;: &quot;2024-01-15T12:00:00Z&quot;,
+      &quot;last-modified&quot;: &quot;2024-01-15T12:00:00Z&quot;,
+      &quot;version&quot;: &quot;1.5&quot;,
+      &quot;oscal-version&quot;: &quot;1.1.2&quot;
+    },
+    &quot;components&quot;: [
+      {
+        &quot;uuid&quot;: &quot;comp-aws-rds-mysql&quot;,
+        &quot;type&quot;: &quot;software&quot;,
+        &quot;title&quot;: &quot;Amazon RDS MySQL&quot;,
+        &quot;description&quot;: &quot;Managed relational database configured for GDPR Article 32 compliance.&quot;,
+        &quot;control-implementations&quot;: [
+          {
+            &quot;source&quot;: &quot;regional-catalog.json&quot;,
+            &quot;implemented-requirements&quot;: [
+              {
+                &quot;control-id&quot;: &quot;gdpr-art32-1.1&quot;,
+                &quot;description&quot;: &quot;Encryption at rest enabled with customer managed KMS keys.&quot;,
+                &quot;statements&quot;: [
+                  {
+                    &quot;statement-id&quot;: &quot;gdpr-art32-1.1_smt&quot;,
+                    &quot;description&quot;: &quot;Default encryption uses AES-256 with keys rotated every 365 days.&quot;,
+                    &quot;implementation-status&quot;: { &quot;state&quot;: &quot;implemented&quot; }
+                  }
+                ],
+                &quot;props&quot;: [
+                  { &quot;name&quot;: &quot;kms-key-type&quot;, &quot;value&quot;: &quot;customer-managed&quot; },
+                  { &quot;name&quot;: &quot;rotation&quot;, &quot;value&quot;: &quot;365 days&quot; }
+                ]
+              },
+              {
+                &quot;control-id&quot;: &quot;msb-3.2.1.1&quot;,
+                &quot;description&quot;: &quot;Database subnet groups isolated from public subnets.&quot;,
+                &quot;statements&quot;: [
+                  {
+                    &quot;statement-id&quot;: &quot;msb-3.2.1.1_smt&quot;,
+                    &quot;description&quot;: &quot;Only application load balancers within the VPC may initiate connections.&quot;,
+                    &quot;implementation-status&quot;: { &quot;state&quot;: &quot;implemented&quot; }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        &quot;uuid&quot;: &quot;comp-aws-s3&quot;,
+        &quot;type&quot;: &quot;software&quot;,
+        &quot;title&quot;: &quot;Amazon S3 Secure Bucket&quot;,
+        &quot;description&quot;: &quot;Object storage with automatic encryption and access logging.&quot;,
+        &quot;control-implementations&quot;: [
+          {
+            &quot;source&quot;: &quot;regional-catalog.json&quot;,
+            &quot;implemented-requirements&quot;: [
+              {
+                &quot;control-id&quot;: &quot;gdpr-art32-1.2&quot;,
+                &quot;description&quot;: &quot;Enforced TLS 1.2 for all data in transit.&quot;,
+                &quot;statements&quot;: [
+                  {
+                    &quot;statement-id&quot;: &quot;gdpr-art32-1.2_smt&quot;,
+                    &quot;description&quot;: &quot;S3 bucket policies block non-TLS requests and log denials.&quot;,
+                    &quot;implementation-status&quot;: { &quot;state&quot;: &quot;implemented&quot; }
+                  }
+                ]
+              },
+              {
+                &quot;control-id&quot;: &quot;msb-3.2.1.2&quot;,
+                &quot;description&quot;: &quot;Zero Trust verification for access using IAM conditions.&quot;,
+                &quot;statements&quot;: [
+                  {
+                    &quot;statement-id&quot;: &quot;msb-3.2.1.2_smt&quot;,
+                    &quot;description&quot;: &quot;IAM policies require device posture attributes for privileged access.&quot;,
+                    &quot;implementation-status&quot;: { &quot;state&quot;: &quot;planned&quot; }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        &quot;uuid&quot;: &quot;comp-aws-network-firewall&quot;,
+        &quot;type&quot;: &quot;software&quot;,
+        &quot;title&quot;: &quot;AWS Network Firewall&quot;,
+        &quot;description&quot;: &quot;Edge inspection enforcing MSB segmentation and logging requirements.&quot;,
+        &quot;control-implementations&quot;: [
+          {
+            &quot;source&quot;: &quot;regional-catalog.json&quot;,
+            &quot;implemented-requirements&quot;: [
+              {
+                &quot;control-id&quot;: &quot;msb-3.2.1&quot;,
+                &quot;description&quot;: &quot;Micro-segmentation between payment and support zones.&quot;,
+                &quot;statements&quot;: [
+                  {
+                    &quot;statement-id&quot;: &quot;msb-3.2.1_smt&quot;,
+                    &quot;description&quot;: &quot;Stateful rules restrict lateral movement and mirror traffic to a central collector.&quot;,
+                    &quot;implementation-status&quot;: { &quot;state&quot;: &quot;implemented&quot; }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+</code></pre>
+<h3 id="10_code_4-automated-oscal-system-security-plan-generator-10_code_4">10_CODE_4: Automated OSCAL System Security Plan generator {#10_code_4}</h3>
+<p><em>Referenced from Chapter 10.</em> This Python utility ingests Terraform state, merges it with component definitions, and produces a machine-readable OSCAL SSP. The script is designed to run inside CI so every deployment updates the compliance evidence set.</p>
+<pre><code class="language-python">&quot;&quot;&quot;Generate OSCAL System Security Plans from Terraform configurations.&quot;&quot;&quot;
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, Iterable, List
+
+import boto3
+import hcl2
+
+
+@dataclass
+class ComponentDefinition:
+    &quot;&quot;&quot;Representation of an OSCAL component definition file.&quot;&quot;&quot;
+
+    path: Path
+    content: Dict[str, Any]
+
+
+class OSCALSSPGenerator:
+    &quot;&quot;&quot;Build an OSCAL-compliant System Security Plan from source files.&quot;&quot;&quot;
+
+    def __init__(self, terraform_directory: Path, component_paths: Iterable[Path]):
+        self.terraform_directory = terraform_directory
+        self.component_paths = list(component_paths)
+        self.sts = boto3.client(&quot;sts&quot;)
+
+    def generate(self, profile_href: str, system_name: str) -&gt; Dict[str, Any]:
+        resources = self._parse_terraform()
+        components = self._load_components()
+        mappings = self._map_resources_to_components(resources, components)
+        implementations = self._build_control_implementations(mappings)
+
+        now = datetime.utcnow().isoformat() + &quot;Z&quot;
+        return {
+            &quot;system-security-plan&quot;: {
+                &quot;uuid&quot;: self._uuid(),
+                &quot;metadata&quot;: {
+                    &quot;title&quot;: f&quot;System Security Plan – {system_name}&quot;,
+                    &quot;published&quot;: now,
+                    &quot;last-modified&quot;: now,
+                    &quot;version&quot;: &quot;1.0&quot;,
+                    &quot;oscal-version&quot;: &quot;1.1.2&quot;,
+                    &quot;props&quot;: [
+                        {&quot;name&quot;: &quot;organization&quot;, &quot;value&quot;: &quot;Enterprise&quot;},
+                        {&quot;name&quot;: &quot;system-name&quot;, &quot;value&quot;: system_name}
+                    ]
+                },
+                &quot;import-profile&quot;: {&quot;href&quot;: profile_href},
+                &quot;system-characteristics&quot;: {
+                    &quot;system-ids&quot;: [
+                        {
+                            &quot;identifier-type&quot;: &quot;https://ietf.org/rfc/rfc4122&quot;,
+                            &quot;id&quot;: self._account_id()
+                        }
+                    ],
+                    &quot;system-name&quot;: system_name,
+                    &quot;description&quot;: f&quot;Automated SSP generated from Terraform for {system_name}&quot;,
+                    &quot;security-sensitivity-level&quot;: &quot;moderate&quot;
+                },
+                &quot;control-implementation&quot;: {
+                    &quot;implemented-requirements&quot;: implementations
+                }
+            }
+        }
+
+    def _parse_terraform(self) -&gt; List[Dict[str, Any]]:
+        resources: List[Dict[str, Any]] = []
+        for tf_file in self.terraform_directory.rglob(&quot;*.tf&quot;):
+            with tf_file.open(&quot;r&quot;, encoding=&quot;utf-8&quot;) as handle:
+                data = hcl2.load(handle)
+                resources.extend(data.get(&quot;resource&quot;, []))
+        return resources
+
+    def _load_components(self) -&gt; List[ComponentDefinition]:
+        components: List[ComponentDefinition] = []
+        for path in self.component_paths:
+            with path.open(&quot;r&quot;, encoding=&quot;utf-8&quot;) as handle:
+                components.append(ComponentDefinition(path, json.load(handle)))
+        return components
+
+    def _map_resources_to_components(
+        self,
+        resources: List[Dict[str, Any]],
+        components: List[ComponentDefinition],
+    ) -&gt; Dict[str, ComponentDefinition]:
+        mappings: Dict[str, ComponentDefinition] = {}
+        for resource in resources:
+            resource_type = next(iter(resource.keys()))
+            for component in components:
+                if resource_type in json.dumps(component.content):
+                    mappings[resource_type] = component
+        return mappings
+
+    def _build_control_implementations(
+        self, mappings: Dict[str, ComponentDefinition]
+    ) -&gt; List[Dict[str, Any]]:
+        implementations: List[Dict[str, Any]] = []
+        for component in mappings.values():
+            definition = component.content[&quot;component-definition&quot;]
+            for comp in definition.get(&quot;components&quot;, []):
+                implementations.extend(
+                    comp.get(&quot;control-implementations&quot;, [])
+                )
+        return implementations
+
+    def _uuid(self) -&gt; str:
+        return datetime.utcnow().strftime(&quot;ssp-%Y%m%d%H%M%S&quot;)
+
+    def _account_id(self) -&gt; str:
+        return self.sts.get_caller_identity()[&quot;Account&quot;]
+
+
+def load_component_paths(directory: Path) -&gt; List[Path]:
+    return sorted(directory.glob(&quot;*.json&quot;))
+
+
+def save_ssp(output_path: Path, ssp: Dict[str, Any]) -&gt; None:
+    output_path.write_text(json.dumps(ssp, indent=2), encoding=&quot;utf-8&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    tf_dir = Path(&quot;infrastructure&quot;)
+    components_dir = Path(&quot;oscal/components&quot;)
+    generator = OSCALSSPGenerator(tf_dir, load_component_paths(components_dir))
+    plan = generator.generate(
+        profile_href=&quot;profiles/financial-profile.json&quot;,
+        system_name=&quot;Payments Platform&quot;
+    )
+    save_ssp(Path(&quot;artifacts/system-security-plan.json&quot;), plan)
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../about_the_author/" class="btn btn-neutral float-left" title="About the Author"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../appendix_b_technical_architecture/" class="btn btn-neutral float-right" title="Appendix B – Technical Architecture for Book Production">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../about_the_author/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../appendix_b_technical_architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
