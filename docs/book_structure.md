@@ -59,7 +59,7 @@ Reference material, author information, technical enablers, and the Architecture
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 9A | `09a_security_fundamentals.md` | Security Fundamentals for Architecture as Code | Foundational security principles, policies, and core practices |
+| 9 | `09_security_fundamentals.md` | Security Fundamentals for Architecture as Code | Foundational security principles, policies, and core practices |
 | 9B | `09b_security_patterns.md` | Advanced Security Patterns and Implementation | Advanced patterns, practical implementations, and future trends |
 | 9C | `09c_risk_and_threat_as_code.md` | Risk as Code and Threat Handling as Code | Codifying risk catalogues, automation, and incident playbooks |
 | 10 | `10_policy_and_security.md` | Policy and Security as Code in Detail | Detailed review of policy-as-code |

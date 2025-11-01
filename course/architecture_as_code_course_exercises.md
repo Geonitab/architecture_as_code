@@ -69,7 +69,7 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ## Module 4 – Policy as code and security automation
 
-**Book alignment:** Chapters 09a *Security Fundamentals for Architecture as Code*, 09b *Advanced Security Patterns and Implementation*, 09c *Risk as Code and Threat Handling as Code*, and 10 *Policy and Security as Code in Detail*. Reference workbook artefacts back to the control patterns, policy libraries, and response practices described in the book.
+**Book alignment:** Chapters 09 *Security Fundamentals for Architecture as Code*, 09b *Advanced Security Patterns and Implementation*, 09c *Risk as Code and Threat Handling as Code*, and 10 *Policy and Security as Code in Detail*. Reference workbook artefacts back to the control patterns, policy libraries, and response practices described in the book.
 
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |

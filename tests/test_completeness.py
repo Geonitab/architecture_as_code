@@ -42,7 +42,7 @@ class TestCompleteness:
     
     def test_chapter_naming_convention(self, chapter_files, requirements_config):
         """Test that chapter files follow naming convention."""
-        # Updated pattern to allow optional lowercase letter after chapter number (e.g., 09a_, 09b_)
+        # Updated pattern to allow optional lowercase letter after chapter number (e.g., 09b_, 26a_)
         expected_pattern = re.compile(r"^\d{2}[a-z]?_.*\.md$")
         
         # Get special chapter filenames that are allowed as exceptions
@@ -179,7 +179,7 @@ class TestCompleteness:
         language = requirements_config["book"]["language"]
         
         # Get all actual markdown chapter files (numbered files) for the language
-        # Updated pattern to also match files like 09a_, 09b_
+        # Updated pattern to also match files like 09b_, 26a_
         actual_chapters = set()
         for md_file in docs_directory.glob("[0-9][0-9]*_*.md"):
             # Only include files that match the chapter naming pattern (XX_ or XXa_)

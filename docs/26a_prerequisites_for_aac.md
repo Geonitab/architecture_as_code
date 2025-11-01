@@ -21,7 +21,7 @@ Practitioners should already experience leaders acting as coaches, echoing the b
 
 AaC assumes mastery of core delivery disciplines. The continuous pipelines in [Chapter 05](05_automation_devops_cicd.md), the testing depth in [Chapter 13](13_testing_strategies.md), and the Structurizr patterns in [Chapter 06](06_structurizr.md) must already be routine. Otherwise, architecture models drift from runtime reality.
 
-Security and compliance practices from [Chapters 09a, 09b, and 10](09a_security_fundamentals.md) also need to be embedded so that codified architecture does not introduce blind spots.
+Security and compliance practices from [Chapters 09, 09b, and 10](09_security_fundamentals.md) also need to be embedded so that codified architecture does not introduce blind spots.
 
 Governance automation, as described in [Chapter 11](11_governance_as_code.md), provides the scaffolding that lets architectural code flow through the same delivery channels as application code.
 
