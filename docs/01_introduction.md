@@ -85,3 +85,7 @@ This book follows a deliberate progression that mirrors the typical Architecture
 **Part G: Future and Wrap-up** looks ahead to emerging trends whilst providing a comprehensive conclusion that ties together all elements of the Architecture as Code journey.
 
 Each part builds upon previous foundations whilst setting the stage for what follows, creating a cohesive narrative that guides readers from first principles through to advanced practice.
+
+## Companion workbook and course alignment
+
+The *Architecture as Code* course workbook, exercise guide, and facilitator materials in `course/` extend this book into a practised learning journey. Each module maps directly to the chapters referenced throughout this introduction, ensuring that participants reinforce the concepts, controls, and cultural shifts described in the text. Workbook templates prompt teams to cite the relevant chapters, appendices, and evidence patterns so that classroom outputs remain consistent with the canonical guidance presented here. Facilitators should encourage learners to keep the workbook and this book side by side: every experiment, radar update, and artefact submission ought to reference the sections that informed the work, maintaining a verifiable audit trail between theory and practice.

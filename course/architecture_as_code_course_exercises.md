@@ -13,6 +13,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ## Module 0 – Orientation and radar benchmarking
 
+**Book alignment:** Chapters 01 *Introduction to Architecture as Code*, 02 *Fundamental Principles of Architecture as Code*, 24 *Modern Best Practices and Lessons Learned*, and 27 *Conclusion*. Ensure workbook reflections summarise insights from these chapters before progressing to later modules.
+
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
 | Baseline radar survey | Individual | Establish initial maturity scores and supporting evidence across all disciplines. | Completed radar survey export, workbook baseline summary. | Entire radar checklist. |
@@ -24,6 +26,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 ---
 
 ## Module 1 – Infrastructure as code foundations
+
+**Book alignment:** Chapters 05 *Automation, DevOps and CI/CD for Architecture as Code*, 07 *Containerisation and Orchestration as Code*, and 13 *Testing Strategies for Architecture as Code*. Capture workbook entries that cite the patterns, gates, and testing approaches introduced in these chapters.
 
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
@@ -37,6 +41,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ## Module 2 – Architecture as code modelling
 
+**Book alignment:** Chapters 06 *Structurizr: Architecture Modeling as Code*, 23 *Soft as Code Interplay*, and Appendix B *Technical Architecture for Book Production*. Use workbook notes to demonstrate how the referenced chapters influence modelling decisions and traceability.
+
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
 | Structurizr workspace build | Workshop | Model system context, container, and component views from source-controlled definitions. | Structurizr DSL repository, generated diagrams, CI logs. | Model generation, change synchronisation, traceability. |
@@ -48,6 +54,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 ---
 
 ## Module 3 – Containerisation and orchestration at scale
+
+**Book alignment:** Chapters 07 *Containerisation and Orchestration as Code*, 08 *Microservices Architecture as Code*, and 14 *Architecture as Code in Practice*. Document workbook evidence that shows container workflows aligning with guidance from these chapters.
 
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
@@ -61,6 +69,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ## Module 4 – Policy as code and security automation
 
+**Book alignment:** Chapters 09a *Security Fundamentals for Architecture as Code*, 09b *Advanced Security Patterns and Implementation*, 09c *Risk as Code and Threat Handling as Code*, and 10 *Policy and Security as Code in Detail*. Reference workbook artefacts back to the control patterns, policy libraries, and response practices described in the book.
+
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
 | Governance requirement translation | Scenario workshop | Convert policy statements into executable OPA/Sentinel rules with automated tests. | Policy code, unit tests, pipeline integration screenshot. | Policy storage, automated enforcement, peer review. |
@@ -72,6 +82,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 ---
 
 ## Module 5 – Governance as code operations
+
+**Book alignment:** Chapters 11 *Governance as Code*, 17 *Organisational Change and Team Structures*, and 19 *Management as Code*. Ensure workbook updates explicitly cite the governance, cultural, and leadership mechanisms explored in these chapters.
 
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
@@ -85,6 +97,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ## Module 6 – Compliance as code evidence flows
 
+**Book alignment:** Chapters 12 *Compliance and Regulatory Adherence*, 15 *Evidence as Code*, and Appendix 34 *Control Mapping Matrix Template*. Workbook compliance notes should highlight how controls, evidence pipelines, and mapping templates relate to the book guidance.
+
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
 | Compliance pipeline implementation | Lab | Automate control execution, evidence storage, and remediation ticketing. | Pipeline definition, evidence repository links, remediation tickets. | Continuous control execution, automated evidence, integrated remediation. |
@@ -96,6 +110,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 ---
 
 ## Module 7 – Testing as code for resilient platforms
+
+**Book alignment:** Chapters 13 *Testing Strategies for Architecture as Code*, 05 *Automation, DevOps and CI/CD for Architecture as Code*, and 16 *Migration from Traditional Infrastructure*. Capture workbook experiments that demonstrate links to layered testing, automated delivery, and migration risk management from the book.
 
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
@@ -109,6 +125,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ## Module 8 – Documentation, knowledge, and culture as code
 
+**Book alignment:** Chapters 22 *Documentation as Code vs Architecture as Code*, 23 *Soft as Code Interplay*, 18 *Team Structure and Competency Development for Architecture as Code*, and 17 *Organisational Change and Team Structures*. Workbook outcomes should explicitly draw on documentation pipelines, knowledge codification, and cultural automation described in the book.
+
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
 | Documentation pipeline sprint | Lab | Build automated documentation pipelines with diagram regeneration. | Pipeline configuration, generated site artefacts, workbook publishing ledger. | Version-controlled documentation, automated builds, quality checks. |
@@ -121,6 +139,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 
 ## Module 9 – Management as code and adaptive operating models
 
+**Book alignment:** Chapters 19 *Management as Code*, 20 *AI Agent Team for the Architecture as Code Initiative*, 21 *Digital Transformation through Code-Based Infrastructure*, and Appendix B *Technical Architecture for Book Production*. Relate workbook dashboarding, operating model codification, and leadership playbooks to the practices detailed in the book.
+
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |
 | Operating model codification | Lab | Encode leadership ceremonies and portfolio reviews into workflows. | Workflow files, approval matrices, workbook artefact index. | Documented operating models, codified resource allocation. |
@@ -132,6 +152,8 @@ This companion guide provides detailed exercises, lab briefs, and extension path
 ---
 
 ## Module 10 – Optimisation, AI assistance, and future readiness
+
+**Book alignment:** Chapters 20 *AI Agent Team for the Architecture as Code Initiative*, 25 *Future Trends and Development*, 26 *Anti-Patterns in Architecture as Code Programmes*, 26 *Prerequisites for Architecture as Code Adoption*, and 27 *Conclusion*. Use the workbook to evidence how foresight activities and capstone plans apply the strategic guidance from these chapters.
 
 | Exercise | Format | Objective | Key artefacts | Radar prompts |
 | --- | --- | --- | --- | --- |

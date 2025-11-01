@@ -9,6 +9,13 @@ Duplicate this workbook for each cohort team and store it under `/workbooks/<tea
 - **Participants present:**
 - **Session date:**
 
+## Book alignment checklist
+- **Core chapters referenced:**
+- **Key concepts to evidence from the book:**
+- **Appendices or templates applied:**
+
+> Before closing the module, confirm that every artefact and reflection cites the relevant chapters listed in the exercise guide so that the workbook remains a faithful companion to the book.
+
 ## Agenda outcomes
 | Agenda block | Key discussion points | Decisions made | Follow-up owner | Due date |
 | --- | --- | --- | --- | --- |
