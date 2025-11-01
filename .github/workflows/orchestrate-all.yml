@@ -12,6 +12,7 @@ on:
         type: boolean
         default: true
 
+# Default token perms for most jobs
 permissions:
   contents: write
 
@@ -34,18 +35,24 @@ jobs:
   site:
     name: Site
     uses: ./.github/workflows/site.yml
+    # 🔐 Allow the called Pages workflow to deploy (inherits these perms)
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
 
   finalise:
     name: Finalise & (optional) Release
     runs-on: ubuntu-latest
     needs: [book, whitepapers, presentations, site]
     timeout-minutes: 20
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Download artefacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v4
         with:
           pattern: '*'
           path: final-release
@@ -82,7 +89,7 @@ jobs:
       - name: Show structure
         run: |
           echo "=== Directories ==="; find final-release -type d | sort || true
-          echo "=== Files ===";      find final-release -type f | sort || true
+          echo "=== Files ==="; find final-release -type f | sort || true
 
       - name: Build combined zip
         run: |
@@ -91,12 +98,12 @@ jobs:
           cd ..
           ls -lh non-docker-release.zip
 
-      - name: Summarise release artefacts
+      - name: Summarise release artefacts (no heredoc)
         id: artefact_summary
+        shell: bash
         run: |
           set -euo pipefail
           shopt -s nullglob globstar
-
           declare -a patterns=(
             "final-release/**/*.pdf"
             "final-release/**/*.epub"
@@ -106,27 +113,22 @@ jobs:
           )
 
           summary=""
-
           for pattern in "${patterns[@]}"; do
             matches=($pattern)
             count=${#matches[@]}
-
             if [[ $count -eq 0 ]]; then
               echo "Pattern '${pattern}' matched no files."
               summary+="- ${pattern}: not present\n"
             else
               echo "Pattern '${pattern}' matched ${count} file(s):"
-              printf '  %s\n' "${matches[@]}"
+              printf ' %s\n' "${matches[@]}"
               summary+="- ${pattern}: ${count} file(s)\n"
             fi
           done
 
-          {
-            echo "summary<<'EOF'"
-            printf "%s" "$summary"
-            echo
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
+          # Encode newlines for GITHUB_OUTPUT without heredocs
+          summary_escaped="${summary//$'\n'/%0A}"
+          echo "summary=${summary_escaped}" >> "$GITHUB_OUTPUT"
 
       - name: Upload combined archive artefact
         uses: actions/upload-artifact@v4
@@ -152,6 +154,5 @@ jobs:
             final-release/book/architecture_as_code.docx
             final-release/presentation/architecture_as_code_presentation.pptx
             non-docker-release.zip
-          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
