@@ -14,13 +14,13 @@ Architecture as Code is central to meeting the expanding scope of compliance req
 | Monitoring and evidence collection | Continuous compliance scanning, audit log aggregation, metrics gathering | Compliance dashboards, audit trails, evidence packages | Automated evidence for audits, compliance status reports |
 | Governance reinforcement | Audit reviews, risk assessments, improvement initiatives | Updated policies, remediation plans, training programmes | Loop closes as governance informs next regulatory intelligence cycle |
 
-## AI and Machine Learning for Infrastructure Automation
+## AI and Machine Learning for Compliance Automation
 
 ![AI-augmented compliance automation workflow](images/diagram_12_ai_automation.png)
 
 *Figure 12.2 demonstrates the feedback loop between telemetry, the AI compliance engine, automated remediation, and human oversight that keeps regulatory posture current.*
 
-Artificial intelligence is transforming Architecture as Code with intelligent automation, predictive scaling, and self-healing systems. Machine learning models analyse operational data to optimise resource allocation, forecast failures, and adjust configurations before service levels are breached. Figure 12.2 highlights a practical control flow: telemetry and policy violations feed an AI compliance engine, which scores risk and decides whether automated remediation or human intervention is appropriate. Infrastructure as Code updates then redeploy compliant baselines, ensuring the organisation stays aligned with regulatory expectations.
+Artificial intelligence is transforming Architecture as Code with intelligent automation, predictive scaling, and self-healing systems. Machine learning models analyse operational data to optimise resource allocation, forecast failures, and adjust configurations before service levels are breached. Figure 12.2 highlights a practical control flow: telemetry and policy violations feed an AI compliance engine, which scores risk and decides whether automated remediation or human intervention is appropriate. Infrastructure as Code updates then redeploy compliant baselines, ensuring the organisation stays aligned with regulatory expectations and audit-ready evidence trails.
 
 ## Requirements Traceability and Validation
 
@@ -40,9 +40,9 @@ Architecture as Code operationalises the **assure once, comply many** principle 
 
 In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](34_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
 
-## Cloud-native and Serverless Development
+## Cloud-native and Serverless Compliance Controls
 
-Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures. Architecture as Code must represent triggers, response mechanisms, and orchestrated workflows that adapt to real-time business events. Edge computing introduces latency-sensitive workloads and intermittent connectivity, making coordinated configuration management essential across hybrid edge-cloud environments. Tooling must therefore support declarative policies for distributed deployments, data gravity, and dynamic routing.
+Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures. Architecture as Code must represent triggers, response mechanisms, and orchestrated workflows that adapt to real-time business events without compromising regulatory obligations. Edge computing introduces latency-sensitive workloads and intermittent connectivity, making coordinated configuration management essential across hybrid edge-cloud environments. Tooling must therefore support declarative policies for distributed deployments, data gravity, dynamic routing, and compliance guardrails that operate consistently regardless of where workloads execute.
 
 ## Policy-driven Infrastructure and Governance
 
@@ -52,26 +52,30 @@ Serverless computing has moved beyond function-as-a-service into comprehensive e
 
 Policy as Code continues to mature with automated control enforcement, continuous compliance monitoring, and dynamic policy adaptation. Strategy teams map regulatory goals and risk appetite, policy repositories turn those inputs into executable controls, and compliance pipelines provide dashboards, exception handling, and regulator-ready reporting. Figure 12.4 shows how exceptions loop back into the pipeline for remediation and how regulator feedback informs the next iteration of the governance strategy.
 
-## Quantum Computing and Next-generation Technologies
+## Future-facing Considerations (Speculative)
 
-Quantum computing will require a rethink of security models, cryptography, and resource management strategies. Post-quantum cryptography standards must be integrated into infrastructure security frameworks, and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation algorithms will help solve complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience.
+The following topics outline emerging areas that influence long-term compliance strategy. They are exploratory and should be treated as forward-looking guidance rather than current-state requirements.
 
-## Sustainability and Green Computing
+### Quantum Computing Readiness
 
-Environmental sustainability is a core consideration for infrastructure design and operations. Carbon-aware workload placement shifts compute to regions with renewable energy availability, optimises for energy efficiency, and minimises environmental impact. Architecture as Code should capture lifecycle management, recycling strategies, and sustainability metrics so that green objectives are validated alongside functional requirements.
+Quantum computing will require a rethink of security models, cryptography, and resource management strategies. Post-quantum cryptography standards must be integrated into infrastructure security frameworks, and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
+
+### Sustainability and Green Computing
+
+Environmental sustainability is a core consideration for infrastructure design and operations. Carbon-aware workload placement shifts compute to regions with renewable energy availability, optimises for energy efficiency, and minimises environmental impact. Architecture as Code should capture lifecycle management, recycling strategies, and sustainability metrics so that green objectives are validated alongside functional requirements and compliance commitments.
 
 ## Practical Examples
 
 ### AI-augmented Infrastructure Optimisation
 
 ```python
-# ai_optimizer.py
+# ai_optimiser.py
 import tensorflow as tf
 import numpy as np
 from datetime import datetime, timedelta
 import boto3
 
-class InfrastructureOptimizer:
+class InfrastructureOptimiser:
     def __init__(self, model_path):
         self.model = tf.keras.models.load_model(model_path)
         self.cloudwatch = boto3.client('cloudwatch')
@@ -135,7 +139,7 @@ provider:
 
 functions:
   optimiseInfrastructure:
-    handler: optimizer.optimise
+    handler: optimiser.optimise
     events:
       - schedule: rate(15 minutes)
       - cloudwatchEvent:
@@ -249,9 +253,9 @@ resource "aws_vpc" "quantum_safe" {
 
 ## Summary
 
-The modern Architecture as Code methodology is essential for infrastructure management in organisations that operate under strict regulatory oversight. Future development will be driven by AI automation, serverless architectures, quantum readiness, and sustainability requirements. Organisations must invest in new technologies, develop quantum-safe security strategies, and embed environmental considerations into infrastructure planning.
+Modern Architecture as Code practices provide the repeatability, transparency, and evidence management demanded by regulators. By codifying policies, enforcing controls through pipelines, and maintaining auditable feedback loops, organisations can demonstrate compliance without sacrificing delivery speed. AI-enabled tooling, serverless platforms, and rigorous traceability matrices ensure that every control remains testable and observable.
 
-Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles](02_fundamental_principles.md) to [Organisational Change](17_organisational_change.md)—Architecture as Code evolves to meet emerging challenges and opportunities.
+Looking forward, teams should monitor speculative developments such as quantum resilience and sustainability reporting so that compliance strategies evolve alongside the regulatory landscape. Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles](02_fundamental_principles.md) to [Organisational Change](17_organisational_change.md)—Architecture as Code adapts to meet emerging challenges and opportunities while keeping compliance at the forefront.
 
 ## Moving from Governance to Delivery
 
