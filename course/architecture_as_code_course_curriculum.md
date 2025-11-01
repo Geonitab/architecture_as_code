@@ -71,7 +71,7 @@ ration, tested rollouts, and codified runtime settings.
 s such as Sealed Secrets or External Secrets Operator.
 
 ### Module 4 – Policy as code and security automation
-- **Chapters:** 09a Security Fundamentals, 09b Security Patterns, 09c Risk and Threat as Code, 10 Policy and Security.
+- **Chapters:** 09 Security Fundamentals, 09b Security Patterns, 09c Risk and Threat as Code, 10 Policy and Security.
 - **Learning objectives:**
   - Translate governance requirements into machine-readable policies enforced in CI/CD.
   - Integrate security telemetry to drive policy updates and automated remediation.

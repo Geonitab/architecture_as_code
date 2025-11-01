@@ -52,11 +52,11 @@ book:
       area: "Architecture Platform"
       required: true
       label: "Chapter 8"
-    - filename: "09a_security_fundamentals.md"
+    - filename: "09_security_fundamentals.md"
       title: "Security Fundamentals for Architecture as Code"
       area: "Security and Governance"
       required: true
-      label: "Chapter 9A"
+      label: "Chapter 9"
     - filename: "09b_security_patterns.md"
       title: "Advanced Security Patterns and Implementation"
       area: "Security and Governance"
@@ -374,7 +374,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 6 | 06_structurizr.md | Structurizr: Architecture Modeling as Code | Architecture Platform | Yes |
 | Chapter 7 | 07_containerisation.md | Containerisation and Orchestration as Code | Architecture Platform | Yes |
 | Chapter 8 | 08_microservices.md | Microservices Architecture as Code | Architecture Platform | Yes |
-| Chapter 9A | 09a_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security and Governance | Yes |
+| Chapter 9 | 09_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security and Governance | Yes |
 | Chapter 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security and Governance | Yes |
 | Chapter 10 | 10_policy_and_security.md | Policy and Security as Code in Detail | Security and Governance | Yes |
 | Chapter 11 | 11_governance_as_code.md | Governance as Code | Security and Governance | Yes |
