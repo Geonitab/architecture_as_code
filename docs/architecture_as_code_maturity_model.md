@@ -202,7 +202,7 @@ Testing is limited to manual checks.
 
 ## Conclusion
 
-Architecture as Code is more than diagrams — it is a holistic approach that unifies infrastructure, policy, governance, documentation and culture through codified representations.
+Architecture as Code is more than diagrams — it is a holistic approach that unifies infrastructure, policy, governance, documentation and culture through codified representations.  
 By progressing through this maturity model, organisations can evolve from manual, error‑prone processes to adaptive systems that embed governance and leverage AI for continuous improvement.  
 
 “As code” disciplines must reinforce one another rather than exist in silos.
