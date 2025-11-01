@@ -6,7 +6,7 @@
 
 ## Introduction and context
 
-European organisations operate in some of the world's most demanding regulatory environments. They must simultaneously honour GDPR, NIS2, sector-specific obligations from bodies such as the European Banking Authority and the UK's Financial Conduct Authority, and the relentless pace of cloud adoption. Chapter 9 introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.
+European organisations operate in some of the world's most demanding regulatory environments. They must simultaneously honour GDPR, NIS2, sector-specific obligations from bodies such as the European Banking Authority and the UK's Financial Conduct Authority, and the relentless pace of cloud adoption. [Security Fundamentals for Architecture as Code](09_security_fundamentals.md) introduced the security principles that anchor this book. This chapter explores how those principles are executed as policy and security automation within Architecture as Code, turning written governance into executable guardrails that scale with continuous delivery.
 
 Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy audits. Expressing governance requirements as version-controlled code gives teams the same advantages found elsewhere in Architecture as Code: traceability, repeatability, peer review, automated testing, and rapid rollback when something goes wrong. The narrative and examples in this chapter illustrate how European delivery teams can embrace PaC without sacrificing regulatory assurance.
 
