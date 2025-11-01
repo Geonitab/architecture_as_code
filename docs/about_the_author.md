@@ -1,4 +1,4 @@
-# About the Author
+# About the Author {.unnumbered}
 
 This book represents the culmination of extensive experience in architecture, infrastructure, and systems development, bringing together theoretical foundations with practical expertise to create a comprehensive resource for organisations embracing Architecture as Code.
 

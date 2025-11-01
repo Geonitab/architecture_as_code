@@ -33,8 +33,8 @@ Lettered companion chapters (9B, 9C, 15A, 15B, 26A, and 26B) provide deeper dive
 
 ### Appendices and Extended Material
 - **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.
-- **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
-- **Chapter 29 – About the Authors:** Profile of Gunnar Nordqvist and the expertise behind the book.
+- **Glossary:** Key terminology for Architecture as Code initiatives.
+- **About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
 - **Appendix B – Technical Architecture for Book Production (Chapter 31):** Tooling overview for the publishing platform.
 - **Appendix C – FINOS Project Blueprint (Chapter 32):** Demonstration of governance-as-code alignment.
@@ -178,7 +178,7 @@ python3 scripts/verify_sources.py --output reports/sources  # custom output loca
 
 ## 📄 Governance
 
-The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/29_about_the_authors.md` for author biography and book context.【F:docs/29_about_the_authors.md】
+The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/about_the_author.md` for author biography and book context.【F:docs/about_the_author.md】
 
 ## 🌍 Language
 

@@ -116,10 +116,10 @@ Reference material, author information, technical enablers, and the Architecture
 
 | Chapter / Appendix | File | Title | Description |
 |--------------------|------|-------|-------------|
-| 28 | `28_glossary.md` | Glossary | Glossary and definitions |
-| 29 | `29_about_the_authors.md` | About the Authors | Profile of Gunnar Nordqvist and context for the book's expertise |
-| 30 | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
-| 31 | `31_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
+| Glossary | `glossary.md` | Glossary | Glossary and definitions |
+| About the Author | `about_the_author.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
+| Appendix A | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
+| Appendix B | `appendix_b_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
 | 32 | `32_finos_project_blueprint.md` | Appendix C: FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
 | 33 | `33_references.md` | References and Sources | Citations supporting the manuscript |
 | 34 | `34_control_mapping_matrix_template.md` | Appendix D: Control Mapping Matrix Template | Compliance acceleration template that complements the maturity model |
@@ -201,7 +201,7 @@ This book is intended for:
 
 ## Authors and Contributors
 
-See `29_about_the_authors.md` for detailed information about the book's author and the expertise behind this comprehensive guide.
+See `about_the_author.md` for detailed information about the book's author and the expertise behind this comprehensive guide.
 
 ---
 

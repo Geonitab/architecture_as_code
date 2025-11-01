@@ -25,8 +25,8 @@ docs/
 ├── 24_best_practices.md            # Methods and lessons learned
 ├── 25_future_trends.md            # Future trends and development
 ├── 27_conclusion.md                # Conclusion
-├── 28_glossary.md                  # Terminology
-├── 29_about_the_authors.md         # Author information
+├── glossary.md                     # Terminology
+├── about_the_author.md             # Author information
 ├── 30_appendix_code_examples.md   # Technical examples
 └── appendix_b_technical_architecture.md  # This appendix
 ```
