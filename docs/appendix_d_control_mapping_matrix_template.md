@@ -1,5 +1,7 @@
 # Control Mapping Matrix Template
 
+*Part of Appendix D – Templates and Tools.*
+
 The Control Mapping Matrix provides a reusable structure for cataloguing how each control satisfies multiple regulatory frameworks. Populate the table below from your governance repository so that auditors, risk managers, and engineering teams can navigate the same source of truth. Combine the matrix with the evidence manifests defined in [Evidence as Code](15_evidence_as_code.md) to ensure every mapping references a verifiable artefact.
 
 | Control ID | Control Title | Assurance Artefact(s) | ISO 27001 | SOC 2 | NIST 800-53 | GDPR | Other Frameworks / Internal |

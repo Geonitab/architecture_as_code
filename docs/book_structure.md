@@ -122,9 +122,10 @@ Reference material, author information, technical enablers, and the Architecture
 | Appendix B | `appendix_b_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
 | 32 | `32_finos_project_blueprint.md` | Appendix C: FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
 | 33 | `33_references.md` | References and Sources | Citations supporting the manuscript |
-| 34 | `34_control_mapping_matrix_template.md` | Appendix D: Control Mapping Matrix Template | Compliance acceleration template that complements the maturity model |
+| 34 | `appendix_templates_and_tools.md` | Appendix D: Templates and Tools | Directory of reusable maturity and compliance artefacts |
 | Appendix – Maturity Model | `architecture_as_code_maturity_model.md` | Architecture as Code Maturity Model | Progressive maturity staircase linking “as code” disciplines |
 | Appendix – Maturity Radar | `maturity_model_radar.html` | Architecture as Code Maturity Radar Tool | Interactive radar visualisation accompanying the maturity model |
+| Appendix – Control Mapping Matrix | `appendix_d_control_mapping_matrix_template.md` | Control Mapping Matrix Template | Compliance acceleration template that complements the maturity model |
 
 ---
 
