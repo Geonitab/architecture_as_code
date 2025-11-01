@@ -10,7 +10,7 @@ release:
 book:
   title: "Architecture as Code"
   language: "english"
-  total_chapters: 36  # Updated canonical manuscript count (including appendices)
+  total_chapters: 38  # Updated canonical manuscript count (including appendices)
   chapters:
     - filename: "01_introduction.md"
       title: "Introduction to Architecture as Code"
@@ -38,7 +38,7 @@ book:
       required: true
       label: "Chapter 5"
     - filename: "06_structurizr.md"
-      title: "Structurizr: Architecture Modeling as Code"
+      title: "Structurizr: Architecture Modelling as Code"
       area: "Architecture Platform"
       required: true
       label: "Chapter 6"
@@ -62,6 +62,11 @@ book:
       area: "Security and Governance"
       required: true
       label: "Chapter 9B"
+    - filename: "09c_risk_and_threat_as_code.md"
+      title: "Risk and Threat Modelling as Code"
+      area: "Security and Governance"
+      required: true
+      label: "Chapter 9C"
     - filename: "10_policy_and_security.md"
       title: "Policy and Security as Code in Detail"
       area: "Security and Governance"
@@ -87,11 +92,16 @@ book:
       area: "Delivery and Operations"
       required: true
       label: "Chapter 14"
+    - filename: "15_evidence_as_code.md"
+      title: "Evidence as Code and Continuous Assurance"
+      area: "Delivery and Operations"
+      required: true
+      label: "Chapter 15A"
     - filename: "15_cost_optimization.md"
       title: "Cost Optimisation and Resource Management"
       area: "Delivery and Operations"
       required: true
-      label: "Chapter 15"
+      label: "Chapter 15B"
     - filename: "16_migration.md"
       title: "Migration from Traditional Infrastructure"
       area: "Delivery and Operations"
@@ -182,7 +192,7 @@ book:
       area: "Appendices"
       required: true
       label: "Appendix C"
-    - filename: "architecture_as_code_model.md"
+    - filename: "architecture_as_code_maturity_model.md"
       title: "Architecture as Code Maturity Model"
       area: "Reference"
       required: true
@@ -263,6 +273,10 @@ book:
       filename: "33_references.md"
       requires_diagram: false
       requires_sources: false
+    maturity_model:
+      filename: "architecture_as_code_maturity_model.md"
+      requires_diagram: false
+      requires_sources: false
     book_cover:
       filename: "BOOK_COVER_DESIGN.md"
       requires_diagram: false
@@ -276,6 +290,10 @@ book:
       title: "Front Cover"
       description: "Cover artwork and release metadata maintained outside the numbered manuscript."
       required: true
+    - filename: "34_control_mapping_matrix_template.md"
+      title: "Control Mapping Matrix Template"
+      description: "Template reference maintained alongside the appendices for governance programmes."
+      required: false
 
 structure:
   required_sections:
@@ -371,11 +389,12 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 3 | 03_version_control.md | Version Control and Code Structure | Foundations | Yes |
 | Chapter 4 | 04_adr.md | Architecture Decision Records (ADR) | Foundations | Yes |
 | Chapter 5 | 05_automation_devops_cicd.md | Automation, DevOps and CI/CD for Architecture as Code | Architecture Platform | Yes |
-| Chapter 6 | 06_structurizr.md | Structurizr: Architecture Modeling as Code | Architecture Platform | Yes |
+| Chapter 6 | 06_structurizr.md | Structurizr: Architecture Modelling as Code | Architecture Platform | Yes |
 | Chapter 7 | 07_containerisation.md | Containerisation and Orchestration as Code | Architecture Platform | Yes |
 | Chapter 8 | 08_microservices.md | Microservices Architecture as Code | Architecture Platform | Yes |
 | Chapter 9 | 09_security_fundamentals.md | Security Fundamentals for Architecture as Code | Security and Governance | Yes |
 | Chapter 9B | 09b_security_patterns.md | Advanced Security Patterns and Implementation | Security and Governance | Yes |
+| Chapter 9C | 09c_risk_and_threat_as_code.md | Risk and Threat Modelling as Code | Security and Governance | Yes |
 | Chapter 10 | 10_policy_and_security.md | Policy and Security as Code in Detail | Security and Governance | Yes |
 | Chapter 11 | 11_governance_as_code.md | Governance as Code | Security and Governance | Yes |
 | Chapter 12 | 12_compliance.md | Compliance and Regulatory Adherence | Security and Governance | Yes |
@@ -401,7 +420,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Appendix A | 30_appendix_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
 | Appendix B | appendix_b_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
 | Appendix C | 32_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
-| Appendix D | architecture_as_code_model.md | Architecture as Code Maturity Model | Reference | Yes |
+| Appendix D | architecture_as_code_maturity_model.md | Architecture as Code Maturity Model | Reference | Yes |
 | References | 33_references.md | References and Sources | Reference | Yes |
 
 ### Special Chapter Requirements

@@ -14,7 +14,6 @@ It should never modify any files in the docs/ directory.
 
 import os
 import sys
-import glob
 import re
 import shutil
 from collections import OrderedDict
@@ -23,6 +22,8 @@ from html import escape
 from pathlib import Path
 
 import yaml
+
+from scripts.navigation import get_whitepaper_chapter_files
 
 def read_chapter_content(chapter_file):
     """Read and parse a chapter markdown file."""
@@ -231,21 +232,31 @@ def get_chapter_mapping():
     """Return mapping of chapter files to readable chapter identifiers."""
     metadata = _load_requirements_metadata()
     chapters = metadata.get("book", {}).get("chapters", [])
+    chapter_lookup = {
+        str(chapter.get("filename")): chapter
+        for chapter in chapters
+        if chapter.get("filename")
+    }
 
+    nav_filenames = get_whitepaper_chapter_files()
     mapping = OrderedDict()
-    for index, chapter in enumerate(chapters, start=1):
-        filename = chapter.get("filename")
-        if not filename:
-            continue
 
-        label = chapter.get("label") or chapter.get("title")
+    for index, filename in enumerate(nav_filenames, start=1):
+        chapter_meta = chapter_lookup.get(filename)
+        if chapter_meta is None:
+            print(
+                f"Warning: {filename} present in navigation but missing from BOOK_REQUIREMENTS metadata"
+            )
+            chapter_meta = {}
+
+        label = chapter_meta.get("label") or chapter_meta.get("title")
         if not label:
             label = f"Chapter {index}"
 
         mapping[filename] = {
             "label": label,
-            "title": chapter.get("title") or label,
-            "area": chapter.get("area") or "Architecture as Code"
+            "title": chapter_meta.get("title") or label,
+            "area": chapter_meta.get("area") or "Architecture as Code",
         }
 
     return mapping
@@ -466,18 +477,31 @@ def generate_whitepapers(release_mode=False):
     
     # Find all chapter markdown files
     docs_dir = Path("docs")
-    chapter_files = sorted(glob.glob(str(docs_dir / "*.md")))
-    
-    print(f"Found {len(chapter_files)} markdown files in docs/ directory")
+    chapter_files: list[Path] = []
+    missing_files: list[str] = []
+
+    for filename in get_whitepaper_chapter_files():
+        candidate = docs_dir / filename
+        if candidate.exists():
+            chapter_files.append(candidate)
+        else:
+            print(
+                f"WARNING: Chapter file {filename} referenced by navigation is missing on disk"
+            )
+            missing_files.append(filename)
+
+    print(
+        f"Resolved {len(chapter_files)} markdown files via canonical navigation (missing: {len(missing_files)})"
+    )
     print(f"Chapter mapping contains {len(chapter_mapping)} entries")
     
     generated_count = 0
     skipped_files = []
     error_files = []
     
-    for chapter_file in chapter_files:
-        filename = os.path.basename(chapter_file)
-        
+    for chapter_path in chapter_files:
+        filename = chapter_path.name
+
         # Skip files that aren't in our mapping (like build artifacts)
         if filename not in chapter_mapping:
             # Log the reason for skipping
@@ -492,7 +516,7 @@ def generate_whitepapers(release_mode=False):
         print(f"Processing {filename}...")
         
         # Read chapter content
-        chapter_data = read_chapter_content(chapter_file)
+        chapter_data = read_chapter_content(chapter_path)
         if not chapter_data:
             print(f"Failed to read {filename}, skipping...")
             error_files.append((filename, "Failed to read chapter content"))

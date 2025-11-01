@@ -399,55 +399,16 @@ done
 # Generate PDF using the Pandoc configuration file
 echo "Generating PDF with Pandoc defaults..."
 
-# Build chapter list with descriptive names
-CHAPTER_FILES=(
-    "part_a_foundations.md"
-    "01_introduction.md"
-    "02_fundamental_principles.md"
-    "03_version_control.md"
-    "04_adr.md"
-    "part_b_platform.md"
-    "05_automation_devops_cicd.md"
-    "06_structurizr.md"
-    "07_containerisation.md"
-    "08_microservices.md"
-    "part_c_security.md"
-    "09_security_fundamentals.md"
-    "09b_security_patterns.md"
-    "09c_risk_and_threat_as_code.md"
-    "10_policy_and_security.md"
-    "11_governance_as_code.md"
-    "12_compliance.md"
-    "part_d_delivery.md"
-    "13_testing_strategies.md"
-    "14_practical_implementation.md"
-    "15_evidence_as_code.md"
-    "15_cost_optimization.md"
-    "16_migration.md"
-    "part_e_leadership.md"
-    "17_organisational_change.md"
-    "18_team_structure.md"
-    "19_management_as_code.md"
-    "20_ai_agent_team.md"
-    "21_digitalisation.md"
-    "part_f_practices.md"
-    "22_documentation_vs_architecture.md"
-    "23_soft_as_code_interplay.md"
-    "24_best_practices.md"
-    "part_g_future.md"
-    "25_future_trends.md"
-    "26a_prerequisites_for_aac.md"
-    "26b_aac_anti_patterns.md"
-    "27_conclusion.md"
-    "part_h_appendices.md"
-    "28_glossary.md"
-    "29_about_the_authors.md"
-    "30_appendix_code_examples.md"
-    "appendix_b_technical_architecture.md"
-    "32_finos_project_blueprint.md"
-    "architecture_as_code_maturity_model.md"
-    "33_references.md"
-)
+# Build chapter list using the canonical navigation configuration
+if ! readarray -t CHAPTER_FILES < <(python3 ../scripts/navigation.py --book-build); then
+    echo "❌ Error: Unable to resolve chapter ordering from mkdocs.yml"
+    exit 1
+fi
+
+if [ ${#CHAPTER_FILES[@]} -eq 0 ]; then
+    echo "❌ Error: No chapters discovered via the canonical navigation"
+    exit 1
+fi
 
 # Build a sanitized list that excludes LaTeX-only part markers for non-LaTeX formats
 COVER_PAGE_MARKDOWN="00_front_cover.md"
