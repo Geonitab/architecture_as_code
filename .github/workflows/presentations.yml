@@ -101,6 +101,67 @@ jobs:
             find docs/images -maxdepth 1 -type f | head -n 50 || true
           fi
 
+      - name: Preflight assets (auto-create placeholders for missing images)
+        id: preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t src < slide_sources.txt
+
+          # Collect all local image paths in Markdown: ![alt](path)
+          tmp_list="$(mktemp)"
+          for f in "${src[@]}"; do
+            # Extract targets; ignore http(s) and data: URIs
+            grep -hoE '!\[[^]]*\]\(([^)]+)\)' "$f" | \
+              sed -E 's/!\[[^]]*\]\(([^)]+)\)/\1/' | \
+              grep -vE '^(https?:|data:)' || true
+          done | sort -u > "${tmp_list}"
+
+          missing=0
+          while IFS= read -r p; do
+            [ -z "$p" ] && continue
+            # Normalise leading "./"
+            p="${p#./}"
+            if [ ! -f "$p" ]; then
+              missing=$((missing+1))
+              dir="$(dirname "$p")"
+              mkdir -p "$dir"
+              case "$p" in
+                *.png|*.PNG)
+                  # 1x1 transparent PNG
+                  base64 -d > "$p" << 'EOF'
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQAB
+DQottAAAAABJRU5ErkJggg==
+EOF
+                  ;;
+                *.jpg|*.jpeg|*.JPG|*.JPEG)
+                  # 1x1 minimal JPEG
+                  base64 -d > "$p" << 'EOF'
+/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAIBAQEBAQEBAQEBAQICAgICAgQDAgICAQME
+AwMDAwYEBQQFBQUFBQYIBwcHBwYKCgoKCgoKCgoMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+/2wCEAQICAgICAgQDAgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
+DAwMDAwMDAwMDAwMDAwMDAwMDP/wAARCAAQABADASIAAhEBAxEB/8QAFQABAQAAAAAA
+AAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAA
+AAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AMQAAAD/2Q==
+EOF
+                  ;;
+                *.svg|*.SVG)
+                  printf '%s\n' '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > "$p"
+                  ;;
+                *)
+                  # Default to PNG if extension unknown
+                  base64 -d > "$p" << 'EOF'
+iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQAB
+DQottAAAAABJRU5ErkJggg==
+EOF
+                  ;;
+              esac
+              echo "::notice::Created placeholder for missing asset: $p"
+            fi
+          done < "${tmp_list}"
+
+          echo "missing_placeholders=${missing}" >> "$GITHUB_OUTPUT"
+
       - name: Build PPTX with Pandoc (no LLM) — primary attempt
         id: build1
         shell: bash
@@ -117,12 +178,10 @@ jobs:
           DEFAULTS_ARG=""
           REF_ARG=""
 
-          # Only add --defaults if the file exists and was validated
           if [ "${{ steps.validate.outputs.use_defaults }}" = "true" ]; then
             DEFAULTS_ARG="--defaults=${PANDOC_DEFAULTS}"
           fi
 
-          # If template flagged unusable in defaults, try a standalone template file
           if [ "${{ steps.validate.outputs.use_template }}" != "true" ]; then
             if [ -f templates/presentation_reference.pptx ]; then
               REF_ARG="--reference-doc=templates/presentation_reference.pptx"
@@ -135,15 +194,12 @@ jobs:
             "${src[@]}"
           rc=$?
 
-          # Expose exit code + whether a fallback is needed
           echo "rc=${rc}" >> "$GITHUB_OUTPUT"
           if [ "$rc" -eq 97 ]; then
             echo "needs_fallback=true" >> "$GITHUB_OUTPUT"
           else
             echo "needs_fallback=false" >> "$GITHUB_OUTPUT"
           fi
-
-          # Do not fail the job here; let the next step decide.
           exit 0
 
       - name: Build PPTX with Pandoc — fallback (no defaults/template)
