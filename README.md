@@ -68,6 +68,18 @@ releases/                 # Git-ignored distribution bundles populated by build 
 
 The canonical ordering of these chapters is published in `docs/book_index.json`, enabling automation and quality checks to consume a single, machine-readable source of truth.【F:docs/book_index.json】
 
+## 🖼️ Diagram Workflow
+
+Mermaid diagrams live in `docs/images/` with the source (`*.mmd`) and the rendered PNG committed together. Keeping both artefacts in version control ensures offline readers, document reviewers, and downstream automations can rely on stable diagrams without regenerating assets. The PNG files are marked as binary in `.gitattributes` so pull requests stay tidy even when large diagrams change.【F:.gitattributes†L1-L2】
+
+When you adjust or add diagrams:
+
+- Run `npm ci` once per workspace to install the locked Mermaid CLI toolchain.
+- Execute `python3 scripts/check_mermaid_diagrams.py` to confirm every committed PNG still matches its Mermaid source. The helper renders each diagram using the same parameters as the book build and fails fast if an image is missing or outdated.【F:scripts/check_mermaid_diagrams.py†L1-L138】
+- If the check reports that Chromium cannot start, install the headless browser dependencies listed in the error output or point `PUPPETEER_EXECUTABLE_PATH` to an existing Chrome binary before rerunning the command.【F:scripts/check_mermaid_diagrams.py†L94-L138】
+
+Continuous integration reinforces this policy via the **Verify Mermaid Diagrams** workflow, which installs the toolchain and runs the same check on every push or pull request that touches the diagram set.【F:.github/workflows/verify-mermaid-diagrams.yml†L1-L53】
+
 ## 🚀 Build and Automation Workflow
 
 ### Prerequisites
