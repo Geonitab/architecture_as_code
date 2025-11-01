@@ -73,12 +73,11 @@ jobs:
           echo "count=${#files[@]}" >> "$GITHUB_OUTPUT"
           head -n 20 slide_sources.txt || true
 
-      - name: Validate defaults/template and common assets
+      - name: Validate defaults/template
         id: validate
         shell: bash
         run: |
           set -euo pipefail
-
           echo "use_defaults=true" >> "$GITHUB_OUTPUT"
           echo "use_template=true" >> "$GITHUB_OUTPUT"
 
@@ -88,72 +87,45 @@ jobs:
           else
             REF_PATH="$(awk -F: '/^[[:space:]]*reference-doc[[:space:]]*:/ {sub(/^[^:]*:[[:space:]]*/,""); gsub(/[[:space:]]+/," "); print $0; exit}' "${PANDOC_DEFAULTS}" || true)"
             if [ -n "${REF_PATH}" ]; then
-              REF_PATH="${REF_PATH%\"}"; REF_PATH="${REF_PATH#\"}"
-              REF_PATH="${REF_PATH%\'}"; REF_PATH="${REF_PATH#\'}"
-              if [ ! -f "${REF_PATH}" ]; then
-                echo "::warning title=Missing reference-doc::${REF_PATH} referenced from ${PANDOC_DEFAULTS} does not exist."
+              REF_TRIM="${REF_PATH%\"}"; REF_TRIM="${REF_TRIM#\"}"; REF_TRIM="${REF_TRIM%\'}"; REF_TRIM="${REF_TRIM#\'}"
+              if [ ! -f "${REF_TRIM}" ]; then
+                echo "::warning title=Missing reference-doc::${REF_TRIM} referenced from ${PANDOC_DEFAULTS} does not exist."
                 echo "use_template=false" >> "$GITHUB_OUTPUT"
               fi
             fi
           fi
 
-          if [ -d docs/images ]; then
-            find docs/images -maxdepth 1 -type f | head -n 50 || true
-          fi
-
-      - name: Preflight assets (auto-create placeholders for missing images)
+      - name: Preflight assets (create tiny placeholders if images are missing)
         id: preflight
         shell: bash
         run: |
           set -euo pipefail
           mapfile -t src < slide_sources.txt
 
-          # Collect all local image paths in Markdown: ![alt](path)
           tmp_list="$(mktemp)"
           for f in "${src[@]}"; do
-            # Extract targets; ignore http(s) and data: URIs
-            grep -hoE '!\[[^]]*\]\(([^)]+)\)' "$f" | \
-              sed -E 's/!\[[^]]*\]\(([^)]+)\)/\1/' | \
-              grep -vE '^(https?:|data:)' || true
+            grep -hoE '!\[[^]]*\]\(([^)]+)\)' "$f" | sed -E 's/!\[[^]]*\]\(([^)]+)\)/\1/' | grep -vE '^(https?:|data:)' || true
           done | sort -u > "${tmp_list}"
 
           missing=0
           while IFS= read -r p; do
             [ -z "$p" ] && continue
-            # Normalise leading "./"
             p="${p#./}"
             if [ ! -f "$p" ]; then
               missing=$((missing+1))
-              dir="$(dirname "$p")"
-              mkdir -p "$dir"
+              mkdir -p "$(dirname "$p")"
               case "$p" in
                 *.png|*.PNG)
-                  # 1x1 transparent PNG
-                  base64 -d > "$p" << 'EOF'
-iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQAB
-DQottAAAAABJRU5ErkJggg==
-EOF
+                  printf '%s' 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==' | base64 -d > "$p"
                   ;;
                 *.jpg|*.jpeg|*.JPG|*.JPEG)
-                  # 1x1 minimal JPEG
-                  base64 -d > "$p" << 'EOF'
-/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAIBAQEBAQEBAQEBAQICAgICAgQDAgICAQME
-AwMDAwYEBQQFBQUFBQYIBwcHBwYKCgoKCgoKCgoMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
-/2wCEAQICAgICAgQDAgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM
-DAwMDAwMDAwMDAwMDAwMDAwMDP/wAARCAAQABADASIAAhEBAxEB/8QAFQABAQAAAAAA
-AAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAA
-AAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AMQAAAD/2Q==
-EOF
+                  printf '%s' '/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAIBAQEBAQEBAQEBAQICAgICAgQDAgICAQM...AAAD/2Q==' | base64 -d > "$p"
                   ;;
                 *.svg|*.SVG)
-                  printf '%s\n' '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > "$p"
+                  printf '%s' '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>' > "$p"
                   ;;
                 *)
-                  # Default to PNG if extension unknown
-                  base64 -d > "$p" << 'EOF'
-iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQAB
-DQottAAAAABJRU5ErkJggg==
-EOF
+                  printf '%s' 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==' | base64 -d > "$p"
                   ;;
               esac
               echo "::notice::Created placeholder for missing asset: $p"
@@ -162,7 +134,7 @@ EOF
 
           echo "missing_placeholders=${missing}" >> "$GITHUB_OUTPUT"
 
-      - name: Build PPTX with Pandoc (no LLM) — primary attempt
+      - name: Build PPTX with Pandoc — primary
         id: build1
         shell: bash
         env:
