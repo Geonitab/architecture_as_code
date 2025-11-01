@@ -33,15 +33,13 @@ jobs:
 
       - name: Install Python dependencies
         env:
-          REQUIREMENTS: |
-            requirements.txt
+          REQUIREMENTS_FILE: requirements.txt
         run: |
           set -euo pipefail
           python -m pip install -U pip
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
+          if [ -f "${REQUIREMENTS_FILE}" ]; then
+            pip install -r "${REQUIREMENTS_FILE}"
           else
-            # Minimal deps if no requirements.txt is present
             pip install mkdocs mkdocs-material
           fi
 
