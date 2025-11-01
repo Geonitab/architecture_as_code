@@ -21,7 +21,7 @@ The book explores how to treat architecture and infrastructure work as software 
 | --- | --- | --- |
 | Part A – Foundations | 1-4 | Core concepts, guiding principles, and documentation practices for Architecture as Code |
 | Part B – Architecture Platform | 5-7 | Automation tooling, cloud environments, containerisation, and modelling foundations |
-| Part C – Security & Governance | 9-12 | Security automation, policy enforcement, governance models, and compliance obligations |
+| Part C – Security & Governance | 9–12 | Security automation, policy enforcement, governance models, and compliance obligations |
 | Part D – Delivery & Operations | 13-16 | Testing strategies, delivery pipelines, cost management, and migration playbooks |
 | Part E – Organisation & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
 | Part F – Experience & Best Practices | 22-24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
