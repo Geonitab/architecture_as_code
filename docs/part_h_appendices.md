@@ -14,7 +14,7 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 [Appendix B: Technical Architecture for Book Production](31_technical_architecture.md) documents the infrastructure and automation used to produce this book itself. This meta-example demonstrates Architecture as Code principles applied to documentation delivery, showing how the same practices scale from infrastructure to content pipelines.
 
-The [Architecture as Code Maturity Model](architecture_as_code_model.md) consolidates insights from across the manuscript into a staircase-style progression model. It summarises how infrastructure, governance, policy, testing, and cultural practices evolve together when organisations embrace Architecture as Code.
+The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) consolidates insights from across the manuscript into a staircase-style progression model. It summarises how infrastructure, governance, policy, testing, and cultural practices evolve together when organisations embrace Architecture as Code.
 
 The [Control Mapping Matrix Template](34_control_mapping_matrix_template.md) offers a reusable table structure that underpins the "assure once, comply many" approach. It documents how evidence artefacts map to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues so that teams maintain a single source of truth for compliance coverage.
 
