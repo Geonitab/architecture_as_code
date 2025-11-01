@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -91,7 +91,6 @@ jobs:
             # If defaults references a reference-doc, make sure it exists too
             REF_PATH="$(awk -F: '/^[[:space:]]*reference-doc[[:space:]]*:/ {sub(/^[^:]*:[[:space:]]*/,""); gsub(/[[:space:]]+/," "); print $0; exit}' "${PANDOC_DEFAULTS}" || true)"
             if [ -n "${REF_PATH}" ]; then
-              # Trim quotes
               REF_PATH="${REF_PATH%\"}"; REF_PATH="${REF_PATH#\"}"
               REF_PATH="${REF_PATH%\'}"; REF_PATH="${REF_PATH#\'}"
               if [ ! -f "${REF_PATH}" ]; then
@@ -101,7 +100,7 @@ jobs:
             fi
           fi
 
-          # Sanity: list first 50 files in docs/images if present
+          # Sanity: list some images if present (helps debug bad paths)
           if [ -d docs/images ]; then
             find docs/images -maxdepth 1 -type f | head -n 50 || true
           fi
@@ -109,6 +108,7 @@ jobs:
       - name: Build PPTX with Pandoc (no LLM) — primary attempt
         id: build1
         shell: bash
+        continue-on-error: true
         env:
           PANDOC_ARGS: |
             --from gfm
@@ -116,7 +116,7 @@ jobs:
             --resource-path=.:docs:docs/images
             --embed-resources
         run: |
-          set +e  # we will handle exit codes manually
+          set -euo pipefail
           mapfile -t src < slide_sources.txt
 
           DEFAULTS_ARG=""
@@ -125,33 +125,32 @@ jobs:
           if [ "${{ steps.validate.outputs.use_defaults }}" = "true" ]; then
             DEFAULTS_ARG="--defaults=${PANDOC_DEFAULTS}"
           fi
-          if [ "${{ steps.validate.outputs.use_template }}" = "true" ] && grep -q '^[[:space:]]*reference-doc:' "${PANDOC_DEFAULTS}" 2>/dev/null; then
-            # reference-doc is already in defaults; nothing to add
-            :
-          else
-            # Optional standalone template alongside repo if present
+          if [ "${{ steps.validate.outputs.use_template }}" != "true" ]; then
             if [ -f templates/presentation_reference.pptx ]; then
               REF_ARG="--reference-doc=templates/presentation_reference.pptx"
             fi
           fi
 
           mkdir -p "${OUTPUT_DIR}"
+          set +e
           pandoc ${DEFAULTS_ARG} ${PANDOC_ARGS} ${REF_ARG} \
             --output "${OUTPUT_DIR}/${OUTPUT_FILE}" \
             "${src[@]}"
           rc=$?
+          set -e
 
           echo "rc=${rc}" >> "$GITHUB_OUTPUT"
+
           if [ $rc -eq 0 ]; then
             echo "Primary pandoc conversion succeeded."
-            exit 0
           else
             echo "::warning title=Pandoc failed::Exit code ${rc} on primary attempt."
-            exit $rc
+            # Let the workflow continue to the fallback step
+            exit 1
           fi
 
       - name: Build PPTX with Pandoc — fallback (no defaults/template)
-        if: ${{ failure() && steps.build1.outputs.rc == '97' }}
+        if: ${{ steps.build1.outcome == 'failure' && steps.build1.outputs.rc == '97' }}
         shell: bash
         env:
           PANDOC_ARGS: |
