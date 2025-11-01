@@ -1,6 +1,6 @@
 # Policy and Security as Code in Detail
 
-![Policy-as-Code delivery lifecycle](images/diagram_12_chapter10.png)
+![Policy-as-Code delivery lifecycle](images/diagram_10_policy_lifecycle.png)
 
 *Figure 10.1 – Policy-as-Code guardrails embedded across the delivery lifecycle, from initial design through to production monitoring.*
 
