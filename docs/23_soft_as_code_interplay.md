@@ -66,13 +66,13 @@ Compliance as code thus becomes a quality engine that reinforces the other disci
 
 ## Architecture as Code as the Hub
 
-Architecture as code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of models in DSLs such as Structurizr, C4 models generated from Markdown, or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:
+Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of models in DSLs such as Structurizr, C4 models generated from Markdown, or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:
 
 - **Traceability to compliance.** The architecture can reference compliance rules that explain why a given pattern must include logging, encryption, or redundancy. By linking to rule definitions it becomes clear how design decisions support adherence.
 - **Real-time documentation.** Documentation as code can be generated directly from architectural models and provide up-to-date manuals, diagrams, and guides. Documentation stays in sync with the "living" architecture.
 - **Automated quality gates.** When architectural models are versioned, compliance and quality checks can run automatically before an architectural change is approved. This offers objective support for architecture boards and decision forums.
 
-The hub metaphor is powerful: architecture as code connects technical implementations with policy and documentation layers. It becomes easier to facilitate dialogue across expert roles when everyone looks at the same source of truth.
+The hub metaphor is powerful: Architecture as Code connects technical implementations with policy and documentation layers. It becomes easier to facilitate dialogue across expert roles when everyone looks at the same source of truth.
 
 ## Documentation as Code as the Communication Layer
 
@@ -129,7 +129,7 @@ Organisations seeking to establish a cohesive ecosystem of soft "as code" discip
 
 ## Future Perspectives
 
-Technologies such as AI and semantic search engines expand the potential of soft "as code" disciplines. By combining codified regulations with language models, organisations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.
+Technologies such as AI and semantic search engines expand the potential of soft "as code" disciplines. By combining codified regulations with language models, organisations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as Code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.
 
 At the same time, data governance, security, and ethics become even more important. The more of an organisation’s soft fabric that is codified, the greater the demands on access control, privacy protection, and accountability.
 

@@ -28,7 +28,7 @@ The maturity model includes the key “as code” disciplines discussed in the b
 | Aspect (discipline) | Description | References |
 |----------------------|-------------|-------------|
 | **Infrastructure as code (IaC)** | Declarative templates and programmatic frameworks (e.g. Terraform, Pulumi, AWS CDK) used to define, provision and manage infrastructure; test strategies include unit, integration and compliance tests. | Ch. 5 Automation & CI/CD [13], Ch. 13 Testing Strategies [2] |
-| **Architecture as code (AaC)** | Models such as the C4 model or Structurizr DSL used to encode architecture. AaC becomes the hub that links policies, compliance rules and documentation. | Ch. 6 Structurizr [1], Ch. 23 Soft as Code Interplay [3] |
+| **Architecture as Code (AaC)** | Models such as the C4 model or Structurizr DSL used to encode architecture. AaC becomes the hub that links policies, compliance rules and documentation. | Ch. 6 Structurizr [1], Ch. 23 Soft as Code Interplay [3] |
 | **Containerisation & orchestration as code** | Definition of container images, Kubernetes manifests, Compose files and Helm charts; supports repeatable, portable deployments. | Ch. 7 Containerisation & Orchestration as Code [4] |
 | **Policy as code (PaC) & Security as code** | Translation of governance and security requirements into executable rules using tools such as Open Policy Agent; reduces manual approvals, provides continuous validation and integrates with CI/CD pipelines. | Ch. 10 Policy & Security [5] |
 | **Governance as code** | Codifying approval flows, branch protection rules and decision policies so that governance artefacts live in repositories with transparent review workflows. | Ch. 11 Governance as Code [6] |
@@ -55,7 +55,7 @@ Use the following yes/no questions to evaluate each discipline before plotting t
 - [ ] Are infrastructure modules reusable and parameterised to promote consistency across environments?
 - [ ] Is drift detection automated and reviewed regularly to ensure infrastructure matches the declared state?
 
-### Architecture as code (AaC)
+### Architecture as Code (AaC)
 
 - [ ] Are architecture models generated from source-controlled code or domain-specific language definitions?
 - [ ] Do teams update architecture models as part of the same change when system behaviour evolves?
@@ -171,7 +171,7 @@ Testing is limited to manual checks.
 ---
 
 ### Level 4 – Optimised and AI-assisted
-- Architecture as code becomes dynamic and adaptive with telemetry feedback.  
+- Architecture as Code becomes dynamic and adaptive with telemetry feedback.
 - Machine learning predicts risks and remediates drift automatically.  
 - Self-healing infrastructure scales proactively.  
 - Governance as code spans enterprise portfolios with automated audit trails.  
@@ -202,7 +202,7 @@ Testing is limited to manual checks.
 
 ## Conclusion
 
-Architecture as code is more than diagrams — it is a holistic approach that unifies infrastructure, policy, governance, documentation and culture through codified representations.  
+Architecture as Code is more than diagrams — it is a holistic approach that unifies infrastructure, policy, governance, documentation and culture through codified representations.
 By progressing through this maturity model, organisations can evolve from manual, error‑prone processes to adaptive systems that embed governance and leverage AI for continuous improvement.  
 
 “As code” disciplines must reinforce one another rather than exist in silos.

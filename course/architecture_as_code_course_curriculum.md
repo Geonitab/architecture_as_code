@@ -48,7 +48,7 @@ d drift detection.
 - **Activities:** Compare Terraform and Pulumi workflows, review drift detection tooling, and draft a pull-request checklist that
  embeds radar expectations.
 
-### Module 2 – Architecture as code modelling
+### Module 2 – Architecture as Code modelling
 - **Chapters:** 06 Structurizr, 23 Soft as Code Interplay, 31 Technical Architecture.
 - **Learning objectives:**
   - Generate C4 or Structurizr DSL models from source-controlled definitions.
