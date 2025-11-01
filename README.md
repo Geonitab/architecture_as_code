@@ -21,21 +21,24 @@ The book explores how to treat architecture and infrastructure work as software 
 | --- | --- | --- |
 | Part A – Foundations | 1-4 | Core concepts, guiding principles, and documentation practices for Architecture as Code |
 | Part B – Architecture Platform | 5-7 | Automation tooling, cloud environments, containerisation, and modelling foundations |
-| Part C – Security & Governance | 9-12 | Security automation, policy enforcement, governance models, and compliance obligations |
+| Part C – Security & Governance | 9–12 | Security automation, policy enforcement, governance models, and compliance obligations |
 | Part D – Delivery & Operations | 13-16 | Testing strategies, delivery pipelines, cost management, and migration playbooks |
 | Part E – Organisation & Leadership | 17-21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
 | Part F – Experience & Best Practices | 22-24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
 | Part G – Future & Wrap-up | 25-27 | Strategic outlook, forward-looking development plans, and closing guidance |【F:docs/book_structure.md】【F:docs/part_a_foundations.md】
 
-Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`) that frames the narrative for the chapters that follow.【F:docs/part_a_foundations.md】
+Each lettered part is introduced by a dedicated preface—`docs/part_a_foundations.md`, `docs/part_b_platform.md`, `docs/part_c_security.md`, `docs/part_d_delivery.md`, `docs/part_e_leadership.md`, `docs/part_f_practices.md`, and `docs/part_g_future.md`—that frames the narrative for the chapters that follow.【F:docs/part_a_foundations.md】【F:docs/part_b_platform.md】【F:docs/part_c_security.md】【F:docs/part_d_delivery.md】【F:docs/part_e_leadership.md】【F:docs/part_f_practices.md】【F:docs/part_g_future.md】
 
 ### Appendices and Extended Material
 - **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.
 - **Chapter 28 – Glossary:** Key terminology for Architecture as Code initiatives.
-- **Chapter 29 – About the Author:** Profile of Gunnar Nordqvist and the expertise behind the book.
+- **Chapter 29 – About the Authors:** Profile of Gunnar Nordqvist and the expertise behind the book.
 - **Chapter 30 – Appendix A: Code Examples:** Reference implementations and automation templates.
-- **Appendix B – Technical Architecture for Book Production:** Tooling overview for the publishing platform.
-- **Architecture as Code Maturity Model and Control Mapping Template:** Adoption guidance and compliance tooling that extend the main chapters.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/34_control_mapping_matrix_template.md】
+- **Chapter 31 – Appendix B: Technical Architecture for Book Production:** Tooling overview for the publishing platform.
+- **Chapter 32 – Appendix C: FINOS Project Blueprint:** Governance alignment blueprint for regulated collaboration.
+- **Chapter 33 – References and Sources:** Consolidated citations for the manuscript.
+- **Chapter 34 – Control Mapping Matrix Template:** Reusable compliance mapping workbook.
+- **Architecture as Code Maturity Model and Radar Tool:** Adoption guidance and diagnostic visualisation that extend the main chapters.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/architecture_as_code_maturity_model.md】【F:docs/maturity_model_radar.html】
 
 ### Archived Drafts
 - **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/book_structure.md】【F:docs/archive/README.md】
@@ -44,8 +47,8 @@ Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`)
 
 ```
 docs/                     # Manuscript chapters, diagrams, and publishing assets
-├── *.md                  # Numbered chapters and appendices (01_introduction.md … appendix_b_technical_architecture.md)
-├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
+├── *.md                  # Numbered chapters and appendices (01_introduction.md … 31_technical_architecture.md)
+├── archive/              # Retired chapter drafts and legacy assets (e.g., former Chapter 32, historical cover exports)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
 ├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation
 └── pandoc.yaml           # Shared Pandoc configuration
@@ -59,6 +62,12 @@ releases/                 # Git-ignored distribution bundles populated by build 
 .github/workflows/        # Automation for builds, bot responses, and content validation
 └── *.yml                 # Includes unified-build-release.yml, generate-presentations.yml, generate-whitepapers.yml, and specialised bot workflows
 ```
+
+### Housekeeping for Generated Assets
+
+- **Do not commit build artefacts.** The `releases/` directory is intentionally git-ignored and populated only by automation or the release scripts documented below.
+- **Historic exports live in `docs/archive/`.** The former `exports_old/` contents have moved to `docs/archive/book-cover/` so contributors can reference legacy cover design files without cluttering the repository root.
+- **Regenerate locally when needed.** Use `python3 generate_book.py` and `docs/build_book.sh` (or `./build_release.sh` for the full bundle) to create fresh assets before publishing.
 
 ## 🚀 Build and Automation Workflow
 
@@ -74,6 +83,9 @@ python3 generate_book.py
 
 # Build PDF, EPUB, and DOCX (runs diagram export, copies cover art, and writes to releases/book/)
 docs/build_book.sh
+
+# Generate the PowerPoint deck (writes to releases/presentation/ by default with --release)
+python3 generate_presentation.py --release --create-pptx
 
 # Orchestrate every deliverable and create an optional release archive
 python3 build_all_orchestrator.py --zip
@@ -100,7 +112,7 @@ Continuous integration enforces successful builds through the `Build MkDocs Site
 
 ## 📦 Release Deliverables
 - **Book formats:** `architecture_as_code.pdf`, `.epub`, and `.docx` generated via Pandoc with the Eisvogel template.
-- **Presentation materials:** `architecture_as_code_presentation.pptx` containing chapter summaries and speaker notes.
+- **Presentation materials:** `architecture_as_code_presentation.pptx` containing chapter summaries and speaker notes. The Python automation is the canonical source for the slide deck, and the retired Prezi prototype has been archived to avoid divergence.
 - **Whitepapers:** HTML exports for each chapter designed for responsive reading.
 - **Static website:** Production-ready site mirroring the manuscript for web distribution.【F:releases/README.md】
 

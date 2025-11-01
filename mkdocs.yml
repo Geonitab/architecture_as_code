@@ -15,37 +15,37 @@ nav:
       - Version Control and Code Structure: 03_version_control.md
       - Architecture Decision Records (ADR): 04_adr.md
   - Part B – Architecture Platform:
-      - index: part_b_architecture_platform.md
+      - index: part_b_platform.md
       - Automation, DevOps and CI/CD for Infrastructure as Code: 05_automation_devops_cicd.md
       - Containerisation and Orchestration as Code: 07_containerisation.md
       - Microservices Architecture as Code: 08_microservices.md
   - Part C – Security & Governance:
-      - index: part_c_security_governance.md
+      - index: part_c_security.md
       - Security Fundamentals for Architecture as Code: 09_security_fundamentals.md
       - Advanced Security Patterns and Implementation: 09b_security_patterns.md
       - Policy and Security as Code in Detail: 10_policy_and_security.md
       - Governance as Code: 11_governance_as_code.md
       - Compliance and Regulatory Adherence: 12_compliance.md
   - Part D – Delivery & Operations:
-      - index: part_d_delivery_operations.md
+      - index: part_d_delivery.md
       - Testing Strategies for Infrastructure as Code: 13_testing_strategies.md
       - Architecture as Code in Practice: 14_practical_implementation.md
       - Evidence as Code and Continuous Assurance: 15_evidence_as_code.md
       - Cost Optimisation and Resource Management: 15_cost_optimization.md
       - Migration from Traditional Infrastructure: 16_migration.md
   - Part E – Organisation & Leadership:
-      - index: part_e_organisation_leadership.md
+      - index: part_e_leadership.md
       - Organisational Change and Team Structures: 17_organisational_change.md
       - Management as Code: 19_management_as_code.md
       - AI Agent Team for Architecture as Code Initiatives: 20_ai_agent_team.md
       - Digitalisation through Code-based Infrastructure: 21_digitalisation.md
   - Part F – Experience & Best Practices:
-      - index: part_f_experience_best_practices.md
+      - index: part_f_practices.md
       - Documentation as Code vs Architecture as Code: 22_documentation_vs_architecture.md
       - Interplay Between Soft-As-Code Disciplines: 23_soft_as_code_interplay.md
       - Best Practices and Lessons Learned: 24_best_practices.md
   - Part G – Future & Wrap-up:
-      - index: part_g_future_wrap_up.md
+      - index: part_g_future.md
       - Future Trends in Architecture as Code: 25_future_trends.md
       - Prerequisites for Architecture as Code Adoption: 26a_prerequisites_for_aac.md
       - Anti-Patterns in Architecture as Code Programmes: 26b_aac_anti_patterns.md
@@ -53,12 +53,13 @@ nav:
       - Team Structure and Competency Development for IaC: 18_team_structure.md
   - Appendices:
       - Glossary: 28_glossary.md
+      - About the Authors: 29_about_the_authors.md
       - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
       - Appendix B – Technical Architecture for Book Production: appendix_b_technical_architecture.md
       - Appendix C – FINOS Project Blueprint: 32_finos_project_blueprint.md
       - Appendix D – Architecture as Code Maturity Model: architecture_as_code_maturity_model.md
       - Appendix E – Architecture as Code Maturity Radar Tool: maturity_model_radar.html
-      - About the Author: 29_about_the_authors.md
+      - Appendix F – Control Mapping Matrix Template: 34_control_mapping_matrix_template.md
       - References and Sources: 33_references.md
   - Prezi Deck: prezi/index.html
 docs_dir: docs
