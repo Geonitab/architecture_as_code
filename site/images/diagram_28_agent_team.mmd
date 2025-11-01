@@ -1,0 +1,27 @@
+%% Team collaboration flow for AI agents supporting Architecture as Code initiatives
+flowchart TD
+    PO[Project Owner]:::kv-highlight
+    PM[Project Manager]:::kv-primary
+    ARCH[Architect]:::kv-accent
+    RA[Requirements Analyst]:::kv-accent
+    DES[Designer]:::kv-pattern
+    DEV[Developer]:::kv-accent
+    QC[Quality Control]:::kv-highlight
+    ED[Editor]:::kv-muted
+    GD[Graphic Designer]:::kv-elevated
+
+    PO --> PM
+    PM --> ARCH
+    PM --> RA
+    PM --> DES
+    PM --> DEV
+    PM --> QC
+    PM --> ED
+    PM --> GD
+    ARCH --> PM
+    RA --> PM
+    DES --> PM
+    DEV --> PM
+    QC --> PM
+    ED --> PM
+    GD --> PM

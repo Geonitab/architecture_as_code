@@ -1,0 +1,20 @@
+%%{init: {'theme': 'neutral', 'themeVariables': { 'primaryColor': '#0b5fff', 'primaryTextColor': '#0b5fff', 'tertiaryColor': '#f3f7ff'}}}%%
+flowchart LR
+    classDef level fill:#0b5fff,stroke:#0b5fff,stroke-width:2px,color:#ffffff,font-size:14px,font-weight:bold
+    classDef action fill:#f3f7ff,stroke:#0b5fff,stroke-width:1px,color:#0b5fff,font-size:12px
+
+    L0([Level 0\nInitial / ad hoc]):::level
+    S0{{"Codify architecture diagrams\ninside shared repositories"}}:::action
+    L1([Level 1\nRepeatable & version-controlled]):::level
+    S1{{"Automate infrastructure pipelines\nand policy checks"}}:::action
+    L2([Level 2\nDefined & automated]):::level
+    S2{{"Link governance, compliance\nand documentation as code"}}:::action
+    L3([Level 3\nManaged & integrated]):::level
+    S3{{"Embed telemetry feedback and\ncontinuous compliance"}}:::action
+    L4([Level 4\nOptimised & AI-assisted]):::level
+    S4{{"Evolve into generative,\nintent-driven architecture"}}:::action
+    L5([Level 5\nInnovative / next-generation]):::level
+
+    L0 --> S0 --> L1 --> S1 --> L2 --> S2 --> L3 --> S3 --> L4 --> S4 --> L5
+
+    linkStyle default stroke:#0b5fff,stroke-width:2px

@@ -1,0 +1,26 @@
+graph TB
+    %% Source Code Management
+    subgraph "Source Materials"
+        MD[📝 Markdown Files<br/>27 chapters in docs/]
+        MMD[🎨 Mermaid Diagrams<br/>images/*.mmd]
+        PY[🐍 Python Scripts<br/>generate_book.py]
+        YAML[📋 Configuration<br/>pandoc.yaml]
+    end
+
+    %% GitHub Repository
+    subgraph "GitHub Repository"
+        REPO[📦 Git Repository<br/>Version Control]
+        GHA[🔄 GitHub Actions<br/>CI/CD Workflows]
+    end
+
+    %% Data Flow
+    MD --> REPO
+    MMD --> REPO
+    PY --> REPO
+    YAML --> REPO
+    
+    REPO --> GHA
+    
+    %% Styling
+    class MD,MMD,PY,YAML kv-highlight
+    class REPO,GHA kv-outline

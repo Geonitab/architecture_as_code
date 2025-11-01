@@ -1,0 +1,66 @@
+classDiagram
+    class ArchitectureAsCode {
+        +String versionedArtefacts
+        +guardrails()
+        +automatedReviews()
+    }
+
+    class VersionControlSystem {
+        +String repository
+        +store()
+        +review()
+    }
+
+    class DeliveryPipeline {
+        +integrate()
+        +test()
+        +deploy()
+    }
+
+    class PlatformTeam {
+        +curateModules()
+        +enableTeams()
+        +sharePractices()
+    }
+
+    class SecurityPolicy {
+        +defineControls()
+        +evaluateChanges()
+        +enforceAccess()
+    }
+
+    class ComplianceAutomation {
+        +scanConfigurations()
+        +collectEvidence()
+    }
+
+    class ObservabilityStack {
+        +telemetry()
+        +alerting()
+        +dashboards()
+    }
+
+    class FinOpsPractice {
+        +allocateCost()
+        +optimizeSpend()
+        +trackSustainability()
+    }
+
+    class KnowledgeGraph {
+        +mapConcepts()
+        +traceImpact()
+    }
+
+    ArchitectureAsCode --> VersionControlSystem : stores definitions in
+    ArchitectureAsCode --> DeliveryPipeline : triggers automation via
+    ArchitectureAsCode --> SecurityPolicy : codifies guardrails for
+    ArchitectureAsCode --> KnowledgeGraph : documents relationships in
+    PlatformTeam --> ArchitectureAsCode : curates modules for
+    PlatformTeam --> KnowledgeGraph : publishes guidance to
+    DeliveryPipeline --> ObservabilityStack : reports signals to
+    DeliveryPipeline --> ComplianceAutomation : gates releases via
+    ComplianceAutomation --> SecurityPolicy : codifies rules from
+    ObservabilityStack --> FinOpsPractice : shares usage data with
+    FinOpsPractice --> PlatformTeam : funds shared services for
+    FinOpsPractice --> ArchitectureAsCode : informs design trade-offs for
+
