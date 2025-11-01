@@ -38,7 +38,7 @@ Each lettered part is introduced by a dedicated preface (`docs/part_[a-g]_*.md`)
 - **Architecture as Code Maturity Model and Control Mapping Template:** Adoption guidance and compliance tooling that extend the main chapters.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/34_control_mapping_matrix_template.md】
 
 ### Archived Drafts
-- **Former Chapter 32 – Advantages and Disadvantages of Working in a Code-Oriented Organisation:** Preserved in `docs/archive/32_code_oriented_organisations.md` for optional background reading and future revisions.【F:docs/book_structure.md】【F:docs/archive/README.md】
+- Retired drafts, translations, and case studies are catalogued in `docs/archive/README.md`, which records when and why each manuscript left the live build. Current entries cover Swedish-language drafts of Chapters 6, 8, 20, 25, and 26, along with guidance for handling the former Chapter 32 on code-oriented organisations.【F:docs/book_structure.md】【F:docs/archive/README.md】
 
 ## 🧭 Repository Layout
 

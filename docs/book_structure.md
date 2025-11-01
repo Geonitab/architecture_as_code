@@ -131,7 +131,13 @@ The `archive/` folder stores markdown chapters that have been retired from the a
 
 | File | Original Chapter | Notes |
 |------|------------------|-------|
-| `archive/32_code_oriented_organisations.md` | Chapter 32 | Explores cultural dynamics in code-centric organisations; overlaps with existing organisational guidance and is currently treated as background material. |
+| `archive/cloud_architecture.md` | Chapter 6 (Swedish draft) | Superseded by the current English material covering cloud-native execution. |
+| `archive/microservices_architecture_en.md` | Chapter 8 translation | Retained as a translation reference after the live chapter was rewritten. |
+| `archive/lovable_mockups_sv.md` | Chapter 20 workshop | Vendor-specific Swedish workshop material preserved for future localisation work. |
+| `archive/future_trends_sv.md` | Chapter 25 draft | Swedish-language narrative replaced by the live Chapter 25. |
+| `archive/future_development_sv.md` | Chapter 26 companion | Swedish continuation of future-planning material folded into later revisions. |
+
+Archive filenames intentionally avoid numeric prefixes so that tooling can distinguish archived content from active chapters.
 
 ---
 
