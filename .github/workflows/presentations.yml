@@ -79,16 +79,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Assume OK unless we detect a problem
           echo "use_defaults=true" >> "$GITHUB_OUTPUT"
           echo "use_template=true" >> "$GITHUB_OUTPUT"
 
-          # Check defaults file exists
           if [ ! -f "${PANDOC_DEFAULTS}" ]; then
             echo "::notice::No ${PANDOC_DEFAULTS}; will build without --defaults"
             echo "use_defaults=false" >> "$GITHUB_OUTPUT"
           else
-            # If defaults references a reference-doc, make sure it exists too
             REF_PATH="$(awk -F: '/^[[:space:]]*reference-doc[[:space:]]*:/ {sub(/^[^:]*:[[:space:]]*/,""); gsub(/[[:space:]]+/," "); print $0; exit}' "${PANDOC_DEFAULTS}" || true)"
             if [ -n "${REF_PATH}" ]; then
               REF_PATH="${REF_PATH%\"}"; REF_PATH="${REF_PATH#\"}"
@@ -100,7 +97,6 @@ jobs:
             fi
           fi
 
-          # Sanity: list some images if present (helps debug bad paths)
           if [ -d docs/images ]; then
             find docs/images -maxdepth 1 -type f | head -n 50 || true
           fi
@@ -145,7 +141,6 @@ jobs:
             echo "Primary pandoc conversion succeeded."
           else
             echo "::warning title=Pandoc failed::Exit code ${rc} on primary attempt."
-            # Let the workflow continue to the fallback step
             exit 1
           fi
 
