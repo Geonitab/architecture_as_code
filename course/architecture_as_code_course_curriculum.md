@@ -138,7 +138,7 @@ d resource allocation, and collaborative playbook iteration.
  pull-request reviews.
 
 ### Module 10 – Optimisation, AI assistance, and future readiness
-- **Chapters:** 20 AI Agent Team, 25 Future Trends, 26 AaC Anti-Patterns, 26 Prerequisites for AaC, 27 Conclusion.
+- **Chapters:** 20 AI Agent Team, 25 Future Trends, 26A Prerequisites for AaC, 26B AaC Anti-Patterns, 27 Conclusion.
 - **Learning objectives:**
   - Evaluate how AI augments architecture and governance, and anticipate emerging practices.
   - Recognise anti-patterns that inhibit progression to levels four and five of the maturity model.

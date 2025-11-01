@@ -106,7 +106,8 @@ Reference material, author information, technical enablers, and the Architecture
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 25 | `25_future_trends.md` | Future Trends and Development in Architecture as Code | Development trends, technological future, and long-term perspectives |
-| 26 | `26_aac_anti_patterns.md` | Anti-Patterns in Architecture as Code Programmes | Common pitfalls, early warning indicators, and recovery playbooks |
+| 26A | `26a_prerequisites_for_aac.md` | Prerequisites for Architecture as Code Adoption | Organisational, technical, and economic readiness signals |
+| 26B | `26b_aac_anti_patterns.md` | Anti-Patterns in Architecture as Code Programmes | Common pitfalls, early warning indicators, and recovery playbooks |
 | 27 | `27_conclusion.md` | Conclusion | Concluding reflections |
 
 ### Appendices

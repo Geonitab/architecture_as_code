@@ -142,12 +142,12 @@ book:
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 25"
-    - filename: "26_prerequisites_for_aac.md"
+    - filename: "26a_prerequisites_for_aac.md"
       title: "Prerequisites for Architecture as Code Adoption"
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 26A"
-    - filename: "26_aac_anti_patterns.md"
+    - filename: "26b_aac_anti_patterns.md"
       title: "Anti-Patterns in Architecture as Code Programmes"
       area: "Future and Wrap-up"
       required: true
@@ -392,8 +392,8 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 23 | 23_soft_as_code_interplay.md | The Interplay Between Soft "as code" Disciplines | Experience and Best Practices | Yes |
 | Chapter 24 | 24_best_practices.md | Modern Best Practices and Lessons Learned | Experience and Best Practices | Yes |
 | Chapter 25 | 25_future_trends.md | Future Trends and Development in Architecture as Code | Future and Wrap-up | Yes |
-| Chapter 26A | 26_prerequisites_for_aac.md | Prerequisites for Architecture as Code Adoption | Future and Wrap-up | Yes |
-| Chapter 26B | 26_aac_anti_patterns.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
+| Chapter 26A | 26a_prerequisites_for_aac.md | Prerequisites for Architecture as Code Adoption | Future and Wrap-up | Yes |
+| Chapter 26B | 26b_aac_anti_patterns.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
 | Chapter 27 | 27_conclusion.md | Chapter 27 – Conclusion | Future and Wrap-up | Yes |
 | Glossary | 28_glossary.md | Glossary | Appendices | Yes |
 | About the Author | 29_about_the_authors.md | About the Author | Appendices | Yes |
