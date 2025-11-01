@@ -30,6 +30,7 @@ nav:
       - index: part_d_delivery_operations.md
       - Testing Strategies for Infrastructure as Code: 13_testing_strategies.md
       - Architecture as Code in Practice: 14_practical_implementation.md
+      - Evidence as Code and Continuous Assurance: 15_evidence_as_code.md
       - Cost Optimisation and Resource Management: 15_cost_optimization.md
       - Migration from Traditional Infrastructure: 16_migration.md
   - Part E – Organisation & Leadership:

@@ -10,6 +10,8 @@ Testing Infrastructure as Code requires a distinct approach from traditional sof
 
 Practical implementation brings Architecture as Code principles into real-world projects. Organisations must balance ideal patterns with existing constraints, legacy systems, and transitional states. This part provides concrete guidance for navigating these challenges whilst maintaining the [security controls](09_security_fundamentals.md) and [governance frameworks](11_governance_as_code.md) established in earlier sections.
 
+Sustainable operations also depend on demonstrable compliance. Evidence pipelines translate automated policies into auditable artefacts that regulators, risk managers, and stakeholders can trust without manual rework. The dedicated chapter on [Evidence as Code](15_evidence_as_code.md) shows how to package these artefacts so they can be replayed across frameworks, closing the feedback loop between automation and assurance.
+
 Financial considerations directly influence architectural decisions. Cost optimisation in cloud environments demands visibility into resource consumption, proactive management of waste, and alignment between technical choices and business value. Architecture as Code enables this through automated cost tracking, policy-based budget enforcement, and resource right-sizing.
 
 Migration from traditional infrastructure to Architecture as Code represents a significant organisational journey. Success depends on phased approaches, risk management, and maintaining service continuity throughout the transition. The strategies presented here draw on proven patterns whilst acknowledging that every organisation's starting point and constraints differ.
@@ -18,6 +20,7 @@ Migration from traditional infrastructure to Architecture as Code represents a s
 
 - Comprehensive testing strategies from unit tests to full system validation
 - Practical implementation patterns that balance principles with pragmatism
+- Evidence automation practices that keep compliance artefacts reusable and trustworthy
 - Cost optimisation techniques using automated monitoring and policy enforcement
 - Migration approaches that reduce risk whilst accelerating transformation
 - Operational excellence practices for Architecture as Code at scale
