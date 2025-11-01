@@ -41,7 +41,8 @@ Lettered companion chapters (9B, 9C, 15A, 15B, 26A, and 26B) provide deeper dive
 - **Supplement – Architecture as Code Maturity Model:** Progressive adoption guidance and assessment structure.
 - **Supplement – Maturity Radar Tool:** Visual companion for the maturity model.
 - **Chapter 33 – References and Sources:** Comprehensive bibliography and citations.
-- **Chapter 34 – Control Mapping Matrix Template:** Compliance acceleration template that complements the maturity guidance.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/34_control_mapping_matrix_template.md】
+- **Appendix D – Templates and Tools:** Central directory linking to the Architecture as Code Maturity Model, Maturity Radar Tool, and Control Mapping Matrix template.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/appendix_templates_and_tools.md】
+- **Control Mapping Matrix Template:** Compliance acceleration template that complements the maturity guidance.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/appendix_d_control_mapping_matrix_template.md】
 
 ### Archived Drafts
 - Retired drafts, translations, and case studies are catalogued in `docs/archive/README.md`, which records when and why each manuscript left the live build. Current entries cover Swedish-language drafts of Chapters 6, 8, 20, 25, and 26, along with guidance for handling the former Chapter 32 on code-oriented organisations.【F:docs/book_structure.md】【F:docs/archive/README.md】
@@ -50,7 +51,7 @@ Lettered companion chapters (9B, 9C, 15A, 15B, 26A, and 26B) provide deeper dive
 
 ```
 docs/                     # Manuscript chapters, diagrams, and publishing assets
-├── *.md                  # Numbered chapters and appendices (01_introduction.md … 34_control_mapping_matrix_template.md)
+├── *.md                  # Numbered chapters and appendices (01_introduction.md … appendix_d_control_mapping_matrix_template.md)
 ├── archive/              # Retired chapter drafts kept for reference (e.g., former Chapter 32)
 ├── images/               # Mermaid sources (*.mmd) and generated PNG diagrams
 ├── build_book.sh         # Local helper for PDF/EPUB/DOCX generation

@@ -1,5 +1,5 @@
 {
-  "total_units": 38,
+  "total_units": 39,
   "parts": [
     {
       "id": "part_a",
@@ -82,10 +82,11 @@
     {"identifier": "31", "file": "docs/appendix_b_technical_architecture.md", "title": "Appendix B: Technical Architecture for Book Production"},
     {"identifier": "32", "file": "docs/32_finos_project_blueprint.md", "title": "Appendix C: FINOS Project Blueprint"},
     {"identifier": "33", "file": "docs/33_references.md", "title": "References and Sources"},
-    {"identifier": "34", "file": "docs/34_control_mapping_matrix_template.md", "title": "Appendix D: Control Mapping Matrix Template"}
+    {"identifier": "34", "file": "docs/appendix_templates_and_tools.md", "title": "Appendix D: Templates and Tools"}
   ],
   "supplements": [
     {"identifier": "maturity_model", "file": "docs/architecture_as_code_maturity_model.md", "title": "Architecture as Code Maturity Model"},
-    {"identifier": "maturity_radar", "file": "docs/maturity_model_radar.html", "title": "Architecture as Code Maturity Radar Tool"}
+    {"identifier": "maturity_radar", "file": "docs/maturity_model_radar.html", "title": "Architecture as Code Maturity Radar Tool"},
+    {"identifier": "control_mapping_matrix_template", "file": "docs/appendix_d_control_mapping_matrix_template.md", "title": "Control Mapping Matrix Template"}
   ]
 }

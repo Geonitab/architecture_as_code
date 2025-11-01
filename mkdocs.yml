@@ -60,10 +60,11 @@ nav:
       - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
       - Appendix B – Technical Architecture for Book Production: appendix_b_technical_architecture.md
       - Appendix C – FINOS Project Blueprint: 32_finos_project_blueprint.md
-      - Appendix D – Architecture as Code Maturity Model: architecture_as_code_maturity_model.md
-      - Appendix E – Architecture as Code Maturity Radar Tool: maturity_model_radar.html
+      - Appendix D – Templates and Tools: appendix_templates_and_tools.md
+      - Appendix E – Architecture as Code Maturity Model: architecture_as_code_maturity_model.md
+      - Appendix F – Architecture as Code Maturity Radar Tool: maturity_model_radar.html
       - References and Sources: 33_references.md
-      - Appendix F – Control Mapping Matrix Template: 34_control_mapping_matrix_template.md
+      - Control Mapping Matrix Template: appendix_d_control_mapping_matrix_template.md
   - Prezi Deck: prezi/index.html
 docs_dir: docs
 use_directory_urls: true
