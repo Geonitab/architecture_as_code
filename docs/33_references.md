@@ -5,7 +5,7 @@ This section provides a comprehensive list of all sources and references cited t
 ## Numbered source index
 
 - <a id="source-4"></a>**Source [4]:** GitHub Docs. *About protected branches.* GitHub Documentation, 2024. Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 14: Practical Implementation](14_practical_implementation.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md).
-- <a id="source-7"></a>**Source [7]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerization.md).
+- <a id="source-7"></a>**Source [7]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerisation.md).
 - <a id="source-8"></a>**Source [8]:** Google Cloud. *The Site Reliability Workbook: Practical Ways to Implement SRE.* O'Reilly Media, 2018. Referenced in: [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md).
 - <a id="source-9"></a>**Source [9]:** AWS. *AWS Cloud Development Kit (CDK) Developer Guide.* Amazon Web Services, 2024. Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md), [Chapter 14: Practical Implementation](14_practical_implementation.md).
 - <a id="source-12"></a>**Source [12]:** Microsoft Learn. *Design multi-stage release pipelines with approvals.* Microsoft Learn Documentation, 2024. Referenced in: [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md).
@@ -43,7 +43,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
 
 **Cloud Native Computing Foundation.** "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024. (Source [7])
-*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerization.md)*
+*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 7: Containerisation](07_containerisation.md)*
 
 **FINOS.** "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. [https://calm.finos.org/](https://calm.finos.org/)  
 *Referenced in: [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)*
@@ -147,13 +147,13 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
 **Gartner.** "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.  
-*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 17: Organisational Change](17_organizational_change.md)*
+*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 17: Organisational Change](17_organisational_change.md)*
 
 **Industry reports on Architecture as Code adoption trends.**  
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
 **IDC.** "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.  
-*Referenced in: [Chapter 5: Automation, DevOps, and CI/CD](05_automation_devops_cicd.md), [Chapter 21: Digitalisation](21_digitalization.md)*
+*Referenced in: [Chapter 5: Automation, DevOps, and CI/CD](05_automation_devops_cicd.md), [Chapter 21: Digitalisation](21_digitalisation.md)*
 
 **Research on emerging technologies.**  
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
@@ -168,7 +168,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
 
 **HashiCorp.** "State of Cloud Strategy Survey 2024." HashiCorp, 2024.  
-*Referenced in: [Chapter 17: Organisational Change](17_organizational_change.md), [Chapter 27: Conclusion](27_conclusion.md)*
+*Referenced in: [Chapter 17: Organisational Change](17_organisational_change.md), [Chapter 27: Conclusion](27_conclusion.md)*
 
 **HashiCorp.** "Terraform Security Best Practices." HashiCorp Learning Resources, 2023. [https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security) (Source [20])
 *Referenced in: [Chapter 9a: Security Fundamentals for Architecture as Code](09a_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
