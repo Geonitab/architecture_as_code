@@ -1,25 +1,36 @@
-name: Site (no-LLM)
+name: Build & Deploy MkDocs Site
 
 on:
   workflow_call:
+    inputs:
+      mkdocs_config:
+        description: Path to mkdocs.yml
+        required: false
+        type: string
+        default: mkdocs.yml
+      python_version:
+        description: Python version to use
+        required: false
+        type: string
+        default: "3.12"
+    secrets: {} # inherited by caller
 
+# These are required for the Pages deployment when used as a called workflow
 permissions:
   contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "site-${{ github.ref }}"
   cancel-in-progress: true
 
 env:
-  MKDOCS_CONFIG: mkdocs.yml
-  DOCS_DIR: docs
-  BUILD_DIR: releases/website
+  SITE_DIR: site
 
 jobs:
-  site:
-    name: Build site
+  build-and-deploy:
+    name: Site / Build site
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -30,139 +41,45 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ inputs.python_version }}
 
-      - name: Install MkDocs core
+      - name: Install MkDocs (or repo requirements)
+        shell: bash
         run: |
           set -euo pipefail
-          python -m pip install -U pip
-          python -m pip install "mkdocs>=1.5" "mkdocs-material>=9.5"
-          python -m pip install "pymdown-extensions>=10" "mkdocs-material-extensions>=1.3" || true
-          mkdocs --version || true
+          if [[ -f requirements.txt ]]; then
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+          else
+            python -m pip install --upgrade pip
+            # Common plugins – adjust if your mkdocs.yml requires others
+            pip install \
+              mkdocs \
+              mkdocs-material \
+              mkdocs-mermaid2-plugin \
+              mkdocs-awesome-pages-plugin
+          fi
+          mkdocs --version
 
-      - name: Install common MkDocs plugins (baseline)
+      - name: Build site
+        shell: bash
         run: |
           set -euo pipefail
-          python -m pip install \
-            mkdocs-awesome-pages-plugin \
-            mkdocs-git-revision-date-localized-plugin \
-            mkdocs-mermaid2-plugin \
-            mkdocs-redirects \
-            mkdocs-minify-plugin \
-            mkdocs-static-i18n \
-            mkdocs-rss-plugin \
-            mkdocs-encryptcontent-plugin || true
-
-      - name: Detect and install plugins from mkdocs.yml
-        if: ${{ hashFiles('mkdocs.yml') != '' }}
-        run: |
-          set -euo pipefail
-          echo "Reading plugins from ${MKDOCS_CONFIG}…"
-          plugins=$(awk '
-            BEGIN{inplugins=0}
-            /^[[:space:]]*plugins:[[:space:]]*$/ {inplugins=1; next}
-            inplugins==1 && /^[[:space:]]*[^[:space:]-]/ {inplugins=0}
-            inplugins==1 {
-              gsub(/^- /,""); gsub(/:.*/,"");
-              if (length($0)>0) print $0
-            }
-          ' "${MKDOCS_CONFIG}" | sort -u)
-
-          if [ -z "${plugins}" ]; then
-            echo "No plugins declared in ${MKDOCS_CONFIG}."
-            exit 0
-          fi
-
-          echo "Plugins detected:"
-          for p in ${plugins}; do echo " - ${p}"; done
-
-          to_install=()
-          for p in ${plugins}; do
-            case "$p" in
-              search|material) ;;  # built-in/theme already present
-              awesome-pages) to_install+=("mkdocs-awesome-pages-plugin");;
-              git-revision-date) to_install+=("mkdocs-git-revision-date-plugin");;
-              git-revision-date-localized) to_install+=("mkdocs-git-revision-date-localized-plugin");;
-              macros) to_install+=("mkdocs-macros-plugin");;
-              mermaid2|mermaid) to_install+=("mkdocs-mermaid2-plugin");;
-              redirects) to_install+=("mkdocs-redirects");;
-              minify) to_install+=("mkdocs-minify-plugin");;
-              i18n|static-i18n) to_install+=("mkdocs-static-i18n");;
-              rss) to_install+=("mkdocs-rss-plugin");;
-              encryptcontent) to_install+=("mkdocs-encryptcontent-plugin");;
-              *) to_install+=("mkdocs-${p}-plugin");;
-            esac
-          done
-
-          if [ ${#to_install[@]} -gt 0 ]; then
-            echo "Installing plugin packages:"
-            for pkg in "${to_install[@]}"; do echo " - ${pkg}"; done
-            python -m pip install "${to_install[@]}" || true
-          fi
-
-      - name: Ensure docs directory and index.md exist (no heredoc)
-        run: |
-          set -euo pipefail
-          if [ ! -d "${DOCS_DIR}" ]; then
-            echo "::notice::No ${DOCS_DIR}/ found; creating it."
-            mkdir -p "${DOCS_DIR}"
-          fi
-          if [ ! -f "${DOCS_DIR}/index.md" ]; then
-            echo "::notice::No ${DOCS_DIR}/index.md found; creating a minimal one."
-            printf '# Architecture as Code\nThis is a placeholder index page generated by CI. Replace with your real content.\n' > "${DOCS_DIR}/index.md"
-          fi
-          ls -la "${DOCS_DIR}" | head -n 50 || true
-
-      - name: Show MkDocs environment
-        run: |
-          set -euo pipefail
-          echo "mkdocs version:"
-          mkdocs --version || true
-          echo "Installed mkdocs* packages:"
-          python -m pip list | grep -E '^mkdocs' || true
-
-      - name: Build MkDocs site (verbose, strict)
-        id: build
-        env:
-          MKDOCS_ARGS: |
-            --config-file "${MKDOCS_CONFIG}"
-            --site-dir "${BUILD_DIR}"
-            --strict
-            --verbose
-        run: |
-          set +e
-          if [ ! -f "${MKDOCS_CONFIG}" ]; then
-            echo "::error title=Missing mkdocs.yml::Expected ${MKDOCS_CONFIG} at repo root"
-            echo "rc=2" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "Using config ${MKDOCS_CONFIG}:"
-          sed -n '1,200p' "${MKDOCS_CONFIG}" || true
-          mkdocs build ${MKDOCS_ARGS}
-          rc=$?
-          echo "rc=${rc}" >> "$GITHUB_OUTPUT"
-          if [ $rc -eq 0 ]; then
-            test -d "${BUILD_DIR}" && ls -la "${BUILD_DIR}" | head -n 50
-          fi
-          exit 0
-
-      - name: Fail if build failed
-        if: ${{ steps.build.outputs.rc != '0' }}
-        run: |
-          echo "::error title=MkDocs failed::mkdocs build exited with code ${{ steps.build.outputs.rc }} (see logs above)."
-          exit 1
+          echo "Using config: ${{ inputs.mkdocs_config }}"
+          mkdocs build --clean --config-file "${{ inputs.mkdocs_config }}" --site-dir "${SITE_DIR}"
 
       - name: Upload Pages artifact
-        if: ${{ steps.build.outputs.rc == '0' }}
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.BUILD_DIR }}
-
-      - name: Configure Pages
-        if: ${{ steps.build.outputs.rc == '0' }}
-        uses: actions/configure-pages@v5
+          path: ${{ env.SITE_DIR }}
 
       - name: Deploy to GitHub Pages
-        if: ${{ steps.build.outputs.rc == '0' }}
-        id: deployment
+        id: deploy
         uses: actions/deploy-pages@v4
+        # No inputs needed; deploys the uploaded artifact
+        # Requires pages:write and id-token:write permissions
+
+      - name: Publish URL
+        if: always()
+        run: |
+          echo "Deployed to: ${{ steps.deploy.outputs.page_url }}"
