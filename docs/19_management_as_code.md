@@ -5,15 +5,11 @@ Management as Code (MaC) extends the well-established principles of Infrastructu
 
 ![Management as Code operating model highlighting intent, guardrails, automation, empowered teams, codified culture, and feedback](images/diagram_19_mac_operating_model.png)
 
-*Figure: Management as Code operating model linking leadership intent, codified guardrails, automation, empowered teams, culture, and feedback loops.*
-
-The opening operating-model diagram frames the chapter by showing leadership intent flowing into codified guardrails and automated governance. Empowered teams and codified cultural practices amplify those guardrails, while continuous feedback loops return insight to leadership so that intent can evolve. It establishes the idea that MaC is a living system rather than a static document.
+*Figure: Management as Code operating model.*
 
 ![Management as Code feedback loop showing leadership vision, guardrails, automation, teams, and operational feedback](images/diagram_19_management_overview.png)
 
-*Figure: Management as Code feedback loop connecting leadership vision, guardrails, automation, empowered teams, and operational feedback.*
-
-The overview diagram reinforces Management as Code as a self-reinforcing loop where leadership vision flows into codified guardrails, automation, and delivery teams while operational feedback continuously informs future strategic intent. It emphasises that MaC is not a one-off documentation exercise but an active governance system that evolves with every iteration of the software delivery lifecycle.
+*Figure: Management as Code feedback loop.*
 
 ## Defining Management as Code
 At its core, MaC is the systematic translation of management artefacts into reproducible code. Policies, playbooks, delegation models, role definitions, and decision guardrails are captured as declarative specifications that tooling can enforce. Rather than issuing static policy documents, leadership teams create repositories that contain structured definitions for escalation thresholds, strategic objectives and key results (OKRs), and the criteria for portfolio prioritisation. Automation hooks process these definitions to trigger workflows, generate dashboards, or enforce access controls. By storing these assets in Git repositories, management directives acquire the same benefits as other code: auditability, peer review, continuous integration, and rollback.
@@ -30,9 +26,13 @@ A DevOps loop is often depicted as a continuous cycle: plan, code, build, test, 
 
 ![DevOps loop extended with management contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance](images/diagram_19_devops_management_loop.png)
 
-*Figure: DevOps loop extended with Management as Code contributions for strategy, policy automation, budgeting, dashboards, and adaptive governance.*
+*Figure: DevOps loop extended with Management as Code contributions.*
 
-The diagram illustrates how management artefacts intersect with each loop phase. Instead of management being an external approval layer, MaC ensures that leadership intent is encoded at the same points where DevOps teams act. Planning repositories can provide strategic intents expressed in YAML files, while automation transforms these definitions into backlog templates or alerts when proposals deviate from strategic goals. During operation, monitoring dashboards generated from configuration code link service-level indicators to financial KPIs. As teams observe anomalies, adaptive governance rules encoded in policy files trigger scenario playbooks or review cadences.
+Together these diagrams show MaC as a living, feedback-driven discipline where leadership intent, codified guardrails, automation, and empowered teams continually refine one another. Rather than treating management as paperwork that trails delivery, MaC embeds direction-setting, assurance, and learning in the same cadence as software change.
+
+- **Operating model:** Highlights how leadership intent feeds guardrails and automation, with culture and feedback sustaining empowerment.
+- **Feedback loop:** Stresses the recurring exchange between strategic vision and operational insight that keeps policies relevant.
+- **DevOps loop:** Extends each stage of the engineering cycle with explicit management artefacts, from planning repositories to adaptive governance triggers.
 
 ## Governance and Policy Automation
 MaC provides a robust foundation for governance-as-code, where leadership rules are implemented as automated checks. Access control policies become parameterised configurations that pipeline tools consume, ensuring only authorised roles can approve specific changes. Risk tolerance levels appear as threshold values in configuration files, automatically cross-referenced against deployment metrics. Governance repositories can also contain escalation playbooks, specifying decision-makers, communication channels, and response time objectives.
