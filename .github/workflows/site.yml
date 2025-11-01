@@ -38,12 +38,27 @@ jobs:
           python -m pip install "mkdocs>=1.5" "mkdocs-material>=9.5"
           mkdocs --version || true
 
-      # Avoid hashFiles(env.MKDOCS_CONFIG). Use a literal path instead.
+      # Install a safe baseline of commonly used plugins so missing ones don't kill the build early.
+      - name: Install common MkDocs plugins (baseline)
+        run: |
+          set -euo pipefail
+          python -m pip install \
+            mkdocs-awesome-pages-plugin \
+            mkdocs-git-revision-date-localized-plugin \
+            mkdocs-mermaid2-plugin \
+            mkdocs-redirects \
+            mkdocs-minify-plugin \
+            mkdocs-static-i18n \
+            mkdocs-rss-plugin \
+            mkdocs-encryptcontent-plugin || true
+
+      # Detect plugins you actually declare in mkdocs.yml and try to install those too.
       - name: Detect and install MkDocs plugins from mkdocs.yml
         if: ${{ hashFiles('mkdocs.yml') != '' }}
         run: |
           set -euo pipefail
           echo "Reading plugins from ${MKDOCS_CONFIG}…"
+          # Extract plugin identifiers (handles list and keyed forms)
           plugins=$(awk '
             BEGIN{inplugins=0}
             /^[[:space:]]*plugins:[[:space:]]*$/ {inplugins=1; next}
@@ -60,7 +75,9 @@ jobs:
           fi
 
           echo "Plugins detected:"
-          printf ' - %s\n' ${plugins}
+          for p in ${plugins}; do
+            echo " - ${p}"
+          done
 
           to_install=()
           for p in ${plugins}; do
@@ -83,7 +100,9 @@ jobs:
 
           if [ ${#to_install[@]} -gt 0 ]; then
             echo "Installing plugin packages:"
-            printf ' - %s\n' "${to_install[@]}"
+            for pkg in "${to_install[@]}"; do
+              echo " - ${pkg}"
+            done
             python -m pip install "${to_install[@]}" || true
           fi
 
@@ -93,6 +112,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ -f "${REQUIREMENTS_FILE}" ]; then
+            echo "Installing ${REQUIREMENTS_FILE}…"
             python -m pip install -r "${REQUIREMENTS_FILE}"
           else
             echo "No ${REQUIREMENTS_FILE}; skipping."
@@ -103,17 +123,19 @@ jobs:
           set -euo pipefail
           echo "mkdocs version:"
           mkdocs --version || true
-          echo "Installed mkdocs* packages (pip list | grep):"
+          echo "Installed mkdocs-related packages:"
           python -m pip list | grep -E '^mkdocs' || true
 
-      - name: Build MkDocs site (strict)
+      - name: Build MkDocs site (verbose, strict)
+        id: build
         env:
           MKDOCS_ARGS: |
             --config-file "${MKDOCS_CONFIG}"
             --site-dir "${BUILD_DIR}"
             --strict
+            --verbose
         run: |
-          set -euo pipefail
+          set +e
           if [ ! -f "${MKDOCS_CONFIG}" ]; then
             echo "::error title=Missing mkdocs.yml::Expected ${MKDOCS_CONFIG} at repo root"
             exit 1
@@ -121,16 +143,30 @@ jobs:
           echo "Using config ${MKDOCS_CONFIG}:"
           sed -n '1,200p' "${MKDOCS_CONFIG}" || true
           mkdocs build ${MKDOCS_ARGS}
-          test -d "${BUILD_DIR}" && ls -la "${BUILD_DIR}" | head -n 50
+          rc=$?
+          echo "rc=${rc}" >> "$GITHUB_OUTPUT"
+          if [ $rc -eq 0 ]; then
+            test -d "${BUILD_DIR}" && ls -la "${BUILD_DIR}" | head -n 50
+          fi
+          exit 0
+
+      - name: Fail if build failed
+        if: ${{ steps.build.outputs.rc != '0' }}
+        run: |
+          echo "::error title=MkDocs failed::mkdocs build exited with code ${{ steps.build.outputs.rc }} (see logs above)."
+          exit 1
 
       - name: Upload Pages artifact
+        if: ${{ steps.build.outputs.rc == '0' }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.BUILD_DIR }}
 
       - name: Configure Pages
+        if: ${{ steps.build.outputs.rc == '0' }}
         uses: actions/configure-pages@v5
 
       - name: Deploy to GitHub Pages
+        if: ${{ steps.build.outputs.rc == '0' }}
         id: deployment
         uses: actions/deploy-pages@v4
