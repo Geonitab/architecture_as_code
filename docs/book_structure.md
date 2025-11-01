@@ -1,19 +1,19 @@
 # Architecture as Code - Book Structure
 
-This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus extended appendices. More than thirty-five chapters and reference appendices build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
+This document describes the logical structure for the book "Architecture as Code" which is organised into seven narrative parts plus extended appendices. Thirty-eight chapters, appendices, and structured templates build upon each other to provide a complete understanding of Architecture as Code and Infrastructure as Code for organisations operating in diverse global contexts.
 
 ## Table of Contents
 
 ### Part 1: Foundations (Chapters 1-4)
 Foundational concepts, principles, and documentation practices
 
-### Part 2: Architecture Platform (Chapters 5-7)
+### Part 2: Architecture Platform (Chapters 5-8)
 Core technical building blocks for Architecture as Code implementations
 
-### Part 3: Security & Governance (Chapters 9-12)
+### Part 3: Security & Governance (Chapters 9-12, including 9B and 9C)
 Security, policy automation, governance, and compliance as code
 
-### Part 4: Delivery & Operations (Chapters 13-16)
+### Part 4: Delivery & Operations (Chapters 13-16, including 15A and 15B)
 Testing, delivery practices, cost optimisation, and migration strategies
 
 ### Part 5: Organisation & Leadership (Chapters 17-21)
@@ -22,10 +22,10 @@ Organisational change, team design, management models, and collaborative deliver
 ### Part 6: Experience & Best Practices (Chapters 22-24)
 Cross-disciplinary collaboration and codified best practices
 
-### Part 7: Future & Wrap-up (Chapters 25-27)
+### Part 7: Future & Wrap-up (Chapters 25-27, including 26A and 26B)
 Future outlook, risk avoidance, and closing guidance
 
-### Appendices and Reference Material (Chapters 28-33 plus maturity model)
+### Appendices and Reference Material (Chapters 28-34 plus maturity resources)
 Reference material, author information, technical enablers, and the Architecture as Code maturity model
 
 ---
@@ -43,7 +43,7 @@ Reference material, author information, technical enablers, and the Architecture
 | 3 | `03_version_control.md` | Version Control and Code Structure | Best practices for version control of architecture code |
 | 4 | `04_adr.md` | Architecture Decision Records (ADR) | Structured documentation of architecture decisions |
 
-### Part 2: Architecture Platform (Chapters 5-7)
+### Part 2: Architecture Platform (Chapters 5-8)
 
 **Focus:** Core technical building blocks and automation patterns for Architecture as Code
 
@@ -52,8 +52,9 @@ Reference material, author information, technical enablers, and the Architecture
 | 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
 | 6 | `06_structurizr.md` | Structurizr: Architecture Modeling as Code | Using Structurizr DSL and C4 model for architecture visualisation and documentation |
 | 7 | `07_containerisation.md` | Containerisation and Orchestration as Code | Container-based Architecture as Code |
+| 8 | `08_microservices.md` | Microservices Architecture as Code | Applying Architecture as Code disciplines across microservices estates |
 
-### Part 3: Security & Governance (Chapters 9-12)
+### Part 3: Security & Governance (Chapters 9-12, including 9B and 9C)
 
 **Focus:** Security automation, policy enforcement, governance, and compliance requirements
 
@@ -66,7 +67,7 @@ Reference material, author information, technical enablers, and the Architecture
 | 11 | `11_governance_as_code.md` | Governance as Code | Codifying governance processes, approval flows, and tooling support |
 | 12 | `12_compliance.md` | Compliance and Regulatory Adherence | Regulatory compliance considerations for international organisations |
 
-### Part 4: Delivery & Operations (Chapters 13-16)
+### Part 4: Delivery & Operations (Chapters 13-16, including 15A and 15B)
 
 **Focus:** Testing strategies, delivery patterns, evidence automation, financial optimisation, and migration approaches
 
@@ -100,7 +101,7 @@ Reference material, author information, technical enablers, and the Architecture
 | 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft "as code" practices |
 | 24 | `24_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 
-### Part 7: Future & Wrap-up (Chapters 25-27)
+### Part 7: Future & Wrap-up (Chapters 25-27, including 26A and 26B)
 
 **Focus:** Strategic outlook, risk avoidance, and concluding guidance
 
@@ -118,10 +119,12 @@ Reference material, author information, technical enablers, and the Architecture
 | 28 | `28_glossary.md` | Glossary | Glossary and definitions |
 | 29 | `29_about_the_authors.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
 | 30 | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
-| Appendix B | `31_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
-| Appendix C | `32_finos_project_blueprint.md` | Appendix C: FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
-| Appendix D | `architecture_as_code_model.md` | Architecture as Code Maturity Model | Progressive maturity staircase linking “as code” disciplines |
-| References | `33_references.md` | References and Sources | Citations supporting the manuscript |
+| 31 | `31_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
+| 32 | `32_finos_project_blueprint.md` | Appendix C: FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
+| 33 | `33_references.md` | References and Sources | Citations supporting the manuscript |
+| 34 | `34_control_mapping_matrix_template.md` | Appendix D: Control Mapping Matrix Template | Compliance acceleration template that complements the maturity model |
+| Appendix – Maturity Model | `architecture_as_code_maturity_model.md` | Architecture as Code Maturity Model | Progressive maturity staircase linking “as code” disciplines |
+| Appendix – Maturity Radar | `maturity_model_radar.html` | Architecture as Code Maturity Radar Tool | Interactive radar visualisation accompanying the maturity model |
 
 ---
 
