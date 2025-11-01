@@ -1,48 +1,41 @@
-# Documentation and Architecture Contribution Workflow
+# Documentation Workflow Guide
 
-Documentation and architecture assets in this repository follow the same Git-based
-review cadence. Treating words, diagrams, and architectural models as code keeps
-knowledge traceable and guarantees that reviewers see the complete change in one
-pull request.
+## Purpose
 
-## End-to-end workflow
+This workflow ensures that documentation, diagrams, and executable architecture models evolve together. By treating every inform
+ation artefact as code, teams maintain consistent narratives, review history, and traceability across the repository.
 
-1. **Create a feature branch.** Group documentation, ADR updates, Structurizr or
-   CALM model changes, and supporting automation tweaks into a single branch so the
-   history clearly states why the change exists.
-2. **Update the relevant artefacts.** Edit the Markdown chapter, ADR, diagram source
-   (`.mmd`), or automation script inside the `docs/` directory. Provide context in the
-   commit message that links the change back to the decision or issue.
-3. **Run local validation.** Execute `python3 generate_book.py` followed by
-   `docs/build_book.sh` to regenerate outputs. The command chain exercises diagram
-   rendering and ensures MkDocs, Pandoc, and Eisvogel templates all parse the update.
-4. **Submit a pull request for review.** Push the branch and open a pull request so the
-   Git history captures discussion, inline comments, and approvals. Reference the
-   architecture or documentation issue to maintain traceability.
-5. **Address review feedback.** Refine the change set based on reviewer comments and
-   ensure follow-up commits remain on the same branch so the timeline stays coherent.
-6. **Verify automation status.** Confirm the `Content Validation Tests` workflow passes.
-   It enforces heading capitalisation, link formatting, and structural rules for Markdown
-   chapters alongside technical accuracy checks.
-7. **Merge with confidence.** Once approvals are recorded and automation is green, merge
-   the pull request. The unified workflow keeps ADRs, diagrams, and narrative content
-   aligned without relying on ad-hoc wikis.
+## Branching and Reviews
 
-## Referencing the workflow in ADRs
+1. **Create a feature branch** for every documentation improvement. Align naming with the associated issue or change request.
+2. **Edit Markdown, diagrams, and models together.** Keep Structurizr, CALM, Mermaid, and narrative updates within the same chan
+ge set to avoid divergence.
+3. **Preview locally.** Render diagrams or generate the book preview to confirm formatting, spellings, and references.
+4. **Open a pull request** with a concise summary, detailed testing notes, and links to related issues.
+5. **Request peer review.** At least one reviewer validates technical accuracy, adherence to British English, and consistency wit
+h established terminology.
 
-Architecture Decision Records must link to this workflow in their **Review and
-Documentation Workflow** section. Doing so reminds contributors that every decision
-is captured through Git-based discussions and automation-backed validation before it
-becomes part of the canonical architecture history.
+## Automation and Checks
 
-## Contribution checklist
+- **Continuous integration** executes `python3 generate_book.py && docs/build_book.sh` to rebuild the book, regenerate diagrams,
+  and surface linting feedback.
+- **Link validation** ensures Markdown references resolve correctly. Update links or add redirect stubs whenever file paths chan
+ge.
+- **Diagram generation** leverages Mermaid CLI during the build to refresh PNG artefacts. Never commit outdated diagram renders.
+- **Spell checking and style** checks enforce British English spellings and repository style conventions.
 
-- [ ] Branch created from `main` with a descriptive name (for example,
-      `docs/adr-observability-2025`).
-- [ ] Markdown, diagrams, and configuration files updated together in the branch.
-- [ ] Local validation run: `python3 generate_book.py && docs/build_book.sh`.
-- [ ] Pull request references the originating issue or ADR.
-- [ ] Content Validation workflow reports success (no heading or link formatting
-      violations).
-- [ ] ADRs and contribution notes link back to this document to reinforce the
-      shared workflow.
+## Merging and Maintenance
+
+- Merge only after all automated checks pass and reviewers approve.
+- Keep the workflow documented—update this file whenever the process evolves.
+- Periodically audit the documentation tree to remove dead links, regenerate diagrams, and validate that reference material remai
+ns accurate.
+
+## Incident Response
+
+When link checkers or reviewers discover gaps:
+
+1. **Reproduce the issue** locally using the documented commands.
+2. **Patch the affected artefacts** (Markdown, diagrams, or models) within a dedicated branch.
+3. **Extend tests or checks** if the gap was not caught automatically.
+4. **Document lessons learnt** in the pull request or relevant chapter to prevent recurrence.
