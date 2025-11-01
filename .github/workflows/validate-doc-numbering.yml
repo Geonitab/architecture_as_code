@@ -1,0 +1,32 @@
+name: Validate Chapter Numbering
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/*.md'
+      - 'scripts/check_doc_numbering.py'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/*.md'
+      - 'scripts/check_doc_numbering.py'
+  workflow_dispatch: {}
+
+jobs:
+  numbering-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v5
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: 🔍 Validate chapter numbering
+        run: |
+          python3 scripts/check_doc_numbering.py
