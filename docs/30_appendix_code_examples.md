@@ -2724,7 +2724,7 @@ jobs:
 ## Chapter 15 Reference Implementations
 
 ### 15_CODE_1: Cost-aware Terraform infrastructure configuration {#15_code_1}
-*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15b_cost_optimization.md)*
 
 This Terraform configuration demonstrates comprehensive cost optimisation strategies including budget management, cost allocation tagging, and intelligent instance type selection using spot instances and mixed instance policies.
 
@@ -2858,7 +2858,7 @@ resource "aws_autoscaling_group" "cost_aware" {
 ```
 
 ### 15_CODE_2: Kubernetes cost optimisation manifests {#15_code_2}
-*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15b_cost_optimization.md)*
 
 These Kubernetes manifests demonstrate resource quotas, limit ranges, and autoscaling configurations for cost-effective workload management.
 
@@ -2966,7 +2966,7 @@ spec:
 ```
 
 ### 15_CODE_3: AWS cost monitoring and optimisation automation {#15_code_3}
-*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
+*Referenced from Chapter 15: [Cost Optimisation and Resource Management](15b_cost_optimization.md)*
 
 This Python script provides automated cost analysis, rightsizing recommendations, and identification of unused resources for AWS environments.
 

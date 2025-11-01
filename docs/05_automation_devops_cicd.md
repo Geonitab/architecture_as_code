@@ -469,7 +469,7 @@ Architecture as Code testing is organised into multiple levels:
 
 CI/CD pipelines can integrate with cost estimation tools like Infracost to provide visibility into infrastructure spending before deployment. Cost thresholds can trigger approval gates, and automated alerts can notify teams of budget overruns.
 
-For comprehensive coverage of cost optimisation, FinOps practices, predictive cost modelling, and budget control strategies, see [Chapter 15: Cost Optimisation and Resource Management](15_cost_optimization.md).
+For comprehensive coverage of cost optimisation, FinOps practices, predictive cost modelling, and budget control strategies, see [Chapter 15: Cost Optimisation and Resource Management](15b_cost_optimization.md).
 
 ## Monitoring and observability
 

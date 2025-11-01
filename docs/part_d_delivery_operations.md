@@ -10,7 +10,7 @@ Testing Infrastructure as Code requires a distinct approach from traditional sof
 
 Practical implementation brings Architecture as Code principles into real-world projects. Organisations must balance ideal patterns with existing constraints, legacy systems, and transitional states. This part provides concrete guidance for navigating these challenges whilst maintaining the [security controls](09_security_fundamentals.md) and [governance frameworks](11_governance_as_code.md) established in earlier sections.
 
-Sustainable operations also depend on demonstrable compliance. Evidence pipelines translate automated policies into auditable artefacts that regulators, risk managers, and stakeholders can trust without manual rework. The dedicated chapter on [Evidence as Code](15_evidence_as_code.md) shows how to package these artefacts so they can be replayed across frameworks, closing the feedback loop between automation and assurance.
+Sustainable operations also depend on demonstrable compliance. Evidence pipelines translate automated policies into auditable artefacts that regulators, risk managers, and stakeholders can trust without manual rework. The dedicated chapter on [Evidence as Code](15a_evidence_as_code.md) shows how to package these artefacts so they can be replayed across frameworks, closing the feedback loop between automation and assurance.
 
 Financial considerations directly influence architectural decisions. Cost optimisation in cloud environments demands visibility into resource consumption, proactive management of waste, and alignment between technical choices and business value. Architecture as Code enables this through automated cost tracking, policy-based budget enforcement, and resource right-sizing.
 

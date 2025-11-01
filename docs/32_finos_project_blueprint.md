@@ -44,7 +44,7 @@ Automation extends beyond code correctness. The blueprint prescribes cost-monito
 
 ### Evidence export for reuse
 
-Project Blueprint repositories include opinionated evidence pipelines that align with the **assure once, comply many** principle. Every change triggers automated policy evaluations, configuration snapshots, and CALM metadata diffs. Artefacts are stamped with control identifiers and linked to framework mappings so that downstream consumers—risk teams, auditors, or regulator portals—can re-use the same evidence package instead of requesting bespoke exports. Evidence manifests follow the conventions described in [Evidence as Code](15_evidence_as_code.md) and feed the [Control Mapping Matrix](34_control_mapping_matrix_template.md), allowing platform teams to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues without duplicating work.
+Project Blueprint repositories include opinionated evidence pipelines that align with the **assure once, comply many** principle. Every change triggers automated policy evaluations, configuration snapshots, and CALM metadata diffs. Artefacts are stamped with control identifiers and linked to framework mappings so that downstream consumers—risk teams, auditors, or regulator portals—can re-use the same evidence package instead of requesting bespoke exports. Evidence manifests follow the conventions described in [Evidence as Code](15a_evidence_as_code.md) and feed the [Control Mapping Matrix](34_control_mapping_matrix_template.md), allowing platform teams to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues without duplicating work.
 
 ## Governance, Risk, and Financial Stewardship
 

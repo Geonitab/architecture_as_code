@@ -74,8 +74,8 @@ Reference material, author information, technical enablers, and the Architecture
 |---------|------|-------|-------------|
 | 13 | `13_testing_strategies.md` | Testing Strategies for Infrastructure as Code | Testing of IaC and architecture code |
 | 14 | `14_practical_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
-| 15A | `15_evidence_as_code.md` | Evidence as Code and Continuous Assurance | Automated evidence pipelines that connect policy automation to operational reporting |
-| 15B | `15_cost_optimization.md` | Cost Optimisation and Resource Management | Economic optimisation of resources |
+| 15A | `15a_evidence_as_code.md` | Evidence as Code and Continuous Assurance | Automated evidence pipelines that connect policy automation to operational reporting |
+| 15B | `15b_cost_optimization.md` | Cost Optimisation and Resource Management | Economic optimisation of resources |
 | 16 | `16_migration.md` | Migration from Traditional Infrastructure | Migration strategies and best practices |
 
 ### Part 5: Organisation & Leadership (Chapters 17-21)

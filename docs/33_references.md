@@ -79,7 +79,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 29: About the Authors](29_about_the_authors.md)*
 
 **MarketsandMarkets.** "Infrastructure as Code Market Report." MarketsandMarkets, 2023.  
-*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends.md)*
+*Referenced in: [Chapter 15: Cost Optimisation](15b_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends.md)*
 
 **Martin, R.** "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.  
 *Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
@@ -147,7 +147,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
 **Gartner.** "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.  
-*Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 17: Organisational Change](17_organisational_change.md)*
+*Referenced in: [Chapter 15: Cost Optimisation](15b_cost_optimization.md), [Chapter 17: Organisational Change](17_organisational_change.md)*
 
 **Industry reports on Architecture as Code adoption trends.**  
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
