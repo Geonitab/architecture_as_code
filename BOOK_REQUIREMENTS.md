@@ -381,7 +381,8 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 12 | 12_compliance.md | Compliance and Regulatory Adherence | Security and Governance | Yes |
 | Chapter 13 | 13_testing_strategies.md | Testing Strategies for Infrastructure as Code | Delivery and Operations | Yes |
 | Chapter 14 | 14_practical_implementation.md | Architecture as Code in Practice | Delivery and Operations | Yes |
-| Chapter 15 | 15_cost_optimization.md | Cost Optimisation and Resource Management | Delivery and Operations | Yes |
+| Chapter 15A | 15_evidence_as_code.md | Evidence as Code and Continuous Assurance | Delivery and Operations | Yes |
+| Chapter 15B | 15_cost_optimization.md | Cost Optimisation and Resource Management | Delivery and Operations | Yes |
 | Chapter 16 | 16_migration.md | Migration from Traditional Infrastructure | Delivery and Operations | Yes |
 | Chapter 17 | 17_organisational_change.md | Organisational Change and Team Structures | Organisation and Leadership | Yes |
 | Chapter 18 | 18_team_structure.md | Team Structure and Competency Development for Architecture as Code | Organisation and Leadership | Yes |

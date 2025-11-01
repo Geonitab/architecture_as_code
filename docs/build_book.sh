@@ -421,6 +421,7 @@ CHAPTER_FILES=(
     "part_d_delivery_operations.md"
     "13_testing_strategies.md"
     "14_practical_implementation.md"
+    "15_evidence_as_code.md"
     "15_cost_optimization.md"
     "16_migration.md"
     "part_e_organisation_leadership.md"
