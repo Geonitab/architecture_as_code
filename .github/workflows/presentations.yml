@@ -104,7 +104,6 @@ jobs:
       - name: Build PPTX with Pandoc (no LLM) — primary attempt
         id: build1
         shell: bash
-        continue-on-error: true
         env:
           PANDOC_ARGS: |
             --from gfm
@@ -112,15 +111,18 @@ jobs:
             --resource-path=.:docs:docs/images
             --embed-resources
         run: |
-          set -euo pipefail
+          set +e
           mapfile -t src < slide_sources.txt
 
           DEFAULTS_ARG=""
           REF_ARG=""
 
+          # Only add --defaults if the file exists and was validated
           if [ "${{ steps.validate.outputs.use_defaults }}" = "true" ]; then
             DEFAULTS_ARG="--defaults=${PANDOC_DEFAULTS}"
           fi
+
+          # If template flagged unusable in defaults, try a standalone template file
           if [ "${{ steps.validate.outputs.use_template }}" != "true" ]; then
             if [ -f templates/presentation_reference.pptx ]; then
               REF_ARG="--reference-doc=templates/presentation_reference.pptx"
@@ -128,24 +130,24 @@ jobs:
           fi
 
           mkdir -p "${OUTPUT_DIR}"
-          set +e
           pandoc ${DEFAULTS_ARG} ${PANDOC_ARGS} ${REF_ARG} \
             --output "${OUTPUT_DIR}/${OUTPUT_FILE}" \
             "${src[@]}"
           rc=$?
-          set -e
 
+          # Expose exit code + whether a fallback is needed
           echo "rc=${rc}" >> "$GITHUB_OUTPUT"
-
-          if [ $rc -eq 0 ]; then
-            echo "Primary pandoc conversion succeeded."
+          if [ "$rc" -eq 97 ]; then
+            echo "needs_fallback=true" >> "$GITHUB_OUTPUT"
           else
-            echo "::warning title=Pandoc failed::Exit code ${rc} on primary attempt."
-            exit 1
+            echo "needs_fallback=false" >> "$GITHUB_OUTPUT"
           fi
 
+          # Do not fail the job here; let the next step decide.
+          exit 0
+
       - name: Build PPTX with Pandoc — fallback (no defaults/template)
-        if: ${{ steps.build1.outcome == 'failure' && steps.build1.outputs.rc == '97' }}
+        if: ${{ steps.build1.outputs.needs_fallback == 'true' }}
         shell: bash
         env:
           PANDOC_ARGS: |
@@ -157,14 +159,19 @@ jobs:
           set -euo pipefail
           mapfile -t src < slide_sources.txt
           mkdir -p "${OUTPUT_DIR}"
-          echo "::notice::Retrying without --defaults or --reference-doc (avoids Pandoc 97: missing data file)."
+          echo "::notice::Retrying without --defaults or --reference-doc (Pandoc 97 recovery)."
           pandoc ${PANDOC_ARGS} \
             --output "${OUTPUT_DIR}/${OUTPUT_FILE}" \
             "${src[@]}"
           ls -lh "${OUTPUT_DIR}/${OUTPUT_FILE}"
 
+      - name: Fail if pandoc returned a non-zero code other than 97
+        if: ${{ steps.build1.outputs.rc != '0' && steps.build1.outputs.rc != '97' }}
+        run: |
+          echo "::error title=Pandoc failed::Exit code ${{ steps.build1.outputs.rc }} on primary attempt."
+          exit 1
+
       - name: Upload presentation artefact
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: presentation
