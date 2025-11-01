@@ -3213,7 +3213,7 @@ resource "aws_launch_template" "spot_optimized" {{
 
 ## Security and compliance {#security-compliance}
 
-### 10_CODE_1: Advanced Policy-as-Code module for  compliance {#10_code_1}
+### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
 *Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
 
 ```rego
@@ -3455,7 +3455,7 @@ assess_regulator(name, violations) := {
 }
 ```
 
-### 10_CODE_2: OSCAL profile for regulated  financial services {#10_code_2}
+### 10_CODE_2: OSCAL profile for regulated financial services {#10_code_2}
 *Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
 
 ```json
@@ -3463,13 +3463,13 @@ assess_regulator(name, violations) := {
   "profile": {
     "uuid": "87654321-4321-8765-4321-876543218765",
     "metadata": {
-      "title": " Financial Institutions Security Profile",
+      "title": "Financial Institutions Security Profile",
       "published": "2024-01-15T11:00:00Z",
       "last-modified": "2024-01-15T11:00:00Z",
       "version": "2.1",
       "oscal-version": "1.1.2",
       "props": [
-        { "name": "organization", "value": " Financial Sector" },
+        { "name": "organization", "value": "Financial Sector" },
         { "name": "jurisdiction", "value": "EU" }
       ]
     },
@@ -3547,14 +3547,14 @@ assess_regulator(name, violations) := {
 ```
 
 ### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
-*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the  financial profile.
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile.
 
 ```json
 {
   "component-definition": {
     "uuid": "11223344-5566-7788-99aa-bbccddeeff00",
     "metadata": {
-      "title": "AWS Components for  Regulated Workloads",
+      "title": "AWS Components for Regulated Workloads",
       "published": "2024-01-15T12:00:00Z",
       "last-modified": "2024-01-15T12:00:00Z",
       "version": "1.5",
@@ -3714,7 +3714,7 @@ class OSCALSSPGenerator:
                     "version": "1.0",
                     "oscal-version": "1.1.2",
                     "props": [
-                        {"name": "organization", "value": " Enterprise"},
+                        {"name": "organization", "value": "Enterprise"},
                         {"name": "system-name", "value": system_name}
                     ]
                 },
