@@ -163,3 +163,8 @@ sion control, and facilitator sign-off on the capstone presentation.
 - Monitor language for British English consistency in all submitted artefacts, aligning with the editorial style guide.
 - Close the programme by co-authoring a shared retrospective that records lessons learned, next experiments, and ownership of f
 ollow-up actions.
+
+## Curriculum audit confirmation
+
+- The module-to-chapter mapping was reconfirmed during the latest curriculum audit: every chapter listed in Modules 0–10 has an active counterpart in the `docs/` directory, including Module 0 readings (**01 Introduction**, **02 Fundamental Principles**, **24 Best Practices**, **27 Conclusion**) and Module 7 references (**05 Automation, DevOps, and CI/CD**, **13 Testing Strategies**, **16 Migration**).
+- Continue to update the curriculum file in tandem with new or renamed chapters so that facilitators and learners can rely on a single source of truth for pre-reading assignments.
