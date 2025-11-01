@@ -443,7 +443,7 @@ CHAPTER_FILES=(
     "28_glossary.md"
     "29_about_the_authors.md"
     "30_appendix_code_examples.md"
-    "31_technical_architecture.md"
+    "appendix_b_technical_architecture.md"
     "32_finos_project_blueprint.md"
     "architecture_as_code_maturity_model.md"
     "33_references.md"

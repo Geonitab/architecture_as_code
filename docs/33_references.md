@@ -18,8 +18,8 @@ This section provides a comprehensive list of all sources and references cited t
 
 ## Academic and Industry Publications
 
-**AaC Open Source Project.** "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)  
-*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Chapter 31: Technical Architecture](31_technical_architecture.md)*
+**AaC Open Source Project.** "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)
+*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Appendix B: Technical Architecture for Book Production](appendix_b_technical_architecture.md)*
 
 **Architecture Decision Records Community.** "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
