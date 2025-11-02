@@ -31,6 +31,21 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 🧰 Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libgtk-3-0 \
+            libnss3 \
+            libxss1 \
+            libasound2 \
+            libdrm2 \
+            libxkbcommon0 \
+            libgbm1 \
+            fonts-noto-color-emoji
+
       - name: 🔧 Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -44,5 +59,66 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 🛠️ Regenerate missing Mermaid diagrams
+        run: python3 scripts/check_mermaid_diagrams.py --write-missing
+
       - name: 🔍 Verify Mermaid diagrams
         run: python3 scripts/check_mermaid_diagrams.py
+
+      - name: 📋 Capture diagram changes
+        id: capture_diagrams
+        run: |
+          set -e
+          mkdir -p mermaid-artifacts/diagrams
+          python3 - <<'PY'
+import pathlib
+import subprocess
+
+result = subprocess.run(
+    ["git", "status", "--porcelain=1", "docs/images"],
+    capture_output=True,
+    text=True,
+    check=False,
+)
+
+lines = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+changes = []
+for line in lines:
+    status = line[:2]
+    path = line[3:]
+    if path.endswith(".png"):
+        changes.append((status, path))
+
+status_path = pathlib.Path("mermaid-artifacts/status.txt")
+if changes:
+    status_path.write_text(
+        "\n".join(f"{status} {path}" for status, path in changes),
+        encoding="utf-8",
+    )
+else:
+    status_path.write_text("No Mermaid diagram changes detected.", encoding="utf-8")
+
+for _, path in changes:
+    source = pathlib.Path(path)
+    if source.is_file():
+        destination = pathlib.Path("mermaid-artifacts/diagrams") / source
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(source.read_bytes())
+
+flag = pathlib.Path("mermaid-artifacts/has_changes")
+flag.write_text("true" if changes else "false", encoding="utf-8")
+PY
+          echo "changes=$(cat mermaid-artifacts/has_changes)" >> "$GITHUB_OUTPUT"
+
+      - name: 📤 Upload regenerated diagrams
+        if: steps.capture_diagrams.outputs.changes == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mermaid-diagrams
+          path: mermaid-artifacts
+
+      - name: 🚫 Fail when diagrams require commits
+        if: steps.capture_diagrams.outputs.changes == 'true'
+        run: |
+          echo "Mermaid diagrams were refreshed. Download the 'mermaid-diagrams' artifact and commit the updated PNG files."
+          exit 1
