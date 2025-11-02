@@ -1,31 +1,27 @@
-name: Build & (Optional) Deploy MkDocs Site
+# Build & (Optional) Deploy MkDocs Site
+#
+# This workflow builds the MkDocs site for the Architecture as Code project and can optionally
+# publish the output to GitHub Pages.  The default Python version is 3.12 and the MkDocs
+# configuration file is mkdocs.yml at the repository root.  The workflow installs any
+# dependencies listed in requirements.txt and then ensures that core MkDocs and
+# its plugins are available.
+
+name: Build Site
 
 on:
-  workflow_call:
-    inputs:
-      mkdocs_config:
-        description: Path to mkdocs.yml
-        required: false
-        type: string
-        default: mkdocs.yml
-      python_version:
-        description: Python version
-        required: false
-        type: string
-        default: "3.12"
-      deploy_to_pages:
-        description: Deploy to GitHub Pages after build
-        required: false
-        type: boolean
-        default: false
-    secrets: {}
-  workflow_dispatch: {}
+  workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
-      - "mkdocs.yml"
-      - "docs/**"
-      - ".github/workflows/site.yml"
+      - mkdocs.yml
+      - docs/**
+      - .github/workflows/site.yml
+  pull_request:
+    paths:
+      - mkdocs.yml
+      - docs/**
+      - .github/workflows/site.yml
 
 permissions:
   contents: read
@@ -33,118 +29,48 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "site-${{ github.ref }}"
+  group: pages
   cancel-in-progress: true
 
-env:
-  SITE_DIR: site
-
 jobs:
-  site:
-    name: Site / site
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-    environment: ${{ inputs.deploy_to_pages && 'github-pages' || '' }}
-
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Show tree (quick sanity)
-        run: |
-          set -euxo pipefail
-          pwd
-          ls -la
-          [ -f "${{ inputs.mkdocs_config }}" ] && echo "Found ${{ inputs.mkdocs_config }}" || (echo "::error ::No mkdocs.yml at ${{ inputs.mkdocs_config }}"; exit 2)
-
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python_version }}
-          cache: pip
+          python-version: '3.12'
 
-      - name: Bootstrap pip & wheels
+      - name: Install Dependencies
         run: |
-          set -euxo pipefail
-          python -V
-          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin mkdocs-awesome-pages-plugin
 
-      - name: Install dependencies (requirements + ensure MkDocs plugins)
+      - name: Sanity Check MkDocs
         run: |
-          set -euxo pipefail
-          # 1) If a requirements.txt exists, install it first
-          if [[ -f requirements.txt ]]; then
-            python -m pip install -r requirements.txt
+          if ! mkdocs --version; then
+            echo "::error::MkDocs installation failed"
+            exit 1
           fi
 
-          # 2) Ensure core MkDocs + plugins are present regardless of requirements.txt contents
-          #    (idempotent; will upgrade/skip as needed)
-          python -m pip install --upgrade \
-            mkdocs \
-            mkdocs-material \
-            mkdocs-material-extensions \
-            mkdocs-mermaid2-plugin \
-            mkdocs-awesome-pages-plugin \
-            mkdocs-redirects
-
-          # 3) Verify installation
-          python - <<'PY'
-          import sys, importlib
-          pkgs = ["mkdocs",
-                  "mkdocs_material",
-                  "mkdocs_mermaid2_plugin",
-                  "mkdocs_awesome_pages_plugin",
-                  "mkdocs_redirects"]
-          for p in pkgs:
-            try:
-              m = importlib.import_module(p)
-              print("OK:", p, getattr(m, "__version__", "(no __version__)"))
-            except Exception as e:
-              print("MISSING:", p, e)
-              sys.exit(1)
-          PY
-
-      - name: Print MkDocs config & docs index
+      - name: Build Site
         run: |
-          set -euxo pipefail
-          echo "===== mkdocs.yml ====="
-          cat "${{ inputs.mkdocs_config }}"
-          echo "===== docs/ ====="
-          ls -la docs || true
-          echo "===== images/ ====="
-          ls -la docs/images || true
+          mkdocs build --clean --strict
 
-      - name: Configure GitHub Pages (only if deploying)
-        if: ${{ inputs.deploy_to_pages }}
-        uses: actions/configure-pages@v5
-
-      - name: Build site (strict & verbose)
-        run: |
-          set -euxo pipefail
-          python -m mkdocs build \
-            --strict \
-            --clean \
-            --config-file "${{ inputs.mkdocs_config }}" \
-            --site-dir "${SITE_DIR}"
-
-      - name: Upload Pages artifact (only if deploying)
-        if: ${{ inputs.deploy_to_pages }}
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.SITE_DIR }}
+          path: site
 
-      - name: Deploy to GitHub Pages (only if deploying)
-        if: ${{ inputs.deploy_to_pages }}
-        id: deploy
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-
-      - name: Summarise result
-        if: always()
-        run: |
-          set -euxo pipefail
-          echo "Built output:"
-          du -sh "${SITE_DIR}" || true
-          ls -la "${SITE_DIR}" || true
-          if [ -n "${{ steps.deploy.outputs.page_url || '' }}" ]; then
-            echo "Deployed to: ${{ steps.deploy.outputs.page_url }}"
-          fi
