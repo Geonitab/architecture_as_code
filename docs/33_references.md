@@ -72,7 +72,7 @@ This section provides a comprehensive list of all sources and references cited t
 **HashiCorp.** "Policy as Code Overview." [https://developer.hashicorp.com/terraform/enterprise/policy-as-code](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)  
 *Referenced in: [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
-**Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Konsultprofil, 2024. Available at: [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)  
+**Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Consultant Profile, 2024. Available at: [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)
 *Referenced in: [About the Author](about_the_author.md)*
 
 **Kvadrat AB.** "Technology Consulting Excellence." Company Profile, 2024. Available at: [https://www.kvadrat.se/](https://www.kvadrat.se/)  
