@@ -68,6 +68,8 @@ nav:
   - Prezi Deck: prezi/index.html
 docs_dir: docs
 use_directory_urls: true
+exclude_docs: |
+  archive/
 theme:
   name: readthedocs
 markdown_extensions:
@@ -83,7 +85,6 @@ plugins:
         29_about_the_author.md: about_the_author.md
         31_appendix_b_technical_architecture.md: appendix_b_technical_architecture.md
         32_architecture_as_code_maturity_model.md: architecture_as_code_maturity_model.md
-        33_maturity_model_radar_tool.md: maturity_model_radar.html
 extra_css:
   - stylesheets/code-dark.css
 extra_javascript:
