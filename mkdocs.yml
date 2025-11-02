@@ -71,8 +71,10 @@ use_directory_urls: true
 theme:
   name: readthedocs
 markdown_extensions:
-  - toc
+  - toc:
+      permalink: false
   - tables
+  - attr_list
 plugins:
   - search
   - redirects:
