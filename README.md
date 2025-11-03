@@ -160,8 +160,14 @@ Key workflows include:
    python3 generate_book.py
    docs/build_book.sh
    ```
-4. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
-5. Commit changes with clear messages and submit a pull request following the shared
+4. When ADRs are added or updated, run:
+   ```bash
+   python3 scripts/validate_adrs.py
+   python3 scripts/generate_adr_catalogue.py
+   ```
+   These checks confirm the metadata links to chapters, diagrams, and backlog items whilst refreshing the MkDocs catalogue.
+5. If changes affect release collateral, run `./build_release.sh` to confirm presentation, whitepaper, and website builds succeed.
+6. Commit changes with clear messages and submit a pull request following the shared
    Git-based review workflow so automation validates heading and link conventions.
 
 ## ✍️ Editorial Style
