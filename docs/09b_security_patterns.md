@@ -351,7 +351,11 @@ class SecurityFinding:
 class AdvancedThreatDetection:
     """Comprehensive threat detection following European best practice"""
 
-    def __init__(self, region: str = "eu-north-1", threat_intel_feeds: Optional[List[str]] = None) -> None:
+    def __init__(
+        self,
+        region: str = "eu-north-1",
+        threat_intel_feeds: Optional[List[str]] = None,
+    ) -> None:
         self.region = region
         self.cloudtrail = boto3.client("cloudtrail", region_name=region)
         self.guardduty = boto3.client("guardduty", region_name=region)
@@ -363,10 +367,16 @@ class AdvancedThreatDetection:
         self.threat_intel_feeds = threat_intel_feeds or []
         self.ioc_database: Dict[str, Dict] = {}
 
-        logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+        logging.basicConfig(
+            level=logging.INFO,
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        )
         self.logger = logging.getLogger(__name__)
 
-    async def detect_advanced_persistent_threats(self, hours_back: int = 24) -> List[SecurityFinding]:
+    async def detect_advanced_persistent_threats(
+        self,
+        hours_back: int = 24,
+    ) -> List[SecurityFinding]:
         """Correlate multiple data sources to detect potential APT activity"""
 
         findings: List[SecurityFinding] = []
@@ -381,9 +391,14 @@ class AdvancedThreatDetection:
         for activity in suspicious_activities:
             if self._calculate_threat_score(activity) > 0.7:
                 finding = SecurityFinding(
-                    finding_id=f"APT-{hashlib.md5(str(activity).encode()).hexdigest()[:8]}",
+                    finding_id=(
+                        f"APT-{hashlib.md5(str(activity).encode()).hexdigest()[:8]}"
+                    ),
                     title="Potential Advanced Persistent Threat Activity",
-                    description=f"Correlated suspicious activities indicating potential APT: {activity['description']}",
+                    description=(
+                        "Correlated suspicious activities indicating potential APT: "
+                        f"{activity['description']}"
+                    ),
                     severity=ThreatSeverity.CRITICAL,
                     affected_resources=activity["resources"],
                     indicators_of_compromise=activity["iocs"],
@@ -394,7 +409,9 @@ class AdvancedThreatDetection:
                         "Restore from verified secure backup",
                         "Increase monitoring for related indicators",
                     ],
-                    compliance_impact="Potential GDPR Article 33 notification (72-hour requirement)",
+                    compliance_impact=(
+                        "Potential GDPR Article 33 notification (72-hour requirement)"
+                    ),
                     detection_timestamp=datetime.now(),
                     source_system="Advanced Threat Detection",
                 )
@@ -414,14 +431,20 @@ class AdvancedThreatDetection:
         for violation in [*unusual_data_access, *unauthorised_transfers, *retention_violations]:
             findings.append(
                 SecurityFinding(
-                    finding_id=f"GDPR-{violation['type']}-{violation['resource_id'][:8]}",
+                    finding_id=(
+                        f"GDPR-{violation['type']}-{violation['resource_id'][:8]}"
+                    ),
                     title=f"GDPR Compliance Violation: {violation['type']}",
                     description=violation["description"],
                     severity=ThreatSeverity.HIGH,
                     affected_resources=[violation["resource_id"]],
                     indicators_of_compromise=violation.get("indicators", []),
                     remediation_steps=violation["remediation_steps"],
-                    compliance_impact=f"GDPR {violation['article']} violation – regulatory action possible",
+                    compliance_impact=(
+                        "GDPR "
+                        f"{violation['article']}"
+                        " violation – regulatory action possible"
+                    ),
                     detection_timestamp=datetime.now(),
                     source_system="GDPR Compliance Monitor",
                 )
@@ -439,17 +462,25 @@ class AdvancedThreatDetection:
         dependency_risks = await self._analyse_infrastructure_dependencies()
 
         for risk in [*container_risks, *api_risks, *dependency_risks]:
-            severity = ThreatSeverity.CRITICAL if risk["cvss_score"] > 7.0 else ThreatSeverity.HIGH
+            severity = (
+                ThreatSeverity.CRITICAL
+                if risk["cvss_score"] > 7.0
+                else ThreatSeverity.HIGH
+            )
             findings.append(
                 SecurityFinding(
-                    finding_id=f"SUPPLY-{risk['component']}-{risk['vulnerability_id']}",
+                    finding_id=(
+                        f"SUPPLY-{risk['component']}-{risk['vulnerability_id']}"
+                    ),
                     title=f"Supply Chain Risk: {risk['component']}",
                     description=risk["description"],
                     severity=severity,
                     affected_resources=risk["affected_resources"],
                     indicators_of_compromise=[],
                     remediation_steps=risk["remediation_steps"],
-                    compliance_impact="Potential impact on EU data protection regulations",
+                    compliance_impact=(
+                        "Potential impact on EU data protection regulations"
+                    ),
                     detection_timestamp=datetime.now(),
                     source_system="Supply Chain Risk Assessment",
                 )
@@ -457,15 +488,28 @@ class AdvancedThreatDetection:
 
         return findings
 
-    def generate_executive_security_report(self, findings: List[SecurityFinding]) -> Dict[str, Dict]:
+    def generate_executive_security_report(
+        self,
+        findings: List[SecurityFinding],
+    ) -> Dict[str, Dict]:
         """Generate an executive-level report with regulatory context"""
 
         critical_findings = [f for f in findings if f.severity == ThreatSeverity.CRITICAL]
         high_findings = [f for f in findings if f.severity == ThreatSeverity.HIGH]
 
-        total_affected_resources = len({resource for finding in findings for resource in finding.affected_resources})
+        total_affected_resources = len(
+            {
+                resource
+                for finding in findings
+                for resource in finding.affected_resources
+            }
+        )
         gdpr_notifications_required = len(
-            [f for f in findings if f.compliance_impact and "GDPR Article 33" in f.compliance_impact]
+            [
+                f
+                for f in findings
+                if f.compliance_impact and "GDPR Article 33" in f.compliance_impact
+            ]
         )
 
         report = {
@@ -486,7 +530,9 @@ class AdvancedThreatDetection:
             "threat_landscape": {
                 "apt_indicators": len([f for f in findings if "APT" in f.finding_id]),
                 "supply_chain_risks": len([f for f in findings if "SUPPLY" in f.finding_id]),
-                "insider_threat_indicators": len([f for f in findings if "INSIDER" in f.finding_id]),
+                "insider_threat_indicators": len(
+                    [f for f in findings if "INSIDER" in f.finding_id]
+                ),
             },
             "remediation_priorities": self._prioritise_remediation_actions(findings),
             "recommendations": self._generate_strategic_recommendations(findings),
@@ -516,7 +562,11 @@ class AdvancedThreatDetection:
         response_actions.append("Forensic evidence preserved")
 
         incident_id = await self._create_incident_record(finding, response_actions)
-        self.logger.info("Automated response completed for finding %s (incident %s)", finding.finding_id, incident_id)
+        self.logger.info(
+            "Automated response completed for finding %s (incident %s)",
+            finding.finding_id,
+            incident_id,
+        )
 
         return {
             "incident_id": incident_id,
@@ -524,7 +574,8 @@ class AdvancedThreatDetection:
             "next_steps": finding.remediation_steps,
         }
 
-    # Additional helper methods (_correlate_threat_indicators, _detect_lateral_movement, etc.) would be implemented here.
+    # Additional helper methods would be implemented here, including:
+    # _correlate_threat_indicators, _detect_lateral_movement, and related utilities.
 ```
 
 ## Future security trends and technical evolution
