@@ -348,6 +348,8 @@ Architecture repositories require three complementary automated test categories 
 
 Chapter 13 expands on how those categories are authored and maintained, but Chapter 05 makes their execution non-negotiable: every pipeline stage publishes artefacts (logs, policy reports, CDK assertion results) into shared storage so that architectural stewards can trace regressions and demonstrate audit readiness ([Source [8]](33_references.md#source-8)).
 
+Maintainers codify the categories as distinct jobs so that automation remains legible. Pull requests trigger a `validate-modules` job that runs CDK assertions or Terratest unit harnesses before any plans are produced, mirroring the guidance in the AWS CDK developer workflows ([Source [9]](33_references.md#source-9)). Successful unit checks then unlock an `ephemeral-integration` job that provisions short-lived stacks to execute interoperability suites, with logs and fixture data archived alongside the pull request. Nightly and promotion-time schedules invoke a `governance-audit` job that replays compliance and resilience test suites against staging and production environments; these jobs are protected by environment approvals so that governance stewards must acknowledge any waivers or tolerated failures before pipelines can proceed ([Source [12]](33_references.md#source-12)).
+
 ### Environment promotion policies that preserve architectural parity
 
 Promotion through development, integration, pre-production, and production environments should be deterministic. Multi-stage release definitions codify the required checks, approvals, and evidence collection so that each environment mirrors the architectural baseline defined in Git.
@@ -355,6 +357,12 @@ Promotion through development, integration, pre-production, and production envir
 - **Template-driven parity:** Promotion workflows rehydrate infrastructure using the same Terraform modules or CDK stacks, refusing manual hotfixes that would create drift. Deployment manifests include hash comparisons of rendered templates, and any difference outside approved parameters fails the promotion.
 - **Policy-controlled approvals:** Promotion rules embed policy-as-code checks (for example, Conftest bundles for GDPR) and insist that compliance suites and resilience drills complete before sign-off. Azure DevOps, GitLab, and GitHub environment protections allow these checks and approvals to be codified, ensuring architectural stewards have documented sign-off before production releases ([Source [12]](33_references.md#source-12)).
 - **Evidence bundles:** Each promotion attaches the change set, policy reports, and integration-test telemetry so that reviewers can confirm architectural parity without reconstructing the run from scratch. These bundles are archived to satisfy internal audit requirements and support retrospectives when defects slip through.
+
+| Environment | Mandatory evidence | Automated enforcement |
+|-------------|--------------------|-----------------------|
+| Development | Unit-test pack reports, static-analysis summaries, bill-of-materials manifests. | Branch protection requires all `validate-modules` checks to succeed before merge. |
+| Staging | Ephemeral-integration logs, data-contract verification output, resilience rehearsal notes. | GitHub or Azure environment rules enforce successful `ephemeral-integration` and `governance-audit` jobs prior to promotion ([Source [12]](33_references.md#source-12)). |
+| Production | Signed change records, compliance attestation bundles, rollback rehearsal evidence within the last sprint. | Release gates require explicit architect approval plus policy-as-code attestation uploaded by the pipeline before the traffic switch executes ([Source [12]](33_references.md#source-12)). |
 
 This disciplined promotion ladder keeps regional deployments synchronised. When a new EU region is activated the automation replays the same promotion workflow, guaranteeing that data-classification controls, tagging baselines, and architectural diagrams remain consistent with existing locations.
 
@@ -370,6 +378,8 @@ Maintainability suffers when teams cannot see failure trends or compliance fatig
 | **Architecture drift diff count** | Count of manual overrides detected by drift-detection jobs or GitOps reconcilers. | Signals where environment parity is threatened so promotion policies can be tightened or automation extended. |
 
 Dashboards combine these signals with DORA-inspired throughput metrics so that teams can correlate deployment velocity with maintainability. Publishing the telemetry alongside promotion evidence enables quick root-cause analysis when defects or regulatory findings arise.
+
+Platform teams typically push the telemetry into the same observability planes used for site-reliability engineering so that maintainability signals sit beside incident and capacity indicators. Runbooks define threshold-driven alerts—for example, paging the pipeline team when the stability index drops below 95 per cent over seven days—ensuring that automation debt is handled with the same urgency as production outages ([Source [8]](33_references.md#source-8)). Compliance officers receive scheduled digests of policy-breach density trends, enabling earlier intervention before a backlog of manual approvals accumulates ([Source [12]](33_references.md#source-12)).
 
 ## Automated testing strategies
 
