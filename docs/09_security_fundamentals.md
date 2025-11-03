@@ -215,6 +215,8 @@ Centrally managed storage such as AWS S3 with DynamoDB locking, Azure Storage wi
 
 Architecture as Code governance pipelines must verify that every workspace declares an approved remote backend and that encryption, locking, and access policy parameters match organisational standards. Automated checks should enforce the controls codified in the authoritative guidance (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), [19](33_references.md#source-19), and [20](33_references.md#source-20)), while audit trails from Terraform Cloud, S3 access logs, or Azure Monitor are harvested into governance dashboards so compliance teams can demonstrate adherence to supervisory requirements and monitor for drift in state management controls.
 
+The [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) turns these expectations into sequenced issues for AWS, Azure, and Google Cloud. Referencing the backlog ensures that backlog grooming sessions capture encryption verification, role separation, and policy-as-code gating as first-class acceptance criteria rather than aspirational guidance.
+
 Operational monitoring must extend beyond static configuration analysis. Remote state stores should stream access logs into a central SIEM, with correlation rules that raise alerts for:
 
 - Repeated state initialisation attempts without a corresponding change request, indicating potential credential abuse.

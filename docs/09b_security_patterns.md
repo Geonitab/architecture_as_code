@@ -74,6 +74,8 @@ Key management policies must define custodianship, rotation cadence, and break-g
 
 Operational telemetry from backend access logs, Terraform Cloud audit trails, and key management systems should be forwarded into the central governance dashboard. This provides evidence for auditors that state files remain encrypted, access attempts are monitored, and remediation actions—such as key rotation or state re-keying—are triggered automatically when drift is detected (Sources [16](33_references.md#source-16) and [20](33_references.md#source-20)).
 
+Teams can lift the [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) directly into sprint plans to deliver these telemetry pipelines. The backlog items contain the acceptance tests and documentation updates required to prove that backend alerts, runbooks, and evidence packs evolve alongside the policy-as-code gates.
+
 ### Comprehensive security foundation module
 
 The following Terraform module demonstrates a foundational enterprise security pattern tailored for European organisations. It applies defence-in-depth principles through automated controls for encryption, access management, audit logging, and threat detection.
