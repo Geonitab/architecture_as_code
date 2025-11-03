@@ -40,6 +40,24 @@ GitOps practices complement this model by treating Git repositories as the sourc
 
 Large organisations often operate multiple clusters across regions. Multi-cluster management suites provide centralised policy enforcement, workload placement, and governance. Federation APIs and the Cluster API specification capture cluster lifecycle operations in code, standardising creation, upgrades, and decommissioning.
 
+## Guard rails that keep manifests trustworthy
+
+Container platforms remain maintainable only if every manifest is validated before it reaches production. Teams extend their CI/CD pipelines with schema and conformance checks that run alongside unit tests: tools such as `kubectl apply --server-side --dry-run=client`, `kubeval`, and `kubeconform` verify that every API field matches the targeted Kubernetes version, while Helm's built-in `helm lint` prevents template regressions. Policy-as-code engines—including Open Policy Agent Gatekeeper and Kyverno—enforce organisational guard rails (for example, disallowing privileged pods, enforcing GDPR tagging, or ensuring resource limits) so that review comments are backed by automated enforcement rather than informal guidelines (Source [7]).
+
+Security scanning and integration testing then validate the images referenced by those manifests. Container scanning in the registry, static analysis of Dockerfiles, and ephemeral integration environments make sure that dependencies, runtime permissions, and exposed services stay aligned with architectural expectations. The AWS Cloud Development Kit guidance documents the same pattern for infrastructure as code pipelines: manifests and infrastructure definitions must pass unit tests, integration tests, and policy checks before promotion, with results stored in version control to support ongoing maintenance (Source [9]).
+
+## Detecting and preventing drift
+
+Reconciliation loops highlight when the declared state diverges from the cluster, but proactive drift detection is still essential for maintainability. GitOps operators surface pending changes whenever live configuration no longer matches Git, allowing teams to compare manifests through pull-request style diffs before reconciling. Scheduled jobs that run `kubectl diff`, `terraform plan`, or `argocd app diff` on each environment catch manual changes early and create auditable records. Platform teams couple these detectors with automated rollbacks or tickets so that unauthorised configuration changes cannot accumulate, directly addressing the governance gaps observed in the CNCF research (Source [7]).
+
+Drift management extends beyond workloads. Backup jobs compare expected volume snapshots with actual storage policies, while network controllers confirm that service mesh routes still match the declarative intent. These controls stop platform sprawl and give operators the confidence to scale clusters without sacrificing oversight.
+
+## Continuous delivery integration
+
+Bringing these guard rails together requires disciplined integration with the wider CI/CD toolchain. Chapter 05 explores the broader DevOps pipeline, but the container orchestration flow adds platform-specific stages: manifest validation and policy checks run after application unit tests; container image signing and provenance checks ensure supply chain integrity; and GitOps controllers provide progressive delivery into staging and production once all quality gates have passed. AWS CDK pipelines and similar orchestration stacks codify each gate—test execution, security scans, manual approvals—so that every environment promotion is traceable and repeatable (Source [9]).
+
+Observability pipelines close the loop by publishing validation metrics, failed policy counts, and drift incidents to dashboards. Teams review this telemetry during architecture runways and platform councils to ensure the maintainability targets remain on track.
+
 ## Persistent storage and data management
 
 Stateful workloads still rely on robust storage. Kubernetes addresses this with persistent volumes, storage classes, and dynamic provisioners, all of which are defined declaratively. Performance, redundancy, and backup requirements can be embedded into these definitions so that new workloads inherit compliant defaults automatically.
