@@ -77,6 +77,18 @@ jobs:
 
 Such pipelines capture the architectural intent, flag drift immediately, and keep every service aligned with centrally defined guardrails.
 
+### Maintainability guardrails as code
+
+Policy-as-code engines such as [Open Policy Agent (OPA)](33_references.md#source-10), Conftest, or service mesh admission controllers translate governance rules into executable checks that run on every change. Teams should codify boundary rules—permitted dependency directions, latency budgets between domains, or constraints on data residency—alongside the service. Pipelines fail fast when a merge request proposes an illegal dependency, and the same rules can execute in staging clusters to block ad-hoc configuration drift. Thoughtworks' Governance as Code guidance stresses that automating these controls is the sustainable path to consistent service quality across federated teams ([Thoughtworks Technology Radar – "Governance as Code"](33_references.md#source-2)).
+
+### Cataloguing contracts and coupling telemetry
+
+Maintain an executable catalogue that indexes every API specification, event schema, and data contract. Architecture automation should update the catalogue after each merge, derive dependency graphs, and flag hotspots where a service has many synchronous consumers or repeatedly changes its schema. CNCF's *State of Cloud Native Development 2024* report highlights how sprawling integration surfaces create maintainability pressure unless organisations observe coupling signals in real time ([Source [7]](33_references.md#source-7)). Teams can codify heuristics such as "alert when more than five downstream systems consume a synchronous endpoint" or "notify when an event schema changes more than once per sprint". These metrics help platform leads schedule refactoring and guide investment in stabilising interfaces.
+
+### Escalation playbooks for failed checks
+
+Store runbooks and escalation trees beside the service so that automated failures trigger predictable responses. When a policy gate fails, the pipeline should raise a ticket or ChatOps alert to the owning team, include links to the failing rule, and enumerate the expected resolution timeframe. If repeated violations occur, an architecture council rota can be paged to review whether the guardrail or the service boundary needs adjustment. Capturing these playbooks as code keeps governance transparent and gives auditors evidence that breaches are handled systematically.
+
 ### Runtime observability as code
 
 Codify dashboards, alerting policies, and runbooks so that operability remains consistent across the fleet. Use tools such as Grafana configuration as code or Prometheus recording rules stored in Git. Tie alert routing to the ownership data held in each service repository so incidents reach the responsible team.
@@ -123,3 +135,11 @@ By treating migration playbooks as code, teams can rehearse transitions safely a
 ## Summary
 
 Microservices amplify organisational agility when paired with disciplined automation. Architecture as Code gives leaders a shared source of truth for service contracts, platform guardrails, and operational posture. Investing in reusable templates, policy automation, and comprehensive observability enables teams to innovate quickly whilst preserving the resilience, compliance, and sustainability that modern enterprises demand.
+
+## Sources
+
+Sources:
+- [Cloud Native Computing Foundation – *State of Cloud Native Development 2024*](33_references.md#source-7)
+- [Open Policy Agent – Policy as Code Overview](33_references.md#source-10)
+- [Thoughtworks Technology Radar – Governance as Code](33_references.md#source-2)
+
