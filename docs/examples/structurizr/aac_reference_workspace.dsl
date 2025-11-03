@@ -1,5 +1,7 @@
 workspace "Architecture as Code Reference" "Curated Structurizr workspace aligned to the book's C4 guidance." {
 
+    !adrs docs/examples/structurizr/adrs
+
     model {
         user = person "Digital Service User" "Citizen or customer interacting with the public-facing capabilities." {
             tags "External Person"
@@ -35,14 +37,17 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
 
             diagramService = container "Diagram Service" "Converts Structurizr and Mermaid definitions into publishable assets." "Node.js" {
                 tags "Service"
+                url "docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
             }
 
             contentPipeline = container "Content Pipeline" "Generates book artefacts, validates diagrams, and assembles releases." "Python" {
                 tags "Pipeline"
+                url "docs/examples/structurizr/adrs/ADR-0001-diagram-automation-pipeline.md"
             }
 
             knowledgeGraph = container "Knowledge Graph" "Stores relationships between chapters, diagrams, and review decisions." "Neo4j" {
                 tags "Data"
+                url "docs/examples/structurizr/adrs/ADR-0002-knowledge-graph-linking.md"
             }
 
             observabilityHub = container "Observability Hub" "Aggregates telemetry, alerts, and architecture fitness scores." "Grafana" {
@@ -62,7 +67,9 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
             diagramService {
                 dslParser = component "DSL Parser" "Validates Structurizr DSL syntax and resolves workspace fragments." "Kotlin"
                 renderer = component "Diagram Renderer" "Calls Structurizr Lite for PNG/SVG generation." "Java"
-                versioningAdapter = component "Versioning Adapter" "Synchronises workspace snapshots with Git repositories." "Python"
+                versioningAdapter = component "Versioning Adapter" "Synchronises workspace snapshots with Git repositories." "Python" {
+                    url "docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
+                }
                 policyEvaluator = component "Policy Evaluator" "Applies architecture fitness functions to proposed changes." "Python"
 
                 dslParser -> renderer "Produces normalised model definitions for." 
