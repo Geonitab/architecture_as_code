@@ -64,6 +64,8 @@ Compliance as code focuses on translating regulations, standards, and internal p
 
 Compliance as code thus becomes a quality engine that reinforces the other disciplines. When architectural or documentation artifacts are updated, automated controls can ensure that changes still fall within approved boundaries. If a rule changes, the update propagates to every system that uses it—from architectural diagrams to external reports.
 
+Practical tools such as the [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) show how this quality engine manifests in day-to-day delivery. Each backlog item ties policy definitions to Terraform modules, documentation updates, and evidence packs, helping teams demonstrate that soft "as code" practices have tangible outputs and measurable coverage.
+
 ## Architecture as Code as the Hub
 
 Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of models in DSLs such as Structurizr, C4 models generated from Markdown, or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:
