@@ -1,0 +1,35 @@
+name: Structurizr diagram automation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/examples/structurizr/**'
+      - 'scripts/render_structurizr_diagrams.sh'
+      - 'scripts/update_structurizr_manifest.py'
+      - 'scripts/check_structurizr_manifest.py'
+      - '.github/workflows/structurizr-diagrams.yml'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Render Structurizr diagrams
+        env:
+          STRUCTURIZR_SKIP_MANIFEST_UPDATE: "1"
+        run: ./scripts/render_structurizr_diagrams.sh
+
+      - name: Upload Structurizr artefacts
+        if: ${{ always() && hashFiles('build/structurizr/**') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: structurizr-diagrams
+          path: build/structurizr
+          if-no-files-found: warn
+
+      - name: Enforce manifest alignment
+        run: python3 scripts/check_structurizr_manifest.py

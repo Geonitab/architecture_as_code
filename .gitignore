@@ -71,6 +71,9 @@ docs/architecture_as_code.docx
 # MkDocs build output
 site/
 
+# Structurizr exports
+build/structurizr/
+
 # Node.js package directories are generated per install and should stay ignored
 # (manifests are now tracked for reproducible toolchains).
 

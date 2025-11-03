@@ -441,7 +441,7 @@ Scaling Structurizr beyond a single maintainer requires deliberate enablement so
 
 1. **Foundational bootcamps** – Run a recurring two-hour workshop that walks through the reference workspace, highlights the module structure described above, and demonstrates how Structurizr Lite and the CLI complement one another. Recording each session helps global teams revisit the material asynchronously.
 2. **Pair-modelling rotations** – Assign monthly pairs that include one experienced maintainer and one new contributor. Each pair triages backlog items, applies naming policies, and raises any missing automation hooks. Rotations prevent tacit knowledge from concentrating in a single geography or department.
-3. **Checklists in pull request templates** – Extend pull request templates with explicit Structurizr checks ("Ran `structurizr.sh validate`, updated layout template includes, attached before/after screenshots from Lite"). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.
+3. **Checklists in pull request templates** – Extend pull request templates with explicit Structurizr checks ("Ran `./scripts/render_structurizr_diagrams.sh`, updated layout template includes, attached before/after screenshots from Lite"). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.
 4. **Capability metrics** – Track lead time for diagram updates, the number of contributors editing the workspace each quarter, and the percentage of views using the shared layout templates. Publish these metrics alongside the broader enablement dashboards introduced in Chapter 24 to spotlight where additional coaching is required.
 5. **Community of practice** – Host a monthly forum where teams share lessons, propose adjustments to the naming conventions, and experiment with new Structurizr DSL features referenced in the official documentation. Capture agreed changes in the guidelines repository so the knowledge persists beyond the meeting.
 
@@ -455,28 +455,25 @@ ith supporting guidance in `docs/examples/structurizr/README.md`.
 
 ### Repository artefacts
 
-- **Workspace DSL** – Implements System Context, Container, Component, Dynamic, and Deployment views for the Architecture as Co
-de platform, providing a ready-made baseline for teams to copy or extend.
-- **Styling conventions** – Applies consistent British English tagging and a colour palette that emphasises governance, automat
-ion, and telemetry pathways referenced in the book.
-- **Configuration metadata** – Pins a minimum Structurizr CLI version so that exports remain reproducible across developer machi
-nes and the CI pipeline.
+- **Workspace DSL** – Implements System Context, Container, Component, Dynamic, and Deployment views for the Architecture as Code platform, providing a ready-made baseline for teams to copy or extend.
+- **Styling conventions** – Applies consistent British English tagging and a colour palette that emphasises governance, automation, and telemetry pathways referenced in the book.
+- **Configuration metadata** – Pins a minimum Structurizr CLI version so that exports remain reproducible across developer machines and the CI pipeline.
+- **Decision catalogue** – Stores ADR markdown files in `docs/examples/structurizr/adrs/` and links them directly from containers and components so reviewers can open the governing decision without leaving the diagram.
+- **Workspace manifest** – Captures a SHA-256 digest and export metadata in `aac_reference_workspace.manifest.json`, allowing automation to detect when the DSL changes without updated exports.
 
 ### Exploring the reference workspace
 
 Follow these steps to render the workspace locally:
 
 1. Install the Structurizr CLI (version `2024.03.01` or later).
-2. From the repository root, run:
+2. Execute the helper that mirrors the CI workflow:
    ```bash
-   structurizr.sh export \
-     -workspace docs/examples/structurizr/aac_reference_workspace.dsl \
-     -format plantuml,mermaid,structurizr
+   ./scripts/render_structurizr_diagrams.sh
    ```
+   The script validates the workspace, exports PNG and Structurizr JSON files into `build/structurizr/`, and refreshes the manifest hash. When Docker or Podman is unavailable it prints equivalent `java -jar structurizr-cli.jar` commands so contributors can still regenerate diagrams manually.
 3. Open the exported diagrams or load the generated Structurizr Lite workspace to explore the interactive views.
 
-These commands align with the automation demonstrated earlier in this chapter, ensuring that developers, architects, and editor
-s can iterate confidently without bespoke tooling.
+These commands align with the automation demonstrated earlier in this chapter, ensuring that developers, architects, and editors can iterate confidently without bespoke tooling. Commit the updated `aac_reference_workspace.manifest.json` whenever the DSL changes so the automation pipeline recognises that exports remain in sync.
 
 ### Contribution workflow for diagram updates
 
@@ -485,8 +482,7 @@ A consistent contribution workflow prevents diagram drift and preserves traceabi
 1. **Create a feature branch** – Prefix it with `structurizr/` to signal architecture-oriented work.
 2. **Amend the DSL** – Update `aac_reference_workspace.dsl` or add modular `!include` files in the same directory. Each change s
 hould retain the C4 hierarchy and respect agreed tags.
-3. **Validate locally** – Execute `structurizr.sh validate -workspace docs/examples/structurizr/aac_reference_workspace.dsl` fol
-lowed by the export command above. Address any reported warnings before requesting review.
+3. **Validate locally** – Run `./scripts/render_structurizr_diagrams.sh` so validation, exports, and the manifest update all mirror CI behaviour. Address any reported warnings before requesting review.
 4. **Document intent** – Capture the architectural rationale in the pull request description and, where relevant, reference rela
 ted Architecture Decision Records.
 5. **Run the book build** – `python3 generate_book.py && docs/build_book.sh` ensures that downstream artefacts (including PNG di
@@ -501,7 +497,39 @@ delivery platform.
 
 ## Integration with CI/CD Pipelines
 
-Automating architecture documentation ensures diagrams stay synchronized with code changes.
+Automating architecture documentation ensures diagrams stay synchronised with code changes. The repository ships with `.github/workflows/structurizr-diagrams.yml`, which performs the following tasks on every pull request that touches the Structurizr workspace or helper scripts:
+
+```yaml
+name: Structurizr diagram automation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/examples/structurizr/**'
+      - 'scripts/render_structurizr_diagrams.sh'
+      - 'scripts/update_structurizr_manifest.py'
+      - 'scripts/check_structurizr_manifest.py'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render Structurizr diagrams
+        env:
+          STRUCTURIZR_SKIP_MANIFEST_UPDATE: "1"
+        run: ./scripts/render_structurizr_diagrams.sh
+      - name: Upload Structurizr artefacts
+        if: ${{ always() && hashFiles('build/structurizr/**') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: structurizr-diagrams
+          path: build/structurizr
+      - name: Enforce manifest alignment
+        run: python3 scripts/check_structurizr_manifest.py
+```
+
+The workflow mirrors the local helper by exporting PNG and Structurizr JSON files whilst skipping the manifest update to avoid masking drift. The final `check_structurizr_manifest.py` invocation compares the committed digest with the current DSL and fails the build when contributors forget to refresh the manifest. Reviewers still receive fresh diagrams via the uploaded artefact, satisfying the pipeline requirements without sacrificing fast feedback.
 
 ### GitHub Actions Example
 
