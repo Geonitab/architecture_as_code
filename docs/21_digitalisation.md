@@ -253,59 +253,8 @@ Challenges within digital transformation include skills shortages, cultural resi
 
 ## Practical Examples
 
-
-### Multi-Cloud Enterprise Strategy
-```yaml
-# terraform/main.tf - Multi-cloud setup for global enterprise
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.0"
-    }
-  }
-}
-
-# AWS for global services with EU data residency
-provider "aws" {
-  region = var.aws_eu_region  # Configurable EU region (e.g., eu-west-1, eu-central-1, eu-north-1)
-}
-
-# Azure for Microsoft integrations with EU compliance
-provider "azurerm" {
-  features {}
-  location = var.azure_eu_region  # Configurable EU region (e.g., West Europe, North Europe)
-}
-
-# Common resource tagging for cost management and EU compliance
-locals {
-  common_tags = {
-    Organisation = "Global Enterprise Ltd"
-    Environment  = var.environment
-    Project      = var.project_name
-    CostCentre   = var.cost_centre
-    DataClass    = var.data_classification
-    EUCompliance = "GDPR"
-    Regulator    = "EDPB"
-  }
-}
-
-module "aws_infrastructure" {
-  source = "./modules/aws"
-  tags   = local.common_tags
-}
-
-module "azure_infrastructure" {
-  source = "./modules/azure"
-  tags   = local.common_tags
-}
-
-# Optional: add EU-native providers (e.g., OVHcloud, Scaleway) via additional modules
-```
+Practical examples in this chapter illustrate how a European enterprise can orchestrate cross-provider infrastructure and governance without sacrificing compliance.
+The full multi-cloud landing zone blueprint now lives in Appendix A as listing [21_CODE_1](30_appendix_code_examples.md#21_code_1), ensuring the chapter focuses on strategy whilst readers still have access to the execution-ready Terraform module.
 
 ### Automated Compliance Pipeline
 ```yaml

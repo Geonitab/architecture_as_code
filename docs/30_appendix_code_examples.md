@@ -680,6 +680,67 @@ func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
 
 ---
 
+## Infrastructure as Code (Architecture as Code) – Terraform {#terraform-iac}
+
+Terraform underpins many Architecture as Code transformations by codifying consistent guardrails, data residency requirements, and provider-specific integrations across estates.
+
+### 21_CODE_1: Multi-cloud enterprise landing zone {#21_code_1}
+*Referenced from Chapter 21: [Digital Transformation in Enterprises](21_digitalisation.md)*
+
+```hcl
+# terraform/main.tf - Multi-cloud setup for global enterprise
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.0"
+    }
+  }
+}
+
+# AWS for global services with EU data residency
+provider "aws" {
+  region = var.aws_eu_region  # Configurable EU region (e.g., eu-west-1, eu-central-1, eu-north-1)
+}
+
+# Azure for Microsoft integrations with EU compliance
+provider "azurerm" {
+  features {}
+  location = var.azure_eu_region  # Configurable EU region (e.g., West Europe, North Europe)
+}
+
+# Common resource tagging for cost management and EU compliance
+locals {
+  common_tags = {
+    Organisation = "Global Enterprise Ltd"
+    Environment  = var.environment
+    Project      = var.project_name
+    CostCentre   = var.cost_centre
+    DataClass    = var.data_classification
+    EUCompliance = "GDPR"
+    Regulator    = "EDPB"
+  }
+}
+
+module "aws_infrastructure" {
+  source = "./modules/aws"
+  tags   = local.common_tags
+}
+
+module "azure_infrastructure" {
+  source = "./modules/azure"
+  tags   = local.common_tags
+}
+
+# Optional: add EU-native providers (e.g., OVHcloud, Scaleway) via additional modules
+```
+
+---
+
 ## Infrastructure as Code – CloudFormation {#cloudformation-architecture-as-code}
 
 Architecture as Code principles in this area emphasise resilient AWS foundations and strong governance.
