@@ -61,6 +61,8 @@ nav:
       - Appendix B – Technical Architecture for Book Production: appendix_b_technical_architecture.md
       - Appendix C – FINOS Project Blueprint: 32_finos_project_blueprint.md
       - Appendix D – Templates and Tools: appendix_templates_and_tools.md
+      - ADR Catalogue: adr/adr_catalogue.md
+      - Legacy ADR Migration Plan: adr/migration_plan.md
       - Appendix E – Architecture as Code Maturity Model: architecture_as_code_maturity_model.md
       - Appendix F – Architecture as Code Maturity Radar Tool: maturity_model_radar.html
       - References and Sources: 33_references.md

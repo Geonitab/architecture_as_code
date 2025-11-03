@@ -19,6 +19,8 @@ h established terminology.
 
 - **Continuous integration** executes `python3 generate_book.py && docs/build_book.sh` to rebuild the book, regenerate diagrams,
   and surface linting feedback.
+- **ADR validation** runs `python3 scripts/validate_adrs.py` followed by `python3 scripts/generate_adr_catalogue.py` so that new
+  decisions automatically populate the MkDocs navigation and change-log-friendly catalogue.
 - **Link validation** ensures Markdown references resolve correctly. Update links or add redirect stubs whenever file paths chan
 ge.
 - **Diagram generation** leverages Mermaid CLI during the build to refresh PNG artefacts. Never commit outdated diagram renders.

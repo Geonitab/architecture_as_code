@@ -50,9 +50,33 @@ documentation practice.
 
 *Figure 4.2 highlights the four core sections every ADR should capture before the template is populated with project-specific information.*
 
-Each ADR follows a consistent structure that ensures all relevant information is captured systematically:
+Each ADR follows a consistent structure that ensures all relevant information is captured systematically. The YAML front matter keeps the automated catalogue aligned with the manuscript and CI pipeline by recording review cadences, linked chapters, diagrams, and backlog work items. The Markdown body then presents the narrative context and decision rationale used throughout the book:
 
 ```markdown
+---
+adr_id: ADR-XXXX
+title: [Short Description of the Decision]
+status: Proposed
+date: "2025-01-15"
+last_reviewed: "2025-01-15"
+next_review_due: "2025-07-15"
+deciders:
+  - [Named decision authority]
+reviewers:
+  - [Reviewer ensuring technical accuracy]
+related_chapters:
+  - docs/04_adr.md
+related_diagrams:
+  - docs/images/diagram_04_adr_process.png
+related_backlog_items:
+  - AAC-1305
+summary: Concise statement explaining why the decision matters.
+automation_hooks:
+  - Optional list of CI jobs or tooling integrations triggered by the ADR metadata.
+change_notes:
+  - YYYY-MM-DD – Short description of adjustments or supersessions.
+---
+
 # ADR-XXXX: [Short Description of the Decision]
 
 Status: [Proposed | Accepted | Deprecated | Superseded]
@@ -80,6 +104,8 @@ Review and Documentation Workflow:
 - Reference the shared workflow in [docs/documentation_workflow.md](documentation_workflow.md)
   so future readers understand how the decision was reviewed and validated
 ```
+
+Run `python3 scripts/validate_adrs.py` after authoring or updating an ADR to confirm the metadata is complete. The companion `python3 scripts/generate_adr_catalogue.py` command rebuilds the catalogue that powers MkDocs navigation, ensuring new decisions appear automatically alongside the manuscript.
 
 ### Numbering and Versioning
 
