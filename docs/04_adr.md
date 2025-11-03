@@ -55,31 +55,30 @@ Each ADR follows a consistent structure that ensures all relevant information is
 ```markdown
 # ADR-XXXX: [Short Description of the Decision]
 
-## Status
-[Proposed | Accepted | Deprecated | Superseded]
+Status: [Proposed | Accepted | Deprecated | Superseded]
 
-## Context
-Description of the problem that needs to be solved and the circumstances
-that led to the need for this decision.
+Context:
+- Description of the problem that needs to be solved
+- Circumstances and constraints that led to the decision
+- Stakeholders affected by the outcome
 
-## Decision
-The specific decision that was made, including technical details
-and the Architecture as Code implementation approach.
+Decision:
+- Clear statement of the chosen approach
+- Implementation details and scope
 
-## Consequences
-### Positive Consequences
-- Expected benefits and improvements
+Consequences:
+- Positive:
+  - Expected benefits and improvements
+- Negative:
+  - Identified risks and limitations
 
-### Negative Consequences
-- Identified risks and limitations
+Mitigation:
+- Measures that offset negative consequences
 
-### Mitigation
-- Measures to handle negative consequences
-
-## Review and Documentation Workflow
-- Link to the pull request or merge request where the ADR was discussed.
+Review and Documentation Workflow:
+- Link to the pull request or merge request where the ADR was discussed
 - Reference the shared workflow in [docs/documentation_workflow.md](documentation_workflow.md)
-  so future readers understand how the decision was reviewed and validated.
+  so future readers understand how the decision was reviewed and validated
 ```
 
 ### Numbering and Versioning
@@ -109,77 +108,47 @@ ADRs typically progress through the following statuses:
 
 Architecture as Code principles within this domain:
 
-```markdown
-# ADR-0003: Selection of Terraform for Architecture as Code
+#### ADR-0003: Selection of Terraform for Architecture as Code
 
-## Status
-Accepted
-
-## Context
-The organisation needs to standardise on an Architecture as Code tool
-to manage AWS and Azure environments. Current manual processes
-create inconsistencies and operational risks.
-
-## Decision
-We will use Terraform as the primary Architecture as Code tool for all
-cloud environments, with HashiCorp Configuration Language (HCL) as
-the standard syntax.
-
-## Consequences
-
-### Positive Consequences
-- Multi-cloud support for AWS and Azure
-- Large community and comprehensive provider ecosystem
-- Declarative syntax that matches our policy requirements
-- State management for traceability
-
-### Negative Consequences
-- Learning curve for teams accustomed to imperative scripting
-- Complexity in state file management
-- Cost for Terraform Cloud or Enterprise features
-
-### Mitigation
-- Training programmes for development teams
-- Implementation of Terraform remote state with Azure Storage
-- Pilot projects before full rollout
-```
+- **Status:** Accepted
+- **Context:** The organisation needs to standardise on an Architecture as Code tool to manage AWS and Azure environments. Manual provisioning creates inconsistent configurations, weak audit trails, and delays that undermine compliance expectations.
+- **Decision:** Terraform becomes the primary Architecture as Code tool for all cloud environments, with HashiCorp Configuration Language (HCL) as the standard syntax.
+- **Consequences:**
+  - *Positive:*
+    - Multi-cloud support for AWS and Azure
+    - Large community and comprehensive provider ecosystem
+    - Declarative syntax that matches our policy requirements
+    - State management for traceability
+  - *Negative:*
+    - Learning curve for teams accustomed to imperative scripting
+    - Complexity in state file management
+    - Cost for Terraform Cloud or Enterprise features
+- **Mitigation:**
+  - Training programmes for development teams
+  - Implementation of Terraform remote state with Azure Storage
+  - Pilot projects before full rollout
 
 ### Example 2: Database Technology Selection
 
-```markdown
-# ADR-0007: Selection of PostgreSQL for Primary Database
+#### ADR-0007: Selection of PostgreSQL for the Primary Database
 
-## Status
-Accepted
-
-## Context
-The application requires a robust relational database with support for
-complex queries, ACID compliance, and horizontal scaling capabilities.
-Current MySQL infrastructure is reaching performance limits.
-
-## Decision
-Migrate primary database to PostgreSQL with automated failover using
-Patroni and connection pooling via PgBouncer, managed through
-Architecture as Code.
-
-## Consequences
-
-### Positive Consequences
-- Advanced indexing capabilities and query optimisation
-- Strong ACID compliance and data integrity guarantees
-- Extensive extension ecosystem (PostGIS, pg_trgm)
-- Active community and comprehensive documentation
-
-### Negative Consequences
-- Migration effort and potential downtime during transition
-- Team training required for PostgreSQL-specific features
-- Increased infrastructure complexity with clustering
-
-### Mitigation
-- Phased migration with parallel running period
-- Comprehensive training programme for development teams
-- Automated testing of migration scripts and rollback procedures
-```
+- **Status:** Accepted
+- **Context:** The application demands complex queries, ACID guarantees, and elastic scaling. Existing MySQL clusters are saturating CPU resources, forcing teams to defer new features and accept longer recovery times following incidents.
+- **Decision:** Migrate the primary database estate to PostgreSQL with automated failover using Patroni and connection pooling via PgBouncer, all managed through Architecture as Code.
+- **Consequences:**
+  - *Positive:*
+    - Advanced indexing capabilities and query optimisation
+    - Strong ACID compliance and data integrity guarantees
+    - Extensive extension ecosystem (PostGIS, pg_trgm)
+    - Active community and comprehensive documentation
+  - *Negative:*
+    - Migration effort and potential downtime during transition
+    - Team training required for PostgreSQL-specific features
+    - Increased infrastructure complexity with clustering
+- **Mitigation:**
+  - Phased migration with a parallel running period
+  - Comprehensive training programme for development teams
+  - Automated testing of migration scripts and rollback procedures
 
 ## Tools and Best Practices for ADR within Architecture as Code
 
