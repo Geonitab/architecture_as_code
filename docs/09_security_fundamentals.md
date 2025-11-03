@@ -203,25 +203,56 @@ s. Privacy by design requirements from GDPR Article 25 demand data minimisation,
 
 ### Protecting Infrastructure as Code state
 
-Infrastructure state files capture live inventories, secrets, and the policy decisions enforced across environments. They must therefore be treated as sensitive artefacts rather than operational by-products. Authoritative vendor guidance spells out the baseline controls, anchored by HashiCorp's definitive recommendations for safeguarding Terraform state ([Source [16]](33_references.md#source-16)):
+Infrastructure state files capture live inventories, secrets, and the policy decisions enforced across environments. They must therefore be treated as sensitive artefacts rather than operational by-products. Authoritative vendor guidance spells out the baseline controls, anchored by HashiCorp's definitive recommendations for safeguarding Terraform state ([Source [16]](33_references.md#source-16)).
 
-- **[HashiCorp – “Securing Terraform State” (2024)](https://developer.hashicorp.com/terraform/cloud-docs/state/securing):** instructs teams to store state in remote backends, enable state locking, and avoid local copies to eliminate workstation exposure and race conditions during deployment ([Source [16]](33_references.md#source-16)).
-- **[HashiCorp – “Backend Type: s3” (2024)](https://developer.hashicorp.com/terraform/language/settings/backends/s3):** documents the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that enforce DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state backends ([Source [17]](33_references.md#source-17)).
-- **[HashiCorp – “Terraform Security Best Practices” (2023)](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security):** details the policy guardrails, key management requirements, and secret-handling approaches HashiCorp recommends for enterprise Terraform programmes ([Source [20]](33_references.md#source-20)).
-- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** requires Azure Storage accounts with encryption at rest, Azure AD or SAS-based access control, and blob leases so Terraform operations are serialised and auditable ([Source [18]](33_references.md#source-18)).
-- **[Google Cloud – “Store Terraform state in Cloud Storage” (2024)](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state):** recommends uniform bucket-level access, object versioning, and customer-managed encryption keys to govern Terraform state across Google Cloud estates ([Source [19]](33_references.md#source-19)).
+#### Stepwise adoption of encrypted remote backends
 
-Centrally managed storage such as AWS S3 with DynamoDB locking, Azure Storage with container leases, or Google Cloud Storage with object versioning should therefore be configured with customer-managed encryption keys and monitored for drift (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), and [19](33_references.md#source-19)). Applying the verified practices above keeps Terraform state aligned with enterprise key management policies, with key rotation schedules, hardware-backed storage, and explicit break-glass procedures captured alongside the associated documentation. Integrating state access with secrets-management tooling ensures cryptographic material is recorded, rotated, and revoked under the same governance as application secrets.
+Enterprise teams should converge on a single, automated pattern for each supported cloud so that remote backends are provisioned consistently and never improvised by individual engineers. The following playbooks translate the vendor guidance into concrete, sequential activities (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), [19](33_references.md#source-19), and [20](33_references.md#source-20)):
 
-Architecture as Code governance pipelines must verify that every workspace declares an approved remote backend and that encryption, locking, and access policy parameters match organisational standards. Automated checks should enforce the controls codified in the authoritative guidance (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), [19](33_references.md#source-19), and [20](33_references.md#source-20)), while audit trails from Terraform Cloud, S3 access logs, or Azure Monitor are harvested into governance dashboards so compliance teams can demonstrate adherence to supervisory requirements and monitor for drift in state management controls.
+- **Amazon Web Services (S3 + DynamoDB)**
+  1. Provision an S3 bucket with versioning and default encryption enabled via a customer-managed KMS key referenced in the Terraform backend block (`kms_key_id`).
+  2. Create a DynamoDB table for state locking and configure point-in-time recovery so concurrent applies and accidental deletions can be rolled back.
+  3. Grant access exclusively to CI/CD identities through IAM policies that allow `s3:GetObject`, `s3:PutObject`, `dynamodb:GetItem`, and `dynamodb:PutItem` while denying console downloads for human users.
+  4. Define the Terraform backend with `encrypt = true`, `dynamodb_table`, and bucket/key parameters, and commit this configuration in a reusable module consumed by every workspace.
+  5. Use Terraform Cloud, Atlantis, or another orchestrator to migrate existing local state with `terraform state push`, verifying that state files are deleted from developer machines afterwards.
 
-Operational monitoring must extend beyond static configuration analysis. Remote state stores should stream access logs into a central SIEM, with correlation rules that raise alerts for:
+- **Microsoft Azure (Storage account + blob lease locking)**
+  1. Deploy a dedicated storage account with minimum TLS 1.2, infrastructure encryption, and hierarchical namespace disabled unless Azure Data Lake Gen2 is required.
+  2. Create a private blob container for state, enable blob versioning, and enforce access through Azure AD principals mapped to automation service principals.
+  3. Turn on blob soft delete and change feed to support forensic investigations, then configure a key vault-managed key for encryption at rest.
+  4. Populate the Terraform backend block with the storage account name, container, key, and `use_azuread_auth = true` so only federated identities can reach the state store.
+  5. Migrate existing state with `terraform init -migrate-state`, ensuring pipeline identities can acquire leases and human operators rely on change requests rather than manual downloads.
 
-- Repeated state initialisation attempts without a corresponding change request, indicating potential credential abuse.
-- Manual state downloads or unlock operations executed outside approved pipeline identities.
-- Versioning churn or bucket/object deletions that occur outside scheduled maintenance windows.
+- **Google Cloud Platform (Cloud Storage + object versioning)**
+  1. Create a storage bucket with uniform access control, CMEK encryption, and object versioning so rollbacks and diffing are preserved.
+  2. Bind IAM roles limited to automation service accounts, preferably using workload identity federation to avoid long-lived JSON keys.
+  3. Enable Bucket Lock or retention policies that prevent ad-hoc truncation, and configure logging to a central project for audit correlation.
+  4. Define the Terraform backend with the bucket, prefix, and impersonated service account, committing the settings to a standard module that every team consumes.
+  5. Run `terraform init -migrate-state` from controlled automation runners, deleting local artefacts and confirming versioned objects appear in Cloud Storage after the migration.
 
-Alert destinations should include on-call rotas and service management tooling so that incidents can be triaged rapidly. Pairing those alerts with automated remediation—such as temporary access revocation via Terraform Cloud run tasks or AWS IAM quarantine policies—ensures that anomalous state activity is contained before it cascades into deployment failures.
+Automated policy checks must verify that workspaces declare only these sanctioned modules; any deviation should block merges until a compliant backend is configured. Centralised storage configured in this way ensures Terraform state remains encrypted, versioned, and locked in line with key management requirements (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), [19](33_references.md#source-19), and [20](33_references.md#source-20)).
+
+#### Automated monitoring and alerting for state integrity
+
+Static configuration alone cannot guarantee safety. Remote state stores should stream detailed access logs into a central SIEM where correlation rules cover:
+
+- **State drift:** trigger alerts when successive Terraform Cloud runs produce unexpected `plan` diffs outside approved change windows or when object version hashes diverge from the latest Git commit metadata.
+- **Stale credentials:** monitor failed authentication attempts, IAM access key age, and Azure AD token expiry so dormant or compromised principals are rotated automatically.
+- **Unauthorised access:** detect manual downloads, unlock operations, or bucket configuration edits executed by non-automation identities.
+
+Automated responses—revoking temporary credentials, quarantining affected service accounts, or forcing state re-locking—should be orchestrated through run tasks or cloud-native automation so anomalous activity is contained before deployment failures occur (Sources [16](33_references.md#source-16) and [20](33_references.md#source-20)).
+
+#### Key rotation and dependency continuity playbook
+
+Key rotation is often deferred because teams fear downtime. A documented playbook mitigates that risk and aligns with the vendor guidance on secure Terraform operations (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), [19](33_references.md#source-19), and [20](33_references.md#source-20)):
+
+1. **Prepare the new key material:** generate or schedule a new customer-managed key in KMS, Azure Key Vault, or Cloud KMS, tagging it with rotation metadata and associating it with the automation identities.
+2. **Update backend configuration under version control:** raise a pull request that swaps the key identifiers in the shared backend module and includes automated tests to confirm `terraform init` succeeds in a disposable workspace.
+3. **Execute staged rollout:** apply the updated module to non-production workspaces, validating that state re-encryption completes and dependent services (for example, pipeline agents or Terraform Cloud workspaces) can still acquire locks.
+4. **Promote to production with guarded windows:** once telemetry confirms healthy operations, merge the change and trigger production runs, monitoring SIEM alerts for unexpected access denials.
+5. **Retire the previous key:** after successful rollout, schedule deactivation of the old key material with an agreed grace period for break-glass recovery, and update the key inventory catalogue so compliance reports reflect the new key IDs.
+
+Because the backend definitions live alongside the rest of the architecture code, these rotations can be rehearsed in ephemeral environments and executed without downtime, while audit trails demonstrate compliance with supervisory expectations.
 
 ## Network security and micro-segmentation
 
