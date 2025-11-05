@@ -81,7 +81,7 @@ jobs:
               --title "Draft: Issue #$ISSUE_NUMBER – $ISSUE_TITLE" \
               --body "This draft PR was automatically created for this issue.
 
-              Closes #$ISSUE_NUMBER" \
+Closes #$ISSUE_NUMBER" \
               --draft \
               --repo "$REPO")
             PR_NUMBER=$(gh pr view "$BRANCH" --json number --jq .number --repo "$REPO")
