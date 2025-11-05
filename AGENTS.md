@@ -115,6 +115,7 @@ Several specialized automation bots monitor GitHub issues and trigger workflows 
 | Developer Bot | `.github/workflows/developer-bot.yml` | `dev` (case-insensitive) |
 | Designer Bot | `.github/workflows/designer-bot.yml` | `design` (case-insensitive) |
 | Editor Bot | `.github/workflows/editor-bot.yml` | `documentation` (case-insensitive) |
+| Mermaid Designer Bot | `.github/workflows/mermaid-designer-bot.yml` | `mermaid`, `diagram` (case-insensitive) |
 | QA Bot | `.github/workflows/qa-bot.yml` | `qa` (case-insensitive) |
 | Requirements Bot | `.github/workflows/requirements-bot.yml` | `req` (case-insensitive) |
 
