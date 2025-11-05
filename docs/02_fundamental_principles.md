@@ -95,7 +95,7 @@ These automated checks create a safety net that detects architectural inconsiste
 
 Architecture as Code teams adopt explicit branching strategies that balance agility with governance (Sources [3], [4]):
 
-- **Trunk-based guardrails**: Teams keeping architecture definitions on a single `main` branch create short-lived feature branches whenever strategic decisions evolve. Mandatory reviewers include at least one architect and one delivery engineer, while continuous integration pipelines render Structurizr diagrams, execute policy-as-code tests, and trigger the documentation workflow described in [Chapter 22](22_documentation_vs_architecture.md). This combination means a pull request cannot merge until the architecture DSL, executable policies, and accompanying narrative stay aligned, reducing the drift scenarios highlighted earlier in this chapter.
+- **Trunk-based guardrails**: Teams keeping architecture definitions on a single `main` branch create short-lived feature branches whenever strategic decisions evolve. Mandatory reviewers include at least one architect and one delivery engineer, while continuous integration pipelines render Structurizr diagrams, execute policy-as-code tests, and trigger the documentation workflow described in [Chapter 22](22_documentation_vs_architecture.md). This combination means a pull request cannot merge until the architecture DSL, executable policies, and accompanying narrative stay aligned, reducing the drift scenarios detailed later in this chapter.
 
   **Example workflow:**
   ```bash
