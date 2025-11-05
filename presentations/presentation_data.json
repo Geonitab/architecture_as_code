@@ -1,0 +1,1238 @@
+[
+  {
+    "type": "front_matter",
+    "file": "00_front_cover.md",
+    "front_matter": {
+      "title": "Architecture as Code",
+      "subtitle": "Front Cover",
+      "key_points": [],
+      "notes": "Architecture as Code",
+      "focus_keyword": "Front Cover"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_a_foundations.md",
+    "part": {
+      "title": "Part A: Foundations {#part-a-foundations}",
+      "label": "Part A",
+      "description": "Introduces the core principles, terminology and documentation conventions used throughout the book.",
+      "key_points": [
+        "Introduces the core principles, terminology and documentation conventions used throughout the book"
+      ],
+      "notes": "Part A: Foundations {#part-a-foundations}\n\nIntroduces the core principles, terminology and documentation conventions used throughout the book.\n\nHighlights:\n- Introduces the core principles, terminology and documentation conventions used throughout the book",
+      "focus_keyword": "Part A"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "01_introduction.md",
+    "chapter": {
+      "title": "Introduction to Architecture as Code {#introduction}",
+      "key_points": [
+        "Traditional methods for system architecture have often been manual and document-based",
+        "The tipping point for most organisations adopting Architecture as Code is the complexity created by large-scale microservice estates",
+        "Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code",
+        "Traditional architecture practices have struggled with \"slideware syndrome\"—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational...",
+        "Architecture as Code is not a linear process but an interconnected ecosystem where different aspects reinforce and validate each other",
+        "This book is aimed at system architects, developers, project managers, and IT decision-makers who want to understand and implement Architecture...",
+        "This book follows a deliberate progression that mirrors the typical Architecture as Code transformation journey:",
+        "The *Architecture as Code* course workbook, exercise guide, and facilitator materials in `course/` extend this book into a practised learning..."
+      ],
+      "diagram_path": "docs/images/diagram_01_introduction.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_01_introduction.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Introduction to Architecture as Code {#introduction}\n\nHighlights:\n- Traditional methods for system architecture have often been manual and document-based\n- The tipping point for most organisations adopting Architecture as Code is the complexity created by large-scale microservice estates\n- Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code\n- Traditional architecture practices have struggled with \"slideware syndrome\"—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational...\n- Architecture as Code is not a linear process but an interconnected ecosystem where different aspects reinforce and validate each other\n- This book is aimed at system architects, developers, project managers, and IT decision-makers who want to understand and implement Architecture...\n- This book follows a deliberate progression that mirrors the typical Architecture as Code transformation journey:\n- The *Architecture as Code* course workbook, exercise guide, and facilitator materials in `course/` extend this book into a practised learning...\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 1",
+      "area": "Foundations",
+      "focus_keyword": "Foundations",
+      "identifier": "01_introduction.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "02_fundamental_principles.md",
+    "chapter": {
+      "title": "Fundamental Principles of Architecture as Code {#fundamental-principles}",
+      "key_points": [
+        "The declarative approach in Architecture as Code describes the desired system state at every level – from application components to...",
+        "Architecture as Code embraces the full system ecosystem through a holistic lens",
+        "The foundational principles manifest through a staged adoption journey",
+        "Delivering Architecture as Code as a single source of truth (SSOT) demands shared responsibilities across interfaces",
+        "The principle of immutable architecture keeps the entire system architecture under control through immutable components",
+        "Architecture as Code enables testing of the entire system architecture, not only individual components",
+        "Documentation as Code (DaC) treats documentation as an integrated part of the codebase rather than a separate artefact",
+        "Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and..."
+      ],
+      "diagram_path": "docs/images/diagram_02_chapter1.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_02_chapter1.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Chapter 1 - Illustrates process flows and system workflows"
+      },
+      "notes": "Fundamental Principles of Architecture as Code {#fundamental-principles}\n\nHighlights:\n- The declarative approach in Architecture as Code describes the desired system state at every level – from application components to...\n- Architecture as Code embraces the full system ecosystem through a holistic lens\n- The foundational principles manifest through a staged adoption journey\n- Delivering Architecture as Code as a single source of truth (SSOT) demands shared responsibilities across interfaces\n- The principle of immutable architecture keeps the entire system architecture under control through immutable components\n- Architecture as Code enables testing of the entire system architecture, not only individual components\n- Documentation as Code (DaC) treats documentation as an integrated part of the codebase rather than a separate artefact\n- Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and...\n\nDiagram type: Flowchart\nDiagram: Chapter 1 - Illustrates process flows and system workflows",
+      "label": "Chapter 2",
+      "area": "Foundations",
+      "focus_keyword": "Foundations",
+      "identifier": "02_fundamental_principles.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "03_version_control.md",
+    "chapter": {
+      "title": "Version Control and Code Structure {#version-control}",
+      "key_points": [
+        "Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members",
+        "A well-organised code structure is crucial for maintainability and collaboration in larger Architecture as Code projects",
+        "Version control systems, particularly Git integrated with platforms like GitHub, provide fundamental transparency mechanisms for Architecture as Code initiatives",
+        "Automation and CI/CD enablers for version control and code structure {#version-control}",
+        "Cost optimisation and scalability guidance for version control and code structure {#version-control}"
+      ],
+      "diagram_path": "docs/images/diagram_03_chapter2.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_03_chapter2.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Chapter 2 - Illustrates process flows and system workflows"
+      },
+      "notes": "Version Control and Code Structure {#version-control}\n\nHighlights:\n- Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members\n- A well-organised code structure is crucial for maintainability and collaboration in larger Architecture as Code projects\n- Version control systems, particularly Git integrated with platforms like GitHub, provide fundamental transparency mechanisms for Architecture as Code initiatives\n- Automation and CI/CD enablers for version control and code structure {#version-control}\n- Cost optimisation and scalability guidance for version control and code structure {#version-control}\n\nDiagram type: Flowchart\nDiagram: Chapter 2 - Illustrates process flows and system workflows",
+      "label": "Chapter 3",
+      "area": "Foundations",
+      "focus_keyword": "Foundations",
+      "identifier": "03_version_control.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "04_adr.md",
+    "chapter": {
+      "title": "Architecture Decision Records (ADR) {#adr}",
+      "key_points": [
+        "The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting...",
+        "Architecture Decision Records are short text documents that capture important architecture decisions together with their context and consequences",
+        "*Figure 4",
+        "Architecture as Code principles within this domain:",
+        "Several tools facilitate the creation and management of ADRs:",
+        "ADRs play a central role in the Architecture as Code methodology by documenting design decisions that are then implemented as...",
+        "The ADR methodology supports compliance requirements through structured documentation that enables:",
+        "The ADR methodology is continuously evolving with the integration of new tools and processes:",
+        "The modern Architecture as Code methodology represents the future of infrastructure management",
+        "With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical..."
+      ],
+      "diagram_path": "docs/images/diagram_04_adr_process.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_04_adr_process.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "related_backlog_items:"
+      },
+      "notes": "Architecture Decision Records (ADR) {#adr}\n\nHighlights:\n- The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting...\n- Architecture Decision Records are short text documents that capture important architecture decisions together with their context and consequences\n- *Figure 4\n- Architecture as Code principles within this domain:\n- Several tools facilitate the creation and management of ADRs:\n- ADRs play a central role in the Architecture as Code methodology by documenting design decisions that are then implemented as...\n- The ADR methodology supports compliance requirements through structured documentation that enables:\n- The ADR methodology is continuously evolving with the integration of new tools and processes:\n- The modern Architecture as Code methodology represents the future of infrastructure management\n- With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical...\n\nDiagram type: Flowchart\nrelated_backlog_items:",
+      "label": "Chapter 4",
+      "area": "Foundations",
+      "focus_keyword": "Foundations",
+      "identifier": "04_adr.md"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_b_platform.md",
+    "part": {
+      "title": "Part B: Architecture Platform {#part-b-platform}",
+      "label": "Part B",
+      "description": "Frames the technical building blocks and automation capabilities that underpin Architecture as Code delivery.",
+      "key_points": [
+        "Frames the technical building blocks and automation capabilities that underpin Architecture as Code delivery"
+      ],
+      "notes": "Part B: Architecture Platform {#part-b-platform}\n\nFrames the technical building blocks and automation capabilities that underpin Architecture as Code delivery.\n\nHighlights:\n- Frames the technical building blocks and automation capabilities that underpin Architecture as Code delivery",
+      "focus_keyword": "Part B"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "05_automation_devops_cicd.md",
+    "chapter": {
+      "title": "Automation, DevOps and CI/CD for Architecture as Code {#automation-devops-cicd}",
+      "key_points": [
+        "Architecture as Code defines the opinionated standards, architectural policies, and lifecycle guardrails that automation must enforce, while Infrastructure as Code...",
+        "Continuous integration and continuous deployment are more than technical processes",
+        "Architecture as Code extends DevOps practices beyond application delivery and into the management of entire architectures",
+        "Organisations operating in regulated environments face complex requirements when implementing CI/CD pipelines for Architecture as Code",
+        "Architecture as Code CI/CD pipelines differ from traditional pipelines because they handle multiple interconnected architectural domains simultaneously",
+        "Effective CI/CD pipelines for Architecture as Code are built on design principles that optimise speed, safety, and observability",
+        "Maintaining Architecture as Code assets demands continuous assurance that automation remains trustworthy",
+        "Multi-level testing strategies for Architecture as Code comprise syntax validation, unit testing of modules, integration testing of components, and system...",
+        "Architecture as Code requires testing strategies that extend beyond traditional infrastructure or application testing",
+        "CI/CD pipelines can integrate with cost estimation tools like Infracost to provide visibility into infrastructure spending before deployment"
+      ],
+      "diagram_path": "docs/images/diagram_04_chapter3.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_04_chapter3.mmd",
+        "type": "unknown",
+        "purpose": null,
+        "explanation": "Diagram: Chapter 3 - Highlights a key architecture concept"
+      },
+      "notes": "Automation, DevOps and CI/CD for Architecture as Code {#automation-devops-cicd}\n\nHighlights:\n- Architecture as Code defines the opinionated standards, architectural policies, and lifecycle guardrails that automation must enforce, while Infrastructure as Code...\n- Continuous integration and continuous deployment are more than technical processes\n- Architecture as Code extends DevOps practices beyond application delivery and into the management of entire architectures\n- Organisations operating in regulated environments face complex requirements when implementing CI/CD pipelines for Architecture as Code\n- Architecture as Code CI/CD pipelines differ from traditional pipelines because they handle multiple interconnected architectural domains simultaneously\n- Effective CI/CD pipelines for Architecture as Code are built on design principles that optimise speed, safety, and observability\n- Maintaining Architecture as Code assets demands continuous assurance that automation remains trustworthy\n- Multi-level testing strategies for Architecture as Code comprise syntax validation, unit testing of modules, integration testing of components, and system...\n- Architecture as Code requires testing strategies that extend beyond traditional infrastructure or application testing\n- CI/CD pipelines can integrate with cost estimation tools like Infracost to provide visibility into infrastructure spending before deployment\n\nDiagram type: unknown\nDiagram: Chapter 3 - Highlights a key architecture concept",
+      "label": "Chapter 5",
+      "area": "Architecture Platform",
+      "focus_keyword": "Architecture Platform",
+      "identifier": "05_automation_devops_cicd.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "06_structurizr.md",
+    "chapter": {
+      "title": "Structurizr: Architecture Modeling as Code {#structurizr}",
+      "key_points": [
+        "Structurizr is a collection of tooling that enables software architecture to be defined as code using the C4 model (Context,...",
+        "Before diving into Structurizr itself, understanding the C4 model is essential as it forms the conceptual foundation for all Structurizr...",
+        "The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models",
+        "Structurizr supports different deployment models:",
+        "To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions descri",
+        "Automating architecture documentation ensures diagrams stay synchronised with code changes",
+        "Show different perspectives of the same model:",
+        "Store the DSL file in version control alongside code:",
+        "| Aspect | Structurizr | Draw",
+        "**Problem**: Auto-layout doesn't always produce ideal diagrams"
+      ],
+      "diagram_path": "docs/images/diagram_06_structurizr_overview.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_06_structurizr_overview.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Structurizr: Architecture Modeling as Code {#structurizr}\n\nHighlights:\n- Structurizr is a collection of tooling that enables software architecture to be defined as code using the C4 model (Context,...\n- Before diving into Structurizr itself, understanding the C4 model is essential as it forms the conceptual foundation for all Structurizr...\n- The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models\n- Structurizr supports different deployment models:\n- To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions descri\n- Automating architecture documentation ensures diagrams stay synchronised with code changes\n- Show different perspectives of the same model:\n- Store the DSL file in version control alongside code:\n- | Aspect | Structurizr | Draw\n- **Problem**: Auto-layout doesn't always produce ideal diagrams\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 6",
+      "area": "Architecture Platform",
+      "focus_keyword": "Architecture Platform",
+      "identifier": "06_structurizr.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "07_containerisation.md",
+    "chapter": {
+      "title": "Containerisation and Orchestration as Code {#containerisation}",
+      "key_points": [
+        "The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report (Source [7]) confirms that distributed architectures are now...",
+        "Containers package an application together with its libraries and runtime dependencies inside isolated units",
+        "Kubernetes has become the canonical orchestration layer thanks to its declarative design and expansive ecosystem",
+        "Service meshes such as Istio and Linkerd introduce a programmable data plane that handles inter-service communication, observability, and security concerns",
+        "Kubernetes-native automation frameworks extend the platform to cover underlying infrastructure",
+        "Container platforms remain maintainable only if every manifest is validated before it reaches production",
+        "Reconciliation loops highlight when the declared state diverges from the cluster, but proactive drift detection is still essential for maintainability",
+        "Bringing these guard rails together requires disciplined integration with the wider CI/CD toolchain",
+        "Stateful workloads still rely on robust storage",
+        "Architecture as Code provides a common language for development, operations, and security teams"
+      ],
+      "diagram_path": "docs/images/diagram_11_chapter10.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_11_chapter10.mmd",
+        "type": "unknown",
+        "purpose": null,
+        "explanation": "Diagram: Chapter 10 - Highlights a key architecture concept"
+      },
+      "notes": "Containerisation and Orchestration as Code {#containerisation}\n\nHighlights:\n- The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report (Source [7]) confirms that distributed architectures are now...\n- Containers package an application together with its libraries and runtime dependencies inside isolated units\n- Kubernetes has become the canonical orchestration layer thanks to its declarative design and expansive ecosystem\n- Service meshes such as Istio and Linkerd introduce a programmable data plane that handles inter-service communication, observability, and security concerns\n- Kubernetes-native automation frameworks extend the platform to cover underlying infrastructure\n- Container platforms remain maintainable only if every manifest is validated before it reaches production\n- Reconciliation loops highlight when the declared state diverges from the cluster, but proactive drift detection is still essential for maintainability\n- Bringing these guard rails together requires disciplined integration with the wider CI/CD toolchain\n- Stateful workloads still rely on robust storage\n- Architecture as Code provides a common language for development, operations, and security teams\n\nDiagram type: unknown\nDiagram: Chapter 10 - Highlights a key architecture concept",
+      "label": "Chapter 7",
+      "area": "Architecture Platform",
+      "focus_keyword": "Architecture Platform",
+      "identifier": "07_containerisation.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "08_microservices.md",
+    "chapter": {
+      "title": "Microservices Architecture as Code {#microservices}",
+      "key_points": [
+        "Microservices architectures decompose business capabilities into independent services that can be planned, deployed, and evolved without synchronising every change across...",
+        "Treat each microservice as a bounded context with a clearly defined purpose, data contract, and operational envelope",
+        "A reference repository might include:",
+        "Architecture as Code enables platform teams to encode networking standards once and distribute them to every service",
+        "Collect metrics, traces, and logs into a shared telemetry platform",
+        "Many organisations evolve from monoliths or service-oriented architectures",
+        "Microservices amplify organisational agility when paired with disciplined automation",
+        "- [Cloud Native Computing Foundation – *State of Cloud Native Development 2024*](33_references"
+      ],
+      "diagram_path": "docs/images/diagram_08_chapter7.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_08_chapter7.mmd",
+        "type": "unknown",
+        "purpose": null,
+        "explanation": "Diagram: Chapter 7 - Highlights a key architecture concept"
+      },
+      "notes": "Microservices Architecture as Code {#microservices}\n\nHighlights:\n- Microservices architectures decompose business capabilities into independent services that can be planned, deployed, and evolved without synchronising every change across...\n- Treat each microservice as a bounded context with a clearly defined purpose, data contract, and operational envelope\n- A reference repository might include:\n- Architecture as Code enables platform teams to encode networking standards once and distribute them to every service\n- Collect metrics, traces, and logs into a shared telemetry platform\n- Many organisations evolve from monoliths or service-oriented architectures\n- Microservices amplify organisational agility when paired with disciplined automation\n- - [Cloud Native Computing Foundation – *State of Cloud Native Development 2024*](33_references\n\nDiagram type: unknown\nDiagram: Chapter 7 - Highlights a key architecture concept",
+      "label": "Chapter 8",
+      "area": "Architecture Platform",
+      "focus_keyword": "Architecture Platform",
+      "identifier": "08_microservices.md"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_c_security.md",
+    "part": {
+      "title": "Part C: Security and Governance {#part-c-security}",
+      "label": "Part C",
+      "description": "Highlights the security, policy and governance priorities carried across the subsequent chapters.",
+      "key_points": [
+        "Highlights the security, policy and governance priorities carried across the subsequent chapters"
+      ],
+      "notes": "Part C: Security and Governance {#part-c-security}\n\nHighlights the security, policy and governance priorities carried across the subsequent chapters.\n\nHighlights:\n- Highlights the security, policy and governance priorities carried across the subsequent chapters",
+      "focus_keyword": "Part C"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "09_security_fundamentals.md",
+    "chapter": {
+      "title": "Security Fundamentals for Architecture as Code {#security-fundamentals}",
+      "key_points": [
+        "*The overview mind map illustrates the four main dimensions of security in Architecture as Code: Threat Modeling, Zero Trust Architecture,...",
+        "The security challenges facing contemporary digital enterprises demand a fundamental reassessment of traditional defensive pract",
+        "Traditional security philosophies relied on a clear boundary between the \"inside\" and \"outside\" of the enterprise",
+        "Traditional governance relies on manual processes, document-heavy policies, and human-controlled safeguards",
+        "Modern distributed architectures multiply the number of secrets compared with monolithic systems",
+        "Perimeter-led network security is unsuitable for cloud-native deployments where applications span multiple networks, data centre",
+        "Security maturity assessments provide structured frameworks for measuring current posture and prioritising investment",
+        "- NIST"
+      ],
+      "diagram_path": "docs/images/diagram_06_chapter5.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_06_chapter5.mmd",
+        "type": "unknown",
+        "purpose": null,
+        "explanation": "Diagram: Chapter 5 - Highlights a key architecture concept"
+      },
+      "notes": "Security Fundamentals for Architecture as Code {#security-fundamentals}\n\nHighlights:\n- *The overview mind map illustrates the four main dimensions of security in Architecture as Code: Threat Modeling, Zero Trust Architecture,...\n- The security challenges facing contemporary digital enterprises demand a fundamental reassessment of traditional defensive pract\n- Traditional security philosophies relied on a clear boundary between the \"inside\" and \"outside\" of the enterprise\n- Traditional governance relies on manual processes, document-heavy policies, and human-controlled safeguards\n- Modern distributed architectures multiply the number of secrets compared with monolithic systems\n- Perimeter-led network security is unsuitable for cloud-native deployments where applications span multiple networks, data centre\n- Security maturity assessments provide structured frameworks for measuring current posture and prioritising investment\n- - NIST\n\nDiagram type: unknown\nDiagram: Chapter 5 - Highlights a key architecture concept",
+      "label": "Chapter 9",
+      "area": "Security and Governance",
+      "focus_keyword": "Security and Governance",
+      "identifier": "09_security_fundamentals.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "09b_security_patterns.md",
+    "chapter": {
+      "title": "Advanced Security Patterns and Implementation {#security-patterns}",
+      "key_points": [
+        "Modern enterprises require orchestrated security operations to manage the volume and speed of contemporary threats",
+        "State backends hold the canonical inventory for every deployed component and therefore demand layered protection",
+        "Quantum-ready cryptography, AI-enhanced security tooling, and privacy-preserving computation will shape the next decade of securi",
+        "European enterprises should align security investments with regulatory duties, the evolving threat landscape, and transformation objectives",
+        "Architecture as Code represents the future of infrastructure management for European organisations",
+        "- NIST"
+      ],
+      "diagram_path": "docs/images/diagram_06_chapter5.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_06_chapter5.mmd",
+        "type": "unknown",
+        "purpose": null,
+        "explanation": "Diagram: Chapter 5 - Highlights a key architecture concept"
+      },
+      "notes": "Advanced Security Patterns and Implementation {#security-patterns}\n\nHighlights:\n- Modern enterprises require orchestrated security operations to manage the volume and speed of contemporary threats\n- State backends hold the canonical inventory for every deployed component and therefore demand layered protection\n- Quantum-ready cryptography, AI-enhanced security tooling, and privacy-preserving computation will shape the next decade of securi\n- European enterprises should align security investments with regulatory duties, the evolving threat landscape, and transformation objectives\n- Architecture as Code represents the future of infrastructure management for European organisations\n- - NIST\n\nDiagram type: unknown\nDiagram: Chapter 5 - Highlights a key architecture concept",
+      "label": "Chapter 9B",
+      "area": "Security and Governance",
+      "focus_keyword": "Security and Governance",
+      "identifier": "09b_security_patterns.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "09c_risk_and_threat_as_code.md",
+    "chapter": {
+      "title": "Risk as Code and Threat Handling as Code {#risk-and-threat-as-code}",
+      "key_points": [
+        "Architecture as Code programmes already encode infrastructure, policy, and security controls",
+        "Structure risk definitions as declarative YAML or JSON documents that capture context, probability, impact, and ownership",
+        "Threat handling begins by ingesting intelligence feeds in structured formats like STIX/TAXII",
+        "- **Pull request templates** require authors to link risk IDs and threat model references for each change, ensuring architectural adjustments...",
+        "- **Ownership:** Assign product-aligned risk stewards who approve updates via code reviews, ensuring accountability remains close to the delivery teams"
+      ],
+      "diagram_path": null,
+      "diagram_metadata": {
+        "type": "Architecture diagram",
+        "purpose": "Highlights a key architecture concept",
+        "source": "Architecture as Code diagrams",
+        "explanation": "Diagram: Highlights a key architecture concept"
+      },
+      "notes": "Risk as Code and Threat Handling as Code {#risk-and-threat-as-code}\n\nHighlights:\n- Architecture as Code programmes already encode infrastructure, policy, and security controls\n- Structure risk definitions as declarative YAML or JSON documents that capture context, probability, impact, and ownership\n- Threat handling begins by ingesting intelligence feeds in structured formats like STIX/TAXII\n- - **Pull request templates** require authors to link risk IDs and threat model references for each change, ensuring architectural adjustments...\n- - **Ownership:** Assign product-aligned risk stewards who approve updates via code reviews, ensuring accountability remains close to the delivery teams",
+      "label": "Chapter 9C",
+      "area": "Security and Governance",
+      "focus_keyword": "Security and Governance",
+      "identifier": "09c_risk_and_threat_as_code.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "10_policy_and_security.md",
+    "chapter": {
+      "title": "Policy and Security as Code in Detail {#policy-and-security}",
+      "key_points": [
+        "European organisations operate in some of the world's most demanding regulatory environments",
+        "Security automation in modern enterprises has matured through four distinct phases",
+        "*Figure 10",
+        "OPA has become the de facto standard for policy automation thanks to its lightweight deployment model and expressive Rego language",
+        "While OPA ensures policies are enforced, OSCAL standardises how controls, evidence, and assessment data are described",
+        "Policy-as-code catalogues embody the **assure once, comply many** mindset introduced in [Governance as Code](11_governance_as_code",
+        "Successful PaC programmes blend technology with process change",
+        "- PaC transforms governance from a periodic activity into a continuous safety net that keeps pace with daily releases"
+      ],
+      "diagram_path": "docs/images/diagram_10_policy_lifecycle.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_10_policy_lifecycle.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Policy and Security as Code in Detail {#policy-and-security}\n\nHighlights:\n- European organisations operate in some of the world's most demanding regulatory environments\n- Security automation in modern enterprises has matured through four distinct phases\n- *Figure 10\n- OPA has become the de facto standard for policy automation thanks to its lightweight deployment model and expressive Rego language\n- While OPA ensures policies are enforced, OSCAL standardises how controls, evidence, and assessment data are described\n- Policy-as-code catalogues embody the **assure once, comply many** mindset introduced in [Governance as Code](11_governance_as_code\n- Successful PaC programmes blend technology with process change\n- - PaC transforms governance from a periodic activity into a continuous safety net that keeps pace with daily releases\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 10",
+      "area": "Security and Governance",
+      "focus_keyword": "Security and Governance",
+      "identifier": "10_policy_and_security.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "11_governance_as_code.md",
+    "chapter": {
+      "title": "Governance as Code {#governance-as-code}",
+      "key_points": [
+        "Figure 11",
+        "Designing branching strategies for governance artefacts keeps each state explicit",
+        "Successful adoption begins with mapping existing responsibilities to the new repository roles",
+        "Empowering non-developers starts with approachable policy editors that generate Rego, Sentinel, or similar policy languages from guided forms",
+        "Governance as Code modernises policy management by placing guardrails alongside the systems they protect",
+        "Delivery teams can now translate the guidance across [Security Fundamentals](09_security_fundamentals",
+        "- [GitHub Docs – About protected branches](https://docs"
+      ],
+      "diagram_path": "docs/images/diagram_11_governance_pipeline.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_11_governance_pipeline.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Governance as Code {#governance-as-code}\n\nHighlights:\n- Figure 11\n- Designing branching strategies for governance artefacts keeps each state explicit\n- Successful adoption begins with mapping existing responsibilities to the new repository roles\n- Empowering non-developers starts with approachable policy editors that generate Rego, Sentinel, or similar policy languages from guided forms\n- Governance as Code modernises policy management by placing guardrails alongside the systems they protect\n- Delivery teams can now translate the guidance across [Security Fundamentals](09_security_fundamentals\n- - [GitHub Docs – About protected branches](https://docs\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 11",
+      "area": "Security and Governance",
+      "focus_keyword": "Security and Governance",
+      "identifier": "11_governance_as_code.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "12_compliance.md",
+    "chapter": {
+      "title": "Compliance and Regulatory Adherence {#compliance}",
+      "key_points": [
+        "*Figure 12",
+        "*Figure 12",
+        "Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures",
+        "*Figure 12",
+        "The following topics outline emerging areas that influence long-term compliance strategy",
+        "Modern Architecture as Code practices provide the repeatability, transparency, and evidence management demanded by regulators",
+        "With security controls, policy frameworks, and compliance mechanisms established, we now shift focus to the practical delivery and operational excellence...",
+        "- IEEE Computer Society"
+      ],
+      "diagram_path": "docs/images/diagram_12_compliance.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_12_compliance.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Compliance and Regulatory Adherence {#compliance}\n\nHighlights:\n- *Figure 12\n- *Figure 12\n- Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures\n- *Figure 12\n- The following topics outline emerging areas that influence long-term compliance strategy\n- Modern Architecture as Code practices provide the repeatability, transparency, and evidence management demanded by regulators\n- With security controls, policy frameworks, and compliance mechanisms established, we now shift focus to the practical delivery and operational excellence...\n- - IEEE Computer Society\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 12",
+      "area": "Security and Governance",
+      "focus_keyword": "Security and Governance",
+      "identifier": "12_compliance.md"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_d_delivery.md",
+    "part": {
+      "title": "Part D: Delivery and Operations {#part-d-delivery}",
+      "label": "Part D",
+      "description": "Defines the delivery, testing and operational expectations for executing Architecture as Code.",
+      "key_points": [
+        "Defines the delivery, testing and operational expectations for executing Architecture as Code"
+      ],
+      "notes": "Part D: Delivery and Operations {#part-d-delivery}\n\nDefines the delivery, testing and operational expectations for executing Architecture as Code.\n\nHighlights:\n- Defines the delivery, testing and operational expectations for executing Architecture as Code",
+      "focus_keyword": "Part D"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "13_testing_strategies.md",
+    "chapter": {
+      "title": "Testing Strategies for Infrastructure as Code {#testing-strategies}",
+      "key_points": [
+        "Testing codified infrastructure differs fundamentally from traditional software testing by focusing on architectural configuration, resource compatibility and environmental consistency rather...",
+        "Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure",
+        "Vitest is a modern testing framework built for the Vite ecosystem that offers fast and effective testing of JavaScript/TypeScript code",
+        "Integration testing for Infrastructure as Code verifies that different infrastructure components function together correctly and that deployed infrastructure meets performance...",
+        "Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls",
+        "Performance testing for Infrastructure as Code focuses on validation of infrastructure capacity, response times and resource utilisation under various load...",
+        "*Figure 13",
+        "*See Appendix A, Listing 13-I for a comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data...",
+        "*See Appendix A, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies,...",
+        "*See Appendix A, Listing 13-L for a comprehensive GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis, unit testing,..."
+      ],
+      "diagram_path": "docs/images/diagram_13_test_pyramid.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_13_test_pyramid.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Testing Strategies for Infrastructure as Code {#testing-strategies}\n\nHighlights:\n- Testing codified infrastructure differs fundamentally from traditional software testing by focusing on architectural configuration, resource compatibility and environmental consistency rather...\n- Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure\n- Vitest is a modern testing framework built for the Vite ecosystem that offers fast and effective testing of JavaScript/TypeScript code\n- Integration testing for Infrastructure as Code verifies that different infrastructure components function together correctly and that deployed infrastructure meets performance...\n- Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls\n- Performance testing for Infrastructure as Code focuses on validation of infrastructure capacity, response times and resource utilisation under various load...\n- *Figure 13\n- *See Appendix A, Listing 13-I for a comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data...\n- *See Appendix A, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies,...\n- *See Appendix A, Listing 13-L for a comprehensive GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis, unit testing,...\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 13",
+      "area": "Delivery and Operations",
+      "focus_keyword": "Delivery and Operations",
+      "identifier": "13_testing_strategies.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "14_practical_implementation.md",
+    "chapter": {
+      "title": "Architecture as Code in Practice {#practical-implementation}",
+      "key_points": [
+        "Successful Architecture as Code adoption progresses through clearly defined stages: establishing a shared vision, delivering a pilot, hardening operations, and...",
+        "Selecting the Architecture as Code toolchain is about more than feature parity",
+        "Architecture as Code’s quality promise depends on the infrastructure layer being as testable as the application stack",
+        "Curating a maintainable Architecture as Code practice requires governance controls that make quality gates non-negotiable",
+        "Security-first thinking embeds identity, secrets handling, and audit controls into every artefact",
+        "| Challenge | Root Cause | Mitigation Strategy | Best Practices |",
+        "Enterprise-scale deployments blend multi-account cloud strategies with on-premises integrations and regulated workload protections",
+        "Practical adoption benefits from curated, real-world examples that teams can inspect before tailoring their own automation",
+        "Architecture as Code in practice requires disciplined planning, collaborative execution, and relentless optimisation",
+        "- HashiCorp"
+      ],
+      "diagram_path": "docs/images/diagram_15_chapter14.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_15_chapter14.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "*Figure 14.1 – Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over..."
+      },
+      "notes": "Architecture as Code in Practice {#practical-implementation}\n\nHighlights:\n- Successful Architecture as Code adoption progresses through clearly defined stages: establishing a shared vision, delivering a pilot, hardening operations, and...\n- Selecting the Architecture as Code toolchain is about more than feature parity\n- Architecture as Code’s quality promise depends on the infrastructure layer being as testable as the application stack\n- Curating a maintainable Architecture as Code practice requires governance controls that make quality gates non-negotiable\n- Security-first thinking embeds identity, secrets handling, and audit controls into every artefact\n- | Challenge | Root Cause | Mitigation Strategy | Best Practices |\n- Enterprise-scale deployments blend multi-account cloud strategies with on-premises integrations and regulated workload protections\n- Practical adoption benefits from curated, real-world examples that teams can inspect before tailoring their own automation\n- Architecture as Code in practice requires disciplined planning, collaborative execution, and relentless optimisation\n- - HashiCorp\n\nDiagram type: Flowchart\n*Figure 14.1 – Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over...",
+      "label": "Chapter 14",
+      "area": "Delivery and Operations",
+      "focus_keyword": "Delivery and Operations",
+      "identifier": "14_practical_implementation.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "15_evidence_as_code.md",
+    "chapter": {
+      "title": "Evidence as Code {#evidence-as-code}",
+      "key_points": [
+        "Evidence as Code systems collect machine-readable outputs—policy evaluation reports, Terraform plans, cloud configuration snapshots, build logs—directly from delivery pipelines",
+        "The following pseudo-CI configuration shows how one control—the enforcement of multi-factor authentication for human identities—produces artefacts that downstream reporting systems...",
+        "[Governance as Code](11_governance_as_code",
+        "Automation and CI/CD enablers for evidence as code {#evidence-as-code}",
+        "Cost optimisation and scalability guidance for evidence as code {#evidence-as-code}"
+      ],
+      "diagram_path": null,
+      "diagram_metadata": {
+        "type": "Architecture diagram",
+        "purpose": "Highlights a key architecture concept",
+        "source": "Architecture as Code diagrams",
+        "explanation": "Diagram: Highlights a key architecture concept"
+      },
+      "notes": "Evidence as Code {#evidence-as-code}\n\nHighlights:\n- Evidence as Code systems collect machine-readable outputs—policy evaluation reports, Terraform plans, cloud configuration snapshots, build logs—directly from delivery pipelines\n- The following pseudo-CI configuration shows how one control—the enforcement of multi-factor authentication for human identities—produces artefacts that downstream reporting systems...\n- [Governance as Code](11_governance_as_code\n- Automation and CI/CD enablers for evidence as code {#evidence-as-code}\n- Cost optimisation and scalability guidance for evidence as code {#evidence-as-code}",
+      "label": "Chapter 15A",
+      "area": "Delivery and Operations",
+      "focus_keyword": "Delivery and Operations",
+      "identifier": "15_evidence_as_code.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "15_cost_optimization.md",
+    "chapter": {
+      "title": "Cost Optimisation and Resource Management {#cost-optimization}",
+      "key_points": [
+        "Cost optimisation forms a critical component in Architecture as Code implementations, particularly when organisations migrate to cloud-based solutions",
+        "*The FinOps cycle illustrates the continuous process of cost governance, from allocation and budgeting to policy management and optimisation",
+        "Automatic resource scaling forms the core of cost-effective Architecture as Code",
+        "*This diagram shows the cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems",
+        "Multi-cloud strategies complicate cost optimisation but also offer opportunities for cost arbitrage between different providers",
+        "To implement cost-aware infrastructure with Terraform, a structured approach is needed that combines budget management, cost allocation tagging, and intelligent...",
+        "The modern Architecture as Code methodology represents the future for infrastructure management in EU organisations",
+        "- AWS"
+      ],
+      "diagram_path": "docs/images/diagram_16_chapter15.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_16_chapter15.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Chapter 15 - Illustrates process flows and system workflows"
+      },
+      "notes": "Cost Optimisation and Resource Management {#cost-optimization}\n\nHighlights:\n- Cost optimisation forms a critical component in Architecture as Code implementations, particularly when organisations migrate to cloud-based solutions\n- *The FinOps cycle illustrates the continuous process of cost governance, from allocation and budgeting to policy management and optimisation\n- Automatic resource scaling forms the core of cost-effective Architecture as Code\n- *This diagram shows the cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems\n- Multi-cloud strategies complicate cost optimisation but also offer opportunities for cost arbitrage between different providers\n- To implement cost-aware infrastructure with Terraform, a structured approach is needed that combines budget management, cost allocation tagging, and intelligent...\n- The modern Architecture as Code methodology represents the future for infrastructure management in EU organisations\n- - AWS\n\nDiagram type: Flowchart\nDiagram: Chapter 15 - Illustrates process flows and system workflows",
+      "label": "Chapter 15B",
+      "area": "Delivery and Operations",
+      "focus_keyword": "Delivery and Operations",
+      "identifier": "15_cost_optimization.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "16_migration.md",
+    "chapter": {
+      "title": "Migration from Traditional Infrastructure {#migration}",
+      "key_points": [
+        "Migration from traditional, manually configured infrastructure to Architecture as Code represents one of the most critical transformations for modern IT...",
+        "Comprehensive infrastructure assessment forms the foundation for successful Architecture as Code migration",
+        "| Migration Strategy | Description | Benefits | Challenges | Best Suited For |",
+        "Infrastructure inventory automation through tools such as Terraform import, CloudFormation drift detection and Azure Resource Manager templates enables systematic conversion...",
+        "Skills development programs must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows",
+        "The comprehensive automation playbook for assessing unmanaged infrastructure resources and orchestrating their migration into a codified estate now resides in...",
+        "The modern Architecture as Code methodology represents the future of infrastructure management for global organisations",
+        "Technical migration success depends fundamentally on organisational readiness",
+        "- AWS"
+      ],
+      "diagram_path": "docs/images/diagram_18_chapter16.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_18_chapter16.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Chapter 16 - Illustrates process flows and system workflows"
+      },
+      "notes": "Migration from Traditional Infrastructure {#migration}\n\nHighlights:\n- Migration from traditional, manually configured infrastructure to Architecture as Code represents one of the most critical transformations for modern IT...\n- Comprehensive infrastructure assessment forms the foundation for successful Architecture as Code migration\n- | Migration Strategy | Description | Benefits | Challenges | Best Suited For |\n- Infrastructure inventory automation through tools such as Terraform import, CloudFormation drift detection and Azure Resource Manager templates enables systematic conversion...\n- Skills development programs must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows\n- The comprehensive automation playbook for assessing unmanaged infrastructure resources and orchestrating their migration into a codified estate now resides in...\n- The modern Architecture as Code methodology represents the future of infrastructure management for global organisations\n- Technical migration success depends fundamentally on organisational readiness\n- - AWS\n\nDiagram type: Flowchart\nDiagram: Chapter 16 - Illustrates process flows and system workflows",
+      "label": "Chapter 16",
+      "area": "Delivery and Operations",
+      "focus_keyword": "Delivery and Operations",
+      "identifier": "16_migration.md"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_e_leadership.md",
+    "part": {
+      "title": "Part E: Organisation and Leadership {#part-e-leadership}",
+      "label": "Part E",
+      "description": "Positions the organisational, leadership and cultural mindset necessary for sustained adoption.",
+      "key_points": [
+        "Positions the organisational, leadership and cultural mindset necessary for sustained adoption"
+      ],
+      "notes": "Part E: Organisation and Leadership {#part-e-leadership}\n\nPositions the organisational, leadership and cultural mindset necessary for sustained adoption.\n\nHighlights:\n- Positions the organisational, leadership and cultural mindset necessary for sustained adoption",
+      "focus_keyword": "Part E"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "17_organisational_change.md",
+    "chapter": {
+      "title": "Organisational Change and Team Structures {#organisational-change}",
+      "key_points": [
+        "DevOps practices create the social contract that allows infrastructure and application specialists to move at the same tempo",
+        "Moving beyond traditional organisational silos requires deliberate structural changes",
+        "Initial enthusiasm for Architecture as Code often fades once teams confront the practical challenges of managing state, debugging drift, and...",
+        "Architecture as Code blurs traditional boundaries between development, operations, and infrastructure management",
+        "Transformation initiatives that focus solely on technology adoption whilst ignoring human factors consistently underdeliver",
+        "Transformation programmes that lack clear success criteria drift aimlessly or claim victory prematurely based on activity metrics rather than outcomes",
+        "Architecture as Code succeeds when organisations invest equally in people, process, and technology",
+        "- Puppet"
+      ],
+      "diagram_path": "docs/images/diagram_17_transformation_journey.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_17_transformation_journey.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Organisational Change and Team Structures {#organisational-change}\n\nHighlights:\n- DevOps practices create the social contract that allows infrastructure and application specialists to move at the same tempo\n- Moving beyond traditional organisational silos requires deliberate structural changes\n- Initial enthusiasm for Architecture as Code often fades once teams confront the practical challenges of managing state, debugging drift, and...\n- Architecture as Code blurs traditional boundaries between development, operations, and infrastructure management\n- Transformation initiatives that focus solely on technology adoption whilst ignoring human factors consistently underdeliver\n- Transformation programmes that lack clear success criteria drift aimlessly or claim victory prematurely based on activity metrics rather than outcomes\n- Architecture as Code succeeds when organisations invest equally in people, process, and technology\n- - Puppet\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 17",
+      "area": "Organisation and Leadership",
+      "focus_keyword": "Organisation and Leadership",
+      "identifier": "17_organisational_change.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "18_team_structure.md",
+    "chapter": {
+      "title": "Team Structure and Competency Development for Architecture as Code {#team-structure}",
+      "key_points": [
+        "Traditional organisational charts that separate development, testing, and operations create silos which hinder Architecture as Code practices",
+        "Architecture as Code specialists blend system engineering, software craftsmanship, and cloud fluency",
+        "Structured learning programmes combine theory, labs, and mentoring to accelerate capability building",
+        "Architecture as Code thrives when infrastructure is treated as a product",
+        "Documented runbooks, architecture decision records, troubleshooting guides, and curated repositories form the knowledge backbone for Architecture as Code",
+        "Clear technical career pathways help specialists envision advancement from associate automation engineers to senior architects",
+        "Architecture as Code succeeds when teams evolve their operating model alongside their tooling",
+        "- Gene Kim, Jez Humble, Patrick Debois, John Willis"
+      ],
+      "diagram_path": "docs/images/diagram_18_team_collaboration.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_18_team_collaboration.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Team Structure and Competency Development for Architecture as Code {#team-structure}\n\nHighlights:\n- Traditional organisational charts that separate development, testing, and operations create silos which hinder Architecture as Code practices\n- Architecture as Code specialists blend system engineering, software craftsmanship, and cloud fluency\n- Structured learning programmes combine theory, labs, and mentoring to accelerate capability building\n- Architecture as Code thrives when infrastructure is treated as a product\n- Documented runbooks, architecture decision records, troubleshooting guides, and curated repositories form the knowledge backbone for Architecture as Code\n- Clear technical career pathways help specialists envision advancement from associate automation engineers to senior architects\n- Architecture as Code succeeds when teams evolve their operating model alongside their tooling\n- - Gene Kim, Jez Humble, Patrick Debois, John Willis\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 18",
+      "area": "Organisation and Leadership",
+      "focus_keyword": "Organisation and Leadership",
+      "identifier": "18_team_structure.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "19_management_as_code.md",
+    "chapter": {
+      "title": "Management as Code {#management-as-code}",
+      "key_points": [
+        "Management as Code (MaC) extends the well-established principles of Infrastructure as Code and Architecture as Code into the realm of...",
+        "At its core, MaC is the systematic translation of management artefacts into reproducible code",
+        "Fully code-based organisations share a set of principles that underpin MaC",
+        "A DevOps loop is often depicted as a continuous cycle: plan, code, build, test, release, deploy, operate, observe, and feed...",
+        "MaC provides a robust foundation for governance-as-code, where leadership rules are implemented as automated checks",
+        "GitHub is a natural home for MaC artefacts due to its robust collaboration features",
+        "Fully codified environments rely on automated change management, and MaC keeps leadership in the loop without reintroducing bottlenecks",
+        "Transparency is a cornerstone principle of Architecture as Code and Management as Code practices",
+        "Budgeting as Code (BaC) is a crucial subset of MaC",
+        "Competence development becomes more effective when treated as code"
+      ],
+      "diagram_path": "docs/images/diagram_19_mac_operating_model.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_19_mac_operating_model.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Management as Code {#management-as-code}\n\nHighlights:\n- Management as Code (MaC) extends the well-established principles of Infrastructure as Code and Architecture as Code into the realm of...\n- At its core, MaC is the systematic translation of management artefacts into reproducible code\n- Fully code-based organisations share a set of principles that underpin MaC\n- A DevOps loop is often depicted as a continuous cycle: plan, code, build, test, release, deploy, operate, observe, and feed...\n- MaC provides a robust foundation for governance-as-code, where leadership rules are implemented as automated checks\n- GitHub is a natural home for MaC artefacts due to its robust collaboration features\n- Fully codified environments rely on automated change management, and MaC keeps leadership in the loop without reintroducing bottlenecks\n- Transparency is a cornerstone principle of Architecture as Code and Management as Code practices\n- Budgeting as Code (BaC) is a crucial subset of MaC\n- Competence development becomes more effective when treated as code\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 19",
+      "area": "Organisation and Leadership",
+      "focus_keyword": "Organisation and Leadership",
+      "identifier": "19_management_as_code.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "20_ai_agent_team.md",
+    "chapter": {
+      "title": "AI Agent Team for the Architecture as Code Initiative {#ai-agent-team}",
+      "key_points": [
+        "The operating model begins with the project owner defining priorities and acceptable outcomes",
+        "The Project Manager acts as the coordinating nucleus",
+        "The agent collective maintains living cases that accumulate insights whenever two or more specialists exchange information",
+        "Sprint rituals anchor collaboration",
+        "- [GitHub Docs – About protected branches](https://docs"
+      ],
+      "diagram_path": "docs/images/diagram_28_agent_team.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_28_agent_team.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "AI Agent Team for the Architecture as Code Initiative {#ai-agent-team}\n\nHighlights:\n- The operating model begins with the project owner defining priorities and acceptable outcomes\n- The Project Manager acts as the coordinating nucleus\n- The agent collective maintains living cases that accumulate insights whenever two or more specialists exchange information\n- Sprint rituals anchor collaboration\n- - [GitHub Docs – About protected branches](https://docs\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 20",
+      "area": "Organisation and Leadership",
+      "focus_keyword": "Organisation and Leadership",
+      "identifier": "20_ai_agent_team.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "21_digitalisation.md",
+    "chapter": {
+      "title": "Digital Transformation through Code-Based Infrastructure {#digitalisation}",
+      "key_points": [
+        "*Figure 21",
+        "Digital transformation represents more than the introduction of new technology—it embodies a fundamental shift in how organisations deliver value to...",
+        "Organisations across the European Union have developed strong positions within cloud technology, driven by ambitious digitalisation goals across public and...",
+        "Organisations worldwide are undergoing comprehensive digital transformation processes",
+        "Practical examples in this chapter illustrate how a European enterprise can orchestrate cross-provider infrastructure and governance without sacrificing compliance",
+        "Digital transformation through code-based infrastructure represents a fundamental shift in how organisations deliver IT services and create business value",
+        "The organisational transformation explored in this part—from [changing team structures](17_organisational_change",
+        "- Gartner"
+      ],
+      "diagram_path": "docs/images/diagram_21_digitalisation_process.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_21_digitalisation_process.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Digital Transformation through Code-Based Infrastructure {#digitalisation}\n\nHighlights:\n- *Figure 21\n- Digital transformation represents more than the introduction of new technology—it embodies a fundamental shift in how organisations deliver value to...\n- Organisations across the European Union have developed strong positions within cloud technology, driven by ambitious digitalisation goals across public and...\n- Organisations worldwide are undergoing comprehensive digital transformation processes\n- Practical examples in this chapter illustrate how a European enterprise can orchestrate cross-provider infrastructure and governance without sacrificing compliance\n- Digital transformation through code-based infrastructure represents a fundamental shift in how organisations deliver IT services and create business value\n- The organisational transformation explored in this part—from [changing team structures](17_organisational_change\n- - Gartner\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 21",
+      "area": "Organisation and Leadership",
+      "focus_keyword": "Organisation and Leadership",
+      "identifier": "21_digitalisation.md"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_f_practices.md",
+    "part": {
+      "title": "Part F: Experience and Best Practices {#part-f-practices .unnumbered}",
+      "label": "Part F",
+      "description": "Sets the context for experience reports and cross-disciplinary lessons that follow.",
+      "key_points": [
+        "Sets the context for experience reports and cross-disciplinary lessons that follow"
+      ],
+      "notes": "Part F: Experience and Best Practices {#part-f-practices .unnumbered}\n\nSets the context for experience reports and cross-disciplinary lessons that follow.\n\nHighlights:\n- Sets the context for experience reports and cross-disciplinary lessons that follow",
+      "focus_keyword": "Part F"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "22_documentation_vs_architecture.md",
+    "chapter": {
+      "title": "Documentation as Code vs Architecture as Code {#documentation-vs-architecture}",
+      "key_points": [
+        "Although Documentation as Code (DaC) and Architecture as Code (AaC) share similar principles—version control, automation, and treating artefacts as code—they...",
+        "Documentation as Code treats documentation as a first-class artefact within the codebase",
+        "The distinction between Documentation as Code and Architecture as Code becomes particularly clear when examining the tools each discipline employs",
+        "| Aspect | Documentation as Code | Architecture as Code |",
+        "While distinct, Documentation as Code and Architecture as Code are complementary disciplines that reinforce each other:",
+        "Use Documentation as Code when the goal is to:",
+        "Documentation as Code and Architecture as Code are complementary disciplines that serve different but equally important purposes",
+        "- FINOS"
+      ],
+      "diagram_path": "docs/images/diagram_22_doc_vs_arch.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_22_doc_vs_arch.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Documentation as Code vs Architecture as Code {#documentation-vs-architecture}\n\nHighlights:\n- Although Documentation as Code (DaC) and Architecture as Code (AaC) share similar principles—version control, automation, and treating artefacts as code—they...\n- Documentation as Code treats documentation as a first-class artefact within the codebase\n- The distinction between Documentation as Code and Architecture as Code becomes particularly clear when examining the tools each discipline employs\n- | Aspect | Documentation as Code | Architecture as Code |\n- While distinct, Documentation as Code and Architecture as Code are complementary disciplines that reinforce each other:\n- Use Documentation as Code when the goal is to:\n- Documentation as Code and Architecture as Code are complementary disciplines that serve different but equally important purposes\n- - FINOS\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 22",
+      "area": "Experience and Best Practices",
+      "focus_keyword": "Experience and Best Practices",
+      "identifier": "22_documentation_vs_architecture.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "23_soft_as_code_interplay.md",
+    "chapter": {
+      "title": "The Interplay Between Soft \"as code\" Disciplines {#soft-as-code-interplay}",
+      "key_points": [
+        "For years, the phrase \"as code\" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and...",
+        "Even though the disciplines address different problem spaces, they share a common DNA",
+        "Compliance as code focuses on translating regulations, standards, and internal policies into codified controls",
+        "Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code",
+        "Documentation as code is about writing, storing, and publishing documentation with the same toolchain used for other code",
+        "To capture the full spectrum of soft artifacts we can also include knowledge as code and culture as code",
+        "Introducing several soft \"as code\" disciplines in parallel generates effects that exceed the value of any single initiative",
+        "The interplay between soft \"as code\" disciplines is powerful but also demanding",
+        "To make the interplay more tangible, consider a few practical scenarios:",
+        "Organisations seeking to establish a cohesive ecosystem of soft \"as code\" disciplines can follow these strategies:"
+      ],
+      "diagram_path": "docs/images/diagram_23_soft_as_code.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_23_soft_as_code.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "The Interplay Between Soft \"as code\" Disciplines {#soft-as-code-interplay}\n\nHighlights:\n- For years, the phrase \"as code\" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and...\n- Even though the disciplines address different problem spaces, they share a common DNA\n- Compliance as code focuses on translating regulations, standards, and internal policies into codified controls\n- Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code\n- Documentation as code is about writing, storing, and publishing documentation with the same toolchain used for other code\n- To capture the full spectrum of soft artifacts we can also include knowledge as code and culture as code\n- Introducing several soft \"as code\" disciplines in parallel generates effects that exceed the value of any single initiative\n- The interplay between soft \"as code\" disciplines is powerful but also demanding\n- To make the interplay more tangible, consider a few practical scenarios:\n- Organisations seeking to establish a cohesive ecosystem of soft \"as code\" disciplines can follow these strategies:\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 23",
+      "area": "Experience and Best Practices",
+      "focus_keyword": "Experience and Best Practices",
+      "identifier": "23_soft_as_code_interplay.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "24_best_practices.md",
+    "chapter": {
+      "title": "Modern Best Practices and Lessons Learned {#best-practices}",
+      "key_points": [
+        "The following mind maps present the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements...",
+        "Establishing an orderly codebase is the first visible signal of a mature Architecture as Code programme",
+        "Security-first thinking remains essential in every jurisdiction",
+        "Performance management spans more than compute tuning; it also considers carbon intensity, customer experience, and business continuity",
+        "Effective governance empowers delivery teams rather than restricting them",
+        "Architecture as Code success depends on multidisciplinary teams who understand both tooling and the business outcomes it supports",
+        "Tooling choices influence agility, security posture, and total cost of ownership",
+        "Architecture teams thrive when diagrams and narrative assets share the same governance standards as application code",
+        "Risk management integrates technical safeguards with business continuity planning so that infrastructure disruption does not cascade into customer harm",
+        "Sharing knowledge accelerates improvement across the industry while reinforcing an organisation’s own learning culture"
+      ],
+      "diagram_path": "docs/images/diagram_22_continuous_improvement.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_22_continuous_improvement.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Modern Best Practices and Lessons Learned {#best-practices}\n\nHighlights:\n- The following mind maps present the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements...\n- Establishing an orderly codebase is the first visible signal of a mature Architecture as Code programme\n- Security-first thinking remains essential in every jurisdiction\n- Performance management spans more than compute tuning; it also considers carbon intensity, customer experience, and business continuity\n- Effective governance empowers delivery teams rather than restricting them\n- Architecture as Code success depends on multidisciplinary teams who understand both tooling and the business outcomes it supports\n- Tooling choices influence agility, security posture, and total cost of ownership\n- Architecture teams thrive when diagrams and narrative assets share the same governance standards as application code\n- Risk management integrates technical safeguards with business continuity planning so that infrastructure disruption does not cascade into customer harm\n- Sharing knowledge accelerates improvement across the industry while reinforcing an organisation’s own learning culture\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 24",
+      "area": "Experience and Best Practices",
+      "focus_keyword": "Experience and Best Practices",
+      "identifier": "24_best_practices.md"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_g_future.md",
+    "part": {
+      "title": "Part G: Future and Wrap-up {#part-g-future}",
+      "label": "Part G",
+      "description": "Prepares readers for the forward-looking guidance, anti-patterns and concluding themes.",
+      "key_points": [
+        "Prepares readers for the forward-looking guidance, anti-patterns and concluding themes"
+      ],
+      "notes": "Part G: Future and Wrap-up {#part-g-future}\n\nPrepares readers for the forward-looking guidance, anti-patterns and concluding themes.\n\nHighlights:\n- Prepares readers for the forward-looking guidance, anti-patterns and concluding themes",
+      "focus_keyword": "Part G"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "25_future_trends.md",
+    "chapter": {
+      "title": "Future Trends and Development in Architecture as Code {#future-trends}",
+      "key_points": [
+        "Architecture as Code stands at the threshold of comprehensive transformation driven by advances in artificial intelligence, quantum research, distributed infrastructure,...",
+        "Artificial intelligence transforms reactive infrastructure into proactive ecosystems",
+        "Platform engineering is evolving into a distinct discipline that provides curated experiences, reliable self-service capabilities, and compliant pathways for delivering...",
+        "FinOps practices are maturing in parallel with technical automation",
+        "GitOps principles continue to expand beyond continuous delivery",
+        "Zero-trust principles are becoming default assumptions",
+        "Future-ready organisations adopt remote-first and hybrid operating models supported by cloud-native collaboration tools",
+        "Serverless computing is expanding beyond stateless functions into container-based services, event-driven automation, and managed data stores that eliminate much of...",
+        "Digital sovereignty is gaining prominence as organisations seek control over data residency, privacy, and supply-chain risk",
+        "Preparing for the future requires investment in adaptive capabilities rather than a reliance on individual technologies"
+      ],
+      "diagram_path": null,
+      "diagram_metadata": {
+        "type": "Architecture diagram",
+        "purpose": "Highlights a key architecture concept",
+        "source": "Architecture as Code diagrams",
+        "explanation": "Diagram: Highlights a key architecture concept"
+      },
+      "notes": "Future Trends and Development in Architecture as Code {#future-trends}\n\nHighlights:\n- Architecture as Code stands at the threshold of comprehensive transformation driven by advances in artificial intelligence, quantum research, distributed infrastructure,...\n- Artificial intelligence transforms reactive infrastructure into proactive ecosystems\n- Platform engineering is evolving into a distinct discipline that provides curated experiences, reliable self-service capabilities, and compliant pathways for delivering...\n- FinOps practices are maturing in parallel with technical automation\n- GitOps principles continue to expand beyond continuous delivery\n- Zero-trust principles are becoming default assumptions\n- Future-ready organisations adopt remote-first and hybrid operating models supported by cloud-native collaboration tools\n- Serverless computing is expanding beyond stateless functions into container-based services, event-driven automation, and managed data stores that eliminate much of...\n- Digital sovereignty is gaining prominence as organisations seek control over data residency, privacy, and supply-chain risk\n- Preparing for the future requires investment in adaptive capabilities rather than a reliance on individual technologies",
+      "label": "Chapter 25",
+      "area": "Future and Wrap-up",
+      "focus_keyword": "Future and Wrap-up",
+      "identifier": "25_future_trends.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "26a_prerequisites_for_aac.md",
+    "chapter": {
+      "title": "Prerequisites for Architecture as Code Adoption {#prerequisites-for-aac}",
+      "key_points": [
+        "The caution from [Chapter 14](14_practical_implementation",
+        "AaC flourishes where experimentation and shared ownership are routine",
+        "AaC assumes mastery of core delivery disciplines",
+        "Readiness depends on how knowledge is curated",
+        "Financial discipline underpins sustainable automation",
+        "AaC expands rather than replaces existing responsibilities",
+        "The technology landscape must be coherent before AaC can thrive",
+        "AaC codifies governance rather than bypassing it",
+        "Transformation succeeds when change is treated as a service",
+        "A structured readiness assessment keeps preparation honest"
+      ],
+      "diagram_path": "docs/images/diagram_17_transformation_journey.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_17_transformation_journey.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Prerequisites for Architecture as Code Adoption {#prerequisites-for-aac}\n\nHighlights:\n- The caution from [Chapter 14](14_practical_implementation\n- AaC flourishes where experimentation and shared ownership are routine\n- AaC assumes mastery of core delivery disciplines\n- Readiness depends on how knowledge is curated\n- Financial discipline underpins sustainable automation\n- AaC expands rather than replaces existing responsibilities\n- The technology landscape must be coherent before AaC can thrive\n- AaC codifies governance rather than bypassing it\n- Transformation succeeds when change is treated as a service\n- A structured readiness assessment keeps preparation honest\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 26A",
+      "area": "Future and Wrap-up",
+      "focus_keyword": "Future and Wrap-up",
+      "identifier": "26a_prerequisites_for_aac.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "26b_aac_anti_patterns.md",
+    "chapter": {
+      "title": "Anti-Patterns in Architecture as Code Programmes {#aac-anti-patterns}",
+      "key_points": [
+        "Executives sometimes assume that acquiring a single modelling or provisioning platform unlocks Architecture as Code",
+        "Organisations frequently maintain a growing list of manual policy exceptions stored in spreadsheets or email threads",
+        "Teams sometimes copy shared modules instead of contributing improvements upstream",
+        "Teams sometimes assemble elaborate custom frameworks during the pilot phase",
+        "Programmes collapse when a handful of experts hoard knowledge about the architecture repository, pipeline configuration, or approval process",
+        "Some organisations scale AaC across dozens of teams before stabilising foundational practices",
+        "Anti-patterns rarely appear overnight; they emerge gradually",
+        "When anti-patterns surface, structured responses prevent recurrence",
+        "Recognising Architecture as Code anti-patterns requires equal attention to technology, governance, culture, and sustainability",
+        "- FinOps Foundation"
+      ],
+      "diagram_path": "docs/images/diagram_26_anti_patterns.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_26_anti_patterns.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Anti-Patterns in Architecture as Code Programmes {#aac-anti-patterns}\n\nHighlights:\n- Executives sometimes assume that acquiring a single modelling or provisioning platform unlocks Architecture as Code\n- Organisations frequently maintain a growing list of manual policy exceptions stored in spreadsheets or email threads\n- Teams sometimes copy shared modules instead of contributing improvements upstream\n- Teams sometimes assemble elaborate custom frameworks during the pilot phase\n- Programmes collapse when a handful of experts hoard knowledge about the architecture repository, pipeline configuration, or approval process\n- Some organisations scale AaC across dozens of teams before stabilising foundational practices\n- Anti-patterns rarely appear overnight; they emerge gradually\n- When anti-patterns surface, structured responses prevent recurrence\n- Recognising Architecture as Code anti-patterns requires equal attention to technology, governance, culture, and sustainability\n- - FinOps Foundation\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Chapter 26B",
+      "area": "Future and Wrap-up",
+      "focus_keyword": "Future and Wrap-up",
+      "identifier": "26b_aac_anti_patterns.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "27_conclusion.md",
+    "chapter": {
+      "title": "Chapter 27 – Conclusion {#conclusion}",
+      "key_points": [
+        "Sustained success with Architecture as Code depends on the interplay between technical craft and organisational intent",
+        "The journey through this book charts a deliberate increase in sophistication: from declarative blueprints and idempotent",
+        "Operating across the European Union demands consistent stewardship of information, resilient supply chains, and ethically governed",
+        "Organisations embarking on Architecture as Code initiatives should focus on pilot programmes that demonstrate tangible value",
+        "Architecture as Code is more than a technical milestone; it represents a fundamental shift in how we design and manage..."
+      ],
+      "diagram_path": null,
+      "diagram_metadata": {
+        "type": "Architecture diagram",
+        "purpose": "Highlights a key architecture concept",
+        "source": "Architecture as Code diagrams",
+        "explanation": "Diagram: Highlights a key architecture concept"
+      },
+      "notes": "Chapter 27 – Conclusion {#conclusion}\n\nHighlights:\n- Sustained success with Architecture as Code depends on the interplay between technical craft and organisational intent\n- The journey through this book charts a deliberate increase in sophistication: from declarative blueprints and idempotent\n- Operating across the European Union demands consistent stewardship of information, resilient supply chains, and ethically governed\n- Organisations embarking on Architecture as Code initiatives should focus on pilot programmes that demonstrate tangible value\n- Architecture as Code is more than a technical milestone; it represents a fundamental shift in how we design and manage...",
+      "label": "Chapter 27",
+      "area": "Future and Wrap-up",
+      "focus_keyword": "Future and Wrap-up",
+      "identifier": "27_conclusion.md"
+    }
+  },
+  {
+    "type": "part",
+    "file": "part_h_appendices.md",
+    "part": {
+      "title": "Part H: Appendices and Reference {#part-h-appendices}",
+      "label": "Part H",
+      "description": "Introduces the appendices, technical reference architecture and citation material.",
+      "key_points": [
+        "Introduces the appendices, technical reference architecture and citation material"
+      ],
+      "notes": "Part H: Appendices and Reference {#part-h-appendices}\n\nIntroduces the appendices, technical reference architecture and citation material.\n\nHighlights:\n- Introduces the appendices, technical reference architecture and citation material",
+      "focus_keyword": "Part H"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "glossary.md",
+    "chapter": {
+      "title": "Glossary {.unnumbered} {#glossary}",
+      "key_points": [
+        "- **Start with the diagram:** The class diagram summarises how foundational Architecture as Code elements interact",
+        "| Term | Definition |",
+        "| Term | Definition |",
+        "| Term | Definition |",
+        "| Term | Definition |",
+        "| Term | Definition |",
+        "| Term | Definition |",
+        "**Multi-Cloud Strategy:** Using services from multiple providers to balance capability, resilience, and regulatory needs while avoiding lock-in",
+        "Keeping the glossary actionable requires more than prose"
+      ],
+      "diagram_path": "docs/images/diagram_23_glossary_class.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_23_glossary_class.mmd",
+        "type": "Class diagram",
+        "purpose": "Describes object relationships and system structure",
+        "explanation": "Diagram: Describes object relationships and system structure"
+      },
+      "notes": "Glossary {.unnumbered} {#glossary}\n\nHighlights:\n- - **Start with the diagram:** The class diagram summarises how foundational Architecture as Code elements interact\n- | Term | Definition |\n- | Term | Definition |\n- | Term | Definition |\n- | Term | Definition |\n- | Term | Definition |\n- | Term | Definition |\n- **Multi-Cloud Strategy:** Using services from multiple providers to balance capability, resilience, and regulatory needs while avoiding lock-in\n- Keeping the glossary actionable requires more than prose\n\nDiagram type: Class diagram\nDiagram: Describes object relationships and system structure",
+      "label": "Glossary",
+      "area": "Appendices",
+      "focus_keyword": "Appendices",
+      "identifier": "glossary.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "about_the_author.md",
+    "chapter": {
+      "title": "About the Author {.unnumbered} {#about-the-author}",
+      "key_points": [
+        "**Gunnar Nordqvist** is a self employed certified Chief Architect and IT Architect consultant associated with Kvadrat, a leading Swedish technology...",
+        "**Kvadrat** is Sweden's largest network of independent consultants (often referred to as \"egenföretagare\" or sole proprietors) dedicated to driving organizational...",
+        "> **Terminology Note:** The Swedish organisations and institutions referenced here keep their native names to preserve accuracy",
+        "This publication demonstrates Architecture as Code principles not only in its content but in its very creation",
+        "This book builds upon the outstanding work of the open source community, particularly:",
+        "This book is designed as a living resource that evolves with:",
+        "This book is distributed under terms that enable:",
+        "The journey towards Architecture as Code represents more than a technical evolution—it embodies a fundamental shift in how we conceive,..."
+      ],
+      "diagram_path": "docs/images/diagram_29_author_profile.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_29_author_profile.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "About the Author {.unnumbered} {#about-the-author}\n\nHighlights:\n- **Gunnar Nordqvist** is a self employed certified Chief Architect and IT Architect consultant associated with Kvadrat, a leading Swedish technology...\n- **Kvadrat** is Sweden's largest network of independent consultants (often referred to as \"egenföretagare\" or sole proprietors) dedicated to driving organizational...\n- > **Terminology Note:** The Swedish organisations and institutions referenced here keep their native names to preserve accuracy\n- This publication demonstrates Architecture as Code principles not only in its content but in its very creation\n- This book builds upon the outstanding work of the open source community, particularly:\n- This book is designed as a living resource that evolves with:\n- This book is distributed under terms that enable:\n- The journey towards Architecture as Code represents more than a technical evolution—it embodies a fundamental shift in how we conceive,...\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "About the Author",
+      "area": "Appendices",
+      "focus_keyword": "Appendices",
+      "identifier": "about_the_author.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "30_appendix_code_examples.md",
+    "chapter": {
+      "title": "Code examples and technical architecture as code implementations {#appendix-code-examples}",
+      "key_points": [
+        "The code examples are grouped into the following categories:",
+        "This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations",
+        "Terraform underpins many Architecture as Code transformations by codifying consistent guardrails, data residency requirements, and provider-specific integrations across estates",
+        "Architecture as Code principles in this area emphasise resilient AWS foundations and strong governance",
+        "This section contains Python scripts and other automation tooling for Architecture as Code operations",
+        "This section contains configuration files for different tools and services",
+        "This section contains comprehensive code examples referenced in Chapter 13: Testing Strategies for Infrastructure as Code",
+        "*Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change",
+        "Each code example in this appendix can be referenced from the main text using its unique identifier",
+        "The extended Terraform implementation that once appeared inline in Chapter 14 is preserved here so that readers can access the..."
+      ],
+      "diagram_path": null,
+      "diagram_metadata": {
+        "type": "Architecture diagram",
+        "purpose": "Highlights a key architecture concept",
+        "source": "Architecture as Code diagrams",
+        "explanation": "Diagram: Highlights a key architecture concept"
+      },
+      "notes": "Code examples and technical architecture as code implementations {#appendix-code-examples}\n\nHighlights:\n- The code examples are grouped into the following categories:\n- This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations\n- Terraform underpins many Architecture as Code transformations by codifying consistent guardrails, data residency requirements, and provider-specific integrations across estates\n- Architecture as Code principles in this area emphasise resilient AWS foundations and strong governance\n- This section contains Python scripts and other automation tooling for Architecture as Code operations\n- This section contains configuration files for different tools and services\n- This section contains comprehensive code examples referenced in Chapter 13: Testing Strategies for Infrastructure as Code\n- *Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change\n- Each code example in this appendix can be referenced from the main text using its unique identifier\n- The extended Terraform implementation that once appeared inline in Chapter 14 is preserved here so that readers can access the...",
+      "label": "Appendix A",
+      "area": "Appendices",
+      "focus_keyword": "Appendices",
+      "identifier": "30_appendix_code_examples.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "appendix_b_technical_architecture.md",
+    "chapter": {
+      "title": "Appendix B: Technical Architecture for Book Production {.unnumbered} {#appendix-b-technical-architecture}",
+      "key_points": [
+        "The official Architecture-as-Code (AaC) repository describes the initiative as an open-source toolkit for capturing architecture definitions as YAML and turning...",
+        "Pandoc conversion is governed by `pandoc",
+        "Architecture as Code encourages continuous evaluation of structural decisions",
+        "`build-book",
+        "`generate_presentation",
+        "The book cover is produced through an HTML/CSS design system:",
+        "The system demonstrates Architecture as Code through:",
+        "- AaC Open Source Project",
+        "The modern Architecture as Code methodology represents the future of infrastructure management in Swedish organisations"
+      ],
+      "diagram_path": "docs/images/diagram_27a_source_materials.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_27a_source_materials.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Appendix B: Technical Architecture for Book Production {.unnumbered} {#appendix-b-technical-architecture}\n\nHighlights:\n- The official Architecture-as-Code (AaC) repository describes the initiative as an open-source toolkit for capturing architecture definitions as YAML and turning...\n- Pandoc conversion is governed by `pandoc\n- Architecture as Code encourages continuous evaluation of structural decisions\n- `build-book\n- `generate_presentation\n- The book cover is produced through an HTML/CSS design system:\n- The system demonstrates Architecture as Code through:\n- - AaC Open Source Project\n- The modern Architecture as Code methodology represents the future of infrastructure management in Swedish organisations\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Appendix B",
+      "area": "Appendices",
+      "focus_keyword": "Appendices",
+      "identifier": "appendix_b_technical_architecture.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "32_finos_project_blueprint.md",
+    "chapter": {
+      "title": "FINOS Project Blueprint: Operationalising Architecture as Code {#finos-project-blueprint}",
+      "key_points": [
+        "Project Blueprint takes its cues from the end-to-end publishing workflow that powers this manuscript: a collection of markdown sources, configuration...",
+        "CALM defines the structural language that Project Blueprint adopts for architectural modelling",
+        "A blueprint cannot thrive without an organisational structure that respects both technical autonomy and shared accountability",
+        "Project Blueprint’s delivery foundation mirrors the CI/CD architecture laid out in Chapter 5",
+        "Sustained adoption depends on governance that empowers teams rather than slowing them down",
+        "Project Blueprint packages observability, reliability, and global scaling considerations so that adopters receive actionable defaults rather than abstract guidance",
+        "Implementing Project Blueprint means reusing the technical scaffolding already proven in this repository",
+        "Successful adoption mirrors the transformation journey outlined in Chapter 17: start with targeted pilots, iterate through progressive capability stages, and...",
+        "Open governance is a defining trait of FINOS initiatives, and Project Blueprint embeds that philosophy by default",
+        "Project Blueprint is ultimately a catalyst for cultural and technical convergence"
+      ],
+      "diagram_path": "docs/images/diagram_11_chapter10.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_11_chapter10.mmd",
+        "type": "unknown",
+        "purpose": null,
+        "explanation": "Diagram: Chapter 10 - Highlights a key architecture concept"
+      },
+      "notes": "FINOS Project Blueprint: Operationalising Architecture as Code {#finos-project-blueprint}\n\nHighlights:\n- Project Blueprint takes its cues from the end-to-end publishing workflow that powers this manuscript: a collection of markdown sources, configuration...\n- CALM defines the structural language that Project Blueprint adopts for architectural modelling\n- A blueprint cannot thrive without an organisational structure that respects both technical autonomy and shared accountability\n- Project Blueprint’s delivery foundation mirrors the CI/CD architecture laid out in Chapter 5\n- Sustained adoption depends on governance that empowers teams rather than slowing them down\n- Project Blueprint packages observability, reliability, and global scaling considerations so that adopters receive actionable defaults rather than abstract guidance\n- Implementing Project Blueprint means reusing the technical scaffolding already proven in this repository\n- Successful adoption mirrors the transformation journey outlined in Chapter 17: start with targeted pilots, iterate through progressive capability stages, and...\n- Open governance is a defining trait of FINOS initiatives, and Project Blueprint embeds that philosophy by default\n- Project Blueprint is ultimately a catalyst for cultural and technical convergence\n\nDiagram type: unknown\nDiagram: Chapter 10 - Highlights a key architecture concept",
+      "label": "Appendix C",
+      "area": "Appendices",
+      "focus_keyword": "Appendices",
+      "identifier": "32_finos_project_blueprint.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "architecture_as_code_maturity_model.md",
+    "chapter": {
+      "title": "Architecture as Code Maturity Model {#architecture-as-code-maturity-model}",
+      "key_points": [
+        "Modern organisations are increasingly turning to **architecture as code (AaC)** to keep systems design, security and governance aligned with rapid...",
+        "For an interactive experience that mirrors the full questionnaire and generates a downloadable radar chart, use the [Architecture as Code...",
+        "The staircase presents the progression from manually curated architecture artefacts to adaptive, AI-supported operating models",
+        "The maturity model includes the key “as code” disciplines discussed in the book:",
+        "Use the following yes/no questions to evaluate each discipline before plotting the results on a radar diagram",
+        "Architecture is documented in slide decks or static diagrams; infrastructure is provisioned manually",
+        "1",
+        "Architecture as Code is more than diagrams — it is a holistic approach that unifies infrastructure, policy, governance, documentation and...",
+        "[1]: https://github"
+      ],
+      "diagram_path": "docs/images/diagram_32_maturity_model.png",
+      "diagram_metadata": {
+        "source": "Source: diagram_32_maturity_model.mmd",
+        "type": "Flowchart",
+        "purpose": "Illustrates process flows and system workflows",
+        "explanation": "Diagram: Illustrates process flows and system workflows"
+      },
+      "notes": "Architecture as Code Maturity Model {#architecture-as-code-maturity-model}\n\nHighlights:\n- Modern organisations are increasingly turning to **architecture as code (AaC)** to keep systems design, security and governance aligned with rapid...\n- For an interactive experience that mirrors the full questionnaire and generates a downloadable radar chart, use the [Architecture as Code...\n- The staircase presents the progression from manually curated architecture artefacts to adaptive, AI-supported operating models\n- The maturity model includes the key “as code” disciplines discussed in the book:\n- Use the following yes/no questions to evaluate each discipline before plotting the results on a radar diagram\n- Architecture is documented in slide decks or static diagrams; infrastructure is provisioned manually\n- 1\n- Architecture as Code is more than diagrams — it is a holistic approach that unifies infrastructure, policy, governance, documentation and...\n- [1]: https://github\n\nDiagram type: Flowchart\nDiagram: Illustrates process flows and system workflows",
+      "label": "Appendix D",
+      "area": "Reference",
+      "focus_keyword": "Reference",
+      "identifier": "architecture_as_code_maturity_model.md"
+    }
+  },
+  {
+    "type": "chapter",
+    "file": "33_references.md",
+    "chapter": {
+      "title": "References and Sources {#references}",
+      "key_points": [
+        "- <a id=\"source-2\"></a>**Source [2]:** Thoughtworks Technology Radar",
+        "**AaC Open Source Project",
+        "**AWS",
+        "This comprehensive list ensures traceability between the book's content and its sources",
+        "Cost optimisation and scalability guidance for references and sources {#references}"
+      ],
+      "diagram_path": null,
+      "diagram_metadata": {
+        "type": "Architecture diagram",
+        "purpose": "Highlights a key architecture concept",
+        "source": "Architecture as Code diagrams",
+        "explanation": "Diagram: Highlights a key architecture concept"
+      },
+      "notes": "References and Sources {#references}\n\nHighlights:\n- - <a id=\"source-2\"></a>**Source [2]:** Thoughtworks Technology Radar\n- **AaC Open Source Project\n- **AWS\n- This comprehensive list ensures traceability between the book's content and its sources\n- Cost optimisation and scalability guidance for references and sources {#references}",
+      "label": "References",
+      "area": "Reference",
+      "focus_keyword": "Reference",
+      "identifier": "33_references.md"
+    }
+  }
+]

@@ -125,9 +125,99 @@ Performance Expectations
 	•	Book content generation: <1 second
 	•	Complete book build with diagrams: 30 seconds
 	•	Full CI/CD pipeline: 15+ minutes (due to dependency installs)
+### Presentation Generation
+
+The repository includes automated presentation generation from book chapters:
+
+```bash
+# Generate presentation materials (outline, data, script)
+python3 generate_presentation.py
+
+# Generate PowerPoint file directly (requires python-pptx)
+python3 generate_presentation.py --create-pptx
+
+# Validate diagram coverage across chapters
+python3 generate_presentation.py --validate-diagrams
+
+# Generate to release folder
+python3 generate_presentation.py --create-pptx --release
+```
+
+**Presentation Design Guidelines**:
+- All presentations must follow [PRESENTATION_DESIGN_GUIDELINES.md](docs/PRESENTATION_DESIGN_GUIDELINES.md)
+- 16:9 aspect ratio (1280×720px or 1920×1080px)
+- Kvadrat brand colours and typography (Inter font family)
+- Minimum 18pt body text for readability
+- WCAG AA colour contrast (4.5:1 minimum)
+- Hero layout (full-width diagram) or Side layout (50/50 split)
+- Maximum 20 words per bullet point
+- Diagram metadata: type label, source reference, explanation caption
+
+**Whitepaper Design Guidelines**:
+- All whitepapers must follow [WHITEPAPER_DESIGN_GUIDELINES.md](docs/WHITEPAPER_DESIGN_GUIDELINES.md)
+- A4/Letter format (210mm × 297mm) optimised for screen and print
+- Kvadrat brand colours and typography (Inter and JetBrains Mono fonts)
+- WCAG AA accessibility compliance (4.5:1 minimum contrast)
+- Semantic HTML5 with proper heading hierarchy
+- Responsive design with mobile breakpoints (min-width: 320px)
+- Professional document structure: header, book overview, chapter highlight, call-to-action
+- Version metadata and feature tags displayed prominently
+
+**Expected Outputs**:
+- `presentations/presentation_outline.md` – Structured content outline
+- `presentations/presentation_data.json` – Machine-readable presentation data
+- `presentations/generate_pptx.py` – Standalone PowerPoint generator
+- `presentations/architecture_as_code_presentation.pptx` – Final PowerPoint file (if `--create-pptx` flag used)
+
+**Validation**:
+- Run `--validate-diagrams` to check that all chapters have diagrams
+- Verify diagram type coverage (flowcharts, sequence diagrams, etc.)
+- Ensure all Mermaid `.mmd` files include Kvadrat theme configuration
+
+### Whitepaper Generation
+
+The repository includes automated whitepaper generation from book chapters:
+
+```bash
+# Generate whitepapers from all chapters
+python3 generate_whitepapers.py
+
+# Generate to release folder
+python3 generate_whitepapers.py --release
+```
+
+**Whitepaper Design Guidelines**:
+- All whitepapers must follow [WHITEPAPER_DESIGN_GUIDELINES.md](docs/WHITEPAPER_DESIGN_GUIDELINES.md)
+- A4/Letter format (210mm × 297mm) optimised for screen and print
+- Kvadrat brand colours and typography (Inter and JetBrains Mono fonts)
+- WCAG AA accessibility compliance (4.5:1 minimum contrast)
+- Semantic HTML5 with proper heading hierarchy
+- Responsive design with mobile breakpoints (min-width: 320px)
+- Professional document structure: header, book overview, chapter highlight, call-to-action
+- Version metadata and feature tags displayed prominently
+
+**Expected Outputs**:
+- `whitepapers/[chapter]_whitepaper.html` – Individual HTML whitepaper per chapter (standard location)
+- `releases/whitepapers/[chapter]_whitepaper.html` – Release-ready whitepapers (if `--release` flag used)
+
+**Document Structure**:
+- **Header**: Series badge, title, subtitle, metadata (author, date, build number), feature tags
+- **Book Overview**: Context about the source material and target audience
+- **Chapter Highlight**: 2–3 condensed paragraphs, diagram (if available), primary topics list
+- **Call to Action**: Encouragement to read full chapter with contextual links
+
+**Validation**:
+- Verify all whitepapers generate without errors
+- Check diagram paths resolve correctly
+- Confirm responsive layout on mobile devices (320px minimum width)
+- Validate HTML5 semantics and ARIA labels
+- Test print layout (page breaks, margins, readability)
+
 Critical Notes
 	•	NEVER CANCEL builds or long-running commands - Dependency installs can take 15+ minutes
 	•	Always use proper timeouts: 60+ minutes for installs, 5+ minutes for builds
 	•	Chrome dependency required: Mermaid CLI needs Chrome browser for PNG generation
 	•	British English content: All manuscript text and automation outputs are maintained in British English (e.g., "optimisation" not "optimization", "colour" not "color")
 	•	PDF generation works: Even if Mermaid fails, Pandoc will generate PDF with text placeholders
+	•	Presentation design: Follow modern best practices for visual hierarchy, cognitive load management, and accessibility (see PRESENTATION_DESIGN_GUIDELINES.md)
+	•	Whitepaper design: Follow professional documentation standards with WCAG AA compliance, responsive layouts, and semantic HTML5 (see WHITEPAPER_DESIGN_GUIDELINES.md)

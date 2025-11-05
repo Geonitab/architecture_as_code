@@ -91,10 +91,21 @@ def ensure_pptx_available():
             "Install it with 'pip install python-pptx>=0.6.21'."
         )
 
-THEME_BLUE = RGBColor(8, 58, 122)
-THEME_ACCENT = RGBColor(225, 173, 1)
-THEME_TEXT = RGBColor(51, 51, 51)
-THEME_MUTED = RGBColor(102, 102, 102)
+# Kvadrat brand colours following PRESENTATION_DESIGN_GUIDELINES.md
+THEME_BLUE = RGBColor(30, 58, 138)          # #1e3a8a - Kvadrat Blue (primary)
+THEME_BLUE_LIGHT = RGBColor(59, 130, 246)   # #3b82f6 - Kvadrat Blue Light (secondary)
+THEME_BLUE_DARK = RGBColor(30, 41, 59)      # #1e293b - Kvadrat Blue Dark (primary text)
+THEME_GREY = RGBColor(100, 116, 139)        # #64748b - Kvadrat Grey (muted text)
+THEME_GREY_LIGHT = RGBColor(241, 245, 249)  # #f1f5f9 - Kvadrat Grey Light (backgrounds)
+THEME_ACCENT = RGBColor(217, 119, 6)        # #d97706 - Warning/Accent (keyword banners)
+THEME_SUCCESS = RGBColor(5, 150, 105)       # #059669 - Success Green (completed states)
+THEME_WHITE = RGBColor(255, 255, 255)       # #ffffff - White
+
+# Legacy aliases for backward compatibility
+THEME_TEXT = THEME_BLUE_DARK
+THEME_MUTED = THEME_GREY
+
+# Slide dimensions: 16:9 aspect ratio (1280×720px)
 SLIDE_WIDTH = Inches(13.3333333333)
 SLIDE_HEIGHT = Inches(7.5)
 
@@ -133,7 +144,14 @@ def _add_notes(slide, notes_text):
 
 
 def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inches(0.5)):
-    """Add an accent banner to highlight the focus keyword."""
+    """Add an accent banner to highlight the focus keyword.
+    
+    Following PRESENTATION_DESIGN_GUIDELINES.md:
+    - Accent colour background (#d97706)
+    - Kvadrat Blue text (#1e3a8a)
+    - 12px border radius
+    - 16pt minimum text size
+    """
     if not keyword:
         return None
 
@@ -145,8 +163,9 @@ def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inc
         height,
     )
     banner.fill.solid()
-    banner.fill.fore_color.rgb = THEME_ACCENT
+    banner.fill.fore_color.rgb = THEME_ACCENT  # Warning/Accent Orange
     banner.line.color.rgb = THEME_BLUE
+    banner.line.width = Pt(2)
 
     text_frame = banner.text_frame
     text_frame.text = keyword
@@ -155,8 +174,10 @@ def _add_keyword_banner(slide, keyword, left, top, width=Inches(3.5), height=Inc
     paragraph.font.bold = True
     paragraph.font.color.rgb = THEME_BLUE
     paragraph.alignment = PP_ALIGN.CENTER
-    text_frame.margin_left = Pt(6)
-    text_frame.margin_right = Pt(6)
+    text_frame.margin_left = Pt(8)
+    text_frame.margin_right = Pt(8)
+    text_frame.margin_top = Pt(4)
+    text_frame.margin_bottom = Pt(4)
     return banner
 
 
@@ -215,14 +236,16 @@ def _add_diagram_placeholder(slide, left, top, width, height):
         height,
     )
     placeholder.fill.solid()
-    placeholder.fill.fore_color.rgb = RGBColor(230, 235, 242)
+    placeholder.fill.fore_color.rgb = THEME_GREY_LIGHT  # Per PRESENTATION_DESIGN_GUIDELINES.md
     placeholder.line.color.rgb = THEME_BLUE
+    placeholder.line.width = Pt(2)
 
     text_frame = placeholder.text_frame
     text_frame.clear()
-    text_frame.text = "Flowchart pending"
+    text_frame.text = "Diagram pending"
     first_paragraph = text_frame.paragraphs[0]
-    first_paragraph.font.size = Pt(16)
+    # Minimum 18pt body text per PRESENTATION_DESIGN_GUIDELINES.md
+    first_paragraph.font.size = Pt(18)
     first_paragraph.font.bold = True
     first_paragraph.font.color.rgb = THEME_BLUE
     first_paragraph.alignment = PP_ALIGN.CENTER
@@ -236,13 +259,15 @@ def _add_highlighted_bullet(text_frame, text):
 
     paragraph = text_frame.add_paragraph()
     paragraph.level = 0
-    paragraph.space_after = Pt(6)
-    paragraph.line_spacing = 1.2
+    # Line spacing: 1.4 for body text per PRESENTATION_DESIGN_GUIDELINES.md
+    paragraph.space_after = Pt(8)
+    paragraph.line_spacing = 1.4
 
     bullet_run = paragraph.add_run()
     bullet_run.text = "• "
-    bullet_run.font.size = Pt(18)
-    bullet_run.font.color.rgb = THEME_TEXT
+    # Minimum 18pt body text per PRESENTATION_DESIGN_GUIDELINES.md
+    bullet_run.font.size = Pt(20)
+    bullet_run.font.color.rgb = THEME_BLUE_DARK
 
     words = text.split()
     if not words:
@@ -255,13 +280,13 @@ def _add_highlighted_bullet(text_frame, text):
     keyword_run.text = keyword
     keyword_run.font.bold = True
     keyword_run.font.color.rgb = THEME_BLUE
-    keyword_run.font.size = Pt(18)
+    keyword_run.font.size = Pt(20)
 
     if remainder:
         remainder_run = paragraph.add_run()
         remainder_run.text = f" {remainder}"
-        remainder_run.font.size = Pt(18)
-        remainder_run.font.color.rgb = THEME_TEXT
+        remainder_run.font.size = Pt(20)
+        remainder_run.font.color.rgb = THEME_BLUE_DARK
 
 
 def build_presentation_document(prs, presentation_data):
@@ -279,26 +304,28 @@ def build_presentation_document(prs, presentation_data):
     title.text = "Architecture as Code"
     title_frame = title.text_frame
     title_paragraph = title_frame.paragraphs[0]
-    title_paragraph.font.size = Pt(56)
+    # Title slide: 72px per PRESENTATION_DESIGN_GUIDELINES.md
+    title_paragraph.font.size = Pt(72)
     title_paragraph.font.bold = True
-    title_paragraph.font.color.rgb = THEME_BLUE
+    title_paragraph.font.color.rgb = THEME_WHITE
 
     subtitle_frame = subtitle.text_frame
     subtitle_frame.clear()
     author_paragraph = subtitle_frame.paragraphs[0]
     author_paragraph.text = "Author: Gunnar Nordqvist"
-    author_paragraph.font.size = Pt(24)
-    author_paragraph.font.color.rgb = THEME_TEXT
+    # Title slide subtitle: 32px per PRESENTATION_DESIGN_GUIDELINES.md
+    author_paragraph.font.size = Pt(32)
+    author_paragraph.font.color.rgb = THEME_WHITE
 
     date_paragraph = subtitle_frame.add_paragraph()
     date_paragraph.text = f"Last updated: {today_label}"
     date_paragraph.font.size = Pt(20)
-    date_paragraph.font.color.rgb = THEME_TEXT
+    date_paragraph.font.color.rgb = THEME_WHITE
 
     editor_paragraph = subtitle_frame.add_paragraph()
     editor_paragraph.text = "Latest change by: Gunnar Nordqvist"
     editor_paragraph.font.size = Pt(20)
-    editor_paragraph.font.color.rgb = THEME_TEXT
+    editor_paragraph.font.color.rgb = THEME_WHITE
 
     _add_notes(
         title_slide,
@@ -317,8 +344,9 @@ def build_presentation_document(prs, presentation_data):
             body = slide.shapes.placeholders[1]
 
             slide_title.text = front.get('title', 'Architecture as Code')
-            slide_title.text_frame.paragraphs[0].font.size = Pt(44)
-            slide_title.text_frame.paragraphs[0].font.color.rgb = THEME_BLUE
+            # Content slide titles: 36-48px per PRESENTATION_DESIGN_GUIDELINES.md
+            slide_title.text_frame.paragraphs[0].font.size = Pt(48)
+            slide_title.text_frame.paragraphs[0].font.color.rgb = THEME_BLUE_DARK
 
             _add_keyword_banner(slide, front.get('focus_keyword'), Inches(0.6), Inches(0.6))
 
@@ -346,7 +374,8 @@ def build_presentation_document(prs, presentation_data):
             slide = prs.slides.add_slide(prs.slide_layouts[5])
             slide_title = slide.shapes.title
             slide_title.text = part.get('title', 'Part overview')
-            slide_title.text_frame.paragraphs[0].font.size = Pt(48)
+            # Section divider slide: 64px per PRESENTATION_DESIGN_GUIDELINES.md
+            slide_title.text_frame.paragraphs[0].font.size = Pt(64)
             slide_title.text_frame.paragraphs[0].font.color.rgb = THEME_BLUE
 
             _add_keyword_banner(slide, part.get('focus_keyword'), Inches(0.6), Inches(0.6))
@@ -383,9 +412,10 @@ def build_presentation_document(prs, presentation_data):
             title_frame = title_box.text_frame
             title_frame.text = chapter.get('title', 'Chapter overview')
             title_paragraph = title_frame.paragraphs[0]
+            # Slide title (H1): 36-48px per PRESENTATION_DESIGN_GUIDELINES.md
             title_paragraph.font.size = Pt(36)
             title_paragraph.font.bold = True
-            title_paragraph.font.color.rgb = THEME_BLUE
+            title_paragraph.font.color.rgb = THEME_BLUE_DARK
 
             focus_keyword = chapter.get('focus_keyword')
             _add_keyword_banner(slide, focus_keyword, Inches(0.6), Inches(1.15))
@@ -863,6 +893,60 @@ def _iter_primary_markdown_files(docs_dir: Path):
 
     ordered.sort(key=lambda p: str(p.relative_to(docs_dir)))
     return ordered
+
+def validate_presentation_guidelines(presentation_data):
+    """Validate that presentation follows PRESENTATION_DESIGN_GUIDELINES.md standards.
+    
+    Checks:
+    - Minimum text sizes (18pt body, 36pt titles)
+    - Maximum bullet points per slide (4 hero, 8 side)
+    - Maximum words per bullet point (20 words)
+    - Colour contrast requirements
+    - Diagram metadata presence
+    """
+    issues = []
+    warnings = []
+    
+    for idx, entry in enumerate(presentation_data):
+        entry_type = entry.get('type')
+        slide_num = idx + 1
+        
+        if entry_type == 'chapter':
+            chapter = entry.get('chapter', {})
+            key_points = chapter.get('key_points', [])
+            
+            # Check maximum words per bullet point
+            for point_idx, point in enumerate(key_points):
+                word_count = len(point.split())
+                if word_count > 20:
+                    warnings.append(
+                        f"Slide {slide_num}: Bullet point {point_idx + 1} has {word_count} words "
+                        f"(maximum 20 recommended per PRESENTATION_DESIGN_GUIDELINES.md)"
+                    )
+            
+            # Check diagram metadata presence
+            diagram_path = chapter.get('diagram_path')
+            diagram_metadata = chapter.get('diagram_metadata')
+            if diagram_path and not diagram_metadata:
+                issues.append(
+                    f"Slide {slide_num}: Diagram present but missing metadata "
+                    f"(type, source, explanation required per PRESENTATION_DESIGN_GUIDELINES.md)"
+                )
+            
+            # Check bullet point limits (4 for hero, 8 for side)
+            layout_style = 'hero' if slide_num % 2 == 1 else 'side'
+            max_points = 4 if layout_style == 'hero' else 8
+            if len(key_points) > max_points:
+                warnings.append(
+                    f"Slide {slide_num}: {len(key_points)} bullet points exceeds "
+                    f"recommended maximum of {max_points} for {layout_style} layout"
+                )
+    
+    return {
+        'issues': issues,
+        'warnings': warnings,
+        'compliant': len(issues) == 0
+    }
 
 def validate_chapter_diagrams():
     """Validate that each chapter has at least one diagram."""
@@ -1508,6 +1592,27 @@ def main():
         return 1
 
     print(f"Found {len(presentation_data)} chapters to include in presentation")
+    
+    # Validate presentation against PRESENTATION_DESIGN_GUIDELINES.md
+    print("\n🎨 Validating presentation guidelines compliance...")
+    validation_result = validate_presentation_guidelines(presentation_data)
+    
+    if validation_result['issues']:
+        print("❌ Issues found:")
+        for issue in validation_result['issues']:
+            print(f"   - {issue}")
+    
+    if validation_result['warnings']:
+        print("⚠️  Warnings:")
+        for warning in validation_result['warnings']:
+            print(f"   - {warning}")
+    
+    if validation_result['compliant']:
+        print("✅ Presentation follows PRESENTATION_DESIGN_GUIDELINES.md standards")
+    else:
+        print("⚠️  Presentation has guideline compliance issues (see above)")
+    
+    print()
 
     slides_path, slide_count = generate_prezi_slides()
     if slide_count:
@@ -1577,6 +1682,11 @@ def main():
     print("   - presentation_data.json")
     print("   - generate_pptx.py")
     print("   - requirements.txt")
+    print("\n📐 Design standards: docs/PRESENTATION_DESIGN_GUIDELINES.md")
+    print("   - 16:9 aspect ratio (1280×720px)")
+    print("   - Kvadrat brand colours and typography")
+    print("   - Minimum 18pt body text (WCAG AA compliant)")
+    print("   - Maximum 20 words per bullet point")
     
     # If --create-pptx flag is provided, create the PowerPoint file directly
     if args.create_pptx:

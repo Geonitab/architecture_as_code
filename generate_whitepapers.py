@@ -5,8 +5,21 @@ Generate whitepaper versions from book chapters.
 This script reads the markdown files from docs/ directory (without modifying them)
 and creates individual whitepaper HTML files in the whitepapers/ directory.
 
+Design Compliance:
+    All generated whitepapers follow the design standards defined in:
+    docs/WHITEPAPER_DESIGN_GUIDELINES.md
+    
+    Key features:
+    - A4/Letter format (210mm × 297mm) optimised for screen and print
+    - Kvadrat brand colours and typography (Inter and JetBrains Mono)
+    - WCAG AA accessibility compliance (4.5:1 minimum contrast)
+    - Semantic HTML5 with proper heading hierarchy
+    - Responsive design with mobile breakpoints (min-width: 320px)
+    - Professional document structure with metadata and feature tags
+
 Usage:
-    python generate_whitepapers.py
+    python generate_whitepapers.py              # Generate to whitepapers/
+    python generate_whitepapers.py --release    # Generate to releases/whitepapers/
 
 Note: This script ONLY reads from docs/ and creates files in the whitepapers/ directory.
 It should never modify any files in the docs/ directory.

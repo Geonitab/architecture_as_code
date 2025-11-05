@@ -174,6 +174,9 @@ Key workflows include:
 
 - Use the official casing **Architecture as Code** in all narrative copy, diagrams, navigation labels, and commit messages unless quoting external material with different styling.
 - Follow the full editorial rules in `docs/STYLE_GUIDE.md`, including British English spelling, tone guidance, and terminology guardrails.
+- For presentation design, adhere to `docs/PRESENTATION_DESIGN_GUIDELINES.md`, which defines modern visual standards, layout templates, accessibility requirements, and Kvadrat brand integration for all generated slide decks.
+- Use `docs/PRESENTATION_QUALITY_CHECKLIST.md` to validate presentations before distribution, ensuring compliance with design guidelines and accessibility standards.
+- For whitepaper design, follow `docs/WHITEPAPER_DESIGN_GUIDELINES.md`, which ensures professional formatting, WCAG AA accessibility compliance, responsive layouts, and consistent branding across all HTML whitepaper exports.
 
 ## 🔍 Link Verification
 
