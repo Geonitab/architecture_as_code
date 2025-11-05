@@ -89,7 +89,7 @@ Continuous integration pipelines execute architecture-specific validation before
 - **Documentation synchronisation**: Automated checks verify that prose documentation, ADRs, and diagram annotations remain aligned with architectural models, as detailed in [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)
 - **Drift detection**: Terraform `plan`, CloudFormation `drift-detection`, or Azure Resource Manager `what-if` commands compare proposed changes against current production state, surfacing any undocumented manual modifications
 
-These automated checks create a safety net that detects architectural inconsistencies before they reach production, countering the validation gap identified in the drift causes table.
+These automated checks create a safety net that detects architectural inconsistencies before they reach production, countering the validation gap that will be detailed in the drift causes table later in this chapter.
 
 **3. Version-controlled branching strategies**
 
