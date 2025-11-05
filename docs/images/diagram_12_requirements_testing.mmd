@@ -70,7 +70,7 @@ requirementDiagram
         verifymethod: test
     }
 
-    functionalRequirement resource_optimization {
+    functionalRequirement resource_optimisation {
         id: 4.1
         text: "Resource optimisation"
         risk: low
@@ -103,7 +103,7 @@ requirementDiagram
     compliance_req - contains -> audit_logging
     performance_req - contains -> auto_scaling
     performance_req - contains -> load_balancing
-    cost_req - contains -> resource_optimization
+    cost_req - contains -> resource_optimisation
 
     security_config - satisfies -> terraform_config
     network_security - satisfies -> terraform_config
@@ -111,7 +111,7 @@ requirementDiagram
     audit_logging - satisfies -> terraform_config
     auto_scaling - satisfies -> terraform_config
     load_balancing - satisfies -> terraform_config
-    resource_optimization - satisfies -> terraform_config
+    resource_optimisation - satisfies -> terraform_config
 
     security_config - verifies -> security_tests
     network_security - verifies -> security_tests
@@ -120,5 +120,5 @@ requirementDiagram
     load_balancing - verifies -> performance_tests
 
     data_protection - verifies -> compliance_scanner
-    resource_optimization - verifies -> cost_analyzer
+    resource_optimisation - verifies -> cost_analyzer
 
