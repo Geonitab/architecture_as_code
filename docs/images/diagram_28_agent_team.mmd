@@ -2,26 +2,24 @@
 flowchart TD
     PO[Project Owner]:::kv-highlight
     PM[Project Manager]:::kv-primary
-    ARCH[Architect]:::kv-accent
-    RA[Requirements Analyst]:::kv-accent
-    DES[Designer]:::kv-pattern
-    DEV[Developer]:::kv-accent
-    QC[Quality Control]:::kv-highlight
-    ED[Editor]:::kv-muted
-    GD[Graphic Designer]:::kv-elevated
+    
+    subgraph "Design Team"
+        ARCH[Architect]:::kv-accent
+        DES[Designer]:::kv-accent
+    end
+    
+    subgraph "Development Team"
+        DEV[Developer]:::kv-accent
+        QC[Quality Control]:::kv-highlight
+    end
+    
+    subgraph "Content Team"
+        ED[Editor]:::kv-muted
+    end
 
     PO --> PM
     PM --> ARCH
-    PM --> RA
-    PM --> DES
     PM --> DEV
-    PM --> QC
     PM --> ED
-    PM --> GD
-    ARCH --> PM
-    RA --> PM
-    DES --> PM
-    DEV --> PM
-    QC --> PM
-    ED --> PM
-    GD --> PM
+    ARCH --> DES
+    DEV --> QC
