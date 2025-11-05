@@ -222,7 +222,12 @@ def get_release_metadata(requirements_path: Path = Path("BOOK_REQUIREMENTS.md"))
 
 
 def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str | None:
-    """Resolve diagram path relative to the generated whitepaper location."""
+    """
+    Copy diagram to whitepaper directory and return local path.
+    
+    This ensures whitepapers are self-contained and can be distributed
+    without external dependencies on the docs/ directory structure.
+    """
     if not diagram_path:
         return None
 
@@ -232,13 +237,26 @@ def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str
 
     if not source_path.exists():
         print(f"Warning: Diagram {diagram_path} not found at {source_path}")
+        return None
 
+    # Create images subdirectory in whitepaper output location
+    images_dir = output_directory / "images"
+    images_dir.mkdir(exist_ok=True, parents=True)
+    
+    # Copy diagram to whitepaper images directory
+    dest_path = images_dir / source_path.name
     try:
-        relative_path = os.path.relpath(source_path, output_directory)
-    except ValueError:
-        relative_path = source_path.as_posix()
-
-    return Path(relative_path).as_posix()
+        shutil.copy2(source_path, dest_path)
+        # Return relative path from whitepaper HTML to copied image
+        return f"images/{source_path.name}"
+    except Exception as e:
+        print(f"Warning: Failed to copy diagram {source_path} to {dest_path}: {e}")
+        # Fallback to relative path (may not work in all contexts)
+        try:
+            relative_path = os.path.relpath(source_path, output_directory)
+            return Path(relative_path).as_posix()
+        except ValueError:
+            return source_path.as_posix()
 
 
 def get_chapter_mapping():
@@ -343,10 +361,6 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
     # Prepare content sections
     diagram_html = ""
     diagram_src = resolve_diagram_src(chapter_data.get('diagram_path'), output_directory)
-
-    if not diagram_src and chapter_data.get('diagram_path'):
-        # Fallback for unexpected path handling issues
-        diagram_src = f"../docs/{chapter_data['diagram_path']}"
 
     if diagram_src:
         diagram_html = (
