@@ -62,10 +62,128 @@ Delivering Architecture as Code as a single source of truth (SSOT) demands share
 
 Long-lived maintainability depends on storing every architectural artefact—models, ADRs, compliance policies, and supporting narratives—in version control so that the history of architectural intent travels with the codebase. GitHub's protected branch policy (Source [4]) reinforces this expectation by requiring reviews, status checks, and signed commits before architectural updates reach the canonical branch. Architecture as Code teams should treat architectural pull requests exactly like application pull requests: they run the same automated validation suites, capture rationale in review comments, and only merge when both architectural and implementation stakeholders approve the change set.
 
+#### Preventing drift through version-controlled workflow practices
+
+The drift scenarios documented earlier in this chapter—manual configuration changes, emergency patches bypassing governance, knowledge loss through turnover, and fragmented tooling—are arrested by enforceable workflow disciplines that treat architecture definitions as the single source of truth. These practices transform version control from a passive repository into an active countermeasure against regression:
+
+**1. Mandatory architectural review gates**
+
+Every change to architectural definitions must flow through pull requests that require approval from designated architecture owners and implementation stakeholders. This two-role requirement ensures both strategic intent and practical feasibility are validated before merge:
+
+```yaml
+# .github/CODEOWNERS - Enforce architectural review
+/docs/architecture/**          @architecture-team @platform-team
+/structurizr/**                @architecture-team @platform-team
+*.adr.md                       @architecture-team
+/policy/**                     @security-team @architecture-team
+```
+
+Protected branch rules enforce these review gates at the Git level, preventing any contributor—including administrators—from bypassing the governance workflow. This eliminates the emergency patch problem where urgent fixes sidestep architectural oversight.
+
+**2. Automated validation pipelines**
+
+Continuous integration pipelines execute architecture-specific validation before any pull request can merge:
+
+- **Model rendering**: Structurizr DSL and CALM models are rendered to diagrams, confirming syntax correctness and exposing unintended changes visually
+- **Policy enforcement**: Policy-as-code frameworks (OPA, Conftest, or cloud-native validators) execute architectural policies against proposed changes, blocking violations of security, compliance, or design standards
+- **Documentation synchronisation**: Automated checks verify that prose documentation, ADRs, and diagram annotations remain aligned with architectural models, as detailed in [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md)
+- **Drift detection**: Terraform `plan`, CloudFormation `drift-detection`, or Azure Resource Manager `what-if` commands compare proposed changes against current production state, surfacing any undocumented manual modifications
+
+These automated checks create a safety net that detects architectural inconsistencies before they reach production, countering the validation gap identified in the drift causes table.
+
+**3. Version-controlled branching strategies**
+
+Architecture as Code teams adopt explicit branching strategies that balance agility with governance (Sources [3], [4]):
+
 - **Trunk-based guardrails**: Teams keeping architecture definitions on a single `main` branch create short-lived feature branches whenever strategic decisions evolve. Mandatory reviewers include at least one architect and one delivery engineer, while continuous integration pipelines render Structurizr diagrams, execute policy-as-code tests, and trigger the documentation workflow described in [Chapter 22](22_documentation_vs_architecture.md). This combination means a pull request cannot merge until the architecture DSL, executable policies, and accompanying narrative stay aligned, reducing the drift scenarios highlighted earlier in this chapter.
+
+  **Example workflow:**
+  ```bash
+  # Developer creates feature branch for architectural change
+  git checkout -b feature/add-event-streaming-layer
+  
+  # Modify architecture definitions and supporting documentation
+  vim structurizr/workspace.dsl
+  vim docs/adr/0023-adopt-kafka-for-event-streaming.md
+  vim docs/architecture/event-driven-patterns.md
+  
+  # Commit with descriptive message linking to architectural decision
+  git commit -m "Add event streaming layer (ADR-0023)"
+  
+  # Push and create pull request
+  git push origin feature/add-event-streaming-layer
+  gh pr create --title "Add event streaming layer" \
+    --body "Implements ADR-0023: Adopt Kafka for event streaming"
+  
+  # CI pipeline runs:
+  # - Structurizr diagram rendering
+  # - Policy-as-code validation
+  # - Documentation link checking
+  # - ADR format validation
+  
+  # Required approvals: @architecture-team + @platform-team
+  # Only merges when all checks pass and reviews are approved
+  ```
+
 - **GitFlow with architectural release gates**: Organisations preferring GitFlow can adapt the model by storing executable architecture on the `develop` branch and promoting it through protected release branches. Each promotion bundles architecture changes with updated documentation-as-code artefacts so that release candidates include both diagrams and explanatory guides. Protected branch rules (Source [4]) enforce multi-role approvals and require the documentation pipeline to succeed before merge, ensuring programme governance has clear checkpoints even when hotfix branches exist.
 
-Pairing these Git workflows with the documentation-as-code techniques outlined in Chapter 22 keeps diagrams, prose, and architecture models synchronised. Contributors amend Structurizr or CALM models in the same change set as Mermaid diagrams and Markdown updates, and the automated checks from `docs/documentation_workflow.md` prevent divergence between the artefacts. By integrating review cadences, automation, and documentation into a single version-controlled workflow, Architecture as Code remains a living, maintainable discipline rather than a snapshot of intent.
+  **Release gate workflow:**
+  ```bash
+  # Architectural changes accumulate on develop
+  git checkout develop
+  git merge feature/add-event-streaming-layer
+  
+  # Create release candidate with architectural artefacts
+  git checkout -b release/v2.0
+  
+  # Bundle architectural documentation for release
+  npm run docs:build
+  structurizr-cli export --workspace structurizr/workspace.dsl --format plantuml
+  
+  # Release gate validation:
+  # - All ADRs referenced in release have status: accepted
+  # - Architecture diagrams exported and committed
+  # - Documentation site builds successfully
+  # - Security and compliance policies pass
+  
+  # Multi-role approval required:
+  # - Architecture owner confirms strategic alignment
+  # - Security team confirms policy compliance
+  # - Product owner confirms business value delivery
+  
+  # Merge to main only after all gates pass
+  git checkout main
+  git merge release/v2.0 --no-ff
+  git tag v2.0.0
+  ```
+
+**4. Immutable audit trails and knowledge preservation**
+
+Version control systems create immutable audit trails that counter knowledge loss from team turnover. Every architectural change is documented with:
+
+- **Commit messages** explaining the rationale and context for changes
+- **Pull request discussions** capturing design debates and trade-off decisions
+- **Linked ADRs** providing comprehensive decision records
+- **Automated commit sign-off** via GPG signatures or commit verification, ensuring non-repudiation
+
+This historical record becomes the institutional memory of the architecture, accessible to future team members without reliance on tribal knowledge or outdated wiki pages.
+
+**5. Refactoring disciplines for long-term coherence**
+
+As architectural definitions evolve, refactoring disciplines keep the codebase maintainable:
+
+- **Modular architecture boundaries**: Define clear module boundaries in architecture code, preventing cross-cutting dependencies that create maintenance burdens
+- **Incremental refactoring**: Large architectural changes are broken into incremental pull requests, each independently reviewable and testable
+- **Deprecation workflows**: Legacy architectural patterns are explicitly marked as deprecated with migration paths documented in ADRs before removal
+- **Backward compatibility gates**: Breaking changes to architectural interfaces require explicit approval and coordinated migration plans
+
+These refactoring practices, borrowed from software engineering discipline, ensure architecture code maintains long-term coherence even as the system estate grows in complexity.
+
+#### Synchronising architecture models and narrative documentation
+
+Pairing these Git workflows with the documentation-as-code techniques outlined in [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md) keeps diagrams, prose, and architecture models synchronised. Contributors amend Structurizr or CALM models in the same change set as Mermaid diagrams and Markdown updates, and the automated checks from `docs/documentation_workflow.md` prevent divergence between the artefacts.
+
+The integration of review cadences, automation, and documentation into a single version-controlled workflow transforms Architecture as Code from a static snapshot into a living, maintainable discipline. By adopting these enforceable countermeasures, teams arrest the drift causes documented in this chapter—manual changes, emergency patches, knowledge loss, fragmented tooling, and validation gaps—turning version control into an active guardian of architectural integrity.
 
 ## Immutable architecture patterns
 
