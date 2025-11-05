@@ -64,7 +64,7 @@ Long-lived maintainability depends on storing every architectural artefact—mod
 
 #### Preventing drift through version-controlled workflow practices
 
-The drift scenarios documented earlier in this chapter—manual configuration changes, emergency patches bypassing governance, knowledge loss through turnover, and fragmented tooling—are arrested by enforceable workflow disciplines that treat architecture definitions as the single source of truth. These practices transform version control from a passive repository into an active countermeasure against regression:
+The drift scenarios documented later in this chapter—manual configuration changes, emergency patches bypassing governance, knowledge loss through turnover, and fragmented tooling—are arrested by enforceable workflow disciplines that treat architecture definitions as the single source of truth. These practices transform version control from a passive repository into an active countermeasure against regression:
 
 **1. Mandatory architectural review gates**
 
