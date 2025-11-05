@@ -79,3 +79,4 @@ build/structurizr/
 
 # Puppeteer configuration (build-time only)
 puppeteer-config.json
+final-release/
