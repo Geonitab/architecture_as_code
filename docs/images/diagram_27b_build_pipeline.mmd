@@ -1,25 +1,25 @@
 graph TB
     %% Build Pipeline
     subgraph "Build Environment"
-        PYTHON[🐍 Python 3.12]
-        PANDOC[📖 Pandoc 3.1.9]
-        LATEX[📄 XeLaTeX + TeXLive]
-        CHROME[🌐 Chrome + Mermaid CLI]
+        PYTHON[Python 3.12]
+        PANDOC[Pandoc 3.1.9]
+        LATEX[XeLaTeX + TeXLive]
+        CHROME[Chrome + Mermaid CLI]
     end
     
     subgraph "Build Process"
-        GEN[🔧 Content Generation]
-        CONV[🎨 Diagram Conversion]
-        BUILD[📚 PDF Build]
-        VAL[✅ Validation]
+        GEN[Content Generation]
+        CONV[Diagram Conversion]
+        BUILD[PDF Build]
+        VAL[Validation]
     end
 
     %% Output Formats
     subgraph "Published Outputs"
-        PDF[📕 PDF Book]
-        EPUB[📱 EPUB Format]
-        HTML[🌐 HTML Pages]
-        PPTX[📊 Presentations]
+        PDF[PDF Book]
+        EPUB[EPUB Format]
+        HTML[HTML Pages]
+        PPTX[Presentations]
     end
 
     %% Build Flow
