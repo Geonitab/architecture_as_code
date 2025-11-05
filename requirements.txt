@@ -1,5 +1,5 @@
 PyYAML==6.0.1
-packaging==24.1
+packaging==25.0
 python-pptx==0.6.21
 translators==6.0.1
 pytest==8.2.1
