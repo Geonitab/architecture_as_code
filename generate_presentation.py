@@ -131,9 +131,9 @@ def configure_presentation_document(prs):
         props.created = now
 
     try:
-        props.revision = str(max(int(props.revision or "1"), 1) + 1)
-    except ValueError:
-        props.revision = "2"
+        props.revision = max(int(props.revision or 1), 1) + 1
+    except (ValueError, TypeError):
+        props.revision = 2
 
 
 def _add_notes(slide, notes_text):
