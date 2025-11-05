@@ -1,22 +1,22 @@
 sequenceDiagram
-    participant Dev as 👩‍💻<br/>Developer
-    participant Git as 📂<br/>Git Repository
-    participant CI as ⚙️<br/>CI/CD Pipeline
-    participant Rev as 👀<br/>Code Reviewer
-    participant Prod as 🚀<br/>Production
+    participant Dev as Developer
+    participant Git as Git Repository
+    participant CI as CI/CD Pipeline
+    participant Rev as Code Reviewer
+    participant Prod as Production
     
-    Dev->>Git: 📝 Push feature branch
-    Git->>CI: ⚡ Trigger tests
+    Dev->>Git: Push feature branch
+    Git->>CI: Trigger tests
     
-    Note over CI: 🛠️ Automated Checks
-    CI->>CI: ✅ Validate & Scan
-    CI->>CI: 💰 Cost estimate
+    Note over CI: Automated Checks
+    CI->>CI: Validate & Scan
+    CI->>CI: Cost estimate
     
-    CI->>Git: ✅ Tests completed
-    Dev->>Rev: 📋 Create Pull Request
+    CI->>Git: Tests completed
+    Dev->>Rev: Create Pull Request
     
-    Rev->>Git: 👀 Review & approve
+    Rev->>Git: Review & approve
     
-    Git->>CI: 🔄 Merge to main
-    CI->>Prod: 🚀 Deploy
-    Prod->>CI: ✅ Confirmed
+    Git->>CI: Merge to main
+    CI->>Prod: Deploy
+    Prod->>CI: Confirmed
