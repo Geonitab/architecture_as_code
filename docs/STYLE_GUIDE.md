@@ -42,6 +42,22 @@ The following table lists common conversions that must be applied during reviews
 - When editing Mermaid, Structurizr, or image annotations, ensure on-screen captions, callouts, and labels follow British English.
 - Regenerate images or diagrams after updating embedded text to keep rendered assets in sync.
 
+### Gantt Chart Best Practices
+When creating or updating Gantt chart diagrams:
+1. **Theme Configuration**: Always include the Kvadrat theme init block at the top of `.mmd` files:
+   ```mermaid
+   %%{init: {'theme':'base', 'themeVariables': {...}}}%%
+   ```
+2. **Colour Palette**: Use approved Kvadrat colours for consistency:
+   - Done tasks: `#1E3A8A` (Kvadrat Blue Dark) with white text `#F8FAFC`
+   - Active tasks: `#2563EB` (Kvadrat Blue) with white text `#F8FAFC`
+   - Future tasks: `#60A5FA` (Kvadrat Blue Light) with dark text `#0F172A`
+   - Backgrounds: `#E0F2FE` (Ice Blue) and `#F8FAFF` (Ice Blue Light)
+3. **Accessibility**: Ensure all text has sufficient contrast (WCAG AA minimum 4.5:1 for normal text)
+4. **Typography**: Use Inter font family matching the book's design system
+5. **British English**: Task labels must use British spelling (e.g., "Optimisation" not "Optimization")
+6. **Regeneration**: Run `npx mmdc -i <file>.mmd -o <file>.png -b transparent` after any changes
+
 ## Review Checklist
 Before submitting or approving a pull request:
 1. Re-read modified content for British spelling and consistent terminology using this guide as the reference.
