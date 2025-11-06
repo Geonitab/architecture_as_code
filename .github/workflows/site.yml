@@ -58,12 +58,13 @@ jobs:
           set -euxo pipefail
           pwd
           ls -la
-          [ -f "${{ inputs.mkdocs_config }}" ] && echo "Found ${{ inputs.mkdocs_config }}" || (echo "::error::No mkdocs.yml at ${{ inputs.mkdocs_config }}"; exit 2)
+          MKDOCS_CONFIG="${{ inputs.mkdocs_config || 'mkdocs.yml' }}"
+          [ -f "$MKDOCS_CONFIG" ] && echo "Found $MKDOCS_CONFIG" || (echo "::error::No mkdocs.yml at $MKDOCS_CONFIG"; exit 2)
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ inputs.python_version }}
+          python-version: ${{ inputs.python_version || '3.12' }}
           cache: pip
 
       - name: Bootstrap pip & wheels
@@ -92,7 +93,7 @@ jobs:
         run: |
           set -euxo pipefail
           echo "===== mkdocs.yml ====="
-          cat "${{ inputs.mkdocs_config }}"
+          cat "${{ inputs.mkdocs_config || 'mkdocs.yml' }}"
           echo "===== docs/ ====="
           ls -la docs || true
           echo "===== images/ ====="
@@ -108,7 +109,7 @@ jobs:
           python -m mkdocs build \
             --strict \
             --clean \
-            --config-file "${{ inputs.mkdocs_config }}" \
+            --config-file "${{ inputs.mkdocs_config || 'mkdocs.yml' }}" \
             --site-dir "${SITE_DIR}"
 
       - name: Upload Pages artifact (only if deploying)
