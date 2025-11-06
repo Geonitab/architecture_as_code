@@ -16,9 +16,11 @@ This document defines the design standards for all presentations generated from 
 
 ### 2. Cognitive Load Management
 - **One Message Per Slide**: Each slide should communicate a single, clear idea
-- **6×6 Rule**: Maximum 6 bullet points with 6 words each (or 20 words total per point for Architecture as Code presentations)
+- **Three Slides Per Chapter**: Each chapter is presented across three slides with max 3 points per slide
+- **30 Words Maximum**: Maximum 30 words per bullet point for Architecture as Code presentations
 - **Progressive Disclosure**: Reveal information gradually rather than overwhelming with dense slides
 - **Visual Anchors**: Use diagrams, icons, and graphics to support (not replace) spoken narrative
+- **Colour Variation**: Rotate through six accent colours (Blue, Green, Orange, Purple, Teal, Indigo) to maintain visual interest
 
 ### 3. Accessibility and Inclusivity
 - **Colour Contrast**: Minimum 4.5:1 ratio for normal text (WCAG AA standard)
@@ -234,7 +236,19 @@ Footer/Metadata:            12px / font-weight: 400 / Kvadrat Grey
 --warning:              hsl(32, 95%, 44%)     /* #d97706 */
 --error:                hsl(0, 84%, 51%)      /* #dc2626 */
 --info:                 hsl(217, 91%, 60%)    /* #3b82f6 */
+--purple:               hsl(262, 83%, 58%)    /* #7c3aed */
+--teal:                 hsl(173, 80%, 40%)    /* #14b8a6 */
+--indigo:               hsl(239, 84%, 67%)    /* #4f46e5 */
 ```
+
+### Colour Rotation for Chapter Variety
+To maintain visual interest, chapters rotate through six accent colours:
+1. **Kvadrat Blue** (`#1e3a8a`) - Classic, professional
+2. **Success Green** (`#059669`) - Growth, implementation
+3. **Warning Orange** (`#d97706`) - Attention, critical points
+4. **Purple** (`#7c3aed`) - Innovation, creativity
+5. **Teal** (`#14b8a6`) - Balance, stability
+6. **Indigo** (`#4f46e5`) - Depth, expertise
 
 ### Colour Application Guidelines
 
@@ -330,7 +344,8 @@ All Mermaid diagrams embedded in presentations must follow Kvadrat theme:
 - **Action-oriented**: Use active voice when appropriate (e.g., "Implementing CI/CD Pipelines")
 
 #### Bullet Points
-- **Maximum 20 words per point** (Architecture as Code presentations allow longer technical descriptions)
+- **Maximum 30 words per point** (Architecture as Code presentations allow technical descriptions)
+- **Maximum 3 points per slide** (ensures readability and audience engagement)
 - **Lead with keywords**: Bold the first word or phrase of each bullet
 - **Parallel structure**: Use consistent grammatical form across bullets
 - **Minimum 6-point leading**: Ensure adequate spacing between bullets
@@ -339,7 +354,8 @@ All Mermaid diagrams embedded in presentations must follow Kvadrat theme:
 - Extract from section headings and first meaningful sentence of each section
 - Exclude boilerplate text (headings, image captions, code blocks)
 - Focus on actionable insights and core concepts
-- Limit to 4 highlights for hero layouts, 8 for side layouts
+- Distribute across three slides per chapter: Overview (Slide 1), Key Insights (Slide 2), Summary (Slide 3)
+- Maximum 3 bullet points per slide (9 total points per chapter)
 
 ### Speaker Notes
 Every slide should include speaker notes with:
@@ -638,9 +654,9 @@ When Kvadrat brand guidelines change:
 
 ### Internal References
 - [STYLE_GUIDE.md](STYLE_GUIDE.md) – Editorial standards for British English
-- [BRAND_GUIDELINES.md](docs/archive/book-cover/source/BRAND_GUIDELINES.md) – Kvadrat brand identity
-- [generate_presentation.py](../generate_presentation.py) – Presentation generation script
-- [presentation-template.html](../templates/presentation-template.html) – HTML presentation template
+- [BRAND_GUIDELINES.md](archive/book-cover/source/BRAND_GUIDELINES.md) – Kvadrat brand identity
+- `generate_presentation.py` (repository root) – Presentation generation script
+- `templates/presentation-template.html` (repository root) – HTML presentation template
 
 ### External Standards
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/) – Web accessibility standards
