@@ -11,20 +11,17 @@ flowchart LR
 
     linkStyle default stroke:#0f172a,stroke-width:2px;
     subgraph Documentation_as_Code[Documentation as Code]
-        Docs[Markdown Source<br/>Repositories]:::kv-primary --> Reviews[Pull Request Reviews<br/>and Style Checks]:::kv-highlight
-        Reviews --> Publish[Static Site & PDF<br/>Publication]:::kv-accent
-        Publish --> Feedback[Reader Feedback<br/>and Issue Tracking]:::kv-muted
+        Docs[Markdown Source]:::kv-primary --> Reviews[Reviews & Checks]:::kv-highlight
+        Reviews --> Publish[Publication]:::kv-accent
     end
 
     subgraph Architecture_as_Code[Architecture as Code]
-        Models[Executable Architecture<br/>Models - CALM/DSL]:::kv-primary --> Policies[Automated Policy Checks]:::kv-highlight
-        Policies --> Provision[Provisioning & Governance<br/>Automation]:::kv-accent
-        Provision --> Telemetry[Runtime Telemetry<br/>and Drift Detection]:::kv-muted
+        Models[Architecture Models]:::kv-primary --> Policies[Policy Checks]:::kv-highlight
+        Policies --> Provision[Provisioning]:::kv-accent
     end
 
-    Feedback -.Context updates.-> Models
-    Telemetry -.Implementation evidence.-> Docs
-    Docs -.Guidance & intent.-> Models
-    Publish -.Stakeholder visibility.-> Telemetry
+    Publish -.Feedback.-> Models
+    Provision -.Evidence.-> Docs
+    Docs -.Guidance.-> Models
 
-    class Feedback,Telemetry kv-connector;
+    class Publish,Provision kv-connector;

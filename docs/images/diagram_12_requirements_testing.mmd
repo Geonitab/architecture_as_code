@@ -16,14 +16,7 @@ requirementDiagram
 
     functionalRequirement security_config {
         id: 1.1
-        text: "Encryption enabled"
-        risk: high
-        verifymethod: test
-    }
-
-    functionalRequirement network_security {
-        id: 1.2
-        text: "Network segmentation"
+        text: "Encryption & segmentation"
         risk: high
         verifymethod: test
     }
@@ -39,23 +32,16 @@ requirementDiagram
         type: "Infrastructure code"
     }
 
-    element security_tests {
-        type: "Test suite"
-    }
-
-    element compliance_scanner {
-        type: "Analysis tool"
+    element tests {
+        type: "Test & compliance tools"
     }
 
     business_req - contains -> security_config
-    business_req - contains -> network_security
     compliance_req - contains -> data_protection
 
     security_config - satisfies -> terraform_config
-    network_security - satisfies -> terraform_config
     data_protection - satisfies -> terraform_config
 
-    security_config - verifies -> security_tests
-    network_security - verifies -> security_tests
-    data_protection - verifies -> compliance_scanner
+    security_config - verifies -> tests
+    data_protection - verifies -> tests
 

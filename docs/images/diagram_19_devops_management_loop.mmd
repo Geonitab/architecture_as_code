@@ -10,16 +10,13 @@ flowchart LR
     H --> A
 
     subgraph Management Contributions
-        MA[Strategic Objectives as Code]:::kv-highlight
-        MB[Policy Automation Scripts]:::kv-highlight
-        MC[Budget Guardrails]:::kv-highlight
-        MD[Operational Dashboards]:::kv-highlight
-        ME[Adaptive Governance Rules]:::kv-highlight
+        MA[Strategic Objectives]:::kv-highlight
+        MB[Policy Automation]:::kv-highlight
+        MC[Operational Dashboards]:::kv-highlight
     end
 
     A -. consumes .-> MA
     B -. references .-> MB
-    C -. validates .-> MC
     F -. enforces .-> MB
-    G -. monitors .-> MD
-    H -. updates .-> ME
+    G -. monitors .-> MC
+    H -. updates .-> MA
