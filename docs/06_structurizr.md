@@ -299,7 +299,7 @@ This launches a local web server where you can view diagrams generated from your
 
 Organise Structurizr files alongside your codebase:
 
-```
+```text
 project/
 ├── docs/
 │   └── architecture/
@@ -840,7 +840,7 @@ workspace {
 
 Then create `docs/` folder with markdown files:
 
-```
+```text
 docs/
 ├── 01-overview.md
 ├── 02-architecture-decisions.md
@@ -862,7 +862,7 @@ workspace {
 
 Structure:
 
-```
+```text
 adrs/
 ├── 0001-use-microservices.md
 ├── 0002-event-sourcing-for-orders.md
@@ -875,7 +875,7 @@ adrs/
 
 Store the DSL file in version control alongside code:
 
-```
+```text
 ✅ Good:
 repository/
 ├── src/

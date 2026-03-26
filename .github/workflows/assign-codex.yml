@@ -1,6 +1,6 @@
 name: Auto draft PR from issue + Codex auto-fix for PRs linked to issues
 
-#on:
+on:
   issues:
     types: [opened, reopened]
   pull_request:
@@ -35,7 +35,7 @@ jobs:
         run: echo "ACTIONS_STEP_DEBUG=true" >> "$GITHUB_ENV"
 
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           persist-credentials: true
           fetch-depth: 0
@@ -156,7 +156,7 @@ jobs:
         run: echo "OK"
 
       - name: Checkout PR head branch (write access)
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           ref: ${{ env.BRANCH }}
           persist-credentials: true
@@ -277,7 +277,7 @@ jobs:
       TZ: Europe/Stockholm
     steps:
       - name: Checkout PR head (write access)
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/head
           persist-credentials: true

@@ -188,7 +188,7 @@ Several tools facilitate the creation and management of ADRs:
 
 For Architecture as Code projects, integrate ADRs into the Git repository structure:
 
-```
+```text
 docs/
 ├── adr/
 │   ├── 0001-record-architecture-decisions.md
