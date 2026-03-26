@@ -200,7 +200,7 @@ requirementDiagram
 
 Diagram files should follow this pattern:
 
-```
+```text
 diagram_[chapter]_[description].mmd
 ```
 

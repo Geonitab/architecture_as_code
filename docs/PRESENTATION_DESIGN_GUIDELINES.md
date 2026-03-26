@@ -50,7 +50,7 @@ This document defines the design standards for all presentations generated from 
 - **No header bar**: Full-screen immersive design
 
 **Example Structure**:
-```
+```text
 [Full gradient background]
   Main Title (72px bold)
   Subtitle (32px regular)
@@ -191,7 +191,7 @@ This document defines the design standards for all presentations generated from 
 - **Fallback Stack**: `'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
 
 ### Type Scale
-```
+```text
 Title Slide Main Title:     72px / font-weight: 800 / white
 Title Slide Subtitle:       32px / font-weight: 400 / white 90%
 Section Divider Title:      64px / font-weight: 700 / Kvadrat Blue

@@ -121,7 +121,7 @@ The book cover is automatically processed during the PDF build:
 3. The same cover image is used for EPUB generation
 
 ## File Structure
-```
+```text
 templates/
 └── book-cover.svg             # Single approved cover template
 

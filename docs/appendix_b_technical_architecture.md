@@ -14,7 +14,7 @@ This appendix describes the technical infrastructure and workflow that produce, 
 
 Book content is organised in 31 Markdown files within the `docs/` directory, where each file represents a chapter or appendix:
 
-```
+```text
 docs/
 ├── 01_introduction.md              # Introduction and vision
 ├── 02_fundamental_principles.md    # Fundamental concepts
@@ -250,7 +250,7 @@ The result is a set of professional PowerPoint presentations tailored for confer
 
 The book cover is produced through an HTML/CSS design system:
 
-```
+```text
 templates/
 └── book-cover.svg                    # Single approved cover template
 

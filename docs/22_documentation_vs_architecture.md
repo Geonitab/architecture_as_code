@@ -92,7 +92,7 @@ Structurizr provides a domain-specific language (DSL) for creating C4 models—C
 
 Example Structurizr DSL:
 
-```
+```dsl
 workspace {
     model {
         user = person "Customer"
