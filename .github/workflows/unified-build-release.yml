@@ -245,8 +245,7 @@ jobs:
               case '$DELIVERABLES' in
                 'book-only')
                   echo '📖 Building book formats only...' &&
-                  echo '📝 Step 1: Generating book content...' &&
-                  python3 generate_book.py &&
+                  echo '📝 Step 1: Generating EPUB content...' &&
                   python3 generate_book.py --format epub --output dist/book.epub --all &&
                   test -s dist/book.epub &&
                   echo '📝 Step 2: Building book formats...' &&
@@ -275,8 +274,7 @@ jobs:
                   echo '📦 Building all deliverables...' &&
                   # Build book in all formats
                   echo '📖 Step 1: Building book formats...' &&
-                  echo '📝 Generating book content...' &&
-                  python3 generate_book.py &&
+                  echo '📝 Generating EPUB content...' &&
                   python3 generate_book.py --format epub --output dist/book.epub --all &&
                   test -s dist/book.epub &&
                   cd docs &&

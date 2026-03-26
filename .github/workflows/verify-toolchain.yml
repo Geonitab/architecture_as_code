@@ -22,6 +22,15 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
+      - name: Install Pandoc 3.1.9
+        run: |
+          PANDOC_VER="3.1.9"
+          wget -q "https://github.com/jgm/pandoc/releases/download/${PANDOC_VER}/pandoc-${PANDOC_VER}-1-amd64.deb" \
+            -O /tmp/pandoc.deb
+          sudo dpkg -i /tmp/pandoc.deb
+          rm /tmp/pandoc.deb
+          pandoc --version | head -1
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:

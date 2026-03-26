@@ -41,11 +41,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Pandoc & TeX toolchain
+      - name: Install TeX toolchain
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-          pandoc \
           texlive texlive-xetex texlive-latex-recommended texlive-latex-extra \
           texlive-fonts-recommended texlive-fonts-extra lmodern \
           texlive-lang-european \
@@ -53,8 +52,14 @@ jobs:
           fonts-dejavu fonts-noto fonts-noto-extra \
           librsvg2-bin graphviz inkscape
 
-      - name: Generate book content
-        run: python3 generate_book.py
+      - name: Install Pandoc 3.1.9
+        run: |
+          PANDOC_VER="3.1.9"
+          wget -q "https://github.com/jgm/pandoc/releases/download/${PANDOC_VER}/pandoc-${PANDOC_VER}-1-amd64.deb" \
+            -O /tmp/pandoc.deb
+          sudo dpkg -i /tmp/pandoc.deb
+          rm /tmp/pandoc.deb
+          pandoc --version | head -1
 
       - name: Build book formats
         run: |

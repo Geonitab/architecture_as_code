@@ -39,12 +39,6 @@ jobs:
           python3 -m pip install --upgrade pip
           python3 -m pip install pytest>=7.0.0 pytest-html>=3.1.0 pyyaml>=6.0.0
 
-      - name: 📝 Generate book content
-        run: |
-          echo "=== Generating book content for testing ==="
-          python3 generate_book.py
-          echo "✅ Book content generated"
-
       - name: 🧪 Run content validation tests
         run: |
           echo "=== Running content validation tests ==="

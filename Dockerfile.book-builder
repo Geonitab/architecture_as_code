@@ -1,0 +1,81 @@
+# Book builder image for Architecture as Code
+# Provides: Pandoc 3.1.9, XeLaTeX, Mermaid CLI 10.7.0, Google Chrome, Python 3.12
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PANDOC_VERSION=3.1.9
+ENV NODE_MAJOR=20
+ENV MERMAID_VERSION=10.7.0
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# ------------------------------------------------------------------
+# Base system packages (TeX, fonts, image tools, Chrome dependencies)
+# ------------------------------------------------------------------
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates curl wget gnupg software-properties-common \
+    python3 python3-pip \
+    texlive texlive-xetex texlive-latex-recommended texlive-latex-extra \
+    texlive-fonts-recommended texlive-fonts-extra lmodern \
+    texlive-lang-european latexmk \
+    fonts-dejavu fonts-noto fonts-noto-extra fonts-noto-color-emoji \
+    librsvg2-bin graphviz inkscape \
+    libnss3 libatk1.0-0 libatk-bridge2.0-0 libgtk-3-0 \
+    libxss1 libasound2 libdrm2 libxkbcommon0 libgbm1 \
+    libx11-6 libxcomposite1 libxcursor1 libxdamage1 libxext6 \
+    libxfixes3 libxi6 libxrandr2 libxrender1 libxtst6 \
+    && rm -rf /var/lib/apt/lists/*
+
+# ------------------------------------------------------------------
+# Google Chrome (used by Mermaid CLI via Puppeteer)
+# ------------------------------------------------------------------
+RUN curl -fsSL https://dl.google.com/linux/linux_signing_key.pub \
+    | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg \
+    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] \
+    http://dl.google.com/linux/chrome/deb/ stable main" \
+    > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
+
+# Puppeteer no-sandbox config (required in container environments)
+RUN mkdir -p /root/.config/puppeteer && \
+    printf '{"executablePath":"/usr/bin/google-chrome-stable","args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage"]}' \
+    > /root/.config/puppeteer/config.json
+
+# ------------------------------------------------------------------
+# Pandoc 3.1.9
+# ------------------------------------------------------------------
+RUN wget -q "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb" \
+    -O /tmp/pandoc.deb \
+    && dpkg -i /tmp/pandoc.deb \
+    && rm /tmp/pandoc.deb \
+    && pandoc --version | head -1
+
+# ------------------------------------------------------------------
+# Node.js 20 + Mermaid CLI 10.7.0
+# ------------------------------------------------------------------
+RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_MAJOR}.x | bash - \
+    && apt-get install -y --no-install-recommends nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g @mermaid-js/mermaid-cli@${MERMAID_VERSION} --unsafe-perm \
+    && mmdc --version
+
+# ------------------------------------------------------------------
+# Python dependencies
+# ------------------------------------------------------------------
+COPY requirements.txt /tmp/requirements.txt
+RUN python3 -m pip install --no-cache-dir -r /tmp/requirements.txt
+
+# ------------------------------------------------------------------
+# Verify toolchain
+# ------------------------------------------------------------------
+RUN pandoc --version | head -1 \
+    && python3 --version \
+    && node --version \
+    && mmdc --version
+
+WORKDIR /workspace
