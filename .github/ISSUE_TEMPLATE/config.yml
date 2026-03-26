@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussion Forum (General)
+    url: https://github.com/discussions
+    about: Ask questions, share ideas, or start a general discussion about Architecture as Code.
+  - name: Discussion Forum (Q&A)
+    url: https://github.com/discussions/categories/q-a
+    about: Get help and answers from the community on technical questions.
+  - name: Documentation Website
+    url: https://aac.geon.se
+    about: Browse the published Architecture as Code documentation site.

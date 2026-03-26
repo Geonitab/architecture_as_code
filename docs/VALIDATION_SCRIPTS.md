@@ -25,7 +25,7 @@ python3 scripts/validate_heading_capitalization.py
 - `1`: One or more headings start with lowercase letters
 
 **Example Output**:
-```
+```text
 Checking 54 markdown files for heading capitalization...
 ✅ All headings are properly capitalized!
 ```
@@ -47,7 +47,7 @@ python3 scripts/validate_figure_captions.py
 - `1`: One or more figure captions start with lowercase 'figure'
 
 **Example Output**:
-```
+```text
 Checking 47 markdown files for figure caption capitalization...
 ✅ All figure captions are properly capitalized!
 ```

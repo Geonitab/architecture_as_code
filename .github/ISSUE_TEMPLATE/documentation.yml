@@ -1,0 +1,75 @@
+name: Documentation Issue
+description: Report an error, gap, or suggested improvement in the book content or project documentation
+title: "[Docs]: "
+labels:
+  - documentation
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the quality of the documentation. Please provide enough detail for us to locate and address the issue.
+
+  - type: input
+    id: page-or-file
+    attributes:
+      label: Page or File
+      description: Specify the chapter filename, appendix, or documentation page affected (e.g. `docs/05_platform_overview.md`, `docs/STYLE_GUIDE.md`).
+      placeholder: e.g. docs/05_platform_overview.md
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Type of Issue
+      description: What kind of documentation issue is this?
+      options:
+        - Factual error or technical inaccuracy
+        - Spelling or grammatical error
+        - Missing content or gap
+        - Unclear or ambiguous explanation
+        - Broken link or reference
+        - Outdated information
+        - Style guide violation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: Describe the documentation issue clearly. Quote the problematic text if applicable.
+      placeholder: |
+        The current text states "..." but this is incorrect/unclear/outdated because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-improvement
+    attributes:
+      label: Suggested Improvement
+      description: Provide your suggested correction or improvement. If applicable, include the revised text.
+      placeholder: |
+        The text should be updated to read "..."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any additional context, references, or sources that support the suggested change.
+      placeholder: Add any relevant references or context here...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      options:
+        - label: I have searched existing issues to ensure this is not a duplicate.
+          required: true
+        - label: I have reviewed the Style Guide at `docs/STYLE_GUIDE.md` where relevant.
+          required: false

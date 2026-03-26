@@ -180,7 +180,7 @@ Add test scripts to `package.json`:
 
 **File Structure for Architecture as Code Tests:**
 
-```
+```text
 project/
 ├── src/
 │   ├── generators/

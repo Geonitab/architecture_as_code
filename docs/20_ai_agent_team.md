@@ -1,5 +1,15 @@
 # AI Agent Team for the Architecture as Code Initiative {#ai-agent-team}
 
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- Describe the multi-agent operating model and explain how each specialist role contributes to the Architecture as Code initiative.
+- Design collaboration patterns between agents that maintain living artefacts without imposing rigid temporal gating.
+- Apply governance, reporting, and onboarding structures that make an AI agent team accountable and auditable.
+- Integrate AI agents with Architecture as Code workflows through GitHub Actions, issue automation, and documentation pipelines.
+- Identify the human oversight responsibilities that remain essential even when agents handle routine delivery activities.
+
 The Architecture as Code initiative relies on a cohesive ensemble of AI agents that operate as a digital delivery team. Each agent contributes specialised expertise while adhering to a single backlog, common documentation practices, and shared quality thresholds. This chapter reframes the agent ecosystem in British English, translating previous checklists into narrative guidance that emphasises collaboration, accountability, and the continual refinement of project artefacts.
 
 ## Multi-Agent Operating Model
@@ -50,10 +60,121 @@ Quality measures underpin accountability. Lead time from requirement to release 
 
 Onboarding for new agents blends orientation with practical delivery. The Project Manager briefs the newcomer on strategic aims, backlog structure, and working agreements. The Editor provides access to documentation standards and historical change logs, after which the Quality Control agent outlines the test strategy and release checkpoints. The Architect concludes the introduction by walking through the current system design. The onboarding agent confirms understanding by presenting a short delivery plan for their first sprint contribution, creating immediate alignment with the rest of the team.
 
+## Integrating AI Agents with Architecture as Code Workflows
+
+The agent team's value compounds when agents are tightly integrated with the repository and automation infrastructure rather than operating as isolated conversational tools.
+
+### GitHub Actions as the agent execution layer
+
+Many agent activities—generating documentation, validating diagrams, running quality checks—map directly onto GitHub Actions workflows. The following workflow demonstrates how the Editor agent's responsibilities can be partially automated:
+
+```yaml
+name: Editor Agent – Documentation Consistency Check
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**.md'
+
+jobs:
+  editorial-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install editorial toolchain
+        run: pip install vale pyspelling
+
+      - name: Check British English spelling
+        run: pyspelling --config .pyspelling.yml
+
+      - name: Validate terminology consistency
+        run: |
+          python3 scripts/check_terminology.py docs/ \
+            --rules docs/STYLE_GUIDE.md \
+            --output reports/terminology-report.json
+
+      - name: Check heading capitalisation
+        run: python3 scripts/validate_heading_capitalization.py docs/
+
+      - name: Annotate pull request with findings
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('reports/terminology-report.json'));
+            for (const finding of report.findings) {
+              await github.rest.pulls.createReviewComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                body: `**Editorial finding:** ${finding.message}`,
+                path: finding.file,
+                line: finding.line
+              });
+            }
+```
+
+### Issue-driven agent activation
+
+The repository's bot workflows demonstrate a practical pattern for activating specialist agents in response to labelled issues. When a contributor applies the `architecture` label to an issue, the Architect Bot workflow triggers, reads the issue body, and posts a structured architectural analysis as a comment. This pattern scales to any agent role:
+
+| GitHub Label | Triggered Agent | Automated Response |
+|---|---|---|
+| `architecture` | Architect Bot | Architectural analysis, ADR template, diagram suggestions |
+| `documentation` | Editor Bot | Style-guide checklist, terminology review, cross-reference suggestions |
+| `qa` | QA Bot | Test coverage analysis, acceptance criteria review, risk assessment |
+| `dev` | Developer Bot | Implementation plan, code scaffolding suggestions, dependency analysis |
+| `design` | Designer Bot | Diagram review, visual consistency check, asset catalogue update |
+
+### Prompt engineering for Architecture as Code agents
+
+Effective agent behaviour depends on well-crafted system prompts that encode the team's working agreements. The following illustrates the kind of context an Architect agent requires:
+
+```text
+You are the Architect agent for the Architecture as Code initiative.
+Your responsibilities are:
+- Review architectural proposals for consistency with the system blueprint in docs/
+- Validate that proposed changes align with existing ADRs in docs/examples/structurizr/adrs/
+- Suggest new ADRs when significant decisions are implicit in a proposal
+- Ensure all diagrams follow the Kvadrat theme defined in docs/DIAGRAM_STYLE_GUIDE.md
+- Write in Oxford-standard British English
+
+When reviewing a pull request or issue:
+1. Check the book_index.json for affected chapters
+2. Identify any ADRs that apply or should be created
+3. Assess the impact on the overall architecture narrative
+4. Provide a structured review with: summary, concerns, recommendations, and required ADRs
+```
+
+## Human Oversight and Ethical Guardrails
+
+AI agents amplify team capacity but do not eliminate the need for human judgement. Certain categories of decision must remain with human practitioners:
+
+**Architectural commitments with long-term consequences.** When a proposed change locks in a technology platform, affects data residency, or introduces a significant operational dependency, the Architect agent identifies the decision and escalates it to the project owner rather than resolving it autonomously.
+
+**Stakeholder communication.** External communication—progress reports to sponsors, responses to regulatory enquiries, public release notes—passes through human review before publication. Agents draft; humans approve.
+
+**Security and compliance decisions.** Policy exceptions, risk acceptances, and decisions to override governance guardrails require named human approval captured in the audit trail. The Governance as Code workflow (see [Chapter 11](11_governance_as_code.md)) enforces this through protected branch rules and required reviewers.
+
+**Conflict resolution.** When agents produce conflicting recommendations—for example, the Developer proposes an implementation that the Architect judges architecturally unsound—the Project Manager surfaces the conflict to the project owner with both perspectives clearly articulated. The human owner decides.
+
+These guardrails ensure that the agent team remains a tool under human direction rather than an autonomous decision-making body. The Architecture as Code initiative's commitment to traceability—every decision linked to a commit, a pull request, and an accountable individual—applies equally to agent-assisted and human-authored work.
+
+## Summary
+
+The AI agent team model demonstrates that Architecture as Code principles—version control, automation, continuous validation, and explicit traceability—apply equally well to the management of a delivery team as to the management of infrastructure. By encoding each specialist's responsibilities in documented workflows, prompt libraries, and GitHub Actions automation, the team creates a repeatable, auditable operating model that improves with each iteration.
+
+The key insight is that agents are most effective not as free-standing autonomous systems, but as structured participants in a governance framework that keeps humans informed and in control. Sprint rituals, daily reporting, quality thresholds, and onboarding procedures are not bureaucratic overhead—they are the mechanisms that make agent behaviour predictable, auditable, and improvable over time.
+
 ## Sources
 
 - [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
 - Edmondson, A. C. "Teaming: How Organisations Learn, Innovate, and Compete in the Knowledge Economy." Jossey-Bass, 2012.
-
-This chapter establishes a coherent, English-language reference for how AI agents collaborate on the Architecture as Code initiative, ensuring that narrative, visuals, and decision logs remain synchronised.
+- [Anthropic – Claude Agent SDK Documentation](https://docs.anthropic.com/)

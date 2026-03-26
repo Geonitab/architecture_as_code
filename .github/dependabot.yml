@@ -2,60 +2,57 @@ version: 2
 updates:
   # ── Python dependencies (pip) ────────────────────────────────────────────────
   - package-ecosystem: "pip"
-    directory: "/"                       # adjust if requirements.txt is elsewhere
+    directory: "/"
     schedule:
-      interval: "daily"
-    allow:
-      - dependency-type: "all"           # include both runtime and dev packages
-    open-pull-requests-limit: 50
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
     rebase-strategy: "auto"
     commit-message:
       prefix: "deps"
       include: "scope"
     labels:
       - "dependencies"
-      - "auto-merge"
     groups:
       minor-and-patch:
-        update-types: ["minor", "patch"]
+        update-types:
+          - "minor"
+          - "patch"
 
   # ── Node.js dependencies (npm) ──────────────────────────────────────────────
   - package-ecosystem: "npm"
-    directory: "/"                       # path to package.json (adjust if needed)
+    directory: "/"
     schedule:
-      interval: "daily"
-    allow:
-      - dependency-type: "all"
-    open-pull-requests-limit: 50
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
     rebase-strategy: "auto"
     commit-message:
       prefix: "deps"
       include: "scope"
     labels:
       - "dependencies"
-      - "auto-merge"
     groups:
       minor-and-patch:
-        update-types: ["minor", "patch"]
+        update-types:
+          - "minor"
+          - "patch"
 
   # ── GitHub Actions ──────────────────────────────────────────────────────────
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
-    open-pull-requests-limit: 50
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
     rebase-strategy: "auto"
+    commit-message:
+      prefix: "deps"
+      include: "scope"
     labels:
       - "dependencies"
-      - "auto-merge"
-
-  # ── Docker base images ──────────────────────────────────────────────────────
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    open-pull-requests-limit: 50
-    rebase-strategy: "auto"
-    labels:
-      - "dependencies"
-      - "auto-merge"
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
