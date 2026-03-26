@@ -18,7 +18,7 @@ The following mind maps illustrate the key concepts and relationships within the
 
 ![Architecture as Code as central hub](images/mindmap_23c_architecture.png)
 
-*Figure 23.3 demonstrates architecture as code serving as the central hub connecting technical implementation, policy, and documentation.*
+*Figure 23.3 demonstrates Architecture as Code serving as the central hub connecting technical implementation, policy, and documentation.*
 
 ![Documentation as Code](images/mindmap_23d_documentation.png)
 
@@ -38,11 +38,11 @@ The following mind maps illustrate the key concepts and relationships within the
 - **Compliance as Code acts as the quality engine:** By codifying rules and policies, it provides continuous validation and transparency, ensuring that architectural and documentation artifacts remain within approved boundaries.
 - **Architecture as Code serves as the central hub:** It connects technical implementations with policy and documentation layers, providing traceability and enabling real-time synchronization across the ecosystem.
 - **Documentation as Code forms the communication layer:** It translates technical and policy concepts into accessible narratives, enabling self-service knowledge and fostering collective ownership through structured feedback loops.
-- **Knowledge and Culture as Code preserve organisational memory:** Formalizing lessons learned and cultural values ensures consistency, supports onboarding, and enables rapid iteration without losing core principles.
+- **Knowledge and Culture as Code preserve organisational memory:** Formalising lessons learned and cultural values ensures consistency, supports onboarding, and enables rapid iteration without losing core principles.
 - **Synergies multiply value:** When these disciplines integrate, they create cross-functional collaboration spaces, unified validation pipelines, and enhanced traceability—accelerating the pace of change while managing risk.
 - **Implementation requires strategy:** Success depends on shared principles, compatible tooling, cross-functional training, iterative building, and clear governance frameworks.
 
-This visualisation reinforces the chapter's central message: soft "as code" disciplines are more powerful together than in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
+This visualisation reinforces the chapter's central message: soft "as code" disciplines compound their value when combined rather than deployed in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
 
 ## A Shared DNA
 
@@ -59,7 +59,7 @@ This combination opens the door to a shared way of working across disciplines. O
 Compliance as code focuses on translating regulations, standards, and internal policies into codified controls. Tools such as Open Policy Agent, HashiCorp Sentinel, or custom rule frameworks can ingest policy definitions and evaluate them against system configurations, CI/CD pipelines, or infrastructure definitions. When the discipline is connected to other soft areas several effects emerge:
 
 - **Rule reuse.** Documentation and architectural principles can directly reference policy definitions, reducing the risk of diverging interpretations. An architect writing a blueprint can link to the same policy files the security team uses in their controls.
-- **Continuous validation.** Documentation as code makes it possible to describe which controls exist and how they are executed, while automations from architecture as code can trigger compliance checks for every change. The result is an unbroken chain between intent and verification.
+- **Continuous validation.** Documentation as code makes it possible to describe which controls exist and how they are executed, while automations from Architecture as Code can trigger compliance checks for every change. The result is an unbroken chain between intent and verification.
 - **Transparency and education.** When the rule set is versioned and open to inspection, teams can teach themselves what is required. Pull requests on policy code become educational moments where lawyers, security experts, and developers meet and explain their reasoning.
 
 Compliance as code thus becomes a quality engine that reinforces the other disciplines. When architectural or documentation artifacts are updated, automated controls can ensure that changes still fall within approved boundaries. If a rule changes, the update propagates to every system that uses it—from architectural diagrams to external reports.
@@ -74,7 +74,7 @@ Architecture as Code means expressing architectural decisions, reference archite
 - **Real-time documentation.** Documentation as code can be generated directly from architectural models and provide up-to-date manuals, diagrams, and guides. Documentation stays in sync with the "living" architecture.
 - **Automated quality gates.** When architectural models are versioned, compliance and quality checks can run automatically before an architectural change is approved. This offers objective support for architecture boards and decision forums.
 
-The hub metaphor is powerful: Architecture as Code connects technical implementations with policy and documentation layers. It becomes easier to facilitate dialogue across expert roles when everyone looks at the same source of truth.
+The hub metaphor holds: Architecture as Code connects technical implementations with policy and documentation layers. Dialogue across expert roles becomes easier when everyone looks at the same source of truth.
 
 ## Documentation as Code as the Communication Layer
 
@@ -88,7 +88,7 @@ Documentation as code also acts as a layer of visibility. Architectural principl
 
 ## Knowledge as Code and Culture as Code
 
-To capture the full spectrum of soft artifacts we can also include knowledge as code and culture as code. Knowledge as code formalizes knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organisation can iterate quickly while still preserving its experience and values.
+To capture the full spectrum of soft artifacts we can also include knowledge as code and culture as code. Knowledge as code formalises knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organisation can iterate quickly while still preserving its experience and values.
 
 ## Synergies and Cross-Pollination
 
@@ -96,14 +96,14 @@ Introducing several soft "as code" disciplines in parallel generates effects tha
 
 ## Challenges and Counterforces
 
-The interplay between soft "as code" disciplines is powerful but also demanding. Common challenges include:
+The interplay between soft "as code" disciplines generates real value, but it is also demanding. Common challenges include:
 
 - **Differences in terminology and mindset.** Lawyers, architects, and documentation specialists use different vocabularies, which requires translation and extra onboarding.
 - **Tooling barriers.** Not everyone is comfortable with Git, pull requests, or CI/CD, so training is needed to avoid creating new hierarchies.
 - **Automation debt.** Codified rules do not capture every interpretation, so manual controls and clear governance remain necessary.
 - **Information overload.** When everything is versioned and logged, metadata and structure are required to keep information navigable.
 
-By addressing these challenges openly, investing in joint training initiatives, and establishing clear roles, organisations can maximize the value of the interplay.
+By addressing these challenges openly, investing in joint training initiatives, and establishing clear roles, organisations can maximise the value of the interplay.
 
 ## Practical Applications
 

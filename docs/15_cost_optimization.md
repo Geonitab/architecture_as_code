@@ -52,7 +52,7 @@ Comprehensive cost monitoring requires integration of monitoring tools directly 
 
 Real-time cost tracking enables proactive cost management instead of reactive measures after budgets are already exceeded. Architecture as Code-based monitoring solutions can automatically implement cost controls such as resource termination or approval workflows for cost-critical operations.
 
-EU organisations' reporting requirements can be automated through Architecture as Code-defined dashboards and reports that are generated regularly and distributed to relevant stakeholders. Integration with enterprise ERP systems enables seamless financial planning and budgeting, with support for multi-currency reporting (EUR, GBP, and other EU currencies) alongside cloud provider billing in USD.
+EU organisations' reporting requirements can be automated through Architecture as Code-defined dashboards and reports that are generated regularly and distributed to relevant stakeholders. Integration with enterprise ERP systems supports financial planning and budgeting, with support for multi-currency reporting (EUR, GBP, and other EU currencies) alongside cloud provider billing in USD.
 
 Anomaly detection for cloud costs can be implemented through machine learning algorithms trained on historical usage patterns. These can be integrated into Architecture as Code workflows to automatically flag and potentially remediate abnormal cost spikes across different EU regions.
 

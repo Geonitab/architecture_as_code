@@ -159,7 +159,7 @@ Critical validation test patterns include:
 
 ### Integration in CI/CD Pipeline
 
-Vitest integrates seamlessly into CI/CD pipelines for automated testing of infrastructure code. A typical GitHub Actions workflow runs tests on pull requests and pushes, generates coverage reports and provides feedback through automated comments.
+Vitest integrates directly into CI/CD pipelines for automated testing of infrastructure code. A typical GitHub Actions workflow runs tests on pull requests and pushes, generates coverage reports and provides feedback through automated comments.
 
 *See Appendix A, Listing 13-F for a complete GitHub Actions workflow demonstrating Vitest integration with coverage reporting and PR comments.*
 
