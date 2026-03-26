@@ -163,7 +163,7 @@ tests/                          # Pytest test suites
 - Use "programme" for initiatives (British usage)
 - Refer to audiences as "teams", "practitioners", or "organisations"
 
-**Reference:** See `docs/STYLE_GUIDE.md` for complete editorial rules.
+**Reference:** See `docs/STYLE_GUIDE.md` for complete editorial rules and `docs/AUTHOR_PERSONA.md` for authorial voice and IT architect technical vocabulary.
 
 ### Making Changes
 
