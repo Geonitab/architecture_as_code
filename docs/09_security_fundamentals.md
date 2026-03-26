@@ -39,8 +39,8 @@ owing delivery teams.*
 
 The security challenges facing contemporary digital enterprises demand a fundamental reassessment of traditional defensive pract
 ices. As organisations adopt Architecture as Code to manage rapidly expanding and highly distributed environments, security stra
-tegies must evolve in parallel. This chapter offers a comprehensive guide to integrating security seamlessly into code-based arc
-hitectures.
+tegies must evolve in parallel. This chapter offers a comprehensive guide to integrating security into code-based arc
+hitectures without treating it as an afterthought.
 
 Perimeter-based defences designed for static environments become ineffective in cloud-native and microservice-oriented platforms
 . Security can no longer be treated as a separate afterthought. Modern organisations must embrace security-as-code principles wh

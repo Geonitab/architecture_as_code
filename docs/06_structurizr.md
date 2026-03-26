@@ -18,7 +18,7 @@ In the Architecture as Code ecosystem, Structurizr serves as a practical impleme
 
 The open-source Architecture-as-Code (AaC) project offers a complementary example: its maintainers describe the toolkit as an open-source platform for modelling architecture definitions in YAML and automating validation and generation steps, with every capability delivered through discoverable plugins so teams can extend the CLI without modifying the core distribution (AaC Open Source Project). The plugin model demonstrates how DSL-driven approaches like Structurizr stay adaptable—domain teams can add generators, schema validators, or documentation exporters in the same fashion, keeping the architecture source of truth central whilst tailoring outputs to their needs.
 
-This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artifact.
+This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artefact.
 
 ## The C4 Model Foundation
 
@@ -1253,7 +1253,7 @@ This creates traceability from architecture elements to the decisions that shape
 
 ## Conclusion
 
-Structurizr represents a powerful implementation of Architecture as Code principles, enabling teams to:
+Structurizr is a mature implementation of Architecture as Code principles, enabling teams to:
 
 1. **Define architecture models programmatically** using a clear, version-controlled DSL
 2. **Generate consistent diagrams** from a single source of truth
@@ -1261,7 +1261,7 @@ Structurizr represents a powerful implementation of Architecture as Code princip
 4. **Automate validation** that architecture matches reality
 5. **Maintain living documentation** that evolves with the system
 
-The C4 model provides the conceptual framework, while Structurizr DSL offers the practical tooling to implement it. By treating architecture as code, teams can apply the same rigorous practices—version control, code review, automated testing, CI/CD—to their architectural work as they do to application development.
+The C4 model provides the conceptual framework, while Structurizr DSL offers the practical tooling to implement it. By treating Architecture as Code, teams can apply the same rigorous practices—version control, code review, automated testing, CI/CD—to their architectural work as they do to application development.
 
 While there's a learning curve to master the DSL syntax and modeling concepts, the investment pays dividends through improved architecture consistency, team collaboration, and documentation quality. Combined with the practices covered in earlier chapters (ADRs, version control, automation), Structurizr enables a comprehensive Architecture as Code workflow.
 

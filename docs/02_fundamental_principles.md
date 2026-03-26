@@ -257,7 +257,7 @@ When drift is detected, teams can choose to either:
 2. **Update the code**: If the drift represents an intentional change, update the architecture definition to reflect the new desired state
 3. **Investigate and resolve**: Determine the root cause of drift, fix the underlying process gap, and prevent recurrence
 
-By treating architecture as code and automating drift detection and remediation, organisations maintain architectural integrity throughout the entire system lifecycle, ensuring that reality consistently matches design intent.
+By treating Architecture as Code and automating drift detection and remediation, organisations maintain architectural integrity throughout the entire system lifecycle, ensuring that reality consistently matches design intent.
 
 ## Testability at the architecture level
 
@@ -577,7 +577,7 @@ The table below summarises key differences in how functional and non-functional 
 
 This distinction has profound implications for how Architecture as Code is implemented:
 
-1. **NFR Testing in CI/CD**: Non-functional requirements integrate seamlessly into continuous deployment pipelines. Every infrastructure change can be automatically tested for performance impact, security compliance, and operational characteristics.
+1. **NFR Testing in CI/CD**: Non-functional requirements integrate directly into continuous deployment pipelines. Every infrastructure change can be automatically tested for performance impact, security compliance, and operational characteristics.
 
 2. **FR Validation Gates**: Functional requirements require explicit validation gates where stakeholders confirm business value. These gates cannot be fully automated but can be facilitated through Requirements as Code specifications that document acceptance criteria and track validation status.
 

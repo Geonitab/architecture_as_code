@@ -81,7 +81,7 @@ Transparency through Issues manifests in several ways:
 
 **Accountability**: Assigning Issues to specific owners, setting milestones, and tracking progress creates clear accountability. Teams know who is responsible for each initiative, reducing ambiguity and preventing work from falling through organisational cracks. Labels reflect strategic pillars, enabling filtering and reporting across different dimensions of the architecture portfolio.
 
-**Collaborative Resolution**: Issues encourage participation from diverse perspectives. Engineers can flag technical constraints, security specialists can highlight risks, and product managers can clarify business context—all within a single, coherent thread. This collaborative approach surfaces potential problems earlier and leads to more robust solutions.
+**Collaborative Resolution**: Issues encourage participation from diverse perspectives. Engineers can flag technical constraints, security specialists can highlight risks, and product managers can clarify business context—all within a single, coherent thread. This collaborative approach surfaces potential problems earlier and produces better-grounded decisions.
 
 ### Practical Examples of Transparent Issue Usage
 
@@ -161,7 +161,7 @@ This exploratory phase prevents premature standardisation whilst building shared
 
 ### Linking Transparency to Architecture Evolution
 
-The true power of Issues and Discussions emerges when they integrate seamlessly with code-based architecture practices. Every significant architecture change should originate from or reference an Issue or Discussion, creating bidirectional traceability between strategic intent and technical implementation.
+Issues and Discussions deliver the most value when they connect directly with code-based architecture practices. Every significant architecture change should originate from or reference an Issue or Discussion, creating bidirectional traceability between strategic intent and technical implementation.
 
 When a team proposes infrastructure changes via pull request, reviewers can follow references back to the originating Issue to understand business justification. Conversely, stakeholders tracking high-level strategy in Issues can drill down into the actual code changes that implement their decisions. This linkage ensures alignment between what organisations say they value and what they actually build.
 
@@ -280,4 +280,4 @@ Consider a global software company operating in regulated financial markets. The
 As artificial intelligence capabilities mature, MaC will incorporate intelligent agents that suggest policy updates based on observed outcomes. Machine learning models can analyse historical management changes and their impact on delivery performance, recommending adjustments to guardrails or team structures. Natural language processing can transform meeting transcripts into code updates, bridging human discussions and codified artefacts, while decentralised governance structures may use smart contracts to enforce management rules across partner ecosystems.
 
 ## Conclusion
-Management as Code is the logical next step for organisations that already treat infrastructure and architecture as code. By encoding leadership intent into executable artefacts, organisations achieve transparency, speed, and adaptability. MaC embeds management into the DevOps loop, ensures governance is automated, and ties budgeting, competence development, and team leadership into a single continuous system. GitHub and similar platforms become hubs where executives and engineers collaborate seamlessly, with Issues, Discussions, and Actions transforming management from a peripheral function into a core element of the delivery pipeline. By embracing MaC, organisations unlock scalable, data-driven leadership capable of orchestrating multiple teams and responding rapidly to change.
+Management as Code is the logical next step for organisations that already treat infrastructure and architecture as code. By encoding leadership intent into executable artefacts, organisations achieve transparency, speed, and adaptability. MaC embeds management into the DevOps loop, ensures governance is automated, and ties budgeting, competence development, and team leadership into a single continuous system. GitHub and similar platforms become hubs where executives and engineers collaborate in the same workflows, with Issues, Discussions, and Actions transforming management from a peripheral function into a core element of the delivery pipeline. By embracing MaC, organisations unlock scalable, data-driven leadership capable of orchestrating multiple teams and responding rapidly to change.
