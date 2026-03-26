@@ -67,5 +67,6 @@ Before submitting or approving a pull request:
 
 ## Further Reading
 - `README.md` – project overview, contribution workflow, and automation commands.
+- `AUTHOR_PERSONA.md` – authorial voice, technical register, and IT architect vocabulary.
 - `VISUAL_ELEMENTS_GUIDE.md` – colour palette, typography, and diagram presentation standards.
 - `BRAND_GUIDELINES.md` – brand language and tone requirements.
