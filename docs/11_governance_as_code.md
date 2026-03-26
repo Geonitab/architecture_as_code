@@ -1,5 +1,15 @@
 # Governance as Code {#governance-as-code}
 
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- Explain the **assure once, comply many** principle and articulate why it reduces audit fatigue across multiple regulatory frameworks.
+- Design a pull-request-based approval workflow for governance artefacts that provides formal audit trails without slowing delivery.
+- Write basic Open Policy Agent (OPA) Rego policies that enforce infrastructure guardrails as executable code.
+- Identify the competency gaps that arise during a governance-as-code transition and apply practical enablement strategies to close them.
+- Select appropriate tooling that allows non-developer governance professionals to contribute to policy repositories without requiring deep engineering expertise.
+
 ## Overview
 
 ![Governance as Code pipeline](images/diagram_11_governance_pipeline.png)
@@ -35,6 +45,150 @@ Teams should stage the transition carefully. Starting with low-risk governance c
 Empowering non-developers starts with approachable policy editors that generate Rego, Sentinel, or similar policy languages from guided forms. These low-code experiences keep the code authoritative while lowering the barrier to entry for policy specialists. Template-driven pull requests extend that support by turning stakeholder submissions into structured governance updates that already meet repository standards.
 
 Documentation-as-code portals and ChatOps integrations keep contributors in their preferred environments. Rendered documentation provides a friendly view of pending changes, while Microsoft Teams or Slack integrations surface review notifications, allow approvals, and trigger governance checks without forcing users into the terminal. Automated policy explainers complete the toolkit by translating code into natural language summaries, giving decision makers clarity without diluting the precision of code-based guardrails.
+
+## Policy as Code: OPA and Rego in Practice
+
+Open Policy Agent (OPA) is the most widely adopted engine for policy as code. Policies are written in Rego, a declarative language purpose-built for expressing rules over structured data. The following examples show how typical governance guardrails translate from prose requirements into executable assertions.
+
+### Enforcing encryption at rest
+
+A common governance requirement states that all storage resources must enable encryption at rest using organisation-approved key management. In Rego, this becomes:
+
+```rego
+package governance.storage
+
+import future.keywords.if
+import future.keywords.contains
+
+# Deny any storage resource that does not declare encryption
+deny contains msg if {
+    resource := input.planned_values.root_module.resources[_]
+    resource.type == "aws_s3_bucket"
+    not resource.values.server_side_encryption_configuration
+    msg := sprintf(
+        "S3 bucket '%v' must enable server-side encryption (SEC-STOR-001)",
+        [resource.address]
+    )
+}
+
+# Deny if encryption uses the default AWS key instead of a customer-managed key
+deny contains msg if {
+    resource := input.planned_values.root_module.resources[_]
+    resource.type == "aws_s3_bucket_server_side_encryption_configuration"
+    rule := resource.values.rule[_]
+    rule.apply_server_side_encryption_by_default.sse_algorithm == "AES256"
+    msg := sprintf(
+        "S3 bucket encryption for '%v' must use a customer-managed KMS key (SEC-STOR-002)",
+        [resource.address]
+    )
+}
+```
+
+The policy references control identifiers (`SEC-STOR-001`, `SEC-STOR-002`) that link directly to the organisation's control catalogue. When OPA evaluates a Terraform plan, any violation surfaces in the CI pipeline before infrastructure is provisioned.
+
+### Enforcing tag compliance
+
+Tag policies ensure that every resource carries the metadata required for cost allocation, ownership tracing, and incident response routing:
+
+```rego
+package governance.tagging
+
+import future.keywords.if
+import future.keywords.contains
+
+required_tags := {"owner", "environment", "cost-centre", "data-classification"}
+
+deny contains msg if {
+    resource := input.planned_values.root_module.resources[_]
+    resource.type in {"aws_instance", "aws_s3_bucket", "azurerm_virtual_machine"}
+    missing := required_tags - {tag | resource.values.tags[tag]}
+    count(missing) > 0
+    msg := sprintf(
+        "Resource '%v' is missing required tags: %v (GOV-TAG-001)",
+        [resource.address, missing]
+    )
+}
+```
+
+### Integrating OPA into CI/CD
+
+The following GitHub Actions step evaluates the Terraform plan against all governance policies before any apply is permitted:
+
+```yaml
+- name: Evaluate governance policies
+  run: |
+    terraform show -json tfplan.binary > tfplan.json
+    opa eval \
+      --data policies/ \
+      --input tfplan.json \
+      --format pretty \
+      "data.governance[_].deny[msg]" \
+      | tee policy-results.json
+    # Fail the pipeline if any denial messages were produced
+    python3 - <<'EOF'
+    import json, sys
+    results = json.load(open("policy-results.json"))
+    denials = [r["expressions"][0]["value"] for r in results["result"] if r["expressions"][0]["value"]]
+    if denials:
+        for d in denials:
+            print(f"POLICY VIOLATION: {d}")
+        sys.exit(1)
+    print("All governance policies passed.")
+    EOF
+```
+
+### Testing policies with OPA's built-in test runner
+
+Governance policies must themselves be tested. OPA provides a native test runner that validates policy logic against example inputs:
+
+```rego
+package governance.storage_test
+
+import future.keywords.if
+
+test_denies_missing_encryption if {
+    count(governance.storage.deny) > 0 with input as {
+        "planned_values": {"root_module": {"resources": [{
+            "type": "aws_s3_bucket",
+            "address": "aws_s3_bucket.example",
+            "values": {}
+        }]}}
+    }
+}
+
+test_allows_cmk_encryption if {
+    count(governance.storage.deny) == 0 with input as {
+        "planned_values": {"root_module": {"resources": [{
+            "type": "aws_s3_bucket",
+            "address": "aws_s3_bucket.example",
+            "values": {
+                "server_side_encryption_configuration": [{
+                    "rule": [{"apply_server_side_encryption_by_default": [
+                        {"sse_algorithm": "aws:kms", "kms_master_key_id": "arn:aws:kms:eu-west-1:123456789012:key/abc"}
+                    ]}]
+                }]
+            }
+        }]}}
+    }
+}
+```
+
+Running `opa test policies/` in CI catches policy regressions before they reach production, applying the same quality discipline to governance code as to application code.
+
+## Measuring Governance Effectiveness
+
+Governance as Code enables metrics that were previously impossible to collect consistently. The following indicators provide visibility into the health of the governance programme:
+
+| Metric | Description | Target |
+|--------|-------------|--------|
+| Policy coverage | Percentage of infrastructure resources evaluated by at least one policy | ≥ 95 % |
+| Policy pass rate | Percentage of pipeline runs that pass all governance checks without exceptions | ≥ 90 % |
+| Time to policy adoption | Elapsed time from policy proposal to production merge | ≤ 5 business days |
+| Exception rate | Number of approved policy exceptions per quarter | Decreasing trend |
+| Audit readiness score | Percentage of control objectives with machine-generated evidence | ≥ 80 % |
+| Remediation lead time | Average time to fix a detected policy violation | ≤ 48 hours |
+
+Governance dashboards aggregating these metrics give leadership the confidence to rely on automated controls rather than periodic manual reviews, fundamentally changing the economics of compliance.
 
 ## Key Takeaways
 
