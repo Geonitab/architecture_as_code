@@ -52,6 +52,10 @@ def _build_command(
     if theme and theme.is_file():
         command.extend(["-c", str(theme)])
 
+    puppeteer_config = os.environ.get("PUPPETEER_CONFIG_FILE")
+    if puppeteer_config and Path(puppeteer_config).is_file():
+        command.extend(["--puppeteerConfigFile", puppeteer_config])
+
     return command
 
 

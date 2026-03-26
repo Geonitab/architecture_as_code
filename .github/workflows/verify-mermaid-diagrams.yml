@@ -59,6 +59,13 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: 🔧 Configure Puppeteer for CI
+        run: |
+          PUPPETEER_CONFIG=$(mktemp)
+          printf '{"args":["--no-sandbox","--disable-setuid-sandbox","--disable-dev-shm-usage"]}' \
+            > "$PUPPETEER_CONFIG"
+          echo "PUPPETEER_CONFIG_FILE=$PUPPETEER_CONFIG" >> "$GITHUB_ENV"
+
       - name: 🛠️ Regenerate missing Mermaid diagrams
         run: python3 scripts/check_mermaid_diagrams.py --write-missing
 
