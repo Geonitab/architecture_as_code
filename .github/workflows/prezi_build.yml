@@ -20,11 +20,13 @@ jobs:
 
       - name: Install deps (prezi app)
         working-directory: presentations/prezi
+        if: hashFiles('presentations/prezi/package.json') != ''
         run: |
           npm ci
 
       - name: Build prezi app
         working-directory: presentations/prezi
+        if: hashFiles('presentations/prezi/package.json') != ''
         run: |
           npm run build
 

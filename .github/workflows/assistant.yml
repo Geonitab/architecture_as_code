@@ -7,8 +7,6 @@ on:
         description: "What should the assistant do?"
         required: true
         default: "Write a short status message about this commit."
-  pull_request:
-    types: [opened, reopened]
 
 permissions:
   contents: read
