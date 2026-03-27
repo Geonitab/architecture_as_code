@@ -37,7 +37,7 @@ jobs:
       - name: 📦 Install test dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install pytest>=7.0.0 pytest-html>=3.1.0 pyyaml>=6.0.0
+          python3 -m pip install -r requirements.txt
 
       - name: 🧪 Run content validation tests
         run: |
@@ -45,19 +45,29 @@ jobs:
           python3 tests/run_tests.py --type all
           echo "✅ Content validation completed"
 
-      - name: 📊 Generate test reports
+      - name: 📊 Generate test reports with coverage
         if: always()
         run: |
-          echo "=== Generating detailed test reports ==="
+          echo "=== Generating detailed test reports with coverage ==="
           mkdir -p test-reports
-          
+
+          # Run full suite with coverage reporting
+          python3 -m pytest tests/ \
+            --cov=scripts \
+            --cov-report=xml:test-reports/coverage.xml \
+            --cov-report=html:test-reports/htmlcov \
+            --cov-report=term-missing \
+            --html=test-reports/full-report.html \
+            --self-contained-html \
+            -v || true
+
           # Run individual test suites with detailed reporting
           python3 -m pytest tests/test_completeness.py -v --html=test-reports/completeness-report.html --self-contained-html || true
           python3 -m pytest tests/test_consistency.py -v --html=test-reports/consistency-report.html --self-contained-html || true
           python3 -m pytest tests/test_clarity.py -v --html=test-reports/clarity-report.html --self-contained-html || true
           python3 -m pytest tests/test_technical_accuracy.py -v --html=test-reports/technical-report.html --self-contained-html || true
-          
-          echo "✅ Test reports generated"
+
+          echo "✅ Test reports and coverage generated"
 
       - name: 📤 Upload test reports
         uses: actions/upload-artifact@v4

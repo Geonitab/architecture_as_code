@@ -175,7 +175,7 @@ background: linear-gradient(135deg, hsl(221, 67%, 32%, 0.05), hsl(217, 91%, 60%,
 ❌ Fel typografihierarki
 ❌ Låg kontrast between text and Background
 
-## implementation checklist
+## Implementation Checklist
 
 ### Webbplats
 - [ ] CSS custom properties konfigurerade

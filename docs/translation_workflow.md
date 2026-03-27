@@ -25,7 +25,7 @@ Translations of *Architecture as Code* are stored as separate Markdown files alo
 
 Translated files follow the naming convention `<original_basename>_<language_code>.md` and are placed in the same directory as their English source, or within `docs/archive/` for drafts that are not yet part of the live build.
 
-```
+```text
 docs/
 ├── 01_introduction.md              # Canonical English source
 ├── 01_introduction_sv.md           # Swedish translation (example)
@@ -118,7 +118,7 @@ Refer to the [translators library documentation](https://github.com/UlionTse/tra
 
 The script prints progress to standard output:
 
-```
+```text
 Startar översättning för mappen: /path/to/architecture_as_code
 Översatte filen: docs/01_introduction.md
 ...
