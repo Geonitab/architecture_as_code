@@ -1,5 +1,14 @@
 # Diagram Asset Guidelines
 
 - Store Mermaid source diagrams as `.mmd` files in this directory.
-- Do not commit generated `.png` outputs; the publishing workflow renders images from the Mermaid sources.
-- If a PNG is missing locally, run the CI workflow or the provided build scripts to regenerate assets as part of the publishing pipeline.
+- **Both `.mmd` source files and rendered `.png` files must be committed** to version
+  control. This ensures offline readers and document reviewers have stable diagrams
+  without needing to regenerate assets locally.
+- PNG files are marked as binary in `.gitattributes` to keep diffs readable.
+- If you modify a `.mmd` file, regenerate its PNG before committing:
+  ```bash
+  PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) \
+    npx mmdc -i docs/images/<diagram>.mmd -o docs/images/<diagram>.png
+  ```
+- CI enforces that every committed PNG matches its source via
+  `scripts/check_mermaid_diagrams.py`.
