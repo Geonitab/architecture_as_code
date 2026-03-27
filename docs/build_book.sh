@@ -466,10 +466,11 @@ if [ -f "$OUTPUT_PDF" ] && [ -s "$OUTPUT_PDF" ]; then
     echo "✅ Book generated: $OUTPUT_PDF ($(ls -lh "$OUTPUT_PDF" | awk '{print $5}'))"
 
     # Copy to release directory
-    if cp "$OUTPUT_PDF" "$RELEASE_PDF" 2>/dev/null; then
+    if cp "$OUTPUT_PDF" "$RELEASE_PDF"; then
         echo "✅ Book copied to release directory: $RELEASE_PDF"
     else
-        echo "⚠️  Warning: Could not copy PDF to release directory"
+        echo "❌ Error: Failed to copy PDF to release directory: $RELEASE_PDF"
+        exit 1
     fi
 else
     echo "❌ Error: PDF generation failed with the Eisvogel template"
@@ -488,10 +489,11 @@ else
             echo "✅ Fallback PDF generation succeeded: $OUTPUT_PDF ($(ls -lh "$OUTPUT_PDF" | awk '{print $5}'))"
 
             # Copy to release directory
-            if cp "$OUTPUT_PDF" "$RELEASE_PDF" 2>/dev/null; then
+            if cp "$OUTPUT_PDF" "$RELEASE_PDF"; then
                 echo "✅ Fallback PDF copied to release directory: $RELEASE_PDF"
             else
-                echo "⚠️  Warning: Could not copy fallback PDF to release directory"
+                echo "❌ Error: Failed to copy fallback PDF to release directory: $RELEASE_PDF"
+                exit 1
             fi
         else
             echo "❌ Error: Even fallback PDF generation failed"
