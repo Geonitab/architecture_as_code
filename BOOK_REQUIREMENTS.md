@@ -14,11 +14,13 @@ toolchain:
   mermaid_cli: "10.7.0"
   mkdocs: "1.5.3"
 python_dependencies:
-  PyYAML: "6.0.1"
-  packaging: "24.1"
-  python-pptx: "0.6.21"
+  PyYAML: "6.0.3"
+  packaging: "25.0"
+  python-pptx: "1.0.2"
   translators: "6.0.1"
-  pytest: "8.2.1"
+  pytest: "8.4.2"
+  pytest-cov: "4.1.0"
+  pytest-html: "4.1.1"
 node_dependencies:
   "@mermaid-js/mermaid-cli": "10.7.0"
 book:
