@@ -398,5 +398,5 @@ When Kvadrat brand guidelines change:
 ---
 
 **Status:** ✅ Implementation Complete  
-**Last Updated:** 5 November 2025  
+**Last Updated:** 26 March 2026  
 **Next Review:** When Kvadrat brand guidelines update

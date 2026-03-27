@@ -229,7 +229,7 @@ python3 scripts/validate_presentation_guidelines.py --strict
 ## Document Metadata
 
 **Version:** 1.0  
-**Last Updated:** 5 November 2025  
+**Last Updated:** 26 March 2026  
 **Maintained By:** Architecture as Code Editorial Team  
 **Related Documentation:**
 - [PRESENTATION_DESIGN_GUIDELINES.md](PRESENTATION_DESIGN_GUIDELINES.md)

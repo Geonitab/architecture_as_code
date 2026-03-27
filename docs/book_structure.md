@@ -206,4 +206,4 @@ See `29_about_the_author.md` for detailed information about the book's author an
 
 ---
 
-*Last updated: 2024-12-03*
+*Last updated: 2026-03-26*
