@@ -253,7 +253,7 @@ jobs:
                   ./build_book.sh --release &&
                   cd .. &&
                   echo '📝 Step 3: Verifying book files...' &&
-                  ls -la releases/book/ || echo '⚠️ No book files found'
+                  ls -la releases/book/architecture_as_code.pdf || { echo '❌ PDF missing from releases/book/ – aborting'; exit 1; }
                   ;;
                 'presentations-only')
                   echo '🎤 Building presentations only...' &&
@@ -281,7 +281,7 @@ jobs:
                   ./build_book.sh --release &&
                   cd .. &&
                   echo '📝 Verifying book files...' &&
-                  ls -la releases/book/ || echo '⚠️ No book files found' &&
+                  ls -la releases/book/architecture_as_code.pdf || { echo '❌ PDF missing from releases/book/ – aborting'; exit 1; } &&
 
                   # Generate whitepapers
                   echo '📄 Step 2: Generating whitepapers...' &&
@@ -585,6 +585,7 @@ jobs:
             final-release/presentation/architecture_as_code_presentation.pptx
             final-release/whitepapers/whitepapers_combined.pdf
             unified-release-archive.zip
+          fail_on_unmatched_files: true
           draft: false
           prerelease: false
         env:
