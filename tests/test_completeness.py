@@ -201,7 +201,11 @@ class TestCompleteness:
         orphaned_chapters = (actual_chapters - expected_chapters) - supplemental_chapters
         
         # Find missing chapters (defined in requirements but don't exist)
-        missing_chapters = expected_chapters - actual_chapters
+        # Check actual file existence for non-numbered files (e.g. glossary.md)
+        missing_chapters = {
+            f for f in expected_chapters
+            if f not in actual_chapters and not (docs_directory / f).exists()
+        }
         
         error_messages = []
         if orphaned_chapters:

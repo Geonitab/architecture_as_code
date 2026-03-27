@@ -12,6 +12,7 @@ toolchain:
   pandoc: "3.1.9"
   node: "20.11.1"
   mermaid_cli: "10.7.0"
+  mkdocs: "1.5.3"
 python_dependencies:
   PyYAML: "6.0.1"
   packaging: "24.1"
@@ -105,7 +106,7 @@ book:
       area: "Delivery and Operations"
       required: true
       label: "Chapter 14"
-    - filename: "15_evidence_as_code.md"
+    - filename: "15a_evidence_as_code.md"
       title: "Evidence as Code and Continuous Assurance"
       area: "Delivery and Operations"
       required: true
@@ -180,12 +181,12 @@ book:
       area: "Future and Wrap-up"
       required: true
       label: "Chapter 27"
-    - filename: "glossary.md"
+    - filename: "28_glossary.md"
       title: "Glossary"
       area: "Appendices"
       required: true
       label: "Glossary"
-    - filename: "about_the_author.md"
+    - filename: "29_about_the_author.md"
       title: "About the Author"
       area: "Appendices"
       required: true
@@ -195,7 +196,7 @@ book:
       area: "Appendices"
       required: true
       label: "Appendix A"
-    - filename: "appendix_b_technical_architecture.md"
+    - filename: "31_appendix_b_technical_architecture.md"
       title: "Appendix B: Technical Architecture for Book Production"
       area: "Appendices"
       required: true
@@ -263,11 +264,11 @@ book:
       description: "Introduces the appendices, technical reference architecture and citation material."
   special_chapters:
     glossary:
-      filename: "glossary.md"
+      filename: "28_glossary.md"
       requires_diagram: false
       requires_sources: false
     authors:
-      filename: "about_the_author.md"
+      filename: "29_about_the_author.md"
       requires_diagram: false
       requires_sources: false
     conclusion:
@@ -279,7 +280,7 @@ book:
       requires_diagram: false
       requires_sources: false
     technical_architecture:
-      filename: "appendix_b_technical_architecture.md"
+      filename: "31_appendix_b_technical_architecture.md"
       requires_diagram: true
       requires_sources: false
     references:
@@ -417,7 +418,7 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 12 | 12_compliance.md | Compliance and Regulatory Adherence | Security and Governance | Yes |
 | Chapter 13 | 13_testing_strategies.md | Testing Strategies for Infrastructure as Code | Delivery and Operations | Yes |
 | Chapter 14 | 14_practical_implementation.md | Architecture as Code in Practice | Delivery and Operations | Yes |
-| Chapter 15A | 15_evidence_as_code.md | Evidence as Code and Continuous Assurance | Delivery and Operations | Yes |
+| Chapter 15A | 15a_evidence_as_code.md | Evidence as Code and Continuous Assurance | Delivery and Operations | Yes |
 | Chapter 15B | 15_cost_optimization.md | Cost Optimisation and Resource Management | Delivery and Operations | Yes |
 | Chapter 16 | 16_migration.md | Migration from Traditional Infrastructure | Delivery and Operations | Yes |
 | Chapter 17 | 17_organisational_change.md | Organisational Change and Team Structures | Organisation and Leadership | Yes |
@@ -432,20 +433,20 @@ Readers should understand cloud platforms (AWS, Azure or GCP), be comfortable wi
 | Chapter 26A | 26a_prerequisites_for_aac.md | Prerequisites for Architecture as Code Adoption | Future and Wrap-up | Yes |
 | Chapter 26B | 26b_aac_anti_patterns.md | Anti-Patterns in Architecture as Code Programmes | Future and Wrap-up | Yes |
 | Chapter 27 | 27_conclusion.md | Chapter 27 – Conclusion | Future and Wrap-up | Yes |
-| Glossary | glossary.md | Glossary | Appendices | Yes |
-| About the Author | about_the_author.md | About the Author | Appendices | Yes |
+| Glossary | 28_glossary.md | Glossary | Appendices | Yes |
+| About the Author | 29_about_the_author.md | About the Author | Appendices | Yes |
 | Appendix A | 30_appendix_code_examples.md | Code examples and technical architecture as code implementations | Appendices | Yes |
-| Appendix B | appendix_b_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
+| Appendix B | 31_appendix_b_technical_architecture.md | Appendix B: Technical Architecture for Book Production | Appendices | Yes |
 | Appendix C | 32_finos_project_blueprint.md | FINOS Project Blueprint: Operationalising Architecture as Code | Appendices | Yes |
 | Appendix D | architecture_as_code_maturity_model.md | Architecture as Code Maturity Model | Reference | Yes |
 | References | 33_references.md | References and Sources | Reference | Yes |
 
 ### Special Chapter Requirements
-- **Glossary (`glossary.md`)** – no diagrams or sources required.
-- **About the Author (`about_the_author.md`)** – no diagrams or sources required.
+- **Glossary (`28_glossary.md`)** – no diagrams or sources required.
+- **About the Author (`29_about_the_author.md`)** – no diagrams or sources required.
 - **Conclusion (`27_conclusion.md`)** – does not require diagrams but must cite sources.
 - **Appendix A (`30_appendix_code_examples.md`)** – diagrams and sources are optional.
-- **Technical Architecture (`appendix_b_technical_architecture.md`)** – diagrams are required; sources are optional.
+- **Technical Architecture (`31_appendix_b_technical_architecture.md`)** – diagrams are required; sources are optional.
 - **References (`33_references.md`)** – provide consolidated citations for the entire manuscript.
 - **Book Cover (`BOOK_COVER_DESIGN.md`)** – no diagrams or sources required.
 - **EPUB Validation (`EPUB_VALIDATION.md`)** – no diagrams or sources required.

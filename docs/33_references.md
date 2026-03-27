@@ -22,7 +22,7 @@ This section provides a comprehensive list of all sources and references cited t
 ## Academic and Industry Publications
 
 **AaC Open Source Project.** "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)
-*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Appendix B: Technical Architecture for Book Production](appendix_b_technical_architecture.md)*
+*Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md), [Appendix B: Technical Architecture for Book Production](31_appendix_b_technical_architecture.md)*
 
 **Architecture Decision Records Community.** "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
@@ -67,7 +67,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 14: Practical Implementation](14_practical_implementation.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **GitHub Open Source Community.** "Collaborative Software Development." Platform Documentation, 2024.
-*Referenced in: [About the Author](about_the_author.md)*
+*Referenced in: [About the Author](29_about_the_author.md)*
 
 **IEEE.** "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
 *Referenced in: [Chapter 2: Fundamental Principles](02_fundamental_principles.md)*
@@ -76,10 +76,10 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md)*
 
 **Kvadrat AB.** "Gunnar Nordqvist - Chief Architect Profile." Consultant Profile, 2024. Available at: [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)
-*Referenced in: [About the Author](about_the_author.md)*
+*Referenced in: [About the Author](29_about_the_author.md)*
 
 **Kvadrat AB.** "Technology Consulting Excellence." Company Profile, 2024. Available at: [https://www.kvadrat.se/](https://www.kvadrat.se/)  
-*Referenced in: [About the Author](about_the_author.md)*
+*Referenced in: [About the Author](29_about_the_author.md)*
 
 **MarketsandMarkets.** "Infrastructure as Code Market Report." MarketsandMarkets, 2023.  
 *Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 25: Future Trends Development](25_future_trends.md)*
@@ -130,7 +130,7 @@ This section provides a comprehensive list of all sources and references cited t
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
 <a id="thoughtworks-architecture-as-code-the-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [About the Author](about_the_author.md)*
+*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [About the Author](29_about_the_author.md)*
 
 **ThoughtWorks.** "Architecture Decision Records." Technology Radar, 2023.  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
@@ -181,6 +181,24 @@ This section provides a comprehensive list of all sources and references cited t
 
 **Pulumi.** "Testing Infrastructure as Code Programs." Pulumi Blog, 2024. (Source [15])
 *Referenced in: [Chapter 13: Testing Strategies](13_testing_strategies.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*
+
+<a id="thoughtworks-architecture-as-code-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024. (Source [1])
+*Referenced in: [Chapter 1: Introduction to Architecture as Code](01_introduction.md), [Chapter 2: Fundamental Principles of Architecture as Code](02_fundamental_principles.md), [Chapter 4: Architecture Decision Records](04_adr.md)*
+
+**HashiCorp.** "Introduction to Infrastructure as Code with Terraform." HashiCorp Developer Documentation, 2024. (Source [5])
+*Referenced in: [Chapter 5: Automation, DevOps and CI/CD](05_automation_devops_cicd.md), [Chapter 7: Containerisation and Orchestration as Code](07_containerisation.md)*
+
+**Cloud Native Computing Foundation.** "Cloud Native Definition." CNCF GitHub, 2024. [https://github.com/cncf/toc/blob/main/DEFINITION.md](https://github.com/cncf/toc/blob/main/DEFINITION.md) (Source [6])
+*Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerisation.md), [Chapter 8: Microservices Architecture as Code](08_microservices.md)*
+
+**NIST.** "Security and Privacy Controls for Information Systems and Organisations." NIST Special Publication 800-53, 2024. (Source [11])
+*Referenced in: [Chapter 9: Security Fundamentals for Architecture as Code](09_security_fundamentals.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 12: Compliance and Regulatory Adherence](12_compliance.md)*
+
+**Kubernetes.** "Kubernetes Documentation: Concepts." Kubernetes Project, 2024. [https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/) (Source [13])
+*Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerisation.md), [Chapter 13: Testing Strategies](13_testing_strategies.md)*
+
+**ISO/IEC.** "ISO/IEC 27001:2022 Information Security Management." International Organisation for Standardisation, 2022. (Source [14])
+*Referenced in: [Chapter 12: Compliance and Regulatory Adherence](12_compliance.md), [Chapter 15A: Evidence as Code and Continuous Assurance](15a_evidence_as_code.md)*
 
 ## Using This References Section
 

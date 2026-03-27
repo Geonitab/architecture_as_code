@@ -8,6 +8,7 @@ This catalogue is generated from the structured ADR metadata committed to the re
 | --- | ----- | ------ | --------------- | ------------- | ----------- |
 | ADR-0003 | Selection of Terraform for Architecture as Code | Accepted | docs/04_adr.md<br>docs/05_automation_devops_cicd.md<br>docs/06_structurizr.md | AAC-1182<br>AAC-1305 | 2025-05-15 |
 | ADR-0007 | Selection of PostgreSQL for the Primary Database | Accepted | docs/04_adr.md<br>docs/08_microservices.md<br>docs/15_cost_optimization.md | AAC-1224<br>DATA-947 | 2025-04-02 |
+| ADR-0023 | Adopt Kafka for Event Streaming | Accepted | docs/02_fundamental_principles.md<br>docs/05_automation_devops_cicd.md<br>docs/08_microservices.md | AAC-1420<br>PLAT-882 | 2025-07-10 |
 
 ## Detailed records
 
@@ -69,6 +70,35 @@ PostgreSQL anchors transactional workloads for the multi-tenant platform, aligni
 
 **Change log**
 - 2024-10-02 – Added operational readiness checklist and updated observability automation references.
+
+### ADR-0023 – Adopt Kafka for Event Streaming
+
+Apache Kafka standardises the event streaming layer across the Architecture as Code platform, enabling decoupled service communication and auditable change propagation.
+
+**Status:** Accepted — initial decision recorded on 2024-02-15.
+**Review cadence:** Last reviewed on 2025-01-10; next review due 2025-07-10.
+
+**Deciders:** Architecture Steering Council, Platform Reliability Guild
+**Reviewers:** Alice Patel, Gustav Lindström, Elena Kowalski
+
+**Linked chapters**
+- `docs/02_fundamental_principles.md`
+- `docs/05_automation_devops_cicd.md`
+- `docs/08_microservices.md`
+
+**Supporting diagrams**
+- `docs/images/diagram_08_chapter6.png`
+
+**Backlog alignment**
+- AAC-1420
+- PLAT-882
+
+**Automation hooks**
+- Kafka topic provisioning is managed via Terraform modules committed to the architecture repository.
+- Consumer group lag alerts are wired into the governance-as-code pipeline to surface drift in real time.
+
+**Change log**
+- 2025-01-10 – Review confirmed topic retention policies align with compliance evidence retention requirements; no successor ADR required.
 
 ---
 *Generated automatically via `python3 scripts/generate_adr_catalogue.py`. Do not edit manually.*

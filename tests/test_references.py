@@ -58,8 +58,9 @@ class TestReferences:
         
         # Extract all references from the references section
         # Look for lines starting with ** (bold) which indicate source entries
+        # Allow optional HTML anchor prefix e.g. <a id="..."></a>
         reference_entries = re.findall(
-            r'^\*\*(.+?)\.\*\*\s+(.+?)$',
+            r'^(?:<a[^>]*></a>)?\*\*(.+?)\.\*\*\s+(.+?)$',
             references_content,
             re.MULTILINE
         )
