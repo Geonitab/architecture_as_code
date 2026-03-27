@@ -124,7 +124,7 @@ evidence_sources := [
 ]
 ```
 
-The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected **once**, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Service Criteria can rely on the same artefacts without triggering duplicate reviews. The [Evidence as Code chapter](15_evidence_as_code.md) expands on how pipelines package and publish those artefacts, while [Compliance and Regulatory Adherence](12_compliance.md) shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.
+The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected **once**, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Service Criteria can rely on the same artefacts without triggering duplicate reviews. The [Evidence as Code chapter](15a_evidence_as_code.md) expands on how pipelines package and publish those artefacts, while [Compliance and Regulatory Adherence](12_compliance.md) shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.
 
 ## Implementation roadmap for European delivery teams
 

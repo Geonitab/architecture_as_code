@@ -223,10 +223,7 @@ def get_release_metadata(requirements_path: Path = Path("BOOK_REQUIREMENTS.md"))
 
 def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str | None:
     """
-    Copy diagram to whitepaper directory and return local path.
-    
-    This ensures whitepapers are self-contained and can be distributed
-    without external dependencies on the docs/ directory structure.
+    Return a relative path from the output directory to the diagram in docs/.
     """
     if not diagram_path:
         return None
@@ -235,28 +232,11 @@ def resolve_diagram_src(diagram_path: str | None, output_directory: Path) -> str
     if not source_path.is_absolute():
         source_path = Path("docs") / source_path
 
-    if not source_path.exists():
-        print(f"Warning: Diagram {diagram_path} not found at {source_path}")
-        return None
-
-    # Create images subdirectory in whitepaper output location
-    images_dir = output_directory / "images"
-    images_dir.mkdir(exist_ok=True, parents=True)
-    
-    # Copy diagram to whitepaper images directory
-    dest_path = images_dir / source_path.name
     try:
-        shutil.copy2(source_path, dest_path)
-        # Return relative path from whitepaper HTML to copied image
-        return f"images/{source_path.name}"
-    except Exception as e:
-        print(f"Warning: Failed to copy diagram {source_path} to {dest_path}: {e}")
-        # Fallback to relative path (may not work in all contexts)
-        try:
-            relative_path = os.path.relpath(source_path, output_directory)
-            return Path(relative_path).as_posix()
-        except ValueError:
-            return source_path.as_posix()
+        relative_path = os.path.relpath(source_path, output_directory)
+        return Path(relative_path).as_posix()
+    except ValueError:
+        return source_path.as_posix()
 
 
 def get_chapter_mapping():
@@ -269,25 +249,21 @@ def get_chapter_mapping():
         if chapter.get("filename")
     }
 
-    nav_filenames = get_whitepaper_chapter_files()
     mapping = OrderedDict()
 
-    for index, filename in enumerate(nav_filenames, start=1):
-        chapter_meta = chapter_lookup.get(filename)
-        if chapter_meta is None:
-            print(
-                f"Warning: {filename} present in navigation but missing from BOOK_REQUIREMENTS metadata"
-            )
-            chapter_meta = {}
+    for index, chapter in enumerate(chapters, start=1):
+        filename = chapter.get("filename")
+        if not filename:
+            continue
 
-        label = chapter_meta.get("label") or chapter_meta.get("title")
+        label = chapter.get("label") or chapter.get("title")
         if not label:
             label = f"Chapter {index}"
 
         mapping[filename] = {
             "label": label,
-            "title": chapter_meta.get("title") or label,
-            "area": chapter_meta.get("area") or "Architecture as Code",
+            "title": chapter.get("title") or label,
+            "area": chapter.get("area") or "Architecture as Code",
         }
 
     return mapping

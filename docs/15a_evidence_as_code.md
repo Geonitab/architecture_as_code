@@ -1,5 +1,7 @@
 # Evidence as Code {#evidence-as-code}
 
+![Evidence pipeline showing automated compliance artefact generation, versioning, and multi-framework reuse](images/diagram_12_compliance.png)
+
 ## Learning Objectives
 
 By the end of this chapter, you will be able to:

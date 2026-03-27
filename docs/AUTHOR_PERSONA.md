@@ -226,5 +226,5 @@ The following spellings are mandatory in all prose. See `docs/STYLE_GUIDE.md` fo
 
 - `docs/STYLE_GUIDE.md` — Spelling, punctuation, and grammar standards
 - `docs/VISUAL_ELEMENTS_GUIDE.md` — Diagram and visual presentation standards
-- `docs/about_the_author.md` — Biographical information
+- `docs/29_about_the_author.md` — Biographical information
 - `CLAUDE.md` — Project-level instructions for AI-assisted tooling

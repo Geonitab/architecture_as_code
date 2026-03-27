@@ -1,0 +1,150 @@
+{
+  "version": "1.0",
+  "description": "Curated source catalogue for Architecture as Code GitHub issue drafts. Each entry documents an authoritative reference used in the manuscript.",
+  "sources": [
+    {
+      "id": 1,
+      "title": "Architecture as Code: The Next Evolution",
+      "type": "industry-report",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/architecture-as-code",
+      "summary": "ThoughtWorks Technology Radar entry that positions Architecture as Code as an emerging practice for encoding and automating architectural decisions.",
+      "supports_chapters": ["01_introduction.md", "02_fundamental_principles.md", "04_adr.md"]
+    },
+    {
+      "id": 2,
+      "title": "Governance as Code – Thoughtworks Technology Radar",
+      "type": "industry-report",
+      "year": 2024,
+      "url": "https://www.thoughtworks.com/radar/techniques/governance-as-code",
+      "summary": "Thoughtworks Technology Radar entry describing the practice of encoding governance policies and enforcement rules as version-controlled code.",
+      "supports_chapters": ["08_microservices.md", "11_governance_as_code.md", "23_soft_as_code_interplay.md"]
+    },
+    {
+      "id": 3,
+      "title": "Git Workflows for Architecture as Code",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://www.atlassian.com/git/tutorials/comparing-workflows",
+      "summary": "Atlassian guide covering branching strategies and pull-request workflows applicable to architecture repository management.",
+      "supports_chapters": ["02_fundamental_principles.md", "03_version_control.md"]
+    },
+    {
+      "id": 4,
+      "title": "About protected branches",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches",
+      "summary": "GitHub documentation explaining branch protection rules, required status checks, and review requirements for controlled merges.",
+      "supports_chapters": ["02_fundamental_principles.md", "03_version_control.md", "11_governance_as_code.md", "14_practical_implementation.md"]
+    },
+    {
+      "id": 5,
+      "title": "Introduction to Infrastructure as Code with Terraform",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/intro",
+      "summary": "HashiCorp's introductory guide to Terraform, covering declarative configuration, plan and apply cycles, and state management fundamentals.",
+      "supports_chapters": ["05_automation_devops_cicd.md", "07_containerisation.md"]
+    },
+    {
+      "id": 6,
+      "title": "Cloud Native Definition",
+      "type": "specification",
+      "year": 2024,
+      "url": "https://github.com/cncf/toc/blob/main/DEFINITION.md",
+      "summary": "CNCF's canonical definition of cloud native technologies, covering containers, microservices, and dynamic orchestration.",
+      "supports_chapters": ["07_containerisation.md", "08_microservices.md"]
+    },
+    {
+      "id": 7,
+      "title": "State of Cloud Native Development 2024",
+      "type": "industry-report",
+      "year": 2024,
+      "url": "https://www.cncf.io/reports/cncf-annual-survey-2024/",
+      "summary": "CNCF annual survey reporting on adoption rates, tooling preferences, and operational challenges across cloud native teams globally.",
+      "supports_chapters": ["07_containerisation.md", "08_microservices.md"]
+    },
+    {
+      "id": 8,
+      "title": "The Site Reliability Workbook: Practical Ways to Implement SRE",
+      "type": "book",
+      "year": 2018,
+      "url": "https://sre.google/workbook/table-of-contents/",
+      "summary": "O'Reilly workbook from Google SRE team providing practical guidance on reliability engineering, error budgets, and automation-first operations.",
+      "supports_chapters": ["05_automation_devops_cicd.md", "13_testing_strategies.md"]
+    },
+    {
+      "id": 9,
+      "title": "AWS Cloud Development Kit (CDK) Developer Guide",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
+      "summary": "Amazon's official CDK guide covering infrastructure-as-code patterns using familiar programming languages to define and provision AWS resources.",
+      "supports_chapters": ["03_version_control.md", "05_automation_devops_cicd.md", "07_containerisation.md", "14_practical_implementation.md"]
+    },
+    {
+      "id": 10,
+      "title": "Policy as Code Overview",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://www.openpolicyagent.org/docs/latest/",
+      "summary": "Open Policy Agent project documentation covering Rego policy language, admission control patterns, and integration with CI/CD pipelines.",
+      "supports_chapters": ["02_fundamental_principles.md", "08_microservices.md", "10_policy_and_security.md", "11_governance_as_code.md"]
+    },
+    {
+      "id": 11,
+      "title": "Security and Privacy Controls for Information Systems and Organisations – NIST SP 800-53",
+      "type": "standard",
+      "year": 2024,
+      "url": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
+      "summary": "NIST catalogue of security and privacy controls providing a framework for implementing and assessing control effectiveness in information systems.",
+      "supports_chapters": ["09_security_fundamentals.md", "11_governance_as_code.md", "12_compliance.md"]
+    },
+    {
+      "id": 12,
+      "title": "Design multi-stage release pipelines with approvals",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process",
+      "summary": "Microsoft Learn guide for configuring multi-stage Azure DevOps pipelines with gates, approvals, and environment promotion controls.",
+      "supports_chapters": ["05_automation_devops_cicd.md", "14_practical_implementation.md"]
+    },
+    {
+      "id": 13,
+      "title": "Kubernetes Documentation: Concepts",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://kubernetes.io/docs/concepts/",
+      "summary": "Kubernetes project documentation covering cluster architecture, workload management, services, and configuration primitives.",
+      "supports_chapters": ["07_containerisation.md", "13_testing_strategies.md"]
+    },
+    {
+      "id": 14,
+      "title": "ISO/IEC 27001:2022 Information Security Management",
+      "type": "standard",
+      "year": 2022,
+      "url": "https://www.iso.org/standard/27001",
+      "summary": "International standard specifying requirements for establishing, implementing, maintaining, and continually improving an information security management system.",
+      "supports_chapters": ["12_compliance.md", "15a_evidence_as_code.md"]
+    },
+    {
+      "id": 15,
+      "title": "Testing Infrastructure as Code Programs",
+      "type": "blog",
+      "year": 2024,
+      "url": "https://www.pulumi.com/docs/guides/testing/",
+      "summary": "Pulumi guide covering unit, integration, and property-based testing patterns for infrastructure-as-code programmes.",
+      "supports_chapters": ["13_testing_strategies.md", "14_practical_implementation.md"]
+    },
+    {
+      "id": 16,
+      "title": "Securing Terraform State",
+      "type": "documentation",
+      "year": 2024,
+      "url": "https://developer.hashicorp.com/terraform/cloud-docs/state/securing",
+      "summary": "HashiCorp documentation on Terraform state file security, covering encryption at rest, access controls, and remote backend configuration.",
+      "supports_chapters": ["09_security_fundamentals.md", "09b_security_patterns.md"]
+    }
+  ]
+}

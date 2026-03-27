@@ -6,13 +6,13 @@
 
 The appendices provide essential reference material, technical implementations, and background context that complement the main narrative. These resources support practitioners as they apply Architecture as Code principles in their own environments.
 
-The [glossary](glossary.md) defines key terms and concepts used throughout this book, providing clarity on terminology that may have different interpretations across contexts. Understanding this shared vocabulary ensures clear communication when teams discuss Architecture as Code practices.
+The [glossary](28_glossary.md) defines key terms and concepts used throughout this book, providing clarity on terminology that may have different interpretations across contexts. Understanding this shared vocabulary ensures clear communication when teams discuss Architecture as Code practices.
 
-[About the Author](about_the_author.md) provides context for the expertise and perspectives that shaped this book, helping readers understand the experiences and principles that inform the guidance offered.
+[About the Author](29_about_the_author.md) provides context for the expertise and perspectives that shaped this book, helping readers understand the experiences and principles that inform the guidance offered.
 
 [Appendix A: Code Examples and Technical Implementations](30_appendix_code_examples.md) contains complete, working code samples referenced throughout the chapters. These implementations demonstrate the concepts in practical, executable form—from Infrastructure Platform Team blueprints to competency frameworks, configuration templates, and automation scripts.
 
-[Appendix B: Technical Architecture for Book Production](appendix_b_technical_architecture.md) documents the infrastructure and automation used to produce this book itself. This meta-example demonstrates Architecture as Code principles applied to documentation delivery, showing how the same practices scale from infrastructure to content pipelines.
+[Appendix B: Technical Architecture for Book Production](31_appendix_b_technical_architecture.md) documents the infrastructure and automation used to produce this book itself. This meta-example demonstrates Architecture as Code principles applied to documentation delivery, showing how the same practices scale from infrastructure to content pipelines.
 
 [Appendix D: Templates and Tools](appendix_templates_and_tools.md) curates the reusable assets that support maturity assessments and governance workflows. It links directly to the Architecture as Code Maturity Model, the interactive Maturity Radar Tool, and the Control Mapping Matrix template so teams can adopt the artefacts without hunting through the repository.
 

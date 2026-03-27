@@ -75,7 +75,7 @@ Reference material, author information, technical enablers, and the Architecture
 |---------|------|-------|-------------|
 | 13 | `13_testing_strategies.md` | Testing Strategies for Infrastructure as Code | Testing of IaC and architecture code |
 | 14 | `14_practical_implementation.md` | Architecture as Code in Practice | Practical implementation examples |
-| 15A | `15_evidence_as_code.md` | Evidence as Code and Continuous Assurance | Automated evidence pipelines that connect policy automation to operational reporting |
+| 15A | `15a_evidence_as_code.md` | Evidence as Code and Continuous Assurance | Automated evidence pipelines that connect policy automation to operational reporting |
 | 15B | `15_cost_optimization.md` | Cost Optimisation and Resource Management | Economic optimisation of resources |
 | 16 | `16_migration.md` | Migration from Traditional Infrastructure | Migration strategies and best practices |
 
@@ -116,10 +116,10 @@ Reference material, author information, technical enablers, and the Architecture
 
 | Chapter / Appendix | File | Title | Description |
 |--------------------|------|-------|-------------|
-| Glossary | `glossary.md` | Glossary | Glossary and definitions |
-| About the Author | `about_the_author.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
+| Glossary | `28_glossary.md` | Glossary | Glossary and definitions |
+| About the Author | `29_about_the_author.md` | About the Author | Profile of Gunnar Nordqvist and context for the book's expertise |
 | Appendix A | `30_appendix_code_examples.md` | Appendix A: Code Examples and Technical Implementations | Technical architecture code implementations |
-| Appendix B | `appendix_b_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
+| Appendix B | `31_appendix_b_technical_architecture.md` | Appendix B: Technical Architecture for Book Production | Technical book production infrastructure |
 | 32 | `32_finos_project_blueprint.md` | Appendix C: FINOS Project Blueprint | Operational blueprint demonstrating governance as code alignment |
 | 33 | `33_references.md` | References and Sources | Citations supporting the manuscript |
 | 34 | `appendix_templates_and_tools.md` | Appendix D: Templates and Tools | Directory of reusable maturity and compliance artefacts |
@@ -202,7 +202,7 @@ This book is intended for:
 
 ## Authors and Contributors
 
-See `about_the_author.md` for detailed information about the book's author and the expertise behind this comprehensive guide.
+See `29_about_the_author.md` for detailed information about the book's author and the expertise behind this comprehensive guide.
 
 ---
 

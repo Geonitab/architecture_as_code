@@ -32,7 +32,7 @@ nav:
       - index: part_d_delivery.md
       - Testing Strategies for Infrastructure as Code: 13_testing_strategies.md
       - Architecture as Code in Practice: 14_practical_implementation.md
-      - Evidence as Code and Continuous Assurance: 15_evidence_as_code.md
+      - Evidence as Code and Continuous Assurance: 15a_evidence_as_code.md
       - Cost Optimisation and Resource Management: 15_cost_optimization.md
       - Migration from Traditional Infrastructure: 16_migration.md
   - Part E – Organisation & Leadership:
@@ -55,10 +55,10 @@ nav:
       - Conclusion: 27_conclusion.md
   - Appendices:
       - Part H – Appendices and Reference Overview: part_h_appendices.md
-      - Glossary: glossary.md
-      - About the Author: about_the_author.md
+      - Glossary: 28_glossary.md
+      - About the Author: 29_about_the_author.md
       - Appendix A – Code Examples and Technical Implementations: 30_appendix_code_examples.md
-      - Appendix B – Technical Architecture for Book Production: appendix_b_technical_architecture.md
+      - Appendix B – Technical Architecture for Book Production: 31_appendix_b_technical_architecture.md
       - Appendix C – FINOS Project Blueprint: 32_finos_project_blueprint.md
       - Appendix D – Templates and Tools: appendix_templates_and_tools.md
       - ADR Catalogue: adr/adr_catalogue.md
@@ -83,9 +83,9 @@ plugins:
   - search
   - redirects:
       redirect_maps:
-        28_glossary.md: glossary.md
-        29_about_the_author.md: about_the_author.md
-        31_appendix_b_technical_architecture.md: appendix_b_technical_architecture.md
+        28_glossary.md: 28_glossary.md
+        29_about_the_author.md: 29_about_the_author.md
+        31_appendix_b_technical_architecture.md: 31_appendix_b_technical_architecture.md
         32_architecture_as_code_maturity_model.md: architecture_as_code_maturity_model.md
 extra_css:
   - stylesheets/code-dark.css

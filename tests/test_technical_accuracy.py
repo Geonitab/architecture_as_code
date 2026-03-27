@@ -280,6 +280,8 @@ class TestTechnicalAccuracy:
             # Strip fenced and inline code to avoid false positives in examples
             content_no_code = code_fence_pattern.sub('', content)
             content_no_code = inline_code_pattern.sub('', content_no_code)
+            # Strip Markdown reference-style link definitions (e.g. [1]: https://...)
+            content_no_code = re.sub(r'^\[[^\]]+\]:\s+https?://[^\s]+.*$', '', content_no_code, flags=re.MULTILINE)
 
             # Find potential URLs not in proper markdown format
             loose_urls = re.findall(

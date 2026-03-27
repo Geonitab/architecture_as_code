@@ -33,6 +33,8 @@ class TestConsistency:
 
                 if line.startswith('# '):
                     h1_title = line[2:].strip()
+                    # Strip Pandoc attribute blocks (e.g. {#id .class}) before measuring
+                    h1_title = re.sub(r'\s*\{[^}]*\}\s*$', '', h1_title).strip()
                     break
 
                 title_issues.append({
