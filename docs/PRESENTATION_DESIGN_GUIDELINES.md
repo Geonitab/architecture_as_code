@@ -668,7 +668,7 @@ When Kvadrat brand guidelines change:
 ## Document Metadata
 
 **Version**: 1.0  
-**Last Updated**: 5 November 2025  
+**Last Updated**: 26 March 2026  
 **Maintained By**: Architecture as Code Editorial Team  
 **Contact**: For questions about presentation design standards, create an issue in the GitHub repository  
 **Licence**: This document follows the same licence as the main Architecture as Code repository
