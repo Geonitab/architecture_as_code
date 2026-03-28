@@ -2,14 +2,6 @@
 %% Maintains the textual source for Figure 22.3.
 
 flowchart LR
-    %% Shared styling definitions used across the workshop diagrams
-    classDef kv-primary fill:#1e3a8a,stroke:#0f172a,stroke-width:2px,color:#f8fafc;
-    classDef kv-accent fill:#6366f1,stroke:#312e81,stroke-width:2px,color:#f8fafc;
-    classDef kv-highlight fill:#fbbf24,stroke:#92400e,stroke-width:2px,color:#1f2937;
-    classDef kv-muted fill:#e2e8f0,stroke:#475569,stroke-width:1px,color:#0f172a;
-    classDef kv-connector stroke-dasharray:4 2,stroke:#1e3a8a,color:#0f172a,font-weight:bold;
-
-    linkStyle default stroke:#0f172a,stroke-width:2px;
     subgraph Documentation_as_Code[Documentation as Code]
         Docs[Markdown Source]:::kv-primary --> Reviews[Reviews & Checks]:::kv-highlight
         Reviews --> Publish[Publication]:::kv-accent
@@ -23,5 +15,3 @@ flowchart LR
     Publish -.Feedback.-> Models
     Provision -.Evidence.-> Docs
     Docs -.Guidance.-> Models
-
-    class Publish,Provision kv-connector;
