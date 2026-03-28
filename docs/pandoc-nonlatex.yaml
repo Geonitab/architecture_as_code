@@ -4,8 +4,6 @@ toc: true
 toc-depth: 3
 number-sections: true
 
-top-level-division: chapter
-
 highlight-style: tango
 
 epub-chapter-level: 1
@@ -16,7 +14,4 @@ metadata:
   author: "Gunnar Nordqvist"
   date: "2025"
   language: en-GB
-  lang: en-GB
-
-variables:
   lang: en-GB

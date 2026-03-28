@@ -147,8 +147,6 @@ def build_epub_from_chapters(chapter_paths: Sequence[Path], output_path: Path) -
                 "language=en-GB",
                 "--metadata",
                 "lang=en-GB",
-                "--metadata=include-before=",
-                "--metadata=header-includes=",
             ]
         )
 
