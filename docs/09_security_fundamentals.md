@@ -2,6 +2,8 @@
 
 ![Security as code workflow](images/diagram_06_chapter5.png)
 
+*This workflow diagram illustrates the general security-as-code pipeline; a chapter-specific diagram will be added in a future revision.*
+
 *Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are
  embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous complian
 ce monitoring. Treating security as code enables organisations to deliver robust, scalable, and auditable protections without sl
@@ -50,8 +52,7 @@ European organisations operate within a dense mesh of regulatory obligations. GD
 
 This chapter explores security from an integrated perspective that joins technical implementation, organisational processes, and
  regulatory requirements. Readers gain a deep understanding of threat modelling, risk assessment, policy automation, and inciden
-t response across code-driven environments. Particular attention is given to Section 10.6, which introduces advanced security arc
-hitecture patterns for large-scale enterprises.
+t response across code-driven environments. Advanced security architecture patterns for large-scale enterprises are covered in Chapter 9B.
 
 ## Theoretical foundation: security architecture in the digital era
 
@@ -208,7 +209,7 @@ Infrastructure state files capture live inventories, secrets, and the policy dec
 - **[HashiCorp – “Securing Terraform State” (2024)](https://developer.hashicorp.com/terraform/cloud-docs/state/securing):** instructs teams to store state in remote backends, enable state locking, and avoid local copies to eliminate workstation exposure and race conditions during deployment ([Source [16]](33_references.md#source-16)).
 - **[HashiCorp – “Backend Type: s3” (2024)](https://developer.hashicorp.com/terraform/language/settings/backends/s3):** documents the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that enforce DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state backends ([Source [17]](33_references.md#source-17)).
 - **[HashiCorp – “Terraform Security Best Practices” (2023)](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security):** details the policy guardrails, key management requirements, and secret-handling approaches HashiCorp recommends for enterprise Terraform programmes ([Source [20]](33_references.md#source-20)).
-- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** requires Azure Storage accounts with encryption at rest, Azure AD or SAS-based access control, and blob leases so Terraform operations are serialised and auditable ([Source [18]](33_references.md#source-18)).
+- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** requires Azure Storage accounts with encryption at rest, Microsoft Entra ID or SAS-based access control, and blob leases so Terraform operations are serialised and auditable ([Source [18]](33_references.md#source-18)).
 - **[Google Cloud – “Store Terraform state in Cloud Storage” (2024)](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state):** recommends uniform bucket-level access, object versioning, and customer-managed encryption keys to govern Terraform state across Google Cloud estates ([Source [19]](33_references.md#source-19)).
 
 Centrally managed storage such as AWS S3 with DynamoDB locking, Azure Storage with container leases, or Google Cloud Storage with object versioning should therefore be configured with customer-managed encryption keys and monitored for drift (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), and [19](33_references.md#source-19)). Applying the verified practices above keeps Terraform state aligned with enterprise key management policies, with key rotation schedules, hardware-backed storage, and explicit break-glass procedures captured alongside the associated documentation. Integrating state access with secrets-management tooling ensures cryptographic material is recorded, rotated, and revoked under the same governance as application secrets.

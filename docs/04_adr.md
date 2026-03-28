@@ -33,14 +33,7 @@ In the Architecture as Code context, ADRs document decisions about technology ch
 
 ### Linking ADRs to the documentation workflow
 
-Every ADR must explicitly reference the shared Git-based workflow defined in
-[`docs/documentation_workflow.md`](documentation_workflow.md). Capturing the pull
-request, review approvals, and automated validation outcomes alongside the
-decision gives future contributors a complete audit trail. The additional
-**Review and Documentation Workflow** section in the template formalises this
-expectation by recording where the decision was discussed, which automation
-results were captured, and how the change aligned with the repository-wide
-documentation practice.
+Every ADR should explicitly reference the Git-based review and validation workflow your organisation uses. Capturing the pull request, review approvals, and automated validation outcomes alongside the decision gives future contributors a complete audit trail. The **Review and Documentation Workflow** section in the template formalises this expectation by recording where the decision was discussed, which automation results were captured, and how the change aligned with the team's documentation practice.
 
 ## Structure and Components of ADR
 
@@ -50,7 +43,7 @@ documentation practice.
 
 *Figure 4.2 highlights the four core sections every ADR should capture before the template is populated with project-specific information.*
 
-Each ADR follows a consistent structure that ensures all relevant information is captured systematically. The YAML front matter keeps the automated catalogue aligned with the manuscript and CI pipeline by recording review cadences, linked chapters, diagrams, and backlog work items. The Markdown body then presents the narrative context and decision rationale used throughout the book:
+Each ADR follows a consistent structure that ensures all relevant information is captured systematically. The YAML front matter records the identity, status, and review cadence of the decision. The Markdown body presents the narrative context and decision rationale:
 
 ```markdown
 ---
@@ -64,15 +57,7 @@ deciders:
   - [Named decision authority]
 reviewers:
   - [Reviewer ensuring technical accuracy]
-related_chapters:
-  - docs/04_adr.md
-related_diagrams:
-  - docs/images/diagram_04_adr_process.png
-related_backlog_items:
-  - AAC-1305
 summary: Concise statement explaining why the decision matters.
-automation_hooks:
-  - Optional list of CI jobs or tooling integrations triggered by the ADR metadata.
 change_notes:
   - YYYY-MM-DD – Short description of adjustments or supersessions.
 ---
@@ -101,11 +86,12 @@ Mitigation:
 
 Review and Documentation Workflow:
 - Link to the pull request or merge request where the ADR was discussed
-- Reference the shared workflow in [docs/documentation_workflow.md](documentation_workflow.md)
-  so future readers understand how the decision was reviewed and validated
+- Notes on which automation results were captured and how the change was validated
 ```
 
-Run `python3 scripts/validate_adrs.py` after authoring or updating an ADR to confirm the metadata is complete. The companion `python3 scripts/generate_adr_catalogue.py` command rebuilds the catalogue that powers MkDocs navigation, ensuring new decisions appear automatically alongside the manuscript.
+> **Book repository extensions:** The canonical ADR template above is organisation-agnostic. Some repositories extend it with additional YAML fields—such as `related_chapters`, `related_diagrams`, `related_backlog_items`, and `automation_hooks`—to drive automated catalogue generation and CI tooling. These fields are specific to the toolchain in use and should not be treated as standard ADR metadata. Consult your team's contribution guide for any repository-specific conventions.
+
+After authoring or updating an ADR, validate the metadata completeness using whatever linting or validation script your organisation has adopted. A common approach is a lightweight CI job that checks required front matter fields are populated and that the `next_review_due` date is set.
 
 ### Numbering and Versioning
 
@@ -138,7 +124,7 @@ Architecture as Code principles within this domain:
 
 - **Status:** Accepted
 - **Context:** The organisation needs to standardise on an Architecture as Code tool to manage AWS and Azure environments. Manual provisioning creates inconsistent configurations, weak audit trails, and delays that undermine compliance expectations.
-- **Decision:** Terraform becomes the primary Architecture as Code tool for all cloud environments, with HashiCorp Configuration Language (HCL) as the standard syntax.
+- **Decision:** Terraform becomes the primary Infrastructure as Code tool for all cloud environments, with HashiCorp Configuration Language (HCL) as the standard syntax.
 - **Consequences:**
   - *Positive:*
     - Multi-cloud support for AWS and Azure

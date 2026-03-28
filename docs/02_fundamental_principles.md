@@ -4,7 +4,7 @@ Architecture as Code is founded on core principles that enable successful implem
 
 ![Fundamental principles diagram](images/diagram_02_chapter1.png)
 
-The diagram illustrates the natural flow from declarative code through version control and automation to reproducibility and scalability – the five foundational pillars of Architecture as Code.
+The diagram illustrates the key dimensions of Architecture as Code covered in this chapter, including declarative architecture definition, holistic codification, immutable patterns, testability, and documentation as code.
 
 ## Declarative architecture definition
 
@@ -40,19 +40,7 @@ Modern MBSE-aligned tooling such as Structurizr focuses on keeping a single auth
 
 ## Implementation timeline for Architecture as Code
 
-The foundational principles manifest through a staged adoption journey. Establishing declarative definitions, codifying guardrails in version control, and automating validation require coordinated investment across architecture, platform, and governance teams.
-
-![Architecture as Code implementation timeline](images/diagram_05_gantt_timeline.png)
-
-The implementation roadmap introduces the foundations long before automation is rolled out across the estate. Discovery, codification, and enablement run in parallel so that by the time Architecture as Code reaches production, every pillar in this chapter is already embedded in day-to-day delivery.
-
-| Phase | Duration | Primary focus | Principles reinforced |
-|-------|----------|---------------|-----------------------|
-| **Foundation** | Weeks 1–8 | Evaluate tools, train the core team, structure repositories, and codify the baseline architecture | Declarative architecture definition, holistic codification |
-| **Development** | Weeks 6–20 | Develop reusable templates, implement testing frameworks, stand up CI/CD pipelines, and validate security controls | Immutable architecture patterns, testability at the architecture level, automation guardrails |
-| **Production** | Weeks 18–32 | Pilot immutable deployments, refine based on feedback, expand monitoring, and complete knowledge transfer | Documentation as code, continuous reconciliation, organisation-wide adoption |
-
-Organisations can adjust exact timing to match their scale and regulatory obligations, but maintaining this sequencing prevents downstream teams from adopting automation without a provable architectural baseline. The timeline also clarifies ownership: architecture leaders deliver the canonical models, platform teams build the automation layers, and governance teams monitor adherence once production rollout begins.
+The foundational principles described in this chapter manifest through a staged adoption journey. Establishing declarative definitions, codifying guardrails in version control, and automating validation require coordinated investment across architecture, platform, and governance teams. The detailed implementation roadmap — covering Foundation, Development, and Production phases across a multi-week timeline — is addressed in [Chapter 14: Practical Implementation](14_practical_implementation.md), where sequencing, ownership, and environment promotion are explained in full. The phases described there build directly on the principles introduced here, ensuring that by the time Architecture as Code reaches production, every concept in this chapter is already embedded in day-to-day delivery.
 
 ## Architecture as a single source of truth
 
@@ -388,8 +376,10 @@ Requirements as Code integrates naturally with test automation because requireme
 
 ```python
 # test/requirements_validation.py
+# This validator calls the OPA REST API to evaluate policies.
+# Ensure an OPA server is running (e.g. `opa run --server`) before use.
 import yaml
-import opa
+import requests
 
 EU_VALIDATION_AUTHORITIES = {
     "GDPR": {
@@ -403,21 +393,31 @@ EU_VALIDATION_AUTHORITIES = {
 }
 
 class RequirementsValidator:
-    def __init__(self, requirements_file: str, system_config: dict):
+    def __init__(self, requirements_file: str, system_config: dict,
+                 opa_url: str = "http://localhost:8181"):
         with open(requirements_file, 'r') as f:
             self.requirements = yaml.safe_load(f)
         self.system_config = system_config
+        self.opa_url = opa_url
+
+    def _evaluate_policy(self, policy_path: str, input_data: dict) -> bool:
+        """Call the OPA REST API to evaluate a policy rule."""
+        response = requests.post(
+            f"{self.opa_url}/v1/data/{policy_path}",
+            json={"input": input_data}
+        )
+        result = response.json()
+        return result.get("result", False)
 
     def validate_requirement(self, req_id: str, system_config: dict):
         requirement = self.find_requirement(req_id)
-        policy_result = opa.evaluate(
-            requirement['policy'],
-            system_config
-        )
+        # Derive OPA data path from the policy package name
+        policy_path = req_id.lower().replace("-", "_")
+        violation = self._evaluate_policy(policy_path, system_config)
         return {
             'requirement_id': req_id,
-            'status': 'passed' if not policy_result else 'failed',
-            'violations': policy_result,
+            'status': 'passed' if not violation else 'failed',
+            'violations': violation,
             'validation_reference': EU_VALIDATION_AUTHORITIES.get(
                 requirement.get('compliance', [None])[0]
             ),

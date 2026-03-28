@@ -2,6 +2,8 @@
 
 ![Containerisation and Orchestration](images/diagram_11_chapter10.png)
 
+*Note: this diagram illustrates the general workflow; a chapter-specific diagram will replace this image in a future revision.*
+
 Architecture as Code underpins modern container platforms by turning deployment practices into repeatable definitions. When infrastructure and runtime configuration are described in version-controlled files, teams gain portable, scalable, and reproducible delivery pipelines that function reliably across data centres and cloud providers.
 
 ## Industry trend data driving Architecture as Code adoption
@@ -43,6 +45,45 @@ Large organisations often operate multiple clusters across regions. Multi-cluste
 ## Guard rails that keep manifests trustworthy
 
 Container platforms remain maintainable only if every manifest is validated before it reaches production. Teams extend their CI/CD pipelines with schema and conformance checks that run alongside unit tests: tools such as `kubectl apply --server-side --dry-run=client`, `kubeval`, and `kubeconform` verify that every API field matches the targeted Kubernetes version, while Helm's built-in `helm lint` prevents template regressions. Policy-as-code engines—including Open Policy Agent Gatekeeper and Kyverno—enforce organisational guard rails (for example, disallowing privileged pods, enforcing GDPR tagging, or ensuring resource limits) so that review comments are backed by automated enforcement rather than informal guidelines (Source [7]).
+
+The following example shows a minimal OPA Gatekeeper constraint that prohibits containers running as root and an Argo CD Application manifest that continuously reconciles the desired state with the cluster, illustrating the "as Code" framing in practice:
+
+```yaml
+# OPA Gatekeeper ConstraintTemplate — block privileged containers
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sBlockPrivilegedContainers
+metadata:
+  name: block-privileged-containers
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+  parameters:
+    allowPrivileged: false
+```
+
+```yaml
+# Argo CD Application manifest — GitOps reconciliation for the production namespace
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: production-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://git.example.com/platform/manifests.git
+    targetRevision: main
+    path: deployments/production
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+```
 
 Security scanning and integration testing then validate the images referenced by those manifests. Container scanning in the registry, static analysis of Dockerfiles, and ephemeral integration environments make sure that dependencies, runtime permissions, and exposed services stay aligned with architectural expectations. The AWS Cloud Development Kit guidance documents the same pattern for infrastructure as code pipelines: manifests and infrastructure definitions must pass unit tests, integration tests, and policy checks before promotion, with results stored in version control to support ongoing maintenance (Source [9]).
 
@@ -157,7 +198,6 @@ monitoring:
 ### Docker Compose for Development Environment
 ```yaml
 # docker-compose.yml
-version: '3.8'
 services:
   web:
     build: .
@@ -198,7 +238,7 @@ volumes:
 # kubernetes-cluster.tf
 resource "google_container_cluster" "primary" {
   name     = "production-cluster"
-  location = "us-central1"
+  location = "europe-west1" # EU region selected for GDPR data-residency compliance
 
   remove_default_node_pool = true
   initial_node_count       = 1
@@ -226,7 +266,7 @@ resource "google_container_cluster" "primary" {
 
 resource "google_container_node_pool" "primary_nodes" {
   name       = "primary-node-pool"
-  location   = "us-central1"
+  location   = "europe-west1" # EU region selected for GDPR data-residency compliance
   cluster    = google_container_cluster.primary.name
   node_count = 3
 
