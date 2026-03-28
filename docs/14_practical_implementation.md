@@ -16,10 +16,10 @@ The adoption journey in Figure 14.2 breaks down these stages into the minimum se
 ![Figure 14.2 – Iterative journey for Architecture as Code adoption](images/diagram_13_user_journey.png)
 *Figure 14.2 – A simplified adoption journey that balances architectural guardrails with iterative delivery milestones.*
 
-Figure 14.4 captures the enablement flywheel that keeps Architecture as Code programmes sustainable by moving teams from shared delivery into lasting communities of practice.
+Figure 14.3 captures the enablement flywheel that keeps Architecture as Code programmes sustainable by moving teams from shared delivery into lasting communities of practice.
 
-![Figure 14.4 – Enablement flywheel for sustained Architecture as Code capabilities](images/diagram_16_chapter14.png)
-*Figure 14.4 – Enablement flywheel connecting cross-functional teams, skill development, knowledge sharing, communities of practice, and career progression.*
+![Figure 14.3 – Enablement flywheel for sustained Architecture as Code capabilities](images/diagram_16_chapter14.png)
+*Figure 14.3 – Enablement flywheel connecting cross-functional teams, skill development, knowledge sharing, communities of practice, and career progression.*
 
 | Implementation Stage | Key Activities | Success Criteria | Deliverables |
 |---------------------|----------------|------------------|--------------|
