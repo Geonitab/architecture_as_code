@@ -1,23 +1,23 @@
 flowchart LR
     subgraph spec["Specification"]
         direction TB
-        BR["Business Requirements"]
-        FR["Functional Requirements"]
-        NFR["Non-Functional Requirements"]
-        SD["System Design"]
-        DD["Detailed Design"]
+        BR["Business Requirements"]:::kv-muted
+        FR["Functional Requirements"]:::kv-highlight
+        NFR["Non-Functional Requirements"]:::kv-highlight
+        SD["System Design"]:::kv-accent
+        DD["Detailed Design"]:::kv-accent
         BR --> FR --> NFR --> SD --> DD
     end
 
-    CODE["Implementation\nas Code"]
+    CODE["Implementation\nas Code"]:::kv-primary
 
     subgraph verif["Verification & Validation"]
         direction TB
-        OV["Operational Validation"]
-        AT["Acceptance Testing"]
-        ST["System Testing"]
-        IT["Integration Testing"]
-        UT["Unit Testing"]
+        OV["Operational Validation"]:::kv-muted
+        AT["Acceptance Testing"]:::kv-highlight
+        ST["System Testing"]:::kv-highlight
+        IT["Integration Testing"]:::kv-accent
+        UT["Unit Testing"]:::kv-accent
         OV --> AT --> ST --> IT --> UT
     end
 
