@@ -257,7 +257,7 @@ jobs:
                   ;;
                 'presentations-only')
                   echo '🎤 Building presentations only...' &&
-                  python3 generate_presentation.py --release &&
+                  python3 generate_presentation.py --release --create-pptx &&
                   echo '📝 Verifying presentation files...' &&
                   ls -la releases/presentation/ || echo '⚠️ No presentation files found'
                   ;;
@@ -291,7 +291,7 @@ jobs:
 
                   # Generate presentations
                   echo '🎤 Step 3: Generating presentations...' &&
-                  python3 generate_presentation.py --release &&
+                  python3 generate_presentation.py --release --create-pptx &&
                   python --version &&
                   python3 --version &&
                   echo '📝 Verifying presentation files...' &&
