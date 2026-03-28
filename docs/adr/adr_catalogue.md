@@ -100,5 +100,5 @@ Apache Kafka standardises the event streaming layer across the Architecture as C
 **Change log**
 - 2025-01-10 – Review confirmed topic retention policies align with compliance evidence retention requirements; no successor ADR required.
 
----
-*Generated automatically via `python3 scripts/generate_adr_catalogue.py`. Do not edit manually.*
+- - -
+_Generated automatically via `python3 scripts/generate_adr_catalogue.py`. Do not edit manually._
