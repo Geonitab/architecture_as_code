@@ -1,5 +1,11 @@
-graph LR
-    A[Traditionell IT]:::kv-primary --> B[Cloud Migration]:::kv-highlight
-    B --> C[IaC Implementation]:::kv-accent
-    C --> D[Automatisering]:::kv-accent
-    D --> E[Digital Transformation]:::kv-primary
+%% Diagram: Microservices Architecture as Code — service decomposition, inter-service communication via service mesh, and operational observability
+flowchart TB
+    A["API\nGateway"]:::kv-primary --> B["Service Mesh\nIstio / Linkerd"]:::kv-highlight
+    B --> C["User\nService"]:::kv-accent
+    B --> D["Order\nService"]:::kv-accent
+    B --> E["Payment\nService"]:::kv-accent
+    C --> F["Service\nRegistry"]:::kv-muted
+    D --> F
+    E --> F
+    F --> G["Observability\nPlatform"]:::kv-primary
+    G -->|"traces & metrics"| B

@@ -1,5 +1,10 @@
-graph LR
-    A[API Gateway]:::kv-primary --> B[User Service]:::kv-highlight
-    A --> C[Order Service]:::kv-accent
-    A --> D[Payment Service]:::kv-accent
-    B --> E[Service Mesh]:::kv-primary
+%% Diagram: Compliance and regulatory adherence as code — from regulatory requirements through automated policy controls to continuous audit evidence and remediation
+flowchart TB
+    A["Regulatory\nRequirements"]:::kv-primary --> B["Control\nMapping"]:::kv-highlight
+    B --> C["Policy as Code\nOPA / Rego"]:::kv-accent
+    C --> D["Automated\nControl Tests"]:::kv-highlight
+    D --> E["Audit\nEvidence Logs"]:::kv-accent
+    E --> F["Compliance\nDashboard"]:::kv-primary
+    F -->|"gaps trigger"| B
+    D -->|"failures alert"| G["Remediation\nWorkflow"]:::kv-muted
+    G --> C
