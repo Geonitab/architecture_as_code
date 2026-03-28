@@ -4,13 +4,14 @@ This section provides a comprehensive list of all sources and references cited t
 
 ## Numbered source index
 
+- <a id="source-1"></a>**Source [1]:** ThoughtWorks. *Architecture as Code: The Next Evolution.* Technology Radar, 2024. Referenced in: [Chapter 01: Introduction to Architecture as Code](01_introduction.md), [Chapter 02: Fundamental Principles of Architecture as Code](02_fundamental_principles.md), [Chapter 04: Architecture Decision Records](04_adr.md).
 - <a id="source-2"></a>**Source [2]:** Thoughtworks Technology Radar. *Governance as Code.* Thoughtworks, 2024. Referenced in: [Chapter 08: Microservices Architecture as Code](08_microservices.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md).
 - <a id="source-3"></a>**Source [3]:** Atlassian. *Git Workflows for Architecture as Code.* Atlassian Git Documentation, 2024. Referenced in: [Chapter 02: Fundamental Principles of Architecture as Code](02_fundamental_principles.md), [Chapter 03: Version Control and Code Structure](03_version_control.md).
 - <a id="source-4"></a>**Source [4]:** GitHub Docs. *About protected branches.* GitHub Documentation, 2024. Referenced in: [Chapter 02: Fundamental Principles of Architecture as Code](02_fundamental_principles.md), [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 14: Practical Implementation](14_practical_implementation.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md).
-- <a id="source-10"></a>**Source [10]:** Open Policy Agent. *Policy as Code Overview.* CNCF OPA Project, 2024. Referenced in: [Chapter 02: Fundamental Principles](02_fundamental_principles.md), [Chapter 08: Microservices Architecture as Code](08_microservices.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md).
 - <a id="source-7"></a>**Source [7]:** Cloud Native Computing Foundation. *State of Cloud Native Development 2024.* Cloud Native Computing Foundation, 2024. Referenced in: [Chapter 7: Containerisation and Orchestration as Code](07_containerisation.md).
 - <a id="source-8"></a>**Source [8]:** Google Cloud. *The Site Reliability Workbook: Practical Ways to Implement SRE.* O'Reilly Media, 2018. Referenced in: [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md).
 - <a id="source-9"></a>**Source [9]:** AWS. *AWS Cloud Development Kit (CDK) Developer Guide.* Amazon Web Services, 2024. Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md), [Chapter 07: Containerisation and Orchestration as Code](07_containerisation.md), [Chapter 14: Practical Implementation](14_practical_implementation.md).
+- <a id="source-10"></a>**Source [10]:** Open Policy Agent. *Policy as Code Overview.* CNCF OPA Project, 2024. Referenced in: [Chapter 02: Fundamental Principles](02_fundamental_principles.md), [Chapter 08: Microservices Architecture as Code](08_microservices.md), [Chapter 11: Governance as Code](11_governance_as_code.md), [Chapter 23: Software as Code Interplay](23_soft_as_code_interplay.md).
 - <a id="source-12"></a>**Source [12]:** Microsoft Learn. *Design multi-stage release pipelines with approvals.* Microsoft Learn Documentation, 2024. Referenced in: [Chapter 05: Automation, DevOps and CI/CD](05_automation_devops_cicd.md).
 - <a id="source-15"></a>**Source [15]:** Pulumi. *Testing Infrastructure as Code Programs.* Pulumi Blog, 2024. Referenced in: [Chapter 13: Testing Strategies for Infrastructure as Code](13_testing_strategies.md).
 - <a id="source-16"></a>**Source [16]:** HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. Referenced in: [Chapter 9: Security Fundamentals for Architecture as Code](09_security_fundamentals.md), [Chapter 9b: Advanced Security Patterns and Implementation](09b_security_patterns.md).
@@ -129,8 +130,8 @@ This section provides a comprehensive list of all sources and references cited t
 **ThoughtWorks Technology Radar.** "Diagrams as Code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)  
 *Referenced in: [Chapter 6: Structurizr and Diagram Automation](06_structurizr.md)*
 
-<a id="thoughtworks-architecture-as-code-the-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [About the Author](29_about_the_author.md)*
+<a id="thoughtworks-architecture-as-code-the-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024. (Source [1])
+*Referenced in: [Chapter 1: Introduction](01_introduction.md), [Chapter 2: Fundamental Principles](02_fundamental_principles.md), [Chapter 4: Architecture Decision Records](04_adr.md), [About the Author](29_about_the_author.md)*
 
 **ThoughtWorks.** "Architecture Decision Records." Technology Radar, 2023.  
 *Referenced in: [Chapter 4: Architecture Decision Records](04_adr.md)*
@@ -143,23 +144,16 @@ This section provides a comprehensive list of all sources and references cited t
 **AWS.** "AWS Cloud Development Kit (CDK) Developer Guide." [https://docs.aws.amazon.com/cdk/latest/guide/home.html](https://docs.aws.amazon.com/cdk/latest/guide/home.html)
 *Referenced in: [Chapter 03: Version Control and Code Structure](03_version_control.md), [Chapter 5: Automation, DevOps, and CI/CD](05_automation_devops_cicd.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*
 
-**Best practice documentation from leading organisations.**  
-*Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
-
-**Expert interviews and case studies.**  
+**Expert interviews and case studies.**
 *Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
 **Gartner.** "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.  
 *Referenced in: [Chapter 15: Cost Optimisation](15_cost_optimization.md), [Chapter 17: Organisational Change](17_organisational_change.md)*
 
-**Industry reports on Architecture as Code adoption trends.**  
-*Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
 **IDC.** "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.  
 *Referenced in: [Chapter 5: Automation, DevOps, and CI/CD](05_automation_devops_cicd.md), [Chapter 21: Digitalisation](21_digitalisation.md)*
 
-**Research on emerging technologies.**  
-*Referenced in: [Chapter 27: Conclusion](27_conclusion.md)*
 
 **Google Cloud.** "Store Terraform state in Cloud Storage." Google Cloud Documentation, 2024. [https://cloud.google.com/docs/terraform/resource-management/store-terraform-state](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state) (Source [19])
 *Referenced in: [Chapter 9: Security Fundamentals for Architecture as Code](09_security_fundamentals.md), [Chapter 9b: Security Patterns and Implementation](09b_security_patterns.md)*
@@ -182,8 +176,6 @@ This section provides a comprehensive list of all sources and references cited t
 **Pulumi.** "Testing Infrastructure as Code Programs." Pulumi Blog, 2024. (Source [15])
 *Referenced in: [Chapter 13: Testing Strategies](13_testing_strategies.md), [Chapter 14: Practical Implementation](14_practical_implementation.md)*
 
-<a id="thoughtworks-architecture-as-code-next-evolution"></a>**ThoughtWorks.** "Architecture as Code: The Next Evolution." Technology Radar, 2024. (Source [1])
-*Referenced in: [Chapter 1: Introduction to Architecture as Code](01_introduction.md), [Chapter 2: Fundamental Principles of Architecture as Code](02_fundamental_principles.md), [Chapter 4: Architecture Decision Records](04_adr.md)*
 
 **HashiCorp.** "Introduction to Infrastructure as Code with Terraform." HashiCorp Developer Documentation, 2024. (Source [5])
 *Referenced in: [Chapter 5: Automation, DevOps and CI/CD](05_automation_devops_cicd.md), [Chapter 7: Containerisation and Orchestration as Code](07_containerisation.md)*

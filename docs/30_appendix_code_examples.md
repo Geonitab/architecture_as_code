@@ -62,6 +62,10 @@ jobs:
     name: GDPR Compliance Validation
     runs-on: ubuntu-latest
     if: contains(github.event.head_commit.message, 'personal-data') || contains(github.event.head_commit.message, 'gdpr')
+    # IMPORTANT: Triggering a compliance scan based on commit message keywords is
+    # not a reliable compliance gate. In production, run compliance scans on every
+    # commit to sensitive paths, or use dedicated policy tools (checkov, tfsec,
+    # terrascan) as required CI gates. This example is illustrative only.
 
     steps:
       - name: Check out code
@@ -72,7 +76,7 @@ jobs:
 
       - name: GDPR data discovery scan
         run: |
-          echo "🔍 Scanning for personal data indicators across EU jurisdictions..."
+          echo "# Search: Scanning for personal data indicators across EU jurisdictions..."
 
           PERSONAL_DATA_PATTERNS=(
             "national\\s+identity"
@@ -94,18 +98,18 @@ jobs:
 
           for pattern in "${PERSONAL_DATA_PATTERNS[@]}"; do
             if grep -R -i -E "$pattern" infrastructure/ modules/ 2>/dev/null; then
-              echo "⚠️ GDPR WARNING: Potential personal data reference detected for pattern: $pattern"
+              echo "# WARNING: GDPR - Potential personal data reference detected for pattern: $pattern"
               VIOLATIONS_FOUND=true
             fi
           done
 
           if [ "$VIOLATIONS_FOUND" = true ]; then
-            echo "❌ GDPR compliance check failed"
+            echo "# FAIL: GDPR compliance check failed"
             echo "Personal data must not be hard coded in Architecture as Code assets."
             exit 1
           fi
 
-          echo "✅ GDPR compliance check completed successfully"
+          echo "# Pass: GDPR compliance check completed successfully"
 ```
 
 ### 05_CODE_2: Jenkins pipeline for organisations with GDPR compliance {#05_code_2}
@@ -152,7 +156,7 @@ pipeline {
                 stage('GDPR Data Scan') {
                     steps {
                         script {
-                            echo "🔍 Scanning for personal data indicators across EU member states..."
+                            echo "# Search: Scanning for personal data indicators across EU member states..."
 
                             def personalDataPatterns = [
                                 'national\\s+identity', 'passport\\s+number', 'social.*security',
@@ -178,7 +182,7 @@ pipeline {
                                 error("GDPR VIOLATION: Potential personal data detected in Architecture as Code assets:\n${violations.join('\n')}")
                             }
 
-                            echo "✅ GDPR data scan completed successfully"
+                            echo "# Pass: GDPR data scan completed successfully"
                         }
                     }
                 }
@@ -186,7 +190,7 @@ pipeline {
                 stage('Data Residency Validation') {
                     steps {
                         script {
-                            echo "🏔️ Validating data residency requirements..."
+                            echo "# Config: Validating data residency requirements..."
 
                             def allowedRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2']
 
@@ -202,7 +206,7 @@ pipeline {
                                 error("DATA RESIDENCY VIOLATION: Non-approved regions detected:\n${regionCheck}")
                             }
 
-                            echo "✅ Data residency requirements satisfied"
+                            echo "# Pass: Data residency requirements satisfied"
                         }
                     }
                 }
@@ -210,7 +214,7 @@ pipeline {
                 stage('Cost Center Validation') {
                     steps {
                         script {
-                            echo "💰 Validating cost centre for accounting..."
+                            echo "# Billing: Validating cost centre for accounting..."
                             
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
                                 error("Invalid cost centre format. Use: CC-XX-nnn")
@@ -225,14 +229,14 @@ pipeline {
                                 error("Unknown cost centre: ${params.COST_CENTER}")
                             }
                             
-                            echo "✅ Cost centre validated: ${params.COST_CENTER}"
+                            echo "# Pass: Cost centre validated: ${params.COST_CENTER}"
                         }
                     }
                 }
             }
         }
         
-        stage('📝 Code Quality Analysis') {
+        stage('Code Quality Analysis') {
             parallel {
                 stage('Terraform Validation') {
                     steps {
@@ -250,7 +254,7 @@ pipeline {
                                 """
                             }
                             
-                            echo "✅ Terraform validation completed"
+                            echo "# Pass: Terraform validation completed"
                         }
                     }
                 }
@@ -258,7 +262,7 @@ pipeline {
                 stage('Security Scanning') {
                     steps {
                         script {
-                            echo "🔒 Security scan with Checkov..."
+                            echo "# Auth: Security scan with Checkov..."
                             
                             sh """
                                 pip install checkov
@@ -276,7 +280,7 @@ pipeline {
                             }
                             
                             if (criticalIssues.size() > 0) {
-                                echo "⚠️ Critical security issues found:"
+                                echo "# WARNING: Critical security issues found:"
                                 criticalIssues.each { issue ->
                                     echo "- ${issue.check_name}: ${issue.file_path}"
                                 }
@@ -286,7 +290,7 @@ pipeline {
                                 }
                             }
                             
-                            echo "✅ Security scan completed"
+                            echo "# Pass: Security scan completed"
                         }
                     }
                 }
@@ -327,14 +331,14 @@ pipeline {
                                 find infrastructure/ -name "*.tf" -exec conftest verify --policy policies/ {} \\;
                             """
                             
-                            echo "✅ Policy validation completed"
+                            echo "# Pass: Policy validation completed"
                         }
                     }
                 }
             }
         }
         
-        stage('💰 Cost Control') {
+        stage('Cost Control') {
             steps {
                 script {
                     echo "📊 Calculating infrastructure costs in euros..."
@@ -376,7 +380,7 @@ pipeline {
                     
                     if (monthlyCostEUR > maxBudget) {
                         def overBudget = monthlyCostEUR - maxBudget
-                        echo "⚠️ Budget exceeded by ${overBudget} EUR!"
+                        echo "# WARNING: Budget exceeded by ${overBudget} EUR!"
                         
                         if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
                             error("Budget overrun not permitted for production without CFO approval")
@@ -394,7 +398,7 @@ pipeline {
                     ## Monthly cost
                     - **Total:** ${monthlyCostEUR} EUR
                     - **Budget:** ${maxBudget} EUR
-                    - **Status:** ${monthlyCostEUR <= maxBudget ? '✅ Within budget' : '❌ over budget'}
+                    - **Status:** ${monthlyCostEUR <= maxBudget ? '# Pass: Within budget' : '# FAIL: over budget'}
                     
                     ## Cost breakdown
                     ${readFile('cost-summary.txt')}
@@ -408,7 +412,7 @@ pipeline {
                     writeFile file: 'cost-report-a.md', text: costReport
                     archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
                     
-                    echo "✅ Cost control completed"
+                    echo "# Pass: Cost control completed"
                 }
             }
         }
@@ -492,7 +496,7 @@ func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuit
     // Terraform configuration
     terraformOptions := &terraform.Options{
         TerraformDir: "../infrastructure/modules/vpc",
-        Whose: map[string]interface{}{
+        Vars: map[string]interface{}{
             "organization_name":     organizationName,
             "environment":          environment,
             "cost_center":          "CC-TEST-001",
@@ -558,7 +562,7 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
         assert.Equal(t, "ALL", *flowLog.TrafficType, "Flow log should capture all traffic for compliance")
     }
 
-    t.Logf("✅ VPC Flow Logs enabled for GDPR compliance: %s", vpcID)
+    t.Logf("# Pass: VPC Flow Logs enabled for GDPR compliance: %s", vpcID)
 }
 
 // testEncryptionAtRest validates that all storage is encrypted according to GDPR requirements
@@ -570,7 +574,7 @@ func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Validate that KMS key is from EU West region
     assert.Contains(t, kmsKeyArn, "eu-west-1", "KMS key should be in EU West region for data residency")
 
-    t.Logf("✅ Encryption at rest validated for GDPR compliance")
+    t.Logf("# Pass: Encryption at rest validated for GDPR compliance")
 }
 
 // testDataResidencyEU validates that all infrastructure is within EU borders
@@ -600,7 +604,7 @@ func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
     
     assert.True(t, regionAllowed, "VPC must be in EU region for data residency. Found: %s", region)
 
-    t.Logf("✅ Data residency validated - all infrastructure in EU region: %s", region)
+    t.Logf("# Pass: Data residency validated - all infrastructure in EU region: %s", region)
 }
 
 // testAuditLogging validates that audit logging is configured according to legal requirements
@@ -615,7 +619,7 @@ func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
     for _, trail := range trails.TrailList {
         if strings.Contains(*trail.Name, suite.OrganizationName) {
             foundOrgTrail = true
-            t.Logf("✅ CloudTrail audit logging configured: %s", *trail.Name)
+            t.Logf("# Pass: CloudTrail audit logging configured: %s", *trail.Name)
         }
     }
 
@@ -668,13 +672,13 @@ func testEuropeanTagging(t *testing.T, suite *EuropeanVPCTestSuite) {
         }
     }
 
-    t.Logf("✅ Tagging validated for all resources")
+    t.Logf("# Pass: Tagging validated for all resources")
 }
 
 // cleanupEuropeanVPCTest removes the Terraform deployment after the tests complete
 func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
     terraform.Destroy(t, suite.TerraformOptions)
-    t.Logf("✅ Test environment removed for %s", suite.OrganizationName)
+    t.Logf("# Pass: Test environment removed for %s", suite.OrganizationName)
 }
 ```
 
@@ -808,7 +812,7 @@ Resources:
 
 This section contains Python scripts and other automation tooling for Architecture as Code operations.
 
-### 22_CODE_1: Comprehensive test framework for Architecture as Code {#22_code_1}
+### 24_CODE_1: Comprehensive test framework for Architecture as Code {#24_code_1}
 
 Architecture as Code principles within this area emphasise automated validation and transparent feedback.
 *Referenced from chapter 24: [Architecture as Code Best Practices and Lessons Learned](24_best_practices.md)*
@@ -1706,22 +1710,22 @@ data:
 
     echo "Validating namespace resource quotas..."
     kubectl get resourcequota -A || {
-      echo "❌ Resource quotas missing"; exit 1;
+      echo "# FAIL: Resource quotas missing"; exit 1;
     }
 
     echo "Validating pod security admission levels..."
     kubectl get pods -A -o json | jq '.items[].metadata.labels["pod-security.kubernetes.io/enforce"]' |
       grep -q "baseline" || {
-      echo "❌ Pods missing baseline security enforcement"; exit 1;
+      echo "# FAIL: Pods missing baseline security enforcement"; exit 1;
     }
 
     echo "Validating encrypted persistent volumes..."
     kubectl get pv -o json | jq '.items[].metadata.annotations["encryption.alpha.kubernetes.io/encrypted"]' |
       grep -q "true" || {
-      echo "❌ Persistent volumes must enable encryption"; exit 1;
+      echo "# FAIL: Persistent volumes must enable encryption"; exit 1;
     }
 
-    echo "✅ Infrastructure validation passed"
+    echo "# Pass: Infrastructure validation passed"
 ---
 apiVersion: batch/v1
 kind: Job
