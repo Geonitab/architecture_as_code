@@ -1,8 +1,19 @@
-# Digital Transformation through Code-Based Infrastructure {#digitalisation}
+# Digitalisation through Code-based Infrastructure {#digitalisation}
 
 ![Figure 21.1 – Digital transformation journey for Architecture as Code](images/diagram_21_digitalisation_process.png)
 
 *Figure 21.1 highlights how Architecture as Code supports modern digital transformation initiatives by enabling rapid, scalable, and cost-effective evolution of IT environments from manual processes to automated, declarative infrastructure management.*
+
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- Explain how Architecture as Code enables digital transformation across technical, organisational, cultural, and competency dimensions.
+- Identify the key regulatory drivers—including GDPR, the NIS2 Directive, and EDPB guidelines—that shape cloud-first strategies for organisations operating in the EU.
+- Evaluate cloud provider offerings against data sovereignty and compliance requirements, distinguishing between EU-native providers and globally headquartered hyperscalers operating within EU sovereign boundaries.
+- Design a GDPR-compliant Infrastructure as Code template that incorporates encryption, audit logging, and parameterised EU region selection.
+- Apply cloud-first architecture principles to construct self-service developer portals and automated compliance pipelines.
+- Critically assess the limitations of keyword-based CI compliance checks and identify appropriate policy-as-code tooling alternatives.
 
 ## Digital Transformation Landscape
 
@@ -185,7 +196,7 @@ resource "aws_subnet" "data_zone" {
 Global enterprises such as Spotify, Netflix, and Capital One have demonstrated leadership by building their technical platforms on cloud-based infrastructure from inception. Their success demonstrates how Architecture as Code enables rapid scaling and global expansion whilst minimising technical debt and maintaining organisational values around sustainability and innovation.
 
 **Spotify's Infrastructure as Code Architecture for Global Scaling:**
-Spotify developed their own Infrastructure as Code platform called "Backstage" which enabled scaling from 1 million to over 500 million users without linear increases in infrastructure complexity. Their approach includes:
+Spotify developed an internal developer portal called Backstage, which they open-sourced in 2020 under CNCF governance. Backstage provides a framework for building internal developer portals, not an Infrastructure as Code platform per se. This developer portal approach enabled scaling from 1 million to over 500 million users without linear increases in infrastructure complexity. Their approach includes:
 
 - Microservices with dedicated infrastructure definitions per service
 - Automated compliance checking for GDPR and intellectual property rights
@@ -273,7 +284,10 @@ jobs:
       
       - name: GDPR Data Mapping (EDPB Guidelines)
         run: |
-          # Verify all databases have encryption enabled per EDPB requirements
+          # WARNING: Grepping for 'encryption' keywords is not a meaningful GDPR compliance
+          # check — it may pass even when encryption is explicitly disabled. For real compliance
+          # gates, use dedicated policy tools such as checkov, tfsec, or terrascan.
+          # This example is illustrative only.
           terraform plan | grep -E "(encrypt|encryption)" || exit 1
           
       - name: NIS2 Directive Compliance
@@ -298,6 +312,9 @@ jobs:
 ```python
 # developer_portal/infrastructure_provisioning.py
 from flask import Flask, request, jsonify
+# Note: 'terraform_runner' is not a published PyPI package.
+# For Terraform automation from Python, use subprocess.run(['terraform', ...])
+# or the python-hcl2 library for parsing, plus direct CLI invocation.
 from terraform_runner import TerraformRunner
 import kubernetes.client as k8s
 
@@ -364,7 +381,7 @@ Key lessons from digital transformation initiatives demonstrate that technical t
 
 The organisational transformation explored in this part—from [changing team structures](17_organisational_change.md) to [Management as Code](19_management_as_code.md) and digitalisation—provides the human and process foundations for Architecture as Code success. However, these disciplines achieve their full potential when they work together rather than in isolation.
 
-Part F explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft As Code Disciplines](23_soft_as_code_interplay.md) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
+Part F explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft 'as Code' Disciplines](23_soft_as_code_interplay.md) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
 
 ## Sources and References
 

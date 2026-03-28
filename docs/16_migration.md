@@ -83,6 +83,10 @@ Parameters:
     Type: String
     Description: 'Name of the project for resource tagging'
 
+  ImportDate:
+    Type: String
+    Description: 'Date on which resources were imported into CloudFormation management (e.g. 2026-03-28)'
+
 Resources:
   # Import of existing VPC
   ExistingVPC:
@@ -102,7 +106,7 @@ Resources:
         - Key: ImportedFrom
           Value: !Ref ExistingVPCId
         - Key: ImportDate
-          Value: !Sub '${AWS::Timestamp}'
+          Value: !Ref ImportDate  # Use an ImportDate parameter of type String to tag migration timestamps
 
   # Import of existing EC2 instance
   ExistingInstance:
@@ -110,7 +114,7 @@ Resources:
     Properties:
       # These values must match existing instance configuration
       InstanceType: 't3.medium'  # Update with actual instance type
-      ImageId: 'ami-0c94855bb95b03c2e'  # Update with actual AMI
+      ImageId: 'ami-0c94855bb95b03c2e'  # Replace with SSM Parameter Store lookup: {{resolve:ssm:/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2}}
       SubnetId: !Ref ExistingSubnet
       SecurityGroupIds:
         - !Ref ExistingSecurityGroup
@@ -124,7 +128,7 @@ Resources:
         - Key: ImportedFrom
           Value: !Ref ExistingInstanceId
         - Key: ImportDate
-          Value: !Sub '${AWS::Timestamp}'
+          Value: !Ref ImportDate  # Use an ImportDate parameter of type String to tag migration timestamps
 
   # Security group for imported instance
   ExistingSecurityGroup:
@@ -240,7 +244,7 @@ echo "Establishing network connectivity baseline..."
 for instance_id in $(jq -r '.[] | .[] | .InstanceId' /tmp/pre-migration-instances.json); do
     if [ "$instance_id" != "null" ]; then
         echo "Testing connectivity to $instance_id..."
-        # Implementera connectivity tests here
+        # Implement connectivity tests here
     fi
 done
 
@@ -275,10 +279,12 @@ SAMPLE_INSTANCE_ID=$(jq -r '.[] | .[] | .InstanceId' /tmp/pre-migration-instance
 if [ "$SAMPLE_INSTANCE_ID" != "null" ] && [ "$SAMPLE_INSTANCE_ID" != "" ]; then
     echo "Testing import for instance: $SAMPLE_INSTANCE_ID"
     
-    # Dry-run import test
-    terraform import -dry-run aws_instance.test_import $SAMPLE_INSTANCE_ID || {
-        echo "WARNING: Import test failed for $SAMPLE_INSTANCE_ID"
-    }
+    # Validate import using Terraform 1.5+ import blocks:
+    # Declare an import block in your configuration, then run:
+    #   terraform plan
+    # This previews the import without making changes.
+    # (The -dry-run flag does not exist in Terraform; use import blocks instead.)
+    echo "To validate import for $SAMPLE_INSTANCE_ID, declare an import block and run: terraform plan"
 fi
 
 # Post-migration testing
@@ -314,10 +320,11 @@ def validate_tagging_compliance(region='eu-west-1'):
 
     return non_compliant
 
-def validate_security_compliance():
+def validate_security_compliance(resource):
     """Validate security configuration after migration"""
-    # implementation for security controls
-    pass
+    # Illustrative stub: replace with actual compliance checks
+    # e.g., using checkov, tfsec, or custom policy rules
+    raise NotImplementedError("Implement compliance validation for your environment")
 
 if __name__ == '__main__':
     compliance_issues = validate_tagging_compliance()

@@ -14,6 +14,8 @@ By the end of this chapter, you will be able to:
 
 ![Governance as Code pipeline](images/diagram_11_governance_pipeline.png)
 
+*Figure 11.1: Governance as Code pipeline — policy authors, reviewers, automation, production controls, and the audit portal coordinating through a single repository*
+
 Figure 11.1 illustrates how policy authors, reviewers, automation, production controls, and the audit portal coordinate through a single repository to evolve governance. Governance as Code extends the principles of Infrastructure as Code to the policies, approval flows, and organisational guardrails that keep architecture and delivery aligned with strategic intent. By expressing governance artefacts in version-controlled repositories, teams gain transparency, traceability, and automation opportunities while still respecting compliance and risk requirements. The shared workflow also keeps an audit trail that shows exactly which checks ran, who approved each change, and when compliance evidence was published.
 
 ### Assure once, comply many
@@ -57,8 +59,7 @@ A common governance requirement states that all storage resources must enable en
 ```rego
 package governance.storage
 
-import future.keywords.if
-import future.keywords.contains
+import rego.v1
 
 # Deny any storage resource that does not declare encryption
 deny contains msg if {
@@ -93,8 +94,7 @@ Tag policies ensure that every resource carries the metadata required for cost a
 ```rego
 package governance.tagging
 
-import future.keywords.if
-import future.keywords.contains
+import rego.v1
 
 required_tags := {"owner", "environment", "cost-centre", "data-classification"}
 
@@ -144,7 +144,7 @@ Governance policies must themselves be tested. OPA provides a native test runner
 ```rego
 package governance.storage_test
 
-import future.keywords.if
+import rego.v1
 
 test_denies_missing_encryption if {
     count(governance.storage.deny) > 0 with input as {

@@ -4,6 +4,16 @@ Architecture as Code changes far more than tooling. It demands new habits, share
 
 Organisations rarely adopt Architecture as Code principles overnight. Instead, they move through progressive stages, each building on earlier capabilities whilst introducing new collaboration patterns and decision-making structures. Understanding this evolution helps leadership anticipate challenges, allocate resources, and maintain momentum through periods of rapid change.
 
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+- Describe the progressive stages of organisational transformation from siloed functions to product-aligned teams delivering Architecture as Code.
+- Apply DevOps cultural principles—psychological safety, shared responsibility, and blameless retrospectives—to sustain cross-functional collaboration.
+- Design cross-functional team structures that balance autonomy with alignment through clear decision rights and shared standards.
+- Construct structured learning pathways and competency frameworks that support capability development at individual and team levels.
+- Evaluate change management approaches that engage stakeholders as partners and build momentum through pilot projects and visible sponsorship.
+- Select and apply DORA metrics and related measurement frameworks to demonstrate the business value of transformation investments.
+
 Figure 17.1 summarises the journey from siloed functions towards integrated, product-aligned teams that own outcomes together. The progression emphasises the deliberate shifts in mindset, decision making, and flow of work that underpin a mature Architecture as Code capability.
 
 | Transformation Stage | Team Structure | Decision Making | Automation Maturity | Key Characteristics |
@@ -90,6 +100,6 @@ By linking cultural commitments with transparent measurement and clear governanc
 - Puppet. "State of DevOps Report." Puppet Labs, 2023.
 - Google. "DORA State of DevOps Research." Google Cloud, 2023.
 - Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.
-- Team Topologies. "Organising Business and Technology Teams." IT Revolution Press, 2023.
-- Accelerate. "Building High Performing Technology Organisations." IT Revolution Press, 2023.
+- Skelton, M. & Pais, M. (2019). *Team Topologies: Organising Business and Technology Teams for Fast Flow.* IT Revolution Press.
+- Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press.
 - McKinsey & Company. "Organisational Transformation Best Practices." McKinsey Digital, 2023.

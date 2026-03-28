@@ -132,7 +132,7 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - autoscaling:*
+        - autoscaling:*  # Note: Replace wildcard actions with least-privilege permissions in production environments
         - cloudwatch:*
         - ec2:*
       Resource: "*"
@@ -204,7 +204,7 @@ terraform {
 # Post-quantum cryptography for TLS connections
 resource "tls_private_key" "quantum_safe" {
   algorithm = "ECDSA"
-  ecdsa_curve = "P384"  # Quantum-resistant curve
+  ecdsa_curve = "P384"  # P-384 provides 192-bit classical security; migrate to NIST PQC algorithms (ML-KEM, ML-DSA) when available
 }
 
 resource "aws_acm_certificate" "quantum_safe" {
@@ -228,7 +228,7 @@ resource "aws_kms_key" "quantum_safe" {
   key_spec    = "SYMMETRIC_DEFAULT"
 
   # Enable quantum-resistant key rotation
-  key_rotation_enabled = true
+  enable_key_rotation = true
 
   tags = {
     QuantumSafe = "true"

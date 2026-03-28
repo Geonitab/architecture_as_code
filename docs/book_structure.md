@@ -98,7 +98,7 @@ Reference material, author information, technical enablers, and the Architecture
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 22 | `22_documentation_vs_architecture.md` | Documentation as Code vs Architecture as Code | Distinction between documentation and architecture disciplines, modelling vs diagram tools |
-| 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft "as code" practices |
+| 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft 'as Code' Disciplines | Cross-disciplinary synergies between soft 'as code' practices |
 | 24 | `24_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 
 ### Part 7: Future & Wrap-up (Chapters 25-27, including 26A and 26B)

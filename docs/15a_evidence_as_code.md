@@ -38,26 +38,25 @@ jobs:
       - name: Evaluate MFA policy
         run: opa test policies/identity --format=json > artefacts/policy-report.json
       - name: Snapshot cloud identities
-        run: >
+        run: |
+          SNAPSHOT_DATE=$(date +%Y%m)
           python scripts/export_mfa_snapshot.py \
             --accounts production \
-            --output artefacts/mfa-snapshot-$(date +%Y%m).json
+            --output "artefacts/mfa-snapshot-${SNAPSHOT_DATE}.json"
       - name: Publish evidence package
         run: |
-          jq '{
-            "control_id": "SEC-ID-001",
-            "framework_mappings": {
-              "iso_27001": ["A.5", "A.8"],
-              "soc_2": ["CC6.1", "CC6.6"],
-              "nist_800_53": ["IA-2(1)", "AC-2"],
-              "gdpr": ["Article 32"],
-              "internal": ["SEC-ID-001"]
-            },
-            "artefacts": [
-              "artefacts/policy-report.json",
-              "artefacts/mfa-snapshot-$(date +%Y%m).json"
-            ]
-          }' > artefacts/manifest.json
+          SNAPSHOT_DATE=$(date +%Y%m)
+          jq --arg filepath "artefacts/mfa-snapshot-${SNAPSHOT_DATE}.json" \
+            --arg control "SEC-ID-001" \
+            --argjson mappings '{"iso_27001":["A.5","A.8"],"soc_2":["CC6.1","CC6.6"],"nist_800_53":["IA-2(1)","AC-2"],"gdpr":["Article 32"],"internal":["SEC-ID-001"]}' \
+            -n '{
+              "control_id": $control,
+              "framework_mappings": $mappings,
+              "artefacts": [
+                "artefacts/policy-report.json",
+                $filepath
+              ]
+            }' > artefacts/manifest.json
       - name: Upload evidence bundle
         uses: actions/upload-artifact@v4
         with:
@@ -144,7 +143,7 @@ Supply chain Levels for Software Artefacts (SLSA) defines a framework for descri
 ```json
 {
   "_type": "https://in-toto.io/Statement/v0.1",
-  "predicateType": "https://slsa.dev/provenance/v0.2",
+  "predicateType": "https://slsa.dev/provenance/v1.0",
   "subject": [
     {
       "name": "my-service",
@@ -207,6 +206,7 @@ Evidence has a useful life that varies by regulatory context. Some frameworks re
 | Indexing | Manifest registered in evidence catalogue for audit queries | SQLite, PostgreSQL, or a dedicated GRC platform |
 | Retrieval | Auditors or automated tools query catalogue by control ID or framework | REST API, direct database query |
 | Expiry | Artefacts past retention period are archived or deleted per policy | Lifecycle rules on object storage |
+| Access Control | Tamper-evident evidence stores require IAM/RBAC governance to restrict who can write, read, and delete evidence artefacts; least-privilege policies should be codified and reviewed regularly | AWS IAM, Azure RBAC, Google Cloud IAM; OPA-enforced bucket policies |
 
 ## Integrating with governance and blueprints
 

@@ -58,6 +58,52 @@ When creating or updating Gantt chart diagrams:
 5. **British English**: Task labels must use British spelling (e.g., "Optimisation" not "Optimization")
 6. **Regeneration**: Run `npx mmdc -i <file>.mmd -o <file>.png -b transparent` after any changes
 
+## Citation and Reference Style
+
+All chapters must follow a single consistent citation standard throughout the manuscript.
+
+### Inline citations
+
+Use numbered source links pointing to `33_references.md`:
+
+```markdown
+[Source [4]](33_references.md#source-4)
+```
+
+Where a readable author–year reference is more natural in prose, use the format `Surname (Year)` on first mention, followed by a numbered source link:
+
+```markdown
+Skelton & Pais (2019) [Source [7]](33_references.md#source-7)
+```
+
+Do **not** use bare attributions such as `Red Hat (2023)` without an accompanying source link.
+
+### End-of-chapter sources sections
+
+Each chapter should close with a `## Sources` section listing cited works as an ordered list. Each entry must include:
+- Author(s) and year in **bold**
+- Full title in *italics*
+- Publisher or URL
+- Source link anchor matching `33_references.md`
+
+Example:
+```markdown
+## Sources
+
+1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press. [Source [7]](33_references.md#source-7)
+2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate.* IT Revolution Press. [Source [8]](33_references.md#source-8)
+```
+
+### Prohibited citation forms
+
+- Category descriptions such as "Industry reports on Architecture as Code adoption trends" are **not** acceptable citations — replace with the actual document or remove.
+- Placeholder text such as "Best practice documentation from leading organisations" must not appear in published content.
+- Unresolved template strings such as `YYYYMM` in evidence file paths must be replaced with concrete values or explained in prose.
+
+### Chapter 33 (References)
+
+`docs/33_references.md` is the canonical bibliography. Every source cited inline must have a corresponding entry there. Source anchor IDs must follow the pattern `source-N` (e.g., `#source-4`).
+
 ## Review Checklist
 Before submitting or approving a pull request:
 1. Re-read modified content for British spelling and consistent terminology using this guide as the reference.

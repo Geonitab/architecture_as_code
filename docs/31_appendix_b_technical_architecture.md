@@ -66,6 +66,8 @@ The system uses `generate_book.py` to generate and update chapter content automa
 
 ## Alignment with the Architecture-as-Code project
 
+> **Note:** The `aacplatform/aac` toolkit is a separate open-source project. This book covers the broader Architecture as Code methodology and is not affiliated with or dependent on that specific toolkit.
+
 The official Architecture-as-Code (AaC) repository describes the initiative as an open-source toolkit for capturing architecture definitions as YAML and turning them into validated, executable assets through a command-line interface that keeps architectural intent close to delivery workflows (AaC Open Source Project). This self-definition mirrors the book production platform: Markdown specifications, diagram sources, and automation scripts sit together in version control so that architecture knowledge is expressed and evolved through code.
 
 ### Plugin-driven extensibility
@@ -94,7 +96,7 @@ pdf-engine: xelatex
 metadata:
   title: "Architecture as Code"
   subtitle: "Infrastructure as Code (Architecture as Code) in practice"
-  author: "Code Architecture Book Workshop"
+  author: "Gunnar Nordqvist"
 ```
 
 ### Build Process and Architecture as Code Automation
@@ -128,24 +130,15 @@ pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o architecture_as_code.pdf
 
 ## Evolutionary Architecture Fitness Functions
 
-Architecture as Code encourages continuous evaluation of structural decisions. To stop Structurizr diagrams drifting away from r
-eality, embed evolutionary architecture fitness functions in the publication pipeline:
+Architecture as Code encourages continuous evaluation of structural decisions. To stop Structurizr diagrams drifting away from reality, embed evolutionary architecture fitness functions in the publication pipeline:
 
-- **Workspace validity** – Run `structurizr.sh validate` against `docs/examples/structurizr/aac_reference_workspace.dsl` on eve
-ry pull request. The command verifies element definitions, relationships, and view completeness before reviewers examine the nar
-rative.
-- **Structural coverage thresholds** – Extend the validation job with custom scripts that assert minimum coverage for people, c
-ontainers, and critical data stores. Failing the check prompts architects to capture missing perspectives before merging.
-- **Tag conformance** – Compare element tags against an approved list (for example, `Core System`, `Operations`, or `External P
-erson`). Non-conforming tags indicate inconsistent language and trigger follow-up conversations during review.
-- **Fitness score export** – Use the policy evaluator component described in the reference workspace to calculate scores for la
-tency, operability, and compliance rules. Surface these scores in the Observability Hub dashboards so that teams track trends o
-ver time.
-- **Change intelligence** – Record before/after diffs of the Structurizr DSL and correlate them with production incidents. This
- evidence helps determine whether architecture shifts improved resilience or introduced regressions.
+- **Workspace validity** – Run `structurizr.sh validate` against `docs/examples/structurizr/aac_reference_workspace.dsl` on every pull request. The command verifies element definitions, relationships, and view completeness before reviewers examine the narrative.
+- **Structural coverage thresholds** – Extend the validation job with custom scripts that assert minimum coverage for people, containers, and critical data stores. Failing the check prompts architects to capture missing perspectives before merging.
+- **Tag conformance** – Compare element tags against an approved list (for example, `Core System`, `Operations`, or `External Person`). Non-conforming tags indicate inconsistent language and trigger follow-up conversations during review.
+- **Fitness score export** – Use the policy evaluator component described in the reference workspace to calculate scores for latency, operability, and compliance rules. Surface these scores in the Observability Hub dashboards so that teams track trends over time.
+- **Change intelligence** – Record before/after diffs of the Structurizr DSL and correlate them with production incidents. This evidence helps determine whether architecture shifts improved resilience or introduced regressions.
 
-By codifying these checks, the programme maintains a living architecture model whose quality improves with each iteration instea
-d of eroding through manual drift.
+By codifying these checks, the programme maintains a living architecture model whose quality improves with each iteration instead of eroding through manual drift.
 
 ## GitHub Actions: CI/CD Pipeline
 
@@ -293,7 +286,7 @@ The design system implements Kvadrat’s visual identity:
 
 - **Twenty-six whitepapers**: One per chapter.
 - **Professional HTML design**: Responsive and print-friendly.
-- **Swedish market adjustments**: Tuned for Swedish organisations.
+- **Localisation**: Tuned for each target organisation's context.
 - **Search optimisation**: Accurate metadata and structure.
 - **Distribution ready**: Suitable for email, web, or print.
 
@@ -331,7 +324,7 @@ The system is designed for continuous improvement:
 
 ## Summary
 
-The modern Architecture as Code methodology represents the future of infrastructure management in Swedish organisations. The technical architecture behind "Architecture as Code" demonstrates the practical application of the book’s principles. By codifying the entire publication process the team achieves:
+The modern Architecture as Code methodology represents the future of infrastructure management in modern organisations worldwide. The technical architecture behind "Architecture as Code" demonstrates the practical application of the book’s principles. By codifying the entire publication process the team achieves:
 
 - **Architecture as Code automation**: Complete CI/CD for book production.
 - **Quality**: Consistent formatting and professional presentation.

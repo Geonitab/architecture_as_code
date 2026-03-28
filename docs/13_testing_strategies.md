@@ -41,7 +41,7 @@ Source [15] sets clear expectations that Infrastructure as Code repositories mus
 | Stage | Pulumi focus | Terraform focus | Objective |
 |-------|--------------|-----------------|-----------|
 | Lint and format | `npm run lint`, `pulumi stack ls --json` to verify workspace metadata | `terraform fmt -check`, `terraform validate` | Catch syntax issues before artefacts are generated |
-| Contract and unit tests | `pulumi test` with local provider mocks and standard test frameworks | `go test ./...` for Terratest suites and `terraform test` for module assertions | Execute fast feedback checks over resource definitions and policy attachments |
+| Contract and unit tests | Host language test runner (e.g. `pytest` for Python, `npm test` for Node.js) with the Pulumi testing mock harness | `go test ./...` for Terratest suites and `terraform test` for module assertions | Execute fast feedback checks over resource definitions and policy attachments |
 | Policy enforcement | `pulumi up --policy-pack policies/` in preview mode | `checkov -d .`, `terraform-compliance` bundles enforcing regulatory guardrails | Ensure security and compliance expectations are upheld before deployment |
 | Integration rehearsal | `pulumi preview` with targeted stacks in ephemeral environments | `terraform plan` against temporary workspaces and drift-detection jobs | Validate orchestration logic, detect state drift, and rehearse rollback paths |
 
@@ -67,9 +67,8 @@ jobs:
       - run: npm run lint
       - run: pulumi login --cloud-url ${PULUMI_BACKEND}
       - run: pulumi stack select ${PULUMI_STACK}
-      - run: npm test
-      - run: pulumi test --stack ${PULUMI_STACK}
-      - run: pulumi up --stack ${PULUMI_STACK} --policy-pack policies --yes --refresh --preview
+      - run: npm test  # Pulumi testing uses the host language's test runner with the Pulumi testing mock harness
+      - run: pulumi preview --stack ${PULUMI_STACK}
 
   terraform:
     runs-on: ubuntu-latest
@@ -97,7 +96,7 @@ jobs:
           path: tfplan
 ```
 
-Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and `pulumi test` results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
+Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and Pulumi host-language test results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
 
 ## Test Management with Vitest for Architecture as Code
 
@@ -278,6 +277,7 @@ Capacity planning validation through performance testing helps optimise resource
 
 ## Requirements as Code and Testability
 
+<!-- Note: This diagram is referenced from Chapter 12 assets -->
 ![Requirements and testing relation](images/diagram_12_requirements_testing.png)
 
 *Figure 13.3: Requirements as Code - Traceability from Business Requirements to Infrastructure Tests*
@@ -339,12 +339,14 @@ OPA testing patterns include:
 
 ### Kubernetes Infrastructure Testing
 
-*See Appendix A, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption.*
+*See Appendix A, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, Pod Security Admission (PSA) policies, network policies and GDPR-compliant persistent volume encryption.*
+
+> **Note:** Pod Security Policy was deprecated in Kubernetes 1.21 and removed in 1.25. Use Pod Security Admission (PSA) with `enforce`, `warn`, and `audit` modes instead, or a policy engine such as Kyverno or OPA Gatekeeper for richer policy expression.
 
 Kubernetes infrastructure testing patterns include:
 
 - Resource quota and limit validation
-- Pod Security Policy enforcement verification
+- Pod Security Admission (PSA) enforcement verification
 - Network policy isolation testing
 - Persistent volume encryption validation
 - RBAC permission testing

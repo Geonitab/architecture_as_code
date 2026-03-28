@@ -24,6 +24,10 @@ strategic capability. The technical foundations span [fundamental principles](02
 [version control](03_version_control.md), and [automation through CI/CD](05_automation_devops_cicd.md). These practices must be
 matched by organisational investment in skills, culture, and operating models so that new workflows can flourish.
 
+![Architecture as Code – Technical Structure](images/diagram_27_technical_structure.png)
+
+*Figure 27.1 – The technical structure of an Architecture as Code platform, showing the layered relationship between declarative definitions, automation pipelines, and governance controls.*
+
 ## 27.2 Embedding continuous improvement
 
 The journey through this book charts a deliberate increase in sophistication: from declarative blueprints and idempotent
@@ -39,6 +43,10 @@ Continuous improvement is woven into Architecture as Code. Metrics from [automat
 and insights from [team structure guidance](18_team_structure.md) help identify areas for refinement. Observability patterns,
 first introduced in [security and resilience chapters](09_security_fundamentals.md), support data-driven decisions and proactive
 optimisation. By regularly reviewing feedback loops, teams maintain momentum and prevent regression.
+
+![Architecture as Code – Build Pipeline](images/diagram_27b_build_pipeline.png)
+
+*Figure 27.2 – The Architecture as Code build pipeline, illustrating how architectural definitions flow through validation, testing, and deployment stages to produce governed, auditable outcomes.*
 
 ## 27.3 European context and opportunities
 
@@ -73,12 +81,17 @@ communication, coaching, and community building.
 1. **Foundational education**: Establish a common understanding of [Architecture as Code principles](02_fundamental_principles.md)
    and disciplined [version control practices](03_version_control.md).
 2. **Pilot projects**: Use [automation pipelines](05_automation_devops_cicd.md) to modernise a contained, low-risk service whilst
-   collecting feedback and metrics.
+   collecting feedback and metrics. Validate quality using the [testing strategies](13_testing_strategies.md) described in Chapter 13,
+   and apply the [migration guidance](16_migration.md) from Chapter 16 when transitioning existing services.
 3. **Security integration**: Embed [policy and security](10_policy_and_security.md) controls and [compliance processes](12_compliance.md)
    into every delivery workflow.
 4. **Scaling and automation**: Expand towards [container orchestration](07_containerisation.md) and platform capabilities described in
-   [management as code](19_management_as_code.md).
-5. **Future readiness**: Track [emerging trends](25_future_trends.md) and sustainability expectations so that the
+   [management as code](19_management_as_code.md). Explore the [soft-as-code interplay](23_soft_as_code_interplay.md) from Chapter 23
+   to align behavioural and technical dimensions as the programme scales.
+5. **Readiness and risk management**: Before expanding to new domains, validate organisational readiness using the framework in
+   [Chapter 26A: Prerequisites for Architecture as Code Adoption](26a_prerequisites_for_aac.md) and consult
+   [Chapter 26B: Anti-Patterns in Architecture as Code Programmes](26b_aac_anti_patterns.md) to anticipate and mitigate common pitfalls.
+6. **Future readiness**: Track [emerging trends](25_future_trends.md) and sustainability expectations so that the
    Architecture as Code platform remains adaptable.
 
 Centres of excellence or platform teams can accelerate adoption by curating reusable modules, publishing reference
@@ -99,8 +112,22 @@ even as tooling evolves. By combining technical excellence with attention to sus
 obligations, organisations can use Architecture as Code to create enduring competitive advantage. The work continues: experiment,
 learn, and refine so that Architecture as Code keeps pace with the ambitions of the business and the expectations of society.
 
-Sources:
-- Industry reports on Architecture as Code adoption trends
-- Expert interviews and case studies
-- Research on emerging technologies
-- Best practice documentation from leading organisations
+One challenge that remains genuinely unsolved is the governance of AI-generated architecture decisions. As large language models begin proposing infrastructure patterns, module configurations, and security controls, the profession must grapple with how to audit, attribute, and enforce human accountability over machine-authored artefacts. Version control captures what changed; it does not yet capture whether the reasoning behind a change was sound, who held responsibility, or how to roll back a conceptual mistake rather than merely a configuration error. This is not a tooling gap alone—it is a governance, ethics, and organisational design problem that the Architecture as Code community is uniquely positioned to address.
+
+**A direct challenge for practitioners:** identify one AI-assisted decision in your current architecture estate that lacks a traceable human rationale, write an Architecture Decision Record for it retrospectively, and share your approach with your community of practice. That single act—making the implicit explicit—is the habit on which trustworthy, sustainable Architecture as Code programmes are built.
+
+The open-source ecosystem that underpins this discipline—from Terraform and Pulumi to Structurizr and Open Policy Agent—advances because practitioners share their experiments, patterns, and failures. Consider contributing a module, a reusable policy template, or a postmortem to a public repository. Collective stewardship of shared tooling is the most direct way to ensure that the next generation of architects inherits a richer, more humane, and more governable platform than the one we inherited.
+
+![Architecture as Code – Source Materials](images/diagram_27a_source_materials.png)
+
+*Figure 27.3 – Source materials and intellectual lineage underpinning the Architecture as Code approach presented in this book.*
+
+## Key Works
+
+The thesis of this book draws most directly on:
+
+- Skelton, M. & Pais, M. (2019). *Team Topologies*. IT Revolution Press.
+- Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press.
+- Bass, L., Clements, P. & Kazman, R. (2021). *Software Architecture in Practice* (4th ed.). Addison-Wesley.
+
+For a full bibliography, see [Chapter 33: References and Sources](33_references.md).

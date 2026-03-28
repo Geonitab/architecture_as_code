@@ -4,6 +4,17 @@
 
 For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, architecture as code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.
 
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+
+- Describe the shared DNA—structured representation, version control, and automatability—that unifies all soft 'as Code' disciplines.
+- Explain how Compliance as Code acts as a quality engine by providing continuous validation across architectural and documentation artefacts.
+- Demonstrate how Architecture as Code serves as the central hub connecting technical implementation with policy and documentation layers.
+- Recognise how Knowledge as Code and Culture as Code preserve organisational memory through version-controlled knowledge registries and team-norm files.
+- Identify the practical synergies generated when multiple soft 'as Code' disciplines are combined within a single toolchain.
+- Apply adoption strategies—including shared principles, compatible tooling, and cross-functional training—to plan an incremental soft 'as Code' programme.
+
 ![Soft as code ecosystem](images/diagram_23_soft_as_code.png)
 
 The following mind maps illustrate the key concepts and relationships within the soft "as code" ecosystem. They visualise how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organisational synergies.
@@ -34,13 +45,12 @@ The following mind maps illustrate the key concepts and relationships within the
 
 **Key takeaways from the mind map:**
 
-- **Shared DNA at the core:** All soft "as code" disciplines are unified by structured representation, version control, and automatability—fundamental principles that enable collaboration across domains.
-- **Compliance as Code acts as the quality engine:** By codifying rules and policies, it provides continuous validation and transparency, ensuring that architectural and documentation artifacts remain within approved boundaries.
-- **Architecture as Code serves as the central hub:** It connects technical implementations with policy and documentation layers, providing traceability and enabling real-time synchronization across the ecosystem.
-- **Documentation as Code forms the communication layer:** It translates technical and policy concepts into accessible narratives, enabling self-service knowledge and fostering collective ownership through structured feedback loops.
-- **Knowledge and Culture as Code preserve organisational memory:** Formalising lessons learned and cultural values ensures consistency, supports onboarding, and enables rapid iteration without losing core principles.
-- **Synergies multiply value:** When these disciplines integrate, they create cross-functional collaboration spaces, unified validation pipelines, and enhanced traceability—accelerating the pace of change while managing risk.
-- **Implementation requires strategy:** Success depends on shared principles, compatible tooling, cross-functional training, iterative building, and clear governance frameworks.
+- **One toolchain, many disciplines:** Because every soft 'as Code' practice stores artefacts in Git and runs through CI/CD, lawyers reviewing a policy change and architects merging a CALM schema update are working in the same pull-request workflow—removing the translation layer that usually separates these communities.
+- **Compliance as Code raises the floor for all other disciplines:** The chapter shows how a single policy change propagates automatically to flag non-compliant architectural components and regenerate relevant documentation sections, turning what was once a manual audit into a continuous background check.
+- **Architecture as Code's hub role creates real traceability:** Rather than relying on documentation that describes an architecture from memory, teams can link commit hashes, policy identifiers, and issue numbers directly to infrastructure definitions, giving incident investigators an unambiguous chain of evidence.
+- **Knowledge and Culture as Code move norms from tribal memory to version history:** The chapter demonstrates this with a `team-norms.yaml` example in which working agreements, review expectations, and cultural principles are tracked through pull requests—making it possible to audit when a norm changed and why.
+- **Cross-disciplinary synergies compound over time:** The chapter's two scenarios—a policy change and a new product launch—illustrate how each discipline accelerates the others: faster compliance feedback shortens architecture review cycles, which in turn keeps documentation current with less manual effort.
+- **Adoption requires deliberate strategy, not just tooling:** The chapter's five-step adoption guide emphasises that shared principles, compatible tooling choices, and cross-functional training matter more than the specific tools chosen, and that an iterative pilot approach reduces the risk of overwhelming teams with simultaneous change.
 
 This visualisation reinforces the chapter's central message: soft "as code" disciplines compound their value when combined rather than deployed in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
 
@@ -88,7 +98,111 @@ Documentation as code also acts as a layer of visibility. Architectural principl
 
 ## Knowledge as Code and Culture as Code
 
-To capture the full spectrum of soft artifacts we can also include knowledge as code and culture as code. Knowledge as code formalises knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organisation can iterate quickly while still preserving its experience and values.
+To capture the full spectrum of soft artefacts we can also include knowledge as code and culture as code. Knowledge as code formalises knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organisation can iterate quickly while still preserving its experience and values.
+
+### Culture as Code in Practice
+
+Culture as code moves team agreements and working norms out of slide decks and corridor conversations into version-controlled files that are reviewed, debated, and updated just like any other artefact. A simple `team-norms.yaml` file can make this concrete:
+
+```yaml
+# team-norms.yaml
+# Version-controlled team agreements for the Platform Engineering team
+# Last reviewed: 2026-03-01
+# Owners: platform-engineering@example.org
+
+team_name: Platform Engineering
+version: "2.4"
+
+working_agreements:
+  pull_requests:
+    review_sla_hours: 24
+    required_reviewers: 2
+    self_merge_allowed: false
+    draft_pr_encouraged: true
+  communication:
+    async_first: true
+    response_sla_hours: 8
+    meeting_free_days: ["Wednesday"]
+  on_call:
+    rotation_cadence: weekly
+    handover_format: "structured_runbook"
+
+cultural_principles:
+  - id: CP-01
+    principle: "Blameless post-mortems"
+    description: >
+      Incidents are learning opportunities. Root-cause analysis focuses on
+      systemic factors, not individual blame. Action items target tooling,
+      processes, and documentation—not people.
+  - id: CP-02
+    principle: "Document decisions, not just outcomes"
+    description: >
+      Every significant architectural or process decision is recorded as an ADR
+      or a pull-request description so that future team members understand
+      the context, not just the conclusion.
+  - id: CP-03
+    principle: "Psychological safety over speed"
+    description: >
+      Team members are encouraged to raise concerns, propose experiments, and
+      admit uncertainty without fear of judgement. A culture of openness
+      produces better long-term outcomes than one optimised for short-term velocity.
+
+onboarding_checklist:
+  - "Read and acknowledge team-norms.yaml"
+  - "Complete Architecture as Code learning path"
+  - "Shadow one on-call rotation before taking primary"
+  - "Open a pull request to propose at least one improvement to this file"
+```
+
+Storing `team-norms.yaml` in Git means that every change is traceable. A pull request to adjust the review SLA records who proposed the change, what the discussion looked like, and when the new norm took effect. Onboarding engineers can read the commit history to understand how the team's culture has evolved—context that would otherwise live only in the memories of long-serving colleagues.
+
+### Knowledge as Code in Practice
+
+Knowledge as code applies the same principle to the organisation's accumulated expertise. Rather than relying on wikis that drift out of date or institutional memory that walks out the door when people leave, structured knowledge registries make lessons and patterns queryable, linkable, and automatically validated.
+
+One approach uses a YAML-based knowledge registry alongside a Git-hosted knowledge graph tool such as Obsidian with Git synchronisation:
+
+```yaml
+# knowledge-registry/lessons-learned/LL-0042.yaml
+id: LL-0042
+title: "Multi-region Terraform state locking failures under concurrent pipelines"
+status: active
+tags: [terraform, state-management, multi-region, concurrency]
+related_adrs: [ADR-0017, ADR-0031]
+related_chapters: ["03_version_control.md", "14_practical_implementation.md"]
+
+problem: >
+  When three or more concurrent pipeline runs targeted the same Terraform
+  state bucket, DynamoDB lock contention caused random failures with
+  LockTimeoutError. The issue was intermittent and difficult to reproduce
+  in lower environments with fewer concurrent runners.
+
+root_cause: >
+  The DynamoDB lock table was provisioned with default read/write capacity
+  units insufficient for more than two simultaneous lock requests.
+  Auto-scaling was not enabled.
+
+resolution: >
+  Enable DynamoDB auto-scaling on the lock table, set a minimum of 5
+  read/write capacity units, and add exponential back-off retry logic
+  to the Terraform wrapper script. See the updated module in
+  shared-modules/terraform-state-backend v2.3.0.
+
+prevention:
+  - checklist_item: "Verify DynamoDB auto-scaling is enabled for all state lock tables"
+  - checklist_item: "Load-test state locking with simulated concurrent pipelines before go-live"
+
+contributors:
+  - name: "Ana Rodrigues"
+    role: "Platform Engineer"
+  - name: "Kai Lindström"
+    role: "SRE"
+
+created: "2025-09-14"
+last_updated: "2026-01-07"
+```
+
+This structured format allows CI pipelines to validate that every lesson has the required fields, link-checking scripts to verify that referenced ADRs and chapter files exist, and search tools to surface relevant lessons when engineers encounter similar error messages. When combined with Architecture as Code, the knowledge registry becomes a living index of hard-won experience that teams can query as they design new systems.
 
 ## Synergies and Cross-Pollination
 

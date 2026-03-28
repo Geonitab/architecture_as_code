@@ -3,6 +3,16 @@
 ## Introduction
 Management as Code (MaC) extends the well-established principles of Infrastructure as Code and Architecture as Code into the realm of organisational leadership. It treats management intent, governance routines, and decision frameworks as executable artefacts that can be versioned, tested, automated, and refined. In organisations where the entire delivery pipeline is codified, management practices that remain trapped in meetings, slide decks, or undocumented intuition quickly become bottlenecks. A MaC discipline eliminates that bottleneck by encoding strategic direction, operational constraints, and cultural values into the same repositories that power the technology stack. This chapter explores how MaC manifests in fully code-based environments, how management roles adapt to DevOps loops, and how tooling such as GitHub can embed leadership into the change lifecycle while addressing budgeting, capability development, and the orchestration of multiple teams or teams-of-teams.
 
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+- Define Management as Code and explain how it extends Infrastructure as Code and Architecture as Code principles into organisational leadership and governance.
+- Embed management artefacts—policies, OKRs, team charters, and decision guardrails—into the DevOps loop as executable, version-controlled specifications.
+- Configure GitHub repositories, protected branches, CODEOWNERS files, and Actions workflows to automate the validation and deployment of management artefacts.
+- Apply Budgeting as Code techniques to encode spending limits, run cost scenarios, and align financial decisions with engineering realities through pull request workflows.
+- Implement transparent decision-making using GitHub Issues and Discussions, including labelling taxonomies, templates, and automation that link strategic intent to code changes.
+- Measure management effectiveness using lead time, change failure rate, and policy recovery time metrics, and apply continuous improvement techniques to governance models.
+
 ![Management as Code operating model highlighting intent, guardrails, automation, empowered teams, codified culture, and feedback](images/diagram_19_mac_operating_model.png)
 
 *Figure: Management as Code operating model.*
@@ -129,7 +139,7 @@ Discussions enhance transparency through:
 
 **Example 1: Annual Technology Strategy**
 
-Leadership teams use GitHub Discussions to deliberate annual technology strategy rather than relying solely on closed-door meetings. A Discussion thread titled "2024 Technology Strategy: Cloud-Native Adoption" enables:
+Leadership teams use GitHub Discussions to deliberate annual technology strategy rather than relying solely on closed-door meetings. A Discussion thread titled "Annual Technology Strategy: Cloud-Native Adoption" enables:
 - **Asynchronous Participation**: Contributors from different time zones add perspectives over two weeks
 - **Structured Input**: Engineers share technical feasibility assessments, finance provides budget implications, product teams outline business requirements
 - **Iterative Refinement**: The strategy evolves through multiple rounds of feedback rather than being presented as a fait accompli
@@ -185,7 +195,7 @@ Templates ensure consistency whilst preventing critical information from being o
 **2. Define Labelling Taxonomy**
 
 Implement a clear labelling system that enables filtering and reporting:
-- **Strategic Themes**: `security`, `performance`, `cost-optimization`, `compliance`
+- **Strategic Themes**: `security`, `performance`, `cost-optimisation`, `compliance`
 - **Affected Systems**: `payment-service`, `user-management`, `data-pipeline`
 - **Priority Levels**: `critical`, `high`, `medium`, `low`
 - **Workflow States**: `needs-discussion`, `approved`, `in-progress`, `blocked`
@@ -279,5 +289,12 @@ Consider a global software company operating in regulated financial markets. The
 ## Future Directions for MaC
 As artificial intelligence capabilities mature, MaC will incorporate intelligent agents that suggest policy updates based on observed outcomes. Machine learning models can analyse historical management changes and their impact on delivery performance, recommending adjustments to guardrails or team structures. Natural language processing can transform meeting transcripts into code updates, bridging human discussions and codified artefacts, while decentralised governance structures may use smart contracts to enforce management rules across partner ecosystems.
 
-## Conclusion
+## Sources
+
+- Drucker, P.F. (1954). *The Practice of Management*. Harper & Row.
+- GitOps Working Group. *GitOps Principles*. https://opengitops.dev/
+- Puppet. *State of DevOps Report*. Annual industry survey on DevOps practices.
+- Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press.
+
+## Summary
 Management as Code is the logical next step for organisations that already treat infrastructure and architecture as code. By encoding leadership intent into executable artefacts, organisations achieve transparency, speed, and adaptability. MaC embeds management into the DevOps loop, ensures governance is automated, and ties budgeting, competence development, and team leadership into a single continuous system. GitHub and similar platforms become hubs where executives and engineers collaborate in the same workflows, with Issues, Discussions, and Actions transforming management from a peripheral function into a core element of the delivery pipeline. By embracing MaC, organisations unlock scalable, data-driven leadership capable of orchestrating multiple teams and responding rapidly to change.

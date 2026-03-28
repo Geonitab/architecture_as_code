@@ -14,9 +14,9 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 | Term | Definition |
 |------|------------|
-| Architecture as Code | Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. Often abbreviated as AaC. |
-| Infrastructure as Code | A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments. Frequently shortened to IaC. |
-| Architecture Decision Record | A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together. Commonly known as an ADR. |
+| Architecture as Code | Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. Often abbreviated as AaC. (See [Chapter 1](01_introduction.md)) |
+| Infrastructure as Code | A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments. Frequently shortened to IaC. (See [Chapter 5](05_automation_devops_cicd.md)) |
+| Architecture Decision Record | A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together. Commonly known as an ADR. (See [Chapter 4](04_adr.md)) |
 | Declarative Programming | A style of describing desired outcomes rather than procedural steps, enabling automation tools to converge systems on the target state reliably. |
 | Idempotence | The property that a command or template can run repeatedly with the same end result, protecting teams from accidental drift or double execution. |
 | Reusable Module | A parameterised building block—such as a Terraform module or Helm chart—that encapsulates best practice and is published for teams to compose new solutions quickly. |
@@ -26,10 +26,10 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 | Term | Definition |
 |------|------------|
-| Continuous Integration / Continuous Delivery | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. Teams usually refer to this as CI/CD. |
+| Continuous Integration / Continuous Delivery | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. Teams usually refer to this as CI/CD. (See [Chapter 5](05_automation_devops_cicd.md)) |
 | Delivery Pipeline | The orchestrated flow of automated checks, approvals, and deployments that transform committed code into resilient production services. |
-| Version Control System | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. Often shortened to VCS. |
-| GitOps | Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments. |
+| Version Control System | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. Often shortened to VCS. (See [Chapter 3](03_version_control.md)) |
+| GitOps | Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments. (See [Chapter 3](03_version_control.md)) |
 | Configuration Management | Tooling such as Ansible or Chef that applies desired system states, often working alongside declarative templates to maintain consistency. |
 | Terraform | A widely used IaC tool that compiles declarative configurations into API calls, offering modular composition and policy enforcement hooks. |
 | Helm | The package manager for Kubernetes that bundles manifests, default values, and documentation into shareable charts. |
@@ -43,7 +43,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 
 | Term | Definition |
 |------|------------|
-| Policy as Code | The practice of expressing organisational policies in code so they can be versioned, tested, and enforced automatically across platforms. |
+| Policy as Code | The practice of expressing organisational policies in code so they can be versioned, tested, and enforced automatically across platforms. (See [Chapter 10](10_policy_and_security.md)) |
 | Continuous Compliance | Automated validation that checks regulatory and internal controls with every change, generating evidence that auditors and teams can trust. |
 | Zero Trust | A security stance that continuously verifies identities, device health, and context before granting access, reducing implicit trust between services. |
 | Security Policy | A codified set of safeguards—identity, encryption, network, and data-handling—that shapes how architecture components interoperate securely. |
@@ -87,25 +87,21 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Psychological Safety | An environment where every team member can contribute ideas or raise concerns without fear, enabling inclusive innovation. |
 | Servant Leadership | A leadership style that removes obstacles, amplifies team voices, and nurtures growth instead of commanding outcomes. |
 | Change Management | A transparent approach to guiding people through change with empathy, communication, and supportive training. |
-
-**Continuous Improvement Loop:** A feedback rhythm—retrospectives, reviews, and experiments—that keeps practices evolving alongside technology.
-
-**Anti-Pattern:** A common but counterproductive practice that appears helpful yet creates long-term issues, signalling an opportunity for shared learning.
+| Continuous Improvement Loop | A feedback rhythm—retrospectives, reviews, and experiments—that keeps practices evolving alongside technology. |
+| Anti-Pattern | A common but counterproductive practice that appears helpful yet creates long-term issues, signalling an opportunity for shared learning. (See [Chapter 26B](26b_aac_anti_patterns.md)) |
 
 ## Future-focused and advanced concepts
-**Multi-Cloud Strategy:** Using services from multiple providers to balance capability, resilience, and regulatory needs while avoiding lock-in.
 
-**Edge Computing:** Placing compute capabilities closer to data sources or users to reduce latency and improve responsiveness.
-
-**Post-Quantum Cryptography**: Cryptographic techniques designed to withstand attacks from both classical and quantum computers.
-
-**Digital Twin**: A synchronised virtual representation of a system that allows teams to explore changes safely before applying them in production.
-
-**AI for IT Operations**: Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders. Often called AIOps in industry discussions.
-
-**Sustainability KPI**: A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation.
-
-**Knowledge Graph**: A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery.
+| Term | Definition |
+|------|------------|
+| Multi-Cloud Strategy | Using services from multiple providers to balance capability, resilience, and regulatory needs while avoiding lock-in. (See [Chapter 25](25_future_trends.md)) |
+| Edge Computing | Placing compute capabilities closer to data sources or users to reduce latency and improve responsiveness. (See [Chapter 25](25_future_trends.md)) |
+| Post-Quantum Cryptography | Cryptographic techniques designed to withstand attacks from both classical and quantum computers. |
+| Digital Twin | A synchronised virtual representation of a system that allows teams to explore changes safely before applying them in production. |
+| AI for IT Operations | Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders. Often called AIOps in industry discussions. |
+| Sustainability KPI | A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation. |
+| Knowledge Graph | A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery. |
+| CALM | The Common Architecture Language Model — a machine-readable, graph-based standard for describing architectural nodes, relationships, and metadata. (See [Chapter 32](32_finos_project_blueprint.md)) |
 
 ## Terms and relationship database
 Keeping the glossary actionable requires more than prose. A structured dataset now lives at `references/glossary_terms_relationships.json` so automation can reason about how concepts reinforce one another. Pipelines use it to surface dependencies in pull requests, populate architecture decision templates, and keep presentation material aligned with the book’s vocabulary.
