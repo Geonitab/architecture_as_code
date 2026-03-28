@@ -36,7 +36,7 @@ Continuous integration and continuous deployment are more than technical process
 
 The CI/CD concept has roots in Extreme Programming (XP) and the agile movement of the early 2000s. Its application to infrastructure expanded alongside the emergence of cloud technologies. Early infrastructure administrators relied on manual processes, configuration scripts, and the "infrastructure as pets" mindset—each server was unique and required individual care. That approach worked for small environments but could not scale to modern distributed systems containing hundreds or thousands of components.
 
-The shift to "infrastructure as cattle"—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and tools such as Terraform and Ansible accelerated this development by offering programmable interfaces for infrastructure management.
+The shift to "infrastructure as cattle"—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and tools such as Terraform [Source [5]](33_references.md#source-5) and Ansible accelerated this development by offering programmable interfaces for infrastructure management.
 
 These advances coincided with increasingly strict regulatory requirements, particularly GDPR and guidelines from national data protection authorities. Automation is therefore not only an efficiency improvement but a necessity for compliance and risk management.
 
@@ -589,5 +589,6 @@ Successful implementation of CI/CD for Architecture as Code requires balancing a
 7. **GDPR.eu.** *Infrastructure Compliance Requirements.* GDPR Guidelines.
 8. **Data Protection Authorities.** *Technical and Organisational Measures.* GDPR Guidance.
 9. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
-10. **DevOps Institute.** *Architecture-Driven DevOps Practices.* DevOps Research and Assessment.
-11. **Data Protection Authorities.** *GDPR for Organisations.* Guidance on personal-data processing.
+10. **HashiCorp (2024).** *Introduction to Infrastructure as Code with Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
+11. **DevOps Institute.** *Architecture-Driven DevOps Practices.* DevOps Research and Assessment.
+12. **Data Protection Authorities.** *GDPR for Organisations.* Guidance on personal-data processing.

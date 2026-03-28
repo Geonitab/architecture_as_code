@@ -304,7 +304,8 @@ The next part of this book explores how security, policy enforcement, and govern
 
 1. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes Project. [Source [13]](33_references.md#source-13)
 2. **Docker Inc.** *Docker Architecture as Code best practices.* Docker Documentation.
-3. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
-4. **Cloud Native Computing Foundation (2024).** *Cloud Native Definition.* CNCF GitHub. [Source [6]](33_references.md#source-6)
-5. **Helm Community.** *Chart Development Guide.* Helm Documentation.
-6. **Istio Project.** *Service Mesh Architecture.* Istio Service Mesh.
+3. **HashiCorp (2024).** *Introduction to Infrastructure as Code with Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
+4. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
+5. **Cloud Native Computing Foundation (2024).** *Cloud Native Definition.* CNCF GitHub. [Source [6]](33_references.md#source-6)
+6. **Helm Community.** *Chart Development Guide.* Helm Documentation.
+7. **Istio Project.** *Service Mesh Architecture.* Istio Service Mesh.

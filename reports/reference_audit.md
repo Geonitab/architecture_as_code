@@ -1,13 +1,13 @@
 # Reference Audit Report
 
-**Generated:** 2026-03-28 18:53:42
+**Generated:** 2026-03-28 19:01:01
 
 
 ## Summary
 
 | Check | Count |
 |-------|-------|
-| Chapters missing `## Sources` section | 7 |
+| Chapters missing `## Sources` section | 6 |
 | Chapters with non-standard reference headers | 0 |
 | Chapters with malformed inline citations | 0 |
 | Cited source numbers missing from `33_references.md` | 0 |
@@ -16,7 +16,6 @@
 ## Chapters Missing `## Sources` Section
 
 - `28_glossary.md`
-- `29_about_the_author.md`
 - `30_appendix_code_examples.md`
 - `appendix_templates_and_tools.md`
 - `adr_catalogue.md`
