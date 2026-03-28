@@ -4,6 +4,16 @@
 
 Successful Architecture as Code adoption demands far more than tools; it requires an intentionally designed operating model where leadership, enablement teams, and delivery squads share accountability. The collaboration ecosystem illustrated above shows how platform governance, shared services, and communities of practice reinforce one another to create reliable delivery loops.
 
+## Learning Objectives
+
+By the end of this chapter, you will be able to:
+- Explain how organisational structures must evolve—from siloed development and operations to product-aligned teams—to support Architecture as Code adoption at scale.
+- Apply a competency framework to assess technical and interpersonal skills across foundation, practitioner, advanced, and expert levels.
+- Design structured learning programmes that combine external certifications, sandbox environments, and internal mentoring to accelerate capability development.
+- Select and implement agile team models—including platform and product team charters—that treat infrastructure as a product with clear accountability and measurable outcomes.
+- Establish communities of practice with defined cadences, knowledge-sharing channels, and success criteria that sustain continuous learning across product lines.
+- Use balanced scorecards combining DORA metrics with knowledge-sharing contributions to manage performance and support career progression for Architecture as Code specialists.
+
 ## Organisational transformation for Architecture as Code
 
 Traditional organisational charts that separate development, testing, and operations create silos which hinder Architecture as Code practices. Cross-functional teams with shared responsibility for the entire service lifecycle achieve faster feedback, higher quality, and sustainable flow. Reorganising around product-aligned delivery teams also improves transparency because the system design mirrors the communication pathways predicted by Conway's Law.
@@ -42,7 +52,7 @@ Managers revisit the matrix alongside metrics and feedback to tailor coaching pl
 
 ## Learning strategies and certifications
 
-Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms (A Cloud Guru, Pluralsight, Linux Academy) provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer Expert, and HashiCorp Certified Terraform Associate validate proficiency and guide progression through increasingly advanced competencies.
+Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms (A Cloud Guru, Pluralsight, Linux Academy) provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer Expert, and HashiCorp Certified Terraform Associate (at time of writing; certification programmes evolve rapidly — verify current offerings with the respective vendors) validate proficiency and guide progression through increasingly advanced competencies.
 
 To turn knowledge into practice, organisations invest in sandbox environments, lab challenges, and pair programming. Managers should track completion, but also emphasise practical demonstrations of new capabilities applied to real delivery scenarios.
 
@@ -188,7 +198,6 @@ Documented runbooks, architecture decision records, troubleshooting guides, and 
 
 This template accompanies the knowledge sharing guidance. It clarifies roles, cadences, and collaboration platforms so that community leaders can launch a consistent operating rhythm.
 
-```markdown
 # Infrastructure as Code Community of Practice
 
 ## Purpose
@@ -248,7 +257,6 @@ Foster knowledge sharing, collaboration, and continuous learning in Architecture
 - Cross-team collaboration instances
 - Skill development progression
 - Innovation and improvement suggestions
-```
 
 Community coordinators review these artefacts after each quarter, ensuring insights captured during talks and workshops make their way into documentation, reusable modules, and the broader operating model.
 

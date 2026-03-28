@@ -14,9 +14,13 @@ The Architecture as Code initiative relies on a cohesive ensemble of AI agents t
 
 ## Multi-Agent Operating Model
 
+<!-- Note: This file uses a diagram_28_ prefix; rename to diagram_20_agent_team.png
+     and update the .mmd source and PNG export to match Chapter 20 conventions. -->
 ![AI agent collaboration flow](images/diagram_28_agent_team.png)
 
-The operating model begins with the project owner defining priorities and acceptable outcomes. The Project Manager agent transforms those directions into sprint goals, decomposes them into manageable cases, and steers the flow of information between the specialists. Architect, Requirements Analyst, Designer, Developer, Quality Control, Editor, and Graphic Designer agents execute their craft in tight feedback loops, returning insights and artefacts to the Project Manager. The Project Manager consolidates the overall status, flags risks, and recommends decisions back to the project owner at the end of each iteration. 
+The operating model begins with the project owner defining priorities and acceptable outcomes. The Project Manager agent transforms those directions into sprint goals, decomposes them into manageable cases, and steers the flow of information between the specialists. Architect, Requirements Analyst, Designer, Developer, Quality Control, Editor, and Graphic Designer agents execute their craft in tight feedback loops, returning insights and artefacts to the Project Manager. The Project Manager consolidates the overall status, flags risks, and recommends decisions back to the project owner at the end of each iteration.
+
+> **Note:** Multi-agent AI workflows remain an active area of research. Teams adopting this pattern should plan for hallucination mitigation, output validation steps, cost monitoring, and iterative refinement of agent prompts. Treat this operating model as a starting framework requiring ongoing evaluation rather than a fully proven, production-ready blueprint.
 
 ## Role Narratives and Responsibilities
 
@@ -102,6 +106,10 @@ jobs:
       - name: Check heading capitalisation
         run: python3 scripts/validate_heading_capitalization.py docs/
 
+      # Note: The script paths above are illustrative. Create scripts/check_terminology.py
+      # and scripts/validate_heading_capitalization.py (or equivalent) adapted to your
+      # project's terminology standards before using this workflow.
+
       - name: Annotate pull request with findings
         uses: actions/github-script@v7
         with:
@@ -142,7 +150,7 @@ Your responsibilities are:
 - Review architectural proposals for consistency with the system blueprint in docs/
 - Validate that proposed changes align with existing ADRs in docs/examples/structurizr/adrs/
 - Suggest new ADRs when significant decisions are implicit in a proposal
-- Ensure all diagrams follow the Kvadrat theme defined in docs/DIAGRAM_STYLE_GUIDE.md
+- Ensure all diagrams follow the Kvadrat theme defined in docs/VISUAL_ELEMENTS_GUIDE.md
 - Write in Oxford-standard British English
 
 When reviewing a pull request or issue:
