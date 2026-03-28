@@ -1,15 +1,15 @@
-mindmap
-  root((Code Organisation))
-    Repository Structure
-      Shared modules
-      Environment configs
-      Application infra
-    Module Design
-      Reusability principles
-      Composability
-      Clear interfaces
-      Documentation
-    Versioning
-      Semantic versioning
-      Immutable releases
-      Upgrade paths
+graph TD
+    ROOT(["Code Organisation"])
+    ROOT --> RS["Repository Structure"]
+    ROOT --> MD["Module Design"]
+    ROOT --> VER["Versioning"]
+    RS --> RS1["Shared Modules"]
+    RS --> RS2["Environment Configs"]
+    RS --> RS3["Application Infra"]
+    MD --> MD1["Reusability Principles"]
+    MD --> MD2["Composability"]
+    MD --> MD3["Clear Interfaces"]
+    MD --> MD4["Documentation"]
+    VER --> VER1["Semantic Versioning"]
+    VER --> VER2["Immutable Releases"]
+    VER --> VER3["Upgrade Paths"]

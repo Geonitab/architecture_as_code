@@ -1,12 +1,12 @@
-mindmap
-  root((Policy as Code))
-    Automated Governance
-      OPA/Rego Policies
-      HashiCorp Sentinel
-      Cloud-native Policies
-      Real-time Enforcement
-    Compliance Automation
-      GDPR Article 32
-      PCI-DSS Requirements
-      ISO 27001
-      Swedish Regulations
+graph TD
+    ROOT(["Policy as Code"])
+    ROOT --> AG["Automated Governance"]
+    ROOT --> CA["Compliance Automation"]
+    AG --> AG1["OPA/Rego Policies"]
+    AG --> AG2["HashiCorp Sentinel"]
+    AG --> AG3["Cloud-native Policies"]
+    AG --> AG4["Real-time Enforcement"]
+    CA --> CA1["GDPR Article 32"]
+    CA --> CA2["PCI-DSS Requirements"]
+    CA --> CA3["ISO 27001"]
+    CA --> CA4["Swedish Regulations"]

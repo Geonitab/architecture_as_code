@@ -1,40 +1,30 @@
-graph TB
-    subgraph "Requirements & Design"
-        BR[Business Requirements]:::kv-primary
-        FR[Functional Requirements]:::kv-accent
-        NFR[Non-Functional Requirements]:::kv-highlight
-        SD[System Design]:::kv-accent
-        DD[Detailed Design]:::kv-primary
+flowchart LR
+    subgraph spec["Specification"]
+        direction TB
+        BR["Business Requirements"]
+        FR["Functional Requirements"]
+        NFR["Non-Functional Requirements"]
+        SD["System Design"]
+        DD["Detailed Design"]
+        BR --> FR --> NFR --> SD --> DD
     end
-    
-    subgraph "Implementation"
-        CODE[Implementation as Code]:::kv-highlight
+
+    CODE["Implementation\nas Code"]
+
+    subgraph verif["Verification & Validation"]
+        direction TB
+        OV["Operational Validation"]
+        AT["Acceptance Testing"]
+        ST["System Testing"]
+        IT["Integration Testing"]
+        UT["Unit Testing"]
+        OV --> AT --> ST --> IT --> UT
     end
-    
-    subgraph "Verification & Validation"
-        UT[Unit Testing<br/>NFR Verification]:::kv-highlight
-        IT[Integration Testing<br/>NFR Verification]:::kv-accent
-        ST[System Testing<br/>NFR Verification]:::kv-accent
-        AT[Acceptance Testing<br/>FR Validation]:::kv-primary
-        OT[Operational Validation<br/>FR Validation]:::kv-primary
-    end
-    
-    BR --> FR
-    BR --> NFR
-    FR --> SD
-    NFR --> SD
-    SD --> DD
-    DD --> CODE
-    
-    CODE --> UT
-    UT --> IT
-    IT --> ST
-    ST --> AT
-    AT --> OT
-    
-    DD -.Testing.-> UT
-    SD -.Testing.-> IT
-    NFR -.Testing.-> ST
-    FR -.Validation.-> AT
-    BR -.Validation.-> OT
-    
+
+    DD --> CODE --> UT
+
+    BR -. "Validates" .-> OV
+    FR -. "Validates" .-> AT
+    NFR -. "Verifies" .-> ST
+    SD -. "Verifies" .-> IT
+    DD -. "Verifies" .-> UT

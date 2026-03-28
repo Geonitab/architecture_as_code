@@ -1,14 +1,14 @@
-mindmap
-  root((Threat Modeling))
-    Threat Landscape
-      Supply Chain Attacks
-      Code Injection
-      Insider Threats
-      Infrastructure Exploits
-    STRIDE Methodology
-      Spoofing
-      Tampering
-      Repudiation
-      Information Disclosure
-      Denial of Service
-      Elevation of Privilege
+graph TD
+    ROOT(["Threat Modelling"])
+    ROOT --> TL["Threat Landscape"]
+    ROOT --> SM["STRIDE Methodology"]
+    TL --> TL1["Supply Chain Attacks"]
+    TL --> TL2["Code Injection"]
+    TL --> TL3["Insider Threats"]
+    TL --> TL4["Infrastructure Exploits"]
+    SM --> SM1["Spoofing"]
+    SM --> SM2["Tampering"]
+    SM --> SM3["Repudiation"]
+    SM --> SM4["Information Disclosure"]
+    SM --> SM5["Denial of Service"]
+    SM --> SM6["Elevation of Privilege"]
