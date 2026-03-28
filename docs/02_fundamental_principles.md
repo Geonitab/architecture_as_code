@@ -593,7 +593,7 @@ This dual approach – automated testing for NFRs and structured validation for 
 
 1. **Red Hat.** *Architecture as Code Principles and Best Practices.* Red Hat Developer.
 2. **Martin, R. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure.* Prentice Hall.
-3. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+3. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 4. **GitLab (2024).** *Documentation as Code: Best Practices and Implementation.* GitLab Documentation.
 5. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
 6. **Open Policy Agent (2024).** *Policy as Code: Expressing Requirements as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)

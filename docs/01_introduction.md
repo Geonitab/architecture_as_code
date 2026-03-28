@@ -20,13 +20,13 @@ Architecture as Code counters that systemic complexity by capturing service boun
 
 ## Definition and Scope
 
-Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. ThoughtWorks (2024) characterises this discipline as producing *live, executable specifications* that stay synchronised with the running estate rather than lingering as aspirational design artefacts. This encompasses application components, integration patterns, data architecture, infrastructure, and organisational processes.
+Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. Thoughtworks (2024) characterises this discipline as producing *live, executable specifications* that stay synchronised with the running estate rather than lingering as aspirational design artefacts. This encompasses application components, integration patterns, data architecture, infrastructure, and organisational processes.
 
 This holistic approach enables end-to-end automation, where changes in requirements automatically propagate throughout the architecture – from application logic to deployment and monitoring. Because the specifications remain executable, governance controls, quality gates, and audit evidence can be embedded directly into the same pipelines that deliver software, keeping architecture intent verifiable at the pace that continuous delivery demands.
 
 ## Critique of Traditional Architecture
 
-Traditional architecture practices have struggled with "slideware syndrome"—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational reality. As environments evolve, these unchecked artefacts accumulate architectural entropy: the gradual loss of coherence between documented intent and implemented systems. ThoughtWorks (2024) warns that this entropy erodes trust, leaving teams to improvise workarounds that bypass architectural guardrails altogether.
+Traditional architecture practices have struggled with "slideware syndrome"—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational reality. As environments evolve, these unchecked artefacts accumulate architectural entropy: the gradual loss of coherence between documented intent and implemented systems. Thoughtworks (2024) warns that this entropy erodes trust, leaving teams to improvise workarounds that bypass architectural guardrails altogether.
 
 DevOps-driven change velocity amplifies these failure modes. Release pipelines ship features and infrastructure updates in hours rather than quarters, and manual governance checkpoints become bottlenecks that teams either circumvent or replicate inconsistently. Architecture as Code responds by embedding governance policies, compliance checks, and architectural decision records inside the same automated workflows, ensuring that fast-moving delivery remains accountable to shared standards without reverting to bureaucratic overhead.
 
@@ -92,6 +92,6 @@ Part A of this book lays the conceptual foundations for that discipline. Chapter
 
 ## Sources
 
-1. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+1. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 2. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
 3. **Martin, R. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure.* Prentice Hall.

@@ -88,5 +88,5 @@ Adopting the blueprint means embracing a living system: CALM models evolve with 
 ## Sources
 
 1. **FINOS (2024).** *CALM: Common Architecture Language Model.* FINOS Architecture as Code Community. [https://calm.finos.org/](https://calm.finos.org/)
-2. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+2. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 3. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
