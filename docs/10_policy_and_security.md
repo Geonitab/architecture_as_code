@@ -147,5 +147,5 @@ Successful PaC programmes blend technology with process change. A staged roadmap
 ## Sources
 
 1. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-2. **NIST (2024).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53. [Source [11]](33_references.md#source-11)
+2. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53, Revision 5, 2020. [Source [11]](33_references.md#source-11)
 3. **HashiCorp (2024).** *Terraform Security Best Practices.* HashiCorp Learning Resources. [Source [20]](33_references.md#source-20)
