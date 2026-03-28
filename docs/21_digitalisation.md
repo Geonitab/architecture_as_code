@@ -383,11 +383,11 @@ The organisational transformation explored in this part—from [changing team st
 
 Part F explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft 'as Code' Disciplines](23_soft_as_code_interplay.md) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
 
-## Sources and References
+## Sources
 
-- Gartner. "Cloud Adoption Strategies for Enterprises." Gartner Research, 2023.
-- McKinsey Digital. "Digital Transformation: A Global Perspective." McKinsey & Company, 2023.
-- AWS. "Cloud Adoption Framework for Enterprises." Amazon Web Services, 2023.
-- Microsoft. "Azure for Enterprise Digital Transformation." Microsoft Azure, 2023.
-- HashiCorp. "Infrastructure as Code Best Practices." HashiCorp Learn, 2023.
-- SANS Institute. "Cloud Security for Enterprise Organisations." SANS Security Research, 2023.
+1. **Gartner (2023).** *Cloud Adoption Strategies for Enterprises.* Gartner Research.
+2. **McKinsey & Company (2023).** *Digital Transformation: A Global Perspective.* McKinsey Digital.
+3. **Amazon Web Services (2023).** *Cloud Adoption Framework for Enterprises.* Amazon Web Services.
+4. **Microsoft (2023).** *Azure for Enterprise Digital Transformation.* Microsoft Azure.
+5. **HashiCorp (2023).** *Infrastructure as Code Best Practices.* HashiCorp Learn.
+6. **SANS Institute (2023).** *Cloud Security for Enterprise Organisations.* SANS Security Research.

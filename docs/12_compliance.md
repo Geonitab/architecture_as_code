@@ -36,7 +36,7 @@ Architecture as Code operationalises the **assure once, comply many** principle 
 
 | Control ID | Control Title | Assurance Artefact(s) | ISO 27001 | SOC 2 | NIST 800-53 | GDPR | Internal |
 |------------|---------------|-----------------------|-----------|-------|--------------|------|----------|
-| SEC-ID-001 | Enforce MFA for human identities | `ci/policy-report.json`, `evidence/mfa-snapshot-YYYYMM.json` | A.5 / A.8 | CC6.1 / CC6.6 | IA-2(1), AC-2 | Article 32 | IAM-01 |
+| SEC-ID-001 | Enforce MFA for human identities | `ci/policy-report.json`, `evidence/mfa-snapshot-202501.json` | A.5 / A.8 | CC6.1 / CC6.6 | IA-2(1), AC-2 | Article 32 | IAM-01 |
 
 In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15a_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](appendix_d_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
 
@@ -263,10 +263,10 @@ With security controls, policy frameworks, and compliance mechanisms established
 
 Part D examines the testing strategies, implementation patterns, cost optimisation techniques, and migration approaches that organisations need to deliver Architecture as Code successfully. [Chapter 13 on Testing Strategies](13_testing_strategies.md) builds on the security and compliance frameworks we've established, showing how to validate that infrastructure meets both functional and regulatory requirements. The subsequent chapters demonstrate practical implementation, financial optimisation, and migration strategies that bring together all the elements covered so far.
 
-## Sources and References
+## Sources
 
-- IEEE Computer Society. "Quantum Computing Impact on Infrastructure." IEEE Quantum Computing Standards.
-- Green Software Foundation. "Sustainable Infrastructure Patterns." Green Software Principles.
-- NIST. "Post-Quantum Cryptography Standards." National Institute of Standards and Technology.
-- Cloud Native Computing Foundation. "Future of Cloud Native Infrastructure." CNCF Research.
-- Gartner Research. "Infrastructure and Operations Technology Trends 2024." Gartner IT Infrastructure Reports.
+1. **IEEE Computer Society.** *Quantum Computing Impact on Infrastructure.* IEEE Quantum Computing Standards.
+2. **Green Software Foundation.** *Sustainable Infrastructure Patterns.* Green Software Principles.
+3. **NIST.** *Post-Quantum Cryptography Standards.* National Institute of Standards and Technology.
+4. **Cloud Native Computing Foundation.** *Future of Cloud Native Infrastructure.* CNCF Research.
+5. **Gartner Research (2024).** *Infrastructure and Operations Technology Trends 2024.* Gartner IT Infrastructure Reports.

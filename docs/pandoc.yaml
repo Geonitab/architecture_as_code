@@ -3,6 +3,7 @@
 # Simplified configuration for better compatibility
 
 # General settings
+from: markdown+bracketed_spans
 standalone: true
 toc: true
 toc-depth: 3

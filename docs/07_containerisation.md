@@ -6,7 +6,7 @@ Architecture as Code underpins modern container platforms by turning deployment 
 
 ## Industry trend data driving Architecture as Code adoption
 
-The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report (Source [7]) confirms that distributed architectures are now the norm: 67% of surveyed organisations run microservices in production and 58% operate event-driven workloads alongside them. The same research notes that 52% are investing in internal developer platforms to tame the resulting estate. Together these figures highlight why Architecture as Code is essential. When the majority of teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that the report identifies as critical for scaling cloud-native delivery.
+The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report ([Source [7]](33_references.md#source-7)) confirms that distributed architectures are now the norm: 67% of surveyed organisations run microservices in production and 58% operate event-driven workloads alongside them. The same research notes that 52% are investing in internal developer platforms to tame the resulting estate. Together these figures highlight why Architecture as Code is essential. When the majority of teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that the report identifies as critical for scaling cloud-native delivery.
 
 ## The role of container technology within Architecture as Code
 
@@ -42,7 +42,7 @@ Large organisations often operate multiple clusters across regions. Multi-cluste
 
 ## Guard rails that keep manifests trustworthy
 
-Container platforms remain maintainable only if every manifest is validated before it reaches production. Teams extend their CI/CD pipelines with schema and conformance checks that run alongside unit tests: tools such as `kubectl apply --server-side --dry-run=client`, `kubeval`, and `kubeconform` verify that every API field matches the targeted Kubernetes version, while Helm's built-in `helm lint` prevents template regressions. Policy-as-code engines—including Open Policy Agent Gatekeeper and Kyverno—enforce organisational guard rails (for example, disallowing privileged pods, enforcing GDPR tagging, or ensuring resource limits) so that review comments are backed by automated enforcement rather than informal guidelines (Source [7]).
+Container platforms remain maintainable only if every manifest is validated before it reaches production. Teams extend their CI/CD pipelines with schema and conformance checks that run alongside unit tests: tools such as `kubectl apply --server-side --dry-run=client`, `kubeval`, and `kubeconform` verify that every API field matches the targeted Kubernetes version, while Helm's built-in `helm lint` prevents template regressions. Policy-as-code engines—including Open Policy Agent Gatekeeper and Kyverno—enforce organisational guard rails (for example, disallowing privileged pods, enforcing GDPR tagging, or ensuring resource limits) so that review comments are backed by automated enforcement rather than informal guidelines ([Source [7]](33_references.md#source-7)).
 
 The following example shows a minimal OPA Gatekeeper constraint that prohibits containers running as root and an Argo CD Application manifest that continuously reconciles the desired state with the cluster, illustrating the "as Code" framing in practice:
 
@@ -83,17 +83,17 @@ spec:
       selfHeal: true
 ```
 
-Security scanning and integration testing then validate the images referenced by those manifests. Container scanning in the registry, static analysis of Dockerfiles, and ephemeral integration environments make sure that dependencies, runtime permissions, and exposed services stay aligned with architectural expectations. The AWS Cloud Development Kit guidance documents the same pattern for infrastructure as code pipelines: manifests and infrastructure definitions must pass unit tests, integration tests, and policy checks before promotion, with results stored in version control to support ongoing maintenance (Source [9]).
+Security scanning and integration testing then validate the images referenced by those manifests. Container scanning in the registry, static analysis of Dockerfiles, and ephemeral integration environments make sure that dependencies, runtime permissions, and exposed services stay aligned with architectural expectations. The AWS Cloud Development Kit guidance documents the same pattern for infrastructure as code pipelines: manifests and infrastructure definitions must pass unit tests, integration tests, and policy checks before promotion, with results stored in version control to support ongoing maintenance ([Source [9]](33_references.md#source-9)).
 
 ## Detecting and preventing drift
 
-Reconciliation loops highlight when the declared state diverges from the cluster, but proactive drift detection is still essential for maintainability. GitOps operators surface pending changes whenever live configuration no longer matches Git, allowing teams to compare manifests through pull-request style diffs before reconciling. Scheduled jobs that run `kubectl diff`, `terraform plan`, or `argocd app diff` on each environment catch manual changes early and create auditable records. Platform teams couple these detectors with automated rollbacks or tickets so that unauthorised configuration changes cannot accumulate, directly addressing the governance gaps observed in the CNCF research (Source [7]).
+Reconciliation loops highlight when the declared state diverges from the cluster, but proactive drift detection is still essential for maintainability. GitOps operators surface pending changes whenever live configuration no longer matches Git, allowing teams to compare manifests through pull-request style diffs before reconciling. Scheduled jobs that run `kubectl diff`, `terraform plan`, or `argocd app diff` on each environment catch manual changes early and create auditable records. Platform teams couple these detectors with automated rollbacks or tickets so that unauthorised configuration changes cannot accumulate, directly addressing the governance gaps observed in the CNCF research ([Source [7]](33_references.md#source-7)).
 
 Drift management extends beyond workloads. Backup jobs compare expected volume snapshots with actual storage policies, while network controllers confirm that service mesh routes still match the declarative intent. These controls stop platform sprawl and give operators the confidence to scale clusters without sacrificing oversight.
 
 ## Continuous delivery integration
 
-Bringing these guard rails together requires disciplined integration with the wider CI/CD toolchain. Chapter 05 explores the broader DevOps pipeline, but the container orchestration flow adds platform-specific stages: manifest validation and policy checks run after application unit tests; container image signing and provenance checks ensure supply chain integrity; and GitOps controllers provide progressive delivery into staging and production once all quality gates have passed. AWS CDK pipelines and similar orchestration stacks codify each gate—test execution, security scans, manual approvals—so that every environment promotion is traceable and repeatable (Source [9]).
+Bringing these guard rails together requires disciplined integration with the wider CI/CD toolchain. Chapter 05 explores the broader DevOps pipeline, but the container orchestration flow adds platform-specific stages: manifest validation and policy checks run after application unit tests; container image signing and provenance checks ensure supply chain integrity; and GitOps controllers provide progressive delivery into staging and production once all quality gates have passed. AWS CDK pipelines and similar orchestration stacks codify each gate—test execution, security scans, manual approvals—so that every environment promotion is traceable and repeatable ([Source [9]](33_references.md#source-9)).
 
 Observability pipelines close the loop by publishing validation metrics, failed policy counts, and drift incidents to dashboards. Teams review this telemetry during architecture runways and platform councils to ensure the maintainability targets remain on track.
 
@@ -300,11 +300,12 @@ The automation capabilities and deployment velocity enabled by containerisation 
 
 The next part of this book explores how security, policy enforcement, and governance frameworks integrate into Architecture as Code practices. [Chapter 9 on Security Fundamentals](09_security_fundamentals.md) and [Chapter 9B on Advanced Security Patterns](09b_security_patterns.md) examine threat modelling, Zero Trust Architecture, and security-by-design principles specifically tailored for containerised, automated environments. [Chapter 10 on Policy and Security as Code](10_policy_and_security.md) demonstrates how tools like Open Policy Agent enforce security requirements automatically, whilst [Chapters 11 and 12](11_governance_as_code.md) show how governance and compliance become executable code rather than static documentation.
 
-## Sources and references
+## Sources
 
-- Kubernetes Documentation. "Concepts and Architecture." The Kubernetes Project.
-- Docker Inc. "Docker Architecture as Code best practices." Docker Documentation.
-- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF Research.
-- Cloud Native Computing Foundation. "CNCF Landscape." Cloud Native Technologies.
-- Helm Community. "Chart Development Guide." Helm Documentation.
-- Istio Project. "Service Mesh Architecture." Istio Service Mesh.
+1. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes Project. [Source [13]](33_references.md#source-13)
+2. **Docker Inc.** *Docker Architecture as Code best practices.* Docker Documentation.
+3. **HashiCorp (2024).** *Introduction to Infrastructure as Code with Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
+4. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
+5. **Cloud Native Computing Foundation (2024).** *Cloud Native Definition.* CNCF GitHub. [Source [6]](33_references.md#source-6)
+6. **Helm Community.** *Chart Development Guide.* Helm Documentation.
+7. **Istio Project.** *Service Mesh Architecture.* Istio Service Mesh.

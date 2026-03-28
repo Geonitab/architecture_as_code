@@ -94,13 +94,13 @@ Each appendix entry describes when to use the pattern, the governance indicators
 
 Architecture as Code in practice requires disciplined planning, collaborative execution, and relentless optimisation. Organisations that invest in a structured roadmap, curate a dependable toolchain, and treat operational excellence as a core deliverable achieve consistent, auditable infrastructure change at scale.
 
-## Sources and references
+## Sources
 
-- HashiCorp. "Terraform Architecture as Code Best Practices." HashiCorp Learn Platform.
-- AWS Well-Architected Framework. "Infrastructure as Code." Amazon Web Services.
-- Google Cloud. "Infrastructure as Code Design Patterns." Google Cloud Architecture Centre.
-- Microsoft Azure. "Azure Resource Manager Best Practices." Microsoft Documentation.
-- Puppet. "Infrastructure as Code Implementation Guide." Puppet Enterprise Documentation.
-- GitHub Docs. "About protected branches." GitHub Documentation.
-- AWS. "AWS Cloud Development Kit (CDK) Developer Guide." Amazon Web Services.
-- Pulumi. "Testing Infrastructure as Code Programs." Pulumi Blog, 2024.
+1. **HashiCorp.** *Terraform Architecture as Code Best Practices.* HashiCorp Learn Platform.
+2. **Amazon Web Services.** *AWS Well-Architected Framework: Infrastructure as Code.* Amazon Web Services.
+3. **Google Cloud.** *Infrastructure as Code Design Patterns.* Google Cloud Architecture Centre.
+4. **Microsoft Azure.** *Azure Resource Manager Best Practices.* Microsoft Documentation.
+5. **Puppet.** *Infrastructure as Code Implementation Guide.* Puppet Enterprise Documentation.
+6. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
+7. **Amazon Web Services (2024).** *AWS Cloud Development Kit (CDK) Developer Guide.* Amazon Web Services. [Source [9]](33_references.md#source-9)
+8. **Pulumi (2024).** *Testing Infrastructure as Code Programs.* Pulumi Blog. [Source [15]](33_references.md#source-15)

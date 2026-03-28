@@ -122,12 +122,12 @@ The open-source ecosystem that underpins this discipline—from Terraform and Pu
 
 *Figure 27.3 – Source materials and intellectual lineage underpinning the Architecture as Code approach presented in this book.*
 
-## Key Works
+## Sources
 
 The thesis of this book draws most directly on:
 
-- Skelton, M. & Pais, M. (2019). *Team Topologies*. IT Revolution Press.
-- Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press.
-- Bass, L., Clements, P. & Kazman, R. (2021). *Software Architecture in Practice* (4th ed.). Addison-Wesley.
+1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press.
+2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press.
+3. **Bass, L., Clements, P. & Kazman, R. (2021).** *Software Architecture in Practice* (4th ed.). Addison-Wesley.
 
 For a full bibliography, see [Chapter 33: References and Sources](33_references.md).

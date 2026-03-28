@@ -95,11 +95,11 @@ Cross-functional teams, purposeful learning, and adaptive leadership turn automa
 
 By linking cultural commitments with transparent measurement and clear governance, enterprises create an environment where resilient infrastructure becomes a shared responsibility. The practices outlined in this chapter—from psychological safety to competency frameworks to DevOps metrics—provide concrete starting points for organisations at any stage of their transformation journey.
 
-## Sources and References
+## Sources
 
-- Puppet. "State of DevOps Report." Puppet Labs, 2023.
-- Google. "DORA State of DevOps Research." Google Cloud, 2023.
-- Spotify. "Spotify Engineering Culture." Spotify Technology, 2023.
-- Skelton, M. & Pais, M. (2019). *Team Topologies: Organising Business and Technology Teams for Fast Flow.* IT Revolution Press.
-- Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press.
-- McKinsey & Company. "Organisational Transformation Best Practices." McKinsey Digital, 2023.
+1. **Puppet Labs (2023).** *State of DevOps Report.* Puppet Labs.
+2. **Google Cloud (2023).** *DORA State of DevOps Research.* Google Cloud.
+3. **Spotify Technology (2023).** *Spotify Engineering Culture.* Spotify Technology.
+4. **Skelton, M. & Pais, M. (2019).** *Team Topologies: Organising Business and Technology Teams for Fast Flow.* IT Revolution Press.
+5. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press.
+6. **McKinsey & Company (2023).** *Organisational Transformation Best Practices.* McKinsey Digital.

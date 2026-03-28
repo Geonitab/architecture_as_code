@@ -128,3 +128,9 @@ Readiness is not a one-off audit. Dashboards should blend DORA indicators from [
 AaC readiness is a deliberate synthesis of culture, technology, and economics. Organisations that honour these prerequisites create the conditions for disciplined adoption of the practices introduced in the chapters that follow. Those that skip the groundwork rediscover the failure modes catalogued throughout the book. By grounding adoption in readiness, teams respect the complexity of their sociotechnical systems and earn the right to begin the Architecture as Code journey described from [Chapter 2](02_fundamental_principles.md) onward.
 
 [Chapter 2: Fundamental Principles](02_fundamental_principles.md) is the natural next step: it establishes the declarative, immutable, and testable patterns that readiness prepares teams to absorb. For anti-patterns to avoid during adoption, see [Chapter 26B: Anti-Patterns in Architecture as Code Programmes](26b_aac_anti_patterns.md).
+
+## Sources
+
+1. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+2. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
+3. **Thoughtworks Technology Radar (2024).** *Governance as Code.* Thoughtworks. [Source [2]](33_references.md#source-2)

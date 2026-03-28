@@ -26,9 +26,9 @@ Terraform testing tools such as Terratest, terraform-compliance and Checkov enab
 
 ### Comparing Pulumi and Terraform Testability
 
-Pulumi's *Testing Infrastructure as Code Programs* guidance (2024, Source [15]) emphasises that defining infrastructure through general-purpose languages lets engineers reuse familiar unit-testing frameworks, wire in Pulumi's provider mocks, and execute assertions locally without touching the cloud. The article demonstrates IaC checks running alongside application suites—`npm test`, `pytest`, or similar—so developers iterate through short feedback loops that encourage test-first habits and reduce the cost of validation.
+Pulumi's *Testing Infrastructure as Code Programs* guidance (2024, [Source [15]](33_references.md#source-15)) emphasises that defining infrastructure through general-purpose languages lets engineers reuse familiar unit-testing frameworks, wire in Pulumi's provider mocks, and execute assertions locally without touching the cloud. The article demonstrates IaC checks running alongside application suites—`npm test`, `pytest`, or similar—so developers iterate through short feedback loops that encourage test-first habits and reduce the cost of validation.
 
-The same guidance contrasts Pulumi's approach with declarative tools such as Terraform, highlighting that HCL lacks first-class unit-testing hooks and therefore leans on `terraform plan`, Terratest, `terraform test`, and policy-as-code engines to approximate the same assurance. Those options remain valuable, yet they routinely execute against rendered plans or ephemeral infrastructure, so feedback loops tend to stretch towards integration-time cadences rather than the in-IDE iterations Pulumi showcases in Source [15]. In both ecosystems, unit-level checks complement rather than replace integration and end-to-end tests that validate real infrastructure behaviour.
+The same guidance contrasts Pulumi's approach with declarative tools such as Terraform, highlighting that HCL lacks first-class unit-testing hooks and therefore leans on `terraform plan`, Terratest, `terraform test`, and policy-as-code engines to approximate the same assurance. Those options remain valuable, yet they routinely execute against rendered plans or ephemeral infrastructure, so feedback loops tend to stretch towards integration-time cadences rather than the in-IDE iterations Pulumi showcases in [Source [15]](33_references.md#source-15). In both ecosystems, unit-level checks complement rather than replace integration and end-to-end tests that validate real infrastructure behaviour.
 
 Unit tests for codified infrastructure should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly important for reusable modules that are used across multiple projects, where changes can have wide-ranging impact on dependent resources.
 
@@ -36,7 +36,7 @@ Mock testing strategies for cloud resources enable testing without actual cloud 
 
 ### Automated pipeline scaffolding for Terraform and Pulumi
 
-Source [15] sets clear expectations that Infrastructure as Code repositories must treat testing as a first-class pipeline citizen rather than an optional local practice. To operationalise that guidance the continuous integration scaffolding should codify complementary stages for Pulumi- and Terraform-based stacks so that parity is maintained across mixed estates. The representative pipeline below layers static checks, unit-style execution, security scanning and integration rehearsals into one repeatable workflow:
+[Source [15]](33_references.md#source-15) sets clear expectations that Infrastructure as Code repositories must treat testing as a first-class pipeline citizen rather than an optional local practice. To operationalise that guidance the continuous integration scaffolding should codify complementary stages for Pulumi- and Terraform-based stacks so that parity is maintained across mixed estates. The representative pipeline below layers static checks, unit-style execution, security scanning and integration rehearsals into one repeatable workflow:
 
 | Stage | Pulumi focus | Terraform focus | Objective |
 |-------|--------------|-----------------|-----------|
@@ -409,12 +409,12 @@ Investment in robust Infrastructure as Code testing frameworks pays off through 
 
 The testing quadrant diagram (Figure 13.2) illustrates how different testing strategies balance implementation complexity against testing coverage, helping teams prioritise their testing investments. Security scanning and policy testing offer high coverage with moderate implementation effort, making them ideal early investments, whilst end-to-end testing provides comprehensive validation at higher implementation cost.
 
-## Sources and References
+## Sources
 
-- Terratest Documentation. "Infrastructure Testing for Terraform." Gruntwork, 2024.
-- Open Policy Agent. "Policy Testing Best Practices for Infrastructure as Code." CNCF OPA Project, 2024.
-- AWS. "Infrastructure Testing Strategy Guide." Amazon Web Services, 2024.
-- Kubernetes. "Testing Infrastructure and Applications." Kubernetes Documentation, 2024.
-- NIST. "Security Testing for Cloud Infrastructure." NIST Cybersecurity Framework, 2024.
-- CSA. "Cloud Security Testing Guidelines." Cloud Security Alliance, 2024.
-- Vitest. "Next Generation Testing Framework." Vitest Documentation, 2024.
+1. **Gruntwork (2024).** *Terratest Documentation: Infrastructure Testing for Terraform.* Gruntwork.
+2. **Open Policy Agent (2024).** *Policy Testing Best Practices for Infrastructure as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+3. **Amazon Web Services (2024).** *Infrastructure Testing Strategy Guide.* Amazon Web Services.
+4. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes Project. [Source [13]](33_references.md#source-13)
+5. **NIST (2024).** *Security Testing for Cloud Infrastructure.* NIST Cybersecurity Framework.
+6. **Cloud Security Alliance (2024).** *Cloud Security Testing Guidelines.* Cloud Security Alliance.
+7. **Pulumi (2024).** *Testing Infrastructure as Code Programs.* Pulumi Blog. [Source [15]](33_references.md#source-15)

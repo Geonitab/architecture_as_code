@@ -209,7 +209,7 @@ By progressing through this maturity model, organisations can evolve from manual
 
 ---
 
-## References
+## Sources
 
 [1]: https://github.com/dwmkerr/architecture-as-code "Architecture as Code GitHub Repository"  
 [2]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/13_testing_strategies.md "Testing Strategies Chapter"  

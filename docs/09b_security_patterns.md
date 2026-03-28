@@ -60,11 +60,11 @@ ata during processing—even from cloud operators.
 
 State backends hold the canonical inventory for every deployed component and therefore demand layered protection. Authoritative vendor documentation defines the required controls for production programmes, with HashiCorp's guidance on securing Terraform state providing the baseline for compliant operations ([Source [16]](33_references.md#source-16)):
 
-- **[HashiCorp – “Securing Terraform State” (2024)](https://developer.hashicorp.com/terraform/cloud-docs/state/securing):** mandates remote backends with state locking so sensitive data is never synchronised to developer laptops and concurrent writes are prevented ([Source [16]](33_references.md#source-16)).
-- **[HashiCorp – “Backend Type: s3” (2024)](https://developer.hashicorp.com/terraform/language/settings/backends/s3):** details the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that provide DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state ([Source [17]](33_references.md#source-17)).
-- **[HashiCorp – “Terraform Security Best Practices” (2023)](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security):** codifies HashiCorp's overarching enterprise guidance on secrets management, encryption, and policy guardrails for Terraform estates ([Source [20]](33_references.md#source-20)).
-- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** highlights Azure Storage accounts with encryption at rest, Microsoft Entra ID or SAS access controls, and blob leases to serialise Terraform operations ([Source [18]](33_references.md#source-18)).
-- **[Google Cloud – “Store Terraform state in Cloud Storage” (2024)](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state):** directs teams to enable uniform bucket-level access, object versioning, and customer-managed encryption keys for Terraform state buckets ([Source [19]](33_references.md#source-19)).
+- **HashiCorp – “Securing Terraform State” (2024) [Source [16]](33_references.md#source-16):** mandates remote backends with state locking so sensitive data is never synchronised to developer laptops and concurrent writes are prevented.
+- **HashiCorp – “Backend Type: s3” (2024) [Source [17]](33_references.md#source-17):** details the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that provide DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state.
+- **HashiCorp – “Terraform Security Best Practices” (2023) [Source [20]](33_references.md#source-20):** codifies HashiCorp's overarching enterprise guidance on secrets management, encryption, and policy guardrails for Terraform estates.
+- **Microsoft Learn – “Store Terraform state in Azure Storage” (2024) [Source [18]](33_references.md#source-18):** highlights Azure Storage accounts with encryption at rest, Microsoft Entra ID or SAS access controls, and blob leases to serialise Terraform operations.
+- **Google Cloud – “Store Terraform state in Cloud Storage” (2024) [Source [19]](33_references.md#source-19):** directs teams to enable uniform bucket-level access, object versioning, and customer-managed encryption keys for Terraform state buckets.
 
 Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends, applying customer-managed encryption keys, DynamoDB or blob lease locking, and object versioning to support forensic recovery (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), and [19](33_references.md#source-19)). Codifying these controls in Terraform modules and policy-as-code checks ensures every workspace inherits the verified practices rather than bespoke conventions.
 
@@ -613,49 +613,35 @@ Delivering these outcomes demands organisational commitment to a DevSecOps cultu
 ined approach to continuous improvement. When implemented well, Architecture as Code security enables both enhanced protection a
 nd accelerated innovation.
 
-## Sources and references
+## Sources
 
-### Academic sources and standards
-- NIST. *Cybersecurity Framework Version 1.1.* National Institute of Standards and Technology, 2018.
-- NIST. *Special Publication 800-207: Zero Trust Architecture.* National Institute of Standards and Technology, 2020.
-- NIST. *Post-Quantum Cryptography Standardisation.* National Institute of Standards and Technology, 2023.
-- ENISA. *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity, 2023.
-- ISO/IEC 27001:2022. *Information Security Management Systems – Requirements.* International Organisation for Standardisation.
-
-### European authorities and regulatory sources
-- EDPB. *Guidelines on Data Protection by Design and by Default.* European Data Protection Board, 2023.
-- ENISA. *NIS2 Directive Implementation Guidance.* European Union Agency for Cybersecurity, 2023.
-- European Commission. *Regulation (EU) 2022/2554 on Digital Operational Resilience (DORA).* Official Journal of the European Union, 2022.
-- EBA. *Guidelines on ICT and Security Risk Management.* European Banking Authority, 2023.
-- Directive (EU) 2016/679. *General Data Protection Regulation.* Official Journal of the European Union.
-
-### Technical standards and frameworks
-- OWASP. *Application Security Architecture Guide.* Open Web Application Security Project, 2023.
-- Cloud Security Alliance. *Security Guidance v4.0.* Cloud Security Alliance, 2023.
-- CIS Controls v8. *Critical Security Controls for Effective Cyber Defence.* Centre for Internet Security, 2023.
-- MITRE ATT&CK Framework. *Enterprise Matrix.* MITRE Corporation, 2023.
-
-### Industry references
-- Amazon Web Services. *AWS Security Best Practices.* AWS Security Documentation, 2023.
-- Microsoft. *Azure Security Benchmark v3.0.* Microsoft Security Documentation, 2023.
-- HashiCorp. *Securing Terraform State.* HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/cloud-docs/state/securing](https://developer.hashicorp.com/terraform/cloud-docs/state/securing)
-- HashiCorp. *Terraform Security Best Practices.* HashiCorp Learning Resources, 2023. [https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security)
-- HashiCorp. *Backend Type: s3.* HashiCorp Developer Documentation, 2024. [https://developer.hashicorp.com/terraform/language/settings/backends/s3](https://developer.hashicorp.com/terraform/language/settings/backends/s3)
-- Microsoft Learn. *Store Terraform state in Azure Storage.* Microsoft Learn Documentation, 2024. [https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage)
-- Google Cloud. *Store Terraform state in Cloud Storage.* Google Cloud Documentation, 2024. [https://cloud.google.com/docs/terraform/resource-management/store-terraform-state](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state)
-- Open Policy Agent. *OPA Policy Authoring Guide.* Cloud Native Computing Foundation, 2023.
-- Kubernetes Project. *Pod Security Standards.* Kubernetes Documentation, 2023.
-
-### European organisations and expertise
-- ENISA. *Threat Landscape Report 2023.* European Union Agency for Cybersecurity, 2023.
-- CERT-EU. *Cybersecurity Threat Landscape Report 2023.* Computer Emergency Response Team for the EU Institutions.
-- European Cyber Security Organisation. *European Cybersecurity Survey 2023.* ECSO.
-- EU Agency for Cybersecurity. *Cybersecurity Research Publications.* ENISA Technical Reports.
-
-### International security organisations
-- SANS Institute. *Security Architecture Design Principles.* SANS Institute, 2023.
-- ISACA. *COBIT 2019 Framework for Governance and Management of Enterprise IT.* ISACA, 2019.
-- (ISC)². *Cybersecurity Workforce Study.* International Information System Security Certification Consortium, 2023.
-
-*All sources verified December 2023. Regulatory frameworks and technical standards are updated regularly; always consult the lat
-est official publications for definitive requirements.*
+1. **NIST (2018).** *Cybersecurity Framework Version 1.1.* National Institute of Standards and Technology.
+2. **NIST (2020).** *Special Publication 800-207: Zero Trust Architecture.* National Institute of Standards and Technology.
+3. **NIST (2023).** *Post-Quantum Cryptography Standardisation.* National Institute of Standards and Technology.
+4. **NIST (2024).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53. [Source [11]](33_references.md#source-11)
+5. **ENISA (2023).** *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity.
+6. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
+7. **EDPB (2023).** *Guidelines on Data Protection by Design and by Default.* European Data Protection Board.
+8. **ENISA (2023).** *NIS2 Directive Implementation Guidance.* European Union Agency for Cybersecurity.
+9. **European Commission (2022).** *Regulation (EU) 2022/2554 on Digital Operational Resilience (DORA).* Official Journal of the European Union.
+10. **EBA (2023).** *Guidelines on ICT and Security Risk Management.* European Banking Authority.
+11. **Official Journal of the European Union.** *Directive (EU) 2016/679: General Data Protection Regulation.*
+12. **OWASP (2023).** *Application Security Architecture Guide.* Open Web Application Security Project.
+13. **Cloud Security Alliance (2023).** *Security Guidance v4.0.* Cloud Security Alliance.
+14. **CIS (2023).** *CIS Controls v8: Critical Security Controls for Effective Cyber Defence.* Centre for Internet Security.
+15. **MITRE Corporation (2023).** *MITRE ATT&CK Framework: Enterprise Matrix.* MITRE Corporation.
+16. **Amazon Web Services (2023).** *AWS Security Best Practices.* AWS Security Documentation.
+17. **Microsoft (2023).** *Azure Security Benchmark v3.0.* Microsoft Security Documentation.
+18. **HashiCorp (2024).** *Securing Terraform State.* HashiCorp Developer Documentation. [Source [16]](33_references.md#source-16)
+19. **HashiCorp (2023).** *Terraform Security Best Practices.* HashiCorp Learning Resources. [Source [20]](33_references.md#source-20)
+20. **HashiCorp (2024).** *Backend Type: s3.* HashiCorp Developer Documentation. [Source [17]](33_references.md#source-17)
+21. **Microsoft Learn (2024).** *Store Terraform state in Azure Storage.* Microsoft Learn Documentation. [Source [18]](33_references.md#source-18)
+22. **Google Cloud (2024).** *Store Terraform state in Cloud Storage.* Google Cloud Documentation. [Source [19]](33_references.md#source-19)
+23. **Open Policy Agent (2023).** *OPA Policy Authoring Guide.* Cloud Native Computing Foundation.
+24. **Kubernetes Project (2023).** *Pod Security Standards.* Kubernetes Documentation.
+25. **ENISA (2023).** *Threat Landscape Report 2023.* European Union Agency for Cybersecurity.
+26. **CERT-EU (2023).** *Cybersecurity Threat Landscape Report 2023.* Computer Emergency Response Team for the EU Institutions.
+27. **European Cyber Security Organisation (2023).** *European Cybersecurity Survey 2023.* ECSO.
+28. **SANS Institute (2023).** *Security Architecture Design Principles.* SANS Institute.
+29. **ISACA (2019).** *COBIT 2019 Framework for Governance and Management of Enterprise IT.* ISACA.
+30. **(ISC)² (2023).** *Cybersecurity Workforce Study.* International Information System Security Certification Consortium.

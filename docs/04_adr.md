@@ -286,9 +286,10 @@ Organisations that adopt ADR methodology position themselves for successful Arch
 
 With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation](07_containerisation.md) shows how these principles extend to application deployment and orchestration.
 
-Sources:
-- Architecture Decision Records Community. "ADR Guidelines and Templates." [https://adr.github.io](https://adr.github.io)
-- Nygard, M. "Documenting Architecture Decisions." 2011.
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- HashiCorp. "Securing Terraform State." HashiCorp Developer Documentation, 2024.
-- ThoughtWorks. "Architecture Decision Records." Technology Radar, 2023.
+## Sources
+
+1. **Architecture Decision Records Community.** *ADR Guidelines and Templates.* [https://adr.github.io](https://adr.github.io)
+2. **Nygard, M. (2011).** *Documenting Architecture Decisions.*
+3. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+4. **HashiCorp (2024).** *Securing Terraform State.* HashiCorp Developer Documentation. [Source [16]](33_references.md#source-16)
+5. **ThoughtWorks (2023).** *Architecture Decision Records.* Technology Radar.

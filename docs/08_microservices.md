@@ -212,8 +212,7 @@ Microservices amplify organisational agility when paired with disciplined automa
 
 ## Sources
 
-Sources:
-- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." Cloud Native Computing Foundation, 2024.
-- [Open Policy Agent – Policy as Code Overview](33_references.md#source-10)
-- [Thoughtworks Technology Radar – Governance as Code](33_references.md#source-2)
+1. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
+2. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+3. **Thoughtworks Technology Radar (2024).** *Governance as Code.* Thoughtworks. [Source [2]](33_references.md#source-2)
 

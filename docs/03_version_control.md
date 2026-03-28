@@ -89,8 +89,9 @@ This transparency builds trust within teams and with stakeholders. Leadership ga
 
 Version control is the backbone of any Architecture as Code programme. By treating architectural models, policies, ADRs, and Infrastructure as Code modules as first-class code artefacts—stored in Git, reviewed through pull requests, and protected by automated quality gates—teams gain the traceability, transparency, and collaborative discipline that modern delivery demands. Choosing the right repository topology (mono-repo, multi-repo, or a hybrid) and a clearly documented branching strategy are foundational decisions that shape how efficiently changes flow from design intent to production reality. Chapter 4 builds on this foundation by introducing Architecture Decision Records as the mechanism that captures the rationale behind those changes, ensuring the context and consequences of architectural decisions remain visible long after the original contributors have moved on.
 
-Sources:
-- GitHub Docs. "About protected branches." GitHub Documentation.
-- Atlassian. "Git Workflows for Architecture as Code." Atlassian Git Documentation.
-- Thoughtworks Technology Radar. "Governance as Code." Thoughtworks, 2024.
-- AWS. "AWS Cloud Development Kit (CDK) Developer Guide." [https://docs.aws.amazon.com/cdk/latest/guide/home.html](https://docs.aws.amazon.com/cdk/latest/guide/home.html).
+## Sources
+
+1. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
+2. **Atlassian.** *Git Workflows for Architecture as Code.* Atlassian Git Documentation. [Source [3]](33_references.md#source-3)
+3. **Thoughtworks Technology Radar (2024).** *Governance as Code.* Thoughtworks. [Source [2]](33_references.md#source-2)
+4. **AWS (2024).** *AWS Cloud Development Kit (CDK) Developer Guide.* Amazon Web Services. [Source [9]](33_references.md#source-9)

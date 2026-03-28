@@ -84,3 +84,9 @@ Open governance is a defining trait of FINOS initiatives, and Project Blueprint 
 Project Blueprint is ultimately a catalyst for cultural and technical convergence. By grounding architectural collaboration in CALM, aligning teams with proven operating models, and automating every aspect of delivery and governance, FINOS members can accelerate innovation without sacrificing control. The blueprint scales globally, supporting multi-region deployments, resilient operations, and sustainable cost management out of the box. It complements the Architecture as Code publishing toolchain, reinforcing the lesson that documentation, automation, and organisational practice are inseparable when architecture becomes code.
 
 Adopting the blueprint means embracing a living system: CALM models evolve with the platform, CI/CD pipelines enforce policy and quality, and communities shepherd the operating model through continual improvement. The outcome is a federated, transparent, and resilient architecture discipline that matches the ambition of the FINOS community while retaining the human-centred practices that make collaboration sustainable.
+
+## Sources
+
+1. **FINOS (2024).** *CALM: Common Architecture Language Model.* FINOS Architecture as Code Community. [https://calm.finos.org/](https://calm.finos.org/)
+2. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+3. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)

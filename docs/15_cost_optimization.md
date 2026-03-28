@@ -143,13 +143,13 @@ Key success factors include proactive monitoring, automated rightsizing, intelli
 
 EU organisations that implement these strategies can achieve 20–40% cost reduction in their cloud operations (Figures drawn from practitioner case studies; actual savings vary by workload profile and baseline optimisation maturity.) whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
 
-## Sources and References
+## Sources
 
-- AWS. "AWS Cost Optimisation Guide." Amazon Web Services Documentation, 2023.
-- FinOps Foundation. "FinOps Framework and Architecture as Code Best Practices." The Linux Foundation, 2023.
-- Kubecost. "Kubernetes Cost Optimisation Guide." Kubecost Documentation, 2023.
-- Cloud Security Alliance. "Cloud Cost Optimisation Security Guidelines." CSA Research, 2023.
-- MarketsandMarkets. "Infrastructure as Code Market Report." MarketsandMarkets, 2023.
-- Gartner. "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.
-- IDC. "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.
-- Microsoft. "Azure Cost Management Architecture as Code Best Practices." Microsoft Azure Documentation, 2023.
+1. **Amazon Web Services (2023).** *AWS Cost Optimisation Guide.* Amazon Web Services Documentation.
+2. **FinOps Foundation (2023).** *FinOps Framework and Architecture as Code Best Practices.* The Linux Foundation.
+3. **Kubecost (2023).** *Kubernetes Cost Optimisation Guide.* Kubecost Documentation.
+4. **Cloud Security Alliance (2023).** *Cloud Cost Optimisation Security Guidelines.* CSA Research.
+5. **MarketsandMarkets (2023).** *Infrastructure as Code Market Report.* MarketsandMarkets.
+6. **Gartner (2024).** *Forecast Analysis: Public Cloud Services Worldwide.* Gartner Research.
+7. **IDC (2023).** *Worldwide DevOps Software Tools Forecast, 2023–2027.* IDC Research.
+8. **Microsoft (2023).** *Azure Cost Management Architecture as Code Best Practices.* Microsoft Azure Documentation.

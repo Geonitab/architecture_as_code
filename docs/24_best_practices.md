@@ -222,11 +222,11 @@ The best practices explored in this part reflect current understanding and prove
 
 Part G examines emerging trends and concludes our journey through Architecture as Code. [Chapter 25 on Future Trends and Development](25_future_trends.md) explores AI-driven architecture generation, sustainability-aware infrastructure, quantum-resistant security patterns, and other developments shaping the future of the field. [Chapter 26B on Anti-Patterns in Architecture as Code Programmes](26b_aac_anti_patterns.md) highlights the warning signs and remediation tactics that keep transformations on course. The [Conclusion](27_conclusion.md) synthesises the journey from [foundational principles](02_fundamental_principles.md) through technical implementation, security, operations, and organisational transformation, providing a roadmap for continued learning and implementation.
 
-## References
+## Sources
 
-- Cloud Native Computing Foundation. *Infrastructure as Code Best Practices*. CNCF, 2024.
-- HashiCorp. *Terraform Maturity Model*. HashiCorp Documentation, 2024.
-- FinOps Foundation. *Cloud Financial Management Playbook*. FinOps Foundation, 2024.
-- International Organisation for Standardisation. *ISO/IEC 27001:2022 Information Security Management Systems*. ISO, 2022.
-- United Kingdom National Cyber Security Centre. *Security Principles for Cloud-Hosted Services*. NCSC, 2023.
-- World Economic Forum. *Global Risks Report*. WEF, 2024.
+1. **Cloud Native Computing Foundation (2024).** *Infrastructure as Code Best Practices.* CNCF.
+2. **HashiCorp (2024).** *Terraform Maturity Model.* HashiCorp Documentation.
+3. **FinOps Foundation (2024).** *Cloud Financial Management Playbook.* FinOps Foundation.
+4. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
+5. **UK National Cyber Security Centre (2023).** *Security Principles for Cloud-Hosted Services.* NCSC.
+6. **World Economic Forum (2024).** *Global Risks Report.* WEF.

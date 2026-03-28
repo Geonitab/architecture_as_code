@@ -26,6 +26,10 @@ import urllib.request
 from urllib.error import URLError, HTTPError
 import socket
 
+# Allow importing navigation from the same scripts/ directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from navigation import REPO_ROOT, get_book_build_files  # noqa: E402
+
 # Configuration
 DEFAULT_TIMEOUT = 10
 DEFAULT_OUTPUT = "source-verification-report"
@@ -288,15 +292,121 @@ class SourceVerifier:
         
         return result
     
+    # ------------------------------------------------------------------
+    # Reference-anchor helpers (new in #1761)
+    # ------------------------------------------------------------------
+
+    _ANCHOR_HTML_RE = re.compile(r'<a\s+id="source-(\d+)"')
+    # Pandoc span: [anything]{#source-N} — matched via the closing ]{#source-N}
+    # because the span text may contain nested brackets (e.g. [**Source [1]:**])
+    _ANCHOR_PANDOC_RE = re.compile(r'\]\{#source-(\d+)\}')
+    _STANDARD_SOURCES_HDR_RE = re.compile(r'^## Sources\s*$', re.MULTILINE)
+    _INLINE_CITE_RE = re.compile(r'\[Source \[(\d+)\]\]\(33_references\.md#source-\d+\)')
+    _ANY_SOURCE_BRACKET_RE = re.compile(r'\[Source \[')
+
+    def load_reference_anchors(self, references_path: Path) -> Set[int]:
+        """Return the set of source numbers declared as anchors in references.md."""
+        if not references_path.exists():
+            return set()
+        text = references_path.read_text(encoding='utf-8')
+        html_ids = {int(m) for m in self._ANCHOR_HTML_RE.findall(text)}
+        pandoc_ids = {int(m) for m in self._ANCHOR_PANDOC_RE.findall(text)}
+        return html_ids | pandoc_ids
+
+    def validate_chapter_citations(
+        self, chapter_path: Path, defined_anchors: Set[int]
+    ) -> List[Dict]:
+        """
+        Find all [Source [N]] occurrences in *chapter_path* and report those
+        whose number N has no corresponding anchor in docs/33_references.md.
+
+        Returns a list of dicts with keys: file, line, text, source_number.
+        """
+        broken: List[Dict] = []
+        if not chapter_path.exists():
+            return broken
+        try:
+            text = chapter_path.read_text(encoding='utf-8')
+        except Exception as exc:
+            print(f"Warning: could not read {chapter_path}: {exc}")
+            return broken
+
+        for line_no, line in enumerate(text.splitlines(), start=1):
+            for match in self._INLINE_CITE_RE.finditer(line):
+                n = int(match.group(1))
+                if n not in defined_anchors:
+                    broken.append({
+                        'file': chapter_path.name,
+                        'line': line_no,
+                        'text': match.group(0),
+                        'source_number': n,
+                    })
+        return broken
+
+    def validate_sources_header(self, chapter_path: Path) -> bool:
+        """Return True when the chapter has a standard ``## Sources`` section."""
+        if not chapter_path.exists():
+            return False
+        try:
+            text = chapter_path.read_text(encoding='utf-8')
+        except Exception:
+            return False
+        return bool(self._STANDARD_SOURCES_HDR_RE.search(text))
+
+    # ------------------------------------------------------------------
+    # End of new helpers
+    # ------------------------------------------------------------------
+
     def scan_repository(self, docs_dir: Path) -> None:
-        """Scan all chapter files and verify sources."""
+        """Scan all canonical chapter files and verify sources."""
         print(f"Scanning {docs_dir} for sources...")
-        
-        # Find all markdown chapter files
-        chapter_files = sorted(docs_dir.glob("*.md"))
-        chapter_files = [f for f in chapter_files if re.match(r'^\d{2}_', f.name)]
-        
+
+        # Use the canonical navigation to build the file list so that all
+        # chapters (including appendices) are covered, not just 01_–27_ files.
+        try:
+            book_files = get_book_build_files()
+        except Exception as exc:
+            print(f"Warning: could not load navigation — falling back to glob. {exc}")
+            book_files = None
+
+        if book_files is not None:
+            # Resolve to absolute paths; exclude part-introduction pages from
+            # citation/header checks but keep them for URL scanning.
+            chapter_files = [
+                docs_dir / f
+                for f in book_files
+                if not Path(f).stem.startswith('part_')
+            ]
+        else:
+            # Legacy fallback: two-digit-prefixed files only.
+            chapter_files = sorted(
+                f for f in docs_dir.glob("*.md")
+                if re.match(r'^\d{2}_', f.name)
+            )
+
+        # Always include 33_references.md for URL verification.
+        refs_file = docs_dir / "33_references.md"
+        if refs_file.exists() and refs_file not in chapter_files:
+            chapter_files.append(refs_file)
+
         print(f"Found {len(chapter_files)} chapter files\n")
+
+        # Load reference anchors once for citation validation.
+        defined_anchors = self.load_reference_anchors(refs_file)
+
+        # Validate ## Sources headers and citation formats.
+        self.missing_sources_headers: List[str] = []
+        self.broken_citation_refs: List[Dict] = []
+
+        refs_stem = refs_file.stem  # "33_references"
+        for ch_file in chapter_files:
+            # Skip the references file itself from header/citation checks.
+            if ch_file.stem == refs_stem:
+                continue
+            if not self.validate_sources_header(ch_file):
+                self.missing_sources_headers.append(ch_file.name)
+            broken = self.validate_chapter_citations(ch_file, defined_anchors)
+            self.broken_citation_refs.extend(broken)
         
         # Extract sources from all files
         for chapter_file in chapter_files:
@@ -332,15 +442,22 @@ class SourceVerifier:
         valid = len(self.valid_sources)
         broken = len(self.broken_sources)
         skipped = len(self.skipped_sources)
-        
+
+        # New validation counts (default to 0 if scan_repository not yet called).
+        missing_hdrs = len(getattr(self, 'missing_sources_headers', []))
+        broken_cites = len(getattr(self, 'broken_citation_refs', []))
+
         summary = f"""
 ======================================================================
 Source Verification Summary
 ======================================================================
 Total sources cited: {total}
-✅ Verified and accessible: {valid}
-❌ Broken or inaccessible: {broken}
-⚠️  Needs manual verification: {skipped}
+Verified and accessible: {valid}
+Broken or inaccessible: {broken}
+Needs manual verification: {skipped}
+----------------------------------------------------------------------
+Chapters missing ## Sources section: {missing_hdrs}
+Broken citation references (anchor not in 33_references.md): {broken_cites}
 ======================================================================
 """
         return summary
@@ -348,17 +465,50 @@ Total sources cited: {total}
     def generate_markdown_report(self, output_path: str) -> None:
         """Generate markdown report."""
         report_path = f"{output_path}.md"
-        
+
+        missing_hdrs = getattr(self, 'missing_sources_headers', [])
+        broken_cites = getattr(self, 'broken_citation_refs', [])
+
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write("# Source Verification Report\n\n")
             f.write(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-            
+
             # Summary
             f.write("## Summary\n\n")
             f.write(f"- **Total sources cited:** {len(self.all_sources)}\n")
-            f.write(f"- **✅ Verified and accessible:** {len(self.valid_sources)}\n")
-            f.write(f"- **❌ Broken or inaccessible:** {len(self.broken_sources)}\n")
-            f.write(f"- **⚠️ Needs manual verification:** {len(self.skipped_sources)}\n\n")
+            f.write(f"- **Verified and accessible:** {len(self.valid_sources)}\n")
+            f.write(f"- **Broken or inaccessible:** {len(self.broken_sources)}\n")
+            f.write(f"- **Needs manual verification:** {len(self.skipped_sources)}\n")
+            f.write(f"- **Chapters missing `## Sources` section:** {len(missing_hdrs)}\n")
+            f.write(
+                f"- **Broken citation references (anchor not in 33_references.md):**"
+                f" {len(broken_cites)}\n\n"
+            )
+
+            # Missing ## Sources headers
+            if missing_hdrs:
+                f.write("## Chapters Missing `## Sources` Section\n\n")
+                f.write(
+                    "These chapters are in the canonical chapter list but do not have a "
+                    "`## Sources` section:\n\n"
+                )
+                for name in missing_hdrs:
+                    f.write(f"- `{name}`\n")
+                f.write("\n")
+
+            # Broken citation references
+            if broken_cites:
+                f.write("## Broken Citation References\n\n")
+                f.write(
+                    "These inline citations reference a source number that has no corresponding "
+                    "anchor in `docs/33_references.md`:\n\n"
+                )
+                for item in broken_cites:
+                    f.write(
+                        f"- `{item['file']}` line {item['line']}: "
+                        f"`{item['text']}` — Source [{item['source_number']}] not anchored\n"
+                    )
+                f.write("\n")
             
             # Broken sources
             if self.broken_sources:
@@ -429,14 +579,21 @@ Total sources cited: {total}
         """Generate JSON report."""
         report_path = f"{output_path}.json"
         
+        missing_hdrs = getattr(self, 'missing_sources_headers', [])
+        broken_cites = getattr(self, 'broken_citation_refs', [])
+
         report = {
             'generated': datetime.now().isoformat(),
             'summary': {
                 'total': len(self.all_sources),
                 'verified': len(self.valid_sources),
                 'broken': len(self.broken_sources),
-                'manual_check': len(self.skipped_sources)
+                'manual_check': len(self.skipped_sources),
+                'missing_sources_headers': len(missing_hdrs),
+                'broken_citation_refs': len(broken_cites),
             },
+            'missing_sources_headers': missing_hdrs,
+            'broken_citation_refs': broken_cites,
             'broken_sources': [
                 {
                     'file': r['source']['file'],
@@ -522,8 +679,9 @@ def main():
     
     print("\nDone!")
     
-    # Exit with error code if broken sources found
-    if verifier.broken_sources:
+    # Exit with error code if broken sources or broken citation references found.
+    broken_cites = getattr(verifier, 'broken_citation_refs', [])
+    if verifier.broken_sources or broken_cites:
         sys.exit(1)
     else:
         sys.exit(0)

@@ -208,7 +208,6 @@ Delivery teams can now translate the guidance across [Security Fundamentals](09_
 
 ## Sources
 
-Sources:
-- [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
-- [Open Policy Agent – Policy as Code Overview](https://www.openpolicyagent.org/docs/latest/)
-- [Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)
+1. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
+2. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+3. **Thoughtworks Technology Radar (2024).** *Governance as Code.* Thoughtworks. [Source [2]](33_references.md#source-2)

@@ -60,12 +60,6 @@ This book is aimed at system architects, developers, project managers, and IT de
 
 Readers will gain comprehensive knowledge of how the entire system architecture can be codified, from foundational principles to advanced architectural patterns that encompass an organisation’s entire digital ecosystem.
 
-Sources:
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
-- Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer, 2023.
-- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF, 2024.
-
 ## How This Book Is Organised
 
 This book follows a deliberate progression that mirrors the typical Architecture as Code transformation journey:
@@ -95,3 +89,9 @@ The *Architecture as Code* course workbook, exercise guide, and facilitator mate
 Architecture as Code is more than a tooling choice — it is a governing discipline that unifies design intent, delivery automation, and operational accountability into a single, version-controlled artefact. The core claim running through this book is that when architectural specifications become executable, governance becomes continuous rather than periodic, and the distance between intent and implementation collapses. By treating architecture with the same rigour as application code, organisations gain the transparency, traceability, and speed that modern digital delivery demands without sacrificing the oversight that regulated and complex environments require.
 
 Part A of this book lays the conceptual foundations for that discipline. Chapter 2 introduces the fundamental principles of Architecture as Code — declarative definitions, immutable patterns, testability, and documentation as code — explaining why each principle is essential for sustainable adoption. Chapter 3 then examines version control practices tailored to architecture assets, including repository topology, branching strategies, and the governance disciplines that keep architectural intent distinct from implementation detail. Chapter 4 explores Architecture Decision Records as the mechanism that keeps design rationale visible and auditable across the full lifecycle of a system.
+
+## Sources
+
+1. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+2. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
+3. **Martin, R. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure.* Prentice Hall.

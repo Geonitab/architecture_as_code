@@ -94,6 +94,24 @@ Example:
 2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate.* IT Revolution Press. [Source [8]](33_references.md#source-8)
 ```
 
+### Bibliography anchor format
+
+When adding or editing entries in `33_references.md`, use pandoc-native span syntax for numbered source anchors:
+
+```markdown
+[**Source [N]:**]{#source-N}
+```
+
+This format (using the `bracketed_spans` extension) works consistently across all output formats: MkDocs, PDF, EPUB, and DOCX.
+
+**Do not** use HTML `<a id="source-N"></a>` anchors — they are not reliably processed by all pandoc output backends.
+
+When adding a new source:
+1. Assign the next available source number N
+2. Add `[**Source [N]:**]{#source-N} Author. *Title.* Publisher, Year.` to the numbered index in `33_references.md`
+3. Add the full entry to the appropriate alphabetical section
+4. Update the chapter `## Sources` sections that reference it
+
 ### Prohibited citation forms
 
 - Category descriptions such as "Industry reports on Architecture as Code adoption trends" are **not** acceptable citations — replace with the actual document or remove.
