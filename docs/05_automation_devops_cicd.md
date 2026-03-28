@@ -196,7 +196,10 @@ jobs:
         run: |
           # Install architecture validation tools
           npm install -g @asyncapi/cli @swagger-api/swagger-validator
-          pip install architectural-lint yamllint
+          # Note: architectural-lint below is illustrative pseudocode representing an architecture linting tool.
+          # Real alternatives include custom pytest-based checks or ADR validation scripts.
+          # pip install architectural-lint  # hypothetical tool — replace with your chosen validator
+          pip install yamllint
           curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
           sudo mv conftest /usr/local/bin
 
@@ -241,7 +244,8 @@ jobs:
 
             "governance")
               # Validate Architecture Decision Records
-              find architecture/decisions -name "*.md" -exec architectural-lint {} \;
+              # Use your organisation's chosen ADR validator here (e.g. a custom pytest script)
+              find architecture/decisions -name "*.md" -exec echo "Validate ADR:" {} \;
 
               # compliance requirements
               conftest verify --policy policies/governance-policies.rego architecture/
@@ -281,10 +285,11 @@ jobs:
           echo "🎭 Running complete architecture simulation..."
 
           # Simulate systems with all architectural components
-          docker-compose -f test/architecture-simulation/docker-compose.yml up -d
+          docker compose -f test/architecture-simulation/docker-compose.yml up -d
 
-          # Wait for system stabilisation
-          sleep 60
+          # Wait for services to report healthy before running tests
+          docker compose -f test/architecture-simulation/docker-compose.yml \
+            run --rm wait-for-services
 
           # Run architectural integration tests
           python test/integration/test-architectural-flows.py \
@@ -292,7 +297,7 @@ jobs:
             --compliance-mode gdpr
 
           # Clean up simulation environment
-          docker-compose -f test/architecture-simulation/docker-compose.yml down
+          docker compose -f test/architecture-simulation/docker-compose.yml down
 
   # Additional phases continue with deployment, monitoring, documentation, and audit...
 ```

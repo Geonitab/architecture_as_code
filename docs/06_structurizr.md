@@ -1,4 +1,4 @@
-# Structurizr: Architecture Modeling as Code {#structurizr}
+# Structurizr: Architecture Modelling as Code {#structurizr}
 
 ![Structurizr Overview](images/diagram_06_structurizr_overview.png)
 
@@ -6,7 +6,7 @@
 
 ## Introduction
 
-Structurizr is a collection of tooling that enables software architecture to be defined as code using the C4 model (Context, Containers, Components, and Code). Created by Simon Brown, Structurizr addresses the fundamental challenge of keeping architecture documentation synchronized with reality by treating diagrams and models as artifacts generated from a single source of truth.
+Structurizr is a collection of tooling that enables software architecture to be defined as code using the C4 model (Context, Containers, Components, and Code). Created by Simon Brown, Structurizr addresses the fundamental challenge of keeping architecture documentation synchronised with reality by treating diagrams and models as artefacts generated from a single source of truth.
 
 In the Architecture as Code ecosystem, Structurizr serves as a practical implementation tool that allows teams to:
 
@@ -983,7 +983,7 @@ Require pull request reviews for architecture changes:
 docs/architecture/** @architecture-team
 ```
 
-### 10. Keep Models Synchronized
+### 10. Keep Models Synchronised
 
 ```python
 # Script to verify architecture coverage
@@ -1106,7 +1106,7 @@ workspace {
 }
 ```
 
-### Challenge 3: Keeping Model Synchronized with Reality
+### Challenge 3: Keeping Model Synchronised with Reality
 
 **Problem**: Code evolves but architecture model becomes stale.
 
@@ -1253,7 +1253,7 @@ workspace {
 
 This creates traceability from architecture elements to the decisions that shaped them.
 
-## Conclusion
+## Summary
 
 Structurizr is a mature implementation of Architecture as Code principles, enabling teams to:
 
@@ -1273,9 +1273,8 @@ The next chapters explore how to extend these foundations into containerisation 
 
 - Brown, S. "The C4 model for visualising software architecture." [https://c4model.com](https://c4model.com)
 - Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. [https://blog.structurizr.com/diagrams-as-code-automation/](https://blog.structurizr.com/diagrams-as-code-automation/)
+- Brown, S. "Software Architecture for Developers." Leanpub, 2024.
 - Structurizr. "Structurizr DSL Language Reference." [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
 - Structurizr. "Structurizr Lite." [https://structurizr.com/help/lite](https://structurizr.com/help/lite)
-- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022.
-- Brown, S. "Software Architecture for Developers." Leanpub, 2024.
 - ThoughtWorks Technology Radar. "Diagrams as code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)
 - AaC Open Source Project. "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)

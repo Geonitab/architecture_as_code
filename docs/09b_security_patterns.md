@@ -34,9 +34,7 @@ Multi-cloud adoption improves resilience and reduces vendor lock-in but introduc
 ayers translate organisational requirements into provider-specific implementations. Policy-as-code frameworks must support multi
 ple providers simultaneously to maintain consistent posture.
 
-Identity federation enables single sign-on and coherent access control. Cloud-native identity services such as Azure Active Dire
-ctory or AWS IAM should integrate with on-premises and third-party directories. Data governance must address residency, cross-bo
-rder transfer restrictions, and varying encryption capabilities through automated classification-aware controls.
+Identity federation enables single sign-on and coherent access control. Cloud-native identity services such as Microsoft Entra ID or AWS IAM should integrate with on-premises and third-party directories. Data governance must address residency, cross-border transfer restrictions, and varying encryption capabilities through automated classification-aware controls.
 
 ### Security observability and analytics patterns
 
@@ -65,7 +63,7 @@ State backends hold the canonical inventory for every deployed component and the
 - **[HashiCorp – “Securing Terraform State” (2024)](https://developer.hashicorp.com/terraform/cloud-docs/state/securing):** mandates remote backends with state locking so sensitive data is never synchronised to developer laptops and concurrent writes are prevented ([Source [16]](33_references.md#source-16)).
 - **[HashiCorp – “Backend Type: s3” (2024)](https://developer.hashicorp.com/terraform/language/settings/backends/s3):** details the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that provide DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state ([Source [17]](33_references.md#source-17)).
 - **[HashiCorp – “Terraform Security Best Practices” (2023)](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices/security):** codifies HashiCorp's overarching enterprise guidance on secrets management, encryption, and policy guardrails for Terraform estates ([Source [20]](33_references.md#source-20)).
-- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** highlights Azure Storage accounts with encryption at rest, Azure AD or SAS access controls, and blob leases to serialise Terraform operations ([Source [18]](33_references.md#source-18)).
+- **[Microsoft Learn – “Store Terraform state in Azure Storage” (2024)](https://learn.microsoft.com/en-gb/azure/developer/terraform/store-state-in-azure-storage):** highlights Azure Storage accounts with encryption at rest, Microsoft Entra ID or SAS access controls, and blob leases to serialise Terraform operations ([Source [18]](33_references.md#source-18)).
 - **[Google Cloud – “Store Terraform state in Cloud Storage” (2024)](https://cloud.google.com/docs/terraform/resource-management/store-terraform-state):** directs teams to enable uniform bucket-level access, object versioning, and customer-managed encryption keys for Terraform state buckets ([Source [19]](33_references.md#source-19)).
 
 Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends, applying customer-managed encryption keys, DynamoDB or blob lease locking, and object versioning to support forensic recovery (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), and [19](33_references.md#source-19)). Codifying these controls in Terraform modules and policy-as-code checks ensures every workspace inherits the verified practices rather than bespoke conventions.
@@ -105,7 +103,7 @@ locals {
   required_encryption        = true
   audit_logging_required     = true
   gdpr_compliance            = var.data_classification != "public"
-  backup_encryption_required = var.data_classification in ["internal", "confidential", "restricted"]
+  backup_encryption_required = contains(["internal", "confidential", "restricted"], var.data_classification)
 
   # Approved EU regions for European data protection programmes
   approved_regions = ["eu-north-1", "eu-west-1", "eu-central-1"]
@@ -303,6 +301,10 @@ personal_data_encryption_required if {
     not encryption_enabled
 }
 
+encryption_enabled {
+    input.resource.encryption.enabled == true
+}
+
 # Helper rules for specific resource types (omitted for brevity)
 # ...
 ```
@@ -350,6 +352,9 @@ class SecurityFinding:
     source_system: str
 
 
+# Interface specification — the following class defines the public API and
+# method signatures for a threat detection implementation.
+# Internal methods are stubs representing extension points.
 class AdvancedThreatDetection:
     """Comprehensive threat detection following European best practice"""
 
@@ -597,7 +602,7 @@ Closing the cybersecurity skills gap is essential. Investment in training progra
 
 Architecture as Code represents the future of infrastructure management for European organisations. Security within this paradigm is a transformative shift from reactive, manual approaches to proactive, automated safeguards embedded throughout development. Zero Trust principles, policy automation, and codified security patterns allow teams to version-control, test, and deploy security decisions with the same rigour applied to functional requirements.
 
-Automated compliance streamlines complex regulatory obligations spanning GDPR, NIS2 Directive, and industry-specific mandates. Advanced patterns—particularly those highlighted in Section 10.6—illustrate how orchestration, AI-assisted detection, and multi-cloud strategies can scale security for large enterprises.
+Automated compliance streamlines complex regulatory obligations spanning GDPR, NIS2 Directive, and industry-specific mandates. Advanced patterns—including security orchestration, AI-assisted detection, and multi-cloud strategies—illustrate how security can scale for large enterprises.
 
 Organisations that embrace Architecture as Code security practices position themselves for successful digital transformation whi
 le maintaining a strong security posture. Investments in security automation reduce incident rates, accelerate compliance valida
