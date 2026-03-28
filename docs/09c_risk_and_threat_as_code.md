@@ -50,7 +50,7 @@ Threat handling begins by ingesting intelligence feeds in structured formats lik
 
 ### Automated threat modelling
 
-Model systems with tools such as the Threat Modelling Manifesto or Microsoft Threat Modelling Tool, but generate the models directly from the codebase. Diagrams and attack trees stored as Mermaid or Structurizr files can be regenerated whenever architecture code changes. Automated validation checks for missing trust boundaries, unclassified data stores, or unmitigated STRIDE categories.
+Model systems informed by principles such as those in the Threat Modelling Manifesto, and using tools such as the Microsoft Threat Modelling Tool, but generate the models directly from the codebase. Diagrams and attack trees stored as Mermaid or Structurizr files can be regenerated whenever architecture code changes. Automated validation checks for missing trust boundaries, unclassified data stores, or unmitigated STRIDE categories.
 
 ### Response playbooks expressed as state machines
 
@@ -80,3 +80,12 @@ Adopt security chaos engineering techniques—automated scenarios that inject si
 - **Culture:** Celebrate the remediation pull request—not just the discovery. Treat risk and threat artefacts as first-class code assets subject to the same engineering rigour as application releases.
 
 By encoding risk assessments and threat handling in the repository, organisations attain a defensible, adaptive security posture. Evidence of control effectiveness is generated continuously, response actions are reliable, and every change builds upon an auditable foundation of codified resilience.
+
+## Sources and References
+
+- **Threat Modelling Manifesto** — community principles for effective threat modelling practice: <https://www.threatmodelingmanifesto.org/>
+- **OWASP Threat Dragon** — open-source threat modelling tool: <https://owasp.org/www-project-threat-dragon/>
+- **STRIDE methodology (Microsoft)** — see Microsoft Security Development Lifecycle documentation for guidance on spoofing, tampering, repudiation, information disclosure, denial of service, and elevation of privilege threat categories
+- **STIX/TAXII Standards** — structured threat intelligence expression and transport specifications maintained by OASIS: <https://oasis-open.github.io/cti-documentation/>
+- **NIST SP 800-30** — Guide for Conducting Risk Assessments, National Institute of Standards and Technology
+- **Chaos Engineering for Security** — see Gremlin platform documentation and AWS Fault Injection Simulator documentation for security chaos engineering patterns and tooling
