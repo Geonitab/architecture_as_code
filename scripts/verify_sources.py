@@ -26,6 +26,10 @@ import urllib.request
 from urllib.error import URLError, HTTPError
 import socket
 
+# Allow importing navigation from the same scripts/ directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from navigation import REPO_ROOT, get_book_build_files  # noqa: E402
+
 # Configuration
 DEFAULT_TIMEOUT = 10
 DEFAULT_OUTPUT = "source-verification-report"
@@ -288,15 +292,119 @@ class SourceVerifier:
         
         return result
     
+    # ------------------------------------------------------------------
+    # Reference-anchor helpers (new in #1761)
+    # ------------------------------------------------------------------
+
+    _ANCHOR_HTML_RE = re.compile(r'<a\s+id="source-(\d+)"')
+    _ANCHOR_PANDOC_RE = re.compile(r'\[\]\{#source-(\d+)\}')
+    _STANDARD_SOURCES_HDR_RE = re.compile(r'^## Sources\s*$', re.MULTILINE)
+    _INLINE_CITE_RE = re.compile(r'\[Source \[(\d+)\]\]\(33_references\.md#source-\d+\)')
+    _ANY_SOURCE_BRACKET_RE = re.compile(r'\[Source \[')
+
+    def load_reference_anchors(self, references_path: Path) -> Set[int]:
+        """Return the set of source numbers declared as anchors in references.md."""
+        if not references_path.exists():
+            return set()
+        text = references_path.read_text(encoding='utf-8')
+        html_ids = {int(m) for m in self._ANCHOR_HTML_RE.findall(text)}
+        pandoc_ids = {int(m) for m in self._ANCHOR_PANDOC_RE.findall(text)}
+        return html_ids | pandoc_ids
+
+    def validate_chapter_citations(
+        self, chapter_path: Path, defined_anchors: Set[int]
+    ) -> List[Dict]:
+        """
+        Find all [Source [N]] occurrences in *chapter_path* and report those
+        whose number N has no corresponding anchor in docs/33_references.md.
+
+        Returns a list of dicts with keys: file, line, text, source_number.
+        """
+        broken: List[Dict] = []
+        if not chapter_path.exists():
+            return broken
+        try:
+            text = chapter_path.read_text(encoding='utf-8')
+        except Exception as exc:
+            print(f"Warning: could not read {chapter_path}: {exc}")
+            return broken
+
+        for line_no, line in enumerate(text.splitlines(), start=1):
+            for match in self._INLINE_CITE_RE.finditer(line):
+                n = int(match.group(1))
+                if n not in defined_anchors:
+                    broken.append({
+                        'file': chapter_path.name,
+                        'line': line_no,
+                        'text': match.group(0),
+                        'source_number': n,
+                    })
+        return broken
+
+    def validate_sources_header(self, chapter_path: Path) -> bool:
+        """Return True when the chapter has a standard ``## Sources`` section."""
+        if not chapter_path.exists():
+            return False
+        try:
+            text = chapter_path.read_text(encoding='utf-8')
+        except Exception:
+            return False
+        return bool(self._STANDARD_SOURCES_HDR_RE.search(text))
+
+    # ------------------------------------------------------------------
+    # End of new helpers
+    # ------------------------------------------------------------------
+
     def scan_repository(self, docs_dir: Path) -> None:
-        """Scan all chapter files and verify sources."""
+        """Scan all canonical chapter files and verify sources."""
         print(f"Scanning {docs_dir} for sources...")
-        
-        # Find all markdown chapter files
-        chapter_files = sorted(docs_dir.glob("*.md"))
-        chapter_files = [f for f in chapter_files if re.match(r'^\d{2}_', f.name)]
-        
+
+        # Use the canonical navigation to build the file list so that all
+        # chapters (including appendices) are covered, not just 01_–27_ files.
+        try:
+            book_files = get_book_build_files()
+        except Exception as exc:
+            print(f"Warning: could not load navigation — falling back to glob. {exc}")
+            book_files = None
+
+        if book_files is not None:
+            # Resolve to absolute paths; exclude part-introduction pages from
+            # citation/header checks but keep them for URL scanning.
+            chapter_files = [
+                docs_dir / f
+                for f in book_files
+                if not Path(f).stem.startswith('part_')
+            ]
+        else:
+            # Legacy fallback: two-digit-prefixed files only.
+            chapter_files = sorted(
+                f for f in docs_dir.glob("*.md")
+                if re.match(r'^\d{2}_', f.name)
+            )
+
+        # Always include 33_references.md for URL verification.
+        refs_file = docs_dir / "33_references.md"
+        if refs_file.exists() and refs_file not in chapter_files:
+            chapter_files.append(refs_file)
+
         print(f"Found {len(chapter_files)} chapter files\n")
+
+        # Load reference anchors once for citation validation.
+        defined_anchors = self.load_reference_anchors(refs_file)
+
+        # Validate ## Sources headers and citation formats.
+        self.missing_sources_headers: List[str] = []
+        self.broken_citation_refs: List[Dict] = []
+
+        refs_stem = refs_file.stem  # "33_references"
+        for ch_file in chapter_files:
+            # Skip the references file itself from header/citation checks.
+            if ch_file.stem == refs_stem:
+                continue
+            if not self.validate_sources_header(ch_file):
+                self.missing_sources_headers.append(ch_file.name)
+            broken = self.validate_chapter_citations(ch_file, defined_anchors)
+            self.broken_citation_refs.extend(broken)
         
         # Extract sources from all files
         for chapter_file in chapter_files:
