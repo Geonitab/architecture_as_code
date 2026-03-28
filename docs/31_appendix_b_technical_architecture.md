@@ -320,7 +320,7 @@ The system is designed for continuous improvement:
 
 ## Sources
 
-1. **AaC Open Source Project.** *Architecture-as-Code Repository.* [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)
+1. **FINOS Architecture as Code Project.** *Architecture-as-Code Repository.* [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code)
 
 ## Summary
 
