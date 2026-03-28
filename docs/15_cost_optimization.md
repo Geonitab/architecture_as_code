@@ -1,4 +1,4 @@
-# Cost Optimisation and Resource Management {#cost-optimization}
+# Cost Optimisation and Resource Management {#cost-optimisation}
 
 ![Cost optimisation workflow](images/diagram_16_chapter15.png)
 
@@ -115,13 +115,33 @@ Automated cost monitoring and optimisation requires integration with cloud provi
 
 *For complete Python implementation of AWS cost optimiser, see [15_CODE_3: AWS cost monitoring and optimisation automation](#15_code_3) in Appendix A.*
 
+## Commitment-Based Pricing: Reserved Instances and Savings Plans
+
+Commitment-based pricing is often the single largest source of cloud cost reduction available to organisations. By committing to a defined usage level over a one- or three-year term, organisations receive substantial discounts compared to on-demand rates. Architecture as Code workflows can codify reservation strategies so that purchasing decisions are traceable, reviewed, and aligned with capacity forecasts.
+
+| Provider | Offering | Typical Savings vs On-Demand |
+|----------|----------|------------------------------|
+| AWS | Reserved Instances (Standard and Convertible) | 30–60% |
+| AWS | Compute Savings Plans (flexible across instance families, sizes, and regions) | Up to 66% |
+| AWS | EC2 Instance Savings Plans | Up to 72% |
+| Azure | Reserved VM Instances (one- or three-year commitments) | Up to 72% |
+| Google Cloud | Committed Use Discounts (resource-based and spend-based) | Up to 57% |
+
+Key considerations when adopting commitment-based pricing:
+
+- **Baseline before committing:** Analyse at least 30–90 days of usage data to identify stable, predictable workloads suitable for reservation. Architecture as Code cost monitoring pipelines can automate this analysis.
+- **Prefer flexible instruments:** AWS Compute Savings Plans and Google Cloud spend-based Committed Use Discounts apply across a broader range of services than instance-level reservations, reducing the risk of stranded commitments as architectures evolve.
+- **Align with FinOps governance:** Reservation purchases should be governed through the same approval workflows as infrastructure changes, with cost centre tagging that attributes savings to the appropriate teams.
+- **Combine with rightsizing:** Committing to the wrong instance size locks in waste. Rightsizing recommendations (see the Automatic Resource Scaling and Rightsizing section above) should be acted upon before making multi-year commitments.
+- **Review and renew:** Commitment portfolios require periodic review—at least annually—to retire expired reservations, adjust coverage as workloads change, and capture newly available discount programmes.
+
 ## Summary
 
 The modern Architecture as Code methodology represents the future for infrastructure management in EU organisations. Cost optimisation within Architecture as Code requires a systematic approach that combines technical tools, automated processes, and organisational awareness. Successful implementation results in significant cost savings whilst performance and security are maintained.
 
 Key success factors include proactive monitoring, automated rightsizing, intelligent use of spot instances and reserved capacity, and continuous optimisation based on actual usage patterns. FinOps practices ensure cost considerations are naturally integrated into the development process.
 
-EU organisations that implement these strategies can achieve 20-40% cost reduction in their cloud operations whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
+EU organisations that implement these strategies can achieve 20–40% cost reduction in their cloud operations (Figures drawn from practitioner case studies; actual savings vary by workload profile and baseline optimisation maturity.) whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
 
 ## Sources and References
 
