@@ -211,7 +211,7 @@ Effective ADR implementation requires established review processes:
 
 ### Code-Managed Discovery, Review, and Supersession
 
-Treating ADRs as code artefacts keeps the decision log maintainable and auditable, aligning with ThoughtWorks' recommendation that architectural governance should be enforced through automated tooling rather than ad-hoc processes ([ThoughtWorks, 2024](33_references.md#thoughtworks-architecture-as-code-the-next-evolution)).
+Treating ADRs as code artefacts keeps the decision log maintainable and auditable, aligning with Thoughtworks' recommendation that architectural governance should be enforced through automated tooling rather than ad-hoc processes ([Source [1]](33_references.md#source-1)).
 
 **Discovery**: Automation hooks can raise draft ADRs whenever a change request touches regulated components. A lightweight bot monitors backlog labels such as `architecture-impact` and scaffolds a new ADR file with templated metadata, prompting authors to capture context early. This ensures design gaps are surfaced before implementation begins and eliminates the scramble to document decisions retrospectively.
 
@@ -229,7 +229,7 @@ Teams can emit a structured JSON index during CI that feeds architectural observ
 - **Policy coverage heat map** – cross-references ADR tags against policy-as-code checks to reveal services that are missing mandated controls.
 - **Review debt tracker** – flags ADRs whose `next_review_due` date has passed, enabling leadership to prioritise refresh work in sprint planning.
 
-Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls ([ThoughtWorks, 2024](33_references.md#thoughtworks-architecture-as-code-the-next-evolution)).
+Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls ([Source [1]](33_references.md#source-1)).
 
 ### Preventing Knowledge Loss Through ADRs
 
@@ -290,6 +290,6 @@ With foundational principles, version control practices, and decision documentat
 
 1. **Architecture Decision Records Community.** *ADR Guidelines and Templates.* [https://adr.github.io](https://adr.github.io)
 2. **Nygard, M. (2011).** *Documenting Architecture Decisions.*
-3. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+3. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 4. **HashiCorp (2024).** *Securing Terraform State.* HashiCorp Developer Documentation. [Source [16]](33_references.md#source-16)
-5. **ThoughtWorks (2023).** *Architecture Decision Records.* Technology Radar.
+5. **Thoughtworks (2023).** *Architecture Decision Records.* Technology Radar.

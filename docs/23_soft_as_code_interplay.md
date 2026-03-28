@@ -258,5 +258,5 @@ When these disciplines integrate, change ceases to be a threat and becomes a nat
 ## Sources
 
 1. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-2. **HashiCorp.** *Policy as Code Overview.* HashiCorp Developer Documentation. [https://developer.hashicorp.com/terraform/enterprise/policy-as-code](https://developer.hashicorp.com/terraform/enterprise/policy-as-code)
+2. **HashiCorp.** *Policy as Code Overview.* HashiCorp Developer Documentation. [https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
 3. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)

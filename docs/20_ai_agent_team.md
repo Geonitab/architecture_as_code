@@ -185,4 +185,4 @@ The key insight is that agents are most effective not as free-standing autonomou
 - [GitHub Docs – About protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [HashiCorp – Policy as Code Overview](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
 - Edmondson, A. C. "Teaming: How Organisations Learn, Innovate, and Compete in the Knowledge Economy." Jossey-Bass, 2012.
-- [Anthropic – Claude Agent SDK Documentation](https://docs.anthropic.com/)
+- [Anthropic – Claude Agent SDK Documentation](https://docs.anthropic.com/en/docs/)

@@ -178,7 +178,7 @@ Storing signed provenance alongside every release artefact allows downstream con
 
 ### Cosign for container image signing
 
-[Cosign](https://docs.sigstore.dev/cosign/overview/) signs container images and stores signatures in the same registry as the image, making verification straightforward:
+[Cosign](https://docs.sigstore.dev/cosign/signing/overview/) signs container images and stores signatures in the same registry as the image, making verification straightforward:
 
 ```bash
 # Sign the image with a key stored in Google Cloud KMS
@@ -222,6 +222,6 @@ The evidence lifecycle framework connects capture, packaging, storage, and retri
 
 - [NIST SP 800-218 – Secure Software Development Framework (SSDF)](https://doi.org/10.6028/NIST.SP.800-218)
 - [SLSA Framework – Supply chain Levels for Software Artefacts](https://slsa.dev/)
-- [Sigstore – Cosign documentation](https://docs.sigstore.dev/cosign/overview/)
+- [Sigstore – Cosign documentation](https://docs.sigstore.dev/cosign/signing/overview/)
 - [NTIA – Minimum Elements for a Software Bill of Materials](https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom)
-- [Open Policy Agent documentation](https://www.openpolicyagent.org/docs/latest/)
+- [Open Policy Agent documentation](https://www.openpolicyagent.org/docs)
