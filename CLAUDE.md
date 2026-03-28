@@ -254,16 +254,29 @@ python3 build_all_orchestrator.py
 ### Bot Workflows
 Specialized automation bots respond to labeled GitHub issues:
 
-| Bot | Workflow | Trigger Label |
-|-----|----------|---------------|
-| Architect Bot | `architect-bot.yml` | `architecture` |
-| Developer Bot | `developer-bot.yml` | `dev` |
-| Designer Bot | `designer-bot.yml` | `design` |
-| Editor Bot | `editor-bot.yml` | `documentation` |
-| QA Bot | `qa-bot.yml` | `qa` |
-| Requirements Bot | `requirements-bot.yml` | `req` |
+| Bot | Workflow | Trigger Label | Role |
+|-----|----------|---------------|------|
+| IT Architect Bot | `architect-bot.yml` | `architecture`, `architect`, `technical` | Technical accuracy, architecture patterns, code examples |
+| Editor Bot | `editor-bot.yml` | `editor`, `editorial`, `documentation` | British English, style consistency, prose quality |
+| Writer Bot | `writer-bot.yml` | `writer`, `writing`, `content` | Drafting and expanding manuscript content |
+| Graphic Designer Bot | `graphic-designer-bot.yml` | `design`, `graphic`, `visual` | Mermaid diagrams, visual consistency, information design |
+| Researcher Bot | `researcher-bot.yml` | `researcher`, `research`, `sources` | Source verification, citations, factual accuracy |
+| Critic Bot | `critic-bot.yml` | `critic`, `critique`, `review` | Critical analysis, assumption-challenging, completeness |
+| Mermaid Designer Bot | `mermaid-designer-bot.yml` | `mermaid`, `Mermaid`, `diagram` | Specialist Mermaid diagram creation |
 
 Apply the appropriate label to trigger the corresponding bot response.
+
+#### Editorial Team Bot Reference
+
+The editorial team bots form a collaborative pipeline for manuscript quality:
+
+1. **Writer Bot** — drafts new content or expands existing sections
+2. **Researcher Bot** — verifies all factual claims and sources
+3. **IT Architect Bot** — validates technical correctness and architecture decisions
+4. **Graphic Designer Bot** — creates and maintains visual consistency across diagrams
+5. **Editor Bot** — enforces editorial standards, British English, and prose quality
+6. **Critic Bot** — provides critical review challenging assumptions and identifying gaps
+7. **Mermaid Designer Bot** — specialist bot for complex Mermaid diagram creation
 
 ## Website Deployment
 
