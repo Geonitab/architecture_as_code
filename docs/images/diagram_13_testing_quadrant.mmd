@@ -1,20 +1,15 @@
-graph TD
-    subgraph Legend["Testing Strategy Quadrant"]
-        direction LR
-        Q2["Quick Wins<br/>High Coverage, Low Complexity"]:::kv-primary
-        Q1["Comprehensive<br/>High Coverage, High Complexity"]:::kv-outline
-        Q4["Over-engineered<br/>Low Coverage, High Complexity"]:::kv-pattern
-    end
-
-    subgraph HighCoverage["High Coverage Strategies"]
-        SEC["Security Scanning<br/>80% coverage"]:::kv-primary
-        POL["Policy Testing OPA<br/>70% coverage"]:::kv-primary
-        COMP["Compliance Testing<br/>90% coverage"]:::kv-accent
-        INT["Integration Tests<br/>80% coverage"]:::kv-highlight
-        E2E["End-to-End Tests<br/>90% coverage"]:::kv-pattern
-    end
-
-    subgraph MedCoverage["Medium Coverage"]
-        UNIT["Unit Tests<br/>60% coverage"]:::kv-accent
-        PERF["Performance Tests<br/>60% coverage"]:::kv-highlight
-    end
+quadrantChart
+    title Testing Strategy Quadrant
+    x-axis Low Complexity --> High Complexity
+    y-axis Low Coverage --> High Coverage
+    quadrant-1 Comprehensive
+    quadrant-2 Quick Wins
+    quadrant-3 Simplify or Expand
+    quadrant-4 Over-engineered
+    Unit Tests: [0.20, 0.60]
+    Performance Tests: [0.50, 0.60]
+    Security Scanning: [0.20, 0.80]
+    Policy Testing OPA: [0.40, 0.70]
+    Compliance Testing: [0.15, 0.90]
+    Integration Tests: [0.60, 0.80]
+    End-to-End Tests: [0.85, 0.90]
