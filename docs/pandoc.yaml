@@ -55,12 +55,40 @@ variables:
     \restoregeometry
     \endgroup
     \clearpage
-    \begingroup
     \thispagestyle{empty}
-    \newgeometry{top=0mm,bottom=0mm,left=0mm,right=0mm}
-    \noindent\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio=false]{images/release_information_page.png}
-    \restoregeometry
-    \endgroup
+    \vspace*{1cm}
+    \begin{flushleft}
+    {\large\bfseries Release Information}\\[1cm]
+    {\bfseries Publication Details}\\[0.3cm]
+    \textbf{Title:} Architecture as Code\\
+    \textbf{Subtitle:} A practical handbook for Infrastructure as Code\\
+    \textbf{Edition:} First Edition\\
+    \textbf{Publication Date:} \the\year\\
+    \textbf{Language:} British English (en-GB)\\[0.8cm]
+    {\bfseries Publisher Information}\\[0.3cm]
+    \textbf{Published by:} Architecture as Code Editorial Team\\
+    \textbf{Contact:} \nolinkurl{https://github.com/Geonitab/architecture_as_code}\\[0.8cm]
+    {\bfseries Copyright and Licensing}\\[0.3cm]
+    Copyright \textcopyright{} \the\year{} Architecture as Code Editorial Team\\[0.3cm]
+    All rights reserved. This book is made available under open-source principles to support the\\
+    community in adopting Architecture as Code practices.\\[0.8cm]
+    {\bfseries ISBN and Cataloguing}\\[0.3cm]
+    \textbf{ISBN:} \textit{To be assigned}\\
+    \textbf{Format:} PDF, EPUB, DOCX\\
+    \textbf{Subject:} Computer Science, Software Architecture, Infrastructure as Code, DevOps\\[0.8cm]
+    {\bfseries Version and Release Information}\\[0.3cm]
+    \textbf{Release:} 1.0.0\\
+    \textbf{Build Date:} \the\year\\
+    \textbf{Repository:} \nolinkurl{https://github.com/Geonitab/architecture_as_code}\\[0.8cm]
+    {\bfseries Technical Production}\\[0.3cm]
+    This book is produced using a fully automated Architecture as Code workflow:
+    \begin{itemize}
+      \item \textbf{Content Format:} Markdown with Mermaid diagrams
+      \item \textbf{Build System:} Pandoc with XeLaTeX (Eisvogel template)
+      \item \textbf{Diagram Toolchain:} Mermaid CLI
+      \item \textbf{Version Control:} Git / GitHub Actions CI/CD
+    \end{itemize}
+    \end{flushleft}
     \clearpage
   # Simplified header handling
   header-includes: |
