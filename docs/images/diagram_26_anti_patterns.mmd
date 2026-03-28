@@ -1,9 +1,11 @@
+%% Diagram: Reinforcing system of Architecture as Code anti-patterns showing how strategic failures cascade and compound over time
 graph LR
-    Strategy[Strategic drift] --> Governance[Governance gaps]
-    Strategy --> Delivery[Delivery breakdowns]
-    Governance --> Delivery
-    Governance --> Tooling[Tooling pitfalls]
-    Delivery --> Culture[People and culture]
-    Tooling --> Culture
-    Culture --> Sustainability[Sustainability debt]
-    Delivery --> Sustainability
+    Strategy["Strategic drift\nMisaligned goals & vision"] -->|widens| Governance["Governance gaps\nMissing policies & oversight"]
+    Strategy -->|accelerates| Delivery["Delivery breakdowns\nInconsistent practices"]
+    Governance -->|enables| Delivery
+    Governance -->|produces| Tooling["Tooling pitfalls\nFragmented & ungoverned toolchains"]
+    Delivery -->|erodes| Culture["People & culture\nLow trust & siloed teams"]
+    Tooling -->|frustrates| Culture
+    Culture -->|accumulates| Sustainability["Sustainability debt\nUnmaintainable systems & burnout"]
+    Delivery -->|contributes to| Sustainability
+    Sustainability -->|reinforces| Strategy
