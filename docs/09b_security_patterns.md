@@ -1,6 +1,6 @@
 # Advanced Security Patterns and Implementation {#security-patterns}
 
-![Security as code workflow](images/diagram_06_chapter5.png)
+![Security as code workflow](images/diagram_11_chapter9.png)
 
 *Building upon the security fundamentals established in the previous chapter, this chapter explores advanced security architecture patterns, practical implementations for European environments, and emerging trends that will shape the future of security in Architecture as Code.*
 

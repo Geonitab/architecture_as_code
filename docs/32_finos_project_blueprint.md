@@ -2,7 +2,7 @@
 
 The FINOS Project Blueprint initiative exists to prove that open collaboration can harden architectural practice without adding bureaucracy. It inherits the "Architecture as Code" ethos that this repository documents in depth, treating every artefact—from design rationale to production telemetry—as code subject to automated governance. By combining the automation foundations described in the book's technical chapters with the Common Architecture Language Model (CALM), the blueprint offers a reusable playbook for regulated financial organisations that want to modernise safely and transparently.
 
-![Blueprint governance spine](images/diagram_11_chapter10.png)
+![Blueprint governance spine](images/diagram_32_maturity_model.png)
 
 ## Blueprint Objectives and Context
 

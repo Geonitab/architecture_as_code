@@ -1,8 +1,6 @@
 # Security Fundamentals for Architecture as Code {#security-fundamentals}
 
-![Security as code workflow](images/diagram_06_chapter5.png)
-
-*This workflow diagram illustrates the general security-as-code pipeline; a chapter-specific diagram will be added in a future revision.*
+![Security as code workflow](images/diagram_11_chapter9.png)
 
 *Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are
  embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous complian

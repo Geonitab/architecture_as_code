@@ -4,7 +4,7 @@
 
 Microservices architectures decompose business capabilities into independent services that can be planned, deployed, and evolved without synchronising every change across the entire estate. When coupled with Architecture as Code disciplines, microservices become observable, governable, and automatable. Source-controlled blueprints describe how services interact, how they are deployed, and which policies keep them trustworthy. This chapter explains how to weave Architecture as Code practices through microservice estates so that autonomy never undermines cohesion.
 
-![Microservices operating model](images/diagram_08_chapter7.png)
+![Microservices operating model](images/diagram_10_chapter8.png)
 
 ## Architectural principles for federated teams
 
