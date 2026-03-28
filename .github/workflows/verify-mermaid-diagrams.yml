@@ -43,7 +43,7 @@ jobs:
             libgtk-3-0 \
             libnss3 \
             libxss1 \
-            libasound2 \
+            libasound2t64 \
             libdrm2 \
             libxkbcommon0 \
             libgbm1 \
