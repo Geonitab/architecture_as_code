@@ -120,7 +120,7 @@ framework_mappings := {
 
 evidence_sources := [
     "ci/policy-report.json",
-    "evidence/mfa-snapshot-YYYYMM.json"
+    "evidence/mfa-snapshot-202501.json"  # Replace YYYYMM with the snapshot month, e.g. 202501
 ]
 ```
 
