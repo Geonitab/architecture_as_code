@@ -550,14 +550,12 @@ generate_other_formats() {
     echo "Generating EPUB format..."
 
     # Generate EPUB with improved metadata
-    if pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
+    if pandoc "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
         -t epub \
         -o "$OUTPUT_EPUB" \
         --metadata date="$(date +'%Y-%m-%d')" \
         --metadata language=en \
         --metadata lang=en-GB \
-        --metadata=include-before= \
-        --metadata=header-includes= \
         --epub-cover-image="images/book-cover.png" \
         2>&1; then
 
@@ -589,10 +587,8 @@ generate_other_formats() {
     fi
 
     echo "Generating DOCX format..."
-    pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
+    pandoc "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}" \
         -t docx \
-        --metadata=include-before= \
-        --metadata=header-includes= \
         -o "$OUTPUT_DOCX"
     echo "DOCX generated: $OUTPUT_DOCX"
     cp "$OUTPUT_DOCX" "$RELEASE_DOCX"
