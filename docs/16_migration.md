@@ -402,9 +402,9 @@ Part E examines the organisational transformation that must accompany technical 
 
 ## Sources
 
-- AWS. "Large-Scale Migration and Modernisation Guide." Amazon Web Services, 2023.
-- Microsoft. "Azure Migration Framework and Architecture as Code best practices." Microsoft Azure Documentation, 2023.
-- Google Cloud. "Infrastructure Migration Strategies." Google Cloud Architecture Centre, 2023.
-- Gartner. "Infrastructure Migration Trends in European Markets." Gartner Research, 2023.
-- ITIL Foundation. "IT Service Management for Cloud Migration." AXELOS, 2023.
-- European Commission. "Digital Transformation Guidelines for Public Sector." EU Digital Strategy, 2023.
+1. **Amazon Web Services (2023).** *Large-Scale Migration and Modernisation Guide.* Amazon Web Services.
+2. **Microsoft (2023).** *Azure Migration Framework and Architecture as Code Best Practices.* Microsoft Azure Documentation.
+3. **Google Cloud (2023).** *Infrastructure Migration Strategies.* Google Cloud Architecture Centre.
+4. **Gartner (2023).** *Infrastructure Migration Trends in European Markets.* Gartner Research.
+5. **AXELOS (2023).** *ITIL Foundation: IT Service Management for Cloud Migration.* AXELOS.
+6. **European Commission (2023).** *Digital Transformation Guidelines for Public Sector.* EU Digital Strategy.

@@ -83,9 +83,9 @@ By encoding risk assessments and threat handling in the repository, organisation
 
 ## Sources
 
-- **Threat Modelling Manifesto** — community principles for effective threat modelling practice: <https://www.threatmodelingmanifesto.org/>
-- **OWASP Threat Dragon** — open-source threat modelling tool: <https://owasp.org/www-project-threat-dragon/>
-- **STRIDE methodology (Microsoft)** — see Microsoft Security Development Lifecycle documentation for guidance on spoofing, tampering, repudiation, information disclosure, denial of service, and elevation of privilege threat categories
-- **STIX/TAXII Standards** — structured threat intelligence expression and transport specifications maintained by OASIS: <https://oasis-open.github.io/cti-documentation/>
-- **NIST SP 800-30** — Guide for Conducting Risk Assessments, National Institute of Standards and Technology
-- **Chaos Engineering for Security** — see Gremlin platform documentation and AWS Fault Injection Simulator documentation for security chaos engineering patterns and tooling
+1. **Threat Modeling Manifesto Community.** *Threat Modeling Manifesto.* threatmodelingmanifesto.org.
+2. **OWASP.** *OWASP Threat Dragon.* Open Web Application Security Project.
+3. **Microsoft.** *STRIDE Threat Modelling Methodology.* Microsoft Security Development Lifecycle Documentation.
+4. **OASIS (2022).** *STIX/TAXII Standards: Structured Threat Intelligence Expression and Transport Specifications.* OASIS Open.
+5. **NIST.** *SP 800-30: Guide for Conducting Risk Assessments.* National Institute of Standards and Technology.
+6. **Gremlin & AWS.** *Chaos Engineering for Security.* Gremlin Platform Documentation and AWS Fault Injection Simulator Documentation.

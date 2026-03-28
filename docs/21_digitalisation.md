@@ -385,9 +385,9 @@ Part F explores the interplay between different "as Code" practices and distils 
 
 ## Sources
 
-- Gartner. "Cloud Adoption Strategies for Enterprises." Gartner Research, 2023.
-- McKinsey Digital. "Digital Transformation: A Global Perspective." McKinsey & Company, 2023.
-- AWS. "Cloud Adoption Framework for Enterprises." Amazon Web Services, 2023.
-- Microsoft. "Azure for Enterprise Digital Transformation." Microsoft Azure, 2023.
-- HashiCorp. "Infrastructure as Code Best Practices." HashiCorp Learn, 2023.
-- SANS Institute. "Cloud Security for Enterprise Organisations." SANS Security Research, 2023.
+1. **Gartner (2023).** *Cloud Adoption Strategies for Enterprises.* Gartner Research.
+2. **McKinsey & Company (2023).** *Digital Transformation: A Global Perspective.* McKinsey Digital.
+3. **Amazon Web Services (2023).** *Cloud Adoption Framework for Enterprises.* Amazon Web Services.
+4. **Microsoft (2023).** *Azure for Enterprise Digital Transformation.* Microsoft Azure.
+5. **HashiCorp (2023).** *Infrastructure as Code Best Practices.* HashiCorp Learn.
+6. **SANS Institute (2023).** *Cloud Security for Enterprise Organisations.* SANS Security Research.

@@ -411,10 +411,10 @@ The testing quadrant diagram (Figure 13.2) illustrates how different testing str
 
 ## Sources
 
-- Terratest Documentation. "Infrastructure Testing for Terraform." Gruntwork, 2024.
-- Open Policy Agent. "Policy Testing Best Practices for Infrastructure as Code." CNCF OPA Project, 2024.
-- AWS. "Infrastructure Testing Strategy Guide." Amazon Web Services, 2024.
-- Kubernetes. "Testing Infrastructure and Applications." Kubernetes Documentation, 2024.
-- NIST. "Security Testing for Cloud Infrastructure." NIST Cybersecurity Framework, 2024.
-- CSA. "Cloud Security Testing Guidelines." Cloud Security Alliance, 2024.
-- Vitest. "Next Generation Testing Framework." Vitest Documentation, 2024.
+1. **Gruntwork (2024).** *Terratest Documentation: Infrastructure Testing for Terraform.* Gruntwork.
+2. **Open Policy Agent (2024).** *Policy Testing Best Practices for Infrastructure as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+3. **Amazon Web Services (2024).** *Infrastructure Testing Strategy Guide.* Amazon Web Services.
+4. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes Project. [Source [13]](33_references.md#source-13)
+5. **NIST (2024).** *Security Testing for Cloud Infrastructure.* NIST Cybersecurity Framework.
+6. **Cloud Security Alliance (2024).** *Cloud Security Testing Guidelines.* Cloud Security Alliance.
+7. **Pulumi (2024).** *Testing Infrastructure as Code Programs.* Pulumi Blog. [Source [15]](33_references.md#source-15)

@@ -280,25 +280,25 @@ By combining proven practices with emerging innovations, Architecture as Code ev
 
 ## Sources
 
-- European Commission. "The EU Artificial Intelligence Act." European Union Law, 2024.
-- European Commission. "Horizon Europe: The EU Framework Programme for Research and Innovation." EU Publications, 2024.
-- European Commission. "Digital Europe Programme: Shaping Europe's Digital Future." EU Digital Strategy, 2024.
-- European Commission. "EU Quantum Flagship: Bringing Quantum Technologies to Europe." EU Research and Innovation, 2024.
-- European Commission. "European Quantum Communication Infrastructure (EuroQCI)." EU Digital Infrastructure, 2024.
-- European Commission. "Post-Quantum Cryptography: Preparing for the Quantum Threat." EU Cybersecurity Strategy, 2024.
-- EuroHPC Joint Undertaking. "European High Performance Computing and Quantum Computing Infrastructure." EuroHPC JU, 2024.
-- ENISA. "Post-Quantum Cryptography: Current State and Quantum Mitigation." European Union Agency for Cybersecurity, 2024.
-- GAIA-X. "A Federated Secure Data Infrastructure for Europe." GAIA-X European Association for Data and Cloud, 2024.
-- McKinsey Global Institute. "The Future of Infrastructure." McKinsey & Company.
-- MIT Technology Review. "Quantum Computing and Cryptography." MIT Press.
-- IEEE Computer Society. "Edge Computing and 5G Integration." IEEE Publications.
-- FinOps Foundation. "State of FinOps." FinOps Foundation Reports.
-- MarketsandMarkets. "Infrastructure as Code Market Report." MarketsandMarkets, 2023.
-- Gartner. "Forecast Analysis: Public Cloud Services Worldwide." Gartner Research, 2024.
-- IDC. "Worldwide DevOps Software Tools Forecast, 2023–2027." IDC Research, 2023.
-- Green Software Foundation. "Carbon-Aware Computing Guidelines." GSF Documentation.
-- Cloud Native Computing Foundation. "Platforms for Cloud Native Applications." CNCF Whitepaper.
-- GAIA-X. "GAIA-X Framework." GAIA-X European Association for Data and Cloud AISBL.
-- European Commission. "European Green Deal." EU Climate Action.
-- Climate Neutral Data Centre Pact. "Self-Regulatory Initiative." European Data Centre Association.
-- European Commission. "EU Code of Conduct for Energy Efficiency in Data Centres." Joint Research Centre.
+1. **European Commission (2024).** *The EU Artificial Intelligence Act.* European Union Law.
+2. **European Commission (2024).** *Horizon Europe: The EU Framework Programme for Research and Innovation.* EU Publications.
+3. **European Commission (2024).** *Digital Europe Programme: Shaping Europe's Digital Future.* EU Digital Strategy.
+4. **European Commission (2024).** *EU Quantum Flagship: Bringing Quantum Technologies to Europe.* EU Research and Innovation.
+5. **European Commission (2024).** *European Quantum Communication Infrastructure (EuroQCI).* EU Digital Infrastructure.
+6. **European Commission (2024).** *Post-Quantum Cryptography: Preparing for the Quantum Threat.* EU Cybersecurity Strategy.
+7. **EuroHPC Joint Undertaking (2024).** *European High Performance Computing and Quantum Computing Infrastructure.* EuroHPC JU.
+8. **ENISA (2024).** *Post-Quantum Cryptography: Current State and Quantum Mitigation.* European Union Agency for Cybersecurity.
+9. **GAIA-X (2024).** *A Federated Secure Data Infrastructure for Europe.* GAIA-X European Association for Data and Cloud.
+10. **McKinsey Global Institute.** *The Future of Infrastructure.* McKinsey & Company.
+11. **MIT Technology Review.** *Quantum Computing and Cryptography.* MIT Press.
+12. **IEEE Computer Society.** *Edge Computing and 5G Integration.* IEEE Publications.
+13. **FinOps Foundation.** *State of FinOps.* FinOps Foundation Reports.
+14. **MarketsandMarkets (2023).** *Infrastructure as Code Market Report.* MarketsandMarkets.
+15. **Gartner (2024).** *Forecast Analysis: Public Cloud Services Worldwide.* Gartner Research.
+16. **IDC (2023).** *Worldwide DevOps Software Tools Forecast, 2023–2027.* IDC Research.
+17. **Green Software Foundation.** *Carbon-Aware Computing Guidelines.* GSF Documentation.
+18. **Cloud Native Computing Foundation.** *Platforms for Cloud Native Applications.* CNCF Whitepaper.
+19. **GAIA-X.** *GAIA-X Framework.* GAIA-X European Association for Data and Cloud AISBL.
+20. **European Commission.** *European Green Deal.* EU Climate Action.
+21. **Climate Neutral Data Centre Pact.** *Self-Regulatory Initiative.* European Data Centre Association.
+22. **European Commission.** *EU Code of Conduct for Energy Efficiency in Data Centres.* Joint Research Centre.

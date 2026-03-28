@@ -265,8 +265,8 @@ Part D examines the testing strategies, implementation patterns, cost optimisati
 
 ## Sources
 
-- IEEE Computer Society. "Quantum Computing Impact on Infrastructure." IEEE Quantum Computing Standards.
-- Green Software Foundation. "Sustainable Infrastructure Patterns." Green Software Principles.
-- NIST. "Post-Quantum Cryptography Standards." National Institute of Standards and Technology.
-- Cloud Native Computing Foundation. "Future of Cloud Native Infrastructure." CNCF Research.
-- Gartner Research. "Infrastructure and Operations Technology Trends 2024." Gartner IT Infrastructure Reports.
+1. **IEEE Computer Society.** *Quantum Computing Impact on Infrastructure.* IEEE Quantum Computing Standards.
+2. **Green Software Foundation.** *Sustainable Infrastructure Patterns.* Green Software Principles.
+3. **NIST.** *Post-Quantum Cryptography Standards.* National Institute of Standards and Technology.
+4. **Cloud Native Computing Foundation.** *Future of Cloud Native Infrastructure.* CNCF Research.
+5. **Gartner Research (2024).** *Infrastructure and Operations Technology Trends 2024.* Gartner IT Infrastructure Reports.
