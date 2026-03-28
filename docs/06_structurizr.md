@@ -280,11 +280,11 @@ Structurizr supports different deployment models:
 
 1. **Structurizr Cloud** - SaaS offering with hosted workspace
 2. **Structurizr On-Premises** - Self-hosted installation
-3. **Structurizr Lite** - Local viewer for DSL files (free, no server required)
+3. **Structurizr Lite** - Local viewer for DSL files (free, no server required) — **Note:** Structurizr Lite has been declared end-of-life; readers should use [Structurizr Local](https://docs.structurizr.com/local) instead.
 
 ### Using Structurizr Lite for Development
 
-Structurizr Lite is ideal for development and CI/CD integration:
+Structurizr Lite is ideal for development and CI/CD integration (see note above regarding end-of-life status; consider using Structurizr Local as the supported replacement):
 
 ```bash
 # Run Structurizr Lite using Docker
@@ -377,9 +377,7 @@ include.
 4. **Document relationship expectations** – Maintain a `docs/STRUCTURIZR_GUIDELINES.md` (or similar) that states how to phrase rel
 ationship descriptions (“uses”, “publishes events to”, “reads from”). Link the document from pull request templates so contribu
 tors confirm adherence before review.
-5. **Leverage Structurizr Lite for validation** – Encourage contributors to load the workspace in [Structurizr Lite](https://str
-ucturizr.com/help/lite) during development. Lite persists layout updates alongside the DSL, enabling contributors to visualise c
-onvention breaches before they reach code review.
+5. **Leverage Structurizr Lite for validation** – Encourage contributors to load the workspace in [Structurizr Lite](https://docs.structurizr.com/lite) during development. Lite persists layout updates alongside the DSL, enabling contributors to visualise convention breaches before they reach code review. Note that Structurizr Lite has been declared end-of-life; [Structurizr Local](https://docs.structurizr.com/local) is the recommended replacement.
 
 These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or s
 ervices when multiple programmes collaborate.
@@ -1271,10 +1269,10 @@ The next chapters explore how to extend these foundations into containerisation 
 
 ## Sources
 
-- Brown, S. "The C4 model for visualising software architecture." [https://c4model.com](https://c4model.com)
-- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. [https://blog.structurizr.com/diagrams-as-code-automation/](https://blog.structurizr.com/diagrams-as-code-automation/)
+- Brown, S. "The C4 model for visualising software architecture." [https://c4model.com/](https://c4model.com/)
+- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. [https://web.archive.org/web/2024*/https://blog.structurizr.com/diagrams-as-code-automation/](https://web.archive.org/web/2024*/https://blog.structurizr.com/diagrams-as-code-automation/) [archived]
 - Brown, S. "Software Architecture for Developers." Leanpub, 2024.
 - Structurizr. "Structurizr DSL Language Reference." [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
-- Structurizr. "Structurizr Lite." [https://structurizr.com/help/lite](https://structurizr.com/help/lite)
+- Structurizr. "Structurizr Lite." [https://docs.structurizr.com/lite](https://docs.structurizr.com/lite)
 - ThoughtWorks Technology Radar. "Diagrams as code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)
-- AaC Open Source Project. "Architecture-as-Code Repository." [https://github.com/aacplatform/aac](https://github.com/aacplatform/aac)
+- FINOS Architecture as Code Project. "Architecture-as-Code Repository." [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code)

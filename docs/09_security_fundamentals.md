@@ -266,7 +266,7 @@ This chapter has established the fundamental security principles and practices f
 1. **NIST (2018).** *Cybersecurity Framework Version 1.1.* National Institute of Standards and Technology.
 2. **NIST (2020).** *Special Publication 800-207: Zero Trust Architecture.* National Institute of Standards and Technology.
 3. **NIST (2023).** *Post-Quantum Cryptography Standardisation.* National Institute of Standards and Technology.
-4. **NIST (2024).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53. [Source [11]](33_references.md#source-11)
+4. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53, Revision 5, 2020. [Source [11]](33_references.md#source-11)
 5. **ENISA (2023).** *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity.
 6. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
 7. **EDPB (2023).** *Guidelines on Data Protection by Design and by Default.* European Data Protection Board.

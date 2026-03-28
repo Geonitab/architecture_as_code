@@ -139,5 +139,5 @@ As technology continues to evolve, the principles outlined in this book—declar
 
 1. **Kvadrat AB (2024).** *Gunnar Nordqvist – Chief Architect Profile.* Consultant Profile. [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)
 2. **Kvadrat AB (2024).** *Technology Consulting Excellence.* Company Profile. [https://www.kvadrat.se/](https://www.kvadrat.se/)
-3. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+3. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 4. **GitHub Open Source Community (2024).** *Collaborative Software Development.* Platform Documentation.

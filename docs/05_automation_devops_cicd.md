@@ -14,7 +14,7 @@ The CI/CD flow depicted earlier runs from code commit through validation, testin
 
 ## Differentiating Architecture as Code and Infrastructure as Code in automation
 
-Architecture as Code defines the opinionated standards, architectural policies, and lifecycle guardrails that automation must enforce, while Infrastructure as Code executes concrete resource changes in alignment with those guardrails. Seeing them as adjacent layers keeps responsibilities crisp: AaC codifies what must be true before runtime, IaC consumes those policies to produce compliant infrastructure. Thoughtworks frames Governance as Code as an architectural responsibility that encodes policy decisions directly into automation, ensuring teams adopt approved patterns without manual gatekeeping ([Thoughtworks Technology Radar – Governance as Code](https://www.thoughtworks.com/radar/techniques/governance-as-code)). Higher-order IaC frameworks such as AWS Cloud Development Kit (CDK) demonstrate how architectural blueprints are compiled into deployable infrastructure, shrinking the translation gap between AaC intent and IaC implementation ([AWS – Cloud Development Kit (CDK) Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html)).
+Architecture as Code defines the opinionated standards, architectural policies, and lifecycle guardrails that automation must enforce, while Infrastructure as Code executes concrete resource changes in alignment with those guardrails. Seeing them as adjacent layers keeps responsibilities crisp: AaC codifies what must be true before runtime, IaC consumes those policies to produce compliant infrastructure. Thoughtworks frames Governance as Code as an architectural responsibility that encodes policy decisions directly into automation, ensuring teams adopt approved patterns without manual gatekeeping ([Thoughtworks Technology Radar – Governance as Code](https://web.archive.org/web/2024*/https://www.thoughtworks.com/radar/techniques/governance-as-code) [archived]). Higher-order IaC frameworks such as AWS Cloud Development Kit (CDK) demonstrate how architectural blueprints are compiled into deployable infrastructure, shrinking the translation gap between AaC intent and IaC implementation ([AWS – Cloud Development Kit (CDK) Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html)).
 
 > **AaC vs IaC automation responsibilities**
 >
@@ -588,7 +588,7 @@ Successful implementation of CI/CD for Architecture as Code requires balancing a
 6. **Cloud Native Computing Foundation (Kubernetes).** *GitOps Principles and Practices.* Cloud Native Computing Foundation.
 7. **GDPR.eu.** *Infrastructure Compliance Requirements.* GDPR Guidelines.
 8. **Data Protection Authorities.** *Technical and Organisational Measures.* GDPR Guidance.
-9. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+9. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 10. **HashiCorp (2024).** *Introduction to Infrastructure as Code with Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
 11. **DevOps Institute.** *Architecture-Driven DevOps Practices.* DevOps Research and Assessment.
 12. **Data Protection Authorities.** *GDPR for Organisations.* Guidance on personal-data processing.

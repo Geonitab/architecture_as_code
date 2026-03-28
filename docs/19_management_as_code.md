@@ -292,7 +292,7 @@ As artificial intelligence capabilities mature, MaC will incorporate intelligent
 ## Sources
 
 - Drucker, P.F. (1954). *The Practice of Management*. Harper & Row.
-- GitOps Working Group. *GitOps Principles*. https://opengitops.dev/
+- GitOps Working Group. *GitOps Principles*. [OpenGitOps](https://opengitops.dev/)
 - Puppet. *State of DevOps Report*. Annual industry survey on DevOps practices.
 - Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press.
 

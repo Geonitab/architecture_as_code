@@ -73,7 +73,7 @@ Use numbered source links pointing to `33_references.md`:
 Where a readable author–year reference is more natural in prose, use the format `Surname (Year)` on first mention, followed by a numbered source link:
 
 ```markdown
-Skelton & Pais (2019) [Source [7]](33_references.md#source-7)
+Skelton & Pais (2019) [Source [1]](33_references.md#source-1)
 ```
 
 Do **not** use bare attributions such as `Red Hat (2023)` without an accompanying source link.
@@ -90,7 +90,7 @@ Example:
 ```markdown
 ## Sources
 
-1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press. [Source [7]](33_references.md#source-7)
+1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press. (Skelton & Pais, 2019)
 2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate.* IT Revolution Press. [Source [8]](33_references.md#source-8)
 ```
 
