@@ -63,6 +63,38 @@ A structured readiness assessment keeps preparation honest. Borrowing from the m
 
 Treating readiness as an iterative loop mirrors the delivery cadence promoted in [Chapter 14](14_practical_implementation.md) and the adaptive mindset in [Chapter 25](25_future_trends.md).
 
+## Readiness Scorecard Template
+
+Use this scorecard to assess your organisation's readiness for Architecture as Code adoption. Rate each dimension 1 (not started) to 5 (fully implemented).
+
+| Dimension | Assessment Criteria | Score (1–5) | Notes / Evidence |
+|-----------|---------------------|-------------|-----------------|
+| **Contextual Discovery** | | | |
+| Stakeholder alignment | Key stakeholders identified and engaged | | |
+| Current-state documentation | Existing architecture documented to C4 Level 2 | | |
+| Tool inventory | Current toolchain catalogued (IaC, CI/CD, monitoring) | | |
+| **Capability Baseline** | | | |
+| Version control maturity | Infrastructure code in version control with branching strategy | | |
+| Automation coverage | ≥50% of infrastructure provisioned via code | | |
+| Skills availability | Team members trained in at least one IaC tool | | |
+| **Cultural Readiness** | | | |
+| Change appetite | Leadership support for code-first approach confirmed | | |
+| Collaboration practices | Team uses pull-request-based review workflows | | |
+| Learning culture | Team participates in internal knowledge-sharing sessions | | |
+| **Economic Viability** | | | |
+| Budget allocated | Budget confirmed for tooling, training, and migration effort | | |
+| ROI baseline | Current cost-of-manual-change quantified for comparison | | |
+| Risk tolerance | Acceptable risk threshold defined for incremental rollout | | |
+| **Remediation Roadmap** | | | |
+| Gap prioritisation | Top three capability gaps identified and ranked | | |
+| Quick wins defined | At least one low-effort, high-visibility pilot scoped | | |
+| Milestones agreed | 90-day and 12-month milestones documented | | |
+
+**Scoring guidance:**
+- 60–75 points: Ready to proceed — begin with a focused pilot
+- 40–59 points: Partial readiness — address critical gaps before scaling
+- Below 40 points: Foundation work needed — follow the Remediation Roadmap first
+
 ## Case Study: Preparing a Global Enterprise
 
 A multinational financial services group offers a useful illustration. Automation maturity is high—CI/CD pipelines mirror [Chapter 05](05_automation_devops_cicd.md)—yet architecture still relies on static review boards. A readiness assessment uncovers three gaps. Knowledge artefacts live in static slide decks, contradicting the practices in [Chapter 22](22_documentation_vs_architecture.md). Psychological safety varies across regions, highlighting the cultural work described in [Chapter 17](17_organisational_change.md). Funding remains tied to annual projects, conflicting with the rolling investment model from [Chapter 19](19_management_as_code.md).
@@ -92,3 +124,5 @@ Readiness is not a one-off audit. Dashboards should blend DORA indicators from [
 ## Conclusion
 
 AaC readiness is a deliberate synthesis of culture, technology, and economics. Organisations that honour these prerequisites extend the craftsmanship of [Chapter 02](02_fundamental_principles.md), the resilience of [Chapter 17](17_organisational_change.md), and the stewardship of [Chapter 15](15_cost_optimization.md). Those that skip the groundwork rediscover the failure modes catalogued throughout the book. By grounding adoption in readiness, teams respect the complexity of their sociotechnical systems and position themselves to explore the opportunities envisioned in [Chapter 25](25_future_trends.md) with confidence.
+
+For anti-patterns to avoid during adoption, see [Chapter 26B: Anti-Patterns in Architecture as Code Programmes](26b_aac_anti_patterns.md).

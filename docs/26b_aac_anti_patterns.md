@@ -2,6 +2,8 @@
 
 Architecture as Code (AaC) brings architectural thinking into the same disciplined delivery processes that teams already apply to software and infrastructure. Yet programmes stumble when they copy technical mechanisms without reshaping culture, governance, and operational rhythms. This chapter examines recurring anti-patterns that undermine AaC initiatives across diverse industries. Understanding these pitfalls helps organisations design early safeguards, establish healthier feedback loops, and sustain momentum beyond the initial transformation campaign.
 
+Before exploring anti-patterns, ensure your organisation has assessed its readiness using the framework in [Chapter 26A: Prerequisites for Architecture as Code Adoption](26a_prerequisites_for_aac.md).
+
 ![Figure 26.1 – Architecture as Code anti-pattern radar](images/diagram_26_anti_patterns.png)
 
 *Figure 26.1 maps common anti-pattern clusters across governance, tooling, teams, and delivery lifecycles, showing how blind spots propagate risk.*
@@ -12,19 +14,19 @@ Architecture as Code (AaC) brings architectural thinking into the same disciplin
 
 Executives sometimes assume that acquiring a single modelling or provisioning platform unlocks Architecture as Code. The anti-pattern manifests when budgets focus on licences and consultants whilst neglecting change management, governance design, and internal capability building. Teams inherit sophisticated tooling without a shared architectural vocabulary or decision-making forum. Models remain stale, infrastructure definitions diverge from reality, and senior leaders declare the experiment a failure.
 
-**How to recover:** treat AaC as a product with its own roadmap, budget for coaching, and a guild that curates shared models in Git.
+**How to recover:** treat AaC as a product with its own roadmap, budget for coaching, and a guild that curates shared models in Git (see [Chapter 17](17_organisational_change.md) and [Chapter 19](19_management_as_code.md)).
 
 ### Running Without an Architectural North Star
 
 Another strategic pitfall arises when programmes rush into codifying components without articulating architectural principles. Each team builds their own stack, enforcing local conventions that conflict with neighbouring services. The repository fragments into dozens of divergent patterns. When compliance auditors inspect the estate, they find no traceability between high-level intents and actual deployments.
 
-**How to recover:** express architectural principles as executable templates, reference them in ADRs, and review the catalogue quarterly.
+**How to recover:** express architectural principles as executable templates, reference them in ADRs, and review the catalogue quarterly (see [Chapter 4](04_adr.md)).
 
 ### Ignoring Organisational Boundaries
 
 AaC is often introduced by a central platform group. The anti-pattern appears when the platform team dictates patterns without understanding delivery contexts in retail branches, public sector agencies, or regional subsidiaries. Field teams bypass the central codebase, fork modules, and configure shadow pipelines. The central team responds with more rigid controls, accelerating fragmentation.
 
-**How to recover:** form federated governance forums where platform architects and business units co-author patterns and track adoption quality.
+**How to recover:** form federated governance forums where platform architects and business units co-author patterns and track adoption quality (see [Chapter 11](11_governance_as_code.md)).
 
 ## Governance and Compliance Anti-Patterns
 
@@ -44,7 +46,7 @@ Some programmes focus on staging elaborate compliance demonstrations just before
 
 When governance boards replicate traditional change advisory boards, they become blockers rather than enablers. Requiring sign-off from multiple committees for routine adjustments encourages teams to circumvent the process altogether, undermining governance intent.
 
-**How to recover:** replace blanket approvals with guardrails that link risk tiers to automated checks and collaborative reviews.
+**How to recover:** replace blanket approvals with guardrails that link risk tiers to automated checks and collaborative reviews (see [Chapter 10](10_policy_and_security.md)).
 
 ## Delivery Lifecycle Anti-Patterns
 
@@ -118,6 +120,11 @@ Some organisations scale AaC across dozens of teams before stabilising foundatio
 
 Sustainability commitments are often bolted on after architecture choices harden. Teams retrofit energy dashboards or carbon budgets once stakeholders demand ESG reporting, discovering that the underlying platform cannot expose the required metrics.
 
+**Leading indicators:**
+- No carbon or energy metrics in platform dashboards
+- Cloud cost reviews never include sustainability dimension
+- Architecture decisions make no reference to sustainability requirements
+
 **How to recover:** version-control sustainability KPIs, carbon budgets, and scheduling policies alongside the architecture code.
 
 ## Detection and Early Warning Techniques
@@ -146,6 +153,15 @@ When anti-patterns surface, structured responses prevent recurrence.
 1. **Diagnose the root cause** by reviewing artefacts and interviewing stakeholders without blame.
 2. **Run a corrective experiment** with clear success metrics and safeguards that lock in the improved behaviour.
 3. **Share the learning and watch for regression** through updates to playbooks, coaching sessions, and lightweight monitoring.
+
+### Severity Classification
+
+| Severity | Criteria | Recommended Response |
+|----------|----------|---------------------|
+| **Critical** | Anti-pattern actively blocking delivery or causing security incidents | Escalate to leadership; pause scaling; address within sprint |
+| **High** | Anti-pattern accumulating technical debt at measurable rate | Prioritise in next planning cycle; assign owner |
+| **Medium** | Anti-pattern present but contained; no immediate impact | Add to backlog; address within quarter |
+| **Low** | Emerging risk; not yet causing problems | Monitor; document in risk register |
 
 ## Summary
 
