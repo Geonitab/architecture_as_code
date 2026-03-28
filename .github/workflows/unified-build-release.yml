@@ -306,6 +306,57 @@ jobs:
               find releases/ -type f | wc -l
             "
 
+      - name: 📄 Generate combined whitepapers PDF
+        run: |
+          echo "=== Generating combined whitepapers PDF ==="
+
+          # Check if whitepaper HTML files exist
+          if ! ls releases/whitepapers/*.html 1>/dev/null 2>&1; then
+            echo "⚠️ No whitepaper HTML files found, skipping combined PDF generation"
+            exit 0
+          fi
+
+          echo "Found $(ls releases/whitepapers/*.html | wc -l) whitepaper HTML files"
+
+          # Use the already-built Docker image (has Pandoc + XeLaTeX) to generate combined PDF
+          docker run --rm \
+            -v ${{ github.workspace }}:/workspace \
+            -w /workspace \
+            unified-builder:latest \
+            bash -c '
+              rm -f /tmp/combined_wp.md
+              for f in releases/whitepapers/*.html; do
+                [ -f "$f" ] || continue
+                fname=$(basename "$f" .html)
+                echo "Processing: $fname"
+                echo "## $fname" >> /tmp/combined_wp.md
+                echo "" >> /tmp/combined_wp.md
+                grep -A 99999 "<body" "$f" | grep -B 99999 "</body" | sed "s/<[^>]*>//g" | sed "/^[[:space:]]*$/d" >> /tmp/combined_wp.md || true
+                echo "" >> /tmp/combined_wp.md
+                printf -- "---\n\n" >> /tmp/combined_wp.md
+              done
+              if [ -s /tmp/combined_wp.md ]; then
+                echo "Generating combined PDF with Pandoc + XeLaTeX..."
+                pandoc /tmp/combined_wp.md \
+                  -o releases/whitepapers/whitepapers_combined.pdf \
+                  --pdf-engine=xelatex \
+                  -V geometry:margin=1in \
+                  --toc \
+                  && echo "✅ Combined whitepaper PDF generated" \
+                  || { echo "❌ Pandoc PDF generation failed"; exit 1; }
+                rm -f /tmp/combined_wp.md
+              else
+                echo "❌ No content extracted from whitepaper HTML files"
+                exit 1
+              fi
+            '
+
+          # Fix ownership (Docker may write files as root)
+          sudo chown -R $(id -u):$(id -g) releases/whitepapers/ || true
+
+          echo "✅ Combined PDF created:"
+          ls -lh releases/whitepapers/whitepapers_combined.pdf
+
       - name: 🌐 Skip website copy
         run: |
           echo "=== Skipping website copy (no website build artifacts) ==="
