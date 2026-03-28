@@ -48,7 +48,7 @@ Delivering Architecture as Code as a single source of truth (SSOT) demands share
 
 ### Git-governed maintainability guardrails
 
-Long-lived maintainability depends on storing every architectural artefact—models, ADRs, compliance policies, and supporting narratives—in version control so that the history of architectural intent travels with the codebase. GitHub's protected branch policy (Source [4]) reinforces this expectation by requiring reviews, status checks, and signed commits before architectural updates reach the canonical branch. Architecture as Code teams should treat architectural pull requests exactly like application pull requests: they run the same automated validation suites, capture rationale in review comments, and only merge when both architectural and implementation stakeholders approve the change set.
+Long-lived maintainability depends on storing every architectural artefact—models, ADRs, compliance policies, and supporting narratives—in version control so that the history of architectural intent travels with the codebase. GitHub's protected branch policy ([Source [4]](33_references.md#source-4)) reinforces this expectation by requiring reviews, status checks, and signed commits before architectural updates reach the canonical branch. Architecture as Code teams should treat architectural pull requests exactly like application pull requests: they run the same automated validation suites, capture rationale in review comments, and only merge when both architectural and implementation stakeholders approve the change set.
 
 #### Preventing drift through version-controlled workflow practices
 
@@ -81,7 +81,7 @@ These automated checks create a safety net that detects architectural inconsiste
 
 **3. Version-controlled branching strategies**
 
-Architecture as Code teams adopt explicit branching strategies that balance agility with governance (Sources [3], [4]):
+Architecture as Code teams adopt explicit branching strategies that balance agility with governance ([Source [3]](33_references.md#source-3), [Source [4]](33_references.md#source-4)):
 
 - **Trunk-based guardrails**: Teams keeping architecture definitions on a single `main` branch create short-lived feature branches whenever strategic decisions evolve. Mandatory reviewers include at least one architect and one delivery engineer, while continuous integration pipelines render Structurizr diagrams, execute policy-as-code tests, and trigger the documentation workflow described in [Chapter 22](22_documentation_vs_architecture.md). This combination means a pull request cannot merge until the architecture DSL, executable policies, and accompanying narrative stay aligned, reducing the drift scenarios highlighted earlier in this chapter.
 
@@ -113,7 +113,7 @@ Architecture as Code teams adopt explicit branching strategies that balance agil
   # Only merges when all checks pass and reviews are approved
   ```
 
-- **GitFlow with architectural release gates**: Organisations preferring GitFlow can adapt the model by storing executable architecture on the `develop` branch and promoting it through protected release branches. Each promotion bundles architecture changes with updated documentation-as-code artefacts so that release candidates include both diagrams and explanatory guides. Protected branch rules (Source [4]) enforce multi-role approvals and require the documentation pipeline to succeed before merge, ensuring programme governance has clear checkpoints even when hotfix branches exist.
+- **GitFlow with architectural release gates**: Organisations preferring GitFlow can adapt the model by storing executable architecture on the `develop` branch and promoting it through protected release branches. Each promotion bundles architecture changes with updated documentation-as-code artefacts so that release candidates include both diagrams and explanatory guides. Protected branch rules ([Source [4]](33_references.md#source-4)) enforce multi-role approvals and require the documentation pipeline to succeed before merge, ensuring programme governance has clear checkpoints even when hotfix branches exist.
 
   **Release gate workflow:**
   ```bash
@@ -589,15 +589,16 @@ This distinction has profound implications for how Architecture as Code is imple
 
 This dual approach – automated testing for NFRs and structured validation for FRs – enables organisations to achieve both technical excellence and business value alignment through Architecture as Code practices.
 
-Sources:
-- Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer.
-- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- GitLab. "Documentation as Code: Best Practices and Implementation." GitLab Documentation, 2024.
-- GitHub Docs. "About protected branches." GitHub Documentation, 2024.
-- Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
-- Atlassian. "Documentation as Code: Treating Docs as a First-Class Citizen." Atlassian Developer, 2023.
-- NIST. "Requirements Engineering for Secure Systems." NIST Special Publication 800-160, 2023.
-- Forsberg, K., Mooz, H. "The Relationship of System Engineering to the Project Cycle." Engineering Management Journal, 1991.
-- IEEE. "IEEE Standard for Software Verification and Validation." IEEE Std 1012-2016, 2017.
-- Chung, L., et al. "Non-Functional Requirements in Software Engineering." Springer, 2000.
+## Sources
+
+1. **Red Hat.** *Architecture as Code Principles and Best Practices.* Red Hat Developer.
+2. **Martin, R. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure.* Prentice Hall.
+3. **ThoughtWorks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
+4. **GitLab (2024).** *Documentation as Code: Best Practices and Implementation.* GitLab Documentation.
+5. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
+6. **Open Policy Agent (2024).** *Policy as Code: Expressing Requirements as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+7. **Atlassian (2023).** *Documentation as Code: Treating Docs as a First-Class Citizen.* Atlassian Developer. [Source [3]](33_references.md#source-3)
+8. **NIST (2023).** *Requirements Engineering for Secure Systems.* NIST Special Publication 800-160.
+9. **Forsberg, K. & Mooz, H. (1991).** *The Relationship of System Engineering to the Project Cycle.* Engineering Management Journal.
+10. **IEEE (2017).** *IEEE Standard for Software Verification and Validation.* IEEE Std 1012-2016.
+11. **Chung, L. et al. (2000).** *Non-Functional Requirements in Software Engineering.* Springer.

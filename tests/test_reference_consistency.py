@@ -37,6 +37,21 @@ from scripts.navigation import get_book_build_files  # noqa: E402
 # Shared helpers
 # ---------------------------------------------------------------------------
 
+# Files that are legitimately exempt from the '## Sources' requirement because
+# they are reference material, templates, or technical catalogues rather than
+# narrative research chapters.
+_SOURCES_EXEMPT: frozenset[str] = frozenset({
+    "33_references.md",               # IS the bibliography
+    "28_glossary.md",                  # reference lookup table
+    "29_about_the_author.md",          # author biography
+    "30_appendix_code_examples.md",    # code-only appendix
+    "appendix_templates_and_tools.md", # templates appendix
+    "appendix_d_control_mapping_matrix_template.md",  # template
+    "adr_catalogue.md",                # ADR technical catalogue
+    "migration_plan.md",               # ADR migration plan
+})
+
+
 def _get_canonical_chapter_paths() -> list[Path]:
     """Return the absolute paths of all canonical chapter files (no part intros)."""
     filenames = get_book_build_files()
@@ -44,6 +59,14 @@ def _get_canonical_chapter_paths() -> list[Path]:
         DOCS_DIR / name
         for name in filenames
         if not Path(name).stem.startswith("part_")
+    ]
+
+
+def _get_narrative_chapter_paths() -> list[Path]:
+    """Return canonical chapter paths excluding files exempt from Sources checks."""
+    return [
+        p for p in _get_canonical_chapter_paths()
+        if p.name not in _SOURCES_EXEMPT
     ]
 
 
@@ -82,8 +105,8 @@ class TestSourcesSection:
     """Validate that every canonical chapter contains a '## Sources' header."""
 
     def test_all_chapters_have_sources_section(self) -> None:
-        """Every canonical chapter file must contain a line starting with '## Sources'."""
-        chapter_paths = _get_canonical_chapter_paths()
+        """Every narrative chapter file must contain a line starting with '## Sources'."""
+        chapter_paths = _get_narrative_chapter_paths()
         failures: list[str] = []
 
         for path in chapter_paths:

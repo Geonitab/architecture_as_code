@@ -143,3 +143,9 @@ Successful PaC programmes blend technology with process change. A staged roadmap
 - OSCAL links policy enforcement with audit evidence, reducing the overhead of external assessments.
 - Diagrams in Figures 10.1 and 10.2 illustrate how policy guardrails span the delivery lifecycle and how capability building blocks interrelate.
 - Detailed Rego, OSCAL, and automation listings live in Appendix entries [10_CODE_1](30_appendix_code_examples.md#10_code_1) to [10_CODE_4](30_appendix_code_examples.md#10_code_4) for engineers who need implementation guidance.
+
+## Sources
+
+1. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+2. **NIST (2024).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53. [Source [11]](33_references.md#source-11)
+3. **HashiCorp (2024).** *Terraform Security Best Practices.* HashiCorp Learning Resources. [Source [20]](33_references.md#source-20)
