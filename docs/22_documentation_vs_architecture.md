@@ -258,11 +258,11 @@ By integrating both disciplines—using Architecture as Code to define the syste
 
 ## Sources
 
-- FINOS. "CALM: Common Architecture Language Model." FINOS Architecture as Code Community, 2024. [https://calm.finos.org/](https://calm.finos.org/)
-- Brown, Simon. "The C4 Model for Visualising Software Architecture." C4 Model Documentation, 2024. [https://c4model.com/](https://c4model.com/)
-- Structurizr. "Structurizr DSL Language Reference." Structurizr Documentation, 2024. [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
-- Mermaid. "Mermaid: Diagramming and Charting Tool." Mermaid Documentation, 2024. [https://mermaid.js.org/](https://mermaid.js.org/)
-- PlantUML. "PlantUML: Open-source Tool for Creating UML Diagrams." PlantUML Documentation, 2024. [https://plantuml.com/](https://plantuml.com/)
-- Open Policy Agent. "Policy as Code: Expressing Requirements as Code." CNCF OPA Project, 2024.
-- Richardson, Chris. "Microservices Patterns: With Examples in Java." Manning Publications, 2018.
-- Ford, Neal, et al. "Building Evolutionary Architectures." O'Reilly Media, 2017.
+1. **FINOS (2024).** *CALM: Common Architecture Language Model.* FINOS Architecture as Code Community. [https://calm.finos.org/](https://calm.finos.org/)
+2. **Brown, S. (2024).** *The C4 Model for Visualising Software Architecture.* C4 Model Documentation. [https://c4model.com/](https://c4model.com/)
+3. **Structurizr (2024).** *Structurizr DSL Language Reference.* Structurizr Documentation. [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
+4. **Mermaid (2024).** *Mermaid: Diagramming and Charting Tool.* Mermaid Documentation. [https://mermaid.js.org/](https://mermaid.js.org/)
+5. **PlantUML (2024).** *PlantUML: Open-source Tool for Creating UML Diagrams.* PlantUML Documentation. [https://plantuml.com/](https://plantuml.com/)
+6. **Open Policy Agent (2024).** *Policy as Code: Expressing Requirements as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+7. **Richardson, C. (2018).** *Microservices Patterns: With Examples in Java.* Manning Publications.
+8. **Ford, N. et al. (2017).** *Building Evolutionary Architectures.* O'Reilly Media.

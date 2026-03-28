@@ -60,12 +60,6 @@ This book is aimed at system architects, developers, project managers, and IT de
 
 Readers will gain comprehensive knowledge of how the entire system architecture can be codified, from foundational principles to advanced architectural patterns that encompass an organisation’s entire digital ecosystem.
 
-Sources:
-- ThoughtWorks. "Architecture as Code: The Next Evolution." Technology Radar, 2024.
-- Martin, R. "Clean Architecture: A Craftsman's Guide to Software Structure." Prentice Hall, 2017.
-- Red Hat. "Architecture as Code Principles and Best Practices." Red Hat Developer, 2023.
-- Cloud Native Computing Foundation. "State of Cloud Native Development 2024." CNCF, 2024.
-
 ## How This Book Is Organised
 
 This book follows a deliberate progression that mirrors the typical Architecture as Code transformation journey:
