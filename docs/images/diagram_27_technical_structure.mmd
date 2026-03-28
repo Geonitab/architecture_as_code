@@ -5,36 +5,36 @@ flowchart TB
     subgraph defs["Layer 1 — Declarative Definitions"]
         direction LR
         DSL["Architecture DSL
-        Structurizr"]
+        Structurizr"]:::kv-muted
         IaC["Infrastructure Code
-        Terraform / HCL"]
+        Terraform / HCL"]:::kv-muted
         Diag["Diagram Sources
-        Mermaid"]
+        Mermaid"]:::kv-muted
         Docs["Documentation
-        Markdown"]
+        Markdown"]:::kv-muted
     end
 
     VCS["Version Control
-    Git — Single Source of Truth"]
+    Git — Single Source of Truth"]:::kv-primary
 
     subgraph pipelines["Layer 2 — Automation Pipelines"]
         direction LR
-        Build["Build & Validate"]
-        Test["Automated Testing"]
-        Deploy["Publish & Deploy"]
+        Build["Build & Validate"]:::kv-accent
+        Test["Automated Testing"]:::kv-accent
+        Deploy["Publish & Deploy"]:::kv-accent
         Build --> Test --> Deploy
     end
 
     subgraph governance["Layer 3 — Governance Controls"]
         direction LR
         Policy["Policy as Code
-        OPA / Sentinel"]
-        Audit["Audit Trails"]
-        Reports["Compliance Reports"]
+        OPA / Sentinel"]:::kv-highlight
+        Audit["Audit Trails"]:::kv-highlight
+        Reports["Compliance Reports"]:::kv-highlight
     end
 
     Artifacts["Published Artefacts
-    PDF · EPUB · Website · Diagrams"]
+    PDF · EPUB · Website · Diagrams"]:::kv-pattern
 
     defs --> VCS
     VCS --> Build

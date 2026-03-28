@@ -3,22 +3,22 @@
 %% CI/CD pipeline to a published documentation site.
 flowchart TD
     DSL["Structurizr DSL
-    workspace.dsl"]
+    workspace.dsl"]:::kv-primary
 
     subgraph arch["Architecture Pipeline"]
         direction LR
-        Model["Architecture Model"]
-        Views["Generated Views"]
-        Diagrams["Diagram Outputs"]
+        Model["Architecture Model"]:::kv-accent
+        Views["Generated Views"]:::kv-accent
+        Diagrams["Diagram Outputs"]:::kv-highlight
         Model -->|Generate| Views -->|Export| Diagrams
     end
 
     subgraph deploy["Deployment Pipeline"]
         direction LR
         VCS["Version Control
-        Git"]
-        CI["CI/CD Pipeline"]
-        Docs["Documentation Site"]
+        Git"]:::kv-muted
+        CI["CI/CD Pipeline"]:::kv-accent
+        Docs["Documentation Site"]:::kv-highlight
         VCS -->|Trigger| CI -->|Build & Deploy| Docs
     end
 
