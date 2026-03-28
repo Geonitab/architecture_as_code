@@ -70,8 +70,11 @@ _STANDARD_INLINE_RE = re.compile(
 _ANY_SOURCE_BRACKET_RE = re.compile(r"\[Source \[")
 
 # Anchors in 33_references.md — both HTML and Pandoc/Commonmark formats.
+# HTML:   <a id="source-N">
+# Pandoc span: [anything]{#source-N} — matched by looking for ]{#source-N}
+#   because the span text may contain nested brackets (e.g. [**Source [1]:**])
 _ANCHOR_HTML_RE = re.compile(r'<a\s+id="source-(\d+)"')
-_ANCHOR_PANDOC_RE = re.compile(r"\[\]\{#source-(\d+)\}")
+_ANCHOR_PANDOC_RE = re.compile(r"\]\{#source-(\d+)\}")
 
 # ---------------------------------------------------------------------------
 # Data collection helpers

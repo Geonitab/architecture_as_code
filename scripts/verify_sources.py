@@ -297,7 +297,9 @@ class SourceVerifier:
     # ------------------------------------------------------------------
 
     _ANCHOR_HTML_RE = re.compile(r'<a\s+id="source-(\d+)"')
-    _ANCHOR_PANDOC_RE = re.compile(r'\[\]\{#source-(\d+)\}')
+    # Pandoc span: [anything]{#source-N} — matched via the closing ]{#source-N}
+    # because the span text may contain nested brackets (e.g. [**Source [1]:**])
+    _ANCHOR_PANDOC_RE = re.compile(r'\]\{#source-(\d+)\}')
     _STANDARD_SOURCES_HDR_RE = re.compile(r'^## Sources\s*$', re.MULTILINE)
     _INLINE_CITE_RE = re.compile(r'\[Source \[(\d+)\]\]\(33_references\.md#source-\d+\)')
     _ANY_SOURCE_BRACKET_RE = re.compile(r'\[Source \[')
@@ -440,15 +442,22 @@ class SourceVerifier:
         valid = len(self.valid_sources)
         broken = len(self.broken_sources)
         skipped = len(self.skipped_sources)
-        
+
+        # New validation counts (default to 0 if scan_repository not yet called).
+        missing_hdrs = len(getattr(self, 'missing_sources_headers', []))
+        broken_cites = len(getattr(self, 'broken_citation_refs', []))
+
         summary = f"""
 ======================================================================
 Source Verification Summary
 ======================================================================
 Total sources cited: {total}
-✅ Verified and accessible: {valid}
-❌ Broken or inaccessible: {broken}
-⚠️  Needs manual verification: {skipped}
+Verified and accessible: {valid}
+Broken or inaccessible: {broken}
+Needs manual verification: {skipped}
+----------------------------------------------------------------------
+Chapters missing ## Sources section: {missing_hdrs}
+Broken citation references (anchor not in 33_references.md): {broken_cites}
 ======================================================================
 """
         return summary
@@ -456,17 +465,50 @@ Total sources cited: {total}
     def generate_markdown_report(self, output_path: str) -> None:
         """Generate markdown report."""
         report_path = f"{output_path}.md"
-        
+
+        missing_hdrs = getattr(self, 'missing_sources_headers', [])
+        broken_cites = getattr(self, 'broken_citation_refs', [])
+
         with open(report_path, 'w', encoding='utf-8') as f:
             f.write("# Source Verification Report\n\n")
             f.write(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-            
+
             # Summary
             f.write("## Summary\n\n")
             f.write(f"- **Total sources cited:** {len(self.all_sources)}\n")
-            f.write(f"- **✅ Verified and accessible:** {len(self.valid_sources)}\n")
-            f.write(f"- **❌ Broken or inaccessible:** {len(self.broken_sources)}\n")
-            f.write(f"- **⚠️ Needs manual verification:** {len(self.skipped_sources)}\n\n")
+            f.write(f"- **Verified and accessible:** {len(self.valid_sources)}\n")
+            f.write(f"- **Broken or inaccessible:** {len(self.broken_sources)}\n")
+            f.write(f"- **Needs manual verification:** {len(self.skipped_sources)}\n")
+            f.write(f"- **Chapters missing `## Sources` section:** {len(missing_hdrs)}\n")
+            f.write(
+                f"- **Broken citation references (anchor not in 33_references.md):**"
+                f" {len(broken_cites)}\n\n"
+            )
+
+            # Missing ## Sources headers
+            if missing_hdrs:
+                f.write("## Chapters Missing `## Sources` Section\n\n")
+                f.write(
+                    "These chapters are in the canonical chapter list but do not have a "
+                    "`## Sources` section:\n\n"
+                )
+                for name in missing_hdrs:
+                    f.write(f"- `{name}`\n")
+                f.write("\n")
+
+            # Broken citation references
+            if broken_cites:
+                f.write("## Broken Citation References\n\n")
+                f.write(
+                    "These inline citations reference a source number that has no corresponding "
+                    "anchor in `docs/33_references.md`:\n\n"
+                )
+                for item in broken_cites:
+                    f.write(
+                        f"- `{item['file']}` line {item['line']}: "
+                        f"`{item['text']}` — Source [{item['source_number']}] not anchored\n"
+                    )
+                f.write("\n")
             
             # Broken sources
             if self.broken_sources:
@@ -537,14 +579,21 @@ Total sources cited: {total}
         """Generate JSON report."""
         report_path = f"{output_path}.json"
         
+        missing_hdrs = getattr(self, 'missing_sources_headers', [])
+        broken_cites = getattr(self, 'broken_citation_refs', [])
+
         report = {
             'generated': datetime.now().isoformat(),
             'summary': {
                 'total': len(self.all_sources),
                 'verified': len(self.valid_sources),
                 'broken': len(self.broken_sources),
-                'manual_check': len(self.skipped_sources)
+                'manual_check': len(self.skipped_sources),
+                'missing_sources_headers': len(missing_hdrs),
+                'broken_citation_refs': len(broken_cites),
             },
+            'missing_sources_headers': missing_hdrs,
+            'broken_citation_refs': broken_cites,
             'broken_sources': [
                 {
                     'file': r['source']['file'],
@@ -630,8 +679,9 @@ def main():
     
     print("\nDone!")
     
-    # Exit with error code if broken sources found
-    if verifier.broken_sources:
+    # Exit with error code if broken sources or broken citation references found.
+    broken_cites = getattr(verifier, 'broken_citation_refs', [])
+    if verifier.broken_sources or broken_cites:
         sys.exit(1)
     else:
         sys.exit(0)
