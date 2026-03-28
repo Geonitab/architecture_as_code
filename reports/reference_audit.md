@@ -1,6 +1,6 @@
 # Reference Audit Report
 
-**Generated:** 2026-03-28 19:01:01
+**Generated:** 2026-03-28 19:05:39
 
 
 ## Summary
@@ -11,7 +11,7 @@
 | Chapters with non-standard reference headers | 0 |
 | Chapters with malformed inline citations | 0 |
 | Cited source numbers missing from `33_references.md` | 0 |
-| Anchors in `33_references.md` never cited | 1 |
+| Anchors in `33_references.md` never cited | 0 |
 
 ## Chapters Missing `## Sources` Section
 
@@ -36,6 +36,4 @@ _None — every cited source number has an anchor in `33_references.md`._
 
 ## Anchors in `33_references.md` Never Cited
 
-These anchors are defined in `docs/33_references.md` but are not referenced by any inline citation in any chapter:
-
-- Source [5]
+_None — every anchor in `33_references.md` is cited at least once._
