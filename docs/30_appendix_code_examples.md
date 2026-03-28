@@ -2459,10 +2459,11 @@ Each code example in this appendix can be referenced from the main text using it
 
 This appendix is updated regularly when new code examples are added to the book's main chapters. For the latest version of code examples, see the book's GitHub repository.
 
----
+- - -
 
-*For more information about specific implementations, see the respective main chapters where the code examples are introduced and explained in their context.*
----
+_For more information about specific implementations, see the respective main chapters where the code examples are introduced and explained in their context._
+
+- - -
 
 ## Chapter 14 Reference Implementations
 
