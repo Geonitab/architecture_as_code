@@ -1,5 +1,10 @@
-graph LR
-    A[Security policies]:::kv-primary --> B[Secret management]:::kv-highlight
-    B --> C[Access control]:::kv-accent
-    C --> D[Compliance scanning]:::kv-accent
-    D --> E[Threat modeling]:::kv-primary
+%% Diagram: Automation, DevOps and CI/CD for Infrastructure as Code — code commit triggers a fully automated pipeline from lint and test through security scanning to production deployment and feedback
+flowchart LR
+    A["Code\nCommit"]:::kv-primary -->|"triggers"| B["Lint &\nValidate"]:::kv-highlight
+    B --> C["Unit\nTests"]:::kv-accent
+    C --> D["Integration\nTests"]:::kv-accent
+    D --> E["Security\nScan"]:::kv-highlight
+    E -->|"all gates pass"| F["Staging\nDeploy"]:::kv-primary
+    F -->|"smoke tests"| G["Production\nDeploy"]:::kv-primary
+    G --> H["Monitoring\n& Alerts"]:::kv-muted
+    H -->|"feedback loop"| A

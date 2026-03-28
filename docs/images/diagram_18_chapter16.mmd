@@ -1,5 +1,9 @@
-graph LR
-    A[Unit Tests]:::kv-primary --> B[Integration Tests]:::kv-highlight
-    B --> C[Security Tests]:::kv-accent
-    C --> D[Performance Tests]:::kv-accent
-    D --> E[Production Deploy]:::kv-primary
+%% Diagram: Migration from traditional infrastructure to Architecture as Code — discovery and audit through phased migration, parallel running and legacy decommission to continuous optimisation
+flowchart LR
+    A["Current State\nAudit"]:::kv-primary -->|"assess"| B["Migration\nRoadmap"]:::kv-highlight
+    B -->|"pilot"| C["Proof of\nConcept"]:::kv-accent
+    C -->|"iterate"| D["Phased\nMigration"]:::kv-accent
+    D -->|"validate"| E["Parallel\nRunning"]:::kv-highlight
+    E -->|"confirm"| F["Legacy\nDecommission"]:::kv-primary
+    F --> G["Continuous\nOptimisation"]:::kv-muted
+    G -->|"next wave"| B
