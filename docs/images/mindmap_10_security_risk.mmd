@@ -1,12 +1,12 @@
-mindmap
-  root((Risk Assessment))
-    Continuous Evaluation
-      Blast Radius Calculation
-      Impact Assessment
-      Dependency Analysis
-      Dynamic Risk Scoring
-    Regulatory Compliance
-      Data Protection by Design
-      Automated Audit Trails
-      Compliance-as-code
-      Regulatory Requirements
+graph TD
+    ROOT(["Risk Assessment"])
+    ROOT --> CE["Continuous Evaluation"]
+    ROOT --> RC["Regulatory Compliance"]
+    CE --> CE1["Blast Radius Calculation"]
+    CE --> CE2["Impact Assessment"]
+    CE --> CE3["Dependency Analysis"]
+    CE --> CE4["Dynamic Risk Scoring"]
+    RC --> RC1["Data Protection by Design"]
+    RC --> RC2["Automated Audit Trails"]
+    RC --> RC3["Compliance-as-code"]
+    RC --> RC4["Regulatory Requirements"]

@@ -1,25 +1,27 @@
 %% Diagram: Structurizr Overview
 %% Shows the Structurizr DSL workflow from version-controlled source through
 %% CI/CD pipeline to a published documentation site.
-graph TB
-    subgraph "Structurizr Workflow"
-        DSL[Structurizr DSL\nworkspace.dsl]:::kv-primary
-        Model[Architecture Model]:::kv-accent
-        Views[Generated Views]:::kv-highlight
-        Diagrams[Diagram Outputs]:::kv-accent
+flowchart TD
+    DSL["Structurizr DSL
+    workspace.dsl"]
+
+    subgraph arch["Architecture Pipeline"]
+        direction LR
+        Model["Architecture Model"]
+        Views["Generated Views"]
+        Diagrams["Diagram Outputs"]
+        Model -->|Generate| Views -->|Export| Diagrams
     end
 
-    subgraph "Integration"
-        VCS[Version Control\nGit]:::kv-primary
-        CI[CI/CD Pipeline]:::kv-accent
-        Docs[Documentation Site]:::kv-highlight
+    subgraph deploy["Deployment Pipeline"]
+        direction LR
+        VCS["Version Control
+        Git"]
+        CI["CI/CD Pipeline"]
+        Docs["Documentation Site"]
+        VCS -->|Trigger| CI -->|Build & Deploy| Docs
     end
 
     DSL -->|Parse| Model
-    Model -->|Generate| Views
-    Views -->|Export| Diagrams
-
     DSL -->|Commit| VCS
-    VCS -->|Trigger| CI
-    CI -->|Build & Deploy| Docs
     Diagrams -->|Embed| Docs

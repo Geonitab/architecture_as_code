@@ -1,14 +1,14 @@
-mindmap
-  root((Documentation as Code))
-    Communication layer
-      Narratives around rules
-      Why & how explanations
-      Relationship mapping
-    Toolchain integration
-      Markdown files
-      Static site generators
-      CI/CD publishing
-    Feedback loops
-      Pull request reviews
-      Collective ownership
-      Structured discussion
+graph TD
+    ROOT(["Documentation as Code"])
+    ROOT --> CL["Communication Layer"]
+    ROOT --> TI["Toolchain Integration"]
+    ROOT --> FL["Feedback Loops"]
+    CL --> CL1["Narratives Around Rules"]
+    CL --> CL2["Why & How Explanations"]
+    CL --> CL3["Relationship Mapping"]
+    TI --> TI1["Markdown Files"]
+    TI --> TI2["Static Site Generators"]
+    TI --> TI3["CI/CD Publishing"]
+    FL --> FL1["Pull Request Reviews"]
+    FL --> FL2["Collective Ownership"]
+    FL --> FL3["Structured Discussion"]

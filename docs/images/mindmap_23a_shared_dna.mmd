@@ -1,14 +1,14 @@
-mindmap
-  root((Shared DNA of "as code"))
-    Structured representation
-      Machine-readable formats
-      YAML, JSON, Markdown
-      Domain-specific languages
-    Version control
-      Git workflows
-      Pull request reviews
-      History & traceability
-    Automatability
-      Report generation
-      Compliance verification
-      Dashboard updates
+graph TD
+    ROOT(["Shared DNA of 'as Code'"])
+    ROOT --> SR["Structured Representation"]
+    ROOT --> VC["Version Control"]
+    ROOT --> AUTO["Automatability"]
+    SR --> SR1["Machine-readable Formats"]
+    SR --> SR2["YAML, JSON, Markdown"]
+    SR --> SR3["Domain-specific Languages"]
+    VC --> VC1["Git Workflows"]
+    VC --> VC2["Pull Request Reviews"]
+    VC --> VC3["History & Traceability"]
+    AUTO --> AUTO1["Report Generation"]
+    AUTO --> AUTO2["Compliance Verification"]
+    AUTO --> AUTO3["Dashboard Updates"]

@@ -1,15 +1,15 @@
-mindmap
-  root((Security & Compliance))
-    Security-first Design
-      Defense-in-depth
-      Least privilege
-      Zero-trust architecture
-    Regional Regulatory
-      GDPR compliance
-      Data residency
-      Encryption requirements
-      Audit logging
-    Secret Management
-      Automated rotation
-      Audit trails
-      Lifecycle management
+graph TD
+    ROOT(["Security & Compliance"])
+    ROOT --> SD["Security-first Design"]
+    ROOT --> RR["Regional Regulatory"]
+    ROOT --> SM["Secret Management"]
+    SD --> SD1["Defence-in-depth"]
+    SD --> SD2["Least Privilege"]
+    SD --> SD3["Zero-trust Architecture"]
+    RR --> RR1["GDPR Compliance"]
+    RR --> RR2["Data Residency"]
+    RR --> RR3["Encryption Requirements"]
+    RR --> RR4["Audit Logging"]
+    SM --> SM1["Automated Rotation"]
+    SM --> SM2["Audit Trails"]
+    SM --> SM3["Lifecycle Management"]

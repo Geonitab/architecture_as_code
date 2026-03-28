@@ -1,17 +1,17 @@
-mindmap
-  root((Best Practices Overview))
-    Code Organisation
-      Repository Structure
-      Versioning
-    Security & Compliance
-      Security-first Design
-      Secret Management
-    Performance & Scaling
-      Optimisation
-      Multi-region
-    Governance & Policy
-      Policy-as-code
-      Frameworks
-    International
-      Global Practices
-      Open Source
+graph TD
+    ROOT(["Best Practices Overview"])
+    ROOT --> CO["Code Organisation"]
+    ROOT --> SC["Security & Compliance"]
+    ROOT --> PS["Performance & Scaling"]
+    ROOT --> GP["Governance & Policy"]
+    ROOT --> INT["International"]
+    CO --> CO1["Repository Structure"]
+    CO --> CO2["Versioning"]
+    SC --> SC1["Security-first Design"]
+    SC --> SC2["Secret Management"]
+    PS --> PS1["Optimisation"]
+    PS --> PS2["Multi-region"]
+    GP --> GP1["Policy-as-code"]
+    GP --> GP2["Frameworks"]
+    INT --> INT1["Global Practices"]
+    INT --> INT2["Open Source"]
