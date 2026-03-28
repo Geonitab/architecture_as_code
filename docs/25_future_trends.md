@@ -20,7 +20,13 @@ European organisations operate within a structured regulatory environment shaped
 
 ### Quantum Computing and Security Evolution
 
-The emergence of quantum capabilities necessitates a re-evaluation of cryptographic choices and automation practices. Post-quantum algorithms must become standard components of infrastructure definitions to ensure long-term resilience. During the transition, hybrid patterns that combine classical and quantum-safe methods will allow organisations to protect sensitive workloads while migration plans mature.
+The emergence of quantum capabilities necessitates a re-evaluation of cryptographic choices and automation practices. Post-quantum algorithms must become standard components of infrastructure definitions to ensure long-term resilience. NIST has standardised the following post-quantum cryptographic algorithms, which organisations should evaluate for inclusion in their Architecture as Code baselines:
+
+- **ML-KEM** (Module-Lattice-Based Key Encapsulation Mechanism, formerly CRYSTALS-Kyber), standardised as FIPS 203 — the primary algorithm for key encapsulation and key establishment.
+- **ML-DSA** (Module-Lattice-Based Digital Signature Algorithm, formerly CRYSTALS-Dilithium), standardised as FIPS 204 — the primary algorithm for digital signatures.
+- **SLH-DSA** (Stateless Hash-Based Digital Signature Algorithm, formerly SPHINCS+), standardised as FIPS 205 — a hash-based signature scheme providing diversity against lattice-based attack advances.
+
+During the transition, hybrid patterns that combine classical and quantum-safe methods will allow organisations to protect sensitive workloads while migration plans mature.
 
 European organisations benefit from collaborative quantum computing programmes that provide shared infrastructure and research capabilities. The **EU Quantum Flagship** initiative brings together research institutions, industry partners, and member states to accelerate quantum technology development across Europe. This €1 billion programme provides organisations with access to quantum computing testbeds, post-quantum cryptography research, and standardisation efforts that support infrastructure modernisation.
 
@@ -52,6 +58,7 @@ The following example demonstrates a carbon-aware scheduling system that selects
 
 ```python
 # sustainability/carbon_aware_scheduling.py
+import os
 import requests
 from datetime import datetime
 from typing import Dict, List, Optional
@@ -76,12 +83,12 @@ class CarbonAwareScheduler:
         """Fetch real-time carbon intensity for EU region"""
         
         # Map cloud regions to electricity grid zones
-        # Uses ISO country codes as fallback for demonstration
+        # Uses Electricity Maps zone codes (ISO country/region codes)
         zone_mapping = {
-            'eu-north-1': 'EU',  # Generic EU zone
-            'eu-west-1': 'EU',
-            'eu-central-1': 'EU',
-            'eu-south-1': 'EU'
+            'eu-north-1': 'SE',      # Sweden
+            'eu-west-1': 'FR',       # France
+            'eu-central-1': 'DE',    # Germany
+            'eu-south-1': 'ES',      # Spain
         }
         
         zone = zone_mapping.get(region, 'EU')
@@ -90,7 +97,7 @@ class CarbonAwareScheduler:
             response = requests.get(
                 f"{self.electricity_maps_api}/carbon-intensity/latest",
                 params={'zone': zone},
-                headers={'auth-token': 'your-api-key'}
+                headers={'auth-token': os.environ.get('ELECTRICITY_MAPS_API_KEY')}
             )
             
             if response.status_code == 200:

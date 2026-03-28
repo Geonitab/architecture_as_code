@@ -200,14 +200,9 @@ This approach ensures that architectural documentation stays synchronised with t
 
 Documentation provides the narrative context that architectural models alone cannot convey:
 
-The repository's [`docs/documentation_workflow.md`](documentation_workflow.md) guide
-turns that narrative responsibility into a repeatable practice. It translates the
-Git-based review discipline into concrete steps so that every ADR, CALM schema
-update, or Structurizr change links back to a documented pull request. Reviewers can
-trace how architectural automation triggered the Content Validation pipeline, and
-writers can point to the same workflow when explaining system behaviour.
+Documentation provides the narrative that makes architectural changes understandable. A mature practice codifies this responsibility into a repeatable Git-based review workflow: every ADR, CALM schema update, or Structurizr change links back to a pull request with a documented rationale. Reviewers can trace how architectural automation triggered validation pipelines, and writers can reference the same workflow when explaining system behaviour to new team members.
 
-- **Decision rationale**: Architecture Decision Records (ADRs) explain why certain architectural choices were made, providing context that models do not capture.
+- **Decision rationale**: Architecture Decision Records (ADRs) explain why certain architectural choices were made, providing context that models do not capture. For a comprehensive treatment of ADRs, see [Chapter 4](04_adr.md).
 - **Usage guides**: Documentation explains how to work with the architecture—how to deploy services, how to add new components, how to troubleshoot issues.
 - **Conceptual overviews**: High-level explanations help stakeholders understand the system's purpose and design philosophy, complementing the precise technical details in architectural models.
 
@@ -250,6 +245,8 @@ Organisations benefit most when they integrate Documentation as Code and Archite
 4. **Establish review processes**: Use pull requests to review both documentation updates and architectural changes, ensuring quality and consistency across both disciplines.
 
 5. **Measure both outcomes**: Track documentation quality (readability, accuracy, usage) and architectural integrity (compliance, drift, consistency) as distinct but related metrics.
+
+The interplay between Documentation as Code and other 'as Code' disciplines is explored further in [Chapter 23](23_soft_as_code_interplay.md).
 
 ## Conclusion
 
