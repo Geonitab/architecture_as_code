@@ -278,7 +278,7 @@ The future of Architecture as Code is shaped by the convergence of intelligent a
 
 By combining proven practices with emerging innovations, Architecture as Code evolves from a delivery mechanism into a strategic discipline. The organisations that thrive will be those that balance experimentation with governance, embrace automation without neglecting ethics, and cultivate teams who can interpret complex ecosystems with clarity and confidence.
 
-## References
+## Sources
 
 - European Commission. "The EU Artificial Intelligence Act." European Union Law, 2024.
 - European Commission. "Horizon Europe: The EU Framework Programme for Research and Innovation." EU Publications, 2024.

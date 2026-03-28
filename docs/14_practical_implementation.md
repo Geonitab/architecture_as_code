@@ -94,7 +94,7 @@ Each appendix entry describes when to use the pattern, the governance indicators
 
 Architecture as Code in practice requires disciplined planning, collaborative execution, and relentless optimisation. Organisations that invest in a structured roadmap, curate a dependable toolchain, and treat operational excellence as a core deliverable achieve consistent, auditable infrastructure change at scale.
 
-## Sources and references
+## Sources
 
 - HashiCorp. "Terraform Architecture as Code Best Practices." HashiCorp Learn Platform.
 - AWS Well-Architected Framework. "Infrastructure as Code." Amazon Web Services.

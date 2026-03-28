@@ -81,7 +81,7 @@ Adopt security chaos engineering techniques—automated scenarios that inject si
 
 By encoding risk assessments and threat handling in the repository, organisations attain a defensible, adaptive security posture. Evidence of control effectiveness is generated continuously, response actions are reliable, and every change builds upon an auditable foundation of codified resilience.
 
-## Sources and References
+## Sources
 
 - **Threat Modelling Manifesto** — community principles for effective threat modelling practice: <https://www.threatmodelingmanifesto.org/>
 - **OWASP Threat Dragon** — open-source threat modelling tool: <https://owasp.org/www-project-threat-dragon/>

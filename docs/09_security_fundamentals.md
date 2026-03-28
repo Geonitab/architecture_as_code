@@ -261,7 +261,7 @@ ecover. Embedding the framework into Architecture as Code enables systematic imp
 
 This chapter has established the fundamental security principles and practices for Architecture as Code. The following chapter explores advanced security patterns, practical implementations, and future trends that build upon these foundations.
 
-## Sources and references
+## Sources
 
 ### Academic sources and standards
 - NIST. *Cybersecurity Framework Version 1.1.* National Institute of Standards and Technology, 2018.

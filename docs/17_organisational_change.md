@@ -95,7 +95,7 @@ Cross-functional teams, purposeful learning, and adaptive leadership turn automa
 
 By linking cultural commitments with transparent measurement and clear governance, enterprises create an environment where resilient infrastructure becomes a shared responsibility. The practices outlined in this chapter—from psychological safety to competency frameworks to DevOps metrics—provide concrete starting points for organisations at any stage of their transformation journey.
 
-## Sources and References
+## Sources
 
 - Puppet. "State of DevOps Report." Puppet Labs, 2023.
 - Google. "DORA State of DevOps Research." Google Cloud, 2023.

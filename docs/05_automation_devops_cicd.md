@@ -578,7 +578,7 @@ Investing in sophisticated CI/CD pipelines for Architecture as Code pays dividen
 
 Successful implementation of CI/CD for Architecture as Code requires balancing automation with human oversight, particularly for production deployments and compliance-critical changes. organisations that invest in mature pipeline automation and comprehensive testing strategies gain significant competitive advantages through improved reliability and accelerated innovation.
 
-### References
+## Sources
 
 - Jenkins. "Architecture as Code with Jenkins." Jenkins Documentation.
 - GitHub Actions. "CI/CD for Architecture as Code." GitHub Documentation.

@@ -613,7 +613,7 @@ Delivering these outcomes demands organisational commitment to a DevSecOps cultu
 ined approach to continuous improvement. When implemented well, Architecture as Code security enables both enhanced protection a
 nd accelerated innovation.
 
-## Sources and references
+## Sources
 
 ### Academic sources and standards
 - NIST. *Cybersecurity Framework Version 1.1.* National Institute of Standards and Technology, 2018.

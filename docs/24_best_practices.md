@@ -222,7 +222,7 @@ The best practices explored in this part reflect current understanding and prove
 
 Part G examines emerging trends and concludes our journey through Architecture as Code. [Chapter 25 on Future Trends and Development](25_future_trends.md) explores AI-driven architecture generation, sustainability-aware infrastructure, quantum-resistant security patterns, and other developments shaping the future of the field. [Chapter 26B on Anti-Patterns in Architecture as Code Programmes](26b_aac_anti_patterns.md) highlights the warning signs and remediation tactics that keep transformations on course. The [Conclusion](27_conclusion.md) synthesises the journey from [foundational principles](02_fundamental_principles.md) through technical implementation, security, operations, and organisational transformation, providing a roadmap for continued learning and implementation.
 
-## References
+## Sources
 
 - Cloud Native Computing Foundation. *Infrastructure as Code Best Practices*. CNCF, 2024.
 - HashiCorp. *Terraform Maturity Model*. HashiCorp Documentation, 2024.

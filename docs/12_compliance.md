@@ -263,7 +263,7 @@ With security controls, policy frameworks, and compliance mechanisms established
 
 Part D examines the testing strategies, implementation patterns, cost optimisation techniques, and migration approaches that organisations need to deliver Architecture as Code successfully. [Chapter 13 on Testing Strategies](13_testing_strategies.md) builds on the security and compliance frameworks we've established, showing how to validate that infrastructure meets both functional and regulatory requirements. The subsequent chapters demonstrate practical implementation, financial optimisation, and migration strategies that bring together all the elements covered so far.
 
-## Sources and References
+## Sources
 
 - IEEE Computer Society. "Quantum Computing Impact on Infrastructure." IEEE Quantum Computing Standards.
 - Green Software Foundation. "Sustainable Infrastructure Patterns." Green Software Principles.

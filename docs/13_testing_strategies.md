@@ -409,7 +409,7 @@ Investment in robust Infrastructure as Code testing frameworks pays off through 
 
 The testing quadrant diagram (Figure 13.2) illustrates how different testing strategies balance implementation complexity against testing coverage, helping teams prioritise their testing investments. Security scanning and policy testing offer high coverage with moderate implementation effort, making them ideal early investments, whilst end-to-end testing provides comprehensive validation at higher implementation cost.
 
-## Sources and References
+## Sources
 
 - Terratest Documentation. "Infrastructure Testing for Terraform." Gruntwork, 2024.
 - Open Policy Agent. "Policy Testing Best Practices for Infrastructure as Code." CNCF OPA Project, 2024.

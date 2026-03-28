@@ -143,7 +143,7 @@ Key success factors include proactive monitoring, automated rightsizing, intelli
 
 EU organisations that implement these strategies can achieve 20–40% cost reduction in their cloud operations (Figures drawn from practitioner case studies; actual savings vary by workload profile and baseline optimisation maturity.) whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
 
-## Sources and References
+## Sources
 
 - AWS. "AWS Cost Optimisation Guide." Amazon Web Services Documentation, 2023.
 - FinOps Foundation. "FinOps Framework and Architecture as Code Best Practices." The Linux Foundation, 2023.
