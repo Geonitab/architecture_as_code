@@ -597,7 +597,7 @@ This dual approach – automated testing for NFRs and structured validation for 
 4. **GitLab (2024).** *Documentation as Code: Best Practices and Implementation.* GitLab Documentation.
 5. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
 6. **Open Policy Agent (2024).** *Policy as Code: Expressing Requirements as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-7. **Atlassian (2023).** *Documentation as Code: Treating Docs as a First-Class Citizen.* Atlassian Developer. [Source [3]](33_references.md#source-3)
+7. **Write the Docs (2024).** *Docs as Code.* Write the Docs Community. [Source [21]](33_references.md#source-21)
 8. **NIST (2023).** *Requirements Engineering for Secure Systems.* NIST Special Publication 800-160.
 9. **Forsberg, K. & Mooz, H. (1991).** *The Relationship of System Engineering to the Project Cycle.* Engineering Management Journal.
 10. **IEEE (2017).** *IEEE Standard for Software Verification and Validation.* IEEE Std 1012-2016.
