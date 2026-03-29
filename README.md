@@ -22,14 +22,14 @@ The book explores how to treat architecture and infrastructure work as software 
 | Part A – Foundations | 1–4 | Core concepts, guiding principles, and documentation practices for Architecture as Code |
 | Part B – Architecture Platform | 5–8 | Automation tooling, Structurizr-based modelling, containerisation, and microservices foundations |
 | Part C – Security & Governance | 9–12 (including 9B and 9C) | Security automation, policy enforcement, governance models, and compliance obligations |
-| Part D – Delivery & Operations | 13–16 (including 15A and 15B) | Testing strategies, delivery pipelines, continuous assurance, cost management, and migration playbooks |
+| Part D – Delivery & Operations | 13–16 (including 15A) | Testing strategies, delivery pipelines, continuous assurance, cost management, and migration playbooks |
 | Part E – Organisation & Leadership | 17–21 | Organisational change, competency development, AI-assisted collaboration, and digital transformation |
 | Part F – Experience & Best Practices | 22–24 | Product discovery techniques, interdisciplinary collaboration, and codified lessons learned |
 | Part G – Future & Wrap-up | 25–27 (including 26A and 26B) | Strategic outlook, adoption prerequisites, anti-pattern avoidance, and closing guidance |【F:docs/book_structure.md】【F:docs/part_a_foundations.md】
 
 Each lettered part is introduced by a dedicated preface—`docs/part_a_foundations.md`, `docs/part_b_platform.md`, `docs/part_c_security.md`, `docs/part_d_delivery.md`, `docs/part_e_leadership.md`, `docs/part_f_practices.md`, and `docs/part_g_future.md`—that frames the narrative for the chapters that follow.【F:docs/part_a_foundations.md】【F:docs/part_b_platform.md】【F:docs/part_c_security.md】【F:docs/part_d_delivery.md】【F:docs/part_e_leadership.md】【F:docs/part_f_practices.md】【F:docs/part_g_future.md】
 
-Lettered companion chapters (9B, 9C, 15A, 15B, 26A, and 26B) provide deeper dives into security, assurance, and adoption topics without breaking the overall numbering scheme.【F:docs/book_structure.md】
+Lettered companion chapters (9B, 9C, 15A, 26A, and 26B) provide deeper dives into security, assurance, and adoption topics without breaking the overall numbering scheme.【F:docs/book_structure.md】
 
 ### Appendices and Extended Material
 - **Part H – Appendices and Reference:** Brings together reference material, technical enablers, and maturity guidance that support the core narrative.
@@ -45,7 +45,7 @@ Lettered companion chapters (9B, 9C, 15A, 15B, 26A, and 26B) provide deeper dive
 - **Control Mapping Matrix Template:** Compliance acceleration template that complements the maturity guidance.【F:docs/book_structure.md】【F:docs/part_h_appendices.md】【F:docs/appendix_d_control_mapping_matrix_template.md】
 
 ### Archived Drafts
-- Retired drafts, translations, and case studies are catalogued in `docs/archive/README.md`, which records when and why each manuscript left the live build. Current entries cover Swedish-language drafts of Chapters 6, 8, 20, 25, and 26, along with guidance for handling the former Chapter 32 on code-oriented organisations.【F:docs/book_structure.md】【F:docs/archive/README.md】
+- Retired drafts, translations, and case studies are catalogued in `docs/archive/README.md`, which records when and why each manuscript left the live build. Current entries cover the Swedish-language drafts of Chapters 6, 20, 25, and 26 as well as an English translation of the retired Chapter 8 draft, along with a historical note on handling the former Chapter 32 on code-oriented organisations.【F:docs/book_structure.md】【F:docs/archive/README.md】
 
 ## 🧭 Repository Layout
 
@@ -140,14 +140,20 @@ Continuous integration enforces successful builds through the `Build MkDocs Site
 
 ## 🔄 CI/CD Workflows
 
-GitHub Actions automate validation and publishing. The primary pipeline (`unified-build-release.yml`) runs the full release script, while companion workflows handle targeted tasks such as presentation generation, whitepaper exports, translation support, and specialised bot responses for architecture, development, design, editorial, QA, and requirements queries.【F:build_release.sh】【F:.github/workflows/architect-bot.yml】
+GitHub Actions automate validation and publishing. The primary pipeline (`unified-build-release.yml`) runs the full release script, while companion workflows handle targeted tasks such as diagram validation, content quality checks, automated code review, and issue triage.【F:build_release.sh】【F:.github/workflows/unified-build-release.yml】
 
 Key workflows include:
 - `unified-build-release.yml` – orchestrates book, presentation, whitepaper, and website builds, then prepares distribution assets.
-- `generate-presentations.yml` and `generate-whitepapers.yml` – regenerate individual deliverables on demand.
+- `verify-mermaid-diagrams.yml` – validates diagram consistency on every push or pull request.
 - `content-validation.yml` – checks documentation quality and structural rules before merges.
-- `architect-bot.yml`, `developer-bot.yml`, `designer-bot.yml`, `editor-bot.yml`, `qa-bot.yml`, and `requirements-bot.yml` – automation bots that respond to labelled GitHub issues.
-- `issue-response.yml` and `translate.yml` – support triage messaging and localisation workflows.【F:.github/workflows/architect-bot.yml】【F:.github/workflows/unified-build-release.yml】
+- `validate-doc-numbering.yml` – confirms chapter numbering conventions remain consistent.
+- `build-mkdocs.yml` – builds and deploys the documentation site to GitHub Pages.
+- `claude.yml` – Claude Code agent that responds to issue comments and pull request review activity.
+- `claude-code-review.yml` – automated code review on pull requests using Claude.
+- `mermaid-designer-bot.yml` – responds to issues labelled `mermaid` or `diagram` to assist with diagram design.
+- `issue-create-draft-pr.yml` – automatically creates or reuses a draft pull request when an issue is opened.
+- `structurizr-diagrams.yml` – processes Structurizr diagram sources.
+- `clean-fixed-issues.yml` and `clean-old-braches.yml` – housekeeping workflows for closing resolved issues and pruning stale branches.【F:.github/workflows/unified-build-release.yml】
 
 ## 📝 Contributing
 
@@ -178,16 +184,6 @@ Key workflows include:
 - Use `docs/PRESENTATION_QUALITY_CHECKLIST.md` to validate presentations before distribution, ensuring compliance with design guidelines and accessibility standards.
 - For whitepaper design, follow `docs/WHITEPAPER_DESIGN_GUIDELINES.md`, which ensures professional formatting, WCAG AA accessibility compliance, responsive layouts, and consistent branding across all HTML whitepaper exports.
 
-## 🔍 Link Verification
-
-Use `scripts/verify_links.py` to validate internal and external references across the manuscript and supporting docs. The script emits Markdown, HTML, and JSON reports to aid review and CI integration.【F:scripts/verify_links.py】【F:LINK_VERIFICATION.md】
-
-```bash
-python3 scripts/verify_links.py            # default run
-python3 scripts/verify_links.py --timeout 20  # custom timeout for slow endpoints
-python3 scripts/verify_links.py --output reports/links  # custom output location
-```
-
 ## 📚 Source Verification
 
 Use `scripts/verify_sources.py` to verify all cited sources throughout the manuscript. The script checks URL accessibility, validates ISBN formats, and identifies sources requiring manual verification. It generates comprehensive Markdown and JSON reports listing verified, broken, and manually-verifiable sources.【F:scripts/verify_sources.py】
@@ -200,7 +196,7 @@ python3 scripts/verify_sources.py --output reports/sources  # custom output loca
 
 ## 📄 Governance
 
-The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/about_the_author.md` for author biography and book context.【F:docs/about_the_author.md】
+The Architecture as Code book workshop maintains the repository, coordinates releases, and ensures automation reliability. See `docs/29_about_the_author.md` for author biography and book context.【F:docs/29_about_the_author.md】
 
 ## 🌍 Language
 
