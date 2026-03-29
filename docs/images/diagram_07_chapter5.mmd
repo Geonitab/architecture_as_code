@@ -1,5 +1,5 @@
 %% Diagram: Automation, DevOps and CI/CD for Infrastructure as Code — code commit triggers a fully automated pipeline from lint and test through security scanning to production deployment and feedback
-flowchart LR
+flowchart TD
     A["Code\nCommit"]:::kv-primary -->|"triggers"| B["Lint &\nValidate"]:::kv-highlight
     B --> C["Unit\nTests"]:::kv-accent
     C --> D["Integration\nTests"]:::kv-accent
