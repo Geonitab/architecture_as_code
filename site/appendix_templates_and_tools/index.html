@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/appendix_templates_and_tools/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix D – Templates and Tools - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix D \u2013 Templates and Tools";
+        var mkdocs_page_input_path = "appendix_templates_and_tools.md";
+        var mkdocs_page_url = "/appendix_templates_and_tools/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix D – Templates and Tools</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#architecture-as-code-maturity-model">Architecture as Code Maturity Model</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#architecture-as-code-maturity-radar-tool">Architecture as Code Maturity Radar Tool</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#control-mapping-matrix-template">Control Mapping Matrix Template</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation-guidance">Implementation Guidance</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#migration-assessment-automation">Migration Assessment Automation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendices</li>
+      <li class="breadcrumb-item active">Appendix D – Templates and Tools</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/appendix_templates_and_tools.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 class="unnumbered" id="appendix-d-templates-and-tools">Appendix D: Templates and Tools</h1>
+<p>Architecture as Code initiatives rely on reusable templates and interactive tools to keep governance, maturity assessments, and compliance evidence consistent. This appendix curates the canonical assets published alongside the book so that practitioners can embed them directly into their delivery workflows.</p>
+<h2 id="architecture-as-code-maturity-model">Architecture as Code Maturity Model</h2>
+<p>The <a href="../architecture_as_code_maturity_model/">Architecture as Code Maturity Model</a> describes six adoption levels spanning foundational automation through to fully codified enterprise governance. Each level contains assessment prompts, operating model guidance, and measurable outcomes that help teams benchmark their progress.</p>
+<h2 id="architecture-as-code-maturity-radar-tool">Architecture as Code Maturity Radar Tool</h2>
+<p>The <a href="../maturity_model_radar.html">Maturity Radar Tool</a> offers an interactive visualisation of the maturity model. It enables leadership teams to capture current-state and target-state indicators, compare trajectories across business units, and export radar charts for strategy reviews.</p>
+<h2 id="control-mapping-matrix-template">Control Mapping Matrix Template</h2>
+<p>The <a href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a> provides a reusable table for expressing "assure once, comply many" evidence flows. Use it to link automated assurance artefacts to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal policies so that governance teams can reuse validated outputs without bespoke reporting.</p>
+<h2 id="implementation-guidance">Implementation Guidance</h2>
+<ol>
+<li><strong>Version the artefacts:</strong> Store local copies of the templates in version control so changes trigger peer review and automated validation.</li>
+<li><strong>Integrate with pipelines:</strong> Reference the templates from CI/CD jobs to keep evidence manifests, maturity assessments, and control mappings synchronised with production systems.</li>
+<li><strong>Tailor for context:</strong> Extend the templates with sector-specific obligations or additional metrics, but retain the canonical structure to preserve comparability across programmes.</li>
+</ol>
+<h2 id="migration-assessment-automation">Migration Assessment Automation</h2>
+<pre><code class="language-python"># migration_assessment/infrastructure_discovery.py
+import boto3
+import json
+from datetime import datetime
+from typing import Dict, List
+import pandas as pd
+
+class InfrastructureMigrationAssessment:
+    &quot;&quot;&quot;
+    Automated assessment of existing infrastructure for architecture as code migration
+    &quot;&quot;&quot;
+
+    def __init__(self, region='eu-west-1'):
+        self.ec2 = boto3.client('ec2', region_name=region)
+        self.rds = boto3.client('rds', region_name=region)
+        self.elb = boto3.client('elbv2', region_name=region)
+        self.cloudformation = boto3.client('cloudformation', region_name=region)
+
+    def discover_unmanaged_resources(self) -&gt; Dict:
+        &quot;&quot;&quot;Discover resources that are not managed by architecture as code&quot;&quot;&quot;
+
+        unmanaged_resources = {
+            'ec2_instances': self._find_unmanaged_ec2(),
+            'rds_instances': self._find_unmanaged_rds(),
+            'load_balancers': self._find_unmanaged_load_balancers(),
+            'security_groups': self._find_unmanaged_security_groups(),
+            'summary': {},
+        }
+
+        # Calculate summary statistics
+        total_resources = sum(len(resources) for resources in unmanaged_resources.values() if isinstance(resources, list))
+        unmanaged_resources['summary'] = {
+            'total_unmanaged_resources': total_resources,
+            'migration_complexity': self._assess_migration_complexity(unmanaged_resources),
+            'estimated_migration_effort': self._estimate_migration_effort(total_resources),
+            'risk_assessment': self._assess_migration_risks(unmanaged_resources)
+        }
+
+        return unmanaged_resources
+
+    def _find_unmanaged_ec2(self) -&gt; List[Dict]:
+        &quot;&quot;&quot;Find EC2 instances that are not managed by CloudFormation/Terraform&quot;&quot;&quot;
+
+        # Fetch all EC2 instances
+        response = self.ec2.describe_instances()
+        unmanaged_instances = []
+
+        for reservation in response['Reservations']:
+            for instance in reservation['Instances']:
+                if instance['State']['Name'] != 'terminated':
+                    # Check if the instance is managed by architecture as code
+                    is_managed = self._is_resource_managed(instance.get('Tags', []))
+
+                    if not is_managed:
+                        unmanaged_instances.append({
+                            'instance_id': instance['InstanceId'],
+                            'instance_type': instance['InstanceType'],
+                            'launch_time': instance['LaunchTime'].isoformat(),
+                            'vpc_id': instance.get('VpcId'),
+                            'subnet_id': instance.get('SubnetId'),
+                            'security_groups': [sg['GroupId'] for sg in instance.get('SecurityGroups', [])],
+                            'tags': {tag['Key']: tag['Value'] for tag in instance.get('Tags', [])},
+                            'migration_priority': self._calculate_migration_priority(instance),
+                            'estimated_downtime': self._estimate_downtime(instance)
+                        })
+
+        return unmanaged_instances
+
+    def _is_resource_managed(self, tags: List[Dict]) -&gt; bool:
+        &quot;&quot;&quot;Check if resource is managed by architecture as code&quot;&quot;&quot;
+
+        iac_indicators = [
+            'aws:cloudformation:stack-name',
+            'terraform:stack',
+            'pulumi:stack',
+            'Created-By-Terraform',
+            'ManagedBy'
+        ]
+
+        tag_keys = {tag.get('Key', '') for tag in tags}
+        return any(indicator in tag_keys for indicator in iac_indicators)
+
+    def generate_terraform_migration_plan(self, unmanaged_resources: Dict) -&gt; str:
+        &quot;&quot;&quot;Generate Terraform code for migration of unmanaged resources&quot;&quot;&quot;
+
+        terraform_code = &quot;&quot;&quot;
+# Automatically generated migration plan
+# Generated: {date}
+# Total number of resources to migrate: {total_resources}
+
+terraform {{
+  required_providers {{
+    aws = {{
+      source  = &quot;hashicorp/aws&quot;
+      version = &quot;~&gt; 5.0&quot;
+    }}
+  }}
+}}
+
+provider &quot;aws&quot; {{
+  region = &quot;eu-west-1&quot;  # Configurable for any EU region
+}}
+
+&quot;&quot;&quot;.format(
+            date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            total_resources=len(unmanaged_resources.get('ec2_instances', []))
+        )
+
+        # Generate Terraform for EC2 instances
+        for idx, instance in enumerate(unmanaged_resources.get('ec2_instances', [])):
+            terraform_code += f&quot;&quot;&quot;
+# Migration of existing EC2 instance {instance['instance_id']}
+resource &quot;aws_instance&quot; &quot;migrated_instance_{idx}&quot; {{
+  # NOTE: This configuration must be verified and adapted
+  instance_type = &quot;{instance['instance_type']}&quot;
+  subnet_id     = &quot;{instance['subnet_id']}&quot;
+
+  vpc_security_group_ids = {json.dumps(instance['security_groups'])}
+
+  # Retain existing tags and add migration info
+  tags = {{
+    Name = &quot;{instance.get('tags', {}).get('Name', f'migrated-instance-{idx}')}&quot;
+    MigratedFrom = &quot;{instance['instance_id']}&quot;
+    MigrationDate = &quot;{datetime.now().strftime('%Y-%m-%d')}&quot;
+    ManagedBy = &quot;terraform&quot;
+    Environment = &quot;{instance.get('tags', {}).get('Environment', 'production')}&quot;
+    Project = &quot;{instance.get('tags', {}).get('Project', 'migration-project')}&quot;
+  }}
+
+  # IMPORTANT: Import existing resource instead of creating new
+  # terraform import aws_instance.migrated_instance_{idx} {instance['instance_id']}
+}}
+&quot;&quot;&quot;
+
+        terraform_code += &quot;&quot;&quot;
+# Migration checklist:
+# 1. Review generated configurations carefully
+# 2. Test in development environment first
+# 3. Import existing resources with terraform import
+# 4. Run terraform plan to verify that no changes are planned
+# 5. Implement gradually with low-risk resources first
+# 6. Update monitoring and alerting after migration
+&quot;&quot;&quot;
+
+        return terraform_code
+
+    def create_migration_timeline(self, unmanaged_resources: Dict) -&gt; Dict:
+        &quot;&quot;&quot;Create realistic migration timeline&quot;&quot;&quot;
+
+        # Categorise resources by complexity
+        low_complexity = []
+        medium_complexity = []
+        high_complexity = []
+
+        for instance in unmanaged_resources.get('ec2_instances', []):
+            complexity = instance.get('migration_priority', 'medium')
+
+            if complexity == 'low':
+                low_complexity.append(instance)
+            elif complexity == 'high':
+                high_complexity.append(instance)
+            else:
+                medium_complexity.append(instance)
+
+        # Calculate time estimates
+        timeline = {
+            'wave_1_low_risk': {
+                'resources': low_complexity,
+                'estimated_duration': f&quot;{len(low_complexity) * 2} days&quot;,
+                'start_date': 'Week 1-2',
+                'prerequisites': ['architecture as code training completion', 'Tool setup', 'Backup verification']
+            },
+            'wave_2_medium_risk': {
+                'resources': medium_complexity,
+                'estimated_duration': f&quot;{len(medium_complexity) * 4} days&quot;,
+                'start_date': 'Week 3-6',
+                'prerequisites': ['Wave 1 completion', 'Process refinement', 'Team feedback']
+            },
+            'wave_3_high_risk': {
+                'resources': high_complexity,
+                'estimated_duration': f&quot;{len(high_complexity) * 8} days&quot;,
+                'start_date': 'Week 7-12',
+                'prerequisites': ['Wave 2 completion', 'Advanced training', 'Stakeholder approval']
+            },
+            'total_estimated_duration': f&quot;{(len(low_complexity) * 2) + (len(medium_complexity) * 4) + (len(high_complexity) * 8)} days&quot;
+        }
+
+        return timeline
+
+def generate_migration_playbook(assessment_results: Dict) -&gt; str:
+    &quot;&quot;&quot;Generate comprehensive migration playbook for European organisations&quot;&quot;&quot;
+
+    playbook = f&quot;&quot;&quot;
+# architecture as code Migration Playbook for {assessment_results.get('organization_name', 'Organization')}
+
+## Executive Summary
+- **Total number of resources to migrate:** {assessment_results['summary']['total_unmanaged_resources']}
+- **Migration complexity:** {assessment_results['summary']['migration_complexity']}
+- **Estimated effort:** {assessment_results['summary']['estimated_migration_effort']}
+- **Risk assessment:** {assessment_results['summary']['risk_assessment']}
+
+## Phase 1: Preparation (Week 1-2)
+
+### Team Training
+- [ ] architecture as code foundation training for all team members
+- [ ] Terraform/CloudFormation hands-on workshops
+- [ ] Git workflows for infrastructure management
+- [ ] EU compliance requirements (GDPR, data sovereignty)
+
+### Tool Setup
+- [ ] Terraform/CloudFormation development environment
+- [ ] Git repository for infrastructure code
+- [ ] CI/CD pipeline for infrastructure deployment
+- [ ] Monitoring and alerting configuration
+
+### Risk Mitigation
+- [ ] Complete backup of all critical systems
+- [ ] Rollback procedures documented
+- [ ] Emergency contacts and escalation plan
+- [ ] Test environment for migration validation
+
+## Phase 2: Pilot Migration (Week 3-4)
+
+### Low-Risk Resources Migration
+- [ ] Migrate development/test environments first
+- [ ] Validate architecture as code templates and processes
+- [ ] Document lessons learned
+- [ ] Refine migration procedures
+
+### Quality Gates
+- [ ] Automated testing of migrated resources
+- [ ] Performance verification
+- [ ] Security compliance validation
+- [ ] Cost optimisation review
+
+## Phase 3: Production Migration (Week 5-12)
+
+### Gradual Production Migration
+- [ ] Non-critical production systems
+- [ ] Critical systems with planned maintenance windows
+- [ ] Database migration with minimal downtime
+- [ ] Network infrastructure migration
+
+### Continuous Monitoring
+- [ ] Real-time monitoring of migrated systems
+- [ ] Automated alerting for anomalies
+- [ ] Performance benchmarking
+- [ ] Cost tracking and optimisation
+
+## Post-Migration Activities
+
+### Process Optimisation
+- [ ] Infrastructure cost review and optimisation
+- [ ] Team workflow refinement
+- [ ] Documentation and knowledge transfer
+- [ ] Continuous improvement architecture as code implementation
+
+### Long-term Sustainability
+- [ ] Regular architecture as code best practices review
+- [ ] Team cross-training programme
+- [ ] Tool evaluation and updates
+- [ ] Compliance monitoring automation
+
+## EU Compliance Considerations
+
+### GDPR Requirements
+- [ ] Data residency in EU regions
+- [ ] Encryption at rest and in transit
+- [ ] Access logging and audit trails
+- [ ] Data retention policy implementation
+
+### EU Security Requirements
+- [ ] Network segmentation implementation
+- [ ] Incident response procedures
+- [ ] Backup and disaster recovery
+- [ ] Security monitoring enhancement
+
+## Success Metrics
+
+### Technical Metrics
+- Infrastructure deployment time reduction: Target 80%
+- Configuration drift incidents: Target 0
+- Security compliance score: Target 95%+
+- Infrastructure cost optimisation: Target 20% reduction
+
+### Operational Metrics
+- Mean time to recovery improvement: Target 60%
+- Change failure rate reduction: Target 50%
+- Team satisfaction with new processes: Target 8/10
+- Knowledge transfer completion: Target 100%
+
+## Risk Management
+
+### High-Priority Risks
+1. **Service Downtime:** Mitigated through maintenance windows and rollback plans
+2. **Data Loss:** Mitigated through comprehensive backups and testing
+3. **Security Compliance:** Mitigated through automated compliance validation
+4. **Team Resistance:** Mitigated through training and change management
+
+### Contingency Plans
+- Immediate rollback procedures for critical issues
+- Emergency support contacts and escalation
+- Alternative migration approaches for problem resources
+- Business continuity plans for extended downtime
+&quot;&quot;&quot;
+
+    return playbook
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../32_finos_project_blueprint/" class="btn btn-neutral float-left" title="Appendix C – FINOS Project Blueprint"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../adr/adr_catalogue/" class="btn btn-neutral float-right" title="ADR Catalogue">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../32_finos_project_blueprint/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../adr/adr_catalogue/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/08_microservices/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Microservices Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Microservices Architecture as Code";
+        var mkdocs_page_input_path = "08_microservices.md";
+        var mkdocs_page_url = "/08_microservices/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Microservices Architecture as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#architectural-principles-for-federated-teams">Architectural principles for federated teams</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#bounded-contexts-mapped-to-repositories">Bounded contexts mapped to repositories</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contract-first-integration">Contract-first integration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#golden-paths-backed-by-reusable-modules">Golden paths backed by reusable modules</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#designing-microservices-with-architecture-as-code-assets">Designing microservices with Architecture as Code assets</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#structuring-repositories">Structuring repositories</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#policy-aware-delivery-pipelines">Policy-aware delivery pipelines</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#maintainability-guardrails-as-code">Maintainability guardrails as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cataloguing-contracts-and-coupling-telemetry">Cataloguing contracts and coupling telemetry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#escalation-playbooks-for-failed-checks">Escalation playbooks for failed checks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#runtime-observability-as-code">Runtime observability as code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#coordinating-shared-capabilities">Coordinating shared capabilities</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#service-mesh-and-networking-patterns">Service mesh and networking patterns</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-management-across-domains">Data management across domains</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#compliance-by-default">Compliance by default</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operating-microservices-estates-sustainably">Operating microservices estates sustainably</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#observability-driven-feedback-loops">Observability-driven feedback loops</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#resilience-testing-as-code">Resilience testing as code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cost-and-sustainability-metrics">Cost and sustainability metrics</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#migration-considerations">Migration considerations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part B – Architecture Platform</li>
+      <li class="breadcrumb-item active">Microservices Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/08_microservices.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="microservices">Microservices Architecture as Code</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Microservices architectures decompose business capabilities into independent services that can be planned, deployed, and evolved without synchronising every change across the entire estate. When coupled with Architecture as Code disciplines, microservices become observable, governable, and automatable. Source-controlled blueprints describe how services interact, how they are deployed, and which policies keep them trustworthy. This chapter explains how to weave Architecture as Code practices through microservice estates so that autonomy never undermines cohesion.</p>
+<p><img alt="Microservices operating model" src="../images/diagram_10_chapter8.png" /></p>
+<h2 id="architectural-principles-for-federated-teams">Architectural principles for federated teams</h2>
+<h3 id="bounded-contexts-mapped-to-repositories">Bounded contexts mapped to repositories</h3>
+<p>Treat each microservice as a bounded context with a clearly defined purpose, data contract, and operational envelope. Store the service's architecture definition beside its application code and IaC modules so that diagrams, infrastructure manifests, and compliance evidence travel together. Repository templates keep ownership information, on-call details, and dependency declarations consistent.</p>
+<h3 id="contract-first-integration">Contract-first integration</h3>
+<p>Microservices thrive when interfaces are stable and well documented. Declare API specifications and event schemas as code (for example using OpenAPI or AsyncAPI) and register them in an architecture catalogue. Automated linting confirms that proposed changes respect backwards compatibility rules and alerts the owning teams when downstream consumers would break.</p>
+<h3 id="golden-paths-backed-by-reusable-modules">Golden paths backed by reusable modules</h3>
+<p>Autonomous teams still need consistent guardrails. Provide shared Terraform modules, Kubernetes Helm charts, and service mesh policies that encode approved defaults for security, observability, and networking. Architecture as Code pipelines should verify that each service consumes the authorised modules and that deviations are reviewed through architecture decision records.</p>
+<h2 id="designing-microservices-with-architecture-as-code-assets">Designing microservices with Architecture as Code assets</h2>
+<h3 id="structuring-repositories">Structuring repositories</h3>
+<p>A reference repository might include:</p>
+<pre><code class="language-text">./service
+├── adr/                              # Architecture decision records
+├── deployment/
+│   ├── helm/
+│   │   └── values.yaml               # Environment-specific overlays
+│   ├── terraform/                    # Infrastructure definitions
+│   └── policies/                     # OPA and service mesh policies
+├── docs/
+│   ├── context-diagram.mmd           # C4 diagrams under version control
+│   └── runbooks/
+│       └── resilience-playbook.md
+├── service_contracts/
+│   ├── api.yaml                      # OpenAPI definition
+│   └── events/
+│       └── order-created.json
+└── src/
+    └── ...
+</code></pre>
+<p>Architecture automation can parse this layout to build inventories, check dependency rules, and publish updated diagrams after every merge.</p>
+<h3 id="policy-aware-delivery-pipelines">Policy-aware delivery pipelines</h3>
+<p>CI/CD workflows should orchestrate both application tests and architectural conformance checks (see <a href="../05_automation_devops_cicd/">Chapter 5</a> for comprehensive CI/CD pipeline design). A representative GitHub Actions job might combine security scans, contract validation, Terraform plan approval, and deployment orchestration:</p>
+<pre><code class="language-yaml">jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate architecture contracts
+        run: |
+          npm install -g @redocly/cli
+          redocly lint service_contracts/api.yaml
+      - name: Verify Terraform plan
+        working-directory: deployment/terraform
+        run: |
+          terraform init -backend-config=env.tfbackend
+          terraform plan -out=tfplan
+      - name: Enforce policy guardrails
+        run: |
+          conftest test deployment/policies
+      - name: Deploy via Helmfile
+        # Helmfile is a declarative wrapper for Helm that manages multi-chart deployments
+        # across environments using a single helmfile.yaml configuration.
+        run: |
+          helmfile apply --environment=${{ github.ref_name }}
+</code></pre>
+<p>Such pipelines capture the architectural intent, flag drift immediately, and keep every service aligned with centrally defined guardrails.</p>
+<h3 id="maintainability-guardrails-as-code">Maintainability guardrails as code</h3>
+<p>Policy-as-code engines such as <a href="../33_references/#source-10">Open Policy Agent (OPA)</a>, Conftest, or service mesh admission controllers translate governance rules into executable checks that run on every change. Teams should codify boundary rules—permitted dependency directions, latency budgets between domains, or constraints on data residency—alongside the service. Pipelines fail fast when a merge request proposes an illegal dependency, and the same rules can execute in staging clusters to block ad-hoc configuration drift. Thoughtworks' Governance as Code guidance stresses that automating these controls is the sustainable path to consistent service quality across federated teams (<a href="../33_references/#source-2">Thoughtworks Technology Radar – "Governance as Code"</a>).</p>
+<h3 id="cataloguing-contracts-and-coupling-telemetry">Cataloguing contracts and coupling telemetry</h3>
+<p>Maintain an executable catalogue that indexes every API specification, event schema, and data contract. Architecture automation should update the catalogue after each merge, derive dependency graphs, and flag hotspots where a service has many synchronous consumers or repeatedly changes its schema. CNCF's <em>State of Cloud Native Development 2024</em> report highlights how sprawling integration surfaces create maintainability pressure unless organisations observe coupling signals in real time (<a href="../33_references/#source-7">Source [7]</a>). Teams can codify heuristics such as "alert when more than five downstream systems consume a synchronous endpoint" or "notify when an event schema changes more than once per sprint". These metrics help platform leads schedule refactoring and guide investment in stabilising interfaces.</p>
+<h3 id="escalation-playbooks-for-failed-checks">Escalation playbooks for failed checks</h3>
+<p>Store runbooks and escalation trees beside the service so that automated failures trigger predictable responses. When a policy gate fails, the pipeline should raise a ticket or ChatOps alert to the owning team, include links to the failing rule, and enumerate the expected resolution timeframe. If repeated violations occur, an architecture council rota can be paged to review whether the guardrail or the service boundary needs adjustment. Capturing these playbooks as code keeps governance transparent and gives auditors evidence that breaches are handled systematically.</p>
+<h3 id="runtime-observability-as-code">Runtime observability as code</h3>
+<p>Codify dashboards, alerting policies, and runbooks so that operability remains consistent across the fleet. Use tools such as Grafana configuration as code or Prometheus recording rules stored in Git. Tie alert routing to the ownership data held in each service repository so incidents reach the responsible team.</p>
+<h2 id="coordinating-shared-capabilities">Coordinating shared capabilities</h2>
+<h3 id="service-mesh-and-networking-patterns">Service mesh and networking patterns</h3>
+<p>Architecture as Code enables platform teams to encode networking standards once and distribute them to every service (see <a href="../07_containerisation/">Chapter 7</a> for container orchestration context). Istio, Linkerd, or AWS App Mesh policies can be generated from declarative manifests that specify identity requirements, mutual TLS expectations, and traffic routing rules. When services declare their intents, platform pipelines merge them with organisation-wide defaults to produce consistent yet flexible mesh configurations.</p>
+<p>Mutual TLS, traffic shaping, and retry budgets are expressed as code alongside the service rather than configured ad-hoc in dashboards. The Istio VirtualService below illustrates how routing rules and canary traffic splits are captured declaratively, making them reviewable and auditable:</p>
+<pre><code class="language-yaml"># Istio VirtualService — weighted canary routing for the orders service
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: orders-service
+  namespace: production
+spec:
+  hosts:
+    - orders-service
+  http:
+    - route:
+        - destination:
+            host: orders-service
+            subset: stable
+          weight: 90
+        - destination:
+            host: orders-service
+            subset: canary
+          weight: 10
+      retries:
+        attempts: 3
+        perTryTimeout: 2s
+</code></pre>
+<p>For Linkerd-based meshes, a simple annotation on the Deployment enables mTLS and automatic observability without modifying application code:</p>
+<pre><code class="language-yaml">metadata:
+  annotations:
+    linkerd.io/inject: enabled
+</code></pre>
+<p>Storing these manifests in the service repository alongside application code means networking policy changes follow the same pull-request and review cycle as functional changes, closing the gap between architecture intent and runtime enforcement.</p>
+<h3 id="data-management-across-domains">Data management across domains</h3>
+<p>Avoid accidental monoliths by defining data ownership and access rules programmatically. Each microservice should publish read models or event streams that others consume through documented interfaces. Architecture as Code repositories can generate data lineage diagrams showing where authoritative data resides, who can access it, and how retention rules are enforced. Automated tests verify that only sanctioned services connect to sensitive datasets.</p>
+<p>Distributed transactions across service boundaries require careful design to avoid tight coupling. Two well-established patterns are the <strong>saga</strong> and <strong>event sourcing</strong> approaches. A saga breaks a long-running business transaction into a sequence of local transactions, each of which publishes an event or message that triggers the next step. If any step fails, compensating transactions reverse the completed steps. Event sourcing takes a complementary approach by persisting all state changes as an append-only log of domain events; the current state is reconstructed by replaying those events, providing a complete audit trail. The following example illustrates a saga choreography step captured as an AsyncAPI event schema, making the inter-service contract explicit and version-controlled:</p>
+<pre><code class="language-yaml"># service_contracts/events/order-payment-requested.json
+{
+  &quot;asyncapi&quot;: &quot;2.6.0&quot;,
+  &quot;info&quot;: {
+    &quot;title&quot;: &quot;Order Payment Saga&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;
+  },
+  &quot;channels&quot;: {
+    &quot;order/payment/requested&quot;: {
+      &quot;publish&quot;: {
+        &quot;message&quot;: {
+          &quot;name&quot;: &quot;OrderPaymentRequested&quot;,
+          &quot;payload&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;properties&quot;: {
+              &quot;orderId&quot;:  { &quot;type&quot;: &quot;string&quot; },
+              &quot;amount&quot;:   { &quot;type&quot;: &quot;number&quot; },
+              &quot;currency&quot;: { &quot;type&quot;: &quot;string&quot; }
+            },
+            &quot;required&quot;: [&quot;orderId&quot;, &quot;amount&quot;, &quot;currency&quot;]
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>Capturing event schemas as code and registering them in the service catalogue enables Architecture as Code tooling to verify compatibility automatically and flag breaking changes before they reach production.</p>
+<h3 id="compliance-by-default">Compliance by default</h3>
+<p>Regulatory expectations such as GDPR, PCI DSS, or sector-specific rules are easier to satisfy when encoded as reusable policies. Combine static analysis (for example, checking that logging excludes personal data) with dynamic controls (service mesh policies enforcing encryption in transit). Architecture guardrails should produce compliance reports automatically so stakeholders can evidence adherence without manual document assembly.</p>
+<h2 id="operating-microservices-estates-sustainably">Operating microservices estates sustainably</h2>
+<h3 id="observability-driven-feedback-loops">Observability-driven feedback loops</h3>
+<p>Collect metrics, traces, and logs into a shared telemetry platform. Architecture as Code ensures that each service exports consistent labels, making it straightforward to build cross-service dashboards. Feedback loops then inform capacity planning, resilience improvements, and disaster recovery rehearsals.</p>
+<h3 id="resilience-testing-as-code">Resilience testing as code</h3>
+<p>Define failure injection experiments alongside service definitions. Tools such as Chaos Mesh or Gremlin can be orchestrated via IaC pipelines to introduce latency, kill pods, or revoke permissions. Document expected outcomes and recovery steps within the same repository so that continuous verification becomes routine rather than exceptional.</p>
+<h3 id="cost-and-sustainability-metrics">Cost and sustainability metrics</h3>
+<p>Automate reporting on resource consumption, carbon intensity, and idle workloads. When services codify budgets and scaling thresholds, platform automation can alert owners when utilisation deviates from expected norms. Embedding sustainability objectives into Architecture as Code keeps environmental considerations visible during design and runtime.</p>
+<h2 id="migration-considerations">Migration considerations</h2>
+<p>Many organisations evolve from monoliths or service-oriented architectures. Architecture as Code accelerates this journey by:</p>
+<ul>
+<li>Capturing target service boundaries as executable diagrams (see <a href="../06_structurizr/">Chapter 6</a> for C4 model usage in documenting these boundaries).</li>
+<li>Providing repeatable infrastructure templates for each new domain.</li>
+<li>Automating shadow traffic, data replication, and phased cut-overs.</li>
+<li>Documenting decommission plans for legacy components.</li>
+</ul>
+<p>By treating migration playbooks as code, teams can rehearse transitions safely and roll back confidently when experiments expose new risks.</p>
+<p>Two categories of tooling deserve specific mention. <strong>Feature flags</strong> allow teams to deploy new service logic without immediately exposing it to all users. Platforms such as Unleash (open-source, self-hosted) and LaunchDarkly (managed service) enable flag definitions to be stored as code and evaluated at runtime, so that a migration can be staged progressively—first for internal users, then for a percentage of production traffic, and finally for all users—with rollback as simple as toggling a flag rather than reverting a deployment. <strong>Schema migrations</strong> for relational databases require equally careful management. Tools such as Flyway and Liquibase apply versioned, idempotent migration scripts from a controlled directory, ensuring that every environment passes through the same sequence of changes. Storing migration scripts in version control, running them as part of CI/CD pipelines (see <a href="../05_automation_devops_cicd/">Chapter 5</a>), and gating promotion on successful migration completion prevents the schema drift that frequently undermines monolith-to-microservice transitions.</p>
+<h2 id="summary">Summary</h2>
+<p>Microservices amplify organisational agility when paired with disciplined automation. Architecture as Code gives leaders a shared source of truth for service contracts, platform guardrails, and operational posture. Investing in reusable templates, policy automation, and comprehensive observability enables teams to innovate quickly whilst preserving the resilience, compliance, and sustainability that modern enterprises demand.</p>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><strong>Cloud Native Computing Foundation (2024).</strong> <em>State of Cloud Native Development 2024.</em> Cloud Native Computing Foundation. <a href="../33_references/#source-7">Source [7]</a></li>
+<li><strong>Open Policy Agent (2024).</strong> <em>Policy as Code Overview.</em> CNCF OPA Project. <a href="../33_references/#source-10">Source [10]</a></li>
+<li><strong>Thoughtworks Technology Radar (2024).</strong> <em>Governance as Code.</em> Thoughtworks. <a href="../33_references/#source-2">Source [2]</a></li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../07_containerisation/" class="btn btn-neutral float-left" title="Containerisation and Orchestration as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../part_c_security/" class="btn btn-neutral float-right" title="index">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../07_containerisation/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../part_c_security/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

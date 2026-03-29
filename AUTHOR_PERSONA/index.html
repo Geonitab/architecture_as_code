@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/AUTHOR_PERSONA/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Author Persona: Gunnar Nordqvist - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Author Persona: Gunnar Nordqvist";
+        var mkdocs_page_input_path = "AUTHOR_PERSONA.md";
+        var mkdocs_page_url = "/AUTHOR_PERSONA/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Author Persona: Gunnar Nordqvist</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/AUTHOR_PERSONA.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="author-persona">Author Persona: Gunnar Nordqvist</h1>
+<h2 id="purpose">Purpose</h2>
+<p>This document defines the authorial voice, register, and technical language conventions for all manuscript content in <em>Architecture as Code</em>. It is the reference for any contributor, editor, or AI-assisted tooling when generating, reviewing, or revising content on behalf of the author.</p>
+<hr />
+<h2 id="who-is-the-author">Who Is the Author</h2>
+<p><strong>Gunnar Nordqvist</strong> is a self-employed certified Chief Architect and IT Architect consultant operating within the Kvadrat network in Sweden. He writes from the perspective of a senior practitioner who has spent decades working at the intersection of enterprise architecture, infrastructure engineering, and organisational transformation.</p>
+<p>He is not an academic. He is not a vendor. He is an experienced architect who has lived through the evolution of architecture practice—from heavyweight TOGAF ceremonies and Visio diagrams to codified, automated, continuously validated architecture.</p>
+<p>His voice is that of a <strong>trusted colleague explaining hard-won knowledge</strong>, not a textbook author presenting theory.</p>
+<hr />
+<h2 id="voice-and-tone">Voice and Tone</h2>
+<h3 id="primary-register">Primary Register</h3>
+<ul>
+<li><strong>Authoritative but collegial.</strong> The author speaks with confidence, but never condescends. He assumes the reader is technically capable and treats them as a peer.</li>
+<li><strong>Direct and precise.</strong> Sentences are purposeful. He does not hedge unnecessarily, nor does he use filler phrases such as "it is worth noting that" or "as we have seen".</li>
+<li><strong>Practitioner-first.</strong> Every concept is grounded in real-world application. Theory is introduced only to provide context for practice.</li>
+<li><strong>Reflective.</strong> He draws on personal experience and the broader community of practice to illustrate points, using "we" when referring to the architecture profession collectively.</li>
+</ul>
+<h3 id="tone-modifiers-by-context">Tone Modifiers by Context</h3>
+<table>
+<thead>
+<tr>
+<th>Content Type</th>
+<th>Tone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conceptual introductions</td>
+<td>Measured, explanatory, contextualising</td>
+</tr>
+<tr>
+<td>Technical instructions</td>
+<td>Precise, step-by-step, unambiguous</td>
+</tr>
+<tr>
+<td>Architectural principles</td>
+<td>Declarative, persuasive, evidence-backed</td>
+</tr>
+<tr>
+<td>Anti-patterns and pitfalls</td>
+<td>Frank, cautionary, experience-grounded</td>
+</tr>
+<tr>
+<td>Future trends</td>
+<td>Analytical, considered, appropriately speculative</td>
+</tr>
+<tr>
+<td>Case studies</td>
+<td>Narrative, concrete, outcome-focused</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="technical-register-it-architecture-vocabulary">Technical Register: IT Architecture Vocabulary</h2>
+<p>The following terms and conventions define the technical language used throughout the book. They represent the working vocabulary of senior IT architects in enterprise and cloud-native contexts.</p>
+<h3 id="core-discipline-terms">Core Discipline Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Preferred Term</th>
+<th>Meaning / Usage Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture as Code</strong></td>
+<td>The primary discipline. Always capitalised. Never "architecture-as-code" in prose.</td>
+</tr>
+<tr>
+<td><strong>Infrastructure as Code (IaC)</strong></td>
+<td>The foundational discipline from which Architecture as Code extends.</td>
+</tr>
+<tr>
+<td><strong>Architecture Decision Record (ADR)</strong></td>
+<td>A formal record of a significant architectural decision. Plural: ADRs.</td>
+</tr>
+<tr>
+<td><strong>Architecture Decision Log (ADL)</strong></td>
+<td>The collection of ADRs for a system or domain.</td>
+</tr>
+<tr>
+<td><strong>architecture runway</strong></td>
+<td>The pre-built extensible code that allows features to be developed more easily. Use lowercase.</td>
+</tr>
+<tr>
+<td><strong>enterprise architecture (EA)</strong></td>
+<td>The discipline governing the alignment of technology with business strategy. Lowercase unless part of a title.</td>
+</tr>
+<tr>
+<td><strong>solution architecture</strong></td>
+<td>The architectural design of a specific system or product.</td>
+</tr>
+<tr>
+<td><strong>domain model</strong></td>
+<td>A representation of business concepts and their relationships within a bounded context.</td>
+</tr>
+<tr>
+<td><strong>bounded context</strong></td>
+<td>From Domain-Driven Design; a boundary within which a particular model applies.</td>
+</tr>
+<tr>
+<td><strong>capability map</strong></td>
+<td>A structured view of an organisation's business and technical capabilities.</td>
+</tr>
+<tr>
+<td><strong>architecture fitness function</strong></td>
+<td>An objective evaluation criterion for an architectural characteristic.</td>
+</tr>
+<tr>
+<td><strong>architectural characteristic</strong></td>
+<td>A quality attribute such as scalability, observability, or resilience.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="platform-and-tooling-terms">Platform and Tooling Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Preferred Term</th>
+<th>Usage Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Structurizr</strong></td>
+<td>The C4 model tooling platform. Always capitalised.</td>
+</tr>
+<tr>
+<td><strong>C4 model</strong></td>
+<td>Simon Brown's hierarchical diagram approach: Context, Container, Component, Code.</td>
+</tr>
+<tr>
+<td><strong>Terraform</strong></td>
+<td>HashiCorp's IaC tool. Always capitalised.</td>
+</tr>
+<tr>
+<td><strong>Ansible</strong></td>
+<td>Red Hat's configuration management tool. Always capitalised.</td>
+</tr>
+<tr>
+<td><strong>Kubernetes</strong></td>
+<td>Container orchestration platform. Always capitalised. K8s is acceptable in technical shorthand.</td>
+</tr>
+<tr>
+<td><strong>Helm</strong></td>
+<td>The Kubernetes package manager. Always capitalised.</td>
+</tr>
+<tr>
+<td><strong>pipeline</strong></td>
+<td>CI/CD automation chain. Lowercase unless part of a proper name.</td>
+</tr>
+<tr>
+<td><strong>GitOps</strong></td>
+<td>The operational model where Git is the single source of truth. CamelCase.</td>
+</tr>
+<tr>
+<td><strong>policy as code</strong></td>
+<td>Machine-readable governance rules. Lowercase in prose.</td>
+</tr>
+<tr>
+<td><strong>compliance as code</strong></td>
+<td>Automated compliance verification. Lowercase in prose.</td>
+</tr>
+<tr>
+<td><strong>diagram as code</strong></td>
+<td>Diagrams defined in a text format. Lowercase in prose.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="architecture-patterns-and-concepts">Architecture Patterns and Concepts</h3>
+<table>
+<thead>
+<tr>
+<th>Preferred Term</th>
+<th>Usage Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>microservices</strong></td>
+<td>Plural noun; architectural style. Lowercase.</td>
+</tr>
+<tr>
+<td><strong>event-driven architecture (EDA)</strong></td>
+<td>Hyphenate as compound adjective.</td>
+</tr>
+<tr>
+<td><strong>service mesh</strong></td>
+<td>Two words, lowercase.</td>
+</tr>
+<tr>
+<td><strong>sidecar pattern</strong></td>
+<td>Lowercase.</td>
+</tr>
+<tr>
+<td><strong>strangler fig pattern</strong></td>
+<td>Preferred over "strangler pattern". Lowercase.</td>
+</tr>
+<tr>
+<td><strong>golden path</strong></td>
+<td>The recommended, well-supported development pathway. Lowercase.</td>
+</tr>
+<tr>
+<td><strong>paved road</strong></td>
+<td>Alternative to golden path. Lowercase.</td>
+</tr>
+<tr>
+<td><strong>blast radius</strong></td>
+<td>The scope of impact from a failure or change. Lowercase.</td>
+</tr>
+<tr>
+<td><strong>drift</strong></td>
+<td>Configuration or architectural drift from the desired state.</td>
+</tr>
+<tr>
+<td><strong>desired state</strong></td>
+<td>The declared, intended configuration or architecture.</td>
+</tr>
+<tr>
+<td><strong>observed state</strong></td>
+<td>The actual, measured current configuration or architecture.</td>
+</tr>
+<tr>
+<td><strong>idempotent</strong></td>
+<td>An operation that produces the same result regardless of how many times it is applied.</td>
+</tr>
+<tr>
+<td><strong>immutable infrastructure</strong></td>
+<td>Infrastructure that is replaced rather than modified.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="organisational-and-process-terms">Organisational and Process Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Preferred Term</th>
+<th>Usage Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>platform team</strong></td>
+<td>The team responsible for the internal developer platform.</td>
+</tr>
+<tr>
+<td><strong>stream-aligned team</strong></td>
+<td>From Team Topologies; a team aligned to a business domain.</td>
+</tr>
+<tr>
+<td><strong>enabling team</strong></td>
+<td>From Team Topologies; a team that helps other teams adopt new practices.</td>
+</tr>
+<tr>
+<td><strong>complicated subsystem team</strong></td>
+<td>From Team Topologies; a team owning a complex technical domain.</td>
+</tr>
+<tr>
+<td><strong>cognitive load</strong></td>
+<td>The mental effort required of a team. Use deliberately.</td>
+</tr>
+<tr>
+<td><strong>inner-source</strong></td>
+<td>Open-source practices applied to internal codebases. Hyphenated.</td>
+</tr>
+<tr>
+<td><strong>four-eyes principle</strong></td>
+<td>Dual-approval requirement for critical changes.</td>
+</tr>
+<tr>
+<td><strong>shift left</strong></td>
+<td>Moving quality or security activities earlier in the lifecycle.</td>
+</tr>
+<tr>
+<td><strong>shift right</strong></td>
+<td>Monitoring and testing in production.</td>
+</tr>
+<tr>
+<td><strong>runbook</strong></td>
+<td>Documented operational procedures. Lowercase, one word.</td>
+</tr>
+<tr>
+<td><strong>playbook</strong></td>
+<td>Strategic or operational guidance document. Lowercase.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="security-and-governance-terms">Security and Governance Terms</h3>
+<table>
+<thead>
+<tr>
+<th>Preferred Term</th>
+<th>Usage Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>zero trust</strong></td>
+<td>Security model; two words, lowercase.</td>
+</tr>
+<tr>
+<td><strong>threat model</strong></td>
+<td>A structured analysis of potential threats.</td>
+</tr>
+<tr>
+<td><strong>attack surface</strong></td>
+<td>The sum of points where an attacker can attempt entry.</td>
+</tr>
+<tr>
+<td><strong>least privilege</strong></td>
+<td>Granting only the minimum required permissions.</td>
+</tr>
+<tr>
+<td><strong>secrets management</strong></td>
+<td>The practice of securely handling credentials and keys.</td>
+</tr>
+<tr>
+<td><strong>RBAC</strong></td>
+<td>Role-Based Access Control. Always use the acronym after first definition.</td>
+</tr>
+<tr>
+<td><strong>ABAC</strong></td>
+<td>Attribute-Based Access Control.</td>
+</tr>
+<tr>
+<td><strong>control plane</strong></td>
+<td>The layer that manages and configures the data plane.</td>
+</tr>
+<tr>
+<td><strong>data plane</strong></td>
+<td>The layer that carries operational traffic.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="grammatical-conventions">Grammatical Conventions</h2>
+<h3 id="sentence-structure">Sentence Structure</h3>
+<ul>
+<li>Prefer <strong>active voice</strong>. "The pipeline validates the manifest" rather than "The manifest is validated by the pipeline."</li>
+<li>Use <strong>imperative mood</strong> in instructional sections. "Define the desired state in a Terraform module." Not "You should define..."</li>
+<li>Avoid <strong>nominalisation</strong> where a verb is clearer. "The team decided" rather than "A decision was made by the team."</li>
+<li>Use <strong>parallel construction</strong> in lists, headings, and comparative statements.</li>
+</ul>
+<h3 id="technical-references">Technical References</h3>
+<ul>
+<li>On first use in a chapter, write the full term followed by the acronym in parentheses: "Infrastructure as Code (IaC)".</li>
+<li>In subsequent references within the same chapter, the acronym alone is acceptable.</li>
+<li>Code elements, CLI commands, file names, and configuration keys are always rendered in <code>monospace</code>.</li>
+<li>Tool names and product names retain their original capitalisation even when embedded in prose.</li>
+</ul>
+<h3 id="lists-and-enumerations">Lists and Enumerations</h3>
+<ul>
+<li>Use the Oxford (serial) comma in all lists of three or more items.</li>
+<li>Use bullet lists for non-sequential items; numbered lists for sequential steps or ranked items.</li>
+<li>Begin each bullet with a capital letter.</li>
+<li>End bullets consistently: either all with full stops, or none—do not mix.</li>
+</ul>
+<h3 id="headings">Headings</h3>
+<ul>
+<li>Use sentence case for all headings: "Architecture decision records in practice", not "Architecture Decision Records In Practice".</li>
+<li>Exception: proper nouns and product names retain their standard capitalisation within headings.</li>
+</ul>
+<hr />
+<h2 id="what-the-author-does-not-write">What the Author Does Not Write</h2>
+<p>To preserve voice consistency, the following stylistic patterns should be avoided:</p>
+<ul>
+<li><strong>Marketing language</strong>: "powerful", "seamless", "robust solution", "best-in-class"</li>
+<li><strong>Vague superlatives</strong>: "extremely important", "very significant", "highly complex"</li>
+<li><strong>Rhetorical questions used as transitions</strong>: "So, what does this mean for architects?"</li>
+<li><strong>Unnecessary hedging</strong>: "it could be argued that", "some might say"</li>
+<li><strong>Prescriptive moralising</strong>: "architects must always...", "you should never..."</li>
+<li><strong>Filler openers</strong>: "In today's fast-paced world...", "As we enter a new era of..."</li>
+<li><strong>Passive-aggressive qualifiers</strong>: "surprisingly", "obviously", "of course", "clearly"</li>
+</ul>
+<hr />
+<h2 id="pronoun-and-reference-conventions">Pronoun and Reference Conventions</h2>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Convention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The reader as individual</td>
+<td>"you" (second person, direct address)</td>
+</tr>
+<tr>
+<td>The profession collectively</td>
+<td>"we" (inclusive first person plural)</td>
+</tr>
+<tr>
+<td>A hypothetical team</td>
+<td>"the team" (third person, avoids gender)</td>
+</tr>
+<tr>
+<td>A hypothetical architect</td>
+<td>"the architect" (role, not gendered pronoun)</td>
+</tr>
+<tr>
+<td>The author's own experience</td>
+<td>"I" (first person, used sparingly and purposefully)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="british-english-quick-reference">British English Quick Reference</h2>
+<p>The following spellings are mandatory in all prose. See <code>docs/STYLE_GUIDE.md</code> for the complete list.</p>
+<table>
+<thead>
+<tr>
+<th>American</th>
+<th>British (required)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>organization</td>
+<td>organisation</td>
+</tr>
+<tr>
+<td>optimization</td>
+<td>optimisation</td>
+</tr>
+<tr>
+<td>standardization</td>
+<td>standardisation</td>
+</tr>
+<tr>
+<td>containerization</td>
+<td>containerisation</td>
+</tr>
+<tr>
+<td>modernization</td>
+<td>modernisation</td>
+</tr>
+<tr>
+<td>behavior</td>
+<td>behaviour</td>
+</tr>
+<tr>
+<td>color</td>
+<td>colour</td>
+</tr>
+<tr>
+<td>center</td>
+<td>centre</td>
+</tr>
+<tr>
+<td>program (non-computing)</td>
+<td>programme</td>
+</tr>
+<tr>
+<td>analyze</td>
+<td>analyse</td>
+</tr>
+<tr>
+<td>recognize</td>
+<td>recognise</td>
+</tr>
+<tr>
+<td>utilize</td>
+<td>utilise</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>catalogue</td>
+</tr>
+<tr>
+<td>dialog</td>
+<td>dialogue</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Exception:</strong> Spellings inside code blocks, configuration samples, API names, and tool-specific terminology are never altered. Only surrounding prose is updated.</p>
+</blockquote>
+<hr />
+<h2 id="usage-examples">Usage Examples</h2>
+<h3 id="preferred">Preferred</h3>
+<blockquote>
+<p>"The ADR captures the rationale behind choosing an event-driven architecture over a synchronous request–response model. This decision should be revisited when the team's bounded contexts are better established."</p>
+<p>"Structurizr DSL allows the architecture model to be version controlled alongside the systems it describes. When the codebase changes, the architecture can change with it—and that change is reviewable, auditable, and reversible."</p>
+<p>"Policy as code shifts compliance verification left. Instead of waiting for an audit, the pipeline enforces controls continuously."</p>
+</blockquote>
+<h3 id="avoid">Avoid</h3>
+<blockquote>
+<p>"In today's rapidly evolving technology landscape, organisations face the extremely important challenge of keeping their architecture documentation up to date. This powerful solution enables seamless integration across all your systems."</p>
+</blockquote>
+<hr />
+<h2 id="related-documents">Related Documents</h2>
+<ul>
+<li><code>docs/STYLE_GUIDE.md</code> — Spelling, punctuation, and grammar standards</li>
+<li><code>docs/VISUAL_ELEMENTS_GUIDE.md</code> — Diagram and visual presentation standards</li>
+<li><code>docs/29_about_the_author.md</code> — Biographical information</li>
+<li><code>CLAUDE.md</code> — Project-level instructions for AI-assisted tooling</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

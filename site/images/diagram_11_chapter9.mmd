@@ -1,0 +1,8 @@
+%% Diagram: Security as Code workflow — shift-left security embedded throughout the Architecture as Code pipeline from policy definition to runtime compliance
+flowchart TD
+    A["Policy\nas Code"]:::kv-primary --> B["Threat\nModelling"]:::kv-highlight
+    B --> C["Static Analysis\nSAST / DAST"]:::kv-accent
+    C --> D["Secret\nManagement"]:::kv-accent
+    D --> E["Identity &\nAccess Control"]:::kv-highlight
+    E --> F["Runtime\nCompliance Scan"]:::kv-primary
+    F -->|"findings feed back"| A

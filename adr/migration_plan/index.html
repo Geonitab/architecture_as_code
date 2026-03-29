@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/adr/migration_plan/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Legacy ADR Migration Plan - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Legacy ADR Migration Plan";
+        var mkdocs_page_input_path = "adr/migration_plan.md";
+        var mkdocs_page_url = "/adr/migration_plan/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Legacy ADR Migration Plan</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#objectives">Objectives</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#migration-waves">Migration Waves</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#detailed-steps">Detailed Steps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tooling-checklist">Tooling Checklist</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#communication-plan">Communication Plan</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Appendices</li>
+      <li class="breadcrumb-item active">Legacy ADR Migration Plan</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/adr/migration_plan.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="adr-migration-plan">Legacy ADR Migration Plan</h1>
+<p>Migrating historical Architecture Decision Records (ADRs) into the structured format introduced by issue #1305 requires a combination of metadata enrichment, automated verification, and collaborative review. This plan provides a reusable blueprint for transforming existing decision logs—whether stored in wikis, shared drives, or dated Markdown files—into the codified workflow that now powers the Architecture as Code documentation suite.</p>
+<h2 id="objectives">Objectives</h2>
+<ol>
+<li><strong>Preserve historical intent</strong> so design rationale remains discoverable alongside the automated Architecture as Code assets.</li>
+<li><strong>Enrich legacy records with required metadata</strong> (<code>adr_id</code>, review cadence, linked chapters, diagrams, and backlog references).</li>
+<li><strong>Ensure continuous integration coverage</strong> by validating that every migrated ADR passes <code>python3 scripts/validate_adrs.py</code>.</li>
+<li><strong>Synchronise navigation and change logs</strong> via <code>python3 scripts/generate_adr_catalogue.py</code> to keep MkDocs and book builds aligned.</li>
+</ol>
+<h2 id="migration-waves">Migration Waves</h2>
+<table>
+<thead>
+<tr>
+<th>Wave</th>
+<th>Scope</th>
+<th>Activities</th>
+<th>Exit Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wave 1</td>
+<td>Top 10 most-referenced ADRs</td>
+<td>Inventory legacy files, assign canonical identifiers, capture missing metadata</td>
+<td>ADR catalogue displays migrated entries with next review dates</td>
+</tr>
+<tr>
+<td>Wave 2</td>
+<td>Compliance-critical decisions</td>
+<td>Cross-link to policy diagrams, capture backlog remediation items, schedule reviews with governance teams</td>
+<td>CI validation passes; automation dashboards ingest metadata</td>
+</tr>
+<tr>
+<td>Wave 3</td>
+<td>Remaining historical records</td>
+<td>Standardise tone, link to relevant chapters, and archive superseded entries with successor references</td>
+<td>All references in <code>docs/</code> resolve to committed ADR files</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-steps">Detailed Steps</h2>
+<ol>
+<li><strong>Catalogue existing material</strong></li>
+<li>Export legacy ADRs from previous repositories, wiki spaces, or document stores.</li>
+<li>
+<p>Map each decision to the new identifier schema (<code>ADR-XXXX</code>) and track the source location for audit purposes.</p>
+</li>
+<li>
+<p><strong>Enrich metadata</strong></p>
+</li>
+<li>Populate YAML front matter with review cadences, diagram links, and backlog identifiers.</li>
+<li>
+<p>Use British English for all narrative sections to stay consistent with the manuscript style.</p>
+</li>
+<li>
+<p><strong>Peer review updates</strong></p>
+</li>
+<li>Raise a pull request per migration wave.</li>
+<li>Include evidence that <code>python3 scripts/validate_adrs.py</code> and <code>python3 scripts/generate_adr_catalogue.py</code> have been executed.</li>
+<li>
+<p>Request reviewers from architecture, governance, and operations to confirm accuracy.</p>
+</li>
+<li>
+<p><strong>Automate catalogue regeneration</strong></p>
+</li>
+<li>Run <code>python3 scripts/generate_adr_catalogue.py</code> after each merge to refresh <code>docs/adr/adr_catalogue.md</code>.</li>
+<li>
+<p>Confirm MkDocs navigation highlights the new entries and that change notes appear in the automatically generated table.</p>
+</li>
+<li>
+<p><strong>Archive superseded artefacts</strong></p>
+</li>
+<li>Move deprecated or redundant ADRs into <code>docs/archive/</code> with cross-links to their successors.</li>
+<li>Record the migration context within the <code>change_notes</code> list so future readers understand the rationale behind supersessions.</li>
+</ol>
+<h2 id="tooling-checklist">Tooling Checklist</h2>
+<ul>
+<li><code>python3 scripts/validate_adrs.py</code> — confirms metadata completeness and cross-references manuscript mentions.</li>
+<li><code>python3 scripts/generate_adr_catalogue.py</code> — regenerates the catalogue consumed by the documentation site and book build.</li>
+<li><code>pytest tests/test_adr_metadata.py</code> — keeps the CI suite aligned with manual checks.</li>
+</ul>
+<h2 id="communication-plan">Communication Plan</h2>
+<ul>
+<li>Announce the migration schedule during the weekly Architecture as Code stand-up.</li>
+<li>Track progress against backlog items referenced within each ADR (<code>AAC-1182</code>, <code>AAC-1305</code>, <code>AAC-1224</code>, <code>DATA-947</code>).</li>
+<li>Share the regenerated catalogue with governance stakeholders to evidence continuous improvement.</li>
+</ul>
+<p>By following this plan, teams can transition legacy architecture decisions into the automated, reviewable workflow without losing historical context or creating documentation drift.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../adr_catalogue/" class="btn btn-neutral float-left" title="ADR Catalogue"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../architecture_as_code_maturity_model/" class="btn btn-neutral float-right" title="Appendix E – Architecture as Code Maturity Model">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../adr_catalogue/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../architecture_as_code_maturity_model/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/mermaid-init.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

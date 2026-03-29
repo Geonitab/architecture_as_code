@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/PRESENTATION_DESIGN_GUIDELINES/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Presentation Design Guidelines for Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Presentation Design Guidelines for Architecture as Code";
+        var mkdocs_page_input_path = "PRESENTATION_DESIGN_GUIDELINES.md";
+        var mkdocs_page_url = "/PRESENTATION_DESIGN_GUIDELINES/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Presentation Design Guidelines for Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/PRESENTATION_DESIGN_GUIDELINES.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="presentation-design-guidelines-for-architecture-as-code">Presentation Design Guidelines for Architecture as Code</h1>
+<h2 id="modern-and-visually-engaging-presentations">Modern and Visually Engaging Presentations</h2>
+<h2 id="purpose">Purpose</h2>
+<p>This document defines the design standards for all presentations generated from the Architecture as Code book content. It ensures that every presentation is visually appealing, professionally structured, and aligned with modern presentation best practices whilst maintaining the Kvadrat brand identity.</p>
+<hr />
+<h2 id="core-design-principles">Core Design Principles</h2>
+<h3 id="1-visual-hierarchy">1. Visual Hierarchy</h3>
+<ul>
+<li><strong>Clear Information Architecture</strong>: Use size, colour, and spacing to guide the viewer's eye through content in a logical order</li>
+<li><strong>Rule of Thirds</strong>: Position key elements along imaginary lines that divide the slide into thirds horizontally and vertically</li>
+<li><strong>Focal Points</strong>: Each slide should have one clear focal point that captures immediate attention</li>
+<li><strong>White Space</strong>: Embrace generous spacing (minimum 48px margins) to prevent cognitive overload</li>
+</ul>
+<h3 id="2-cognitive-load-management">2. Cognitive Load Management</h3>
+<ul>
+<li><strong>One Message Per Slide</strong>: Each slide should communicate a single, clear idea</li>
+<li><strong>Three Slides Per Chapter</strong>: Each chapter is presented across three slides with max 3 points per slide</li>
+<li><strong>30 Words Maximum</strong>: Maximum 30 words per bullet point for Architecture as Code presentations</li>
+<li><strong>Progressive Disclosure</strong>: Reveal information gradually rather than overwhelming with dense slides</li>
+<li><strong>Visual Anchors</strong>: Use diagrams, icons, and graphics to support (not replace) spoken narrative</li>
+<li><strong>Colour Variation</strong>: Rotate through six accent colours (Blue, Green, Orange, Purple, Teal, Indigo) to maintain visual interest</li>
+</ul>
+<h3 id="3-accessibility-and-inclusivity">3. Accessibility and Inclusivity</h3>
+<ul>
+<li><strong>Colour Contrast</strong>: Minimum 4.5:1 ratio for normal text (WCAG AA standard)</li>
+<li><strong>Readable Typography</strong>: Minimum 18pt body text, 24pt for headings</li>
+<li><strong>Colour-Blind Friendly</strong>: Never rely solely on colour to convey information</li>
+<li><strong>Alt Text Ready</strong>: All diagrams should have descriptive captions suitable for screen readers</li>
+</ul>
+<hr />
+<h2 id="slide-format-and-layout">Slide Format and Layout</h2>
+<h3 id="standard-dimensions">Standard Dimensions</h3>
+<ul>
+<li><strong>Aspect Ratio</strong>: 16:9 widescreen (1280×720px or 1920×1080px)</li>
+<li><strong>Safe Zone</strong>: Keep critical content within 10% margin from all edges</li>
+<li><strong>Grid System</strong>: 12-column responsive grid for consistent element alignment</li>
+</ul>
+<h3 id="slide-types-and-layouts">Slide Types and Layouts</h3>
+<h4 id="1-title-slide">1. Title Slide</h4>
+<p><strong>Purpose</strong>: Establish presentation context and brand identity</p>
+<p><strong>Layout</strong>:
+- <strong>Full-screen gradient background</strong>: Kvadrat Blue to Kvadrat Blue Dark (135-degree angle)
+- <strong>Main title</strong>: 72px, font-weight 800, white colour, centred
+- <strong>Subtitle</strong>: 32px, font-weight 400, white 90% opacity
+- <strong>Presenter info</strong>: 20px, bottom-aligned, white 80% opacity
+- <strong>No header bar</strong>: Full-screen immersive design</p>
+<p><strong>Example Structure</strong>:</p>
+<pre><code class="language-text">[Full gradient background]
+  Main Title (72px bold)
+  Subtitle (32px regular)
+
+  Presenter Name · Date
+</code></pre>
+<h4 id="2-section-divider-slide">2. Section Divider Slide</h4>
+<p><strong>Purpose</strong>: Signal transitions between major presentation sections</p>
+<p><strong>Layout</strong>:
+- <strong>Blank slide</strong> with minimal text
+- <strong>Section title</strong>: 64px, font-weight 700, Kvadrat Blue
+- <strong>Optional tagline</strong>: 24px, Kvadrat Grey, positioned below title
+- <strong>Optional visual element</strong>: Abstract geometric shape or gradient overlay (10% opacity)</p>
+<h4 id="3-content-slide-hero-layout">3. Content Slide – Hero Layout</h4>
+<p><strong>Purpose</strong>: Feature a single diagram prominently with supporting points</p>
+<p><strong>Layout</strong>:
+- <strong>Header bar</strong>: 80px height, Kvadrat Blue gradient
+  - Logo and brand text: Left-aligned
+  - Slide number: Right-aligned
+- <strong>Title</strong>: 36px, font-weight 700, Kvadrat Blue Dark, 48px top margin
+- <strong>Diagram area</strong>: 12.2" width × 3.6" height (1280×384px), centred horizontally
+- <strong>Caption</strong>: Below diagram, 12-14px, diagram type and source
+- <strong>Key points</strong>: Below caption, 4 bullet points maximum, 18-20px text</p>
+<p><strong>Use When</strong>:
+- Showcasing complex diagrams that need maximum visibility
+- Presenting flowcharts, architecture diagrams, or sequence diagrams
+- Visual content is primary focus</p>
+<h4 id="4-content-slide-side-layout">4. Content Slide – Side Layout</h4>
+<p><strong>Purpose</strong>: Balance diagram and text content equally</p>
+<p><strong>Layout</strong>:
+- <strong>Header bar</strong>: Standard 80px Kvadrat Blue gradient
+- <strong>Title</strong>: 36px, font-weight 700, Kvadrat Blue Dark
+- <strong>Two-column grid</strong>:
+  - <strong>Left column</strong> (image on left for even-numbered slides): 5.8" width × 4.2" height
+  - <strong>Right column</strong> (text): 5.8" width, 8 bullet points maximum, 18px text
+  - <strong>Gap</strong>: 48px between columns
+- <strong>Alternating layout</strong>: Odd slides have image right, even slides have image left</p>
+<p><strong>Use When</strong>:
+- Multiple key points require detailed explanation
+- Diagram complexity is moderate
+- Balance between visual and textual information</p>
+<h4 id="5-two-column-comparison-slide">5. Two-Column Comparison Slide</h4>
+<p><strong>Purpose</strong>: Present contrasting concepts or before/after scenarios</p>
+<p><strong>Layout</strong>:
+- <strong>Header bar</strong>: Standard
+- <strong>Title</strong>: 36px centred or left-aligned
+- <strong>Two equal columns</strong>: 48px gap
+- <strong>Column headers</strong>: 28px, font-weight 600, colour-coded (Kvadrat Blue vs. Success Green)
+- <strong>Bullet lists</strong>: 20px text, 6 points maximum per column</p>
+<p><strong>Use When</strong>:
+- Comparing traditional vs. Architecture as Code approaches
+- Showing benefits vs. challenges
+- Technical vs. business perspectives</p>
+<h4 id="6-statistics-and-data-slide">6. Statistics and Data Slide</h4>
+<p><strong>Purpose</strong>: Present quantitative information with visual impact</p>
+<p><strong>Layout</strong>:
+- <strong>Header bar</strong>: Standard
+- <strong>Title</strong>: 36px
+- <strong>Stat cards</strong>: 3-column grid, equal width
+  - <strong>Number</strong>: 48px, font-weight 800, Kvadrat Blue, centred
+  - <strong>Label</strong>: 18px, Kvadrat Grey, centred below number
+  - <strong>Background</strong>: Kvadrat Grey Light with 2px Kvadrat Blue Light border
+  - <strong>Padding</strong>: 32px vertical, 16px horizontal
+  - <strong>Border radius</strong>: 12px</p>
+<p><strong>Visual Enhancements</strong>:
+- Optional: Mini chart or icon above number
+- Optional: Progress bar or trend indicator</p>
+<h4 id="7-processtimeline-slide">7. Process/Timeline Slide</h4>
+<p><strong>Purpose</strong>: Illustrate sequential steps or project phases</p>
+<p><strong>Layout</strong>:
+- <strong>Header bar</strong>: Standard
+- <strong>Title</strong>: 36px
+- <strong>Step indicators</strong>: Circular badges (48px diameter) with numbers
+  - <strong>Completed</strong>: Success Green background
+  - <strong>Current</strong>: Warning Orange background
+  - <strong>Future</strong>: Kvadrat Blue Light background
+- <strong>Step descriptions</strong>: 20px text, left-aligned next to badge
+- <strong>Connecting lines</strong>: Optional, 2px Kvadrat Grey</p>
+<h4 id="8-code-example-slide">8. Code Example Slide</h4>
+<p><strong>Purpose</strong>: Display code snippets with syntax highlighting</p>
+<p><strong>Layout</strong>:
+- <strong>Header bar</strong>: Standard
+- <strong>Title</strong>: 36px
+- <strong>Code block</strong>: 
+  - <strong>Background</strong>: <code>#2d2d2d</code> (dark grey)
+  - <strong>Font</strong>: JetBrains Mono, 18px, line-height 1.6
+  - <strong>Syntax highlighting</strong>: Prism.js with Tomorrow Night theme
+  - <strong>Padding</strong>: 32px
+  - <strong>Border radius</strong>: 12px
+  - <strong>Max height</strong>: 400px (scroll if longer)
+  - <strong>Line numbers</strong>: Optional, 12px grey
+- <strong>Caption</strong>: Above or below code, explaining purpose</p>
+<p><strong>Best Practices</strong>:
+- Show complete, runnable examples
+- Highlight changed lines with subtle background colour
+- Include language identifier badge (top-right corner)</p>
+<h4 id="9-thank-you-closing-slide">9. Thank You / Closing Slide</h4>
+<p><strong>Purpose</strong>: End presentation professionally with contact information</p>
+<p><strong>Layout</strong>:
+- <strong>Full gradient background</strong>: Success Green to Kvadrat Blue (135-degree angle)
+- <strong>Main message</strong>: "Tack!" or "Thank you!" 64px, font-weight 700, white, centred
+- <strong>Secondary message</strong>: "Frågor och diskussion" / "Questions and Discussion", 24px, white 90% opacity
+- <strong>Contact grid</strong>: 2×2 grid, 48px gap
+  - Email, phone, website, location
+  - Icon (32px) + text (20px)
+- <strong>No header bar</strong></p>
+<hr />
+<h2 id="typography-standards">Typography Standards</h2>
+<h3 id="font-families">Font Families</h3>
+<ul>
+<li><strong>Primary</strong>: Inter (Google Fonts or system fallback)</li>
+<li>Modern, highly legible, excellent for presentations</li>
+<li><strong>Monospace</strong>: JetBrains Mono (for code examples)</li>
+<li>Clear character distinction, programming-optimised</li>
+<li><strong>Fallback Stack</strong>: <code>'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif</code></li>
+</ul>
+<h3 id="type-scale">Type Scale</h3>
+<pre><code class="language-text">Title Slide Main Title:     72px / font-weight: 800 / white
+Title Slide Subtitle:       32px / font-weight: 400 / white 90%
+Section Divider Title:      64px / font-weight: 700 / Kvadrat Blue
+Slide Title (H1):           36-48px / font-weight: 700 / Kvadrat Blue Dark
+Slide Subtitle (H2):        24-28px / font-weight: 600 / Kvadrat Blue
+Section Heading (H3):       22-24px / font-weight: 600 / Kvadrat Blue
+Body Text:                  18-20px / font-weight: 400 / Kvadrat Blue Dark
+Bullet Points:              18-20px / font-weight: 400 / line-height: 1.4
+Captions:                   12-14px / font-weight: 500 / Kvadrat Grey
+Footer/Metadata:            12px / font-weight: 400 / Kvadrat Grey
+</code></pre>
+<h3 id="typography-best-practices">Typography Best Practices</h3>
+<ul>
+<li><strong>Line Height</strong>: 1.4 for body text, 1.2 for headings</li>
+<li><strong>Letter Spacing</strong>: -0.025em for large headings (≥48px)</li>
+<li><strong>Maximum Line Length</strong>: 65-75 characters for optimal readability</li>
+<li><strong>Text Alignment</strong>: Left-aligned for body text, centred for titles/statistics</li>
+<li><strong>Emphasis</strong>: Use bold (font-weight 600-700) rather than ALL CAPS or italics</li>
+</ul>
+<hr />
+<h2 id="colour-palette-and-usage">Colour Palette and Usage</h2>
+<h3 id="primary-colours">Primary Colours</h3>
+<pre><code class="language-css">--kvadrat-blue:         hsl(221, 67%, 32%)    /* #1e3a8a */
+--kvadrat-blue-light:   hsl(217, 91%, 60%)    /* #3b82f6 */
+--kvadrat-blue-dark:    hsl(214, 32%, 18%)    /* #1e293b */
+</code></pre>
+<h3 id="neutral-colours">Neutral Colours</h3>
+<pre><code class="language-css">--kvadrat-grey:         hsl(215, 20%, 46%)    /* #64748b */
+--kvadrat-grey-light:   hsl(214, 32%, 97%)    /* #f1f5f9 */
+--white:                hsl(0, 0%, 100%)      /* #ffffff */
+--text-primary:         hsl(214, 32%, 18%)    /* #1e293b */
+</code></pre>
+<h3 id="accent-colours">Accent Colours</h3>
+<pre><code class="language-css">--success:              hsl(160, 84%, 30%)    /* #059669 */
+--warning:              hsl(32, 95%, 44%)     /* #d97706 */
+--error:                hsl(0, 84%, 51%)      /* #dc2626 */
+--info:                 hsl(217, 91%, 60%)    /* #3b82f6 */
+--purple:               hsl(262, 83%, 58%)    /* #7c3aed */
+--teal:                 hsl(173, 80%, 40%)    /* #14b8a6 */
+--indigo:               hsl(239, 84%, 67%)    /* #4f46e5 */
+</code></pre>
+<h3 id="colour-rotation-for-chapter-variety">Colour Rotation for Chapter Variety</h3>
+<p>To maintain visual interest, chapters rotate through six accent colours:
+1. <strong>Kvadrat Blue</strong> (<code>#1e3a8a</code>) - Classic, professional
+2. <strong>Success Green</strong> (<code>#059669</code>) - Growth, implementation
+3. <strong>Warning Orange</strong> (<code>#d97706</code>) - Attention, critical points
+4. <strong>Purple</strong> (<code>#7c3aed</code>) - Innovation, creativity
+5. <strong>Teal</strong> (<code>#14b8a6</code>) - Balance, stability
+6. <strong>Indigo</strong> (<code>#4f46e5</code>) - Depth, expertise</p>
+<h3 id="colour-application-guidelines">Colour Application Guidelines</h3>
+<h4 id="backgrounds">Backgrounds</h4>
+<ul>
+<li><strong>Slide background</strong>: White (<code>#ffffff</code>) default</li>
+<li><strong>Header bar</strong>: Linear gradient <code>linear-gradient(135deg, #1e3a8a 0%, #1e293b 100%)</code></li>
+<li><strong>Highlight boxes</strong>: Kvadrat Blue (<code>#1e3a8a</code>) for primary, Kvadrat Grey Light (<code>#f1f5f9</code>) for secondary</li>
+<li><strong>Code blocks</strong>: Dark grey (<code>#2d2d2d</code>)</li>
+</ul>
+<h4 id="text">Text</h4>
+<ul>
+<li><strong>Primary headings</strong>: Kvadrat Blue Dark (<code>#1e293b</code>)</li>
+<li><strong>Secondary headings</strong>: Kvadrat Blue (<code>#1e3a8a</code>)</li>
+<li><strong>Body text</strong>: Kvadrat Blue Dark (<code>#1e293b</code>)</li>
+<li><strong>Muted text</strong>: Kvadrat Grey (<code>#64748b</code>)</li>
+<li><strong>Inverted (on dark)</strong>: White (<code>#ffffff</code>)</li>
+</ul>
+<h4 id="interactive-elements">Interactive Elements</h4>
+<ul>
+<li><strong>Keyword banners</strong>: Kvadrat Accent (<code>#d97706</code>) background, Kvadrat Blue text</li>
+<li><strong>Progress indicators</strong>: Kvadrat Blue (default), Success Green (completed), Warning Orange (current)</li>
+<li><strong>Links</strong>: Kvadrat Blue Light (<code>#3b82f6</code>) with underline on hover</li>
+</ul>
+<h4 id="colour-contrast-validation">Colour Contrast Validation</h4>
+<p>All colour combinations must meet WCAG AA standards:
+- Kvadrat Blue on White: ✅ 8.2:1 ratio
+- Kvadrat Grey on White: ✅ 4.7:1 ratio
+- White on Kvadrat Blue: ✅ 8.2:1 ratio
+- Kvadrat Blue Dark on White: ✅ 12.3:1 ratio</p>
+<hr />
+<h2 id="diagram-and-visual-integration">Diagram and Visual Integration</h2>
+<h3 id="diagram-presentation-standards">Diagram Presentation Standards</h3>
+<h4 id="diagram-metadata">Diagram Metadata</h4>
+<p>Every diagram should include:
+1. <strong>Type label</strong>: Small banner above diagram (e.g., "Flowchart", "Sequence Diagram")
+2. <strong>Source reference</strong>: Below diagram, 11px, grey text (e.g., "Source: diagram_05_01.mmd")
+3. <strong>Explanation</strong>: 1-2 sentence caption, 12px, limited to 18 words</p>
+<h4 id="diagram-sizing">Diagram Sizing</h4>
+<ul>
+<li><strong>Hero layout</strong>: 1280px width × 384px height maximum</li>
+<li><strong>Side layout</strong>: 608px width × 441px height maximum</li>
+<li><strong>Scaling</strong>: Preserve aspect ratio, centre within bounds</li>
+<li><strong>Placeholder</strong>: If diagram missing, show rounded rectangle with "Flowchart pending" text</li>
+</ul>
+<h4 id="diagram-types-prioritisation">Diagram Types Prioritisation</h4>
+<p>When multiple diagrams exist in a chapter:
+1. <strong>Flowcharts</strong> (preferred for presentations)
+2. Sequence diagrams
+3. Class diagrams
+4. Entity-relationship diagrams
+5. Other types</p>
+<h3 id="mermaid-diagram-standards">Mermaid Diagram Standards</h3>
+<p>All Mermaid diagrams embedded in presentations must follow Kvadrat theme:</p>
+<pre><code class="language-yaml">%%{init: {
+  'theme':'base',
+  'themeVariables': {
+    'primaryColor':'#1e3a8a',
+    'primaryTextColor':'#ffffff',
+    'primaryBorderColor':'#1e293b',
+    'lineColor':'#64748b',
+    'secondaryColor':'#3b82f6',
+    'tertiaryColor':'#f1f5f9',
+    'background':'#ffffff',
+    'mainBkg':'#1e3a8a',
+    'secondBkg':'#3b82f6',
+    'labelBackground':'#f1f5f9',
+    'labelTextColor':'#1e293b',
+    'fontFamily':'Inter'
+  }
+}}%%
+</code></pre>
+<h3 id="icon-and-illustration-guidelines">Icon and Illustration Guidelines</h3>
+<ul>
+<li><strong>Style</strong>: Outline icons (Lucide React library preferred)</li>
+<li><strong>Size</strong>: 16px, 20px, 24px, 32px (use standardised sizes)</li>
+<li><strong>Colour</strong>: Kvadrat Blue for primary icons, Kvadrat Grey for secondary</li>
+<li><strong>Stroke width</strong>: 2px for consistency</li>
+<li><strong>Usage</strong>: Support text, never replace it</li>
+</ul>
+<hr />
+<h2 id="content-guidelines">Content Guidelines</h2>
+<h3 id="writing-for-slides">Writing for Slides</h3>
+<h4 id="slide-titles">Slide Titles</h4>
+<ul>
+<li><strong>Descriptive</strong>: Clearly state slide content (e.g., "Security Fundamentals" not "Overview")</li>
+<li><strong>Concise</strong>: Maximum 10 words</li>
+<li><strong>Action-oriented</strong>: Use active voice when appropriate (e.g., "Implementing CI/CD Pipelines")</li>
+</ul>
+<h4 id="bullet-points">Bullet Points</h4>
+<ul>
+<li><strong>Maximum 30 words per point</strong> (Architecture as Code presentations allow technical descriptions)</li>
+<li><strong>Maximum 3 points per slide</strong> (ensures readability and audience engagement)</li>
+<li><strong>Lead with keywords</strong>: Bold the first word or phrase of each bullet</li>
+<li><strong>Parallel structure</strong>: Use consistent grammatical form across bullets</li>
+<li><strong>Minimum 6-point leading</strong>: Ensure adequate spacing between bullets</li>
+</ul>
+<h4 id="key-highlights-extraction">Key Highlights Extraction</h4>
+<ul>
+<li>Extract from section headings and first meaningful sentence of each section</li>
+<li>Exclude boilerplate text (headings, image captions, code blocks)</li>
+<li>Focus on actionable insights and core concepts</li>
+<li>Distribute across three slides per chapter: Overview (Slide 1), Key Insights (Slide 2), Summary (Slide 3)</li>
+<li>Maximum 3 bullet points per slide (9 total points per chapter)</li>
+</ul>
+<h3 id="speaker-notes">Speaker Notes</h3>
+<p>Every slide should include speaker notes with:
+1. <strong>Slide title</strong> (reiterated)
+2. <strong>Key talking points</strong> (3-5 sentences)
+3. <strong>Diagram explanation</strong> (if applicable)
+4. <strong>Transition cue</strong> (how to segue to next slide)</p>
+<hr />
+<h2 id="animation-and-transition-guidelines">Animation and Transition Guidelines</h2>
+<h3 id="slide-transitions">Slide Transitions</h3>
+<ul>
+<li><strong>Default</strong>: None (instant transition for professional presentations)</li>
+<li><strong>Optional</strong>: Fade (300ms duration) for section dividers only</li>
+<li><strong>Avoid</strong>: Wipes, spins, zooms, and other distracting effects</li>
+</ul>
+<h3 id="content-animations">Content Animations</h3>
+<ul>
+<li><strong>Progressive Disclosure</strong>: Fade in bullet points sequentially (200ms delay between)</li>
+<li><strong>Diagram Entry</strong>: Fade in (400ms) after title appears</li>
+<li><strong>Emphasis</strong>: Subtle scale (1.0 → 1.05) and shadow for interactive elements</li>
+<li><strong>Avoid</strong>: Fly-ins, bounces, and complex multi-step animations</li>
+</ul>
+<h3 id="timing-recommendations">Timing Recommendations</h3>
+<ul>
+<li><strong>Slide dwell time</strong>: 60-90 seconds average (adjust based on content density)</li>
+<li><strong>Animation duration</strong>: 200-400ms (fast enough to feel responsive, slow enough to perceive)</li>
+<li><strong>Pause after title</strong>: 500ms before revealing content</li>
+</ul>
+<hr />
+<h2 id="accessibility-requirements">Accessibility Requirements</h2>
+<h3 id="visual-accessibility">Visual Accessibility</h3>
+<ul>
+<li><strong>Colour contrast</strong>: Minimum 4.5:1 for normal text, 3:1 for large text (WCAG AA)</li>
+<li><strong>Text size</strong>: Minimum 18pt for body text</li>
+<li><strong>Font weight</strong>: Minimum 400 (regular) for body, 600-700 for headings</li>
+<li><strong>Link distinction</strong>: Underline or bold in addition to colour</li>
+<li><strong>Focus indicators</strong>: 2px solid outline for keyboard navigation</li>
+</ul>
+<h3 id="cognitive-accessibility">Cognitive Accessibility</h3>
+<ul>
+<li><strong>Consistent layout</strong>: Use same slide types throughout presentation</li>
+<li><strong>Clear hierarchy</strong>: Size and colour indicate importance</li>
+<li><strong>Minimal distractions</strong>: Avoid auto-playing media or rapid animations</li>
+<li><strong>Readable fonts</strong>: Sans-serif with clear character distinction</li>
+</ul>
+<h3 id="screen-reader-compatibility">Screen Reader Compatibility</h3>
+<ul>
+<li><strong>Alt text</strong>: Provide for all diagrams and images</li>
+<li><strong>Logical reading order</strong>: Ensure content flows top-to-bottom, left-to-right</li>
+<li><strong>Semantic structure</strong>: Use heading levels appropriately</li>
+<li><strong>Table headers</strong>: Mark row/column headers in data tables</li>
+</ul>
+<hr />
+<h2 id="technical-implementation">Technical Implementation</h2>
+<h3 id="powerpoint-python-pptx-configuration">PowerPoint (python-pptx) Configuration</h3>
+<h4 id="presentation-setup">Presentation Setup</h4>
+<pre><code class="language-python">from pptx import Presentation
+from pptx.util import Inches, Pt
+from pptx.dml.color import RGBColor
+
+# Configure presentation
+prs = Presentation()
+prs.slide_width = Inches(13.3333)  # 16:9 aspect ratio
+prs.slide_height = Inches(7.5)
+
+# Set metadata
+props = prs.core_properties
+props.author = &quot;Gunnar Nordqvist&quot;
+props.title = &quot;Architecture as Code&quot;
+props.language = &quot;en-GB&quot;
+</code></pre>
+<h4 id="colour-constants">Colour Constants</h4>
+<pre><code class="language-python">THEME_BLUE = RGBColor(30, 58, 138)          # #1e3a8a
+THEME_BLUE_LIGHT = RGBColor(59, 130, 246)   # #3b82f6
+THEME_BLUE_DARK = RGBColor(30, 41, 59)      # #1e293b
+THEME_GREY = RGBColor(100, 116, 139)        # #64748b
+THEME_GREY_LIGHT = RGBColor(241, 245, 249)  # #f1f5f9
+THEME_ACCENT = RGBColor(217, 119, 6)        # #d97706
+THEME_SUCCESS = RGBColor(5, 150, 105)       # #059669
+</code></pre>
+<h3 id="htmlcss-presentation-template">HTML/CSS Presentation Template</h3>
+<h4 id="container-structure">Container Structure</h4>
+<pre><code class="language-html">&lt;div class=&quot;presentation-container&quot;&gt;
+  &lt;div class=&quot;slide [title-slide|content-slide|section-slide]&quot;&gt;
+    &lt;div class=&quot;slide-header&quot;&gt;
+      &lt;div class=&quot;logo-section&quot;&gt;
+        &lt;div class=&quot;logo&quot;&gt;K&lt;/div&gt;
+        &lt;div class=&quot;brand-text&quot;&gt;Kvadrat&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;slide-number&quot;&gt;2 / 45&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;slide-content&quot;&gt;
+      &lt;!-- Slide-specific content --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="css-variables">CSS Variables</h4>
+<pre><code class="language-css">:root {
+  --kvadrat-blue: hsl(221, 67%, 32%);
+  --kvadrat-blue-light: hsl(217, 91%, 60%);
+  --kvadrat-blue-dark: hsl(214, 32%, 18%);
+  --kvadrat-grey: hsl(215, 20%, 46%);
+  --kvadrat-grey-light: hsl(214, 32%, 97%);
+  --slide-width: 1280px;
+  --slide-height: 720px;
+  --slide-padding: 48px;
+  --slide-border-radius: 12px;
+}
+</code></pre>
+<h3 id="prezirevealjs-integration">Prezi/Reveal.js Integration</h3>
+<h4 id="slide-data-structure-json">Slide Data Structure (JSON)</h4>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;slide-01-introduction&quot;,
+  &quot;title&quot;: &quot;Introduction to Architecture as Code&quot;,
+  &quot;type&quot;: &quot;content-hero&quot;,
+  &quot;diagram&quot;: {
+    &quot;path&quot;: &quot;docs/images/diagram_01_01.png&quot;,
+    &quot;type&quot;: &quot;Flowchart&quot;,
+    &quot;caption&quot;: &quot;Architecture as Code workflow&quot;
+  },
+  &quot;keyPoints&quot;: [
+    &quot;Architecture as Code enables version-controlled system design&quot;,
+    &quot;Declarative approach ensures reproducible infrastructure&quot;,
+    &quot;Automation reduces manual configuration errors&quot;,
+    &quot;Integration with CI/CD pipelines accelerates delivery&quot;
+  ],
+  &quot;speakerNotes&quot;: &quot;Introduce Architecture as Code as evolution from manual processes...&quot;
+}
+</code></pre>
+<hr />
+<h2 id="quality-assurance-checklist">Quality Assurance Checklist</h2>
+<h3 id="pre-generation-validation">Pre-Generation Validation</h3>
+<ul>
+<li>[ ] All chapters have at least one diagram (run <code>python generate_presentation.py --validate-diagrams</code>)</li>
+<li>[ ] Diagram types are balanced (flowcharts, sequence, class diagrams present)</li>
+<li>[ ] Source images exist in <code>docs/images/</code> directory</li>
+<li>[ ] Mermaid source files (<code>.mmd</code>) include Kvadrat theme configuration</li>
+</ul>
+<h3 id="post-generation-review">Post-Generation Review</h3>
+<ul>
+<li>[ ] Slide count is reasonable (1 slide per 2-3 minutes of presentation)</li>
+<li>[ ] All diagrams render correctly with proper aspect ratios</li>
+<li>[ ] Text is readable at projected size (minimum 18pt)</li>
+<li>[ ] Colour contrast meets WCAG AA standards (4.5:1 minimum)</li>
+<li>[ ] No orphaned bullet points (minimum 2 bullets per list)</li>
+<li>[ ] Speaker notes are complete and informative</li>
+<li>[ ] Slide numbering is accurate</li>
+<li>[ ] Brand elements (logo, colours, fonts) are consistent</li>
+</ul>
+<h3 id="accessibility-audit">Accessibility Audit</h3>
+<ul>
+<li>[ ] Alt text present for all diagrams</li>
+<li>[ ] Colour is not sole means of conveying information</li>
+<li>[ ] Font sizes meet minimum requirements (18pt body, 36pt titles)</li>
+<li>[ ] Sufficient contrast between text and background</li>
+<li>[ ] Logical reading order (top-to-bottom, left-to-right)</li>
+<li>[ ] No flashing or rapidly changing content</li>
+</ul>
+<h3 id="technical-validation">Technical Validation</h3>
+<ul>
+<li>[ ] PowerPoint file opens without errors in Microsoft PowerPoint</li>
+<li>[ ] PowerPoint file opens without errors in LibreOffice Impress</li>
+<li>[ ] PDF export preserves formatting and embedded fonts</li>
+<li>[ ] HTML presentation displays correctly in Chrome, Firefox, Safari</li>
+<li>[ ] Mobile/tablet view is functional (responsive design)</li>
+</ul>
+<hr />
+<h2 id="presentation-delivery-best-practices">Presentation Delivery Best Practices</h2>
+<h3 id="preparation">Preparation</h3>
+<ul>
+<li><strong>Rehearse</strong>: Practice with actual slides, not notes</li>
+<li><strong>Time</strong>: Aim for 1-2 minutes per slide (adjust based on complexity)</li>
+<li><strong>Backup</strong>: Have PDF export ready in case of technical issues</li>
+<li><strong>Equipment check</strong>: Test projector resolution (1920×1080 or 1280×720)</li>
+</ul>
+<h3 id="during-presentation">During Presentation</h3>
+<ul>
+<li><strong>Pace</strong>: Allow time for audience to read slides</li>
+<li><strong>Engagement</strong>: Ask rhetorical questions, acknowledge reactions</li>
+<li><strong>Navigation</strong>: Use arrow keys (not mouse clicks) for professional appearance</li>
+<li><strong>Pointer use</strong>: Laser pointer or built-in presenter tools only when necessary</li>
+</ul>
+<h3 id="accessibility-during-delivery">Accessibility During Delivery</h3>
+<ul>
+<li><strong>Describe visuals</strong>: Briefly explain diagrams and charts for low-vision attendees</li>
+<li><strong>Read key points</strong>: Don't assume everyone can read slides clearly</li>
+<li><strong>Provide handouts</strong>: Offer PDF with speaker notes for attendees who need them</li>
+<li><strong>Record</strong>: Enable captions if recording for later viewing</li>
+</ul>
+<hr />
+<h2 id="maintenance-and-evolution">Maintenance and Evolution</h2>
+<h3 id="version-control">Version Control</h3>
+<ul>
+<li>Store presentation source files in <code>presentations/</code> directory</li>
+<li>Version presentation data files (<code>presentation_data.json</code>) in Git</li>
+<li>Tag releases with semantic versioning (e.g., <code>presentation-v1.2.0</code>)</li>
+<li>Document changes in <code>CHANGELOG.md</code></li>
+</ul>
+<h3 id="continuous-improvement">Continuous Improvement</h3>
+<ul>
+<li>Gather feedback after each presentation delivery</li>
+<li>Track which slides prompt most questions (may need clarification)</li>
+<li>Monitor time spent per slide (adjust content density)</li>
+<li>Update diagrams when underlying architecture changes</li>
+</ul>
+<h3 id="brand-guideline-updates">Brand Guideline Updates</h3>
+<p>When Kvadrat brand guidelines change:
+1. Update colour constants in <code>generate_presentation.py</code>
+2. Regenerate all presentations with <code>--release</code> flag
+3. Review sample slides for consistency
+4. Update this document to reflect changes</p>
+<hr />
+<h2 id="examples-and-templates">Examples and Templates</h2>
+<h3 id="example-architecture-decision-records-slide">Example: Architecture Decision Records Slide</h3>
+<p><strong>Layout</strong>: Content Slide – Hero Layout</p>
+<p><strong>Title</strong>: "Architecture Decision Records (ADR)"</p>
+<p><strong>Diagram</strong>: <code>diagram_04_02_adr_workflow.png</code> (Flowchart showing ADR creation process)</p>
+<p><strong>Caption</strong>: "Diagram: ADR lifecycle from proposal to implementation"</p>
+<p><strong>Key Points</strong>:
+- ADRs capture architectural decisions in version-controlled documents
+- Structured format: Context, Decision, Consequences, Status
+- Integrated with pull request workflows for collaborative review
+- Immutable once accepted, superseded rather than modified</p>
+<p><strong>Speaker Notes</strong>:
+"Architecture Decision Records provide a systematic way to document why we made specific architectural choices. The diagram shows how ADRs flow from proposal through review and acceptance. Key benefit: new team members can understand historical context by reading the ADR catalogue."</p>
+<hr />
+<h3 id="example-two-column-comparison-slide">Example: Two-Column Comparison Slide</h3>
+<p><strong>Layout</strong>: Two-Column Comparison Slide</p>
+<p><strong>Title</strong>: "Traditional Infrastructure vs. Architecture as Code"</p>
+<p><strong>Left Column</strong> (Traditional – highlighted in Kvadrat Grey):
+- Manual provisioning processes
+- Inconsistent environments across teams
+- Configuration drift over time
+- Limited audit trails
+- Slow disaster recovery
+- Knowledge locked in individual expertise</p>
+<p><strong>Right Column</strong> (Architecture as Code – highlighted in Success Green):
+- Automated provisioning from declarative code
+- Identical environments via version control
+- Immutable infrastructure prevents drift
+- Complete audit history in Git
+- Rapid recovery from versioned templates
+- Knowledge embedded in repository</p>
+<p><strong>Speaker Notes</strong>:
+"The contrast between traditional and Architecture as Code approaches is stark. On the left, we see the challenges of manual infrastructure management. On the right, Architecture as Code addresses each of these pain points through automation, version control, and declarative configuration."</p>
+<hr />
+<h3 id="example-statistics-slide">Example: Statistics Slide</h3>
+<p><strong>Layout</strong>: Statistics and Data Slide</p>
+<p><strong>Title</strong>: "Impact of Architecture as Code Adoption"</p>
+<p><strong>Stat Cards</strong> (3-column grid):
+1. <strong>90%</strong> / Fewer configuration errors
+2. <strong>75%</strong> / Faster deployment cycles
+3. <strong>60%</strong> / Reduced infrastructure costs</p>
+<p><strong>Source Citation</strong>: "Based on 2024 DevOps Research and Assessment (DORA) report"</p>
+<p><strong>Speaker Notes</strong>:
+"Industry data confirms the transformative impact of Architecture as Code. Organisations report dramatic reductions in configuration errors because infrastructure is tested and validated before deployment. Deployment cycles accelerate thanks to automation. And costs decrease as teams eliminate waste and optimise resource allocation."</p>
+<hr />
+<h2 id="appendix-related-documentation">Appendix: Related Documentation</h2>
+<h3 id="internal-references">Internal References</h3>
+<ul>
+<li><a href="../STYLE_GUIDE/">STYLE_GUIDE.md</a> – Editorial standards for British English</li>
+<li><a href="../archive/book-cover/source/BRAND_GUIDELINES/">BRAND_GUIDELINES.md</a> – Kvadrat brand identity</li>
+<li><code>generate_presentation.py</code> (repository root) – Presentation generation script</li>
+<li><code>templates/presentation-template.html</code> (repository root) – HTML presentation template</li>
+</ul>
+<h3 id="external-standards">External Standards</h3>
+<ul>
+<li><a href="https://www.w3.org/WAI/WCAG21/quickref/">WCAG 2.1 Guidelines</a> – Web accessibility standards</li>
+<li><a href="https://material.io/design/communication/data-visualization.html">Material Design</a> – Data visualisation best practices</li>
+<li><a href="https://developer.apple.com/design/human-interface-guidelines/presentations">Apple Human Interface Guidelines</a> – Presentation design principles</li>
+</ul>
+<hr />
+<h2 id="document-metadata">Document Metadata</h2>
+<p><strong>Version</strong>: 1.0<br />
+<strong>Last Updated</strong>: 26 March 2026<br />
+<strong>Maintained By</strong>: Architecture as Code Editorial Team<br />
+<strong>Contact</strong>: For questions about presentation design standards, create an issue in the GitHub repository<br />
+<strong>Licence</strong>: This document follows the same licence as the main Architecture as Code repository</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

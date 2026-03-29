@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/23_soft_as_code_interplay/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Interplay Between Soft-As-Code Disciplines - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Interplay Between Soft-As-Code Disciplines";
+        var mkdocs_page_input_path = "23_soft_as_code_interplay.md";
+        var mkdocs_page_url = "/23_soft_as_code_interplay/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Interplay Between Soft-As-Code Disciplines</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#learning-objectives">Learning Objectives</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-shared-dna">A Shared DNA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compliance-as-code-as-the-quality-engine">Compliance as Code as the Quality Engine</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#architecture-as-code-as-the-hub">Architecture as Code as the Hub</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation-as-code-as-the-communication-layer">Documentation as Code as the Communication Layer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#knowledge-as-code-and-culture-as-code">Knowledge as Code and Culture as Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#culture-as-code-in-practice">Culture as Code in Practice</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#knowledge-as-code-in-practice">Knowledge as Code in Practice</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#synergies-and-cross-pollination">Synergies and Cross-Pollination</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#challenges-and-counterforces">Challenges and Counterforces</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practical-applications">Practical Applications</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-1-policy-change">Scenario 1: Policy Change</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scenario-2-new-product-launch">Scenario 2: New Product Launch</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#strategies-for-adoption">Strategies for Adoption</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#future-perspectives">Future Perspectives</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part F – Experience & Best Practices</li>
+      <li class="breadcrumb-item active">Interplay Between Soft-As-Code Disciplines</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/23_soft_as_code_interplay.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="soft-as-code-interplay">The Interplay Between Soft "as code" Disciplines</h1>
+<h2 id="introduction">Introduction</h2>
+<p>For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, architecture as code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.</p>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li>Describe the shared DNA—structured representation, version control, and automatability—that unifies all soft 'as Code' disciplines.</li>
+<li>Explain how Compliance as Code acts as a quality engine by providing continuous validation across architectural and documentation artefacts.</li>
+<li>Demonstrate how Architecture as Code serves as the central hub connecting technical implementation with policy and documentation layers.</li>
+<li>Recognise how Knowledge as Code and Culture as Code preserve organisational memory through version-controlled knowledge registries and team-norm files.</li>
+<li>Identify the practical synergies generated when multiple soft 'as Code' disciplines are combined within a single toolchain.</li>
+<li>Apply adoption strategies—including shared principles, compatible tooling, and cross-functional training—to plan an incremental soft 'as Code' programme.</li>
+</ul>
+<p><img alt="Soft as code ecosystem" src="../images/diagram_23_soft_as_code.png" /></p>
+<p>The following mind maps illustrate the key concepts and relationships within the soft "as code" ecosystem. They visualise how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organisational synergies.</p>
+<p><img alt="Shared DNA of &quot;as code&quot; disciplines" src="../images/mindmap_23a_shared_dna.png" /></p>
+<p><em>Figure 23.1 shows the foundational elements shared across all "as code" disciplines: structured representation, version control, and automatability.</em></p>
+<p><img alt="Compliance as Code" src="../images/mindmap_23b_compliance.png" /></p>
+<p><em>Figure 23.2 illustrates how compliance as code provides quality engines, codified controls, and integration benefits.</em></p>
+<p><img alt="Architecture as Code as central hub" src="../images/mindmap_23c_architecture.png" /></p>
+<p><em>Figure 23.3 demonstrates Architecture as Code serving as the central hub connecting technical implementation, policy, and documentation.</em></p>
+<p><img alt="Documentation as Code" src="../images/mindmap_23d_documentation.png" /></p>
+<p><em>Figure 23.4 shows documentation as code providing communication layers, toolchain integration, and feedback loops.</em></p>
+<p><img alt="Knowledge and Culture as Code" src="../images/mindmap_23e_knowledge_culture.png" /></p>
+<p><em>Figure 23.5 presents how knowledge and culture can be codified to enable structured onboarding and experience preservation.</em></p>
+<p><img alt="Synergies and implementation strategy" src="../images/mindmap_23f_synergies.png" /></p>
+<p><em>Figure 23.6 highlights the synergies created through cross-pollination and the implementation strategy for adopting these practices.</em></p>
+<p><strong>Key takeaways from the mind map:</strong></p>
+<ul>
+<li><strong>One toolchain, many disciplines:</strong> Because every soft 'as Code' practice stores artefacts in Git and runs through CI/CD, lawyers reviewing a policy change and architects merging a CALM schema update are working in the same pull-request workflow—removing the translation layer that usually separates these communities.</li>
+<li><strong>Compliance as Code raises the floor for all other disciplines:</strong> The chapter shows how a single policy change propagates automatically to flag non-compliant architectural components and regenerate relevant documentation sections, turning what was once a manual audit into a continuous background check.</li>
+<li><strong>Architecture as Code's hub role creates real traceability:</strong> Rather than relying on documentation that describes an architecture from memory, teams can link commit hashes, policy identifiers, and issue numbers directly to infrastructure definitions, giving incident investigators an unambiguous chain of evidence.</li>
+<li><strong>Knowledge and Culture as Code move norms from tribal memory to version history:</strong> The chapter demonstrates this with a <code>team-norms.yaml</code> example in which working agreements, review expectations, and cultural principles are tracked through pull requests—making it possible to audit when a norm changed and why.</li>
+<li><strong>Cross-disciplinary synergies compound over time:</strong> The chapter's two scenarios—a policy change and a new product launch—illustrate how each discipline accelerates the others: faster compliance feedback shortens architecture review cycles, which in turn keeps documentation current with less manual effort.</li>
+<li><strong>Adoption requires deliberate strategy, not just tooling:</strong> The chapter's five-step adoption guide emphasises that shared principles, compatible tooling choices, and cross-functional training matter more than the specific tools chosen, and that an iterative pilot approach reduces the risk of overwhelming teams with simultaneous change.</li>
+</ul>
+<p>This visualisation reinforces the chapter's central message: soft "as code" disciplines compound their value when combined rather than deployed in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.</p>
+<h2 id="a-shared-dna">A Shared DNA</h2>
+<p>Even though the disciplines address different problem spaces, they share a common DNA. The goal is to take soft artifacts—policies, architectural principles, design descriptions, documentation, governance models—and convert them into:</p>
+<ol>
+<li><strong>Structured representation.</strong> Machine-readable formats such as YAML, JSON, Markdown, domain-specific languages, or models within code libraries make it possible to validate, test, and connect information to automation.</li>
+<li><strong>Version control.</strong> Git or similar systems provide history, traceability, and the ability to collaborate through pull requests, code reviews, and release processes.</li>
+<li><strong>Automatability.</strong> When soft artifacts are expressed as code they can feed tools that generate reports, verify compliance, update dashboards, or trigger workflows.</li>
+</ol>
+<p>This combination opens the door to a shared way of working across disciplines. Once an organisation has established a culture of version control, code review, and automated testing, it becomes natural to let compliance rules, architectural guidelines, and documentation structures live in the same ecosystem.</p>
+<h2 id="compliance-as-code-as-the-quality-engine">Compliance as Code as the Quality Engine</h2>
+<p>Compliance as code focuses on translating regulations, standards, and internal policies into codified controls. Tools such as Open Policy Agent, HashiCorp Sentinel, or custom rule frameworks can ingest policy definitions and evaluate them against system configurations, CI/CD pipelines, or infrastructure definitions. When the discipline is connected to other soft areas several effects emerge:</p>
+<ul>
+<li><strong>Rule reuse.</strong> Documentation and architectural principles can directly reference policy definitions, reducing the risk of diverging interpretations. An architect writing a blueprint can link to the same policy files the security team uses in their controls.</li>
+<li><strong>Continuous validation.</strong> Documentation as code makes it possible to describe which controls exist and how they are executed, while automations from Architecture as Code can trigger compliance checks for every change. The result is an unbroken chain between intent and verification.</li>
+<li><strong>Transparency and education.</strong> When the rule set is versioned and open to inspection, teams can teach themselves what is required. Pull requests on policy code become educational moments where lawyers, security experts, and developers meet and explain their reasoning.</li>
+</ul>
+<p>Compliance as code thus becomes a quality engine that reinforces the other disciplines. When architectural or documentation artifacts are updated, automated controls can ensure that changes still fall within approved boundaries. If a rule changes, the update propagates to every system that uses it—from architectural diagrams to external reports.</p>
+<p>Practical tools such as the <a href="../11_governance_as_code/#governance-and-security-controls-as-code-backlog">Governance and Security Controls as Code Backlog</a> show how this quality engine manifests in day-to-day delivery. Each backlog item ties policy definitions to Terraform modules, documentation updates, and evidence packs, helping teams demonstrate that soft "as code" practices have tangible outputs and measurable coverage.</p>
+<h2 id="architecture-as-code-as-the-hub">Architecture as Code as the Hub</h2>
+<p>Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of models in DSLs such as Structurizr, C4 models generated from Markdown, or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:</p>
+<ul>
+<li><strong>Traceability to compliance.</strong> The architecture can reference compliance rules that explain why a given pattern must include logging, encryption, or redundancy. By linking to rule definitions it becomes clear how design decisions support adherence.</li>
+<li><strong>Real-time documentation.</strong> Documentation as code can be generated directly from architectural models and provide up-to-date manuals, diagrams, and guides. Documentation stays in sync with the "living" architecture.</li>
+<li><strong>Automated quality gates.</strong> When architectural models are versioned, compliance and quality checks can run automatically before an architectural change is approved. This offers objective support for architecture boards and decision forums.</li>
+</ul>
+<p>The hub metaphor holds: Architecture as Code connects technical implementations with policy and documentation layers. Dialogue across expert roles becomes easier when everyone looks at the same source of truth.</p>
+<h2 id="documentation-as-code-as-the-communication-layer">Documentation as Code as the Communication Layer</h2>
+<p>Documentation as code is about writing, storing, and publishing documentation with the same toolchain used for other code. Markdown files are versioned in Git, generated via static site generators, and distributed through CI/CD pipelines. In the interplay between soft "as code" disciplines, documentation as code is the glue that binds the ecosystem together:</p>
+<ul>
+<li><strong>Narratives around rules and architecture.</strong> Documentation does not only describe "how" but also "why." By referencing compliance rules and architectural models, documentation explains the relationships and helps teams understand the bigger picture.</li>
+<li><strong>Self-service.</strong> When documentation is easily accessible and up to date, teams can find answers themselves. That reduces the need for manual handovers and accelerates onboarding.</li>
+<li><strong>Feedback loops.</strong> Pull requests on documentation create space for review, discussion, and improvement. Knowledge no longer gets stuck with a single individual; it becomes collectively owned.</li>
+</ul>
+<p>Documentation as code also acts as a layer of visibility. Architectural principles, compliance rules, and process descriptions become transparent and can be discussed in a structured way. Learning and improvement are therefore strengthened across the organisation.</p>
+<h2 id="knowledge-as-code-and-culture-as-code">Knowledge as Code and Culture as Code</h2>
+<p>To capture the full spectrum of soft artefacts we can also include knowledge as code and culture as code. Knowledge as code formalises knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organisation can iterate quickly while still preserving its experience and values.</p>
+<h3 id="culture-as-code-in-practice">Culture as Code in Practice</h3>
+<p>Culture as code moves team agreements and working norms out of slide decks and corridor conversations into version-controlled files that are reviewed, debated, and updated just like any other artefact. A simple <code>team-norms.yaml</code> file can make this concrete:</p>
+<pre><code class="language-yaml"># team-norms.yaml
+# Version-controlled team agreements for the Platform Engineering team
+# Last reviewed: 2026-03-01
+# Owners: platform-engineering@example.org
+
+team_name: Platform Engineering
+version: &quot;2.4&quot;
+
+working_agreements:
+  pull_requests:
+    review_sla_hours: 24
+    required_reviewers: 2
+    self_merge_allowed: false
+    draft_pr_encouraged: true
+  communication:
+    async_first: true
+    response_sla_hours: 8
+    meeting_free_days: [&quot;Wednesday&quot;]
+  on_call:
+    rotation_cadence: weekly
+    handover_format: &quot;structured_runbook&quot;
+
+cultural_principles:
+  - id: CP-01
+    principle: &quot;Blameless post-mortems&quot;
+    description: &gt;
+      Incidents are learning opportunities. Root-cause analysis focuses on
+      systemic factors, not individual blame. Action items target tooling,
+      processes, and documentation—not people.
+  - id: CP-02
+    principle: &quot;Document decisions, not just outcomes&quot;
+    description: &gt;
+      Every significant architectural or process decision is recorded as an ADR
+      or a pull-request description so that future team members understand
+      the context, not just the conclusion.
+  - id: CP-03
+    principle: &quot;Psychological safety over speed&quot;
+    description: &gt;
+      Team members are encouraged to raise concerns, propose experiments, and
+      admit uncertainty without fear of judgement. A culture of openness
+      produces better long-term outcomes than one optimised for short-term velocity.
+
+onboarding_checklist:
+  - &quot;Read and acknowledge team-norms.yaml&quot;
+  - &quot;Complete Architecture as Code learning path&quot;
+  - &quot;Shadow one on-call rotation before taking primary&quot;
+  - &quot;Open a pull request to propose at least one improvement to this file&quot;
+</code></pre>
+<p>Storing <code>team-norms.yaml</code> in Git means that every change is traceable. A pull request to adjust the review SLA records who proposed the change, what the discussion looked like, and when the new norm took effect. Onboarding engineers can read the commit history to understand how the team's culture has evolved—context that would otherwise live only in the memories of long-serving colleagues.</p>
+<h3 id="knowledge-as-code-in-practice">Knowledge as Code in Practice</h3>
+<p>Knowledge as code applies the same principle to the organisation's accumulated expertise. Rather than relying on wikis that drift out of date or institutional memory that walks out the door when people leave, structured knowledge registries make lessons and patterns queryable, linkable, and automatically validated.</p>
+<p>One approach uses a YAML-based knowledge registry alongside a Git-hosted knowledge graph tool such as Obsidian with Git synchronisation:</p>
+<pre><code class="language-yaml"># knowledge-registry/lessons-learned/LL-0042.yaml
+id: LL-0042
+title: &quot;Multi-region Terraform state locking failures under concurrent pipelines&quot;
+status: active
+tags: [terraform, state-management, multi-region, concurrency]
+related_adrs: [ADR-0017, ADR-0031]
+related_chapters: [&quot;03_version_control.md&quot;, &quot;14_practical_implementation.md&quot;]
+
+problem: &gt;
+  When three or more concurrent pipeline runs targeted the same Terraform
+  state bucket, DynamoDB lock contention caused random failures with
+  LockTimeoutError. The issue was intermittent and difficult to reproduce
+  in lower environments with fewer concurrent runners.
+
+root_cause: &gt;
+  The DynamoDB lock table was provisioned with default read/write capacity
+  units insufficient for more than two simultaneous lock requests.
+  Auto-scaling was not enabled.
+
+resolution: &gt;
+  Enable DynamoDB auto-scaling on the lock table, set a minimum of 5
+  read/write capacity units, and add exponential back-off retry logic
+  to the Terraform wrapper script. See the updated module in
+  shared-modules/terraform-state-backend v2.3.0.
+
+prevention:
+  - checklist_item: &quot;Verify DynamoDB auto-scaling is enabled for all state lock tables&quot;
+  - checklist_item: &quot;Load-test state locking with simulated concurrent pipelines before go-live&quot;
+
+contributors:
+  - name: &quot;Ana Rodrigues&quot;
+    role: &quot;Platform Engineer&quot;
+  - name: &quot;Kai Lindström&quot;
+    role: &quot;SRE&quot;
+
+created: &quot;2025-09-14&quot;
+last_updated: &quot;2026-01-07&quot;
+</code></pre>
+<p>This structured format allows CI pipelines to validate that every lesson has the required fields, link-checking scripts to verify that referenced ADRs and chapter files exist, and search tools to surface relevant lessons when engineers encounter similar error messages. When combined with Architecture as Code, the knowledge registry becomes a living index of hard-won experience that teams can query as they design new systems.</p>
+<h2 id="synergies-and-cross-pollination">Synergies and Cross-Pollination</h2>
+<p>Introducing several soft "as code" disciplines in parallel generates effects that exceed the value of any single initiative. Shared tools and processes turn pull requests into meeting places for architects, developers, lawyers, and communicators, and the same pipelines can validate code, policy, and documentation. Traceability improves when commit hashes, issues, and policy identifiers are cross-linked, giving revisions and incident investigations a clear history. Pace and appetite for experimentation increase because soft artifacts can be updated as fast as code while automated controls temper risk. Cross-functional collaborations emerge where legal experts learn technical details and developers appreciate the rationale behind regulations, creating shared ownership of the whole system.</p>
+<h2 id="challenges-and-counterforces">Challenges and Counterforces</h2>
+<p>The interplay between soft "as code" disciplines generates real value, but it is also demanding. Common challenges include:</p>
+<ul>
+<li><strong>Differences in terminology and mindset.</strong> Lawyers, architects, and documentation specialists use different vocabularies, which requires translation and extra onboarding.</li>
+<li><strong>Tooling barriers.</strong> Not everyone is comfortable with Git, pull requests, or CI/CD, so training is needed to avoid creating new hierarchies.</li>
+<li><strong>Automation debt.</strong> Codified rules do not capture every interpretation, so manual controls and clear governance remain necessary.</li>
+<li><strong>Information overload.</strong> When everything is versioned and logged, metadata and structure are required to keep information navigable.</li>
+</ul>
+<p>By addressing these challenges openly, investing in joint training initiatives, and establishing clear roles, organisations can maximise the value of the interplay.</p>
+<h2 id="practical-applications">Practical Applications</h2>
+<p>To make the interplay more tangible, consider a few practical scenarios:</p>
+<h3 id="scenario-1-policy-change">Scenario 1: Policy Change</h3>
+<p>The compliance team updates a data retention rule in code, after which the architectural models flag components lacking encryption. Documentation as code generates a new section about the requirement, and dashboards notify teams so remedial actions can be planned without delay.</p>
+<h3 id="scenario-2-new-product-launch">Scenario 2: New Product Launch</h3>
+<p>A new product is defined as code, which simultaneously creates diagrams and triggers compliance checks in CI/CD. Documentation is enriched with onboarding guides and API descriptions, while the knowledge base links to lessons learned from earlier launches.</p>
+<p>These scenarios illustrate how the interplay creates a dynamic chain in which each discipline amplifies the others.</p>
+<h2 id="strategies-for-adoption">Strategies for Adoption</h2>
+<p>Organisations seeking to establish a cohesive ecosystem of soft "as code" disciplines can follow these strategies:</p>
+<ol>
+<li><strong>Start with shared principles.</strong> Clarify the objectives of the initiative and the outcomes it should deliver.</li>
+<li><strong>Choose compatible tools.</strong> Ensure that compliance, architecture, and documentation tooling can integrate and share version control.</li>
+<li><strong>Invest in cross-functional training.</strong> Teach lawyers Git, help architects understand policy DSLs, and make documentation specialists comfortable with automated publishing.</li>
+<li><strong>Build iteratively.</strong> Begin with a pilot area and measure effects such as time savings or improved audit readiness.</li>
+<li><strong>Establish governance.</strong> Define roles for code owners and review processes as well as forums for discussing policy and architecture changes.</li>
+</ol>
+<h2 id="future-perspectives">Future Perspectives</h2>
+<p>Technologies such as AI and semantic search engines expand the potential of soft "as code" disciplines. By combining codified regulations with language models, organisations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as Code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.</p>
+<p>At the same time, data governance, security, and ethics become even more important. The more of an organisation’s soft fabric that is codified, the greater the demands on access control, privacy protection, and accountability.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The interplay between soft "as code" disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organisations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, architecture as code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.</p>
+<p>When these disciplines integrate, change ceases to be a threat and becomes a natural part of daily work. Teams can adapt rapidly to new requirements, experiment with new ideas, and still maintain a stable core of shared principles. The result is an organisation that dares to combine softness and structure—where human creativity is supported by the precision of code.</p>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><strong>Open Policy Agent (2024).</strong> <em>Policy as Code Overview.</em> CNCF OPA Project. <a href="../33_references/#source-10">Source [10]</a></li>
+<li><strong>HashiCorp.</strong> <em>Policy as Code Overview.</em> HashiCorp Developer Documentation. <a href="https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement">https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement</a></li>
+<li><strong>GitHub Docs (2024).</strong> <em>About protected branches.</em> GitHub Documentation. <a href="../33_references/#source-4">Source [4]</a></li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../22_documentation_vs_architecture/" class="btn btn-neutral float-left" title="Documentation as Code vs Architecture as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../24_best_practices/" class="btn btn-neutral float-right" title="Best Practices and Lessons Learned">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../22_documentation_vs_architecture/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../24_best_practices/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

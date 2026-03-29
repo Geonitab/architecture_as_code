@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/DIAGRAM_STYLE_GUIDE/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Diagram Style Guide for Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Diagram Style Guide for Architecture as Code";
+        var mkdocs_page_input_path = "DIAGRAM_STYLE_GUIDE.md";
+        var mkdocs_page_url = "/DIAGRAM_STYLE_GUIDE/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Diagram Style Guide for Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/DIAGRAM_STYLE_GUIDE.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="diagram-style-guide-for-architecture-as-code">Diagram Style Guide for Architecture as Code</h1>
+<h2 id="purpose">Purpose</h2>
+<p>This guide documents the standards for creating brand-compliant diagrams for the Architecture as Code book. All diagrams must follow the Kvadrat brand guidelines and maintain professional, consistent visual presentation throughout the publication.</p>
+<h2 id="brand-compliance-overview">Brand Compliance Overview</h2>
+<p>All diagrams must adhere to:
+- <strong>Kvadrat Brand Guidelines</strong>: Professional, corporate aesthetic without decorative elements
+- <strong>Colour Palette</strong>: Use only defined Kvadrat blue shades
+- <strong>Typography</strong>: Inter font family with appropriate sizing
+- <strong>Language</strong>: British English spelling and grammar
+- <strong>Professionalism</strong>: Clear, descriptive text without emojis or informal language</p>
+<p>For detailed brand requirements, see <code>docs/archive/book-cover/source/BRAND_GUIDELINES.md</code>.</p>
+<h2 id="colour-palette">Colour Palette</h2>
+<p>All diagrams use the Kvadrat blue colour palette defined in <code>docs/mermaid-kvadrat-theme.json</code>. Apply CSS classes to diagram elements using the <code>:::kv-*</code> syntax:</p>
+<h3 id="available-colour-classes">Available Colour Classes</h3>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Colour</th>
+<th>Hex Code</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>:::kv-primary</code></td>
+<td>Kvadrat Blue (Dark)</td>
+<td>#1E3A8A</td>
+<td>Primary elements, strategic components</td>
+</tr>
+<tr>
+<td><code>:::kv-accent</code></td>
+<td>Blue (Medium)</td>
+<td>#2563EB</td>
+<td>Secondary elements, supporting components</td>
+</tr>
+<tr>
+<td><code>:::kv-highlight</code></td>
+<td>Light Blue</td>
+<td>#3B82F6</td>
+<td>Emphasis elements, callouts</td>
+</tr>
+<tr>
+<td><code>:::kv-muted</code></td>
+<td>Ice Blue</td>
+<td>#E0F2FE</td>
+<td>Background, deprecated elements</td>
+</tr>
+<tr>
+<td><code>:::kv-pattern</code></td>
+<td>Lighter Blue</td>
+<td>#93C5FD</td>
+<td>Pattern elements, tertiary items</td>
+</tr>
+<tr>
+<td><code>:::kv-outline</code></td>
+<td>White with Border</td>
+<td>White + border</td>
+<td>Hollow boxes, outline elements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-usage">Example Usage</h3>
+<pre><code class="language-mermaid">graph LR
+    A[Strategic Component]:::kv-primary --&gt; B[Supporting Component]:::kv-accent
+    B --&gt; C[Highlighted Element]:::kv-highlight
+    D[Background Element]:::kv-muted
+</code></pre>
+<h2 id="typography">Typography</h2>
+<ul>
+<li><strong>Font Family</strong>: Inter (with fallbacks: 'Segoe UI', sans-serif)</li>
+<li><strong>Base Font Size</strong>: 16px</li>
+<li><strong>Title Font Size</strong>: 20px</li>
+<li><strong>Font Weight</strong>: 600 (semi-bold) for labels and titles</li>
+<li><strong>Text Colour</strong>: Dark Blue (#0F172A)</li>
+</ul>
+<p>Typography is automatically applied through the theme configuration. Do not override font settings in individual diagrams.</p>
+<h2 id="diagram-types-with-examples">Diagram Types with Examples</h2>
+<h3 id="flowcharts-and-graphs">Flowcharts and Graphs</h3>
+<p>Use flowcharts for process flows, system architectures, and component relationships.</p>
+<pre><code class="language-mermaid">graph TB
+    subgraph &quot;System Architecture&quot;
+        A[Frontend Application]:::kv-primary
+        B[API Gateway]:::kv-accent
+        C[Backend Services]:::kv-accent
+        D[Database]:::kv-highlight
+    end
+
+    A --&gt; B
+    B --&gt; C
+    C --&gt; D
+
+    class A,B,C,D kv-primary
+</code></pre>
+<h3 id="sequence-diagrams">Sequence Diagrams</h3>
+<p>Use sequence diagrams for interaction flows and temporal processes.</p>
+<pre><code class="language-mermaid">sequenceDiagram
+    participant User as User
+    participant System as System
+    participant DB as Database
+
+    User-&gt;&gt;System: Request data
+    System-&gt;&gt;DB: Query
+    DB--&gt;&gt;System: Results
+    System--&gt;&gt;User: Response
+</code></pre>
+<p><strong>Important</strong>: No emojis in participant names or labels. Use clear, professional text only.</p>
+<h3 id="mindmaps">Mindmaps</h3>
+<p>Use mindmaps for concept hierarchies and knowledge structures.</p>
+<pre><code class="language-mermaid">mindmap
+  root((Architecture as Code))
+    Principles
+      Version Control
+      Automation
+      Testing
+    Tools
+      Terraform
+      Ansible
+      Pulumi
+    Practices
+      Documentation
+      Review
+      Governance
+</code></pre>
+<h3 id="quadrant-charts">Quadrant Charts</h3>
+<p>Use quadrant charts for analysis and decision matrices.</p>
+<pre><code class="language-mermaid">quadrantChart
+    title Tool Selection Matrix
+    x-axis Low Complexity --&gt; High Complexity
+    y-axis Low Maturity --&gt; High Maturity
+    quadrant-1 Strategic Choice
+    quadrant-2 Emerging Options
+    quadrant-3 Limited Use
+    quadrant-4 Mature Alternatives
+</code></pre>
+<h3 id="class-diagrams">Class Diagrams</h3>
+<p>Use class diagrams for data models and object relationships.</p>
+<pre><code class="language-mermaid">classDiagram
+    class Architecture {
+        +String version
+        +validate()
+        +deploy()
+    }
+
+    class Component {
+        +String name
+        +configure()
+    }
+
+    Architecture --&gt; Component : contains
+</code></pre>
+<h3 id="requirement-diagrams">Requirement Diagrams</h3>
+<p>Use requirement diagrams for tracing requirements to implementation.</p>
+<pre><code class="language-mermaid">requirementDiagram
+    requirement business_requirement {
+        id: 1
+        text: &quot;Secure infrastructure&quot;
+        risk: high
+        verifymethod: test
+    }
+
+    functionalRequirement implementation {
+        id: 1.1
+        text: &quot;Encryption enabled&quot;
+        risk: high
+        verifymethod: test
+    }
+
+    business_requirement - contains -&gt; implementation
+</code></pre>
+<h2 id="dos-and-donts">Do's and Don'ts</h2>
+<h3 id="do">DO</h3>
+<p>✅ Use <code>:::kv-*</code> CSS classes for all styled nodes<br />
+✅ Write all text in British English (organisation, optimisation, behaviour)<br />
+✅ Keep titles clear, professional, and descriptive<br />
+✅ Rely on the central theme file (<code>mermaid-kvadrat-theme.json</code>)<br />
+✅ Test diagram rendering before committing<br />
+✅ Use rounded corners (defined in theme)<br />
+✅ Apply consistent stroke widths (defined in theme)<br />
+✅ Use subgraphs to group related elements<br />
+✅ Keep diagrams simple and focused on one concept<br />
+✅ Use descriptive labels that explain the purpose  </p>
+<h3 id="dont">DON'T</h3>
+<p>❌ Use inline theme configurations or style overrides<br />
+❌ Include emojis in titles, labels, or annotations<br />
+❌ Use American English spellings (organization, optimization, behavior, center)<br />
+❌ Override theme colours manually with hex codes<br />
+❌ Create overly complex diagrams (break into multiple instead)<br />
+❌ Use decorative elements that don't add meaning<br />
+❌ Mix different styling approaches in the same diagram<br />
+❌ Forget to add CSS classes to important nodes<br />
+❌ Use informal language or colloquialisms<br />
+❌ Leave diagrams without meaningful titles  </p>
+<h2 id="file-naming-convention">File Naming Convention</h2>
+<p>Diagram files should follow this pattern:</p>
+<pre><code class="language-text">diagram_[chapter]_[description].mmd
+</code></pre>
+<p>Examples:
+- <code>diagram_04_iac_tools_quadrant.mmd</code>
+- <code>diagram_12_requirements_testing.mmd</code>
+- <code>diagram_23_glossary_class.mmd</code>
+- <code>code_review_sequence.mmd</code></p>
+<h2 id="validation-process">Validation Process</h2>
+<p>Before committing diagram changes:</p>
+<h3 id="1-verify-british-english-spelling">1. Verify British English Spelling</h3>
+<pre><code class="language-bash"># Check for American spellings in diagram files
+grep -ri &quot;organizat\|optimiz\|behavior\|center&quot; docs/images/*.mmd
+</code></pre>
+<p><strong>Expected result</strong>: No matches (empty output)</p>
+<h3 id="2-verify-no-emojis">2. Verify No Emojis</h3>
+<pre><code class="language-bash"># Search for common emojis in diagram files
+find docs/images -name &quot;*.mmd&quot; -exec grep -l &quot;🛠\|🏆\|📊\|🔧\|📈\|💡\|🚀\|✅\|❌\|🎯&quot; {} \;
+</code></pre>
+<p><strong>Expected result</strong>: No files found (empty output)</p>
+<h3 id="3-test-diagram-rendering">3. Test Diagram Rendering</h3>
+<pre><code class="language-bash"># Generate PNG files from Mermaid diagrams
+PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) mmdc -i docs/images/your_diagram.mmd -o docs/images/your_diagram.png -t docs/mermaid-kvadrat-theme.json
+</code></pre>
+<p><strong>Expected result</strong>: PNG file generated successfully with correct colours and styling</p>
+<h3 id="4-validate-complete-book-build">4. Validate Complete Book Build</h3>
+<pre><code class="language-bash"># Full book build with all diagrams
+python3 generate_book.py &amp;&amp; docs/build_book.sh
+</code></pre>
+<p><strong>Expected result</strong>: PDF, EPUB, and DOCX generated successfully in <code>releases/book/</code></p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="problem-colours-not-applying">Problem: Colours Not Applying</h3>
+<p><strong>Symptom</strong>: Nodes appear in default Mermaid colours instead of Kvadrat blue shades</p>
+<p><strong>Solution</strong>: 
+- Check CSS class syntax: <code>[Label]:::kv-primary</code> (note the triple colons)
+- Verify the class name is exactly one of: <code>kv-primary</code>, <code>kv-accent</code>, <code>kv-highlight</code>, <code>kv-muted</code>, <code>kv-pattern</code>, <code>kv-outline</code>
+- Ensure no extra spaces between node definition and class</p>
+<h3 id="problem-text-truncated">Problem: Text Truncated</h3>
+<p><strong>Symptom</strong>: Labels are cut off or abbreviated in rendered PNG</p>
+<p><strong>Solution</strong>:
+- Reduce label length to 30-40 characters maximum
+- Use <code>&lt;br/&gt;</code> to break long labels into multiple lines
+- Consider using a note or annotation for detailed text</p>
+<h3 id="problem-mermaid-rendering-errors">Problem: Mermaid Rendering Errors</h3>
+<p><strong>Symptom</strong>: <code>mmdc</code> command fails with syntax errors</p>
+<p><strong>Solution</strong>:
+- Validate Mermaid syntax using online editor: https://mermaid.live
+- Check for missing spaces around arrows (<code>--&gt;</code>, <code>-&gt;&gt;</code>)
+- Ensure proper indentation in subgraphs
+- Verify diagram type keyword is correct (<code>graph</code>, <code>sequenceDiagram</code>, <code>classDiagram</code>, etc.)</p>
+<h3 id="problem-theme-not-loading">Problem: Theme Not Loading</h3>
+<p><strong>Symptom</strong>: Diagrams render with default theme instead of Kvadrat theme</p>
+<p><strong>Solution</strong>:
+- Ensure <code>mmdc</code> command includes <code>-t docs/mermaid-kvadrat-theme.json</code> parameter
+- Verify theme file exists and is valid JSON
+- Check that <code>PUPPETEER_EXECUTABLE_PATH</code> environment variable is set</p>
+<h3 id="problem-chrome-executable-error">Problem: Chrome Executable Error</h3>
+<p><strong>Symptom</strong>: <code>mmdc</code> fails with "Chrome executable not found"</p>
+<p><strong>Solution</strong>:</p>
+<pre><code class="language-bash"># Set Chrome executable path
+export PUPPETEER_EXECUTABLE_PATH=$(which google-chrome)
+
+# Or use chromium if chrome not available
+export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
+</code></pre>
+<h2 id="diagram-creation-workflow">Diagram Creation Workflow</h2>
+<ol>
+<li><strong>Plan</strong>: Sketch the diagram structure and identify key components</li>
+<li><strong>Create</strong>: Write Mermaid syntax in <code>.mmd</code> file following naming convention</li>
+<li><strong>Style</strong>: Apply appropriate <code>:::kv-*</code> classes to all important nodes</li>
+<li><strong>Validate</strong>: Run validation checks (spelling, emojis, syntax)</li>
+<li><strong>Render</strong>: Generate PNG using <code>mmdc</code> with Kvadrat theme</li>
+<li><strong>Review</strong>: Verify rendered PNG matches brand guidelines</li>
+<li><strong>Commit</strong>: Add both <code>.mmd</code> source and <code>.png</code> output to version control</li>
+<li><strong>Test</strong>: Run full book build to ensure diagram appears correctly</li>
+</ol>
+<h2 id="common-patterns">Common Patterns</h2>
+<h3 id="highlighting-critical-paths">Highlighting Critical Paths</h3>
+<p>Use <code>:::kv-primary</code> for critical path elements:</p>
+<pre><code class="language-mermaid">graph LR
+    A[Input]:::kv-muted --&gt; B[Critical Process]:::kv-primary
+    B --&gt; C[Output]:::kv-muted
+    A --&gt; D[Alternative Path]:::kv-accent
+    D --&gt; C
+</code></pre>
+<h3 id="showing-status-or-state">Showing Status or State</h3>
+<p>Use different classes to indicate state:</p>
+<pre><code class="language-mermaid">graph TD
+    A[Active Service]:::kv-primary
+    B[Deprecated Service]:::kv-muted
+    C[New Service]:::kv-highlight
+</code></pre>
+<h3 id="grouping-with-subgraphs">Grouping with Subgraphs</h3>
+<p>Use subgraphs for logical grouping:</p>
+<pre><code class="language-mermaid">graph TB
+    subgraph &quot;Frontend Layer&quot;
+        A[Web App]:::kv-accent
+        B[Mobile App]:::kv-accent
+    end
+
+    subgraph &quot;Backend Layer&quot;
+        C[API Gateway]:::kv-primary
+        D[Services]:::kv-primary
+    end
+
+    A --&gt; C
+    B --&gt; C
+    C --&gt; D
+</code></pre>
+<h2 id="integration-with-build-process">Integration with Build Process</h2>
+<p>Diagrams are automatically converted during the book build process:</p>
+<ol>
+<li><strong>Source Files</strong>: <code>.mmd</code> files in <code>docs/images/</code> directory</li>
+<li><strong>Conversion</strong>: GitHub Actions workflow runs <code>mmdc</code> to generate PNG files</li>
+<li><strong>Inclusion</strong>: Pandoc embeds PNG files in PDF, EPUB, and DOCX outputs</li>
+<li><strong>Version Control</strong>: Both <code>.mmd</code> and <code>.png</code> files are committed</li>
+</ol>
+<h3 id="manual-diagram-regeneration">Manual Diagram Regeneration</h3>
+<p>To regenerate all diagrams locally:</p>
+<pre><code class="language-bash"># Navigate to images directory
+cd docs/images
+
+# Regenerate all diagrams (requires Chrome/Chromium)
+for file in *.mmd; do
+    PUPPETEER_EXECUTABLE_PATH=$(which google-chrome) \
+    mmdc -i &quot;$file&quot; -o &quot;${file%.mmd}.png&quot; -t ../mermaid-kvadrat-theme.json
+done
+
+# Verify count matches
+ls -1 *.mmd | wc -l
+ls -1 *.png | wc -l
+</code></pre>
+<h2 id="quality-checklist">Quality Checklist</h2>
+<p>Before considering a diagram complete, verify:</p>
+<ul>
+<li>[ ] Diagram uses only Kvadrat colour palette (<code>:::kv-*</code> classes)</li>
+<li>[ ] All text uses British English spelling</li>
+<li>[ ] No emojis in titles, labels, or annotations</li>
+<li>[ ] Title is clear, professional, and descriptive</li>
+<li>[ ] Diagram complexity is appropriate (not too busy)</li>
+<li>[ ] PNG renders correctly with theme applied</li>
+<li>[ ] File naming follows convention</li>
+<li>[ ] Both <code>.mmd</code> and <code>.png</code> are committed</li>
+<li>[ ] Diagram appears correctly in book build</li>
+<li>[ ] Visual hierarchy is clear and logical</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Editorial Standards</strong>: <code>docs/STYLE_GUIDE.md</code></li>
+<li><strong>Theme Configuration</strong>: <code>docs/mermaid-kvadrat-theme.json</code></li>
+<li><strong>Brand Guidelines</strong>: <code>docs/archive/book-cover/source/BRAND_GUIDELINES.md</code></li>
+<li><strong>Mermaid Documentation</strong>: https://mermaid.js.org/</li>
+<li><strong>Build Process</strong>: <code>docs/build_book.sh</code></li>
+<li><strong>Book Generator</strong>: <code>generate_book.py</code></li>
+</ul>
+<h2 id="getting-help">Getting Help</h2>
+<p>If you encounter issues not covered in this guide:</p>
+<ol>
+<li>Check existing diagrams in <code>docs/images/</code> for examples</li>
+<li>Review the Mermaid documentation for syntax help</li>
+<li>Test diagrams in the online editor: https://mermaid.live</li>
+<li>Verify the build process with: <code>python3 generate_book.py &amp;&amp; docs/build_book.sh</code></li>
+<li>Consult the project README for additional troubleshooting</li>
+</ol>
+<h2 id="version-history">Version History</h2>
+<ul>
+<li><strong>v1.0</strong> (2025-11-05): Initial diagram style guide creation</li>
+<li>Documented Kvadrat colour palette and CSS classes</li>
+<li>Added examples for all diagram types</li>
+<li>Defined validation process and quality checklist</li>
+<li>Created troubleshooting section</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

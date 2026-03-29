@@ -1,0 +1,23 @@
+%% Diagram: Policy-Driven Compliance Control Tower
+flowchart TD
+    subgraph Strategy[Governance Strategy]
+        S1[Regulatory Mapping & Risk Appetite]:::kv-primary
+        S2[Control Objectives]:::kv-accent
+    end
+    subgraph Automation[Automation Platform]
+        A1[Policy as Code]:::kv-highlight
+        A2[Compliance Pipeline]:::kv-accent
+    end
+    subgraph Operations[Operational Outcomes]
+        O1[Real-time Dashboards]:::kv-primary
+        O2[Exception Management]:::kv-pattern
+        O3[Regulator Reporting]:::kv-muted
+    end
+    S1 --> A1
+    S2 --> A1
+    A1 --> A2
+    A2 --> O1
+    A2 --> O2
+    A2 --> O3
+    O2 -.-> A2
+    O3 -.-> S1

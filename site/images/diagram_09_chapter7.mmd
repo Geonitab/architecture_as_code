@@ -1,0 +1,13 @@
+%% Diagram: Containerisation and orchestration as code — from Dockerfile through OCI image and registry to Kubernetes deployment and cluster autoscaling
+flowchart TB
+    subgraph Build["Container Build Pipeline"]
+        A["Dockerfile /\nBuildpack"]:::kv-primary --> B["OCI\nImage"]:::kv-highlight
+        B --> C["Container\nRegistry"]:::kv-accent
+    end
+    subgraph Orchestrate["Kubernetes Orchestration"]
+        D["Helm Chart /\nKustomize"]:::kv-primary --> E["Pod\nDeployment"]:::kv-highlight
+        E --> F["Service &\nIngress"]:::kv-accent
+        F --> G["Horizontal Pod\nAutoscaler"]:::kv-muted
+    end
+    C -->|"image pull"| D
+    G -->|"scales"| E

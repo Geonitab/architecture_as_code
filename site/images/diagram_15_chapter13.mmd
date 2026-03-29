@@ -1,0 +1,11 @@
+%% Diagram: Testing strategies for Infrastructure as Code — layered testing pyramid from unit and module validation through integration and security to end-to-end assurance
+flowchart TB
+    A["Infrastructure\nCode"]:::kv-primary --> B["Unit Tests\nSyntax & Lint"]:::kv-highlight
+    A --> C["Module Tests\nResource Logic"]:::kv-accent
+    B --> D["Integration Tests\nDeployed Stack"]:::kv-highlight
+    C --> D
+    D --> E["Security Policy\nTests — OPA"]:::kv-accent
+    D --> F["Performance\nBaselines"]:::kv-muted
+    E --> G["End-to-End\nValidation"]:::kv-primary
+    F --> G
+    G --> H["Test\nReporting"]:::kv-muted

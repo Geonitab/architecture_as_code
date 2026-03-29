@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/translation_workflow/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Translation Workflow - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Translation Workflow";
+        var mkdocs_page_input_path = "translation_workflow.md";
+        var mkdocs_page_url = "/translation_workflow/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Translation Workflow</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/translation_workflow.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="translation-workflow">Translation Workflow</h1>
+<p>This document describes how translations of <em>Architecture as Code</em> manuscript content are managed, how to add a new language, and the quality standards that all translated content must meet.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#translation-infrastructure-overview">Translation Infrastructure Overview</a></li>
+<li><a href="#using-scriptstranslate_repopy">Using <code>scripts/translate_repo.py</code></a></li>
+<li><a href="#adding-a-new-language">Adding a New Language</a></li>
+<li><a href="#translation-quality-standards">Translation Quality Standards</a></li>
+<li><a href="#testing-translated-content">Testing Translated Content</a></li>
+<li><a href="#maintaining-translations">Maintaining Translations</a></li>
+</ol>
+<hr />
+<h2 id="translation-infrastructure-overview">Translation Infrastructure Overview</h2>
+<h3 id="approach">Approach</h3>
+<p>Translations of <em>Architecture as Code</em> are stored as separate Markdown files alongside the canonical English-language source. The primary tooling is a Python helper script (<code>scripts/translate_repo.py</code>) that uses the <code>translators</code> library to produce a machine-translated first draft. Human reviewers then refine each draft to meet editorial and technical standards before it is committed to the repository.</p>
+<h3 id="file-layout">File layout</h3>
+<p>Translated files follow the naming convention <code>&lt;original_basename&gt;_&lt;language_code&gt;.md</code> and are placed in the same directory as their English source, or within <code>docs/archive/</code> for drafts that are not yet part of the live build.</p>
+<pre><code class="language-text">docs/
+├── 01_introduction.md              # Canonical English source
+├── 01_introduction_sv.md           # Swedish translation (example)
+└── archive/
+    ├── future_development_sv.md    # Archived Swedish draft
+    └── microservices_architecture_en.md
+</code></pre>
+<p>The build pipeline currently compiles only the canonical English sources listed in <code>docs/book_index.json</code>. Translated files are maintained in the repository for reference and future multilingual editions but are not included in the default PDF, EPUB, or DOCX builds unless explicitly added to <code>book_index.json</code>.</p>
+<h3 id="dependencies">Dependencies</h3>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python 3.12.3</td>
+<td>Required runtime for <code>translate_repo.py</code></td>
+</tr>
+<tr>
+<td><code>translators</code> library</td>
+<td>Machine translation via multiple provider back-ends</td>
+</tr>
+</tbody>
+</table>
+<p>Install the Python dependencies before running any translation commands:</p>
+<pre><code class="language-bash">python3 -m pip install -r requirements.txt
+</code></pre>
+<p>Confirm that <code>translators</code> is available:</p>
+<pre><code class="language-bash">python3 -c &quot;import translators; print('translators available')&quot;
+</code></pre>
+<hr />
+<h2 id="using-scriptstranslate_repopy">Using <code>scripts/translate_repo.py</code></h2>
+<h3 id="what-the-script-does">What the script does</h3>
+<p><code>scripts/translate_repo.py</code> walks the repository tree starting from the root, reads every non-binary file it encounters, calls the <code>translators</code> library to translate the content from English into the target language, and overwrites each file with the translated text.</p>
+<p>The script skips the following paths to avoid corrupting automation and version-control metadata:</p>
+<ul>
+<li><code>.git/</code></li>
+<li><code>.github/</code></li>
+<li><code>scripts/</code></li>
+</ul>
+<h3 id="running-a-translation">Running a translation</h3>
+<blockquote>
+<p><strong>Warning:</strong> The script overwrites files in place. Always work on a dedicated Git branch and commit the English originals first so that changes can be reviewed and reverted if necessary.</p>
+</blockquote>
+<pre><code class="language-bash"># Create a branch for the translation
+git checkout -b translation/&lt;language-code&gt;-&lt;chapter-or-scope&gt;
+
+# Run translation for a specific file
+python3 - &lt;&lt;'EOF'
+from scripts.translate_repo import translate_file_content
+translate_file_content(&quot;docs/01_introduction.md&quot;, target_language=&quot;sv&quot;)
+EOF
+
+# Or translate an entire directory subtree
+python3 - &lt;&lt;'EOF'
+from scripts.translate_repo import translate_directory
+translate_directory(&quot;docs/&quot;, target_language=&quot;sv&quot;)
+EOF
+</code></pre>
+<p>Alternatively, invoke the script directly to translate the entire repository (use with caution):</p>
+<pre><code class="language-bash">python3 scripts/translate_repo.py
+</code></pre>
+<p>The default target language is Swedish (<code>sv</code>). Pass a different <a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry">BCP 47 language tag</a> to the <code>target_language</code> parameter to translate into another language.</p>
+<h3 id="supported-language-codes">Supported language codes</h3>
+<p>The <code>translators</code> library supports a wide range of language codes. Common examples:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Swedish</td>
+<td><code>sv</code></td>
+</tr>
+<tr>
+<td>German</td>
+<td><code>de</code></td>
+</tr>
+<tr>
+<td>French</td>
+<td><code>fr</code></td>
+</tr>
+<tr>
+<td>Spanish</td>
+<td><code>es</code></td>
+</tr>
+<tr>
+<td>Japanese</td>
+<td><code>ja</code></td>
+</tr>
+<tr>
+<td>Simplified Chinese</td>
+<td><code>zh</code></td>
+</tr>
+<tr>
+<td>Portuguese</td>
+<td><code>pt</code></td>
+</tr>
+</tbody>
+</table>
+<p>Refer to the <a href="https://github.com/UlionTse/translators">translators library documentation</a> for the full list of supported codes and provider availability.</p>
+<h3 id="output">Output</h3>
+<p>The script prints progress to standard output:</p>
+<pre><code class="language-text">Startar översättning för mappen: /path/to/architecture_as_code
+Översatte filen: docs/01_introduction.md
+...
+Översättningen är klar!
+</code></pre>
+<p>Files that are empty or unreadable (binary assets) are skipped with an informational message.</p>
+<hr />
+<h2 id="adding-a-new-language">Adding a New Language</h2>
+<p>Follow these steps to introduce a language that has not been translated before.</p>
+<h3 id="1-verify-language-support">1. Verify language support</h3>
+<p>Confirm that the target language code is supported by the <code>translators</code> library:</p>
+<pre><code class="language-python">python3 -c &quot;
+import translators as ts
+# Attempt a short test translation
+result = ts.translate_text('Architecture as Code', from_language='en', to_language='&lt;code&gt;')
+print(result)
+&quot;
+</code></pre>
+<p>If this succeeds, proceed. If it raises an exception, check the library documentation for the correct code or an alternative provider.</p>
+<h3 id="2-create-a-translation-branch">2. Create a translation branch</h3>
+<pre><code class="language-bash">git checkout -b translation/&lt;language-code&gt;-initial
+</code></pre>
+<h3 id="3-translate-target-files">3. Translate target files</h3>
+<p>Decide which files to translate. For a new language, start with a representative subset rather than attempting the entire repository at once:</p>
+<pre><code class="language-bash">python3 - &lt;&lt;'EOF'
+from scripts.translate_repo import translate_file_content
+
+# Translate the introduction chapter as a pilot
+translate_file_content(&quot;docs/01_introduction.md&quot;, target_language=&quot;&lt;code&gt;&quot;)
+EOF
+</code></pre>
+<p>After the machine translation completes, rename the output file to include the language suffix before the <code>.md</code> extension and move the original back to its canonical English path:</p>
+<pre><code class="language-bash"># The script overwrites the original file, so restore it from git
+git checkout docs/01_introduction.md
+
+# Rename the translated copy appropriately
+mv docs/01_introduction.md docs/01_introduction_&lt;code&gt;.md
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> Translate one file at a time for new languages so that quality can be assessed before translating the full manuscript.</p>
+</blockquote>
+<h3 id="4-apply-language-specific-editorial-review">4. Apply language-specific editorial review</h3>
+<p>Machine translation output must always be reviewed by a fluent speaker before being committed (see <a href="#translation-quality-standards">Translation Quality Standards</a>).</p>
+<h3 id="5-update-documentation">5. Update documentation</h3>
+<p>Add the new language to this document's supported language table and, once a translation is considered complete enough for inclusion, update <code>docs/book_index.json</code> to reference the translated files in a separate build configuration.</p>
+<h3 id="6-open-a-pull-request">6. Open a pull request</h3>
+<p>Submit the reviewed translations through the standard pull request process described in <code>CONTRIBUTING.md</code>. Use the <code>documentation</code> label to trigger the Editor Bot for automated feedback.</p>
+<hr />
+<h2 id="translation-quality-standards">Translation Quality Standards</h2>
+<p>Machine translation provides a useful starting draft but always requires human editorial refinement. The following standards must be met before any translated file is committed to a non-archive path.</p>
+<h3 id="technical-terminology">Technical terminology</h3>
+<p>Architecture and technology terms that are widely understood in English should generally be left untranslated or transliterated rather than adapted into potentially ambiguous local equivalents. Examples:</p>
+<ul>
+<li>"Architecture as Code" — retain the English title in all translations.</li>
+<li>"pipeline", "microservice", "container", "repository" — retain if the target language community uses the English term.</li>
+<li>Domain-specific terms defined in the book's glossary — use translations only where a well-established local equivalent exists.</li>
+</ul>
+<h3 id="structural-fidelity">Structural fidelity</h3>
+<ul>
+<li>All Markdown headings, YAML frontmatter fields, fenced code blocks, and internal link anchors must be preserved exactly as in the English source.</li>
+<li>Do <strong>not</strong> translate content inside fenced code blocks, inline code spans, or HTML attributes.</li>
+<li>Image references and diagram filenames must remain unchanged.</li>
+</ul>
+<h3 id="prose-quality">Prose quality</h3>
+<ul>
+<li>Translated prose must read naturally in the target language; literal word-for-word renditions are not acceptable.</li>
+<li>Maintain the formal, instructional tone of the English original.</li>
+<li>Avoid colloquialisms, region-specific idioms, or culturally specific metaphors unless they accurately convey the intended meaning.</li>
+</ul>
+<h3 id="consistency">Consistency</h3>
+<ul>
+<li>Use consistent terminology throughout all translated chapters. Maintain a glossary of preferred translations for technical terms specific to the target language.</li>
+<li>Where a term appears with varying translations in the machine output, standardise on one form during editorial review.</li>
+</ul>
+<h3 id="review-sign-off">Review sign-off</h3>
+<p>Every translated file requires sign-off from at least one fluent speaker of the target language who also has sufficient technical background to verify that architectural and engineering concepts are correctly conveyed.</p>
+<hr />
+<h2 id="testing-translated-content">Testing Translated Content</h2>
+<h3 id="structural-validation">Structural validation</h3>
+<p>Run the standard link and source verification scripts against translated files:</p>
+<pre><code class="language-bash"># Check that all internal links resolve
+python3 scripts/verify_links.py
+
+# Verify cited sources
+python3 scripts/verify_sources.py
+</code></pre>
+<p>These scripts check Markdown link syntax and URL availability regardless of the language of the surrounding prose.</p>
+<h3 id="build-validation">Build validation</h3>
+<p>Translated chapters that are added to <code>book_index.json</code> must pass the full build pipeline:</p>
+<pre><code class="language-bash">python3 generate_book.py &amp;&amp; docs/build_book.sh
+</code></pre>
+<p>Check that Pandoc processes the translated Markdown without errors and that the resulting PDF, EPUB, and DOCX output is formatted correctly.</p>
+<h3 id="pytest-suite">Pytest suite</h3>
+<p>The content validation tests operate primarily on the English canonical sources. When a translation is added to the live build, extend the relevant test fixtures in <code>tests/</code> to include the translated files:</p>
+<pre><code class="language-bash">python3 -m pytest tests/ -v
+</code></pre>
+<p>Review any failures carefully; some checks (such as spell-checking for British English) may need language-specific configuration before they can be applied to non-English content.</p>
+<h3 id="manual-review-checklist">Manual review checklist</h3>
+<p>Before marking a translated PR as ready for merge, verify:</p>
+<ul>
+<li>[ ] Code blocks, CLI commands, and configuration examples are unchanged from the English source.</li>
+<li>[ ] Image references and diagram filenames are unchanged.</li>
+<li>[ ] YAML frontmatter is structurally valid and retains the correct <code>chapter</code> and <code>tags</code> values.</li>
+<li>[ ] The translated prose reads naturally and meets the quality standards above.</li>
+<li>[ ] A fluent speaker has reviewed and approved the content.</li>
+</ul>
+<hr />
+<h2 id="maintaining-translations">Maintaining Translations</h2>
+<h3 id="keeping-translations-in-sync-with-the-english-source">Keeping translations in sync with the English source</h3>
+<p>The canonical English manuscript evolves continuously. Translated files must be updated whenever substantive changes are made to the corresponding English source. The recommended process is:</p>
+<ol>
+<li>When a pull request modifies an English chapter file, check whether a translated version of that file exists.</li>
+<li>If a translated version exists and the changes are substantive (new sections, revised technical content, updated examples), open a follow-up issue labelled <code>documentation</code> to request a translation update.</li>
+<li>Re-run <code>translate_file_content</code> on the modified file to generate a new machine-translated draft, then apply editorial review as described above.</li>
+</ol>
+<h3 id="archiving-outdated-translations">Archiving outdated translations</h3>
+<p>Translated files that are no longer kept in sync with the English source should be moved to <code>docs/archive/</code> with a note in <code>docs/archive/README.md</code> recording the reason and date of archival. This preserves the historical content without creating confusion about its current status.</p>
+<h3 id="tracking-translation-coverage">Tracking translation coverage</h3>
+<p>Maintain a simple coverage table in this document (or in a dedicated <code>docs/translation_status.md</code> file) that shows which chapters have been translated, reviewed, and are currently up to date for each language.</p>
+<h4 id="example-coverage-table">Example coverage table</h4>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th style="text-align: center;">Swedish (<code>sv</code>)</th>
+<th style="text-align: center;">German (<code>de</code>)</th>
+<th style="text-align: center;">French (<code>fr</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 Introduction</td>
+<td style="text-align: center;">Draft</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>02 Fundamental Principles</td>
+<td style="text-align: center;">Draft</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;">…</td>
+</tr>
+</tbody>
+</table>
+<p>Status key: <strong>—</strong> = not started, <strong>Draft</strong> = machine translation only, <strong>Review</strong> = under human review, <strong>Complete</strong> = reviewed and up to date.</p>
+<h3 id="raising-issues">Raising issues</h3>
+<p>To report a translation error, outdated content, or to volunteer as a reviewer for a specific language, open a GitHub issue with the <code>documentation</code> label and include the target language and chapter number in the title.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

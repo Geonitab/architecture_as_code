@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/WHITEPAPER_DESIGN_GUIDELINES/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Whitepaper Design Guidelines for Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Whitepaper Design Guidelines for Architecture as Code";
+        var mkdocs_page_input_path = "WHITEPAPER_DESIGN_GUIDELINES.md";
+        var mkdocs_page_url = "/WHITEPAPER_DESIGN_GUIDELINES/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk and Threat Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">Interplay Between Soft-As-Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Whitepaper Design Guidelines for Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/WHITEPAPER_DESIGN_GUIDELINES.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="whitepaper-design-guidelines-for-architecture-as-code">Whitepaper Design Guidelines for Architecture as Code</h1>
+<h2 id="professional-technical-documentation-with-modern-visual-standards">Professional Technical Documentation with Modern Visual Standards</h2>
+<h2 id="purpose">Purpose</h2>
+<p>This document defines the design standards for all whitepapers generated from the Architecture as Code book content. It ensures that every whitepaper is professionally formatted, visually accessible, and aligned with modern technical documentation best practices whilst maintaining the Kvadrat brand identity.</p>
+<hr />
+<h2 id="core-design-principles">Core Design Principles</h2>
+<h3 id="1-professional-authority">1. Professional Authority</h3>
+<ul>
+<li><strong>Credibility Through Design</strong>: Clean, structured layout that establishes technical expertise</li>
+<li><strong>Consistent Branding</strong>: Kvadrat colour palette and typography throughout all materials</li>
+<li><strong>Academic Rigour</strong>: Proper citations, versioning, and metadata visible on every document</li>
+<li><strong>Print-Ready Quality</strong>: A4/Letter formatting (210mm × 297mm) optimised for both screen and print</li>
+</ul>
+<h3 id="2-reading-experience">2. Reading Experience</h3>
+<ul>
+<li><strong>Scannable Structure</strong>: Clear headings, logical flow, and visual hierarchy</li>
+<li><strong>Progressive Information</strong>: Lead paragraph → detailed content → section topics → call to action</li>
+<li><strong>Visual Relief</strong>: Diagrams, callouts, and white space prevent text fatigue</li>
+<li><strong>Optimal Line Length</strong>: Maximum 80 characters per line for comfortable reading</li>
+</ul>
+<h3 id="3-accessibility-and-standards">3. Accessibility and Standards</h3>
+<ul>
+<li><strong>WCAG AA Compliance</strong>: Minimum 4.5:1 contrast ratio for all text</li>
+<li><strong>Semantic HTML5</strong>: Proper heading hierarchy, figure captions, and ARIA labels</li>
+<li><strong>Responsive Design</strong>: Graceful degradation on mobile devices (min-width: 320px)</li>
+<li><strong>Print Optimisation</strong>: Clean page breaks, removal of unnecessary UI elements when printing</li>
+</ul>
+<hr />
+<h2 id="document-format-and-structure">Document Format and Structure</h2>
+<h3 id="standard-dimensions">Standard Dimensions</h3>
+<ul>
+<li><strong>Page Size</strong>: A4 (210mm × 297mm) or US Letter (8.5" × 11")</li>
+<li><strong>Page Margins</strong>: 25mm (approximately 1 inch) on all sides</li>
+<li><strong>Content Width</strong>: 160mm maximum for optimal readability</li>
+<li><strong>Safe Print Zone</strong>: Keep critical content within 20mm from edges</li>
+</ul>
+<h3 id="typography-standards">Typography Standards</h3>
+<h4 id="font-families">Font Families</h4>
+<ul>
+<li><strong>Primary Font</strong>: <a href="https://fonts.google.com/specimen/Inter">Inter</a> – modern sans-serif optimised for screen and print</li>
+<li><strong>Weights Used</strong>: 300 (Light), 400 (Regular), 500 (Medium), 600 (Semi-Bold), 700 (Bold), 800 (Extra-Bold)</li>
+<li><strong>Monospace Font</strong>: <a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono</a> – code samples and technical references</li>
+<li><strong>Weights Used</strong>: 400 (Regular), 500 (Medium), 600 (Semi-Bold)</li>
+</ul>
+<h4 id="type-scale-and-hierarchy">Type Scale and Hierarchy</h4>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Size</th>
+<th>Weight</th>
+<th>Line Height</th>
+<th>Colour</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>H1 (Main Title)</strong></td>
+<td>36px (2.25rem)</td>
+<td>800</td>
+<td>1.2</td>
+<td>Kvadrat Blue Dark</td>
+<td>Document title, primary heading</td>
+</tr>
+<tr>
+<td><strong>H1 (Section Title)</strong></td>
+<td>28px (1.75rem)</td>
+<td>700</td>
+<td>1.3</td>
+<td>Kvadrat Blue Dark</td>
+<td>Major section headings</td>
+</tr>
+<tr>
+<td><strong>H2</strong></td>
+<td>24px (1.5rem)</td>
+<td>600</td>
+<td>1.3</td>
+<td>Kvadrat Blue</td>
+<td>Subsection headings</td>
+</tr>
+<tr>
+<td><strong>H3</strong></td>
+<td>20px (1.25rem)</td>
+<td>600</td>
+<td>1.4</td>
+<td>Kvadrat Blue Dark</td>
+<td>Minor subsection headings</td>
+</tr>
+<tr>
+<td><strong>Body Text</strong></td>
+<td>16px (1rem)</td>
+<td>400</td>
+<td>1.6</td>
+<td>Kvadrat Blue Dark</td>
+<td>Main content paragraphs</td>
+</tr>
+<tr>
+<td><strong>Lead Paragraph</strong></td>
+<td>18px (1.125rem)</td>
+<td>400</td>
+<td>1.5</td>
+<td>Kvadrat Muted</td>
+<td>Opening/summary paragraphs</td>
+</tr>
+<tr>
+<td><strong>Captions</strong></td>
+<td>14px (0.875rem)</td>
+<td>400</td>
+<td>1.4</td>
+<td>Kvadrat Muted</td>
+<td>Figure captions, metadata</td>
+</tr>
+<tr>
+<td><strong>Labels</strong></td>
+<td>12px (0.75rem)</td>
+<td>600</td>
+<td>1.2</td>
+<td>Kvadrat Blue</td>
+<td>Metadata labels, badges</td>
+</tr>
+<tr>
+<td><strong>Code Inline</strong></td>
+<td>14px (0.875rem)</td>
+<td>400</td>
+<td>1.5</td>
+<td>Kvadrat Blue Dark</td>
+<td>Inline code snippets</td>
+</tr>
+<tr>
+<td><strong>Code Block</strong></td>
+<td>14px (0.875rem)</td>
+<td>400</td>
+<td>1.5</td>
+<td>Light Grey (#d1d5db)</td>
+<td>Multi-line code samples</td>
+</tr>
+</tbody>
+</table>
+<h3 id="colour-palette-kvadrat-brand">Colour Palette (Kvadrat Brand)</h3>
+<h4 id="core-colours">Core Colours</h4>
+<pre><code class="language-css">--aac-primary: hsl(221, 67%, 32%)           /* Kvadrat Blue: #2A4A8C */
+--aac-primary-light: hsl(217, 91%, 60%)     /* Kvadrat Blue Light: #3B82F6 */
+--aac-primary-dark: hsl(214, 32%, 18%)      /* Kvadrat Blue Dark: #1F2937 */
+--aac-muted: hsl(215, 20%, 46%)             /* Kvadrat Grey: #6B7280 */
+</code></pre>
+<h4 id="surface-and-background-colours">Surface and Background Colours</h4>
+<pre><code class="language-css">--surface-soft: hsl(214, 32%, 97%)          /* Light Background: #F8F9FA */
+--surface-border: rgba(23, 37, 84, 0.15)    /* Border: Semi-transparent Blue */
+--white: hsl(0, 0%, 100%)                   /* Pure White: #FFFFFF */
+--black: hsl(0, 0%, 0%)                     /* Pure Black: #000000 */
+</code></pre>
+<h4 id="semantic-colours">Semantic Colours</h4>
+<pre><code class="language-css">--success: hsl(160, 84%, 30%)               /* Success Green: #0D9488 */
+--warning: hsl(32, 95%, 44%)                /* Warning Orange: #F59E0B */
+--info: hsl(217, 91%, 60%)                  /* Info Blue: #3B82F6 */
+</code></pre>
+<h4 id="contrast-requirements">Contrast Requirements</h4>
+<ul>
+<li><strong>Body Text on White</strong>: 4.72:1 (WCAG AA Pass) – <code>#1F2937</code> on <code>#FFFFFF</code></li>
+<li><strong>Headings on White</strong>: 7.84:1 (WCAG AAA Pass) – <code>#2A4A8C</code> on <code>#FFFFFF</code></li>
+<li><strong>Muted Text on White</strong>: 4.54:1 (WCAG AA Pass) – <code>#6B7280</code> on <code>#FFFFFF</code></li>
+</ul>
+<hr />
+<h2 id="whitepaper-components">Whitepaper Components</h2>
+<h3 id="1-document-header">1. Document Header</h3>
+<p>The header establishes the whitepaper's identity and metadata.</p>
+<p><strong>Required Elements</strong>:
+- <strong>Series Badge</strong>: Small pill-shaped badge indicating category (e.g., "Security and Governance")
+  - Background: <code>var(--aac-primary)</code>
+  - Text: White, 12px, font-weight 600, uppercase, letter-spacing 0.4px
+  - Padding: 6px 16px
+  - Border-radius: 999px (fully rounded)
+- <strong>Main Title</strong>: 36px, font-weight 800, Kvadrat Blue Dark
+  - Format: <code>[Chapter Label] – [Chapter Title]</code>
+  - Example: "Chapter 9 – Security Fundamentals for Architecture as Code"
+- <strong>Subtitle</strong>: 20px, font-weight 400, Kvadrat Muted
+  - Format: Key insights from [Chapter Label] of "[Book Title]"
+  - Max-width: 85% to prevent overly long lines
+- <strong>Metadata Row</strong>: Flex layout with 32px gaps
+  - <strong>Author</strong>: Name(s) of contributor(s)
+  - <strong>Published</strong>: Date in format "23 October 2025" (British English, no leading zero)
+  - <strong>Build Number</strong>: Version or build identifier (e.g., "2025.10" or "Build 342")
+- <strong>Feature Tags</strong> (optional): Visual pills indicating release features
+  - Background: <code>var(--surface-soft)</code>
+  - Text: Kvadrat Blue, 12px, font-weight 600, uppercase
+  - Layout: Flex wrap with 8px gaps</p>
+<p><strong>Spacing</strong>:
+- Header section: 40px bottom margin
+- Elements within header: 20px vertical gap</p>
+<h3 id="2-book-overview-section">2. Book Overview Section</h3>
+<p>Provides context about the source material.</p>
+<p><strong>Structure</strong>:</p>
+<pre><code class="language-html">&lt;section class=&quot;book-overview&quot;&gt;
+    &lt;h1&gt;About &quot;Architecture as Code&quot;&lt;/h1&gt;
+    &lt;p class=&quot;lead&quot;&gt;[Book description paragraph]&lt;/p&gt;
+
+    &lt;div class=&quot;callout callout-info&quot;&gt;
+        &lt;div class=&quot;callout-title&quot;&gt;Who should read this&lt;/div&gt;
+        &lt;p&gt;[Target audience description]&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+<p><strong>Styling</strong>:
+- <strong>Section Heading</strong>: 28px, font-weight 700
+- <strong>Lead Paragraph</strong>: 18px body text with 4px left border in Kvadrat Blue
+- <strong>Callout Box</strong>: 
+  - Background: <code>var(--surface-soft)</code>
+  - Border-left: 4px solid <code>var(--aac-primary-light)</code>
+  - Padding: 20px
+  - Border-radius: 8px
+  - Margin: 24px vertical</p>
+<h3 id="3-chapter-highlight-section">3. Chapter Highlight Section</h3>
+<p>The main content area showcasing chapter insights.</p>
+<p><strong>Structure</strong>:</p>
+<pre><code class="language-html">&lt;section class=&quot;chapter-highlight&quot;&gt;
+    &lt;h1&gt;[Chapter Label]: [Chapter Title]&lt;/h1&gt;
+
+    &lt;figure class=&quot;chapter-figure&quot;&gt;
+        &lt;img src=&quot;[diagram-path]&quot; alt=&quot;Chapter diagram for [title]&quot;&gt;
+    &lt;/figure&gt;
+
+    &lt;p&gt;[Condensed content paragraph 1]&lt;/p&gt;
+    &lt;p&gt;[Condensed content paragraph 2]&lt;/p&gt;
+    &lt;p&gt;[Condensed content paragraph 3]&lt;/p&gt;
+
+    &lt;h2&gt;Primary topics explored&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;[Section header 1]&lt;/li&gt;
+        &lt;li&gt;[Section header 2]&lt;/li&gt;
+        &lt;li&gt;[Section header 3]&lt;/li&gt;
+        ...
+    &lt;/ul&gt;
+&lt;/section&gt;
+</code></pre>
+<p><strong>Content Guidelines</strong>:
+- <strong>Opening Paragraphs</strong>: 2–3 substantial paragraphs (minimum 30 characters each)
+- <strong>Section List</strong>: Maximum 6 primary topics to prevent overwhelming readers
+- <strong>Diagram Placement</strong>: Centred, full-width within content area
+- <strong>Alt Text</strong>: Descriptive alternative text for all images</p>
+<p><strong>Figure Styling</strong>:
+- <strong>Container</strong>: Text-align centre, 30px vertical margin
+- <strong>Image</strong>: 
+  - Max-width: 100%
+  - Height: Auto (preserve aspect ratio)
+  - Border: 1px solid <code>var(--surface-border)</code>
+  - Border-radius: 8px
+  - Box-shadow: Optional subtle shadow for depth</p>
+<h3 id="4-call-to-action-section">4. Call to Action Section</h3>
+<p>Encourages reader engagement with the full book.</p>
+<p><strong>Structure</strong>:</p>
+<pre><code class="language-html">&lt;section class=&quot;call-to-action&quot;&gt;
+    &lt;h1&gt;Continue your journey&lt;/h1&gt;
+
+    &lt;div class=&quot;callout callout-success&quot;&gt;
+        &lt;div class=&quot;callout-title&quot;&gt;Read the full chapter&lt;/div&gt;
+        &lt;p&gt;&lt;strong&gt;Discover [Chapter Label] – &quot;[Title]&quot; in &quot;[Book Title]&quot;&lt;/strong&gt; 
+        for detailed explanations, practical examples, and implementation patterns.&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;The complete manuscript spans [X] chapters, positioning this whitepaper 
+    within the [area] focus of the programme.&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;Explore adjacent chapters:&lt;/strong&gt; The surrounding sections expand 
+    upon the themes introduced here and provide complementary techniques.&lt;/p&gt;
+&lt;/section&gt;
+</code></pre>
+<p><strong>Styling</strong>:
+- <strong>Success Callout</strong>: Use <code>--success</code> colour for border-left (4px)
+- <strong>Strong Text</strong>: Font-weight 600, same colour as body text
+- <strong>Contextual Information</strong>: Regular paragraphs linking to broader book structure</p>
+<hr />
+<h2 id="code-samples-and-technical-content">Code Samples and Technical Content</h2>
+<h3 id="inline-code">Inline Code</h3>
+<ul>
+<li><strong>Font</strong>: JetBrains Mono, 14px</li>
+<li><strong>Background</strong>: <code>var(--surface-soft)</code></li>
+<li><strong>Padding</strong>: 2px 6px</li>
+<li><strong>Border-radius</strong>: 4px</li>
+<li><strong>Colour</strong>: Inherit from surrounding text</li>
+</ul>
+<h3 id="code-blocks">Code Blocks</h3>
+<ul>
+<li><strong>Syntax Highlighting</strong>: Prism.js with "Tomorrow" theme (<code>prism-tomorrow.min.css</code>)</li>
+<li><strong>Background</strong>: Dark grey (<code>#2d2d2d</code>)</li>
+<li><strong>Text Colour</strong>: Light grey (<code>#d1d5db</code>)</li>
+<li><strong>Border-left</strong>: 4px solid Kvadrat Blue for visual consistency</li>
+<li><strong>Padding</strong>: 16px</li>
+<li><strong>Border-radius</strong>: 8px</li>
+<li><strong>Margin</strong>: 16px vertical</li>
+<li><strong>Font</strong>: JetBrains Mono, 14px, line-height 1.5</li>
+<li><strong>Line Numbers</strong> (optional): Enabled via Prism.js plugin</li>
+</ul>
+<p><strong>Supported Languages</strong>:
+- YAML, JSON
+- Python, Bash
+- JavaScript, TypeScript
+- Docker, Terraform</p>
+<h3 id="lists">Lists</h3>
+<ul>
+<li><strong>Unordered Lists</strong>: Standard bullet points</li>
+<li><strong>Ordered Lists</strong>: Numeric sequence</li>
+<li><strong>Padding-left</strong>: 24px from container edge</li>
+<li><strong>Item Spacing</strong>: 8px between list items</li>
+<li><strong>Colour</strong>: Kvadrat Blue Dark for consistency</li>
+</ul>
+<hr />
+<h2 id="responsive-and-print-considerations">Responsive and Print Considerations</h2>
+<h3 id="responsive-breakpoints">Responsive Breakpoints</h3>
+<pre><code class="language-css">/* Mobile: 320px – 767px */
+@media (max-width: 768px) {
+    .page {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .meta-info {
+        gap: 16px;
+        flex-direction: column;
+    }
+}
+</code></pre>
+<p><strong>Mobile Optimisations</strong>:
+- Reduce page padding from 25mm to 20px
+- Decrease title size from 36px to 30px
+- Stack metadata items vertically instead of horizontally
+- Maintain minimum tap target size of 44px × 44px for interactive elements</p>
+<h3 id="print-styles">Print Styles</h3>
+<pre><code class="language-css">@media print {
+    body {
+        background: var(--white);
+    }
+
+    .page {
+        padding: 20mm;
+        box-shadow: none;
+    }
+
+    .page-break {
+        page-break-before: always;
+    }
+}
+</code></pre>
+<p><strong>Print Optimisations</strong>:
+- Remove page shadows and decorative backgrounds
+- Reduce padding to 20mm for better paper usage
+- Ensure diagrams fit within printable area
+- Force page breaks before major sections if needed</p>
+<hr />
+<h2 id="accessibility-standards">Accessibility Standards</h2>
+<h3 id="semantic-html5">Semantic HTML5</h3>
+<p>All whitepapers must use proper semantic markup:
+- <code>&lt;section&gt;</code> for major content blocks
+- <code>&lt;h1&gt;</code> through <code>&lt;h3&gt;</code> for heading hierarchy (never skip levels)
+- <code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> for diagrams
+- <code>&lt;strong&gt;</code> for emphasis (not <code>&lt;b&gt;</code>)
+- <code>&lt;code&gt;</code> and <code>&lt;pre&gt;</code> for code samples</p>
+<h3 id="aria-labels">ARIA Labels</h3>
+<ul>
+<li><strong>Feature Tags</strong>: <code>role="list"</code> and <code>role="listitem"</code> for non-semantic elements</li>
+<li><strong>Images</strong>: Always include descriptive <code>alt</code> text</li>
+<li><strong>Metadata Attributes</strong>: Use <code>data-*</code> attributes for version, tags, codename</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<pre><code class="language-html">&lt;div class=&quot;page&quot; 
+     data-release-version=&quot;2025.10&quot; 
+     data-feature-tags=&quot;diagram-refresh, governance-automation&quot; 
+     data-release-codename=&quot;Alpha&quot;&gt;
+</code></pre>
+<h3 id="keyboard-navigation">Keyboard Navigation</h3>
+<ul>
+<li>All interactive elements must be keyboard-accessible</li>
+<li>Tab order follows logical reading flow</li>
+<li>Focus indicators clearly visible (outline or background change)</li>
+</ul>
+<hr />
+<h2 id="file-naming-and-organisation">File Naming and Organisation</h2>
+<h3 id="generated-whitepaper-files">Generated Whitepaper Files</h3>
+<ul>
+<li><strong>Pattern</strong>: <code>[chapter-filename]_whitepaper.html</code></li>
+<li><strong>Example</strong>: <code>09_security_fundamentals_whitepaper.html</code></li>
+<li><strong>Location</strong>: <code>releases/whitepapers/</code> (release mode) or <code>whitepapers/</code> (standard mode)</li>
+</ul>
+<h3 id="diagram-path-resolution">Diagram Path Resolution</h3>
+<ul>
+<li><strong>Relative Paths</strong>: Always use relative paths from the whitepaper location</li>
+<li><strong>Source Directory</strong>: <code>docs/images/</code></li>
+<li><strong>Naming Convention</strong>: <code>diagram_[chapter]_[name].png</code></li>
+<li><strong>Fallback</strong>: If diagram not found, omit the figure element gracefully</li>
+</ul>
+<hr />
+<h2 id="version-control-and-metadata">Version Control and Metadata</h2>
+<h3 id="release-information">Release Information</h3>
+<p>Whitepapers must display:
+- <strong>Version Number</strong>: e.g., "2025.10" (from <code>BOOK_REQUIREMENTS.md</code>)
+- <strong>Build Number</strong>: CI/CD build identifier (optional)
+- <strong>Release Date</strong>: British English format, no leading zero (e.g., "5 November 2025")
+- <strong>Codename</strong>: Release codename (e.g., "Alpha")
+- <strong>Feature Tags</strong>: Visual tags highlighting key release features</p>
+<h3 id="data-attributes">Data Attributes</h3>
+<p>Store metadata in HTML <code>data-*</code> attributes for programmatic access:</p>
+<pre><code class="language-html">&lt;div class=&quot;page&quot; 
+     data-release-version=&quot;2025.10&quot; 
+     data-feature-tags=&quot;diagram-refresh, governance-automation, ai-collaboration&quot;
+     data-release-codename=&quot;Alpha&quot;&gt;
+</code></pre>
+<hr />
+<h2 id="quality-checklist">Quality Checklist</h2>
+<p>Before publishing a whitepaper, verify:</p>
+<h3 id="content-quality">Content Quality</h3>
+<ul>
+<li>[ ] Title and subtitle accurately reflect chapter content</li>
+<li>[ ] Author and publication date are correct</li>
+<li>[ ] 2–3 condensed content paragraphs present</li>
+<li>[ ] Maximum 6 section topics listed</li>
+<li>[ ] Call-to-action section encourages full chapter reading</li>
+<li>[ ] Diagram (if available) is properly displayed and captioned</li>
+</ul>
+<h3 id="design-and-accessibility">Design and Accessibility</h3>
+<ul>
+<li>[ ] All text meets WCAG AA contrast requirements (4.5:1 minimum)</li>
+<li>[ ] Heading hierarchy follows semantic order (H1 → H2 → H3)</li>
+<li>[ ] Images include descriptive <code>alt</code> text</li>
+<li>[ ] Code samples use syntax highlighting</li>
+<li>[ ] Responsive layout tested on mobile (min-width 320px)</li>
+<li>[ ] Print layout tested with clean page breaks</li>
+</ul>
+<h3 id="technical-validation">Technical Validation</h3>
+<ul>
+<li>[ ] HTML validates against HTML5 standard</li>
+<li>[ ] All CSS variables are defined and used consistently</li>
+<li>[ ] External fonts load correctly (Inter, JetBrains Mono)</li>
+<li>[ ] Prism.js syntax highlighting initialises properly</li>
+<li>[ ] Diagram paths resolve correctly (no 404 errors)</li>
+</ul>
+<h3 id="metadata-and-versioning">Metadata and Versioning</h3>
+<ul>
+<li>[ ] Release version displayed in metadata section</li>
+<li>[ ] Build number (if available) shown correctly</li>
+<li>[ ] Publication date formatted in British English</li>
+<li>[ ] Feature tags (if present) render as visual pills</li>
+<li>[ ] <code>data-*</code> attributes contain correct version information</li>
+</ul>
+<hr />
+<h2 id="future-enhancements">Future Enhancements</h2>
+<h3 id="planned-improvements">Planned Improvements</h3>
+<ul>
+<li><strong>PDF Export</strong>: Direct PDF generation from HTML whitepaper</li>
+<li><strong>Interactive Diagrams</strong>: Clickable/zoomable Mermaid diagrams</li>
+<li><strong>Dark Mode</strong>: Alternative colour scheme for low-light reading</li>
+<li><strong>Multi-Language Support</strong>: Localised whitepapers in Swedish, German, etc.</li>
+<li><strong>Bookmark Functionality</strong>: Allow readers to save reading progress</li>
+<li><strong>Social Sharing</strong>: Open Graph and Twitter Card metadata</li>
+</ul>
+<h3 id="experimental-features">Experimental Features</h3>
+<ul>
+<li><strong>Progressive Web App (PWA)</strong>: Offline reading capability</li>
+<li><strong>Table of Contents</strong>: Auto-generated navigation sidebar</li>
+<li><strong>Search Functionality</strong>: Full-text search across all whitepapers</li>
+<li><strong>Related Content</strong>: Automatic linking to related chapters</li>
+</ul>
+<hr />
+<h2 id="references-and-standards">References and Standards</h2>
+<h3 id="design-standards">Design Standards</h3>
+<ul>
+<li><strong>WCAG 2.1 Level AA</strong>: Web Content Accessibility Guidelines</li>
+<li><strong>ISO 216</strong>: International standard paper sizes (A4)</li>
+<li><strong>ISO 8601</strong>: Date and time format (YYYY-MM-DD)</li>
+</ul>
+<h3 id="typography-resources">Typography Resources</h3>
+<ul>
+<li><a href="https://fonts.google.com/specimen/Inter">Inter Font Family</a> – Rasmus Andersson</li>
+<li><a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono</a> – JetBrains</li>
+<li><a href="https://practicaltypography.com/">Practical Typography</a> – Matthew Butterick</li>
+</ul>
+<h3 id="code-highlighting">Code Highlighting</h3>
+<ul>
+<li><a href="https://prismjs.com/">Prism.js</a> – Lightweight, extensible syntax highlighter</li>
+<li><a href="https://github.com/PrismJS/prism-themes">Prism Tomorrow Theme</a> – Dark code theme</li>
+</ul>
+<h3 id="colour-and-contrast">Colour and Contrast</h3>
+<ul>
+<li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
+<li><a href="https://coolors.co/">Coolors Palette Generator</a></li>
+</ul>
+<hr />
+<h2 id="document-history">Document History</h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>5 November 2025</td>
+<td>Gunnar Nordqvist</td>
+<td>Initial whitepaper design guidelines created</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Note</strong>: These guidelines align with the existing <a href="../PRESENTATION_DESIGN_GUIDELINES/">PRESENTATION_DESIGN_GUIDELINES.md</a> and <a href="../STYLE_GUIDE/">STYLE_GUIDE.md</a> to ensure visual consistency across all Architecture as Code collateral.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

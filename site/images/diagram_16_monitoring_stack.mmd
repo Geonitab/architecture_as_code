@@ -1,0 +1,15 @@
+%% Diagram: Cloud cost monitoring stack showing metric collection, alerting, and optimisation flow
+graph TB
+    A[Cloud Cost Management]:::kv-primary --> B[AWS CloudWatch]:::kv-highlight
+    A --> C[Azure Monitor]:::kv-highlight
+    A --> D[Alert System]:::kv-accent
+
+    B --> E[Metrics Collection]:::kv-highlight
+    C --> E
+    D --> G[Anomaly Detection]:::kv-pattern
+
+    E --> F[Custom Dashboards]:::kv-accent
+    F --> H[Cost Analysis]:::kv-primary
+    G --> H
+
+    H --> I[Optimisation Actions]:::kv-highlight

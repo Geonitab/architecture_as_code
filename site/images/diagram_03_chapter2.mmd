@@ -1,0 +1,9 @@
+%% Diagram: Fundamental Principles of Architecture as Code — the five core principles underpinning a code-first architecture practice
+flowchart TD
+    ROOT(["Fundamental Principles\nof Architecture as Code"]):::kv-primary
+    ROOT --> P1["Single Source\nof Truth"]:::kv-highlight
+    ROOT --> P2["Immutability &\nIdempotency"]:::kv-highlight
+    ROOT --> P3["Everything\nas Code"]:::kv-accent
+    ROOT --> P4["Continuous\nValidation"]:::kv-accent
+    ROOT --> P5["Observable\nSystems"]:::kv-muted
+    P1 & P2 & P3 & P4 & P5 --> PO["Consistent,\nTrustworthy Architecture"]:::kv-primary

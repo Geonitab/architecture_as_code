@@ -1,0 +1,37 @@
+graph TD
+    Start([User Creates GitHub Issue]):::kv-primary --> AddLabel[Add Label: 'mermaid' or 'diagram']:::kv-accent
+    AddLabel --> Trigger{GitHub Actions<br/>Triggered?}:::kv-highlight
+    
+    Trigger -->|Yes| Workflow[Start Workflow:<br/>mermaid-designer-bot.yml]:::kv-accent
+    Trigger -->|No| Wait[Wait for Label]:::kv-muted
+    Wait --> AddLabel
+    
+    Workflow --> Clone[Checkout Repository]:::kv-pattern
+    Clone --> Claude[Activate Claude Code AI]:::kv-primary
+    
+    Claude --> Analyze[Analyze Issue Description]:::kv-accent
+    Analyze --> Review[Review Existing Diagrams<br/>in docs/images/]:::kv-accent
+    Review --> CheckTheme[Check Theme Configuration<br/>mermaid-kvadrat-theme.json]:::kv-accent
+    
+    CheckTheme --> Design{Design Diagram}:::kv-highlight
+    Design --> SelectType[Select Diagram Type:<br/>Flowchart, Sequence, etc.]:::kv-pattern
+    SelectType --> ApplyStyle[Apply Kvadrat Brand Colours]:::kv-pattern
+    ApplyStyle --> BritishEnglish[Ensure British English]:::kv-pattern
+    BritishEnglish --> CreateFile[Create .mmd File<br/>docs/images/]:::kv-accent
+    
+    CreateFile --> Validate{Syntax Valid?}:::kv-highlight
+    Validate -->|No| Fix[Fix Errors]:::kv-muted
+    Fix --> Validate
+    Validate -->|Yes| CreatePR[Create Pull Request]:::kv-primary
+    
+    CreatePR --> Comment[Comment on Original Issue<br/>with PR Link]:::kv-accent
+    Comment --> End([User Reviews PR]):::kv-primary
+    
+    End --> Approve{Approved?}:::kv-highlight
+    Approve -->|Yes| Merge[Merge to Main]:::kv-primary
+    Approve -->|No| RequestChanges[Request Changes]:::kv-muted
+    RequestChanges --> Design
+    
+    Merge --> BuildBook[Book Build Pipeline<br/>Converts .mmd to .png]:::kv-accent
+    BuildBook --> Complete([Diagram in Book!]):::kv-primary
+

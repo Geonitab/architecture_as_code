@@ -1,0 +1,11 @@
+%% Diagram: Reinforcing system of Architecture as Code anti-patterns showing how strategic failures cascade and compound over time
+graph LR
+    Strategy["Strategic drift\nMisaligned goals & vision"]:::kv-primary -->|widens| Governance["Governance gaps\nMissing policies & oversight"]:::kv-accent
+    Strategy -->|accelerates| Delivery["Delivery breakdowns\nInconsistent practices"]:::kv-accent
+    Governance -->|enables| Delivery
+    Governance -->|produces| Tooling["Tooling pitfalls\nFragmented & ungoverned toolchains"]:::kv-highlight
+    Delivery -->|erodes| Culture["People & culture\nLow trust & siloed teams"]:::kv-highlight
+    Tooling -->|frustrates| Culture
+    Culture -->|accumulates| Sustainability["Sustainability debt\nUnmaintainable systems & burnout"]:::kv-muted
+    Delivery -->|contributes to| Sustainability
+    Sustainability -->|reinforces| Strategy

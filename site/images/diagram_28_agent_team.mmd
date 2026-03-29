@@ -1,0 +1,25 @@
+%% Team collaboration flow for AI agents supporting Architecture as Code initiatives
+flowchart TD
+    PO[Project Owner]:::kv-highlight
+    PM[Project Manager]:::kv-primary
+    
+    subgraph "Design Team"
+        ARCH[Architect]:::kv-accent
+        DES[Designer]:::kv-accent
+    end
+    
+    subgraph "Development Team"
+        DEV[Developer]:::kv-accent
+        QC[Quality Control]:::kv-highlight
+    end
+    
+    subgraph "Content Team"
+        ED[Editor]:::kv-muted
+    end
+
+    PO --> PM
+    PM --> ARCH
+    PM --> DEV
+    PM --> ED
+    ARCH --> DES
+    DEV --> QC
