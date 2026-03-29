@@ -90,4 +90,17 @@ jobs:
           echo "$CHANGED"
           git add docs/images/*.png
           git commit -m "chore: auto-regenerate Mermaid diagram PNGs [skip ci]"
-          git push origin HEAD
+
+          # Retry push with pull-rebase to handle concurrent pushes to the same branch
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD; then
+              echo "Push succeeded on attempt $attempt."
+              break
+            fi
+            if [ "$attempt" -eq 5 ]; then
+              echo "Push failed after 5 attempts."
+              exit 1
+            fi
+            echo "Push rejected (attempt $attempt); rebasing and retrying..."
+            git pull --rebase origin HEAD
+          done
