@@ -100,6 +100,6 @@ By linking cultural commitments with transparent measurement and clear governanc
 1. **Puppet Labs (2023).** *State of DevOps Report.* Puppet Labs.
 2. **Google Cloud (2023).** *DORA State of DevOps Research.* Google Cloud.
 3. **Spotify Technology (2023).** *Spotify Engineering Culture.* Spotify Technology.
-4. **Skelton, M. & Pais, M. (2019).** *Team Topologies: Organising Business and Technology Teams for Fast Flow.* IT Revolution Press.
-5. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press.
+4. **Skelton, M. & Pais, M. (2019).** *Team Topologies: Organising Business and Technology Teams for Fast Flow.* IT Revolution Press. [Source [30]](33_references.md#source-30)
+5. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. [Source [31]](33_references.md#source-31)
 6. **McKinsey & Company (2023).** *Organisational Transformation Best Practices.* McKinsey Digital.

@@ -291,10 +291,10 @@ As artificial intelligence capabilities mature, MaC will incorporate intelligent
 
 ## Sources
 
-- Drucker, P.F. (1954). *The Practice of Management*. Harper & Row.
-- GitOps Working Group. *GitOps Principles*. [OpenGitOps](https://opengitops.dev/)
-- Puppet. *State of DevOps Report*. Annual industry survey on DevOps practices.
-- Forsgren, N., Humble, J. & Kim, G. (2018). *Accelerate: The Science of Lean Software and DevOps*. IT Revolution Press.
+1. **Drucker, P.F. (1954).** *The Practice of Management.* Harper & Row.
+2. **GitOps Working Group (2024).** *GitOps Principles.* OpenGitOps. Available at: [https://opengitops.dev/](https://opengitops.dev/)
+3. **Puppet (2023).** *State of DevOps Report.* Puppet. Annual industry survey on DevOps practices.
+4. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. [Source [31]](33_references.md#source-31)
 
 ## Summary
 Management as Code is the logical next step for organisations that already treat infrastructure and architecture as code. By encoding leadership intent into executable artefacts, organisations achieve transparency, speed, and adaptability. MaC embeds management into the DevOps loop, ensures governance is automated, and ties budgeting, competence development, and team leadership into a single continuous system. GitHub and similar platforms become hubs where executives and engineers collaborate in the same workflows, with Issues, Discussions, and Actions transforming management from a peripheral function into a core element of the delivery pipeline. By embracing MaC, organisations unlock scalable, data-driven leadership capable of orchestrating multiple teams and responding rapidly to change.

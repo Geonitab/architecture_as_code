@@ -126,8 +126,8 @@ The open-source ecosystem that underpins this discipline—from Terraform and Pu
 
 The thesis of this book draws most directly on:
 
-1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press.
-2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press.
-3. **Bass, L., Clements, P. & Kazman, R. (2021).** *Software Architecture in Practice* (4th ed.). Addison-Wesley.
+1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press. [Source [30]](33_references.md#source-30)
+2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. [Source [31]](33_references.md#source-31)
+3. **Bass, L., Clements, P. & Kazman, R. (2021).** *Software Architecture in Practice* (4th ed.). Addison-Wesley. [Source [32]](33_references.md#source-32)
 
 For a full bibliography, see [Chapter 33: References and Sources](33_references.md).
