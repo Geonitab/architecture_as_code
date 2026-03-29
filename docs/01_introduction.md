@@ -32,7 +32,7 @@ DevOps-driven change velocity amplifies these failure modes. Release pipelines s
 
 ### Adoptability
 
-Red Hat (2023) stresses that Architecture as Code succeeds only when teams can adopt it without wholesale tooling upheaval. Expressing architectural intent as YAML, JSON, or domain-specific languages keeps specifications approachable so enterprise architects, platform engineers, and governance specialists can all work in the same repository from day one. Lightweight guardrails, documented contribution paths, and iterative enablement make the practice consumable for organisations that are still shifting away from slideware-heavy governance.
+Red Hat (2023) [Source [29]](33_references.md#source-29) stresses that Architecture as Code succeeds only when teams can adopt it without wholesale tooling upheaval. Expressing architectural intent as YAML, JSON, or domain-specific languages keeps specifications approachable so enterprise architects, platform engineers, and governance specialists can all work in the same repository from day one. Lightweight guardrails, documented contribution paths, and iterative enablement make the practice consumable for organisations that are still shifting away from slideware-heavy governance.
 
 ### Extensibility
 
@@ -94,4 +94,5 @@ Part A of this book lays the conceptual foundations for that discipline. Chapter
 
 1. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 2. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
-3. **Martin, R. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure.* Prentice Hall.
+3. **Martin, R. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure.* Prentice Hall. ISBN: 978-0-13-468599-1
+4. **Red Hat (2023).** *Architecture as Code Principles and Best Practices.* Red Hat Developer. [Source [29]](33_references.md#source-29)
