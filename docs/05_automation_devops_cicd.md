@@ -589,5 +589,5 @@ Successful implementation of CI/CD for Architecture as Code requires balancing a
 7. **GDPR.eu (2024).** *GDPR for Organisations: Practical Guide.* GDPR.eu. [Source [27]](33_references.md#source-27)
 8. **European Commission (2024).** *Data Protection in the EU.* European Commission. Available at: [https://commission.europa.eu/law/law-topic/data-protection_en](https://commission.europa.eu/law/law-topic/data-protection_en)
 9. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
-10. **HashiCorp (2024).** *Introduction to Infrastructure as Code with Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
+10. **HashiCorp (2024).** *What is Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
 11. **DORA (2023).** *Accelerate State of DevOps Report 2023.* Google Cloud / DORA. [Source [28]](33_references.md#source-28)
