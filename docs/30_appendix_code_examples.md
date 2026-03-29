@@ -4257,3 +4257,11 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
     }
 }
 ```
+
+
+## Sources
+
+1. **HashiCorp (2024).** *Terraform Language Documentation.* HashiCorp Developer Documentation. Available at: [https://developer.hashicorp.com/terraform/language](https://developer.hashicorp.com/terraform/language)
+2. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes. [Source [13]](33_references.md#source-13)
+3. **Structurizr (2024).** *Structurizr DSL Language Reference.* Structurizr Documentation. Available at: [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
+4. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)

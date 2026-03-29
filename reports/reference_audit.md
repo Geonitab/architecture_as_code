@@ -1,22 +1,21 @@
 # Reference Audit Report
 
-**Generated:** 2026-03-29 05:12:11
+**Generated:** 2026-03-29 05:29:44
 
 
 ## Summary
 
 | Check | Count |
 |-------|-------|
-| Chapters missing `## Sources` section | 6 |
+| Chapters missing `## Sources` section | 5 |
 | Chapters with non-standard reference headers | 0 |
 | Chapters with malformed inline citations | 0 |
 | Cited source numbers missing from `33_references.md` | 0 |
-| Anchors in `33_references.md` never cited | 1 |
+| Anchors in `33_references.md` never cited | 0 |
 
 ## Chapters Missing `## Sources` Section
 
 - `28_glossary.md`
-- `30_appendix_code_examples.md`
 - `appendix_templates_and_tools.md`
 - `adr_catalogue.md`
 - `migration_plan.md`
@@ -36,6 +35,4 @@ _None — every cited source number has an anchor in `33_references.md`._
 
 ## Anchors in `33_references.md` Never Cited
 
-These anchors are defined in `docs/33_references.md` but are not referenced by any inline citation in any chapter:
-
-- Source [21]
+_None — every anchor in `33_references.md` is cited at least once._

@@ -580,15 +580,14 @@ Successful implementation of CI/CD for Architecture as Code requires balancing a
 
 ## Sources
 
-1. **Jenkins.** *Architecture as Code with Jenkins.* Jenkins Documentation.
-2. **GitHub Actions.** *CI/CD for Architecture as Code.* GitHub Documentation.
-3. **Microsoft (Azure DevOps).** *Architecture as Code Pipelines.* Microsoft Azure Documentation.
-4. **GitLab.** *GitOps and Architecture as Code.* GitLab Documentation.
-5. **HashiCorp (Terraform).** *Automated Testing for Terraform.* HashiCorp Learn Platform.
-6. **Cloud Native Computing Foundation (Kubernetes).** *GitOps Principles and Practices.* Cloud Native Computing Foundation.
-7. **GDPR.eu.** *Infrastructure Compliance Requirements.* GDPR Guidelines.
-8. **Data Protection Authorities.** *Technical and Organisational Measures.* GDPR Guidance.
+1. **Jenkins (2024).** *Pipeline Overview.* Jenkins Documentation. [Source [22]](33_references.md#source-22)
+2. **GitHub (2024).** *Understanding GitHub Actions.* GitHub Documentation. [Source [23]](33_references.md#source-23)
+3. **Microsoft (2024).** *What is Azure Pipelines?* Microsoft Learn. [Source [24]](33_references.md#source-24)
+4. **GitLab (2024).** *Get started with GitLab CI/CD.* GitLab Documentation. [Source [25]](33_references.md#source-25)
+5. **HashiCorp (2024).** *Write Terraform Tests.* HashiCorp Developer Documentation. [Source [26]](33_references.md#source-26)
+6. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes. [Source [13]](33_references.md#source-13)
+7. **GDPR.eu (2024).** *GDPR for Organisations: Practical Guide.* GDPR.eu. [Source [27]](33_references.md#source-27)
+8. **European Commission (2024).** *Data Protection in the EU.* European Commission. Available at: [https://commission.europa.eu/law/law-topic/data-protection_en](https://commission.europa.eu/law/law-topic/data-protection_en)
 9. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 10. **HashiCorp (2024).** *Introduction to Infrastructure as Code with Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
-11. **DevOps Institute.** *Architecture-Driven DevOps Practices.* DevOps Research and Assessment.
-12. **Data Protection Authorities.** *GDPR for Organisations.* Guidance on personal-data processing.
+11. **DORA (2023).** *Accelerate State of DevOps Report 2023.* Google Cloud / DORA. [Source [28]](33_references.md#source-28)

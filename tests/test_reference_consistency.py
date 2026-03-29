@@ -44,7 +44,6 @@ _SOURCES_EXEMPT: frozenset[str] = frozenset({
     "33_references.md",               # IS the bibliography
     "28_glossary.md",                  # reference lookup table
     "29_about_the_author.md",          # author biography
-    "30_appendix_code_examples.md",    # code-only appendix
     "appendix_templates_and_tools.md", # templates appendix
     "appendix_d_control_mapping_matrix_template.md",  # template
     "adr_catalogue.md",                # ADR technical catalogue
