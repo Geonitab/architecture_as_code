@@ -20,7 +20,7 @@ A practical example is an application programming interface change automatically
 
 ### Adoptability-first enablement
 
-Red Hat (2023) frames adoptability as the entry point for Architecture as Code: the language, repository layout, and review rituals must be simple enough that architects, engineers, and governance specialists can contribute without specialist tooling. Pattern libraries, sample pull requests, and role-based contribution guides help teams join the workflow gradually while still building confidence that architectural intent is preserved.
+Red Hat (2023) [Source [29]](33_references.md#source-29) frames adoptability as the entry point for Architecture as Code: the language, repository layout, and review rituals must be simple enough that architects, engineers, and governance specialists can contribute without specialist tooling. Pattern libraries, sample pull requests, and role-based contribution guides help teams join the workflow gradually while still building confidence that architectural intent is preserved.
 
 ### Extensibility by design
 
@@ -591,7 +591,7 @@ This dual approach – automated testing for NFRs and structured validation for 
 
 ## Sources
 
-1. **Red Hat.** *Architecture as Code Principles and Best Practices.* Red Hat Developer.
+1. **Red Hat (2023).** *Architecture as Code Principles and Best Practices.* Red Hat Developer. [Source [29]](33_references.md#source-29)
 2. **Martin, R. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure.* Prentice Hall.
 3. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
 4. **GitLab (2024).** *Documentation as Code: Best Practices and Implementation.* GitLab Documentation.
