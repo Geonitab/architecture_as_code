@@ -8,6 +8,6 @@
     "verify:mermaid": "npx mmdc -V"
   },
   "devDependencies": {
-    "@mermaid-js/mermaid-cli": "10.7.0"
+    "@mermaid-js/mermaid-cli": "11.14.0"
   }
 }
