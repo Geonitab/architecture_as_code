@@ -2,7 +2,8 @@
 
 **Datum:** 2026-10-30
 **Underlag:** manuskriptet i `docs/` vid commit `df6bd77` (alla 41 filer som `docs/book_index.json` pekar ut: 31 kapitel, 7 bilagor, 3 supplement och 7 delintroduktioner, cirka 107 000 ord).
-**Delrapporter:** elva filer i denna katalog (se avsnitt 10). Varje fynd har ett ID (t.ex. `B2-04`) som leder till fullständig beskrivning, evidens med URL och ett konkret ändringsförslag i respektive delrapport. `fynd_tabell.md` listar samtliga fynd sorterade efter allvarlighet.
+**Delrapporter:** elva filer i denna katalog (se avsnitt 10).
+**Status 2026-10-30:** fynden har åtgärdats i manuskriptet på branchen `faktagranskning-2026-10-30`; se avsnitt 11 och `atgardslogg.md` för status per fynd och kvarstående författarbeslut. Varje fynd har ett ID (t.ex. `B2-04`) som leder till fullständig beskrivning, evidens med URL och ett konkret ändringsförslag i respektive delrapport. `fynd_tabell.md` listar samtliga fynd sorterade efter allvarlighet.
 
 ---
 
@@ -300,3 +301,56 @@ För att ge en rättvis bild: följande centrala påståenden kontrollerades mot
 | `del_H_bilagor.md` | Del H: part_h, kap. 28, 29, 31, 32, Appendix D, mognadsmodell, kontrollmatris, radarverktyg |
 | `bilaga_A_kodexempel.md` | Bilaga A: kap. 30 |
 | `kap33_kallforteckning.md` | Kap. 33 med tabell över alla 74 poster |
+| `atgardslogg.md` | Status per fynd efter rättningsomgången (åtgärdat, delvis, författarbeslut) |
+
+---
+
+## 11. Rättningsomgång (2026-10-30)
+
+På författarens uppdrag ("Lös avvikelser enligt förslaget") har fynden åtgärdats i manuskriptet. Arbetet gjordes på branchen `faktagranskning-2026-10-30` i tre steg: tio rättningsagenter med samma indelning som delrapporterna, ett bibliografipass för kapitel 33 och källkatalogen i `Issues/`, samt en avslutande validering. Varje steg är committat separat så att ändringarna kan granskas del för del. Status per fynd finns i `atgardslogg.md`.
+
+| Status | Antal |
+|---|---|
+| Åtgärdat | 362 |
+| Delvis åtgärdat | 30 |
+| Överlämnat till bibliografipasset (8 av 9 genomförda där; B1-24 kvar som författarbeslut) | 9 |
+| Ej åtgärdat – kräver författarbeslut | 3 |
+| Avvisat med motivering | 1 |
+| **Totalt** | **405** |
+
+### Gemensamma beslut som styrde rättningarna
+
+- Source [1] (Thoughtworks "Architecture as Code: The Next Evolution") ersattes av FINOS CALM-dokumentationen; alla påståenden som tillskrevs Thoughtworks skrevs om till bokens egna eller till påståenden om CALM.
+- Source [2] ersattes av den verkliga Radar-blippen "Security policy as code" (Trial vol. 21, november 2019; Adopt vol. 23, oktober 2020); alla Wayback-jokerlänkar togs bort.
+- Source [29] ersattes av Red Hats IaC-sida; kriterierna adoptability/extensibility/productivity är nu bokens egna.
+- Source [7] ersattes av SlashData/CNCF *State of Cloud Native Development Q3 2025* med korrekta siffror och population (46 % respektive 27 % av backend-utvecklarna).
+- Source [15] och [20] pekar nu på Pulumis respektive HashiCorps faktiska dokumentation.
+- Sju ISBN rättade; ordlistan, kapitelrubriker, delintroduktioner och `mkdocs.yml` harmoniserade med `docs/book_index.json`.
+- All Rego i OPA 1.0-syntax, S3-nativ state-låsning (`use_lockfile`), Structurizr beskrivs som `local`/`server`/`export`, GDPR som förordning, NIST CSF 2.0, ISO/IEC 27001:2022-numrering, FIPS 203–205, DORA:s fem mått.
+- Fantomkällor togs bort eller ersattes med verifierade verk; inga nya källor uppfanns, och alla nya URL:er kontrollerades. Diagram (`.mmd`/`.png`) ändrades inte; där text och diagram skilde sig justerades texten.
+- Kapitel 33 byggdes om: 119 numrerade poster (30 behållna, 6 ompekade, 89 nya), "Referenced in" genereras från faktiska citeringar, 20 fiktiva eller ocitade alfabetiska poster borttagna, källkatalogen i `Issues/source_catalogue.json` synkad.
+- `scripts/verify_sources.py` validerar nu ISBN-kontrollsiffror och läser numrerade källistor; `CLAUDE.md` beskriver repots faktiska arbetsflöden.
+
+### Validering efter rättningarna
+
+| Kontroll | Före | Efter |
+|---|---|---|
+| `pytest tests/` | 114 passerade, 9 fallerade | 118 passerade, 5 fallerade (alla fem förexisterande och orelaterade: ADR-metadata ×2, EPUB-byggskriptets pandoc-kontroll, presentationsdiagram ×2) |
+| `scripts/audit_references.py` | – | 0 citerade nummer utan ankare, 0 oanvända ankare, 119 ankare |
+| `scripts/check_doc_numbering.py` | OK | OK |
+| `scripts/validate_heading_capitalization.py` | 2 avvikelser i `docs/release_notes.md` | oförändrat (filen ingår inte i bokbygget) |
+| `generate_book.py` | OK | OK |
+| Kodblock i Bilaga A | – | 25 av 33 validerade med verktyg (PyYAML, OSCAL-schema, py_compile med körning, tsc, go vet), 8 genom läsning; `opa`/`terraform` kunde inte köras i miljön (nedladdning nekad), så Rego och HCL är kontrollerade mot grammatik och dokumentation |
+
+### Kvarstående författarbeslut
+
+1. **Licens (H-04).** Kap. 29 anger CC BY 4.0, `docs/pandoc.yaml` trycker "All rights reserved" och repot saknar LICENSE-fil. Ingen av filerna har ändrats.
+2. **"Chapter 15" kontra identifieraren "15B"** i `book_index.json` (FG-26, B1-36, D-13). Hela boken säger "Chapter 15"; antingen byts identifieraren till "15" eller så införs "15B" konsekvent.
+3. **Kapitel 5:s titel**: indexet säger "…for Infrastructure as Code", rubriken "…for Architecture as Code" (B1-24). Kapitel 18: indexets "…for IaC" kontra bokens titelkonvention (E1-12).
+4. **Diagram som bör ses över** (texten är anpassad, diagrammen orörda): figur 2.2:s koppling mellan NFR och verifiering (A-14), eget diagram för kap. 9B (B2-41) och kap. 13 (D-27), översiktsfigur för kap. 24:s sju kluster (FG-21), rollerna i `diagram_28_agent_team` (E2-30).
+5. **Andra upplagor**: *Team Topologies* 2 uppl. (september 2025) och *Building Evolutionary Architectures* 2 uppl. (2022) citeras inte; första upplagorna behålls med korrekta ISBN (E1-16, FG-31).
+6. **Bibliografi**: fyra verk har två nummer med korshänvisning eftersom båda numren citeras i löptext ([16]/[20], [93]/[124], [103]/[113]/[123], [105]/[133]); cirka 40 verifierade verk i kapitlens källistor saknar nummer (lediga nummer finns); posten om författarens egen praktik (R-28) behålls oförändrad.
+7. **Verktygsversioner**: `BOOK_REQUIREMENTS.md` pinnar Node 20.11.1 (EOL) medan kodexemplen nu använder Node 22/24.
+8. **MSB-numreringen** (3.2.1/3.2.2) i Bilaga A kunde inte verifieras (K-49).
+9. **Biografin i kap. 29**: formuleringen om Kvadrat är ändrad till en oberoende konsult i Kvadrats nätverk utifrån kvadrat.se, och de ocitade termnoterna om KTH, Linköpings och Malmö universitet togs bort; författaren bör bekräfta ordvalet.
+

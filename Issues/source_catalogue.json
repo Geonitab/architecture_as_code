@@ -4,29 +4,29 @@
   "sources": [
     {
       "id": 1,
-      "title": "Architecture as Code: The Next Evolution",
-      "type": "industry-report",
-      "year": 2024,
-      "url": "https://www.thoughtworks.com/radar/techniques/architecture-as-code",
-      "summary": "ThoughtWorks Technology Radar entry that positions Architecture as Code as an emerging practice for encoding and automating architectural decisions.",
-      "supports_chapters": ["01_introduction.md", "02_fundamental_principles.md", "04_adr.md"]
+      "title": "Architecture as Code: What is CALM?",
+      "type": "documentation",
+      "year": 2026,
+      "url": "https://calm.finos.org/",
+      "summary": "FINOS Architecture as Code project page introducing the Common Architecture Language Model (CALM): architecture expressed in a human- and machine-readable form that tooling can validate automatically (undated web page, accessed 30 October 2026).",
+      "supports_chapters": ["01_introduction.md", "02_fundamental_principles.md", "06_structurizr.md", "22_documentation_vs_architecture.md", "28_glossary.md", "29_about_the_author.md", "31_appendix_b_technical_architecture.md", "32_finos_project_blueprint.md"]
     },
     {
       "id": 2,
-      "title": "Governance as Code – Thoughtworks Technology Radar",
+      "title": "Security policy as code – Thoughtworks Technology Radar",
       "type": "industry-report",
-      "year": 2024,
-      "url": "https://www.thoughtworks.com/radar/techniques/governance-as-code",
-      "summary": "Thoughtworks Technology Radar entry describing the practice of encoding governance policies and enforcement rules as version-controlled code.",
-      "supports_chapters": ["08_microservices.md", "11_governance_as_code.md", "23_soft_as_code_interplay.md"]
+      "year": 2019,
+      "url": "https://www.thoughtworks.com/radar/techniques/security-policy-as-code",
+      "summary": "Technology Radar technique (Trial in Vol. 21, November 2019; Adopt in Vol. 23, October 2020) describing security policies expressed as code, version-controlled, automatically validated, deployed and monitored, with Open Policy Agent and Istio as examples.",
+      "supports_chapters": ["26a_prerequisites_for_aac.md", "03_version_control.md", "05_automation_devops_cicd.md", "08_microservices.md", "11_governance_as_code.md", "23_soft_as_code_interplay.md"]
     },
     {
       "id": 3,
-      "title": "Git Workflows for Architecture as Code",
+      "title": "Comparing Workflows",
       "type": "documentation",
-      "year": 2024,
+      "year": 2026,
       "url": "https://www.atlassian.com/git/tutorials/comparing-workflows",
-      "summary": "Atlassian guide covering branching strategies and pull-request workflows applicable to architecture repository management.",
+      "summary": "Atlassian Git tutorial comparing centralised, feature-branch, Gitflow and forking workflows; cited for the branching strategies applied to architecture repositories (undated page, accessed 30 October 2026).",
       "supports_chapters": ["02_fundamental_principles.md", "03_version_control.md"]
     },
     {
@@ -36,34 +36,34 @@
       "year": 2024,
       "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches",
       "summary": "GitHub documentation explaining branch protection rules, required status checks, and review requirements for controlled merges.",
-      "supports_chapters": ["02_fundamental_principles.md", "03_version_control.md", "11_governance_as_code.md", "14_practical_implementation.md"]
+      "supports_chapters": ["02_fundamental_principles.md", "03_version_control.md", "11_governance_as_code.md", "14_practical_implementation.md", "23_soft_as_code_interplay.md", "20_ai_agent_team.md"]
     },
     {
       "id": 5,
-      "title": "Introduction to Infrastructure as Code with Terraform",
+      "title": "What is Terraform?",
       "type": "documentation",
-      "year": 2024,
+      "year": 2026,
       "url": "https://developer.hashicorp.com/terraform/intro",
-      "summary": "HashiCorp's introductory guide to Terraform, covering declarative configuration, plan and apply cycles, and state management fundamentals.",
+      "summary": "HashiCorp's introduction to Terraform, covering declarative configuration, the plan and apply cycle, and state management fundamentals (undated documentation page, accessed 30 October 2026).",
       "supports_chapters": ["05_automation_devops_cicd.md", "07_containerisation.md"]
     },
     {
       "id": 6,
-      "title": "Cloud Native Definition",
+      "title": "CNCF Cloud Native Definition v1.1",
       "type": "specification",
       "year": 2024,
       "url": "https://github.com/cncf/toc/blob/main/DEFINITION.md",
-      "summary": "CNCF's canonical definition of cloud native technologies, covering containers, microservices, and dynamic orchestration.",
-      "supports_chapters": ["07_containerisation.md", "08_microservices.md"]
+      "summary": "CNCF Technical Oversight Committee's canonical definition of cloud native technologies (v1.1, approved 26 February 2024), covering containers, microservices, and dynamic orchestration.",
+      "supports_chapters": ["07_containerisation.md"]
     },
     {
       "id": 7,
-      "title": "State of Cloud Native Development 2024",
+      "title": "State of Cloud Native Development Q3 2025",
       "type": "industry-report",
-      "year": 2024,
-      "url": "https://www.cncf.io/reports/cncf-annual-survey-2024/",
-      "summary": "CNCF annual survey reporting on adoption rates, tooling preferences, and operational challenges across cloud native teams globally.",
-      "supports_chapters": ["07_containerisation.md", "08_microservices.md"]
+      "year": 2025,
+      "url": "https://www.cncf.io/reports/state-of-cloud-native-development/",
+      "summary": "SlashData survey for CNCF (November 2025) of backend developers: 46 % use microservices, 27 % use event-driven architecture, and use of internal developer platforms rose from 23 % (Q3 2024) to 27 % (Q3 2025).",
+      "supports_chapters": ["01_introduction.md", "26a_prerequisites_for_aac.md", "07_containerisation.md", "08_microservices.md"]
     },
     {
       "id": 8,
@@ -71,44 +71,44 @@
       "type": "book",
       "year": 2018,
       "url": "https://sre.google/workbook/table-of-contents/",
-      "summary": "O'Reilly workbook from Google SRE team providing practical guidance on reliability engineering, error budgets, and automation-first operations.",
-      "supports_chapters": ["05_automation_devops_cicd.md", "13_testing_strategies.md"]
+      "summary": "O'Reilly workbook edited by Beyer, Murphy, Rensin, Kawahara and Thorne (ISBN 978-1-492-02950-2) providing practical guidance on reliability engineering, error budgets, and automation-first operations.",
+      "supports_chapters": ["05_automation_devops_cicd.md"]
     },
     {
       "id": 9,
-      "title": "AWS Cloud Development Kit (CDK) Developer Guide",
+      "title": "AWS Cloud Development Kit (CDK) v2 Developer Guide",
       "type": "documentation",
       "year": 2024,
       "url": "https://docs.aws.amazon.com/cdk/v2/guide/home.html",
-      "summary": "Amazon's official CDK guide covering infrastructure-as-code patterns using familiar programming languages to define and provision AWS resources.",
+      "summary": "Amazon's official CDK guide covering infrastructure-as-code patterns using familiar programming languages to define and provision AWS resources, including CI/CD with CDK Pipelines.",
       "supports_chapters": ["03_version_control.md", "05_automation_devops_cicd.md", "07_containerisation.md", "14_practical_implementation.md"]
     },
     {
       "id": 10,
-      "title": "Policy as Code Overview",
+      "title": "Open Policy Agent documentation",
       "type": "documentation",
-      "year": 2024,
-      "url": "https://www.openpolicyagent.org/docs/latest/",
-      "summary": "Open Policy Agent project documentation covering Rego policy language, admission control patterns, and integration with CI/CD pipelines.",
-      "supports_chapters": ["02_fundamental_principles.md", "08_microservices.md", "10_policy_and_security.md", "11_governance_as_code.md"]
+      "year": 2026,
+      "url": "https://www.openpolicyagent.org/docs/",
+      "summary": "Open Policy Agent project documentation (landing page \"Open Policy Agent (OPA)\") covering the Rego policy language, admission control patterns, and integration with CI/CD pipelines (accessed 30 October 2026).",
+      "supports_chapters": ["02_fundamental_principles.md", "08_microservices.md", "09_security_fundamentals.md", "10_policy_and_security.md", "11_governance_as_code.md", "15a_evidence_as_code.md", "13_testing_strategies.md", "23_soft_as_code_interplay.md", "22_documentation_vs_architecture.md", "26b_aac_anti_patterns.md", "30_appendix_code_examples.md", "32_finos_project_blueprint.md"]
     },
     {
       "id": 11,
-      "title": "Security and Privacy Controls for Information Systems and Organisations – NIST SP 800-53",
+      "title": "Security and Privacy Controls for Information Systems and Organizations – NIST SP 800-53 Rev. 5",
       "type": "standard",
-      "year": 2024,
-      "url": "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final",
-      "summary": "NIST catalogue of security and privacy controls providing a framework for implementing and assessing control effectiveness in information systems.",
-      "supports_chapters": ["09_security_fundamentals.md", "11_governance_as_code.md", "12_compliance.md"]
+      "year": 2020,
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+      "summary": "NIST catalogue of security and privacy controls (Revision 5, September 2020, updated 10 December 2020) providing a framework for implementing and assessing control effectiveness in information systems.",
+      "supports_chapters": ["09_security_fundamentals.md", "10_policy_and_security.md", "12_compliance.md", "15a_evidence_as_code.md", "13_testing_strategies.md"]
     },
     {
       "id": 12,
-      "title": "Design multi-stage release pipelines with approvals",
+      "title": "Define approvals and checks",
       "type": "documentation",
       "year": 2024,
-      "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process",
-      "summary": "Microsoft Learn guide for configuring multi-stage Azure DevOps pipelines with gates, approvals, and environment promotion controls.",
-      "supports_chapters": ["05_automation_devops_cicd.md", "14_practical_implementation.md"]
+      "url": "https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals",
+      "summary": "Microsoft Learn article (page title \"Pipeline deployment approvals\", updated 29 August 2024) explaining that approvals and checks are configured on resources such as environments and service connections by resource administrators, not in pipeline YAML.",
+      "supports_chapters": ["05_automation_devops_cicd.md"]
     },
     {
       "id": 13,
@@ -117,34 +117,34 @@
       "year": 2024,
       "url": "https://kubernetes.io/docs/concepts/",
       "summary": "Kubernetes project documentation covering cluster architecture, workload management, services, and configuration primitives.",
-      "supports_chapters": ["07_containerisation.md", "13_testing_strategies.md"]
+      "supports_chapters": ["05_automation_devops_cicd.md", "07_containerisation.md", "09_security_fundamentals.md", "13_testing_strategies.md", "30_appendix_code_examples.md"]
     },
     {
       "id": 14,
-      "title": "ISO/IEC 27001:2022 Information Security Management",
+      "title": "ISO/IEC 27001:2022 – Information security, cybersecurity and privacy protection — Information security management systems — Requirements",
       "type": "standard",
       "year": 2022,
       "url": "https://www.iso.org/standard/27001",
-      "summary": "International standard specifying requirements for establishing, implementing, maintaining, and continually improving an information security management system.",
-      "supports_chapters": ["12_compliance.md", "15a_evidence_as_code.md"]
+      "summary": "International standard (third edition, October 2022) specifying requirements for establishing, implementing, maintaining, and continually improving an information security management system; Annex A uses the 2022 control numbering.",
+      "supports_chapters": ["09_security_fundamentals.md", "09b_security_patterns.md", "10_policy_and_security.md", "12_compliance.md", "15a_evidence_as_code.md", "24_best_practices.md"]
     },
     {
       "id": 15,
-      "title": "Testing Infrastructure as Code Programs",
-      "type": "blog",
-      "year": 2024,
-      "url": "https://www.pulumi.com/docs/guides/testing/",
-      "summary": "Pulumi guide covering unit, integration, and property-based testing patterns for infrastructure-as-code programmes.",
+      "title": "Testing Pulumi programs",
+      "type": "documentation",
+      "year": 2026,
+      "url": "https://www.pulumi.com/docs/iac/concepts/testing/",
+      "summary": "Pulumi IaC documentation page \"Testing\" (heading \"Testing Pulumi programs\") covering unit tests with mocks (pulumi.runtime.setMocks / set_mocks / Pulumi.Testing), property tests and integration tests (accessed 30 October 2026).",
       "supports_chapters": ["13_testing_strategies.md", "14_practical_implementation.md"]
     },
     {
       "id": 16,
-      "title": "Securing Terraform State",
+      "title": "Manage sensitive data in your configuration",
       "type": "documentation",
-      "year": 2024,
-      "url": "https://developer.hashicorp.com/terraform/cloud-docs/state/securing",
-      "summary": "HashiCorp documentation on Terraform state file security, covering encryption at rest, access controls, and remote backend configuration.",
-      "supports_chapters": ["09_security_fundamentals.md", "09b_security_patterns.md"]
+      "year": 2026,
+      "url": "https://developer.hashicorp.com/terraform/language/manage-sensitive-data",
+      "summary": "Terraform documentation on handling sensitive values and state; the former page \"Sensitive data in state\" (…/language/state/sensitive-data) redirects here. The same document is Source [20] in the bibliography (accessed 30 October 2026).",
+      "supports_chapters": ["14_practical_implementation.md"]
     }
   ]
 }
