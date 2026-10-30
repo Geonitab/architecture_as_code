@@ -6,13 +6,14 @@
 
 Architecture as Code represents a fundamental shift in how organisations manage their technical landscapes. Before diving into specific practices and technologies, it is essential to establish a solid conceptual foundation that will guide the journey through this book.
 
-This opening part introduces the core concepts and principles that underpin all Architecture as Code practices. We begin by exploring what Architecture as Code means, how it differs from traditional approaches, and why it matters for modern organisations. We then examine the fundamental principles that make Architecture as Code effective—from declarative definitions to testability at the architecture level.
+This opening part introduces the core concepts and principles that underpin all Architecture as Code practices. We begin by exploring what Architecture as Code means, how it differs from traditional approaches, and why it matters for modern organisations. A readiness guide (Chapter 26A) follows the introduction, helping organisations assess the cultural, technical, and economic prerequisites before they commit to an Architecture as Code programme. We then examine the fundamental principles that make Architecture as Code effective—from declarative definitions to testability at the architecture level.
 
 Version control and structured decision-making form the bedrock of successful implementation. Through systematic documentation of architectural choices using Architecture Decision Records, organisations gain transparency, traceability, and the knowledge continuity needed to sustain Architecture as Code practices over time.
 
 **What you will learn in this part:**
 
 - The evolution from manual, document-based architecture to Architecture as Code
+- How to assess organisational readiness before committing to an Architecture as Code programme
 - Core principles including declarative architecture, immutability, and holistic codification
 - How Documentation as Code and Requirements as Code integrate into the broader vision
 - Best practices for version control and code organisation in architectural contexts

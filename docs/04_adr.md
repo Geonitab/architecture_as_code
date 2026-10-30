@@ -6,7 +6,7 @@
 
 ## Overall Description
 
-The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting important architecture decisions that affect system structure, performance, security, and maintainability. The ADR method was introduced by Michael Nygard and has become an established best practice in modern system development.
+The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting important architecture decisions that affect system structure, performance, security, and maintainability. The ADR method was introduced by Michael Nygard (2011) [Source [39]](33_references.md#source-39) and has become an established best practice in modern system development.
 
 For organisations implementing Architecture as Code, ADRs are particularly valuable because they ensure architecture decisions are documented in a structured manner that meets compliance requirements and facilitates knowledge transfer between teams and over time.
 
@@ -27,7 +27,7 @@ The ADR format typically follows a structured template that includes:
 | Decision | The specific decision that was made | Clear statement of choice, implementation approach, rationale |
 | Consequences | Expected positive and negative consequences | Benefits, risks, trade-offs, mitigation strategies |
 
-Official guidelines and templates are available at [https://adr.github.io](https://adr.github.io), which serves as the primary resource for ADR methodology. This website is maintained by the ADR community and contains standardised templates, tools, and examples.
+Community-maintained guidelines, templates, and tool listings are available at [https://adr.github.io](https://adr.github.io), the homepage of the ADR GitHub organisation ([Source [55]](33_references.md#source-55)). The site collects widely used templates, tools, and examples, although no standards body governs the ADR format.
 
 In the Architecture as Code context, ADRs document decisions about technology choices, architecture patterns, security strategies, and operational policies that are codified in architecture definitions.
 
@@ -116,14 +116,14 @@ ADRs typically progress through the following statuses:
 
 ## Practical Examples of ADR
 
-### Example 1: Choice of Architecture as Code Tool
+### Example 1: Choice of Infrastructure as Code Tool
 
 Architecture as Code principles within this domain:
 
-#### ADR-0003: Selection of Terraform for Architecture as Code
+#### ADR-0003: Selection of Terraform as the Infrastructure as Code Tool
 
 - **Status:** Accepted
-- **Context:** The organisation needs to standardise on an Architecture as Code tool to manage AWS and Azure environments. Manual provisioning creates inconsistent configurations, weak audit trails, and delays that undermine compliance expectations.
+- **Context:** The organisation needs to standardise on an Infrastructure as Code tool that implements its architecture definitions across AWS and Azure environments. Manual provisioning creates inconsistent configurations, weak audit trails, and delays that undermine compliance expectations.
 - **Decision:** Terraform becomes the primary Infrastructure as Code tool for all cloud environments, with HashiCorp Configuration Language (HCL) as the standard syntax.
 - **Consequences:**
   - *Positive:*
@@ -134,7 +134,8 @@ Architecture as Code principles within this domain:
   - *Negative:*
     - Learning curve for teams accustomed to imperative scripting
     - Complexity in state file management
-    - Cost for Terraform Cloud or Enterprise features
+    - Cost for HCP Terraform (formerly Terraform Cloud) or Terraform Enterprise features
+    - Source-available Business Source License since August 2023; the open-source fork OpenTofu was evaluated as a fallback
 - **Mitigation:**
   - Training programmes for development teams
   - Implementation of Terraform remote state with Azure Storage
@@ -169,7 +170,7 @@ Architecture as Code principles within this domain:
 Several tools facilitate the creation and management of ADRs:
 
 **adr-tools**: Command-line tool to create and manage ADR files  
-**adr-log**: Automatic generation of an ADR index and timeline  
+**adr-log**: Generates an architecture decision log (an index of all ADRs) from the ADR directory  
 **Architecture Decision Record plugins**: Integration with IDEs such as VS Code
 
 For Architecture as Code projects, integrate ADRs into the Git repository structure:
@@ -178,7 +179,7 @@ For Architecture as Code projects, integrate ADRs into the Git repository struct
 docs/
 ├── adr/
 │   ├── 0001-record-architecture-decisions.md
-│   ├── 0002-use-terraform-for-architecture-as-code.md
+│   ├── 0002-use-terraform-for-infrastructure-as-code.md
 │   └── 0003-implement-zero-trust.md
 └── README.md
 ```
@@ -211,7 +212,7 @@ Effective ADR implementation requires established review processes:
 
 ### Code-Managed Discovery, Review, and Supersession
 
-Treating ADRs as code artefacts keeps the decision log maintainable and auditable, aligning with Thoughtworks' recommendation that architectural governance should be enforced through automated tooling rather than ad-hoc processes ([Source [1]](33_references.md#source-1)).
+Treating ADRs as code artefacts keeps the decision log maintainable and auditable, in line with the Thoughtworks Technology Radar's *Lightweight Architecture Decision Records* technique (Adopt, November 2017 and May 2018), which recommends storing decision records in source control rather than a wiki so that they remain in sync with the code itself ([Source [41]](33_references.md#source-41)).
 
 **Discovery**: Automation hooks can raise draft ADRs whenever a change request touches regulated components. A lightweight bot monitors backlog labels such as `architecture-impact` and scaffolds a new ADR file with templated metadata, prompting authors to capture context early. This ensures design gaps are surfaced before implementation begins and eliminates the scramble to document decisions retrospectively.
 
@@ -221,15 +222,15 @@ Treating ADRs as code artefacts keeps the decision log maintainable and auditabl
 
 ### Operationalising ADR Metadata
 
-ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on protecting Terraform state demonstrates how surfacing operational controls in dashboards prevents regressions; ADR metadata can mirror this practice by flagging decisions that enforce secure remote backends, rotation schedules, or access monitoring ([HashiCorp, 2024](33_references.md#hashicorp-securing-terraform-state)).
+ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on sensitive data in Terraform notes that state and plan files can contain secrets and recommends treating state as sensitive, storing it remotely, and encrypting it at rest ([Source [20]](33_references.md#source-20)); ADR metadata can make such operational controls visible by flagging decisions that enforce secure remote backends, encryption, or access monitoring.
 
 Teams can emit a structured JSON index during CI that feeds architectural observability boards. Typical widgets include:
 
-- **Lifecycle timeline** – a chronological view generated via `adr log` that shows proposals, acceptances, and supersessions, doubling as an automated change log.
+- **Lifecycle timeline** – a chronological view generated from the decision log produced by `adr-log` (or by `adr generate toc` in adr-tools) that shows proposals, acceptances, and supersessions, doubling as an automated change log.
 - **Policy coverage heat map** – cross-references ADR tags against policy-as-code checks to reveal services that are missing mandated controls.
 - **Review debt tracker** – flags ADRs whose `next_review_due` date has passed, enabling leadership to prioritise refresh work in sprint planning.
 
-Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls ([Source [1]](33_references.md#source-1)).
+Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls.
 
 ### Preventing Knowledge Loss Through ADRs
 
@@ -239,7 +240,7 @@ ADRs preserve organisational memory when staff transitions occur. During onboard
 2. Inspect the automation evidence (pipeline runs, policy reports, state snapshots) referenced in the ADR to verify the decision is still active.
 3. Capture any deviations in a "drift" section and schedule a follow-up review if the ADR's `next_review_due` date has lapsed.
 
-This workflow prevented significant disruption during a recent platform rotation: when the outgoing lead departed, the incoming engineer replayed the ADR change log to rebuild the rationale for Terraform state hardening, reusing the monitoring queries and remediation playbooks recorded alongside the decision. By curating these artefacts in code, teams avoid losing critical context to private notes or unstructured chat history, fulfilling the maintainability objective of keeping architecture knowledge evergreen ([HashiCorp, 2024](33_references.md#hashicorp-securing-terraform-state)).
+In one engagement the author observed this workflow prevent significant disruption during a platform team rotation: when the outgoing lead departed, the incoming engineer replayed the ADR change log to rebuild the rationale for Terraform state hardening, reusing the monitoring queries and remediation playbooks recorded alongside the decision. By curating these artefacts in code, teams avoid losing critical context to private notes or unstructured chat history, fulfilling the maintainability objective of keeping architecture knowledge evergreen.
 
 ## Integration with Architecture as Code
 
@@ -288,8 +289,7 @@ With foundational principles, version control practices, and decision documentat
 
 ## Sources
 
-1. **Architecture Decision Records Community.** *ADR Guidelines and Templates.* [https://adr.github.io](https://adr.github.io)
-2. **Nygard, M. (2011).** *Documenting Architecture Decisions.*
-3. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
-4. **HashiCorp (2024).** *Securing Terraform State.* HashiCorp Developer Documentation. [Source [16]](33_references.md#source-16)
-5. **Thoughtworks (2023).** *Architecture Decision Records.* Technology Radar.
+1. **ADR GitHub organisation.** *Architectural Decision Records (ADRs).* Homepage of the ADR GitHub organisation (accessed 2026-10-30). Available at: [https://adr.github.io/](https://adr.github.io/). [Source [55]](33_references.md#source-55)
+2. **Nygard, M. (2011).** *Documenting Architecture Decisions.* Cognitect blog, 15 November 2011. Available at: [https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions](https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions). [Source [39]](33_references.md#source-39)
+3. **Thoughtworks (2016–2018).** *Lightweight Architecture Decision Records.* Technology Radar, Techniques (Vol. 15, November 2016 to Vol. 18, May 2018). Available at: [https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records](https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records). [Source [41]](33_references.md#source-41)
+4. **HashiCorp.** *Manage sensitive data in your configuration.* Terraform documentation. Available at: [https://developer.hashicorp.com/terraform/language/manage-sensitive-data](https://developer.hashicorp.com/terraform/language/manage-sensitive-data). [Source [20]](33_references.md#source-20)
