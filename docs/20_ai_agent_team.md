@@ -1,4 +1,4 @@
-# AI Agent Team for the Architecture as Code Initiative {#ai-agent-team}
+# AI Agent Team for Architecture as Code Initiatives {#ai-agent-team}
 
 ## Learning Objectives
 

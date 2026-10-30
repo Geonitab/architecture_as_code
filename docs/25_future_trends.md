@@ -1,4 +1,4 @@
-# Future Trends and Development in Architecture as Code {#future-trends}
+# Future Trends in Architecture as Code {#future-trends}
 
 ## Introduction
 

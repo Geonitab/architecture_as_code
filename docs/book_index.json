@@ -17,7 +17,7 @@
       "title": "Architecture Platform",
       "chapters": [
         {"identifier": "5", "file": "docs/05_automation_devops_cicd.md", "title": "Automation, DevOps and CI/CD for Infrastructure as Code"},
-        {"identifier": "6", "file": "docs/06_structurizr.md", "title": "Structurizr: Architecture Modeling as Code"},
+        {"identifier": "6", "file": "docs/06_structurizr.md", "title": "Structurizr: Architecture Modelling as Code"},
         {"identifier": "7", "file": "docs/07_containerisation.md", "title": "Containerisation and Orchestration as Code"},
         {"identifier": "8", "file": "docs/08_microservices.md", "title": "Microservices Architecture as Code"}
       ]

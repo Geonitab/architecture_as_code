@@ -256,7 +256,7 @@ This integration enables transparent governance and compliance where architectur
 
 The ADR methodology supports compliance requirements through structured documentation that enables:
 
-**Regulatory Compliance**: Systematic documentation for GDPR, PCI-DSS, and industry-specific regulations  
+**Regulatory Compliance**: Systematic documentation for GDPR, PCI DSS, and industry-specific regulations  
 **Audit Readiness**: Complete trace of architecture decisions and their rationale  
 **Risk Management**: Documented risk assessments and mitigation strategies  
 **Knowledge Management**: Structured knowledge transfer between teams and over time

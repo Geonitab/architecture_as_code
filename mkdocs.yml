@@ -24,7 +24,7 @@ nav:
       - index: part_c_security.md
       - Security Fundamentals for Architecture as Code: 09_security_fundamentals.md
       - Advanced Security Patterns and Implementation: 09b_security_patterns.md
-      - Risk and Threat Modelling as Code: 09c_risk_and_threat_as_code.md
+      - Risk as Code and Threat Handling as Code: 09c_risk_and_threat_as_code.md
       - Policy and Security as Code in Detail: 10_policy_and_security.md
       - Governance as Code: 11_governance_as_code.md
       - Compliance and Regulatory Adherence: 12_compliance.md
@@ -40,7 +40,7 @@ nav:
       - Organisational Change and Team Structures: 17_organisational_change.md
       - Team Structure and Competency Development for IaC: 18_team_structure.md
       - Management as Code: 19_management_as_code.md
-      - Interplay Between Soft-As-Code Disciplines: 23_soft_as_code_interplay.md
+      - The Interplay Between Soft As Code Disciplines: 23_soft_as_code_interplay.md
       - AI Agent Team for Architecture as Code Initiatives: 20_ai_agent_team.md
       - Digitalisation through Code-based Infrastructure: 21_digitalisation.md
   - Part F – Experience & Best Practices:
