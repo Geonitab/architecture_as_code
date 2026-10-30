@@ -10,13 +10,13 @@ This curated workspace accompanies Chapter 06 and demonstrates how the book's C4
 
 ## Quick start
 
-1. Install the Structurizr CLI (minimum version 2024.03.01 as referenced in the workspace configuration).
+1. Install Docker or Podman; the helper pulls the consolidated `structurizr/structurizr` image (release 2026.09.19, recorded as a free-form property in the workspace configuration). The standalone Structurizr CLI has reached end of life, see [docs.structurizr.com/cli](https://docs.structurizr.com/cli).
 2. From the repository root, execute the helper that mirrors the CI workflow:
    ```bash
    ./scripts/render_structurizr_diagrams.sh
    ```
-   The script validates the workspace, exports PNG and Structurizr JSON artefacts into `build/structurizr/`, and refreshes the manifest hash recorded next to the DSL. It requires either Docker or Podman; if neither runtime is available the script prints manual `java -jar structurizr-cli.jar` alternatives so developers can still regenerate diagrams.
-3. Open the generated diagrams (PNG/SVG) or the Structurizr Lite workspace to explore interactive tooling.
+   The script validates the workspace, exports Structurizr JSON and PlantUML artefacts into `build/structurizr/`, and refreshes the manifest hash recorded next to the DSL. It requires either Docker or Podman; if neither runtime is available the script prints manual `java -jar structurizr.war` alternatives so developers can still regenerate diagrams.
+3. Render the PlantUML exports with PlantUML, or copy the DSL into a directory as `workspace.dsl` and start `structurizr local` there to explore the interactive tooling.
 
 ## Alignment with the book
 
@@ -28,6 +28,6 @@ This curated workspace accompanies Chapter 06 and demonstrates how the book's C4
 
 - Additional views may be appended in dedicated `views` blocks; align new view identifiers with chapter numbers for traceability.
 - Reusable fragments (such as shared people or external systems) should be extracted into `!include` files. Keep those includes alongside the workspace file to simplify code review.
-- All contributions should pass the Structurizr CLI validation (`./scripts/render_structurizr_diagrams.sh`) before opening a pull request.
+- All contributions should pass Structurizr validation (`./scripts/render_structurizr_diagrams.sh`) before opening a pull request.
 - If the helper script reports a digest mismatch, rerun it to update `aac_reference_workspace.manifest.json` so the CI job recognises that diagrams and Markdown remain in sync.
 

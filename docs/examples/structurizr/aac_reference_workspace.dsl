@@ -183,7 +183,9 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
 
     configuration {
         properties {
-            structurizr.cli.version "2024.03.01"
+            # Documents the Structurizr release the exports were last generated with;
+            # the render script pins the container image itself.
+            aac.structurizr.release "2026.09.19"
         }
         branding {
             logo "../images/diagram_06_structurizr_overview.png"
