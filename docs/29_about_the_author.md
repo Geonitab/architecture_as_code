@@ -8,7 +8,7 @@ This book represents the culmination of extensive experience in architecture, in
 
 ## Gunnar Nordqvist
 
-**Gunnar Nordqvist** is a self employed certified Chief Architect and IT Architect consultant associated with Kvadrat, a leading Swedish technology consultancy. As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
+**Gunnar Nordqvist** is a self-employed certified Chief Architect and IT Architect consultant in the Kvadrat network, a Swedish consultancy network of independent specialists [Source [130]](33_references.md#source-130). As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
 
 ### Professional Background
 
@@ -28,16 +28,13 @@ Throughout his career, Gunnar has witnessed the evolution from manual, document-
 
 ## About Kvadrat
 
-Gunnar Nordqvist is a principal consultant at Kvadrat, a Scandinavian management and technology consultancy.
+Gunnar Nordqvist works as an independent consultant through Kvadrat, which describes itself as Sweden's largest network of self-employed consultants and has offices across Sweden [Source [130]](33_references.md#source-130).
 
 ## Swedish Terminology Reference
 
-> **Terminology Note:** The Swedish organisations and institutions referenced here keep their native names to preserve accuracy. The translations below clarify the meaning for readers unfamiliar with Swedish terminology.
+> **Terminology Note:** The Swedish names used in this section keep their native form to preserve accuracy. The notes below clarify the meaning for readers unfamiliar with Swedish terminology.
 
 - **Kvadrat AB** – `AB` stands for *aktiebolag*, Sweden’s equivalent of a limited company. The firm’s name translates literally to “square” but is always written as Kvadrat in branding.
-- **KTH Royal Institute of Technology** – Commonly referred to as KTH, the Swedish name is *Kungliga Tekniska högskolan* (“Royal Institute of Technology”).
-- **Linköping University** – In Swedish, *Linköpings universitet*; the apostrophe-free form follows Swedish grammar rules.
-- **Malmö University** – *Malmö universitet* retains the letter `ö`, pronounced roughly like the vowel sound in “blur”.
 - **Nordqvist** – A Swedish family name combining *nord* (“north”) and *qvist* (“twig”), reflecting traditional Swedish surname construction.
 
 ## The Book's Technical Foundation
@@ -51,6 +48,8 @@ This publication demonstrates Architecture as Code principles not only in its co
 - **Pandoc 3.1.9** for document conversion and multi-format publishing
 - **XeLaTeX** with Eisvogel template for professional PDF production
 - **Mermaid CLI** for diagram-as-code generation
+
+These versions are pinned in `BOOK_REQUIREMENTS.md` for release 2025.10 (Python 3.12.3, Pandoc 3.1.9, Node.js 20.11.1, Mermaid CLI 10.7.0) and checked with `make verify-env`; they reflect the toolchain at the time of that release rather than the newest available versions.
 
 **Automation and Quality:**
 - **GitHub Actions** for CI/CD automation
@@ -116,7 +115,7 @@ For questions, feedback, or suggestions for improvements:
 
 ## Licence and Usage
 
-This work is licensed under the Creative Commons Attribution 4.0 International Licence (CC BY 4.0). Full terms: https://creativecommons.org/licenses/by/4.0/
+This work is licensed under the Creative Commons Attribution 4.0 International Licence (CC BY 4.0). Full terms: [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
 
 This licence permits:
 
@@ -133,11 +132,9 @@ The journey towards Architecture as Code represents more than a technical evolut
 
 This book aims to accelerate the adoption of Architecture as Code principles and contribute to improved technical outcomes across organisations. The success of these methodologies depends not only on technical implementation but on cultural transformation and organisational commitment to treating architecture as a first-class engineering discipline.
 
-As technology continues to evolve, the principles outlined in this book—declarative design, version control, automation, and continuous validation—will remain fundamental to building reliable, scalable, and maintainable systems.
+As technology continues to evolve, the principles outlined in this book—declarative design, version control, automation, and continuous validation—will remain fundamental to building reliable, scalable, and maintainable systems. Open specifications such as FINOS CALM, which describe architecture in a human- and machine-readable form that tooling can validate automatically, show that the wider industry is moving in the same direction [Source [1]](33_references.md#source-1).
 
 ## Sources
 
-1. **Kvadrat AB (2024).** *Gunnar Nordqvist – Chief Architect Profile.* Consultant Profile. [https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/](https://www.kvadrat.se/anlita-kvadrat/hitta-konsult/gunnar-nordqvist/)
-2. **Kvadrat AB (2024).** *Technology Consulting Excellence.* Company Profile. [https://www.kvadrat.se/](https://www.kvadrat.se/)
-3. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
-4. **GitHub Open Source Community (2024).** *Collaborative Software Development.* Platform Documentation.
+1. **Kvadrat.** *Sveriges vassaste konsulter.* Kvadrat corporate website (in Swedish). [https://www.kvadrat.se/](https://www.kvadrat.se/) (accessed 2026-10-30). [Source [130]](33_references.md#source-130)
+2. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)

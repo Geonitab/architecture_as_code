@@ -7,7 +7,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 ## How to use this glossary
 - **Start with the diagram:** The class diagram summarises how foundational Architecture as Code elements interact. Trace the relationships before diving into the definitions.
 - **Explore by theme:** Terms are grouped so product teams, platform engineers, security specialists, and organisational leaders can quickly find language relevant to their responsibilities.
-- **Cross-reference chapters:** Each definition reflects the terminology used throughout the book. When you see a highlighted concept in other chapters, return here for a concise explanation.
+- **Cross-reference chapters:** Definitions align with industry usage and, where applicable, with the terminology used in the chapters. When you see a highlighted concept in other chapters, return here for a concise explanation.
 - **Keep language inclusive:** Use these definitions when collaborating so every team member hears consistent, people-first language.
 
 ## Core Architecture as Code foundations
@@ -29,7 +29,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Continuous Integration / Continuous Delivery | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. Teams usually refer to this as CI/CD. (See [Chapter 5](05_automation_devops_cicd.md)) |
 | Delivery Pipeline | The orchestrated flow of automated checks, approvals, and deployments that transform committed code into resilient production services. |
 | Version Control System | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. Often shortened to VCS. (See [Chapter 3](03_version_control.md)) |
-| GitOps | Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments. (See [Chapter 3](03_version_control.md)) |
+| GitOps | An operating model in which the desired state of systems is declared in version control and software agents continuously pull that declared state and reconcile the live environments against it, following the OpenGitOps principles (declarative, versioned and immutable, pulled automatically, continuously reconciled) [Source [133]](33_references.md#source-133). (See [Chapter 3](03_version_control.md)) |
 | Configuration Management | Tooling such as Ansible or Chef that applies desired system states, often working alongside declarative templates to maintain consistency. |
 | Terraform | A widely used IaC tool that compiles declarative configurations into API calls, offering modular composition and policy enforcement hooks. |
 | Helm | The package manager for Kubernetes that bundles manifests, default values, and documentation into shareable charts. |
@@ -45,11 +45,12 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 |------|------------|
 | Policy as Code | The practice of expressing organisational policies in code so they can be versioned, tested, and enforced automatically across platforms. (See [Chapter 10](10_policy_and_security.md)) |
 | Continuous Compliance | Automated validation that checks regulatory and internal controls with every change, generating evidence that auditors and teams can trust. |
-| Zero Trust | A security stance that continuously verifies identities, device health, and context before granting access, reducing implicit trust between services. |
+| Compliance Automation | The pipeline jobs and tooling that evaluate infrastructure and architecture definitions against codified controls and record the resulting evidence automatically; the engine that makes continuous compliance possible. (See [Chapter 12](12_compliance.md)) |
+| Zero Trust | A security model, described in NIST SP 800-207, that grants no implicit trust based on network location or asset ownership and instead continuously verifies identity, device health, and context before granting least-privileged access to each resource [Source [134]](33_references.md#source-134). |
 | Security Policy | A codified set of safeguards—identity, encryption, network, and data-handling—that shapes how architecture components interoperate securely. |
 | Data Sovereignty | Ensuring data is handled in accordance with applicable legal and regulatory requirements, influencing design choices and deployment regions. |
 | Risk Assessment Matrix | A structured view of likelihood versus impact that helps teams evaluate and prioritise mitigations collaboratively. |
-| Access Federation | Coordinated identity management across platforms so that people have the least-privileged access they need to perform their roles. |
+| Identity Federation | Linking identity providers across organisations and platforms so that people authenticate once and receive the least-privileged access they need to perform their roles. |
 
 ## Reliability and operational excellence
 
@@ -60,7 +61,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Service Level Indicator | The quantitative measurement—such as latency or error rate—that shows whether an SLO is being achieved. Frequently described as an SLI. |
 | Error Budget | The agreed allowance for unreliability that guides deployment pace and prioritisation of improvement work. |
 | Chaos Engineering | Intentional experimentation that reveals weaknesses by introducing controlled failure, strengthening resilience and team confidence. |
-| Chaos Monkey | A resilience experiment that deliberately terminates running resources to verify automated recovery, typically orchestrated through codified AaC workflows. |
+| Chaos Monkey | Netflix's open-source tool that randomly terminates virtual machine instances and containers in production to verify that services tolerate instance failure; an early and widely known chaos engineering implementation [Source [135]](33_references.md#source-135). |
 | Incident Command | An inclusive, role-based structure that coordinates response efforts during major events so everyone understands responsibilities and communication paths. |
 | Blameless Post-Incident Review | A learning-focused conversation after incidents that identifies systemic improvements without placing personal blame. |
 | Runway Health Check | A periodic review of capacity, tooling, and process debt to ensure teams have the runway to deliver sustainable change. |
@@ -101,10 +102,10 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | AI for IT Operations | Applying machine learning to operational data to surface anomalies, predict incidents, and guide human responders. Often called AIOps in industry discussions. |
 | Sustainability KPI | A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation. |
 | Knowledge Graph | A connected representation of architectural artefacts, policies, and services that supports richer impact analysis and discovery. |
-| CALM | The Common Architecture Language Model — a machine-readable, graph-based standard for describing architectural nodes, relationships, and metadata. (See [Chapter 32](32_finos_project_blueprint.md)) |
+| CALM | The Common Architecture Language Model: an open-source FINOS specification, built on a JSON meta-schema, that describes an architecture as nodes, relationships, and metadata so that tooling can validate and process it [Source [1]](33_references.md#source-1). (See [Appendix C](32_finos_project_blueprint.md)) |
 
 ## Terms and relationship database
-Keeping the glossary actionable requires more than prose. A structured dataset now lives at `references/glossary_terms_relationships.json` so automation can reason about how concepts reinforce one another. Pipelines use it to surface dependencies in pull requests, populate architecture decision templates, and keep presentation material aligned with the book’s vocabulary.
+Keeping the glossary actionable requires more than prose. A structured dataset lives at `references/glossary_terms_relationships.json` so that automation can reason about how concepts reinforce one another. The test suite (`tests/test_glossary_dataset.py`) validates that the dataset and this glossary stay in sync, and the dataset can be used by automation—for example to surface dependencies in pull requests, populate architecture decision templates, or keep presentation material aligned with the book’s vocabulary.
 
 | Term | Related Concept | Relationship | Why it matters |
 |------|-----------------|--------------|----------------|
@@ -117,3 +118,10 @@ Keeping the glossary actionable requires more than prose. A structured dataset n
 ---
 
 Revisit this glossary as new capabilities emerge. Update both the definitions and the diagram when introducing a novel concept so that every reader can see how their contribution fits into the Architecture as Code ecosystem.
+
+## Sources
+
+1. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+2. **OpenGitOps (2021).** *OpenGitOps Principles v1.0.0.* CNCF GitOps Working Group. [https://opengitops.dev/](https://opengitops.dev/) [Source [133]](33_references.md#source-133)
+3. **Rose, S., Borchert, O., Mitchell, S. & Connelly, S. (2020).** *Zero Trust Architecture.* NIST Special Publication 800-207, August 2020. [https://doi.org/10.6028/NIST.SP.800-207](https://doi.org/10.6028/NIST.SP.800-207) [Source [134]](33_references.md#source-134)
+4. **Netflix.** *Chaos Monkey.* Open-source project documentation. [https://netflix.github.io/chaosmonkey/](https://netflix.github.io/chaosmonkey/) [Source [135]](33_references.md#source-135)

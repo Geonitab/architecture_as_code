@@ -27,8 +27,8 @@ The maturity model includes the key “as code” disciplines discussed in the b
 
 | Aspect (discipline) | Description | References |
 |----------------------|-------------|-------------|
-| **Infrastructure as code (IaC)** | Declarative templates and programmatic frameworks (e.g. Terraform, Pulumi, AWS CDK) used to define, provision and manage infrastructure; test strategies include unit, integration and compliance tests. | Ch. 5 Automation & CI/CD [13], Ch. 13 Testing Strategies [2] |
-| **Architecture as Code (AaC)** | Models such as the C4 model or Structurizr DSL used to encode architecture. AaC becomes the hub that links policies, compliance rules and documentation. | Ch. 6 Structurizr [1], Ch. 23 Soft as Code Interplay [3] |
+| **Infrastructure as code (IaC)** | Declarative templates and programmatic frameworks (e.g. Terraform, Pulumi, AWS CDK) used to define, provision and manage infrastructure; test strategies include unit, integration and compliance tests. | Ch. 5 Automation & CI/CD [10], Ch. 13 Testing Strategies [2] |
+| **Architecture as Code (AaC)** | Models such as the C4 model or Structurizr DSL used to encode architecture. AaC becomes the hub that links policies, compliance rules and documentation. | Ch. 6 Structurizr [11], Structurizr DSL reference [1], Ch. 23 Soft as Code Interplay [3] |
 | **Containerisation & orchestration as code** | Definition of container images, Kubernetes manifests, Compose files and Helm charts; supports repeatable, portable deployments. | Ch. 7 Containerisation & Orchestration as Code [4] |
 | **Policy as code (PaC) & Security as code** | Translation of governance and security requirements into executable rules using tools such as Open Policy Agent; reduces manual approvals, provides continuous validation and integrates with CI/CD pipelines. | Ch. 10 Policy & Security [5] |
 | **Governance as code** | Codifying approval flows, branch protection rules and decision policies so that governance artefacts live in repositories with transparent review workflows. | Ch. 11 Governance as Code [6] |
@@ -211,12 +211,14 @@ By progressing through this maturity model, organisations can evolve from manual
 
 ## Sources
 
-[1]: https://github.com/dwmkerr/architecture-as-code "Architecture as Code GitHub Repository"  
-[2]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/13_testing_strategies.md "Testing Strategies Chapter"  
-[3]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/23_soft_as_code_interplay.md "Soft as Code Interplay Chapter"  
-[4]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/07_containerisation.md "Containerisation and Orchestration Chapter"  
-[5]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/10_policy_and_security.md "Policy and Security Chapter"  
-[6]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/11_governance_as_code.md "Governance as Code Chapter"  
-[7]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/12_compliance.md "Compliance Chapter"  
-[8]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/22_documentation_vs_architecture.md "Documentation vs Architecture Chapter"  
-[9]: https://raw.githubusercontent.com/Geonitab/architecture_as_code/main/docs/19_management_as_code.md "Management as Code Chapter"  
+[1]: https://docs.structurizr.com/dsl/language "Structurizr DSL language reference (docs.structurizr.com)"  
+[2]: 13_testing_strategies.md "Chapter 13: Testing Strategies for Infrastructure as Code"  
+[3]: 23_soft_as_code_interplay.md "Chapter 23: The Interplay Between Soft As Code Disciplines"  
+[4]: 07_containerisation.md "Chapter 7: Containerisation and Orchestration as Code"  
+[5]: 10_policy_and_security.md "Chapter 10: Policy and Security as Code in Detail"  
+[6]: 11_governance_as_code.md "Chapter 11: Governance as Code"  
+[7]: 12_compliance.md "Chapter 12: Compliance and Regulatory Adherence"  
+[8]: 22_documentation_vs_architecture.md "Chapter 22: Documentation as Code vs Architecture as Code"  
+[9]: 19_management_as_code.md "Chapter 19: Management as Code"  
+[10]: 05_automation_devops_cicd.md "Chapter 5: Automation, DevOps and CI/CD for Infrastructure as Code"  
+[11]: 06_structurizr.md "Chapter 6: Structurizr: Architecture Modelling as Code"  

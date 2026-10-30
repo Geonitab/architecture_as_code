@@ -4,11 +4,11 @@ Architecture as Code initiatives rely on reusable templates and interactive tool
 
 ## Architecture as Code Maturity Model
 
-The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) describes six adoption levels spanning foundational automation through to fully codified enterprise governance. Each level contains assessment prompts, operating model guidance, and measurable outcomes that help teams benchmark their progress.
+The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) describes six maturity levels (0–5), from ad hoc practice through to fully codified, AI-assisted enterprise governance, together with a per-discipline yes/no checklist of fifty questions across ten "as code" disciplines that helps teams benchmark their progress.
 
 ## Architecture as Code Maturity Radar Tool
 
-The [Maturity Radar Tool](maturity_model_radar.html) offers an interactive visualisation of the maturity model. It enables leadership teams to capture current-state and target-state indicators, compare trajectories across business units, and export radar charts for strategy reviews.
+The [Maturity Radar Tool](maturity_model_radar.html) offers an interactive visualisation of the maturity model. It captures current-state answers to the checklist, plots them as a radar chart, lists prioritised improvement suggestions with chapter references, and exports the assessment as JSON (for later re-import) or as a PDF for strategy reviews.
 
 ## Control Mapping Matrix Template
 
@@ -22,18 +22,29 @@ The [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template
 
 ## Migration Assessment Automation
 
+The Python module below complements the migration guidance in [Chapter 16](16_migration.md). It inventories AWS resources that are not yet managed as code, estimates effort and risk, and generates a Terraform import plan and a migration playbook. The helper methods are deliberately simple heuristics: adapt the thresholds and the tag conventions (for example your own `ManagedBy` tag) to your estate before relying on the output.
+
 ```python
 # migration_assessment/infrastructure_discovery.py
 import boto3
 import json
 from datetime import datetime
 from typing import Dict, List
-import pandas as pd
+
 
 class InfrastructureMigrationAssessment:
     """
     Automated assessment of existing infrastructure for architecture as code migration
     """
+
+    # Tag keys that indicate a resource is already managed as code. Only the
+    # CloudFormation key is applied automatically by AWS; the others are
+    # organisation-specific conventions that teams apply themselves.
+    IAC_TAG_KEYS = (
+        'aws:cloudformation:stack-name',
+        'ManagedBy',
+        'Created-By-Terraform',
+    )
 
     def __init__(self, region='eu-west-1'):
         self.ec2 = boto3.client('ec2', region_name=region)
@@ -91,19 +102,117 @@ class InfrastructureMigrationAssessment:
 
         return unmanaged_instances
 
+    def _find_unmanaged_rds(self) -> List[Dict]:
+        """Find RDS instances whose tags do not indicate code-based management"""
+
+        response = self.rds.describe_db_instances()
+        unmanaged_databases = []
+
+        for database in response.get('DBInstances', []):
+            if not self._is_resource_managed(database.get('TagList', [])):
+                unmanaged_databases.append({
+                    'db_instance_identifier': database['DBInstanceIdentifier'],
+                    'engine': database.get('Engine'),
+                    'instance_class': database.get('DBInstanceClass'),
+                    'multi_az': database.get('MultiAZ', False)
+                })
+
+        return unmanaged_databases
+
+    def _find_unmanaged_load_balancers(self) -> List[Dict]:
+        """Find application and network load balancers without IaC tags"""
+
+        response = self.elb.describe_load_balancers()
+        unmanaged_load_balancers = []
+
+        for load_balancer in response.get('LoadBalancers', []):
+            arn = load_balancer['LoadBalancerArn']
+            tag_descriptions = self.elb.describe_tags(ResourceArns=[arn]).get('TagDescriptions', [])
+            tags = tag_descriptions[0].get('Tags', []) if tag_descriptions else []
+
+            if not self._is_resource_managed(tags):
+                unmanaged_load_balancers.append({
+                    'load_balancer_arn': arn,
+                    'name': load_balancer.get('LoadBalancerName'),
+                    'type': load_balancer.get('Type'),
+                    'scheme': load_balancer.get('Scheme')
+                })
+
+        return unmanaged_load_balancers
+
+    def _find_unmanaged_security_groups(self) -> List[Dict]:
+        """Find security groups without IaC tags (VPC default groups are skipped)"""
+
+        response = self.ec2.describe_security_groups()
+        unmanaged_groups = []
+
+        for group in response.get('SecurityGroups', []):
+            if group.get('GroupName') == 'default':
+                continue
+            if not self._is_resource_managed(group.get('Tags', [])):
+                unmanaged_groups.append({
+                    'group_id': group['GroupId'],
+                    'group_name': group.get('GroupName'),
+                    'vpc_id': group.get('VpcId'),
+                    'ingress_rules': len(group.get('IpPermissions', []))
+                })
+
+        return unmanaged_groups
+
     def _is_resource_managed(self, tags: List[Dict]) -> bool:
         """Check if resource is managed by architecture as code"""
 
-        iac_indicators = [
-            'aws:cloudformation:stack-name',
-            'terraform:stack',
-            'pulumi:stack',
-            'Created-By-Terraform',
-            'ManagedBy'
-        ]
-
         tag_keys = {tag.get('Key', '') for tag in tags}
-        return any(indicator in tag_keys for indicator in iac_indicators)
+        return any(indicator in tag_keys for indicator in self.IAC_TAG_KEYS)
+
+    def _calculate_migration_priority(self, instance: Dict) -> str:
+        """Simple heuristic: production and large instances are migrated last ('high')"""
+
+        tags = {tag['Key']: tag['Value'] for tag in instance.get('Tags', [])}
+        environment = tags.get('Environment', '').lower()
+        size = instance.get('InstanceType', '').split('.')[-1]
+
+        if environment in ('production', 'prod') or size in ('2xlarge', '4xlarge', '8xlarge', 'metal'):
+            return 'high'
+        if environment in ('staging', 'test', 'qa'):
+            return 'medium'
+        return 'low'
+
+    def _estimate_downtime(self, instance: Dict) -> str:
+        """Importing an existing resource into Terraform state does not restart it"""
+
+        if instance.get('State', {}).get('Name') == 'running':
+            return 'none expected (state import only)'
+        return 'not applicable (instance not running)'
+
+    def _assess_migration_complexity(self, unmanaged_resources: Dict) -> str:
+        """Classify overall complexity from the size and mix of the unmanaged estate"""
+
+        total = sum(len(resources) for resources in unmanaged_resources.values() if isinstance(resources, list))
+        if total > 50 or len(unmanaged_resources.get('rds_instances', [])) > 5:
+            return 'high'
+        if total > 15:
+            return 'medium'
+        return 'low'
+
+    def _estimate_migration_effort(self, total_resources: int) -> str:
+        """Rule of thumb: a fixed set-up cost plus half a person-day per resource"""
+
+        person_days = 5 + (total_resources * 0.5)
+        return f"{person_days:.0f} person-days"
+
+    def _assess_migration_risks(self, unmanaged_resources: Dict) -> str:
+        """Summarise the main risk drivers as a short statement"""
+
+        risks = []
+        if unmanaged_resources.get('rds_instances'):
+            risks.append(f"{len(unmanaged_resources['rds_instances'])} database(s) need agreed change windows")
+        if unmanaged_resources.get('security_groups'):
+            risks.append(f"{len(unmanaged_resources['security_groups'])} security group(s) must be imported before dependent resources")
+        if unmanaged_resources.get('load_balancers'):
+            risks.append(f"{len(unmanaged_resources['load_balancers'])} load balancer(s) carry customer traffic")
+
+        return '; '.join(risks) if risks else 'low (compute resources only)'
 
     def generate_terraform_migration_plan(self, unmanaged_resources: Dict) -> str:
         """Generate Terraform code for migration of unmanaged resources"""
