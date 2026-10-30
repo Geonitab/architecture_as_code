@@ -12,6 +12,8 @@ Successful transformation depends on deliberate culture building. The DevOps phi
 
 Management as Code represents the logical extension of Architecture as Code principles into leadership and governance domains. By codifying decision frameworks, approval workflows, and strategic intent, organisations create transparency and consistency in how they operate. This doesn't remove human judgement—it makes expectations explicit and decisions traceable.
 
+Management as Code is one of several soft "as code" disciplines. Compliance, architecture, documentation, knowledge and culture as code share the same DNA—structured representation, version control and automatability—and they deliver the most value when they are combined deliberately within a single toolchain. Understanding how these disciplines interlock helps organisations plan an incremental programme rather than a collection of isolated initiatives.
+
 AI agent teams introduce new collaboration models where virtual agents work alongside human practitioners. This paradigm requires careful role definition, clear communication protocols, and ethical guidelines that ensure AI augments rather than replaces human expertise. The practices explored here prepare organisations for this evolution.
 
 Digitalisation through code-based infrastructure enables organisations to transform not just their technology but their entire operating model. When architecture, processes, and business capabilities are all expressed as code, organisations gain unprecedented agility and the ability to respond rapidly to changing market conditions.
@@ -22,6 +24,7 @@ Digitalisation through code-based infrastructure enables organisations to transf
 - Team structure designs that balance autonomy with alignment
 - Cultural practices that sustain DevOps transformation
 - Management as Code principles for leadership and governance
+- How the soft "as code" disciplines—compliance, architecture, documentation, knowledge and culture as code—interlock and reinforce one another
 - AI agent team models for Architecture as Code initiatives
 - Digitalisation strategies enabled by code-based infrastructure
 

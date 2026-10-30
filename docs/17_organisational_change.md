@@ -83,7 +83,7 @@ Pilot projects serve dual purposes: they prove technical feasibility whilst crea
 
 Transformation programmes that lack clear success criteria drift aimlessly or claim victory prematurely based on activity metrics rather than outcomes. Insightful metrics keep transformation honest by connecting technical improvements to business value. Leading indicators such as deployment frequency, recovery time, developer satisfaction, and onboarding effort demonstrate whether cultural shifts translate into measurable delivery improvements.
 
-The most effective measurement frameworks balance technical, business, and cultural dimensions rather than focusing narrowly on infrastructure metrics. DORA metrics (deployment frequency, lead time, change failure rate, and recovery time) provide baseline technical health indicators, whilst developer satisfaction surveys and onboarding time reveal whether the organisation is building sustainable capabilities or burning out its people.
+The most effective measurement frameworks balance technical, business, and cultural dimensions rather than focusing narrowly on infrastructure metrics. DORA's five software delivery metrics (deployment frequency, lead time for changes, change failure rate, failed deployment recovery time and rework rate) [Source [49]](33_references.md#source-49) provide baseline technical health indicators, whilst developer satisfaction surveys and onboarding time reveal whether the organisation is building sustainable capabilities or burning out its people.
 
 Appendix A, [listing 17-C](30_appendix_code_examples.md#17_code_3), presents a neutral, globally relevant performance measurement framework that can be automated through standard DevOps toolchains. The framework emphasises leading indicators that teams can influence directly rather than lagging indicators that only confirm success or failure after opportunities for course correction have passed.
 
@@ -97,9 +97,7 @@ By linking cultural commitments with transparent measurement and clear governanc
 
 ## Sources
 
-1. **Puppet Labs (2023).** *State of DevOps Report.* Puppet Labs.
-2. **Google Cloud (2023).** *DORA State of DevOps Research.* Google Cloud.
-3. **Spotify Technology (2023).** *Spotify Engineering Culture.* Spotify Technology.
-4. **Skelton, M. & Pais, M. (2019).** *Team Topologies: Organising Business and Technology Teams for Fast Flow.* IT Revolution Press. [Source [30]](33_references.md#source-30)
-5. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. [Source [31]](33_references.md#source-31)
-6. **McKinsey & Company (2023).** *Organisational Transformation Best Practices.* McKinsey Digital.
+1. **Puppet (2023).** *2023 State of DevOps Report: Platform Engineering Edition.* Puppet by Perforce. Available at: [https://www.puppet.com/resources/state-of-devops-report](https://www.puppet.com/resources/state-of-devops-report). [Source [100]](33_references.md#source-100)
+2. **DORA (2024).** *Accelerate State of DevOps Report 2024.* Google Cloud / DORA. Available at: [https://dora.dev/research/2024/dora-report/](https://dora.dev/research/2024/dora-report/). [Source [49]](33_references.md#source-49)
+3. **Skelton, M. & Pais, M. (2019).** *Team Topologies: Organizing Business and Technology Teams for Fast Flow.* IT Revolution Press. ISBN 978-1-942788-81-2. Second edition: *Team Topologies, 2nd Edition: Organizing Business and Technology for Fast Flow of Value* (IT Revolution, 23 September 2025, ISBN 978-1-966280-00-2). [Source [30]](33_references.md#source-30)
+4. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. ISBN 978-1-942788-33-1. [Source [31]](33_references.md#source-31)

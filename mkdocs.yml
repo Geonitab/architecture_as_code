@@ -40,12 +40,12 @@ nav:
       - Organisational Change and Team Structures: 17_organisational_change.md
       - Team Structure and Competency Development for IaC: 18_team_structure.md
       - Management as Code: 19_management_as_code.md
+      - Interplay Between Soft-As-Code Disciplines: 23_soft_as_code_interplay.md
       - AI Agent Team for Architecture as Code Initiatives: 20_ai_agent_team.md
       - Digitalisation through Code-based Infrastructure: 21_digitalisation.md
   - Part F – Experience & Best Practices:
       - index: part_f_practices.md
       - Documentation as Code vs Architecture as Code: 22_documentation_vs_architecture.md
-      - Interplay Between Soft-As-Code Disciplines: 23_soft_as_code_interplay.md
       - Best Practices and Lessons Learned: 24_best_practices.md
   - Part G – Future & Wrap-up:
       - index: part_g_future.md
