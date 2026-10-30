@@ -8,7 +8,7 @@ Architecture as Code continues to evolve as new technologies emerge and organisa
 
 The landscape of Architecture as Code is not static. [Future trends](25_future_trends.md) encompass everything from AI-driven architecture generation to sustainability-aware workload placement, quantum-resistant security patterns, and regulatory frameworks that explicitly recognise code-based governance. Understanding these trajectories helps organisations make decisions today that remain valid tomorrow.
 
-Those trajectories only deliver value when the ground is ready. [Chapter 26A on prerequisites](26a_prerequisites_for_aac.md) describes the cultural, technical, and economic signals that prove an organisation can sustain Architecture as Code at scale.
+Those trajectories only deliver value when the ground is ready. The readiness framework in [Chapter 26A](26a_prerequisites_for_aac.md), introduced in Part A, describes the cultural, technical, and economic signals that prove an organisation can sustain Architecture as Code at scale; the chapters in this part assume that assessment has been made.
 
 Yet foresight must be balanced with vigilance. [Anti-patterns in Architecture as Code programmes](26b_aac_anti_patterns.md) catalogue the cultural, governance, and delivery pitfalls that erode trust in codified architecture estates. By pairing early-warning indicators with remediation playbooks, teams can navigate the future without repeating yesterday’s mistakes.
 

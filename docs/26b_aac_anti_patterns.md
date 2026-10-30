@@ -34,7 +34,7 @@ AaC is often introduced by a central platform group. The anti-pattern appears wh
 
 Organisations frequently maintain a growing list of manual policy exceptions stored in spreadsheets or email threads. Each exception bypasses automated enforcement, leading to drift between declared and actual controls. When auditors ask for evidence, the team spends weeks reconciling mismatched records.
 
-**How to recover:** store time-boxed exceptions as code, surfaced automatically in pipelines until the owning team resolves them.
+**How to recover:** store time-boxed exceptions as code and evaluate them with the same policy engine as the rules they relax (for example Open Policy Agent [Source [10]](33_references.md#source-10)), so that they surface automatically in pipelines until the owning team resolves them.
 
 ### Audit Theatre Instead of Continuous Evidence
 
@@ -125,7 +125,7 @@ Sustainability commitments are often bolted on after architecture choices harden
 - Cloud cost reviews never include sustainability dimension
 - Architecture decisions make no reference to sustainability requirements
 
-**How to recover:** version-control sustainability KPIs, carbon budgets, and scheduling policies alongside the architecture code.
+**How to recover:** version-control sustainability KPIs (for example the Software Carbon Intensity score defined in ISO/IEC 21031:2024 [Source [120]](33_references.md#source-120)), carbon budgets, and scheduling policies alongside the architecture code, and treat cloud sustainability as a FinOps capability in its own right [Source [124]](33_references.md#source-124).
 
 ## Detection and Early Warning Techniques
 
@@ -169,9 +169,9 @@ Recognising Architecture as Code anti-patterns requires equal attention to techn
 
 ## Sources
 
-- FinOps Foundation. *Cloud Cost Management for Sustainable Delivery*. FinOps Foundation, 2024.
-- International Organisation for Standardisation. *ISO/IEC 42010:2011 Systems and Software Engineering — Architecture Description*. ISO, 2011.
-- National Cyber Security Centre. *Principles for Secure Design*. NCSC, 2023.
-- Open Policy Agent Project. *Policy as Code Cookbook*. OPA Community, 2024.
-- Thoughtworks Technology Advisory Board. *Technology Radar — Volume 30*. Thoughtworks, 2024.
-- United Kingdom Government Digital Service. *Service Manual: Technology and Architecture*. GDS, 2024.
+1. **Open Policy Agent (n.d.).** *Open Policy Agent documentation.* CNCF OPA Project. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)
+2. **Green Software Foundation (2024).** *Software Carbon Intensity (SCI) Specification* (ISO/IEC 21031:2024). Green Software Foundation. [https://sci.greensoftware.foundation/](https://sci.greensoftware.foundation/) [Source [120]](33_references.md#source-120)
+3. **FinOps Foundation (n.d.).** *FinOps Framework.* FinOps Foundation. [https://www.finops.org/framework/](https://www.finops.org/framework/) (accessed 2026-10-30). [Source [124]](33_references.md#source-124)
+4. **National Cyber Security Centre (2019).** *Secure design principles* (version 1.0). NCSC, 21 May 2019. [https://www.ncsc.gov.uk/collection/cyber-security-design-principles](https://www.ncsc.gov.uk/collection/cyber-security-design-principles)
+5. **Thoughtworks (2024).** *Technology Radar, Volume 30.* Thoughtworks Technology Advisory Board, April 2024. [https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2024/04/tr_technology_radar_vol_30_en.pdf](https://www.thoughtworks.com/content/dam/thoughtworks/documents/radar/2024/04/tr_technology_radar_vol_30_en.pdf)
+6. **Government Digital Service (n.d.).** *Service Manual: Technology.* GOV.UK. [https://www.gov.uk/service-manual/technology](https://www.gov.uk/service-manual/technology) (accessed 2026-10-30).

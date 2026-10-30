@@ -32,7 +32,7 @@ Architecture as Code defines the system's structure in a machine-readable format
 - Are all data flows compliant with security policies?
 - Does the current infrastructure match the approved architecture?
 
-Architecture as Code emphasises precision, executability, and verification. It targets both humans and machines, focusing on models, schemas, and definitions that can be processed by tools to generate diagrams, validate compliance, and drive infrastructure provisioning. The success of Architecture as Code is measured by how well it prevents architectural drift, enables automation, and ensures consistency between design and implementation.
+Architecture as Code emphasises precision, executability, and verification. It targets both humans and machines, focusing on models, schemas, and definitions that can be processed by tools to generate diagrams, validate compliance, and drive infrastructure provisioning. The success of Architecture as Code is measured by how well it prevents architectural drift, enables automation, and ensures consistency between design and implementation. Fitness functions—the automated checks that continuously verify architectural characteristics, as described by Ford, Parsons & Kua (2017) [Source [35]](33_references.md#source-35)—are a widely used form of this enforcement, and catalogued microservice patterns such as those of Richardson (2018) [Source [36]](33_references.md#source-36) give the resulting models a shared vocabulary for service decomposition and inter-service communication.
 
 ## Tooling Paradigms: Modelling Tools vs Diagram Tools
 
@@ -44,22 +44,23 @@ The distinction between Documentation as Code and Architecture as Code becomes p
 
 #### CALM: Standardised Architecture Language
 
-CALM is an open-source specification developed by the Architecture as Code community under FINOS. It provides a standardised, machine-readable format for defining software architectures through three primary components:
+CALM is an open-source specification developed by the Architecture as Code community under FINOS [Source [1]](33_references.md#source-1). It provides a standardised, machine-readable format for defining software architectures built around nodes, relationships, interfaces, controls, flows and metadata. Three of these core components are enough to illustrate the approach:
 
 - **Nodes**: Individual elements such as services, databases, networks, and people
 - **Relationships**: Connections, data flows, and dependencies between nodes
 - **Metadata**: Compliance tags, operational data, and custom attributes
 
-CALM's JSON-based schema makes it compatible with existing tools and enables integration into CI/CD workflows. Architecture defined in CALM can be:
+CALM's JSON-based schema makes it compatible with existing tools and enables integration into CI/CD workflows. The schema is published in versioned releases (release 1.0 and 1.1 at the time of writing, with later drafts in progress), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
 
 - **Validated automatically**: Compliance checks run against the model to verify policy conformance
 - **Visualised dynamically**: Diagrams are generated from the model, ensuring they always reflect the current architecture
 - **Traced historically**: Changes to the architecture are version-controlled alongside code, providing a complete audit trail
 
-Example CALM definition:
+Example CALM definition, valid against the release 1.0 schema:
 
 ```json
 {
+  "$schema": "https://calm.finos.org/release/1.0/meta/calm.json",
   "nodes": [
     {
       "unique-id": "payment-service",
@@ -77,10 +78,14 @@ Example CALM definition:
   "relationships": [
     {
       "unique-id": "payment-service-db-connection",
-      "relationship-type": "connects",
-      "parties": ["payment-service", "payment-db"],
-      "protocol": "PostgreSQL",
-      "description": "Payment service connects to database"
+      "description": "Payment service connects to database",
+      "relationship-type": {
+        "connects": {
+          "source": { "node": "payment-service" },
+          "destination": { "node": "payment-db" }
+        }
+      },
+      "protocol": "JDBC"
     }
   ]
 }
@@ -246,7 +251,7 @@ Organisations benefit most when they integrate Documentation as Code and Archite
 
 5. **Measure both outcomes**: Track documentation quality (readability, accuracy, usage) and architectural integrity (compliance, drift, consistency) as distinct but related metrics.
 
-The interplay between Documentation as Code and other 'as Code' disciplines is explored further in [Chapter 23](23_soft_as_code_interplay.md).
+The interplay between Documentation as Code and the other 'as Code' disciplines was explored in [Chapter 23](23_soft_as_code_interplay.md) in Part E.
 
 ## Conclusion
 
@@ -258,11 +263,12 @@ By integrating both disciplines—using Architecture as Code to define the syste
 
 ## Sources
 
-1. **FINOS (2024).** *CALM: Common Architecture Language Model.* FINOS Architecture as Code Community. [https://calm.finos.org/](https://calm.finos.org/)
-2. **Brown, S. (2024).** *The C4 Model for Visualising Software Architecture.* C4 Model Documentation. [https://c4model.com/](https://c4model.com/)
-3. **Structurizr (2024).** *Structurizr DSL Language Reference.* Structurizr Documentation. [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
-4. **Mermaid (2024).** *Mermaid: Diagramming and Charting Tool.* Mermaid Documentation. [https://mermaid.js.org/](https://mermaid.js.org/)
-5. **PlantUML (2024).** *PlantUML: Open-source Tool for Creating UML Diagrams.* PlantUML Documentation. [https://plantuml.com/](https://plantuml.com/)
-6. **Open Policy Agent (2024).** *Policy as Code: Expressing Requirements as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-7. **Richardson, C. (2018).** *Microservices Patterns: With Examples in Java.* Manning Publications.
-8. **Ford, N. et al. (2017).** *Building Evolutionary Architectures.* O'Reilly Media.
+1. **FINOS (n.d.).** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+2. **FINOS (n.d.).** *Architecture as Code: Common Architecture Language Model (CALM) specification repository* (schema release 1.0, `https://calm.finos.org/release/1.0/meta/calm.json`). [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code) [Source [48]](33_references.md#source-48)
+3. **Brown, S. (n.d.).** *The C4 model for visualising software architecture.* [https://c4model.com/](https://c4model.com/) (accessed 2026-10-30). [Source [37]](33_references.md#source-37)
+4. **Structurizr (n.d.).** *Structurizr DSL language reference.* [https://docs.structurizr.com/dsl/language](https://docs.structurizr.com/dsl/language) (accessed 2026-10-30). [Source [38]](33_references.md#source-38)
+5. **Mermaid (n.d.).** *Mermaid: Diagramming and Charting Tool.* Mermaid Documentation. [https://mermaid.js.org/](https://mermaid.js.org/) (accessed 2026-10-30).
+6. **PlantUML (n.d.).** *PlantUML: Open-source Tool for Creating UML Diagrams.* PlantUML Documentation. [https://plantuml.com/](https://plantuml.com/) (accessed 2026-10-30).
+7. **Open Policy Agent (n.d.).** *Open Policy Agent documentation.* CNCF OPA Project. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)
+8. **Ford, N., Parsons, R. & Kua, P. (2017).** *Building Evolutionary Architectures: Support Constant Change.* O'Reilly Media. ISBN 978-1-491-98636-3. [Source [35]](33_references.md#source-35)
+9. **Richardson, C. (2018).** *Microservices Patterns: With Examples in Java.* Manning Publications. ISBN 978-1-61729-454-9. [Source [36]](33_references.md#source-36)
