@@ -35,17 +35,17 @@ Digital transformation represents more than the introduction of new technology�
 
 ### Digital Transformation Challenges and Opportunities
 
-Public and private sector organisations worldwide face significant digital transformation challenges where legacy IT structures often form bottlenecks for innovation and efficiency. According to recent industry reports, organisations globally have invested over £500 billion in digital transformation initiatives in the past five years, yet many projects fail due to inadequate infrastructure governance and accumulating technical debt.
+Public and private sector organisations worldwide face significant digital transformation challenges where legacy IT structures often form bottlenecks for innovation and efficiency. The scale of investment is enormous: IDC forecasts that worldwide spending on digital transformation will reach almost USD 4 trillion in 2027, growing at a compound annual rate of 16.2 per cent over 2022–2027 ([Source [110]](33_references.md#source-110)). In our experience much of that spending underdelivers when infrastructure governance is weak and technical debt is allowed to accumulate—the two problems this chapter sets out to address.
 
 Architecture as Code-based solutions offer opportunities to break these limitations through automation, standardisation, and scalability that specifically address common transformation challenges:
 
-**Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including GDPR under guidance from the European Data Protection Board (EDPB), the NIS2 Directive for critical infrastructure cybersecurity, sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments whilst meeting the expectations of European regulatory authorities.
+**Regulatory Compliance**: Organisations must navigate complex EU-wide legislation including the GDPR (Regulation (EU) 2016/679, [Source [43]](33_references.md#source-43)) under guidance from the European Data Protection Board (EDPB), the NIS2 Directive (Directive (EU) 2022/2555) on cybersecurity obligations for essential and important entities ([Source [114]](33_references.md#source-114)), sector-specific regulations, and data sovereignty requirements across member states. Architecture as Code enables automated compliance checking and audit trails that ensure continuous regulatory adherence across distributed European environments whilst meeting the expectations of European regulatory authorities.
 
-**Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Studies demonstrate that Infrastructure as Code reduces manual effort by up to 70%, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
+**Cost Efficiency**: With rising operational costs and competitive pressure, Architecture as Code automation becomes critical for maintaining competitiveness. Infrastructure as Code removes much of the manual effort of provisioning and configuration, enabling organisations to reallocate skilled personnel to higher-value activities whilst reducing operational expenses.
 
 **Skills Challenges**: The IT industry experiences persistent shortages of specialist talent, making it critical to standardise and automate infrastructure management. Architecture as Code enables smaller, specialised teams to manage complex environments through reusable templates, proven patterns, and community best practices.
 
-**Security and Data Governance**: Organisations across the EU prioritise security and data control in an increasingly regulated landscape, guided by the EDPB's enforcement of GDPR and the NIS2 Directive for critical infrastructure protection. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement aligned with EDPB guidelines that builds trust with customers, regulators, and stakeholders throughout the European Union.
+**Security and Data Governance**: Organisations across the EU prioritise security and data control in an increasingly regulated landscape, guided by EDPB guidelines, enforced by national supervisory authorities under the GDPR, and bound by the NIS2 Directive's obligations for essential and important entities. Architecture as Code enables consistent security configurations, encryption-at-rest as standard, and policy-as-code enforcement aligned with EDPB guidelines that builds trust with customers, regulators, and stakeholders throughout the European Union.
 
 Code-based infrastructure enables DevOps methodologies that unite development and operations, resulting in faster delivery cycles and higher quality. This proves particularly vital for organisations competing in global markets whilst maintaining compliance with diverse EU member state regulations and harmonised European security requirements.
 
@@ -67,15 +67,15 @@ Successful Architecture as Code implementation requires balance between these as
 
 Several global organisations have executed exemplary digital transformations that demonstrate Architecture as Code's potential:
 
-**Spotify**: Revolutionised the music industry through cloud-native architecture from inception, with Infrastructure as Code enabling scaling from a European start-up to a global platform serving over 500 million users. Their "Spotify Model" for agile organisation has inspired companies worldwide, demonstrating how technical excellence and organisational design reinforce one another.
+**Spotify**: Grew from a European start-up into a global platform with hundreds of millions of monthly active users, and did so while changing its foundations: Spotify announced in February 2016 that it would move from its own and leased data centres to Google Cloud, had routed all traffic to Google Cloud by May 2017, and retired the last of its four data centres in 2018 ([Source [116]](33_references.md#source-116)). Their "Spotify Model" for agile organisation has inspired companies worldwide, demonstrating how technical excellence and organisational design reinforce one another.
 
 **Stripe**: Transformed the payments industry through API-first architecture built on Infrastructure as Code, enabling expansion to 46 countries with consistent security and compliance. Their approach to regulated fintech innovation has become a model for other technology companies entering highly regulated sectors.
 
-**Netflix**: Executed comprehensive digital transformation from traditional content distributor to global streaming platform through an extensive cloud platform based on Infrastructure as Code. This enabled development of personalised recommendation systems and content delivery networks that serve hundreds of millions of subscribers across diverse geographic regions.
+**Netflix**: Executed a comprehensive digital transformation from DVD-by-post distributor to global streaming platform, completing a seven-year migration from its own data centres to AWS in January 2016 ([Source [115]](33_references.md#source-115)). Automated, code-defined infrastructure enabled the development of personalised recommendation systems and content delivery that serve hundreds of millions of subscribers across diverse geographic regions.
 
-**Capital One**: Pioneered cloud adoption in the financial services sector through a cloud-first strategy with Infrastructure as Code, achieving 99.99% uptime for critical banking systems whilst reducing infrastructure costs by 40% and accelerating feature deployment by 70%.
+**Capital One**: Pioneered cloud adoption in the financial services sector through a cloud-first strategy, closing its own data centres in 2020 after an eight-year migration to AWS. AWS's case study reports 70 per cent faster disaster-recovery times in tests and development environments built in minutes rather than three months ([Source [117]](33_references.md#source-117)).
 
-These success stories demonstrate that organisations can achieve world-leading digital transformation through strategic use of Architecture as Code combined with organisational strengths in innovation, design thinking, and sustainable business practices.
+These migration stories demonstrate that organisations can achieve world-leading digital transformation through strategic use of Architecture as Code combined with organisational strengths in innovation, design thinking, and sustainable business practices—and that none of them started cloud-native: each rebuilt its foundations while operating at scale.
 
 ## Cloud-First Strategies for Digital Transformation
 
@@ -83,7 +83,7 @@ Organisations across the European Union have developed strong positions within c
 
 ### Enterprise Digital Strategy and Architecture as Code
 
-Modern digital strategies across the EU emphasise cloud technology's role in achieving goals for integrated, efficient service delivery. Leading organisations specify that teams should:
+Modern digital strategies across the EU emphasise cloud technology's role in achieving goals for integrated, efficient service delivery. The hyperscalers' own adoption frameworks—AWS's Cloud Adoption Framework ([Source [111]](33_references.md#source-111)) and Microsoft's Cloud Adoption Framework ([Source [112]](33_references.md#source-112))—structure such programmes from strategy and governance through platform, security and operations, and HashiCorp's recommended practices describe the matching evolution of provisioning from manual changes to collaborative Infrastructure as Code ([Source [113]](33_references.md#source-113)). Leading organisations specify that teams should:
 
 - Prioritise cloud-first solutions complying with EU data sovereignty regulations
 - Implement automated architecture enabling shared IT services across organisational units
@@ -96,39 +96,38 @@ This creates demand for Architecture as Code solutions that handle sensitive dat
 ```hcl
 # Enterprise Architecture as Code Template for GDPR-Compliant Cloud
 terraform {
-  required_version = ">= 1.5"
-  
+  required_version = ">= 1.11" # S3-native state locking (use_lockfile) is GA from 1.11
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
   }
-  
-  # State storage with encryption for compliance
+
+  # Encrypted, locked state storage for compliance. A backend block cannot
+  # reference variables, so the EU region and KMS key are supplied at init
+  # time through partial configuration:
+  #   terraform init -backend-config=backend.eu-central-1.hcl
   backend "s3" {
-    bucket         = "enterprise-terraform-state"
-    key            = "production/terraform.tfstate"
-    region         = var.eu_region  # Parameterized EU region selection
-    encrypt        = true
-    kms_key_id     = var.kms_key_id
-    dynamodb_table = "terraform-locks"
-    
-    # Audit logging for compliance
-    versioning = true
+    bucket       = "enterprise-terraform-state"
+    key          = "production/terraform.tfstate"
+    encrypt      = true
+    use_lockfile = true # S3-native locking; DynamoDB-based locking is deprecated
   }
 }
 
 # Enterprise resource tags for governance
 locals {
   enterprise_tags = {
-    Organisation      = var.organisation_name
-    Environment       = var.environment
-    CostCentre        = var.cost_centre
+    Organisation       = var.organisation_name
+    Environment        = var.environment
+    CostCentre         = var.cost_centre
     DataClassification = var.data_classification
-    ComplianceLevel   = var.compliance_level
-    EUCompliance      = "GDPR"
-    CreatedDate       = formatdate("YYYY-MM-DD", timestamp())
+    ComplianceLevel    = var.compliance_level
+    EUCompliance       = "GDPR"
+    # Avoid timestamp() in tags: it changes on every run and produces a
+    # perpetual diff. Record creation dates in the state or audit log instead.
   }
 }
 
@@ -190,24 +189,33 @@ resource "aws_subnet" "data_zone" {
 }
 ```
 
+The region and key identifiers live in a small partial-configuration file that is passed to `terraform init`, which keeps the template itself free of environment-specific values:
+
+```hcl
+# backend.eu-central-1.hcl – partial backend configuration for terraform init
+region     = "eu-central-1"
+kms_key_id = "arn:aws:kms:eu-central-1:123456789012:key/REPLACE-WITH-KEY-ID"
+```
+
+Two details matter for compliance reviews. First, the backend no longer uses a DynamoDB table: DynamoDB-based state locking has been deprecated since Terraform 1.11 in favour of S3-native locking (`use_lockfile = true`), which is why the template requires that version ([Source [17]](33_references.md#source-17)). Second, bucket versioning—which HashiCorp recommends so that state can be recovered after accidental deletion—is a property of the S3 bucket resource rather than an argument of the backend block, and it is not an audit log; audit evidence comes from CloudTrail data events or S3 server access logging on the state bucket.
 
 ### Enterprise Cloud-First Success Stories
 
-Global enterprises such as Spotify, Netflix, and Capital One have demonstrated leadership by building their technical platforms on cloud-based infrastructure from inception. Their success demonstrates how Architecture as Code enables rapid scaling and global expansion whilst minimising technical debt and maintaining organisational values around sustainability and innovation.
+Global enterprises such as Spotify, Netflix, and Capital One have demonstrated leadership by rebuilding their technical platforms on cloud infrastructure while continuing to operate at scale—Netflix completed its AWS migration in 2016, Spotify retired its last data centres in 2018, and Capital One closed its own data centres in 2020. Their success demonstrates how Architecture as Code enables rapid scaling and global expansion whilst minimising technical debt and maintaining organisational values around sustainability and innovation.
 
-**Spotify's Infrastructure as Code Architecture for Global Scaling:**
-Spotify developed an internal developer portal called Backstage, which they open-sourced in 2020 under CNCF governance. Backstage provides a framework for building internal developer portals, not an Infrastructure as Code platform per se. This developer portal approach enabled scaling from 1 million to over 500 million users without linear increases in infrastructure complexity. Their approach includes:
+**Spotify's Developer Platform for Global Scaling:**
+Spotify created its internal developer portal, Backstage, in 2016, open-sourced it in March 2020, donated it to the CNCF Sandbox in September 2020, and saw it accepted as a CNCF incubating project in March 2022 ([Source [118]](33_references.md#source-118)). Backstage provides a framework for building internal developer portals—a software catalogue, templates and documentation in one place—rather than an Infrastructure as Code platform per se, and it addresses developer experience and service ownership at scale rather than user growth as such. The pattern it represents includes:
 
-- Microservices with dedicated infrastructure definitions per service
-- Automated compliance checking for GDPR and intellectual property rights
+- Microservices with dedicated infrastructure definitions per service, registered in a software catalogue
+- Software templates that bake compliance defaults into new services from the start
 - Cost-aware scaling that supports sustainability objectives
-- Developer self-service portals that reduce time-to-market from weeks to hours
+- Developer self-service that reduces onboarding and provisioning time
 
 **Capital One's Regulated Financial Infrastructure as Code:**
 As a licensed financial institution, Capital One must follow strict regulatory requirements whilst innovating rapidly. Their Infrastructure as Code strategy includes:
 
 - Automated audit trails for all infrastructure changes
-- Real-time compliance monitoring according to PCI-DSS and financial regulatory guidelines
+- Real-time compliance monitoring according to PCI DSS and financial regulatory guidelines
 - Immutable infrastructure enabling point-in-time recovery
 - Multi-region deployment for business continuity according to industry standards
 
@@ -215,20 +223,20 @@ As a licensed financial institution, Capital One must follow strict regulatory r
 
 Cloud-first implementation requires careful planning of hybrid and multi-cloud strategies. Organisations must navigate between different cloud providers whilst ensuring data sovereignty and regulatory compliance across EU member states.
 
-Sovereignty guardrails described in Chapter 15 and the Future Trends chapter demand explicit provider selection policies. Platform teams should codify which services qualify as "EU-trusted"—covering both EU-headquartered providers and EU-specific offerings from global hyperscalers—and enforce those decisions through policy-as-code. This keeps residency, lawful access controls, and the GAIA-X or EU Cloud Code of Conduct commitments consistent across delivery teams.
+Sovereignty guardrails described in [Chapter 15B on cost optimisation](15_cost_optimization.md) and [Chapter 25 on future trends](25_future_trends.md) demand explicit provider selection policies. Platform teams should codify which services qualify as "EU-trusted"—covering both EU-headquartered providers and EU-specific offerings from global hyperscalers—and enforce those decisions through policy-as-code. This keeps residency, lawful access controls, and the Gaia-X or EU Cloud Code of Conduct commitments consistent across delivery teams.
 
 Policy catalogues should therefore differentiate between providers that are inherently sovereign and those that become acceptable only when their EU-only controls are in force. EU-headquartered platforms form the default choice for workloads bound by strict sovereignty clauses. Global hyperscalers remain viable when their EU sovereign programmes (such as AWS European Sovereign Cloud, Azure EU Data Boundary, or Google Cloud Sovereign Controls) deliver European legal entities, locally staffed operations, and independent encryption key custody. Standard global services that fall outside those safeguards should fail policy-as-code checks so that teams avoid contradictory guidance.
 
 **AWS European Sovereign Cloud and EU Regions:**
-When AWS is approved through the European Sovereign Cloud roadmap or EU regional deployments, Architecture as Code guardrails must confirm the following conditions:
+The AWS European Sovereign Cloud became generally available on 14 January 2026 as a physically and logically separate partition (`aws-eusc`) whose first Region, `eusc-de-east-1`, is located in Brandenburg, Germany, operates independently of the existing AWS Regions and is open to customers regardless of where they are based ([Source [119]](33_references.md#source-119)). When AWS is approved through the European Sovereign Cloud or standard EU Regions, Architecture as Code guardrails must confirm the following conditions:
 
-- Physical data sovereignty within EU regional boundaries
+- Physical data sovereignty within EU regional boundaries—and, for the sovereign cloud, use of the `aws-eusc` partition rather than a standard EU Region
 - Low-latency connectivity across EU availability zones and Local Zones
-- Comprehensive compliance certifications including ISO 27001, SOC 2, and PCI-DSS
-- Dedicated support with European expertise, GDPR compliance guidance, and the upcoming sovereign controls programme
+- Comprehensive compliance certifications and attestations, including ISO/IEC 27001, SOC 2 reports, and PCI DSS
+- Dedicated support with European expertise and GDPR compliance guidance
 
-**Microsoft Azure EU Data Boundary:**
-Azure's EU Data Boundary commitments provide a compliant route when policies verify that workloads remain inside the boundary and sovereign controls programme:
+**Microsoft Azure EU Data Boundary and Sovereign Cloud:**
+Microsoft reported its EU Data Boundary complete in February 2025 and, in June 2025, grouped its European offerings under the Microsoft Sovereign Cloud banner (sovereign public cloud, sovereign private cloud and national partner clouds). These commitments provide a compliant route when policies verify that workloads remain inside the boundary and that the relevant sovereign controls are enabled:
 
 - Azure regions across multiple EU member states for data residency
 - Integration with enterprise identity providers
@@ -236,19 +244,18 @@ Azure's EU Data Boundary commitments provide a compliant route when policies ver
 - Partnership ecosystem with European system integrators
 
 **Google Cloud Sovereign Controls:**
-Google Cloud's sovereign controls, implemented with partners such as T-Systems and Thales, qualify when technical and organisational safeguards are enforced:
+Google Cloud's partner-operated sovereign controls—run with T-Systems in Germany and with S3NS, the Thales-operated French entity—qualify when technical and organisational safeguards are enforced:
 
 - EU-based data processing for GDPR compliance across all member states
-- Carbon-neutral operations aligned with EU sustainability goals
 - Advanced AI/ML capabilities for research and innovation
 - Integration with open-source ecosystems
 
 **European Sovereign Cloud Providers:**
 European-native providers deliver offerings that satisfy strict localisation requirements and public sector procurement rules:
 
-- **OVHcloud** provides GAIA-X aligned services with full EU legal jurisdiction and SecNumCloud certification for French public sector workloads.
+- **OVHcloud** provides Gaia-X aligned services with full EU legal jurisdiction and SecNumCloud qualification for French public sector workloads.
 - **Scaleway** delivers sovereign cloud regions, Bare Metal, and Kubernetes platforms operated entirely within the EU with transparent supply-chain disclosure.
-- **Open Telekom Cloud** combines Deutsche Telekom operations with T-Systems sovereign controls, ensuring German and broader EU data residency for regulated industries.
+- **Open Telekom Cloud**, operated by T-Systems on OpenStack with data centres in Germany and the Netherlands, provides German and broader EU data residency for regulated industries; it is distinct from the Google-based sovereign controls that T-Systems operates, described above.
 
 Architecture as Code pipelines should allow these providers to be selected as first-class modules. Policy-as-code guardrails can then ensure that workloads default to an EU-native provider when contractual or regulatory obligations prohibit the use of global hyperscalers, or verify that hyperscaler services are constrained to their EU sovereign offerings.
 
@@ -256,7 +263,7 @@ Architecture as Code pipelines should allow these providers to be selected as fi
 
 Organisations worldwide are undergoing comprehensive digital transformation processes. Architecture as Code forms the technical foundation enabling this transformation by creating flexible, scalable, and cost-effective IT environments.
 
-Traditional industrial companies such as General Electric, Siemens, and ABB have redefined their business models through digital initiatives built on modern cloud infrastructure. Architecture as Code has enabled these companies to develop IoT platforms, AI services, and data analytics solutions that create new revenue streams.
+Traditional industrial companies such as Siemens and ABB have extended their business models with industrial IoT, AI and data analytics platforms built on modern cloud infrastructure. Code-based infrastructure underpins such platforms, but it is an enabler rather than the cause of new revenue streams.
 
 Public sector organisations have also embraced Architecture as Code as a tool to modernise citizen services. Digital platforms for e-services, open data, and smart city initiatives build on code-based infrastructure that adapts to different organisational needs and resources.
 
@@ -279,29 +286,37 @@ on:
 jobs:
   gdpr-compliance:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v7
+
+      - uses: hashicorp/setup-terraform@v4
+
+      - name: Initialise Terraform without a backend
+        run: terraform -chdir=infrastructure init -backend=false -input=false
+
       - name: GDPR Data Mapping (EDPB Guidelines)
         run: |
+          set -euo pipefail
           # WARNING: Grepping for 'encryption' keywords is not a meaningful GDPR compliance
           # check — it may pass even when encryption is explicitly disabled. For real compliance
-          # gates, use dedicated policy tools such as checkov, tfsec, or terrascan.
-          # This example is illustrative only.
-          terraform plan | grep -E "(encrypt|encryption)" || exit 1
-          
+          # gates, use dedicated policy tools such as Trivy (trivy config), Checkov or OPA/Conftest;
+          # tfsec has been merged into Trivy and Terrascan is archived. This example is illustrative only.
+          terraform -chdir=infrastructure plan -input=false | grep -E "(encrypt|encryption)"
+
       - name: NIS2 Directive Compliance
         if: contains(github.event.pull_request.title, 'critical-infrastructure')
         run: |
           # Validate NIS2 requirements for essential and important entities
           ./scripts/nis2-compliance-check.sh
-          
-      - name: PCI-DSS Checks
+
+      - name: PCI DSS Checks
         if: contains(github.event.pull_request.title, 'payment')
         run: |
-          # Validate PCI-DSS requirements for payment infrastructure
+          # Validate PCI DSS requirements for payment infrastructure
           ./scripts/pci-compliance-check.sh
-          
+
       - name: EU Security Requirements Validation
         run: |
           # EU-wide security requirements for critical infrastructure
@@ -312,9 +327,10 @@ jobs:
 ```python
 # developer_portal/infrastructure_provisioning.py
 from flask import Flask, request, jsonify
-# Note: 'terraform_runner' is not a published PyPI package.
-# For Terraform automation from Python, use subprocess.run(['terraform', ...])
-# or the python-hcl2 library for parsing, plus direct CLI invocation.
+# Note: the TerraformRunner interface below is illustrative. There is no official
+# HashiCorp Python SDK; drive Terraform from Python with subprocess.run(['terraform', ...]),
+# a wrapper such as python-terraform, or the HCP Terraform API. (An unrelated third-party
+# 'terraform-runner' package exists on PyPI but does not provide this interface.)
 from terraform_runner import TerraformRunner
 import kubernetes.client as k8s
 
@@ -379,15 +395,21 @@ Key lessons from digital transformation initiatives demonstrate that technical t
 
 ## From Implementation to Integration
 
-The organisational transformation explored in this part—from [changing team structures](17_organisational_change.md) to [Management as Code](19_management_as_code.md) and digitalisation—provides the human and process foundations for Architecture as Code success. However, these disciplines achieve their full potential when they work together rather than in isolation.
+The organisational transformation explored in this part—from [changing team structures](17_organisational_change.md) and [competency development](18_team_structure.md) through [Management as Code](19_management_as_code.md), the [interplay between soft as code disciplines](23_soft_as_code_interplay.md) and [AI agent teams](20_ai_agent_team.md) to digitalisation—provides the human and process foundations for Architecture as Code success. However, these disciplines achieve their full potential when they work together rather than in isolation.
 
-Part F explores the interplay between different "as Code" practices and distils best practices from organisations that have successfully integrated Architecture as Code across their operations. [Chapter 23 on the Interplay Between Soft 'as Code' Disciplines](23_soft_as_code_interplay.md) reveals how Documentation as Code, Requirements as Code, Policy as Code, and other practices create synergies that amplify value. [Chapter 24 on Best Practices](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
+Part F turns from organisation to experience. [Chapter 22 on Documentation as Code versus Architecture as Code](22_documentation_vs_architecture.md) clarifies the difference between communicating an architecture and enforcing it, and [Chapter 24 on Best Practices and Lessons Learned](24_best_practices.md) synthesises lessons learned from diverse contexts into practical, actionable guidance.
 
 ## Sources
 
-1. **Gartner (2023).** *Cloud Adoption Strategies for Enterprises.* Gartner Research.
-2. **McKinsey & Company (2023).** *Digital Transformation: A Global Perspective.* McKinsey Digital.
-3. **Amazon Web Services (2023).** *Cloud Adoption Framework for Enterprises.* Amazon Web Services.
-4. **Microsoft (2023).** *Azure for Enterprise Digital Transformation.* Microsoft Azure.
-5. **HashiCorp (2023).** *Infrastructure as Code Best Practices.* HashiCorp Learn.
-6. **SANS Institute (2023).** *Cloud Security for Enterprise Organisations.* SANS Security Research.
+1. **IDC (2024).** *Worldwide Spending on Digital Transformation is Forecast to Reach Almost $4 Trillion by 2027, According to New IDC Spending Guide.* Press release, 30 May 2024. [https://www.idc.com/resource-center/press-releases/worldwide-spending-on-digital-transformation-is-forecast-to-reach-almost-4-trillion-by-2027-according-to-new-idc-spending-guide/](https://www.idc.com/resource-center/press-releases/worldwide-spending-on-digital-transformation-is-forecast-to-reach-almost-4-trillion-by-2027-according-to-new-idc-spending-guide/) [Source [110]](33_references.md#source-110)
+2. **European Parliament and Council (2016).** *Regulation (EU) 2016/679 (General Data Protection Regulation).* Official Journal of the European Union, L 119, 4 May 2016. [https://eur-lex.europa.eu/eli/reg/2016/679/oj](https://eur-lex.europa.eu/eli/reg/2016/679/oj) [Source [43]](33_references.md#source-43)
+3. **European Parliament and Council (2022).** *Directive (EU) 2022/2555 on measures for a high common level of cybersecurity across the Union (NIS 2 Directive).* Official Journal of the European Union, L 333, 27 December 2022. [https://eur-lex.europa.eu/eli/dir/2022/2555/oj](https://eur-lex.europa.eu/eli/dir/2022/2555/oj) [Source [114]](33_references.md#source-114)
+4. **Amazon Web Services (2021).** *An Overview of the AWS Cloud Adoption Framework.* AWS Whitepaper, 22 November 2021. [https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/welcome.html](https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/welcome.html) [Source [111]](33_references.md#source-111)
+5. **Microsoft.** *Cloud Adoption Framework for Microsoft.* Microsoft Learn. [https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/) [Source [112]](33_references.md#source-112)
+6. **HashiCorp.** *Terraform recommended practices.* HCP Terraform documentation. [https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices) [Source [113]](33_references.md#source-113)
+7. **HashiCorp.** *Backend Type: s3.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/backend/s3](https://developer.hashicorp.com/terraform/language/backend/s3) [Source [17]](33_references.md#source-17)
+8. **Izrailevsky, Y. (2016).** *Completing the Netflix Cloud Migration.* Netflix, February 2016. [https://about.netflix.com/news/completing-the-netflix-cloud-migration](https://about.netflix.com/news/completing-the-netflix-cloud-migration) [Source [115]](33_references.md#source-115)
+9. **Gustavsson, N. (2019).** *Views From The Cloud: A History of Spotify's Journey to the Cloud, Part 1.* Spotify Engineering, 9 December 2019. [https://engineering.atspotify.com/2019/12/views-from-the-cloud-a-history-of-spotifys-journey-to-the-cloud-part-1-2](https://engineering.atspotify.com/2019/12/views-from-the-cloud-a-history-of-spotifys-journey-to-the-cloud-part-1-2) [Source [116]](33_references.md#source-116)
+10. **Amazon Web Services (2020).** *Migrating from Data Centers to AWS: Capital One Case Study.* AWS Customer Success Stories. [https://aws.amazon.com/solutions/case-studies/capital-one-all-in-on-aws/](https://aws.amazon.com/solutions/case-studies/capital-one-all-in-on-aws/) [Source [117]](33_references.md#source-117)
+11. **Cloud Native Computing Foundation (2022).** *Backstage project joins the CNCF Incubator.* CNCF blog, 15 March 2022. [https://www.cncf.io/blog/2022/03/15/backstage-project-joins-the-cncf-incubator/](https://www.cncf.io/blog/2022/03/15/backstage-project-joins-the-cncf-incubator/) [Source [118]](33_references.md#source-118)
+12. **Stormacq, S. (2026).** *Opening the AWS European Sovereign Cloud.* AWS News Blog, 14 January 2026. [https://aws.amazon.com/blogs/aws/opening-the-aws-european-sovereign-cloud/](https://aws.amazon.com/blogs/aws/opening-the-aws-european-sovereign-cloud/) [Source [119]](33_references.md#source-119)
