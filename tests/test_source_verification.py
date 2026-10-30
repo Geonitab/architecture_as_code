@@ -100,10 +100,15 @@ class TestSourceVerification:
         assert valid is True
         assert "ISBN-10" in msg
         
-        # Valid ISBN-13
-        valid, msg = verifier.verify_isbn("978-0-123-45678-9")
+        # Valid ISBN-13 (Clean Architecture, check digit verified)
+        valid, msg = verifier.verify_isbn("978-0-13-449416-6")
         assert valid is True
         assert "ISBN-13" in msg
+
+        # Well-formed ISBN-13 with a wrong check digit must be rejected
+        valid, msg = verifier.verify_isbn("978-1-942788-81-4")
+        assert valid is False
+        assert "check digit" in msg
         
         # Invalid ISBN (wrong length)
         valid, msg = verifier.verify_isbn("123-456")
