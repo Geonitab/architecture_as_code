@@ -65,11 +65,11 @@ python3 -m pytest tests/test_technical_accuracy.py -v
 
 ### Validation Scripts
 ```bash
-# Verify all internal and external links
-python3 scripts/verify_links.py
-
 # Verify cited sources (URLs and ISBNs)
 python3 scripts/verify_sources.py
+
+# Audit chapter citations against the bibliography
+python3 scripts/audit_references.py
 
 # Check document numbering consistency
 python3 scripts/check_doc_numbering.py
@@ -110,7 +110,7 @@ releases/                       # Generated deliverables (git-ignored)
 
 scripts/                        # Validation and automation utilities
 ├── check_mermaid_diagrams.py   # Verify diagram consistency
-├── verify_links.py             # Link validation
+├── audit_references.py         # Citation audit against 33_references.md
 ├── verify_sources.py           # Source verification
 ├── verify_environment.py       # Toolchain validation
 └── navigation.py               # Shared utilities for chapter ordering
@@ -120,7 +120,9 @@ scripts/                        # Validation and automation utilities
 ├── build-mkdocs.yml            # Website deployment
 ├── verify-mermaid-diagrams.yml # Diagram validation
 ├── content-validation.yml      # Quality checks
-└── *-bot.yml                   # Specialized issue automation
+├── validate-doc-numbering.yml  # Chapter numbering checks
+├── structurizr-diagrams.yml    # Structurizr example rendering
+└── mermaid-designer-bot.yml    # Label-triggered diagram bot
 
 tests/                          # Pytest test suites
 ├── test_completeness.py        # Content completeness validation
@@ -207,11 +209,11 @@ After making changes:
 # Verify environment
 make verify-env
 
-# Check links
-python3 scripts/verify_links.py
-
 # Check sources
 python3 scripts/verify_sources.py
+
+# Audit citations
+python3 scripts/audit_references.py
 
 # Check diagrams
 python3 scripts/check_mermaid_diagrams.py
@@ -251,19 +253,18 @@ python3 build_all_orchestrator.py
 - **verify-mermaid-diagrams.yml:** Validates diagram consistency on every push
 - **content-validation.yml:** Runs pytest test suites for completeness, consistency, and technical accuracy
 
-### Bot Workflows
-Specialized automation bots respond to labeled GitHub issues:
+### Bot and Assistant Workflows
+Automation that reacts to issues and pull requests:
 
-| Bot | Workflow | Trigger Label |
-|-----|----------|---------------|
-| Architect Bot | `architect-bot.yml` | `architecture` |
-| Developer Bot | `developer-bot.yml` | `dev` |
-| Designer Bot | `designer-bot.yml` | `design` |
-| Editor Bot | `editor-bot.yml` | `documentation` |
-| QA Bot | `qa-bot.yml` | `qa` |
-| Requirements Bot | `requirements-bot.yml` | `req` |
+| Workflow | File | Trigger |
+|----------|------|---------|
+| Mermaid Designer Bot | `mermaid-designer-bot.yml` | Issue labelled `mermaid` or `diagram` (case-insensitive); opens a PR with a new `.mmd` diagram |
+| Claude Code | `claude.yml` | `@claude` mentions in issue or PR comments, issue assignment |
+| Claude Code Review | `claude-code-review.yml` | Pull request opened or synchronised |
+| Issue → draft PR | `issue-create-draft-pr.yml`, `assign-codex2.yml` | Issue opened or reopened; creates or reuses a draft PR |
+| Housekeeping | `clean-fixed-issues.yml`, `clean-old-braches.yml` | Push to `main`; daily schedule |
 
-Apply the appropriate label to trigger the corresponding bot response.
+There are no role-specific bots (architect, developer, designer, editor, QA, requirements); the specialist roles live in `.claude/agents/*.md` and are invoked as Claude Code subagents.
 
 ## Website Deployment
 
