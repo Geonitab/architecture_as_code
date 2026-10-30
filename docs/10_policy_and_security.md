@@ -12,7 +12,7 @@ Policy as Code (PaC) eliminates the delay of manual approvals and paper-heavy au
 
 ## Evolution of security management within Architecture as Code
 
-Security automation in modern enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today.
+Security automation in modern enterprises has matured through four distinct phases. Understanding that journey helps stakeholders decide how assertively to modernise today. The periodisation below is the author's synthesis of industry practice rather than a formally sourced chronology.
 
 | Phase | Period | Approach | Characteristics | Limitations |
 |-------|--------|----------|-----------------|-------------|
@@ -31,7 +31,7 @@ Figure 10.2 summarises the mindset required to run PaC successfully. Threat mode
 
 ## Open Policy Agent (OPA) and Rego: foundation for policy-driven security
 
-OPA has become the de facto standard for policy automation thanks to its lightweight deployment model and expressive Rego language. The engine evaluates decisions locally, so developers can run policies during unit tests while the same rules enforce guardrails inside Kubernetes, Terraform pipelines, or API gateways.
+OPA has become one of the most widely adopted engines for policy automation thanks to its lightweight deployment model and expressive Rego language. The engine evaluates decisions locally, so developers can run policies during unit tests while the same rules enforce guardrails inside Kubernetes, Terraform pipelines, or API gateways.
 
 ### Architectural foundations for enterprise policy management
 
@@ -43,10 +43,10 @@ Organisations running mission-critical platforms typically adopt three architect
 
 ### Advanced Rego patterns for regulated workloads
 
-Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for EU and UK regulators. A trimmed excerpt below illustrates the structure:
+Rego shines when encoding complex regulatory expectations. Teams typically model encryption rules, network segmentation, and data residency in the same policy module so that violations surface as a single report. Appendix entry [10_CODE_1](30_appendix_code_examples.md#10_code_1) contains a full example tailored for EU regulators (Swedish MSB guidance and GDPR). A trimmed excerpt below illustrates the structure; the helper functions `get_encryption_status` and `validate_encryption_strength` that it calls are defined in the full listing:
 
 ```rego
-package eu.enterprise.security
+package se.enterprise.security
 
 import rego.v1
 
@@ -54,18 +54,23 @@ encryption_required_services := {
     "aws_s3_bucket", "aws_rds_instance", "aws_efs_file_system"
 }
 
-encryption_compliant[resource] {
+encryption_compliant contains resource if {
     resource := input.resources[_]
     resource.type in encryption_required_services
-    validate_encryption(resource)
+    encryption := get_encryption_status(resource)
+    validation := validate_encryption_strength(encryption)
+    validation.compliant
 }
+
+# get_encryption_status and validate_encryption_strength are defined in the
+# full listing (Appendix A, 10_CODE_1) and elided here.
 ```
 
-The complete module covers encryption strength, privileged port exposure, EU residency checks, and an aggregated compliance score. The findings feed directly into CI pipelines and risk dashboards.
+The complete module covers encryption strength, privileged port exposure, EU residency checks, and an aggregated compliance score. The findings feed directly into CI pipelines and risk dashboards. All Rego in this chapter uses the OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and the `import rego.v1` statement keeps the modules compatible with OPA 0.59 and later, where the keywords were still optional [Source [44]](33_references.md#source-44).
 
 ### Integrating policy automation into European enterprises
 
-Enterprises connect OPA to their existing tooling so that decisions are auditable end to end. Policy evaluation logs stream to SIEM platforms such as Splunk or Azure Sentinel for immutable evidence. Identity-aware proxies verify that every policy change is authorised through enterprise single sign-on. Monitoring systems trigger alerts when violations cross risk thresholds so operations teams can react before incidents escalate. These integrations make PaC feel like a first-class participant in the delivery lifecycle rather than an afterthought.
+Enterprises connect OPA to their existing tooling so that decisions are auditable end to end. Policy evaluation logs stream to SIEM platforms such as Splunk or Microsoft Sentinel for immutable evidence. Identity-aware proxies verify that every policy change is authorised through enterprise single sign-on. Monitoring systems trigger alerts when violations cross risk thresholds so operations teams can react before incidents escalate. These integrations make PaC feel like a first-class participant in the delivery lifecycle rather than an afterthought.
 
 ## OSCAL: Open Security Controls Assessment Language
 
@@ -77,14 +82,14 @@ OSCAL is organised into complementary models:
 
 | OSCAL Component | Purpose | Examples | Usage in Architecture as Code |
 |-----------------|---------|----------|-------------------------------|
-| Catalogues | Capture authoritative control statements from frameworks | NIST SP 800-53, GDPR articles, NIS2 directives | Foundation for organisational control baselines |
+| Catalogues | Capture authoritative control statements from frameworks | NIST SP 800-53, GDPR articles, the NIS2 Directive | Foundation for organisational control baselines |
 | Profiles | Tailor catalogues to organisation-specific needs | Selecting, modifying, or adding control language | Harmonise overlapping regulations, create industry-specific subsets |
 | Component definitions | Describe how technical building blocks satisfy specific controls | Amazon RDS instance, AWS Network Firewall configurations | Map infrastructure modules to compliance requirements |
 | System Security Plans (SSPs) | Assemble controls, components, and operational context | Complete audit documentation for a system | Single auditable document connecting requirements to implementation |
 
 ### Crafting organisation-specific profiles
 
-Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST controls, overlay GDPR Article 32, and incorporate PSD2 requirements in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
+Profiles help European enterprises harmonise overlapping regulations. Appendix entry [10_CODE_2](30_appendix_code_examples.md#10_code_2) shows how a financial institution can import NIST SP 800-53 controls, overlay GDPR Article 32 [Source [43]](33_references.md#source-43), and incorporate MSB network-segmentation expectations in one document. Parameters capture encryption algorithms, key management expectations, and other context so that auditors understand the intent behind every selection.
 
 ### Component definitions and reusable evidence
 
@@ -96,35 +101,37 @@ Once profiles and component definitions exist, teams can automate the SSP itself
 
 ## Assure once, comply many in policy design
 
-Policy-as-code catalogues embody the **assure once, comply many** mindset introduced in [Governance as Code](11_governance_as_code.md). Controls are written once, versioned, and then tagged with metadata that links each policy primitive to the external and internal obligations it satisfies. A single IAM policy module can therefore be evaluated across multiple frameworks without re-implementing business logic.
+Policy-as-code catalogues embody the **assure once, comply many** mindset—controls expressed, tested, and evidenced once, then mapped to many obligations—which [Governance as Code](11_governance_as_code.md) develops further in the next chapter. Controls are written once, versioned, and then tagged with metadata that links each policy primitive to the external and internal obligations it satisfies. A single IAM policy module can therefore be evaluated across multiple frameworks without re-implementing business logic.
 
 ```rego
 package enterprise.identity.mfa
 
+import rego.v1
+
 control_id := "SEC-ID-001"
 title := "Enforce MFA for all human identities in production"
 
-violation[identity] {
+violation contains identity if {
     identity := input.identities[_]
     identity.type == "human"
     not identity.mfa_enabled
 }
 
 framework_mappings := {
-    "iso_27001": ["A.5", "A.8"],
+    "iso_27001": ["A.5.15", "A.5.17", "A.8.5"],
     "soc_2": ["CC6.1", "CC6.6"],
-    "nist_800_53": ["IA-2(1)", "AC-2"],
+    "nist_800_53": ["IA-2(1)", "IA-2(2)", "AC-2"],
     "gdpr": ["Article 32"],
-    "internal": ["SEC-ID-001"]
+    "internal": ["IAM-01"]
 }
 
 evidence_sources := [
-    "ci/policy-report.json",
-    "evidence/mfa-snapshot-202501.json"  # Replace YYYYMM with the snapshot month, e.g. 202501
+    "artefacts/policy-report.json",
+    "artefacts/mfa-snapshot-202501.json"  # Replace 202501 with the snapshot month (YYYYMM)
 ]
 ```
 
-The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected **once**, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Service Criteria can rely on the same artefacts without triggering duplicate reviews. The [Evidence as Code chapter](15a_evidence_as_code.md) expands on how pipelines package and publish those artefacts, while [Compliance and Regulatory Adherence](12_compliance.md) shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.
+`control_id` is the identifier under which evidence manifests and the Control Mapping Matrix track the control, while the `internal` mapping records the organisation's own catalogue entry (`IAM-01`). The ISO/IEC 27001:2022 entries name individual Annex A controls—5.15 Access control, 5.17 Authentication information, and 8.5 Secure authentication—rather than the themes A.5 and A.8 [Source [14]](33_references.md#source-14), and the NIST SP 800-53 mapping covers multi-factor authentication for privileged (IA-2(1)) and non-privileged (IA-2(2)) accounts [Source [11]](33_references.md#source-11). The policy is evaluated inside CI pipelines, Terraform plan checks, and periodic drift detection jobs. Each execution produces a machine-readable artefact—JSON reports, signed logs, configuration snapshots—that is versioned alongside the policy itself. Evidence is collected **once**, then catalogued so that auditors mapping ISO 27001 Annex A controls or SOC 2 Trust Services Criteria can rely on the same artefacts without triggering duplicate reviews. The [Evidence as Code chapter](15a_evidence_as_code.md) expands on how pipelines package and publish those artefacts, while [Compliance and Regulatory Adherence](12_compliance.md) shows how mappings are rendered in a Control Mapping Matrix for downstream consumption.
 
 ## Implementation roadmap for European delivery teams
 
@@ -146,6 +153,9 @@ Successful PaC programmes blend technology with process change. A staged roadmap
 
 ## Sources
 
-1. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-2. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53, Revision 5, 2020. [Source [11]](33_references.md#source-11)
-3. **HashiCorp (2024).** *Terraform Security Best Practices.* HashiCorp Learning Resources. [Source [20]](33_references.md#source-20)
+1. **Open Policy Agent.** *Open Policy Agent documentation.* Cloud Native Computing Foundation. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)
+2. **Open Policy Agent.** *OPA v1.0 upgrade guide.* [https://www.openpolicyagent.org/docs/v0-upgrade](https://www.openpolicyagent.org/docs/v0-upgrade) [Source [44]](33_references.md#source-44)
+3. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organizations.* NIST Special Publication 800-53, Revision 5, September 2020 (updated 10 December 2020). [Source [11]](33_references.md#source-11)
+4. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organization for Standardization. [Source [14]](33_references.md#source-14)
+5. **European Parliament and Council (2016).** *Regulation (EU) 2016/679 (General Data Protection Regulation).* Official Journal of the European Union, L 119, 4 May 2016. [https://eur-lex.europa.eu/eli/reg/2016/679/oj](https://eur-lex.europa.eu/eli/reg/2016/679/oj) [Source [43]](33_references.md#source-43)
+6. **HashiCorp.** *Manage sensitive data in your configuration.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/manage-sensitive-data](https://developer.hashicorp.com/terraform/language/manage-sensitive-data) [Source [20]](33_references.md#source-20)

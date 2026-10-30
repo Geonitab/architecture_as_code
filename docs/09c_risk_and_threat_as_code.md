@@ -17,7 +17,7 @@ Architecture as Code programmes already encode infrastructure, policy, and secur
 
 ### Domain-driven risk definitions
 
-Structure risk definitions as declarative YAML or JSON documents that capture context, probability, impact, and ownership. Version control provides historical records of changing assumptions and facilitates independent review. Treat the schema as a contract that automated tooling validates during pull requests.
+Structure risk definitions as declarative YAML or JSON documents that capture context, probability, impact, and ownership, mirroring the likelihood-and-impact vocabulary of NIST SP 800-30 [Source [83]](33_references.md#source-83). Version control provides historical records of changing assumptions and facilitates independent review. Treat the schema as a contract that automated tooling validates during pull requests.
 
 ```yaml
 id: RISK-0047
@@ -46,11 +46,11 @@ Embed governance logic within policy-as-code engines such as Open Policy Agent o
 
 ### Codified threat intelligence ingestion
 
-Threat handling begins by ingesting intelligence feeds in structured formats like STIX/TAXII. Use scheduled pipelines to fetch indicators of compromise, normalise them, and publish curated sets to security tooling. Encoding this workflow ensures provenance is auditable and sanitisation routines are consistent.
+Threat handling begins by ingesting intelligence feeds in structured formats such as STIX (Structured Threat Information Expression) and TAXII, the OASIS standards for describing and exchanging cyber threat intelligence [Source [82]](33_references.md#source-82). Use scheduled pipelines to fetch indicators of compromise, normalise them, and publish curated sets to security tooling. Encoding this workflow ensures provenance is auditable and sanitisation routines are consistent.
 
 ### Automated threat modelling
 
-Model systems informed by principles such as those in the Threat Modelling Manifesto, and using tools such as the Microsoft Threat Modelling Tool, but generate the models directly from the codebase. Diagrams and attack trees stored as Mermaid or Structurizr files can be regenerated whenever architecture code changes. Automated validation checks for missing trust boundaries, unclassified data stores, or unmitigated STRIDE categories.
+Model systems informed by principles such as those in the Threat Modeling Manifesto [Source [80]](33_references.md#source-80), and using tools such as the Microsoft Threat Modeling Tool [Source [81]](33_references.md#source-81), but generate the models directly from the codebase. Diagrams and attack trees stored as Mermaid or Structurizr files can be regenerated whenever architecture code changes. Automated validation checks for missing trust boundaries, unclassified data stores, or unmitigated STRIDE categories.
 
 ### Response playbooks expressed as state machines
 
@@ -63,7 +63,7 @@ Represent incident response actions as state machines or workflow definitions (f
 
 ### Exercising playbooks continuously
 
-Adopt security chaos engineering techniques—automated scenarios that inject simulated breaches or infrastructure failures. These drills run on schedules or in response to configuration changes, validating that playbooks execute correctly and risk tolerances remain aligned. Findings become new backlog items captured as code changes, closing the loop between detection and improvement.
+Adopt security chaos engineering techniques [Source [84]](33_references.md#source-84)—automated scenarios that inject simulated breaches or infrastructure failures. These drills run on schedules or in response to configuration changes, validating that playbooks execute correctly and risk tolerances remain aligned. Findings become new backlog items captured as code changes, closing the loop between detection and improvement.
 
 ## Integrating with the delivery pipeline
 
@@ -83,9 +83,8 @@ By encoding risk assessments and threat handling in the repository, organisation
 
 ## Sources
 
-1. **Threat Modeling Manifesto Community.** *Threat Modeling Manifesto.* threatmodelingmanifesto.org.
-2. **OWASP.** *OWASP Threat Dragon.* Open Web Application Security Project.
-3. **Microsoft.** *STRIDE Threat Modelling Methodology.* Microsoft Security Development Lifecycle Documentation.
-4. **OASIS (2022).** *STIX/TAXII Standards: Structured Threat Intelligence Expression and Transport Specifications.* OASIS Open.
-5. **NIST.** *SP 800-30: Guide for Conducting Risk Assessments.* National Institute of Standards and Technology.
-6. **Gremlin & AWS.** *Chaos Engineering for Security.* Gremlin Platform Documentation and AWS Fault Injection Simulator Documentation.
+1. **Threat Modeling Manifesto Working Group (2020).** *Threat Modeling Manifesto.* [https://www.threatmodelingmanifesto.org/](https://www.threatmodelingmanifesto.org/) [Source [80]](33_references.md#source-80)
+2. **Microsoft Learn.** *Threats – Microsoft Threat Modeling Tool (STRIDE model).* Azure security documentation. [https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats) [Source [81]](33_references.md#source-81)
+3. **OASIS Cyber Threat Intelligence TC (2021).** *STIX Version 2.1* and *TAXII Version 2.1.* OASIS Standards, 10 June 2021. [https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html) and [https://docs.oasis-open.org/cti/taxii/v2.1/os/taxii-v2.1-os.html](https://docs.oasis-open.org/cti/taxii/v2.1/os/taxii-v2.1-os.html) [Source [82]](33_references.md#source-82)
+4. **NIST (2012).** *Guide for Conducting Risk Assessments.* NIST Special Publication 800-30, Revision 1, September 2012. [https://doi.org/10.6028/NIST.SP.800-30r1](https://doi.org/10.6028/NIST.SP.800-30r1) [Source [83]](33_references.md#source-83)
+5. **Rinehart, A. & Shortridge, K. (2023).** *Security Chaos Engineering: Developing Resilience and Safety at Speed and Scale.* O'Reilly Media. ISBN 978-1-098-11382-7. [Source [84]](33_references.md#source-84)

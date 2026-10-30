@@ -50,7 +50,7 @@ Documentation-as-code portals and ChatOps integrations keep contributors in thei
 
 ## Policy as Code: OPA and Rego in Practice
 
-Open Policy Agent (OPA) is the most widely adopted engine for policy as code. Policies are written in Rego, a declarative language purpose-built for expressing rules over structured data. The following examples show how typical governance guardrails translate from prose requirements into executable assertions.
+Open Policy Agent (OPA) is one of the most widely adopted engines for policy as code. The Thoughtworks Technology Radar has recommended *security policy as code*—security policies written as code, version-controlled, validated automatically, deployed and monitored, with OPA and Istio as examples—since Vol. 21 (Trial, November 2019), promoting it to Adopt in Vol. 23 (October 2020); the overview of Vol. 21 also singled out policy, compliance, and governance as code as a recurring theme [Source [2]](33_references.md#source-2). Policies are written in Rego, a declarative language purpose-built for expressing rules over structured data. The following examples show how typical governance guardrails translate from prose requirements into executable assertions. They use the OPA 1.0 syntax, in which the `if` and `contains` keywords are mandatory for rule definitions (OPA 1.0, December 2024); the `import rego.v1` statement keeps them compatible with OPA 0.59 and later [Source [44]](33_references.md#source-44).
 
 ### Enforcing encryption at rest
 
@@ -61,31 +61,44 @@ package governance.storage
 
 import rego.v1
 
-# Deny any storage resource that does not declare encryption
+# SEC-STOR-001: every bucket must be covered by an encryption configuration.
+# Since AWS provider 4.0 encryption is declared with the dedicated
+# aws_s3_bucket_server_side_encryption_configuration resource, so the rule
+# looks in the plan's configuration section for a resource that references
+# the bucket.
 deny contains msg if {
-    resource := input.planned_values.root_module.resources[_]
-    resource.type == "aws_s3_bucket"
-    not resource.values.server_side_encryption_configuration
+    bucket := input.planned_values.root_module.resources[_]
+    bucket.type == "aws_s3_bucket"
+    not has_encryption_configuration(bucket)
     msg := sprintf(
         "S3 bucket '%v' must enable server-side encryption (SEC-STOR-001)",
-        [resource.address]
+        [bucket.address]
     )
 }
 
-# Deny if encryption uses the default AWS key instead of a customer-managed key
+has_encryption_configuration(bucket) if {
+    config := input.configuration.root_module.resources[_]
+    config.type == "aws_s3_bucket_server_side_encryption_configuration"
+    some ref in config.expressions.bucket.references
+    ref == sprintf("%v.%v", [bucket.type, bucket.name])
+}
+
+# SEC-STOR-002: encryption must use SSE-KMS rather than SSE-S3 (AES256).
+# Nested blocks are serialised as arrays in the plan JSON, hence the iteration.
 deny contains msg if {
     resource := input.planned_values.root_module.resources[_]
     resource.type == "aws_s3_bucket_server_side_encryption_configuration"
-    rule := resource.values.rule[_]
-    rule.apply_server_side_encryption_by_default.sse_algorithm == "AES256"
+    some rule in resource.values.rule
+    some sse in rule.apply_server_side_encryption_by_default
+    not startswith(sse.sse_algorithm, "aws:kms")
     msg := sprintf(
-        "S3 bucket encryption for '%v' must use a customer-managed KMS key (SEC-STOR-002)",
+        "S3 bucket encryption for '%v' must use SSE-KMS with a customer-managed key (SEC-STOR-002)",
         [resource.address]
     )
 }
 ```
 
-The policy references control identifiers (`SEC-STOR-001`, `SEC-STOR-002`) that link directly to the organisation's control catalogue. When OPA evaluates a Terraform plan, any violation surfaces in the CI pipeline before infrastructure is provisioned.
+The policy references control identifiers (`SEC-STOR-001`, `SEC-STOR-002`) that link directly to the organisation's control catalogue. When OPA evaluates a Terraform plan, any violation surfaces in the CI pipeline before infrastructure is provisioned. Two details of the plan format matter here. Nested blocks such as `rule` and `apply_server_side_encryption_by_default` are serialised as arrays, so the policy iterates over them instead of using object paths. And because the inline `server_side_encryption_configuration` block of `aws_s3_bucket` has been deprecated and computed since AWS provider 4.0, the first rule inspects the plan's `configuration` section for a dedicated encryption resource that references the bucket rather than testing an attribute that may legitimately be absent or empty. The second rule rejects SSE-S3 (`AES256`); confirming that the KMS key is customer-managed rather than the AWS-managed `aws/s3` key additionally requires `kms_master_key_id` to be known at plan time, which is only the case for pre-existing keys.
 
 ### Enforcing tag compliance
 
@@ -121,14 +134,14 @@ The following GitHub Actions step evaluates the Terraform plan against all gover
     opa eval \
       --data policies/ \
       --input tfplan.json \
-      --format pretty \
+      --format json \
       "data.governance[_].deny[msg]" \
       | tee policy-results.json
     # Fail the pipeline if any denial messages were produced
     python3 - <<'EOF'
     import json, sys
     results = json.load(open("policy-results.json"))
-    denials = [r["expressions"][0]["value"] for r in results["result"] if r["expressions"][0]["value"]]
+    denials = [r["expressions"][0]["value"] for r in results.get("result", []) if r["expressions"][0]["value"]]
     if denials:
         for d in denials:
             print(f"POLICY VIOLATION: {d}")
@@ -136,6 +149,8 @@ The following GitHub Actions step evaluates the Terraform plan against all gover
     print("All governance policies passed.")
     EOF
 ```
+
+`opa eval` prints `{}` when the query produces no results, so the script reads the `result` key defensively. A simpler alternative is `opa eval --fail-defined`, which exits with a non-zero status whenever the query yields a defined, non-empty result.
 
 ### Testing policies with OPA's built-in test runner
 
@@ -146,28 +161,55 @@ package governance.storage_test
 
 import rego.v1
 
+import data.governance.storage
+
 test_denies_missing_encryption if {
-    count(governance.storage.deny) > 0 with input as {
+    count(storage.deny) > 0 with input as {
         "planned_values": {"root_module": {"resources": [{
             "type": "aws_s3_bucket",
+            "name": "example",
             "address": "aws_s3_bucket.example",
             "values": {}
+        }]}},
+        "configuration": {"root_module": {"resources": []}}
+    }
+}
+
+test_denies_sse_s3 if {
+    count(storage.deny) > 0 with input as {
+        "planned_values": {"root_module": {"resources": [{
+            "type": "aws_s3_bucket_server_side_encryption_configuration",
+            "name": "example",
+            "address": "aws_s3_bucket_server_side_encryption_configuration.example",
+            "values": {"rule": [{"apply_server_side_encryption_by_default": [
+                {"sse_algorithm": "AES256"}
+            ]}]}
         }]}}
     }
 }
 
 test_allows_cmk_encryption if {
-    count(governance.storage.deny) == 0 with input as {
-        "planned_values": {"root_module": {"resources": [{
-            "type": "aws_s3_bucket",
-            "address": "aws_s3_bucket.example",
-            "values": {
-                "server_side_encryption_configuration": [{
-                    "rule": [{"apply_server_side_encryption_by_default": [
-                        {"sse_algorithm": "aws:kms", "kms_master_key_id": "arn:aws:kms:eu-west-1:123456789012:key/abc"}
-                    ]}]
-                }]
+    count(storage.deny) == 0 with input as {
+        "planned_values": {"root_module": {"resources": [
+            {
+                "type": "aws_s3_bucket",
+                "name": "example",
+                "address": "aws_s3_bucket.example",
+                "values": {}
+            },
+            {
+                "type": "aws_s3_bucket_server_side_encryption_configuration",
+                "name": "example",
+                "address": "aws_s3_bucket_server_side_encryption_configuration.example",
+                "values": {"rule": [{"apply_server_side_encryption_by_default": [
+                    {"sse_algorithm": "aws:kms", "kms_master_key_id": "arn:aws:kms:eu-west-1:123456789012:key/abc"}
+                ]}]}
             }
+        ]}},
+        "configuration": {"root_module": {"resources": [{
+            "type": "aws_s3_bucket_server_side_encryption_configuration",
+            "name": "example",
+            "expressions": {"bucket": {"references": ["aws_s3_bucket.example.id", "aws_s3_bucket.example"]}}
         }]}}
     }
 }
@@ -201,13 +243,15 @@ Delivery teams can now translate the guidance across [Security Fundamentals](09_
 | Sequence | Work Item | Description | Acceptance Tests | Documentation Tasks | Definition of Done Notes |
 |----------|-----------|-------------|------------------|---------------------|---------------------------|
 | 1 | Establish cross-cloud baseline | Stand up a governance repository folder that defines remote backend standards, policy identifiers, and shared Terraform module interfaces so every workspace references a uniform catalogue. | - Pipeline lints fail if a workspace backend deviates from the approved module signature.<br>- Rego or Sentinel policies assert that state storage declares encryption, locking, and logging toggles before plans reach apply.<br>- Unit tests render sample backends for each cloud and confirm schema validation passes. | Update governance runbook introduction to reference the backlog folder and document how new services request onboarding to the state standard. | Definition of Done (DoD) captures percentage of portfolios adopting the module plus number of policy exceptions raised for remote state. |
-| 2 | Harden AWS state storage | Deliver a Terraform module for Amazon S3 with DynamoDB state locking, customer-managed KMS keys, and AWS IAM roles separated for plan, apply, and audit duties. Gate merges with policy-as-code checks. | - Integration test provisions the backend and asserts S3 encryption and DynamoDB locking via `aws` CLI.<br>- Policy engine blocks plans where KMS key rotation is disabled or audit role lacks read-only scope.<br>- Terratest suite verifies automation roles cannot delete or version-rewind state objects. | Extend the security runbook with AWS backend diagrams and link alert playbooks for S3 access anomalies. | DoD notes record encryption key rotation cadence, number of workspaces migrated, and outstanding AWS IAM deviations. |
+| 2 | Harden AWS state storage | Deliver a Terraform module for Amazon S3 with S3-native state locking (`use_lockfile = true`, Terraform 1.11 or later), bucket versioning, customer-managed KMS keys, and AWS IAM roles separated for plan, apply, and audit duties. DynamoDB-based locking is deprecated since Terraform 1.11 in favour of S3-native locking and should remain only as a transitional pattern [Source [17]](33_references.md#source-17). Gate merges with policy-as-code checks. | - Integration test provisions the backend and asserts S3 encryption, bucket versioning, and S3-native lock-file behaviour via the `aws` CLI.<br>- Policy engine blocks plans where KMS key rotation is disabled or audit role lacks read-only scope.<br>- Terratest suite verifies automation roles cannot delete or version-rewind state objects. | Extend the security runbook with AWS backend diagrams and link alert playbooks for S3 access anomalies. | DoD notes record encryption key rotation cadence, number of workspaces migrated, and outstanding AWS IAM deviations. |
 | 3 | Harden Azure state storage | Ship an Azure Storage backend module with container soft-delete, private endpoints, and RBAC roles that enforce operator separation. Sentinel or OPA policies provide the validation gate. | - Azure CLI tests confirm storage accounts enforce HTTPS, encryption with customer-managed keys, and blob leases.<br>- Policy-as-code evaluation fails when pipelines omit network rules or assign Contributor roles to human identities.<br>- Pipeline checks ensure Terraform service principals rotate credentials automatically. | Publish Azure-specific operational procedures and embed hyperlinks to Azure Monitor workbooks tracking backend access. | DoD lists coverage of production subscriptions, number of private endpoint deployments, and unresolved RBAC findings. |
-| 4 | Harden Google Cloud state storage | Create a module for Google Cloud Storage with uniform bucket-level access, versioning, CMEK integration, and service account separation enforced by policy checks. | - `gcloud` based tests confirm CMEK enforcement, object versioning, and bucket retention policies.<br>- Policy engine denies plans if service accounts lack workload identity federation or logging sinks are disabled.<br>- Automated tests simulate break-glass workflows and verify approval audit trails. | Add Google Cloud runbook sections mapping state buckets to governance identifiers and link Security Command Centre alerts. | DoD reports percentage of GCP projects onboarded, CMEK rotation success rate, and open findings from policy evaluation. |
+| 4 | Harden Google Cloud state storage | Create a module for Google Cloud Storage with uniform bucket-level access, versioning, CMEK integration, and service account separation enforced by policy checks. | - `gcloud` based tests confirm CMEK enforcement, object versioning, and bucket retention policies.<br>- Policy engine denies plans if service accounts lack workload identity federation or logging sinks are disabled.<br>- Automated tests simulate break-glass workflows and verify approval audit trails. | Add Google Cloud runbook sections mapping state buckets to governance identifiers and link Security Command Center alerts. | DoD reports percentage of GCP projects onboarded, CMEK rotation success rate, and open findings from policy evaluation. |
 | 5 | Measure governance coverage | Aggregate evidence from all backends into governance dashboards, exposing adoption metrics, exception registers, and automated policy outcomes for auditors. | - Automated tests confirm metric exports populate dashboards within reporting SLAs.<br>- Regression suite validates that exception workflows require multi-party approval.<br>- Synthetic audits replay sample evidence packs to verify traceability. | Update governance reporting pack templates with new dashboard screenshots and instructions for quarterly attestation. | DoD records governance coverage percentage, active exceptions by provider, and time-to-remediate averages for failed policy checks. |
 
 ## Sources
 
-1. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
-2. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-3. **Thoughtworks Technology Radar (2024).** *Governance as Code.* Thoughtworks. [Source [2]](33_references.md#source-2)
+1. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) [Source [4]](33_references.md#source-4)
+2. **Open Policy Agent.** *Open Policy Agent documentation.* Cloud Native Computing Foundation. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)
+3. **Open Policy Agent.** *OPA v1.0 upgrade guide.* [https://www.openpolicyagent.org/docs/v0-upgrade](https://www.openpolicyagent.org/docs/v0-upgrade) [Source [44]](33_references.md#source-44)
+4. **Thoughtworks (2019).** *Security policy as code.* Technology Radar, Techniques: Trial (Vol. 21, November 2019), Adopt (Vol. 23, October 2020). [https://www.thoughtworks.com/radar/techniques/security-policy-as-code](https://www.thoughtworks.com/radar/techniques/security-policy-as-code) [Source [2]](33_references.md#source-2)
+5. **HashiCorp.** *Backend Type: s3.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/backend/s3](https://developer.hashicorp.com/terraform/language/backend/s3) [Source [17]](33_references.md#source-17)
