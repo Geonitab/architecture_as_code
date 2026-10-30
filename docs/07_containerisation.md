@@ -6,7 +6,7 @@ Architecture as Code underpins modern container platforms by turning deployment 
 
 ## Industry trend data driving Architecture as Code adoption
 
-The Cloud Native Computing Foundation's *State of Cloud Native Development 2024* report ([Source [7]](33_references.md#source-7)) confirms that distributed architectures are now the norm: 67% of surveyed organisations run microservices in production and 58% operate event-driven workloads alongside them. The same research notes that 52% are investing in internal developer platforms to tame the resulting estate. Together these figures highlight why Architecture as Code is essential. When the majority of teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that the report identifies as critical for scaling cloud-native delivery.
+SlashData's *State of Cloud Native Development Q3 2025* report for the Cloud Native Computing Foundation ([Source [7]](33_references.md#source-7)) confirms that distributed architectures are mainstream among backend developers: 46% use microservices and 27% build on event-driven architecture. The same research notes that use of internal developer platforms rose from 23% in Q3 2024 to 27% in Q3 2025 as teams try to tame the resulting estate. Together these figures highlight why Architecture as Code is essential. When so many teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that scaling cloud-native delivery demands.
 
 ## The role of container technology within Architecture as Code
 
@@ -38,27 +38,28 @@ Kubernetes-native automation frameworks extend the platform to cover underlying 
 
 GitOps practices complement this model by treating Git repositories as the source of truth. Continuous delivery tools such as Argo CD and Flux reconcile the declared state with the running clusters, applying changes automatically when a pull request is merged. Rollbacks become a matter of reverting commits, and audit trails are preserved for every environment.
 
-Large organisations often operate multiple clusters across regions. Multi-cluster management suites provide centralised policy enforcement, workload placement, and governance. Federation APIs and the Cluster API specification capture cluster lifecycle operations in code, standardising creation, upgrades, and decommissioning.
+Large organisations often operate multiple clusters across regions. Multi-cluster management suites provide centralised policy enforcement, workload placement, and governance. Multi-cluster tooling such as Cluster API (cluster lifecycle), Karmada, or Open Cluster Management captures cluster operations in code, standardising creation, upgrades, and decommissioning.
 
 ## Guard rails that keep manifests trustworthy
 
-Container platforms remain maintainable only if every manifest is validated before it reaches production. Teams extend their CI/CD pipelines with schema and conformance checks that run alongside unit tests: tools such as `kubectl apply --server-side --dry-run=client`, `kubeval`, and `kubeconform` verify that every API field matches the targeted Kubernetes version, while Helm's built-in `helm lint` prevents template regressions. Policy-as-code engines—including Open Policy Agent Gatekeeper and Kyverno—enforce organisational guard rails (for example, disallowing privileged pods, enforcing GDPR tagging, or ensuring resource limits) so that review comments are backed by automated enforcement rather than informal guidelines ([Source [7]](33_references.md#source-7)).
+Container platforms remain maintainable only if every manifest is validated before it reaches production. Teams extend their CI/CD pipelines with schema and conformance checks that run alongside unit tests: tools such as `kubectl apply --server-side --dry-run=server -f manifests/` (validating against the API server of the connected cluster) and `kubeconform -strict -kubernetes-version 1.31.0 manifests/` (validating offline against the schemas of a chosen version; it replaces the no-longer-maintained `kubeval`) verify that every API field matches the targeted Kubernetes version, while Helm's built-in `helm lint` prevents template regressions. Policy-as-code engines—including Open Policy Agent Gatekeeper and Kyverno—enforce organisational guard rails (for example, disallowing privileged pods, enforcing GDPR tagging, or ensuring resource limits) so that review comments are backed by automated enforcement rather than informal guidelines.
 
-The following example shows a minimal OPA Gatekeeper constraint that prohibits containers running as root and an Argo CD Application manifest that continuously reconciles the desired state with the cluster, illustrating the "as Code" framing in practice:
+The following example shows a minimal OPA Gatekeeper constraint that prohibits privileged containers (the `K8sPSPPrivilegedContainer` ConstraintTemplate from the Gatekeeper policy library must be installed first) and an Argo CD Application manifest that continuously reconciles the desired state with the cluster, illustrating the "as Code" framing in practice:
 
 ```yaml
-# OPA Gatekeeper ConstraintTemplate — block privileged containers
+# OPA Gatekeeper Constraint — block privileged containers
+# (instantiates the K8sPSPPrivilegedContainer ConstraintTemplate from the Gatekeeper library)
 apiVersion: constraints.gatekeeper.sh/v1beta1
-kind: K8sBlockPrivilegedContainers
+kind: K8sPSPPrivilegedContainer
 metadata:
-  name: block-privileged-containers
+  name: psp-privileged-container
 spec:
   match:
     kinds:
       - apiGroups: [""]
         kinds: ["Pod"]
   parameters:
-    allowPrivileged: false
+    exemptImages: []
 ```
 
 ```yaml
@@ -83,11 +84,11 @@ spec:
       selfHeal: true
 ```
 
-Security scanning and integration testing then validate the images referenced by those manifests. Container scanning in the registry, static analysis of Dockerfiles, and ephemeral integration environments make sure that dependencies, runtime permissions, and exposed services stay aligned with architectural expectations. The AWS Cloud Development Kit guidance documents the same pattern for infrastructure as code pipelines: manifests and infrastructure definitions must pass unit tests, integration tests, and policy checks before promotion, with results stored in version control to support ongoing maintenance ([Source [9]](33_references.md#source-9)).
+Security scanning and integration testing then validate the images referenced by those manifests. Container scanning in the registry, static analysis of Dockerfiles, and ephemeral integration environments make sure that dependencies, runtime permissions, and exposed services stay aligned with architectural expectations. The CDK Pipelines chapter of the AWS Cloud Development Kit Developer Guide describes the same staged pattern for infrastructure as code: a pipeline defined in code promotes each change through successive stages, where validation steps such as tests and manual approvals must pass before the next environment is deployed ([Source [9]](33_references.md#source-9)).
 
 ## Detecting and preventing drift
 
-Reconciliation loops highlight when the declared state diverges from the cluster, but proactive drift detection is still essential for maintainability. GitOps operators surface pending changes whenever live configuration no longer matches Git, allowing teams to compare manifests through pull-request style diffs before reconciling. Scheduled jobs that run `kubectl diff`, `terraform plan`, or `argocd app diff` on each environment catch manual changes early and create auditable records. Platform teams couple these detectors with automated rollbacks or tickets so that unauthorised configuration changes cannot accumulate, directly addressing the governance gaps observed in the CNCF research ([Source [7]](33_references.md#source-7)).
+Reconciliation loops highlight when the declared state diverges from the cluster, but proactive drift detection is still essential for maintainability. GitOps operators surface pending changes whenever live configuration no longer matches Git, allowing teams to compare manifests through pull-request style diffs before reconciling. Scheduled jobs that run `kubectl diff`, `terraform plan`, or `argocd app diff` on each environment catch manual changes early and create auditable records. Platform teams couple these detectors with automated rollbacks or tickets so that unauthorised configuration changes cannot accumulate.
 
 Drift management extends beyond workloads. Backup jobs compare expected volume snapshots with actual storage policies, while network controllers confirm that service mesh routes still match the declarative intent. These controls stop platform sprawl and give operators the confidence to scale clusters without sacrificing oversight.
 
@@ -263,10 +264,10 @@ resource "google_container_cluster" "primary" {
 }
 
 resource "google_container_node_pool" "primary_nodes" {
-  name       = "primary-node-pool"
-  location   = "europe-west1" # EU region selected for GDPR data-residency compliance
-  cluster    = google_container_cluster.primary.name
-  node_count = 3
+  name               = "primary-node-pool"
+  location           = "europe-west1" # EU region selected for GDPR data-residency compliance
+  cluster            = google_container_cluster.primary.name
+  initial_node_count = 3 # starting size only; node_count must not be combined with autoscaling
 
   node_config {
     preemptible  = false
@@ -294,18 +295,21 @@ resource "google_container_node_pool" "primary_nodes" {
 
 Architecture as Code provides a common language for development, operations, and security teams. By expressing container platforms, orchestration logic, networking, and data safeguards as code, organisations can automate delivery, scale confidently, and apply governance consistently. Kubernetes and its surrounding ecosystem offer the building blocks, while GitOps workflows keep every environment aligned with the declared intent. Mastery of these practices delivers resilient platforms that adapt quickly to changing requirements.
 
-## Transition to Security and Governance
+## Transition to Security, Governance and Assurance
 
 The automation capabilities and deployment velocity enabled by containerisation and CI/CD pipelines create new security challenges and governance requirements. As containers move through development, testing, and production environments at increasing speed, security controls must keep pace without becoming bottlenecks.
 
-The next part of this book explores how security, policy enforcement, and governance frameworks integrate into Architecture as Code practices. [Chapter 9 on Security Fundamentals](09_security_fundamentals.md) and [Chapter 9B on Advanced Security Patterns](09b_security_patterns.md) examine threat modelling, Zero Trust Architecture, and security-by-design principles specifically tailored for containerised, automated environments. [Chapter 10 on Policy and Security as Code](10_policy_and_security.md) demonstrates how tools like Open Policy Agent enforce security requirements automatically, whilst [Chapters 11 and 12](11_governance_as_code.md) show how governance and compliance become executable code rather than static documentation.
+The next part of this book, Security, Governance and Assurance, explores how security, policy enforcement, governance, and assurance frameworks integrate into Architecture as Code practices. [Chapter 9 on Security Fundamentals](09_security_fundamentals.md) and [Chapter 9B on Advanced Security Patterns](09b_security_patterns.md) examine threat modelling, Zero Trust Architecture, and security-by-design principles specifically tailored for containerised, automated environments. [Chapter 9C on Risk as Code and Threat Handling as Code](09c_risk_and_threat_as_code.md) turns risk registers and threat handling into executable artefacts. [Chapter 10 on Policy and Security as Code](10_policy_and_security.md) demonstrates how tools like Open Policy Agent enforce security requirements automatically, whilst [Chapters 11 and 12](11_governance_as_code.md) show how governance and compliance become executable code rather than static documentation, and [Chapter 15A on Evidence as Code](15a_evidence_as_code.md) closes the loop with continuous assurance.
 
 ## Sources
 
 1. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes Project. [Source [13]](33_references.md#source-13)
-2. **Docker Inc.** *Docker Architecture as Code best practices.* Docker Documentation.
-3. **HashiCorp (2024).** *Introduction to Infrastructure as Code with Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
-4. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
+2. **Docker Inc.** *Building best practices.* Docker Docs. [https://docs.docker.com/build/building/best-practices/](https://docs.docker.com/build/building/best-practices/)
+3. **HashiCorp (2024).** *What is Terraform?* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
+4. **SlashData for the Cloud Native Computing Foundation (2025).** *State of Cloud Native Development Q3 2025.* CNCF, November 2025. [https://www.cncf.io/reports/state-of-cloud-native-development/](https://www.cncf.io/reports/state-of-cloud-native-development/) [Source [7]](33_references.md#source-7)
 5. **Cloud Native Computing Foundation (2024).** *Cloud Native Definition.* CNCF GitHub. [Source [6]](33_references.md#source-6)
-6. **Helm Community.** *Chart Development Guide.* Helm Documentation.
-7. **Istio Project.** *Service Mesh Architecture.* Istio Service Mesh.
+6. **Helm.** *Chart Template Guide.* Helm Documentation. [https://helm.sh/docs/chart_template_guide/](https://helm.sh/docs/chart_template_guide/)
+7. **Istio.** *Architecture.* Istio Documentation. [https://istio.io/latest/docs/ops/deployment/architecture/](https://istio.io/latest/docs/ops/deployment/architecture/)
+8. **AWS.** *Continuous integration and delivery (CI/CD) using CDK Pipelines.* AWS Cloud Development Kit (CDK) v2 Developer Guide. [https://docs.aws.amazon.com/cdk/v2/guide/cdk-pipeline.html](https://docs.aws.amazon.com/cdk/v2/guide/cdk-pipeline.html) [Source [9]](33_references.md#source-9)
+9. **Open Policy Agent.** *Gatekeeper Library: Privileged Container.* [https://open-policy-agent.github.io/gatekeeper-library/website/validation/privileged-containers/](https://open-policy-agent.github.io/gatekeeper-library/website/validation/privileged-containers/)
+10. **Kubernetes SIG Cluster Lifecycle.** *The Cluster API Book.* [https://cluster-api.sigs.k8s.io/](https://cluster-api.sigs.k8s.io/)

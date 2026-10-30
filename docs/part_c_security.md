@@ -1,8 +1,8 @@
 \cleardoublepage
-\part{Security and Governance}
-\setbookpart{Security and Governance}
+\part{Security, Governance and Assurance}
+\setbookpart{Security, Governance and Assurance}
 
-# Part C: Security and Governance {#part-c-security}
+# Part C: Security, Governance and Assurance {#part-c-security}
 
 Building on the technical platform capabilities from Part B, we now address the critical concerns that protect organisations and ensure Architecture as Code practices align with regulatory expectations and internal policies.
 
@@ -16,6 +16,7 @@ Governance as Code extends these principles to organisational processes, approva
 
 - Security-by-design principles for Architecture as Code implementations
 - Zero Trust Architecture patterns and threat modelling in automated environments
+- Risk as Code and Threat Handling as Code, turning risk registers and threat models into executable artefacts
 - Policy as Code using tools like Open Policy Agent and HashiCorp Sentinel
 - Governance frameworks that balance autonomy with control
 - Compliance automation for GDPR, financial regulations, and sector-specific requirements
