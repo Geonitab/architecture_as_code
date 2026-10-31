@@ -1,6 +1,7 @@
 workspace "Architecture as Code Reference" "Curated Structurizr workspace aligned to the book's C4 guidance." {
 
-    !adrs adrs
+    # The ADRs in ./adrs use "ADR-NNNN-title.md" file names, which Structurizr's !adrs importers
+    # (adr-tools, MADR, log4brains) do not parse; they are linked from elements via url instead.
 
     model {
         user = person "Digital Service User" "Citizen or customer interacting with the public-facing capabilities." {
