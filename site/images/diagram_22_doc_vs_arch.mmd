@@ -1,0 +1,23 @@
+graph TB
+    subgraph "Documentation as Code"
+        DaC[Documentation as Code]:::kv-primary
+        DaC --> DacPurpose[Communication &<br/>Knowledge Transfer]:::kv-muted
+        DaC --> DacTools[Diagram Tools]:::kv-highlight
+        DacTools --> Mermaid[Mermaid]:::kv-accent
+        DacTools --> PlantUML[PlantUML]:::kv-accent
+        DaC --> DacOutput[Documentation Sites<br/>Guides & Tutorials]:::kv-muted
+        DacPurpose --> Human1[Human Audience]:::kv-muted
+    end
+    
+    subgraph "Architecture as Code"
+        AaC[Architecture as Code]:::kv-primary
+        AaC --> AacPurpose[Structure Definition &<br/>Constraint Enforcement]:::kv-muted
+        AaC --> AacTools[Modelling Tools]:::kv-highlight
+        AacTools --> CALM[CALM]:::kv-accent
+        AacTools --> Structurizr[Structurizr]:::kv-accent
+        AaC --> AacOutput[Automated Validation<br/>Infrastructure Code]:::kv-muted
+        AacPurpose --> Both[Human & Machine]:::kv-muted
+    end
+    
+    DaC -.Narrative Context.-> AaC
+    AaC -.Generated Diagrams.-> DaC

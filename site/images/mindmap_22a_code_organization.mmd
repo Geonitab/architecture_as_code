@@ -1,0 +1,15 @@
+graph TD
+    ROOT(["Code Organisation"]):::kv-primary
+    ROOT --> RS["Repository Structure"]:::kv-accent
+    ROOT --> MD["Module Design"]:::kv-accent
+    ROOT --> VER["Versioning"]:::kv-accent
+    RS --> RS1["Shared Modules"]:::kv-highlight
+    RS --> RS2["Environment Configs"]:::kv-highlight
+    RS --> RS3["Application Infra"]:::kv-highlight
+    MD --> MD1["Reusability Principles"]:::kv-highlight
+    MD --> MD2["Composability"]:::kv-highlight
+    MD --> MD3["Clear Interfaces"]:::kv-highlight
+    MD --> MD4["Documentation"]:::kv-highlight
+    VER --> VER1["Semantic Versioning"]:::kv-highlight
+    VER --> VER2["Immutable Releases"]:::kv-highlight
+    VER --> VER3["Upgrade Paths"]:::kv-highlight

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/02_fundamental_principles/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Fundamental Principles of Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Fundamental Principles of Architecture as Code";
+        var mkdocs_page_input_path = "02_fundamental_principles.md";
+        var mkdocs_page_url = "/02_fundamental_principles/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Fundamental Principles of Architecture as Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#declarative-architecture-definition">Declarative architecture definition</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#holistic-perspective-on-codification">Holistic perspective on codification</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#adoptability-first-enablement">Adoptability-first enablement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#extensibility-by-design">Extensibility by design</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#productivity-through-automation">Productivity through automation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#historical-lessons-from-model-driven-development">Historical lessons from model-driven development</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation-timeline-for-architecture-as-code">Implementation timeline for Architecture as Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#architecture-as-a-single-source-of-truth">Architecture as a single source of truth</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#git-governed-maintainability-guardrails">Git-governed maintainability guardrails</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#preventing-drift-through-version-controlled-workflow-practices">Preventing drift through version-controlled workflow practices</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#synchronising-architecture-models-and-narrative-documentation">Synchronising architecture models and narrative documentation</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#immutable-architecture-patterns">Immutable architecture patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#understanding-architectural-drift">Understanding architectural drift</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#causes-of-architectural-drift">Causes of architectural drift</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#consequences-of-architectural-drift">Consequences of architectural drift</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#how-architecture-as-code-prevents-drift">How Architecture as Code prevents drift</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#drift-detection-and-remediation">Drift detection and remediation</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#testability-at-the-architecture-level">Testability at the architecture level</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#documentation-as-code">Documentation as Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#benefits-of-documentation-as-code">Benefits of Documentation as Code</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#practical-implementation">Practical implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements-as-code">Requirements as Code</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#automation-and-traceability">Automation and traceability</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#practical-example-with-open-policy-agent-opa">Practical example with Open Policy Agent (OPA)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#validation-and-test-automation">Validation and test automation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#functional-vs-non-functional-requirements-as-code">Functional vs Non-Functional Requirements as Code</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#the-v-model-and-requirements-verification">The V-Model and Requirements Verification</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#practical-implementation-patterns">Practical Implementation Patterns</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#testability-characteristics">Testability Characteristics</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#implications-for-architecture-as-code">Implications for Architecture as Code</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk as Code and Threat Handling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">The Interplay Between Soft As Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part A – Foundations</li>
+      <li class="breadcrumb-item active">Fundamental Principles of Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/02_fundamental_principles.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fundamental-principles">Fundamental Principles of Architecture as Code</h1>
+<p>Architecture as Code is founded on core principles that enable successful implementation of codified system architecture. These principles span the entire system landscape and provide a holistic view of architecture management.</p>
+<p><img alt="Fundamental principles diagram" src="../images/diagram_02_chapter1.png" /></p>
+<p>The diagram illustrates the key dimensions of Architecture as Code covered in this chapter, including declarative architecture definition, holistic codification, immutable patterns, testability, and documentation as code.</p>
+<h2 id="declarative-architecture-definition">Declarative architecture definition</h2>
+<p>The declarative approach in Architecture as Code describes the desired system state at every level – from application components to infrastructure. This contrasts with imperative programming, where each step must be specified explicitly. Infrastructure as Code tooling draws the same distinction between declarative and imperative approaches (<a href="../33_references/#source-29">Source [29]</a>).</p>
+<p>Declarative definitions make it possible to express an architecture's intended state, extending Architecture as Code to cover application architecture, API contracts, and organisational structures.</p>
+<h2 id="holistic-perspective-on-codification">Holistic perspective on codification</h2>
+<p>Architecture as Code embraces the full system ecosystem through a holistic lens. It includes application logic, data flows, security policies, compliance rules, and organisational structures.</p>
+<p>A practical example is an application programming interface change automatically propagating through the architecture – from security configurations to documentation – all defined as code.</p>
+<h3 id="adoptability-first-enablement">Adoptability-first enablement</h3>
+<p>Adoptability is the entry point for Architecture as Code: the language, repository layout, and review rituals must be simple enough that architects, engineers, and governance specialists can contribute without specialist tooling. Pattern libraries, sample pull requests, and role-based contribution guides help teams join the workflow gradually while still building confidence that architectural intent is preserved.</p>
+<h3 id="extensibility-by-design">Extensibility by design</h3>
+<p>Extensibility keeps the practice resilient as new platforms and compliance regimes emerge. Architecture models should be treated as modular building blocks, exposing clear extension points for automation, security scanning, and reporting. Declarative schemas, reusable validation libraries, and plug-in interfaces let teams add new capability without rewriting the foundational architecture definitions.</p>
+<h3 id="productivity-through-automation">Productivity through automation</h3>
+<p>Productivity is the payoff for codifying architecture. With architecture changes expressed as pull requests, automation can lint models, execute policy checks, regenerate diagrams, and publish documentation autonomously. This automation-first mindset removes approval bottlenecks and gives architects rapid feedback, allowing them to focus on higher-order decision-making instead of status tracking.</p>
+<h3 id="historical-lessons-from-model-driven-development">Historical lessons from model-driven development</h3>
+<p>Model-Driven Development (MDD) grew out of decades of domain-specific modelling work and the Object Management Group's Model Driven Architecture initiative (OMG, 2001) <a href="../33_references/#source-52">Source [52]</a>. The promise of lifting platform-independent models into generated, platform-specific implementations resonated strongly in telecoms, aerospace, and defence programmes where delivery stacks were tightly controlled. Schmidt (2006) <a href="../33_references/#source-51">Source [51]</a> positions model-driven engineering—domain-specific modelling languages combined with transformation engines and generators—as the response to the inability of third-generation programming languages to tame platform complexity and express domain concepts, demonstrating the value of codifying architectural knowledge in executable models.</p>
+<p>Wider industry adoption exposed the limits of that optimism. Selic (2003) <a href="../33_references/#source-50">Source [50]</a> already warned that models had "rarely produced anticipated benefits" and that success depended on resolving pragmatic issues rooted in the artefacts and culture of earlier generations of software technology. In the author's experience, brittle round-trip engineering, tool lock-in, and ambiguous semantics then caused MDD artefacts to fall out of sync as soon as teams customised generated code or adopted new frameworks. Architecture as Code internalises those lessons by favouring lightweight textual models, explicit version control, and continuous validation so that the architecture specification evolves alongside implementation rather than trying to replace it.</p>
+<p>Modern model-based architecture tooling such as Structurizr, built around the C4 model (<a href="../33_references/#source-37">Source [37]</a>), focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that addresses the pragmatic concerns raised by Selic (2003) <a href="../33_references/#source-50">Source [50]</a>.</p>
+<h2 id="implementation-timeline-for-architecture-as-code">Implementation timeline for Architecture as Code</h2>
+<p>The foundational principles described in this chapter manifest through a staged adoption journey. Establishing declarative definitions, codifying guardrails in version control, and automating validation require coordinated investment across architecture, platform, and governance teams. The detailed implementation roadmap — covering stakeholder alignment, pilot delivery, and the scaling of repeatable patterns — is addressed in <a href="../14_practical_implementation/">Chapter 14: Architecture as Code in Practice</a>, where sequencing, ownership, and environment promotion are explained in full. The phases described there build directly on the principles introduced here, ensuring that by the time Architecture as Code reaches production, every concept in this chapter is already embedded in day-to-day delivery.</p>
+<h2 id="architecture-as-a-single-source-of-truth">Architecture as a single source of truth</h2>
+<p>Delivering Architecture as Code as a single source of truth (SSOT) demands shared responsibilities across interfaces. A proven pattern is for platform teams to expose a hardened command-line interface for everyday contributors, coupling familiar Git flows with guardrail scripts that validate models before merge. The same SSOT repository publishes an API that downstream systems use to synchronise diagrams, catalogues, and service metadata; governance and reporting platforms consume those endpoints to guarantee they always reflect the approved architecture. By curating both CLI and API experiences, maintainers keep architectural knowledge authoritative, while product teams gain self-service access to the latest canon without bypassing change control.</p>
+<h3 id="git-governed-maintainability-guardrails">Git-governed maintainability guardrails</h3>
+<p>Long-lived maintainability depends on storing every architectural artefact—models, ADRs, compliance policies, and supporting narratives—in version control so that the history of architectural intent travels with the codebase. GitHub's protected branch policy (<a href="../33_references/#source-4">Source [4]</a>) reinforces this expectation by requiring reviews, status checks, and signed commits before architectural updates reach the canonical branch. Architecture as Code teams should treat architectural pull requests exactly like application pull requests: they run the same automated validation suites, capture rationale in review comments, and only merge when both architectural and implementation stakeholders approve the change set.</p>
+<h4 id="preventing-drift-through-version-controlled-workflow-practices">Preventing drift through version-controlled workflow practices</h4>
+<p>The drift scenarios catalogued later in this chapter (see <em>Causes of architectural drift</em>)—manual configuration changes, emergency patches bypassing governance, knowledge loss through turnover, and fragmented tooling—are arrested by enforceable workflow disciplines that treat architecture definitions as the single source of truth. These practices transform version control from a passive repository into an active countermeasure against regression:</p>
+<p><strong>1. Mandatory architectural review gates</strong></p>
+<p>Every change to architectural definitions must flow through pull requests that require approval from designated architecture owners and implementation stakeholders. This two-role requirement ensures both strategic intent and practical feasibility are validated before merge:</p>
+<pre><code class="language-yaml"># .github/CODEOWNERS - Enforce architectural review
+# Teams must be written as @org/team-name and need write access to the repository
+/docs/architecture/**          @acme/architecture-team @acme/platform-team
+/structurizr/**                @acme/architecture-team @acme/platform-team
+*.adr.md                       @acme/architecture-team
+/policy/**                     @acme/security-team @acme/architecture-team
+</code></pre>
+<p>Protected branch rules enforce these review gates at the Git level, preventing any contributor from bypassing the governance workflow—administrators included, provided the rule's <em>Do not allow bypassing the above settings</em> option is enabled, since administrators are otherwise exempt by default (<a href="../33_references/#source-4">Source [4]</a>). This eliminates the emergency patch problem where urgent fixes sidestep architectural oversight.</p>
+<p><strong>2. Automated validation pipelines</strong></p>
+<p>Continuous integration pipelines execute architecture-specific validation before any pull request can merge:</p>
+<ul>
+<li><strong>Model rendering</strong>: Structurizr DSL (<a href="../33_references/#source-38">Source [38]</a>) and FINOS CALM (<a href="../33_references/#source-1">Source [1]</a>) models are rendered to diagrams, confirming syntax correctness and exposing unintended changes visually</li>
+<li><strong>Policy enforcement</strong>: Policy-as-code frameworks (OPA, Conftest, or cloud-native validators) execute architectural policies against proposed changes, blocking violations of security, compliance, or design standards</li>
+<li><strong>Documentation synchronisation</strong>: Automated checks verify that prose documentation, ADRs, and diagram annotations remain aligned with architectural models, as detailed in <a href="../22_documentation_vs_architecture/">Chapter 22: Documentation as Code vs Architecture as Code</a></li>
+<li><strong>Drift detection</strong>: Terraform <code>plan</code>, CloudFormation <code>detect-stack-drift</code>, or Azure Resource Manager <code>what-if</code> commands compare proposed changes against current production state, surfacing any undocumented manual modifications</li>
+</ul>
+<p>These automated checks create a safety net that detects architectural inconsistencies before they reach production, countering the validation gap identified in the drift causes table later in this chapter.</p>
+<p><strong>3. Version-controlled branching strategies</strong></p>
+<p>Architecture as Code teams adopt explicit branching strategies that balance agility with governance (<a href="../33_references/#source-3">Source [3]</a>, <a href="../33_references/#source-4">Source [4]</a>):</p>
+<ul>
+<li><strong>Trunk-based guardrails</strong>: Teams keeping architecture definitions on a single <code>main</code> branch create short-lived feature branches whenever strategic decisions evolve. Mandatory reviewers include at least one architect and one delivery engineer, while continuous integration pipelines render Structurizr diagrams, execute policy-as-code tests, and trigger the documentation workflow described in <a href="../22_documentation_vs_architecture/">Chapter 22</a>. This combination means a pull request cannot merge until the architecture DSL, executable policies, and accompanying narrative stay aligned, reducing the drift scenarios catalogued later in this chapter.</li>
+</ul>
+<p><strong>Example workflow:</strong>
+  ```bash
+  # Developer creates feature branch for architectural change
+  git checkout -b feature/add-event-streaming-layer</p>
+<p># Modify architecture definitions and supporting documentation
+  vim structurizr/workspace.dsl
+  vim docs/adr/0023-adopt-kafka-for-event-streaming.md
+  vim docs/architecture/event-driven-patterns.md</p>
+<p># Commit with descriptive message linking to architectural decision
+  git commit -m "Add event streaming layer (ADR-0023)"</p>
+<p># Push and create pull request
+  git push origin feature/add-event-streaming-layer
+  gh pr create --title "Add event streaming layer" \
+    --body "Implements ADR-0023: Adopt Kafka for event streaming"</p>
+<p># CI pipeline runs:
+  # - Structurizr diagram rendering
+  # - Policy-as-code validation
+  # - Documentation link checking
+  # - ADR format validation</p>
+<p># Required approvals: @acme/architecture-team + @acme/platform-team
+  # Only merges when all checks pass and reviews are approved
+  ```</p>
+<ul>
+<li><strong>GitFlow with architectural release gates</strong>: Organisations preferring GitFlow can adapt the model by storing executable architecture on the <code>develop</code> branch and promoting it through protected release branches. Each promotion bundles architecture changes with updated documentation-as-code artefacts so that release candidates include both diagrams and explanatory guides. Protected branch rules (<a href="../33_references/#source-4">Source [4]</a>) enforce multi-role approvals and require the documentation pipeline to succeed before merge, ensuring programme governance has clear checkpoints even when hotfix branches exist.</li>
+</ul>
+<p><strong>Release gate workflow:</strong>
+  ```bash
+  # Architectural changes accumulate on develop
+  git checkout develop
+  git merge feature/add-event-streaming-layer</p>
+<p># Create release candidate with architectural artefacts
+  git checkout -b release/v2.0</p>
+<p># Bundle architectural documentation for release
+  npm run docs:build
+  # The consolidated Structurizr tooling (Docker image or structurizr.war) replaces the retired Structurizr CLI
+  docker run --rm -v "$PWD":/usr/local/structurizr structurizr/structurizr \
+    export -workspace structurizr/workspace.dsl -format plantuml -output build/diagrams</p>
+<p># Release gate validation:
+  # - All ADRs referenced in release have status: accepted
+  # - Architecture diagrams exported and committed
+  # - Documentation site builds successfully
+  # - Security and compliance policies pass</p>
+<p># Multi-role approval required:
+  # - Architecture owner confirms strategic alignment
+  # - Security team confirms policy compliance
+  # - Product owner confirms business value delivery</p>
+<p># Merge to main only after all gates pass
+  git checkout main
+  git merge release/v2.0 --no-ff
+  git tag v2.0.0
+  ```</p>
+<p>Structurizr's tooling is now distributed as a single Docker image or <code>.war</code> file whose commands include <code>structurizr local</code> (free; replaces Structurizr Lite), <code>structurizr server</code> (self-hosted and licensed; replaces the on-premises installation), and <code>structurizr export</code> (PlantUML, Mermaid, JSON, or a static HTML site); Structurizr Lite, the standalone Structurizr CLI, and the cloud service have reached end of life (<a href="../33_references/#source-56">Source [56]</a>).</p>
+<p><strong>4. Immutable audit trails and knowledge preservation</strong></p>
+<p>Version control systems create immutable audit trails that counter knowledge loss from team turnover. Every architectural change is documented with:</p>
+<ul>
+<li><strong>Commit messages</strong> explaining the rationale and context for changes</li>
+<li><strong>Pull request discussions</strong> capturing design debates and trade-off decisions</li>
+<li><strong>Linked ADRs</strong> providing comprehensive decision records</li>
+<li><strong>Signed commits</strong> (GPG, SSH, or S/MIME signatures verified by the hosting platform), ensuring non-repudiation</li>
+</ul>
+<p>This historical record becomes the institutional memory of the architecture, accessible to future team members without reliance on tribal knowledge or outdated wiki pages.</p>
+<p><strong>5. Refactoring disciplines for long-term coherence</strong></p>
+<p>As architectural definitions evolve, refactoring disciplines keep the codebase maintainable:</p>
+<ul>
+<li><strong>Modular architecture boundaries</strong>: Define clear module boundaries in architecture code, preventing cross-cutting dependencies that create maintenance burdens—the same discipline of drawing boundaries and controlling dependencies that Martin (2017) <a href="../33_references/#source-33">Source [33]</a> places at the heart of software architecture</li>
+<li><strong>Incremental refactoring</strong>: Large architectural changes are broken into incremental pull requests, each independently reviewable and testable</li>
+<li><strong>Deprecation workflows</strong>: Legacy architectural patterns are explicitly marked as deprecated with migration paths documented in ADRs before removal</li>
+<li><strong>Backward compatibility gates</strong>: Breaking changes to architectural interfaces require explicit approval and coordinated migration plans</li>
+</ul>
+<p>These refactoring practices, borrowed from software engineering discipline, ensure architecture code maintains long-term coherence even as the system estate grows in complexity.</p>
+<h4 id="synchronising-architecture-models-and-narrative-documentation">Synchronising architecture models and narrative documentation</h4>
+<p>Pairing these Git workflows with the documentation-as-code techniques outlined in <a href="../22_documentation_vs_architecture/">Chapter 22: Documentation as Code vs Architecture as Code</a> keeps diagrams, prose, and architecture models synchronised. Contributors amend Structurizr or CALM models in the same change set as Mermaid diagrams and Markdown updates, and the automated checks from <code>docs/documentation_workflow.md</code> prevent divergence between the artefacts.</p>
+<p>The integration of review cadences, automation, and documentation into a single version-controlled workflow transforms Architecture as Code from a static snapshot into a living, maintainable discipline. By adopting these enforceable countermeasures, teams arrest the drift causes documented in this chapter—manual changes, emergency patches, knowledge loss, fragmented tooling, and validation gaps—turning version control into an active guardian of architectural integrity.</p>
+<h2 id="immutable-architecture-patterns">Immutable architecture patterns</h2>
+<p>The principle of immutable architecture keeps the entire system architecture under control through immutable components. Rather than modifying existing parts, new versions are created that replace older ones at every level.</p>
+<p>This approach fosters predictability and eliminates architectural drift, where systems gradually diverge from their intended design over time.</p>
+<h3 id="understanding-architectural-drift">Understanding architectural drift</h3>
+<p>Architectural drift is a gradual, often unintentional deviation of a system's actual implementation from its intended architectural design. This phenomenon occurs when incremental changes, workarounds, emergency fixes, and undocumented modifications accumulate over time, causing the running system to diverge from its documented architecture and original design principles.</p>
+<h4 id="causes-of-architectural-drift">Causes of architectural drift</h4>
+<p>Several factors contribute to architectural drift in traditional systems:</p>
+<table>
+<thead>
+<tr>
+<th>Cause</th>
+<th>Description</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Manual configuration changes</strong></td>
+<td>Direct modifications to production systems without updating architecture definitions</td>
+<td>Discrepancies between documented and actual system state</td>
+</tr>
+<tr>
+<td><strong>Emergency patches</strong></td>
+<td>Urgent fixes applied under pressure without following standard processes</td>
+<td>Bypassed architectural guardrails and undocumented changes</td>
+</tr>
+<tr>
+<td><strong>Knowledge loss</strong></td>
+<td>Team member turnover and inadequate documentation transfer</td>
+<td>Loss of architectural context and rationale for design decisions</td>
+</tr>
+<tr>
+<td><strong>Tool and process fragmentation</strong></td>
+<td>Multiple teams using different tools and approaches</td>
+<td>Inconsistent implementations across the system landscape</td>
+</tr>
+<tr>
+<td><strong>Lack of validation</strong></td>
+<td>Absence of automated checks comparing desired versus actual state</td>
+<td>Undetected deviations accumulating over extended periods</td>
+</tr>
+</tbody>
+</table>
+<h4 id="consequences-of-architectural-drift">Consequences of architectural drift</h4>
+<p>Uncontrolled architectural drift creates significant technical and business risks:</p>
+<ul>
+<li><strong>Increased complexity</strong>: Systems become harder to understand, maintain, and modify as actual implementation diverges from documentation</li>
+<li><strong>Security vulnerabilities</strong>: Undocumented changes may introduce security weaknesses that bypass established controls</li>
+<li><strong>Compliance violations</strong>: Drift can cause systems to fall out of compliance with regulatory requirements and industry standards</li>
+<li><strong>Reduced reliability</strong>: Inconsistent configurations and undocumented dependencies increase the likelihood of failures and outages</li>
+<li><strong>Higher operational costs</strong>: Time spent troubleshooting, reconciling, and recovering from drift-related incidents escalates operational expenses</li>
+<li><strong>Impeded innovation</strong>: Technical debt from drift makes it difficult to implement new features or modernise systems</li>
+</ul>
+<h4 id="how-architecture-as-code-prevents-drift">How Architecture as Code prevents drift</h4>
+<p>Architecture as Code addresses architectural drift through several mechanisms:</p>
+<p><strong>Declarative definitions</strong>: Systems are defined in code that explicitly states the desired architecture, making deviations immediately visible through comparison tools and automated validation.</p>
+<p><strong>Version control</strong>: All architectural changes are tracked in Git or similar systems, creating an immutable audit trail that documents every modification and the rationale behind it.</p>
+<p><strong>Automated enforcement</strong>: Policy-as-code frameworks and continuous validation pipelines prevent unauthorised changes from being deployed and detect drift in running systems.</p>
+<p><strong>Immutable infrastructure</strong>: Rather than modifying running systems, new versions are created and deployed, eliminating the possibility of undocumented manual changes.</p>
+<p><strong>Continuous reconciliation</strong>: Automated tools regularly compare the actual system state against the codified architecture, identifying and reporting any discrepancies for immediate remediation.</p>
+<p><strong>Infrastructure state management</strong>: Tools such as Terraform, Pulumi, and CloudFormation maintain explicit state representations, enabling automatic detection when actual infrastructure diverges from the declared configuration.</p>
+<h4 id="drift-detection-and-remediation">Drift detection and remediation</h4>
+<p>Modern Architecture as Code toolchains provide built-in drift detection capabilities:</p>
+<pre><code class="language-bash"># Terraform detects configuration drift
+terraform plan
+# Output shows resources that have been modified outside Terraform
+
+# CloudFormation drift detection (start detection, then poll its status by id)
+DRIFT_ID=$(aws cloudformation detect-stack-drift --stack-name production-stack \
+  --query StackDriftDetectionId --output text)
+aws cloudformation describe-stack-drift-detection-status \
+  --stack-drift-detection-id &quot;$DRIFT_ID&quot;
+
+# Azure Resource Manager drift detection
+az deployment group what-if --resource-group production-rg \
+  --template-file infrastructure.bicep
+</code></pre>
+<p>When drift is detected, teams can choose to either:
+1. <strong>Remediate automatically</strong>: Reapply the codified architecture to restore the system to its intended state
+2. <strong>Update the code</strong>: If the drift represents an intentional change, update the architecture definition to reflect the new desired state
+3. <strong>Investigate and resolve</strong>: Determine the root cause of drift, fix the underlying process gap, and prevent recurrence</p>
+<p>By treating Architecture as Code and automating drift detection and remediation, organisations maintain architectural integrity throughout the entire system lifecycle, ensuring that reality consistently matches design intent.</p>
+<h2 id="testability-at-the-architecture-level">Testability at the architecture level</h2>
+<p>Architecture as Code enables testing of the entire system architecture, not only individual components. This includes validating architectural patterns, adherence to design principles, and verification of end-to-end flows.</p>
+<p>Architecture tests confirm design decisions, assess system complexity, and ensure the complete architecture behaves as intended.</p>
+<h2 id="documentation-as-code">Documentation as Code</h2>
+<p>Documentation as Code (DaC) treats documentation as an integrated part of the codebase rather than a separate artefact (<a href="../33_references/#source-21">Source [21]</a>). Documentation is stored alongside the code, version-controlled with the same tools, and subject to the same quality assurance processes as application code.</p>
+<h3 id="benefits-of-documentation-as-code">Benefits of Documentation as Code</h3>
+<table>
+<thead>
+<tr>
+<th>Benefit</th>
+<th>Description</th>
+<th>Key Advantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version control and history</td>
+<td>Storing documentation in Git or other version control systems</td>
+<td>Automatic traceability of changes, ability to restore previous versions, complete history of documentation evolution</td>
+</tr>
+<tr>
+<td>Collaboration and review</td>
+<td>Pull requests and merge processes for documentation updates</td>
+<td>Improved quality, reduced risk of inaccurate or outdated information, peer review before publication</td>
+</tr>
+<tr>
+<td>CI/CD integration</td>
+<td>Automated pipelines for documentation generation and deployment</td>
+<td>Removes manual steps, ensures documentation remains current, automatic validation on changes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="practical-implementation">Practical implementation</h3>
+<pre><code class="language-yaml"># .github/workflows/docs.yml
+name: Documentation Build and Deploy
+on:
+  push:
+    paths: ['docs/**', 'README.md']
+  pull_request:
+    paths: ['docs/**']
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      # Action majors verified October 2026; pin to commit SHAs for supply-chain hardening
+      - uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate documentation
+        run: |
+          npm run docs:build
+          npm run docs:lint
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/dist
+</code></pre>
+<p>Modern tools such as GitBook, Gitiles, and MkDocs enable automatic generation of web documentation from Markdown files stored alongside the code.</p>
+<p>The Architecture as Code repository demonstrates this principle by coupling
+<a href="../documentation_workflow/"><code>docs/documentation_workflow.md</code></a> with automated tests
+that enforce heading and link conventions during every pull request. Contributors
+cannot merge narrative or architectural updates until the shared Git-based workflow
+and validation pipeline succeed, ensuring documentation remains authoritative without
+falling back on disconnected wikis or manual approvals.</p>
+<h2 id="requirements-as-code">Requirements as Code</h2>
+<p>Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and automated. This paradigm shift enables continuous verification that the system meets its requirements throughout the entire development lifecycle.</p>
+<h3 id="automation-and-traceability">Automation and traceability</h3>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Description</th>
+<th>Business Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automated validation</td>
+<td>Requirements expressed as code run automatically against the system to verify compliance</td>
+<td>Removes manual testing, ensures consistent validation, reduces human error</td>
+</tr>
+<tr>
+<td>Direct link between requirements and code</td>
+<td>Each system component can be traced back to specific requirements</td>
+<td>Complete traceability from business needs to technical implementation, improved audit capability</td>
+</tr>
+<tr>
+<td>Continuous compliance</td>
+<td>System changes are automatically validated against all defined requirements</td>
+<td>Prevents regressions, ensures ongoing compliance, reduces regulatory risk</td>
+</tr>
+</tbody>
+</table>
+<h3 id="practical-example-with-open-policy-agent-opa">Practical example with Open Policy Agent (OPA)</h3>
+<p>The following requirements set reflects a pan-European perspective. Metadata values
+use EU-wide terminology, and individual controls reference guidance from the
+European Data Protection Board (EDPB) alongside ISO/IEC 27001:2022 Annex A controls. This
+alignment keeps Architecture as Code artefacts consistent with the regulatory
+language used across the European Union rather than country-specific phrasing.</p>
+<p>The policies below are written in Rego, the policy language of Open Policy Agent (<a href="../33_references/#source-10">Source [10]</a>), using OPA 1.0 syntax: since OPA 1.0 (December 2024) the <code>if</code> and <code>contains</code> keywords are mandatory when declaring rules, and the <code>import rego.v1</code> statement keeps the same policies loadable on OPA 0.59 and later (<a href="../33_references/#source-44">Source [44]</a>).</p>
+<pre><code class="language-yaml"># requirements/security-requirements.yaml
+apiVersion: policy/v1
+kind: RequirementSet
+metadata:
+  name: eu-security-requirements
+  version: &quot;1.2&quot;
+spec:
+  requirements:
+    - id: SEC-001
+      type: security
+      description: &quot;All S3 buckets must have encryption enabled&quot;
+      priority: critical
+      compliance: [&quot;GDPR&quot;, &quot;ISO27001&quot;]
+      policy: |
+        package security.s3_encryption
+
+        import rego.v1
+
+        deny contains msg if {
+          input.resource_type == &quot;aws_s3_bucket&quot;
+          not input.server_side_encryption_configuration
+          msg := &quot;S3 bucket must have server-side encryption&quot;
+        }
+
+    - id: RES-001
+      type: compliance
+      description: &quot;Personal data must be stored in approved EU/EEA regions (organisational data residency policy supporting GDPR Chapter V transfer controls)&quot;
+      priority: critical
+      compliance: [&quot;GDPR&quot;, &quot;ORG-DATA-RESIDENCY&quot;]
+      policy: |
+        package compliance.data_residency
+
+        import rego.v1
+
+        # Explicit allow-list: a plain &quot;eu-&quot; prefix would also match eu-west-2 (London)
+        approved_regions := {&quot;eu-central-1&quot;, &quot;eu-west-1&quot;, &quot;eu-west-3&quot;, &quot;eu-north-1&quot;, &quot;eu-south-1&quot;, &quot;eu-south-2&quot;}
+
+        deny contains msg if {
+          input.resource_type == &quot;aws_rds_instance&quot;
+          not approved_regions[input.region]
+          msg := sprintf(&quot;RDS instance must be located in an approved EU/EEA region, found %v&quot;, [input.region])
+        }
+</code></pre>
+<h3 id="validation-and-test-automation">Validation and test automation</h3>
+<p>Requirements as Code integrates naturally with test automation because requirements become executable specifications:</p>
+<pre><code class="language-python"># test/requirements_validation.py
+# This validator calls the OPA REST API to evaluate the policies declared in
+# the RequirementSet. Start an OPA server with the policies loaded first,
+# for example `opa run --server policies/`.
+import re
+
+import requests
+import yaml
+
+EU_VALIDATION_AUTHORITIES = {
+    &quot;GDPR&quot;: {
+        &quot;authority&quot;: &quot;European Data Protection Board (EDPB)&quot;,
+        &quot;reference&quot;: (
+            &quot;Regulation (EU) 2016/679, Article 32 and Chapter V; &quot;
+            &quot;EDPB Recommendations 01/2020 on supplementary transfer measures&quot;
+        ),
+    },
+    &quot;ISO27001&quot;: {
+        &quot;authority&quot;: &quot;ISO/IEC JTC 1/SC 27&quot;,
+        &quot;reference&quot;: &quot;ISO/IEC 27001:2022, Annex A (guidance in ISO/IEC 27002:2022)&quot;,
+    },
+}
+
+PACKAGE_PATTERN = re.compile(r&quot;^\s*package\s+([\w.]+)&quot;, re.MULTILINE)
+
+
+class PolicyEvaluationError(RuntimeError):
+    &quot;&quot;&quot;Raised when OPA cannot evaluate a policy (unreachable, error, or not loaded).&quot;&quot;&quot;
+
+
+class RequirementsValidator:
+    def __init__(self, requirements_file: str, system_config: dict,
+                 opa_url: str = &quot;http://localhost:8181&quot;):
+        with open(requirements_file, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:
+            self.requirements = yaml.safe_load(f)
+        self.system_config = system_config
+        self.opa_url = opa_url
+
+    def find_requirement(self, req_id: str) -&gt; dict:
+        for requirement in self.requirements[&quot;spec&quot;][&quot;requirements&quot;]:
+            if requirement[&quot;id&quot;] == req_id:
+                return requirement
+        raise KeyError(f&quot;Unknown requirement: {req_id}&quot;)
+
+    @staticmethod
+    def policy_path(requirement: dict) -&gt; str:
+        &quot;&quot;&quot;Derive the OPA data path (&lt;package&gt;/deny) from the policy's package line.&quot;&quot;&quot;
+        match = PACKAGE_PATTERN.search(requirement[&quot;policy&quot;])
+        if not match:
+            raise PolicyEvaluationError(
+                f&quot;{requirement['id']}: policy has no package declaration&quot;
+            )
+        return match.group(1).replace(&quot;.&quot;, &quot;/&quot;) + &quot;/deny&quot;
+
+    def _evaluate_policy(self, policy_path: str, input_data: dict) -&gt; list:
+        &quot;&quot;&quot;Return the deny messages OPA produces for the given input.&quot;&quot;&quot;
+        try:
+            response = requests.post(
+                f&quot;{self.opa_url}/v1/data/{policy_path}&quot;,
+                json={&quot;input&quot;: input_data},
+                timeout=10,
+            )
+            response.raise_for_status()
+        except requests.RequestException as exc:
+            raise PolicyEvaluationError(
+                f&quot;OPA request failed for {policy_path}: {exc}&quot;
+            ) from exc
+        body = response.json()
+        if &quot;result&quot; not in body:
+            # OPA answers 200 with an empty document when the package is not
+            # loaded; treating that as &quot;no violations&quot; would hide a broken pipeline.
+            raise PolicyEvaluationError(f&quot;Policy {policy_path} is not loaded in OPA&quot;)
+        return list(body[&quot;result&quot;])
+
+    def validate_requirement(self, req_id: str) -&gt; dict:
+        requirement = self.find_requirement(req_id)
+        try:
+            violations = self._evaluate_policy(
+                self.policy_path(requirement), self.system_config
+            )
+            status = &quot;passed&quot; if not violations else &quot;failed&quot;
+        except PolicyEvaluationError as exc:
+            violations, status = [str(exc)], &quot;error&quot;
+        return {
+            &quot;requirement_id&quot;: req_id,
+            &quot;status&quot;: status,
+            &quot;violations&quot;: violations,
+            &quot;validation_reference&quot;: EU_VALIDATION_AUTHORITIES.get(
+                requirement.get(&quot;compliance&quot;, [None])[0]
+            ),
+        }
+
+    def validate_all_requirements(self) -&gt; dict:
+        results = [
+            self.validate_requirement(req[&quot;id&quot;])
+            for req in self.requirements[&quot;spec&quot;][&quot;requirements&quot;]
+        ]
+        return {
+            &quot;total_requirements&quot;: len(results),
+            &quot;passed&quot;: sum(r[&quot;status&quot;] == &quot;passed&quot; for r in results),
+            &quot;failed&quot;: sum(r[&quot;status&quot;] == &quot;failed&quot; for r in results),
+            &quot;errors&quot;: sum(r[&quot;status&quot;] == &quot;error&quot; for r in results),
+            &quot;details&quot;: results,
+        }
+</code></pre>
+<p>Global organisations benefit from Requirements as Code by automatically validating regulatory compliance, financial controls, and statutory obligations that must be met continuously.</p>
+<p>In this European-centric example the validator enriches every result with the
+appropriate supervisory authority or standards body. Teams can therefore map each automated
+decision directly to EDPB guidance or ISO/IEC 27001:2022 controls, ensuring the
+language reported to auditors mirrors the terminology used across the EU. A policy that OPA has not loaded is reported as an error rather than a pass, so a misconfigured pipeline cannot masquerade as a compliant one.</p>
+<h3 id="functional-vs-non-functional-requirements-as-code">Functional vs Non-Functional Requirements as Code</h3>
+<p>Understanding the distinction between functional and non-functional requirements is fundamental to implementing effective Requirements as Code. This distinction affects how requirements are verified and what methods are used to ensure system compliance.</p>
+<p><strong>Functional Requirements</strong> define what the system should do – the specific behaviours, features, and capabilities that the system must provide. Examples include "users must be able to authenticate using multi-factor authentication" or "the system must encrypt data at rest". Functional requirements describe business logic, user interactions, data processing, and specific system functions.</p>
+<p><strong>Non-Functional Requirements</strong> (NFRs) define how the system should perform – the quality attributes, constraints, and operational characteristics that Chung et al. (2000) <a href="../33_references/#source-34">Source [34]</a> treat as first-class engineering concerns. Examples include performance thresholds ("response time must be under 200ms"), scalability requirements ("system must handle 10,000 concurrent users"), availability targets ("99.9% uptime"), and security standards ("must comply with ISO 27001").</p>
+<h4 id="the-v-model-and-requirements-verification">The V-Model and Requirements Verification</h4>
+<p><img alt="V-Model for Requirements Verification" src="../images/diagram_02_v_model.png" /></p>
+<p><em>Figure 2.2: V-Model illustrating the relationship between requirements specification and verification methods</em></p>
+<p>The V-Model, introduced by Forsberg &amp; Mooz (1991) <a href="../33_references/#source-53">Source [53]</a>, pairs each level of specification with a corresponding level of verification or validation. Verification asks whether the system was built right; validation asks whether the right system was built (IEEE Std 1012, <a href="../33_references/#source-54">Source [54]</a>), and both apply to functional and non-functional requirements alike. Figure 2.2 applies the model to Requirements as Code with a deliberate simplification that reflects how the two requirement types are most often checked in practice:</p>
+<p><strong>Non-Functional Requirements → automated testing</strong>: Most NFRs are quantitative—performance can be measured through load tests, security controls verified through automated scanning, and availability monitored through uptime metrics—so they translate directly into executable tests with objective pass/fail results. Precise functional rules, such as an authorisation decision, can be automated in the same way.</p>
+<p><strong>Functional Requirements → stakeholder validation</strong>: Functional requirements need validation to confirm they meet business intent and user needs. While individual functions are tested automatically (unit tests, integration tests), confirming that the system solves the correct business problem requires human judgement, user acceptance testing, and stakeholder confirmation. Equally, qualitative NFRs such as maintainability or usability still call for expert review.</p>
+<p>This simplification is reflected in the V-Model's right side:
+- <strong>Unit Testing</strong> verifies the detailed design, including component-level performance and code quality
+- <strong>Integration Testing</strong> verifies the system design (component interactions, data flows)
+- <strong>System Testing</strong> verifies the non-functional requirements end to end (performance, security, scalability)
+- <strong>Acceptance Testing</strong> validates functional requirements against business needs
+- <strong>Operational Validation</strong> confirms the system delivers business value in production</p>
+<h4 id="practical-implementation-patterns">Practical Implementation Patterns</h4>
+<p>When implementing Requirements as Code, the testing versus validation distinction manifests in different automation patterns:</p>
+<p><strong>Non-Functional Requirements as Automated Tests:</strong></p>
+<pre><code class="language-yaml"># requirements/performance-nfr.yaml
+apiVersion: policy/v1
+kind: NonFunctionalRequirement
+metadata:
+  name: api-performance-requirements
+  category: performance
+spec:
+  requirement:
+    id: NFR-PERF-001
+    description: &quot;API response time under load&quot;
+    metric: response_time_p95
+    threshold: 200
+    unit: milliseconds
+  test:
+    type: load_test
+    tool: k6
+    script: |
+      import http from 'k6/http';
+      import { check } from 'k6';
+
+      export let options = {
+        stages: [
+          { duration: '2m', target: 100 },
+          { duration: '5m', target: 100 },
+          { duration: '2m', target: 0 },
+        ],
+        thresholds: {
+          'http_req_duration{type:api}': ['p(95)&lt;200'],
+        },
+      };
+
+      export default function() {
+        let response = http.get('https://api.example.com/health', { tags: { type: 'api' } });
+        check(response, {
+          'status is 200': (r) =&gt; r.status === 200,
+          'response time OK': (r) =&gt; r.timings.duration &lt; 200,
+        });
+      }
+</code></pre>
+<p><strong>Functional Requirements as Validation Specifications:</strong></p>
+<pre><code class="language-yaml"># requirements/authentication-fr.yaml
+apiVersion: policy/v1
+kind: FunctionalRequirement
+metadata:
+  name: mfa-authentication
+  category: security
+spec:
+  requirement:
+    id: FR-AUTH-001
+    description: &quot;Users must authenticate with multi-factor authentication&quot;
+    acceptance_criteria:
+      - &quot;User provides valid username and password&quot;
+      - &quot;System prompts for second factor (TOTP or SMS)&quot;
+      - &quot;User provides valid second factor&quot;
+      - &quot;System grants access only after both factors verified&quot;
+      - &quot;System logs all authentication attempts&quot;
+  validation:
+    type: acceptance_test
+    stakeholders:
+      - security_team
+      - product_owner
+      - end_users
+    validation_method: user_acceptance_testing
+    success_criteria:
+      - &quot;Security team confirms implementation meets security policy&quot;
+      - &quot;Product owner confirms user experience is acceptable&quot;
+      - &quot;End users successfully complete authentication flow&quot;
+      - &quot;Penetration testing confirms no bypass vulnerabilities&quot;
+  implementation_tests:
+    # These test the implementation, not the requirement itself
+    - type: integration_test
+      description: &quot;Verify TOTP generation and validation&quot;
+    - type: integration_test
+      description: &quot;Verify SMS delivery and code validation&quot;
+    - type: security_test
+      description: &quot;Verify no authentication bypass exists&quot;
+</code></pre>
+<h4 id="testability-characteristics">Testability Characteristics</h4>
+<p>The table below summarises key differences in how functional and non-functional requirements are verified as code:</p>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th>Non-Functional Requirements</th>
+<th>Functional Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Predominant check</strong></td>
+<td>Automated testing with objective metrics</td>
+<td>Validation through acceptance criteria and stakeholder confirmation</td>
+</tr>
+<tr>
+<td><strong>Measurability</strong></td>
+<td>Usually directly measurable (milliseconds, percentages, counts)</td>
+<td>Implementation is testable; business value requires human judgement</td>
+</tr>
+<tr>
+<td><strong>Automation Level</strong></td>
+<td>Largely automated continuous testing (qualitative NFRs such as maintainability still need review)</td>
+<td>Semi-automated: tests verify implementation, humans validate correctness</td>
+</tr>
+<tr>
+<td><strong>Pass/Fail Criteria</strong></td>
+<td>Quantitative thresholds (&lt; 200ms, &gt; 99.9% uptime)</td>
+<td>Qualitative acceptance (meets business need, solves user problem)</td>
+</tr>
+<tr>
+<td><strong>Typical Tools</strong></td>
+<td>Load testing (k6, JMeter), security scanning (OWASP ZAP), monitoring (Prometheus)</td>
+<td>User acceptance testing, stakeholder reviews, business validation</td>
+</tr>
+<tr>
+<td><strong>Continuous Verification</strong></td>
+<td>Every deployment through automated pipelines</td>
+<td>Major releases, feature delivery, stakeholder review cycles</td>
+</tr>
+<tr>
+<td><strong>Example Requirements</strong></td>
+<td>Performance, scalability, security controls, availability, resource utilisation</td>
+<td>Business workflows, user interactions, data processing logic, feature behaviour</td>
+</tr>
+</tbody>
+</table>
+<h4 id="implications-for-architecture-as-code">Implications for Architecture as Code</h4>
+<p>This distinction has profound implications for how Architecture as Code is implemented:</p>
+<ol>
+<li>
+<p><strong>NFR Testing in CI/CD</strong>: Non-functional requirements integrate directly into continuous deployment pipelines. Every infrastructure change can be automatically tested for performance impact, security compliance, and operational characteristics.</p>
+</li>
+<li>
+<p><strong>FR Validation Gates</strong>: Functional requirements require explicit validation gates where stakeholders confirm business value. These gates cannot be fully automated but can be facilitated through Requirements as Code specifications that document acceptance criteria and track validation status.</p>
+</li>
+<li>
+<p><strong>Traceability Requirements</strong>: Both requirement types need traceability to implementation, but NFRs trace to automated test results while FRs trace to validation decisions and stakeholder approvals.</p>
+</li>
+<li>
+<p><strong>Policy Enforcement</strong>: NFRs can be enforced through policy-as-code frameworks (like OPA) that automatically block deployments failing to meet thresholds. FR enforcement requires human decision-making about whether implementation satisfies business intent.</p>
+</li>
+<li>
+<p><strong>Living Documentation</strong>: Requirements as Code creates living documentation where NFR compliance status is always current (reflected by latest test results) while FR validation status requires explicit updates as stakeholders confirm business value delivery.</p>
+</li>
+</ol>
+<p>This dual approach – automated testing wherever a requirement is quantitative, structured validation wherever it expresses business intent – enables organisations to achieve both technical excellence and business value alignment through Architecture as Code practices.</p>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><strong>Red Hat.</strong> <em>What is Infrastructure as Code (IaC)?</em> Red Hat Topics (accessed 2026-10-30). Available at: <a href="https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac">https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac</a>. <a href="../33_references/#source-29">Source [29]</a></li>
+<li><strong>Martin, R. C. (2017).</strong> <em>Clean Architecture: A Craftsman's Guide to Software Structure and Design.</em> Prentice Hall (Pearson). ISBN 978-0-13-449416-6. <a href="../33_references/#source-33">Source [33]</a></li>
+<li><strong>FINOS.</strong> <em>Architecture as Code: What is CALM?</em> FINOS Architecture as Code project (accessed 2026-10-30). Available at: <a href="https://calm.finos.org/">https://calm.finos.org/</a>. <a href="../33_references/#source-1">Source [1]</a></li>
+<li><strong>Brown, S.</strong> <em>The C4 model for visualising software architecture.</em> Available at: <a href="https://c4model.com/">https://c4model.com/</a>. <a href="../33_references/#source-37">Source [37]</a></li>
+<li><strong>Structurizr.</strong> <em>Structurizr DSL language reference.</em> Available at: <a href="https://docs.structurizr.com/dsl/language">https://docs.structurizr.com/dsl/language</a>. <a href="../33_references/#source-38">Source [38]</a></li>
+<li><strong>Structurizr.</strong> <em>Structurizr documentation: commands (local, server, export) and binaries.</em> docs.structurizr.com (accessed 2026-10-30). Available at: <a href="https://docs.structurizr.com/">https://docs.structurizr.com/</a>. <a href="../33_references/#source-56">Source [56]</a></li>
+<li><strong>GitHub Docs (2024).</strong> <em>About protected branches.</em> GitHub Documentation. Available at: <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches">https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches</a>. <a href="../33_references/#source-4">Source [4]</a></li>
+<li><strong>Atlassian.</strong> <em>Comparing Workflows.</em> Atlassian Git Tutorials. Available at: <a href="https://www.atlassian.com/git/tutorials/comparing-workflows">https://www.atlassian.com/git/tutorials/comparing-workflows</a>. <a href="../33_references/#source-3">Source [3]</a></li>
+<li><strong>Open Policy Agent.</strong> <em>Open Policy Agent (OPA) documentation.</em> Available at: <a href="https://www.openpolicyagent.org/docs/">https://www.openpolicyagent.org/docs/</a>. <a href="../33_references/#source-10">Source [10]</a></li>
+<li><strong>Open Policy Agent.</strong> <em>OPA v1.0 upgrade guide.</em> Available at: <a href="https://www.openpolicyagent.org/docs/v0-upgrade">https://www.openpolicyagent.org/docs/v0-upgrade</a>. <a href="../33_references/#source-44">Source [44]</a></li>
+<li><strong>Write the Docs.</strong> <em>Docs as Code.</em> Write the Docs Community. Available at: <a href="https://www.writethedocs.org/guide/docs-as-code/">https://www.writethedocs.org/guide/docs-as-code/</a>. <a href="../33_references/#source-21">Source [21]</a></li>
+<li><strong>Object Management Group (2001).</strong> <em>Model Driven Architecture (MDA).</em> OMG Architecture Board ORMSC, document ormsc/2001-07-01, July 2001. Available at: <a href="https://www.omg.org/cgi-bin/doc?ormsc/2001-07-01">https://www.omg.org/cgi-bin/doc?ormsc/2001-07-01</a>. <a href="../33_references/#source-52">Source [52]</a></li>
+<li><strong>Selic, B. (2003).</strong> <em>The Pragmatics of Model-Driven Development.</em> IEEE Software, 20(5), 19–25. Available at: <a href="https://doi.org/10.1109/MS.2003.1231146">https://doi.org/10.1109/MS.2003.1231146</a>. <a href="../33_references/#source-50">Source [50]</a></li>
+<li><strong>Schmidt, D. C. (2006).</strong> <em>Guest Editor's Introduction: Model-Driven Engineering.</em> Computer, 39(2), 25–31. Available at: <a href="https://doi.org/10.1109/MC.2006.58">https://doi.org/10.1109/MC.2006.58</a>. <a href="../33_references/#source-51">Source [51]</a></li>
+<li><strong>Forsberg, K. &amp; Mooz, H. (1991).</strong> <em>The Relationship of System Engineering to the Project Cycle.</em> INCOSE International Symposium, 1(1), 57–65 (First Annual NCOSE Symposium, Chattanooga, TN, October 1991). Available at: <a href="https://doi.org/10.1002/j.2334-5837.1991.tb01484.x">https://doi.org/10.1002/j.2334-5837.1991.tb01484.x</a>. <a href="../33_references/#source-53">Source [53]</a></li>
+<li><strong>IEEE (2017).</strong> <em>IEEE Standard for System, Software, and Hardware Verification and Validation.</em> IEEE Std 1012-2016 (superseded by IEEE Std 1012-2024). Available at: <a href="https://standards.ieee.org/ieee/1012/5609/">https://standards.ieee.org/ieee/1012/5609/</a>. <a href="../33_references/#source-54">Source [54]</a></li>
+<li><strong>Chung, L., Nixon, B. A., Yu, E. &amp; Mylopoulos, J. (2000).</strong> <em>Non-Functional Requirements in Software Engineering.</em> Kluwer Academic Publishers (Springer). ISBN 978-0-7923-8666-7. <a href="../33_references/#source-34">Source [34]</a></li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01_introduction/" class="btn btn-neutral float-left" title="Introduction to Architecture as Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../03_version_control/" class="btn btn-neutral float-right" title="Version Control and Code Structure">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+      <span><a href="../01_introduction/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../03_version_control/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

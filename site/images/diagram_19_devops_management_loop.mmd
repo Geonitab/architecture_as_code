@@ -1,0 +1,22 @@
+%% Management contributions embedded in DevOps loop
+flowchart TD
+    A[Plan]:::kv-primary --> B[Code]:::kv-primary
+    B --> C[Build]:::kv-primary
+    C --> D[Test]:::kv-primary
+    D --> E[Release]:::kv-primary
+    E --> F[Deploy]:::kv-primary
+    F --> G[Operate]:::kv-primary
+    G --> H[Observe]:::kv-primary
+    H --> A
+
+    subgraph Management Contributions
+        MA[Strategic Objectives]:::kv-highlight
+        MB[Policy Automation]:::kv-highlight
+        MC[Operational Dashboards]:::kv-highlight
+    end
+
+    A -. consumes .-> MA
+    B -. references .-> MB
+    F -. enforces .-> MB
+    G -. monitors .-> MC
+    H -. updates .-> MA

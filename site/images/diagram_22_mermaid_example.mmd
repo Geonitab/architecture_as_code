@@ -1,0 +1,6 @@
+%% Example Mermaid diagram referenced in Chapter 22
+%% Maintains the textual source for the rendered image.
+graph LR
+    User[Customer]:::kv-primary -->|Initiates payment| API[Payment API]:::kv-accent
+    API -->|Validates & stores| DB[(Payment Database)]:::kv-highlight
+    API -->|Publishes event| Queue[Message Queue]:::kv-muted

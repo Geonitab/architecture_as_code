@@ -1,0 +1,21 @@
+%% Transparency workflow showing how issues and discussions enable transparent decision-making
+graph TB
+    subgraph "Transparency Through Issues & Discussions"
+        Problem[Problem Identified]:::kv-primary
+        Discussion[Discussion & Context<br/>Requirements & feedback]:::kv-highlight
+        Issue[Structured Issue]:::kv-accent
+        Review[Collaborative Review]:::kv-accent
+        Decision[Decision Record<br/>ADR/code link]:::kv-pattern
+        PR[Pull Request]:::kv-accent
+        Deployment[Deployment]:::kv-primary
+        Archive[Searchable Archive]:::kv-muted
+    end
+
+    Problem --> Discussion
+    Discussion --> Issue
+    Issue --> Review
+    Review --> Decision
+    Decision --> PR
+    PR --> Deployment
+    Deployment --> Archive
+    Decision -.-> Archive

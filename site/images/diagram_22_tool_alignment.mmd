@@ -1,0 +1,17 @@
+%% Documentation and architecture alignment feedback loop
+%% Maintains the textual source for Figure 22.3.
+
+flowchart LR
+    subgraph Documentation_as_Code[Documentation as Code]
+        Docs[Markdown Source]:::kv-primary --> Reviews[Reviews & Checks]:::kv-highlight
+        Reviews --> Publish[Publication]:::kv-accent
+    end
+
+    subgraph Architecture_as_Code[Architecture as Code]
+        Models[Architecture Models]:::kv-primary --> Policies[Policy Checks]:::kv-highlight
+        Policies --> Provision[Provisioning]:::kv-accent
+    end
+
+    Publish -.Feedback.-> Models
+    Provision -.Evidence.-> Docs
+    Docs -.Guidance.-> Models
