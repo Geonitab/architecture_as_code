@@ -149,9 +149,8 @@ Key workflows include:
 - `validate-doc-numbering.yml` – confirms chapter numbering conventions remain consistent.
 - `build-mkdocs.yml` – builds and deploys the documentation site to GitHub Pages.
 - `claude.yml` – Claude Code agent that responds to issue comments and pull request review activity.
-- `claude-code-review.yml` – automated code review on pull requests using Claude.
 - `mermaid-designer-bot.yml` – responds to issues labelled `mermaid` or `diagram` to assist with diagram design.
-- `issue-create-draft-pr.yml` – automatically creates or reuses a draft pull request when an issue is opened.
+- `assign-codex2.yml` – automatically creates or reuses a draft pull request when an issue is opened.
 - `structurizr-diagrams.yml` – processes Structurizr diagram sources.
 - `clean-fixed-issues.yml` and `clean-old-braches.yml` – housekeeping workflows for closing resolved issues and pruning stale branches.【F:.github/workflows/unified-build-release.yml】
 

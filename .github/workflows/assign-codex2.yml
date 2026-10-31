@@ -218,7 +218,12 @@ jobs:
           fi
 
   codex_on_pr:
-    if: github.event_name == 'pull_request'
+    # Skip pull requests that this workflow opened itself; otherwise every auto-fix PR
+    # triggers another auto-fix PR, each waiting for maintainer approval.
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.user.login != 'github-actions[bot]' &&
+      !contains(github.head_ref, '-autofix-')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}

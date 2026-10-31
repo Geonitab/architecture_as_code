@@ -206,7 +206,8 @@ class TestBuildPipelineConfiguration:
     def test_build_script_invokes_pandoc(self, build_script):
         """Verify that the build script renders PDF and DOCX files with Pandoc."""
         assert 'pandoc --defaults=pandoc.yaml "${CHAPTER_FILES[@]}" -o "$OUTPUT_PDF" 2>&1' in build_script
-        assert 'pandoc --defaults=pandoc.yaml "${NON_LATEX_CHAPTER_FILES[@]}"' in build_script
+        # DOCX and EPUB use the non-LaTeX defaults file (pandoc-nonlatex.yaml), not pandoc.yaml
+        assert 'pandoc "${NON_LATEX_CHAPTER_FILES[@]}" "${NON_LATEX_DEFAULTS_ARGS[@]}"' in build_script
         assert '-t docx \\' in build_script
         assert '-o "$OUTPUT_DOCX"' in build_script
 

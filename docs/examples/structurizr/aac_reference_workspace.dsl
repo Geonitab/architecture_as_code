@@ -1,6 +1,6 @@
 workspace "Architecture as Code Reference" "Curated Structurizr workspace aligned to the book's C4 guidance." {
 
-    !adrs docs/examples/structurizr/adrs
+    !adrs adrs
 
     model {
         user = person "Digital Service User" "Citizen or customer interacting with the public-facing capabilities." {
@@ -27,8 +27,8 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
             tags "External System"
         }
 
-        model { aacPlatform -> analyticsService "Publishes build telemetry and readership events." }
-        model { paymentGateway -> analyticsService "Shares purchase signals for aggregated reporting." }
+        aacPlatform -> analyticsService "Publishes build telemetry and readership events."
+        paymentGateway -> analyticsService "Shares purchase signals for aggregated reporting."
 
         aacPlatform {
             authoringPortal = container "Authoring Portal" "Markdown-first editorial tooling exposed to contributors." "Next.js" {
@@ -37,17 +37,17 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
 
             diagramService = container "Diagram Service" "Converts Structurizr and Mermaid definitions into publishable assets." "Node.js" {
                 tags "Service"
-                url "docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
             }
 
             contentPipeline = container "Content Pipeline" "Generates book artefacts, validates diagrams, and assembles releases." "Python" {
                 tags "Pipeline"
-                url "docs/examples/structurizr/adrs/ADR-0001-diagram-automation-pipeline.md"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0001-diagram-automation-pipeline.md"
             }
 
             knowledgeGraph = container "Knowledge Graph" "Stores relationships between chapters, diagrams, and review decisions." "Neo4j" {
                 tags "Data"
-                url "docs/examples/structurizr/adrs/ADR-0002-knowledge-graph-linking.md"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0002-knowledge-graph-linking.md"
             }
 
             observabilityHub = container "Observability Hub" "Aggregates telemetry, alerts, and architecture fitness scores." "Grafana" {
@@ -63,12 +63,13 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
             observabilityHub -> knowledgeGraph "Queries historical architecture decisions." "Bolt"
             contentPipeline -> observabilityHub "Emits build and validation telemetry." "OTLP"
             authoringPortal -> observabilityHub "Displays health dashboards." "HTTPS"
+            observabilityHub -> editor "Alerts reviewers when fitness thresholds fail." "Notification"
 
             diagramService {
                 dslParser = component "DSL Parser" "Validates Structurizr DSL syntax and resolves workspace fragments." "Kotlin"
-                renderer = component "Diagram Renderer" "Calls Structurizr Lite for PNG/SVG generation." "Java"
+                renderer = component "Diagram Renderer" "Calls the Structurizr export tooling to produce PlantUML and JSON output." "Java"
                 versioningAdapter = component "Versioning Adapter" "Synchronises workspace snapshots with Git repositories." "Python" {
-                    url "docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
+                    url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
                 }
                 policyEvaluator = component "Policy Evaluator" "Applies architecture fitness functions to proposed changes." "Python"
 
@@ -89,6 +90,20 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
         editor -> authoringPortal "Reviews submissions and manages releases." "Browser"
         platformEngineer -> contentPipeline "Implements automation enhancements." "Git Push"
         contentPipeline -> paymentGateway "Triggers royalty reconciliation." "REST"
+
+        production = deploymentEnvironment "Production" {
+            deploymentNode "Cloud Platform" "Managed container platform hosting the publication services." "Kubernetes" {
+                containerInstance contentPipeline
+                containerInstance diagramService
+                containerInstance observabilityHub
+                deploymentNode "Managed Graph Database" "" "Neo4j AuraDB" {
+                    containerInstance knowledgeGraph
+                }
+            }
+            deploymentNode "Analytics Provider" "" "Google Cloud" {
+                softwareSystemInstance analyticsService
+            }
+        }
     }
 
     views {
@@ -119,19 +134,14 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
         dynamic aacPlatform "AaC-ChangeReview" "Dynamic view covering a diagram change review." {
             user -> authoringPortal "Submits revised workspace fragment." "Change request"
             authoringPortal -> contentPipeline "Creates pull request for workspace update." "Git integration"
-            contentPipeline -> diagramService "Runs Structurizr validation job." "CI step"
-            diagramService -> policyEvaluator "Executes architecture fitness functions." "Async task"
-            policyEvaluator -> observabilityHub "Publishes scores and rule outcomes." "Event"
+            contentPipeline -> diagramService "Runs Structurizr validation and architecture fitness functions." "CI step"
+            contentPipeline -> observabilityHub "Publishes scores and rule outcomes." "Event"
             observabilityHub -> editor "Alerts reviewers if thresholds fail." "Notification"
             editor -> authoringPortal "Requests adjustments or approves change." "Review decision"
         }
 
-        deployment aacPlatform "AaC-Deployment" "Deployment view for production." {
-            include contentPipeline
-            include diagramService
-            include knowledgeGraph
-            include observabilityHub
-            include analyticsService
+        deployment aacPlatform production "AaC-Deployment" "Deployment view for production." {
+            include *
             autoLayout lr
         }
 
@@ -175,7 +185,7 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
                 shape Cylinder
             }
             relationship "REST" {
-                dashed false
+                style solid
                 thickness 2
             }
         }
@@ -186,9 +196,6 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
             # Documents the Structurizr release the exports were last generated with;
             # the render script pins the container image itself.
             aac.structurizr.release "2026.09.19"
-        }
-        branding {
-            logo "../images/diagram_06_structurizr_overview.png"
         }
     }
 }

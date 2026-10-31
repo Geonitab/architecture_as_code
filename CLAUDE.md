@@ -260,8 +260,7 @@ Automation that reacts to issues and pull requests:
 |----------|------|---------|
 | Mermaid Designer Bot | `mermaid-designer-bot.yml` | Issue labelled `mermaid` or `diagram` (case-insensitive); opens a PR with a new `.mmd` diagram |
 | Claude Code | `claude.yml` | `@claude` mentions in issue or PR comments, issue assignment |
-| Claude Code Review | `claude-code-review.yml` | Pull request opened or synchronised |
-| Issue → draft PR | `issue-create-draft-pr.yml`, `assign-codex2.yml` | Issue opened or reopened; creates or reuses a draft PR |
+| Issue → draft PR | `assign-codex2.yml` | Issue opened or reopened; creates or reuses a draft PR (pull requests opened by the workflow itself are skipped) |
 | Housekeeping | `clean-fixed-issues.yml`, `clean-old-braches.yml` | Push to `main`; daily schedule |
 
 There are no role-specific bots (architect, developer, designer, editor, QA, requirements); the specialist roles live in `.claude/agents/*.md` and are invoked as Claude Code subagents.

@@ -31,7 +31,6 @@ class TestPresentationEnhancements:
 
         expected_missing = {
             '25_future_trends.md',
-            '27_conclusion.md',
             '30_appendix_code_examples.md',
             '33_references.md',
         }
@@ -62,7 +61,8 @@ class TestPresentationEnhancements:
         missing_types = missing_info['missing']
         available_types = missing_info['available']
         
-        allowed_absent = {'entity_relationship'}
+        # Mindmaps were deliberately converted to graph TD diagrams for readability (#1715)
+        allowed_absent = {'entity_relationship', 'mindmap'}
 
         unexpected_missing = [t for t in missing_types if t not in allowed_absent]
         assert not unexpected_missing, \

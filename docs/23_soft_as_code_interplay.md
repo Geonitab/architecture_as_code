@@ -168,7 +168,7 @@ id: LL-0042
 title: "Orphaned Terraform state locks after cancelled pipeline runs"
 status: active
 tags: [terraform, state-management, locking, ci-pipelines]
-related_adrs: [ADR-0017, ADR-0031]
+related_adrs: [ADR-0003]  # adr/ADR-0003-selection-of-terraform.md
 related_chapters: ["03_version_control.md", "14_practical_implementation.md"]
 
 problem: >

@@ -144,14 +144,13 @@ The job requests only the permissions it needs—read access to repository conte
 
 ### Issue-driven agent activation
 
-The repository's own automation shows how agents can be activated by repository events rather than by conversation. The Mermaid Designer Bot (`.github/workflows/mermaid-designer-bot.yml`) runs when an issue is labelled `mermaid` or `diagram`: it reads the issue, designs a diagram in the project's visual style, commits the `.mmd` file under `docs/images/` and opens a pull request that references the issue. Two further workflows built on the Claude Code GitHub Action (`anthropics/claude-code-action`) respond to `@claude` mentions in issues and pull-request comments (`claude.yml`) and review every opened or updated pull request against `CLAUDE.md` (`claude-code-review.yml`), while `issue-create-draft-pr.yml` creates or reuses a draft pull request for each new issue. The specialist roles described earlier in this chapter are not separate bots: they exist as Claude Code subagent definitions in `.claude/agents/` (editor, writer, graphic designer, researcher, critic and IT architect) and are invoked explicitly.
+The repository's own automation shows how agents can be activated by repository events rather than by conversation. The Mermaid Designer Bot (`.github/workflows/mermaid-designer-bot.yml`) runs when an issue is labelled `mermaid` or `diagram`: it reads the issue, designs a diagram in the project's visual style, commits the `.mmd` file under `docs/images/` and opens a pull request that references the issue. A further workflow built on the Claude Code GitHub Action (`anthropics/claude-code-action`) responds to `@claude` mentions in issues and pull-request comments (`claude.yml`), while `assign-codex2.yml` creates or reuses a draft pull request for each new issue. The specialist roles described earlier in this chapter are not separate bots: they exist as Claude Code subagent definitions in `.claude/agents/` (editor, writer, graphic designer, researcher, critic and IT architect) and are invoked explicitly.
 
 | Workflow | Trigger | Automated response |
 |---|---|---|
 | Mermaid Designer Bot (`mermaid-designer-bot.yml`) | Issue labelled `mermaid` or `diagram` | New `.mmd` diagram in `docs/images/`, a pull request, and a comment on the issue |
 | Claude Code (`claude.yml`) | `@claude` mention in an issue, issue comment or pull-request review comment | Performs the requested task and reports back in the thread |
-| Claude Code Review (`claude-code-review.yml`) | Pull request opened or synchronised | Review comment covering quality, potential bugs, security and test coverage |
-| Issue → draft PR (`issue-create-draft-pr.yml`) | Issue opened or reopened | Branch and draft pull request linked to the issue |
+| Issue → draft PR (`assign-codex2.yml`) | Issue opened or reopened | Branch and draft pull request linked to the issue |
 
 Extending this pattern to label-triggered specialist bots—for example an `architecture` label that yields an architectural analysis with ADR suggestions, or a `qa` label that reviews acceptance criteria and test coverage—is a natural next step, but it is a proposal rather than a description of the current repository.
 
