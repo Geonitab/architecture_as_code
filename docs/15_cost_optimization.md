@@ -2,11 +2,11 @@
 
 ![Cost optimisation workflow](images/diagram_16_chapter15.png)
 
-*The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops enabling constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
+*Figure 15.1: The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops enabling constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
 
 ![Cost monitoring and analysis flow](images/diagram_17_chapter15.png)
 
-*This simplified view of the cost optimisation process illustrates how various components work together: from cost analysis via monitoring and optimisation to automation leading to concrete savings.*
+*Figure 15.2: This simplified view of the cost optimisation process illustrates how various components work together: from cost analysis via monitoring and optimisation to automation leading to concrete savings.*
 
 ## Overall Description
 
@@ -22,11 +22,11 @@ Successful cost optimisation requires a combination of technical tools, organisa
 
 ![FinOps governance cycle](images/diagram_16_finops_cycle.png)
 
-*The FinOps cycle illustrates the continuous process of cost governance, from allocation and budgeting to policy management and optimisation. This iterative approach ensures that cost-awareness is integrated throughout the organisation's workflow.*
+*Figure 15.3: The FinOps cycle illustrates the continuous process of cost governance, from allocation and budgeting to policy management and optimisation. This iterative approach ensures that cost-awareness is integrated throughout the organisation's workflow.*
 
-FinOps represents a growing discipline that combines financial management with cloud operations to maximise business value from cloud investments. Within the Architecture as Code context, this means integrating cost considerations directly into infrastructure definitions and deployment processes.
+FinOps represents a growing discipline that combines financial management with cloud operations to maximise business value from cloud investments; the FinOps Foundation's framework structures the practice into the Inform, Optimize and Operate phases ([Source [93]](33_references.md#source-93)). Within the Architecture as Code context, this means integrating cost considerations directly into infrastructure definitions and deployment processes.
 
-Governance frameworks for cost management must encompass automated policies for resource configuration, budget alerts, and regular cost analysis. Terraform Enterprise, AWS Cost Management, and Azure Cost Management offer APIs that can be integrated into Architecture as Code workflows for real-time cost control.
+Governance frameworks for cost management must encompass automated policies for resource configuration, budget alerts, and regular cost analysis. HCP Terraform and Terraform Enterprise provide cost estimation as a run phase between plan and apply, which policy checks can evaluate before a change is applied, whilst AWS Cost Management and Microsoft Cost Management expose budgets, alerts, and cost data through APIs that Architecture as Code workflows can consume ([Source [94]](33_references.md#source-94)).
 
 EU organisations must also handle compliance requirements that affect cost optimisation, such as GDPR-related data storage requirements that may restrict opportunities to use certain geographical regions with lower pricing. For example, organisations may need to maintain data within EU boundaries (eu-west-1 in Ireland, eu-central-1 in Frankfurt, eu-south-1 in Milan, or eu-west-3 in Paris) rather than using potentially lower-cost non-EU regions. Architecture as Code-based compliance policies can automate these constraints whilst optimising costs within permitted parameters.
 
@@ -38,7 +38,7 @@ Automatic resource scaling forms the core of cost-effective Architecture as Code
 
 Kubernetes Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) can be configured through Architecture as Code to automatically adjust resource allocation based on CPU, memory, and custom metrics. This is particularly valuable for EU organisations with varying working patterns across different time zones and member states, enabling predictable scaling that accounts for business hours in Dublin, Frankfurt, Paris, and other major centres.
 
-Cloud providers offer rightsizing recommendations based on historical usage, but these must be integrated into Architecture as Code workflows to become actionable. Terraform providers for AWS, Azure, and GCP can automatically implement rightsizing recommendations through Architecture as Code review processes.
+Cloud providers offer rightsizing recommendations based on historical usage, but these must be integrated into Architecture as Code workflows to become actionable. Recommendations from AWS Compute Optimizer, Azure Advisor, and Google Cloud Recommender can be turned into reviewed Terraform changes, so that rightsizing passes through the same Architecture as Code review process as any other infrastructure change.
 
 Machine learning-based predictive scaling models can be incorporated into Architecture as Code definitions to anticipate resource load and pre-emptively scale infrastructure. This is particularly effective for companies with seasonal variations or predictable business cycles across different EU markets.
 
@@ -46,9 +46,9 @@ Machine learning-based predictive scaling models can be incorporated into Archit
 
 ![Cost monitoring stack](images/diagram_16_monitoring_stack.png)
 
-*This diagram shows the cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems. Data flows from metrics collection through reporting and anomaly detection to cost analysis, ultimately resulting in concrete optimisation actions.*
+*Figure 15.4: This diagram shows the cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems. Data flows from metrics collection through reporting and anomaly detection to cost analysis, ultimately resulting in concrete optimisation actions.*
 
-Comprehensive cost monitoring requires integration of monitoring tools directly into Architecture as Code configurations. CloudWatch, Azure Monitor, and Google Cloud Monitoring can be configured as code to track costs at a granular level and trigger alerts when threshold values are exceeded.
+Comprehensive cost monitoring requires integration of monitoring tools directly into Architecture as Code configurations. Granular cost data comes from AWS Cost Explorer and the Cost and Usage Report, Microsoft Cost Management, and Cloud Billing export to BigQuery, whilst CloudWatch billing alarms, Azure Monitor, and Google Cloud budgets can be configured as code to trigger alerts when threshold values are exceeded.
 
 Real-time cost tracking enables proactive cost management instead of reactive measures after budgets are already exceeded. Architecture as Code-based monitoring solutions can automatically implement cost controls such as resource termination or approval workflows for cost-critical operations.
 
@@ -60,21 +60,21 @@ Anomaly detection for cloud costs can be implemented through machine learning al
 
 Multi-cloud strategies complicate cost optimisation but also offer opportunities for cost arbitrage between different providers. Architecture as Code tools like Terraform enable consistent cost management across different cloud providers through unified configuration and monitoring.
 
-Cross-cloud cost comparison requires normalisation of pricing models and service offerings between providers. Open source tools like Cloud Custodian and Kubecost can be integrated into Architecture as Code pipelines to automate this analysis and recommend optimal resource placement across regions.
+Cross-cloud cost comparison requires normalisation of pricing models and service offerings between providers. Open source tools such as Cloud Custodian (policy enforcement, a CNCF incubating project) and OpenCost (Kubernetes cost allocation, the CNCF incubating project from which the commercial IBM Kubecost product originates) can be integrated into Architecture as Code pipelines to automate cost attribution and reporting ([Source [92]](33_references.md#source-92)); the cross-provider comparison itself remains an analytical exercise that these tools inform rather than perform.
 
 Data transfer costs between cloud providers often form an invisible cost source that can be optimised through strategic architecture design. Architecture as Code-based network topology can minimise inter-cloud traffic whilst maximising intra-cloud efficiency. For EU organisations, this is particularly relevant when balancing data sovereignty requirements with cost optimisation—for example, maintaining workloads in eu-west-1 (Ireland) and eu-central-1 (Frankfurt) to ensure GDPR compliance whilst minimising inter-region data transfer costs.
 
-Cloud sovereignty frameworks, such as the GAIA-X data space model referenced in Chapter 25, provide a shared vocabulary for describing residency, portability, and supply-chain expectations. Encoding those guardrails alongside FinOps policies ensures that cost models account for the approved jurisdictions, egress thresholds, and encryption standards required for European compliance. Architecture as Code modules should therefore expose parameters for sovereign zones, permitted providers, and classification-driven controls so that cost optimisation never undermines the regulatory guardrails discussed in the broader cloud sovereignty narrative.
+Cloud sovereignty frameworks, such as the Gaia-X data space model referenced in Chapter 25, provide a shared vocabulary for describing residency, portability, and supply-chain expectations. Encoding those guardrails alongside FinOps policies ensures that cost models account for the approved jurisdictions, egress thresholds, and encryption standards required for European compliance. Architecture as Code modules should therefore expose parameters for sovereign zones, permitted providers, and classification-driven controls so that cost optimisation never undermines the regulatory guardrails discussed in the broader cloud sovereignty narrative.
 
 Hybrid cloud strategies can optimise costs by retaining certain workloads on-premises whilst cloud-native workloads are moved to the cloud. Architecture as Code enables coordinated management of both environments with unified cost tracking and optimisation. This is especially relevant for EU financial services organisations that must balance regulatory requirements with cost efficiency.
 
 ### Market Outlook and Economic Rationale
 
-Independent market research confirms that Infrastructure as Code investment is accelerating as organisations industrialise automation. MarketsandMarkets (2023) forecasts that the global Infrastructure as Code market will expand from USD 0.8 billion in 2022 to USD 2.3 billion by 2027, representing a compound annual growth rate of about 24 per cent. The shift from exploratory pilots to enterprise-scale programmes reflects the need for verifiable guardrails and reusable automation patterns in regulated industries.
+Independent market research indicates that Infrastructure as Code investment is accelerating as organisations industrialise automation. MarketsandMarkets (2022) [Source [47]](33_references.md#source-47) forecast in August 2022 that the global Infrastructure as Code market would expand from USD 0.8 billion in 2022 to USD 2.3 billion by 2027, a compound annual growth rate of 24.0 per cent; the forecast is now four years old and should be read as an indication of direction rather than a current estimate. The shift from exploratory pilots to enterprise-scale programmes reflects the need for verifiable guardrails and reusable automation patterns in regulated industries.
 
-Gartner's *Forecast Analysis: Public Cloud Services Worldwide* (2024) anticipates worldwide public cloud spending reaching USD 679 billion in 2024—a year-on-year increase of 20.4 per cent. Finance leaders therefore expect Architecture as Code and FinOps disciplines to provide measurable returns on escalating cloud commitments by codifying reservation strategies, budget thresholds, and sustainability metrics alongside delivery pipelines.
+Gartner's press release of 13 November 2023 forecast worldwide end-user spending on public cloud services at USD 678.8 billion for 2024, a year-on-year increase of 20.4 per cent ([Source [45]](33_references.md#source-45)); Gartner's November 2024 update then put 2024 spending at USD 595.7 billion and forecast USD 723.4 billion for 2025 ([Source [46]](33_references.md#source-46)). Finance leaders therefore expect Architecture as Code and FinOps disciplines to provide measurable returns on escalating cloud commitments by codifying reservation strategies, budget thresholds, and sustainability metrics alongside delivery pipelines.
 
-IDC's *Worldwide DevOps Software Tools Forecast, 2023–2027* highlights that platform engineering, automation, and configuration management account for more than a third of DevOps investment through 2027. Treating Architecture as Code artefacts as governed, reusable assets ensures those expenditures translate into durable capabilities, providing the economic rationale executives require when prioritising IaC-led transformation.
+In the author's experience, an increasing share of DevOps tooling budgets is directed towards platform engineering, automation, and configuration management. Treating Architecture as Code artefacts as governed, reusable assets ensures those expenditures translate into durable capabilities, providing the economic rationale executives require when prioritising IaC-led transformation.
 
 ## Practical Examples
 
@@ -89,7 +89,7 @@ To implement cost-aware infrastructure with Terraform, a structured approach is 
 | Spot instance configuration | Cost-effective compute | Mixed instance types for optimal cost efficiency |
 | Auto Scaling groups | Balanced capacity management | Mixed instances policy balancing on-demand and spot instances |
 
-*For complete code examples with all configuration details, see [15_CODE_1: Cost-aware Terraform infrastructure configuration](#15_code_1) in Appendix A.*
+*For complete code examples with all configuration details, see [15_CODE_1: Cost-aware Terraform infrastructure configuration](30_appendix_code_examples.md#15_code_1) in Appendix A.*
 
 ### Kubernetes Cost Optimisation
 
@@ -102,7 +102,7 @@ Kubernetes environments require careful resource governance to avoid over-provis
 | Vertical Pod Autoscaler (VPA) | Automatic adjustment of resource requests based on actual usage | Right-sizes containers, eliminates over-provisioning |
 | Horizontal Pod Autoscaler (HPA) | Scale number of replicas based on CPU and memory utilisation | Matches capacity to demand, reduces idle resources |
 
-*For complete Kubernetes manifests, see [15_CODE_2: Kubernetes cost optimisation manifests](#15_code_2) in Appendix A.*
+*For complete Kubernetes manifests, see [15_CODE_2: Kubernetes cost optimisation manifests](30_appendix_code_examples.md#15_code_2) in Appendix A.*
 
 ### Cost Monitoring Automation
 
@@ -113,19 +113,21 @@ Automated cost monitoring and optimisation requires integration with cloud provi
 - Detect unused resources such as unattached EBS volumes, unused elastic IPs, and idle load balancers
 - Generate comprehensive cost optimisation plans with potential savings
 
-*For complete Python implementation of AWS cost optimiser, see [15_CODE_3: AWS cost monitoring and optimisation automation](#15_code_3) in Appendix A.*
+*For complete Python implementation of AWS cost optimiser, see [15_CODE_3: AWS cost monitoring and optimisation automation](30_appendix_code_examples.md#15_code_3) in Appendix A.*
 
 ## Commitment-Based Pricing: Reserved Instances and Savings Plans
 
 Commitment-based pricing is often the single largest source of cloud cost reduction available to organisations. By committing to a defined usage level over a one- or three-year term, organisations receive substantial discounts compared to on-demand rates. Architecture as Code workflows can codify reservation strategies so that purchasing decisions are traceable, reviewed, and aligned with capacity forecasts.
 
-| Provider | Offering | Typical Savings vs On-Demand |
+| Provider | Offering | Maximum Savings vs On-Demand (provider figures) |
 |----------|----------|------------------------------|
-| AWS | Reserved Instances (Standard and Convertible) | 30–60% |
+| AWS | Reserved Instances (Standard and Convertible) | Up to 72% (Standard), up to 66% (Convertible) |
 | AWS | Compute Savings Plans (flexible across instance families, sizes, and regions) | Up to 66% |
 | AWS | EC2 Instance Savings Plans | Up to 72% |
 | Azure | Reserved VM Instances (one- or three-year commitments) | Up to 72% |
-| Google Cloud | Committed Use Discounts (resource-based and spend-based) | Up to 57% |
+| Google Cloud | Committed Use Discounts (resource-based and spend-based) | Up to 55% resource-based (up to 70% for memory-optimised machine series); 28–46% for flexible spend-based CUDs |
+
+The percentages are the maximum discounts published by the providers as of October 2026: AWS Compute and EC2 Instance Savings Plans ([Source [95]](33_references.md#source-95)), [Amazon EC2 Reserved Instances pricing](https://aws.amazon.com/ec2/pricing/reserved-instances/), [Azure Reservations pricing](https://azure.microsoft.com/en-us/pricing/reservations/), and Google Cloud committed use discounts ([Source [98]](33_references.md#source-98)). Realised savings depend on term length, payment option, and how well the commitment matches actual usage.
 
 Key considerations when adopting commitment-based pricing:
 
@@ -141,15 +143,16 @@ The modern Architecture as Code methodology represents the future for infrastruc
 
 Key success factors include proactive monitoring, automated rightsizing, intelligent use of spot instances and reserved capacity, and continuous optimisation based on actual usage patterns. FinOps practices ensure cost considerations are naturally integrated into the development process.
 
-EU organisations that implement these strategies can achieve 20–40% cost reduction in their cloud operations (Figures drawn from practitioner case studies; actual savings vary by workload profile and baseline optimisation maturity.) whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
+In the author's experience, EU organisations that implement these strategies typically reduce their cloud operating costs by 20–40 per cent, although actual savings vary with workload profile and baseline optimisation maturity, whilst ensuring regulatory compliance (particularly GDPR data residency requirements) and performance requirements. Multi-region strategies across EU zones (such as eu-west-1 in Ireland and eu-central-1 in Frankfurt) enable both compliance and cost optimisation through intelligent workload placement.
 
 ## Sources
 
-1. **Amazon Web Services (2023).** *AWS Cost Optimisation Guide.* Amazon Web Services Documentation.
-2. **FinOps Foundation (2023).** *FinOps Framework and Architecture as Code Best Practices.* The Linux Foundation.
-3. **Kubecost (2023).** *Kubernetes Cost Optimisation Guide.* Kubecost Documentation.
-4. **Cloud Security Alliance (2023).** *Cloud Cost Optimisation Security Guidelines.* CSA Research.
-5. **MarketsandMarkets (2023).** *Infrastructure as Code Market Report.* MarketsandMarkets.
-6. **Gartner (2024).** *Forecast Analysis: Public Cloud Services Worldwide.* Gartner Research.
-7. **IDC (2023).** *Worldwide DevOps Software Tools Forecast, 2023–2027.* IDC Research.
-8. **Microsoft (2023).** *Azure Cost Management Architecture as Code Best Practices.* Microsoft Azure Documentation.
+1. **Amazon Web Services (2024).** *AWS Well-Architected Framework* (Cost Optimization pillar). AWS whitepaper, 6 November 2024, [https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html](https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-optimization.html). [Source [91]](33_references.md#source-91)
+2. **FinOps Foundation.** *FinOps Framework.* The Linux Foundation, [https://www.finops.org/framework/](https://www.finops.org/framework/) (accessed 2026-10-30). [Source [93]](33_references.md#source-93)
+3. **OpenCost.** *OpenCost Documentation: Overview.* CNCF OpenCost project, [https://www.opencost.io/docs/](https://www.opencost.io/docs/) (accessed 2026-10-30). [Source [92]](33_references.md#source-92)
+4. **MarketsandMarkets (2022).** *Infrastructure as Code Market – Global Forecast to 2027.* Report TC 8140, August 2022 (press release 3 May 2023), [https://www.marketsandmarkets.com/Market-Reports/infrastructure-as-code-market-115458264.html](https://www.marketsandmarkets.com/Market-Reports/infrastructure-as-code-market-115458264.html). [Source [47]](33_references.md#source-47)
+5. **Gartner (2023).** *Gartner Forecasts Worldwide Public Cloud End-User Spending to Reach $679 Billion in 2024.* Press release, 13 November 2023, [https://www.gartner.com/en/newsroom/press-releases/2023-11-13-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-reach-679-billion-in-20240](https://www.gartner.com/en/newsroom/press-releases/2023-11-13-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-reach-679-billion-in-20240). [Source [45]](33_references.md#source-45)
+6. **Gartner (2024).** *Gartner Forecasts Worldwide Public Cloud End-User Spending to Total $723 Billion in 2025.* Press release, 19 November 2024, [https://www.gartner.com/en/newsroom/press-releases/2024-11-19-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-total-723-billion-dollars-in-2025](https://www.gartner.com/en/newsroom/press-releases/2024-11-19-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-total-723-billion-dollars-in-2025). [Source [46]](33_references.md#source-46)
+7. **Microsoft Learn (2025).** *Optimize your cloud investment with Cost Management.* Microsoft Learn, 9 July 2025, [https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices). [Source [94]](33_references.md#source-94)
+8. **Amazon Web Services.** *Compute Savings Plans.* AWS pricing documentation, [https://aws.amazon.com/savingsplans/compute-pricing/](https://aws.amazon.com/savingsplans/compute-pricing/) (accessed 2026-10-30). [Source [95]](33_references.md#source-95)
+9. **Google Cloud.** *Committed use discounts (CUDs) for Compute Engine.* Google Cloud documentation, [https://docs.cloud.google.com/compute/docs/instances/committed-use-discounts-overview](https://docs.cloud.google.com/compute/docs/instances/committed-use-discounts-overview) (accessed 2026-10-30). [Source [98]](33_references.md#source-98)

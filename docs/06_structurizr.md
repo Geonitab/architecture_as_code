@@ -16,7 +16,7 @@ In the Architecture as Code ecosystem, Structurizr serves as a practical impleme
 - Automate architecture documentation in CI/CD pipelines
 - Maintain consistency across different architectural views
 
-The open-source Architecture-as-Code (AaC) project offers a complementary example: its maintainers describe the toolkit as an open-source platform for modelling architecture definitions in YAML and automating validation and generation steps, with every capability delivered through discoverable plugins so teams can extend the CLI without modifying the core distribution (AaC Open Source Project). The plugin model demonstrates how DSL-driven approaches like Structurizr stay adaptable—domain teams can add generators, schema validators, or documentation exporters in the same fashion, keeping the architecture source of truth central whilst tailoring outputs to their needs.
+The FINOS Architecture as Code project offers a complementary example: its Common Architecture Language Model (CALM) is an open-source specification for describing software architectures in a standardised, version-controlled, machine-readable JSON format, with a CLI that validates architectures and renders visualisations and documentation straight from CI/CD pipelines [Source [1]](33_references.md#source-1); the specification and its tooling are developed in the open on GitHub [Source [48]](33_references.md#source-48). CALM demonstrates how DSL-driven approaches like Structurizr stay adaptable—teams can add validators, generators, or documentation exporters around the same architecture source of truth whilst tailoring outputs to their needs.
 
 This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artefact.
 
@@ -35,7 +35,7 @@ The C4 model provides a hierarchical approach to software architecture diagrams,
 | **Component** | Decomposes a container to explain the components that fulfil its responsibilities and how they interact | Architects and developers | Components within a container |
 | **Code** | Provides an optional view of how a component is implemented in code, such as classes, interfaces, or functions | Developers | Source code structures |
 
-Brown's C4 Model guidance stresses that each successive level narrows the audience and scope so stakeholders can reason about the system using diagrams tailored to the detail they need, keeping the hierarchy consistent across teams.
+Brown's C4 Model guidance stresses that each successive level narrows the audience and scope so stakeholders can reason about the system using diagrams tailored to the detail they need, keeping the hierarchy consistent across teams [Source [37]](33_references.md#source-37). The model grew out of Brown's work on lightweight, developer-friendly architecture documentation, set out in *Software Architecture for Developers* [Source [60]](33_references.md#source-60).
 
 ### Why C4 Works with Architecture as Code
 
@@ -48,11 +48,11 @@ The C4 model aligns naturally with Architecture as Code principles because:
 
 ### Preventing diagram decay with automation
 
-Brown (2022) describes "diagram decay" as the gradual divergence between architecture diagrams and the systems they represent when updates rely on manual effort. Structurizr's automated generation of C4 diagrams from a single, version-controlled model eliminates that manual gap: every change to the model regenerates the diagrams for the appropriate audience, whether leadership needs the System Context view or developers need Component detail. Embedding Structurizr rendering in CI pipelines, alongside Architecture as Code validation, ensures diagrams are rebuilt with each merge so teams catch drift early rather than allowing stale visuals to persist.
+Diagram decay—the gradual divergence between architecture diagrams and the systems they represent when updates rely on manual effort—is the problem that model-based tooling sets out to solve; the Thoughtworks Technology Radar placed "diagrams as code" in Trial in October 2020 for the same reason, naming the Structurizr DSL among the tools [Source [40]](33_references.md#source-40). Structurizr's automated generation of C4 diagrams from a single, version-controlled model eliminates that manual gap: every change to the model regenerates the diagrams for the appropriate audience, whether leadership needs the System Context view or developers need Component detail. Embedding Structurizr rendering in CI pipelines, alongside Architecture as Code validation, ensures diagrams are rebuilt with each merge so teams catch drift early rather than allowing stale visuals to persist.
 
 ## Structurizr DSL: Core Concepts
 
-The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models. Unlike graphical tools, the DSL approach enables version control, code review, and automation.
+The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models. Unlike graphical tools, the DSL approach enables version control, code review, and automation; the language reference documents every keyword used in this chapter [Source [38]](33_references.md#source-38).
 
 ### Basic Workspace Structure
 
@@ -141,10 +141,12 @@ ecommerce = softwareSystem "E-Commerce Platform" {
     }
     
     # Container relationships
+    customer -> webApp "Browses products and places orders using" "HTTPS"
     webApp -> apiGateway "Makes API calls to" "HTTPS/JSON"
     apiGateway -> orderService "Routes requests to" "gRPC"
     apiGateway -> productService "Routes requests to" "REST/JSON"
     orderService -> database "Reads from and writes to" "JDBC"
+    orderService -> paymentGateway "Processes payments using" "HTTPS/REST"
     productService -> database "Reads from and writes to" "SQLAlchemy"
 }
 ```
@@ -171,7 +173,33 @@ orderService = container "Order Service" {
 
 ### Creating Views
 
-Views define which diagrams Structurizr should generate from the model:
+Deployment views need a deployment environment, which belongs in the model rather than in the views block: deployment nodes, and the container instances running on them, are declared under `deploymentEnvironment` [Source [38]](33_references.md#source-38).
+
+```structurizr
+model {
+    # ... people, software systems and containers as defined above
+
+    production = deploymentEnvironment "Production" {
+        deploymentNode "Customer Device" "" "Web browser" {
+            containerInstance webApp
+        }
+
+        deploymentNode "AWS Cloud" {
+            deploymentNode "ECS Cluster" "" "Amazon ECS" {
+                containerInstance apiGateway
+                containerInstance orderService
+                containerInstance productService
+            }
+
+            deploymentNode "RDS" "" "Amazon RDS for PostgreSQL" {
+                containerInstance database
+            }
+        }
+    }
+}
+```
+
+Views then define which diagrams Structurizr should generate from the model. A dynamic view may only show relationships that exist in the static model, and a deployment view refers to the environment by its identifier:
 
 ```structurizr
 views {
@@ -200,27 +228,13 @@ views {
         apiGateway -> orderService "CreateOrder()"
         orderService -> paymentGateway "ProcessPayment()"
         orderService -> database "SaveOrder()"
-        orderService -> emailService "SendConfirmation()"
         autoLayout
     }
     
-    # Deployment diagram
-    deployment ecommerce "Production" "DeploymentProduction" {
-        deploymentNode "Customer Device" {
-            containerInstance webApp
-        }
-        
-        deploymentNode "AWS Cloud" {
-            deploymentNode "ECS Cluster" {
-                containerInstance apiGateway
-                containerInstance orderService
-                containerInstance productService
-            }
-            
-            deploymentNode "RDS" {
-                containerInstance database
-            }
-        }
+    # Deployment diagram for the "production" environment defined in the model
+    deployment ecommerce production "DeploymentProduction" {
+        include *
+        autoLayout
     }
 }
 ```
@@ -276,24 +290,26 @@ views {
 
 ### Workspace Types
 
-Structurizr supports different deployment models:
+Structurizr is distributed as a single application—the `structurizr/structurizr` Docker image or the `structurizr.war` Java archive—whose commands cover three ways of working [Source [61]](33_references.md#source-61):
 
-1. **Structurizr Cloud** - SaaS offering with hosted workspace
-2. **Structurizr On-Premises** - Self-hosted installation
-3. **Structurizr Lite** - Local viewer for DSL files (free, no server required) — **Note:** Structurizr Lite has been declared end-of-life; readers should use [Structurizr Local](https://docs.structurizr.com/local) instead.
+1. **`local`** - Free and open source. Views diagrams and lets you modify their layout on your own machine, reachable only through `localhost` URLs; it replaces Structurizr Lite.
+2. **`server`** - A self-hosted server for publishing workspaces to a wider audience. The open core is free when built from source, while the prebuilt binaries add enterprise features and require a licence; it replaces the on-premises installation.
+3. **`export`** - Free and open source. Exports the views in a workspace to PlantUML, Mermaid, WebSequenceDiagrams, Structurizr JSON or a static HTML site, with PNG and SVG rendering available where the Playwright dependencies are installed [Source [63]](33_references.md#source-63).
 
-### Using Structurizr Lite for Development
+Structurizr Lite, the standalone Structurizr CLI and the Structurizr cloud service have all reached end of life and no longer receive updates [Source [62]](33_references.md#source-62); the examples in this chapter therefore use only the consolidated tooling.
 
-Structurizr Lite is ideal for development and CI/CD integration (see note above regarding end-of-life status; consider using Structurizr Local as the supported replacement):
+### Using `local` for Development
+
+`local` is ideal for day-to-day modelling: it reads `workspace.dsl` from the directory you mount and shows your changes when you refresh the browser [Source [65]](33_references.md#source-65):
 
 ```bash
-# Run Structurizr Lite using Docker
+# Start Structurizr local with the pre-built Docker image
 docker run -it --rm -p 8080:8080 \
   -v $(pwd)/workspace:/usr/local/structurizr \
-  structurizr/lite
+  structurizr/structurizr local
 ```
 
-This launches a local web server where you can view diagrams generated from your DSL files.
+This launches a local web server on `http://localhost:8080` where you can view diagrams generated from your DSL files and adjust their layout in the diagram editor; no account or hosted service is required. Layout changes are saved to a `workspace.json` file next to the DSL, which is why both files belong in version control [Source [66]](33_references.md#source-66).
 
 ### File Organisation
 
@@ -360,40 +376,26 @@ externalPayment = softwareSystem "Payment Provider" {
 
 ### Governance Patterns for Enterprise Workspaces
 
-Sustaining expansive workspaces demands routine guardrails so that dozens of contributors can evolve diagrams without introduci
-ng drift. The following sequence keeps Structurizr DSL repositories predictable and reviewable:
+Sustaining expansive workspaces demands routine guardrails so that dozens of contributors can evolve diagrams without introducing drift. The following sequence keeps Structurizr DSL repositories predictable and reviewable:
 
-1. **Define a domain folder structure** – Create `model/domains/<domain>.dsl` files for each major capability (for example, `pa
-yments.dsl`, `catalogue.dsl`, `governance.dsl`). These files declare people, software systems, and containers that belong to th
-e same functional area.
-2. **Aggregate with intent-revealing include files** – Introduce thin aggregators such as `model/core.dsl` or `model/external.d
-sl` that simply list `!include` statements. The main workspace file then references the aggregators, keeping the top-level `mod
-el {}` block short and navigable, as demonstrated in the [Structurizr DSL Language Reference](https://github.com/structurizr/dsl
-).
-3. **Enforce naming conventions centrally** – Store canonical tags and naming prefixes in `configuration { properties { ... } }` a
-nd shared include files. For instance, prefix container identifiers with their bounded context (e.g. `payments_api`) and suffix view k
-eys with the chapter number (`PaymentsContainers06`). Reviewers can spot deviations instantly because every file uses the same
-include.
-4. **Document relationship expectations** – Maintain a `docs/STRUCTURIZR_GUIDELINES.md` (or similar) that states how to phrase rel
-ationship descriptions (“uses”, “publishes events to”, “reads from”). Link the document from pull request templates so contribu
-tors confirm adherence before review.
-5. **Leverage Structurizr Lite for validation** – Encourage contributors to load the workspace in [Structurizr Lite](https://docs.structurizr.com/lite) during development. Lite persists layout updates alongside the DSL, enabling contributors to visualise convention breaches before they reach code review. Note that Structurizr Lite has been declared end-of-life; [Structurizr Local](https://docs.structurizr.com/local) is the recommended replacement.
+1. **Define a domain folder structure** – Create `model/domains/<domain>.dsl` files for each major capability (for example, `payments.dsl`, `catalogue.dsl`, `governance.dsl`). These files declare people, software systems, and containers that belong to the same functional area.
+2. **Aggregate with intent-revealing include files** – Introduce thin aggregators such as `model/core.dsl` or `model/external.dsl` that simply list `!include` statements. The main workspace file then references the aggregators, keeping the top-level `model {}` block short and navigable, as demonstrated in the Structurizr DSL language reference [Source [38]](33_references.md#source-38).
+3. **Enforce naming conventions centrally** – Store canonical tags and naming prefixes in `configuration { properties { ... } }` and shared include files. For instance, prefix container identifiers with their bounded context (e.g. `payments_api`) and suffix view keys with the chapter number (`PaymentsContainers06`). Reviewers can spot deviations instantly because every file uses the same include.
+4. **Document relationship expectations** – Maintain a `docs/STRUCTURIZR_GUIDELINES.md` (or similar) that states how to phrase relationship descriptions (“uses”, “publishes events to”, “reads from”). Link the document from pull request templates so contributors confirm adherence before review.
+5. **Leverage `local` for validation** – Encourage contributors to load the workspace with [`structurizr local`](https://docs.structurizr.com/local) during development. It persists layout updates in `workspace.json` alongside the DSL, enabling contributors to visualise convention breaches before they reach code review.
 
-These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or s
-ervices when multiple programmes collaborate.
+These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or services when multiple programmes collaborate.
 
 ### Automated Layout Templates, Quality Gates, and Versioning
 
-Automation protects diagram fidelity and keeps layout choices consistent as models expand. Combine DSL includes with Structuriz
-r CLI scripts to enforce standards:
+Automation protects diagram fidelity and keeps layout choices consistent as models expand. Combine DSL includes with scripted `structurizr export` runs to enforce standards:
 
-- **Reusable layout templates** – Extract shared layout instructions into dedicated files and include them in every view. For ex
-ample:
+- **Reusable layout templates** – Extract shared layout instructions into dedicated files and include them in every view. For example:
 
   ```structurizr
   # views/layouts/standard-container-layout.dsl
-  autoLayout lr rankSeparation 450 columnSeparation 350
-  paperSize A3_Landscape
+  # autoLayout <tb|bt|lr|rl> [rankSeparation] [nodeSeparation], separations in pixels
+  autoLayout lr 450 350
   ```
 
   ```structurizr
@@ -403,7 +405,7 @@ ample:
   }
   ```
 
-  Every view inherits the same orientation and spacing without relying on manual dragging in the editor.
+  Every view inherits the same orientation and spacing without relying on manual dragging in the editor. Paper size and other presentation settings are not DSL keywords; they are chosen in the `local` or `server` diagram editor and stored in `workspace.json` [Source [38]](33_references.md#source-38).
 
 - **Quality gates in CI/CD** – Add a lightweight shell script to fail builds when conventions slip:
 
@@ -414,32 +416,33 @@ ample:
   workspace="docs/architecture/workspace.dsl"
   output_dir="build/structurizr"
 
-  structurizr.sh validate -workspace "$workspace"
-  structurizr.sh export -workspace "$workspace" -format structurizr -output "$output_dir"
+  # Use the Java archive directly, or swap in the Docker image:
+  # docker run --rm -v "$PWD":/usr/local/structurizr structurizr/structurizr
+  structurizr="java -jar structurizr.war"
 
-  jq -e 'all(.workspace.model.containers[]?.name; test("^[A-Z][A-Za-z]+(\u0020[A-Z][A-Za-z]+)* API$"))' \
+  $structurizr validate -workspace "$workspace"
+  $structurizr export -workspace "$workspace" -format json -output "$output_dir"
+
+  # Containers sit under model.softwareSystems[].containers[] in the JSON export;
+  # require at least one container and check every name against the convention.
+  jq -e '[.model.softwareSystems[]?.containers[]?.name]
+         | length > 0 and all(test("^[A-Z][A-Za-z]+( [A-Z][A-Za-z]+)* API$"))' \
     "$output_dir/workspace.json"
   ```
 
-  The example checks that container names end with “API” and start with capitalised words; adapt the regular expression to your
- organisation. Additional `jq` queries can assert that required tags or documentation URLs are present before the pipeline mark
-s the change as ready.
+  The example checks that container names end with “API” and start with capitalised words; adapt the regular expression to your organisation. Additional `jq` queries can assert that required tags or documentation URLs are present before the pipeline marks the change as ready.
 
-- **Diagram versioning** – Commit exported Structurizr JSON alongside the DSL to preserve layout history. Because `structurizr.s
-h export` writes deterministic coordinates, `git diff` highlights when layout templates change or when an element moves. Tying
- the JSON revision to release tags gives architecture reviewers a linear history of diagram evolution that complements the DSL b
-lend of automation and narrative.
+- **Diagram versioning** – Commit the `workspace.json` that `local` or `server` saves alongside the DSL to preserve layout history. The DSL holds the model and view definitions, while the JSON holds the manual layout, so a `git diff` on the JSON highlights when an element moves or a layout template changes [Source [66]](33_references.md#source-66). Tying the JSON revision to release tags gives architecture reviewers a linear history of diagram evolution that complements the DSL blend of automation and narrative.
 
-These automation techniques build upon the enablement practices described later in Chapter 24, letting platform engineers execu
-te Chapter 06 guidance through reproducible tooling.
+These automation techniques build upon the enablement practices described later in Chapter 24, letting platform engineers execute Chapter 06 guidance through reproducible tooling.
 
 ### Team Enablement and Adoption Playbook
 
 Scaling Structurizr beyond a single maintainer requires deliberate enablement so that architecture automation becomes a shared capability rather than a heroic effort. Combine the following rhythms with the people-development patterns in Chapter 24 to spread ownership:
 
-1. **Foundational bootcamps** – Run a recurring two-hour workshop that walks through the reference workspace, highlights the module structure described above, and demonstrates how Structurizr Lite and the CLI complement one another. Recording each session helps global teams revisit the material asynchronously.
+1. **Foundational bootcamps** – Run a recurring two-hour workshop that walks through the reference workspace, highlights the module structure described above, and demonstrates how `local` and the `export` command complement one another. Recording each session helps global teams revisit the material asynchronously.
 2. **Pair-modelling rotations** – Assign monthly pairs that include one experienced maintainer and one new contributor. Each pair triages backlog items, applies naming policies, and raises any missing automation hooks. Rotations prevent tacit knowledge from concentrating in a single geography or department.
-3. **Checklists in pull request templates** – Extend pull request templates with explicit Structurizr checks ("Ran `./scripts/render_structurizr_diagrams.sh`, updated layout template includes, attached before/after screenshots from Lite"). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.
+3. **Checklists in pull request templates** – Extend pull request templates with explicit Structurizr checks ("Ran `./scripts/render_structurizr_diagrams.sh`, updated layout template includes, attached before/after screenshots from `local`"). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.
 4. **Capability metrics** – Track lead time for diagram updates, the number of contributors editing the workspace each quarter, and the percentage of views using the shared layout templates. Publish these metrics alongside the broader enablement dashboards introduced in Chapter 24 to spotlight where additional coaching is required.
 5. **Community of practice** – Host a monthly forum where teams share lessons, propose adjustments to the naming conventions, and experiment with new Structurizr DSL features referenced in the official documentation. Capture agreed changes in the guidelines repository so the knowledge persists beyond the meeting.
 
@@ -447,15 +450,13 @@ This cadence keeps Structurizr maintainers embedded within a wider community, re
 
 ## Reference Workspace for Architecture Teams
 
-To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions descri
-bed throughout this chapter. You can find the canonical definition in `docs/examples/structurizr/aac_reference_workspace.dsl`, w
-ith supporting guidance in `docs/examples/structurizr/README.md`.
+To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions described throughout this chapter. You can find the canonical definition in `docs/examples/structurizr/aac_reference_workspace.dsl`, with supporting guidance in `docs/examples/structurizr/README.md`.
 
 ### Repository artefacts
 
 - **Workspace DSL** – Implements System Context, Container, Component, Dynamic, and Deployment views for the Architecture as Code platform, providing a ready-made baseline for teams to copy or extend.
 - **Styling conventions** – Applies consistent British English tagging and a colour palette that emphasises governance, automation, and telemetry pathways referenced in the book.
-- **Configuration metadata** – Pins a minimum Structurizr CLI version so that exports remain reproducible across developer machines and the CI pipeline.
+- **Configuration metadata** – Records, as a free-form workspace property, the Structurizr release with which the exports were last generated; the render script pins the container image itself, so the property documents the toolchain rather than enforcing it.
 - **Decision catalogue** – Stores ADR markdown files in `docs/examples/structurizr/adrs/` and links them directly from containers and components so reviewers can open the governing decision without leaving the diagram.
 - **Workspace manifest** – Captures a SHA-256 digest and export metadata in `aac_reference_workspace.manifest.json`, allowing automation to detect when the DSL changes without updated exports.
 
@@ -463,13 +464,13 @@ ith supporting guidance in `docs/examples/structurizr/README.md`.
 
 Follow these steps to render the workspace locally:
 
-1. Install the Structurizr CLI (version `2024.03.01` or later).
+1. Install Docker or Podman; the helper pulls the `structurizr/structurizr` image (release `2026.09.19`), the consolidated distribution that replaced the standalone CLI [Source [64]](33_references.md#source-64).
 2. Execute the helper that mirrors the CI workflow:
    ```bash
    ./scripts/render_structurizr_diagrams.sh
    ```
-   The script validates the workspace, exports PNG and Structurizr JSON files into `build/structurizr/`, and refreshes the manifest hash. When Docker or Podman is unavailable it prints equivalent `java -jar structurizr-cli.jar` commands so contributors can still regenerate diagrams manually.
-3. Open the exported diagrams or load the generated Structurizr Lite workspace to explore the interactive views.
+   The script validates the workspace, exports Structurizr JSON and PlantUML files into `build/structurizr/`, and refreshes the manifest hash. When Docker or Podman is unavailable it prints equivalent `java -jar structurizr.war` commands so contributors can still regenerate diagrams manually.
+3. Render the PlantUML files with PlantUML, or copy the DSL into a directory as `workspace.dsl` and start `structurizr local` there to explore the interactive views.
 
 These commands align with the automation demonstrated earlier in this chapter, ensuring that developers, architects, and editors can iterate confidently without bespoke tooling. Commit the updated `aac_reference_workspace.manifest.json` whenever the DSL changes so the automation pipeline recognises that exports remain in sync.
 
@@ -478,24 +479,18 @@ These commands align with the automation demonstrated earlier in this chapter, e
 A consistent contribution workflow prevents diagram drift and preserves traceability across programmes:
 
 1. **Create a feature branch** – Prefix it with `structurizr/` to signal architecture-oriented work.
-2. **Amend the DSL** – Update `aac_reference_workspace.dsl` or add modular `!include` files in the same directory. Each change s
-hould retain the C4 hierarchy and respect agreed tags.
+2. **Amend the DSL** – Update `aac_reference_workspace.dsl` or add modular `!include` files in the same directory. Each change should retain the C4 hierarchy and respect agreed tags.
 3. **Validate locally** – Run `./scripts/render_structurizr_diagrams.sh` so validation, exports, and the manifest update all mirror CI behaviour. Address any reported warnings before requesting review.
-4. **Document intent** – Capture the architectural rationale in the pull request description and, where relevant, reference rela
-ted Architecture Decision Records.
-5. **Run the book build** – `python3 generate_book.py && docs/build_book.sh` ensures that downstream artefacts (including PNG di
-agrams referenced in the manuscript) remain in sync.
-6. **Request dual review** – Tag at least one platform engineer and one product architect so that automation and domain perspect
-ives both evaluate the change.
-7. **Check automation outcomes** – Confirm that GitHub Actions architecture checks and the main book build succeed before mergin
-g.
+4. **Document intent** – Capture the architectural rationale in the pull request description and, where relevant, reference related Architecture Decision Records.
+5. **Run the book build** – `python3 generate_book.py && docs/build_book.sh` ensures that downstream artefacts (including PNG diagrams referenced in the manuscript) remain in sync.
+6. **Request dual review** – Tag at least one platform engineer and one product architect so that automation and domain perspectives both evaluate the change.
+7. **Check automation outcomes** – Confirm that GitHub Actions architecture checks and the main book build succeed before merging.
 
-By following these steps, teams maintain a shared, version-controlled architecture narrative that evolves alongside the software
-delivery platform.
+By following these steps, teams maintain a shared, version-controlled architecture narrative that evolves alongside the software delivery platform.
 
 ## Integration with CI/CD Pipelines
 
-Automating architecture documentation ensures diagrams stay synchronised with code changes. The repository ships with `.github/workflows/structurizr-diagrams.yml`, which performs the following tasks on every pull request that touches the Structurizr workspace or helper scripts:
+Automating architecture documentation ensures diagrams stay synchronised with code changes. The repository ships with `.github/workflows/structurizr-diagrams.yml`; the abridged version below shows the tasks it performs on every pull request that touches the Structurizr workspace or helper scripts:
 
 ```yaml
 name: Structurizr diagram automation
@@ -527,7 +522,7 @@ jobs:
         run: python3 scripts/check_structurizr_manifest.py
 ```
 
-The workflow mirrors the local helper by exporting PNG and Structurizr JSON files whilst skipping the manifest update to avoid masking drift. The final `check_structurizr_manifest.py` invocation compares the committed digest with the current DSL and fails the build when contributors forget to refresh the manifest. Reviewers still receive fresh diagrams via the uploaded artefact, satisfying the pipeline requirements without sacrificing fast feedback.
+The workflow mirrors the local helper by exporting Structurizr JSON and PlantUML files whilst skipping the manifest update to avoid masking drift. The final `check_structurizr_manifest.py` invocation compares the committed digest with the current DSL and fails the build when contributors forget to refresh the manifest. Reviewers still receive fresh diagrams via the uploaded artefact, satisfying the pipeline requirements without sacrificing fast feedback.
 
 ### GitHub Actions Example
 
@@ -549,23 +544,28 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
-      
+      - uses: actions/checkout@v7
+
+      # The consolidated structurizr/structurizr image mounts the checkout as its
+      # working directory, so workspace paths can stay relative.
       - name: Validate Structurizr DSL
-        uses: docker://structurizr/cli:latest
-        with:
-          args: validate -w docs/architecture/workspace.dsl
-      
-      - name: Export Diagrams
-        uses: docker://structurizr/cli:latest
-        with:
-          args: export -w docs/architecture/workspace.dsl -f plantuml -o docs/architecture/views
-      
-      - name: Generate PNG from PlantUML
-        uses: docker://plantuml/plantuml:latest
-        with:
-          args: -tpng -o $(pwd)/docs/architecture/views docs/architecture/views/*.puml
-      
+        run: |
+          docker run --rm -v "$PWD":/usr/local/structurizr \
+            structurizr/structurizr:2026.09.19 validate -workspace docs/architecture/workspace.dsl
+
+      - name: Export diagrams to PlantUML
+        run: |
+          docker run --rm -v "$PWD":/usr/local/structurizr \
+            structurizr/structurizr:2026.09.19 export -workspace docs/architecture/workspace.dsl \
+            -format plantuml -output docs/architecture/views
+
+      # Run PlantUML from a shell step: a docker:// action passes args straight to the
+      # container entrypoint, so $(pwd) and globs would not be expanded there.
+      - name: Render PNG from PlantUML
+        run: |
+          docker run --rm -v "$PWD":/data plantuml/plantuml:latest \
+            -tpng -o /data/docs/architecture/views /data/docs/architecture/views
+
       - name: Commit Updated Diagrams
         if: github.ref == 'refs/heads/main'
         run: |
@@ -583,18 +583,22 @@ jobs:
 
 ```yaml
 architecture-documentation:
-  image: structurizr/cli:latest
+  image:
+    name: structurizr/structurizr:2026.09.19-noble
+    # GitLab runs the script through its own shell, so clear the image entrypoint
+    # and call the Structurizr launcher (or java -jar /usr/local/structurizr.war) explicitly.
+    entrypoint: [""]
   stage: documentation
   script:
-    - structurizr validate -w docs/architecture/workspace.dsl
-    - structurizr export -w docs/architecture/workspace.dsl -f plantuml -o output/
+    - /usr/local/structurizr.sh validate -workspace docs/architecture/workspace.dsl
+    - /usr/local/structurizr.sh export -workspace docs/architecture/workspace.dsl -format plantuml -output output/
   artifacts:
     paths:
       - output/
-  only:
-    changes:
-      - docs/architecture/**
-      - src/**
+  rules:
+    - changes:
+        - docs/architecture/**/*
+        - src/**/*
 ```
 
 ### Validation in Pull Requests
@@ -613,12 +617,12 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       
       - name: Validate DSL Syntax
         run: |
-          docker run --rm -v $(pwd):/workspace \
-            structurizr/cli validate -w /workspace/docs/architecture/workspace.dsl
+          docker run --rm -v "$PWD":/usr/local/structurizr \
+            structurizr/structurizr:2026.09.19 validate -workspace docs/architecture/workspace.dsl
       
       - name: Check for Undocumented Components
         run: |
@@ -627,10 +631,10 @@ jobs:
       
       - name: Generate Diff Preview
         run: |
-          # Generate diagrams from base and head branches for comparison
-          docker run --rm -v $(pwd):/workspace \
-            structurizr/cli export -w /workspace/docs/architecture/workspace.dsl \
-            -f png -o /workspace/preview/
+          # Export PlantUML for the head branch so reviewers can compare rendered diagrams
+          docker run --rm -v "$PWD":/usr/local/structurizr \
+            structurizr/structurizr:2026.09.19 export -workspace docs/architecture/workspace.dsl \
+            -format plantuml -output preview/
 ```
 
 ## Practical Implementation Patterns
@@ -682,8 +686,10 @@ workspace "Microservices Platform" {
         inventoryService -> inventoryDb "Reads/writes"
         
         orderService -> messageBus "Publishes OrderCreated"
-        inventoryService -> messageBus "Subscribes to OrderCreated"
-        notificationService -> messageBus "Subscribes to events"
+        # Dynamic views may only reuse relationships that exist here
+        messageBus -> inventoryService "Delivers OrderCreated events to"
+        messageBus -> notificationService "Delivers OrderCreated events to"
+        notificationService -> user "Sends order confirmations to" "E-mail"
     }
     
     views {
@@ -784,28 +790,41 @@ workspace "Multi-Tenant SaaS" {
 
 ## Advanced Features
 
-### Filtered Views
+### Include and Exclude Expressions
 
-Show different perspectives of the same model:
+Show different perspectives of the same model by controlling what each view includes; the software system in scope is never itself drawn on its own container view, so expressions select its surroundings instead [Source [38]](33_references.md#source-38):
 
 ```structurizr
 views {
-    # Show only external dependencies
+    # External dependencies: the default elements, minus anything tagged Internal
     container platform "ExternalDependencies" {
-        include platform
-        include ->platform->
-        include platform->
+        include *
         exclude "element.tag==Internal"
         autoLayout
     }
     
-    # Security-focused view
+    # Security-focused view: security-tagged elements, their neighbours and the people involved
     container platform "SecurityView" {
         include "element.tag==Security"
         include "element.type==Person"
         include ->element.tag==Security->
         autoLayout
     }
+}
+```
+
+Structurizr also has a dedicated `filtered` view type: a view defined on top of an existing System Landscape, System Context, Container or Component view that includes or excludes elements and relationships by tag. Once a filtered view exists, the base view no longer appears in the diagram list, so add a filtered view covering the `Element` and `Relationship` tags if you still want to see it:
+
+```structurizr
+views {
+    systemLandscape "Landscape" {
+        include *
+        autoLayout
+    }
+    
+    filtered "Landscape" include "Security,Relationship" "SecurityLandscape" "Security-relevant systems only"
+    filtered "Landscape" exclude "Internal" "ExternalLandscape" "Everything except internal systems"
+    filtered "Landscape" include "Element,Relationship" "FullLandscape" "The complete landscape"
 }
 ```
 
@@ -899,7 +918,7 @@ on:
 jobs:
   generate:
     steps:
-      - run: structurizr export ...
+      - run: java -jar structurizr.war export -workspace docs/architecture/workspace.dsl -format plantuml
 ```
 
 ### 3. Use Meaningful Identifiers
@@ -1007,11 +1026,11 @@ def verify_architecture_coverage():
 |--------|-------------|-----------------|------------|
 | **Version Control** | ✅ Native (text files) | ⚠️ Binary files | ⚠️ Cloud-based versioning |
 | **Code Review** | ✅ Standard Git workflows | ❌ Difficult | ❌ Not supported |
-| **Automation** | ✅ CLI and API | ❌ Manual | ⚠️ Limited API |
+| **Automation** | ✅ `export` command and workspace API | ❌ Manual | ⚠️ Limited API |
 | **Single Source of Truth** | ✅ Model generates views | ❌ Each diagram separate | ❌ Each diagram separate |
 | **Learning Curve** | ⚠️ Moderate (DSL syntax) | ✅ Low (drag-drop) | ✅ Low (drag-drop) |
 | **Consistency** | ✅ Enforced by model | ❌ Manual effort | ❌ Manual effort |
-| **Cost** | ✅ Free (Lite) or subscription | ✅ Free or one-time purchase | 💰 Subscription |
+| **Cost** | ✅ Free (`local`, `export`); licence only for prebuilt `server` binaries | ✅ Free or one-time purchase | 💰 Subscription |
 
 ### Structurizr vs. PlantUML
 
@@ -1022,7 +1041,7 @@ def verify_architecture_coverage():
 | **Layout Control** | ⚠️ Limited (auto-layout) | ✅ More granular |
 | **Model Reuse** | ✅ Single model, multiple views | ❌ Each diagram separate |
 | **Syntax** | ✅ Architecture-specific DSL | ⚠️ Generic diagramming |
-| **Tooling** | ✅ Dedicated tools (Lite, Cloud) | ✅ Wide tool support |
+| **Tooling** | ✅ Dedicated tools (`local`, `server`) | ✅ Wide tool support |
 | **Learning Curve** | ✅ Lower for C4 | ⚠️ Steeper syntax |
 
 ### Structurizr vs. Mermaid
@@ -1033,7 +1052,7 @@ def verify_architecture_coverage():
 | **Diagram Types** | Architecture-focused | Wide variety (flowcharts, etc.) |
 | **GitHub Integration** | ⚠️ Requires export | ✅ Native rendering |
 | **Model Consistency** | ✅ Single model enforces | ❌ Separate diagrams |
-| **Interactive Viewers** | ✅ Structurizr Lite/Cloud | ⚠️ Limited |
+| **Interactive Viewers** | ✅ Structurizr `local`/`server` | ⚠️ Limited |
 | **Documentation** | ✅ Integrated docs/ADRs | ❌ Separate |
 | **Best Use Case** | Complex architecture models | Quick, simple diagrams |
 
@@ -1054,30 +1073,27 @@ def verify_architecture_coverage():
 **Problem**: Auto-layout doesn't always produce ideal diagrams.
 
 **Solutions**:
-```structurizr
-# 1. Specify layout direction
-views {
-    container platform {
-        autoLayout lr  # left-to-right
-        # or: tb (top-bottom), bt (bottom-top), rl (right-left)
-    }
-}
 
-# 2. Use manual positioning (when needed)
+1. Specify the layout direction and spacing:
+
+```structurizr
+# lr = left-to-right; alternatives: tb (top-bottom), bt (bottom-top), rl (right-left)
+# The optional numbers are rank and node separation in pixels (default 300)
 views {
     container platform {
         include *
-        
-        # Manual coordinates (x, y)
-        element webApp 100 100
-        element apiGateway 300 100
-        element database 500 100
+        autoLayout lr 300 300
     }
 }
+```
 
-# 3. Export to PlantUML for fine-tuning
-$ structurizr export -w workspace.dsl -f plantuml
-# Then adjust PlantUML layout directives
+2. Lay out by hand where it matters. The DSL has no coordinate syntax: open the workspace with `structurizr local` (or `server`), drag the elements in the diagram editor, and commit the `workspace.json` it saves next to `workspace.dsl`. Remove `autoLayout` from the views you arrange manually, otherwise the automatic layout is reapplied every time the diagram is rendered [Source [66]](33_references.md#source-66).
+
+3. Export to PlantUML or Mermaid for fine-tuning:
+
+```bash
+java -jar structurizr.war export -workspace workspace.dsl -format plantuml
+# Then adjust the PlantUML layout directives in the generated .puml files
 ```
 
 ### Challenge 2: Large Models Become Complex
@@ -1098,7 +1114,7 @@ workspace {
     views {
         !include views/context.dsl
         !include views/containers.dsl
-        !include views/components/*.dsl
+        !include views/components
         !include views/deployment.dsl
     }
 }
@@ -1189,13 +1205,15 @@ views {
     styles {
         element "Person" {
             shape person
-            background #FF6B35  # Brand colour
+            # Brand colour
+            background #FF6B35
             colour #FFFFFF
             fontSize 24
         }
         
         element "Container" {
-            background #004E89  # Brand colour
+            # Brand colour
+            background #004E89
             colour #FFFFFF
             fontSize 18
             shape roundedbox
@@ -1203,13 +1221,15 @@ views {
         
         element "Database" {
             shape cylinder
-            background #1A1A2E  # Brand colour
+            # Brand colour
+            background #1A1A2E
         }
         
         relationship "Relationship" {
             thickness 3
             colour #004E89
-            routing curved  # or: orthogonal, direct
+            # Alternatives: orthogonal, direct
+            routing curved
             fontSize 14
         }
     }
@@ -1269,10 +1289,15 @@ The next chapters explore how to extend these foundations into containerisation 
 
 ## Sources
 
-- Brown, S. "The C4 model for visualising software architecture." [https://c4model.com/](https://c4model.com/)
-- Brown, S. "Documenting Software Architecture with Structurizr." Structurizr Blog, 2022. [https://web.archive.org/web/2024*/https://blog.structurizr.com/diagrams-as-code-automation/](https://web.archive.org/web/2024*/https://blog.structurizr.com/diagrams-as-code-automation/) [archived]
-- Brown, S. "Software Architecture for Developers." Leanpub, 2024.
-- Structurizr. "Structurizr DSL Language Reference." [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
-- Structurizr. "Structurizr Lite." [https://docs.structurizr.com/lite](https://docs.structurizr.com/lite)
-- ThoughtWorks Technology Radar. "Diagrams as code." [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code)
-- FINOS Architecture as Code Project. "Architecture-as-Code Repository." [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code)
+1. **Brown, S. (n.d.).** *The C4 model for visualising software architecture.* Available at: [https://c4model.com/](https://c4model.com/) (accessed 2026-10-30). [Source [37]](33_references.md#source-37)
+2. **Brown, S. (2022).** *Software Architecture for Developers.* Leanpub (continuously updated; last updated 28 May 2022). Available at: [https://leanpub.com/software-architecture-for-developers](https://leanpub.com/software-architecture-for-developers). [Source [60]](33_references.md#source-60)
+3. **Structurizr (2026).** *Structurizr DSL language reference.* Available at: [https://docs.structurizr.com/dsl/language](https://docs.structurizr.com/dsl/language) (accessed 2026-10-30). [Source [38]](33_references.md#source-38)
+4. **Structurizr (2026).** *Getting started.* Structurizr documentation. Available at: [https://docs.structurizr.com/getting-started](https://docs.structurizr.com/getting-started) (accessed 2026-10-30). [Source [61]](33_references.md#source-61)
+5. **Structurizr (2026).** *End-of-life notices for Structurizr Lite, the Structurizr CLI and the Structurizr cloud service.* Structurizr documentation. Available at: [https://docs.structurizr.com/lite](https://docs.structurizr.com/lite), [https://docs.structurizr.com/cli](https://docs.structurizr.com/cli) and [https://docs.structurizr.com/cloud](https://docs.structurizr.com/cloud) (accessed 2026-10-30). [Source [62]](33_references.md#source-62)
+6. **Structurizr (2026).** *export.* Structurizr documentation. Available at: [https://docs.structurizr.com/export](https://docs.structurizr.com/export) (accessed 2026-10-30). [Source [63]](33_references.md#source-63)
+7. **Structurizr (2026).** *Binaries.* Structurizr documentation. Available at: [https://docs.structurizr.com/binaries](https://docs.structurizr.com/binaries) (accessed 2026-10-30). [Source [64]](33_references.md#source-64)
+8. **Structurizr (2026).** *local – Quickstart.* Structurizr documentation. Available at: [https://docs.structurizr.com/local/quickstart](https://docs.structurizr.com/local/quickstart) (accessed 2026-10-30). [Source [65]](33_references.md#source-65)
+9. **Structurizr (2026).** *Getting started – Create with local, view with local.* Structurizr documentation. Available at: [https://docs.structurizr.com/getting-started/local](https://docs.structurizr.com/getting-started/local) (accessed 2026-10-30). [Source [66]](33_references.md#source-66)
+10. **Thoughtworks (2020).** *Diagrams as code.* Technology Radar, Techniques (Vol. 23, October 2020). Available at: [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code). [Source [40]](33_references.md#source-40)
+11. **FINOS (2026).** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. Available at: [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+12. **FINOS (2026).** *Architecture as Code: Common Architecture Language Model (CALM) specification repository.* Available at: [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code) (accessed 2026-10-30). [Source [48]](33_references.md#source-48)

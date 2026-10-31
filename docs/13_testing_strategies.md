@@ -12,23 +12,23 @@ Testing codified infrastructure differs fundamentally from traditional software 
 
 Modern codified infrastructure testing encompasses multiple dimensions: syntactic validation of code, policy compliance checking, cost forecasting, security vulnerability analysis and functional testing of deployed infrastructure. This multilayered approach identifies problems early in the development cycle when they are cheaper and simpler to fix, preventing costly production incidents.
 
-Organisations with strict compliance requirements must implement comprehensive testing that validates both technical functionality and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards that must be verified automatically through policy-as-code frameworks.
+Organisations with strict compliance requirements must implement comprehensive testing that validates both technical functionality and regulatory conformance. This includes GDPR data protection controls, financial services regulations and government security standards such as the NIST SP 800-53 control catalogue ([Source [11]](33_references.md#source-11)) that must be verified automatically through policy-as-code frameworks.
 
-Test automation for codified infrastructure enables continuous integration and continuous deployment patterns that accelerate delivery whilst reducing the risk of production disruptions. These testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack.
+Test automation for codified infrastructure enables continuous integration and continuous deployment patterns that accelerate delivery whilst reducing the risk of production disruptions. These testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack. The AWS Well-Architected Framework expresses the same expectation in its operational excellence principle of safely automating where possible: the entire workload and its operations are defined as code and updated through automation ([Source [91]](33_references.md#source-91)).
 
 ## Unit Testing for Codified Infrastructure
 
 Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure. This enables rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.
 
-Programmatic Architecture as Code platforms such as Pulumi and the AWS Cloud Development Kit (CDK) make this style of testing first-class by allowing infrastructure definitions to live alongside TypeScript, Python, or C# unit tests. Pulumi’s testing framework enables assertions on resource properties and policy attachments before a deployment occurs, while AWS CDK’s assertions library validates synthesised templates to ensure networking rules, tagging strategies, and compliance controls honour architectural guardrails. Embedding these checks directly within developer workflows aligns with Architecture as Code’s emphasis on executable governance.
+Programmatic Architecture as Code platforms such as Pulumi and the AWS Cloud Development Kit (CDK) make this style of testing first-class by allowing infrastructure definitions to live alongside TypeScript, Python, or C# unit tests. Pulumi’s unit tests replace provider calls with mocks so that assertions on resource properties and policy attachments run in memory before a deployment occurs ([Source [15]](33_references.md#source-15)), while AWS CDK’s assertions library validates synthesised templates to ensure networking rules, tagging strategies, and compliance controls honour architectural guardrails. Embedding these checks directly within developer workflows aligns with Architecture as Code’s emphasis on executable governance.
 
-Terraform testing tools such as Terratest, terraform-compliance and Checkov enable automated validation of HCL code against predefined policies and codified infrastructure best practices. These tools can integrate into IDEs for real-time feedback during development and into CI/CD pipelines for automated quality gates.
+Terraform tooling covers several layers. Checkov and terraform-compliance validate HCL and plan output against predefined policies and codified infrastructure best practices, and Checkov also runs inside the IDE for real-time feedback during development. Terratest, by contrast, is a Go library that deploys real infrastructure from Go tests and verifies the result ([Source [90]](33_references.md#source-90)). All of them integrate into CI/CD pipelines as automated quality gates.
 
 ### Comparing Pulumi and Terraform Testability
 
-Pulumi's *Testing Infrastructure as Code Programs* guidance (2024, [Source [15]](33_references.md#source-15)) emphasises that defining infrastructure through general-purpose languages lets engineers reuse familiar unit-testing frameworks, wire in Pulumi's provider mocks, and execute assertions locally without touching the cloud. The article demonstrates IaC checks running alongside application suites—`npm test`, `pytest`, or similar—so developers iterate through short feedback loops that encourage test-first habits and reduce the cost of validation.
+Pulumi's testing documentation ([Source [15]](33_references.md#source-15)) distinguishes three styles: unit tests that run in memory with every external call mocked, property tests that assert on resources while a deployment is running, and integration tests that deploy ephemeral infrastructure. Because programs are written in general-purpose languages, unit tests reuse the host language's test runner—`npm test`, `pytest`, or similar—and complete in milliseconds without touching the cloud, which encourages test-first habits and reduces the cost of validation.
 
-The same guidance contrasts Pulumi's approach with declarative tools such as Terraform, highlighting that HCL lacks first-class unit-testing hooks and therefore leans on `terraform plan`, Terratest, `terraform test`, and policy-as-code engines to approximate the same assurance. Those options remain valuable, yet they routinely execute against rendered plans or ephemeral infrastructure, so feedback loops tend to stretch towards integration-time cadences rather than the in-IDE iterations Pulumi showcases in [Source [15]](33_references.md#source-15). In both ecosystems, unit-level checks complement rather than replace integration and end-to-end tests that validate real infrastructure behaviour.
+In our experience the contrast with declarative tools such as Terraform is narrower than it once was. Since Terraform 1.6 (October 2023) the built-in `terraform test` framework runs `.tftest.hcl` files with `run` blocks and assertions, and Terraform 1.7 (January 2024) added provider mocking (`mock_provider`, `mock_resource` and `override_*` blocks) so that module logic can be tested without creating infrastructure or requiring credentials ([Source [26]](33_references.md#source-26)). `terraform plan`, Terratest and policy-as-code engines remain valuable for checks against rendered plans or ephemeral environments at integration time. The remaining differences are the expressiveness of HCL assertions compared with a general-purpose language and the maturity of the surrounding ecosystem. In both ecosystems, unit-level checks complement rather than replace integration and end-to-end tests that validate real infrastructure behaviour.
 
 Unit tests for codified infrastructure should validate resource configurations, variable validations, output consistency and module interface contracts. This is particularly important for reusable modules that are used across multiple projects, where changes can have wide-ranging impact on dependent resources.
 
@@ -36,13 +36,13 @@ Mock testing strategies for cloud resources enable testing without actual cloud 
 
 ### Automated pipeline scaffolding for Terraform and Pulumi
 
-[Source [15]](33_references.md#source-15) sets clear expectations that Infrastructure as Code repositories must treat testing as a first-class pipeline citizen rather than an optional local practice. To operationalise that guidance the continuous integration scaffolding should codify complementary stages for Pulumi- and Terraform-based stacks so that parity is maintained across mixed estates. The representative pipeline below layers static checks, unit-style execution, security scanning and integration rehearsals into one repeatable workflow:
+Infrastructure as Code repositories should treat testing as a first-class pipeline citizen rather than an optional local practice; Pulumi's documentation, for instance, presents unit, property and integration tests as complementary layers of one quality strategy ([Source [15]](33_references.md#source-15)). To operationalise that principle the continuous integration scaffolding should codify complementary stages for Pulumi- and Terraform-based stacks so that parity is maintained across mixed estates. The representative pipeline below layers static checks, unit-style execution, security scanning and integration rehearsals into one repeatable workflow:
 
 | Stage | Pulumi focus | Terraform focus | Objective |
 |-------|--------------|-----------------|-----------|
-| Lint and format | `npm run lint`, `pulumi stack ls --json` to verify workspace metadata | `terraform fmt -check`, `terraform validate` | Catch syntax issues before artefacts are generated |
-| Contract and unit tests | Host language test runner (e.g. `pytest` for Python, `npm test` for Node.js) with the Pulumi testing mock harness | `go test ./...` for Terratest suites and `terraform test` for module assertions | Execute fast feedback checks over resource definitions and policy attachments |
-| Policy enforcement | `pulumi up --policy-pack policies/` in preview mode | `checkov -d .`, `terraform-compliance` bundles enforcing regulatory guardrails | Ensure security and compliance expectations are upheld before deployment |
+| Lint and format | `npm run lint`, `pulumi stack ls --output json` to verify workspace metadata | `terraform fmt -check`, `terraform validate` | Catch syntax issues before artefacts are generated |
+| Contract and unit tests | Host language test runner (e.g. `pytest` for Python, `npm test` for Node.js) with Pulumi's mocks (`pulumi.runtime.setMocks` in TypeScript, `pulumi.runtime.set_mocks` in Python) | `go test ./...` for Terratest suites and `terraform test` for module assertions | Execute fast feedback checks over resource definitions and policy attachments |
+| Policy enforcement | `pulumi preview --policy-pack policies/` | `checkov -d .`, `terraform-compliance` bundles enforcing regulatory guardrails | Ensure security and compliance expectations are upheld before deployment |
 | Integration rehearsal | `pulumi preview` with targeted stacks in ephemeral environments | `terraform plan` against temporary workspaces and drift-detection jobs | Validate orchestration logic, detect state drift, and rehearse rollback paths |
 
 A minimal GitHub Actions job illustrating the shared scaffold is shown below. Equivalent concepts apply to Azure DevOps, GitLab, or Jenkins; the crucial element is that the Terraform and Pulumi paths implement the same assurance gates so that platform parity is maintained.
@@ -62,12 +62,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24  # supported LTS line until April 2028; Node.js 20 reached end-of-life on 30 April 2026
       - run: npm ci
       - run: npm run lint
       - run: pulumi login --cloud-url ${PULUMI_BACKEND}
       - run: pulumi stack select ${PULUMI_STACK}
-      - run: npm test  # Pulumi testing uses the host language's test runner with the Pulumi testing mock harness
+      - run: npm test  # host-language test runner; pulumi.runtime.setMocks keeps the tests in memory
       - run: pulumi preview --stack ${PULUMI_STACK}
 
   terraform:
@@ -86,7 +86,8 @@ jobs:
         run: |
           terraform init \
             -backend-config="bucket=${TF_BACKEND_BUCKET}" \
-            -backend-config="dynamodb_table=${TF_LOCK_TABLE}" \
+            -backend-config="use_lockfile=true" \
+            -backend-config="encrypt=true" \
             -backend-config="kms_key_id=${TF_KMS_KEY}"
           terraform plan -out=tfplan
       - name: Upload plan for review
@@ -95,6 +96,8 @@ jobs:
           name: terraform-plan
           path: tfplan
 ```
+
+The Terraform job passes its backend settings with `-backend-config` flags, because backend blocks cannot reference variables, and it enables Terraform's S3-native state locking with `use_lockfile=true`, which has been generally available since Terraform 1.11; the job therefore requires Terraform 1.11 or later. DynamoDB-based locking still works for migration purposes, but it has been deprecated in favour of the S3-native mechanism ([Source [17]](33_references.md#source-17)).
 
 Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and Pulumi host-language test results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
 
@@ -261,7 +264,7 @@ Security testing for Infrastructure as Code must validate both infrastructure co
 
 Compliance testing automation ensures infrastructure configurations meet regulatory requirements continuously. Organisations must validate GDPR compliance, financial regulations and government security standards through automated testing that can provide audit trails for compliance reporting.
 
-Policy-as-code frameworks such as Open Policy Agent (OPA) and AWS Config Rules enable declarative definition of compliance policies that can be enforced automatically during infrastructure deployment. This preventative approach is more effective than reactive compliance monitoring.
+Policy-as-code frameworks such as Open Policy Agent (OPA) and AWS Config Rules enable declarative definition of compliance policies, but they act at different points. OPA evaluates policies preventively in the pipeline, before deployment. AWS Config Rules are detective by default, evaluating resources after they have been deployed, with optional proactive evaluation and automated remediation. Preventive checks are more effective than purely reactive compliance monitoring, so the two should be combined rather than treated as interchangeable.
 
 Vulnerability scanning for infrastructure dependencies must include container images, operating system configurations and third-party software components. Integration with security scanning tools in CI/CD pipelines ensures security vulnerabilities are identified before deployment to production.
 
@@ -277,12 +280,11 @@ Capacity planning validation through performance testing helps optimise resource
 
 ## Requirements as Code and Testability
 
-<!-- Note: This diagram is referenced from Chapter 12 assets -->
 ![Requirements and testing relation](images/diagram_12_requirements_testing.png)
 
 *Figure 13.3: Requirements as Code - Traceability from Business Requirements to Infrastructure Tests*
 
-The diagram above illustrates the relationship between business requirements, functional requirements and verification methods. This demonstrates how Architecture as Code enables traceable testing from higher abstraction levels down to concrete Infrastructure as Code implementations, creating a direct link between business objectives and technical validation.
+The diagram above, which also appears as Figure 12.3 in Chapter 12, illustrates the relationship between business requirements, functional requirements and verification methods. This demonstrates how Architecture as Code enables traceable testing from higher abstraction levels down to concrete Infrastructure as Code implementations, creating a direct link between business objectives and technical validation.
 
 Requirements as Code represents a paradigm shift where business requirements and compliance requirements are codified in machine-readable form alongside infrastructure code. This enables automated validation that infrastructure genuinely meets specified requirements throughout the entire development lifecycle.
 
@@ -334,6 +336,8 @@ OPA testing patterns include:
 - Unit tests for individual policy rules
 - Integration with Terraform plan outputs
 - Automated policy enforcement in CI/CD pipelines
+
+Note that OPA 1.0 (December 2024) made the `if` and `contains` keywords mandatory in Rego, so older policy examples and their tests need updating to the current syntax ([Source [44]](33_references.md#source-44)).
 
 ## Kubernetes Integration Testing
 
@@ -411,10 +415,12 @@ The testing quadrant diagram (Figure 13.2) illustrates how different testing str
 
 ## Sources
 
-1. **Gruntwork (2024).** *Terratest Documentation: Infrastructure Testing for Terraform.* Gruntwork.
-2. **Open Policy Agent (2024).** *Policy Testing Best Practices for Infrastructure as Code.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-3. **Amazon Web Services (2024).** *Infrastructure Testing Strategy Guide.* Amazon Web Services.
-4. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes Project. [Source [13]](33_references.md#source-13)
-5. **NIST (2024).** *Security Testing for Cloud Infrastructure.* NIST Cybersecurity Framework.
-6. **Cloud Security Alliance (2024).** *Cloud Security Testing Guidelines.* Cloud Security Alliance.
-7. **Pulumi (2024).** *Testing Infrastructure as Code Programs.* Pulumi Blog. [Source [15]](33_references.md#source-15)
+1. **Gruntwork.** *Terratest.* Terratest documentation, [https://terratest.gruntwork.io/docs/](https://terratest.gruntwork.io/docs/) (accessed 2026-10-30). [Source [90]](33_references.md#source-90)
+2. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project, [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs). [Source [10]](33_references.md#source-10)
+3. **Open Policy Agent.** *OPA v1.0 upgrade guide.* OPA documentation, [https://www.openpolicyagent.org/docs/v0-upgrade](https://www.openpolicyagent.org/docs/v0-upgrade). [Source [44]](33_references.md#source-44)
+4. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53, Revision 5. [Source [11]](33_references.md#source-11)
+5. **Amazon Web Services (2024).** *AWS Well-Architected Framework.* AWS whitepaper, 6 November 2024, [https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html). [Source [91]](33_references.md#source-91)
+6. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes Project. [Source [13]](33_references.md#source-13)
+7. **Pulumi.** *Testing.* Pulumi IaC documentation, [https://www.pulumi.com/docs/iac/concepts/testing/](https://www.pulumi.com/docs/iac/concepts/testing/) (accessed 2026-10-30). [Source [15]](33_references.md#source-15)
+8. **HashiCorp (2024).** *Write Terraform Tests.* HashiCorp Developer Documentation, [https://developer.hashicorp.com/terraform/language/tests](https://developer.hashicorp.com/terraform/language/tests). [Source [26]](33_references.md#source-26)
+9. **HashiCorp (2024).** *Backend Type: s3.* HashiCorp Developer Documentation, [https://developer.hashicorp.com/terraform/language/backend/s3](https://developer.hashicorp.com/terraform/language/backend/s3). [Source [17]](33_references.md#source-17)

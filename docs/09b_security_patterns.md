@@ -8,69 +8,49 @@
 
 ### Security orchestration and automated incident response
 
-Modern enterprises require orchestrated security operations to manage the volume and speed of contemporary threats. Manual incid
-ent response cannot scale when attacks develop within minutes. Security Orchestration, Automation, and Response (SOAR) platforms
- transform incident handling into proactive, automated workflows. Predefined playbooks support automated containment, evidence c
-ollection, stakeholder notifications, and impact assessments.
+Modern enterprises require orchestrated security operations to manage the volume and speed of contemporary threats. Manual incident response cannot scale when attacks develop within minutes. Security Orchestration, Automation, and Response (SOAR) platforms transform incident handling into proactive, automated workflows. Predefined playbooks support automated containment, evidence collection, stakeholder notifications, and impact assessments.
 
-Integrating SOAR with Architecture as Code allows infrastructure-level responses. Compromised components can be isolated or redep
-loyed from known-good definitions. Network policies adjust automatically to contain lateral movement. Backup restoration process
-es can be triggered based on compromise indicators. Threat intelligence feeds using STIX/TAXII formats add context for faster, m
-ore accurate decisions.
+Integrating SOAR with Architecture as Code allows infrastructure-level responses. Compromised components can be isolated or redeployed from known-good definitions. Network policies adjust automatically to contain lateral movement. Backup restoration processes can be triggered based on compromise indicators. Threat intelligence feeds using STIX/TAXII formats add context for faster, more accurate decisions.
 
 ### AI and machine learning in security architectures
 
-Artificial intelligence and machine learning augment security programmes with pattern recognition and anomaly detection at scale
-. Behavioural analytics establish baselines for users, applications, and network traffic; deviations trigger investigations or pr
-eventive actions. User Behaviour Analytics (UBA) helps detect insider threats through subtle access changes.
+Artificial intelligence and machine learning augment security programmes with pattern recognition and anomaly detection at scale. Behavioural analytics establish baselines for users, applications, and network traffic; deviations trigger investigations or preventive actions. User Behaviour Analytics (UBA) helps detect insider threats through subtle access changes.
 
-Automated threat hunting uses AI models trained on historical data to identify potential compromises before they escalate. Organi
-sations must also defend the AI systems themselves. Adversarial machine learning techniques can target models, requiring controls
- such as input sanitisation, model validation, and monitoring for adversarial indicators.
+Automated threat hunting uses AI models trained on historical data to identify potential compromises before they escalate. Organisations must also defend the AI systems themselves. Adversarial machine learning techniques can target models, requiring controls such as input sanitisation, model validation, and monitoring for adversarial indicators.
 
 ### Multi-cloud security strategies
 
-Multi-cloud adoption improves resilience and reduces vendor lock-in but introduces policy complexity. Unified policy management l
-ayers translate organisational requirements into provider-specific implementations. Policy-as-code frameworks must support multi
-ple providers simultaneously to maintain consistent posture.
+Multi-cloud adoption improves resilience and reduces vendor lock-in but introduces policy complexity. Unified policy management layers translate organisational requirements into provider-specific implementations. Policy-as-code frameworks must support multiple providers simultaneously to maintain consistent posture.
 
 Identity federation enables single sign-on and coherent access control. Cloud-native identity services such as Microsoft Entra ID or AWS IAM should integrate with on-premises and third-party directories. Data governance must address residency, cross-border transfer restrictions, and varying encryption capabilities through automated classification-aware controls.
 
 ### Security observability and analytics patterns
 
-Comprehensive observability underpins effective detection and response. Centralised log aggregation, normalisation, and stream pr
-ocessing deliver real-time detection while supporting historical investigations. Key performance indicators—mean time to detect (M
-TTD), mean time to respond (MTTR), false positive ratios, control coverage, and compliance drift—provide quantitative measures of
- programme effectiveness.
+Comprehensive observability underpins effective detection and response. Centralised log aggregation, normalisation, and stream processing deliver real-time detection while supporting historical investigations. Key performance indicators—mean time to detect (MTTD), mean time to respond (MTTR), false positive ratios, control coverage, and compliance drift—provide quantitative measures of programme effectiveness.
 
-Automating threat modelling with observability data allows continuous refinement of models based on observed behaviour. Emerging
- attack patterns can be identified and mitigated before they are fully weaponised.
+Automating threat modelling with observability data allows continuous refinement of models based on observed behaviour. Emerging attack patterns can be identified and mitigated before they are fully weaponised.
 
 ### Emerging security technologies and future trends
 
-Quantum computing presents both opportunity and threat. Organisations must prepare for quantum-resistant cryptography using NIST
- guidance and incorporate algorithm agility into Architecture as Code frameworks. Zero-knowledge proofs enable privacy-preservin
-g authentication and authorisation, which can be integrated via code-driven approaches. Distributed and self-sovereign identity
- solutions reduce reliance on central providers, while confidential computing and trusted execution environments (TEEs) protect d
-ata during processing—even from cloud operators.
+Quantum computing presents both opportunity and threat. Organisations must prepare for quantum-resistant cryptography using NIST guidance and incorporate algorithm agility into Architecture as Code frameworks. Zero-knowledge proofs enable privacy-preserving authentication and authorisation, which can be integrated via code-driven approaches. Distributed and self-sovereign identity solutions reduce reliance on central providers, while confidential computing and trusted execution environments (TEEs) protect data during processing—even from cloud operators.
 
 ## Practical implementation: security architecture in European environments
 
 ### Secure Infrastructure as Code state management pattern
 
-State backends hold the canonical inventory for every deployed component and therefore demand layered protection. Authoritative vendor documentation defines the required controls for production programmes, with HashiCorp's guidance on securing Terraform state providing the baseline for compliant operations ([Source [16]](33_references.md#source-16)):
+State backends hold the canonical inventory for every deployed component and therefore demand layered protection. Authoritative vendor documentation defines the required controls for production programmes, with HashiCorp's documentation on remote state, state locking and sensitive data providing the baseline for compliant operations ([Source [70]](33_references.md#source-70), [Source [71]](33_references.md#source-71), [Source [20]](33_references.md#source-20)):
 
-- **HashiCorp – “Securing Terraform State” (2024) [Source [16]](33_references.md#source-16):** mandates remote backends with state locking so sensitive data is never synchronised to developer laptops and concurrent writes are prevented.
-- **HashiCorp – “Backend Type: s3” (2024) [Source [17]](33_references.md#source-17):** details the `dynamodb_table`, `encrypt`, and `kms_key_id` settings that provide DynamoDB-backed locking, server-side encryption, and versioning for Amazon S3 state.
-- **HashiCorp – “Terraform Security Best Practices” (2023) [Source [20]](33_references.md#source-20):** codifies HashiCorp's overarching enterprise guidance on secrets management, encryption, and policy guardrails for Terraform estates.
-- **Microsoft Learn – “Store Terraform state in Azure Storage” (2024) [Source [18]](33_references.md#source-18):** highlights Azure Storage accounts with encryption at rest, Microsoft Entra ID or SAS access controls, and blob leases to serialise Terraform operations.
-- **Google Cloud – “Store Terraform state in Cloud Storage” (2024) [Source [19]](33_references.md#source-19):** directs teams to enable uniform bucket-level access, object versioning, and customer-managed encryption keys for Terraform state buckets.
+- **HashiCorp – “Remote state” and “State locking” [Source [70]](33_references.md#source-70), [Source [71]](33_references.md#source-71):** recommend remote backends so that state is not kept on developer laptops, and state locking so that concurrent writes are prevented.
+- **HashiCorp – “Backend Type: s3” (2024) [Source [17]](33_references.md#source-17):** details the `use_lockfile` (S3-native locking), `encrypt`, and `kms_key_id` settings for Amazon S3 state and recommends S3 Bucket Versioning on the state bucket; DynamoDB-based locking (`dynamodb_table`) is deprecated since Terraform 1.11 in favour of S3-native locking.
+- **HashiCorp – “Manage sensitive data in your configuration” [Source [20]](33_references.md#source-20):** describes how sensitive values reach state, how remote backends such as HCP Terraform and S3 encrypt state at rest, and how variables and outputs are marked `sensitive`.
+- **Microsoft Learn – “Store Terraform state in Azure Storage” (2024) [Source [18]](33_references.md#source-18):** highlights encryption at rest and the automatic blob leases that serialise Terraform operations, and advises evaluating the azurerm backend's authentication options for production rather than relying on storage account keys.
+- **Google Cloud – “Store Terraform state in a Cloud Storage bucket” (2024) [Source [19]](33_references.md#source-19):** directs teams to enable uniform bucket-level access, object versioning, and public access prevention for Terraform state buckets; customer-managed encryption keys are configured through Cloud Storage CMEK ([Source [72]](33_references.md#source-72)).
 
-Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends, applying customer-managed encryption keys, DynamoDB or blob lease locking, and object versioning to support forensic recovery (Sources [16](33_references.md#source-16), [17](33_references.md#source-17), [18](33_references.md#source-18), and [19](33_references.md#source-19)). Codifying these controls in Terraform modules and policy-as-code checks ensures every workspace inherits the verified practices rather than bespoke conventions.
+Architecture as Code teams should standardise on encrypted S3, Azure Storage, or Google Cloud Storage backends, applying customer-managed encryption keys, S3-native lockfile or blob-lease locking, and object versioning to support forensic recovery ([Source [17]](33_references.md#source-17), [Source [18]](33_references.md#source-18), [Source [19]](33_references.md#source-19), [Source [71]](33_references.md#source-71), [Source [72]](33_references.md#source-72)). Codifying these controls in Terraform modules and policy-as-code checks ensures every workspace inherits the verified practices rather than bespoke conventions.
 
-Key management policies must define custodianship, rotation cadence, and break-glass processes for decrypting state artefacts. Backends should enforce least-privilege policies so only automation roles can read state while human operators rely on Terraform Cloud or approved pipelines for access. Cataloguing these controls within the Architecture as Code governance layer links state protection to wider compliance commitments; policy-as-code checks can assert that every workspace declares an approved backend, encryption flag, and locking store before plans are applied.
+Key management policies must define custodianship, rotation cadence, and break-glass processes for decrypting state artefacts. Backends should enforce least-privilege policies so only automation roles can read state while human operators rely on HCP Terraform (formerly Terraform Cloud) or approved pipelines for access. Cataloguing these controls within the Architecture as Code governance layer links state protection to wider compliance commitments; policy-as-code checks can assert that every workspace declares an approved backend, encryption flag, and locking store before plans are applied.
 
-Operational telemetry from backend access logs, Terraform Cloud audit trails, and key management systems should be forwarded into the central governance dashboard. This provides evidence for auditors that state files remain encrypted, access attempts are monitored, and remediation actions—such as key rotation or state re-keying—are triggered automatically when drift is detected (Sources [16](33_references.md#source-16) and [20](33_references.md#source-20)).
+Operational telemetry from backend access logs, HCP Terraform audit trails, and key management systems should be forwarded into the central governance dashboard. This provides evidence for auditors that state files remain encrypted, access attempts are monitored, and remediation actions—such as key rotation or state re-keying—are triggered automatically when drift is detected ([Source [20]](33_references.md#source-20), [Source [70]](33_references.md#source-70)).
 
 Teams can lift the [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) directly into sprint plans to deliver these telemetry pipelines. The backlog items contain the acceptance tests and documentation updates required to prove that backend alerts, runbooks, and evidence packs evolve alongside the policy-as-code gates.
 
@@ -116,7 +96,7 @@ resource "aws_kms_key" "org_key" {
   key_usage                = "ENCRYPT_DECRYPT"
   deletion_window_in_days  = 30
 
-  # Automated rotation in line with Swedish security expectations
+  # Automated rotation in line with European security expectations
   enable_key_rotation = true
 
   # Granular key policy implementing least privilege access
@@ -136,7 +116,7 @@ resource "aws_kms_key" "org_key" {
         Sid       = "Allow CloudWatch Logs Encryption"
         Effect    = "Allow"
         Principal = {
-          Service = "logs.${data.aws_region.current.name}.amazonaws.com"
+          Service = "logs.${data.aws_region.current.region}.amazonaws.com"
         }
         Action = [
           "kms:Encrypt",
@@ -148,7 +128,7 @@ resource "aws_kms_key" "org_key" {
         Resource = "*"
         Condition = {
           ArnEquals = {
-            "kms:EncryptionContext:aws:logs:arn" = "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:*"
+            "kms:EncryptionContext:aws:logs:arn" = "arn:aws:logs:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:log-group:*"
           }
         }
       },
@@ -165,7 +145,7 @@ resource "aws_kms_key" "org_key" {
         Resource = "*"
         Condition = {
           StringEquals = {
-            "kms:ViaService" = "s3.${data.aws_region.current.name}.amazonaws.com"
+            "kms:ViaService" = "s3.${data.aws_region.current.region}.amazonaws.com"
           }
         }
       }
@@ -221,25 +201,25 @@ resource "aws_security_group" "secure_application" {
   })
 }
 
-# Comprehensive audit logging aligned with GDPR Article 30
+# Audit logging supporting GDPR Article 32 (security of processing) and Article 5(2) accountability
 resource "aws_cloudtrail" "security_audit" {
   count = local.audit_logging_required ? 1 : 0
 
   name           = "${var.organization_name}-security-audit"
   s3_bucket_name = aws_s3_bucket.audit_logs[0].bucket
 
+  # Management events already cover KMS API calls (Encrypt, Decrypt, GenerateDataKey);
+  # basic data_resource selectors only accept AWS::S3::Object, AWS::Lambda::Function
+  # and AWS::DynamoDB::Table.
   event_selector {
-    read_write_type            = "All"
-    include_management_events  = true
+    read_write_type           = "All"
+    include_management_events = true
 
     data_resource {
-      type   = "AWS::S3::Object"
-      values = ["${aws_s3_bucket.audit_logs[0].arn}/*"]
-    }
-
-    data_resource {
-      type   = "AWS::KMS::Key"
-      values = [aws_kms_key.org_key.arn]
+      type = "AWS::S3::Object"
+      # Application buckets only: logging the trail's own bucket would record every
+      # log delivery as a new data event (recursive logging) and inflate volume and cost.
+      values = [for arn in var.monitored_bucket_arns : "${arn}/"]
     }
   }
 
@@ -285,8 +265,7 @@ This module applies best practices for key management, Zero Trust networking, an
 
 ### Advanced GDPR compliance implementation
 
-Policy as Code can express GDPR requirements in executable form. The following Open Policy Agent example shows how Article 32 ca
-n be translated into automated checks.
+Policy as Code can express GDPR requirements in executable form. The following Open Policy Agent example shows how Article 32 of the GDPR ([Source [43]](33_references.md#source-43)) can be translated into automated checks. OPA 1.0 (December 2024) made the `if` and `contains` keywords mandatory in rule definitions; the `import rego.v1` statement enables the same syntax from OPA 0.59 onwards, so the policy below runs unchanged on both generations ([Source [44]](33_references.md#source-44)).
 
 ```rego
 # policies/gdpr_compliance.rego
@@ -296,13 +275,13 @@ import rego.v1
 
 # GDPR Article 32 – ensure appropriate technical and organisational measures
 personal_data_encryption_required if {
-    input.resource_type in ["aws_rds_instance", "aws_s3_bucket", "aws_ebs_volume", "aws_dynamodb_table"]
+    input.resource_type in ["aws_db_instance", "aws_s3_bucket", "aws_ebs_volume", "aws_dynamodb_table"]
     contains(input.attributes.tags.DataClassification, "personal")
     not encryption_enabled
 }
 
-encryption_enabled {
-    input.resource.encryption.enabled == true
+encryption_enabled if {
+    input.attributes.encryption.enabled == true
 }
 
 # Helper rules for specific resource types (omitted for brevity)
@@ -312,7 +291,7 @@ encryption_enabled {
 ### Advanced threat detection platform
 
 ```python
-"""Advanced threat detection for Swedish organisations"""
+"""Advanced threat detection for European organisations"""
 import asyncio
 import aiohttp
 import boto3
@@ -469,10 +448,13 @@ class AdvancedThreatDetection:
         dependency_risks = await self._analyse_infrastructure_dependencies()
 
         for risk in [*container_risks, *api_risks, *dependency_risks]:
+            # CVSS v3.1 qualitative scale: Critical 9.0–10.0, High 7.0–8.9, Medium 4.0–6.9
             severity = (
                 ThreatSeverity.CRITICAL
-                if risk["cvss_score"] > 7.0
+                if risk["cvss_score"] >= 9.0
                 else ThreatSeverity.HIGH
+                if risk["cvss_score"] >= 7.0
+                else ThreatSeverity.MEDIUM
             )
             findings.append(
                 SecurityFinding(
@@ -587,10 +569,7 @@ class AdvancedThreatDetection:
 
 ## Future security trends and technical evolution
 
-Quantum-ready cryptography, AI-enhanced security tooling, and privacy-preserving computation will shape the next decade of securi
-ty architecture. Organisations should invest in algorithm agility, machine learning governance, and privacy engineering skills to
- stay ahead of emerging threats. Zero-knowledge proofs, confidential computing, and distributed identity solutions will become in
-creasingly relevant as regulatory regimes demand stronger privacy guarantees.
+Quantum-ready cryptography, AI-enhanced security tooling, and privacy-preserving computation will shape the next decade of security architecture. Organisations should invest in algorithm agility, machine learning governance, and privacy engineering skills to stay ahead of emerging threats. Zero-knowledge proofs, confidential computing, and distributed identity solutions will become increasingly relevant as regulatory regimes demand stronger privacy guarantees.
 
 ## Strategic security recommendations for European organisations
 
@@ -604,44 +583,31 @@ Architecture as Code represents the future of infrastructure management for Euro
 
 Automated compliance streamlines complex regulatory obligations spanning GDPR, NIS2 Directive, and industry-specific mandates. Advanced patterns—including security orchestration, AI-assisted detection, and multi-cloud strategies—illustrate how security can scale for large enterprises.
 
-Organisations that embrace Architecture as Code security practices position themselves for successful digital transformation whi
-le maintaining a strong security posture. Investments in security automation reduce incident rates, accelerate compliance valida
-tion, and improve operational efficiency. Preparing for future trends—automation, AI augmentation, and quantum-ready defences—req
-uires adaptable, code-driven frameworks capable of evolving alongside new technologies and threats.
+Organisations that embrace Architecture as Code security practices position themselves for successful digital transformation while maintaining a strong security posture. Investments in security automation reduce incident rates, accelerate compliance validation, and improve operational efficiency. Preparing for future trends—automation, AI augmentation, and quantum-ready defences—requires adaptable, code-driven frameworks capable of evolving alongside new technologies and threats.
 
-Delivering these outcomes demands organisational commitment to a DevSecOps culture, sustained investment in skills, and a discpl
-ined approach to continuous improvement. When implemented well, Architecture as Code security enables both enhanced protection a
-nd accelerated innovation.
+Delivering these outcomes demands organisational commitment to a DevSecOps culture, sustained investment in skills, and a disciplined approach to continuous improvement. When implemented well, Architecture as Code security enables both enhanced protection and accelerated innovation.
 
 ## Sources
 
-1. **NIST (2018).** *Cybersecurity Framework Version 1.1.* National Institute of Standards and Technology.
-2. **NIST (2020).** *Special Publication 800-207: Zero Trust Architecture.* National Institute of Standards and Technology.
-3. **NIST (2023).** *Post-Quantum Cryptography Standardisation.* National Institute of Standards and Technology.
-4. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53, Revision 5, 2020. [Source [11]](33_references.md#source-11)
-5. **ENISA (2023).** *Cloud Security Guidelines for EU Organisations.* European Union Agency for Cybersecurity.
-6. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
-7. **EDPB (2023).** *Guidelines on Data Protection by Design and by Default.* European Data Protection Board.
-8. **ENISA (2023).** *NIS2 Directive Implementation Guidance.* European Union Agency for Cybersecurity.
-9. **European Commission (2022).** *Regulation (EU) 2022/2554 on Digital Operational Resilience (DORA).* Official Journal of the European Union.
-10. **EBA (2023).** *Guidelines on ICT and Security Risk Management.* European Banking Authority.
-11. **Official Journal of the European Union.** *Directive (EU) 2016/679: General Data Protection Regulation.*
-12. **OWASP (2023).** *Application Security Architecture Guide.* Open Web Application Security Project.
-13. **Cloud Security Alliance (2023).** *Security Guidance v4.0.* Cloud Security Alliance.
-14. **CIS (2023).** *CIS Controls v8: Critical Security Controls for Effective Cyber Defence.* Centre for Internet Security.
-15. **MITRE Corporation (2023).** *MITRE ATT&CK Framework: Enterprise Matrix.* MITRE Corporation.
-16. **Amazon Web Services (2023).** *AWS Security Best Practices.* AWS Security Documentation.
-17. **Microsoft (2023).** *Azure Security Benchmark v3.0.* Microsoft Security Documentation.
-18. **HashiCorp (2024).** *Securing Terraform State.* HashiCorp Developer Documentation. [Source [16]](33_references.md#source-16)
-19. **HashiCorp (2023).** *Terraform Security Best Practices.* HashiCorp Learning Resources. [Source [20]](33_references.md#source-20)
-20. **HashiCorp (2024).** *Backend Type: s3.* HashiCorp Developer Documentation. [Source [17]](33_references.md#source-17)
-21. **Microsoft Learn (2024).** *Store Terraform state in Azure Storage.* Microsoft Learn Documentation. [Source [18]](33_references.md#source-18)
-22. **Google Cloud (2024).** *Store Terraform state in Cloud Storage.* Google Cloud Documentation. [Source [19]](33_references.md#source-19)
-23. **Open Policy Agent (2023).** *OPA Policy Authoring Guide.* Cloud Native Computing Foundation.
-24. **Kubernetes Project (2023).** *Pod Security Standards.* Kubernetes Documentation.
-25. **ENISA (2023).** *Threat Landscape Report 2023.* European Union Agency for Cybersecurity.
-26. **CERT-EU (2023).** *Cybersecurity Threat Landscape Report 2023.* Computer Emergency Response Team for the EU Institutions.
-27. **European Cyber Security Organisation (2023).** *European Cybersecurity Survey 2023.* ECSO.
-28. **SANS Institute (2023).** *Security Architecture Design Principles.* SANS Institute.
-29. **ISACA (2019).** *COBIT 2019 Framework for Governance and Management of Enterprise IT.* ISACA.
-30. **(ISC)² (2023).** *Cybersecurity Workforce Study.* International Information System Security Certification Consortium.
+1. **NIST (2020).** *Special Publication 800-207: Zero Trust Architecture.* National Institute of Standards and Technology, August 2020. [https://csrc.nist.gov/pubs/sp/800/207/final](https://csrc.nist.gov/pubs/sp/800/207/final)
+2. **NIST (2024).** *FIPS 203, 204 and 205: Post-Quantum Cryptography Standards.* National Institute of Standards and Technology, 13 August 2024. [https://csrc.nist.gov/projects/post-quantum-cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
+3. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
+4. **European Parliament and Council (2016).** *Regulation (EU) 2016/679 (General Data Protection Regulation).* Official Journal of the European Union, L 119, 4 May 2016. [Source [43]](33_references.md#source-43)
+5. **ENISA (2025).** *NIS2 Technical Implementation Guidance, v1.0.* European Union Agency for Cybersecurity, June 2025. [https://www.enisa.europa.eu/publications/nis2-technical-implementation-guidance](https://www.enisa.europa.eu/publications/nis2-technical-implementation-guidance)
+6. **Open Policy Agent.** *OPA v1.0 upgrade guide.* [https://www.openpolicyagent.org/docs/v0-upgrade](https://www.openpolicyagent.org/docs/v0-upgrade) [Source [44]](33_references.md#source-44)
+7. **Open Policy Agent.** *Policy Language.* OPA documentation. [https://www.openpolicyagent.org/docs/policy-language](https://www.openpolicyagent.org/docs/policy-language)
+8. **HashiCorp.** *Remote state.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/state/remote](https://developer.hashicorp.com/terraform/language/state/remote) [Source [70]](33_references.md#source-70)
+9. **HashiCorp.** *State locking.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/state/locking](https://developer.hashicorp.com/terraform/language/state/locking) [Source [71]](33_references.md#source-71)
+10. **HashiCorp (2024).** *Backend Type: s3.* HashiCorp Developer Documentation. [Source [17]](33_references.md#source-17)
+11. **HashiCorp.** *Manage sensitive data in your configuration.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/manage-sensitive-data](https://developer.hashicorp.com/terraform/language/manage-sensitive-data) [Source [20]](33_references.md#source-20)
+12. **Microsoft Learn (2024).** *Store Terraform state in Azure Storage.* Microsoft Learn Documentation. [Source [18]](33_references.md#source-18)
+13. **Google Cloud (2024).** *Store Terraform state in a Cloud Storage bucket.* Google Cloud Documentation. [Source [19]](33_references.md#source-19)
+14. **Google Cloud.** *Customer-managed encryption keys.* Cloud Storage documentation. [https://cloud.google.com/storage/docs/encryption/customer-managed-keys](https://cloud.google.com/storage/docs/encryption/customer-managed-keys) [Source [72]](33_references.md#source-72)
+15. **Amazon Web Services.** *Security Pillar – AWS Well-Architected Framework.* AWS documentation. [https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html)
+16. **Amazon Web Services.** *Logging data events.* AWS CloudTrail User Guide. [https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
+17. **Cloud Security Alliance (2024).** *Security Guidance for Critical Areas of Focus in Cloud Computing v5.* Cloud Security Alliance, 15 July 2024. [https://cloudsecurityalliance.org/artifacts/security-guidance-v5](https://cloudsecurityalliance.org/artifacts/security-guidance-v5)
+18. **MITRE Corporation.** *MITRE ATT&CK: Enterprise Matrix.* MITRE Corporation. [https://attack.mitre.org/matrices/enterprise/](https://attack.mitre.org/matrices/enterprise/)
+19. **FIRST (2019).** *Common Vulnerability Scoring System v3.1: Specification Document.* Forum of Incident Response and Security Teams. [https://www.first.org/cvss/v3.1/specification-document](https://www.first.org/cvss/v3.1/specification-document)
+20. **ENISA (2023).** *ENISA Threat Landscape 2023.* European Union Agency for Cybersecurity, October 2023. [https://www.enisa.europa.eu/publications/enisa-threat-landscape-2023](https://www.enisa.europa.eu/publications/enisa-threat-landscape-2023)
+21. **CERT-EU (2024).** *Threat Landscape Report 2023: Year Review.* Computer Emergency Response Team for the EU Institutions, Bodies and Agencies, February 2024. [https://www.cert.europa.eu/publications/threat-intelligence/tlr2023/pdf](https://www.cert.europa.eu/publications/threat-intelligence/tlr2023/pdf)
+22. **ISC2 (2023).** *ISC2 Cybersecurity Workforce Study.* ISC2. [https://www.isc2.org/research](https://www.isc2.org/research)

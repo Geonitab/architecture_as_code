@@ -22,12 +22,12 @@ By the end of this chapter, you will be able to:
 *Figure: Management as Code feedback loop.*
 
 ## Defining Management as Code
-At its core, MaC is the systematic translation of management artefacts into reproducible code. Policies, playbooks, delegation models, role definitions, and decision guardrails are captured as declarative specifications that tooling can enforce. Rather than issuing static policy documents, leadership teams create repositories that contain structured definitions for escalation thresholds, strategic objectives and key results (OKRs), and the criteria for portfolio prioritisation. Automation hooks process these definitions to trigger workflows, generate dashboards, or enforce access controls. By storing these assets in Git repositories, management directives acquire the same benefits as other code: auditability, peer review, continuous integration, and rollback.
+At its core, MaC is the systematic translation of management artefacts into reproducible code. Policies, playbooks, delegation models, role definitions, and decision guardrails are captured as declarative specifications that tooling can enforce. Rather than issuing static policy documents, leadership teams create repositories that contain structured definitions for escalation thresholds, strategic objectives and key results (OKRs)—a lineage that runs back to the management by objectives described by Drucker (1954) [Source [104]](33_references.md#source-104)—and the criteria for portfolio prioritisation. Automation hooks process these definitions to trigger workflows, generate dashboards, or enforce access controls. By storing these assets in Git repositories, management directives acquire the same benefits as other code: auditability, peer review, continuous integration, and rollback.
 
 MaC differs from traditional management documentation in three crucial ways. The artefacts are executable—scripts, configuration files, or policy-as-code rules integrate directly with operational systems. Management inputs follow the same change management discipline as software features, so leaders iterate transparently. Finally, telemetry instruments every directive, enabling evidence-based leadership for globally distributed teams without waiting for synchronous communication.
 
 ## Principles of MaC in Code-First Organisations
-Fully code-based organisations share a set of principles that underpin MaC. They prioritise declarative specifications over narrative documents, expecting every significant management decision to be represented in a machine-readable form. Version control governs all management artefacts, providing traceability for who authorised a particular policy and when it changed. Automated testing of management rules—such as simulated budget scenarios or compliance checks for role-based access control—ensures that leadership decisions do not break downstream systems.
+Fully code-based organisations share a set of principles that underpin MaC. They prioritise declarative specifications over narrative documents, expecting every significant management decision to be represented in a machine-readable form. The same instinct underpins the OpenGitOps principles, which require desired state to be declarative, versioned and immutable, pulled automatically and continuously reconciled [Source [105]](33_references.md#source-105). Version control governs all management artefacts, providing traceability for who authorised a particular policy and when it changed. Automated testing of management rules—such as simulated budget scenarios or compliance checks for role-based access control—ensures that leadership decisions do not break downstream systems.
 
 A key principle is alignment with continuous delivery cadences. Management cadences must be as responsive as the deployment frequency, using iterations of policy code to reflect business changes. Another principle is collaboration parity: management contributions use the same pull request (PR) pathways as engineering contributions, complete with reviews, automated checks, and documentation updates, so leadership work becomes inspectable and improvable through shared tooling.
 
@@ -99,7 +99,7 @@ Transparency through Issues manifests in several ways:
 
 An organisation planning to migrate from on-premises infrastructure to cloud services creates an Issue titled "Cloud Migration Strategy for Payment Processing System". The Issue includes:
 - **Context**: Current infrastructure costs, performance bottlenecks, and compliance requirements
-- **Stakeholder Input**: Security team highlights PCI-DSS requirements, finance team provides budget constraints, engineering team identifies technical dependencies
+- **Stakeholder Input**: Security team highlights PCI DSS requirements, finance team provides budget constraints, engineering team identifies technical dependencies
 - **Options Analysis**: Documented comparisons of AWS, Azure, and GCP with pros/cons
 - **Decision Rationale**: Final selection justified with references to compliance needs and cost projections
 - **Implementation Link**: References to pull requests implementing the migration in phases
@@ -112,14 +112,14 @@ When introducing a new microservices communication pattern, teams create both an
 
 **Example 3: Security Vulnerability Response**
 
-A security scanning tool identifies a critical vulnerability in a production dependency. The team creates a private Issue (maintaining appropriate confidentiality) that:
+A security scanning tool identifies a critical vulnerability in a production dependency. GitHub Issues inherit the visibility of their repository—there is no per-issue confidentiality—so an ordinary Issue in a public repository would disclose the vulnerability before a fix exists. For a public repository, the team instead opens a draft repository security advisory (or accepts a private vulnerability report) and collaborates on the fix in the temporary private fork that the advisory provides [Source [106]](33_references.md#source-106); for private or internal repositories, it tracks the work as an Issue in a repository whose access is limited to the responders. The advisory or restricted Issue:
 - Documents the vulnerability details and potential impact
-- Assigns clear ownership to the security team lead
+- Names the security team lead as owner and adds the responders as collaborators
 - Tracks remediation steps with checkboxes
-- Links to pull requests applying patches
+- Links to the pull request that applies the patch
 - Records post-incident learnings
 
-Even though the Issue remains private for security reasons, the transparency within the authorised team ensures coordinated response, prevents duplicate work, and creates an audit trail for compliance reviews.
+Even though the work remains confidential until the patch is released, the transparency within the authorised team ensures coordinated response, prevents duplicate work, and creates an audit trail for compliance reviews. Publishing the advisory once the fix ships restores transparency for downstream consumers.
 
 ### Discussions for Strategic Deliberation
 
@@ -289,12 +289,13 @@ Consider a global software company operating in regulated financial markets. The
 ## Future Directions for MaC
 As artificial intelligence capabilities mature, MaC will incorporate intelligent agents that suggest policy updates based on observed outcomes. Machine learning models can analyse historical management changes and their impact on delivery performance, recommending adjustments to guardrails or team structures. Natural language processing can transform meeting transcripts into code updates, bridging human discussions and codified artefacts, while decentralised governance structures may use smart contracts to enforce management rules across partner ecosystems.
 
-## Sources
-
-1. **Drucker, P.F. (1954).** *The Practice of Management.* Harper & Row.
-2. **GitOps Working Group (2024).** *GitOps Principles.* OpenGitOps. Available at: [https://opengitops.dev/](https://opengitops.dev/)
-3. **Puppet (2023).** *State of DevOps Report.* Puppet. Annual industry survey on DevOps practices.
-4. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. [Source [31]](33_references.md#source-31)
-
 ## Summary
 Management as Code is the logical next step for organisations that already treat infrastructure and architecture as code. By encoding leadership intent into executable artefacts, organisations achieve transparency, speed, and adaptability. MaC embeds management into the DevOps loop, ensures governance is automated, and ties budgeting, competence development, and team leadership into a single continuous system. GitHub and similar platforms become hubs where executives and engineers collaborate in the same workflows, with Issues, Discussions, and Actions transforming management from a peripheral function into a core element of the delivery pipeline. By embracing MaC, organisations unlock scalable, data-driven leadership capable of orchestrating multiple teams and responding rapidly to change.
+
+## Sources
+
+1. **Drucker, P.F. (1954).** *The Practice of Management.* New York: Harper & Brothers. [Source [104]](33_references.md#source-104)
+2. **CNCF GitOps Working Group (2021).** *GitOps Principles v1.0.0.* OpenGitOps. Available at: [https://opengitops.dev/](https://opengitops.dev/) (accessed 2026-10-30). [Source [105]](33_references.md#source-105)
+3. **Puppet (2023).** *2023 State of DevOps Report: Platform Engineering Edition.* Puppet by Perforce. Available at: [https://www.puppet.com/resources/state-of-devops-report](https://www.puppet.com/resources/state-of-devops-report). [Source [100]](33_references.md#source-100)
+4. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. ISBN 978-1-942788-33-1. [Source [31]](33_references.md#source-31)
+5. **GitHub Docs.** *About repository security advisories.* GitHub Documentation. Available at: [https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories) (accessed 2026-10-30). [Source [106]](33_references.md#source-106)

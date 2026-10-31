@@ -14,6 +14,10 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 [Appendix B: Technical Architecture for Book Production](31_appendix_b_technical_architecture.md) documents the infrastructure and automation used to produce this book itself. This meta-example demonstrates Architecture as Code principles applied to documentation delivery, showing how the same practices scale from infrastructure to content pipelines.
 
+[Appendix C: FINOS Project Blueprint](32_finos_project_blueprint.md) presents the author's proposal for a reusable blueprint inspired by the FINOS Common Architecture Language Model (CALM). It shows how the Appendix A team model, the book's automation patterns, and CALM's nodes, relationships, and metadata could combine into an operating model for regulated platforms.
+
+[References and Sources](33_references.md) collects every numbered source cited in the chapters, so that each inline source citation resolves to a single, verifiable bibliography entry.
+
 [Appendix D: Templates and Tools](appendix_templates_and_tools.md) curates the reusable assets that support maturity assessments and governance workflows. It links directly to the Architecture as Code Maturity Model, the interactive Maturity Radar Tool, and the Control Mapping Matrix template so teams can adopt the artefacts without hunting through the repository.
 
 The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) consolidates insights from across the manuscript into a staircase-style progression model. It summarises how infrastructure, governance, policy, testing, and cultural practices evolve together when organisations embrace Architecture as Code.
@@ -26,6 +30,8 @@ The [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template
 - Author background and expertise context
 - Complete code examples and technical implementations
 - Book production infrastructure as a working Architecture as Code example
+- A CALM-inspired blueprint proposal for regulated platforms
+- The consolidated bibliography behind every inline citation
 - A maturity model that ties the “as code” disciplines together with practical adoption guidance
 - Reusable templates, interactive tools, and compliance accelerators ready for integration into delivery pipelines
 

@@ -13,7 +13,7 @@ The Control Mapping Matrix provides a reusable structure for cataloguing how eac
 1. **Identify the control:** Reference the control identifier used in source control and policy repositories (for example `SEC-ID-001`).
 2. **Describe the control succinctly:** Keep titles short and action-oriented so readers can scan the matrix quickly.
 3. **Link to assurance artefacts:** Point to machine-generated evidence such as CI reports, configuration snapshots, or signed policy evaluations.
-4. **Map to frameworks:** Record the relevant clause or control identifier from each framework (ISO 27001 Annex A, SOC 2 Trust Services Criteria, NIST 800-53 controls, GDPR Articles, industry standards, or internal policies).
+4. **Map to frameworks:** Record the relevant clause or control identifier from each framework (ISO/IEC 27001:2022 Annex A controls, SOC 2 Trust Services Criteria, NIST SP 800-53 Rev. 5 controls, GDPR Articles, industry standards, or internal policies).
 5. **Keep it evergreen:** Update the matrix when policies change, new artefacts are produced, or frameworks evolve. Automate validation where possible so missing mappings trigger pipeline failures.
 
 Maintaining this matrix ensures that the "assure once, comply many" philosophy remains practical: each control is expressed, tested, and evidenced once, yet it can be traced confidently to every obligation your organisation must satisfy.

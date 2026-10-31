@@ -14,7 +14,7 @@ The CI/CD flow depicted earlier runs from code commit through validation, testin
 
 ## Differentiating Architecture as Code and Infrastructure as Code in automation
 
-Architecture as Code defines the opinionated standards, architectural policies, and lifecycle guardrails that automation must enforce, while Infrastructure as Code executes concrete resource changes in alignment with those guardrails. Seeing them as adjacent layers keeps responsibilities crisp: AaC codifies what must be true before runtime, IaC consumes those policies to produce compliant infrastructure. Thoughtworks frames Governance as Code as an architectural responsibility that encodes policy decisions directly into automation, ensuring teams adopt approved patterns without manual gatekeeping ([Thoughtworks Technology Radar – Governance as Code](https://web.archive.org/web/2024*/https://www.thoughtworks.com/radar/techniques/governance-as-code) [archived]). Higher-order IaC frameworks such as AWS Cloud Development Kit (CDK) demonstrate how architectural blueprints are compiled into deployable infrastructure, shrinking the translation gap between AaC intent and IaC implementation ([AWS – Cloud Development Kit (CDK) Developer Guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html)).
+Architecture as Code defines the opinionated standards, architectural policies, and lifecycle guardrails that automation must enforce, while Infrastructure as Code executes concrete resource changes in alignment with those guardrails. Seeing them as adjacent layers keeps responsibilities crisp: AaC codifies what must be true before runtime, IaC consumes those policies to produce compliant infrastructure. The Thoughtworks Technology Radar captures the same idea for security: its "security policy as code" technique—security policies expressed as code, version-controlled, automatically validated, deployed and monitored, with Open Policy Agent and Istio as examples—moved from Trial in Vol. 21 (November 2019) to Adopt in Vol. 23 (October 2020), and the Vol. 21 overview names "policy, compliance and governance as code" as a recurring theme [Source [2]](33_references.md#source-2). Encoding architectural policy decisions directly into automation in the same way lets teams adopt approved patterns without manual gatekeeping. Higher-order IaC frameworks such as AWS Cloud Development Kit (CDK) demonstrate how architectural blueprints are compiled into deployable infrastructure, shrinking the translation gap between AaC intent and IaC implementation [Source [9]](33_references.md#source-9).
 
 > **AaC vs IaC automation responsibilities**
 >
@@ -34,7 +34,7 @@ Continuous integration and continuous deployment are more than technical process
 
 ### Historical context and evolution
 
-The CI/CD concept has roots in Extreme Programming (XP) and the agile movement of the early 2000s. Its application to infrastructure expanded alongside the emergence of cloud technologies. Early infrastructure administrators relied on manual processes, configuration scripts, and the "infrastructure as pets" mindset—each server was unique and required individual care. That approach worked for small environments but could not scale to modern distributed systems containing hundreds or thousands of components.
+The CI/CD concept has roots in Extreme Programming (XP) in the late 1990s and the agile movement of the early 2000s. Its application to infrastructure expanded alongside the emergence of cloud technologies. Early infrastructure administrators relied on manual processes, configuration scripts, and the "infrastructure as pets" mindset—each server was unique and required individual care. That approach worked for small environments but could not scale to modern distributed systems containing hundreds or thousands of components.
 
 The shift to "infrastructure as cattle"—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and tools such as Terraform [Source [5]](33_references.md#source-5) and Ansible accelerated this development by offering programmable interfaces for infrastructure management.
 
@@ -99,7 +99,7 @@ Organisations operating in regulated environments face complex requirements when
 
 ### Regulatory complexity and automation
 
-The regulatory landscape influences CI/CD design fundamentally. GDPR’s requirements for "data protection by design and by default" mean that pipelines must include automated validation of data-protection implementations. Article 25 requires technical and organisational measures to ensure that only personal data necessary for specific purposes is processed. For Architecture as Code pipelines this translates into automated scanning for GDPR compliance, data-residency validation, and audit-trail generation.
+The regulatory landscape influences CI/CD design fundamentally. GDPR’s requirements for "data protection by design and by default" mean that pipelines must include automated validation of data-protection implementations. Article 25 requires technical and organisational measures to ensure that only personal data necessary for specific purposes is processed [Source [43]](33_references.md#source-43). For Architecture as Code pipelines this translates into automated scanning for GDPR compliance, data-residency validation, and audit-trail generation.
 
 Guidance from data-protection regulators on technical security measures demands systematic implementation of encryption, access controls, and logging. Manual processes are ineffective and error-prone when applied to modern dynamic infrastructure. CI/CD automation offers the opportunity to enforce these requirements consistently through policies as code and automated compliance validation.
 
@@ -150,6 +150,8 @@ An Architecture as Code pipeline is organised into multiple parallel tracks that
 - **Security architecture track:** enforces security policies across all architecture domains.
 - **Governance track:** validates compliance with architectural principles and regulatory requirements.
 
+The action and tool versions pinned in the examples below are those current at the time of writing; renew them as part of routine pipeline maintenance.
+
 ```yaml
 # .github/workflows/architecture-as-code-pipeline.yml
 # Comprehensive Architecture as Code pipeline for organisations
@@ -188,19 +190,19 @@ jobs:
 
     steps:
       - name: Check out architecture repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Configure architecture tooling
         run: |
           # Install architecture validation tools
-          npm install -g @asyncapi/cli @swagger-api/swagger-validator
+          npm install -g @asyncapi/cli @redocly/cli
           # Note: architectural-lint below is illustrative pseudocode representing an architecture linting tool.
           # Real alternatives include custom pytest-based checks or ADR validation scripts.
           # pip install architectural-lint  # hypothetical tool — replace with your chosen validator
           pip install yamllint
-          curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
+          curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.71.1/conftest_0.71.1_Linux_x86_64.tar.gz | tar xz
           sudo mv conftest /usr/local/bin
 
       - name: Architecture compliance check
@@ -210,11 +212,11 @@ jobs:
           case "${{ matrix.domain }}" in
             "application")
               # Validate API contracts and service dependencies
-              find architecture/applications -name "*.openapi.yml" -exec swagger-validator {} \;
+              find architecture/applications -name "*.openapi.yml" -exec redocly lint {} \;
               find architecture/applications -name "*.asyncapi.yml" -exec asyncapi validate {} \;
 
               # Check for GDPR-compliant service design
-              conftest verify --policy policies/gdpr-service-policies.rego architecture/applications/
+              conftest test architecture/applications/ --policy policies/gdpr-service-policies.rego
               ;;
 
             "data")
@@ -222,7 +224,7 @@ jobs:
               python scripts/validate-data-architecture.py
 
               # Check data-privacy compliance
-              conftest verify --policy policies/data-privacy-policies.rego architecture/data/
+              conftest test architecture/data/ --policy policies/data-privacy-policies.rego
               ;;
 
             "infrastructure")
@@ -236,7 +238,7 @@ jobs:
 
             "security")
               # Cross-domain security validation
-              conftest verify --policy policies/security-policies.rego architecture/
+              conftest test architecture/ --policy policies/security-policies.rego
 
               # GDPR impact assessment
               python scripts/gdpr-impact-assessment.py
@@ -248,7 +250,11 @@ jobs:
               find architecture/decisions -name "*.md" -exec echo "Validate ADR:" {} \;
 
               # compliance requirements
-              conftest verify --policy policies/governance-policies.rego architecture/
+              conftest test architecture/ --policy policies/governance-policies.rego
+
+              # Rego unit tests that accompany the policy bundle (conftest verify
+              # runs *_test.rego files; it does not evaluate configuration files)
+              conftest verify --policy policies/
               ;;
           esac
 
@@ -260,7 +266,7 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Architecture dependency analysis
         run: |
@@ -313,7 +319,7 @@ Fail-fast feedback is the cornerstone of CI/CD. Errors are detected and reported
 | Validation Layer | Purpose | Tools & Technologies | Detection Capabilities |
 |-------------------|---------|---------------------|------------------------|
 | Syntax and static analysis | Check for syntax errors, undefined variables, and configuration mistakes | `terraform validate`, `ansible-lint`, provider-specific validators | Syntax errors, type mismatches, undefined references before deployment |
-| Security and compliance scanning | Analyse for security misconfigurations and compliance violations | Checkov, tfsec, Terrascan | GDPR violations, unencrypted resources, data-residency issues, security misconfigurations |
+| Security and compliance scanning | Analyse for security misconfigurations and compliance violations | Checkov, Trivy (which absorbed tfsec) | GDPR violations, unencrypted resources, data-residency issues, security misconfigurations |
 | Cost estimation and budget validation | Estimate financial impact of infrastructure changes | Infracost, cloud provider cost calculators | Cost overruns, budget violations, resource inefficiencies before provisioning |
 | Policy validation | Automated checks against organisational policies | Open Policy Agent (OPA), cloud-native policy engines | Naming violations, architectural standard deviations, configuration policy breaches |
 
@@ -357,10 +363,10 @@ Maintainers codify the categories as distinct jobs so that automation remains le
 
 ### Environment promotion policies that preserve architectural parity
 
-Promotion through development, integration, pre-production, and production environments should be deterministic. Multi-stage release definitions codify the required checks, approvals, and evidence collection so that each environment mirrors the architectural baseline defined in Git.
+Promotion through development, integration, pre-production, and production environments should be deterministic. Multi-stage release definitions codify the required stages and evidence collection, and the approvals and checks attached to each target environment ensure that every environment mirrors the architectural baseline defined in Git.
 
 - **Template-driven parity:** Promotion workflows rehydrate infrastructure using the same Terraform modules or CDK stacks, refusing manual hotfixes that would create drift. Deployment manifests include hash comparisons of rendered templates, and any difference outside approved parameters fails the promotion.
-- **Policy-controlled approvals:** Promotion rules embed policy-as-code checks (for example, Conftest bundles for GDPR) and insist that compliance suites and resilience drills complete before sign-off. Azure DevOps, GitLab, and GitHub environment protections allow these checks and approvals to be codified, ensuring architectural stewards have documented sign-off before production releases ([Source [12]](33_references.md#source-12)).
+- **Policy-controlled approvals:** Promotion rules embed policy-as-code checks (for example, Conftest bundles for GDPR) and insist that compliance suites and resilience drills complete before sign-off. In Azure DevOps, approvals and checks are configured by resource administrators on the protected resources—environments and service connections—rather than in the pipeline YAML, which merely references the environment, so pipeline authors cannot weaken a gate by editing the pipeline definition; GitHub and GitLab apply the same model through environment protection rules. Architectural stewards therefore retain documented sign-off before production releases ([Source [12]](33_references.md#source-12)).
 - **Evidence bundles:** Each promotion attaches the change set, policy reports, and integration-test telemetry so that reviewers can confirm architectural parity without reconstructing the run from scratch. These bundles are archived to satisfy internal audit requirements and support retrospectives when defects slip through.
 
 | Environment | Mandatory evidence | Automated enforcement |
@@ -382,7 +388,7 @@ Maintainability suffers when teams cannot see failure trends or compliance fatig
 | **Policy breach density** | Number of failing policy checks divided by total runs in each environment. | Compliance teams trend breach density to spot policy packs that need refactoring or training gaps ahead of audits ([Source [12]](33_references.md#source-12)). |
 | **Architecture drift diff count** | Count of manual overrides detected by drift-detection jobs or GitOps reconcilers. | Signals where environment parity is threatened so promotion policies can be tightened or automation extended. |
 
-Dashboards combine these signals with DORA-inspired throughput metrics so that teams can correlate deployment velocity with maintainability. Publishing the telemetry alongside promotion evidence enables quick root-cause analysis when defects or regulatory findings arise.
+Dashboards combine these signals with the DORA software delivery metrics—deployment frequency, lead time for changes, change failure rate, failed deployment recovery time and rework rate [Source [49]](33_references.md#source-49)—so that teams can correlate deployment velocity with maintainability. Publishing the telemetry alongside promotion evidence enables quick root-cause analysis when defects or regulatory findings arise.
 
 Platform teams typically push the telemetry into the same observability planes used for site-reliability engineering so that maintainability signals sit beside incident and capacity indicators. Runbooks define threshold-driven alerts—for example, paging the pipeline team when the stability index drops below 95 per cent over seven days—ensuring that automation debt is handled with the same urgency as production outages ([Source [8]](33_references.md#source-8)). Compliance officers receive scheduled digests of policy-breach density trends, enabling earlier intervention before a backlog of manual approvals accumulates ([Source [12]](33_references.md#source-12)).
 
@@ -390,7 +396,7 @@ Platform teams typically push the telemetry into the same observability planes u
 
 Multi-level testing strategies for Architecture as Code comprise syntax validation, unit testing of modules, integration testing of components, and system testing of complete environments. Each test layer addresses specific risks and quality attributes at increasing complexity and execution cost.
 
-Static analysis tools such as tflint, Checkov, or Terrascan identify security risks, policy violations, and deviations from best practice. Dynamic testing in sandbox environments validates functionality and performance under realistic conditions.
+Static analysis tools such as tflint, Checkov, or Trivy identify security risks, policy violations, and deviations from best practice; tfsec has been merged into Trivy and Terrascan has been archived, so neither should anchor a new pipeline. Dynamic testing in sandbox environments validates functionality and performance under realistic conditions.
 
 ### Terratest for organisations
 
@@ -433,18 +439,16 @@ RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform
 # Install compliance tools
 RUN pip3 install \
     checkov \
-    terrascan \
     boto3 \
     pytest \
     requests
 
 # Install OPA/Conftest for policy testing
-RUN curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz \
+RUN curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.71.1/conftest_0.71.1_Linux_x86_64.tar.gz | tar xz \
     && mv conftest /usr/local/bin/
 
-# Install Infracost for cost control
-RUN curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh \
-    && mv /root/.local/bin/infracost /usr/local/bin/
+# Install Infracost for cost control (the installer places the binary in /usr/local/bin)
+RUN curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
 
 # Copy compliance test scripts
 COPY test-scripts/ /opt/compliance/
@@ -536,16 +540,17 @@ data:
           organisations: ['${ORGANISATION_NAME}']
           repos: ['infrastructure', 'applications']
 
-      # Jenkins metrics for pipelines
+      # Jenkins metrics for pipelines (Prometheus metrics plugin). The plugin
+      # prefixes every metric with its namespace, "default" unless the
+      # PROMETHEUS_NAMESPACE environment variable overrides it.
       - job_name: 'jenkins'
         static_configs:
           - targets: ['jenkins:8080']
-        metrics_path: /prometheus
-        params:
-          match[]:
-            - 'jenkins_builds_duration_milliseconds_summary{job=~".*"}'
-            - 'jenkins_builds_success_build_count{job=~".*"}'
-            - 'jenkins_builds_failed_build_count{job=~".*"}'
+        metrics_path: /prometheus/
+        metric_relabel_configs:
+          - source_labels: [__name__]
+            regex: 'default_jenkins_builds_.*'
+            action: keep
 ```
 
 ## DevOps culture for Architecture as Code
@@ -583,11 +588,13 @@ Successful implementation of CI/CD for Architecture as Code requires balancing a
 1. **Jenkins (2024).** *Pipeline Overview.* Jenkins Documentation. [Source [22]](33_references.md#source-22)
 2. **GitHub (2024).** *Understanding GitHub Actions.* GitHub Documentation. [Source [23]](33_references.md#source-23)
 3. **Microsoft (2024).** *What is Azure Pipelines?* Microsoft Learn. [Source [24]](33_references.md#source-24)
-4. **GitLab (2024).** *Get started with GitLab CI/CD.* GitLab Documentation. [Source [25]](33_references.md#source-25)
-5. **HashiCorp (2024).** *Write Terraform Tests.* HashiCorp Developer Documentation. [Source [26]](33_references.md#source-26)
-6. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes. [Source [13]](33_references.md#source-13)
-7. **GDPR.eu (2024).** *GDPR for Organisations: Practical Guide.* GDPR.eu. [Source [27]](33_references.md#source-27)
-8. **European Commission (2024).** *Data Protection in the EU.* European Commission. Available at: [https://commission.europa.eu/law/law-topic/data-protection_en](https://commission.europa.eu/law/law-topic/data-protection_en)
-9. **Thoughtworks (2024).** *Architecture as Code: The Next Evolution.* Technology Radar. [Source [1]](33_references.md#source-1)
-10. **HashiCorp (2024).** *What is Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
-11. **DORA (2023).** *Accelerate State of DevOps Report 2023.* Google Cloud / DORA. [Source [28]](33_references.md#source-28)
+4. **Microsoft Learn (2024).** *Define approvals and checks (Pipeline deployment approvals).* Azure Pipelines documentation. Available at: [https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals). [Source [12]](33_references.md#source-12)
+5. **GitLab (2024).** *Get started with GitLab CI/CD.* GitLab Documentation. [Source [25]](33_references.md#source-25)
+6. **HashiCorp (2024).** *What is Terraform.* HashiCorp Developer Documentation. [Source [5]](33_references.md#source-5)
+7. **HashiCorp (2024).** *Write Terraform Tests.* HashiCorp Developer Documentation. [Source [26]](33_references.md#source-26)
+8. **AWS (2024).** *AWS Cloud Development Kit (CDK) Developer Guide.* Amazon Web Services. Available at: [https://docs.aws.amazon.com/cdk/v2/guide/home.html](https://docs.aws.amazon.com/cdk/v2/guide/home.html). [Source [9]](33_references.md#source-9)
+9. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes. [Source [13]](33_references.md#source-13)
+10. **Beyer, B., Murphy, N.R., Rensin, D.K., Kawahara, K. & Thorne, S. (eds.) (2018).** *The Site Reliability Workbook: Practical Ways to Implement SRE.* O'Reilly Media. ISBN 978-1-492-02950-2. [Source [8]](33_references.md#source-8)
+11. **Thoughtworks (2019/2020).** *Security policy as code.* Technology Radar, Techniques: Trial (Vol. 21, November 2019), Adopt (Vol. 23, October 2020). Available at: [https://www.thoughtworks.com/radar/techniques/security-policy-as-code](https://www.thoughtworks.com/radar/techniques/security-policy-as-code). [Source [2]](33_references.md#source-2)
+12. **European Parliament and Council (2016).** *Regulation (EU) 2016/679 (General Data Protection Regulation).* Official Journal of the European Union, L 119, 4 May 2016. Available at: [https://eur-lex.europa.eu/eli/reg/2016/679/oj](https://eur-lex.europa.eu/eli/reg/2016/679/oj). [Source [43]](33_references.md#source-43)
+13. **DORA (2024).** *Accelerate State of DevOps Report 2024.* Google Cloud / DORA. Available at: [https://dora.dev/research/2024/dora-report/](https://dora.dev/research/2024/dora-report/). [Source [49]](33_references.md#source-49)

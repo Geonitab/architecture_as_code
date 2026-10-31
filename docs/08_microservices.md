@@ -67,9 +67,12 @@ jobs:
         run: |
           terraform init -backend-config=env.tfbackend
           terraform plan -out=tfplan
+          terraform show -json tfplan > tfplan.json
       - name: Enforce policy guardrails
+        # conftest tests configuration files against Rego policies; the policy
+        # directory is passed with --policy (default: ./policy)
         run: |
-          conftest test deployment/policies
+          conftest test --policy deployment/policies deployment/helm/values.yaml deployment/terraform/tfplan.json
       - name: Deploy via Helmfile
         # Helmfile is a declarative wrapper for Helm that manages multi-chart deployments
         # across environments using a single helmfile.yaml configuration.
@@ -81,11 +84,11 @@ Such pipelines capture the architectural intent, flag drift immediately, and kee
 
 ### Maintainability guardrails as code
 
-Policy-as-code engines such as [Open Policy Agent (OPA)](33_references.md#source-10), Conftest, or service mesh admission controllers translate governance rules into executable checks that run on every change. Teams should codify boundary rules—permitted dependency directions, latency budgets between domains, or constraints on data residency—alongside the service. Pipelines fail fast when a merge request proposes an illegal dependency, and the same rules can execute in staging clusters to block ad-hoc configuration drift. Thoughtworks' Governance as Code guidance stresses that automating these controls is the sustainable path to consistent service quality across federated teams ([Thoughtworks Technology Radar – "Governance as Code"](33_references.md#source-2)).
+Policy-as-code engines such as [Open Policy Agent (OPA)](33_references.md#source-10), Conftest, or service mesh admission controllers translate governance rules into executable checks that run on every change. Teams should codify boundary rules—permitted dependency directions, latency budgets between domains, or constraints on data residency—alongside the service. Pipelines fail fast when a merge request proposes an illegal dependency, and the same rules can execute in staging clusters to block ad-hoc configuration drift. Thoughtworks' Technology Radar has recommended *security policy as code*—security policies expressed as code, kept under version control, validated, deployed and monitored automatically, with Open Policy Agent and Istio named as enabling tools—since Vol. 21 (Trial, November 2019), promoting it to Adopt in Vol. 23 (October 2020) ([Source [2]](33_references.md#source-2)). Automating these controls is the sustainable path to consistent service quality across federated teams.
 
 ### Cataloguing contracts and coupling telemetry
 
-Maintain an executable catalogue that indexes every API specification, event schema, and data contract. Architecture automation should update the catalogue after each merge, derive dependency graphs, and flag hotspots where a service has many synchronous consumers or repeatedly changes its schema. CNCF's *State of Cloud Native Development 2024* report highlights how sprawling integration surfaces create maintainability pressure unless organisations observe coupling signals in real time ([Source [7]](33_references.md#source-7)). Teams can codify heuristics such as "alert when more than five downstream systems consume a synchronous endpoint" or "notify when an event schema changes more than once per sprint". These metrics help platform leads schedule refactoring and guide investment in stabilising interfaces.
+Maintain an executable catalogue that indexes every API specification, event schema, and data contract. Architecture automation should update the catalogue after each merge, derive dependency graphs, and flag hotspots where a service has many synchronous consumers or repeatedly changes its schema. With 46% of backend developers now operating microservices and 27% using event-driven architecture according to SlashData's *State of Cloud Native Development Q3 2025* report for the CNCF ([Source [7]](33_references.md#source-7)), sprawling integration surfaces create maintainability pressure unless teams observe coupling signals in real time. Teams can codify heuristics such as "alert when more than five downstream systems consume a synchronous endpoint" or "notify when an event schema changes more than once per sprint". These metrics help platform leads schedule refactoring and guide investment in stabilising interfaces.
 
 ### Escalation playbooks for failed checks
 
@@ -99,13 +102,13 @@ Codify dashboards, alerting policies, and runbooks so that operability remains c
 
 ### Service mesh and networking patterns
 
-Architecture as Code enables platform teams to encode networking standards once and distribute them to every service (see [Chapter 7](07_containerisation.md) for container orchestration context). Istio, Linkerd, or AWS App Mesh policies can be generated from declarative manifests that specify identity requirements, mutual TLS expectations, and traffic routing rules. When services declare their intents, platform pipelines merge them with organisation-wide defaults to produce consistent yet flexible mesh configurations.
+Architecture as Code enables platform teams to encode networking standards once and distribute them to every service (see [Chapter 7](07_containerisation.md) for container orchestration context). Istio, Linkerd, or Cilium Service Mesh policies can be generated from declarative manifests that specify identity requirements, mutual TLS expectations, and traffic routing rules. When services declare their intents, platform pipelines merge them with organisation-wide defaults to produce consistent yet flexible mesh configurations.
 
 Mutual TLS, traffic shaping, and retry budgets are expressed as code alongside the service rather than configured ad-hoc in dashboards. The Istio VirtualService below illustrates how routing rules and canary traffic splits are captured declaratively, making them reviewable and auditable:
 
 ```yaml
 # Istio VirtualService — weighted canary routing for the orders service
-apiVersion: networking.istio.io/v1alpha3
+apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: orders-service
@@ -142,20 +145,20 @@ Storing these manifests in the service repository alongside application code mea
 
 Avoid accidental monoliths by defining data ownership and access rules programmatically. Each microservice should publish read models or event streams that others consume through documented interfaces. Architecture as Code repositories can generate data lineage diagrams showing where authoritative data resides, who can access it, and how retention rules are enforced. Automated tests verify that only sanctioned services connect to sensitive datasets.
 
-Distributed transactions across service boundaries require careful design to avoid tight coupling. Two well-established patterns are the **saga** and **event sourcing** approaches. A saga breaks a long-running business transaction into a sequence of local transactions, each of which publishes an event or message that triggers the next step. If any step fails, compensating transactions reverse the completed steps. Event sourcing takes a complementary approach by persisting all state changes as an append-only log of domain events; the current state is reconstructed by replaying those events, providing a complete audit trail. The following example illustrates a saga choreography step captured as an AsyncAPI event schema, making the inter-service contract explicit and version-controlled:
+Distributed transactions across service boundaries require careful design to avoid tight coupling. Two well-established patterns are the **saga** and **event sourcing** approaches. A saga breaks a long-running business transaction into a sequence of local transactions, each of which publishes an event or message that triggers the next step. If any step fails, compensating transactions reverse the completed steps. Event sourcing takes a complementary approach by persisting all state changes as an append-only log of domain events; the current state is reconstructed by replaying those events, providing a complete audit trail. The following example (`service_contracts/events/order-payment-requested.json`) illustrates a saga choreography step captured as an AsyncAPI 3.0 document: the order service declares a `send` operation for the `OrderPaymentRequested` event, making the inter-service contract explicit and version-controlled (AsyncAPI 3.0 replaced the ambiguous `publish`/`subscribe` verbs of 2.x with `send`/`receive` from the application's point of view):
 
-```yaml
-# service_contracts/events/order-payment-requested.json
+```json
 {
-  "asyncapi": "2.6.0",
+  "asyncapi": "3.0.0",
   "info": {
     "title": "Order Payment Saga",
     "version": "1.0.0"
   },
   "channels": {
-    "order/payment/requested": {
-      "publish": {
-        "message": {
+    "orderPaymentRequested": {
+      "address": "order/payment/requested",
+      "messages": {
+        "OrderPaymentRequested": {
           "name": "OrderPaymentRequested",
           "payload": {
             "type": "object",
@@ -168,6 +171,15 @@ Distributed transactions across service boundaries require careful design to avo
           }
         }
       }
+    }
+  },
+  "operations": {
+    "sendOrderPaymentRequested": {
+      "action": "send",
+      "channel": { "$ref": "#/channels/orderPaymentRequested" },
+      "messages": [
+        { "$ref": "#/channels/orderPaymentRequested/messages/OrderPaymentRequested" }
+      ]
     }
   }
 }
@@ -204,7 +216,7 @@ Many organisations evolve from monoliths or service-oriented architectures. Arch
 
 By treating migration playbooks as code, teams can rehearse transitions safely and roll back confidently when experiments expose new risks.
 
-Two categories of tooling deserve specific mention. **Feature flags** allow teams to deploy new service logic without immediately exposing it to all users. Platforms such as Unleash (open-source, self-hosted) and LaunchDarkly (managed service) enable flag definitions to be stored as code and evaluated at runtime, so that a migration can be staged progressively—first for internal users, then for a percentage of production traffic, and finally for all users—with rollback as simple as toggling a flag rather than reverting a deployment. **Schema migrations** for relational databases require equally careful management. Tools such as Flyway and Liquibase apply versioned, idempotent migration scripts from a controlled directory, ensuring that every environment passes through the same sequence of changes. Storing migration scripts in version control, running them as part of CI/CD pipelines (see [Chapter 5](05_automation_devops_cicd.md)), and gating promotion on successful migration completion prevents the schema drift that frequently undermines monolith-to-microservice transitions.
+Two categories of tooling deserve specific mention. **Feature flags** allow teams to deploy new service logic without immediately exposing it to all users. Platforms such as Unleash (open-source, self-hosted) and LaunchDarkly (managed service) enable flag definitions to be stored as code and evaluated at runtime, so that a migration can be staged progressively—first for internal users, then for a percentage of production traffic, and finally for all users—with rollback as simple as toggling a flag rather than reverting a deployment. **Schema migrations** for relational databases require equally careful management. Tools such as Flyway and Liquibase apply versioned migration scripts from a controlled directory exactly once per environment, tracking them in a schema history table so that every environment passes through the same sequence of changes. Storing migration scripts in version control, running them as part of CI/CD pipelines (see [Chapter 5](05_automation_devops_cicd.md)), and gating promotion on successful migration completion prevents the schema drift that frequently undermines monolith-to-microservice transitions.
 
 ## Summary
 
@@ -212,7 +224,8 @@ Microservices amplify organisational agility when paired with disciplined automa
 
 ## Sources
 
-1. **Cloud Native Computing Foundation (2024).** *State of Cloud Native Development 2024.* Cloud Native Computing Foundation. [Source [7]](33_references.md#source-7)
+1. **SlashData for the Cloud Native Computing Foundation (2025).** *State of Cloud Native Development Q3 2025.* CNCF, November 2025. [https://www.cncf.io/reports/state-of-cloud-native-development/](https://www.cncf.io/reports/state-of-cloud-native-development/) [Source [7]](33_references.md#source-7)
 2. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-3. **Thoughtworks Technology Radar (2024).** *Governance as Code.* Thoughtworks. [Source [2]](33_references.md#source-2)
+3. **Thoughtworks (2019–2020).** *Security policy as code.* Technology Radar, Techniques: Trial (Vol. 21, November 2019), Adopt (Vol. 23, October 2020). [https://www.thoughtworks.com/radar/techniques/security-policy-as-code](https://www.thoughtworks.com/radar/techniques/security-policy-as-code) [Source [2]](33_references.md#source-2)
+4. **AsyncAPI Initiative (2023).** *AsyncAPI Specification 3.0.0.* [https://www.asyncapi.com/docs/reference/specification/v3.0.0](https://www.asyncapi.com/docs/reference/specification/v3.0.0)
 

@@ -32,13 +32,13 @@ Compliance programmes rely on demonstrable traceability between regulatory state
 
 ### Control Mapping Matrix and "assure once, comply many"
 
-Architecture as Code operationalises the **assure once, comply many** principle by cataloguing evidence and control mappings in a reusable format. The Control Mapping Matrix links each control identifier to the assurance artefacts captured in CI and to the external frameworks they satisfy. Rather than producing bespoke spreadsheets for ISO 27001, SOC 2, NIST 800-53, GDPR, and internal policies, teams maintain one matrix that references authoritative artefacts from source control.
+Architecture as Code operationalises the **assure once, comply many** principle by cataloguing evidence and control mappings in a reusable format. The Control Mapping Matrix links each control identifier to the assurance artefacts captured in CI and to the external frameworks they satisfy. Rather than producing bespoke spreadsheets for ISO/IEC 27001 [Source [14]](33_references.md#source-14), SOC 2, NIST SP 800-53 [Source [11]](33_references.md#source-11), GDPR [Source [43]](33_references.md#source-43), and internal policies, teams maintain one matrix that references authoritative artefacts from source control.
 
 | Control ID | Control Title | Assurance Artefact(s) | ISO 27001 | SOC 2 | NIST 800-53 | GDPR | Internal |
 |------------|---------------|-----------------------|-----------|-------|--------------|------|----------|
-| SEC-ID-001 | Enforce MFA for human identities | `ci/policy-report.json`, `evidence/mfa-snapshot-202501.json` | A.5 / A.8 | CC6.1 / CC6.6 | IA-2(1), AC-2 | Article 32 | IAM-01 |
+| SEC-ID-001 | Enforce MFA for human identities | `artefacts/policy-report.json`, `artefacts/mfa-snapshot-202501.json` | A.5.15 / A.5.17 / A.8.5 | CC6.1 / CC6.6 | IA-2(1), IA-2(2), AC-2 | Article 32 | IAM-01 |
 
-In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15a_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](appendix_d_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
+In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15a_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. `SEC-ID-001` is the control identifier shared by the policy, the evidence manifest, and this matrix, whereas the Internal column records the organisation's own catalogue entry (`IAM-01`); the artefact paths are those the evidence pipeline writes to its `artefacts/` directory. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](appendix_d_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
 
 ## Cloud-native and Serverless Compliance Controls
 
@@ -58,7 +58,7 @@ The following topics outline emerging areas that influence long-term compliance 
 
 ### Quantum Computing Readiness
 
-Quantum computing will require a rethink of security models, cryptography, and resource management strategies. Post-quantum cryptography standards must be integrated into infrastructure security frameworks, and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
+Quantum computing will require a rethink of security models, cryptography, and resource management strategies. NIST's first post-quantum cryptography standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), published on 13 August 2024—must be integrated into infrastructure security frameworks [Source [85]](33_references.md#source-85), and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
 
 ### Sustainability and Green Computing
 
@@ -123,19 +123,26 @@ service: intelligent-infrastructure
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.12
   region: eu-north-1
+  stage: ${opt:stage, 'dev'}
 
   environment:
     OPTIMISATION_TABLE: ${self:service}-optimisation-${self:provider.stage}
 
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - autoscaling:*  # Note: Replace wildcard actions with least-privilege permissions in production environments
-        - cloudwatch:*
-        - ec2:*
-      Resource: "*"
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - autoscaling:*  # Note: Replace wildcard actions with least-privilege permissions in production environments
+            - cloudwatch:*
+            - ec2:*
+          Resource: "*"
+
+custom:
+  modelBucket: ${self:service}-models-${self:provider.stage}
+  tensorflowLayer: arn:aws:lambda:eu-north-1:123456789012:layer:tensorflow:1
 
 functions:
   optimiseInfrastructure:
@@ -184,10 +191,12 @@ functions:
             detail-type: ["Energy Forecast Update"]
 ```
 
-### Quantum-safe Security Implementation
+### Crypto-agility Baseline (pre-PQC)
+
+The listing below is a crypto-agility baseline rather than a post-quantum implementation: it relies on classical ECDSA P-384 and AES-256 while keeping keys and certificates rotatable, so that ML-KEM- and ML-DSA-based alternatives can be adopted as cloud services expose them [Source [85]](33_references.md#source-85).
 
 ```hcl
-# quantum-safe-infrastructure.tf
+# crypto-agility-baseline.tf
 terraform {
   required_providers {
     aws = {
@@ -201,52 +210,49 @@ terraform {
   }
 }
 
-# Post-quantum cryptography for TLS connections
-resource "tls_private_key" "quantum_safe" {
-  algorithm = "ECDSA"
-  ecdsa_curve = "P384"  # P-384 provides 192-bit classical security; migrate to NIST PQC algorithms (ML-KEM, ML-DSA) when available
+# Classical TLS key pair, kept rotatable so it can be replaced when hybrid
+# post-quantum TLS becomes available in the services that terminate traffic
+resource "tls_private_key" "crypto_agile" {
+  algorithm   = "ECDSA"
+  ecdsa_curve = "P384" # ~192-bit classical security; NIST FIPS 203/204/205 (ML-KEM, ML-DSA, SLH-DSA), published August 2024, are the migration target
 }
 
-resource "aws_acm_certificate" "quantum_safe" {
-  private_key      = tls_private_key.quantum_safe.private_key_pem
-  certificate_body = tls_self_signed_cert.quantum_safe.cert_pem
+resource "tls_self_signed_cert" "crypto_agile" {
+  private_key_pem       = tls_private_key.crypto_agile.private_key_pem
+  validity_period_hours = 8760
+  allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
+
+  subject {
+    common_name  = "api.internal.example.com"
+    organization = "Example Organisation"
+  }
+}
+
+resource "aws_acm_certificate" "crypto_agile" {
+  private_key      = tls_private_key.crypto_agile.private_key_pem
+  certificate_body = tls_self_signed_cert.crypto_agile.cert_pem
 
   lifecycle {
     create_before_destroy = true
   }
 
   tags = {
-    Name          = "Quantum-safe Certificate"
-    SecurityLevel = "Post-Quantum"
+    Name          = "Crypto-agility baseline certificate"
+    RotationOwner = "platform-security"
   }
 }
 
-# KMS keys with quantum-resistant algorithms
-resource "aws_kms_key" "quantum_safe" {
-  description = "Quantum-safe encryption key"
+# Symmetric data-encryption key: AES-256 retains 128-bit security against
+# Grover's algorithm and needs no post-quantum replacement
+resource "aws_kms_key" "crypto_agile" {
+  description = "Symmetric data-encryption key (AES-256-GCM)"
   key_usage   = "ENCRYPT_DECRYPT"
   key_spec    = "SYMMETRIC_DEFAULT"
 
-  # Enable quantum-resistant key rotation
   enable_key_rotation = true
 
   tags = {
-    QuantumSafe = "true"
-    Algorithm   = "AES-256-GCM"
-  }
-}
-
-# Quantum-safe VPC with enhanced security
-resource "aws_vpc" "quantum_safe" {
-  cidr_block           = "10.0.0.0/16"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-
-  # Enforce quantum-safe network management
-  tags = {
-    Name       = "Quantum-safe VPC"
-    Encryption = "Mandatory"
-    Protocol   = "TLS1.3-PQC"
+    Algorithm = "AES-256-GCM"
   }
 }
 ```
@@ -259,14 +265,13 @@ Looking forward, teams should monitor speculative developments such as quantum r
 
 ## Moving from Governance to Delivery
 
-With security controls, policy frameworks, and compliance mechanisms established, we now shift focus to the practical delivery and operational excellence that sustain Architecture as Code implementations. Having established the "what" and "why" of governance, the next part explores the "how" of reliable, repeatable delivery.
+Part C closes with [Evidence as Code and Continuous Assurance](15a_evidence_as_code.md), which shows how the artefacts referenced in this chapter's Control Mapping Matrix are generated, packaged, and published by the delivery pipeline. With security controls, policy frameworks, compliance mechanisms, and evidence pipelines established, Part D then shifts focus to the practical delivery and operational excellence that sustain Architecture as Code implementations. Having established the "what" and "why" of governance, the next part explores the "how" of reliable, repeatable delivery.
 
 Part D examines the testing strategies, implementation patterns, cost optimisation techniques, and migration approaches that organisations need to deliver Architecture as Code successfully. [Chapter 13 on Testing Strategies](13_testing_strategies.md) builds on the security and compliance frameworks we've established, showing how to validate that infrastructure meets both functional and regulatory requirements. The subsequent chapters demonstrate practical implementation, financial optimisation, and migration strategies that bring together all the elements covered so far.
 
 ## Sources
 
-1. **IEEE Computer Society.** *Quantum Computing Impact on Infrastructure.* IEEE Quantum Computing Standards.
-2. **Green Software Foundation.** *Sustainable Infrastructure Patterns.* Green Software Principles.
-3. **NIST.** *Post-Quantum Cryptography Standards.* National Institute of Standards and Technology.
-4. **Cloud Native Computing Foundation.** *Future of Cloud Native Infrastructure.* CNCF Research.
-5. **Gartner Research (2024).** *Infrastructure and Operations Technology Trends 2024.* Gartner IT Infrastructure Reports.
+1. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organization for Standardization. [Source [14]](33_references.md#source-14)
+2. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organizations.* NIST Special Publication 800-53, Revision 5, September 2020 (updated 10 December 2020). [Source [11]](33_references.md#source-11)
+3. **European Parliament and Council (2016).** *Regulation (EU) 2016/679 (General Data Protection Regulation).* Official Journal of the European Union, L 119, 4 May 2016. [https://eur-lex.europa.eu/eli/reg/2016/679/oj](https://eur-lex.europa.eu/eli/reg/2016/679/oj) [Source [43]](33_references.md#source-43)
+4. **NIST (2024).** *NIST Releases First 3 Finalized Post-Quantum Encryption Standards* (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA). News release, 13 August 2024. [https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards](https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards) [Source [85]](33_references.md#source-85)

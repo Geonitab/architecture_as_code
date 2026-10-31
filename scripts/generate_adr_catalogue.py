@@ -118,9 +118,11 @@ def render_catalogue(records: list[AdrRecord]) -> str:
         lines.append(_detailed_section(record))
         lines.append("")
 
+    # "- - -" and an underscore emphasis keep Pandoc from reading "---" followed by a
+    # line starting with "*" as a YAML metadata block (YAML alias error in the EPUB build).
     lines.append(
-        "---\n"
-        "*Generated automatically via `python3 scripts/generate_adr_catalogue.py`. Do not edit manually.*"
+        "- - -\n"
+        "_Generated automatically via `python3 scripts/generate_adr_catalogue.py`. Do not edit manually._"
     )
 
     return "\n".join(lines).rstrip() + "\n"

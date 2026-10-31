@@ -1,34 +1,32 @@
-# Modern Best Practices and Lessons Learned {#best-practices}
+# Best Practices and Lessons Learned {#best-practices}
 
 Architecture as Code practices evolve rapidly as teams balance platform stability, compliance expectations, and product agility. The most successful organisations pair disciplined engineering routines with human-centred ways of working, ensuring that automation never removes context or accountability. This chapter distils contemporary lessons learned from teams operating at scale across finance, public services, healthcare, media, and high-growth technology sectors. Every section emphasises globally applicable guidance while using British English terminology.
 
 ## A Holistic Landscape of Practice Areas
 
-*(Note: Figure 24.1, showing an overview of the seven practice clusters, will be inserted in final production.)*
-
 The following mind maps present the interconnected practice areas that underpin resilient Architecture as Code delivery, helping teams navigate improvements without treating topics in isolation.
 
-![Figure 24.2 – Code organisation and module design](images/mindmap_22a_code_organization.png)
+![Figure 24.1 – Code organisation and module design](images/mindmap_22a_code_organization.png)
 
-*Figure 24.2 shows best practices for repository structure, module design, and versioning strategies.*
+*Figure 24.1 shows best practices for repository structure, module design, and versioning strategies.*
 
-![Figure 24.3 – Security and compliance patterns](images/mindmap_22b_security_compliance.png)
+![Figure 24.2 – Security and compliance patterns](images/mindmap_22b_security_compliance.png)
 
-*Figure 24.3 illustrates security-first design, regulatory compliance, and secret management approaches.*
+*Figure 24.2 illustrates security-first design, regulatory compliance, and secret management approaches.*
 
-![Figure 24.4 – Performance and scaling strategies](images/mindmap_22c_performance.png)
+![Figure 24.3 – Performance and scaling strategies](images/mindmap_22c_performance.png)
 
-*Figure 24.4 demonstrates optimisation, multi-region deployment, and observability practices.*
+*Figure 24.3 demonstrates optimisation, multi-region deployment, and observability practices.*
 
-![Figure 24.5 – Governance and policy frameworks](images/mindmap_22d_governance.png)
+![Figure 24.4 – Governance and policy frameworks](images/mindmap_22d_governance.png)
 
-*Figure 24.5 presents governance frameworks, policy-as-code implementation, and sustainability considerations.*
+*Figure 24.4 presents governance frameworks, policy-as-code implementation, and sustainability considerations.*
 
-![Figure 24.6 – Global best practices and continuous improvement](images/mindmap_22e_global_practices.png)
+![Figure 24.5 – Global best practices and continuous improvement](images/mindmap_22e_global_practices.png)
 
-*Figure 24.6 highlights cross-cultural collaboration, open source contributions, and continuous improvement cycles.*
+*Figure 24.5 highlights cross-cultural collaboration, open source contributions, and continuous improvement cycles.*
 
-Figure 24.2 introduces the seven practice clusters explored throughout this chapter. The mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
+The table below introduces the seven practice clusters explored throughout this chapter, and each mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
 
 | Practice Cluster | Focus Area | Key Capabilities | Maturity Indicator |
 |-----------------|------------|------------------|-------------------|
@@ -42,7 +40,7 @@ Figure 24.2 introduces the seven practice clusters explored throughout this chap
 
 ## Code Organisation and Modularity
 
-Establishing an orderly codebase is the first visible signal of a mature Architecture as Code programme. Clear structure shortens feedback loops, accelerates onboarding, and reduces the probability of accidental change in production environments.
+Establishing an orderly codebase is the first visible signal of a mature Architecture as Code programme; HashiCorp's recommended practices for Terraform likewise describe provisioning as advancing through stages of operational maturity [Source [123]](33_references.md#source-123). Clear structure shortens feedback loops, accelerates onboarding, and reduces the probability of accidental change in production environments.
 
 ### Repository Structure Principles
 
@@ -62,11 +60,11 @@ Security-first thinking remains essential in every jurisdiction. Regulatory expe
 
 ### Security-by-Design Foundations
 
-Architectural baselines adopt least-privilege policies, network segmentation, and zero-trust controls by default. Platform teams implement guardrails as reusable templates rather than bespoke scripts, combining infrastructure definitions with security policies and validation tests.
+Architectural baselines adopt least-privilege policies, network segmentation, and zero-trust controls by default, in line with published baselines such as the NCSC's cloud security principles [Source [128]](33_references.md#source-128). Platform teams implement guardrails as reusable templates rather than bespoke scripts, combining infrastructure definitions with security policies and validation tests.
 
 ### Compliance Automation
 
-Codified controls translate regulatory obligations—such as data residency, retention limits, and encryption requirements—into enforceable policies. Automated assessments run during every pipeline execution, supplying auditable evidence and reducing the manual workload associated with external reviews. Mature programmes align these controls with international frameworks including ISO/IEC 27001, NIST 800-series guidance, and regional privacy legislation.
+Codified controls translate regulatory obligations—such as data residency, retention limits, and encryption requirements—into enforceable policies. Automated assessments run during every pipeline execution, supplying auditable evidence and reducing the manual workload associated with external reviews. Mature programmes align these controls with international frameworks including ISO/IEC 27001:2022 [Source [14]](33_references.md#source-14), NIST 800-series guidance, and regional privacy legislation.
 
 ### Secret and Key Management
 
@@ -102,7 +100,7 @@ Policies live alongside the infrastructure artefacts they protect. Enforcement p
 
 ### Financial Management
 
-FinOps disciplines incorporate budgets into infrastructure definitions. Tagged resources, automated shutdown rules, and predictive spending alerts maintain fiscal control without requiring manual spreadsheet audits. Shared savings targets encourage teams to reinvest efficiency gains into innovation initiatives.
+FinOps disciplines, as codified in the FinOps Foundation's framework [Source [124]](33_references.md#source-124), incorporate budgets into infrastructure definitions. Tagged resources, automated shutdown rules, and predictive spending alerts maintain fiscal control without requiring manual spreadsheet audits. Shared savings targets encourage teams to reinvest efficiency gains into innovation initiatives.
 
 ### Change Management
 
@@ -145,7 +143,7 @@ Regular service reviews examine performance metrics, support responsiveness, and
 Architecture teams thrive when diagrams and narrative assets share the same governance standards as application code. To that end, maintain a living Structurizr workspace and reinforce shared practices:
 
 - **Start from the curated workspace** – `docs/examples/structurizr/aac_reference_workspace.dsl` reflects the C4 hierarchy described in Chapter 06. Encourage new teams to clone this definition so that terminology, styles, and relationship semantics remain consistent.
-- **Automate every validation** – Embed `structurizr.sh validate` and `structurizr.sh export` in local pre-commit hooks or repository CI workflows. Automation ensures that diagram assets regenerate on demand and prevents last-minute surprises during release reviews.
+- **Automate every validation** – Embed the Structurizr `validate` and `export` commands (run from the `structurizr/structurizr` Docker image, which replaces the end-of-life Structurizr CLI) in local pre-commit hooks or repository CI workflows. Automation ensures that diagram assets regenerate on demand and prevents last-minute surprises during release reviews.
 - **Treat diagram reviews as code reviews** – Pull requests should highlight the change intent, link to any relevant Architecture Decision Records, and include before/after renders. Reviewers confirm that tags, layout, and element descriptions align with repository conventions and that the change maps to an approved initiative.
 - **Close the feedback loop** – When changes land, run `python3 generate_book.py && docs/build_book.sh` to refresh downstream artefacts. Sharing the resulting PNGs or Structurizr workspace exports during showcases helps teams internalise the latest architecture story.
 
@@ -154,7 +152,7 @@ Architecture teams thrive when diagrams and narrative assets share the same gove
 Avoiding a single Structurizr maintainer depends on deliberate knowledge transfer. Blend the following practices with the playbook in Chapter 06 to grow confident contributors:
 
 - **Rotating pairing circuits** – Schedule monthly pairing sessions between experienced workspace curators and new joiners. Each pairing reviews open issues, applies naming conventions, and rehearses the automation scripts so skills diffuse across teams.
-- **Structured learning paths** – Catalogue on-demand recordings of Structurizr bootcamps, quick-reference sheets for DSL includes, and troubleshooting guides for Structurizr Lite and the CLI. Associate each asset with the competency framework in this chapter so managers can target coaching.
+- **Structured learning paths** – Catalogue on-demand recordings of Structurizr bootcamps, quick-reference sheets for DSL includes, and troubleshooting guides for `structurizr local` (the successor to Structurizr Lite) and the `export` command. Associate each asset with the competency framework in this chapter so managers can target coaching.
 - **Visible adoption metrics** – Track the number of contributors updating the workspace, the proportion of views reusing layout templates, and the cycle time for approved diagram changes. Publish the metrics on the enablement dashboards used for other practice clusters to highlight when additional support is required.
 - **Community decision logs** – Maintain a changelog that records updates to naming conventions, layout templates, or automation scripts. Link the log from pull request templates so reviewers can confirm that discussions and outcomes are transparent.
 
@@ -194,9 +192,9 @@ Strategic partnerships with academic institutions, industry consortia, and civic
 
 ## Continuous Improvement and Innovation
 
-![Figure 24.7 – Continuous improvement feedback loops](images/diagram_22_continuous_improvement.png)
+![Figure 24.6 – Continuous improvement feedback loops](images/diagram_22_continuous_improvement.png)
 
-*Figure 24.7 shows how insight, experimentation, and delivery reinforce one another to sustain long-term improvement.*
+*Figure 24.6 shows how insight, experimentation, and delivery reinforce one another to sustain long-term improvement.*
 
 Continuous improvement is the connective tissue that keeps Architecture as Code programmes relevant. Feedback loops capture production telemetry, customer sentiment, regulatory changes, and retrospective findings. Improvement backlogs convert those signals into incremental experiments, each evaluated against hypothesis-driven success criteria. Innovation thrives when metrics balance reliability, speed, sustainability, and equity outcomes.
 
@@ -224,9 +222,8 @@ Part G examines emerging trends and concludes our journey through Architecture a
 
 ## Sources
 
-1. **Cloud Native Computing Foundation (2024).** *Infrastructure as Code Best Practices.* CNCF.
-2. **HashiCorp (2024).** *Terraform Maturity Model.* HashiCorp Documentation.
-3. **FinOps Foundation (2024).** *Cloud Financial Management Playbook.* FinOps Foundation.
-4. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
-5. **UK National Cyber Security Centre (2023).** *Security Principles for Cloud-Hosted Services.* NCSC.
-6. **World Economic Forum (2024).** *Global Risks Report.* WEF.
+1. **HashiCorp (n.d.).** *Learn Terraform recommended practices.* HashiCorp Developer. [https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices) (accessed 2026-10-30). [Source [123]](33_references.md#source-123)
+2. **FinOps Foundation (n.d.).** *FinOps Framework.* FinOps Foundation. [https://www.finops.org/framework/](https://www.finops.org/framework/) (accessed 2026-10-30). [Source [124]](33_references.md#source-124)
+3. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information security, cybersecurity and privacy protection — Information security management systems — Requirements.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
+4. **National Cyber Security Centre (2023).** *Cloud security guidance: The cloud security principles* (version 2.1). NCSC, 7 June 2023. [https://www.ncsc.gov.uk/collection/cloud/the-cloud-security-principles](https://www.ncsc.gov.uk/collection/cloud/the-cloud-security-principles) [Source [128]](33_references.md#source-128)
+5. **World Economic Forum (2024).** *The Global Risks Report 2024* (19th edition). WEF, January 2024. [https://www.weforum.org/publications/global-risks-report-2024/](https://www.weforum.org/publications/global-risks-report-2024/)

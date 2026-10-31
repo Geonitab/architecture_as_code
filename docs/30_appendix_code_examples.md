@@ -2,9 +2,9 @@
 
 # Code examples and technical architecture as code implementations {#appendix-code-examples}
 
-Appendix A collects every code example, configuration file, and technical implementation referenced throughout the book. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.
+Appendix A collects the extended code listings, configuration files, and technical implementations that the chapters refer to by identifier. The examples are organised by theme so that readers can quickly locate the implementation that matches their current need.
 
-*This appendix acts as a practical reference library for all technical demonstrations in the book. Each code listing is
+*This appendix acts as a practical reference library for the book's extended technical demonstrations. Each code listing is
 categorised and labelled with backlinks to the relevant chapter so the narrative and executable artefacts stay in sync.*
 
 ## Navigating the appendix
@@ -15,11 +15,13 @@ The code examples are grouped into the following categories:
 2. **[Infrastructure as Code (Architecture as Code) – Terraform](#terraform-iac)**
 3. **[Infrastructure as Code (Architecture as Code) – CloudFormation](#cloudformation-architecture-as-code)**
 4. **[Automation scripts and tooling](#automation-scripts)**
-5. **[Security and compliance](#security-compliance)**
-6. **[Testing and validation](#testing-validation)**
-7. **[Configuration files](#configuration)**
-8. **[Shell scripts and utilities](#shell-scripts)**
-9. **[Structurizr workspace examples](#structurizr-workspaces)**
+5. **[Configuration files](#configuration)**
+6. **[Testing strategies (Chapter 13)](#chapter-13-testing)**
+7. **[Organisational change and team structures (Chapter 17)](#organisational-change)**
+8. **[Architecture as Code in practice (Chapter 14)](#chapter-14-implementations)**
+9. **[Cost optimisation and resource management (Chapter 15)](#chapter-15-implementations)**
+10. **[Security and compliance (Chapter 10)](#security-compliance)**
+11. **[Structurizr workspace examples (Chapter 6)](#structurizr-workspaces)**
 
 Each example has a unique identifier in the format `[chapter]_CODE_[NUMBER]` for easy cross-reference with the main text.
 
@@ -28,7 +30,7 @@ Each example has a unique identifier in the format `[chapter]_CODE_[NUMBER]` for
 This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations.
 
 ### 05_CODE_1: GDPR-compliant CI/CD pipeline for organisations {#05_code_1}
-*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Infrastructure as Code](05_automation_devops_cicd.md)*
 
 ```yaml
 # .github/workflows/architecture-as-code-pipeline.yml
@@ -49,7 +51,7 @@ on:
       - 'modules/**'
 
 env:
-  TF_VERSION: '1.6.0'
+  TF_VERSION: '1.17.1'
   ORGANISATION_NAME: ${{ vars.ORGANISATION_NAME }}
   ENVIRONMENT: ${{ github.ref_name == 'main' && 'production' || github.ref_name }}
   COST_CENTRE: ${{ vars.COST_CENTRE }}
@@ -61,17 +63,16 @@ jobs:
   gdpr-compliance-check:
     name: GDPR Compliance Validation
     runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, 'personal-data') || contains(github.event.head_commit.message, 'gdpr')
-    # IMPORTANT: Triggering a compliance scan based on commit message keywords is
-    # not a reliable compliance gate. In production, run compliance scans on every
-    # commit to sensitive paths, or use dedicated policy tools (checkov, tfsec,
-    # terrascan) as required CI gates. This example is illustrative only.
+    # The scan runs on every push and pull request that touches infrastructure
+    # paths. It is deliberately not gated on commit-message keywords:
+    # github.event.head_commit only exists for push events, and keywords are
+    # not a reliable compliance signal. Complement this pattern scan with
+    # dedicated policy tools (Checkov, Trivy, Conftest) as required CI gates.
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: GDPR data discovery scan
@@ -113,10 +114,10 @@ jobs:
 ```
 
 ### 05_CODE_2: Jenkins pipeline for organisations with GDPR compliance {#05_code_2}
-*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Infrastructure as Code](05_automation_devops_cicd.md)*
 
-```yaml
-# jenkins/architecture-as-code-pipeline.groovy
+```groovy
+// jenkins/architecture-as-code-pipeline.groovy
 // Jenkins pipeline for organisations with GDPR compliance
 
 pipeline {
@@ -145,9 +146,10 @@ pipeline {
         AWS_DEFAULT_REGION = 'eu-west-1'
         GDPR_COMPLIANCE = 'enabled'
         DATA_RESIDENCY = 'EU'
-        TERRAFORM_VERSION = '1.6.0'
+        TERRAFORM_VERSION = '1.17.1'
+        CONFTEST_VERSION = '0.64.0'
         COST_CURRENCY = 'EUR'
-        AUDIT_RETENTION_YEARS = '7'  // Legal requirement for audit retention
+        AUDIT_RETENTION_YEARS = '7'  // e.g. seven years under national accounting legislation
     }
 
     stages {
@@ -210,208 +212,229 @@ pipeline {
                         }
                     }
                 }
-                
+
                 stage('Cost Center Validation') {
                     steps {
                         script {
                             echo "# Billing: Validating cost centre for accounting..."
-                            
+
                             if (!params.COST_CENTER.matches(/CC-[A-Z]{2,}-\d{3}/)) {
                                 error("Invalid cost centre format. Use: CC-XX-nnn")
                             }
-                            
+
                             // Validate the cost centre exists in the organisation's systems
                             def validCostCenters = [
                                 'CC-IT-001', 'CC-DEV-002', 'CC-OPS-003', 'CC-SEC-004'
                             ]
-                            
+
                             if (!validCostCenters.contains(params.COST_CENTER)) {
                                 error("Unknown cost centre: ${params.COST_CENTER}")
                             }
-                            
+
                             echo "# Pass: Cost centre validated: ${params.COST_CENTER}"
                         }
                     }
                 }
             }
         }
-        
+
         stage('Code Quality Analysis') {
             parallel {
                 stage('Terraform Validation') {
                     steps {
                         script {
                             echo "🔧 Terraform syntax and formatting..."
-                            
+
                             // Format check
                             sh "terraform fmt -check -recursive infrastructure/"
-                            
-                            // Syntax validation
-                            dir('infrastructure/environments/${params.ENVIRONMENT}') {
+
+                            // Syntax validation. Double quotes are required: Groovy only
+                            // interpolates ${params.ENVIRONMENT} inside GStrings.
+                            dir("infrastructure/environments/${params.ENVIRONMENT}") {
                                 sh """
                                     terraform init -backend=false
                                     terraform validate
                                 """
                             }
-                            
+
                             echo "# Pass: Terraform validation completed"
                         }
                     }
                 }
-                
+
                 stage('Security Scanning') {
                     steps {
                         script {
                             echo "# Auth: Security scan with Checkov..."
-                            
+
+                            // -o selects the report format and --output-file-path the output
+                            // folder; Checkov writes the JSON report to <folder>/results_json.json
                             sh """
                                 pip install checkov
                                 checkov -d infrastructure/ \
                                     --framework terraform \
-                                    --output json \
-                                    --output-file checkov-results.json \
+                                    -o json \
+                                    --output-file-path checkov-results \
                                     --soft-fail
                             """
-                            
-                            // Analyse critical security issues
-                            def results = readJSON file: 'checkov-results.json'
-                            def criticalIssues = results.results.failed_checks.findAll { 
-                                it.severity == 'CRITICAL' 
+
+                            // Checkov only fills the "severity" field with metadata downloaded
+                            // from the Prisma Cloud platform, so gate on explicit check IDs instead
+                            def criticalChecks = [
+                                'CKV_AWS_16',  // RDS storage encrypted at rest
+                                'CKV_AWS_17',  // RDS instance not publicly accessible
+                                'CKV_AWS_19',  // S3 bucket encrypted at rest
+                                'CKV_AWS_24',  // No SSH ingress from 0.0.0.0/0
+                                'CKV_AWS_25'   // No RDP ingress from 0.0.0.0/0
+                            ]
+                            def results = readJSON file: 'checkov-results/results_json.json'
+                            def criticalIssues = results.results.failed_checks.findAll {
+                                criticalChecks.contains(it.check_id)
                             }
-                            
+
                             if (criticalIssues.size() > 0) {
                                 echo "# WARNING: Critical security issues found:"
                                 criticalIssues.each { issue ->
-                                    echo "- ${issue.check_name}: ${issue.file_path}"
+                                    echo "- ${issue.check_id} ${issue.check_name}: ${issue.file_path}"
                                 }
-                                
+
                                 if (params.ENVIRONMENT == 'production') {
                                     error("Critical security issues must be resolved before production deployment")
                                 }
                             }
-                            
+
                             echo "# Pass: Security scan completed"
                         }
                     }
                 }
-                
+
                 stage('Policy Validation') {
                     steps {
                         script {
                             echo "📋 Validating organisational policies..."
-                            
-                            // Create OPA policies
+
+                            // OPA 1.0 syntax (if/contains); import rego.v1 keeps the policy
+                            // valid on OPA 0.59 and later as well
                             writeFile file: 'policies/a-tagging.rego', text: """
                                 package a.tagging
-                                
+
+                                import rego.v1
+
                                 required_tags := [
-                                    "Environment", "CostCenter", "Organization", 
+                                    "Environment", "CostCenter", "Organization",
                                     "Country", "GDPRCompliant", "DataResidency"
                                 ]
-                                
-                                deny[msg] {
-                                    input.resource[resource_type][name]
-                                    resource_type != "data"
-                                    not input.resource[resource_type][name].tags
+
+                                deny contains msg if {
+                                    some resource_type, name
+                                    resource := input.resource[resource_type][name]
+                                    not resource.tags
                                     msg := sprintf("Resource %s.%s is missing tags", [resource_type, name])
                                 }
-                                
-                                deny[msg] {
-                                    input.resource[resource_type][name].tags
-                                    required_tag := required_tags[_]
-                                    not input.resource[resource_type][name].tags[required_tag]
+
+                                deny contains msg if {
+                                    some resource_type, name
+                                    tags := input.resource[resource_type][name].tags
+                                    some required_tag in required_tags
+                                    not tags[required_tag]
                                     msg := sprintf("Resource %s.%s is missing required tag: %s", [resource_type, name, required_tag])
                                 }
                             """
-                            
+
+                            // "conftest test" evaluates policies against input files ("verify" only
+                            // runs Rego unit tests). The namespace must match the package (the default
+                            // is "main"), and a non-zero exit code fails the stage when a rule denies.
                             sh """
-                                curl -L https://github.com/open-policy-agent/conftest/releases/download/v0.46.0/conftest_0.46.0_Linux_x86_64.tar.gz | tar xz
+                                curl -L https://github.com/open-policy-agent/conftest/releases/download/v${env.CONFTEST_VERSION}/conftest_${env.CONFTEST_VERSION}_Linux_x86_64.tar.gz | tar xz
                                 sudo mv conftest /usr/local/bin
-                                
-                                find infrastructure/ -name "*.tf" -exec conftest verify --policy policies/ {} \\;
+
+                                conftest test --policy policies/ --namespace a.tagging --parser hcl2 infrastructure/
                             """
-                            
+
                             echo "# Pass: Policy validation completed"
                         }
                     }
                 }
             }
         }
-        
+
         stage('Cost Control') {
             steps {
                 script {
                     echo "📊 Calculating infrastructure costs in euros..."
-                    
-                    // Set up Infracost with currency support
+
+                    // The install script in infracost/infracost installs the 0.10.x CLI (the 2.x
+                    // CLI lives in infracost/cli). "breakdown" has no --currency flag: the
+                    // currency is stored once in the CLI configuration. INFRACOST_API_KEY must
+                    // be supplied as a Jenkins credential.
                     sh """
                         curl -fsSL https://raw.githubusercontent.com/infracost/infracost/master/scripts/install.sh | sh
                         export PATH=\$PATH:\$HOME/.local/bin
-                        
+                        infracost configure set currency ${env.COST_CURRENCY}
+
                         cd infrastructure/environments/${params.ENVIRONMENT}
                         terraform init -backend=false
-                        
+
                         infracost breakdown \\
                             --path . \\
-                            --currency EUR \\
                             --format json \\
                             --out-file ../../../cost-estimate.json
-                        
+
                         infracost output \\
                             --path ../../../cost-estimate.json \\
                             --format table \\
                             --out-file ../../../cost-summary.txt
                     """
-                    
+
                     // Validate costs against budget thresholds
                     def costData = readJSON file: 'cost-estimate.json'
                     def monthlyCostEUR = costData.totalMonthlyCost as Double
-                    
+
                     def budgetLimits = [
                         'development': 5000,
                         'staging': 15000,
                         'production': 50000
                     ]
-                    
+
                     def maxBudget = budgetLimits[params.ENVIRONMENT] ?: 10000
-                    
+
                     echo "Calculated monthly cost: ${monthlyCostEUR} EUR"
                     echo "Budget for ${params.ENVIRONMENT}: ${maxBudget} EUR"
-                    
+
                     if (monthlyCostEUR > maxBudget) {
                         def overBudget = monthlyCostEUR - maxBudget
                         echo "# WARNING: Budget exceeded by ${overBudget} EUR!"
-                        
+
                         if (params.ENVIRONMENT == 'production' && !params.FORCE_DEPLOYMENT) {
                             error("Budget overrun not permitted for production without CFO approval")
                         }
                     }
-                    
+
                     // Generate the cost report
                     def costReport = """
-                    # Cost Report - ${env.ORGANIZATION_NAME}
-                    
+                    # Cost Report - ${env.ORGANISATION_NAME}
+
                     **Environment:** ${params.ENVIRONMENT}
                     **Date:** ${new Date().format('yyyy-MM-dd HH:mm')} (local time)
                     **Cost centre:** ${params.COST_CENTER}
-                    
+
                     ## Monthly cost
                     - **Total:** ${monthlyCostEUR} EUR
                     - **Budget:** ${maxBudget} EUR
                     - **Status:** ${monthlyCostEUR <= maxBudget ? '# Pass: Within budget' : '# FAIL: over budget'}
-                    
+
                     ## Cost breakdown
                     ${readFile('cost-summary.txt')}
-                    
+
                     ## Recommendations
                     - Use Reserved Instances for production workloads
                     - Enable auto-scaling for development environments
                     - Implement scheduled shutdowns for non-critical systems
                     """
-                    
+
                     writeFile file: 'cost-report-a.md', text: costReport
                     archiveArtifacts artifacts: 'cost-report-a.md', fingerprint: true
-                    
+
                     echo "# Pass: Cost control completed"
                 }
             }
@@ -421,38 +444,48 @@ pipeline {
 ```
 
 ### 05_CODE_3: Terratest for VPC implementation {#05_code_3}
-*Referenced from chapter 5: [Automation, DevOps and CI/CD for Architecture as Code](05_automation_devops_cicd.md)*
+*Referenced from chapter 5: [Automation, DevOps and CI/CD for Infrastructure as Code](05_automation_devops_cicd.md)*
 
 ```go
 // test/a_vpc_test.go
 // Terratest suite for VPC implementation with GDPR compliance
+//
+// Expected outputs of the module under test: vpc_id, aws_region, kms_key_arn
+// and flow_log_group_name. Uses AWS SDK for Go v2 (v1 reached end of support
+// on 31 July 2025) through the clients that Terratest builds.
 
 package test
 
 import (
-    "encoding/json"
+    "context"
     "fmt"
     "strings"
     "testing"
     "time"
 
-    "github.com/aws/aws-sdk-go/aws"
-    "github.com/aws/aws-sdk-go/aws/session"
-    "github.com/aws/aws-sdk-go/service/ec2"
-    "github.com/aws/aws-sdk-go/service/cloudtrail"
+    awssdk "github.com/aws/aws-sdk-go-v2/aws"
+    "github.com/aws/aws-sdk-go-v2/service/cloudtrail"
+    "github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs"
+    "github.com/aws/aws-sdk-go-v2/service/ec2"
+    ec2types "github.com/aws/aws-sdk-go-v2/service/ec2/types"
+    "github.com/aws/aws-sdk-go-v2/service/kms"
+    kmstypes "github.com/aws/aws-sdk-go-v2/service/kms/types"
+    "github.com/gruntwork-io/terratest/modules/aws"
     "github.com/gruntwork-io/terratest/modules/terraform"
-    "github.com/gruntwork-io/terratest/modules/test-structure"
     "github.com/stretchr/testify/assert"
     "github.com/stretchr/testify/require"
 )
 
+// allowedRegions lists the EU regions approved for personal data (GDPR Articles 44–49)
+var allowedRegions = []string{"eu-west-1", "eu-central-1", "eu-west-2", "eu-north-1"}
+
 // EuropeanVPCTestSuite defines the reusable Terratest suite for the VPC implementation
 type EuropeanVPCTestSuite struct {
     TerraformOptions *terraform.Options
-    AWSSession       *session.Session
-    OrganizationName string
+    Region           string
+    OrganisationName string
     Environment      string
-    CostCenter       string
+    CostCentre       string
 }
 
 // TestEuropeanVPCGDPRCompliance validates GDPR compliance expectations for the VPC implementation
@@ -491,25 +524,27 @@ func TestEuropeanVPCGDPRCompliance(t *testing.T) {
 func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuite {
     // Unique test identifier
     uniqueID := strings.ToLower(fmt.Sprintf("test-%d", time.Now().Unix()))
-    organizationName := fmt.Sprintf("a-org-%s", uniqueID)
+    organisationName := fmt.Sprintf("a-org-%s", uniqueID)
+    region := "eu-west-1"
 
     // Terraform configuration
     terraformOptions := &terraform.Options{
         TerraformDir: "../infrastructure/modules/vpc",
         Vars: map[string]interface{}{
-            "organization_name":     organizationName,
-            "environment":          environment,
-            "cost_center":          "CC-TEST-001",
-            "gdpr_compliance":      true,
-            "data_residency":       "EU",
-            "enable_flow_logs":     true,
-            "enable_encryption":    true,
-            "audit_logging":        true,
+            "organization_name": organisationName,
+            "environment":       environment,
+            "aws_region":        region,
+            "cost_center":       "CC-TEST-001",
+            "gdpr_compliance":   true,
+            "data_residency":    "EU",
+            "enable_flow_logs":  true,
+            "enable_encryption": true,
+            "audit_logging":     true,
         },
         BackendConfig: map[string]interface{}{
             "bucket": "a-org-terraform-test-state",
             "key":    fmt.Sprintf("test/%s/terraform.tfstate", uniqueID),
-            "region": "eu-west-1",
+            "region": region,
         },
         RetryableTerraformErrors: map[string]string{
             ".*": "Transient error - retrying...",
@@ -518,17 +553,12 @@ func setupEuropeanVPCTest(t *testing.T, environment string) *EuropeanVPCTestSuit
         TimeBetweenRetries: 5 * time.Second,
     }
 
-    // AWS session for EU West region
-    awsSession := session.Must(session.NewSession(&aws.Config{
-        Region: aws.String("eu-west-1"),
-    }))
-
     return &EuropeanVPCTestSuite{
         TerraformOptions: terraformOptions,
-        AWSSession:       awsSession,
-        OrganizationName: organizationName,
+        Region:           region,
+        OrganisationName: organisationName,
         Environment:      environment,
-        CostCenter:       "CC-TEST-001",
+        CostCentre:       "CC-TEST-001",
     }
 }
 
@@ -538,136 +568,121 @@ func testVPCFlowLogsEnabled(t *testing.T, suite *EuropeanVPCTestSuite) {
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
     require.NotEmpty(t, vpcID, "VPC ID should not be empty")
 
-    // AWS EC2 client
-    ec2Client := ec2.New(suite.AWSSession)
+    // AWS EC2 client (SDK v2) built by Terratest
+    ec2Client := aws.NewEc2Client(t, suite.Region)
 
-    // Check Flow Logs configuration
-    flowLogsInput := &ec2.DescribeFlowLogsInput{
-        Filters: []*ec2.Filter{
+    // Check Flow Logs configuration; the input field is Filter, not Filters
+    flowLogsOutput, err := ec2Client.DescribeFlowLogs(context.Background(), &ec2.DescribeFlowLogsInput{
+        Filter: []ec2types.Filter{
             {
-                Name:   aws.String("resource-id"),
-                Values: []*string{aws.String(vpcID)},
+                Name:   awssdk.String("resource-id"),
+                Values: []string{vpcID},
             },
         },
-    }
-
-    flowLogsOutput, err := ec2Client.DescribeFlowLogs(flowLogsInput)
+    })
     require.NoError(t, err, "Failed to describe VPC flow logs")
 
     // Validate that VPC Flow Logs are enabled
-    assert.Greater(t, len(flowLogsOutput.FlowLogs), 0, "VPC Flow Logs should be enabled for GDPR compliance")
+    require.NotEmpty(t, flowLogsOutput.FlowLogs, "VPC Flow Logs should be enabled for GDPR compliance")
 
     for _, flowLog := range flowLogsOutput.FlowLogs {
-        assert.Equal(t, "Active", *flowLog.FlowLogStatus, "Flow log should be active")
-        assert.Equal(t, "ALL", *flowLog.TrafficType, "Flow log should capture all traffic for compliance")
+        assert.Equal(t, "ACTIVE", awssdk.ToString(flowLog.FlowLogStatus), "Flow log should be active")
+        assert.Equal(t, ec2types.TrafficTypeAll, flowLog.TrafficType, "Flow log should capture all traffic for compliance")
     }
 
     t.Logf("# Pass: VPC Flow Logs enabled for GDPR compliance: %s", vpcID)
 }
 
-// testEncryptionAtRest validates that all storage is encrypted according to GDPR requirements
+// testEncryptionAtRest validates that the audit data written by the module is encrypted with a customer managed key
 func testEncryptionAtRest(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Get KMS key from Terraform output
     kmsKeyArn := terraform.Output(t, suite.TerraformOptions, "kms_key_arn")
     require.NotEmpty(t, kmsKeyArn, "KMS key ARN should not be empty")
 
-    // Validate that KMS key is from EU West region
-    assert.Contains(t, kmsKeyArn, "eu-west-1", "KMS key should be in EU West region for data residency")
+    // The key must be an enabled customer managed key in the EU region
+    kmsClient := aws.NewKmsClient(t, suite.Region)
+    keyOutput, err := kmsClient.DescribeKey(context.Background(), &kms.DescribeKeyInput{
+        KeyId: awssdk.String(kmsKeyArn),
+    })
+    require.NoError(t, err, "Failed to describe KMS key")
+    assert.True(t, keyOutput.KeyMetadata.Enabled, "KMS key must be enabled")
+    assert.Equal(t, kmstypes.KeyManagerTypeCustomer, keyOutput.KeyMetadata.KeyManager, "Encryption must use a customer managed key")
+    assert.Contains(t, kmsKeyArn, suite.Region, "KMS key should be in the EU region used for data residency")
+
+    // The flow-log destination (CloudWatch Logs) must be encrypted with that key
+    logGroupName := terraform.Output(t, suite.TerraformOptions, "flow_log_group_name")
+    logsClient := aws.NewCloudWatchLogsClient(t, suite.Region)
+    groups, err := logsClient.DescribeLogGroups(context.Background(), &cloudwatchlogs.DescribeLogGroupsInput{
+        LogGroupNamePrefix: awssdk.String(logGroupName),
+    })
+    require.NoError(t, err, "Failed to describe the flow log group")
+    require.NotEmpty(t, groups.LogGroups, "Flow log group should exist")
+    assert.Equal(t, kmsKeyArn, awssdk.ToString(groups.LogGroups[0].KmsKeyId), "Flow logs must be encrypted with the customer managed key")
 
     t.Logf("# Pass: Encryption at rest validated for GDPR compliance")
 }
 
-// testDataResidencyEU validates that all infrastructure is within EU borders
+// testDataResidencyEU validates that the VPC was created in an approved EU region
 func testDataResidencyEU(t *testing.T, suite *EuropeanVPCTestSuite) {
-    // Validate that VPC is in EU region
+    // The module reports the region it deployed into; it must be on the EU allow list
+    region := terraform.Output(t, suite.TerraformOptions, "aws_region")
+    assert.Contains(t, allowedRegions, region, "VPC must be in an approved EU region for data residency")
+
+    // VPC IDs are regional: a successful lookup in that region proves where the VPC lives
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
-    
-    ec2Client := ec2.New(suite.AWSSession)
-    
-    vpcOutput, err := ec2Client.DescribeVpcs(&ec2.DescribeVpcsInput{
-        VpcIds: []*string{aws.String(vpcID)},
-    })
-    require.NoError(t, err, "Failed to describe VPC")
-    require.Len(t, vpcOutput.Vpcs, 1, "Should find exactly one VPC")
+    vpc := aws.GetVpcById(t, vpcID, region)
+    require.Equal(t, vpcID, vpc.Id, "VPC should be resolvable in the approved region")
 
-    // Check region from session config
-    region := *suite.AWSSession.Config.Region
-    allowedRegions := []string{"eu-west-1", "eu-central-1", "eu-west-2"}
-    
-    regionAllowed := false
-    for _, allowedRegion := range allowedRegions {
-        if region == allowedRegion {
-            regionAllowed = true
-            break
-        }
-    }
-    
-    assert.True(t, regionAllowed, "VPC must be in EU region for data residency. Found: %s", region)
-
-    t.Logf("# Pass: Data residency validated - all infrastructure in EU region: %s", region)
+    t.Logf("# Pass: Data residency validated - VPC %s is in EU region %s", vpcID, region)
 }
 
 // testAuditLogging validates that audit logging is configured according to legal requirements
 func testAuditLogging(t *testing.T, suite *EuropeanVPCTestSuite) {
     // Check the CloudTrail configuration matches organisational expectations
-    cloudtrailClient := cloudtrail.New(suite.AWSSession)
-    
-    trails, err := cloudtrailClient.DescribeTrails(&cloudtrail.DescribeTrailsInput{})
+    cfg, err := aws.NewAuthenticatedSession(suite.Region)
+    require.NoError(t, err, "Failed to create AWS configuration")
+    cloudtrailClient := cloudtrail.NewFromConfig(*cfg)
+
+    trails, err := cloudtrailClient.DescribeTrails(context.Background(), &cloudtrail.DescribeTrailsInput{})
     require.NoError(t, err, "Failed to list CloudTrail trails")
 
     foundOrgTrail := false
     for _, trail := range trails.TrailList {
-        if strings.Contains(*trail.Name, suite.OrganizationName) {
+        if strings.Contains(awssdk.ToString(trail.Name), suite.OrganisationName) {
             foundOrgTrail = true
-            t.Logf("# Pass: CloudTrail audit logging configured: %s", *trail.Name)
+            t.Logf("# Pass: CloudTrail audit logging configured: %s", awssdk.ToString(trail.Name))
         }
     }
 
-    assert.True(t, foundOrgTrail, "Organization CloudTrail should exist for audit logging")
+    assert.True(t, foundOrgTrail, "Organisation CloudTrail should exist for audit logging")
 }
 
 // testEuropeanTagging confirms that all resources expose the expected governance tags
 func testEuropeanTagging(t *testing.T, suite *EuropeanVPCTestSuite) {
     requiredTags := []string{
-        "Environment", "Organization", "CostCenter", 
+        "Environment", "Organization", "CostCenter",
         "Country", "GDPRCompliant", "DataResidency",
     }
 
     expectedTagValues := map[string]string{
-        "Environment":     suite.Environment,
-        "Organization":    suite.OrganizationName,
-        "CostCenter":      suite.CostCenter,
-        "Country":         "EU",
-        "GDPRCompliant":   "true",
-        "DataResidency":   "EU",
+        "Environment":   suite.Environment,
+        "Organization":  suite.OrganisationName,
+        "CostCenter":    suite.CostCentre,
+        "Country":       "EU",
+        "GDPRCompliant": "true",
+        "DataResidency": "EU",
     }
 
-    // Test VPC tags
+    // Terratest returns the VPC tags as a map (signature: t, vpcID, region)
     vpcID := terraform.Output(t, suite.TerraformOptions, "vpc_id")
-    ec2Client := ec2.New(suite.AWSSession)
-
-    vpcTags, err := ec2Client.DescribeTags(&ec2.DescribeTagsInput{
-        Filters: []*ec2.Filter{
-            {
-                Name:   aws.String("resource-id"),
-                Values: []*string{aws.String(vpcID)},
-            },
-        },
-    })
-    require.NoError(t, err, "Failed to describe VPC tags")
-
-    // Convert the returned tags into a map for simpler validation
-    vpcTagMap := make(map[string]string)
-    for _, tag := range vpcTags.Tags {
-        vpcTagMap[*tag.Key] = *tag.Value
-    }
+    vpcTagMap := aws.GetTagsForVpc(t, vpcID, suite.Region)
 
     // Validate mandatory governance tags
     for _, requiredTag := range requiredTags {
         assert.Contains(t, vpcTagMap, requiredTag, "VPC should have required tag: %s", requiredTag)
-        
+
         if expectedValue, exists := expectedTagValues[requiredTag]; exists {
-            assert.Equal(t, expectedValue, vpcTagMap[requiredTag], 
+            assert.Equal(t, expectedValue, vpcTagMap[requiredTag],
                 "Tag %s should have correct value", requiredTag)
         }
     }
@@ -678,7 +693,7 @@ func testEuropeanTagging(t *testing.T, suite *EuropeanVPCTestSuite) {
 // cleanupEuropeanVPCTest removes the Terraform deployment after the tests complete
 func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
     terraform.Destroy(t, suite.TerraformOptions)
-    t.Logf("# Pass: Test environment removed for %s", suite.OrganizationName)
+    t.Logf("# Pass: Test environment removed for %s", suite.OrganisationName)
 }
 ```
 
@@ -689,32 +704,68 @@ func cleanupEuropeanVPCTest(t *testing.T, suite *EuropeanVPCTestSuite) {
 Terraform underpins many Architecture as Code transformations by codifying consistent guardrails, data residency requirements, and provider-specific integrations across estates.
 
 ### 21_CODE_1: Multi-cloud enterprise landing zone {#21_code_1}
-*Referenced from Chapter 21: [Digital Transformation in Enterprises](21_digitalisation.md)*
+*Referenced from Chapter 21: [Digitalisation through Code-based Infrastructure](21_digitalisation.md)*
 
 ```hcl
 # terraform/main.tf - Multi-cloud setup for global enterprise
 terraform {
+  required_version = ">= 1.11"
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.0"
     }
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.0"
+      version = "~> 5.0"
     }
   }
 }
 
-# AWS for global services with EU data residency
-provider "aws" {
-  region = var.aws_eu_region  # Configurable EU region (e.g., eu-west-1, eu-central-1, eu-north-1)
+variable "aws_eu_region" {
+  description = "AWS region for EU data residency (e.g. eu-west-1, eu-central-1, eu-north-1)"
+  type        = string
+  default     = "eu-west-1"
 }
 
-# Azure for Microsoft integrations with EU compliance
+variable "azure_eu_region" {
+  description = "Azure region for EU data residency (e.g. westeurope, northeurope, swedencentral)"
+  type        = string
+  default     = "westeurope"
+}
+
+variable "environment" {
+  description = "Deployment environment (development, staging, production)"
+  type        = string
+}
+
+variable "project_name" {
+  description = "Project identifier used for naming and cost allocation"
+  type        = string
+}
+
+variable "cost_centre" {
+  description = "Cost centre code used by finance"
+  type        = string
+}
+
+variable "data_classification" {
+  description = "Highest data classification processed by the landing zone"
+  type        = string
+  default     = "confidential"
+}
+
+# AWS for global services with EU data residency
+provider "aws" {
+  region = var.aws_eu_region
+}
+
+# Azure for Microsoft integrations with EU compliance. The azurerm provider has
+# no location argument: the region is set per resource, so it is passed to the
+# Azure module below. subscription_id is read from ARM_SUBSCRIPTION_ID in CI.
 provider "azurerm" {
   features {}
-  location = var.azure_eu_region  # Configurable EU region (e.g., West Europe, North Europe)
 }
 
 # Common resource tagging for cost management and EU compliance
@@ -732,12 +783,14 @@ locals {
 
 module "aws_infrastructure" {
   source = "./modules/aws"
+  region = var.aws_eu_region
   tags   = local.common_tags
 }
 
 module "azure_infrastructure" {
-  source = "./modules/azure"
-  tags   = local.common_tags
+  source   = "./modules/azure"
+  location = var.azure_eu_region
+  tags     = local.common_tags
 }
 
 # Optional: add EU-native providers (e.g., OVHcloud, Scaleway) via additional modules
@@ -765,22 +818,31 @@ Parameters:
     Default: development
     AllowedValues: [development, staging, production]
     Description: 'Environment type for deployment'
-  
+
   DataClassification:
     Type: String
     Default: internal
     AllowedValues: [public, internal, confidential, restricted]
     Description: 'Data classification according to security standards'
-  
-  ComplianceRequirements:
-    Type: CommaDelimitedList
-    Default: "gdpr,iso27001"
-    Description: 'List of compliance requirements that must be met'
+
+  # Fn::Contains is only available in the Rules section, so each compliance
+  # requirement is modelled as its own true/false parameter
+  RequireGDPR:
+    Type: String
+    Default: 'true'
+    AllowedValues: ['true', 'false']
+    Description: 'Whether GDPR controls must be applied to the stack'
+
+  RequireISO27001:
+    Type: String
+    Default: 'true'
+    AllowedValues: ['true', 'false']
+    Description: 'Whether ISO/IEC 27001 controls must be applied to the stack'
 
 Conditions:
   IsProduction: !Equals [!Ref EnvironmentType, production]
-  RequiresGDPR: !Contains [!Ref ComplianceRequirements, gdpr]
-  RequiresISO27001: !Contains [!Ref ComplianceRequirements, iso27001]
+  RequiresGDPR: !Equals [!Ref RequireGDPR, 'true']
+  RequiresISO27001: !Equals [!Ref RequireISO27001, 'true']
 
 Resources:
   VPC:
@@ -815,20 +877,25 @@ This section contains Python scripts and other automation tooling for Architectu
 ### 24_CODE_1: Comprehensive test framework for Architecture as Code {#24_code_1}
 
 Architecture as Code principles within this area emphasise automated validation and transparent feedback.
-*Referenced from chapter 24: [Architecture as Code Best Practices and Lessons Learned](24_best_practices.md)*
+*Referenced from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```python
 # testing/comprehensive_iac_testing.py
-import pytest
-import boto3
 import json
-import yaml
-from typing import Dict, List, Any
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from typing import Any, Callable, List
+
+import boto3
+from botocore.exceptions import ClientError
+
 
 @dataclass
-class TestCase:
+class CheckResult:
+    """Outcome of one infrastructure check.
+
+    Named CheckResult rather than TestCase so that pytest does not try to
+    collect the dataclass as a test class.
+    """
     name: str
     description: str
     test_type: str
@@ -836,73 +903,213 @@ class TestCase:
     expected_result: Any
     actual_result: Any = None
     status: str = "pending"
-    execution_time: float = 0.0
+
 
 class ComprehensiveIaCTesting:
     """
     Comprehensive testing framework for Infrastructure as Code.
     Based on Architecture as Code best practices and international standards.
     """
-    
+
     def __init__(self, region='eu-west-1'):
         self.region = region
         self.ec2 = boto3.client('ec2', region_name=region)
         self.rds = boto3.client('rds', region_name=region)
         self.s3 = boto3.client('s3', region_name=region)
         self.iam = boto3.client('iam', region_name=region)
-        self.test_results = []
-        
-    def test_infrastructure_security(self, stack_name: str) -> List[TestCase]:
-        """Test comprehensive security configuration"""
-        
-        security_tests = [
+        self.elbv2 = boto3.client('elbv2', region_name=region)
+
+    def test_infrastructure_security(self, vpc_id: str) -> List[CheckResult]:
+        """Run the security checks and return one result per check."""
+        return [
             self._test_encryption_at_rest(),
             self._test_encryption_in_transit(),
-            self._test_vpc_flow_logs(),
-            self._test_security_groups(),
+            self._test_vpc_flow_logs(vpc_id),
+            self._test_security_groups(vpc_id),
             self._test_iam_policies(),
             self._test_s3_bucket_policies(),
-            self._test_rds_security()
+            self._test_rds_security(),
         ]
-        
-        return security_tests
-    
-    def _test_encryption_at_rest(self) -> TestCase:
-        """Verify all storage resources use encryption at rest"""
-        test = TestCase(
+
+    @staticmethod
+    def _run(check: CheckResult, findings_fn: Callable[[], List[str]]) -> CheckResult:
+        """Execute a check; a non-empty findings list means the check failed."""
+        try:
+            findings = findings_fn()
+            if findings:
+                check.status = "failed"
+                check.actual_result = findings
+            else:
+                check.status = "passed"
+                check.actual_result = check.expected_result
+        except ClientError as error:
+            check.status = "error"
+            check.actual_result = f"AWS API error: {error}"
+        return check
+
+    def _test_encryption_at_rest(self) -> CheckResult:
+        """Verify all S3 buckets default to KMS encryption with customer managed keys."""
+        def findings() -> List[str]:
+            weak = []
+            for bucket in self.s3.list_buckets()['Buckets']:
+                try:
+                    config = self.s3.get_bucket_encryption(Bucket=bucket['Name'])
+                except ClientError as error:
+                    if error.response['Error']['Code'] == 'ServerSideEncryptionConfigurationNotFoundError':
+                        weak.append(f"{bucket['Name']}: no default encryption")
+                        continue
+                    raise
+                for rule in config['ServerSideEncryptionConfiguration']['Rules']:
+                    if rule['ApplyServerSideEncryptionByDefault']['SSEAlgorithm'] != 'aws:kms':
+                        weak.append(f"{bucket['Name']}: not using KMS")
+            return weak
+
+        return self._run(CheckResult(
             name="Encryption at Rest Validation",
-            description="Verify all storage uses encryption",
+            description="Verify all S3 buckets use KMS default encryption",
             test_type="security",
             severity="high",
-            expected_result="All storage encrypted"
-        )
-        
-        try:
-            # Test S3 bucket encryption
-            buckets = self.s3.list_buckets()['Buckets']
-            unencrypted_buckets = []
-            
-            for bucket in buckets:
-                bucket_name = bucket['Name']
+            expected_result="All S3 buckets encrypted with KMS",
+        ), findings)
+
+    def _test_encryption_in_transit(self) -> CheckResult:
+        """Verify load balancer listeners only accept TLS or redirect to it."""
+        def findings() -> List[str]:
+            insecure = []
+            for lb in self.elbv2.describe_load_balancers()['LoadBalancers']:
+                listeners = self.elbv2.describe_listeners(LoadBalancerArn=lb['LoadBalancerArn'])['Listeners']
+                for listener in listeners:
+                    redirects = any(action['Type'] == 'redirect' for action in listener['DefaultActions'])
+                    if listener['Protocol'] == 'HTTP' and not redirects:
+                        insecure.append(f"{lb['LoadBalancerName']}: plain HTTP on port {listener['Port']}")
+            return insecure
+
+        return self._run(CheckResult(
+            name="Encryption in Transit Validation",
+            description="Verify load balancers terminate TLS",
+            test_type="security",
+            severity="high",
+            expected_result="All listeners use TLS",
+        ), findings)
+
+    def _test_vpc_flow_logs(self, vpc_id: str) -> CheckResult:
+        """Verify an active flow log captures all traffic for the VPC."""
+        def findings() -> List[str]:
+            logs = self.ec2.describe_flow_logs(
+                Filters=[{'Name': 'resource-id', 'Values': [vpc_id]}]
+            )['FlowLogs']
+            active = [log for log in logs if log['FlowLogStatus'] == 'ACTIVE' and log['TrafficType'] == 'ALL']
+            return [] if active else [f"{vpc_id}: no active flow log capturing ALL traffic"]
+
+        return self._run(CheckResult(
+            name="VPC Flow Logs Validation",
+            description="Verify VPC flow logs are active",
+            test_type="security",
+            severity="medium",
+            expected_result="Flow logs active for all traffic",
+        ), findings)
+
+    def _test_security_groups(self, vpc_id: str) -> CheckResult:
+        """Verify no security group exposes administrative ports to the internet."""
+        def findings() -> List[str]:
+            exposed = []
+            groups = self.ec2.describe_security_groups(
+                Filters=[{'Name': 'vpc-id', 'Values': [vpc_id]}]
+            )['SecurityGroups']
+            for group in groups:
+                for permission in group['IpPermissions']:
+                    open_to_world = any(r.get('CidrIp') == '0.0.0.0/0' for r in permission.get('IpRanges', []))
+                    if open_to_world and permission.get('FromPort') in (22, 3389):
+                        exposed.append(f"{group['GroupId']}: port {permission['FromPort']} open to 0.0.0.0/0")
+            return exposed
+
+        return self._run(CheckResult(
+            name="Security Group Validation",
+            description="Verify SSH and RDP are not open to the internet",
+            test_type="security",
+            severity="critical",
+            expected_result="No administrative ports exposed",
+        ), findings)
+
+    def _test_iam_policies(self) -> CheckResult:
+        """Verify no customer managed IAM policy grants Action * on Resource *."""
+        def findings() -> List[str]:
+            wildcard = []
+            for policy in self.iam.list_policies(Scope='Local')['Policies']:
+                version = self.iam.get_policy_version(
+                    PolicyArn=policy['Arn'], VersionId=policy['DefaultVersionId']
+                )
+                statements = version['PolicyVersion']['Document']['Statement']
+                if isinstance(statements, dict):
+                    statements = [statements]
+                for statement in statements:
+                    if (statement.get('Effect') == 'Allow'
+                            and statement.get('Action') == '*'
+                            and statement.get('Resource') == '*'):
+                        wildcard.append(f"{policy['PolicyName']}: allows * on *")
+            return wildcard
+
+        return self._run(CheckResult(
+            name="IAM Policy Validation",
+            description="Verify least-privilege IAM policies",
+            test_type="security",
+            severity="high",
+            expected_result="No wildcard administrator policies",
+        ), findings)
+
+    def _test_s3_bucket_policies(self) -> CheckResult:
+        """Verify every bucket policy denies requests that do not use TLS."""
+        def findings() -> List[str]:
+            missing = []
+            for bucket in self.s3.list_buckets()['Buckets']:
                 try:
-                    encryption = self.s3.get_bucket_encryption(Bucket=bucket_name)
-                    if not encryption.get('ServerSideEncryptionConfiguration'):
-                        unencrypted_buckets.append(bucket_name)
-                except self.s3.exceptions.ClientError:
-                    unencrypted_buckets.append(bucket_name)
-            
-            if unencrypted_buckets:
-                test.status = "failed"
-                test.actual_result = f"Unencrypted buckets: {unencrypted_buckets}"
-            else:
-                test.status = "passed"
-                test.actual_result = "All S3 buckets encrypted"
-                
-        except Exception as e:
-            test.status = "error"
-            test.actual_result = f"Test error: {str(e)}"
-            
-        return test
+                    document = json.loads(self.s3.get_bucket_policy(Bucket=bucket['Name'])['Policy'])
+                except ClientError as error:
+                    if error.response['Error']['Code'] == 'NoSuchBucketPolicy':
+                        missing.append(f"{bucket['Name']}: no bucket policy")
+                        continue
+                    raise
+                statements = document['Statement']
+                if isinstance(statements, dict):
+                    statements = [statements]
+                enforces_tls = any(
+                    statement.get('Effect') == 'Deny'
+                    and str(statement.get('Condition', {}).get('Bool', {}).get('aws:SecureTransport', '')).lower() == 'false'
+                    for statement in statements
+                )
+                if not enforces_tls:
+                    missing.append(f"{bucket['Name']}: policy does not deny non-TLS access")
+            return missing
+
+        return self._run(CheckResult(
+            name="S3 Bucket Policy Validation",
+            description="Verify bucket policies enforce TLS",
+            test_type="security",
+            severity="medium",
+            expected_result="All buckets deny non-TLS requests",
+        ), findings)
+
+    def _test_rds_security(self) -> CheckResult:
+        """Verify RDS instances are encrypted, private and backed up."""
+        def findings() -> List[str]:
+            issues = []
+            for db in self.rds.describe_db_instances()['DBInstances']:
+                identifier = db['DBInstanceIdentifier']
+                if not db.get('StorageEncrypted'):
+                    issues.append(f"{identifier}: storage not encrypted")
+                if db.get('PubliclyAccessible'):
+                    issues.append(f"{identifier}: publicly accessible")
+                if db.get('BackupRetentionPeriod', 0) < 7:
+                    issues.append(f"{identifier}: backup retention below 7 days")
+            return issues
+
+        return self._run(CheckResult(
+            name="RDS Security Validation",
+            description="Verify RDS encryption, network exposure and backups",
+            test_type="security",
+            severity="high",
+            expected_result="All RDS instances encrypted, private and backed up",
+        ), findings)
 ```
 
 ---
@@ -911,7 +1118,7 @@ class ComprehensiveIaCTesting:
 
 This section contains configuration files for different tools and services.
 
-### 22_CODE_2: Governance policy configuration for organisations {#22_code_2}
+### 24_CODE_2: Governance policy configuration for organisations {#24_code_2}
 *Referenced from chapter 24: [Best Practices and Lessons Learned](24_best_practices.md)*
 
 ```yaml
@@ -1037,10 +1244,13 @@ export default defineConfig({
         '**/types/**',
       ],
       // Require at least 80% coverage for infrastructure code
-      lines: 80,
-      functions: 80,
-      branches: 80,
-      statements: 80,
+      // (Vitest 1.0 and later nest the limits under "thresholds")
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
     },
     
     // Test timeout for infrastructure operations
@@ -1127,7 +1337,10 @@ export class TerraformConfigGenerator {
   generateRDSConfig(
     environment: string,
     instanceClass: string = 'db.t3.micro',
-    encrypted: boolean = true
+    encrypted: boolean = true,
+    // Major version only: RDS selects a supported minor release. Check the
+    // RDS PostgreSQL release calendar before pinning a specific version.
+    engineVersion: string = '16'
   ): ResourceConfig {
     // Ensure encryption for production
     if (environment === 'production' && !encrypted) {
@@ -1140,7 +1353,7 @@ export class TerraformConfigGenerator {
       properties: {
         allocated_storage: environment === 'production' ? 100 : 20,
         engine: 'postgres',
-        engine_version: '14.7',
+        engine_version: engineVersion,
         instance_class: instanceClass,
         storage_encrypted: encrypted,
         backup_retention_period: environment === 'production' ? 30 : 7,
@@ -1373,7 +1586,7 @@ describe('InfrastructureValidator', () => {
     const [result] = validator.validate([
       {
         id: 'db-analytics',
-        type: 'aws_rds_instance',
+        type: 'aws_db_instance',
         tags: [
           { key: 'Environment', value: 'production' },
           { key: 'CostCentre', value: 'DATA-007' },
@@ -1414,42 +1627,52 @@ on:
       - 'pnpm-lock.yaml'
       - 'vitest.config.ts'
 
+permissions:
+  contents: read
+  checks: write   # required by dorny/test-reporter to publish the check run
+
 jobs:
   vitest:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
+      # pnpm must exist before setup-node runs "pnpm store path" for the cache
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
         with:
-          node-version: 20
+          version: 10
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: |
-          corepack enable
-          pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
-      - name: Run Vitest with coverage
-        run: pnpm vitest run --coverage
+      # The junit reporter produces the test results that the reporter step reads;
+      # coverage/ only contains Istanbul coverage data
+      - name: Run Vitest with coverage and JUnit output
+        run: pnpm vitest run --coverage --reporter=default --reporter=junit --outputFile=reports/junit.xml
 
       - name: Upload coverage report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vitest-coverage
           path: coverage/
 
       - name: Summarise test results
         if: always()
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v3
         with:
           name: Vitest
-          path: coverage/coverage-final.json
-          reporter: vitest
+          path: reports/junit.xml
+          reporter: java-junit
 ```
 
 ### 13_CODE_G: Requirements as Code Definition {#13_code_g}
@@ -1486,7 +1709,7 @@ requirements:
     rationale: Preserve customer experience during peak trading windows.
     tests:
       - id: test-load-run
-        description: Execute Locust load test to validate latency thresholds.
+        description: Execute k6 load test to validate latency thresholds.
         tooling: k6
       - id: test-auto-scaling
         description: Verify auto-scaling triggers at 70% CPU utilisation.
@@ -1527,6 +1750,7 @@ class Requirement:
     classification: str
     priority: str
     tests: List[Dict[str, str]]
+    rationale: str = ""  # present in catalogue.yaml; Requirement(**item) fails without it
 
 
 class RequirementValidator:
@@ -1578,8 +1802,12 @@ Comprehensive Terratest example demonstrating testing of Terraform infrastructur
 package test
 
 import (
+    "context"
     "testing"
 
+    awssdk "github.com/aws/aws-sdk-go-v2/aws"
+    "github.com/aws/aws-sdk-go-v2/service/s3"
+    s3types "github.com/aws/aws-sdk-go-v2/service/s3/types"
     "github.com/gruntwork-io/terratest/modules/aws"
     "github.com/gruntwork-io/terratest/modules/terraform"
     "github.com/stretchr/testify/require"
@@ -1588,11 +1816,12 @@ import (
 func TestPlatformStackGDPRCompliance(t *testing.T) {
     t.Parallel()
 
+    region := "eu-west-1"
     terraformOptions := &terraform.Options{
         TerraformDir: "../infrastructure",
         Vars: map[string]interface{}{
             "environment": "staging",
-            "region":       "eu-west-1",
+            "region":      region,
         },
     }
 
@@ -1605,11 +1834,20 @@ func TestPlatformStackGDPRCompliance(t *testing.T) {
     flowLogsEnabled := terraform.Output(t, terraformOptions, "vpc_flow_logs_enabled")
     require.Equal(t, "true", flowLogsEnabled, "VPC flow logs must be enabled for GDPR auditing")
 
+    // Terratest has no S3 encryption helper: call the AWS SDK (v2) through the
+    // client that Terratest builds for the region
     bucketID := terraform.Output(t, terraformOptions, "logging_bucket_id")
-    encryption := aws.GetS3BucketEncryption(t, "eu-west-1", bucketID)
-    require.Equal(t, "AES256", *encryption.ServerSideEncryptionConfiguration.Rules[0].ApplyServerSideEncryptionByDefault.SSEAlgorithm)
+    s3Client := aws.NewS3Client(t, region)
+    encryption, err := s3Client.GetBucketEncryption(context.Background(), &s3.GetBucketEncryptionInput{
+        Bucket: awssdk.String(bucketID),
+    })
+    require.NoError(t, err, "Logging bucket must have server-side encryption configured")
+    rules := encryption.ServerSideEncryptionConfiguration.Rules
+    require.NotEmpty(t, rules)
+    require.Equal(t, s3types.ServerSideEncryptionAes256, rules[0].ApplyServerSideEncryptionByDefault.SSEAlgorithm)
 
-    tags := aws.GetTagsForVpc(t, "eu-west-1", vpcID)
+    // Terratest's signature is GetTagsForVpc(t, vpcID, region)
+    tags := aws.GetTagsForVpc(t, vpcID, region)
     require.Equal(t, "true", tags["GdprCompliant"])
     require.Equal(t, "EU", tags["DataResidency"])
 }
@@ -1625,15 +1863,15 @@ Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encr
 # policies/infrastructure/security.rego
 package infrastructure.security
 
-default allow = true
+import rego.v1
 
-deny[msg] {
+deny contains msg if {
   input.resource.type == "aws_s3_bucket"
   not input.resource.encryption.enabled
   msg := sprintf("Bucket %s must enable server-side encryption", [input.resource.id])
 }
 
-deny[msg] {
+deny contains msg if {
   input.resource.type == "aws_security_group_rule"
   input.resource.protocol == "tcp"
   input.resource.port == 22
@@ -1641,17 +1879,22 @@ deny[msg] {
   msg := sprintf("SSH rule %s exposes port 22 to the internet", [input.resource.id])
 }
 
-deny[msg] {
-  input.resource.type == "aws_rds_instance"
+deny contains msg if {
+  input.resource.type == "aws_db_instance"
   input.resource.tags["Classification"] == "confidential"
   not input.resource.encryption.enabled
   msg := sprintf("RDS instance %s storing confidential data must be encrypted", [input.resource.id])
 }
 
 # policies/infrastructure/security_test.rego
-package infrastructure
+package infrastructure.security_test
 
-test_enforces_bucket_encryption {
+import rego.v1
+
+# deny is a set: test membership with "in" rather than indexing results[0],
+# which would be a membership test for the value 0 and never succeed
+
+test_enforces_bucket_encryption if {
   results := data.infrastructure.security.deny with input as {
     "resource": {
       "id": "audit-logs",
@@ -1660,10 +1903,10 @@ test_enforces_bucket_encryption {
     }
   }
 
-  results[0] == "Bucket audit-logs must enable server-side encryption"
+  "Bucket audit-logs must enable server-side encryption" in results
 }
 
-test_blocks_internet_ssh {
+test_blocks_internet_ssh if {
   results := data.infrastructure.security.deny with input as {
     "resource": {
       "id": "sg-rule-1",
@@ -1674,20 +1917,32 @@ test_blocks_internet_ssh {
     }
   }
 
-  results[0] == "SSH rule sg-rule-1 exposes port 22 to the internet"
+  "SSH rule sg-rule-1 exposes port 22 to the internet" in results
 }
 
-test_requires_encrypted_confidential_databases {
+test_requires_encrypted_confidential_databases if {
   results := data.infrastructure.security.deny with input as {
     "resource": {
       "id": "rds-analytics",
-      "type": "aws_rds_instance",
+      "type": "aws_db_instance",
       "tags": {"Classification": "confidential"},
       "encryption": {"enabled": false}
     }
   }
 
-  results[0] == "RDS instance rds-analytics storing confidential data must be encrypted"
+  "RDS instance rds-analytics storing confidential data must be encrypted" in results
+}
+
+test_allows_encrypted_bucket if {
+  results := data.infrastructure.security.deny with input as {
+    "resource": {
+      "id": "audit-logs",
+      "type": "aws_s3_bucket",
+      "encryption": {"enabled": true}
+    }
+  }
+
+  count(results) == 0
 }
 ```
 
@@ -1695,7 +1950,7 @@ test_requires_encrypted_confidential_databases {
 *Listing 13-K.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
-Comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, pod security policies, network policies and GDPR-compliant persistent volume encryption using ConfigMap-based test runners and Kubernetes Jobs.
+Comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, Pod Security Admission levels, network policies and GDPR-compliant encrypted storage classes using ConfigMap-based test runners and Kubernetes Jobs.
 
 ```yaml
 # k8s/tests/infrastructure-validation.yaml
@@ -1709,20 +1964,29 @@ data:
     set -euo pipefail
 
     echo "Validating namespace resource quotas..."
-    kubectl get resourcequota -A || {
-      echo "# FAIL: Resource quotas missing"; exit 1;
+    # kubectl exits 0 even when nothing is found, so count the rows instead
+    quota_count="$(kubectl get resourcequota -A --no-headers 2>/dev/null | wc -l)"
+    if [ "$quota_count" -eq 0 ]; then
+      echo "# FAIL: Resource quotas missing"; exit 1
+    fi
+
+    echo "Validating Pod Security Admission levels..."
+    # PSA labels are set on namespaces, not on pods: every workload namespace
+    # must carry pod-security.kubernetes.io/enforce
+    kubectl get namespaces -o json | jq -e '
+      [.items[]
+        | select(.metadata.name | test("^kube-") | not)
+        | select(.metadata.labels["pod-security.kubernetes.io/enforce"] == null)]
+      | length == 0' > /dev/null || {
+      echo "# FAIL: Namespaces without a Pod Security Admission enforce level"; exit 1;
     }
 
-    echo "Validating pod security admission levels..."
-    kubectl get pods -A -o json | jq '.items[].metadata.labels["pod-security.kubernetes.io/enforce"]' |
-      grep -q "baseline" || {
-      echo "# FAIL: Pods missing baseline security enforcement"; exit 1;
-    }
-
-    echo "Validating encrypted persistent volumes..."
-    kubectl get pv -o json | jq '.items[].metadata.annotations["encryption.alpha.kubernetes.io/encrypted"]' |
-      grep -q "true" || {
-      echo "# FAIL: Persistent volumes must enable encryption"; exit 1;
+    echo "Validating encrypted persistent storage..."
+    # Encryption is a StorageClass parameter of the CSI driver (EBS: encrypted: "true"),
+    # not an annotation on the PersistentVolume
+    kubectl get storageclass -o json | jq -e '
+      [.items[] | select((.parameters.encrypted // "false") != "true")] | length == 0' > /dev/null || {
+      echo "# FAIL: All storage classes must enable encryption"; exit 1;
     }
 
     echo "# Pass: Infrastructure validation passed"
@@ -1738,7 +2002,9 @@ spec:
       serviceAccountName: platform-auditor
       containers:
         - name: validator
-          image: bitnami/kubectl:1.29
+          # alpine/k8s bundles kubectl, bash and jq. Keep the kubectl minor version
+          # within one release of the cluster and pin by digest in production.
+          image: alpine/k8s:1.35.9
           command: ["/bin/bash", "/scripts/tests.sh"]
           volumeMounts:
             - name: test-scripts
@@ -1768,16 +2034,26 @@ on:
       - 'policies/**'
       - 'test/**'
 
+env:
+  TF_VERSION: 1.17.1
+
 jobs:
   static-analysis:
     name: Static Analysis
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
       - name: Terraform fmt
         run: terraform fmt -check -recursive
-      - name: Terraform validate
-        run: terraform validate
+      # validate needs initialised providers and modules; -backend=false skips the remote state
+      - name: Terraform init and validate
+        working-directory: infrastructure
+        run: |
+          terraform init -backend=false
+          terraform validate
       - name: Checkov security scan
         uses: bridgecrewio/checkov-action@v12
         with:
@@ -1788,7 +2064,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: static-analysis
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      # OPA is not part of the ubuntu-latest image
+      - uses: open-policy-agent/setup-opa@v2
+        with:
+          version: latest
       - name: Evaluate OPA policies
         run: |
           opa test policies/infrastructure -v
@@ -1798,8 +2078,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: policy
     steps:
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: test/go.mod
+      # terraform_wrapper must be off: Terratest parses the raw Terraform output
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
       - name: Execute Terratest
         run: go test ./test -timeout 45m
 
@@ -1810,8 +2097,13 @@ jobs:
     env:
       TF_IN_AUTOMATION: true
     steps:
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - uses: actions/checkout@v7
+      - uses: hashicorp/setup-terraform@v4
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+          terraform_wrapper: false
+      - name: Terraform init
+        run: terraform init
       - name: Create workspace
         run: terraform workspace new pr-${{ github.event.number }} || terraform workspace select pr-${{ github.event.number }}
       - name: Terraform plan (ephemeral)
@@ -1829,7 +2121,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: integration
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Run requirements coverage
         run: |
           python3 -m pip install -r requirements.txt
@@ -1840,7 +2132,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: compliance
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      # k6 is not part of the ubuntu-latest image
+      - uses: grafana/setup-k6-action@v1
       - name: Execute k6 performance tests
         run: k6 run tests/performance/k6-load-test.js
       - name: Analyse cost impact
@@ -1851,6 +2145,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [performance]
     steps:
+      - uses: actions/checkout@v7
       - name: Collate results
         run: ./scripts/summarise-quality-gates.sh
 ```
@@ -1979,9 +2274,8 @@ team_structure:
 
 ```python
 # training/iac_competency_framework.py
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Dict, List, Optional
-import json
 
 
 class IaCCompetencyFramework:
@@ -2051,6 +2345,15 @@ class IaCCompetencyFramework:
             }
         }
 
+        # Standard module sequence used for next-module recommendations
+        self.module_sequence = [
+            "Terraform Fundamentals for Regulated Enterprises",
+            "Cloud Security for Regulated Environments"
+        ]
+
+        # Completed modules per individual (persist this in a real system)
+        self.progress: Dict[str, List[str]] = {}
+
     def create_learning_path(self, current_level: str, target_level: str,
                              focus_domains: List[str]) -> Dict:
         """Create a personalised learning path for an individual."""
@@ -2082,7 +2385,6 @@ class IaCCompetencyFramework:
         """Generate learning modules for a specific domain."""
 
         modules = []
-        domain_skills = self.skill_domains[domain]
 
         # Terraform Fundamentals Module
         if domain == "infrastructure_as_code":
@@ -2140,6 +2442,8 @@ class IaCCompetencyFramework:
                        assessment_score: float) -> Dict:
         """Track learning progress for an individual."""
 
+        self.progress.setdefault(individual_id, []).append(completed_module)
+
         progress_record = {
             "individual_id": individual_id,
             "module_completed": completed_module,
@@ -2152,7 +2456,11 @@ class IaCCompetencyFramework:
         return progress_record
 
     def generate_team_competency_matrix(self, team_members: List[Dict]) -> Dict:
-        """Generate a team competency matrix for skills gap analysis."""
+        """Generate a team competency matrix for skills gap analysis.
+
+        Each member is a dict with "name", "role" and "skills", where "skills"
+        maps a skill domain to a competency level (novice ... expert).
+        """
 
         competency_matrix = {
             "team_id": f"team_{datetime.now().strftime('%Y%m%d')}",
@@ -2179,11 +2487,60 @@ class IaCCompetencyFramework:
             competency_matrix["members"].append(member_assessment)
             total_competency += member_assessment["competency_score"]
 
-        competency_matrix["overall_readiness"] = total_competency / len(team_members)
+        if team_members:
+            competency_matrix["overall_readiness"] = round(total_competency / len(team_members), 1)
         competency_matrix["skill_gaps"] = self._identify_team_skill_gaps(team_members)
         competency_matrix["training_recommendations"] = self._recommend_team_training(competency_matrix)
 
         return competency_matrix
+
+    def _level_index(self, level: str) -> int:
+        """Position of a competency level (novice = 0 ... expert = 3); unknown levels count as novice."""
+        levels = list(self.competency_levels)
+        return levels.index(level) if level in levels else 0
+
+    def _recommend_next_module(self, individual_id: str) -> Optional[str]:
+        """Recommend the first module in the standard sequence not yet completed."""
+        completed = self.progress.get(individual_id, [])
+        return next((module for module in self.module_sequence if module not in completed), None)
+
+    def _calculate_competency_score(self, member: Dict) -> float:
+        """Score 0-100: mean level across all skill domains, expert in every domain = 100."""
+        skills = member.get("skills", {})
+        max_index = len(self.competency_levels) - 1
+        total = sum(self._level_index(skills.get(domain, "novice")) for domain in self.skill_domains)
+        return round(100 * total / (max_index * len(self.skill_domains)), 1)
+
+    def _identify_development_needs(self, member: Dict) -> List[str]:
+        """Skill domains in which the member is below intermediate level."""
+        skills = member.get("skills", {})
+        threshold = self._level_index("intermediate")
+        return [domain for domain in self.skill_domains
+                if self._level_index(skills.get(domain, "novice")) < threshold]
+
+    def _identify_team_skill_gaps(self, team_members: List[Dict]) -> List[str]:
+        """Skill domains in which no team member has reached advanced level."""
+        threshold = self._level_index("advanced")
+        gaps = []
+        for domain in self.skill_domains:
+            best = max(
+                (self._level_index(member.get("skills", {}).get(domain, "novice")) for member in team_members),
+                default=0
+            )
+            if best < threshold:
+                gaps.append(domain)
+        return gaps
+
+    def _recommend_team_training(self, competency_matrix: Dict) -> List[str]:
+        """Translate team-wide skill gaps into training recommendations."""
+        recommendations = []
+        for domain in competency_matrix["skill_gaps"]:
+            modules = self._generate_domain_modules(domain, "novice", "advanced")
+            if modules:
+                recommendations.extend(f"{domain}: {module['name']}" for module in modules)
+            else:
+                recommendations.append(f"{domain}: commission a domain-specific workshop (no standard module defined)")
+        return recommendations
 
 
 def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
@@ -2306,46 +2663,54 @@ performance_measurement_framework:
   name: "DevOps Team Performance Metrics"
 
   technical_metrics:
+    # Performance levels follow the four clusters of the DORA Accelerate State of
+    # DevOps Report 2024. The report gives representative cluster values, not
+    # ranges, so treat them as benchmarks and set organisation-specific targets.
     deployment_frequency:
       description: "How often the team deploys to production"
       measurement: "Deployments per day/week"
       target_values:
-        elite: "> 1 per day"
-        high: "1 per week - 1 per day"
-        medium: "1 per month - 1 per week"
-        low: "< 1 per month"
+        elite: "On demand (multiple deploys per day)"
+        high: "Between once per day and once per week"
+        medium: "Between once per week and once per month"
+        low: "Between once per month and once every six months"
       collection_method: "Automated from CI/CD pipeline"
 
     lead_time_for_changes:
       description: "Time from code commit to production deployment"
       measurement: "Hours/days"
       target_values:
-        elite: "< 1 hour"
-        high: "1 day - 1 week"
-        medium: "1 week - 1 month"
-        low: "> 1 month"
+        elite: "Less than one day"
+        high: "Between one day and one week"
+        medium: "Between one week and one month"
+        low: "Between one month and six months"
       collection_method: "Git and deployment tool integration"
 
-    mean_time_to_recovery:
-      description: "Time to recover from production incidents"
+    failed_deployment_recovery_time:
+      description: "Time to recover from a failed deployment (DORA's successor to time to restore service)"
       measurement: "Hours"
       target_values:
-        elite: "< 1 hour"
-        high: "< 1 day"
-        medium: "1 day - 1 week"
-        low: "> 1 week"
+        elite: "Less than one hour"
+        high: "Less than one day"
+        medium: "Less than one day"
+        low: "Between one week and one month"
       collection_method: "Incident management systems"
 
     change_failure_rate:
       description: "Percentage of deployments causing production issues"
       measurement: "Percentage"
       target_values:
-        elite: "0-15%"
-        high: "16-30%"
-        medium: "31-45%"
-        low: "> 45%"
+        elite: "5%"
+        high: "20%"
+        medium: "10%"
+        low: "40%"
       collection_method: "Incident correlation with deployments"
 
+    rework_rate:
+      description: "Percentage of deployments that are unplanned fixes of earlier changes (the fifth DORA metric since 2024)"
+      measurement: "Percentage"
+      target: "Track together with change failure rate; set organisation-specific targets"
+      collection_method: "Deployment metadata (planned versus unplanned deployments)"
   business_metrics:
 
     infrastructure_cost_efficiency:
@@ -2427,7 +2792,7 @@ performance_measurement_framework:
 
     benchmarking:
       internal: "Compare teams within the organisation"
-      industry: "Compare with DevOps industry standards"
+      industry: "Compare with the DORA Accelerate State of DevOps Report clusters"
       regional: "Compare with peer organisations"
 
     action_planning:
@@ -2436,6 +2801,8 @@ performance_measurement_framework:
       solutions: "Develop targeted improvement initiatives"
       tracking: "Monitor improvement progress monthly"
 ```
+
+The performance levels in `technical_metrics` follow the four clusters of the DORA Accelerate State of DevOps Report 2024 [Source [49]](33_references.md#source-49). The report publishes representative values per cluster rather than target ranges, and it tracks five metrics (deployment frequency, lead time for changes, change failure rate, failed deployment recovery time and rework rate), so organisations should treat the values as benchmarks and set their own targets.
 
 
 ---
@@ -2450,10 +2817,10 @@ Each code example in this appendix can be referenced from the main text using it
 
 ### Conventions for Code Examples
 
-- **Comments**: All code examples contain comments for clarity
-- **Security**: Security aspects are marked with 🔒
-- **GDPR compliance**: GDPR-related configurations are marked with 🇪🇺
-- **Customisations**: Local customisations are marked with 🇸🇪
+- **Identifiers**: Every listing is numbered `[chapter]_CODE_[number]` (or lettered, as in 13_CODE_A) and carries a stable anchor for cross-references
+- **Backlinks**: The italic line under each heading names the chapter that introduces the listing
+- **Language tags**: Code fences carry the language (`yaml`, `hcl`, `rego`, `go`, `python`, `typescript`, `json`, `groovy`, `structurizr`) used by the build and by syntax highlighting
+- **Comments**: All code examples contain comments for clarity, and version pins are refreshed at each review of the manuscript
 
 ### Updates and Maintenance
 
@@ -2465,7 +2832,7 @@ _For more information about specific implementations, see the respective main ch
 
 - - -
 
-## Chapter 14 Reference Implementations
+## Chapter 14 Reference Implementations {#chapter-14-implementations}
 
 The extended Terraform implementation that once appeared inline in Chapter 14 is preserved here so that readers can access the full listing without interrupting the main narrative. Cross-references in the chapter point to these appendix entries for quick navigation.
 
@@ -2492,6 +2859,32 @@ variable "instance_count" {
   description = "Number of application instances"
   type        = number
   default     = 2
+}
+
+variable "instance_type" {
+  description = "EC2 instance type for the application tier"
+  type        = string
+  default     = "t3.small"
+}
+
+variable "enable_monitoring" {
+  description = "Enable detailed CloudWatch monitoring on the instances"
+  type        = bool
+  default     = false
+}
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"]
+  }
 }
 
 # VPC and networking
@@ -2521,6 +2914,85 @@ resource "aws_subnet" "public" {
   }
 }
 
+# An internet-facing load balancer requires an internet gateway and a public route
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.application_name}-${var.environment}-igw"
+  }
+}
+
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.main.id
+  }
+
+  tags = {
+    Name = "${var.application_name}-${var.environment}-public-rt"
+  }
+}
+
+resource "aws_route_table_association" "public" {
+  count          = length(aws_subnet.public)
+  subnet_id      = aws_subnet.public[count.index].id
+  route_table_id = aws_route_table.public.id
+}
+
+# Security groups
+resource "aws_security_group" "alb" {
+  name        = "${var.application_name}-${var.environment}-alb-sg"
+  description = "Allow web traffic from the internet to the load balancer"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description = "HTTPS"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "HTTP (redirected to HTTPS by the listener)"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "app" {
+  name        = "${var.application_name}-${var.environment}-app-sg"
+  description = "Allow traffic from the load balancer only"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    description     = "Application port from the ALB"
+    from_port       = 8080
+    to_port         = 8080
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 # Application Load Balancer
 resource "aws_lb" "main" {
   name               = "${var.application_name}-${var.environment}-alb"
@@ -2537,12 +3009,49 @@ resource "aws_lb" "main" {
   }
 }
 
+resource "aws_lb_target_group" "main" {
+  name     = "${var.application_name}-${var.environment}-tg"
+  port     = 8080
+  protocol = "HTTP"
+  vpc_id   = aws_vpc.main.id
+
+  health_check {
+    path    = "/health"
+    matcher = "200"
+  }
+}
+
+# Launch template for the application instances
+resource "aws_launch_template" "main" {
+  name_prefix   = "${var.application_name}-${var.environment}-"
+  image_id      = data.aws_ami.amazon_linux.id
+  instance_type = var.instance_type
+
+  vpc_security_group_ids = [aws_security_group.app.id]
+
+  monitoring {
+    enabled = var.enable_monitoring
+  }
+
+  metadata_options {
+    http_tokens = "required" # IMDSv2 only
+  }
+
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Environment = var.environment
+      Application = var.application_name
+    }
+  }
+}
+
 # Auto Scaling Group
 resource "aws_autoscaling_group" "main" {
-  name                = "${var.application_name}-${var.environment}-asg"
-  vpc_zone_identifier = aws_subnet.public[*].id
-  target_group_arns   = [aws_lb_target_group.main.arn]
-  health_check_type   = "ELB"
+  name                      = "${var.application_name}-${var.environment}-asg"
+  vpc_zone_identifier       = aws_subnet.public[*].id
+  target_group_arns         = [aws_lb_target_group.main.arn]
+  health_check_type         = "ELB"
   health_check_grace_period = 300
 
   min_size         = 1
@@ -2573,6 +3082,11 @@ output "load_balancer_dns" {
   value       = aws_lb.main.dns_name
 }
 
+output "load_balancer_arn_suffix" {
+  description = "ARN suffix of the load balancer, used as the CloudWatch metric dimension"
+  value       = aws_lb.main.arn_suffix
+}
+
 output "vpc_id" {
   description = "ID of the VPC"
   value       = aws_vpc.main.id
@@ -2582,31 +3096,32 @@ output "vpc_id" {
 ### 14_CODE_2: Environment configuration and observability controls {#14_code_2}
 *Referenced from Chapter 14: [Architecture as Code in Practice](14_practical_implementation.md)*
 
-This configuration layers production-specific settings on top of the shared module, including state management, default tags, and a CloudWatch dashboard for operational oversight.
+This configuration layers production-specific settings on top of the shared module, including state management, default tags, log retention, and a CloudWatch dashboard for operational oversight. The S3 backend uses Terraform's native state locking (`use_lockfile = true`, Terraform 1.11 or later): DynamoDB-based locking is deprecated since Terraform 1.11 in favour of S3-native locking [Source [17]](33_references.md#source-17). Backend blocks cannot reference variables, so environment-specific backend values belong in a `backend.hcl` file passed to `terraform init -backend-config`.
 
 ```hcl
 # environments/production/main.tf
 terraform {
-  required_version = ">= 1.0"
+  required_version = ">= 1.11"
 
   backend "s3" {
-    bucket         = "company-terraform-state-prod"
-    key            = "web-application/terraform.tfstate"
-    region         = "us-west-2"
-    encrypt        = true
-    dynamodb_table = "terraform-state-lock"
+    bucket  = "company-terraform-state-prod"
+    key     = "web-application/terraform.tfstate"
+    region  = "eu-west-1"
+    encrypt = true
+    # S3-native state locking (Terraform 1.11+); the DynamoDB lock table is deprecated
+    use_lockfile = true
   }
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.0"
     }
   }
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "eu-west-1"
 
   default_tags {
     tags = {
@@ -2625,13 +3140,17 @@ module "web_application" {
   application_name = "company-web-app"
   instance_count   = 6
 
-  # Production-specific overrides
+  # Production-specific overrides (declared as variables in the module)
+  instance_type     = "t3.large"
   enable_monitoring = true
-  backup_retention  = 30
-  multi_az          = true
 }
 
 # Production-specific resources
+resource "aws_cloudwatch_log_group" "application" {
+  name              = "/company-web-app/production"
+  retention_in_days = 365 # retention control for operational and audit logs
+}
+
 resource "aws_cloudwatch_dashboard" "main" {
   dashboard_name = "WebApplication-Production"
 
@@ -2652,7 +3171,7 @@ resource "aws_cloudwatch_dashboard" "main" {
           ]
           view    = "timeSeries"
           stacked = false
-          region  = "us-west-2"
+          region  = "eu-west-1"
           title   = "Application Performance"
           period  = 300
         }
@@ -2665,7 +3184,7 @@ resource "aws_cloudwatch_dashboard" "main" {
 ### 14_CODE_3: Continuous delivery workflow for infrastructure changes {#14_code_3}
 *Referenced from Chapter 14: [Architecture as Code in Practice](14_practical_implementation.md)*
 
-The workflow below demonstrates how to plan and apply Terraform changes across development, staging, and production with explicit separation between planning and deployment stages.
+The workflow below demonstrates how to plan and apply Terraform changes across development, staging, and production with explicit separation between planning and deployment stages. It authenticates to AWS through GitHub's OIDC provider rather than long-lived access keys, and production deployments are gated by the protection rules of the `production` environment.
 
 ```yaml
 # .github/workflows/infrastructure.yml
@@ -2679,9 +3198,13 @@ on:
     branches: [main]
     paths: ['infrastructure/**']
 
+permissions:
+  id-token: write   # OIDC federation with AWS instead of long-lived access keys
+  contents: read
+
 env:
-  TF_VERSION: 1.5.0
-  AWS_REGION: us-west-2
+  TF_VERSION: 1.17.1
+  AWS_REGION: eu-west-1
 
 jobs:
   plan:
@@ -2693,18 +3216,17 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
 
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+      uses: hashicorp/setup-terraform@v4
       with:
         terraform_version: ${{ env.TF_VERSION }}
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
+    - name: Configure AWS credentials (OIDC)
+      uses: aws-actions/configure-aws-credentials@v6
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Terraform Init
@@ -2715,14 +3237,14 @@ jobs:
       working-directory: infrastructure/environments/${{ matrix.environment }}
       run: terraform validate
 
+    # terraform.tfvars is loaded automatically, so no -var-file is needed
     - name: Terraform Plan
       working-directory: infrastructure/environments/${{ matrix.environment }}
-      run: |
-        terraform plan -out=tfplan-${{ matrix.environment }} \
-          -var-file="terraform.tfvars"
+      run: terraform plan -out=tfplan-${{ matrix.environment }}
 
+    # Artifact names must be unique per job since upload-artifact v4
     - name: Upload plan artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: tfplan-${{ matrix.environment }}
         path: infrastructure/environments/${{ matrix.environment }}/tfplan-${{ matrix.environment }}
@@ -2742,22 +3264,21 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v7
 
     - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v2
+      uses: hashicorp/setup-terraform@v4
       with:
         terraform_version: ${{ env.TF_VERSION }}
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v2
+    - name: Configure AWS credentials (OIDC)
+      uses: aws-actions/configure-aws-credentials@v6
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
         aws-region: ${{ env.AWS_REGION }}
 
     - name: Download plan artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v8
       with:
         name: tfplan-${{ matrix.environment }}
         path: infrastructure/environments/${{ matrix.environment }}
@@ -2775,47 +3296,132 @@ jobs:
     runs-on: ubuntu-latest
     needs: [plan, deploy]
     if: github.ref == 'refs/heads/main'
-    environment:
-      name: production
-      url: ${{ steps.deploy.outputs.application_url }}
+    # The protection rules of the "production" environment enforce the manual approval
+    environment: production
 
     steps:
     - name: Manual approval checkpoint
-      run: echo "Production deployment requires manual approval"
+      run: echo "Production deployment approved through the environment protection rule"
 
-    # Similar steps as deploy job but for production environment
+    # Repeat the deploy steps for the production environment here
 ```
 
 ---
 
-## Chapter 15 Reference Implementations
+## Chapter 15 Reference Implementations {#chapter-15-implementations}
 
 ### 15_CODE_1: Cost-aware Terraform infrastructure configuration {#15_code_1}
 *Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
 
-This Terraform configuration demonstrates comprehensive cost optimisation strategies including budget management, cost allocation tagging, and intelligent instance type selection using spot instances and mixed instance policies.
+This Terraform configuration demonstrates comprehensive cost optimisation strategies including budget management, cost allocation tagging, and intelligent instance type selection using spot instances and mixed instance policies. The input variables are declared inline so that the listing validates on its own.
 
 ```hcl
 # cost_optimized_infrastructure.tf
 terraform {
+  required_version = ">= 1.11"
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.0"
     }
+  }
+}
+
+# Input variables (normally kept in variables.tf)
+variable "project_name" {
+  description = "Project identifier used for naming and cost allocation"
+  type        = string
+}
+
+variable "environment" {
+  description = "Deployment environment (development, staging, production)"
+  type        = string
+}
+
+variable "aws_region" {
+  description = "EU region in which the workload runs, e.g. eu-west-1"
+  type        = string
+  default     = "eu-west-1"
+}
+
+variable "cost_centre" {
+  description = "Cost centre code used by finance"
+  type        = string
+}
+
+variable "team_email" {
+  description = "Distribution list of the owning team"
+  type        = string
+}
+
+variable "finance_email" {
+  description = "Finance contact for budget notifications"
+  type        = string
+}
+
+variable "budget_threshold" {
+  description = "Alert threshold recorded on the resources, e.g. 80%"
+  type        = string
+  default     = "80%"
+}
+
+variable "monthly_budget_limit_usd" {
+  description = "Monthly budget limit in USD (AWS bills in USD)"
+  type        = string
+}
+
+variable "max_spot_price" {
+  description = "Maximum hourly Spot price in USD; null caps bids at the On-Demand price"
+  type        = string
+  default     = null
+}
+
+variable "private_subnet_ids" {
+  description = "Private subnet IDs for the Auto Scaling group"
+  type        = list(string)
+}
+
+variable "min_instances" {
+  description = "Minimum number of instances"
+  type        = number
+  default     = 1
+}
+
+variable "max_instances" {
+  description = "Maximum number of instances"
+  type        = number
+  default     = 6
+}
+
+variable "desired_instances" {
+  description = "Desired number of instances"
+  type        = number
+  default     = 2
+}
+
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.*-x86_64"]
   }
 }
 
 # Cost allocation tags for all infrastructure
 locals {
   cost_tags = {
-    CostCentre     = var.cost_centre
-    Project        = var.project_name
-    Environment    = var.environment
-    Owner          = var.team_email
-    BudgetAlert    = var.budget_threshold
-    ReviewDate     = formatdate("YYYY-MM-DD", timeadd(timestamp(), "30*24h"))
-    Region         = var.aws_region
+    CostCentre  = var.cost_centre
+    Project     = var.project_name
+    Environment = var.environment
+    Owner       = var.team_email
+    BudgetAlert = var.budget_threshold
+    # timeadd takes duration units (h, m, s), not arithmetic: 720h is 30 days.
+    # timestamp() changes on every plan, so expect a tag diff on each run.
+    ReviewDate = formatdate("YYYY-MM-DD", timeadd(timestamp(), "720h"))
+    Region     = var.aws_region
   }
 }
 
@@ -2823,29 +3429,34 @@ locals {
 resource "aws_budgets_budget" "project_budget" {
   name         = "${var.project_name}-budget"
   budget_type  = "COST"
-  limit_amount = var.monthly_budget_limit_usd  # AWS bills in USD
+  limit_amount = var.monthly_budget_limit_usd # AWS bills in USD
   limit_unit   = "USD"
   time_unit    = "MONTHLY"
-  
-  cost_filters = {
-    Tag = {
-      Project = [var.project_name]
-    }
-    Region = [var.aws_region]  # Filter by EU region
+
+  # cost_filter blocks replaced the removed cost_filters map;
+  # tag filters use the form "user:<key>$<value>"
+  cost_filter {
+    name   = "TagKeyValue"
+    values = ["user:Project${"$"}${var.project_name}"]
+  }
+
+  cost_filter {
+    name   = "Region"
+    values = [var.aws_region] # Filter by EU region
   }
 
   notification {
     comparison_operator        = "GREATER_THAN"
-    threshold                 = 80
-    threshold_type            = "PERCENTAGE"
-    notification_type         = "ACTUAL"
+    threshold                  = 80
+    threshold_type             = "PERCENTAGE"
+    notification_type          = "ACTUAL"
     subscriber_email_addresses = [var.team_email, var.finance_email]
   }
 
   notification {
-    comparison_operator        = "GREATER_THAN"  
-    threshold                 = 100
-    threshold_type            = "PERCENTAGE"
+    comparison_operator        = "GREATER_THAN"
+    threshold                  = 100
+    threshold_type             = "PERCENTAGE"
     notification_type          = "FORECASTED"
     subscriber_email_addresses = [var.team_email, var.finance_email]
   }
@@ -2853,9 +3464,9 @@ resource "aws_budgets_budget" "project_budget" {
 
 # Cost-optimised EC2 with Spot instances
 resource "aws_launch_template" "cost_optimized" {
-  name_prefix   = "${var.project_name}-cost-opt-"
-  image_id      = data.aws_ami.amazon_linux.id
-  
+  name_prefix = "${var.project_name}-cost-opt-"
+  image_id    = data.aws_ami.amazon_linux.id
+
   # Mixed instance types for cost optimisation
   instance_requirements {
     memory_mib {
@@ -2879,7 +3490,7 @@ resource "aws_launch_template" "cost_optimized" {
 
   tag_specifications {
     resource_type = "instance"
-    tags = local.cost_tags
+    tags          = local.cost_tags
   }
 }
 
@@ -2927,7 +3538,7 @@ resource "aws_autoscaling_group" "cost_aware" {
 ### 15_CODE_2: Kubernetes cost optimisation manifests {#15_code_2}
 *Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
 
-These Kubernetes manifests demonstrate resource quotas, limit ranges, and autoscaling configurations for cost-effective workload management.
+These Kubernetes manifests demonstrate resource quotas, limit ranges, and autoscaling configurations for cost-effective workload management. Because the Vertical Pod Autoscaler and the Horizontal Pod Autoscaler must not act on the same resource metric, the VPA controls memory requests while the HPA scales replicas on CPU utilisation.
 
 ```yaml
 # kubernetes/cost-optimization-quota.yaml
@@ -2969,6 +3580,8 @@ spec:
     type: Container
 ---
 # kubernetes/vertical-pod-autoscaler.yaml
+# VPA and HPA must not act on the same resource metric (VPA known limitations):
+# the VPA right-sizes memory requests, the HPA below scales replicas on CPU only.
 apiVersion: autoscaling.k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
@@ -2984,11 +3597,10 @@ spec:
   resourcePolicy:
     containerPolicies:
     - containerName: app
+      controlledResources: ["memory"]
       maxAllowed:
-        cpu: "1"
         memory: "2Gi"
       minAllowed:
-        cpu: "100m"
         memory: "256Mi"
 ---
 # kubernetes/horizontal-pod-autoscaler.yaml
@@ -3011,12 +3623,6 @@ spec:
       target:
         type: Utilization
         averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
   behavior:
     scaleDown:
       stabilizationWindowSeconds: 300
@@ -3035,25 +3641,23 @@ spec:
 ### 15_CODE_3: AWS cost monitoring and optimisation automation {#15_code_3}
 *Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
 
-This Python script provides automated cost analysis, rightsizing recommendations, and identification of unused resources for AWS environments.
+This Python script provides automated cost analysis, rightsizing recommendations, and identification of unused resources for AWS environments. All helper methods are implemented against the Cost Explorer, EC2, ELBv2 and CloudWatch APIs; the Spot-instance estimate is an explicitly labelled heuristic rather than an AWS recommendation API call.
 
 ```python
 # cost_monitoring/cost_optimizer.py
 import boto3
-import json
 from datetime import datetime, timedelta
 from typing import Dict, List
-import pandas as pd
 
 class AWSCostOptimizer:
     """
     Automated cost optimisation for AWS resources across EU regions
     """
-    
+
     def __init__(self, region='eu-west-1', eu_regions=None):
         """
         Initialise cost optimiser for EU regions.
-        
+
         Args:
             region: Primary AWS region (defaults to eu-west-1, Ireland)
             eu_regions: List of EU regions to analyse (defaults to major EU regions)
@@ -3061,20 +3665,20 @@ class AWSCostOptimizer:
         if eu_regions is None:
             # Default EU regions for multi-region cost analysis
             eu_regions = ['eu-west-1', 'eu-central-1', 'eu-west-2', 'eu-west-3', 'eu-south-1', 'eu-north-1']
-        
+
         self.region = region
         self.eu_regions = eu_regions
         self.cost_explorer = boto3.client('ce', region_name=region)
         self.ec2 = boto3.client('ec2', region_name=region)
         self.rds = boto3.client('rds', region_name=region)
         self.cloudwatch = boto3.client('cloudwatch', region_name=region)
-        
+
     def analyze_cost_trends(self, days_back=30) -> Dict:
         """Analyse cost trends for the last period across EU regions"""
-        
+
         end_date = datetime.now().date()
         start_date = end_date - timedelta(days=days_back)
-        
+
         response = self.cost_explorer.get_cost_and_usage(
             TimePeriod={
                 'Start': start_date.strftime('%Y-%m-%d'),
@@ -3082,10 +3686,11 @@ class AWSCostOptimizer:
             },
             Granularity='DAILY',
             Metrics=['BlendedCost'],
+            # Cost Explorer accepts at most two GroupBy entries; the regions are
+            # constrained through the Filter instead of a third grouping
             GroupBy=[
                 {'Type': 'DIMENSION', 'Key': 'SERVICE'},
-                {'Type': 'TAG', 'Key': 'Project'},
-                {'Type': 'DIMENSION', 'Key': 'REGION'}
+                {'Type': 'TAG', 'Key': 'Project'}
             ],
             Filter={
                 'Dimensions': {
@@ -3094,12 +3699,36 @@ class AWSCostOptimizer:
                 }
             }
         )
-        
+
         return self._process_cost_data(response)
-    
+
+    def _process_cost_data(self, response: Dict) -> Dict:
+        """Aggregate Cost Explorer results per service, per project tag and per day"""
+
+        totals_by_service: Dict[str, float] = {}
+        totals_by_project: Dict[str, float] = {}
+        daily_totals: List[Dict] = []
+
+        for day in response.get('ResultsByTime', []):
+            day_total = 0.0
+            for group in day.get('Groups', []):
+                service, project = group['Keys']  # project arrives as "Project$<value>"
+                amount = float(group['Metrics']['BlendedCost']['Amount'])
+                totals_by_service[service] = totals_by_service.get(service, 0.0) + amount
+                totals_by_project[project] = totals_by_project.get(project, 0.0) + amount
+                day_total += amount
+            daily_totals.append({'date': day['TimePeriod']['Start'], 'cost_usd': round(day_total, 2)})
+
+        return {
+            'period_total_usd': round(sum(day['cost_usd'] for day in daily_totals), 2),
+            'by_service_usd': {k: round(v, 2) for k, v in sorted(totals_by_service.items(), key=lambda item: -item[1])},
+            'by_project_usd': {k: round(v, 2) for k, v in totals_by_project.items()},
+            'daily_usd': daily_totals
+        }
+
     def identify_rightsizing_opportunities(self) -> List[Dict]:
         """Identify EC2 instances that can be rightsized across EU regions"""
-        
+
         rightsizing_response = self.cost_explorer.get_rightsizing_recommendation(
             Service='AmazonEC2',
             Configuration={
@@ -3113,37 +3742,40 @@ class AWSCostOptimizer:
                 }
             }
         )
-        
+
         opportunities = []
-        
+
         for recommendation in rightsizing_response.get('RightsizingRecommendations', []):
             if recommendation['RightsizingType'] == 'Modify':
+                current = recommendation['CurrentInstance']
+                target = recommendation['ModifyRecommendationDetail']['TargetInstances'][0]
                 opportunities.append({
-                    'instance_id': recommendation['CurrentInstance']['ResourceId'],
-                    'current_type': recommendation['CurrentInstance']['InstanceName'],
-                    'recommended_type': recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['InstanceName'],
-                    'estimated_monthly_savings_usd': float(recommendation['ModifyRecommendationDetail']['TargetInstances'][0]['EstimatedMonthlySavings']),
-                    'utilisation': recommendation['CurrentInstance']['UtilizationMetrics'],
-                    'region': recommendation['CurrentInstance'].get('Region', 'unknown')
+                    'instance_id': current['ResourceId'],
+                    'current_type': current['InstanceName'],
+                    'recommended_type': target['InstanceName'],
+                    'estimated_monthly_savings_usd': float(target['EstimatedMonthlySavings']),
+                    # CurrentInstance exposes ResourceUtilization (not UtilizationMetrics)
+                    'utilisation': current.get('ResourceUtilization', {}),
+                    'region': current.get('ResourceDetails', {}).get('EC2ResourceDetails', {}).get('Region', 'unknown')
                 })
-        
+
         return opportunities
-    
+
     def get_unused_resources(self) -> Dict:
         """Identify unused resources that can be terminated across EU regions"""
-        
+
         unused_resources = {
             'unattached_volumes': self._find_unattached_ebs_volumes(),
             'unused_elastic_ips': self._find_unused_elastic_ips(),
             'idle_load_balancers': self._find_idle_load_balancers(),
             'stopped_instances': self._find_stopped_instances()
         }
-        
+
         return unused_resources
-    
+
     def generate_cost_optimization_plan(self, project_tag: str) -> Dict:
         """Generate comprehensive cost optimisation plan for EU regions"""
-        
+
         plan = {
             'project': project_tag,
             'analysis_date': datetime.now().isoformat(),
@@ -3158,35 +3790,59 @@ class AWSCostOptimizer:
             'potential_monthly_savings_usd': 0,
             'notes': 'Costs are in USD (AWS billing currency). Convert to EUR using current exchange rate for EU financial reporting.'
         }
-        
+
         # Calculate total potential savings
         total_savings = 0
         for rec_type, recommendations in plan['recommendations'].items():
             if isinstance(recommendations, list):
                 total_savings += sum(rec.get('estimated_monthly_savings_usd', 0) for rec in recommendations)
+            elif isinstance(recommendations, dict) and rec_type == 'unused_resources':
+                for resources in recommendations.values():
+                    total_savings += sum(rec.get('estimated_monthly_savings_usd', 0) for rec in resources)
             elif isinstance(recommendations, dict):
                 total_savings += recommendations.get('estimated_monthly_savings_usd', 0)
-        
-        plan['potential_monthly_savings_usd'] = total_savings
+
+        plan['potential_monthly_savings_usd'] = round(total_savings, 2)
         plan['savings_percentage'] = (total_savings / plan['current_monthly_cost_usd']) * 100 if plan['current_monthly_cost_usd'] > 0 else 0
-        
+
         return plan
-    
+
+    def _get_current_monthly_cost(self, project_tag: str) -> float:
+        """Month-to-date cost of the project tag across the EU regions"""
+
+        today = datetime.now().date()
+        start = today.replace(day=1)
+        if start == today:  # Cost Explorer requires End to be later than Start
+            start = (today - timedelta(days=1)).replace(day=1)
+
+        response = self.cost_explorer.get_cost_and_usage(
+            TimePeriod={'Start': start.strftime('%Y-%m-%d'), 'End': today.strftime('%Y-%m-%d')},
+            Granularity='MONTHLY',
+            Metrics=['BlendedCost'],
+            Filter={
+                'And': [
+                    {'Dimensions': {'Key': 'REGION', 'Values': self.eu_regions}},
+                    {'Tags': {'Key': 'Project', 'Values': [project_tag]}}
+                ]
+            }
+        )
+        return round(sum(float(result['Total']['BlendedCost']['Amount']) for result in response['ResultsByTime']), 2)
+
     def _find_unattached_ebs_volumes(self) -> List[Dict]:
         """Find unattached EBS volumes across EU regions"""
-        
+
         unattached_volumes = []
-        
+
         for region in self.eu_regions:
             ec2_regional = boto3.client('ec2', region_name=region)
             response = ec2_regional.describe_volumes(
                 Filters=[{'Name': 'status', 'Values': ['available']}]
             )
-            
+
             for volume in response['Volumes']:
                 # Calculate monthly cost based on volume size and type
                 monthly_cost = self._calculate_ebs_monthly_cost(volume, region)
-                
+
                 unattached_volumes.append({
                     'volume_id': volume['VolumeId'],
                     'size_gb': volume['Size'],
@@ -3195,12 +3851,146 @@ class AWSCostOptimizer:
                     'estimated_monthly_savings_usd': monthly_cost,
                     'creation_date': volume['CreateTime'].isoformat()
                 })
-        
+
         return unattached_volumes
-    
+
+    def _find_unused_elastic_ips(self) -> List[Dict]:
+        """Find allocated Elastic IPs that are not associated with any resource"""
+
+        unused = []
+
+        for region in self.eu_regions:
+            ec2_regional = boto3.client('ec2', region_name=region)
+            for address in ec2_regional.describe_addresses()['Addresses']:
+                if 'AssociationId' not in address:
+                    unused.append({
+                        'allocation_id': address.get('AllocationId'),
+                        'public_ip': address['PublicIp'],
+                        'region': region,
+                        # Public IPv4 addresses are billed per hour (USD 0.005/h ≈ USD 3.65/month)
+                        'estimated_monthly_savings_usd': round(0.005 * 730, 2)
+                    })
+
+        return unused
+
+    def _find_idle_load_balancers(self, days: int = 14) -> List[Dict]:
+        """Find application load balancers without any requests over the look-back period"""
+
+        idle = []
+        end_time = datetime.now()
+        start_time = end_time - timedelta(days=days)
+
+        for region in self.eu_regions:
+            elbv2 = boto3.client('elbv2', region_name=region)
+            cloudwatch = boto3.client('cloudwatch', region_name=region)
+
+            for load_balancer in elbv2.describe_load_balancers()['LoadBalancers']:
+                if load_balancer['Type'] != 'application':
+                    continue
+                # The CloudWatch dimension is the ARN part after "loadbalancer/"
+                dimension_value = load_balancer['LoadBalancerArn'].split('loadbalancer/')[1]
+                statistics = cloudwatch.get_metric_statistics(
+                    Namespace='AWS/ApplicationELB',
+                    MetricName='RequestCount',
+                    Dimensions=[{'Name': 'LoadBalancer', 'Value': dimension_value}],
+                    StartTime=start_time,
+                    EndTime=end_time,
+                    Period=86400,
+                    Statistics=['Sum']
+                )
+                if sum(point['Sum'] for point in statistics['Datapoints']) == 0:
+                    idle.append({
+                        'load_balancer': load_balancer['LoadBalancerName'],
+                        'region': region,
+                        # Representative hourly ALB charge in EU regions (USD 0.0252/h)
+                        'estimated_monthly_savings_usd': round(0.0252 * 730, 2)
+                    })
+
+        return idle
+
+    def _find_stopped_instances(self) -> List[Dict]:
+        """Find stopped instances; their EBS volumes and Elastic IPs are still billed"""
+
+        stopped = []
+
+        for region in self.eu_regions:
+            ec2_regional = boto3.client('ec2', region_name=region)
+            paginator = ec2_regional.get_paginator('describe_instances')
+            pages = paginator.paginate(Filters=[{'Name': 'instance-state-name', 'Values': ['stopped']}])
+
+            for page in pages:
+                for reservation in page['Reservations']:
+                    for instance in reservation['Instances']:
+                        stopped.append({
+                            'instance_id': instance['InstanceId'],
+                            'instance_type': instance['InstanceType'],
+                            'region': region,
+                            'attached_volumes': [
+                                mapping['Ebs']['VolumeId']
+                                for mapping in instance.get('BlockDeviceMappings', []) if 'Ebs' in mapping
+                            ],
+                            'state_transition': instance.get('StateTransitionReason', '')
+                        })
+
+        return stopped
+
+    def _analyze_reserved_instance_opportunities(self) -> List[Dict]:
+        """Use Cost Explorer's reservation purchase recommendations for EC2"""
+
+        response = self.cost_explorer.get_reservation_purchase_recommendation(
+            Service='Amazon Elastic Compute Cloud - Compute',
+            LookbackPeriodInDays='THIRTY_DAYS',
+            TermInYears='ONE_YEAR',
+            PaymentOption='NO_UPFRONT'
+        )
+
+        opportunities = []
+
+        for recommendation in response.get('Recommendations', []):
+            for detail in recommendation.get('RecommendationDetails', []):
+                instance = detail.get('InstanceDetails', {}).get('EC2InstanceDetails', {})
+                opportunities.append({
+                    'instance_type': instance.get('InstanceType'),
+                    'region': instance.get('Region'),
+                    'recommended_instances': int(detail.get('RecommendedNumberOfInstancesToPurchase', 0)),
+                    'estimated_monthly_savings_usd': float(detail.get('EstimatedMonthlySavingsAmount', 0))
+                })
+
+        return opportunities
+
+    def _analyze_spot_instance_opportunities(self) -> Dict:
+        """Estimate savings from moving instances tagged SpotEligible=true to Spot capacity"""
+
+        candidates = []
+
+        for region in self.eu_regions:
+            ec2_regional = boto3.client('ec2', region_name=region)
+            paginator = ec2_regional.get_paginator('describe_instances')
+            pages = paginator.paginate(Filters=[
+                {'Name': 'tag:SpotEligible', 'Values': ['true']},
+                {'Name': 'instance-state-name', 'Values': ['running']}
+            ])
+            for page in pages:
+                for reservation in page['Reservations']:
+                    candidates.extend(reservation['Instances'])
+
+        if not candidates:
+            return {}
+
+        # Heuristic, not an AWS API: Spot capacity is typically 60-90 % cheaper than
+        # On-Demand. A conservative 60 % saving on a representative On-Demand rate
+        # of USD 0.05/hour is assumed; replace with Pricing API data in production.
+        on_demand_monthly_usd = len(candidates) * 0.05 * 730
+
+        return {
+            'eligible_instances': [instance['InstanceId'] for instance in candidates],
+            'recommended_max_price': '0.05',  # cap Spot bids at the On-Demand price
+            'estimated_monthly_savings_usd': round(on_demand_monthly_usd * 0.6, 2)
+        }
+
     def _calculate_ebs_monthly_cost(self, volume: Dict, region: str) -> float:
         """Calculate monthly cost for EBS volume in specific EU region"""
-        
+
         # Example pricing for EU regions (USD per GB/month)
         # Prices vary slightly by region - these are representative values
         regional_pricing = {
@@ -3221,7 +4011,7 @@ class AWSCostOptimizer:
                 'sc1': 0.028
             }
         }
-        
+
         # Default to eu-west-1 pricing if region not found
         pricing = regional_pricing.get(region, regional_pricing['eu-west-1'])
         cost_per_gb = pricing.get(volume['VolumeType'], 0.110)  # Default to gp2
@@ -3229,7 +4019,7 @@ class AWSCostOptimizer:
 
 def generate_terraform_cost_optimizations(cost_plan: Dict) -> str:
     """Generate Terraform code to implement cost optimisations"""
-    
+
     terraform_code = """
 # Automatically generated cost optimisations
 # Generated: {date}
@@ -3244,21 +4034,22 @@ def generate_terraform_cost_optimizations(cost_plan: Dict) -> str:
         regions=', '.join(cost_plan.get('eu_regions_analysed', [])),
         savings=cost_plan['potential_monthly_savings_usd']
     )
-    
-    # Generate spot instance configurations
+
+    # Generate spot instance configurations. Every literal HCL brace must be
+    # doubled ({{ }}) because the template is rendered with str.format.
     if cost_plan['recommendations']['spot_instances']:
         terraform_code += """
 # Spot Instance Configuration for cost optimisation
 resource "aws_launch_template" "spot_optimized" {{
   name_prefix   = "{project}-spot-"
-  
-  instance_market_options {
+
+  instance_market_options {{
     market_type = "spot"
     spot_options {{
       max_price = "{max_spot_price}"
     }}
   }}
-  
+
   # Cost allocation tags
   tag_specifications {{
     resource_type = "instance"
@@ -3274,35 +4065,40 @@ resource "aws_launch_template" "spot_optimized" {{
             max_spot_price=cost_plan['recommendations']['spot_instances'].get('recommended_max_price', '0.10'),
             estimated_savings=cost_plan['recommendations']['spot_instances'].get('estimated_monthly_savings_usd', 0)
         )
-    
+
     return terraform_code
 ```
 
 ## Security and compliance {#security-compliance}
 
 ### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
-*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached.
+*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached. The module is written in OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and `import rego.v1` keeps the module compatible with OPA 0.59 and later [Source [44]](33_references.md#source-44). Fall-back values are expressed with `default` functions, because a second definition that matched every input would conflict with the specific definitions at evaluation time.
 
 ```rego
 package se.enterprise.security
 
 import rego.v1
 
+# Resource types that must encrypt data at rest and in transit
 encryption_required_services := {
     "aws_s3_bucket",
-    "aws_rds_instance",
+    "aws_db_instance",
     "aws_rds_cluster",
     "aws_efs_file_system",
     "aws_dynamodb_table",
     "aws_redshift_cluster",
-    "aws_elasticsearch_domain"
+    "aws_elasticsearch_domain",
+    "aws_opensearch_domain"
 }
+
+# Resource types that may hold personal data and are subject to residency checks
+sovereignty_scoped_services := encryption_required_services
 
 administrative_ports := {22, 3389, 5432, 3306, 1433, 27017, 6379, 9200, 5601}
 allowed_public_ports := {80, 443}
 eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
 
-encryption_compliant[resource] {
+encryption_compliant contains resource if {
     resource := input.resources[_]
     resource.type in encryption_required_services
     encryption := get_encryption_status(resource)
@@ -3310,33 +4106,63 @@ encryption_compliant[resource] {
     validation.compliant
 }
 
-get_encryption_status(resource) := result {
+get_encryption_status(resource) := result if {
     resource.type == "aws_s3_bucket"
     result := {
         "at_rest": has_s3_encryption(resource),
         "in_transit": has_s3_ssl_policy(resource),
-        "key_management": resource.attributes.kms_key_type
+        "key_management": object.get(resource.attributes, "kms_key_type", "none")
     }
 }
 
-get_encryption_status(resource) := result {
-    resource.type == "aws_rds_instance"
+get_encryption_status(resource) := result if {
+    resource.type != "aws_s3_bucket"
     result := {
-        "at_rest": resource.attributes.storage_encrypted,
-        "in_transit": resource.attributes.force_ssl,
-        "key_management": resource.attributes.kms_key_type
+        "at_rest": object.get(resource.attributes, "storage_encrypted", false),
+        "in_transit": object.get(resource.attributes, "force_ssl", false),
+        "key_management": object.get(resource.attributes, "kms_key_type", "none")
     }
 }
 
-validate_encryption_strength(encryption) := result {
-    encryption.at_rest
-    encryption.in_transit
+default has_s3_encryption(_) := false
+
+has_s3_encryption(resource) := true if {
+    resource.attributes.server_side_encryption.enabled == true
+}
+
+default has_s3_ssl_policy(_) := false
+
+has_s3_ssl_policy(resource) := true if {
+    resource.attributes.enforce_tls == true
+}
+
+default validate_encryption_strength(_) := {
+    "compliant": false,
+    "strength": "none",
+    "recommendations": ["Enable encryption at rest and enforce TLS in transit"]
+}
+
+validate_encryption_strength(encryption) := result if {
+    encryption.at_rest == true
+    encryption.in_transit == true
     key_validation := validate_key_management(encryption.key_management)
     result := {
         "compliant": key_validation.approved,
         "strength": key_validation.strength,
         "recommendations": key_validation.recommendations
     }
+}
+
+# "default" supplies the fall-back value. A catch-all definition such as
+# validate_key_management(_) := {...} would match every input alongside the
+# specific definitions and raise a conflict error at evaluation time.
+default validate_key_management(_) := {
+    "approved": false,
+    "strength": "low",
+    "recommendations": [
+        "Configure an approved KMS key",
+        "Document ownership within the OSCAL profile"
+    ]
 }
 
 validate_key_management("customer_managed") := {
@@ -3354,25 +4180,19 @@ validate_key_management("aws_managed") := {
     ]
 }
 
-validate_key_management(_) := {
-    "approved": false,
-    "strength": "low",
-    "recommendations": [
-        "Configure an approved KMS key",
-        "Document ownership within the OSCAL profile"
-    ]
-}
-
-network_security_violations[violation] {
+network_security_violations contains violation if {
     resource := input.resources[_]
     resource.type == "aws_security_group"
-    violation := check_ingress_rules(resource)
-    violation.severity in ["critical", "high"]
+    some rule in resource.attributes.ingress
+    "0.0.0.0/0" in rule.cidr_blocks
+    violation := classify_exposure(resource, rule)
+    violation.severity in {"critical", "high"}
 }
 
-check_ingress_rules(sg) := violation {
-    rule := sg.attributes.ingress[_]
-    rule.cidr_blocks[_] == "0.0.0.0/0"
+# One call per ingress rule keeps the function single-valued; a function that
+# iterated over all rules of a group would yield several outputs for the same
+# input and fail with a conflict error.
+classify_exposure(sg, rule) := violation if {
     rule.from_port in administrative_ports
     violation := {
         "type": "critical_port_exposure",
@@ -3385,9 +4205,7 @@ check_ingress_rules(sg) := violation {
     }
 }
 
-check_ingress_rules(sg) := violation {
-    rule := sg.attributes.ingress[_]
-    rule.cidr_blocks[_] == "0.0.0.0/0"
+classify_exposure(sg, rule) := violation if {
     not rule.from_port in allowed_public_ports
     not rule.from_port in administrative_ports
     violation := {
@@ -3401,73 +4219,89 @@ check_ingress_rules(sg) := violation {
     }
 }
 
-data_sovereignty_compliant[resource] {
+data_sovereignty_compliant contains resource if {
     resource := input.resources[_]
-    resource.type in {
-        "aws_s3_bucket", "aws_rds_instance", "aws_rds_cluster",
-        "aws_dynamodb_table", "aws_elasticsearch_domain",
-        "aws_redshift_cluster", "aws_efs_file_system"
-    }
+    resource.type in sovereignty_scoped_services
     classification := determine_classification(resource)
-    result := validate_region(resource, classification)
-    result.compliant
+    validate_region(resource, classification).compliant
 }
 
-determine_classification(resource) := classification {
-    classification := resource.attributes.tags["DataClassification"]
+# The DataClassification tag is authoritative; naming heuristics only apply
+# when the tag is absent, so the definitions never produce conflicting values.
+default determine_classification(_) := "internal"
+
+determine_classification(resource) := classification if {
+    classification := resource.attributes.tags.DataClassification
     classification != ""
 }
 
-determine_classification(resource) := "personal" {
+determine_classification(resource) := "personal" if {
+    not has_classification_tag(resource)
+    personal_data_indicated(resource)
+}
+
+has_classification_tag(resource) if {
+    resource.attributes.tags.DataClassification != ""
+}
+
+personal_data_indicated(resource) if {
     contains(lower(resource.attributes.name), "personal")
 }
 
-determine_classification(resource) := "personal" {
-    resource.type in ["aws_rds_instance", "aws_rds_cluster"]
-    indicators := {"user", "customer", "gdpr", "pii"}
-    some indicator in indicators
+personal_data_indicated(resource) if {
+    resource.type in {"aws_db_instance", "aws_rds_cluster"}
+    some indicator in {"user", "customer", "gdpr", "pii"}
     contains(lower(resource.attributes.identifier), indicator)
 }
 
-determine_classification(_) := "internal"
-
-validate_region(resource, "personal") := {
-    "compliant": get_resource_region(resource) in eu_regions,
-    "requirement": "GDPR Articles 44–49"
+validate_region(resource, classification) := result if {
+    classification == "personal"
+    result := {
+        "compliant": region_is_eu(resource),
+        "requirement": "GDPR Articles 44–49"
+    }
 }
 
-validate_region(resource, _) := {
-    "compliant": true,
-    "requirement": "Internal data — EU residency not mandatory"
+validate_region(_, classification) := result if {
+    classification != "personal"
+    result := {
+        "compliant": true,
+        "requirement": "Internal data – EU residency not mandatory"
+    }
 }
 
-get_resource_region(resource) := region {
+default region_is_eu(_) := false
+
+region_is_eu(resource) := true if {
+    get_resource_region(resource) in eu_regions
+}
+
+default get_resource_region(_) := "unknown"
+
+get_resource_region(resource) := region if {
     region := resource.attributes.region
     region != ""
 }
 
-get_resource_region(resource) := region {
+get_resource_region(resource) := region if {
+    not resource.attributes.region
     az := resource.attributes.availability_zone
     region := substring(az, 0, count(az) - 1)
 }
 
-get_resource_region(_) := "unknown"
-
-compliance_assessment := result {
-    encryption_violations := [
-        create_encryption_violation(resource) |
-        resource := input.resources[_];
-        resource.type in encryption_required_services;
-        not encryption_compliant[resource]
+compliance_assessment := result if {
+    encryption_violations := [create_encryption_violation(resource) |
+        some resource in input.resources
+        resource.type in encryption_required_services
+        not resource in encryption_compliant
     ]
 
-    network_violations := [v | v := network_security_violations[_]]
+    network_violations := [v | some v in network_security_violations]
 
-    sovereignty_violations := [
-        create_sovereignty_violation(resource) |
-        resource := input.resources[_];
-        resource.type in encryption_required_services;
-        not data_sovereignty_compliant[resource]
+    sovereignty_violations := [create_sovereignty_violation(resource) |
+        some resource in input.resources
+        resource.type in sovereignty_scoped_services
+        not resource in data_sovereignty_compliant
     ]
 
     violations := array.concat(array.concat(encryption_violations, network_violations), sovereignty_violations)
@@ -3483,30 +4317,32 @@ compliance_assessment := result {
     }
 }
 
-create_encryption_violation(resource) := {
-    "type": "encryption_required",
-    "severity": "critical",
-    "resource": resource.type,
-    "message": "Mandatory encryption is disabled",
-    "remediation": "Enable encryption at rest and enforce TLS in transit",
-    "reference": "GDPR Article 32"
+create_encryption_violation(resource) := violation if {
+    violation := {
+        "type": "encryption_required",
+        "severity": "critical",
+        "resource": resource.type,
+        "message": "Mandatory encryption is disabled",
+        "remediation": "Enable encryption at rest and enforce TLS in transit",
+        "reference": "GDPR Article 32"
+    }
 }
 
-create_sovereignty_violation(resource) := {
-    "type": "data_sovereignty",
-    "severity": "critical",
-    "resource": resource.type,
-    "message": sprintf("Personal data stored outside approved EU regions (%v)", [get_resource_region(resource)]),
-    "remediation": "Move the workload to an EU region or document an adequacy decision",
-    "reference": "GDPR Articles 44–49"
+create_sovereignty_violation(resource) := violation if {
+    violation := {
+        "type": "data_sovereignty",
+        "severity": "critical",
+        "resource": resource.type,
+        "message": sprintf("Personal data stored outside approved EU regions (%v)", [get_resource_region(resource)]),
+        "remediation": "Move the workload to an EU region or document an adequacy decision",
+        "reference": "GDPR Articles 44–49"
+    }
 }
 
-calculate_score(violations) := score {
-    penalties := [penalty |
-        violation := violations[_];
-        penalty := severity_penalties[violation.severity]
-    ]
-    score := math.max(0, 100 - sum(penalties))
+calculate_score(violations) := score if {
+    penalties := [severity_penalties[violation.severity] | some violation in violations]
+    # max() takes a collection; there is no math.max built-in
+    score := max([0, 100 - sum(penalties)])
 }
 
 severity_penalties := {
@@ -3516,19 +4352,21 @@ severity_penalties := {
     "low": 5
 }
 
-assess_regulator(name, violations) := {
-    "name": name,
-    "open_findings": count([v | v := violations[_]; contains(lower(v.reference), lower(name))])
+assess_regulator(name, violations) := summary if {
+    summary := {
+        "name": name,
+        "open_findings": count([v | some v in violations; contains(lower(v.reference), lower(name))])
+    }
 }
 ```
 
 ### 10_CODE_2: OSCAL profile for regulated financial services {#10_code_2}
-*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation.
+*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation. The `regional-catalog.json` import refers to the organisation's own OSCAL catalogue, which encodes the GDPR articles and the MSB guidance as controls (`gdpr-*`, `msb-*`) and is not reproduced here; control selections use glob patterns such as `ac-*`, not regular expressions.
 
 ```json
 {
   "profile": {
-    "uuid": "87654321-4321-8765-4321-876543218765",
+    "uuid": "374b0628-2bd1-4392-8eb2-d22caf68ea36",
     "metadata": {
       "title": "Financial Institutions Security Profile",
       "published": "2024-01-15T11:00:00Z",
@@ -3536,21 +4374,21 @@ assess_regulator(name, violations) := {
       "version": "2.1",
       "oscal-version": "1.1.2",
       "props": [
-        { "name": "organization", "value": "Financial Sector" },
-        { "name": "jurisdiction", "value": "EU" }
+        { "name": "organization", "ns": "https://example.org/ns/architecture-as-code", "value": "Financial Sector" },
+        { "name": "jurisdiction", "ns": "https://example.org/ns/architecture-as-code", "value": "EU" }
       ]
     },
     "imports": [
       {
         "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
         "include-controls": [
-          { "matching": [ { "pattern": "ac-.*" }, { "pattern": "au-.*" }, { "pattern": "sc-.*" } ] }
+          { "matching": [ { "pattern": "ac-*" }, { "pattern": "au-*" }, { "pattern": "sc-*" } ] }
         ]
       },
       {
         "href": "regional-catalog.json",
         "include-controls": [
-          { "matching": [ { "pattern": "gdpr-.*" }, { "pattern": "msb-.*" } ] }
+          { "matching": [ { "pattern": "gdpr-*" }, { "pattern": "msb-*" } ] }
         ]
       }
     ],
@@ -3584,7 +4422,7 @@ assess_regulator(name, violations) := {
                   "id": "gdpr-art32-1_fin-guidance",
                   "name": "guidance",
                   "title": "Finansinspektionen Supplement",
-                  "prose": "Payment service providers must use FIPS 140-2 validated encryption modules and review key material every 90 days."
+                  "prose": "Payment service providers must use FIPS 140-3 validated cryptographic modules and review key material every 90 days."
                 }
               ]
             }
@@ -3614,12 +4452,12 @@ assess_regulator(name, violations) := {
 ```
 
 ### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
-*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile.
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile. Every control implementation, implemented requirement and statement carries an RFC 4122 UUID as the OSCAL schema requires, the implementation status is recorded with the `implementation-status` property defined for the component model, and a `terraform-resource-type` property links each component to the Terraform resources it covers.
 
 ```json
 {
   "component-definition": {
-    "uuid": "11223344-5566-7788-99aa-bbccddeeff00",
+    "uuid": "5ac80bee-3d0f-47f6-b816-d55fbc5c9039",
     "metadata": {
       "title": "AWS Components for Regulated Workloads",
       "published": "2024-01-15T12:00:00Z",
@@ -3629,37 +4467,48 @@ assess_regulator(name, violations) := {
     },
     "components": [
       {
-        "uuid": "comp-aws-rds-mysql",
+        "uuid": "719170d2-ebec-4766-9d46-607f5ae81816",
         "type": "software",
         "title": "Amazon RDS MySQL",
         "description": "Managed relational database configured for GDPR Article 32 compliance.",
+        "props": [
+          { "name": "terraform-resource-type", "ns": "https://example.org/ns/architecture-as-code", "value": "aws_db_instance" }
+        ],
         "control-implementations": [
           {
+            "uuid": "1c662e9e-9134-4359-8f59-85005f543d99",
             "source": "regional-catalog.json",
+            "description": "GDPR Article 32 and MSB segmentation controls satisfied by the RDS module.",
             "implemented-requirements": [
               {
+                "uuid": "998cccd7-ab07-4b75-b444-627fba538160",
                 "control-id": "gdpr-art32-1.1",
                 "description": "Encryption at rest enabled with customer managed KMS keys.",
+                "props": [
+                  { "name": "implementation-status", "value": "implemented" },
+                  { "name": "kms-key-type", "ns": "https://example.org/ns/architecture-as-code", "value": "customer-managed" },
+                  { "name": "rotation", "ns": "https://example.org/ns/architecture-as-code", "value": "365 days" }
+                ],
                 "statements": [
                   {
                     "statement-id": "gdpr-art32-1.1_smt",
-                    "description": "Default encryption uses AES-256 with keys rotated every 365 days.",
-                    "implementation-status": { "state": "implemented" }
+                    "uuid": "59e73e39-0efb-4493-bedc-70f6bca0611e",
+                    "description": "Default encryption uses AES-256 with keys rotated every 365 days."
                   }
-                ],
-                "props": [
-                  { "name": "kms-key-type", "value": "customer-managed" },
-                  { "name": "rotation", "value": "365 days" }
                 ]
               },
               {
+                "uuid": "c824abfc-246e-48e3-bf10-aef5b3b1819b",
                 "control-id": "msb-3.2.1.1",
                 "description": "Database subnet groups isolated from public subnets.",
+                "props": [
+                  { "name": "implementation-status", "value": "implemented" }
+                ],
                 "statements": [
                   {
                     "statement-id": "msb-3.2.1.1_smt",
-                    "description": "Only application load balancers within the VPC may initiate connections.",
-                    "implementation-status": { "state": "implemented" }
+                    "uuid": "d3db7e38-2a26-4e88-b319-eb6f0f089547",
+                    "description": "Only application load balancers within the VPC may initiate connections."
                   }
                 ]
               }
@@ -3668,33 +4517,46 @@ assess_regulator(name, violations) := {
         ]
       },
       {
-        "uuid": "comp-aws-s3",
+        "uuid": "b164e25e-6622-48ef-9e5e-b8cc24ceb799",
         "type": "software",
         "title": "Amazon S3 Secure Bucket",
         "description": "Object storage with automatic encryption and access logging.",
+        "props": [
+          { "name": "terraform-resource-type", "ns": "https://example.org/ns/architecture-as-code", "value": "aws_s3_bucket" }
+        ],
         "control-implementations": [
           {
+            "uuid": "c50ab6e7-b57e-48a8-8715-56ad77048883",
             "source": "regional-catalog.json",
+            "description": "Transport encryption and Zero Trust access controls provided by the S3 module.",
             "implemented-requirements": [
               {
+                "uuid": "f0764ddb-6199-4674-9d7c-f6ab376174e2",
                 "control-id": "gdpr-art32-1.2",
                 "description": "Enforced TLS 1.2 for all data in transit.",
+                "props": [
+                  { "name": "implementation-status", "value": "implemented" }
+                ],
                 "statements": [
                   {
                     "statement-id": "gdpr-art32-1.2_smt",
-                    "description": "S3 bucket policies block non-TLS requests and log denials.",
-                    "implementation-status": { "state": "implemented" }
+                    "uuid": "6b55187a-91c7-4786-a4c5-f38973c84485",
+                    "description": "S3 bucket policies block non-TLS requests and log denials."
                   }
                 ]
               },
               {
+                "uuid": "f6a0b7f2-c439-4a61-90f5-1458b56ef14f",
                 "control-id": "msb-3.2.1.2",
                 "description": "Zero Trust verification for access using IAM conditions.",
+                "props": [
+                  { "name": "implementation-status", "value": "planned" }
+                ],
                 "statements": [
                   {
                     "statement-id": "msb-3.2.1.2_smt",
-                    "description": "IAM policies require device posture attributes for privileged access.",
-                    "implementation-status": { "state": "planned" }
+                    "uuid": "28cc8f8f-79de-4c62-b01f-ef7f669d1ea3",
+                    "description": "IAM policies require device posture attributes for privileged access."
                   }
                 ]
               }
@@ -3703,22 +4565,31 @@ assess_regulator(name, violations) := {
         ]
       },
       {
-        "uuid": "comp-aws-network-firewall",
+        "uuid": "73bf97fd-af40-4371-a871-5d74429d1b15",
         "type": "software",
         "title": "AWS Network Firewall",
         "description": "Edge inspection enforcing MSB segmentation and logging requirements.",
+        "props": [
+          { "name": "terraform-resource-type", "ns": "https://example.org/ns/architecture-as-code", "value": "aws_networkfirewall_firewall" }
+        ],
         "control-implementations": [
           {
+            "uuid": "296a7ba0-1922-40d3-8b49-d2601cfe0bb2",
             "source": "regional-catalog.json",
+            "description": "Network segmentation controls enforced at the inspection layer.",
             "implemented-requirements": [
               {
+                "uuid": "f14faba2-f852-4aec-8079-58dcbc3f12c0",
                 "control-id": "msb-3.2.1",
                 "description": "Micro-segmentation between payment and support zones.",
+                "props": [
+                  { "name": "implementation-status", "value": "implemented" }
+                ],
                 "statements": [
                   {
                     "statement-id": "msb-3.2.1_smt",
-                    "description": "Stateful rules restrict lateral movement and mirror traffic to a central collector.",
-                    "implementation-status": { "state": "implemented" }
+                    "uuid": "5d6e6b2c-e415-4996-9104-39fe282d01b2",
+                    "description": "Stateful rules restrict lateral movement and mirror traffic to a central collector."
                   }
                 ]
               }
@@ -3732,20 +4603,24 @@ assess_regulator(name, violations) := {
 ```
 
 ### 10_CODE_4: Automated OSCAL System Security Plan generator {#10_code_4}
-*Referenced from Chapter 10.* This Python utility ingests Terraform state, merges it with component definitions, and produces a machine-readable OSCAL SSP. The script is designed to run inside CI so every deployment updates the compliance evidence set.
+*Referenced from Chapter 10.* This Python utility parses the Terraform configuration, matches the declared resource types with the component definitions through their `terraform-resource-type` property, and produces an OSCAL 1.1.2 System Security Plan with the mandatory system characteristics, system implementation and flattened control implementation. The script is designed to run inside CI so every deployment updates the compliance evidence set; validate the output with `oscal-cli validate` in the same pipeline.
 
 ```python
 """Generate OSCAL System Security Plans from Terraform configurations."""
 from __future__ import annotations
 
 import json
+import uuid
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
 import boto3
 import hcl2
+
+# Namespace for the organisation's own OSCAL properties (not NIST-defined names)
+AAC_NS = "https://example.org/ns/architecture-as-code"
 
 
 @dataclass
@@ -3755,9 +4630,21 @@ class ComponentDefinition:
     path: Path
     content: Dict[str, Any]
 
+    @property
+    def components(self) -> List[Dict[str, Any]]:
+        return self.content["component-definition"].get("components", [])
+
+
+def implementation_state(requirement: Dict[str, Any]) -> str:
+    """Read the implementation-status property of a component requirement."""
+    for prop in requirement.get("props", []):
+        if prop.get("name") == "implementation-status":
+            return prop["value"]
+    return "implemented"
+
 
 class OSCALSSPGenerator:
-    """Build an OSCAL-compliant System Security Plan from source files."""
+    """Build an OSCAL 1.1.2 System Security Plan from source files."""
 
     def __init__(self, terraform_directory: Path, component_paths: Iterable[Path]):
         self.terraform_directory = terraform_directory
@@ -3765,86 +4652,131 @@ class OSCALSSPGenerator:
         self.sts = boto3.client("sts")
 
     def generate(self, profile_href: str, system_name: str) -> Dict[str, Any]:
-        resources = self._parse_terraform()
-        components = self._load_components()
-        mappings = self._map_resources_to_components(resources, components)
-        implementations = self._build_control_implementations(mappings)
+        resource_types = self._parse_terraform()
+        definitions = self._load_components()
+        components = self._match_components(resource_types, definitions)
 
-        now = datetime.utcnow().isoformat() + "Z"
+        now = datetime.now(timezone.utc).isoformat()
         return {
             "system-security-plan": {
-                "uuid": self._uuid(),
+                "uuid": str(uuid.uuid4()),
                 "metadata": {
                     "title": f"System Security Plan – {system_name}",
                     "published": now,
                     "last-modified": now,
                     "version": "1.0",
                     "oscal-version": "1.1.2",
+                    "roles": [{"id": "platform-engineer", "title": "Platform engineer"}],
                     "props": [
-                        {"name": "organization", "value": "Enterprise"},
-                        {"name": "system-name", "value": system_name}
+                        {"name": "organization", "ns": AAC_NS, "value": "Enterprise"},
+                        {"name": "system-name", "ns": AAC_NS, "value": system_name}
                     ]
                 },
                 "import-profile": {"href": profile_href},
                 "system-characteristics": {
-                    "system-ids": [
-                        {
-                            "identifier-type": "https://ietf.org/rfc/rfc4122",
-                            "id": self._account_id()
-                        }
-                    ],
+                    # An AWS account ID is not an RFC 4122 UUID, so it is typed with the
+                    # organisation's own identifier scheme instead
+                    "system-ids": [{"identifier-type": AAC_NS, "id": f"aws-account-{self._account_id()}"}],
                     "system-name": system_name,
                     "description": f"Automated SSP generated from Terraform for {system_name}",
-                    "security-sensitivity-level": "moderate"
+                    "security-sensitivity-level": "moderate",
+                    "system-information": {
+                        "information-types": [
+                            {
+                                "uuid": str(uuid.uuid4()),
+                                "title": "Customer and payment data",
+                                "description": "Personal data processed under GDPR Article 32 obligations."
+                            }
+                        ]
+                    },
+                    "status": {"state": "operational"},
+                    "authorization-boundary": {
+                        "description": "All AWS resources managed by the Terraform root module of this system."
+                    }
+                },
+                "system-implementation": {
+                    "users": [
+                        {
+                            "uuid": str(uuid.uuid4()),
+                            "title": "Platform engineering team",
+                            "role-ids": ["platform-engineer"]
+                        }
+                    ],
+                    "components": [self._system_component(component) for component in components]
                 },
                 "control-implementation": {
-                    "implemented-requirements": implementations
+                    "description": "Control implementations inherited from the matched component definitions.",
+                    "implemented-requirements": self._implemented_requirements(components)
                 }
             }
         }
 
-    def _parse_terraform(self) -> List[Dict[str, Any]]:
-        resources: List[Dict[str, Any]] = []
-        for tf_file in self.terraform_directory.rglob("*.tf"):
+    def _parse_terraform(self) -> List[str]:
+        """Return the Terraform resource types declared in the configuration."""
+        resource_types: List[str] = []
+        for tf_file in sorted(self.terraform_directory.rglob("*.tf")):
             with tf_file.open("r", encoding="utf-8") as handle:
                 data = hcl2.load(handle)
-                resources.extend(data.get("resource", []))
-        return resources
+            for block in data.get("resource", []):
+                resource_types.extend(block.keys())
+        return resource_types
 
     def _load_components(self) -> List[ComponentDefinition]:
-        components: List[ComponentDefinition] = []
+        definitions: List[ComponentDefinition] = []
         for path in self.component_paths:
             with path.open("r", encoding="utf-8") as handle:
-                components.append(ComponentDefinition(path, json.load(handle)))
-        return components
+                definitions.append(ComponentDefinition(path, json.load(handle)))
+        return definitions
 
-    def _map_resources_to_components(
-        self,
-        resources: List[Dict[str, Any]],
-        components: List[ComponentDefinition],
-    ) -> Dict[str, ComponentDefinition]:
-        mappings: Dict[str, ComponentDefinition] = {}
-        for resource in resources:
-            resource_type = next(iter(resource.keys()))
-            for component in components:
-                if resource_type in json.dumps(component.content):
-                    mappings[resource_type] = component
-        return mappings
+    @staticmethod
+    def _resource_types(component: Dict[str, Any]) -> List[str]:
+        """Terraform resource types covered by a component (prop terraform-resource-type)."""
+        return [
+            prop["value"] for prop in component.get("props", [])
+            if prop.get("name") == "terraform-resource-type"
+        ]
 
-    def _build_control_implementations(
-        self, mappings: Dict[str, ComponentDefinition]
+    def _match_components(
+        self, resource_types: List[str], definitions: List[ComponentDefinition]
     ) -> List[Dict[str, Any]]:
-        implementations: List[Dict[str, Any]] = []
-        for component in mappings.values():
-            definition = component.content["component-definition"]
-            for comp in definition.get("components", []):
-                implementations.extend(
-                    comp.get("control-implementations", [])
-                )
-        return implementations
+        """Select the defined components whose resource types exist in the estate."""
+        deployed = set(resource_types)
+        return [
+            component
+            for definition in definitions
+            for component in definition.components
+            if deployed & set(self._resource_types(component))
+        ]
 
-    def _uuid(self) -> str:
-        return datetime.utcnow().strftime("ssp-%Y%m%d%H%M%S")
+    @staticmethod
+    def _system_component(component: Dict[str, Any]) -> Dict[str, Any]:
+        return {
+            "uuid": component["uuid"],
+            "type": component["type"],
+            "title": component["title"],
+            "description": component["description"],
+            "status": {"state": "operational"}
+        }
+
+    @staticmethod
+    def _implemented_requirements(components: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Flatten component control implementations into SSP implemented requirements."""
+        by_control: Dict[str, Dict[str, Any]] = {}
+        for component in components:
+            for implementation in component.get("control-implementations", []):
+                for requirement in implementation.get("implemented-requirements", []):
+                    entry = by_control.setdefault(requirement["control-id"], {
+                        "uuid": str(uuid.uuid4()),
+                        "control-id": requirement["control-id"],
+                        "by-components": []
+                    })
+                    entry["by-components"].append({
+                        "component-uuid": component["uuid"],
+                        "uuid": str(uuid.uuid4()),
+                        "description": requirement["description"],
+                        "implementation-status": {"state": implementation_state(requirement)}
+                    })
+        return list(by_control.values())
 
     def _account_id(self) -> str:
         return self.sts.get_caller_identity()["Account"]
@@ -4036,12 +4968,19 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
             messageBus -> inventoryService "OrderCreated event" "AMQP"
             messageBus -> notificationService "OrderCreated event" "AMQP"
             paymentService -> messageBus "Publishes PaymentCompleted" "AMQP"
+            messageBus -> paymentService "OrderCreated event" "AMQP"
+
+            # Relationships - Supporting services to external systems
+            # (dynamic views may only use relationships that exist in the model)
+            paymentService -> paymentProvider "Charges cards" "HTTPS/REST"
+            notificationService -> emailService "Sends emails" "HTTPS/REST"
         }
 
         # External Integrations
         ecommercePlatform -> paymentProvider "Processes payments" "HTTPS/REST"
         ecommercePlatform -> emailService "Sends emails" "HTTPS/REST"
         ecommercePlatform -> shippingCarrier "Creates shipments" "HTTPS/REST"
+        emailService -> customer "Delivers confirmation emails" "SMTP"
 
         # User Interactions
         customer -> webApp "Browses and purchases"
@@ -4087,6 +5026,8 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
 
                     deploymentNode "Read Replicas" {
                         instances 2
+                        containerInstance productDb
+                        containerInstance orderDb
                     }
                 }
 
@@ -4146,20 +5087,21 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
         # Dynamic View - Order Flow
         dynamic ecommercePlatform "OrderPlacementFlow" {
             title "Customer Order Placement"
+            # Steps are numbered automatically; manual numbers would render as "1. 1. ..."
 
-            customer -> webApp "1. Submits order"
-            webApp -> apiGateway "2. POST /api/orders"
-            apiGateway -> orderService "3. CreateOrder()"
-            orderService -> orderDb "4. SaveOrder()"
-            orderService -> messageBus "5. Publish OrderCreated"
-            messageBus -> inventoryService "6. OrderCreated event"
-            inventoryService -> productDb "7. Reserve items"
-            messageBus -> paymentService "8. OrderCreated event"
-            paymentService -> paymentProvider "9. Charge customer"
-            paymentService -> messageBus "10. Publish PaymentCompleted"
-            messageBus -> notificationService "11. PaymentCompleted event"
-            notificationService -> emailService "12. Send confirmation"
-            emailService -> customer "13. Confirmation email"
+            customer -> webApp "Submits order"
+            webApp -> apiGateway "POST /api/orders"
+            apiGateway -> orderService "CreateOrder()"
+            orderService -> orderDb "SaveOrder()"
+            orderService -> messageBus "Publish OrderCreated"
+            messageBus -> inventoryService "OrderCreated event"
+            inventoryService -> productDb "Reserve items"
+            messageBus -> paymentService "OrderCreated event"
+            paymentService -> paymentProvider "Charge customer"
+            paymentService -> messageBus "Publish PaymentCompleted"
+            messageBus -> notificationService "PaymentCompleted event"
+            notificationService -> emailService "Send confirmation"
+            emailService -> customer "Confirmation email"
 
             autoLayout
             description "Sequence of events when customer places order"
@@ -4174,8 +5116,8 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
 
         # Filtered Views
         container ecommercePlatform "ExternalIntegrations" {
-            include element.tag==External*
-            include ->element.tag==External*->
+            include "element.tag==External System"
+            include "->element.tag==External System->"
             autoLayout
             description "External system dependencies"
         }
@@ -4238,7 +5180,7 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
 
             element "Critical Path" {
                 border solid
-                thickness 4
+                strokeWidth 4
             }
 
             relationship "Relationship" {
@@ -4261,7 +5203,10 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
 
 ## Sources
 
-1. **HashiCorp (2024).** *Terraform Language Documentation.* HashiCorp Developer Documentation. Available at: [https://developer.hashicorp.com/terraform/language](https://developer.hashicorp.com/terraform/language)
-2. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes. [Source [13]](33_references.md#source-13)
-3. **Structurizr (2024).** *Structurizr DSL Language Reference.* Structurizr Documentation. Available at: [https://github.com/structurizr/dsl](https://github.com/structurizr/dsl)
-4. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+1. **HashiCorp.** *Terraform Language Documentation.* HashiCorp Developer Documentation. Available at: [https://developer.hashicorp.com/terraform/language](https://developer.hashicorp.com/terraform/language) [Source [140]](33_references.md#source-140)
+2. **HashiCorp.** *Backend Type: s3.* HashiCorp Developer Documentation. Available at: [https://developer.hashicorp.com/terraform/language/backend/s3](https://developer.hashicorp.com/terraform/language/backend/s3) [Source [17]](33_references.md#source-17)
+3. **Kubernetes Project (2024).** *Kubernetes Documentation: Concepts.* Kubernetes. [Source [13]](33_references.md#source-13)
+4. **Structurizr.** *Structurizr DSL language reference.* Structurizr documentation. Available at: [https://docs.structurizr.com/dsl/language](https://docs.structurizr.com/dsl/language) [Source [38]](33_references.md#source-38)
+5. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
+6. **Open Policy Agent.** *OPA v1.0 upgrade guide.* Available at: [https://www.openpolicyagent.org/docs/v0-upgrade](https://www.openpolicyagent.org/docs/v0-upgrade) [Source [44]](33_references.md#source-44)
+7. **DORA (2024).** *Accelerate State of DevOps Report 2024.* Google Cloud / DORA. Available at: [https://dora.dev/research/2024/dora-report/](https://dora.dev/research/2024/dora-report/) [Source [49]](33_references.md#source-49)

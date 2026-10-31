@@ -1,10 +1,10 @@
 {
   "workspace_path": "docs/examples/structurizr/aac_reference_workspace.dsl",
-  "workspace_sha256": "70f2dd35f9e925c7fcd4b74237132b4fefaa22633a2a56cb09bdc2f9fdc19410",
+  "workspace_sha256": "fd526fd9df55d6f2c0cc5c105d7f8837a720b287a36c76b368d0f7f96bccd986",
   "export_formats": [
-    "png",
-    "structurizr"
+    "json",
+    "plantuml"
   ],
   "export_directory": "build/structurizr",
-  "generated_at": "2025-11-03T06:21:21+00:00"
+  "generated_at": "2026-10-31T08:30:42+00:00"
 }

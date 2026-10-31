@@ -50,7 +50,7 @@ Reference material, author information, technical enablers, and the Architecture
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 5 | `05_automation_devops_cicd.md` | Automation, DevOps and CI/CD for Infrastructure as Code | Holistic approach to CI/CD, DevOps practices and automation for IaC |
-| 6 | `06_structurizr.md` | Structurizr: Architecture Modeling as Code | Using Structurizr DSL and C4 model for architecture visualisation and documentation |
+| 6 | `06_structurizr.md` | Structurizr: Architecture Modelling as Code | Using Structurizr DSL and C4 model for architecture visualisation and documentation |
 | 7 | `07_containerisation.md` | Containerisation and Orchestration as Code | Container-based Architecture as Code |
 | 8 | `08_microservices.md` | Microservices Architecture as Code | Applying Architecture as Code disciplines across microservices estates |
 
@@ -98,7 +98,7 @@ Reference material, author information, technical enablers, and the Architecture
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
 | 22 | `22_documentation_vs_architecture.md` | Documentation as Code vs Architecture as Code | Distinction between documentation and architecture disciplines, modelling vs diagram tools |
-| 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft 'as Code' Disciplines | Cross-disciplinary synergies between soft 'as code' practices |
+| 23 | `23_soft_as_code_interplay.md` | The Interplay Between Soft As Code Disciplines | Cross-disciplinary synergies between soft 'as code' practices |
 | 24 | `24_best_practices.md` | Best Practices and Lessons Learned | Summary of best practices |
 
 ### Part 7: Future & Wrap-up (Chapters 25-27, including 26A and 26B)
@@ -107,7 +107,7 @@ Reference material, author information, technical enablers, and the Architecture
 
 | Chapter | File | Title | Description |
 |---------|------|-------|-------------|
-| 25 | `25_future_trends.md` | Future Trends and Development in Architecture as Code | Development trends, technological future, and long-term perspectives |
+| 25 | `25_future_trends.md` | Future Trends in Architecture as Code | Development trends, technological future, and long-term perspectives |
 | 26A | `26a_prerequisites_for_aac.md` | Prerequisites for Architecture as Code Adoption | Organisational, technical, and economic readiness signals |
 | 26B | `26b_aac_anti_patterns.md` | Anti-Patterns in Architecture as Code Programmes | Common pitfalls, early warning indicators, and recovery playbooks |
 | 27 | `27_conclusion.md` | Conclusion | Concluding reflections |

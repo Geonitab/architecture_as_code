@@ -230,7 +230,7 @@
       ],
       "name": "GitOps",
       "category": "delivery",
-      "summary": "Operating models that use a VCS as the single source of truth so that merges trigger automated reconciliation against live environments."
+      "summary": "An operating model in which the desired state of systems is declared in version control and software agents continuously pull that declared state and reconcile the live environments against it (OpenGitOps principles)."
     },
     {
       "id": "helm",
@@ -359,22 +359,22 @@
       "summary": "A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review."
     },
     {
-      "id": "access_federation",
+      "id": "identity_federation",
       "related": [
         {
           "term": "architecture_as_code",
           "relationship": "safeguards",
-          "reason": "Access Federation safeguards Architecture as Code by ensuring changes stay compliant."
+          "reason": "Identity Federation safeguards Architecture as Code by ensuring changes stay compliant."
         },
         {
           "term": "policy_as_code",
           "relationship": "partners_with",
-          "reason": "Access Federation partners with Policy as Code so guardrails remain enforceable and transparent."
+          "reason": "Identity Federation partners with Policy as Code so guardrails remain enforceable and transparent."
         }
       ],
-      "name": "Access Federation",
+      "name": "Identity Federation",
       "category": "governance",
-      "summary": "Coordinated identity management across platforms so that people have the least-privileged access they need to perform their roles."
+      "summary": "Linking identity providers across organisations and platforms so that people authenticate once and receive the least-privileged access they need to perform their roles."
     },
     {
       "id": "continuous_compliance",
@@ -487,7 +487,7 @@
       ],
       "name": "Zero Trust",
       "category": "governance",
-      "summary": "A security stance that continuously verifies identities, device health, and context before granting access, reducing implicit trust between services."
+      "summary": "A security model (NIST SP 800-207) that grants no implicit trust based on network location or asset ownership and continuously verifies identity, device health, and context before granting least-privileged access."
     },
     {
       "id": "blameless_post_incident_review",
@@ -541,7 +541,7 @@
       ],
       "name": "Chaos Monkey",
       "category": "operations",
-      "summary": "A resilience experiment that deliberately terminates running resources to verify automated recovery, typically orchestrated through codified AaC workflows."
+      "summary": "Netflix's open-source tool that randomly terminates virtual machine instances and containers in production to verify that services tolerate instance failure; an early, widely known chaos engineering implementation."
     },
     {
       "id": "error_budget",
@@ -997,6 +997,96 @@
       "name": "Sustainability KPI",
       "category": "finance",
       "summary": "A measurable objective—such as emissions per transaction—that keeps environmental impact visible during planning and prioritisation."
+    },
+    {
+      "id": "continuous_improvement_loop",
+      "name": "Continuous Improvement Loop",
+      "category": "culture",
+      "summary": "A feedback rhythm—retrospectives, reviews, and experiments—that keeps practices evolving alongside technology.",
+      "related": [
+        {
+          "term": "devops_culture",
+          "relationship": "reinforces",
+          "reason": "Continuous Improvement Loop reinforces DevOps Culture by turning feedback into regular, shared adjustments."
+        },
+        {
+          "term": "change_management",
+          "relationship": "supports",
+          "reason": "Continuous Improvement Loop supports Change Management by giving people a predictable cadence for adopting new practices."
+        }
+      ]
+    },
+    {
+      "id": "anti_pattern",
+      "name": "Anti-Pattern",
+      "category": "culture",
+      "summary": "A common but counterproductive practice that appears helpful yet creates long-term issues, signalling an opportunity for shared learning.",
+      "related": [
+        {
+          "term": "architecture_as_code",
+          "relationship": "guides",
+          "reason": "Anti-Pattern catalogues guide Architecture as Code programmes away from practices that erode codified governance."
+        },
+        {
+          "term": "continuous_improvement_loop",
+          "relationship": "feeds",
+          "reason": "Anti-Pattern observations feed the Continuous Improvement Loop as concrete lessons to act on."
+        }
+      ]
+    },
+    {
+      "id": "multi_cloud_strategy",
+      "name": "Multi-Cloud Strategy",
+      "category": "delivery",
+      "summary": "Using services from multiple providers to balance capability, resilience, and regulatory needs while avoiding lock-in.",
+      "related": [
+        {
+          "term": "infrastructure_as_code",
+          "relationship": "relies_on",
+          "reason": "Multi-Cloud Strategy relies on Infrastructure as Code to express provider-specific resources through consistent, reviewable definitions."
+        },
+        {
+          "term": "data_sovereignty",
+          "relationship": "balances_with",
+          "reason": "Multi-Cloud Strategy balances with Data Sovereignty because provider and region choices must respect legal boundaries."
+        }
+      ]
+    },
+    {
+      "id": "edge_computing",
+      "name": "Edge Computing",
+      "category": "delivery",
+      "summary": "Placing compute capabilities closer to data sources or users to reduce latency and improve responsiveness.",
+      "related": [
+        {
+          "term": "multi_cloud_strategy",
+          "relationship": "complements",
+          "reason": "Edge Computing complements Multi-Cloud Strategy by extending the delivery footprint beyond central cloud regions."
+        },
+        {
+          "term": "observability_stack",
+          "relationship": "relies_on",
+          "reason": "Edge Computing relies on the Observability Stack to keep distributed workloads visible and manageable."
+        }
+      ]
+    },
+    {
+      "id": "calm",
+      "name": "CALM",
+      "category": "foundation",
+      "summary": "The Common Architecture Language Model: an open-source FINOS specification, built on a JSON meta-schema, that describes an architecture as nodes, relationships, and metadata so that tooling can validate and process it.",
+      "related": [
+        {
+          "term": "architecture_as_code",
+          "relationship": "models",
+          "reason": "CALM models Architecture as Code intent in a standard, machine-readable schema."
+        },
+        {
+          "term": "knowledge_graph",
+          "relationship": "feeds",
+          "reason": "CALM nodes, relationships, and metadata feed the Knowledge Graph with structured architectural facts."
+        }
+      ]
     }
   ]
 }

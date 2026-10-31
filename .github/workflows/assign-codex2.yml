@@ -125,8 +125,9 @@ jobs:
         run: |
           set -euo pipefail
           CHANGED=$(git status --porcelain | awk '{print $2}')
-          printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true > /tmp/wf.txt
-          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$' || true > /tmp/nonwf.txt
+          # Group the grep with `|| true` so the redirect captures grep's output, not true's.
+          { printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true; } > /tmp/wf.txt
+          { printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$' | grep . || true; } > /tmp/nonwf.txt
           echo "wf_count=$(grep -c . /tmp/wf.txt || true)" >> $GITHUB_OUTPUT
           echo "nonwf_count=$(grep -c . /tmp/nonwf.txt || true)" >> $GITHUB_OUTPUT
 
@@ -218,7 +219,12 @@ jobs:
           fi
 
   codex_on_pr:
-    if: github.event_name == 'pull_request'
+    # Skip pull requests that this workflow opened itself; otherwise every auto-fix PR
+    # triggers another auto-fix PR, each waiting for maintainer approval.
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.user.login != 'github-actions[bot]' &&
+      !contains(github.head_ref, '-autofix-')
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
@@ -247,8 +253,9 @@ jobs:
         run: |
           set -euo pipefail
           CHANGED=$(git status --porcelain | awk '{print $2}')
-          printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true > /tmp/wf.txt
-          printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$' || true > /tmp/nonwf.txt
+          # Group the grep with `|| true` so the redirect captures grep's output, not true's.
+          { printf '%s\n' $CHANGED | grep -E '^\.github/workflows/.*\.ya?ml$' || true; } > /tmp/wf.txt
+          { printf '%s\n' $CHANGED | grep -vE '^\.github/workflows/.*\.ya?ml$' | grep . || true; } > /tmp/nonwf.txt
           echo "wf_count=$(grep -c . /tmp/wf.txt || true)" >> $GITHUB_OUTPUT
           echo "nonwf_count=$(grep -c . /tmp/nonwf.txt || true)" >> $GITHUB_OUTPUT
 
@@ -259,11 +266,17 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          BEFORE=$(git rev-parse HEAD)
           git add $(cat /tmp/nonwf.txt)
           git commit -m "Codex auto-fix for PR #${{ github.event.pull_request.number }} (non-workflow)" || echo "no commit"
+          if [[ "$(git rev-parse HEAD)" == "$BEFORE" ]]; then
+            echo "Codex produced no commit – nothing to push."
+            exit 0
+          fi
           HEAD_REF="${{ github.head_ref }}"
           [[ -z "$HEAD_REF" ]] && HEAD_REF=$(git rev-parse --abbrev-ref HEAD)
-          if ! git push origin "$HEAD_REF"; then
+          # The checkout is a detached HEAD (refs/pull/N/head), so push HEAD explicitly.
+          if ! git push origin "HEAD:${HEAD_REF}"; then
             echo "::warning::Conflict on ${HEAD_REF} – creating conflict-safe branch."
             TS=$(date +%Y%m%d-%H%M%S)
             NEW_BRANCH="${HEAD_REF}-autofix-${TS}"
@@ -289,7 +302,7 @@ jobs:
             git remote set-url origin "$URL"
             git add $(cat /tmp/wf.txt)
             git commit -m "Codex workflow updates for PR #${{ github.event.pull_request.number }}" || echo "no wf commit"
-            if ! git push origin "$HEAD_REF"; then
+            if ! git push origin "HEAD:${HEAD_REF}"; then
               TS=$(date +%Y%m%d-%H%M%S)
               WFB="${HEAD_REF}-workflow-${TS}"
               git switch -c "$WFB"

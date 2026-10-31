@@ -30,8 +30,8 @@ matched by organisational investment in skills, culture, and operating models so
 
 ## 27.2 Embedding continuous improvement
 
-The journey through this book charts a deliberate increase in sophistication: from declarative blueprints and idempotent
-configuration in [chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerisation.md), to
+The journey through this book charts a deliberate increase in sophistication: from the declarative blueprints of
+[chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerisation.md), to
 [future-facing automation patterns](25_future_trends.md). Security is treated as an architectural concern from the
 outset, evolving from [policy and security](10_policy_and_security.md) through [governance as code](11_governance_as_code.md)
 and [compliance operations](12_compliance.md). Each capability builds on the previous layer to create a resilient Architecture
@@ -41,7 +41,7 @@ as Code platform.
 
 Continuous improvement is woven into Architecture as Code. Metrics from [automation and DevOps practices](05_automation_devops_cicd.md)
 and insights from [team structure guidance](18_team_structure.md) help identify areas for refinement. Observability patterns,
-first introduced in [security and resilience chapters](09_security_fundamentals.md), support data-driven decisions and proactive
+first introduced in the [automation and platform chapters](05_automation_devops_cicd.md), support data-driven decisions and proactive
 optimisation. By regularly reviewing feedback loops, teams maintain momentum and prevent regression.
 
 ![Architecture as Code – Build Pipeline](images/diagram_27b_build_pipeline.png)
@@ -52,20 +52,23 @@ optimisation. By regularly reviewing feedback loops, teams maintain momentum and
 
 Operating across the European Union demands consistent stewardship of information, resilient supply chains, and ethically governed
 automation. The [policy and security guidance](10_policy_and_security.md) and [compliance practices](12_compliance.md) illustrate
-how GDPR, the NIS2 Directive, and emerging AI governance proposals influence design choices from the earliest architectural
-blueprints. Treating data residency as a first-class requirement keeps infrastructure definitions aligned with EU data boundary
-commitments and sector-specific controls such as DORA for financial services and the European Data Governance Act for cross-border
-data sharing.
+how the GDPR, the NIS2 Directive, and the EU AI Act (Regulation (EU) 2024/1689, in force since 1 August 2024 with its obligations
+phased in over the following years) [Source [125]](33_references.md#source-125) influence design choices from the earliest
+architectural blueprints. Treating data residency as a first-class requirement keeps infrastructure definitions aligned with EU data
+boundary commitments, sector-specific controls such as DORA for financial services, and horizontal frameworks such as the Data
+Governance Act and the Data Act for data sharing.
 
 European initiatives create space for Architecture as Code teams to collaborate beyond national boundaries whilst still respecting
-local obligations. Programmes such as Horizon Europe, Digital Europe, GAIA-X, and the European Alliance for Industrial Data, Edge
+local obligations. Programmes such as Horizon Europe, Digital Europe, Gaia-X, and the European Alliance for Industrial Data, Edge
 and Cloud encourage interoperable platforms, harmonised reference architectures, and sector-specific data spaces that can be
 codified as re-usable modules. Access to EU-funded sandboxes and regulatory support, including the AI Act's conformity assessment
 regime, helps organisations evidence compliance earlier in delivery cycles and accelerate acceptance by supervisory authorities.
 
 Sustainability remains a parallel obligation. [Future trends](25_future_trends.md) emphasise carbon-aware workloads,
-energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and the
-Corporate Sustainability Reporting Directive. The wider transformation agenda explored in [chapter 21 on digitalisation](21_digitalisation.md)
+energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and EU
+sustainability-reporting rules such as the Corporate Sustainability Reporting Directive, whose scope and timetable are being revised
+under the Commission's Omnibus simplification package (beginning with the "stop-the-clock" Directive (EU) 2025/794). The wider
+transformation agenda explored in [chapter 21 on digitalisation](21_digitalisation.md)
 shows how coordinated change across Member States, public institutions, and private enterprises benefits from codified architectural
 knowledge that can be shared, audited, and re-used without reinventing country-specific artefacts.
 
@@ -107,7 +110,7 @@ Architecture as Code thrives when engineering discipline and organisational stew
 
 ### 27.5.1 The way forward
 
-The concepts outlined in this book—declarative intent, idempotence, automated testing, and continuous delivery—remain constants
+The concepts outlined in this book—declarative intent, repeatability, automated testing, and continuous delivery—remain constants
 even as tooling evolves. By combining technical excellence with attention to sustainability, security, and regulatory
 obligations, organisations can use Architecture as Code to create enduring competitive advantage. The work continues: experiment,
 learn, and refine so that Architecture as Code keeps pace with the ambitions of the business and the expectations of society.
@@ -116,7 +119,7 @@ One challenge that remains genuinely unsolved is the governance of AI-generated 
 
 **A direct challenge for practitioners:** identify one AI-assisted decision in your current architecture estate that lacks a traceable human rationale, write an Architecture Decision Record for it retrospectively, and share your approach with your community of practice. That single act—making the implicit explicit—is the habit on which trustworthy, sustainable Architecture as Code programmes are built.
 
-The open-source ecosystem that underpins this discipline—from Terraform and Pulumi to Structurizr and Open Policy Agent—advances because practitioners share their experiments, patterns, and failures. Consider contributing a module, a reusable policy template, or a postmortem to a public repository. Collective stewardship of shared tooling is the most direct way to ensure that the next generation of architects inherits a richer, more humane, and more governable platform than the one we inherited.
+The open-source and source-available ecosystem that underpins this discipline—from Terraform (source-available under the Business Source License since August 2023) and its open-source fork OpenTofu, through Pulumi, to Structurizr and Open Policy Agent—advances because practitioners share their experiments, patterns, and failures. Consider contributing a module, a reusable policy template, or a postmortem to a public repository. Collective stewardship of shared tooling is the most direct way to ensure that the next generation of architects inherits a richer, more humane, and more governable platform than the one we inherited.
 
 ![Architecture as Code – Source Materials](images/diagram_27a_source_materials.png)
 
@@ -126,8 +129,12 @@ The open-source ecosystem that underpins this discipline—from Terraform and Pu
 
 The thesis of this book draws most directly on:
 
-1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press. [Source [30]](33_references.md#source-30)
-2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. [Source [31]](33_references.md#source-31)
-3. **Bass, L., Clements, P. & Kazman, R. (2021).** *Software Architecture in Practice* (4th ed.). Addison-Wesley. [Source [32]](33_references.md#source-32)
+1. **Skelton, M. & Pais, M. (2019).** *Team Topologies.* IT Revolution Press. ISBN 978-1-942788-81-2. [Source [30]](33_references.md#source-30)
+2. **Forsgren, N., Humble, J. & Kim, G. (2018).** *Accelerate: The Science of Lean Software and DevOps.* IT Revolution Press. ISBN 978-1-942788-33-1. [Source [31]](33_references.md#source-31)
+3. **Bass, L., Clements, P. & Kazman, R. (2021).** *Software Architecture in Practice* (4th ed.). Addison-Wesley. ISBN 978-0-13-688609-9. [Source [32]](33_references.md#source-32)
+
+The regulation cited in this chapter:
+
+4. **European Parliament and Council (2024).** *Regulation (EU) 2024/1689 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act).* Official Journal of the European Union, L series, 12 July 2024. [https://eur-lex.europa.eu/eli/reg/2024/1689/oj](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) [Source [125]](33_references.md#source-125)
 
 For a full bibliography, see [Chapter 33: References and Sources](33_references.md).

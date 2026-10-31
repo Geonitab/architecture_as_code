@@ -1,8 +1,8 @@
-# The Interplay Between Soft "as code" Disciplines {#soft-as-code-interplay}
+# The Interplay Between Soft As Code Disciplines {#soft-as-code-interplay}
 
 ## Introduction
 
-For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, architecture as code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.
+For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, Architecture as Code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.
 
 ## Learning Objectives
 
@@ -66,7 +66,7 @@ This combination opens the door to a shared way of working across disciplines. O
 
 ## Compliance as Code as the Quality Engine
 
-Compliance as code focuses on translating regulations, standards, and internal policies into codified controls. Tools such as Open Policy Agent, HashiCorp Sentinel, or custom rule frameworks can ingest policy definitions and evaluate them against system configurations, CI/CD pipelines, or infrastructure definitions. When the discipline is connected to other soft areas several effects emerge:
+Compliance as code focuses on translating regulations, standards, and internal policies into codified controls. Tools such as Open Policy Agent ([Source [10]](33_references.md#source-10)), HashiCorp Sentinel, or custom rule frameworks can ingest policy definitions and evaluate them against system configurations, CI/CD pipelines, or infrastructure definitions. The practice is well established: Thoughtworks' Technology Radar placed security policy as code—security policies expressed as code, version-controlled, automatically validated, deployed and monitored, with Open Policy Agent and Istio as examples—in Trial in November 2019 and in Adopt in October 2020, and the overview of Radar Vol. 21 names "policy, compliance and governance as code" as a recurring theme ([Source [2]](33_references.md#source-2)). When the discipline is connected to other soft areas several effects emerge:
 
 - **Rule reuse.** Documentation and architectural principles can directly reference policy definitions, reducing the risk of diverging interpretations. An architect writing a blueprint can link to the same policy files the security team uses in their controls.
 - **Continuous validation.** Documentation as code makes it possible to describe which controls exist and how they are executed, while automations from Architecture as Code can trigger compliance checks for every change. The result is an unbroken chain between intent and verification.
@@ -78,7 +78,7 @@ Practical tools such as the [Governance and Security Controls as Code Backlog](1
 
 ## Architecture as Code as the Hub
 
-Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of models in DSLs such as Structurizr, C4 models generated from Markdown, or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:
+Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of C4 models expressed in the Structurizr DSL or C4-PlantUML—with Markdown reserved for the accompanying documentation—or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:
 
 - **Traceability to compliance.** The architecture can reference compliance rules that explain why a given pattern must include logging, encryption, or redundancy. By linking to rule definitions it becomes clear how design decisions support adherence.
 - **Real-time documentation.** Documentation as code can be generated directly from architectural models and provide up-to-date manuals, diagrams, and guides. Documentation stays in sync with the "living" architecture.
@@ -165,32 +165,37 @@ One approach uses a YAML-based knowledge registry alongside a Git-hosted knowled
 ```yaml
 # knowledge-registry/lessons-learned/LL-0042.yaml
 id: LL-0042
-title: "Multi-region Terraform state locking failures under concurrent pipelines"
+title: "Orphaned Terraform state locks after cancelled pipeline runs"
 status: active
-tags: [terraform, state-management, multi-region, concurrency]
-related_adrs: [ADR-0017, ADR-0031]
+tags: [terraform, state-management, locking, ci-pipelines]
+related_adrs: [ADR-0003]  # adr/ADR-0003-selection-of-terraform.md
 related_chapters: ["03_version_control.md", "14_practical_implementation.md"]
 
 problem: >
-  When three or more concurrent pipeline runs targeted the same Terraform
-  state bucket, DynamoDB lock contention caused random failures with
-  LockTimeoutError. The issue was intermittent and difficult to reproduce
-  in lower environments with fewer concurrent runners.
+  When pipeline runs were cancelled or timed out during terraform apply,
+  the state lock was never released. Subsequent runs failed with
+  "Error acquiring the state lock" (ConditionalCheckFailedException from
+  the DynamoDB lock table) until someone removed the lock by hand, and
+  the manual intervention was rarely recorded anywhere.
 
 root_cause: >
-  The DynamoDB lock table was provisioned with default read/write capacity
-  units insufficient for more than two simultaneous lock requests.
-  Auto-scaling was not enabled.
+  Cancelled runners were terminated before Terraform could release the
+  lock, and no pipeline step detected or cleaned up orphaned locks. The
+  DynamoDB-based locking mechanism itself has been deprecated since
+  Terraform 1.11 in favour of S3-native locking, so the team was also
+  maintaining an extra component for no benefit.
 
 resolution: >
-  Enable DynamoDB auto-scaling on the lock table, set a minimum of 5
-  read/write capacity units, and add exponential back-off retry logic
-  to the Terraform wrapper script. See the updated module in
+  Add a guarded cleanup job that runs terraform force-unlock <LOCK_ID>
+  only after confirming that no apply is in progress, record every
+  forced unlock in the pipeline summary, and migrate the backend to
+  S3-native locking (use_lockfile = true, Terraform >= 1.11), which
+  removes the DynamoDB table altogether. See the updated module in
   shared-modules/terraform-state-backend v2.3.0.
 
 prevention:
-  - checklist_item: "Verify DynamoDB auto-scaling is enabled for all state lock tables"
-  - checklist_item: "Load-test state locking with simulated concurrent pipelines before go-live"
+  - checklist_item: "Use S3-native state locking (use_lockfile) for all new state backends"
+  - checklist_item: "Verify before go-live that cancelled pipeline runs cannot leave state locks behind"
 
 contributors:
   - name: "Ana Rodrigues"
@@ -202,7 +207,7 @@ created: "2025-09-14"
 last_updated: "2026-01-07"
 ```
 
-This structured format allows CI pipelines to validate that every lesson has the required fields, link-checking scripts to verify that referenced ADRs and chapter files exist, and search tools to surface relevant lessons when engineers encounter similar error messages. When combined with Architecture as Code, the knowledge registry becomes a living index of hard-won experience that teams can query as they design new systems.
+This structured format allows CI pipelines to validate that every lesson has the required fields, link-checking scripts to verify that referenced ADRs and chapter files exist, and search tools to surface relevant lessons when engineers encounter similar error messages. The example's resolution also records a platform decision worth remembering: DynamoDB-based state locking has been deprecated since Terraform 1.11 in favour of S3-native locking with `use_lockfile = true` ([Source [17]](33_references.md#source-17)). When combined with Architecture as Code, the knowledge registry becomes a living index of hard-won experience that teams can query as they design new systems.
 
 ## Synergies and Cross-Pollination
 
@@ -241,7 +246,7 @@ Organisations seeking to establish a cohesive ecosystem of soft "as code" discip
 2. **Choose compatible tools.** Ensure that compliance, architecture, and documentation tooling can integrate and share version control.
 3. **Invest in cross-functional training.** Teach lawyers Git, help architects understand policy DSLs, and make documentation specialists comfortable with automated publishing.
 4. **Build iteratively.** Begin with a pilot area and measure effects such as time savings or improved audit readiness.
-5. **Establish governance.** Define roles for code owners and review processes as well as forums for discussing policy and architecture changes.
+5. **Establish governance.** Define roles for code owners and review processes—protected branches with required reviewers are the natural enforcement point ([Source [4]](33_references.md#source-4))—as well as forums for discussing policy and architecture changes.
 
 ## Future Perspectives
 
@@ -251,12 +256,13 @@ At the same time, data governance, security, and ethics become even more importa
 
 ## Conclusion
 
-The interplay between soft "as code" disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organisations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, architecture as code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.
+The interplay between soft "as code" disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organisations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, Architecture as Code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.
 
 When these disciplines integrate, change ceases to be a threat and becomes a natural part of daily work. Teams can adapt rapidly to new requirements, experiment with new ideas, and still maintain a stable core of shared principles. The result is an organisation that dares to combine softness and structure—where human creativity is supported by the precision of code.
 
 ## Sources
 
-1. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [Source [10]](33_references.md#source-10)
-2. **HashiCorp.** *Policy as Code Overview.* HashiCorp Developer Documentation. [https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement](https://developer.hashicorp.com/terraform/cloud-docs/policy-enforcement)
-3. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
+1. **Thoughtworks (2019).** *Security policy as code.* Technology Radar, Techniques: Trial (Vol. 21, November 2019), Adopt (Vol. 23, October 2020). [https://www.thoughtworks.com/radar/techniques/security-policy-as-code](https://www.thoughtworks.com/radar/techniques/security-policy-as-code) [Source [2]](33_references.md#source-2)
+2. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
+3. **Open Policy Agent.** *Open Policy Agent documentation.* CNCF graduated project. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)
+4. **HashiCorp.** *Backend Type: s3.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/backend/s3](https://developer.hashicorp.com/terraform/language/backend/s3) [Source [17]](33_references.md#source-17)

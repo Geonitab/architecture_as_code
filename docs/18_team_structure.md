@@ -1,4 +1,4 @@
-# Team Structure and Competency Development for Architecture as Code {#team-structure}
+# Team Structure and Competency Development for IaC {#team-structure}
 
 ![Team collaboration ecosystem showing leadership, platform enablement, shared services, and feedback loops](images/diagram_18_team_collaboration.png)
 
@@ -18,7 +18,7 @@ By the end of this chapter, you will be able to:
 
 Traditional organisational charts that separate development, testing, and operations create silos which hinder Architecture as Code practices. Cross-functional teams with shared responsibility for the entire service lifecycle achieve faster feedback, higher quality, and sustainable flow. Reorganising around product-aligned delivery teams also improves transparency because the system design mirrors the communication pathways predicted by Conway's Law.
 
-Platform teams act as internal service providers. They own the common toolchains, guardrails, and reusable modules that allow application teams to move quickly without sacrificing governance. This balance of central expertise and decentralised autonomy is essential for scaling Architecture as Code in large enterprises.
+Platform teams act as internal service providers [Source [30]](33_references.md#source-30). They own the common toolchains, guardrails, and reusable modules that allow application teams to move quickly without sacrificing governance. This balance of central expertise and decentralised autonomy is essential for scaling Architecture as Code in large enterprises.
 
 ## Competency domains for Architecture as Code specialists
 
@@ -52,7 +52,7 @@ Managers revisit the matrix alongside metrics and feedback to tailor coaching pl
 
 ## Learning strategies and certifications
 
-Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms (A Cloud Guru, Pluralsight, Linux Academy) provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer, Microsoft Azure DevOps Engineer Expert, and HashiCorp Certified Terraform Associate (at time of writing; certification programmes evolve rapidly — verify current offerings with the respective vendors) validate proficiency and guide progression through increasingly advanced competencies.
+Structured learning programmes combine theory, labs, and mentoring to accelerate capability building. External platforms such as Pluralsight (which has absorbed A Cloud Guru and Linux Academy) and KodeKloud, together with vendor learning paths such as the HashiCorp Developer tutorials and the Kubernetes documentation tutorials, provide curated curricula aligned to Architecture as Code tooling, while internal academies tailor the content to organisational context. Industry certifications such as AWS Certified DevOps Engineer – Professional, Microsoft Certified: DevOps Engineer Expert, HashiCorp Certified: Terraform Associate (exam version 004) and the Certified Kubernetes Administrator (CKA) validate proficiency and guide progression through increasingly advanced competencies (names and versions as at the time of writing; certification programmes evolve rapidly — verify current offerings with the respective vendors).
 
 To turn knowledge into practice, organisations invest in sandbox environments, lab challenges, and pair programming. Managers should track completion, but also emphasise practical demonstrations of new capabilities applied to real delivery scenarios.
 
@@ -198,7 +198,8 @@ Documented runbooks, architecture decision records, troubleshooting guides, and 
 
 This template accompanies the knowledge sharing guidance. It clarifies roles, cadences, and collaboration platforms so that community leaders can launch a consistent operating rhythm.
 
-# Infrastructure as Code Community of Practice
+```markdown
+# Architecture as Code Community of Practice
 
 ## Purpose
 Foster knowledge sharing, collaboration, and continuous learning in Architecture as Code practices across the organisation.
@@ -257,12 +258,13 @@ Foster knowledge sharing, collaboration, and continuous learning in Architecture
 - Cross-team collaboration instances
 - Skill development progression
 - Innovation and improvement suggestions
+```
 
 Community coordinators review these artefacts after each quarter, ensuring insights captured during talks and workshops make their way into documentation, reusable modules, and the broader operating model.
 
 ## Performance management and career progression
 
-Clear technical career pathways help specialists envision advancement from associate automation engineers to senior architects. Competency frameworks articulate the behaviours, technical mastery, and leadership impact expected at each level. Balanced scorecards combine operational indicators (deployment frequency, change failure rate, mean time to restore) with softer measures such as knowledge sharing contributions and cross-team collaboration.
+Clear technical career pathways help specialists envision advancement from associate automation engineers to senior architects. Competency frameworks articulate the behaviours, technical mastery, and leadership impact expected at each level. Balanced scorecards combine operational indicators drawn from DORA's software delivery metrics (deployment frequency, change failure rate, failed deployment recovery time) [Source [49]](33_references.md#source-49) with softer measures such as knowledge sharing contributions and cross-team collaboration.
 
 Leadership development pathways prepare senior individual contributors for management roles when appropriate. Training on stakeholder management, strategic planning, and inclusive team building equips future leaders to steward Architecture as Code capabilities responsibly.
 
@@ -272,8 +274,8 @@ Architecture as Code succeeds when teams evolve their operating model alongside 
 
 ## Sources
 
-1. **Kim, G., Humble, J., Debois, P. & Willis, J. (2016).** *The DevOps Handbook.* IT Revolution Press.
-2. **Skelton, M. & Pais, M. (2019).** *Team Topologies: Organising Business and Technology Teams.* IT Revolution Press. [Source [30]](33_references.md#source-30)
-3. **Google Cloud (2023).** *DevOps Research and Assessment (DORA) Reports.* Google Cloud Platform.
-4. **Atlassian (2024).** *DevOps Team Structure and Best Practices.* Atlassian Documentation.
-5. **HashiCorp (2024).** *Infrastructure as Code Maturity Model.* HashiCorp Learn Platform.
+1. **Kim, G., Humble, J., Debois, P. & Willis, J. (2016).** *The DevOps Handbook: How to Create World-Class Agility, Reliability, & Security in Technology Organizations.* IT Revolution Press. ISBN 978-1-942788-00-3. [Source [101]](33_references.md#source-101)
+2. **Skelton, M. & Pais, M. (2019).** *Team Topologies: Organizing Business and Technology Teams for Fast Flow.* IT Revolution Press. ISBN 978-1-942788-81-2. Second edition: *Team Topologies, 2nd Edition: Organizing Business and Technology for Fast Flow of Value* (IT Revolution, 23 September 2025, ISBN 978-1-966280-00-2). [Source [30]](33_references.md#source-30)
+3. **DORA (2024).** *Accelerate State of DevOps Report 2024.* Google Cloud / DORA. Available at: [https://dora.dev/research/2024/dora-report/](https://dora.dev/research/2024/dora-report/). [Source [49]](33_references.md#source-49)
+4. **Atlassian.** *The Importance of DevOps Team Structure.* Atlassian DevOps guides. Available at: [https://www.atlassian.com/devops/frameworks/team-structure](https://www.atlassian.com/devops/frameworks/team-structure) (accessed 2026-10-30). [Source [102]](33_references.md#source-102)
+5. **HashiCorp.** *Terraform recommended practices.* HashiCorp Developer. Available at: [https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices) (accessed 2026-10-30). [Source [103]](33_references.md#source-103)

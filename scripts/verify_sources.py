@@ -77,7 +77,8 @@ class SourceVerifier:
                 # Extract source entries
                 if in_sources_section:
                     # Match list items (- or * prefix)
-                    match = re.match(r'^[-*]\s+(.+)$', line)
+                    # Accept both bullet lists and the ordered lists mandated by STYLE_GUIDE.md
+                    match = re.match(r'^(?:[-*]|\d+\.)\s+(.+)$', line)
                     if match:
                         source_text = match.group(1).strip()
                         
@@ -220,27 +221,26 @@ class SourceVerifier:
             return result
     
     def verify_isbn(self, isbn: str) -> Tuple[bool, str]:
-        """Validate ISBN format."""
-        # Remove hyphens and spaces
-        isbn_clean = re.sub(r'[-\s]', '', isbn)
-        
-        # Check ISBN-10
+        """Validate ISBN-10/ISBN-13 format and check digit (no network access)."""
+        isbn_clean = re.sub(r'[-\s]', '', isbn).upper()
+
         if len(isbn_clean) == 10:
-            if re.match(r'^\d{9}[\dX]$', isbn_clean):
-                return (True, 'Valid ISBN-10 format')
-            else:
+            if not re.match(r'^\d{9}[\dX]$', isbn_clean):
                 return (False, 'Invalid ISBN-10 format')
-        
-        # Check ISBN-13
+            total = sum((10 - i) * (10 if c == 'X' else int(c)) for i, c in enumerate(isbn_clean))
+            if total % 11 != 0:
+                return (False, 'ISBN-10 check digit mismatch')
+            return (True, 'Valid ISBN-10 (check digit verified)')
         elif len(isbn_clean) == 13:
-            if re.match(r'^\d{13}$', isbn_clean):
-                return (True, 'Valid ISBN-13 format')
-            else:
+            if not re.match(r'^\d{13}$', isbn_clean):
                 return (False, 'Invalid ISBN-13 format')
-        
+            weighted = sum(int(c) * (1 if i % 2 == 0 else 3) for i, c in enumerate(isbn_clean[:12]))
+            if (10 - weighted % 10) % 10 != int(isbn_clean[12]):
+                return (False, 'ISBN-13 check digit mismatch')
+            return (True, 'Valid ISBN-13 (check digit verified)')
         else:
             return (False, f'Invalid ISBN length: {len(isbn_clean)}')
-    
+
     def verify_source(self, source: Dict) -> Dict:
         """Verify a single source entry."""
         result = {

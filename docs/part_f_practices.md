@@ -8,7 +8,7 @@ Theory and practice intersect when organisations apply Architecture as Code prin
 
 Understanding the fundamental differences between related disciplines is essential before exploring their synergies. [Documentation as Code versus Architecture as Code](22_documentation_vs_architecture.md) clarifies the distinct purposes these practices serve—communication versus structural enforcement—and explains how modelling tools like CALM and Structurizr differ fundamentally from diagram tools like Mermaid and PlantUML.
 
-The various "as Code" disciplines—Documentation as Code, Requirements as Code, Policy as Code, Security as Code, and others—are most powerful when they work together rather than in isolation. Understanding how these practices interplay creates synergies that amplify value beyond what any single discipline delivers alone. The [soft as code interplay](23_soft_as_code_interplay.md) shows how these seemingly distinct concerns actually reinforce one another.
+The various "as Code" disciplines—Documentation as Code, Requirements as Code, Policy as Code, Security as Code, and others—are most powerful when they work together rather than in isolation. [Chapter 23 in Part E](23_soft_as_code_interplay.md) showed how these seemingly distinct concerns reinforce one another; the two chapters in this part build on that insight by separating documentation from architectural enforcement and by distilling practices that span several disciplines.
 
 Best practices emerge from the collective experience of organisations that have navigated Architecture as Code transformation successfully. These aren't theoretical ideals but pragmatic patterns proven across finance, public services, healthcare, and technology sectors. They reflect the reality that perfection is less important than consistent progress and the discipline to learn from both successes and setbacks.
 
@@ -18,7 +18,6 @@ The practices explored here draw on all previous parts—from the [foundational 
 
 - The fundamental differences between Documentation as Code and Architecture as Code
 - How modelling tools (CALM, Structurizr) differ from diagram tools (Mermaid, PlantUML)
-- How different "as Code" disciplines create synergies through integration
 - Code organisation and modularity patterns that scale across teams
 - Security and compliance patterns that balance protection with velocity
 - Performance management in globally distributed architectures

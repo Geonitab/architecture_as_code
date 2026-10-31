@@ -1,6 +1,6 @@
-# Evidence as Code {#evidence-as-code}
+# Evidence as Code and Continuous Assurance {#evidence-as-code}
 
-![Evidence pipeline showing automated compliance artefact generation, versioning, and multi-framework reuse](images/diagram_12_compliance.png)
+![Compliance automation lifecycle from Figure 12.1, whose monitoring and evidence collection stage this chapter automates](images/diagram_12_compliance.png)
 
 ## Learning Objectives
 
@@ -35,20 +35,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Evaluate MFA policy
-        run: opa test policies/identity --format=json > artefacts/policy-report.json
+      - name: Prepare evidence directory
+        run: |
+          mkdir -p artefacts
+          echo "SNAPSHOT_DATE=$(date +%Y%m)" >> "$GITHUB_ENV"
+      - name: Unit-test the MFA policy
+        run: opa test policies/identity
       - name: Snapshot cloud identities
         run: |
-          SNAPSHOT_DATE=$(date +%Y%m)
           python scripts/export_mfa_snapshot.py \
             --accounts production \
             --output "artefacts/mfa-snapshot-${SNAPSHOT_DATE}.json"
+      - name: Evaluate MFA policy against the snapshot
+        run: |
+          opa eval \
+            --data policies/identity \
+            --input "artefacts/mfa-snapshot-${SNAPSHOT_DATE}.json" \
+            --format json \
+            "data.enterprise.identity.mfa.violation" \
+            > artefacts/policy-report.json
       - name: Publish evidence package
         run: |
-          SNAPSHOT_DATE=$(date +%Y%m)
           jq --arg filepath "artefacts/mfa-snapshot-${SNAPSHOT_DATE}.json" \
             --arg control "SEC-ID-001" \
-            --argjson mappings '{"iso_27001":["A.5","A.8"],"soc_2":["CC6.1","CC6.6"],"nist_800_53":["IA-2(1)","AC-2"],"gdpr":["Article 32"],"internal":["SEC-ID-001"]}' \
+            --argjson mappings '{"iso_27001":["A.5.15","A.5.17","A.8.5"],"soc_2":["CC6.1","CC6.6"],"nist_800_53":["IA-2(1)","IA-2(2)","AC-2"],"gdpr":["Article 32"],"internal":["IAM-01"]}' \
             -n '{
               "control_id": $control,
               "framework_mappings": $mappings,
@@ -64,11 +74,11 @@ jobs:
           path: artefacts/
 ```
 
-The job produces a manifest and two evidence files. Governance and compliance teams consume the manifest to update the [Control Mapping Matrix](appendix_d_control_mapping_matrix_template.md) and to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues. Because the artefacts live alongside the policy, they can be retrieved for regulator-specific attestations without re-running the control unless configuration changes occur.
+The `opa test` step gates the job on the policy's own unit tests, whereas the `opa eval` step produces the control evidence by evaluating the MFA policy from [Policy and Security as Code in Detail](10_policy_and_security.md#assure-once-comply-many-in-policy-design) against the identity snapshot; the `internal` mapping carries the organisation's own catalogue identifier (`IAM-01`) for control `SEC-ID-001`. The job produces a manifest and two evidence files. Governance and compliance teams consume the manifest to update the [Control Mapping Matrix](appendix_d_control_mapping_matrix_template.md) and to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues. Because the artefacts live alongside the policy, they can be retrieved for regulator-specific attestations without re-running the control unless configuration changes occur.
 
 ## Software Bill of Materials as Evidence
 
-A Software Bill of Materials (SBOM) is a machine-readable inventory of every component, library, and dependency in a software artefact. Regulatory frameworks such as the US Executive Order on Improving the Nation's Cybersecurity and the EU Cyber Resilience Act increasingly require SBOM disclosure. Generating SBOMs as part of the build pipeline transforms them from a one-off compliance exercise into continuous evidence.
+A Software Bill of Materials (SBOM) is a machine-readable inventory of every component, library, and dependency in a software artefact [Source [89]](33_references.md#source-89). Regulatory frameworks such as US Executive Order 14028 on Improving the Nation's Cybersecurity and the EU Cyber Resilience Act (Regulation (EU) 2024/2847) increasingly require software producers to generate SBOMs and to provide them to purchasers or, on request, to authorities. Generating SBOMs as part of the build pipeline transforms them from a one-off compliance exercise into continuous evidence.
 
 ### Generating SBOMs with Syft
 
@@ -94,7 +104,7 @@ syft dir:. -o spdx-json > artefacts/sbom-spdx.json
     format: spdx-json
 
 - name: Scan SBOM for vulnerabilities
-  uses: anchore/scan-action@v3
+  uses: anchore/scan-action@v7
   with:
     sbom: artefacts/sbom.spdx.json
     output-format: json
@@ -112,10 +122,10 @@ syft dir:. -o spdx-json > artefacts/sbom-spdx.json
 
     manifest = {
         "control_id": "SEC-SUPPLY-001",
-        "generated_at": datetime.datetime.utcnow().isoformat() + "Z",
+        "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "framework_mappings": {
-            "nist_ssdf": ["PO.1.3", "PS.3.1"],
-            "iso_27001": ["A.12.6.1"],
+            "nist_ssdf": ["PS.3.1", "PS.3.2"],
+            "iso_27001": ["A.5.21", "A.8.8"],
             "soc_2": ["CC7.1"],
             "executive_order_14028": ["Section 4(e)"]
         },
@@ -130,7 +140,7 @@ syft dir:. -o spdx-json > artefacts/sbom-spdx.json
 
 ### Vulnerability tracking as continuous evidence
 
-The vulnerability report produced by the scan step becomes an evidence artefact in its own right. Storing it alongside the SBOM creates a time-stamped record that demonstrates the organisation actively monitors its software supply chain—a requirement under frameworks such as NIST SP 800-53 SI-2 (Flaw Remediation).
+The vulnerability report produced by the scan step becomes an evidence artefact in its own right. Storing it alongside the SBOM creates a time-stamped record that demonstrates the organisation actively monitors its software supply chain—a requirement under frameworks such as NIST SP 800-53 SI-2 (Flaw Remediation) [Source [11]](33_references.md#source-11). The manifest's SSDF mapping points to practice PS.3.2, which expects provenance data such as SBOMs to be collected, safeguarded, and shared for every release, and to PS.3.1 for the secure archiving of release files [Source [86]](33_references.md#source-86); the ISO/IEC 27001:2022 controls are 5.21 (information security in the ICT supply chain) and 8.8 (management of technical vulnerabilities) [Source [14]](33_references.md#source-14).
 
 ## Attestation Frameworks and Tamper-Evident Artefacts
 
@@ -138,36 +148,55 @@ Evidence value erodes if consumers cannot verify it was produced by trusted syst
 
 ### SLSA provenance
 
-Supply chain Levels for Software Artefacts (SLSA) defines a framework for describing and verifying the provenance of software. A SLSA provenance attestation records the build system, source repository, build steps, and output digests, signed by the build platform's identity:
+Supply-chain Levels for Software Artifacts (SLSA) defines a framework for describing and verifying the provenance of software [Source [87]](33_references.md#source-87). A SLSA provenance attestation records the build platform, the external parameters that defined the build, the resolved dependencies, and the output digests, signed by the build platform's identity. The current specification is v1.2; the predicate below follows the v1 provenance format, whose `predicateType` is always written without a minor version:
 
 ```json
 {
-  "_type": "https://in-toto.io/Statement/v0.1",
-  "predicateType": "https://slsa.dev/provenance/v1.0",
+  "_type": "https://in-toto.io/Statement/v1",
   "subject": [
     {
       "name": "my-service",
-      "digest": { "sha256": "abc123..." }
+      "digest": {
+        "sha256": "abc123..."
+      }
     }
   ],
+  "predicateType": "https://slsa.dev/provenance/v1",
   "predicate": {
-    "builder": { "id": "https://github.com/actions/runner" },
-    "buildType": "https://github.com/slsa-framework/slsa-github-generator/container@v1",
-    "invocation": {
-      "configSource": {
-        "uri": "git+https://github.com/myorg/my-service@refs/heads/main",
-        "digest": { "sha1": "def456..." },
-        "entryPoint": ".github/workflows/release.yml"
-      }
+    "buildDefinition": {
+      "buildType": "https://actions.github.io/buildtypes/workflow/v1",
+      "externalParameters": {
+        "workflow": {
+          "ref": "refs/heads/main",
+          "repository": "https://github.com/myorg/my-service",
+          "path": ".github/workflows/release.yml"
+        }
+      },
+      "internalParameters": {
+        "github": {
+          "event_name": "push",
+          "repository_id": "123456789",
+          "repository_owner_id": "987654321",
+          "runner_environment": "github-hosted"
+        }
+      },
+      "resolvedDependencies": [
+        {
+          "uri": "git+https://github.com/myorg/my-service@refs/heads/main",
+          "digest": {
+            "gitCommit": "def456..."
+          }
+        }
+      ]
     },
-    "buildConfig": {},
-    "metadata": {
-      "buildStartedOn": "2026-01-15T09:00:00Z",
-      "buildFinishedOn": "2026-01-15T09:12:00Z",
-      "completeness": {
-        "parameters": true,
-        "environment": true,
-        "materials": true
+    "runDetails": {
+      "builder": {
+        "id": "https://github.com/myorg/my-service/.github/workflows/release.yml@refs/heads/main"
+      },
+      "metadata": {
+        "invocationId": "https://github.com/myorg/my-service/actions/runs/1234567890/attempts/1",
+        "startedOn": "2026-01-15T09:00:00Z",
+        "finishedOn": "2026-01-15T09:12:00Z"
       }
     }
   }
@@ -178,7 +207,7 @@ Storing signed provenance alongside every release artefact allows downstream con
 
 ### Cosign for container image signing
 
-[Cosign](https://docs.sigstore.dev/cosign/signing/overview/) signs container images and stores signatures in the same registry as the image, making verification straightforward:
+[Cosign](https://docs.sigstore.dev/cosign/signing/overview/) signs container images and stores signatures in the same registry as the image, making verification straightforward [Source [88]](33_references.md#source-88):
 
 ```bash
 # Sign the image with a key stored in Google Cloud KMS
@@ -220,8 +249,11 @@ The evidence lifecycle framework connects capture, packaging, storage, and retri
 
 ## Sources
 
-- [NIST SP 800-218 – Secure Software Development Framework (SSDF)](https://doi.org/10.6028/NIST.SP.800-218)
-- [SLSA Framework – Supply chain Levels for Software Artefacts](https://slsa.dev/)
-- [Sigstore – Cosign documentation](https://docs.sigstore.dev/cosign/signing/overview/)
-- [NTIA – Minimum Elements for a Software Bill of Materials](https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom)
-- [Open Policy Agent documentation](https://www.openpolicyagent.org/docs)
+1. **Souppaya, M., Scarfone, K. & Dodson, D. (2022).** *Secure Software Development Framework (SSDF) Version 1.1: Recommendations for Mitigating the Risk of Software Vulnerabilities.* NIST Special Publication 800-218, February 2022. [https://doi.org/10.6028/NIST.SP.800-218](https://doi.org/10.6028/NIST.SP.800-218) [Source [86]](33_references.md#source-86)
+2. **OpenSSF SLSA project.** *SLSA Provenance.* Supply-chain Levels for Software Artifacts specification v1.0 (current specification: v1.2). [https://slsa.dev/spec/v1.0/provenance](https://slsa.dev/spec/v1.0/provenance) [Source [87]](33_references.md#source-87)
+3. **Sigstore.** *Cosign: Signing overview.* Sigstore documentation. [https://docs.sigstore.dev/cosign/signing/overview/](https://docs.sigstore.dev/cosign/signing/overview/) [Source [88]](33_references.md#source-88)
+4. **NTIA (2021).** *The Minimum Elements For a Software Bill of Materials (SBOM).* US Department of Commerce, National Telecommunications and Information Administration, 12 July 2021. [https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom](https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom) [Source [89]](33_references.md#source-89)
+5. **Open Policy Agent.** *Open Policy Agent documentation.* Cloud Native Computing Foundation. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)
+6. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organizations.* NIST Special Publication 800-53, Revision 5, September 2020 (updated 10 December 2020). [Source [11]](33_references.md#source-11)
+7. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organization for Standardization. [Source [14]](33_references.md#source-14)
+8. **European Parliament and Council (2016).** *Regulation (EU) 2016/679 (General Data Protection Regulation).* Official Journal of the European Union, L 119, 4 May 2016. [https://eur-lex.europa.eu/eli/reg/2016/679/oj](https://eur-lex.europa.eu/eli/reg/2016/679/oj) [Source [43]](33_references.md#source-43)
