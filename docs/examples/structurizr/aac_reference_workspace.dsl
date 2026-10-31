@@ -16,34 +16,24 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
             tags "Internal Person"
         }
 
-        aacPlatform = softwareSystem "Architecture as Code Platform" "Automates manuscript generation, diagram rendering, and publication assets." {
-            tags "Core System"
-        }
-
-        analyticsService = softwareSystem "Analytics Service" "Delivers telemetry about readership and pipeline health." {
-            tags "Supporting System"
-        }
-
         paymentGateway = softwareSystem "Payment Gateway" "Processes book orders for print-on-demand partners." {
             tags "External System"
         }
 
-        aacPlatform -> analyticsService "Publishes build telemetry and readership events."
-        paymentGateway -> analyticsService "Shares purchase signals for aggregated reporting."
+        analyticsService = softwareSystem "Analytics Service" "Delivers telemetry about readership and pipeline health." {
+            tags "Supporting System"
+            reportingWarehouse = container "Reporting Warehouse" "Holds consolidated analytics events." "BigQuery"
+        }
 
-        aacPlatform {
+        aacPlatform = softwareSystem "Architecture as Code Platform" "Automates manuscript generation, diagram rendering, and publication assets." {
+            tags "Core System"
+
             authoringPortal = container "Authoring Portal" "Markdown-first editorial tooling exposed to contributors." "Next.js" {
                 tags "Web Application"
             }
 
-            diagramService = container "Diagram Service" "Converts Structurizr and Mermaid definitions into publishable assets." "Node.js" {
-                tags "Service"
-                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
-            }
-
-            contentPipeline = container "Content Pipeline" "Generates book artefacts, validates diagrams, and assembles releases." "Python" {
-                tags "Pipeline"
-                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0001-diagram-automation-pipeline.md"
+            observabilityHub = container "Observability Hub" "Aggregates telemetry, alerts, and architecture fitness scores." "Grafana" {
+                tags "Operations"
             }
 
             knowledgeGraph = container "Knowledge Graph" "Stores relationships between chapters, diagrams, and review decisions." "Neo4j" {
@@ -51,22 +41,10 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
                 url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0002-knowledge-graph-linking.md"
             }
 
-            observabilityHub = container "Observability Hub" "Aggregates telemetry, alerts, and architecture fitness scores." "Grafana" {
-                tags "Operations"
-            }
+            diagramService = container "Diagram Service" "Converts Structurizr and Mermaid definitions into publishable assets." "Node.js" {
+                tags "Service"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
 
-            # Container relationships
-            authoringPortal -> contentPipeline "Submits chapter updates and diagram changes." "HTTPS/JSON"
-            contentPipeline -> diagramService "Requests diagram renders and Structurizr exports." "gRPC"
-            contentPipeline -> knowledgeGraph "Persists narrative and diagram metadata." "Bolt"
-            diagramService -> knowledgeGraph "Indexes rendered diagrams for traceability." "Bolt"
-            observabilityHub -> analyticsService "Synchronises usage metrics." "REST"
-            observabilityHub -> knowledgeGraph "Queries historical architecture decisions." "Bolt"
-            contentPipeline -> observabilityHub "Emits build and validation telemetry." "OTLP"
-            authoringPortal -> observabilityHub "Displays health dashboards." "HTTPS"
-            observabilityHub -> editor "Alerts reviewers when fitness thresholds fail." "Notification"
-
-            diagramService {
                 dslParser = component "DSL Parser" "Validates Structurizr DSL syntax and resolves workspace fragments." "Kotlin"
                 renderer = component "Diagram Renderer" "Calls the Structurizr export tooling to produce PlantUML and JSON output." "Java"
                 versioningAdapter = component "Versioning Adapter" "Synchronises workspace snapshots with Git repositories." "Python" {
@@ -74,17 +52,30 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
                 }
                 policyEvaluator = component "Policy Evaluator" "Applies architecture fitness functions to proposed changes." "Python"
 
-                dslParser -> renderer "Produces normalised model definitions for." 
-                renderer -> versioningAdapter "Publishes rendered diagrams and metadata." 
-                policyEvaluator -> dslParser "Receives parsed workspace structures." 
-                policyEvaluator -> observabilityHub "Emits compliance scores." "HTTPS"
+                dslParser -> renderer "Produces normalised model definitions for."
+                renderer -> versioningAdapter "Publishes rendered diagrams and metadata."
+                policyEvaluator -> dslParser "Receives parsed workspace structures."
+            }
+
+            contentPipeline = container "Content Pipeline" "Generates book artefacts, validates diagrams, and assembles releases." "Python" {
+                tags "Pipeline"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0001-diagram-automation-pipeline.md"
             }
         }
 
-        analyticsService {
-            reportingWarehouse = container "Reporting Warehouse" "Holds consolidated analytics events." "BigQuery"
-            reportingWarehouse -> observabilityHub "Feeds curated dashboards." "Scheduled ETL"
-        }
+        # Container relationships
+        authoringPortal -> contentPipeline "Submits chapter updates and diagram changes." "HTTPS/JSON"
+        contentPipeline -> diagramService "Requests diagram renders and Structurizr exports." "gRPC"
+        contentPipeline -> knowledgeGraph "Persists narrative and diagram metadata." "Bolt"
+        diagramService -> knowledgeGraph "Indexes rendered diagrams for traceability." "Bolt"
+        observabilityHub -> analyticsService "Synchronises usage metrics." "REST"
+        observabilityHub -> knowledgeGraph "Queries historical architecture decisions." "Bolt"
+        contentPipeline -> observabilityHub "Emits build and validation telemetry." "OTLP"
+        authoringPortal -> observabilityHub "Displays health dashboards." "HTTPS"
+        observabilityHub -> editor "Alerts reviewers when fitness thresholds fail." "Notification"
+        policyEvaluator -> observabilityHub "Emits compliance scores." "HTTPS"
+        reportingWarehouse -> observabilityHub "Feeds curated dashboards." "Scheduled ETL"
+        paymentGateway -> analyticsService "Shares purchase signals for aggregated reporting."
 
         # External interactions
         user -> authoringPortal "Reads previews and contributes errata." "Browser"
