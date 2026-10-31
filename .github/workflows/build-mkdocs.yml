@@ -14,6 +14,11 @@ on:
 permissions:
   contents: write
 
+# Serialise deployments so two runs never race to update gh-pages.
+concurrency:
+  group: mkdocs-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build documentation site
@@ -43,6 +48,8 @@ jobs:
           touch site/.nojekyll
 
       - name: Deploy MkDocs site to GitHub Pages
+        # Only main publishes the live site; other branches and pull requests just build.
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

@@ -124,12 +124,14 @@ workspace "Architecture as Code Reference" "Curated Structurizr workspace aligne
         }
 
         dynamic aacPlatform "AaC-ChangeReview" "Dynamic view covering a diagram change review." {
-            user -> authoringPortal "Submits revised workspace fragment." "Change request"
-            authoringPortal -> contentPipeline "Creates pull request for workspace update." "Git integration"
-            contentPipeline -> diagramService "Runs Structurizr validation and architecture fitness functions." "CI step"
-            contentPipeline -> observabilityHub "Publishes scores and rule outcomes." "Event"
-            observabilityHub -> editor "Alerts reviewers if thresholds fail." "Notification"
-            editor -> authoringPortal "Requests adjustments or approves change." "Review decision"
+            # Dynamic views reuse model relationships; a technology given here must match the
+            # model, so only the step descriptions are stated.
+            user -> authoringPortal "Submits revised workspace fragment."
+            authoringPortal -> contentPipeline "Creates pull request for workspace update."
+            contentPipeline -> diagramService "Runs Structurizr validation and architecture fitness functions."
+            contentPipeline -> observabilityHub "Publishes scores and rule outcomes."
+            observabilityHub -> editor "Alerts reviewers if thresholds fail."
+            editor -> authoringPortal "Requests adjustments or approves change."
         }
 
         deployment aacPlatform production "AaC-Deployment" "Deployment view for production." {
