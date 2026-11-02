@@ -139,7 +139,7 @@ Key considerations when adopting commitment-based pricing:
 
 ## Summary
 
-The modern Architecture as Code methodology represents the future for infrastructure management in EU organisations. Cost optimisation within Architecture as Code requires a systematic approach that combines technical tools, automated processes, and organisational awareness. Successful implementation results in significant cost savings whilst performance and security are maintained.
+Cost becomes manageable once it is treated like any other property of the architecture: declared in code, estimated in the pipeline and reviewed alongside the change that causes it. Cost optimisation within Architecture as Code requires a systematic approach that combines technical tools, automated processes, and organisational awareness. Successful implementation results in significant cost savings whilst performance and security are maintained.
 
 Key success factors include proactive monitoring, automated rightsizing, intelligent use of spot instances and reserved capacity, and continuous optimisation based on actual usage patterns. FinOps practices ensure cost considerations are naturally integrated into the development process.
 

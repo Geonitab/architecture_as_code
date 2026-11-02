@@ -18,21 +18,6 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 [References and Sources](33_references.md) collects every numbered source cited in the chapters, so that each inline source citation resolves to a single, verifiable bibliography entry.
 
-[Appendix D: Templates and Tools](appendix_templates_and_tools.md) curates the reusable assets that support maturity assessments and governance workflows. It links directly to the Architecture as Code Maturity Model, the interactive Maturity Radar Tool, and the Control Mapping Matrix template so teams can adopt the artefacts without hunting through the repository.
-
-The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) consolidates insights from across the manuscript into a staircase-style progression model. It summarises how infrastructure, governance, policy, testing, and cultural practices evolve together when organisations embrace Architecture as Code.
-
-The [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template.md) offers a reusable table structure that underpins the "assure once, comply many" approach. It documents how evidence artefacts map to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues so that teams maintain a single source of truth for compliance coverage.
-
-**What you will find in this section:**
-
-- Comprehensive glossary of Architecture as Code terminology
-- Author background and expertise context
-- Complete code examples and technical implementations
-- Book production infrastructure as a working Architecture as Code example
-- A CALM-inspired blueprint proposal for regulated platforms
-- The consolidated bibliography behind every inline citation
-- A maturity model that ties the “as code” disciplines together with practical adoption guidance
-- Reusable templates, interactive tools, and compliance accelerators ready for integration into delivery pipelines
+[Appendix D: Templates and Tools](appendix_templates_and_tools.md) curates the reusable assets that support maturity assessments and governance workflows: the [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md), the interactive Maturity Radar Tool, and the [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template.md) that underpins the "assure once, comply many" approach.
 
 These references serve as quick-access resources to support the concepts explored in Parts A through G, ensuring that theoretical understanding translates into practical implementation.

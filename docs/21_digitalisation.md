@@ -197,7 +197,7 @@ region     = "eu-central-1"
 kms_key_id = "arn:aws:kms:eu-central-1:123456789012:key/REPLACE-WITH-KEY-ID"
 ```
 
-Two details matter for compliance reviews. First, the backend no longer uses a DynamoDB table: DynamoDB-based state locking has been deprecated since Terraform 1.11 in favour of S3-native locking (`use_lockfile = true`), which is why the template requires that version ([Source [17]](33_references.md#source-17)). Second, bucket versioning—which HashiCorp recommends so that state can be recovered after accidental deletion—is a property of the S3 bucket resource rather than an argument of the backend block, and it is not an audit log; audit evidence comes from CloudTrail data events or S3 server access logging on the state bucket.
+Two details matter for compliance reviews. First, the backend uses S3-native locking (`use_lockfile = true`) instead of a DynamoDB table, which is why the template requires Terraform 1.11 or later ([Source [17]](33_references.md#source-17)); the state controls behind this choice are set out in [Chapter 9B: Advanced Security Patterns and Implementation](09b_security_patterns.md). Second, bucket versioning—which HashiCorp recommends so that state can be recovered after accidental deletion—is a property of the S3 bucket resource rather than an argument of the backend block, and it is not an audit log; audit evidence comes from CloudTrail data events or S3 server access logging on the state bucket.
 
 ### Enterprise Cloud-First Success Stories
 

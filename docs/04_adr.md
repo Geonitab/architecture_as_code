@@ -277,7 +277,7 @@ Organisations can benefit from industry initiatives for the standardisation of d
 
 ## Summary
 
-The modern Architecture as Code methodology represents the future of infrastructure management. Architecture Decision Records are a fundamental component of modern Architecture as Code practice. Through structured documentation of architecture decisions, organisations gain transparency, traceability, and knowledge transfer that are critical for successful digital transformation initiatives.
+An ADR takes minutes to write while a decision is fresh; reconstructing the same reasoning years later, after the people involved have moved on, is often impossible. Architecture Decision Records are a fundamental component of modern Architecture as Code practice. Through structured documentation of architecture decisions, organisations gain transparency, traceability, and knowledge transfer that are critical for successful digital transformation initiatives.
 
 Effective ADR implementation requires organisational support, standardised processes, and integration with existing development workflows. For Architecture as Code projects, ADRs create the link between design intentions and code implementation that improves maintainability and compliance.
 

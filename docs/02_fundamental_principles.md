@@ -148,7 +148,7 @@ Architecture as Code teams adopt explicit branching strategies that balance agil
   git tag v2.0.0
   ```
 
-  Structurizr's tooling is now distributed as a single Docker image or `.war` file whose commands include `structurizr local` (free; replaces Structurizr Lite), `structurizr server` (self-hosted and licensed; replaces the on-premises installation), and `structurizr export` (PlantUML, Mermaid, JSON, or a static HTML site); Structurizr Lite, the standalone Structurizr CLI, and the cloud service have reached end of life ([Source [56]](33_references.md#source-56)).
+  The `structurizr/structurizr` image used above is Structurizr's consolidated distribution, whose `local`, `server` and `export` commands replace Structurizr Lite and the standalone CLI ([Source [56]](33_references.md#source-56)); [Chapter 6: Structurizr: Architecture Modelling as Code](06_structurizr.md) describes the commands and the end-of-life status of the older tools.
 
 **4. Immutable audit trails and knowledge preservation**
 
@@ -340,7 +340,7 @@ European Data Protection Board (EDPB) alongside ISO/IEC 27001:2022 Annex A contr
 alignment keeps Architecture as Code artefacts consistent with the regulatory
 language used across the European Union rather than country-specific phrasing.
 
-The policies below are written in Rego, the policy language of Open Policy Agent ([Source [10]](33_references.md#source-10)), using OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory when declaring rules, and the `import rego.v1` statement keeps the same policies loadable on OPA 0.59 and later ([Source [44]](33_references.md#source-44)).
+The policies below are written in Rego, the policy language of Open Policy Agent ([Source [10]](33_references.md#source-10)), using the OPA 1.0 syntax with `import rego.v1` ([Source [44]](33_references.md#source-44)); [Chapter 10: Policy and Security as Code in Detail](10_policy_and_security.md) introduces the engine and explains the syntax.
 
 ```yaml
 # requirements/security-requirements.yaml

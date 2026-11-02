@@ -207,7 +207,7 @@ created: "2025-09-14"
 last_updated: "2026-01-07"
 ```
 
-This structured format allows CI pipelines to validate that every lesson has the required fields, link-checking scripts to verify that referenced ADRs and chapter files exist, and search tools to surface relevant lessons when engineers encounter similar error messages. The example's resolution also records a platform decision worth remembering: DynamoDB-based state locking has been deprecated since Terraform 1.11 in favour of S3-native locking with `use_lockfile = true` ([Source [17]](33_references.md#source-17)). When combined with Architecture as Code, the knowledge registry becomes a living index of hard-won experience that teams can query as they design new systems.
+This structured format allows CI pipelines to validate that every lesson has the required fields, link-checking scripts to verify that referenced ADRs and chapter files exist, and search tools to surface relevant lessons when engineers encounter similar error messages. When combined with Architecture as Code, the knowledge registry becomes a living index of hard-won experience that teams can query as they design new systems.
 
 ## Synergies and Cross-Pollination
 
@@ -265,4 +265,3 @@ When these disciplines integrate, change ceases to be a threat and becomes a nat
 1. **Thoughtworks (2019).** *Security policy as code.* Technology Radar, Techniques: Trial (Vol. 21, November 2019), Adopt (Vol. 23, October 2020). [https://www.thoughtworks.com/radar/techniques/security-policy-as-code](https://www.thoughtworks.com/radar/techniques/security-policy-as-code) [Source [2]](33_references.md#source-2)
 2. **GitHub Docs (2024).** *About protected branches.* GitHub Documentation. [Source [4]](33_references.md#source-4)
 3. **Open Policy Agent.** *Open Policy Agent documentation.* CNCF graduated project. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)
-4. **HashiCorp.** *Backend Type: s3.* Terraform documentation. [https://developer.hashicorp.com/terraform/language/backend/s3](https://developer.hashicorp.com/terraform/language/backend/s3) [Source [17]](33_references.md#source-17)
