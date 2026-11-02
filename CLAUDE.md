@@ -165,6 +165,8 @@ tests/                          # Pytest test suites
 - Use "programme" for initiatives (British usage)
 - Refer to audiences as "teams", "practitioners", or "organisations"
 
+**Series order:** this book is Book 1 of *The Architecture as Code Series* and refers to no other volume of the series. The later volumes build on its conclusions, never the other way round, so that there is no circular reasoning between the books. Every claim cites an external source or is the book's own conclusion. `tests/test_series_references.py` enforces this.
+
 **Reference:** See `docs/STYLE_GUIDE.md` for complete editorial rules and `docs/AUTHOR_PERSONA.md` for authorial voice and IT architect technical vocabulary.
 
 ### Making Changes
