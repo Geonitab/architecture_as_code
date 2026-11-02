@@ -21,7 +21,7 @@ Cultural readiness also involves aligning reward systems and career frameworks w
 Practitioners should already experience leaders acting as coaches, echoing the behavioural commitments in Chapter 17, so that AaC feels like a natural extension of existing norms rather than an abrupt revolution.
 ## Technical Maturity Baselines
 
-AaC assumes mastery of core delivery disciplines. The continuous pipelines covered in Chapter 5, the testing depth covered in Chapter 13, and the Structurizr patterns covered in Chapter 6 must already be routine. Otherwise, architecture models drift from runtime reality. Such maturity cannot be assumed: the *State of Cloud Native Development Q3 2025* report by SlashData for the Cloud Native Computing Foundation ([Source [7]](33_references.md#source-7)) records that use of internal developer platforms among the developers surveyed rose only from 23 per cent in Q3 2024 to 27 per cent in Q3 2025.
+AaC assumes mastery of core delivery disciplines. The continuous pipelines covered in Chapter 5, the testing depth covered in Chapter 13, and the Structurizr patterns covered in Chapter 6 must already be routine. Otherwise, architecture models drift from runtime reality. Such maturity cannot be assumed: the SlashData survey for the Cloud Native Computing Foundation cited in Chapter 1 ([Source [7]](33_references.md#source-7)) records that use of internal developer platforms rose only from 23 per cent in Q3 2024 to 27 per cent in Q3 2025.
 
 Security and compliance practices from Chapters 9, 9B, and 10 also need to be embedded so that codified architecture does not introduce blind spots.
 
@@ -121,7 +121,7 @@ Perfection is unnecessary, but sequencing matters. Following the migration minds
 
 ## Measuring Ongoing Readiness
 
-Readiness is not a one-off audit. Dashboards should blend the DORA indicators used in [Chapter 05](05_automation_devops_cicd.md)—deployment frequency, lead time for changes, change failure rate, failed deployment recovery time, and rework rate ([Source [49]](33_references.md#source-49))—with cultural metrics from [Chapter 17](17_organisational_change.md) and cost signals from [Chapter 15](15_cost_optimization.md). Governance measures—policy drift, exception frequency, audit findings—confirm whether the codified controls in [Chapter 11](11_governance_as_code.md) still operate. Quarterly reviews keep AaC aligned with reality and feed continuous improvement loops described in [Chapter 24](24_best_practices.md) and [Chapter 25](25_future_trends.md).
+Readiness is not a one-off audit. Dashboards should blend the DORA software delivery metrics introduced in [Chapter 5](05_automation_devops_cicd.md) ([Source [49]](33_references.md#source-49)) with cultural metrics from [Chapter 17](17_organisational_change.md) and cost signals from [Chapter 15](15_cost_optimization.md). Governance measures—policy drift, exception frequency, audit findings—confirm whether the codified controls in [Chapter 11](11_governance_as_code.md) still operate. Quarterly reviews keep AaC aligned with reality and feed continuous improvement loops described in [Chapter 24](24_best_practices.md) and [Chapter 25](25_future_trends.md).
 
 ## Conclusion
 

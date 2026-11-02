@@ -16,7 +16,7 @@ In the Architecture as Code ecosystem, Structurizr serves as a practical impleme
 - Automate architecture documentation in CI/CD pipelines
 - Maintain consistency across different architectural views
 
-The FINOS Architecture as Code project offers a complementary example: its Common Architecture Language Model (CALM) is an open-source specification for describing software architectures in a standardised, version-controlled, machine-readable JSON format, with a CLI that validates architectures and renders visualisations and documentation straight from CI/CD pipelines [Source [1]](33_references.md#source-1); the specification and its tooling are developed in the open on GitHub [Source [48]](33_references.md#source-48). CALM demonstrates how DSL-driven approaches like Structurizr stay adaptable—teams can add validators, generators, or documentation exporters around the same architecture source of truth whilst tailoring outputs to their needs.
+The FINOS Common Architecture Language Model (CALM), an open JSON-based specification with its own validation and visualisation tooling [Source [1]](33_references.md#source-1), offers a complementary example and is described in [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md). CALM demonstrates how DSL-driven approaches like Structurizr stay adaptable—teams can add validators, generators, or documentation exporters around the same architecture source of truth whilst tailoring outputs to their needs.
 
 This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artefact.
 
@@ -382,7 +382,7 @@ Sustaining expansive workspaces demands routine guardrails so that dozens of con
 2. **Aggregate with intent-revealing include files** – Introduce thin aggregators such as `model/core.dsl` or `model/external.dsl` that simply list `!include` statements. The main workspace file then references the aggregators, keeping the top-level `model {}` block short and navigable, as demonstrated in the Structurizr DSL language reference [Source [38]](33_references.md#source-38).
 3. **Enforce naming conventions centrally** – Store canonical tags and naming prefixes in `configuration { properties { ... } }` and shared include files. For instance, prefix container identifiers with their bounded context (e.g. `payments_api`) and suffix view keys with the chapter number (`PaymentsContainers06`). Reviewers can spot deviations instantly because every file uses the same include.
 4. **Document relationship expectations** – Maintain a `docs/STRUCTURIZR_GUIDELINES.md` (or similar) that states how to phrase relationship descriptions (“uses”, “publishes events to”, “reads from”). Link the document from pull request templates so contributors confirm adherence before review.
-5. **Leverage `local` for validation** – Encourage contributors to load the workspace with [`structurizr local`](https://docs.structurizr.com/local) during development. It persists layout updates in `workspace.json` alongside the DSL, enabling contributors to visualise convention breaches before they reach code review.
+5. **Leverage `local` for validation** – Encourage contributors to load the workspace with [`structurizr local`](https://docs.structurizr.com/local) during development, so that convention breaches become visible before they reach code review.
 
 These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or services when multiple programmes collaborate.
 
@@ -1087,7 +1087,7 @@ views {
 }
 ```
 
-2. Lay out by hand where it matters. The DSL has no coordinate syntax: open the workspace with `structurizr local` (or `server`), drag the elements in the diagram editor, and commit the `workspace.json` it saves next to `workspace.dsl`. Remove `autoLayout` from the views you arrange manually, otherwise the automatic layout is reapplied every time the diagram is rendered [Source [66]](33_references.md#source-66).
+2. Lay out by hand where it matters. The DSL has no coordinate syntax: drag the elements in the `local` or `server` diagram editor and commit the resulting `workspace.json`, as described in "Using `local` for Development" above. Remove `autoLayout` from the views you arrange manually, otherwise the automatic layout is reapplied every time the diagram is rendered [Source [66]](33_references.md#source-66).
 
 3. Export to PlantUML or Mermaid for fine-tuning:
 
@@ -1300,4 +1300,3 @@ The next chapters explore how to extend these foundations into containerisation 
 9. **Structurizr (2026).** *Getting started – Create with local, view with local.* Structurizr documentation. Available at: [https://docs.structurizr.com/getting-started/local](https://docs.structurizr.com/getting-started/local) (accessed 2026-10-30). [Source [66]](33_references.md#source-66)
 10. **Thoughtworks (2020).** *Diagrams as code.* Technology Radar, Techniques (Vol. 23, October 2020). Available at: [https://www.thoughtworks.com/radar/techniques/diagrams-as-code](https://www.thoughtworks.com/radar/techniques/diagrams-as-code). [Source [40]](33_references.md#source-40)
 11. **FINOS (2026).** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. Available at: [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
-12. **FINOS (2026).** *Architecture as Code: Common Architecture Language Model (CALM) specification repository.* Available at: [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code) (accessed 2026-10-30). [Source [48]](33_references.md#source-48)

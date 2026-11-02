@@ -44,13 +44,13 @@ The distinction between Documentation as Code and Architecture as Code becomes p
 
 #### CALM: Standardised Architecture Language
 
-CALM is an open-source specification developed by the Architecture as Code community under FINOS [Source [1]](33_references.md#source-1). It provides a standardised, machine-readable format for defining software architectures built around nodes, relationships, interfaces, controls, flows and metadata. Three of these core components are enough to illustrate the approach:
+CALM is an open-source specification developed by the Architecture as Code community under FINOS [Source [1]](33_references.md#source-1). The project describes its aim as devising and managing software architecture through a human- and machine-readable, version-controlled codebase, and it publishes the specification together with a command-line tool, a model hub, and documentation [Source [48]](33_references.md#source-48). CALM provides a standardised, machine-readable format for defining software architectures built around nodes, relationships, interfaces, controls, flows and metadata. Three of these core components are enough to illustrate the approach:
 
 - **Nodes**: Individual elements such as services, databases, networks, and people
 - **Relationships**: Connections, data flows, and dependencies between nodes
 - **Metadata**: Compliance tags, operational data, and custom attributes
 
-CALM's JSON-based schema makes it compatible with existing tools and enables integration into CI/CD workflows. The schema is published in versioned releases (release 1.0 and 1.1 at the time of writing, with later drafts in progress), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
+CALM is built on a JSON meta-schema, which makes it compatible with existing tools and enables integration into CI/CD workflows; its command-line tool (`npm install -g @finos/calm-cli`) validates architectures against reusable patterns and renders visualisations and documentation straight from the pipeline [Source [1]](33_references.md#source-1). The schema is published in versioned releases (release 1.0 and 1.1 at the time of writing, with later drafts in progress), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
 
 - **Validated automatically**: Compliance checks run against the model to verify policy conformance
 - **Visualised dynamically**: Diagrams are generated from the model, ensuring they always reflect the current architecture

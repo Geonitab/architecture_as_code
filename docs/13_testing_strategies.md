@@ -97,7 +97,7 @@ jobs:
           path: tfplan
 ```
 
-The Terraform job passes its backend settings with `-backend-config` flags, because backend blocks cannot reference variables, and it enables Terraform's S3-native state locking with `use_lockfile=true`, which has been generally available since Terraform 1.11; the job therefore requires Terraform 1.11 or later. DynamoDB-based locking still works for migration purposes, but it has been deprecated in favour of the S3-native mechanism ([Source [17]](33_references.md#source-17)).
+The Terraform job passes its backend settings with `-backend-config` flags, because backend blocks cannot reference variables, and it enables Terraform's S3-native state locking with `use_lockfile=true`, so the job requires Terraform 1.11 or later ([Source [17]](33_references.md#source-17)); the state management pattern in [Chapter 9B: Advanced Security Patterns and Implementation](09b_security_patterns.md) explains why this replaces DynamoDB-based locking.
 
 Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and Pulumi host-language test results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
 
@@ -401,7 +401,7 @@ Comprehensive testing strategies for Infrastructure as Code are essential to ens
 
 Modern codified infrastructure testing encompasses multiple layers:
 
-- **Unit testing** with tools like Terratest and Vitest provides rapid feedback on configuration correctness
+- **Unit testing** with `terraform test`, Pulumi mocks and Vitest provides rapid feedback on configuration correctness
 - **Integration testing** validates that components work together in realistic environments
 - **Security and compliance testing** ensures regulatory requirements are met automatically
 - **Performance testing** validates infrastructure can handle expected loads efficiently
@@ -411,7 +411,7 @@ Organisations must particularly focus on compliance testing that validates GDPR 
 
 Investment in robust Infrastructure as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies enable comprehensive validation without prohibitive costs or complexity.
 
-The testing quadrant diagram (Figure 13.2) illustrates how different testing strategies balance implementation complexity against testing coverage, helping teams prioritise their testing investments. Security scanning and policy testing offer high coverage with moderate implementation effort, making them ideal early investments, whilst end-to-end testing provides comprehensive validation at higher implementation cost.
+Figure 13.2 suggests the order of investment: start with security scanning and policy testing, and add end-to-end tests where the risk justifies their cost.
 
 ## Sources
 

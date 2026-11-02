@@ -31,7 +31,7 @@ Figure 10.2 summarises the mindset required to run PaC successfully. Threat mode
 
 ## Open Policy Agent (OPA) and Rego: foundation for policy-driven security
 
-OPA has become one of the most widely adopted engines for policy automation thanks to its lightweight deployment model and expressive Rego language. The engine evaluates decisions locally, so developers can run policies during unit tests while the same rules enforce guardrails inside Kubernetes, Terraform pipelines, or API gateways.
+OPA has become one of the most widely adopted engines for policy automation thanks to its lightweight deployment model and expressive Rego language, a declarative language purpose-built for expressing rules over structured data. The engine evaluates decisions locally, so developers can run policies during unit tests while the same rules enforce guardrails inside Kubernetes, Terraform pipelines, or API gateways.
 
 ### Architectural foundations for enterprise policy management
 
@@ -66,7 +66,7 @@ encryption_compliant contains resource if {
 # full listing (Appendix A, 10_CODE_1) and elided here.
 ```
 
-The complete module covers encryption strength, privileged port exposure, EU residency checks, and an aggregated compliance score. The findings feed directly into CI pipelines and risk dashboards. All Rego in this chapter uses the OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and the `import rego.v1` statement keeps the modules compatible with OPA 0.59 and later, where the keywords were still optional [Source [44]](33_references.md#source-44).
+The complete module covers encryption strength, privileged port exposure, EU residency checks, and an aggregated compliance score. The findings feed directly into CI pipelines and risk dashboards. All Rego in this chapter, and in the rest of the book, uses the OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and the `import rego.v1` statement keeps the modules compatible with OPA 0.59 and later, where the keywords were still optional [Source [44]](33_references.md#source-44).
 
 ### Integrating policy automation into European enterprises
 

@@ -264,7 +264,7 @@ Community coordinators review these artefacts after each quarter, ensuring insig
 
 ## Performance management and career progression
 
-Clear technical career pathways help specialists envision advancement from associate automation engineers to senior architects. Competency frameworks articulate the behaviours, technical mastery, and leadership impact expected at each level. Balanced scorecards combine operational indicators drawn from DORA's software delivery metrics (deployment frequency, change failure rate, failed deployment recovery time) [Source [49]](33_references.md#source-49) with softer measures such as knowledge sharing contributions and cross-team collaboration.
+Clear technical career pathways help specialists envision advancement from associate automation engineers to senior architects. Competency frameworks articulate the behaviours, technical mastery, and leadership impact expected at each level. Balanced scorecards combine operational indicators drawn from the DORA software delivery metrics introduced in [Chapter 5](05_automation_devops_cicd.md) [Source [49]](33_references.md#source-49) with softer measures such as knowledge sharing contributions and cross-team collaboration.
 
 Leadership development pathways prepare senior individual contributors for management roles when appropriate. Training on stakeholder management, strategic planning, and inclusive team building equips future leaders to steward Architecture as Code capabilities responsibly.
 

@@ -75,7 +75,7 @@ Automated chapter generation is deliberately disabled to protect the British Eng
 
 > **Note:** FINOS Architecture as Code and its CALM specification form a separate open-source project hosted by the Fintech Open Source Foundation. This book covers the broader Architecture as Code methodology and is not affiliated with or dependent on that project or its tooling.
 
-The FINOS Architecture as Code project describes its aim as devising and managing software architecture through a human- and machine-readable, version-controlled codebase [Source [48]](33_references.md#source-48). Its specification, the Common Architecture Language Model (CALM), is built on a JSON meta-schema and structures an architecture into nodes, relationships, and metadata; the accompanying command-line tool is installed with `npm install -g @finos/calm-cli` and validates architectures against reusable patterns [Source [1]](33_references.md#source-1). This self-definition mirrors the book production platform: Markdown specifications, diagram sources, and automation scripts sit together in version control so that architecture knowledge is expressed and evolved through code.
+The FINOS Architecture as Code project describes its aim as devising and managing software architecture through a human- and machine-readable, version-controlled codebase [Source [48]](33_references.md#source-48); its specification, the Common Architecture Language Model (CALM), is described in [Chapter 22: Documentation as Code vs Architecture as Code](22_documentation_vs_architecture.md) [Source [1]](33_references.md#source-1). This self-definition mirrors the book production platform: Markdown specifications, diagram sources, and automation scripts sit together in version control so that architecture knowledge is expressed and evolved through code.
 
 ### Plugin-driven extensibility
 
@@ -384,7 +384,7 @@ The system is designed for continuous improvement:
 
 ## Summary
 
-The modern Architecture as Code methodology represents the future of infrastructure management in modern organisations worldwide. The technical architecture behind "Architecture as Code" demonstrates the practical application of the book’s principles. By codifying the entire publication process the team achieves:
+This appendix shows the book applying its own method to itself. The technical architecture behind "Architecture as Code" demonstrates the practical application of the book’s principles. By codifying the entire publication process the team achieves:
 
 - **Architecture as Code automation**: Complete CI/CD for book production.
 - **Quality**: Consistent formatting and professional presentation.
