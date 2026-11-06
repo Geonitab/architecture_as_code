@@ -129,6 +129,7 @@ Continuous integration enforces successful builds through the `Build MkDocs Site
 ## 🌐 Website
 
 - **Public URL:** The documentation site is published at [https://aac.geon.se](https://aac.geon.se), matching the custom domain stored in the repository `CNAME` file to keep canonical links stable.【F:CNAME】【F:mkdocs.yml】
+- **The Architecture as Code Series:** this is Book 1. The later volumes are *AI Governance* (https://aig.geon.se), *AI Platform and Security* (https://aips.geon.se), *AI Red Team* (https://aired.geon.se) and *AI Threat* (https://aithreat.geon.se), all listed on the series landing page https://books.geon.se.
 - **Deployment pipeline:** The `Build MkDocs Site` GitHub Actions workflow builds the site with `mkdocs build`, stages the generated artefacts (including `CNAME` and `.nojekyll`), and force-pushes the result to the `gh-pages` branch for GitHub Pages to serve.【F:.github/workflows/build-mkdocs.yml】
 - **Local validation:** Run `mkdocs serve` for a preview or `mkdocs build` to recreate the static site locally before triggering a deployment, ensuring the hosted content mirrors the book manuscript.【F:mkdocs.yml】
 
