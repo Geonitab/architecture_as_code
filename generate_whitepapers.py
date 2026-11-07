@@ -57,7 +57,7 @@ def read_chapter_content(chapter_file):
         title_found = False
         for line in lines:
             if line.startswith('# '):
-                title = line[2:].strip()
+                title = strip_anchor(line[2:])
                 title_found = True
                 break
         
@@ -72,12 +72,18 @@ def read_chapter_content(chapter_file):
         
         # Extract diagram reference
         diagram_path = None
-        for line in lines:
+        diagram_caption = None
+        for index, line in enumerate(lines):
             if line.startswith('![') and 'images/' in line:
-                # Extract diagram path from markdown image syntax
-                match = re.search(r'!\[.*?\]\((.*?)\)', line)
+                # Extract diagram path and caption from markdown image syntax
+                match = re.search(r'!\[(.*?)\]\((.*?)\)', line)
                 if match:
-                    diagram_path = match.group(1)
+                    diagram_path = match.group(2)
+                    following = [candidate.strip() for candidate in lines[index + 1:index + 4] if candidate.strip()]
+                    if following and re.match(r'^\*?Figure\b', following[0]):
+                        diagram_caption = following[0]
+                    else:
+                        diagram_caption = match.group(1).strip() or None
                     break
         
         # Extract condensed content (first 2-3 paragraphs + key section headers)
@@ -94,12 +100,13 @@ def read_chapter_content(chapter_file):
                 
                 # Collect section headers for summary
                 if line.startswith('## '):
-                    section_headers.append(line[3:].strip())
+                    section_headers.append(strip_anchor(line[3:]))
                 continue
             
             # Skip markdown code blocks, bullet points, and other formatting
             if (line.startswith('```') or line.startswith('*') or 
-                line.startswith('-') or line.startswith('>')):
+                line.startswith('-') or line.startswith('>') or
+                line.startswith('|') or line.startswith('<')):
                 continue
             
             # Collect first few substantial paragraphs
@@ -134,6 +141,7 @@ def read_chapter_content(chapter_file):
         return {
             'title': title,
             'diagram_path': diagram_path,
+            'diagram_caption': diagram_caption,
             'condensed_content': condensed_content,
             'section_headers': section_headers[:6],  # Limit to 6 main sections
             'word_count': word_count
@@ -268,12 +276,99 @@ def get_chapter_mapping():
 
     return mapping
 
-def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_info, output_directory):
+ANCHOR_PATTERN = re.compile(r"\s*\{#[^}]*\}")
+HEX_COLOUR = re.compile(r"^#[0-9A-Fa-f]{3,8}$")
+PALETTE_TOKENS = ("dark", "primary", "strong", "accent", "tint", "paper")
+
+
+def strip_anchor(text):
+    """Remove Pandoc heading anchors such as ``{#chapter-anchor}``."""
+    return ANCHOR_PATTERN.sub("", text).strip()
+
+
+def render_inline(text):
+    """Render the inline Markdown that occurs in chapter prose as safe HTML.
+
+    Code spans, bold and italics are kept; links are reduced to their text
+    (citations then read "(30, Nordqvist, 2025)" and links to other chapters
+    would be dead in a stand-alone whitepaper); images and Pandoc anchors are
+    dropped. Everything else is escaped.
+    """
+    code_spans = []
+
+    def stash_code(match):
+        code_spans.append(match.group(1))
+        return f"\x00{len(code_spans) - 1}\x00"
+
+    text = re.sub(r"`([^`]+)`", stash_code, text)
+    text = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", text)
+    text = re.sub(r"\[((?:[^\[\]]|\[[^\]]*\])+)\]\([^)]*\)", r"\1", text)
+    text = ANCHOR_PATTERN.sub("", text)
+    text = escape(text, quote=False)
+    text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+    text = re.sub(r"(?<![\w*])\*(?![\s*])(.+?)(?<![\s*])\*(?![\w*])", r"<em>\1</em>", text)
+    return re.sub(
+        r"\x00(\d+)\x00",
+        lambda match: f"<code>{escape(code_spans[int(match.group(1))], quote=False)}</code>",
+        text,
+    )
+
+
+def split_title(title):
+    """Split a chapter title at its first colon when what precedes it is a real heading."""
+    main, separator, deck = title.partition(": ")
+    if separator and len(main.split()) >= 3:
+        return main.strip(), deck.strip()
+    return title.strip(), ""
+
+
+def read_site_url(root):
+    """Return the book's website from the repository's CNAME file, or an empty string."""
+    try:
+        host = (root / "CNAME").read_text(encoding="utf-8").split()[0]
+    except (OSError, IndexError):
+        return ""
+    return f"https://{host}" if re.fullmatch(r"[A-Za-z0-9.-]+", host) else ""
+
+
+def load_book_palette(root):
+    """Return a ``:root`` block with the book's colours, or an empty string.
+
+    The colours are the ``--book-*`` tokens of docs/stylesheets/series-colours.css,
+    the file that gives the website and the diagrams the palette of the cover.
+    Without that file the template keeps its defaults.
+    """
+    try:
+        text = (root / "docs" / "stylesheets" / "series-colours.css").read_text(encoding="utf-8")
+    except OSError:
+        return ""
+    block = re.search(r":root\s*\{(.*?)\}", text, re.S)
+    if not block:
+        return ""
+    tokens = dict(re.findall(r"--book-([a-z]+)\s*:\s*(#[0-9A-Fa-f]{3,8})\s*;", block.group(1)))
+    declarations = [
+        f"--book-{name}: {tokens[name]};"
+        for name in PALETTE_TOKENS
+        if name in tokens and HEX_COLOUR.match(tokens[name])
+    ]
+    return ":root { " + " ".join(declarations) + " }" if declarations else ""
+
+
+def split_paragraphs(text):
+    """Split a hard-wrapped block of text into paragraphs at blank lines."""
+    return [
+        re.sub(r"\s*\n\s*", " ", paragraph).strip()
+        for paragraph in re.split(r"\n\s*\n", text)
+        if paragraph.strip()
+    ]
+
+
+def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_info, output_directory, chapter_file=None):
     """Create HTML content for a whitepaper."""
-    
-    # Read the template
-    template_path = Path(__file__).parent / "templates" / "whitepaper-template.html"
-    
+
+    root = Path(__file__).resolve().parent
+    template_path = root / "templates" / "whitepaper-template.html"
+
     try:
         with open(template_path, 'r', encoding='utf-8') as f:
             template = f.read()
@@ -281,18 +376,29 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
         print(f"Template not found at {template_path}")
         return None
 
+    book_title = book_overview['title']
+
     if isinstance(chapter_meta, dict):
         chapter_label = chapter_meta.get("label") or "Chapter"
-        chapter_area = chapter_meta.get("area") or "Architecture as Code"
+        chapter_area = chapter_meta.get("area") or book_title
         mapped_title = chapter_meta.get("title") or chapter_data['title']
     else:
         chapter_label = str(chapter_meta)
-        chapter_area = "Architecture as Code"
+        chapter_area = book_title
         mapped_title = chapter_data['title']
-    
+
     page_title = f"{chapter_label} – {mapped_title}"
-    subtitle_text = f'Key insights from {chapter_label} of "{book_overview["title"]}"'
+    main_title, deck_text = split_title(mapped_title)
     author_text = "Gunnar Nordqvist"
+
+    number_match = re.fullmatch(r"Chapter\s+(\w+)", chapter_label)
+    chapter_number = number_match.group(1) if number_match else ""
+    kicker_text = chapter_label if chapter_area == book_title else f"{chapter_label} · {chapter_area}"
+    if chapter_number:
+        fallback_subtitle = f'Key insights from {chapter_label} of "{book_title}"'
+    else:
+        fallback_subtitle = f'{chapter_label} from "{book_title}"'
+    subtitle_text = deck_text or fallback_subtitle
 
     release_info = release_info or {}
     build_number = str(release_info.get("build_number") or "").strip()
@@ -314,6 +420,9 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
     if published_date.startswith("0"):
         published_date = published_date[1:]
 
+    year_match = re.search(r"\b(20\d\d)\b", published_date)
+    year_text = year_match.group(1) if year_match else str(datetime.now(timezone.utc).year)
+
     raw_feature_tags = release_info.get("feature_tags") or []
     if isinstance(raw_feature_tags, str):
         raw_feature_tags = [raw_feature_tags]
@@ -323,68 +432,38 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
         if str(tag).strip()
     ]
 
-    escaped_page_title = escape(page_title)
-    escaped_chapter_area = escape(chapter_area)
+    site_url = read_site_url(root)
+    chapter_url = f"{site_url}/{Path(chapter_file).stem}/" if site_url and chapter_file else site_url
+
+    escaped_book_title = escape(book_title)
     escaped_chapter_title = escape(chapter_data['title'])
-    escaped_mapped_title = escape(mapped_title)
-    escaped_subtitle_text = escape(subtitle_text)
-    escaped_author_text = escape(author_text)
-    escaped_published_date = escape(published_date)
-    escaped_version_text = escape(version_text)
     escaped_chapter_label = escape(chapter_label)
+    escaped_area = escape(chapter_area)
+    escaped_version_text = escape(version_text)
     escaped_codename = escape(codename_text) if codename_text else ""
 
-    # Prepare content sections
-    diagram_html = ""
-    diagram_src = resolve_diagram_src(chapter_data.get('diagram_path'), output_directory)
-
-    if diagram_src:
-        diagram_html = (
-            "            <figure class=\"chapter-figure\">\n"
-            f"                <img src=\"{escape(diagram_src)}\" alt=\"Chapter diagram for {escaped_chapter_title}\">\n"
-            "            </figure>"
-        )
-    
-    # Create condensed content sections
-    content_sections = "\n".join(
-        f"            <p>{escape(paragraph)}</p>"
-        for paragraph in chapter_data['condensed_content']
-    )
-    
-    # Create section overview
-    section_overview = ""
-    if chapter_data['section_headers']:
-        section_list = "\n".join(
-            f"                <li>{escape(header)}</li>"
-            for header in chapter_data['section_headers']
-        )
-        section_overview = (
-            "            <h2>Primary topics explored</h2>\n"
-            "            <ul>\n"
-            f"{section_list}\n"
-            "            </ul>"
-        )
-    
-    # Replace the title and content in template
-    html_output = template
+    footer_right = escaped_book_title
+    if site_url:
+        footer_right += f' · <a href="{escape(site_url)}">{escape(site_url.removeprefix("https://"))}</a>'
 
     replacements = {
-        "[[PAGE_TITLE]]": escaped_page_title,
-        "[[CATEGORY]]": escaped_chapter_area,
-        "[[TITLE]]": escaped_mapped_title,
-        "[[SUBTITLE]]": escaped_subtitle_text,
-        "[[AUTHOR]]": escaped_author_text,
-        "[[DATE]]": escaped_published_date,
+        "/* [[PALETTE_OVERRIDE]] */": load_book_palette(root),
+        "[[PAGE_TITLE]]": escape(page_title),
+        "[[EYEBROW]]": f"{escaped_book_title} · Whitepaper",
+        "[[CHAPTER_NUMBER]]": escape(chapter_number),
+        "[[CATEGORY]]": escape(kicker_text),
+        "[[TITLE]]": escape(main_title),
+        "[[SUBTITLE]]": escape(subtitle_text),
+        "[[AUTHOR]]": escape(author_text),
+        "[[DATE]]": escape(published_date),
         "[[VERSION]]": escaped_version_text,
+        "[[FOOTER_LEFT]]": f"<strong>© {year_text} Gunnar Nordqvist.</strong> Published by GEON IT AB.",
+        "[[FOOTER_RIGHT]]": footer_right,
     }
 
+    html_output = template
     for placeholder, value in replacements.items():
         html_output = html_output.replace(placeholder, value)
-
-    escaped_book_title = escape(book_overview['title'])
-    escaped_book_description = escape(book_overview['description']).replace('\n', '<br>')
-    escaped_target_audience = escape(book_overview['target_audience'])
-    escaped_area_lower = escape(chapter_area.lower())
 
     feature_tags_html = ""
     if feature_tags:
@@ -409,40 +488,74 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
 
     attribute_string = " ".join(data_attributes)
     html_output = html_output.replace('<div class="page">', f'<div class="page" {attribute_string}>', 1)
-    
-    # Create the new content sections
-    new_content = f'''        <!-- Book Overview -->
+
+    # Chapter content: figure, opening paragraphs, topics
+    diagram_html = ""
+    diagram_src = resolve_diagram_src(chapter_data.get('diagram_path'), output_directory)
+
+    if diagram_src:
+        caption = (chapter_data.get('diagram_caption') or "").strip().strip('*').strip()
+        alt_text = escape(re.sub(r"\s+", " ", caption)) if caption else f"Chapter diagram for {escaped_chapter_title}"
+        caption_html = f"\n                <figcaption>{render_inline(caption)}</figcaption>" if caption else ""
+        diagram_html = (
+            "            <figure class=\"chapter-figure\">\n"
+            f"                <img src=\"{escape(diagram_src)}\" alt=\"{alt_text}\">{caption_html}\n"
+            "            </figure>\n"
+        )
+
+    paragraphs = chapter_data['condensed_content']
+    paragraph_lines = []
+    for index, paragraph in enumerate(paragraphs):
+        css_class = ' class="lead"' if index == 0 else ""
+        paragraph_lines.append(f"            <p{css_class}>{render_inline(paragraph)}</p>")
+    content_sections = "\n".join(paragraph_lines)
+
+    section_overview = ""
+    if chapter_data['section_headers']:
+        section_list = "\n".join(
+            f"                <li>{render_inline(header)}</li>"
+            for header in chapter_data['section_headers']
+        )
+        section_overview = (
+            "\n            <h2>Primary topics explored</h2>\n"
+            "            <ol class=\"topics\">\n"
+            f"{section_list}\n"
+            "            </ol>"
+        )
+
+    description_html = "\n".join(
+        f"            <p>{escape(paragraph)}</p>"
+        for paragraph in split_paragraphs(book_overview['description'])
+    )
+    audience = book_overview['target_audience'].strip()
+    if audience and audience[-1] not in ".!?":
+        audience += "."
+
+    area_sentence = "" if chapter_area == book_title else f" belongs to “{escaped_area}” and"
+    button_html = (
+        f'            <p><a class="button" href="{escape(chapter_url)}">Read the full chapter online</a></p>\n'
+        if chapter_url else ""
+    )
+
+    new_content = f'''        <section class="chapter-highlight">
+{diagram_html}{content_sections}{section_overview}
+        </section>
+
         <section class="book-overview">
-            <h1>About "{escaped_book_title}"</h1>
-            <p class="lead">{escaped_book_description}</p>
+            <h2>About <em>{escaped_book_title}</em></h2>
+{description_html}
 
-            <div class="callout callout-info">
+            <div class="callout">
                 <div class="callout-title">Who should read this</div>
-                <p>{escaped_target_audience}</p>
+                <p>{escape(audience)}</p>
             </div>
         </section>
 
-        <!-- Chapter Content -->
-        <section class="chapter-highlight">
-            <h1>{escaped_chapter_label}: {escaped_chapter_title}</h1>
-{diagram_html if diagram_html else ""}
-
-{content_sections}
-
-{section_overview}
-        </section>
-
-        <!-- Call to Action -->
         <section class="call-to-action">
-            <h1>Continue your journey</h1>
-            <div class="callout callout-success">
-                <div class="callout-title">Read the full chapter</div>
-                <p><strong>Discover {escaped_chapter_label} – "{escaped_chapter_title}" in "{escaped_book_title}"</strong> for detailed explanations, practical examples, and implementation patterns.</p>
-            </div>
+            <h2>Continue with the full chapter</h2>
+{button_html}            <p><strong>{escaped_chapter_label}: {escaped_chapter_title}</strong> in <em>{escaped_book_title}</em> gives the detailed explanations, practical examples and implementation patterns behind this summary.</p>
 
-            <p>The complete manuscript spans {book_overview['chapters_count']} chapters, positioning this whitepaper within the {escaped_area_lower} focus of the programme.</p>
-
-            <p><strong>Explore adjacent chapters:</strong> The surrounding sections expand upon the themes introduced here and provide complementary techniques.</p>
+            <p>This whitepaper{area_sentence} is one of {book_overview['chapters_count']} drawn from the manuscript.</p>
         </section>'''
 
     content_placeholder = "        <!-- WHITEPAPER_CONTENT -->"
@@ -450,6 +563,7 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
         html_output = html_output.replace(content_placeholder, new_content)
 
     return html_output
+
 
 def generate_whitepapers(release_mode=False):
     """Main function to generate whitepapers."""
@@ -538,7 +652,8 @@ def generate_whitepapers(release_mode=False):
             chapter_meta,
             book_overview,
             release_metadata,
-            whitepapers_dir
+            whitepapers_dir,
+            chapter_file=filename,
         )
         if not html_content:
             print(f"Failed to generate HTML for {filename}, skipping...")
@@ -561,7 +676,8 @@ def generate_whitepapers(release_mode=False):
                 chapter_meta,
                 book_overview,
                 release_metadata,
-                secondary_dir
+                secondary_dir,
+                chapter_file=filename,
             )
             if not secondary_html:
                 print(f"Warning: Failed to generate HTML for standard location: {filename}")

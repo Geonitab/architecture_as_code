@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <!--
-    Whitepaper Template for Architecture as Code
-    
-    This template follows the design standards defined in:
-    docs/WHITEPAPER_DESIGN_GUIDELINES.md
-    
-    Key Features:
-    - A4/Letter format (210mm × 297mm) optimised for screen and print
-    - Kvadrat brand colours and typography (Inter and JetBrains Mono)
-    - WCAG AA accessibility compliance (4.5:1 minimum contrast)
-    - Semantic HTML5 with proper heading hierarchy
-    - Responsive design with mobile breakpoints (min-width: 320px)
-    - Professional document structure: header, overview, highlight, call-to-action
-    - Version metadata and feature tags
-    
-    For full design guidelines, see: docs/WHITEPAPER_DESIGN_GUIDELINES.md
+    Whitepaper template
+
+    Generated into one HTML file per chapter by generate_whitepapers.py; the design
+    standards are in docs/WHITEPAPER_DESIGN_GUIDELINES.md.
+
+    Design: the whitepaper shares the look of the book's cover and website. The header
+    is a cover band (the book's two-tone gradient over the 40 px series grid, an accent
+    edge, an uppercase eyebrow and a large chapter number); the body is Inter on white;
+    accent colours are used for rules, numbers and the call-to-action button, never for
+    text on white. The palette defaults below are the Book 1 cover; the generator
+    overrides them from docs/stylesheets/series-colours.css when the book has that file.
+
+    Constraints from the release pipeline:
+    - The combined whitepapers PDF is made by stripping the tags from everything between
+      the opening and closing body tags, line by line, starting at the first line that
+      contains the opening tag. So that opening tag appears only once, every tag stays on
+      one line, and decorative text is generated with CSS (pseudo-elements), never
+      written into the page.
+    - Meets WCAG AA contrast for body text; A4 print layout with a full-bleed first page.
 -->
 <html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[[PAGE_TITLE]]</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Prism.js for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
@@ -29,17 +33,20 @@
 
     <style>
         :root {
-            --aac-primary: hsl(221, 67%, 32%);
-            --aac-primary-light: hsl(217, 91%, 60%);
-            --aac-primary-dark: hsl(214, 32%, 18%);
-            --aac-muted: hsl(215, 20%, 46%);
-            --surface-soft: hsl(214, 32%, 97%);
-            --surface-border: rgba(23, 37, 84, 0.15);
-            --white: hsl(0, 0%, 100%);
-            --black: hsl(0, 0%, 0%);
-            --success: hsl(160, 84%, 30%);
-            --warning: hsl(32, 95%, 44%);
+            /* Book palette: defaults are the Book 1 cover, overridden per book below */
+            --book-dark: #1F2A3C;
+            --book-primary: #1B3A7A;
+            --book-strong: #1D4ED8;
+            --book-accent: #60A5FA;
+            --book-tint: #E6EEFB;
+            --book-paper: #F6F8FB;
+            /* Neutrals shared by every book */
+            --ink: #182033;
+            --muted: #4F5B71;
+            --rule: #DFE5EE;
+            --white: #FFFFFF;
         }
+        /* [[PALETTE_OVERRIDE]] */
 
         * {
             margin: 0;
@@ -48,55 +55,110 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--surface-soft);
-            color: var(--aac-primary-dark);
-            line-height: 1.6;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: var(--book-paper);
+            color: var(--ink);
+            line-height: 1.65;
             font-size: 16px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
 
         .page {
             width: 210mm;
             min-height: 297mm;
             margin: 0 auto;
-            padding: 25mm;
             background: var(--white);
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.10);
+            overflow: hidden;
         }
 
+        /* Cover band */
         .whitepaper-header {
-            margin-bottom: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            position: relative;
+            overflow: hidden;
+            color: var(--white);
+            padding: 20mm 25mm 16mm calc(25mm - 6px);
+            border-left: 6px solid var(--book-accent);
+            background:
+                radial-gradient(60% 90% at 88% 0%, color-mix(in srgb, var(--book-accent) 24%, transparent), transparent 62%),
+                radial-gradient(50% 70% at 0% 100%, color-mix(in srgb, var(--book-strong) 50%, transparent), transparent 60%),
+                linear-gradient(135deg, var(--book-primary), var(--book-dark));
         }
 
-        .series-badge {
-            display: inline-block;
-            background: var(--aac-primary);
-            color: var(--white);
-            padding: 6px 16px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 600;
+        .whitepaper-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .whitepaper-header::after {
+            content: attr(data-chapter-number);
+            position: absolute;
+            right: 16mm;
+            bottom: -12mm;
+            font-size: 190px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: rgba(255, 255, 255, 0.07);
+            pointer-events: none;
+        }
+
+        .whitepaper-header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 26px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
-            align-self: flex-start;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 4px;
+            border-radius: 2px;
+            background: var(--book-accent);
+        }
+
+        .kicker {
+            margin-bottom: 10px;
+            font-size: 13.5px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--book-accent);
         }
 
         .title {
-            font-size: 36px;
+            max-width: 90%;
+            font-size: 38px;
             font-weight: 800;
-            color: var(--aac-primary-dark);
-            line-height: 1.2;
-            letter-spacing: -0.5px;
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+            color: var(--white);
         }
 
         .subtitle {
-            font-size: 20px;
-            color: var(--aac-muted);
+            max-width: 82%;
+            margin-top: 14px;
+            font-size: 19px;
             font-weight: 400;
-            max-width: 85%;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.84);
         }
 
         .subtitle:empty {
@@ -106,85 +168,103 @@
         .meta-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 32px;
-            color: var(--aac-muted);
+            gap: 14px 38px;
+            margin-top: 28px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 14px;
+            color: var(--white);
         }
 
         .meta-item {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         .meta-label {
-            font-weight: 600;
-            color: var(--aac-primary);
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
-            font-size: 12px;
+            color: var(--book-accent);
         }
 
         .feature-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 8px;
+            margin-top: 18px;
         }
 
         .feature-tag {
             display: inline-flex;
             align-items: center;
-            padding: 6px 12px;
+            padding: 3px 11px;
+            border: 1px solid rgba(255, 255, 255, 0.34);
             border-radius: 999px;
-            background: var(--surface-soft);
-            color: var(--aac-primary);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.07);
+            color: var(--white);
+            font-family: 'JetBrains Mono', Consolas, monospace;
+            font-size: 11.5px;
+            font-weight: 500;
+        }
+
+        /* Body */
+        .content {
+            padding: 16mm 25mm 8mm 25mm;
         }
 
         section {
-            margin-bottom: 48px;
-        }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--aac-primary-dark);
-            margin-bottom: 20px;
-            line-height: 1.3;
+            margin-bottom: 40px;
         }
 
         h2 {
+            margin: 0 0 16px 0;
             font-size: 24px;
-            font-weight: 600;
-            color: var(--aac-primary);
-            margin: 32px 0 16px 0;
-            line-height: 1.3;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+            color: var(--book-primary);
+        }
+
+        h2::before {
+            content: "";
+            display: block;
+            width: 36px;
+            height: 4px;
+            margin-bottom: 12px;
+            border-radius: 2px;
+            background: var(--book-accent);
         }
 
         h3 {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--aac-primary-dark);
             margin: 24px 0 12px 0;
-            line-height: 1.4;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--book-primary);
         }
 
         p {
             margin-bottom: 16px;
-            color: var(--aac-primary-dark);
+            color: var(--ink);
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--book-strong);
         }
 
         .lead {
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--aac-muted);
-            margin-bottom: 24px;
-            border-left: 4px solid var(--aac-primary);
-            padding-left: 16px;
+            padding-left: 18px;
+            border-left: 4px solid var(--book-accent);
+            font-size: 17.5px;
+            line-height: 1.6;
+            color: var(--ink);
         }
 
         ul, ol {
@@ -194,83 +274,191 @@
 
         li {
             margin-bottom: 8px;
-            color: var(--aac-primary-dark);
+            color: var(--ink);
         }
 
         code {
-            font-family: 'JetBrains Mono', Consolas, monospace;
-            background: var(--surface-soft);
-            padding: 2px 6px;
+            padding: 1px 6px;
             border-radius: 4px;
-            font-size: 14px;
+            background: var(--book-tint);
+            color: var(--book-primary);
+            font-family: 'JetBrains Mono', Consolas, monospace;
+            font-size: 0.88em;
         }
 
-        pre {
-            background: #2d2d2d !important;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 16px 0;
-            overflow-x: auto;
-            border-left: 4px solid var(--aac-primary);
-        }
-
-        pre code {
-            background: none;
-            padding: 0;
-            color: #d1d5db;
-        }
-
+        pre,
         pre[class*="language-"] {
             margin: 16px 0;
+            padding: 16px;
+            overflow-x: auto;
+            border-left: 4px solid var(--book-accent);
             border-radius: 8px;
-            border-left: 4px solid var(--aac-primary);
+            background: var(--book-dark) !important;
         }
 
+        pre code,
         code[class*="language-"] {
+            padding: 0;
+            background: none;
+            color: #E5E7EB;
             font-size: 14px;
             line-height: 1.5;
         }
 
         .line-numbers .line-numbers-rows {
-            border-right: 1px solid #555;
+            border-right: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .callout {
-            margin: 24px 0;
-            padding: 20px;
+            margin: 22px 0;
+            padding: 18px 22px;
+            border-left: 5px solid var(--book-strong);
             border-radius: 8px;
-            border-left: 4px solid;
-            background: var(--surface-soft);
-        }
-
-        .callout-info {
-            border-color: var(--aac-primary-light);
-        }
-
-        .callout-success {
-            border-color: var(--success);
-        }
-
-        .callout-warning {
-            border-color: var(--warning);
+            background: var(--book-tint);
         }
 
         .callout-title {
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--aac-primary-dark);
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--book-primary);
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
         }
 
         .chapter-figure {
-            text-align: center;
-            margin: 30px 0;
+            margin: 26px 0;
+            padding: 14px;
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            background: var(--white);
         }
 
         .chapter-figure img {
+            display: block;
             max-width: 100%;
             height: auto;
-            border: 1px solid var(--surface-border);
+            margin: 0 auto;
+        }
+
+        .chapter-figure figcaption {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid var(--rule);
+            font-size: 13px;
+            line-height: 1.45;
+            color: var(--muted);
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 16px;
+            margin: 18px 0 0 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: topic;
+        }
+
+        .topics li {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin: 0;
+            padding: 12px 14px;
             border-radius: 8px;
+            background: var(--book-tint);
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.35;
+            counter-increment: topic;
+        }
+
+        .topics li::before {
+            content: counter(topic, decimal-leading-zero);
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--book-strong);
+        }
+
+        .book-overview {
+            padding: 24px 28px;
+            border: 1px solid var(--rule);
+            border-left: 6px solid var(--book-accent);
+            border-radius: 10px;
+            background: var(--book-paper);
+        }
+
+        .book-overview .callout {
+            margin-bottom: 0;
+            background: var(--white);
+        }
+
+        .call-to-action {
+            position: relative;
+            overflow: hidden;
+            padding: 28px 32px;
+            border-radius: 12px;
+            color: var(--white);
+            background:
+                radial-gradient(60% 90% at 90% 0%, color-mix(in srgb, var(--book-accent) 22%, transparent), transparent 62%),
+                linear-gradient(135deg, var(--book-primary), var(--book-dark));
+        }
+
+        .call-to-action h2,
+        .call-to-action p,
+        .call-to-action strong {
+            color: var(--white);
+        }
+
+        .call-to-action p {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .call-to-action p:last-child {
+            margin-bottom: 0;
+        }
+
+        .button {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 11px 20px;
+            border-radius: 8px;
+            background: var(--book-accent);
+            color: var(--book-dark);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .whitepaper-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 6px 24px;
+            padding: 11mm 25mm;
+            border-top: 4px solid var(--book-accent);
+            background: var(--book-dark);
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        .whitepaper-footer strong,
+        .whitepaper-footer a {
+            color: var(--white);
+        }
+
+        @page {
+            size: A4;
+            margin: 18mm 0;
+        }
+
+        @page :first {
+            margin: 0;
         }
 
         @media print {
@@ -279,39 +467,75 @@
             }
 
             .page {
-                padding: 20mm;
+                width: auto;
+                min-height: 0;
                 box-shadow: none;
             }
 
-            .page-break {
-                page-break-before: always;
+            h2,
+            h3 {
+                break-after: avoid;
+            }
+
+            .chapter-figure,
+            .callout,
+            .topics li,
+            .call-to-action,
+            .book-overview,
+            pre {
+                break-inside: avoid;
             }
         }
 
         @media (max-width: 768px) {
             .page {
-                padding: 20px;
                 width: 100%;
             }
 
+            .whitepaper-header {
+                padding: 36px 22px 30px 20px;
+            }
+
+            .whitepaper-header::after {
+                font-size: 120px;
+                right: 10px;
+            }
+
+            .title,
+            .subtitle {
+                max-width: 100%;
+            }
+
             .title {
-                font-size: 30px;
+                font-size: 29px;
+            }
+
+            .content {
+                padding: 28px 22px 8px 22px;
+            }
+
+            .topics {
+                grid-template-columns: 1fr;
             }
 
             .meta-info {
-                gap: 16px;
                 flex-direction: column;
+                gap: 12px;
+            }
+
+            .whitepaper-footer {
+                padding: 22px;
             }
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <section class="whitepaper-header">
-            <div class="series-badge">[[CATEGORY]]</div>
+        <header class="whitepaper-header" data-chapter-number="[[CHAPTER_NUMBER]]">
+            <p class="eyebrow">[[EYEBROW]]</p>
+            <p class="kicker">[[CATEGORY]]</p>
             <h1 class="title">[[TITLE]]</h1>
             <p class="subtitle">[[SUBTITLE]]</p>
-
             <div class="meta-info">
                 <div class="meta-item">
                     <span class="meta-label">Author</span>
@@ -327,9 +551,16 @@
                 </div>
             </div>
             <!-- FEATURE_TAGS -->
-        </section>
+        </header>
 
+        <main class="content">
         <!-- WHITEPAPER_CONTENT -->
+        </main>
+
+        <footer class="whitepaper-footer">
+            <span>[[FOOTER_LEFT]]</span>
+            <span>[[FOOTER_RIGHT]]</span>
+        </footer>
     </div>
 
     <!-- Prism.js core and plugins for syntax highlighting -->
