@@ -61,7 +61,7 @@
 \fancyhead[RE]{\textcolor{KvadratGray}{\small\nouppercase{\leftmark}}}
 
 % Footer styling
-\fancyfoot[C]{\textcolor{KvadratGray}{\small Architecture as Code - Kvadrat Professional Publication}}
+\fancyfoot[C]{\textcolor{KvadratGray}{\small Architecture as Code - Gunnar Nordqvist}}
 
 % Remove header rule and add custom styling
 \renewcommand{\headrulewidth}{0pt}
@@ -217,12 +217,12 @@
                     % Logo placeholder
                     \begin{tikzpicture}
                         \fill[white] (0,0) rectangle (12mm,12mm);
-                        \node at (6mm,6mm) {\textcolor{KvadratBlue}{\Huge\textbf{K}}};
+                        \node at (6mm,6mm) {\textcolor{KvadratBlue}{\Huge\textbf{G}}};
                     \end{tikzpicture}
                     \hspace{4mm}
                     \begin{minipage}[b]{50mm}
-                        \textcolor{white}{\textbf{KVADRAT}}\\
-                        \textcolor{white}{\small Professional Publication}
+                        \textcolor{white}{\textbf{GEON IT AB}}\\
+                        \textcolor{white}{\small Publisher}
                     \end{minipage}
                 \end{minipage}
             };
@@ -244,7 +244,7 @@
         % Footer information
         \begin{tikzpicture}[remember picture,overlay]
             \node[anchor=south west] at ([xshift=40mm,yshift=40mm]current page.south west) {
-                \textcolor{white}{\textbf{\Large Kvadrat Expert Team}}
+                \textcolor{white}{\textbf{\Large Gunnar Nordqvist}}
             };
             \node[anchor=south east] at ([xshift=-40mm,yshift=40mm]current page.south east) {
                 \begin{minipage}[b]{40mm}
@@ -475,7 +475,7 @@
     filecolor=KvadratBlue,
     urlcolor=KvadratBlueLight,
     citecolor=KvadratBlue,
-    pdfauthor={Kvadrat Expert Team},
+    pdfauthor={Gunnar Nordqvist},
     pdftitle={Architecture as Code},
     pdfsubject={Infrastructure as Code},
     pdfkeywords={Infrastructure as Code, DevOps, Cloud, Automation}
@@ -502,18 +502,17 @@
     \begin{center}
         \begin{tikzpicture}
             \fill[KvadratBlue] (0,0) rectangle (12mm,12mm);
-            \node at (6mm,6mm) {\textcolor{white}{\Huge\textbf{K}}};
+            \node at (6mm,6mm) {\textcolor{white}{\Huge\textbf{G}}};
         \end{tikzpicture}
         
         \vspace{10mm}
         
-        {\Large\textbf{\textcolor{KvadratBlue}{Kvadrat Professional Services}}}\\[5mm]
-        {\large\textcolor{KvadratGray}{Expert consulting services in technology and architecture}}\\[10mm]
+        {\Large\textbf{\textcolor{KvadratBlue}{GEON IT AB}}}\\[5mm]
+        {\large\textcolor{KvadratGray}{Publisher of The Architecture as Code Series}}\\[10mm]
 
         \textcolor{KvadratGray}{
-            \textbf{Contact:} info@kvadrat.se | +46 8 123 45 67 | www.kvadrat.se\\
-            \textbf{Address:} Stockholm, Sweden\\[5mm]
-            © 2024 Kvadrat. All rights reserved.
+            \textbf{Website:} https://aac.geon.se\\[5mm]
+            © \the\year{} Gunnar Nordqvist. All rights reserved.
         }
     \end{center}
     
