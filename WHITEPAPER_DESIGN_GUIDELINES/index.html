@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://aac.geon.se/WHITEPAPER_DESIGN_GUIDELINES/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Whitepaper Design Guidelines for Architecture as Code - Architecture as Code at aac.geon.se</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/code-dark.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Whitepaper Design Guidelines for Architecture as Code";
+        var mkdocs_page_input_path = "WHITEPAPER_DESIGN_GUIDELINES.md";
+        var mkdocs_page_url = "/WHITEPAPER_DESIGN_GUIDELINES/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Architecture as Code at aac.geon.se
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Welcome</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../book_structure/">Book Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../documentation_workflow/">Documentation and Architecture Contribution Workflow</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part A – Foundations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_a_foundations/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01_introduction/">Introduction to Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02_fundamental_principles/">Fundamental Principles of Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03_version_control/">Version Control and Code Structure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04_adr/">Architecture Decision Records (ADR)</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part B – Architecture Platform</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_b_platform/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05_automation_devops_cicd/">Automation, DevOps and CI/CD for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06_structurizr/">Structurizr: Architecture Modelling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../07_containerisation/">Containerisation and Orchestration as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../08_microservices/">Microservices Architecture as Code</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part C – Security & Governance</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_c_security/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09_security_fundamentals/">Security Fundamentals for Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09b_security_patterns/">Advanced Security Patterns and Implementation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../09c_risk_and_threat_as_code/">Risk as Code and Threat Handling as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../10_policy_and_security/">Policy and Security as Code in Detail</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../11_governance_as_code/">Governance as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../12_compliance/">Compliance and Regulatory Adherence</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part D – Delivery & Operations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_d_delivery/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../13_testing_strategies/">Testing Strategies for Infrastructure as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../14_practical_implementation/">Architecture as Code in Practice</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15a_evidence_as_code/">Evidence as Code and Continuous Assurance</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../15_cost_optimization/">Cost Optimisation and Resource Management</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../16_migration/">Migration from Traditional Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part E – Organisation & Leadership</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_e_leadership/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../17_organisational_change/">Organisational Change and Team Structures</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../18_team_structure/">Team Structure and Competency Development for IaC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../19_management_as_code/">Management as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../23_soft_as_code_interplay/">The Interplay Between Soft As Code Disciplines</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../20_ai_agent_team/">AI Agent Team for Architecture as Code Initiatives</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../21_digitalisation/">Digitalisation through Code-based Infrastructure</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part F – Experience & Best Practices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_f_practices/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../22_documentation_vs_architecture/">Documentation as Code vs Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../24_best_practices/">Best Practices and Lessons Learned</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part G – Future & Wrap-up</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_g_future/">index</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../25_future_trends/">Future Trends in Architecture as Code</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26a_prerequisites_for_aac/">Prerequisites for Architecture as Code Adoption</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../26b_aac_anti_patterns/">Anti-Patterns in Architecture as Code Programmes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../27_conclusion/">Conclusion</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Appendices</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../part_h_appendices/">Part H – Appendices and Reference Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../28_glossary/">Glossary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../29_about_the_author/">About the Author</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../30_appendix_code_examples/">Appendix A – Code Examples and Technical Implementations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../31_appendix_b_technical_architecture/">Appendix B – Technical Architecture for Book Production</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../32_finos_project_blueprint/">Appendix C – FINOS Project Blueprint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_templates_and_tools/">Appendix D – Templates and Tools</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/adr_catalogue/">ADR Catalogue</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../adr/migration_plan/">Legacy ADR Migration Plan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../architecture_as_code_maturity_model/">Appendix E – Architecture as Code Maturity Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../maturity_model_radar.html">Appendix F – Architecture as Code Maturity Radar Tool</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../33_references/">References and Sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../appendix_d_control_mapping_matrix_template/">Control Mapping Matrix Template</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../prezi/">Prezi Deck</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Architecture as Code at aac.geon.se</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Whitepaper Design Guidelines for Architecture as Code</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/geonitab/architecture_as_code/edit/master/docs/WHITEPAPER_DESIGN_GUIDELINES.md">Edit on architecture_as_code</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="whitepaper-design-guidelines-for-architecture-as-code">Whitepaper Design Guidelines for Architecture as Code</h1>
+<h2 id="one-chapter-summaries-that-look-like-the-book">One-chapter summaries that look like the book</h2>
+<h2 id="purpose">Purpose</h2>
+<p>This document defines the design standards for the whitepapers generated from the content of <em>Architecture as Code</em>, one HTML file per chapter. A whitepaper is the book's shop window for that chapter, so it takes the look of the book itself: the palette of the cover, the cover band as its header, Inter for text and JetBrains Mono for code. It is professionally formatted, accessible, and prints to A4.</p>
+<p>The implementation is <code>templates/whitepaper-template.html</code> (design) and <code>generate_whitepapers.py</code> (content). The tests are <code>tests/test_whitepaper_generation.py</code> and <code>tests/test_whitepaper_template.py</code>.</p>
+<hr />
+<h2 id="core-design-principles">Core Design Principles</h2>
+<h3 id="1-the-whitepaper-belongs-to-the-book">1. The whitepaper belongs to the book</h3>
+<ul>
+<li><strong>One palette per book</strong>: the six <code>--book-*</code> colours below, taken from the cover. Nothing else carries colour.</li>
+<li><strong>Cover band</strong>: the header repeats the cover's construction (two-tone gradient over the 40 px series grid, an accent edge, an uppercase eyebrow, a large faint chapter number), so a reader who has seen the cover recognises the page.</li>
+<li><strong>Accent colours decorate, they do not carry text on white.</strong> Accents are light on several books (amber, lime, pink), so they are used for rules, numbers, the left edge, button fills and text on the dark band only.</li>
+</ul>
+<h3 id="2-reading-experience">2. Reading experience</h3>
+<ul>
+<li><strong>Scannable structure</strong>: the chapter first (figure, opening paragraphs, topics), then the book (what it is, who should read it), then the call to action.</li>
+<li><strong>Progressive information</strong>: a lead paragraph in a larger size, then the body, then the topic list.</li>
+<li><strong>Visual relief</strong>: one figure with its caption, tinted topic cards, white space.</li>
+<li><strong>Optimal line length</strong>: the text column is 160 mm wide on A4, about 85 characters at 16 px.</li>
+</ul>
+<h3 id="3-accessibility-and-standards">3. Accessibility and standards</h3>
+<ul>
+<li><strong>WCAG AA contrast</strong> for all text (see the measured table below).</li>
+<li><strong>Semantic HTML5</strong>: one <code>h1</code> (the title in the header), <code>h2</code> for sections, <code>figure</code> and <code>figcaption</code> for diagrams, <code>header</code>, <code>main</code> and <code>footer</code> landmarks.</li>
+<li><strong>Responsive</strong>: usable from 320 px; the cover band and the topic grid collapse to one column.</li>
+<li><strong>Print</strong>: A4, full-bleed first page, clean page breaks.</li>
+</ul>
+<hr />
+<h2 id="document-format-and-structure">Document Format and Structure</h2>
+<h3 id="standard-dimensions">Standard Dimensions</h3>
+<ul>
+<li><strong>Page size</strong>: A4 (210 mm x 297 mm) on screen and in print.</li>
+<li><strong>Text margins</strong>: 25 mm on both sides; the cover band is full-bleed.</li>
+<li><strong>Print margins</strong>: <code>@page</code> has 18 mm top and bottom margins, and none on the first page so that the cover band reaches the edge.</li>
+</ul>
+<h3 id="typography-standards">Typography Standards</h3>
+<h4 id="font-families">Font Families</h4>
+<ul>
+<li><strong>Primary</strong>: <a href="https://fonts.google.com/specimen/Inter">Inter</a>, weights 300 to 900 (the cover uses 900 for titles; whitepapers use 800).</li>
+<li><strong>Monospace</strong>: <a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono</a>, weights 400 to 600, for code and for the feature tags.</li>
+</ul>
+<h4 id="type-scale">Type Scale</h4>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Size</th>
+<th>Weight</th>
+<th>Colour</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Title</strong> (<code>h1</code>)</td>
+<td>38px</td>
+<td>800</td>
+<td>White on the band</td>
+<td>Chapter title before the first colon (see below)</td>
+</tr>
+<tr>
+<td><strong>Subtitle</strong></td>
+<td>19px</td>
+<td>400</td>
+<td>White at 84%</td>
+<td>Chapter title after the colon, or "Key insights from ..."</td>
+</tr>
+<tr>
+<td><strong>Eyebrow</strong></td>
+<td>11.5px</td>
+<td>700, uppercase, 0.16em</td>
+<td>White</td>
+<td>Book title and "Whitepaper", with the accent bar</td>
+</tr>
+<tr>
+<td><strong>Kicker</strong></td>
+<td>13.5px</td>
+<td>600</td>
+<td>Accent</td>
+<td>Chapter label and part</td>
+</tr>
+<tr>
+<td><strong>Section title</strong> (<code>h2</code>)</td>
+<td>24px</td>
+<td>800</td>
+<td><code>--book-primary</code></td>
+<td>With a 36 x 4 px accent bar above</td>
+</tr>
+<tr>
+<td><strong>Lead paragraph</strong></td>
+<td>17.5px</td>
+<td>400</td>
+<td>Ink</td>
+<td>First paragraph, accent rule on the left</td>
+</tr>
+<tr>
+<td><strong>Body</strong></td>
+<td>16px</td>
+<td>400</td>
+<td>Ink</td>
+<td>Line height 1.65</td>
+</tr>
+<tr>
+<td><strong>Caption</strong></td>
+<td>13px</td>
+<td>400</td>
+<td>Muted</td>
+<td>Under the figure</td>
+</tr>
+<tr>
+<td><strong>Labels</strong></td>
+<td>10.5 to 12px</td>
+<td>700, uppercase</td>
+<td>Accent on the band, <code>--book-primary</code> on white</td>
+<td>Metadata and callout titles</td>
+</tr>
+<tr>
+<td><strong>Inline code</strong></td>
+<td>0.88em</td>
+<td>400</td>
+<td><code>--book-primary</code> on <code>--book-tint</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Code block</strong></td>
+<td>14px</td>
+<td>400</td>
+<td><code>#E5E7EB</code> on <code>--book-dark</code></td>
+<td>Prism.js token colours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="colour-palette">Colour Palette</h3>
+<p>The palette is read at generation time from the Book 1 cover (this book's website keeps the MkDocs default theme, so there is no <code>series-colours.css</code>). <code>generate_whitepapers.py</code> writes it into the template as a <code>:root</code> override; the template's own defaults are the Book 1 cover.</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Architecture as Code</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--book-dark</code></td>
+<td><code>#1F2A3C</code></td>
+<td>Dark end of the gradient, code blocks, footer</td>
+</tr>
+<tr>
+<td><code>--book-primary</code></td>
+<td><code>#1B3A7A</code></td>
+<td>Light end of the gradient, headings</td>
+</tr>
+<tr>
+<td><code>--book-strong</code></td>
+<td><code>#1D4ED8</code></td>
+<td>Links, topic numbers, callout edge</td>
+</tr>
+<tr>
+<td><code>--book-accent</code></td>
+<td><code>#60A5FA</code></td>
+<td>Edge, rules, kicker, button fill, tags</td>
+</tr>
+<tr>
+<td><code>--book-tint</code></td>
+<td><code>#E6EEFB</code></td>
+<td>Topic cards, callouts, inline code</td>
+</tr>
+<tr>
+<td><code>--book-paper</code></td>
+<td><code>#F6F8FB</code></td>
+<td>Page background on screen, book panel</td>
+</tr>
+</tbody>
+</table>
+<p>Neutrals are shared by every book: <code>--ink: #182033</code>, <code>--muted: #4F5B71</code>, <code>--rule: #DFE5EE</code>.</p>
+<h4 id="contrast-measured-for-this-books-palette">Contrast (measured for this book's palette)</h4>
+<table>
+<thead>
+<tr>
+<th>Pair</th>
+<th>Colours</th>
+<th>Ratio</th>
+<th>WCAG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Body text on white</td>
+<td><code>#182033</code> on <code>#FFFFFF</code></td>
+<td>16.2:1</td>
+<td>AAA</td>
+</tr>
+<tr>
+<td>Muted text (figure captions) on white</td>
+<td><code>#4F5B71</code> on <code>#FFFFFF</code></td>
+<td>6.8:1</td>
+<td>AA</td>
+</tr>
+<tr>
+<td>Headings and links on white</td>
+<td><code>#1B3A7A</code> on <code>#FFFFFF</code></td>
+<td>10.9:1</td>
+<td>AAA</td>
+</tr>
+<tr>
+<td>Link colour on white</td>
+<td><code>#1D4ED8</code> on <code>#FFFFFF</code></td>
+<td>6.7:1</td>
+<td>AA</td>
+</tr>
+<tr>
+<td>White text on the cover band (darkest end)</td>
+<td><code>#FFFFFF</code> on <code>#1F2A3C</code></td>
+<td>14.4:1</td>
+<td>AAA</td>
+</tr>
+<tr>
+<td>White text on the cover band (lightest end)</td>
+<td><code>#FFFFFF</code> on <code>#1B3A7A</code></td>
+<td>10.9:1</td>
+<td>AAA</td>
+</tr>
+<tr>
+<td>Accent text on the cover band (kicker, labels)</td>
+<td><code>#60A5FA</code> on <code>#1F2A3C</code></td>
+<td>5.7:1</td>
+<td>AA</td>
+</tr>
+<tr>
+<td>Button text on the accent colour</td>
+<td><code>#1F2A3C</code> on <code>#60A5FA</code></td>
+<td>5.7:1</td>
+<td>AA</td>
+</tr>
+</tbody>
+</table>
+<p><code>generate_whitepapers.py</code> does not check contrast. When the palette changes, recompute this table; every pair must reach 4.5:1.</p>
+<hr />
+<h2 id="whitepaper-components">Whitepaper Components</h2>
+<h3 id="1-cover-band-header">1. Cover band (header)</h3>
+<pre><code class="language-html">&lt;header class=&quot;whitepaper-header&quot; data-chapter-number=&quot;6&quot;&gt;
+    &lt;p class=&quot;eyebrow&quot;&gt;Architecture as Code · Whitepaper&lt;/p&gt;
+    &lt;p class=&quot;kicker&quot;&gt;Chapter 6 · Architecture Platform&lt;/p&gt;
+    &lt;h1 class=&quot;title&quot;&gt;Structurizr: Architecture Modelling as Code&lt;/h1&gt;
+    &lt;p class=&quot;subtitle&quot;&gt;Key insights from Chapter 6 of &quot;Architecture as Code&quot;&lt;/p&gt;
+    &lt;div class=&quot;meta-info&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;feature-tags&quot;&gt;...&lt;/div&gt;
+&lt;/header&gt;
+</code></pre>
+<ul>
+<li><strong>Title and subtitle</strong>: the chapter title is split at its first colon when what precedes it has at least three words ("Contestability by Design: Explanation, Appeal and Correction" gives a title and a subtitle). Shorter openings ("Introduction: Who Is the Boss?") stay whole. With no colon, the subtitle is "Key insights from [label] of "[book]"" for a chapter and "[label] from "[book]"" for an appendix.</li>
+<li><strong>Chapter number</strong>: shown large and faint at the bottom right of the band, from <code>data-chapter-number</code> through a CSS pseudo-element, only for labels of the form "Chapter N". Appendices have none.</li>
+<li><strong>Kicker</strong>: chapter label and part, separated by a middle dot.</li>
+<li><strong>Metadata</strong>: author, published date (British English, no leading zero) and build number, on a hairline.</li>
+<li><strong>Feature tags</strong>: outlined pills in JetBrains Mono, written as in <code>BOOK_REQUIREMENTS.md</code> (for example <code>ai-agents</code>).</li>
+<li><strong>Left edge</strong>: a 6 px accent border, as on the cover.</li>
+</ul>
+<h3 id="2-chapter-content">2. Chapter content</h3>
+<pre><code class="language-html">&lt;section class=&quot;chapter-highlight&quot;&gt;
+    &lt;figure class=&quot;chapter-figure&quot;&gt;
+        &lt;img src=&quot;../docs/images/diagram_06_....png&quot; alt=&quot;Figure 6.1: ...&quot;&gt;
+        &lt;figcaption&gt;Figure 6.1: ...&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;p class=&quot;lead&quot;&gt;[First paragraph]&lt;/p&gt;
+    &lt;p&gt;[Second and third paragraphs]&lt;/p&gt;
+    &lt;h2&gt;Primary topics explored&lt;/h2&gt;
+    &lt;ol class=&quot;topics&quot;&gt;&lt;li&gt;[Section heading]&lt;/li&gt; ...&lt;/ol&gt;
+&lt;/section&gt;
+</code></pre>
+<ul>
+<li><strong>Source of the text</strong>: the first three prose paragraphs of the chapter, and its first six <code>##</code> headings. Table rows, list items, block quotes, code, HTML comments and the line under the figure are skipped.</li>
+<li><strong>Inline Markdown</strong> is rendered (bold, italics, code); citations lose their link and read "(30, Nordqvist, 2025)"; links to other chapters become plain text; Pandoc anchors such as <code>{#chapter-anchor}</code> are removed.</li>
+<li><strong>Figure</strong>: the caption is the chapter's own "Figure N.M" line, falling back to the image's alt text.</li>
+<li><strong>Topics</strong>: numbered cards in two columns (one on mobile), at most six.</li>
+</ul>
+<h3 id="3-about-the-book">3. About the book</h3>
+<p>A tinted panel with the accent edge: a section title "About <em>Architecture as Code</em>", the book description in paragraphs (the description in <code>get_book_overview()</code> is wrapped at blank lines, never at line ends), and a callout "Who should read this".</p>
+<h3 id="4-call-to-action">4. Call to action</h3>
+<p>A dark panel in the cover's gradient with a button, "Read the full chapter online", that links to the chapter on the book's site (<code>https://[CNAME]/[chapter-file-stem]/</code>, which is where MkDocs publishes it with <code>use_directory_urls</code>), a sentence naming the chapter, and a sentence placing the whitepaper in its part and in the set of N whitepapers. Without a <code>CNAME</code> file the button is omitted.</p>
+<h3 id="5-footer">5. Footer</h3>
+<p>A dark band with the accent rule: "© [year] Gunnar Nordqvist. Published by GEON IT AB." on the left, and the book title and its website on the right.</p>
+<hr />
+<h2 id="code-samples-and-technical-content">Code Samples and Technical Content</h2>
+<h3 id="inline-code">Inline Code</h3>
+<p>JetBrains Mono at 0.88em on <code>--book-tint</code>, colour <code>--book-primary</code>.</p>
+<h3 id="code-blocks">Code Blocks</h3>
+<ul>
+<li><strong>Syntax highlighting</strong>: Prism.js with the "Tomorrow" theme, loaded from cdnjs.</li>
+<li><strong>Background</strong>: <code>--book-dark</code>, with a 4 px <code>--book-accent</code> left border, 16 px padding and 8 px radius.</li>
+<li><strong>Supported languages</strong>: YAML, JSON, Python, Bash, JavaScript, TypeScript, Docker, Terraform.</li>
+</ul>
+<hr />
+<h2 id="responsive-and-print-considerations">Responsive and Print Considerations</h2>
+<h3 id="responsive">Responsive</h3>
+<p>At 768 px and below the page is full width, the cover band has 20 px side padding, the title drops to 29 px, the topic grid and the metadata stack, and the faint chapter number shrinks.</p>
+<h3 id="print">Print</h3>
+<pre><code class="language-css">@page { size: A4; margin: 18mm 0; }
+@page :first { margin: 0; }
+@media print {
+    .page { width: auto; box-shadow: none; }
+    h2, h3 { break-after: avoid; }
+    .chapter-figure, .callout, .topics li, .call-to-action, .book-overview, pre { break-inside: avoid; }
+}
+</code></pre>
+<p>Backgrounds are printed (<code>print-color-adjust: exact</code>), so the cover band, the footer and the call to action keep their colour. A whitepaper normally runs to four A4 pages.</p>
+<hr />
+<h2 id="release-pipeline-constraints">Release pipeline constraints</h2>
+<p>The combined whitepapers PDF in the release is made by a shell step that takes everything from the first line containing the opening body tag to the line containing the closing body tag, strips the tags line by line, and gives the text to Pandoc. Three rules follow, and <code>tests/test_whitepaper_template.py</code> enforces them:
+1. The opening body tag appears once, as the real tag. No comment, script or style mentions it before that.
+2. Every tag in the body is complete on its own line.
+3. Decorative text (the chapter number, the topic numbers) is produced by CSS pseudo-elements, so it does not end up in the PDF text. Styles stay in <code>head</code>.</p>
+<hr />
+<h2 id="accessibility-standards">Accessibility Standards</h2>
+<h3 id="semantic-html5">Semantic HTML5</h3>
+<ul>
+<li><code>header</code>, <code>main</code> and <code>footer</code> landmarks; <code>section</code> for content blocks.</li>
+<li>One <code>h1</code>; <code>h2</code> for section titles; <code>h3</code> is available inside content.</li>
+<li><code>figure</code> and <code>figcaption</code> for diagrams; <code>strong</code> and <code>em</code> for emphasis.</li>
+</ul>
+<h3 id="aria-and-metadata">ARIA and metadata</h3>
+<ul>
+<li>Feature tags use <code>role="list"</code> and <code>role="listitem"</code>.</li>
+<li>Images always carry descriptive <code>alt</code> text (the figure caption).</li>
+<li>The page element carries <code>data-release-version</code>, <code>data-feature-tags</code> and <code>data-release-codename</code> for programmatic access.</li>
+</ul>
+<hr />
+<h2 id="file-naming-and-organisation">File Naming and Organisation</h2>
+<ul>
+<li><strong>Pattern</strong>: <code>[chapter-filename]_whitepaper.html</code>, for example <code>06_structurizr_whitepaper.html</code>.</li>
+<li><strong>Location</strong>: <code>releases/whitepapers/</code> (release mode) or <code>whitepapers/</code> (standard mode).</li>
+<li><strong>Diagrams</strong>: <code>docs/images/</code>, referenced by a path relative to the whitepaper; the figure is omitted when a chapter has none.</li>
+</ul>
+<hr />
+<h2 id="quality-checklist">Quality Checklist</h2>
+<h3 id="content">Content</h3>
+<ul>
+<li>[ ] The title, subtitle and kicker match the chapter; no Pandoc anchor or Markdown marker is visible.</li>
+<li>[ ] The opening paragraphs are prose (no table rows or drafting comments).</li>
+<li>[ ] The figure shows the chapter's own caption.</li>
+<li>[ ] The call to action links to the chapter on the book's site.</li>
+</ul>
+<h3 id="design">Design</h3>
+<ul>
+<li>[ ] The colours are the book's cover palette, read from <code>series-colours.css</code>.</li>
+<li>[ ] The cover band reaches the page edge in print and keeps its colour.</li>
+<li>[ ] Text meets WCAG AA contrast (table above).</li>
+<li>[ ] The layout works at 390 px width and prints to four A4 pages or fewer.</li>
+</ul>
+<h3 id="technical">Technical</h3>
+<ul>
+<li>[ ] <code>python3 -m unittest tests.test_whitepaper_generation tests.test_whitepaper_template</code> passes.</li>
+<li>[ ] The body tag rules of the release pipeline hold (test above).</li>
+<li>[ ] Fonts and Prism.js load from their CDNs.</li>
+</ul>
+<hr />
+<h2 id="document-history">Document History</h2>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Author</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>5 November 2025</td>
+<td>Gunnar Nordqvist</td>
+<td>Initial whitepaper design guidelines created</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>7 November 2026</td>
+<td>Claude Code</td>
+<td>Redesigned to follow the book's cover: per-book palette, cover band, chapter first, footer naming the author and GEON IT AB, release-pipeline rules</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Note</strong>: These guidelines align with <a href="../PRESENTATION_DESIGN_GUIDELINES/">PRESENTATION_DESIGN_GUIDELINES.md</a> and <a href="../STYLE_GUIDE/">STYLE_GUIDE.md</a> and with the series website at https://books.geon.se.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/geonitab/architecture_as_code" class="fa fa-code-fork" style="color: #fcfcfc"> architecture_as_code</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mermaid-init.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

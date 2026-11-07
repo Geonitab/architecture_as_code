@@ -1,0 +1,43 @@
+%% Diagram: Architecture as Code – Technical Structure
+%% Shows the layered relationship between declarative definitions,
+%% automation pipelines, and governance controls.
+flowchart TB
+    subgraph defs["Layer 1 — Declarative Definitions"]
+        direction LR
+        DSL["Architecture DSL
+        Structurizr"]:::kv-muted
+        IaC["Infrastructure Code
+        Terraform / HCL"]:::kv-muted
+        Diag["Diagram Sources
+        Mermaid"]:::kv-muted
+        Docs["Documentation
+        Markdown"]:::kv-muted
+    end
+
+    VCS["Version Control
+    Git — Single Source of Truth"]:::kv-primary
+
+    subgraph pipelines["Layer 2 — Automation Pipelines"]
+        direction LR
+        Build["Build & Validate"]:::kv-accent
+        Test["Automated Testing"]:::kv-accent
+        Deploy["Publish & Deploy"]:::kv-accent
+        Build --> Test --> Deploy
+    end
+
+    subgraph governance["Layer 3 — Governance Controls"]
+        direction LR
+        Policy["Policy as Code
+        OPA / Sentinel"]:::kv-highlight
+        Audit["Audit Trails"]:::kv-highlight
+        Reports["Compliance Reports"]:::kv-highlight
+    end
+
+    Artifacts["Published Artefacts
+    PDF · EPUB · Website · Diagrams"]:::kv-pattern
+
+    defs --> VCS
+    VCS --> Build
+    Deploy --> Artifacts
+    Deploy --> governance
+    governance -. "Enforce policies" .-> pipelines

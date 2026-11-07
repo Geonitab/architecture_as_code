@@ -1,0 +1,195 @@
+workspace "Architecture as Code Reference" "Curated Structurizr workspace aligned to the book's C4 guidance." {
+
+    # The ADRs in ./adrs use "ADR-NNNN-title.md" file names, which Structurizr's !adrs importers
+    # (adr-tools, MADR, log4brains) do not parse; they are linked from elements via url instead.
+
+    model {
+        user = person "Digital Service User" "Citizen or customer interacting with the public-facing capabilities." {
+            tags "External Person"
+        }
+
+        editor = person "Book Editor" "Curates narrative updates and approves publication-ready material." {
+            tags "Internal Person"
+        }
+
+        platformEngineer = person "Platform Engineer" "Maintains the automation platform and contributes new capabilities." {
+            tags "Internal Person"
+        }
+
+        paymentGateway = softwareSystem "Payment Gateway" "Processes book orders for print-on-demand partners." {
+            tags "External System"
+        }
+
+        analyticsService = softwareSystem "Analytics Service" "Delivers telemetry about readership and pipeline health." {
+            tags "Supporting System"
+            reportingWarehouse = container "Reporting Warehouse" "Holds consolidated analytics events." "BigQuery"
+        }
+
+        aacPlatform = softwareSystem "Architecture as Code Platform" "Automates manuscript generation, diagram rendering, and publication assets." {
+            tags "Core System"
+
+            authoringPortal = container "Authoring Portal" "Markdown-first editorial tooling exposed to contributors." "Next.js" {
+                tags "Web Application"
+            }
+
+            observabilityHub = container "Observability Hub" "Aggregates telemetry, alerts, and architecture fitness scores." "Grafana" {
+                tags "Operations"
+            }
+
+            knowledgeGraph = container "Knowledge Graph" "Stores relationships between chapters, diagrams, and review decisions." "Neo4j" {
+                tags "Data"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0002-knowledge-graph-linking.md"
+            }
+
+            diagramService = container "Diagram Service" "Converts Structurizr and Mermaid definitions into publishable assets." "Node.js" {
+                tags "Service"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
+
+                dslParser = component "DSL Parser" "Validates Structurizr DSL syntax and resolves workspace fragments." "Kotlin"
+                renderer = component "Diagram Renderer" "Calls the Structurizr export tooling to produce PlantUML and JSON output." "Java"
+                versioningAdapter = component "Versioning Adapter" "Synchronises workspace snapshots with Git repositories." "Python" {
+                    url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0003-structurizr-manifest-drift.md"
+                }
+                policyEvaluator = component "Policy Evaluator" "Applies architecture fitness functions to proposed changes." "Python"
+
+                dslParser -> renderer "Produces normalised model definitions for."
+                renderer -> versioningAdapter "Publishes rendered diagrams and metadata."
+                policyEvaluator -> dslParser "Receives parsed workspace structures."
+            }
+
+            contentPipeline = container "Content Pipeline" "Generates book artefacts, validates diagrams, and assembles releases." "Python" {
+                tags "Pipeline"
+                url "https://github.com/Geonitab/architecture_as_code/blob/main/docs/examples/structurizr/adrs/ADR-0001-diagram-automation-pipeline.md"
+            }
+        }
+
+        # Container relationships
+        authoringPortal -> contentPipeline "Submits chapter updates and diagram changes." "HTTPS/JSON"
+        contentPipeline -> diagramService "Requests diagram renders and Structurizr exports." "gRPC"
+        contentPipeline -> knowledgeGraph "Persists narrative and diagram metadata." "Bolt"
+        diagramService -> knowledgeGraph "Indexes rendered diagrams for traceability." "Bolt"
+        observabilityHub -> analyticsService "Synchronises usage metrics." "REST"
+        observabilityHub -> knowledgeGraph "Queries historical architecture decisions." "Bolt"
+        contentPipeline -> observabilityHub "Emits build and validation telemetry." "OTLP"
+        authoringPortal -> observabilityHub "Displays health dashboards." "HTTPS"
+        observabilityHub -> editor "Alerts reviewers when fitness thresholds fail." "Notification"
+        policyEvaluator -> observabilityHub "Emits compliance scores." "HTTPS"
+        reportingWarehouse -> observabilityHub "Feeds curated dashboards." "Scheduled ETL"
+        paymentGateway -> analyticsService "Shares purchase signals for aggregated reporting."
+
+        # External interactions
+        user -> authoringPortal "Reads previews and contributes errata." "Browser"
+        editor -> authoringPortal "Reviews submissions and manages releases." "Browser"
+        platformEngineer -> contentPipeline "Implements automation enhancements." "Git Push"
+        contentPipeline -> paymentGateway "Triggers royalty reconciliation." "REST"
+
+        production = deploymentEnvironment "Production" {
+            deploymentNode "Cloud Platform" "Managed container platform hosting the publication services." "Kubernetes" {
+                containerInstance contentPipeline
+                containerInstance diagramService
+                containerInstance observabilityHub
+                deploymentNode "Managed Graph Database" "" "Neo4j AuraDB" {
+                    containerInstance knowledgeGraph
+                }
+            }
+            deploymentNode "Analytics Provider" "" "Google Cloud" {
+                softwareSystemInstance analyticsService
+            }
+        }
+    }
+
+    views {
+        systemContext aacPlatform "AaC-SystemContext" "Context view showing collaborators and neighbouring systems." {
+            include *
+            autoLayout lr
+        }
+
+        container aacPlatform "AaC-Containers" "Container view of the Architecture as Code platform." {
+            include authoringPortal
+            include diagramService
+            include contentPipeline
+            include knowledgeGraph
+            include observabilityHub
+            include analyticsService
+            include paymentGateway
+            include user
+            include editor
+            include platformEngineer
+            autoLayout lr
+        }
+
+        component diagramService "AaC-DiagramService" "Component view describing Structurizr automation internals." {
+            include *
+            autoLayout lr
+        }
+
+        dynamic aacPlatform "AaC-ChangeReview" "Dynamic view covering a diagram change review." {
+            # Dynamic views reuse model relationships; a technology given here must match the
+            # model, so only the step descriptions are stated.
+            user -> authoringPortal "Submits revised workspace fragment."
+            authoringPortal -> contentPipeline "Creates pull request for workspace update."
+            contentPipeline -> diagramService "Runs Structurizr validation and architecture fitness functions."
+            contentPipeline -> observabilityHub "Publishes scores and rule outcomes."
+            observabilityHub -> editor "Alerts reviewers if thresholds fail."
+            editor -> authoringPortal "Requests adjustments or approves change."
+        }
+
+        deployment aacPlatform production "AaC-Deployment" "Deployment view for production." {
+            include *
+            autoLayout lr
+        }
+
+        styles {
+            element "Software System" {
+                background "#0b3d91"
+                colour "#ffffff"
+                shape RoundedBox
+            }
+            element "Container" {
+                background "#205493"
+                colour "#ffffff"
+            }
+            element "Component" {
+                background "#5778a3"
+                colour "#ffffff"
+            }
+            element "External System" {
+                background "#c4d4f2"
+                colour "#1f2a44"
+            }
+            element "External Person" {
+                background "#f4f6fc"
+                colour "#1f2a44"
+            }
+            element "Internal Person" {
+                background "#2e8540"
+                colour "#ffffff"
+            }
+            element "Pipeline" {
+                background "#7f9bb3"
+                colour "#ffffff"
+            }
+            element "Operations" {
+                background "#485c6d"
+                colour "#ffffff"
+            }
+            element "Data" {
+                background "#485c6d"
+                colour "#ffffff"
+                shape Cylinder
+            }
+            relationship "REST" {
+                style solid
+                thickness 2
+            }
+        }
+    }
+
+    configuration {
+        properties {
+            # Documents the Structurizr release the exports were last generated with;
+            # the render script pins the container image itself.
+            aac.structurizr.release "2026.09.19"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+%% Governance repository automation flow
+graph TD
+    subgraph Governance Repo
+        Policy[Policy Definitions]:::kv-primary
+        Guardrails[Budget Guardrails]:::kv-accent
+        Playbooks[Escalation Playbooks]:::kv-accent
+        Roles[Approval Matrices]:::kv-highlight
+    end
+
+    Policy -->|CI Integration| Checks[Automated Policy Checks]:::kv-highlight
+    Guardrails -->|Simulation| Checks
+    Playbooks -->|Incident Automation| Workflow[Incident Workflow Engine]:::kv-accent
+    Roles -->|Access Control| IAM[Identity and Access Platform]:::kv-accent
+
+    Checks -->|Pass/Fail| PR[Pull Requests]:::kv-primary
+    Workflow --> Response[Executive Response Team]:::kv-muted
+    IAM --> PR

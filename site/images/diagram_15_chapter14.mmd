@@ -1,0 +1,24 @@
+%% Diagram: Architecture as Code Capability Landscape
+flowchart TB
+    subgraph Governance[Governance & Alignment]
+        G1[Architecture Standards]:::kv-primary
+        G2[Policy as Code]:::kv-primary
+        G3[Stakeholder Engagement]:::kv-primary
+    end
+    
+    subgraph Tooling[Tooling & Automation]
+        T1[IaC Frameworks]:::kv-highlight
+        T2[CI/CD Pipelines]:::kv-highlight
+        T3[State Management]:::kv-highlight
+        T4[Testing & Validation]:::kv-highlight
+    end
+    
+    subgraph Enablement[Enablement & Culture]
+        E1[Training Programs]:::kv-accent
+        E2[Documentation]:::kv-accent
+        E3[Community of Practice]:::kv-accent
+    end
+    
+    Governance --> Tooling
+    Tooling --> Enablement
+    Enablement --> Governance

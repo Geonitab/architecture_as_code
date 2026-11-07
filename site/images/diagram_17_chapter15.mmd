@@ -1,0 +1,8 @@
+%% Diagram: FinOps and cloud cost governance — from resource tagging and cost allocation through unit economics and anomaly detection to rightsizing and savings
+flowchart TD
+    A["Resource\nTagging"]:::kv-primary --> B["Cost\nAllocation"]:::kv-highlight
+    B --> C["Unit\nEconomics"]:::kv-accent
+    C --> D["Budget\nForecasting"]:::kv-accent
+    D --> E["Anomaly\nDetection"]:::kv-highlight
+    E --> F["Rightsizing &\nSpot Instances"]:::kv-primary
+    F -->|"savings feedback"| A

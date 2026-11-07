@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant Dev as Developer
+    participant Git as Git Repository
+    participant CI as CI/CD Pipeline
+    participant Rev as Code Reviewer
+    participant Prod as Production
+    
+    Dev->>Git: Push feature branch
+    Git->>CI: Trigger tests
+    
+    Note over CI: Automated Checks
+    CI->>CI: Validate & Scan
+    CI->>CI: Cost estimate
+    
+    CI->>Git: Tests completed
+    Dev->>Rev: Create Pull Request
+    
+    Rev->>Git: Review & approve
+    
+    Git->>CI: Merge to main
+    CI->>Prod: Deploy
+    Prod->>CI: Confirmed

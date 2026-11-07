@@ -1,0 +1,9 @@
+%% Diagram: Management as Code — leadership vision codified as OKRs and policy, automated governance and measurable delivery outcomes feeding back to strategic direction
+flowchart TB
+    A["Leadership\nVision"]:::kv-primary --> B["OKRs & KPIs\nas Code"]:::kv-highlight
+    B --> C["Policy &\nGuardrails"]:::kv-accent
+    C --> D["Automated\nCompliance"]:::kv-accent
+    D --> E["Delivery\nMetrics"]:::kv-highlight
+    E --> F["Stakeholder\nReporting"]:::kv-primary
+    F -->|"insights inform"| A
+    E -->|"deviations trigger"| C
