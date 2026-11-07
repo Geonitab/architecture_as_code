@@ -67,10 +67,10 @@ variables:
     \textbf{Publication Date:} \the\year\\
     \textbf{Language:} British English (en-GB)\\[0.8cm]
     {\bfseries Publisher Information}\\[0.3cm]
-    \textbf{Published by:} Architecture as Code Editorial Team\\
+    \textbf{Published by:} GEON IT AB\\
     \textbf{Contact:} \nolinkurl{https://github.com/Geonitab/architecture_as_code}\\[0.8cm]
     {\bfseries Copyright and Licensing}\\[0.3cm]
-    Copyright \textcopyright{} \the\year{} Architecture as Code Editorial Team\\[0.3cm]
+    Copyright \textcopyright{} \the\year{} Gunnar Nordqvist\\[0.3cm]
     All rights reserved. This book is made available under open-source principles to support the\\
     community in adopting Architecture as Code practices.\\[0.8cm]
     {\bfseries ISBN and Cataloguing}\\[0.3cm]
