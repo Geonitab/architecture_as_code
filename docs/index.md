@@ -1,5 +1,7 @@
 # Architecture as Code Documentation {#index}
 
+![Cover of Architecture as Code](images/book-cover-web.png){ style="float:right; width:260px; max-width:40%; margin:0 0 1em 1.5em" }
+
 Welcome to the Architecture as Code documentation portal. This site publishes the complete manuscript of the Architecture as Code book in a web-friendly format so you can explore the chapters, diagrams, and appendices directly in your browser. If you want to see the source code and files they are available in the repository at [GitHub](https://github.com/Geonitab/architecture_as_code/)
 
 ## How to Use This Site
