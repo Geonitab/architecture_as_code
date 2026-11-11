@@ -131,9 +131,19 @@ def load_theme(root: Path = ROOT) -> dict:
                 palette["primary"] = light[0]
                 palette["dark"] = _mix(light[0], "#000000", 0.45)
                 palette["accent"] = palette["accent2"] = light[1]
+                palette["light"] = True
+            elif len(accent) >= 2 and _luminance(accent[0]) < 0.35:
+                # Light cover with an ink gradient (navy to green): ink is primary.
+                palette["primary"] = accent[0].lower()
+                palette["dark"] = _mix(accent[0], "#000000", 0.4)
+                palette["accent"] = palette["accent2"] = accent[-1].lower()
+                palette["light"] = True
 
     tint = _mix(palette["primary"], "#ffffff", 0.88)
     paper = _mix(palette["primary"], "#ffffff", 0.96)
+    ground = re.search(r'<rect width="794" height="1123" fill="(#[0-9a-fA-F]{6})"', svg) if cover.exists() else None
+    if palette.get("light") and ground:
+        paper = ground.group(1).lower()
     css = root / "docs" / "stylesheets" / "series-colours.css"
     if css.exists():
         text = css.read_text(encoding="utf-8")
@@ -145,6 +155,7 @@ def load_theme(root: Path = ROOT) -> dict:
                 else:
                     paper = found.group(1).lower()
 
+    palette.setdefault("light", False)
     palette.update(
         {
             "tint": tint,
@@ -392,6 +403,10 @@ class Deck:
         prs.slide_width = self.In(self.W)
         prs.slide_height = self.In(self.H)
         self.number = 0
+        # Slides that are dark on a dark cover are light on a light cover.
+        self.hero = dict(theme)
+        if theme.get("light"):
+            self.hero.update({"white": theme["dark"], "tint": theme["muted"], "ghost": theme["tint"]})
 
     # -- primitives ---------------------------------------------------------
     def rgb(self, value):
@@ -420,7 +435,10 @@ class Deck:
 
     def background(self, slide, colour=None, gradient=False):
         fill = slide.background.fill
-        if gradient:
+        if gradient and self.t.get("light"):
+            fill.solid()
+            fill.fore_color.rgb = self.rgb(self.t["paper"])
+        elif gradient:
             fill.gradient()
             fill.gradient_angle = 35
             fill.gradient_stops[0].color.rgb = self.rgb(self.t["primary"])
@@ -531,7 +549,7 @@ class Deck:
         return width
 
     def title_slide(self):
-        b, t = self.book, self.t
+        b, t = self.book, self.hero
         slide, title = self.new_slide(
             b["title"],
             f"{b['title']}. {AUTHOR_LINE_1} {AUTHOR_NAME}. {AUTHOR_LINE_2}.",
@@ -549,7 +567,7 @@ class Deck:
         self.rect(slide, 1.0, 0.95, 0.6, 0.06, t["accent"])
         self.text(
             slide, 1.8, 0.82, 10, 0.3,
-            [{"text": b["series_name"].upper(), "size": 13, "bold": True, "colour": t["tint"], "spc": 300}],
+            [{"text": b["series_name"].upper(), "size": 13 if len(b["series_name"]) < 32 else 11, "bold": True, "colour": t["tint"], "spc": 300 if len(b["series_name"]) < 32 else 180}],
         )
 
         first, _, rest = b["title"].partition(" ")
@@ -578,7 +596,7 @@ class Deck:
         )
 
     def part_slide(self, part):
-        t = self.t
+        t = self.hero
         slide, title = self.new_slide(f"{part['title']}", part["description"])
         self.background(slide, gradient=True)
         self.accent_bar(slide)
@@ -596,12 +614,14 @@ class Deck:
         top = (self.H - panel_h) / 2
         self.rect(slide, 9.0, top, 3.8, panel_h, t["primary"])
         self.rect(slide, 9.0, top, 3.8, 0.07, t["accent"])
-        items = [{"text": "IN THIS PART", "size": 11, "bold": True, "colour": t["accent"], "spc": 200, "after": 10}]
+        base = self.t
+        panel_accent = base["tint"] if base.get("light") else base["accent"]
+        items = [{"text": "IN THIS PART", "size": 11, "bold": True, "colour": panel_accent, "spc": 200, "after": 10}]
         for chapter in chapters:
             items.append(
                 {
-                    "runs": [(f"{chapter['identifier']}  ", {"bold": True, "colour": t["accent"]}), (chapter["title"], {})],
-                    "size": 14, "colour": t["white"], "after": 8,
+                    "runs": [(f"{chapter['identifier']}  ", {"bold": True, "colour": panel_accent}), (chapter["title"], {})],
+                    "size": 14, "colour": base["white"], "after": 8,
                 }
             )
         self.text(slide, 9.3, top + 0.35, 3.2, panel_h - 0.5, items)
@@ -681,7 +701,7 @@ class Deck:
         self.footer(slide)
 
     def closing_slide(self):
-        b, t = self.book, self.t
+        b, t = self.book, self.hero
         slide, title = self.new_slide("Read the book", "")
         self.background(slide, gradient=True)
         self.accent_bar(slide)
