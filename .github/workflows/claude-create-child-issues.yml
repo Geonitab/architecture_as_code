@@ -1,0 +1,78 @@
+name: Create approved Claude child issues
+
+on:
+  issues:
+    types:
+      - labeled
+
+permissions:
+  issues: write
+
+concurrency:
+  group: claude-decompose-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  create-children:
+    if: github.event.label.name == 'claude:approved' && !github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check prerequisites and get plan
+        id: plan
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const labels = (context.payload.issue.labels || []).map(x => x.name);
+            if (!labels.includes('claude:plan-review')) core.setFailed('Issue must have claude:plan-review before approval.');
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number, per_page: 100 });
+            const planComment = comments.reverse().find(c => c.user?.type === 'Bot' && c.body?.includes('## Claude proposed plan'));
+            if (!planComment) core.setFailed('No Claude plan comment found.');
+            if (planComment.body.includes('Child issues created')) core.setFailed('Child issues were already created for this plan.');
+            core.setOutput('plan', planComment.body);
+            core.setOutput('title', context.payload.issue.title);
+            core.setOutput('number', issue_number);
+
+      - name: Convert approved plan into bounded JSON tasks
+        id: tasks
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-fable-5-2' }}
+          APPROVED_PLAN: ${{ steps.plan.outputs.plan }}
+          ISSUE_TITLE: ${{ steps.plan.outputs.title }}
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          if (!process.env.ANTHROPIC_API_KEY) throw new Error('Missing ANTHROPIC_API_KEY secret');
+          const prompt = 'Convert this approved plan into JSON only: {"tasks":[{"title":"...","body":"..."}]}. Create 1 to 8 child tasks, each independently actionable, concise, and with acceptance criteria. Do not add tasks beyond the plan.\nParent: ' + process.env.ISSUE_TITLE + '\nPlan:\n' + process.env.APPROVED_PLAN.slice(0, 24000);
+          (async () => {
+            const r = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'content-type': 'application/json', 'x-api-key': process.env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' }, body: JSON.stringify({ model: process.env.CLAUDE_MODEL, max_tokens: 2500, messages: [{ role: 'user', content: prompt }] }) });
+            const d = await r.json(); if (!r.ok) throw new Error(JSON.stringify(d));
+            let raw = (d.content || []).filter(x => x.type === 'text').map(x => x.text).join('\n').trim().replace(/^```json\s*/i, '').replace(/\s*```$/, '');
+            const tasks = JSON.parse(raw).tasks;
+            if (!Array.isArray(tasks) || tasks.length < 1 || tasks.length > 8) throw new Error('Expected 1–8 child tasks');
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'tasks<<END_TASKS\n' + JSON.stringify(tasks) + '\nEND_TASKS\n');
+          })().catch(e => { console.error(e); process.exit(1); });
+          NODE
+
+      - name: Create child issues and link them to parent
+        uses: actions/github-script@v7
+        env:
+          TASKS: ${{ steps.tasks.outputs.tasks }}
+          PARENT_NUMBER: ${{ steps.plan.outputs.number }}
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const parent_number = Number(process.env.PARENT_NUMBER);
+            const tasks = JSON.parse(process.env.TASKS);
+            const created = [];
+            for (const task of tasks) {
+              const result = await github.rest.issues.create({ owner, repo, title: task.title.slice(0, 250), body: task.body + '\n\nParent issue: #' + parent_number + '\n\nCreated from an approved Claude plan.' });
+              created.push('#' + result.data.number + ' ' + result.data.title);
+            }
+            await github.rest.issues.createComment({ owner, repo, issue_number: parent_number, body: 'Child issues created from the approved plan:\n\n' + created.map(x => '- ' + x).join('\n') });
+            await github.rest.issues.addLabels({ owner, repo, issue_number: parent_number, labels: ['claude:children-created'] });
+            await github.rest.issues.removeLabel({ owner, repo, issue_number: parent_number, name: 'claude:approved' }).catch(() => {});
+            for (const label of ['claude:approved', 'claude:children-created']) { await github.rest.issues.createLabel({ owner, repo, name: label, color: '5319e7' }).catch(e => { if (e.status !== 422) throw e; }); }
