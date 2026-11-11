@@ -64,6 +64,21 @@ def _mix(a: str, b: str, amount: float) -> str:
     return "#%02x%02x%02x" % mixed
 
 
+def _contrast(a: str, b: str) -> float:
+    la, lb = sorted((_luminance(a), _luminance(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+
+def _legible(colour: str, ground: str, minimum: float = 4.5) -> str:
+    """``colour`` moved towards black or white until it reads on ``ground``."""
+    target = "#000000" if _luminance(ground) > 0.4 else "#ffffff"
+    amount = 0.0
+    while _contrast(colour, ground) < minimum and amount < 1.0:
+        amount += 0.05
+        colour = _mix(colour, target, 0.05)
+    return colour
+
+
 def _luminance(value: str) -> float:
     def channel(c):
         c /= 255
@@ -201,20 +216,32 @@ def _trim_words(text: str, max_words: int) -> str:
     return cut.rstrip(",;: ") + "."
 
 
-def lead_sentences(text: str, max_words: int) -> str:
-    """The first sentences of ``text`` that fit in ``max_words`` words."""
-    sentences = _SENTENCE_END.split(clean(text))
-    chosen = []
-    count = 0
-    for sentence in sentences:
+def lead_sentences(text: str, max_words: int, min_words: int = 9) -> str:
+    """The first whole sentences of ``text`` that fit in ``max_words`` words.
+
+    Introductory sentences shorter than ``min_words`` are skipped when a longer
+    one follows. A sentence is never cut: if none fits, the first clause that
+    ends at a semicolon or colon is used, and failing that the sentence is
+    shown in full with an ellipsis only where it was shortened.
+    """
+    sentences = [x for x in _SENTENCE_END.split(clean(text)) if x]
+    complete = [x for x in sentences if not x.endswith(":")] or sentences  # a lead-in to a list is no conclusion
+    substantive = [x for x in complete if len(x.split()) >= min_words] or complete
+    chosen, count = [], 0
+    for sentence in substantive:
         words = len(sentence.split())
+        if not chosen and words > max_words:
+            clause = re.split(r"(?<=[;:])\s+", sentence)[0]
+            if len(clause.split()) <= max_words and len(clause.split()) >= min_words:
+                return clause.rstrip(";:") + "."
+            return _trim_words(sentence, max_words).rstrip(".") + "\u2026"
         if chosen and count + words > max_words:
             break
         chosen.append(sentence)
         count += words
         if count >= max_words * 0.55:
             break
-    return _trim_words(" ".join(chosen), max_words)
+    return " ".join(chosen)
 
 
 # --------------------------------------------------------------------------
@@ -324,7 +351,7 @@ def read_chapter(path: Path, identifier: str, part_title: str, root: Path = ROOT
             if cap:
                 caption = clean(cap.group(1))
                 break
-        figure = {"path": str(image), "alt": alt, "caption": caption}
+        figure = {"path": str(image.relative_to(root)), "alt": alt, "caption": caption}
         break
 
     return {
@@ -375,6 +402,31 @@ def collect_deck(root: Path = ROOT) -> list:
                         "chapter": read_chapter(path, str(chapter.get("identifier", "")), part.get("title", ""), root),
                     }
                 )
+    appendices = [
+        a for a in index.get("appendices", [])
+        if re.match(r"Appendix\s+[A-Z0-9]+", a.get("title", "")) and (root / a["file"]).exists()
+    ]
+    if appendices:
+        entries = []
+        for a in appendices:
+            label, _, rest = a["title"].partition(":")
+            chapter = read_chapter(root / a["file"], label.split()[-1], "Appendices", root)
+            chapter["label"], chapter["title"] = label.strip(), (rest.strip() or chapter["title"])
+            entries.append({"type": "chapter", "file": a["file"], "chapter": chapter})
+        deck.append(
+            {
+                "type": "part",
+                "part": {
+                    "id": "appendices",
+                    "title": "Appendices",
+                    "description": "",
+                    "chapters": [
+                        {"identifier": e["chapter"]["identifier"], "title": e["chapter"]["title"]} for e in entries
+                    ],
+                },
+            }
+        )
+        deck.extend(entries)
     return deck
 
 
@@ -393,7 +445,8 @@ def _pptx():
 class Deck:
     """Draws the slides of one presentation."""
 
-    def __init__(self, prs, theme: dict, book: dict):
+    def __init__(self, prs, theme: dict, book: dict, root: Path = ROOT):
+        self.root = root
         (self.RGB, self.SHAPE, self.ANCHOR, self.ALIGN, self.Emu, self.In, self.Pt) = _pptx()
         self.prs = prs
         self.t = theme
@@ -407,6 +460,9 @@ class Deck:
         self.hero = dict(theme)
         if theme.get("light"):
             self.hero.update({"white": theme["dark"], "tint": theme["muted"], "ghost": theme["tint"]})
+        ground = theme["paper"] if theme.get("light") else theme["primary"]
+        self.hero["accent_text"] = _legible(theme["accent"], ground)
+        self.panel_text = _legible(theme["accent"], theme["primary"]) if not theme.get("light") else theme["tint"]
 
     # -- primitives ---------------------------------------------------------
     def rgb(self, value):
@@ -573,7 +629,7 @@ class Deck:
         first, _, rest = b["title"].partition(" ")
         rest = rest or ""
         size = 80 if len(rest) <= 10 else 64 if len(rest) <= 14 else 44
-        self.title_placeholder(title, 1.0, 1.9, 7.2 if has_cover else 11.3, 2.8, first, size, t["accent"])
+        self.title_placeholder(title, 1.0, 1.9, 7.2 if has_cover else 11.3, 2.8, first, size, t["accent_text"])
         paragraph = title.text_frame.add_paragraph()
         paragraph.alignment = self.ALIGN.LEFT
         paragraph.line_spacing = 0.95
@@ -592,7 +648,7 @@ class Deck:
         )
         self.text(
             slide, 4.5, 6.55, 3.5, 0.6,
-            [{"text": b["year"], "size": 28, "bold": True, "colour": t["accent"], "align": "right"}],
+            [{"text": b["year"], "size": 28, "bold": True, "colour": t["accent_text"], "align": "right"}],
         )
 
     def part_slide(self, part):
@@ -602,26 +658,32 @@ class Deck:
         self.accent_bar(slide)
 
         numeral = part["id"].replace("part_", "").upper()
-        self.kicker(slide, f"Part {numeral}", y=1.75, colour=t["accent"])
+        self.kicker(slide, "Appendices" if part["id"] == "appendices" else f"Part {numeral}", y=1.75, colour=t["accent_text"])
         self.title_placeholder(title, 0.9, 2.2, 7.6, 2.0, part["title"], 46, t["white"])
         if part["description"]:
             lines = -(-len(part["title"]) // 20)
             self.text(slide, 0.9, 2.2 + 0.8 * lines + 0.35, 7.4, 2.5, [{"text": part["description"], "size": 18, "colour": t["tint"], "line": 1.15}])
 
-        # Chapter list panel
+        # Chapter list panel: the type size is chosen so that the wrapped list fits.
         chapters = part["chapters"]
-        panel_h = min(5.2, 1.1 + 0.62 * len(chapters))
+        base = self.t
+        size, panel_h = 14, 1.1
+        for size in (14, 13, 12, 11, 10):
+            per_line = int(3.2 * 72 / (size * 0.56))
+            lines = sum(-(-(len(c["title"]) + 4) // per_line) for c in chapters)
+            panel_h = 0.9 + lines * size * 1.3 / 72 + len(chapters) * 8 / 72
+            if panel_h <= 5.6:
+                break
+        panel_h = min(panel_h, 6.4)
         top = (self.H - panel_h) / 2
         self.rect(slide, 9.0, top, 3.8, panel_h, t["primary"])
         self.rect(slide, 9.0, top, 3.8, 0.07, t["accent"])
-        base = self.t
-        panel_accent = base["tint"] if base.get("light") else base["accent"]
-        items = [{"text": "IN THIS PART", "size": 11, "bold": True, "colour": panel_accent, "spc": 200, "after": 10}]
+        items = [{"text": "IN THIS PART", "size": 11, "bold": True, "colour": self.panel_text, "spc": 200, "after": 10}]
         for chapter in chapters:
             items.append(
                 {
-                    "runs": [(f"{chapter['identifier']}  ", {"bold": True, "colour": panel_accent}), (chapter["title"], {})],
-                    "size": 14, "colour": base["white"], "after": 8,
+                    "runs": [(f"{chapter['identifier']}  ", {"bold": True, "colour": self.panel_text}), (chapter["title"], {})],
+                    "size": size, "colour": base["white"], "after": 8,
                 }
             )
         self.text(slide, 9.3, top + 0.35, 3.2, panel_h - 0.5, items)
@@ -631,7 +693,7 @@ class Deck:
         slide, title = self.new_slide(f"{chapter['title']}", chapter["notes"])
         self.background(slide)
         self.accent_bar(slide)
-        self.kicker(slide, f"Chapter {chapter['identifier']}  ·  {chapter['part']}")
+        self.kicker(slide, f"{chapter.get('label') or 'Chapter ' + chapter['identifier']}  ·  {chapter['part']}")
         self.title_placeholder(title, 0.8, 0.85, 11.7, 1.3, chapter["title"], 34, t["dark"])
         lines = -(-len(chapter["title"]) // 42)
         rule_y = 0.85 + 0.58 * lines + 0.12
@@ -653,14 +715,15 @@ class Deck:
         self.text(slide, 0.8, top, width, 6.85 - top, items)
 
         if has_takeaway:
-            card_h = min(6.7 - top, 1.35 + 0.31 * -(-len(chapter["takeaway"]) // 28))
+            tsize = 18 if len(chapter["takeaway"].split()) <= 34 else 16
+            card_h = min(6.7 - top, 1.35 + (0.31 if tsize == 18 else 0.28) * -(-len(chapter["takeaway"]) // (28 if tsize == 18 else 31)))
             self.rect(slide, 7.9, top, 4.65, card_h, t["tint"])
             self.rect(slide, 7.9, top, 0.08, card_h, t["primary"])
             self.text(
                 slide, 8.25, top + 0.3, 4.0, card_h - 0.5,
                 [
                     {"text": "TAKEAWAY", "size": 12, "bold": True, "colour": t["primary"], "spc": 200, "after": 10},
-                    {"text": chapter["takeaway"], "size": 18, "colour": t["dark"], "line": 1.15},
+                    {"text": chapter["takeaway"], "size": tsize, "colour": t["dark"], "line": 1.15},
                 ],
             )
         self.footer(slide)
@@ -678,7 +741,7 @@ class Deck:
         slide, title = self.new_slide(headline, chapter["notes"])
         self.background(slide)
         self.accent_bar(slide)
-        self.kicker(slide, f"Chapter {chapter['identifier']}  ·  {chapter['part']}")
+        self.kicker(slide, f"{chapter.get('label') or 'Chapter ' + chapter['identifier']}  ·  {chapter['part']}")
         self.title_placeholder(title, 0.8, 0.85, 11.7, 0.95, headline, 28, t["dark"])
 
         box_x, box_y, box_w, box_h = 0.8, 1.9, 11.7, 4.25
@@ -686,13 +749,14 @@ class Deck:
 
         from PIL import Image
 
-        with Image.open(figure["path"]) as image:
+        figure_path = str(self.root / figure["path"])
+        with Image.open(figure_path) as image:
             ratio = image.width / image.height
         pad = 0.2
         max_w, max_h = box_w - 2 * pad, box_h - 2 * pad
         w, h = (max_w, max_w / ratio) if max_w / ratio <= max_h else (max_h * ratio, max_h)
         picture = slide.shapes.add_picture(
-            figure["path"], self.In(box_x + (box_w - w) / 2), self.In(box_y + (box_h - h) / 2), self.In(w), self.In(h)
+            figure_path, self.In(box_x + (box_w - w) / 2), self.In(box_y + (box_h - h) / 2), self.In(w), self.In(h)
         )
         picture._element.nvPicPr.cNvPr.set("descr", figure["alt"] or headline)
 
@@ -706,11 +770,11 @@ class Deck:
         self.background(slide, gradient=True)
         self.accent_bar(slide)
         self.cover_picture(slide, 9.2, 1.4, 4.7, f"Front cover of {b['title']}")
-        self.kicker(slide, b["series_name"], y=2.2, colour=t["accent"])
+        self.kicker(slide, b["series_name"], y=2.2, colour=t["accent_text"])
         self.title_placeholder(title, 0.9, 2.65, 8.0, 1.8, b["title"], 44 if len(b["title"]) > 18 else 54, t["white"])
         lines = []
         if b["site"]:
-            lines.append({"text": f"Read it at {b['site']}", "size": 24, "bold": True, "colour": t["accent"], "after": 6})
+            lines.append({"text": f"Read it at {b['site']}", "size": 24, "bold": True, "colour": t["accent_text"], "after": 6})
         lines.append({"text": f"All books in the series: {SERIES_LANDING}", "size": 18, "colour": t["tint"], "after": 18})
         lines.append({"text": f"{AUTHOR_LINE_1} {AUTHOR_NAME}. {AUTHOR_LINE_2}.", "size": 13, "colour": t["tint"]})
         self.text(slide, 0.9, 4.6, 7.8, 2.2, lines)
@@ -720,7 +784,7 @@ def build_deck(prs, deck: list, root: Path = ROOT):
     """Render ``deck`` (from :func:`collect_deck`) into ``prs``."""
     theme = load_theme(root)
     book = load_book(root)
-    drawer = Deck(prs, theme, book)
+    drawer = Deck(prs, theme, book, root)
 
     now = datetime.utcnow()
     props = prs.core_properties

@@ -23,6 +23,7 @@ on:
       - 'generate_book.py'
       - 'generate_whitepapers.py'
       - 'generate_presentation.py'
+      - 'presentation_deck.py'
       - 'build_release.sh'
       - 'docs/build_book.sh'
       # Templates (includes Prism.js syntax highlighting configuration)
@@ -41,6 +42,7 @@ on:
       - 'generate_book.py'
       - 'generate_whitepapers.py'
       - 'generate_presentation.py'
+      - 'presentation_deck.py'
       - 'build_release.sh'
       - 'docs/build_book.sh'
       - 'templates/**/*.html'
