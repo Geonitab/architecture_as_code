@@ -232,6 +232,7 @@ def load_book(root: Path = ROOT) -> dict:
         "series_name": series.split(",")[0].strip(),
         "number": number.group(1) if number else "",
         "year": info["year"],
+        "cover": next((str(c) for c in (root / "docs" / "images" / "book-cover-web.png", root / "docs" / "images" / "book-cover.png") if c.exists()), ""),
         "site": cname.read_text(encoding="utf-8").strip() if cname.exists() else "",
     }
 
@@ -515,6 +516,20 @@ class Deck:
         )
 
     # -- slide types --------------------------------------------------------
+    def cover_picture(self, slide, x, y, height, alt):
+        """The book's front cover, with a soft offset shadow. Returns the width used."""
+        path = self.book.get("cover")
+        if not path:
+            return 0
+        from PIL import Image
+
+        with Image.open(path) as image:
+            width = height * image.width / image.height
+        self.rect(slide, x + 0.1, y + 0.12, width, height, self.t["dark"])
+        picture = slide.shapes.add_picture(path, self.In(x), self.In(y), self.In(width), self.In(height))
+        picture._element.nvPicPr.cNvPr.set("descr", alt)
+        return width
+
     def title_slide(self):
         b, t = self.book, self.t
         slide, title = self.new_slide(
@@ -522,7 +537,10 @@ class Deck:
             f"{b['title']}. {AUTHOR_LINE_1} {AUTHOR_NAME}. {AUTHOR_LINE_2}.",
         )
         self.background(slide, gradient=True)
-        if b["number"]:
+        has_cover = bool(b.get("cover"))
+        if has_cover:
+            self.cover_picture(slide, 8.65, 0.7, 6.1, f"Front cover of {b['title']}")
+        elif b["number"]:
             self.text(
                 slide, 8.0, 4.3, 4.7, 3.0,
                 [{"text": b["number"], "size": 190 if len(b["number"]) == 1 else 150, "bold": True, "colour": t["ghost"], "align": "right", "line": 0.8}],
@@ -536,15 +554,15 @@ class Deck:
 
         first, _, rest = b["title"].partition(" ")
         rest = rest or ""
-        size = 80 if len(rest) <= 12 else 62 if len(rest) <= 22 else 50
-        self.title_placeholder(title, 1.0, 2.1, 11.3, 2.4, first, size, t["accent"])
+        size = 80 if len(rest) <= 10 else 64 if len(rest) <= 14 else 44
+        self.title_placeholder(title, 1.0, 1.9, 7.2 if has_cover else 11.3, 2.8, first, size, t["accent"])
         paragraph = title.text_frame.add_paragraph()
         paragraph.alignment = self.ALIGN.LEFT
         paragraph.line_spacing = 0.95
         self.style_runs(paragraph, [(rest, {})], size, t["white"], bold=True, spacing=-30)
 
         if b["subtitle"]:
-            self.text(slide, 1.0, 4.85, 7.4, 1.3, [{"text": b["subtitle"], "size": 20, "colour": t["tint"], "line": 1.1}])
+            self.text(slide, 1.0, 4.9, 7.0, 1.3, [{"text": b["subtitle"], "size": 20, "colour": t["tint"], "line": 1.1}])
 
         self.text(
             slide, 1.0, 6.25, 6, 0.9,
@@ -555,7 +573,7 @@ class Deck:
             ],
         )
         self.text(
-            slide, 8.8, 6.55, 3.5, 0.6,
+            slide, 4.5, 6.55, 3.5, 0.6,
             [{"text": b["year"], "size": 28, "bold": True, "colour": t["accent"], "align": "right"}],
         )
 
@@ -667,14 +685,15 @@ class Deck:
         slide, title = self.new_slide("Read the book", "")
         self.background(slide, gradient=True)
         self.accent_bar(slide)
+        self.cover_picture(slide, 9.2, 1.4, 4.7, f"Front cover of {b['title']}")
         self.kicker(slide, b["series_name"], y=2.2, colour=t["accent"])
-        self.title_placeholder(title, 0.9, 2.65, 11, 1.2, b["title"], 54, t["white"])
+        self.title_placeholder(title, 0.9, 2.65, 8.0, 1.8, b["title"], 44 if len(b["title"]) > 18 else 54, t["white"])
         lines = []
         if b["site"]:
             lines.append({"text": f"Read it at {b['site']}", "size": 24, "bold": True, "colour": t["accent"], "after": 6})
         lines.append({"text": f"All books in the series: {SERIES_LANDING}", "size": 18, "colour": t["tint"], "after": 18})
         lines.append({"text": f"{AUTHOR_LINE_1} {AUTHOR_NAME}. {AUTHOR_LINE_2}.", "size": 13, "colour": t["tint"]})
-        self.text(slide, 0.9, 4.1, 10, 2.2, lines)
+        self.text(slide, 0.9, 4.6, 7.8, 2.2, lines)
 
 
 def build_deck(prs, deck: list, root: Path = ROOT):
