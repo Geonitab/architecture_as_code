@@ -92,6 +92,60 @@ def generate_presentation_outline():
 
 
 
+def _load_canonical_chapter_filenames(requirements_path=Path("BOOK_REQUIREMENTS.md")):
+    """Load canonical chapter filenames from the requirements specification."""
+    if not requirements_path.exists():
+        return set()
+
+    content = requirements_path.read_text(encoding="utf-8").splitlines()
+    if not content or content[0].strip() != "---":
+        return set()
+
+    front_matter_lines = []
+    for line in content[1:]:
+        if line.strip() == "---":
+            break
+        front_matter_lines.append(line)
+
+    if not front_matter_lines:
+        return set()
+
+    data = yaml.safe_load("\n".join(front_matter_lines)) or {}
+    book_config = data.get("book", {})
+
+    canonical = {
+        chapter.get("filename")
+        for chapter in book_config.get("chapters", [])
+        if chapter.get("filename")
+    }
+
+    return canonical
+
+
+def load_book_requirements(requirements_path=Path("BOOK_REQUIREMENTS.md")):
+    """Load the structured book requirements from the specification front matter."""
+    if not requirements_path.exists():
+        return {}
+
+    content = requirements_path.read_text(encoding="utf-8").splitlines()
+    if not content or content[0].strip() != "---":
+        return {}
+
+    front_matter_lines = []
+    for line in content[1:]:
+        if line.strip() == "---":
+            break
+        front_matter_lines.append(line)
+
+    if not front_matter_lines:
+        return {}
+
+    data = yaml.safe_load("\n".join(front_matter_lines)) or {}
+    return data
+
+
+
+
 def limit_words(text, max_words=20):
     """Limit text to maximum number of words while preserving meaning."""
     if not text:
