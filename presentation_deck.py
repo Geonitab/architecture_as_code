@@ -199,7 +199,8 @@ def clean(text: str) -> str:
     text = _LINK.sub(r"\1", text)
     text = _ANCHOR.sub("", text)
     text = re.sub(r"\[\^[^\]]*\]", "", text)
-    text = re.sub(r"[*_`]+", "", text)
+    text = re.sub(r"[*`]+", "", text)
+    text = re.sub(r"(?<![A-Za-z0-9])_+|_+(?![A-Za-z0-9])", "", text)  # emphasis markers, not identifiers
     text = text.replace("\\", "")
     return re.sub(r"\s+", " ", text).strip()
 
@@ -214,6 +215,29 @@ def _trim_words(text: str, max_words: int) -> str:
     if pause > len(cut) * 0.55:
         cut = cut[:pause]
     return cut.rstrip(",;: ") + "."
+
+
+_QUALIFIER = re.compile(r"source|retrieved|illustrative|sample|estimate|survey|vendor", re.I)
+
+
+def figure_caption(text: str, max_words: int = 26) -> str:
+    """A caption shortened for a slide, keeping what qualifies the data.
+
+    Sentences that name the source, the retrieval year or that mark a figure as
+    illustrative, a sample or an estimate are never dropped.
+    """
+    sentences = [x for x in _SENTENCE_END.split(clean(text)) if x]
+    explanation, count = [], 0
+    for sentence in sentences:
+        if _QUALIFIER.search(sentence):
+            continue
+        words = len(sentence.split())
+        if explanation and count + words > max_words:
+            break
+        explanation.append(sentence)
+        count += words
+    qualifiers = [x for x in sentences if _QUALIFIER.search(x)]
+    return " ".join(explanation + qualifiers)
 
 
 def lead_sentences(text: str, max_words: int, min_words: int = 9) -> str:
@@ -761,7 +785,7 @@ class Deck:
         picture._element.nvPicPr.cNvPr.set("descr", figure["alt"] or headline)
 
         if rest:
-            self.text(slide, 0.8, 6.28, 11.7, 0.62, [{"text": _trim_words(rest.strip(), 30), "size": 14, "colour": t["muted"], "line": 1.05}])
+            self.text(slide, 0.8, 6.28, 11.7, 0.66, [{"text": figure_caption(rest), "size": 13, "colour": t["muted"], "line": 1.05}])
         self.footer(slide)
 
     def closing_slide(self):
