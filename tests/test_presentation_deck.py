@@ -19,8 +19,11 @@ def test_palette_comes_from_the_cover():
 def test_deck_covers_every_part_and_chapter():
     index = json.loads((ROOT / "docs" / "book_index.json").read_text(encoding="utf-8"))
     deck = presentation_deck.collect_deck(ROOT)
-    assert sum(1 for e in deck if e["type"] == "part") == len(index["parts"])
-    assert sum(1 for e in deck if e["type"] == "chapter") == sum(len(p["chapters"]) for p in index["parts"])
+    appendices = [a for a in index.get("appendices", []) if re.match(r"Appendix\s+[A-Z0-9]+", a.get("title", ""))]
+    parts = [e["part"] for e in deck if e["type"] == "part"]
+    chapters = [e for e in deck if e["type"] == "chapter"]
+    assert len(parts) == len(index["parts"]) + (1 if appendices else 0)
+    assert len(chapters) == sum(len(p["chapters"]) for p in index["parts"]) + len(appendices)
 
 
 def test_slide_text_is_clean():
