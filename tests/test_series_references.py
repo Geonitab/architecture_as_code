@@ -1,6 +1,6 @@
 """The series builds strictly in publication order.
 
-*The Architecture as Code Series* avoids circular reasoning between its books:
+*The Transformed Architecture* avoids circular reasoning between its books:
 Book 1 refers to no other volume, Book 2 only to Book 1, Book 3 only to
 Books 1-2, and so on. A book may build on the conclusions of an earlier
 volume, but never on a later one, so no claim can rest on a book that itself
@@ -24,7 +24,7 @@ VOLUMES = {
     4: [r"\*AI Red Team[*:]", r"aired\.geon\.se", r"Geonitab/Ai-red"],
     5: [r"\*AI Threat[*:]", r"aithreat\.geon\.se", r"Geonitab/Ai-threat"],
 }
-SERIES_BOOK = re.compile(r"Architecture as Code Series,? Book (\d+)")
+SERIES_BOOK = re.compile(r"Transformed Architecture,? Book (\d+)")
 
 DOCS = Path(__file__).resolve().parent.parent / "docs"
 

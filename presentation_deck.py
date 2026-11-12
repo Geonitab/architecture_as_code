@@ -284,7 +284,7 @@ def _read_requirements(root: Path) -> dict:
 
 def load_book(root: Path = ROOT) -> dict:
     info = _read_requirements(root)
-    series = info.get("series") or "The Architecture as Code Series"
+    series = info.get("series") or "The Transformed Architecture"
     number = re.search(r"Book\s+(\d+)", series)
     cname = root / "CNAME"
     return {
