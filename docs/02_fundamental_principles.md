@@ -515,9 +515,9 @@ Understanding the distinction between functional and non-functional requirements
 
 #### The V-Model and Requirements Verification
 
-![V-Model for Requirements Verification](images/diagram_02_v_model.png)
+![V-Model pairs: each level of specification with its verification or validation method, followed by implementation as code](images/diagram_02_v_model.png)
 
-*Figure 2.2: V-Model illustrating the relationship between requirements specification and verification methods*
+*Figure 2.2: The pairs of the V-Model, from business requirements and operational validation to detailed design and unit testing, followed by implementation as code*
 
 The V-Model, introduced by Forsberg & Mooz (1991) [Source [53]](33_references.md#source-53), pairs each level of specification with a corresponding level of verification or validation. Verification asks whether the system was built right; validation asks whether the right system was built (IEEE Std 1012, [Source [54]](33_references.md#source-54)), and both apply to functional and non-functional requirements alike. Figure 2.2 applies the model to Requirements as Code with a deliberate simplification that reflects how the two requirement types are most often checked in practice:
 
@@ -525,7 +525,7 @@ The V-Model, introduced by Forsberg & Mooz (1991) [Source [53]](33_references.md
 
 **Functional Requirements → stakeholder validation**: Functional requirements need validation to confirm they meet business intent and user needs. While individual functions are tested automatically (unit tests, integration tests), confirming that the system solves the correct business problem requires human judgement, user acceptance testing, and stakeholder confirmation. Equally, qualitative NFRs such as maintainability or usability still call for expert review.
 
-This simplification is reflected in the V-Model's right side:
+This simplification is reflected in the verification half of each pair in Figure 2.2:
 - **Unit Testing** verifies the detailed design, including component-level performance and code quality
 - **Integration Testing** verifies the system design (component interactions, data flows)
 - **System Testing** verifies the non-functional requirements end to end (performance, security, scalability)

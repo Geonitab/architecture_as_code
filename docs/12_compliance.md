@@ -46,7 +46,7 @@ Serverless computing has moved beyond function-as-a-service into comprehensive e
 
 ## Policy-driven Infrastructure and Governance
 
-![Policy-driven compliance control tower](images/diagram_12_policy_governance.png)
+![Policy-driven compliance: strategy feeds Policy as Code and the compliance pipeline, which produces dashboards, exceptions and regulator reporting](images/diagram_12_policy_governance.png)
 
 *Figure 12.4 visualises how governance strategy translates into automated controls and measurable outcomes.*
 

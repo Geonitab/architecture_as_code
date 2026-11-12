@@ -39,6 +39,19 @@ graph LR
     D[Background Element]:::kv-muted
 ```
 
+## Legibility limits
+
+A figure is scaled to the 160 mm text column of the printed book. A diagram that is wider than about 1000 logical pixels, or that holds more than a dozen elements, ends up with labels of 5 to 7 pt and adds little to the text. Every new or changed diagram follows these limits:
+
+- **One message per figure.** If the caption needs "and", split the figure or cut the second message.
+- **At most 10 elements** (nodes, participants, tasks), with 12 as a hard limit. No repeated filler elements.
+- **Logical width at most 1000 px.** Prefer a vertical layout (`TB`) or a single row of four or five nodes. Gantt and journey diagrams set an explicit width in their init block.
+- **Short labels**, at most about five words and never sentences. Use `<br/>` for a second line, not a longer label.
+- **At most one level of subgraph**, and no subgraph that only repeats a heading.
+- **No edge labels** unless the label carries the meaning of the figure.
+- **Matrices become tables.** If the content is rows by columns, a list or a lookup, write a Markdown table instead of a diagram.
+- **Caption and alt text describe the figure as drawn.** Detail that leaves a figure moves into the chapter text or a table.
+
 ## Typography
 
 - **Font Family**: Inter (with fallbacks: 'Segoe UI', sans-serif)
