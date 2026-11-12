@@ -371,6 +371,7 @@ for mmd_file in images/*.mmd; do
                 -b transparent \
                 --width 1400 \
                 --height 900 \
+                --scale 2 \
                 --puppeteerConfigFile "$PUPPETEER_CONFIG_FILE" \
                 2>/dev/null; then
                 conversion_success=true
@@ -383,6 +384,7 @@ for mmd_file in images/*.mmd; do
                 -b transparent \
                 --width 1400 \
                 --height 900 \
+                --scale 2 \
                 2>/dev/null; then
                 conversion_success=true
             fi

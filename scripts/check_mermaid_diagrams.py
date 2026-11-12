@@ -47,6 +47,8 @@ def _build_command(
         "1400",
         "--height",
         "900",
+        "--scale",
+        "2",
     ]
 
     if theme and theme.is_file():
