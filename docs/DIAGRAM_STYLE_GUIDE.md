@@ -41,6 +41,8 @@ graph LR
 
 ## Legibility limits
 
+In print the diagrams are tagged 300 ppi and set at their natural size (`scripts/png_dpi.py`, `docs/pandoc.yaml`), so the 20 px labels come out at 9.6 pt whatever the shape of the figure. A diagram wider than about 945 logical px or taller than about 1170 px is shrunk to fit the page, and its labels shrink with it.
+
 A figure is scaled to the 160 mm text column of the printed book. A diagram that is wider than about 1000 logical pixels, or that holds more than a dozen elements, ends up with labels of 5 to 7 pt and adds little to the text. Every new or changed diagram follows these limits:
 
 - **One message per figure.** If the caption needs "and", split the figure or cut the second message.

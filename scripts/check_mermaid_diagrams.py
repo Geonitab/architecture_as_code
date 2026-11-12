@@ -83,6 +83,14 @@ def _render_diagram(
     if not target.is_file() or target.stat().st_size == 0:
         return False, "Mermaid CLI did not produce output"
 
+    try:  # print resolution, see scripts/png_dpi.py; never fail a render on it
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from png_dpi import stamp_dpi
+
+        stamp_dpi(target)
+    except Exception as exc:  # pragma: no cover - defensive
+        print(f"warning: could not set the PNG resolution of {target.name}: {exc}", file=sys.stderr)
+
     return True, ""
 
 
