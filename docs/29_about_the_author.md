@@ -8,6 +8,8 @@ This book represents the culmination of extensive experience in architecture, in
 
 ## Gunnar Nordqvist
 
+![Portrait of Gunnar Nordqvist](images/gunnar_nordqvist.jpg){ width=30% }
+
 **Gunnar Nordqvist** is a self-employed certified Chief Architect and IT Architect consultant in the Kvadrat network, a Swedish consultancy network of independent specialists [Source [130]](33_references.md#source-130). As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
 
 ### Professional Background
