@@ -1,21 +1,8 @@
 graph TB
-    A[Lovable Platform]:::kv-primary --> B[Experience Mockups]:::kv-highlight
-    B --> C[GDPR Compliance]:::kv-accent
-    B --> D[WCAG 2.1 AA]:::kv-accent
-    B --> E[E-authentication]:::kv-accent
-
-    C --> F[Consent Management]:::kv-highlight
-    C --> G[Data Protection]:::kv-highlight
-
-    D --> H[Accessibility]:::kv-pattern
-    D --> I[Keyboard Navigation]:::kv-muted
-
-    E --> J[Government eID]:::kv-outline
-    E --> K[Commercial eID]:::kv-muted
-
-    F --> L[Integrated Experience]:::kv-primary
-    G --> L
-    H --> L
-    I --> L
-    J --> L
-    K --> L
+    A[Lovable platform]:::kv-primary --> B[Experience mockups]:::kv-highlight
+    B --> C["GDPR compliance<br/>consent, data protection"]:::kv-accent
+    B --> D["WCAG 2.1 AA<br/>accessibility, keyboard"]:::kv-accent
+    B --> E["E-authentication<br/>government and commercial eID"]:::kv-accent
+    C --> L[Integrated experience]:::kv-primary
+    D --> L
+    E --> L

@@ -4,7 +4,7 @@ Architecture as Code succeeds when teams bring organisational ambitions, enginee
 
 Prioritising clarity is crucial. Figure 14.1 highlights the operating model used by many platform teams to combine architecture governance, automation, and stakeholder alignment. It serves as a quick reference for the foundational capabilities that underpin every implementation.
 
-![Figure 14.1 – Capability landscape for practical Architecture as Code](images/diagram_15_chapter14.png)
+![Figure 14.1 – Three capability areas in a cycle: governance and alignment, tooling and automation, enablement and culture](images/diagram_15_chapter14.png)
 *Figure 14.1 – Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over time.*
 
 ## Implementation roadmap and strategies
@@ -13,8 +13,15 @@ Successful Architecture as Code adoption progresses through clearly defined stag
 
 The adoption journey in Figure 14.2 breaks down these stages into the minimum set of activities required to maintain momentum without overwhelming delivery teams. It emphasises measurable outcomes at every step so that leadership can invest with confidence.
 
-![Figure 14.2 – Iterative journey for Architecture as Code adoption](images/diagram_13_user_journey.png)
-*Figure 14.2 – A simplified adoption journey that balances architectural guardrails with iterative delivery milestones.*
+![Figure 14.2 – Adoption journey in four stages (discovery, pilot, scale, optimise), each with one key milestone, lead team and satisfaction level](images/diagram_13_user_journey.png)
+*Figure 14.2 – The adoption journey in four stages, with one milestone per stage; the table below lists the full set of activities and lead teams.*
+
+| Stage | Activities | Lead teams |
+|-------|------------|------------|
+| Discovery | Define the adoption vision; assess platform readiness | Architecture team, platform squad |
+| Pilot | Establish the landing zone; deliver the first reusable module | Platform squad, product team |
+| Scale | Automate guardrails; onboard product teams | Platform squad, product teams |
+| Optimise | Measure outcomes; run the continuous improvement loop | Architecture and PMO, platform squad, operations |
 
 Figure 14.3 captures the enablement flywheel that keeps Architecture as Code programmes sustainable by moving teams from shared delivery into lasting communities of practice.
 

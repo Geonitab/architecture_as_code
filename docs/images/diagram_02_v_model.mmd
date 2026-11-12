@@ -1,30 +1,8 @@
-flowchart LR
-    subgraph spec["Specification"]
-        direction TB
-        BR["Business Requirements"]:::kv-muted
-        FR["Functional Requirements"]:::kv-highlight
-        NFR["Non-Functional Requirements"]:::kv-highlight
-        SD["System Design"]:::kv-accent
-        DD["Detailed Design"]:::kv-accent
-        BR --> FR --> NFR --> SD --> DD
-    end
-
-    CODE["Implementation\nas Code"]:::kv-primary
-
-    subgraph verif["Verification & Validation"]
-        direction TB
-        OV["Operational Validation"]:::kv-muted
-        AT["Acceptance Testing"]:::kv-highlight
-        ST["System Testing"]:::kv-highlight
-        IT["Integration Testing"]:::kv-accent
-        UT["Unit Testing"]:::kv-accent
-        OV --> AT --> ST --> IT --> UT
-    end
-
-    DD --> CODE --> UT
-
-    BR -. "Validates" .-> OV
-    FR -. "Validates" .-> AT
-    NFR -. "Verifies" .-> ST
-    SD -. "Verifies" .-> IT
-    DD -. "Verifies" .-> UT
+flowchart TB
+    P1["Business requirements<br/>↔ Operational validation"]:::kv-muted
+    P2["Functional requirements<br/>↔ Acceptance testing"]:::kv-highlight
+    P3["Non-functional requirements<br/>↔ System testing"]:::kv-highlight
+    P4["System design<br/>↔ Integration testing"]:::kv-accent
+    P5["Detailed design<br/>↔ Unit testing"]:::kv-accent
+    CODE["Implementation as code"]:::kv-primary
+    P1 --> P2 --> P3 --> P4 --> P5 --> CODE

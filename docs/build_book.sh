@@ -371,6 +371,7 @@ for mmd_file in images/*.mmd; do
                 -b transparent \
                 --width 1400 \
                 --height 900 \
+                --scale 2 \
                 --puppeteerConfigFile "$PUPPETEER_CONFIG_FILE" \
                 2>/dev/null; then
                 conversion_success=true
@@ -383,9 +384,15 @@ for mmd_file in images/*.mmd; do
                 -b transparent \
                 --width 1400 \
                 --height 900 \
+                --scale 2 \
                 2>/dev/null; then
                 conversion_success=true
             fi
+        fi
+
+        if [ "$conversion_success" = true ] && [ -s "$png_file" ]; then
+            # 300 ppi tag: labels print at natural size (see scripts/png_dpi.py)
+            python3 ../scripts/png_dpi.py "$png_file" 2>/dev/null || true
         fi
 
         if [ "$conversion_success" = true ] && [ -f "$png_file" ] && [ -s "$png_file" ]; then
