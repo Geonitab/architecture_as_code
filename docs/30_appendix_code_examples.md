@@ -4450,7 +4450,7 @@ assess_regulator(name, violations) := summary if {
 ```
 
 ### 10_CODE_3: OSCAL component definitions for reusable cloud modules {#10_code_3}
-*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile. Every control implementation, implemented requirement and statement carries an RFC 4122 UUID as the OSCAL schema requires, the implementation status is recorded with the `implementation-status` property defined for the component model, and a `terraform-resource-type` property links each component to the Terraform resources it covers.
+*Referenced from Chapter 10.* Component definitions document how Terraform modules satisfy regulatory expectations. This example captures Amazon RDS, Amazon S3, and AWS Network Firewall implementations used throughout the financial profile. Every control implementation, implemented requirement and statement carries an RFC 4122 UUID as the OSCAL schema requires, the implementation status is recorded with an `implementation-status` property in the organisation's own namespace (the OSCAL component definition model does not define this property; the values follow the implementation states of the System Security Plan model), and a `terraform-resource-type` property links each component to the Terraform resources it covers.
 
 ```json
 {
@@ -4483,7 +4483,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "gdpr-art32-1.1",
                 "description": "Encryption at rest enabled with customer managed KMS keys.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" },
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" },
                   { "name": "kms-key-type", "ns": "https://example.org/ns/architecture-as-code", "value": "customer-managed" },
                   { "name": "rotation", "ns": "https://example.org/ns/architecture-as-code", "value": "365 days" }
                 ],
@@ -4500,7 +4500,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "msb-3.2.1.1",
                 "description": "Database subnet groups isolated from public subnets.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" }
                 ],
                 "statements": [
                   {
@@ -4533,7 +4533,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "gdpr-art32-1.2",
                 "description": "Enforced TLS 1.2 for all data in transit.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" }
                 ],
                 "statements": [
                   {
@@ -4548,7 +4548,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "msb-3.2.1.2",
                 "description": "Zero Trust verification for access using IAM conditions.",
                 "props": [
-                  { "name": "implementation-status", "value": "planned" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "planned" }
                 ],
                 "statements": [
                   {
@@ -4581,7 +4581,7 @@ assess_regulator(name, violations) := summary if {
                 "control-id": "msb-3.2.1",
                 "description": "Micro-segmentation between payment and support zones.",
                 "props": [
-                  { "name": "implementation-status", "value": "implemented" }
+                  { "name": "implementation-status", "ns": "https://example.org/ns/architecture-as-code", "value": "implemented" }
                 ],
                 "statements": [
                   {
