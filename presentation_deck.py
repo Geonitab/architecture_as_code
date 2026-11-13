@@ -766,6 +766,9 @@ class Deck:
             # figure of the chapter, so that the slide does not repeat the title of the chapter's text slide.
             label = f"Figure {number.group(1)}" if number else "Figure"
             headline, rest = f"{label}  \u00b7  {chapter['title']}", caption
+        elif headline.strip().lower() == chapter["title"].strip().lower():
+            # The figure carries only the chapter title as alt text: mark it, so it does not repeat the text slide's title.
+            headline = f"{'Figure ' + number.group(1) if number else 'Figure'}  \u00b7  {headline}"
         slide, title = self.new_slide(headline, chapter["notes"])
         self.background(slide)
         self.accent_bar(slide)
