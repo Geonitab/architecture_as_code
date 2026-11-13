@@ -662,8 +662,9 @@ class Deck:
         if b["subtitle"]:
             self.text(slide, 1.0, 4.9, 7.0, 1.3, [{"text": b["subtitle"], "size": 20, "colour": t["tint"], "line": 1.1}])
 
+        self.author_portrait(slide, 1.0, 6.3, 0.9)
         self.text(
-            slide, 1.0, 6.25, 6, 0.9,
+            slide, 2.1, 6.35, 4.4, 0.9,
             [
                 {"text": AUTHOR_LINE_1, "size": 12, "colour": t["tint"], "after": 2},
                 {"text": AUTHOR_NAME, "size": 20, "bold": True, "colour": t["white"], "after": 2},
