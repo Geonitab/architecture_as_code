@@ -476,7 +476,8 @@ import (
     "github.com/stretchr/testify/require"
 )
 
-// allowedRegions lists the EU regions approved for personal data (GDPR Articles 44–49)
+// allowedRegions lists the European regions approved for personal data. eu-west-2 (London)
+// is outside the EU and relies on the UK adequacy decision (GDPR Articles 44–49 govern transfers)
 var allowedRegions = []string{"eu-west-1", "eu-central-1", "eu-west-2", "eu-north-1"}
 
 // EuropeanVPCTestSuite defines the reusable Terratest suite for the VPC implementation
