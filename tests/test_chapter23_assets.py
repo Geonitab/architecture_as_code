@@ -62,7 +62,8 @@ def test_chapter23_image_assets_exist() -> None:
 def test_chapter23_figures_are_sequential() -> None:
     """Verify that figure numbering for Chapter 23 remains sequential."""
     chapter_text = _read_chapter()
-    figure_numbers = [int(number) for number in re.findall(r"Figure 23\.(\d+)", chapter_text)]
+    # Each figure appears in its alt text and its caption, so deduplicate in order of appearance.
+    figure_numbers = list(dict.fromkeys(int(number) for number in re.findall(r"Figure 23\.(\d+)", chapter_text)))
 
     assert figure_numbers, "No figure numbering detected for Chapter 23."
 
