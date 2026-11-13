@@ -1,4 +1,4 @@
-# Chapter 27 – Conclusion {#conclusion}
+# Conclusion {#conclusion}
 
 Architecture as Code has transformed how organisations design, deliver, and evolve their technology estates. By managing
 architectural artefacts as executable code we realise the same precision, repeatability, and governance controls that software
@@ -6,7 +6,7 @@ engineering teams have relied on for decades. This book has traced that transfor
 [fundamental concepts](01_introduction.md) to [forward-looking developments](25_future_trends.md), showing how the
 practice underpins modern digital capabilities.
 
-## 27.1 Consolidating the Architecture as Code mindset
+## Consolidating the Architecture as Code mindset
 
 Sustained success with Architecture as Code depends on the interplay between technical craft and organisational intent. The
 most effective transformations are led by committed sponsors, supported by clear communication, and reinforced through
@@ -17,7 +17,7 @@ Architecture as Code stretches beyond infrastructure automation by codifying dec
 patterns that articulate the enterprise blueprint. Maintaining this emphasis ensures that architectural outcomes remain the
 focal point, with infrastructure services treated as one contributor to a broader design system.
 
-### 27.1.1 Technical and organisational alignment
+### Technical and organisational alignment
 
 Architecture as Code asks teams to think about cloud platforms, automation tooling, and security principles as a single
 strategic capability. The technical foundations span [fundamental principles](02_fundamental_principles.md), disciplined
@@ -28,7 +28,7 @@ matched by organisational investment in skills, culture, and operating models so
 
 *Figure 27.1 – The technical structure of an Architecture as Code platform, showing the layered relationship between declarative definitions, automation pipelines, and governance controls.*
 
-## 27.2 Embedding continuous improvement
+## Embedding continuous improvement
 
 The journey through this book charts a deliberate increase in sophistication: from the declarative blueprints of
 [chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerisation.md), to
@@ -37,7 +37,7 @@ outset, evolving from [policy and security](10_policy_and_security.md) through [
 and [compliance operations](12_compliance.md). Each capability builds on the previous layer to create a resilient Architecture
 as Code platform.
 
-### 27.2.1 Measuring and refining delivery
+### Measuring and refining delivery
 
 Continuous improvement is woven into Architecture as Code. Metrics from [automation and DevOps practices](05_automation_devops_cicd.md)
 and insights from [team structure guidance](18_team_structure.md) help identify areas for refinement. Observability patterns,
@@ -48,7 +48,7 @@ optimisation. By regularly reviewing feedback loops, teams maintain momentum and
 
 *Figure 27.2 – The Architecture as Code build pipeline, illustrating how architectural definitions flow through validation, testing, and deployment stages to produce governed, auditable outcomes.*
 
-## 27.3 European context and opportunities
+## European context and opportunities
 
 Operating across the European Union demands consistent stewardship of information, resilient supply chains, and ethically governed
 automation. The [policy and security guidance](10_policy_and_security.md) and [compliance practices](12_compliance.md) illustrate
@@ -72,14 +72,14 @@ transformation agenda explored in [chapter 21 on digitalisation](21_digitalisati
 shows how coordinated change across Member States, public institutions, and private enterprises benefits from codified architectural
 knowledge that can be shared, audited, and re-used without reinventing country-specific artefacts.
 
-## 27.4 Recommendations for organisations
+## Recommendations for organisations
 
 Organisations embarking on Architecture as Code initiatives should focus on pilot programmes that demonstrate tangible value
 without jeopardising critical services. Education, shared tooling, and clear ownership models build confidence and set
 expectations. The leadership guidance in [organisational change](17_organisational_change.md) reinforces the importance of
 communication, coaching, and community building.
 
-### 27.4.1 Step-by-step adoption strategy
+### Step-by-step adoption strategy
 
 1. **Foundational education**: Establish a common understanding of [Architecture as Code principles](02_fundamental_principles.md)
    and disciplined [version control practices](03_version_control.md).
@@ -101,14 +101,14 @@ Centres of excellence or platform teams can accelerate adoption by curating reus
 implementations, and providing hands-on support. Governance structures maintain security and compliance without constraining
 innovation, enabling teams to deliver change with confidence.
 
-## 27.5 Closing reflection
+## Closing reflection
 
 Architecture as Code is more than a technical milestone; it represents a fundamental shift in how we design and manage digital
 platforms. The journey from [introduction](01_introduction.md) through [technical implementation](14_practical_implementation.md),
 [security strategy](10_policy_and_security.md), and [future-oriented innovation](25_future_trends.md) shows that
 Architecture as Code thrives when engineering discipline and organisational stewardship progress together.
 
-### 27.5.1 The way forward
+### The way forward
 
 The concepts outlined in this book—declarative intent, repeatability, automated testing, and continuous delivery—remain constants
 even as tooling evolves. By combining technical excellence with attention to sustainability, security, and regulatory
