@@ -3589,7 +3589,7 @@ spec:
     kind: Deployment
     name: web-application
   updatePolicy:
-    updateMode: "Auto"
+    updateMode: "Recreate" # "Auto" is deprecated and currently equivalent to "Recreate"
   resourcePolicy:
     containerPolicies:
     - containerName: app
