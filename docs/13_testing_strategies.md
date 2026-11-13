@@ -97,7 +97,7 @@ jobs:
           path: tfplan
 ```
 
-The Terraform job passes its backend settings with `-backend-config` flags, because backend blocks cannot reference variables, and it enables Terraform's S3-native state locking with `use_lockfile=true`, so the job requires Terraform 1.11 or later ([Source [17]](33_references.md#source-17)); the state management pattern in [Chapter 9B: Advanced Security Patterns and Implementation](09b_security_patterns.md) explains why this replaces DynamoDB-based locking.
+The Terraform job passes its backend settings with `-backend-config` flags, because backend blocks cannot reference variables, and it enables Terraform's S3-native state locking with `use_lockfile=true`, so the job requires Terraform 1.11 or later, where S3-native locking is generally available ([Source [17]](33_references.md#source-17)); the state management pattern in [Chapter 9B: Advanced Security Patterns and Implementation](09b_security_patterns.md) explains why this replaces DynamoDB-based locking.
 
 Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and Pulumi host-language test results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
 

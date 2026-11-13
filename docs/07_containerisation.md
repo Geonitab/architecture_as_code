@@ -6,7 +6,7 @@ Architecture as Code underpins modern container platforms by turning deployment 
 
 ## Industry trend data driving Architecture as Code adoption
 
-As [Chapter 1](01_introduction.md) showed, microservices and event-driven architecture are now mainstream among backend developers ([Source [7]](33_references.md#source-7)). The same SlashData research for the Cloud Native Computing Foundation notes that use of internal developer platforms rose from 23% in Q3 2024 to 27% in Q3 2025 as teams try to tame the resulting estate. Together these figures highlight why Architecture as Code is essential. When so many teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that scaling cloud-native delivery demands.
+As [Chapter 1](01_introduction.md) showed, microservices and event-driven architecture are in substantial use among backend developers, at 46% and 27% respectively ([Source [7]](33_references.md#source-7)). The same SlashData research for the Cloud Native Computing Foundation notes that use of internal developer platforms rose from 23% in Q3 2024 to 27% in Q3 2025, a pattern it suggests may reflect platform teams having implemented such platforms to manage this complexity. Together these figures highlight why Architecture as Code is essential. When so many teams orchestrate dozens of loosely coupled services and event flows, formal boundary definitions, shared contracts, and automated governance become mandatory to avoid integration drift. Codifying those boundaries as part of an Architecture as Code programme provides the repeatability and audit trail that scaling cloud-native delivery demands.
 
 ## The role of container technology within Architecture as Code
 
@@ -34,7 +34,7 @@ Observability is likewise driven by declaration. Distributed tracing, metrics sc
 
 ## Infrastructure automation with container platforms
 
-Kubernetes-native automation frameworks extend the platform to cover underlying infrastructure. Crossplane, the Operator Framework, and similar projects expose cloud resources as custom resource definitions (CRDs), meaning databases, message queues, or networking components can be provisioned through the same API surface as application workloads.
+Kubernetes-native automation frameworks extend the platform to cover underlying infrastructure. Crossplane exposes cloud resources as Kubernetes custom resources, and operators built with the Operator Framework manage applications and their components in the same way through custom resource definitions (CRDs), meaning databases, message queues, or networking components can be provisioned through the same API surface as application workloads.
 
 GitOps practices complement this model by treating Git repositories as the source of truth. Continuous delivery tools such as Argo CD and Flux reconcile the declared state with the running clusters, applying changes automatically when a pull request is merged. Rollbacks become a matter of reverting commits, and audit trails are preserved for every environment.
 
