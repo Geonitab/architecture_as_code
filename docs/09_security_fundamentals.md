@@ -8,14 +8,14 @@
 
 ![High-level security architecture overview](images/mindmap_10_security_overview.png)
 
-*The overview mind map illustrates the four main dimensions of security in Architecture as Code: Threat Modeling, Zero Trust Architecture, Policy as Code, and Risk Assessment. Each dimension is explored in detail through dedicated mind maps.*
+*The overview mind map illustrates the four main dimensions of security in Architecture as Code: Threat Modelling, Zero Trust Architecture, Policy as Code, and Risk Assessment. Each dimension is explored in detail through dedicated mind maps.*
 
 ### Detailed security dimensions
 
-#### Threat Modeling
-![Threat Modeling details](images/mindmap_10_security_threat_modeling.png)
+#### Threat Modelling
+![Threat Modelling details](images/mindmap_10_security_threat_modeling.png)
 
-*Threat Modeling encompasses understanding the threat landscape and applying methodologies like STRIDE to identify and mitigate security risks systematically.*
+*Threat Modelling encompasses understanding the threat landscape and applying methodologies like STRIDE to identify and mitigate security risks systematically.*
 
 #### Zero Trust Architecture
 ![Zero Trust Architecture details](images/mindmap_10_security_zero_trust.png)
@@ -63,11 +63,11 @@ The STRIDE methodology provides a structured framework for identifying threats a
 | Threat Category | Description | Architecture as Code Concerns |
 |-----------------|-------------|-------------------------------|
 | Spoofing | Impersonating a user, system, or component | Compromised service accounts, stolen IAM credentials, forged infrastructure definitions |
-| Tampering | Unauthorized modification of data or code | Malicious commits to infrastructure code, altered pipeline configurations, modified secrets |
+| Tampering | Unauthorised modification of data or code | Malicious commits to infrastructure code, altered pipeline configurations, modified secrets |
 | Repudiation | Denying actions without proper audit trail | Missing version control history, inadequate logging of infrastructure changes, untracked deployments |
 | Information Disclosure | Exposing sensitive information | Secrets in code repositories, unencrypted data stores, overly permissive access policies |
 | Denial of Service | Making systems unavailable | Resource exhaustion through misconfiguration, deletion of critical infrastructure, deployment failures |
-| Elevation of Privilege | Gaining unauthorized access levels | Exploiting IAM misconfigurations, compromised deployment pipelines, privilege escalation in modules |
+| Elevation of Privilege | Gaining unauthorised access levels | Exploiting IAM misconfigurations, compromised deployment pipelines, privilege escalation in modules |
 
 Supply chain attacks represent a particularly acute concern for code-based architectures. When infrastructure is defined through third-party modules, container images, and external APIs, dependency chains can be compromised. Incidents such as the 2020 SolarWinds breach demonstrate how adversaries can infiltrate development tooling to reach downstream targets.
 
