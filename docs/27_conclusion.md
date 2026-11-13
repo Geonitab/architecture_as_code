@@ -68,8 +68,8 @@ organisations evidence compliance earlier in delivery cycles and accelerate acce
 
 Sustainability remains a parallel obligation. [Future trends](25_future_trends.md) emphasise carbon-aware workloads,
 energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and EU
-sustainability-reporting rules such as the Corporate Sustainability Reporting Directive, whose scope and timetable are being revised
-under the Commission's Omnibus simplification package (beginning with the "stop-the-clock" Directive (EU) 2025/794). The wider
+sustainability-reporting rules such as the Corporate Sustainability Reporting Directive, whose scope and timetable have been revised
+under the Commission's Omnibus simplification package (beginning with the "stop-the-clock" Directive (EU) 2025/794 and followed by Directive (EU) 2026/470). The wider
 transformation agenda explored in [chapter 21 on digitalisation](21_digitalisation.md)
 shows how coordinated change across Member States, public institutions, and private enterprises benefits from codified architectural
 knowledge that can be shared, audited, and re-used without reinventing country-specific artefacts.
