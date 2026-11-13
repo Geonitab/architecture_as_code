@@ -33,9 +33,9 @@ The C4 model provides a hierarchical approach to software architecture diagrams,
 | **System Context** | Illustrates how the software system in scope fits into its environment, highlighting users and neighbouring systems | Technical and non-technical stakeholders | People and software systems |
 | **Container** | Zooms into the software system to show the high-level technology building blocks and how they collaborate | Architects, developers, and operations teams | Containers, data stores, and their responsibilities |
 | **Component** | Decomposes a container to explain the components that fulfil its responsibilities and how they interact | Architects and developers | Components within a container |
-| **Code** | Provides an optional view of how a component is implemented in code, such as classes, interfaces, or functions | Developers | Source code structures |
+| **Code** | Provides an optional view of how a component is implemented in code, such as classes, interfaces, or functions | Architects and developers | Source code structures |
 
-Brown's C4 Model guidance stresses that each successive level narrows the audience and scope so stakeholders can reason about the system using diagrams tailored to the detail they need, keeping the hierarchy consistent across teams [Source [37]](33_references.md#source-37). The model grew out of Brown's work on lightweight, developer-friendly architecture documentation, set out in *Software Architecture for Developers* [Source [60]](33_references.md#source-60).
+Brown's C4 Model guidance stresses that each successive level narrows the audience and scope so stakeholders can reason about the system using diagrams tailored to the detail they need, keeping the hierarchy consistent across teams [Source [37]](33_references.md#source-37). The model grew out of the software architecture workshops Brown ran from the mid-2000s, in which few attendees could understand the diagrams they drew [Source [37]](33_references.md#source-37); he is also the author of *Software Architecture for Developers*, a developer-friendly guide to lightweight software architecture [Source [60]](33_references.md#source-60).
 
 ### Why C4 Works with Architecture as Code
 
@@ -70,7 +70,7 @@ workspace "Architecture as Code Example" "Example architecture for demonstrating
     }
     
     configuration {
-        # Optional styling and rendering settings
+        # Optional workspace scope, visibility, user access and properties
     }
 }
 ```
@@ -405,7 +405,7 @@ Automation protects diagram fidelity and keeps layout choices consistent as mode
   }
   ```
 
-  Every view inherits the same orientation and spacing without relying on manual dragging in the editor. Paper size and other presentation settings are not DSL keywords; they are chosen in the `local` or `server` diagram editor and stored in `workspace.json` [Source [38]](33_references.md#source-38).
+  Every view inherits the same orientation and spacing without relying on manual dragging in the editor. Manual layout is not expressed in the DSL either (the language reference defines no keyword for it); it is set in the `local` or `server` diagram editor and stored in `workspace.json` [Source [38]](33_references.md#source-38), [Source [66]](33_references.md#source-66).
 
 - **Quality gates in CI/CD** – Add a lightweight shell script to fail builds when conventions slip:
 
@@ -577,7 +577,7 @@ jobs:
           git push
 ```
 
-> **Security and workflow warning:** The default `GITHUB_TOKEN` cannot push to protected branches without explicit write permissions granted in the workflow permissions block. Auto-committing directly to `main` also risks recursive workflow triggers — whilst `[skip ci]` in the commit message suppresses re-runs, it may bypass mandatory status checks required by branch protection rules and should be used with caution. The preferred, safer approach is to use the `actions/upload-artifact` pattern (shown later in this chapter), which publishes generated diagrams as workflow artefacts without modifying the repository during CI. Reserve auto-commit patterns for unprotected branches or use a dedicated bot token with appropriately scoped permissions.
+> **Security and workflow warning:** The default `GITHUB_TOKEN` cannot push to protected branches without explicit write permissions granted in the workflow permissions block. Auto-committing directly to `main` also risks recursive workflow triggers when a personal access token or GitHub App token is used (events created with the default `GITHUB_TOKEN` do not start new workflow runs) — whilst `[skip ci]` in the commit message suppresses re-runs, the checks of a skipped workflow remain pending and block merging of any pull request that requires them, so it should be used with caution. The preferred, safer approach is to use the `actions/upload-artifact` pattern (shown later in this chapter), which publishes generated diagrams as workflow artefacts without modifying the repository during CI. Reserve auto-commit patterns for unprotected branches or use a dedicated bot token with appropriately scoped permissions.
 
 ### GitLab CI Example
 
@@ -1024,7 +1024,7 @@ def verify_architecture_coverage():
 
 | Aspect | Structurizr | Draw.io / Visio | Lucidchart |
 |--------|-------------|-----------------|------------|
-| **Version Control** | ✅ Native (text files) | ⚠️ Binary files | ⚠️ Cloud-based versioning |
+| **Version Control** | ✅ Native (text files) | ⚠️ XML files (draw.io) or zipped XML packages (Visio) | ⚠️ Cloud-based versioning |
 | **Code Review** | ✅ Standard Git workflows | ❌ Difficult | ❌ Not supported |
 | **Automation** | ✅ `export` command and workspace API | ❌ Manual | ⚠️ Limited API |
 | **Single Source of Truth** | ✅ Model generates views | ❌ Each diagram separate | ❌ Each diagram separate |
@@ -1038,7 +1038,7 @@ def verify_architecture_coverage():
 |--------|-------------|----------|
 | **Focus** | Software architecture (C4) | Various diagram types |
 | **Abstraction Levels** | ✅ Built-in (C4 hierarchy) | ⚠️ Manual management |
-| **Layout Control** | ⚠️ Limited (auto-layout) | ✅ More granular |
+| **Layout Control** | ✅ Automatic and manual (diagram editor) | ⚠️ Automatic layout only |
 | **Model Reuse** | ✅ Single model, multiple views | ❌ Each diagram separate |
 | **Syntax** | ✅ Architecture-specific DSL | ⚠️ Generic diagramming |
 | **Tooling** | ✅ Dedicated tools (`local`, `server`) | ✅ Wide tool support |
