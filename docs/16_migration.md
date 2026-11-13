@@ -1,6 +1,6 @@
 # Migration from Traditional Infrastructure {#migration}
 
-![Migration Process](images/diagram_18_chapter16.png)
+![Figure 16.1 – Migration process in stages from current state audit and roadmap through proof of concept, phased migration and parallel running to legacy decommissioning and continuous optimisation, with the next wave returning to the roadmap](images/diagram_18_chapter16.png)
 
 *Figure 16.1 — Migration from Traditional Infrastructure to Architecture as Code requires systematic planning, step-by-step Architecture as Code implementation and continuous validation. Diagram shows the structured process from assessment to complete Architecture as Code adoption.*
 

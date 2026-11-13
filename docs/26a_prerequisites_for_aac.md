@@ -6,7 +6,9 @@ Successful Architecture as Code (AaC) programmes are never accidents. They emerg
 
 ## Why readiness matters
 
-![Prerequisites transformation journey](images/diagram_17_transformation_journey.png)
+![Figure 26A.1 – Prerequisites transformation journey](images/diagram_17_transformation_journey.png)
+
+*Figure 26A.1 — Prerequisites transformation journey.*
 
 The lesson from Chapter 14 (covered later in this book) still stands: organisations that front-load stakeholder alignment avoid the most common integration problems, because automation without alignment merely amplifies disorder. A readiness review slows the rush to tool selection. Leaders can then prove, rather than assume, that the organisation can absorb executable architecture. This review prevents brittle deployments that clash with the operational expectations described in Chapter 5 (covered later in this book). It also protects the psychological safety emphasised in Chapter 17 (covered later in this book)—the generative culture that Forsgren, Humble & Kim (2018) [Source [31]](33_references.md#source-31) show predicts software delivery performance—and keeps investment decisions honest in line with Chapter 15 (covered later in this book). Readiness is therefore a contract—when the prerequisites are visible, teams earn the right to automate architectural intent.
 

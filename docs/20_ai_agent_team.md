@@ -14,7 +14,9 @@ The Architecture as Code initiative relies on a cohesive ensemble of AI agents t
 
 ## Multi-Agent operating model
 
-![AI agent collaboration flow](images/diagram_28_agent_team.png)
+![Figure 20.1 – AI agent collaboration flow](images/diagram_28_agent_team.png)
+
+*Figure 20.1 — AI agent collaboration flow.*
 
 *The diagram shows the project owner and six core agent roles—Project Manager, Architect, Designer, Developer, Quality Control and Editor—grouped into design, development and content teams. The Requirements Analyst and Graphic Designer described below extend the Project Manager's discovery loop and the design and content teams respectively.*
 

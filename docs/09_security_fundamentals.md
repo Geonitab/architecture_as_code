@@ -1,34 +1,46 @@
 # Security Fundamentals for Architecture as Code {#security-fundamentals}
 
-![Security as code workflow](images/diagram_11_chapter9.png)
+![Figure 9.1 – Security as code workflow from policy as code through threat modelling, static analysis, secret management and identity and access control to a runtime compliance scan, with findings fed back into policy](images/diagram_11_chapter9.png)
+
+*Figure 9.1 — Security as code workflow from policy as code through threat modelling, static analysis, secret management and identity and access control to a runtime compliance scan, with findings fed back into policy.*
 
 *Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous compliance monitoring. Treating security as code lets organisations deliver scalable and auditable protections without slowing delivery teams.*
 
 ## Dimensions of security architecture
 
-![High-level security architecture overview](images/mindmap_10_security_overview.png)
+![Figure 9.2 – High-level security architecture overview](images/mindmap_10_security_overview.png)
+
+*Figure 9.2 — High-level security architecture overview.*
 
 *The overview mind map illustrates the four main dimensions of security in Architecture as Code: Threat Modelling, Zero Trust Architecture, Policy as Code, and Risk Assessment. Each dimension is explored in detail through dedicated mind maps.*
 
 ### Detailed security dimensions
 
 #### Threat modelling
-![Threat Modelling details](images/mindmap_10_security_threat_modeling.png)
+![Figure 9.3 – Threat Modelling details](images/mindmap_10_security_threat_modeling.png)
+
+*Figure 9.3 — Threat Modelling details.*
 
 *Threat Modelling encompasses understanding the threat landscape and applying methodologies like STRIDE to identify and mitigate security risks systematically.*
 
 #### Zero Trust architecture
-![Zero Trust Architecture details](images/mindmap_10_security_zero_trust.png)
+![Figure 9.4 – Zero Trust Architecture details](images/mindmap_10_security_zero_trust.png)
+
+*Figure 9.4 — Zero Trust Architecture details.*
 
 *Zero Trust Architecture is built on core principles of continuous verification and implemented through network segmentation, service mesh policies, and granular access controls.*
 
 #### Policy as Code
-![Policy as Code details](images/mindmap_10_security_policy.png)
+![Figure 9.5 – Policy as Code details](images/mindmap_10_security_policy.png)
+
+*Figure 9.5 — Policy as Code details.*
 
 *Policy as Code enables automated governance and compliance automation through tools like OPA/Rego and HashiCorp Sentinel, ensuring regulatory requirements are met programmatically.*
 
 #### Risk assessment
-![Risk Assessment details](images/mindmap_10_security_risk.png)
+![Figure 9.6 – Risk Assessment details](images/mindmap_10_security_risk.png)
+
+*Figure 9.6 — Risk Assessment details.*
 
 *Risk Assessment involves continuous evaluation of blast radius and impact, combined with regulatory compliance measures to maintain data protection and audit trails.*
 

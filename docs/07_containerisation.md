@@ -1,6 +1,8 @@
 # Containerisation and Orchestration as Code {#containerisation}
 
-![Containerisation and Orchestration](images/diagram_09_chapter7.png)
+![Figure 7.1 – Containerisation and Orchestration](images/diagram_09_chapter7.png)
+
+*Figure 7.1 — Containerisation and Orchestration.*
 
 Architecture as Code underpins modern container platforms by turning deployment practices into repeatable definitions. When infrastructure and runtime configuration are described in version-controlled files, teams gain portable, scalable, and reproducible delivery pipelines that function reliably across data centres and cloud providers.
 

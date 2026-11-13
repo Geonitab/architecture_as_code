@@ -1,6 +1,6 @@
 # Policy and Security as Code in Detail {#policy-and-security}
 
-![Policy-as-Code delivery lifecycle](images/diagram_10_policy_lifecycle.png)
+![Figure 10.1 – Policy-as-Code delivery lifecycle](images/diagram_10_policy_lifecycle.png)
 
 *Figure 10.1 — Policy-as-Code guardrails embedded across the delivery lifecycle, from initial design through to production monitoring.*
 
@@ -23,7 +23,7 @@ Security automation in modern enterprises has matured through four distinct phas
 
 ## Policy-as-Code operating model
 
-![Security automation mind map](images/mindmap_10_security_overview.png)
+![Figure 10.2 – Security automation mind map](images/mindmap_10_security_overview.png)
 
 *Figure 10.2 — A mind map of the continuous security operating model used throughout Architecture as Code.*
 

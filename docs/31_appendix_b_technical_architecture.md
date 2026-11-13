@@ -2,11 +2,15 @@
 
 This appendix describes the technical infrastructure and workflow that produce, build, and publish “Architecture as Code”. The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
 
-![Source materials and version control](images/diagram_27a_source_materials.png)
+![Figure 31.1 – Source materials and version control](images/diagram_27a_source_materials.png)
+
+*Figure 31.1 — Source materials and version control.*
 
 *The first diagram shows how source materials (Markdown files, diagrams, scripts, and configuration) flow through version control and GitHub Actions.*
 
-![Build pipeline and output formats](images/diagram_27b_build_pipeline.png)
+![Figure 31.2 – Build pipeline and output formats](images/diagram_27b_build_pipeline.png)
+
+*Figure 31.2 — Build pipeline and output formats.*
 
 *The second diagram illustrates the build environment, processing steps, and the various output formats produced from the source materials.*
 

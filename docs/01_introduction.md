@@ -2,7 +2,9 @@
 
 Architecture as Code represents a paradigm shift in system development where the entire system architecture is defined, version-controlled, and managed through code. This approach lets organisations apply the same methodologies as traditional software development across their whole technical landscape.
 
-![Introduction to Architecture as Code](images/diagram_01_introduction.png)
+![Figure 1.1 – Traditional architecture leading to manual processes, contrasted with Architecture as Code leading to automated processes, and Infrastructure as Code as a practical example](images/diagram_01_introduction.png)
+
+*Figure 1.1 — Traditional architecture leading to manual processes, contrasted with Architecture as Code leading to automated processes, and Infrastructure as Code as a practical example.*
 
 The diagram illustrates the evolution from manual processes to the comprehensive vision of Architecture as Code, where every aspect of the system architecture is codified.
 
@@ -46,7 +48,9 @@ Productivity is the direct outcome of codifying architecture. Once architectural
 
 ## The interconnected flow of Architecture as Code
 
-![Architecture as Code Flow](images/diagram_01_aac_flow.png)
+![Figure 1.2 – Flow from Requirements as Code through Compliance as Code, Documentation as Code, Design as Code, coding and CI/CD to Infrastructure as Code, with Management as Code feeding back into requirements and compliance](images/diagram_01_aac_flow.png)
+
+*Figure 1.2 — Flow from Requirements as Code through Compliance as Code, Documentation as Code, Design as Code, coding and CI/CD to Infrastructure as Code, with Management as Code feeding back into requirements and compliance.*
 
 Architecture as Code is not a linear process but an interconnected ecosystem where different aspects reinforce and validate each other. The diagram illustrates how various “as Code” practices form a cohesive development cycle:
 

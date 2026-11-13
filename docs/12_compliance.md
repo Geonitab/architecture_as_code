@@ -1,6 +1,6 @@
 # Compliance and Regulatory Adherence {#compliance}
 
-![Compliance automation lifecycle overview](images/diagram_12_compliance.png)
+![Figure 12.1 – Compliance automation lifecycle overview](images/diagram_12_compliance.png)
 
 *Figure 12.1 — How regulatory intelligence flows into policy templates, automated controls, monitoring, evidence collection, and governance feedback loops.*
 
@@ -16,7 +16,7 @@ Architecture as Code is central to meeting the expanding scope of compliance req
 
 ## AI and machine learning for compliance automation
 
-![AI-augmented compliance automation workflow](images/diagram_12_ai_automation.png)
+![Figure 12.2 – AI-augmented compliance automation workflow](images/diagram_12_ai_automation.png)
 
 *Figure 12.2 — The feedback loop between telemetry, the AI compliance engine, automated remediation, and human oversight that keeps regulatory posture current.*
 
@@ -24,7 +24,7 @@ Artificial intelligence extends the compliance loop by ingesting telemetry, poli
 
 ## Requirements traceability and validation
 
-![Compliance requirements traceability map](images/diagram_12_requirements_testing.png)
+![Figure 12.3 – Compliance requirements traceability map](images/diagram_12_requirements_testing.png)
 
 *Figure 12.3 — High-level compliance requirements linked to functional controls, Infrastructure as Code artefacts, and verification activities.*
 
@@ -46,7 +46,7 @@ Serverless computing has moved beyond function-as-a-service into comprehensive e
 
 ## Policy-driven infrastructure and governance
 
-![Policy-driven compliance: strategy feeds Policy as Code and the compliance pipeline, which produces dashboards, exceptions and regulator reporting](images/diagram_12_policy_governance.png)
+![Figure 12.4 – Policy-driven compliance: strategy feeds Policy as Code and the compliance pipeline, which produces dashboards, exceptions and regulator reporting](images/diagram_12_policy_governance.png)
 
 *Figure 12.4 — How governance strategy translates into automated controls and measurable outcomes.*
 

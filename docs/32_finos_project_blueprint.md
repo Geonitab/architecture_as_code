@@ -4,7 +4,9 @@ This appendix sets out the author's proposal for a *project blueprint*: a reusab
 
 > **Note on the name:** Within FINOS, *project-blueprint* ([https://github.com/finos/project-blueprint](https://github.com/finos/project-blueprint)) is a GitHub repository template that gives newly hosted FINOS projects their governance files—licence, contribution guidelines, security policy, notices, maintainer list, and code of conduct [Source [131]](33_references.md#source-131). It is not an architecture initiative and does not mention CALM. The blueprint described in this appendix is instead the author's own proposal, built on the Infrastructure Platform Team model in Appendix A (listing 17_CODE_1) and on the published CALM specification [Source [1]](33_references.md#source-1).
 
-![Maturity staircase reused as the blueprint's progression model](images/diagram_32_maturity_model.png)
+![Figure 32.1 – Maturity staircase reused as the blueprint's progression model](images/diagram_32_maturity_model.png)
+
+*Figure 32.1 — Maturity staircase reused as the blueprint's progression model.*
 
 *The Architecture as Code maturity staircase (Levels 0 to 5) from the maturity model, reused here as the progression model for blueprint adoption.*
 

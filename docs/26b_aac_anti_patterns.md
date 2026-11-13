@@ -4,9 +4,9 @@ Architecture as Code (AaC) brings architectural thinking into the same disciplin
 
 Before exploring anti-patterns, ensure your organisation has assessed its readiness using the framework in [Chapter 26A: Prerequisites for Architecture as Code Adoption](26a_prerequisites_for_aac.md).
 
-![Figure 26.1 – Six anti-pattern clusters, from strategic drift to sustainability debt, that reinforce one another](images/diagram_26_anti_patterns.png)
+![Figure 26B.1 – Six anti-pattern clusters, from strategic drift to sustainability debt, that reinforce one another](images/diagram_26_anti_patterns.png)
 
-*Figure 26.1 — Six anti-pattern clusters (strategy, governance, delivery, tooling, culture and sustainability), showing how blind spots propagate risk from one to the next.*
+*Figure 26B.1 — Six anti-pattern clusters (strategy, governance, delivery, tooling, culture and sustainability), showing how blind spots propagate risk from one to the next.*
 
 ## Strategic anti-patterns
 
@@ -144,7 +144,7 @@ Combine quarterly health checks with short surveys so teams can flag where the A
 
 ### Visualising risk
 
-Use the radar in Figure 26.1 as a live dashboard, plotting risk across governance, delivery, tooling, culture, and sustainability to trigger interventions before drift escalates.
+Use the radar in Figure 26B.1 as a live dashboard, plotting risk across governance, delivery, tooling, culture, and sustainability to trigger interventions before drift escalates.
 
 ## Remediation playbook
 

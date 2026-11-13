@@ -1,6 +1,8 @@
 # Evidence as Code and Continuous Assurance {#evidence-as-code}
 
-![Compliance automation lifecycle from Figure 12.1, whose monitoring and evidence collection stage this chapter automates](images/diagram_12_compliance.png)
+![Figure 15A.1 – Compliance automation lifecycle from Figure 12.1, whose monitoring and evidence collection stage this chapter automates](images/diagram_12_compliance.png)
+
+*Figure 15A.1 — Compliance automation lifecycle from Figure 12.1, whose monitoring and evidence collection stage this chapter automates.*
 
 ## Learning objectives
 

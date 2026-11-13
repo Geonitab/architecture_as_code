@@ -2,7 +2,9 @@
 
 Architecture as Code is founded on core principles that enable successful implementation of codified system architecture. These principles span the entire system landscape and provide a holistic view of architecture management.
 
-![Fundamental principles diagram](images/diagram_02_chapter1.png)
+![Figure 2.1 – Traditional architecture practice (static documents, manual processes, tribal knowledge) transformed into Architecture as Code (version-controlled artefacts, automated validation, reproducible deployments, living documentation)](images/diagram_02_chapter1.png)
+
+*Figure 2.1 — Traditional architecture practice (static documents, manual processes, tribal knowledge) transformed into Architecture as Code (version-controlled artefacts, automated validation, reproducible deployments, living documentation).*
 
 The diagram illustrates the key dimensions of Architecture as Code covered in this chapter, including declarative architecture definition, holistic codification, immutable patterns, testability, and documentation as code.
 
@@ -503,7 +505,7 @@ Understanding the distinction between functional and non-functional requirements
 
 #### The V-Model and requirements verification
 
-![V-Model pairs: each level of specification with its verification or validation method, followed by implementation as code](images/diagram_02_v_model.png)
+![Figure 2.2 – V-Model pairs: each level of specification with its verification or validation method, followed by implementation as code](images/diagram_02_v_model.png)
 
 *Figure 2.2 — The pairs of the V-Model, from business requirements and operational validation to detailed design and unit testing, followed by implementation as code.*
 

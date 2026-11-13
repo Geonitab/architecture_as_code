@@ -1,6 +1,8 @@
 # Advanced Security Patterns and Implementation {#security-patterns}
 
-![Security as code workflow](images/diagram_11_chapter9.png)
+![Figure 9B.1 – Security as code workflow from policy as code through threat modelling, static analysis, secret management and identity and access control to a runtime compliance scan, with findings fed back into policy](images/diagram_11_chapter9.png)
+
+*Figure 9B.1 — Security as code workflow from policy as code through threat modelling, static analysis, secret management and identity and access control to a runtime compliance scan, with findings fed back into policy.*
 
 *Building upon the security fundamentals established in the previous chapter, this chapter explores advanced security architecture patterns, practical implementations for European environments, and emerging trends that will shape the future of security in Architecture as Code.*
 

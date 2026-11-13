@@ -1,6 +1,8 @@
 # Team Structure and Competency Development for IaC {#team-structure}
 
-![Team collaboration ecosystem showing leadership, platform enablement, shared services, and feedback loops](images/diagram_18_team_collaboration.png)
+![Figure 18.1 – Team collaboration ecosystem showing leadership, platform enablement, shared services, and feedback loops](images/diagram_18_team_collaboration.png)
+
+*Figure 18.1 — Team collaboration ecosystem showing leadership, platform enablement, shared services, and feedback loops.*
 
 Successful Architecture as Code adoption demands far more than tools; it requires an intentionally designed operating model where leadership, enablement teams, and delivery squads share accountability. The collaboration ecosystem illustrated above shows how platform governance, shared services, and communities of practice reinforce one another to create reliable delivery loops.
 
@@ -22,7 +24,9 @@ Platform teams act as internal service providers [Source [30]](33_references.md#
 
 ## Competency domains for Architecture as Code specialists
 
-![Competency development loop illustrating assessment, planning, learning, application, knowledge sharing, and measurement](images/diagram_18_competency_cycle.png)
+![Figure 18.2 – Competency development loop illustrating assessment, planning, learning, application, knowledge sharing, and measurement](images/diagram_18_competency_cycle.png)
+
+*Figure 18.2 — Competency development loop illustrating assessment, planning, learning, application, knowledge sharing, and measurement.*
 
 Architecture as Code specialists blend system engineering, software craftsmanship, and cloud fluency. Core skills include modern programming languages for automation (such as Python, Go, or PowerShell), multi-cloud familiarity spanning AWS, Azure, and Google Cloud, and disciplined software engineering practices like version control, testing, and peer review. The competency development loop depicted above highlights how continuous assessment, learning, and knowledge sharing reinforce professional growth.
 

@@ -12,7 +12,7 @@ Architecture as Code stretches beyond infrastructure automation by codifying dec
 
 Architecture as Code asks teams to think about cloud platforms, automation tooling, and security principles as a single strategic capability. The technical foundations span [fundamental principles](02_fundamental_principles.md), disciplined [version control](03_version_control.md), and [automation through CI/CD](05_automation_devops_cicd.md). These practices must be matched by organisational investment in skills, culture, and operating models so that new workflows can flourish.
 
-![Architecture as Code – Technical Structure](images/diagram_27_technical_structure.png)
+![Figure 27.1 – Architecture as Code – Technical Structure](images/diagram_27_technical_structure.png)
 
 *Figure 27.1 — The technical structure of an Architecture as Code platform, showing the layered relationship between declarative definitions, automation pipelines, and governance controls.*
 
@@ -24,7 +24,7 @@ The journey through this book charts a deliberate increase in sophistication: fr
 
 Continuous improvement is woven into Architecture as Code. Metrics from [automation and DevOps practices](05_automation_devops_cicd.md) and insights from [team structure guidance](18_team_structure.md) help identify areas for refinement. Observability patterns, first introduced in the [automation and platform chapters](05_automation_devops_cicd.md), support data-driven decisions and proactive optimisation. By regularly reviewing feedback loops, teams maintain momentum and prevent regression.
 
-![Architecture as Code – Build Pipeline](images/diagram_27b_build_pipeline.png)
+![Figure 27.2 – Architecture as Code – Build Pipeline](images/diagram_27b_build_pipeline.png)
 
 *Figure 27.2 — The Architecture as Code build pipeline, illustrating how architectural definitions flow through validation, testing, and deployment stages to produce governed, auditable outcomes.*
 
@@ -74,7 +74,7 @@ One challenge that remains genuinely unsolved is the governance of AI-generated 
 
 The open-source and source-available ecosystem that underpins this discipline—from Terraform (source-available under the Business Source License since August 2023) and its open-source fork OpenTofu, through Pulumi, to Structurizr and Open Policy Agent—advances because practitioners share their experiments, patterns, and failures. Consider contributing a module, a reusable policy template, or a postmortem to a public repository. Collective stewardship of shared tooling is the most direct way to ensure that the next generation of architects inherits a richer, more humane, and more governable platform than the one we inherited.
 
-![Architecture as Code – Source Materials](images/diagram_27a_source_materials.png)
+![Figure 27.3 – Architecture as Code – Source Materials](images/diagram_27a_source_materials.png)
 
 *Figure 27.3 — Source materials and intellectual lineage underpinning the Architecture as Code approach presented in this book.*
 

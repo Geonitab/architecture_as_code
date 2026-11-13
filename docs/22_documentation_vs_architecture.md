@@ -6,7 +6,7 @@ Although Documentation as Code (DaC) and Architecture as Code (AaC) share simila
 
 Documentation as Code focuses on capturing and communicating knowledge about systems in a maintainable, version-controlled format. Architecture as Code, by contrast, defines the actual structure, relationships, and constraints of systems in executable or enforceable formats that can drive automation and validation. This chapter explores the key distinctions between these two disciplines and examines how the choice of tooling reflects their different objectives.
 
-![Documentation vs Architecture as Code](images/diagram_22_doc_vs_arch.png)
+![Figure 22.1 – Documentation vs Architecture as Code](images/diagram_22_doc_vs_arch.png)
 
 *Figure 22.1 — The fundamental differences between Documentation as Code and Architecture as Code, showing how each discipline serves distinct purposes in the software development ecosystem.*
 
@@ -131,7 +131,7 @@ Mermaid is a JavaScript-based diagramming tool that uses simple text syntax to c
 
 Example Mermaid diagram:
 
-![Mermaid example highlighting the flow between a customer, payment API, database, and queue](images/diagram_22_mermaid_example.png)
+![Figure 22.2 – Mermaid example highlighting the flow between a customer, payment API, database, and queue](images/diagram_22_mermaid_example.png)
 
 *Figure 22.2 — A simple customer-to-payment flow using the Mermaid syntax. Both the rendered PNG and the Mermaid source file are kept under version control in this repository.*
 
@@ -168,7 +168,7 @@ While diagram tools are excellent for Documentation as Code, they have significa
 
 This book uses Mermaid for creating illustrative diagrams because its primary purpose is **documentation**—communicating concepts to readers. The diagrams are not intended to be executable architectural models but rather visual aids that support the narrative. Figure 22.3 summarises how documentation insights and architectural automation stay aligned through reciprocal feedback loops.
 
-![Feedback loop between Documentation as Code and Architecture as Code workflows](images/diagram_22_tool_alignment.png)
+![Figure 22.3 – Feedback loop between Documentation as Code and Architecture as Code workflows](images/diagram_22_tool_alignment.png)
 
 *Figure 22.3 — How Documentation as Code outputs and Architecture as Code automation reinforce one another through shared feedback loops. The Mermaid source is maintained in `docs/images/diagram_22_tool_alignment.mmd` to keep the definition version-controlled alongside the manuscript.*
 

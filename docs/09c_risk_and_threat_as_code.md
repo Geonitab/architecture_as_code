@@ -1,6 +1,8 @@
 # Risk as Code and Threat Handling as Code {#risk-and-threat-as-code}
 
-![Risk and threat modelling overview showing automated risk registers, threat playbooks, and continuous enforcement pipelines](images/mindmap_10_security_risk.png)
+![Figure 9C.1 – Risk and threat modelling overview showing automated risk registers, threat playbooks, and continuous enforcement pipelines](images/mindmap_10_security_risk.png)
+
+*Figure 9C.1 — Risk and threat modelling overview showing automated risk registers, threat playbooks, and continuous enforcement pipelines.*
 
 *Risk management is often treated as a paperwork exercise. When executed as code it becomes measurable, testable, and continuously enforceable across every environment.*
 

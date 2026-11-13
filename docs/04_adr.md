@@ -1,6 +1,8 @@
 # Architecture Decision Records (ADR) {#adr}
 
-![ADR Process Flow](images/diagram_04_adr_process.png)
+![Figure 4.1 – ADR process flow from problem and context through alternatives and decision to the recorded ADR](images/diagram_04_adr_process.png)
+
+*Figure 4.1 — ADR process flow from problem and context through alternatives and decision to the recorded ADR.*
 
 *Architecture Decision Records represent a structured method for documenting important architecture decisions within code-based systems. The process begins with identifying the problem and follows a systematic approach to analyse the context, evaluate alternatives, and formulate well-founded decisions.*
 
@@ -101,7 +103,9 @@ Versioning is managed through the Git history instead of inline changes. When a 
 
 ### Status lifecycle
 
-![ADR Lifecycle](images/diagram_04_adr_lifecycle.png)
+![Figure 4.3 – ADR lifecycle from creation and proposal through review to acceptance, implementation and monitoring, ending in continued use or deprecation and a new ADR](images/diagram_04_adr_lifecycle.png)
+
+*Figure 4.3 — ADR lifecycle from creation and proposal through review to acceptance, implementation and monitoring, ending in continued use or deprecation and a new ADR.*
 
 *The ADR lifecycle illustrates how decisions evolve from an initial proposal through the review process to Architecture as Code implementation, monitoring, and eventual retirement when new solutions are required.*
 

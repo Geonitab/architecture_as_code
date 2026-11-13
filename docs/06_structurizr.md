@@ -1,6 +1,8 @@
 # Structurizr: Architecture Modelling as Code {#structurizr}
 
-![Structurizr Overview](images/diagram_06_structurizr_overview.png)
+![Figure 6.1 – Structurizr overview: the DSL workspace feeds an architecture pipeline (model, generated views, diagram outputs) and a deployment pipeline (Git, CI/CD, documentation site)](images/diagram_06_structurizr_overview.png)
+
+*Figure 6.1 — Structurizr overview: the DSL workspace feeds an architecture pipeline (model, generated views, diagram outputs) and a deployment pipeline (Git, CI/CD, documentation site).*
 
 *Structurizr lets architects express system architecture through code using the C4 model, creating maintainable, version-controlled architecture diagrams that evolve alongside the systems they describe.*
 

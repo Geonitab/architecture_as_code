@@ -15,33 +15,35 @@ By the end of this chapter, you will be able to:
 - Identify the practical synergies generated when multiple soft 'as Code' disciplines are combined within a single toolchain.
 - Apply adoption strategies—including shared principles, compatible tooling, and cross-functional training—to plan an incremental soft 'as Code' programme.
 
-![Soft as code ecosystem](images/diagram_23_soft_as_code.png)
+![Figure 23.1 – Soft as code ecosystem](images/diagram_23_soft_as_code.png)
+
+*Figure 23.1 — The soft “as code” ecosystem and how its disciplines relate to one another.*
 
 The following mind maps illustrate the key concepts and relationships within the soft “as code” ecosystem. They visualise how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organisational synergies.
 
-![Shared DNA of “as code” disciplines](images/mindmap_23a_shared_dna.png)
+![Figure 23.2 – Shared DNA of “as code” disciplines](images/mindmap_23a_shared_dna.png)
 
-*Figure 23.1 — The foundational elements shared across all “as code” disciplines: structured representation, version control, and automatability.*
+*Figure 23.2 — The foundational elements shared across all “as code” disciplines: structured representation, version control, and automatability.*
 
-![Compliance as Code](images/mindmap_23b_compliance.png)
+![Figure 23.3 – Compliance as Code](images/mindmap_23b_compliance.png)
 
-*Figure 23.2 — How compliance as code provides quality engines, codified controls, and integration benefits.*
+*Figure 23.3 — How compliance as code provides quality engines, codified controls, and integration benefits.*
 
-![Architecture as Code as central hub](images/mindmap_23c_architecture.png)
+![Figure 23.4 – Architecture as Code as central hub](images/mindmap_23c_architecture.png)
 
-*Figure 23.3 — Architecture as Code serving as the central hub connecting technical implementation, policy, and documentation.*
+*Figure 23.4 — Architecture as Code serving as the central hub connecting technical implementation, policy, and documentation.*
 
-![Documentation as Code](images/mindmap_23d_documentation.png)
+![Figure 23.5 – Documentation as Code](images/mindmap_23d_documentation.png)
 
-*Figure 23.4 — Documentation as code providing communication layers, toolchain integration, and feedback loops.*
+*Figure 23.5 — Documentation as code providing communication layers, toolchain integration, and feedback loops.*
 
-![Knowledge and Culture as Code](images/mindmap_23e_knowledge_culture.png)
+![Figure 23.6 – Knowledge and Culture as Code](images/mindmap_23e_knowledge_culture.png)
 
-*Figure 23.5 — How knowledge and culture can be codified to enable structured onboarding and experience preservation.*
+*Figure 23.6 — How knowledge and culture can be codified to enable structured onboarding and experience preservation.*
 
-![Synergies and implementation strategy](images/mindmap_23f_synergies.png)
+![Figure 23.7 – Synergies and implementation strategy](images/mindmap_23f_synergies.png)
 
-*Figure 23.6 — The synergies created through cross-pollination and the implementation strategy for adopting these practices.*
+*Figure 23.7 — The synergies created through cross-pollination and the implementation strategy for adopting these practices.*
 
 **Key takeaways from the mind map:**
 

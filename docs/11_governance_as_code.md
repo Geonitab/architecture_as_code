@@ -12,7 +12,7 @@ By the end of this chapter, you will be able to:
 
 ## Overview
 
-![Governance as Code pipeline](images/diagram_11_governance_pipeline.png)
+![Figure 11.1 – Governance as Code pipeline](images/diagram_11_governance_pipeline.png)
 
 *Figure 11.1 — Governance as Code pipeline: policy authors, reviewers, automation, production controls, and the audit portal coordinating through a single repository.*
 

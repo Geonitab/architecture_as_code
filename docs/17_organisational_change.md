@@ -25,6 +25,8 @@ Figure 17.1 summarises the journey from siloed functions towards integrated, pro
 
 ![Figure 17.1 – Stages of organisational transformation for Architecture as Code](images/diagram_17_transformation_journey.png)
 
+*Figure 17.1 — Stages of organisational transformation for Architecture as Code.*
+
 *The transformation journey illustrates how organisations evolve from isolated teams to collaborative, outcome-focused delivery groups once Architecture as Code principles are embedded. Each stage represents measurable progress in automation maturity, team integration, and delivery velocity, allowing leaders to calibrate investments and expectations accordingly.*
 
 ## Building a DevOps culture
@@ -43,13 +45,19 @@ Effective transformation programmes address multiple dimensions simultaneously r
 
 ![Figure 17.2 – Culture and cross-functional collaboration](images/mindmap_17a_culture_collaboration.png)
 
+*Figure 17.2 — Culture and cross-functional collaboration.*
+
 *The first mind map shows how cultural foundations and cross-functional team structures create the basis for organisational change.*
 
 ![Figure 17.3 – Capability development and role evolution](images/mindmap_17b_capability_roles.png)
 
+*Figure 17.3 — Capability development and role evolution.*
+
 *The second mind map illustrates learning paths, knowledge enablers, and evolving roles that support continuous improvement.*
 
 ![Figure 17.4 – Change management approach](images/mindmap_17c_change_management.png)
+
+*Figure 17.4 — Change management approach.*
 
 *The third mind map demonstrates how stakeholder co-design, narrative communication, and evidence-based iteration drive successful transformation.*
 

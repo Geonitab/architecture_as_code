@@ -1,10 +1,10 @@
 # Cost Optimisation and Resource Management {#cost-optimisation}
 
-![Cost optimisation workflow](images/diagram_16_chapter15.png)
+![Figure 15.1 – Cost optimisation workflow](images/diagram_16_chapter15.png)
 
 *Figure 15.1 — The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops that drive constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
 
-![Cost monitoring and analysis flow](images/diagram_17_chapter15.png)
+![Figure 15.2 – Cost monitoring and analysis flow](images/diagram_17_chapter15.png)
 
 *Figure 15.2 — How various components work together: from cost analysis via monitoring and optimisation to automation leading to concrete savings.*
 
@@ -20,7 +20,7 @@ Successful cost optimisation requires a combination of technical tools, organisa
 
 ## FinOps and cost governance
 
-![FinOps governance cycle](images/diagram_16_finops_cycle.png)
+![Figure 15.3 – FinOps governance cycle](images/diagram_16_finops_cycle.png)
 
 *Figure 15.3 — The FinOps cycle illustrates the continuous process of cost governance, from allocation and budgeting to policy management and optimisation. This iterative approach ensures that cost-awareness is integrated throughout the organisation's workflow.*
 
@@ -44,7 +44,7 @@ Machine learning-based predictive scaling models can be incorporated into Archit
 
 ## Cost monitoring and alerting
 
-![Cost monitoring stack](images/diagram_16_monitoring_stack.png)
+![Figure 15.4 – Cost monitoring stack](images/diagram_16_monitoring_stack.png)
 
 *Figure 15.4 — The cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems. Data flows from metrics collection through reporting and anomaly detection to cost analysis, ultimately resulting in concrete optimisation actions.*
 

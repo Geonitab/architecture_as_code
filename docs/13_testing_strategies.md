@@ -1,6 +1,6 @@
 # Testing Strategies for Infrastructure as Code {#testing-strategies}
 
-![Test pyramid for Architecture as Code](images/diagram_13_test_pyramid.png)
+![Figure 13.1 – Test pyramid for Architecture as Code](images/diagram_13_test_pyramid.png)
 
 *Figure 13.1 — Architecture as Code Test Pyramid.*
 
@@ -127,7 +127,7 @@ The configuration should include:
 
 ### Practical examples for Architecture as Code testing
 
-![Testing Strategy Quadrant](images/diagram_13_testing_quadrant.png)
+![Figure 13.2 – Testing Strategy Quadrant](images/diagram_13_testing_quadrant.png)
 
 *Figure 13.2 — Architecture as Code Testing Strategy Quadrant.*
 
@@ -280,7 +280,7 @@ Capacity planning validation through performance testing helps optimise resource
 
 ## Requirements as Code and testability
 
-![Requirements and testing relation](images/diagram_12_requirements_testing.png)
+![Figure 13.3 – Requirements and testing relation](images/diagram_12_requirements_testing.png)
 
 *Figure 13.3 — Requirements as Code: traceability from Business Requirements to Infrastructure Tests.*
 
