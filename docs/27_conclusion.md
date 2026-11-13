@@ -1,28 +1,16 @@
 # Conclusion {#conclusion}
 
-Architecture as Code has transformed how organisations design, deliver, and evolve their technology estates. By managing
-architectural artefacts as executable code we realise the same precision, repeatability, and governance controls that software
-engineering teams have relied on for decades. This book has traced that transformation from the
-[fundamental concepts](01_introduction.md) to [forward-looking developments](25_future_trends.md), showing how the
-practice underpins modern digital capabilities.
+Architecture as Code has transformed how organisations design, deliver, and evolve their technology estates. By managing architectural artefacts as executable code we realise the same precision, repeatability, and governance controls that software engineering teams have relied on for decades. This book has traced that transformation from the [fundamental concepts](01_introduction.md) to [forward-looking developments](25_future_trends.md), showing how the practice underpins modern digital capabilities.
 
 ## Consolidating the Architecture as Code mindset
 
-Sustained success with Architecture as Code depends on the interplay between technical craft and organisational intent. The
-most effective transformations are led by committed sponsors, supported by clear communication, and reinforced through
-structured learning programmes. The change practices explored in [chapter 17 on organisational change](17_organisational_change.md)
-show how leadership, coaching, and incremental adoption reduce disruption while building confidence across teams.
+Sustained success with Architecture as Code depends on the interplay between technical craft and organisational intent. The most effective transformations are led by committed sponsors, supported by clear communication, and reinforced through structured learning programmes. The change practices explored in [chapter 17 on organisational change](17_organisational_change.md) show how leadership, coaching, and incremental adoption reduce disruption while building confidence across teams.
 
-Architecture as Code stretches beyond infrastructure automation by codifying decision logic, policies, and integration
-patterns that articulate the enterprise blueprint. Maintaining this emphasis ensures that architectural outcomes remain the
-focal point, with infrastructure services treated as one contributor to a broader design system.
+Architecture as Code stretches beyond infrastructure automation by codifying decision logic, policies, and integration patterns that articulate the enterprise blueprint. Maintaining this emphasis ensures that architectural outcomes remain the focal point, with infrastructure services treated as one contributor to a broader design system.
 
 ### Technical and organisational alignment
 
-Architecture as Code asks teams to think about cloud platforms, automation tooling, and security principles as a single
-strategic capability. The technical foundations span [fundamental principles](02_fundamental_principles.md), disciplined
-[version control](03_version_control.md), and [automation through CI/CD](05_automation_devops_cicd.md). These practices must be
-matched by organisational investment in skills, culture, and operating models so that new workflows can flourish.
+Architecture as Code asks teams to think about cloud platforms, automation tooling, and security principles as a single strategic capability. The technical foundations span [fundamental principles](02_fundamental_principles.md), disciplined [version control](03_version_control.md), and [automation through CI/CD](05_automation_devops_cicd.md). These practices must be matched by organisational investment in skills, culture, and operating models so that new workflows can flourish.
 
 ![Architecture as Code – Technical Structure](images/diagram_27_technical_structure.png)
 
@@ -30,19 +18,11 @@ matched by organisational investment in skills, culture, and operating models so
 
 ## Embedding continuous improvement
 
-The journey through this book charts a deliberate increase in sophistication: from the declarative blueprints of
-[chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerisation.md), to
-[future-facing automation patterns](25_future_trends.md). Security is treated as an architectural concern from the
-outset, evolving from [policy and security](10_policy_and_security.md) through [governance as code](11_governance_as_code.md)
-and [compliance operations](12_compliance.md). Each capability builds on the previous layer to create a resilient Architecture
-as Code platform.
+The journey through this book charts a deliberate increase in sophistication: from the declarative blueprints of [chapter 2](02_fundamental_principles.md), through [container orchestration](07_containerisation.md), to [future-facing automation patterns](25_future_trends.md). Security is treated as an architectural concern from the outset, evolving from [policy and security](10_policy_and_security.md) through [governance as code](11_governance_as_code.md) and [compliance operations](12_compliance.md). Each capability builds on the previous layer to create a resilient Architecture as Code platform.
 
 ### Measuring and refining delivery
 
-Continuous improvement is woven into Architecture as Code. Metrics from [automation and DevOps practices](05_automation_devops_cicd.md)
-and insights from [team structure guidance](18_team_structure.md) help identify areas for refinement. Observability patterns,
-first introduced in the [automation and platform chapters](05_automation_devops_cicd.md), support data-driven decisions and proactive
-optimisation. By regularly reviewing feedback loops, teams maintain momentum and prevent regression.
+Continuous improvement is woven into Architecture as Code. Metrics from [automation and DevOps practices](05_automation_devops_cicd.md) and insights from [team structure guidance](18_team_structure.md) help identify areas for refinement. Observability patterns, first introduced in the [automation and platform chapters](05_automation_devops_cicd.md), support data-driven decisions and proactive optimisation. By regularly reviewing feedback loops, teams maintain momentum and prevent regression.
 
 ![Architecture as Code – Build Pipeline](images/diagram_27b_build_pipeline.png)
 
@@ -50,34 +30,15 @@ optimisation. By regularly reviewing feedback loops, teams maintain momentum and
 
 ## European context and opportunities
 
-Operating across the European Union demands consistent stewardship of information, resilient supply chains, and ethically governed
-automation. The [policy and security guidance](10_policy_and_security.md) and [compliance practices](12_compliance.md) illustrate
-how the GDPR, the NIS2 Directive, and the EU AI Act (Regulation (EU) 2024/1689, in force since 1 August 2024 with its obligations
-phased in over the following years) [Source [125]](33_references.md#source-125) influence design choices from the earliest
-architectural blueprints. Treating data residency as a first-class requirement keeps infrastructure definitions aligned with EU data
-boundary commitments, sector-specific controls such as DORA for financial services, and horizontal frameworks such as the Data
-Governance Act and the Data Act for data sharing.
+Operating across the European Union demands consistent stewardship of information, resilient supply chains, and ethically governed automation. The [policy and security guidance](10_policy_and_security.md) and [compliance practices](12_compliance.md) illustrate how the GDPR, the NIS2 Directive, and the EU AI Act (Regulation (EU) 2024/1689, in force since 1 August 2024 with its obligations phased in over the following years) [Source [125]](33_references.md#source-125) influence design choices from the earliest architectural blueprints. Treating data residency as a first-class requirement keeps infrastructure definitions aligned with EU data boundary commitments, sector-specific controls such as DORA for financial services, and horizontal frameworks such as the Data Governance Act and the Data Act for data sharing.
 
-European initiatives create space for Architecture as Code teams to collaborate beyond national boundaries while still respecting
-local obligations. Programmes such as Horizon Europe, Digital Europe, Gaia-X, and the European Alliance for Industrial Data, Edge
-and Cloud encourage interoperable platforms, harmonised reference architectures, and sector-specific data spaces that can be
-codified as re-usable modules. Access to EU-funded sandboxes and regulatory support, including the AI Act's conformity assessment
-regime, helps organisations evidence compliance earlier in delivery cycles and accelerate acceptance by supervisory authorities.
+European initiatives create space for Architecture as Code teams to collaborate beyond national boundaries while still respecting local obligations. Programmes such as Horizon Europe, Digital Europe, Gaia-X, and the European Alliance for Industrial Data, Edge and Cloud encourage interoperable platforms, harmonised reference architectures, and sector-specific data spaces that can be codified as re-usable modules. Access to EU-funded sandboxes and regulatory support, including the AI Act's conformity assessment regime, helps organisations evidence compliance earlier in delivery cycles and accelerate acceptance by supervisory authorities.
 
-Sustainability remains a parallel obligation. [Future trends](25_future_trends.md) emphasise carbon-aware workloads,
-energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and EU
-sustainability-reporting rules such as the Corporate Sustainability Reporting Directive, whose scope and timetable are being revised
-under the Commission's Omnibus simplification package (beginning with the “stop-the-clock” Directive (EU) 2025/794). The wider
-transformation agenda explored in [chapter 21 on digitalisation](21_digitalisation.md)
-shows how coordinated change across Member States, public institutions, and private enterprises benefits from codified architectural
-knowledge that can be shared, audited, and re-used without reinventing country-specific artefacts.
+Sustainability remains a parallel obligation. [Future trends](25_future_trends.md) emphasise carbon-aware workloads, energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and EU sustainability-reporting rules such as the Corporate Sustainability Reporting Directive, whose scope and timetable are being revised under the Commission's Omnibus simplification package (beginning with the “stop-the-clock” Directive (EU) 2025/794). The wider transformation agenda explored in [chapter 21 on digitalisation](21_digitalisation.md) shows how coordinated change across Member States, public institutions, and private enterprises benefits from codified architectural knowledge that can be shared, audited, and re-used without reinventing country-specific artefacts.
 
 ## Recommendations for organisations
 
-Organisations embarking on Architecture as Code initiatives should focus on pilot programmes that demonstrate tangible value
-without jeopardising critical services. Education, shared tooling, and clear ownership models build confidence and set
-expectations. The leadership guidance in [organisational change](17_organisational_change.md) reinforces the importance of
-communication, coaching, and community building.
+Organisations embarking on Architecture as Code initiatives should focus on pilot programmes that demonstrate tangible value without jeopardising critical services. Education, shared tooling, and clear ownership models build confidence and set expectations. The leadership guidance in [organisational change](17_organisational_change.md) reinforces the importance of communication, coaching, and community building.
 
 ### Step-by-step adoption strategy
 
@@ -97,23 +58,15 @@ communication, coaching, and community building.
 6. **Future readiness**: Track [emerging trends](25_future_trends.md) and sustainability expectations so that the
    Architecture as Code platform remains adaptable.
 
-Centres of excellence or platform teams can accelerate adoption by curating reusable modules, publishing reference
-implementations, and providing hands-on support. Governance structures maintain security and compliance without constraining
-innovation, letting teams deliver change with confidence.
+Centres of excellence or platform teams can accelerate adoption by curating reusable modules, publishing reference implementations, and providing hands-on support. Governance structures maintain security and compliance without constraining innovation, letting teams deliver change with confidence.
 
 ## Closing reflection
 
-Architecture as Code is more than a technical milestone; it represents a fundamental shift in how we design and manage digital
-platforms. The journey from [introduction](01_introduction.md) through [technical implementation](14_practical_implementation.md),
-[security strategy](10_policy_and_security.md), and [future-oriented innovation](25_future_trends.md) shows that
-Architecture as Code thrives when engineering discipline and organisational stewardship progress together.
+Architecture as Code is more than a technical milestone; it represents a fundamental shift in how we design and manage digital platforms. The journey from [introduction](01_introduction.md) through [technical implementation](14_practical_implementation.md), [security strategy](10_policy_and_security.md), and [future-oriented innovation](25_future_trends.md) shows that Architecture as Code thrives when engineering discipline and organisational stewardship progress together.
 
 ### The way forward
 
-The concepts outlined in this book—declarative intent, repeatability, automated testing, and continuous delivery—remain constants
-even as tooling evolves. By combining technical excellence with attention to sustainability, security, and regulatory
-obligations, organisations can use Architecture as Code to create enduring competitive advantage. The work continues: experiment,
-learn, and refine so that Architecture as Code keeps pace with the ambitions of the business and the expectations of society.
+The concepts outlined in this book—declarative intent, repeatability, automated testing, and continuous delivery—remain constants even as tooling evolves. By combining technical excellence with attention to sustainability, security, and regulatory obligations, organisations can use Architecture as Code to create enduring competitive advantage. The work continues: experiment, learn, and refine so that Architecture as Code keeps pace with the ambitions of the business and the expectations of society.
 
 One challenge that remains genuinely unsolved is the governance of AI-generated architecture decisions. As large language models begin proposing infrastructure patterns, module configurations, and security controls, the profession must grapple with how to audit, attribute, and enforce human accountability over machine-authored artefacts. Version control captures what changed; it does not yet capture whether the reasoning behind a change was sound, who held responsibility, or how to roll back a conceptual mistake rather than merely a configuration error. This is not a tooling gap alone—it is a governance, ethics, and organisational design problem that the Architecture as Code community is uniquely positioned to address.
 

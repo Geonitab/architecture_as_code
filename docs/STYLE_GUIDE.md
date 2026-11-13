@@ -33,6 +33,9 @@ The following table lists common conversions that must be applied during reviews
 - Write “while” for temporal and contrastive uses; do not use “whilst”.
 - Hyphenate compound adjectives where it improves readability (e.g., “code-first mindset”).
 
+## Line Wrapping
+- Write one paragraph per line without hard wrapping, so that editorial diffs show real prose changes.
+
 ## Terminology and Tone
 - Always refer to the discipline and book title as **Architecture as Code**, keeping “as” in lower case and capitalising “Architecture” and “Code”. Avoid variations such as “Architecture As Code” or “architecture as code” unless quoting another source.
 - Refer to audiences collectively as “teams”, “practitioners”, or “organisations” rather than region-specific labels unless the chapter explicitly targets a geography.

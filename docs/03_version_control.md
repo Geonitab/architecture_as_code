@@ -12,14 +12,7 @@ Git is the standard for version control of Architecture as Code assets and suppo
 
 ### Documentation-as-code worked example
 
-This repository applies the guidance from Chapter 22 by storing documentation,
-diagrams, and ADRs beside the automation that builds the book. The
-[`docs/documentation_workflow.md`](documentation_workflow.md) playbook codifies the
-pull-request workflow for narrative updates, while `docs/images/*.mmd` keeps every
-diagram version-controlled so reviewers can inspect both the rendered PNG and its
-textual definition. Contributors experience the same Git review cycle regardless of
-whether they are proposing a new policy module or refining prose, demonstrating the
-Documentation as Code pattern in practice.
+This repository applies the guidance from Chapter 22 by storing documentation, diagrams, and ADRs beside the automation that builds the book. The [`docs/documentation_workflow.md`](documentation_workflow.md) playbook codifies the pull-request workflow for narrative updates, while `docs/images/*.mmd` keeps every diagram version-controlled so reviewers can inspect both the rendered PNG and its textual definition. Contributors experience the same Git review cycle regardless of whether they are proposing a new policy module or refining prose, demonstrating the Documentation as Code pattern in practice.
 
 ### Abstraction and governance responsibilities across AaC and IaC
 

@@ -313,12 +313,7 @@ jobs:
 
 Modern tools such as GitBook, Gitiles, and MkDocs support automatic generation of web documentation from Markdown files stored alongside the code.
 
-The Architecture as Code repository demonstrates this principle by coupling
-[`docs/documentation_workflow.md`](documentation_workflow.md) with automated tests
-that enforce heading and link conventions during every pull request. Contributors
-cannot merge narrative or architectural updates until the shared Git-based workflow
-and validation pipeline succeed, ensuring documentation remains authoritative without
-falling back on disconnected wikis or manual approvals.
+The Architecture as Code repository demonstrates this principle by coupling [`docs/documentation_workflow.md`](documentation_workflow.md) with automated tests that enforce heading and link conventions during every pull request. Contributors cannot merge narrative or architectural updates until the shared Git-based workflow and validation pipeline succeed, ensuring documentation remains authoritative without falling back on disconnected wikis or manual approvals.
 
 ## Requirements as Code
 
@@ -334,11 +329,7 @@ Requirements as Code (RaC) transforms traditional requirements specifications fr
 
 ### Practical example with Open Policy Agent (OPA)
 
-The following requirements set reflects a pan-European perspective. Metadata values
-use EU-wide terminology, and individual controls reference guidance from the
-European Data Protection Board (EDPB) alongside ISO/IEC 27001:2022 Annex A controls. This
-alignment keeps Architecture as Code artefacts consistent with the regulatory
-language used across the European Union rather than country-specific phrasing.
+The following requirements set reflects a pan-European perspective. Metadata values use EU-wide terminology, and individual controls reference guidance from the European Data Protection Board (EDPB) alongside ISO/IEC 27001:2022 Annex A controls. This alignment keeps Architecture as Code artefacts consistent with the regulatory language used across the European Union rather than country-specific phrasing.
 
 The policies below are written in Rego, the policy language of Open Policy Agent ([Source [10]](33_references.md#source-10)), using the OPA 1.0 syntax with `import rego.v1` ([Source [44]](33_references.md#source-44)); [Chapter 10: Policy and Security as Code in Detail](10_policy_and_security.md) introduces the engine and explains the syntax.
 
@@ -500,10 +491,7 @@ class RequirementsValidator:
 
 Global organisations benefit from Requirements as Code by automatically validating regulatory compliance, financial controls, and statutory obligations that must be met continuously.
 
-In this European-centric example the validator enriches every result with the
-appropriate supervisory authority or standards body. Teams can therefore map each automated
-decision directly to EDPB guidance or ISO/IEC 27001:2022 controls, ensuring the
-language reported to auditors mirrors the terminology used across the EU. A policy that OPA has not loaded is reported as an error rather than a pass, so a misconfigured pipeline cannot masquerade as a compliant one.
+In this European-centric example the validator enriches every result with the appropriate supervisory authority or standards body. Teams can therefore map each automated decision directly to EDPB guidance or ISO/IEC 27001:2022 controls, ensuring the language reported to auditors mirrors the terminology used across the EU. A policy that OPA has not loaded is reported as an error rather than a pass, so a misconfigured pipeline cannot masquerade as a compliant one.
 
 ### Functional vs non-functional Requirements as Code
 
