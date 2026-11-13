@@ -75,7 +75,7 @@ This book embodies the principles it teaches:
 
 This book builds upon the outstanding work of the open source community, particularly:
 
-- **Terraform** - Infrastructure as Code foundation
+- **Terraform** - Infrastructure as Code foundation (source-available under the Business Source License from version 1.6.0)
 - **Ansible** - Configuration management automation
 - **Docker** - Containerisation technology
 - **Kubernetes** - Container orchestration
