@@ -14,7 +14,7 @@ Architecture as Code is central to meeting the expanding scope of compliance req
 | Monitoring and evidence collection | Continuous compliance scanning, audit log aggregation, metrics gathering | Compliance dashboards, audit trails, evidence packages | Automated evidence for audits, compliance status reports |
 | Governance reinforcement | Audit reviews, risk assessments, improvement initiatives | Updated policies, remediation plans, training programmes | Loop closes as governance informs next regulatory intelligence cycle |
 
-## AI and Machine Learning for Compliance Automation
+## AI and machine learning for compliance automation
 
 ![AI-augmented compliance automation workflow](images/diagram_12_ai_automation.png)
 
@@ -22,7 +22,7 @@ Architecture as Code is central to meeting the expanding scope of compliance req
 
 Artificial intelligence extends the compliance loop by ingesting telemetry, policy breaches, and regulator feedback to flag emerging risks before they become audit issues. Rather than repeating the continuous monitoring workflows described earlier in this chapter, the AI layer focuses on triage: classifying incidents, enriching them with contextual evidence, and recommending automation or escalation paths. Figure 12.2 highlights this control flow. Telemetry and policy violations feed an AI compliance engine that scores risk, orchestrates remediation through Infrastructure as Code updates, and curates evidence packs for review. Human oversight remains central, validating the automated decisions and refining model prompts so that the organisation stays aligned with regulatory expectations.
 
-## Requirements Traceability and Validation
+## Requirements traceability and validation
 
 ![Compliance requirements traceability map](images/diagram_12_requirements_testing.png)
 
@@ -30,7 +30,7 @@ Artificial intelligence extends the compliance loop by ingesting telemetry, poli
 
 Compliance programmes rely on demonstrable traceability between regulatory statements and the technical controls that satisfy them. Figure 12.3 documents that traceability: business, compliance, performance, and cost requirements flow into specific functional controls such as encryption, network segmentation, audit logging, and automated scaling. Those controls are implemented through Terraform configuration and validated by targeted test suites, compliance scanners, and cost analysis. Maintaining this map ensures that every requirement is implemented, tested, and evidenced before auditors ask for proof.
 
-### Control Mapping Matrix and "assure once, comply many"
+### Control mapping matrix and "assure once, comply many"
 
 Architecture as Code operationalises the **assure once, comply many** principle by cataloguing evidence and control mappings in a reusable format. The Control Mapping Matrix links each control identifier to the assurance artefacts captured in CI and to the external frameworks they satisfy. Rather than producing bespoke spreadsheets for ISO/IEC 27001 [Source [14]](33_references.md#source-14), SOC 2, NIST SP 800-53 [Source [11]](33_references.md#source-11), GDPR [Source [43]](33_references.md#source-43), and internal policies, teams maintain one matrix that references authoritative artefacts from source control.
 
@@ -40,11 +40,11 @@ Architecture as Code operationalises the **assure once, comply many** principle 
 
 In this worked example, the [policy module](10_policy_and_security.md#assure-once-comply-many-in-policy-design) and [evidence pipeline](15a_evidence_as_code.md#pipeline-example-exporting-mfa-evidence) each execute once yet satisfy multiple attestations. `SEC-ID-001` is the control identifier shared by the policy, the evidence manifest, and this matrix, whereas the Internal column records the organisation's own catalogue entry (`IAM-01`); the artefact paths are those the evidence pipeline writes to its `artefacts/` directory. Compliance specialists extend the matrix as new frameworks emerge, while automation regenerates evidence on every pipeline run. The template used here is documented in the [Control Mapping Matrix appendix](appendix_d_control_mapping_matrix_template.md) so organisations can adapt it to their own environments.
 
-## Cloud-native and Serverless Compliance Controls
+## Cloud-native and serverless compliance controls
 
 Serverless computing has moved beyond function-as-a-service into comprehensive event-driven architectures. Architecture as Code must represent triggers, response mechanisms, and orchestrated workflows that adapt to real-time business events without compromising regulatory obligations. Edge computing introduces latency-sensitive workloads and intermittent connectivity, making coordinated configuration management essential across hybrid edge-cloud environments. Tooling must therefore support declarative policies for distributed deployments, data gravity, dynamic routing, and compliance guardrails that operate consistently regardless of where workloads execute.
 
-## Policy-driven Infrastructure and Governance
+## Policy-driven infrastructure and governance
 
 ![Policy-driven compliance: strategy feeds Policy as Code and the compliance pipeline, which produces dashboards, exceptions and regulator reporting](images/diagram_12_policy_governance.png)
 
@@ -52,21 +52,21 @@ Serverless computing has moved beyond function-as-a-service into comprehensive e
 
 Policy as Code continues to mature with automated control enforcement, continuous compliance monitoring, and dynamic policy adaptation. Strategy teams map regulatory goals and risk appetite, policy repositories turn those inputs into executable controls, and compliance pipelines provide dashboards, exception handling, and regulator-ready reporting. Figure 12.4 shows how exceptions loop back into the pipeline for remediation and how regulator feedback informs the next iteration of the governance strategy.
 
-## Future-facing Considerations (Speculative)
+## Future-facing considerations (Speculative)
 
 The following topics outline emerging areas that influence long-term compliance strategy. They are exploratory and should be treated as forward-looking guidance rather than current-state requirements.
 
-### Quantum Computing Readiness
+### Quantum computing readiness
 
 Quantum computing will require a rethink of security models, cryptography, and resource management strategies. NIST's first post-quantum cryptography standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), published on 13 August 2024—must be integrated into infrastructure security frameworks [Source [85]](33_references.md#source-85), and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
 
-### Sustainability and Green Computing
+### Sustainability and green computing
 
 Environmental sustainability is a core consideration for infrastructure design and operations. Carbon-aware workload placement shifts compute to regions with renewable energy availability, optimises for energy efficiency, and minimises environmental impact. Architecture as Code should capture lifecycle management, recycling strategies, and sustainability metrics so that green objectives are validated alongside functional requirements and compliance commitments.
 
-## Practical Examples
+## Practical examples
 
-### AI-augmented Infrastructure Optimisation
+### AI-augmented infrastructure optimisation
 
 ```python
 # ai_optimiser.py
@@ -115,7 +115,7 @@ class InfrastructureOptimiser:
             self.schedule_proactive_scaling(asg_name, predicted_load)
 ```
 
-### Serverless Infrastructure Definition
+### Serverless infrastructure definition
 
 ```yaml
 # serverless-infrastructure.yml
@@ -191,7 +191,7 @@ functions:
             detail-type: ["Energy Forecast Update"]
 ```
 
-### Crypto-agility Baseline (pre-PQC)
+### Crypto-agility baseline (pre-PQC)
 
 The listing below is a crypto-agility baseline rather than a post-quantum implementation: it relies on classical ECDSA P-384 and AES-256 while keeping keys and certificates rotatable, so that ML-KEM- and ML-DSA-based alternatives can be adopted as cloud services expose them [Source [85]](33_references.md#source-85).
 
@@ -263,7 +263,7 @@ Modern Architecture as Code practices provide the repeatability, transparency, a
 
 Looking forward, teams should monitor speculative developments such as quantum resilience and sustainability reporting so that compliance strategies evolve alongside the regulatory landscape. Success depends on continuous learning, strategic technology adoption, and a long-term vision for resilient infrastructure. As demonstrated throughout this book—from [Fundamental Principles of Architecture as Code](02_fundamental_principles.md) to [Organisational Change and Team Structures](17_organisational_change.md)—Architecture as Code adapts to meet emerging challenges and opportunities while keeping compliance at the forefront.
 
-## Moving from Governance to Delivery
+## Moving from governance to delivery
 
 Part C closes with [Evidence as Code and Continuous Assurance](15a_evidence_as_code.md), which shows how the artefacts referenced in this chapter's Control Mapping Matrix are generated, packaged, and published by the delivery pipeline. With security controls, policy frameworks, compliance mechanisms, and evidence pipelines established, Part D then shifts focus to the practical delivery and operational excellence that sustain Architecture as Code implementations. Having established the "what" and "why" of governance, the next part explores the "how" of reliable, repeatable delivery.
 

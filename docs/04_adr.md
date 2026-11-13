@@ -4,7 +4,7 @@
 
 *Architecture Decision Records represent a structured method for documenting important architecture decisions within code-based systems. The process begins with identifying the problem and follows a systematic approach to analyse the context, evaluate alternatives, and formulate well-founded decisions.*
 
-## Overall Description
+## Overall description
 
 The Architecture as Code methodology forms the foundation for Architecture Decision Records (ADR), which provide a systematic approach for documenting important architecture decisions that affect system structure, performance, security, and maintainability. The ADR method was introduced by Michael Nygard (2011) [Source [39]](33_references.md#source-39) and has become an established best practice in modern system development.
 
@@ -14,7 +14,7 @@ ADRs function as architecture's "commit messages"—short, focused documents tha
 
 Modern software development emphasises the importance of transparent and traceable decisions. The ADR method supports these requirements by creating an audit trail of architecture decisions that can be reviewed and evaluated over time.
 
-## What Are Architecture Decision Records?
+## What are architecture decision records?
 
 Architecture Decision Records are short text documents that capture important architecture decisions together with their context and consequences. Each ADR describes a specific decision, the problem it solves, the alternatives that were considered, and the rationale behind the chosen alternative.
 
@@ -35,9 +35,9 @@ In the Architecture as Code context, ADRs document decisions about technology ch
 
 Every ADR should explicitly reference the Git-based review and validation workflow your organisation uses. Capturing the pull request, review approvals, and automated validation outcomes alongside the decision gives future contributors a complete audit trail. The **Review and Documentation Workflow** section in the template formalises this expectation by recording where the decision was discussed, which automation results were captured, and how the change aligned with the team's documentation practice.
 
-## Structure and Components of ADR
+## Structure and components of ADR
 
-### Standardised ADR Template
+### Standardised ADR template
 
 ![Figure 4.2 – Standard Architecture Decision Record structure](images/diagram_04_adr_structure.png)
 
@@ -93,13 +93,13 @@ Review and Documentation Workflow:
 
 After authoring or updating an ADR, validate the metadata completeness using whatever linting or validation script your organisation has adopted. A common approach is a lightweight CI job that checks required front matter fields are populated and that the `next_review_due` date is set.
 
-### Numbering and Versioning
+### Numbering and versioning
 
 ADRs are numbered sequentially (ADR-0001, ADR-0002, etc.) to create a chronological order and simple reference. The numbering is permanent—even if an ADR is deprecated or replaced, the original number is retained.
 
 Versioning is managed through the Git history instead of inline changes. When a decision changes, a new ADR is created to supersede the original, preserving the historical context.
 
-### Status Lifecycle
+### Status lifecycle
 
 ![ADR Lifecycle](images/diagram_04_adr_lifecycle.png)
 
@@ -114,13 +114,13 @@ ADRs typically progress through the following statuses:
 | Deprecated | Decision that is no longer recommended but may remain in the system | Plan migration path, document alternatives, set deprecation timeline |
 | Superseded | Replaced by a newer ADR with a reference to the successor | Reference new ADR, maintain historical context, update implementation |
 
-## Practical Examples of ADR
+## Practical examples of ADR
 
-### Example 1: Choice of Infrastructure as Code Tool
+### Example 1: Choice of Infrastructure as Code tool
 
 Architecture as Code principles within this domain:
 
-#### ADR-0003: Selection of Terraform as the Infrastructure as Code Tool
+#### ADR-0003: Selection of Terraform as the Infrastructure as Code tool
 
 - **Status:** Accepted
 - **Context:** The organisation needs to standardise on an Infrastructure as Code tool that implements its architecture definitions across AWS and Azure environments. Manual provisioning creates inconsistent configurations, weak audit trails, and delays that undermine compliance expectations.
@@ -141,9 +141,9 @@ Architecture as Code principles within this domain:
   - Implementation of Terraform remote state with Azure Storage
   - Pilot projects before full rollout
 
-### Example 2: Database Technology Selection
+### Example 2: Database technology selection
 
-#### ADR-0007: Selection of PostgreSQL for the Primary Database
+#### ADR-0007: Selection of PostgreSQL for the primary database
 
 - **Status:** Accepted
 - **Context:** The application demands complex queries, ACID guarantees, and elastic scaling. Existing MySQL clusters are saturating CPU resources, forcing teams to defer new features and accept longer recovery times following incidents.
@@ -163,9 +163,9 @@ Architecture as Code principles within this domain:
   - Comprehensive training programme for development teams
   - Automated testing of migration scripts and rollback procedures
 
-## Tools and Best Practices for ADR within Architecture as Code
+## Tools and best practices for ADR within Architecture as Code
 
-### ADR Tools and Integration
+### ADR tools and integration
 
 Several tools facilitate the creation and management of ADRs:
 
@@ -184,7 +184,7 @@ docs/
 └── README.md
 ```
 
-### Git Integration and Workflow
+### Git integration and workflow
 
 ADRs function optimally when integrated into Git-based development workflows:
 
@@ -192,7 +192,7 @@ ADRs function optimally when integrated into Git-based development workflows:
 **Branch Protection**: Require ADRs for major architectural changes  
 **Automation**: CI/CD pipelines can validate that relevant ADRs exist for significant changes
 
-### Quality Standards
+### Quality standards
 
 To meet compliance requirements, ADRs should follow specific quality standards:
 
@@ -201,7 +201,7 @@ To meet compliance requirements, ADRs should follow specific quality standards:
 **Access**: Transparent access for auditors and compliance officers  
 **Retention**: Long-term archiving according to organisational policies
 
-### Review and Governance Process
+### Review and governance process
 
 Effective ADR implementation requires established review processes:
 
@@ -210,7 +210,7 @@ Effective ADR implementation requires established review processes:
 **Escalation**: Clear escalation paths for disputed decisions
 **Approval Authority**: Documented roles for different types of architecture decisions
 
-### Code-Managed Discovery, Review, and Supersession
+### Code-managed discovery, review, and supersession
 
 Treating ADRs as code artefacts keeps the decision log maintainable and auditable, in line with the Thoughtworks Technology Radar's *Lightweight Architecture Decision Records* technique (Adopt, November 2017 and May 2018), which recommends storing decision records in source control rather than a wiki so that they remain in sync with the code itself ([Source [41]](33_references.md#source-41)).
 
@@ -220,7 +220,7 @@ Treating ADRs as code artefacts keeps the decision log maintainable and auditabl
 
 **Supersession**: When a decision evolves, a CLI task generates a successor ADR that automatically references the prior record and updates the status of the deprecated entry. A scheduled pipeline then posts reminders when the `next_review_due` date passes so teams cannot forget to revisit ageing decisions. The resulting Git history links proposals, discussion threads, approvals, and supersessions without manual spreadsheet tracking.
 
-### Operationalising ADR Metadata
+### Operationalising ADR metadata
 
 ADR metadata becomes significantly more valuable when harvested into automated dashboards and change logs. Static site generators or lightweight data pipelines can parse the ADR directory and publish a living catalogue that highlights ownership, review status, and affected systems. HashiCorp's guidance on sensitive data in Terraform notes that state and plan files can contain secrets and recommends treating state as sensitive, storing it remotely, and encrypting it at rest ([Source [20]](33_references.md#source-20)); ADR metadata can make such operational controls visible by flagging decisions that enforce secure remote backends, encryption, or access monitoring.
 
@@ -232,7 +232,7 @@ Teams can emit a structured JSON index during CI that feeds architectural observ
 
 Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls.
 
-### Preventing Knowledge Loss Through ADRs
+### Preventing knowledge loss through ADRs
 
 ADRs preserve organisational memory when staff transitions occur. During onboarding, new engineers can query the ADR index for the services they inherit and follow links to the relevant implementation repositories, monitoring dashboards, and runbooks. A typical handover checklist includes:
 
@@ -252,7 +252,7 @@ Automated validation can be implemented to ensure infrastructure code follows es
 
 This integration enables transparent governance and compliance where architecture decisions can be tracked from initial documentation through implementation to operational deployment.
 
-## Compliance and Quality Standards
+## Compliance and quality standards
 
 The ADR methodology supports compliance requirements through structured documentation that enables:
 
@@ -263,7 +263,7 @@ The ADR methodology supports compliance requirements through structured document
 
 Organisations can use ADRs to meet transparency requirements and provide insight into technical decisions that affect services and data management.
 
-## Future Development and Trends
+## Future development and trends
 
 The ADR methodology is continuously evolving with the integration of new tools and processes:
 
@@ -283,7 +283,7 @@ Effective ADR implementation requires organisational support, standardised proce
 
 Organisations that adopt ADR methodology position themselves for successful Architecture as Code transformation with robust governance processes and transparent decision documentation that supports both internal requirements and external compliance expectations.
 
-## Looking Ahead
+## Looking ahead
 
 With foundational principles, version control practices, and decision documentation frameworks in place, we are now ready to explore the technical platform that brings Architecture as Code to life. The next part examines how automation, DevOps practices, and CI/CD pipelines transform the concepts explored in these opening chapters into operational reality. [Chapter 5 on Automation, DevOps and CI/CD](05_automation_devops_cicd.md) demonstrates how the decisions we document through ADRs become executable infrastructure, whilst [Chapter 7 on Containerisation](07_containerisation.md) shows how these principles extend to application deployment and orchestration.
 

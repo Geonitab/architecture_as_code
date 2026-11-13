@@ -1,6 +1,6 @@
 # Governance as Code {#governance-as-code}
 
-## Learning Objectives
+## Learning objectives
 
 By the end of this chapter, you will be able to:
 
@@ -22,7 +22,7 @@ Figure 11.1 illustrates how policy authors, reviewers, automation, production co
 
 Architecture as Code relies on a single, authoritative set of controls that can be mapped repeatedly to different external duties. This **assure once, comply many** principle states that governance guardrails are expressed, tested, and evidenced once, then re-used across frameworks such as ISO 27001, SOC 2, NIST 800-53, GDPR, and internal control catalogues. By codifying approval policies, data residency rules, and risk mitigations in the same repository, organisations avoid duplicating assessments for every regulator. Instead, they capture a dependable stream of artefacts that downstream teams can reference in [Policy and Security as Code in Detail](10_policy_and_security.md), [Security Fundamentals for Architecture as Code](09_security_fundamentals.md), and [Compliance and Regulatory Adherence](12_compliance.md). The result is consistent decision-making, reduced audit fatigue, and a shared language for evaluating governance debt.
 
-## Implementing Approval Processes with Pull Requests
+## Implementing approval processes with pull requests
 
 Designing branching strategies for governance artefacts keeps each state explicit. Dedicated draft, review, and production branches mirror software development workflows so stakeholders can follow the journey from proposal to adoption.
 
@@ -34,7 +34,7 @@ Designing branching strategies for governance artefacts keeps each state explici
 | Documentation and traceability | ADR linking | Architecture teams, audit teams | Automated documentation generation, audit trail capture | Business rationale and audit trail beside code |
 | Production deployment | Protected main branch merge | Authorised maintainers | Branch protections, deployment gates | Fully vetted changes reaching production |
 
-## Navigating Competency Gaps During Transition
+## Navigating competency gaps during transition
 
 Successful adoption begins with mapping existing responsibilities to the new repository roles. Governance owners, risk managers, and compliance leads gain explicit ownership of folders, policies, and review rights so their expertise still anchors decision-making. That foundation makes it easier to tailor enablement activities to each group’s knowledge gaps.
 
@@ -42,13 +42,13 @@ Targeted training accelerates confidence. Workshops that cover Git fundamentals,
 
 Teams should stage the transition carefully. Starting with low-risk governance components allows the organisation to gather feedback and fine-tune the approach before scaling to critical controls. Regular retrospectives surface lessons learned, while continual communication reinforces the value of faster approval cycles, stronger auditability, and cross-functional collaboration.
 
-## Tooling to Enable Non-Developers
+## Tooling to enable non-developers
 
 Empowering non-developers starts with approachable policy editors that generate Rego, Sentinel, or similar policy languages from guided forms. These low-code experiences keep the code authoritative while lowering the barrier to entry for policy specialists. Template-driven pull requests extend that support by turning stakeholder submissions into structured governance updates that already meet repository standards.
 
 Documentation-as-code portals and ChatOps integrations keep contributors in their preferred environments. Rendered documentation provides a friendly view of pending changes, while Microsoft Teams or Slack integrations surface review notifications, allow approvals, and trigger governance checks without forcing users into the terminal. Automated policy explainers complete the toolkit by translating code into natural language summaries, giving decision makers clarity without diluting the precision of code-based guardrails.
 
-## Policy as Code: OPA and Rego in Practice
+## Policy as Code: OPA and Rego in practice
 
 [Chapter 10: Policy and Security as Code in Detail](10_policy_and_security.md) introduced Open Policy Agent (OPA) and its Rego language as the engine for policy as code. The Thoughtworks Technology Radar has recommended *security policy as code*—security policies written as code, version-controlled, validated automatically, deployed and monitored, with OPA and Istio as examples—since Vol. 21 (Trial, November 2019), promoting it to Adopt in Vol. 23 (October 2020); the overview of Vol. 21 also singled out policy, compliance, and governance as code as a recurring theme [Source [2]](33_references.md#source-2). The following examples show how typical governance guardrails translate from prose requirements into executable assertions, using the same OPA 1.0 syntax [Source [44]](33_references.md#source-44).
 
@@ -217,7 +217,7 @@ test_allows_cmk_encryption if {
 
 Running `opa test policies/` in CI catches policy regressions before they reach production, applying the same quality discipline to governance code as to application code.
 
-## Measuring Governance Effectiveness
+## Measuring governance effectiveness
 
 Governance as Code enables metrics that were previously impossible to collect consistently. The following indicators provide visibility into the health of the governance programme:
 
@@ -232,11 +232,11 @@ Governance as Code enables metrics that were previously impossible to collect co
 
 Governance dashboards aggregating these metrics give leadership the confidence to rely on automated controls rather than periodic manual reviews, fundamentally changing the economics of compliance.
 
-## Key Takeaways
+## Key takeaways
 
 Governance as Code modernises policy management by placing guardrails alongside the systems they protect. Using pull requests to orchestrate approvals strengthens auditability and responsiveness, while deliberate enablement, training, and supportive tooling ensure that governance professionals can thrive in a code-based ecosystem.
 
-## Governance and Security Controls as Code Backlog
+## Governance and security Controls as Code backlog
 
 Delivery teams can now translate the guidance across [Security Fundamentals](09_security_fundamentals.md), [Security Patterns](09b_security_patterns.md), and [Soft "as code" Interplay](23_soft_as_code_interplay.md) into concrete backlog items. The sequence below aligns policy-as-code automation with secure Terraform state backends for AWS, Azure, and Google Cloud whilst capturing the evidence expected by governance forums.
 

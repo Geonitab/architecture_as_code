@@ -496,7 +496,7 @@ Pipeline observability encompasses both execution metrics and business-impact me
 
 Alerting strategies ensure rapid response to pipeline failures and infrastructure anomalies. Integration with incident-management systems enables automatic escalation and notification of relevant teams based on severity and impact.
 
-### Monitoring and Alerting
+### Monitoring and alerting
 
 For organisations, monitoring requires special attention to GDPR compliance, cost tracking in EUR, and alignment with local incident-management processes:
 

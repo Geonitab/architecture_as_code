@@ -10,9 +10,9 @@ Documentation as Code focuses on capturing and communicating knowledge about sys
 
 *Figure 22.1 illustrates the fundamental differences between Documentation as Code and Architecture as Code, showing how each discipline serves distinct purposes in the software development ecosystem.*
 
-## Purpose and Scope
+## Purpose and scope
 
-### Documentation as Code: Communication and Knowledge Transfer
+### Documentation as Code: Communication and knowledge transfer
 
 Documentation as Code treats documentation as a first-class artefact within the codebase. Its primary goal is to communicate how systems work, why certain decisions were made, and how teams should interact with the technology. Documentation answers questions such as:
 
@@ -23,7 +23,7 @@ Documentation as Code treats documentation as a first-class artefact within the 
 
 Documentation as Code emphasises readability, accessibility, and maintainability. It targets human audiences—developers, operators, stakeholders—and focuses on narrative explanations, guides, tutorials, and reference material. The success of Documentation as Code is measured by how well it reduces onboarding time, prevents misunderstandings, and keeps information current.
 
-### Architecture as Code: Structure and Enforcement
+### Architecture as Code: Structure and enforcement
 
 Architecture as Code defines the system's structure in a machine-readable format that can be validated, tested, and automated. Its primary goal is to ensure that the actual implementation matches the intended design and that architectural constraints are enforced programmatically. Architecture as Code answers questions such as:
 
@@ -34,15 +34,15 @@ Architecture as Code defines the system's structure in a machine-readable format
 
 Architecture as Code emphasises precision, executability, and verification. It targets both humans and machines, focusing on models, schemas, and definitions that can be processed by tools to generate diagrams, validate compliance, and drive infrastructure provisioning. The success of Architecture as Code is measured by how well it prevents architectural drift, enables automation, and ensures consistency between design and implementation. Fitness functions—the automated checks that continuously verify architectural characteristics, as described by Ford, Parsons & Kua (2017) [Source [35]](33_references.md#source-35)—are a widely used form of this enforcement, and catalogued microservice patterns such as those of Richardson (2018) [Source [36]](33_references.md#source-36) give the resulting models a shared vocabulary for service decomposition and inter-service communication.
 
-## Tooling Paradigms: Modelling Tools vs Diagram Tools
+## Tooling paradigms: Modelling tools vs diagram tools
 
 The distinction between Documentation as Code and Architecture as Code becomes particularly clear when examining the tools each discipline employs.
 
-### Modelling Tools: CALM and Structurizr
+### Modelling tools: CALM and Structurizr
 
 **CALM (Common Architecture Language Model)** and **Structurizr** represent the modelling tool paradigm central to Architecture as Code. These tools enable architects to define system structures in standardised, machine-readable formats.
 
-#### CALM: Standardised Architecture Language
+#### CALM: Standardised architecture language
 
 CALM is an open-source specification developed by the Architecture as Code community under FINOS [Source [1]](33_references.md#source-1). The project describes its aim as devising and managing software architecture through a human- and machine-readable, version-controlled codebase, and it publishes the specification together with a command-line tool, a model hub, and documentation [Source [48]](33_references.md#source-48). CALM provides a standardised, machine-readable format for defining software architectures built around nodes, relationships, interfaces, controls, flows and metadata. Three of these core components are enough to illustrate the approach:
 
@@ -91,7 +91,7 @@ Example CALM definition, valid against the release 1.0 schema:
 }
 ```
 
-#### Structurizr: C4 Model Implementation
+#### Structurizr: C4 model implementation
 
 Structurizr provides a domain-specific language (DSL) for creating C4 models—Context, Container, Component, and Code diagrams—that describe system architecture at multiple levels of abstraction. Unlike static diagramming tools, Structurizr models are code-based definitions from which diagrams are generated automatically.
 
@@ -121,7 +121,7 @@ workspace {
 
 The key advantage of modelling tools like CALM and Structurizr is that the **model is the source of truth**. Diagrams, documentation, and compliance reports are all derived from the same underlying model, ensuring consistency and enabling automated validation.
 
-### Diagram Tools: Mermaid and PlantUML
+### Diagram tools: Mermaid and PlantUML
 
 **Mermaid** and **PlantUML** represent the diagram tool paradigm often used in Documentation as Code. These tools enable the creation of diagrams through textual syntax, making diagrams version-controllable and reviewable through pull requests.
 
@@ -137,7 +137,7 @@ Example Mermaid diagram:
 
 Mermaid excels at quickly creating visual explanations within documentation. Its lightweight syntax makes it accessible to non-technical contributors, and its widespread integration means diagrams can be embedded directly in Markdown files without external tools.
 
-#### PlantUML: Comprehensive UML Diagramming
+#### PlantUML: Comprehensive UML diagramming
 
 PlantUML provides extensive support for UML diagrams and other technical diagrams. It uses a text-based syntax to define diagrams that are then rendered into images.
 
@@ -154,7 +154,7 @@ PaymentAPI -> Customer: Confirmation
 
 PlantUML is particularly strong for detailed technical diagrams such as sequence diagrams, class diagrams, and deployment diagrams. Its comprehensive UML support makes it suitable for complex technical documentation.
 
-#### Limitations of Diagram Tools for Architecture as Code
+#### Limitations of diagram tools for Architecture as Code
 
 While diagram tools are excellent for Documentation as Code, they have significant limitations when used for Architecture as Code:
 
@@ -172,7 +172,7 @@ This book uses Mermaid for creating illustrative diagrams because its primary pu
 
 *Figure 22.3 shows how Documentation as Code outputs and Architecture as Code automation reinforce one another through shared feedback loops. The Mermaid source is maintained in `docs/images/diagram_22_tool_alignment.mmd` to keep the definition version-controlled alongside the manuscript.*
 
-## Key Differences: A Comparative Framework
+## Key differences: A comparative framework
 
 | Aspect | Documentation as Code | Architecture as Code |
 |--------|----------------------|---------------------|
@@ -187,11 +187,11 @@ This book uses Mermaid for creating illustrative diagrams because its primary pu
 | **Update Frequency** | When knowledge changes or gaps are identified | When architectural decisions change or systems evolve |
 | **Success Metrics** | Reduced onboarding time, fewer support questions, current information | Prevented architectural drift, automated compliance, consistency |
 
-## The Relationship Between Documentation as Code and Architecture as Code
+## The relationship between Documentation as Code and Architecture as Code
 
 While distinct, Documentation as Code and Architecture as Code are complementary disciplines that reinforce each other:
 
-### Architecture as Code Feeds Documentation as Code
+### Architecture as Code feeds Documentation as Code
 
 Architectural models serve as a rich source of content for documentation. When architecture is defined in code, documentation can be generated automatically:
 
@@ -201,7 +201,7 @@ Architectural models serve as a rich source of content for documentation. When a
 
 This approach ensures that architectural documentation stays synchronised with the actual architecture, reducing the risk of outdated or incorrect information.
 
-### Documentation as Code Explains Architecture as Code
+### Documentation as Code explains Architecture as Code
 
 Documentation provides the narrative context that architectural models alone cannot convey:
 
@@ -213,9 +213,9 @@ Documentation provides the narrative that makes architectural changes understand
 
 This narrative layer makes architectural models accessible to broader audiences and facilitates knowledge transfer across teams.
 
-## Practical Recommendations
+## Practical recommendations
 
-### When to Use Documentation as Code
+### When to use Documentation as Code
 
 Use Documentation as Code when the goal is to:
 
@@ -226,7 +226,7 @@ Use Documentation as Code when the goal is to:
 
 **Recommended tools**: MkDocs, Docusaurus, GitBook, Sphinx, Jekyll with Mermaid or PlantUML for illustrative diagrams.
 
-### When to Use Architecture as Code
+### When to use Architecture as Code
 
 Use Architecture as Code when the goal is to:
 
@@ -237,7 +237,7 @@ Use Architecture as Code when the goal is to:
 
 **Recommended tools**: CALM for standardised architectural models, Structurizr for C4 models, Terraform/CloudFormation modules for infrastructure patterns, Open Policy Agent for policy enforcement.
 
-### Integrating Both Disciplines
+### Integrating both disciplines
 
 Organisations benefit most when they integrate Documentation as Code and Architecture as Code into a cohesive ecosystem:
 

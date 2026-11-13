@@ -12,7 +12,7 @@ This book represents the culmination of extensive experience in architecture, in
 
 **Gunnar Nordqvist** is a self-employed certified Chief Architect and IT Architect consultant in the Kvadrat network, a Swedish consultancy network of independent specialists [Source [130]](33_references.md#source-130). As an IT generalist with a profound interest in technology, Gunnar has worked across diverse roles throughout his career, including IT architect, technical project manager, and systems technician.
 
-### Professional Background
+### Professional background
 
 Gunnar's extensive experience spans solution and enterprise architecture, IT infrastructure, and specialised information security engagements. His varied technical background encompasses network solutions, servers, virtualisation, and IT security, amongst other critical facets of contemporary technology estates.
 
@@ -24,7 +24,7 @@ Gunnar's extensive experience spans solution and enterprise architecture, IT inf
 - DevOps and CI/CD Automation
 - Network Solutions and Infrastructure Design
 
-### Architecture as Code Journey
+### Architecture as Code journey
 
 Throughout his career, Gunnar has witnessed the evolution from manual, document-led architecture practice to the modern paradigm of codified architecture. This shift has shaped his approach to system design and his conviction that architecture must be treated with the same rigour and methodology as software engineering.
 
@@ -32,18 +32,18 @@ Throughout his career, Gunnar has witnessed the evolution from manual, document-
 
 Gunnar Nordqvist works as an independent consultant through Kvadrat, which describes itself as Sweden's largest network of self-employed consultants and has offices across Sweden [Source [130]](33_references.md#source-130).
 
-## Swedish Terminology Reference
+## Swedish terminology reference
 
 > **Terminology Note:** The Swedish names used in this section keep their native form to preserve accuracy. The notes below clarify the meaning for readers unfamiliar with Swedish terminology.
 
 - **Kvadrat AB** – `AB` stands for *aktiebolag*, Sweden’s equivalent of a limited company. The firm’s name translates literally to “square” but is always written as Kvadrat in branding.
 - **Nordqvist** – A Swedish family name combining *nord* (“north”) and *qvist* (“twig”), reflecting traditional Swedish surname construction.
 
-## The Book's Technical Foundation
+## The book's technical foundation
 
 This publication demonstrates Architecture as Code principles not only in its content but in its very creation. The book itself is built using modern DevOps practices and automated workflows.
 
-### Publishing Toolchain
+### Publishing toolchain
 
 **Content Generation:**
 - **Python 3.12** for content automation and orchestration
@@ -59,7 +59,7 @@ These versions are pinned in `BOOK_REQUIREMENTS.md` for release 2025.10 (Python 
 - **Automated Testing** for validation and quality assurance
 - **Multi-format Publishing** (PDF, EPUB, DOCX)
 
-### Living Documentation Principles
+### Living documentation principles
 
 This book embodies the principles it teaches:
 
@@ -71,7 +71,7 @@ This book embodies the principles it teaches:
 
 ## Acknowledgements
 
-### Open Source Community
+### Open source community
 
 This book builds upon the outstanding work of the open source community, particularly:
 
@@ -82,7 +82,7 @@ This book builds upon the outstanding work of the open source community, particu
 - **Pandoc** - Document conversion excellence
 - **Mermaid** - Diagram as Code visualisation
 
-## Continuous Improvement
+## Continuous improvement
 
 This book is designed as a living resource that evolves with:
 
@@ -91,7 +91,7 @@ This book is designed as a living resource that evolves with:
 - **Practical Lessons** - Integration of new case studies and best practices
 - **Language Refinement** - Continuous improvement of clarity and precision
 
-### Contributing to Future Editions
+### Contributing to future editions
 
 Contributions from the technology community are welcomed:
 
@@ -107,7 +107,7 @@ Contributions from the technology community are welcomed:
 - New export formats and distribution channels
 - Accessibility and usability improvements
 
-### Contact Information
+### Contact information
 
 For questions, feedback, or suggestions for improvements:
 
@@ -115,7 +115,7 @@ For questions, feedback, or suggestions for improvements:
 - **Issues and Pull Requests**: Welcomed for content and technical improvements
 - **Discussions**: GitHub Discussions for broader conversations about Architecture as Code
 
-## Licence and Usage
+## Licence and usage
 
 This work is licensed under the Creative Commons Attribution 4.0 International Licence (CC BY 4.0). Full terms: [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
 
@@ -128,7 +128,7 @@ This licence permits:
 
 All reuse should acknowledge the original author and contributors according to established academic and technical standards.
 
-## Closing Reflections
+## Closing reflections
 
 The journey towards Architecture as Code represents more than a technical evolution—it embodies a fundamental shift in how we conceive, design, and operate technology systems. By codifying architecture, we bring the rigour, repeatability, and reliability of software engineering to the entire technology landscape.
 

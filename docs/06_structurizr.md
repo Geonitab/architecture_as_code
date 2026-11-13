@@ -20,11 +20,11 @@ The FINOS Common Architecture Language Model (CALM), an open JSON-based specific
 
 This chapter explores how to use Structurizr for creating, developing, and handling architecture models, integrating them into modern development workflows, and establishing architecture as a living, evolving artefact.
 
-## The C4 Model Foundation
+## The C4 model foundation
 
 Before diving into Structurizr itself, understanding the C4 model is essential as it forms the conceptual foundation for all Structurizr work.
 
-### Four Levels of Abstraction
+### Four levels of abstraction
 
 The C4 model provides a hierarchical approach to software architecture diagrams, organised across four levels:
 
@@ -37,7 +37,7 @@ The C4 model provides a hierarchical approach to software architecture diagrams,
 
 Brown's C4 Model guidance stresses that each successive level narrows the audience and scope so stakeholders can reason about the system using diagrams tailored to the detail they need, keeping the hierarchy consistent across teams [Source [37]](33_references.md#source-37). The model grew out of Brown's work on lightweight, developer-friendly architecture documentation, set out in *Software Architecture for Developers* [Source [60]](33_references.md#source-60).
 
-### Why C4 Works with Architecture as Code
+### Why C4 works with Architecture as Code
 
 The C4 model aligns naturally with Architecture as Code principles because:
 
@@ -50,11 +50,11 @@ The C4 model aligns naturally with Architecture as Code principles because:
 
 Diagram decay—the gradual divergence between architecture diagrams and the systems they represent when updates rely on manual effort—is the problem that model-based tooling sets out to solve; the Thoughtworks Technology Radar placed "diagrams as code" in Trial in October 2020 for the same reason, naming the Structurizr DSL among the tools [Source [40]](33_references.md#source-40). Structurizr's automated generation of C4 diagrams from a single, version-controlled model eliminates that manual gap: every change to the model regenerates the diagrams for the appropriate audience, whether leadership needs the System Context view or developers need Component detail. Embedding Structurizr rendering in CI pipelines, alongside Architecture as Code validation, ensures diagrams are rebuilt with each merge so teams catch drift early rather than allowing stale visuals to persist.
 
-## Structurizr DSL: Core Concepts
+## Structurizr DSL: Core concepts
 
 The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models. Unlike graphical tools, the DSL approach enables version control, code review, and automation; the language reference documents every keyword used in this chapter [Source [38]](33_references.md#source-38).
 
-### Basic Workspace Structure
+### Basic workspace structure
 
 Every Structurizr model begins with a workspace definition:
 
@@ -75,9 +75,9 @@ workspace "Architecture as Code Example" "Example architecture for demonstrating
 }
 ```
 
-### Defining Model Elements
+### Defining model elements
 
-#### People and Software Systems
+#### People and software systems
 
 ```structurizr
 workspace "E-Commerce Platform" {
@@ -171,7 +171,7 @@ orderService = container "Order Service" {
 }
 ```
 
-### Creating Views
+### Creating views
 
 Deployment views need a deployment environment, which belongs in the model rather than in the views block: deployment nodes, and the container instances running on them, are declared under `deploymentEnvironment` [Source [38]](33_references.md#source-38).
 
@@ -239,7 +239,7 @@ views {
 }
 ```
 
-### Styling and Themes
+### Styling and themes
 
 Structurizr allows customisation of diagram appearance:
 
@@ -286,9 +286,9 @@ views {
 }
 ```
 
-## Workspace Configuration and Management
+## Workspace configuration and management
 
-### Workspace Types
+### Workspace types
 
 Structurizr is distributed as a single application—the `structurizr/structurizr` Docker image or the `structurizr.war` Java archive—whose commands cover three ways of working [Source [61]](33_references.md#source-61):
 
@@ -311,7 +311,7 @@ docker run -it --rm -p 8080:8080 \
 
 This launches a local web server on `http://localhost:8080` where you can view diagrams generated from your DSL files and adjust their layout in the diagram editor; no account or hosted service is required. Layout changes are saved to a `workspace.json` file next to the DSL, which is why both files belong in version control [Source [66]](33_references.md#source-66).
 
-### File Organisation
+### File organisation
 
 Organise Structurizr files alongside your codebase:
 
@@ -328,7 +328,7 @@ project/
         └── architecture-docs.yml  # CI/CD for architecture
 ```
 
-### Multi-File Workspaces
+### Multi-file workspaces
 
 For large projects, split the model across multiple files:
 
@@ -374,7 +374,7 @@ externalPayment = softwareSystem "Payment Provider" {
 }
 ```
 
-### Governance Patterns for Enterprise Workspaces
+### Governance patterns for enterprise workspaces
 
 Sustaining expansive workspaces demands routine guardrails so that dozens of contributors can evolve diagrams without introducing drift. The following sequence keeps Structurizr DSL repositories predictable and reviewable:
 
@@ -386,7 +386,7 @@ Sustaining expansive workspaces demands routine guardrails so that dozens of con
 
 These steps modularise the workspace whilst making naming policies transparent, preventing accidental duplication of actors or services when multiple programmes collaborate.
 
-### Automated Layout Templates, Quality Gates, and Versioning
+### Automated layout templates, quality gates, and versioning
 
 Automation protects diagram fidelity and keeps layout choices consistent as models expand. Combine DSL includes with scripted `structurizr export` runs to enforce standards:
 
@@ -436,7 +436,7 @@ Automation protects diagram fidelity and keeps layout choices consistent as mode
 
 These automation techniques build upon the enablement practices described later in Chapter 24, letting platform engineers execute Chapter 06 guidance through reproducible tooling.
 
-### Team Enablement and Adoption Playbook
+### Team enablement and adoption playbook
 
 Scaling Structurizr beyond a single maintainer requires deliberate enablement so that architecture automation becomes a shared capability rather than a heroic effort. Combine the following rhythms with the people-development patterns in Chapter 24 to spread ownership:
 
@@ -448,7 +448,7 @@ Scaling Structurizr beyond a single maintainer requires deliberate enablement so
 
 This cadence keeps Structurizr maintainers embedded within a wider community, reducing the risk of bottlenecks and reinforcing the book’s emphasis on collaborative architecture stewardship.
 
-## Reference Workspace for Architecture Teams
+## Reference workspace for architecture teams
 
 To accelerate onboarding, the repository now ships with a curated Structurizr workspace that mirrors the C4 abstractions described throughout this chapter. You can find the canonical definition in `docs/examples/structurizr/aac_reference_workspace.dsl`, with supporting guidance in `docs/examples/structurizr/README.md`.
 
@@ -488,7 +488,7 @@ A consistent contribution workflow prevents diagram drift and preserves traceabi
 
 By following these steps, teams maintain a shared, version-controlled architecture narrative that evolves alongside the software delivery platform.
 
-## Integration with CI/CD Pipelines
+## Integration with CI/CD pipelines
 
 Automating architecture documentation ensures diagrams stay synchronised with code changes. The repository ships with `.github/workflows/structurizr-diagrams.yml`; the abridged version below shows the tasks it performs on every pull request that touches the Structurizr workspace or helper scripts:
 
@@ -524,7 +524,7 @@ jobs:
 
 The workflow mirrors the local helper by exporting Structurizr JSON and PlantUML files whilst skipping the manifest update to avoid masking drift. The final `check_structurizr_manifest.py` invocation compares the committed digest with the current DSL and fails the build when contributors forget to refresh the manifest. Reviewers still receive fresh diagrams via the uploaded artefact, satisfying the pipeline requirements without sacrificing fast feedback.
 
-### GitHub Actions Example
+### GitHub Actions example
 
 ```yaml
 name: Architecture Documentation
@@ -579,7 +579,7 @@ jobs:
 
 > **Security and workflow warning:** The default `GITHUB_TOKEN` cannot push to protected branches without explicit write permissions granted in the workflow permissions block. Auto-committing directly to `main` also risks recursive workflow triggers — whilst `[skip ci]` in the commit message suppresses re-runs, it may bypass mandatory status checks required by branch protection rules and should be used with caution. The preferred, safer approach is to use the `actions/upload-artifact` pattern (shown later in this chapter), which publishes generated diagrams as workflow artefacts without modifying the repository during CI. Reserve auto-commit patterns for unprotected branches or use a dedicated bot token with appropriately scoped permissions.
 
-### GitLab CI Example
+### GitLab CI example
 
 ```yaml
 architecture-documentation:
@@ -601,7 +601,7 @@ architecture-documentation:
         - src/**/*
 ```
 
-### Validation in Pull Requests
+### Validation in pull requests
 
 Prevent architecture drift by validating changes:
 
@@ -637,9 +637,9 @@ jobs:
             -format plantuml -output preview/
 ```
 
-## Practical Implementation Patterns
+## Practical implementation patterns
 
-### Pattern 1: Microservices Architecture
+### Pattern 1: Microservices architecture
 
 ```structurizr
 workspace "Microservices Platform" {
@@ -714,7 +714,7 @@ workspace "Microservices Platform" {
 }
 ```
 
-### Pattern 2: Event-Driven Architecture
+### Pattern 2: Event-Driven architecture
 
 ```structurizr
 workspace "Event-Driven System" {
@@ -788,9 +788,9 @@ workspace "Multi-Tenant SaaS" {
 }
 ```
 
-## Advanced Features
+## Advanced features
 
-### Include and Exclude Expressions
+### Include and exclude expressions
 
 Show different perspectives of the same model by controlling what each view includes; the software system in scope is never itself drawn on its own container view, so expressions select its surroundings instead [Source [38]](33_references.md#source-38):
 
@@ -828,7 +828,7 @@ views {
 }
 ```
 
-### Model Perspectives
+### Model perspectives
 
 Add supplementary information without cluttering diagrams:
 
@@ -843,7 +843,7 @@ orderService = container "Order Service" {
 }
 ```
 
-### Documentation Sections
+### Documentation sections
 
 Embed markdown documentation within the workspace:
 
@@ -867,7 +867,7 @@ docs/
 └── 04-operations.md
 ```
 
-### Architecture Decision Records (ADR) Integration
+### Architecture decision records (ADR) integration
 
 ```structurizr
 workspace {
@@ -888,9 +888,9 @@ adrs/
 └── 0003-postgresql-for-primary-storage.md
 ```
 
-## Best Practices
+## Best practices
 
-### 1. Single Source of Truth
+### 1. Single source of truth
 
 Store the DSL file in version control alongside code:
 
@@ -906,7 +906,7 @@ repository/
 - Diagrams manually created and stored as images
 ```
 
-### 2. Automate Diagram Generation
+### 2. Automate diagram generation
 
 Never manually edit generated diagrams:
 
@@ -921,7 +921,7 @@ jobs:
       - run: java -jar structurizr.war export -workspace docs/architecture/workspace.dsl -format plantuml
 ```
 
-### 3. Use Meaningful Identifiers
+### 3. Use meaningful identifiers
 
 ```structurizr
 # Good - clear, readable identifiers
@@ -933,7 +933,7 @@ us = container "User Service"
 os = container "Order Service"
 ```
 
-### 4. Tag Strategically
+### 4. Tag strategically
 
 Tags enable filtering and styling:
 
@@ -947,7 +947,7 @@ container "Legacy System" {
 }
 ```
 
-### 5. Keep Views Focused
+### 5. Keep views focused
 
 ```structurizr
 # Good - focused view
@@ -963,7 +963,7 @@ container platform "Everything" {
 }
 ```
 
-### 6. Document Relationships
+### 6. Document relationships
 
 ```structurizr
 orderService -> paymentGateway "Processes payments using" "HTTPS/REST" {
@@ -971,7 +971,7 @@ orderService -> paymentGateway "Processes payments using" "HTTPS/REST" {
 }
 ```
 
-### 7. Use Implied Relationships
+### 7. Use implied relationships
 
 Structurizr automatically creates implied relationships:
 
@@ -982,7 +982,7 @@ Structurizr automatically creates implied relationships:
 # This keeps models DRY while generating appropriate diagrams at each level
 ```
 
-### 8. Version Control Everything
+### 8. Version control everything
 
 ```bash
 # Track all architecture artifacts
@@ -991,7 +991,7 @@ git add docs/architecture/views/*.png
 git commit -m "Add payment service to architecture model"
 ```
 
-### 9. Review Architecture Changes Like Code
+### 9. Review architecture changes like code
 
 Require pull request reviews for architecture changes:
 
@@ -1000,7 +1000,7 @@ Require pull request reviews for architecture changes:
 docs/architecture/** @architecture-team
 ```
 
-### 10. Keep Models Synchronised
+### 10. Keep models synchronised
 
 ```python
 # Script to verify architecture coverage
@@ -1018,9 +1018,9 @@ def verify_architecture_coverage():
         raise Exception(f"Undocumented services: {missing}")
 ```
 
-## Comparison with Other Tools
+## Comparison with other tools
 
-### Structurizr vs. Traditional Diagramming Tools
+### Structurizr vs. traditional diagramming tools
 
 | Aspect | Structurizr | Draw.io / Visio | Lucidchart |
 |--------|-------------|-----------------|------------|
@@ -1056,7 +1056,7 @@ def verify_architecture_coverage():
 | **Documentation** | ✅ Integrated docs/ADRs | ❌ Separate |
 | **Best Use Case** | Complex architecture models | Quick, simple diagrams |
 
-### Recommendation Matrix
+### Recommendation matrix
 
 | Scenario | Recommended Tool | Rationale |
 |----------|------------------|-----------|
@@ -1066,9 +1066,9 @@ def verify_architecture_coverage():
 | Non-technical stakeholder presentations | **Lucidchart/Draw.io** | Familiar interface, easy customisation |
 | Architecture as Code practice | **Structurizr** | Native version control, automation support |
 
-## Common Challenges and Solutions
+## Common challenges and solutions
 
-### Challenge 1: Layout Control
+### Challenge 1: Layout control
 
 **Problem**: Auto-layout doesn't always produce ideal diagrams.
 
@@ -1096,7 +1096,7 @@ java -jar structurizr.war export -workspace workspace.dsl -format plantuml
 # Then adjust the PlantUML layout directives in the generated .puml files
 ```
 
-### Challenge 2: Large Models Become Complex
+### Challenge 2: Large models become complex
 
 **Problem**: Single workspace file becomes unwieldy.
 
@@ -1120,7 +1120,7 @@ workspace {
 }
 ```
 
-### Challenge 3: Keeping Model Synchronised with Reality
+### Challenge 3: Keeping model synchronised with reality
 
 **Problem**: Code evolves but architecture model becomes stale.
 
@@ -1163,7 +1163,7 @@ if __name__ == "__main__":
     validate()
 ```
 
-### Challenge 4: Team Adoption
+### Challenge 4: Team adoption
 
 **Problem**: Developers unfamiliar with DSL syntax.
 
@@ -1195,7 +1195,7 @@ newService -> database "Reads/writes"
 
 3. **Provide VS Code extension** - Use Structurizr DSL extension for syntax highlighting and validation
 
-### Challenge 5: Diagram Aesthetics
+### Challenge 5: Diagram aesthetics
 
 **Problem**: Generated diagrams don't match brand guidelines.
 
@@ -1239,7 +1239,7 @@ views {
 }
 ```
 
-## Integration with Architecture Decision Records
+## Integration with architecture decision records
 
 Structurizr integrates naturally with ADRs documented in Chapter 4:
 

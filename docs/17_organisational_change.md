@@ -4,7 +4,7 @@ Architecture as Code changes far more than tooling. It demands new habits, share
 
 Organisations rarely adopt Architecture as Code principles overnight. Instead, they move through progressive stages, each building on earlier capabilities whilst introducing new collaboration patterns and decision-making structures. Understanding this evolution helps leadership anticipate challenges, allocate resources, and maintain momentum through periods of rapid change.
 
-## Learning Objectives
+## Learning objectives
 
 By the end of this chapter, you will be able to:
 - Describe the progressive stages of organisational transformation from siloed functions to product-aligned teams delivering Architecture as Code.
@@ -27,7 +27,7 @@ Figure 17.1 summarises the journey from siloed functions towards integrated, pro
 
 *The transformation journey illustrates how organisations evolve from isolated teams to collaborative, outcome-focused delivery groups once Architecture as Code principles are embedded. Each stage represents measurable progress in automation maturity, team integration, and delivery velocity, allowing leaders to calibrate investments and expectations accordingly.*
 
-## Building a DevOps Culture
+## Building a DevOps culture
 
 DevOps practices create the social contract that allows infrastructure and application specialists to move at the same tempo. When teams share responsibilities rather than hand off tasks, they develop mutual respect for each other's constraints and opportunities. This foundation becomes especially important once automated infrastructure changes flow through production multiple times per day.
 
@@ -35,7 +35,7 @@ Psychological safety, transparent communication, and inclusive retrospectives he
 
 Organisations that celebrate experimentation and view failure as tuition invest in coaching, community practice, and leadership behaviours that make cross-functional collaboration the default. Senior leaders model vulnerability by sharing their own learning journeys, creating permission structures that encourage junior staff to ask questions and propose improvements without fear of criticism.
 
-## Designing Cross-functional Teams
+## Designing cross-functional teams
 
 Moving beyond traditional organisational silos requires deliberate structural changes. Teams delivering shared platforms need a balanced mix of product thinking, operational discipline, and security awareness. Without explicit attention to composition, teams risk reverting to narrow functional boundaries that inhibit flow and slow decision making.
 
@@ -55,7 +55,7 @@ Effective transformation programmes address multiple dimensions simultaneously r
 
 To keep autonomy and alignment in harmony, organisations pair clear decision rights with shared standards. Appendix A, [listing 17-A](30_appendix_code_examples.md#17_code_1), provides a full Infrastructure Platform Team blueprint that product leaders can tailor to their own context. The blueprint illustrates how responsibilities, skills, and success measures join up in a single operating model.
 
-## Developing Capability and Confidence
+## Developing capability and confidence
 
 Initial enthusiasm for Architecture as Code often fades once teams confront the practical challenges of managing state, debugging drift, and maintaining complex module dependencies. Structured learning pathways sustain momentum once foundational changes take hold. Without ongoing skill development, organisations risk creating isolated pockets of expertise that become bottlenecks and single points of failure.
 
@@ -63,7 +63,7 @@ Micro-learning sessions, role-based mentoring, and internal communities give pra
 
 Appendix A, [listing 17-B](30_appendix_code_examples.md#17_code_2), outlines a reusable competency framework and tracking utilities that help teams personalise development journeys and monitor progress over time. The framework recognises that engineers advance at different rates and through different paths, providing structure without forcing everyone through identical curricula.
 
-## Evolving Roles and Career Paths
+## Evolving roles and career paths
 
 Architecture as Code blurs traditional boundaries between development, operations, and infrastructure management. Modern infrastructure roles blend software engineering, governance, and customer advocacy in ways that existing job descriptions often fail to capture. Organisations that cling to outdated role definitions struggle to attract talent and risk losing skilled practitioners to employers who recognise and reward these hybrid capabilities.
 
@@ -71,7 +71,7 @@ Site reliability engineers, platform product owners, and security partners work 
 
 Career development frameworks must recognise deep expertise and cross-disciplinary breadth so people can advance without leaving technical tracks. Dual-ladder career structures, technical leadership programmes, and rotation opportunities prevent the common pattern where the best engineers are promoted into management roles they neither want nor excel in, depleting technical capability whilst creating unhappy managers.
 
-## Change Management in Practice
+## Change management in practice
 
 Transformation initiatives that focus solely on technology adoption whilst ignoring human factors consistently underdeliver. Successful change programmes treat stakeholders as partners rather than passive recipients of mandates from above. Early engagement with finance, security, procurement, and operations ensures that policy and compliance guardrails evolve alongside automation.
 
@@ -79,7 +79,7 @@ Resistance to change often signals legitimate concerns about job security, skill
 
 Pilot projects serve dual purposes: they prove technical feasibility whilst creating reference stories that persuade sceptical stakeholders. Starting with low-risk, high-visibility use cases generates early wins that build momentum without risking business-critical systems. These successes create advocates who speak from experience rather than theory, a far more persuasive force than executive mandates.
 
-## Measuring Sustainable Progress
+## Measuring sustainable progress
 
 Transformation programmes that lack clear success criteria drift aimlessly or claim victory prematurely based on activity metrics rather than outcomes. Insightful metrics keep transformation honest by connecting technical improvements to business value. Leading indicators such as deployment frequency, recovery time, developer satisfaction, and onboarding effort demonstrate whether cultural shifts translate into measurable delivery improvements.
 

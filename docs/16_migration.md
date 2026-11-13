@@ -4,7 +4,7 @@
 
 *Figure 16.1: Migration from Traditional Infrastructure to Architecture as Code requires systematic planning, step-by-step Architecture as Code implementation and continuous validation. Diagram shows the structured process from assessment to complete Architecture as Code adoption.*
 
-## Overall Description
+## Overall description
 
 Migration from traditional, manually configured infrastructure to Architecture as Code represents one of the most critical transformations for modern IT organisations. This process requires not only technical restructuring but also organisational change and cultural adaptation to code-based ways of working.
 
@@ -53,13 +53,13 @@ Cultural transformation from manual processes to automated workflows requires ch
 
 Mentorship programmes pairing experienced cloud engineers with traditional infrastructure teams accelerates knowledge transfer and reduces adoption friction. External consulting support can supplement internal capabilities during initial migration phases for complex enterprise environments.
 
-## Practical Examples
+## Practical examples
 
-### Migration Assessment Automation
+### Migration assessment automation
 
 The comprehensive automation playbook for assessing unmanaged infrastructure resources and orchestrating their migration into a codified estate now resides in [Appendix D: Templates and Tools](appendix_templates_and_tools.md). Practitioners can reference the appendix for the full Python implementation, generated Terraform scaffolding, and migration playbook generator that support large-scale discovery and planning.
 
-### CloudFormation Legacy Import
+### CloudFormation legacy import
 
 Importing existing resources into CloudFormation is a change-set operation of type `IMPORT`, not a `create-stack` call, which would create new resources instead. Every imported resource needs a `DeletionPolicy`, the operation may neither create nor delete resources, and the property values in the template must describe the existing configuration ([Source [96]](33_references.md#source-96)). The template below therefore declares the VPC, subnet, security group, and instance as imported resources and leaves hardening changes to a later stack update.
 
@@ -262,7 +262,7 @@ aws cloudformation describe-stack-drift-detection-status --stack-drift-detection
 aws cloudformation describe-stack-resource-drifts --stack-name "${PROJECT_NAME}-import"
 ```
 
-### Migration Testing Framework  
+### Migration testing framework
 ```bash
 #!/bin/bash
 # migration/test-migration.sh
@@ -473,7 +473,7 @@ Success factors include comprehensive assessment, realistic timeline planning, e
 
 Investment in proper migration planning and execution results in long-term benefits through improved operational efficiency, enhanced security posture, and reduced technical debt. Organisations that follow systematic migration approaches can expect successful transformation to modern, Architecture as Code-based infrastructure management.
 
-## Bridging Technical and Organisational Change
+## Bridging technical and organisational change
 
 Technical migration success depends fundamentally on organisational readiness. The most sophisticated automation pipelines, testing frameworks, and migration strategies fail without the cultural foundations, team structures, and leadership practices that enable people to thrive in code-based delivery environments.
 

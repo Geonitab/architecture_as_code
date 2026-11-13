@@ -12,12 +12,12 @@
 
 ### Detailed security dimensions
 
-#### Threat Modelling
+#### Threat modelling
 ![Threat Modelling details](images/mindmap_10_security_threat_modeling.png)
 
 *Threat Modelling encompasses understanding the threat landscape and applying methodologies like STRIDE to identify and mitigate security risks systematically.*
 
-#### Zero Trust Architecture
+#### Zero Trust architecture
 ![Zero Trust Architecture details](images/mindmap_10_security_zero_trust.png)
 
 *Zero Trust Architecture is built on core principles of continuous verification and implemented through network segmentation, service mesh policies, and granular access controls.*
@@ -27,7 +27,7 @@
 
 *Policy as Code enables automated governance and compliance automation through tools like OPA/Rego and HashiCorp Sentinel, ensuring regulatory requirements are met programmatically.*
 
-#### Risk Assessment
+#### Risk assessment
 ![Risk Assessment details](images/mindmap_10_security_risk.png)
 
 *Risk Assessment involves continuous evaluation of blast radius and impact, combined with regulatory compliance measures to maintain data protection and audit trails.*

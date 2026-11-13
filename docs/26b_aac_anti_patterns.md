@@ -8,115 +8,115 @@ Before exploring anti-patterns, ensure your organisation has assessed its readin
 
 *Figure 26.1 maps six anti-pattern clusters (strategy, governance, delivery, tooling, culture and sustainability) and shows how blind spots propagate risk from one to the next.*
 
-## Strategic Anti-Patterns
+## Strategic anti-patterns
 
-### Treating AaC as a Tool Purchase
+### Treating AaC as a tool purchase
 
 Executives sometimes assume that acquiring a single modelling or provisioning platform unlocks Architecture as Code. The anti-pattern manifests when budgets focus on licences and consultants whilst neglecting change management, governance design, and internal capability building. Teams inherit sophisticated tooling without a shared architectural vocabulary or decision-making forum. Models remain stale, infrastructure definitions diverge from reality, and senior leaders declare the experiment a failure.
 
 **How to recover:** treat AaC as a product with its own roadmap, budget for coaching, and a guild that curates shared models in Git (see [Chapter 17](17_organisational_change.md) and [Chapter 19](19_management_as_code.md)).
 
-### Running Without an Architectural North Star
+### Running without an architectural north star
 
 Another strategic pitfall arises when programmes rush into codifying components without articulating architectural principles. Each team builds their own stack, enforcing local conventions that conflict with neighbouring services. The repository fragments into dozens of divergent patterns. When compliance auditors inspect the estate, they find no traceability between high-level intents and actual deployments.
 
 **How to recover:** express architectural principles as executable templates, reference them in ADRs, and review the catalogue quarterly (see [Chapter 4](04_adr.md)).
 
-### Ignoring Organisational Boundaries
+### Ignoring organisational boundaries
 
 AaC is often introduced by a central platform group. The anti-pattern appears when the platform team dictates patterns without understanding delivery contexts in retail branches, public sector agencies, or regional subsidiaries. Field teams bypass the central codebase, fork modules, and configure shadow pipelines. The central team responds with more rigid controls, accelerating fragmentation.
 
 **How to recover:** form federated governance forums where platform architects and business units co-author patterns and track adoption quality (see [Chapter 11](11_governance_as_code.md)).
 
-## Governance and Compliance Anti-Patterns
+## Governance and compliance anti-patterns
 
-### Policy Drift Through Manual Exceptions
+### Policy drift through manual exceptions
 
 Organisations frequently maintain a growing list of manual policy exceptions stored in spreadsheets or email threads. Each exception bypasses automated enforcement, leading to drift between declared and actual controls. When auditors ask for evidence, the team spends weeks reconciling mismatched records.
 
 **How to recover:** store time-boxed exceptions as code and evaluate them with the same policy engine as the rules they relax (for example Open Policy Agent [Source [10]](33_references.md#source-10)), so that they surface automatically in pipelines until the owning team resolves them.
 
-### Audit Theatre Instead of Continuous Evidence
+### Audit theatre instead of continuous evidence
 
 Some programmes focus on staging elaborate compliance demonstrations just before regulatory reviews. Dashboards are hand-crafted, scripts are executed manually, and once the auditors leave, the process disintegrates. This fosters a culture where compliance is a performance, not an everyday practice.
 
 **How to recover:** generate policy evidence automatically in pipelines so auditors can review the repository instead of staged dashboards.
 
-### Conflating Governance with Bureaucracy
+### Conflating governance with bureaucracy
 
 When governance boards replicate traditional change advisory boards, they become blockers rather than enablers. Requiring sign-off from multiple committees for routine adjustments encourages teams to circumvent the process altogether, undermining governance intent.
 
 **How to recover:** replace blanket approvals with guardrails that link risk tiers to automated checks and collaborative reviews (see [Chapter 10](10_policy_and_security.md)).
 
-## Delivery Lifecycle Anti-Patterns
+## Delivery lifecycle anti-patterns
 
-### Fork-First Module Evolution
+### Fork-First module evolution
 
 Teams sometimes copy shared modules instead of contributing improvements upstream. Within months, the organisation maintains dozens of subtly different security groups, network baselines, and data storage templates. Upgrades become impossible because every fork requires a bespoke patch.
 
 **How to recover:** enforce contribution agreements, surface module drift automatically, and mentor teams through upstream pull requests.
 
-### Pipeline Sprawl Without Ownership
+### Pipeline sprawl without ownership
 
 AaC depends on consistent pipelines for plan, review, and apply stages. The anti-pattern arises when each squad assembles its own toolchain. Some pipelines lack security scans, others skip unit tests, and documentation for incident recovery is missing entirely.
 
 **How to recover:** publish managed pipeline templates with mandatory stages and monitor their availability, drift, and recovery time.
 
-### Blind Automation and Rollout Fatigue
+### Blind automation and rollout fatigue
 
 Automation is celebrated, but when teams ship sweeping architecture changes without progressive delivery techniques, outages multiply. Blind automation also manifests when pipelines continue deploying known-bad configurations because no one inserted automated safeties.
 
 **How to recover:** pair canary releases with policy guards that halt risky rollouts and capture lessons through post-change retrospectives.
 
-## Tooling Anti-Patterns
+## Tooling anti-patterns
 
-### Over-Engineering Early Stages
+### Over-Engineering early stages
 
 Teams sometimes assemble elaborate custom frameworks during the pilot phase. They invest weeks building bespoke module loaders, DSL interpreters, and orchestrators before delivering tangible value. Stakeholders lose patience and revert to manual methods.
 
 **How to recover:** begin with standard tooling, measure time-to-first-value, and defer custom frameworks until production usage demands them.
 
-### Vendor Lock-In Disguised as Best Practice
+### Vendor lock-in disguised as best practice
 
 Many vendors market their proprietary workflows as the gold standard for AaC. Adopting them wholesale without abstraction layers can trap organisations. When strategic direction changes—such as migrating clouds or supporting sovereign deployments—the stack becomes an immovable object.
 
 **How to recover:** add adaptor layers around proprietary services and run regular portability drills against alternative platforms.
 
-### Monitoring as a Secondary Concern
+### Monitoring as a secondary concern
 
 AaC without comprehensive observability is a risky proposition. Some teams treat monitoring instrumentation as an afterthought, assuming they can retrofit metrics once the system stabilises. By then, outages are difficult to diagnose because no baseline exists.
 
 **How to recover:** bake metrics, logs, traces, and dashboards into every module template so observability evolves with the code.
 
-## Cultural and People Anti-Patterns
+## Cultural and people anti-patterns
 
-### Hero Culture and Gatekeeping
+### Hero culture and gatekeeping
 
 Programmes collapse when a handful of experts hoard knowledge about the architecture repository, pipeline configuration, or approval process. Progress slows whenever those experts are unavailable, and other teams feel excluded.
 
 **How to recover:** rotate maintainers and host open clinics so knowledge flows across teams and gatekeeping dissolves.
 
-### Treating AaC as a Platform Team Hobby
+### Treating AaC as a platform team hobby
 
 When the wider organisation perceives AaC as a pet project belonging solely to the platform team, participation dwindles. Product teams continue using legacy processes, claiming that the new approach does not reflect their reality.
 
 **How to recover:** embed AaC coaches into squads, align sprints around shared automation goals, and celebrate cross-team contributions.
 
-### Neglecting Learning and Career Pathways
+### Neglecting learning and career pathways
 
 Engineers may view AaC roles as career cul-de-sacs if progression frameworks emphasise only coding ability or infrastructure certifications. Without deliberate investment in skill development, the programme struggles to attract and retain talent.
 
 **How to recover:** include AaC competencies in career paths and fund training so practitioners see clear progression.
 
-## Scaling and Sustainability Anti-Patterns
+## Scaling and sustainability anti-patterns
 
-### Expanding Without Maturity Gates
+### Expanding without maturity gates
 
 Some organisations scale AaC across dozens of teams before stabilising foundational practices. The anti-pattern manifests as inconsistent module quality, missing tests, and overwhelmed support channels.
 
 **How to recover:** require maturity gates—tests, observability, and runbooks—before teams join the shared platform.
 
-### Sustainability as a Postscript
+### Sustainability as a postscript
 
 Sustainability commitments are often bolted on after architecture choices harden. Teams retrofit energy dashboards or carbon budgets once stakeholders demand ESG reporting, discovering that the underlying platform cannot expose the required metrics.
 
@@ -127,26 +127,26 @@ Sustainability commitments are often bolted on after architecture choices harden
 
 **How to recover:** version-control sustainability KPIs (for example the Software Carbon Intensity score defined in ISO/IEC 21031:2024 [Source [120]](33_references.md#source-120)), carbon budgets, and scheduling policies alongside the architecture code, and treat cloud sustainability as a FinOps capability in its own right [Source [124]](33_references.md#source-124).
 
-## Detection and Early Warning Techniques
+## Detection and early warning techniques
 
 Anti-patterns rarely appear overnight; they emerge gradually. Organisations that track the right signals catch problems early.
 
-### Leading Indicators
+### Leading indicators
 
 - **Repository contribution imbalance:** a small minority of contributors performing the majority of merges suggests gatekeeping or insufficient coaching.
 - **Exception backlog growth:** increasing numbers of unresolved policy waivers indicate governance drift.
 - **Pipeline failure clustering:** repeated failures in the same stage hint at automation fatigue or missing safeguards.
 - **Shadow tooling proliferation:** discovery of undocumented scripts or alternative pipelines signals trust gaps.
 
-### Feedback Channels
+### Feedback channels
 
 Combine quarterly health checks with short surveys so teams can flag where the AaC vision, support, or guardrails need reinforcement. Catalogue lessons from incidents and launches in a shared knowledge base tagged by anti-pattern.
 
-### Visualising Risk
+### Visualising risk
 
 Use the radar in Figure 26.1 as a live dashboard, plotting risk across governance, delivery, tooling, culture, and sustainability to trigger interventions before drift escalates.
 
-## Remediation Playbook
+## Remediation playbook
 
 When anti-patterns surface, structured responses prevent recurrence.
 
@@ -154,7 +154,7 @@ When anti-patterns surface, structured responses prevent recurrence.
 2. **Run a corrective experiment** with clear success metrics and safeguards that lock in the improved behaviour.
 3. **Share the learning and watch for regression** through updates to playbooks, coaching sessions, and lightweight monitoring.
 
-### Severity Classification
+### Severity classification
 
 | Severity | Criteria | Recommended Response |
 |----------|----------|---------------------|

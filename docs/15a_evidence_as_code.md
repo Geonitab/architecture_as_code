@@ -2,7 +2,7 @@
 
 ![Compliance automation lifecycle from Figure 12.1, whose monitoring and evidence collection stage this chapter automates](images/diagram_12_compliance.png)
 
-## Learning Objectives
+## Learning objectives
 
 By the end of this chapter, you will be able to:
 
@@ -76,7 +76,7 @@ jobs:
 
 The `opa test` step gates the job on the policy's own unit tests, whereas the `opa eval` step produces the control evidence by evaluating the MFA policy from [Policy and Security as Code in Detail](10_policy_and_security.md#assure-once-comply-many-in-policy-design) against the identity snapshot; the `internal` mapping carries the organisation's own catalogue identifier (`IAM-01`) for control `SEC-ID-001`. The job produces a manifest and two evidence files. Governance and compliance teams consume the manifest to update the [Control Mapping Matrix](appendix_d_control_mapping_matrix_template.md) and to demonstrate coverage across ISO 27001, SOC 2, NIST 800-53, GDPR, and internal catalogues. Because the artefacts live alongside the policy, they can be retrieved for regulator-specific attestations without re-running the control unless configuration changes occur.
 
-## Software Bill of Materials as Evidence
+## Software bill of materials as evidence
 
 A Software Bill of Materials (SBOM) is a machine-readable inventory of every component, library, and dependency in a software artefact [Source [89]](33_references.md#source-89). Regulatory frameworks such as US Executive Order 14028 on Improving the Nation's Cybersecurity and the EU Cyber Resilience Act (Regulation (EU) 2024/2847) increasingly require software producers to generate SBOMs and to provide them to purchasers or, on request, to authorities. Generating SBOMs as part of the build pipeline transforms them from a one-off compliance exercise into continuous evidence.
 
@@ -142,7 +142,7 @@ syft dir:. -o spdx-json > artefacts/sbom-spdx.json
 
 The vulnerability report produced by the scan step becomes an evidence artefact in its own right. Storing it alongside the SBOM creates a time-stamped record that demonstrates the organisation actively monitors its software supply chain—a requirement under frameworks such as NIST SP 800-53 SI-2 (Flaw Remediation) [Source [11]](33_references.md#source-11). The manifest's SSDF mapping points to practice PS.3.2, which expects provenance data such as SBOMs to be collected, safeguarded, and shared for every release, and to PS.3.1 for the secure archiving of release files [Source [86]](33_references.md#source-86); the ISO/IEC 27001:2022 controls are 5.21 (information security in the ICT supply chain) and 8.8 (management of technical vulnerabilities) [Source [14]](33_references.md#source-14).
 
-## Attestation Frameworks and Tamper-Evident Artefacts
+## Attestation frameworks and tamper-evident artefacts
 
 Evidence value erodes if consumers cannot verify it was produced by trusted systems using approved processes. Cryptographic attestation addresses this by binding artefacts to verifiable claims about how they were created.
 
@@ -223,7 +223,7 @@ cosign verify \
 
 Admission controllers in Kubernetes clusters (for example, using Sigstore's Policy Controller) can enforce that only signed and verified images are permitted to run, creating a continuous attestation chain from source code to production workload.
 
-## Evidence Lifecycle Management
+## Evidence lifecycle management
 
 Evidence has a useful life that varies by regulatory context. Some frameworks require evidence retention for one year; others mandate seven years or more. A systematic approach to evidence lifecycle management prevents both premature deletion and uncontrolled accumulation:
 

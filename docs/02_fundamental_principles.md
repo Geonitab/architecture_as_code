@@ -505,7 +505,7 @@ appropriate supervisory authority or standards body. Teams can therefore map eac
 decision directly to EDPB guidance or ISO/IEC 27001:2022 controls, ensuring the
 language reported to auditors mirrors the terminology used across the EU. A policy that OPA has not loaded is reported as an error rather than a pass, so a misconfigured pipeline cannot masquerade as a compliant one.
 
-### Functional vs Non-Functional Requirements as Code
+### Functional vs non-functional Requirements as Code
 
 Understanding the distinction between functional and non-functional requirements is fundamental to implementing effective Requirements as Code. This distinction affects how requirements are verified and what methods are used to ensure system compliance.
 
@@ -513,7 +513,7 @@ Understanding the distinction between functional and non-functional requirements
 
 **Non-Functional Requirements** (NFRs) define how the system should perform – the quality attributes, constraints, and operational characteristics that Chung et al. (2000) [Source [34]](33_references.md#source-34) treat as first-class engineering concerns. Examples include performance thresholds ("response time must be under 200ms"), scalability requirements ("system must handle 10,000 concurrent users"), availability targets ("99.9% uptime"), and security standards ("must comply with ISO 27001").
 
-#### The V-Model and Requirements Verification
+#### The V-Model and requirements verification
 
 ![V-Model pairs: each level of specification with its verification or validation method, followed by implementation as code](images/diagram_02_v_model.png)
 
@@ -532,7 +532,7 @@ This simplification is reflected in the verification half of each pair in Figure
 - **Acceptance Testing** validates functional requirements against business needs
 - **Operational Validation** confirms the system delivers business value in production
 
-#### Practical Implementation Patterns
+#### Practical implementation patterns
 
 When implementing Requirements as Code, the testing versus validation distinction manifests in different automation patterns:
 
@@ -620,7 +620,7 @@ spec:
       description: "Verify no authentication bypass exists"
 ```
 
-#### Testability Characteristics
+#### Testability characteristics
 
 The table below summarises key differences in how functional and non-functional requirements are verified as code:
 

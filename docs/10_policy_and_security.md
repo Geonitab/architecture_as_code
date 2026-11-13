@@ -72,7 +72,7 @@ The complete module covers encryption strength, privileged port exposure, EU res
 
 Enterprises connect OPA to their existing tooling so that decisions are auditable end to end. Policy evaluation logs stream to SIEM platforms such as Splunk or Microsoft Sentinel for immutable evidence. Identity-aware proxies verify that every policy change is authorised through enterprise single sign-on. Monitoring systems trigger alerts when violations cross risk thresholds so operations teams can react before incidents escalate. These integrations make PaC feel like a first-class participant in the delivery lifecycle rather than an afterthought.
 
-## OSCAL: Open Security Controls Assessment Language
+## OSCAL: Open security controls assessment language
 
 While OPA ensures policies are enforced, OSCAL standardises how controls, evidence, and assessment data are described. Developed by NIST, OSCAL offers machine-readable formats (JSON, XML, YAML) that map requirements to actual implementations. For Architecture as Code teams, OSCAL becomes the translation layer between Terraform states, CI/CD runs, and external auditors.
 
@@ -95,7 +95,7 @@ Profiles help European enterprises harmonise overlapping regulations. Appendix e
 
 Component definitions turn infrastructure modules into reusable compliance building blocks. Appendix entry [10_CODE_3](30_appendix_code_examples.md#10_code_3) provides an example that documents Amazon RDS, Amazon S3, and AWS Network Firewall configurations. Each component maps implementation statements to control identifiers, making it straightforward to prove, for example, that storage encryption and logging are active.
 
-### Automating System Security Plans
+### Automating system security plans
 
 Once profiles and component definitions exist, teams can automate the SSP itself. Appendix entry [10_CODE_4](30_appendix_code_examples.md#10_code_4) includes a Python utility that parses Terraform, enriches it with component definitions, and emits an OSCAL-compliant SSP. The script integrates with AWS STS to stamp account identifiers and timestamps, ensuring that every generated SSP reflects the live estate.
 

@@ -4,7 +4,7 @@
 
 For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, Architecture as Code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.
 
-## Learning Objectives
+## Learning objectives
 
 By the end of this chapter, you will be able to:
 
@@ -54,7 +54,7 @@ The following mind maps illustrate the key concepts and relationships within the
 
 This visualisation reinforces the chapter's central message: soft "as code" disciplines compound their value when combined rather than deployed in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
 
-## A Shared DNA
+## A shared DNA
 
 Even though the disciplines address different problem spaces, they share a common DNA. The goal is to take soft artifacts—policies, architectural principles, design descriptions, documentation, governance models—and convert them into:
 
@@ -64,7 +64,7 @@ Even though the disciplines address different problem spaces, they share a commo
 
 This combination opens the door to a shared way of working across disciplines. Once an organisation has established a culture of version control, code review, and automated testing, it becomes natural to let compliance rules, architectural guidelines, and documentation structures live in the same ecosystem.
 
-## Compliance as Code as the Quality Engine
+## Compliance as Code as the quality engine
 
 Compliance as code focuses on translating regulations, standards, and internal policies into codified controls. Tools such as Open Policy Agent ([Source [10]](33_references.md#source-10)), HashiCorp Sentinel, or custom rule frameworks can ingest policy definitions and evaluate them against system configurations, CI/CD pipelines, or infrastructure definitions. The practice is well established: Thoughtworks' Technology Radar placed security policy as code—security policies expressed as code, version-controlled, automatically validated, deployed and monitored, with Open Policy Agent and Istio as examples—in Trial in November 2019 and in Adopt in October 2020, and the overview of Radar Vol. 21 names "policy, compliance and governance as code" as a recurring theme ([Source [2]](33_references.md#source-2)). When the discipline is connected to other soft areas several effects emerge:
 
@@ -76,7 +76,7 @@ Compliance as code thus becomes a quality engine that reinforces the other disci
 
 Practical tools such as the [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) show how this quality engine manifests in day-to-day delivery. Each backlog item ties policy definitions to Terraform modules, documentation updates, and evidence packs, helping teams demonstrate that soft "as code" practices have tangible outputs and measurable coverage.
 
-## Architecture as Code as the Hub
+## Architecture as Code as the hub
 
 Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of C4 models expressed in the Structurizr DSL or C4-PlantUML—with Markdown reserved for the accompanying documentation—or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:
 
@@ -86,7 +86,7 @@ Architecture as Code means expressing architectural decisions, reference archite
 
 The hub metaphor holds: Architecture as Code connects technical implementations with policy and documentation layers. Dialogue across expert roles becomes easier when everyone looks at the same source of truth.
 
-## Documentation as Code as the Communication Layer
+## Documentation as Code as the communication layer
 
 Documentation as code is about writing, storing, and publishing documentation with the same toolchain used for other code. Markdown files are versioned in Git, generated via static site generators, and distributed through CI/CD pipelines. In the interplay between soft "as code" disciplines, documentation as code is the glue that binds the ecosystem together:
 
@@ -100,7 +100,7 @@ Documentation as code also acts as a layer of visibility. Architectural principl
 
 To capture the full spectrum of soft artefacts we can also include knowledge as code and culture as code. Knowledge as code formalises knowledge bases and lessons learned in code or semi-structured formats, while culture as code expresses values, decision-making practices, and ways of working in versioned playbooks. When experiences, norms, and policies can be linked to architectural models and documentation, insights become reusable, tracking adherence to working norms becomes easier, and onboarding grows more structured. The organisation can iterate quickly while still preserving its experience and values.
 
-### Culture as Code in Practice
+### Culture as Code in practice
 
 Culture as code moves team agreements and working norms out of slide decks and corridor conversations into version-controlled files that are reviewed, debated, and updated just like any other artefact. A simple `team-norms.yaml` file can make this concrete:
 
@@ -156,7 +156,7 @@ onboarding_checklist:
 
 Storing `team-norms.yaml` in Git means that every change is traceable. A pull request to adjust the review SLA records who proposed the change, what the discussion looked like, and when the new norm took effect. Onboarding engineers can read the commit history to understand how the team's culture has evolved—context that would otherwise live only in the memories of long-serving colleagues.
 
-### Knowledge as Code in Practice
+### Knowledge as Code in practice
 
 Knowledge as code applies the same principle to the organisation's accumulated expertise. Rather than relying on wikis that drift out of date or institutional memory that walks out the door when people leave, structured knowledge registries make lessons and patterns queryable, linkable, and automatically validated.
 
@@ -209,11 +209,11 @@ last_updated: "2026-01-07"
 
 This structured format allows CI pipelines to validate that every lesson has the required fields, link-checking scripts to verify that referenced ADRs and chapter files exist, and search tools to surface relevant lessons when engineers encounter similar error messages. When combined with Architecture as Code, the knowledge registry becomes a living index of hard-won experience that teams can query as they design new systems.
 
-## Synergies and Cross-Pollination
+## Synergies and cross-pollination
 
 Introducing several soft "as code" disciplines in parallel generates effects that exceed the value of any single initiative. Shared tools and processes turn pull requests into meeting places for architects, developers, lawyers, and communicators, and the same pipelines can validate code, policy, and documentation. Traceability improves when commit hashes, issues, and policy identifiers are cross-linked, giving revisions and incident investigations a clear history. Pace and appetite for experimentation increase because soft artifacts can be updated as fast as code while automated controls temper risk. Cross-functional collaborations emerge where legal experts learn technical details and developers appreciate the rationale behind regulations, creating shared ownership of the whole system.
 
-## Challenges and Counterforces
+## Challenges and counterforces
 
 The interplay between soft "as code" disciplines generates real value, but it is also demanding. Common challenges include:
 
@@ -224,21 +224,21 @@ The interplay between soft "as code" disciplines generates real value, but it is
 
 By addressing these challenges openly, investing in joint training initiatives, and establishing clear roles, organisations can maximise the value of the interplay.
 
-## Practical Applications
+## Practical applications
 
 To make the interplay more tangible, consider a few practical scenarios:
 
-### Scenario 1: Policy Change
+### Scenario 1: Policy change
 
 The compliance team updates a data retention rule in code, after which the architectural models flag components lacking encryption. Documentation as code generates a new section about the requirement, and dashboards notify teams so remedial actions can be planned without delay.
 
-### Scenario 2: New Product Launch
+### Scenario 2: New product launch
 
 A new product is defined as code, which simultaneously creates diagrams and triggers compliance checks in CI/CD. Documentation is enriched with onboarding guides and API descriptions, while the knowledge base links to lessons learned from earlier launches.
 
 These scenarios illustrate how the interplay creates a dynamic chain in which each discipline amplifies the others.
 
-## Strategies for Adoption
+## Strategies for adoption
 
 Organisations seeking to establish a cohesive ecosystem of soft "as code" disciplines can follow these strategies:
 
@@ -248,7 +248,7 @@ Organisations seeking to establish a cohesive ecosystem of soft "as code" discip
 4. **Build iteratively.** Begin with a pilot area and measure effects such as time savings or improved audit readiness.
 5. **Establish governance.** Define roles for code owners and review processes—protected branches with required reviewers are the natural enforcement point ([Source [4]](33_references.md#source-4))—as well as forums for discussing policy and architecture changes.
 
-## Future Perspectives
+## Future perspectives
 
 Technologies such as AI and semantic search engines expand the potential of soft "as code" disciplines. By combining codified regulations with language models, organisations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as Code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.
 

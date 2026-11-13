@@ -25,7 +25,7 @@ The code examples are grouped into the following categories:
 
 Each example has a unique identifier in the format `[chapter]_CODE_[NUMBER]` for easy cross-reference with the main text.
 
-## CI/CD Pipelines and Architecture as Code Automation {#cicd-pipelines}
+## CI/CD pipelines and Architecture as Code automation {#cicd-pipelines}
 
 This section contains all CI/CD pipeline examples, GitHub Actions workflows, and automation processes for organisations.
 
@@ -804,7 +804,7 @@ Architecture as Code principles in this area emphasise resilient AWS foundations
 
 This section contains CloudFormation templates for AWS infrastructure adapted for organisations.
 
-### 07_CODE_1: VPC Setup for organisations with GDPR compliance {#07_code_1}
+### 07_CODE_1: VPC setup for organisations with GDPR compliance {#07_code_1}
 *Referenced from Chapter 7: [Containerisation and Orchestration as Code](07_containerisation.md)*
 
 ```yaml
@@ -870,7 +870,7 @@ Resources:
 
 ---
 
-## Automation Scripts {#automation-scripts}
+## Automation scripts {#automation-scripts}
 
 This section contains Python scripts and other automation tooling for Architecture as Code operations.
 
@@ -1114,7 +1114,7 @@ class ComprehensiveIaCTesting:
 
 ---
 
-## Configuration Files {#configuration}
+## Configuration files {#configuration}
 
 This section contains configuration files for different tools and services.
 
@@ -1210,11 +1210,11 @@ compliance_monitoring:
 
 ---
 
-## Chapter 13: Testing Strategies Reference Implementations {#chapter-13-testing}
+## Chapter 13: Testing strategies reference implementations {#chapter-13-testing}
 
 This section contains comprehensive code examples referenced in Chapter 13: Testing Strategies for Infrastructure as Code.
 
-### 13_CODE_A: Vitest Configuration for Infrastructure as Code Projects {#13_code_a}
+### 13_CODE_A: Vitest configuration for Infrastructure as Code projects {#13_code_a}
 *Listing 13-A.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1277,7 +1277,7 @@ export default defineConfig({
 });
 ```
 
-### 13_CODE_B: Terraform Configuration Generator {#13_code_b}
+### 13_CODE_B: Terraform configuration generator {#13_code_b}
 *Listing 13-B.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1369,7 +1369,7 @@ export class TerraformConfigGenerator {
 }
 ```
 
-### 13_CODE_C: Terraform Configuration Generator Tests {#13_code_c}
+### 13_CODE_C: Terraform configuration generator tests {#13_code_c}
 *Listing 13-C.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1418,7 +1418,7 @@ describe('TerraformConfigGenerator', () => {
 });
 ```
 
-### 13_CODE_D: Infrastructure Validator {#13_code_d}
+### 13_CODE_D: Infrastructure validator {#13_code_d}
 *Listing 13-D.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1512,7 +1512,7 @@ export class InfrastructureValidator {
 }
 ```
 
-### 13_CODE_E: Infrastructure Validator Tests {#13_code_e}
+### 13_CODE_E: Infrastructure validator tests {#13_code_e}
 *Listing 13-E.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1609,7 +1609,7 @@ describe('InfrastructureValidator', () => {
 });
 ```
 
-### 13_CODE_F: GitHub Actions Vitest Workflow {#13_code_f}
+### 13_CODE_F: GitHub Actions Vitest workflow {#13_code_f}
 *Listing 13-F.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1675,7 +1675,7 @@ jobs:
           reporter: java-junit
 ```
 
-### 13_CODE_G: Requirements as Code Definition {#13_code_g}
+### 13_CODE_G: Requirements as Code definition {#13_code_g}
 *Listing 13-G.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1726,7 +1726,7 @@ requirements:
         tooling: policy-as-code
 ```
 
-### 13_CODE_H: Requirements Validation Framework {#13_code_h}
+### 13_CODE_H: Requirements validation framework {#13_code_h}
 *Listing 13-H.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1791,7 +1791,7 @@ def load_validator(catalogue_path: str) -> RequirementValidator:
     return RequirementValidator.from_file(Path(catalogue_path))
 ```
 
-### 13_CODE_I: Terratest for GDPR-Compliant Infrastructure {#13_code_i}
+### 13_CODE_I: Terratest for GDPR-Compliant infrastructure {#13_code_i}
 *Listing 13-I.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1853,7 +1853,7 @@ func TestPlatformStackGDPRCompliance(t *testing.T) {
 }
 ```
 
-### 13_CODE_J: Policy-as-Code Testing with OPA {#13_code_j}
+### 13_CODE_J: Policy-as-Code testing with OPA {#13_code_j}
 *Listing 13-J.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -1946,7 +1946,7 @@ test_allows_encrypted_bucket if {
 }
 ```
 
-### 13_CODE_K: Kubernetes Infrastructure Test Suite {#13_code_k}
+### 13_CODE_K: Kubernetes infrastructure test suite {#13_code_k}
 *Listing 13-K.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -2016,7 +2016,7 @@ spec:
             defaultMode: 0555
 ```
 
-### 13_CODE_L: Infrastructure Testing Pipeline {#13_code_l}
+### 13_CODE_L: Infrastructure testing pipeline {#13_code_l}
 *Listing 13-L.*
 *Referenced from Chapter 13: [Testing Strategies](13_testing_strategies.md)*
 
@@ -2152,9 +2152,9 @@ jobs:
 
 ---
 
-## Organisational Change and Team Structures {#organisational-change}
+## Organisational change and team structures {#organisational-change}
 
-### 17_CODE_1: Infrastructure Platform Team Blueprint {#17_code_1}
+### 17_CODE_1: Infrastructure platform team blueprint {#17_code_1}
 *Listing 17-A.*
 *Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
 
@@ -2268,7 +2268,7 @@ team_structure:
     knowledge_sharing: "Monthly internal tech talks"
 ```
 
-### 17_CODE_2: IaC Competency Framework Utilities {#17_code_2}
+### 17_CODE_2: IaC competency framework utilities {#17_code_2}
 *Listing 17-B.*
 *Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
 
@@ -2653,7 +2653,7 @@ def create_organizational_change_plan(organization_assessment: Dict) -> Dict:
     return change_plan
 ```
 
-### 17_CODE_3: DevOps Performance Measurement Framework {#17_code_3}
+### 17_CODE_3: DevOps performance measurement framework {#17_code_3}
 *Listing 17-C.*
 *Referenced from chapter 17: [Organisational Change and Team Structures](17_organisational_change.md)*
 
@@ -2807,7 +2807,7 @@ The performance levels in `technical_metrics` follow the four clusters of the DO
 
 ---
 
-## References and Navigation
+## References and navigation
 
 Each code example in this appendix can be referenced from the main text using its unique identifier. To find specific implementations:
 
@@ -2815,14 +2815,14 @@ Each code example in this appendix can be referenced from the main text using it
 2. **Follow the categories** - Navigate to the relevant section based on use case
 3. **Use cross-references** - Follow links back to the main chapters for context
 
-### Conventions for Code Examples
+### Conventions for code examples
 
 - **Identifiers**: Every listing is numbered `[chapter]_CODE_[number]` (or lettered, as in 13_CODE_A) and carries a stable anchor for cross-references
 - **Backlinks**: The italic line under each heading names the chapter that introduces the listing
 - **Language tags**: Code fences carry the language (`yaml`, `hcl`, `rego`, `go`, `python`, `typescript`, `json`, `groovy`, `structurizr`) used by the build and by syntax highlighting
 - **Comments**: All code examples contain comments for clarity, and version pins are refreshed at each review of the manuscript
 
-### Updates and Maintenance
+### Updates and maintenance
 
 This appendix is updated regularly when new code examples are added to the book's main chapters. For the latest version of code examples, see the book's GitHub repository.
 
@@ -2832,7 +2832,7 @@ _For more information about specific implementations, see the respective main ch
 
 - - -
 
-## Chapter 14 Reference Implementations {#chapter-14-implementations}
+## Chapter 14 reference implementations {#chapter-14-implementations}
 
 The extended Terraform implementation that once appeared inline in Chapter 14 is preserved here so that readers can access the full listing without interrupting the main narrative. Cross-references in the chapter point to these appendix entries for quick navigation.
 
@@ -3308,7 +3308,7 @@ jobs:
 
 ---
 
-## Chapter 15 Reference Implementations {#chapter-15-implementations}
+## Chapter 15 reference implementations {#chapter-15-implementations}
 
 ### 15_CODE_1: Cost-aware Terraform infrastructure configuration {#15_code_1}
 *Referenced from Chapter 15: [Cost Optimisation and Resource Management](15_cost_optimization.md)*
@@ -4071,7 +4071,7 @@ resource "aws_launch_template" "spot_optimized" {{
 
 ## Security and compliance {#security-compliance}
 
-### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
+### 10_CODE_1: Advanced policy-as-code module for EU compliance {#10_code_1}
 *Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached. The module is written in OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and `import rego.v1` keeps the module compatible with OPA 0.59 and later [Source [44]](33_references.md#source-44). Fall-back values are expressed with `default` functions, because a second definition that matched every input would conflict with the specific definitions at evaluation time.
 
 ```rego
@@ -4602,7 +4602,7 @@ assess_regulator(name, violations) := summary if {
 }
 ```
 
-### 10_CODE_4: Automated OSCAL System Security Plan generator {#10_code_4}
+### 10_CODE_4: Automated OSCAL system security plan generator {#10_code_4}
 *Referenced from Chapter 10.* This Python utility parses the Terraform configuration, matches the declared resource types with the component definitions through their `terraform-resource-type` property, and produces an OSCAL 1.1.2 System Security Plan with the mandatory system characteristics, system implementation and flattened control implementation. The script is designed to run inside CI so every deployment updates the compliance evidence set; validate the output with `oscal-cli validate` in the same pipeline.
 
 ```python

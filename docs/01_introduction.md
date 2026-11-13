@@ -18,13 +18,13 @@ The tipping point for most organisations adopting Architecture as Code is the co
 
 Architecture as Code counters that systemic complexity by capturing service boundaries, operational dependencies, security policies, and resilience patterns as executable artefacts. When those definitions travel through the same pipelines as application code, teams can guarantee that mesh rules, policy guardrails, and interoperability tests evolve in lockstep with every service. In practice this makes Architecture as Code the governing layer that keeps sprawling microservice portfolios coherent, observable, and compliant.
 
-## Definition and Scope
+## Definition and scope
 
 Architecture as Code is the practice of describing, version-controlling, and automating the entire system architecture through machine-readable code. The discipline produces *live, executable specifications* that stay synchronised with the running estate rather than lingering as aspirational design artefacts, and it encompasses application components, integration patterns, data architecture, infrastructure, and organisational processes. The FINOS Common Architecture Language Model (CALM) ([Source [1]](33_references.md#source-1)) illustrates the direction of travel: an open specification that expresses software architecture in a standardised, version-controlled, machine-readable format so that it can be validated, visualised, and documented directly from the delivery pipeline.
 
 This holistic approach enables end-to-end automation, where changes in requirements automatically propagate throughout the architecture – from application logic to deployment and monitoring. Because the specifications remain executable, governance controls, quality gates, and audit evidence can be embedded directly into the same pipelines that deliver software, keeping architecture intent verifiable at the pace that continuous delivery demands.
 
-## Critique of Traditional Architecture
+## Critique of traditional architecture
 
 Traditional architecture practices have struggled with "slideware syndrome"—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational reality. As environments evolve, these unchecked artefacts accumulate architectural entropy: the gradual loss of coherence between documented intent and implemented systems. This entropy erodes trust, leaving teams to improvise workarounds that bypass architectural guardrails altogether.
 
@@ -44,7 +44,7 @@ Extensibility is the safeguard against future bottlenecks. Modular model definit
 
 Productivity is the direct outcome of codifying architecture. Once architectural definitions, policies, and documentation live in version control, automation can validate changes, orchestrate reviews, and publish documentation without manual intervention. The result is faster feedback for architects and delivery teams, fewer approval bottlenecks, and a measurable uplift in how quickly organisations can make safe architectural decisions.
 
-## The Interconnected Flow of Architecture as Code
+## The interconnected flow of Architecture as Code
 
 ![Architecture as Code Flow](images/diagram_01_aac_flow.png)
 
@@ -56,13 +56,13 @@ Architecture as Code is not a linear process but an interconnected ecosystem whe
 
 Finally, **Infrastructure as Code**—the automated approach of managing and provisioning infrastructure through configuration files rather than manual processes ([Source [29]](33_references.md#source-29))—provisions and manages the runtime environment. **Management as Code** integrates leadership practices, governance routines, and strategic decision-making into the same version-controlled ecosystem, ensuring that organisational policies and management intent are codified alongside technical implementations. The feedback loops show how infrastructure changes can trigger compliance checks, how management policies inform requirements and compliance, and how CI/CD results inform requirements validation, creating a continuous improvement cycle that spans both technical and organisational domains.
 
-## Purpose and Target Audience of the Book
+## Purpose and target audience of the book
 
 This book is aimed at system architects, developers, project managers, and IT decision-makers who want to understand and implement Architecture as Code within their organisations.
 
 Readers will gain comprehensive knowledge of how the entire system architecture can be codified, from foundational principles to advanced architectural patterns that encompass an organisation’s entire digital ecosystem.
 
-## How This Book Is Organised
+## How this book is organised
 
 This book follows a deliberate progression that mirrors the typical Architecture as Code transformation journey:
 
@@ -88,7 +88,7 @@ Each part builds upon previous foundations whilst setting the stage for what fol
 
 The *Architecture as Code* course workbook, exercise guide, and facilitator materials in `course/` extend this book into a practised learning journey. Each module maps directly to the chapters referenced throughout this introduction, ensuring that participants reinforce the concepts, controls, and cultural shifts described in the text. Workbook templates prompt teams to cite the relevant chapters, appendices, and evidence patterns so that classroom outputs remain consistent with the canonical guidance presented here. Facilitators should encourage learners to keep the workbook and this book side by side: every experiment, radar update, and artefact submission ought to reference the sections that informed the work, maintaining a verifiable audit trail between theory and practice.
 
-## Looking Ahead
+## Looking ahead
 
 Architecture as Code is more than a tooling choice — it is a governing discipline that unifies design intent, delivery automation, and operational accountability into a single, version-controlled artefact. The core claim running through this book is that when architectural specifications become executable, governance becomes continuous rather than periodic, and the distance between intent and implementation collapses. By treating architecture with the same rigour as application code—the rigour that Martin (2017) [Source [33]](33_references.md#source-33) argues software structure and boundaries deserve—organisations gain the transparency, traceability, and speed that modern digital delivery demands without sacrificing the oversight that regulated and complex environments require.
 

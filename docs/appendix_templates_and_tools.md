@@ -2,25 +2,25 @@
 
 Architecture as Code initiatives rely on reusable templates and interactive tools to keep governance, maturity assessments, and compliance evidence consistent. This appendix curates the canonical assets published alongside the book so that practitioners can embed them directly into their delivery workflows.
 
-## Architecture as Code Maturity Model
+## Architecture as Code maturity model
 
 The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) describes six maturity levels (0–5), from ad hoc practice through to fully codified, AI-assisted enterprise governance, together with a per-discipline yes/no checklist of fifty questions across ten "as code" disciplines that helps teams benchmark their progress.
 
-## Architecture as Code Maturity Radar Tool
+## Architecture as Code maturity radar tool
 
 The [Maturity Radar Tool](maturity_model_radar.html) offers an interactive visualisation of the maturity model. It captures current-state answers to the checklist, plots them as a radar chart, lists prioritised improvement suggestions with chapter references, and exports the assessment as JSON (for later re-import) or as a PDF for strategy reviews.
 
-## Control Mapping Matrix Template
+## Control mapping matrix template
 
 The [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template.md) provides a reusable table for expressing "assure once, comply many" evidence flows. Use it to link automated assurance artefacts to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal policies so that governance teams can reuse validated outputs without bespoke reporting.
 
-## Implementation Guidance
+## Implementation guidance
 
 1. **Version the artefacts:** Store local copies of the templates in version control so changes trigger peer review and automated validation.
 2. **Integrate with pipelines:** Reference the templates from CI/CD jobs to keep evidence manifests, maturity assessments, and control mappings synchronised with production systems.
 3. **Tailor for context:** Extend the templates with sector-specific obligations or additional metrics, but retain the canonical structure to preserve comparability across programmes.
 
-## Migration Assessment Automation
+## Migration assessment automation
 
 The Python module below complements the migration guidance in [Chapter 16](16_migration.md). It inventories AWS resources that are not yet managed as code, estimates effort and risk, and generates a Terraform import plan and a migration playbook. The helper methods are deliberately simple heuristics: adapt the thresholds and the tag conventions (for example your own `ManagedBy` tag) to your estate before relying on the output.
 

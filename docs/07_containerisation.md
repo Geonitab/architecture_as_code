@@ -108,7 +108,7 @@ Data protection remains critical. Backup schedules, retention policies, and disa
 
 ## Practical examples
 
-### Kubernetes Deployment Configuration
+### Kubernetes deployment configuration
 ```yaml
 # app-deployment.yaml
 apiVersion: apps/v1
@@ -158,7 +158,7 @@ spec:
   type: LoadBalancer
 ```
 
-### Helm Chart for Application Stack
+### Helm chart for application stack
 ```yaml
 # values.yaml
 application:
@@ -194,7 +194,7 @@ monitoring:
     dashboards: true
 ```
 
-### Docker Compose for Development Environment
+### Docker compose for development environment
 ```yaml
 # docker-compose.yml
 services:
@@ -232,7 +232,7 @@ volumes:
   postgres_data:
 ```
 
-### Terraform for Kubernetes Cluster
+### Terraform for Kubernetes cluster
 ```hcl
 # kubernetes-cluster.tf
 resource "google_container_cluster" "primary" {
@@ -295,7 +295,7 @@ resource "google_container_node_pool" "primary_nodes" {
 
 Architecture as Code provides a common language for development, operations, and security teams. By expressing container platforms, orchestration logic, networking, and data safeguards as code, organisations can automate delivery, scale confidently, and apply governance consistently. Kubernetes and its surrounding ecosystem offer the building blocks, while GitOps workflows keep every environment aligned with the declared intent. Mastery of these practices delivers resilient platforms that adapt quickly to changing requirements.
 
-## Transition to Security, Governance and Assurance
+## Transition to security, governance and assurance
 
 The automation capabilities and deployment velocity enabled by containerisation and CI/CD pipelines create new security challenges and governance requirements. As containers move through development, testing, and production environments at increasing speed, security controls must keep pace without becoming bottlenecks.
 

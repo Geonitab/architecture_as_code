@@ -16,7 +16,7 @@ Organisations with strict compliance requirements must implement comprehensive t
 
 Test automation for codified infrastructure enables continuous integration and continuous deployment patterns that accelerate delivery whilst reducing the risk of production disruptions. These testing pipelines can run in parallel with application testing to ensure end-to-end quality assurance across the entire technology stack. The AWS Well-Architected Framework expresses the same expectation in its operational excellence principle of safely automating where possible: the entire workload and its operations are defined as code and updated through automation ([Source [91]](33_references.md#source-91)).
 
-## Unit Testing for Codified Infrastructure
+## Unit testing for codified infrastructure
 
 Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure. This enables rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.
 
@@ -24,7 +24,7 @@ Programmatic Architecture as Code platforms such as Pulumi and the AWS Cloud Dev
 
 Terraform tooling covers several layers. Checkov and terraform-compliance validate HCL and plan output against predefined policies and codified infrastructure best practices, and Checkov also runs inside the IDE for real-time feedback during development. Terratest, by contrast, is a Go library that deploys real infrastructure from Go tests and verifies the result ([Source [90]](33_references.md#source-90)). All of them integrate into CI/CD pipelines as automated quality gates.
 
-### Comparing Pulumi and Terraform Testability
+### Comparing Pulumi and Terraform testability
 
 Pulumi's testing documentation ([Source [15]](33_references.md#source-15)) distinguishes three styles: unit tests that run in memory with every external call mocked, property tests that assert on resources while a deployment is running, and integration tests that deploy ephemeral infrastructure. Because programs are written in general-purpose languages, unit tests reuse the host language's test runner—`npm test`, `pytest`, or similar—and complete in milliseconds without touching the cloud, which encourages test-first habits and reduces the cost of validation.
 
@@ -101,11 +101,11 @@ The Terraform job passes its backend settings with `-backend-config` flags, beca
 
 Integrating the pipeline with observability platforms completes the resilience loop. Terraform plan uploads and Pulumi previews should be annotated in chat channels alongside drift-detection alerts, whilst Terratest and Pulumi host-language test results are forwarded to reporting dashboards. This instrumentation ensures that failure trends are visible, high-risk infrastructure changes are stopped before they reach production, and recovery rehearsals remain auditable.
 
-## Test Management with Vitest for Architecture as Code
+## Test management with Vitest for Architecture as Code
 
 Vitest is a modern testing framework built for the Vite ecosystem that offers fast and effective testing of JavaScript/TypeScript code. For Architecture as Code initiatives that use modern tooling, Vitest is particularly relevant for testing configuration generators, validation scripts and automation tools that are often written in TypeScript or JavaScript.
 
-### Why Vitest is Relevant for Architecture as Code
+### Why Vitest is relevant for Architecture as Code
 
 Many modern Architecture as Code workflows include TypeScript/JavaScript components to generate, validate or transform infrastructure configurations. Vitest enables rapid unit testing of these components with first-class TypeScript support, which is critical to ensure correct configuration generation before deployment.
 
@@ -113,7 +113,7 @@ Vitest's fast execution and watch mode enable tight development feedback loops w
 
 Integration with Vite build tooling means that the same development environment can be used for both application code and infrastructure-related code, which reduces context switching and improves developer experience for teams that work with both application and infrastructure code.
 
-### Configuration of Vitest for Architecture as Code Projects
+### Configuration of Vitest for Architecture as Code projects
 
 *See Appendix A, Listing 13-A for the complete Vitest configuration example demonstrating test environment setup, coverage requirements and path resolution for Architecture as Code initiatives.*
 
@@ -125,7 +125,7 @@ The configuration should include:
 - Exclusion of Terraform directories and build artefacts
 - Path aliases for cleaner imports
 
-### Practical Examples for Architecture as Code Testing
+### Practical examples for Architecture as Code testing
 
 ![Testing Strategy Quadrant](images/diagram_13_testing_quadrant.png)
 
@@ -133,7 +133,7 @@ The configuration should include:
 
 The testing quadrant above illustrates the balance between implementation complexity and testing coverage. Different testing strategies occupy distinct positions, with security scanning and policy testing offering high coverage with moderate complexity, whilst end-to-end tests provide comprehensive coverage at the cost of higher implementation complexity.
 
-#### Example 1: Testing Terraform Configuration Generators
+#### Example 1: Testing Terraform configuration generators
 
 Configuration generators are TypeScript/JavaScript modules that programmatically create Terraform configurations with built-in validation and compliance rules. Testing these generators ensures they produce correct, compliant configurations consistently.
 
@@ -146,7 +146,7 @@ Key testing patterns for configuration generators include:
 - **Environment-specific logic**: Test that production environments receive enhanced security and redundancy
 - **Error conditions**: Verify that invalid inputs trigger appropriate errors
 
-#### Example 2: Testing Infrastructure Validation Scripts
+#### Example 2: Testing infrastructure validation scripts
 
 Infrastructure validators are utilities that check existing or planned infrastructure against organisational policies, security standards and compliance requirements before deployment.
 
@@ -159,7 +159,7 @@ Critical validation test patterns include:
 - **Security group rules**: Block dangerous port configurations open to the internet
 - **Warning vs error conditions**: Differentiate between hard failures and advisory warnings
 
-### Integration in CI/CD Pipeline
+### Integration in CI/CD pipeline
 
 Vitest integrates directly into CI/CD pipelines for automated testing of infrastructure code. A typical GitHub Actions workflow runs tests on pull requests and pushes, generates coverage reports and provides feedback through automated comments.
 
@@ -178,7 +178,7 @@ Add test scripts to `package.json`:
 }
 ```
 
-### Recommendations for Test Organisation
+### Recommendations for test organisation
 
 **File Structure for Architecture as Code Tests:**
 
@@ -215,7 +215,7 @@ project/
 | Mock external dependencies | Use Vitest's mocking capabilities for cloud provider SDKs and external APIs | Faster tests, no cloud costs, deterministic results, enables offline testing |
 | Snapshot testing | Use snapshot tests to validate generated configuration files | Catch unintended configuration changes, document expected output structure |
 
-### Automation and Watch Mode
+### Automation and watch mode
 
 One of Vitest's biggest benefits is watch mode that enables continuous testing during development:
 
@@ -234,7 +234,7 @@ This enables tight feedback loops where infrastructure code changes are immediat
 
 For organisations with strict compliance requirements, automated testing with Vitest can ensure that infrastructure configurations consistently meet GDPR requirements, security policies and organisational standards before deployment.
 
-## Integration Testing and Environment Validation
+## Integration testing and environment validation
 
 Integration testing for Infrastructure as Code verifies that different infrastructure components function together correctly and that deployed infrastructure meets performance and security requirements. This requires temporary test environments that closely mirror production configurations.
 
@@ -244,7 +244,7 @@ Environment parity testing ensures infrastructure behaves consistently across de
 
 Chaos engineering principles can be applied to infrastructure testing by systematically introducing failures in test environments to validate resilience and recovery mechanisms. This is particularly valuable for mission-critical systems that require high availability guarantees.
 
-### Chaos Monkey Experiments
+### Chaos Monkey experiments
 
 Chaos Monkey popularised the idea of terminating running services deliberately to test that distributed systems heal without human intervention. When the failure scenarios are described alongside Infrastructure as Code definitions, teams can rehearse instance loss, network blackouts, or degraded dependencies as codified experiments rather than ad-hoc drills.
 
@@ -258,7 +258,7 @@ Effective guardrails include:
 
 By treating Chaos Monkey activity as a repeatable test, organisations build confidence that automated recovery paths are reliable and that human responders can focus on the genuinely unexpected.
 
-## Security and Compliance Testing
+## Security and compliance testing
 
 Security testing for Infrastructure as Code must validate both infrastructure configuration security and operational security controls. This includes scanning for common security misconfigurations, validation of encryption settings and verification of network security policies.
 
@@ -268,7 +268,7 @@ Policy-as-code frameworks such as Open Policy Agent (OPA) and AWS Config Rules e
 
 Vulnerability scanning for infrastructure dependencies must include container images, operating system configurations and third-party software components. Integration with security scanning tools in CI/CD pipelines ensures security vulnerabilities are identified before deployment to production.
 
-## Performance and Scalability Testing
+## Performance and scalability testing
 
 Performance testing for Infrastructure as Code focuses on validation of infrastructure capacity, response times and resource utilisation under various load conditions. This is critical for applications that require predictable performance characteristics under varying traffic patterns.
 
@@ -278,7 +278,7 @@ Scalability testing verifies that infrastructure can handle projected growth eff
 
 Capacity planning validation through performance testing helps optimise resource configurations for cost-effectiveness whilst performance requirements are met. This is particularly important for organisations that balance cost optimisation with service level requirements.
 
-## Requirements as Code and Testability
+## Requirements as Code and testability
 
 ![Requirements and testing relation](images/diagram_12_requirements_testing.png)
 
@@ -290,7 +290,7 @@ Requirements as Code represents a paradigm shift where business requirements and
 
 By defining Requirements as Code, a direct connection is created between business requirements, functional requirements and the automated tests that verify Infrastructure as Code implementations. This traceability is critical for organisations that must demonstrate compliance and for development teams that need to understand business consequences of technical decisions.
 
-### Requirement Traceability in Practice
+### Requirement traceability in practice
 
 Requirements traceability for Infrastructure as Code means that each infrastructure component can be linked back to specific business requirements or compliance requirements. This is particularly important for organisations that must meet GDPR, financial regulations or government requirements.
 
@@ -298,7 +298,7 @@ Tools such as Open Policy Agent (OPA) enable expression of compliance requiremen
 
 Requirement validation testing ensures infrastructure is not only technically correct but also meets business intent. This includes validation of security requirements, performance requirements, accessibility requirements and cost constraints as defined by business stakeholders.
 
-### Automated Requirements Verification
+### Automated requirements verification
 
 *See Appendix A, Listing 13-G for a complete requirements verification framework demonstrating how to define requirements in YAML format with associated test specifications, compliance mappings and priority levels.*
 
@@ -312,9 +312,9 @@ The requirements framework should include:
 
 *See Appendix A, Listing 13-H for the Python implementation of the requirements validator that executes tests and generates compliance reports.*
 
-## Practical Examples
+## Practical examples
 
-### Terraform Unit Testing with Terratest
+### Terraform unit testing with Terratest
 
 *See Appendix A, Listing 13-I for a comprehensive Terratest example demonstrating testing of Terraform infrastructure with GDPR compliance validation, data residency requirements and organisational tagging standards for regulated environments.*
 
@@ -326,7 +326,7 @@ The Terratest framework enables:
 - Automated cleanup after test completion
 - Integration with cloud provider SDKs for validation
 
-### Policy-as-Code Testing with OPA
+### Policy-as-Code testing with OPA
 
 *See Appendix A, Listing 13-J for Open Policy Agent (OPA) test examples demonstrating validation of S3 bucket encryption, EC2 security group requirements and GDPR data classification compliance.*
 
@@ -339,9 +339,9 @@ OPA testing patterns include:
 
 Note that OPA 1.0 (December 2024) made the `if` and `contains` keywords mandatory in Rego, so older policy examples and their tests need updating to the current syntax ([Source [44]](33_references.md#source-44)).
 
-## Kubernetes Integration Testing
+## Kubernetes integration testing
 
-### Kubernetes Infrastructure Testing
+### Kubernetes infrastructure testing
 
 *See Appendix A, Listing 13-K for a comprehensive Kubernetes infrastructure test suite demonstrating validation of resource quotas, Pod Security Admission (PSA) policies, network policies and GDPR-compliant persistent volume encryption.*
 
@@ -358,9 +358,9 @@ Kubernetes infrastructure testing patterns include:
 
 The test suite should run as a Kubernetes Job that validates cluster configuration against organisational policies and regulatory requirements, ensuring that all deployed resources meet security and compliance standards.
 
-## Pipeline Automation for Infrastructure Testing
+## Pipeline automation for infrastructure testing
 
-### CI/CD Pipeline for Infrastructure Testing
+### CI/CD pipeline for infrastructure testing
 
 *See Appendix A, Listing 13-L for a comprehensive GitHub Actions workflow demonstrating infrastructure testing pipeline with static analysis, unit testing, integration testing, compliance validation and performance testing stages.*
 

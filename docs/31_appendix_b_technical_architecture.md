@@ -10,7 +10,7 @@ This appendix describes the technical infrastructure and workflow that produce, 
 
 *The second diagram illustrates the build environment, processing steps, and the various output formats produced from the source materials.*
 
-### File Organisation and Naming Conventions
+### File organisation and naming conventions
 
 Book content is organised in 38 chapter and appendix files within the `docs/` directory—31 chapters and 7 appendices, as listed in the canonical index `docs/book_index.json`—together with eight part introductions (`part_*.md`), the front cover (`00_front_cover.md`), and three supplements (the maturity model, the maturity radar tool, and the control mapping matrix template). Numbered files follow the pattern `NN_name.md`; letter suffixes (`09b`, `15a`, `26a`) mark chapters inserted after the original numbering, and the reading order is defined by the index rather than by the file names:
 
@@ -37,7 +37,7 @@ docs/
 └── appendix_d_control_mapping_matrix_template.md  # Supplement: control mapping matrix
 ```
 
-### Markdown Structure and Semantics
+### Markdown structure and semantics
 
 Each chapter follows a consistent structure that optimises both readability and automated processing. The template below demonstrates how headings, diagrams, lists, and code samples are arranged.
 
@@ -61,7 +61,7 @@ Introductory text with a short description of the chapter’s contents.
 
 This layout ensures that readers can skim the content quickly, while the build pipeline can reliably transform every chapter into the desired publication formats.
 
-### Automated Content Generation
+### Automated content generation
 
 Automated chapter generation is deliberately disabled to protect the British English manuscript in `docs/`; the legacy `generate_iac_book_content()` routine remains in `generate_book.py` but is no longer called. Today the script is a build and selection tool:
 
@@ -81,9 +81,9 @@ The FINOS Architecture as Code project describes its aim as devising and managin
 
 A different open-source project with a similar name, Architecture-as-Code (AaC) from the DevOps-MBSE community, takes a model-based systems engineering approach: systems are defined in YAML, a Python command-line tool checks each model against AaC's self-describing core definitions, and every additional capability is delivered through plugins so that generators or schema extensions can be added without altering the core runtime [Source [132]](33_references.md#source-132). The book publishing stack applies the same principle—diagram renderers, validation routines, and export scripts are modular components that can be composed or replaced as requirements change—ensuring the base workflow remains stable whilst allowing teams to layer in domain-specific automation.
 
-## Pandoc: Conversion and Formatting
+## Pandoc: Conversion and formatting
 
-### Configuration System
+### Configuration system
 
 Pandoc conversion is governed by two defaults files: `pandoc.yaml` for the PDF build (XeLaTeX with the Eisvogel template) and `pandoc-nonlatex.yaml` for the EPUB and DOCX builds. The PDF defaults file begins as follows:
 
@@ -111,7 +111,7 @@ metadata:
 
 Its `variables` block selects the `book` document class, sets the page geometry, and adds an `include-before` fragment that renders the full-bleed cover (`images/book-cover.png`) and the release-information page. `pandoc-nonlatex.yaml` repeats the shared settings—table of contents, section numbering, `highlight-style: tango`, `epub-chapter-level: 1`, and the same metadata—without the LaTeX template and variables.
 
-### Build Process and Architecture as Code Automation
+### Build process and Architecture as Code automation
 
 `build_book.sh` orchestrates the entire build process:
 
@@ -146,14 +146,14 @@ pandoc "${NON_LATEX_CHAPTER_FILES[@]}" --defaults=pandoc-nonlatex.yaml \
     -t docx -o architecture_as_code.docx
 ```
 
-### Quality Assurance and Validation
+### Quality assurance and validation
 
 - **Template validation**: Automatically checks the Eisvogel template.
 - **Configuration control**: Verifies Pandoc settings in `pandoc.yaml`.
 - **Image handling**: Ensures every diagram reference resolves correctly.
 - **Output verification**: Confirms the generated files meet expectations.
 
-## Evolutionary Architecture Fitness Functions
+## Evolutionary architecture fitness functions
 
 Architecture as Code encourages continuous evaluation of structural decisions. To stop Structurizr diagrams drifting away from reality, embed evolutionary architecture fitness functions in the publication pipeline:
 
@@ -165,9 +165,9 @@ Architecture as Code encourages continuous evaluation of structural decisions. T
 
 By codifying these checks, the programme maintains a living architecture model whose quality improves with each iteration instead of eroding through manual drift.
 
-## GitHub Actions: CI/CD Pipeline
+## GitHub Actions: CI/CD pipeline
 
-### Primary Workflow for Book Production
+### Primary workflow for book production
 
 `unified-build-release.yml` ("Unified Build & Release") automates the entire publication process. It consolidates the earlier `build-book.yml`, `build-book-fast.yml`, and `complete-release.yml` workflows into one Docker-based pipeline:
 
@@ -219,7 +219,7 @@ jobs:
 
 The workflow has three jobs: `setup` determines the build strategy and the deliverables to produce (5-minute timeout), `docker-build` performs the build (60-minute timeout), and `finalize` merges and publishes the results (15-minute timeout).
 
-### Workflow Steps and Optimisations
+### Workflow steps and optimisations
 
 1. **Build environment (Docker image)**:
    - `Dockerfile.book-builder` starts from Ubuntu 22.04 and installs TeX Live with XeLaTeX, Pandoc 3.1.9 from the official `.deb` package, Node.js 20 with Mermaid CLI 10.7.0, Google Chrome for Puppeteer, the Eisvogel template, and the Python requirements.
@@ -238,7 +238,7 @@ The workflow has three jobs: `setup` determines the build strategy and the deliv
    - The `finalize` job uploads the deliverables as workflow artefacts, retained for 30 days.
    - On pushes to `main` (or a manual run with `create_release` enabled) it creates a GitHub Release with `softprops/action-gh-release@v2` containing the PDF, EPUB, DOCX, PPTX, the combined whitepaper PDF, and a zip archive of all deliverables.
 
-### Complementary Workflows
+### Complementary workflows
 
 - **Content Validation Tests** (`content-validation.yml`): Runs `tests/run_tests.py --type all` and the pytest suites for completeness, consistency, clarity, and technical accuracy on pull requests and pushes that touch `docs/**/*.md`, `tests/**`, or `generate_book.py`; the test reports are uploaded as artefacts.
 - **Build MkDocs Site** (`build-mkdocs.yml`): Builds the documentation website with MkDocs on changes to `docs/**` or `mkdocs.yml` and deploys it to the `gh-pages` branch, published at [https://aac.geon.se](https://aac.geon.se).
@@ -248,9 +248,9 @@ The workflow has three jobs: `setup` determines the build strategy and the deliv
 
 Presentation decks and whitepapers are produced by the unified workflow; there are no separate presentation or whitepaper workflows.
 
-## Presentation Materials: Preparation and Generation
+## Presentation materials: Preparation and generation
 
-### Automated Outline Generation
+### Automated outline generation
 
 `generate_presentation.py` creates presentation materials from the book’s content. The outline generator reads the chapter catalogue from `BOOK_REQUIREMENTS.md` through `load_book_requirements()`, groups the chapters by part, and only falls back to scanning `docs/*.md` alphabetically when that catalogue is unavailable:
 
@@ -283,7 +283,7 @@ def generate_presentation_outline():
     ...
 ```
 
-### PowerPoint Integration
+### PowerPoint integration
 
 The system delivers:
 
@@ -292,7 +292,7 @@ The system delivers:
 - **Kvadrat branding**: Consistent visual identity.
 - **Content optimisation**: Arranged for confident verbal delivery.
 
-### Distribution and Use
+### Distribution and use
 
 ```bash
 # Download artefacts from GitHub Actions
@@ -303,9 +303,9 @@ python generate_pptx.py
 
 The result is a set of professional PowerPoint presentations tailored for conferences, workshops, training sessions, marketing activities, and technical seminars.
 
-## Cover and Whitepapers: Design and Integration
+## Cover and whitepapers: Design and integration
 
-### Cover Design System
+### Cover design system
 
 The cover is rendered during the build rather than kept as a tree of exports. `templates/book-cover.svg` is the single approved cover source: `build_book.sh` renders it to `images/book-cover.png`, `pandoc.yaml` places that image as a full-bleed first page through its `include-before` fragment, and the EPUB build receives it through `--epub-cover-image`. The original HTML/CSS design studies and brand notes are archived under `docs/archive/book-cover/` (excluded from the website by `exclude_docs` in `mkdocs.yml`), and the former `exports/` directory is listed in `.gitignore` so that it cannot return:
 
@@ -324,7 +324,7 @@ docs/archive/book-cover/              # Archived design sources (not part of the
 └── svg/                              # Legacy vector export
 ```
 
-### Kvadrat Brand Integration
+### Kvadrat brand integration
 
 The presentation template implements Kvadrat’s visual identity through CSS colour tokens, which the whitepaper template mirrors; the excerpt below is taken from `templates/presentation-template.html`:
 
@@ -339,7 +339,7 @@ The presentation template implements Kvadrat’s visual identity through CSS col
 }
 ```
 
-### Whitepaper Generation
+### Whitepaper generation
 
 `generate_whitepapers.py` creates standalone HTML documents:
 
@@ -348,9 +348,9 @@ The presentation template implements Kvadrat’s visual identity through CSS col
 - **Context section per chapter**: Each whitepaper states where its chapter sits within the programme.
 - **Distribution ready**: Suitable for email, web, or print, and bundled into a combined PDF by the release workflow.
 
-## Technical Architecture and System Integration
+## Technical architecture and system integration
 
-### Holistic View of the Architecture
+### Holistic view of the architecture
 
 The system demonstrates Architecture as Code through:
 
@@ -360,14 +360,14 @@ The system demonstrates Architecture as Code through:
 4. **Reproducibility**: Identical builds from the same source code.
 5. **Scalability**: Simple to add new chapters and formats.
 
-### Quality Assurance and Testing
+### Quality assurance and testing
 
 - **Automated validation**: Continuous checks of content and formatting.
 - **Build verification**: Ensures every format is generated correctly.
 - **Performance monitoring**: Tracks build times and resource usage.
 - **Error handling**: Provides clear messages and recovery options.
 
-### Future Development
+### Future development
 
 The system is designed for continuous improvement:
 

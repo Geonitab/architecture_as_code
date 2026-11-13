@@ -1,6 +1,6 @@
 # AI Agent Team for Architecture as Code Initiatives {#ai-agent-team}
 
-## Learning Objectives
+## Learning objectives
 
 By the end of this chapter, you will be able to:
 
@@ -12,7 +12,7 @@ By the end of this chapter, you will be able to:
 
 The Architecture as Code initiative relies on a cohesive ensemble of AI agents that operate as a digital delivery team. Each agent contributes specialised expertise while adhering to a single backlog, common documentation practices, and shared quality thresholds. This chapter presents the agent ecosystem as narrative guidance that emphasises collaboration, accountability, and the continual refinement of project artefacts.
 
-## Multi-Agent Operating Model
+## Multi-Agent operating model
 
 ![AI agent collaboration flow](images/diagram_28_agent_team.png)
 
@@ -22,7 +22,7 @@ The operating model begins with the project owner defining priorities and accept
 
 > **Note:** Multi-agent AI workflows remain an active area of research. Teams adopting this pattern should plan for hallucination mitigation, output validation steps, cost monitoring, and iterative refinement of agent prompts. Treat this operating model as a starting framework requiring ongoing evaluation rather than a fully proven, production-ready blueprint.
 
-## Role Narratives and Responsibilities
+## Role narratives and responsibilities
 
 The Project Manager acts as the coordinating nucleus. They translate strategic directives into prioritised cases, facilitate daily synchronisation, surface blockers early, and prepare a sprint packet that captures completed work, unresolved risks, and suggested trade-offs. Their orchestration ensures that each specialist agent understands the context of their deliverables and the dependencies that bind them.
 
@@ -40,7 +40,7 @@ The Editor safeguards the repository’s written record. They update documentati
 
 The Graphic Designer produces the visual narratives—Mermaid diagrams, illustrative frames, and themed assets—that clarify architectural decisions and team workflows. They maintain a version-controlled library of graphics and iterate alongside the Architect and Editor so that visuals and text reinforce one another.
 
-## Collaboration Patterns Without Temporal Gating
+## Collaboration patterns without temporal gating
 
 The agent collective maintains living cases that accumulate insights whenever two or more specialists exchange information. Rather than tracking activities against a rigid timetable, the focus lies on how communications revise shared artefacts and decisions.
 
@@ -52,7 +52,7 @@ The agent collective maintains living cases that accumulate insights whenever tw
 | Release-readiness review before deployment | Project Manager, Quality Control, Developer | Deployment case annotated with risk mitigations, test evidence attached, and go/no-go decision captured for audit history. |
 | Policy change affecting documentation | Project Manager, Editor, Requirements Analyst | Governance case revised with new policy text, traceability matrix regenerated, and affected chapters scheduled for editorial updates. |
 
-## Governance, Reporting, and Onboarding
+## Governance, reporting, and onboarding
 
 Sprint rituals anchor collaboration. Fortnightly planning sessions connect the project owner’s objectives with the forthcoming sprint commitment, while brief daily synchronisations allow the Project Manager to redirect attention when blockers emerge. Demonstrations at the end of each sprint showcase artefacts to the project owner, and retrospectives catalogue process improvements that the Project Manager threads into the next iteration.
 
@@ -64,7 +64,7 @@ Quality measures underpin accountability. Lead time from requirement to release 
 
 Onboarding for new agents blends orientation with practical delivery. The Project Manager briefs the newcomer on strategic aims, backlog structure, and working agreements. The Editor provides access to documentation standards and historical change logs, after which the Quality Control agent outlines the test strategy and release checkpoints. The Architect concludes the introduction by walking through the current system design. The onboarding agent confirms understanding by presenting a short delivery plan for their first sprint contribution, creating immediate alignment with the rest of the team.
 
-## Integrating AI Agents with Architecture as Code Workflows
+## Integrating AI agents with Architecture as Code workflows
 
 The agent team's value compounds when agents are tightly integrated with the repository and automation infrastructure rather than operating as isolated conversational tools.
 
@@ -174,7 +174,7 @@ When reviewing a pull request or issue:
 4. Provide a structured review with: summary, concerns, recommendations, and required ADRs
 ```
 
-## Human Oversight and Ethical Guardrails
+## Human oversight and ethical guardrails
 
 AI agents amplify team capacity but do not eliminate the need for human judgement. Certain categories of decision must remain with human practitioners:
 

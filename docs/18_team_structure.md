@@ -4,7 +4,7 @@
 
 Successful Architecture as Code adoption demands far more than tools; it requires an intentionally designed operating model where leadership, enablement teams, and delivery squads share accountability. The collaboration ecosystem illustrated above shows how platform governance, shared services, and communities of practice reinforce one another to create reliable delivery loops.
 
-## Learning Objectives
+## Learning objectives
 
 By the end of this chapter, you will be able to:
 - Explain how organisational structures must evolve—from siloed development and operations to product-aligned teams—to support Architecture as Code adoption at scale.
