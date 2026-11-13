@@ -1305,7 +1305,7 @@ export class TerraformConfigGenerator {
     region: string = 'eu-west-1'
   ): TerraformConfig {
     // Validate EU regions for GDPR compliance
-    const euRegions = ['eu-west-1', 'eu-central-1', 'eu-west-2'];
+    const euRegions = ['eu-west-1', 'eu-central-1', 'eu-west-3'];
     if (!euRegions.includes(region)) {
       throw new Error('Region must be within EU for GDPR compliance');
     }
@@ -1385,21 +1385,21 @@ describe('TerraformConfigGenerator', () => {
   const generator = new TerraformConfigGenerator();
 
   it('creates a GDPR-compliant VPC for production in the EU', () => {
-    const config = generator.generateVPCConfig('production', 'eu-west-2');
+    const config = generator.generateVPCConfig('production', 'eu-west-3');
 
-    expect(config.region).toBe('eu-west-2');
+    expect(config.region).toBe('eu-west-3');
     expect(config.resources[0].properties.tags.GdprCompliant).toBe('true');
     expect(config.resources[0].properties.tags.DataResidency).toBe('EU');
   });
 
   it('refuses to generate VPCs outside approved EU regions', () => {
-    expect(() => generator.generateVPCConfig('production', 'us-east-1')).toThrowError(
+    expect(() => generator.generateVPCConfig('production', 'us-east-1')).toThrow(
       'Region must be within EU for GDPR compliance'
     );
   });
 
   it('enforces encryption for production databases', () => {
-    expect(() => generator.generateRDSConfig('production', 'db.r6g.large', false)).toThrowError(
+    expect(() => generator.generateRDSConfig('production', 'db.r6g.large', false)).toThrow(
       'Production databases must have encryption enabled'
     );
 
@@ -1835,8 +1835,8 @@ func TestPlatformStackGDPRCompliance(t *testing.T) {
     flowLogsEnabled := terraform.Output(t, terraformOptions, "vpc_flow_logs_enabled")
     require.Equal(t, "true", flowLogsEnabled, "VPC flow logs must be enabled for GDPR auditing")
 
-    // Terratest has no S3 encryption helper: call the AWS SDK (v2) through the
-    // client that Terratest builds for the region
+    // Terratest also offers aws.AssertS3BucketServerSideEncryption (v1.0.1); here the
+    // AWS SDK (v2) is called through the client that Terratest builds for the region
     bucketID := terraform.Output(t, terraformOptions, "logging_bucket_id")
     s3Client := aws.NewS3Client(t, region)
     encryption, err := s3Client.GetBucketEncryption(context.Background(), &s3.GetBucketEncryptionInput{
