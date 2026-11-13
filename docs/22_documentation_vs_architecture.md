@@ -32,7 +32,7 @@ Architecture as Code defines the system's structure in a machine-readable format
 - Are all data flows compliant with security policies?
 - Does the current infrastructure match the approved architecture?
 
-Architecture as Code emphasises precision, executability, and verification. It targets both humans and machines, focusing on models, schemas, and definitions that can be processed by tools to generate diagrams, validate compliance, and drive infrastructure provisioning. The success of Architecture as Code is measured by how well it prevents architectural drift, enables automation, and ensures consistency between design and implementation. Fitness functions—the automated checks that continuously verify architectural characteristics, as described by Ford, Parsons & Kua (2017) [Source [35]](33_references.md#source-35)—are a widely used form of this enforcement, and catalogued microservice patterns such as those of Richardson (2018) [Source [36]](33_references.md#source-36) give the resulting models a shared vocabulary for service decomposition and inter-service communication.
+Architecture as Code emphasises precision, executability, and verification. It targets both humans and machines, focusing on models, schemas, and definitions that can be processed by tools to generate diagrams, validate compliance, and drive infrastructure provisioning. The success of Architecture as Code is measured by how well it prevents architectural drift, supports automation, and ensures consistency between design and implementation. Fitness functions—the automated checks that continuously verify architectural characteristics, as described by Ford, Parsons & Kua (2017) [Source [35]](33_references.md#source-35)—are a widely used form of this enforcement, and catalogued microservice patterns such as those of Richardson (2018) [Source [36]](33_references.md#source-36) give the resulting models a shared vocabulary for service decomposition and inter-service communication.
 
 ## Tooling paradigms: Modelling tools vs diagram tools
 
@@ -40,7 +40,7 @@ The distinction between Documentation as Code and Architecture as Code becomes p
 
 ### Modelling tools: CALM and Structurizr
 
-**CALM (Common Architecture Language Model)** and **Structurizr** represent the modelling tool paradigm central to Architecture as Code. These tools enable architects to define system structures in standardised, machine-readable formats.
+**CALM (Common Architecture Language Model)** and **Structurizr** represent the modelling tool paradigm central to Architecture as Code. These tools let architects define system structures in standardised, machine-readable formats.
 
 #### CALM: Standardised architecture language
 
@@ -50,7 +50,7 @@ CALM is an open-source specification developed by the Architecture as Code commu
 - **Relationships**: Connections, data flows, and dependencies between nodes
 - **Metadata**: Compliance tags, operational data, and custom attributes
 
-CALM is built on a JSON meta-schema, which makes it compatible with existing tools and enables integration into CI/CD workflows; its command-line tool (`npm install -g @finos/calm-cli`) validates architectures against reusable patterns and renders visualisations and documentation straight from the pipeline [Source [1]](33_references.md#source-1). The schema is published in versioned releases (release 1.0 and 1.1 at the time of writing, with later drafts in progress), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
+CALM is built on a JSON meta-schema, which makes it compatible with existing tools and supports integration into CI/CD workflows; its command-line tool (`npm install -g @finos/calm-cli`) validates architectures against reusable patterns and renders visualisations and documentation straight from the pipeline [Source [1]](33_references.md#source-1). The schema is published in versioned releases (release 1.0 and 1.1 at the time of writing, with later drafts in progress), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
 
 - **Validated automatically**: Compliance checks run against the model to verify policy conformance
 - **Visualised dynamically**: Diagrams are generated from the model, ensuring they always reflect the current architecture
@@ -123,7 +123,7 @@ The key advantage of modelling tools like CALM and Structurizr is that the **mod
 
 ### Diagram tools: Mermaid and PlantUML
 
-**Mermaid** and **PlantUML** represent the diagram tool paradigm often used in Documentation as Code. These tools enable the creation of diagrams through textual syntax, making diagrams version-controllable and reviewable through pull requests.
+**Mermaid** and **PlantUML** represent the diagram tool paradigm often used in Documentation as Code. These tools support the creation of diagrams through textual syntax, making diagrams version-controllable and reviewable through pull requests.
 
 #### Mermaid: Lightweight Diagram as Code
 
@@ -257,7 +257,7 @@ The interplay between Documentation as Code and the other 'as Code' disciplines 
 
 Documentation as Code and Architecture as Code are complementary disciplines that serve different but equally important purposes. Documentation as Code focuses on communicating knowledge to human audiences, using tools like Mermaid and PlantUML to create illustrative diagrams embedded in narrative content. Architecture as Code focuses on defining and enforcing system structure, using modelling tools like CALM and Structurizr to create executable models that drive automation and validation.
 
-Understanding the distinction between these disciplines enables organisations to choose the right tools for the right purposes. Diagram tools excel at creating visual explanations within documentation but lack the structured metadata and validation capabilities required for architectural enforcement. Modelling tools provide the precision and executability needed for Architecture as Code but require more investment in tooling and expertise.
+Understanding the distinction between these disciplines lets organisations choose the right tools for the right purposes. Diagram tools excel at creating visual explanations within documentation but lack the structured metadata and validation capabilities required for architectural enforcement. Modelling tools provide the precision and executability needed for Architecture as Code but require more investment in tooling and expertise.
 
 By integrating both disciplines—using Architecture as Code to define the system and Documentation as Code to explain it—organisations create a comprehensive knowledge ecosystem where automated validation ensures consistency and narrative context enables understanding. The result is a system where architectural integrity is maintained programmatically while human knowledge is preserved and communicated effectively.
 

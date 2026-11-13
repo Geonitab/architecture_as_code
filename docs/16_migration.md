@@ -10,7 +10,7 @@ Migration from traditional, manually configured infrastructure to Architecture a
 
 European organisations face unique migration challenges through legacy systems that have developed over decades, regulatory requirements that constrain the pace of change, and the need to balance innovation with operational stability. Successful migration requires comprehensive planning that minimises risks while enabling rapid value realisation.
 
-Modern migration strategies must accommodate hybrid scenarios where legacy infrastructure coexists with Architecture as Code-managed resources during extended transition periods. This hybrid approach enables gradual migration that reduces business risk while enabling immediate benefits from Architecture as Code adoption.
+Modern migration strategies must accommodate hybrid scenarios where legacy infrastructure coexists with Architecture as Code-managed resources during extended transition periods. This hybrid approach allows gradual migration that reduces business risk while enabling immediate benefits from Architecture as Code adoption.
 
 Cloud-native migration pathways offer opportunities to modernise architecture while infrastructure management is codified. European companies can leverage this transformation to implement sustainability initiatives, improve cost efficiency and enhance security posture through systematic Architecture as Code adoption.
 
@@ -22,7 +22,7 @@ Discovery automation tools such as AWS Application Discovery Service, Azure Migr
 
 Risk assessment must identify critical systems, single points of failure and compliance dependencies that affect migration approach. European financial institutions and healthcare organisations must particularly consider regulatory implications and downtime restrictions that affect migration windows.
 
-Migration wave planning balances technical dependencies with business priorities to minimise risk and maximise value realisation. Pilot projects with non-critical systems enable team learning and process refinement before critical systems migration commences.
+Migration wave planning balances technical dependencies with business priorities to minimise risk and maximise value realisation. Pilot projects with non-critical systems support team learning and process refinement before critical systems migration commences.
 
 ## Lift-and-shift vs re-architecting
 
@@ -35,19 +35,19 @@ Migration wave planning balances technical dependencies with business priorities
 
 ## Gradual codification of infrastructure
 
-Infrastructure inventory automation through tools such as Terraform `import` blocks, the CloudFormation IaC generator and resource import ([Source [96]](33_references.md#source-96)), and Azure Resource Manager template export enables systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations that require refinement but accelerate the codification process.
+Infrastructure inventory automation through tools such as Terraform `import` blocks, the CloudFormation IaC generator and resource import ([Source [96]](33_references.md#source-96)), and Azure Resource Manager template export supports systematic conversion of existing resources to Architecture as Code management. Automated discovery can generate initial Architecture as Code configurations that require refinement but accelerate the codification process.
 
 Template standardisation through reusable modules and organisational patterns ensures consistency across migrated infrastructure while reducing future maintenance overhead. Public-sector organisations, where many departments provision similar workloads under the same regulatory regime, are natural candidates for standardised Architecture as Code templates covering common infrastructure patterns.
 
 Configuration drift elimination through Architecture as Code adoption requires systematic reconciliation between existing resource configurations and desired Architecture as Code state. Gradual enforcement of Architecture as Code-managed configuration ensures infrastructure stability while eliminating manual configuration inconsistencies.
 
-Version control integration for infrastructure changes enables systematic tracking of migration progress and provides rollback capabilities for problematic changes. Git-based workflows for infrastructure management establish the foundation for collaborative infrastructure development and operational transparency.
+Version control integration for infrastructure changes supports systematic tracking of migration progress and provides rollback capabilities for problematic changes. Git-based workflows for infrastructure management establish the foundation for collaborative infrastructure development and operational transparency.
 
 ## Team transition and competence development
 
 Skills development programmes must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows. Training curricula should encompass Infrastructure as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.
 
-Organisational structure evolution from traditional silos to cross-functional teams enables effective Architecture as Code adoption. Integrated DevOps teams that own Architecture as Code end to end replace the hand-offs between separate development and operations groups.
+Organisational structure evolution from traditional silos to cross-functional teams supports effective Architecture as Code adoption. Integrated DevOps teams that own Architecture as Code end to end replace the hand-offs between separate development and operations groups.
 
 Cultural transformation from manual processes to automated workflows requires change management programmes that address resistance and promote automation adoption. Success stories from early adopters can motivate broader organisational acceptance of Architecture as Code practices.
 

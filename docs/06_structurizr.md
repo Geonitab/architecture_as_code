@@ -2,7 +2,7 @@
 
 ![Structurizr Overview](images/diagram_06_structurizr_overview.png)
 
-*Structurizr enables architects to express system architecture through code using the C4 model, creating maintainable, version-controlled architecture diagrams that evolve alongside the systems they describe.*
+*Structurizr lets architects express system architecture through code using the C4 model, creating maintainable, version-controlled architecture diagrams that evolve alongside the systems they describe.*
 
 ## Introduction
 
@@ -52,7 +52,7 @@ Diagram decay—the gradual divergence between architecture diagrams and the sys
 
 ## Structurizr DSL: Core concepts
 
-The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models. Unlike graphical tools, the DSL approach enables version control, code review, and automation; the language reference documents every keyword used in this chapter [Source [38]](33_references.md#source-38).
+The Structurizr DSL (Domain-Specific Language) provides a text-based syntax for defining architecture models. Unlike graphical tools, the DSL approach brings version control, code review, and automation; the language reference documents every keyword used in this chapter [Source [38]](33_references.md#source-38).
 
 ### Basic workspace structure
 

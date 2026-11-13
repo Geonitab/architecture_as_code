@@ -388,7 +388,7 @@ Maintainability suffers when teams cannot see failure trends or compliance fatig
 | **Policy breach density** | Number of failing policy checks divided by total runs in each environment. | Compliance teams trend breach density to spot policy packs that need refactoring or training gaps ahead of audits ([Source [12]](33_references.md#source-12)). |
 | **Architecture drift diff count** | Count of manual overrides detected by drift-detection jobs or GitOps reconcilers. | Signals where environment parity is threatened so promotion policies can be tightened or automation extended. |
 
-Dashboards combine these signals with the five DORA software delivery metrics—deployment frequency, lead time for changes, change failure rate, failed deployment recovery time and rework rate [Source [49]](33_references.md#source-49)—so that teams can correlate deployment velocity with maintainability. Publishing the telemetry alongside promotion evidence enables quick root-cause analysis when defects or regulatory findings arise.
+Dashboards combine these signals with the five DORA software delivery metrics—deployment frequency, lead time for changes, change failure rate, failed deployment recovery time and rework rate [Source [49]](33_references.md#source-49)—so that teams can correlate deployment velocity with maintainability. Publishing the telemetry alongside promotion evidence supports quick root-cause analysis when defects or regulatory findings arise.
 
 Platform teams typically push the telemetry into the same observability planes used for site-reliability engineering so that maintainability signals sit beside incident and capacity indicators. Runbooks define threshold-driven alerts—for example, paging the pipeline team when the stability index drops below 95 per cent over seven days—ensuring that automation debt is handled with the same urgency as production outages ([Source [8]](33_references.md#source-8)). Compliance officers receive scheduled digests of policy-breach density trends, enabling earlier intervention before a backlog of manual approvals accumulates ([Source [12]](33_references.md#source-12)).
 
@@ -406,7 +406,7 @@ For a full Terratest implementation that validates VPC configurations with GDPR 
 
 ### Container-based testing with compliance
 
-Container-based infrastructure testing using Docker and Kubernetes enables production-like conditions while maintaining isolation and reproducibility:
+Container-based infrastructure testing using Docker and Kubernetes provides production-like conditions while maintaining isolation and reproducibility:
 
 ```dockerfile
 # test/Dockerfile.compliance-test
@@ -494,7 +494,7 @@ For comprehensive coverage of cost optimisation, FinOps practices, predictive co
 
 Pipeline observability encompasses both execution metrics and business-impact measurements. Technical metrics such as build time, success rate, and deployment frequency are combined with business indicators such as system availability and performance.
 
-Alerting strategies ensure rapid response to pipeline failures and infrastructure anomalies. Integration with incident-management systems enables automatic escalation and notification of relevant teams based on severity and impact.
+Alerting strategies ensure rapid response to pipeline failures and infrastructure anomalies. Integration with incident-management systems allows automatic escalation and notification of relevant teams based on severity and impact.
 
 ### Monitoring and alerting
 

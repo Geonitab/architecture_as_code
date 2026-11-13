@@ -10,7 +10,7 @@ The Architecture as Code methodology forms the foundation for Architecture Decis
 
 For organisations implementing Architecture as Code, ADRs are particularly valuable because they ensure architecture decisions are documented in a structured manner that meets compliance requirements and facilitates knowledge transfer between teams and over time.
 
-ADRs function as architecture's “commit messages”—short, focused documents that capture the context, the problem, the chosen alternative, and the consequences of important architecture decisions. This enables traceability and an understanding of why specific technical choices were made.
+ADRs function as architecture's “commit messages”—short, focused documents that capture the context, the problem, the chosen alternative, and the consequences of important architecture decisions. This provides traceability and an understanding of why specific technical choices were made.
 
 Modern software development emphasises the importance of transparent and traceable decisions. The ADR method supports these requirements by creating an audit trail of architecture decisions that can be reviewed and evaluated over time.
 
@@ -228,7 +228,7 @@ Teams can emit a structured JSON index during CI that feeds architectural observ
 
 - **Lifecycle timeline** – a chronological view generated from the decision log produced by `adr-log` (or by `adr generate toc` in adr-tools) that shows proposals, acceptances, and supersessions, doubling as an automated change log.
 - **Policy coverage heat map** – cross-references ADR tags against policy-as-code checks to reveal services that are missing mandated controls.
-- **Review debt tracker** – flags ADRs whose `next_review_due` date has passed, enabling leadership to prioritise refresh work in sprint planning.
+- **Review debt tracker** – flags ADRs whose `next_review_due` date has passed, letting leadership prioritise refresh work in sprint planning.
 
 Because the dashboards are derived from the repository rather than a manual wiki, they update the moment an ADR merges, guaranteeing the narrative stays synchronised with the implemented controls.
 

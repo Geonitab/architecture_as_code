@@ -591,7 +591,7 @@ Automated compliance streamlines complex regulatory obligations spanning GDPR, N
 
 Organisations that embrace Architecture as Code security practices position themselves for successful digital transformation while maintaining a strong security posture. Investments in security automation reduce incident rates, accelerate compliance validation, and improve operational efficiency. Preparing for future trends—automation, AI augmentation, and quantum-ready defences—requires adaptable, code-driven frameworks capable of evolving alongside new technologies and threats.
 
-Delivering these outcomes demands organisational commitment to a DevSecOps culture, sustained investment in skills, and a disciplined approach to continuous improvement. When implemented well, Architecture as Code security enables both enhanced protection and accelerated innovation.
+Delivering these outcomes demands organisational commitment to a DevSecOps culture, sustained investment in skills, and a disciplined approach to continuous improvement. When implemented well, Architecture as Code security delivers both enhanced protection and accelerated innovation.
 
 ## Sources
 

@@ -18,7 +18,7 @@ Test automation for codified infrastructure enables continuous integration and c
 
 ## Unit testing for codified infrastructure
 
-Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure. This enables rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.
+Unit testing for codified infrastructure focuses on validating individual modules and resources without actually deploying infrastructure. This gives rapid feedback and early detection of configuration errors, which is critical for developer productivity and code quality.
 
 Programmatic Architecture as Code platforms such as Pulumi and the AWS Cloud Development Kit (CDK) make this style of testing first-class by allowing infrastructure definitions to live alongside TypeScript, Python, or C# unit tests. Pulumi’s unit tests replace provider calls with mocks so that assertions on resource properties and policy attachments run in memory before a deployment occurs ([Source [15]](33_references.md#source-15)), while AWS CDK’s assertions library validates synthesised templates to ensure networking rules, tagging strategies, and compliance controls honour architectural guardrails. Embedding these checks directly within developer workflows aligns with Architecture as Code’s emphasis on executable governance.
 
@@ -107,7 +107,7 @@ Vitest is a modern testing framework built for the Vite ecosystem that offers fa
 
 ### Why Vitest is relevant for Architecture as Code
 
-Many modern Architecture as Code workflows include TypeScript/JavaScript components to generate, validate or transform infrastructure configurations. Vitest enables rapid unit testing of these components with first-class TypeScript support, which is critical to ensure correct configuration generation before deployment.
+Many modern Architecture as Code workflows include TypeScript/JavaScript components to generate, validate or transform infrastructure configurations. Vitest supports rapid unit testing of these components with first-class TypeScript support, which is critical to ensure correct configuration generation before deployment.
 
 Vitest's fast execution and watch mode enable tight development feedback loops when developing infrastructure configuration generators or policy validation scripts. This is particularly valuable for Architecture as Code initiatives where configuration errors can lead to costly infrastructure mistakes.
 
@@ -284,9 +284,9 @@ Capacity planning validation through performance testing helps optimise resource
 
 *Figure 13.3: Requirements as Code - Traceability from Business Requirements to Infrastructure Tests*
 
-The diagram above, which also appears as Figure 12.3 in Chapter 12, illustrates the relationship between business requirements, functional requirements and verification methods. This demonstrates how Architecture as Code enables traceable testing from higher abstraction levels down to concrete Infrastructure as Code implementations, creating a direct link between business objectives and technical validation.
+The diagram above, which also appears as Figure 12.3 in Chapter 12, illustrates the relationship between business requirements, functional requirements and verification methods. This demonstrates how Architecture as Code makes traceable testing possible from higher abstraction levels down to concrete Infrastructure as Code implementations, creating a direct link between business objectives and technical validation.
 
-Requirements as Code represents a paradigm shift where business requirements and compliance requirements are codified in machine-readable form alongside infrastructure code. This enables automated validation that infrastructure genuinely meets specified requirements throughout the entire development lifecycle.
+Requirements as Code represents a paradigm shift where business requirements and compliance requirements are codified in machine-readable form alongside infrastructure code. This makes automated validation possible that infrastructure genuinely meets specified requirements throughout the entire development lifecycle.
 
 By defining Requirements as Code, a direct connection is created between business requirements, functional requirements and the automated tests that verify Infrastructure as Code implementations. This traceability is critical for organisations that must demonstrate compliance and for development teams that need to understand business consequences of technical decisions.
 
@@ -407,9 +407,9 @@ Modern codified infrastructure testing encompasses multiple layers:
 - **Performance testing** validates infrastructure can handle expected loads efficiently
 - **Requirements as Code** provides traceability from business needs to technical implementation
 
-Organisations must particularly focus on compliance testing that validates GDPR requirements, financial regulations and government security standards. Automated policy testing with tools such as OPA enables continuous compliance verification without manual overhead.
+Organisations must particularly focus on compliance testing that validates GDPR requirements, financial regulations and government security standards. Automated policy testing with tools such as OPA provides continuous compliance verification without manual overhead.
 
-Investment in Infrastructure as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies enable comprehensive validation without prohibitive costs or complexity.
+Investment in Infrastructure as Code testing frameworks pays off through reduced production incidents, faster development cycles and improved regulatory compliance. Modern testing tools and cloud-native testing strategies support comprehensive validation without prohibitive costs or complexity.
 
 Figure 13.2 suggests the order of investment: start with security scanning and policy testing, and add end-to-end tests where the risk justifies their cost.
 

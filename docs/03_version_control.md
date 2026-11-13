@@ -8,7 +8,7 @@ The diagram illustrates the typical flow from a Git repository through branching
 
 ## Git-based workflow for infrastructure
 
-Git is the standard for version control of Architecture as Code assets and enables distributed collaboration between team members. Each change is documented with commit messages that describe what was modified and why, creating a complete history of infrastructure evolution.
+Git is the standard for version control of Architecture as Code assets and supports distributed collaboration between team members. Each change is documented with commit messages that describe what was modified and why, creating a complete history of infrastructure evolution.
 
 ### Documentation-as-code worked example
 
@@ -37,7 +37,7 @@ Bringing these responsibilities together ensures that architectural decisions st
 
 ## Code organisation and module structure
 
-A well-organised code structure is crucial for maintainability and collaboration in larger Architecture as Code projects. Modular design enables the reuse of infrastructure components across different projects and environments.
+A well-organised code structure is crucial for maintainability and collaboration in larger Architecture as Code projects. Modular design allows the reuse of infrastructure components across different projects and environments.
 
 Architecture teams should curate repository layouts that expose shared building blocks immediately. A conventional approach places architectural guardrails, reusable modules, and documentation playbooks in clearly labelled top-level directories (for example `architecture/`, `modules/`, and `docs/`). Each directory must contain a README that summarises ownership, usage patterns, and change controls so contributors can discover the correct entry point without relying on tribal knowledge ([Source [4]](33_references.md#source-4)). Aligning naming conventions across repositories prevents duplicated modules and allows tooling such as dependency scanners and documentation generators to infer relationships automatically.
 
@@ -77,7 +77,7 @@ This transparency extends beyond code commits to encompass the entire collaborat
 
 **Pull Requests and Code Review**: Every infrastructure change undergoes peer review through pull requests, making technical decisions visible to the entire team. Review comments become permanent documentation that future maintainers can reference when understanding architectural evolution.
 
-**Issues and Discussions**: Platforms like GitHub provide Issues for tracking specific work items and Discussions for strategic deliberation. When architecture changes reference related Issues, stakeholders gain complete context—from initial problem identification through solution design to implementation and deployment. Issues create transparent decision records with clear ownership, while Discussions enable asynchronous strategic deliberation across distributed teams. Chapter 19 provides comprehensive guidance on implementing transparent workflows using Issues and Discussions as core communication channels for Architecture as Code initiatives.
+**Issues and Discussions**: Platforms like GitHub provide Issues for tracking specific work items and Discussions for strategic deliberation. When architecture changes reference related Issues, stakeholders gain complete context—from initial problem identification through solution design to implementation and deployment. Issues create transparent decision records with clear ownership, while Discussions support asynchronous strategic deliberation across distributed teams. Chapter 19 provides comprehensive guidance on implementing transparent workflows using Issues and Discussions as core communication channels for Architecture as Code initiatives.
 
 **Commit History**: Git's complete history provides transparency into how architectures evolved over time. Teams can identify when specific patterns were introduced, understand the context that motivated particular decisions, and track how infrastructure responded to changing business requirements.
 

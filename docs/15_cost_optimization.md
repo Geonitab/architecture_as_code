@@ -2,7 +2,7 @@
 
 ![Cost optimisation workflow](images/diagram_16_chapter15.png)
 
-*Figure 15.1: The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops enabling constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
+*Figure 15.1: The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops that drive constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
 
 ![Cost monitoring and analysis flow](images/diagram_17_chapter15.png)
 
@@ -12,7 +12,7 @@
 
 Cost optimisation forms a critical component in Architecture as Code implementations, particularly when organisations migrate to cloud-based solutions. Without proper cost management, cloud costs can rapidly escalate and undermine the economic benefits of Architecture as Code.
 
-Modern cloud providers offer pay-as-you-use models which can be both advantageous and risky. Architecture as Code enables precise control over resource allocation and automated cost optimisation through policy-driven resource management and intelligent scaling.
+Modern cloud providers offer pay-as-you-use models which can be both advantageous and risky. Architecture as Code gives precise control over resource allocation and automated cost optimisation through policy-driven resource management and intelligent scaling.
 
 EU organisations face unique challenges when applying cloud costs, including currency fluctuations between EUR and USD pricing, regulatory requirements affecting data storage under GDPR, and the need to balance cost efficiency with performance and security across multiple member states. Architecture as Code-based solutions offer tools to address these challenges systematically.
 
@@ -30,7 +30,7 @@ Governance frameworks for cost management must encompass automated policies for 
 
 EU organisations must also handle compliance requirements that affect cost optimisation, such as GDPR-related data storage requirements that may restrict opportunities to use certain geographical regions with lower pricing. For example, organisations may need to maintain data within EU boundaries (eu-west-1 in Ireland, eu-central-1 in Frankfurt, eu-south-1 in Milan, or eu-west-3 in Paris) rather than using potentially lower-cost non-EU regions. Architecture as Code-based compliance policies can automate these constraints while optimising costs within permitted parameters.
 
-Implementation of cost allocation tags and chargeback models through Architecture as Code enables transparent cost distribution between different teams, projects, and business units. This creates incentives for developers to make cost-optimal design decisions.
+Implementation of cost allocation tags and chargeback models through Architecture as Code makes transparent cost distribution possible between different teams, projects, and business units. This creates incentives for developers to make cost-optimal design decisions.
 
 ## Automatic resource scaling and rightsizing
 
@@ -58,7 +58,7 @@ Anomaly detection for cloud costs can be implemented through machine learning al
 
 ## Multi-Cloud cost optimisation
 
-Multi-cloud strategies complicate cost optimisation but also offer opportunities for cost arbitrage between different providers. Architecture as Code tools like Terraform enable consistent cost management across different cloud providers through unified configuration and monitoring.
+Multi-cloud strategies complicate cost optimisation but also offer opportunities for cost arbitrage between different providers. Architecture as Code tools like Terraform support consistent cost management across different cloud providers through unified configuration and monitoring.
 
 Cross-cloud cost comparison requires normalisation of pricing models and service offerings between providers. Open source tools such as Cloud Custodian (policy enforcement, a CNCF incubating project) and OpenCost (Kubernetes cost allocation, the CNCF incubating project from which the commercial IBM Kubecost product originates) can be integrated into Architecture as Code pipelines to automate cost attribution and reporting ([Source [92]](33_references.md#source-92)); the cross-provider comparison itself remains an analytical exercise that these tools inform rather than perform.
 
@@ -66,7 +66,7 @@ Data transfer costs between cloud providers often form an invisible cost source 
 
 Cloud sovereignty frameworks, such as the Gaia-X data space model referenced in Chapter 25, provide a shared vocabulary for describing residency, portability, and supply-chain expectations. Encoding those guardrails alongside FinOps policies ensures that cost models account for the approved jurisdictions, egress thresholds, and encryption standards required for European compliance. Architecture as Code modules should therefore expose parameters for sovereign zones, permitted providers, and classification-driven controls so that cost optimisation never undermines the regulatory guardrails discussed in the broader cloud sovereignty narrative.
 
-Hybrid cloud strategies can optimise costs by retaining certain workloads on-premises while cloud-native workloads are moved to the cloud. Architecture as Code enables coordinated management of both environments with unified cost tracking and optimisation. This is especially relevant for EU financial services organisations that must balance regulatory requirements with cost efficiency.
+Hybrid cloud strategies can optimise costs by retaining certain workloads on-premises while cloud-native workloads are moved to the cloud. Architecture as Code supports coordinated management of both environments with unified cost tracking and optimisation. This is especially relevant for EU financial services organisations that must balance regulatory requirements with cost efficiency.
 
 ### Market outlook and economic rationale
 

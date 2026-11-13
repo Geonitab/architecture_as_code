@@ -16,7 +16,7 @@ Management as Code is one of several soft “as code” disciplines. Compliance,
 
 AI agent teams introduce new collaboration models where virtual agents work alongside human practitioners. This paradigm requires careful role definition, clear communication protocols, and ethical guidelines that ensure AI augments rather than replaces human expertise. The practices explored here prepare organisations for this evolution.
 
-Digitalisation through code-based infrastructure enables organisations to transform not just their technology but their entire operating model. When architecture, processes, and business capabilities are all expressed as code, organisations gain unprecedented agility and the ability to respond rapidly to changing market conditions.
+Digitalisation through code-based infrastructure lets organisations transform not just their technology but their entire operating model. When architecture, processes, and business capabilities are all expressed as code, organisations gain unprecedented agility and the ability to respond rapidly to changing market conditions.
 
 **What you will learn in this part:**
 

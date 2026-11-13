@@ -131,7 +131,7 @@ spec:
         perTryTimeout: 2s
 ```
 
-For Linkerd-based meshes, a simple annotation on the Deployment enables mTLS and automatic observability without modifying application code:
+For Linkerd-based meshes, a simple annotation on the Deployment turns on mTLS and automatic observability without modifying application code:
 
 ```yaml
 metadata:
@@ -185,7 +185,7 @@ Distributed transactions across service boundaries require careful design to avo
 }
 ```
 
-Capturing event schemas as code and registering them in the service catalogue enables Architecture as Code tooling to verify compatibility automatically and flag breaking changes before they reach production.
+Capturing event schemas as code and registering them in the service catalogue lets Architecture as Code tooling verify compatibility automatically and flag breaking changes before they reach production.
 
 ### Compliance by default
 
@@ -220,7 +220,7 @@ Two categories of tooling deserve specific mention. **Feature flags** allow team
 
 ## Summary
 
-Microservices amplify organisational agility when paired with disciplined automation. Architecture as Code gives leaders a shared source of truth for service contracts, platform guardrails, and operational posture. Investing in reusable templates, policy automation, and comprehensive observability enables teams to innovate quickly while preserving the resilience, compliance, and sustainability that modern enterprises demand.
+Microservices amplify organisational agility when paired with disciplined automation. Architecture as Code gives leaders a shared source of truth for service contracts, platform guardrails, and operational posture. Investing in reusable templates, policy automation, and comprehensive observability lets teams innovate quickly while preserving the resilience, compliance, and sustainability that modern enterprises demand.
 
 ## Sources
 

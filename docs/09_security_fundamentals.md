@@ -2,7 +2,7 @@
 
 ![Security as code workflow](images/diagram_11_chapter9.png)
 
-*Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous compliance monitoring. Treating security as code enables organisations to deliver scalable and auditable protections without slowing delivery teams.*
+*Security is the backbone of a successful Architecture as Code implementation. This chapter explains how security principles are embedded from the first design sprint through automated policy enforcement, proactive threat management, and continuous compliance monitoring. Treating security as code lets organisations deliver scalable and auditable protections without slowing delivery teams.*
 
 ## Dimensions of security architecture
 
@@ -97,7 +97,7 @@ HashiCorp Sentinel offers an alternative focused on Infrastructure as Code workf
 
 Successful policy-as-code programmes require deep integration with software delivery life cycles. Manual security reviews as gateways create bottlenecks that frustrate teams and delay releases. Automated policy evaluation enables a “security as an enabler” approach.
 
-“Shift-left” security principles are particularly effective for policy enforcement. Validating policies during commit stages provides rapid feedback, enabling developers to address issues while context is fresh. Git hooks, pre-commit checks, and IDE extensions can deliver real-time feedback during development.
+“Shift-left” security principles are particularly effective for policy enforcement. Validating policies during commit stages provides rapid feedback, letting developers address issues while context is fresh. Git hooks, pre-commit checks, and IDE extensions can deliver real-time feedback during development.
 
 CI/CD integration extends policy checks across multiple stages. Static analysis of infrastructure code during build stages can detect obvious violations. Dynamic evaluations in staging environments catch configuration problems before production release. Production monitoring ensures policies remain effective throughout the operational life cycle.
 

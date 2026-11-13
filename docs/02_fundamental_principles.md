@@ -311,7 +311,7 @@ jobs:
           publish_dir: ./docs/dist
 ```
 
-Modern tools such as GitBook, Gitiles, and MkDocs enable automatic generation of web documentation from Markdown files stored alongside the code.
+Modern tools such as GitBook, Gitiles, and MkDocs support automatic generation of web documentation from Markdown files stored alongside the code.
 
 The Architecture as Code repository demonstrates this principle by coupling
 [`docs/documentation_workflow.md`](documentation_workflow.md) with automated tests
@@ -322,7 +322,7 @@ falling back on disconnected wikis or manual approvals.
 
 ## Requirements as Code
 
-Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and automated. This paradigm shift enables continuous verification that the system meets its requirements throughout the entire development lifecycle.
+Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and automated. This paradigm shift makes continuous verification possible that the system meets its requirements throughout the entire development lifecycle.
 
 ### Automation and traceability
 
@@ -648,7 +648,7 @@ This distinction has profound implications for how Architecture as Code is imple
 
 5. **Living Documentation**: Requirements as Code creates living documentation where NFR compliance status is always current (reflected by latest test results) while FR validation status requires explicit updates as stakeholders confirm business value delivery.
 
-This dual approach – automated testing wherever a requirement is quantitative, structured validation wherever it expresses business intent – enables organisations to achieve both technical excellence and business value alignment through Architecture as Code practices.
+This dual approach – automated testing wherever a requirement is quantitative, structured validation wherever it expresses business intent – lets organisations achieve both technical excellence and business value alignment through Architecture as Code practices.
 
 ## Sources
 

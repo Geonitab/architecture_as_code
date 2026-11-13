@@ -99,7 +99,7 @@ communication, coaching, and community building.
 
 Centres of excellence or platform teams can accelerate adoption by curating reusable modules, publishing reference
 implementations, and providing hands-on support. Governance structures maintain security and compliance without constraining
-innovation, enabling teams to deliver change with confidence.
+innovation, letting teams deliver change with confidence.
 
 ## Closing reflection
 

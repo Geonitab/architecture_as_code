@@ -17,7 +17,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Architecture as Code | Treating architectural decisions, guardrails, and platform capabilities as versioned artefacts that are reviewed, tested, and deployed through automated pipelines. Often abbreviated as AaC. (See [Chapter 1](01_introduction.md)) |
 | Infrastructure as Code | A practice closely related to AaC where infrastructure resources are defined declaratively and managed through version control to deliver predictable environments. Frequently shortened to IaC. (See [Chapter 5](05_automation_devops_cicd.md)) |
 | Architecture Decision Record | A lightweight document that captures context, decision, and consequences so teams understand why architectural choices were made and can revisit them together. Commonly known as an ADR. (See [Chapter 4](04_adr.md)) |
-| Declarative Programming | A style of describing desired outcomes rather than procedural steps, enabling automation tools to converge systems on the target state reliably. |
+| Declarative Programming | A style of describing desired outcomes rather than procedural steps, letting automation tools converge systems on the target state reliably. |
 | Idempotence | The property that a command or template can run repeatedly with the same end result, protecting teams from accidental drift or double execution. |
 | Reusable Module | A parameterised building block—such as a Terraform module or Helm chart—that encapsulates best practice and is published for teams to compose new solutions quickly. |
 | API | An application programming interface (API) is a contract that allows systems to interact predictably, enabling modular architectures and integrated delivery workflows. |
@@ -71,7 +71,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Term | Definition |
 |------|------------|
 | FinOps | A collaborative financial practice that aligns engineering, finance, and product teams on cost efficiency while supporting innovation. |
-| Cost Allocation Tag | Metadata attached to resources that enables transparent reporting by product, team, or initiative. |
+| Cost Allocation Tag | Metadata attached to resources that supports transparent reporting by product, team, or initiative. |
 | Rightsizing | Optimising resource shapes and reservations based on observed usage to reduce waste without compromising performance. |
 | Reserved and Spot Capacity | Cloud purchasing models that trade commitment or flexibility for lower cost, requiring automation to manage safely. |
 | Resource Quota | A constraint that limits how much of a resource can be consumed in a namespace or account, preventing unintended overspend. |

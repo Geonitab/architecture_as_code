@@ -8,7 +8,7 @@ With the foundational principles established, we now turn to the technical build
 
 The journey from [foundational principles](02_fundamental_principles.md) to operational systems requires repeatable automation and deployment pipelines. Modern organisations must combine DevOps practices with CI/CD workflows that treat infrastructure and architecture with the same rigour as application code. This integration creates the feedback loops and quality gates essential for reliable, repeatable delivery.
 
-Containerisation and orchestration represent a natural evolution in Architecture as Code, where application packaging, deployment patterns, and runtime environments are all defined declaratively. Between the automation pipelines and containerisation, architecture modelling with tools like Structurizr provides the crucial bridge—enabling teams to visualise, document, and communicate their architectural decisions as code. By codifying these concerns, teams achieve consistency across development, testing, and production while maintaining the flexibility to adapt to changing requirements.
+Containerisation and orchestration represent a natural evolution in Architecture as Code, where application packaging, deployment patterns, and runtime environments are all defined declaratively. Between the automation pipelines and containerisation, architecture modelling with tools like Structurizr provides the crucial bridge—letting teams visualise, document, and communicate their architectural decisions as code. By codifying these concerns, teams achieve consistency across development, testing, and production while maintaining the flexibility to adapt to changing requirements.
 
 **What you will learn in this part:**
 
