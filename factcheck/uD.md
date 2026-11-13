@@ -1,0 +1,49 @@
+# Fact-check log: unit uD
+
+- Unit: uD
+- File: docs/appendix_templates_and_tools.md (whole file)
+- Date: 2026-11-13
+- The file contains no `Source [N]` citations. Claims were checked against primary documentation fetched in this session (boto3 reference, AWS docs, HashiCorp docs, GDPR OJ text cached by another subagent as /tmp/factcheck-sources/aux-gdpr.txt, NIS 2 cached as source-114.txt) and against the repository's own appendix files.
+- Counts: 30 claims; 26 VERIFIED; 1 CORRECTED (two wording items in one edit); 3 REVIEW. Bibliography issues: 0 relevant (see below).
+- Scratch retrievals: /tmp/claude-0/-home-user-architecture-as-code/4e91bb11-15e7-594a-b772-5bbe8bfbb058/scratchpad/uD/
+
+| # | Location | Claim in brief | Source ID | URL actually read | Verdict | Evidence note |
+|---|---|---|---|---|---|---|
+| 1 | Maturity Model | Model has six levels (0-5) | repo file | docs/architecture_as_code_maturity_model.md | VERIFIED | Headings "Level 0" to "Level 5" (six levels); Level 0 "Initial / ad hoc", Level 5 "Innovative / next-generation". |
+| 2 | Maturity Model | Levels run from ad hoc to fully codified, AI-assisted governance | repo file | same | VERIFIED | Level 0 "Initial / ad hoc"; Level 4 "Optimised and AI-assisted"; Level 5 next-generation. Descriptive, book's own model. |
+| 3 | Maturity Model | Checklist of fifty yes/no questions across ten disciplines | repo file | same | VERIFIED | 50 "- [ ]" items under ten discipline headings (IaC to Management as code); intro says "yes/no questions". |
+| 4 | Radar Tool | Interactive radar visualisation capturing checklist answers | repo file | docs/maturity_model_radar.html | VERIFIED | File defines #radarDiagram and the questionnaire data. |
+| 5 | Radar Tool | Lists prioritised improvement suggestions with chapter references | repo file | same | VERIFIED | Suggestion strings such as "Chapter 03 - Version Control ..."; "Prioritise the following next steps:". |
+| 6 | Radar Tool | Exports assessment as JSON (re-importable) or PDF | repo file | same | VERIFIED | downloadJsonFile, handleJsonImport, jsPDF import present. |
+| 7 | Control Mapping | Template links artefacts to ISO 27001, SOC 2, NIST 800-53, GDPR | repo file | docs/appendix_d_control_mapping_matrix_template.md | VERIFIED | Table columns "ISO 27001 / SOC 2 / NIST 800-53 / GDPR". |
+| 8 | Migration Automation | Module "inventories AWS resources", boto3 clients 'ec2','rds','elbv2','cloudformation' | n/a | boto3.amazonaws.com/v1/documentation/api/latest/reference/services/{ec2,rds,elbv2} | VERIFIED | Client service names exist in boto3 reference (ec2, rds, elbv2 pages retrieved). 'cloudformation' client not read (unused in code); name not independently retrieved, treated as non-load-bearing. |
+| 9 | Code `_find_unmanaged_ec2` | describe_instances returns Reservations[].Instances[] with State.Name, InstanceType, LaunchTime, VpcId, SubnetId, SecurityGroups[].GroupId, Tags | n/a | boto3 ec2 describe_instances | VERIFIED | Response syntax lists 'Reservations', 'Instances', 'State' {'Name'}, 'LaunchTime', 'SecurityGroups' [{'GroupId'}], 'Tags'. |
+| 10 | same | 'terminated' is an instance state name | n/a | same | VERIFIED | "'Name' : 'pending' \| 'running' \| 'shutting-down' \| 'terminated' \| 'stopping' \| 'stopped'". |
+| 11 | `_find_unmanaged_rds` | describe_db_instances: DBInstances[] with DBInstanceIdentifier, Engine, DBInstanceClass, MultiAZ, TagList | n/a | boto3 rds describe_db_instances | VERIFIED | All fields in response structure; "TagList (list) - A list of tags." |
+| 12 | `_find_unmanaged_load_balancers` | elbv2 describe_load_balancers returns LoadBalancers[] with LoadBalancerArn, LoadBalancerName, Type, Scheme | n/a | boto3 elbv2 describe_load_balancers | VERIFIED | Fields listed in response structure. |
+| 13 | same | describe_tags(ResourceArns=[...]) returns TagDescriptions[].Tags | n/a | boto3 elbv2 describe_tags | VERIFIED | "ResourceArns (list)"; "TagDescriptions (list)"; "Tags (list)". |
+| 14 | `_find_unmanaged_security_groups` | describe_security_groups returns SecurityGroups[] with GroupId, GroupName, VpcId, Tags, IpPermissions | n/a | boto3 ec2 describe_security_groups | VERIFIED | Response syntax contains 'SecurityGroups', 'Tags', 'VpcId', 'GroupName', 'IpPermissions'. |
+| 15 | same | VPC default security group is named "default" (skipped) | n/a | docs.aws.amazon.com/vpc/latest/userguide/default-security-group.html | VERIFIED | "The name of the default security group is \"default\"." |
+| 16 | `IAC_TAG_KEYS` comment | `aws:cloudformation:stack-name` is applied automatically by AWS (CloudFormation) | n/a | docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html | VERIFIED | "CloudFormation automatically creates the following stack-level tags with the aws: prefix: ... aws:cloudformation:stack-name". |
+| 17 | same | `ManagedBy`, `Created-By-Terraform` are organisation conventions, not applied by AWS | n/a | same page; Terraform AWS provider docs (index, default_tags) | VERIFIED | AWS page lists only aws:-prefixed tags as automatic; provider tags only via user-configured default_tags. Stated as convention, not a tool fact. |
+| 18 | `_find_unmanaged_ec2` etc. | Instance size suffixes '2xlarge','4xlarge','8xlarge','metal' exist | n/a | boto3 ec2 describe_instances | VERIFIED | Enumerated types include 'c5.2xlarge', 'c5.4xlarge', 'c3.8xlarge', 'a1.metal'. |
+| 19 | `_estimate_downtime` docstring | Importing an existing resource into Terraform state does not restart it | n/a | developer.hashicorp.com/terraform/cli/commands/import; .../language/import/single-resource | REVIEW | Docs say import "will find the existing resource ... and import it into your Terraform state" and "pulls all of the resource's attributes into the state file", but nowhere state that no restart occurs; they warn a later apply on a mismatched config can destroy/change resources, and that `instance_type` updates "trigger a stop/start". Wording left unchanged; author to decide whether to qualify ("the import step itself only writes state"). |
+| 20 | Terraform plan template | `required_providers` source `hashicorp/aws`, version "~> 5.0" | n/a | registry.terraform.io/v1/providers/hashicorp/aws/versions | VERIFIED | Provider id "hashicorp/aws"; 5.x releases exist (up to 5.80.0 in listing). Constraint syntax is valid; note 6.x also exists. |
+| 21 | Terraform plan template | `aws_instance` arguments instance_type, subnet_id, vpc_security_group_ids, tags | n/a | raw.githubusercontent.com/hashicorp/terraform-provider-aws/main/website/docs/r/instance.html.markdown | VERIFIED | Each listed as "* `instance_type`", "`subnet_id`", "`vpc_security_group_ids`", "`tags`". Note: `ami` is required unless `launch_template` is set and is absent from the generated block; block carries "must be verified and adapted" so left. |
+| 22 | Terraform plan template | `terraform import aws_instance.ADDR i-...` syntax (ADDRESS then ID; EC2 ID is instance ID) | n/a | developer.hashicorp.com/terraform/cli/commands/import | VERIFIED | "Usage: terraform import [options] ADDRESS ID ... for AWS EC2 instances it is the instance ID (i-abcd1234)". |
+| 23 | Terraform plan template | `region = "eu-west-1"`, "Configurable for any EU region" | n/a | docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html | VERIFIED | "eu-west-1 Europe (Ireland) 3 Ireland"; EU regions exist (eu-central-1 Frankfurt, eu-west-3 Paris, etc.). |
+| 24 | Migration checklist | `terraform plan` to verify no changes are planned after import | n/a | developer.hashicorp.com/terraform/language/import/single-resource | VERIFIED | "Run terraform plan and verify that the import plan meets your needs." Practice advice consistent with docs. |
+| 25 | Playbook, GDPR heading | "GDPR Requirements: Data residency in EU regions" | 43 | /tmp/factcheck-sources/aux-gdpr.txt (OJ L 119 text) | CORRECTED | GDPR contains no data-residency requirement; Chapter V (Arts 44 ff.) restricts transfers to third countries. Old: "### GDPR Requirements" / "- [ ] Data residency in EU regions". New: "### GDPR Considerations" / "- [ ] Data location in EU regions, or a Chapter V transfer mechanism for any transfer outside the EU/EEA". |
+| 26 | Playbook, GDPR | Encryption at rest and in transit; backups; data retention policy | 43 | same | VERIFIED | Art. 32(1)(a) "pseudonymisation and encryption of personal data" (as appropriate); 32(1)(c) restore availability; Art. 5(1)(e) "no longer than is necessary". Under the revised heading "Considerations" these are not asserted as mandatory. |
+| 27 | Playbook, GDPR | "Access logging and audit trails" | 43 | same | REVIEW | GDPR text has no word "log/logging"; closest are Art. 5(2) accountability and Art. 32. Kept as a checklist consideration under the revised heading; author may cite Arts 5(2)/32. |
+| 28 | Playbook, "EU Security Requirements" | Network segmentation, incident response, backup/DR, security monitoring presented as EU requirements | 114 | /tmp/factcheck-sources/source-114.txt (NIS 2 OJ text) | REVIEW | No law is named. NIS 2 mentions network segmentation only in a recital as an example; heading attributes the list to "EU" without a legal basis. Not changed; author to name the instrument (e.g. NIS 2 Art. 21) or retitle. |
+| 29 | Playbook, preamble/Chapter link | Link to Chapter 16 migration guidance | repo | docs/16_migration.md | VERIFIED | File exists. |
+| 30 | Playbook | Success-metric targets (80%, 20%, 60%, 50%, 95%+), phase timings, wave durations, effort heuristic | n/a | n/a | VERIFIED | Not factual claims: the book's own illustrative targets and heuristics (labelled "heuristics" in the text). Counted for completeness. |
+
+## Bibliography metadata issues
+
+None found that affect this unit. Source [43] (GDPR) and Source [114] (NIS 2) were used only via cached OJ text; their URLs were not re-tested here.
+
+## Claims resting only on cross-reference to another volume
+
+None.
