@@ -286,6 +286,23 @@ def strip_anchor(text):
     return ANCHOR_PATTERN.sub("", text).strip()
 
 
+def author_byline_html():
+    """Byline with the author's portrait, embedded so the whitepaper stays a single file."""
+    import base64
+    photo = Path(__file__).resolve().parent / "docs" / "images" / "gunnar_nordqvist.jpg"
+    if not photo.exists():
+        return ""
+    data = base64.b64encode(photo.read_bytes()).decode("ascii")
+    return (
+        '\n            <div class="author-portrait" style="display:flex;gap:20px;align-items:center;margin-top:24px">'
+        f'<img src="data:image/jpeg;base64,{data}" alt="Portrait of Gunnar Nordqvist" width="96" height="96" '
+        'style="width:96px;height:96px;border-radius:50%;object-fit:cover;flex:none">'
+        '<div><p style="margin:0"><strong>Gunnar Nordqvist</strong></p>'
+        '<p style="margin:0">Conceived, directed and published the books of The Transformed Architecture.</p></div></div>'
+    )
+
+
+
 def render_inline(text):
     """Render the inline Markdown that occurs in chapter prose as safe HTML.
 
@@ -548,7 +565,7 @@ def create_whitepaper_html(chapter_data, chapter_meta, book_overview, release_in
             <div class="callout">
                 <div class="callout-title">Who should read this</div>
                 <p>{escape(audience)}</p>
-            </div>
+            </div>{author_byline_html()}
         </section>
 
         <section class="call-to-action">
