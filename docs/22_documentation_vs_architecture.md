@@ -263,7 +263,7 @@ By integrating both disciplines—using Architecture as Code to define the syste
 
 ## Sources
 
-1. **FINOS (n.d.).** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+1. **FINOS (n.d.).** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
 2. **FINOS (n.d.).** *Architecture as Code: Common Architecture Language Model (CALM) specification repository* (schema release 1.0, `https://calm.finos.org/release/1.0/meta/calm.json`). [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code) [Source [48]](33_references.md#source-48)
 3. **Brown, S. (n.d.).** *The C4 model for visualising software architecture.* [https://c4model.com/](https://c4model.com/) (accessed 2026-10-30). [Source [37]](33_references.md#source-37)
 4. **Structurizr (n.d.).** *Structurizr DSL language reference.* [https://docs.structurizr.com/dsl/language](https://docs.structurizr.com/dsl/language) (accessed 2026-10-30). [Source [38]](33_references.md#source-38)

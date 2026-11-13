@@ -654,7 +654,7 @@ This dual approach – automated testing wherever a requirement is quantitative,
 
 1. **Red Hat.** *What is Infrastructure as Code (IaC)?* Red Hat Topics (accessed 2026-10-30). Available at: [https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac](https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac). [Source [29]](33_references.md#source-29)
 2. **Martin, R. C. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure and Design.* Prentice Hall (Pearson). ISBN 978-0-13-449416-6. [Source [33]](33_references.md#source-33)
-3. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project (accessed 2026-10-30). Available at: [https://calm.finos.org/](https://calm.finos.org/). [Source [1]](33_references.md#source-1)
+3. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project (accessed 2026-10-30). Available at: [https://calm.finos.org/](https://calm.finos.org/). [Source [1]](33_references.md#source-1)
 4. **Brown, S.** *The C4 model for visualising software architecture.* Available at: [https://c4model.com/](https://c4model.com/). [Source [37]](33_references.md#source-37)
 5. **Structurizr.** *Structurizr DSL language reference.* Available at: [https://docs.structurizr.com/dsl/language](https://docs.structurizr.com/dsl/language). [Source [38]](33_references.md#source-38)
 6. **Structurizr.** *Structurizr documentation: commands (local, server, export) and binaries.* docs.structurizr.com (accessed 2026-10-30). Available at: [https://docs.structurizr.com/](https://docs.structurizr.com/). [Source [56]](33_references.md#source-56)

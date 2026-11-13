@@ -139,4 +139,4 @@ As technology continues to evolve, the principles outlined in this book—declar
 ## Sources
 
 1. **Kvadrat.** *Sveriges vassaste konsulter.* Kvadrat corporate website (in Swedish). [https://www.kvadrat.se/](https://www.kvadrat.se/) (accessed 2026-10-30). [Source [130]](33_references.md#source-130)
-2. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+2. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)

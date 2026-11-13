@@ -5,7 +5,6 @@
 - Date: 2026-11-13
 - The file contains no `Source [N]` citations. Claims were checked against primary documentation fetched in this session (boto3 reference, AWS docs, HashiCorp docs, GDPR OJ text cached by another subagent as /tmp/factcheck-sources/aux-gdpr.txt, NIS 2 cached as source-114.txt) and against the repository's own appendix files.
 - Counts: 30 claims; 26 VERIFIED; 1 CORRECTED (two wording items in one edit); 3 REVIEW. Bibliography issues: 0 relevant (see below).
-- Scratch retrievals: /tmp/claude-0/-home-user-architecture-as-code/4e91bb11-15e7-594a-b772-5bbe8bfbb058/scratchpad/uD/
 
 | # | Location | Claim in brief | Source ID | URL actually read | Verdict | Evidence note |
 |---|---|---|---|---|---|---|

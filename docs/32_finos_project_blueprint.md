@@ -91,7 +91,7 @@ Adopting the blueprint means embracing a living system: CALM models evolve with 
 
 ## Sources
 
-1. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+1. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
 2. **FINOS.** *Architecture as Code: Common Architecture Language Model (CALM) specification repository.* [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code) [Source [48]](33_references.md#source-48)
 3. **FINOS.** *FINOS Software Project Blueprint.* GitHub repository template for FINOS-hosted projects. [https://github.com/finos/project-blueprint](https://github.com/finos/project-blueprint) (accessed 2026-10-30). [Source [131]](33_references.md#source-131)
 4. **Open Policy Agent (2024).** *Policy as Code Overview.* CNCF OPA Project. [https://www.openpolicyagent.org/docs](https://www.openpolicyagent.org/docs) [Source [10]](33_references.md#source-10)

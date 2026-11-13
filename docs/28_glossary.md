@@ -121,7 +121,7 @@ Revisit this glossary as new capabilities emerge. Update both the definitions an
 
 ## Sources
 
-1. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+1. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
 2. **OpenGitOps (2021).** *OpenGitOps Principles v1.0.0.* CNCF GitOps Working Group. [https://opengitops.dev/](https://opengitops.dev/) [Source [133]](33_references.md#source-133)
 3. **Rose, S., Borchert, O., Mitchell, S. & Connelly, S. (2020).** *Zero Trust Architecture.* NIST Special Publication 800-207, August 2020. [https://doi.org/10.6028/NIST.SP.800-207](https://doi.org/10.6028/NIST.SP.800-207) [Source [134]](33_references.md#source-134)
 4. **Netflix.** *Chaos Monkey.* Open-source project documentation. [https://netflix.github.io/chaosmonkey/](https://netflix.github.io/chaosmonkey/) [Source [135]](33_references.md#source-135)

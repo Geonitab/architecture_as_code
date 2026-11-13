@@ -96,7 +96,7 @@ Part A of this book lays the conceptual foundations for that discipline. Chapter
 
 ## Sources
 
-1. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project (accessed 2026-10-30). Available at: [https://calm.finos.org/](https://calm.finos.org/). [Source [1]](33_references.md#source-1)
+1. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project (accessed 2026-10-30). Available at: [https://calm.finos.org/](https://calm.finos.org/). [Source [1]](33_references.md#source-1)
 2. **SlashData for the Cloud Native Computing Foundation (2025).** *State of Cloud Native Development Q3 2025.* CNCF, November 2025. Available at: [https://www.cncf.io/reports/state-of-cloud-native-development/](https://www.cncf.io/reports/state-of-cloud-native-development/). [Source [7]](33_references.md#source-7)
 3. **Martin, R. C. (2017).** *Clean Architecture: A Craftsman's Guide to Software Structure and Design.* Prentice Hall (Pearson). ISBN 978-0-13-449416-6. [Source [33]](33_references.md#source-33)
 4. **Red Hat.** *What is Infrastructure as Code (IaC)?* Red Hat Topics (accessed 2026-10-30). Available at: [https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac](https://www.redhat.com/en/topics/automation/what-is-infrastructure-as-code-iac). [Source [29]](33_references.md#source-29)

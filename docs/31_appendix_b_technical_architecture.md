@@ -366,7 +366,7 @@ The system is designed for continuous improvement:
 
 ## Sources
 
-1. **FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
+1. **FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project. [https://calm.finos.org/](https://calm.finos.org/) (accessed 2026-10-30). [Source [1]](33_references.md#source-1)
 2. **FINOS.** *Architecture as Code: Common Architecture Language Model (CALM) specification repository.* [https://github.com/finos/architecture-as-code](https://github.com/finos/architecture-as-code) [Source [48]](33_references.md#source-48)
 3. **DevOps-MBSE.** *Architecture-as-Code (AaC).* GitHub repository. [https://github.com/DevOps-MBSE/AaC](https://github.com/DevOps-MBSE/AaC) (accessed 2026-10-30). [Source [132]](33_references.md#source-132)
 

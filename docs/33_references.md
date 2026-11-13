@@ -85,7 +85,7 @@ This section lists the sources cited throughout the book. The numbered source in
 - [**Source [93]:**]{#source-93} FinOps Foundation. *FinOps Framework.* The Linux Foundation. Available at: [https://www.finops.org/framework/](https://www.finops.org/framework/) (accessed 2026-10-30). Same document as Source [124]. *Referenced in:* [Chapter 15B: Cost Optimisation and Resource Management](15_cost_optimization.md).
 - [**Source [94]:**]{#source-94} Microsoft Learn. *Optimize your cloud investment with Cost Management.* Microsoft Learn, 9 July 2025. Available at: [https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/cost-mgt-best-practices) (accessed 2026-10-30). *Referenced in:* [Chapter 15B: Cost Optimisation and Resource Management](15_cost_optimization.md).
 - [**Source [95]:**]{#source-95} Amazon Web Services. *Compute Savings Plans.* AWS pricing documentation. Available at: [https://aws.amazon.com/savingsplans/compute-pricing/](https://aws.amazon.com/savingsplans/compute-pricing/) (accessed 2026-10-30). *Referenced in:* [Chapter 15B: Cost Optimisation and Resource Management](15_cost_optimization.md).
-- [**Source [96]:**]{#source-96} Amazon Web Services. *Import AWS resources into a CloudFormation stack.* AWS CloudFormation User Guide. Available at: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import.html) (accessed 2026-10-30). *Referenced in:* [Chapter 16: Migration from Traditional Infrastructure](16_migration.md).
+- [**Source [96]:**]{#source-96} Amazon Web Services. *Import AWS resources into a CloudFormation stack.* AWS CloudFormation User Guide. Available at: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/import-resources.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/import-resources.html) (accessed 2026-10-30). *Referenced in:* [Chapter 16: Migration from Traditional Infrastructure](16_migration.md).
 - [**Source [97]:**]{#source-97} Microsoft Learn. *Plan your migration.* Cloud Adoption Framework for Azure, Migrate methodology, 1 August 2025. Available at: [https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/plan-migration](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/plan-migration) (accessed 2026-10-30). *Referenced in:* [Chapter 16: Migration from Traditional Infrastructure](16_migration.md).
 - [**Source [98]:**]{#source-98} Google Cloud. *Committed use discounts (CUDs) for Compute Engine.* Google Cloud documentation. Available at: [https://docs.cloud.google.com/compute/docs/instances/committed-use-discounts-overview](https://docs.cloud.google.com/compute/docs/instances/committed-use-discounts-overview) (accessed 2026-10-30). *Referenced in:* [Chapter 15B: Cost Optimisation and Resource Management](15_cost_optimization.md).
 - [**Source [99]:**]{#source-99} Google Cloud. *Migrate to Google Cloud: Get started.* Cloud Architecture Center, last reviewed 20 November 2024. Available at: [https://docs.cloud.google.com/architecture/migration-to-gcp-getting-started](https://docs.cloud.google.com/architecture/migration-to-gcp-getting-started) (accessed 2026-10-30). *Referenced in:* [Chapter 16: Migration from Traditional Infrastructure](16_migration.md).
@@ -180,7 +180,7 @@ This section lists the sources cited throughout the book. The numbered source in
 
 **FinOps Foundation.** *FinOps Framework.* The Linux Foundation. *See numbered index:* [Source [124]](33_references.md#source-124)
 
-**FINOS.** *Architecture as Code: What is CALM?* FINOS Architecture as Code project. *See numbered index:* [Source [1]](33_references.md#source-1)
+**FINOS.** *Common Architecture Language Model* FINOS Architecture as Code project. *See numbered index:* [Source [1]](33_references.md#source-1)
 
 **FINOS.** *Architecture as Code: Common Architecture Language Model (CALM) specification repository.* GitHub. *See numbered index:* [Source [48]](33_references.md#source-48)
 
@@ -282,7 +282,7 @@ This section lists the sources cited throughout the book. The numbered source in
 
 **NIST.** *NIST Releases First 3 Finalized Post-Quantum Encryption Standards.* FIPS 203 (ML-KEM), FIPS 204 (ML-DSA) and FIPS 205 (SLH-DSA). News release, 13 August 2024. *See numbered index:* [Source [85]](33_references.md#source-85)
 
-**NIST.** *Transition to Post-Quantum Cryptography Standards.* NIST IR 8547 (initial public draft), 12 November 2024. *See numbered index:* [Source [122]](33_references.md#source-122)
+**NIST.** *Transition to Post-Quantum Cryptography Standards.* NIST IR 8547 (final), October 2026; the initial public draft of 12 November 2024 is superseded. *See numbered index:* [Source [122]](33_references.md#source-122)
 
 **NTIA.** *The Minimum Elements For a Software Bill of Materials (SBOM).* US Department of Commerce, National Telecommunications and Information Administration, 12 July 2021. *See numbered index:* [Source [89]](33_references.md#source-89)
 

@@ -4175,7 +4175,7 @@ validate_key_management("aws_managed") := {
     "strength": "medium",
     "recommendations": [
         "Consider migrating to customer managed keys for greater control",
-        "Enable automatic key rotation"
+        "AWS managed keys rotate automatically every year; the rotation cannot be configured"
     ]
 }
 
@@ -4360,7 +4360,7 @@ assess_regulator(name, violations) := summary if {
 ```
 
 ### 10_CODE_2: OSCAL profile for regulated financial services {#10_code_2}
-*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation. The `regional-catalog.json` import refers to the organisation's own OSCAL catalogue, which encodes the GDPR articles and the MSB guidance as controls (`gdpr-*`, `msb-*`) and is not reproduced here; control selections use glob patterns such as `ac-*`, not regular expressions.
+*Referenced from Chapter 10.* This OSCAL profile merges controls from NIST SP 800-53 with GDPR Article 32 and MSB network segmentation expectations. Parameters clarify the encryption standard and key management practices adopted by the organisation. The `regional-catalog.json` import refers to the organisation's own OSCAL catalogue, which encodes the GDPR articles and the MSB guidance as controls (`gdpr-*`, `msb-*`) and is not reproduced here; control selections use glob patterns such as `ac-*`, not regular expressions. The custom `requirement` part carries the organisation's namespace because OSCAL reserves unqualified part names for the names its models define.
 
 ```json
 {
@@ -4437,6 +4437,7 @@ assess_regulator(name, violations) := summary if {
                 {
                   "id": "msb-3.2.1_fin-requirement",
                   "name": "requirement",
+                  "ns": "https://example.org/ns/architecture-as-code",
                   "title": "Financial Sector Isolation",
                   "prose": "Critical payment workloads must be isolated in dedicated network segments with inspection by AWS Network Firewall and VPC Traffic Mirroring."
                 }
