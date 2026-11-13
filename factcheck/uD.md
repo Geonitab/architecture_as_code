@@ -5,7 +5,7 @@
 - Date: 2026-11-13
 - The file contains no `Source [N]` citations. Claims were checked against primary documentation fetched in this session (boto3 reference, AWS docs, HashiCorp docs, GDPR OJ text cached by another subagent as /tmp/factcheck-sources/aux-gdpr.txt, NIS 2 cached as source-114.txt) and against the repository's own appendix files.
 - Round 2: 2 rows changed (SERIES 0, OWN 1, CORRECTED 0, REVIEW 0, VERIFIED-with-new-evidence 1: row 8). Repository-file rows 1-7 re-read this round with counts/lines quoted; rows 26 quotations re-checked in cache aux-gdpr.txt. Round 2b: 6 rows changed (VERIFIED-with-new-evidence 6; no verdict changes).
-- Counts: 30 claims; 25 VERIFIED; 1 CORRECTED (two wording items in one edit); 3 REVIEW; 1 OWN; 0 SERIES. Bibliography issues: 0 relevant (see below).
+- Counts (recomputed from the table rows): 30 rows; 25 VERIFIED; 1 CORRECTED; 3 REVIEW; 0 SERIES; 1 OWN.
 
 | # | Location | Claim in brief | Source ID | URL actually read | Verdict | Evidence note |
 |---|---|---|---|---|---|---|

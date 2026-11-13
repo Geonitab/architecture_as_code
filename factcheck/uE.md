@@ -2,7 +2,7 @@
 
 Files: docs/architecture_as_code_maturity_model.md; docs/maturity_model_radar.html (prose and chapter references only; JS/CSS mechanics skipped). Date: 2026-11-13.
 Round 2: 4 rows changed (SERIES 0, OWN 0, CORRECTED 0, REVIEW 0, VERIFIED-with-new-evidence 4: rows 3, 9, 10 re-fetched from https://docs.structurizr.com/ because the quoted sentences are on the home page, not the DSL language page; row 11 split, 11a now VERIFIED). All other VERIFIED rows re-checked against cache files by exact phrase; Terratest quote re-fetched from https://terratest.gruntwork.io/.
-Counts: 15 claims, 10 VERIFIED, 2 CORRECTED, 3 REVIEW, 0 SERIES, 0 OWN.
+Counts (recomputed from the table rows): 15 rows; 10 VERIFIED; 2 CORRECTED; 3 REVIEW; 0 SERIES; 0 OWN.
 The file's own "Sources" list ([1] external; [2]-[11] internal chapter links) is local numbering, not the bibliography numbering. Local [1] = bibliography Source [38].
 
 | # | Location | Claim in brief | Source ID | URL actually read | Verdict | Evidence note |

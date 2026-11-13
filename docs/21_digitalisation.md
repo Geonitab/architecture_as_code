@@ -253,7 +253,7 @@ Google Cloud's partner-operated sovereign controls—run with T-Systems in Germa
 **European Sovereign Cloud Providers:**
 European-native providers deliver offerings that satisfy strict localisation requirements and public sector procurement rules:
 
-- **OVHcloud** provides Gaia-X aligned services with full EU legal jurisdiction and SecNumCloud qualification for French public sector workloads.
+- **OVHcloud** provides Gaia-X aligned services with full EU legal jurisdiction and ANSSI SecNumCloud qualification for selected services that store sensitive and critical data.
 - **Scaleway** delivers sovereign cloud regions, Bare Metal, and Kubernetes platforms operated entirely within the EU with transparent supply-chain disclosure.
 - **Open Telekom Cloud** (renamed T Cloud Public in January 2026), operated by T-Systems on OpenStack with data centres in Germany and the Netherlands, provides German and broader EU data residency for regulated industries; it is distinct from the Google-based sovereign controls that T-Systems operates, described above.
 
