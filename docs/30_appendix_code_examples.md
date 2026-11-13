@@ -3787,7 +3787,7 @@ class AWSCostOptimizer:
                 'spot_instances': self._analyze_spot_instance_opportunities()
             },
             'potential_monthly_savings_usd': 0,
-            'notes': 'Costs are in USD (the currency of AWS billing and Cost Explorer reporting). Convert to EUR using current exchange rate for EU financial reporting.'
+            'notes': 'Costs are in USD (the currency in which Cost Explorer and AWS billing totals are reported). Convert to EUR using current exchange rate for EU financial reporting.'
         }
 
         # Calculate total potential savings
