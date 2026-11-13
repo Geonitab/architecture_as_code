@@ -853,16 +853,30 @@ class Deck:
         avail_w, avail_h, gap = 11.3, 3.85, 0.25
         current = min(6.2 / w, 4.5 / h)
         ink = image.convert("L").point(lambda v: 255 if v < 235 else 0).resize((1, h), Image.BOX)
-        dark = list(ink.getdata())
+        # Only the middle of a run of at least 8 rows that hold nothing but thin connector lines is a safe cut: a
+        # row through a node or a label, or one between two lines of text, is never one.
+        limit = max(4.0, 0.015 * w) * 255 / w
+        quiet = [value <= limit for value in ink.getdata()]
+        safe, y = [], 0
+        while y < h:
+            if quiet[y]:
+                z = y
+                while z < h and quiet[z]:
+                    z += 1
+                if z - y >= 8:
+                    safe.append((y + z) // 2)
+                y = z
+            else:
+                y += 1
         best = None
         for k in (2, 3, 4):
             cuts = [0]
             for i in range(1, k):
-                centre, window = round(i * h / k), max(1, int(h * 0.08))
-                low, high = max(cuts[-1] + 1, centre - window), min(h - 1, centre + window)
-                if low > high:
+                centre, window = round(i * h / k), int(h * 0.12)
+                options = [m for m in safe if m > cuts[-1] and abs(m - centre) <= window]
+                if not options:
                     break
-                cuts.append(min(range(low, high + 1), key=lambda y: (dark[y], abs(y - centre))))
+                cuts.append(min(options, key=lambda m: abs(m - centre)))
             else:
                 cuts.append(h)
                 tallest = max(cuts[i + 1] - cuts[i] for i in range(k))
