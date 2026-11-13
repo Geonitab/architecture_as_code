@@ -61,7 +61,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Service Level Indicator | The quantitative measurement—such as latency or error rate—that shows whether an SLO is being achieved. Frequently described as an SLI. |
 | Error Budget | The agreed allowance for unreliability that guides deployment pace and prioritisation of improvement work. |
 | Chaos Engineering | Intentional experimentation that reveals weaknesses by introducing controlled failure, strengthening resilience and team confidence. |
-| Chaos Monkey | Netflix's open-source tool that randomly terminates virtual machine instances and containers in production to verify that services tolerate instance failure; an early and widely known chaos engineering implementation [Source [135]](33_references.md#source-135). |
+| Chaos Monkey | Netflix's open-source tool that randomly terminates virtual machine instances and containers in production to verify that services tolerate instance failure; an example of a tool that follows the Principles of Chaos Engineering [Source [135]](33_references.md#source-135). |
 | Incident Command | An inclusive, role-based structure that coordinates response efforts during major events so everyone understands responsibilities and communication paths. |
 | Blameless Post-Incident Review | A learning-focused conversation after incidents that identifies systemic improvements without placing personal blame. |
 | Runway Health Check | A periodic review of capacity, tooling, and process debt to ensure teams have the runway to deliver sustainable change. |
