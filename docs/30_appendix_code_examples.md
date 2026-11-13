@@ -3742,13 +3742,15 @@ class AWSCostOptimizer:
         opportunities = []
 
         for recommendation in rightsizing_response.get('RightsizingRecommendations', []):
-            if recommendation['RightsizingType'] == 'Modify':
+            if recommendation['RightsizingType'] == 'MODIFY':
                 current = recommendation['CurrentInstance']
                 target = recommendation['ModifyRecommendationDetail']['TargetInstances'][0]
+                # Instance types are reported in ResourceDetails.EC2ResourceDetails
+                # (InstanceName is only the Name tag of the current instance)
                 opportunities.append({
                     'instance_id': current['ResourceId'],
-                    'current_type': current['InstanceName'],
-                    'recommended_type': target['InstanceName'],
+                    'current_type': current.get('ResourceDetails', {}).get('EC2ResourceDetails', {}).get('InstanceType'),
+                    'recommended_type': target.get('ResourceDetails', {}).get('EC2ResourceDetails', {}).get('InstanceType'),
                     'estimated_monthly_savings_usd': float(target['EstimatedMonthlySavings']),
                     # CurrentInstance exposes ResourceUtilization (not UtilizationMetrics)
                     'utilisation': current.get('ResourceUtilization', {}),

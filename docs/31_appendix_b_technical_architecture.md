@@ -12,7 +12,7 @@ This appendix describes the technical infrastructure and workflow that produce, 
 
 ### File Organisation and Naming Conventions
 
-Book content is organised in 38 chapter and appendix files within the `docs/` directory—31 chapters and 7 appendices, as listed in the canonical index `docs/book_index.json`—together with eight part introductions (`part_*.md`), the front cover (`00_front_cover.md`), and three supplements (the maturity model, the maturity radar tool, and the control mapping matrix template). Numbered files follow the pattern `NN_name.md`; letter suffixes (`09b`, `15a`, `26a`) mark chapters inserted after the original numbering, and the reading order is defined by the index rather than by the file names:
+Book content is organised in 38 chapter and appendix files within the `docs/` directory—31 chapters and 7 appendices, as listed in the canonical index `docs/book_index.json`—together with eight part introductions (`part_*.md`), the front cover (`00_front_cover.md`), and three supplements (the maturity model, the maturity radar tool, and the control mapping matrix template). Numbered files follow the pattern `NN_name.md`; letter suffixes (`09b`, `15a`, `26a`) mark chapters inserted after the original numbering, and the build order is defined by the `nav` section of `mkdocs.yml` rather than by the file names:
 
 ```text
 docs/
@@ -65,7 +65,7 @@ This layout ensures that readers can skim the content quickly, while the build p
 
 Automated chapter generation is deliberately disabled to protect the British English manuscript in `docs/`; the legacy `generate_iac_book_content()` routine remains in `generate_book.py` but is no longer called. Today the script is a build and selection tool:
 
-- **Canonical ordering**: Reads the chapter list from `docs/book_index.json` through `scripts/navigation.py`.
+- **Canonical ordering**: Reads the chapter list from the `nav` section of `mkdocs.yml` through `scripts/navigation.py`.
 - **Chapter selection**: `--all` (the default), `--sample`, or `--chapters` chooses which files are included.
 - **EPUB build**: `python3 generate_book.py --format epub --output dist/book.epub --all` assembles the selected chapters into an EPUB, optionally validated with `--validate` (EPUBCheck).
 - **Manual content notice**: Run without arguments, the script prints a notice explaining that content generation stays disabled.
@@ -115,7 +115,7 @@ Its `variables` block selects the `book` document class, sets the page geometry,
 
 `build_book.sh` orchestrates the entire build process:
 
-1. **Environment validation**: Confirms the availability of Pandoc, XeLaTeX, and the Mermaid CLI, and installs the Eisvogel template together with the repository's `eisvogel-added.latex` and `eisvogel-title-page.latex` partials when they are missing.
+1. **Environment validation**: Confirms that Pandoc is available (installing it through the system package manager where possible) and installs the Eisvogel template together with the repository's `eisvogel-added.latex` and `eisvogel-title-page.latex` partials when they are missing.
 2. **Cover rendering**: Renders `templates/book-cover.svg` to `images/book-cover.png`.
 3. **Diagram conversion**: Converts `.mmd` files to PNG format with the Kvadrat Mermaid theme (`mermaid-kvadrat-theme.json`), adding a Puppeteer configuration file in Docker and CI mode.
 4. **PDF generation**: Compiles all chapters into a single book.
@@ -148,16 +148,16 @@ pandoc "${NON_LATEX_CHAPTER_FILES[@]}" --defaults=pandoc-nonlatex.yaml \
 
 ### Quality Assurance and Validation
 
-- **Template validation**: Automatically checks the Eisvogel template.
-- **Configuration control**: Verifies Pandoc settings in `pandoc.yaml`.
-- **Image handling**: Ensures every diagram reference resolves correctly.
-- **Output verification**: Confirms the generated files meet expectations.
+- **Template validation**: Installs the Eisvogel template and its partials when they are missing.
+- **Configuration control**: Stops the build when `pandoc.yaml` is missing.
+- **Image handling**: Renders every Mermaid source to PNG and continues with a warning when a single conversion fails.
+- **Output verification**: Checks that the PDF was generated (falling back to Pandoc's default template if not) and validates the EPUB with EPUBCheck when it is installed.
 
 ## Evolutionary Architecture Fitness Functions
 
 Architecture as Code encourages continuous evaluation of structural decisions. To stop Structurizr diagrams drifting away from reality, embed evolutionary architecture fitness functions in the publication pipeline:
 
-- **Workspace validity** – Validate `docs/examples/structurizr/aac_reference_workspace.dsl` with the Structurizr `validate` command (`structurizr validate -workspace docs/examples/structurizr/aac_reference_workspace.dsl`). In this repository the `structurizr-diagrams.yml` workflow runs `scripts/render_structurizr_diagrams.sh`, which calls `validate` and then `export` in a Structurizr CLI container whenever the workspace or its tooling changes; because the standalone Structurizr CLI has reached end of life, that script should move to the consolidated `structurizr` command. The command verifies element definitions, relationships, and view completeness before reviewers examine the narrative.
+- **Workspace validity** – Validate `docs/examples/structurizr/aac_reference_workspace.dsl` with the Structurizr `validate` command (`structurizr validate -workspace docs/examples/structurizr/aac_reference_workspace.dsl`). In this repository the `structurizr-diagrams.yml` workflow runs `scripts/render_structurizr_diagrams.sh`, which calls `validate` and then `export` in a `structurizr/structurizr` container whenever the workspace or its tooling changes; the standalone Structurizr CLI has reached end of life, and the script already uses the consolidated `structurizr` distribution. The `validate` command checks the workspace before reviewers examine the narrative.
 - **Structural coverage thresholds** – Extend the validation job with custom scripts that assert minimum coverage for people, containers, and critical data stores. Failing the check prompts architects to capture missing perspectives before merging.
 - **Tag conformance** – Compare element tags against an approved list (for example, `Core System`, `Operations`, or `External Person`). Non-conforming tags indicate inconsistent language and trigger follow-up conversations during review.
 - **Fitness score export** – Use the policy evaluator component described in the reference workspace to calculate scores for latency, operability, and compliance rules. Surface these scores in the Observability Hub dashboards so that teams track trends over time.
@@ -183,6 +183,7 @@ on:
       - 'generate_book.py'
       - 'generate_whitepapers.py'
       - 'generate_presentation.py'
+      - 'presentation_deck.py'
       - 'build_release.sh'
       - 'docs/build_book.sh'
       - 'templates/**/*.html'
@@ -244,7 +245,7 @@ The workflow has three jobs: `setup` determines the build strategy and the deliv
 - **Build MkDocs Site** (`build-mkdocs.yml`): Builds the documentation website with MkDocs on changes to `docs/**` or `mkdocs.yml` and deploys it to the `gh-pages` branch, published at [https://aac.geon.se](https://aac.geon.se).
 - **Verify Mermaid Diagrams** (`verify-mermaid-diagrams.yml`): Installs the Mermaid CLI, regenerates missing PNGs with `scripts/check_mermaid_diagrams.py --write-missing`, verifies that every committed PNG matches its `.mmd` source, and commits regenerated PNGs back to the branch.
 - **Validate Chapter Numbering** (`validate-doc-numbering.yml`): Runs `scripts/check_doc_numbering.py` whenever `docs/*.md` changes.
-- **Structurizr diagram automation** (`structurizr-diagrams.yml`): Validates and exports the reference workspace in `docs/examples/structurizr/` with a Structurizr CLI container when the workspace or its scripts change, and checks the diagram manifest.
+- **Structurizr diagram automation** (`structurizr-diagrams.yml`): Validates and exports the reference workspace in `docs/examples/structurizr/` with a Structurizr container when the workspace or its scripts change, and checks the diagram manifest.
 
 Presentation decks and whitepapers are produced by the unified workflow; there are no separate presentation or whitepaper workflows.
 
@@ -252,35 +253,22 @@ Presentation decks and whitepapers are produced by the unified workflow; there a
 
 ### Automated Outline Generation
 
-`generate_presentation.py` creates presentation materials from the book’s content. The outline generator reads the chapter catalogue from `BOOK_REQUIREMENTS.md` through `load_book_requirements()`, groups the chapters by part, and only falls back to scanning `docs/*.md` alphabetically when that catalogue is unavailable:
+`generate_presentation.py` creates presentation materials from the book’s content. The outline generator asks `presentation_deck.collect_deck()` to read the parts, chapters, and appendices listed in `docs/book_index.json`, and then derives the key points for each part and chapter:
 
 ```python
-# generate_presentation.py (excerpt, simplified)
+# generate_presentation.py (excerpt)
 def generate_presentation_outline():
-    """Generate presentation outline from all book chapters."""
-    docs_dir = Path("docs")
-    if not docs_dir.exists():
-        print("Error: docs/ directory not found")
-        return []
-
-    requirements = load_book_requirements()
-    book_config = requirements.get('book', {})
-    presentation_data = []
-
-    if not book_config:
-        # Fallback to alphabetical ordering when requirements are missing
-        for chapter_file in _iter_primary_markdown_files(docs_dir):
-            chapter_data = read_chapter_content(chapter_file)
-            if chapter_data:
-                presentation_data.append({
-                    'type': 'chapter',
-                    'file': str(chapter_file.relative_to(docs_dir)),
-                    'chapter': chapter_data,
-                })
-        return presentation_data
-
-    # Otherwise: front matter first, then chapters grouped by part
-    ...
+    """Read the book (parts and chapters from docs/book_index.json) into deck data."""
+    deck = presentation_deck.collect_deck()
+    for entry in deck:
+        if entry.get("type") == "chapter":
+            chapter = entry["chapter"]
+            chapter["key_points"] = list(chapter.get("sections", []))
+        elif entry.get("type") == "part":
+            entry["part"]["key_points"] = [
+                f"Chapter {c['identifier']}: {c['title']}" for c in entry["part"].get("chapters", [])
+            ]
+    return deck
 ```
 
 ### PowerPoint Integration
@@ -326,7 +314,7 @@ docs/archive/book-cover/              # Archived design sources (not part of the
 
 ### Kvadrat Brand Integration
 
-The presentation template implements Kvadrat’s visual identity through CSS colour tokens, which the whitepaper template mirrors; the excerpt below is taken from `templates/presentation-template.html`:
+The presentation template implements Kvadrat’s visual identity through CSS colour tokens, while the whitepaper template takes its palette from the book’s own `--book-*` tokens; the excerpt below is taken from `templates/presentation-template.html`:
 
 ```css
 :root {
@@ -344,8 +332,8 @@ The presentation template implements Kvadrat’s visual identity through CSS col
 `generate_whitepapers.py` creates standalone HTML documents:
 
 - **One whitepaper per chapter**: 38 at the time of writing, driven by the chapter catalogue in `BOOK_REQUIREMENTS.md`; the script warns when a chapter has no whitepaper.
-- **Professional HTML design**: Responsive layout with a print stylesheet for A4 and Letter output.
-- **Context section per chapter**: Each whitepaper states where its chapter sits within the programme.
+- **Professional HTML design**: Responsive layout with a print stylesheet for A4 output.
+- **Chapter summary per whitepaper**: Each whitepaper presents the chapter’s diagram, opening paragraphs, and primary topics, followed by a short overview of the book and a link to the full chapter.
 - **Distribution ready**: Suitable for email, web, or print, and bundled into a combined PDF by the release workflow.
 
 ## Technical Architecture and System Integration
