@@ -2331,7 +2331,7 @@ class IaCCompetencyFramework:
             "cloud_platforms": {
                 "aws": ["EC2", "VPC", "RDS", "Lambda", "S3", "IAM"],
                 "azure": ["Virtual Machines", "Resource Groups", "Storage", "Functions"],
-                "gcp": ["Compute Engine", "VPC", "Cloud Storage", "Cloud Functions"],
+                "gcp": ["Compute Engine", "VPC", "Cloud Storage", "Cloud Run functions"],
                 "multi_cloud": ["Provider abstraction", "Cost optimisation", "Governance"]
             },
             "security_compliance": {
@@ -2708,7 +2708,7 @@ performance_measurement_framework:
       collection_method: "Incident correlation with deployments"
 
     rework_rate:
-      description: "Percentage of deployments that are unplanned fixes of earlier changes (the fifth DORA metric since 2024)"
+      description: "Percentage of deployments that are unplanned and made to fix bugs (the fifth DORA metric since 2024)"
       measurement: "Percentage"
       target: "Track together with change failure rate; set organisation-specific targets"
       collection_method: "Deployment metadata (planned versus unplanned deployments)"
@@ -4955,8 +4955,8 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
             productService -> productDb "Reads/writes" "JDBC"
             productService -> searchIndex "Indexes products" "HTTP"
             orderService -> orderDb "Reads/writes" "JDBC"
-            userService -> userDb "Reads/writes" "JDBC"
-            inventoryService -> productDb "Updates stock" "JDBC"
+            userService -> userDb "Reads/writes" "PostgreSQL protocol"
+            inventoryService -> productDb "Updates stock" "PostgreSQL protocol"
 
             # Relationships - Services to Cache
             productService -> cache "Caches products" "Redis Protocol"
@@ -5034,7 +5034,7 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
                     containerInstance cache
                 }
 
-                deploymentNode "Elasticsearch Service" {
+                deploymentNode "Amazon OpenSearch Service" {
                     containerInstance searchIndex
                 }
 
