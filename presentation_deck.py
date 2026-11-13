@@ -788,6 +788,15 @@ class Deck:
             self.text(slide, 0.8, 6.28, 11.7, 0.66, [{"text": figure_caption(rest), "size": 13, "colour": t["muted"], "line": 1.05}])
         self.footer(slide)
 
+    def author_portrait(self, slide, x, y, size):
+        """The author's portrait, cropped to a circle. Does nothing if the file is missing."""
+        path = self.root / "docs" / "images" / "gunnar_nordqvist.jpg"
+        if not path.exists():
+            return
+        picture = slide.shapes.add_picture(str(path), self.In(x), self.In(y), self.In(size), self.In(size))
+        picture.auto_shape_type = self.SHAPE.OVAL
+        picture._element.nvPicPr.cNvPr.set("descr", f"Portrait of {AUTHOR_NAME}")
+
     def closing_slide(self):
         b, t = self.book, self.hero
         slide, title = self.new_slide("Read the book", "")
@@ -800,8 +809,16 @@ class Deck:
         if b["site"]:
             lines.append({"text": f"Read it at {b['site']}", "size": 24, "bold": True, "colour": t["accent_text"], "after": 6})
         lines.append({"text": f"All books in the series: {SERIES_LANDING}", "size": 18, "colour": t["tint"], "after": 18})
-        lines.append({"text": f"{AUTHOR_LINE_1} {AUTHOR_NAME}. {AUTHOR_LINE_2}.", "size": 13, "colour": t["tint"]})
-        self.text(slide, 0.9, 4.6, 7.8, 2.2, lines)
+        self.author_portrait(slide, 0.9, 6.0, 1.0)
+        self.text(slide, 0.9, 4.6, 7.8, 1.3, lines)
+        self.text(
+            slide, 2.1, 6.2, 6.6, 0.8,
+            [
+                {"text": AUTHOR_LINE_1, "size": 12, "colour": t["tint"], "after": 2},
+                {"text": AUTHOR_NAME, "size": 18, "bold": True, "colour": t["white"], "after": 2},
+                {"text": AUTHOR_LINE_2, "size": 12, "colour": t["tint"]},
+            ],
+        )
 
 
 def build_deck(prs, deck: list, root: Path = ROOT):
