@@ -45,7 +45,7 @@ Version control integration for infrastructure changes supports systematic track
 
 ## Team transition and competence development
 
-Skills development programmes must prepare traditional systems administrators and network engineers for Architecture as Code-based workflows. Training curricula should encompass Infrastructure as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.
+Skills development programmes must prepare traditional systems administrators and network engineers for workflows managed through Architecture as Code. Training curricula should encompass Infrastructure as Code tools, cloud platforms, DevOps practices and automation scripting for comprehensive capability development.
 
 Organisational structure evolution from traditional silos to cross-functional teams supports effective Architecture as Code adoption. Integrated DevOps teams that own Architecture as Code end to end replace the hand-offs between separate development and operations groups.
 

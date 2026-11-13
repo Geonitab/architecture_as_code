@@ -31,9 +31,9 @@ Figure 17.1 summarises the journey from siloed functions towards integrated, pro
 
 DevOps practices create the social contract that allows infrastructure and application specialists to move at the same tempo. When teams share responsibilities rather than hand off tasks, they develop mutual respect for each other's constraints and opportunities. This foundation becomes especially important once automated infrastructure changes flow through production multiple times per day.
 
-Psychological safety, transparent communication, and inclusive retrospectives help teams learn from incidents without blame. Rather than penalising honest mistakes, high-performing organisations treat failures as tuition fees for valuable lessons. This mindset shift prevents defensive behaviours that slow experimentation and drive knowledge underground.
+Psychological safety, transparent communication, and inclusive retrospectives help teams learn from incidents without blame. Rather than penalising honest mistakes, high-performing organisations treat failures as investments in learning. This mindset shift prevents defensive behaviours that slow experimentation and drive knowledge underground.
 
-Organisations that celebrate experimentation and view failure as tuition invest in coaching, community practice, and leadership behaviours that make cross-functional collaboration the default. Senior leaders model vulnerability by sharing their own learning journeys, creating permission structures that encourage junior staff to ask questions and propose improvements without fear of criticism.
+Organisations that celebrate experimentation and view failure as an investment in learning invest in coaching, community practice, and leadership behaviours that make cross-functional collaboration the default. Senior leaders model vulnerability by sharing their own learning journeys, creating permission structures that encourage junior staff to ask questions and propose improvements without fear of criticism.
 
 ## Designing cross-functional teams
 

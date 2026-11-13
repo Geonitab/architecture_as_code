@@ -36,7 +36,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 | Kubernetes | An open-source orchestration platform that schedules containers, scales workloads, and standardises operational tasks. |
 | Container | A lightweight, portable runtime package that combines application code with dependencies for consistent execution across environments. |
 | Service Mesh | A dedicated infrastructure layer that manages service-to-service security, routing, and observability without each team writing bespoke logic. |
-| Runbook Automation | Automated execution of the procedural knowledge once held in runbooks, shortening incident response while keeping humans in control of critical decisions. |
+| Runbook Automation | Automated execution of the procedural knowledge once held in runbooks, which shortens incident response and keeps humans in control of critical decisions. |
 | Observability Stack | The telemetry pipelines, dashboards, and alerting rules that provide actionable insight into system behaviour and guide inclusive on-call collaboration. |
 
 ## Governance, compliance, and security
