@@ -10,7 +10,7 @@ The Architecture as Code methodology forms the foundation for Architecture Decis
 
 For organisations implementing Architecture as Code, ADRs are particularly valuable because they ensure architecture decisions are documented in a structured manner that meets compliance requirements and facilitates knowledge transfer between teams and over time.
 
-ADRs function as architecture's "commit messages"—short, focused documents that capture the context, the problem, the chosen alternative, and the consequences of important architecture decisions. This enables traceability and an understanding of why specific technical choices were made.
+ADRs function as architecture's “commit messages”—short, focused documents that capture the context, the problem, the chosen alternative, and the consequences of important architecture decisions. This enables traceability and an understanding of why specific technical choices were made.
 
 Modern software development emphasises the importance of transparent and traceable decisions. The ADR method supports these requirements by creating an audit trail of architecture decisions that can be reviewed and evaluated over time.
 
@@ -238,7 +238,7 @@ ADRs preserve organisational memory when staff transitions occur. During onboard
 
 1. Review the most recent ADRs affecting the service to understand architectural intent and compliance boundaries.
 2. Inspect the automation evidence (pipeline runs, policy reports, state snapshots) referenced in the ADR to verify the decision is still active.
-3. Capture any deviations in a "drift" section and schedule a follow-up review if the ADR's `next_review_due` date has lapsed.
+3. Capture any deviations in a “drift” section and schedule a follow-up review if the ADR's `next_review_due` date has lapsed.
 
 In one engagement the author observed this workflow prevent significant disruption during a platform team rotation: when the outgoing lead departed, the incoming engineer replayed the ADR change log to rebuild the rationale for Terraform state hardening, reusing the monitoring queries and remediation playbooks recorded alongside the decision. By curating these artefacts in code, teams avoid losing critical context to private notes or unstructured chat history, fulfilling the maintainability objective of keeping architecture knowledge evergreen.
 

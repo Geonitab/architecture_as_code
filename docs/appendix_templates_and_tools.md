@@ -4,7 +4,7 @@ Architecture as Code initiatives rely on reusable templates and interactive tool
 
 ## Architecture as Code maturity model
 
-The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) describes six maturity levels (0–5), from ad hoc practice through to fully codified, AI-assisted enterprise governance, together with a per-discipline yes/no checklist of fifty questions across ten "as code" disciplines that helps teams benchmark their progress.
+The [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md) describes six maturity levels (0–5), from ad hoc practice through to fully codified, AI-assisted enterprise governance, together with a per-discipline yes/no checklist of fifty questions across ten “as code” disciplines that helps teams benchmark their progress.
 
 ## Architecture as Code maturity radar tool
 
@@ -12,7 +12,7 @@ The [Maturity Radar Tool](maturity_model_radar.html) offers an interactive visua
 
 ## Control mapping matrix template
 
-The [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template.md) provides a reusable table for expressing "assure once, comply many" evidence flows. Use it to link automated assurance artefacts to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal policies so that governance teams can reuse validated outputs without bespoke reporting.
+The [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template.md) provides a reusable table for expressing “assure once, comply many” evidence flows. Use it to link automated assurance artefacts to ISO 27001, SOC 2, NIST 800-53, GDPR, and internal policies so that governance teams can reuse validated outputs without bespoke reporting.
 
 ## Implementation guidance
 

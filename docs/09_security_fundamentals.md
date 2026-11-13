@@ -38,7 +38,7 @@ The security challenges facing contemporary digital enterprises demand a fundame
 
 Perimeter-based defences designed for static environments become ineffective in cloud-native and microservice-oriented platforms. Security can no longer be treated as a separate afterthought. Modern organisations must embrace security-as-code principles where critical decisions are codified, version-controlled, and automated alongside the rest of the architecture estate.
 
-European organisations operate within a dense mesh of regulatory obligations. GDPR ([Source [43]](33_references.md#source-43)), enforced by national supervisory authorities such as IMY in Sweden and coordinated by the European Data Protection Board (EDPB) through the consistency mechanism, NIS2 Directive requirements for essential and important entities, sectoral regulations, and financial supervision requirements create a multidimensional compliance landscape. At the same time, ongoing digital transformation programmes demand faster innovation and shorter time-to-market. Architecture as Code addresses both pressures by automating compliance controls and embedding "secure by default" patterns into every delivery pipeline.
+European organisations operate within a dense mesh of regulatory obligations. GDPR ([Source [43]](33_references.md#source-43)), enforced by national supervisory authorities such as IMY in Sweden and coordinated by the European Data Protection Board (EDPB) through the consistency mechanism, NIS2 Directive requirements for essential and important entities, sectoral regulations, and financial supervision requirements create a multidimensional compliance landscape. At the same time, ongoing digital transformation programmes demand faster innovation and shorter time-to-market. Architecture as Code addresses both pressures by automating compliance controls and embedding “secure by default” patterns into every delivery pipeline.
 
 This chapter explores security from an integrated perspective that joins technical implementation, organisational processes, and regulatory requirements. Readers gain a deep understanding of threat modelling, risk assessment, policy automation, and incident response across code-driven environments. Advanced security architecture patterns for large-scale enterprises are covered in Chapter 9B.
 
@@ -46,13 +46,13 @@ This chapter explores security from an integrated perspective that joins technic
 
 ### The paradigm shift from perimeter protection to Zero Trust
 
-Traditional security philosophies relied on a clear boundary between the "inside" and "outside" of the enterprise. Network perimeters, firewalls, and VPN solutions created a "hard shell, soft centre" model where anything within the perimeter was implicitly trusted. That paradigm was viable when most resources were physically located in tightly controlled data centres and employees worked from fixed offices.
+Traditional security philosophies relied on a clear boundary between the “inside” and “outside” of the enterprise. Network perimeters, firewalls, and VPN solutions created a “hard shell, soft centre” model where anything within the perimeter was implicitly trusted. That paradigm was viable when most resources were physically located in tightly controlled data centres and employees worked from fixed offices.
 
 Modern operations dismantle those assumptions. Cloud services distribute workloads across multiple providers and regions. Remote working extends the security perimeter to every home network. API-driven architectures introduce enormous volumes of service-to-service communication that traditional controls struggle to monitor.
 
-Zero Trust Architecture (ZTA) provides the necessary evolution in security thinking. The guiding principle of "never trust, always verify" requires explicit validation of every user, device, and network transaction regardless of location or prior authentication. Implementing ZTA demands granular identity management, continuous posture assessment, and policy-driven access controls.
+Zero Trust Architecture (ZTA) provides the necessary evolution in security thinking. The guiding principle of “never trust, always verify” requires explicit validation of every user, device, and network transaction regardless of location or prior authentication. Implementing ZTA demands granular identity management, continuous posture assessment, and policy-driven access controls.
 
-In an Architecture as Code context, ZTA enables systematic implementation of trust policies. Network segmentation, service mesh rules, and identity and access management (IAM) configurations are defined declaratively and enforced consistently across all environments. The result is "trust as code", where security decisions become reproducible, testable, and auditable.
+In an Architecture as Code context, ZTA enables systematic implementation of trust policies. Network segmentation, service mesh rules, and identity and access management (IAM) configurations are defined declaratively and enforced consistently across all environments. The result is “trust as code”, where security decisions become reproducible, testable, and auditable.
 
 ### Threat modelling for code-based architectures
 
@@ -79,7 +79,7 @@ Traditional risk assessments are performed periodically, often annually or follo
 
 Quantitative risk analysis becomes more practical when infrastructure is defined as code. Blast radius calculations can be automated through dependency mapping. Potential impact assessments draw on data classification and service criticality encoded in infrastructure tags and metadata.
 
-Compliance-as-code transforms audits from reactive exercises into proactive safeguards. Instead of verifying compliance after deployment, regulatory requirements are evaluated continuously within the delivery process. GDPR Article 25 ("Data protection by design and by default") can be implemented through automated policy checks that validate privacy controls from the first line of code.
+Compliance-as-code transforms audits from reactive exercises into proactive safeguards. Instead of verifying compliance after deployment, regulatory requirements are evaluated continuously within the delivery process. GDPR Article 25 (“Data protection by design and by default”) can be implemented through automated policy checks that validate privacy controls from the first line of code.
 
 ## Policy as Code: automated security governance
 
@@ -95,9 +95,9 @@ HashiCorp Sentinel offers an alternative focused on Infrastructure as Code workf
 
 ### Integration with CI/CD for continuous policy enforcement
 
-Successful policy-as-code programmes require deep integration with software delivery life cycles. Manual security reviews as gateways create bottlenecks that frustrate teams and delay releases. Automated policy evaluation enables a "security as an enabler" approach.
+Successful policy-as-code programmes require deep integration with software delivery life cycles. Manual security reviews as gateways create bottlenecks that frustrate teams and delay releases. Automated policy evaluation enables a “security as an enabler” approach.
 
-"Shift-left" security principles are particularly effective for policy enforcement. Validating policies during commit stages provides rapid feedback, enabling developers to address issues while context is fresh. Git hooks, pre-commit checks, and IDE extensions can deliver real-time feedback during development.
+“Shift-left” security principles are particularly effective for policy enforcement. Validating policies during commit stages provides rapid feedback, enabling developers to address issues while context is fresh. Git hooks, pre-commit checks, and IDE extensions can deliver real-time feedback during development.
 
 CI/CD integration extends policy checks across multiple stages. Static analysis of infrastructure code during build stages can detect obvious violations. Dynamic evaluations in staging environments catch configuration problems before production release. Production monitoring ensures policies remain effective throughout the operational life cycle.
 
@@ -105,7 +105,7 @@ Policy testing becomes a core element of the development process once policies a
 
 ### Control objectives that prove compliance repeatedly
 
-Security teams often begin with high-level objectives—"enforce multi-factor authentication for privileged users" or "encrypt customer data at rest"—without a clear route to automated evidence. Architecture as Code breaks each objective into declarative assertions that can be executed inside pipelines and runtime monitors. Tests are written **once**, then reused wherever the same control objective appears, whether that is ISO 27001 Annex A, SOC 2 CC6, NIST 800-53 IA-2, or an internal policy. The [policy design example](10_policy_and_security.md#assure-once-comply-many-in-policy-design) shows how a single Rego module evaluates MFA consistently. Its outputs flow into [Evidence as Code](15a_evidence_as_code.md) to create machine-readable artefacts that auditors can consume without rebuilding bespoke test suites for every framework.
+Security teams often begin with high-level objectives—“enforce multi-factor authentication for privileged users” or “encrypt customer data at rest”—without a clear route to automated evidence. Architecture as Code breaks each objective into declarative assertions that can be executed inside pipelines and runtime monitors. Tests are written **once**, then reused wherever the same control objective appears, whether that is ISO 27001 Annex A, SOC 2 CC6, NIST 800-53 IA-2, or an internal policy. The [policy design example](10_policy_and_security.md#assure-once-comply-many-in-policy-design) shows how a single Rego module evaluates MFA consistently. Its outputs flow into [Evidence as Code](15a_evidence_as_code.md) to create machine-readable artefacts that auditors can consume without rebuilding bespoke test suites for every framework.
 
 ## Secrets management and data protection
 

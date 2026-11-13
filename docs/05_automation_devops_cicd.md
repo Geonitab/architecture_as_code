@@ -34,9 +34,9 @@ Continuous integration and continuous deployment are more than technical process
 
 ### Historical context and evolution
 
-The CI/CD concept has roots in Extreme Programming (XP) in the late 1990s and the agile movement of the early 2000s. Its application to infrastructure expanded alongside the emergence of cloud technologies. Early infrastructure administrators relied on manual processes, configuration scripts, and the "infrastructure as pets" mindset—each server was unique and required individual care. That approach worked for small environments but could not scale to modern distributed systems containing hundreds or thousands of components.
+The CI/CD concept has roots in Extreme Programming (XP) in the late 1990s and the agile movement of the early 2000s. Its application to infrastructure expanded alongside the emergence of cloud technologies. Early infrastructure administrators relied on manual processes, configuration scripts, and the “infrastructure as pets” mindset—each server was unique and required individual care. That approach worked for small environments but could not scale to modern distributed systems containing hundreds or thousands of components.
 
-The shift to "infrastructure as cattle"—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and tools such as Terraform [Source [5]](33_references.md#source-5) and Ansible accelerated this development by offering programmable interfaces for infrastructure management.
+The shift to “infrastructure as cattle”—treating servers as standardised, replaceable units—enabled systematic automation and set the stage for applying CI/CD principles. Container technology, cloud-provider APIs, and tools such as Terraform [Source [5]](33_references.md#source-5) and Ansible accelerated this development by offering programmable interfaces for infrastructure management.
 
 These advances coincided with increasingly strict regulatory requirements, particularly GDPR and guidelines from national data protection authorities. Automation is therefore not only an efficiency improvement but a necessity for compliance and risk management.
 
@@ -46,7 +46,7 @@ These advances coincided with increasingly strict regulatory requirements, parti
 |-----------|-------------|----------------------------|
 | Immutability and version control | All configuration is version-controlled and every change is tracked through Git history | Reproducible architectures, stronger compliance documentation, ability to demonstrate controlled change to critical systems |
 | Declarative configuration | Tools describe the desired end state instead of the steps required to reach it | Reduced complexity and errors, sophisticated dependency management, parallelisation of infrastructure operations |
-| Testability and validation | Architecture as Code is testable through unit tests, integration tests, and full system validation | "Shift-left" testing, early defect discovery, lower remediation costs, reduced production incidents |
+| Testability and validation | Architecture as Code is testable through unit tests, integration tests, and full system validation | “Shift-left” testing, early defect discovery, lower remediation costs, reduced production incidents |
 | Automation over documentation | CI/CD pipelines automate every step of infrastructure delivery | Consistency, reduced human error, automatic audit trails, elimination of outdated manual documentation |
 
 ### Organisational implications of CI/CD automation
@@ -99,7 +99,7 @@ Organisations operating in regulated environments face complex requirements when
 
 ### Regulatory complexity and automation
 
-The regulatory landscape influences CI/CD design fundamentally. GDPR’s requirements for "data protection by design and by default" mean that pipelines must include automated validation of data-protection implementations. Article 25 requires technical and organisational measures to ensure that only personal data necessary for specific purposes is processed [Source [43]](33_references.md#source-43). For Architecture as Code pipelines this translates into automated scanning for GDPR compliance, data-residency validation, and audit-trail generation.
+The regulatory landscape influences CI/CD design fundamentally. GDPR’s requirements for “data protection by design and by default” mean that pipelines must include automated validation of data-protection implementations. Article 25 requires technical and organisational measures to ensure that only personal data necessary for specific purposes is processed [Source [43]](33_references.md#source-43). For Architecture as Code pipelines this translates into automated scanning for GDPR compliance, data-residency validation, and audit-trail generation.
 
 Guidance from data-protection regulators on technical security measures demands systematic implementation of encryption, access controls, and logging. Manual processes are ineffective and error-prone when applied to modern dynamic infrastructure. CI/CD automation offers the opportunity to enforce these requirements consistently through policies as code and automated compliance validation.
 
@@ -115,7 +115,7 @@ Quarterly budgeting and industry accounting standards require detailed cost allo
 
 ### GDPR-compliant pipeline design
 
-GDPR compliance in Architecture as Code pipelines requires a holistic approach that integrates data-protection principles into every automation step. Article 25 mandates "data protection by design and by default", meaning that technical and organisational measures must be implemented from the earliest design stages of systems and processes.
+GDPR compliance in Architecture as Code pipelines requires a holistic approach that integrates data-protection principles into every automation step. Article 25 mandates “data protection by design and by default”, meaning that technical and organisational measures must be implemented from the earliest design stages of systems and processes.
 
 Pipelines must therefore validate automatically that all architecture released complies with GDPR principles such as data minimisation, purpose limitation, and storage limitation. Personal data must never be hard-coded in architecture configuration, encryption must be enforced by default, and audit trails must be generated for every architecture change that could affect personal data.
 

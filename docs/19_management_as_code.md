@@ -97,7 +97,7 @@ Transparency through Issues manifests in several ways:
 
 **Example 1: Infrastructure Migration Decision**
 
-An organisation planning to migrate from on-premises infrastructure to cloud services creates an Issue titled "Cloud Migration Strategy for Payment Processing System". The Issue includes:
+An organisation planning to migrate from on-premises infrastructure to cloud services creates an Issue titled “Cloud Migration Strategy for Payment Processing System”. The Issue includes:
 - **Context**: Current infrastructure costs, performance bottlenecks, and compliance requirements
 - **Stakeholder Input**: Security team highlights PCI DSS requirements, finance team provides budget constraints, engineering team identifies technical dependencies
 - **Options Analysis**: Documented comparisons of AWS, Azure, and GCP with pros/cons
@@ -139,7 +139,7 @@ Discussions enhance transparency through:
 
 **Example 1: Annual Technology Strategy**
 
-Leadership teams use GitHub Discussions to deliberate annual technology strategy rather than relying solely on closed-door meetings. A Discussion thread titled "Annual Technology Strategy: Cloud-Native Adoption" enables:
+Leadership teams use GitHub Discussions to deliberate annual technology strategy rather than relying solely on closed-door meetings. A Discussion thread titled “Annual Technology Strategy: Cloud-Native Adoption” enables:
 - **Asynchronous Participation**: Contributors from different time zones add perspectives over two weeks
 - **Structured Input**: Engineers share technical feasibility assessments, finance provides budget implications, product teams outline business requirements
 - **Iterative Refinement**: The strategy evolves through multiple rounds of feedback rather than being presented as a fait accompli
@@ -167,7 +167,7 @@ When evaluating whether to adopt a new architecture pattern (such as event sourc
 - Concerns about operational complexity and team skills gaps
 - Gradual emergence of consensus around where the pattern adds value versus where simpler approaches suffice
 
-This exploratory phase prevents premature standardisation whilst building shared understanding. When teams eventually create Issues to implement the pattern in specific services, the Discussion provides the "why" context that justifies the "what".
+This exploratory phase prevents premature standardisation whilst building shared understanding. When teams eventually create Issues to implement the pattern in specific services, the Discussion provides the “why” context that justifies the “what”.
 
 ### Linking transparency to architecture evolution
 

@@ -26,7 +26,7 @@ This holistic approach enables end-to-end automation, where changes in requireme
 
 ## Critique of traditional architecture
 
-Traditional architecture practices have struggled with "slideware syndrome"—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational reality. As environments evolve, these unchecked artefacts accumulate architectural entropy: the gradual loss of coherence between documented intent and implemented systems. This entropy erodes trust, leaving teams to improvise workarounds that bypass architectural guardrails altogether.
+Traditional architecture practices have struggled with “slideware syndrome”—expansive decks, static diagrams, and committee reviews that rapidly drift away from operational reality. As environments evolve, these unchecked artefacts accumulate architectural entropy: the gradual loss of coherence between documented intent and implemented systems. This entropy erodes trust, leaving teams to improvise workarounds that bypass architectural guardrails altogether.
 
 DevOps-driven change velocity amplifies these failure modes. Release pipelines ship features and infrastructure updates in hours rather than quarters, and manual governance checkpoints become bottlenecks that teams either circumvent or replicate inconsistently. Architecture as Code responds by embedding governance policies, compliance checks, and architectural decision records inside the same automated workflows, ensuring that fast-moving delivery remains accountable to shared standards without reverting to bureaucratic overhead.
 
@@ -74,7 +74,7 @@ This book follows a deliberate progression that mirrors the typical Architecture
 
 **Part D: Delivery and Operations** bridges technical capabilities with business outcomes through testing strategies, practical implementation patterns, cost optimisation, and migration approaches.
 
-**Part E: Organisation and Leadership** examines the organisational transformation, team structures, cultural shifts, and leadership practices that enable sustainable Architecture as Code adoption, including the interplay between the soft "as Code" disciplines, AI agent teams, and digitalisation through code-based infrastructure.
+**Part E: Organisation and Leadership** examines the organisational transformation, team structures, cultural shifts, and leadership practices that enable sustainable Architecture as Code adoption, including the interplay between the soft “as Code” disciplines, AI agent teams, and digitalisation through code-based infrastructure.
 
 **Part F: Experience and Best Practices** contrasts Documentation as Code with Architecture as Code and synthesises lessons learned from real-world implementations, distilling proven patterns across diverse contexts.
 

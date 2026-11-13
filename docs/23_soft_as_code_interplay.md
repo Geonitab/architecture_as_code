@@ -2,7 +2,7 @@
 
 ## Introduction
 
-For years, the phrase "as code" has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, Architecture as Code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.
+For years, the phrase “as code” has been tightly associated with hard, technically defined artifacts such as infrastructure, pipelines, and configurations. In recent years the same operating model has entered the softer domains of an organisation. When we speak about compliance as code, Architecture as Code, documentation as code, knowledge as code, and culture as code, we point to the same underlying ambition: describing complex, often human-dependent processes in machine-readable, version-controlled, and executable formats. This chapter explores how the disciplines overlap, the synergies they create, and how organisations can benefit from their combined strength.
 
 ## Learning objectives
 
@@ -17,11 +17,11 @@ By the end of this chapter, you will be able to:
 
 ![Soft as code ecosystem](images/diagram_23_soft_as_code.png)
 
-The following mind maps illustrate the key concepts and relationships within the soft "as code" ecosystem. They visualise how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organisational synergies.
+The following mind maps illustrate the key concepts and relationships within the soft “as code” ecosystem. They visualise how the different disciplines connect through their shared DNA, each playing distinct roles while reinforcing one another to create organisational synergies.
 
-![Shared DNA of "as code" disciplines](images/mindmap_23a_shared_dna.png)
+![Shared DNA of “as code” disciplines](images/mindmap_23a_shared_dna.png)
 
-*Figure 23.1 shows the foundational elements shared across all "as code" disciplines: structured representation, version control, and automatability.*
+*Figure 23.1 shows the foundational elements shared across all “as code” disciplines: structured representation, version control, and automatability.*
 
 ![Compliance as Code](images/mindmap_23b_compliance.png)
 
@@ -52,7 +52,7 @@ The following mind maps illustrate the key concepts and relationships within the
 - **Cross-disciplinary synergies compound over time:** The chapter's two scenarios—a policy change and a new product launch—illustrate how each discipline accelerates the others: faster compliance feedback shortens architecture review cycles, which in turn keeps documentation current with less manual effort.
 - **Adoption requires deliberate strategy, not just tooling:** The chapter's five-step adoption guide emphasises that shared principles, compatible tooling choices, and cross-functional training matter more than the specific tools chosen, and that an iterative pilot approach reduces the risk of overwhelming teams with simultaneous change.
 
-This visualisation reinforces the chapter's central message: soft "as code" disciplines compound their value when combined rather than deployed in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
+This visualisation reinforces the chapter's central message: soft “as code” disciplines compound their value when combined rather than deployed in isolation, creating an ecosystem where human creativity is amplified by the precision and reliability of code.
 
 ## A shared DNA
 
@@ -66,7 +66,7 @@ This combination opens the door to a shared way of working across disciplines. O
 
 ## Compliance as Code as the quality engine
 
-Compliance as code focuses on translating regulations, standards, and internal policies into codified controls. Tools such as Open Policy Agent ([Source [10]](33_references.md#source-10)), HashiCorp Sentinel, or custom rule frameworks can ingest policy definitions and evaluate them against system configurations, CI/CD pipelines, or infrastructure definitions. The practice is well established: Thoughtworks' Technology Radar placed security policy as code—security policies expressed as code, version-controlled, automatically validated, deployed and monitored, with Open Policy Agent and Istio as examples—in Trial in November 2019 and in Adopt in October 2020, and the overview of Radar Vol. 21 names "policy, compliance and governance as code" as a recurring theme ([Source [2]](33_references.md#source-2)). When the discipline is connected to other soft areas several effects emerge:
+Compliance as code focuses on translating regulations, standards, and internal policies into codified controls. Tools such as Open Policy Agent ([Source [10]](33_references.md#source-10)), HashiCorp Sentinel, or custom rule frameworks can ingest policy definitions and evaluate them against system configurations, CI/CD pipelines, or infrastructure definitions. The practice is well established: Thoughtworks' Technology Radar placed security policy as code—security policies expressed as code, version-controlled, automatically validated, deployed and monitored, with Open Policy Agent and Istio as examples—in Trial in November 2019 and in Adopt in October 2020, and the overview of Radar Vol. 21 names “policy, compliance and governance as code” as a recurring theme ([Source [2]](33_references.md#source-2)). When the discipline is connected to other soft areas several effects emerge:
 
 - **Rule reuse.** Documentation and architectural principles can directly reference policy definitions, reducing the risk of diverging interpretations. An architect writing a blueprint can link to the same policy files the security team uses in their controls.
 - **Continuous validation.** Documentation as code makes it possible to describe which controls exist and how they are executed, while automations from Architecture as Code can trigger compliance checks for every change. The result is an unbroken chain between intent and verification.
@@ -74,23 +74,23 @@ Compliance as code focuses on translating regulations, standards, and internal p
 
 Compliance as code thus becomes a quality engine that reinforces the other disciplines. When architectural or documentation artifacts are updated, automated controls can ensure that changes still fall within approved boundaries. If a rule changes, the update propagates to every system that uses it—from architectural diagrams to external reports.
 
-Practical tools such as the [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) show how this quality engine manifests in day-to-day delivery. Each backlog item ties policy definitions to Terraform modules, documentation updates, and evidence packs, helping teams demonstrate that soft "as code" practices have tangible outputs and measurable coverage.
+Practical tools such as the [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) show how this quality engine manifests in day-to-day delivery. Each backlog item ties policy definitions to Terraform modules, documentation updates, and evidence packs, helping teams demonstrate that soft “as code” practices have tangible outputs and measurable coverage.
 
 ## Architecture as Code as the hub
 
 Architecture as Code means expressing architectural decisions, reference architectures, and target architectures in code. This might take the form of C4 models expressed in the Structurizr DSL or C4-PlantUML—with Markdown reserved for the accompanying documentation—or Terraform/CloudFormation modules representing architectural patterns. Once the architecture exists in code, a natural hub for the other disciplines emerges:
 
 - **Traceability to compliance.** The architecture can reference compliance rules that explain why a given pattern must include logging, encryption, or redundancy. By linking to rule definitions it becomes clear how design decisions support adherence.
-- **Real-time documentation.** Documentation as code can be generated directly from architectural models and provide up-to-date manuals, diagrams, and guides. Documentation stays in sync with the "living" architecture.
+- **Real-time documentation.** Documentation as code can be generated directly from architectural models and provide up-to-date manuals, diagrams, and guides. Documentation stays in sync with the “living” architecture.
 - **Automated quality gates.** When architectural models are versioned, compliance and quality checks can run automatically before an architectural change is approved. This offers objective support for architecture boards and decision forums.
 
 The hub metaphor holds: Architecture as Code connects technical implementations with policy and documentation layers. Dialogue across expert roles becomes easier when everyone looks at the same source of truth.
 
 ## Documentation as Code as the communication layer
 
-Documentation as code is about writing, storing, and publishing documentation with the same toolchain used for other code. Markdown files are versioned in Git, generated via static site generators, and distributed through CI/CD pipelines. In the interplay between soft "as code" disciplines, documentation as code is the glue that binds the ecosystem together:
+Documentation as code is about writing, storing, and publishing documentation with the same toolchain used for other code. Markdown files are versioned in Git, generated via static site generators, and distributed through CI/CD pipelines. In the interplay between soft “as code” disciplines, documentation as code is the glue that binds the ecosystem together:
 
-- **Narratives around rules and architecture.** Documentation does not only describe "how" but also "why." By referencing compliance rules and architectural models, documentation explains the relationships and helps teams understand the bigger picture.
+- **Narratives around rules and architecture.** Documentation does not only describe “how” but also “why.” By referencing compliance rules and architectural models, documentation explains the relationships and helps teams understand the bigger picture.
 - **Self-service.** When documentation is easily accessible and up to date, teams can find answers themselves. That reduces the need for manual handovers and accelerates onboarding.
 - **Feedback loops.** Pull requests on documentation create space for review, discussion, and improvement. Knowledge no longer gets stuck with a single individual; it becomes collectively owned.
 
@@ -211,11 +211,11 @@ This structured format allows CI pipelines to validate that every lesson has the
 
 ## Synergies and cross-pollination
 
-Introducing several soft "as code" disciplines in parallel generates effects that exceed the value of any single initiative. Shared tools and processes turn pull requests into meeting places for architects, developers, lawyers, and communicators, and the same pipelines can validate code, policy, and documentation. Traceability improves when commit hashes, issues, and policy identifiers are cross-linked, giving revisions and incident investigations a clear history. Pace and appetite for experimentation increase because soft artifacts can be updated as fast as code while automated controls temper risk. Cross-functional collaborations emerge where legal experts learn technical details and developers appreciate the rationale behind regulations, creating shared ownership of the whole system.
+Introducing several soft “as code” disciplines in parallel generates effects that exceed the value of any single initiative. Shared tools and processes turn pull requests into meeting places for architects, developers, lawyers, and communicators, and the same pipelines can validate code, policy, and documentation. Traceability improves when commit hashes, issues, and policy identifiers are cross-linked, giving revisions and incident investigations a clear history. Pace and appetite for experimentation increase because soft artifacts can be updated as fast as code while automated controls temper risk. Cross-functional collaborations emerge where legal experts learn technical details and developers appreciate the rationale behind regulations, creating shared ownership of the whole system.
 
 ## Challenges and counterforces
 
-The interplay between soft "as code" disciplines generates real value, but it is also demanding. Common challenges include:
+The interplay between soft “as code” disciplines generates real value, but it is also demanding. Common challenges include:
 
 - **Differences in terminology and mindset.** Lawyers, architects, and documentation specialists use different vocabularies, which requires translation and extra onboarding.
 - **Tooling barriers.** Not everyone is comfortable with Git, pull requests, or CI/CD, so training is needed to avoid creating new hierarchies.
@@ -240,7 +240,7 @@ These scenarios illustrate how the interplay creates a dynamic chain in which ea
 
 ## Strategies for adoption
 
-Organisations seeking to establish a cohesive ecosystem of soft "as code" disciplines can follow these strategies:
+Organisations seeking to establish a cohesive ecosystem of soft “as code” disciplines can follow these strategies:
 
 1. **Start with shared principles.** Clarify the objectives of the initiative and the outcomes it should deliver.
 2. **Choose compatible tools.** Ensure that compliance, architecture, and documentation tooling can integrate and share version control.
@@ -250,13 +250,13 @@ Organisations seeking to establish a cohesive ecosystem of soft "as code" discip
 
 ## Future perspectives
 
-Technologies such as AI and semantic search engines expand the potential of soft "as code" disciplines. By combining codified regulations with language models, organisations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as Code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.
+Technologies such as AI and semantic search engines expand the potential of soft “as code” disciplines. By combining codified regulations with language models, organisations can receive real-time advice, automated explanations, and proactive recommendations. Architecture as Code can be connected to simulations that reveal the impact of design decisions before implementation, and documentation can be generated dynamically.
 
 At the same time, data governance, security, and ethics become even more important. The more of an organisation’s soft fabric that is codified, the greater the demands on access control, privacy protection, and accountability.
 
 ## Conclusion
 
-The interplay between soft "as code" disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organisations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, Architecture as Code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.
+The interplay between soft “as code” disciplines is about building an ecosystem where compliance, architecture, documentation, knowledge, and culture move in unison. By applying the same tools, processes, and mindset to these artifacts as to traditional code, organisations become adaptive, transparent, and continuously learning. Compliance as code operates as the quality engine, Architecture as Code serves as the hub, documentation as code forms the communication layer, and knowledge/culture as code act as the collective memory and compass.
 
 When these disciplines integrate, change ceases to be a threat and becomes a natural part of daily work. Teams can adapt rapidly to new requirements, experiment with new ideas, and still maintain a stable core of shared principles. The result is an organisation that dares to combine softness and structure—where human creativity is supported by the precision of code.
 

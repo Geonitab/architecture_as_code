@@ -48,7 +48,7 @@ The C4 model aligns naturally with Architecture as Code principles because:
 
 ### Preventing diagram decay with automation
 
-Diagram decay—the gradual divergence between architecture diagrams and the systems they represent when updates rely on manual effort—is the problem that model-based tooling sets out to solve; the Thoughtworks Technology Radar placed "diagrams as code" in Trial in October 2020 for the same reason, naming the Structurizr DSL among the tools [Source [40]](33_references.md#source-40). Structurizr's automated generation of C4 diagrams from a single, version-controlled model eliminates that manual gap: every change to the model regenerates the diagrams for the appropriate audience, whether leadership needs the System Context view or developers need Component detail. Embedding Structurizr rendering in CI pipelines, alongside Architecture as Code validation, ensures diagrams are rebuilt with each merge so teams catch drift early rather than allowing stale visuals to persist.
+Diagram decay—the gradual divergence between architecture diagrams and the systems they represent when updates rely on manual effort—is the problem that model-based tooling sets out to solve; the Thoughtworks Technology Radar placed “diagrams as code” in Trial in October 2020 for the same reason, naming the Structurizr DSL among the tools [Source [40]](33_references.md#source-40). Structurizr's automated generation of C4 diagrams from a single, version-controlled model eliminates that manual gap: every change to the model regenerates the diagrams for the appropriate audience, whether leadership needs the System Context view or developers need Component detail. Embedding Structurizr rendering in CI pipelines, alongside Architecture as Code validation, ensures diagrams are rebuilt with each merge so teams catch drift early rather than allowing stale visuals to persist.
 
 ## Structurizr DSL: Core concepts
 
@@ -442,7 +442,7 @@ Scaling Structurizr beyond a single maintainer requires deliberate enablement so
 
 1. **Foundational bootcamps** – Run a recurring two-hour workshop that walks through the reference workspace, highlights the module structure described above, and demonstrates how `local` and the `export` command complement one another. Recording each session helps global teams revisit the material asynchronously.
 2. **Pair-modelling rotations** – Assign monthly pairs that include one experienced maintainer and one new contributor. Each pair triages backlog items, applies naming policies, and raises any missing automation hooks. Rotations prevent tacit knowledge from concentrating in a single geography or department.
-3. **Checklists in pull request templates** – Extend pull request templates with explicit Structurizr checks ("Ran `./scripts/render_structurizr_diagrams.sh`, updated layout template includes, attached before/after screenshots from `local`"). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.
+3. **Checklists in pull request templates** – Extend pull request templates with explicit Structurizr checks (“Ran `./scripts/render_structurizr_diagrams.sh`, updated layout template includes, attached before/after screenshots from `local`”). Contributors self-attest to these tasks, and reviewers can focus on architectural intent instead of procedural reminders.
 4. **Capability metrics** – Track lead time for diagram updates, the number of contributors editing the workspace each quarter, and the percentage of views using the shared layout templates. Publish these metrics alongside the broader enablement dashboards introduced in Chapter 24 to spotlight where additional coaching is required.
 5. **Community of practice** – Host a monthly forum where teams share lessons, propose adjustments to the naming conventions, and experiment with new Structurizr DSL features referenced in the official documentation. Capture agreed changes in the guidelines repository so the knowledge persists beyond the meeting.
 
@@ -1087,7 +1087,7 @@ views {
 }
 ```
 
-2. Lay out by hand where it matters. The DSL has no coordinate syntax: drag the elements in the `local` or `server` diagram editor and commit the resulting `workspace.json`, as described in "Using `local` for Development" above. Remove `autoLayout` from the views you arrange manually, otherwise the automatic layout is reapplied every time the diagram is rendered [Source [66]](33_references.md#source-66).
+2. Lay out by hand where it matters. The DSL has no coordinate syntax: drag the elements in the `local` or `server` diagram editor and commit the resulting `workspace.json`, as described in “Using `local` for Development” above. Remove `autoLayout` from the views you arrange manually, otherwise the automatic layout is reapplied every time the diagram is rendered [Source [66]](33_references.md#source-66).
 
 3. Export to PlantUML or Mermaid for fine-tuning:
 

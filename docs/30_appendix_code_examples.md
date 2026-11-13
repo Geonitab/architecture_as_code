@@ -2811,7 +2811,7 @@ The performance levels in `technical_metrics` follow the four clusters of the DO
 
 Each code example in this appendix can be referenced from the main text using its unique identifier. To find specific implementations:
 
-1. **Use search function** - Search for code type or technology (e.g., "Terraform", "CloudFormation", "Python")
+1. **Use search function** - Search for code type or technology (e.g., “Terraform”, “CloudFormation”, “Python”)
 2. **Follow the categories** - Navigate to the relevant section based on use case
 3. **Use cross-references** - Follow links back to the main chapters for context
 

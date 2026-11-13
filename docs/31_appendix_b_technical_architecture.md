@@ -1,6 +1,6 @@
 # Appendix B: Technical Architecture for Book Production {.unnumbered} {#appendix-b-technical-architecture}
 
-This appendix describes the technical infrastructure and workflow that produce, build, and publish "Architecture as Code". The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
+This appendix describes the technical infrastructure and workflow that produce, build, and publish “Architecture as Code”. The system is a practical demonstration of Architecture as Code principles, showing how code defines and automates the entire book production process.
 
 ![Source materials and version control](images/diagram_27a_source_materials.png)
 
@@ -169,7 +169,7 @@ By codifying these checks, the programme maintains a living architecture model w
 
 ### Primary workflow for book production
 
-`unified-build-release.yml` ("Unified Build & Release") automates the entire publication process. It consolidates the earlier `build-book.yml`, `build-book-fast.yml`, and `complete-release.yml` workflows into one Docker-based pipeline:
+`unified-build-release.yml` (“Unified Build & Release”) automates the entire publication process. It consolidates the earlier `build-book.yml`, `build-book-fast.yml`, and `complete-release.yml` workflows into one Docker-based pipeline:
 
 ```yaml
 # .github/workflows/unified-build-release.yml (excerpt)

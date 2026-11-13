@@ -45,7 +45,7 @@ Organisations rarely adopt all aspects at once; instead, they progressively expa
 
 ## Assessment checklist for radar visualisation
 
-Use the following yes/no questions to evaluate each discipline before plotting the results on a radar diagram. A "yes" response indicates that the preferred maturity-aligned practice is in place.
+Use the following yes/no questions to evaluate each discipline before plotting the results on a radar diagram. A “yes” response indicates that the preferred maturity-aligned practice is in place.
 
 ### Infrastructure as code (IaC)
 

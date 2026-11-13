@@ -30,7 +30,7 @@ Artificial intelligence extends the compliance loop by ingesting telemetry, poli
 
 Compliance programmes rely on demonstrable traceability between regulatory statements and the technical controls that satisfy them. Figure 12.3 documents that traceability: business, compliance, performance, and cost requirements flow into specific functional controls such as encryption, network segmentation, audit logging, and automated scaling. Those controls are implemented through Terraform configuration and validated by targeted test suites, compliance scanners, and cost analysis. Maintaining this map ensures that every requirement is implemented, tested, and evidenced before auditors ask for proof.
 
-### Control mapping matrix and "assure once, comply many"
+### Control mapping matrix and “assure once, comply many”
 
 Architecture as Code operationalises the **assure once, comply many** principle by cataloguing evidence and control mappings in a reusable format. The Control Mapping Matrix links each control identifier to the assurance artefacts captured in CI and to the external frameworks they satisfy. Rather than producing bespoke spreadsheets for ISO/IEC 27001 [Source [14]](33_references.md#source-14), SOC 2, NIST SP 800-53 [Source [11]](33_references.md#source-11), GDPR [Source [43]](33_references.md#source-43), and internal policies, teams maintain one matrix that references authoritative artefacts from source control.
 
@@ -265,7 +265,7 @@ Looking forward, teams should monitor speculative developments such as quantum r
 
 ## Moving from governance to delivery
 
-Part C closes with [Evidence as Code and Continuous Assurance](15a_evidence_as_code.md), which shows how the artefacts referenced in this chapter's Control Mapping Matrix are generated, packaged, and published by the delivery pipeline. With security controls, policy frameworks, compliance mechanisms, and evidence pipelines established, Part D then shifts focus to the practical delivery and operational excellence that sustain Architecture as Code implementations. Having established the "what" and "why" of governance, the next part explores the "how" of reliable, repeatable delivery.
+Part C closes with [Evidence as Code and Continuous Assurance](15a_evidence_as_code.md), which shows how the artefacts referenced in this chapter's Control Mapping Matrix are generated, packaged, and published by the delivery pipeline. With security controls, policy frameworks, compliance mechanisms, and evidence pipelines established, Part D then shifts focus to the practical delivery and operational excellence that sustain Architecture as Code implementations. Having established the “what” and “why” of governance, the next part explores the “how” of reliable, repeatable delivery.
 
 Part D examines the testing strategies, implementation patterns, cost optimisation techniques, and migration approaches that organisations need to deliver Architecture as Code successfully. [Chapter 13 on Testing Strategies](13_testing_strategies.md) builds on the security and compliance frameworks we've established, showing how to validate that infrastructure meets both functional and regulatory requirements. The subsequent chapters demonstrate practical implementation, financial optimisation, and migration strategies that bring together all the elements covered so far.
 

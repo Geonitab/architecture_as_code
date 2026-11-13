@@ -18,6 +18,6 @@ The [glossary](28_glossary.md) defines key terms and concepts used throughout th
 
 [References and Sources](33_references.md) collects every numbered source cited in the chapters, so that each inline source citation resolves to a single, verifiable bibliography entry.
 
-[Appendix D: Templates and Tools](appendix_templates_and_tools.md) curates the reusable assets that support maturity assessments and governance workflows: the [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md), the interactive Maturity Radar Tool, and the [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template.md) that underpins the "assure once, comply many" approach.
+[Appendix D: Templates and Tools](appendix_templates_and_tools.md) curates the reusable assets that support maturity assessments and governance workflows: the [Architecture as Code Maturity Model](architecture_as_code_maturity_model.md), the interactive Maturity Radar Tool, and the [Control Mapping Matrix Template](appendix_d_control_mapping_matrix_template.md) that underpins the “assure once, comply many” approach.
 
 These references serve as quick-access resources to support the concepts explored in Parts A through G, ensuring that theoretical understanding translates into practical implementation.
