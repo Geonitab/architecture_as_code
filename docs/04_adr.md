@@ -41,7 +41,7 @@ Every ADR should explicitly reference the Git-based review and validation workfl
 
 ![Figure 4.2 – Standard Architecture Decision Record structure](images/diagram_04_adr_structure.png)
 
-*Figure 4.2 highlights the four core sections every ADR should capture before the template is populated with project-specific information.*
+*Figure 4.2 — The four core sections every ADR should capture before the template is populated with project-specific information.*
 
 Each ADR follows a consistent structure that ensures all relevant information is captured systematically. The YAML front matter records the identity, status, and review cadence of the decision. The Markdown body presents the narrative context and decision rationale:
 

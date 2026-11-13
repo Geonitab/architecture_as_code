@@ -8,23 +8,23 @@ The following mind maps present the interconnected practice areas that underpin 
 
 ![Figure 24.1 – Code organisation and module design](images/mindmap_22a_code_organization.png)
 
-*Figure 24.1 shows best practices for repository structure, module design, and versioning strategies.*
+*Figure 24.1 — Best practices for repository structure, module design, and versioning strategies.*
 
 ![Figure 24.2 – Security and compliance patterns](images/mindmap_22b_security_compliance.png)
 
-*Figure 24.2 illustrates security-first design, regulatory compliance, and secret management approaches.*
+*Figure 24.2 — Security-first design, regulatory compliance, and secret management approaches.*
 
 ![Figure 24.3 – Performance and scaling strategies](images/mindmap_22c_performance.png)
 
-*Figure 24.3 demonstrates optimisation, multi-region deployment, and observability practices.*
+*Figure 24.3 — Optimisation, multi-region deployment, and observability practices.*
 
 ![Figure 24.4 – Governance and policy frameworks](images/mindmap_22d_governance.png)
 
-*Figure 24.4 presents governance frameworks, policy-as-code implementation, and sustainability considerations.*
+*Figure 24.4 — Governance frameworks, policy-as-code implementation, and sustainability considerations.*
 
 ![Figure 24.5 – Global best practices and continuous improvement](images/mindmap_22e_global_practices.png)
 
-*Figure 24.5 highlights cross-cultural collaboration, open source contributions, and continuous improvement cycles.*
+*Figure 24.5 — Cross-cultural collaboration, open source contributions, and continuous improvement cycles.*
 
 The table below introduces the seven practice clusters explored throughout this chapter, and each mind map is read from top to bottom, emphasising the sequence in which many organisations layer their capabilities. The sections that follow provide narrative bridges between these themes so that teams can adapt the ideas to their own regulatory, cultural, and technological environments.
 
@@ -194,7 +194,7 @@ Strategic partnerships with academic institutions, industry consortia, and civic
 
 ![Figure 24.6 – Continuous improvement feedback loops](images/diagram_22_continuous_improvement.png)
 
-*Figure 24.6 shows how insight, experimentation, and delivery reinforce one another to sustain long-term improvement.*
+*Figure 24.6 — How insight, experimentation, and delivery reinforce one another to sustain long-term improvement.*
 
 Continuous improvement is the connective tissue that keeps Architecture as Code programmes relevant. Feedback loops capture production telemetry, customer sentiment, regulatory changes, and retrospective findings. Improvement backlogs convert those signals into incremental experiments, each evaluated against hypothesis-driven success criteria. Innovation thrives when metrics balance reliability, speed, sustainability, and equity outcomes.
 

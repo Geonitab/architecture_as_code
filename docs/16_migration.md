@@ -2,7 +2,7 @@
 
 ![Migration Process](images/diagram_18_chapter16.png)
 
-*Figure 16.1: Migration from Traditional Infrastructure to Architecture as Code requires systematic planning, step-by-step Architecture as Code implementation and continuous validation. Diagram shows the structured process from assessment to complete Architecture as Code adoption.*
+*Figure 16.1 — Migration from Traditional Infrastructure to Architecture as Code requires systematic planning, step-by-step Architecture as Code implementation and continuous validation. Diagram shows the structured process from assessment to complete Architecture as Code adoption.*
 
 ## Overall description
 

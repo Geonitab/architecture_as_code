@@ -2,7 +2,7 @@
 
 ![Test pyramid for Architecture as Code](images/diagram_13_test_pyramid.png)
 
-*Figure 13.1: Architecture as Code Test Pyramid*
+*Figure 13.1 — Architecture as Code Test Pyramid.*
 
 A comprehensive testing strategy for Architecture as Code requires multiple testing levels, from unit tests to end-to-end validation. The test pyramid illustrates the structured progression from rapid developer tests to comprehensive integration validation, with each layer serving distinct quality assurance purposes.
 
@@ -129,7 +129,7 @@ The configuration should include:
 
 ![Testing Strategy Quadrant](images/diagram_13_testing_quadrant.png)
 
-*Figure 13.2: Architecture as Code Testing Strategy Quadrant*
+*Figure 13.2 — Architecture as Code Testing Strategy Quadrant.*
 
 The testing quadrant above illustrates the balance between implementation complexity and testing coverage. Different testing strategies occupy distinct positions, with security scanning and policy testing offering high coverage with moderate complexity, while end-to-end tests provide comprehensive coverage at the cost of higher implementation complexity.
 
@@ -282,7 +282,7 @@ Capacity planning validation through performance testing helps optimise resource
 
 ![Requirements and testing relation](images/diagram_12_requirements_testing.png)
 
-*Figure 13.3: Requirements as Code - Traceability from Business Requirements to Infrastructure Tests*
+*Figure 13.3 — Requirements as Code: traceability from Business Requirements to Infrastructure Tests.*
 
 The diagram above, which also appears as Figure 12.3 in Chapter 12, illustrates the relationship between business requirements, functional requirements and verification methods. This demonstrates how Architecture as Code makes traceable testing possible from higher abstraction levels down to concrete Infrastructure as Code implementations, creating a direct link between business objectives and technical validation.
 

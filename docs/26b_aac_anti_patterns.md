@@ -6,7 +6,7 @@ Before exploring anti-patterns, ensure your organisation has assessed its readin
 
 ![Figure 26.1 – Six anti-pattern clusters, from strategic drift to sustainability debt, that reinforce one another](images/diagram_26_anti_patterns.png)
 
-*Figure 26.1 maps six anti-pattern clusters (strategy, governance, delivery, tooling, culture and sustainability) and shows how blind spots propagate risk from one to the next.*
+*Figure 26.1 — Six anti-pattern clusters (strategy, governance, delivery, tooling, culture and sustainability), showing how blind spots propagate risk from one to the next.*
 
 ## Strategic anti-patterns
 

@@ -8,7 +8,7 @@ Documentation as Code focuses on capturing and communicating knowledge about sys
 
 ![Documentation vs Architecture as Code](images/diagram_22_doc_vs_arch.png)
 
-*Figure 22.1 illustrates the fundamental differences between Documentation as Code and Architecture as Code, showing how each discipline serves distinct purposes in the software development ecosystem.*
+*Figure 22.1 — The fundamental differences between Documentation as Code and Architecture as Code, showing how each discipline serves distinct purposes in the software development ecosystem.*
 
 ## Purpose and scope
 
@@ -133,7 +133,7 @@ Example Mermaid diagram:
 
 ![Mermaid example highlighting the flow between a customer, payment API, database, and queue](images/diagram_22_mermaid_example.png)
 
-*Figure 22.2 shows a simple customer-to-payment flow using the Mermaid syntax. Both the rendered PNG and the Mermaid source file are kept under version control in this repository.*
+*Figure 22.2 — A simple customer-to-payment flow using the Mermaid syntax. Both the rendered PNG and the Mermaid source file are kept under version control in this repository.*
 
 Mermaid excels at quickly creating visual explanations within documentation. Its lightweight syntax makes it accessible to non-technical contributors, and its widespread integration means diagrams can be embedded directly in Markdown files without external tools.
 
@@ -170,7 +170,7 @@ This book uses Mermaid for creating illustrative diagrams because its primary pu
 
 ![Feedback loop between Documentation as Code and Architecture as Code workflows](images/diagram_22_tool_alignment.png)
 
-*Figure 22.3 shows how Documentation as Code outputs and Architecture as Code automation reinforce one another through shared feedback loops. The Mermaid source is maintained in `docs/images/diagram_22_tool_alignment.mmd` to keep the definition version-controlled alongside the manuscript.*
+*Figure 22.3 — How Documentation as Code outputs and Architecture as Code automation reinforce one another through shared feedback loops. The Mermaid source is maintained in `docs/images/diagram_22_tool_alignment.mmd` to keep the definition version-controlled alongside the manuscript.*
 
 ## Key differences: A comparative framework
 

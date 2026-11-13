@@ -2,7 +2,7 @@
 
 ![Figure 21.1 – Digital transformation journey for Architecture as Code](images/diagram_21_digitalisation_process.png)
 
-*Figure 21.1 highlights how Architecture as Code supports modern digital transformation initiatives by enabling rapid, scalable, and cost-effective evolution of IT environments from manual processes to automated, declarative infrastructure management.*
+*Figure 21.1 — How Architecture as Code supports modern digital transformation initiatives by enabling rapid, scalable, and cost-effective evolution of IT environments from manual processes to automated, declarative infrastructure management.*
 
 ## Learning objectives
 
@@ -19,19 +19,19 @@ By the end of this chapter, you will be able to:
 
 ![Figure 21.2 – Technical foundation for digital transformation](images/mindmap_21a_technical.png)
 
-*Figure 21.2 shows the technical dimensions of digital transformation, including cloud migration, infrastructure automation, and modern architecture patterns.*
+*Figure 21.2 — The technical dimensions of digital transformation, including cloud migration, infrastructure automation, and modern architecture patterns.*
 
 ![Figure 21.3 – Organisational dimensions of transformation](images/mindmap_21b_organisational.png)
 
-*Figure 21.3 illustrates the organisational changes required, including team structures, governance, and change management practices.*
+*Figure 21.3 — The organisational changes required, including team structures, governance, and change management practices.*
 
 ![Figure 21.4 – Business value and innovation](images/mindmap_21c_business.png)
 
-*Figure 21.4 demonstrates how Architecture as Code delivers business value through improved delivery, risk management, and continuous innovation.*
+*Figure 21.4 — How Architecture as Code delivers business value through improved delivery, risk management, and continuous innovation.*
 
 ## Overview
 
-Digital transformation represents more than the introduction of new technology—it embodies a fundamental shift in how organisations deliver value to customers and stakeholders. Architecture as Code plays a central role in this transformation by enabling agile, cloud-based solutions that adapt to evolving business needs while maintaining robust governance, security, and compliance frameworks.
+Digital transformation represents more than the introduction of new technology—it embodies a fundamental shift in how organisations deliver value to customers and stakeholders. Architecture as Code plays a central role in this transformation by enabling agile, cloud-based solutions that adapt to evolving business needs while maintaining robust governance, security, and compliance frameworks. Figure 21.1 summarises this journey from manual processes to automated, declarative infrastructure management.
 
 ### Digital transformation challenges and opportunities
 

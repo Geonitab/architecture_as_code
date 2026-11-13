@@ -21,27 +21,27 @@ The following mind maps illustrate the key concepts and relationships within the
 
 ![Shared DNA of “as code” disciplines](images/mindmap_23a_shared_dna.png)
 
-*Figure 23.1 shows the foundational elements shared across all “as code” disciplines: structured representation, version control, and automatability.*
+*Figure 23.1 — The foundational elements shared across all “as code” disciplines: structured representation, version control, and automatability.*
 
 ![Compliance as Code](images/mindmap_23b_compliance.png)
 
-*Figure 23.2 illustrates how compliance as code provides quality engines, codified controls, and integration benefits.*
+*Figure 23.2 — How compliance as code provides quality engines, codified controls, and integration benefits.*
 
 ![Architecture as Code as central hub](images/mindmap_23c_architecture.png)
 
-*Figure 23.3 demonstrates Architecture as Code serving as the central hub connecting technical implementation, policy, and documentation.*
+*Figure 23.3 — Architecture as Code serving as the central hub connecting technical implementation, policy, and documentation.*
 
 ![Documentation as Code](images/mindmap_23d_documentation.png)
 
-*Figure 23.4 shows documentation as code providing communication layers, toolchain integration, and feedback loops.*
+*Figure 23.4 — Documentation as code providing communication layers, toolchain integration, and feedback loops.*
 
 ![Knowledge and Culture as Code](images/mindmap_23e_knowledge_culture.png)
 
-*Figure 23.5 presents how knowledge and culture can be codified to enable structured onboarding and experience preservation.*
+*Figure 23.5 — How knowledge and culture can be codified to enable structured onboarding and experience preservation.*
 
 ![Synergies and implementation strategy](images/mindmap_23f_synergies.png)
 
-*Figure 23.6 highlights the synergies created through cross-pollination and the implementation strategy for adopting these practices.*
+*Figure 23.6 — The synergies created through cross-pollination and the implementation strategy for adopting these practices.*
 
 **Key takeaways from the mind map:**
 

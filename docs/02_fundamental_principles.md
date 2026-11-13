@@ -505,7 +505,7 @@ Understanding the distinction between functional and non-functional requirements
 
 ![V-Model pairs: each level of specification with its verification or validation method, followed by implementation as code](images/diagram_02_v_model.png)
 
-*Figure 2.2: The pairs of the V-Model, from business requirements and operational validation to detailed design and unit testing, followed by implementation as code*
+*Figure 2.2 — The pairs of the V-Model, from business requirements and operational validation to detailed design and unit testing, followed by implementation as code.*
 
 The V-Model, introduced by Forsberg & Mooz (1991) [Source [53]](33_references.md#source-53), pairs each level of specification with a corresponding level of verification or validation. Verification asks whether the system was built right; validation asks whether the right system was built (IEEE Std 1012, [Source [54]](33_references.md#source-54)), and both apply to functional and non-functional requirements alike. Figure 2.2 applies the model to Requirements as Code with a deliberate simplification that reflects how the two requirement types are most often checked in practice:
 

@@ -14,7 +14,7 @@ Architecture as Code asks teams to think about cloud platforms, automation tooli
 
 ![Architecture as Code – Technical Structure](images/diagram_27_technical_structure.png)
 
-*Figure 27.1 – The technical structure of an Architecture as Code platform, showing the layered relationship between declarative definitions, automation pipelines, and governance controls.*
+*Figure 27.1 — The technical structure of an Architecture as Code platform, showing the layered relationship between declarative definitions, automation pipelines, and governance controls.*
 
 ## Embedding continuous improvement
 
@@ -26,7 +26,7 @@ Continuous improvement is woven into Architecture as Code. Metrics from [automat
 
 ![Architecture as Code – Build Pipeline](images/diagram_27b_build_pipeline.png)
 
-*Figure 27.2 – The Architecture as Code build pipeline, illustrating how architectural definitions flow through validation, testing, and deployment stages to produce governed, auditable outcomes.*
+*Figure 27.2 — The Architecture as Code build pipeline, illustrating how architectural definitions flow through validation, testing, and deployment stages to produce governed, auditable outcomes.*
 
 ## European context and opportunities
 
@@ -76,7 +76,7 @@ The open-source and source-available ecosystem that underpins this discipline—
 
 ![Architecture as Code – Source Materials](images/diagram_27a_source_materials.png)
 
-*Figure 27.3 – Source materials and intellectual lineage underpinning the Architecture as Code approach presented in this book.*
+*Figure 27.3 — Source materials and intellectual lineage underpinning the Architecture as Code approach presented in this book.*
 
 ## Sources
 

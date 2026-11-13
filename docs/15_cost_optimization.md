@@ -2,11 +2,11 @@
 
 ![Cost optimisation workflow](images/diagram_16_chapter15.png)
 
-*Figure 15.1: The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops that drive constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
+*Figure 15.1 — The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops that drive constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
 
 ![Cost monitoring and analysis flow](images/diagram_17_chapter15.png)
 
-*Figure 15.2: This simplified view of the cost optimisation process illustrates how various components work together: from cost analysis via monitoring and optimisation to automation leading to concrete savings.*
+*Figure 15.2 — How various components work together: from cost analysis via monitoring and optimisation to automation leading to concrete savings.*
 
 ## Overall description
 
@@ -22,7 +22,7 @@ Successful cost optimisation requires a combination of technical tools, organisa
 
 ![FinOps governance cycle](images/diagram_16_finops_cycle.png)
 
-*Figure 15.3: The FinOps cycle illustrates the continuous process of cost governance, from allocation and budgeting to policy management and optimisation. This iterative approach ensures that cost-awareness is integrated throughout the organisation's workflow.*
+*Figure 15.3 — The FinOps cycle illustrates the continuous process of cost governance, from allocation and budgeting to policy management and optimisation. This iterative approach ensures that cost-awareness is integrated throughout the organisation's workflow.*
 
 FinOps represents a growing discipline that combines financial management with cloud operations to maximise business value from cloud investments; the FinOps Foundation's framework structures the practice into the Inform, Optimize and Operate phases ([Source [93]](33_references.md#source-93)). Within the Architecture as Code context, this means integrating cost considerations directly into infrastructure definitions and deployment processes.
 
@@ -46,7 +46,7 @@ Machine learning-based predictive scaling models can be incorporated into Archit
 
 ![Cost monitoring stack](images/diagram_16_monitoring_stack.png)
 
-*Figure 15.4: This diagram shows the cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems. Data flows from metrics collection through reporting and anomaly detection to cost analysis, ultimately resulting in concrete optimisation actions.*
+*Figure 15.4 — The cost monitoring architecture with integration of CloudWatch/Azure Monitor, customised dashboards, and alert systems. Data flows from metrics collection through reporting and anomaly detection to cost analysis, ultimately resulting in concrete optimisation actions.*
 
 Comprehensive cost monitoring requires integration of monitoring tools directly into Architecture as Code configurations. Granular cost data comes from AWS Cost Explorer and the Cost and Usage Report, Microsoft Cost Management, and Cloud Billing export to BigQuery, while CloudWatch billing alarms, Azure Monitor, and Google Cloud budgets can be configured as code to trigger alerts when threshold values are exceeded.
 
