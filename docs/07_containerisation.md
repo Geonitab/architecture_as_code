@@ -1,6 +1,6 @@
 # Containerisation and Orchestration as Code {#containerisation}
 
-![Figure 7.1 – Containerisation and Orchestration](images/diagram_09_chapter7.png)
+![Figure 7.1 – Containerisation and Orchestration](images/diagram_09_container_build_and_orchestration.png)
 
 *Figure 7.1 — Containerisation and Orchestration.*
 

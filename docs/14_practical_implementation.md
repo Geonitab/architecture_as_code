@@ -4,7 +4,7 @@ Architecture as Code succeeds when teams bring organisational ambitions, enginee
 
 Prioritising clarity is crucial. Figure 14.1 highlights the operating model used by many platform teams to combine architecture governance, automation, and stakeholder alignment. It serves as a quick reference for the foundational capabilities that underpin every implementation.
 
-![Figure 14.1 – Three capability areas in a cycle: governance and alignment, tooling and automation, enablement and culture](images/diagram_15_chapter14.png)
+![Figure 14.1 – Three capability areas in a cycle: governance and alignment, tooling and automation, enablement and culture](images/diagram_15_capability_cycle.png)
 *Figure 14.1 — Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over time.*
 
 ## Implementation roadmap and strategies
@@ -25,7 +25,7 @@ The adoption journey in Figure 14.2 breaks down these stages into the minimum se
 
 Figure 14.3 captures the enablement flywheel that keeps Architecture as Code programmes sustainable by moving teams from shared delivery into lasting communities of practice.
 
-![Figure 14.3 – Enablement flywheel for sustained Architecture as Code capabilities](images/diagram_16_chapter14.png)
+![Figure 14.3 – Enablement flywheel for sustained Architecture as Code capabilities](images/diagram_16_enablement_flywheel.png)
 *Figure 14.3 — Enablement flywheel connecting cross-functional teams, skill development, knowledge sharing, communities of practice, and career progression.*
 
 | Implementation Stage | Key Activities | Success Criteria | Deliverables |

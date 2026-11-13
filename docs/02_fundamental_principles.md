@@ -2,7 +2,7 @@
 
 Architecture as Code is founded on core principles that enable successful implementation of codified system architecture. These principles span the entire system landscape and provide a holistic view of architecture management.
 
-![Figure 2.1 – Traditional architecture practice (static documents, manual processes, tribal knowledge) transformed into Architecture as Code (version-controlled artefacts, automated validation, reproducible deployments, living documentation)](images/diagram_02_chapter1.png)
+![Figure 2.1 – Traditional architecture practice (static documents, manual processes, tribal knowledge) transformed into Architecture as Code (version-controlled artefacts, automated validation, reproducible deployments, living documentation)](images/diagram_02_traditional_vs_aac.png)
 
 *Figure 2.1 — Traditional architecture practice (static documents, manual processes, tribal knowledge) transformed into Architecture as Code (version-controlled artefacts, automated validation, reproducible deployments, living documentation).*
 

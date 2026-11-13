@@ -2,7 +2,7 @@
 
 Effective version control forms the backbone of Architecture as Code implementations. Applying the same practices as software development to infrastructure definitions delivers traceability, collaboration opportunities, and quality control.
 
-![Figure 3.1 – The five fundamental principles of Architecture as Code (single source of truth, immutability and idempotency, everything as code, continuous validation, observable systems) converging on a consistent, trustworthy architecture](images/diagram_03_chapter2.png)
+![Figure 3.1 – The five fundamental principles of Architecture as Code (single source of truth, immutability and idempotency, everything as code, continuous validation, observable systems) converging on a consistent, trustworthy architecture](images/diagram_03_fundamental_principles.png)
 
 *Figure 3.1 — The five fundamental principles of Architecture as Code (single source of truth, immutability and idempotency, everything as code, continuous validation, observable systems) converging on a consistent, trustworthy architecture.*
 

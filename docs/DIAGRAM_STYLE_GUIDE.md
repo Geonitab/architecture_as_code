@@ -108,6 +108,8 @@ sequenceDiagram
 
 Use mindmaps for concept hierarchies and knowledge structures.
 
+> **Convention in this repository.** Files named `mindmap_*.mmd` are drawn as `graph TD` or `flowchart` diagrams in mind-map layout, not with Mermaid's native `mindmap` syntax, because the native syntax does not support the `:::kv-*` classes of the Kvadrat theme. The name describes the layout, not the Mermaid diagram type. A diagram that uses native `mindmap` syntax must accept the theme's default mind-map styling.
+
 ```mermaid
 mindmap
   root((Architecture as Code))
@@ -224,6 +226,24 @@ Examples:
 - `diagram_12_requirements_testing.mmd`
 - `diagram_23_glossary_class.mmd`
 - `code_review_sequence.mmd`
+
+Do not encode a chapter number in the description (for example `diagram_05_chapterN.mmd`): the description must say what the diagram shows. Two diagrams of similar concepts in different chapters need disambiguated descriptions (for example `diagram_11_governance_pipeline.mmd` for policy authoring and `diagram_19_governance_pipeline.mmd` for management).
+
+PNGs without a Mermaid source are allowed only for photographs and non-Mermaid assets (`book-cover.png`, `release_information_page.png`); list any new exception here.
+
+## Figure Numbering, Captions and Alt Text
+
+- Number figures per chapter in order of appearance: `Figure N.M`. Appendix and split chapters use their chapter label (`Figure 9B.1`, `Figure 26A.1`).
+- Alt text starts with the figure number and an en dash: `![Figure 12.1 – Description of what the diagram shows](images/diagram_12_compliance.png)`.
+- The caption follows the image directly, in italics: `*Figure 12.1 — Short description in sentence case.*` (em dash). Put commentary in the paragraph before the figure.
+- Introduce each figure in the text before it appears.
+
+### Accessibility checklist for alt text
+
+- [ ] Describes the content and the key relationships, not only the topic (write "Migration process in stages from audit through pilot to decommissioning, with the next wave returning to the roadmap", not "Migration Process").
+- [ ] At least a full phrase (aim for more than eight words).
+- [ ] Does not repeat the caption word for word.
+- [ ] Uses British English and the same names as the diagram labels.
 
 ## Validation Process
 

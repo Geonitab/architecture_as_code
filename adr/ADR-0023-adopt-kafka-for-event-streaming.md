@@ -17,7 +17,7 @@ related_chapters:
   - docs/05_automation_devops_cicd.md
   - docs/08_microservices.md
 related_diagrams:
-  - docs/images/diagram_08_chapter6.png
+  - docs/images/diagram_08_architecture_repository_pipeline.png
 related_backlog_items:
   - AAC-1420
   - PLAT-882

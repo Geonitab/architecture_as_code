@@ -1,10 +1,10 @@
 # Cost Optimisation and Resource Management {#cost-optimisation}
 
-![Figure 15.1 – Cost optimisation workflow](images/diagram_16_chapter15.png)
+![Figure 15.1 – Cost optimisation workflow](images/diagram_16_cost_optimisation_workflow.png)
 
 *Figure 15.1 — The cost optimisation workflow demonstrates the systematic process from initial cost analysis through monitoring and optimisation to automation and savings. The process is continuous with feedback loops that drive constant improvement based on actual results. Key functions include budget alerts, resource rightsizing, use of spot instances, automatic scaling, and structured resource tagging.*
 
-![Figure 15.2 – Cost monitoring and analysis flow](images/diagram_17_chapter15.png)
+![Figure 15.2 – Cost monitoring and analysis flow](images/diagram_17_cost_allocation_cycle.png)
 
 *Figure 15.2 — How various components work together: from cost analysis via monitoring and optimisation to automation leading to concrete savings.*
 

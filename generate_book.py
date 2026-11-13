@@ -371,7 +371,7 @@ Källor:
 
 Architecture as Code bygger på fundamentala principer som säkerställer framgångsrik implementation av kodifierad systemarkitektur. Dessa principer omfattar hela systemlandskapet och skapar en helhetssyn för arkitekturhantering.
 
-![Grundläggande principer diagram](images/diagram_02_chapter1.png)
+![Grundläggande principer diagram](images/diagram_02_traditional_vs_aac.png)
 
 Diagrammet visar det naturliga flödet från deklarativ kod genom versionskontroll och automatisering till reproducerbarhet och skalbarhet - de fem grundpelarna inom Architecture as Code.
 
@@ -569,7 +569,7 @@ Källor:
 
 Effektiv versionhantering utgör ryggraden i Infrastructure as Code-implementationer. Genom att tillämpa samma metoder som mjukvaruutveckling på infrastrukturdefinitioner skapas spårbarhet, samarbetsmöjligheter och kvalitetskontroll.
 
-![Versionhantering och kodstruktur](images/diagram_03_chapter2.png)
+![Versionhantering och kodstruktur](images/diagram_03_fundamental_principles.png)
 
 Diagrammet illustrerar det typiska flödet från Git repository genom branching strategy och code review till slutlig deployment, vilket säkerställer kontrollerad och spårbar infrastrukturutveckling.
 

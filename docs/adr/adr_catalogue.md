@@ -87,7 +87,7 @@ Apache Kafka standardises the event streaming layer across the Architecture as C
 - `docs/08_microservices.md`
 
 **Supporting diagrams**
-- `docs/images/diagram_08_chapter6.png`
+- `docs/images/diagram_08_architecture_repository_pipeline.png`
 
 **Backlog alignment**
 - AAC-1420

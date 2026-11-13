@@ -49,7 +49,7 @@ MaC provides an auditable foundation for governance-as-code, where leadership ru
 
 Automated compliance tests run alongside software unit tests. For instance, a pull request adjusting a service’s operating budget triggers simulations that verify it stays within the portfolio guardrails declared in management code. If the change would breach the guardrails, the PR fails and prompts the contributor to adjust the request or seek executive approval. This automation dramatically reduces the manual overhead of governance and gives leaders more time to focus on strategic initiatives.
 
-![Figure 19.4 – Governance pipeline showing repositories feeding automated checks, workflows, and access control](images/diagram_19_governance_pipeline.png)
+![Figure 19.4 – Governance pipeline showing repositories feeding automated checks, workflows, and access control](images/diagram_19_management_governance_pipeline.png)
 
 *Figure 19.4 — Governance pipeline where management repositories feed automated checks, workflows, and access control enforcement.*
 

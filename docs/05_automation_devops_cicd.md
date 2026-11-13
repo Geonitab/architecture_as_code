@@ -1,6 +1,6 @@
 # Automation, DevOps and CI/CD for Architecture as Code {#automation-devops-cicd}
 
-![Figure 5.1 – Automation and CI/CD pipelines](images/diagram_07_chapter5.png)
+![Figure 5.1 – Automation and CI/CD pipelines](images/diagram_07_cicd_pipeline_stages.png)
 
 *Figure 5.1 — Automation and CI/CD pipelines.*
 

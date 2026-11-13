@@ -68,9 +68,9 @@
         "Documentation as Code (DaC) treats documentation as an integrated part of the codebase rather than a separate artefact",
         "Requirements as Code (RaC) transforms traditional requirements specifications from textual documents into machine-readable code that can be executed, validated, and..."
       ],
-      "diagram_path": "docs/images/diagram_02_chapter1.png",
+      "diagram_path": "docs/images/diagram_02_traditional_vs_aac.png",
       "diagram_metadata": {
-        "source": "Source: diagram_02_chapter1.mmd",
+        "source": "Source: diagram_02_traditional_vs_aac.mmd",
         "type": "Flowchart",
         "purpose": "Illustrates process flows and system workflows",
         "explanation": "Diagram: Chapter 1 - Illustrates process flows and system workflows"
@@ -94,9 +94,9 @@
         "Automation and CI/CD enablers for version control and code structure {#version-control}",
         "Cost optimisation and scalability guidance for version control and code structure {#version-control}"
       ],
-      "diagram_path": "docs/images/diagram_03_chapter2.png",
+      "diagram_path": "docs/images/diagram_03_fundamental_principles.png",
       "diagram_metadata": {
-        "source": "Source: diagram_03_chapter2.mmd",
+        "source": "Source: diagram_03_fundamental_principles.mmd",
         "type": "Flowchart",
         "purpose": "Illustrates process flows and system workflows",
         "explanation": "Diagram: Chapter 2 - Illustrates process flows and system workflows"
@@ -519,9 +519,9 @@
         "Architecture as Code in practice requires disciplined planning, collaborative execution, and relentless optimisation",
         "- HashiCorp"
       ],
-      "diagram_path": "docs/images/diagram_15_chapter14.png",
+      "diagram_path": "docs/images/diagram_15_capability_cycle.png",
       "diagram_metadata": {
-        "source": "Source: diagram_15_chapter14.mmd",
+        "source": "Source: diagram_15_capability_cycle.mmd",
         "type": "Flowchart",
         "purpose": "Illustrates process flows and system workflows",
         "explanation": "*Figure 14.1 – Architecture as Code relies on coordinated governance, tooling, and enablement capabilities to stay sustainable over..."
@@ -574,9 +574,9 @@
         "The modern Architecture as Code methodology represents the future for infrastructure management in EU organisations",
         "- AWS"
       ],
-      "diagram_path": "docs/images/diagram_16_chapter15.png",
+      "diagram_path": "docs/images/diagram_16_cost_optimisation_workflow.png",
       "diagram_metadata": {
-        "source": "Source: diagram_16_chapter15.mmd",
+        "source": "Source: diagram_16_cost_optimisation_workflow.mmd",
         "type": "Flowchart",
         "purpose": "Illustrates process flows and system workflows",
         "explanation": "Diagram: Chapter 15 - Illustrates process flows and system workflows"
@@ -604,9 +604,9 @@
         "Technical migration success depends fundamentally on organisational readiness",
         "- AWS"
       ],
-      "diagram_path": "docs/images/diagram_18_chapter16.png",
+      "diagram_path": "docs/images/diagram_18_migration_stages.png",
       "diagram_metadata": {
-        "source": "Source: diagram_18_chapter16.mmd",
+        "source": "Source: diagram_18_migration_stages.mmd",
         "type": "Flowchart",
         "purpose": "Illustrates process flows and system workflows",
         "explanation": "Diagram: Chapter 16 - Illustrates process flows and system workflows"

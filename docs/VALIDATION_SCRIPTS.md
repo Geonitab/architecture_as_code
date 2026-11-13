@@ -94,13 +94,13 @@ This ensures validations run only when documentation files change, optimising CI
 ### Figure Caption Style
 ✅ **Correct**:
 ```markdown
-![Figure 14.1 – Capability landscape](images/diagram_15_chapter14.png)
+![Figure 14.1 – Capability landscape](images/diagram_15_capability_cycle.png)
 *Figure 14.1 — Architecture as Code relies on coordinated governance...*
 ```
 
 ❌ **Incorrect**:
 ```markdown
-![figure 14.1 – Capability landscape](images/diagram_15_chapter14.png)
+![figure 14.1 – Capability landscape](images/diagram_15_capability_cycle.png)
 *figure 14.1 — Architecture as Code relies on coordinated governance...*
 ```
 
