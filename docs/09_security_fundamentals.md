@@ -145,7 +145,7 @@ Perimeter-led network security is unsuitable for cloud-native deployments where 
 
 Micro-segmentation provides granular, application-aware control compared with traditional VLANs or subnets. Traffic policies can be defined using application identity, user context, and data classification to reduce lateral movement opportunities.
 
-Container networking introduces additional complexity. Containers within a pod share a network namespace, and pods communicate directly over a flat cluster network that bypasses traditional perimeter controls ([Source [13]](33_references.md#source-13)). Container Network Interface (CNI) plug-ins and NetworkPolicy objects restore segmentation by providing a consistent mechanism for implementing network policies for containerised workloads.
+Container networking introduces additional complexity. Containers within a pod share a network namespace, and all pods can communicate directly with all other pods, without proxies or address translation, unless network segmentation is applied ([Source [13]](33_references.md#source-13)). NetworkPolicy objects restore segmentation, provided the pod network implementation, typically a Container Network Interface (CNI) plug-in, enforces them.
 
 ### Service mesh security architectures
 
@@ -167,7 +167,7 @@ This chapter has established the fundamental security principles and practices f
 
 1. **NIST (2024).** *The NIST Cybersecurity Framework (CSF) 2.0.* NIST CSWP 29, 26 February 2024. [https://doi.org/10.6028/NIST.CSWP.29](https://doi.org/10.6028/NIST.CSWP.29) [Source [42]](33_references.md#source-42)
 2. **NIST (2020).** *Special Publication 800-207: Zero Trust Architecture.* National Institute of Standards and Technology, August 2020. [https://csrc.nist.gov/pubs/sp/800/207/final](https://csrc.nist.gov/pubs/sp/800/207/final)
-3. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organisations.* NIST Special Publication 800-53, Revision 5, 2020. [Source [11]](33_references.md#source-11)
+3. **NIST (2020).** *Security and Privacy Controls for Information Systems and Organizations.* NIST Special Publication 800-53, Revision 5, 2020. [Source [11]](33_references.md#source-11)
 4. **ISO/IEC (2022).** *ISO/IEC 27001:2022 Information Security Management Systems – Requirements.* International Organisation for Standardisation. [Source [14]](33_references.md#source-14)
 5. **European Parliament and Council (2016).** *Regulation (EU) 2016/679 (General Data Protection Regulation).* Official Journal of the European Union, L 119, 4 May 2016. [Source [43]](33_references.md#source-43)
 6. **EDPB (2020).** *Guidelines 4/2019 on Article 25 Data Protection by Design and by Default, Version 2.0.* European Data Protection Board, 20 October 2020. [https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-42019-article-25-data-protection-design-and_en](https://www.edpb.europa.eu/our-work-tools/our-documents/guidelines/guidelines-42019-article-25-data-protection-design-and_en)

@@ -50,7 +50,7 @@ CALM is an open-source specification developed by the Architecture as Code commu
 - **Relationships**: Connections, data flows, and dependencies between nodes
 - **Metadata**: Compliance tags, operational data, and custom attributes
 
-CALM is built on a JSON meta-schema, which makes it compatible with existing tools and enables integration into CI/CD workflows; its command-line tool (`npm install -g @finos/calm-cli`) validates architectures against reusable patterns and renders visualisations and documentation straight from the pipeline [Source [1]](33_references.md#source-1). The schema is published in versioned releases (release 1.0 and 1.1 at the time of writing, with later drafts in progress), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
+CALM is built on a JSON meta-schema, which makes it compatible with existing tools and enables integration into CI/CD workflows; its command-line tool (`npm install -g @finos/calm-cli`) validates architectures against reusable patterns and renders visualisations and documentation straight from the pipeline [Source [1]](33_references.md#source-1). The schema is published in versioned releases (releases 1.0 to 1.3 at the time of writing), and every document declares the release it conforms to [Source [48]](33_references.md#source-48). Architecture defined in CALM can be:
 
 - **Validated automatically**: Compliance checks run against the model to verify policy conformance
 - **Visualised dynamically**: Diagrams are generated from the model, ensuring they always reflect the current architecture
