@@ -3900,7 +3900,7 @@ class AWSCostOptimizer:
                     idle.append({
                         'load_balancer': load_balancer['LoadBalancerName'],
                         'region': region,
-                        # Representative hourly ALB charge in EU regions (USD 0.0252/h)
+                        # Representative hourly ALB charge in eu-west-1 (USD 0.0252/h; eu-central-1 is USD 0.027/h)
                         'estimated_monthly_savings_usd': round(0.0252 * 730, 2)
                     })
 
@@ -3997,16 +3997,16 @@ class AWSCostOptimizer:
                 'gp2': 0.110,
                 'io1': 0.138,
                 'io2': 0.138,
-                'st1': 0.048,
-                'sc1': 0.026
+                'st1': 0.050,
+                'sc1': 0.0168
             },
             'eu-central-1': {  # Frankfurt
-                'gp3': 0.095,
+                'gp3': 0.0952,
                 'gp2': 0.119,
                 'io1': 0.149,
                 'io2': 0.149,
-                'st1': 0.052,
-                'sc1': 0.028
+                'st1': 0.054,
+                'sc1': 0.018
             }
         }
 
@@ -4070,7 +4070,7 @@ resource "aws_launch_template" "spot_optimized" {{
 ## Security and compliance {#security-compliance}
 
 ### 10_CODE_1: Advanced Policy-as-Code module for EU compliance {#10_code_1}
-*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and GDPR Article 44 data residency controls. It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached. The module is written in OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and `import rego.v1` keeps the module compatible with OPA 0.59 and later [Source [44]](33_references.md#source-44). Fall-back values are expressed with `default` functions, because a second definition that matched every input would conflict with the specific definitions at evaluation time.
+*Referenced from Chapter 10: [Policy and Security as Code in Detail](10_policy_and_security.md).* This Rego module consolidates encryption validation, network segmentation checks inspired by MSB guidance, and data residency controls that support the GDPR rules on transfers to third countries (Articles 44 to 49). It generates a composite compliance score so teams can fail builds or raise alerts when thresholds are breached. The module is written in OPA 1.0 syntax: since OPA 1.0 (December 2024) the `if` and `contains` keywords are mandatory in rule definitions, and `import rego.v1` keeps the module compatible with OPA 0.59 and later [Source [44]](33_references.md#source-44). Fall-back values are expressed with `default` functions, because a second definition that matched every input would conflict with the specific definitions at evaluation time.
 
 ```rego
 package se.enterprise.security
@@ -4094,7 +4094,7 @@ sovereignty_scoped_services := encryption_required_services
 
 administrative_ports := {22, 3389, 5432, 3306, 1433, 27017, 6379, 9200, 5601}
 allowed_public_ports := {80, 443}
-eu_regions := {"eu-north-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-central-1", "eu-south-1"}
+eu_regions := {"eu-north-1", "eu-west-1", "eu-west-3", "eu-central-1", "eu-south-1", "eu-south-2"}
 
 encryption_compliant contains resource if {
     resource := input.resources[_]
@@ -4587,7 +4587,7 @@ assess_regulator(name, violations) := summary if {
                   {
                     "statement-id": "msb-3.2.1_smt",
                     "uuid": "5d6e6b2c-e415-4996-9104-39fe282d01b2",
-                    "description": "Stateful rules restrict lateral movement and mirror traffic to a central collector."
+                    "description": "Stateful rules restrict lateral movement and firewall logs are published to a central collector."
                   }
                 ]
               }
