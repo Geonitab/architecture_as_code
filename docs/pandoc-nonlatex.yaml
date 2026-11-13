@@ -1,5 +1,14 @@
 ---
 standalone: true
+
+# Parse each chapter file separately so that links between chapter files
+# (05_the_box_instinct.md, 25_references.md#source-16) become links to the
+# chapter and to its anchors inside the finished book.
+file-scope: true
+# file-scope wraps each file in a div, which stops the EPUB writer from splitting the book into
+# chapters and breaks its navigation links; the filter removes the wrapper again.
+filters:
+  - unwrap-file-scope.lua
 toc: true
 toc-depth: 3
 number-sections: true

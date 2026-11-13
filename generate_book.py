@@ -134,13 +134,18 @@ def build_epub_from_chapters(chapter_paths: Sequence[Path], output_path: Path) -
         if PANDOC_NON_LATEX_DEFAULTS.exists():
             command.extend(["--defaults", str(PANDOC_NON_LATEX_DEFAULTS)])
 
-        command.extend(str(path) for path in prepared_paths)
+        # Pandoc matches links such as 25_references.md against the file names as given,
+        # so chapters in docs/ are passed relative to docs/ (the working directory below).
+        command.extend(
+            str(path.relative_to(DOCS_DIR)) if path.is_relative_to(DOCS_DIR) else str(path)
+            for path in prepared_paths
+        )
         command.extend(
             [
                 "-t",
                 "epub",
                 "-o",
-                str(output_path),
+                str(output_path.resolve()),
                 "--metadata",
                 f"date={datetime.date.today():%Y-%m-%d}",
                 "--metadata",
@@ -153,7 +158,8 @@ def build_epub_from_chapters(chapter_paths: Sequence[Path], output_path: Path) -
         if BOOK_COVER_IMAGE.exists():
             command.extend(["--epub-cover-image", str(BOOK_COVER_IMAGE)])
 
-        subprocess.run(command, check=True)
+        # The defaults file names its Lua filter relative to docs/, so run from there.
+        subprocess.run(command, check=True, cwd=DOCS_DIR)
     except FileNotFoundError as exc:
         raise FileNotFoundError(
             "Pandoc is required to build EPUB output but was not found in PATH."

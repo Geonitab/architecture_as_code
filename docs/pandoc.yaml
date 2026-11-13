@@ -5,6 +5,11 @@
 # General settings
 from: markdown+bracketed_spans
 standalone: true
+
+# Parse each chapter file separately so that links between chapter files
+# (05_the_box_instinct.md, 25_references.md#source-16) become links to the
+# chapter and to its anchors inside the finished book.
+file-scope: true
 toc: true
 toc-depth: 3
 number-sections: true
