@@ -852,9 +852,11 @@ class Deck:
         w, h = image.size
         avail_w, avail_h, gap = 11.3, 3.85, 0.25
         current = min(6.2 / w, 4.5 / h)
-        ink = image.convert("L").point(lambda v: 255 if v < 235 else 0).resize((1, h), Image.BOX)
-        # Only the middle of a run of at least 8 rows that hold nothing but thin connector lines is a safe cut: a
-        # row through a node or a label, or one between two lines of text, is never one.
+        mask = image.convert("L").point(lambda v: 255 if v < 250 else 0)
+        ink = mask.resize((1, h), Image.BOX)
+        # Only the middle of a run of at least 8 rows that hold nothing but one thin connector line is a safe cut: a
+        # row through a node or a label, one between two lines of text, or one that a branch or a feedback loop
+        # crosses, is never one.
         limit = max(4.0, 0.015 * w) * 255 / w
         quiet = [value <= limit for value in ink.getdata()]
         safe, y = [], 0
@@ -864,7 +866,13 @@ class Deck:
                 while z < h and quiet[z]:
                     z += 1
                 if z - y >= 8:
-                    safe.append((y + z) // 2)
+                    middle = (y + z) // 2
+                    crossings = 0
+                    for r in range(middle - 3, middle + 4):
+                        row = list(mask.crop((0, r, w, r + 1)).getdata())
+                        crossings = max(crossings, sum(1 for i in range(w) if row[i] and (i == 0 or not row[i - 1])))
+                    if crossings <= 1:  # a single connector crosses the cut: a branch or a feedback loop would be severed
+                        safe.append(middle)
                 y = z
             else:
                 y += 1
