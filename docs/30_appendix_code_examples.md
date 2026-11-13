@@ -3975,9 +3975,9 @@ class AWSCostOptimizer:
         if not candidates:
             return {}
 
-        # Heuristic, not an AWS API: Spot capacity is typically 60-90 % cheaper than
-        # On-Demand. A conservative 60 % saving on a representative On-Demand rate
-        # of USD 0.05/hour is assumed; replace with Pricing API data in production.
+        # Heuristic, not an AWS API: AWS advertises Spot savings of up to 90 % compared
+        # with On-Demand. A conservative 60 % saving (an assumption, not an AWS figure) on a
+        # representative On-Demand rate of USD 0.05/hour is used; replace with Pricing API data in production.
         on_demand_monthly_usd = len(candidates) * 0.05 * 730
 
         return {
