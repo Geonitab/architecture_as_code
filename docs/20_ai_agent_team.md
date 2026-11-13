@@ -135,12 +135,13 @@ jobs:
                 pull_number: context.payload.pull_request.number,
                 commit_id: context.payload.pull_request.head.sha,
                 event: 'COMMENT',
+                body: 'Automated editorial review findings.',
                 comments
               });
             }
 ```
 
-The job requests only the permissions it needs—read access to repository contents and write access to pull requests—because the default `GITHUB_TOKEN` is read-only in repositories created since 2023, and it posts all findings in a single `pulls.createReview` call whose comments carry the `path`, `line` and `side` of each finding together with the head commit SHA that GitHub requires for review comments.
+The job requests only the permissions it needs—read access to repository contents and write access to pull requests—because GitHub has made the default `GITHUB_TOKEN` read-only for new personal repositories and new organisations since February 2023 (new repositories in an organisation inherit that organisation's setting), and it posts all findings in a single `pulls.createReview` call whose comments carry the `path`, `line` and `side` of each finding together with the head commit SHA, which pins the review to the commit that was analysed.
 
 ### Issue-driven agent activation
 

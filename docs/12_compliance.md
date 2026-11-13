@@ -156,7 +156,7 @@ functions:
 
     reservedConcurrency: 1
     timeout: 300
-    memory: 1024
+    memorySize: 1024
 
     environment:
       MODEL_BUCKET: ${self:custom.modelBucket}
@@ -169,7 +169,7 @@ functions:
     layers:
       - ${self:custom.tensorflowLayer}
 
-    memory: 3008
+    memorySize: 3008
     timeout: 900
 
   costOptimiser:
@@ -247,7 +247,7 @@ resource "aws_acm_certificate" "crypto_agile" {
 resource "aws_kms_key" "crypto_agile" {
   description = "Symmetric data-encryption key (AES-256-GCM)"
   key_usage   = "ENCRYPT_DECRYPT"
-  key_spec    = "SYMMETRIC_DEFAULT"
+  customer_master_key_spec = "SYMMETRIC_DEFAULT"
 
   enable_key_rotation = true
 

@@ -18,7 +18,7 @@ Cloud-native migration pathways offer opportunities to modernise architecture wh
 
 Comprehensive infrastructure assessment forms the foundation for successful Architecture as Code migration. This includes inventory of existing resources, dependency mapping, risk assessment and cost-benefit analysis that informs migration strategy and timeline planning.
 
-Discovery automation tools such as AWS Application Discovery Service, Azure Migrate and Google Cloud's migration tooling can accelerate the assessment process through automated resource inventory and dependency detection. Google Cloud's migration guidance makes assessment and discovery of the existing environment the first of its four migration phases ([Source [99]](33_references.md#source-99)), and Microsoft's Cloud Adoption Framework likewise builds its migration plan on a documented inventory of workloads and their dependencies ([Source [97]](33_references.md#source-97)). These tools generate data that can inform Architecture as Code template generation and migration prioritisation.
+Discovery automation tools such as AWS Transform (the recommended successor to AWS Application Discovery Service, which closed to new customers on 7 November 2025), Azure Migrate and Google Cloud's migration tooling can accelerate the assessment process through automated resource inventory and dependency detection. Google Cloud's migration guidance makes assessment and discovery of the existing environment the first of its four migration phases ([Source [99]](33_references.md#source-99)), and Microsoft's Cloud Adoption Framework likewise builds its migration plan on dependency discovery, with each dependency group documented together with its component inventory ([Source [97]](33_references.md#source-97)). These tools generate data that can inform Architecture as Code template generation and migration prioritisation.
 
 Risk assessment must identify critical systems, single points of failure and compliance dependencies that affect migration approach. European financial institutions and healthcare organisations must particularly consider regulatory implications and downtime restrictions that affect migration windows.
 
@@ -294,7 +294,9 @@ echo "Discovered $INSTANCE_COUNT EC2 instances and $RDS_COUNT RDS instances"
 # Test 2: Backup verification
 echo "Verifying backup status..."
 SNAPSHOT_SINCE=$(date -u -d '7 days ago' +%Y-%m-%dT%H:%M:%S.000Z)  # "recent" means within the last week
-aws ec2 describe-snapshots --region "$REGION" --owner-ids self --query "Snapshots[?StartTime>=\`${SNAPSHOT_SINCE}\`]" > /tmp/recent-snapshots.json
+# JMESPath ordering operators only work on numbers, so the date comparison is done in jq
+aws ec2 describe-snapshots --region "$REGION" --owner-ids self --query 'Snapshots[].{SnapshotId:SnapshotId,StartTime:StartTime}' --output json \
+  | jq --arg since "$SNAPSHOT_SINCE" '[.[] | select(.StartTime >= $since)]' > /tmp/recent-snapshots.json
 SNAPSHOT_COUNT=$(jq 'length' /tmp/recent-snapshots.json)
 
 if [ "$SNAPSHOT_COUNT" -lt "$INSTANCE_COUNT" ]; then
