@@ -756,20 +756,20 @@ class Deck:
         figure = chapter["figure"]
         t = self.t
         caption = figure["caption"] or figure["alt"]
+        number = re.match(r"^Figure\s*([\d.]+):", caption)
         caption = re.sub(r"^Figure\s*[\d.]+:\s*", "", caption)
         headline, _, rest = caption.partition(". ")
         headline = headline.rstrip(".")
         if len(headline) > 80:
-            # Too long for a slide title: the chapter title leads, the caption explains.
-            headline, rest = chapter["title"], caption
+            # Too long for a slide title: the chapter title leads and the caption explains. The title is marked as the
+            # figure of the chapter, so that the slide does not repeat the title of the chapter's text slide.
+            label = f"Figure {number.group(1)}" if number else "Figure"
+            headline, rest = f"{label}  \u00b7  {chapter['title']}", caption
         slide, title = self.new_slide(headline, chapter["notes"])
         self.background(slide)
         self.accent_bar(slide)
         self.kicker(slide, f"{chapter.get('label') or 'Chapter ' + chapter['identifier']}  ·  {chapter['part']}")
-        self.title_placeholder(title, 0.8, 0.85, 11.7, 0.95, headline, 28, t["dark"])
-
-        box_x, box_y, box_w, box_h = 0.8, 1.9, 11.7, 4.25
-        self.rect(slide, box_x, box_y, box_w, box_h, t["white"], line=t["tint"])
+        self.title_placeholder(title, 0.8, 0.85, 11.7, 0.95, headline, 28 if len(headline) <= 70 else 24, t["dark"])
 
         from PIL import Image
 
@@ -777,15 +777,35 @@ class Deck:
         with Image.open(figure_path) as image:
             ratio = image.width / image.height
         pad = 0.2
-        max_w, max_h = box_w - 2 * pad, box_h - 2 * pad
-        w, h = (max_w, max_w / ratio) if max_w / ratio <= max_h else (max_h * ratio, max_h)
-        picture = slide.shapes.add_picture(
-            figure_path, self.In(box_x + (box_w - w) / 2), self.In(box_y + (box_h - h) / 2), self.In(w), self.In(h)
-        )
-        picture._element.nvPicPr.cNvPr.set("descr", figure["alt"] or headline)
-
-        if rest:
-            self.text(slide, 0.8, 6.28, 11.7, 0.66, [{"text": figure_caption(rest), "size": 13, "colour": t["muted"], "line": 1.05}])
+        if ratio < 1.3:
+            # A tall diagram would be a narrow strip in a wide frame, with its text too small to read. It gets the
+            # full height under the title and the caption beside it.
+            box_x, box_y, box_h = 0.8, 1.85, 4.9
+            max_w, max_h = 6.6 - 2 * pad, box_h - 2 * pad
+            w, h = (max_w, max_w / ratio) if max_w / ratio <= max_h else (max_h * ratio, max_h)
+            box_w = w + 2 * pad
+            if not rest:
+                box_x = (13.333 - box_w) / 2
+            self.rect(slide, box_x, box_y, box_w, box_h, t["white"], line=t["tint"])
+            picture = slide.shapes.add_picture(
+                figure_path, self.In(box_x + pad), self.In(box_y + (box_h - h) / 2), self.In(w), self.In(h)
+            )
+            picture._element.nvPicPr.cNvPr.set("descr", figure["alt"] or headline)
+            if rest:
+                text_x = box_x + box_w + 0.5
+                self.rect(slide, text_x - 0.25, box_y, 0.06, 1.2, t["accent"])
+                self.text(slide, text_x, box_y, 12.5 - text_x, box_h, [{"text": figure_caption(rest), "size": 17, "colour": t["muted"], "line": 1.1}])
+        else:
+            box_x, box_y, box_w, box_h = 0.8, 1.9, 11.7, 4.25
+            self.rect(slide, box_x, box_y, box_w, box_h, t["white"], line=t["tint"])
+            max_w, max_h = box_w - 2 * pad, box_h - 2 * pad
+            w, h = (max_w, max_w / ratio) if max_w / ratio <= max_h else (max_h * ratio, max_h)
+            picture = slide.shapes.add_picture(
+                figure_path, self.In(box_x + (box_w - w) / 2), self.In(box_y + (box_h - h) / 2), self.In(w), self.In(h)
+            )
+            picture._element.nvPicPr.cNvPr.set("descr", figure["alt"] or headline)
+            if rest:
+                self.text(slide, 0.8, 6.28, 11.7, 0.66, [{"text": figure_caption(rest), "size": 13, "colour": t["muted"], "line": 1.05}])
         self.footer(slide)
 
     def author_portrait(self, slide, x, y, size):

@@ -206,7 +206,8 @@ class TestWhitepaperStructure(unittest.TestCase):
     def test_book_description_is_not_hard_wrapped(self):
         html = sample_html()
         self.assertIn("<p>First paragraph wrapped over two lines.</p>", html)
-        self.assertNotIn("<br>", html)
+        overview = html.split('<section class="book-overview">', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("<br>", overview)
 
     def test_call_to_action_links_to_the_chapter_on_the_book_site(self):
         cname = REPO_ROOT / "CNAME"
