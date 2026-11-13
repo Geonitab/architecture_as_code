@@ -3368,7 +3368,7 @@ variable "budget_threshold" {
 }
 
 variable "monthly_budget_limit_usd" {
-  description = "Monthly budget limit in USD (AWS bills in USD)"
+  description = "Monthly budget limit in USD (AWS billing tools report in USD)"
   type        = string
 }
 
@@ -3430,7 +3430,7 @@ locals {
 resource "aws_budgets_budget" "project_budget" {
   name         = "${var.project_name}-budget"
   budget_type  = "COST"
-  limit_amount = var.monthly_budget_limit_usd # AWS bills in USD
+  limit_amount = var.monthly_budget_limit_usd # AWS billing tools report in USD
   limit_unit   = "USD"
   time_unit    = "MONTHLY"
 
@@ -3787,7 +3787,7 @@ class AWSCostOptimizer:
                 'spot_instances': self._analyze_spot_instance_opportunities()
             },
             'potential_monthly_savings_usd': 0,
-            'notes': 'Costs are in USD (AWS billing currency). Convert to EUR using current exchange rate for EU financial reporting.'
+            'notes': 'Costs are in USD (the currency of AWS billing and Cost Explorer reporting). Convert to EUR using current exchange rate for EU financial reporting.'
         }
 
         # Calculate total potential savings
