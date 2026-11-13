@@ -85,7 +85,7 @@ This holistic approach requires DevOps practices that can manage the complexity 
 
 Governance as Code extends Infrastructure as Code principles to policies, approval flows, and organisational guardrails. When architecture governance is codified and version-controlled, teams gain transparency, traceability, and automation opportunities while meeting compliance and risk requirements.
 
-Policy definitions, decisions, and exceptions are captured in machine-readable YAML or JSON formats consumed by validation tools in the CI/CD pipeline through policy engines like Open Policy Agent (OPA). The policy lifecycle follows standard code change-management flows: pull requests, technical review, automated testing, and traceable releases.
+Policy parameters, decisions, and exceptions are captured in machine-readable YAML or JSON formats consumed by validation tools in the CI/CD pipeline through policy engines like Open Policy Agent (OPA). The policy lifecycle follows standard code change-management flows: pull requests, technical review, automated testing, and traceable releases.
 
 For comprehensive coverage of governance automation—including policy lifecycle management, federated operating models, exception handling, governance metrics, developer experience integration, and regulatory ecosystem alignment—see [Chapter 11: Governance as Code](11_governance_as_code.md).
 

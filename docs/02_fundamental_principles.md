@@ -36,7 +36,7 @@ Model-Driven Development (MDD) grew out of decades of domain-specific modelling 
 
 Wider industry adoption exposed the limits of that optimism. Selic (2003) [Source [50]](33_references.md#source-50) already warned that models had "rarely produced anticipated benefits" and that success depended on resolving pragmatic issues rooted in the artefacts and culture of earlier generations of software technology. In the author's experience, brittle round-trip engineering, tool lock-in, and ambiguous semantics then caused MDD artefacts to fall out of sync as soon as teams customised generated code or adopted new frameworks. Architecture as Code internalises those lessons by favouring lightweight textual models, explicit version control, and continuous validation so that the architecture specification evolves alongside implementation rather than trying to replace it.
 
-Modern model-based architecture tooling such as Structurizr, built around the C4 model ([Source [37]](33_references.md#source-37)), focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that addresses the pragmatic concerns raised by Selic (2003) [Source [50]](33_references.md#source-50).
+Modern model-based architecture tooling such as Structurizr, built around the C4 model ([Source [37]](33_references.md#source-37), [Source [56]](33_references.md#source-56)), focuses on keeping a single authoritative architecture model close to the codebase, generating diagrams and reviews from that source without enforcing fragile full-code generation. This pragmatic approach provides the automation benefits MDD aspired to while preserving developer autonomy, making Architecture as Code a practical successor that addresses the pragmatic concerns raised by Selic (2003) [Source [50]](33_references.md#source-50).
 
 ## Implementation timeline for Architecture as Code
 
@@ -165,7 +165,7 @@ This historical record becomes the institutional memory of the architecture, acc
 
 As architectural definitions evolve, refactoring disciplines keep the codebase maintainable:
 
-- **Modular architecture boundaries**: Define clear module boundaries in architecture code, preventing cross-cutting dependencies that create maintenance burdens—the same discipline of drawing boundaries and controlling dependencies that Martin (2017) [Source [33]](33_references.md#source-33) places at the heart of software architecture
+- **Modular architecture boundaries**: Define clear module boundaries in architecture code, preventing cross-cutting dependencies that create maintenance burdens—the same discipline of drawing boundaries and controlling dependencies that Martin (2017) [Source [33]](33_references.md#source-33) addresses in his chapter "Boundaries: Drawing Lines" and in the Dependency Rule
 - **Incremental refactoring**: Large architectural changes are broken into incremental pull requests, each independently reviewable and testable
 - **Deprecation workflows**: Legacy architectural patterns are explicitly marked as deprecated with migration paths documented in ADRs before removal
 - **Backward compatibility gates**: Breaking changes to architectural interfaces require explicit approval and coordinated migration plans

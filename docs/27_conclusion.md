@@ -59,10 +59,12 @@ boundary commitments, sector-specific controls such as DORA for financial servic
 Governance Act and the Data Act for data sharing.
 
 European initiatives create space for Architecture as Code teams to collaborate beyond national boundaries whilst still respecting
-local obligations. Programmes such as Horizon Europe, Digital Europe, Gaia-X, and the European Alliance for Industrial Data, Edge
-and Cloud encourage interoperable platforms, harmonised reference architectures, and sector-specific data spaces that can be
-codified as re-usable modules. Access to EU-funded sandboxes and regulatory support, including the AI Act's conformity assessment
-regime, helps organisations evidence compliance earlier in delivery cycles and accelerate acceptance by supervisory authorities.
+local obligations. Horizon Europe and Digital Europe provide EU funding for research and digital capacity, Gaia-X works towards federated and
+trusted data and infrastructure ecosystems, and the European Alliance for Industrial Data, Edge and Cloud aims to define roadmaps for
+interoperable computing technologies; together they create room for interoperable platforms, harmonised reference architectures, and sector-specific
+data spaces that can be codified as re-usable modules. Access to the AI regulatory sandboxes that Member States must establish under
+Article 57 of the AI Act, together with its conformity assessment regime [Source [125]](33_references.md#source-125), helps
+organisations evidence compliance earlier in delivery cycles and accelerate acceptance by supervisory authorities.
 
 Sustainability remains a parallel obligation. [Future trends](25_future_trends.md) emphasise carbon-aware workloads,
 energy-efficient automation, and transparent procurement aligned with the European Green Deal, the Fit for 55 package, and EU
