@@ -777,7 +777,7 @@ locals {
     CostCentre   = var.cost_centre
     DataClass    = var.data_classification
     EUCompliance = "GDPR"
-    Regulator    = "EDPB"
+    Regulator    = "National supervisory authority (consistency overseen by EDPB)"
   }
 }
 
@@ -948,7 +948,7 @@ class ComprehensiveIaCTesting:
         return check
 
     def _test_encryption_at_rest(self) -> CheckResult:
-        """Verify all S3 buckets default to KMS encryption with customer managed keys."""
+        """Verify all S3 buckets default to KMS encryption (SSEAlgorithm aws:kms)."""
         def findings() -> List[str]:
             weak = []
             for bucket in self.s3.list_buckets()['Buckets']:
