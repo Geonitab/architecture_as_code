@@ -137,7 +137,7 @@ The following terms and conventions define the technical language used throughou
 ### Technical References
 
 - On first use in a chapter, write the full term followed by the acronym in parentheses: "Infrastructure as Code (IaC)".
-- In subsequent references within the same chapter, the acronym alone is acceptable.
+- In subsequent references within the same chapter, the acronym alone is acceptable. The sanctioned abbreviations for the book's own disciplines are AaC (Architecture as Code), IaC (Infrastructure as Code), DaC (Documentation as Code), MaC (Management as Code) and ADR. Do not introduce others, and do not use "VCS": write "version control" or "Git".
 - Code elements, CLI commands, file names, and configuration keys are always rendered in `monospace`.
 - Tool names and product names retain their original capitalisation even when embedded in prose.
 

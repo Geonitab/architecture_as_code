@@ -14,9 +14,9 @@ The CI/CD flow depicted earlier runs from code commit through validation, testin
 
 ## Differentiating Architecture as Code and Infrastructure as Code in automation
 
-[Chapter 3: Version Control and Code Structure](03_version_control.md) defines the layered relationship: Architecture as Code sets the opinionated standards and guardrails, and Infrastructure as Code executes concrete resource changes within them. In automation the distinction becomes a question of which pipeline stage owns which decision: AaC codifies what must be true before runtime, and IaC consumes those policies to produce compliant infrastructure. Encoding architectural policy decisions directly into automation lets teams adopt approved patterns without manual gatekeeping, in the spirit of the *security policy as code* technique that the Thoughtworks Technology Radar moved to Adopt in October 2020 [Source [2]](33_references.md#source-2), while higher-order IaC frameworks such as AWS Cloud Development Kit (CDK) compile architectural blueprints into deployable infrastructure [Source [9]](33_references.md#source-9).
+[Chapter 3: Version Control and Code Structure](03_version_control.md) defines the layered relationship: Architecture as Code (AaC) sets the opinionated standards and guardrails, and Infrastructure as Code (IaC) executes concrete resource changes within them. In automation the distinction becomes a question of which pipeline stage owns which decision: AaC codifies what must be true before runtime, and IaC consumes those policies to produce compliant infrastructure. Encoding architectural policy decisions directly into automation lets teams adopt approved patterns without manual gatekeeping, in the spirit of the *security policy as code* technique that the Thoughtworks Technology Radar moved to Adopt in October 2020 [Source [2]](33_references.md#source-2), while higher-order IaC frameworks such as AWS Cloud Development Kit (CDK) compile architectural blueprints into deployable infrastructure [Source [9]](33_references.md#source-9).
 
-> **AaC vs IaC automation responsibilities**
+> **Architecture as Code and Infrastructure as Code automation responsibilities**
 >
 > | Dimension | Architecture as Code | Infrastructure as Code |
 > |-----------|----------------------|------------------------|

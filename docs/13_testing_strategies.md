@@ -248,7 +248,7 @@ Chaos engineering principles can be applied to infrastructure testing by systema
 
 Chaos Monkey popularised the idea of terminating running services deliberately to test that distributed systems heal without human intervention. When the failure scenarios are described alongside Infrastructure as Code definitions, teams can rehearse instance loss, network blackouts, or degraded dependencies as codified experiments rather than ad-hoc drills.
 
-Applying Chaos Monkey style experiments through AaC pipelines keeps the blast radius controlled. The failure injection policies, scheduling rules, and opt-in environments live in version control, making every change reviewable and auditable. Observability dashboards and incident runbooks should be linked directly from the experiment definition so responders have immediate context.
+Applying Chaos Monkey style experiments through Architecture as Code pipelines keeps the blast radius controlled. The failure injection policies, scheduling rules, and opt-in environments live in version control, making every change reviewable and auditable. Observability dashboards and incident runbooks should be linked directly from the experiment definition so responders have immediate context.
 
 Effective guardrails include:
 - Running experiments in lower environments first and promoting only after exit criteria are met.

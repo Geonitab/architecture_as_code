@@ -38,6 +38,7 @@ The following table lists common conversions that must be applied during reviews
 
 ## Terminology and Tone
 - Always refer to the discipline and book title as **Architecture as Code**, keeping “as” in lower case and capitalising “Architecture” and “Code”. Avoid variations such as “Architecture As Code” or “architecture as code” unless quoting another source.
+- Abbreviate Architecture as Code as “AaC” only after the full term has been given with the abbreviation in parentheses in the same chapter; see `AUTHOR_PERSONA.md` for the sanctioned abbreviations. Do not use “VCS”.
 - Refer to audiences collectively as “teams”, “practitioners”, or “organisations” rather than region-specific labels unless the chapter explicitly targets a geography.
 - Use “programme” for initiatives and “programme owners” in keeping with British usage.
 - Maintain formal, instructional tone that suits professional and academic readers.

@@ -28,7 +28,7 @@ The glossary gathers the key terminology that shapes the Architecture as Code ap
 |------|------------|
 | Continuous Integration / Continuous Delivery | A feedback-driven workflow where code changes are integrated, tested, and promoted through automated stages, reducing manual handovers. Teams usually refer to this as CI/CD. (See [Chapter 5](05_automation_devops_cicd.md)) |
 | Delivery Pipeline | The orchestrated flow of automated checks, approvals, and deployments that transform committed code into resilient production services. |
-| Version Control System | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. Often shortened to VCS. (See [Chapter 3](03_version_control.md)) |
+| Version Control System | A collaborative platform—Git being the most common—that stores source code, policies, and templates, preserving history and peer review. (See [Chapter 3](03_version_control.md)) |
 | GitOps | An operating model in which the desired state of systems is declared in version control and software agents continuously pull that declared state and reconcile the live environments against it, following the OpenGitOps principles (declarative, versioned and immutable, pulled automatically, continuously reconciled) [Source [133]](33_references.md#source-133). (See [Chapter 3](03_version_control.md)) |
 | Configuration Management | Tooling such as Ansible or Chef that applies desired system states, often working alongside declarative templates to maintain consistency. |
 | Terraform | A widely used IaC tool that compiles declarative configurations into API calls, offering modular composition and policy enforcement hooks. |
