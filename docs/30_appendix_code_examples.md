@@ -3480,13 +3480,8 @@ resource "aws_launch_template" "cost_optimized" {
     instance_generations = ["current"]
   }
 
-  # Spot instance preference for cost optimisation
-  instance_market_options {
-    market_type = "spot"
-    spot_options {
-      max_price = var.max_spot_price
-    }
-  }
+  # The template must not request Spot Instances itself: an Auto Scaling group with
+  # a mixed instances policy sets the Spot/On-Demand split in instances_distribution below.
 
   tag_specifications {
     resource_type = "instance"
@@ -3507,7 +3502,8 @@ resource "aws_autoscaling_group" "cost_aware" {
     instances_distribution {
       on_demand_base_capacity                  = 1
       on_demand_percentage_above_base_capacity = 20
-      spot_allocation_strategy                 = "diversified"
+      spot_allocation_strategy                 = "price-capacity-optimized"
+      spot_max_price                           = var.max_spot_price
     }
 
     launch_template {

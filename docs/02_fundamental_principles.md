@@ -381,7 +381,7 @@ spec:
         approved_regions := {"eu-central-1", "eu-west-1", "eu-west-3", "eu-north-1", "eu-south-1", "eu-south-2"}
 
         deny contains msg if {
-          input.resource_type == "aws_rds_instance"
+          input.resource_type == "aws_db_instance"
           not approved_regions[input.region]
           msg := sprintf("RDS instance must be located in an approved EU/EEA region, found %v", [input.region])
         }
@@ -406,7 +406,7 @@ EU_VALIDATION_AUTHORITIES = {
         "authority": "European Data Protection Board (EDPB)",
         "reference": (
             "Regulation (EU) 2016/679, Article 32 and Chapter V; "
-            "EDPB Recommendations 01/2020 on supplementary transfer measures"
+            "EDPB Recommendations 01/2020 on measures that supplement transfer tools"
         ),
     },
     "ISO27001": {
