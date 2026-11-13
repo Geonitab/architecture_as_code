@@ -87,7 +87,7 @@ Transparency through Issues manifests in several ways:
 
 **Visibility and Accessibility**: Every stakeholder with repository access can view ongoing discussions, understand current priorities, and contribute perspectives. This democratises decision-making and prevents siloed thinking that emerges when only select individuals participate in critical conversations.
 
-**Traceability**: Issues create an immutable audit trail linking strategic intent to tactical implementation. When an architecture decision record references an Issue, reviewers can trace the entire conversation chain—from initial problem statement through stakeholder debate to final resolution. This traceability satisfies compliance requirements whilst enabling teams to learn from past decisions.
+**Traceability**: Issues create an audit trail, with comment edit history, linking strategic intent to tactical implementation. When an architecture decision record references an Issue, reviewers can trace the entire conversation chain—from initial problem statement through stakeholder debate to final resolution. This traceability satisfies compliance requirements whilst enabling teams to learn from past decisions.
 
 **Accountability**: Assigning Issues to specific owners, setting milestones, and tracking progress creates clear accountability. Teams know who is responsible for each initiative, reducing ambiguity and preventing work from falling through organisational cracks. Labels reflect strategic pillars, enabling filtering and reporting across different dimensions of the architecture portfolio.
 
