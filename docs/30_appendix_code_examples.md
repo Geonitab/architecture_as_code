@@ -5087,7 +5087,7 @@ workspace "E-Commerce Platform" "Complete architecture for online retail" {
         # Dynamic View - Order Flow
         dynamic ecommercePlatform "OrderPlacementFlow" {
             title "Customer Order Placement"
-            # Steps are numbered automatically; manual numbers would render as "1. 1. ..."
+            # Steps are numbered automatically; an explicit "order:" prefix overrides the number
 
             customer -> webApp "Submits order"
             webApp -> apiGateway "POST /api/orders"

@@ -56,7 +56,7 @@ Operational telemetry from backend access logs (such as S3 access logs or Azure 
 - Manual state downloads or unlock operations executed outside approved pipeline identities.
 - Versioning churn or bucket/object deletions that occur outside scheduled maintenance windows.
 
-Alert destinations should include on-call rotas and service management tooling so that incidents can be triaged rapidly. Pairing those alerts with automated remediation—such as temporary access revocation via HCP Terraform run tasks or AWS IAM quarantine policies—ensures that anomalous state activity is contained before it cascades into deployment failures.
+Alert destinations should include on-call rotas and service management tooling so that incidents can be triaged rapidly. Pairing those alerts with automated remediation—such as temporary access revocation through IAM deny policies of the kind AWS applies to compromised credentials (AWSCompromisedKeyQuarantineV3), or checks that third-party tooling performs at defined stages of an HCP Terraform run through run tasks—ensures that anomalous state activity is contained before it cascades into deployment failures.
 
 Teams can lift the [Governance and Security Controls as Code Backlog](11_governance_as_code.md#governance-and-security-controls-as-code-backlog) directly into sprint plans to deliver these telemetry pipelines. The backlog items contain the acceptance tests and documentation updates required to prove that backend alerts, runbooks, and evidence packs evolve alongside the policy-as-code gates.
 

@@ -58,7 +58,7 @@ The following topics outline emerging areas that influence long-term compliance 
 
 ### Quantum Computing Readiness
 
-Quantum computing will require a rethink of security models, cryptography, and resource management strategies. NIST's first post-quantum cryptography standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), published on 13 August 2024—must be integrated into infrastructure security frameworks [Source [85]](33_references.md#source-85), and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
+Quantum computing will require a rethink of security models, cryptography, and resource management strategies. NIST's first post-quantum cryptography standards—FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), and FIPS 205 (SLH-DSA), published on 13 August 2024—should be integrated into infrastructure security frameworks [Source [85]](33_references.md#source-85), and Architecture as Code definitions must be ready to rotate to quantum-resistant algorithms. Quantum-assisted optimisation techniques may support complex placement, routing, and resource allocation problems that are computationally expensive for classical systems, improving efficiency and resilience for regulated services.
 
 ### Sustainability and Green Computing
 

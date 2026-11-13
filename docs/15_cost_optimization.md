@@ -125,7 +125,7 @@ Commitment-based pricing is often the single largest source of cloud cost reduct
 | AWS | Compute Savings Plans (flexible across instance families, sizes, and regions) | Up to 66% |
 | AWS | EC2 Instance Savings Plans | Up to 72% |
 | Azure | Reserved VM Instances (one- or three-year commitments) | Up to 72% |
-| Google Cloud | Committed Use Discounts (resource-based and spend-based) | Up to 55% resource-based (up to 70% for memory-optimised machine series); 28–46% for flexible spend-based CUDs |
+| Google Cloud | Committed Use Discounts (resource-based and spend-based) | Up to 55% resource-based (up to 70% for memory-optimised machine series); 28–46% for flexible spend-based CUDs (up to 54% for the C4N and M4N machine series) |
 
 The percentages are the maximum discounts published by the providers as of October 2026: AWS Compute and EC2 Instance Savings Plans ([Source [95]](33_references.md#source-95)), [Amazon EC2 Reserved Instances pricing](https://aws.amazon.com/ec2/pricing/reserved-instances/), [Azure Reservations pricing](https://azure.microsoft.com/en-us/pricing/reservations/), and Google Cloud committed use discounts ([Source [98]](33_references.md#source-98)). Realised savings depend on term length, payment option, and how well the commitment matches actual usage.
 

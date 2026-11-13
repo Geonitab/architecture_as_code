@@ -158,7 +158,7 @@ Policy-driven traffic routing centralises advanced controls such as rate limitin
 
 Security maturity assessments provide structured frameworks for measuring current posture and prioritising investment. Maturity models such as ISACA's CMMI Cybermaturity Platform or the NIST CSF 2.0 tiers (Partial, Risk Informed, Repeatable, Adaptive) provide a graded ladder from initial reactive practices to optimised proactive operations ([Source [42]](33_references.md#source-42)). European organisations can benchmark against industry peers by repeating such assessments at regular intervals.
 
-The NIST Cybersecurity Framework 2.0 (February 2024) is built around six functions—Govern, Identify, Protect, Detect, Respond, and Recover—where the new Govern function maps directly onto governance-as-code concerns ([Source [42]](33_references.md#source-42)). Embedding the framework into Architecture as Code enables systematic improvements with traceable outcomes.
+The NIST Cybersecurity Framework 2.0 (February 2024) is built around six functions—Govern, Identify, Protect, Detect, Respond, and Recover—where the Govern function maps directly onto governance-as-code concerns ([Source [42]](33_references.md#source-42)). Embedding the framework into Architecture as Code enables systematic improvements with traceable outcomes.
 
 
 This chapter has established the fundamental security principles and practices for Architecture as Code. The following chapter explores advanced security patterns, practical implementations, and future trends that build upon these foundations.
